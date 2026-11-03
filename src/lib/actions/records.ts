@@ -3,7 +3,7 @@
 import { getCollection } from '@/lib/data';
 import { SCHUTZ_ERNEUERT, type FormularSchutz, type SchutzAntwort } from '@/lib/formular-schutz';
 import { storageStatus } from '@/lib/integrations';
-import { PLANER_QUELLE, planerVorgang } from '@/lib/konfigurator/vorgang';
+import { PLANER_QUELLE, SCHNAPPSCHUSS_FELD, planerVorgang } from '@/lib/konfigurator/vorgang';
 import { RECHTSTEXTE_FASSUNG } from '@/lib/rechtliches/texte';
 import { createRecord, verifyCarKeyBooking, type GepruefteAngaben } from '@/lib/server/create-record';
 import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
@@ -194,6 +194,8 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
 
   // Anfrage aus dem Schließplan-Planer (E5-OPUS-03): Der Server prüft den Plan selbst und legt den
   // Schnappschuss mit den Namen aus dem Katalog in den Vorgang; nichts davon kommt aus dem Browser.
+  // Auch die Zusammenfassung baut der Server aus dem Plan; die aus dem Browser fällt weg. Andere
+  // Anfragen dürfen keinen Schnappschuss mitbringen.
   let payload = data.payload;
   if (data.kind === 'projekt' && payload.quelle === PLANER_QUELLE) {
     const vorgang = planerVorgang(payload, await getCollection('cylinderCatalog'));
@@ -201,6 +203,10 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
       return { ok: false, notices: [], error: INVALID_INPUT };
     }
     payload = vorgang.payload;
+    summary = vorgang.summary;
+  } else if (SCHNAPPSCHUSS_FELD in payload) {
+    payload = { ...payload };
+    delete payload[SCHNAPPSCHUSS_FELD];
   }
 
   const result = await createRecord({

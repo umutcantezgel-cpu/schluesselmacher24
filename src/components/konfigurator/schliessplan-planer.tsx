@@ -18,11 +18,9 @@ import { ERWEITERBAR_OPTION_ID } from '@/lib/cylinder-rules';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { formatCents } from '@/lib/format';
 import {
-  EBENE_TEXT,
   SCHUTZ_OPTION_ID,
   VORLAGEN,
   dekodiere,
-  ebene,
   kodiere,
   leererPlan,
   passtInLink,
@@ -37,7 +35,7 @@ import {
 import { SCHLIESSPLAN_DATEINAME } from '@/lib/pdf/schliessplan';
 import { aktionMelden } from '@/lib/statistik';
 import { useCartStore } from '@/lib/store/cart';
-import type { ContactDetails, CylinderCatalog, SummarySection } from '@/lib/types';
+import type { ContactDetails, CylinderCatalog } from '@/lib/types';
 
 import { neueTuer, PlanBefunde, PlanSumme, SchluesselMatrix, summeKurz, TuerenListe } from './schliessplan-editor';
 
@@ -127,39 +125,6 @@ function adresseBereinigen() {
 function leererStart(katalog: CylinderCatalog): Schliessplan {
   const mitTuer = tuerHinzufuegen(leererPlan(), neueTuer(katalog, 'Haustür'));
   return schluesselHinzufuegen(mitTuer, { bezeichnung: 'Familie', anzahl: 3 }, true);
-}
-
-/** Zusammenfassung für Vorgang und Mail: Türen, Schlüssel mit ihren Türen, Zusatzwünsche, Preisart. */
-function zusammenfassung(plan: Schliessplan, katalog: CylinderCatalog, preisText: string, extraIds: string[]): SummarySection[] {
-  const formName = (id: string) => katalog.forms.find((f) => f.id === id)?.label ?? id;
-  const tuerName = new Map(plan.tueren.map((t) => [t.id, t.bezeichnung]));
-  return [
-    {
-      title: 'Türen',
-      rows: plan.tueren.map((t) => ({
-        label: t.bezeichnung,
-        value: [
-          formName(t.form),
-          t.b !== undefined ? `A ${t.a} mm, B ${t.b} mm` : `A ${t.a} mm`,
-          t.funktionId ? katalog.functions.find((f) => f.id === t.funktionId)?.label : null,
-          t.optionen?.includes(SCHUTZ_OPTION_ID) ? katalog.extras.find((e) => e.id === SCHUTZ_OPTION_ID)?.label : null,
-        ]
-          .filter(Boolean)
-          .join(' · '),
-      })),
-    },
-    {
-      title: 'Schlüssel',
-      rows: plan.schluessel.map((s) => ({
-        label: `${s.bezeichnung} (${s.anzahl}${s.reserve ? `, ${s.reserve} vorgemerkt` : ''})`,
-        value: `${EBENE_TEXT[ebene(plan, s.id)]}: ${(plan.berechtigungen[s.id] ?? []).map((id) => tuerName.get(id) ?? id).join(', ') || 'keine'}`,
-      })),
-    },
-    ...(extraIds.length
-      ? [{ title: 'Zusatzwünsche', rows: extraIds.map((id) => ({ label: katalog.extras.find((e) => e.id === id)?.label ?? id, value: 'gewünscht' })) }]
-      : []),
-    { title: 'Preis', rows: [{ label: 'Preis', value: preisText }] },
-  ];
 }
 
 export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
@@ -267,7 +232,6 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
       router.push('/warenkorb');
       return;
     }
-    const preisText = preis.art === 'angebot' ? `Angebot: ${preis.grund}` : 'offen';
     try {
       const response = await submitRecord({
         schutz: await schutz.daten(),
@@ -276,7 +240,8 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
         process: 'projektkonfigurator',
         contact: d.contact,
         payload: { quelle: 'schliessplan-planer', schliessplan: d.plan, extraIds: d.extraIds, notiz: d.notiz, consent: d.consent },
-        summary: zusammenfassung(d.plan, katalog, preisText, d.extraIds),
+        // Zusammenfassung und Schnappschuss bildet der Server aus dem Plan (E5-OPUS-03).
+        summary: [],
         uploads: [],
       });
       schutz.antwortBeachten(response);
@@ -328,7 +293,10 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
   };
   const setContact = (key: keyof ContactDetails, value: string) => flow.update({ contact: { ...d.contact, [key]: value } });
   /* Schließplan als PDF über denselben Link wie „Plan als Link speichern“; große Pläne gehen mit der Anfrage. */
-  const pdfHref = d.plan.tueren.length > 0 && passtInLink(d.plan) ? `/schliessanlagen/konfigurator/schliessplan/pdf?plan=${kodiere(d.plan)}` : null;
+  const pdfHref =
+    d.plan.tueren.length > 0 && passtInLink(d.plan)
+      ? `/schliessanlagen/konfigurator/schliessplan/pdf?plan=${kodiere(d.plan)}${d.extraIds.length ? `&wuensche=${encodeURIComponent(d.extraIds.join(','))}` : ''}`
+      : null;
 
   return (
     <FlowShell

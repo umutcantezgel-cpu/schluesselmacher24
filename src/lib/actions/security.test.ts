@@ -169,6 +169,21 @@ describe('submitRecord', () => {
     expect(stored).toHaveLength(1);
   });
 
+  it('nimmt bei Planer-Anfragen keine Zusammenfassung und bei anderen Anfragen keinen Schnappschuss aus dem Browser', async () => {
+    const form = defaults.cylinderCatalog().forms[0].id;
+    const plan = { version: 1, tueren: [{ id: 't1', bezeichnung: 'Haustür', form, a: 30, b: 35 }], schluessel: [{ id: 's1', bezeichnung: 'Familie', anzahl: 3 }], berechtigungen: { s1: ['t1'] } };
+    const gefaelscht = [{ title: 'Preis', rows: [{ label: 'Preis', value: 'Gesamt 1,00 € laut Katalog' }] }];
+    await submitRecord({ kind: 'projekt', area: 'schliessanlagen', process: 'projektkonfigurator', contact, summary: gefaelscht, uploads: [], payload: { quelle: 'schliessplan-planer', schliessplan: plan, notiz: 'Bitte vorher anrufen' } });
+    const planer = stored[0];
+    expect(JSON.stringify(planer.summary)).not.toContain('1,00 €');
+    expect(planer.summary.map((teil) => teil.title)).toEqual(['Türen', 'Schlüssel', 'Preis', 'Nachricht']);
+
+    const schnappschuss = (planer.payload as Record<string, unknown>).schnappschuss;
+    await submitRecord({ kind: 'anfrage', area: 'schliessanlagen', process: 'gefuehrte-anfrage', contact, summary: [], uploads: [], payload: { schnappschuss } });
+    expect(stored[0].kind).toBe('anfrage');
+    expect(stored[0].payload).not.toHaveProperty('schnappschuss');
+  });
+
   it('lehnt Bestellungen außerhalb der Kasse ab', async () => {
     const result = await submitRecord({
       kind: 'bestellung',

@@ -8,7 +8,7 @@
 import { z } from 'zod';
 
 import { formatCents } from '../format';
-import type { CylinderCatalog } from '../types';
+import type { BusinessRecord, CylinderCatalog, SummarySection } from '../types';
 import { preisFuerPlan, SCHUTZ_OPTION_ID } from './preis';
 import { EBENE_TEXT, ebene, pruefePlan, type Schliessplan } from './schliessplan';
 import { planAusDaten } from './zwischenstand';
@@ -105,7 +105,32 @@ export function schnappschuss(
   };
 }
 
-export type PlanerVorgang = { ok: true; payload: Record<string, unknown> } | { ok: false };
+/**
+ * Zusammenfassung für Vorgang und Betriebsmail aus dem Schnappschuss des Servers: Türen, Schlüssel mit
+ * ihren Türen, Zusatzwünsche, Preisweg und die Nachricht des Kunden. Die Zusammenfassung aus dem
+ * Browser wird bei Planer-Anfragen nicht übernommen.
+ */
+export function planerZusammenfassung(s: SchliessplanSchnappschuss, notiz = ''): SummarySection[] {
+  const tuerName = new Map(s.tueren.map((t) => [t.nr, t.bezeichnung]));
+  return [
+    {
+      title: 'Türen',
+      rows: s.tueren.map((t) => ({ label: t.bezeichnung, value: [t.bauform, t.masse, t.funktion, t.schutz].filter(Boolean).join(' · ') })),
+    },
+    {
+      title: 'Schlüssel',
+      rows: s.schluessel.map((k) => ({
+        label: `${k.bezeichnung} (${k.anzahl}${k.reserve ? `, ${k.reserve} vorgemerkt` : ''})`,
+        value: `${k.ebene}: ${k.tueren.map((nr) => tuerName.get(nr) ?? String(nr)).join(', ') || 'keine'}`,
+      })),
+    },
+    ...(s.wuensche.length ? [{ title: 'Zusatzwünsche', rows: s.wuensche.map((w) => ({ label: w, value: 'gewünscht' })) }] : []),
+    { title: 'Preis', rows: [{ label: 'Preis', value: s.preis.text }] },
+    ...(notiz ? [{ title: 'Nachricht', rows: [{ label: 'Nachricht', value: notiz }] }] : []),
+  ];
+}
+
+export type PlanerVorgang = { ok: true; payload: Record<string, unknown>; summary: SummarySection[] } | { ok: false };
 
 /**
  * Prüft das payload einer Anfrage aus dem Planer und baut es neu: Plan nach Schema und ohne Fehler,
@@ -115,26 +140,37 @@ export type PlanerVorgang = { ok: true; payload: Record<string, unknown> } | { o
 export function planerVorgang(payload: Record<string, unknown>, katalog: CylinderCatalog, jetzt = new Date()): PlanerVorgang {
   const plan = planAusDaten(payload.schliessplan, { masseGeprueft: true });
   if (!plan || pruefePlan(plan).some((b) => b.art === 'fehler')) return { ok: false };
-  const bekannt = new Set(katalog.extras.map((e) => e.id));
-  const roh = Array.isArray(payload.extraIds) ? payload.extraIds : [];
-  const extraIds = [...new Set(roh.filter((id): id is string => typeof id === 'string' && bekannt.has(id)))];
+  const extraIds = bekannteWuensche(Array.isArray(payload.extraIds) ? payload.extraIds : [], katalog);
   const notiz = typeof payload.notiz === 'string' ? payload.notiz.trim().slice(0, NOTIZ_HOECHSTENS) : '';
+  const bild = schnappschuss(plan, katalog, { extraIds, jetzt });
   return {
     ok: true,
-    payload: {
-      quelle: PLANER_QUELLE,
-      schliessplan: plan,
-      extraIds,
-      notiz,
-      consent: payload.consent === true,
-      schnappschuss: schnappschuss(plan, katalog, { extraIds, jetzt }),
-    },
+    payload: { quelle: PLANER_QUELLE, schliessplan: plan, extraIds, notiz, consent: payload.consent === true, schnappschuss: bild },
+    summary: planerZusammenfassung(bild, notiz),
   };
+}
+
+/** Wunschkennungen aus einer Liste (etwa `?wuensche=` am PDF-Link), nur bekannte, ohne Doppel. */
+export function bekannteWuensche(roh: unknown[], katalog: CylinderCatalog): string[] {
+  const bekannt = new Set(katalog.extras.map((e) => e.id));
+  return [...new Set(roh.filter((id): id is string => typeof id === 'string' && bekannt.has(id)))].slice(0, 20);
+}
+
+/** Schlüssel im payload, den nur der Server schreibt; aus anderen Anfragen entfernt ihn die Aktion. */
+export const SCHNAPPSCHUSS_FELD = 'schnappschuss';
+
+/**
+ * Schnappschuss eines Vorgangs nur dort, wo ihn der Server gebildet hat: Projekt aus dem
+ * Projektkonfigurator mit der Quelle des Planers (E5-OPUS-03, Gegenprüfung).
+ */
+export function schnappschussAusVorgang(vorgang: Pick<BusinessRecord, 'kind' | 'process' | 'payload'>): SchliessplanSchnappschuss | null {
+  if (vorgang.kind !== 'projekt' || vorgang.process !== 'projektkonfigurator' || vorgang.payload?.quelle !== PLANER_QUELLE) return null;
+  return schnappschussAusPayload(vorgang.payload);
 }
 
 /** Liest den Schnappschuss aus einem gespeicherten Vorgang; ältere Vorgänge und fremde Daten ergeben null. */
 export function schnappschussAusPayload(payload: unknown): SchliessplanSchnappschuss | null {
   if (!payload || typeof payload !== 'object') return null;
-  const ergebnis = schnappschussSchema.safeParse((payload as Record<string, unknown>).schnappschuss);
+  const ergebnis = schnappschussSchema.safeParse((payload as Record<string, unknown>)[SCHNAPPSCHUSS_FELD]);
   return ergebnis.success ? ergebnis.data : null;
 }

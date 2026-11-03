@@ -12,7 +12,7 @@ import { vorgangOrtText } from '../terminort';
 import type { BusinessRecord, CompanyProfile, RecordStatus, UploadRef } from '../types';
 import { STATUS_LABEL } from '../vorgang-status';
 
-import { schnappschussAusPayload } from '../konfigurator/vorgang';
+import { schnappschussAusVorgang } from '../konfigurator/vorgang';
 import type { Blatt, BlattAbschnitt, BlattBild, BlattZeile } from './blatt';
 import { schliessplanAbschnitte } from './schliessplan';
 
@@ -123,7 +123,7 @@ export function vorgangsblattInhalt({ vorgang, firma, bilder = [], jetzt = new D
   });
 
   // Schließplan aus dem Planer (E5-OPUS-03): der Schnappschuss, den der Server beim Eingang gebildet hat.
-  const schliessplan = schnappschussAusPayload(vorgang.payload);
+  const schliessplan = schnappschussAusVorgang(vorgang);
   if (schliessplan) abschnitte.push(...schliessplanAbschnitte(schliessplan));
 
   if (vorgang.payment) {

@@ -88,5 +88,9 @@ describe('Schließplan als eigenes Blatt und im Vorgangsblatt (E5-OPUS-03, G-37)
     expect(titel).toContain('Schließmatrix');
     const ohne = vorgangsblattInhalt({ vorgang: { ...vorgang, payload: { quelle: 'schliessplan-planer' } }, jetzt: JETZT }).abschnitte.map((a) => a.titel);
     expect(ohne).not.toContain('Schließmatrix');
+    // Nur Projekte aus dem Projektkonfigurator mit der Quelle des Planers tragen einen Schnappschuss des Servers.
+    for (const fremd of [{ kind: 'anfrage' as const }, { process: 'gefuehrte-anfrage' as const }, { payload: { schnappschuss: vorgang.payload.schnappschuss } }]) {
+      expect(vorgangsblattInhalt({ vorgang: { ...vorgang, ...fremd }, jetzt: JETZT }).abschnitte.map((a) => a.titel)).not.toContain('Schließmatrix');
+    }
   });
 });
