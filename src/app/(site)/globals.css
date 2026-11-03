@@ -400,6 +400,15 @@ header a[aria-label$='Startseite'] > span {
     hyphenate-limit-chars: auto 4 5;
   }
 
+  /* Hub-Icons in der Tinte der Seite (A-025): `data-area="allgemein"` setzt die Grundfarben,
+     Hover und Fokus der Kachel geben die Bereichsfarbe der Rubrik (aus dem umgebenden Bereich) frei */
+  .group:is(:hover, :focus-visible) .hub-tinte[data-area='allgemein'] {
+    --area: inherit;
+    --area-strong: inherit;
+    --area-soft: inherit;
+    --area-muted: inherit;
+  }
+
   /* Sicherer Abstand über der mobilen Aktionsleiste */
   .pb-safe-nav {
     padding-bottom: calc(5rem + env(safe-area-inset-bottom));

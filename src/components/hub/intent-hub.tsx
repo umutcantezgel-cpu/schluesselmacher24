@@ -12,12 +12,15 @@ import { HubKachel } from './hub-kachel';
 export const HUB_FRAGE = 'Wobei können wir Ihnen helfen?';
 
 /**
- * Spalten ab 768 px: vier, außer die Zahl der Kacheln teilt sich nur durch drei (etwa neun,
- * solange Motorrad, Gehäuse und Beratung noch nicht live sind). So bleibt keine Reihe mit einer
- * einzelnen Kachel stehen. Mobil sind es immer drei (K-013).
+ * Raster ab 768 px (G-02: ab Tablet vier oder mehr je Reihe, A-025). Die erste Kachel wird
+ * Leitkachel über zwei Spalten und zwei Reihen, wenn die Felder (Kacheln plus drei) vier Spalten
+ * genau füllen, etwa neun Kacheln in drei vollen Reihen. Sonst vier Spalten ohne Leitkachel, außer
+ * die Zahl teilt sich nur durch drei. So bleibt keine Reihe mit einer einzelnen Kachel stehen.
+ * Mobil sind es immer drei Spalten ohne Leitfläche (K-013).
  */
-export function hubSpalten(anzahl: number): 3 | 4 {
-  return anzahl % 4 !== 0 && anzahl % 3 === 0 ? 3 : 4;
+export function hubRaster(anzahl: number): { spalten: 3 | 4; leit: boolean } {
+  if (anzahl >= 5 && (anzahl + 3) % 4 === 0) return { spalten: 4, leit: true };
+  return { spalten: anzahl % 4 !== 0 && anzahl % 3 === 0 ? 3 : 4, leit: false };
 }
 
 export interface IntentHubProps {
@@ -37,7 +40,7 @@ export interface IntentHubProps {
  * Kacheln ohne Scrollen im Bild, bei 360 × 780 mindestens neun. Das größte Element ist die Frage.
  */
 export function IntentHub({ rubriken, satz, telefon, buehne }: IntentHubProps) {
-  const spalten = hubSpalten(rubriken.length);
+  const { spalten, leit } = hubRaster(rubriken.length);
   return (
     <section aria-labelledby="hub-frage" className="border-b border-border bg-surface">
       <HubWechselMerker />
@@ -56,15 +59,19 @@ export function IntentHub({ rubriken, satz, telefon, buehne }: IntentHubProps) {
             spalten === 4 ? 'md:grid-cols-4' : 'md:grid-cols-3',
           )}
         >
-          {rubriken.map((rubrik) => (
-            <HubKachel key={rubrik.id} rubrik={rubrik} />
+          {rubriken.map((rubrik, i) => (
+            <HubKachel key={rubrik.id} rubrik={rubrik} leit={leit && i === 0} />
           ))}
         </ul>
 
-        {/* Rechte Spalte ab 1024 px: oben die Bühne, unten Anrufen. Darunter löst sich die Hülle auf
-            (`contents`): Die Bühne steht als Band über der Frage, Anrufen nach dem Raster. */}
-        <div className="contents lg:col-span-5 lg:col-start-8 lg:row-span-3 lg:row-start-1 lg:flex lg:flex-col lg:gap-6">
-          {buehne && <div className="order-first mb-2 lg:order-none lg:mb-0">{buehne}</div>}
+        {/* Rechte Spalte ab 1024 px: die Bühne füllt die Spalte bis zur Zeile Anrufen (A-025).
+            Darunter löst sich die Hülle auf (`contents`): Die Bühne steht als Band über der Frage,
+            Anrufen nach dem Raster. */}
+        <div className="contents lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:flex lg:flex-col lg:gap-6">
+          {buehne && <div className="order-first mb-2 lg:order-none lg:mb-0 lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">{buehne}</div>}
+          {/* Code-Motiv (B-33): bis 1024 px unter dem Raster, ab 1024 px unter der Bühne, damit die
+              linke Spalte kürzer bleibt und Anrufen im ersten Bildschirm steht */}
+          <CodeMotiv className="order-last mt-6 hidden sm:block lg:order-none lg:mt-0" />
           {telefon && (
             <p className="order-last mt-3 flex flex-wrap items-center gap-x-2 text-body text-foreground-muted lg:order-none lg:mt-auto">
               <GlyphTelefon size={20} className="shrink-0 text-primary" />
@@ -83,7 +90,6 @@ export function IntentHub({ rubriken, satz, telefon, buehne }: IntentHubProps) {
           )}
         </div>
 
-        <CodeMotiv className="mt-6 hidden sm:block lg:col-span-7 lg:row-start-3" />
       </div>
     </section>
   );

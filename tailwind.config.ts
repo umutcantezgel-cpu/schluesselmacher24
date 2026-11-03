@@ -252,6 +252,8 @@ const config = {
             areaCssVariables(theme),
           ]),
         ),
+        /* Tinte der Seite für Zeichnungen in fremden Bereichen, etwa die Hub-Icons (A-025) */
+        '[data-area="allgemein"]': areaCssVariables(DEFAULT_AREA_THEME),
       });
     }),
   ],

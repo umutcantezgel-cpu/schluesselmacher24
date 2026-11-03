@@ -40,7 +40,7 @@ export function EingangBuehne({ children, className }: { children: ReactNode; cl
         onUmschalten={umschalten}
         bewegung={bewegung}
         was="Animation"
-        className="absolute bottom-0 right-0"
+        className="absolute bottom-0 right-0 lg:bottom-auto lg:right-3 lg:top-3"
       />
     </div>
   );

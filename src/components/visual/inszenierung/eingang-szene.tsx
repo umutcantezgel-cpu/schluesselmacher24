@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 
-import { HILFSLINIE, KONTUR, LINIE } from '@/components/visual/generators/grafik-basis';
+import { HILFSLINIE, KONTUR, LINIE, Raster } from '@/components/visual/generators/grafik-basis';
 
 /**
  * Eingangsinszenierung der Startseite (Register B-31, G-04, G-07): Ein Autoschlüssel mit
@@ -10,7 +10,9 @@ import { HILFSLINIE, KONTUR, LINIE } from '@/components/visual/generators/grafik
  * läuft nur, solange das Startskript `sm24-start` gesetzt hat. Ohne JavaScript, bei „ruhig“ oder
  * nach dem Zeitlimit von 2 s steht sofort das Endbild. Dekorativ (`aria-hidden`).
  *
- * `band`: mobil, 320 × 56, eine Zeile. `buehne`: ab 1024 px, 480 × 300, mit Türnummern.
+ * `band`: mobil, 320 × 56, eine Zeile. `buehne`: ab 1024 px, 480 × 300, mit Türnummern, auf
+ * Zeichenpapier wie die übrigen Grafiken der Seite; das Raster läuft weit über die `viewBox` hinaus,
+ * damit die Bühne die ganze rechte Spalte füllt (A-025). Die Beschriftung steht im HTML darüber.
  */
 export type EingangVariante = 'band' | 'buehne';
 
@@ -133,8 +135,15 @@ export function EingangSzene({ variante, className }: { variante: EingangVariant
       aria-hidden
       focusable="false"
       data-eingang={variante}
+      preserveAspectRatio="xMidYMid meet"
       className={className}
     >
+      {/* Zeichenpapier: eine dreifach hohe Fläche um die Mitte, damit es auch die hohe Spalte füllt */}
+      {variante === 'buehne' && (
+        <g transform={`translate(0 ${-a.hoehe})`}>
+          <Raster breite={a.breite} hoehe={a.hoehe * 3} />
+        </g>
+      )}
       {/* Plan: Linien und Türen 02 bis 04 blenden gestaffelt ein */}
       {a.tueren.map((z, i) => (
         <g

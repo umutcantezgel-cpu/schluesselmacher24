@@ -10,7 +10,7 @@ import type { Rubrik } from '@/lib/types';
 
 import { CODE_MOTIV_ZIFFERN, CodeMotiv, codeMotivPfad } from './code-motiv';
 import { rubrikUebergang } from './hub-kachel';
-import { HUB_FRAGE, hubSpalten, IntentHub } from './intent-hub';
+import { HUB_FRAGE, hubRaster, IntentHub } from './intent-hub';
 
 const ICON_ORDNER = path.join(process.cwd(), 'src/components/visual/icons');
 const GLYPHEN = new Set(['dokument']);
@@ -44,13 +44,17 @@ describe('Icon-Registry', () => {
   });
 });
 
-describe('Spalten des Hubs', () => {
-  it('wählt drei Spalten, wenn sich die Zahl nur durch drei teilt, sonst vier', () => {
-    expect(hubSpalten(9)).toBe(3);
-    expect(hubSpalten(12)).toBe(4);
-    expect(hubSpalten(11)).toBe(4);
-    expect(hubSpalten(8)).toBe(4);
-    expect(hubSpalten(6)).toBe(3);
+describe('Raster des Hubs (G-02, A-025)', () => {
+  it('setzt eine Leitkachel, wenn sie mit den übrigen Kacheln vier Spalten genau füllt', () => {
+    expect(hubRaster(9)).toEqual({ spalten: 4, leit: true });
+    expect(hubRaster(13)).toEqual({ spalten: 4, leit: true });
+  });
+
+  it('wählt sonst drei Spalten, wenn sich die Zahl nur durch drei teilt, und vier in allen anderen Fällen', () => {
+    expect(hubRaster(12)).toEqual({ spalten: 4, leit: false });
+    expect(hubRaster(11)).toEqual({ spalten: 4, leit: false });
+    expect(hubRaster(8)).toEqual({ spalten: 4, leit: false });
+    expect(hubRaster(6)).toEqual({ spalten: 3, leit: false });
   });
 });
 

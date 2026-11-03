@@ -39,7 +39,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Termin buchen",
-          text: "Der früheste Termin liegt etwa {vorlauf} in der Zukunft, weil wir Ihren Schlüssel vorher beschaffen.",
+          text: "Der früheste Termin liegt etwa {vorlauf} in der Zukunft, weil wir Ihren Schlüssel vorher beschaffen. Zum Termin bringen Sie Ausweisdokument und Fahrzeugschein mit.",
           icon: "termin",
         },
       ],

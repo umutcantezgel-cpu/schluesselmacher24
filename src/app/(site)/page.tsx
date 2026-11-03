@@ -57,13 +57,13 @@ const KOPF_AUSSCHNITT_MOBIL: GrafikAusschnitt = {
 
 /** Vertrauensbasis nach Erg. Leitfaden §1 — nur diese belegte Aussage, ohne Zahlen oder Siegel. */
 const VERTRAUENSBASIS =
-  'Hinter SCHLÜSSELMACHER24 steht die Schlüssel Schmiede in Wetzlar – mit Werkstatt, fachlicher '
+  'Hinter SCHLÜSSELMACHER24 steht die Schlüssel Schmiede in Wetzlar mit Werkstatt, fachlicher '
   + 'Beratung und eigener Fertigung.';
 
 const TRUST_POINTS = [
   {
     title: 'Fachbetrieb mit eigener Werkstatt',
-    body: 'Die Arbeiten erfolgen im eigenen Betrieb mit den dafür vorgesehenen Maschinen — nicht unterwegs im Fahrzeug.',
+    body: 'Wir fertigen im eigenen Betrieb an unseren Maschinen, nicht unterwegs im Fahrzeug.',
   },
   {
     title: 'Erst prüfen, dann buchen',
@@ -75,7 +75,7 @@ const TRUST_POINTS = [
   },
   {
     title: 'Sichere Zahlung',
-    body: 'Die Anzahlung wird vollständig auf den Gesamtpreis angerechnet. Beleg und Vorgang gehören zusammen.',
+    body: 'Die Anzahlung zahlen Sie online. Sie wird vollständig auf den Gesamtpreis angerechnet.',
   },
 ];
 
@@ -111,7 +111,7 @@ export default async function HomePage() {
     { title: 'Fotos hochladen', body: 'Schlüssel aus drei Richtungen und den Fahrzeugschein.' },
     { title: 'Preis oder Prüfung', body: 'Fester Preis, Preisrahmen oder Hinweis auf manuelle Prüfung.' },
     { title: 'Anzahlung', body: `Standard ${deposit}, wird voll angerechnet.` },
-    { title: 'Termin buchen', body: `Frühester Termin nach etwa ${leadDays}\u00a0Tagen Vorlauf.` },
+    { title: 'Termin buchen', body: `Frühester Termin nach etwa ${leadDays}\u00a0Tagen Vorlauf. Zum Termin bringen Sie Ausweisdokument und Fahrzeugschein mit.` },
   ];
 
   const projekte = NAV_AREAS.filter((a) =>
@@ -226,7 +226,7 @@ export default async function HomePage() {
               id="vertrauen-titel"
               nummer="01"
               eyebrow="Warum wir"
-              title="Sachlich, nachvollziehbar, ohne Überraschungen"
+              title="Eigene Werkstatt, Preis vor dem Termin"
               lead={VERTRAUENSBASIS}
             />
             {/* Die echte Werkstatt — entfällt, solange kein Standort gepflegt ist */}
@@ -270,7 +270,7 @@ export default async function HomePage() {
                   nummer="02"
                   eyebrow="Schwerpunkt Autoschlüssel"
                   title="So läuft Ihr Autoschlüssel-Auftrag ab"
-                  lead="Vom Fahrzeug bis zum Termin, mobil bedienbar. Sie geben nur die Daten an, die für Ihr Fahrzeug gebraucht werden."
+                  lead="Vom Fahrzeug bis zum Termin. Sie geben nur an, was für Ihr Fahrzeug zählt."
                   profillinie
                 />
                 {/* Telefon: Knöpfe untereinander, der sekundäre Weg als Textlink; ab 640 px nebeneinander */}
