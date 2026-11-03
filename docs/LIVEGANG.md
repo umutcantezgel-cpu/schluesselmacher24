@@ -68,7 +68,7 @@ Reihenfolge: **1 Postfach → 2 Supabase → 3 Resend → 4 Stripe (Testmodus) �
 3. **Settings → Branding**: Logo und Farben, damit die Bezahlseite nach SCHLÜSSELMACHER24 aussieht.
 4. **Settings → Payment methods**: Karte (inkl. Apple Pay und Google Pay) aktivieren; optional PayPal. Was aktiv ist, muss in `PAYMENT_METHODS` stehen, z. B. `card` oder `card,paypal`. Die Liste gilt für **alle** Zahlungen, also für Bestellungen und für Anzahlungen auf Termine. Deshalb **keine verzögerten Zahlarten wie SEPA-Lastschrift** eintragen: Die Bestätigung kommt erst nach Tagen, ein Termin bleibt aber nur 30 Minuten reserviert.
 5. **Settings → Customer emails → „Successful payments“ aus**: Die Website schickt selbst eine Zahlungsbestätigung, sonst kommt sie doppelt.
-6. **Developers → Webhooks → Add endpoint**: URL `https://schluesselmacher24.de/api/zahlung/stripe`, genau diese 6 Ereignisse:
+6. **Developers → Webhooks → Add endpoint**: Ereignisse aus **dem eigenen Konto** (nicht von verbundenen Konten), API-Version **`2026-08-26.dahlia`** (wie `STRIPE_API_VERSION` in `src/lib/integrations/stripe.ts`), URL `https://schluesselmacher24.de/api/zahlung/stripe`, genau diese 6 Ereignisse:
    - `checkout.session.completed`
    - `checkout.session.async_payment_succeeded`
    - `checkout.session.async_payment_failed`
@@ -132,7 +132,7 @@ Das Projekt `schluesselmacher24` ist bereits mit dem GitHub-Repo verbunden (Team
 
 ## 7. Stripe live schalten
 
-1. In Stripe auf **Live** wechseln, den Webhook-Endpunkt dort erneut anlegen (gleiche URL, gleiche 6 Ereignisse).
+1. In Stripe auf **Live** wechseln, den Webhook-Endpunkt dort erneut anlegen (gleiche URL, gleiche 6 Ereignisse, gleiche API-Version).
 2. In Vercel `PAYMENT_API_KEY` (`sk_live_…`) und `PAYMENT_WEBHOOK_SECRET` (Live-Endpunkt) ersetzen und **neu deployen**.
 3. Eine echte Zahlung mit kleinem Betrag machen und in Stripe erstatten. Der Vorgang zeigt danach „erstattet“.
 

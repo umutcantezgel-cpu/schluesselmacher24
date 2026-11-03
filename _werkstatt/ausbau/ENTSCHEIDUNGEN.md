@@ -104,3 +104,9 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - R9: `einsendeAngebot` sagt nur mit Schalter und eingerichtetem Zugang, dass der Betrieb das Porto zahlt; sonst „das Porto zahlen Sie bei der Post“ mit den Portopreisen als Empfehlung. Test sperrt „kostenlos“, „gratis“, „umsonst“ in allen sichtbaren Texten ohne Label.
 - Offen (MENSCHEN.md MA-08, MA-18): Vertrag und Zugang für DHL Retoure, Entscheidung über Aufpreise und Portoerstattung. Die Schnittstellenfelder folgen der öffentlichen Beschreibung der Retouren-API v1; vor dem Livegang einmal in der Sandbox prüfen (gehört in die Livegang-Prüfung, E9-OPUS-03).
 - Rückversand und Kundenstatus (G-25) baut E6 auf diesem Adapter (Weg „Einschicken“).
+
+## A-017 · Übernahmen aus fremden Branches (2026-11-03 05:20, E3-OPUS-10)
+- Geprüft (LAGEBILD Abschnitt 7, Kundschafter 06): fix/stripe-api-version (09e1d57), seo/json-ld-detailseiten (abc1908), dependabot next-react (fee7aff).
+- Übernommen: (1) feste Stripe-API-Version `2026-08-26.dahlia` mit Dependabot-Sperre für Stripe-Hauptversionen und Hinweis in docs/LIVEGANG.md. Das installierte SDK 22.6.2 nutzt genau diese Version, das Zahlungsverhalten bleibt also gleich (G9); ein Test vergleicht die Konstante mit dem SDK. Grund: Ab 2026-09-30.endive lehnt Stripe `payment_method_types` ab, das der Bestand nutzt. (2) WebPage- und BreadcrumbList-JSON-LD auf den Detailseiten von Sicherheitstechnik und Tür- und Schließtechnik, nur die Seitendateien; die Brotkrumen sind sichtbar (R8).
+- Nicht hier: React 19.3.1 und eslint-config-next 16.4.2 (fee7aff) sind Minor-Updates und gehören zu E3-UPGRADE-01; die Paketänderungen aus abc1908 entfallen (fremd zum Zweck).
+- Umkehrprobe: jede Übernahme ist ein eigener Abschnitt im Commit und einzeln rücknehmbar.

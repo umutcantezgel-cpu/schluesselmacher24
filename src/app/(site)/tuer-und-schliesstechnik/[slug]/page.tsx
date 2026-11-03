@@ -8,6 +8,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { GlyphHaken } from '@/components/visual/glyphen/haken';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
@@ -48,6 +49,10 @@ export default async function ServiceDetailPage(props: PageProps) {
 
   const process = PROCESS_LABELS[page.process];
   const others = all.filter((item) => item.slug !== page.slug).slice(0, 4);
+  const crumbs = [
+    { href: `/${AREA}`, label: AREA_LABEL },
+    { href: `/${AREA}/${page.slug}`, label: page.title },
+  ];
 
   // Interne Links aus der Datenschicht, ergänzt um die Bereichsübersicht — ohne Dopplung.
   const links = [
@@ -57,14 +62,20 @@ export default async function ServiceDetailPage(props: PageProps) {
 
   return (
     <>
+      <JsonLd
+        data={pageGraphSchema({
+          path: `/${AREA}/${page.slug}`,
+          name: page.title,
+          description: page.seo.description,
+          crumbs,
+        })}
+      />
+
       <PageHeader
         eyebrow={AREA_LABEL}
         title={page.title}
         lead={page.summary}
-        crumbs={[
-          { href: `/${AREA}`, label: AREA_LABEL },
-          { href: `/${AREA}/${page.slug}`, label: page.title },
-        ]}
+        crumbs={crumbs}
         actions={
           <ButtonLink href={page.ctaHref} size="lg" pfeil>
             {page.ctaLabel}
