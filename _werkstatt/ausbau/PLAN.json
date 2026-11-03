@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T02:46:39.980Z",
+ "stand": "2026-11-03T03:03:32.649Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -1422,10 +1422,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "73c6fb9",
    "massstab": null,
    "muster": null
   },
@@ -1833,10 +1833,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "a11effb",
    "massstab": "_werkstatt/ausbau/pakete/E3-DATENPFLEGER-03.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },

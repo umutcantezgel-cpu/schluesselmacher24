@@ -145,3 +145,49 @@
 2026-11-03T02:37:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
 2026-11-03T02:37:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
 2026-11-03T02:38:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T02:42:39+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --save-exact pdfkit@0.20.2
+2026-11-03T02:43:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --save-dev --save-exact @types/pdfkit@0.17.7
+2026-11-03T02:49:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-03T02:50:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf src/lib/druckansichten.test.ts
+2026-11-03T02:50:35+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node -e 
+const {build}=require("esbuild");
+2026-11-03T02:50:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf/tmp-titel.test.ts
+2026-11-03T02:51:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf
+2026-11-03T02:51:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf
+2026-11-03T02:51:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env MUSTER_PDF=/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/muster.pdf npx vitest run src/lib/pdf/tmp-muster.test.ts
+2026-11-03T02:51:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --input-type=module -
+2026-11-03T02:51:53+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf/tmp-muster.test.ts
+2026-11-03T02:51:54+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --disable-warning=ExperimentalWarning --input-type=module -
+2026-11-03T02:52:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf
+2026-11-03T02:52:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf/vorgangsblatt.test.ts
+2026-11-03T02:53:40+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf
+2026-11-03T02:54:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf/tmp-debug.test.ts
+2026-11-03T02:54:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf
+2026-11-03T02:54:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf/tmp-muster.test.ts
+2026-11-03T02:55:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit
+2026-11-03T02:56:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node scripts/karte-aufbereiten.mjs
+2026-11-03T02:56:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit
+2026-11-03T02:56:40+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --disable-warning=ExperimentalWarning --input-type=module -
+2026-11-03T02:56:55+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --disable-warning=ExperimentalWarning --input-type=module -
+2026-11-03T02:57:53+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/server/benachrichtigungen.test.ts src/lib/mail src/lib/pdf src/payload/hooks/druckansichten.test.ts
+2026-11-03T02:58:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/payload/hooks/druckansichten.test.ts src/lib/mail/transport-resend.test.ts
+2026-11-03T02:58:22+00:00	json	als=root	hosts=localhost	env-dateien= keine	node -
+2026-11-03T02:58:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf
+2026-11-03T02:59:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --disable-warning=ExperimentalWarning --input-type=module -
+2026-11-03T02:59:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T02:59:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T02:59:49+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --disable-warning=ExperimentalWarning --input-type=module -
+2026-11-03T03:00:03+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T03:00:19+00:00	json	als=root	hosts=localhost	env-dateien= keine	node -
+2026-11-03T03:00:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T03:00:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T03:00:31+00:00	json	als=root	hosts=localhost	env-dateien= keine	node -
+2026-11-03T03:00:55+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --disable-warning=ExperimentalWarning --input-type=module -
+2026-11-03T03:01:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T03:01:54+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T03:02:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --disable-warning=ExperimentalWarning --input-type=module -
+2026-11-03T03:02:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T03:02:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm audit --omit=dev --json
+2026-11-03T03:02:55+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm audit --omit=dev --json --package-lock-only
+2026-11-03T03:03:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node scripts/karte-aufbereiten.mjs
+2026-11-03T03:03:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --disable-warning=ExperimentalWarning --input-type=module -
