@@ -25,12 +25,12 @@ export function pruefeTuerMasse(tuer: PlanTuer, katalog: CylinderCatalog): MassB
   const erlaubt = measureOptions(form);
   const befunde: MassBefund[] = [];
   const bereich = `${form.minMm} bis ${form.maxMm} mm in Schritten von ${form.stepMm} mm`;
-  if (!erlaubt.includes(tuer.a)) befunde.push({ tuerId: tuer.id, art: 'fehler', text: `„${name}“: Maß A ${tuer.a} mm ist nicht wählbar (${bereich}).` });
+  if (!erlaubt.includes(tuer.a)) befunde.push({ tuerId: tuer.id, art: 'fehler', text: `„${name}“: Maß A ${tuer.a} mm ist nicht wählbar. Wählbar sind ${bereich}.` });
   if (form.measures === 'beide') {
     if (tuer.b === undefined) befunde.push({ tuerId: tuer.id, art: 'fehler', text: `„${name}“: Bitte auch Maß B angeben.` });
-    else if (!erlaubt.includes(tuer.b)) befunde.push({ tuerId: tuer.id, art: 'fehler', text: `„${name}“: Maß B ${tuer.b} mm ist nicht wählbar (${bereich}).` });
+    else if (!erlaubt.includes(tuer.b)) befunde.push({ tuerId: tuer.id, art: 'fehler', text: `„${name}“: Maß B ${tuer.b} mm ist nicht wählbar. Wählbar sind ${bereich}.` });
     else if (Math.abs(tuer.a - tuer.b) >= UNTERSCHIED_RUECKFRAGE_MM) {
-      befunde.push({ tuerId: tuer.id, art: 'rueckfrage', text: `„${name}“: A und B unterscheiden sich um ${Math.abs(tuer.a - tuer.b)} mm. Bitte prüfen Sie, ob innen und außen richtig zugeordnet sind.` });
+      befunde.push({ tuerId: tuer.id, art: 'rueckfrage', text: `„${name}“: Maß A und Maß B unterscheiden sich um ${Math.abs(tuer.a - tuer.b)} mm. Bitte prüfen Sie, ob Sie Maß A nach außen und Maß B nach innen gemessen haben.` });
     }
   } else if (tuer.b !== undefined) {
     befunde.push({ tuerId: tuer.id, art: 'fehler', text: `„${name}“: ${form.label} hat nur ein Maß.` });

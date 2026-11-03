@@ -514,7 +514,7 @@ export function PlanSumme({ plan, katalog, extraIds = [] }: { plan: Schliessplan
       {preis.art !== 'preis' && <p className="mt-2 text-small text-foreground-muted">{preis.grund}</p>}
       {preis.art === 'preis' && (
         <p className="mt-2 text-small text-foreground-muted">
-          Alle Schlüssel schließen alle Türen (Sperrschließung). Preis wie im Konfigurator für gleichschließende Zylinder, inklusive{' '}
+          Alle Schlüssel schließen alle Türen. Man nennt das eine Sperrschließung. Preis wie im Konfigurator für gleichschließende Zylinder, inklusive{' '}
           {katalog.includedKeys} Schlüssel.
         </p>
       )}

@@ -555,8 +555,8 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
           <div className="rounded-lg border border-border bg-surface p-4">
             <p className="text-small font-semibold text-foreground">Sperrschließung: ein Schlüssel für alle Türen</p>
             <p className="mt-1 text-small leading-relaxed text-foreground-muted">
-              Anders bei einer Schließanlage: Dort öffnet etwa der Schlüssel des Kindes nur sein Zimmer und die
-              Haustür, der Schlüssel der Eltern alle Türen.
+              Bei einer Schließanlage ist das anders. Dort öffnet der Schlüssel des Kindes etwa nur sein Zimmer und
+              die Haustür, der Schlüssel der Eltern alle Türen.
             </p>
             {/* Privat oder Unternehmen (G-30) */}
             <p className="mt-2 text-small leading-relaxed text-foreground-muted">
@@ -843,7 +843,7 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
 
             <Alert tone="info" title="Alle Schlüssel sind gleichwertig">
               Jeder dieser Schlüssel sperrt jeden Zylinder dieser Bestellung. Eine Unterscheidung
-              nach Personen oder Türen ist damit nicht möglich — dafür planen wir eine Schließanlage.
+              nach Personen oder Türen ist damit nicht möglich. Dafür planen wir eine Schließanlage.
             </Alert>
           </div>
         )}
@@ -1201,8 +1201,8 @@ function PositionCard({
             </div>
 
             <p className="text-small leading-relaxed text-foreground-muted lg:col-span-5">
-            Gemessen wird ab Mitte der Stulpschraube — Maß A nach außen
-            {form.measures === 'beide' ? ', Maß B nach innen' : ''}. Gesamtlänge dieser Position:{' '}
+            Gemessen wird ab der Mitte der Stulpschraube, der langen Schraube in der Türkante. Maß A messen Sie
+            nach außen{form.measures === 'beide' ? ', Maß B nach innen' : ''}. Gesamtlänge dieser Position:{' '}
             <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatMillimeter(item.measureAMm + (item.measureBMm ?? 0))}</span>. Bis{' '}
             <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatMillimeter(form.baseLengthMm)}</span> gilt der Grundpreis, darüber kommen{' '}
             <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatCents(form.lengthSurchargeCents)}</span> je angefangene <span className="whitespace-nowrap font-mono tabular-nums text-foreground">5 mm</span> hinzu.

@@ -63,7 +63,7 @@ const STEPS: FlowStep[] = [
     id: 'tueren',
     short: 'Türen',
     title: 'Welche Türen gehören dazu?',
-    hint: 'Je Tür ein Zylinder. Die Maße A und B messen Sie an der Tür ab der Mitte der Stulpschraube.',
+    hint: 'Je Tür ein Zylinder. Gemessen wird ab der Mitte der Stulpschraube, der langen Schraube in der Türkante. Maß A reicht nach außen, Maß B nach innen.',
   },
   {
     id: 'schluessel',
@@ -81,7 +81,7 @@ const STEPS: FlowStep[] = [
     id: 'abschluss',
     short: 'Abschluss',
     title: 'Bestellen oder Angebot anfragen',
-    hint: 'Eine Sperrschließung bestellen Sie direkt. Für eine Schließanlage mit Ebenen schicken wir Ihnen ein Angebot.',
+    hint: 'Eine Sperrschließung bestellen Sie direkt. Für eine Schließanlage mit Ebenen, also mit Schlüsseln, die nicht alle Türen öffnen, schicken wir Ihnen ein Angebot.',
   },
 ];
 
@@ -451,9 +451,9 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
         <div className="space-y-6">
           <PlanBefunde plan={d.plan} katalog={katalog} />
           <figure className="m-0 rounded-lg border border-border bg-surface p-3 sm:p-4">
-            <ZylinderMassGrafik params={{ beschlag: 'an' }} title="So messen Sie Maß A und B: ab der Mitte der Stulpschraube bis zum Zylinderende" />
+            <ZylinderMassGrafik params={{ beschlag: 'an' }} title="So messen Sie Maß A und Maß B: ab der Mitte der Stulpschraube bis zum Zylinderende" />
             <figcaption className="mt-2 text-small text-foreground-muted">
-              Gemessen wird ab der Mitte der Stulpschraube bis zum Zylinderende, außen A, innen B. Ein Schutzbeschlag zählt mit.
+              Gemessen wird ab der Mitte der Stulpschraube bis zum Zylinderende. Maß A misst man nach außen, Maß B nach innen. Ein Schutzbeschlag zählt mit.
             </figcaption>
           </figure>
           {planExtras.length > 0 && (
