@@ -375,14 +375,18 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
   }
 
   /** Bauform, Maße und Funktion einer Position auf eine neue Bauform umstellen. */
+  /** Neue Bauform: wählbare Maße und eine passende Funktion bleiben stehen (E5-PROBENUTZER-01), sonst Vorbelegung. */
   function mitBauform(item: CylinderLineItem, form: CylinderFormOption): CylinderLineItem {
     const measures = defaultMeasures(form);
+    const werte = measureOptions(form);
+    const behalten = (wert: number | undefined, sonst: number | undefined) => (wert !== undefined && werte.includes(wert) ? wert : sonst);
+    const funktionen = availableFunctions(catalog, form.id);
     return {
       ...item,
       form: form.id,
-      measureAMm: measures.measureAMm,
-      measureBMm: form.measures === 'beide' ? measures.measureBMm : undefined,
-      functionId: availableFunctions(catalog, form.id)[0]?.id,
+      measureAMm: behalten(item.measureAMm, measures.measureAMm) ?? measures.measureAMm,
+      measureBMm: form.measures === 'beide' ? behalten(item.measureBMm, measures.measureBMm) : undefined,
+      functionId: funktionen.some((fn) => fn.id === item.functionId) ? item.functionId : funktionen[0]?.id,
     };
   }
 

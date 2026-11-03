@@ -324,7 +324,7 @@ export function FlowShell<T extends object>({
             )}
           >
             {!flow.canContinue && (vorschlag?.hinweis ?? blockedHint) && (
-              <p className="mb-2 text-center text-small text-foreground-subtle md:text-right">{vorschlag?.hinweis ?? blockedHint}</p>
+              <p className="mb-2 text-center text-small text-foreground-muted md:text-right">{vorschlag?.hinweis ?? blockedHint}</p>
             )}
             <div className="mx-auto flex max-w-shell items-center gap-3 md:mx-0">
               {/* Mobil steht die laufende Summe links, wie in der Leiste des Warenkorbs. */}
@@ -378,11 +378,12 @@ export function FlowShell<T extends object>({
         </div>
 
         {/* Klebende Seite (Raster `seite`, ab 1024 px): Schrittliste senkrecht, darunter der Zusatz.
-            Darunter blendet sie aus, das Band nennt den Schritt. */}
+            Darunter entfällt die Schrittliste (das Band nennt den Schritt), der Zusatz folgt dem Schritt. */}
         {mitSeite && (
-          <div className="hidden lg:sticky lg:top-36 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:block lg:self-start">
-            {schrittliste}
-            {seite && <div className="mt-6">{seite}</div>}
+          <div className={cn('lg:sticky lg:top-36 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:self-start', seite ? 'mt-10 lg:mt-0' : 'hidden lg:block')}>
+            <div className="hidden lg:block">{schrittliste}</div>
+            {/* Unter 1024 px steht der Zusatz nach dem Schritt (E5-PROBENUTZER-01: Link und PDF waren mobil unsichtbar). */}
+            {seite && <div className="lg:mt-6">{seite}</div>}
           </div>
         )}
       </div>
