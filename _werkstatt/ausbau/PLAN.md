@@ -1,14 +1,14 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T13:03:32.832Z
+Stand: 2026-11-03T13:57:13.452Z
 
-Etappe 5/12 · Welle 8 · Pflicht 67/137 · Kür 0/10 · läuft 2 · blockiert 0
+Etappe 6/12 · Welle 1 · Pflicht 70/139 · Kür 0/10 · läuft 2 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
 Tor: Bestand belegt grün (E0-PRUEFER-01), Vorher-Stand Prüfstufe B in Protokollen
 Kriterien: Z-02, Z-20, Z-21
-Geplante Tage: 0.77
+Geplante Tage: 0.78
 
 ### Welle 1
 
@@ -58,7 +58,7 @@ Geplante Tage: 0.77
 
 Tor: jede Aussage mit Quelle, Gegenprüfung bestanden
 Kriterien: Z-17
-Geplante Tage: 0.77
+Geplante Tage: 0.78
 
 ### Welle 1
 
@@ -91,7 +91,7 @@ Geplante Tage: 0.77
 
 Tor: plan.mjs pruefen OK; jeder Befund aus E2-PRUEFER-01 und E2-PRUEFER-02 als Planänderung umgesetzt oder in ENTSCHEIDUNGEN.md begründet verworfen; höchstens zwei Runden
 Kriterien: Z-01
-Geplante Tage: 0.46
+Geplante Tage: 0.47
 
 ### Welle 1
 
@@ -112,7 +112,7 @@ Geplante Tage: 0.46
 
 Tor: Prüfstufe B, Bestand mindestens wie in E0, Datenweiche belegt
 Kriterien: Z-02, Z-06, Z-07, Z-08, Z-09, Z-12, Z-20
-Geplante Tage: 2.32
+Geplante Tage: 2.33
 
 ### Welle 1
 
@@ -169,7 +169,7 @@ Geplante Tage: 2.32
 
 Tor: Prüfstufe B, Jury Start mindestens 8,5 und Weg mindestens 8, Personas ohne Abbruch, Blind- und Dominanzprobe Start
 Kriterien: Z-04, Z-05, Z-11, Z-12, Z-14, Z-15
-Geplante Tage: 1.54
+Geplante Tage: 1.55
 
 ### Welle 1
 
@@ -224,42 +224,44 @@ Geplante Tage: 1.54
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E4-PRUEFER-02 | Prüfung des zweiten Anlaufs: Build beide Modi, ganze Testsuite, Funktionsliste, axe, Hub-Messung, Bildsatz und Referenzbilder der drei Ansichten, Bildfolge B-31 | haiku-5.5 | L | pflicht | 3 | läuft |  |
-| E4-PROBENUTZER-02 | Probelauf zweiter Anlauf: vier Personas mobil und Desktop mit erfundenen Testbildern bis vor die Zahlung, ohne Abbruch | haiku-5.5 | M | pflicht | 3 | läuft |  |
+| E4-PRUEFER-02 | Prüfung des zweiten Anlaufs: Build beide Modi, ganze Testsuite, Funktionsliste, axe, Hub-Messung, Bildsatz und Referenzbilder der drei Ansichten, Bildfolge B-31 | haiku-5.5 | L | pflicht | 3 | committet | 837a643 |
+| E4-PROBENUTZER-02 | Probelauf zweiter Anlauf: vier Personas mobil und Desktop mit erfundenen Testbildern bis vor die Zahlung, ohne Abbruch | haiku-5.5 | M | pflicht | 3 | committet | 8112000 |
 
 ### Welle 9
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E4-JURY-02 | Jury zweiter Anlauf (frischer Opus, ohne Kenntnis des ersten Urteils) | opus-5.5 | L | pflicht | 4 | offen |  |
+| E4-JURY-02 | Jury zweiter Anlauf (frischer Opus, ohne Kenntnis des ersten Urteils) | opus-5.5 | L | pflicht | 4 | committet | 8112000 |
 
 ## E5 · Konfiguratoren Sperrschließung und Schließanlage
 
 Tor: Prüfstufe B, Tests jeder Regel, Probelauf Hausverwaltung
 Kriterien: Z-05, Z-06
-Geplante Tage: 1.54
+Geplante Tage: 1.55
 
 ### Welle 1
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| E5-GRAFIKER-02 | Beispielzeichnungen je Fotoansicht im Autoschlüssel-Fotoschritt (Vorderseite, Rückseite mit Aufdruck, Bart seitlich, Nummer in Nahaufnahme) als SVG nach dem Formsystem | haiku-5.5 | M | pflicht | 3 | läuft |  |
 | E5-OPUS-01 | Schließanlagen-Konfigurator: Zylinder und Schlüssel hinzufügen, Matrix, laufender Gesamtpreis, Liste, Speichern, Kasse oder Projektanfrage | opus-5.5 | L | pflicht | 5 | offen |  |
-| E5-GRAFIKER-01 | Messhilfe-Grafik Maß A und B mit Stulpschraube, Beschlag, Überstand (SVG nach Formsystem) | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E5-GRAFIKER-01 | Messhilfe-Grafik Maß A und B mit Stulpschraube, Beschlag, Überstand (SVG nach Formsystem) | haiku-5.5 | M | pflicht | 3 | läuft |  |
 | E5-PRUEFER-02 | Leistungsdiagnose mobil aus Lighthouse-Spuren: LCP-Element und Zeitanteile, blockierende Ressourcen, JavaScript je Route, Hauptthread beim Seitenaufbau, SEO-Abzug der Unterseiten; Vorschläge mit erwarteter Wirkung | haiku-5.5 | M | pflicht | 3 | committet | b18db2a |
 
 ### Welle 2
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| E5-OPUS-05 | Referenz-Feinschliff nach E4-JURY-02 (letzte Runde je Ansicht und Kategorie): Bühne mit erkennbarem Autoschlüssel und gefüllter Fläche, Kacheltitel ohne Trennung, Nummern nur bei echten Abfolgen, „Warum wir“ im Autoschlüssel-Abschnitt; Assistent mit einem Zähler, „Vorhandene Schlüssel“, kürzerem Kopf mobil und ruhigerem Fotoschritt | opus-5.5 | M | pflicht | 4 | offen |  |
 | E5-OPUS-02 | Sperrschließung auf demselben Kern: Sets 2 bis 10 (mehr auf Anfrage, Bestand bis 30), jeder Zylinder einzeln, Schlüsselzahl | opus-5.5 | L | pflicht | 5 | offen |  |
 | E5-OPUS-03 | Schließplan als PDF und Vorgang mit vollständigem Schnappschuss | opus-5.5 | M | pflicht | 4 | offen |  |
-| E5-OPUS-04 | Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand | opus-5.5 | M | pflicht | 4 | offen |  |
 
 ### Welle 3
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E5-AUTOR-01 | Messhilfe-Text, Plausibilitätshinweise, Laienerklärung Sperrschließung gegen Schließanlage mit Beispiel, Empfehlung Privat oder Unternehmen | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E5-OPUS-04 | Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand | opus-5.5 | M | pflicht | 4 | offen |  |
 
 ### Welle 4
 
@@ -272,7 +274,7 @@ Geplante Tage: 1.54
 
 Tor: Prüfstufe B, Probelauf aller neuen Wege
 Kriterien: Z-05, Z-08, Z-19
-Geplante Tage: 1.54
+Geplante Tage: 1.55
 
 ### Welle 1
 
@@ -321,7 +323,7 @@ Geplante Tage: 1.54
 
 Tor: Prüfstufe B, axe Karte, Stadt-Hubs noindex
 Kriterien: Z-09, Z-10
-Geplante Tage: 1.54
+Geplante Tage: 1.55
 
 ### Welle 1
 
@@ -353,7 +355,7 @@ Geplante Tage: 1.54
 
 Tor: Prüfstufe B, Faktenprüfung, Dominanzprobe Schlüsselseiten
 Kriterien: Z-11, Z-13, Z-16, Z-17, Z-18
-Geplante Tage: 1.54
+Geplante Tage: 1.55
 
 ### Welle 1
 
@@ -437,7 +439,7 @@ Geplante Tage: 1.24
 
 Tor: Vorrat leer oder LAUFZEIT erreicht (Einstellung: bis Pflicht und Kür erfüllt, also Vorrat leer); Prüfstufe B der Kür
 Kriterien: Z-01, Z-11
-Geplante Tage: 1.54
+Geplante Tage: 1.55
 
 ### Welle 1
 
@@ -462,7 +464,7 @@ Geplante Tage: 1.54
 
 Tor: plan.mjs abschluss BEREIT, Endprüfer bestätigt
 Kriterien: Z-01, Z-02, Z-03, Z-11, Z-13, Z-14, Z-15, Z-20, Z-21, Z-22
-Geplante Tage: 0.77
+Geplante Tage: 0.78
 
 ### Welle 1
 
@@ -500,7 +502,7 @@ Geplante Tage: 0.77
 
 ## Kritischer Pfad
 
-E1-FACHKUNDLER-03 → E2-OPUS-01 → E2-OPUS-02 → E2-PRUEFER-01 → E3-OPUS-01 → E3-OPUS-06 → E3-OPUS-07 → E3-OPUS-08 → E3-UPGRADE-01 → E3-PRUEFER-01 → E4-OPUS-01 → E4-OPUS-03 → E4-OPUS-05 → E4-TEXTER-01 → E4-PRUEFER-01 → E4-JURY-01 → E5-OPUS-01 → E5-OPUS-02 → E5-AUTOR-01 → E5-PRUEFER-01 → E6-OPUS-01 → E6-BAUMEISTER-06 → E6-OPUS-04 → E6-PRUEFER-01 → E7-OPUS-01 → E7-OPUS-03 → E7-BAUMEISTER-01 → E7-PRUEFER-01 → E8-OPUS-01 → E8-OPUS-02 → E8-AUTOR-01 → E8-FAKTENPRUEFER-01 → E8-PRUEFER-02 → E9-OPUS-01 → E9-OPUS-03 → E9-PRUEFER-01 → EA-PRUEFER-01 → EA-JURY-01 → EA-OPUS-01 → EA-ENDPRUEFER-01
+E1-FACHKUNDLER-03 → E2-OPUS-01 → E2-OPUS-02 → E2-PRUEFER-01 → E3-OPUS-01 → E3-OPUS-06 → E3-OPUS-07 → E3-OPUS-08 → E3-UPGRADE-01 → E3-PRUEFER-01 → E4-OPUS-01 → E4-OPUS-03 → E4-OPUS-05 → E4-TEXTER-01 → E4-PRUEFER-01 → E4-JURY-01 → E4-OPUS-06 → E4-PRUEFER-02 → E4-JURY-02 → E5-GRAFIKER-02 → E5-OPUS-05 → E5-OPUS-04 → E5-PRUEFER-01 → E6-OPUS-01 → E6-BAUMEISTER-06 → E6-OPUS-04 → E6-PRUEFER-01 → E7-OPUS-01 → E7-OPUS-03 → E7-BAUMEISTER-01 → E7-PRUEFER-01 → E8-OPUS-01 → E8-OPUS-02 → E8-AUTOR-01 → E8-FAKTENPRUEFER-01 → E8-PRUEFER-02 → E9-OPUS-01 → E9-OPUS-03 → E9-PRUEFER-01 → EA-PRUEFER-01 → EA-JURY-01 → EA-OPUS-01 → EA-ENDPRUEFER-01
 
 ## Vorrat
 

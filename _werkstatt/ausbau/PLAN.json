@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T13:03:32.832Z",
+ "stand": "2026-11-03T13:57:13.452Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -13,7 +13,7 @@
     "Z-20",
     "Z-21"
    ],
-   "tage": 0.77
+   "tage": 0.78
   },
   {
    "kennung": "E1",
@@ -24,7 +24,7 @@
    "kriterien": [
     "Z-17"
    ],
-   "tage": 0.77
+   "tage": 0.78
   },
   {
    "kennung": "E2",
@@ -35,7 +35,7 @@
    "kriterien": [
     "Z-01"
    ],
-   "tage": 0.46
+   "tage": 0.47
   },
   {
    "kennung": "E3",
@@ -52,7 +52,7 @@
     "Z-12",
     "Z-20"
    ],
-   "tage": 2.32
+   "tage": 2.33
   },
   {
    "kennung": "E4",
@@ -68,7 +68,7 @@
     "Z-14",
     "Z-15"
    ],
-   "tage": 1.54
+   "tage": 1.55
   },
   {
    "kennung": "E5",
@@ -80,7 +80,7 @@
     "Z-05",
     "Z-06"
    ],
-   "tage": 1.54
+   "tage": 1.55
   },
   {
    "kennung": "E6",
@@ -93,7 +93,7 @@
     "Z-08",
     "Z-19"
    ],
-   "tage": 1.54
+   "tage": 1.55
   },
   {
    "kennung": "E7",
@@ -105,7 +105,7 @@
     "Z-09",
     "Z-10"
    ],
-   "tage": 1.54
+   "tage": 1.55
   },
   {
    "kennung": "E8",
@@ -120,7 +120,7 @@
     "Z-17",
     "Z-18"
    ],
-   "tage": 1.54
+   "tage": 1.55
   },
   {
    "kennung": "E9",
@@ -144,7 +144,7 @@
     "Z-01",
     "Z-11"
    ],
-   "tage": 1.54
+   "tage": 1.55
   },
   {
    "kennung": "EA",
@@ -164,7 +164,7 @@
     "Z-21",
     "Z-22"
    ],
-   "tage": 0.77
+   "tage": 0.78
   }
  ],
  "pakete": [
@@ -2438,10 +2438,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "837a643",
    "massstab": "_werkstatt/ausbau/pakete/E4-PRUEFER-02.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },
@@ -2468,10 +2468,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "8112000",
    "massstab": "_werkstatt/ausbau/pakete/E4-PROBENUTZER-02.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },
@@ -2497,12 +2497,86 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
+   "status": "committet",
+   "grund": null,
+   "versuche": 0,
+   "commit": "8112000",
+   "massstab": null,
+   "muster": null
+  },
+  {
+   "kennung": "E5-OPUS-05",
+   "titel": "Referenz-Feinschliff nach E4-JURY-02 (letzte Runde je Ansicht und Kategorie): Bühne mit erkennbarem Autoschlüssel und gefüllter Fläche, Kacheltitel ohne Trennung, Nummern nur bei echten Abfolgen, „Warum wir“ im Autoschlüssel-Abschnitt; Assistent mit einem Zähler, „Vorhandene Schlüssel“, kürzerem Kopf mobil und ruhigerem Fotoschritt",
+   "etappe": "E5",
+   "welle": 2,
+   "rolle": "Orchestrator",
+   "modell": "opus-5.5",
+   "stufe": 3,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "src/app/(site)/page.tsx",
+    "src/components/hub/",
+    "src/components/visual/inszenierung/",
+    "src/app/(site)/autoschluessel/page.tsx",
+    "src/app/(site)/autoschluessel/anfrage/",
+    "src/components/flow/flow-shell.tsx",
+    "src/components/forms/photo-upload.tsx",
+    "src/components/autoschluessel/optionen.ts"
+   ],
+   "abhaengigkeiten": [
+    "E4-JURY-02",
+    "E5-GRAFIKER-02"
+   ],
+   "anforderungen": [
+    "G-02",
+    "G-04",
+    "G-05",
+    "G-16"
+   ],
+   "kriterien": [
+    "Z-04",
+    "Z-11"
+   ],
+   "art": "pflicht",
+   "wirkung": 4,
    "status": "offen",
    "grund": null,
    "versuche": 0,
    "commit": null,
    "massstab": null,
    "muster": null
+  },
+  {
+   "kennung": "E5-GRAFIKER-02",
+   "titel": "Beispielzeichnungen je Fotoansicht im Autoschlüssel-Fotoschritt (Vorderseite, Rückseite mit Aufdruck, Bart seitlich, Nummer in Nahaufnahme) als SVG nach dem Formsystem",
+   "etappe": "E5",
+   "welle": 1,
+   "rolle": "Grafiker",
+   "modell": "haiku-5.5",
+   "stufe": 2,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "src/components/visual/generators/schluessel.tsx",
+    "src/components/visual/generators/schluessel.test.tsx",
+    "src/components/autoschluessel/optionen.ts"
+   ],
+   "abhaengigkeiten": [
+    "E4-JURY-02"
+   ],
+   "anforderungen": [
+    "G-16"
+   ],
+   "kriterien": [
+    "Z-11"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "läuft",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/E5-GRAFIKER-02.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E5-OPUS-01",
@@ -2628,8 +2702,8 @@
    "stufe": 2,
    "kostenklasse": "M",
    "schreibrechte": [
-    "src/components/visual/generators/messhilfe.tsx",
-    "src/components/visual/generators/messhilfe.test.tsx"
+    "src/components/visual/generators/zylinder-mass.tsx",
+    "src/components/visual/generators/zylinder-mass.test.tsx"
    ],
    "abhaengigkeiten": [
     "E4-JURY-01"
@@ -2644,7 +2718,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "läuft",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -2731,6 +2805,8 @@
     "E5-AUTOR-01",
     "E5-OPUS-03",
     "E5-OPUS-04",
+    "E5-OPUS-05",
+    "E5-GRAFIKER-02",
     "E5-OPUS-01",
     "E5-OPUS-02",
     "E5-GRAFIKER-01",
@@ -2786,7 +2862,7 @@
    "kennung": "E5-OPUS-04",
    "titel": "Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand",
    "etappe": "E5",
-   "welle": 2,
+   "welle": 3,
    "rolle": "Orchestrator",
    "modell": "opus-5.5",
    "stufe": 3,
@@ -2804,7 +2880,8 @@
     "src/fonts/"
    ],
    "abhaengigkeiten": [
-    "E5-PRUEFER-02"
+    "E5-PRUEFER-02",
+    "E5-OPUS-05"
    ],
    "anforderungen": [
     "EL-33",
@@ -5581,13 +5658,13 @@
   }
  ],
  "mengengeruest": {
-  "pakete": 147,
-  "pflicht": 137,
+  "pakete": 149,
+  "pflicht": 139,
   "kuer": 10,
-  "opus": 52,
-  "haiku": 95,
+  "opus": 53,
+  "haiku": 96,
   "kostenklassen": {
-   "M": 92,
+   "M": 94,
    "L": 55
   },
   "anforderungen": 623,
@@ -5600,7 +5677,7 @@
    "L": 6
   },
   "puffer": 0.2,
-  "tage": 15.6
+  "tage": 15.7
  },
  "kritischer_pfad": [
   "E1-FACHKUNDLER-03",
@@ -5619,9 +5696,12 @@
   "E4-TEXTER-01",
   "E4-PRUEFER-01",
   "E4-JURY-01",
-  "E5-OPUS-01",
-  "E5-OPUS-02",
-  "E5-AUTOR-01",
+  "E4-OPUS-06",
+  "E4-PRUEFER-02",
+  "E4-JURY-02",
+  "E5-GRAFIKER-02",
+  "E5-OPUS-05",
+  "E5-OPUS-04",
   "E5-PRUEFER-01",
   "E6-OPUS-01",
   "E6-BAUMEISTER-06",
