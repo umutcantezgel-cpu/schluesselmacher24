@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T02:25:59.961Z",
+ "stand": "2026-11-03T02:39:14.158Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -1380,10 +1380,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "f90d584",
    "massstab": null,
    "muster": null
   },
@@ -1735,10 +1735,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
-   "versuche": 0,
-   "commit": null,
+   "versuche": 1,
+   "commit": "43fcdb9",
    "massstab": "_werkstatt/ausbau/pakete/E3-GRAFIKER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },

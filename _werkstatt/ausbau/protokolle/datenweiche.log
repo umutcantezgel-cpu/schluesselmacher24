@@ -121,3 +121,27 @@
 2026-11-03T02:24:08+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e3/build.mjs
 2026-11-03T02:24:09+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e3/shot.mjs
 2026-11-03T02:24:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/layout.test.ts src/lib/visual
+2026-11-03T02:25:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/visual --reporter=verbose
+2026-11-03T02:25:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/visual/icons src/components/visual/glyphen
+2026-11-03T02:25:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit
+2026-11-03T02:26:49+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e3/zoom.mjs
+2026-11-03T02:33:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/bewegung.test.ts src/components/visual/motion src/components/layout src/components/visual/glyphen src/components/visual/interaktiv src/components/autoschluessel
+2026-11-03T02:33:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T02:33:54+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T02:33:55+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e3/build-runde2.mjs
+2026-11-03T02:33:55+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e3/shot-runde2.mjs
+2026-11-03T02:33:58+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/visual/icons
+2026-11-03T02:34:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/visual/icons/motorradschluessel.tsx src/components/visual/icons/schluesselgehaeuse.tsx src/components/visual/icons/schluesselfinder.tsx
+2026-11-03T02:34:24+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e3/zoom48-runde2.mjs
+2026-11-03T02:34:27+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/bewegung.test.ts
+2026-11-03T02:34:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T02:34:52+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e3/dash/dash-test.mjs
+2026-11-03T02:35:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T02:35:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/visual
+2026-11-03T02:35:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit
+2026-11-03T02:36:35+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/bewegung.test.ts src/components/layout src/components/ui src/components/visual/motion src/components/visual/generators/schliessplan
+2026-11-03T02:36:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T02:37:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T02:37:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T02:37:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T02:38:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
