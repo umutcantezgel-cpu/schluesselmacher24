@@ -1,4 +1,4 @@
-# KERN · SCHLÜSSELMACHER24 · Version 2.3
+# KERN · SCHLÜSSELMACHER24 · Version 2.4
 
 Quelle der Wahrheit für alle Pakete des Ausbaulaufs. Baut auf KERN 1.19 des Gestaltungslaufs auf (docs/gestaltung/KERN.md): Leitidee, Prinzipien, Designsystem, Formsystem und Register gelten weiter und sind hier geschärft; ein zweites System entsteht nie. Änderungen nur durch den Orchestrator, mit Versionsnummer und Grund (Änderungsliste am Ende). „(Annahme)“ = abgeleitet, nicht belegt. Pfade `_werkstatt/…` in übernommenen Abschnitten meinen den Gestaltungslauf (Commit b8e7ea7).
 
@@ -351,6 +351,8 @@ Jede Erklärung ist ein Halbsatz zum Einsetzen beim ersten Auftreten eines Begri
 - **Eine Quelle:** Sammlung `rubriken` mit Spiegel `content/rubriken.json`. Hub, Navigation (G-08), Sitemap und Rubrikseiten lesen nur dort. Felder: kennung, name, laienname, erklaerung, icon, ziel, ablaufschritte, abschlussart (kasse, anfrage, termin-anzahlung, angebot-zahlungslink, beratung), formular, pflichtUploads, berechtigungsnachweis, status (live, spaeter, aus), reihenfolge, navigationsgruppe, imHub, bereich.
 - **Bausteine jedes Wegs:** Ablaufschritte mit Icons („So läuft Ihr Auftrag ab“) · Formular mit sichtbaren Beschriftungen, `autocomplete`, hilfreichen Fehlern · Upload mit Vorschau und Fotohilfe · Berechtigungsnachweis (R13) serverseitig geprüft · Zusammenfassung vor dem Absenden · Bestätigung in einfacher Sprache mit nächstem Schritt · Vorgangsblatt als PDF · Messereignis nur nach Einwilligung.
 - **Laientauglich:** vom Hub bis zur ersten Eingabe höchstens drei Tipps; keine Sackgassen; Anrufen und Rückruf von jeder Rubrik in einem Schritt.
+- **Navigation aus den Rubriken (seit 2.4, E4-OPUS-03, G-08):** `navigationsGruppen(rubriken)` in `src/lib/navigation.ts` bildet die fünf Gruppen Autoschlüssel · Schlüssel nach Code · Sperrschließungen · Schließanlagen · Mehr aus den Rubriken mit Status „live“ (Feld `navigation`), dazu die Spalten des bisherigen Bereichs und unter „Mehr“ Partner werden, Ratgeber und Anleitungen, Service und Termin, Kontakt (Über uns folgt mit E8-AUTOR-02). Das Root-Layout holt Rubriken und Einstellungen auf dem Server und reicht Gruppen, die serverseitig gezeichneten Fach-Icons und das Telefon an `SiteHeader` und `MobileActionBar`. Leiste: ab 1024 px Autoschlüssel, Nach Code, Sperrschließungen, Mehr; ab 1280 px zusätzlich Schließanlagen. Die Aktionsleiste trägt „Anrufen“ (`tel:`), ohne wählbare Nummer „Service“. Der Fuß listet die Leistungen aus den Rubriken und jede Bereichsseite ohne Rubrik. Rückruf als eigener Weg folgt mit E6-BAUMEISTER-03.
+
 
 ## Markierte Annahmen
 - Marke und Zielgruppe sind aus Texten abgeleitet (K-002).
@@ -359,6 +361,7 @@ Jede Erklärung ist ein Halbsatz zum Einsetzen beim ersten Auftreten eines Begri
 - Die Wirkung von tailwind-merge auf eigene Größen wird mit E0-KUNDSCHAFTER-06 belegt.
 
 ## Änderungen
+- **2.4 (2026-11-03, E4-OPUS-03):** K-014 um die Navigation aus den Rubriken ergänzt (Gruppen nach G-08, Leiste je Breite, Anrufen in der Aktionsleiste, Fuß aus den Rubriken).
 - **2.3 (2026-11-03, E4-OPUS-02):** B-31 und B-32 wie umgesetzt (reines CSS ab dem ersten Bild, Startwerte je Teil vollständig, Schleife mit `data-phase`), Band 56 px, Kachel-Icon mobil 32 px; G-07: Fräsbahn-Schlüssel mit Halm 194 × 46 (gut 4 : 1), Einschnitte im Abstand von rund 22 px, Ausschnitt fasst den ganzen Schlüssel.
 - **2.2 (2026-11-03, E4-OPUS-01):** K-013 nach Umsetzung und Messung: Spaltenregel (mobil 3, ab 768 px 4 oder 3), Raster links mit Bühne und Anrufen rechts ab 1024 px, Band mobil höchstens 64 px, Kachelschrift mobil `text-small`, Trennung `.trennung-kachel`, Längenregeln für Laiennamen, Übergangsnamen je Rubrik, Code-Motiv mit `.sm24-ordnen`, Icon-Registry `fach-icon.tsx`. Grund: Mit `text-title-sm` und sechs Spalten passen deutsche Leistungsnamen nicht in zwei Zeilen, und zwölf Kacheln stehen sonst nicht vollständig im ersten Bildschirm.
 - 1.0 · E1 · Erstfassung aus Erkundung, L0 und Plan.

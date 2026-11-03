@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T08:06:47.340Z",
+ "stand": "2026-11-03T08:20:00.949Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -1978,7 +1978,9 @@
     "src/lib/navigation.test.ts",
     "src/components/layout/site-header.tsx",
     "src/components/layout/mobile-action-bar.tsx",
-    "src/components/layout/site-footer.tsx"
+    "src/components/layout/site-footer.tsx",
+    "src/components/layout/site-footer.test.tsx",
+    "src/app/(site)/layout.tsx"
    ],
    "abhaengigkeiten": [
     "E4-OPUS-01"
@@ -2001,10 +2003,10 @@
    ],
    "art": "pflicht",
    "wirkung": 5,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "5434e0a",
    "massstab": null,
    "muster": null
   },

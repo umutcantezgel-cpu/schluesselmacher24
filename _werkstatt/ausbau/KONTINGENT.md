@@ -19,3 +19,4 @@ Fenster bis 2026-11-03 03:10 MEZ · Woche bis 2026-11-07 02:00 MEZ.
 | 2026-11-03 07:27 | 35 % gemessen (rate_limit_event des Wachhund-Laufs 07:22; Schätzer vorher 34,7 %) | 15 % gemessen; Spielraum 80 % auf 18,0 Fenster bis Sa 02:00 = 4,45 %/Fenster, Fensterziel ab 08:10 ≈ 22 % | 0 von 4 | Grenze bis 08:10, danach Halten | dritter Kalibrierpunkt eingetragen |
 | 2026-11-03 08:51 | 4,6 %/Soll 2,9/Fensterziel 22 (Fenster seit 08:10) | ≈16 % (Schätzung seit 07:22: 15 % gemessen) | 0 von 4 | Halten | kontingent.mjs --seit 07:10Z; E4-OPUS-01 kostete rund 4,6 % des Fensters |
 | 2026-11-03 09:06 | 6,8 %/Soll 4,2/Fensterziel 22 | ≈16 % (Schätzung) | 0 von 4 | Halten | kontingent.mjs; E4-OPUS-02 kostete rund 2,2 % |
+| 2026-11-03 09:20 | 9,0 %/Soll 5,1/Fensterziel 22 | ≈16 % (Schätzung) | 0 von 4 | Halten (3,9 Punkte über Soll) | kontingent.mjs; E4-OPUS-03 kostete rund 2,2 % |

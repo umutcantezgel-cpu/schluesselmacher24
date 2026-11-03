@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T08:06:47.340Z
+Stand: 2026-11-03T08:20:00.949Z
 
-Etappe 5/12 · Welle 2 · Pflicht 54/128 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 5/12 · Welle 3 · Pflicht 55/128 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -182,7 +182,7 @@ Geplante Tage: 1.43
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E4-OPUS-02 | Eingangsinszenierung: Autoschlüssel fährt in den Zylinder, Zylinder wird Schließanlage; kürzerer Schlüssel, Dauerschleife mit Pause | opus-5.5 | L | pflicht | 5 | committet | 3362998 |
-| E4-OPUS-03 | Navigation nach G-08 aus den Rubriken (Kopf, Megamenü, Schublade, Fuß), Anrufen und Rückruf in einem Schritt | opus-5.5 | L | pflicht | 5 | offen |  |
+| E4-OPUS-03 | Navigation nach G-08 aus den Rubriken (Kopf, Megamenü, Schublade, Fuß), Anrufen und Rückruf in einem Schritt | opus-5.5 | L | pflicht | 5 | committet | 5434e0a |
 
 ### Welle 3
 
