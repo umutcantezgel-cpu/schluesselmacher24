@@ -135,6 +135,40 @@ describe('submitRecord', () => {
     expect(stored[0]).toMatchObject({ kind: 'partner', area: 'service-und-termin' });
   });
 
+  it('baut Anfragen aus dem Schließplan-Planer auf dem Server neu (E5-OPUS-03)', async () => {
+    const form = defaults.cylinderCatalog().forms[0].id;
+    const plan = {
+      version: 1,
+      tueren: [
+        { id: 't1', bezeichnung: 'Haustür', form, a: 30, b: 35 },
+        { id: 't2', bezeichnung: 'Keller', form, a: 30, b: 30 },
+      ],
+      schluessel: [
+        { id: 's1', bezeichnung: 'Hausverwaltung', anzahl: 2, reserve: 1 },
+        { id: 's2', bezeichnung: 'Mieter', anzahl: 3 },
+      ],
+      berechtigungen: { s1: ['t1', 't2', 'tX'], s2: ['t1'] },
+      masseGeprueft: true,
+    };
+    const basis = { kind: 'projekt' as const, area: 'schliessanlagen' as const, process: 'projektkonfigurator' as const, contact, summary: [], uploads: [] };
+    const ok = await submitRecord({
+      ...basis,
+      payload: { quelle: 'schliessplan-planer', schliessplan: plan, extraIds: ['erfunden'], notiz: '  Bitte vorher anrufen  ', consent: true, schnappschuss: { gefaelscht: true }, betragCents: 1 },
+    });
+    expect(ok.ok).toBe(true);
+    const payload = stored[0].payload;
+    expect(Object.keys(payload).sort()).toEqual(['consent', 'extraIds', 'notiz', 'quelle', 'schliessplan', 'schnappschuss']);
+    expect(payload).toMatchObject({ extraIds: [], notiz: 'Bitte vorher anrufen', consent: true });
+    expect(payload.schnappschuss).toMatchObject({
+      masseGeprueft: true,
+      schluessel: [{ bezeichnung: 'Hausverwaltung', tueren: [1, 2], reserve: 1 }, { bezeichnung: 'Mieter', tueren: [1] }],
+    });
+
+    const leer = await submitRecord({ ...basis, payload: { quelle: 'schliessplan-planer', schliessplan: { version: 1, tueren: [], schluessel: [], berechtigungen: {} } } });
+    expect(leer.ok).toBe(false);
+    expect(stored).toHaveLength(1);
+  });
+
   it('lehnt Bestellungen außerhalb der Kasse ab', async () => {
     const result = await submitRecord({
       kind: 'bestellung',

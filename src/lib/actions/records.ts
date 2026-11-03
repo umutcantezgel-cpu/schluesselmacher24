@@ -1,7 +1,9 @@
 'use server';
 
+import { getCollection } from '@/lib/data';
 import { SCHUTZ_ERNEUERT, type FormularSchutz, type SchutzAntwort } from '@/lib/formular-schutz';
 import { storageStatus } from '@/lib/integrations';
+import { PLANER_QUELLE, planerVorgang } from '@/lib/konfigurator/vorgang';
 import { RECHTSTEXTE_FASSUNG } from '@/lib/rechtliches/texte';
 import { createRecord, verifyCarKeyBooking, type GepruefteAngaben } from '@/lib/server/create-record';
 import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
@@ -190,12 +192,23 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     };
   }
 
+  // Anfrage aus dem Schließplan-Planer (E5-OPUS-03): Der Server prüft den Plan selbst und legt den
+  // Schnappschuss mit den Namen aus dem Katalog in den Vorgang; nichts davon kommt aus dem Browser.
+  let payload = data.payload;
+  if (data.kind === 'projekt' && payload.quelle === PLANER_QUELLE) {
+    const vorgang = planerVorgang(payload, await getCollection('cylinderCatalog'));
+    if (!vorgang.ok) {
+      return { ok: false, notices: [], error: INVALID_INPUT };
+    }
+    payload = vorgang.payload;
+  }
+
   const result = await createRecord({
     kind: data.kind,
     area: data.area,
     process: data.process,
     contact: data.contact,
-    payload: data.payload,
+    payload,
     summary,
     uploads: data.uploads,
     quote,

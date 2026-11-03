@@ -63,21 +63,29 @@ export function passtInLink(plan: Schliessplan): boolean {
 
 const eindeutig = (ids: string[]) => new Set(ids).size === ids.length;
 
+/**
+ * Prüft einen Schließplan aus fremder Quelle (Link, Datensatz aus dem Browser) gegen das Schema:
+ * doppelte Kennungen verwerfen den Plan, Verweise der Matrix auf unbekannte Türen fallen weg, jeder
+ * Schlüssel hat eine Zeile. „Maße geprüft“ übernimmt nur, wer es ausdrücklich verlangt: der Vorgang
+ * aus dem Planer (E5-OPUS-03), nie der Link (G-29).
+ */
+export function planAusDaten(roh: unknown, { masseGeprueft = false }: { masseGeprueft?: boolean } = {}): Schliessplan | null {
+  const ergebnis = schema.safeParse(roh);
+  if (!ergebnis.success) return null;
+  if (!eindeutig(ergebnis.data.tueren.map((t) => t.id)) || !eindeutig(ergebnis.data.schluessel.map((s) => s.id))) return null;
+  const { masseGeprueft: geprueft, ...plan } = ergebnis.data;
+  const tuerIds = new Set(plan.tueren.map((t) => t.id));
+  const berechtigungen: Record<string, string[]> = {};
+  for (const s of plan.schluessel) {
+    berechtigungen[s.id] = [...new Set(plan.berechtigungen[s.id] ?? [])].filter((id) => tuerIds.has(id));
+  }
+  return { ...plan, berechtigungen, ...(masseGeprueft && geprueft === true ? { masseGeprueft: true } : {}) } as Schliessplan;
+}
+
 export function dekodiere(eingabe: string | null | undefined): Schliessplan | null {
   if (!eingabe || eingabe.length > ZWISCHENSTAND_HOECHSTENS || !eingabe.startsWith('1.')) return null;
   try {
-    const roh = JSON.parse(ausBase64url(eingabe.slice(2)));
-    const ergebnis = schema.safeParse(roh);
-    if (!ergebnis.success) return null;
-    if (!eindeutig(ergebnis.data.tueren.map((t) => t.id)) || !eindeutig(ergebnis.data.schluessel.map((s) => s.id))) return null;
-    const { masseGeprueft: _nieUebernehmen, ...plan } = ergebnis.data;
-    void _nieUebernehmen;
-    const tuerIds = new Set(plan.tueren.map((t) => t.id));
-    const berechtigungen: Record<string, string[]> = {};
-    for (const s of plan.schluessel) {
-      berechtigungen[s.id] = (plan.berechtigungen[s.id] ?? []).filter((id) => tuerIds.has(id));
-    }
-    return { ...plan, berechtigungen } as Schliessplan;
+    return planAusDaten(JSON.parse(ausBase64url(eingabe.slice(2))));
   } catch {
     return null;
   }

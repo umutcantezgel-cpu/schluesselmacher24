@@ -12,7 +12,9 @@ import { vorgangOrtText } from '../terminort';
 import type { BusinessRecord, CompanyProfile, RecordStatus, UploadRef } from '../types';
 import { STATUS_LABEL } from '../vorgang-status';
 
+import { schnappschussAusPayload } from '../konfigurator/vorgang';
 import type { Blatt, BlattAbschnitt, BlattBild, BlattZeile } from './blatt';
+import { schliessplanAbschnitte } from './schliessplan';
 
 /** Arten, die als Vorschaubild ins Blatt dürfen (A-015); Fahrzeugschein und Dokument nie. */
 export const VORSCHAU_ARTEN: ReadonlyArray<UploadRef['category']> = ['schluesselfoto', 'objektfoto', 'grundriss'];
@@ -119,6 +121,10 @@ export function vorgangsblattInhalt({ vorgang, firma, bilder = [], jetzt = new D
       zeilen: teil.rows.map((zeile) => ({ name: zeile.label, wert: zeile.value })),
     });
   });
+
+  // Schließplan aus dem Planer (E5-OPUS-03): der Schnappschuss, den der Server beim Eingang gebildet hat.
+  const schliessplan = schnappschussAusPayload(vorgang.payload);
+  if (schliessplan) abschnitte.push(...schliessplanAbschnitte(schliessplan));
 
   if (vorgang.payment) {
     const zahlung = vorgang.payment;

@@ -34,6 +34,7 @@ import {
   type Schliessplan,
   type Vorlage,
 } from '@/lib/konfigurator';
+import { SCHLIESSPLAN_DATEINAME } from '@/lib/pdf/schliessplan';
 import { aktionMelden } from '@/lib/statistik';
 import { useCartStore } from '@/lib/store/cart';
 import type { ContactDetails, CylinderCatalog, SummarySection } from '@/lib/types';
@@ -304,6 +305,13 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
         <p className="text-body text-foreground-muted">
           Danke. Ihr Schließplan ist bei uns angekommen, mit allen Türen, Schlüsseln und der Matrix. Wir prüfen ihn und schicken Ihnen ein Angebot.
         </p>
+        <p className="text-body text-foreground-muted">
+          Bewahren Sie die Vorgangsnummer auf: Unter ihr ist Ihr Schließplan mit allen Türen und Schlüsseln gespeichert, auch für spätere
+          Nachbestellungen.{' '}
+          <Link href="/schliessanlagen#nachbestellen" className="font-semibold text-primary underline-offset-2 hover:underline">
+            So bestellen Sie später nach
+          </Link>
+        </p>
         <ButtonLink href="/schliessanlagen" variant="outline">
           Zurück zu den Schließanlagen
         </ButtonLink>
@@ -319,6 +327,8 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
     abschluss: preis.art === 'preis' ? 'Bitte bestätigen Sie die Maße.' : 'Bitte füllen Sie die Pflichtangaben aus und stimmen Sie der Verarbeitung zu.',
   };
   const setContact = (key: keyof ContactDetails, value: string) => flow.update({ contact: { ...d.contact, [key]: value } });
+  /* Schließplan als PDF über denselben Link wie „Plan als Link speichern“; große Pläne gehen mit der Anfrage. */
+  const pdfHref = d.plan.tueren.length > 0 && passtInLink(d.plan) ? `/schliessanlagen/konfigurator/schliessplan/pdf?plan=${kodiere(d.plan)}` : null;
 
   return (
     <FlowShell
@@ -336,9 +346,16 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
         d.plan.tueren.length > 0 && (
           <div className="space-y-3">
             <PlanSumme plan={d.plan} katalog={katalog} extraIds={d.extraIds} />
-            <Button variant="outline" size="sm" onClick={linkKopieren}>
-              Plan als Link speichern
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button variant="outline" size="sm" onClick={linkKopieren}>
+                Plan als Link speichern
+              </Button>
+              {pdfHref && (
+                <ButtonLink href={pdfHref} download={SCHLIESSPLAN_DATEINAME} prefetch={false} variant="outline" size="sm">
+                  Schließplan als PDF
+                </ButtonLink>
+              )}
+            </div>
             <div role="status" className="text-small text-foreground-muted">
               {linkStatus && 'zuGross' in linkStatus && (
                 <p>Der Plan ist zu groß für einen Link. Er bleibt in diesem Browser gespeichert; zur Weitergabe senden Sie uns die Anfrage.</p>
