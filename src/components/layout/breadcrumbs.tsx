@@ -20,8 +20,9 @@ export function Breadcrumbs({ crumbs, className }: { crumbs: Crumb[]; className?
     <nav aria-label="Brotkrumennavigation" className={cn('min-w-0', className)}>
       <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-small text-foreground-subtle">
         <li>
+          {/* „Startseite“ statt „Start“: Lighthouse wertet „Start“ als nichtssagenden Linktext (E5-PRUEFER-02) */}
           <Link href="/" prefetch={false} className={linkKlasse}>
-            Start
+            Startseite
           </Link>
         </li>
         {crumbs.map((crumb, index) => {
