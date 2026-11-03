@@ -1,0 +1,12 @@
+INPUT|text||Bitte dieses Feld leer lassen|req=false
+INPUT|text||Vorname*
+(Pflichtangabe)|req=false
+INPUT|text||Nachname*
+(Pflichtangabe)|req=false
+INPUT|text||Firma oder Hausverwaltung|req=false
+INPUT|email||E-Mail-Adresse*
+(Pflichtangabe)|req=false
+INPUT|tel||Telefon*
+(Pflichtangabe)|req=false
+TEXTAREA|textarea||Hinweise zum Objekt|req=false
+INPUT|checkbox||Ich habe die Datenschutzerklärung gelesen und bin damit einv|req=false

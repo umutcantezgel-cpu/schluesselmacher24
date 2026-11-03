@@ -1,0 +1,31 @@
+[0.9s] Start /schliessanlagen
+[0.9s] Bild 01-start: Seitenbreite 1440/1440
+[1.6s] Kopfmenü "Sperrschließungen" geöffnet
+[1.6s] Bild 02-menue: Seitenbreite 1440/1440
+[1.7s] Sichtbare Links zur Sperrschließung: 7
+[1.8s] Landingpage Sperrschließung über sichtbaren Link: http://localhost:3000/gleichschliessende-zylinder
+[1.8s] Bild 03-landing: Seitenbreite 1440/1440
+[2.0s] "Zum Konfigurator" -> Schritt 1
+[2.0s] Weitere Tür hinzufügen -> Position 2
+[2.1s] Weitere Tür hinzufügen -> Position 3
+[2.1s] Position 1 (Haustür): Doppelzylinder, Maß A/B 35/35
+[2.2s] Position 2 (Kellertür): Doppelzylinder, Maß A/B 35/35
+[2.2s] Position 3 (Garage): Halbzylinder, nur Maß A 35 (Maß B entfällt)
+[2.2s] Bild 04-zylinder-ausgefuellt: Seitenbreite 1440/1440
+[2.3s] Schritt-1-Hinweise: ["Sperrschließung: ein Schlüssel für alle Türen","Sperrschließung. Für Firmen mit mehreren Bereichen empfehlen wir eine Schließanlage."]
+[2.3s] Weiter -> Schritt 2 Schlüssel
+[2.4s] Anzahl gemeinsamer Schlüssel auf 4 gesetzt
+[2.4s] Bild 05-schluessel: Seitenbreite 1440/1440
+[2.5s] Weiter -> Schritt 3 Optionen (ohne Auswahl)
+[3.4s] Weiter -> Schritt 4 Erweiterung
+[3.7s] Schritt 4: Weiter ist vor Auswahl deaktiviert: true
+[3.8s] "Nein, abgeschlossener Satz" gewählt
+[3.8s] Weiter -> Schritt 5 Zusammenfassung
+[3.8s] Bild 06-zusammenfassung: Seitenbreite 1440/1440
+[3.9s] Schritt 5 Knöpfe gespeichert
+[5.1s] In den Warenkorb geklickt -> http://localhost:3000/warenkorb
+[5.1s] Warenkorb-Text: ["Prüfen Sie Ihre Positionen, wählen Sie die Versandart und gehen Sie anschließend zur Kasse.","Positionen (1)","Gleichschließende Zylinder","3 Zylinder · eine gemeinsame Schließung","35 mm / 35 mm · Standardfunktion · 1 Stück","35 mm / 35 mm · Standardfunktion · 1 Stück","35 mm · Standardfunktion · 1 Stück","Gemeinsame Schlüssel","4 Stück","Stückzahl 1 — eine Zusammenstellung. Weitere Zylinder ändern Sie im Konfigurator.","Position entfernen",": Gleichschließende Zylinder","121,90 €","7,95 €","0,00 €","Weiter einkaufen: Schlüssel nach Code oder Zylinder-Konfigurator.","Summe","121,90 €","7,95 €","Gesamtbetrag","129,85 €","20,73 €","Schlüssel nach Code bestellen","Gleichschließende Zylinder zusammenstellen"]
+[5.1s] Kasse NICHT angeklickt
+[5.1s] Bild 07-nach-warenkorb: Seitenbreite 1440/1440
+[5.2s] POST/Aktionen: []
+[5.2s] blockiert: 0

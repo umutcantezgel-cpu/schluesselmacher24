@@ -942,3 +942,14 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-03T23:05:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
 2026-11-03T23:05:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
 2026-11-03T23:06:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T23:09:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/konfigurator src/app/(site)/gleichschliessende-zylinder src/components/konfigurator src/lib/actions/security.test.ts src/lib/pdf
+2026-11-03T23:09:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/konfigurator
+2026-11-03T23:09:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T23:09:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/recht
+2026-11-03T23:09:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/recht/preis-hinweis.tsx src/lib/konfigurator/zwischenstand.ts
+2026-11-03T23:23:27+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T23:23:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/flow src/components/konfigurator src/app/(site)/gleichschliessende-zylinder/konfigurator
+2026-11-03T23:23:51+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/flow src/components/konfigurator src/app/(site)/gleichschliessende-zylinder src/app/(site)/autoschluessel
+2026-11-03T23:24:04+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T23:24:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T23:26:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
