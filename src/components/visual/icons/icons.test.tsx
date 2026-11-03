@@ -27,6 +27,10 @@ import { IconSchluesselbartFraesen } from './schluesselbart-fraesen';
 import { IconFahrzeugoeffnung } from './fahrzeugoeffnung';
 import { IconSchluesselKopieren } from './schluessel-kopieren';
 import { IconFahrzeugmarke } from './fahrzeugmarke';
+import { IconMotorradschluessel } from './motorradschluessel';
+import { IconSchluesselgehaeuse } from './schluesselgehaeuse';
+import { IconTransponderKopie } from './transponder-kopie';
+import { IconSchluesselfinder } from './schluesselfinder';
 // Zylinder & Tür
 import { IconProfilzylinder } from './profilzylinder';
 import { IconHalbzylinder } from './halbzylinder';
@@ -66,6 +70,9 @@ import { IconStandort } from './standort';
 import { IconNachweis } from './nachweis';
 import { IconRueckgabe } from './rueckgabe';
 import { IconDatenschutz } from './datenschutz';
+import { IconVorOrt } from './vor-ort';
+import { IconKarte } from './karte';
+import { IconVideo } from './video';
 
 /** Dateiname (ohne Endung) → Komponente. Jede Icon-Datei im Ordner muss hier stehen. */
 const ICONS: Record<string, ComponentType<IconProps>> = {
@@ -89,6 +96,10 @@ const ICONS: Record<string, ComponentType<IconProps>> = {
   fahrzeugoeffnung: IconFahrzeugoeffnung,
   'schluessel-kopieren': IconSchluesselKopieren,
   fahrzeugmarke: IconFahrzeugmarke,
+  motorradschluessel: IconMotorradschluessel,
+  schluesselgehaeuse: IconSchluesselgehaeuse,
+  'transponder-kopie': IconTransponderKopie,
+  schluesselfinder: IconSchluesselfinder,
   // Zylinder & Tür
   profilzylinder: IconProfilzylinder,
   halbzylinder: IconHalbzylinder,
@@ -128,6 +139,9 @@ const ICONS: Record<string, ComponentType<IconProps>> = {
   nachweis: IconNachweis,
   rueckgabe: IconRueckgabe,
   datenschutz: IconDatenschutz,
+  'vor-ort': IconVorOrt,
+  karte: IconKarte,
+  video: IconVideo,
 };
 
 const ICON_DIR = path.dirname(fileURLToPath(import.meta.url));
