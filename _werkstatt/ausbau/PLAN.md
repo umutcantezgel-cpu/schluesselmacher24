@@ -1,14 +1,14 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T09:43:43.853Z
+Stand: 2026-11-03T09:45:13+00:00
 
-Etappe 5/12 · Welle 5 · Pflicht 59/128 · Kür 0/10 · läuft 1 · blockiert 0
+Etappe 5/12 · Welle 5 · Pflicht 59/129 · Kür 0/10 · läuft 1 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
 Tor: Bestand belegt grün (E0-PRUEFER-01), Vorher-Stand Prüfstufe B in Protokollen
 Kriterien: Z-02, Z-20, Z-21
-Geplante Tage: 0.71
+Geplante Tage: 0.72
 
 ### Welle 1
 
@@ -58,7 +58,7 @@ Geplante Tage: 0.71
 
 Tor: jede Aussage mit Quelle, Gegenprüfung bestanden
 Kriterien: Z-17
-Geplante Tage: 0.71
+Geplante Tage: 0.72
 
 ### Welle 1
 
@@ -112,7 +112,7 @@ Geplante Tage: 0.43
 
 Tor: Prüfstufe B, Bestand mindestens wie in E0, Datenweiche belegt
 Kriterien: Z-02, Z-06, Z-07, Z-08, Z-09, Z-12, Z-20
-Geplante Tage: 2.14
+Geplante Tage: 2.15
 
 ### Welle 1
 
@@ -203,6 +203,7 @@ Geplante Tage: 1.43
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E4-PROBENUTZER-01 | Probelauf Startseite und Autoschlüssel-Weg mit vier Personas, mobil und Desktop | haiku-5.5 | M | pflicht | 3 | committet | 26a9349 |
 | E4-PRUEFER-01 | Prüfstufe B Etappe E4 mit Bildfolgen der Inszenierung, Framezeiten, Lighthouse, axe | haiku-5.5 | L | pflicht | 3 | läuft |  |
+| E4-DOKUMENTAR-01 | Unterlagen der Blind- und Dominanzprobe der Startseite: vier neutral benannte Startseitentexte, Faktenblatt, Zuordnung getrennt | haiku-5.5 | M | pflicht | 3 | offen |  |
 
 ### Welle 6
 
@@ -438,7 +439,7 @@ Geplante Tage: 1.43
 
 Tor: plan.mjs abschluss BEREIT, Endprüfer bestätigt
 Kriterien: Z-01, Z-02, Z-03, Z-11, Z-13, Z-14, Z-15, Z-20, Z-21, Z-22
-Geplante Tage: 0.71
+Geplante Tage: 0.72
 
 ### Welle 1
 

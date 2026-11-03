@@ -148,7 +148,8 @@ hk('E4-TEXTER-01', 'Texte Hub, Kacheln, Autoschlüssel-Rubrik nach Muster ohne K
 hk('E4-PROBENUTZER-01', 'Probelauf Startseite und Autoschlüssel-Weg mit vier Personas, mobil und Desktop', 5, 'Probenutzer', [W + 'berichte/E4-PROBENUTZER-01.md'], [], ['Z-05'], deps=['E4-TEXTER-01'], status='offen')
 hk('E4-PRUEFER-01', 'Prüfstufe B Etappe E4 mit Bildfolgen der Inszenierung, Framezeiten, Lighthouse, axe', 5, 'Prüfer', [W + 'berichte/E4-PRUEFER-01.md'], [], ['Z-04', 'Z-12', 'Z-14', 'Z-15'], deps=['E4-TEXTER-01'], status='offen', klasse='L')
 P('E4-JURY-01', 'Jury Referenztor (frischer Opus): Studio-Wert Startseite und Autoschlüssel-Weg', 'E4', 6, 'Jury', OPUS, 3, 'L', [W + 'berichte/E4-JURY-01.md'], ['E4-PRUEFER-01', 'E4-PROBENUTZER-01'], [], ['Z-11'], wirkung=4)
-P('E4-BLIND-01', 'Blind- und Dominanzprobe der Startseite (frischer Opus)', 'E4', 6, 'Jury', OPUS, 3, 'L', [W + 'berichte/E4-BLIND-01.md'], ['E4-PRUEFER-01'], [], ['Z-17'], wirkung=3)
+hk('E4-DOKUMENTAR-01', 'Unterlagen der Blind- und Dominanzprobe der Startseite: vier neutral benannte Startseitentexte, Faktenblatt, Zuordnung getrennt', 5, 'Dokumentar', [W + 'erhebung/E4-blind-startseite.md', W + 'daten/E4-blind-schluessel.md', W + 'berichte/E4-DOKUMENTAR-01.md'], [], ['Z-17'], deps=['E4-TEXTER-01'], status='offen')
+P('E4-BLIND-01', 'Blind- und Dominanzprobe der Startseite (frischer Opus)', 'E4', 6, 'Jury', OPUS, 3, 'L', [W + 'berichte/E4-BLIND-01.md'], ['E4-PRUEFER-01', 'E4-DOKUMENTAR-01'], [], ['Z-17'], wirkung=3)
 
 # ---------------------------------------------------------------- E5 Konfiguratoren
 op('E5-OPUS-01', 'Schließanlagen-Konfigurator: Zylinder und Schlüssel hinzufügen, Matrix, laufender Gesamtpreis, Liste, Speichern, Kasse oder Projektanfrage', 'E5', 1,

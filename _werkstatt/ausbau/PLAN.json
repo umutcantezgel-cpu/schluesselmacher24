@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T09:43:43.853Z",
+ "stand": "2026-11-03T09:45:13+00:00",
  "etappen": [
   {
    "kennung": "E0",
@@ -13,7 +13,7 @@
     "Z-20",
     "Z-21"
    ],
-   "tage": 0.71
+   "tage": 0.72
   },
   {
    "kennung": "E1",
@@ -24,7 +24,7 @@
    "kriterien": [
     "Z-17"
    ],
-   "tage": 0.71
+   "tage": 0.72
   },
   {
    "kennung": "E2",
@@ -52,7 +52,7 @@
     "Z-12",
     "Z-20"
    ],
-   "tage": 2.14
+   "tage": 2.15
   },
   {
    "kennung": "E4",
@@ -164,7 +164,7 @@
     "Z-21",
     "Z-22"
    ],
-   "tage": 0.71
+   "tage": 0.72
   }
  ],
  "pakete": [
@@ -2238,6 +2238,36 @@
    "muster": null
   },
   {
+   "kennung": "E4-DOKUMENTAR-01",
+   "titel": "Unterlagen der Blind- und Dominanzprobe der Startseite: vier neutral benannte Startseitentexte, Faktenblatt, Zuordnung getrennt",
+   "etappe": "E4",
+   "welle": 5,
+   "rolle": "Dokumentar",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "_werkstatt/ausbau/erhebung/E4-blind-startseite.md",
+    "_werkstatt/ausbau/daten/E4-blind-schluessel.md",
+    "_werkstatt/ausbau/berichte/E4-DOKUMENTAR-01.md"
+   ],
+   "abhaengigkeiten": [
+    "E4-TEXTER-01"
+   ],
+   "anforderungen": [],
+   "kriterien": [
+    "Z-17"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/E4-DOKUMENTAR-01.md",
+   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+  },
+  {
    "kennung": "E4-BLIND-01",
    "titel": "Blind- und Dominanzprobe der Startseite (frischer Opus)",
    "etappe": "E4",
@@ -2250,7 +2280,8 @@
     "_werkstatt/ausbau/berichte/E4-BLIND-01.md"
    ],
    "abhaengigkeiten": [
-    "E4-PRUEFER-01"
+    "E4-PRUEFER-01",
+    "E4-DOKUMENTAR-01"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -5267,13 +5298,13 @@
   }
  ],
  "mengengeruest": {
-  "pakete": 138,
-  "pflicht": 128,
+  "pakete": 139,
+  "pflicht": 129,
   "kuer": 10,
   "opus": 47,
-  "haiku": 91,
+  "haiku": 92,
   "kostenklassen": {
-   "M": 88,
+   "M": 89,
    "L": 50
   },
   "anforderungen": 623,
@@ -5286,7 +5317,7 @@
    "L": 6
   },
   "puffer": 0.2,
-  "tage": 14.4
+  "tage": 14.5
  },
  "kritischer_pfad": [
   "E1-FACHKUNDLER-03",
