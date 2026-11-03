@@ -1,0 +1,96 @@
+{
+  "skript": "stil",
+  "zeit": "2026-11-03T00:37:04.882Z",
+  "argumente": {
+    "_": [],
+    "routen": "/kasse",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-stil-kasse.json"
+  },
+  "seitenQuelle": "--routen",
+  "ansichten": [
+    {
+      "name": "H13-kasse",
+      "zeilen": 67,
+      "zaehl": {
+        "Gedankenstrich": 10,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 11,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H13-kasse"
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import type { AreaKey, ProcessKind } from '@/lib/types';
+import type { AreaKey, ProcessKind, Rubrik, RubrikNavigation } from '@/lib/types';
 
 /* ==========================================================================
    Navigation
@@ -37,12 +37,12 @@ export const NAV_AREAS: NavArea[] = [
     key: 'autoschluessel',
     label: 'Autoschlüssel',
     href: '/autoschluessel',
-    summary: 'Nachmachen, programmieren, reparieren — mit festem Termin.',
+    summary: 'Nachmachen, programmieren, reparieren, mit festem Termin.',
     process: 'termin-mit-anzahlung',
     highlight: {
       href: '/autoschluessel/anfrage',
       label: 'Termin anfragen',
-      description: 'Fahrzeug auswählen — geführter Ablauf mit Preisangabe, Anzahlung und Termin',
+      description: 'Fahrzeug auswählen: geführter Ablauf mit Preisangabe, Anzahlung und Termin',
     },
     columns: [
       {
@@ -76,7 +76,7 @@ export const NAV_AREAS: NavArea[] = [
     label: 'Schlüssel nach Foto oder Vorlage',
     navLabel: 'Nach Foto',
     href: '/schluessel-nach-vorlage',
-    summary: 'Drei Fotos hochladen — wir prüfen Machbarkeit und Preis.',
+    summary: 'Drei Fotos hochladen, wir prüfen Machbarkeit und Preis.',
     process: 'gefuehrte-anfrage',
     highlight: {
       href: '/schluessel-nach-vorlage/anfrage',
@@ -123,7 +123,7 @@ export const NAV_AREAS: NavArea[] = [
     label: 'Gleichschließende Zylinder (Sperrschließung)',
     navLabel: 'Zylinder',
     href: '/gleichschliessende-zylinder',
-    summary: 'Mehrere Türen, ein Schlüssel — direkt konfigurierbar.',
+    summary: 'Mehrere Türen, ein Schlüssel: direkt konfigurierbar.',
     process: 'direktkauf',
     highlight: {
       href: '/gleichschliessende-zylinder/konfigurator',
@@ -269,8 +269,100 @@ export const NAV_AREAS: NavArea[] = [
   },
 ];
 
-/** Einstiege auf der Startseite — dieselbe Reihenfolge wie die Navigation. */
-export const QUICK_ENTRIES = NAV_AREAS.filter((a) => a.key !== 'service-und-termin');
+/* ==========================================================================
+   Hauptnavigation nach G-08, aus den Rubriken (G-11, E4-OPUS-03)
+   Fünf Gruppen: Autoschlüssel · Schlüssel nach Code · Sperrschließungen ·
+   Schließanlagen · Mehr. Die Einträge jeder Gruppe sind ihre Rubriken mit
+   Status „live“; die Spalten des bisherigen Bereichs hängen darunter, damit
+   kein Link des Bestands verloren geht.
+   ========================================================================== */
+
+export interface NavRubrik {
+  id: string;
+  href: string;
+  label: string;
+  /** Laienerklärung (G-09), etwa „ein Schlüssel für alle Türen“. */
+  zusatz?: string;
+  icon: string;
+  bereich: AreaKey;
+}
+
+export interface NavGruppe {
+  key: RubrikNavigation;
+  /** Bezeichnung nach G-08 (Menükopf, Schublade). */
+  label: string;
+  /** Kurze Bezeichnung für die Leiste am Desktop. */
+  kurz: string;
+  /** Seite der Gruppe; „Mehr“ hat keine. */
+  href?: string;
+  /** Laienerklärung der Gruppe (G-09), aus ihrer ersten Rubrik. */
+  zusatz?: string;
+  zusammenfassung?: string;
+  bereich: AreaKey;
+  rubriken: NavRubrik[];
+  /** Spalten des bisherigen Bereichs (Leistungen, Marken …). */
+  spalten: NavColumn[];
+  /** Nächster Schritt des Bereichs (Menü). */
+  hinweis?: NavLink;
+  /** Weitere Seiten ohne Rubrik (nur „Mehr“). */
+  weitere: NavLink[];
+}
+
+/** Weitere Seiten unter „Mehr“ (G-08). „Über uns“ folgt mit seiner Seite (E8-AUTOR-02). */
+export const MEHR_LINKS: NavLink[] = [
+  { href: '/partner-werden', label: 'Partner werden', description: 'Für Schlüsseldienste und Betriebe aus ganz Deutschland' },
+  { href: '/ratgeber', label: 'Ratgeber und Anleitungen' },
+  { href: '/service-und-termin', label: 'Service und Termin', description: 'Terminstatus, Vor-Ort-Einsatz und Ablauf' },
+  { href: '/service-und-termin/kontakt', label: 'Kontakt' },
+];
+
+const GRUPPEN_AUFBAU: ReadonlyArray<{
+  key: RubrikNavigation;
+  label: string;
+  kurz: string;
+  href?: string;
+  bereich: AreaKey;
+}> = [
+  { key: 'autoschluessel', label: 'Autoschlüssel', kurz: 'Autoschlüssel', href: '/autoschluessel', bereich: 'autoschluessel' },
+  { key: 'code', label: 'Schlüssel nach Code', kurz: 'Nach Code', href: '/schluessel-nach-code', bereich: 'schluessel-nach-code' },
+  {
+    key: 'sperrschliessung',
+    label: 'Sperrschließungen',
+    kurz: 'Sperrschließungen',
+    href: '/gleichschliessende-zylinder',
+    bereich: 'gleichschliessende-zylinder',
+  },
+  { key: 'schliessanlagen', label: 'Schließanlagen', kurz: 'Schließanlagen', href: '/schliessanlagen', bereich: 'schliessanlagen' },
+  { key: 'mehr', label: 'Mehr', kurz: 'Mehr', bereich: 'service-und-termin' },
+];
+
+/**
+ * Die fünf Gruppen der Hauptnavigation mit ihren Rubriken (nur „live“, in der Reihenfolge der
+ * Daten). Rubriken mit Status „später“ oder „aus“ erscheinen nicht: keine Sackgasse.
+ */
+export function navigationsGruppen(rubriken: readonly Rubrik[]): NavGruppe[] {
+  const live = rubriken.filter((r) => r.status === 'live').sort((a, b) => a.reihenfolge - b.reihenfolge);
+  return GRUPPEN_AUFBAU.map((aufbau) => {
+    const eigene = live.filter((r) => r.navigation === aufbau.key);
+    const bereich = aufbau.key === 'mehr' ? undefined : areaByKey(aufbau.bereich);
+    return {
+      ...aufbau,
+      zusatz: aufbau.key === 'mehr' ? undefined : eigene.find((r) => r.ziel === aufbau.href)?.zusatz || undefined,
+      zusammenfassung: bereich?.summary,
+      rubriken: eigene.map((r) => ({
+        id: r.id,
+        href: r.ziel,
+        label: r.name,
+        zusatz: r.zusatz || undefined,
+        icon: r.icon,
+        bereich: r.bereich,
+      })),
+      spalten: bereich?.columns ?? [],
+      hinweis: bereich?.highlight,
+      weitere: aufbau.key === 'mehr' ? MEHR_LINKS : [],
+    };
+  });
+}
 
 /** Widerrufsbutton (Pflicht seit 19.06.2026): führt zum Formular für den Online-Widerruf. */
 export const WIDERRUF_ERKLAEREN_HREF = '/rechtliches/widerruf/erklaeren';
@@ -300,7 +392,7 @@ export const FOOTER_CONTENT: NavLink[] = [
   { href: '/service-und-termin/kontakt', label: 'Kontakt' },
 ];
 
-/** Beschriftung der vier Kundenprozesse — überall gleich benannt. */
+/** Beschriftung der vier Kundenprozesse, überall gleich benannt. */
 export const PROCESS_LABELS: Record<ProcessKind, { label: string; hint: string }> = {
   direktkauf: {
     label: 'Direkt kaufen',

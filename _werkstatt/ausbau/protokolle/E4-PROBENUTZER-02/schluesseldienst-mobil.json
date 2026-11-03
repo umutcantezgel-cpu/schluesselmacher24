@@ -1,0 +1,284 @@
+{
+  "kennung": "schluesseldienst",
+  "geraet": "mobil",
+  "tippsGesamt": 5,
+  "wischer": 0,
+  "tippsBisErsteEingabe": null,
+  "ersteEingabe": null,
+  "ladeMs": 269,
+  "ziele": {
+    "partner-werden": {
+      "erreicht": true,
+      "ms": 3108,
+      "text": "Seite „Partner werden“ mit Bewerbungsbereich erreicht"
+    }
+  },
+  "abbruch": null,
+  "endknopf": "Partnerseite erreicht, Formular „Jetzt bewerben“ nicht ausgefüllt, nicht gesendet",
+  "reaktionen": [
+    472,
+    523,
+    442,
+    365,
+    450
+  ],
+  "maxReaktionMs": 523,
+  "telPruefungen": [
+    {
+      "ort": "01 Startseite",
+      "sichtbar": 5,
+      "imBild": 2,
+      "fixiertImBild": true
+    },
+    {
+      "ort": "02 Schlüsseldienst (Fehlgriff)",
+      "sichtbar": 2,
+      "imBild": 1,
+      "fixiertImBild": true
+    },
+    {
+      "ort": "03 Menü offen",
+      "sichtbar": 6,
+      "imBild": 3,
+      "fixiertImBild": true
+    },
+    {
+      "ort": "04 Menü Mehr",
+      "sichtbar": 6,
+      "imBild": 3,
+      "fixiertImBild": true
+    },
+    {
+      "ort": "05 Partner werden",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    }
+  ],
+  "tippziele": [
+    {
+      "ort": "01 Startseite",
+      "imBild": 17,
+      "unter44": 1
+    },
+    {
+      "ort": "02 Schlüsseldienst (Fehlgriff)",
+      "imBild": 9,
+      "unter44": 3
+    },
+    {
+      "ort": "03 Menü offen",
+      "imBild": 32,
+      "unter44": 1
+    },
+    {
+      "ort": "04 Menü Mehr",
+      "imBild": 40,
+      "unter44": 1
+    },
+    {
+      "ort": "05 Partner werden",
+      "imBild": 6,
+      "unter44": 2
+    }
+  ],
+  "stationen": [
+    {
+      "ms": 305,
+      "ort": "01 Startseite",
+      "url": "/",
+      "fort": "",
+      "ueberschrift": "Wobei können wir Ihnen helfen?",
+      "hoehe": 8254,
+      "fenster": 844,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 5,
+        "imBild": 2,
+        "fixiertImBild": true
+      }
+    },
+    {
+      "ms": 940,
+      "ort": "02 Schlüsseldienst (Fehlgriff)",
+      "url": "/service-und-termin/vor-ort",
+      "fort": "",
+      "ueberschrift": "Was wir direkt bei Ihnen erledigen",
+      "hoehe": 5418,
+      "fenster": 844,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 2,
+        "imBild": 1,
+        "fixiertImBild": true
+      }
+    },
+    {
+      "ms": 2095,
+      "ort": "03 Menü offen",
+      "url": "/",
+      "fort": "",
+      "ueberschrift": "Wobei können wir Ihnen helfen?",
+      "hoehe": 8254,
+      "fenster": 844,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 6,
+        "imBild": 3,
+        "fixiertImBild": true
+      }
+    },
+    {
+      "ms": 2527,
+      "ort": "04 Menü Mehr",
+      "url": "/",
+      "fort": "",
+      "ueberschrift": "Wobei können wir Ihnen helfen?",
+      "hoehe": 8254,
+      "fenster": 844,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 6,
+        "imBild": 3,
+        "fixiertImBild": true
+      }
+    },
+    {
+      "ms": 3057,
+      "ort": "05 Partner werden",
+      "url": "/partner-werden",
+      "fort": "Schritt 1 von 5 · Betrieb",
+      "ueberschrift": "Partner werden",
+      "hoehe": 5812,
+      "fenster": 844,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    }
+  ],
+  "stolpersteine": [],
+  "bilder": [
+    "schluesseldienst-mobil-01-01-startseite.png",
+    "schluesseldienst-mobil-02-02-schluesseldienst-fehlgriff.png",
+    "schluesseldienst-mobil-03-03-menue-offen.png",
+    "schluesseldienst-mobil-04-04-menue-mehr.png",
+    "schluesseldienst-mobil-05-05-partner-werden.png"
+  ],
+  "anfragen": [
+    {
+      "ms": 2759,
+      "methode": "POST",
+      "pfad": "/partner-werden",
+      "host": "localhost:3000",
+      "serveraktion": true,
+      "inhalt": "text/plain;charset=UTF-8",
+      "ziel": ""
+    }
+  ],
+  "formularKlicks": [],
+  "antworten": [
+    {
+      "ms": 2768,
+      "pfad": "/partner-werden",
+      "status": 200,
+      "text": ""
+    }
+  ],
+  "menueOffen": [],
+  "schritte": [
+    {
+      "ms": 305,
+      "typ": "STATION",
+      "text": "01 Startseite · / ·  · Wobei können wir Ihnen helfen?"
+    },
+    {
+      "ms": 368,
+      "typ": "BILD",
+      "text": "schluesseldienst-mobil-01-01-startseite.png"
+    },
+    {
+      "ms": 929,
+      "typ": "TIPP",
+      "text": "„Schlüsseldienst“ → /service-und-termin/vor-ort (472 ms)"
+    },
+    {
+      "ms": 940,
+      "typ": "STATION",
+      "text": "02 Schlüsseldienst (Fehlgriff) · /service-und-termin/vor-ort ·  · Was wir direkt bei Ihnen erledigen"
+    },
+    {
+      "ms": 981,
+      "typ": "BILD",
+      "text": "schluesseldienst-mobil-02-02-schluesseldienst-fehlgriff.png"
+    },
+    {
+      "ms": 1037,
+      "typ": "PRUEFUNG",
+      "text": "„Partner werden“ auf dieser Seite im Sichtfeld: false"
+    },
+    {
+      "ms": 1611,
+      "typ": "TIPP",
+      "text": "„Startseite“ → / (523 ms)"
+    },
+    {
+      "ms": 2087,
+      "typ": "TIPP",
+      "text": "„Menü öffnen“ → / (442 ms)"
+    },
+    {
+      "ms": 2095,
+      "typ": "STATION",
+      "text": "03 Menü offen · / ·  · Wobei können wir Ihnen helfen?"
+    },
+    {
+      "ms": 2126,
+      "typ": "BILD",
+      "text": "schluesseldienst-mobil-03-03-menue-offen.png"
+    },
+    {
+      "ms": 2516,
+      "typ": "TIPP",
+      "text": "„Mehr“ → / (365 ms)"
+    },
+    {
+      "ms": 2527,
+      "typ": "STATION",
+      "text": "04 Menü Mehr · / ·  · Wobei können wir Ihnen helfen?"
+    },
+    {
+      "ms": 2562,
+      "typ": "BILD",
+      "text": "schluesseldienst-mobil-04-04-menue-mehr.png"
+    },
+    {
+      "ms": 3049,
+      "typ": "TIPP",
+      "text": "„Partner werden“ → /partner-werden (450 ms)"
+    },
+    {
+      "ms": 3057,
+      "typ": "STATION",
+      "text": "05 Partner werden · /partner-werden · Schritt 1 von 5 · Betrieb · Partner werden"
+    },
+    {
+      "ms": 3108,
+      "typ": "BILD",
+      "text": "schluesseldienst-mobil-05-05-partner-werden.png"
+    },
+    {
+      "ms": 3108,
+      "typ": "ZIEL",
+      "text": "partner-werden: erreicht · Seite „Partner werden“ mit Bewerbungsbereich erreicht"
+    }
+  ],
+  "konsole": [],
+  "abgebrochen": [],
+  "endMs": 3108,
+  "persona": "schluesseldienst",
+  "basis": null,
+  "url": "http://localhost:3000/partner-werden"
+}

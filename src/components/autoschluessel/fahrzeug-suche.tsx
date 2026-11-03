@@ -1,0 +1,134 @@
+'use client';
+
+import Link from 'next/link';
+import { useEffect, useMemo, useRef, useState } from 'react';
+
+import { scrollVerhalten } from '@/lib/bewegung';
+
+import { Field } from '@/components/forms/field';
+import { TextInput } from '@/components/forms/controls';
+import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { sucheFahrzeuge } from '@/lib/fahrzeuge/suche';
+import type { VehicleMake } from '@/lib/types';
+
+import { anfrageHref, fahrzeugZiel, KATALOG_QUELLE, markenZuordnung, type FahrzeugZiel, type KatalogEintrag } from './fahrzeug-ziel';
+
+const HINWEIS: Record<FahrzeugZiel['art'], string> = {
+  gepflegt: 'Preis und Termin online',
+  marke: 'Termin nach Prüfung Ihrer Angaben',
+  anfrage: 'Anfrage mit Fahrzeugschein und Schlüsselfoto',
+};
+
+/**
+ * Fahrzeugsuche über den ganzen Katalog (G-14): Marke und Modell in einem Feld, Tippfehler
+ * erlaubt, gewichtet nach Bestand. Ein Treffer führt je nach Datenlage in den Weg mit Preis und
+ * Anzahlung, in „Modell nicht aufgeführt“ oder in die Anfrage (G-15). „Nicht dabei“ führt immer
+ * in die Anfrage. Mit `onVorschlag` meldet die Suche den ersten wählbaren Treffer, damit „Weiter“ ihn
+ * übernehmen kann (A-025); er trägt dann die Marke „Vorschlag“. Ohne `mitQuelle` steht die Quelle des
+ * Katalogs nicht hier, sondern beim Aufrufer.
+ */
+export function FahrzeugSuche({
+  katalog,
+  makes,
+  onWahl,
+  onVorschlag,
+  mitQuelle = true,
+}: {
+  katalog: KatalogEintrag[];
+  makes: VehicleMake[];
+  onWahl: (ziel: Exclude<FahrzeugZiel, { art: 'anfrage' }>) => void;
+  onVorschlag?: (ziel: Exclude<FahrzeugZiel, { art: 'anfrage' }> | null) => void;
+  mitQuelle?: boolean;
+}) {
+  const [text, setText] = useState('');
+  const liste = useRef<HTMLUListElement>(null);
+  const marken = useMemo(() => markenZuordnung(katalog, makes), [katalog, makes]);
+  const suche = text.trim();
+  const treffer = useMemo(
+    () => (suche.length >= 2 ? sucheFahrzeuge(suche, katalog, { hoechstens: 6 }).map((t) => fahrzeugZiel(t.reihe, makes, marken)) : []),
+    [suche, katalog, makes, marken],
+  );
+
+  // Erster wählbarer Treffer als Vorschlag für „Weiter“ (A-025)
+  const erster = treffer[0];
+  const vorschlag = erster && erster.art !== 'anfrage' ? erster : null;
+  useEffect(() => {
+    onVorschlag?.(vorschlag);
+  }, [vorschlag, onVorschlag]);
+
+  // Neue Treffer ins Bild holen: Mobil läge die Liste sonst unter der festen Leiste des Ablaufs.
+  const anzahl = treffer.length;
+  useEffect(() => {
+    if (anzahl > 0) liste.current?.scrollIntoView({ block: 'nearest', behavior: scrollVerhalten() });
+  }, [anzahl]);
+
+  return (
+    <div className="space-y-3">
+      <Field label="Marke und Modell" hint="Zum Beispiel „VW Golf“ oder „Opel Corsa“. Tippfehler sind kein Problem.">
+        {({ id, describedBy }) => (
+          <TextInput
+            id={id}
+            aria-describedby={describedBy}
+            type="search"
+            value={text}
+            onChange={(event) => setText(event.target.value)}
+            autoComplete="off"
+            enterKeyHint="search"
+          />
+        )}
+      </Field>
+
+      <p aria-live="polite" className="sr-only">
+        {suche.length >= 2 ? `${treffer.length} Treffer` : ''}
+      </p>
+
+      {treffer.length > 0 && (
+        <ul ref={liste} className="scroll-mb-28 divide-y divide-border rounded-lg border border-border bg-surface" aria-label="Treffer">
+          {treffer.map((ziel, i) => {
+            const vorgeschlagen = Boolean(onVorschlag) && i === 0 && ziel.art !== 'anfrage';
+            const inhalt = (
+              <>
+                <span className="min-w-0">
+                  <span className="flex flex-wrap items-center gap-x-2 text-body font-semibold text-foreground">
+                    {ziel.name}
+                    {vorgeschlagen && (
+                      <span className="rounded-full bg-primary-soft px-2 font-mono text-caption font-semibold text-primary">Vorschlag</span>
+                    )}
+                  </span>
+                  <span className="block text-small text-foreground-muted">{HINWEIS[ziel.art]}</span>
+                </span>
+                <GlyphPfeilRechts size={18} className="shrink-0 text-foreground-muted" />
+              </>
+            );
+            const klasse =
+              'flex min-h-touch-lg w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors duration-quick hover:bg-surface-muted';
+            return (
+              <li key={ziel.name}>
+                {ziel.art === 'anfrage' ? (
+                  <Link href={anfrageHref(ziel.name)} className={klasse}>
+                    {inhalt}
+                  </Link>
+                ) : (
+                  <button type="button" onClick={() => onWahl(ziel)} className={klasse}>
+                    {inhalt}
+                  </button>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+
+      {suche.length >= 2 && treffer.length === 0 && (
+        <p className="scroll-mb-28 text-small text-foreground-muted">
+          Kein Treffer für „{suche}“.{' '}
+          <Link href={anfrageHref(suche)} className="font-semibold text-primary hover:underline">
+            Fahrzeug trotzdem anfragen
+          </Link>
+        </p>
+      )}
+
+      {mitQuelle && <p className="text-caption text-foreground-muted">{KATALOG_QUELLE}</p>}
+    </div>
+  );
+}

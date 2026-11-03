@@ -1,0 +1,79 @@
+{
+  "@hookform/resolvers": {
+    "current": "5.4.0",
+    "wanted": "5.9.2",
+    "latest": "7.0.1",
+    "dependent": "schluesselmacher24",
+    "location": "/home/user/schluesselmacher24/node_modules/@hookform/resolvers"
+  },
+  "@types/node": {
+    "current": "20.19.43",
+    "wanted": "20.19.43",
+    "latest": "26.6.6",
+    "dependent": "schluesselmacher24",
+    "location": "/home/user/schluesselmacher24/node_modules/@types/node"
+  },
+  "@vitest/coverage-v8": {
+    "current": "2.1.9",
+    "wanted": "2.1.9",
+    "latest": "5.1.0",
+    "dependent": "schluesselmacher24",
+    "location": "/home/user/schluesselmacher24/node_modules/@vitest/coverage-v8"
+  },
+  "embedded-postgres": {
+    "current": "17.10.0-beta.17",
+    "wanted": "17.10.0-beta.17",
+    "latest": "18.6.0-beta.19",
+    "dependent": "schluesselmacher24",
+    "location": "/home/user/schluesselmacher24/node_modules/embedded-postgres"
+  },
+  "eslint": {
+    "current": "9.39.5",
+    "wanted": "9.39.5",
+    "latest": "10.14.0",
+    "dependent": "schluesselmacher24",
+    "location": "/home/user/schluesselmacher24/node_modules/eslint"
+  },
+  "framer-motion": {
+    "current": "12.43.0",
+    "wanted": "12.43.0",
+    "latest": "14.9.0",
+    "dependent": "schluesselmacher24",
+    "location": "/home/user/schluesselmacher24/node_modules/framer-motion"
+  },
+  "graphql": {
+    "current": "16.14.2",
+    "wanted": "16.14.2",
+    "latest": "17.0.2",
+    "dependent": "schluesselmacher24",
+    "location": "/home/user/schluesselmacher24/node_modules/graphql"
+  },
+  "stripe": {
+    "current": "22.6.2",
+    "wanted": "22.6.2",
+    "latest": "23.1.0",
+    "dependent": "schluesselmacher24",
+    "location": "/home/user/schluesselmacher24/node_modules/stripe"
+  },
+  "tailwindcss": {
+    "current": "3.4.19",
+    "wanted": "3.4.19",
+    "latest": "4.3.4",
+    "dependent": "schluesselmacher24",
+    "location": "/home/user/schluesselmacher24/node_modules/tailwindcss"
+  },
+  "typescript": {
+    "current": "5.9.3",
+    "wanted": "5.9.3",
+    "latest": "7.0.2",
+    "dependent": "schluesselmacher24",
+    "location": "/home/user/schluesselmacher24/node_modules/typescript"
+  },
+  "vitest": {
+    "current": "2.1.9",
+    "wanted": "2.1.9",
+    "latest": "5.1.0",
+    "dependent": "schluesselmacher24",
+    "location": "/home/user/schluesselmacher24/node_modules/vitest"
+  }
+}

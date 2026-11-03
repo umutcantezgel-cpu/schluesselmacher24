@@ -1,0 +1,72 @@
+{
+ "version": 1,
+ "stand": "2026-11-02T20:00:00.000Z",
+ "eintraege": [
+  {
+   "kennung": "G-01",
+   "quelle": "G",
+   "fundstelle": "Abschnitt 4",
+   "inhalt": "Autoschlüssel werden mit Anzahlung bestellt.",
+   "bestand": "teilweise",
+   "bestand_fundstelle": "src/bestellung.ts",
+   "status": "offen",
+   "pakete": [
+    "E1-A-01"
+   ],
+   "beleg": null,
+   "gruppe": null
+  },
+  {
+   "kennung": "G-21",
+   "quelle": "G",
+   "fundstelle": "Abschnitt 4",
+   "inhalt": "Ein Konfigurator für Schließanlagen.",
+   "bestand": "fehlt",
+   "bestand_fundstelle": null,
+   "status": "später",
+   "pakete": [],
+   "beleg": "KONZEPT.md mit Schalter",
+   "gruppe": null
+  },
+  {
+   "kennung": "L-05",
+   "quelle": "L",
+   "fundstelle": "Leitfaden 2.1, Kapitel 5",
+   "inhalt": "Gerätemaß wird vor dem Versand geprüft.",
+   "bestand": "vorhanden",
+   "bestand_fundstelle": "src/versand.ts",
+   "status": "umgesetzt",
+   "pakete": [
+    "E1-B-02"
+   ],
+   "beleg": null,
+   "gruppe": null
+  },
+  {
+   "kennung": "M-07",
+   "quelle": "M",
+   "fundstelle": "MENSCHEN.md, Punkt 7",
+   "inhalt": "Freigabe der Bildrechte durch den Inhaber.",
+   "bestand": "fehlt",
+   "bestand_fundstelle": null,
+   "status": "menschensache",
+   "pakete": [
+    "E1-C-03"
+   ],
+   "beleg": "MENSCHEN.md#m-07",
+   "gruppe": null
+  },
+  {
+   "kennung": "E-03",
+   "quelle": "E",
+   "fundstelle": "EVALUIERUNG.md, Befund 3",
+   "inhalt": "Ein Filter wird entfernt.",
+   "bestand": null,
+   "bestand_fundstelle": null,
+   "status": "entfällt",
+   "pakete": [],
+   "beleg": "ENTSCHEIDUNGEN.md#a-003 Konflikt mit Rang 2",
+   "gruppe": null
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+  "zeit": "2026-11-03T10:08:52.190Z",
+  "geraet": "390 × 844, CPU 4-fach gedrosselt",
+  "fenster_ms": 2300,
+  "messweg": "Init-Skript ab Seitenbeginn",
+  "laeufe": [
+    {
+      "lauf": 1,
+      "gezeichnet": 95,
+      "verworfen": 37,
+      "anteil": 28.03,
+      "maxAnimationenB31": 6
+    },
+    {
+      "lauf": 2,
+      "gezeichnet": 91,
+      "verworfen": 42,
+      "anteil": 31.58,
+      "maxAnimationenB31": 6
+    },
+    {
+      "lauf": 3,
+      "gezeichnet": 94,
+      "verworfen": 37,
+      "anteil": 28.24,
+      "maxAnimationenB31": 6
+    }
+  ],
+  "median_anteil": 28.24,
+  "schwelle_prozent": 5
+}

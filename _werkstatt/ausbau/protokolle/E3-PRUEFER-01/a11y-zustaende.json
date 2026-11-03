@@ -1,0 +1,45 @@
+{
+  "skript": "a11y-zustaende.mjs",
+  "zeit": "2026-11-03T04:49:09.724Z",
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "zeilen": [
+    {
+      "zustand": "Schublade mobil offen",
+      "pfad": "/",
+      "geraet": "mobil",
+      "oeffnungDurch": "Klick",
+      "offen": true,
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "verstoesse": []
+    },
+    {
+      "zustand": "Megamenü Autoschlüssel offen",
+      "pfad": "/",
+      "geraet": "desktop",
+      "oeffnungDurch": "Überfahren",
+      "offen": true,
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "verstoesse": []
+    }
+  ]
+}

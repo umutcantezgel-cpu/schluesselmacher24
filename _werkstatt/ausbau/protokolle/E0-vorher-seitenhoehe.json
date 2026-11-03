@@ -1,0 +1,636 @@
+{
+  "skript": "E0-PRUEFER-07 vorher seitenhoehe",
+  "zeit": "2026-11-03T00:01:44.296Z",
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "mobil-klein",
+      "hoehe": 7793,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "mobil",
+      "hoehe": 7729,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "tablet",
+      "hoehe": 7012,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "desktop",
+      "hoehe": 5908,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "breit",
+      "hoehe": 6019,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "mobil-klein",
+      "hoehe": 10195,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "mobil",
+      "hoehe": 9901,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "tablet",
+      "hoehe": 8254,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "desktop",
+      "hoehe": 6573,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "breit",
+      "hoehe": 6672,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "mobil-klein",
+      "hoehe": 11091,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "mobil",
+      "hoehe": 10894,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "tablet",
+      "hoehe": 8405,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "desktop",
+      "hoehe": 6989,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "breit",
+      "hoehe": 7103,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "mobil-klein",
+      "hoehe": 3773,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "mobil",
+      "hoehe": 3755,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "tablet",
+      "hoehe": 3038,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "desktop",
+      "hoehe": 2647,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "breit",
+      "hoehe": 2660,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "mobil-klein",
+      "hoehe": 11483,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "mobil",
+      "hoehe": 11179,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "tablet",
+      "hoehe": 8809,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "desktop",
+      "hoehe": 7365,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "breit",
+      "hoehe": 7398,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "mobil-klein",
+      "hoehe": 8445,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "mobil",
+      "hoehe": 8202,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "tablet",
+      "hoehe": 7026,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "desktop",
+      "hoehe": 4573,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "breit",
+      "hoehe": 4592,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "mobil-klein",
+      "hoehe": 10386,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "mobil",
+      "hoehe": 10182,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "tablet",
+      "hoehe": 7830,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "desktop",
+      "hoehe": 6506,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "breit",
+      "hoehe": 6617,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "geraet": "mobil-klein",
+      "hoehe": 5759,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "geraet": "mobil",
+      "hoehe": 5477,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "geraet": "tablet",
+      "hoehe": 4138,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "geraet": "desktop",
+      "hoehe": 3598,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "geraet": "breit",
+      "hoehe": 3684,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "mobil-klein",
+      "hoehe": 5319,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "mobil",
+      "hoehe": 5229,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "tablet",
+      "hoehe": 4017,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "desktop",
+      "hoehe": 3527,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "breit",
+      "hoehe": 3543,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "mobil-klein",
+      "hoehe": 10755,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "mobil",
+      "hoehe": 10572,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "tablet",
+      "hoehe": 10215,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "desktop",
+      "hoehe": 7703,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "breit",
+      "hoehe": 7797,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "mobil-klein",
+      "hoehe": 3931,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "mobil",
+      "hoehe": 3917,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "tablet",
+      "hoehe": 2956,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "desktop",
+      "hoehe": 2726,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "breit",
+      "hoehe": 2745,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "geraet": "mobil-klein",
+      "hoehe": 5538,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "geraet": "mobil",
+      "hoehe": 5366,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "geraet": "tablet",
+      "hoehe": 4169,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "geraet": "desktop",
+      "hoehe": 3809,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "geraet": "breit",
+      "hoehe": 3876,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "geraet": "mobil-klein",
+      "hoehe": 2700,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "geraet": "mobil",
+      "hoehe": 2701,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "geraet": "tablet",
+      "hoehe": 1936,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "geraet": "desktop",
+      "hoehe": 1417,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "geraet": "breit",
+      "hoehe": 1424,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "mobil-klein",
+      "hoehe": 3508,
+      "breite": 360,
+      "fenster": 360,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "mobil",
+      "hoehe": 3504,
+      "breite": 390,
+      "fenster": 390,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "tablet",
+      "hoehe": 2972,
+      "breite": 768,
+      "fenster": 768,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "desktop",
+      "hoehe": 2098,
+      "breite": 1440,
+      "fenster": 1440,
+      "ueberlauf": false
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "breit",
+      "hoehe": 2111,
+      "breite": 1920,
+      "fenster": 1920,
+      "ueberlauf": false
+    }
+  ]
+}

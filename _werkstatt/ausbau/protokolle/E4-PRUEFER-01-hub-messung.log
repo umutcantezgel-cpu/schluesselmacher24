@@ -1,0 +1,6 @@
+mobil-klein 360x780: Kacheln 9, ganz sichtbar 9, oberhalb Leiste 9 (Grenze 724), letzte Unterkante 692, Leiste oben 724, Telefon 748, Zeilen Laiennamen max 3, Überlauf 360/360, Anruf in Leiste 1
+mobil 390x844: Kacheln 9, ganz sichtbar 9, oberhalb Leiste 9 (Grenze 788), letzte Unterkante 655, Leiste oben 788, Telefon 711, Zeilen Laiennamen max 2, Überlauf 390/390, Anruf in Leiste 1
+tablet 768x1024: Kacheln 9, ganz sichtbar 9, oberhalb Leiste 9 (Grenze 1024), letzte Unterkante 638, Leiste aus, Telefon 774, Zeilen Laiennamen max 1, Überlauf 768/768, Anruf in Leiste 1
+desktop 1440x900: Kacheln 9, ganz sichtbar 9, oberhalb Leiste 9 (Grenze 900), letzte Unterkante 780, Leiste aus, Telefon 860, Zeilen Laiennamen max 2, Überlauf 1440/1440, Anruf in Leiste 1
+breit 1920x1080: Kacheln 9, ganz sichtbar 9, oberhalb Leiste 9 (Grenze 1080), letzte Unterkante 780, Leiste aus, Telefon 860, Zeilen Laiennamen max 2, Überlauf 1920/1920, Anruf in Leiste 1
+=== EXIT 0 ===

@@ -1,0 +1,5106 @@
+{
+  "skript": "stil",
+  "zeit": "2026-11-03T00:35:48.041Z",
+  "argumente": {
+    "_": [],
+    "routen": "/schluessel-nach-code/ts-02,/schluessel-nach-code/ts-03,/schluessel-nach-code/ts-04,/schluessel-nach-code/ts-05,/schluessel-nach-code/vh-01,/schluessel-nach-code/vh-02,/schluessel-nach-code/vh-03,/schluessel-nach-code/vh-04,/schluessel-nach-code/vh-05,/schluessel-nach-code/zy-01,/schluessel-nach-code/zy-02,/schluessel-nach-code/zy-03,/schluessel-nach-code/zy-04,/schluessel-nach-code/zy-05,/schluessel-nach-code/zy-06,/schluessel-nach-vorlage,/schluessel-nach-vorlage/anfrage,/service-und-termin,/service-und-termin/anfrage,/service-und-termin/kontakt,/service-und-termin/vor-ort,/sicherheitstechnik,/sicherheitstechnik/alarmtechnik,/sicherheitstechnik/aussenhautsicherung,/sicherheitstechnik/kombinierte-konzepte,/sicherheitstechnik/mechanischer-schutz,/sicherheitstechnik/panik-und-alarmtaster,/sicherheitstechnik/sicherheitscheck,/sicherheitstechnik/smarte-funktionen,/sicherheitstechnik/videoueberwachung,/standorte,/standorte/wetzlar,/tuer-und-schliesstechnik,/tuer-und-schliesstechnik/einsteckschloesser,/tuer-und-schliesstechnik/mehrfachverriegelungen,/tuer-und-schliesstechnik/montage-und-anpassung,/tuer-und-schliesstechnik/panik-und-fluchttuertechnik,/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder,/tuer-und-schliesstechnik/reparatur-und-austausch,/tuer-und-schliesstechnik/schutzbeschlaege,/tuer-und-schliesstechnik/technische-beratung,/tuer-und-schliesstechnik/tuerschliesser,/tuer-und-schliesstechnik/tuerzusatzschloesser",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-stil-g4.json"
+  },
+  "seitenQuelle": "--routen",
+  "ansichten": [
+    {
+      "name": "/schluessel-nach-code/ts-02",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 10,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE IN204 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ltschrank Industrie — Serie TS-02: Preis …",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ts-02"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ts-02"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ts-03",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 3188 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…gs- und Technikraum — Serie TS-03: Preis …",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ts-03"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ts-03"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ts-04",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 11,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE A2140 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…und Wartungsschrank — Serie TS-04: Preis …",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ts-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ts-04"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ts-05",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 10,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 618B – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…kasten Außenbereich — Serie TS-05: Preis …",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ts-05"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ts-05"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/vh-01",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 1120 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…chloss Tor und Zaun — Serie VH-01: Preis …",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/vh-01"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/vh-01"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/vh-02",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE T318 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…Kette und Transport — Serie VH-02: Preis …",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/vh-02"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/vh-02"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/vh-03",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 7734 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…s Automat und Kasse — Serie VH-03: Preis …",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/vh-03"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/vh-03"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/vh-04",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE SS14 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…hloss Schaltschrank — Serie VH-04: Preis …",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/vh-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/vh-04"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/vh-05",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 10,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE 3140W – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…erfest Außenbereich — Serie VH-05: Preis …",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/vh-05"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/vh-05"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/zy-01",
+      "zeilen": 184,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 22,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…EISPIELCODE PZ10488 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ylinder Wohnungstür — Serie ZY-01: Preis …",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Zimmertür mit Chubb-Bart",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/zy-01"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/zy-01"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/zy-02",
+      "zeilen": 185,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 29,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ISPIELCODE PZ104882 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…mit Sicherungskarte — Serie ZY-02: Preis …",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Zimmertür mit Chubb-Bart",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/zy-02"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/zy-02"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/zy-03",
+      "zeilen": 184,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 19,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…BEISPIELCODE 204881 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…, Keller und Garage — Serie ZY-03: Preis …",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Zimmertür mit Chubb-Bart",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/zy-03"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/zy-03"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/zy-04",
+      "zeilen": 184,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 21,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…BEISPIELCODE R20488 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…er und Ovalzylinder — Serie ZY-04: Preis …",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Zimmertür mit Chubb-Bart",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/zy-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/zy-04"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/zy-05",
+      "zeilen": 184,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 6,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ZUM BEISPIELCODE 24 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…rtschloss Zimmertür — Serie ZY-05: Preis …",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Zimmertür mit Chubb-Bart",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/zy-05"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/zy-05"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/zy-06",
+      "zeilen": 184,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 8,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 27,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Zimmertür mit Chubb-Bart",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Zimmertür mit Chubb-Bart",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 12,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…l für Zimmertür mit Chubb-Bart, gefertigt nach dem…",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE C482 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…rtür mit Chubb-Bart — Serie ZY-06: Preis …",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…e für Zimmertür mit Chubb-Bart — Serie ZY-06: Prei…",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…t für Zimmertür mit Chubb-Bart vorgesehen. Wir fer…",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…loss: Zimmertür mit Chubb-Bart",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…e bei Zimmertür mit Chubb-Bart?",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/zy-06"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/zy-06"
+        }
+      ]
+    },
+    {
+      "name": "H07-foto",
+      "zeilen": 159,
+      "zaehl": {
+        "Gedankenstrich": 21,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 2,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 24,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…haben den Schlüssel — wir prüfen anhand I…",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ng nicht ausreichen — und erst, nachdem w…",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…len Sie den Auftrag — danach fertigen wir…",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…zusätzlich deutlich — bei kleinen Prägung…",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…annt gemacht werden — dafür ist in aller …",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…en mit der Freigabe — zusammen mit Ihrer …",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…reffenden Schlüssel — ohne Schlüsselring,…",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ndung des Originals — mit einer eigenen A…",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…e Bestellung direkt — ohne Prüfung der Fo…",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Wo steht der Schlüsselcode?",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…mit einem Schlüssel — direkt zusammenstel…",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Code vorhanden? Direkt bestellen",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…hlüssel einschicken – nur nach Freigabe",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H07-foto"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-vorlage/anfrage",
+      "zeilen": 98,
+      "zaehl": {
+        "Gedankenstrich": 11,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 1,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 13,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Warum drei Aufnahmen?",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…gleichmäßiges Licht — kein direkter Blitz…",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-vorlage/anfrage"
+        }
+      ]
+    },
+    {
+      "name": "/service-und-termin",
+      "zeilen": 192,
+      "zaehl": {
+        "Gedankenstrich": 19,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 1,
+        "Floskel": 0,
+        "Bindestrich": 11,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 31,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…hbarkeit und unsere Vor-Ort-Leistungen.",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Vor-Ort-Leistungen",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Vor-Ort-Leistungen",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…dem Schritt: Unsere Service-Architektur",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…nbedingungen. Unser Service-Ansatz basiert auf einer s…",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…en standardisierte \"Out-of-the-box\"-Lösungen ab, wo ma…",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Die Phasen unserer Service-Implementierung",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…bestehende IT- oder Smart-Home-Umgebungen.",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Nachhaltigkeit und Lebenszyklus-Management",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "1. Welche Leistungen brauchen Sie?",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…ssysteme sicher vor Hacker-Angriffen?",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/service-und-termin"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/service-und-termin"
+        }
+      ]
+    },
+    {
+      "name": "/service-und-termin/anfrage",
+      "zeilen": 93,
+      "zaehl": {
+        "Gedankenstrich": 13,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 15,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…mmieren, reparieren — mit festem Termin.",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…rei Fotos hochladen — wir prüfen Machbark…",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…üren, ein Schlüssel — direkt konfigurierb…",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…status, Kontakt und Vor-Ort-Leistungen.",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/service-und-termin/anfrage"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/service-und-termin/anfrage"
+        }
+      ]
+    },
+    {
+      "name": "/service-und-termin/kontakt",
+      "zeilen": 89,
+      "zaehl": {
+        "Gedankenstrich": 21,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 23,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…e geführten Abläufe — dort erfassen wir g…",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…ren Termin über den Autoschlüssel-Ablauf oder stellen Sie ei…",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/service-und-termin/kontakt"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/service-und-termin/kontakt"
+        }
+      ]
+    },
+    {
+      "name": "/service-und-termin/vor-ort",
+      "zeilen": 135,
+      "zaehl": {
+        "Gedankenstrich": 11,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 3,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 14,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Vor-Ort-Leistungen",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…ternetzugang, falls App-Steuerung gewünscht",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n, was sinnvoll ist — als Grundlage für e…",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/service-und-termin/vor-ort"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/service-und-termin/vor-ort"
+        }
+      ]
+    },
+    {
+      "name": "/sicherheitstechnik",
+      "zeilen": 143,
+      "zaehl": {
+        "Gedankenstrich": 14,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 16,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…lle etwas geschieht — an der Tür, am Fens…",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…er Aufzeichnung und App-Zugriff.",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…rechtmäßige Nutzung — also Zweck, Umfang,…",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "Protokollfunktionen — etwa Zutritts-, Ere…",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…er Bedienprotokolle — erfassen personenbe…",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/sicherheitstechnik"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/sicherheitstechnik"
+        }
+      ]
+    },
+    {
+      "name": "/sicherheitstechnik/alarmtechnik",
+      "zeilen": 92,
+      "zaehl": {
+        "Gedankenstrich": 10,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…er Aufzeichnung und App-Zugriff.",
+          "quelle": "/sicherheitstechnik/alarmtechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/sicherheitstechnik/alarmtechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/alarmtechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/alarmtechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/alarmtechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/alarmtechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/alarmtechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/alarmtechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/alarmtechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/alarmtechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/sicherheitstechnik/alarmtechnik"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/sicherheitstechnik/alarmtechnik"
+        }
+      ]
+    },
+    {
+      "name": "/sicherheitstechnik/aussenhautsicherung",
+      "zeilen": 88,
+      "zaehl": {
+        "Gedankenstrich": 10,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…er Aufzeichnung und App-Zugriff.",
+          "quelle": "/sicherheitstechnik/aussenhautsicherung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/sicherheitstechnik/aussenhautsicherung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/aussenhautsicherung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/aussenhautsicherung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/aussenhautsicherung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/aussenhautsicherung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/aussenhautsicherung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/aussenhautsicherung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/aussenhautsicherung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/aussenhautsicherung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/sicherheitstechnik/aussenhautsicherung"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/sicherheitstechnik/aussenhautsicherung"
+        }
+      ]
+    },
+    {
+      "name": "/sicherheitstechnik/kombinierte-konzepte",
+      "zeilen": 92,
+      "zaehl": {
+        "Gedankenstrich": 10,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…er Aufzeichnung und App-Zugriff.",
+          "quelle": "/sicherheitstechnik/kombinierte-konzepte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/sicherheitstechnik/kombinierte-konzepte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/kombinierte-konzepte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/kombinierte-konzepte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/kombinierte-konzepte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/kombinierte-konzepte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/kombinierte-konzepte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/kombinierte-konzepte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/kombinierte-konzepte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/kombinierte-konzepte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/sicherheitstechnik/kombinierte-konzepte"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/sicherheitstechnik/kombinierte-konzepte"
+        }
+      ]
+    },
+    {
+      "name": "/sicherheitstechnik/mechanischer-schutz",
+      "zeilen": 88,
+      "zaehl": {
+        "Gedankenstrich": 10,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…er Aufzeichnung und App-Zugriff.",
+          "quelle": "/sicherheitstechnik/mechanischer-schutz"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/sicherheitstechnik/mechanischer-schutz"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/mechanischer-schutz"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/mechanischer-schutz"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/mechanischer-schutz"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/mechanischer-schutz"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/mechanischer-schutz"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/mechanischer-schutz"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/mechanischer-schutz"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/mechanischer-schutz"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/sicherheitstechnik/mechanischer-schutz"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/sicherheitstechnik/mechanischer-schutz"
+        }
+      ]
+    },
+    {
+      "name": "/sicherheitstechnik/panik-und-alarmtaster",
+      "zeilen": 92,
+      "zaehl": {
+        "Gedankenstrich": 10,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…er Aufzeichnung und App-Zugriff.",
+          "quelle": "/sicherheitstechnik/panik-und-alarmtaster"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/sicherheitstechnik/panik-und-alarmtaster"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/panik-und-alarmtaster"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/panik-und-alarmtaster"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/panik-und-alarmtaster"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/panik-und-alarmtaster"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/panik-und-alarmtaster"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/panik-und-alarmtaster"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/panik-und-alarmtaster"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/panik-und-alarmtaster"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/sicherheitstechnik/panik-und-alarmtaster"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/sicherheitstechnik/panik-und-alarmtaster"
+        }
+      ]
+    },
+    {
+      "name": "/sicherheitstechnik/sicherheitscheck",
+      "zeilen": 109,
+      "zaehl": {
+        "Gedankenstrich": 10,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 11,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/sicherheitstechnik/sicherheitscheck"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/sicherheitscheck"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/sicherheitscheck"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/sicherheitscheck"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/sicherheitscheck"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/sicherheitscheck"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/sicherheitscheck"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/sicherheitscheck"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/sicherheitscheck"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/sicherheitstechnik/sicherheitscheck"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/sicherheitstechnik/sicherheitscheck"
+        }
+      ]
+    },
+    {
+      "name": "/sicherheitstechnik/smarte-funktionen",
+      "zeilen": 92,
+      "zaehl": {
+        "Gedankenstrich": 10,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…er Aufzeichnung und App-Zugriff.",
+          "quelle": "/sicherheitstechnik/smarte-funktionen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/sicherheitstechnik/smarte-funktionen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/smarte-funktionen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/smarte-funktionen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/smarte-funktionen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/smarte-funktionen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/smarte-funktionen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/smarte-funktionen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/smarte-funktionen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/smarte-funktionen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/sicherheitstechnik/smarte-funktionen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/sicherheitstechnik/smarte-funktionen"
+        }
+      ]
+    },
+    {
+      "name": "/sicherheitstechnik/videoueberwachung",
+      "zeilen": 92,
+      "zaehl": {
+        "Gedankenstrich": 10,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…er Aufzeichnung und App-Zugriff.",
+          "quelle": "/sicherheitstechnik/videoueberwachung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/sicherheitstechnik/videoueberwachung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/videoueberwachung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/videoueberwachung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/videoueberwachung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/videoueberwachung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/videoueberwachung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/videoueberwachung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/videoueberwachung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/sicherheitstechnik/videoueberwachung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/sicherheitstechnik/videoueberwachung"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/sicherheitstechnik/videoueberwachung"
+        }
+      ]
+    },
+    {
+      "name": "/standorte",
+      "zeilen": 66,
+      "zaehl": {
+        "Gedankenstrich": 11,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 1,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 14,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ihre Region ist nicht dabei?",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… allgemeine Anfrage — wir sagen Ihnen, wa…",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…b Deutschlands. Für Vor-Ort-Leistungen außerhalb der aufge…",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/standorte"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/standorte"
+        }
+      ]
+    },
+    {
+      "name": "/standorte/wetzlar",
+      "zeilen": 100,
+      "zaehl": {
+        "Gedankenstrich": 20,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 3,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 23,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Termin",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…mmieren, reparieren — mit festem Termin.",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Termin anfragen",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/standorte/wetzlar"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/standorte/wetzlar"
+        }
+      ]
+    },
+    {
+      "name": "/tuer-und-schliesstechnik",
+      "zeilen": 172,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 2,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 19,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "1. Um welche Tür geht es?",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "2. Welche Maßnahmen kommen infrage?",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Tür-Zusatzschloss",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ngs- und Nebentüren — einschließlich Sond…",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…tage und Nacharbeit — damit die Technik d…",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…er Zulassung führen – mit gravierenden ha…",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…Schlüssel schließen — ohne vollständige A…",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…App statt Schlüssel — auch in Verbindung …",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/tuer-und-schliesstechnik"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/tuer-und-schliesstechnik"
+        }
+      ]
+    },
+    {
+      "name": "/tuer-und-schliesstechnik/einsteckschloesser",
+      "zeilen": 87,
+      "zaehl": {
+        "Gedankenstrich": 11,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ngs- und Nebentüren — einschließlich Sond…",
+          "quelle": "/tuer-und-schliesstechnik/einsteckschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/tuer-und-schliesstechnik/einsteckschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/einsteckschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/einsteckschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/einsteckschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/einsteckschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/einsteckschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/einsteckschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/einsteckschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/einsteckschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/tuer-und-schliesstechnik/einsteckschloesser"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/tuer-und-schliesstechnik/einsteckschloesser"
+        }
+      ]
+    },
+    {
+      "name": "/tuer-und-schliesstechnik/mehrfachverriegelungen",
+      "zeilen": 87,
+      "zaehl": {
+        "Gedankenstrich": 11,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ngs- und Nebentüren — einschließlich Sond…",
+          "quelle": "/tuer-und-schliesstechnik/mehrfachverriegelungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/tuer-und-schliesstechnik/mehrfachverriegelungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/mehrfachverriegelungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/mehrfachverriegelungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/mehrfachverriegelungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/mehrfachverriegelungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/mehrfachverriegelungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/mehrfachverriegelungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/mehrfachverriegelungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/mehrfachverriegelungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/tuer-und-schliesstechnik/mehrfachverriegelungen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/tuer-und-schliesstechnik/mehrfachverriegelungen"
+        }
+      ]
+    },
+    {
+      "name": "/tuer-und-schliesstechnik/montage-und-anpassung",
+      "zeilen": 87,
+      "zaehl": {
+        "Gedankenstrich": 12,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 13,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…tage und Nacharbeit — damit die Technik d…",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ngs- und Nebentüren — einschließlich Sond…",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/tuer-und-schliesstechnik/montage-und-anpassung"
+        }
+      ]
+    },
+    {
+      "name": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik",
+      "zeilen": 87,
+      "zaehl": {
+        "Gedankenstrich": 11,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ngs- und Nebentüren — einschließlich Sond…",
+          "quelle": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/tuer-und-schliesstechnik/panik-und-fluchttuertechnik"
+        }
+      ]
+    },
+    {
+      "name": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder",
+      "zeilen": 92,
+      "zaehl": {
+        "Gedankenstrich": 11,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ngs- und Nebentüren — einschließlich Sond…",
+          "quelle": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder"
+        }
+      ]
+    },
+    {
+      "name": "/tuer-und-schliesstechnik/reparatur-und-austausch",
+      "zeilen": 87,
+      "zaehl": {
+        "Gedankenstrich": 11,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ngs- und Nebentüren — einschließlich Sond…",
+          "quelle": "/tuer-und-schliesstechnik/reparatur-und-austausch"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/tuer-und-schliesstechnik/reparatur-und-austausch"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/reparatur-und-austausch"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/reparatur-und-austausch"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/reparatur-und-austausch"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/reparatur-und-austausch"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/reparatur-und-austausch"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/reparatur-und-austausch"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/reparatur-und-austausch"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/reparatur-und-austausch"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/tuer-und-schliesstechnik/reparatur-und-austausch"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/tuer-und-schliesstechnik/reparatur-und-austausch"
+        }
+      ]
+    },
+    {
+      "name": "/tuer-und-schliesstechnik/schutzbeschlaege",
+      "zeilen": 87,
+      "zaehl": {
+        "Gedankenstrich": 11,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ngs- und Nebentüren — einschließlich Sond…",
+          "quelle": "/tuer-und-schliesstechnik/schutzbeschlaege"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/tuer-und-schliesstechnik/schutzbeschlaege"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/schutzbeschlaege"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/schutzbeschlaege"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/schutzbeschlaege"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/schutzbeschlaege"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/schutzbeschlaege"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/schutzbeschlaege"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/schutzbeschlaege"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/schutzbeschlaege"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/tuer-und-schliesstechnik/schutzbeschlaege"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/tuer-und-schliesstechnik/schutzbeschlaege"
+        }
+      ]
+    },
+    {
+      "name": "/tuer-und-schliesstechnik/technische-beratung",
+      "zeilen": 87,
+      "zaehl": {
+        "Gedankenstrich": 11,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ngs- und Nebentüren — einschließlich Sond…",
+          "quelle": "/tuer-und-schliesstechnik/technische-beratung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/tuer-und-schliesstechnik/technische-beratung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/technische-beratung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/technische-beratung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/technische-beratung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/technische-beratung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/technische-beratung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/technische-beratung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/technische-beratung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/technische-beratung"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/tuer-und-schliesstechnik/technische-beratung"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/tuer-und-schliesstechnik/technische-beratung"
+        }
+      ]
+    },
+    {
+      "name": "/tuer-und-schliesstechnik/tuerschliesser",
+      "zeilen": 87,
+      "zaehl": {
+        "Gedankenstrich": 11,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ngs- und Nebentüren — einschließlich Sond…",
+          "quelle": "/tuer-und-schliesstechnik/tuerschliesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/tuer-und-schliesstechnik/tuerschliesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerschliesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerschliesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerschliesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerschliesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerschliesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerschliesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerschliesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerschliesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerschliesser"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/tuer-und-schliesstechnik/tuerschliesser"
+        }
+      ]
+    },
+    {
+      "name": "/tuer-und-schliesstechnik/tuerzusatzschloesser",
+      "zeilen": 87,
+      "zaehl": {
+        "Gedankenstrich": 11,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 12,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ngs- und Nebentüren — einschließlich Sond…",
+          "quelle": "/tuer-und-schliesstechnik/tuerzusatzschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/tuer-und-schliesstechnik/tuerzusatzschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerzusatzschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerzusatzschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerzusatzschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerzusatzschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerzusatzschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerzusatzschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerzusatzschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerzusatzschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/tuer-und-schliesstechnik/tuerzusatzschloesser"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/tuer-und-schliesstechnik/tuerzusatzschloesser"
+        }
+      ]
+    }
+  ]
+}

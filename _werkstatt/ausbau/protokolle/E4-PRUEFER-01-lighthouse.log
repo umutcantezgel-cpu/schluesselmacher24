@@ -1,0 +1,34 @@
+Lighthouse 12.6.1 · Chrome 153.0.0.0 · Profil mobil · 3 Läufe je Ansicht
+
+| Ansicht | Läufe | Leistung | Barrierefreiheit | Best Practices | SEO | LCP | CLS | TBT | INP | erfüllt |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H01-start | 3/3 | 92 (86–92) | 100 (100–100) | 100 (100–100) | 100 (100–100) | 2943 ms (2805–3297) | 0,000 (0,000–0,000) | 205 ms (162–305) | – | nein (LCP) |
+| H02-autoschluessel | 3/3 | 92 (91–93) | 100 (100–100) | 100 (100–100) | 92 (92–92) | 3010 ms (3005–3032) | 0,000 (0,000–0,000) | 144 ms (95–187) | – | nein (LCP, SEO) |
+| H05-code | 3/3 | 89 (88–93) | 100 (100–100) | 100 (100–100) | 92 (92–92) | 2548 ms (2513–2839) | 0,000 (0,000–0,000) | 286 ms (235–400) | – | nein (Leistung, LCP, SEO) |
+| H09-sperrschliessung-konfigurator | 3/3 | 90 (82–93) | 100 (100–100) | 100 (100–100) | 92 (92–92) | 3606 ms (3177–3831) | 0,000 (0,000–0,000) | 82 ms (75–213) | – | nein (LCP, SEO) |
+| H04-autoschluessel-anfrage | 3/3 | 85 (85–90) | 100 (100–100) | 100 (100–100) | 92 (92–92) | 3829 ms (3321–3875) | 0,000 (0,000–0,000) | 178 ms (149–200) | – | nein (Leistung, LCP, SEO) |
+
+### Befunde auf dem Median und fehlgeschlagene Läufe
+
+- H01-start: LCP 2943 (Grenze höchstens 2500 ms)
+- H02-autoschluessel: LCP 3010 (Grenze höchstens 2500 ms)
+- H02-autoschluessel: SEO 92 (Grenze 100)
+- H05-code: Leistung 89 (Grenze mindestens 90)
+- H05-code: LCP 2548 (Grenze höchstens 2500 ms)
+- H05-code: SEO 92 (Grenze 100)
+- H09-sperrschliessung-konfigurator: LCP 3606 (Grenze höchstens 2500 ms)
+- H09-sperrschliessung-konfigurator: SEO 92 (Grenze 100)
+- H04-autoschluessel-anfrage: Leistung 85 (Grenze mindestens 90)
+- H04-autoschluessel-anfrage: LCP 3829 (Grenze höchstens 2500 ms)
+- H04-autoschluessel-anfrage: SEO 92 (Grenze 100)
+
+### Attrappen-Abbrüche je Ansicht (alle Läufe)
+
+- H01-start: fremd 0, schreibend 0, unbekannte Aktionen 0
+- H02-autoschluessel: fremd 0, schreibend 0, unbekannte Aktionen 0
+- H05-code: fremd 0, schreibend 0, unbekannte Aktionen 0
+- H09-sperrschliessung-konfigurator: fremd 0, schreibend 0, unbekannte Aktionen 0
+- H04-autoschluessel-anfrage: fremd 0, schreibend 0, unbekannte Aktionen 3
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/lighthouse-mobil.json
+=== EXIT 0 ===

@@ -1,0 +1,29 @@
+### Hub-Messung Vorher (Median aus 3 Läufen je Gerät)
+
+| Gerät | Viewport | Kacheln ganz sichtbar | Kacheln angeschnitten | Kacheln gesamt | Überschrift y (px) | Überschrift im ersten Bildschirm | LCP Zeit Median (ms) | LCP Größe Median (px²) | LCP-Element | Seitenüberlauf je Lauf |
+|---|---|---|---|---|---|---|---|---|---|---|
+| mobil-klein | 360 x 780 | 0 | 0 | 8 | 1155 | nein | 192 | 37625 | p mt-6 max-w-measure text-lead text-foreground-muted lg:order-first lg:mt-5 | nein/nein/nein |
+| mobil | 390 x 844 | 0 | 0 | 8 | 1145 | nein | 188 | 34845 | h1 mt-5 text-display font-bold text-foreground | nein/nein/nein |
+| desktop | 1440 x 900 | 0 | 0 | 8 | 971 | nein | 176 | 94248 | h1 mt-5 text-display font-bold text-foreground | nein/nein/nein |
+
+### Einzelläufe
+
+| Gerät | Lauf | Kacheln ganz | angeschnitten | Überschrift y | LCP ms | LCP px² | LCP Breite x Höhe | LCP-Element | Kandidaten | Überschrift |
+|---|---|---|---|---|---|---|---|---|---|---|
+| mobil-klein | 1 | 0 | 0 | 1155 | 192 | 37625 | 320 x 132 | p mt-6 max-w-measure text-lead text-foreground-muted lg:order-first lg | 1 | Wobei können wir helfen? |
+| mobil-klein | 2 | 0 | 0 | 1155 | 196 | 37625 | 320 x 132 | p mt-6 max-w-measure text-lead text-foreground-muted lg:order-first lg | 1 | Wobei können wir helfen? |
+| mobil-klein | 3 | 0 | 0 | 1155 | 176 | 37625 | 320 x 132 | p mt-6 max-w-measure text-lead text-foreground-muted lg:order-first lg | 1 | Wobei können wir helfen? |
+| mobil | 1 | 0 | 0 | 1145 | 188 | 34845 | 350 x 106 | h1 mt-5 text-display font-bold text-foreground | 1 | Wobei können wir helfen? |
+| mobil | 2 | 0 | 0 | 1145 | 168 | 34845 | 350 x 106 | h1 mt-5 text-display font-bold text-foreground | 1 | Wobei können wir helfen? |
+| mobil | 3 | 0 | 0 | 1145 | 192 | 34845 | 350 x 106 | h1 mt-5 text-display font-bold text-foreground | 1 | Wobei können wir helfen? |
+| desktop | 1 | 0 | 0 | 971 | 176 | 94248 | 572 x 187 | h1 mt-5 text-display font-bold text-foreground | 1 | Wobei können wir helfen? |
+| desktop | 2 | 0 | 0 | 971 | 176 | 94248 | 572 x 187 | h1 mt-5 text-display font-bold text-foreground | 1 | Wobei können wir helfen? |
+| desktop | 3 | 0 | 0 | 971 | 228 | 94248 | 572 x 187 | h1 mt-5 text-display font-bold text-foreground | 1 | Wobei können wir helfen? |
+
+### Kachelnamen (erster Lauf je Gerät)
+
+- mobil-klein: 01AutoschlüsselNachmachen, programmieren · 02Schlüssel nach Foto oder VorlageDrei F · 03Schlüssel nach CodeCode eingeben und d · 04Gleichschließende Zylinder (Sperrschli · 05SchließanlagenVon der Gleichschließung · 06Elektronische ZutrittslösungenKarte, T · 07Tür- und SchließtechnikZylinder, Schlö · 08SicherheitstechnikEinbruchschutz, Über
+- mobil: 01AutoschlüsselNachmachen, programmieren · 02Schlüssel nach Foto oder VorlageDrei F · 03Schlüssel nach CodeCode eingeben und d · 04Gleichschließende Zylinder (Sperrschli · 05SchließanlagenVon der Gleichschließung · 06Elektronische ZutrittslösungenKarte, T · 07Tür- und SchließtechnikZylinder, Schlö · 08SicherheitstechnikEinbruchschutz, Über
+- desktop: 01AutoschlüsselNachmachen, programmieren · 02Schlüssel nach Foto oder VorlageDrei F · 03Schlüssel nach CodeCode eingeben und d · 04Gleichschließende Zylinder (Sperrschli · 05SchließanlagenVon der Gleichschließung · 06Elektronische ZutrittslösungenKarte, T · 07Tür- und SchließtechnikZylinder, Schlö · 08SicherheitstechnikEinbruchschutz, Über
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-hub.json

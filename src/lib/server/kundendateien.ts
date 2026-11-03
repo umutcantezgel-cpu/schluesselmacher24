@@ -39,6 +39,9 @@ const FRIST_JE_KATEGORIE: Record<UploadKategorie, keyof Fristen> = {
   dokument: 'projectDocuments',
   // Objektfotos gehören zu den Projektunterlagen (so auch im Sicherheitscheck angekündigt).
   objektfoto: 'projectDocuments',
+  // Berechtigungsnachweise (R13) so kurz wie der Fahrzeugschein: nur für die Prüfung der Berechtigung.
+  sicherungskarte: 'vehicleRegistration',
+  vollmacht: 'vehicleRegistration',
 };
 
 export function aufbewahrenBis(kategorie: UploadKategorie, fristen: Fristen, jetzt = new Date()): Date {

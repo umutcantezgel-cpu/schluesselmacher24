@@ -324,6 +324,28 @@ export const Einstellungen: GlobalConfig = {
                 { name: 'produktklassen', type: 'select', label: 'Passend für', hasMany: true, required: true, options: VERSANDKLASSEN },
               ],
             },
+            {
+              name: 'einsenden',
+              type: 'group',
+              label: 'Schlüssel einschicken',
+              admin: {
+                description:
+                  'Ohne Retourenlabel bekommt der Kunde einen Begleitschein und frankiert selbst; die Seite nennt das Porto unten als Empfehlung und schreibt nie „kostenlos“. Das Retourenlabel braucht einen Vertrag mit dem Versanddienstleister und dessen Zugangsdaten (Variablen in Vercel).',
+              },
+              fields: [
+                { name: 'labelAktiv', type: 'checkbox', label: 'Retourenlabel aktiv (Kosten trägt der Betrieb)', defaultValue: false },
+                { type: 'row', fields: [
+                  euroFeld('aufpreisVersichert', 'Aufpreis versichert', { defaultValue: 0, admin: { width: '50%', step: 0.01 } }),
+                  euroFeld('aufpreisUnversichert', 'Aufpreis unversichert', { defaultValue: 0, admin: { width: '50%', step: 0.01 } }),
+                ] },
+                { type: 'row', fields: [
+                  euroFeld('portoVersichert', 'Porto versichert (Empfehlung)', { defaultValue: 4.45, admin: { width: '34%', step: 0.01 } }),
+                  euroFeld('portoUnversichert', 'Porto unversichert (Empfehlung)', { defaultValue: 1.8, admin: { width: '33%', step: 0.01 } }),
+                  { name: 'haftungVersichert', type: 'number', label: 'Haftung versichert (Euro)', defaultValue: 25, min: 0, admin: { width: '33%', step: 1 } },
+                ] },
+                { name: 'portoStand', type: 'text', label: 'Stand der Portopreise', defaultValue: 'Deutsche Post, Preise ab 1.1.2026: Einschreiben 4,45 €, Großbrief 1,80 €' },
+              ],
+            },
           ],
         },
         {
@@ -332,7 +354,7 @@ export const Einstellungen: GlobalConfig = {
           description: 'Wie lange hochgeladene Unterlagen aufbewahrt werden (Tage).',
           fields: [
             { type: 'row', fields: [
-              { name: 'fahrzeugschein', type: 'number', label: 'Fahrzeugschein', required: true, min: 1, admin: { width: '25%' } },
+              { name: 'fahrzeugschein', type: 'number', label: 'Fahrzeugschein und Nachweise', required: true, min: 1, admin: { width: '25%', description: 'Auch Sicherungskarte und Vollmacht.' } },
               { name: 'schluesselfotos', type: 'number', label: 'Schlüsselfotos', required: true, min: 1, admin: { width: '25%' } },
               { name: 'grundrisse', type: 'number', label: 'Grundrisse', required: true, min: 1, admin: { width: '25%' } },
               { name: 'projektunterlagen', type: 'number', label: 'Projektunterlagen', required: true, min: 1, admin: { width: '25%' } },

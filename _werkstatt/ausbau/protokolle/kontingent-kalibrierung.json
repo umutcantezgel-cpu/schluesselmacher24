@@ -1,0 +1,33 @@
+{
+  "hinweis": "Punkte aus kontingent.mjs --kalibrieren. Faktor je Punkt = Prozent / gewichtete Summe von Fensterbeginn bis Zeit.",
+  "punkte": [
+    {
+      "zeit": "2026-11-02T21:23:09.000Z",
+      "fensterbeginn": "2026-11-02T16:23:09.000Z",
+      "gewichtet": 5634709.5,
+      "prozent": 2,
+      "faktor": 3.5494287682443964e-07
+    },
+    {
+      "zeit": "2026-11-03T04:22:28.000Z",
+      "fensterbeginn": "2026-11-03T02:10:00.000Z",
+      "gewichtet": 133993181.7,
+      "prozent": 29,
+      "faktor": 2.164289229651153e-07
+    },
+    {
+      "zeit": "2026-11-03T06:22:34.000Z",
+      "fensterbeginn": "2026-11-03T02:10:00.000Z",
+      "gewichtet": 161494064.2,
+      "prozent": 35,
+      "faktor": 2.167262318487121e-07
+    },
+    {
+      "zeit": "2026-11-03T10:22:53.000Z",
+      "fensterbeginn": "2026-11-03T07:10:00.000Z",
+      "gewichtet": 100928760.4,
+      "prozent": 20,
+      "faktor": 1.9815957236308235e-07
+    }
+  ]
+}

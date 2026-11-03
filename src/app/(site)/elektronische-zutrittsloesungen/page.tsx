@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ComponentType } from 'react';
 
-import { getPageContent } from '@/lib/data';
+import { getPageContent, getRubrik } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
@@ -389,6 +389,8 @@ const RELATED_LINKS = [
 ];
 
 export default async function ElektronischeZutrittsloesungenPage() {
+  // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
+  const rubrik = await getRubrik('elektronische-schliesssysteme');
   const page = await getPageContent(ROUTE);
   const faq = page?.faq.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -407,6 +409,7 @@ export default async function ElektronischeZutrittsloesungenPage() {
 
       {/* Großer Moment: Medium, Funk, Leser und Freigabe; die Bewegung steckt im Generator. */}
       <PageHeader
+        rubrik={rubrik}
         eyebrow={process.label}
         title={page?.headline ?? 'Elektronische Zutrittslösungen'}
         lead={page?.subline ?? 'Karte, Transponder, PIN, App und digitale Zylinder.'}

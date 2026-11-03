@@ -1,0 +1,182 @@
+{
+  "skript": "weg.mjs",
+  "zeit": "2026-11-03T13:16:26.923Z",
+  "ergebnisse": [
+    {
+      "geraet": "mobil",
+      "viewport": [
+        390,
+        844
+      ],
+      "schritte": [
+        {
+          "bild": "1-fahrzeug",
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/weg/weg-mobil-1-fahrzeug.jpg",
+          "titel": "Welches Fahrzeug haben Sie?",
+          "zaehler": "Schritt 1 von 5 · Fahrzeug wählen · 1 von 7",
+          "weiterAktiv": false,
+          "zurueck": [],
+          "keineFotos": false,
+          "url": "/autoschluessel/anfrage",
+          "verstoesse": []
+        },
+        {
+          "bild": "1b-suche-treffer",
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/weg/weg-mobil-1b-suche-treffer.jpg",
+          "titel": "Welches Fahrzeug haben Sie?",
+          "zaehler": "Schritt 1 von 5 · Fahrzeug wählen · 1 von 7",
+          "weiterAktiv": true,
+          "zurueck": [],
+          "keineFotos": false,
+          "url": "/autoschluessel/anfrage",
+          "verstoesse": []
+        },
+        {
+          "bild": "3-baujahr",
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/weg/weg-mobil-3-baujahr.jpg",
+          "titel": "Baujahr oder Erstzulassung",
+          "zaehler": "Schritt 1 von 5 · Fahrzeug wählen · 3 von 7",
+          "weiterAktiv": true,
+          "zurueck": [
+            "Zurück"
+          ],
+          "keineFotos": false,
+          "url": "/autoschluessel/anfrage",
+          "verstoesse": []
+        },
+        {
+          "bild": "8-schluesselfotos",
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/weg/weg-mobil-8-schluesselfotos.jpg",
+          "titel": "Fotos Ihres Schlüssels",
+          "zaehler": "Schritt 2 von 5 · Fotos hochladen · 1 von 2",
+          "weiterAktiv": true,
+          "zurueck": [
+            "Zurück"
+          ],
+          "keineFotos": true,
+          "url": "/autoschluessel/anfrage",
+          "verstoesse": []
+        },
+        {
+          "bild": "2-modell",
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/weg/weg-mobil-2-modell.jpg",
+          "titel": "Welches Modell fahren Sie?",
+          "zaehler": "Schritt 1 von 5 · Fahrzeug wählen · 2 von 7",
+          "weiterAktiv": true,
+          "zurueck": [
+            "Zurück"
+          ],
+          "keineFotos": false,
+          "url": "/autoschluessel/anfrage",
+          "verstoesse": null
+        }
+      ],
+      "protokoll": [
+        "1-fahrzeug: Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Titel „Welches Fahrzeug haben Sie?“ · Weiter gesperrt · Zurück nein · axe 0 Regeln",
+        "Suche „vw golf“: Vorschlag ja",
+        "1b-suche-treffer: Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Titel „Welches Fahrzeug haben Sie?“ · Weiter aktiv · Zurück nein · axe 0 Regeln",
+        "Weiter nach Suche: Wartezeit 28 ms",
+        "Schritt 3: Auswahlliste „Jahr* (Pflichtangabe)“: „2016“ · Auswahlliste „Monat der Erstzulassung (freiwillig)“: „Januar“",
+        "3-baujahr: Schritt 1 von 5 · Fahrzeug wählen · 3 von 7 · Titel „Baujahr oder Erstzulassung“ · Weiter aktiv · Zurück Zurück · axe 0 Regeln",
+        "Schritt „Baujahr oder Erstzulassung“: keine Angaben nötig",
+        "Schritt „Weitere Fahrzeugdaten (freiwillig)“: keine Angaben nötig",
+        "Schritt „Welche Schlüsselart haben Sie?“: Auswahl „Schlüssel mit Transponder im KopfMechanischer SchlüsselSchlüssel ohne Tasten und ohne Fernbedienung.“",
+        "Schritt „Wie viele funktionierende Schlüssel haben Sie noch?“: Auswahl „Kein funktionierender SchlüsselAlle Schlüssel sind verloren, defekt oder eingeschlossen.“",
+        "Schritt „Was sollen wir für Sie tun?“: Auswahl „Ersatzschlüssel bei VerlustAlle Schlüssel verloren oder beschädigt. Umfang und Machbarkeit werden vorab geprüft.“",
+        "8-schluesselfotos: Schritt 2 von 5 · Fotos hochladen · 1 von 2 · Titel „Fotos Ihres Schlüssels“ · Weiter aktiv · Zurück Zurück · axe 0 Regeln",
+        "„Keine Fotos zur Hand?“ sichtbar: ja",
+        "Weg A Ende: Schritt „Fotos Ihres Schlüssels“",
+        "Marke Volkswagen, Schritt 2: Auswahl „Golfab 2003“",
+        "2-modell: Schritt 1 von 5 · Fahrzeug wählen · 2 von 7 · Titel „Welches Modell fahren Sie?“ · Weiter aktiv · Zurück Zurück"
+      ]
+    },
+    {
+      "geraet": "desktop",
+      "viewport": [
+        1440,
+        900
+      ],
+      "schritte": [
+        {
+          "bild": "1-fahrzeug",
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/weg/weg-desktop-1-fahrzeug.jpg",
+          "titel": "Welches Fahrzeug haben Sie?",
+          "zaehler": "Schritt 1 von 5 · Fahrzeug wählen · 1 von 7",
+          "weiterAktiv": false,
+          "zurueck": [],
+          "keineFotos": false,
+          "url": "/autoschluessel/anfrage",
+          "verstoesse": []
+        },
+        {
+          "bild": "1b-suche-treffer",
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/weg/weg-desktop-1b-suche-treffer.jpg",
+          "titel": "Welches Fahrzeug haben Sie?",
+          "zaehler": "Schritt 1 von 5 · Fahrzeug wählen · 1 von 7",
+          "weiterAktiv": true,
+          "zurueck": [],
+          "keineFotos": false,
+          "url": "/autoschluessel/anfrage",
+          "verstoesse": []
+        },
+        {
+          "bild": "3-baujahr",
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/weg/weg-desktop-3-baujahr.jpg",
+          "titel": "Baujahr oder Erstzulassung",
+          "zaehler": "Schritt 1 von 5 · Fahrzeug wählen · 3 von 7",
+          "weiterAktiv": true,
+          "zurueck": [
+            "Zurück"
+          ],
+          "keineFotos": false,
+          "url": "/autoschluessel/anfrage",
+          "verstoesse": []
+        },
+        {
+          "bild": "8-schluesselfotos",
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/weg/weg-desktop-8-schluesselfotos.jpg",
+          "titel": "Fotos Ihres Schlüssels",
+          "zaehler": "Schritt 2 von 5 · Fotos hochladen · 1 von 2",
+          "weiterAktiv": true,
+          "zurueck": [
+            "Zurück"
+          ],
+          "keineFotos": true,
+          "url": "/autoschluessel/anfrage",
+          "verstoesse": []
+        },
+        {
+          "bild": "2-modell",
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/weg/weg-desktop-2-modell.jpg",
+          "titel": "Welches Modell fahren Sie?",
+          "zaehler": "Schritt 1 von 5 · Fahrzeug wählen · 2 von 7",
+          "weiterAktiv": true,
+          "zurueck": [
+            "Zurück"
+          ],
+          "keineFotos": false,
+          "url": "/autoschluessel/anfrage",
+          "verstoesse": null
+        }
+      ],
+      "protokoll": [
+        "1-fahrzeug: Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Titel „Welches Fahrzeug haben Sie?“ · Weiter gesperrt · Zurück nein · axe 0 Regeln",
+        "Suche „vw golf“: Vorschlag ja",
+        "1b-suche-treffer: Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Titel „Welches Fahrzeug haben Sie?“ · Weiter aktiv · Zurück nein · axe 0 Regeln",
+        "Weiter nach Suche: Wartezeit 3 ms",
+        "Schritt 3: Auswahlliste „Jahr* (Pflichtangabe)“: „2016“ · Auswahlliste „Monat der Erstzulassung (freiwillig)“: „Januar“",
+        "3-baujahr: Schritt 1 von 5 · Fahrzeug wählen · 3 von 7 · Titel „Baujahr oder Erstzulassung“ · Weiter aktiv · Zurück Zurück · axe 0 Regeln",
+        "Schritt „Baujahr oder Erstzulassung“: keine Angaben nötig",
+        "Schritt „Weitere Fahrzeugdaten (freiwillig)“: keine Angaben nötig",
+        "Schritt „Welche Schlüsselart haben Sie?“: Auswahl „Schlüssel mit Transponder im KopfMechanischer SchlüsselSchlüssel ohne Tasten und ohne Fernbedienung.“",
+        "Schritt „Wie viele funktionierende Schlüssel haben Sie noch?“: Auswahl „Kein funktionierender SchlüsselAlle Schlüssel sind verloren, defekt oder eingeschlossen.“",
+        "Schritt „Was sollen wir für Sie tun?“: Auswahl „Ersatzschlüssel bei VerlustAlle Schlüssel verloren oder beschädigt. Umfang und Machbarkeit werden vorab geprüft.“",
+        "8-schluesselfotos: Schritt 2 von 5 · Fotos hochladen · 1 von 2 · Titel „Fotos Ihres Schlüssels“ · Weiter aktiv · Zurück Zurück · axe 0 Regeln",
+        "„Keine Fotos zur Hand?“ sichtbar: ja",
+        "Weg A Ende: Schritt „Fotos Ihres Schlüssels“",
+        "Marke Volkswagen, Schritt 2: Auswahl „Golfab 2003“",
+        "2-modell: Schritt 1 von 5 · Fahrzeug wählen · 2 von 7 · Titel „Welches Modell fahren Sie?“ · Weiter aktiv · Zurück Zurück"
+      ]
+    }
+  ]
+}

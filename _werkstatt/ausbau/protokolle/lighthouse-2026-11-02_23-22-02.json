@@ -1,0 +1,137 @@
+{
+  "skript": "lighthouse",
+  "zeit": "2026-11-02T22:22:02.609Z",
+  "argumente": {
+    "_": [],
+    "routen": "/nichtda"
+  },
+  "profil": "mobil",
+  "laeufe": 3,
+  "budget": {
+    "leistung": 90,
+    "kategorie": 100,
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "routen": [
+    {
+      "ansicht": "nichtda",
+      "pfad": "/nichtda",
+      "profil": "mobil",
+      "gueltigeLaeufe": 0,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/nichtda",
+          "fehler": "ERRORED_DOCUMENT_REQUEST: Lighthouse was unable to reliably load the page you requested. Make sure you are testing the correct URL and that the server is properly responding to all requests. (Status code: 404)",
+          "werte": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/nichtda",
+          "fehler": "ERRORED_DOCUMENT_REQUEST: Lighthouse was unable to reliably load the page you requested. Make sure you are testing the correct URL and that the server is properly responding to all requests. (Status code: 404)",
+          "werte": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/nichtda",
+          "fehler": "ERRORED_DOCUMENT_REQUEST: Lighthouse was unable to reliably load the page you requested. Make sure you are testing the correct URL and that the server is properly responding to all requests. (Status code: 404)",
+          "werte": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": null,
+        "barrierefreiheit": null,
+        "bestPractices": null,
+        "seo": null,
+        "lcp": null,
+        "cls": null,
+        "tbt": null,
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": null,
+          "grenze": "mindestens 90",
+          "ok": null,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": null,
+          "grenze": "höchstens 2500 ms",
+          "ok": null,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": null,
+          "grenze": "höchstens 0,1",
+          "ok": null,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": null,
+          "grenze": "100",
+          "ok": null,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": null,
+          "grenze": "100",
+          "ok": null,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": null,
+          "grenze": "100",
+          "ok": null,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "offen (Leistung, LCP, CLS, Barrierefreiheit, Best Practices, SEO nicht gemessen)"
+    }
+  ]
+}

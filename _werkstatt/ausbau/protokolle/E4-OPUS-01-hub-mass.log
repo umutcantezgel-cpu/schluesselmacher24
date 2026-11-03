@@ -1,0 +1,15 @@
+E4-OPUS-01 · Messung erster Bildschirm (Prüfserver JSON-Build, Playwright, Attrappen für Drittdienste), 2026-11-03 08:45
+Skript: Kachelränder je Gerät nach 2,3 s; „ganz sichtbar“ = Unterkante ≤ Fensterhöhe. Nachbildung 12 Kacheln: drei lange Kacheln kopiert, ab 768 px vier Spalten.
+Echter Stand (9 Rubriken live und im Hub):
+360x780: Kacheln 9, ganz sichtbar 9, letzte Unterkante 656, Telefon 712, scrollBreite 360
+390x844: Kacheln 9, ganz sichtbar 9, letzte Unterkante 619, Telefon 675, scrollBreite 390
+768x1024: Kacheln 9, ganz sichtbar 9, letzte Unterkante 574, Telefon 710, scrollBreite 768
+1440x900: Kacheln 9, ganz sichtbar 9, letzte Unterkante 749, Telefon 829, scrollBreite 1440
+1920x1080: Kacheln 9, ganz sichtbar 9, letzte Unterkante 749, Telefon 829, scrollBreite 1920
+Nachbildung 12 Kacheln (Endausbau nach E6):
+360x780: Kacheln 12, ganz sichtbar 9 (Kriterium: mindestens neun), letzte Unterkante 796
+390x844: Kacheln 12, ganz sichtbar 12, letzte Unterkante 739 (Aktionsleiste ab etwa 792), Telefon 795 (mobil zusätzlich in der Aktionsleiste, E4-OPUS-03)
+768x1024: Kacheln 12, ganz sichtbar 12, letzte Unterkante 643
+1440x900: Kacheln 12, ganz sichtbar 12, letzte Unterkante 800, Telefon 880
+1920x1080: Kacheln 12, ganz sichtbar 12, letzte Unterkante 801, Telefon 881
+Prüfungen: Lint 0, Typprüfung 0, Unit 1952/1952 (hub.test.tsx 16), Funktionsliste F-01 bis F-19 bestanden (protokolle/funktionsliste-2026-11-03_08-47-44.md).

@@ -1,0 +1,16 @@
+| Ansicht | Gerät | Ausschnitte | Überlauf | Befunde |
+|---|---|---|---|---|
+| H01-start | mobil-klein | 2 von 10 (gekappt) | nein | 73: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.shell > div.grid > ol.-mx-5 > li.flex; über den rechten Rand ol.-mx-5 > li.flex > div.contents > a.group |
+| H01-start | mobil | 2 von 10 (gekappt) | nein | 73: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.shell > div.grid > ol.-mx-5 > li.flex; über den rechten Rand ol.-mx-5 > li.flex > div.contents > a.group |
+| H01-start | tablet | 2 von 7 (gekappt) | nein | 3: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40; über den rechten Rand div.order-2 > div.hidden > svg.block > path.stroke-area-muted40 |
+| H01-start | desktop | 2 von 7 (gekappt) | nein | 2: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.h-auto > path.stroke-area-muted40 |
+| H01-start | breit | 2 von 6 (gekappt) | nein | – |
+| H11-kasse | mobil-klein | 2 von 4 (gekappt) | nein | – |
+| H11-kasse | mobil | 2 von 4 (gekappt) | nein | – |
+| H11-kasse | tablet | 2 von 2 | nein | – |
+| H11-kasse | desktop | 2 von 2 | nein | – |
+| H11-kasse | breit | 2 von 2 | nein | – |
+
+Bilder: 20 in /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-bildsatz-json.log
+Exit: 0

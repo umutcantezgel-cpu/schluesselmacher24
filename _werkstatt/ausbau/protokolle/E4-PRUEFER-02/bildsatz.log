@@ -1,0 +1,21 @@
+| Ansicht | Gerät | Ausschnitte | Überlauf | Befunde |
+|---|---|---|---|---|
+| H01-start | mobil-klein | 11 von 11 | nein | 32: über den rechten Rand div.smmx-auto > div > div.relative > svg.block; über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.shell > div.-mx-5 > div.contents > a.group |
+| H01-start | mobil | 10 von 10 | nein | 32: über den rechten Rand div.smmx-auto > div > div.relative > svg.block; über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.shell > div.-mx-5 > div.contents > a.group |
+| H01-start | tablet | 7 von 7 | nein | 3: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40; über den rechten Rand div.order-2 > div.hidden > svg.block > path.stroke-area-muted40 |
+| H01-start | desktop | 7 von 7 | nein | 2: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.h-auto > path.stroke-area-muted40 |
+| H01-start | breit | 6 von 6 | nein | – |
+| H02-autoschluessel | mobil-klein | 15 von 16 (gekappt) | nein | 85: über den rechten Rand div.lgcol-span-5 > figure > ol.-mx-5 > li.flex; über den rechten Rand figure > ol.-mx-5 > li.flex > p.font-mono; über den rechten Rand figure > ol.-mx-5 > li.flex > div.sm24-reveal |
+| H02-autoschluessel | mobil | 15 von 15 | nein | 85: über den rechten Rand div.lgcol-span-5 > figure > ol.-mx-5 > li.flex; über den rechten Rand figure > ol.-mx-5 > li.flex > p.font-mono; über den rechten Rand figure > ol.-mx-5 > li.flex > div.sm24-reveal |
+| H02-autoschluessel | tablet | 10 von 10 | nein | 3: über den rechten Rand li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand figure.m-0 > div.rounded-lg > svg.block > path.stroke-area-muted40 |
+| H02-autoschluessel | desktop | 9 von 9 | nein | – |
+| H02-autoschluessel | breit | 8 von 8 | nein | – |
+| H04-autoschluessel-anfrage | mobil-klein | 6 von 6 | nein | – |
+| H04-autoschluessel-anfrage | mobil | 6 von 6 | nein | – |
+| H04-autoschluessel-anfrage | tablet | 4 von 4 | nein | – |
+| H04-autoschluessel-anfrage | desktop | 4 von 4 | nein | – |
+| H04-autoschluessel-anfrage | breit | 3 von 3 | nein | – |
+
+Bilder: 121 in /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildsatz
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildsatz.json
+=== EXIT 0

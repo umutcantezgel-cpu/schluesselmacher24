@@ -1,0 +1,32 @@
+### 1. vergleichen ohne gesicherten Abzug (Standardablage, lesend)
+vorher: kein Ordner protokolle/textabzug
+Bedienfehler: Kein gesicherter Abzug für /rechtliches/agb: zuerst `sichern` ausführen.
+Exit: 2
+nachher: kein Ordner protokolle/textabzug angelegt
+### 2. sichern in den Ordner des Prüfers (SM24_TEXTABZUG)
+# Textabzug · Sicherung
+
+| Seite | Zeilen | Ergebnis |
+|---|---|---|
+| `/rechtliches/agb` | 73 | gesichert |
+| `/rechtliches/widerruf` | 67 | gesichert |
+| `/rechtliches/impressum` | 39 | gesichert |
+| `/rechtliches/datenschutz` | 189 | gesichert |
+| `/rechtliches/versand-und-zahlung` | 28 | gesichert |
+| `/rechtliches/cookie-einstellungen` | 28 | gesichert |
+
+Ablage: `/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/textabzug`
+Exit: 0
+### 3. vergleichen gegen den Abzug (lesend)
+# Textabzug · Vergleich
+
+| Seite | Ergebnis |
+|---|---|
+| `/rechtliches/agb` | gleich |
+| `/rechtliches/widerruf` | gleich |
+| `/rechtliches/impressum` | gleich |
+| `/rechtliches/datenschutz` | gleich |
+| `/rechtliches/versand-und-zahlung` | gleich |
+| `/rechtliches/cookie-einstellungen` | gleich |
+
+Exit: 0

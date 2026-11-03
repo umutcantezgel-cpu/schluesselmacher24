@@ -1,0 +1,1013 @@
+{
+  "kennung": "eilige",
+  "geraet": "desktop",
+  "tippsGesamt": 41,
+  "wischer": 29,
+  "tippsBisErsteEingabe": 2,
+  "ersteEingabe": "Marke und Modell",
+  "ladeMs": 300,
+  "ziele": {
+    "golf-anzahlung": {
+      "erreicht": true,
+      "ms": 23876,
+      "text": "Anzahlungsseite (Schritt 4 von 5) erreicht, ohne Schlüsselfotos und Fahrzeugschein-Testbild"
+    },
+    "dacia-anfrage-vor-absenden": {
+      "erreicht": true,
+      "ms": 57194,
+      "text": "Geführte Anfrage geprüft bis „Schritt 5 von 5 · Prüfen“, „Anfrage absenden“ sichtbar, nicht betätigt"
+    }
+  },
+  "abbruch": null,
+  "endknopf": "Anzahlung erreicht, keine Zustimmung gesetzt, Weiter gesperrt (nicht betätigt), keine Zahlung ausgelöst | Dacia: „Anfrage absenden“ sichtbar, nicht betätigt",
+  "reaktionen": [
+    622,
+    361,
+    352,
+    400,
+    365,
+    371,
+    376,
+    447,
+    389,
+    357,
+    587,
+    384,
+    653,
+    375,
+    383,
+    385,
+    370,
+    361
+  ],
+  "maxReaktionMs": 653,
+  "telPruefungen": [
+    {
+      "ort": "01 Startseite",
+      "sichtbar": 4,
+      "imBild": 1,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "03 Anfrage Schritt 1 Fahrzeug",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "04 Suche VW Golf 7 mit Vorschlag",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "05 Fotos Schlüssel 1 von 2",
+      "sichtbar": 2,
+      "imBild": 1,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "07 Fahrzeugschein 2 von 2",
+      "sichtbar": 2,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "08 Kontakt",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "09 Preis",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "10 Anzahlung",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "11 Startseite erneut",
+      "sichtbar": 4,
+      "imBild": 1,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "12 Zwischenstand-Hinweis",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "13 Suche Dacia Sandero",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "Thema 1 von 5",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "Anliegen 2 von 5",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "Unterlagen 3 von 5",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "Kontakt 4 von 5",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "Vor dem Absenden 5 von 5",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    }
+  ],
+  "tippziele": [],
+  "stationen": [
+    {
+      "ms": 334,
+      "ort": "01 Startseite",
+      "url": "/",
+      "fort": "",
+      "ueberschrift": "Wobei können wir Ihnen helfen?",
+      "hoehe": 5866,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 4,
+        "imBild": 1,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 1153,
+      "ort": "03 Anfrage Schritt 1 Fahrzeug",
+      "url": "/autoschluessel/anfrage",
+      "fort": "Schritt 1 von 5 · Fahrzeug wählen · 1 von 7",
+      "ueberschrift": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "hoehe": 2968,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 2552,
+      "ort": "04 Suche VW Golf 7 mit Vorschlag",
+      "url": "/autoschluessel/anfrage",
+      "fort": "Schritt 1 von 5 · Fahrzeug wählen · 1 von 7",
+      "ueberschrift": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "hoehe": 3058,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 7180,
+      "ort": "05 Fotos Schlüssel 1 von 2",
+      "url": "/autoschluessel/anfrage",
+      "fort": "Schritt 2 von 5 · Fotos hochladen · 1 von 2",
+      "ueberschrift": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "hoehe": 4325,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 2,
+        "imBild": 1,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 7744,
+      "ort": "07 Fahrzeugschein 2 von 2",
+      "url": "/autoschluessel/anfrage",
+      "fort": "Schritt 2 von 5 · Fotos hochladen · 2 von 2",
+      "ueberschrift": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "hoehe": 3178,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 2,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 12034,
+      "ort": "08 Kontakt",
+      "url": "/autoschluessel/anfrage",
+      "fort": "Schritt 3 von 5 · Preis oder Prüfung · 1 von 2",
+      "ueberschrift": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "hoehe": 3109,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 20044,
+      "ort": "09 Preis",
+      "url": "/autoschluessel/anfrage",
+      "fort": "Schritt 3 von 5 · Preis oder Prüfung · 2 von 2",
+      "ueberschrift": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "hoehe": 2932,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 20742,
+      "ort": "10 Anzahlung",
+      "url": "/autoschluessel/anfrage",
+      "fort": "Schritt 4 von 5 · Anzahlung",
+      "ueberschrift": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "hoehe": 3214,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 24303,
+      "ort": "11 Startseite erneut",
+      "url": "/",
+      "fort": "",
+      "ueberschrift": "Wobei können wir Ihnen helfen?",
+      "hoehe": 5866,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 4,
+        "imBild": 1,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 39795,
+      "ort": "12 Zwischenstand-Hinweis",
+      "url": "/autoschluessel/anfrage",
+      "fort": "Schritt 4 von 5 · Anzahlung",
+      "ueberschrift": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "hoehe": 3296,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 41809,
+      "ort": "13 Suche Dacia Sandero",
+      "url": "/autoschluessel/anfrage",
+      "fort": "Schritt 1 von 5 · Fahrzeug wählen · 1 von 7",
+      "ueberschrift": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "hoehe": 3058,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 42298,
+      "ort": "Thema 1 von 5",
+      "url": "/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero",
+      "fort": "Schritt 1 von 5 · Thema",
+      "ueberschrift": "Allgemeine Anfrage",
+      "hoehe": 2554,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 42780,
+      "ort": "Anliegen 2 von 5",
+      "url": "/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero",
+      "fort": "Schritt 2 von 5 · Anliegen",
+      "ueberschrift": "Allgemeine Anfrage",
+      "hoehe": 2319,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 46031,
+      "ort": "Unterlagen 3 von 5",
+      "url": "/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero",
+      "fort": "Schritt 3 von 5 · Unterlagen",
+      "ueberschrift": "Allgemeine Anfrage",
+      "hoehe": 1936,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 49076,
+      "ort": "Kontakt 4 von 5",
+      "url": "/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero",
+      "fort": "Schritt 4 von 5 · Kontakt",
+      "ueberschrift": "Allgemeine Anfrage",
+      "hoehe": 2109,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 54130,
+      "ort": "Vor dem Absenden 5 von 5",
+      "url": "/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero",
+      "fort": "Schritt 5 von 5 · Prüfen",
+      "ueberschrift": "Allgemeine Anfrage",
+      "hoehe": 2358,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    }
+  ],
+  "stolpersteine": [
+    {
+      "ort": "Anfrage, Zwischenstand",
+      "zitat": "Hinweis „Zwischenstand“ sichtbar, bevor das neue Fahrzeug gesucht wird"
+    }
+  ],
+  "bilder": [
+    "eilige-desktop-01-01-startseite.png",
+    "eilige-desktop-02-03-anfrage-schritt-1-fahrzeug.png",
+    "eilige-desktop-03-04-suche-vw-golf-7-mit-vorschlag.png",
+    "eilige-desktop-04-05-fotos-schluessel-1-von-2.png",
+    "eilige-desktop-05-07-fahrzeugschein-2-von-2.png",
+    "eilige-desktop-06-08-kontakt.png",
+    "eilige-desktop-07-09-preis.png",
+    "eilige-desktop-08-10-anzahlung.png",
+    "eilige-desktop-09-11-startseite-erneut.png",
+    "eilige-desktop-10-12-zwischenstand-hinweis.png",
+    "eilige-desktop-11-13-suche-dacia-sandero.png",
+    "eilige-desktop-12-thema-1-von-5.png",
+    "eilige-desktop-13-anliegen-2-von-5.png",
+    "eilige-desktop-14-unterlagen-3-von-5.png",
+    "eilige-desktop-15-kontakt-4-von-5.png",
+    "eilige-desktop-16-vor-dem-absenden-5-von-5.png"
+  ],
+  "anfragen": [
+    {
+      "ms": 835,
+      "methode": "POST",
+      "pfad": "/autoschluessel/anfrage",
+      "host": "localhost:3000",
+      "serveraktion": true,
+      "inhalt": "text/plain;charset=UTF-8",
+      "ziel": ""
+    },
+    {
+      "ms": 8940,
+      "methode": "POST",
+      "pfad": "/api/kunden-upload",
+      "host": "localhost:3000",
+      "serveraktion": false,
+      "inhalt": "multipart/form-data; boundary=----WebKitFormBoundaryoECfifQ6",
+      "ziel": ""
+    },
+    {
+      "ms": 19776,
+      "methode": "POST",
+      "pfad": "/autoschluessel/anfrage",
+      "host": "localhost:3000",
+      "serveraktion": true,
+      "inhalt": "text/plain;charset=UTF-8",
+      "ziel": ""
+    },
+    {
+      "ms": 24562,
+      "methode": "POST",
+      "pfad": "/autoschluessel/anfrage",
+      "host": "localhost:3000",
+      "serveraktion": true,
+      "inhalt": "text/plain;charset=UTF-8",
+      "ziel": ""
+    },
+    {
+      "ms": 24572,
+      "methode": "POST",
+      "pfad": "/autoschluessel/anfrage",
+      "host": "localhost:3000",
+      "serveraktion": true,
+      "inhalt": "text/plain;charset=UTF-8",
+      "ziel": ""
+    },
+    {
+      "ms": 42031,
+      "methode": "POST",
+      "pfad": "/service-und-termin/anfrage",
+      "host": "localhost:3000",
+      "serveraktion": true,
+      "inhalt": "text/plain;charset=UTF-8",
+      "ziel": ""
+    },
+    {
+      "ms": 46480,
+      "methode": "POST",
+      "pfad": "/api/kunden-upload",
+      "host": "localhost:3000",
+      "serveraktion": false,
+      "inhalt": "multipart/form-data; boundary=----WebKitFormBoundaryalpWbKpL",
+      "ziel": ""
+    }
+  ],
+  "formularKlicks": [],
+  "antworten": [
+    {
+      "ms": 850,
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "text": ""
+    },
+    {
+      "ms": 8950,
+      "pfad": "/api/kunden-upload",
+      "status": 503,
+      "text": "{\"error\":\"Dateien können gerade nicht gespeichert werden. Sie können das Formular trotzdem absenden; wir fordern die Unterlagen bei Bedarf nach.\"}"
+    },
+    {
+      "ms": 19789,
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "text": ""
+    },
+    {
+      "ms": 24569,
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "text": ""
+    },
+    {
+      "ms": 24584,
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "text": ""
+    },
+    {
+      "ms": 42040,
+      "pfad": "/service-und-termin/anfrage",
+      "status": 200,
+      "text": ""
+    },
+    {
+      "ms": 46491,
+      "pfad": "/api/kunden-upload",
+      "status": 503,
+      "text": "{\"error\":\"Dateien können gerade nicht gespeichert werden. Sie können das Formular trotzdem absenden; wir fordern die Unterlagen bei Bedarf nach.\"}"
+    }
+  ],
+  "menueOffen": [
+    {
+      "ms": 1370,
+      "menue": "Mehr"
+    },
+    {
+      "ms": 40000,
+      "menue": "Mehr"
+    }
+  ],
+  "schritte": [
+    {
+      "ms": 335,
+      "typ": "STATION",
+      "text": "01 Startseite · / ·  · Wobei können wir Ihnen helfen?"
+    },
+    {
+      "ms": 438,
+      "typ": "BILD",
+      "text": "eilige-desktop-01-01-startseite.png"
+    },
+    {
+      "ms": 1146,
+      "typ": "TIPP",
+      "text": "„Termin anfragen“ → /autoschluessel/anfrage (622 ms)"
+    },
+    {
+      "ms": 1153,
+      "typ": "STATION",
+      "text": "03 Anfrage Schritt 1 Fahrzeug · /autoschluessel/anfrage · Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 1218,
+      "typ": "BILD",
+      "text": "eilige-desktop-02-03-anfrage-schritt-1-fahrzeug.png"
+    },
+    {
+      "ms": 1370,
+      "typ": "MENUE",
+      "text": "Kopfleisten-Menü offen (Mehr), vor dem Klick mit Escape geschlossen"
+    },
+    {
+      "ms": 2547,
+      "typ": "EINGABE",
+      "text": "Marke und Modell ← „VW Golf 7“"
+    },
+    {
+      "ms": 2552,
+      "typ": "STATION",
+      "text": "04 Suche VW Golf 7 mit Vorschlag · /autoschluessel/anfrage · Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 2609,
+      "typ": "BILD",
+      "text": "eilige-desktop-03-04-suche-vw-golf-7-mit-vorschlag.png"
+    },
+    {
+      "ms": 2999,
+      "typ": "TIPP",
+      "text": "Vorschlag „Volkswagen Golf“ → /autoschluessel/anfrage (361 ms)"
+    },
+    {
+      "ms": 3540,
+      "typ": "WAHL",
+      "text": "Jahr = „2015“"
+    },
+    {
+      "ms": 3924,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (352 ms)"
+    },
+    {
+      "ms": 3968,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 4346,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (400 ms)"
+    },
+    {
+      "ms": 4917,
+      "typ": "WAHL",
+      "text": "„Funkschlüssel“"
+    },
+    {
+      "ms": 4964,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 5309,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (365 ms)"
+    },
+    {
+      "ms": 5869,
+      "typ": "WAHL",
+      "text": "„Kein funktionierender Schlüssel“"
+    },
+    {
+      "ms": 5909,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 6262,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (371 ms)"
+    },
+    {
+      "ms": 6777,
+      "typ": "WAHL",
+      "text": "„Ersatzschlüssel bei Verlust“"
+    },
+    {
+      "ms": 6813,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 7174,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (376 ms)"
+    },
+    {
+      "ms": 7180,
+      "typ": "STATION",
+      "text": "05 Fotos Schlüssel 1 von 2 · /autoschluessel/anfrage · Schritt 2 von 5 · Fotos hochladen · 1 von 2 · Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 7270,
+      "typ": "BILD",
+      "text": "eilige-desktop-04-05-fotos-schluessel-1-von-2.png"
+    },
+    {
+      "ms": 7270,
+      "typ": "ENTSCHEIDUNG",
+      "text": "kein funktionierender Schlüssel, Fotoschritt ohne Bild weiter"
+    },
+    {
+      "ms": 7326,
+      "typ": "WISCHEN",
+      "text": "5 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 7738,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (447 ms)"
+    },
+    {
+      "ms": 7744,
+      "typ": "STATION",
+      "text": "07 Fahrzeugschein 2 von 2 · /autoschluessel/anfrage · Schritt 2 von 5 · Fotos hochladen · 2 von 2 · Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 7814,
+      "typ": "BILD",
+      "text": "eilige-desktop-05-07-fahrzeugschein-2-von-2.png"
+    },
+    {
+      "ms": 11124,
+      "typ": "UPLOAD",
+      "text": "„Datei auswählen“ #0 ← testbild-fahrzeugschein-muster.jpg"
+    },
+    {
+      "ms": 11149,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 11616,
+      "typ": "WAHL",
+      "text": "„Ich bin berechtigt“"
+    },
+    {
+      "ms": 12028,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (389 ms)"
+    },
+    {
+      "ms": 12034,
+      "typ": "STATION",
+      "text": "08 Kontakt · /autoschluessel/anfrage · Schritt 3 von 5 · Preis oder Prüfung · 1 von 2 · Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 12090,
+      "typ": "BILD",
+      "text": "eilige-desktop-06-08-kontakt.png"
+    },
+    {
+      "ms": 13239,
+      "typ": "EINGABE",
+      "text": "Vorname ← „Erika“"
+    },
+    {
+      "ms": 14235,
+      "typ": "EINGABE",
+      "text": "Nachname ← „Testkundin“"
+    },
+    {
+      "ms": 15674,
+      "typ": "EINGABE",
+      "text": "E-Mail-Adresse ← „test@example.invalid“"
+    },
+    {
+      "ms": 16725,
+      "typ": "EINGABE",
+      "text": "Telefonnummer ← „0000 000000“"
+    },
+    {
+      "ms": 17842,
+      "typ": "EINGABE",
+      "text": "Straße und Hausnummer ← „Musterweg 1“"
+    },
+    {
+      "ms": 18619,
+      "typ": "EINGABE",
+      "text": "Postleitzahl ← „12345“"
+    },
+    {
+      "ms": 19658,
+      "typ": "EINGABE",
+      "text": "Ort* (Pflichtangabe) ← „Musterstadt“"
+    },
+    {
+      "ms": 19699,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 20039,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (357 ms)"
+    },
+    {
+      "ms": 20044,
+      "typ": "STATION",
+      "text": "09 Preis · /autoschluessel/anfrage · Schritt 3 von 5 · Preis oder Prüfung · 2 von 2 · Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 20122,
+      "typ": "BILD",
+      "text": "eilige-desktop-07-09-preis.png"
+    },
+    {
+      "ms": 20167,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 20737,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (587 ms)"
+    },
+    {
+      "ms": 20742,
+      "typ": "STATION",
+      "text": "10 Anzahlung · /autoschluessel/anfrage · Schritt 4 von 5 · Anzahlung · Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 20818,
+      "typ": "BILD",
+      "text": "eilige-desktop-08-10-anzahlung.png"
+    },
+    {
+      "ms": 23818,
+      "typ": "PRUEFUNG",
+      "text": "Anzahlungsseite: Nicht-GET-Anfragen in den folgenden 3 s: 0"
+    },
+    {
+      "ms": 23876,
+      "typ": "ZIEL",
+      "text": "golf-anzahlung: erreicht · Anzahlungsseite (Schritt 4 von 5) erreicht, ohne Schlüsselfotos und Fahrzeugschein-Testbild"
+    },
+    {
+      "ms": 24296,
+      "typ": "TIPP",
+      "text": "„Startseite“ → / (384 ms)"
+    },
+    {
+      "ms": 24303,
+      "typ": "STATION",
+      "text": "11 Startseite erneut · / ·  · Wobei können wir Ihnen helfen?"
+    },
+    {
+      "ms": 24373,
+      "typ": "BILD",
+      "text": "eilige-desktop-09-11-startseite-erneut.png"
+    },
+    {
+      "ms": 39784,
+      "typ": "WARTEN",
+      "text": "erwartete Anzeige „Welches Fahrzeug haben Sie?“ kam innerhalb von 15 s nicht; sichtbar war: Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 39784,
+      "typ": "TIPP",
+      "text": "„Termin anfragen“ → /autoschluessel/anfrage (15373 ms)"
+    },
+    {
+      "ms": 39795,
+      "typ": "STATION",
+      "text": "12 Zwischenstand-Hinweis · /autoschluessel/anfrage · Schritt 4 von 5 · Anzahlung · Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 39866,
+      "typ": "BILD",
+      "text": "eilige-desktop-10-12-zwischenstand-hinweis.png"
+    },
+    {
+      "ms": 39866,
+      "typ": "STOLPERSTEIN",
+      "text": "Anfrage, Zwischenstand: Hinweis „Zwischenstand“ sichtbar, bevor das neue Fahrzeug gesucht wird"
+    },
+    {
+      "ms": 40000,
+      "typ": "MENUE",
+      "text": "Kopfleisten-Menü offen (Mehr), vor dem Klick mit Escape geschlossen"
+    },
+    {
+      "ms": 40576,
+      "typ": "TIPP",
+      "text": "„Neu beginnen“ → /autoschluessel/anfrage (653 ms)"
+    },
+    {
+      "ms": 41803,
+      "typ": "EINGABE",
+      "text": "Marke und Modell ← „Dacia Sandero“"
+    },
+    {
+      "ms": 41809,
+      "typ": "STATION",
+      "text": "13 Suche Dacia Sandero · /autoschluessel/anfrage · Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 41884,
+      "typ": "BILD",
+      "text": "eilige-desktop-11-13-suche-dacia-sandero.png"
+    },
+    {
+      "ms": 42286,
+      "typ": "TIPP",
+      "text": "Ergebnis „Dacia Sandero“ (geführte Anfrage) → /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero (375 ms)"
+    },
+    {
+      "ms": 42298,
+      "typ": "STATION",
+      "text": "Thema 1 von 5 · /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero · Schritt 1 von 5 · Thema · Allgemeine Anfrage"
+    },
+    {
+      "ms": 42368,
+      "typ": "BILD",
+      "text": "eilige-desktop-12-thema-1-von-5.png"
+    },
+    {
+      "ms": 42410,
+      "typ": "WISCHEN",
+      "text": "3 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 42773,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero (383 ms)"
+    },
+    {
+      "ms": 42780,
+      "typ": "STATION",
+      "text": "Anliegen 2 von 5 · /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero · Schritt 2 von 5 · Anliegen · Allgemeine Anfrage"
+    },
+    {
+      "ms": 42842,
+      "typ": "BILD",
+      "text": "eilige-desktop-13-anliegen-2-von-5.png"
+    },
+    {
+      "ms": 45614,
+      "typ": "EINGABE",
+      "text": "Was sollen wir für Sie tun ← „Zweitschlüssel für den Dacia Sandero bitte.“"
+    },
+    {
+      "ms": 45654,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 46023,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero (385 ms)"
+    },
+    {
+      "ms": 46031,
+      "typ": "STATION",
+      "text": "Unterlagen 3 von 5 · /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero · Schritt 3 von 5 · Unterlagen · Allgemeine Anfrage"
+    },
+    {
+      "ms": 46094,
+      "typ": "BILD",
+      "text": "eilige-desktop-14-unterlagen-3-von-5.png"
+    },
+    {
+      "ms": 48671,
+      "typ": "UPLOAD",
+      "text": "„Datei auswählen“ #0 ← testbild-fahrzeugschein-muster.jpg"
+    },
+    {
+      "ms": 48717,
+      "typ": "WISCHEN",
+      "text": "3 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 49068,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero (370 ms)"
+    },
+    {
+      "ms": 49076,
+      "typ": "STATION",
+      "text": "Kontakt 4 von 5 · /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero · Schritt 4 von 5 · Kontakt · Allgemeine Anfrage"
+    },
+    {
+      "ms": 49140,
+      "typ": "BILD",
+      "text": "eilige-desktop-15-kontakt-4-von-5.png"
+    },
+    {
+      "ms": 50178,
+      "typ": "EINGABE",
+      "text": "Vorname ← „Erika“"
+    },
+    {
+      "ms": 51189,
+      "typ": "EINGABE",
+      "text": "Nachname ← „Testkundin“"
+    },
+    {
+      "ms": 52676,
+      "typ": "EINGABE",
+      "text": "E-Mail-Adresse ← „test@example.invalid“"
+    },
+    {
+      "ms": 53739,
+      "typ": "EINGABE",
+      "text": "Telefon ← „0000 000000“"
+    },
+    {
+      "ms": 53780,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 54123,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero (361 ms)"
+    },
+    {
+      "ms": 54130,
+      "typ": "STATION",
+      "text": "Vor dem Absenden 5 von 5 · /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero · Schritt 5 von 5 · Prüfen · Allgemeine Anfrage"
+    },
+    {
+      "ms": 54193,
+      "typ": "BILD",
+      "text": "eilige-desktop-16-vor-dem-absenden-5-von-5.png"
+    },
+    {
+      "ms": 57194,
+      "typ": "PRUEFUNG",
+      "text": "Seite vor dem Absenden erreicht, „Anfrage absenden“ sichtbar, nicht betätigt; Nicht-GET-Anfragen in den folgenden 3 s: 0"
+    },
+    {
+      "ms": 57194,
+      "typ": "ZIEL",
+      "text": "dacia-anfrage-vor-absenden: erreicht · Geführte Anfrage geprüft bis „Schritt 5 von 5 · Prüfen“, „Anfrage absenden“ sichtbar, nicht betätigt"
+    }
+  ],
+  "konsole": [
+    {
+      "ms": 8952,
+      "typ": "error",
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+    },
+    {
+      "ms": 46491,
+      "typ": "error",
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+    }
+  ],
+  "abgebrochen": [],
+  "endMs": 57194,
+  "persona": "eilige",
+  "basis": null,
+  "url": "http://localhost:3000/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero"
+}

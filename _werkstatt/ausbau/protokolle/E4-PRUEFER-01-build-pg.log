@@ -1,0 +1,184 @@
+
+> schluesselmacher24@0.1.0 build
+> node scripts/build.mjs
+
+
+▶ Datenbank bereitstellen
+Externe Datenbank (DATABASE_URL) — lokales Postgres wird nicht gestartet.
+
+▶ Migrationen
+[09:46:07] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[09:46:07] [32mINFO[39m: [36mReading migration files from /home/user/schluesselmacher24/src/migrations[39m
+[09:46:08] [32mINFO[39m: [36mDone.[39m
+
+▶ Seed
+[09:46:10] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Inhalte übernehmen …
+  einstellungen: bereits übernommen
+  zylinderkatalog: bereits übernommen
+  preisgruppen: aktuell
+  autoschluessel-leistungen: aktuell
+  preisregeln: aktuell
+  fahrzeugmarken: aktuell
+  codelinien: aktuell
+  beispielartikel: aktuell
+  rubriken: 14 abgeglichen
+  fahrzeugreihen: aktuell
+  leistungsseiten: aktuell
+  seiten: 8 abgeglichen
+  ratgeber: aktuell
+  einsatzgebiete: aktuell
+  sperrtage: aktuell
+  nachweise: aktuell
+  richtwerte: bereits übernommen
+Fertig.
+
+▶ Erster Backend-Zugang
+[09:46:15] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Es gibt bereits 1 Zugang/Zugänge — nichts angelegt.
+
+▶ Livegang-Prüfung
+[09:46:18] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Livegang-Prüfung: keine Platzhalter gefunden.
+
+▶ Next.js-Build
+▲ Next.js 16.4.4 (Turbopack)
+✓ Running next.config.ts took 43ms
+- Experiments (use with caution):
+  ✓ inlineCss
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 2.0s
+  Running TypeScript ...
+  Finished TypeScript in 24.0s ...
+  Collecting page data using 3 workers ...
+<claude-code-hint v="1" type="plugin" value="stripe@claude-plugins-official" />
+<claude-code-hint v="1" type="plugin" value="stripe@claude-plugins-official" />
+  Generating static pages using 3 workers (0/224) ...
+  Generating static pages using 3 workers (56/224) 
+  Generating static pages using 3 workers (112/224) 
+  Generating static pages using 3 workers (168/224) 
+✓ Generating static pages using 3 workers (224/224) in 12.3s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /[...unbekannt]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /api/cron/taeglich
+├ ƒ /api/cron/zahlungen
+├ ƒ /api/kunden-upload
+├ ƒ /api/zahlung/rueckkehr
+├ ƒ /api/zahlung/stripe
+├ ○ /apple-icon
+├ ○ /artikel
+├   /artikel/[slug]
+│ ├ ● /artikel/beispiel-schluesselkasten
+│ ├ ● /artikel/beispiel-schluesselsafe-zahlencode
+│ ├ ● /artikel/beispiel-schluesselkappen-set
+│ └ ● [+5 more paths]
+├ ○ /autoschluessel
+├ ƒ /autoschluessel/anfrage
+├ ○ /autoschluessel/fahrzeugoeffnung
+├ ○ /autoschluessel/funkschluessel
+├ ○ /autoschluessel/kopieren
+├ ○ /autoschluessel/marken
+├   /autoschluessel/marken/[make]
+│ ├ ● /autoschluessel/marken/volkswagen
+│ ├ ● /autoschluessel/marken/bmw
+│ ├ ● /autoschluessel/marken/mercedes-benz
+│ └ ● [+9 more paths]
+├   /autoschluessel/marken/[make]/[model]
+│ ├ ● /autoschluessel/marken/volkswagen/golf
+│ ├ ● /autoschluessel/marken/volkswagen/polo
+│ ├ ● /autoschluessel/marken/volkswagen/passat
+│ └ ● [+46 more paths]
+├ ○ /autoschluessel/nachmachen
+├ ○ /autoschluessel/opengraph-image-c05pb1
+├ ○ /autoschluessel/programmieren
+├ ○ /autoschluessel/schluesselbart-fraesen
+├ ○ /autoschluessel/smart-key
+├ ƒ /bestellung/[id]
+├ ○ /elektronische-zutrittsloesungen
+├ ○ /elektronische-zutrittsloesungen/konfigurator
+├ ○ /elektronische-zutrittsloesungen/opengraph-image-ierpbj
+├ ○ /gleichschliessende-zylinder
+├ ○ /gleichschliessende-zylinder/konfigurator
+├ ○ /gleichschliessende-zylinder/opengraph-image-19p65f
+├ ○ /icon.svg
+├ ○ /kasse
+├ ○ /llms.txt
+├ ○ /manifest.webmanifest
+├ ○ /opengraph-image-12o0cb
+├ ○ /partner-werden
+├ ○ /ratgeber
+├   /ratgeber/[slug]
+│ ├ ● /ratgeber/autoschluessel-verloren-was-tun
+│ ├ ● /ratgeber/unterschied-kopie-und-programmierung
+│ ├ ● /ratgeber/zylinder-richtig-ausmessen
+│ └ ● [+5 more paths]
+├ ○ /rechtliches/agb
+├ ○ /rechtliches/cookie-einstellungen
+├ ○ /rechtliches/datenschutz
+├ ○ /rechtliches/impressum
+├ ○ /rechtliches/versand-und-zahlung
+├ ○ /rechtliches/widerruf
+├ ƒ /rechtliches/widerruf/erklaeren
+├ ○ /robots.txt
+├ ○ /schliessanlagen
+├ ○ /schliessanlagen/konfigurator
+├ ○ /schliessanlagen/opengraph-image-1vjrui
+├ ○ /schluessel-einschicken
+├ ○ /schluessel-einschicken/opengraph-image-ip3out
+├ ○ /schluessel-nach-code
+├   /schluessel-nach-code/[slug]
+│ ├ ● /schluessel-nach-code/ms-01
+│ ├ ● /schluessel-nach-code/ms-02
+│ ├ ● /schluessel-nach-code/ms-03
+│ └ ● [+49 more paths]
+├ ● /schluessel-nach-code/hersteller/[hersteller]
+├   /schluessel-nach-code/kategorie/[familie]
+│ ├ ● /schluessel-nach-code/kategorie/moebel-und-bueroschloesser
+│ ├ ● /schluessel-nach-code/kategorie/spind-und-garderobenschloesser
+│ ├ ● /schluessel-nach-code/kategorie/briefkasten-und-postanlagen
+│ └ ● [+7 more paths]
+├ ○ /schluessel-nach-code/opengraph-image-1qg2h2
+├ ○ /schluessel-nach-vorlage
+├ ○ /schluessel-nach-vorlage/anfrage
+├ ○ /schluessel-nach-vorlage/opengraph-image-z36fs8
+├ ○ /service-und-termin
+├ ƒ /service-und-termin/anfrage
+├ ○ /service-und-termin/kontakt
+├ ○ /service-und-termin/opengraph-image-c539ca
+├ ○ /service-und-termin/terminstatus
+├ ○ /service-und-termin/vor-ort
+├ ○ /sicherheitstechnik
+├   /sicherheitstechnik/[slug]
+│ ├ ● /sicherheitstechnik/videoueberwachung
+│ ├ ● /sicherheitstechnik/alarmtechnik
+│ ├ ● /sicherheitstechnik/aussenhautsicherung
+│ └ ● [+4 more paths]
+├ ○ /sicherheitstechnik/opengraph-image-1r33uu
+├ ○ /sicherheitstechnik/sicherheitscheck
+├ ○ /sitemap.xml
+├ ○ /standorte
+├   /standorte/[city]
+│ └ ● /standorte/wetzlar
+├ ○ /tuer-und-schliesstechnik
+├   /tuer-und-schliesstechnik/[slug]
+│ ├ ● /tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder
+│ ├ ● /tuer-und-schliesstechnik/einsteckschloesser
+│ ├ ● /tuer-und-schliesstechnik/mehrfachverriegelungen
+│ └ ● [+7 more paths]
+├ ○ /tuer-und-schliesstechnik/opengraph-image-eevp0u
+└ ○ /warenkorb
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+=== EXIT 0 ===

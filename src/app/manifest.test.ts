@@ -7,7 +7,7 @@ describe('Web-App-Manifest', () => {
     const m = manifest();
     expect(m.short_name).toBe('SCHLÜSSELMACHER24');
     expect(m.lang).toBe('de');
-    // --background: 214 45% 98.6% (globals.css)
+    // --background: 0.9882 0.0028 255 (globals.css, OKLCH; vorher HSL 214 45% 98.6%)
     expect(m.background_color).toBe('#fafbfd');
     expect(m.theme_color).toBe(m.background_color);
     expect(m.icons?.map((icon) => icon.src)).toEqual(['/favicon.ico', '/icon.svg', '/apple-icon']);

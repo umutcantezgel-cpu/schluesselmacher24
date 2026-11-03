@@ -1,0 +1,345 @@
+{
+  "skript": "messung",
+  "zeit": "2026-11-03T00:19:53.900Z",
+  "argumente": {
+    "_": [],
+    "routen": "/,/autoschluessel,/autoschluessel/marken/volkswagen/golf",
+    "laeufe": "3",
+    "profil": "beide",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-messung-g1.json"
+  },
+  "budget": {
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "hinweis": "Werte: Median (Minimum–Maximum) je Ansicht und Profil; INP 0 = kein Ereignis über 16 ms",
+  "serien": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 640,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 186,
+          "jsKB": 204.2197265625,
+          "gesamtKB": 476.0380859375,
+          "ressourcen": 53,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 620,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 138,
+          "jsKB": 204.2197265625,
+          "gesamtKB": 504.671875,
+          "ressourcen": 55,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 668,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 138,
+          "jsKB": 204.2197265625,
+          "gesamtKB": 476.015625,
+          "ressourcen": 53,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 228,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 8,
+          "jsKB": 331.6630859375,
+          "gesamtKB": 844.646484375,
+          "ressourcen": 116,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 176,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 13,
+          "jsKB": 331.6630859375,
+          "gesamtKB": 844.646484375,
+          "ressourcen": 116,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 264,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 26,
+          "jsKB": 331.6630859375,
+          "gesamtKB": 844.6455078125,
+          "ressourcen": 116,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 656,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 186,
+          "jsKB": 183.3681640625,
+          "gesamtKB": 553.6396484375,
+          "ressourcen": 60,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 624,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 175,
+          "jsKB": 183.3681640625,
+          "gesamtKB": 580.1611328125,
+          "ressourcen": 61,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 636,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 179,
+          "jsKB": 190.3623046875,
+          "gesamtKB": 548.767578125,
+          "ressourcen": 60,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 216,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 8,
+          "jsKB": 279.103515625,
+          "gesamtKB": 934.677734375,
+          "ressourcen": 117,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 184,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 28,
+          "jsKB": 279.103515625,
+          "gesamtKB": 934.67578125,
+          "ressourcen": 117,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 204,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 23,
+          "jsKB": 279.103515625,
+          "gesamtKB": 934.6748046875,
+          "ressourcen": 117,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 612,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 161,
+          "jsKB": 190.3623046875,
+          "gesamtKB": 418.3740234375,
+          "ressourcen": 47,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 636,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 166,
+          "jsKB": 190.3623046875,
+          "gesamtKB": 418.37109375,
+          "ressourcen": 47,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 620,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 159,
+          "jsKB": 190.3623046875,
+          "gesamtKB": 418.37109375,
+          "ressourcen": 47,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 204,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 12,
+          "jsKB": 279.103515625,
+          "gesamtKB": 846.3857421875,
+          "ressourcen": 116,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 180,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 0,
+          "jsKB": 279.103515625,
+          "gesamtKB": 846.3857421875,
+          "ressourcen": 116,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 184,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 13,
+          "jsKB": 279.103515625,
+          "gesamtKB": 846.384765625,
+          "ressourcen": 116,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    }
+  ],
+  "zusammenfassung": [
+    {
+      "ansicht": "H01-start",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "640 (620–668)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "40 (32–40)",
+      "tbt": "138 (138–186)",
+      "jsKB": "204,2 (204,2–204,2)",
+      "gesamtKB": "476,0 (476,0–504,7)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H01-start",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "228 (176–264)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–32)",
+      "tbt": "13 (8–26)",
+      "jsKB": "331,7 (331,7–331,7)",
+      "gesamtKB": "844,6 (844,6–844,6)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "636 (624–656)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "16 (16–24)",
+      "tbt": "179 (175–186)",
+      "jsKB": "183,4 (183,4–190,4)",
+      "gesamtKB": "553,6 (548,8–580,2)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "204 (184–216)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (16–24)",
+      "tbt": "23 (8–28)",
+      "jsKB": "279,1 (279,1–279,1)",
+      "gesamtKB": "934,7 (934,7–934,7)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "620 (612–636)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (16–24)",
+      "tbt": "161 (159–166)",
+      "jsKB": "190,4 (190,4–190,4)",
+      "gesamtKB": "418,4 (418,4–418,4)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "184 (180–204)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (24–32)",
+      "tbt": "12 (0–13)",
+      "jsKB": "279,1 (279,1–279,1)",
+      "gesamtKB": "846,4 (846,4–846,4)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    }
+  ]
+}

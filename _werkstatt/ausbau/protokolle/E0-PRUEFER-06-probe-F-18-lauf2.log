@@ -1,0 +1,12 @@
+# Funktionsliste (E0-PRUEFER-04)
+
+Lauf: 2026-11-02T22:36:39.091Z · Server http://localhost:3000 · Bestanden 1 von 1
+
+| F-Nr. | Funktion | Ergebnis | Begründung oder Messwert | Dauer |
+|---|---|---|---|---|
+| F-18 | Fahrzeugwahl: Marke, Modell und Termin mit Vorauswahl | BESTANDEN | Marke Volkswagen auf der Markenseite: ja; Modell Golf unter Volkswagen: ja; Modellseite Golf erreicht: ja (/autoschluessel/marken/volkswagen/golf); Link in den Termin mit marke=volkswagen und modell=golf: ja (/autoschluessel/anfrage?marke=volkswagen&modell=golf); Termin-Assistent geöffnet: ja (/autoschluessel/anfrage); Marke im Assistenten vorausgewählt (Option Volkswagen gewählt): ja (Welche Marke hat Ihr Fahrzeug?) | 1.8 s |
+
+Vorher/Nachher: content/records.json vorhanden nein → nein; Serverlog neu 0 Zeichen, Treffer Vorgang/Anfrage/POST: 0
+
+Markdown: /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/probe-f18.md
+JSON-Protokoll: /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/probe-f18.json

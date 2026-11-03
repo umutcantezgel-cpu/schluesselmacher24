@@ -1,0 +1,198 @@
+{
+  "skript": "animationen",
+  "server": "http://localhost:3000",
+  "geraet": "mobil",
+  "bekannt": [
+    "spin",
+    "ping",
+    "pulse",
+    "bounce",
+    "sm24-draw",
+    "sm24-reveal",
+    "sm24-fade",
+    "sm24-pop",
+    "sm24-dash",
+    "sm24-schritt-vor",
+    "sm24-schritt-zurueck",
+    "sm24-scrub-y",
+    "sm24-scrub-marke",
+    "sm24-schluessel-ein",
+    "sm24-stift-heben",
+    "sm24-feder-heben",
+    "sm24-erscheinen",
+    "sm24-aufdecken",
+    "sm24-lesen-aktiv",
+    "menue-ein",
+    "schublade-ein",
+    "schleier-ein"
+  ],
+  "ansichten": [
+    {
+      "id": "H01-start",
+      "pfad": "/",
+      "css": {
+        "sm24-fade": 2,
+        "sm24-draw": 15,
+        "sm24-reveal": 6,
+        "sm24-aufdecken": 1,
+        "sm24-scrub-marke": 10,
+        "sm24-scrub-y": 2,
+        "sm24-pop": 13
+      },
+      "uebergang": {},
+      "waapi": [
+        "g.sm24-fade",
+        "path.stroke-foreground",
+        "g"
+      ],
+      "unbekannt": []
+    },
+    {
+      "id": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "css": {
+        "sm24-reveal": 6,
+        "sm24-fade": 3,
+        "sm24-draw": 5,
+        "sm24-dash": 3,
+        "sm24-scrub-marke": 10,
+        "sm24-scrub-y": 2
+      },
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    },
+    {
+      "id": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "css": {
+        "sm24-reveal": 10,
+        "sm24-fade": 5,
+        "sm24-draw": 9,
+        "sm24-dash": 3
+      },
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    },
+    {
+      "id": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "css": {},
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    },
+    {
+      "id": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "css": {
+        "sm24-pop": 2,
+        "sm24-draw": 8
+      },
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    },
+    {
+      "id": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "css": {
+        "sm24-fade": 3,
+        "sm24-reveal": 2,
+        "sm24-pop": 2,
+        "sm24-draw": 10,
+        "sm24-aufdecken": 1
+      },
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    },
+    {
+      "id": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "css": {
+        "sm24-reveal": 8,
+        "sm24-fade": 6,
+        "sm24-draw": 7,
+        "sm24-aufdecken": 1
+      },
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    },
+    {
+      "id": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "css": {
+        "sm24-fade": 1,
+        "sm24-draw": 1
+      },
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    },
+    {
+      "id": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "css": {
+        "schleier-ein": 3
+      },
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    },
+    {
+      "id": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "css": {
+        "sm24-reveal": 4,
+        "sm24-fade": 6,
+        "sm24-draw": 32,
+        "sm24-pop": 37
+      },
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    },
+    {
+      "id": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "css": {},
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    },
+    {
+      "id": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "css": {
+        "sm24-draw": 1
+      },
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    },
+    {
+      "id": "H13-kasse",
+      "pfad": "/kasse",
+      "css": {},
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    },
+    {
+      "id": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "css": {
+        "sm24-reveal": 5,
+        "sm24-draw": 8,
+        "sm24-pop": 4,
+        "sm24-lesen-aktiv": 12
+      },
+      "uebergang": {},
+      "waapi": [],
+      "unbekannt": []
+    }
+  ]
+}

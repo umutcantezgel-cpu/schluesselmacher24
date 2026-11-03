@@ -1,0 +1,16 @@
+{
+ "quelle": "L",
+ "eintraege": [
+  {
+   "kennung": "L-09",
+   "fundstelle": "x",
+   "inhalt": "y",
+   "bestand": null,
+   "bestand_fundstelle": null,
+   "status": "kaputt",
+   "pakete": [],
+   "beleg": null,
+   "gruppe": null
+  }
+ ]
+}

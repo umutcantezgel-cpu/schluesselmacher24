@@ -1,0 +1,102 @@
+{
+  "skript": "bewegung-einzelbilder",
+  "zeit": "2026-11-03T04:54:05.576Z",
+  "argumente": {
+    "_": [
+      "einzelbilder",
+      "/"
+    ],
+    "selektor": "[data-motion=\"B-01\"]",
+    "dauer": "1200",
+    "geraet": "mobil",
+    "ziel": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bildfolgen",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bewegung-einzelbilder-mobil.json",
+    "echtzeit": false
+  },
+  "pfad": "/",
+  "selektor": "[data-motion=\"B-01\"]",
+  "dauer": 1200,
+  "geraet": "mobil",
+  "modus": "animationszeit",
+  "rand": 24,
+  "motion": {
+    "element": "div",
+    "zustand": "play",
+    "wartezeit_ms": 0
+  },
+  "erweitert": null,
+  "animationen": 6,
+  "unendlich": 0,
+  "fenster": {
+    "start": 0,
+    "ende": 1200
+  },
+  "bilder": [
+    {
+      "k": 0,
+      "t": 0,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bildfolgen/start__mobil__data-motion-b-01__0.jpg",
+      "clip": {
+        "x": 0,
+        "y": 262.078125,
+        "width": 390,
+        "height": 238
+      }
+    },
+    {
+      "k": 1,
+      "t": 300,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bildfolgen/start__mobil__data-motion-b-01__1.jpg",
+      "clip": {
+        "x": 0,
+        "y": 262.078125,
+        "width": 390,
+        "height": 238
+      }
+    },
+    {
+      "k": 2,
+      "t": 600,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bildfolgen/start__mobil__data-motion-b-01__2.jpg",
+      "clip": {
+        "x": 0,
+        "y": 262.078125,
+        "width": 390,
+        "height": 238
+      }
+    },
+    {
+      "k": 3,
+      "t": 900,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bildfolgen/start__mobil__data-motion-b-01__3.jpg",
+      "clip": {
+        "x": 0,
+        "y": 262.078125,
+        "width": 390,
+        "height": 238
+      }
+    },
+    {
+      "k": 4,
+      "t": 1200,
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bildfolgen/start__mobil__data-motion-b-01__4.jpg",
+      "clip": {
+        "x": 0,
+        "y": 262.078125,
+        "width": 390,
+        "height": 238
+      }
+    }
+  ],
+  "treffer": {
+    "gesamt": 1,
+    "index": 0,
+    "versteckt": 0,
+    "groesse": [
+      350,
+      190
+    ],
+    "viewBox": null,
+    "element": "div"
+  }
+}

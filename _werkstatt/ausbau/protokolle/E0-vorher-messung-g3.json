@@ -1,0 +1,453 @@
+{
+  "skript": "messung",
+  "zeit": "2026-11-03T00:24:45.966Z",
+  "argumente": {
+    "_": [],
+    "routen": "/schluessel-einschicken,/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator",
+    "laeufe": "3",
+    "profil": "beide",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-messung-g3.json"
+  },
+  "budget": {
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "hinweis": "Werte: Median (Minimum–Maximum) je Ansicht und Profil; INP 0 = kein Ereignis über 16 ms",
+  "serien": [
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 564,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 201,
+          "jsKB": 240.7548828125,
+          "gesamtKB": 484.92578125,
+          "ressourcen": 52,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 568,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 140,
+          "jsKB": 238.6875,
+          "gesamtKB": 511.51171875,
+          "ressourcen": 54,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 556,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 153,
+          "jsKB": 244.6748046875,
+          "gesamtKB": 485.1044921875,
+          "ressourcen": 52,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 156,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 288.20703125,
+          "gesamtKB": 770.8935546875,
+          "ressourcen": 105,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 168,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 2,
+          "jsKB": 288.20703125,
+          "gesamtKB": 770.8935546875,
+          "ressourcen": 105,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 140,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 1,
+          "jsKB": 288.20703125,
+          "gesamtKB": 770.8896484375,
+          "ressourcen": 105,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 580,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 203,
+          "jsKB": 217.5390625,
+          "gesamtKB": 493.771484375,
+          "ressourcen": 46,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 620,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 207,
+          "jsKB": 217.5390625,
+          "gesamtKB": 474.43359375,
+          "ressourcen": 44,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 608,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 229,
+          "jsKB": 217.5390625,
+          "gesamtKB": 474.43359375,
+          "ressourcen": 44,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 196,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 51,
+          "jsKB": 294.8740234375,
+          "gesamtKB": 774.283203125,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 188,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 42,
+          "jsKB": 294.8740234375,
+          "gesamtKB": 774.28125,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 220,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 60,
+          "jsKB": 294.8740234375,
+          "gesamtKB": 774.2783203125,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 652,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 41,
+          "jsKB": 261.5771484375,
+          "gesamtKB": 609.2080078125,
+          "ressourcen": 60,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 644,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 143,
+          "jsKB": 266.50390625,
+          "gesamtKB": 591.8525390625,
+          "ressourcen": 59,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 652,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 162,
+          "jsKB": 266.50390625,
+          "gesamtKB": 617.8310546875,
+          "ressourcen": 61,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 172,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 313.9306640625,
+          "gesamtKB": 839.919921875,
+          "ressourcen": 112,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 216,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 3,
+          "jsKB": 313.9306640625,
+          "gesamtKB": 839.9169921875,
+          "ressourcen": 112,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 176,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 16,
+          "jsKB": 313.9306640625,
+          "gesamtKB": 839.919921875,
+          "ressourcen": 112,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 488,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 192,
+          "jsKB": 239.37890625,
+          "gesamtKB": 488.56640625,
+          "ressourcen": 47,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 504,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 221,
+          "jsKB": 225.7802734375,
+          "gesamtKB": 474.9677734375,
+          "ressourcen": 45,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 540,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 268,
+          "jsKB": 225.7802734375,
+          "gesamtKB": 474.9677734375,
+          "ressourcen": 45,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 220,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 72,
+          "jsKB": 292.521484375,
+          "gesamtKB": 775.103515625,
+          "ressourcen": 105,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 240,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 45,
+          "jsKB": 292.521484375,
+          "gesamtKB": 775.103515625,
+          "ressourcen": 105,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 164,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 28,
+          "jsKB": 292.521484375,
+          "gesamtKB": 775.1025390625,
+          "ressourcen": 105,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    }
+  ],
+  "zusammenfassung": [
+    {
+      "ansicht": "H08-einschicken",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "564 (556–568)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (16–24)",
+      "tbt": "153 (140–201)",
+      "jsKB": "240,8 (238,7–244,7)",
+      "gesamtKB": "485,1 (484,9–511,5)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "156 (140–168)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–40)",
+      "tbt": "1 (0–2)",
+      "jsKB": "288,2 (288,2–288,2)",
+      "gesamtKB": "770,9 (770,9–770,9)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "608 (580–620)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "16 (16–16)",
+      "tbt": "207 (203–229)",
+      "jsKB": "217,5 (217,5–217,5)",
+      "gesamtKB": "474,4 (474,4–493,8)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "196 (188–220)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–32)",
+      "tbt": "51 (42–60)",
+      "jsKB": "294,9 (294,9–294,9)",
+      "gesamtKB": "774,3 (774,3–774,3)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "652 (644–652)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (24–32)",
+      "tbt": "143 (41–162)",
+      "jsKB": "266,5 (261,6–266,5)",
+      "gesamtKB": "609,2 (591,9–617,8)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "176 (172–216)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–32)",
+      "tbt": "3 (0–16)",
+      "jsKB": "313,9 (313,9–313,9)",
+      "gesamtKB": "839,9 (839,9–839,9)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "504 (488–540)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "16 (16–24)",
+      "tbt": "221 (192–268)",
+      "jsKB": "225,8 (225,8–239,4)",
+      "gesamtKB": "475,0 (475,0–488,6)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "220 (164–240)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (24–32)",
+      "tbt": "45 (28–72)",
+      "jsKB": "292,5 (292,5–292,5)",
+      "gesamtKB": "775,1 (775,1–775,1)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    }
+  ]
+}

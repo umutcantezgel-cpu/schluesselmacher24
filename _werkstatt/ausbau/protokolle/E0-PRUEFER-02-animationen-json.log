@@ -1,0 +1,51 @@
+{
+  "skript": "animationen",
+  "server": "http://localhost:3000",
+  "geraet": "mobil",
+  "bekannt": [
+    "spin",
+    "ping",
+    "pulse",
+    "bounce",
+    "sm24-draw",
+    "sm24-reveal",
+    "sm24-fade",
+    "sm24-pop",
+    "sm24-dash",
+    "sm24-schritt-vor",
+    "sm24-schritt-zurueck",
+    "sm24-scrub-y",
+    "sm24-scrub-marke",
+    "sm24-schluessel-ein",
+    "sm24-stift-heben",
+    "sm24-feder-heben",
+    "sm24-erscheinen",
+    "sm24-aufdecken",
+    "sm24-lesen-aktiv",
+    "menue-ein",
+    "schublade-ein",
+    "schleier-ein"
+  ],
+  "ansichten": [
+    {
+      "id": "/",
+      "pfad": "/",
+      "css": {
+        "sm24-fade": 2,
+        "sm24-draw": 15,
+        "sm24-reveal": 6,
+        "sm24-aufdecken": 1,
+        "sm24-scrub-marke": 10,
+        "sm24-scrub-y": 2,
+        "sm24-pop": 13
+      },
+      "uebergang": {},
+      "waapi": [
+        "g.sm24-fade",
+        "path.stroke-foreground",
+        "g"
+      ],
+      "unbekannt": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+ok      fremde Datenbankadresse bricht ab
+ok      fremder Postgres-Host bricht ab
+ok      fremde Ablage bricht ab
+ok      Stripe-Schlüssel bricht ab
+ok      DATABASE_URL aus der Shell wird geleert
+ok      .env.local wird neutralisiert
+ok      JSON-Modus
+ok      Postgres-Modus nur localhost
+ok      ohne Befehl
+DATENWEICHE: alle Fälle bestanden
+
+real	0m0.345s
+user	0m0.266s
+sys	0m0.075s
+EXIT=0

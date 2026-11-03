@@ -1,0 +1,224 @@
+{
+  "kennung": "hausverwaltung",
+  "geraet": "desktop",
+  "tippsGesamt": 4,
+  "wischer": 3,
+  "tippsBisErsteEingabe": null,
+  "ersteEingabe": null,
+  "ladeMs": 272,
+  "ziele": {
+    "planung-schliessanlage": {
+      "erreicht": true,
+      "ms": 2741,
+      "text": "Projektkonfigurator Schritt 2 von 11 mit Auswahl Hausverwaltung"
+    }
+  },
+  "abbruch": null,
+  "endknopf": "Planung: Schritt 2 von 11 erreicht, keine Angabe weiter, nichts gesendet",
+  "reaktionen": [
+    477,
+    510,
+    468
+  ],
+  "maxReaktionMs": 510,
+  "telPruefungen": [
+    {
+      "ort": "01 Startseite",
+      "sichtbar": 4,
+      "imBild": 1,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "02 Menü Schließanlagen",
+      "sichtbar": 4,
+      "imBild": 1,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "03 Planung Schritt 1 von 11",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "04 Planung Schritt 2 von 11",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    }
+  ],
+  "tippziele": [],
+  "stationen": [
+    {
+      "ms": 294,
+      "ort": "01 Startseite",
+      "url": "/",
+      "fort": "",
+      "ueberschrift": "Wobei können wir Ihnen helfen?",
+      "hoehe": 5866,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 4,
+        "imBild": 1,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 947,
+      "ort": "02 Menü Schließanlagen",
+      "url": "/",
+      "fort": "",
+      "ueberschrift": "Wobei können wir Ihnen helfen?",
+      "hoehe": 5866,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 4,
+        "imBild": 1,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 1603,
+      "ort": "03 Planung Schritt 1 von 11",
+      "url": "/schliessanlagen/konfigurator",
+      "fort": "Schritt 1 von 11 · Kundentyp",
+      "ueberschrift": "Schließanlage: Projekt erfassen",
+      "hoehe": 2814,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 2657,
+      "ort": "04 Planung Schritt 2 von 11",
+      "url": "/schliessanlagen/konfigurator",
+      "fort": "Schritt 2 von 11 · Objekt",
+      "ueberschrift": "Schließanlage: Projekt erfassen",
+      "hoehe": 2552,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    }
+  ],
+  "stolpersteine": [],
+  "bilder": [
+    "hausverwaltung-desktop-01-01-startseite.png",
+    "hausverwaltung-desktop-02-02-menue-schliessanlagen.png",
+    "hausverwaltung-desktop-03-03-planung-schritt-1-von-11.png",
+    "hausverwaltung-desktop-04-04-planung-schritt-2-von-11.png"
+  ],
+  "anfragen": [
+    {
+      "ms": 1339,
+      "methode": "POST",
+      "pfad": "/schliessanlagen/konfigurator",
+      "host": "localhost:3000",
+      "serveraktion": true,
+      "inhalt": "text/plain;charset=UTF-8",
+      "ziel": ""
+    }
+  ],
+  "formularKlicks": [],
+  "antworten": [
+    {
+      "ms": 1350,
+      "pfad": "/schliessanlagen/konfigurator",
+      "status": 200,
+      "text": ""
+    }
+  ],
+  "menueOffen": [],
+  "schritte": [
+    {
+      "ms": 294,
+      "typ": "STATION",
+      "text": "01 Startseite · / ·  · Wobei können wir Ihnen helfen?"
+    },
+    {
+      "ms": 399,
+      "typ": "BILD",
+      "text": "hausverwaltung-desktop-01-01-startseite.png"
+    },
+    {
+      "ms": 936,
+      "typ": "TIPP",
+      "text": "„Schließanlagen“ → / (477 ms)"
+    },
+    {
+      "ms": 947,
+      "typ": "STATION",
+      "text": "02 Menü Schließanlagen · / ·  · Wobei können wir Ihnen helfen?"
+    },
+    {
+      "ms": 1043,
+      "typ": "BILD",
+      "text": "hausverwaltung-desktop-02-02-menue-schliessanlagen.png"
+    },
+    {
+      "ms": 1594,
+      "typ": "TIPP",
+      "text": "„Projektkonfigurator“ → /schliessanlagen/konfigurator (510 ms)"
+    },
+    {
+      "ms": 1603,
+      "typ": "STATION",
+      "text": "03 Planung Schritt 1 von 11 · /schliessanlagen/konfigurator · Schritt 1 von 11 · Kundentyp · Schließanlage: Projekt erfassen"
+    },
+    {
+      "ms": 1671,
+      "typ": "BILD",
+      "text": "hausverwaltung-desktop-03-03-planung-schritt-1-von-11.png"
+    },
+    {
+      "ms": 1695,
+      "typ": "WISCHEN",
+      "text": "1 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 2154,
+      "typ": "WAHL",
+      "text": "„Hausverwaltung“"
+    },
+    {
+      "ms": 2207,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 2649,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /schliessanlagen/konfigurator (468 ms)"
+    },
+    {
+      "ms": 2657,
+      "typ": "STATION",
+      "text": "04 Planung Schritt 2 von 11 · /schliessanlagen/konfigurator · Schritt 2 von 11 · Objekt · Schließanlage: Projekt erfassen"
+    },
+    {
+      "ms": 2741,
+      "typ": "BILD",
+      "text": "hausverwaltung-desktop-04-04-planung-schritt-2-von-11.png"
+    },
+    {
+      "ms": 2741,
+      "typ": "ZIEL",
+      "text": "planung-schliessanlage: erreicht · Projektkonfigurator Schritt 2 von 11 mit Auswahl Hausverwaltung"
+    }
+  ],
+  "konsole": [],
+  "abgebrochen": [],
+  "endMs": 2741,
+  "persona": "hausverwaltung",
+  "basis": null,
+  "url": "http://localhost:3000/schliessanlagen/konfigurator"
+}

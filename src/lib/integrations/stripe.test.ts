@@ -179,7 +179,8 @@ describe('starteCheckout und createPayment', () => {
       expiresAt: new Date(1_800_000_000 * 1000).toISOString(),
     });
     expect(ergebnis.providerRef).toBeUndefined();
-    expect(konstruktor).toHaveBeenCalledWith('sk_test_123', expect.objectContaining({ maxNetworkRetries: 2 }));
+    // Feste API-Version: Ab 2026-09-30.endive scheitert payment_method_types (siehe STRIPE_API_VERSION).
+    expect(konstruktor).toHaveBeenCalledWith('sk_test_123', expect.objectContaining({ apiVersion: '2026-08-26.dahlia', maxNetworkRetries: 2 }));
     // Kein eigener Idempotenz-Schlüssel (Kennungen wiederholen sich zwischen Umgebungen).
     expect(erstellen.mock.calls[0]).toHaveLength(1);
     expect(erstellen.mock.calls[0][0].metadata.umgebung).toBe('lokal');
@@ -201,5 +202,15 @@ describe('starteCheckout und createPayment', () => {
     expect(ergebnis).toMatchObject({ status: 'offen' });
     expect(ergebnis.redirectUrl).toBeUndefined();
     expect(erstellen).not.toHaveBeenCalled();
+  });
+});
+
+describe('Stripe-API-Version (E3-OPUS-10, G9)', () => {
+  it('ist genau die Version des installierten SDK: festschreiben ändert das Zahlungsverhalten nicht', async () => {
+    const { readFileSync } = await import('node:fs');
+    const { join } = await import('node:path');
+    const { STRIPE_API_VERSION } = await import('./stripe');
+    const sdk = readFileSync(join(process.cwd(), 'node_modules/stripe/cjs/apiVersion.js'), 'utf8');
+    expect(sdk).toContain(`exports.ApiVersion = '${STRIPE_API_VERSION}';`);
   });
 });

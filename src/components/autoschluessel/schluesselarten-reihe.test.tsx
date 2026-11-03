@@ -79,7 +79,7 @@ describe('SchluesselartenReihe in der Kopf-Variante', () => {
   });
 
   it('lässt jede Karte erst beim Sichtbarwerden zeichnen', () => {
-    expect(html.match(/<li[^>]*data-motion="wait"/g)).toHaveLength(4);
+    expect(html.match(/<li[^>]*data-zustand="wait"/g)).toHaveLength(4);
   });
 
   it('beschriftet die Zeichnungen und kennzeichnet sie als schematisch', () => {

@@ -1,40 +1,26 @@
 import type { Metadata, Viewport } from 'next';
-import { IBM_Plex_Sans, IBM_Plex_Mono, Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
 
+import { schriftKlassen } from '@/fonts/schriften';
+import { STARTSKRIPT } from '@/lib/bewegung';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { MobileActionBar } from '@/components/layout/mobile-action-bar';
 import { EinwilligungHinweis } from '@/components/statistik/einwilligung-hinweis';
 import { GoogleAnalytics } from '@/components/statistik/google-analytics';
+import { FachIcon } from '@/components/visual/fach-icon';
+import { getRubriken, getSettings } from '@/lib/data';
+import { defaults } from '@/lib/data/defaults';
+import { navigationsGruppen } from '@/lib/navigation';
+import { kontakt } from '@/lib/rechtliches/firma';
+import { telefonLink } from '@/lib/telefon';
 import { getSiteUrl } from '@/lib/site-url';
 import { gaMessId } from '@/lib/statistik';
 import { googleVerifizierung, indexierungErlaubt } from '@/lib/umgebung';
 
 import './globals.css';
 
-/* Schriften: ruhig und technisch, gut lesbar auf kleinen Bildschirmen. */
-
-const display = IBM_Plex_Sans({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-  weight: ['500', '600', '700'],
-});
-
-const body = Inter({
-  subsets: ['latin'],
-  variable: '--font-body',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-});
-
-const mono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  display: 'swap',
-  weight: ['400', '500', '600'],
-});
+/* Schriften: ruhig und technisch, gut lesbar auf kleinen Bildschirmen; lokal aus src/fonts (A-003). */
 
 const siteUrl = getSiteUrl();
 /** Google Analytics 4 nur mit Mess-ID — ohne sie wird nichts davon geladen. */
@@ -73,16 +59,37 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: 'cover',
   // Viewport-Metadaten verlangen einen Farbwert; er entspricht `--background` (globals.css).
-  themeColor: '#f7f9fb',
+  themeColor: '#fafbfd',
 };
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  // Navigation aus den Rubriken (G-08, G-11). Ist die Datenbank kurz nicht erreichbar, gelten die
+  // Standardwerte wie im Fuß, statt die Seite zu brechen.
+  const [rubriken, settings] = await Promise.all([
+    getRubriken().catch((error: unknown) => {
+      console.error('[kopf] Rubriken nicht geladen, Standardwerte verwendet', error);
+      return defaults.rubriken();
+    }),
+    getSettings().catch(() => defaults.settings()),
+  ]);
+  const gruppen = navigationsGruppen(rubriken);
+  // Fach-Icons auf dem Server gezeichnet: Der Kopf ist eine Client-Komponente, so bleibt der Icon-Code aus dem Bündel.
+  const rubrikIcons = Object.fromEntries(
+    gruppen.flatMap((g) => g.rubriken).map((r) => [r.id, <FachIcon key={r.id} name={r.icon} size={28} />]),
+  );
+  const nummer = kontakt(settings.company).telefon;
+  const telefon = nummer ? { anzeige: nummer, href: telefonLink(nummer) } : null;
+
   return (
     <html
       lang="de"
-      className={`${display.variable} ${body.variable} ${mono.variable} h-full`}
+      className={`${schriftKlassen} h-full`}
       suppressHydrationWarning
     >
+      <head>
+        {/* Bewegung an oder ruhig, vor dem ersten Rendern (A-007): setzt html[data-bewegung]. */}
+        <script dangerouslySetInnerHTML={{ __html: STARTSKRIPT }} />
+      </head>
       <body className="flex min-h-full flex-col">
         <a
           href="#inhalt"
@@ -91,14 +98,14 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           Zum Inhalt springen
         </a>
 
-        <SiteHeader />
+        <SiteHeader gruppen={gruppen} rubrikIcons={rubrikIcons} telefon={telefon} />
 
         <main id="inhalt" className="flex-1 pt-header">
           {children}
         </main>
 
         <SiteFooter />
-        <MobileActionBar />
+        <MobileActionBar telefonHref={telefon?.href} />
         {gaId && (
           <>
             <GoogleAnalytics messId={gaId} />

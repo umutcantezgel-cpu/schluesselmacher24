@@ -17,6 +17,8 @@ export const UPLOAD_KATEGORIEN = [
   'grundriss',
   'dokument',
   'objektfoto',
+  'sicherungskarte',
+  'vollmacht',
 ] as const satisfies readonly UploadKategorie[];
 
 /** Kennung einer Kundendatei, wie sie der Browser als `storageKey` zurückschickt. */
@@ -26,7 +28,7 @@ export const KUNDENDATEI_ID_MUSTER = /^[1-9][0-9]{0,11}$/;
 export const UPLOAD_TOKEN_MUSTER = /^[A-Za-z0-9_-]{43}$/;
 
 /** Nur bei diesen Unterlagen ist ein PDF sinnvoll; Fotos müssen Bilder sein. */
-const KATEGORIEN_MIT_PDF: readonly UploadKategorie[] = ['fahrzeugschein', 'grundriss', 'dokument'];
+const KATEGORIEN_MIT_PDF: readonly UploadKategorie[] = ['fahrzeugschein', 'grundriss', 'dokument', 'sicherungskarte', 'vollmacht'];
 
 /*
  * Vercel nimmt je Anfrage höchstens 4,5 MB an. Mit 4 MB je Datei passt die

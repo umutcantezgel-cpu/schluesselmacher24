@@ -1,0 +1,199 @@
+Snippet-Messung · 181 indexierbare Seiten aus inventar-2026-11-02_23-23-33.json
+
+fc-match Arial: LiberationSans-Regular.ttf: "Liberation Sans" "Regular"
+Schriftprüfung (20px): Arial 645,5 px · Liberation Sans 645,5 px · Ersatzschrift 806,7 px (monospace)
+Arial gleich Liberation Sans: ja · Ersatzschrift greift: ja
+
+| Adresse | Titel (px) | Titel | Beschreibung (Zeichen) | Beschreibung |
+|---|---|---|---|---|
+| http://localhost:3000/ | 752,9 | nein (zu breit) | 158 | ja |
+| http://localhost:3000/autoschluessel | 761,8 | nein (zu breit) | 154 | ja |
+| http://localhost:3000/autoschluessel/anfrage | 681,1 | nein (zu breit) | 126 | ja |
+| http://localhost:3000/autoschluessel/fahrzeugoeffnung | 558,4 | ja | 110 | nein (zu kurz) |
+| http://localhost:3000/autoschluessel/funkschluessel | 681,8 | nein (zu breit) | 142 | ja |
+| http://localhost:3000/autoschluessel/kopieren | 767,4 | nein (zu breit) | 159 | ja |
+| http://localhost:3000/autoschluessel/marken | 665,5 | nein (zu breit) | 127 | ja |
+| http://localhost:3000/autoschluessel/marken/audi | 683,3 | nein (zu breit) | 134 | ja |
+| http://localhost:3000/autoschluessel/marken/audi/a1 | 706,6 | nein (zu breit) | 144 | ja |
+| http://localhost:3000/autoschluessel/marken/audi/a3 | 706,6 | nein (zu breit) | 156 | ja |
+| http://localhost:3000/autoschluessel/marken/audi/a4 | 706,6 | nein (zu breit) | 144 | ja |
+| http://localhost:3000/autoschluessel/marken/audi/a6 | 706,6 | nein (zu breit) | 155 | ja |
+| http://localhost:3000/autoschluessel/marken/audi/q3 | 707,4 | nein (zu breit) | 144 | ja |
+| http://localhost:3000/autoschluessel/marken/bmw | 692,1 | nein (zu breit) | 136 | ja |
+| http://localhost:3000/autoschluessel/marken/bmw/1er | 719,9 | nein (zu breit) | 139 | ja |
+| http://localhost:3000/autoschluessel/marken/bmw/3er | 719,9 | nein (zu breit) | 139 | ja |
+| http://localhost:3000/autoschluessel/marken/bmw/5er | 719,9 | nein (zu breit) | 139 | ja |
+| http://localhost:3000/autoschluessel/marken/bmw/x1 | 715,5 | nein (zu breit) | 138 | ja |
+| http://localhost:3000/autoschluessel/marken/bmw/x3 | 715,5 | nein (zu breit) | 138 | ja |
+| http://localhost:3000/autoschluessel/marken/fiat | 676,6 | nein (zu breit) | 134 | ja |
+| http://localhost:3000/autoschluessel/marken/fiat/500 | 708,8 | nein (zu breit) | 147 | ja |
+| http://localhost:3000/autoschluessel/marken/fiat/ducato | 738,8 | nein (zu breit) | 150 | ja |
+| http://localhost:3000/autoschluessel/marken/fiat/panda | 733,3 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/autoschluessel/marken/ford | 684,4 | nein (zu breit) | 144 | ja |
+| http://localhost:3000/autoschluessel/marken/ford/fiesta | 737,7 | nein (zu breit) | 150 | ja |
+| http://localhost:3000/autoschluessel/marken/ford/focus | 737,7 | nein (zu breit) | 158 | ja |
+| http://localhost:3000/autoschluessel/marken/ford/kuga | 730,0 | nein (zu breit) | 146 | ja |
+| http://localhost:3000/autoschluessel/marken/ford/transit | 743,6 | nein (zu breit) | 151 | ja |
+| http://localhost:3000/autoschluessel/marken/hyundai | 716,6 | nein (zu breit) | 135 | ja |
+| http://localhost:3000/autoschluessel/marken/hyundai/i20 | 742,2 | nein (zu breit) | 150 | ja |
+| http://localhost:3000/autoschluessel/marken/hyundai/i30 | 742,2 | nein (zu breit) | 159 | ja |
+| http://localhost:3000/autoschluessel/marken/hyundai/tucson | 780,4 | nein (zu breit) | 146 | ja |
+| http://localhost:3000/autoschluessel/marken/mercedes-benz | 783,3 | nein (zu breit) | 144 | ja |
+| http://localhost:3000/autoschluessel/marken/mercedes-benz/a-klasse | 689,9 | nein (zu breit) | 123 | ja |
+| http://localhost:3000/autoschluessel/marken/mercedes-benz/c-klasse | 691,0 | nein (zu breit) | 123 | ja |
+| http://localhost:3000/autoschluessel/marken/mercedes-benz/e-klasse | 689,9 | nein (zu breit) | 123 | ja |
+| http://localhost:3000/autoschluessel/marken/mercedes-benz/sprinter | 679,9 | nein (zu breit) | 124 | ja |
+| http://localhost:3000/autoschluessel/marken/mercedes-benz/vito | 644,0 | nein (zu breit) | 120 | ja |
+| http://localhost:3000/autoschluessel/marken/opel | 685,5 | nein (zu breit) | 145 | ja |
+| http://localhost:3000/autoschluessel/marken/opel/astra | 731,1 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/autoschluessel/marken/opel/corsa | 737,7 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/autoschluessel/marken/opel/insignia | 753,3 | nein (zu breit) | 150 | ja |
+| http://localhost:3000/autoschluessel/marken/opel/mokka | 743,3 | nein (zu breit) | 147 | ja |
+| http://localhost:3000/autoschluessel/marken/renault | 712,2 | nein (zu breit) | 147 | ja |
+| http://localhost:3000/autoschluessel/marken/renault/captur | 771,1 | nein (zu breit) | 146 | ja |
+| http://localhost:3000/autoschluessel/marken/renault/clio | 745,5 | nein (zu breit) | 156 | ja |
+| http://localhost:3000/autoschluessel/marken/renault/kangoo | 780,0 | nein (zu breit) | 137 | ja |
+| http://localhost:3000/autoschluessel/marken/renault/megane | 783,3 | nein (zu breit) | 146 | ja |
+| http://localhost:3000/autoschluessel/marken/seat | 694,0 | nein (zu breit) | 134 | ja |
+| http://localhost:3000/autoschluessel/marken/seat/ateca | 744,0 | nein (zu breit) | 147 | ja |
+| http://localhost:3000/autoschluessel/marken/seat/ibiza | 735,1 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/autoschluessel/marken/seat/leon | 737,4 | nein (zu breit) | 157 | ja |
+| http://localhost:3000/autoschluessel/marken/skoda | 700,0 | nein (zu breit) | 147 | ja |
+| http://localhost:3000/autoschluessel/marken/skoda/fabia | 748,9 | nein (zu breit) | 150 | ja |
+| http://localhost:3000/autoschluessel/marken/skoda/kodiaq | 761,1 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/autoschluessel/marken/skoda/octavia | 766,7 | nein (zu breit) | 145 | ja |
+| http://localhost:3000/autoschluessel/marken/skoda/superb | 763,3 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/autoschluessel/marken/toyota | 702,2 | nein (zu breit) | 138 | ja |
+| http://localhost:3000/autoschluessel/marken/toyota/corolla | 764,4 | nein (zu breit) | 153 | ja |
+| http://localhost:3000/autoschluessel/marken/toyota/rav4 | 751,8 | nein (zu breit) | 159 | ja |
+| http://localhost:3000/autoschluessel/marken/toyota/yaris | 745,1 | nein (zu breit) | 140 | ja |
+| http://localhost:3000/autoschluessel/marken/volkswagen | 750,0 | nein (zu breit) | 143 | ja |
+| http://localhost:3000/autoschluessel/marken/volkswagen/golf | 785,6 | nein (zu breit) | 147 | ja |
+| http://localhost:3000/autoschluessel/marken/volkswagen/passat | 810,0 | nein (zu breit) | 154 | ja |
+| http://localhost:3000/autoschluessel/marken/volkswagen/polo | 788,9 | nein (zu breit) | 154 | ja |
+| http://localhost:3000/autoschluessel/marken/volkswagen/t-roc | 802,2 | nein (zu breit) | 153 | ja |
+| http://localhost:3000/autoschluessel/marken/volkswagen/tiguan | 809,3 | nein (zu breit) | 154 | ja |
+| http://localhost:3000/autoschluessel/marken/volkswagen/transporter | 679,2 | nein (zu breit) | 145 | ja |
+| http://localhost:3000/autoschluessel/nachmachen | 581,7 | nein (zu breit) | 158 | ja |
+| http://localhost:3000/autoschluessel/programmieren | 725,1 | nein (zu breit) | 140 | ja |
+| http://localhost:3000/autoschluessel/schluesselbart-fraesen | 804,1 | nein (zu breit) | 129 | ja |
+| http://localhost:3000/autoschluessel/smart-key | 827,4 | nein (zu breit) | 150 | ja |
+| http://localhost:3000/elektronische-zutrittsloesungen | 681,0 | nein (zu breit) | 145 | ja |
+| http://localhost:3000/elektronische-zutrittsloesungen/konfigurator | 611,0 | nein (zu breit) | 141 | ja |
+| http://localhost:3000/gleichschliessende-zylinder | 723,3 | nein (zu breit) | 141 | ja |
+| http://localhost:3000/gleichschliessende-zylinder/konfigurator | 606,6 | nein (zu breit) | 121 | ja |
+| http://localhost:3000/partner-werden | 726,6 | nein (zu breit) | 166 | nein (zu lang) |
+| http://localhost:3000/ratgeber | 326,4 | ja | 148 | ja |
+| http://localhost:3000/ratgeber/autoschluessel-verloren-was-tun | 639,9 | nein (zu breit) | 88 | nein (zu kurz) |
+| http://localhost:3000/ratgeber/einbruchschutz-wo-anfangen | 643,3 | nein (zu breit) | 53 | nein (zu kurz) |
+| http://localhost:3000/ratgeber/mechanisch-oder-elektronisch | 702,1 | nein (zu breit) | 69 | nein (zu kurz) |
+| http://localhost:3000/ratgeber/schluessel-verloren-wohnung | 791,9 | nein (zu breit) | 74 | nein (zu kurz) |
+| http://localhost:3000/ratgeber/schluesselcode-finden | 538,4 | ja | 62 | nein (zu kurz) |
+| http://localhost:3000/ratgeber/unterschied-kopie-und-programmierung | 735,5 | nein (zu breit) | 76 | nein (zu kurz) |
+| http://localhost:3000/ratgeber/welche-schliessanlage-passt | 674,0 | nein (zu breit) | 64 | nein (zu kurz) |
+| http://localhost:3000/ratgeber/zylinder-richtig-ausmessen | 482,0 | ja | 58 | nein (zu kurz) |
+| http://localhost:3000/rechtliches/versand-und-zahlung | 434,3 | ja | 75 | nein (zu kurz) |
+| http://localhost:3000/schliessanlagen | 617,7 | nein (zu breit) | 148 | ja |
+| http://localhost:3000/schliessanlagen/konfigurator | 635,5 | nein (zu breit) | 155 | ja |
+| http://localhost:3000/schluessel-einschicken | 714,4 | nein (zu breit) | 152 | ja |
+| http://localhost:3000/schluessel-nach-code | 517,7 | ja | 119 | nein (zu kurz) |
+| http://localhost:3000/schluessel-nach-code/bk-01 | 803,4 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/schluessel-nach-code/bk-02 | 777,8 | nein (zu breit) | 152 | ja |
+| http://localhost:3000/schluessel-nach-code/bk-03 | 802,3 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/schluessel-nach-code/bk-04 | 804,5 | nein (zu breit) | 160 | ja |
+| http://localhost:3000/schluessel-nach-code/bk-05 | 754,5 | nein (zu breit) | 157 | ja |
+| http://localhost:3000/schluessel-nach-code/fa-01 | 788,9 | nein (zu breit) | 146 | ja |
+| http://localhost:3000/schluessel-nach-code/fa-02 | 801,6 | nein (zu breit) | 160 | ja |
+| http://localhost:3000/schluessel-nach-code/fa-03 | 780,0 | nein (zu breit) | 146 | ja |
+| http://localhost:3000/schluessel-nach-code/fa-04 | 763,0 | nein (zu breit) | 158 | ja |
+| http://localhost:3000/schluessel-nach-code/fa-05 | 831,5 | nein (zu breit) | 151 | ja |
+| http://localhost:3000/schluessel-nach-code/fe-01 | 695,1 | nein (zu breit) | 150 | ja |
+| http://localhost:3000/schluessel-nach-code/fe-02 | 775,2 | nein (zu breit) | 159 | ja |
+| http://localhost:3000/schluessel-nach-code/fe-03 | 744,0 | nein (zu breit) | 156 | ja |
+| http://localhost:3000/schluessel-nach-code/fe-04 | 724,4 | nein (zu breit) | 150 | ja |
+| http://localhost:3000/schluessel-nach-code/fe-05 | 707,8 | nein (zu breit) | 150 | ja |
+| http://localhost:3000/schluessel-nach-code/go-01 | 774,5 | nein (zu breit) | 146 | ja |
+| http://localhost:3000/schluessel-nach-code/go-02 | 767,8 | nein (zu breit) | 158 | ja |
+| http://localhost:3000/schluessel-nach-code/go-03 | 745,9 | nein (zu breit) | 157 | ja |
+| http://localhost:3000/schluessel-nach-code/go-04 | 794,5 | nein (zu breit) | 156 | ja |
+| http://localhost:3000/schluessel-nach-code/go-05 | 813,4 | nein (zu breit) | 160 | ja |
+| http://localhost:3000/schluessel-nach-code/kategorie/briefkasten-und-postanlagen | 716,7 | nein (zu breit) | 146 | ja |
+| http://localhost:3000/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger | 759,0 | nein (zu breit) | 145 | ja |
+| http://localhost:3000/schluessel-nach-code/kategorie/fenster-und-balkontechnik | 697,8 | nein (zu breit) | 145 | ja |
+| http://localhost:3000/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen | 778,9 | nein (zu breit) | 146 | ja |
+| http://localhost:3000/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen | 785,7 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/schluessel-nach-code/kategorie/moebel-und-bueroschloesser | 686,6 | nein (zu breit) | 136 | ja |
+| http://localhost:3000/schluessel-nach-code/kategorie/spind-und-garderobenschloesser | 747,8 | nein (zu breit) | 143 | ja |
+| http://localhost:3000/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke | 733,3 | nein (zu breit) | 156 | ja |
+| http://localhost:3000/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser | 727,8 | nein (zu breit) | 151 | ja |
+| http://localhost:3000/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser | 691,0 | nein (zu breit) | 140 | ja |
+| http://localhost:3000/schluessel-nach-code/ma-01 | 842,3 | nein (zu breit) | 143 | ja |
+| http://localhost:3000/schluessel-nach-code/ma-02 | 785,6 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/schluessel-nach-code/ma-03 | 801,5 | nein (zu breit) | 158 | ja |
+| http://localhost:3000/schluessel-nach-code/ma-04 | 757,8 | nein (zu breit) | 160 | ja |
+| http://localhost:3000/schluessel-nach-code/ma-05 | 777,8 | nein (zu breit) | 155 | ja |
+| http://localhost:3000/schluessel-nach-code/ms-01 | 778,9 | nein (zu breit) | 145 | ja |
+| http://localhost:3000/schluessel-nach-code/ms-02 | 750,0 | nein (zu breit) | 144 | ja |
+| http://localhost:3000/schluessel-nach-code/ms-03 | 768,9 | nein (zu breit) | 157 | ja |
+| http://localhost:3000/schluessel-nach-code/ms-04 | 795,2 | nein (zu breit) | 157 | ja |
+| http://localhost:3000/schluessel-nach-code/ms-05 | 804,5 | nein (zu breit) | 157 | ja |
+| http://localhost:3000/schluessel-nach-code/ms-06 | 793,7 | nein (zu breit) | 159 | ja |
+| http://localhost:3000/schluessel-nach-code/sp-01 | 787,8 | nein (zu breit) | 146 | ja |
+| http://localhost:3000/schluessel-nach-code/sp-02 | 767,8 | nein (zu breit) | 156 | ja |
+| http://localhost:3000/schluessel-nach-code/sp-03 | 748,9 | nein (zu breit) | 145 | ja |
+| http://localhost:3000/schluessel-nach-code/sp-04 | 751,1 | nein (zu breit) | 158 | ja |
+| http://localhost:3000/schluessel-nach-code/sp-05 | 790,8 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/schluessel-nach-code/ts-01 | 825,6 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/schluessel-nach-code/ts-02 | 800,0 | nein (zu breit) | 150 | ja |
+| http://localhost:3000/schluessel-nach-code/ts-03 | 766,7 | nein (zu breit) | 156 | ja |
+| http://localhost:3000/schluessel-nach-code/ts-04 | 787,0 | nein (zu breit) | 147 | ja |
+| http://localhost:3000/schluessel-nach-code/ts-05 | 781,1 | nein (zu breit) | 145 | ja |
+| http://localhost:3000/schluessel-nach-code/vh-01 | 730,0 | nein (zu breit) | 154 | ja |
+| http://localhost:3000/schluessel-nach-code/vh-02 | 788,2 | nein (zu breit) | 156 | ja |
+| http://localhost:3000/schluessel-nach-code/vh-03 | 753,3 | nein (zu breit) | 150 | ja |
+| http://localhost:3000/schluessel-nach-code/vh-04 | 704,4 | nein (zu breit) | 148 | ja |
+| http://localhost:3000/schluessel-nach-code/vh-05 | 737,8 | nein (zu breit) | 144 | ja |
+| http://localhost:3000/schluessel-nach-code/zy-01 | 735,1 | nein (zu breit) | 160 | ja |
+| http://localhost:3000/schluessel-nach-code/zy-02 | 735,5 | nein (zu breit) | 159 | ja |
+| http://localhost:3000/schluessel-nach-code/zy-03 | 751,1 | nein (zu breit) | 147 | ja |
+| http://localhost:3000/schluessel-nach-code/zy-04 | 767,8 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/schluessel-nach-code/zy-05 | 735,5 | nein (zu breit) | 159 | ja |
+| http://localhost:3000/schluessel-nach-code/zy-06 | 799,2 | nein (zu breit) | 151 | ja |
+| http://localhost:3000/schluessel-nach-vorlage | 726,7 | nein (zu breit) | 123 | ja |
+| http://localhost:3000/schluessel-nach-vorlage/anfrage | 536,6 | ja | 109 | nein (zu kurz) |
+| http://localhost:3000/service-und-termin | 415,3 | ja | 99 | nein (zu kurz) |
+| http://localhost:3000/service-und-termin/anfrage | 418,7 | ja | 116 | nein (zu kurz) |
+| http://localhost:3000/service-und-termin/kontakt | 312,0 | ja | 59 | nein (zu kurz) |
+| http://localhost:3000/service-und-termin/vor-ort | 413,1 | ja | 110 | nein (zu kurz) |
+| http://localhost:3000/sicherheitstechnik | 718,8 | nein (zu breit) | 131 | ja |
+| http://localhost:3000/sicherheitstechnik/alarmtechnik | 359,8 | ja | 82 | nein (zu kurz) |
+| http://localhost:3000/sicherheitstechnik/aussenhautsicherung | 472,1 | ja | 73 | nein (zu kurz) |
+| http://localhost:3000/sicherheitstechnik/kombinierte-konzepte | 536,5 | ja | 75 | nein (zu kurz) |
+| http://localhost:3000/sicherheitstechnik/mechanischer-schutz | 435,4 | ja | 72 | nein (zu kurz) |
+| http://localhost:3000/sicherheitstechnik/panik-und-alarmtaster | 447,6 | ja | 83 | nein (zu kurz) |
+| http://localhost:3000/sicherheitstechnik/sicherheitscheck | 516,5 | ja | 121 | ja |
+| http://localhost:3000/sicherheitstechnik/smarte-funktionen | 413,1 | ja | 74 | nein (zu kurz) |
+| http://localhost:3000/sicherheitstechnik/videoueberwachung | 415,0 | ja | 80 | nein (zu kurz) |
+| http://localhost:3000/standorte | 375,4 | ja | 95 | nein (zu kurz) |
+| http://localhost:3000/standorte/wetzlar | 636,2 | nein (zu breit) | 149 | ja |
+| http://localhost:3000/tuer-und-schliesstechnik | 758,8 | nein (zu breit) | 146 | ja |
+| http://localhost:3000/tuer-und-schliesstechnik/einsteckschloesser | 404,2 | ja | 84 | nein (zu kurz) |
+| http://localhost:3000/tuer-und-schliesstechnik/mehrfachverriegelungen | 459,8 | ja | 69 | nein (zu kurz) |
+| http://localhost:3000/tuer-und-schliesstechnik/montage-und-anpassung | 466,6 | ja | 74 | nein (zu kurz) |
+| http://localhost:3000/tuer-und-schliesstechnik/panik-und-fluchttuertechnik | 486,5 | ja | 76 | nein (zu kurz) |
+| http://localhost:3000/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder | 537,6 | ja | 118 | nein (zu kurz) |
+| http://localhost:3000/tuer-und-schliesstechnik/reparatur-und-austausch | 702,2 | nein (zu breit) | 72 | nein (zu kurz) |
+| http://localhost:3000/tuer-und-schliesstechnik/schutzbeschlaege | 396,5 | ja | 72 | nein (zu kurz) |
+| http://localhost:3000/tuer-und-schliesstechnik/technische-beratung | 636,7 | nein (zu breit) | 65 | nein (zu kurz) |
+| http://localhost:3000/tuer-und-schliesstechnik/tuerschliesser | 355,3 | ja | 58 | nein (zu kurz) |
+| http://localhost:3000/tuer-und-schliesstechnik/tuerzusatzschloesser | 416,4 | ja | 78 | nein (zu kurz) |
+
+### Zusammenfassung
+
+- Titel bis 580 px: 28 von 181 (15,5 %)
+- Beschreibung 120 bis 160 Zeichen: 146 von 181 (80,7 %)
+- Titel und Beschreibung zusammen: 2 von 181
+- Längster Titel: 842,3 px (http://localhost:3000/schluessel-nach-code/ma-01); kürzester: 312,0 px (http://localhost:3000/service-und-termin/kontakt)
+- Längste Beschreibung: 166 Zeichen (http://localhost:3000/partner-werden); kürzeste: 53 Zeichen (http://localhost:3000/ratgeber/einbruchschutz-wo-anfangen)
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/snippet-2026-11-02_23-23-34.json

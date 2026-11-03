@@ -7,8 +7,10 @@ import {
   HILFSLINIE,
   KONTUR,
   LINIE,
+  MITTELLINIE,
   Raster,
   SCHRIFT_KLEIN,
+  aussenTangenten,
   auswahl,
   hash,
   kerben,
@@ -28,6 +30,10 @@ const HOEHE = 270;
 
 const TYPEN = ['zylinder', 'buntbart', 'klapp', 'funk', 'smart-key', 'transponder'] as const;
 type Typ = (typeof TYPEN)[number];
+
+/** Ansichten des Funkschlüssels für die Fotoplätze (`seite` ist die bisherige Seitenansicht). */
+const ANSICHTEN = ['vorn', 'hinten', 'bart', 'detail'] as const;
+type Ansicht = (typeof ANSICHTEN)[number];
 
 /** Ruhiges Standardprofil, wenn weder `einschnitte` noch `code` angegeben sind. */
 const STANDARD_PROFIL = [2, 6, 3, 7, 1, 5];
@@ -107,23 +113,36 @@ interface Zeichnung {
 
 /* ---------- Glyphen auf Tasten (keine Logos) ---------- */
 
-function schlossGlyphe(x: number, y: number, offen: boolean, klasse: string) {
-  const buegel = offen
-    ? `M${r(x + 3.2)} ${r(y - 1)}V${r(y - 5)}A3.2 3.2 0 0 0 ${r(x - 3.2)} ${r(y - 5)}V${r(y - 3.6)}`
-    : `M${r(x - 3.2)} ${r(y - 1)}V${r(y - 4)}A3.2 3.2 0 0 1 ${r(x + 3.2)} ${r(y - 4)}V${r(y - 1)}`;
+/**
+ * Zustand des Schlosssymbols auf einer Taste. `zu`: geschlossener Bügel. `auf`: geöffnet wie in der
+ * Seitenansicht. `auf-hoch`: geöffnet, Bügel angehoben, damit die Öffnung auf der Tastenseite deutlich ist.
+ */
+type Schloss = 'zu' | 'auf' | 'auf-hoch';
+
+/** Schlossglyphe; `groesse` skaliert nur die Geometrie, die Strichstärke bleibt. */
+function schlossGlyphe(x: number, y: number, zustand: Schloss, klasse: string, groesse = 1) {
+  const g = (v: number) => v * groesse;
+  let buegel: string;
+  if (zustand === 'auf-hoch') {
+    buegel = `M${r(x + g(3.2))} ${r(y - g(1))}V${r(y - g(6))}A${g(3.2)} ${g(3.2)} 0 0 0 ${r(x - g(3.2))} ${r(y - g(6))}V${r(y - g(4))}`;
+  } else if (zustand === 'auf') {
+    buegel = `M${r(x + g(3.2))} ${r(y - g(1))}V${r(y - g(5))}A${g(3.2)} ${g(3.2)} 0 0 0 ${r(x - g(3.2))} ${r(y - g(5))}V${r(y - g(3.6))}`;
+  } else {
+    buegel = `M${r(x - g(3.2))} ${r(y - g(1))}V${r(y - g(4))}A${g(3.2)} ${g(3.2)} 0 0 1 ${r(x + g(3.2))} ${r(y - g(4))}V${r(y - g(1))}`;
+  }
   return (
     <g className={klasse} strokeWidth={LINIE}>
-      <rect x={r(x - 5)} y={r(y - 1)} width={10} height={8} rx={1.6} />
+      <rect x={r(x - g(5))} y={r(y - g(1))} width={g(10)} height={g(8)} rx={g(1.6)} />
       <path d={buegel} />
     </g>
   );
 }
 
-function taste(x: number, y: number, radius: number, f: Farben, glyphe?: 'zu' | 'auf') {
+function taste(x: number, y: number, radius: number, f: Farben, glyphe?: Schloss, groesse = 1) {
   return (
     <g key={`${x}-${y}`}>
       <circle className={f.knopf} strokeWidth={LINIE} cx={x} cy={y} r={radius} />
-      {glyphe && schlossGlyphe(x, y - 1.5, glyphe === 'auf', f.detail)}
+      {glyphe && schlossGlyphe(x, y - 1.5 * groesse, glyphe, f.detail, groesse)}
     </g>
   );
 }
@@ -202,15 +221,26 @@ function zylinder(tiefenZiffern: number[], f: Farben, rohling = false): Zeichnun
   };
 }
 
-function beidseitigerBart(tiefenZiffern: number[], start: number, spitze: number) {
-  const oben = -22;
-  const unten = 22;
+/** Maße eines beidseitigen Bartes: halbe Höhe, Tiefe je Ziffer, halbe Breite der Spitze. */
+interface BartMass {
+  halb: number;
+  tiefe: number;
+  spitze: number;
+}
+
+const BART_STANDARD: BartMass = { halb: 22, tiefe: 1.35, spitze: 8 };
+/** Großer Bart für die Nahansicht: dieselben Verhältnisse, mehr Platz für die Fräsungen. */
+const BART_NAH: BartMass = { halb: 34, tiefe: 2.2, spitze: 12 };
+
+function beidseitigerBart(tiefenZiffern: number[], start: number, spitze: number, m: BartMass = BART_STANDARD) {
+  const oben = -m.halb;
+  const unten = m.halb;
   const pos = positionen(tiefenZiffern.length, start + 24, spitze - 46);
-  const tiefen = tiefenZiffern.map((d) => 3 + d * 1.35);
+  const tiefen = tiefenZiffern.map((d) => 3 + d * m.tiefe);
   const roh = kerben(pos, tiefen, 4, 1.1);
   const kanteOben = roh.map(([x, t]): [number, number] => [x, oben + t]);
   const kanteUnten = roh.map(([x, t]): [number, number] => [x, unten - t]).reverse();
-  const umriss = `M${start} ${oben}${linie(kanteOben)}L${spitze - 16} ${oben}L${spitze} -8V8L${spitze - 16} ${unten}${linie(kanteUnten)}L${start} ${unten}Z`;
+  const umriss = `M${start} ${oben}${linie(kanteOben)}L${spitze - 16} ${oben}L${spitze} -${m.spitze}V${m.spitze}L${spitze - 16} ${unten}${linie(kanteUnten)}L${start} ${unten}Z`;
   return {
     umriss,
     profile: [
@@ -436,6 +466,308 @@ const TITEL: Record<Typ, string> = {
   transponder: 'Schlüssel mit Transponder im Kopf',
 };
 
+/* ---------- Ansichten des Funkschlüssels (Fotoplätze) ---------- */
+
+const TITEL_ANSICHT: Record<Ansicht, string> = {
+  vorn: 'Funkschlüssel, Tastenseite',
+  hinten: 'Funkschlüssel, Rückseite',
+  bart: 'Funkschlüssel, Bart von der Seite',
+  detail: 'Funkschlüssel, Prägung in Nahaufnahme',
+};
+
+/** Gehäuse von vorn: Tastenseite und Rückseite. */
+const GEHAEUSE_VORN =
+  'M-68 -78H68A50 50 0 0 1 118 -28V28A50 50 0 0 1 68 78H-68A50 50 0 0 1 -118 28V-28A50 50 0 0 1 -68 -78Z';
+/** Gehäuse der Nahaufnahme: die Fläche, auf der die Prägung sitzt. */
+const GEHAEUSE_FLAECHE =
+  'M-156 -100H132A44 44 0 0 1 176 -56V56A44 44 0 0 1 132 100H-156A44 44 0 0 1 -200 56V-56A44 44 0 0 1 -156 -100Z';
+
+/** Öse oben am Gehäuse: Bogen mit Loch. Wird vor dem Gehäuse gezeichnet, damit ihr Ansatz verschwindet. */
+function oese(f: Farben): ReactNode {
+  return (
+    <path
+      className={f.metall}
+      strokeWidth={KONTUR}
+      fillRule="evenodd"
+      d="M-14 -76V-90A14 14 0 0 1 14 -90V-76ZM-6 -92A6 6 0 1 0 6 -92A6 6 0 1 0 -6 -92Z"
+    />
+  );
+}
+
+/** Tastenseite von oben: links die Taste zum Schließen, rechts die Taste zum Öffnen, darüber die Leuchte. */
+function tastenseite(f: Farben): Zeichnung {
+  return {
+    koerper: (
+      <>
+        {oese(f)}
+        <path className={f.kopf} strokeWidth={KONTUR} d={GEHAEUSE_VORN} />
+        {taste(-56, 0, 40, f, 'zu', 2)}
+        {taste(56, 0, 40, f, 'auf-hoch', 2)}
+        <circle className={f.akzent} cx={0} cy={-58} r={4.5} />
+      </>
+    ),
+    profile: [],
+    marken: [],
+    box: { x1: -118, y1: -104, x2: 118, y2: 78 },
+  };
+}
+
+/** Rückseite: Kennzeichnungsfeld mit Aufdruck (nur Linien, kein Text) und zwei Schrauben. */
+function rueckseite(f: Farben): Zeichnung {
+  return {
+    koerper: (
+      <>
+        {oese(f)}
+        <path className={f.kopf} strokeWidth={KONTUR} d={GEHAEUSE_VORN} />
+        <rect className={f.knopf} strokeWidth={LINIE} x={-74} y={-50} width={148} height={96} rx={10} />
+        <circle className={f.knopf} strokeWidth={LINIE} cx={-98} cy={0} r={5} />
+        <circle className={f.knopf} strokeWidth={LINIE} cx={98} cy={0} r={5} />
+      </>
+    ),
+    zusatz: (
+      <path
+        className={`sm24-draw ${f.detail}`}
+        pathLength={1}
+        style={motionStyle(ZEIT.koerperDauer, ZEIT.linealDauer)}
+        strokeWidth={LINIE}
+        d="M-56 -26H56M-56 -6H30M-56 14H8"
+      />
+    ),
+    profile: [],
+    marken: [],
+    box: { x1: -118, y1: -104, x2: 118, y2: 78 },
+  };
+}
+
+/** Bart von der Seite, groß, mit Halsstück links und den Fräsungen als Profil. */
+function bartNah(tiefenZiffern: number[], f: Farben): Zeichnung {
+  const start = 60;
+  const spitze = 440;
+  const bart = beidseitigerBart(tiefenZiffern, start, spitze, BART_NAH);
+  return {
+    koerper: (
+      <>
+        <rect className={f.metall} strokeWidth={KONTUR} x={0} y={-46} width={start} height={92} rx={6} />
+        <path className={f.metall} strokeWidth={KONTUR} d={bart.umriss} />
+        <path
+          className={f.detail}
+          strokeWidth={HILFSLINIE}
+          strokeDasharray={MITTELLINIE}
+          d={`M${start + 16} 0H${spitze - 40}`}
+        />
+      </>
+    ),
+    profile: bart.profile,
+    marken: bart.marken,
+    linealY: bart.linealY,
+    box: { x1: 0, y1: -46, x2: spitze, y2: 46 },
+  };
+}
+
+/** Punktraster einer Prägung: 1 steht für einen gestanzten Punkt, Zeile für Zeile von oben. */
+const PRAEGUNG = [
+  [1, 0, 1, 1],
+  [0, 1, 1, 0],
+  [1, 1, 0, 1],
+];
+const PRAEGUNG_ABSTAND = 13;
+
+/** Punkte des Rasters um `(cx, cy)`, vergrößert um den Faktor `m`. */
+function praegePunkte(cx: number, cy: number, m: number): [number, number][] {
+  return PRAEGUNG.flatMap((zeile, j) =>
+    zeile.flatMap((gesetzt, i): [number, number][] =>
+      gesetzt
+        ? [[r(cx + m * (i - 1.5) * PRAEGUNG_ABSTAND), r(cy + m * (j - 1) * PRAEGUNG_ABSTAND)]]
+        : [],
+    ),
+  );
+}
+
+/** Nahaufnahme: eine Prägung auf dem Gehäuse, vergrößert in einer Lupe, durch Tangenten verbunden. */
+function praegung(f: Farben): Zeichnung {
+  const feld = { x: -64, y: 0, r: 40 };
+  const lupe = { x: 124, y: 0, r: 70 };
+  const linien = aussenTangenten(feld, lupe)
+    .map(([ax, ay, bx, by]) => `M${ax} ${ay}L${bx} ${by}`)
+    .join('');
+  return {
+    koerper: (
+      <>
+        <path className={f.kopf} strokeWidth={KONTUR} d={GEHAEUSE_FLAECHE} />
+        <circle
+          className="fill-surface stroke-border-strong"
+          strokeWidth={HILFSLINIE}
+          strokeDasharray="4 3"
+          cx={feld.x}
+          cy={feld.y}
+          r={feld.r}
+        />
+        {praegePunkte(feld.x, feld.y, 1).map(([x, y]) => (
+          <circle key={`${x}-${y}`} className="fill-area-strong" cx={x} cy={y} r={2.6} />
+        ))}
+      </>
+    ),
+    zusatz: (
+      <>
+        <path
+          className="sm24-draw stroke-border-strong"
+          pathLength={1}
+          style={motionStyle(ZEIT.koerperDauer, ZEIT.linealDauer)}
+          strokeWidth={LINIE}
+          d={linien}
+        />
+        <g className="sm24-fade" style={motionStyle(ZEIT.koerperDauer + ZEIT.markeNach, ZEIT.markeDauer * 2)}>
+          <circle className="fill-surface stroke-foreground" strokeWidth={KONTUR} cx={lupe.x} cy={lupe.y} r={lupe.r} />
+          <circle
+            className="stroke-foreground-muted"
+            strokeWidth={HILFSLINIE}
+            cx={lupe.x}
+            cy={lupe.y}
+            r={lupe.r - 8}
+          />
+          {praegePunkte(lupe.x, lupe.y, 2).map(([x, y]) => (
+            <circle key={`${x}-${y}`} className="fill-area-strong" cx={x} cy={y} r={5.2} />
+          ))}
+        </g>
+      </>
+    ),
+    profile: [],
+    marken: [],
+    box: { x1: -200, y1: -100, x2: 194, y2: 100 },
+  };
+}
+
+function ansichtBild(ansicht: Ansicht, tiefen: number[]): Zeichnung {
+  if (ansicht === 'vorn') return tastenseite(VORN);
+  if (ansicht === 'hinten') return rueckseite(HINTEN);
+  if (ansicht === 'bart') return bartNah(tiefen, VORN);
+  return praegung(VORN);
+}
+
+/** Maßstab und Lage, damit eine Zeichnung mittig in die Fläche passt (höchstens 1:1). */
+function einpassung(x1: number, y1: number, x2: number, y2: number) {
+  const skala = Math.min(1, (BREITE - 56) / (x2 - x1), (HOEHE - 40) / (y2 - y1));
+  return {
+    skala,
+    tx: r(BREITE / 2 - (skala * (x1 + x2)) / 2),
+    ty: r(HOEHE / 2 - (skala * (y1 + y2)) / 2),
+  };
+}
+
+/** Einschnittprofil(e): zeichnen sich nacheinander, ab `beginn`. */
+function Profil({ pfade, beginn }: { pfade: string[]; beginn: number }) {
+  return (
+    <>
+      {pfade.map((d, i) => (
+        <path
+          key={d}
+          className="sm24-draw stroke-area"
+          pathLength={1}
+          style={motionStyle(beginn + i * ZEIT.profilStaffel, ZEIT.profilDauer)}
+          strokeWidth={KONTUR}
+          d={d}
+        />
+      ))}
+    </>
+  );
+}
+
+/** Lineal über alle Einschnitte mit einem Teilstrich je Einschnitt. */
+function linealPfad(teilung: number[], lage: number): string {
+  return (
+    `M${teilung[0]} ${lage}H${teilung[teilung.length - 1]}` +
+    teilung.map((x) => `M${x} ${lage - 4}V${lage + 4}`).join('')
+  );
+}
+
+interface MarkierungenProps {
+  marken: { x: number; y: number }[];
+  /** Lage des Lineals; nur gesetzt, wenn die Einschnitte beschriftet werden. */
+  linealY?: number;
+  tiefen: number[];
+  beginn: number;
+  schrift: number;
+}
+
+/** Marken der Einschnitte, darunter das Lineal mit den Ziffern. */
+function Markierungen({ marken, linealY, tiefen, beginn, schrift }: MarkierungenProps) {
+  const teilung = [...new Set(marken.map((m) => r(m.x)))];
+  /* Das Lineal steht nur mit Ziffern: unbeschriftete Teilstriche behaupten ein Maß, das man
+     nicht lesen kann (K-003 „Bemaßt statt behauptet“, E6-L-31). */
+  const lage = linealY !== undefined && teilung.length > 0 ? linealY : undefined;
+  return (
+    <>
+      {/* Alle Marken eines Schlüssels in einer Gruppe: eine Animation statt bis zu 30 (E7, Bildrate). */}
+      {marken.length > 0 && (
+        <g className="sm24-fade" style={motionStyle(beginn + ZEIT.markeNach, ZEIT.markeSpanne + ZEIT.markeDauer)}>
+          {marken.map((m) => (
+            <circle key={`${r(m.x)}-${r(m.y)}`} className="fill-area-strong" cx={r(m.x)} cy={r(m.y)} r={2.6} />
+          ))}
+        </g>
+      )}
+      {lage !== undefined && (
+        <path
+          className="sm24-draw stroke-foreground-muted"
+          pathLength={1}
+          style={motionStyle(beginn, ZEIT.linealDauer)}
+          strokeWidth={HILFSLINIE}
+          d={linealPfad(teilung, lage)}
+        />
+      )}
+      {lage !== undefined &&
+        teilung.map((x, i) => (
+          <text
+            key={x}
+            className="sm24-reveal fill-foreground-muted font-mono"
+            style={motionStyle(beginn + Math.min(ZEIT.zifferNach + i * ZEIT.zifferStaffel, ZEIT.zifferNach + ZEIT.zifferSpanne), ZEIT.zifferDauer)}
+            fontSize={schrift}
+            textAnchor="middle"
+            x={x}
+            y={r(lage + 20)}
+          >
+            {tiefen[i]}
+          </text>
+        ))}
+    </>
+  );
+}
+
+interface FunkAnsichtProps {
+  ansicht: Ansicht;
+  tiefen: number[];
+  /** Einschnitte sind angegeben: Lineal und Ziffern erscheinen. */
+  beschriften: boolean;
+  title: string;
+  className?: string;
+}
+
+/** Eine Ansicht des Funkschlüssels; Anzahl und Rohling entfallen hier. */
+function FunkAnsicht({ ansicht, tiefen, beschriften, title, className }: FunkAnsichtProps) {
+  const bild = ansichtBild(ansicht, tiefen);
+  const linealY = beschriften ? bild.linealY : undefined;
+  const unten = linealY !== undefined ? Math.max(bild.box.y2, linealY + 24) : bild.box.y2;
+  const { skala, tx, ty } = einpassung(bild.box.x1, bild.box.y1, bild.box.x2, unten);
+  return (
+    <GrafikRahmen breite={BREITE} hoehe={HOEHE} title={titel(title, TITEL_ANSICHT[ansicht])} className={className}>
+      <Raster breite={BREITE} hoehe={HOEHE} />
+      <g transform={`translate(${tx} ${ty}) scale(${r(skala * 1000) / 1000})`}>
+        <g className="sm24-reveal" style={motionStyle(0, ZEIT.koerperDauer)}>
+          {bild.koerper}
+        </g>
+        {bild.zusatz}
+        <Profil pfade={bild.profile} beginn={ZEIT.koerperDauer} />
+        <Markierungen
+          marken={bild.marken}
+          linealY={linealY}
+          tiefen={tiefen}
+          beginn={ZEIT.koerperDauer}
+          schrift={r(SCHRIFT_KLEIN / skala)}
+        />
+      </g>
+    </GrafikRahmen>
+  );
+}
+
 /**
  * Schlüssel in Seitenansicht — Reide, Halsstück, Bart mit Einschnitten.
  *
@@ -446,13 +778,30 @@ const TITEL: Record<Typ, string> = {
  * - `anzahl`: 1–3 (Standard 1), weitere Schlüssel versetzt dahinter, z. B. für „Kopie“
  * - `rohling`: `true` – nur beim Zylinderschlüssel: gerader Halm ohne Einschnitte, die
  *   Einschnittzone gestrichelt (etwa vor der Eingabe eines Codes)
+ * - `ansicht`: `vorn` (Tastenseite) | `hinten` (Rückseite) | `bart` (Bart von der Seite mit Fräsungen) |
+ *   `detail` (Prägung in Nahaufnahme). Ohne `typ` ist der Funkschlüssel gewählt; bei anderen Typen
+ *   und bei unbekannten Werten bleibt es bei der Seitenansicht. Anzahl und Rohling entfallen bei Ansichten.
  */
 export function SchluesselGrafik({ params, title, className }: VisualProps) {
   const p = parameter(params);
-  const typ = auswahl(wert(p, 'typ'), TYPEN, 'zylinder');
+  const ansicht = auswahl<Ansicht | 'seite'>(wert(p, 'ansicht'), [...ANSICHTEN, 'seite'], 'seite');
+  const typ = auswahl(wert(p, 'typ'), TYPEN, ansicht === 'seite' ? 'zylinder' : 'funk');
   const explizit = ziffern(wert(p, 'einschnitte'), 4, 8);
   const code = kurztext(wert(p, 'code'), 40);
   const tiefen = explizit ?? (code ? profilAusCode(code) : STANDARD_PROFIL);
+
+  if (ansicht !== 'seite' && typ === 'funk') {
+    return (
+      <FunkAnsicht
+        ansicht={ansicht}
+        tiefen={tiefen}
+        beschriften={explizit !== undefined}
+        title={title}
+        className={className}
+      />
+    );
+  }
+
   const anzahl = zahl(wert(p, 'anzahl'), 1, 3, 1, true);
   const rohlingWert = wert(p, 'rohling');
   const rohling = rohlingWert === true || rohlingWert === 'true' || rohlingWert === 'ja';
@@ -466,18 +815,12 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
   // Das Lineal steht nur mit Ziffern: unbeschriftete Teilstriche behaupten ein Maß, das man
   // nicht lesen kann (K-003 „Bemaßt statt behauptet“, E6-L-31).
   const beschriften = linealY !== undefined && teilung.length > 0 && explizit !== undefined;
-  const lineal = beschriften
-    ? `M${teilung[0]} ${linealY}H${teilung[teilung.length - 1]}` +
-      teilung.map((x) => `M${x} ${linealY - 4}V${linealY + 4}`).join('')
-    : undefined;
 
   const x1 = vorn.box.x1;
   const x2 = vorn.box.x2 + (anzahl - 1) * KOPIE_DX;
   const y1 = vorn.box.y1 + (anzahl - 1) * KOPIE_DY;
   const y2 = beschriften && linealY !== undefined ? Math.max(vorn.box.y2, linealY + 24) : vorn.box.y2;
-  const skala = Math.min(1, (BREITE - 56) / (x2 - x1), (HOEHE - 40) / (y2 - y1));
-  const tx = r(BREITE / 2 - (skala * (x1 + x2)) / 2);
-  const ty = r(HOEHE / 2 - (skala * (y1 + y2)) / 2);
+  const { skala, tx, ty } = einpassung(x1, y1, x2, y2);
   const schrift = r(SCHRIFT_KLEIN / skala);
 
   return (
@@ -511,51 +854,14 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
           <path className="stroke-border-strong" strokeWidth={LINIE} strokeDasharray="4 3" d={vorn.zone} />
         )}
 
-        {vorn.profile.map((d, i) => (
-          <path
-            key={d}
-            className="sm24-draw stroke-area"
-            pathLength={1}
-            style={motionStyle(beginn + i * ZEIT.profilStaffel, ZEIT.profilDauer)}
-            strokeWidth={KONTUR}
-            d={d}
-          />
-        ))}
-
-        {vorn.marken.length > 0 && (
-          // Alle Marken eines Schlüssels in einer Gruppe: eine Animation statt bis zu 30 (E7, Bildrate).
-          <g className="sm24-fade" style={motionStyle(beginn + ZEIT.markeNach, ZEIT.markeSpanne + ZEIT.markeDauer)}>
-            {vorn.marken.map((m) => (
-              <circle key={`${r(m.x)}-${r(m.y)}`} className="fill-area-strong" cx={r(m.x)} cy={r(m.y)} r={2.6} />
-            ))}
-          </g>
-        )}
-
-        {lineal && (
-          <path
-            className="sm24-draw stroke-foreground-muted"
-            pathLength={1}
-            style={motionStyle(beginn, ZEIT.linealDauer)}
-            strokeWidth={HILFSLINIE}
-            d={lineal}
-          />
-        )}
-
-        {beschriften &&
-          linealY !== undefined &&
-          teilung.map((x, i) => (
-            <text
-              key={x}
-              className="sm24-reveal fill-foreground-muted font-mono"
-              style={motionStyle(beginn + Math.min(ZEIT.zifferNach + i * ZEIT.zifferStaffel, ZEIT.zifferNach + ZEIT.zifferSpanne), ZEIT.zifferDauer)}
-              fontSize={schrift}
-              textAnchor="middle"
-              x={x}
-              y={r(linealY + 20)}
-            >
-              {tiefen[i]}
-            </text>
-          ))}
+        <Profil pfade={vorn.profile} beginn={beginn} />
+        <Markierungen
+          marken={vorn.marken}
+          linealY={beschriften ? linealY : undefined}
+          tiefen={tiefen}
+          beginn={beginn}
+          schrift={schrift}
+        />
       </g>
     </GrafikRahmen>
   );

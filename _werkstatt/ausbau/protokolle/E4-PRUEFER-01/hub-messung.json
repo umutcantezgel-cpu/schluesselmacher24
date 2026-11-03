@@ -1,0 +1,281 @@
+{
+  "zeit": "2026-11-03T10:12:33.971Z",
+  "messweg": "Kacheln nach 2,3 s, ganz sichtbar = Unterkante <= Fensterhöhe",
+  "geraete": [
+    {
+      "geraet": "mobil-klein",
+      "viewport": [
+        360,
+        780
+      ],
+      "kacheln": 9,
+      "namen": [
+        "Autoschlüssel",
+        "Schlüssel nach Code",
+        "Schlüssel nach Foto",
+        "Schlüssel einschicken",
+        "Sperrschließung",
+        "Schließanlage",
+        "Elektronisch schließen",
+        "Sicherheitstechnik",
+        "Schlüsseldienst vor Ort"
+      ],
+      "ganzSichtbar": 9,
+      "ganzOberhalbLeiste": 9,
+      "letzteUnterkante": 692,
+      "grenzeOben": 724,
+      "aktionsleisteSichtbar": true,
+      "aktionsleisteOben": 724,
+      "aktionsleisteAnruf": [
+        {
+          "text": "Anrufen",
+          "href": "tel:+4964418056279"
+        }
+      ],
+      "telefonUnterkante": 748,
+      "telefonLink": {
+        "text": "06441 8056279",
+        "href": "tel:+4964418056279"
+      },
+      "h1": {
+        "text": "Wobei können wir Ihnen helfen?",
+        "oben": 144,
+        "unten": 215
+      },
+      "zeilenProKachel": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        3
+      ],
+      "scrollBreite": 360,
+      "fensterBreite": 360,
+      "maxZeilenLaienname": 3
+    },
+    {
+      "geraet": "mobil",
+      "viewport": [
+        390,
+        844
+      ],
+      "kacheln": 9,
+      "namen": [
+        "Autoschlüssel",
+        "Schlüssel nach Code",
+        "Schlüssel nach Foto",
+        "Schlüssel einschicken",
+        "Sperrschließung",
+        "Schließanlage",
+        "Elektronisch schließen",
+        "Sicherheitstechnik",
+        "Schlüsseldienst vor Ort"
+      ],
+      "ganzSichtbar": 9,
+      "ganzOberhalbLeiste": 9,
+      "letzteUnterkante": 655,
+      "grenzeOben": 788,
+      "aktionsleisteSichtbar": true,
+      "aktionsleisteOben": 788,
+      "aktionsleisteAnruf": [
+        {
+          "text": "Anrufen",
+          "href": "tel:+4964418056279"
+        }
+      ],
+      "telefonUnterkante": 711,
+      "telefonLink": {
+        "text": "06441 8056279",
+        "href": "tel:+4964418056279"
+      },
+      "h1": {
+        "text": "Wobei können wir Ihnen helfen?",
+        "oben": 144,
+        "unten": 215
+      },
+      "zeilenProKachel": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "scrollBreite": 390,
+      "fensterBreite": 390,
+      "maxZeilenLaienname": 2
+    },
+    {
+      "geraet": "tablet",
+      "viewport": [
+        768,
+        1024
+      ],
+      "kacheln": 9,
+      "namen": [
+        "Autoschlüssel",
+        "Schlüssel nach Code",
+        "Schlüssel nach Foto",
+        "Schlüssel einschicken",
+        "Sperrschließung",
+        "Schließanlage",
+        "Elektronisch schließen",
+        "Sicherheitstechnik",
+        "Schlüsseldienst vor Ort"
+      ],
+      "ganzSichtbar": 9,
+      "ganzOberhalbLeiste": 9,
+      "letzteUnterkante": 638,
+      "grenzeOben": 1024,
+      "aktionsleisteSichtbar": false,
+      "aktionsleisteOben": null,
+      "aktionsleisteAnruf": [
+        {
+          "text": "Anrufen",
+          "href": "tel:+4964418056279"
+        }
+      ],
+      "telefonUnterkante": 774,
+      "telefonLink": {
+        "text": "06441 8056279",
+        "href": "tel:+4964418056279"
+      },
+      "h1": {
+        "text": "Wobei können wir Ihnen helfen?",
+        "oben": 168,
+        "unten": 213
+      },
+      "zeilenProKachel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "scrollBreite": 768,
+      "fensterBreite": 768,
+      "maxZeilenLaienname": 1
+    },
+    {
+      "geraet": "desktop",
+      "viewport": [
+        1440,
+        900
+      ],
+      "kacheln": 9,
+      "namen": [
+        "Autoschlüssel",
+        "Schlüssel nach Code",
+        "Schlüssel nach Foto",
+        "Schlüssel einschicken",
+        "Sperrschließung",
+        "Schließanlage",
+        "Elektronisch schließen",
+        "Sicherheitstechnik",
+        "Schlüsseldienst vor Ort"
+      ],
+      "ganzSichtbar": 9,
+      "ganzOberhalbLeiste": 9,
+      "letzteUnterkante": 780,
+      "grenzeOben": 900,
+      "aktionsleisteSichtbar": false,
+      "aktionsleisteOben": null,
+      "aktionsleisteAnruf": [
+        {
+          "text": "Anrufen",
+          "href": "tel:+4964418056279"
+        }
+      ],
+      "telefonUnterkante": 860,
+      "telefonLink": {
+        "text": "06441 8056279",
+        "href": "tel:+4964418056279"
+      },
+      "h1": {
+        "text": "Wobei können wir Ihnen helfen?",
+        "oben": 120,
+        "unten": 245
+      },
+      "zeilenProKachel": [
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2
+      ],
+      "scrollBreite": 1440,
+      "fensterBreite": 1440,
+      "maxZeilenLaienname": 2
+    },
+    {
+      "geraet": "breit",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "kacheln": 9,
+      "namen": [
+        "Autoschlüssel",
+        "Schlüssel nach Code",
+        "Schlüssel nach Foto",
+        "Schlüssel einschicken",
+        "Sperrschließung",
+        "Schließanlage",
+        "Elektronisch schließen",
+        "Sicherheitstechnik",
+        "Schlüsseldienst vor Ort"
+      ],
+      "ganzSichtbar": 9,
+      "ganzOberhalbLeiste": 9,
+      "letzteUnterkante": 780,
+      "grenzeOben": 1080,
+      "aktionsleisteSichtbar": false,
+      "aktionsleisteOben": null,
+      "aktionsleisteAnruf": [
+        {
+          "text": "Anrufen",
+          "href": "tel:+4964418056279"
+        }
+      ],
+      "telefonUnterkante": 860,
+      "telefonLink": {
+        "text": "06441 8056279",
+        "href": "tel:+4964418056279"
+      },
+      "h1": {
+        "text": "Wobei können wir Ihnen helfen?",
+        "oben": 120,
+        "unten": 245
+      },
+      "zeilenProKachel": [
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2
+      ],
+      "scrollBreite": 1920,
+      "fensterBreite": 1920,
+      "maxZeilenLaienname": 2
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getCodeLines, getCollection, getPageContent } from '@/lib/data';
+import { getCodeLines, getCollection, getPageContent, getRubrik } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { formatCents, formatMillimeter } from '@/lib/format';
 import { PreisHinweis } from '@/components/recht/preis-hinweis';
@@ -102,6 +102,8 @@ const BAUFORM_ICONS: Partial<Record<string, typeof IconProfilzylinder>> = {
 };
 
 export default async function CylinderOverviewPage() {
+  // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
+  const rubrik = await getRubrik('sperrschliessung');
   const [page, catalog, codeLines] = await Promise.all([
     getPageContent(ROUTE),
     getCollection('cylinderCatalog'),
@@ -145,6 +147,7 @@ export default async function CylinderOverviewPage() {
       />
 
       <PageHeader
+        rubrik={rubrik}
         eyebrow={PROCESS_LABELS.direktkauf.label}
         title={page?.headline ?? 'Gleichschließende Zylinder (Sperrschließung)'}
         lead={page?.subline ?? 'Mehrere Türen, ein Schlüssel. Als Sperrschließung direkt konfigurierbar.'}

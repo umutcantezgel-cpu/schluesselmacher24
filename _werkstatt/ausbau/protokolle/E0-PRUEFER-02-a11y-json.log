@@ -1,0 +1,58 @@
+{
+  "skript": "a11y",
+  "zeit": "2026-11-02T21:55:40.932Z",
+  "argumente": {
+    "_": [],
+    "routen": "/",
+    "geraet": "mobil",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-a11y-json.log"
+  },
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            ".block:nth-child(4) > .hover\\:text-primary.tabular-nums[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".block:nth-child(4) > .hover\\:text-primary.tabular-nums[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

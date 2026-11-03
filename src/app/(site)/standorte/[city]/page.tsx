@@ -76,7 +76,7 @@ export default async function CityPage(props: { params: Promise<{ city: string }
       <>
         {einleitung && <p className="max-w-measure text-body text-foreground-muted">{einleitung}</p>}
 
-        {/* Angaben als Schriftfeld: Haarlinien, Wortwerte in Inter, Zahlen in Mono. Platzhalter entfallen. */}
+        {/* Angaben als Schriftfeld: Haarlinien, Wortwerte in Plex Sans, Zahlen in Mono. Platzhalter entfallen. */}
         {angaben.length > 0 && (
           <dl className={cn('grid grid-cols-2 border-y border-border sm:grid-cols-4', einleitung && 'mt-8')}>
             {angaben.map((fact, index) => (

@@ -1,0 +1,112 @@
+# Tests E0-PRUEFER-03 · Prüfbestand auf Port 3917 (nur localhost)
+## inventar.mjs
+OK    G1: fremder Ursprung wird abgewiesen (Exit 2)
+OK    --max 0 wird abgewiesen (Exit 2)
+OK    Vollauf gegen den Prüfbestand endet mit Exit 0
+OK    Adressen gesamt (Sitemap, Prerender, Links, ohne Dubletten)
+OK    Adressen-Liste vollständig
+OK    indexierbar
+OK    noindex (Meta oder Kopf)
+OK    Weiterleitungen (3xx)
+OK    Fehlerstatus (4xx, 5xx, Netzfehler)
+OK    Weiterleitung auf Fehlerziel
+OK    200 ohne HTML
+OK    title fehlt oder leer
+OK    description fehlt oder leer
+OK    h1 nicht genau eine
+OK    kein main-Element
+OK    JSON-LD mit Parsefehler
+OK    canonical auf anderen Ursprung (gleicher Pfad)
+OK    canonical abweichend
+OK    Statusverteilung
+OK    / ist indexierbar, canonical gleich
+OK    /b: 301 nach /c, ein Sprung, Ziel 200
+OK    /i: Weiterleitungsschleife erkannt
+OK    /j: Weiterleitungsschleife erkannt
+OK    /k: Weiterleitung auf fremden Ursprung nicht abgerufen
+OK    /m: Weiterleitung ohne Ziel vermerkt
+OK    /reset: Netzfehler, nicht indexierbar
+OK    /d: noindex in Meta
+OK    /e: noindex im Kopf
+OK    /f: canonical abweichend
+OK    /g: gleicher Pfad, anderer Ursprung ist indexierbar mit Befund
+OK    /h: kaputtes JSON-LD, null h1, kein main, kein lang
+OK    /h: indexierbar trotz fehlender description
+OK    /p: ohne title, Skript im main nicht gezählt, JSON-LD-Typen aus @graph
+OK    /img.png: kein HTML, Typ image/png
+OK    /n und /o: Fehlerstatus
+OK    Dubletten Titel: /a und /c
+OK    Dubletten Beschreibung: /a und /c
+OK    Dubletten h1: /a und /c
+OK    Eingehende Links: /a von der Startseite (eine Quelle)
+OK    Sitemap: 17 Einträge, 2 fremde nicht geprüft, verschachtelt gelesen
+OK    Prerender: 3 Routen, 1 intern, 1 dynamisch übersprungen
+OK    Nur aus Links gefunden: 3
+OK    Ohne --max keine verworfenen Adressen
+OK    TSV: Kopfzeile plus 18 Zeilen
+OK    TSV: jede Zeile hat 27 Felder
+OK    --max 5 endet mit Exit 0
+OK    --max 5: genau 5 Adressen, der Rest als verworfen gezählt
+OK    --max 5: die ersten fünf Sitemap-Adressen
+
+Ergebnis Inventar: 48 bestanden, 0 fehlgeschlagen
+EXIT 0
+## snippet.mjs
+OK    Lauf mit synthetischem Inventar endet mit Exit 0
+OK    nicht indexierbare Seite F fehlt in der Messung
+OK    Beschreibung 119 Zeichen ist zu kurz
+OK    Beschreibung 120 Zeichen ist erfüllt (untere Grenze)
+OK    Beschreibung 160 Zeichen ist erfüllt (obere Grenze)
+OK    Beschreibung 161 Zeichen ist zu lang
+OK    leere Beschreibung ist fehlt
+OK    Emoji zählt als ein Zeichen (120 Zeichen erfüllt)
+OK    breiter Titel über 580 px ist zu breit
+OK    leerer Titel ist fehlt
+OK    kurzer Titel ist erfüllt
+OK    Zusammenfassung: Titel erfüllt 6 von 8
+OK    Zusammenfassung: Beschreibung erfüllt 5 von 8
+OK    Zusammenfassung: beide erfüllt 3 von 8 (B, C, I)
+OK    Längster Titel ist G, kürzester ist H
+OK    Längste Beschreibung 161 (D), kürzeste 0 (E)
+OK    fc-match-Ergebnis steht im Protokoll
+OK    Schriftprüfung: Arial gleich Liberation Sans, Ersatzschrift greift
+OK    Grenzen im Protokoll: 580 px, 120 bis 160 Zeichen
+
+Ergebnis Snippet: 19 bestanden, 0 fehlgeschlagen
+EXIT 0
+## kontaktbogen.mjs und lighthouse.mjs
+OK    Kontaktbogen ohne Argumente: Exit 2
+OK    Kontaktbogen ohne --ziel: Exit 2
+OK    Kontaktbogen mit PNG-Ziel: Exit 2
+OK    Kontaktbogen mit fehlender Datei: Exit 2
+OK    Kontaktbogen mit 9 Spalten: Exit 2
+OK    Kontaktbogen mit --titel ohne Wert: Exit 2
+OK    Kontaktbogen mit kaputtem Bild endet mit Exit 0
+OK    Ordner: Dateien alphabetisch sortiert
+OK    Ordner: kaputtes Bild als nicht geladen gemeldet
+OK    Ordner: Breite höchstens 1.440 px
+OK    Ordner: Bogen entsteht als JPEG mit Inhalt
+OK    Lighthouse mit --laeufe 0: Exit 2
+OK    Lighthouse mit --laeufe 11: Exit 2
+OK    Lighthouse mit --profil foo: Exit 2
+OK    Lighthouse mit unbekannter Route: Exit 2
+OK    Lighthouse mit --routen ohne Wert: Exit 2
+OK    Lighthouse gegen Prüfbestand: Exit 0
+OK    Attrappe: fremdes Bild abgebrochen (example.invalid)
+OK    Attrappe: POST auf /api/kunden-upload abgefangen
+OK    Attrappe: sonstiger POST abgefangen
+OK    Lighthouse-Lauf mit Attrappe liefert Werte (Leistung und LCP gesetzt)
+OK    Median leistung entspricht der Berechnung aus den Läufen
+OK    Min und Max leistung
+OK    Median lcp entspricht der Berechnung aus den Läufen
+OK    Min und Max lcp
+OK    Median cls entspricht der Berechnung aus den Läufen
+OK    Min und Max cls
+OK    Median barrierefreiheit entspricht der Berechnung aus den Läufen
+OK    Min und Max barrierefreiheit
+OK    Drei gültige Läufe
+OK    Budget auf dem Median: Leistung unter 90 und LCP über 2.500 ms melden
+OK    INP nicht gemessen, daher nicht Pflicht
+
+Ergebnis Werkzeuge: 32 bestanden, 0 fehlgeschlagen
+EXIT 0

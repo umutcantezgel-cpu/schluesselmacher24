@@ -1,0 +1,137 @@
+{
+  "skript": "bildfolge.mjs",
+  "zeit": "2026-11-03T13:24:06.703Z",
+  "zeiten_ms": [
+    0,
+    200,
+    400,
+    800,
+    1200
+  ],
+  "faelle": [
+    {
+      "fall": "mobil-band",
+      "viewport": [
+        390,
+        844
+      ],
+      "animationenGefunden": true,
+      "anzahl": 6,
+      "namen": [
+        "sm24-eingang"
+      ],
+      "endeMs": 1470,
+      "svgs": [
+        {
+          "variante": "band",
+          "breite": 320,
+          "hoehe": 56,
+          "rendert": true
+        },
+        {
+          "variante": "buehne",
+          "breite": 0,
+          "hoehe": 0,
+          "rendert": false
+        }
+      ],
+      "bewegung": "an",
+      "start": true,
+      "frames": [
+        {
+          "zeit_ms": 0,
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-mobil-band-0000ms.png",
+          "bytes": 4378,
+          "sha1": "d982782bdd71"
+        },
+        {
+          "zeit_ms": 200,
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-mobil-band-0200ms.png",
+          "bytes": 4787,
+          "sha1": "b6e03d75868a"
+        },
+        {
+          "zeit_ms": 400,
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-mobil-band-0400ms.png",
+          "bytes": 4818,
+          "sha1": "b8cd7b9a70ea"
+        },
+        {
+          "zeit_ms": 800,
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-mobil-band-0800ms.png",
+          "bytes": 4780,
+          "sha1": "cb52cc6f5fd7"
+        },
+        {
+          "zeit_ms": 1200,
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-mobil-band-1200ms.png",
+          "bytes": 7674,
+          "sha1": "70c2a27937f0"
+        }
+      ],
+      "verschiedeneBilder": 5
+    },
+    {
+      "fall": "desktop-buehne",
+      "viewport": [
+        1440,
+        900
+      ],
+      "animationenGefunden": true,
+      "anzahl": 6,
+      "namen": [
+        "sm24-eingang"
+      ],
+      "endeMs": 1470,
+      "svgs": [
+        {
+          "variante": "band",
+          "breite": 0,
+          "hoehe": 0,
+          "rendert": false
+        },
+        {
+          "variante": "buehne",
+          "breite": 469,
+          "hoehe": 577,
+          "rendert": true
+        }
+      ],
+      "bewegung": "an",
+      "start": true,
+      "frames": [
+        {
+          "zeit_ms": 0,
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-desktop-buehne-0000ms.png",
+          "bytes": 14435,
+          "sha1": "98f37e4689e1"
+        },
+        {
+          "zeit_ms": 200,
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-desktop-buehne-0200ms.png",
+          "bytes": 14300,
+          "sha1": "a23c0093fa86"
+        },
+        {
+          "zeit_ms": 400,
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-desktop-buehne-0400ms.png",
+          "bytes": 14323,
+          "sha1": "f2d341a03ef4"
+        },
+        {
+          "zeit_ms": 800,
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-desktop-buehne-0800ms.png",
+          "bytes": 14313,
+          "sha1": "9febe786efd9"
+        },
+        {
+          "zeit_ms": 1200,
+          "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bildfolgen/b31-desktop-buehne-1200ms.png",
+          "bytes": 20025,
+          "sha1": "4eec660668a0"
+        }
+      ],
+      "verschiedeneBilder": 5
+    }
+  ]
+}

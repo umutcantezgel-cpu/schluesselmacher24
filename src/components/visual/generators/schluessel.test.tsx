@@ -2,6 +2,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
+import { AKZENT, DETAIL, HILFSLINIE, KONTUR, LINIE, LINIE_STARK, MARKE } from './grafik-basis';
 import { SchluesselGrafik } from './schluessel';
 
 function zeichne(params: unknown, title: unknown = 'Schlüssel'): string {
@@ -27,6 +28,7 @@ function pruefeVertrag(html: string) {
 }
 
 const TYPEN = ['zylinder', 'buntbart', 'klapp', 'funk', 'smart-key', 'transponder'];
+const ANSICHTEN = ['vorn', 'hinten', 'bart', 'detail'];
 
 describe('SchluesselGrafik', () => {
   it('zeichnet mit Standardwerten einen Zylinderschlüssel', () => {
@@ -196,5 +198,82 @@ describe('Bewegung der Schlüsselzeichnung', () => {
     for (const typ of TYPEN) {
       expect(zeichne({ typ, einschnitte: [3, 5, 2, 7, 4], anzahl: 3 }), typ).not.toContain('<circle class="sm24-pop');
     }
+  });
+
+  it('endet bei jeder Ansicht des Funkschlüssels spätestens nach 1,6 s', () => {
+    for (const ansicht of ANSICHTEN) {
+      const html = renderToStaticMarkup(
+        <SchluesselGrafik params={{ typ: 'funk', ansicht, einschnitte: [3, 5, 2, 7, 4] }} title="t" />,
+      );
+      expect(ende(html), ansicht).toBeLessThanOrEqual(1.6);
+    }
+  });
+});
+
+describe('Ansichten des Funkschlüssels', () => {
+  it('zeichnet vier verschiedene Ansichten, keine davon als Seitenansicht', () => {
+    const seite = zeichne({ typ: 'funk' });
+    const ausgaben = ANSICHTEN.map((ansicht) => zeichne({ typ: 'funk', ansicht }));
+    ausgaben.forEach(pruefeVertrag);
+    expect(new Set(ausgaben).size).toBe(ANSICHTEN.length);
+    for (const html of ausgaben) expect(html).not.toBe(seite);
+  });
+
+  it('wählt ohne typ den Funkschlüssel und ignoriert Anzahl und Rohling', () => {
+    expect(zeichne({ ansicht: 'hinten' })).toBe(zeichne({ typ: 'funk', ansicht: 'hinten' }));
+    expect(zeichne({ typ: 'funk', ansicht: 'detail', anzahl: 3, rohling: true })).toBe(
+      zeichne({ typ: 'funk', ansicht: 'detail' }),
+    );
+  });
+
+  it('gilt nur für den Funkschlüssel, andere Typen bleiben bei ihrer Seitenansicht', () => {
+    expect(zeichne({ typ: 'zylinder', ansicht: 'vorn' })).toBe(zeichne({ typ: 'zylinder' }));
+    expect(zeichne({ typ: 'smart-key', ansicht: 'bart' })).toBe(zeichne({ typ: 'smart-key' }));
+  });
+
+  it('führt unbekannte Werte zur Seitenansicht', () => {
+    const seite = zeichne({ typ: 'funk' });
+    for (const ansicht of ['rakete', '', 42, null, ['vorn'], {}, 'seite']) {
+      expect(zeichne({ typ: 'funk', ansicht }), String(ansicht)).toBe(seite);
+    }
+    expect(zeichne({ ansicht: 'rakete' })).toBe(zeichne({}));
+  });
+
+  it('verwendet nur die Strichstärken der Grafikbasis', () => {
+    const erlaubt = new Set([DETAIL, HILFSLINIE, LINIE, LINIE_STARK, KONTUR, AKZENT, MARKE].map(String));
+    for (const ansicht of ANSICHTEN) {
+      const html = zeichne({ typ: 'funk', ansicht, einschnitte: [3, 5, 2, 7, 4] });
+      const staerken = [...html.matchAll(/stroke-width="([^"]+)"/g)].map((m) => m[1]);
+      expect(staerken.length, ansicht).toBeGreaterThan(0);
+      for (const s of staerken) expect(erlaubt.has(s), `${ansicht}: ${s}`).toBe(true);
+    }
+  });
+
+  it('setzt je Ansicht einen Titel, wenn keiner angegeben ist', () => {
+    expect(zeichne({ typ: 'funk', ansicht: 'vorn' }, '')).toContain('<title>Funkschlüssel, Tastenseite</title>');
+    expect(zeichne({ typ: 'funk', ansicht: 'detail' }, null)).toContain(
+      '<title>Funkschlüssel, Prägung in Nahaufnahme</title>',
+    );
+  });
+
+  it('beschriftet den Bart nur mit angegebenen Einschnitten', () => {
+    expect(zeichne({ typ: 'funk', ansicht: 'bart', code: 'AB 4711' })).not.toContain('<text');
+    const html = zeichne({ typ: 'funk', ansicht: 'bart', einschnitte: [3, 5, 2, 7, 4] });
+    const ziffern = [...html.matchAll(/<text[^>]*>(\d)<\/text>/g)].map((t) => Number(t[1]));
+    expect(ziffern).toEqual([3, 5, 2, 7, 4]);
+  });
+
+  it('zeichnet die beiden Tasten der Tastenseite als geschlossenes und geöffnetes Schloss', () => {
+    const html = zeichne({ typ: 'funk', ansicht: 'vorn' });
+    const symbole = [...html.matchAll(/<g class="([^"]+)" stroke-width="([^"]+)"><rect [^>]*><\/rect><path d="([^"]+)"><\/path><\/g>/g)];
+    expect(symbole).toHaveLength(2);
+    const [zu, auf] = symbole;
+    expect(zu[2]).toBe(String(LINIE));
+    expect(auf[2]).toBe(zu[2]);
+    expect(auf[1]).toBe(zu[1]);
+    expect(auf[3]).not.toBe(zu[3]);
+    // Der geschlossene Bügel endet im Körper, der geöffnete Bügel endet frei darüber.
+    const schenkelEnde = (d: string) => Number(/V(-?[\d.]+)$/.exec(d)?.[1]);
+    expect(schenkelEnde(auf[3])).toBeLessThan(schenkelEnde(zu[3]));
   });
 });

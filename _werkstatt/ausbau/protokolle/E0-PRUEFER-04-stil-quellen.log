@@ -1,0 +1,289 @@
+| Seite | Zeilen | Gedanken | Ausrufe | Emoji | Frage | Floskel | Bindestrich | Platzhalter | Befunde | Hinweise (Dreierreihe) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H01-start | 204 | 19 | 0 | 0 | 1 | 0 | 4 | 0 | 24 | 0 |
+| H02-autoschluessel | 212 | 18 | 0 | 0 | 1 | 0 | 2 | 0 | 21 | 0 |
+| H03-modell-golf | 212 | 20 | 0 | 0 | 1 | 0 | 7 | 1 | 29 | 0 |
+| H04-autoschluessel-anfrage | 129 | 11 | 0 | 0 | 2 | 0 | 3 | 0 | 16 | 0 |
+| H05-code | 394 | 12 | 0 | 0 | 5 | 0 | 3 | 0 | 20 | 0 |
+| H06-code-produkt | 185 | 16 | 0 | 0 | 4 | 0 | 1 | 0 | 21 | 0 |
+| H07-foto | 159 | 21 | 0 | 0 | 2 | 0 | 1 | 0 | 24 | 0 |
+| H08-einschicken | 107 | 18 | 0 | 0 | 1 | 0 | 1 | 0 | 20 | 0 |
+| H09-sperrschliessung-konfigurator | 165 | 12 | 0 | 0 | 1 | 0 | 1 | 0 | 14 | 0 |
+| H10-schliessanlagen | 213 | 20 | 0 | 0 | 2 | 0 | 1 | 1 | 24 | 0 |
+| H11-schliessanlagen-konfigurator | 115 | 11 | 0 | 0 | 3 | 0 | 1 | 0 | 15 | 0 |
+| H12-partner-werden | 124 | 12 | 0 | 0 | 0 | 0 | 1 | 0 | 13 | 0 |
+| H13-kasse | 67 | 10 | 0 | 0 | 0 | 0 | 1 | 0 | 11 | 0 |
+| H14-ratgeber-messen | 82 | 12 | 0 | 0 | 0 | 0 | 1 | 0 | 13 | 0 |
+| content/blocked-days.json | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| content/car-key-services.json | 32 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| content/cities.json | 19 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 |
+| content/code-lines.json | 988 | 156 | 0 | 0 | 0 | 0 | 10 | 52 | 218 | 0 |
+| content/cylinder-catalog.json | 55 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 |
+| content/guides.json | 118 | 21 | 0 | 0 | 2 | 0 | 0 | 0 | 23 | 0 |
+| content/pricing-groups.json | 8 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 |
+| content/seo.json | 185 | 26 | 0 | 0 | 0 | 0 | 11 | 0 | 37 | 0 |
+| content/service-pages.json | 194 | 4 | 0 | 0 | 0 | 0 | 2 | 0 | 6 | 0 |
+| content/service-pricing.json | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| content/settings.json | 32 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
+| content/vehicles.json | 223 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 6 | 0 |
+| src/**/*.tsx (283 Dateien) | 4137 | 228 | 0 | 0 | 211 | 0 | 69 | 16 | 524 | 0 |
+
+Seitenquelle: Hauptansichten
+
+### Fundstellen (je Regel bis zu fünf)
+
+- H01-start · Gedankenstrich (Befund, 19)
+  - „…einen klaren Ablauf — vom direkten Kauf b…“
+  - „…mmieren, reparieren — mit festem Termin.“
+  - „…rei Fotos hochladen — wir prüfen Machbark…“
+  - „…üren, ein Schlüssel — direkt konfigurierb…“
+  - „…Schmiede in Wetzlar – mit Werkstatt, fach…“
+- H01-start · Frage (Befund, 1)
+  - „Kopie oder Programmierung — wo ist der Unterschied?“
+- H01-start · Bindestrich (Befund, 4)
+  - „Autoschlüssel-Termin anfragen“
+  - „…Sicherheitstechnik; Code-Schlüssel bundesweit per Vers…“
+  - „So läuft Ihr Autoschlüssel-Auftrag ab“
+  - „Cookie-Einstellungen“
+- H02-autoschluessel · Gedankenstrich (Befund, 18)
+  - „…mmieren, reparieren — mit klarem Ablauf u…“
+  - „…rbeitet werden muss — davon hängen Aufwan…“
+  - „… weiterer Schlüssel — mechanisch gefertig…“
+  - „…Teil des Schlüssels — nach Vorlage oder g…“
+  - „…r schwache Batterie — die Elektronik blei…“
+- H02-autoschluessel · Frage (Befund, 1)
+  - „Erklärung zu Was ist der Schlüsselbart?“
+- H02-autoschluessel · Bindestrich (Befund, 2)
+  - „Mercedes-Benz“
+  - „Cookie-Einstellungen“
+- H03-modell-golf · Gedankenstrich (Befund, 20)
+  - „…, Preise ab 69,00 € — berechnet wie im Te…“
+  - „… erfinden wir nicht — das klären wir anha…“
+  - „…lüssel: ab 249,00 € — verbindlich nach Pr…“
+  - „…lüssel: ab 129,00 € — verbindlich nach Pr…“
+  - „…hlüssel: ab 69,00 € — verbindlich nach Pr…“
+- H03-modell-golf · Frage (Befund, 1)
+  - „Erklärung zu Was bedeuten die Schlüsselarten?“
+- H03-modell-golf · Bindestrich (Befund, 7)
+  - „… — berechnet wie im Termin-Assistenten.“
+  - „Berechnet wie im Termin-Assistenten für dieses Modell, …“
+  - „Andere Volkswagen-Modelle“
+  - „Weitere Volkswagen-Modelle“
+  - „Alle Volkswagen-Modelle“
+- H03-modell-golf · Platzhalter (Befund, 1)
+  - „… Termin und Aufwand folgt.“
+- H04-autoschluessel-anfrage · Gedankenstrich (Befund, 11)
+  - „Schlüssel verloren — was tun?“
+  - „SCHLÜSSELMACHER24 – Inhaber Mina Saad“
+  - „09:00–13:00 · 14:00–17:00“
+  - „09:00–13:00 · 14:00–17:00“
+  - „09:00–13:00 · 14:00–17:00“
+- H04-autoschluessel-anfrage · Frage (Befund, 2)
+  - „Ihre Marke ist nicht dabei? Fall schildern“
+  - „Schlüssel verloren — was tun?“
+- H04-autoschluessel-anfrage · Bindestrich (Befund, 3)
+  - „Autoschlüssel-Anfrage mit Termin und Anza…“
+  - „Mercedes-Benz“
+  - „Cookie-Einstellungen“
+- H05-code · Gedankenstrich (Befund, 12)
+  - „…senden Schlüssel an — Sie behalten Ihren …“
+  - „…e von Ihrem Schloss — dann erscheinen die…“
+  - „SCHLÜSSELMACHER24 – Inhaber Mina Saad“
+  - „09:00–13:00 · 14:00–17:00“
+  - „09:00–13:00 · 14:00–17:00“
+- H05-code · Frage (Befund, 5)
+  - „Kein Code vorhanden? Dann geht es über S…“
+  - „Erklärung zu Was ist der Schlüsseltyp?“
+  - „Erklärung zu Was ist eine Anwendungsfamilie?“
+  - „Kein Code vorhanden? Schlüssel nach Vorl…“
+  - „Wo finde ich den Schlüsselcode?“
+- H05-code · Bindestrich (Befund, 3)
+  - „Zimmertür mit Chubb-Bart“
+  - „Aufzug-Notentriegelung“
+  - „Cookie-Einstellungen“
+- H06-code-produkt · Gedankenstrich (Befund, 16)
+  - „…n). 8,00 € je Stück – Ihr Originalschlüss…“
+  - „…M BEISPIELCODE 0812 – KEINE ECHTE SCHLIES…“
+  - „…k und Rollcontainer — Serie MS-01: Preis …“
+  - „— gilt für Ihre Auswa…“
+  - „… eingeschränkt sein — Einzelheiten stehen…“
+- H06-code-produkt · Frage (Befund, 4)
+  - „Erklärung zu Wo steht der Code?“
+  - „Sie finden den Code nicht? Der Ratgeber zeigt …“
+  - „Kein Code? Schlüssel nach Vorl…“
+  - „Ratgeber: Wo finde ich den Code?“
+- H06-code-produkt · Bindestrich (Befund, 1)
+  - „Cookie-Einstellungen“
+- H07-foto · Gedankenstrich (Befund, 21)
+  - „…haben den Schlüssel — wir prüfen anhand I…“
+  - „…ng nicht ausreichen — und erst, nachdem w…“
+  - „…len Sie den Auftrag — danach fertigen wir…“
+  - „…zusätzlich deutlich — bei kleinen Prägung…“
+  - „…annt gemacht werden — dafür ist in aller …“
+- H07-foto · Frage (Befund, 2)
+  - „Wo steht der Schlüsselcode?“
+  - „Code vorhanden? Direkt bestellen“
+- H07-foto · Bindestrich (Befund, 1)
+  - „Cookie-Einstellungen“
+- H08-einschicken · Gedankenstrich (Befund, 18)
+  - „…er auf unsere Bitte — so kommt Ihr Schlüs…“
+  - „…ns mit dem Ergebnis — als Freigabe, Rückf…“
+  - „…Sie um das Original — mit Ihrer Vorgangsn…“
+  - „…ng zu Ihrer Anfrage — zusammen mit Ihrer …“
+  - „SCHLÜSSELMACHER24 – Inhaber Mina Saad“
+- H08-einschicken · Frage (Befund, 1)
+  - „Noch keine Anfrage gestellt? So funktioniert der…“
+- H08-einschicken · Bindestrich (Befund, 1)
+  - „Cookie-Einstellungen“
+- H09-sperrschliessung-konfigurator · Gedankenstrich (Befund, 12)
+  - „SCHEMATISCH – MASSGEBLICH SIND DI…“
+  - „…e der Stulpschraube — Maß A nach außen, M…“
+  - „SCHLÜSSELMACHER24 – Inhaber Mina Saad“
+  - „09:00–13:00 · 14:00–17:00“
+  - „09:00–13:00 · 14:00–17:00“
+- H09-sperrschliessung-konfigurator · Frage (Befund, 1)
+  - „Größeres Vorhaben? Zu den Schließanlag…“
+- H09-sperrschliessung-konfigurator · Bindestrich (Befund, 1)
+  - „Cookie-Einstellungen“
+- H10-schliessanlagen · Gedankenstrich (Befund, 20)
+  - „…er geschlossen wird — meist ein Zylinder …“
+  - „…Gartenhaus Begrenzt — weitere Zylinder in…“
+  - „…iche Einrichtung Ja — dieses System ist a…“
+  - „…im gewählten System — zusätzlich sind Res…“
+  - „…gen mit Zukäufen Ja — das ist der Zweck d…“
+- H10-schliessanlagen · Frage (Befund, 2)
+  - „Karte nicht zur Hand? Anfrage stellen“
+  - „Welche Anlage passt?“
+- H10-schliessanlagen · Bindestrich (Befund, 1)
+  - „Cookie-Einstellungen“
+- H10-schliessanlagen · Platzhalter (Befund, 1)
+  - „…e übliche Abkürzung folgt in Klammern. Vorwis…“
+- H11-schliessanlagen-konfigurator · Gedankenstrich (Befund, 11)
+  - „…ne Gleichschließung — direkt konfigurierb…“
+  - „SCHLÜSSELMACHER24 – Inhaber Mina Saad“
+  - „09:00–13:00 · 14:00–17:00“
+  - „09:00–13:00 · 14:00–17:00“
+  - „09:00–13:00 · 14:00–17:00“
+- H11-schliessanlagen-konfigurator · Frage (Befund, 3)
+  - „Für wen planen wir die Anlage?*“
+  - „Nur wenige Türen?“
+  - „Lieber elektronisch?“
+- H11-schliessanlagen-konfigurator · Bindestrich (Befund, 1)
+  - „Cookie-Einstellungen“
+- H12-partner-werden · Gedankenstrich (Befund, 12)
+  - „…achbetriebe vor Ort — vor allem für Autos…“
+  - „… was gebraucht wird — zum Beispiel Fahrze…“
+  - „SCHLÜSSELMACHER24 – Inhaber Mina Saad“
+  - „09:00–13:00 · 14:00–17:00“
+  - „09:00–13:00 · 14:00–17:00“
+- H12-partner-werden · Bindestrich (Befund, 1)
+  - „Cookie-Einstellungen“
+- H13-kasse · Gedankenstrich (Befund, 10)
+  - „SCHLÜSSELMACHER24 – Inhaber Mina Saad“
+  - „09:00–13:00 · 14:00–17:00“
+  - „09:00–13:00 · 14:00–17:00“
+  - „09:00–13:00 · 14:00–17:00“
+  - „09:00–13:00 · 14:00–17:00“
+- H13-kasse · Bindestrich (Befund, 1)
+  - „Cookie-Einstellungen“
+- H14-ratgeber-messen · Gedankenstrich (Befund, 12)
+  - „Maß A und Maß B — gemessen ab der Mit…“
+  - „…e der Stulpschraube — das ist die Schraub…“
+  - „SCHLÜSSELMACHER24 – Inhaber Mina Saad“
+  - „09:00–13:00 · 14:00–17:00“
+  - „09:00–13:00 · 14:00–17:00“
+- H14-ratgeber-messen · Bindestrich (Befund, 1)
+  - „Cookie-Einstellungen“
+- content/cities.json · Bindestrich (Befund, 1)
+  - „Autoschlüssel-Termin anfragen“
+- content/code-lines.json · Gedankenstrich (Befund, 156)
+  - „…k und Rollcontainer — Serie MS-01“
+  - „…aufgedruckten Codes — Sie müssen Ihren Or…“
+  - „…k und Rollcontainer — Serie MS-01 nach Co…“
+  - „…tisch und Sideboard — Serie MS-02“
+  - „…aufgedruckten Codes — Sie müssen Ihren Or…“
+- content/code-lines.json · Bindestrich (Befund, 10)
+  - „Zimmertür mit Chubb-Bart — Serie ZY-06“
+  - „…loss: Zimmertür mit Chubb-Bart“
+  - „…loss: Zimmertür mit Chubb-Bart. Die Fertigung erfo…“
+  - „Zimmertür mit Chubb-Bart — Serie ZY-06 nach …“
+  - „…loss: Zimmertür mit Chubb-Bart nach Code bestellen…“
+- content/code-lines.json · Platzhalter (Befund, 52)
+  - „[Hersteller eintragen]“
+  - „[Hersteller eintragen]“
+  - „[Hersteller eintragen]“
+  - „[Hersteller eintragen]“
+  - „[Hersteller eintragen]“
+- content/cylinder-catalog.json · Gedankenstrich (Befund, 4)
+  - „… Ende des Zylinders — einmal nach außen (…“
+  - „…r nicht mehr öffnen — außer Sie wählen di…“
+  - „…in Zugang nötig ist — etwa an Garagentore…“
+  - „…achbestellen können — zum Beispiel für ei…“
+- content/guides.json · Gedankenstrich (Befund, 21)
+  - „…oschlüssel verloren — was jetzt zu tun is…“
+  - „…ehr Vorarbeit nötig — und wir brauchen Ih…“
+  - „…oschlüssel verloren — was jetzt zu tun is…“
+  - „…oder Programmierung — wo ist der Untersch…“
+  - „…oder Programmierung — wo ist der Untersch…“
+- content/guides.json · Frage (Befund, 2)
+  - „Welche Türen und Fenster sind ohne Hilfsmittel erreichbar? Genau dort beginnt …“
+  - „Kann jemand den gefundenen Schlüssel Ihrer Wohnung zuordnen? Wenn am Schlüsselbu…“
+- content/pricing-groups.json · Gedankenstrich (Befund, 4)
+  - „Gruppe A — einfache Systeme“
+  - „Gruppe B — Funk und Transponde…“
+  - „Gruppe C — Smart Key und Keyle…“
+  - „Gruppe D — Sonderfälle“
+- content/seo.json · Gedankenstrich (Befund, 26)
+  - „…mmieren, reparieren — mit klarem Ablauf u…“
+  - „…eren und reparieren — Werkstatt in Wetzla…“
+  - „…inzelfall gesondert — Umfang und Aufwand …“
+  - „…g anfertigen lassen — Werkstatt in Wetzla…“
+  - „… das Fahrzeug nötig — das lässt sich nich…“
+- content/seo.json · Bindestrich (Befund, 11)
+  - „…Sicherheitstechnik; Code-Schlüssel bundesweit per Vers…“
+  - „…Sicherheitstechnik. Code-Schlüssel bundesweit per Vers…“
+  - „Smart-Key-Systeme erkennen den Schlüs…“
+  - „Alle Autoschlüssel-Leistungen“
+  - „Autoschlüssel-Anfrage mit Termin und Anza…“
+- content/service-pages.json · Gedankenstrich (Befund, 4)
+  - „…ngs- und Nebentüren — einschließlich Sond…“
+  - „…ngs- und Nebentüren — einschließlich Sond…“
+  - „…tage und Nacharbeit — damit die Technik d…“
+  - „…tage und Nacharbeit — damit die Technik d…“
+- content/service-pages.json · Bindestrich (Befund, 2)
+  - „…er Aufzeichnung und App-Zugriff.“
+  - „…er Aufzeichnung und App-Zugriff.“
+- content/settings.json · Gedankenstrich (Befund, 1)
+  - „SCHLÜSSELMACHER24 – Inhaber Mina Saad“
+- content/vehicles.json · Bindestrich (Befund, 6)
+  - „Mercedes-Benz“
+  - „Mercedes-Benz arbeitet bei vielen…“
+  - „Opel-Fahrzeuge lassen sich in viel…“
+  - „…Klappschlüssel oder Smart-Key-Systeme. Die Schlüsselfotos…“
+  - „Fiat-Fahrzeuge lassen sich häufig …“
+- src/**/*.tsx (283 Dateien) · Gedankenstrich (Befund, 228)
+  - „— gilt für Ihre Auswa…“ (src/app/(site)/artikel/[slug]/artikel-kauf.tsx)
+  - „Beispielartikel — nicht bestellbar“ (src/app/(site)/artikel/[slug]/artikel-kauf.tsx)
+  - „Beispielartikel — nicht bestellbar“ (src/app/(site)/artikel/[slug]/page.tsx)
+  - „…el, Schloss und Tür — Stückzahl wählen un…“ (src/app/(site)/artikel/page.tsx)
+  - „…gabe ist freiwillig — ohne sie können …“ (src/app/(site)/autoschluessel/anfrage/assistent.tsx)
+- src/**/*.tsx (283 Dateien) · Frage (Befund, 211)
+  - „Unsicher? Wählen Sie die Art,…“ (src/app/(site)/autoschluessel/anfrage/assistent.tsx)
+  - „Welche Marke hat Ihr Fahrzeug?“ (src/app/(site)/autoschluessel/anfrage/assistent.tsx)
+  - „Welches Modell fahren Sie?“ (src/app/(site)/autoschluessel/anfrage/assistent.tsx)
+  - „Welche Schlüsselart haben Sie?“ (src/app/(site)/autoschluessel/anfrage/assistent.tsx)
+  - „Wie viele funktionierende Schlüssel haben Sie noch?“ (src/app/(site)/autoschluessel/anfrage/assistent.tsx)
+- src/**/*.tsx (283 Dateien) · Bindestrich (Befund, 69)
+  - „Online-Zahlung ist noch nicht eing…“ (src/app/(site)/autoschluessel/anfrage/assistent.tsx)
+  - „Autoschlüssel-Anfrage mit Termin und Anza…“ (src/app/(site)/autoschluessel/anfrage/page.tsx)
+  - „Alle Autoschlüssel-Leistungen“ (src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx)
+  - „Alle Autoschlüssel-Leistungen“ (src/app/(site)/autoschluessel/funkschluessel/page.tsx)
+  - „Alle Autoschlüssel-Leistungen“ (src/app/(site)/autoschluessel/kopieren/page.tsx)
+- src/**/*.tsx (283 Dateien) · Platzhalter (Befund, 16)
+  - „…r. Ist er verloren, folgt als zweiter Schritt…“ (src/app/(site)/autoschluessel/fahrzeugoeffnung/page.tsx)
+  - „… Termin und Aufwand folgt.“ (src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx)
+  - „Preis folgt“ (src/app/(site)/bestellung/[id]/foto-ergebnis.tsx)
+  - „… Ihr Widerrufsrecht folgt, steht in der Wider…“ (src/app/(site)/kasse/kasse-formular.tsx)
+  - „… und nicht mehr als Platzhalter markiert sind.“ (src/app/(site)/rechtliches/datenschutz/page.tsx)
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/stil-2026-11-02_23-25-02.json

@@ -86,7 +86,7 @@ export function SchluesselartenReihe({
           );
           // Kopf: jede Karte wartet auf ihr Sichtbarwerden (mobil rechts außerhalb der Leiste, E7 Bildrate).
           return kopf ? (
-            <InView key={art} as="li" threshold={0.25} className={klasse}>
+            <InView key={art} as="li" threshold={0.25} kennung="B-21" className={klasse}>
               {inhalt}
             </InView>
           ) : (

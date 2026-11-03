@@ -1,0 +1,18 @@
+# SVG-Prüfung · 2026-11-02T21:55:48.073Z · Server http://localhost:3000
+
+## Dateien (1)
+| Datei | Bytes | Befunde |
+|---|---|---|
+| src/app/icon.svg | 1171 | Kommentar |
+
+## Ansichten (Desktop)
+| Ansicht | SVG | Icons (eine Familie) | Grafiken | andere | verborgen | benannt | unbenannt sichtbar | doppelte id | lucide |
+|---|---|---|---|---|---|---|---|---|---|
+| / | 57 | 47 | 7 | 3 | 50 | 7 | 0 | 0 | 0 |
+
+## Einzelheiten (nur mit Befund oder „andere“)
+- /: andere SVG: 0 0 87.2 10 shrink-0 overflow-visible · 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+
+Befunde: Dateien 1, unbenannt sichtbar 0, doppelte id 0, lucide 0
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-svg-pruefung-json.log
+Exit: 0

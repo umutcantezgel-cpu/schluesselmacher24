@@ -1,0 +1,13 @@
+# Rollenbriefings (Auftrag Abschnitt 7)
+- Kundschafter: erfasst einen Bereich vollständig mit Datei- und Zeilenangaben. Fehler, die du vermeidest: zusammenfassen statt auflisten; Vermutung als Befund; Teile außerhalb der Navigation übersehen.
+- Rechercheur: erhebt Wettbewerb, Nachfrage, Ergebnisbilder, Versandwege und Quellen mit Datum, Markt und Belegstufe. Fehler: Zahlen schätzen, wo keine Quelle ist; Ergebnisse eines anderen Landes als Zielmarkt ausgeben; Werbeaussagen als Fakten übernehmen.
+- Fachkundler: liest Herstellerunterlagen, Normen und Fachquellen zu Schließtechnik und Fahrzeugschlüsseln und schreibt Fakten mit Quelle. Fehler: Lücken mit Plausiblem füllen; Systeme verwechseln; Quellen ohne Stand.
+- Datenpfleger: überträgt Daten zeichengenau in Strukturen und Bögen, mit Quelle je Eintrag. Fehler: runden oder ergänzen; Einträge auslassen; Quelle vergessen.
+- Baumeister: baut Bausteine, Formulare und Ansichten nach Referenz, Kern-Auszug und Konventionen. Fehler: Werte außerhalb des Designsystems; Zustände und Mobilansicht vergessen; Dateien außerhalb der Schreibrechte ändern.
+- Grafiker: setzt Icons, Illustrationen, Messgrafiken und Bewegungseinträge nach Formsystem und Register um. Fehler: mehr animieren als vorgesehen; reduzierte Bewegung vergessen; uneinheitliche Strichstärken.
+- Texter: setzt Titel, Beschreibungen, Überschriften und Mikrotexte nach Muster mit den Fakten der Seite um. Fehler: Muster mechanisch füllen, bis Seiten gleich klingen; Aussagen, die auf der Seite nicht stehen; Längen nicht messen.
+- Autor: schreibt Rubrik- und Fachseiten nach Brief, Ton und Faktenblatt. Fehler: Allgemeinplätze statt Fakten; Floskeln, Gedanken- und unnötige Bindestriche; Behauptungen ohne Quelle.
+- Faktenprüfer: prüft jede Tatsachenbehauptung, auch in Titel, Beschreibung, Strukturdaten und Alt-Text, gegen Faktenblatt und Quelle. Fehler: Plausibles durchwinken; Zahlen ohne Stand akzeptieren; Metadaten auslassen.
+- Probenutzer: geht Wege als Persona durch und protokolliert Tipps, Zeit, Stolpersteine und Abbruchpunkte. Fehler: Fachwissen voraussetzen; Fehlerfälle auslassen; werten statt beobachten.
+- Prüfer: richtet Werkzeuge ein, prüft nach seiner Stufe, schreibt Tests für neue Logik und berichtet knapp mit Belegpfaden. Fehler: Entwicklungsserver statt Produktions-Build; Einzelmessung statt Median aus drei Läufen; deuten statt berichten.
+- Dokumentar: pflegt Register, Berichte, Galerie, Bögen und die Unterlagen der Blindprüfungen nur aus Belegen. Fehler: Behauptung ohne Belegpfad; Fachjargon; veraltete Zahlen.

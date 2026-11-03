@@ -1,0 +1,33 @@
+{
+  "skript": "admin-login.mjs",
+  "basis": "http://localhost:3001",
+  "zeit": "2026-11-03T04:29:39.039Z",
+  "geraet": "desktop",
+  "status": 200,
+  "endurl": "http://localhost:3001/admin/login",
+  "titel": "Anmelden – SCHLÜSSELMACHER24 Backend",
+  "formulare": 1,
+  "passwortFelder": 1,
+  "konsolenfehler": {
+    "anzahl": 0,
+    "texte": []
+  },
+  "warnungen": {
+    "anzahl": 0,
+    "texte": []
+  },
+  "seitenfehler": {
+    "anzahl": 0,
+    "texte": []
+  },
+  "fehlgeschlageneAnfragen": {
+    "anzahl": 0,
+    "eintraege": []
+  },
+  "httpFehler": {
+    "anzahl": 0,
+    "eintraege": []
+  },
+  "attrappen": {},
+  "png": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/admin-login.png"
+}

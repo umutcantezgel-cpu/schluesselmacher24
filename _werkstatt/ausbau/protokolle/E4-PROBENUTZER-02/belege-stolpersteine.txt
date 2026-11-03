@@ -1,0 +1,66 @@
+E4-PROBENUTZER-02 · Stolpersteine je Ort, Textzitat und Einschätzung der Persona
+Stand 2026-11-03. Zitate sind sichtbarer Text aus den Läufen (Protokolle je Lauf: *.json). Die Gedanken sind Einschätzungen aus dem sichtbaren Text, keine Aussagen echter Menschen.
+
+S1 · Fotos Ihres Schlüssels, nach dem Hochladen (Rentnerin, Telefon und Desktop)
+  Zitat: „Dateien können gerade nicht gespeichert werden.“ (rote Karte unter dem Foto)
+  Gedanke: Die Bilder sind da, aber rot steht etwas. Ist das gespeichert?
+  Beleg: rentnerin-mobil.json (antworten: fünf Antworten 503), rentnerin-mobil-06-06-fotos-schluessel-hochgeladen.png
+
+S2 · Zulassungsbescheinigung Teil I (alle Läufe mit Fahrzeugschein, Telefon und Desktop)
+  Zitat: „Weiter“ wird aktiv, obwohl der Upload mit 503 abgewiesen wurde
+  Gedanke: Der Schein ist hochgeladen, also ist das erledigt.
+  Beleg: rentnerin-mobil.json, eilige-mobil.json (antworten 503), Schritte TIPP „Weiter“ nach dem Upload
+
+S3 · Anfrage, Zwischenstand (Rentnerin und Eilige, Telefon und Desktop; vier Läufe)
+  Zitat: „Ihr Zwischenstand von zuletzt wurde geladen.“ · „Weitermachen“ · „Neu beginnen“ · „Schritt 4 von 5 · Anzahlung“
+  Gedanke: Ich wollte einen anderen Wagen. Warum bin ich wieder bei der Anzahlung?
+  Beleg: rentnerin-mobil-12-12-zwischenstand-hinweis.png, warten-Einträge in den Protokollen (15 s ohne erwartete Anzeige)
+
+S4 · Was sollen wir für Sie tun? (Rentnerin)
+  Zitat: „Vorhandener oder neuer Schlüssel wird elektronisch am Fahrzeug angelernt.“
+  Gedanke: Anlernen? Ich nehme das, was nach Schlüssel klingt.
+  Beleg: belege-leistung-anlernen-mobil.png
+
+S5 · Fotos oder Unterlagen (Dacia Sandero, alle Läufe mit Dacia)
+  Zitat: „Freiwillig. Ein Foto sagt oft mehr als eine Beschreibung.“ · „Ohne Fahrzeugschein fertigen wir keinen Schlüssel.“
+  Gedanke: Muss ich den Schein hochladen oder nicht?
+  Beleg: rentnerin-mobil-16-unterlagen-3-von-5.png
+
+S6 · Suchergebnis „Dacia Sandero“ (alle Läufe mit Dacia)
+  Zitat: „Allgemeine Anfrage“ · „Worum geht es?“ · „Wenn Ihr Anliegen in keinen der Fachbereiche passt“
+  Gedanke: Ich habe Dacia gesucht und lande bei „Allgemeine Anfrage“. Ist das richtig?
+  Beleg: rentnerin-mobil-14-thema-1-von-5.png
+
+S7 · Fotoschritt, Link „Anfrage ohne Fotos senden“ (geprüft in den zwei Läufen ohne Fotos)
+  Zitat: „Anfrage ohne Fotos senden“ führt zu „Allgemeine Anfrage“ (ohne Preisschritt und ohne Anzahlung)
+  Gedanke: Senden? Ich will zuerst den Preis sehen.
+  Beleg: ohnefotos-rentnerin-mobil-06-06-gefuehrte-anfrage-ohne-fotos.png, ohnefotos-eilige-desktop.json
+
+S8 · Anzahlung (Golf 7, alle vier Läufe mit Anzahlung)
+  Zitat: „Online-Zahlung ist noch nicht eingerichtet“ · „Ihr Vorgang wird mit dem Zahlungsstatus „offen“ angelegt.“
+  Gegenstück auf der Startseite: „Die Anzahlung zahlen Sie online.“
+  Gedanke: Ich soll 69,90 Euro zahlen, und online geht das nicht?
+  Beleg: belege-anzahlung-text.txt, belege-startseite-text-mobil.txt, rentnerin-mobil-10-10-anzahlung.png
+
+S9 · Anzahlung, Zustimmungshaken (alle vier Läufe mit Anzahlung)
+  Zitat: „Ich verlange ausdrücklich, dass Sie vor Ablauf der Widerrufsfrist mit der Leistung beginnen (z. B. Rohling bestellen).“
+  Gedanke: Ich soll einer Sache zustimmen, die ich nicht verstehe.
+  Beleg: belege-anzahlung-text.txt
+
+S10 · Schlüsseldienst vor Ort (Schlüsseldienst, Fehlgriff, Telefon und Desktop)
+  Zitat: Kachel „Schlüsseldienst vor Ort, mit Termin“ führt zu „Was wir direkt bei Ihnen erledigen“, „Partner werden“ nicht im Sichtfeld. Weg ohne Fehlgriff: Menü öffnen, Mehr, Partner werden (drei Tipps)
+  Gedanke: Ich bin der Schlüsseldienst, ich will Partner werden. Wo ist das?
+  Beleg: schluesseldienst-mobil-02-02-schluesseldienst-fehlgriff.png, schluesseldienst-mobil.json (Prüfung: nicht im Sichtfeld)
+
+S11 · Kopfleiste Desktop, Menü „Mehr“
+  Zitat: „Partner werden · Für Schlüsseldienste und Betriebe aus ganz Deutschland“ im offenen Menü
+  Befund: Das Menü öffnet sich beim Überfahren und bleibt beim Wegfahren offen, bis ein Klick oder Escape folgt. Es verdeckt Kacheln und die Brotkrume.
+  Gedanke: Das Menü hängt über der Seite, ich sehe nicht, wo ich weitermachen soll.
+  Beleg: belege-kopfleiste-mehr-hover-desktop.png; menueOffen in rentnerin-desktop.json (2x), eilige-desktop.json (2x), schluesseldienst-desktop.json (1x), ohnefotos-eilige-desktop.json (1x)
+
+S12 · Planung Schließanlage (Hausverwaltung, Telefon und Desktop)
+  Zitat: „Zehn Frageblöcke, aus denen ein belastbares Angebot entsteht.“ und „Schritt 1 von 11 · Kundentyp“
+  Gedanke: Zehn oder elf?
+  Beleg: hausverwaltung-mobil-03-03-planung-schritt-1-von-11.png
+
+Weitere Prüfungen, keine Stolpersteine: Vorschlag „Volkswagen Golf“ übernimmt das Fahrzeug und führt zu „Baujahr oder Erstzulassung“ (ohne weiteren Klick). Die Auswahl „Kein funktionierender Schlüssel“ bietet „Ersatzschlüssel bei Verlust“ (kein „Zweitschlüssel“ mehr, Lauf 1 behoben). Fotos stehen als „(freiwillig)“ im Schritt, das Anrufen „Hilfe bei den Fotos? Rufen Sie uns an“ ist am Telefon im Bild.

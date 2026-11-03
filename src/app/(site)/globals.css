@@ -12,7 +12,8 @@
  * Schnitt: Liberation Sans fett ist ohne Ausgleich 2–2,5 % breiter als Plex Sans fett
  * (Überschriften gemessen), daher 97,7 %; die Wortmarke in engen Großbuchstaben braucht 92,55 %
  * (149,1 gegen 161,1 px). Vertikale Maße wie Plex Sans (Oberlänge 1,025, Unterlänge 0,275 em,
- * geteilt durch den Ausgleich). Inter bleibt beim Ersatz von next/font. Mono: Liberation Mono,
+ * geteilt durch den Ausgleich). Seit KERN 2.0 ist das der einzige Ersatz: Die Schriften liegen in
+ * src/fonts (next/font/local ohne eigenen Ersatz), Plex Sans auch für den Fließtext. Mono: Liberation Mono,
  * Cousine und Courier New haben denselben Vorschub von 0,6 em wie IBM Plex Mono.
  */
 @font-face {
@@ -58,73 +59,78 @@
    beim Schrifttausch nicht springt. Die Wortmarke selbst bleibt unverändert (Logo, G8); ist
    Plex Sans geladen, gilt sie wie bisher. */
 header a[aria-label$='Startseite'] > span {
-  font-family: var(--font-display), 'SM24 Ersatz Wortmarke', system-ui, sans-serif;
+  font-family: var(--font-sans), 'SM24 Ersatz Wortmarke', system-ui, sans-serif;
 }
 
 /* ==========================================================================
-   SCHLÜSSELMACHER24 — Designsystem
+   SCHLÜSSELMACHER24 — Designsystem (KERN 2.0)
    Hell, freundlich, farbig — und trotzdem fachlich. Klares Blau auf hellem
    Grund, dazu je Leistungsbereich eine eigene Akzentfarbe (`--area*`, aus
    `src/lib/visual/area-theme.ts`, gesetzt über `[data-area]`).
+   Farben als OKLCH-Tripel „L C H“ (Tailwind: `oklch(var(--x) / <alpha-value>)`).
+   Abstufungsregel: Text- und Aktionsfarben L 0,485 (so hell wie das Markenblau),
+   Grafikfarben L 0,605, helle Flächen L 0,96; je Familie ein Farbton. Neutrale
+   Stufen im Stahlblau (H 255 bis 266, Buntheit unter 0,05).
    Bewusst KEINE Notdienst-Optik (kein Gelb/Schwarz, keine Signalfarben
-   als Flächen). Kontraste prüft `src/lib/visual/area-theme.test.ts`.
+   als Flächen), kein Lila und kein Indigo. Kontraste, Farbraum und Regel prüft
+   `src/lib/visual/area-theme.test.ts`.
    ========================================================================== */
 
 @layer base {
   :root {
     /* Flächen */
-    --background: 214 45% 98.6%;
-    --surface: 0 0% 100%;
-    --surface-muted: 214 50% 96.6%;
-    --surface-sunken: 214 36% 92.5%;
-    --surface-ink: 222 36% 16%;
+    --background: 0.9882 0.0028 255;
+    --surface: 1 0 0;
+    --surface-muted: 0.971 0.0077 255;
+    --surface-sunken: 0.9377 0.0123 255;
+    --surface-ink: 0.2581 0.041 265.9;
 
     /* Text */
-    --foreground: 222 34% 15%;
-    --foreground-muted: 219 16% 37%;
-    --foreground-subtle: 217 12% 45%;
-    --foreground-inverse: 214 45% 98.6%;
+    --foreground: 0.2497 0.0366 266;
+    --foreground-muted: 0.4654 0.0347 262.8;
+    --foreground-subtle: 0.5408 0.0295 259.9;
+    --foreground-inverse: 0.9882 0.0028 255;
 
     /* Linien */
-    --border: 214 32% 89%;
-    --border-strong: 214 22% 77%;
-    --input: 214 28% 84%;
-    --ring: 214 86% 50%;
+    --border: 0.9091 0.0162 255;
+    --border-strong: 0.8119 0.024 255.1;
+    --input: 0.8684 0.0209 255.1;
+    --ring: 0.605 0.162 257.63;
 
-    /* Primär — klares Blau */
-    --primary: 214 80% 40%;
-    --primary-hover: 214 82% 33%;
-    --primary-soft: 214 100% 96.5%;
-    --primary-foreground: 0 0% 100%;
+    /* Primär — klares Blau (Markenwert der Wortmarke, unverändert) */
+    --primary: 0.4852 0.1611 257.63;
+    --primary-hover: 0.4245 0.1409 257.63;
+    --primary-soft: 0.96 0.018 257.63;
+    --primary-foreground: 1 0 0;
 
     /* Sekundär */
-    --secondary: 214 50% 94%;
-    --secondary-foreground: 222 34% 15%;
+    --secondary: 0.9487 0.0137 255;
+    --secondary-foreground: 0.2497 0.0366 266;
 
     /* Akzent — Technisch-Teal, sparsam für Bestätigungen */
-    --accent: 188 52% 30%;
-    --accent-soft: 188 44% 94%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0.485 0.069 209.4;
+    --accent-soft: 0.96 0.013 209.4;
+    --accent-foreground: 1 0 0;
 
     /* Funktionsfarben — nur für Status, nie als Markenfläche */
-    --success: 152 48% 30%;
-    --success-soft: 152 44% 94%;
-    --warning: 32 80% 33%;
-    --warning-soft: 38 70% 95%;
-    --danger: 0 58% 42%;
-    --danger-soft: 0 60% 96%;
-    --info: 214 80% 40%;
-    --info-soft: 214 100% 96.5%;
+    --success: 0.485 0.092 159.8;
+    --success-soft: 0.96 0.016 159.8;
+    --warning: 0.485 0.108 62.2;
+    --warning-soft: 0.96 0.017 62.2;
+    --danger: 0.485 0.161 25.4;
+    --danger-soft: 0.96 0.013 25.4;
+    --info: 0.4852 0.1611 257.63;
+    --info-soft: 0.96 0.018 257.63;
 
     /* Karten / Popover */
-    --card: 0 0% 100%;
-    --card-foreground: 222 34% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 34% 15%;
-    --muted: 214 50% 94%;
-    --muted-foreground: 219 16% 37%;
-    --destructive: 0 58% 42%;
-    --destructive-foreground: 0 0% 100%;
+    --card: 1 0 0;
+    --card-foreground: 0.2497 0.0366 266;
+    --popover: 1 0 0;
+    --popover-foreground: 0.2497 0.0366 266;
+    --muted: 0.9487 0.0137 255;
+    --muted-foreground: 0.4654 0.0347 262.8;
+    --destructive: 0.485 0.161 25.4;
+    --destructive-foreground: 1 0 0;
 
     /* Kanten: kleine Radien wie an einem Werkstück */
     --radius: 0.625rem;
@@ -135,20 +141,27 @@ header a[aria-label$='Startseite'] > span {
     --icon-strich: 1.75px;
 
     /* Schattenfarbe für `shadow-raised` und `shadow-overlay` */
-    --shadow-color: 222 40% 18%;
+    --shadow-color: 0.2744 0.0504 265.6;
+
+    /* Leuchten (B-30): Lichthof in der Bereichsfarbe bei Hover und Fokus, nur als Rückmeldung */
+    --leuchten: 0 0 24px 0 oklch(var(--area) / 0.28);
+    /* Druck auf eine Kachel (B-34): derselbe Lichthof, kurz kräftiger */
+    --leuchten-druck: 0 0 24px 2px oklch(var(--area) / 0.42);
 
     /* Layout */
     --header-height: 4rem;
     --header-height-md: 5rem;
     --shell-max: 1240px;
 
-    /* Typoskala — fließend zwischen 390 und 1440 px Breite (KERN K-005) */
+    /* Typoskala — fließend zwischen 390 und 1440 px Breite (KERN K-005, 2.0 für Laien:
+       Fließtext mobil 17 px, Eingaben 17 px, Hilfstexte 15 px; Einleitung und Kartentitel
+       bleiben darüber) */
     --text-caption: 0.75rem;
-    --text-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
-    --text-body: clamp(0.9375rem, 0.91rem + 0.12vw, 1rem);
-    --text-eingabe: 1rem;
-    --text-lead: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
-    --text-title-sm: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+    --text-small: 0.9375rem;
+    --text-body: clamp(1.0625rem, 1.03rem + 0.12vw, 1.125rem);
+    --text-eingabe: 1.0625rem;
+    --text-lead: clamp(1.125rem, 1.08rem + 0.2vw, 1.25rem);
+    --text-title-sm: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
     --text-title: clamp(1.1875rem, 1.12rem + 0.3vw, 1.375rem);
     --text-headline: clamp(1.625rem, 1.39rem + 0.95vw, 2.25rem);
     --text-display: clamp(2.125rem, 1.5rem + 2.5vw, 3.75rem);
@@ -380,6 +393,22 @@ header a[aria-label$='Startseite'] > span {
     text-wrap: balance;
   }
 
+  /* Trennung in schmalen Kacheln (K-013): nur an Stellen mit mindestens 4 Zeichen davor und 5 danach,
+     also „Auto-schlüssel“ und „Schließ-anlage“ statt „Autoschlüs-sel“ (lang="de" ist gesetzt) */
+  .trennung-kachel {
+    hyphens: auto;
+    hyphenate-limit-chars: auto 4 5;
+  }
+
+  /* Hub-Icons in der Tinte der Seite (A-025): `data-area="allgemein"` setzt die Grundfarben,
+     Hover und Fokus der Kachel geben die Bereichsfarbe der Rubrik (aus dem umgebenden Bereich) frei */
+  .group:is(:hover, :focus-visible) .hub-tinte[data-area='allgemein'] {
+    --area: inherit;
+    --area-strong: inherit;
+    --area-soft: inherit;
+    --area-muted: inherit;
+  }
+
   /* Sicherer Abstand über der mobilen Aktionsleiste */
   .pb-safe-nav {
     padding-bottom: calc(5rem + env(safe-area-inset-bottom));
@@ -426,9 +455,12 @@ header a[aria-label$='Startseite'] > span {
                     geht einmal hinaus (Sichtabnahme E4-L-23, WCAG 2.2.2)
    - `.sm24-scrub-*` an das Scrollen gebundene Szenen (B-03)
    Verzögerung/Dauer einzeln über `--sm24-delay` / `--sm24-duration`.
-   `[data-motion="wait"]` hält die Einstiegs-Animationen an, bis `InView`
-   den Bereich sichtbar meldet (`data-motion="play"`). Ohne JavaScript oder
-   bei „Bewegung reduzieren“ sind alle Inhalte sofort vollständig sichtbar.
+   `[data-zustand="wait"]` hält die Einstiegs-Animationen an, bis `InView`
+   den Bereich sichtbar meldet (`data-zustand="play"`); `data-motion` trägt die
+   Kennung im Bewegungsregister (B-xx). Alles bewegt sich nur bei
+   `html[data-bewegung="an"]` (Startskript aus src/lib/bewegung.ts, Schalter im
+   Fuß). Ohne JavaScript oder bei „ruhig“ sind alle Inhalte sofort vollständig
+   sichtbar.
    ========================================================================== */
 
 @keyframes sm24-draw {
@@ -438,6 +470,12 @@ header a[aria-label$='Startseite'] > span {
 
 @keyframes sm24-reveal {
   from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Code-Motiv (B-33): Ziffern ordnen sich ein, höchstens 4 px Weg */
+@keyframes sm24-ordnen {
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: none; }
 }
 
@@ -505,46 +543,81 @@ header a[aria-label$='Startseite'] > span {
   to { clip-path: inset(0 0 0 0); }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .sm24-draw {
-    stroke-dasharray: 1;
-    animation: sm24-draw var(--sm24-duration, var(--dauer-scene)) var(--kurve-draw)
+:where(:root[data-bewegung='an']) .sm24-draw {
+  stroke-dasharray: 1;
+  animation: sm24-draw var(--sm24-duration, var(--dauer-scene)) var(--kurve-draw)
       var(--sm24-delay, 0s) both;
-  }
+}
 
-  .sm24-reveal {
-    animation: sm24-reveal var(--sm24-duration, var(--dauer-enter)) var(--kurve-enter)
+:where(:root[data-bewegung='an']) .sm24-reveal {
+  animation: sm24-reveal var(--sm24-duration, var(--dauer-enter)) var(--kurve-enter)
       var(--sm24-delay, 0s) both;
-  }
+}
 
-  .sm24-fade {
-    animation: sm24-fade var(--sm24-duration, var(--dauer-base)) var(--kurve-standard)
+:where(:root[data-bewegung='an']) .sm24-ordnen {
+  animation: sm24-ordnen var(--sm24-duration, var(--dauer-base)) var(--kurve-standard)
       var(--sm24-delay, 0s) both;
-  }
+}
 
-  .sm24-pop {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: sm24-pop var(--sm24-duration, var(--dauer-enter)) var(--kurve-enter)
+/* Eingangsinszenierung (B-31): Die Teile laufen von ihrem Startzustand (Variablen --start-*) in das
+   Endbild, nur solange das Startskript `sm24-start` gesetzt hat (höchstens 2 s). Ohne Klasse, ohne
+   JavaScript oder bei „ruhig“ steht sofort das Endbild. */
+.sm24-eingang-teil {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes sm24-eingang {
+  from {
+    transform: translate(var(--start-x, 0px), 0) rotate(var(--start-dreh, 0deg)) scale(var(--start-gross, 1));
+    opacity: var(--start-deckkraft, 1);
+  }
+}
+
+:where(:root.sm24-start[data-bewegung='an']) .sm24-eingang-teil {
+  animation: sm24-eingang var(--eingang-dauer, var(--dauer-enter)) var(--kurve-enter) var(--eingang-verzug, 0s) both;
+}
+
+/* Dauerschleife der Inszenierung (B-32): Schlüssel zieht zurück, Kern dreht zurück, im Takt der Hülle */
+:where(:root[data-bewegung='an']) [data-schleife='an'] :is(.sm24-eingang-schluessel, .sm24-eingang-kern) {
+  transition: transform var(--dauer-slow) var(--kurve-standard);
+}
+
+:where(:root[data-bewegung='an']) [data-schleife='an'][data-phase='b'] .sm24-eingang-schluessel {
+  transform: translateX(-12px);
+}
+
+:where(:root[data-bewegung='an']) [data-schleife='an'][data-phase='b'] .sm24-eingang-kern {
+  transform: rotate(-90deg);
+}
+
+:where(:root[data-bewegung='an']) .sm24-fade {
+  animation: sm24-fade var(--sm24-duration, var(--dauer-base)) var(--kurve-standard)
       var(--sm24-delay, 0s) both;
-  }
+}
 
-  .sm24-dash {
-    stroke-dasharray: 6 6;
-    animation: sm24-dash var(--sm24-duration, 1.6s) linear var(--sm24-delay, 0s) 1;
-  }
+:where(:root[data-bewegung='an']) .sm24-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sm24-pop var(--sm24-duration, var(--dauer-enter)) var(--kurve-enter)
+      var(--sm24-delay, 0s) both;
+}
 
-  .sm24-aufdecken {
-    animation: sm24-aufdecken var(--sm24-duration, var(--dauer-scene)) var(--kurve-draw) var(--sm24-delay, 0s) both;
-  }
+:where(:root[data-bewegung='an']) .sm24-dash {
+  stroke-dasharray: 6 6;
+  animation: sm24-dash var(--sm24-duration, 1.6s) linear var(--sm24-delay, 0s) 1;
+}
 
-  .sm24-schritt-vor {
-    animation: sm24-schritt-vor var(--dauer-base) var(--kurve-enter) both;
-  }
+:where(:root[data-bewegung='an']) .sm24-aufdecken {
+  animation: sm24-aufdecken var(--sm24-duration, var(--dauer-scene)) var(--kurve-draw) var(--sm24-delay, 0s) both;
+}
 
-  .sm24-schritt-zurueck {
-    animation: sm24-schritt-zurueck var(--dauer-base) var(--kurve-enter) both;
-  }
+:where(:root[data-bewegung='an']) .sm24-schritt-vor {
+  animation: sm24-schritt-vor var(--dauer-base) var(--kurve-enter) both;
+}
+
+:where(:root[data-bewegung='an']) .sm24-schritt-zurueck {
+  animation: sm24-schritt-zurueck var(--dauer-base) var(--kurve-enter) both;
 }
 
 /*
@@ -560,10 +633,8 @@ header a[aria-label$='Startseite'] > span {
   animation: none;
 }
 
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  [data-motion='wait'] :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop, .sm24-dash, .sm24-aufdecken) {
-    animation-play-state: paused;
-  }
+:where(:root[data-bewegung='an']) [data-zustand='wait'] :is(.sm24-draw, .sm24-reveal, .sm24-ordnen, .sm24-fade, .sm24-pop, .sm24-dash, .sm24-aufdecken) {
+  animation-play-state: paused;
 }
 
 /* Ohne Scroll-Timeline oder bei reduzierter Bewegung ruht die Anzeige: keine Leiste (B-24; die Regel unten blendet sie ein). */
@@ -577,33 +648,33 @@ header a[aria-label$='Startseite'] > span {
  * Unterstützung stehen die Elemente im Endzustand (keine Animation).
  */
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .sm24-scrub-y,
-    .sm24-scrub-marke {
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: view();
-      animation-range: entry 20% cover 55%;
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-y,
+  :where(:root[data-bewegung='an']) .sm24-scrub-marke {
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 55%;
+  }
 
-    .sm24-scrub-y {
-      transform-origin: top;
-      animation-name: sm24-scrub-y;
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-y {
+    transform-origin: top;
+    animation-name: sm24-scrub-y;
+  }
 
-    .sm24-scrub-marke {
-      animation-name: sm24-scrub-marke;
-      animation-range: entry 60% cover 45%;
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-marke {
+    animation-name: sm24-scrub-marke;
+    animation-range: entry 60% cover 45%;
+  }
 
-    /*
+  /*
      * Lesefortschritt im Ratgeber (B-24): `.sm24-lesen` umschließt Artikel und
      * Verzeichnis. Die Leiste am Verzeichnis wächst, während der Artikel
      * (`.sm24-lesen-artikel`) durch den Bildschirm läuft; die Nummer des
      * Abschnitts (`data-abschnitt`), der die Leselinie bei 40 % kreuzt, wird
      * Primärfarbe (`.sm24-lesen-nummer` mit `data-zu`). Höchstens sechs Abschnitte.
      */
-    /*
+
+  /*
      * Stiftzuhaltung am Scrollen (B-25): `.sm24-szene` am SVG gibt die Zeitleiste vor.
      * Der Schlüssel (`.sm24-scrub-schluessel`, `--schluessel-von` in Einheiten) fährt
      * in der ersten Hälfte ein; je Bohrung heben sich Kernstift und Gehäusestift
@@ -612,93 +683,128 @@ header a[aria-label$='Startseite'] > span {
      * (0–4); die Prüfmarken (`.sm24-scrub-pruefung`) erscheinen zuletzt.
      * Ohne Unterstützung oder bei reduzierter Bewegung steht die Endlage: alles passt.
      */
-    .sm24-szene {
-      view-timeline-name: --szene;
-    }
 
-    /* Ein Rahmen mit `overflow: hidden` (etwa `ImagePlaceholder`) wäre Scrollcontainer der Szene
+  :where(:root[data-bewegung='an']) .sm24-szene {
+    view-timeline-name: --szene;
+  }
+
+  /* Ein Rahmen mit `overflow: hidden` (etwa `ImagePlaceholder`) wäre Scrollcontainer der Szene
        und hielte ihre Zeitleiste an; `clip` schneidet gleich ab, ohne Scrollcontainer zu sein. */
-    :is(.overflow-hidden, .overflow-x-hidden, .overflow-y-hidden):has(.sm24-szene) {
-      overflow: clip;
-    }
 
-    :is(.sm24-scrub-schluessel, .sm24-scrub-stift, .sm24-scrub-feder, .sm24-scrub-pruefung) {
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: --szene;
-    }
+  :where(:root[data-bewegung='an']) :is(.overflow-hidden, .overflow-x-hidden, .overflow-y-hidden):has(.sm24-szene) {
+    overflow: clip;
+  }
 
-    .sm24-scrub-schluessel {
-      animation-name: sm24-schluessel-ein;
-      animation-range: entry 40% cover 45%;
-    }
+  :where(:root[data-bewegung='an']) :is(.sm24-scrub-schluessel, .sm24-scrub-stift, .sm24-scrub-feder, .sm24-scrub-pruefung) {
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: --szene;
+  }
 
-    .sm24-scrub-stift,
-    .sm24-scrub-feder {
-      animation-range: cover calc(42% + var(--stift-nr, 0) * 2%) cover calc(52% + var(--stift-nr, 0) * 2%);
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-schluessel {
+    animation-name: sm24-schluessel-ein;
+    animation-range: entry 40% cover 45%;
+  }
 
-    .sm24-scrub-stift {
-      animation-name: sm24-stift-heben;
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-stift,
+  :where(:root[data-bewegung='an']) .sm24-scrub-feder {
+    animation-range: cover calc(42% + var(--stift-nr, 0) * 2%) cover calc(52% + var(--stift-nr, 0) * 2%);
+  }
 
-    .sm24-scrub-feder {
-      transform-box: fill-box;
-      transform-origin: top;
-      animation-name: sm24-feder-heben;
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-stift {
+    animation-name: sm24-stift-heben;
+  }
 
-    .sm24-scrub-pruefung {
-      animation-name: sm24-erscheinen;
-      animation-range: cover 60% cover 64%;
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-feder {
+    transform-box: fill-box;
+    transform-origin: top;
+    animation-name: sm24-feder-heben;
+  }
 
-    .sm24-lesen {
-      timeline-scope: --artikel, --abschnitt-1, --abschnitt-2, --abschnitt-3, --abschnitt-4, --abschnitt-5,
+  :where(:root[data-bewegung='an']) .sm24-scrub-pruefung {
+    animation-name: sm24-erscheinen;
+    animation-range: cover 60% cover 64%;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen {
+    timeline-scope: --artikel, --abschnitt-1, --abschnitt-2, --abschnitt-3, --abschnitt-4, --abschnitt-5,
         --abschnitt-6;
-    }
+  }
 
-    .sm24-lesen-artikel {
-      view-timeline-name: --artikel;
-    }
+  :where(:root[data-bewegung='an']) .sm24-lesen-artikel {
+    view-timeline-name: --artikel;
+  }
 
-    .sm24-lesen-leiste {
-      visibility: visible;
-      transform-origin: top;
-      animation: sm24-scrub-y linear both;
-      animation-timeline: --artikel;
-      animation-range: contain 0% contain 100%;
-    }
+  :where(:root[data-bewegung='an']) .sm24-lesen-leiste {
+    visibility: visible;
+    transform-origin: top;
+    animation: sm24-scrub-y linear both;
+    animation-timeline: --artikel;
+    animation-range: contain 0% contain 100%;
+  }
 
-    .sm24-lesen [data-abschnitt] {
-      view-timeline-inset: 40% 59.9%;
-    }
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt] {
+    view-timeline-inset: 40% 59.9%;
+  }
 
-    .sm24-lesen [data-abschnitt='1'] { view-timeline-name: --abschnitt-1; }
-    .sm24-lesen [data-abschnitt='2'] { view-timeline-name: --abschnitt-2; }
-    .sm24-lesen [data-abschnitt='3'] { view-timeline-name: --abschnitt-3; }
-    .sm24-lesen [data-abschnitt='4'] { view-timeline-name: --abschnitt-4; }
-    .sm24-lesen [data-abschnitt='5'] { view-timeline-name: --abschnitt-5; }
-    .sm24-lesen [data-abschnitt='6'] { view-timeline-name: --abschnitt-6; }
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt='1'] {
+    view-timeline-name: --abschnitt-1;
+  }
 
-    .sm24-lesen-nummer {
-      animation: sm24-lesen-aktiv linear none;
-      animation-range: cover 0% cover 100%;
-    }
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt='2'] {
+    view-timeline-name: --abschnitt-2;
+  }
 
-    .sm24-lesen-nummer[data-zu='1'] { animation-timeline: --abschnitt-1; }
-    .sm24-lesen-nummer[data-zu='2'] { animation-timeline: --abschnitt-2; }
-    .sm24-lesen-nummer[data-zu='3'] { animation-timeline: --abschnitt-3; }
-    .sm24-lesen-nummer[data-zu='4'] { animation-timeline: --abschnitt-4; }
-    .sm24-lesen-nummer[data-zu='5'] { animation-timeline: --abschnitt-5; }
-    .sm24-lesen-nummer[data-zu='6'] { animation-timeline: --abschnitt-6; }
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt='3'] {
+    view-timeline-name: --abschnitt-3;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt='4'] {
+    view-timeline-name: --abschnitt-4;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt='5'] {
+    view-timeline-name: --abschnitt-5;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt='6'] {
+    view-timeline-name: --abschnitt-6;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer {
+    animation: sm24-lesen-aktiv linear none;
+    animation-range: cover 0% cover 100%;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer[data-zu='1'] {
+    animation-timeline: --abschnitt-1;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer[data-zu='2'] {
+    animation-timeline: --abschnitt-2;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer[data-zu='3'] {
+    animation-timeline: --abschnitt-3;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer[data-zu='4'] {
+    animation-timeline: --abschnitt-4;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer[data-zu='5'] {
+    animation-timeline: --abschnitt-5;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer[data-zu='6'] {
+    animation-timeline: --abschnitt-6;
   }
 }
 
 @keyframes sm24-lesen-aktiv {
   from,
   to {
-    color: hsl(var(--primary));
+    color: oklch(var(--primary));
   }
 }
 
@@ -708,27 +814,41 @@ header a[aria-label$='Startseite'] > span {
   animation-timing-function: var(--kurve-standard);
 }
 
+/* Rückfall ohne View Transitions (B-35): Der Rubrikkopf blendet nach dem Tipp im Hub kurz über. */
+:where(:root[data-bewegung='an']) .sm24-ueberblendung {
+  animation: sm24-fade var(--dauer-quick) var(--kurve-standard) both;
+}
+
 /* Klicks während des Wechsels erreichen die neue Seite statt der Überlagerung. */
 ::view-transition {
   pointer-events: none;
 }
 
-/* Bewegung reduzieren — Layout darf dadurch nicht brechen */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+/* Bewegungsschalter (A-007, B-36): Angabe aus html[data-bewegung], ohne JavaScript ausgeblendet. */
+:root:not([data-bewegung]) .sm24-bewegung-schalter {
+  display: none;
+}
 
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none !important;
-  }
+:root:not([data-bewegung='an']) .sm24-wenn-an,
+:root[data-bewegung='an'] .sm24-wenn-ruhig {
+  display: none;
+}
+
+/* Ruhige Darstellung („ruhig“, Systemeinstellung ohne Wahl oder ohne JavaScript) — Layout darf dadurch nicht brechen */
+:where(:root:not([data-bewegung='an'])),
+:where(:root:not([data-bewegung='an'])) *,
+:where(:root:not([data-bewegung='an'])) *::before,
+:where(:root:not([data-bewegung='an'])) *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+:where(:root:not([data-bewegung='an']))::view-transition-group(*),
+:where(:root:not([data-bewegung='an']))::view-transition-old(*),
+:where(:root:not([data-bewegung='an']))::view-transition-new(*) {
+  animation: none !important;
 }
 
 /* ==========================================================================
@@ -798,7 +918,7 @@ header a[aria-label$='Startseite'] > span {
   }
 
   body {
-    background: hsl(var(--surface));
+    background: oklch(var(--surface));
   }
 
   main {

@@ -1,0 +1,25 @@
+{
+  "skript": "bild",
+  "zeit": "2026-11-02T21:54:52.691Z",
+  "argumente": {
+    "_": [
+      "/"
+    ],
+    "geraet": "mobil",
+    "ziel": "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bild",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-bild-json.log"
+  },
+  "pfad": "/",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bild/start__mobil.jpg",
+      "status": 200,
+      "bytes": 35965,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": false
+    }
+  ]
+}

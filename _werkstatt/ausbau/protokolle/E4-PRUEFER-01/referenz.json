@@ -1,0 +1,156 @@
+{
+  "zeit": "2026-11-03T10:12:00.903Z",
+  "anzahl": 15,
+  "bilder": [
+    {
+      "datei": "H01-start__mobil-klein.jpg",
+      "viewport": [
+        360,
+        780
+      ],
+      "gespeichertBreite": 360,
+      "bytes": 46645,
+      "url": "http://localhost:3000/"
+    },
+    {
+      "datei": "H01-start__mobil.jpg",
+      "viewport": [
+        390,
+        844
+      ],
+      "gespeichertBreite": 390,
+      "bytes": 50855,
+      "url": "http://localhost:3000/"
+    },
+    {
+      "datei": "H01-start__tablet.jpg",
+      "viewport": [
+        768,
+        1024
+      ],
+      "gespeichertBreite": 768,
+      "bytes": 79872,
+      "url": "http://localhost:3000/"
+    },
+    {
+      "datei": "H01-start__desktop.jpg",
+      "viewport": [
+        1440,
+        900
+      ],
+      "gespeichertBreite": 1440,
+      "bytes": 85003,
+      "url": "http://localhost:3000/"
+    },
+    {
+      "datei": "H01-start__breit.jpg",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "gespeichertBreite": 1440,
+      "bytes": 67943,
+      "url": "http://localhost:3000/"
+    },
+    {
+      "datei": "H02-autoschluessel__mobil-klein.jpg",
+      "viewport": [
+        360,
+        780
+      ],
+      "gespeichertBreite": 360,
+      "bytes": 34733,
+      "url": "http://localhost:3000/autoschluessel"
+    },
+    {
+      "datei": "H02-autoschluessel__mobil.jpg",
+      "viewport": [
+        390,
+        844
+      ],
+      "gespeichertBreite": 390,
+      "bytes": 38494,
+      "url": "http://localhost:3000/autoschluessel"
+    },
+    {
+      "datei": "H02-autoschluessel__tablet.jpg",
+      "viewport": [
+        768,
+        1024
+      ],
+      "gespeichertBreite": 768,
+      "bytes": 64415,
+      "url": "http://localhost:3000/autoschluessel"
+    },
+    {
+      "datei": "H02-autoschluessel__desktop.jpg",
+      "viewport": [
+        1440,
+        900
+      ],
+      "gespeichertBreite": 1440,
+      "bytes": 85112,
+      "url": "http://localhost:3000/autoschluessel"
+    },
+    {
+      "datei": "H02-autoschluessel__breit.jpg",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "gespeichertBreite": 1440,
+      "bytes": 73301,
+      "url": "http://localhost:3000/autoschluessel"
+    },
+    {
+      "datei": "H04-autoschluessel-anfrage__mobil-klein.jpg",
+      "viewport": [
+        360,
+        780
+      ],
+      "gespeichertBreite": 360,
+      "bytes": 39547,
+      "url": "http://localhost:3000/autoschluessel/anfrage"
+    },
+    {
+      "datei": "H04-autoschluessel-anfrage__mobil.jpg",
+      "viewport": [
+        390,
+        844
+      ],
+      "gespeichertBreite": 390,
+      "bytes": 44499,
+      "url": "http://localhost:3000/autoschluessel/anfrage"
+    },
+    {
+      "datei": "H04-autoschluessel-anfrage__tablet.jpg",
+      "viewport": [
+        768,
+        1024
+      ],
+      "gespeichertBreite": 768,
+      "bytes": 65454,
+      "url": "http://localhost:3000/autoschluessel/anfrage"
+    },
+    {
+      "datei": "H04-autoschluessel-anfrage__desktop.jpg",
+      "viewport": [
+        1440,
+        900
+      ],
+      "gespeichertBreite": 1440,
+      "bytes": 85916,
+      "url": "http://localhost:3000/autoschluessel/anfrage"
+    },
+    {
+      "datei": "H04-autoschluessel-anfrage__breit.jpg",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "gespeichertBreite": 1440,
+      "bytes": 66712,
+      "url": "http://localhost:3000/autoschluessel/anfrage"
+    }
+  ]
+}

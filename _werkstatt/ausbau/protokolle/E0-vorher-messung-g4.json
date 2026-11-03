@@ -1,0 +1,345 @@
+{
+  "skript": "messung",
+  "zeit": "2026-11-03T00:26:28.325Z",
+  "argumente": {
+    "_": [],
+    "routen": "/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen",
+    "laeufe": "3",
+    "profil": "beide",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-messung-g4.json"
+  },
+  "budget": {
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "hinweis": "Werte: Median (Minimum–Maximum) je Ansicht und Profil; INP 0 = kein Ereignis über 16 ms",
+  "serien": [
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 544,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 188,
+          "jsKB": 216.0791015625,
+          "gesamtKB": 429.8046875,
+          "ressourcen": 43,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 528,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 211,
+          "jsKB": 216.0791015625,
+          "gesamtKB": 475.1279296875,
+          "ressourcen": 46,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 540,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 204,
+          "jsKB": 216.0791015625,
+          "gesamtKB": 475.1279296875,
+          "ressourcen": 46,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 256,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 89,
+          "jsKB": 279.103515625,
+          "gesamtKB": 758.390625,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 280,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 67,
+          "jsKB": 279.103515625,
+          "gesamtKB": 758.38671875,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 176,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 30,
+          "jsKB": 279.103515625,
+          "gesamtKB": 758.3916015625,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 484,
+          "cls": 0.009765972583378977,
+          "inp": 24,
+          "tbt": 224,
+          "jsKB": 207.1689453125,
+          "gesamtKB": 509.8212890625,
+          "ressourcen": 54,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 500,
+          "cls": 0.009765972583378977,
+          "inp": 40,
+          "tbt": 215,
+          "jsKB": 213.7734375,
+          "gesamtKB": 518.0234375,
+          "ressourcen": 56,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 480,
+          "cls": 0.009765972583378977,
+          "inp": 32,
+          "tbt": 220,
+          "jsKB": 207.1689453125,
+          "gesamtKB": 509.8212890625,
+          "ressourcen": 54,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 184,
+          "cls": 0.00398236802340535,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 295.91015625,
+          "gesamtKB": 778.701171875,
+          "ressourcen": 104,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 140,
+          "cls": 0.00398236802340535,
+          "inp": 40,
+          "tbt": 5,
+          "jsKB": 295.91015625,
+          "gesamtKB": 778.69921875,
+          "ressourcen": 104,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 156,
+          "cls": 0.00398236802340535,
+          "inp": 32,
+          "tbt": 11,
+          "jsKB": 295.91015625,
+          "gesamtKB": 778.6982421875,
+          "ressourcen": 104,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 524,
+          "cls": 0,
+          "inp": 48,
+          "tbt": 136,
+          "jsKB": 214.3818359375,
+          "gesamtKB": 533.5390625,
+          "ressourcen": 52,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 552,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 147,
+          "jsKB": 214.3818359375,
+          "gesamtKB": 532.9169921875,
+          "ressourcen": 51,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 544,
+          "cls": 0,
+          "inp": 48,
+          "tbt": 157,
+          "jsKB": 210.453125,
+          "gesamtKB": 517.123046875,
+          "ressourcen": 49,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 136,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 279.103515625,
+          "gesamtKB": 757.767578125,
+          "ressourcen": 101,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 164,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 279.103515625,
+          "gesamtKB": 757.7666015625,
+          "ressourcen": 101,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 144,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 279.103515625,
+          "gesamtKB": 757.7666015625,
+          "ressourcen": 101,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    }
+  ],
+  "zusammenfassung": [
+    {
+      "ansicht": "H12-partner-werden",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "540 (528–544)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (16–24)",
+      "tbt": "204 (188–211)",
+      "jsKB": "216,1 (216,1–216,1)",
+      "gesamtKB": "475,1 (429,8–475,1)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "256 (176–280)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (24–24)",
+      "tbt": "67 (30–89)",
+      "jsKB": "279,1 (279,1–279,1)",
+      "gesamtKB": "758,4 (758,4–758,4)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H13-kasse",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "484 (480–500)",
+      "cls": "0,010 (0,010–0,010)",
+      "inp": "32 (24–40)",
+      "tbt": "220 (215–224)",
+      "jsKB": "207,2 (207,2–213,8)",
+      "gesamtKB": "509,8 (509,8–518,0)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H13-kasse",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "156 (140–184)",
+      "cls": "0,004 (0,004–0,004)",
+      "inp": "32 (32–40)",
+      "tbt": "5 (0–11)",
+      "jsKB": "295,9 (295,9–295,9)",
+      "gesamtKB": "778,7 (778,7–778,7)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "544 (524–552)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "48 (40–48)",
+      "tbt": "147 (136–157)",
+      "jsKB": "214,4 (210,5–214,4)",
+      "gesamtKB": "532,9 (517,1–533,5)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "144 (136–164)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–32)",
+      "tbt": "0 (0–0)",
+      "jsKB": "279,1 (279,1–279,1)",
+      "gesamtKB": "757,8 (757,8–757,8)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    }
+  ]
+}

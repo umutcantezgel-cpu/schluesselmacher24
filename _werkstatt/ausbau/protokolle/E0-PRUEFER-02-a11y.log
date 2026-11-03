@@ -1,0 +1,10 @@
+| Ansicht | Gerät | critical | serious | moderate | minor | Regeln gesamt | Stellen gesamt |
+|---|---|---|---|---|---|---|---|
+| H01-start | mobil | 0 | 1 | 0 | 0 | 1 | 1 |
+
+### Befunde critical und serious
+
+- H01-start · mobil · **target-size** (serious): All touch targets must be 24px large, or leave sufficient space. Ziele: `.block:nth-child(4) > .hover\:text-primary.tabular-nums[href="tel:+4964418056279"]`
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-a11y-json.log
+Exit: 0

@@ -1,0 +1,122 @@
+{
+  "persona": "schluesseldienst",
+  "geraet": "mobil",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "tipps": 1,
+  "wischer": 11,
+  "eingabe": null,
+  "zielErreicht": true,
+  "zielMs": 4702,
+  "zielText": "Seite „Partner werden“ erreicht",
+  "abbruch": null,
+  "endknopf": null,
+  "reaktionen": [
+    131
+  ],
+  "schritte": [
+    {
+      "ms": 976,
+      "typ": "START",
+      "text": "Startseite geladen in 258 ms, Überschrift „Wobei können wir Ihnen helfen?“"
+    },
+    {
+      "ms": 981,
+      "typ": "ANRUF",
+      "text": "Startseite: ja, fest in der Leiste ohne Scrollen"
+    },
+    {
+      "ms": 1659,
+      "typ": "BILD",
+      "text": "schluesseldienst-mobil-01-startseite.png"
+    },
+    {
+      "ms": 4050,
+      "typ": "TIPP",
+      "text": "Fußzeile „Partner werden“ (Wischen bis zum Fuß) → „Partner werden“ | Reaktion 131 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 4056,
+      "typ": "ANRUF",
+      "text": "Partner werden: nur nach Scrollen"
+    },
+    {
+      "ms": 4695,
+      "typ": "BILD",
+      "text": "schluesseldienst-mobil-02-partner-werden.png"
+    },
+    {
+      "ms": 4702,
+      "typ": "ZIEL",
+      "text": "Seite „Partner werden“ erreicht"
+    }
+  ],
+  "stolpersteine": [],
+  "bilder": [
+    "schluesseldienst-mobil-01-startseite.png",
+    "schluesseldienst-mobil-02-partner-werden.png"
+  ],
+  "telPruefungen": [
+    {
+      "ort": "Startseite",
+      "sichtbar": 5,
+      "imBild": 2,
+      "fixiert": true,
+      "ergebnis": "ja, fest in der Leiste ohne Scrollen"
+    },
+    {
+      "ort": "Partner werden",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiert": false,
+      "ergebnis": "nur nach Scrollen"
+    }
+  ],
+  "tippziele": [
+    {
+      "ort": "Startseite",
+      "imBild": 18,
+      "unter44": 1,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)"
+      ]
+    },
+    {
+      "ort": "Partner werden",
+      "imBild": 6,
+      "unter44": 2,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)",
+        "Start (24 px)"
+      ]
+    }
+  ],
+  "abgebrochen": {},
+  "konsole": [],
+  "fach": {},
+  "ladeMs": 258,
+  "endMs": 4702,
+  "zusammen": {
+    "persona": "schluesseldienst",
+    "geraet": "mobil",
+    "tippsBisErsteEingabe": null,
+    "ersteEingabe": null,
+    "zielErreicht": true,
+    "zielMs": 4702,
+    "zielText": "Seite „Partner werden“ erreicht",
+    "abbruch": null,
+    "endknopf": null,
+    "tippsGesamt": 1,
+    "wischer": 11,
+    "maxReaktionMs": 131,
+    "zoegerungen": 0,
+    "ladeMs": 258,
+    "endMs": 4702,
+    "stolpersteine": 0,
+    "abgebrochen": {},
+    "konsole": 0,
+    "bilder": 2
+  }
+}

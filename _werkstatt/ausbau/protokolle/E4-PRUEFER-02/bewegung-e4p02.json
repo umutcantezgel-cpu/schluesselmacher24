@@ -1,0 +1,136 @@
+{
+  "skript": "bewegung.mjs (E4-PRUEFER-02)",
+  "zeit": "2026-11-03T13:24:03.470Z",
+  "b32": [
+    {
+      "geraet": "mobil",
+      "viewport": [
+        390,
+        844
+      ],
+      "start": {
+        "knopf": [
+          "Animation anhalten"
+        ],
+        "phase": "a"
+      },
+      "lauf1Wechsel": 2,
+      "nachPauseKnopf": [
+        "Animation fortsetzen"
+      ],
+      "haltWechsel7s": 0,
+      "nachFortsetzenKnopf": [
+        "Animation anhalten"
+      ],
+      "lauf2Wechsel": 2,
+      "phasenWerte": [
+        "a",
+        "a",
+        "a"
+      ]
+    },
+    {
+      "geraet": "desktop",
+      "viewport": [
+        1440,
+        900
+      ],
+      "start": {
+        "knopf": [
+          "Animation anhalten"
+        ],
+        "phase": "a"
+      },
+      "lauf1Wechsel": 2,
+      "nachPauseKnopf": [
+        "Animation fortsetzen"
+      ],
+      "haltWechsel7s": 0,
+      "nachFortsetzenKnopf": [
+        "Animation anhalten"
+      ],
+      "lauf2Wechsel": 2,
+      "phasenWerte": [
+        "a",
+        "a",
+        "a"
+      ]
+    }
+  ],
+  "b35": [
+    {
+      "geraet": "mobil",
+      "eingabe": "Tipp",
+      "kachelSichtbar": true,
+      "fokusAufH1": true,
+      "fokus": {
+        "tag": "H1",
+        "id": "seiten-titel",
+        "text": "Autoschlüssel",
+        "url": "/autoschluessel"
+      }
+    },
+    {
+      "geraet": "desktop",
+      "eingabe": "Klick",
+      "kachelSichtbar": true,
+      "fokusAufH1": true,
+      "fokus": {
+        "tag": "H1",
+        "id": "seiten-titel",
+        "text": "Autoschlüssel",
+        "url": "/autoschluessel"
+      }
+    }
+  ],
+  "reduziert": [
+    {
+      "geraet": "mobil",
+      "viewport": [
+        390,
+        844
+      ],
+      "normal": {
+        "bewegung": "an",
+        "laufendeAnimationen": 6,
+        "pauseKnoepfe": 1
+      },
+      "reduziert": {
+        "bewegung": "ruhig",
+        "laufendeAnimationen": 0,
+        "lageGroesseAnimationen": 0,
+        "pauseKnoepfe": 0,
+        "textElemente": 112,
+        "verborgeneTextElemente": 0
+      },
+      "kachelnMaxAbweichungPx": 0,
+      "h1AbweichungPx": 0,
+      "buehneAbweichungPx": 0,
+      "kachelnGefunden": 9
+    },
+    {
+      "geraet": "desktop",
+      "viewport": [
+        1440,
+        900
+      ],
+      "normal": {
+        "bewegung": "an",
+        "laufendeAnimationen": 6,
+        "pauseKnoepfe": 1
+      },
+      "reduziert": {
+        "bewegung": "ruhig",
+        "laufendeAnimationen": 0,
+        "lageGroesseAnimationen": 0,
+        "pauseKnoepfe": 0,
+        "textElemente": 134,
+        "verborgeneTextElemente": 0
+      },
+      "kachelnMaxAbweichungPx": 0,
+      "h1AbweichungPx": 0,
+      "buehneAbweichungPx": 0,
+      "kachelnGefunden": 9
+    }
+  ]
+}

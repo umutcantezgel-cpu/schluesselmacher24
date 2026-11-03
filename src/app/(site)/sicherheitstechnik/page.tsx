@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ComponentType } from 'react';
 
-import { getPageContent, getServicePages } from '@/lib/data';
+import { getPageContent, getRubrik, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
@@ -93,6 +93,8 @@ const PRINCIPLE = [
 ];
 
 export default async function SicherheitstechnikPage() {
+  // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
+  const rubrik = await getRubrik('sicherheitstechnik');
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -117,6 +119,7 @@ export default async function SicherheitstechnikPage() {
 
       {/* Kopf: Fach-Icon als Anker und Ziel des Seitenwechsels (B-13) */}
       <PageHeader
+        rubrik={rubrik}
         bereich="sicherheitstechnik"
         eyebrow="Leistungsbereich"
         title={page?.headline ?? 'Sicherheitstechnik'}
@@ -364,7 +367,7 @@ export default async function SicherheitstechnikPage() {
                 {eintrag.link}
                 <GlyphPfeilRechts
                   size={16}
-                  className="transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
+                  className="transition-transform duration-quick ease-standard ruhig:transition-none zeiger:group-hover:translate-x-1"
                 />
               </Link>
             </li>
@@ -382,7 +385,7 @@ export default async function SicherheitstechnikPage() {
                   {link.label}
                   <GlyphPfeilRechts
                     size={16}
-                    className="shrink-0 text-primary transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
+                    className="shrink-0 text-primary transition-transform duration-quick ease-standard ruhig:transition-none zeiger:group-hover:translate-x-1"
                   />
                 </Link>
               </li>

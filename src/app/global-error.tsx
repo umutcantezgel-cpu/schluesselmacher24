@@ -8,16 +8,19 @@
  * Next 16: Props `error` und `retry`.
  */
 
+/* Dieselben OKLCH-Tripel wie --background, --surface, --foreground, --foreground-muted, --border und
+   --primary in globals.css (geprüft in global-error.test.ts). */
 const FARBE = {
-  hintergrund: 'hsl(214 45% 98.6%)',
-  flaeche: 'hsl(0 0% 100%)',
-  text: 'hsl(222 34% 15%)',
-  leise: 'hsl(219 16% 37%)',
-  linie: 'hsl(214 32% 89%)',
-  primaer: 'hsl(214 80% 40%)',
+  hintergrund: 'oklch(0.9882 0.0028 255)',
+  flaeche: 'oklch(1 0 0)',
+  text: 'oklch(0.2497 0.0366 266)',
+  leise: 'oklch(0.4654 0.0347 262.8)',
+  linie: 'oklch(0.9091 0.0162 255)',
+  primaer: 'oklch(0.4852 0.1611 257.63)',
 };
 
-const SCHRIFT = "'IBM Plex Sans', Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
+/* Ohne die Schriftdateien des Layouts: Plex Sans, falls installiert, sonst Systemschriften. */
+const SCHRIFT = "'IBM Plex Sans', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 
 export default function GlobalError({ error, retry }: { error: Error & { digest?: string }; retry: () => void }) {
   return (

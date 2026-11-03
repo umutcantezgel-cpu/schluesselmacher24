@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erhebungsbogen KLONBAR</title>
+<style>
+@page {
+  size: A4 portrait;
+  margin: 24mm 15mm 22mm 15mm;
+  @top-left { content: "Erhebungsbogen KLONBAR"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @top-center { content: "Datum: 03.11.2026"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @top-right { content: "Ausgefüllt von: ______________"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @bottom-left { content: "Vorschlag, bitte prüfen"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @bottom-right { content: "Seite " counter(page) " von " counter(pages); font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+}
+html { font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; background: #fff; }
+body { margin: 0; line-height: 1.25; }
+h1 { font-size: 16pt; margin: 0 0 1mm; }
+.untertitel { margin: 0 0 3mm; font-weight: bold; }
+.intro p { margin: 0 0 1.8mm; }
+.kopfzeile { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin: 4mm 0 5mm; }
+.kopfzeile div { border-bottom: 0.6pt solid #000; padding-bottom: 1mm; }
+.karte { display: grid; grid-template-columns: 1fr 34mm; border: 0.6pt solid #000; margin: 0 0 1.8mm; break-inside: avoid; page-break-inside: avoid; }
+.inhalt { padding: 1.3mm 2.5mm; }
+.h2x { margin: 0; }
+h2 { font-size: 11pt; margin: 3mm 0 1.6mm; text-decoration: underline; }
+.einheit { font-weight: normal; }
+.kopf { margin: 0 0 0.8mm; }
+.ken { font-weight: bold; }
+.gegen { font-weight: bold; margin: 0 0 0.8mm; }
+.zeile { margin: 0.5mm 0 0; }
+.lab { font-weight: bold; }
+.quelle { display: block; color: #000; margin-top: 0.4mm; }
+.hinweis { margin: 1.2mm 0 0; border-top: 0.4pt solid #000; padding-top: 0.8mm; }
+.antwort { border-left: 0.6pt solid #000; padding: 1.6mm 2.2mm; }
+.antwort .form { margin: 0.6mm 0 0; }
+.feld-zeile { margin: 4mm 0 0; border-bottom: 0.6pt solid #000; padding-bottom: 1mm; }
+.fuss { margin-top: 4mm; }
+.ende { margin-top: 2mm; }
+@media screen {
+  body { max-width: 180mm; margin: 0 auto; padding: 10mm 0; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Erhebungsbogen KLONBAR</h1>
+  <p class="untertitel">Fahrzeuge und Transponder, die die Werkstatt klonen kann</p>
+  <div class="intro">
+    <p>Ein Fahrzeug erscheint auf der Seite nur dann als klonbar, wenn Sie es mit ja bestätigen.</p>
+    <p>Schreiben Sie ja, nein oder weiß nicht in die Antwortspalte. Ohne Antwort gilt: nicht klonbar.</p>
+    <p>Für jede Transponder-Kopie brauchen Sie einen Berechtigungsnachweis, etwa die Zulassungsbescheinigung Teil I und den Personalausweis (erhebung/E1-transponder.md, Abschnitt 4).</p>
+    <p>Die Vorschläge sind Fundstellen aus Herstellerangaben und Fachquellen. Nichts davon ist bestätigt.</p>
+  </div>
+  <div class="kopfzeile">
+    <div>Ausgefüllt von:</div>
+    <div>Datum:</div>
+  </div>
+</header>
+<main>
+<h2>Fahrzeug mit Transponder</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-001</span> VW Golf 6, VW Passat B7, Audi A4 B8, bis etwa 2015 (Megamos Crypto, ID48) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja laut Gerätehersteller, mit Einschränkung laut Fachbetrieb <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 1; erhebung/E1-transponder.md, Abschnitt 6, Zeile ID48</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-002</span> VW, Audi, Skoda, Seat mit Immo III und IV (Hitag 2) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> mit Spezialwerkzeug laut Fachbetrieb (AVDI, ODIS) <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 2; erhebung/E1-transponder.md, Abschnitt 2, Punkt 5</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-003</span> Mercedes-Benz W211, W204, W212 (Hitag 2, EZS) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> mit Spezialwerkzeug laut Fachbetrieb (AVDI, ODIS) <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 3; erhebung/E1-transponder.md, Abschnitt 2, Punkt 5</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-004</span> Peugeot, Citroën, Renault, Honda (ID46, PCF7936) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja laut Gerätehersteller, mit Einschränkung laut Fachbetrieb <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 4; erhebung/E1-transponder.md, Abschnitt 6, Zeile ID46</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-005</span> Golf 7, Skoda Octavia 3, Audi A3 8V, ab 2013 (MQB, AES-128) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> nein, laut Fachbetrieb nicht klassisch klonbar (AES, Freigabe über den Hersteller) <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 5; erhebung/E1-transponder.md, Abschnitt 3, dritter Punkt (Dietrich); _werkstatt/ausbau/FACHWISSEN.md, Abschnitt 8</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-006</span> Toyota, Ford (Texas DST, 4D) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> widersprüchlich: Quellen nennen verschiedene Typen für 4D <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 6; erhebung/E1-transponder.md, Abschnitt 1, Punkt 3</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-007</span> Mercedes-Benz Sprinter, Actros (Temic 11 und 12, Beispiele) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja laut Gerätehersteller (Abrites PROTAG, Autel AT100) <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 7; erhebung/E1-transponder.md, Abschnitt 6, Zeile ID11, ID12, ID33</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-008</span> Mercedes-Benz oder Dodge Sprinter, Iveco, Porsche (Hitag 2, Beispiele) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> mit Spezialwerkzeug laut Fachbetrieb (AVDI, ODIS) <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 8; erhebung/E1-transponder.md, Abschnitt 2, Punkt 5</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-009</span> Ford, Honda, Acura, Toyota (Tiris 4C, Beispiele) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja laut Gerätehersteller (Abrites PROTAG, Autel AT100) <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 9; erhebung/E1-transponder.md, Abschnitt 6, Zeile ID4C, ID4D</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-010</span> Subaru, Ford, Mazda (Tiris 4D und 4E, Beispiele) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> widersprüchlich laut Quellen (4D) <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 10; erhebung/E1-transponder.md, Abschnitt 6, Zeile ID4C, ID4D</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-011</span> Toyota, Lexus, Scion mit H Schlüssel (DST AES und Hitag AES) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> DST AES: ja laut Gerätehersteller. Hitag AES: widersprüchlich <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 11; erhebung/E1-transponder.md, Abschnitt 6, Zeile DST AES und ID4A</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-012</span> Toyota, Lexus, Scion mit G Schlüssel sowie Hyundai, Kia (Tiris DST+) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> mit Vorbehalt: Zuordnung zu DST80 nicht belegt <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 12; erhebung/E1-transponder.md, Abschnitt 6, Zeile DST80 (ID6F-60)</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-013</span> VW, Hyundai, Kia (Megamos 13, Beispiele) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja laut Gerätehersteller (Abrites PROTAG, Autel AT100) <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 13; erhebung/E1-transponder.md, Abschnitt 6, Zeile ID13</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-014</span> Chevrolet (Megamos 48, Beispiel) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja laut Gerätehersteller, mit Einschränkung laut Fachbetrieb (ID48) <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 14; erhebung/E1-transponder.md, Abschnitt 6, Zeile ID48</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-015</span> Opel, Peugeot, Renault (ID33, Beispiele) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja laut Gerätehersteller (Abrites PROTAG) <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 15; erhebung/E1-transponder.md, Abschnitt 6, Zeile ID11, ID12, ID33</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-016</span> Ford, Lincoln, Mercury (TP02, TP06, TP20, TPX1, TPX2, Stand 2010) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja für TPX1 und TPX2 laut Fachpresse von 2010. TP02, TP06 und TP20 nicht belegt <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 16 (JMA, Stand 2010-12-03)</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-017</span> Buick, Cadillac, Chevrolet, GMC, Hummer, Oldsmobile, Pontiac (TP05, TP08, TP12, TPX3, Stand 2010) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja für TPX3 und nein für TP08 laut Fachpresse von 2010. TP05 und TP12 nicht belegt <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 17 (JMA, Stand 2010-12-03)</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-018</span> Chrysler, Dodge, Jeep (TP12, TP21, TPX2, TPX3, Stand 2010) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja für TPX2 und TPX3 laut Fachpresse von 2010. TP12 und TP21 nicht belegt <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 18 (JMA, Stand 2010-12-03)</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-019</span> Honda (NXP Hitag 3, ohne Baujahr) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> widersprüchlich: Hersteller Silca nennt klonbar, Fachbetrieb verneint klassisches Kopieren (ID49) <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 19; erhebung/E1-transponder.md, Abschnitt 6, Zeile ID49</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-020</span> Renault, Dacia, Kia, Hyundai (ID49-1E, Modelle 7K und 6K) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> widersprüchlich wie bei ID49 (Honda) <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 20; erhebung/E1-transponder.md, Abschnitt 6, Zeile ID49</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-021</span> Ford (DST40, Zitat von 2005) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> nicht belegt: keine Angabe zur Klonbarkeit, der Anbieter nennt den Chip veraltet <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 21; erhebung/E1-transponder.md, Abschnitt 6, Zeile DST40</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-022</span> Toyota, Kia, Hyundai, Tesla (DST80, Zitat von 2020) <span class="einheit">· Fahrzeug, Modelle laut Quelle</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> mit Vorbehalt: Klonbarkeit für DST80 nicht belegt <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 5, Punkt 22; erhebung/E1-transponder.md, Abschnitt 6, Zeile DST80 (ID6F-60)</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+<h2>Transpondertyp</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-023</span> Transpondertyp ID44 (PCF7935) <span class="einheit">· Transpondertyp, ohne genannte Fahrzeuge</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> weiß nicht: Klonbarkeit nicht belegt <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 6, Zeile ID44</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-024</span> Transpondertyp ID47 (Hitag 3 laut Paket) <span class="einheit">· Transpondertyp, ohne genannte Fahrzeuge</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> weiß nicht: Autel nennt klonbar, die Zuordnung ist offen <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 6, Zeile ID47; erhebung/E1-transponder.md, Abschnitt 8, Punkt 4</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-025</span> Transpondertyp ID88 (Megamos AES) <span class="einheit">· Transpondertyp, ohne genannte Fahrzeuge</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> weiß nicht: kein Hersteller nennt Klonen <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 6, Zeile ID88; erhebung/E1-transponder.md, Abschnitt 8, Punkt 1</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-026</span> Transpondertyp Hitag Pro <span class="einheit">· Transpondertyp, ohne genannte Fahrzeuge</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> weiß nicht: Klonbarkeit nicht angegeben <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 6, Zeile Hitag Pro</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">K-027</span> Transpondertypen ID5C, ID8A, ID8C und ID64 <span class="einheit">· Transpondertyp, ohne genannte Fahrzeuge</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja laut Gerätehersteller Autel, der Chip ist nicht belegt <span class="quelle">Quelle: erhebung/E1-transponder.md, Abschnitt 6, Zeile ID5C, ID8A, ID8C, ID64</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja, nein oder weiß nicht. Ohne Antwort gilt: nicht klonbar.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja, nein oder weiß nicht</p>
+    
+  </div>
+</article>
+</main>
+<footer class="fuss">
+  <p class="ende">Rückgabe: siehe LIESMICH.md im Ordner erhebung/boegen. Bitte den Bogen ohne interne Werte zurückgeben.</p>
+</footer>
+</body>
+</html>

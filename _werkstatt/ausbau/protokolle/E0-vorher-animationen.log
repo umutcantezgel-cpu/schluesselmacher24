@@ -1,0 +1,23 @@
+# Animationen · 2026-11-02T23:54:39.442Z · Server http://localhost:3000 · Gerät mobil
+
+Bekannte Keyframes (22): bounce, menue-ein, ping, pulse, schleier-ein, schublade-ein, sm24-aufdecken, sm24-dash, sm24-draw, sm24-erscheinen, sm24-fade, sm24-feder-heben, sm24-lesen-aktiv, sm24-pop, sm24-reveal, sm24-schluessel-ein, sm24-schritt-vor, sm24-schritt-zurueck, sm24-scrub-marke, sm24-scrub-y, sm24-stift-heben, spin
+
+| Ansicht | CSS-Animationen (Keyframe × Anzahl) | WAAPI (Element) | Übergänge (Eigenschaft × Anzahl) | unbekannt |
+|---|---|---|---|---|
+| H01-start | sm24-fade ×2, sm24-draw ×15, sm24-reveal ×6, sm24-aufdecken ×1, sm24-scrub-marke ×10, sm24-scrub-y ×2, sm24-pop ×13 | g.sm24-fade, path.stroke-foreground, g | keine | keine |
+| H02-autoschluessel | sm24-reveal ×6, sm24-fade ×3, sm24-draw ×5, sm24-dash ×3, sm24-scrub-marke ×10, sm24-scrub-y ×2 | keine | keine | keine |
+| H03-modell-golf | sm24-reveal ×10, sm24-fade ×5, sm24-draw ×9, sm24-dash ×3 | keine | keine | keine |
+| H04-autoschluessel-anfrage | keine | keine | keine | keine |
+| H05-code | sm24-pop ×2, sm24-draw ×8 | keine | keine | keine |
+| H06-code-produkt | sm24-fade ×3, sm24-reveal ×2, sm24-pop ×2, sm24-draw ×10, sm24-aufdecken ×1 | keine | keine | keine |
+| H07-foto | sm24-reveal ×8, sm24-fade ×6, sm24-draw ×7, sm24-aufdecken ×1 | keine | keine | keine |
+| H08-einschicken | sm24-fade ×1, sm24-draw ×1 | keine | keine | keine |
+| H09-sperrschliessung-konfigurator | schleier-ein ×3 | keine | keine | keine |
+| H10-schliessanlagen | sm24-reveal ×4, sm24-fade ×6, sm24-draw ×32, sm24-pop ×37 | keine | keine | keine |
+| H11-schliessanlagen-konfigurator | keine | keine | keine | keine |
+| H12-partner-werden | sm24-draw ×1 | keine | keine | keine |
+| H13-kasse | keine | keine | keine | keine |
+| H14-ratgeber-messen | sm24-reveal ×5, sm24-draw ×8, sm24-pop ×4, sm24-lesen-aktiv ×12 | keine | keine | keine |
+
+Befunde (unbekannte Keyframes): 0
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-animationen.json

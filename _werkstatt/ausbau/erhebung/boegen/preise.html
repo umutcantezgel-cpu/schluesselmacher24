@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erhebungsbogen PREISE</title>
+<style>
+@page {
+  size: A4 portrait;
+  margin: 24mm 15mm 22mm 15mm;
+  @top-left { content: "Erhebungsbogen PREISE"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @top-center { content: "Datum: 03.11.2026"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @top-right { content: "Ausgefüllt von: ______________"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @bottom-left { content: "Vorschlag, bitte prüfen"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @bottom-right { content: "Seite " counter(page) " von " counter(pages); font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+}
+html { font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; background: #fff; }
+body { margin: 0; line-height: 1.25; }
+h1 { font-size: 16pt; margin: 0 0 1mm; }
+.untertitel { margin: 0 0 3mm; font-weight: bold; }
+.intro p { margin: 0 0 1.8mm; }
+.kopfzeile { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin: 4mm 0 5mm; }
+.kopfzeile div { border-bottom: 0.6pt solid #000; padding-bottom: 1mm; }
+.karte { display: grid; grid-template-columns: 1fr 34mm; border: 0.6pt solid #000; margin: 0 0 1.8mm; break-inside: avoid; page-break-inside: avoid; }
+.inhalt { padding: 1.3mm 2.5mm; }
+.h2x { margin: 0; }
+h2 { font-size: 11pt; margin: 3mm 0 1.6mm; text-decoration: underline; }
+.einheit { font-weight: normal; }
+.kopf { margin: 0 0 0.8mm; }
+.ken { font-weight: bold; }
+.gegen { font-weight: bold; margin: 0 0 0.8mm; }
+.zeile { margin: 0.5mm 0 0; }
+.lab { font-weight: bold; }
+.quelle { display: block; color: #000; margin-top: 0.4mm; }
+.hinweis { margin: 1.2mm 0 0; border-top: 0.4pt solid #000; padding-top: 0.8mm; }
+.antwort { border-left: 0.6pt solid #000; padding: 1.6mm 2.2mm; }
+.antwort .form { margin: 0.6mm 0 0; }
+.feld-zeile { margin: 4mm 0 0; border-bottom: 0.6pt solid #000; padding-bottom: 1mm; }
+.fuss { margin-top: 4mm; }
+.ende { margin-top: 2mm; }
+@media screen {
+  body { max-width: 180mm; margin: 0 auto; padding: 10mm 0; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Erhebungsbogen PREISE</h1>
+  <p class="untertitel">Preise des Bestands und neue Positionen</p>
+  <div class="intro">
+    <p>Dieser Bogen enthält alle Preise, die heute im Bestand stehen, und neue Positionen, für die es noch keinen Preis gibt.</p>
+    <p>Der Bestand ist der Wert, der heute auf der Seite steht. Der Vorschlag kommt aus der Recherche und steht nur mit Quelle.</p>
+    <p>Bestätigen Sie den Bestand oder schreiben Sie den neuen Betrag in die Antwortspalte. Ohne Antwort zeigt die Seite für neue Positionen keinen Preis.</p>
+  </div>
+  <div class="kopfzeile">
+    <div>Ausgefüllt von:</div>
+    <div>Datum:</div>
+  </div>
+</header>
+<main>
+<h2>Autoschlüssel, Gruppen</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-001</span> Gruppe A <span class="einheit">· Gruppe, keine Preisposition</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> Gruppe A: einfache Systeme <span class="quelle">Quelle: content/pricing-groups.json, id gruppe-a, Feld label</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Gruppe A bestätigen oder ändern. Bestandstext: Fahrzeuge mit mechanischem Schlüssel oder einfacher Funkfernbedienung. Kurze Bearbeitungszeit.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-002</span> Gruppe B <span class="einheit">· Gruppe, keine Preisposition</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> Gruppe B: Funk und Transponder <span class="quelle">Quelle: content/pricing-groups.json, id gruppe-b, Feld label</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Gruppe B bestätigen oder ändern. Bestandstext: Fahrzeuge mit Transponder und Funkfernbedienung. Anlernen am Fahrzeug erforderlich.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-003</span> Gruppe C <span class="einheit">· Gruppe, keine Preisposition</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> Gruppe C: Smart Key und Keyless <span class="quelle">Quelle: content/pricing-groups.json, id gruppe-c, Feld label</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Gruppe C bestätigen oder ändern. Bestandstext: Fahrzeuge mit schlüssellosem Zugang und Start. Höherer Beschaffungs- und Programmieraufwand.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-004</span> Gruppe D <span class="einheit">· Gruppe, keine Preisposition</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> Gruppe D: Sonderfälle <span class="quelle">Quelle: content/pricing-groups.json, id gruppe-d, Feld label</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Gruppe D bestätigen oder ändern. Bestandstext: Fahrzeuge mit geschütztem Zugang, Totalverlust oder Sonderausstattung. Immer manuelle Prüfung.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+<h2>Autoschlüssel, Leistungen</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-005</span> Gruppe A: Zweitschlüssel anfertigen <span class="einheit">· Euro, fester Preis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 149,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-a--zweitschluessel, priceCents 14900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-006</span> Gruppe A: Ersatzschlüssel bei Verlust <span class="einheit">· Euro, Spanne von bis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 199,00 bis 299,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-a--ersatz-bei-verlust, priceFromCents 19900, priceToCents 29900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-007</span> Gruppe A: Schlüssel programmieren und anlernen <span class="einheit">· Euro, fester Preis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 89,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-a--programmierung, priceCents 8900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-008</span> Gruppe A: Schlüsselbart fräsen <span class="einheit">· Euro, fester Preis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 49,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-a--bart-fraesen, priceCents 4900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-009</span> Gruppe A: Gehäuse, Tasten und Batterie <span class="einheit">· Euro, fester Preis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 59,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-a--gehaeuse-reparatur, priceCents 5900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-010</span> Gruppe A: Fahrzeugöffnung <span class="einheit">· Euro, Spanne von bis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 99,00 bis 189,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-a--fahrzeugoeffnung, priceFromCents 9900, priceToCents 18900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-011</span> Gruppe B: Zweitschlüssel anfertigen <span class="einheit">· Euro, fester Preis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 249,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-b--zweitschluessel, priceCents 24900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-012</span> Gruppe B: Ersatzschlüssel bei Verlust <span class="einheit">· Euro, Spanne von bis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 329,00 bis 489,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-b--ersatz-bei-verlust, priceFromCents 32900, priceToCents 48900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-013</span> Gruppe B: Schlüssel programmieren und anlernen <span class="einheit">· Euro, fester Preis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 129,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-b--programmierung, priceCents 12900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-014</span> Gruppe B: Schlüsselbart fräsen <span class="einheit">· Euro, fester Preis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 69,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-b--bart-fraesen, priceCents 6900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-015</span> Gruppe B: Gehäuse, Tasten und Batterie <span class="einheit">· Euro, fester Preis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 79,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-b--gehaeuse-reparatur, priceCents 7900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-016</span> Gruppe B: Fahrzeugöffnung <span class="einheit">· Euro, Spanne von bis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 129,00 bis 229,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-b--fahrzeugoeffnung, priceFromCents 12900, priceToCents 22900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-017</span> Gruppe C: Zweitschlüssel anfertigen <span class="einheit">· Euro, Spanne von bis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 399,00 bis 649,00; Anzahlung 79,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-c--zweitschluessel, priceFromCents 39900, priceToCents 64900, depositCents 7900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-018</span> Gruppe C: Ersatzschlüssel bei Verlust <span class="einheit">· Prüfung vor Terminbestätigung</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Festpreis; Anzahlung 79,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-c--ersatz-bei-verlust, mode pruefung, depositCents 7900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-019</span> Gruppe C: Schlüssel programmieren und anlernen <span class="einheit">· Euro, Spanne von bis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 179,00 bis 299,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-c--programmierung, priceFromCents 17900, priceToCents 29900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-020</span> Gruppe C: Schlüsselbart fräsen <span class="einheit">· Euro, fester Preis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 89,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-c--bart-fraesen, priceCents 8900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-021</span> Gruppe C: Gehäuse, Tasten und Batterie <span class="einheit">· Euro, Spanne von bis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 99,00 bis 169,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-c--gehaeuse-reparatur, priceFromCents 9900, priceToCents 16900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-022</span> Gruppe C: Fahrzeugöffnung <span class="einheit">· Euro, Spanne von bis</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 149,00 bis 269,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-c--fahrzeugoeffnung, priceFromCents 14900, priceToCents 26900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-023</span> Gruppe D: Zweitschlüssel anfertigen <span class="einheit">· Prüfung vor Terminbestätigung. Bestandshinweis: Zugang über den Hersteller erforderlich. Wir prüfen Unterlagen und Machbarkeit vor der Terminbestätigung.</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Festpreis; Anzahlung 80,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-d--zweitschluessel, mode pruefung, depositCents 8000</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-024</span> Gruppe D: Ersatzschlüssel bei Verlust <span class="einheit">· Prüfung vor Terminbestätigung</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Festpreis; Anzahlung 80,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-d--ersatz-bei-verlust, mode pruefung, depositCents 8000</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-025</span> Gruppe D: Schlüssel programmieren und anlernen <span class="einheit">· Prüfung vor Terminbestätigung</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Festpreis; Anzahlung 80,00 <span class="quelle">Quelle: content/service-pricing.json, id gruppe-d--programmierung, mode pruefung, depositCents 8000</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-026</span> Gruppe D: Schlüsselbart fräsen <span class="einheit">· Prüfung vor Terminbestätigung</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Festpreis <span class="quelle">Quelle: content/service-pricing.json, id gruppe-d--bart-fraesen, mode pruefung</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-027</span> Gruppe D: Gehäuse, Tasten und Batterie <span class="einheit">· Prüfung vor Terminbestätigung</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Festpreis <span class="quelle">Quelle: content/service-pricing.json, id gruppe-d--gehaeuse-reparatur, mode pruefung</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-028</span> Gruppe D: Fahrzeugöffnung <span class="einheit">· Prüfung vor Terminbestätigung</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Festpreis <span class="quelle">Quelle: content/service-pricing.json, id gruppe-d--fahrzeugoeffnung, mode pruefung</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+<h2>Zylinder, Grundpreis</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-029</span> Doppelzylinder, Grundpreis bis 70 mm <span class="einheit">· Euro, Grundpreis für Längen 27 bis 80 mm</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 39,00 <span class="quelle">Quelle: content/cylinder-catalog.json, forms id doppelzylinder, basePriceCents 3900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-030</span> Knaufzylinder, Grundpreis bis 70 mm <span class="einheit">· Euro, Grundpreis für Längen 27 bis 80 mm</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 49,00 <span class="quelle">Quelle: content/cylinder-catalog.json, forms id knaufzylinder, basePriceCents 4900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-031</span> Halbzylinder, Grundpreis bis 45 mm <span class="einheit">· Euro, Grundpreis für Längen 27 bis 60 mm</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 29,00 <span class="quelle">Quelle: content/cylinder-catalog.json, forms id halbzylinder, basePriceCents 2900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+<h2>Zylinder, Aufpreis je Länge</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-032</span> Doppelzylinder, Aufpreis über 70 mm <span class="einheit">· Euro je angefangene 5 mm über 70 mm</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 3,50 <span class="quelle">Quelle: content/cylinder-catalog.json, forms id doppelzylinder, lengthSurchargeCents 350</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-033</span> Knaufzylinder, Aufpreis über 70 mm <span class="einheit">· Euro je angefangene 5 mm über 70 mm</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 3,50 <span class="quelle">Quelle: content/cylinder-catalog.json, forms id knaufzylinder, lengthSurchargeCents 350</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-034</span> Halbzylinder, Aufpreis über 45 mm <span class="einheit">· Euro je angefangene 5 mm über 45 mm</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 3,50 <span class="quelle">Quelle: content/cylinder-catalog.json, forms id halbzylinder, lengthSurchargeCents 350</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+<h2>Zylinder, Funktion</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-035</span> Standardfunktion, Aufschlag <span class="einheit">· Euro, Aufschlag für alle Zylinderformen</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 0,00 <span class="quelle">Quelle: content/cylinder-catalog.json, functions id standard, surchargeCents 0</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-036</span> Not- und Gefahrenfunktion, Aufschlag <span class="einheit">· Euro, Aufschlag nur für Doppelzylinder</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 12,00 <span class="quelle">Quelle: content/cylinder-catalog.json, functions id not-gefahr, surchargeCents 1200</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+<h2>Zylinder, Aufpreise</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-037</span> Sicherungskarte und geschütztes System <span class="einheit">· Euro, einmal</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 29,00 <span class="quelle">Quelle: content/cylinder-catalog.json, extras id sicherungskarte, priceCents 2900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-038</span> Aufbohr- und Ziehschutz <span class="einheit">· Euro je Stück</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 19,00 <span class="quelle">Quelle: content/cylinder-catalog.json, extras id ziehschutz, priceCents 1900</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-039</span> Erweiterbar reservieren <span class="einheit">· Euro, einmal</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 15,00 <span class="quelle">Quelle: content/cylinder-catalog.json, extras id gleichschliessung-erweiterbar, priceCents 1500</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-040</span> Beschriftete Schlüsselanhänger <span class="einheit">· Euro je Stück</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 1,90 <span class="quelle">Quelle: content/cylinder-catalog.json, extras id zusatz-schluesselanhaenger, priceCents 190</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+<h2>Sets</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-041</span> Zusatzschlüssel je Stück <span class="einheit">· Euro je Schlüssel</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 14,90 <span class="quelle">Quelle: content/cylinder-catalog.json, keyPriceCents 1490</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-042</span> Schlüssel im Preis enthalten <span class="einheit">· Stück je Satz</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 3 <span class="quelle">Quelle: content/cylinder-catalog.json, includedKeys 3</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-043</span> Schlüssel je Satz, Höchstzahl <span class="einheit">· Stück</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 50 <span class="quelle">Quelle: content/cylinder-catalog.json, maxKeys 50</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-044</span> Zylinder je Satz, Höchstzahl <span class="einheit">· Stück</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 30 <span class="quelle">Quelle: content/cylinder-catalog.json, maxCylinders 30</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+<h2>Anzahlung</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-045</span> Anzahlung für Termine, Standardbetrag <span class="einheit">· Euro, Anzahlung</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 69,90 <span class="quelle">Quelle: content/settings.json, booking.depositCents 6990</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-046</span> Anzahlung für Termine, untere Grenze <span class="einheit">· Euro, Grenze</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 50,00 <span class="quelle">Quelle: content/settings.json, booking.depositMinCents 5000</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-047</span> Anzahlung für Termine, obere Grenze <span class="einheit">· Euro, Grenze</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 80,00 <span class="quelle">Quelle: content/settings.json, booking.depositMaxCents 8000</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen oder den neuen Betrag nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+<h2>Versand an den Kunden</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-048</span> Versandart: Versand verfolgbar <span class="einheit">· Euro je Bestellung</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 4,95 <span class="quelle">Quelle: content/settings.json, shipping id brief-verfolgt, priceCents 495</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen. Diese Versandarten gelten für Bestellungen. Das Einsenden steht als eigene Position weiter unten.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-049</span> Versandart: Paket versichert <span class="einheit">· Euro je Bestellung</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 7,95 <span class="quelle">Quelle: content/settings.json, shipping id paket-versichert, priceCents 795</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen. Diese Versandarten gelten für Bestellungen. Das Einsenden steht als eigene Position weiter unten.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-050</span> Versandart: Abholung im Fachbetrieb <span class="einheit">· Euro je Bestellung</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 0,00 <span class="quelle">Quelle: content/settings.json, shipping id abholung, priceCents 0</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestand bestätigen. Diese Versandarten gelten für Bestellungen. Das Einsenden steht als eigene Position weiter unten.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+<h2>Neu, ohne Bestand</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-051</span> Einsenden, versichert (Schlüssel an die Werkstatt schicken) <span class="einheit">· Euro je Sendung</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> 4,45 Euro je Sendung: Einschreiben im Großbrief mit Haftung 25 Euro <span class="quelle">Quelle: erhebung/E1-versand.md, Abschnitt 1 (Großbrief Einschreiben 4,45 Euro, Stufe C: Großbrief 1,80 Euro laut Preisblatt 01.2026 plus Zuschlag 2,65 Euro laut Leistungen und Preise 09.2026) und Abschnitt 7 (Versichert); Abruf 2026-11-02</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Porto der Post. Nach dem Konzept ist das Einschicken für den Kunden kostenlos, dann trägt der Betrieb den Betrag. Bitte angeben, ob der Kunde einen Aufpreis zahlt.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-052</span> Einsenden, unversichert (Schlüssel an die Werkstatt schicken) <span class="einheit">· Euro je Sendung</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> 1,80 Euro je Sendung: Großbrief bis 2 cm, Haftung nicht belegt <span class="quelle">Quelle: erhebung/E1-versand.md, Abschnitt 1 (Großbrief 1,80 Euro, Stufe B, Preisblatt 01.2026) und Abschnitt 7 (Unversichert); Abruf 2026-11-02</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Porto der Post. Ein Kompaktbrief bis 1 cm kostet 1,10 Euro. Die Haftung für diese Sendung ist nicht belegt.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-053</span> Gehäuse ab (Autoschlüssel-Gehäuse mit Einsenden) <span class="einheit">· Euro, ab-Betrag</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Kein Vorschlag mit Quelle. Bitte den Ab-Betrag nennen oder bestätigen, dass das Angebot erst auf Anfrage kommt.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-054</span> Transponder-Kopie (Chip in der Werkstatt kopieren) <span class="einheit">· Euro je Transponder</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Kein Vorschlag mit Quelle. Der Bestand nennt die Leistung nur für bestätigte Fahrzeuge (content/rubriken.json, transponder-kopie). Bitte einen Preis nennen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">P-055</span> Satz ab 11 Zylindern <span class="einheit">· Euro je Satz</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Bestand führt Sätze bis 30 Zylinder. Für 11 und mehr Zylinder fehlt ein Preis. Bitte einen Preis nennen oder angeben, dass Sie eine Anfrage wünschen.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Betrag in Euro oder Bestand bestätigen</p>
+    
+  </div>
+</article>
+</main>
+<footer class="fuss">
+  <p class="ende">Rückgabe: siehe LIESMICH.md im Ordner erhebung/boegen. Bitte den Bogen ohne interne Werte zurückgeben.</p>
+</footer>
+</body>
+</html>

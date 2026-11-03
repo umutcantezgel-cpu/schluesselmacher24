@@ -156,6 +156,18 @@ describe('Anhänge', () => {
     expect(Buffer.from(anhang.content, 'base64').toString('utf8')).toBe(ics);
   });
 
+  it('kodiert Bytes (etwa ein PDF) unverändert', async () => {
+    const fetchImpl = vi.fn(async () => antwort(200, { id: 're_pdf' }));
+    const bytes = new Uint8Array([0x25, 0x50, 0x44, 0x46, 0x2d, 0xff, 0x00, 0xe4]);
+    await sendeUeberResend(
+      { ...MAIL, anhaenge: [{ dateiname: 'Vorgangsblatt-SM24-T-2026-0001.pdf', inhalt: bytes, typ: 'application/pdf' }] },
+      { konfiguration: KONFIGURATION, fetchImpl },
+    );
+    const body = JSON.parse((fetchImpl.mock.calls[0] as unknown as [string, RequestInit])[1].body as string);
+    expect(body.attachments[0].content_type).toBe('application/pdf');
+    expect([...Buffer.from(body.attachments[0].content, 'base64')]).toEqual([...bytes]);
+  });
+
   it('lässt das Feld ohne Anhänge weg', async () => {
     const fetchImpl = vi.fn(async () => antwort(200, { id: 're_ohne' }));
     await sendeUeberResend(MAIL, { konfiguration: KONFIGURATION, fetchImpl });

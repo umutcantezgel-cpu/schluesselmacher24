@@ -1,0 +1,121 @@
+{
+  "skript": "funktionsliste",
+  "zeit": "2026-11-03T04:51:08.576Z",
+  "argumente": {
+    "_": [],
+    "nur": "F-15,F-16,F-17,F-18,F-19",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/funktionsliste-zusatz.json",
+    "md": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/funktionsliste-zusatz.md"
+  },
+  "server": "http://localhost:3000",
+  "records": {
+    "vorher": false,
+    "nachher": false
+  },
+  "serverlog": {
+    "neuZeichen": 0,
+    "treffer": 0
+  },
+  "ergebnisse": [
+    {
+      "id": "F-15",
+      "funktion": "Partner werden: fünf Schritte bis zur Bewerbung",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Fünf Schritte bis „Angaben prüfen und absenden“: ja (5 Schritte: Ihr Betrieb · Einsatzgebiet · Leistungen und Qualifikation · Nachweise · Angaben prüfen und absenden); Datenschutz bestätigt: ja; Bestätigung oder abgefangene schreibende Anfrage mit Prüf-E-Mail: ja (Attrappe action-schreibend); Abgesendete Angaben: Firma, PLZ und Prüf-E-Mail: ja (Server-Aktionen mit Körper: 3)",
+      "messwert": null,
+      "dauer_ms": 3854,
+      "attrappen": [
+        {
+          "art": "action-unbekannt",
+          "methode": "POST",
+          "url": "/partner-werden",
+          "laenge": 2
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "action-unbekannt",
+          "methode": "POST",
+          "url": "/partner-werden",
+          "laenge": 2
+        },
+        {
+          "art": "action-schreibend",
+          "methode": "POST",
+          "url": "/partner-werden",
+          "laenge": 1827
+        }
+      ]
+    },
+    {
+      "id": "F-16",
+      "funktion": "Widerruf erklären: Name, Prüf-E-Mail, Absenden",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Formular mit Feld „Name“ und „E-Mail-Adresse“: ja; Name und Prüf-E-Mail eingetragen: ja; Knopf „Widerruf jetzt erklären“ bedienbar: ja; Bestätigung oder abgefangene schreibende Anfrage mit Prüf-E-Mail: ja (Attrappe action-schreibend); Abgesendete Angaben: Name und Prüf-E-Mail: ja (Server-Aktionen mit Körper: 3)",
+      "messwert": null,
+      "dauer_ms": 1561,
+      "attrappen": [
+        {
+          "art": "action-unbekannt",
+          "methode": "POST",
+          "url": "/rechtliches/widerruf/erklaeren",
+          "laenge": 2
+        },
+        {
+          "art": "action-unbekannt",
+          "methode": "POST",
+          "url": "/rechtliches/widerruf/erklaeren",
+          "laenge": 2
+        },
+        {
+          "art": "action-schreibend",
+          "methode": "POST",
+          "url": "/rechtliches/widerruf/erklaeren",
+          "laenge": 1287
+        }
+      ]
+    },
+    {
+      "id": "F-17",
+      "funktion": "Codesuche, Serie und Kategorie-Seite",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Serie „ms-01“ zeigt die Linie in der Trefferliste: ja (Büroschrank und Rollcontainer); Code „0812“ markiert die Linie als „passt zum Codeformat“: ja (3 bis 4 Ziffern); Kategorie „Briefkasten und Postanlagen“ listet mindestens eine Linie: ja (5 Linien)",
+      "messwert": "5 Linien in der Kategorie",
+      "dauer_ms": 1910,
+      "attrappen": []
+    },
+    {
+      "id": "F-18",
+      "funktion": "Fahrzeugwahl: Marke, Modell und Termin mit Vorauswahl",
+      "geraet": "mobil",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Marke Volkswagen auf der Markenseite: ja; Modell Golf unter Volkswagen: ja; Modellseite Golf erreicht: ja (/autoschluessel/marken/volkswagen/golf); Link in den Termin mit marke=volkswagen und modell=golf: ja (/autoschluessel/anfrage?marke=volkswagen&modell=golf); Termin-Assistent geöffnet: ja (/autoschluessel/anfrage); Marke im Assistenten vorausgewählt (Option Volkswagen gewählt): ja (Welche Marke hat Ihr Fahrzeug?)",
+      "messwert": null,
+      "dauer_ms": 1833,
+      "attrappen": [
+        {
+          "art": "action-unbekannt",
+          "methode": "POST",
+          "url": "/autoschluessel/anfrage",
+          "laenge": 2
+        }
+      ]
+    },
+    {
+      "id": "F-19",
+      "funktion": "Kontakt mit tel- und mailto-Link, Vor-Ort-Verweis, Einsenden",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Telefon als tel:-Link: ja (tel:+4964418056279); E-Mail als mailto:-Link: ja (mailto:info@schluesselmacher24.de); Vor-Ort-Seite verweist in eine Anfrage: ja (3 Verweise); Einsenden zeigt den Weg zur Foto-Anfrage: ja (/schluessel-nach-vorlage/anfrage)",
+      "messwert": null,
+      "dauer_ms": 2597,
+      "attrappen": []
+    }
+  ]
+}

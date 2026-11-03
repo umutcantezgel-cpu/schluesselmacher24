@@ -1,0 +1,32 @@
+{
+  "skript": "svg-pruefung",
+  "server": "http://localhost:3000",
+  "dateien": [
+    {
+      "datei": "src/app/icon.svg",
+      "bytes": 1171,
+      "befunde": [
+        "Kommentar"
+      ]
+    }
+  ],
+  "ansichten": [
+    {
+      "id": "/",
+      "pfad": "/",
+      "gesamt": 57,
+      "verborgen": 50,
+      "benannt": 7,
+      "icons": 47,
+      "grafiken": 7,
+      "unbenannt": [],
+      "andere": [
+        "0 0 87.2 10 shrink-0 overflow-visible",
+        "0 0 125.6 16 shrink-0 overflow-visible",
+        "0 0 100 16 min-w-0 flex-1 overflow-visible"
+      ],
+      "lucide": 0,
+      "doppelt": []
+    }
+  ]
+}

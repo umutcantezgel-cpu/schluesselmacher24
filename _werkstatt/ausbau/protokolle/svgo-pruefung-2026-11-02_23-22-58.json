@@ -1,0 +1,25 @@
+{
+  "skript": "svgo-pruefung",
+  "zeit": "2026-11-02T22:22:58.785Z",
+  "argumente": {
+    "_": []
+  },
+  "dateien": 1,
+  "befunde": 0,
+  "ergebnisse": [
+    {
+      "datei": "src/app/icon.svg",
+      "bytesVorher": 1171,
+      "bytesNachher": 939,
+      "ersparnis": 19.8,
+      "merkmale": {
+        "viewBox": "ja",
+        "title": "nein",
+        "role": "nein",
+        "aria-hidden": "nein"
+      },
+      "verloren": [],
+      "fehler": null
+    }
+  ]
+}

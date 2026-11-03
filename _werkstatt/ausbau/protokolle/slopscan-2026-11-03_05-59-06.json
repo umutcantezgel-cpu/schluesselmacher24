@@ -1,0 +1,342 @@
+{
+  "skript": "slopscan",
+  "zeit": "2026-11-03T04:59:06.324Z",
+  "argumente": {
+    "_": [],
+    "routen": "/,/autoschluessel,/gleichschliessende-zylinder",
+    "geraet": "mobil"
+  },
+  "kopf": [
+    "Ansicht",
+    "Gerät",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "Slop-Index"
+  ],
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "mobil",
+      "s": [
+        0,
+        0,
+        7,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 9,
+      "beispiele": {
+        "s1": [],
+        "s2": [],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 78 %"
+        ],
+        "s6": [],
+        "s7": [],
+        "s8": [
+          "data-motion=B-27 auf 6 von 7"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [],
+          "gesamt": [
+            {
+              "name": "plexSans",
+              "anzahl": 113
+            },
+            {
+              "name": "plexMono",
+              "anzahl": 91
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 58,
+          "verwendet": 37,
+          "offen": [],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 7,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.7777777777777778,
+          "radienGesamt": 63,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 0,
+          "bsp": []
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=B-27 auf 6 von 7"
+          ],
+          "abschnitte": 7
+        },
+        "textElemente": 2
+      }
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "mobil",
+      "s": [
+        0,
+        0,
+        7,
+        0,
+        1,
+        4,
+        0,
+        1
+      ],
+      "slopIndex": 13,
+      "beispiele": {
+        "s1": [],
+        "s2": [],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 67 %"
+        ],
+        "s6": [
+          "ul.mt-5.border-t (4)",
+          "ul.mt-5.border-t (3)",
+          "ul.mt-5.border-t (3)"
+        ],
+        "s7": [],
+        "s8": [
+          "data-motion=B-27 auf 6 von 6"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [],
+          "gesamt": [
+            {
+              "name": "plexSans",
+              "anzahl": 175
+            },
+            {
+              "name": "plexMono",
+              "anzahl": 49
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 12,
+          "offen": [],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 7,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.6707317073170732,
+          "radienGesamt": 82,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 5,
+          "bsp": [
+            "ul.mt-5.border-t (4)",
+            "ul.mt-5.border-t (3)",
+            "ul.mt-5.border-t (3)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=B-27 auf 6 von 6"
+          ],
+          "abschnitte": 6
+        },
+        "textElemente": 2
+      }
+    },
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "pfad": "/gleichschliessende-zylinder",
+      "geraet": "mobil",
+      "s": [
+        0,
+        0,
+        11,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "slopIndex": 13,
+      "beispiele": {
+        "s1": [],
+        "s2": [],
+        "s3": [
+          "p.eyebrow::before",
+          "p.eyebrow::before",
+          "p.eyebrow::before"
+        ],
+        "s4": [],
+        "s5": [
+          "Radius 0px 0px 0px 0px bei 69 %"
+        ],
+        "s6": [
+          "div.divide-y.divide-border (6)"
+        ],
+        "s7": [],
+        "s8": [
+          "data-motion=B-27 auf 10 von 10"
+        ]
+      },
+      "messung": {
+        "s1": {
+          "befund": [],
+          "gesamt": [
+            {
+              "name": "plexSans",
+              "anzahl": 183
+            },
+            {
+              "name": "plexMono",
+              "anzahl": 85
+            }
+          ]
+        },
+        "s2": {
+          "tokens": 30,
+          "verwendet": 15,
+          "offen": [],
+          "tailwind": []
+        },
+        "s3": {
+          "verlauf": 11,
+          "verlaufBsp": [
+            "p.eyebrow::before",
+            "p.eyebrow::before",
+            "p.eyebrow::before"
+          ],
+          "verlaufText": 0,
+          "verlaufTextBsp": [],
+          "glas": 0,
+          "glasBsp": [],
+          "leucht": 0,
+          "leuchtBsp": [],
+          "partikel": 0,
+          "partikelBsp": []
+        },
+        "s4": {
+          "ikon": 0,
+          "ikonBsp": [],
+          "emoji": 0,
+          "emojiBsp": []
+        },
+        "s5": {
+          "radiusTop": "0px 0px 0px 0px",
+          "radiusAnteil": 0.691358024691358,
+          "radienGesamt": 81,
+          "schatten": 0,
+          "schattenBsp": [],
+          "hover": 0,
+          "hoverBsp": []
+        },
+        "s6": {
+          "raster": 1,
+          "bsp": [
+            "div.divide-y.divide-border (6)"
+          ]
+        },
+        "s7": {
+          "wellen": 0,
+          "bsp": []
+        },
+        "s8": {
+          "einblendung": 1,
+          "bsp": [
+            "data-motion=B-27 auf 10 von 10"
+          ],
+          "abschnitte": 10
+        },
+        "textElemente": 2
+      }
+    }
+  ]
+}

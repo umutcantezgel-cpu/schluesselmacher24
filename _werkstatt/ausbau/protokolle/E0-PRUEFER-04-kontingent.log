@@ -1,0 +1,15 @@
+## Kontingent-Schätzung
+
+- Fenster: 2026-11-02T17:22:59.229Z bis 2026-11-02T22:22:59.229Z (Beginn vor 5 Stunden)
+- Gewichtete Summe: 71.294.063 aus 1.028 Einträgen
+- Geschätzt: ohne Kalibrierung (keine Prozentangabe)
+- Protokolle: 62 Dateien, doppelte message.id übersprungen 1.395, ohne Zeitstempel 0, fehlerhafte Zeilen 0
+
+| Modell | Gewicht | Eingabe | Cache-Erstellung | Cache-Lesen | Ausgabe | Gewichtete Summe |
+|---|---|---|---|---|---|---|
+| opus | 5 | 258 | 456.870 | 40.817.897 | 197.567 | 28.204.851 |
+| haiku | 1 | 1.800 | 4.983.090 | 206.143.347 | 3.248.843 | 43.089.212 |
+| andere | 3 | 0 | 0 | 0 | 0 | 0 |
+| Gesamt |  | 2.058 | 5.439.960 | 246.961.244 | 3.446.410 | 71.294.063 |
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/kontingent-2026-11-02_23-22-59.json

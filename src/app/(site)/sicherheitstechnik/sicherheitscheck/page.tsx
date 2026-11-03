@@ -92,7 +92,7 @@ export default async function SicherheitscheckPage() {
                 </span>
                 <GlyphPfeilRechts
                   size={18}
-                  className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
+                  className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard ruhig:transition-none zeiger:group-hover:translate-x-1"
                 />
               </Link>
             </li>
