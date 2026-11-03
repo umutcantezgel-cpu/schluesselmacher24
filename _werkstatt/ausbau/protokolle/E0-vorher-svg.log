@@ -1,0 +1,43 @@
+# SVG-Prüfung · 2026-11-02T23:55:23.536Z · Server http://localhost:3000
+
+## Dateien (1)
+| Datei | Bytes | Befunde |
+|---|---|---|
+| src/app/icon.svg | 1171 | Kommentar |
+
+## Ansichten (Desktop)
+| Ansicht | SVG | Icons (eine Familie) | Grafiken | andere | verborgen | benannt | unbenannt sichtbar | doppelte id | lucide |
+|---|---|---|---|---|---|---|---|---|---|
+| H01-start | 57 | 47 | 7 | 3 | 50 | 7 | 0 | 0 | 0 |
+| H02-autoschluessel | 71 | 60 | 8 | 3 | 67 | 4 | 0 | 0 | 0 |
+| H03-modell-golf | 45 | 38 | 4 | 3 | 41 | 4 | 0 | 0 | 0 |
+| H04-autoschluessel-anfrage | 19 | 17 | 0 | 2 | 19 | 0 | 0 | 0 | 0 |
+| H05-code | 104 | 100 | 1 | 3 | 103 | 1 | 0 | 0 | 0 |
+| H06-code-produkt | 47 | 40 | 4 | 3 | 43 | 4 | 0 | 0 | 0 |
+| H07-foto | 55 | 47 | 5 | 3 | 50 | 5 | 0 | 0 | 0 |
+| H08-einschicken | 35 | 32 | 0 | 3 | 35 | 0 | 0 | 0 | 0 |
+| H09-sperrschliessung-konfigurator | 34 | 30 | 2 | 2 | 32 | 2 | 0 | 0 | 0 |
+| H10-schliessanlagen | 69 | 59 | 7 | 3 | 62 | 7 | 0 | 0 | 0 |
+| H11-schliessanlagen-konfigurator | 20 | 18 | 0 | 2 | 20 | 0 | 0 | 0 | 0 |
+| H12-partner-werden | 31 | 28 | 0 | 3 | 31 | 0 | 0 | 0 | 0 |
+| H13-kasse | 22 | 19 | 1 | 2 | 22 | 0 | 0 | 0 | 0 |
+| H14-ratgeber-messen | 25 | 17 | 2 | 6 | 23 | 2 | 0 | 0 | 0 |
+
+## Einzelheiten (nur mit Befund oder „andere“)
+- H01-start: andere SVG: 0 0 87.2 10 shrink-0 overflow-visible · 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H02-autoschluessel: andere SVG: 0 0 87.2 10 shrink-0 overflow-visible · 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H03-modell-golf: andere SVG: 0 0 87.2 10 shrink-0 overflow-visible · 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H04-autoschluessel-anfrage: andere SVG: 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H05-code: andere SVG: 0 0 87.2 10 shrink-0 overflow-visible · 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H06-code-produkt: andere SVG: 0 0 87.2 10 shrink-0 overflow-visible · 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H07-foto: andere SVG: 0 0 87.2 10 shrink-0 overflow-visible · 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H08-einschicken: andere SVG: 0 0 87.2 10 shrink-0 overflow-visible · 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H09-sperrschliessung-konfigurator: andere SVG: 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H10-schliessanlagen: andere SVG: 0 0 87.2 10 shrink-0 overflow-visible · 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H11-schliessanlagen-konfigurator: andere SVG: 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H12-partner-werden: andere SVG: 0 0 87.2 10 shrink-0 overflow-visible · 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H13-kasse: andere SVG: 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+- H14-ratgeber-messen: andere SVG: 0 0 87.2 10 shrink-0 overflow-visible · 0 0 87.2 10 shrink-0 overflow-visible · 0 0 87.2 10 shrink-0 overflow-visible · 0 0 87.2 10 shrink-0 overflow-visible · 0 0 125.6 16 shrink-0 overflow-visible · 0 0 100 16 min-w-0 flex-1 overflow-visible
+
+Befunde: Dateien 1, unbenannt sichtbar 0, doppelte id 0, lucide 0
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-svg.json

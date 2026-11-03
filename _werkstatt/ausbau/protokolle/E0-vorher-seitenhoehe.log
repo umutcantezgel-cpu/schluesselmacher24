@@ -1,0 +1,19 @@
+| Ansicht | mobil-klein | mobil | tablet | desktop | breit | Überlauf |
+|---|---|---|---|---|---|---|
+| H01-start | 7793 | 7729 | 7012 | 5908 | 6019 | nein |
+| H02-autoschluessel | 10195 | 9901 | 8254 | 6573 | 6672 | nein |
+| H03-modell-golf | 11091 | 10894 | 8405 | 6989 | 7103 | nein |
+| H04-autoschluessel-anfrage | 3773 | 3755 | 3038 | 2647 | 2660 | nein |
+| H05-code | 11483 | 11179 | 8809 | 7365 | 7398 | nein |
+| H06-code-produkt | 8445 | 8202 | 7026 | 4573 | 4592 | nein |
+| H07-foto | 10386 | 10182 | 7830 | 6506 | 6617 | nein |
+| H08-einschicken | 5759 | 5477 | 4138 | 3598 | 3684 | nein |
+| H09-sperrschliessung-konfigurator | 5319 | 5229 | 4017 | 3527 | 3543 | nein |
+| H10-schliessanlagen | 10755 | 10572 | 10215 | 7703 | 7797 | nein |
+| H11-schliessanlagen-konfigurator | 3931 | 3917 | 2956 | 2726 | 2745 | nein |
+| H12-partner-werden | 5538 | 5366 | 4169 | 3809 | 3876 | nein |
+| H13-kasse | 2700 | 2701 | 1936 | 1417 | 1424 | nein |
+| H14-ratgeber-messen | 3508 | 3504 | 2972 | 2098 | 2111 | nein |
+
+Zeilen: 70 · Überlauf ja: 0
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-seitenhoehe.json
