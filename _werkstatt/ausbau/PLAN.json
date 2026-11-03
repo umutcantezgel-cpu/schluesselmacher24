@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T07:49:16.354Z",
+ "stand": "2026-11-03T08:06:47.340Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -1940,7 +1940,8 @@
    "kostenklasse": "L",
    "schreibrechte": [
     "src/components/visual/inszenierung/",
-    "src/components/visual/generators/profilschnitt.tsx"
+    "src/components/visual/generators/profilschnitt.tsx",
+    "src/components/visual/generators/profilschnitt.test.tsx"
    ],
    "abhaengigkeiten": [
     "E4-OPUS-01"
@@ -1956,10 +1957,10 @@
    ],
    "art": "pflicht",
    "wirkung": 5,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "3362998",
    "massstab": null,
    "muster": null
   },

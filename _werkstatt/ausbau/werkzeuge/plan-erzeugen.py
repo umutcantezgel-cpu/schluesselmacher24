@@ -137,7 +137,7 @@ hk('E3-PRUEFER-01', 'Prüfstufe B Etappe E3 (Build beide Modi, Tests, Funktionsl
 op('E4-OPUS-01', 'Startseite: Intent-Hub im ersten Bildschirm mit zwölf Kacheln aus den Rubriken, Frage, Satz, Anrufen, Code-Motiv', 'E4', 1,
    ['src/app/(site)/page.tsx', 'src/components/hub/', 'src/components/visual/fach-icon.tsx', 'src/app/(site)/globals.css', 'tailwind.config.ts', 'src/lib/data/defaults/rubriken.ts'], ['E3-PRUEFER-01'], ['G-01', 'G-02', 'G-03', 'G-05', 'G-13', 'G-43'], ['Z-04', 'Z-11'], wirkung=5)
 op('E4-OPUS-02', 'Eingangsinszenierung: Autoschlüssel fährt in den Zylinder, Zylinder wird Schließanlage; kürzerer Schlüssel, Dauerschleife mit Pause', 'E4', 2,
-   ['src/components/visual/inszenierung/', 'src/components/visual/generators/profilschnitt.tsx'], ['E4-OPUS-01'], ['G-04', 'G-06', 'G-07'], ['Z-04', 'Z-12'], wirkung=5)
+   ['src/components/visual/inszenierung/', 'src/components/visual/generators/profilschnitt.tsx', 'src/components/visual/generators/profilschnitt.test.tsx'], ['E4-OPUS-01'], ['G-04', 'G-06', 'G-07'], ['Z-04', 'Z-12'], wirkung=5)
 op('E4-OPUS-03', 'Navigation nach G-08 aus den Rubriken (Kopf, Megamenü, Schublade, Fuß), Anrufen und Rückruf in einem Schritt', 'E4', 2,
    ['src/lib/navigation.ts', 'src/lib/navigation.test.ts', 'src/components/layout/site-header.tsx', 'src/components/layout/mobile-action-bar.tsx', 'src/components/layout/site-footer.tsx'], ['E4-OPUS-01'], ['G-08', 'G-09', 'G-11'], ['Z-04', 'Z-05'], wirkung=5)
 op('E4-OPUS-04', 'Übergang Kachel zu Rubrik (gemeinsames Element, Rückfall, Fokus auf h1), Rubrikkopf, „So läuft Ihr Auftrag ab“ aus Daten', 'E4', 3,
