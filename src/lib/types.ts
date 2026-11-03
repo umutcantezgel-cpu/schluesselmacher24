@@ -583,7 +583,8 @@ export interface UploadRef {
   sizeBytes: number;
   mimeType: string;
   /** Kategorie, damit Aufbewahrungsfristen greifen. */
-  category: 'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto';
+  /** Art der Unterlage; Sicherungskarte und Vollmacht sind Berechtigungsnachweise (R13, E3-OPUS-09). */
+  category: 'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto' | 'sicherungskarte' | 'vollmacht';
   /**
    * Kennung der gespeicherten Kundendatei. Leer, wenn die Datei nicht
    * hochgeladen werden konnte — dann ist sie nur als Absicht vermerkt.

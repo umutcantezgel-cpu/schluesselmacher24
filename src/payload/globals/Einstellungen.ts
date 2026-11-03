@@ -354,7 +354,7 @@ export const Einstellungen: GlobalConfig = {
           description: 'Wie lange hochgeladene Unterlagen aufbewahrt werden (Tage).',
           fields: [
             { type: 'row', fields: [
-              { name: 'fahrzeugschein', type: 'number', label: 'Fahrzeugschein', required: true, min: 1, admin: { width: '25%' } },
+              { name: 'fahrzeugschein', type: 'number', label: 'Fahrzeugschein und Nachweise', required: true, min: 1, admin: { width: '25%', description: 'Auch Sicherungskarte und Vollmacht.' } },
               { name: 'schluesselfotos', type: 'number', label: 'Schlüsselfotos', required: true, min: 1, admin: { width: '25%' } },
               { name: 'grundrisse', type: 'number', label: 'Grundrisse', required: true, min: 1, admin: { width: '25%' } },
               { name: 'projektunterlagen', type: 'number', label: 'Projektunterlagen', required: true, min: 1, admin: { width: '25%' } },

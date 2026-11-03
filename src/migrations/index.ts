@@ -8,6 +8,7 @@ import * as migration_20261025_132935_leitfaden_daten from './20261025_132935_le
 import * as migration_20261103_014640_rubriken from './20261103_014640_rubriken';
 import * as migration_20261103_030613_einsenden from './20261103_030613_einsenden';
 import * as migration_20261103_031720_fahrzeugreihen from './20261103_031720_fahrzeugreihen';
+import * as migration_20261103_032353_nachweise from './20261103_032353_nachweise';
 
 export const migrations = [
   {
@@ -58,6 +59,11 @@ export const migrations = [
   {
     up: migration_20261103_031720_fahrzeugreihen.up,
     down: migration_20261103_031720_fahrzeugreihen.down,
-    name: '20261103_031720_fahrzeugreihen'
+    name: '20261103_031720_fahrzeugreihen',
+  },
+  {
+    up: migration_20261103_032353_nachweise.up,
+    down: migration_20261103_032353_nachweise.down,
+    name: '20261103_032353_nachweise'
   },
 ];

@@ -25,6 +25,8 @@ export const KATEGORIE_LABEL: Record<UploadRef['category'], string> = {
   grundriss: 'Grundriss',
   dokument: 'Dokument',
   objektfoto: 'Objektfoto',
+  sicherungskarte: 'Sicherungskarte',
+  vollmacht: 'Vollmacht',
 };
 
 export const POSITION_LABEL: Record<OrderLine['kind'], string> = {

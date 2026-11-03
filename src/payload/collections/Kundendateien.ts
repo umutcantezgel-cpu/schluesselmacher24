@@ -40,6 +40,8 @@ export const Kundendateien: CollectionConfig = {
         { label: 'Grundriss', value: 'grundriss' },
         { label: 'Dokument', value: 'dokument' },
         { label: 'Objektfoto', value: 'objektfoto' },
+        { label: 'Sicherungskarte', value: 'sicherungskarte' },
+        { label: 'Vollmacht', value: 'vollmacht' },
       ],
     },
     { name: 'vorgang', type: 'relationship', relationTo: 'vorgaenge', label: 'Vorgang', index: true },

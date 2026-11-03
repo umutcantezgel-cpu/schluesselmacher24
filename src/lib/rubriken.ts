@@ -57,7 +57,7 @@ export const RUBRIK_NACHWEISE: ReadonlyArray<{ value: RubrikNachweis; label: str
 ];
 
 /** Upload-Kategorien der vorhandenen Strecke (src/lib/server/datei-pruefung.ts). */
-export const RUBRIK_UPLOADS = ['schluesselfoto', 'fahrzeugschein', 'grundriss', 'dokument', 'objektfoto'] as const;
+export const RUBRIK_UPLOADS = ['schluesselfoto', 'fahrzeugschein', 'grundriss', 'dokument', 'objektfoto', 'sicherungskarte', 'vollmacht'] as const;
 
 /** Sortiert nach Reihenfolge; bei Gleichstand nach Kennung, damit die Ausgabe stabil bleibt. */
 export function sortiereRubriken(liste: readonly Rubrik[]): Rubrik[] {

@@ -412,7 +412,8 @@ export interface Vorgaenge {
  */
 export interface Kundendateien {
   id: number;
-  kategorie: 'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto';
+  kategorie:
+    'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto' | 'sicherungskarte' | 'vollmacht';
   vorgang?: (number | null) | Vorgaenge;
   aufbewahrenBis?: string | null;
   uploadSchluesselHash?: string | null;
@@ -1068,7 +1069,11 @@ export interface Rubriken {
     | null;
   abschluss: 'kasse' | 'anfrage' | 'termin-anzahlung' | 'angebot-zahlungslink' | 'beratung';
   nachweis: 'keiner' | 'fahrzeugschein' | 'sicherungskarte';
-  pflichtUploads?: ('schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto')[] | null;
+  pflichtUploads?:
+    | (
+        'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto' | 'sicherungskarte' | 'vollmacht'
+      )[]
+    | null;
   status: 'live' | 'spaeter' | 'aus';
   reihenfolge: number;
   navigation: 'autoschluessel' | 'code' | 'sperrschliessung' | 'schliessanlagen' | 'mehr';
@@ -2997,6 +3002,9 @@ export interface Einstellungen {
     portoStand?: string | null;
   };
   aufbewahrung: {
+    /**
+     * Auch Sicherungskarte und Vollmacht.
+     */
     fahrzeugschein: number;
     schluesselfotos: number;
     grundrisse: number;
