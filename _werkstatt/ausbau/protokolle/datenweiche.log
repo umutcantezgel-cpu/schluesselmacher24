@@ -449,3 +449,60 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-03T04:02:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
 2026-11-03T04:02:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
 2026-11-03T04:03:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T04:03:48+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T04:04:55+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T04:05:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T04:05:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install @hookform/resolvers@^5.9.2 react-hook-form@^7.91.0 framer-motion@^12.43.0 schema-dts@^2.1.0 zustand@^5.0.16
+2026-11-03T04:06:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install -D tailwind-merge@^3.7.0 autoprefixer@^10.6.2 postcss@^8.5.32 @types/node@^20.19.43
+2026-11-03T04:06:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T04:06:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T04:06:54+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T04:07:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm audit --omit=dev --json
+2026-11-03T04:07:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm audit fix
+2026-11-03T04:07:54+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm audit --omit=dev --json
+2026-11-03T04:07:55+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm audit --json
+2026-11-03T04:08:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --version
+2026-11-03T04:08:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm --version
+2026-11-03T04:08:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm audit --omit=dev --json
+2026-11-03T04:08:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm outdated --json
+2026-11-03T04:08:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm ls --all
+2026-11-03T04:08:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T04:08:55+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T04:09:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T04:09:42+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T04:10:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T04:11:27+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T04:12:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm explain ajv
+2026-11-03T04:12:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @hookform/resolvers@5.4.0 peerDependencies --json
+2026-11-03T04:12:53+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @hookform/resolvers@5.4.0 peerDependenciesMeta --json
+2026-11-03T04:12:53+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @hookform/resolvers@5.9.2 peerDependencies --json
+2026-11-03T04:13:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install @hookform/resolvers@5.4.0
+2026-11-03T04:13:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --version
+2026-11-03T04:13:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm --version
+2026-11-03T04:13:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm audit --omit=dev --json
+2026-11-03T04:13:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm outdated --json
+2026-11-03T04:13:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm ls --all
+2026-11-03T04:13:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T04:14:08+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T04:14:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T04:14:54+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T04:15:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T04:16:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T04:17:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm pkg set dependencies.schema-dts=^2.1.0
+2026-11-03T04:17:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install
+2026-11-03T04:18:05+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --package-lock-only
+2026-11-03T04:18:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm ls schema-dts
+2026-11-03T04:18:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm ls --omit=dev schema-dts
+2026-11-03T04:18:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm explain schema-dts
+2026-11-03T04:18:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --version
+2026-11-03T04:18:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm --version
+2026-11-03T04:18:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm audit --omit=dev --json
+2026-11-03T04:18:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm outdated --json
+2026-11-03T04:18:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm ls --all
+2026-11-03T04:18:35+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T04:18:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T04:19:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T04:19:44+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T04:20:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T04:21:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T04:23:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm ls next react react-dom payload @payloadcms/ui @payloadcms/next --depth=0

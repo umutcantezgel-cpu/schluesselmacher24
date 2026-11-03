@@ -1,0 +1,215 @@
+=== Vor audit fix: Audit (Produktion)
+=== npm audit fix (ohne --force)
+
+changed 14 packages, and audited 856 packages in 21s
+
+270 packages are looking for funding
+  run `npm fund` for details
+
+# npm audit report
+
+@vitest/mocker  <=4.1.11
+Severity: moderate
+Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock - https://github.com/advisories/GHSA-82fw-gwwq-j7x9
+Vitest: Code injection via unauthenticated manual mock registration - https://github.com/advisories/GHSA-qxg6-89mg-rqv8
+Depends on vulnerable versions of vite
+fix available via `npm audit fix --force`
+Will install vitest@5.1.0, which is a breaking change
+node_modules/@vitest/mocker
+  vitest  <=4.1.10
+  Depends on vulnerable versions of @vitest/mocker
+  Depends on vulnerable versions of tinypool
+  Depends on vulnerable versions of vite
+  Depends on vulnerable versions of vite-node
+  node_modules/vitest
+    @vitest/coverage-v8  <=3.2.7
+    Depends on vulnerable versions of test-exclude
+    Depends on vulnerable versions of vitest
+    node_modules/@vitest/coverage-v8
+
+deepmerge  >=4.2.0
+deepmerge mergeObject() allows prototype poisoning of returned objects - https://github.com/advisories/GHSA-gcqx-w48m-w2h4
+fix available via `npm audit fix --force`
+Will install @payloadcms/richtext-lexical@0.1.9, which is a breaking change
+node_modules/deepmerge
+  payload  *
+  Depends on vulnerable versions of deepmerge
+  node_modules/payload
+    @payloadcms/db-postgres  *
+    Depends on vulnerable versions of @payloadcms/drizzle
+    Depends on vulnerable versions of drizzle-kit
+    Depends on vulnerable versions of payload
+    node_modules/@payloadcms/db-postgres
+    @payloadcms/drizzle  *
+    Depends on vulnerable versions of payload
+    node_modules/@payloadcms/drizzle
+    @payloadcms/email-resend  *
+    Depends on vulnerable versions of payload
+    node_modules/@payloadcms/email-resend
+    @payloadcms/graphql  *
+    Depends on vulnerable versions of payload
+    node_modules/@payloadcms/graphql
+    @payloadcms/next  *
+    Depends on vulnerable versions of @payloadcms/graphql
+    Depends on vulnerable versions of @payloadcms/ui
+    Depends on vulnerable versions of payload
+    node_modules/@payloadcms/next
+      @payloadcms/richtext-lexical  >=0.1.10
+      Depends on vulnerable versions of @lexical/headless
+      Depends on vulnerable versions of @payloadcms/next
+      Depends on vulnerable versions of @payloadcms/ui
+      Depends on vulnerable versions of payload
+      node_modules/@payloadcms/richtext-lexical
+    @payloadcms/plugin-cloud-storage  >=1.0.5
+    Depends on vulnerable versions of @payloadcms/ui
+    Depends on vulnerable versions of payload
+    node_modules/@payloadcms/plugin-cloud-storage
+    @payloadcms/storage-s3  *
+    Depends on vulnerable versions of @payloadcms/plugin-cloud-storage
+    Depends on vulnerable versions of payload
+    node_modules/@payloadcms/storage-s3
+    @payloadcms/ui  *
+    Depends on vulnerable versions of payload
+    node_modules/@payloadcms/ui
+
+esbuild  <=0.24.2
+Severity: moderate
+esbuild enables any website to send any requests to the development server and read the response - https://github.com/advisories/GHSA-67mh-4wv8-2f99
+fix available via `npm audit fix --force`
+Will install vitest@5.1.0, which is a breaking change
+node_modules/@esbuild-kit/core-utils/node_modules/esbuild
+node_modules/esbuild
+  @esbuild-kit/core-utils  *
+  Depends on vulnerable versions of esbuild
+  node_modules/@esbuild-kit/core-utils
+    @esbuild-kit/esm-loader  *
+    Depends on vulnerable versions of @esbuild-kit/core-utils
+    node_modules/@esbuild-kit/esm-loader
+      drizzle-kit  0.19.0 - 1.0.0-beta.1-fd8bfcc
+      Depends on vulnerable versions of @esbuild-kit/esm-loader
+      node_modules/drizzle-kit
+  vite  <=6.4.3
+  Depends on vulnerable versions of esbuild
+  node_modules/vite
+    vite-node  <=2.2.0-beta.2
+    Depends on vulnerable versions of vite
+    node_modules/vite-node
+
+glob  3.0.0 - 14.0.1
+Severity: moderate
+Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal - https://github.com/advisories/GHSA-3g3m-2fjr-6pw4
+Depends on vulnerable versions of minimatch
+fix available via `npm audit fix --force`
+Will install @vitest/coverage-v8@5.1.0, which is a breaking change
+node_modules/glob
+  test-exclude  4.2.2 || >=5.0.0
+  Depends on vulnerable versions of glob
+  Depends on vulnerable versions of minimatch
+  node_modules/test-exclude
+
+happy-dom  <=21.0.3
+Severity: high
+Happy DOM: Incomplete fix for CVE-2026-33943: unsanitized import alias leads to host code execution - https://github.com/advisories/GHSA-834v-8h66-3h79
+Happy DOM: SSRF via iframe and link stylesheet when parsing untrusted HTML - https://github.com/advisories/GHSA-c8p4-j97h-3vg8
+fix available via `npm audit fix --force`
+Will install @payloadcms/richtext-lexical@0.1.9, which is a breaking change
+node_modules/happy-dom
+  @lexical/headless  0.36.2-nightly.20250926.0 - 0.52.1-nightly.20261027.0
+  Depends on vulnerable versions of happy-dom
+  node_modules/@lexical/headless
+
+minimatch  <11.0.1
+Severity: moderate
+minimatch has potential denial of service via globparts amplification - https://github.com/advisories/GHSA-g3hv-75wg-m249
+fix available via `npm audit fix --force`
+Will install eslint@4.0.0, which is a breaking change
+node_modules/@typescript-eslint/typescript-estree/node_modules/minimatch
+node_modules/glob/node_modules/minimatch
+node_modules/minimatch
+node_modules/test-exclude/node_modules/minimatch
+  @eslint/config-array  *
+  Depends on vulnerable versions of minimatch
+  node_modules/@eslint/config-array
+    eslint  0.7.1 - 2.0.0-rc.1 || >=4.1.0
+    Depends on vulnerable versions of @eslint-community/eslint-utils
+    Depends on vulnerable versions of @eslint/config-array
+    Depends on vulnerable versions of @eslint/eslintrc
+    Depends on vulnerable versions of minimatch
+    node_modules/eslint
+      @eslint-community/eslint-utils  *
+      Depends on vulnerable versions of eslint
+      node_modules/@eslint-community/eslint-utils
+        @next/eslint-plugin-next  >=16.3.0-canary.0
+        Depends on vulnerable versions of @eslint-community/eslint-utils
+        node_modules/@next/eslint-plugin-next
+          eslint-config-next  >=10.2.1-canary.2
+          Depends on vulnerable versions of @next/eslint-plugin-next
+          Depends on vulnerable versions of eslint
+          Depends on vulnerable versions of eslint-plugin-import
+          Depends on vulnerable versions of eslint-plugin-jsx-a11y
+          Depends on vulnerable versions of eslint-plugin-react
+          Depends on vulnerable versions of typescript-eslint
+          node_modules/eslint-config-next
+        @typescript-eslint/utils  *
+        Depends on vulnerable versions of @eslint-community/eslint-utils
+        Depends on vulnerable versions of @typescript-eslint/typescript-estree
+        Depends on vulnerable versions of eslint
+        node_modules/@typescript-eslint/utils
+          @typescript-eslint/eslint-plugin  *
+          Depends on vulnerable versions of @typescript-eslint/parser
+          Depends on vulnerable versions of @typescript-eslint/type-utils
+          Depends on vulnerable versions of @typescript-eslint/utils
+          Depends on vulnerable versions of eslint
+          node_modules/@typescript-eslint/eslint-plugin
+            typescript-eslint  *
+            Depends on vulnerable versions of @typescript-eslint/eslint-plugin
+            Depends on vulnerable versions of @typescript-eslint/parser
+            Depends on vulnerable versions of @typescript-eslint/typescript-estree
+            Depends on vulnerable versions of @typescript-eslint/utils
+            Depends on vulnerable versions of eslint
+            node_modules/typescript-eslint
+          @typescript-eslint/type-utils  >=5.9.2-alpha.0
+          Depends on vulnerable versions of @typescript-eslint/typescript-estree
+          Depends on vulnerable versions of @typescript-eslint/utils
+          Depends on vulnerable versions of eslint
+          node_modules/@typescript-eslint/type-utils
+      @typescript-eslint/parser  *
+      Depends on vulnerable versions of @typescript-eslint/typescript-estree
+      Depends on vulnerable versions of eslint
+      node_modules/@typescript-eslint/parser
+  @eslint/eslintrc  0.0.1 || >=0.1.1
+  Depends on vulnerable versions of minimatch
+  node_modules/@eslint/eslintrc
+  @typescript-eslint/typescript-estree  >=6.16.0
+  Depends on vulnerable versions of minimatch
+  node_modules/@typescript-eslint/typescript-estree
+  eslint-plugin-import  >=1.15.0
+  Depends on vulnerable versions of minimatch
+  node_modules/eslint-plugin-import
+  eslint-plugin-jsx-a11y  >=6.5.0
+  Depends on vulnerable versions of minimatch
+  node_modules/eslint-plugin-jsx-a11y
+  eslint-plugin-react  >=7.23.0
+  Depends on vulnerable versions of minimatch
+  node_modules/eslint-plugin-react
+
+tinypool  <=2.1.1
+Severity: critical
+Tinypool: Prototype Pollution gadget in worker options leads to Remote Code Execution - https://github.com/advisories/GHSA-5gmw-xhrv-c9v3
+Tinypool: Prototype Pollution Gadget to RCE in run() options - https://github.com/advisories/GHSA-85c8-ppgw-ccpr
+fix available via `npm audit fix --force`
+Will install vitest@5.1.0, which is a breaking change
+node_modules/tinypool
+
+
+
+41 vulnerabilities (9 low, 25 moderate, 4 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.

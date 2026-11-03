@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T04:04:02.835Z
+Stand: 2026-11-03T04:24:30.225Z
 
-Etappe 2/12 · Welle 3 · Pflicht 49/128 · Kür 0/10 · läuft 1 · blockiert 0
+Etappe 2/12 · Welle 3 · Pflicht 50/128 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -157,7 +157,7 @@ Geplante Tage: 2.14
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E3-UPGRADE-01 | Sicherheits- und Minor-Updates (React 19.3, eslint-config-next 16.4, npm audit ohne Major) | haiku-5.5 | M | pflicht | 3 | läuft |  |
+| E3-UPGRADE-01 | Sicherheits- und Minor-Updates (React 19.3, eslint-config-next 16.4, npm audit ohne Major) | haiku-5.5 | M | pflicht | 3 | committet | 978a830 |
 
 ### Welle 7
 
