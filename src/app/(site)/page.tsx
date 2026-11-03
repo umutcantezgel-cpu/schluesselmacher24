@@ -75,7 +75,7 @@ const TRUST_POINTS = [
   },
   {
     title: 'Sichere Zahlung',
-    body: 'Die Anzahlung zahlen Sie online. Sie wird vollständig auf den Gesamtpreis angerechnet.',
+    body: 'Die Anzahlung wird vollständig auf den Gesamtpreis angerechnet.',
   },
 ];
 
