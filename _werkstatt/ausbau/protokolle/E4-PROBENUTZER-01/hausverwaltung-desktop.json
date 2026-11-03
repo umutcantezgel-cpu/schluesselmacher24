@@ -1,0 +1,168 @@
+{
+  "persona": "hausverwaltung",
+  "geraet": "desktop",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "tipps": 2,
+  "wischer": 5,
+  "eingabe": null,
+  "zielErreicht": true,
+  "zielMs": 4568,
+  "zielText": "Planung erreicht: „Schließanlage: Projekt erfassen“",
+  "abbruch": null,
+  "endknopf": null,
+  "reaktionen": [
+    133,
+    135
+  ],
+  "schritte": [
+    {
+      "ms": 979,
+      "typ": "START",
+      "text": "Startseite geladen in 259 ms, Überschrift „Wobei können wir Ihnen helfen?“"
+    },
+    {
+      "ms": 986,
+      "typ": "ANRUF",
+      "text": "Startseite: ja, ohne Scrollen sichtbar"
+    },
+    {
+      "ms": 1694,
+      "typ": "BILD",
+      "text": "hausverwaltung-desktop-01-startseite.png"
+    },
+    {
+      "ms": 1935,
+      "typ": "TIPP",
+      "text": "Kachel „Schließanlage jedem Schlüssel seine Türen“ → „Schließanlage jedem Schlüssel seine Türen“ | Reaktion 133 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 1943,
+      "typ": "ANRUF",
+      "text": "Schließanlagen-Seite: nur nach Scrollen"
+    },
+    {
+      "ms": 2636,
+      "typ": "BILD",
+      "text": "hausverwaltung-desktop-02-schliessanlagen.png"
+    },
+    {
+      "ms": 3885,
+      "typ": "TIPP",
+      "text": "Karte „03 Hausverwaltung“ → „03 Hausverwaltung Mehrere Parteien, gemeinsame Türen, wechse“ | Reaktion 135 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 3889,
+      "typ": "ANRUF",
+      "text": "Planung (Konfigurator): nur nach Scrollen"
+    },
+    {
+      "ms": 4562,
+      "typ": "BILD",
+      "text": "hausverwaltung-desktop-03-planung-konfigurator.png"
+    },
+    {
+      "ms": 4568,
+      "typ": "STAND",
+      "text": "Konfigurator: „Schließanlage: Projekt erfassen“ | Schrittleiste mit 11 Einträgen sichtbar | Fachwörter 9"
+    },
+    {
+      "ms": 4568,
+      "typ": "ZIEL",
+      "text": "Planung erreicht: „Schließanlage: Projekt erfassen“"
+    }
+  ],
+  "stolpersteine": [
+    {
+      "ort": "Schließanlagen-Seite",
+      "zitat": "Wer plant welche Anlage?",
+      "gedanke": "Ich bin Hausverwaltung. Welche der fünf Karten passt zu mir? Ich suche die Planung."
+    }
+  ],
+  "bilder": [
+    "hausverwaltung-desktop-01-startseite.png",
+    "hausverwaltung-desktop-02-schliessanlagen.png",
+    "hausverwaltung-desktop-03-planung-konfigurator.png"
+  ],
+  "telPruefungen": [
+    {
+      "ort": "Startseite",
+      "sichtbar": 4,
+      "imBild": 1,
+      "fixiert": false,
+      "ergebnis": "ja, ohne Scrollen sichtbar"
+    },
+    {
+      "ort": "Schließanlagen-Seite",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiert": false,
+      "ergebnis": "nur nach Scrollen"
+    },
+    {
+      "ort": "Planung (Konfigurator)",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiert": false,
+      "ergebnis": "nur nach Scrollen"
+    }
+  ],
+  "tippziele": [
+    {
+      "ort": "Startseite",
+      "imBild": 19,
+      "unter44": 1,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (29 px)"
+      ]
+    },
+    {
+      "ort": "Schließanlagen-Seite",
+      "imBild": 14,
+      "unter44": 5,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (29 px)",
+        "Start (24 px)",
+        "Erklärung zu Schließstelle (24 px)"
+      ]
+    },
+    {
+      "ort": "Planung (Konfigurator)",
+      "imBild": 22,
+      "unter44": 14,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (29 px)",
+        "Start (24 px)",
+        "Schließanlagen (24 px)"
+      ]
+    }
+  ],
+  "abgebrochen": {},
+  "konsole": [],
+  "fach": {},
+  "ladeMs": 259,
+  "endMs": 4568,
+  "zusammen": {
+    "persona": "hausverwaltung",
+    "geraet": "desktop",
+    "tippsBisErsteEingabe": null,
+    "ersteEingabe": null,
+    "zielErreicht": true,
+    "zielMs": 4568,
+    "zielText": "Planung erreicht: „Schließanlage: Projekt erfassen“",
+    "abbruch": null,
+    "endknopf": null,
+    "tippsGesamt": 2,
+    "wischer": 5,
+    "maxReaktionMs": 135,
+    "zoegerungen": 0,
+    "ladeMs": 259,
+    "endMs": 4568,
+    "stolpersteine": 1,
+    "abgebrochen": {},
+    "konsole": 0,
+    "bilder": 3
+  }
+}

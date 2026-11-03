@@ -1,0 +1,416 @@
+{
+  "persona": "eilige",
+  "geraet": "mobil",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "tipps": 27,
+  "wischer": 0,
+  "eingabe": {
+    "tipps": 2,
+    "feld": "Suchfeld „Marke und Modell“",
+    "ms": 2593
+  },
+  "zielErreicht": true,
+  "zielMs": 15741,
+  "zielText": "Anfrage bis zum letzten Schritt (Schritt 5 von 5), nicht abgesendet",
+  "abbruch": "Abbruch an Schritt 9 von 13 (Fahrzeugschein, Pflichtupload). Testgrenze: keine Testbilder, Upload nicht bedient. Zielseite Anzahlung nicht erreicht.",
+  "endknopf": "„Anfrage absenden“ sichtbar, nicht betätigt",
+  "reaktionen": [
+    140,
+    3,
+    3,
+    6,
+    623,
+    3,
+    605,
+    3,
+    264,
+    4,
+    3,
+    134,
+    129,
+    261,
+    128,
+    3,
+    2,
+    2,
+    3
+  ],
+  "schritte": [
+    {
+      "ms": 988,
+      "typ": "START",
+      "text": "Startseite geladen in 251 ms, Überschrift „Wobei können wir Ihnen helfen?“"
+    },
+    {
+      "ms": 992,
+      "typ": "ANRUF",
+      "text": "Startseite: ja, fest in der Leiste ohne Scrollen"
+    },
+    {
+      "ms": 1653,
+      "typ": "BILD",
+      "text": "eilige-mobil-01-startseite.png"
+    },
+    {
+      "ms": 1890,
+      "typ": "TIPP",
+      "text": "Knopf „Termin anfragen“ (Leiste oder Kopfzeile) → „Termin anfragen“ | Reaktion 140 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 2541,
+      "typ": "BILD",
+      "text": "eilige-mobil-02-anfrage-schritt1.png"
+    },
+    {
+      "ms": 2933,
+      "typ": "EINGABE",
+      "text": "Suchfeld „Marke und Modell“ ← „Golf“"
+    },
+    {
+      "ms": 2952,
+      "typ": "TREFFER",
+      "text": "[\"1 Treffer\"]"
+    },
+    {
+      "ms": 3597,
+      "typ": "BILD",
+      "text": "eilige-mobil-03-suche-golf-treffer.png"
+    },
+    {
+      "ms": 3681,
+      "typ": "TIPP",
+      "text": "Treffer „Volkswagen Golf“ → „Volkswagen Golf Preis und Termin online“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 3686,
+      "typ": "STAND",
+      "text": "Nach dem Treffer: Schritt 3 von 13 · Baujahr | Name des Fahrzeugs ist auf der Seite nicht zu finden"
+    },
+    {
+      "ms": 4331,
+      "typ": "BILD",
+      "text": "eilige-mobil-04-nach-treffer-baujahr.png"
+    },
+    {
+      "ms": 4425,
+      "typ": "WAHL",
+      "text": "Baujahr, Jahr → „2015“"
+    },
+    {
+      "ms": 4686,
+      "typ": "TIPP",
+      "text": "Weiter (Baujahr) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 4789,
+      "typ": "TIPP",
+      "text": "Weiter (Fahrzeugdaten, leer) → „Weiter“ | Reaktion 6 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 5421,
+      "typ": "TIPP",
+      "text": "Art „Funkschlüssel“ → „Funkschlüssel Schlüssel mit Tasten zum Ver- und Entriegeln.“ | Reaktion 623 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 5504,
+      "typ": "TIPP",
+      "text": "Weiter (Schlüsselart) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 6118,
+      "typ": "TIPP",
+      "text": "Vorhanden „Kein funktionierender Schlüssel“ → „Kein funktionierender Schlüssel Alle Schlüssel sind verloren“ | Reaktion 605 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 6169,
+      "typ": "TIPP",
+      "text": "Weiter (Vorhandene Schlüssel) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 6815,
+      "typ": "BILD",
+      "text": "eilige-mobil-05-schritt7-leistung.png"
+    },
+    {
+      "ms": 7085,
+      "typ": "TIPP",
+      "text": "Leistung „Ersatzschlüssel bei Verlust“ → „Ersatzschlüssel bei Verlust Alle Schlüssel verloren oder bes“ | Reaktion 264 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 7157,
+      "typ": "TIPP",
+      "text": "Weiter (Leistung) → „Weiter“ | Reaktion 4 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 7170,
+      "typ": "STAND",
+      "text": "Schritt 8 von 13 · Schlüsselfotos | Weiter frei | Ist noch ein (defekter) Schlüssel da, fotografieren Sie ihn bitte. Ist keiner mehr da, überspringen Sie diesen Schritt."
+    },
+    {
+      "ms": 7264,
+      "typ": "TIPP",
+      "text": "Weiter (Schlüsselfotos übersprungen, da kein Schlüssel mehr da) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 7895,
+      "typ": "BILD",
+      "text": "eilige-mobil-06-schritt9-fahrzeugschein.png"
+    },
+    {
+      "ms": 7898,
+      "typ": "ANRUF",
+      "text": "Schritt 9, Fahrzeugschein: nur nach Scrollen"
+    },
+    {
+      "ms": 7905,
+      "typ": "STAND",
+      "text": "Schritt 9 von 13 · Fahrzeugschein | Weiter gesperrt"
+    },
+    {
+      "ms": 7905,
+      "typ": "ENDE",
+      "text": "Abbruch an Schritt 9 von 13 (Fahrzeugschein, Pflichtupload). Testgrenze: keine Testbilder, Upload nicht bedient. Zielseite Anzahlung nicht erreicht."
+    },
+    {
+      "ms": 8509,
+      "typ": "TIPP",
+      "text": "Breadcrumb „Autoschlüssel“ → „Autoschlüssel“ | Reaktion 134 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 8692,
+      "typ": "TIPP",
+      "text": "Knopf „Termin anfragen“ (zweiter Anlauf) → „Termin anfragen“ | Reaktion 129 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 9847,
+      "typ": "BILD",
+      "text": "eilige-mobil-07-zwischenstand-banner.png"
+    },
+    {
+      "ms": 10114,
+      "typ": "TIPP",
+      "text": "Knopf „Neu beginnen“ → „Neu beginnen“ | Reaktion 261 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 11226,
+      "typ": "EINGABE",
+      "text": "Suchfeld (zweiter Anlauf) ← „Dacia Sandero“"
+    },
+    {
+      "ms": 11238,
+      "typ": "TREFFER",
+      "text": "[\"1 Treffer\"]"
+    },
+    {
+      "ms": 11880,
+      "typ": "BILD",
+      "text": "eilige-mobil-08-dacia-treffer.png"
+    },
+    {
+      "ms": 12067,
+      "typ": "TIPP",
+      "text": "Treffer „Dacia Sandero Anfrage mit Fahrzeugschein und Schlüsselfoto“ → „Dacia Sandero Anfrage mit Fahrzeugschein und Schlüsselfoto“ | Reaktion 128 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 12711,
+      "typ": "BILD",
+      "text": "eilige-mobil-09-dacia-gefuehrte-anfrage-schritt1.png"
+    },
+    {
+      "ms": 12781,
+      "typ": "TIPP",
+      "text": "Weiter (Thema, Autoschlüssel vorgewählt) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 12782,
+      "typ": "FELD",
+      "text": "Anliegen vorbelegt: ja („Fahrzeug: Dacia Sandero. “)"
+    },
+    {
+      "ms": 13425,
+      "typ": "BILD",
+      "text": "eilige-mobil-10-dacia-anliegen.png"
+    },
+    {
+      "ms": 13478,
+      "typ": "TIPP",
+      "text": "Weiter (Anliegen) → „Weiter“ | Reaktion 2 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 13530,
+      "typ": "TIPP",
+      "text": "Weiter (Unterlagen, freiwillig, ohne Upload) → „Weiter“ | Reaktion 2 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 13937,
+      "typ": "WAHL",
+      "text": "Kontakt, Anrede → „Frau“"
+    },
+    {
+      "ms": 14183,
+      "typ": "EINGABE",
+      "text": "Vorname ← „Erika“"
+    },
+    {
+      "ms": 14247,
+      "typ": "EINGABE",
+      "text": "Nachname ← „Testkundin“"
+    },
+    {
+      "ms": 14299,
+      "typ": "EINGABE",
+      "text": "E-Mail ← „test@example.invalid“"
+    },
+    {
+      "ms": 14372,
+      "typ": "EINGABE",
+      "text": "Telefon ← „01234 567890“"
+    },
+    {
+      "ms": 15009,
+      "typ": "BILD",
+      "text": "eilige-mobil-11-dacia-kontakt.png"
+    },
+    {
+      "ms": 15067,
+      "typ": "TIPP",
+      "text": "Weiter (Kontakt) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 15077,
+      "typ": "STAND",
+      "text": "Schritt 5 von 5 · Prüfen | Endknopf: „Anfrage absenden“ sichtbar, nicht betätigt"
+    },
+    {
+      "ms": 15734,
+      "typ": "BILD",
+      "text": "eilige-mobil-12-dacia-vor-absenden.png"
+    },
+    {
+      "ms": 15737,
+      "typ": "ANRUF",
+      "text": "Anfrage, letzter Schritt: nur nach Scrollen"
+    },
+    {
+      "ms": 15741,
+      "typ": "ZIEL",
+      "text": "Anfrage bis zum letzten Schritt (Schritt 5 von 5), nicht abgesendet"
+    }
+  ],
+  "stolpersteine": [
+    {
+      "ort": "Anfrage nach Treffer, Schritt 3 von 13 · Baujahr",
+      "zitat": "Schritt 3 von 13 · Baujahr · Baujahr",
+      "gedanke": "Ich habe Golf gewählt und bin direkt bei Baujahr. Ich sehe nicht, ob mein Auto (Volkswagen Golf) übernommen wurde."
+    },
+    {
+      "ort": "Schritt 7 Leistung",
+      "zitat": "Zweitschlüssel anfertigen Ein zusätzlicher Schlüssel, während mindestens ein funktionierender Schlüssel vorhanden ist.",
+      "gedanke": "Ich habe „Kein funktionierender Schlüssel“ angegeben. Trotzdem wird mir der Zweitschlüssel angeboten, der „mindestens ein funktionierender Schlüssel“ braucht."
+    },
+    {
+      "ort": "Schritt 9 von 13 · Fahrzeugschein",
+      "zitat": "Zulassungsbescheinigung Teil I (Fahrzeugschein)*",
+      "gedanke": "Ich brauche ein Foto vom Fahrzeugschein. Ich habe es nicht hier. Ich höre auf."
+    },
+    {
+      "ort": "Anfrage, Zwischenstand-Hinweis",
+      "zitat": "Ihr Zwischenstand von zuletzt wurde geladen.",
+      "gedanke": "Ich will ein anderes Auto anfragen. Was passiert mit dem alten Stand? Ich drücke auf „Neu beginnen“."
+    }
+  ],
+  "bilder": [
+    "eilige-mobil-01-startseite.png",
+    "eilige-mobil-02-anfrage-schritt1.png",
+    "eilige-mobil-03-suche-golf-treffer.png",
+    "eilige-mobil-04-nach-treffer-baujahr.png",
+    "eilige-mobil-05-schritt7-leistung.png",
+    "eilige-mobil-06-schritt9-fahrzeugschein.png",
+    "eilige-mobil-07-zwischenstand-banner.png",
+    "eilige-mobil-08-dacia-treffer.png",
+    "eilige-mobil-09-dacia-gefuehrte-anfrage-schritt1.png",
+    "eilige-mobil-10-dacia-anliegen.png",
+    "eilige-mobil-11-dacia-kontakt.png",
+    "eilige-mobil-12-dacia-vor-absenden.png"
+  ],
+  "telPruefungen": [
+    {
+      "ort": "Startseite",
+      "sichtbar": 5,
+      "imBild": 2,
+      "fixiert": true,
+      "ergebnis": "ja, fest in der Leiste ohne Scrollen"
+    },
+    {
+      "ort": "Schritt 9, Fahrzeugschein",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiert": false,
+      "ergebnis": "nur nach Scrollen"
+    },
+    {
+      "ort": "Anfrage, letzter Schritt",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiert": false,
+      "ergebnis": "nur nach Scrollen"
+    }
+  ],
+  "tippziele": [
+    {
+      "ort": "Startseite",
+      "imBild": 18,
+      "unter44": 1,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)"
+      ]
+    },
+    {
+      "ort": "Schritt 9, Fahrzeugschein",
+      "imBild": 9,
+      "unter44": 3,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)",
+        "Foto aufnehmen (1 px)",
+        "Datei auswählen (1 px)"
+      ]
+    },
+    {
+      "ort": "Anfrage, letzter Schritt",
+      "imBild": 5,
+      "unter44": 1,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)"
+      ]
+    }
+  ],
+  "abgebrochen": {},
+  "konsole": [],
+  "fach": {},
+  "ladeMs": 251,
+  "endMs": 15741,
+  "zusammen": {
+    "persona": "eilige",
+    "geraet": "mobil",
+    "tippsBisErsteEingabe": 2,
+    "ersteEingabe": "Suchfeld „Marke und Modell“",
+    "zielErreicht": true,
+    "zielMs": 15741,
+    "zielText": "Anfrage bis zum letzten Schritt (Schritt 5 von 5), nicht abgesendet",
+    "abbruch": "Abbruch an Schritt 9 von 13 (Fahrzeugschein, Pflichtupload). Testgrenze: keine Testbilder, Upload nicht bedient. Zielseite Anzahlung nicht erreicht.",
+    "endknopf": "„Anfrage absenden“ sichtbar, nicht betätigt",
+    "tippsGesamt": 27,
+    "wischer": 0,
+    "maxReaktionMs": 623,
+    "zoegerungen": 0,
+    "ladeMs": 251,
+    "endMs": 15741,
+    "stolpersteine": 4,
+    "abgebrochen": {},
+    "konsole": 0,
+    "bilder": 12
+  }
+}

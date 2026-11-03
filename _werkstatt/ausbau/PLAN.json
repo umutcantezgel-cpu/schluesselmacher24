@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T09:14:46.632Z",
+ "stand": "2026-11-03T09:43:04.416Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -2155,10 +2155,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "26a9349",
    "massstab": "_werkstatt/ausbau/pakete/E4-PROBENUTZER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },
