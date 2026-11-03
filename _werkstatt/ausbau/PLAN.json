@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T14:22:38.358Z",
+ "stand": "2026-11-03T17:51:47.327Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -2589,7 +2589,9 @@
    "kostenklasse": "L",
    "schreibrechte": [
     "src/app/(site)/schliessanlagen/konfigurator/",
-    "src/components/konfigurator/"
+    "src/components/konfigurator/",
+    "src/lib/konfigurator/",
+    "src/app/(site)/schliessanlagen/page.tsx"
    ],
    "abhaengigkeiten": [
     "E4-JURY-01",
@@ -2614,10 +2616,10 @@
    ],
    "art": "pflicht",
    "wirkung": 5,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "05d8776",
    "massstab": null,
    "muster": null
   },

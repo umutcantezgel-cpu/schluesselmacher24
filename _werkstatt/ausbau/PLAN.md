@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T14:22:38.358Z
+Stand: 2026-11-03T17:51:47.327Z
 
-Etappe 6/12 · Welle 1 · Pflicht 72/139 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 6/12 · Welle 2 · Pflicht 73/139 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -244,7 +244,7 @@ Geplante Tage: 1.55
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E5-GRAFIKER-02 | Beispielzeichnungen je Fotoansicht im Autoschlüssel-Fotoschritt (Vorderseite, Rückseite mit Aufdruck, Bart seitlich, Nummer in Nahaufnahme) als SVG nach dem Formsystem | haiku-5.5 | M | pflicht | 3 | committet | 4b5cb55 |
-| E5-OPUS-01 | Schließanlagen-Konfigurator: Zylinder und Schlüssel hinzufügen, Matrix, laufender Gesamtpreis, Liste, Speichern, Kasse oder Projektanfrage | opus-5.5 | L | pflicht | 5 | offen |  |
+| E5-OPUS-01 | Schließanlagen-Konfigurator: Zylinder und Schlüssel hinzufügen, Matrix, laufender Gesamtpreis, Liste, Speichern, Kasse oder Projektanfrage | opus-5.5 | L | pflicht | 5 | committet | 05d8776 |
 | E5-GRAFIKER-01 | Messhilfe-Grafik Maß A und B mit Stulpschraube, Beschlag, Überstand (SVG nach Formsystem) | haiku-5.5 | M | pflicht | 3 | committet | aac87c6 |
 | E5-PRUEFER-02 | Leistungsdiagnose mobil aus Lighthouse-Spuren: LCP-Element und Zeitanteile, blockierende Ressourcen, JavaScript je Route, Hauptthread beim Seitenaufbau, SEO-Abzug der Unterseiten; Vorschläge mit erwarteter Wirkung | haiku-5.5 | M | pflicht | 3 | committet | b18db2a |
 

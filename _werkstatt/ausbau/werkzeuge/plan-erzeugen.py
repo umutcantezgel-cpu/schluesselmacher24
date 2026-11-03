@@ -171,7 +171,7 @@ hk('E5-GRAFIKER-02', 'Beispielzeichnungen je Fotoansicht im Autoschlüssel-Fotos
 
 # ---------------------------------------------------------------- E5 Konfiguratoren
 op('E5-OPUS-01', 'Schließanlagen-Konfigurator: Zylinder und Schlüssel hinzufügen, Matrix, laufender Gesamtpreis, Liste, Speichern, Kasse oder Projektanfrage', 'E5', 1,
-   ['src/app/(site)/schliessanlagen/konfigurator/', 'src/components/konfigurator/'], ['E4-JURY-01', 'E4-BLIND-01', 'E1-OPUS-01'], ['G-27', 'G-30', 'G-35'], ['Z-05', 'Z-06'], wirkung=5)
+   ['src/app/(site)/schliessanlagen/konfigurator/', 'src/components/konfigurator/', 'src/lib/konfigurator/', 'src/app/(site)/schliessanlagen/page.tsx'], ['E4-JURY-01', 'E4-BLIND-01', 'E1-OPUS-01'], ['G-27', 'G-30', 'G-35'], ['Z-05', 'Z-06'], wirkung=5)
 op('E5-OPUS-02', 'Sperrschließung auf demselben Kern: Sets 2 bis 10 (mehr auf Anfrage, Bestand bis 30), jeder Zylinder einzeln, Schlüsselzahl', 'E5', 2,
    ['src/app/(site)/gleichschliessende-zylinder/konfigurator/'], ['E5-OPUS-01'], ['G-28', 'G-09'], ['Z-06'], wirkung=5)
 op('E5-OPUS-03', 'Schließplan als PDF und Vorgang mit vollständigem Schnappschuss', 'E5', 2, ['src/lib/pdf/schliessplan.ts', 'src/lib/konfigurator/vorgang.ts'], ['E5-OPUS-01'], ['G-27', 'G-37'], ['Z-06', 'Z-19'], klasse='M')
