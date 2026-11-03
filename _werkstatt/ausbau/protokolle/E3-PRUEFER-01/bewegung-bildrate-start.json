@@ -1,0 +1,53 @@
+{
+  "skript": "bewegung-bildrate",
+  "zeit": "2026-11-03T04:53:50.735Z",
+  "argumente": {
+    "_": [
+      "bildrate",
+      "/"
+    ],
+    "selektor": "[data-motion=\"B-01\"]",
+    "dauer": "1600",
+    "laeufe": "3",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bewegung-bildrate-start.json",
+    "echtzeit": false
+  },
+  "pfad": "/",
+  "selektor": "[data-motion=\"B-01\"]",
+  "dauer": 1600,
+  "geraet": "mobil",
+  "laeufe": 3,
+  "gezeichnet": 109,
+  "verworfen": 0,
+  "anteil": 0,
+  "schwelle": 5,
+  "ueber": false,
+  "einzel": [
+    {
+      "gezeichnet": 110,
+      "verworfen": 0,
+      "anteil": 0
+    },
+    {
+      "gezeichnet": 108,
+      "verworfen": 1,
+      "anteil": 0.9174311926605505
+    },
+    {
+      "gezeichnet": 109,
+      "verworfen": 0,
+      "anteil": 0
+    }
+  ],
+  "treffer": {
+    "gesamt": 1,
+    "index": 0,
+    "versteckt": 0,
+    "groesse": [
+      350,
+      190
+    ],
+    "viewBox": null,
+    "element": "div"
+  }
+}

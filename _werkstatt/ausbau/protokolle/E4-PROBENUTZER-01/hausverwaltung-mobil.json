@@ -1,0 +1,167 @@
+{
+  "persona": "hausverwaltung",
+  "geraet": "mobil",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "tipps": 2,
+  "wischer": 7,
+  "eingabe": null,
+  "zielErreicht": true,
+  "zielMs": 4833,
+  "zielText": "Planung erreicht: „Schließanlage: Projekt erfassen“",
+  "abbruch": null,
+  "endknopf": null,
+  "reaktionen": [
+    132,
+    129
+  ],
+  "schritte": [
+    {
+      "ms": 966,
+      "typ": "START",
+      "text": "Startseite geladen in 244 ms, Überschrift „Wobei können wir Ihnen helfen?“"
+    },
+    {
+      "ms": 971,
+      "typ": "ANRUF",
+      "text": "Startseite: ja, fest in der Leiste ohne Scrollen"
+    },
+    {
+      "ms": 1644,
+      "typ": "BILD",
+      "text": "hausverwaltung-mobil-01-startseite.png"
+    },
+    {
+      "ms": 1884,
+      "typ": "TIPP",
+      "text": "Kachel „Schließanlage jedem Schlüssel seine Türen“ → „Schließanlage jedem Schlüssel seine Türen“ | Reaktion 132 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 1900,
+      "typ": "ANRUF",
+      "text": "Schließanlagen-Seite: ja, fest in der Leiste ohne Scrollen"
+    },
+    {
+      "ms": 2554,
+      "typ": "BILD",
+      "text": "hausverwaltung-mobil-02-schliessanlagen.png"
+    },
+    {
+      "ms": 4175,
+      "typ": "TIPP",
+      "text": "Karte „03 Hausverwaltung“ → „03 Hausverwaltung Mehrere Parteien, gemeinsame Türen, wechse“ | Reaktion 129 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 4177,
+      "typ": "ANRUF",
+      "text": "Planung (Konfigurator): nur nach Scrollen"
+    },
+    {
+      "ms": 4824,
+      "typ": "BILD",
+      "text": "hausverwaltung-mobil-03-planung-konfigurator.png"
+    },
+    {
+      "ms": 4832,
+      "typ": "STAND",
+      "text": "Konfigurator: „Schließanlage: Projekt erfassen“ | Schrittleiste mit 0 Einträgen sichtbar | Fachwörter 9"
+    },
+    {
+      "ms": 4833,
+      "typ": "ZIEL",
+      "text": "Planung erreicht: „Schließanlage: Projekt erfassen“"
+    }
+  ],
+  "stolpersteine": [
+    {
+      "ort": "Schließanlagen-Seite",
+      "zitat": "Wer plant welche Anlage?",
+      "gedanke": "Ich bin Hausverwaltung. Welche der fünf Karten passt zu mir? Ich suche die Planung."
+    }
+  ],
+  "bilder": [
+    "hausverwaltung-mobil-01-startseite.png",
+    "hausverwaltung-mobil-02-schliessanlagen.png",
+    "hausverwaltung-mobil-03-planung-konfigurator.png"
+  ],
+  "telPruefungen": [
+    {
+      "ort": "Startseite",
+      "sichtbar": 5,
+      "imBild": 2,
+      "fixiert": true,
+      "ergebnis": "ja, fest in der Leiste ohne Scrollen"
+    },
+    {
+      "ort": "Schließanlagen-Seite",
+      "sichtbar": 2,
+      "imBild": 1,
+      "fixiert": true,
+      "ergebnis": "ja, fest in der Leiste ohne Scrollen"
+    },
+    {
+      "ort": "Planung (Konfigurator)",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiert": false,
+      "ergebnis": "nur nach Scrollen"
+    }
+  ],
+  "tippziele": [
+    {
+      "ort": "Startseite",
+      "imBild": 18,
+      "unter44": 1,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)"
+      ]
+    },
+    {
+      "ort": "Schließanlagen-Seite",
+      "imBild": 10,
+      "unter44": 2,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)",
+        "Start (24 px)"
+      ]
+    },
+    {
+      "ort": "Planung (Konfigurator)",
+      "imBild": 7,
+      "unter44": 3,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)",
+        "Start (24 px)",
+        "Schließanlagen (24 px)"
+      ]
+    }
+  ],
+  "abgebrochen": {},
+  "konsole": [],
+  "fach": {},
+  "ladeMs": 244,
+  "endMs": 4833,
+  "zusammen": {
+    "persona": "hausverwaltung",
+    "geraet": "mobil",
+    "tippsBisErsteEingabe": null,
+    "ersteEingabe": null,
+    "zielErreicht": true,
+    "zielMs": 4833,
+    "zielText": "Planung erreicht: „Schließanlage: Projekt erfassen“",
+    "abbruch": null,
+    "endknopf": null,
+    "tippsGesamt": 2,
+    "wischer": 7,
+    "maxReaktionMs": 132,
+    "zoegerungen": 0,
+    "ladeMs": 244,
+    "endMs": 4833,
+    "stolpersteine": 1,
+    "abgebrochen": {},
+    "konsole": 0,
+    "bilder": 3
+  }
+}

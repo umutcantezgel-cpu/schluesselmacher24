@@ -1,0 +1,437 @@
+{
+  "skript": "a11y",
+  "zeit": "2026-11-03T13:20:56.135Z",
+  "argumente": {
+    "_": [],
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/a11y.json"
+  },
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    }
+  ]
+}

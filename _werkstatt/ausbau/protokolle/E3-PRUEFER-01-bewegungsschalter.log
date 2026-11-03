@@ -1,0 +1,21 @@
+| Prüfung | Erwartet | Ergebnis | Ist |
+|---|---|---|---|
+| Standard ohne Wahl: Attribut data-bewegung | "an" | BESTANDEN | "an" |
+| Standard ohne Wahl: sichtbarer Wert | "an" | BESTANDEN | "an" |
+| Standard ohne Wahl: aria-pressed | "true" | BESTANDEN | "true" |
+| Standard ohne Wahl: Schalter sichtbar | true | BESTANDEN | true |
+| Standard ohne Wahl: keine Konsolenfehler | 0 | BESTANDEN | 0 |
+| Klick auf den Schalter: data-bewegung | "ruhig" | BESTANDEN | "ruhig" |
+| Klick: gespeicherte Wahl im Gerät | "ruhig" | BESTANDEN | "ruhig" |
+| Klick: sichtbarer Wert | "ruhig" | BESTANDEN | "ruhig" |
+| Klick: aria-pressed | "false" | BESTANDEN | "false" |
+| Nach Neuladen bleibt „ruhig“: data-bewegung | "ruhig" | BESTANDEN | "ruhig" |
+| Nach Neuladen bleibt „ruhig“: sichtbarer Wert | "ruhig" | BESTANDEN | "ruhig" |
+| Zweiter Klick und Neuladen: data-bewegung | "an" | BESTANDEN | "an" |
+| Zweiter Klick und Neuladen: sichtbarer Wert | "an" | BESTANDEN | "an" |
+| Reduzierte Bewegung ohne Wahl: data-bewegung | "ruhig" | BESTANDEN | "ruhig" |
+| Reduzierte Bewegung ohne Wahl: sichtbarer Wert | "ruhig" | BESTANDEN | "ruhig" |
+| Gespeichert „an“ gewinnt über reduzierte Bewegung: data-bewegung | "an" | BESTANDEN | "an" |
+| Ohne JavaScript: Schalter sichtbar | false | BESTANDEN | false |
+| Ohne JavaScript: kein data-bewegung gesetzt | null | BESTANDEN | null |
+Bestanden 18 von 18

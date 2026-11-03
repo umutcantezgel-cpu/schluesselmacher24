@@ -24,6 +24,9 @@ import { Preisgruppen } from './payload/collections/Preisgruppen';
 import { Preisregeln } from './payload/collections/Preisregeln';
 import { Produkte } from './payload/collections/Produkte';
 import { Ratgeber } from './payload/collections/Ratgeber';
+import { Rubriken } from './payload/collections/Rubriken';
+import { Fahrzeugreihen } from './payload/collections/Fahrzeugreihen';
+import { Partnerbetriebe } from './payload/collections/Partnerbetriebe';
 import { Seiten } from './payload/collections/Seiten';
 import { Sperrtage } from './payload/collections/Sperrtage';
 import { Vorgaenge } from './payload/collections/Vorgaenge';
@@ -69,18 +72,21 @@ export default buildConfig({
   collections: [
     // Aufträge
     Vorgaenge,
+    Partnerbetriebe,
     Kundendateien,
     Widerrufe,
     // Shop
     Produkte,
     // Autoschlüssel
     Fahrzeugmarken,
+    Fahrzeugreihen,
     AutoschluesselLeistungen,
     Preisregeln,
     Preisgruppen,
     // Termine
     Sperrtage,
     // Inhalte
+    Rubriken,
     Seiten,
     Leistungsseiten,
     Ratgeber,

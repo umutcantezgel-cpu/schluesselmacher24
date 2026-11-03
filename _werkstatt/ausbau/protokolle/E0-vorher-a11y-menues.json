@@ -1,0 +1,53 @@
+{
+  "skript": "E0-PRUEFER-07 vorher",
+  "zeit": "2026-11-02T23:50:18.233Z",
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "zustaende": [
+    {
+      "zustand": "Menü mobil offen",
+      "pfad": "/",
+      "geraet": "mobil",
+      "knopfGefunden": true,
+      "offen": true,
+      "oeffnungDurch": "Klick",
+      "fehler": null,
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "stellen": 1,
+          "ziele": [
+            ".block:nth-child(4) > .hover\\:text-primary.tabular-nums[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ]
+    },
+    {
+      "zustand": "Megamenü Autoschlüssel offen",
+      "pfad": "/",
+      "geraet": "desktop",
+      "knopfGefunden": true,
+      "offen": true,
+      "oeffnungDurch": "Überfahren",
+      "fehler": null,
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "stellen": 1,
+          "ziele": [
+            ".block:nth-child(4) > .hover\\:text-primary.tabular-nums[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ]
+    }
+  ]
+}

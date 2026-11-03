@@ -2,6 +2,8 @@
 
 import { z } from 'zod';
 
+import { UPLOAD_KATEGORIEN } from '@/lib/server/datei-pruefung';
+
 import { getCollection, getSettings } from '@/lib/data';
 import { codePasst } from '@/lib/code-pattern';
 import { validateCylinderDraft } from '@/lib/cylinder-rules';
@@ -55,7 +57,7 @@ const uploadRefSchema = z.object({
   fileName: z.string().max(255),
   sizeBytes: z.number().int().min(0).max(30 * 1024 * 1024),
   mimeType: z.string().max(120),
-  category: z.enum(['schluesselfoto', 'fahrzeugschein', 'grundriss', 'dokument', 'objektfoto']),
+  category: z.enum(UPLOAD_KATEGORIEN),
   storageKey: z.string().regex(KUNDENDATEI_ID_MUSTER).optional(),
   uploadToken: z.string().regex(UPLOAD_TOKEN_MUSTER).optional(),
   uploadedAt: z.string().max(40),

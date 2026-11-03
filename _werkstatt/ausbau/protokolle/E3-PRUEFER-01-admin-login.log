@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "endurl": "http://localhost:3001/admin/login",
+  "titel": "Anmelden – SCHLÜSSELMACHER24 Backend",
+  "formulare": 1,
+  "passwortFelder": 1,
+  "konsolenfehler": 0,
+  "warnungen": 0,
+  "seitenfehler": 0,
+  "fehlgeschlagen": 0,
+  "httpFehler": 0,
+  "attrappen": {},
+  "png": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/admin-login.png"
+}

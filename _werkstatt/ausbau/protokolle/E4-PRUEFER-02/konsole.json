@@ -1,0 +1,282 @@
+{
+  "skript": "konsole",
+  "zeit": "2026-11-03T13:19:27.997Z",
+  "argumente": {
+    "_": [],
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/konsole.json"
+  },
+  "geraet": "desktop",
+  "ergebnisse": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=tXyZJ52UQVBCVsD3",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=tXyZJ52UQVBCVsD3",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=5n1oSYVUE-bRkdPj",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=QBH535dylrP-uY1l",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=QBH535dylrP-uY1l",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/service-und-termin/anfrage?thema=autoschluessel&_rsc=4HlmsnuKsCOp3QM4",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/service-und-termin/anfrage?thema=autoschluessel&_rsc=FSvW84RoVCGnVFWP",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/service-und-termin/anfrage?_rsc=4HlmsnuKsCOp3QM4",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=4HlmsnuKsCOp3QM4",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=u9vz_q1tH0uAIyql",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=wdYzTAa-H_FTGZ_J",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=pN1_3f_ThuChjmWR",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=BaeexqTUjbFF8PeR",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=SNsEWm_l0QrI_plU",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=rmSikRu3xl5CGG42",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=AIi43KjzHv4D5AxJ",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=Mp8x82EsV9CVyvVo",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/service-und-termin/anfrage?_rsc=gFpAPeOfg4MQvdYY",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=gFpAPeOfg4MQvdYY",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/autoschluessel/anfrage?_rsc=sfeFuyeCPpBF4FyE",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=nOpDNswMwrueuAQZ",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=o4EnLGMQ7N0X6atP",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=8Hu3i0Y9DhYfvdgA",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=zwbZCFsemg_Vqjuz",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "fehler": null,
+      "konsoleFehler": [],
+      "konsoleWarnungen": [],
+      "seitenfehler": [],
+      "fehlgeschlagen": [
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=AAK_jBlH9SzMJ6i-",
+          "grund": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://localhost:3000/rechtliches/widerruf/erklaeren?_rsc=1Geew1AKiecWPfZE",
+          "grund": "net::ERR_ABORTED"
+        }
+      ],
+      "attrappeAbbrueche": 0,
+      "attrappeKonsole": 0
+    }
+  ]
+}

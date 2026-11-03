@@ -1,0 +1,11 @@
+# Animationen · 2026-11-02T21:56:34.428Z · Server http://localhost:3000 · Gerät mobil
+
+Bekannte Keyframes (22): bounce, menue-ein, ping, pulse, schleier-ein, schublade-ein, sm24-aufdecken, sm24-dash, sm24-draw, sm24-erscheinen, sm24-fade, sm24-feder-heben, sm24-lesen-aktiv, sm24-pop, sm24-reveal, sm24-schluessel-ein, sm24-schritt-vor, sm24-schritt-zurueck, sm24-scrub-marke, sm24-scrub-y, sm24-stift-heben, spin
+
+| Ansicht | CSS-Animationen (Keyframe × Anzahl) | WAAPI (Element) | Übergänge (Eigenschaft × Anzahl) | unbekannt |
+|---|---|---|---|---|
+| / | sm24-fade ×2, sm24-draw ×15, sm24-reveal ×6, sm24-aufdecken ×1, sm24-scrub-marke ×10, sm24-scrub-y ×2, sm24-pop ×13 | g.sm24-fade, path.stroke-foreground, g | keine | keine |
+
+Befunde (unbekannte Keyframes): 0
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-animationen-json.log
+Exit: 0

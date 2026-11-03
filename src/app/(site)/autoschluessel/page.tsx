@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactElement } from 'react';
 
-import { getPageContent, getSettings, getVehicleMakes } from '@/lib/data';
+import { getPageContent, getRubrik, getSettings, getVehicleMakes } from '@/lib/data';
 import type { InfoHint, KeyKind } from '@/lib/types';
 import { formatCents } from '@/lib/format';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { cn } from '@/lib/cn';
 import { PageHeader } from '@/components/layout/page-header';
+import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ButtonLink } from '@/components/ui/button';
 import { Accordion } from '@/components/ui/accordion';
@@ -19,7 +20,8 @@ import type { IconProps } from '@/components/visual/icons/icon-base';
 import { IconReparaturAustausch } from '@/components/visual/icons/reparatur-austausch';
 import { IconSchluesselKopieren } from '@/components/visual/icons/schluessel-kopieren';
 import { IconSchluesselProgrammieren } from '@/components/visual/icons/schluessel-programmieren';
-import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
+import { AUFBAU_TEILE, AutoschluesselAufbau } from '@/components/visual/generators/autoschluessel-aufbau';
+import { standort } from '@/lib/rechtliches/firma';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
@@ -235,7 +237,38 @@ function Weiter({ size = 18, className }: { size?: number; className?: string })
   );
 }
 
+/** Positionen der Aufbauzeichnung mit den Leistungen dazu; Aussagen aus dem Bestand (A-025, R4). */
+const AUFBAU_TEXTE: Record<number, { text: string; links: { href: string; label: string }[] }> = {
+  1: {
+    text: 'Der gefräste Bart öffnet die Tür. Für den Motorstart braucht es meist mehr.',
+    links: [
+      { href: '/autoschluessel/schluesselbart-fraesen', label: 'Schlüsselbart fräsen' },
+      { href: '/autoschluessel/kopieren', label: 'Autoschlüssel kopieren' },
+    ],
+  },
+  2: {
+    text: 'Er meldet den Schlüssel bei der Wegfahrsperre an. Ohne angelernten Transponder startet das Fahrzeug nicht; zum Anlernen muss das Fahrzeug vor Ort sein.',
+    links: [{ href: '/autoschluessel/programmieren', label: 'Programmieren und anlernen' }],
+  },
+  3: {
+    text: 'Der Sender öffnet und schließt das Fahrzeug per Taste.',
+    links: [{ href: '/autoschluessel/funkschluessel', label: 'Funkschlüssel' }],
+  },
+  4: {
+    text: 'Bei den meisten Fahrzeugen bleibt die Programmierung beim Batteriewechsel erhalten.',
+    links: [{ href: '/autoschluessel/funkschluessel', label: 'Batteriewechsel' }],
+  },
+  5: {
+    text: 'Bei gebrochenem Gehäuse oder klemmenden Tasten bleibt die vorhandene Elektronik erhalten.',
+    links: [{ href: '/autoschluessel/funkschluessel', label: 'Gehäuse tauschen' }],
+  },
+};
+
+const AUFBAU_LEISTUNGEN = AUFBAU_TEILE.map((teil) => ({ ...teil, ...AUFBAU_TEXTE[teil.nr] }));
+
 export default async function AutoschluesselHubPage() {
+  // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
+  const rubrik = await getRubrik('autoschluessel');
   const [page, settings, makes] = await Promise.all([
     getPageContent(ROUTE),
     getSettings(),
@@ -246,29 +279,8 @@ export default async function AutoschluesselHubPage() {
   const leadDays = settings.booking.leadTimeDays;
   const modelCount = makes.reduce((sum, make) => sum + make.models.length, 0);
 
-  // Der Ablauf ist überall derselbe; Beträge und Vorlauf kommen aus den Einstellungen.
-  const steps = [
-    {
-      title: 'Fahrzeug wählen',
-      body: 'Marke, Modell, Baujahr und Schlüsselart. Wir fragen nur ab, was für Ihr Fahrzeug zählt.',
-    },
-    {
-      title: 'Fotos hochladen',
-      body: 'Ihren Schlüssel aus drei Richtungen und den Fahrzeugschein.',
-    },
-    {
-      title: 'Preis oder Prüfung',
-      body: 'Sie erhalten einen festen Preis, einen Preisrahmen oder den Hinweis auf eine manuelle Prüfung.',
-    },
-    {
-      title: 'Anzahlung',
-      body: `Standard ${deposit}. Der Betrag wird vollständig auf den Gesamtpreis angerechnet.`,
-    },
-    {
-      title: 'Termin buchen',
-      body: `Der früheste Termin liegt etwa ${leadDays}\u00a0Tage in der Zukunft, weil wir Ihren Schlüssel vorher beschaffen.`,
-    },
-  ];
+  // Der Ablauf kommt aus der Rubrik (G-10, G-11); Anzahlung und Vorlauf setzt er aus den Einstellungen ein.
+  const ablaufWerte = { anzahlung: deposit, vorlauf: `${leadDays}\u00a0Tage` };
 
   // Anzahlung und Vorlauf: ein Text, der zweimal ausgegeben wird (Desktop unter den Knöpfen, mobil nach Schritt 5)
   const anzahlungHinweis = (
@@ -282,7 +294,7 @@ export default async function AutoschluesselHubPage() {
           vollständig auf den Gesamtpreis angerechnet. Der Vorlauf von etwa{' '}
           <span className="font-mono tabular-nums text-foreground">{leadDays}</span>
           {'\u00a0'}Tagen entsteht durch die Beschaffung des passenden Schlüssels. Für einzelne Fahrzeuge und Leistungen
-          können abweichende Werte gelten — diese sehen Sie im Ablauf, bevor Sie etwas verbindlich buchen.
+          können abweichende Werte gelten. Diese sehen Sie im Ablauf, bevor Sie etwas verbindlich buchen.
         </p>
       </div>
     </>
@@ -302,12 +314,14 @@ export default async function AutoschluesselHubPage() {
 
       {/* Kopf mit Blickfang (7/5): die vier Schlüsselarten als Zeichnungen, Schriftfeld mit den Eckdaten */}
       <PageHeader
+        rubrik={rubrik}
         bereich="autoschluessel"
         eyebrow="Themenwelt Autoschlüssel"
         title={page?.headline ?? 'Autoschlüssel'}
-        lead={page?.subline ?? 'Nachmachen, programmieren, reparieren — mit klarem Ablauf und festem Termin.'}
+        lead={page?.subline ?? 'Nachmachen, programmieren, reparieren, mit klarem Ablauf und festem Termin.'}
         crumbs={[{ href: '/autoschluessel', label: 'Autoschlüssel' }]}
         visual={<SchluesselartenReihe variante="kopf" />}
+        handlungZuerst
         actions={
           <ButtonLink href="/autoschluessel/anfrage" pfeil prefetch={false} className="whitespace-nowrap">
             {/* Telefon: Kurzlaut, damit der Knopf einzeilig bleibt */}
@@ -321,7 +335,7 @@ export default async function AutoschluesselHubPage() {
             { label: 'Ablauf', wert: PROCESS_LABELS['termin-mit-anzahlung'].label, wort: true },
             { label: 'Anzahlung', wert: deposit },
             { label: 'Vorlauf', wert: `ca. ${leadDays}\u00a0Tage` },
-            { label: 'Erfasste Modelle', wert: String(modelCount) },
+            { label: 'Werkstatt', wert: standort(settings.company)?.city ?? settings.company.city, wort: true },
           ].map((feld, index) => (
             <div
               key={feld.label}
@@ -334,7 +348,7 @@ export default async function AutoschluesselHubPage() {
               <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted max-sm:tracking-label-eng xl:whitespace-nowrap">
                 {feld.label}
               </dt>
-              {/* Werte stehen unten auf einer Grundlinie; Zahlen in Mono, Wortwerte in Inter */}
+              {/* Werte stehen unten auf einer Grundlinie; Zahlen in Mono, Wortwerte in Plex Sans */}
               <dd
                 className={cn(
                   'mt-auto pt-1 text-title-sm font-semibold text-foreground',
@@ -348,71 +362,98 @@ export default async function AutoschluesselHubPage() {
         </dl>
       </PageHeader>
 
-      {/* Abschnitt 01: Einleitung, danach die Begriffsliste mit ruhiger Zeichnung je Bauform */}
-      <Section id="schluesselarten" labelledBy="schluesselarten-titel">
+      {/* Abschnitt 01: Ablauf direkt unter dem Kopf (A-025); Fortschritt läuft mit dem Scrollen (B-03) */}
+      <Section tone="sunken" id="ablauf">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-start">
+            <SectionHeading
+              nummer="01"
+              eyebrow="Ablauf"
+              title={`So läuft Ihr Auftrag ab: ${rubrik?.ablauf.length ?? 5} Schritte zum Termin`}
+              lead={`${page?.intro ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder Preisrahmen. Erst dann buchen Sie einen Termin.'} Ihre Eingaben bleiben erhalten, wenn Sie zwischendurch abbrechen.`}
+            />
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <ButtonLink href="/autoschluessel/anfrage" size="lg" pfeil>
+                Ablauf starten
+              </ButtonLink>
+              <ButtonLink href="/autoschluessel/marken" size="lg" variant="outline">
+                Erst Fahrzeug nachschlagen
+              </ButtonLink>
+            </div>
+            <div className="mt-8 hidden gap-3 border-t border-border pt-5 lg:flex">
+              {anzahlungHinweis}
+            </div>
+          </div>
+
+          {rubrik && (
+            <RubrikAblauf rubrik={rubrik} werte={ablaufWerte} className="lg:col-span-7 lg:col-start-6 lg:row-start-1" />
+          )}
+
+          {/* Anzahlung und Vorlauf als Zeile mit Glyphe: Desktop unter den Knöpfen, mobil nach Schritt 5 */}
+          <div className="flex gap-3 border-t border-border pt-5 lg:hidden">
+            {anzahlungHinweis}
+          </div>
+        </div>
+      </Section>
+
+      {/* Abschnitt 02: Aufbauzeichnung (A-025); die Positionsnummern führen zu den Leistungen */}
+      <Section id="aufbau" labelledBy="aufbau-titel">
         <SectionHeading
-          id="schluesselarten-titel"
-          nummer="01"
-          eyebrow="Schlüsselarten"
-          title="Worum es in diesem Bereich geht"
+          id="aufbau-titel"
+          nummer="02"
+          eyebrow="Aufbau"
+          title="Was in Ihrem Autoschlüssel steckt"
+          lead="Ein Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem mechanischen Bart und der Elektronik. Davon hängen Aufwand, Termin und Preis ab."
         />
-        <div className="mt-6 lg:grid lg:grid-cols-12 lg:gap-gutter">
-          <div className="prose-sm24 max-w-measure lg:col-span-7">
-            <p>
-              {page?.intro
-                ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder '
-                  + 'Preisrahmen. Erst dann buchen Sie einen Termin.'}
-            </p>
-            <p>
-              Ein Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem
-              mechanischen Bart und der Elektronik. Für Ihren Auftrag ist entscheidend, welcher der
-              beiden Teile bearbeitet werden muss — davon hängen Aufwand, Termin und Preis ab.
-            </p>
-            <p>
-              Die folgenden Begriffe führen Sie zu der Seite, die Ihren Fall beschreibt. Wenn Sie
-              unsicher sind, beginnen Sie mit dem geführten Ablauf: Dort fragen wir Schritt für
-              Schritt genau die Angaben ab, die für Ihr Fahrzeug nötig sind.
-            </p>
-          </div>
-
-          {/* Randnotiz rechts neben der Einleitung, unten bündig: führt in die Begriffsliste darunter */}
-          <div className="mt-10 lg:col-span-5 lg:col-start-8 lg:mt-0 lg:self-end lg:border-t lg:border-border lg:pt-5">
-            <h3 className="text-title-sm font-semibold text-foreground">{KEY_KIND_HINT.title}</h3>
-            <p className="mt-2 max-w-measure text-body text-foreground-muted">{KEY_KIND_HINT.body}</p>
-          </div>
-        </div>
-
-        <div className="mt-8">
-          <dl className="border-t border-border">
-            {SCHLUESSELARTEN_BEGRIFFE.map((art) => (
-              <div
-                key={art}
-                className="grid gap-x-6 gap-y-2 border-b border-border py-5 lg:grid-cols-12 lg:items-start"
-              >
-                <dt className="flex items-start gap-4 lg:col-span-5 lg:gap-6">
-                  {art === 'keyless' ? (
-                    // Keyless ist keine Bauform: gleich breiter Platz, damit der Name in der Spalte bleibt
-                    <span aria-hidden className="w-28 shrink-0 sm:w-40" />
-                  ) : (
-                    <SchluesselartZeichnung art={art} className="w-28 shrink-0 sm:w-40" />
-                  )}
-                  <span className="text-title-sm font-semibold text-foreground">{keyKindLabel(art)}</span>
-                </dt>
-                <dd className="max-w-measure text-small text-foreground-muted sm:pl-44 lg:col-span-7 lg:pl-0">
-                  {keyKindDescription(art)}
-                </dd>
-              </div>
+        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <figure className="m-0 lg:col-span-7">
+            <div className="rounded-lg border border-border bg-surface p-3 sm:p-4">
+              <AutoschluesselAufbau />
+            </div>
+            <figcaption className="mt-3 font-mono text-caption text-foreground-muted">
+              Schematische Darstellung, nicht maßstäblich.
+            </figcaption>
+          </figure>
+          <ol className="border-t border-border lg:col-span-5">
+            {AUFBAU_LEISTUNGEN.map((teil) => (
+              <li key={teil.nr} className="flex gap-4 border-b border-border py-5">
+                <span
+                  aria-hidden
+                  className="flex size-7 shrink-0 items-center justify-center rounded-full bg-area font-mono text-small font-semibold text-area-foreground"
+                >
+                  {teil.nr}
+                </span>
+                <div className="min-w-0">
+                  <h3 className="text-title-sm font-semibold text-foreground">{teil.name}</h3>
+                  <p className="mt-1 max-w-measure text-small text-foreground-muted">{teil.text}</p>
+                  <p className="mt-1 flex flex-wrap gap-x-5">
+                    {teil.links.map((link) => (
+                      <Link
+                        key={link.label}
+                        href={link.href}
+                        className="group inline-flex min-h-touch items-center gap-1.5 text-small font-semibold text-primary transition-colors duration-quick hover:text-primary-hover"
+                      >
+                        {link.label}
+                        <Weiter size={16} />
+                      </Link>
+                    ))}
+                  </p>
+                </div>
+              </li>
             ))}
-          </dl>
+          </ol>
         </div>
+        <p className="mt-6 max-w-measure text-small text-foreground-muted">
+          Jedes Teil kann einzeln ausfallen. Deshalb grenzen wir die Ursache ein, bevor wir etwas tauschen.
+        </p>
       </Section>
 
       {/* Leistungsbegriffe als Begriffsliste mit Haarlinien; die ganze Zeile ist der Link */}
       <Section tone="muted" id="leistungen">
         <SectionHeading
-          nummer="02"
+          nummer="03"
           eyebrow="Leistungen"
-          title="Alle Begriffe, sauber getrennt"
+          title="Von Anlernen bis Zweitschlüssel"
           lead="Die Begriffe werden im Alltag oft vermischt. Hier steht, was jeweils gemeint ist und wohin er führt."
         />
 
@@ -462,52 +503,21 @@ export default async function AutoschluesselHubPage() {
         </div>
       </Section>
 
-      {/* Ablauf in fünf Schritten: Fortschritt läuft mit dem Scrollen (B-03) */}
-      <Section tone="sunken" id="ablauf">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
-          <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-start">
-            <SectionHeading
-              nummer="03"
-              eyebrow="Ablauf"
-              title="In fünf Schritten zum Termin"
-              lead="Mobil bedienbar. Ihre Eingaben bleiben erhalten, wenn Sie zwischendurch abbrechen."
-            />
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <ButtonLink href="/autoschluessel/anfrage" size="lg" pfeil>
-                Ablauf starten
-              </ButtonLink>
-              <ButtonLink href="/autoschluessel/marken" size="lg" variant="outline">
-                Erst Fahrzeug nachschlagen
-              </ButtonLink>
-            </div>
-            <div className="mt-8 hidden gap-3 border-t border-border pt-5 lg:flex">
-              {anzahlungHinweis}
-            </div>
-          </div>
-
-          <ol className="relative lg:col-span-7 lg:col-start-6 lg:row-start-1">
-            {/* Schiene und Fortschritt: der Strich füllt sich, während die Schritte vorbeiziehen */}
-            <span aria-hidden className="absolute bottom-6 left-5 top-6 w-px bg-border-strong" />
-            <span aria-hidden className="sm24-scrub-y absolute bottom-6 left-5 top-6 w-px bg-area" />
-            {steps.map((step, index) => (
-              <li key={step.title} className="relative flex gap-6 pb-10 last:pb-0">
-                <span
-                  aria-hidden
-                  className="sm24-scrub-marke relative z-raised flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-area bg-surface font-mono text-small font-semibold tabular-nums text-area-strong"
-                >
-                  {index + 1}
-                </span>
-                <div className="pt-1.5">
-                  <p className="text-title-sm font-semibold text-foreground">{step.title}</p>
-                  <p className="mt-1.5 max-w-measure text-body text-foreground-muted">{step.body}</p>
-                </div>
-              </li>
+      {/* Abschnitt 04: Schlüsselarten als Erklärung; die Zeichnungen stehen schon im Kopf (A-025) */}
+      <Section id="schluesselarten" labelledBy="schluesselarten-titel" tight>
+        <SectionHeading id="schluesselarten-titel" nummer="04" eyebrow="Schlüsselarten" title="Welche Schlüsselart Sie haben" />
+        <div className="mt-8 lg:grid lg:grid-cols-12 lg:gap-gutter">
+          <dl className="grid border-t border-border sm:grid-cols-2 sm:gap-x-gutter lg:col-span-8">
+            {SCHLUESSELARTEN_BEGRIFFE.map((art) => (
+              <div key={art} className="border-b border-border py-5">
+                <dt className="text-title-sm font-semibold text-foreground">{keyKindLabel(art)}</dt>
+                <dd className="mt-1 max-w-measure text-small text-foreground-muted">{keyKindDescription(art)}</dd>
+              </div>
             ))}
-          </ol>
-
-          {/* Anzahlung und Vorlauf als Zeile mit Glyphe: Desktop unter den Knöpfen, mobil nach Schritt 5 */}
-          <div className="flex gap-3 border-t border-border pt-5 lg:hidden">
-            {anzahlungHinweis}
+          </dl>
+          <div className="mt-8 lg:col-span-4 lg:mt-0 lg:border-t lg:border-border lg:pt-5">
+            <h3 className="text-title-sm font-semibold text-foreground">{KEY_KIND_HINT.title}</h3>
+            <p className="mt-2 max-w-measure text-body text-foreground-muted">{KEY_KIND_HINT.body}</p>
           </div>
         </div>
       </Section>
@@ -517,7 +527,7 @@ export default async function AutoschluesselHubPage() {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-gutter">
           <div className="lg:col-span-7">
             <SectionHeading
-              nummer="04"
+              nummer="05"
               eyebrow="Fahrzeuge"
               title="Was für Ihre Marke und Ihr Modell gilt"
               lead={`Zu ${makes.length} Marken und ${modelCount} Modellen haben wir hinterlegt, welche Schlüsselarten vorkommen und ob das Fahrzeug zum Anlernen in die Werkstatt mitkommen muss.`}
@@ -548,7 +558,7 @@ export default async function AutoschluesselHubPage() {
       {/* Fragen */}
       <Section>
         <SectionHeading
-          nummer="05"
+          nummer="06"
           eyebrow="Häufige Fragen"
           title="Was vor dem Auftrag meist offen ist"
           className="max-w-2xl"
@@ -559,16 +569,16 @@ export default async function AutoschluesselHubPage() {
       {/* Weiterführend als Stückliste mit Haarlinien; die ganze Zeile ist der Link */}
       <Section tone="muted" tight>
         <SectionHeading
-          nummer="06"
+          nummer="07"
           eyebrow="Weiterlesen"
-          title="Weiterführende Seiten"
+          title="Zum Nachlesen"
           lead="Passend zum Thema Autoschlüssel."
         />
         <ul className="mt-6 grid border-t border-border md:grid-cols-2 md:gap-x-gutter">
           {[
             { href: '/autoschluessel/anfrage', label: 'Geführter Ablauf', description: 'Fahrzeug wählen, Preis erhalten, Termin buchen' },
             { href: '/autoschluessel/marken', label: 'Marken und Modelle', description: 'Schlüsselarten je Fahrzeug nachschlagen' },
-            { href: '/ratgeber/autoschluessel-verloren-was-tun', label: 'Schlüssel verloren — was tun?', description: 'Die richtige Reihenfolge' },
+            { href: '/ratgeber/autoschluessel-verloren-was-tun', label: 'Schlüssel verloren: was tun?', description: 'Die richtige Reihenfolge' },
             { href: '/ratgeber/unterschied-kopie-und-programmierung', label: 'Kopie oder Programmierung?', description: 'Der Unterschied kurz erklärt' },
             { href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage', description: 'Für Schlüssel ohne Fahrzeugbezug' },
             { href: '/service-und-termin/terminstatus', label: 'Terminstatus', description: 'Stand Ihres Vorgangs abrufen' },

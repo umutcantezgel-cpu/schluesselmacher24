@@ -19,6 +19,8 @@ import type {
   Preisregeln,
   Produkte,
   Ratgeber,
+  Fahrzeugreihen,
+  Rubriken,
   Seiten,
   Sperrtage,
   Vorgaenge,
@@ -50,6 +52,8 @@ import type {
   PricingGroup,
   PricingRule,
   ReferralInfo,
+  FahrzeugReihe,
+  Rubrik,
   SeoFields,
   ServicePage,
   StandardArticle,
@@ -540,6 +544,97 @@ export function fahrzeugmarkeZuPayload(
 
 /* ---------- Inhalte ------------------------------------------------------ */
 
+export function fahrzeugreiheZuSeite(doc: Fahrzeugreihen): FahrzeugReihe {
+  const reihe: FahrzeugReihe = {
+    id: kennung(doc),
+    marke: doc.marke,
+    reihe: doc.reihe,
+    quelle: doc.quelle,
+    klonbar: (doc.klonbar ?? 'unbekannt') as FahrzeugReihe['klonbar'],
+    gehaeuse: (doc.gehaeuse ?? 'unbekannt') as FahrzeugReihe['gehaeuse'],
+    leistungen: (doc.leistungen ?? []) as FahrzeugReihe['leistungen'],
+    sichtbar: doc.sichtbar !== false,
+  };
+  if (doc.kbaName) reihe.kbaName = doc.kbaName;
+  if (doc.segment) reihe.segment = doc.segment;
+  if (typeof doc.bestand === 'number') reihe.bestand = doc.bestand;
+  if (typeof doc.rang === 'number') reihe.rang = doc.rang;
+  if (doc.bestandsModell) reihe.bestandsModell = doc.bestandsModell;
+  if (typeof doc.baujahrVon === 'number') reihe.baujahrVon = doc.baujahrVon;
+  if (typeof doc.baujahrBis === 'number') reihe.baujahrBis = doc.baujahrBis;
+  if (doc.baujahrQuelle) reihe.baujahrQuelle = doc.baujahrQuelle;
+  if (doc.transponder?.typ && doc.transponder.quelle) reihe.transponder = { typ: doc.transponder.typ, quelle: doc.transponder.quelle };
+  const alias = (doc.alias ?? []).map((a) => a.begriff).filter((b): b is string => Boolean(b));
+  if (alias.length) reihe.alias = alias;
+  return reihe;
+}
+
+export function fahrzeugreiheZuPayload(reihe: FahrzeugReihe): RequiredDataFromCollectionSlug<'fahrzeugreihen'> {
+  return {
+    kennung: reihe.id,
+    marke: reihe.marke,
+    reihe: reihe.reihe,
+    kbaName: reihe.kbaName,
+    segment: reihe.segment,
+    bestand: reihe.bestand,
+    rang: reihe.rang,
+    quelle: reihe.quelle,
+    bestandsModell: reihe.bestandsModell,
+    baujahrVon: reihe.baujahrVon,
+    baujahrBis: reihe.baujahrBis,
+    baujahrQuelle: reihe.baujahrQuelle,
+    transponder: reihe.transponder ? { typ: reihe.transponder.typ, quelle: reihe.transponder.quelle } : undefined,
+    klonbar: reihe.klonbar,
+    gehaeuse: reihe.gehaeuse,
+    leistungen: reihe.leistungen,
+    alias: (reihe.alias ?? []).map((begriff) => ({ begriff })),
+    sichtbar: reihe.sichtbar,
+  };
+}
+
+export function rubrikZuSeite(doc: Rubriken): Rubrik {
+  const rubrik: Rubrik = {
+    id: kennung(doc),
+    name: doc.name,
+    laienname: doc.laienname,
+    erklaerung: doc.erklaerung,
+    icon: doc.icon,
+    ziel: doc.ziel,
+    ablauf: (doc.ablauf ?? []).map((s) => ({ titel: s.titel, text: s.text, icon: s.icon })),
+    abschluss: doc.abschluss,
+    pflichtUploads: [...(doc.pflichtUploads ?? [])],
+    nachweis: doc.nachweis,
+    status: doc.status,
+    reihenfolge: doc.reihenfolge,
+    navigation: doc.navigation,
+    imHub: Boolean(doc.imHub),
+    bereich: doc.bereich as AreaKey,
+  };
+  if (doc.zusatz) rubrik.zusatz = doc.zusatz;
+  return rubrik;
+}
+
+export function rubrikZuPayload(rubrik: Rubrik): RequiredDataFromCollectionSlug<'rubriken'> {
+  return {
+    kennung: rubrik.id,
+    name: rubrik.name,
+    laienname: rubrik.laienname,
+    zusatz: rubrik.zusatz ?? null,
+    erklaerung: rubrik.erklaerung,
+    icon: rubrik.icon as Rubriken['icon'],
+    ziel: rubrik.ziel,
+    ablauf: rubrik.ablauf.map((s) => ({ titel: s.titel, text: s.text, icon: s.icon as NonNullable<Rubriken['ablauf']>[number]['icon'] })),
+    abschluss: rubrik.abschluss,
+    pflichtUploads: rubrik.pflichtUploads as Rubriken['pflichtUploads'],
+    nachweis: rubrik.nachweis,
+    status: rubrik.status,
+    reihenfolge: rubrik.reihenfolge,
+    navigation: rubrik.navigation,
+    imHub: rubrik.imHub,
+    bereich: rubrik.bereich,
+  };
+}
+
 export function leistungsseiteZuSeite(doc: Leistungsseiten): ServicePage {
   return {
     id: kennung(doc),
@@ -716,6 +811,20 @@ export function rechtstexteZuSeite(gruppe: RechtstexteGruppe): LegalTexts | unde
   return Object.keys(texte).length ? texte : undefined;
 }
 
+/** Einsenden aus dem Global; fehlende Werte nehmen die Standardwerte (ältere Datenbankstände). */
+function einsendenZuSeite(e: Partial<Record<string, unknown>> | null | undefined): Settings['sendIn'] {
+  const zahl = (wert: unknown, ersatz: number) => (typeof wert === 'number' && Number.isFinite(wert) ? wert : ersatz);
+  return {
+    labelAktiv: e?.labelAktiv === true,
+    aufpreisVersichertCents: zuCent(zahl(e?.aufpreisVersichert, 0)),
+    aufpreisUnversichertCents: zuCent(zahl(e?.aufpreisUnversichert, 0)),
+    portoVersichertCents: zuCent(zahl(e?.portoVersichert, 4.45)),
+    portoUnversichertCents: zuCent(zahl(e?.portoUnversichert, 1.8)),
+    haftungVersichertEuro: zahl(e?.haftungVersichert, 25),
+    portoStand: typeof e?.portoStand === 'string' && e.portoStand ? e.portoStand : 'Deutsche Post, Preise ab 1.1.2026: Einschreiben 4,45 €, Großbrief 1,80 €',
+  };
+}
+
 export function einstellungenZuSeite(doc: Einstellungen): Settings {
   const f = doc.firma;
   const company: Settings['company'] = {
@@ -781,6 +890,7 @@ export function einstellungenZuSeite(doc: Einstellungen): Settings {
       floorPlans: doc.aufbewahrung.grundrisse,
       projectDocuments: doc.aufbewahrung.projektunterlagen,
     },
+    sendIn: einsendenZuSeite(doc.einsenden),
     updatedAt: doc.updatedAt ?? new Date(0).toISOString(),
   };
   if (doc.buchung.bundesland) settings.booking.federalState = doc.buchung.bundesland;
@@ -842,6 +952,17 @@ export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
       lieferzeit: v.deliveryTime,
       produktklassen: v.productClasses,
     })),
+    einsenden: s.sendIn
+      ? {
+          labelAktiv: s.sendIn.labelAktiv,
+          aufpreisVersichert: zuEuro(s.sendIn.aufpreisVersichertCents),
+          aufpreisUnversichert: zuEuro(s.sendIn.aufpreisUnversichertCents),
+          portoVersichert: zuEuro(s.sendIn.portoVersichertCents),
+          portoUnversichert: zuEuro(s.sendIn.portoUnversichertCents),
+          haftungVersichert: s.sendIn.haftungVersichertEuro,
+          portoStand: s.sendIn.portoStand,
+        }
+      : undefined,
     aufbewahrung: {
       fahrzeugschein: s.retentionDays.vehicleRegistration,
       schluesselfotos: s.retentionDays.keyPhotos,

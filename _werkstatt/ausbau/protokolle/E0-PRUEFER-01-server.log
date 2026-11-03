@@ -1,0 +1,91 @@
+▲ Next.js 16.4.3
+- Local:         http://localhost:3000
+- Network:       http://192.0.2.2:3000
+✓ Ready in 134ms
+✓ Running next.config.ts took 43ms
+[21:33:16] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: connect ECONNREFUSED 127.0.0.1:5432[39m
+    err: {
+      "type": "Error",
+      "message": "connect ECONNREFUSED 127.0.0.1:5432",
+      "stack":
+          Error: connect ECONNREFUSED 127.0.0.1:5432
+              at /home/user/schluesselmacher24/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async m (/home/user/schluesselmacher24/.next/server/chunks/ssr/_1-7i3k425a51h._.js:1:334)
+              at async Object.n [as connect] (/home/user/schluesselmacher24/.next/server/chunks/ssr/_1-7i3k425a51h._.js:1:576)
+              at async aY.init (/home/user/schluesselmacher24/.next/server/chunks/ssr/_1-7i3k425a51h._.js:141:8570)
+              at async a_ (/home/user/schluesselmacher24/.next/server/chunks/ssr/_1-7i3k425a51h._.js:141:13207)
+              at async /home/user/schluesselmacher24/.next/server/chunks/ssr/_1kjp5_sxm97mb._.js:1:4794
+      "errno": -111,
+      "code": "ECONNREFUSED",
+      "syscall": "connect",
+      "address": "127.0.0.1",
+      "port": 5432
+    }
+⨯ unhandledRejection: undefined
+⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:5432
+    at Object.n [as connect] (.next/server/chunks/ssr/_1-7i3k425a51h._.js:1:1719)
+    at async aY.init (.next/server/chunks/ssr/_1-7i3k425a51h._.js:141:8570)
+    at async a_ (.next/server/chunks/ssr/_1-7i3k425a51h._.js:141:13207)
+    at async (.next/server/chunks/ssr/_1kjp5_sxm97mb._.js:1:4794) {
+  payloadInitError: true,
+  digest: '966632145'
+}
+[21:33:16] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: connect ECONNREFUSED 127.0.0.1:5432[39m
+    err: {
+      "type": "Error",
+      "message": "connect ECONNREFUSED 127.0.0.1:5432",
+      "stack":
+          Error: connect ECONNREFUSED 127.0.0.1:5432
+              at /home/user/schluesselmacher24/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async m (/home/user/schluesselmacher24/.next/server/chunks/ssr/_1-7i3k425a51h._.js:1:334)
+              at async Object.n [as connect] (/home/user/schluesselmacher24/.next/server/chunks/ssr/_1-7i3k425a51h._.js:1:576)
+              at async aY.init (/home/user/schluesselmacher24/.next/server/chunks/ssr/_1-7i3k425a51h._.js:141:8570)
+              at async a_ (/home/user/schluesselmacher24/.next/server/chunks/ssr/_1-7i3k425a51h._.js:141:13207)
+              at async /home/user/schluesselmacher24/.next/server/chunks/ssr/_1kjp5_sxm97mb._.js:1:4794
+      "errno": -111,
+      "code": "ECONNREFUSED",
+      "syscall": "connect",
+      "address": "127.0.0.1",
+      "port": 5432
+    }
+⨯ unhandledRejection: undefined
+⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:5432
+    at Object.n [as connect] (.next/server/chunks/ssr/_1-7i3k425a51h._.js:1:1719)
+    at async aY.init (.next/server/chunks/ssr/_1-7i3k425a51h._.js:141:8570)
+    at async a_ (.next/server/chunks/ssr/_1-7i3k425a51h._.js:141:13207)
+    at async (.next/server/chunks/ssr/_1kjp5_sxm97mb._.js:1:4794) {
+  payloadInitError: true,
+  digest: '966632145'
+}
+[21:33:16] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: connect ECONNREFUSED 127.0.0.1:5432[39m
+    err: {
+      "type": "Error",
+      "message": "connect ECONNREFUSED 127.0.0.1:5432",
+      "stack":
+          Error: connect ECONNREFUSED 127.0.0.1:5432
+              at /home/user/schluesselmacher24/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async m (/home/user/schluesselmacher24/.next/server/chunks/ssr/_1-7i3k425a51h._.js:1:334)
+              at async Object.n [as connect] (/home/user/schluesselmacher24/.next/server/chunks/ssr/_1-7i3k425a51h._.js:1:576)
+              at async aY.init (/home/user/schluesselmacher24/.next/server/chunks/ssr/_1-7i3k425a51h._.js:141:8570)
+              at async a_ (/home/user/schluesselmacher24/.next/server/chunks/ssr/_1-7i3k425a51h._.js:141:13207)
+              at async /home/user/schluesselmacher24/.next/server/chunks/ssr/_1kjp5_sxm97mb._.js:1:4794
+      "errno": -111,
+      "code": "ECONNREFUSED",
+      "syscall": "connect",
+      "address": "127.0.0.1",
+      "port": 5432
+    }
+⨯ unhandledRejection: undefined
+⨯ Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:5432
+    at Object.n [as connect] (.next/server/chunks/ssr/_1-7i3k425a51h._.js:1:1719)
+    at async aY.init (.next/server/chunks/ssr/_1-7i3k425a51h._.js:141:8570)
+    at async a_ (.next/server/chunks/ssr/_1-7i3k425a51h._.js:141:13207)
+    at async (.next/server/chunks/ssr/_1kjp5_sxm97mb._.js:1:4794) {
+  payloadInitError: true,
+  digest: '966632145'
+}
+
+Session terminated, killing shell... ...killed.

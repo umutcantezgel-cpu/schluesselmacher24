@@ -1,0 +1,32 @@
+| Ansicht | Gerät | S1 Schrift | S2 Farbe | S3 Verlauf/Glas | S4 Icon/Emoji | S5 Gleichförmigkeit | S6 Raster | S7 Welle | S8 Einblendung | Slop-Index |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H01-start | mobil | 1 (Inter 102x) | 3 (rgb(192,69,211) lila; rgb(242,201,248) lila) | 7 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 78 %) | 0 | 0 | 1 (data-motion=play auf 7 von 7) | 13 |
+| H01-start | desktop | 1 (Inter 112x) | 3 (rgb(192,69,211) lila; rgb(242,201,248) lila) | 7 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 81 %) | 0 | 0 | 1 (data-motion=play auf 7 von 7) | 13 |
+| H02-autoschluessel | mobil | 1 (Inter 136x) | 0 | 7 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 67 %) | 4 (ul.mt-5.border-t (4); ul.mt-5.border-t (3)) | 0 | 1 (data-motion=play auf 6 von 6) | 14 |
+| H02-autoschluessel | desktop | 1 (Inter 138x) | 0 | 7 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 72 %) | 4 (ul.mt-5.border-t (4); ul.mt-5.border-t (3)) | 0 | 1 (data-motion=play auf 6 von 6) | 14 |
+| H03-modell-golf | mobil | 1 (Inter 127x) | 0 | 10 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 79 %) | 0 | 0 | 1 (data-motion=play auf 8 von 8) | 13 |
+| H03-modell-golf | desktop | 1 (Inter 129x) | 0 | 10 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 83 %) | 0 | 0 | 1 (data-motion=play auf 8 von 8) | 13 |
+| H04-autoschluessel-anfrage | mobil | 1 (Inter 70x) | 0 | 2 (p.eyebrow::before; p.eyebrow::before) | 0 | 0 | 0 | 0 | 1 (data-motion=play auf 1 von 1) | 4 |
+| H04-autoschluessel-anfrage | desktop | 1 (Inter 88x) | 0 | 2 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 44 %) | 0 | 0 | 1 (data-motion=play auf 1 von 1) | 5 |
+| H05-code | mobil | 1 (Inter 125x) | 0 | 14 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 92 %) | 0 (div.grid.gap-12 (10)) | 0 | 0 | 16 |
+| H05-code | desktop | 1 (Inter 132x) | 0 | 14 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 93 %) | 0 (div.grid.gap-12 (10)) | 0 | 0 | 16 |
+| H06-code-produkt | mobil | 1 (Inter 108x) | 0 | 6 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 62 %) | 0 (div.divide-y.divide-border (4)) | 0 | 1 (data-motion=play auf 1 von 1) | 9 |
+| H06-code-produkt | desktop | 1 (Inter 110x) | 0 | 6 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 67 %) | 0 (div.divide-y.divide-border (4)) | 0 | 1 (data-motion=play auf 1 von 1) | 9 |
+| H07-foto | mobil | 1 (Inter 97x) | 0 | 7 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 70 %) | 0 (div.divide-y.divide-border (7)) | 0 | 1 (data-motion=play auf 6 von 6) | 10 |
+| H07-foto | desktop | 1 (Inter 99x) | 0 | 7 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 77 %) | 0 (div.divide-y.divide-border (7)) | 0 | 1 (data-motion=play auf 6 von 6) | 10 |
+| H08-einschicken | mobil | 1 (Inter 71x) | 0 | 5 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 57 %) | 0 (div.divide-y.divide-border (3)) | 0 | 1 (data-motion=play auf 4 von 4) | 8 |
+| H08-einschicken | desktop | 1 (Inter 73x) | 0 | 5 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 70 %) | 0 (div.divide-y.divide-border (3)) | 0 | 1 (data-motion=play auf 4 von 4) | 8 |
+| H09-sperrschliessung-konfigurator | mobil | 1 (Inter 87x) | 0 | 2 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 48 %) | 0 | 0 | 1 (data-motion=play auf 2 von 2) | 5 |
+| H09-sperrschliessung-konfigurator | desktop | 1 (Inter 97x) | 0 | 2 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 54 %) | 0 | 0 | 1 (data-motion=play auf 2 von 2) | 5 |
+| H10-schliessanlagen | mobil | 1 (Inter 137x) | 4 (rgb(242,201,248) lila; rgb(153,56,168) lila) | 7 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 63 %) | 0 (div.divide-y.divide-border (10)) | 0 | 1 (data-motion=play auf 7 von 7) | 14 |
+| H10-schliessanlagen | desktop | 1 (Inter 144x) | 4 (rgb(242,201,248) lila; rgb(153,56,168) lila) | 7 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 67 %) | 0 (div.divide-y.divide-border (10)) | 0 | 1 (data-motion=play auf 7 von 7) | 14 |
+| H11-schliessanlagen-konfigurator | mobil | 1 (Inter 72x) | 1 (rgb(153,56,168) lila) | 2 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 55 %) | 0 | 0 | 1 (data-motion=play auf 2 von 2) | 6 |
+| H11-schliessanlagen-konfigurator | desktop | 1 (Inter 88x) | 1 (rgb(153,56,168) lila) | 2 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 61 %) | 0 | 0 | 1 (data-motion=play auf 2 von 2) | 6 |
+| H12-partner-werden | mobil | 1 (Inter 79x) | 0 | 4 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 62 %) | 0 | 0 | 1 (data-motion=play auf 3 von 3) | 7 |
+| H12-partner-werden | desktop | 1 (Inter 89x) | 0 | 4 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 68 %) | 0 | 0 | 1 (data-motion=play auf 3 von 3) | 7 |
+| H13-kasse | mobil | 1 (Inter 48x) | 0 | 2 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 80 %) | 0 | 0 | 1 (data-motion=play auf 1 von 2) | 5 |
+| H13-kasse | desktop | 1 (Inter 54x) | 0 | 2 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 81 %) | 0 | 0 | 1 (data-motion=wait auf 1 von 2) | 5 |
+| H14-ratgeber-messen | mobil | 1 (Inter 53x) | 0 | 1 (p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 72 %) | 0 | 0 | 0 | 3 |
+| H14-ratgeber-messen | desktop | 1 (Inter 55x) | 0 | 1 (p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 91 %) | 0 | 0 | 0 | 3 |
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/slopscan-2026-11-02_23-39-14.json

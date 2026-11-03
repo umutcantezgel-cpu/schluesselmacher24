@@ -1,0 +1,23 @@
+{
+  "skript": "bild",
+  "zeit": "2026-11-02T22:14:54.422Z",
+  "argumente": {
+    "_": [
+      "/autoschluessel"
+    ],
+    "geraet": "mobil"
+  },
+  "pfad": "/autoschluessel",
+  "reduziert": false,
+  "eintraege": [
+    {
+      "geraet": "mobil",
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/bilder/arbeit/autoschluessel__mobil.jpg",
+      "status": 200,
+      "bytes": 29256,
+      "breite": 390,
+      "hoehe": 844,
+      "ganz": false
+    }
+  ]
+}

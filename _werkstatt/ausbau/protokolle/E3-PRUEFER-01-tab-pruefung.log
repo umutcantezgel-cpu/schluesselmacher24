@@ -1,0 +1,45 @@
+{
+  "seitenBreite": 360,
+  "fenster": 360,
+  "reiter": [
+    {
+      "text": "Am Schlüsselkopf",
+      "links": 20,
+      "rechts": 168,
+      "fensterBreite": 360,
+      "ausserhalb": false,
+      "scroller": {
+        "overflowX": "auto",
+        "scrollWidth": 552,
+        "clientWidth": 360,
+        "klasse": "-mx-5 snap-x snap-mandatory overflow-x-auto px-5 pb-2 scroll-px-5 sm:-mx-6 sm:px"
+      }
+    },
+    {
+      "text": "Auf der Sicherungskarte",
+      "links": 168,
+      "rechts": 362,
+      "fensterBreite": 360,
+      "ausserhalb": true,
+      "scroller": {
+        "overflowX": "auto",
+        "scrollWidth": 552,
+        "clientWidth": 360,
+        "klasse": "-mx-5 snap-x snap-mandatory overflow-x-auto px-5 pb-2 scroll-px-5 sm:-mx-6 sm:px"
+      }
+    },
+    {
+      "text": "Auf der Zylinderstirn",
+      "links": 362,
+      "rechts": 530,
+      "fensterBreite": 360,
+      "ausserhalb": true,
+      "scroller": {
+        "overflowX": "auto",
+        "scrollWidth": 552,
+        "clientWidth": 360,
+        "klasse": "-mx-5 snap-x snap-mandatory overflow-x-auto px-5 pb-2 scroll-px-5 sm:-mx-6 sm:px"
+      }
+    }
+  ]
+}

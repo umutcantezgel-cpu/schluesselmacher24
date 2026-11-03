@@ -1,0 +1,109 @@
+{
+  "skript": "funktionsliste",
+  "zeit": "2026-11-02T21:59:56.722Z",
+  "argumente": {
+    "_": [],
+    "nur": "F-08,F-09,F-10,F-11,F-12,F-13,F-14",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-funktionsliste-f08-f14-json.log",
+    "md": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-funktionsliste-f08-f14-md.log"
+  },
+  "server": "http://localhost:3000",
+  "records": {
+    "vorher": false,
+    "nachher": false
+  },
+  "serverlog": {
+    "neuZeichen": 0,
+    "treffer": 0
+  },
+  "ergebnisse": [
+    {
+      "id": "F-08",
+      "funktion": "Terminstatus abfragen",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Rückmeldung erscheint: „Nichts gefundenZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.“",
+      "messwert": null,
+      "dauer_ms": 1630,
+      "attrappen": []
+    },
+    {
+      "id": "F-09",
+      "funktion": "Cookie-Einstellungen speichern und löschen",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "nach Speichern gesetzt: ja ({\"notwendig\":true,\"statistik\":false,\"komfort\":false,\"updatedAt\":\"2026-11-02T21:5); nach Löschen entfernt: ja; aktiver Schalter umgelegt: nein (Komfort und Statistik deaktiviert)",
+      "messwert": null,
+      "dauer_ms": 1204,
+      "attrappen": []
+    },
+    {
+      "id": "F-10",
+      "funktion": "Zwischenspeicherung in Abläufen („Weitermachen“)",
+      "geraet": "mobil",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Zwischenstand im Browser: ja; nach Neuladen „Weitermachen“: ja (Schritt 1: Foto der Vorderseite: weiter)",
+      "messwert": null,
+      "dauer_ms": 1835,
+      "attrappen": [
+        {
+          "art": "action-unbekannt",
+          "methode": "POST",
+          "url": "/schluessel-nach-vorlage/anfrage",
+          "laenge": 2
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "action-unbekannt",
+          "methode": "POST",
+          "url": "/schluessel-nach-vorlage/anfrage",
+          "laenge": 2
+        }
+      ]
+    },
+    {
+      "id": "F-11",
+      "funktion": "Navigation: Megamenü, mobiler Drawer, Sprunglink, mobile Aktionsleiste",
+      "geraet": "mobil",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Sprunglink ist erstes Ziel nach Tab: ja (Zum Inhalt springen); Sprunglink springt nach #inhalt: ja (#inhalt); Mobiler Drawer öffnet: ja; Mobiler Drawer schließt: ja; Mobile Aktionsleiste sichtbar (390 px): ja; Megamenü öffnet (aria-expanded): ja; Megamenü zeigt Link: ja; Megamenü schließt: ja",
+      "messwert": null,
+      "dauer_ms": 2952,
+      "attrappen": []
+    },
+    {
+      "id": "F-12",
+      "funktion": "robots.txt, sitemap.xml, llms.txt, JSON-LD",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "sitemap.xml 200, 181 <loc>; robots.txt 200, 5 Disallow; llms.txt 200; JSON-LD Start 1, MS-01 3",
+      "messwert": null,
+      "dauer_ms": 1880,
+      "attrappen": []
+    },
+    {
+      "id": "F-13",
+      "funktion": "Rechner Türabsicherung und Serviceeinsatz",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "/tuer-und-schliesstechnik: 2 Auswahl(en), Ergebnisbereich ändert sich · /service-und-termin: 2 Auswahl(en), Ergebnisbereich ändert sich",
+      "messwert": null,
+      "dauer_ms": 5592,
+      "attrappen": []
+    },
+    {
+      "id": "F-14",
+      "funktion": "Shop-Filter und Liste der Codelinien",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "sichtbare Einträge 72 → 16 (Filter Schlüsseltyp)",
+      "messwert": "72 → 16",
+      "dauer_ms": 1717,
+      "attrappen": []
+    }
+  ]
+}

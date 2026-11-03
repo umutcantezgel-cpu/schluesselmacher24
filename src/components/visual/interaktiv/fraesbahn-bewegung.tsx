@@ -87,7 +87,7 @@ export function abhebenSchluesselbilder(wert: string | null | undefined): Keyfra
  * Großer Moment B-01: Der Fräser der Grafik `profilschnitt` fährt die Bahn ab,
  * exakt im Takt der CSS-Zeichnung des Profils, und hebt danach ab.
  *
- * Start bei Sichtbarkeit: Die Hülle trägt `data-motion` („wait“ auf dem Server);
+ * Start bei Sichtbarkeit: Die Hülle trägt `data-motion="B-01"` und `data-zustand` („wait“ auf dem Server);
  * die CSS-Regel aus `globals.css` hält bis dahin alle `.sm24-*`-Animationen der
  * Grafik am Anfang. Sobald die Hälfte der Grafik sichtbar ist, spielt alles von
  * vorn. Ohne JavaScript spielt die Zeichnung beim Laden, bei „Bewegung
@@ -172,7 +172,7 @@ export function FraesbahnBewegung({ children, className }: { children: ReactNode
   }, [zustand]);
 
   return (
-    <div ref={ref} data-motion={zustand} className={cn(className)}>
+    <div ref={ref} data-motion="B-01" data-zustand={zustand} className={cn(className)}>
       {children}
     </div>
   );

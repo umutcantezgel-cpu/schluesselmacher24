@@ -1,0 +1,359 @@
+{
+  "skript": "funktionsliste",
+  "zeit": "2026-11-02T23:35:22.432Z",
+  "argumente": {
+    "_": [],
+    "tastatur": true,
+    "nur": "F-04,F-05,F-11",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-funktionsliste-tastatur-vorher.json"
+  },
+  "server": "http://localhost:3000",
+  "records": {
+    "vorher": false,
+    "nachher": false
+  },
+  "serverlog": {
+    "neuZeichen": 0,
+    "treffer": 0
+  },
+  "ergebnisse": [
+    {
+      "id": "F-04",
+      "funktion": "Autoschlüssel-Assistent: Schritte, Fotos, Preis, Termin, Absenden",
+      "geraet": "mobil",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Absenden als Attrappe erreicht; 13 Schritte: Welche Marke hat Ihr Fahrzeug?: weiter → Welches Modell fahren Sie?: weiter → Baujahr beziehungsweise Erstzulassung: weiter → Weitere Fahrzeugdaten (freiwillig): weiter → Welche Schlüsselart haben Sie?: weiter → Wie viele funktionierende Schlüssel haben Sie noch?: weiter → Was sollen wir für Sie tun?: weiter → Fotos Ihres Schlüssels: weiter → Zulassungsbescheinigung Teil I: weiter → Wie erreichen wir Sie?: weiter → Preis für Ihren Fall: weiter → Anzahlung: weiter → Termin auswählen: letzter",
+      "messwert": null,
+      "dauer_ms": 60831,
+      "attrappen": [
+        {
+          "art": "action-unbekannt",
+          "methode": "POST",
+          "url": "/autoschluessel/anfrage",
+          "laenge": 2
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "action-unbekannt",
+          "methode": "POST",
+          "url": "/autoschluessel/anfrage",
+          "laenge": 2
+        },
+        {
+          "art": "action-schreibend",
+          "methode": "POST",
+          "url": "/autoschluessel/anfrage",
+          "laenge": 3066
+        }
+      ],
+      "tastatur": [
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Volkswagen6 Modelle“",
+          "tabs": 7,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 18,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Golfab 2003“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 18,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Liste",
+          "ziel": "select[select-one] „Jahr* (Pflichtangabe)“",
+          "tabs": 28,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 37,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Schlüssel mit Transponder im KopfMechanischer Schl“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 23,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Kein funktionierender SchlüsselAlle Schlüssel sind“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 28,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Zweitschlüssel anfertigenEin zusätzlicher Schlüsse“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 24,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 38,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 5,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Datei (Dialog)",
+          "ziel": "button[button] „Foto aufnehmen“",
+          "tabs": 27,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Ich bin berechtigt, für dieses Fahrzeug einen Schl“",
+          "tabs": 4,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Vorname* (Pflichtangabe)“",
+          "tabs": 33,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Nachname* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[email] „E-Mail-Adresse* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[tel] „Telefonnummer* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Postleitzahl* (Pflichtangabe)“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Eingabe",
+          "ziel": "input[text] „Ort* (Pflichtangabe)“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 5,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 18,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Ich habe verstanden, dass eine Anzahlung von 69,90“",
+          "tabs": 8,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Ich habe die AGB gelesen und die Widerrufsbelehrun“",
+          "tabs": 3,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Haken",
+          "ziel": "input[checkbox] „Ich verlange ausdrücklich, dass Sie vor Ablauf der“",
+          "tabs": 1,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 2,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[button] „09:00 UhrDauer 1 Std.“",
+          "tabs": 60,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Zahlungspflichtig buchen“",
+          "tabs": 8,
+          "fokusSichtbar": true
+        }
+      ]
+    },
+    {
+      "id": "F-05",
+      "funktion": "Zylinder-Konfigurator in den Warenkorb",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Warenkorb gespeichert mit 1 Eintrag/Einträgen, Seite nicht leer; Schritte: Zylinder zusammenstellen: weiter → Gemeinsame Schlüssel: weiter → Schutz und Optionen: weiter → Spätere Erweiterung: weiter → Prüfen und in den Warenkorb legen: letzter",
+      "messwert": "Attrappen: 0",
+      "dauer_ms": 4421,
+      "attrappen": [],
+      "tastatur": [
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 29,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Auswahl",
+          "ziel": "input[radio] „Ja, Schließung hinterlegen+ 15,00 € einmaligSpäter“",
+          "tabs": 46,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „Weiter“",
+          "tabs": 5,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[submit] „In den Warenkorb“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        }
+      ]
+    },
+    {
+      "id": "F-11",
+      "funktion": "Navigation: Megamenü, mobiler Drawer, Sprunglink, mobile Aktionsleiste",
+      "geraet": "mobil",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Sprunglink ist erstes Ziel nach Tab: ja (Zum Inhalt springen); Sprunglink springt nach #inhalt: ja (#inhalt); Mobiler Drawer öffnet: ja; Mobiler Drawer schließt: ja; Mobile Aktionsleiste sichtbar (390 px): ja; Megamenü öffnet (aria-expanded): ja; Megamenü zeigt Link: ja; Megamenü schließt: ja",
+      "messwert": null,
+      "dauer_ms": 4056,
+      "attrappen": [],
+      "tastatur": [
+        {
+          "art": "Aktivieren",
+          "ziel": "button[button] „Menü öffnen“",
+          "tabs": 55,
+          "fokusSichtbar": true
+        },
+        {
+          "art": "Aktivieren",
+          "ziel": "button[button] „Menü schließen“",
+          "tabs": 0,
+          "fokusSichtbar": true
+        }
+      ]
+    }
+  ]
+}

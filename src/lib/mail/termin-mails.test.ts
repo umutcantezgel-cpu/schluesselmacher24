@@ -87,7 +87,7 @@ describe('Termin-Erinnerung', () => {
 
 describe('Kalendereintrag zur Erinnerung', () => {
   const anhang = terminKalender({ vorgang: termin(), kontext }, new Date('2026-10-26T02:17:00.000Z'));
-  const entfaltet = anhang.inhalt.replace(/\r\n /g, '');
+  const entfaltet = String(anhang.inhalt).replace(/\r\n /g, '');
 
   it('Datei, Typ und Kennung je Vorgang', () => {
     expect(anhang.dateiname).toBe('termin-SM24-T-2026-0007.ics');

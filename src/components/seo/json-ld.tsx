@@ -311,7 +311,7 @@ export function breadcrumbSchema(crumbs: Array<{ href: string; label: string }>,
       {
         '@type': 'BreadcrumbList',
         '@id': `${pageUrl}/#breadcrumb`,
-        itemListElement: [{ href: '/', label: 'Start' }, ...crumbs].map((crumb, index) => ({
+        itemListElement: [{ href: '/', label: 'Startseite' }, ...crumbs].map((crumb, index) => ({
           '@type': 'ListItem',
           position: index + 1,
           name: crumb.label,
@@ -375,7 +375,7 @@ export function pageGraphSchema(input: {
     graph.push({
       '@type': 'BreadcrumbList',
       '@id': `${pageUrl}#breadcrumb`,
-      itemListElement: [{ href: '/', label: 'Start' }, ...input.crumbs].map((crumb, index) => ({
+      itemListElement: [{ href: '/', label: 'Startseite' }, ...input.crumbs].map((crumb, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         name: crumb.label,

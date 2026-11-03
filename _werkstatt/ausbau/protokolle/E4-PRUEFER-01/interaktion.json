@@ -1,0 +1,592 @@
+{
+  "zeit": "2026-11-03T10:18:25.488Z",
+  "A_B32": {
+    "geraet": "desktop 1440×900",
+    "startZustand": {
+      "schleife": "an",
+      "phase": "a"
+    },
+    "laufWechsel13s": 2,
+    "labelStart": "Animation anhalten",
+    "nachPause": {
+      "schleife": "aus",
+      "phase": "a",
+      "label": "Animation fortsetzen"
+    },
+    "haltWechsel7s": 0,
+    "labelNachFortsetzen": "Animation anhalten",
+    "nachFortsetzen": {
+      "schleife": "an",
+      "phase": "a"
+    },
+    "laufWechselNachFortsetzen13s": 2,
+    "ruhig": {
+      "bewegung": "ruhig",
+      "schleife": "aus",
+      "knopfe": 0,
+      "wechselInRuhe7s": 0
+    },
+    "wiederAnNachScrollen": {
+      "schleife": "an",
+      "phase": "a"
+    },
+    "attrappen": 0
+  },
+  "B_B35": [
+    {
+      "geraet": "mobil",
+      "eingabe": "Tipp",
+      "rubrik": "autoschluessel",
+      "ziel": "/autoschluessel",
+      "urlNachher": "http://localhost:3000/autoschluessel",
+      "fokus": {
+        "tag": "H1",
+        "id": "seiten-titel",
+        "text": "Autoschlüssel"
+      },
+      "fokusAufH1": true,
+      "attrappen": 0
+    },
+    {
+      "geraet": "desktop",
+      "eingabe": "Klick",
+      "rubrik": "autoschluessel",
+      "ziel": "/autoschluessel",
+      "urlNachher": "http://localhost:3000/autoschluessel",
+      "fokus": {
+        "tag": "H1",
+        "id": "seiten-titel",
+        "text": "Autoschlüssel"
+      },
+      "fokusAufH1": true,
+      "attrappen": 0
+    }
+  ],
+  "C_G08": [
+    {
+      "breite": 1024,
+      "knoepfe": 5,
+      "sichtbareKnoepfe": 4,
+      "beschriftungen": [
+        "Autoschlüssel",
+        "Nach Code",
+        "Sperrschließungen",
+        "Schließanlagen",
+        "Mehr"
+      ],
+      "zeilen": 1,
+      "maxHoehe": 44,
+      "umbrueche": 0,
+      "headerHoehe": 81,
+      "menueKnopfAnzeige": "none",
+      "gruppenGeoeffnet": 5,
+      "zustaende": [
+        {
+          "gruppe": "Autoschlüssel",
+          "megamenue": {
+            "hoehe": 589,
+            "links": 13,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        },
+        {
+          "gruppe": "Nach Code",
+          "megamenue": {
+            "hoehe": 281,
+            "links": 8,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        },
+        {
+          "gruppe": "Sperrschließungen",
+          "megamenue": {
+            "hoehe": 318,
+            "links": 7,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        },
+        {
+          "gruppe": "Schließanlagen",
+          "megamenue": {
+            "hoehe": 340,
+            "links": 7,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        },
+        {
+          "gruppe": "Mehr",
+          "megamenue": {
+            "hoehe": 336,
+            "links": 9,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        }
+      ]
+    },
+    {
+      "breite": 1280,
+      "knoepfe": 5,
+      "sichtbareKnoepfe": 5,
+      "beschriftungen": [
+        "Autoschlüssel",
+        "Nach Code",
+        "Sperrschließungen",
+        "Schließanlagen",
+        "Mehr"
+      ],
+      "zeilen": 1,
+      "maxHoehe": 44,
+      "umbrueche": 0,
+      "headerHoehe": 81,
+      "menueKnopfAnzeige": "none",
+      "gruppenGeoeffnet": 5,
+      "zustaende": [
+        {
+          "gruppe": "Autoschlüssel",
+          "megamenue": {
+            "hoehe": 544,
+            "links": 13,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        },
+        {
+          "gruppe": "Nach Code",
+          "megamenue": {
+            "hoehe": 259,
+            "links": 8,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        },
+        {
+          "gruppe": "Sperrschließungen",
+          "megamenue": {
+            "hoehe": 318,
+            "links": 7,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        },
+        {
+          "gruppe": "Schließanlagen",
+          "megamenue": {
+            "hoehe": 318,
+            "links": 7,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        },
+        {
+          "gruppe": "Mehr",
+          "megamenue": {
+            "hoehe": 314,
+            "links": 9,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        }
+      ]
+    },
+    {
+      "breite": 1440,
+      "knoepfe": 5,
+      "sichtbareKnoepfe": 5,
+      "beschriftungen": [
+        "Autoschlüssel",
+        "Nach Code",
+        "Sperrschließungen",
+        "Schließanlagen",
+        "Mehr"
+      ],
+      "zeilen": 1,
+      "maxHoehe": 44,
+      "umbrueche": 0,
+      "headerHoehe": 81,
+      "menueKnopfAnzeige": "none",
+      "gruppenGeoeffnet": 5,
+      "zustaende": [
+        {
+          "gruppe": "Autoschlüssel",
+          "megamenue": {
+            "hoehe": 544,
+            "links": 13,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        },
+        {
+          "gruppe": "Nach Code",
+          "megamenue": {
+            "hoehe": 259,
+            "links": 8,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        },
+        {
+          "gruppe": "Sperrschließungen",
+          "megamenue": {
+            "hoehe": 318,
+            "links": 7,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        },
+        {
+          "gruppe": "Schließanlagen",
+          "megamenue": {
+            "hoehe": 318,
+            "links": 7,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        },
+        {
+          "gruppe": "Mehr",
+          "megamenue": {
+            "hoehe": 291,
+            "links": 9,
+            "oben": 80,
+            "sichtbar": true
+          },
+          "zeilenBeiOffenemMenue": 1,
+          "axe": {
+            "verstoesse": 0,
+            "stellen": 0,
+            "ernst": 0,
+            "je": {},
+            "regeln": []
+          }
+        }
+      ]
+    }
+  ],
+  "D_schublade": [
+    {
+      "geraet": "mobil",
+      "schublade": {
+        "rolle": "dialog",
+        "modal": "true",
+        "links": 6,
+        "sichtbar": true
+      },
+      "axe": {
+        "verstoesse": 0,
+        "stellen": 0,
+        "ernst": 0,
+        "je": {},
+        "regeln": []
+      }
+    },
+    {
+      "geraet": "tablet",
+      "schublade": {
+        "rolle": "dialog",
+        "modal": "true",
+        "links": 6,
+        "sichtbar": true
+      },
+      "axe": {
+        "verstoesse": 0,
+        "stellen": 0,
+        "ernst": 0,
+        "je": {},
+        "regeln": []
+      }
+    },
+    {
+      "geraet": "breite-1024",
+      "menueKnopfAnzeige": "none"
+    },
+    {
+      "geraet": "breite-1440",
+      "menueKnopfAnzeige": "none"
+    }
+  ],
+  "E_aktionsleiste": [
+    {
+      "geraet": "mobil-klein",
+      "viewport": [
+        360,
+        780
+      ],
+      "leiste": {
+        "vorhanden": true,
+        "sichtbar": true,
+        "oben": 724,
+        "unten": 780,
+        "beschriftungen": [
+          "Autoschlüssel",
+          "Nach Code",
+          "Termin anfragen",
+          "Anrufen"
+        ],
+        "anruf": [
+          {
+            "text": "Anrufen",
+            "href": "tel:+4964418056279",
+            "sichtbar": true,
+            "unten": 780
+          }
+        ],
+        "fensterHoehe": 780
+      }
+    },
+    {
+      "geraet": "mobil",
+      "viewport": [
+        390,
+        844
+      ],
+      "leiste": {
+        "vorhanden": true,
+        "sichtbar": true,
+        "oben": 788,
+        "unten": 844,
+        "beschriftungen": [
+          "Autoschlüssel",
+          "Nach Code",
+          "Termin anfragen",
+          "Anrufen"
+        ],
+        "anruf": [
+          {
+            "text": "Anrufen",
+            "href": "tel:+4964418056279",
+            "sichtbar": true,
+            "unten": 844
+          }
+        ],
+        "fensterHoehe": 844
+      }
+    },
+    {
+      "geraet": "tablet",
+      "viewport": [
+        768,
+        1024
+      ],
+      "leiste": {
+        "vorhanden": true,
+        "sichtbar": false,
+        "oben": 0,
+        "unten": 0,
+        "beschriftungen": [
+          "Autoschlüssel",
+          "Nach Code",
+          "Termin anfragen",
+          "Anrufen"
+        ],
+        "anruf": [
+          {
+            "text": "Anrufen",
+            "href": "tel:+4964418056279",
+            "sichtbar": false,
+            "unten": 0
+          }
+        ],
+        "fensterHoehe": 1024
+      }
+    }
+  ],
+  "F_fahrzeugsuche": [
+    {
+      "geraet": "mobil",
+      "suchbegriff": "vw golf",
+      "treffer": [
+        "Volkswagen GolfPreis und Termin online"
+      ],
+      "erstesGeklickt": "Volkswagen GolfPreis und Termin online",
+      "ueberschriften": [
+        "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+        "Baujahr beziehungsweise Erstzulassung",
+        "Passende Seiten zu diesem Ablauf"
+      ],
+      "fuehrtZumBaujahr": true,
+      "urlNachher": "http://localhost:3000/autoschluessel/anfrage",
+      "attrappenArten": {
+        "action-unbekannt": 1
+      }
+    },
+    {
+      "geraet": "desktop",
+      "suchbegriff": "vw golf",
+      "treffer": [
+        "Volkswagen GolfPreis und Termin online"
+      ],
+      "erstesGeklickt": "Volkswagen GolfPreis und Termin online",
+      "ueberschriften": [
+        "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+        "Baujahr beziehungsweise Erstzulassung",
+        "Passende Seiten zu diesem Ablauf"
+      ],
+      "fuehrtZumBaujahr": true,
+      "urlNachher": "http://localhost:3000/autoschluessel/anfrage",
+      "attrappenArten": {
+        "action-unbekannt": 1
+      }
+    }
+  ],
+  "G_schalter": {
+    "schalterImFuss": {
+      "imFuss": true,
+      "sichtbar": true
+    },
+    "start": {
+      "bewegung": "an",
+      "gespeichert": null,
+      "laufend": 6,
+      "b31": 0,
+      "startKlasse": false,
+      "pressed": "true",
+      "schleife": "an"
+    },
+    "nachKlickRuhig": {
+      "bewegung": "ruhig",
+      "gespeichert": "ruhig",
+      "laufend": 0,
+      "b31": 0,
+      "startKlasse": false,
+      "pressed": "false",
+      "schleife": "aus"
+    },
+    "nachSekundenRuhig": {
+      "laufend": 0,
+      "schleife": "aus"
+    },
+    "nachKlickAnUndScrollenOben": {
+      "bewegung": "an",
+      "gespeichert": "an",
+      "laufend": 7,
+      "b31": 0,
+      "startKlasse": false,
+      "pressed": "true",
+      "schleife": "an"
+    },
+    "attrappen": 0
+  },
+  "G_reduziert_mobil": {
+    "bewegung": "ruhig",
+    "b31": 0,
+    "pauseKnoepfe": 0,
+    "schleife": "aus"
+  }
+}

@@ -28,7 +28,8 @@ import {
 import { betriebRueckrufEmpfohlen } from '@/lib/mail/vorlagen/team-hinweis';
 import { onlineZahlarten } from '@/lib/rechtliches/zahlarten';
 import type { BusinessRecord, MailLogEntry, Settings } from '@/lib/types';
-import { mailKonfiguration } from '@/lib/umgebung';
+import type { MailAnhang } from '@/lib/mail/transport-resend';
+import { mailKonfiguration, mitDatenbank } from '@/lib/umgebung';
 import type { ZahlungsMail } from '@/lib/zahlung/uebergaenge';
 
 /* ==========================================================================
@@ -76,6 +77,28 @@ async function protokollieren(id: string, eintraege: MailLogEntry[], verlauf?: s
 
 /* ---------- Neuer Vorgang ----------------------------------------------- */
 
+/**
+ * Vorgangsblatt als PDF für die Betriebsmail (G-37): mit Vorschaubildern, wenn die Datenbank läuft
+ * (Fahrzeugscheine nur als Eintrag, A-015). Ein Fehler kostet nur den Anhang, nie die Mail.
+ */
+export async function vorgangsblattAnhang(vorgang: BusinessRecord, settings: Settings): Promise<MailAnhang[] | undefined> {
+  try {
+    const { erzeugePdf } = await import('@/lib/pdf/erzeuge-pdf');
+    const { vorgangsblattDateiname, vorgangsblattInhalt } = await import('@/lib/pdf/vorgangsblatt');
+    let bilder: Awaited<ReturnType<typeof import('@/lib/pdf/vorschaubilder').ladeVorschaubilder>> = [];
+    if (mitDatenbank()) {
+      const { payloadInstanz } = await import('@/lib/data/payload-adapter');
+      const { ladeVorschaubilder } = await import('@/lib/pdf/vorschaubilder');
+      bilder = await ladeVorschaubilder(await payloadInstanz(), vorgang.uploads);
+    }
+    const daten = await erzeugePdf(vorgangsblattInhalt({ vorgang, firma: settings.company, bilder }));
+    return [{ dateiname: vorgangsblattDateiname(vorgang.reference), inhalt: daten, typ: 'application/pdf' }];
+  } catch (error) {
+    console.error('[benachrichtigung] Vorgangsblatt nicht erzeugt', error);
+    return undefined;
+  }
+}
+
 export interface NeuerVorgangMail {
   /** Stand nach dem Start der Zahlung (mit Ablaufzeit der Reservierung). */
   saved: BusinessRecord;
@@ -85,10 +108,10 @@ export interface NeuerVorgangMail {
 }
 
 /**
- * Eingangsbestätigung an den Kunden und Benachrichtigung an den Betrieb —
- * parallel. Auf die Kundenmail wird gewartet (höchstens 8 s), damit ein
- * Fehler als Hinweis erscheint; die Betriebsmail läuft nach der Antwort zu
- * Ende. Liefert die Hinweise für den Kunden.
+ * Eingangsbestätigung an den Kunden und Benachrichtigung an den Betrieb. Auf
+ * die Kundenmail wird gewartet (höchstens 8 s), damit ein Fehler als Hinweis
+ * erscheint; die Betriebsmail mit dem Vorgangsblatt als PDF (G-37) entsteht
+ * und läuft nach der Antwort. Liefert die Hinweise für den Kunden.
  */
 export async function benachrichtigeNeuerVorgang({ saved, token, settings }: NeuerVorgangMail): Promise<string[]> {
   if (!mailKonfiguration()) return [MAIL_NICHT_EINGERICHTET];
@@ -103,15 +126,7 @@ export async function benachrichtigeNeuerVorgang({ saved, token, settings }: Neu
   });
 
   const teamAn = teamEmpfaenger(settings.company);
-  const team = teamAn.length
-    ? sendeVorlage({
-        art: 'eingang-team',
-        an: teamAn,
-        inhalt: betriebNeuerVorgang({ vorgang: saved, adminUrl: adminLink(saved.id), kontext }),
-        idempotenzSchluessel: idempotenzSchluessel(saved.reference, 'eingang-team'),
-      })
-    : null;
-  if (!team) console.warn('[benachrichtigung] Keine Adresse für Betriebsmails (MAIL_TEAM_ADDRESS fehlt).');
+  if (!teamAn.length) console.warn('[benachrichtigung] Keine Adresse für Betriebsmails (MAIL_TEAM_ADDRESS fehlt).');
 
   const [kundeErgebnis] = await Promise.allSettled([kunde]);
   const eintrag = kundeErgebnis.status === 'fulfilled' ? kundeErgebnis.value : null;
@@ -121,9 +136,18 @@ export async function benachrichtigeNeuerVorgang({ saved, token, settings }: Neu
     eintrag?.result === 'gesendet' ? 'Eingangsbestätigung per E-Mail versendet.' : undefined,
   );
 
-  if (team) {
+  if (teamAn.length) {
     await nachDerAntwort(async () => {
-      const [teamErgebnis] = await Promise.allSettled([team]);
+      const anhaenge = await vorgangsblattAnhang(saved, settings);
+      const [teamErgebnis] = await Promise.allSettled([
+        sendeVorlage({
+          art: 'eingang-team',
+          an: teamAn,
+          inhalt: betriebNeuerVorgang({ vorgang: saved, adminUrl: adminLink(saved.id), kontext }),
+          idempotenzSchluessel: idempotenzSchluessel(saved.reference, 'eingang-team'),
+          anhaenge,
+        }),
+      ]);
       if (teamErgebnis.status === 'fulfilled') await protokollieren(saved.id, [teamErgebnis.value]);
     });
   }

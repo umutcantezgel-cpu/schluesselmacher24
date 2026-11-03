@@ -184,7 +184,27 @@ export interface Settings {
   };
   /** Nur gesetzt, wenn im Backend mindestens ein Eigentext hinterlegt ist. */
   legalTexts?: LegalTexts;
+  /** Einsenden von Schlüsseln (G-24, A-010). Fehlt in älteren Ständen; dann gelten die Standardwerte. */
+  sendIn?: EinsendeEinstellungen;
   updatedAt: string;
+}
+
+/**
+ * Einsenden von Schlüsseln (G-24, G-25, A-010, MA-08, MA-18). Ohne Retourenlabel bekommt der
+ * Kunde einen Begleitschein und frankiert selbst; die Seite nennt dann das Porto der Post als
+ * Empfehlung und verspricht nichts „kostenlos“ (R9).
+ */
+export interface EinsendeEinstellungen {
+  /** Retourenlabel des Versanddienstleisters aktiv (erst mit Vertrag und Zugang; MA-08). */
+  labelAktiv: boolean;
+  /** Aufpreise, die der Kunde für die Einsendung zahlt (Cent, 0 = keiner). */
+  aufpreisVersichertCents: number;
+  aufpreisUnversichertCents: number;
+  /** Portoempfehlung ohne Retourenlabel (Cent) mit Haftung und Stand der Preisliste. */
+  portoVersichertCents: number;
+  portoUnversichertCents: number;
+  haftungVersichertEuro: number;
+  portoStand: string;
 }
 
 export interface ShippingOption {
@@ -563,7 +583,8 @@ export interface UploadRef {
   sizeBytes: number;
   mimeType: string;
   /** Kategorie, damit Aufbewahrungsfristen greifen. */
-  category: 'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto';
+  /** Art der Unterlage; Sicherungskarte und Vollmacht sind Berechtigungsnachweise (R13, E3-OPUS-09). */
+  category: 'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto' | 'sicherungskarte' | 'vollmacht';
   /**
    * Kennung der gespeicherten Kundendatei. Leer, wenn die Datei nicht
    * hochgeladen werden konnte — dann ist sie nur als Absicht vermerkt.
@@ -893,6 +914,96 @@ export interface ServicePage {
   ctaLabel: string;
   seo: SeoFields;
   active: boolean;
+}
+
+/* ---------- Rubriken (Intent-Hub, Navigation, Abläufe) ------------------- */
+
+/** Wie ein Weg endet (KERN K-014): Kasse, Anfrage, Termin mit Anzahlung, Angebot mit Zahlungslink oder Beratung. */
+/* ---------- Fahrzeugkatalog (G-14, G-17, G-18, A-009) ---------- */
+
+export type Klonbarkeit = 'unbekannt' | 'bestaetigt' | 'nein';
+export type GehaeuseStand = 'unbekannt' | 'verfuegbar' | 'nicht-verfuegbar';
+export type FahrzeugLeistung = 'nachmachen' | 'programmieren' | 'gehaeuse-tausch' | 'transponder-kopie';
+
+/** Eine Modellreihe des Katalogs (KBA FZ 12 oder Bestand), mit Quelle je Angabe. */
+export interface FahrzeugReihe {
+  id: string;
+  marke: string;
+  reihe: string;
+  /** Name in der KBA-Statistik, etwa „VW GOLF, JETTA“. */
+  kbaName?: string;
+  segment?: string;
+  /** Fahrzeuge im Bestand laut KBA (Gewicht für die Suche, Abdeckung Z-07). */
+  bestand?: number;
+  rang?: number;
+  /** Herkunft der Zeile, etwa „KBA FZ 12, Stand 1.1.2026“ oder „Bestand: content/vehicles.json“. */
+  quelle: string;
+  /** Verweis auf ein gepflegtes Modell des Bestands („volkswagen/golf“): nur dann Preise und Schlüsselarten. */
+  bestandsModell?: string;
+  /** Bauzeitraum nur mit Quelle; sonst wählt der Kunde das Baujahr (A-009). */
+  baujahrVon?: number;
+  baujahrBis?: number;
+  baujahrQuelle?: string;
+  transponder?: { typ: string; quelle: string };
+  /** Klonbarkeit erscheint nur nach Bestätigung im Bogen KLONBAR (G-18). */
+  klonbar: Klonbarkeit;
+  gehaeuse: GehaeuseStand;
+  leistungen: FahrzeugLeistung[];
+  /** Weitere Suchbegriffe, etwa „Golf Variant“. */
+  alias?: string[];
+  sichtbar: boolean;
+}
+
+export type RubrikAbschluss = 'kasse' | 'anfrage' | 'termin-anzahlung' | 'angebot-zahlungslink' | 'beratung';
+
+/** Sichtbarkeit: live im Hub und in der Navigation, später (vorbereitet, unsichtbar) oder aus. */
+export type RubrikStatus = 'live' | 'spaeter' | 'aus';
+
+/** Gruppe der Hauptnavigation nach G-08. */
+export type RubrikNavigation = 'autoschluessel' | 'code' | 'sperrschliessung' | 'schliessanlagen' | 'mehr';
+
+/** Berechtigungsnachweis eines Wegs (R13). */
+export type RubrikNachweis = 'keiner' | 'fahrzeugschein' | 'sicherungskarte';
+
+/** Ein Schritt in „So läuft Ihr Auftrag ab“ (G-10). */
+export interface RubrikSchritt {
+  titel: string;
+  text: string;
+  /** Schlüssel eines Fach-Icons oder einer Glyphe (KERN K-008). */
+  icon: string;
+}
+
+/**
+ * Eine Rubrik: Einstieg im Hub, Eintrag in der Navigation, Ablauf und Abschluss
+ * eines Wegs (G-01 bis G-03, G-10, G-11, G-38). Eine neue Rubrik entsteht als
+ * Datensatz, ohne Umbau der Seite.
+ */
+export interface Rubrik {
+  /** Kennung, zugleich Schlüssel in Navigation und Messung. */
+  id: string;
+  /** Fachlicher Name, etwa für Seitentitel. */
+  name: string;
+  /** Name auf der Kachel, höchstens zwei kurze Zeilen. */
+  laienname: string;
+  /** Laienerklärung, die immer mit dem Namen erscheint (G-09), etwa „ein Schlüssel für alle Türen“. */
+  zusatz?: string;
+  /** Ein Satz, was hier passiert (ab Tablet auf der Kachel, auf der Rubrikseite immer). */
+  erklaerung: string;
+  icon: string;
+  /** Ziel des Tipps auf die Kachel. */
+  ziel: string;
+  ablauf: RubrikSchritt[];
+  abschluss: RubrikAbschluss;
+  /** Upload-Kategorien, die der Weg verlangt (serverseitig geprüft, E3-OPUS-09). */
+  pflichtUploads: string[];
+  nachweis: RubrikNachweis;
+  status: RubrikStatus;
+  /** Reihenfolge im Hub und in der Navigation (kleiner zuerst). */
+  reihenfolge: number;
+  navigation: RubrikNavigation;
+  imHub: boolean;
+  /** Bereich für Farbe und Vorgänge. */
+  bereich: AreaKey;
 }
 
 /* ---------- Konfigurator-Definitionen ----------------------------------- */

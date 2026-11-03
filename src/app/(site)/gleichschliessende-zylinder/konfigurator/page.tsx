@@ -83,7 +83,7 @@ export default async function CylinderConfiguratorPage() {
                 </span>
                 <GlyphPfeilRechts
                   size={18}
-                  className="shrink-0 text-foreground-muted transition duration-quick ease-standard motion-reduce:transition-none group-hover:text-primary group-focus-visible:text-primary zeiger:group-hover:translate-x-1"
+                  className="shrink-0 text-foreground-muted transition duration-quick ease-standard ruhig:transition-none group-hover:text-primary group-focus-visible:text-primary zeiger:group-hover:translate-x-1"
                 />
               </Link>
             </li>

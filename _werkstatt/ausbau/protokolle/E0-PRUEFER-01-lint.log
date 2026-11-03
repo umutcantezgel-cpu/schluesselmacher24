@@ -1,0 +1,9 @@
+
+> schluesselmacher24@0.1.0 lint
+> eslint .
+
+
+real	0m23.904s
+user	0m43.714s
+sys	0m2.198s
+EXIT=0

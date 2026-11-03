@@ -1,0 +1,28 @@
+{
+  "skript": "kontaktbogen",
+  "zeit": "2026-11-02T22:15:21.825Z",
+  "argumente": {
+    "_": [],
+    "bilder": "/home/user/schluesselmacher24/_werkstatt/ausbau/bilder/arbeit/start__mobil.jpg,/home/user/schluesselmacher24/_werkstatt/ausbau/bilder/arbeit/autoschluessel__mobil.jpg",
+    "ziel": "/home/user/schluesselmacher24/_werkstatt/ausbau/bilder/arbeit/E0-PRUEFER-03-kontaktbogen.jpg",
+    "spalten": "2",
+    "titel": "Probelauf Kontaktbogen E0-PRUEFER-03"
+  },
+  "ziel": "/home/user/schluesselmacher24/_werkstatt/ausbau/bilder/arbeit/E0-PRUEFER-03-kontaktbogen.jpg",
+  "spalten": 2,
+  "titel": "Probelauf Kontaktbogen E0-PRUEFER-03",
+  "bilder": [
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/bilder/arbeit/start__mobil.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/bilder/arbeit/autoschluessel__mobil.jpg",
+      "geladen": true
+    }
+  ],
+  "breite": 1440,
+  "hoehe": 900,
+  "bytes": 29518,
+  "nichtGeladen": []
+}

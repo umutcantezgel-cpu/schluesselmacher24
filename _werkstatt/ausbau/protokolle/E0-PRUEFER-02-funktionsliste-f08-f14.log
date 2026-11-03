@@ -1,0 +1,20 @@
+    · „Foto der Vorderseite“ in 0.2 s
+# Funktionsliste (E0-PRUEFER-04)
+
+Lauf: 2026-11-02T21:59:56.722Z · Server http://localhost:3000 · Bestanden 7 von 7
+
+| F-Nr. | Funktion | Ergebnis | Begründung oder Messwert | Dauer |
+|---|---|---|---|---|
+| F-08 | Terminstatus abfragen | BESTANDEN | Rückmeldung erscheint: „Nichts gefundenZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.“ | 1.6 s |
+| F-09 | Cookie-Einstellungen speichern und löschen | BESTANDEN | nach Speichern gesetzt: ja ({"notwendig":true,"statistik":false,"komfort":false,"updatedAt":"2026-11-02T21:5); nach Löschen entfernt: ja; aktiver Schalter umgelegt: nein (Komfort und Statistik deaktiviert) | 1.2 s |
+| F-10 | Zwischenspeicherung in Abläufen („Weitermachen“) | BESTANDEN | Zwischenstand im Browser: ja; nach Neuladen „Weitermachen“: ja (Schritt 1: Foto der Vorderseite: weiter) | 1.8 s |
+| F-11 | Navigation: Megamenü, mobiler Drawer, Sprunglink, mobile Aktionsleiste | BESTANDEN | Sprunglink ist erstes Ziel nach Tab: ja (Zum Inhalt springen); Sprunglink springt nach #inhalt: ja (#inhalt); Mobiler Drawer öffnet: ja; Mobiler Drawer schließt: ja; Mobile Aktionsleiste sichtbar (390 px): ja; Megamenü öffnet (aria-expanded): ja; Megamenü zeigt Link: ja; Megamenü schließt: ja | 3.0 s |
+| F-12 | robots.txt, sitemap.xml, llms.txt, JSON-LD | BESTANDEN | sitemap.xml 200, 181 <loc>; robots.txt 200, 5 Disallow; llms.txt 200; JSON-LD Start 1, MS-01 3 | 1.9 s |
+| F-13 | Rechner Türabsicherung und Serviceeinsatz | BESTANDEN | /tuer-und-schliesstechnik: 2 Auswahl(en), Ergebnisbereich ändert sich · /service-und-termin: 2 Auswahl(en), Ergebnisbereich ändert sich | 5.6 s |
+| F-14 | Shop-Filter und Liste der Codelinien | BESTANDEN | sichtbare Einträge 72 → 16 (Filter Schlüsseltyp) | 1.7 s |
+
+Vorher/Nachher: content/records.json vorhanden nein → nein; Serverlog neu 0 Zeichen, Treffer Vorgang/Anfrage/POST: 0
+
+Markdown: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-funktionsliste-f08-f14-md.log
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-funktionsliste-f08-f14-json.log
+Exit: 0

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getCollection, getPageContent, getSettings, getVehicleMakes } from '@/lib/data';
+import { getCollection, getFahrzeugkatalog, getPageContent, getSettings, getVehicleMakes } from '@/lib/data';
 import { jahrInBerlin } from '@/lib/berliner-zeit';
 import { paymentStatus } from '@/lib/integrations';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -9,6 +9,7 @@ import { werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { katalogIndex } from '@/components/autoschluessel/fahrzeug-ziel';
 import { Assistent } from './assistent';
 
 const ROUTE = 'autoschluessel/anfrage';
@@ -65,13 +66,16 @@ const RELATED_LINKS = [
 export default async function AutoschluesselAnfragePage(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const [searchParams, page, makes, services, settings] = await Promise.all([
+  const [searchParams, page, makes, services, settings, fahrzeugkatalog] = await Promise.all([
     props.searchParams,
     getPageContent(ROUTE),
     getVehicleMakes(),
     getCollection('carKeyServices'),
     getSettings(),
+    getFahrzeugkatalog(),
   ]);
+  // Schlanker Index des KBA-Katalogs für die Fahrzeugsuche im Browser (G-14).
+  const katalog = katalogIndex(fahrzeugkatalog);
 
   // Vorbelegung aus ?marke= und ?modell= nur übernehmen, wenn sie zu den
   // gepflegten Fahrzeugdaten passt.
@@ -92,6 +96,7 @@ export default async function AutoschluesselAnfragePage(props: {
         eyebrow={PROCESS_LABELS['termin-mit-anzahlung'].label}
         art="arbeit"
         title={page?.headline ?? FALLBACK_TITLE}
+        leadClassName="max-sm:hidden"
         lead={
           page?.subline
           ?? 'Sie geben Schritt für Schritt an, welches Fahrzeug und welchen Schlüssel Sie haben. '
@@ -107,6 +112,7 @@ export default async function AutoschluesselAnfragePage(props: {
       <div className="shell py-8 md:py-12">
         <Assistent
           makes={makes}
+          katalog={katalog}
           services={services.filter((entry) => entry.active)}
           paymentConfigured={payment.configured}
           retentionDays={{
@@ -144,7 +150,7 @@ export default async function AutoschluesselAnfragePage(props: {
                 </span>
                 <GlyphPfeilRechts
                   size={18}
-                  className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary"
+                  className="shrink-0 text-foreground-muted transition-transform duration-quick ease-standard ruhig:transition-none zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary"
                 />
               </Link>
             </li>

@@ -1,0 +1,1110 @@
+{
+  "skript": "a11y",
+  "zeit": "2026-11-02T23:51:37.358Z",
+  "argumente": {
+    "_": [],
+    "geraet": "beide",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-a11y.json"
+  },
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            ".block:nth-child(4) > .hover\\:text-primary.tabular-nums[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".block:nth-child(4) > .hover\\:text-primary.tabular-nums[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            ".block:nth-child(4) > .hover\\:text-primary.tabular-nums[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".block:nth-child(4) > .hover\\:text-primary.tabular-nums[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            ".block:nth-child(4) > .hover\\:text-primary.tabular-nums[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".block:nth-child(4) > .hover\\:text-primary.tabular-nums[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            ".block:nth-child(4) > .hover\\:text-primary.tabular-nums[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".block:nth-child(4) > .hover\\:text-primary.tabular-nums[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 1,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 1,
+      "stellen": 1,
+      "details": [
+        {
+          "regel": "target-size",
+          "impact": "serious",
+          "hilfe": "All touch targets must be 24px large, or leave sufficient space",
+          "ziele": [
+            "a[href=\"tel:+4964418056279\"]"
+          ]
+        }
+      ],
+      "verstoesse": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "help": "All touch targets must be 24px large, or leave sufficient space",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/target-size?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "a[href=\"tel:+4964418056279\"]"
+              ],
+              "html": "<a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums transition-colors duration-quick hover:text-primary\">06441 8056279</a>"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

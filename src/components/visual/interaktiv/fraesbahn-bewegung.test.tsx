@@ -104,6 +104,6 @@ describe('abhebenSchluesselbilder', () => {
 describe('FraesbahnBewegung', () => {
   it('wartet auf dem Server, bis die Grafik sichtbar ist', () => {
     const html = renderToStaticMarkup(<FraesbahnBewegung className="grafik">Inhalt</FraesbahnBewegung>);
-    expect(html).toBe('<div data-motion="wait" class="grafik">Inhalt</div>');
+    expect(html).toBe('<div data-motion="B-01" data-zustand="wait" class="grafik">Inhalt</div>');
   });
 });

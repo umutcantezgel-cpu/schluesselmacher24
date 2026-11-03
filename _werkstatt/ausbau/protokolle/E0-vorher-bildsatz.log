@@ -1,0 +1,88 @@
+| Ansicht | Gerät | Ausschnitte | Überlauf | Befunde |
+|---|---|---|---|---|
+| H01-start | mobil-klein | 10 von 10 | nein | 73: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.shell > div.grid > ol.-mx-5 > li.flex; über den rechten Rand ol.-mx-5 > li.flex > div.contents > a.group |
+| H01-start | mobil | 10 von 10 | nein | 73: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.shell > div.grid > ol.-mx-5 > li.flex; über den rechten Rand ol.-mx-5 > li.flex > div.contents > a.group |
+| H01-start | tablet | 7 von 7 | nein | 3: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40; über den rechten Rand div.order-2 > div.hidden > svg.block > path.stroke-area-muted40 |
+| H01-start | desktop | 7 von 7 | nein | 2: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.h-auto > path.stroke-area-muted40 |
+| H01-start | breit | 6 von 6 | nein | – |
+| H02-autoschluessel | mobil-klein | 14 von 14 | nein | 84: über den rechten Rand div.lgcol-span-5 > figure > ol.-mx-5 > li.flex; über den rechten Rand figure > ol.-mx-5 > li.flex > p.font-mono; über den rechten Rand figure > ol.-mx-5 > li.flex > div.sm24-reveal |
+| H02-autoschluessel | mobil | 12 von 12 | nein | 84: über den rechten Rand div.lgcol-span-5 > figure > ol.-mx-5 > li.flex; über den rechten Rand figure > ol.-mx-5 > li.flex > p.font-mono; über den rechten Rand figure > ol.-mx-5 > li.flex > div.sm24-reveal |
+| H02-autoschluessel | tablet | 9 von 9 | nein | 2: über den rechten Rand li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40 |
+| H02-autoschluessel | desktop | 8 von 8 | nein | – |
+| H02-autoschluessel | breit | 7 von 7 | nein | – |
+| H03-modell-golf | mobil-klein | 15 von 15 | nein | 4: über den rechten Rand div.smmx-auto > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40 |
+| H03-modell-golf | mobil | 13 von 13 | nein | 4: über den rechten Rand div.smmx-auto > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40 |
+| H03-modell-golf | tablet | 9 von 9 | nein | 2: über den rechten Rand div.smmx-auto > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40 |
+| H03-modell-golf | desktop | 8 von 8 | nein | 1: über den rechten Rand div.smmx-auto > div.relative > svg.block > path.stroke-area-muted40 |
+| H03-modell-golf | breit | 7 von 7 | nein | – |
+| H04-autoschluessel-anfrage | mobil-klein | 5 von 5 | nein | – |
+| H04-autoschluessel-anfrage | mobil | 5 von 5 | nein | – |
+| H04-autoschluessel-anfrage | tablet | 3 von 3 | nein | – |
+| H04-autoschluessel-anfrage | desktop | 3 von 3 | nein | – |
+| H04-autoschluessel-anfrage | breit | 3 von 3 | nein | – |
+| H05-code | mobil-klein | 15 von 15 | nein | 7: über den rechten Rand div.lgcol-span-5 > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40; über den rechten Rand div.min-w-0 > nav.sticky > ul.relative > li.shrink-0; über den rechten Rand nav.sticky > ul.relative > li.shrink-0 > a.inline-flex |
+| H05-code | mobil | 14 von 14 | nein | 7: über den rechten Rand div.lgcol-span-5 > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40; über den rechten Rand div.min-w-0 > nav.sticky > ul.relative > li.shrink-0; über den rechten Rand nav.sticky > ul.relative > li.shrink-0 > a.inline-flex |
+| H05-code | tablet | 9 von 9 | nein | 1: über den rechten Rand div.lgcol-span-5 > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40 |
+| H05-code | desktop | 9 von 9 | nein | 1: über den rechten Rand div.lgcol-span-5 > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40 |
+| H05-code | breit | 7 von 7 | nein | – |
+
+Bilder: 215 in /home/user/schluesselmacher24/_werkstatt/ausbau/bilder/arbeit/vorher
+JSON-Protokoll: /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/bildsatz-teil1.json
+
+| Ansicht | Gerät | Ausschnitte | Überlauf | Befunde |
+|---|---|---|---|---|
+| H06-code-produkt | mobil-klein | 11 von 11 | nein | 6: über den rechten Rand figure.m-0 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand figure.rounded-lg > div > svg.block > path.stroke-area-muted40; über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40 |
+| H06-code-produkt | mobil | 10 von 10 | nein | 6: über den rechten Rand figure.m-0 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand figure.rounded-lg > div > svg.block > path.stroke-area-muted40; über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40 |
+| H06-code-produkt | tablet | 7 von 7 | nein | 3: über den rechten Rand figure.m-0 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand figure.rounded-lg > div > svg.block > path.stroke-area-muted40; über den rechten Rand div#_R_11lav5ubrivb_-panel > div > svg.block > path.stroke-area-muted40 |
+| H06-code-produkt | desktop | 6 von 6 | nein | 1: über den rechten Rand figure.m-0 > div.relative > svg.block > path.stroke-area-muted40 |
+| H06-code-produkt | breit | 5 von 5 | nein | – |
+| H07-foto | mobil-klein | 14 von 14 | nein | 5: über den rechten Rand div.lgcol-span-5 > div.rounded-lg > svg.block > path.stroke-area-muted40; über den rechten Rand div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40 |
+| H07-foto | mobil | 13 von 13 | nein | 5: über den rechten Rand div.lgcol-span-5 > div.rounded-lg > svg.block > path.stroke-area-muted40; über den rechten Rand div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40 |
+| H07-foto | tablet | 8 von 8 | nein | 3: über den rechten Rand div.lgcol-span-5 > div.rounded-lg > svg.block > path.stroke-area-muted40; über den rechten Rand div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40 |
+| H07-foto | desktop | 8 von 8 | nein | 1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40 |
+| H07-foto | breit | 7 von 7 | nein | – |
+| H08-einschicken | mobil-klein | 8 von 8 | nein | – |
+| H08-einschicken | mobil | 7 von 7 | nein | – |
+| H08-einschicken | tablet | 5 von 5 | nein | – |
+| H08-einschicken | desktop | 4 von 4 | nein | – |
+| H08-einschicken | breit | 4 von 4 | nein | – |
+| H09-sperrschliessung-konfigurator | mobil-klein | 7 von 7 | nein | 1: über den rechten Rand figure.sm24-ruhig > div.animate-schleier-ein > svg.block > path.stroke-area-muted40 |
+| H09-sperrschliessung-konfigurator | mobil | 7 von 7 | nein | 1: über den rechten Rand figure.sm24-ruhig > div.animate-schleier-ein > svg.block > path.stroke-area-muted40 |
+| H09-sperrschliessung-konfigurator | tablet | 4 von 4 | nein | 1: über den rechten Rand figure.sm24-ruhig > div.animate-schleier-ein > svg.h-auto > path.stroke-area-muted40 |
+| H09-sperrschliessung-konfigurator | desktop | 4 von 4 | nein | 1: über den rechten Rand figure.sm24-ruhig > div.animate-schleier-ein > svg.h-auto > path.stroke-area-muted40 |
+| H09-sperrschliessung-konfigurator | breit | 4 von 4 | nein | – |
+| H10-schliessanlagen | mobil-klein | 14 von 14 | nein | 59: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand button#_R_98lubrivb_-system-haupt; über den rechten Rand button#_R_98lubrivb_-system-generalhaupt |
+| H10-schliessanlagen | mobil | 13 von 13 | nein | 60: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand button#_R_98lubrivb_-system-haupt; über den rechten Rand button#_R_98lubrivb_-system-generalhaupt |
+| H10-schliessanlagen | tablet | 10 von 10 | nein | 4: über den rechten Rand div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40; über den rechten Rand div > div.hidden > svg.block > path.stroke-area-muted40; über den rechten Rand div.-mx-5 > div.relative > svg.absolute > path.stroke-area-muted40 |
+| H10-schliessanlagen | desktop | 9 von 9 | nein | 3: über den rechten Rand div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40; über den rechten Rand div > div.hidden > svg.block > path.stroke-area-muted40; über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40 |
+| H10-schliessanlagen | breit | 8 von 8 | nein | – |
+
+Bilder: 197 in /home/user/schluesselmacher24/_werkstatt/ausbau/bilder/arbeit/vorher
+JSON-Protokoll: /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/bildsatz-teil2.json
+
+| Ansicht | Gerät | Ausschnitte | Überlauf | Befunde |
+|---|---|---|---|---|
+| H11-schliessanlagen-konfigurator | mobil-klein | 6 von 6 | nein | – |
+| H11-schliessanlagen-konfigurator | mobil | 5 von 5 | nein | – |
+| H11-schliessanlagen-konfigurator | tablet | 3 von 3 | nein | – |
+| H11-schliessanlagen-konfigurator | desktop | 4 von 4 | nein | – |
+| H11-schliessanlagen-konfigurator | breit | 3 von 3 | nein | – |
+| H12-partner-werden | mobil-klein | 8 von 8 | nein | – |
+| H12-partner-werden | mobil | 7 von 7 | nein | – |
+| H12-partner-werden | tablet | 5 von 5 | nein | – |
+| H12-partner-werden | desktop | 5 von 5 | nein | – |
+| H12-partner-werden | breit | 4 von 4 | nein | – |
+| H13-kasse | mobil-klein | 4 von 4 | nein | – |
+| H13-kasse | mobil | 4 von 4 | nein | – |
+| H13-kasse | tablet | 2 von 2 | nein | – |
+| H13-kasse | desktop | 2 von 2 | nein | – |
+| H13-kasse | breit | 2 von 2 | nein | – |
+| H14-ratgeber-messen | mobil-klein | 5 von 5 | nein | 1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40 |
+| H14-ratgeber-messen | mobil | 5 von 5 | nein | 1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40 |
+| H14-ratgeber-messen | tablet | 3 von 3 | nein | 1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40 |
+| H14-ratgeber-messen | desktop | 3 von 3 | nein | 1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40 |
+| H14-ratgeber-messen | breit | 2 von 2 | nein | – |
+
+Bilder: 82 in /home/user/schluesselmacher24/_werkstatt/ausbau/bilder/arbeit/vorher
+JSON-Protokoll: /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/bildsatz-teil3.json
+

@@ -1,0 +1,9 @@
+| Gerät | Fenster | Kacheln | ganz sichtbar | oberhalb Leiste | Leiste | Telefon im ersten Bildschirm | Zeilen Name max | Zeilen Zusatz max | Texte über 2 Zeilen | Leitkachel Spalten | zwei Reihen | Überlauf |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| mobil-klein | 360×780 | 9 | 9 | 9 | ja, oben 724 | ja (unten 750) | 2 | 2 | keine | 1 | nein | nein |
+| mobil | 390×844 | 9 | 9 | 9 | ja, oben 788 | ja (unten 750) | 2 | 2 | keine | 1 | nein | nein |
+| tablet | 768×1024 | 9 | 9 | n. v. | aus | ja (unten 873) | 2 | 3 | Autoschlüssel Zusatz 3 | 2 | ja | nein |
+| desktop | 1440×900 | 9 | 9 | n. v. | aus | ja (unten 884) | 2 | 4 | Autoschlüssel Zusatz 4 | 2 | ja | nein |
+| breit | 1920×1080 | 9 | 9 | n. v. | aus | ja (unten 885) | 2 | 4 | Autoschlüssel Zusatz 4 | 2 | ja | nein |
+JSON: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/hub-messung.json
+=== EXIT 0

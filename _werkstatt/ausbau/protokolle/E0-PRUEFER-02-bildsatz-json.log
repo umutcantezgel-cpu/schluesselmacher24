@@ -1,0 +1,288 @@
+{
+  "skript": "bildsatz",
+  "zeit": "2026-11-02T21:55:24.941Z",
+  "argumente": {
+    "_": [],
+    "routen": "/,/kasse",
+    "max": "2",
+    "ziel": "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-bildsatz-json.log"
+  },
+  "max": 2,
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "geraet": "mobil-klein",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 10,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 73,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.shell > div.grid > ol.-mx-5 > li.flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.-mx-5 > li.flex > div.contents > a.group"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.contents > a.group > span.absolute"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.contents > a.group > span.flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.contents > a.group > span.flex > span.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.contents > a.group > span.flex > span.mt-auto"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.shell > div.grid > ol.-mx-5 > li.flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.-mx-5 > li.flex > div.contents > a.group"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.contents > a.group > span.absolute"
+        }
+      ],
+      "befundText": "73: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.shell > div.grid > ol.-mx-5 > li.flex; über den rechten Rand ol.-mx-5 > li.flex > div.contents > a.group",
+      "dateien": [
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H01-start__mobil-klein__00.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H01-start__mobil-klein__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "mobil",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 10,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 73,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.shell > div.grid > ol.-mx-5 > li.flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.-mx-5 > li.flex > div.contents > a.group"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.contents > a.group > span.absolute"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.contents > a.group > span.flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.contents > a.group > span.flex > span.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.contents > a.group > span.flex > span.mt-auto"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.shell > div.grid > ol.-mx-5 > li.flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.-mx-5 > li.flex > div.contents > a.group"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.contents > a.group > span.absolute"
+        }
+      ],
+      "befundText": "73: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.shell > div.grid > ol.-mx-5 > li.flex; über den rechten Rand ol.-mx-5 > li.flex > div.contents > a.group",
+      "dateien": [
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H01-start__mobil__00.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H01-start__mobil__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "tablet",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 7,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 3,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.order-2 > div.hidden > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "3: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40; über den rechten Rand div.order-2 > div.hidden > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H01-start__tablet__00.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H01-start__tablet__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "desktop",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 7,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 2,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.h-auto > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "2: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.h-auto > path.stroke-area-muted40",
+      "dateien": [
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H01-start__desktop__00.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H01-start__desktop__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "breit",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 6,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H01-start__breit__00.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H01-start__breit__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-kasse",
+      "geraet": "mobil-klein",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 4,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H11-kasse__mobil-klein__00.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H11-kasse__mobil-klein__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-kasse",
+      "geraet": "mobil",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 4,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H11-kasse__mobil__00.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H11-kasse__mobil__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-kasse",
+      "geraet": "tablet",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H11-kasse__tablet__00.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H11-kasse__tablet__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-kasse",
+      "geraet": "desktop",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H11-kasse__desktop__00.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H11-kasse__desktop__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-kasse",
+      "geraet": "breit",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H11-kasse__breit__00.jpg",
+        "/tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/bilder/bildsatz/H11-kasse__breit__01.jpg"
+      ]
+    }
+  ]
+}

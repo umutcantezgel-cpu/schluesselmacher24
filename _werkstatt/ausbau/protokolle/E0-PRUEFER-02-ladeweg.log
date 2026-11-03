@@ -1,0 +1,38 @@
+# Ladeweg · 2026-11-02T21:56:15.540Z · Server http://localhost:3000 · mobil 390 × 844, CPU 4-fach, Netz 150 ms, 1,6/0,75 Mbit/s · 1 Läufe je Route
+
+| Ansicht | Läufe | FCP ms | LCP ms | LCP-Element (mittlerer Lauf) | Long Tasks vor FCP (Anzahl · Summe ms) | DOM-Elemente | HTML KB (übertragen) | Bytes vor FCP KB | Schriften bei FCP (mittlerer Lauf) |
+|---|---|---|---|---|---|---|---|---|---|
+| H01-start | 1 von 1 | 676 | 676 | h1.mt-5.text-display.font-bold „Autoschlüssel nachmachen und programmieren“ | 0,0 · 0 | 1024 | 67,1 | 0,0 | IBM Plex Sans nein (0 von 1); IBM Plex Sans Fallback nein (0 von 1); Inter nein (0 von 3); Inter Fallback nein (0 von 1); IBM Plex Mono nein (0 von 3); IBM Plex Mono Fallback nein (0 von 1); SM24 Ersatz Plex Sans ja; SM24 Ersatz Wortmarke ja; SM24 Ersatz Plex Mono ja |
+
+### Bytes vor FCP je Typ (Median, KB)
+
+| Ansicht | Typ | Bytes vor FCP KB |
+|---|---|---|
+
+### Wasserfall · H01-start · mittlerer Lauf 1 von 1 (LCP 676 ms)
+
+| # | Typ | Priorität | Adresse | Start ms | Ende ms | KB | vor FCP |
+|---|---|---|---|---|---|---|---|
+| 1 | Document | VeryHigh | / | 1 | 894 | 67,1 | nein |
+| 2 | Font | High | /_next/static/media/07c7676b89ed2778-s.p.2bn3s6zvc0dyp.woff2 | 230 | 1516 | 48,1 | nein |
+| 3 | Font | High | /_next/static/media/2880e9b87afbd5d9-s.p.226pwps5o-gq_.woff2 | 236 | 747 | 10,7 | nein |
+| 4 | Font | High | /_next/static/media/48eea41d8317494f-s.p.0wiir8udbzjvx.woff2 | 236 | 1397 | 40,1 | nein |
+| 5 | Font | High | /_next/static/media/916cd8a3bde3edf8-s.p.0oace-s_gkfks.woff2 | 237 | 760 | 10,7 | nein |
+| 6 | Font | High | /_next/static/media/d6c1ff7e86974212-s.p.40sczeszzbjw1.woff2 | 237 | 766 | 10,7 | nein |
+| 7 | Script | Low | /_next/static/chunks/17jgc65no27l2.js | 275 | 991 | 3,4 | nein |
+| 8 | Script | Low | /_next/static/chunks/2nsn2slz5emql.js | 278 | 1149 | 9,1 | nein |
+| 9 | Script | Low | /_next/static/chunks/35i5yputl1187.js | 279 | 2161 | 72,6 | nein |
+| 10 | Script | Low | /_next/static/chunks/1fkaya2t7r343.js | 279 | 2019 | 44,2 | nein |
+| 11 | Script | Low | /_next/static/chunks/turbopack-2c3mg3r-05n1w.js | 279 | 1298 | 5,2 | nein |
+| 12 | Script | Low | /_next/static/chunks/0a-rekt06v0sv.js | 280 | 1412 | 4,4 | nein |
+| 13 | Script | Low | /_next/static/chunks/1wx21mruynt0m.js | 281 | 1509 | 1,9 | nein |
+| 14 | Script | Low | /_next/static/chunks/0y1cfd0e1a169.js | 281 | 1778 | 9,8 | nein |
+| 15 | Script | Low | /_next/static/chunks/2xi5-drvuaowz.js | 281 | 1967 | 17,5 | nein |
+| 16 | Script | Low | /_next/static/chunks/21r658ih6iau2.js | 282 | 1861 | 6,2 | nein |
+| 17 | Script | Low | /_next/static/chunks/030k4qsi1csxj.js | 282 | 1876 | 6,0 | nein |
+| 18 | Script | Low | /_next/static/chunks/3nmjifmt76qx_.js | 282 | 2064 | 7,7 | nein |
+
+Hinweise: Start unter 0 = Anfrage vor Navigationsbeginn. „nein (x von y)“ bei Schriften = nicht alle Schnitte geladen; ungenutzte Schnitte bleiben ungeladen. Bytes = übertragen (mit Kopfzeilen). Fremde Anfragen außer Google-Schriften sind abgebrochen (Fehler in der Tabelle).
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-ladeweg-json.log
+Exit: 0

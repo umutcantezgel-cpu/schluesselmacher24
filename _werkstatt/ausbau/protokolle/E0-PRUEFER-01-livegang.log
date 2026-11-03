@@ -1,0 +1,8 @@
+2026-11-02 21:31:35.767 GMT [8801] FATAL:  invalid value for parameter "port": ""
+child process exited with exit code 1
+initdb: removing contents of data directory "/home/ubuntu/sm24-pg/daten"
+
+real	0m0.269s
+user	0m0.147s
+sys	0m0.092s
+EXIT=1

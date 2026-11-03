@@ -1,0 +1,575 @@
+{
+  "kennung": "ohnefotos-eilige",
+  "geraet": "desktop",
+  "tippsGesamt": 23,
+  "wischer": 17,
+  "tippsBisErsteEingabe": 2,
+  "ersteEingabe": "Marke und Modell",
+  "ladeMs": 312,
+  "ziele": {
+    "ohne-fotos-anfrage-vor-absenden": {
+      "erreicht": true,
+      "ms": 20612,
+      "text": "Anfrage ohne Fotos geprüft bis „Schritt 5 von 5 · Prüfen“, nicht abgesendet"
+    }
+  },
+  "abbruch": null,
+  "endknopf": "Anfrage ohne Fotos: „Anfrage absenden“ sichtbar, nicht betätigt",
+  "reaktionen": [
+    605,
+    441,
+    390,
+    413,
+    407,
+    431,
+    409,
+    447,
+    460,
+    401,
+    474,
+    404
+  ],
+  "maxReaktionMs": 605,
+  "telPruefungen": [
+    {
+      "ort": "01 Startseite",
+      "sichtbar": 4,
+      "imBild": 1,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "03 Anfrage Schritt 1 Fahrzeug",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "04 Suche VW Golf 7 mit Vorschlag",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "05 Fotos Schlüssel 1 von 2",
+      "sichtbar": 2,
+      "imBild": 1,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "06 Geführte Anfrage ohne Fotos",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "Thema 1 von 5",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "Anliegen 2 von 5",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "Unterlagen 3 von 5",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "Kontakt 4 von 5",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "Vor dem Absenden 5 von 5",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    }
+  ],
+  "tippziele": [],
+  "stationen": [
+    {
+      "ms": 339,
+      "ort": "01 Startseite",
+      "url": "/",
+      "fort": "",
+      "ueberschrift": "Wobei können wir Ihnen helfen?",
+      "hoehe": 5866,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 4,
+        "imBild": 1,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 1120,
+      "ort": "03 Anfrage Schritt 1 Fahrzeug",
+      "url": "/autoschluessel/anfrage",
+      "fort": "Schritt 1 von 5 · Fahrzeug wählen · 1 von 7",
+      "ueberschrift": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "hoehe": 2968,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 2520,
+      "ort": "04 Suche VW Golf 7 mit Vorschlag",
+      "url": "/autoschluessel/anfrage",
+      "fort": "Schritt 1 von 5 · Fahrzeug wählen · 1 von 7",
+      "ueberschrift": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "hoehe": 3058,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 7428,
+      "ort": "05 Fotos Schlüssel 1 von 2",
+      "url": "/autoschluessel/anfrage",
+      "fort": "Schritt 2 von 5 · Fotos hochladen · 1 von 2",
+      "ueberschrift": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+      "hoehe": 4325,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 2,
+        "imBild": 1,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 8008,
+      "ort": "06 Geführte Anfrage ohne Fotos",
+      "url": "/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf",
+      "fort": "Schritt 1 von 5 · Thema",
+      "ueberschrift": "Allgemeine Anfrage",
+      "hoehe": 2554,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 8108,
+      "ort": "Thema 1 von 5",
+      "url": "/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf",
+      "fort": "Schritt 1 von 5 · Thema",
+      "ueberschrift": "Allgemeine Anfrage",
+      "hoehe": 2554,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 8666,
+      "ort": "Anliegen 2 von 5",
+      "url": "/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf",
+      "fort": "Schritt 2 von 5 · Anliegen",
+      "ueberschrift": "Allgemeine Anfrage",
+      "hoehe": 2319,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 12000,
+      "ort": "Unterlagen 3 von 5",
+      "url": "/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf",
+      "fort": "Schritt 3 von 5 · Unterlagen",
+      "ueberschrift": "Allgemeine Anfrage",
+      "hoehe": 1936,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 12569,
+      "ort": "Kontakt 4 von 5",
+      "url": "/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf",
+      "fort": "Schritt 4 von 5 · Kontakt",
+      "ueberschrift": "Allgemeine Anfrage",
+      "hoehe": 2109,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 17550,
+      "ort": "Vor dem Absenden 5 von 5",
+      "url": "/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf",
+      "fort": "Schritt 5 von 5 · Prüfen",
+      "ueberschrift": "Allgemeine Anfrage",
+      "hoehe": 2358,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    }
+  ],
+  "stolpersteine": [],
+  "bilder": [
+    "ohnefotos-eilige-desktop-01-01-startseite.png",
+    "ohnefotos-eilige-desktop-02-03-anfrage-schritt-1-fahrzeug.png",
+    "ohnefotos-eilige-desktop-03-04-suche-vw-golf-7-mit-vorschlag.png",
+    "ohnefotos-eilige-desktop-04-05-fotos-schluessel-1-von-2.png",
+    "ohnefotos-eilige-desktop-05-06-gefuehrte-anfrage-ohne-fotos.png",
+    "ohnefotos-eilige-desktop-06-thema-1-von-5.png",
+    "ohnefotos-eilige-desktop-07-anliegen-2-von-5.png",
+    "ohnefotos-eilige-desktop-08-unterlagen-3-von-5.png",
+    "ohnefotos-eilige-desktop-09-kontakt-4-von-5.png",
+    "ohnefotos-eilige-desktop-10-vor-dem-absenden-5-von-5.png"
+  ],
+  "anfragen": [
+    {
+      "ms": 841,
+      "methode": "POST",
+      "pfad": "/autoschluessel/anfrage",
+      "host": "localhost:3000",
+      "serveraktion": true,
+      "inhalt": "text/plain;charset=UTF-8",
+      "ziel": ""
+    },
+    {
+      "ms": 7744,
+      "methode": "POST",
+      "pfad": "/service-und-termin/anfrage",
+      "host": "localhost:3000",
+      "serveraktion": true,
+      "inhalt": "text/plain;charset=UTF-8",
+      "ziel": ""
+    }
+  ],
+  "formularKlicks": [],
+  "antworten": [
+    {
+      "ms": 858,
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "text": ""
+    },
+    {
+      "ms": 7754,
+      "pfad": "/service-und-termin/anfrage",
+      "status": 200,
+      "text": ""
+    }
+  ],
+  "menueOffen": [
+    {
+      "ms": 1336,
+      "menue": "Mehr"
+    }
+  ],
+  "schritte": [
+    {
+      "ms": 339,
+      "typ": "STATION",
+      "text": "01 Startseite · / ·  · Wobei können wir Ihnen helfen?"
+    },
+    {
+      "ms": 420,
+      "typ": "BILD",
+      "text": "ohnefotos-eilige-desktop-01-01-startseite.png"
+    },
+    {
+      "ms": 1109,
+      "typ": "TIPP",
+      "text": "„Termin anfragen“ → /autoschluessel/anfrage (605 ms)"
+    },
+    {
+      "ms": 1120,
+      "typ": "STATION",
+      "text": "03 Anfrage Schritt 1 Fahrzeug · /autoschluessel/anfrage · Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 1203,
+      "typ": "BILD",
+      "text": "ohnefotos-eilige-desktop-02-03-anfrage-schritt-1-fahrzeug.png"
+    },
+    {
+      "ms": 1336,
+      "typ": "MENUE",
+      "text": "Kopfleisten-Menü offen (Mehr), vor dem Klick mit Escape geschlossen"
+    },
+    {
+      "ms": 2513,
+      "typ": "EINGABE",
+      "text": "Marke und Modell ← „VW Golf 7“"
+    },
+    {
+      "ms": 2520,
+      "typ": "STATION",
+      "text": "04 Suche VW Golf 7 mit Vorschlag · /autoschluessel/anfrage · Schritt 1 von 5 · Fahrzeug wählen · 1 von 7 · Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 2601,
+      "typ": "BILD",
+      "text": "ohnefotos-eilige-desktop-03-04-suche-vw-golf-7-mit-vorschlag.png"
+    },
+    {
+      "ms": 3075,
+      "typ": "TIPP",
+      "text": "Vorschlag „Volkswagen Golf“ → /autoschluessel/anfrage (441 ms)"
+    },
+    {
+      "ms": 3590,
+      "typ": "WAHL",
+      "text": "Jahr = „2015“"
+    },
+    {
+      "ms": 4011,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (390 ms)"
+    },
+    {
+      "ms": 4056,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 4449,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (413 ms)"
+    },
+    {
+      "ms": 5021,
+      "typ": "WAHL",
+      "text": "„Funkschlüssel“"
+    },
+    {
+      "ms": 5092,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 5475,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (407 ms)"
+    },
+    {
+      "ms": 6028,
+      "typ": "WAHL",
+      "text": "„Kein funktionierender Schlüssel“"
+    },
+    {
+      "ms": 6084,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 6492,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (431 ms)"
+    },
+    {
+      "ms": 6983,
+      "typ": "WAHL",
+      "text": "„Ersatzschlüssel bei Verlust“"
+    },
+    {
+      "ms": 7038,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 7422,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /autoschluessel/anfrage (409 ms)"
+    },
+    {
+      "ms": 7428,
+      "typ": "STATION",
+      "text": "05 Fotos Schlüssel 1 von 2 · /autoschluessel/anfrage · Schritt 2 von 5 · Fotos hochladen · 1 von 2 · Autoschlüssel-Anfrage mit Termin und Anzahlung"
+    },
+    {
+      "ms": 7519,
+      "typ": "BILD",
+      "text": "ohnefotos-eilige-desktop-04-05-fotos-schluessel-1-von-2.png"
+    },
+    {
+      "ms": 7999,
+      "typ": "TIPP",
+      "text": "„Anfrage ohne Fotos senden“ → /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf (447 ms)"
+    },
+    {
+      "ms": 8008,
+      "typ": "STATION",
+      "text": "06 Geführte Anfrage ohne Fotos · /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf · Schritt 1 von 5 · Thema · Allgemeine Anfrage"
+    },
+    {
+      "ms": 8096,
+      "typ": "BILD",
+      "text": "ohnefotos-eilige-desktop-05-06-gefuehrte-anfrage-ohne-fotos.png"
+    },
+    {
+      "ms": 8108,
+      "typ": "STATION",
+      "text": "Thema 1 von 5 · /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf · Schritt 1 von 5 · Thema · Allgemeine Anfrage"
+    },
+    {
+      "ms": 8173,
+      "typ": "BILD",
+      "text": "ohnefotos-eilige-desktop-06-thema-1-von-5.png"
+    },
+    {
+      "ms": 8218,
+      "typ": "WISCHEN",
+      "text": "3 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 8658,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf (460 ms)"
+    },
+    {
+      "ms": 8666,
+      "typ": "STATION",
+      "text": "Anliegen 2 von 5 · /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf · Schritt 2 von 5 · Anliegen · Allgemeine Anfrage"
+    },
+    {
+      "ms": 8724,
+      "typ": "BILD",
+      "text": "ohnefotos-eilige-desktop-07-anliegen-2-von-5.png"
+    },
+    {
+      "ms": 11564,
+      "typ": "EINGABE",
+      "text": "Was sollen wir für Sie tun ← „Zweitschlüssel für meinen VW Golf 7 bitte.“"
+    },
+    {
+      "ms": 11612,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 11994,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf (401 ms)"
+    },
+    {
+      "ms": 12000,
+      "typ": "STATION",
+      "text": "Unterlagen 3 von 5 · /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf · Schritt 3 von 5 · Unterlagen · Allgemeine Anfrage"
+    },
+    {
+      "ms": 12058,
+      "typ": "BILD",
+      "text": "ohnefotos-eilige-desktop-08-unterlagen-3-von-5.png"
+    },
+    {
+      "ms": 12105,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 12558,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf (474 ms)"
+    },
+    {
+      "ms": 12569,
+      "typ": "STATION",
+      "text": "Kontakt 4 von 5 · /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf · Schritt 4 von 5 · Kontakt · Allgemeine Anfrage"
+    },
+    {
+      "ms": 12649,
+      "typ": "BILD",
+      "text": "ohnefotos-eilige-desktop-09-kontakt-4-von-5.png"
+    },
+    {
+      "ms": 13430,
+      "typ": "EINGABE",
+      "text": "Vorname ← „Erika“"
+    },
+    {
+      "ms": 14459,
+      "typ": "EINGABE",
+      "text": "Nachname ← „Testkundin“"
+    },
+    {
+      "ms": 16016,
+      "typ": "EINGABE",
+      "text": "E-Mail-Adresse ← „test@example.invalid“"
+    },
+    {
+      "ms": 17114,
+      "typ": "EINGABE",
+      "text": "Telefon ← „0000 000000“"
+    },
+    {
+      "ms": 17158,
+      "typ": "WISCHEN",
+      "text": "2 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 17541,
+      "typ": "TIPP",
+      "text": "„Weiter“ → /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf (404 ms)"
+    },
+    {
+      "ms": 17550,
+      "typ": "STATION",
+      "text": "Vor dem Absenden 5 von 5 · /service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf · Schritt 5 von 5 · Prüfen · Allgemeine Anfrage"
+    },
+    {
+      "ms": 17610,
+      "typ": "BILD",
+      "text": "ohnefotos-eilige-desktop-10-vor-dem-absenden-5-von-5.png"
+    },
+    {
+      "ms": 20612,
+      "typ": "PRUEFUNG",
+      "text": "Seite vor dem Absenden erreicht, „Anfrage absenden“ sichtbar, nicht betätigt; Nicht-GET-Anfragen in den folgenden 3 s: 0"
+    },
+    {
+      "ms": 20612,
+      "typ": "ZIEL",
+      "text": "ohne-fotos-anfrage-vor-absenden: erreicht · Anfrage ohne Fotos geprüft bis „Schritt 5 von 5 · Prüfen“, nicht abgesendet"
+    }
+  ],
+  "konsole": [],
+  "abgebrochen": [],
+  "endMs": 20613,
+  "persona": "ohnefotos",
+  "basis": "eilige",
+  "url": "http://localhost:3000/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Volkswagen%20Golf"
+}

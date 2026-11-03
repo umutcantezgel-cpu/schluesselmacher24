@@ -1,0 +1,1850 @@
+{
+ "zuordnung": [
+  {
+   "kennung": "L-001",
+   "pakete": [
+    "E4-OPUS-01",
+    "E3-OPUS-01",
+    "E4-JURY-01",
+    "EA-JURY-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Einfache Kundenführung trägt der Hub (E4-OPUS-01) und das Rubriken-Modell (E3-OPUS-01), die hochwertige Wirkung prüfen E4-JURY-01 und EA-JURY-01 am Bild."
+  },
+  {
+   "kennung": "L-002",
+   "pakete": [
+    "E4-JURY-01",
+    "EA-JURY-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Reine Wirkungsaussage gegen den Eindruck eines Notdienstes, geprüft am Bild durch E4-JURY-01 und EA-JURY-01."
+  },
+  {
+   "kennung": "L-004",
+   "pakete": [
+    "E4-OPUS-01",
+    "E4-OPUS-03",
+    "E8-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der Autoschlüssel-Schwerpunkt von rund 70 Prozent zeigt sich im Hub (E4-OPUS-01), in der Navigation (E4-OPUS-03) und bei den Schlüsselseiten (E8-OPUS-02)."
+  },
+  {
+   "kennung": "L-005",
+   "pakete": [
+    "E3-OPUS-01",
+    "E4-OPUS-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die übrigen Kompetenzbereiche werden als Rubriken aus Daten (E3-OPUS-01) gleichwertig in der Navigation gezeigt (E4-OPUS-03)."
+  },
+  {
+   "kennung": "L-008",
+   "pakete": [
+    "E4-JURY-01",
+    "EA-JURY-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Reine Wirkungsaussage zu Technik, Fachlichkeit, Modernität und Vertrauen, geprüft am Bild durch E4-JURY-01 und EA-JURY-01."
+  },
+  {
+   "kennung": "L-009",
+   "pakete": [
+    "E4-TEXTER-01",
+    "E4-JURY-01",
+    "EA-JURY-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der Hub-Text darf die 24 nicht als Notdienst lesen lassen (R9, E4-TEXTER-01), die Wirkung prüfen E4-JURY-01 und EA-JURY-01."
+  },
+  {
+   "kennung": "L-015",
+   "pakete": [
+    "E8-OPUS-02",
+    "E7-BAUMEISTER-01",
+    "E3-OPUS-06"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Leistungsseiten baut E8-OPUS-02, Stadtseiten die Vorlage E7-BAUMEISTER-01 und Fahrzeugseiten das Modell E3-OPUS-06, jeweils mit interner Verlinkung."
+  },
+  {
+   "kennung": "L-016",
+   "pakete": [
+    "E4-OPUS-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die Hauptnavigation zeigt den Autoschlüssel-Schwerpunkt sofort und behandelt die übrigen Bereiche eigenständig (E4-OPUS-03)."
+  },
+  {
+   "kennung": "L-032",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-05",
+   "grund": "Rechtstexte vor dem Livegang, besonders bei Sonderanfertigung und Anzahlung, gibt der Anwalt frei (M-05, G9)."
+  },
+  {
+   "kennung": "L-042",
+   "pakete": [
+    "E4-JURY-01",
+    "EA-JURY-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Reine Wirkungsaussage zu hochwertig, technisch und ruhig, geprüft am Bild durch E4-JURY-01 und EA-JURY-01."
+  },
+  {
+   "kennung": "L-043",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-05",
+   "grund": "Echte Produkt- und Werkstattbilder liefert der Inhaber (MA-05), bis dahin bleiben die gestalteten Ausweichformen."
+  },
+  {
+   "kennung": "L-093",
+   "pakete": [
+    "E3-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-06",
+   "grund": "Rechnung und Zahlungsbeleg hängen am Vorgang im Vorgangsblatt-System (E3-OPUS-04), die Stripe-Belegmails schaltet der Betrieb aus (M-06)."
+  },
+  {
+   "kennung": "L-094",
+   "pakete": [
+    "E3-OPUS-07",
+    "E4-OPUS-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-30",
+   "grund": "Preis- und Anzahlungswerte kommen aus den Einstellungen über die Preisfunktion (E3-OPUS-07) und den Autoschlüssel-Weg (E4-OPUS-05), freigegeben durch den Inhaber (M-30)."
+  },
+  {
+   "kennung": "L-115",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-05",
+   "grund": "Beispielfotos zur Lage des Codes liefert der Inhaber (MA-05), bis dahin zeigt die allgemeine Zeichnung die Fundstelle."
+  },
+  {
+   "kennung": "L-118",
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-03",
+   "grund": "Die Angaben zu Hersteller, Anwendung, Codeformat, Lieferumfang und Stückzahl sind im Code vorhanden, die Hersteller trägt der Betrieb ein (M-03), die Texte je Linie schreibt E8-TEXTER-01."
+  },
+  {
+   "kennung": "L-120",
+   "pakete": [],
+   "vorschlag": "neu",
+   "verweis": "M-03",
+   "grund": "Neues Paket Schlüssel nach Code (Vorschlag NEU-S): Suche und Filter nach Typ, Codelinie und Anwendung sowie kompakte Produktseite, weil kein Paket diese Shop-Funktionen plant; der Herstellerfilter braucht die Daten (M-03)."
+  },
+  {
+   "kennung": "L-127",
+   "pakete": [
+    "E3-OPUS-07",
+    "E5-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-32",
+   "grund": "Bauformen je Hersteller gehören in die Systemdaten (E3-OPUS-07) und in den Sperrschließungs-Konfigurator (E5-OPUS-02), die Herstellerangaben pflegt der Betrieb (M-32)."
+  },
+  {
+   "kennung": "L-130",
+   "pakete": [
+    "E5-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-13",
+   "grund": "Gespräch (G-28) setzt Sets von 2 bis 10 um, der Bestand bietet bis 30; der Leitfaden verlangt beliebig viele, die Entscheidung trifft der Inhaber (MA-13)."
+  },
+  {
+   "kennung": "L-134",
+   "pakete": [
+    "E3-OPUS-07",
+    "E5-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-32",
+   "grund": "Weitere gleichschließende Komponenten je Hersteller gehören in die Systemdaten (E3-OPUS-07) und in den Konfigurator (E5-OPUS-02), die Daten pflegt der Betrieb (M-32)."
+  },
+  {
+   "kennung": "L-380",
+   "pakete": [
+    "E5-OPUS-01",
+    "E6-BAUMEISTER-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der Projektkonfigurator für Schließanlagen und Projektanfragen baut E5-OPUS-01, elektronische Zutrittslösungen und Sicherheitsprojekte laufen als Beratungsanfrage über E6-BAUMEISTER-04."
+  },
+  {
+   "kennung": "L-391",
+   "pakete": [
+    "E3-OPUS-06",
+    "E8-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-07",
+   "grund": "Fahrzeugdaten mit Schlüsselarten und Leistungen liefert E3-OPUS-06, die Hersteller- und Modellseiten mit echter Substanz baut E8-OPUS-02 aus den Angaben des Inhabers (MA-07)."
+  },
+  {
+   "kennung": "L-392",
+   "pakete": [
+    "E7-AUTOR-01",
+    "E7-BAUMEISTER-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-04",
+   "grund": "Stadtseiten bekommen eigene Substanz über E7-AUTOR-01 und die Vorlage E7-BAUMEISTER-01, die örtlichen Texte entscheidet der Inhaber (M-04)."
+  },
+  {
+   "kennung": "L-394",
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Massenkopien der Codeseiten beseitigt E8-TEXTER-01 im Generator codelinie-texte."
+  },
+  {
+   "kennung": "L-395",
+   "pakete": [
+    "E8-OPUS-02",
+    "E4-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Jede Schlüsselseite beantwortet ihre Suchabsicht mit Kurzantwort und Teilfragen (E8-OPUS-02) und führt über den Rubrikkopf zum nächsten Schritt (E4-OPUS-04)."
+  },
+  {
+   "kennung": "L-407",
+   "pakete": [
+    "E6-OPUS-01",
+    "E3-OPUS-09"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Kamera-Upload, Formular und Terminbuchung auf dem Smartphone prüft der gemeinsame Abschluss (E6-OPUS-01), die Upload-Strecke baut E3-OPUS-09."
+  },
+  {
+   "kennung": "L-410",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-05",
+   "grund": "Datenschutzerklärung und Impressum sind Rechtstexte, die der Anwalt vor dem Livegang freigibt (M-05)."
+  },
+  {
+   "kennung": "L-412",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-05",
+   "grund": "Ob die AGB eingesetzt werden und wie sie lauten, prüft und gibt der Anwalt frei (M-05)."
+  },
+  {
+   "kennung": "L-420",
+   "pakete": [
+    "E9-OPUS-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-05",
+   "grund": "Die Livegang-Prüfung listet die offenen Rechtstexte und datenschutzrelevanten Prozesse, die Freigabe erteilt der Anwalt (M-05)."
+  },
+  {
+   "kennung": "L-421",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-09",
+   "grund": "Sonderanfertigung, Anzahlung, Dokument-Uploads und Überwachungstechnik braucht die Rechtsprüfung des Anwalts (MA-09, M-18)."
+  },
+  {
+   "kennung": "L-422",
+   "pakete": [
+    "E2-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die Umsetzung in Phasen ohne verbaute Gesamtarchitektur ist eine Systementscheidung für KERN Version 2."
+  },
+  {
+   "kennung": "L-426",
+   "pakete": [
+    "E8-OPUS-02",
+    "E3-OPUS-06",
+    "E7-BAUMEISTER-01",
+    "E8-AUTOR-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der SEO-Ausbau mit Fahrzeugmarken, Modellen, Städten und Ratgebern verteilt sich auf E8-OPUS-02, E3-OPUS-06, E7-BAUMEISTER-01 und E8-AUTOR-01."
+  },
+  {
+   "kennung": "L-427",
+   "pakete": [],
+   "vorschlag": "neu",
+   "verweis": null,
+   "grund": "Phase 5 mit Automatisierung, weiteren Zahlungsarten und Anbindungen hat kein Paket, und einen Status später gibt es nur für G-21 und G-50; Vorschlag: Konzeptnotiz in KONZEPTE.md, die Entscheidung trifft der Orchestrator."
+  },
+  {
+   "kennung": "L-430",
+   "pakete": [
+    "E4-OPUS-01",
+    "E4-OPUS-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der Autoschlüssel-Schwerpunkt zeigt sich als erste Kachel im Hub (E4-OPUS-01) und im Autoschlüssel-Weg (E4-OPUS-05)."
+  },
+  {
+   "kennung": "L-431",
+   "pakete": [
+    "E4-OPUS-03",
+    "E6-BAUMEISTER-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die übrigen Schwerpunkte stehen in der Navigation (E4-OPUS-03) und als Beratungsanfragen zu Schließtechnik, Zutritt und Sicherheit (E6-BAUMEISTER-04)."
+  },
+  {
+   "kennung": "L-446",
+   "pakete": [
+    "E6-OPUS-01",
+    "E3-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die wichtigsten Kundenprozesse laufen mobil über den gemeinsamen Abschluss (E6-OPUS-01) und lassen sich aus Rubrikdaten ausbauen (E3-OPUS-01)."
+  },
+  {
+   "kennung": "EL-01",
+   "pakete": [
+    "E2-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der überschaubare Fachshop statt Marktplatz ist eine Leitidee für KERN Version 2."
+  },
+  {
+   "kennung": "EL-02",
+   "pakete": [
+    "E2-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Einfache Bedienung, fachliche Richtigkeit und technische Basis sind Grundsätze für KERN Version 2, geprüft durch E6-PROBENUTZER-01 und E8-FAKTENPRUEFER-01."
+  },
+  {
+   "kennung": "EL-04",
+   "pakete": [
+    "E6-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-37",
+   "grund": "Die Zuordnung nach Hersteller, Profil und Serie steht im Code und braucht die Daten (M-37), die verständliche Eingabe und die Preis- und Versandangaben prüft E6-OPUS-01."
+  },
+  {
+   "kennung": "EL-12",
+   "pakete": [
+    "E5-OPUS-01",
+    "E5-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "ABUS-Sperrschließungen und Schließanlagen über ABUS und BKS bauen die Konfiguratoren E5-OPUS-02 und E5-OPUS-01."
+  },
+  {
+   "kennung": "EL-15",
+   "pakete": [
+    "E8-AUTOR-02",
+    "E4-JURY-01",
+    "EA-JURY-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-07",
+   "grund": "Die Vertrauensaussage zur Schlüssel-Schmiede in Wetzlar belegt E8-AUTOR-02 aus den Angaben des Inhabers (MA-07), die Wirkung prüfen E4-JURY-01 und EA-JURY-01."
+  },
+  {
+   "kennung": "EL-16",
+   "pakete": [
+    "E3-OPUS-01",
+    "E4-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Jede Rubrik nennt ihre Handlungsaufforderung als Daten (E3-OPUS-01), im Rubrikkopf erscheint sie als Schaltfläche (E4-OPUS-04)."
+  },
+  {
+   "kennung": "EL-20",
+   "pakete": [
+    "E2-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der Vorrang fachlich korrekter Produktdaten und zuverlässiger Abläufe ist ein Grundsatz für KERN Version 2."
+  },
+  {
+   "kennung": "EL-21",
+   "pakete": [
+    "E2-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die saubere Vorbereitung von Anfang an ist ein Grundsatz für KERN Version 2 ohne eigene Funktion."
+  },
+  {
+   "kennung": "EL-22",
+   "pakete": [
+    "E8-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-06",
+   "grund": "Die rund 55 Produktseiten bekommen SEO-Grundlagen und Strukturdaten über E8-OPUS-01, das Sortiment bestätigt der Inhaber (MA-06)."
+  },
+  {
+   "kennung": "EL-23",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-37",
+   "grund": "Eigene, dauerhaft erreichbare Adressen mit Hersteller und Serie vergibt der Betrieb je Codelinie, die bisherigen Adressen leiten dauerhaft weiter (M-37)."
+  },
+  {
+   "kennung": "EL-24",
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Keine 55 nahezu identischen Seiten entstehen, weil E8-TEXTER-01 die Texte je Linie eigenständig schreibt."
+  },
+  {
+   "kennung": "EL-25",
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-05",
+   "grund": "Titel, H1 und eigene Beschreibung je Angebot schreibt E8-TEXTER-01, die echten Bilder liefert der Betrieb (MA-05)."
+  },
+  {
+   "kennung": "EL-26",
+   "pakete": [
+    "E8-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-37",
+   "grund": "Die interne Verlinkung von Startseite über Schlüssel nach Code und Hersteller bis zum Produkt prüft E8-OPUS-01, die Herstellerebene entsteht mit den Daten (M-37)."
+  },
+  {
+   "kennung": "EL-34",
+   "pakete": [
+    "E8-OPUS-01",
+    "E8-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Sprechende Adressen, Titel, Meta-Beschreibungen und saubere Überschriften prüft E8-OPUS-01 und setzt E8-OPUS-02 auf den Schlüsselseiten um."
+  },
+  {
+   "kennung": "EL-37",
+   "pakete": [
+    "E8-OPUS-01",
+    "E9-OPUS-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Unfertige Test- und Vorschauseiten erhalten noindex (E8-OPUS-01), die Livegang-Prüfung kontrolliert es (E9-OPUS-03)."
+  },
+  {
+   "kennung": "EL-38",
+   "pakete": [
+    "E8-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-29",
+   "grund": "Weiterleitungen in einem Sprung baut E8-OPUS-01, die finale Domain und die DNS-Einstellungen bleiben Sache des Betriebs (G3, M-29)."
+  },
+  {
+   "kennung": "EL-39",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-29",
+   "grund": "Search Console und Merchant Center verbindet der Betrieb mit eigenen Konten (M-29)."
+  },
+  {
+   "kennung": "EL-40",
+   "pakete": [
+    "E9-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-15",
+   "grund": "Bestellungen, Foto-, Termin- und Partneranfragen zählt das Dashboard (E9-OPUS-01), die Messung braucht die Einwilligung (M-15)."
+  },
+  {
+   "kennung": "EL-42",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-05",
+   "grund": "Werkstatt-, Maschinen- und Produktfotos liefert der Inhaber (MA-05)."
+  },
+  {
+   "kennung": "EL-43",
+   "pakete": [
+    "E6-OPUS-02",
+    "E8-TEXTER-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-36",
+   "grund": "Verfahren, Bearbeitung, Versand und Erreichbarkeit beschreiben E6-OPUS-02 im Einsendeweg und E8-TEXTER-03 auf den Seiten, die Lieferzeiten bestätigt der Betrieb (M-36)."
+  },
+  {
+   "kennung": "EL-44",
+   "pakete": [
+    "E6-BAUMEISTER-05",
+    "E7-BAUMEISTER-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-04",
+   "grund": "Keine künstlichen Städte und keine falschen Filialangaben: der Vor-Ort-Weg (E6-BAUMEISTER-05) und die Stadtvorlage (E7-BAUMEISTER-01) bleiben an echte Einsatzgebiete gebunden."
+  },
+  {
+   "kennung": "EL-45",
+   "pakete": [
+    "E6-BAUMEISTER-05",
+    "E7-AUTOR-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Regionale Vor-Ort-Leistungen trennt E6-BAUMEISTER-05 von den bundesweit bestellbaren Leistungen, die Gebiete belegt E7-AUTOR-01."
+  },
+  {
+   "kennung": "EL-46",
+   "pakete": [
+    "E8-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die SEO-Grundlagen für Strukturdaten, Sitemaps und Meta-Robots baut E8-OPUS-01 schon beim Programmieren ein."
+  },
+  {
+   "kennung": "EL-47",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-06",
+   "grund": "Produkttexte, Schlüsselprofile und Fotos der rund 55 Angebote erarbeitet der Inhaber mit dem Betrieb (MA-06, MA-05)."
+  },
+  {
+   "kennung": "EL-48",
+   "pakete": [
+    "E7-OPUS-02",
+    "E3-OPUS-08"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die bundesweite Vermittlung an geprüfte Partner baut E3-OPUS-08 mit den Vermittlungszuständen und E7-OPUS-02 im Admin."
+  },
+  {
+   "kennung": "EL-49",
+   "pakete": [
+    "E7-OPUS-02",
+    "E3-OPUS-08"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-09",
+   "grund": "Das Modell mit Rechnung des Partners an den Kunden und Vermittlungsprovision bildet E3-OPUS-08 ab, die Vertragsbedingungen prüft der Anwalt (MA-09)."
+  },
+  {
+   "kennung": "EL-50",
+   "pakete": [
+    "E7-OPUS-02",
+    "E8-TEXTER-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-09",
+   "grund": "Die Bestätigung nennt dem Kunden den ausführenden Betrieb (E8-TEXTER-05), die Vermittlung führt E7-OPUS-02, die Vertragsfragen prüft der Anwalt (MA-09)."
+  },
+  {
+   "kennung": "EL-54",
+   "pakete": [
+    "E3-OPUS-08"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Kein Partnerportal nötig: Zugriffsrechte und Vermittlungsaufträge genügen im Modell E3-OPUS-08."
+  },
+  {
+   "kennung": "EL-66",
+   "pakete": [
+    "E3-OPUS-08"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der spätere geschützte Partnerbereich wird im Zugriffsmodell vorbereitet, ohne Portal in diesem Lauf (E3-OPUS-08)."
+  },
+  {
+   "kennung": "EL-67",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-16",
+   "grund": "Gewerbe und fachliche Eignung prüft der Betrieb vor jeder Freischaltung (MA-16, Vorschlag neu)."
+  },
+  {
+   "kennung": "EL-68",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-16",
+   "grund": "Klare Preisregeln und Zuverlässigkeit vereinbart der Betrieb vor der Freischaltung (MA-16, M-30)."
+  },
+  {
+   "kennung": "EL-69",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-16",
+   "grund": "Die Identitäts- und Berechtigungsprüfung bei Autoschlüsseln legt der Betrieb fest (MA-16), der Nachweis im Weg richtet sich nach R13."
+  },
+  {
+   "kennung": "EL-70",
+   "pakete": [
+    "E3-OPUS-09",
+    "E9-BAUMEISTER-01",
+    "E3-OPUS-08"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-05",
+   "grund": "Zweckgebundene Erhebung, geregelte Zugriffe und Löschfristen für Anfragen, Foto-Uploads und Partnerdaten setzen E3-OPUS-09, E9-BAUMEISTER-01 und E3-OPUS-08 um, die Datenschutzhinweise prüft der Anwalt (M-05)."
+  },
+  {
+   "kennung": "EL-71",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-09",
+   "grund": "Den Partnervertrag zu Provision, Abrechnung, Reklamation und Verantwortung formuliert der Anwalt (MA-09)."
+  },
+  {
+   "kennung": "EL-72",
+   "pakete": [
+    "E8-TEXTER-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-09",
+   "grund": "Die Kundeninformation zum ausführenden Betrieb und zur Weitergabe der Kontaktdaten schreibt E8-TEXTER-05, der Datenschutz prüft der Anwalt (MA-09)."
+  },
+  {
+   "kennung": "EL-73",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-09",
+   "grund": "Die juristische Prüfung des Partnermodells übernimmt der Anwalt (MA-09)."
+  },
+  {
+   "kennung": "EL-74",
+   "pakete": [
+    "E2-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die Reihenfolge der Umsetzung legt der Plan in PLAN.json fest (E2-OPUS-02), nicht alles auf einmal."
+  },
+  {
+   "kennung": "EL-75",
+   "pakete": [
+    "E2-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Grundstruktur, Bestellabläufe, Produktseiten, Konfiguratoren und Partnerseite stehen als Planeinheiten in PLAN.json (E2-OPUS-02)."
+  },
+  {
+   "kennung": "EL-76",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-14",
+   "grund": "Das Veröffentlichen und die Google-Messung entscheidet der Betrieb, der Lauf veröffentlicht nie selbst (M-14, M-29)."
+  },
+  {
+   "kennung": "EL-77",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-16",
+   "grund": "Den Start mit wenigen seriösen Partnern entscheidet der Inhaber, Partner werden manuell freigeschaltet (MA-16)."
+  },
+  {
+   "kennung": "EL-78",
+   "pakete": [],
+   "vorschlag": "neu",
+   "verweis": null,
+   "grund": "Automatisierung von Matching und Partnerverwaltung hat kein Paket, und einen Status später gibt es nur für G-21 und G-50; Vorschlag: Konzeptnotiz in KONZEPTE.md, die Entscheidung trifft der Orchestrator."
+  },
+  {
+   "kennung": "EL-79",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-07",
+   "grund": "Die Priorisierung von Schlüsselcodes, Fotos, Freigabeprozess, Konfiguratoren und Partnerformular klärt der Inhaber im gemeinsamen Termin (MA-07)."
+  },
+  {
+   "kennung": "M-01",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-01",
+   "grund": "Echte Fotos für die Bildstellen liefert der Betrieb, bis dahin bleiben die Zeichnungen stehen."
+  },
+  {
+   "kennung": "M-02",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-02",
+   "grund": "Firmendaten, Kammerangabe, Öffnungszeiten und Terminfenster bestätigt der Inhaber (G9)."
+  },
+  {
+   "kennung": "M-03",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-03",
+   "grund": "Den Hersteller je Codelinie trägt der Betrieb im Backend ein."
+  },
+  {
+   "kennung": "M-04",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-04",
+   "grund": "Örtliche Texte und den Umkreis je Standort entscheidet der Inhaber."
+  },
+  {
+   "kennung": "M-05",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-05",
+   "grund": "Die Rechtstexte gibt der Anwalt vor dem Livegang frei (G9, R10)."
+  },
+  {
+   "kennung": "M-06",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-06",
+   "grund": "Das Konto für die Online-Zahlung legt der Betrieb an und verbindet es."
+  },
+  {
+   "kennung": "M-07",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-07",
+   "grund": "Die Prüfung auf echten Geräten und mit Bildschirmlesern führt ein Mensch durch."
+  },
+  {
+   "kennung": "M-08",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-08",
+   "grund": "Die Leitidee und die Referenz-Startseite gibt der Inhaber frei oder nennt Änderungen."
+  },
+  {
+   "kennung": "M-09",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-09",
+   "grund": "Ob die ungenutzten Abhängigkeiten entfernt werden, entscheidet der Inhaber."
+  },
+  {
+   "kennung": "M-10",
+   "pakete": [
+    "E3-UPGRADE-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-10",
+   "grund": "Die Major-Version Vitest 5 braucht die Entscheidung des Inhabers, die übrigen Sicherheits- und Minor-Updates setzt E3-UPGRADE-01 um."
+  },
+  {
+   "kennung": "M-11",
+   "pakete": [
+    "E3-PRUEFER-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-11",
+   "grund": "Der Build als root scheitert an der lokalen Datenbank, E3-PRUEFER-01 prüft den Build in beiden Modi (G8)."
+  },
+  {
+   "kennung": "M-12",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-12",
+   "grund": "Eine Änderung von Adressen mit Umlauten und die dazu nötigen Weiterleitungen entscheidet der Inhaber."
+  },
+  {
+   "kennung": "M-13",
+   "pakete": [
+    "EA-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-13",
+   "grund": "Das README auf den Ist-Stand und der Hinweis historisch für UMSETZUNG.md gehören zum Abschluss-Archiv (EA-OPUS-01)."
+  },
+  {
+   "kennung": "M-14",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-14",
+   "grund": "Zusammenführen und Veröffentlichen entscheidet der Betrieb, der Lauf veröffentlicht nie selbst."
+  },
+  {
+   "kennung": "M-15",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-15",
+   "grund": "Die Cookie-Kategorien Komfort und Statistik entscheidet der Inhaber."
+  },
+  {
+   "kennung": "M-16",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-16",
+   "grund": "Die Fachaussagen zu Zertifizierung und Türtechnik belegt der Inhaber mit Quellen."
+  },
+  {
+   "kennung": "M-18",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-18",
+   "grund": "Die Aussagen zur Videoüberwachung lässt der Anwalt prüfen."
+  },
+  {
+   "kennung": "M-19",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-19",
+   "grund": "Die übliche Bearbeitungsdauer nennt der Betrieb, bis dahin bleibt die Frage ausgeblendet."
+  },
+  {
+   "kennung": "M-20",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-20",
+   "grund": "Normen und Verschlüsselungsangaben zur eigenen Leistung bestätigt der Betrieb."
+  },
+  {
+   "kennung": "M-21",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-21",
+   "grund": "Ob die Zahl ab etwa zehn Nutzern aus der Praxis stammt, belegt der Betrieb."
+  },
+  {
+   "kennung": "M-22",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-22",
+   "grund": "Ob das Bestellbeispiel ein echter Fall ist, entscheidet der Betrieb."
+  },
+  {
+   "kennung": "M-23",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-23",
+   "grund": "Den Abgleich von Text und Preisdaten der Zylinder gibt der Inhaber frei (G9)."
+  },
+  {
+   "kennung": "M-24",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-24",
+   "grund": "Die angezeigte Aufbewahrungsfrist für Objektfotos bestätigt der Inhaber."
+  },
+  {
+   "kennung": "M-25",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-25",
+   "grund": "Den Artikelkatalog pflegt der Betrieb oder blendet den Shopbereich aus."
+  },
+  {
+   "kennung": "M-26",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-26",
+   "grund": "Die Zusagen auf der Bestellbestätigung prüft der Inhaber gegen den tatsächlichen Ablauf."
+  },
+  {
+   "kennung": "M-27",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-27",
+   "grund": "Den Standort des Widerrufshinweises entscheidet der Inhaber nach Rechtsprüfung (G9)."
+  },
+  {
+   "kennung": "M-28",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-28",
+   "grund": "Die experimentelle Option inlineCss bewertet der Inhaber bei jedem Next-Update."
+  },
+  {
+   "kennung": "M-29",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-29",
+   "grund": "Konten für Supabase, Resend, Stripe und Vercel legt der Betrieb an und trägt die Variablen ein."
+  },
+  {
+   "kennung": "M-30",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-30",
+   "grund": "Preisregeln, Terminlängen, Anzahlung und Versandkosten gibt der Inhaber im Backend frei (G9)."
+  },
+  {
+   "kennung": "M-31",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-31",
+   "grund": "Die Registrierung im Verpackungsregister LUCID vor dem ersten Versand nimmt der Betrieb vor."
+  },
+  {
+   "kennung": "M-32",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-32",
+   "grund": "Herstellerangaben je Produkt pflegt der Betrieb im Backend unter GPSR."
+  },
+  {
+   "kennung": "M-33",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-33",
+   "grund": "Die AV-Verträge mit den Dienstleistern schließt der Betrieb ab."
+  },
+  {
+   "kennung": "M-34",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-34",
+   "grund": "Die Liste der Vertragsbestätigungen bestätigt der Inhaber mit dem Anwalt."
+  },
+  {
+   "kennung": "M-35",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-35",
+   "grund": "Ob die Ausnahme für Kleinstunternehmen greift, hält der Inhaber fest."
+  },
+  {
+   "kennung": "M-36",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-36",
+   "grund": "Die Lieferzeit je Versandart trägt der Betrieb ein."
+  },
+  {
+   "kennung": "M-37",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-37",
+   "grund": "Hersteller, Codeserie und Adresse je Codelinie pflegt der Betrieb im Backend."
+  },
+  {
+   "kennung": "E-01",
+   "pakete": [
+    "E4-OPUS-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die Hauptnavigation mit wenigen klaren Bereichen baut E4-OPUS-03 aus den Rubriken."
+  },
+  {
+   "kennung": "E-02",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-05",
+   "grund": "Rechtstexte vor dem Livegang gibt der Anwalt frei (M-05)."
+  },
+  {
+   "kennung": "E-03",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-05",
+   "grund": "Echte Produkt- und Werkstattfotos liefert der Inhaber (MA-05)."
+  },
+  {
+   "kennung": "E-04",
+   "pakete": [
+    "E3-OPUS-06",
+    "E8-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-07",
+   "grund": "Marken- und Modellseiten bekommen Mehrwert aus dem Fahrzeugmodell (E3-OPUS-06) und den Schlüsselseiten (E8-OPUS-02), die Erfahrungen liefert der Inhaber (MA-07)."
+  },
+  {
+   "kennung": "E-05",
+   "pakete": [
+    "E6-OPUS-01",
+    "E3-OPUS-09"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-05",
+   "grund": "Kamera-Upload, Galerie und Beispielbilder am Upload bauen E6-OPUS-01 und E3-OPUS-09, die Beispielfotos liefert der Inhaber (MA-05)."
+  },
+  {
+   "kennung": "E-06",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-30",
+   "grund": "Ob der Vor-Ort-Termin bei nötigem Fahrzeugzugriff automatisch entsteht, ist eine Preis- und Ablaufregel des Inhabers (M-30, G9)."
+  },
+  {
+   "kennung": "E-08",
+   "pakete": [
+    "E3-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-06",
+   "grund": "Rechnung und Zahlungsbeleg hängen am Vorgang im Vorgangsblatt-System (E3-OPUS-04), die Stripe-Belegmails stellt der Betrieb ein (M-06)."
+  },
+  {
+   "kennung": "E-10",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-05",
+   "grund": "Beispielbilder zur Codefundstelle liefert der Inhaber als Fotos (MA-05), bis dahin zeigt die allgemeine Zeichnung die Stelle."
+  },
+  {
+   "kennung": "E-11",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-03",
+   "grund": "Hersteller, Anwendung, Codeformat, Lieferumfang und Stückzahl je Codelinie trägt der Betrieb ein (M-03, M-37)."
+  },
+  {
+   "kennung": "E-13",
+   "pakete": [],
+   "vorschlag": "neu",
+   "verweis": "M-03",
+   "grund": "Neues Paket Schlüssel nach Code (Vorschlag NEU-S): Suche und Filter nach Typ, Codelinie und Anwendung, weil kein Paket die Shop-Suche plant; der Herstellerfilter braucht die Daten (M-03)."
+  },
+  {
+   "kennung": "E-14",
+   "pakete": [
+    "E3-OPUS-07"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-32",
+   "grund": "Bauformen je Hersteller gehören in die Systemdaten des Konfigurators (E3-OPUS-07), die Herstellerangaben pflegt der Betrieb (M-32)."
+  },
+  {
+   "kennung": "E-16",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-18",
+   "grund": "Rechtshinweise zu Video und Audio prüft ein Rechtsfachmann vor der Veröffentlichung (M-18)."
+  },
+  {
+   "kennung": "E-17",
+   "pakete": [
+    "E7-AUTOR-01",
+    "E7-BAUMEISTER-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-04",
+   "grund": "Stadtseiten mit lokalem Mehrwert entstehen über E7-AUTOR-01 und die Vorlage E7-BAUMEISTER-01, die örtlichen Texte entscheidet der Inhaber (M-04)."
+  },
+  {
+   "kennung": "E-18",
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Massenkopien der Codelinien-Texte beseitigt E8-TEXTER-01 im Generator codelinie-texte."
+  },
+  {
+   "kennung": "E-21",
+   "pakete": [
+    "E3-OPUS-01",
+    "E8-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "SEO-Felder je Seite stehen im pflegbaren Rubriken-Modell (E3-OPUS-01) und in den Schlüsselseiten (E8-OPUS-02)."
+  },
+  {
+   "kennung": "E-22",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-29",
+   "grund": "Backup und Wiederherstellung hängen am Konto des Betriebs bei den Diensten (M-29)."
+  },
+  {
+   "kennung": "E-23",
+   "pakete": [
+    "E2-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-08",
+   "grund": "Das Abnahmeziel Kurzbriefing gehört in PLAN.json und ABNAHME.md (E2-OPUS-02), die Freigabe erteilt der Inhaber (M-08)."
+  },
+  {
+   "kennung": "E-24",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-06",
+   "grund": "Welche 50 bis 55 Codeangebote der Betrieb wirklich führt, bestätigt der Inhaber im Bogen SORTIMENT (MA-06)."
+  },
+  {
+   "kennung": "E-28",
+   "pakete": [
+    "E8-AUTOR-02",
+    "E4-JURY-01",
+    "EA-JURY-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-07",
+   "grund": "Die Vertrauensaussage zur Schlüssel-Schmiede in Wetzlar belegt E8-AUTOR-02 aus den Angaben des Inhabers (MA-07), die Wirkung prüfen E4-JURY-01 und EA-JURY-01."
+  },
+  {
+   "kennung": "E-29",
+   "pakete": [
+    "E3-OPUS-01",
+    "E4-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Jede Rubrik braucht eine eindeutige Handlungsaufforderung aus Daten (E3-OPUS-01) im Rubrikkopf (E4-OPUS-04)."
+  },
+  {
+   "kennung": "E-31",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-37",
+   "grund": "Sprechende Adressen mit Hersteller und Serie vergibt der Betrieb je Codelinie (M-37)."
+  },
+  {
+   "kennung": "E-32",
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-05",
+   "grund": "Titel, H1 und eigene Beschreibung je Angebot schreibt E8-TEXTER-01, die echten Bilder liefert der Betrieb (MA-05)."
+  },
+  {
+   "kennung": "E-33",
+   "pakete": [
+    "E8-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-37",
+   "grund": "Die Kategoriestruktur von Code über Hersteller bis zum Produkt prüft E8-OPUS-01 mit Breadcrumbs und Strukturdaten, die Herstellerebene entsteht mit den Daten (M-37)."
+  },
+  {
+   "kennung": "E-35",
+   "pakete": [
+    "E8-OPUS-01",
+    "E9-OPUS-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Unfertige Seiten erhalten noindex (E8-OPUS-01), die Livegang-Prüfung kontrolliert es (E9-OPUS-03)."
+  },
+  {
+   "kennung": "E-36",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-29",
+   "grund": "Search Console und Merchant Center brauchen Konten des Betriebs (M-29)."
+  },
+  {
+   "kennung": "E-37",
+   "pakete": [
+    "E9-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-15",
+   "grund": "Die Messung wichtiger Aktionen speist das Dashboard (E9-OPUS-01), die Einwilligung für Statistik entscheidet der Inhaber (M-15)."
+  },
+  {
+   "kennung": "E-38",
+   "pakete": [
+    "E8-TEXTER-03",
+    "E6-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-05",
+   "grund": "Angaben zu Verfahren, Versand und Erreichbarkeit schreiben E8-TEXTER-03 und E6-OPUS-02 im Einsendeweg, die echten Fotos liefert der Inhaber (MA-05)."
+  },
+  {
+   "kennung": "E-39",
+   "pakete": [
+    "E6-BAUMEISTER-05",
+    "E7-BAUMEISTER-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-04",
+   "grund": "Keine künstlichen Städte und Regionen getrennt von bundesweiten Leistungen: E6-BAUMEISTER-05 und die Stadtvorlage E7-BAUMEISTER-01, den Umkreis prüft der Inhaber (M-04)."
+  },
+  {
+   "kennung": "E-40",
+   "pakete": [
+    "E3-OPUS-08",
+    "E7-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Bundesweite Vermittlung an Partner baut E3-OPUS-08 als Vermittlungszustände und E7-OPUS-02 im Admin."
+  },
+  {
+   "kennung": "E-43",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-16",
+   "grund": "Gewerbe-, Eignungs- und Identitätsprüfung der Partner entscheidet der Betrieb vor der Freischaltung (MA-16, Vorschlag neu)."
+  },
+  {
+   "kennung": "E-44",
+   "pakete": [
+    "E7-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-09",
+   "grund": "Partnervertrag und Kundeninfo zum ausführenden Betrieb bauen E7-OPUS-01 als Vertrags-PDF, den Text formuliert der Anwalt (MA-09)."
+  },
+  {
+   "kennung": "E-45",
+   "pakete": [
+    "E2-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die Reihenfolge Freigabe, Partnerseite, Produktseiten und Messung gehört in den Plan PLAN.json (E2-OPUS-02)."
+  },
+  {
+   "kennung": "E-49",
+   "pakete": [
+    "E8-TEXTER-05",
+    "E6-BAUMEISTER-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-02",
+   "grund": "Mails nennen die Werkstatt statt des Firmensitzes und die Seite zeigt den passenden Vor-Ort-Text, die Adresse bestätigt der Inhaber (M-02)."
+  },
+  {
+   "kennung": "E-50",
+   "pakete": [
+    "E3-OPUS-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-06",
+   "grund": "Eine unbezahlte Bestellung darf nicht als versendet gespeichert werden, das setzt E3-OPUS-05 im Versandstatus um, die Zahlungsprüfung braucht das Konto (M-06)."
+  },
+  {
+   "kennung": "E-51",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-30",
+   "grund": "Die Oder-Logik bei der Fahrzeugpflicht ändert eine Preisregel, die nur der Inhaber freigibt (M-30, G9)."
+  },
+  {
+   "kennung": "E-54",
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die 52 Meta-Beschreibungen schreibt E8-TEXTER-01 nach dem Stil der Seite neu."
+  },
+  {
+   "kennung": "E-55",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-23",
+   "grund": "Preisdaten und Zusatztext zu Schlüsselanhängern gleicht der Inhaber ab, die Preislogik bleibt unverändert (M-23, G9)."
+  },
+  {
+   "kennung": "E-56",
+   "pakete": [
+    "E6-BAUMEISTER-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-30",
+   "grund": "Der Notfall mit sieben Tagen Vorlauf widerspricht R9, den Vor-Ort-Weg korrigiert E6-BAUMEISTER-05, der Vorlauf gehört dem Inhaber (M-30)."
+  },
+  {
+   "kennung": "E-57",
+   "pakete": [
+    "E6-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-03",
+   "grund": "Ein Telefontermin erhält einen eigenen Terminstatus statt der Anzahlungsart (E6-OPUS-04), die Anzahlung bestätigt der Inhaber (MA-03)."
+  },
+  {
+   "kennung": "E-58",
+   "pakete": [
+    "E3-OPUS-04",
+    "E6-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Statuswechsel landen in der Vorgangshistorie (E3-OPUS-04) und im Kundenstatus (E6-OPUS-04)."
+  },
+  {
+   "kennung": "E-59",
+   "pakete": [
+    "E3-OPUS-06"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-30",
+   "grund": "Die Zuordnung der Fahrzeuge zu Preisgruppen steht im Fahrzeugmodell (E3-OPUS-06), die Gruppen gibt der Inhaber frei (M-30)."
+  },
+  {
+   "kennung": "E-60",
+   "pakete": [
+    "E6-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Das Team erfährt bei abgebrochener Anzahlung einen Hinweis im Terminstatus (E6-OPUS-04)."
+  },
+  {
+   "kennung": "E-62",
+   "pakete": [
+    "E6-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Eine Preisvorschau ab dem Schritt mit gewählter Leistung baut der gemeinsame Baukasten (E6-OPUS-01)."
+  },
+  {
+   "kennung": "E-63",
+   "pakete": [
+    "E4-OPUS-05",
+    "E6-BAUMEISTER-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-02",
+   "grund": "Terminort Wetzlar und die Anreise-Regel mit Hinweis bei fremder Postleitzahl gehören in den Autoschlüssel-Weg (E4-OPUS-05) und den Vor-Ort-Weg (E6-BAUMEISTER-05), den Ort bestätigt der Inhaber (M-02)."
+  },
+  {
+   "kennung": "E-65",
+   "pakete": [
+    "E4-OPUS-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Zusatzschlüssel im selben Termin wählt der Autoschlüssel-Weg (E4-OPUS-05)."
+  },
+  {
+   "kennung": "E-67",
+   "pakete": [
+    "E6-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Nach Weiter scrollt der Ablauf auf dem Handy zur Schrittüberschrift im gemeinsamen Baukasten (E6-OPUS-01)."
+  },
+  {
+   "kennung": "E-68",
+   "pakete": [
+    "E6-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der Hinweis Angefangene Anfrage weitermachen gehört in den gemeinsamen Baukasten (E6-OPUS-01) mit dem Zwischenstand aus E3-OPUS-07."
+  },
+  {
+   "kennung": "E-69",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-30",
+   "grund": "Ein Vorlauf von zwei bis drei Tagen je Leistung ist eine Termin-Regel, die der Inhaber freigibt (M-30)."
+  },
+  {
+   "kennung": "E-70",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-02",
+   "grund": "Das Zeitfenster von 12 bis 13 Uhr ist eine Terminregel, die der Inhaber bestätigt (M-02)."
+  },
+  {
+   "kennung": "E-72",
+   "pakete": [
+    "E6-BAUMEISTER-05",
+    "E8-TEXTER-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der Hinweis, Haus- und Briefkastenschlüssel mitzubringen, gehört in den Vor-Ort-Weg (E6-BAUMEISTER-05) und in den Textbaustein (E8-TEXTER-03)."
+  },
+  {
+   "kennung": "E-74",
+   "pakete": [
+    "E8-DOKUMENTAR-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-02",
+   "grund": "Google-Profil und andere Auftritte nennen dieselben Zeiten und Preise, das regelt AUSSEN.md (E8-DOKUMENTAR-01), die Werte bestätigt der Inhaber (M-02)."
+  },
+  {
+   "kennung": "E-75",
+   "pakete": [
+    "E8-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Wetzlar und Mittelhessen erscheinen in Titeln und Unterzeilen der Schlüsselseiten (E8-OPUS-02)."
+  },
+  {
+   "kennung": "E-76",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-05",
+   "grund": "Das Foto-Paket für zehn Bildplätze beschafft der Inhaber, weil die Fotos von ihm kommen (MA-05)."
+  },
+  {
+   "kennung": "E-77",
+   "pakete": [
+    "E8-DOKUMENTAR-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Bewertungen entstehen nur aus echten Aufträgen, AUSSEN.md enthält die Bitte ohne Anreize (R4, R5, E8-DOKUMENTAR-01)."
+  },
+  {
+   "kennung": "E-78",
+   "pakete": [
+    "E7-AUTOR-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-04",
+   "grund": "Mittelhessen-Seiten bekommen echten Inhalt über E7-AUTOR-01, die örtlichen Texte entscheidet der Inhaber (M-04)."
+  },
+  {
+   "kennung": "E-79",
+   "pakete": [
+    "E6-BAUMEISTER-05",
+    "E7-AUTOR-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-04",
+   "grund": "Falsche Einsatzgebiete entfernt E6-BAUMEISTER-05 am Vor-Ort-Weg, die echten Gebiete belegt E7-AUTOR-01 (M-04)."
+  },
+  {
+   "kennung": "E-81",
+   "pakete": [
+    "E3-OPUS-06"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "SEO-Felder für Fahrzeugmarken und -modelle gehören ins Fahrzeugmodell (E3-OPUS-06)."
+  },
+  {
+   "kennung": "E-83",
+   "pakete": [
+    "E8-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "BreadcrumbList, noindex für Vorschauen und lastmod baut E8-OPUS-01."
+  },
+  {
+   "kennung": "E-84",
+   "pakete": [
+    "E8-AUTOR-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Ratgeberlücken schließt E8-AUTOR-01 mit Anleitungen mit Informationsgewinn."
+  },
+  {
+   "kennung": "E-85",
+   "pakete": [
+    "E8-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-25",
+   "grund": "Der Artikelbereich verschwindet aus Index, Sitemap und Fuß (E8-OPUS-01), ob der Katalog bleibt, entscheidet der Betrieb (M-25)."
+  },
+  {
+   "kennung": "E-86",
+   "pakete": [
+    "E3-OPUS-01",
+    "E4-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die Handlungsaufforderungen je Rubrik stehen als Daten (E3-OPUS-01) und im Rubrikkopf (E4-OPUS-04)."
+  },
+  {
+   "kennung": "E-87",
+   "pakete": [
+    "E4-OPUS-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Zylinder erscheinen als Sperrschließung und Schließanlage in der Hauptnavigation (E4-OPUS-03)."
+  },
+  {
+   "kennung": "E-88",
+   "pakete": [
+    "E4-OPUS-04",
+    "E8-TEXTER-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der Service-Hub wird im Rubrikkopf schlanker (E4-OPUS-04) und mit kürzeren Rubriktexten (E8-TEXTER-04) gestrafft."
+  },
+  {
+   "kennung": "E-89",
+   "pakete": [],
+   "vorschlag": "neu",
+   "verweis": null,
+   "grund": "Neues Paket Schlüssel nach Code (Vorschlag NEU-S): Codeerkennung in der Suche und die Schaltfläche Nach Code bestellen, weil kein Paket die Shop-Suche plant."
+  },
+  {
+   "kennung": "E-90",
+   "pakete": [],
+   "vorschlag": "neu",
+   "verweis": null,
+   "grund": "Neues Paket Schlüssel nach Code (Vorschlag NEU-S): kompakte Produktseite, weil kein Paket die Produktseiten-Vorlage plant."
+  },
+  {
+   "kennung": "E-91",
+   "pakete": [
+    "E6-OPUS-01",
+    "E3-OPUS-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-36",
+   "grund": "Versandkosten und Lieferzeit stehen früh im Weg (E6-OPUS-01), die Aufpreise kommen aus den Einstellungen (E3-OPUS-05), die Lieferzeiten trägt der Betrieb ein (M-36)."
+  },
+  {
+   "kennung": "E-92",
+   "pakete": [
+    "E6-OPUS-01",
+    "E8-TEXTER-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Mengen- und Reservehinweise gehören in die gemeinsame Kasse (E6-OPUS-01) mit eigenen Texten (E8-TEXTER-03)."
+  },
+  {
+   "kennung": "E-94",
+   "pakete": [
+    "E6-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Abholung ohne Lieferanschrift und behaltene Eingaben baut der gemeinsame Baukasten (E6-OPUS-01)."
+  },
+  {
+   "kennung": "E-95",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-30",
+   "grund": "Eine Regel zur Absicherung von Kleinbestellungen ist eine Preisentscheidung des Inhabers (M-30)."
+  },
+  {
+   "kennung": "E-97",
+   "pakete": [
+    "E3-OPUS-07",
+    "E5-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "ABUS, BKS und die Zusatzkomponenten im Schließanlagen-Konfigurator stehen in den Systemdaten (E3-OPUS-07) und im Konfigurator (E5-OPUS-01)."
+  },
+  {
+   "kennung": "E-98",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-37",
+   "grund": "Kategorieseiten und Adressen mit Hersteller und Serie entstehen mit den Daten, die der Betrieb pflegt (M-37)."
+  },
+  {
+   "kennung": "E-100",
+   "pakete": [
+    "E6-BAUMEISTER-06",
+    "E8-TEXTER-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die Mail bei Geprüft und die Antwortvorlagen zur Fotoanfrage bauen E6-BAUMEISTER-06 und E8-TEXTER-05."
+  },
+  {
+   "kennung": "E-102",
+   "pakete": [
+    "E3-OPUS-09",
+    "E6-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Das Kartenfoto bei ZY-02 ist ein Pflicht-Upload (E3-OPUS-09) im Nachbestellweg der Kasse (E6-OPUS-01)."
+  },
+  {
+   "kennung": "E-103",
+   "pakete": [
+    "E5-OPUS-03",
+    "E5-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der Nachbestell-Ablauf für Hausverwaltung und Gewerbe nutzt den Schließplan mit Schnappschuss (E5-OPUS-03) im Konfigurator (E5-OPUS-01)."
+  },
+  {
+   "kennung": "E-104",
+   "pakete": [
+    "E7-AUTOR-01",
+    "E8-OPUS-02"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-04",
+   "grund": "Eine Seite für Hausverwaltung und Gewerbe in Mittelhessen entsteht als Schlüsselseite (E8-OPUS-02) mit eigener Substanz (E7-AUTOR-01), den Ort bestätigt der Inhaber (M-04)."
+  },
+  {
+   "kennung": "E-107",
+   "pakete": [
+    "E9-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die Arbeitsliste im Backend ist Teil des Dashboards (E9-OPUS-01)."
+  },
+  {
+   "kennung": "E-109",
+   "pakete": [
+    "E3-OPUS-05",
+    "E9-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-06",
+   "grund": "Versand melden mit Zahlungswarnung setzt E3-OPUS-05 um, die Liste im Admin zeigt E9-OPUS-01, die Zahlungswarnung hängt am Zahlungskonto (M-06)."
+  },
+  {
+   "kennung": "E-110",
+   "pakete": [
+    "E3-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Vorschaubilder am Vorgang liefert das Vorgangsblatt-System (E3-OPUS-04)."
+  },
+  {
+   "kennung": "E-112",
+   "pakete": [
+    "E9-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der Termin-Wochenplan ist eine Ansicht der Fälligkeiten im Dashboard (E9-OPUS-01)."
+  },
+  {
+   "kennung": "E-113",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-29",
+   "grund": "Backup einschließlich Storage hängt am Konto des Betriebs (M-29)."
+  },
+  {
+   "kennung": "E-114",
+   "pakete": [
+    "E9-OPUS-01",
+    "E8-TEXTER-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die CSV mit Status, Postleitzahl und Region exportiert E9-OPUS-01, die Region nennt die Team-Mail in E8-TEXTER-05."
+  },
+  {
+   "kennung": "E-115",
+   "pakete": [
+    "E9-OPUS-01",
+    "E3-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Kennzahlen baut E9-OPUS-01 aus dem Kennzahlen-Modul, das Statusprotokoll führt E3-OPUS-04."
+  },
+  {
+   "kennung": "E-116",
+   "pakete": [
+    "E9-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-15",
+   "grund": "Die anonyme Trichterzählung in eigener Datenbank gehört ins Kennzahlen-Modul (E9-OPUS-01), die Einwilligung regelt M-15."
+  },
+  {
+   "kennung": "E-117",
+   "pakete": [
+    "E3-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-06",
+   "grund": "Endbetrag und Rechnung hängen am Vorgang (E3-OPUS-04), die Belegmails stellt der Betrieb ein (M-06)."
+  },
+  {
+   "kennung": "E-118",
+   "pakete": [
+    "E6-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-02",
+   "grund": "Die Termin-Unterlagen mit Werkstattadresse, Mitbringliste und Kalenderdatei bestätigt der gemeinsame Abschluss (E6-OPUS-01), die Adresse bestätigt der Inhaber (M-02)."
+  },
+  {
+   "kennung": "E-119",
+   "pakete": [
+    "E6-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Der Rückruf-Hinweis an das Team bei abgebrochener Anzahlung gehört in den Terminstatus (E6-OPUS-04)."
+  },
+  {
+   "kennung": "E-120",
+   "pakete": [
+    "E4-OPUS-05",
+    "E6-OPUS-04"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Ein neuer Termin für denselben Vorgang nach Abbruch gehört in den Autoschlüssel-Weg (E4-OPUS-05) und in den Terminstatus (E6-OPUS-04)."
+  },
+  {
+   "kennung": "E-122",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-03",
+   "grund": "Anzahlungsregel und Selbst-Umbuchung sind Zahlungsverhalten, das nur der Inhaber festlegt (MA-03, G9)."
+  },
+  {
+   "kennung": "E-123",
+   "pakete": [
+    "E4-OPUS-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-02",
+   "grund": "Anrufen und Rückruf in einem Schritt von jeder Rubrik (E4-OPUS-03), die Öffnungszeiten bestätigt der Inhaber (M-02)."
+  },
+  {
+   "kennung": "E-124",
+   "pakete": [
+    "E6-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Am Handy fortsetzen mit einem Link ohne Personendaten baut der gemeinsame Abschluss (E6-OPUS-01)."
+  },
+  {
+   "kennung": "E-125",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-02",
+   "grund": "Samstagsfenster und die Ausnahme ohne Termin für Batterie und Gehäuse bestätigt der Inhaber (M-02, M-30)."
+  },
+  {
+   "kennung": "E-126",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-02",
+   "grund": "Die Öffnungszeiten sind in den Quellen unterschiedlich angegeben, der Inhaber bestätigt sie (M-02)."
+  },
+  {
+   "kennung": "E-127",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-04",
+   "grund": "Die Preise für Zweitschlüssel und Gehäuse trägt der Inhaber im Bogen PREISE ein und bestätigt sie (MA-04, M-30)."
+  },
+  {
+   "kennung": "E-128",
+   "pakete": [
+    "E6-BAUMEISTER-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-02",
+   "grund": "Der Ablauf mit dem Hinweis, dass der Ort abgestimmt wird, gehört in den Vor-Ort-Weg (E6-BAUMEISTER-05), fremde Wettbewerbsaussagen werden nicht übernommen (R11)."
+  },
+  {
+   "kennung": "E-129",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-02",
+   "grund": "Welche Adresse in Mails und Terminen steht, entscheidet der Inhaber, weil Firmendaten unantastbar sind (G9, M-02)."
+  },
+  {
+   "kennung": "E-130",
+   "pakete": [
+    "E8-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-03",
+   "grund": "Die noindex-Abwägung für Modellseiten und Code-Produktseiten setzt E8-OPUS-01 um, bis die Herstellerpflege steht (M-03)."
+  },
+  {
+   "kennung": "E-131",
+   "pakete": [
+    "E1-RECHERCHEUR-05"
+   ],
+   "vorschlag": "paket",
+   "verweis": "MA-10",
+   "grund": "Ohne gemessene Suchvolumina und echte Ergebnisbilder arbeitet die Recherche mit den Belegstufen B und C (E1-RECHERCHEUR-05), Keyword-Daten liefert der Inhaber (MA-10)."
+  },
+  {
+   "kennung": "E-132",
+   "pakete": [
+    "EA-OPUS-01"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Fehlende Besucher- und Umsatzdaten werden als Annahmen im Messplan ausgewiesen (EA-OPUS-01)."
+  },
+  {
+   "kennung": "E-133",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-29",
+   "grund": "Zahlungs- und Mailwege sind nur im Code geprüft, ein Test mit echten Konten braucht die Konten des Betriebs (M-29)."
+  },
+  {
+   "kennung": "E-134",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "M-06",
+   "grund": "Die Stripe-Gebühren prüft der Betrieb am Anbieter selbst (M-06)."
+  },
+  {
+   "kennung": "E-135",
+   "pakete": [
+    "E9-OPUS-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": null,
+   "grund": "Die Testvorgänge in der Test-Datenbank weist die Livegang-Prüfung aus, bis sie bereinigt sind (E9-OPUS-03)."
+  },
+  {
+   "kennung": "E-137",
+   "pakete": [
+    "E9-OPUS-03"
+   ],
+   "vorschlag": "paket",
+   "verweis": "M-29",
+   "grund": "Die Test-Datenbank bereinigt der Betrieb vor dem Livegang, die Livegang-Prüfung kontrolliert es (E9-OPUS-03, M-29)."
+  },
+  {
+   "kennung": "E-138",
+   "pakete": [],
+   "vorschlag": "menschensache",
+   "verweis": "MA-07",
+   "grund": "Der Inhaber beantwortet die Fragen F-10 bis F-15, F-23 und F-27 im Interview (MA-07)."
+  }
+ ]
+}

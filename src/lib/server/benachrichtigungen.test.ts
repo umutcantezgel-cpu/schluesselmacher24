@@ -52,7 +52,13 @@ function vorgang(): BusinessRecord {
   };
 }
 
-type Aufruf = { an: string[]; betreff: string; antwortAn?: string[]; schluessel?: string };
+type Aufruf = {
+  an: string[];
+  betreff: string;
+  antwortAn?: string[];
+  schluessel?: string;
+  anhaenge?: Array<{ filename: string; content: string; content_type?: string }>;
+};
 const aufrufe: Aufruf[] = [];
 let antworten: Array<{ status: number; body: unknown }> = [];
 
@@ -64,6 +70,7 @@ function fetchErsatz() {
       betreff: body.subject,
       antwortAn: body.reply_to,
       schluessel: (init.headers as Record<string, string>)['Idempotency-Key'],
+      anhaenge: body.attachments,
     });
     const naechste = antworten.shift() ?? { status: 200, body: { id: `re_${aufrufe.length}` } };
     return new Response(JSON.stringify(naechste.body), { status: naechste.status });
@@ -113,6 +120,11 @@ describe('benachrichtigeNeuerVorgang', () => {
     expect(kunde?.schluessel).toBe('lokal-SM24-T-2026-0007-eingang-kunde');
     expect(team?.an).toEqual(['team@schluesselmacher24.de', 'inhaber@schluesselmacher24.de']);
     expect(team?.schluessel).toBe('lokal-SM24-T-2026-0007-eingang-team');
+    /* G-37: Vorgangsblatt als PDF nur an den Betrieb */
+    expect(kunde?.anhaenge).toBeUndefined();
+    expect(team?.anhaenge).toHaveLength(1);
+    expect(team?.anhaenge?.[0]).toMatchObject({ filename: 'Vorgangsblatt-SM24-T-2026-0007.pdf', content_type: 'application/pdf' });
+    expect(Buffer.from(team?.anhaenge?.[0].content ?? '', 'base64').subarray(0, 5).toString('latin1')).toBe('%PDF-');
 
     expect(gespeichert.mailLog?.map((m) => [m.kind, m.result])).toEqual([
       ['eingang-kunde', 'gesendet'],

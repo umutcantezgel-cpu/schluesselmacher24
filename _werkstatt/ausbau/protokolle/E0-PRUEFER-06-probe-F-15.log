@@ -1,0 +1,12 @@
+# Funktionsliste (E0-PRUEFER-04)
+
+Lauf: 2026-11-02T22:33:13.286Z · Server http://localhost:3000 · Bestanden 0 von 1
+
+| F-Nr. | Funktion | Ergebnis | Begründung oder Messwert | Dauer |
+|---|---|---|---|---|
+| F-15 | Partner werden: fünf Schritte bis zur Bewerbung | NICHT BESTANDEN | Fünf Schritte bis „Angaben prüfen und absenden“: nein (5 Schritte: So funktioniert die Vermittlung · So funktioniert die Vermittlung · So funktioniert die Vermittlung · So funktioniert die Vermittlung · So funktioniert die Vermittlung); Datenschutz bestätigt: ja; Bestätigung oder abgefangene schreibende Anfrage mit Prüf-E-Mail: ja (Attrappe action-schreibend); Abgesendete Angaben: Firma, PLZ und Prüf-E-Mail: ja (Server-Aktionen mit Körper: 3) | 26.6 s |
+
+Vorher/Nachher: content/records.json vorhanden nein → nein; Serverlog neu 0 Zeichen, Treffer Vorgang/Anfrage/POST: 0
+
+Markdown: /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/f15.md
+JSON-Protokoll: /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/f15.json

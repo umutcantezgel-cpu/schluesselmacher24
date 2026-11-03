@@ -14,7 +14,7 @@ import {
   type VorgangsAenderung,
 } from './payload-mapping';
 import { buildRecordId, buildReference, counterKey, nextSequenceFromExisting } from '@/lib/reference';
-import type { AppointmentInfo, RecordKind } from '@/lib/types';
+import type { AppointmentInfo, FahrzeugReihe, RecordKind, Rubrik } from '@/lib/types';
 import { mitDatenbank } from '@/lib/umgebung';
 import type { Vorgaenge } from '@/payload-types';
 
@@ -76,6 +76,27 @@ export async function getServicePages(area?: string) {
 export async function getServicePage(area: string, slug: string) {
   const items = await getCollection('servicePages');
   return items.find((s) => s.area === area && s.slug === slug && s.active) ?? null;
+}
+
+/** Rubriken, die nicht aus sind, nach Reihenfolge (Navigation, Sitemap, Rubrikseiten). */
+export async function getRubriken(): Promise<Rubrik[]> {
+  const items = await getCollection('rubriken');
+  return items.filter((r) => r.status !== 'aus').sort((a, b) => a.reihenfolge - b.reihenfolge);
+}
+
+/** Kacheln des Intent-Hubs: live geschaltet und für den Hub vorgesehen, Reihenfolge nach G-03. */
+export async function getHubRubriken(): Promise<Rubrik[]> {
+  return (await getRubriken()).filter((r) => r.status === 'live' && r.imHub);
+}
+
+/** Sichtbare Reihen des Fahrzeugkatalogs, nach Marke und Reihe (A-009). */
+export async function getFahrzeugkatalog(): Promise<FahrzeugReihe[]> {
+  const reihen = await getCollection('fahrzeugkatalog');
+  return reihen.filter((r) => r.sichtbar).sort((a, b) => a.marke.localeCompare(b.marke, 'de') || a.reihe.localeCompare(b.reihe, 'de'));
+}
+
+export async function getRubrik(id: string): Promise<Rubrik | null> {
+  return (await getRubriken()).find((r) => r.id === id) ?? null;
 }
 
 export async function getGuides() {

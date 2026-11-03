@@ -1,0 +1,16 @@
+# Funktionsliste (E0-PRUEFER-04)
+
+Lauf: 2026-11-02T22:34:06.781Z · Server http://localhost:3000 · Bestanden 4 von 5
+
+| F-Nr. | Funktion | Ergebnis | Begründung oder Messwert | Dauer |
+|---|---|---|---|---|
+| F-15 | Partner werden: fünf Schritte bis zur Bewerbung | BESTANDEN | Fünf Schritte bis „Angaben prüfen und absenden“: ja (5 Schritte: Ihr Betrieb · Einsatzgebiet · Leistungen und Qualifikation · Nachweise · Angaben prüfen und absenden); Datenschutz bestätigt: ja; Bestätigung oder abgefangene schreibende Anfrage mit Prüf-E-Mail: ja (Attrappe action-schreibend); Abgesendete Angaben: Firma, PLZ und Prüf-E-Mail: ja (Server-Aktionen mit Körper: 3) | 4.0 s |
+| F-16 | Widerruf erklären: Name, Prüf-E-Mail, Absenden | BESTANDEN | Formular mit Feld „Name“ und „E-Mail-Adresse“: ja; Name und Prüf-E-Mail eingetragen: ja; Knopf „Widerruf jetzt erklären“ bedienbar: ja; Bestätigung oder abgefangene schreibende Anfrage mit Prüf-E-Mail: ja (Attrappe action-schreibend); Abgesendete Angaben: Name und Prüf-E-Mail: ja (Server-Aktionen mit Körper: 3) | 1.5 s |
+| F-17 | Codesuche, Serie und Kategorie-Seite | BESTANDEN | Serie „ms-01“ zeigt die Linie in der Trefferliste: ja (Büroschrank und Rollcontainer); Code „0812“ markiert die Linie als „passt zum Codeformat“: ja (3 bis 4 Ziffern); Kategorie „Briefkasten und Postanlagen“ listet mindestens eine Linie: ja (5 Linien) | 1.9 s |
+| F-18 | Fahrzeugwahl: Marke, Modell und Termin mit Vorauswahl | NICHT BESTANDEN | Fehler: locator.click: Timeout 10000ms exceeded. | 19.1 s |
+| F-19 | Kontakt mit tel- und mailto-Link, Vor-Ort-Verweis, Einsenden | BESTANDEN | Telefon als tel:-Link: ja (tel:+4964418056279); E-Mail als mailto:-Link: ja (mailto:info@schluesselmacher24.de); Vor-Ort-Seite verweist in eine Anfrage: ja (3 Verweise); Einsenden zeigt den Weg zur Foto-Anfrage: ja (/schluessel-nach-vorlage/anfrage) | 2.6 s |
+
+Vorher/Nachher: content/records.json vorhanden nein → nein; Serverlog neu 0 Zeichen, Treffer Vorgang/Anfrage/POST: 0
+
+Markdown: /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/probe1.md
+JSON-Protokoll: /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/probe1.json

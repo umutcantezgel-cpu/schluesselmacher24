@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ComponentType } from 'react';
 
-import { getCodeLines, getPageContent } from '@/lib/data';
+import { getCodeLines, getPageContent, getRubrik } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { SpaetVorladen } from '@/lib/spaet-vorladen';
 import type { InfoHint } from '@/lib/types';
@@ -251,6 +251,8 @@ const FALLBACK_FAQ = [
 ];
 
 export default async function SchliessanlagenPage() {
+  // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
+  const rubrik = await getRubrik('schliessanlage');
   const [page, codeLines] = await Promise.all([getPageContent(ROUTE), getCodeLines()]);
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
@@ -268,6 +270,7 @@ export default async function SchliessanlagenPage() {
       />
 
       <PageHeader
+        rubrik={rubrik}
         eyebrow="Leistungsbereich"
         bereich={ROUTE}
         title={page?.headline ?? 'Mechanische Schließanlagen'}
@@ -294,6 +297,10 @@ export default async function SchliessanlagenPage() {
             </ButtonLink>
             {/* Ziel des Kopfknopfs erst nach der Fräsbahn vorladen (D-044) */}
             <SpaetVorladen ziele={['/schliessanlagen/konfigurator']} />
+            {/* Schließplan-Planer (E5-OPUS-01): Türen, Schlüssel und Matrix selbst anlegen */}
+            <ButtonLink href="/schliessanlagen/konfigurator/schliessplan" prefetch={false} size="lg" variant="outline">
+              Schließplan selbst anlegen
+            </ButtonLink>
             <ButtonLink href="#systeme" size="lg" variant="outline">
               Zu den Systemen
             </ButtonLink>

@@ -1,0 +1,5 @@
+| Ansicht | Gerät | S1 Schrift | S2 Farbe | S3 Verlauf/Glas | S4 Icon/Emoji | S5 Gleichförmigkeit | S6 Raster | S7 Welle | S8 Einblendung | Slop-Index |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H01-start | mobil | 1 (Inter 102x) | 3 (rgb(192,69,211) lila; rgb(242,201,248) lila) | 7 (p.eyebrow::before; p.eyebrow::before) | 0 | 1 (Radius 0px 0px 0px 0px bei 78 %) | 0 | 0 | 1 (data-motion=play auf 7 von 7) | 13 |
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/slopscan-2026-11-02_23-37-55.json

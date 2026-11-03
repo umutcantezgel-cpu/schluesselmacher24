@@ -1,0 +1,28 @@
+Lighthouse 12.6.1 · Chrome 153.0.0.0 · Profil mobil · 3 Läufe je Ansicht
+
+| Ansicht | Läufe | Leistung | Barrierefreiheit | Best Practices | SEO | LCP | CLS | TBT | INP | erfüllt |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H01-start | 3/3 | 95 (95–96) | 100 (100–100) | 100 (100–100) | 100 (100–100) | 2805 ms (2788–2811) | 0,000 (0,000–0,000) | 120 ms (58–121) | – | nein (LCP) |
+| H02-autoschluessel | 3/3 | 88 (88–94) | 100 (100–100) | 100 (100–100) | 92 (92–92) | 3521 ms (2875–3647) | 0,000 (0,000–0,000) | 130 ms (116–160) | – | nein (Leistung, LCP, SEO) |
+| H05-code | 3/3 | 91 (91–93) | 100 (100–100) | 100 (100–100) | 92 (92–92) | 3407 ms (2490–3427) | 0,000 (0,000–0,000) | 91 ms (63–232) | – | nein (LCP, SEO) |
+| H09-sperrschliessung-konfigurator | 3/3 | 94 (90–100) | 100 (100–100) | 100 (100–100) | 92 (92–92) | 3085 ms (1586–3562) | 0,000 (0,000–0,000) | 63 ms (58–75) | – | nein (LCP, SEO) |
+
+### Befunde auf dem Median und fehlgeschlagene Läufe
+
+- H01-start: LCP 2805 (Grenze höchstens 2500 ms)
+- H02-autoschluessel: Leistung 88 (Grenze mindestens 90)
+- H02-autoschluessel: LCP 3521 (Grenze höchstens 2500 ms)
+- H02-autoschluessel: SEO 92 (Grenze 100)
+- H05-code: LCP 3407 (Grenze höchstens 2500 ms)
+- H05-code: SEO 92 (Grenze 100)
+- H09-sperrschliessung-konfigurator: LCP 3085 (Grenze höchstens 2500 ms)
+- H09-sperrschliessung-konfigurator: SEO 92 (Grenze 100)
+
+### Attrappen-Abbrüche je Ansicht (alle Läufe)
+
+- H01-start: fremd 0, schreibend 0, unbekannte Aktionen 0
+- H02-autoschluessel: fremd 0, schreibend 0, unbekannte Aktionen 0
+- H05-code: fremd 0, schreibend 0, unbekannte Aktionen 0
+- H09-sperrschliessung-konfigurator: fremd 0, schreibend 0, unbekannte Aktionen 0
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/lighthouse.json

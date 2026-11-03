@@ -4,6 +4,7 @@ import type { Endpoint, PayloadRequest } from 'payload';
 
 import { vorgangZuSeite } from '../../lib/data/payload-mapping';
 import { produktionslisteHtml, vorgangsblattHtml } from '../../lib/druckansichten';
+import { vorgangsblattPdf } from '../../lib/pdf/vorgangsblatt-pdf';
 import type { Vorgaenge } from '../../payload-types';
 import { hatRolle } from '../access/rollen';
 import { einstellungenLaden } from './vorgang-benachrichtigen';
@@ -12,6 +13,7 @@ import { einstellungenLaden } from './vorgang-benachrichtigen';
  * Druckansichten der Sammlung Vorgänge (nur Team):
  * - GET /api/vorgaenge/:id/vorgangsblatt — ein Vorgang kompakt zum Drucken
  *   oder „als PDF speichern“ (Leitfaden Kap. 11 und 17),
+ * - GET /api/vorgaenge/:id/vorgangsblatt-pdf — dasselbe als PDF mit Vorschaubildern (G-37),
  * - GET /api/vorgaenge/produktionsliste — offene Code- und Zylinderpositionen
  *   (Leitfaden Kap. 08).
  * Payload prüft bei eigenen Endpunkten keine Rechte — deshalb hier
@@ -72,6 +74,37 @@ export async function vorgangsblattHandler(req: PayloadRequest): Promise<Respons
   return htmlAntwort(vorgangsblattHtml({ vorgang: vorgangZuSeite(doc), firma: einstellungen?.company, nonce: n }), n);
 }
 
+export async function vorgangsblattPdfHandler(req: PayloadRequest): Promise<Response> {
+  const verboten = abgelehnt(req);
+  if (verboten) return verboten;
+  const id = String(req.routeParams?.id ?? '');
+  if (!/^\d{1,15}$/.test(id)) return fehler(404, 'Vorgang nicht gefunden.');
+
+  const doc = (await req.payload.findByID({
+    collection: 'vorgaenge',
+    id: Number(id),
+    depth: 0,
+    overrideAccess: true,
+    disableErrors: true,
+    req,
+  })) as Vorgaenge | null;
+  if (!doc) return fehler(404, 'Vorgang nicht gefunden.');
+
+  const einstellungen = await einstellungenLaden(req);
+  const { dateiname, daten } = await vorgangsblattPdf({ payload: req.payload, vorgang: vorgangZuSeite(doc), firma: einstellungen?.company, req });
+  return new Response(new Uint8Array(daten), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': `inline; filename="${dateiname}"`,
+      'Cache-Control': 'no-store',
+      'Content-Security-Policy': "default-src 'none'; frame-ancestors 'self'",
+      'Referrer-Policy': 'no-referrer',
+      'X-Robots-Tag': 'noindex, nofollow',
+    },
+  });
+}
+
 export async function produktionslisteHandler(req: PayloadRequest): Promise<Response> {
   const verboten = abgelehnt(req);
   if (verboten) return verboten;
@@ -105,5 +138,6 @@ export async function produktionslisteHandler(req: PayloadRequest): Promise<Resp
 
 export const druckansichten: Endpoint[] = [
   { path: '/:id/vorgangsblatt', method: 'get', handler: vorgangsblattHandler },
+  { path: '/:id/vorgangsblatt-pdf', method: 'get', handler: vorgangsblattPdfHandler },
   { path: '/produktionsliste', method: 'get', handler: produktionslisteHandler },
 ];

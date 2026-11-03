@@ -1,0 +1,239 @@
+{
+ "version": 1,
+ "stand": "2026-11-02T20:00:00.000Z",
+ "etappen": [
+  {
+   "kennung": "E1",
+   "ziel": "Testfundament",
+   "eingang": "Leerer Bestand",
+   "ausgang": "Erste Bausteine",
+   "tor": "Alle Prüfungen grün",
+   "kriterien": [
+    "Z-01",
+    "Z-02",
+    "Z-03"
+   ],
+   "tage": 2
+  },
+  {
+   "kennung": "E2",
+   "ziel": "Testausbau",
+   "eingang": "Erste Bausteine",
+   "ausgang": "Zweite Bausteine",
+   "tor": "Probelauf bestanden",
+   "kriterien": [
+    "Z-17",
+    "Z-18",
+    "Z-19"
+   ],
+   "tage": 1.5
+  }
+ ],
+ "pakete": [
+  {
+   "titel": "Erster Baustein",
+   "rolle": "Baumeister",
+   "modell": "opus-5.5",
+   "stufe": 2,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "src/alpha.ts"
+   ],
+   "abhaengigkeiten": [],
+   "anforderungen": [],
+   "kriterien": [
+    "Z-01",
+    "Z-02",
+    "Z-03",
+    "Z-04"
+   ],
+   "art": "pflicht",
+   "wirkung": 5,
+   "status": "committet",
+   "grund": null,
+   "versuche": 1,
+   "commit": "a1b2c3d",
+   "massstab": "muster/massstab.md",
+   "muster": "muster/beispiel.md",
+   "kennung": "E1-A-01",
+   "etappe": "E1",
+   "welle": 1
+  },
+  {
+   "titel": "Zweiter Baustein",
+   "rolle": "Baumeister",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "S",
+   "schreibrechte": [
+    "src/beta.ts"
+   ],
+   "abhaengigkeiten": [
+    "E1-A-01"
+   ],
+   "anforderungen": [
+    "L-05"
+   ],
+   "kriterien": [
+    "Z-05",
+    "Z-06",
+    "Z-07",
+    "Z-08"
+   ],
+   "art": "pflicht",
+   "wirkung": 4,
+   "status": "committet",
+   "grund": null,
+   "versuche": 1,
+   "commit": "b2c3d4e",
+   "massstab": "muster/massstab.md",
+   "muster": "muster/beispiel.md",
+   "kennung": "E1-B-02",
+   "etappe": "E1",
+   "welle": 1
+  },
+  {
+   "titel": "Dritter Baustein",
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "S",
+   "schreibrechte": [
+    "src/gamma.ts"
+   ],
+   "abhaengigkeiten": [
+    "E1-B-02"
+   ],
+   "anforderungen": [
+    "M-07"
+   ],
+   "kriterien": [
+    "Z-09",
+    "Z-10",
+    "Z-11",
+    "Z-12"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "muster/massstab.md",
+   "muster": "muster/beispiel.md",
+   "kennung": "E1-C-03",
+   "etappe": "E1",
+   "welle": 2
+  },
+  {
+   "titel": "Vierter Baustein",
+   "rolle": "Baumeister",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "S",
+   "schreibrechte": [
+    "src/delta.ts"
+   ],
+   "abhaengigkeiten": [
+    "E1-B-02"
+   ],
+   "anforderungen": [],
+   "kriterien": [
+    "Z-13",
+    "Z-14",
+    "Z-15",
+    "Z-16"
+   ],
+   "art": "pflicht",
+   "wirkung": 4,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "muster/massstab.md",
+   "muster": "muster/beispiel.md",
+   "kennung": "E1-D-04",
+   "etappe": "E1",
+   "welle": 2
+  },
+  {
+   "titel": "Fünfter Baustein",
+   "rolle": "Baumeister",
+   "modell": "opus-5.5",
+   "stufe": 3,
+   "kostenklasse": "L",
+   "schreibrechte": [
+    "src/epsilon.ts"
+   ],
+   "abhaengigkeiten": [
+    "E1-C-03"
+   ],
+   "anforderungen": [],
+   "kriterien": [
+    "Z-17",
+    "Z-18",
+    "Z-19"
+   ],
+   "art": "pflicht",
+   "wirkung": 5,
+   "status": "bereit",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "muster/massstab.md",
+   "muster": "muster/beispiel.md",
+   "kennung": "E2-E-05",
+   "etappe": "E2",
+   "welle": 1
+  },
+  {
+   "titel": "Sechster Baustein",
+   "rolle": "Baumeister",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "S",
+   "schreibrechte": [
+    "src/zeta.ts"
+   ],
+   "abhaengigkeiten": [],
+   "anforderungen": [],
+   "kriterien": [
+    "Z-20",
+    "Z-21",
+    "Z-22"
+   ],
+   "art": "kuer",
+   "wirkung": 2,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "muster/massstab.md",
+   "muster": "muster/beispiel.md",
+   "kennung": "E2-F-06",
+   "etappe": "E2",
+   "welle": 1
+  }
+ ],
+ "mengengeruest": {
+  "frei": "Erfundene Testdaten"
+ },
+ "kapazitaet": {
+  "pakete_pro_tag": {
+   "S": 12,
+   "M": 8,
+   "L": 3
+  },
+  "puffer": 0.2,
+  "tage": 3.5
+ },
+ "kritischer_pfad": [
+  "E1-A-01",
+  "E1-B-02",
+  "E1-C-03",
+  "E2-E-05"
+ ],
+ "vorrat": [
+  "E2-F-06"
+ ]
+}

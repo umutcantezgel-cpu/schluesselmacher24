@@ -1,0 +1,81 @@
+Geprüfte Dateien: 321 (seit b8e7ea7)
+
+### Funde
+
+| Datei | Zeile | Kategorie | Fund |
+|---|---|---|---|
+| src/app/(payload)/custom.css | 14 | Hex-Farbe | #1d5fd1 |
+| src/app/(payload)/custom.css | 15 | Hex-Farbe | #1a54b8 |
+| src/app/(payload)/custom.css | 16 | Hex-Farbe | #eaf1ff |
+| src/app/(payload)/custom.css | 17 | Hex-Farbe | #dce8ff |
+| src/app/apple-icon.tsx | 18 | Hex-Farbe | #0f172a |
+| src/app/global-error.tsx | 12 | Farbfunktion | hsl( |
+| src/app/global-error.tsx | 13 | Farbfunktion | hsl( |
+| src/app/global-error.tsx | 14 | Farbfunktion | hsl( |
+| src/app/global-error.tsx | 15 | Farbfunktion | hsl( |
+| src/app/global-error.tsx | 16 | Farbfunktion | hsl( |
+| src/app/global-error.tsx | 17 | Farbfunktion | hsl( |
+| src/app/global-error.tsx | 31 | style mit Zahl + px/rem | style={{ boxSizing: 'border-box', maxWidth: '40rem',  |
+| src/app/global-error.tsx | 42 | style mit Zahl + px/rem | style={{ marginTop: '1.5rem', padding: '1.5rem',  |
+| src/app/global-error.tsx | 51 | style mit Zahl + px/rem | style={{ margin: 0, fontSize: '1.5rem', lineHeight: 1.3 }} |
+| src/app/global-error.tsx | 52 | style mit Zahl + px/rem | style={{ margin: '0.75rem 0 0', lineHeight: 1.6, color: FARBE.leise }} |
+| src/app/global-error.tsx | 57 | style mit Zahl + px/rem | style={{ margin: '1rem 0 0', fontSize: '0.8125rem', color: FARBE.leise, fontFami |
+| src/app/global-error.tsx | 64 | style mit Zahl + px/rem | style={{ marginTop: '1.5rem', minHeight: '44px', |
+| src/app/global-error.tsx | 71 | Hex-Farbe | #fff |
+| src/app/manifest.test.ts | 11 | Hex-Farbe | #fafbfd |
+| src/components/forms/formular-schutz.tsx | 116 | style mit Zahl + px/rem | style={{ position: 'absolute', left: '-10000px', top: 'auto', width: 1, height:  |
+| src/components/statistik/einwilligung-hinweis.tsx | 33 | Tailwind-Klasse mit [] | bottom-[calc(5rem+env(safe-area-inset-bottom))] |
+| src/lib/druckansichten.ts | 44 | Hex-Farbe | #192133 |
+| src/lib/druckansichten.ts | 44 | Hex-Farbe | #fff |
+| src/lib/druckansichten.ts | 45 | Hex-Farbe | #1d5fd1 |
+| src/lib/druckansichten.ts | 47 | Hex-Farbe | #1d5fd1 |
+| src/lib/druckansichten.ts | 48 | Hex-Farbe | #5B6578 |
+| src/lib/druckansichten.ts | 50 | Hex-Farbe | #D9E0EA |
+| src/lib/druckansichten.ts | 54 | Hex-Farbe | #E5EAF1 |
+| src/lib/druckansichten.ts | 55 | Hex-Farbe | #5B6578 |
+| src/lib/druckansichten.ts | 61 | Hex-Farbe | #F7F9FC |
+| src/lib/druckansichten.ts | 61 | Hex-Farbe | #D9E0EA |
+| src/lib/druckansichten.ts | 62 | Hex-Farbe | #1d5fd1 |
+| src/lib/druckansichten.ts | 62 | Hex-Farbe | #1d5fd1 |
+| src/lib/druckansichten.ts | 62 | Hex-Farbe | #fff |
+| src/lib/druckansichten.ts | 63 | Hex-Farbe | #D9E0EA |
+| src/lib/mail/html.ts | 44 | Hex-Farbe | #F7F9FC |
+| src/lib/mail/html.ts | 45 | Hex-Farbe | #FFFFFF |
+| src/lib/mail/html.ts | 46 | Hex-Farbe | #1d5fd1 |
+| src/lib/mail/html.ts | 47 | Hex-Farbe | #D9E0EA |
+| src/lib/mail/html.ts | 48 | Hex-Farbe | #192133 |
+| src/lib/mail/html.ts | 49 | Hex-Farbe | #5B6578 |
+| src/lib/mail/html.ts | 50 | Hex-Farbe | #EEF3FC |
+| src/lib/mail/html.ts | 152 | Hex-Farbe | #FFFFFF |
+| src/lib/server/kundendateien.db.test.ts | 107 | Tailwind-Klasse mit [] | image-[0-9a-f] |
+| src/payload/components/Anbindungen.tsx | 20 | style mit Zahl + px/rem | style={{ borderTop: '1px solid var(--theme-elevation-150)', paddingTop: 'var(--b |
+| src/payload/components/Kennzahlen.tsx | 54 | style mit Zahl + px/rem | style={{ display: 'grid', gap: 'calc(var(--base) * 2)', gridTemplateColumns: 're |
+
+### Ausnahmen (Bildinhalte, mitgezählt)
+
+| Datei | Zeile | Kategorie | Fund |
+|---|---|---|---|
+| src/app/(site)/layout.tsx | 76 | Hex-Farbe | #f7f9fb |
+| src/components/forms/photo-upload.tsx | 151 | Hex-Farbe | #fff |
+
+### Summe je Datei
+
+| Datei | Treffer | Ausnahme |
+|---|---|---|
+| src/app/(payload)/custom.css | 4 | nein |
+| src/app/(site)/layout.tsx | 1 | einzeln benannt |
+| src/app/apple-icon.tsx | 1 | nein |
+| src/app/global-error.tsx | 13 | nein |
+| src/app/manifest.test.ts | 1 | nein |
+| src/components/forms/formular-schutz.tsx | 1 | nein |
+| src/components/forms/photo-upload.tsx | 1 | einzeln benannt |
+| src/components/statistik/einwilligung-hinweis.tsx | 1 | nein |
+| src/lib/druckansichten.ts | 14 | nein |
+| src/lib/mail/html.ts | 8 | nein |
+| src/lib/server/kundendateien.db.test.ts | 1 | nein |
+| src/payload/components/Anbindungen.tsx | 1 | nein |
+| src/payload/components/Kennzahlen.tsx | 1 | nein |
+
+Summe ohne Ausnahmen: 46 · Ausnahmen: 2
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-PRUEFER-02-werte-suche-json.log
+Exit: 0

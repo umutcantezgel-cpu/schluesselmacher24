@@ -1,0 +1,472 @@
+{
+  "persona": "rentnerin",
+  "geraet": "mobil",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "tipps": 31,
+  "wischer": 2,
+  "eingabe": {
+    "tipps": 3,
+    "feld": "Suchfeld „Marke und Modell“",
+    "ms": 3007
+  },
+  "zielErreicht": true,
+  "zielMs": 16651,
+  "zielText": "Anfrage bis zum letzten Schritt (Schritt 5 von 5), nicht abgesendet",
+  "abbruch": "Abbruch an Schritt 8 von 13 (Schlüsselfotos: Vorderseite, Rückseite und Bart sind Pflicht, weil ein Schlüssel noch funktioniert). Testgrenze: keine Testbilder, Upload nicht bedient. Zielseite Anzahlung nicht erreicht.",
+  "endknopf": "„Anfrage absenden“ sichtbar, nicht betätigt",
+  "reaktionen": [
+    130,
+    386,
+    256,
+    3,
+    353,
+    3,
+    3,
+    3,
+    603,
+    233,
+    3,
+    603,
+    4,
+    615,
+    3,
+    127,
+    131,
+    259,
+    133,
+    2,
+    3,
+    4,
+    4
+  ],
+  "schritte": [
+    {
+      "ms": 961,
+      "typ": "START",
+      "text": "Startseite geladen in 240 ms, Überschrift „Wobei können wir Ihnen helfen?“"
+    },
+    {
+      "ms": 964,
+      "typ": "ANRUF",
+      "text": "Startseite: ja, fest in der Leiste ohne Scrollen"
+    },
+    {
+      "ms": 1617,
+      "typ": "BILD",
+      "text": "rentnerin-mobil-01-startseite.png"
+    },
+    {
+      "ms": 1849,
+      "typ": "TIPP",
+      "text": "Kachel „Autoschlüssel“ → „Autoschlüssel“ | Reaktion 130 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 2306,
+      "typ": "TIPP",
+      "text": "Knopf „Termin anfragen“ → „Termin anfragen“ | Reaktion 386 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 2309,
+      "typ": "ANRUF",
+      "text": "Anfrage, Schritt 1: nur nach Scrollen"
+    },
+    {
+      "ms": 2954,
+      "typ": "BILD",
+      "text": "rentnerin-mobil-02-anfrage-schritt1.png"
+    },
+    {
+      "ms": 3746,
+      "typ": "EINGABE",
+      "text": "Suchfeld „Marke und Modell“ ← „VW Golf 7“"
+    },
+    {
+      "ms": 3761,
+      "typ": "TREFFER",
+      "text": "[\"0 Treffer\",\"Kein Treffer für „VW Golf 7“. Fahrzeug trotzdem anfragen\"]"
+    },
+    {
+      "ms": 4399,
+      "typ": "BILD",
+      "text": "rentnerin-mobil-03-suche-golf7-kein-treffer.png"
+    },
+    {
+      "ms": 4402,
+      "typ": "ANRUF",
+      "text": "Anfrage, Schritt 1 nach Suche: nur nach Scrollen"
+    },
+    {
+      "ms": 4856,
+      "typ": "TIPP",
+      "text": "Marke „Volkswagen“ → „Volkswagen 6 Modelle“ | Reaktion 256 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 4918,
+      "typ": "TIPP",
+      "text": "Weiter (Schritt 1) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 5469,
+      "typ": "TIPP",
+      "text": "Modell „Golf ab 2003“ → „Golf ab 2003“ | Reaktion 353 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 5520,
+      "typ": "TIPP",
+      "text": "Weiter (Schritt 2) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 5954,
+      "typ": "WAHL",
+      "text": "Baujahr, Jahr → „2015“"
+    },
+    {
+      "ms": 6200,
+      "typ": "TIPP",
+      "text": "Weiter (Schritt 3) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 6274,
+      "typ": "TIPP",
+      "text": "Weiter (Schritt 4, freiwillige Angaben leer) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 6884,
+      "typ": "TIPP",
+      "text": "Art „Funkschlüssel“ → „Funkschlüssel Schlüssel mit Tasten zum Ver- und Entriegeln.“ | Reaktion 603 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 7125,
+      "typ": "TIPP",
+      "text": "Erklärung „Woran erkenne ich einen Funkschlüssel“ → „Erklärung zu Woran Sie einen Funkschlüssel erkennen“ | Reaktion 233 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 7128,
+      "typ": "HILFE",
+      "text": "Erklärung aufgeklappt: [\"Erklärung zu Woran Sie einen Funkschlüssel erkennen Woran Sie einen Funkschlüssel erkennen Erklärung schließen Auf dem Gehäuse sitzen Tasten für Auf- und Zuschließen. Der Bart ist fest mit dem Gehäuse\"]"
+    },
+    {
+      "ms": 7185,
+      "typ": "TIPP",
+      "text": "Weiter (Schritt 5) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 7797,
+      "typ": "TIPP",
+      "text": "Vorhanden „Ein funktionierender Schlüssel“ → „Ein funktionierender Schlüssel Ein Schlüssel öffnet und star“ | Reaktion 603 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 7850,
+      "typ": "TIPP",
+      "text": "Weiter (Schritt 6) → „Weiter“ | Reaktion 4 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 8470,
+      "typ": "TIPP",
+      "text": "Leistung „Zweitschlüssel anfertigen“ → „Zweitschlüssel anfertigen Ein zusätzlicher Schlüssel, währen“ | Reaktion 615 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 8542,
+      "typ": "TIPP",
+      "text": "Weiter (Schritt 7) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 9216,
+      "typ": "BILD",
+      "text": "rentnerin-mobil-04-schritt8-fotos-pflicht.png"
+    },
+    {
+      "ms": 9219,
+      "typ": "ANRUF",
+      "text": "Schritt 8, Schlüsselfotos: nur nach Scrollen"
+    },
+    {
+      "ms": 9222,
+      "typ": "STAND",
+      "text": "Schritt 8 von 13 · Schlüsselfotos | Weiter gesperrt | Bitte laden Sie Vorderseite, Rückseite und Bart Ihres Schlüssels hoch."
+    },
+    {
+      "ms": 9222,
+      "typ": "ENDE",
+      "text": "Abbruch an Schritt 8 von 13 (Schlüsselfotos: Vorderseite, Rückseite und Bart sind Pflicht, weil ein Schlüssel noch funktioniert). Testgrenze: keine Testbilder, Upload nicht bedient. Zielseite Anzahlung nicht erreicht."
+    },
+    {
+      "ms": 9400,
+      "typ": "TIPP",
+      "text": "Breadcrumb „Autoschlüssel“ → „Autoschlüssel“ | Reaktion 127 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 9589,
+      "typ": "TIPP",
+      "text": "Knopf „Termin anfragen“ (zweiter Anlauf) → „Termin anfragen“ | Reaktion 131 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 10764,
+      "typ": "BILD",
+      "text": "rentnerin-mobil-05-zwischenstand-banner.png"
+    },
+    {
+      "ms": 11030,
+      "typ": "TIPP",
+      "text": "Knopf „Neu beginnen“ → „Neu beginnen“ | Reaktion 259 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 12129,
+      "typ": "EINGABE",
+      "text": "Suchfeld (zweiter Anlauf) ← „Dacia Sandero“"
+    },
+    {
+      "ms": 12143,
+      "typ": "TREFFER",
+      "text": "[\"1 Treffer\"]"
+    },
+    {
+      "ms": 12784,
+      "typ": "BILD",
+      "text": "rentnerin-mobil-06-dacia-treffer.png"
+    },
+    {
+      "ms": 12980,
+      "typ": "TIPP",
+      "text": "Treffer „Dacia Sandero Anfrage mit Fahrzeugschein und Schlüsselfoto“ → „Dacia Sandero Anfrage mit Fahrzeugschein und Schlüsselfoto“ | Reaktion 133 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 13611,
+      "typ": "BILD",
+      "text": "rentnerin-mobil-07-dacia-gefuehrte-anfrage-schritt1.png"
+    },
+    {
+      "ms": 13665,
+      "typ": "TIPP",
+      "text": "Weiter (Thema, Autoschlüssel vorgewählt) → „Weiter“ | Reaktion 2 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 13668,
+      "typ": "FELD",
+      "text": "Anliegen vorbelegt: ja („Fahrzeug: Dacia Sandero. “)"
+    },
+    {
+      "ms": 14311,
+      "typ": "BILD",
+      "text": "rentnerin-mobil-08-dacia-anliegen.png"
+    },
+    {
+      "ms": 14364,
+      "typ": "TIPP",
+      "text": "Weiter (Anliegen) → „Weiter“ | Reaktion 3 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 14434,
+      "typ": "TIPP",
+      "text": "Weiter (Unterlagen, freiwillig, ohne Upload) → „Weiter“ | Reaktion 4 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 14858,
+      "typ": "WAHL",
+      "text": "Kontakt, Anrede → „Frau“"
+    },
+    {
+      "ms": 15116,
+      "typ": "EINGABE",
+      "text": "Vorname ← „Erika“"
+    },
+    {
+      "ms": 15181,
+      "typ": "EINGABE",
+      "text": "Nachname ← „Testkundin“"
+    },
+    {
+      "ms": 15248,
+      "typ": "EINGABE",
+      "text": "E-Mail ← „test@example.invalid“"
+    },
+    {
+      "ms": 15300,
+      "typ": "EINGABE",
+      "text": "Telefon ← „01234 567890“"
+    },
+    {
+      "ms": 15933,
+      "typ": "BILD",
+      "text": "rentnerin-mobil-09-dacia-kontakt.png"
+    },
+    {
+      "ms": 16004,
+      "typ": "TIPP",
+      "text": "Weiter (Kontakt) → „Weiter“ | Reaktion 4 ms | Ziel im Bild vorher: ja"
+    },
+    {
+      "ms": 16012,
+      "typ": "STAND",
+      "text": "Schritt 5 von 5 · Prüfen | Endknopf: „Anfrage absenden“ sichtbar, nicht betätigt"
+    },
+    {
+      "ms": 16645,
+      "typ": "BILD",
+      "text": "rentnerin-mobil-10-dacia-vor-absenden.png"
+    },
+    {
+      "ms": 16648,
+      "typ": "ANRUF",
+      "text": "Anfrage, letzter Schritt: nur nach Scrollen"
+    },
+    {
+      "ms": 16651,
+      "typ": "ZIEL",
+      "text": "Anfrage bis zum letzten Schritt (Schritt 5 von 5), nicht abgesendet"
+    }
+  ],
+  "stolpersteine": [
+    {
+      "ort": "Anfrage, Schritt 1 Fahrzeug",
+      "zitat": "0 Treffer | Kein Treffer für „VW Golf 7“. Fahrzeug trotzdem anfragen | Zum Beispiel „VW Golf“ oder „Opel Corsa“. Tippfehler sind kein Problem.",
+      "gedanke": "Ich habe genau das eingegeben, was als Beispiel dasteht, und bekomme „Kein Treffer“."
+    },
+    {
+      "ort": "Anfrage, Schritt 2 Modell",
+      "zitat": "Golf ab 2003",
+      "gedanke": "Mein Auto ist ein Golf 7. Ich weiß nicht, ob „Golf ab 2003“ meins meint."
+    },
+    {
+      "ort": "Anfrage, Schritt 5 Schlüsselart",
+      "zitat": "Keyless (schlüsselloser Zugang) Fahrzeug öffnet und startet, sobald der Schlüssel in der N…",
+      "gedanke": "Keyless sagt mir nichts. Ich tippe auf die Erklärung, bevor ich weitergehe."
+    },
+    {
+      "ort": "Schritt 8 von 13 · Schlüsselfotos",
+      "zitat": "Bitte laden Sie Vorderseite, Rückseite und Bart Ihres Schlüssels hoch. | Anhand der Fotos erkennen wir Bauform, Profil und Elektronik. Drei Aufnahmen brauchen wir auf jeden Fall.",
+      "gedanke": "Ich soll drei Fotos von meinem Schlüssel hochladen. Das schaffe ich ohne Hilfe nicht. Ich höre hier auf."
+    },
+    {
+      "ort": "Anfrage, Zwischenstand-Hinweis",
+      "zitat": "Ihr Zwischenstand von zuletzt wurde geladen.",
+      "gedanke": "Ich will ein anderes Auto anfragen. Was passiert mit dem alten Stand? Ich drücke auf „Neu beginnen“."
+    }
+  ],
+  "bilder": [
+    "rentnerin-mobil-01-startseite.png",
+    "rentnerin-mobil-02-anfrage-schritt1.png",
+    "rentnerin-mobil-03-suche-golf7-kein-treffer.png",
+    "rentnerin-mobil-04-schritt8-fotos-pflicht.png",
+    "rentnerin-mobil-05-zwischenstand-banner.png",
+    "rentnerin-mobil-06-dacia-treffer.png",
+    "rentnerin-mobil-07-dacia-gefuehrte-anfrage-schritt1.png",
+    "rentnerin-mobil-08-dacia-anliegen.png",
+    "rentnerin-mobil-09-dacia-kontakt.png",
+    "rentnerin-mobil-10-dacia-vor-absenden.png"
+  ],
+  "telPruefungen": [
+    {
+      "ort": "Startseite",
+      "sichtbar": 5,
+      "imBild": 2,
+      "fixiert": true,
+      "ergebnis": "ja, fest in der Leiste ohne Scrollen"
+    },
+    {
+      "ort": "Anfrage, Schritt 1",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiert": false,
+      "ergebnis": "nur nach Scrollen"
+    },
+    {
+      "ort": "Anfrage, Schritt 1 nach Suche",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiert": false,
+      "ergebnis": "nur nach Scrollen"
+    },
+    {
+      "ort": "Schritt 8, Schlüsselfotos",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiert": false,
+      "ergebnis": "nur nach Scrollen"
+    },
+    {
+      "ort": "Anfrage, letzter Schritt",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiert": false,
+      "ergebnis": "nur nach Scrollen"
+    }
+  ],
+  "tippziele": [
+    {
+      "ort": "Startseite",
+      "imBild": 18,
+      "unter44": 1,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)"
+      ]
+    },
+    {
+      "ort": "Anfrage, Schritt 1",
+      "imBild": 8,
+      "unter44": 4,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)",
+        "Start (24 px)",
+        "Autoschlüssel (24 px)"
+      ]
+    },
+    {
+      "ort": "Anfrage, Schritt 1 nach Suche",
+      "imBild": 9,
+      "unter44": 5,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)",
+        "Start (24 px)",
+        "Autoschlüssel (24 px)"
+      ]
+    },
+    {
+      "ort": "Schritt 8, Schlüsselfotos",
+      "imBild": 7,
+      "unter44": 3,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)",
+        "Foto aufnehmen (1 px)",
+        "Aus Galerie wählen (1 px)"
+      ]
+    },
+    {
+      "ort": "Anfrage, letzter Schritt",
+      "imBild": 5,
+      "unter44": 1,
+      "beispiele": [
+        "SCHLÜSSELMACHER 24 (23 px)"
+      ]
+    }
+  ],
+  "abgebrochen": {},
+  "konsole": [],
+  "fach": {},
+  "ladeMs": 240,
+  "endMs": 16651,
+  "zusammen": {
+    "persona": "rentnerin",
+    "geraet": "mobil",
+    "tippsBisErsteEingabe": 3,
+    "ersteEingabe": "Suchfeld „Marke und Modell“",
+    "zielErreicht": true,
+    "zielMs": 16651,
+    "zielText": "Anfrage bis zum letzten Schritt (Schritt 5 von 5), nicht abgesendet",
+    "abbruch": "Abbruch an Schritt 8 von 13 (Schlüsselfotos: Vorderseite, Rückseite und Bart sind Pflicht, weil ein Schlüssel noch funktioniert). Testgrenze: keine Testbilder, Upload nicht bedient. Zielseite Anzahlung nicht erreicht.",
+    "endknopf": "„Anfrage absenden“ sichtbar, nicht betätigt",
+    "tippsGesamt": 31,
+    "wischer": 2,
+    "maxReaktionMs": 615,
+    "zoegerungen": 0,
+    "ladeMs": 240,
+    "endMs": 16651,
+    "stolpersteine": 5,
+    "abgebrochen": {},
+    "konsole": 0,
+    "bilder": 10
+  }
+}

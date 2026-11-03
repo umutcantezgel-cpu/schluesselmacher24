@@ -6,21 +6,28 @@ import { GlyphHilfe } from '@/components/visual/glyphen/hilfe';
 import { GlyphKalender } from '@/components/visual/glyphen/kalender';
 import { GlyphSchluessel } from '@/components/visual/glyphen/schluessel';
 import { GlyphSuche } from '@/components/visual/glyphen/suche';
+import { GlyphTelefon } from '@/components/visual/glyphen/telefon';
 import { aktiverEintrag } from '@/lib/navigation';
 import { cn } from '@/lib/cn';
 import { useSpaetVorladen } from '@/lib/spaet-vorladen';
 
-const ITEMS = [
+const FESTE = [
   { href: '/autoschluessel', label: 'Autoschlüssel', icon: GlyphSchluessel },
   { href: '/schluessel-nach-code', label: 'Nach Code', icon: GlyphSuche },
   { href: '/autoschluessel/anfrage', label: 'Termin anfragen', icon: GlyphKalender },
-  { href: '/service-und-termin', label: 'Service', icon: GlyphHilfe },
 ];
 
-const HREFS = ITEMS.map((item) => item.href);
+/** Ohne wählbare Nummer steht an vierter Stelle wie bisher „Service“. */
+const SERVICE = { href: '/service-und-termin', label: 'Service', icon: GlyphHilfe };
 
-/** Feste Aktionsleiste am unteren Rand — nur auf schmalen Geräten (Daumenzone). */
-export function MobileActionBar() {
+const HREFS = [...FESTE, SERVICE].map((item) => item.href);
+
+/**
+ * Feste Aktionsleiste am unteren Rand, nur auf schmalen Geräten (Daumenzone). An vierter Stelle
+ * „Anrufen“ als `tel:`-Link (Auftrag 11: Anrufen von jeder Rubrik in einem Schritt, K-013); ohne
+ * wählbare Nummer „Service“.
+ */
+export function MobileActionBar({ telefonHref }: { telefonHref?: string | null }) {
   const pathname = usePathname();
   // Ziele erst nach dem großen Moment vorladen, nicht beim Erscheinen (D-044)
   useSpaetVorladen(HREFS, pathname);
@@ -46,7 +53,7 @@ export function MobileActionBar() {
     >
       {/* Spalten nach Inhalt statt gleich breit: „Termin anfragen“ bleibt ab 320 px einzeilig */}
       <ul className="flex">
-        {ITEMS.map((item) => {
+        {[...FESTE, ...(telefonHref ? [] : [SERVICE])].map((item) => {
           const active = item.href === aktiv;
           const Icon = item.icon;
           return (
@@ -74,6 +81,17 @@ export function MobileActionBar() {
             </li>
           );
         })}
+        {telefonHref && (
+          <li className="flex-auto">
+            <a
+              href={telefonHref}
+              className="relative flex min-h-touch-lg flex-col items-center justify-center gap-1 px-1 py-2 text-center text-caption font-semibold leading-tight text-foreground-muted transition-colors duration-quick"
+            >
+              <GlyphTelefon size={20} />
+              Anrufen
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
   );

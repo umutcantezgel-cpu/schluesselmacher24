@@ -469,7 +469,7 @@ export function PhotoUpload({
                 >
                   {file.status === 'laedt' && (
                     <>
-                      <GlyphLaden size={14} className="animate-spin motion-reduce:animate-none" aria-hidden />
+                      <GlyphLaden size={14} className="animate-spin ruhig:animate-none" aria-hidden />
                       Wird hochgeladen …
                     </>
                   )}

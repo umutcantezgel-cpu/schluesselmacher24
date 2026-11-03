@@ -8,6 +8,15 @@ import type { ReactNode } from 'react';
  */
 const ViewTransition = (React as { ViewTransition?: typeof React.ViewTransition }).ViewTransition;
 
+/**
+ * Name des gemeinsamen Elements einer Rubrik (B-35): Das Kachel-Icon im Hub geht in den Rubrikkopf
+ * über. Je Rubrik eindeutig, weil sich mehrere Rubriken einen Bereich teilen und ein Name je Seite
+ * nur einmal vorkommen darf.
+ */
+export function rubrikUebergang(rubrikId: string): string {
+  return `rubrik-${rubrikId}`;
+}
+
 /** Name des gemeinsamen Elements für das Fach-Icon eines Bereichs. */
 export function bereichsName(bereich: string): string {
   return `bereich-${bereich}`;

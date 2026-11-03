@@ -1,0 +1,10 @@
+| Prüfung | Gerät | Ergebnis |
+|---|---|---|
+| B-32 Schleife, Start | mobil | Knopf „Animation anhalten“, Phase a · 2 Wechsel in 13,5 s · nach Pause „Animation fortsetzen“, 0 Wechsel in 7 s · nach Fortsetzen 2 Wechsel in 13,5 s |
+| B-32 Schleife, Start | desktop | Knopf „Animation anhalten“, Phase a · 2 Wechsel in 13,5 s · nach Pause „Animation fortsetzen“, 0 Wechsel in 7 s · nach Fortsetzen 2 Wechsel in 13,5 s |
+| B-35 Übergang | mobil | Tipp auf „Autoschlüssel“, Kachel sichtbar, Fokus H1#seiten-titel „Autoschlüssel“ auf /autoschluessel: ja |
+| B-35 Übergang | desktop | Klick auf „Autoschlüssel“, Kachel sichtbar, Fokus H1#seiten-titel „Autoschlüssel“ auf /autoschluessel: ja |
+| Reduziert | mobil | Bewegung „ruhig“, laufende Animationen 0 (normal 6), Lage/Größe 0, Pause-Knöpfe 0, verborgen 0 von 112, Abweichung Kacheln 0 px, h1 0 px, Bühne 0 px |
+| Reduziert | desktop | Bewegung „ruhig“, laufende Animationen 0 (normal 6), Lage/Größe 0, Pause-Knöpfe 0, verborgen 0 von 134, Abweichung Kacheln 0 px, h1 0 px, Bühne 0 px |
+JSON: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-02/bewegung-e4p02.json
+=== EXIT 0

@@ -2,7 +2,7 @@ import type { ComponentType } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getPageContent, getSettings } from '@/lib/data';
+import { getPageContent, getRubrik, getSettings } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { istPlatzhalter } from '@/lib/platzhalter';
 import type { ImageSlot } from '@/lib/types';
@@ -167,6 +167,8 @@ function istPlatzhalterAntwort(text: string): boolean {
 }
 
 export default async function SchluesselNachVorlagePage() {
+  // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
+  const rubrik = await getRubrik('schluessel-nach-foto');
   const [page, settings] = await Promise.all([getPageContent(ROUTE), getSettings()]);
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
@@ -260,6 +262,7 @@ export default async function SchluesselNachVorlagePage() {
 
       {/* Großer Moment (B-04): Zeichnung „Vorlage und Kopie“ im Kopf, auf Papier */}
       <PageHeader
+        rubrik={rubrik}
         eyebrow={process.label}
         title={page?.headline ?? 'Schlüssel nach Foto oder Vorlage'}
         lead={page?.subline ?? 'Sie haben den Schlüssel — wir prüfen, ob wir ihn nachfertigen können.'}

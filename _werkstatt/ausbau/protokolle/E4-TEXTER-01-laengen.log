@@ -1,0 +1,104 @@
+E4-TEXTER-01 · Messprotokoll Längen (Zeilenzahl im Chromium)
+Stand: 2026-11-03 · Paket E4-TEXTER-01 · Repository /home/user/schluesselmacher24 · Branch claude/affectionate-knuth-n7mjur
+
+METHODE
+- Browser: Chromium 153.0.8010.12 über Playwright (chromium.launch() ohne Optionen). Testseite als file://-Adresse im Scratchpad.
+- Schrift: IBM Plex Sans aus src/fonts/ibm-plex-sans-latin-wght.woff2 per @font-face (Stärken 100 bis 700).
+  Ladestatus: loaded. Die Vorgabe lautet „Plex Sans halbfett 15 px“, gemessen mit 600.
+- Trennung im Browser: hyphens auto und hyphenate-limit-chars auto 4 5 unterstützt: ja. Deutsche Trennung aktiv (lang="de").
+- Laienname (Kachel): 101 px Breite, 15 px, Stärke 600, Zeilenhöhe 1,375, Trennung auto 4 5 (Klasse trennung-kachel text-small font-semibold leading-snug).
+- Zusatz (Kachel): 101 px Breite, 12 px, Stärke 400, Zeilenhöhe 1,375, Trennung auto 4 5 (Klasse trennung-kachel text-caption leading-snug).
+- Subline Startseite: 350 px Breite, 18 px, Zeilenhöhe 1,55 (Klasse text-lead im IntentHub), ohne Trennung wie im Hub.
+- Sublines der Autoschlüssel-Seiten: dieselbe Messung als Richtwert, im Auftrag nicht festgelegt.
+- Zeilenzahl: je Zeichen der Textrechteck-Oberkante, gleiche Oberkante = eine Zeile. Gegenprobe über Höhe und Zeilenhöhe.
+- „ohne Trennung“: dieselbe Messung mit hyphens none, zeigt Reserve gegen Browser ohne Trennung.
+
+AUSGANGSLAGE (Prüfung der Regeln vor dem Umbau)
+- Gedankenstriche im Umfang: 5 Felder (seo: autoschluessel.subline, autoschluessel/nachmachen.intro, autoschluessel/programmieren.intro, autoschluessel/kopieren.subline, autoschluessel/smart-key.subline).
+- Ausrufezeichen, Fragezeichen, Floskeln aus Auftrag 14 im Umfang: keine.
+- Laienname tuer-und-schliesstechnik: drei Zeilen (Grenze zwei). Alle anderen Laiennamen und Zusätze: höchstens zwei.
+- Autoschlüssel-Subline: vier Zeilen bei 350 px.
+
+GEÄNDERTE FELDER (26: content/rubriken.json 16, content/seo.json 10)
+Feld | vorher | nachher | Zeilen vorher (ohne Trennung) | Zeilen nachher (ohne Trennung) | Grund
+rubriken: autoschluessel.erklaerung | "Nachmachen, programmieren oder ersetzen, mit Termin in unserer Werkstatt in Wetzlar." | "Nachmachen, programmieren oder ersetzen in unserer Werkstatt in Wetzlar, mit Preis oder Preisrahmen vor dem Termin." | nicht gemessen (kein Längenmaß) | nicht gemessen | Preis vor dem Termin ergänzt (K-010: Kosten nennen; Einleitung der Seite).
+rubriken: motorradschluessel.ablauf.2.titel | "Transponder klären" | "Chip im Schlüssel klären" | nicht gemessen (kein Längenmaß) | nicht gemessen | Fachwort Transponder im Titel durch Chip ersetzt (Text der Stufe nennt bereits Chip).
+rubriken: autoschluessel-gehaeuse.erklaerung | "Neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt." | "Ein neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt, und Sie erhalten den Preis mit Zahlungslink." | nicht gemessen (kein Längenmaß) | nicht gemessen | Preis mit Zahlungslink ergänzt (Ablauf der Rubrik).
+rubriken: schluessel-nach-code.erklaerung | "Für Briefkasten, Möbel und mehr: Code eingeben, bestellen, per Post erhalten." | "Für Briefkasten, Möbel und mehr: Sie geben den Code ein, bestellen und bezahlen, dann kommt der Schlüssel per Post." | nicht gemessen (kein Längenmaß) | nicht gemessen | Bezahlen und Versand per Post ergänzt (Ablauf der Rubrik).
+rubriken: schluessel-nach-foto.erklaerung | "Fotos hochladen, wir prüfen, ob sich der Schlüssel danach fertigen lässt." | "Sie laden Fotos hoch und wir prüfen sie; passt alles, erhalten Sie Preis und Zahlungslink." | nicht gemessen (kein Längenmaß) | nicht gemessen | Preis und Zahlungslink nach Prüfung ergänzt (Ablauf der Rubrik).
+rubriken: schluessel-einschicken.erklaerung | "Ihren Schlüssel per Post an die Werkstatt schicken, ohne Anfahrt, aus ganz Deutschland." | "Per Post aus ganz Deutschland an die Werkstatt, ohne Anfahrt, nur nach Freigabe der Fotoanfrage; Sie erhalten ein Angebot mit Zahlungslink." | nicht gemessen (kein Längenmaß) | nicht gemessen | Freigabe der Fotoanfrage ergänzt (Seitenbeschreibung), Angebot mit Zahlungslink (Abschluss).
+rubriken: sperrschliessung.erklaerung | "Mehrere gleichschließende Zylinder, ein Schlüssel öffnet alle Türen." | "Mehrere gleichschließende Zylinder, ein Schlüssel öffnet alle Türen, und Sie sehen den Gesamtpreis vor dem Bezahlen." | nicht gemessen (kein Längenmaß) | nicht gemessen | Gesamtpreis vor dem Bezahlen ergänzt (Ablauf der Rubrik).
+rubriken: sperrschliessung.ablauf.1.text | "Mit der Messhilfe Maß A und Maß B kontrollieren." | "Mit der Messhilfe prüfen Sie, wie weit der Zylinder nach außen (Maß A) und nach innen (Maß B) reicht." | nicht gemessen (kein Längenmaß) | nicht gemessen | Maß A und Maß B im Halbsatz erklärt (Glossar K-012a).
+rubriken: schliessanlage.erklaerung | "Für Häuser und Firmen: Jeder Schlüssel öffnet genau die Türen, für die er gedacht ist." | "Für Häuser und Firmen: Jeder Schlüssel öffnet nur die Türen, für die er gedacht ist, und Sie bestellen mit Preis oder fragen ein Angebot an." | nicht gemessen (kein Längenmaß) | nicht gemessen | Preis oder Angebot ergänzt (Ablauf der Rubrik).
+rubriken: elektronische-schliesssysteme.erklaerung | "Öffnen mit Chip, Karte oder App: wir beraten und machen ein Angebot." | "Öffnen mit Chip, Karte oder App: Nach der Beratung erhalten Sie ein Angebot mit allen Kosten." | nicht gemessen (kein Längenmaß) | nicht gemessen | Angebot mit allen Kosten ergänzt (Ablauf). Wortfolge „wir beraten“ ersetzt.
+rubriken: sicherheitstechnik.erklaerung | "Einbruchschutz, Alarm und Video: Beratung und Angebot für Ihr Objekt." | "Einbruchschutz, Alarm und Video für Ihr Objekt, mit Beratung und einem Angebot, das alle Kosten nennt." | nicht gemessen (kein Längenmaß) | nicht gemessen | Angebot mit allen Kosten ergänzt (Ablauf). Wortfolge vereinfacht.
+rubriken: schluesseldienst-vor-ort.erklaerung | "Einsatz an Ihrer Tür im Einsatzgebiet der Werkstatt, anderswo über Partner, wo es sie gibt." | "Einsatz an Ihrer Tür im Einsatzgebiet der Werkstatt, anderswo über Partner, wo es sie gibt, mit Termin und Preisrahmen." | nicht gemessen (kein Längenmaß) | nicht gemessen | Termin mit Preisrahmen ergänzt (Ablauf der Rubrik).
+rubriken: beratung.erklaerung | "Für alles, was in keine Rubrik passt: Anliegen schildern, wir rufen zurück." | "Für alle anderen Anliegen: Sie schildern Ihr Anliegen, wir rufen zurück und machen einen Vorschlag mit Preis oder legen eine Anfrage an." | nicht gemessen (kein Längenmaß) | nicht gemessen | Fachwort „Rubrik“ entfernt. Vorschlag mit Preis oder Anfrage (Ablauf der Rubrik).
+rubriken: transponder-kopie.erklaerung | "Chip im Autoschlüssel in der Werkstatt kopieren, nur für bestätigte Fahrzeuge." | "Chip im Autoschlüssel in der Werkstatt kopieren, nur für bestätigte Fahrzeuge; Sie bezahlen und schicken den Schlüssel mit Begleitschein." | nicht gemessen (kein Längenmaß) | nicht gemessen | Bezahlen und Begleitschein ergänzt (Ablauf der Rubrik).
+rubriken: tuer-und-schliesstechnik.laienname | "Türen und Schließtechnik" | "Türen und Schlösser" | 3 (2) | 2 (2) | Drei Zeilen gemessen, Grenze zwei. Fachwort Schließtechnik durch Laiensprache ersetzt.
+rubriken: tuer-und-schliesstechnik.erklaerung | "Schlösser, Beschläge und Türschließer: Austausch, Reparatur und Beratung." | "Schlösser, Beschläge und Türschließer, ob Austausch, Reparatur oder Beratung; das Angebot nennt alle Kosten." | nicht gemessen (kein Längenmaß) | nicht gemessen | Angebot mit allen Kosten ergänzt (Ablauf). Wortfolge geändert.
+seo: startseite.subline | "Wir machen Schlüssel in Wetzlar und verschicken sie in ganz Deutschland." | "Wir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland." | 2 (2) | 2 (2) | Zusage „verschicken sie“ galt für alle Schlüssel. Bestand belegt Versand nur für Schlüssel nach Code (Seitenbeschreibung). Zwei Zeilen gehalten.
+seo: autoschluessel.subline | "Nachmachen, programmieren, reparieren — mit klarem Ablauf und festem Termin. Werkstatt in Wetzlar, für Mittelhessen und alle, die anreisen." | "Nachmachen, programmieren, reparieren, mit festem Termin in Wetzlar. Für Mittelhessen und alle, die anreisen." | 4 (4) | 3 (3) | Gedankenstrich und vage Wendung „klarem Ablauf“ entfernt. Vier auf drei Zeilen.
+seo: autoschluessel/nachmachen.intro | "Ein zweiter Schlüssel ist dann am günstigsten, wenn noch ein funktionierender vorhanden ist. Ist kein Schlüssel mehr da, prüfen wir den Einzelfall gesondert — Umfang und Aufwand unterscheiden sich deutlich." | "Ein zweiter Schlüssel ist dann am günstigsten, wenn noch ein funktionierender vorhanden ist. Ist kein Schlüssel mehr da, prüfen wir den Einzelfall gesondert. Umfang und Aufwand unterscheiden sich deutlich." | nicht gemessen (kein Längenmaß) | nicht gemessen | Gedankenstrich durch Satzende ersetzt.
+seo: autoschluessel/programmieren.subline | "Transponder, Funk und Smart Key elektronisch am Fahrzeug anlernen." | "Transponder (Funkchip im Schlüssel), Funk und Smart Key am Fahrzeug anlernen." | 2 (2) | 2 (2) | Transponder im Halbsatz erklärt (Glossar K-012a). Zwei Zeilen.
+seo: autoschluessel/programmieren.intro | "Ein neuer oder vorhandener Schlüssel muss dem Fahrzeug bekannt gemacht werden. Dafür ist in aller Regel Zugriff auf das Fahrzeug nötig — das lässt sich nicht per Versand lösen." | "Ein neuer oder vorhandener Schlüssel muss dem Fahrzeug bekannt gemacht werden. Dafür ist in aller Regel Zugriff auf das Fahrzeug nötig. Das lässt sich nicht per Versand lösen." | nicht gemessen (kein Längenmaß) | nicht gemessen | Gedankenstrich durch Satzende ersetzt.
+seo: autoschluessel/kopieren.subline | "Mechanische Kopie nach Vorlage — und was sie leistet." | "Mechanische Kopie nach Vorlage: was sie leistet und wann sie reicht." | 2 (2) | 2 (2) | Gedankenstrich durch Doppelpunkt ersetzt, Inhalt aus der Seitenbeschreibung (wann eine Kopie reicht).
+seo: autoschluessel/kopieren.intro | "Eine mechanische Kopie bildet den Bart des Originals ab. Bei vielen Fahrzeugen öffnet sie die Tür, startet den Motor aber nicht, weil Transponder und Wegfahrsperre fehlen. Was in Ihrem Fall möglich ist, klären wir vorab." | "Eine mechanische Kopie bildet den Bart des Originals ab, also den mechanischen Teil des Schlüssels. Bei vielen Fahrzeugen öffnet sie die Tür, startet den Motor aber nicht. Der Grund ist der fehlende Transponder, der kleine Funkchip im Schlüssel, ohne den die Wegfahrsperre den Motor nicht startet. Was in Ihrem Fall möglich ist, klären wir vorab." | nicht gemessen (kein Längenmaß) | nicht gemessen | Bart, Transponder und Wegfahrsperre im Halbsatz erklärt (Glossar K-012a und Seite Schlüsselbart).
+seo: autoschluessel/funkschluessel.intro | "Wenn das Fahrzeug auf Knopfdruck nicht mehr reagiert, liegt das nicht immer am Schlüssel. Wir grenzen ein, ob Batterie, Taster, Platine oder das Anlernen die Ursache ist." | "Wenn das Fahrzeug auf Knopfdruck nicht mehr reagiert, liegt das nicht immer am Schlüssel. Wir grenzen ein, ob Batterie, Taster, Platine oder das Anlernen des Schlüssels im Auto die Ursache ist." | nicht gemessen (kein Längenmaß) | nicht gemessen | Anlernen im Halbsatz erklärt (Glossar K-012a).
+seo: autoschluessel/smart-key.subline | "Schlüsselloser Zugang und Start — je nach Fahrzeug." | "Schlüsselloser Zugang und Start, je nach Fahrzeug." | 2 (2) | 2 (2) | Gedankenstrich durch Komma ersetzt.
+seo: autoschluessel/marken.intro | "Welche Schlüsselart Ihr Fahrzeug hat und ob es zum Anlernen vor Ort sein muss, hängt von Marke, Modell und Baujahr ab. Hier finden Sie, was wir zu den gängigen Fahrzeugen hinterlegt haben." | "Welche Schlüsselart Ihr Fahrzeug hat und ob es zum Anlernen, dem Eintragen des Schlüssels im Auto, vor Ort sein muss, hängt von Marke, Modell und Baujahr ab. Hier finden Sie, was wir zu den gängigen Fahrzeugen hinterlegt haben." | nicht gemessen (kein Längenmaß) | nicht gemessen | Anlernen im Halbsatz erklärt (Glossar K-012a).
+
+GEMESSENE FELDER (alle Laiennamen, Zusätze und Sublines der Startseite und Autoschlüssel-Seiten)
+Mess-ID | Art | Zeilen vorher (ohne Trennung) | Zeilen nachher (ohne Trennung) | Text nachher | Zeilenumbrüche nachher
+autoschluessel.laienname | laienname | 1 (1) | 1 (1) | Autoschlüssel | Autoschlüssel
+motorradschluessel.laienname | laienname | 2 (1) | 2 (1) | Motorradschlüssel | Motorrads / chlüssel
+autoschluessel-gehaeuse.laienname | laienname | 2 (1) | 2 (1) | Schlüsselgehäuse | Schlüsselgeh / äuse
+schluessel-nach-code.laienname | laienname | 2 (2) | 2 (2) | Schlüssel nach Code | Schlüssel / nach Code
+schluessel-nach-foto.laienname | laienname | 2 (2) | 2 (2) | Schlüssel nach Foto | Schlüssel / nach Foto
+schluessel-einschicken.laienname | laienname | 2 (2) | 2 (2) | Schlüssel einschicken | Schlüssel / einschicken
+sperrschliessung.laienname | laienname | 2 (1) | 2 (1) | Sperrschließung | Sperrs / chließung
+sperrschliessung.zusatz | zusatz | 2 (2) | 2 (2) | ein Schlüssel für alle Türen | ein Schlüssel für / alle Türen
+schliessanlage.laienname | laienname | 1 (1) | 1 (1) | Schließanlage | Schließanlage
+schliessanlage.zusatz | zusatz | 2 (2) | 2 (2) | jedem Schlüssel seine Türen | jedem Schlüssel / seine Türen
+elektronische-schliesssysteme.laienname | laienname | 2 (2) | 2 (2) | Elektronisch schließen | Elektronisch / schließen
+sicherheitstechnik.laienname | laienname | 2 (1) | 2 (1) | Sicherheitstechnik | Sicherheitst / echnik
+schluesseldienst-vor-ort.laienname | laienname | 2 (2) | 2 (2) | Schlüsseldienst vor Ort | Schlüsseld / ienst vor Ort
+beratung.laienname | laienname | 1 (1) | 1 (1) | Beratung | Beratung
+transponder-kopie.laienname | laienname | 2 (2) | 2 (2) | Transponder kopieren | Transponder / kopieren
+schluesselfinder.laienname | laienname | 2 (2) | 2 (2) | Angebot für Ihr Fahrzeug | Angebot für / Ihr Fahrzeug
+tuer-und-schliesstechnik.laienname | laienname | 3 (2) | 2 (2) | Türen und Schlösser | Türen und / Schlösser
+seo[startseite].subline | subline | 2 (2) | 2 (2) | Wir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland. | Wir fertigen in Wetzlar. Schlüssel nach / Code schicken wir in ganz Deutschland.
+seo[autoschluessel].subline | subline | 4 (4) | 3 (3) | Nachmachen, programmieren, reparieren, mit festem Termin in Wetzlar. Für Mittelhessen und alle, die anreisen. | Nachmachen, programmieren, reparieren, / mit festem Termin in Wetzlar. Für / Mittelhessen und alle, die anreisen.
+seo[autoschluessel/nachmachen].subline | subline | 2 (2) | 2 (2) | Zweitschlüssel und Ersatzschlüssel für Ihr Fahrzeug. | Zweitschlüssel und Ersatzschlüssel für Ihr / Fahrzeug.
+seo[autoschluessel/programmieren].subline | subline | 2 (2) | 2 (2) | Transponder (Funkchip im Schlüssel), Funk und Smart Key am Fahrzeug anlernen. | Transponder (Funkchip im Schlüssel), Funk / und Smart Key am Fahrzeug anlernen.
+seo[autoschluessel/kopieren].subline | subline | 2 (2) | 2 (2) | Mechanische Kopie nach Vorlage: was sie leistet und wann sie reicht. | Mechanische Kopie nach Vorlage: was sie / leistet und wann sie reicht.
+seo[autoschluessel/funkschluessel].subline | subline | 1 (1) | 1 (1) | Tasten, Funkfunktion, Gehäuse und Ersatz. | Tasten, Funkfunktion, Gehäuse und Ersatz.
+seo[autoschluessel/smart-key].subline | subline | 2 (2) | 2 (2) | Schlüsselloser Zugang und Start, je nach Fahrzeug. | Schlüsselloser Zugang und Start, je nach / Fahrzeug.
+seo[autoschluessel/schluesselbart-fraesen].subline | subline | 2 (2) | 2 (2) | Mechanische Fertigung nach Vorlage oder geeigneten Fahrzeugdaten. | Mechanische Fertigung nach Vorlage oder / geeigneten Fahrzeugdaten.
+seo[autoschluessel/fahrzeugoeffnung].subline | subline | 1 (1) | 1 (1) | Wenn der Schlüssel im Fahrzeug liegt. | Wenn der Schlüssel im Fahrzeug liegt.
+seo[autoschluessel/marken].subline | subline | 2 (2) | 2 (2) | Was bei Ihrem Fahrzeug technisch möglich ist. | Was bei Ihrem Fahrzeug technisch möglich / ist.
+seo[autoschluessel/anfrage].subline | subline | 2 (2) | 2 (2) | Fahrzeug angeben, Fotos hochladen, Preis sehen, Termin buchen. | Fahrzeug angeben, Fotos hochladen, Preis / sehen, Termin buchen.
+
+HÖCHSTWERTE JE REGEL
+- Laienname (Grenze 2): vorher 3, nachher 2
+- Zusatz (Grenze 2): vorher 2, nachher 2
+- Subline Startseite (Grenze 2 bei 390 px): vorher 2, nachher 2
+- Subline Autoschlüssel-Seiten (Richtwert 2): vorher 4, nachher 3
+- Ohne Trennung bleiben Laiennamen und Zusätze bei höchstens zwei Zeilen.
+
+ERKLAERUNG UND KOSTEN
+- Felder erklaerung werden in keiner Seite angezeigt (Suche in src/app und src/components ohne Treffer). Das Feld steht im Datenmodell und in der Datenbankspalte.
+- Ohne Kostenbeleg im Bestand bleibt: schluesselfinder (Zeile „Angebot sehen“ nennt keinen Preis) und motorradschluessel (nennt bereits Preis und Termin, unverändert).
+
+AUSSERHALB DES UMFANGS (nicht geändert, für Folgepakete)
+- Gedankenstriche in seo.json: schluessel-nach-vorlage.subline, schluessel-einschicken.subline, schluessel-nach-code.intro, elektronische-zutrittsloesungen.intro, partner-werden.subline; Linktext „Schlüssel einschicken – nur nach Freigabe“ (schluessel-nach-vorlage).
+- Linktexte mit Fragezeichen in seo.json: 9 Stück (z. B. „Welche Anlage passt?“, „Was ist eine Gleichschließung?“). Prüfung durch das Folgepaket.
+
+TESTS (sicher.sh --json)
+- Paketumfang: npx vitest run src/components/hub src/components/rubrik src/lib/navigation.test.ts src/components/layout: 8 Dateien, 63 Tests grün.
+- Ergänzend: src/lib/data/seitentexte.test.ts grün (8 Tests).
+- Ergänzend: src/lib/rubriken.test.ts 11 von 12 grün. Rot: „content/rubriken.json entspricht dem Startinhalt“ (Zeile 35). Ursache: src/lib/data/defaults/rubriken.ts hat noch die alten Werte. Behebung nur über das Code-Paket, siehe Bericht.
+- Die Tests wurden nicht geändert. Keine Prüfung abgeschaltet oder gelockert (G8).
+
+HINWEISE
+- Der Seed (src/payload/seed.ts, Rubriken, Abgleich laienname, zusatz, erklaerung, ablauf) übernimmt die neuen Werte in die Datenbank. Kein Datenbanklauf in diesem Paket (G3).

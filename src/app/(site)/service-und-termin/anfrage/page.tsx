@@ -13,9 +13,11 @@ export const metadata: Metadata = {
 };
 
 export default async function AnfragePage(props: {
-  searchParams: Promise<{ thema?: string }>;
+  searchParams: Promise<{ thema?: string; fahrzeug?: string }>;
 }) {
-  const { thema } = await props.searchParams;
+  const { thema, fahrzeug } = await props.searchParams;
+  // Fahrzeug aus der Suche im Autoschlüssel-Weg (G-15): nur als kurzer Text in die Beschreibung.
+  const fahrzeugText = typeof fahrzeug === 'string' ? fahrzeug.replace(/[^\p{L}\p{N} .\-/]/gu, '').trim().slice(0, 80) : '';
 
   const themen = NAV_AREAS.map((area) => ({
     key: area.key,
@@ -38,7 +40,7 @@ export default async function AnfragePage(props: {
       />
 
       <div className="shell py-8 md:py-12">
-        <AllgemeineAnfrage themen={themen} vorauswahl={thema} />
+        <AllgemeineAnfrage themen={themen} vorauswahl={thema} fahrzeug={fahrzeugText || undefined} />
       </div>
     </>
   );

@@ -106,12 +106,23 @@ describe('ProfilschnittGrafik', () => {
       const nummernX = [...html.matchAll(/<text[^>]*text-anchor="middle" x="([\d.]+)" y="122"/g)].map((t) => Number(t[1]));
       expect(nummernX).toHaveLength(6);
       expect(nummernX.every((x) => innen(x, 122))).toBe(true);
-      expect(innen(456, 198)).toBe(true);
+      // Spitze (G-07: kürzerer Halm, Spitze bei x 382)
+      expect(innen(382, 198)).toBe(true);
       expect(innen(ruhe.x - aussen, ruhe.y - aussen) && innen(ruhe.x + aussen, ruhe.y + aussen)).toBe(true);
       // Bei 350 px Inhaltsbreite (390 px Telefon) bleibt die Schrift mindestens 12 px groß.
       expect(a.breite).toBeLessThanOrEqual(350);
-      expect(innen(134 - 6, 190)).toBe(true);
+      // Seit G-07 fasst der Ausschnitt den ganzen Schlüssel: Reide (x 72 bis 172) und Schulter (x 182).
+      expect(innen(72, 190) && innen(182 - 6, 190)).toBe(true);
       expect(PROFILSCHNITT_GROESSE).toEqual({ breite: 480, hoehe: 360 });
+    });
+
+    it('hat glaubwürdige Proportionen: Halm etwa viermal so lang wie hoch (G-07)', () => {
+      // Halm von der Schulter (188) bis zur Spitze (382), Höhe von Oberkante 168 bis Unterkante 214
+      const laenge = 382 - 188;
+      const hoehe = 214 - 168;
+      expect(laenge / hoehe).toBeGreaterThan(3.8);
+      expect(laenge / hoehe).toBeLessThan(4.6);
+      expect(html).toContain('L382 198');
     });
 
     it('markiert die Bemaßung, damit der Ausschnitt sie ausblenden kann', () => {

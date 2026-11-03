@@ -49,6 +49,20 @@ const HALS_RADIUS = 5;
 
 const MAX_SKALA = 4;
 
+/*
+ * Schutzbeschlag, Türblatt und Überstand sind schematisch: Maße in der Zeichenfläche,
+ * ohne Zahlenangabe, weil das Fachwissen keinen zulässigen Überstand nennt.
+ * Maß A und B bleiben maßstäblich.
+ */
+const AN_AUS = ['an', 'aus'] as const;
+const BESCHLAG_DICKE = 6;
+const BESCHLAG_UEBERHANG = 8;
+const TUER_UEBERHANG = 14;
+const UEBERSTAND_LAENGE = 18;
+/* Mit Strecke Überstand: Platz über dem Profil für die Maßkette, darunter für die Strecke und ihre Beschriftungen. */
+const OBEN_MIT_UEBERSTAND = 44;
+const UNTEN_MIT_UEBERSTAND = 50;
+
 /** 30 → „30“, 32.5 → „32,5“. */
 function mass(wert: number): string {
   const gerundet = Math.round(wert * 10) / 10;
@@ -64,8 +78,10 @@ function mass(wert: number): string {
  * - `innen`: Maß B (innen) in mm, 25–100 (Standard 30; bei `profil-halb` ohne Wirkung)
  * - `knaufseite`: `innen` (Standard) | `aussen` — nur bei `knauf`
  * - `format`: `breit` (Standard, 480 × 270) | `schmal` (300 × 220, größere Schrift für Telefone)
+ * - `beschlag`: `aus` (Standard) | `an`. Schutzbeschlag außen mit Türblatt, schematisch; bei `knaufseite: 'aussen'` ohne Wirkung.
+ * - `ueberstand`: `an` (Standard) | `aus`. Strecke „Überstand“ vom Zylinderende bis zum Beschlag, ohne Zahl; nur mit `beschlag: 'an'`.
  *
- * Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende.
+ * Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende. Das gilt auch mit Beschlag.
  */
 export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
   const p = parameter(params);
@@ -76,6 +92,9 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
   const knaufseite =
     bauform === 'knauf' ? auswahl(wert(p, 'knaufseite'), KNAUFSEITEN, 'innen') : undefined;
   const f = FLAECHE[auswahl(wert(p, 'format'), FORMATE, 'breit')];
+  /* Der Beschlag sitzt außen am Profil; mit Außenknauf entfällt er, weil der Knauf dann außen liegt. */
+  const beschlag = auswahl(wert(p, 'beschlag'), AN_AUS, 'aus') === 'an' && knaufseite !== 'aussen';
+  const ueberstand = beschlag && auswahl(wert(p, 'ueberstand'), AN_AUS, 'an') === 'an';
 
   /* Waagerecht in mm: außen links (negativ), innen rechts (positiv). */
   const links = -aussen;
@@ -86,13 +105,22 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
 
   const s = Math.min((f.breite - 2 * f.rand) / (maxMm - minMm), MAX_SKALA);
   const nullX = f.breite / 2 - ((minMm + maxMm) / 2) * s;
-  const oben = (f.hoehe - (PROFIL_HOEHE * s + 70)) / 2 + 42;
+  const oben = ueberstand
+    ? OBEN_MIT_UEBERSTAND +
+      (f.hoehe - OBEN_MIT_UEBERSTAND - UNTEN_MIT_UEBERSTAND - PROFIL_HOEHE * s) / 2
+    : (f.hoehe - (PROFIL_HOEHE * s + 70)) / 2 + 42;
   const X = (mm: number) => r(nullX + mm * s);
   const Y = (mm: number) => r(oben + mm * s);
 
   const ecke = r(Math.min(1.5 * s, 4));
   const unten = Y(PROFIL_HOEHE);
   const massY = r(oben - 24);
+  /* Platte am Außenende, Türblatt bis zur Innenseite; der Überstand liegt zwischen Zylinderende und Platte. */
+  const beschlagX = r(X(links) + UEBERSTAND_LAENGE);
+  const tuerX = r(beschlagX + BESCHLAG_DICKE);
+  const ueberY = r(unten + TUER_UEBERHANG);
+  /* Unter der Strecke Überstand rücken die Beschriftungen weiter nach unten. */
+  const mitteY = r(unten + (ueberstand ? 47 : 28));
 
   const koerper = [
     `M${r(X(links) + ecke)} ${Y(0)}`,
@@ -173,6 +201,20 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
     >
       <Raster breite={f.breite} hoehe={f.hoehe} />
 
+      {/* Türblatt liegt hinter dem Zylinder (schematisch) */}
+      {beschlag && (
+        <g className="sm24-reveal" style={motionStyle(0)}>
+          <rect
+            className="fill-surface-muted stroke-border-strong"
+            strokeWidth={HILFSLINIE}
+            x={tuerX}
+            y={r(oben - TUER_UEBERHANG)}
+            width={r(X(rechts) - tuerX)}
+            height={r(PROFIL_HOEHE * s + 2 * TUER_UEBERHANG)}
+          />
+        </g>
+      )}
+
       {/* Zylinderkörper */}
       <g className="sm24-reveal" style={motionStyle(0)}>
         {knauf && (
@@ -218,6 +260,20 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
           r={r(LOCH_R * s)}
         />
       </g>
+
+      {/* Schutzbeschlag liegt vor dem Zylinder auf der Außenseite der Tür (schematisch) */}
+      {beschlag && (
+        <g className="sm24-reveal" style={motionStyle(0)}>
+          <rect
+            className="fill-area-muted stroke-foreground"
+            strokeWidth={LINIE}
+            x={beschlagX}
+            y={r(oben - BESCHLAG_UEBERHANG)}
+            width={BESCHLAG_DICKE}
+            height={r(PROFIL_HOEHE * s + 2 * BESCHLAG_UEBERHANG)}
+          />
+        </g>
+      )}
 
       {/* Mittellinien: Kernachse und Bezug Stulpschraube */}
       <g className="sm24-reveal" style={motionStyle(0.15)}>
@@ -312,11 +368,39 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
           fontSize={f.klein}
           textAnchor="middle"
           x={mitteX}
-          y={r(unten + 28)}
+          y={mitteY}
         >
           {mitteText}
         </text>
       </g>
+
+      {/* Überstand: Strecke vom Zylinderende bis zur Platte, ohne Zahlenangabe */}
+      {ueberstand && (
+        <g className="sm24-reveal" style={motionStyle(1.4)}>
+          <path
+            className="stroke-foreground-muted"
+            strokeWidth={HILFSLINIE}
+            d={`M${X(links)} ${r(unten + 4)}V${r(ueberY + 3)}M${beschlagX} ${r(unten + BESCHLAG_UEBERHANG + 2)}V${r(ueberY + 3)}`}
+          />
+          <path
+            className="stroke-foreground-muted"
+            strokeWidth={LINIE}
+            d={`M${r(X(links) + 2)} ${ueberY}H${r(beschlagX - 2)}`}
+          />
+          <path className="fill-foreground-muted" d={pfeilspitze(X(links), ueberY, 180, 6, 4.5)} />
+          <path className="fill-foreground-muted" d={pfeilspitze(beschlagX, ueberY, 0, 6, 4.5)} />
+          <text
+            className="fill-foreground-muted font-mono"
+            fontSize={f.schrift}
+            fontWeight={600}
+            textAnchor="middle"
+            x={r((X(links) + beschlagX) / 2)}
+            y={r(unten + 31)}
+          >
+            Überstand
+          </text>
+        </g>
+      )}
     </GrafikRahmen>
   );
 }

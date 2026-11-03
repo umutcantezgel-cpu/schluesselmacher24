@@ -1,0 +1,232 @@
+{
+  "zeit": "2026-11-03T10:16:06.805Z",
+  "navigation": [
+    {
+      "breite": 1024,
+      "gesamt": 5,
+      "sichtbarBeschriftungen": [
+        "Autoschlüssel",
+        "Nach Code",
+        "Sperrschließungen",
+        "Mehr"
+      ],
+      "ausgeblendet": [
+        "Schließanlagen"
+      ],
+      "sichtbareZeilen": 1,
+      "tops": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "headerHoehe": 81
+    },
+    {
+      "breite": 1280,
+      "gesamt": 5,
+      "sichtbarBeschriftungen": [
+        "Autoschlüssel",
+        "Nach Code",
+        "Sperrschließungen",
+        "Schließanlagen",
+        "Mehr"
+      ],
+      "ausgeblendet": [],
+      "sichtbareZeilen": 1,
+      "tops": [
+        18,
+        18,
+        18,
+        18,
+        18
+      ],
+      "headerHoehe": 81
+    },
+    {
+      "breite": 1440,
+      "gesamt": 5,
+      "sichtbarBeschriftungen": [
+        "Autoschlüssel",
+        "Nach Code",
+        "Sperrschließungen",
+        "Schließanlagen",
+        "Mehr"
+      ],
+      "ausgeblendet": [],
+      "sichtbareZeilen": 1,
+      "tops": [
+        18,
+        18,
+        18,
+        18,
+        18
+      ],
+      "headerHoehe": 81
+    }
+  ],
+  "kacheln": [
+    {
+      "geraet": "mobil-klein",
+      "viewport": [
+        360,
+        780
+      ],
+      "kacheln": [
+        {
+          "rubrik": "autoschluessel",
+          "laienname": "Autoschlüssel",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 101
+        },
+        {
+          "rubrik": "schluessel-nach-code",
+          "laienname": "Schlüssel nach Code",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 101
+        },
+        {
+          "rubrik": "schluessel-nach-foto",
+          "laienname": "Schlüssel nach Foto",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 101
+        },
+        {
+          "rubrik": "schluessel-einschicken",
+          "laienname": "Schlüssel einschicken",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 101
+        },
+        {
+          "rubrik": "sperrschliessung",
+          "laienname": "Sperrschließung",
+          "laiennameZeilen": 2,
+          "zusatz": "ein Schlüssel für alle Türen",
+          "zusatzZeilen": 2,
+          "breiteKachel": 101
+        },
+        {
+          "rubrik": "schliessanlage",
+          "laienname": "Schließanlage",
+          "laiennameZeilen": 2,
+          "zusatz": "jedem Schlüssel seine Türen",
+          "zusatzZeilen": 3,
+          "breiteKachel": 101
+        },
+        {
+          "rubrik": "elektronische-schliesssysteme",
+          "laienname": "Elektronisch schließen",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 101
+        },
+        {
+          "rubrik": "sicherheitstechnik",
+          "laienname": "Sicherheitstechnik",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 101
+        },
+        {
+          "rubrik": "schluesseldienst-vor-ort",
+          "laienname": "Schlüsseldienst vor Ort",
+          "laiennameZeilen": 3,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 101
+        }
+      ]
+    },
+    {
+      "geraet": "mobil",
+      "viewport": [
+        390,
+        844
+      ],
+      "kacheln": [
+        {
+          "rubrik": "autoschluessel",
+          "laienname": "Autoschlüssel",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 111
+        },
+        {
+          "rubrik": "schluessel-nach-code",
+          "laienname": "Schlüssel nach Code",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 111
+        },
+        {
+          "rubrik": "schluessel-nach-foto",
+          "laienname": "Schlüssel nach Foto",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 111
+        },
+        {
+          "rubrik": "schluessel-einschicken",
+          "laienname": "Schlüssel einschicken",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 111
+        },
+        {
+          "rubrik": "sperrschliessung",
+          "laienname": "Sperrschließung",
+          "laiennameZeilen": 2,
+          "zusatz": "ein Schlüssel für alle Türen",
+          "zusatzZeilen": 2,
+          "breiteKachel": 111
+        },
+        {
+          "rubrik": "schliessanlage",
+          "laienname": "Schließanlage",
+          "laiennameZeilen": 2,
+          "zusatz": "jedem Schlüssel seine Türen",
+          "zusatzZeilen": 2,
+          "breiteKachel": 111
+        },
+        {
+          "rubrik": "elektronische-schliesssysteme",
+          "laienname": "Elektronisch schließen",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 111
+        },
+        {
+          "rubrik": "sicherheitstechnik",
+          "laienname": "Sicherheitstechnik",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 111
+        },
+        {
+          "rubrik": "schluesseldienst-vor-ort",
+          "laienname": "Schlüsseldienst vor Ort",
+          "laiennameZeilen": 2,
+          "zusatz": null,
+          "zusatzZeilen": null,
+          "breiteKachel": 111
+        }
+      ]
+    }
+  ]
+}

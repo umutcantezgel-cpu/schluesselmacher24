@@ -1,0 +1,50 @@
+### 1. sichern (alle geschützten Dateien, Protokoll im Ordner des Prüfers)
+# Logikwächter · Sicherung
+
+Basis: `1f6f85fc9d41ca27633a402fc38f497784471829` · Dateien: 15
+
+| Datei | Fingerabdruck | Ausnahmen |
+|---|---|---|
+| `src/app/(site)/kasse/kasse-formular.tsx` | `dc4a159e408c` | 1×, 1×, 1×, 1×, 1× |
+| `src/app/(site)/warenkorb/warenkorb-ansicht.tsx` | `7dc9253da29b` | 1×, 1×, 1×, 1×, 1×, 1×, 1×, 1×, 1×, 1× |
+| `src/app/(site)/bestellung/[id]/page.tsx` | `f8e0990df4c1` | 1× |
+| `src/app/(site)/autoschluessel/anfrage/assistent.tsx` | `9ce6f1a78736` | 1×, 1× |
+| `src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx` | `a3d9106db1c7` | 2× |
+| `src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx` | `ba2621887822` | 1×, 1× |
+| `src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx` | `055c84871b22` | – |
+| `src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx` | `80e8a1890415` | 1×, 1×, 1×, 1×, 1× |
+| `src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx` | `0cd2e1d14fc9` | 1×, 1× |
+| `src/app/(site)/service-und-termin/anfrage/anfrage-formular.tsx` | `d2c9198dc0d4` | – |
+| `src/app/(site)/service-und-termin/terminstatus/status-formular.tsx` | `da9bcd1f903c` | 1× |
+| `src/app/(site)/schluessel-nach-code/[slug]/bestell-formular.tsx` | `bc59b6a7a967` | 1× |
+| `src/app/(site)/artikel/[slug]/artikel-kauf.tsx` | `a720cb8f65d3` | – |
+| `src/app/(site)/rechtliches/cookie-einstellungen/cookie-einstellungen.tsx` | `80f3a39619dd` | – |
+| `src/components/forms/photo-upload.tsx` | `049e3da60f53` | 3×, 1×, 1× |
+
+Protokoll geschrieben: `../../../tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-pruefer-02/logik/logik-fingerabdruecke.json`
+Exit: 0
+### 2. pruefen (alle geschützten Dateien, gegen das Protokoll)
+# Logikwächter · Prüfung
+
+Basis: `1f6f85fc9d41ca27633a402fc38f497784471829` · Dateien: 15 · abweichend: 0
+
+| Datei | Ergebnis | Ausnahmen |
+|---|---|---|
+| `src/app/(site)/kasse/kasse-formular.tsx` | gleich | 1×, 1×, 1×, 1×, 1× |
+| `src/app/(site)/warenkorb/warenkorb-ansicht.tsx` | gleich | 1×, 1×, 1×, 1×, 1×, 1×, 1×, 1×, 1×, 1× |
+| `src/app/(site)/bestellung/[id]/page.tsx` | gleich | 1× |
+| `src/app/(site)/autoschluessel/anfrage/assistent.tsx` | gleich | 1×, 1× |
+| `src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx` | gleich | 2× |
+| `src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx` | gleich | 1×, 1× |
+| `src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx` | gleich | – |
+| `src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx` | gleich | 1×, 1×, 1×, 1×, 1× |
+| `src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx` | gleich | 1×, 1× |
+| `src/app/(site)/service-und-termin/anfrage/anfrage-formular.tsx` | gleich | – |
+| `src/app/(site)/service-und-termin/terminstatus/status-formular.tsx` | gleich | 1× |
+| `src/app/(site)/schluessel-nach-code/[slug]/bestell-formular.tsx` | gleich | 1× |
+| `src/app/(site)/artikel/[slug]/artikel-kauf.tsx` | gleich | – |
+| `src/app/(site)/rechtliches/cookie-einstellungen/cookie-einstellungen.tsx` | gleich | – |
+| `src/components/forms/photo-upload.tsx` | gleich | 3×, 1×, 1× |
+
+Exit: 0
+--- Protokoll im Repository vorhanden: 0

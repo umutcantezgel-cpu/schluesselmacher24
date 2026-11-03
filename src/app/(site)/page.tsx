@@ -1,8 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getGuides, getPageContent, getSettings } from '@/lib/data';
-import { NAV_AREAS, PROCESS_LABELS, QUICK_ENTRIES } from '@/lib/navigation';
+import { getGuides, getHubRubriken, getPageContent, getSettings } from '@/lib/data';
+import { NAV_AREAS } from '@/lib/navigation';
+import { kontakt } from '@/lib/rechtliches/firma';
+import { telefonLink } from '@/lib/telefon';
+import { IntentHub } from '@/components/hub/intent-hub';
+import { Eingangsinszenierung } from '@/components/visual/inszenierung/eingangsinszenierung';
 import { formatCents } from '@/lib/format';
 import { ButtonLink } from '@/components/ui/button';
 import { SpaetVorladen } from '@/lib/spaet-vorladen';
@@ -18,7 +22,6 @@ import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { ZylinderMassGrafik } from '@/components/visual/generators/zylinder-mass';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { FraesbahnBewegung } from '@/components/visual/interaktiv/fraesbahn-bewegung';
-import { Seitenwechsel, bereichsName } from '@/components/visual/motion/seitenwechsel';
 import { cn } from '@/lib/cn';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -37,16 +40,16 @@ const PLAN_MOBIL = { system: 'haupt', tueren: 4 } as const;
 const PLAN_AUSSCHNITT_MOBIL: GrafikAusschnitt = schliessplanAusschnitt(PLAN_MOBIL);
 
 /**
- * Telefon-Ausschnitt der Kopfgrafik (Profilschnitt, unter 640 px): Fenster x 126–476 und y 98–288
- * in der viewBox 480 × 360. Es beginnt rechts der Reidenkante (124 + KONTUR/2 = 125,1) und fasst die
- * Einschnitt-Nummern (y 122), die Spitze (x 456), den gehobenen Fräser (x bis 455,5, y ab 119,5) und die
+ * Telefon-Ausschnitt der Kopfgrafik (Profilschnitt, unter 640 px): Fenster x 62 bis 412 und y 98 bis 288
+ * in der viewBox 480 × 360. Seit G-07 ist der Schlüssel kurz genug, dass das Fenster ihn ganz fasst:
+ * Reide ab x 72, Spitze bei 382, gehobener Fräser bis etwa 381, Einschnitt-Nummern (y 122) und
  * Halm-Bemaßung (Text y 266, Linie 274, Hilfslinien bis 282). Breite 350 ergibt Maßstab 1 bei 390 px,
  * also 12 px Schrift (K-008). Die Bezugswerte hängen an Interna von `generators/profilschnitt.tsx`
  * (REIDE, masslinieY), die nicht exportiert sind: Ändert sich der Generator, hier nachmessen.
  */
 const KOPF_AUSSCHNITT_MOBIL: GrafikAusschnitt = {
   ...PROFILSCHNITT_AUSSCHNITT,
-  x: 126,
+  x: 62,
   hoehe: 190,
   vollBreite: PROFILSCHNITT_GROESSE.breite,
   vollHoehe: PROFILSCHNITT_GROESSE.hoehe,
@@ -54,13 +57,13 @@ const KOPF_AUSSCHNITT_MOBIL: GrafikAusschnitt = {
 
 /** Vertrauensbasis nach Erg. Leitfaden §1 — nur diese belegte Aussage, ohne Zahlen oder Siegel. */
 const VERTRAUENSBASIS =
-  'Hinter SCHLÜSSELMACHER24 steht die Schlüssel Schmiede in Wetzlar – mit Werkstatt, fachlicher '
+  'Hinter SCHLÜSSELMACHER24 steht die Schlüssel Schmiede in Wetzlar mit Werkstatt, fachlicher '
   + 'Beratung und eigener Fertigung.';
 
 const TRUST_POINTS = [
   {
     title: 'Fachbetrieb mit eigener Werkstatt',
-    body: 'Die Arbeiten erfolgen im eigenen Betrieb mit den dafür vorgesehenen Maschinen — nicht unterwegs im Fahrzeug.',
+    body: 'Wir fertigen im eigenen Betrieb an unseren Maschinen, nicht unterwegs im Fahrzeug.',
   },
   {
     title: 'Erst prüfen, dann buchen',
@@ -72,7 +75,7 @@ const TRUST_POINTS = [
   },
   {
     title: 'Sichere Zahlung',
-    body: 'Die Anzahlung wird vollständig auf den Gesamtpreis angerechnet. Beleg und Vorgang gehören zusammen.',
+    body: 'Die Anzahlung wird vollständig auf den Gesamtpreis angerechnet.',
   },
 ];
 
@@ -86,15 +89,19 @@ function Weiter({ className }: { className?: string }) {
   );
 }
 
-/** Ziele der Knöpfe im ersten Bildschirm, spät vorgeladen (D-044). */
+/** Ziele der Knöpfe im Autoschlüssel-Abschnitt, spät vorgeladen (D-044). */
 const HERO_ZIELE = ['/autoschluessel/anfrage', '/schluessel-nach-code'] as const;
 
 export default async function HomePage() {
-  const [page, settings, guides] = await Promise.all([
+  const [page, settings, guides, hubRubriken] = await Promise.all([
     getPageContent(''),
     getSettings(),
     getGuides(),
+    getHubRubriken(),
   ]);
+
+  const nummer = kontakt(settings.company).telefon;
+  const telefon = nummer ? { anzeige: nummer, href: telefonLink(nummer) } : null;
 
   const deposit = formatCents(settings.booking.depositCents);
   const leadDays = settings.booking.leadTimeDays;
@@ -104,7 +111,7 @@ export default async function HomePage() {
     { title: 'Fotos hochladen', body: 'Schlüssel aus drei Richtungen und den Fahrzeugschein.' },
     { title: 'Preis oder Prüfung', body: 'Fester Preis, Preisrahmen oder Hinweis auf manuelle Prüfung.' },
     { title: 'Anzahlung', body: `Standard ${deposit}, wird voll angerechnet.` },
-    { title: 'Termin buchen', body: `Frühester Termin nach etwa ${leadDays}\u00a0Tagen Vorlauf.` },
+    { title: 'Termin buchen', body: `Frühester Termin nach etwa ${leadDays}\u00a0Tagen Vorlauf. Zum Termin bringen Sie Ausweisdokument und Fahrzeugschein mit.` },
   ];
 
   const projekte = NAV_AREAS.filter((a) =>
@@ -115,19 +122,24 @@ export default async function HomePage() {
     <>
       <JsonLd data={localBusinessSchema(settings)} />
 
+      {/* Erster Bildschirm: Frage, Satz, Kacheln aus den Rubriken, Anrufen (G-01 bis G-05, K-013) */}
+      <IntentHub rubriken={hubRubriken} satz={page?.subline} telefon={telefon} buehne={<Eingangsinszenierung />} />
+
       {/*
-        Einstieg in drei Teilen: Kopf, Fräsbahn (großer Moment B-01), Handlung. Mobil steht
-        der Halm direkt unter der Überschrift, damit der Moment im ersten Bildschirm spielt, als
-        Ausschnitt mit Halm-Bemaßung; ab 1024 px stehen die Textteile links, die Zeichnung rechts
-        über beide Zeilen.
+        Autoschlüssel direkt nach dem Hub (L-004: Schwerpunkt der Werkstatt): Kopf, Fräsbahn (B-01),
+        Handlung und Eckdaten. Mobil steht der Halm unter der Überschrift, ab 1024 px die Zeichnung
+        rechts über beide Zeilen.
       */}
-      <section aria-labelledby="start-titel" className="overflow-hidden border-b border-border bg-surface">
+      <section aria-labelledby="autoschluessel-titel" className="overflow-hidden border-b border-border">
         <div className="shell grid gap-8 py-section-tight lg:grid-cols-12 lg:grid-rows-kopf lg:gap-x-gutter lg:gap-y-0">
           <div className="lg:col-span-6">
-            <p className="eyebrow">Schlüssel- und Schließtechnik</p>
-            <h1 id="start-titel" className="mt-5 text-display font-bold text-foreground">
+            <p className="eyebrow">Autoschlüssel</p>
+            <h2 id="autoschluessel-titel" className="mt-5 text-headline font-bold text-foreground">
               {page?.headline ?? 'Autoschlüssel nachmachen und programmieren'}
-            </h1>
+            </h2>
+            <p className="mt-4 max-w-measure text-lead text-foreground-muted">
+              Termin in der Werkstatt in Wetzlar, für Mittelhessen und alle, die anreisen.
+            </p>
           </div>
 
           <div className="sm:mx-auto sm:w-full sm:max-w-xl lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:-mr-8 lg:max-w-none lg:self-end xl:-mr-12">
@@ -175,10 +187,6 @@ export default async function HomePage() {
               </Link>
             </div>
 
-            {page?.subline && (
-              <p className="mt-6 max-w-measure text-lead text-foreground-muted lg:order-first lg:mt-5">{page.subline}</p>
-            )}
-
             {/* Schriftfeld: die Eckdaten wie auf einer Zeichnung bemaßt; mobil die Anzahlung als eigene Zeile */}
             <dl className="mt-8 grid grid-cols-2 border-y border-border sm:grid-cols-3 lg:mt-10">
               {[
@@ -210,74 +218,15 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Schnelleinstieg als Stückliste: Position, Bereich, Ablauf */}
-      <Section labelledBy="einstieg-titel">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
-          <SectionHeading
-            id="einstieg-titel"
-            className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start"
-            nummer="01"
-            eyebrow="Schnelleinstieg"
-            title="Wobei können wir helfen?"
-            lead="Jeder Bereich hat einen klaren Ablauf — vom direkten Kauf bis zur Projektplanung."
-          />
-
-          {/* Mobil eine Leiste mit Anschnitt: Nummer oben rechts, Icon über dem Titel, Kennung an der Unterkante; ab 640 px die volle Stückliste */}
-          <ol className="-mx-5 flex snap-x snap-mandatory overflow-x-auto scroll-px-5 border-y border-border px-5 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:border-t sm:border-b-0 sm:px-0 sm:scroll-px-0 lg:col-span-8">
-            {QUICK_ENTRIES.map((area, index) => (
-              <li
-                key={area.key}
-                className={cn(
-                  'flex shrink-0 basis-3/5 snap-start border-r border-border sm:basis-auto sm:border-b sm:border-r-0',
-                  index % 2 === 0 && 'sm:border-r',
-                )}
-              >
-                <AreaScope area={area.key}>
-                  <Link
-                    href={area.href}
-                    className="group relative flex h-full min-h-touch flex-1 flex-col gap-2 p-3 transition-colors duration-quick hover:bg-area-soft sm:flex-row sm:gap-4 sm:py-5 sm:pl-4 sm:pr-4"
-                  >
-                    {/* Bereichsfarbe als Kante, wächst beim Hover (nur feiner Zeiger) */}
-                    <span
-                      aria-hidden
-                      className="absolute inset-y-0 left-0 w-0.5 origin-top scale-y-0 bg-area transition-transform duration-base ease-standard zeiger:group-hover:scale-y-100"
-                    />
-                    {/* Mobil oben rechts in der Karte, ab 640 px links neben dem Icon */}
-                    <span className="absolute right-3 top-3 font-mono text-caption tabular-nums text-foreground-muted sm:static sm:block sm:w-6 sm:shrink-0 sm:pt-1">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    {/* Geht beim Seitenwechsel in das Fach-Icon des Bereichskopfs über (B-13) */}
-                    <Seitenwechsel name={bereichsName(area.key)}>
-                      <BereichIcon area={area.key} size={40} className="shrink-0 text-area-strong" />
-                    </Seitenwechsel>
-                    {/* Die Kennung sitzt in allen Breiten an der Unterkante und ab 640 px auf einer Grundlinie; die Spalte füllt die Kachel */}
-                    <span className="flex min-w-0 flex-1 flex-col">
-                      <span className="block text-small font-semibold text-foreground group-hover:text-area-strong sm:text-title-sm">
-                        {area.label}
-                      </span>
-                      <span className="mt-1 hidden text-small text-foreground-muted sm:block">{area.summary}</span>
-                      <span className="mt-auto block pt-2 font-mono text-caption uppercase tracking-label text-foreground-muted max-sm:tracking-label-eng sm:pt-3">
-                        {PROCESS_LABELS[area.process].label}
-                      </span>
-                    </span>
-                    <Weiter className="mt-1 hidden text-foreground-muted group-hover:text-area-strong group-focus-visible:text-area-strong sm:block" />
-                  </Link>
-                </AreaScope>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </Section>
-
       {/* Vertrauen vor dem Ablauf (Leitfaden Kap. 03) als Prüfprotokoll: ab 1024 px die nummerierten Prüfpunkte links (7), der Kopf rechts (5); mobil Zeilen Nummer | Text */}
       <Section tone="muted" labelledBy="vertrauen-titel">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:-mt-1.5 lg:self-start">
             <SectionHeading
               id="vertrauen-titel"
-              nummer="02"
+              nummer="01"
               eyebrow="Warum wir"
-              title="Sachlich, nachvollziehbar, ohne Überraschungen"
+              title="Eigene Werkstatt, Preis vor dem Termin"
               lead={VERTRAUENSBASIS}
             />
             {/* Die echte Werkstatt — entfällt, solange kein Standort gepflegt ist */}
@@ -318,10 +267,10 @@ export default async function HomePage() {
               <div>
                 <SectionHeading
                   id="ablauf-titel"
-                  nummer="03"
+                  nummer="02"
                   eyebrow="Schwerpunkt Autoschlüssel"
                   title="So läuft Ihr Autoschlüssel-Auftrag ab"
-                  lead="Fünf Schritte, mobil bedienbar. Sie geben nur die Daten an, die für Ihr Fahrzeug gebraucht werden."
+                  lead="Vom Fahrzeug bis zum Termin. Sie geben nur an, was für Ihr Fahrzeug zählt."
                   profillinie
                 />
                 {/* Telefon: Knöpfe untereinander, der sekundäre Weg als Textlink; ab 640 px nebeneinander */}
@@ -371,7 +320,7 @@ export default async function HomePage() {
 
       {/* Direkt kaufen: zwei Zeichnungsblätter */}
       <Section tone="muted" labelledBy="direktkauf-titel">
-        <SectionHeading id="direktkauf-titel" nummer="04" eyebrow="Direkt kaufen" title="Bestellen ohne Termin" />
+        <SectionHeading id="direktkauf-titel" nummer="03" eyebrow="Direkt kaufen" title="Bestellen ohne Termin" />
         {/* Mobil eine Leiste mit sichtbarem Anschnitt, ab 768 px zwei Spalten */}
         <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-gutter md:overflow-visible md:px-0 md:pb-0 scroll-px-5 sm:scroll-px-6 md:scroll-px-0">
           {[
@@ -440,7 +389,7 @@ export default async function HomePage() {
           <div className="order-1 lg:order-2 lg:col-span-5">
             <SectionHeading
               id="projekte-titel"
-              nummer="05"
+              nummer="04"
               eyebrow="Projekte"
               title="Größere Vorhaben planen wir strukturiert"
               lead="Schließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik erfassen wir über geführte Konfiguratoren. Am Ende steht eine Zusammenfassung, aus der ein belastbares Angebot wird."
@@ -471,7 +420,7 @@ export default async function HomePage() {
       {/* Ratgeber: Kopf oben, drei Spalten wie eine Zeitungsseite */}
       <Section tone="muted" tight labelledBy="ratgeber-titel">
         <div className="flex flex-wrap items-end justify-between gap-x-gutter gap-y-4">
-          <SectionHeading id="ratgeber-titel" nummer="06" eyebrow="Ratgeber" title="Antworten auf die häufigsten Fragen" />
+          <SectionHeading id="ratgeber-titel" nummer="05" eyebrow="Ratgeber" title="Antworten auf die häufigsten Fragen" />
           <Link href="/ratgeber" className="group inline-flex min-h-touch items-center gap-1.5 text-body font-semibold text-primary">
             Alle Ratgeber
             <Weiter />

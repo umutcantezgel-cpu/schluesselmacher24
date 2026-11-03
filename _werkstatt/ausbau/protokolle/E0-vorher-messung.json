@@ -1,0 +1,1572 @@
+{
+  "skript": "messung",
+  "zeit": "2026-11-03T00:19:53.900Z",
+  "zusammengefuegt": [
+    {
+      "datei": "E0-vorher-messung-g1.json",
+      "zeit": "2026-11-03T00:19:53.900Z",
+      "argumente": {
+        "_": [],
+        "routen": "/,/autoschluessel,/autoschluessel/marken/volkswagen/golf",
+        "laeufe": "3",
+        "profil": "beide",
+        "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-messung-g1.json"
+      }
+    },
+    {
+      "datei": "E0-vorher-messung-g2.json",
+      "zeit": "2026-11-03T00:22:25.197Z",
+      "argumente": {
+        "_": [],
+        "routen": "/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage",
+        "laeufe": "3",
+        "profil": "beide",
+        "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-messung-g2.json"
+      }
+    },
+    {
+      "datei": "E0-vorher-messung-g3.json",
+      "zeit": "2026-11-03T00:24:45.966Z",
+      "argumente": {
+        "_": [],
+        "routen": "/schluessel-einschicken,/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator",
+        "laeufe": "3",
+        "profil": "beide",
+        "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-messung-g3.json"
+      }
+    },
+    {
+      "datei": "E0-vorher-messung-g4.json",
+      "zeit": "2026-11-03T00:26:28.325Z",
+      "argumente": {
+        "_": [],
+        "routen": "/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen",
+        "laeufe": "3",
+        "profil": "beide",
+        "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-messung-g4.json"
+      }
+    }
+  ],
+  "budget": {
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "hinweis": "Werte: Median (Minimum–Maximum) je Ansicht und Profil; INP 0 = kein Ereignis über 16 ms",
+  "serien": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 640,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 186,
+          "jsKB": 204.2197265625,
+          "gesamtKB": 476.0380859375,
+          "ressourcen": 53,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 620,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 138,
+          "jsKB": 204.2197265625,
+          "gesamtKB": 504.671875,
+          "ressourcen": 55,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 668,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 138,
+          "jsKB": 204.2197265625,
+          "gesamtKB": 476.015625,
+          "ressourcen": 53,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 228,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 8,
+          "jsKB": 331.6630859375,
+          "gesamtKB": 844.646484375,
+          "ressourcen": 116,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 176,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 13,
+          "jsKB": 331.6630859375,
+          "gesamtKB": 844.646484375,
+          "ressourcen": 116,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 264,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 26,
+          "jsKB": 331.6630859375,
+          "gesamtKB": 844.6455078125,
+          "ressourcen": 116,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 656,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 186,
+          "jsKB": 183.3681640625,
+          "gesamtKB": 553.6396484375,
+          "ressourcen": 60,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 624,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 175,
+          "jsKB": 183.3681640625,
+          "gesamtKB": 580.1611328125,
+          "ressourcen": 61,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 636,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 179,
+          "jsKB": 190.3623046875,
+          "gesamtKB": 548.767578125,
+          "ressourcen": 60,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 216,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 8,
+          "jsKB": 279.103515625,
+          "gesamtKB": 934.677734375,
+          "ressourcen": 117,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 184,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 28,
+          "jsKB": 279.103515625,
+          "gesamtKB": 934.67578125,
+          "ressourcen": 117,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 204,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 23,
+          "jsKB": 279.103515625,
+          "gesamtKB": 934.6748046875,
+          "ressourcen": 117,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 612,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 161,
+          "jsKB": 190.3623046875,
+          "gesamtKB": 418.3740234375,
+          "ressourcen": 47,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 636,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 166,
+          "jsKB": 190.3623046875,
+          "gesamtKB": 418.37109375,
+          "ressourcen": 47,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 620,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 159,
+          "jsKB": 190.3623046875,
+          "gesamtKB": 418.37109375,
+          "ressourcen": 47,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 204,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 12,
+          "jsKB": 279.103515625,
+          "gesamtKB": 846.3857421875,
+          "ressourcen": 116,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 180,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 0,
+          "jsKB": 279.103515625,
+          "gesamtKB": 846.3857421875,
+          "ressourcen": 116,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 184,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 13,
+          "jsKB": 279.103515625,
+          "gesamtKB": 846.384765625,
+          "ressourcen": 116,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 552,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 245,
+          "jsKB": 230.03125,
+          "gesamtKB": 528.0615234375,
+          "ressourcen": 48,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 536,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 200,
+          "jsKB": 230.03125,
+          "gesamtKB": 528.060546875,
+          "ressourcen": 48,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 536,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 219,
+          "jsKB": 230.03125,
+          "gesamtKB": 512.966796875,
+          "ressourcen": 48,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 204,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 27,
+          "jsKB": 297.779296875,
+          "gesamtKB": 859.6826171875,
+          "ressourcen": 106,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 256,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 77,
+          "jsKB": 297.779296875,
+          "gesamtKB": 859.6904296875,
+          "ressourcen": 106,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 240,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 57,
+          "jsKB": 297.779296875,
+          "gesamtKB": 859.685546875,
+          "ressourcen": 106,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 636,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 179,
+          "jsKB": 202.33984375,
+          "gesamtKB": 502.16015625,
+          "ressourcen": 49,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 648,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 206,
+          "jsKB": 202.33984375,
+          "gesamtKB": 502.16015625,
+          "ressourcen": 49,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 604,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 185,
+          "jsKB": 202.33984375,
+          "gesamtKB": 502.16015625,
+          "ressourcen": 49,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 232,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 95,
+          "jsKB": 279.103515625,
+          "gesamtKB": 776.1240234375,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 280,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 39,
+          "jsKB": 279.103515625,
+          "gesamtKB": 776.123046875,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 264,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 66,
+          "jsKB": 279.103515625,
+          "gesamtKB": 776.123046875,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 616,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 228,
+          "jsKB": 234.1767578125,
+          "gesamtKB": 549.4609375,
+          "ressourcen": 56,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 640,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 209,
+          "jsKB": 234.1767578125,
+          "gesamtKB": 549.4609375,
+          "ressourcen": 56,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 624,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 175,
+          "jsKB": 234.1767578125,
+          "gesamtKB": 549.4609375,
+          "ressourcen": 56,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 280,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 77,
+          "jsKB": 300.5126953125,
+          "gesamtKB": 798.6787109375,
+          "ressourcen": 106,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 220,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 50,
+          "jsKB": 300.5126953125,
+          "gesamtKB": 798.677734375,
+          "ressourcen": 106,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 248,
+          "cls": 0,
+          "inp": 48,
+          "tbt": 48,
+          "jsKB": 300.5126953125,
+          "gesamtKB": 798.6767578125,
+          "ressourcen": 106,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 596,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 138,
+          "jsKB": 239.9912109375,
+          "gesamtKB": 561.5771484375,
+          "ressourcen": 60,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 616,
+          "cls": 0,
+          "inp": 48,
+          "tbt": 152,
+          "jsKB": 238.6826171875,
+          "gesamtKB": 550.564453125,
+          "ressourcen": 59,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 620,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 200,
+          "jsKB": 238.6826171875,
+          "gesamtKB": 549.876953125,
+          "ressourcen": 58,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 176,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 288.20703125,
+          "gesamtKB": 794.541015625,
+          "ressourcen": 108,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 164,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 6,
+          "jsKB": 288.20703125,
+          "gesamtKB": 794.5419921875,
+          "ressourcen": 108,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 196,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 0,
+          "jsKB": 288.20703125,
+          "gesamtKB": 794.5400390625,
+          "ressourcen": 108,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 564,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 201,
+          "jsKB": 240.7548828125,
+          "gesamtKB": 484.92578125,
+          "ressourcen": 52,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 568,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 140,
+          "jsKB": 238.6875,
+          "gesamtKB": 511.51171875,
+          "ressourcen": 54,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 556,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 153,
+          "jsKB": 244.6748046875,
+          "gesamtKB": 485.1044921875,
+          "ressourcen": 52,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 156,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 288.20703125,
+          "gesamtKB": 770.8935546875,
+          "ressourcen": 105,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 168,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 2,
+          "jsKB": 288.20703125,
+          "gesamtKB": 770.8935546875,
+          "ressourcen": 105,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 140,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 1,
+          "jsKB": 288.20703125,
+          "gesamtKB": 770.8896484375,
+          "ressourcen": 105,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 580,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 203,
+          "jsKB": 217.5390625,
+          "gesamtKB": 493.771484375,
+          "ressourcen": 46,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 620,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 207,
+          "jsKB": 217.5390625,
+          "gesamtKB": 474.43359375,
+          "ressourcen": 44,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 608,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 229,
+          "jsKB": 217.5390625,
+          "gesamtKB": 474.43359375,
+          "ressourcen": 44,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 196,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 51,
+          "jsKB": 294.8740234375,
+          "gesamtKB": 774.283203125,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 188,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 42,
+          "jsKB": 294.8740234375,
+          "gesamtKB": 774.28125,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 220,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 60,
+          "jsKB": 294.8740234375,
+          "gesamtKB": 774.2783203125,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 652,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 41,
+          "jsKB": 261.5771484375,
+          "gesamtKB": 609.2080078125,
+          "ressourcen": 60,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 644,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 143,
+          "jsKB": 266.50390625,
+          "gesamtKB": 591.8525390625,
+          "ressourcen": 59,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 652,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 162,
+          "jsKB": 266.50390625,
+          "gesamtKB": 617.8310546875,
+          "ressourcen": 61,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 172,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 313.9306640625,
+          "gesamtKB": 839.919921875,
+          "ressourcen": 112,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 216,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 3,
+          "jsKB": 313.9306640625,
+          "gesamtKB": 839.9169921875,
+          "ressourcen": 112,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 176,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 16,
+          "jsKB": 313.9306640625,
+          "gesamtKB": 839.919921875,
+          "ressourcen": 112,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 488,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 192,
+          "jsKB": 239.37890625,
+          "gesamtKB": 488.56640625,
+          "ressourcen": 47,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 504,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 221,
+          "jsKB": 225.7802734375,
+          "gesamtKB": 474.9677734375,
+          "ressourcen": 45,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 540,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 268,
+          "jsKB": 225.7802734375,
+          "gesamtKB": 474.9677734375,
+          "ressourcen": 45,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 220,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 72,
+          "jsKB": 292.521484375,
+          "gesamtKB": 775.103515625,
+          "ressourcen": 105,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 240,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 45,
+          "jsKB": 292.521484375,
+          "gesamtKB": 775.103515625,
+          "ressourcen": 105,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 164,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 28,
+          "jsKB": 292.521484375,
+          "gesamtKB": 775.1025390625,
+          "ressourcen": 105,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 544,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 188,
+          "jsKB": 216.0791015625,
+          "gesamtKB": 429.8046875,
+          "ressourcen": 43,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 528,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 211,
+          "jsKB": 216.0791015625,
+          "gesamtKB": 475.1279296875,
+          "ressourcen": 46,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 540,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 204,
+          "jsKB": 216.0791015625,
+          "gesamtKB": 475.1279296875,
+          "ressourcen": 46,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 256,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 89,
+          "jsKB": 279.103515625,
+          "gesamtKB": 758.390625,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 280,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 67,
+          "jsKB": 279.103515625,
+          "gesamtKB": 758.38671875,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 176,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 30,
+          "jsKB": 279.103515625,
+          "gesamtKB": 758.3916015625,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 484,
+          "cls": 0.009765972583378977,
+          "inp": 24,
+          "tbt": 224,
+          "jsKB": 207.1689453125,
+          "gesamtKB": 509.8212890625,
+          "ressourcen": 54,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 500,
+          "cls": 0.009765972583378977,
+          "inp": 40,
+          "tbt": 215,
+          "jsKB": 213.7734375,
+          "gesamtKB": 518.0234375,
+          "ressourcen": 56,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 480,
+          "cls": 0.009765972583378977,
+          "inp": 32,
+          "tbt": 220,
+          "jsKB": 207.1689453125,
+          "gesamtKB": 509.8212890625,
+          "ressourcen": 54,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 184,
+          "cls": 0.00398236802340535,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 295.91015625,
+          "gesamtKB": 778.701171875,
+          "ressourcen": 104,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 140,
+          "cls": 0.00398236802340535,
+          "inp": 40,
+          "tbt": 5,
+          "jsKB": 295.91015625,
+          "gesamtKB": 778.69921875,
+          "ressourcen": 104,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 156,
+          "cls": 0.00398236802340535,
+          "inp": 32,
+          "tbt": 11,
+          "jsKB": 295.91015625,
+          "gesamtKB": 778.6982421875,
+          "ressourcen": 104,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 524,
+          "cls": 0,
+          "inp": 48,
+          "tbt": 136,
+          "jsKB": 214.3818359375,
+          "gesamtKB": 533.5390625,
+          "ressourcen": 52,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 552,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 147,
+          "jsKB": 214.3818359375,
+          "gesamtKB": 532.9169921875,
+          "ressourcen": 51,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 544,
+          "cls": 0,
+          "inp": 48,
+          "tbt": 157,
+          "jsKB": 210.453125,
+          "gesamtKB": 517.123046875,
+          "ressourcen": 49,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 136,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 279.103515625,
+          "gesamtKB": 757.767578125,
+          "ressourcen": 101,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 164,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 279.103515625,
+          "gesamtKB": 757.7666015625,
+          "ressourcen": 101,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 144,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 279.103515625,
+          "gesamtKB": 757.7666015625,
+          "ressourcen": 101,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    }
+  ],
+  "zusammenfassung": [
+    {
+      "ansicht": "H01-start",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "640 (620–668)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "40 (32–40)",
+      "tbt": "138 (138–186)",
+      "jsKB": "204,2 (204,2–204,2)",
+      "gesamtKB": "476,0 (476,0–504,7)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H01-start",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "228 (176–264)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–32)",
+      "tbt": "13 (8–26)",
+      "jsKB": "331,7 (331,7–331,7)",
+      "gesamtKB": "844,6 (844,6–844,6)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "636 (624–656)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "16 (16–24)",
+      "tbt": "179 (175–186)",
+      "jsKB": "183,4 (183,4–190,4)",
+      "gesamtKB": "553,6 (548,8–580,2)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "204 (184–216)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (16–24)",
+      "tbt": "23 (8–28)",
+      "jsKB": "279,1 (279,1–279,1)",
+      "gesamtKB": "934,7 (934,7–934,7)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "620 (612–636)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (16–24)",
+      "tbt": "161 (159–166)",
+      "jsKB": "190,4 (190,4–190,4)",
+      "gesamtKB": "418,4 (418,4–418,4)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "184 (180–204)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (24–32)",
+      "tbt": "12 (0–13)",
+      "jsKB": "279,1 (279,1–279,1)",
+      "gesamtKB": "846,4 (846,4–846,4)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "536 (536–552)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (16–24)",
+      "tbt": "219 (200–245)",
+      "jsKB": "230,0 (230,0–230,0)",
+      "gesamtKB": "528,1 (513,0–528,1)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "240 (204–256)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–32)",
+      "tbt": "57 (27–77)",
+      "jsKB": "297,8 (297,8–297,8)",
+      "gesamtKB": "859,7 (859,7–859,7)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H05-code",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "636 (604–648)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (24–40)",
+      "tbt": "185 (179–206)",
+      "jsKB": "202,3 (202,3–202,3)",
+      "gesamtKB": "502,2 (502,2–502,2)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H05-code",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "264 (232–280)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (24–24)",
+      "tbt": "66 (39–95)",
+      "jsKB": "279,1 (279,1–279,1)",
+      "gesamtKB": "776,1 (776,1–776,1)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "624 (616–640)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "16 (16–24)",
+      "tbt": "209 (175–228)",
+      "jsKB": "234,2 (234,2–234,2)",
+      "gesamtKB": "549,5 (549,5–549,5)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "248 (220–280)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "40 (32–48)",
+      "tbt": "50 (48–77)",
+      "jsKB": "300,5 (300,5–300,5)",
+      "gesamtKB": "798,7 (798,7–798,7)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H07-foto",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "616 (596–620)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (16–48)",
+      "tbt": "152 (138–200)",
+      "jsKB": "238,7 (238,7–240,0)",
+      "gesamtKB": "550,6 (549,9–561,6)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H07-foto",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "176 (164–196)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (24–32)",
+      "tbt": "0 (0–6)",
+      "jsKB": "288,2 (288,2–288,2)",
+      "gesamtKB": "794,5 (794,5–794,5)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "564 (556–568)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (16–24)",
+      "tbt": "153 (140–201)",
+      "jsKB": "240,8 (238,7–244,7)",
+      "gesamtKB": "485,1 (484,9–511,5)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "156 (140–168)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–40)",
+      "tbt": "1 (0–2)",
+      "jsKB": "288,2 (288,2–288,2)",
+      "gesamtKB": "770,9 (770,9–770,9)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "608 (580–620)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "16 (16–16)",
+      "tbt": "207 (203–229)",
+      "jsKB": "217,5 (217,5–217,5)",
+      "gesamtKB": "474,4 (474,4–493,8)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "196 (188–220)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–32)",
+      "tbt": "51 (42–60)",
+      "jsKB": "294,9 (294,9–294,9)",
+      "gesamtKB": "774,3 (774,3–774,3)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "652 (644–652)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (24–32)",
+      "tbt": "143 (41–162)",
+      "jsKB": "266,5 (261,6–266,5)",
+      "gesamtKB": "609,2 (591,9–617,8)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "176 (172–216)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–32)",
+      "tbt": "3 (0–16)",
+      "jsKB": "313,9 (313,9–313,9)",
+      "gesamtKB": "839,9 (839,9–839,9)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "504 (488–540)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "16 (16–24)",
+      "tbt": "221 (192–268)",
+      "jsKB": "225,8 (225,8–239,4)",
+      "gesamtKB": "475,0 (475,0–488,6)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "220 (164–240)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (24–32)",
+      "tbt": "45 (28–72)",
+      "jsKB": "292,5 (292,5–292,5)",
+      "gesamtKB": "775,1 (775,1–775,1)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "540 (528–544)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (16–24)",
+      "tbt": "204 (188–211)",
+      "jsKB": "216,1 (216,1–216,1)",
+      "gesamtKB": "475,1 (429,8–475,1)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "256 (176–280)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (24–24)",
+      "tbt": "67 (30–89)",
+      "jsKB": "279,1 (279,1–279,1)",
+      "gesamtKB": "758,4 (758,4–758,4)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H13-kasse",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "484 (480–500)",
+      "cls": "0,010 (0,010–0,010)",
+      "inp": "32 (24–40)",
+      "tbt": "220 (215–224)",
+      "jsKB": "207,2 (207,2–213,8)",
+      "gesamtKB": "509,8 (509,8–518,0)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H13-kasse",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "156 (140–184)",
+      "cls": "0,004 (0,004–0,004)",
+      "inp": "32 (32–40)",
+      "tbt": "5 (0–11)",
+      "jsKB": "295,9 (295,9–295,9)",
+      "gesamtKB": "778,7 (778,7–778,7)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "544 (524–552)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "48 (40–48)",
+      "tbt": "147 (136–157)",
+      "jsKB": "214,4 (210,5–214,4)",
+      "gesamtKB": "532,9 (517,1–533,5)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "144 (136–164)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–32)",
+      "tbt": "0 (0–0)",
+      "jsKB": "279,1 (279,1–279,1)",
+      "gesamtKB": "757,8 (757,8–757,8)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    }
+  ]
+}

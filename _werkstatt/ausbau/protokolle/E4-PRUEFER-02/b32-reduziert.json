@@ -1,0 +1,30 @@
+{
+  "skript": "b32-reduziert.mjs",
+  "zeit": "2026-11-03T13:28:36.123Z",
+  "ergebnisse": [
+    {
+      "geraet": "mobil",
+      "viewport": [
+        390,
+        844
+      ],
+      "bewegung": "ruhig",
+      "phaseStart": "a",
+      "phaseEnde": "a",
+      "wechselIn13_5s": 0,
+      "pauseKnoepfe": 0
+    },
+    {
+      "geraet": "desktop",
+      "viewport": [
+        1440,
+        900
+      ],
+      "bewegung": "ruhig",
+      "phaseStart": "a",
+      "phaseEnde": "a",
+      "wechselIn13_5s": 0,
+      "pauseKnoepfe": 0
+    }
+  ]
+}

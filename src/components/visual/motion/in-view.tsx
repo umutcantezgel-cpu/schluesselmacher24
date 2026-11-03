@@ -11,6 +11,8 @@ export interface InViewProps {
   as?: ElementType;
   /** Anteil, der sichtbar sein muss, bevor die Animation startet. */
   threshold?: number;
+  /** Kennung im Bewegungsregister (KERN K-007), Standard B-27 (Einstieg der Fachgrafiken). */
+  kennung?: string;
 }
 
 /** Meldestufen in 2-%-Schritten, damit auch sehr hohe Bereiche fortlaufend gemeldet werden. */
@@ -36,11 +38,12 @@ export function istSichtbarGenug(
  * Startet die CSS-Einstiegsanimationen (`.sm24-draw`, `.sm24-reveal`,
  * `.sm24-pop`) erst, wenn der Bereich ins Bild kommt.
  *
- * Auf dem Server steht `data-motion="wait"`; die Pause greift per CSS nur mit
- * JavaScript und ohne „Bewegung reduzieren“. Falls der Beobachter nicht
+ * Die Hülle trägt die Registerkennung als `data-motion` (etwa B-27) und den Zustand als
+ * `data-zustand`: Auf dem Server steht `wait`; die Pause greift per CSS nur bei
+ * `html[data-bewegung="an"]`. Falls der Beobachter nicht
  * verfügbar ist, spielt die Animation sofort.
  */
-export function InView({ children, className, as: Tag = 'div', threshold = 0.25 }: InViewProps) {
+export function InView({ children, className, as: Tag = 'div', threshold = 0.25, kennung = 'B-27' }: InViewProps) {
   const ref = useRef<HTMLElement>(null);
   const [state, setState] = useState<'wait' | 'play'>('wait');
 
@@ -64,7 +67,7 @@ export function InView({ children, className, as: Tag = 'div', threshold = 0.25 
   }, [threshold]);
 
   return (
-    <Tag ref={ref} data-motion={state} className={cn(className)}>
+    <Tag ref={ref} data-motion={kennung} data-zustand={state} className={cn(className)}>
       {children}
     </Tag>
   );

@@ -19,15 +19,17 @@ import { vorgangOrtText } from './terminort';
 import type { BusinessRecord, CompanyProfile, OrderLine, UploadRef } from './types';
 import { STATUS_LABEL } from './vorgang-status';
 
-const KATEGORIE_LABEL: Record<UploadRef['category'], string> = {
+export const KATEGORIE_LABEL: Record<UploadRef['category'], string> = {
   schluesselfoto: 'Schlüsselfoto',
   fahrzeugschein: 'Fahrzeugschein',
   grundriss: 'Grundriss',
   dokument: 'Dokument',
   objektfoto: 'Objektfoto',
+  sicherungskarte: 'Sicherungskarte',
+  vollmacht: 'Vollmacht',
 };
 
-const POSITION_LABEL: Record<OrderLine['kind'], string> = {
+export const POSITION_LABEL: Record<OrderLine['kind'], string> = {
   'code-schluessel': 'Schlüssel nach Code',
   'zylinder-schliessung': 'Gleichschließende Zylinder',
   standard: 'Standardartikel',

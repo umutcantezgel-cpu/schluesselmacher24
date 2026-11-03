@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, type ReactNode } from 'react';
-import type { FlowState } from '@/lib/flow/use-flow';
+import type { FlowState, FlowStep } from '@/lib/flow/use-flow';
 import { cn } from '@/lib/cn';
 import { Button } from '@/components/ui/button';
 import { SchutzFelder, type FormularSchutzHandle } from '@/components/forms/formular-schutz';
@@ -34,7 +34,32 @@ export interface FlowShellProps<T extends object> {
   schutz?: FormularSchutzHandle;
   /** Hinweis unter dem letzten Schritt, direkt über dem Absenden (etwa zu AGB bei Anfragen). */
   abschlussHinweis?: ReactNode;
+  /**
+   * Vorschlag, der „Weiter“ freigibt, obwohl der Schritt noch nicht erfüllt ist (A-025), etwa der
+   * erste Treffer der Fahrzeugsuche: Der Hinweis ersetzt `blockedHint`, „Weiter“ ruft `onWeiter`.
+   */
+  vorschlag?: { hinweis: string; onWeiter: () => void } | null;
   children: ReactNode;
+}
+
+export interface Etappe {
+  name: string;
+  /** Erster und letzter Index in `flow.steps`. */
+  von: number;
+  bis: number;
+}
+
+/** Fasst aufeinanderfolgende Schritte gleicher Etappe zusammen; ohne Etappen eine leere Liste. */
+export function etappenAus(steps: Pick<FlowStep, 'etappe'>[]): Etappe[] {
+  if (!steps.some((s) => s.etappe)) return [];
+  const liste: Etappe[] = [];
+  steps.forEach((s, i) => {
+    const name = s.etappe ?? '';
+    const letzte = liste[liste.length - 1];
+    if (letzte && letzte.name === name) letzte.bis = i;
+    else liste.push({ name, von: i, bis: i });
+  });
+  return liste;
 }
 
 /**
@@ -54,8 +79,13 @@ export function FlowShell<T extends object>({
   summe,
   schutz,
   abschlussHinweis,
+  vorschlag = null,
   children,
 }: FlowShellProps<T>) {
+  const etappen = etappenAus(flow.steps);
+  const etappeJetzt = etappen.findIndex((e) => flow.stepIndex >= e.von && flow.stepIndex <= e.bis);
+  const etappe = etappeJetzt >= 0 ? etappen[etappeJetzt] : null;
+  const weiterFrei = flow.canContinue || Boolean(vorschlag);
   const percent = Math.round(flow.progress * 100);
   const mitSeite = raster === 'seite';
 
@@ -73,14 +103,86 @@ export function FlowShell<T extends object>({
   }
   const weiter = () => {
     setAbsicht('vor');
-    flow.next();
+    if (!flow.canContinue && vorschlag) vorschlag.onWeiter();
+    else flow.next();
   };
   const zurueck = () => {
     setAbsicht('zurueck');
     flow.back();
   };
 
-  const schrittliste = (
+  const schrittknopf = (s: FlowStep, i: number) => (
+    <button
+      type="button"
+      onClick={() => {
+        if (i > flow.stepIndex) return;
+        if (i < flow.stepIndex) setAbsicht('zurueck');
+        flow.goTo(s.id);
+      }}
+      disabled={i > flow.stepIndex}
+      aria-current={i === flow.stepIndex ? 'step' : undefined}
+      className={cn(
+        'inline-flex min-h-6 items-center gap-1.5 text-caption font-semibold transition-colors duration-quick ease-standard',
+        i === flow.stepIndex && 'text-primary',
+        i < flow.stepIndex && 'text-foreground-muted hover:text-primary',
+        i > flow.stepIndex && 'cursor-default text-foreground-subtle',
+      )}
+    >
+      {i < flow.stepIndex ? <GlyphHaken size={14} /> : <span aria-hidden className="size-3.5" />}
+      {s.short}
+    </button>
+  );
+
+  const etappenliste = (
+    <ol className={mitSeite ? 'flex flex-col gap-2' : 'mt-3 hidden flex-wrap gap-x-5 gap-y-1 md:flex'}>
+      {etappen.map((e, n) => {
+        const fertig = e.bis < flow.stepIndex;
+        const jetzt = n === etappeJetzt;
+        return (
+          <li key={e.name}>
+            <button
+              type="button"
+              onClick={() => {
+                if (e.von > flow.stepIndex) return;
+                setAbsicht('zurueck');
+                flow.goTo(flow.steps[e.von].id);
+              }}
+              disabled={e.von > flow.stepIndex || jetzt}
+              aria-current={jetzt ? 'step' : undefined}
+              className={cn(
+                'inline-flex min-h-touch items-center gap-2 text-small font-semibold transition-colors duration-quick ease-standard md:min-h-8',
+                jetzt && 'text-primary',
+                fertig && 'text-foreground-muted hover:text-primary',
+                !jetzt && !fertig && 'cursor-default text-foreground-subtle',
+              )}
+            >
+              <span
+                aria-hidden
+                className={cn(
+                  'flex size-6 shrink-0 items-center justify-center rounded-full border font-mono text-caption tabular-nums',
+                  jetzt && 'border-primary bg-primary text-primary-foreground',
+                  fertig && 'border-border-strong',
+                  !jetzt && !fertig && 'border-border',
+                )}
+              >
+                {fertig ? <GlyphHaken size={14} /> : n + 1}
+              </span>
+              {e.name}
+            </button>
+            {mitSeite && jetzt && e.bis > e.von && (
+              <ol className="ml-8 mt-1 flex flex-col gap-0.5 border-l border-border pl-3">
+                {flow.steps.slice(e.von, e.bis + 1).map((s, k) => (
+                  <li key={s.id}>{schrittknopf(s, e.von + k)}</li>
+                ))}
+              </ol>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  );
+
+  const schrittliste = etappen.length > 0 ? etappenliste : (
     <ol className={mitSeite ? 'flex flex-col gap-1' : 'mt-3 hidden flex-wrap gap-x-4 gap-y-1 md:flex'}>
       {flow.steps.map((s, i) => (
         <li key={s.id}>
@@ -122,8 +224,22 @@ export function FlowShell<T extends object>({
       <div className="sticky top-header z-sticky -mx-5 border-b border-border bg-background px-5 py-3 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div className="flex items-baseline justify-between gap-3">
           <p className="min-w-0 truncate whitespace-nowrap text-caption font-mono tabular-nums text-foreground-muted">
-            Schritt {flow.stepIndex + 1} von {flow.stepCount}
-            {flow.step?.short && <span> · {flow.step.short}</span>}
+            {etappe ? (
+              <>
+                Schritt {etappeJetzt + 1} von {etappen.length} · {etappe.name}
+                {etappe.bis > etappe.von && (
+                  <span className="text-foreground-subtle">
+                    {' '}
+                    · {flow.stepIndex - etappe.von + 1} von {etappe.bis - etappe.von + 1}
+                  </span>
+                )}
+              </>
+            ) : (
+              <>
+                Schritt {flow.stepIndex + 1} von {flow.stepCount}
+                {flow.step?.short && <span> · {flow.step.short}</span>}
+              </>
+            )}
           </p>
           {summe && (
             <p className="hidden shrink-0 items-baseline gap-2 md:flex">
@@ -212,8 +328,8 @@ export function FlowShell<T extends object>({
               'md:static md:mt-8 md:border-0 md:bg-transparent md:p-0 md:pb-4',
             )}
           >
-            {blockedHint && !flow.canContinue && (
-              <p className="mb-2 text-center text-small text-foreground-subtle md:text-right">{blockedHint}</p>
+            {!flow.canContinue && (vorschlag?.hinweis ?? blockedHint) && (
+              <p className="mb-2 text-center text-small text-foreground-subtle md:text-right">{vorschlag?.hinweis ?? blockedHint}</p>
             )}
             <div className="mx-auto flex max-w-shell items-center gap-3 md:mx-0">
               {/* Mobil steht die laufende Summe links, wie in der Leiste des Warenkorbs. */}
@@ -231,11 +347,11 @@ export function FlowShell<T extends object>({
                 </p>
               )}
 
-              {/* Auf Schritt 1 gibt es kein Zurück; mobil bleibt der Name für Hilfsmittel lesbar. */}
+              {/* Auf Schritt 1 gibt es kein Zurück; der Name steht auf allen Breiten sichtbar (A-025). */}
               {!flow.isFirst && (
                 <Button variant="outline" size="lg" onClick={zurueck}>
                   <GlyphPfeilLinks size={18} />
-                  <span className="sr-only sm:not-sr-only">Zurück</span>
+                  <span>Zurück</span>
                 </Button>
               )}
 
@@ -256,7 +372,7 @@ export function FlowShell<T extends object>({
                   fullWidth={!summe}
                   className="md:ml-auto md:w-auto"
                   onClick={weiter}
-                  disabled={!flow.canContinue}
+                  disabled={!weiterFrei}
                 >
                   Weiter
                   <GlyphPfeilRechts size={18} />

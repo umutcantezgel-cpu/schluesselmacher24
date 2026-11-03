@@ -16,6 +16,8 @@ import type {
   Preisregeln,
   Produkte,
   Ratgeber,
+  Rubriken,
+  Fahrzeugreihen,
   Seiten,
   Sperrtage,
   Vorgaenge,
@@ -111,6 +113,14 @@ export class PayloadAdapter implements DataAdapter {
         return (await alle<Sperrtage>('sperrtage', undefined, 'datum')).map(m.sperrtagZuSeite);
       case 'records':
         return (await alle<Vorgaenge>('vorgaenge', undefined, '-createdAt')).map(m.vorgangZuSeite);
+      case 'fahrzeugkatalog': {
+        const docs = await alle<Fahrzeugreihen>('fahrzeugreihen', undefined, 'marke');
+        return docs.length ? docs.map(m.fahrzeugreiheZuSeite) : defaults.fahrzeugkatalog();
+      }
+      case 'rubriken': {
+        const docs = await alle<Rubriken>('rubriken', undefined, 'reihenfolge');
+        return docs.length ? docs.map(m.rubrikZuSeite) : defaults.rubriken();
+      }
     }
   }
 

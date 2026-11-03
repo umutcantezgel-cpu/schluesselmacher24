@@ -1,0 +1,32 @@
+| Ansicht | Gerät | critical | serious | moderate | minor | Regeln gesamt | Stellen gesamt |
+|---|---|---|---|---|---|---|---|
+| H01-start | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H01-start | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H02-autoschluessel | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H02-autoschluessel | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H03-modell-golf | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H03-modell-golf | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H04-autoschluessel-anfrage | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H04-autoschluessel-anfrage | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H05-code | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H05-code | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H06-code-produkt | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H06-code-produkt | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H07-foto | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H07-foto | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H08-einschicken | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H08-einschicken | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H09-sperrschliessung-konfigurator | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H09-sperrschliessung-konfigurator | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H10-schliessanlagen | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H10-schliessanlagen | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H11-schliessanlagen-konfigurator | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H11-schliessanlagen-konfigurator | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H12-partner-werden | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H12-partner-werden | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H13-kasse | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H13-kasse | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+| H14-ratgeber-messen | mobil | 0 | 0 | 0 | 0 | 0 | 0 |
+| H14-ratgeber-messen | desktop | 0 | 0 | 0 | 0 | 0 | 0 |
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/a11y.json

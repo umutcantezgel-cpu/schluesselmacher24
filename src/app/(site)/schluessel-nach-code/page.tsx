@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getCodeLines, getPageContent } from '@/lib/data';
+import { getCodeLines, getPageContent, getRubrik } from '@/lib/data';
 import { codeFamilien, codeHersteller, herstellerPfad, kategoriePfad } from '@/lib/codelinie';
 import { formatCents, formatNumber } from '@/lib/format';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -81,6 +81,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function SchluesselNachCodePage() {
+  // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
+  const rubrik = await getRubrik('schluessel-nach-code');
   const [page, lines] = await Promise.all([getPageContent(ROUTE), getCodeLines()]);
 
   // Gepflegte interne Links ergänzen die festen Ziele, ohne sie zu doppeln.
@@ -107,6 +109,7 @@ export default async function SchluesselNachCodePage() {
       <SpaetVorladen ziele={['/schluessel-nach-vorlage']} />
 
       <PageHeader
+        rubrik={rubrik}
         eyebrow={PROCESS_LABELS.direktkauf.label}
         title={page?.headline ?? 'Schlüssel nach Code'}
         lead={page?.subline ?? 'Code eingeben, Stückzahl wählen, bestellen.'}

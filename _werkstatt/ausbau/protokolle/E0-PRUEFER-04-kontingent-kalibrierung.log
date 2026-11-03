@@ -1,0 +1,23 @@
+## Kalibrierung gespeichert
+
+- Zeit 2026-11-02T21:23:09.000Z, Fensterbeginn 2026-11-02T16:23:09.000Z (vor 5 Stunden)
+- Gewichtete Summe 5.634.710, gemessene Prozent 2,0 %
+- Faktor dieses Punkts: 0,355 % je 1 Mio. gewichtete Token
+- Mittel aus 1 Punkt(en): 0,355 % je 1 Mio. gewichtete Token
+- Datei: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/kontingent-kalibrierung.json
+
+## Kontingent-Schätzung
+
+- Fenster: 2026-11-02T16:23:09.000Z bis 2026-11-02T21:23:09.000Z (Beginn vor 5 Stunden)
+- Gewichtete Summe: 5.634.710 aus 36 Einträgen
+- Geschätzt: 2,0 % (Faktor 0,355 % je 1 Mio. gewichtete Token, 1 Punkt(e))
+- Protokolle: 62 Dateien, doppelte message.id übersprungen 1.395, ohne Zeitstempel 0, fehlerhafte Zeilen 0
+
+| Modell | Gewicht | Eingabe | Cache-Erstellung | Cache-Lesen | Ausgabe | Gewichtete Summe |
+|---|---|---|---|---|---|---|
+| opus | 5 | 72 | 178.714 | 6.489.874 | 50.898 | 5.634.710 |
+| haiku | 1 | 0 | 0 | 0 | 0 | 0 |
+| andere | 3 | 0 | 0 | 0 | 0 | 0 |
+| Gesamt |  | 72 | 178.714 | 6.489.874 | 50.898 | 5.634.710 |
+
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/kontingent-2026-11-02_23-23-00.json

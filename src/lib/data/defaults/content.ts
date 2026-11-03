@@ -222,7 +222,7 @@ export function pages(): PageContent[] {
     {
       route: 'schliessanlagen',
       headline: 'Mechanische Schließanlagen',
-      subline: 'Von der Gleichschließung bis zur Generalhauptschlüsselanlage.',
+      subline: 'Von der Hauptschlüsselanlage bis zur Generalhauptschlüsselanlage.',
       intro:
         'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme in '
         + 'einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert werden kann.',

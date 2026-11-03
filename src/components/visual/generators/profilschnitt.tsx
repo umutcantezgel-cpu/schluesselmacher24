@@ -25,24 +25,27 @@ import {
 const BREITE = 480;
 const HOEHE = 360;
 
-/* Schlüssel in Seitenansicht: Reide links, Halm nach rechts. */
-const REIDE = { x: 24, y: 138, w: 100, h: 104, radius: 20 };
-const LOCH = { x: 52, y: 190, r: 10 };
+/* Schlüssel in Seitenansicht: Reide links, Halm nach rechts. Proportionen nach G-07: Der Halm ist gut
+   viermal so lang wie hoch (194 × 46, wie ein Autoschlüssel mit etwa 40 × 9 mm), der Schlüssel steht
+   in der Mitte der Zeichnung. */
+const REIDE = { x: 72, y: 138, w: 100, h: 104, radius: 20 };
+const LOCH = { x: 100, y: 190, r: 10 };
 /** Oberkante des Rohlings (unberührte Kante) und Unterkante des Halms. */
 const OBEN = 168;
 const UNTEN = 214;
-const SCHULTER = { x: 134, oben: 158, unten: 222 };
-const HALM_START = 140;
-const HALM_ENDE = 426;
-const SPITZE = { x: 456, y: 198 };
+const SCHULTER = { x: 182, oben: 158, unten: 222 };
+const HALM_START = 188;
+const HALM_ENDE = 352;
+const SPITZE = { x: 382, y: 198 };
 /** Bereich der Einschnitte auf dem Halm. */
-const EINSCHNITT_VON = 178;
-const EINSCHNITT_BIS = 394;
-const FLACH = 8;
-const STEIGUNG = 1.1;
+/* Abstand der Einschnitte rund 22 px: bei 46 px Halmhöhe wie 4 mm bei einem 9 mm hohen Halm. */
+const EINSCHNITT_VON = 214;
+const EINSCHNITT_BIS = 326;
+const FLACH = 4;
+const STEIGUNG = 0.6;
 /** Tiefe in viewBox-Einheiten je Stufe 0–9. */
 const TIEFE_GRUND = 3;
-const TIEFE_STUFE = 2.4;
+const TIEFE_STUFE = 2;
 const FRAESER_R = 14;
 const STANDARD_PROFIL = [2, 6, 3, 7, 1, 5];
 /** Größter Sprung zwischen Nachbarn, wie bei echten Schließungen begrenzt. */
@@ -59,8 +62,8 @@ export const FRAESER_ABHEBEN = { x: 12, y: -16 } as const;
 
 /** Volle Zeichenfläche und schmaler Ausschnitt (Halm mit Einschnitten) für kleine Breiten. */
 export const PROFILSCHNITT_GROESSE = { breite: BREITE, hoehe: HOEHE } as const;
-/** Halm mit Schulter, Einschnitten, Spitze und Fräser; bei 350 px Breite genau Maßstab 1 (Schrift 12 px). */
-export const PROFILSCHNITT_AUSSCHNITT = { x: 112, y: 98, breite: 350, hoehe: 140 } as const;
+/** Ganzer Schlüssel mit Einschnitten, Spitze und Fräser; bei 350 px Breite genau Maßstab 1 (Schrift 12 px). */
+export const PROFILSCHNITT_AUSSCHNITT = { x: 62, y: 98, breite: 350, hoehe: 140 } as const;
 
 function profilAusText(text: string): number[] {
   const naechste = zahlenfolge(hash(text.toUpperCase().replace(/\s+/g, '')));

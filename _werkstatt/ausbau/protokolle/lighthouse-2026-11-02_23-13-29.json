@@ -1,0 +1,150 @@
+{
+  "skript": "lighthouse",
+  "zeit": "2026-11-02T22:13:29.830Z",
+  "argumente": {
+    "_": [],
+    "routen": "/",
+    "laeufe": "1"
+  },
+  "profil": "mobil",
+  "laeufe": 1,
+  "budget": {
+    "leistung": 90,
+    "kategorie": 100,
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "routen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "profil": "mobil",
+      "gueltigeLaeufe": 1,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/",
+          "fehler": null,
+          "werte": {
+            "leistung": 85,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 100,
+            "lcp": 2867.2538999999992,
+            "cls": 0,
+            "tbt": 408.9999999999998,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 85,
+          "min": 85,
+          "max": 85,
+          "n": 1
+        },
+        "barrierefreiheit": {
+          "median": 96,
+          "min": 96,
+          "max": 96,
+          "n": 1
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 1
+        },
+        "seo": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 1
+        },
+        "lcp": {
+          "median": 2867.2538999999992,
+          "min": 2867.2538999999992,
+          "max": 2867.2538999999992,
+          "n": 1
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 1
+        },
+        "tbt": {
+          "median": 408.9999999999998,
+          "min": 408.9999999999998,
+          "max": 408.9999999999998,
+          "n": 1
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 85,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 2867.2538999999992,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 96,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, Barrierefreiheit)"
+    }
+  ]
+}

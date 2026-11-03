@@ -68,14 +68,17 @@ export interface Config {
   blocks: {};
   collections: {
     vorgaenge: Vorgaenge;
+    partnerbetriebe: Partnerbetriebe;
     kundendateien: Kundendateien;
     widerrufe: Widerrufe;
     produkte: Produkte;
     fahrzeugmarken: Fahrzeugmarken;
+    fahrzeugreihen: Fahrzeugreihen;
     'autoschluessel-leistungen': AutoschluesselLeistungen;
     preisregeln: Preisregeln;
     preisgruppen: Preisgruppen;
     sperrtage: Sperrtage;
+    rubriken: Rubriken;
     seiten: Seiten;
     leistungsseiten: Leistungsseiten;
     ratgeber: Ratgeber;
@@ -94,14 +97,17 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     vorgaenge: VorgaengeSelect<false> | VorgaengeSelect<true>;
+    partnerbetriebe: PartnerbetriebeSelect<false> | PartnerbetriebeSelect<true>;
     kundendateien: KundendateienSelect<false> | KundendateienSelect<true>;
     widerrufe: WiderrufeSelect<false> | WiderrufeSelect<true>;
     produkte: ProdukteSelect<false> | ProdukteSelect<true>;
     fahrzeugmarken: FahrzeugmarkenSelect<false> | FahrzeugmarkenSelect<true>;
+    fahrzeugreihen: FahrzeugreihenSelect<false> | FahrzeugreihenSelect<true>;
     'autoschluessel-leistungen': AutoschluesselLeistungenSelect<false> | AutoschluesselLeistungenSelect<true>;
     preisregeln: PreisregelnSelect<false> | PreisregelnSelect<true>;
     preisgruppen: PreisgruppenSelect<false> | PreisgruppenSelect<true>;
     sperrtage: SperrtageSelect<false> | SperrtageSelect<true>;
+    rubriken: RubrikenSelect<false> | RubrikenSelect<true>;
     seiten: SeitenSelect<false> | SeitenSelect<true>;
     leistungsseiten: LeistungsseitenSelect<false> | LeistungsseitenSelect<true>;
     ratgeber: RatgeberSelect<false> | RatgeberSelect<true>;
@@ -408,10 +414,113 @@ export interface Vorgaenge {
  */
 export interface Kundendateien {
   id: number;
-  kategorie: 'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto';
+  kategorie:
+    'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto' | 'sicherungskarte' | 'vollmacht';
   vorgang?: (number | null) | Vorgaenge;
   aufbewahrenBis?: string | null;
   uploadSchluesselHash?: string | null;
+  prefix?: string | null;
+  _objectKey?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * Freischalten erst nach Prüfung von Gewerbe, Identität und Eignung und mit unterschriebenem Vertrag.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partnerbetriebe".
+ */
+export interface Partnerbetriebe {
+  id: number;
+  firma: string;
+  ansprechpartner?: string | null;
+  email?: string | null;
+  telefon?: string | null;
+  ort: string;
+  status:
+    | 'eingegangen'
+    | 'in-pruefung'
+    | 'nachweise-fehlen'
+    | 'vertrag-versendet'
+    | 'vertrag-unterschrieben'
+    | 'freigeschaltet'
+    | 'pausiert'
+    | 'abgelehnt'
+    | 'beendet';
+  abrechnungsmodell: 'A' | 'B';
+  einsatzgebiet?: {
+    /**
+     * Kommagetrennt, auch Bereiche wie 355*.
+     */
+    postleitzahlen?: string | null;
+    radiusKm?: number | null;
+  };
+  auftragsarten?:
+    | (
+        | 'autoschluessel-vor-ort'
+        | 'schluesseldienst-vor-ort'
+        | 'montage-zylinder'
+        | 'montage-schliessanlage'
+        | 'beratung-vor-ort'
+        | 'einbau-elektronik'
+      )[]
+    | null;
+  pruefung?: {
+    gewerbeGeprueft?: boolean | null;
+    identitaetGeprueft?: boolean | null;
+    eignungGeprueft?: boolean | null;
+    notiz?: string | null;
+  };
+  vertrag?: {
+    versendetAm?: string | null;
+    unterschriebenAm?: string | null;
+    datei?: (number | null) | InterneDateien;
+  };
+  /**
+   * Nur für den Inhaber sichtbar.
+   */
+  provisionen?:
+    | {
+        auftragsart:
+          | 'autoschluessel-vor-ort'
+          | 'schluesseldienst-vor-ort'
+          | 'montage-zylinder'
+          | 'montage-schliessanlage'
+          | 'beratung-vor-ort'
+          | 'einbau-elektronik';
+        prozent?: number | null;
+        festbetrag?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  bewerbung?: (number | null) | Vorgaenge;
+  notiz?: string | null;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+}
+/**
+ * Nur für das Team sichtbar, z. B. Fotos von Zertifikaten und Versicherungsnachweisen.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "interne-dateien".
+ */
+export interface InterneDateien {
+  id: number;
+  beschreibung?: string | null;
   prefix?: string | null;
   _objectKey?: string | null;
   updatedAt: string;
@@ -769,6 +878,59 @@ export interface Preisgruppen {
   createdAt: string;
 }
 /**
+ * Modellreihen für die Fahrzeugsuche. Preise und Schlüsselarten kommen aus den gepflegten Marken und Modellen (Spalte „Gepflegtes Modell“).
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "fahrzeugreihen".
+ */
+export interface Fahrzeugreihen {
+  id: number;
+  marke: string;
+  reihe: string;
+  kbaName?: string | null;
+  bestand?: number | null;
+  rang?: number | null;
+  segment?: string | null;
+  sichtbar?: boolean | null;
+  /**
+   * Etwa „KBA FZ 12, Stand 1.1.2026“.
+   */
+  quelle: string;
+  /**
+   * Marke/Modell aus „Fahrzeugmarken“, etwa volkswagen/golf. Nur dann zeigt die Seite Preise und Schlüsselarten.
+   */
+  bestandsModell?: string | null;
+  baujahrVon?: number | null;
+  baujahrBis?: number | null;
+  baujahrQuelle?: string | null;
+  /**
+   * Nur mit Quelle; ohne Quelle leer lassen.
+   */
+  transponder?: {
+    typ?: string | null;
+    quelle?: string | null;
+  };
+  /**
+   * „Bestätigt“ nur nach dem Bogen KLONBAR.
+   */
+  klonbar: 'unbekannt' | 'bestaetigt' | 'nein';
+  gehaeuse: 'unbekannt' | 'verfuegbar' | 'nicht-verfuegbar';
+  leistungen?: ('nachmachen' | 'programmieren' | 'gehaeuse-tausch' | 'transponder-kopie')[] | null;
+  alias?:
+    | {
+        begriff: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "autoschluessel-leistungen".
  */
@@ -843,6 +1005,190 @@ export interface Sperrtage {
     | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * Kacheln auf der Startseite („Wobei können wir Ihnen helfen?“) und Einträge in der Navigation. Reihenfolge: kleinere Zahl zuerst.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rubriken".
+ */
+export interface Rubriken {
+  id: number;
+  name: string;
+  /**
+   * Höchstens zwei kurze Zeilen.
+   */
+  laienname: string;
+  /**
+   * Etwa „ein Schlüssel für alle Türen“. Leer lassen, wenn der Name genügt.
+   */
+  zusatz?: string | null;
+  erklaerung: string;
+  icon:
+    | 'alarmtechnik'
+    | 'anzahlung'
+    | 'aussenhautsicherung'
+    | 'autoschluessel'
+    | 'beratung-telefon'
+    | 'datenschutz'
+    | 'einsteckschloss'
+    | 'elektronische-zutrittsloesungen'
+    | 'fahrzeugmarke'
+    | 'fahrzeugoeffnung'
+    | 'foto-hochladen'
+    | 'funkschluessel'
+    | 'gleichschliessende-zylinder'
+    | 'halbzylinder'
+    | 'klappschluessel'
+    | 'knaufzylinder'
+    | 'kombinierte-konzepte'
+    | 'lieferung'
+    | 'mechanischer-schutz'
+    | 'mehrfachverriegelung'
+    | 'montage'
+    | 'nachweis'
+    | 'panik-alarmtaster'
+    | 'panik-fluchttuer'
+    | 'profilzylinder'
+    | 'pruefung'
+    | 'reparatur-austausch'
+    | 'rueckgabe'
+    | 'schliessanlagen'
+    | 'schluessel-kopieren'
+    | 'schluessel-nach-code'
+    | 'schluessel-nach-vorlage'
+    | 'schluessel-programmieren'
+    | 'schluesselbart-fraesen'
+    | 'schutzbeschlag'
+    | 'service-und-termin'
+    | 'sicherheitscheck'
+    | 'sicherheitstechnik'
+    | 'sicherungskarte'
+    | 'smart-key'
+    | 'smarte-funktionen'
+    | 'standort'
+    | 'technische-beratung'
+    | 'termin'
+    | 'transponder'
+    | 'tuer-und-schliesstechnik'
+    | 'tuerschliesser'
+    | 'tuerzusatzschloss'
+    | 'versand-paket'
+    | 'videoueberwachung'
+    | 'warenkorb'
+    | 'werkstatt'
+    | 'zahlung'
+    | 'zylinder-mass'
+    | 'motorradschluessel'
+    | 'schluesselgehaeuse'
+    | 'transponder-kopie'
+    | 'schluesselfinder'
+    | 'vor-ort'
+    | 'karte'
+    | 'video'
+    | 'dokument';
+  /**
+   * Beginnt mit „/“, etwa /autoschluessel.
+   */
+  ziel: string;
+  bereich:
+    | 'autoschluessel'
+    | 'schluessel-nach-vorlage'
+    | 'schluessel-nach-code'
+    | 'gleichschliessende-zylinder'
+    | 'schliessanlagen'
+    | 'elektronische-zutrittsloesungen'
+    | 'tuer-und-schliesstechnik'
+    | 'sicherheitstechnik'
+    | 'service-und-termin';
+  ablauf?:
+    | {
+        titel: string;
+        text: string;
+        icon:
+          | 'alarmtechnik'
+          | 'anzahlung'
+          | 'aussenhautsicherung'
+          | 'autoschluessel'
+          | 'beratung-telefon'
+          | 'datenschutz'
+          | 'einsteckschloss'
+          | 'elektronische-zutrittsloesungen'
+          | 'fahrzeugmarke'
+          | 'fahrzeugoeffnung'
+          | 'foto-hochladen'
+          | 'funkschluessel'
+          | 'gleichschliessende-zylinder'
+          | 'halbzylinder'
+          | 'klappschluessel'
+          | 'knaufzylinder'
+          | 'kombinierte-konzepte'
+          | 'lieferung'
+          | 'mechanischer-schutz'
+          | 'mehrfachverriegelung'
+          | 'montage'
+          | 'nachweis'
+          | 'panik-alarmtaster'
+          | 'panik-fluchttuer'
+          | 'profilzylinder'
+          | 'pruefung'
+          | 'reparatur-austausch'
+          | 'rueckgabe'
+          | 'schliessanlagen'
+          | 'schluessel-kopieren'
+          | 'schluessel-nach-code'
+          | 'schluessel-nach-vorlage'
+          | 'schluessel-programmieren'
+          | 'schluesselbart-fraesen'
+          | 'schutzbeschlag'
+          | 'service-und-termin'
+          | 'sicherheitscheck'
+          | 'sicherheitstechnik'
+          | 'sicherungskarte'
+          | 'smart-key'
+          | 'smarte-funktionen'
+          | 'standort'
+          | 'technische-beratung'
+          | 'termin'
+          | 'transponder'
+          | 'tuer-und-schliesstechnik'
+          | 'tuerschliesser'
+          | 'tuerzusatzschloss'
+          | 'versand-paket'
+          | 'videoueberwachung'
+          | 'warenkorb'
+          | 'werkstatt'
+          | 'zahlung'
+          | 'zylinder-mass'
+          | 'motorradschluessel'
+          | 'schluesselgehaeuse'
+          | 'transponder-kopie'
+          | 'schluesselfinder'
+          | 'vor-ort'
+          | 'karte'
+          | 'video'
+          | 'dokument';
+        id?: string | null;
+      }[]
+    | null;
+  abschluss: 'kasse' | 'anfrage' | 'termin-anzahlung' | 'angebot-zahlungslink' | 'beratung';
+  nachweis: 'keiner' | 'fahrzeugschein' | 'sicherungskarte';
+  pflichtUploads?:
+    | (
+        'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto' | 'sicherungskarte' | 'vollmacht'
+      )[]
+    | null;
+  status: 'live' | 'spaeter' | 'aus';
+  reihenfolge: number;
+  navigation: 'autoschluessel' | 'code' | 'sperrschliessung' | 'schliessanlagen' | 'mehr';
+  imHub?: boolean | null;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1182,29 +1528,6 @@ export interface Nachweise {
   deletedAt?: string | null;
 }
 /**
- * Nur für das Team sichtbar, z. B. Fotos von Zertifikaten und Versicherungsnachweisen.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "interne-dateien".
- */
-export interface InterneDateien {
-  id: number;
-  beschreibung?: string | null;
-  prefix?: string | null;
-  _objectKey?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-}
-/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "benutzer".
  */
@@ -1367,6 +1690,10 @@ export interface PayloadLockedDocument {
         value: number | Vorgaenge;
       } | null)
     | ({
+        relationTo: 'partnerbetriebe';
+        value: number | Partnerbetriebe;
+      } | null)
+    | ({
         relationTo: 'kundendateien';
         value: number | Kundendateien;
       } | null)
@@ -1383,6 +1710,10 @@ export interface PayloadLockedDocument {
         value: number | Fahrzeugmarken;
       } | null)
     | ({
+        relationTo: 'fahrzeugreihen';
+        value: number | Fahrzeugreihen;
+      } | null)
+    | ({
         relationTo: 'autoschluessel-leistungen';
         value: number | AutoschluesselLeistungen;
       } | null)
@@ -1397,6 +1728,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'sperrtage';
         value: number | Sperrtage;
+      } | null)
+    | ({
+        relationTo: 'rubriken';
+        value: number | Rubriken;
       } | null)
     | ({
         relationTo: 'seiten';
@@ -1628,6 +1963,55 @@ export interface VorgaengeSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partnerbetriebe_select".
+ */
+export interface PartnerbetriebeSelect<T extends boolean = true> {
+  firma?: T;
+  ansprechpartner?: T;
+  email?: T;
+  telefon?: T;
+  ort?: T;
+  status?: T;
+  abrechnungsmodell?: T;
+  einsatzgebiet?:
+    | T
+    | {
+        postleitzahlen?: T;
+        radiusKm?: T;
+      };
+  auftragsarten?: T;
+  pruefung?:
+    | T
+    | {
+        gewerbeGeprueft?: T;
+        identitaetGeprueft?: T;
+        eignungGeprueft?: T;
+        notiz?: T;
+      };
+  vertrag?:
+    | T
+    | {
+        versendetAm?: T;
+        unterschriebenAm?: T;
+        datei?: T;
+      };
+  provisionen?:
+    | T
+    | {
+        auftragsart?: T;
+        prozent?: T;
+        festbetrag?: T;
+        id?: T;
+      };
+  bewerbung?: T;
+  notiz?: T;
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "kundendateien_select".
  */
 export interface KundendateienSelect<T extends boolean = true> {
@@ -1839,6 +2223,43 @@ export interface FahrzeugmarkenSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "fahrzeugreihen_select".
+ */
+export interface FahrzeugreihenSelect<T extends boolean = true> {
+  marke?: T;
+  reihe?: T;
+  kbaName?: T;
+  bestand?: T;
+  rang?: T;
+  segment?: T;
+  sichtbar?: T;
+  quelle?: T;
+  bestandsModell?: T;
+  baujahrVon?: T;
+  baujahrBis?: T;
+  baujahrQuelle?: T;
+  transponder?:
+    | T
+    | {
+        typ?: T;
+        quelle?: T;
+      };
+  klonbar?: T;
+  gehaeuse?: T;
+  leistungen?: T;
+  alias?:
+    | T
+    | {
+        begriff?: T;
+        id?: T;
+      };
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "autoschluessel-leistungen_select".
  */
 export interface AutoschluesselLeistungenSelect<T extends boolean = true> {
@@ -1901,6 +2322,38 @@ export interface SperrtageSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rubriken_select".
+ */
+export interface RubrikenSelect<T extends boolean = true> {
+  name?: T;
+  laienname?: T;
+  zusatz?: T;
+  erklaerung?: T;
+  icon?: T;
+  ziel?: T;
+  bereich?: T;
+  ablauf?:
+    | T
+    | {
+        titel?: T;
+        text?: T;
+        icon?: T;
+        id?: T;
+      };
+  abschluss?: T;
+  nachweis?: T;
+  pflichtUploads?: T;
+  status?: T;
+  reihenfolge?: T;
+  navigation?: T;
+  imHub?: T;
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2670,7 +3123,22 @@ export interface Einstellungen {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Ohne Retourenlabel bekommt der Kunde einen Begleitschein und frankiert selbst; die Seite nennt das Porto unten als Empfehlung und schreibt nie „kostenlos“. Das Retourenlabel braucht einen Vertrag mit dem Versanddienstleister und dessen Zugangsdaten (Variablen in Vercel).
+   */
+  einsenden?: {
+    labelAktiv?: boolean | null;
+    aufpreisVersichert?: number | null;
+    aufpreisUnversichert?: number | null;
+    portoVersichert?: number | null;
+    portoUnversichert?: number | null;
+    haftungVersichert?: number | null;
+    portoStand?: string | null;
+  };
   aufbewahrung: {
+    /**
+     * Auch Sicherungskarte und Vollmacht.
+     */
     fahrzeugschein: number;
     schluesselfotos: number;
     grundrisse: number;
@@ -3040,6 +3508,17 @@ export interface EinstellungenSelect<T extends boolean = true> {
         lieferzeit?: T;
         produktklassen?: T;
         id?: T;
+      };
+  einsenden?:
+    | T
+    | {
+        labelAktiv?: T;
+        aufpreisVersichert?: T;
+        aufpreisUnversichert?: T;
+        portoVersichert?: T;
+        portoUnversichert?: T;
+        haftungVersichert?: T;
+        portoStand?: T;
       };
   aufbewahrung?:
     | T

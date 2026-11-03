@@ -2,7 +2,7 @@
   {
     "route": "",
     "headline": "Autoschlüssel nachmachen und programmieren",
-    "subline": "Werkstatt in Wetzlar, für Mittelhessen und alle, die anreisen. Dazu Schließanlagen, Zutritt und Sicherheitstechnik; Code-Schlüssel bundesweit per Versand.",
+    "subline": "Wir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland.",
     "intro": "Wir sind ein Fachbetrieb für Schlüssel- und Schließtechnik. Der Schwerpunkt liegt auf Autoschlüsseln: nachmachen, programmieren, reparieren. Daneben bearbeiten wir Schlüssel nach Vorlage und nach Code, planen Schließanlagen, richten elektronische Zutrittslösungen ein und sichern Gebäude ab.",
     "sections": [],
     "faq": [],
@@ -33,7 +33,7 @@
   {
     "route": "autoschluessel",
     "headline": "Autoschlüssel",
-    "subline": "Nachmachen, programmieren, reparieren — mit klarem Ablauf und festem Termin. Werkstatt in Wetzlar, für Mittelhessen und alle, die anreisen.",
+    "subline": "Nachmachen, programmieren, reparieren, mit festem Termin in Wetzlar. Für Mittelhessen und alle, die anreisen.",
     "intro": "Ob Zweitschlüssel, Ersatz nach Verlust, Programmierung oder Reparatur: Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder Preisrahmen. Erst dann buchen Sie einen Termin.",
     "sections": [],
     "faq": [],
@@ -65,7 +65,7 @@
     "route": "autoschluessel/nachmachen",
     "headline": "Autoschlüssel nachmachen",
     "subline": "Zweitschlüssel und Ersatzschlüssel für Ihr Fahrzeug.",
-    "intro": "Ein zweiter Schlüssel ist dann am günstigsten, wenn noch ein funktionierender vorhanden ist. Ist kein Schlüssel mehr da, prüfen wir den Einzelfall gesondert — Umfang und Aufwand unterscheiden sich deutlich.",
+    "intro": "Ein zweiter Schlüssel ist dann am günstigsten, wenn noch ein funktionierender vorhanden ist. Ist kein Schlüssel mehr da, prüfen wir den Einzelfall gesondert. Umfang und Aufwand unterscheiden sich deutlich.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -91,8 +91,8 @@
   {
     "route": "autoschluessel/programmieren",
     "headline": "Autoschlüssel programmieren und anlernen",
-    "subline": "Transponder, Funk und Smart Key elektronisch am Fahrzeug anlernen.",
-    "intro": "Ein neuer oder vorhandener Schlüssel muss dem Fahrzeug bekannt gemacht werden. Dafür ist in aller Regel Zugriff auf das Fahrzeug nötig — das lässt sich nicht per Versand lösen.",
+    "subline": "Transponder (Funkchip im Schlüssel), Funk und Smart Key am Fahrzeug anlernen.",
+    "intro": "Ein neuer oder vorhandener Schlüssel muss dem Fahrzeug bekannt gemacht werden. Dafür ist in aller Regel Zugriff auf das Fahrzeug nötig. Das lässt sich nicht per Versand lösen.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -118,8 +118,8 @@
   {
     "route": "autoschluessel/kopieren",
     "headline": "Autoschlüssel kopieren",
-    "subline": "Mechanische Kopie nach Vorlage — und was sie leistet.",
-    "intro": "Eine mechanische Kopie bildet den Bart des Originals ab. Bei vielen Fahrzeugen öffnet sie die Tür, startet den Motor aber nicht, weil Transponder und Wegfahrsperre fehlen. Was in Ihrem Fall möglich ist, klären wir vorab.",
+    "subline": "Mechanische Kopie nach Vorlage: was sie leistet und wann sie reicht.",
+    "intro": "Eine mechanische Kopie bildet den Bart des Originals ab, also den mechanischen Teil des Schlüssels. Bei vielen Fahrzeugen öffnet sie die Tür, startet den Motor aber nicht. Der Grund ist der fehlende Transponder, der kleine Funkchip im Schlüssel, ohne den die Wegfahrsperre den Motor nicht startet. Was in Ihrem Fall möglich ist, klären wir vorab.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -146,7 +146,7 @@
     "route": "autoschluessel/funkschluessel",
     "headline": "Funkschlüssel und Funkfernbedienung",
     "subline": "Tasten, Funkfunktion, Gehäuse und Ersatz.",
-    "intro": "Wenn das Fahrzeug auf Knopfdruck nicht mehr reagiert, liegt das nicht immer am Schlüssel. Wir grenzen ein, ob Batterie, Taster, Platine oder das Anlernen die Ursache ist.",
+    "intro": "Wenn das Fahrzeug auf Knopfdruck nicht mehr reagiert, liegt das nicht immer am Schlüssel. Wir grenzen ein, ob Batterie, Taster, Platine oder das Anlernen des Schlüssels im Auto die Ursache ist.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -172,7 +172,7 @@
   {
     "route": "autoschluessel/smart-key",
     "headline": "Smart Key und Keyless",
-    "subline": "Schlüsselloser Zugang und Start — je nach Fahrzeug.",
+    "subline": "Schlüsselloser Zugang und Start, je nach Fahrzeug.",
     "intro": "Smart-Key-Systeme erkennen den Schlüssel in der Nähe des Fahrzeugs. Beschaffung und Anlernen sind aufwendiger als bei einfachen Funkschlüsseln. Planen Sie dafür mehr Vorlauf und mehr Zeit am Fahrzeug ein.",
     "sections": [],
     "faq": [],
@@ -365,7 +365,7 @@
   {
     "route": "schliessanlagen",
     "headline": "Mechanische Schließanlagen",
-    "subline": "Von der Gleichschließung bis zur Generalhauptschlüsselanlage.",
+    "subline": "Von der Hauptschlüsselanlage bis zur Generalhauptschlüsselanlage.",
     "intro": "Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert werden kann.",
     "sections": [],
     "faq": [],
@@ -474,7 +474,7 @@
     "route": "autoschluessel/marken",
     "headline": "Fahrzeugmarken und Modelle",
     "subline": "Was bei Ihrem Fahrzeug technisch möglich ist.",
-    "intro": "Welche Schlüsselart Ihr Fahrzeug hat und ob es zum Anlernen vor Ort sein muss, hängt von Marke, Modell und Baujahr ab. Hier finden Sie, was wir zu den gängigen Fahrzeugen hinterlegt haben.",
+    "intro": "Welche Schlüsselart Ihr Fahrzeug hat und ob es zum Anlernen, dem Eintragen des Schlüssels im Auto, vor Ort sein muss, hängt von Marke, Modell und Baujahr ab. Hier finden Sie, was wir zu den gängigen Fahrzeugen hinterlegt haben.",
     "sections": [],
     "faq": [],
     "seo": {
