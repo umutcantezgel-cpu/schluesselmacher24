@@ -79,13 +79,19 @@ function messeAnsicht(konfig) {
       const a = direkt[4] === undefined ? 1 : (direkt[4].endsWith('%') ? parseFloat(direkt[4]) / 100 : parseFloat(direkt[4]));
       return { r: Math.round(Number(direkt[1])), g: Math.round(Number(direkt[2])), b: Math.round(Number(direkt[3])), a: Math.round(a * 100) / 100 };
     }
+    // Funktionsschreibweise mit Deckkraft (etwa oklch(L C H / 0.4), seit A-013 der Normalfall): Die
+    // Grundfarbe wird deckend gezeichnet, die Deckkraft getrennt gelesen. Sonst verrundet die Leinwand
+    // die Grundfarbe bei Alpha unter 1, und Alphavarianten eines Tokens erschienen als Fremdfarbe.
+    const mitAlpha = /^([a-z-]+)\((.*?)\s*\/\s*([\d.]+%?)\s*\)$/i.exec(roh);
+    const deckend = mitAlpha ? `${mitAlpha[1]}(${mitAlpha[2]})` : roh;
+    const alpha = mitAlpha ? (mitAlpha[3].endsWith('%') ? parseFloat(mitAlpha[3]) / 100 : parseFloat(mitAlpha[3])) : null;
     ctx.fillStyle = FUEHLER;
-    ctx.fillStyle = roh;
-    if (ctx.fillStyle === FUEHLER && roh.toLowerCase() !== FUEHLER) return null;
+    ctx.fillStyle = deckend;
+    if (ctx.fillStyle === FUEHLER && deckend.toLowerCase() !== FUEHLER) return null;
     ctx.clearRect(0, 0, 1, 1);
     ctx.fillRect(0, 0, 1, 1);
     const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
-    return { r, g, b, a: Math.round((a / 255) * 100) / 100 };
+    return { r, g, b, a: alpha === null ? Math.round((a / 255) * 100) / 100 : Math.round(alpha * 100) / 100 };
   };
   const schl = (c) => (c ? `${c.r},${c.g},${c.b},${c.a}` : null);
   // Token-Vergleich nur nach RGB: Alphavarianten einer Token-Farbe gehören zur Token-Familie.

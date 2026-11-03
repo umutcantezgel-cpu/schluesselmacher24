@@ -1,0 +1,135 @@
+{
+  "skript": "bewegungsschalter.mjs",
+  "basis": "http://localhost:3000",
+  "zeit": "2026-11-03T04:51:30.529Z",
+  "anzahl": 18,
+  "bestanden": 18,
+  "ergebnisse": [
+    {
+      "pruefung": "Standard ohne Wahl: Attribut data-bewegung",
+      "erwartet": "an",
+      "tatsaechlich": "an",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Standard ohne Wahl: sichtbarer Wert",
+      "erwartet": "an",
+      "tatsaechlich": "an",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Standard ohne Wahl: aria-pressed",
+      "erwartet": "true",
+      "tatsaechlich": "true",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Standard ohne Wahl: Schalter sichtbar",
+      "erwartet": true,
+      "tatsaechlich": true,
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Standard ohne Wahl: keine Konsolenfehler",
+      "erwartet": 0,
+      "tatsaechlich": 0,
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Klick auf den Schalter: data-bewegung",
+      "erwartet": "ruhig",
+      "tatsaechlich": "ruhig",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Klick: gespeicherte Wahl im Gerät",
+      "erwartet": "ruhig",
+      "tatsaechlich": "ruhig",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Klick: sichtbarer Wert",
+      "erwartet": "ruhig",
+      "tatsaechlich": "ruhig",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Klick: aria-pressed",
+      "erwartet": "false",
+      "tatsaechlich": "false",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Nach Neuladen bleibt „ruhig“: data-bewegung",
+      "erwartet": "ruhig",
+      "tatsaechlich": "ruhig",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Nach Neuladen bleibt „ruhig“: sichtbarer Wert",
+      "erwartet": "ruhig",
+      "tatsaechlich": "ruhig",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Zweiter Klick und Neuladen: data-bewegung",
+      "erwartet": "an",
+      "tatsaechlich": "an",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Zweiter Klick und Neuladen: sichtbarer Wert",
+      "erwartet": "an",
+      "tatsaechlich": "an",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Reduzierte Bewegung ohne Wahl: data-bewegung",
+      "erwartet": "ruhig",
+      "tatsaechlich": "ruhig",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Reduzierte Bewegung ohne Wahl: sichtbarer Wert",
+      "erwartet": "ruhig",
+      "tatsaechlich": "ruhig",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Gespeichert „an“ gewinnt über reduzierte Bewegung: data-bewegung",
+      "erwartet": "an",
+      "tatsaechlich": "an",
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Ohne JavaScript: Schalter sichtbar",
+      "erwartet": false,
+      "tatsaechlich": false,
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    },
+    {
+      "pruefung": "Ohne JavaScript: kein data-bewegung gesetzt",
+      "erwartet": null,
+      "tatsaechlich": null,
+      "ergebnis": "BESTANDEN",
+      "beleg": ""
+    }
+  ]
+}

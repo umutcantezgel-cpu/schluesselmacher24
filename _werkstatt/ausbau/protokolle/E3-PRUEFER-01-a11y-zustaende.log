@@ -1,0 +1,5 @@
+| Zustand | Gerät | offen | critical | serious | moderate | minor | Regeln | Stellen |
+|---|---|---|---|---|---|---|---|---|
+| Schublade mobil offen | mobil | ja (Klick) | 0 | 0 | 0 | 0 | 0 | 0 |
+| Megamenü Autoschlüssel offen | desktop | ja (Überfahren) | 0 | 0 | 0 | 0 | 0 | 0 |
+JSON: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/a11y-zustaende.json

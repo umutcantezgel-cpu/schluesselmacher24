@@ -12,3 +12,7 @@
 /protokolle/roh/
 *.trace.json
 *.har
+# Prüfbilder der Prüfstufen (Arbeitsbilder; Bildsätze für Vorher, Referenz und Abschluss liegen in bilder/)
+/protokolle/**/*.png
+/protokolle/**/*.jpg
+/protokolle/**/*.webp

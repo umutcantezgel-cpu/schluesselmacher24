@@ -1,0 +1,16 @@
+# Funktionsliste (E0-PRUEFER-04)
+
+Lauf: 2026-11-03T04:51:08.576Z · Server http://localhost:3000 · Bestanden 5 von 5
+
+| F-Nr. | Funktion | Ergebnis | Begründung oder Messwert | Dauer |
+|---|---|---|---|---|
+| F-15 | Partner werden: fünf Schritte bis zur Bewerbung | BESTANDEN | Fünf Schritte bis „Angaben prüfen und absenden“: ja (5 Schritte: Ihr Betrieb · Einsatzgebiet · Leistungen und Qualifikation · Nachweise · Angaben prüfen und absenden); Datenschutz bestätigt: ja; Bestätigung oder abgefangene schreibende Anfrage mit Prüf-E-Mail: ja (Attrappe action-schreibend); Abgesendete Angaben: Firma, PLZ und Prüf-E-Mail: ja (Server-Aktionen mit Körper: 3) | 3.9 s |
+| F-16 | Widerruf erklären: Name, Prüf-E-Mail, Absenden | BESTANDEN | Formular mit Feld „Name“ und „E-Mail-Adresse“: ja; Name und Prüf-E-Mail eingetragen: ja; Knopf „Widerruf jetzt erklären“ bedienbar: ja; Bestätigung oder abgefangene schreibende Anfrage mit Prüf-E-Mail: ja (Attrappe action-schreibend); Abgesendete Angaben: Name und Prüf-E-Mail: ja (Server-Aktionen mit Körper: 3) | 1.6 s |
+| F-17 | Codesuche, Serie und Kategorie-Seite | BESTANDEN | Serie „ms-01“ zeigt die Linie in der Trefferliste: ja (Büroschrank und Rollcontainer); Code „0812“ markiert die Linie als „passt zum Codeformat“: ja (3 bis 4 Ziffern); Kategorie „Briefkasten und Postanlagen“ listet mindestens eine Linie: ja (5 Linien) | 1.9 s |
+| F-18 | Fahrzeugwahl: Marke, Modell und Termin mit Vorauswahl | BESTANDEN | Marke Volkswagen auf der Markenseite: ja; Modell Golf unter Volkswagen: ja; Modellseite Golf erreicht: ja (/autoschluessel/marken/volkswagen/golf); Link in den Termin mit marke=volkswagen und modell=golf: ja (/autoschluessel/anfrage?marke=volkswagen&modell=golf); Termin-Assistent geöffnet: ja (/autoschluessel/anfrage); Marke im Assistenten vorausgewählt (Option Volkswagen gewählt): ja (Welche Marke hat Ihr Fahrzeug?) | 1.8 s |
+| F-19 | Kontakt mit tel- und mailto-Link, Vor-Ort-Verweis, Einsenden | BESTANDEN | Telefon als tel:-Link: ja (tel:+4964418056279); E-Mail als mailto:-Link: ja (mailto:info@schluesselmacher24.de); Vor-Ort-Seite verweist in eine Anfrage: ja (3 Verweise); Einsenden zeigt den Weg zur Foto-Anfrage: ja (/schluessel-nach-vorlage/anfrage) | 2.6 s |
+
+Vorher/Nachher: content/records.json vorhanden nein → nein; Serverlog neu 0 Zeichen, Treffer Vorgang/Anfrage/POST: 0
+
+Markdown: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/funktionsliste-zusatz.md
+JSON-Protokoll: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/funktionsliste-zusatz.json

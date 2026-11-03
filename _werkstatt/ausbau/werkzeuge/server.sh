@@ -19,8 +19,9 @@ start() {
   flock 9
   if laeuft; then echo "läuft bereits (Port ${PORT})"; return 0; fi
   cd "$REPO"
-  # Über die Datenweiche (Auftrag 8.4): JSON-Modus, als Nutzer ubuntu.
-  SICHER_PORT="$PORT" nohup "$REPO/_werkstatt/ausbau/werkzeuge/sicher.sh" --json -- npx next start -p "$PORT" >"$LOG" 2>&1 &
+  # Über die Datenweiche (Auftrag 8.4): JSON-Modus, als Nutzer ubuntu. `9>&-` schließt die Sperre für den
+  # Serverprozess; sonst erbt er sie, und ein weiteres `start` bliebe an `flock` hängen (E3-PRUEFER-01).
+  SICHER_PORT="$PORT" nohup "$REPO/_werkstatt/ausbau/werkzeuge/sicher.sh" --json -- npx next start -p "$PORT" >"$LOG" 2>&1 9>&- &
   echo $! >"$PIDDATEI"
   for _ in $(seq 1 90); do
     if laeuft; then echo "gestartet (PID $(cat "$PIDDATEI"), Port ${PORT})"; return 0; fi

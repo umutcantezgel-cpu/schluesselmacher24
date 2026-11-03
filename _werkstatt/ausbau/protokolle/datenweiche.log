@@ -512,3 +512,38 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-03T04:29:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
 2026-11-03T04:30:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
 2026-11-03T04:34:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T04:34:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T04:35:08+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T04:35:35+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T04:36:55+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/konsole.mjs --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/konsole.json
+2026-11-03T04:37:30+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-01,F-02,F-03,F-04,F-05,F-06,F-07,F-08,F-09,F-10,F-11,F-12,F-13,F-14 --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/funktionsliste.json --md /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/funktionsliste.md
+2026-11-03T04:38:54+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/lighthouse.mjs --routen /,/autoschluessel,/schluessel-nach-code,/gleichschliessende-zylinder/konfigurator --laeufe 3 --profil mobil --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/lighthouse.json
+2026-11-03T04:41:24+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bildsatz.mjs --ziel /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bildsatz --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bildsatz.json
+2026-11-03T04:47:42+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/a11y.mjs --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/a11y.json
+2026-11-03T04:49:01+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/a11y-zustaende.mjs
+2026-11-03T04:49:09+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/slopscan.mjs --geraet beide --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/slopscan.json
+2026-11-03T04:50:24+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bewegung.mjs reduziert --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bewegung-reduziert.json
+2026-11-03T04:51:01+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/werte-suche.mjs --seit b8e7ea7 --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/werte-suche.json
+2026-11-03T04:51:02+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/inventar.mjs --basis http://localhost:3000 --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/inventar.json
+2026-11-03T04:51:08+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-15,F-16,F-17,F-18,F-19 --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/funktionsliste-zusatz.json --md /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/funktionsliste-zusatz.md
+2026-11-03T04:51:21+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/bewegungsschalter.mjs
+2026-11-03T04:53:39+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bewegung.mjs bildrate / --selektor [data-motion="B-01"] --dauer 1600 --laeufe 3 --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bewegung-bildrate-start.json
+2026-11-03T04:54:01+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bewegung.mjs einzelbilder / --selektor [data-motion="B-01"] --dauer 1200 --geraet desktop --ziel /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bildfolgen --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bewegung-einzelbilder-desktop.json
+2026-11-03T04:54:03+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/bewegung.mjs einzelbilder / --selektor [data-motion="B-01"] --dauer 1200 --geraet mobil --ziel /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bildfolgen --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E3-PRUEFER-01/bewegung-einzelbilder-mobil.json
+2026-11-03T04:54:53+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/tab-pruefung.mjs
+2026-11-03T04:59:47+00:00	ABBRUCH	json	FREMD_DB zeigt auf Datenbank-Host db.gefaelscht-produktion.supabase.co
+2026-11-03T04:59:47+00:00	ABBRUCH	json	ALT_URL zeigt auf Datenbank-Host prod.beispiel-firma.de
+2026-11-03T04:59:47+00:00	ABBRUCH	json	MEIN_BUCKET enthält die Adresse eines Fremddienstes (r2.cloudflarestorage.com)
+2026-11-03T04:59:47+00:00	ABBRUCH	json	IRGENDWAS enthält einen Zahlungs- oder Mailschlüssel
+2026-11-03T04:59:47+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "[$DATABASE_URL$STORAGE_BUCKET$PAYMENT_API_KEY]"
+2026-11-03T04:59:47+00:00	json	als=root	hosts=localhost	env-dateien= DATABASE_URL GEHEIM_NEU NOCH_EINS	sh -c echo "[$DATABASE_URL|$GEHEIM_NEU|$NOCH_EINS|]"
+2026-11-03T04:59:47+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$SM24_DATA $SM24_STORAGE $NEXT_PUBLIC_SITE_URL"
+2026-11-03T04:59:47+00:00	pg	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$DATABASE_URL"
+2026-11-03T04:59:54+00:00	ABBRUCH	json	FREMD_DB zeigt auf Datenbank-Host db.gefaelscht-produktion.supabase.co
+2026-11-03T04:59:54+00:00	ABBRUCH	json	ALT_URL zeigt auf Datenbank-Host prod.beispiel-firma.de
+2026-11-03T04:59:54+00:00	ABBRUCH	json	MEIN_BUCKET enthält die Adresse eines Fremddienstes (r2.cloudflarestorage.com)
+2026-11-03T04:59:54+00:00	ABBRUCH	json	IRGENDWAS enthält einen Zahlungs- oder Mailschlüssel
+2026-11-03T04:59:54+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "[$DATABASE_URL$STORAGE_BUCKET$PAYMENT_API_KEY]"
+2026-11-03T04:59:54+00:00	json	als=root	hosts=localhost	env-dateien= DATABASE_URL GEHEIM_NEU NOCH_EINS	sh -c echo "[$DATABASE_URL|$GEHEIM_NEU|$NOCH_EINS|]"
+2026-11-03T04:59:55+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$SM24_DATA $SM24_STORAGE $NEXT_PUBLIC_SITE_URL"
+2026-11-03T04:59:55+00:00	pg	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$DATABASE_URL"

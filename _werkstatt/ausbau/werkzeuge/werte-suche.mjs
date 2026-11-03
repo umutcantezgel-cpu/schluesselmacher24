@@ -21,10 +21,23 @@ const AUSNAHMEN = ['src/components/visual/generators/', 'src/components/visual/i
 const FARB_FUNKTIONEN_ERLAUBT = ['src/app/(site)/globals.css', 'tailwind.config.ts'];
 /** Einzelne Funde, die kein Gestaltungswert sind; jeder mit Entscheidung in ENTSCHEIDUNGEN.md. */
 const EINZELNE_AUSNAHMEN = [
-  { datei: 'src/app/(site)/layout.tsx', fund: '#f7f9fb', grund: 'viewport.themeColor verlangt einen Farbwert (D-015)' },
+  { datei: 'src/app/(site)/layout.tsx', fund: '#fafbfd', grund: 'viewport.themeColor verlangt einen Farbwert; entspricht --background seit A-013 (D-015)' },
   { datei: 'src/components/forms/photo-upload.tsx', fund: '#fff', grund: 'Canvas-Grund bei der JPEG-Umwandlung, Bildverarbeitung (D-034)' },
   { datei: 'src/lib/og/bereichsbild.tsx', fund: 'hsl(', grund: 'Vorschaubild (next/og) kennt keine CSS-Variablen; der Wert kommt aus den Tokens (D-039)' },
   { datei: 'src/lib/og/bereichsbild.test.ts', fund: 'hsl(', grund: 'Test des Farbwerts für das Vorschaubild (D-039)' },
+  { datei: 'src/lib/pdf/erzeuge-pdf.ts', fund: '#192133', grund: 'PDFKit kennt keine CSS-Variablen; Druckfarbe aus den Tokens abgeleitet (A-015, A-023)' },
+  { datei: 'src/lib/pdf/erzeuge-pdf.ts', fund: '#4f5a6d', grund: 'PDFKit kennt keine CSS-Variablen; Druckfarbe aus den Tokens abgeleitet (A-015, A-023)' },
+  { datei: 'src/lib/pdf/erzeuge-pdf.ts', fund: '#dae2ec', grund: 'PDFKit kennt keine CSS-Variablen; Druckfarbe aus den Tokens abgeleitet (A-015, A-023)' },
+  { datei: 'src/lib/pdf/erzeuge-pdf.ts', fund: '#145bb8', grund: 'PDFKit kennt keine CSS-Variablen; Druckfarbe aus den Tokens abgeleitet (A-015, A-023)' },
+  { datei: 'src/lib/pdf/erzeuge-pdf.ts', fund: '#f2f6fb', grund: 'PDFKit kennt keine CSS-Variablen; Druckfarbe aus den Tokens abgeleitet (A-015, A-023)' },
+  { datei: 'src/lib/og/bereichsbild.test.ts', fund: '#145bb8', grund: 'Test des Farbwerts für das Vorschaubild (D-039, A-023)' },
+  { datei: 'src/lib/og/bereichsbild.test.ts', fund: '#ffffff', grund: 'Test des Farbwerts für das Vorschaubild (D-039, A-023)' },
+  { datei: 'src/app/manifest.test.ts', fund: '#fafbfd', grund: 'Test der Manifestfarbe gegen --background (D-015, A-023)' },
+  { datei: 'src/lib/visual/area-theme.test.ts', fund: '#ffffff', grund: 'Test der Farbrechnung und Kontraste (A-013, A-023)' },
+  { datei: 'src/lib/visual/area-theme.test.ts', fund: '#000000', grund: 'Test der Farbrechnung und Kontraste (A-013, A-023)' },
+  { datei: 'src/lib/visual/area-theme.test.ts', fund: '#145bb8', grund: 'Test der Farbrechnung und Kontraste (A-013, A-023)' },
+  { datei: 'src/lib/visual/area-theme.test.ts', fund: '--[a-z-]', grund: 'regulärer Ausdruck im Test, keine Tailwind-Klasse (A-023)' },
+  { datei: 'src/lib/server/kundendateien.db.test.ts', fund: 'image-[0-9a-f]', grund: 'regulärer Ausdruck im Test, keine Tailwind-Klasse (A-023)' },
 ];
 const einzelAusnahme = (rel, fund) => EINZELNE_AUSNAHMEN.some((a) => a.datei === rel && a.fund === fund);
 
