@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T13:57:13.452Z",
+ "stand": "2026-11-03T14:22:38.358Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -2571,10 +2571,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "4b5cb55",
    "massstab": "_werkstatt/ausbau/pakete/E5-GRAFIKER-02.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
@@ -2718,10 +2718,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "aac87c6",
    "massstab": "_werkstatt/ausbau/pakete/E5-GRAFIKER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
