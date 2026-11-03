@@ -16,7 +16,7 @@ const ROUTE = 'autoschluessel/anfrage';
 
 const FALLBACK_TITLE = 'Autoschlüssel-Anfrage mit Termin und Anzahlung';
 const FALLBACK_DESCRIPTION =
-  'Fahrzeug, Schlüsselart und Leistung in 13 Schritten angeben, Fotos und Fahrzeugschein '
+  'Fahrzeug, Schlüsselart und Leistung Schritt für Schritt angeben, Fotos und Fahrzeugschein '
   + 'hochladen, Preis oder Preisrahmen sehen und einen festen Termin buchen.';
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -58,7 +58,7 @@ import {
 } from './unterlagen-pruefung';
 
 /* ==========================================================================
-   Autoschlüssel – geführter Ablauf in 13 Schritten
+   Autoschlüssel – geführter Ablauf in fünf Etappen mit 13 Schritten
    Prozessart: Termin mit Anzahlung.
    Alle Fahrzeug-, Leistungs-, Preis- und Termindaten kommen aus der
    Datenschicht; in dieser Datei steht kein fachlicher Wert fest.
