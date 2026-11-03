@@ -11,15 +11,15 @@ Stand 2. November 2026. Produktionsserver Port 3000, Werkzeuge direkt mit node.
 Keine Projektdatei und kein Werkzeug geändert.
 
 ## WAS UND WARUM
-- Bildsatz in drei Routengruppen, da das Werkzeug keine Geräteauswahl kennt. Die Teilprotokolle sind zusammengeführt.
+- Bildsatz in drei Routengruppen (keine Geräteauswahl im Werkzeug), Teilprotokolle zusammengeführt.
 - Kontaktbögen aus den ersten Bildschirmen. Die Liste ergibt 20 Einzelbilder, erlaubt sind 19. Ausgelassen: H14 desktop.
-- Hub und axe mit offenem Menü über ein eigenes Skript, weil `a11y.mjs` offene Menüs nicht kennt. Hub-Zeiten: Median aus drei Läufen.
+- Hub und axe mit offenem Menü über ein eigenes Skript (`a11y.mjs` kennt keine Menüs). Hub-Zeiten: Median aus drei Läufen.
 
 ## GEMEINSAME DATEIEN
-Keine Änderung an `lib.mjs` nötig. Vorschläge: `bildsatz.mjs` und `bild.mjs` für das Gerät breit auf 1.440 px begrenzen. Die Kopfzeilen von `bildsatz.mjs`, `a11y.mjs` und `svg-pruefung.mjs` nennen 12 Hauptansichten, der Code nutzt 14.
+Keine Änderung an `lib.mjs` nötig. Vorschläge: `bildsatz.mjs` und `bild.mjs` für das Gerät breit auf 1.440 px begrenzen. Kopfzeilen von `bildsatz.mjs`, `a11y.mjs` und `svg-pruefung.mjs` nennen 12 Ansichten, der Code 14.
 
 ## PRÜFUNG UND ERGEBNIS
-Hub, Vorher: Keine der 8 Schnelleinstieg-Kacheln ist ohne Scrollen sichtbar.
+Hub, Vorher: keine der 8 Schnelleinstieg-Kacheln ist ohne Scrollen sichtbar.
 
 | Gerät | Überschrift y | LCP Median | LCP-Element |
 |---|---|---|---|
@@ -54,7 +54,7 @@ Hub, Vorher: Keine der 8 Schnelleinstieg-Kacheln ist ohne Scrollen sichtbar.
 - Kontaktbögen: je 14 Felder, alle geladen.
 
 ## BELEGE
-- /home/user/schluesselmacher24/_werkstatt/ausbau/bilder/vorher/ (Kontaktbögen und Einzelbilder)
+- /home/user/schluesselmacher24/_werkstatt/ausbau/bilder/vorher/
 - /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-hub.json (weitere E0-vorher-*.json, je mit .log)
 - /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e0-vorher-hub-menues.mjs
 
@@ -64,6 +64,6 @@ Hub, Vorher: Keine der 8 Schnelleinstieg-Kacheln ist ohne Scrollen sichtbar.
 3. Die Überschrift lautet im Quelltext „Wobei können wir helfen?“, im Kern „Wobei können wir Ihnen helfen?“. Welcher Wortlaut gilt?
 4. LIESMICH verlangt die Datenweiche für jeden Probelauf, das Paket den direkten Aufruf. Direkt gewählt (root). Bitte festlegen.
 5. Die Ursache der 19 abgebrochenen Anfragen ist nicht geprüft.
-6. Das Hub- und Menüskript liegt außerhalb des Repositorys und hat keinen Selbsttest. Als Werkzeug übernehmen?
+6. Hub- und Menüskript liegt außerhalb des Repositorys, ohne Selbsttest. Als Werkzeug übernehmen?
 7. Die Animationen sind nicht den Bausteinen B-01 bis B-26 zugeordnet (nicht im Paket).
 8. LCP-Werte stammen von localhost ohne Drosselung und sind nur untereinander vergleichbar.

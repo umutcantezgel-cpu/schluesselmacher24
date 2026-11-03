@@ -1,0 +1,1282 @@
+{
+  "skript": "lighthouse",
+  "zeit": "2026-11-03T00:08:39.639Z",
+  "argumente": {
+    "_": [],
+    "routen": "/autoschluessel,/autoschluessel/marken/volkswagen/golf,/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage,/schluessel-einschicken",
+    "laeufe": "3",
+    "profil": "mobil",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-lighthouse-mobil-g2.json"
+  },
+  "profil": "mobil",
+  "laeufe": 3,
+  "budget": {
+    "leistung": 90,
+    "kategorie": 100,
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "routen": [
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/autoschluessel",
+          "fehler": null,
+          "werte": {
+            "leistung": 88,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3626.6034,
+            "cls": 0,
+            "tbt": 167.34915,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/autoschluessel",
+          "fehler": null,
+          "werte": {
+            "leistung": 84,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3177.7383,
+            "cls": 0,
+            "tbt": 369,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/autoschluessel",
+          "fehler": null,
+          "werte": {
+            "leistung": 87,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 2869.055999999999,
+            "cls": 0,
+            "tbt": 362,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 87,
+          "min": 84,
+          "max": 88,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 96,
+          "min": 96,
+          "max": 96,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3177.7383,
+          "min": 2869.055999999999,
+          "max": 3626.6034,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 362,
+          "min": 167.34915,
+          "max": 369,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 87,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3177.7383,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 96,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, Barrierefreiheit, SEO)"
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/autoschluessel/marken/volkswagen/golf",
+          "fehler": null,
+          "werte": {
+            "leistung": 91,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 2863.9855500000003,
+            "cls": 0,
+            "tbt": 238,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/autoschluessel/marken/volkswagen/golf",
+          "fehler": null,
+          "werte": {
+            "leistung": 83,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3670.852349999999,
+            "cls": 0,
+            "tbt": 309,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/autoschluessel/marken/volkswagen/golf",
+          "fehler": null,
+          "werte": {
+            "leistung": 90,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 2860.544999999999,
+            "cls": 0,
+            "tbt": 249,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 90,
+          "min": 83,
+          "max": 91,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 96,
+          "min": 96,
+          "max": 96,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 2863.9855500000003,
+          "min": 2860.544999999999,
+          "max": 3670.852349999999,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 249,
+          "min": 238,
+          "max": 309,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 90,
+          "grenze": "mindestens 90",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 2863.9855500000003,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 96,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (LCP, Barrierefreiheit, SEO)"
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/autoschluessel/anfrage",
+          "fehler": null,
+          "werte": {
+            "leistung": 81,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 4479.6736,
+            "cls": 0,
+            "tbt": 208,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/autoschluessel/anfrage",
+          "fehler": null,
+          "werte": {
+            "leistung": 83,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 4411.7119999999995,
+            "cls": 0,
+            "tbt": 157.5,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/autoschluessel/anfrage",
+          "fehler": null,
+          "werte": {
+            "leistung": 94,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 2576.19495,
+            "cls": 0,
+            "tbt": 191.99999999999955,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 83,
+          "min": 81,
+          "max": 94,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 96,
+          "min": 96,
+          "max": 96,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 4411.7119999999995,
+          "min": 2576.19495,
+          "max": 4479.6736,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 191.99999999999955,
+          "min": 157.5,
+          "max": 208,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 83,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 4411.7119999999995,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 96,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, Barrierefreiheit, SEO)"
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/schluessel-nach-code",
+          "fehler": null,
+          "werte": {
+            "leistung": 91,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3011.5152000000003,
+            "cls": 0,
+            "tbt": 201.49999999999977,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/schluessel-nach-code",
+          "fehler": null,
+          "werte": {
+            "leistung": 88,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3650.22335,
+            "cls": 0,
+            "tbt": 140,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/schluessel-nach-code",
+          "fehler": null,
+          "werte": {
+            "leistung": 90,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3495.33255,
+            "cls": 0,
+            "tbt": 102,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 90,
+          "min": 88,
+          "max": 91,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 96,
+          "min": 96,
+          "max": 96,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3495.33255,
+          "min": 3011.5152000000003,
+          "max": 3650.22335,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 140,
+          "min": 102,
+          "max": 201.49999999999977,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 90,
+          "grenze": "mindestens 90",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3495.33255,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 96,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (LCP, Barrierefreiheit, SEO)"
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/schluessel-nach-code/ms-01",
+          "fehler": null,
+          "werte": {
+            "leistung": 88,
+            "barrierefreiheit": 97,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3610.3331999999996,
+            "cls": 0,
+            "tbt": 163,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/schluessel-nach-code/ms-01",
+          "fehler": null,
+          "werte": {
+            "leistung": 86,
+            "barrierefreiheit": 97,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3818.8983000000007,
+            "cls": 0,
+            "tbt": 186,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/schluessel-nach-code/ms-01",
+          "fehler": null,
+          "werte": {
+            "leistung": 87,
+            "barrierefreiheit": 97,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3790.9593,
+            "cls": 0,
+            "tbt": 139,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 87,
+          "min": 86,
+          "max": 88,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 97,
+          "min": 97,
+          "max": 97,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3790.9593,
+          "min": 3610.3331999999996,
+          "max": 3818.8983000000007,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 163,
+          "min": 139,
+          "max": 186,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 87,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3790.9593,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 97,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, Barrierefreiheit, SEO)"
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/schluessel-nach-vorlage",
+          "fehler": null,
+          "werte": {
+            "leistung": 90,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3160.1358,
+            "cls": 0,
+            "tbt": 218,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/schluessel-nach-vorlage",
+          "fehler": null,
+          "werte": {
+            "leistung": 84,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3518.1261999999997,
+            "cls": 0,
+            "tbt": 324.99999999999943,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/schluessel-nach-vorlage",
+          "fehler": null,
+          "werte": {
+            "leistung": 84,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3476.7643500000004,
+            "cls": 0,
+            "tbt": 306.9999999999993,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 84,
+          "min": 84,
+          "max": 90,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 96,
+          "min": 96,
+          "max": 96,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3476.7643500000004,
+          "min": 3160.1358,
+          "max": 3518.1261999999997,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 306.9999999999993,
+          "min": 218,
+          "max": 324.99999999999943,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 84,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3476.7643500000004,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 96,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, Barrierefreiheit, SEO)"
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/schluessel-einschicken",
+          "fehler": null,
+          "werte": {
+            "leistung": 90,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 2860.25595,
+            "cls": 0,
+            "tbt": 255,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/schluessel-einschicken",
+          "fehler": null,
+          "werte": {
+            "leistung": 89,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3500.23195,
+            "cls": 0,
+            "tbt": 179.00000000000023,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/schluessel-einschicken",
+          "fehler": null,
+          "werte": {
+            "leistung": 86,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3487.5957500000004,
+            "cls": 0,
+            "tbt": 267,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 89,
+          "min": 86,
+          "max": 90,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 96,
+          "min": 96,
+          "max": 96,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3487.5957500000004,
+          "min": 2860.25595,
+          "max": 3500.23195,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 255,
+          "min": 179.00000000000023,
+          "max": 267,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 89,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3487.5957500000004,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 96,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, Barrierefreiheit, SEO)"
+    }
+  ]
+}

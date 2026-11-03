@@ -1,0 +1,1102 @@
+{
+  "skript": "lighthouse",
+  "zeit": "2026-11-03T00:11:40.492Z",
+  "argumente": {
+    "_": [],
+    "routen": "/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator,/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen",
+    "laeufe": "3",
+    "profil": "mobil",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-lighthouse-mobil-g3.json"
+  },
+  "profil": "mobil",
+  "laeufe": 3,
+  "budget": {
+    "leistung": 90,
+    "kategorie": 100,
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "routen": [
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/gleichschliessende-zylinder/konfigurator",
+          "fehler": null,
+          "werte": {
+            "leistung": 92,
+            "barrierefreiheit": 97,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3352.5544999999997,
+            "cls": 0,
+            "tbt": 67,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/gleichschliessende-zylinder/konfigurator",
+          "fehler": null,
+          "werte": {
+            "leistung": 88,
+            "barrierefreiheit": 97,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3796.7515000000008,
+            "cls": 0,
+            "tbt": 75.5,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/gleichschliessende-zylinder/konfigurator",
+          "fehler": null,
+          "werte": {
+            "leistung": 87,
+            "barrierefreiheit": 97,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3794.319299999999,
+            "cls": 0,
+            "tbt": 136,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 88,
+          "min": 87,
+          "max": 92,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 97,
+          "min": 97,
+          "max": 97,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3794.319299999999,
+          "min": 3352.5544999999997,
+          "max": 3796.7515000000008,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 75.5,
+          "min": 67,
+          "max": 136,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 88,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3794.319299999999,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 97,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, Barrierefreiheit, SEO)"
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/schliessanlagen",
+          "fehler": null,
+          "werte": {
+            "leistung": 84,
+            "barrierefreiheit": 97,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3627.687250000001,
+            "cls": 0,
+            "tbt": 297,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/schliessanlagen",
+          "fehler": null,
+          "werte": {
+            "leistung": 91,
+            "barrierefreiheit": 97,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3010.70445,
+            "cls": 0,
+            "tbt": 227.5,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/schliessanlagen",
+          "fehler": null,
+          "werte": {
+            "leistung": 85,
+            "barrierefreiheit": 97,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3640.4911,
+            "cls": 0,
+            "tbt": 248,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 85,
+          "min": 84,
+          "max": 91,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 97,
+          "min": 97,
+          "max": 97,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3627.687250000001,
+          "min": 3010.70445,
+          "max": 3640.4911,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 248,
+          "min": 227.5,
+          "max": 297,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 85,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3627.687250000001,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 97,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, Barrierefreiheit, SEO)"
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/schliessanlagen/konfigurator",
+          "fehler": null,
+          "werte": {
+            "leistung": 86,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3937.8502499999995,
+            "cls": 0,
+            "tbt": 140.99999999999977,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/schliessanlagen/konfigurator",
+          "fehler": null,
+          "werte": {
+            "leistung": 84,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 4013.36225,
+            "cls": 0,
+            "tbt": 203.5,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/schliessanlagen/konfigurator",
+          "fehler": null,
+          "werte": {
+            "leistung": 86,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3943.0233000000003,
+            "cls": 0,
+            "tbt": 142,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 86,
+          "min": 84,
+          "max": 86,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 96,
+          "min": 96,
+          "max": 96,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3943.0233000000003,
+          "min": 3937.8502499999995,
+          "max": 4013.36225,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 142,
+          "min": 140.99999999999977,
+          "max": 203.5,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 86,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3943.0233000000003,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 96,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, Barrierefreiheit, SEO)"
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/partner-werden",
+          "fehler": null,
+          "werte": {
+            "leistung": 94,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3039.583250000001,
+            "cls": 0,
+            "tbt": 73.49999999999977,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/partner-werden",
+          "fehler": null,
+          "werte": {
+            "leistung": 88,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3818.6023000000014,
+            "cls": 0,
+            "tbt": 86.00000000000023,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/partner-werden",
+          "fehler": null,
+          "werte": {
+            "leistung": 87,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3843.4426499999986,
+            "cls": 0,
+            "tbt": 152.5,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 88,
+          "min": 87,
+          "max": 94,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 96,
+          "min": 96,
+          "max": 96,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3818.6023000000014,
+          "min": 3039.583250000001,
+          "max": 3843.4426499999986,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 86.00000000000023,
+          "min": 73.49999999999977,
+          "max": 152.5,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 88,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3818.6023000000014,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 96,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, Barrierefreiheit, SEO)"
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/kasse",
+          "fehler": null,
+          "werte": {
+            "leistung": 93,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 54,
+            "lcp": 3009.6639000000005,
+            "cls": 0.0103431838811335,
+            "tbt": 135.50000000000023,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/kasse",
+          "fehler": null,
+          "werte": {
+            "leistung": 90,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 54,
+            "lcp": 3373.8686000000007,
+            "cls": 0.0103431838811335,
+            "tbt": 140.99999999999955,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/kasse",
+          "fehler": null,
+          "werte": {
+            "leistung": 93,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 54,
+            "lcp": 3010.4994,
+            "cls": 0.0103431838811335,
+            "tbt": 125,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 93,
+          "min": 90,
+          "max": 93,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 96,
+          "min": 96,
+          "max": 96,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 54,
+          "min": 54,
+          "max": 54,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3010.4994,
+          "min": 3009.6639000000005,
+          "max": 3373.8686000000007,
+          "n": 3
+        },
+        "cls": {
+          "median": 0.0103431838811335,
+          "min": 0.0103431838811335,
+          "max": 0.0103431838811335,
+          "n": 3
+        },
+        "tbt": {
+          "median": 135.50000000000023,
+          "min": 125,
+          "max": 140.99999999999955,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 93,
+          "grenze": "mindestens 90",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3010.4994,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0.0103431838811335,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 96,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 54,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (LCP, Barrierefreiheit, SEO)"
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/ratgeber/zylinder-richtig-ausmessen",
+          "fehler": null,
+          "werte": {
+            "leistung": 88,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3160.1962499999995,
+            "cls": 0,
+            "tbt": 263,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/ratgeber/zylinder-richtig-ausmessen",
+          "fehler": null,
+          "werte": {
+            "leistung": 91,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3160.7733000000007,
+            "cls": 0,
+            "tbt": 168,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/ratgeber/zylinder-richtig-ausmessen",
+          "fehler": null,
+          "werte": {
+            "leistung": 89,
+            "barrierefreiheit": 96,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3517.0869000000002,
+            "cls": 0,
+            "tbt": 140.00000000000045,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 89,
+          "min": 88,
+          "max": 91,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 96,
+          "min": 96,
+          "max": 96,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3160.7733000000007,
+          "min": 3160.1962499999995,
+          "max": 3517.0869000000002,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 168,
+          "min": 140.00000000000045,
+          "max": 263,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 89,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3160.7733000000007,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 96,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, Barrierefreiheit, SEO)"
+    }
+  ]
+}
