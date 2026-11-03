@@ -1,0 +1,22 @@
+{
+  "basis": "http://localhost:3001",
+  "geraet": "desktop",
+  "pfad": "/admin/login",
+  "status": 200,
+  "zielUrl": "http://localhost:3001/admin/login",
+  "konsolenfehler": 0,
+  "konsolenfehlerTexte": [],
+  "seitenfehler": [],
+  "fehlgeschlagen": [],
+  "formular": {
+    "titel": "Anmelden – SCHLÜSSELMACHER24 Backend",
+    "h1": null,
+    "eingaben": [
+      "email",
+      "password"
+    ],
+    "absendeknoepfe": 1
+  },
+  "attrappen": 0,
+  "attrappenArten": {}
+}

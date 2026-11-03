@@ -1,0 +1,9 @@
+Admin-Rauchtest Port 3001 (pg-Build), 2026-11-03T10:48:16+01:00
+== /admin ohne Folgen ==
+HTTP 200 Ziel=
+== /admin/login ohne Folgen ==
+HTTP 200 Ziel=
+== /admin mit Folgen ==
+HTTP 200 Ende=http://localhost:3001/admin Weiterleitungen=0
+== /admin/login mit Folgen ==
+HTTP 200 Ende=http://localhost:3001/admin/login Weiterleitungen=0

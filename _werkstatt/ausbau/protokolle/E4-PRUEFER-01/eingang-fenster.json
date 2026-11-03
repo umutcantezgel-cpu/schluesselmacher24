@@ -1,0 +1,72 @@
+{
+  "zeit": "2026-11-03T10:12:51.635Z",
+  "geraet": "390 × 844, CPU 4-fach gedrosselt, Seite /",
+  "messweg": "rAF-Zeitstempel ab Seitenbeginn; Fenster des Einstiegs = erste bis letzte Meldung einer laufenden B-31-Animation",
+  "laeufe": [
+    {
+      "lauf": 1,
+      "einstiegDauerMs": 1700,
+      "startMs": 168,
+      "maxAnimationen": 6,
+      "vorEinstieg": {
+        "gezeichnet": 0,
+        "verworfen": 0,
+        "anteil": 0
+      },
+      "einstieg": {
+        "gezeichnet": 54,
+        "verworfen": 50,
+        "anteil": 48.08
+      },
+      "nachEinstieg": {
+        "gezeichnet": 158,
+        "verworfen": 3,
+        "anteil": 1.86
+      }
+    },
+    {
+      "lauf": 2,
+      "einstiegDauerMs": 1667,
+      "startMs": 199,
+      "maxAnimationen": 6,
+      "vorEinstieg": {
+        "gezeichnet": 0,
+        "verworfen": 0,
+        "anteil": 0
+      },
+      "einstieg": {
+        "gezeichnet": 65,
+        "verworfen": 37,
+        "anteil": 36.27
+      },
+      "nachEinstieg": {
+        "gezeichnet": 162,
+        "verworfen": 0,
+        "anteil": 0
+      }
+    },
+    {
+      "lauf": 3,
+      "einstiegDauerMs": 1750,
+      "startMs": 136,
+      "maxAnimationen": 6,
+      "vorEinstieg": {
+        "gezeichnet": 0,
+        "verworfen": 0,
+        "anteil": 0
+      },
+      "einstieg": {
+        "gezeichnet": 65,
+        "verworfen": 42,
+        "anteil": 39.25
+      },
+      "nachEinstieg": {
+        "gezeichnet": 158,
+        "verworfen": 1,
+        "anteil": 0.63
+      }
+    }
+  ],
+  "median_einstieg_anteil": 39.25,
+  "schwelle_prozent": 5
+}

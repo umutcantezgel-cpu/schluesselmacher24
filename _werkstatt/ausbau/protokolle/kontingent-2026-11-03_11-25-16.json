@@ -1,0 +1,58 @@
+{
+  "skript": "kontingent",
+  "zeit": "2026-11-03T10:25:16.283Z",
+  "argumente": {
+    "_": [],
+    "kalibrieren": "20",
+    "zeit": "2026-11-03T10:22:53Z"
+  },
+  "modus": "kalibrieren",
+  "fenster": {
+    "seit": "2026-11-03T05:22:53.000Z",
+    "bis": "2026-11-03T10:22:53.000Z",
+    "quelle": "vor 5 Stunden"
+  },
+  "summe": {
+    "gewichtet": 107404169.15,
+    "anzahl": 549,
+    "modelle": {
+      "opus": {
+        "roh": {
+          "input": 488,
+          "cache_creation": 489976,
+          "cache_read": 159072958,
+          "output": 316934
+        },
+        "gewichtet": 90524619
+      },
+      "haiku": {
+        "roh": {
+          "input": 632,
+          "cache_creation": 2671405,
+          "cache_read": 78182919,
+          "output": 1144274
+        },
+        "gewichtet": 16879550.15
+      },
+      "andere": {
+        "roh": {
+          "input": 0,
+          "cache_creation": 0,
+          "cache_read": 0,
+          "output": 0
+        },
+        "gewichtet": 0
+      }
+    }
+  },
+  "faktor": {
+    "faktor": 2.0849290121899311e-7,
+    "anzahl": 3
+  },
+  "stat": {
+    "dateien": 112,
+    "fehlerhaft": 0,
+    "ohneZeit": 0,
+    "doppelt": 5316
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "zeit": "2026-11-03T10:16:41.919Z",
+  "geraet": "390 × 844, CPU 4-fach gedrosselt, Seite /",
+  "fenster_ms": [
+    150,
+    1900
+  ],
+  "laeufe": [
+    {
+      "modus": "an",
+      "lauf": 1,
+      "bewegungImDokument": "an",
+      "fensterAbsolut": {
+        "gezeichnet": 67,
+        "verworfen": 27,
+        "anteil": 28.72
+      },
+      "einstieg": {
+        "startMs": 134,
+        "dauerMs": 1683,
+        "gezeichnet": 65,
+        "verworfen": 38,
+        "anteil": 36.89
+      }
+    },
+    {
+      "modus": "an",
+      "lauf": 2,
+      "bewegungImDokument": "an",
+      "fensterAbsolut": {
+        "gezeichnet": 62,
+        "verworfen": 43,
+        "anteil": 40.95
+      },
+      "einstieg": {
+        "startMs": 166,
+        "dauerMs": 1617,
+        "gezeichnet": 56,
+        "verworfen": 43,
+        "anteil": 43.43
+      }
+    },
+    {
+      "modus": "an",
+      "lauf": 3,
+      "bewegungImDokument": "an",
+      "fensterAbsolut": {
+        "gezeichnet": 62,
+        "verworfen": 27,
+        "anteil": 30.34
+      },
+      "einstieg": {
+        "startMs": 139,
+        "dauerMs": 1767,
+        "gezeichnet": 65,
+        "verworfen": 43,
+        "anteil": 39.81
+      }
+    },
+    {
+      "modus": "ruhig",
+      "lauf": 1,
+      "bewegungImDokument": "ruhig",
+      "fensterAbsolut": {
+        "gezeichnet": 60,
+        "verworfen": 45,
+        "anteil": 42.86
+      }
+    },
+    {
+      "modus": "ruhig",
+      "lauf": 2,
+      "bewegungImDokument": "ruhig",
+      "fensterAbsolut": {
+        "gezeichnet": 72,
+        "verworfen": 32,
+        "anteil": 30.77
+      }
+    },
+    {
+      "modus": "ruhig",
+      "lauf": 3,
+      "bewegungImDokument": "ruhig",
+      "fensterAbsolut": {
+        "gezeichnet": 52,
+        "verworfen": 49,
+        "anteil": 48.51
+      }
+    }
+  ],
+  "zusammen": {
+    "fenster_1900_an_median": 30.34,
+    "fenster_1900_ruhig_median": 42.86,
+    "einstieg_an_median": 39.81
+  },
+  "schwelle_prozent": 5
+}

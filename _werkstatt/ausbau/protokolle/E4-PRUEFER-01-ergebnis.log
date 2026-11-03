@@ -1,0 +1,112 @@
+E4-PRUEFER-01 · Ergebnisse im Detail (Zahlen aus den JSON-Dateien in protokolle/E4-PRUEFER-01/)
+Messung 3. November 2026, JSON-Build auf Port 3000, Commit 188c6f6. Zeitmessungen erst ab Minutenlast unter 1,0.
+
+== LIGHTHOUSE, mobil, Median aus 3 Läufen (lighthouse-mobil.json; E0 aus E0-vorher-lighthouse-mobil.json und Zusammenfassung; E3 aus E3-PRUEFER-01-lighthouse.log)
+Route | E0 Leistung, LCP | E3 Leistung, LCP | E4 Leistung, LCP | E4 Spanne Leistung, LCP | E0 Spanne Leistung, LCP
+/ (H01) | 83, 3516 | 95, 2805 | 92, 2943 | 86 bis 92, 2805 bis 3297 | 69 bis 88, 3315 bis 3894
+/autoschluessel (H02) | 87, 3178 | 88, 3521 | 92, 3010 | 91 bis 93, 3005 bis 3032 | 84 bis 88, 2869 bis 3627
+/schluessel-nach-code (H05) | 90, 3495 | 91, 3407 | 89, 2548 | 88 bis 93, 2513 bis 2839 | 88 bis 91, 3012 bis 3650
+/gleichschliessende-zylinder/konfigurator (H09) | 88, 3794 | 94, 3085 | 90, 3606 | 82 bis 93, 3177 bis 3831 | 87 bis 92, 3353 bis 3797
+/autoschluessel/anfrage (H04) | 83, 4412 | nicht gemessen | 85, 3829 | 85 bis 90, 3321 bis 3875 | 81 bis 94, 2576 bis 4480
+Budgets E4: LCP höchstens 2500 ms auf keiner Route erfüllt. Leistung mindestens 90 nicht auf H05 (89) und H04 (85). SEO 92 auf H02, H04, H05, H09 (Altbestand, E0 und E3 ebenso). Barrierefreiheit 100, Best Practices 100, CLS 0,000 auf allen Routen.
+Attrappen: H04 meldete 3 unbekannte Server Actions, abgefangen, nichts gesendet.
+
+== HUB, erster Bildschirm (hub-messung.json, Messung nach 2,3 s, Kacheln mit ganz sichtbar und oberhalb der Aktionsleiste)
+360 x 780: 9 Kacheln, 9 ganz sichtbar, 9 oberhalb der Leiste (Oberkante 724), letzte Unterkante 692, Telefon 748, kein Überlauf.
+390 x 844: 9 Kacheln, 9 ganz sichtbar, 9 oberhalb der Leiste (Oberkante 788), letzte Unterkante 655, Telefon 711, kein Überlauf.
+768 x 1024: 9 Kacheln, 9 ganz sichtbar, Leiste aus, letzte Unterkante 638, Telefon 774.
+1440 x 900: 9 Kacheln, 9 ganz sichtbar, letzte Unterkante 780, Telefon 860.
+1920 x 1080: 9 Kacheln, 9 ganz sichtbar, letzte Unterkante 780, Telefon 860.
+E0 (E0-vorher-hub.log): 0 von 8 Kacheln ganz sichtbar auf 360, 390 und 1440.
+
+== KACHELTEXTE (verifizierung.json)
+360 px: Name „Schlüsseldienst vor Ort“ über drei Zeilen. Zusatz „jedem Schlüssel seine Türen“ (Schließanlage) über drei Zeilen. Alle anderen Namen und Zusätze zwei Zeilen oder weniger. Vorgabe: höchstens zwei Zeilen bei 360 px (_MUSTER-REFERENZ).
+390 px: alle Namen zwei Zeilen.
+Bild: hub-kacheln-360.png (Kachelreihe ohne Überlauf).
+
+== NAVIGATION G-08 (verifizierung.json, interaktion.json)
+1024 px: 4 von 5 Gruppen sichtbar, Schließanlagen unter „Mehr“, eine Zeile, Kopf 81 px.
+1280 px: 5 von 5, eine Zeile, Kopf 81 px.
+1440 px: 5 von 5, eine Zeile, Kopf 81 px.
+Megamenü je Gruppe bei allen drei Breiten geöffnet: 15 Zustände, je 0 axe-Verstöße (WCAG 2.0 bis 2.2, Stufen A und AA).
+Die Zeilenzählung in interaktion.json vor der Korrektur (zwei Zeilen bei 1024 px) war ein Artefakt unsichtbarer Schaltflächen (Position 0), nicht ein Befund.
+
+== SCHUBLADE (interaktion.json, D)
+390 px und 768 px: Dialog, modal, 6 Links, axe 0 Verstöße. Ab 1024 px ist der Menüknopf ausgeblendet (display none).
+
+== AKTIONSLEISTE (interaktion.json, E)
+360 px und 390 px: sichtbar, Beschriftungen Autoschlüssel, Nach Code, Termin anfragen, Anrufen. „Anrufen“ als tel:+4964418056279. 768 px: ausgeblendet.
+
+== B-35 ÜBERGANG (interaktion.json, B)
+Tipp (390 px) und Klick (1440 px) auf „Autoschlüssel“: Adresse /autoschluessel, Fokus auf h1 (id seiten-titel).
+
+== B-32 DAUERSCHLEIFE (interaktion.json, A, Desktop 1440 px)
+Start: an, 2 Phasenwechsel in 13 s (Takt 6 s).
+Pause: Schleife aus, 0 Wechsel in 7 s, Knopf „Animation fortsetzen“.
+Fortsetzen: Knopf „Animation anhalten“, 2 Wechsel in 13 s.
+ruhig: Bewegung ruhig, Knopf entfällt, Schleife aus, 0 Wechsel in 7 s.
+Hinweis: data-phase steht bei Pause bewusst auf „a“ (Endbild).
+
+== BEWEGUNGSSCHALTER VON HAND (interaktion.json, G)
+Schalter im Fuß, sichtbar, aria-pressed umschaltbar.
+an zu ruhig: laufende Animationen 6 zu 0, gespeichert „ruhig“ im Gerät.
+ruhig zu an nach Scrollen zum Anfang: Schleife an.
+
+== REDUZIERTE BEWEGUNG
+Desktop, 14 Ansichten (bewegung-reduziert.json): 0 laufende Animationen, 0 Befunde, 0 verborgene Inhalte. E0 und E3 ebenso 0.
+Systemeinstellung mobil (interaktion.json, G): ruhig, keine B-31-Animation, kein Pause-Knopf.
+
+== EINGANGSINSZENIERUNG B-31 (bildfolge-b31.json, Bilder in bildfolgen/)
+Band mobil 390 px und Bühne Desktop 1440 px, Zeitpunkte 0, 200, 400, 800, 1200 ms. Je Gerät 5 verschiedene Bilder (sha1). Animationen 6, Ende 1470 ms.
+Kontaktbogen bildfolge-b31-kontakt.jpg: Schlüssel fährt an Zylinder 01, Kern dreht bei 800 ms, Türen 02 bis 04 blenden bei 1200 ms ein.
+
+== FRAMEZEIT mobil, CPU 4-fach gedrosselt
+Offiziell (bewegung.mjs bildrate, B-31-Band, 3 Läufe nach dem Laden): 0,0 %, 0,0 %, 0,0 % (109, 109, 110 Bilder). Median 0,0 %. Schwelle 5 %.
+Fenster 150 bis 1900 ms ab Seitenbeginn (framezeit-kontrolle.json), 3 Läufe je Modus:
+  Modus an (Inszenierung läuft): 28,7 %, 41,0 %, 30,3 %. Median 30,3 %.
+  Einstieg allein (erste bis letzte laufende Animation): 36,9 %, 43,4 %, 39,8 %. Median 39,8 %.
+  Modus ruhig (keine Inszenierung): 42,9 %, 30,8 %, 48,5 %. Median 42,9 %.
+Ergebnis: Die Verluste entstehen beim Seitenaufbau mit Hydration unter Vierfach-Drosselung. Ohne Inszenierung liegen sie gleich hoch.
+Erste Messung eingang-framezeit.json (Fenster ab Seitenbeginn, nur Modus an, 0 bis 2,3 s): Median 28,2 %. Die Gegenprobe framezeit-kontrolle.json liegt mit 30,3 % in derselben Größenordnung.
+
+== BILDSATZ (bildsatz.json, 70 Zeilen, 524 Bilder)
+Seitenüberlauf in allen 70 Zeilen: nein.
+Befunde am rechten Rand (Elemente über den Rand), E0 und E3 je Zeile: H01 mobil-klein 73 zu 32, H01 mobil 73 zu 32, H01 tablet 3, H01 desktop 2, H06 mobil-klein 6 zu 7 (E3 7, E4 7). Alle anderen Zeilen gleich wie E0 und E3.
+Gekappt auf 15 Ausschnitte: H03, H05 und H10 mobil-klein (wie E3). Überlauf je Seite vollständig geprüft.
+
+== AXE, Hauptansichten (a11y.json)
+14 Ansichten mal mobil und Desktop, 28 Prüfungen, 0 Verstöße (E0: 28 ernste, E3: 0).
+
+== FUNKTIONSLISTE (funktionsliste.md)
+F-01 bis F-19: 19 von 19 BESTANDEN. Absenden in F-02, F-04 und F-06 als Attrappe abgefangen, nichts gesendet. F-11 Sprunglink und mobile Aktionsleiste bestanden.
+
+== KONSOLE (konsole.json)
+14 Ansichten, Desktop: 0 Konsolenfehler, 0 Warnungen, 0 Seitenfehler. 26 abgebrochene Anfragen net::ERR_ABORTED, alle mit _rsc (Vorabruf), keine HTTP-Fehler. E0: 19. E3: 25.
+
+== WERTE-SUCHE (werte-suche.json, --seit b8e7ea7 wie E0 und E3)
+428 Dateien geprüft. Ohne Ausnahmen 44 Funde in 9 Dateien: custom.css 4, apple-icon.tsx 1, global-error.tsx 13, formular-schutz.tsx 1, einwilligung-hinweis.tsx 1, druckansichten.ts 14, mail/html.ts 8, Anbindungen.tsx 1, Kennzahlen.tsx 1.
+Ausnahmen 18: 16 benannte Einzelfälle (Ausnahmeliste im Werkzeug, seit E3 erweitert, Commit b682602) und 2 im Verzeichnis generators (profilschnitt.test.tsx, neu in E4).
+E0: 46 Funde, 2 Ausnahmen. E3: 59 Funde, 1 Ausnahme.
+
+== SLOP-SCAN (slopscan.json, 28 Zeilen)
+S1 Schrift 0 (E0 28). S2 Farbe 2, beide rgb(0,0,0) auf H01 mobil und Desktop (E0 16 lila, E3 41). S3 150 (E0 152). S4 0. S5 27. S6 8. S7 0. S8 24.
+
+== INVENTAR (inventar.json)
+217 Adressen, 181 indexierbar, 18 noindex, 0 Weiterleitungen, 0 Fehler, 0 Dubletten, 181 Sitemap-Einträge. Identisch mit E0 und E3.
+
+== STRUKTURDATEN DETAILSEITEN (r8-strukturdaten.log)
+H03 /autoschluessel/marken/volkswagen/golf: 1 JSON-LD-Block, 8 Typen, 2 Fragen, beide sichtbar.
+H06 /schluessel-nach-code/ms-01: 3 JSON-LD-Blöcke, Product mit Offer, 4 Fragen, Produktname, Preis, alle 6 Werte sichtbar.
+Keine Parsefehler (inventar.json).
+
+== ADMIN (admin-status.log, admin-login.json)
+/admin 200 ohne Weiterleitung, /admin/login 200 ohne Weiterleitung. 0 Konsolenfehler, 0 Seitenfehler, 0 fehlgeschlagene Anfragen. Formular mit E-Mail und Passwort, Absendeknopf nicht bedient.
+
+== FAHRZEUGSUCHE (interaktion.json, F)
+mobil und Desktop: „vw golf“ ergibt „Volkswagen Golf, Preis und Termin online“. Klick führt zum Schritt „Baujahr beziehungsweise Erstzulassung“. Je Lauf eine unbekannte Server Action als Attrappe abgefangen.
+
+== REFERENZ-BILDSATZ (referenz.json, bilder/referenz/)
+15 JPEG: H01-start, H02-autoschluessel, H04-autoschluessel-anfrage in fünf Geräten, erster Bildschirm nach 2,5 s, Qualität 80. Breitbild 1920 auf 1440 Pixel verkleinert. 34 bis 86 KB je Datei.
+
+== GIT
+Nach der Prüfung: außerhalb der Protokolle nur protokolle/datenweiche.log geändert (getrackt). Projektdateien unverändert.

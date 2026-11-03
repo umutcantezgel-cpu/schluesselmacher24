@@ -1,0 +1,922 @@
+{
+  "skript": "lighthouse",
+  "zeit": "2026-11-03T10:08:34.993Z",
+  "argumente": {
+    "_": [],
+    "routen": "/,/autoschluessel,/schluessel-nach-code,/gleichschliessende-zylinder/konfigurator,/autoschluessel/anfrage",
+    "laeufe": "3",
+    "profil": "mobil",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/lighthouse-mobil.json"
+  },
+  "profil": "mobil",
+  "laeufe": 3,
+  "budget": {
+    "leistung": 90,
+    "kategorie": 100,
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "routen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/",
+          "fehler": null,
+          "werte": {
+            "leistung": 92,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 100,
+            "lcp": 2805.0797499999994,
+            "cls": 0,
+            "tbt": 205.30674999999997,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/",
+          "fehler": null,
+          "werte": {
+            "leistung": 92,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 100,
+            "lcp": 2942.538900000001,
+            "cls": 0,
+            "tbt": 162.15370000000007,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/",
+          "fehler": null,
+          "werte": {
+            "leistung": 86,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 100,
+            "lcp": 3296.5131,
+            "cls": 0,
+            "tbt": 305,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 92,
+          "min": 86,
+          "max": 92,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "lcp": {
+          "median": 2942.538900000001,
+          "min": 2805.0797499999994,
+          "max": 3296.5131,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 205.30674999999997,
+          "min": 162.15370000000007,
+          "max": 305,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 92,
+          "grenze": "mindestens 90",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 2942.538900000001,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (LCP)"
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/autoschluessel",
+          "fehler": null,
+          "werte": {
+            "leistung": 91,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3010.1387999999993,
+            "cls": 0,
+            "tbt": 186.62040000000025,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/autoschluessel",
+          "fehler": null,
+          "werte": {
+            "leistung": 92,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3032.0771999999993,
+            "cls": 0,
+            "tbt": 144.30760000000055,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/autoschluessel",
+          "fehler": null,
+          "werte": {
+            "leistung": 93,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3005.3503499999993,
+            "cls": 0,
+            "tbt": 95.21654999999987,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 92,
+          "min": 91,
+          "max": 93,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3010.1387999999993,
+          "min": 3005.3503499999993,
+          "max": 3032.0771999999993,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 144.30760000000055,
+          "min": 95.21654999999987,
+          "max": 186.62040000000025,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 92,
+          "grenze": "mindestens 90",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3010.1387999999993,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (LCP, SEO)"
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/schluessel-nach-code",
+          "fehler": null,
+          "werte": {
+            "leistung": 88,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 2548.1673,
+            "cls": 0,
+            "tbt": 399.708175,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/schluessel-nach-code",
+          "fehler": null,
+          "werte": {
+            "leistung": 89,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 2838.8189,
+            "cls": 0,
+            "tbt": 286.0000000000002,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/schluessel-nach-code",
+          "fehler": null,
+          "werte": {
+            "leistung": 93,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 2513.2498,
+            "cls": 0,
+            "tbt": 235.1875500000001,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 89,
+          "min": 88,
+          "max": 93,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 2548.1673,
+          "min": 2513.2498,
+          "max": 2838.8189,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 286.0000000000002,
+          "min": 235.1875500000001,
+          "max": 399.708175,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 89,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 2548.1673,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, SEO)"
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/gleichschliessende-zylinder/konfigurator",
+          "fehler": null,
+          "werte": {
+            "leistung": 90,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3605.775199999999,
+            "cls": 0,
+            "tbt": 81.5,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/gleichschliessende-zylinder/konfigurator",
+          "fehler": null,
+          "werte": {
+            "leistung": 82,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3831.3736000000004,
+            "cls": 0,
+            "tbt": 213,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/gleichschliessende-zylinder/konfigurator",
+          "fehler": null,
+          "werte": {
+            "leistung": 93,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3176.5293999999994,
+            "cls": 0,
+            "tbt": 75,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 90,
+          "min": 82,
+          "max": 93,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3605.775199999999,
+          "min": 3176.5293999999994,
+          "max": 3831.3736000000004,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 81.5,
+          "min": 75,
+          "max": 213,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 90,
+          "grenze": "mindestens 90",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3605.775199999999,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (LCP, SEO)"
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "profil": "mobil",
+      "gueltigeLaeufe": 3,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "endadresse": "http://localhost:3000/autoschluessel/anfrage",
+          "fehler": null,
+          "werte": {
+            "leistung": 85,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3875.384,
+            "cls": 0,
+            "tbt": 149,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 2,
+          "endadresse": "http://localhost:3000/autoschluessel/anfrage",
+          "fehler": null,
+          "werte": {
+            "leistung": 85,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3829.3430500000004,
+            "cls": 0,
+            "tbt": 200.44282500000077,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        },
+        {
+          "lauf": 3,
+          "endadresse": "http://localhost:3000/autoschluessel/anfrage",
+          "fehler": null,
+          "werte": {
+            "leistung": 90,
+            "barrierefreiheit": 100,
+            "bestPractices": 100,
+            "seo": 92,
+            "lcp": 3321.2868,
+            "cls": 0,
+            "tbt": 177.95220000000086,
+            "inp": null
+          },
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          },
+          "lighthouse": "12.6.1",
+          "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+        }
+      ],
+      "statistik": {
+        "leistung": {
+          "median": 85,
+          "min": 85,
+          "max": 90,
+          "n": 3
+        },
+        "barrierefreiheit": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "bestPractices": {
+          "median": 100,
+          "min": 100,
+          "max": 100,
+          "n": 3
+        },
+        "seo": {
+          "median": 92,
+          "min": 92,
+          "max": 92,
+          "n": 3
+        },
+        "lcp": {
+          "median": 3829.3430500000004,
+          "min": 3321.2868,
+          "max": 3875.384,
+          "n": 3
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 3
+        },
+        "tbt": {
+          "median": 177.95220000000086,
+          "min": 149,
+          "max": 200.44282500000077,
+          "n": 3
+        },
+        "inp": null
+      },
+      "pruefungen": [
+        {
+          "name": "Leistung",
+          "wert": 85,
+          "grenze": "mindestens 90",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "LCP",
+          "wert": 3829.3430500000004,
+          "grenze": "höchstens 2500 ms",
+          "ok": false,
+          "pflicht": true
+        },
+        {
+          "name": "CLS",
+          "wert": 0,
+          "grenze": "höchstens 0,1",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "INP",
+          "wert": null,
+          "grenze": "höchstens 200 ms",
+          "ok": null,
+          "pflicht": false
+        },
+        {
+          "name": "Barrierefreiheit",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "Best Practices",
+          "wert": 100,
+          "grenze": "100",
+          "ok": true,
+          "pflicht": true
+        },
+        {
+          "name": "SEO",
+          "wert": 92,
+          "grenze": "100",
+          "ok": false,
+          "pflicht": true
+        }
+      ],
+      "erfuellt": "nein (Leistung, LCP, SEO)"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+an Lauf 1 (Bewegung an): Fenster 150–1900 ms 28.72 % (67 gez., 27 verw.) · Einstieg ab 134 ms, 1683 ms, 36.89 %
+an Lauf 2 (Bewegung an): Fenster 150–1900 ms 40.95 % (62 gez., 43 verw.) · Einstieg ab 166 ms, 1617 ms, 43.43 %
+an Lauf 3 (Bewegung an): Fenster 150–1900 ms 30.34 % (62 gez., 27 verw.) · Einstieg ab 139 ms, 1767 ms, 39.81 %
+ruhig Lauf 1 (Bewegung ruhig): Fenster 150–1900 ms 42.86 % (60 gez., 45 verw.)
+ruhig Lauf 2 (Bewegung ruhig): Fenster 150–1900 ms 30.77 % (72 gez., 32 verw.)
+ruhig Lauf 3 (Bewegung ruhig): Fenster 150–1900 ms 48.51 % (52 gez., 49 verw.)
+Mediane: {"fenster_1900_an_median":30.34,"fenster_1900_ruhig_median":42.86,"einstieg_an_median":39.81}
+=== EXIT 0 ===
