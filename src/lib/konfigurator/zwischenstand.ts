@@ -12,6 +12,11 @@ import { z } from 'zod';
 
 import type { Schliessplan } from './schliessplan';
 
+/* zod 4 probiert für seinen Schnellpfad `new Function`; die CSP der Seite erlaubt kein `eval`
+   (script-src ohne 'unsafe-eval'), der Versuch landet als Verstoß im Browser (Best Practices 96,
+   E5-OPUS-04). Dieses Modul läuft im Browser, darum hier ohne Schnellpfad. */
+z.config({ jitless: true });
+
 /** Obergrenze, damit der Link in Mail und Messenger heil bleibt. */
 export const ZWISCHENSTAND_HOECHSTENS = 6000;
 
