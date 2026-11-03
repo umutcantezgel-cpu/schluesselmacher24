@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T10:34:40.298Z",
+ "stand": "2026-11-03T10:36:21+00:00",
  "etappen": [
   {
    "kennung": "E0",
@@ -2552,7 +2552,8 @@
    "stufe": 1,
    "kostenklasse": "M",
    "schreibrechte": [
-    "_werkstatt/ausbau/berichte/E5-PRUEFER-02.md"
+    "_werkstatt/ausbau/berichte/E5-PRUEFER-02.md",
+    "_werkstatt/ausbau/werkzeuge/leistung-diagnose.mjs"
    ],
    "abhaengigkeiten": [
     "E4-PRUEFER-01"
