@@ -927,3 +927,10 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-03T22:45:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
 2026-11-03T22:46:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
 2026-11-03T22:47:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T22:50:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/gleichschliessende-zylinder/konfigurator/kern.test.ts
+2026-11-03T22:56:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/gleichschliessende-zylinder/konfigurator/kern.test.ts
+2026-11-03T22:57:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T22:57:26+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/gleichschliessende-zylinder/konfigurator
+2026-11-03T22:57:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T22:58:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T22:58:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit

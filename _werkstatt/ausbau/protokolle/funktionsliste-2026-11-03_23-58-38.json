@@ -1,0 +1,63 @@
+{
+  "skript": "funktionsliste",
+  "zeit": "2026-11-03T22:58:26.676Z",
+  "argumente": {
+    "_": [],
+    "nur": "F-05,F-06"
+  },
+  "server": "http://localhost:3000",
+  "records": {
+    "vorher": false,
+    "nachher": false
+  },
+  "serverlog": {
+    "neuZeichen": 0,
+    "treffer": 0
+  },
+  "ergebnisse": [
+    {
+      "id": "F-05",
+      "funktion": "Zylinder-Konfigurator in den Warenkorb",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Warenkorb gespeichert mit 1 Eintrag/Einträgen, Seite nicht leer; Schritte: Zylinder zusammenstellen: weiter → Gemeinsame Schlüssel: weiter → Schutz und Optionen: weiter → Spätere Erweiterung: weiter → Prüfen und in den Warenkorb legen: letzter",
+      "messwert": "Attrappen: 0",
+      "dauer_ms": 5982,
+      "attrappen": []
+    },
+    {
+      "id": "F-06",
+      "funktion": "Schließanlagen-Konfigurator bis Zusammenfassung und Absenden",
+      "geraet": "desktop",
+      "ergebnis": "BESTANDEN",
+      "begruendung": "Projekt-Absenden als Attrappe abgefangen; 11 Schritte",
+      "messwert": null,
+      "dauer_ms": 5190,
+      "attrappen": [
+        {
+          "art": "action-unbekannt",
+          "methode": "POST",
+          "url": "/schliessanlagen/konfigurator",
+          "laenge": 2
+        },
+        {
+          "art": "upload",
+          "methode": "POST",
+          "url": "/api/kunden-upload"
+        },
+        {
+          "art": "action-unbekannt",
+          "methode": "POST",
+          "url": "/schliessanlagen/konfigurator",
+          "laenge": 2
+        },
+        {
+          "art": "action-schreibend",
+          "methode": "POST",
+          "url": "/schliessanlagen/konfigurator",
+          "laenge": 4951
+        }
+      ]
+    }
+  ]
+}

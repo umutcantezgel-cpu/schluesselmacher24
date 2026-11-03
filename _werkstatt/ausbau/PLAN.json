@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T22:36:00+00:00",
+ "stand": "2026-11-03T22:59:31.379Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -2655,10 +2655,10 @@
    ],
    "art": "pflicht",
    "wirkung": 5,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "a9c4a3e",
    "massstab": null,
    "muster": null
   },

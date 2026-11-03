@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T22:36:00+00:00
+Stand: 2026-11-03T22:59:31.379Z
 
-Etappe 6/12 · Welle 2 · Pflicht 75/139 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 6/12 · Welle 3 · Pflicht 76/139 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -253,7 +253,7 @@ Geplante Tage: 1.55
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E5-OPUS-05 | Referenz-Feinschliff nach E4-JURY-02 (letzte Runde je Ansicht und Kategorie): Bühne mit erkennbarem Autoschlüssel und gefüllter Fläche, Kacheltitel ohne Trennung, Nummern nur bei echten Abfolgen, „Warum wir“ im Autoschlüssel-Abschnitt; Assistent mit einem Zähler, „Vorhandene Schlüssel“, kürzerem Kopf mobil und ruhigerem Fotoschritt | opus-5.5 | M | pflicht | 4 | committet | 97b4d7d |
-| E5-OPUS-02 | Sperrschließung auf demselben Kern: Sets 2 bis 10 (mehr auf Anfrage, Bestand bis 30), jeder Zylinder einzeln, Schlüsselzahl | opus-5.5 | L | pflicht | 5 | offen |  |
+| E5-OPUS-02 | Sperrschließung auf demselben Kern: Sets 2 bis 10 (mehr auf Anfrage, Bestand bis 30), jeder Zylinder einzeln, Schlüsselzahl | opus-5.5 | L | pflicht | 5 | committet | a9c4a3e |
 | E5-OPUS-03 | Schließplan als PDF und Vorgang mit vollständigem Schnappschuss | opus-5.5 | M | pflicht | 4 | committet | 99b5a9f |
 
 ### Welle 3
