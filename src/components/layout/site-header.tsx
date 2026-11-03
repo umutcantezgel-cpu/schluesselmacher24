@@ -32,10 +32,10 @@ type Stufe = 'lg' | 'xl' | '2xl';
 
 /**
  * Ab welcher Breite ein Bereich mit seiner Kurzbezeichnung in der Leiste steht; ohne Eintrag
- * steht er nur unter „Mehr“ (und immer in der Schublade). Nachgemessen mit den Schriften der
- * Seite (Inter halbfett, IBM Plex Sans fett) und 17 px Bildlaufleiste, mit Kopfknopf „Termin
- * anfragen“: Bei 1024 px bleiben rund 65 px frei, bei 1280 px rund 45 px, bei 1440 px rund 200 px,
- * ab 1536 px rund 135 px.
+ * steht er nur unter „Mehr“ (und immer in der Schublade). Zuerst gemessen mit Inter halbfett:
+ * bei 1024 px rund 65 px frei, bei 1280 px rund 45 px, bei 1440 px rund 200 px, ab 1536 px rund
+ * 135 px. Seit KERN 2.1 (Plex Sans halbfett, 15 px) nachgemessen: Bei 1024, 1280, 1440 und
+ * 1536 px bleibt die Leiste einzeilig ohne Überlauf, mit Kopfknopf „Termin anfragen“.
  * Wer hier etwas ergänzt oder eine Kurzbezeichnung verlängert, misst diese drei Breiten nach.
  */
 const LEISTE: Partial<Record<AreaKey, Stufe>> = {

@@ -64,7 +64,7 @@ export function betragAmEnde(text: string): { angaben: string; betrag: string } 
 
 /**
  * Wert im Schriftfeld: Angaben mit Text und Betrag stehen in zwei Zeilen – die Angaben klein
- * und gedämpft, darunter der Betrag in Mono –, damit Inter und Mono nicht in einer Zeile mischen.
+ * und gedämpft, darunter der Betrag in Mono –, damit Plex Sans und Mono nicht in einer Zeile mischen.
  */
 function SchriftfeldWert({ text, muster }: { text: string; muster?: RegExp }) {
   const geteilt = betragAmEnde(text);

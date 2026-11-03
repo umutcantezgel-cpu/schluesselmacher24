@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
-import { IBM_Plex_Sans, IBM_Plex_Mono, Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
 
+import { schriftKlassen } from '@/fonts/schriften';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { MobileActionBar } from '@/components/layout/mobile-action-bar';
@@ -13,28 +13,7 @@ import { googleVerifizierung, indexierungErlaubt } from '@/lib/umgebung';
 
 import './globals.css';
 
-/* Schriften: ruhig und technisch, gut lesbar auf kleinen Bildschirmen. */
-
-const display = IBM_Plex_Sans({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-  weight: ['500', '600', '700'],
-});
-
-const body = Inter({
-  subsets: ['latin'],
-  variable: '--font-body',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-});
-
-const mono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  display: 'swap',
-  weight: ['400', '500', '600'],
-});
+/* Schriften: ruhig und technisch, gut lesbar auf kleinen Bildschirmen; lokal aus src/fonts (A-003). */
 
 const siteUrl = getSiteUrl();
 /** Google Analytics 4 nur mit Mess-ID — ohne sie wird nichts davon geladen. */
@@ -73,14 +52,14 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: 'cover',
   // Viewport-Metadaten verlangen einen Farbwert; er entspricht `--background` (globals.css).
-  themeColor: '#f7f9fb',
+  themeColor: '#fafbfd',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html
       lang="de"
-      className={`${display.variable} ${body.variable} ${mono.variable} h-full`}
+      className={`${schriftKlassen} h-full`}
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">

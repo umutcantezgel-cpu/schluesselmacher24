@@ -105,7 +105,8 @@ function messeAnsicht(konfig) {
     else if (max === G) h = (B - R) / d + 2;
     else h = (R - G) / d + 4;
     h *= 60;
-    return h >= 260 && h <= 330 && s > 0.25;
+    // A-005: Lila und Indigo umfassen HSL 230 bis 330 Grad (vorher 260 bis 330, nun strenger).
+    return h >= 230 && h <= 330 && s > 0.25;
   };
   const kanon = (name) => {
     let n = String(name).trim().replace(/^['"]|['"]$/g, '').trim();
@@ -122,6 +123,8 @@ function messeAnsicht(konfig) {
     let wert = String(roh ?? '').trim();
     if (!wert) return;
     if (/^[\d.]+\s+[\d.]+%\s+[\d.]+%(\s*\/\s*[\d.]+%?)?$/.test(wert)) wert = `hsl(${wert})`;
+    // Seit KERN 2.0 stehen die Tokens als OKLCH-Tripel „L C H“ (ohne Prozent) in den Variablen.
+    else if (/^[\d.]+\s+[\d.]+\s+-?[\d.]+(\s*\/\s*[\d.]+%?)?$/.test(wert)) wert = `oklch(${wert})`;
     const c = farbe(wert);
     if (c) tokenFarben.add(rgbSchl(c));
   };

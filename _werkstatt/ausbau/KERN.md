@@ -62,7 +62,8 @@ SCHLÜSSELMACHER24 ist der Online-Auftritt einer echten Schlüsselwerkstatt in W
 ## K-005 Designsystem mit Erweiterungen
 Werte als CSS-Variablen in `src/app/(site)/globals.css`, als Tailwind-Klassen in `tailwind.config.ts`. **Nie Einzelwerte im Code** (keine `text-[13px]`, `min-h-[44px]`, `#hex`).
 
-- **Farbraum und Abstufungsregel (seit 2.0, Auftrag 12):** Alle Farbtokens werden in OKLCH notiert (`--x: L C H`, Tailwind `oklch(var(--x) / <alpha-value>)`). Abstufung je Familie über die Helligkeit L in festen Stufen (soft 0,96 · muted 0,90 · Basis · strong Basis minus 0,12), Chroma höchstens 0,16 für Flächen, Farbton konstant je Familie. Kontrast nach Auftrag 12: Text mindestens 4,5:1, große Schrift, Bedienelemente und bedeutungstragende Grafik mindestens 3:1; Prüfung bleibt in `area-theme.test.ts` und `design-tokens.test.ts`. Kein Farbton zwischen 230° und 330° mit Chroma über 0,05 (S2, Lila und Indigo); die Bereichsfarbe Schließanlagen (bisher 292°) bekommt einen neuen Ton außerhalb dieser Spanne bei mindestens 30° Abstand zu den übrigen Bereichen.
+- **Farbraum und Abstufungsregel (seit 2.0, Auftrag 12, umgesetzt in E3-OPUS-02, A-013):** Alle Farbtokens stehen als OKLCH-Tripel in `globals.css` (`--x: L C H`), Tailwind setzt sie als `oklch(var(--x) / <alpha-value>)` ein (Tailwind 3.4 liest OKLCH nicht selbst; so bleiben Deckkraft-Varianten wie `border-warning/30` erhalten). Regel je Familie (`ABSTUFUNG` in `area-theme.ts`): `accent` L 0,605 (Grafik, ≥ 3:1) · `strong` L 0,485 (Text und Aktion, ≥ 4,5:1; so hell wie das Markenblau `--primary`) · `soft` L 0,96 · `muted` L 0,90; Buntheit höchstens 0,162 (accent, strong), 0,06 (muted), 0,022 (soft), immer im sRGB-Farbraum; ein Farbton je Familie. Funktionsfarben (`accent`, `success`, `warning`, `danger`) folgen derselben Regel (Text L 0,485, Fläche L 0,96). Neutrale Stufen bleiben die Werte des Bestands, exakt umgerechnet (Stahlblau H 255 bis 266, Buntheit unter 0,05). Das Markenblau `--primary` ist unverändert (`#145bb8`, Wortmarke, G9). Kein Lila und kein Indigo (S2): kein Ton zwischen 270° und 335° in OKLCH bei Buntheit über 0,05 und umgerechnet kein HSL-Ton zwischen 230° und 330° (A-005); geprüft für alle Tokens in `area-theme.test.ts`, im Slop-Scan ebenso streng.
+- **Bereichstöne (seit 2.0):** Sicherheitstechnik 33° (Signalrot) · Zylinder 65° (Kupfer) · Schlüssel nach Code 97° (Messing, gedecktes Ocker, kein Signalgelb) · Tür und Schließtechnik 130° (Moosgrün) · Schlüssel nach Vorlage 163° (Grün) · Elektronische Zutrittslösungen 196° (Petrol) · Schließanlagen 229° (Stahlblau) · Autoschlüssel 262° (Blau) · Service und Termin 2° (Himbeerrot); Grundfarbe 257,63° (Markenblau). Abstand benachbarter Töne 31° bis 33°, die Lücke 262° bis 2° ist das ausgeschlossene Lila-Fenster.
 - **Farben (Bestand, bleiben):**
   - Flächen: `background`, `surface`, `surface-muted`, `surface-sunken`, `surface-ink`.
   - Text: `foreground`, `foreground-muted`, `foreground-subtle`, `foreground-inverse`.
@@ -78,11 +79,11 @@ Werte als CSS-Variablen in `src/app/(site)/globals.css`, als Tailwind-Klassen in
 | Token | Mobil → Desktop | Zeilenhöhe | Einsatz |
 |---|---|---|---|
 | `text-caption` | 12 px | 1,4 | Bemaßung, Meta, Augenbrauen-Zeile (Großbuchstaben, Sperrung 0,12em) |
-| `text-small` | 15 → 15 px (seit 2.0) | 1,5 | Hilfstexte, Kartenmeta, Tabellen; nie für Pflichtinformation |
+| `text-small` | 15 px (seit 2.0) | 1,5 | Hilfstexte, Kartenmeta, Tabellen, Navigation; nie für Pflichtinformation |
 | `text-body` | 17 → 18 px (seit 2.0, Laien) | 1,6 | Fließtext |
 | `text-eingabe` | 17 px (seit 2.0) | 1,5 | Eingabefelder (kein Zoom auf iOS; nicht `text-input`, das ist die Rahmenfarbe) |
-| `text-lead` | 17 → 19 px | 1,55 | Einleitungen |
-| `text-title-sm` | 16 → 18 px | 1,35 | Karten- und Feldtitel |
+| `text-lead` | 18 → 20 px (seit 2.0, über dem Fließtext) | 1,55 | Einleitungen |
+| `text-title-sm` | 17 → 19 px (seit 2.0, nie kleiner als der Fließtext) | 1,35 | Karten- und Feldtitel |
 | `text-title` | 19 → 22 px | 1,3 | h3 |
 | `text-headline` | 26 → 36 px | 1,15, Sperrung −0,015em | h2 |
 | `text-display` | 34 → 60 px | 1,04, Sperrung −0,025em | h1 auf Erzählansichten |
@@ -96,7 +97,7 @@ Werte als CSS-Variablen in `src/app/(site)/globals.css`, als Tailwind-Klassen in
 - **Schatten:** `shadow-raised` (gehobene Karte beim Hover) und `shadow-overlay` (Menüs, Drawer); Farbe aus `--shadow-color`. Sonst keine Schatten.
 - **Ebenen (z-index):** `z-raised` 10 · `z-sticky` 30 · `z-header` 40 · `z-overlay` 50 · `z-drawer` 60 · `z-skip` 70.
 - **Touch-Ziele (seit 2.0):** Kacheln und Hauptaktionen `min-h-touch-lg` mindestens 48 px (Standard 52 px), sonst `min-h-touch` 44 px, nie unter 24 × 24 px (auch Telefon-Link im Kopf, axe target-size). Knopfgrößen: `sm` 40 px nur am Desktop neben anderen Bedienelementen, `md` 44 px, `lg` 52 px.
-- **Leuchten (seit 2.0, G-06, B-30):** Hover und Fokus einer Kachel oder Hauptaktion zeigen ein Leuchten als System: weicher Lichthof in der Bereichsfarbe (Token `--leuchten`, `box-shadow` mit Bereichsfarbe bei 0 Versatz, Unschärfe 24 px, Deckkraft 0,28) plus Rahmen in `area-strong`; im Fokus zusätzlich der Ring. Kein Leuchten als Flächenschmuck (S3); nur als Rückmeldung auf Hover, Fokus und Druck.
+- **Leuchten (seit 2.0, G-06, B-30):** Hover und Fokus einer Kachel oder Hauptaktion zeigen ein Leuchten als System: weicher Lichthof in der Bereichsfarbe (Token `--leuchten` in `globals.css`, Klasse `shadow-leuchten`: `box-shadow` mit Bereichsfarbe bei 0 Versatz, Unschärfe 24 px, Deckkraft 0,28) plus Rahmen in `area-strong`; im Fokus zusätzlich der Ring. Kein Leuchten als Flächenschmuck (S3); nur als Rückmeldung auf Hover, Fokus und Druck.
 - **Dauern und Kurven:** siehe K-007.
 - **Kein Dunkelmodus:** Das Projekt hat keinen (D-003). `darkMode` bleibt wirkungslos.
 - **Sperrung:** `tracking-label` (0,12em) für Großbuchstaben-Zeilen; sonst Tailwind-Standard (`tracking-tight` usw.).
@@ -111,7 +112,7 @@ Werte als CSS-Variablen in `src/app/(site)/globals.css`, als Tailwind-Klassen in
 | `text-xl` als Abschnitts- oder Kartentitel | `text-title` | |
 | h2 `text-2xl md:text-3xl` | `text-headline` | |
 | h1 `text-[1.75rem]`, `text-[2rem] md:text-5xl` | `text-display` (Erzählansicht) oder `text-headline` (Arbeitsansicht) | |
-| Eingabefelder `text-[15px]` | `text-eingabe` | 16 px, kein Zoom auf iOS |
+| Eingabefelder `text-[15px]` | `text-eingabe` | 17 px, kein Zoom auf iOS |
 | `tracking-[0.14em]`, `tracking-wider` bei Großbuchstaben | `tracking-label` | |
 | `min-h-[40px]` … `min-h-[48px]` | `min-h-touch` | |
 | `min-h-[52px]`, `min-h-[56px]` | `min-h-touch-lg` | |
@@ -130,8 +131,8 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 - **`cn()`:** `extendTailwindMerge` kennt alle neuen Gruppen (Größe, Schatten, Ebene, Dauer, Kurve, Mindesthöhe), damit `cn('text-small', 'text-foreground-muted')` beide Klassen behält.
 
 ## K-006 Typografie und Komposition
-- **Schriften (seit 2.0):** IBM Plex Sans für Überschriften (600/700) und Text (400/500), Zahlen, Maße und Kennungen in IBM Plex Mono (`font-mono`, `tabular-nums`). Inter entfällt (S1). Keine weiteren Schriften. Fließtext mobil mindestens 17 px, Zeilenlänge 60 bis 75 Zeichen, Silbentrennung auto mit `lang="de"`, Display am längsten Wort geprüft.
-- **Ersatz während des Ladens:** Hinter jeder Webschrift steht ein maßgleicher lokaler Ersatz (`SM24 Ersatz Plex Sans`, `… Plex Mono`, `… Wortmarke` in `globals.css`; Inter über next/font), damit beim Schrifttausch nichts springt. Wer Schriftschnitte oder die Wortmarke ändert, misst die Ausgleichswerte neu (Verfahren in D-050).
+- **Schriften (seit 2.0):** IBM Plex Sans für Überschriften (600/700) und Text (400/500), Zahlen, Maße und Kennungen in IBM Plex Mono (`font-mono`, `tabular-nums`). Inter entfällt (S1). Keine weiteren Schriften. Dateien in `src/fonts/` (OFL, `LIESMICH.md`): Plex Sans variabel (100 bis 700, latin 45,7 KB vorgeladen, latin-ext 31 KB nur bei Bedarf über `unicode-range`), Plex Mono 400/500/600 (je etwa 15 KB, nicht vorgeladen). Eingebunden über `next/font/local` in `src/fonts/schriften.ts`; Familienname gleich dem Namen der Konstante (`plexSans`, `plexMono`), sonst zeigt die CSS-Variable ins Leere. Variablen: `--font-sans` (Tailwind `font-sans` und `font-display`) und `--font-mono`. Fließtext mobil mindestens 17 px, Zeilenlänge 60 bis 75 Zeichen, Silbentrennung auto mit `lang="de"`, Display am längsten Wort geprüft.
+- **Ersatz während des Ladens:** Hinter jeder Webschrift steht ein maßgleicher lokaler Ersatz (`SM24 Ersatz Plex Sans`, `… Plex Mono`, `… Wortmarke` in `globals.css`), damit beim Schrifttausch nichts springt; next/font legt keinen eigenen Ersatz an (`adjustFontFallback: false`). Die variable Plex Sans hat dieselben Maße wie die statischen Schnitte (Oberlänge 1025, Unterlänge 275, mittlere Breite 533). Wer Schriftschnitte oder die Wortmarke ändert, misst die Ausgleichswerte neu (Verfahren in D-050).
 - **Hierarchie:** pro Ansicht genau eine h1. Abstand Display zu Fließtext mindestens Faktor 2,2. Fließtext höchstens `max-w-measure`. Silbentrennung `hyphens: auto` für Fließtext (`lang="de"` ist gesetzt), nie für Überschriften unter `text-headline`.
 - **Augenbrauen-Zeile (`.eyebrow`):** `text-caption`, Mono, Großbuchstaben, davor eine Bemaßungsmarke statt eines Strichs, optional eine laufende Nummer („01“). Darunter darf die Profillinie stehen.
 - **Raster:**
@@ -156,7 +157,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 - **Kleinregeln aus der Sichtabnahme E5-L-29 (seit 1.14, gelten für alle Ansichten):**
   - **Zeilenpfeil:** `GlyphPfeilRechts` in ganzen Link-Zeilen und -Karten steht in Ruhe in `text-foreground-muted`, bei Hover und Tastaturfokus der Zeile in `text-primary` (`group-hover:text-primary group-focus-visible:text-primary`), in Bereichskacheln in `text-area-strong`; Bewegung B-06 (`zeiger:group-hover:translate-x-1 duration-quick ease-standard`). Pfeile in Textlinks („Alle Leistungen“, Etiketten) behalten die Linkfarbe. Ist die Zeile ein Behälter mit überdeckendem Link (und etwa einem InfoTip), steht statt `group-focus-visible:` die Form `group-focus-within:`.
   - **Primärblau nur für Aktionen und Links:** Nicht klickbare laufende Nummern, Stationen, Zähler und Kennungen stehen in `text-foreground` (Augenbrauen behalten die Bereichsfarbe). Ausnahme: Die Abschnittsnummern im Ratgeber ruhen in `text-foreground-muted`, weil B-24 die aktive Nummer an der Leselinie in Primärfarbe hebt.
-  - **Schriftfeld:** Wortwerte in Inter `text-title-sm font-semibold`, Mono nur für Zahlen, Maße, Beträge und Kennungen.
+  - **Schriftfeld:** Wortwerte in Plex Sans `text-title-sm font-semibold`, Mono nur für Zahlen, Maße, Beträge und Kennungen.
   - **Zahl und Einheit untrennbar:** geschütztes Leerzeichen, im Quelltext als Escape `\u00a0` (in Template-Literalen `\xa0`), nie als `&nbsp;` in einer Zeichenkette.
   - **Kein Rahmen im Rahmen:** Auswahlen in einer Fläche als Liste (`Auswahlgruppe liste` + `OptionCard zeile`) oder als Karten direkt auf `bg-background`, nicht als Karten in einer Karte. Preise in Optionslisten als rechte Spalte (`OptionCard metaSpalte`).
   - **Leere Zustände von Warenkorb und Kasse:** gleicher Bau, Rohling-Zeichnung (`schluessel` mit `rohling: true`, `w-40`, `sm24-ruhig`, ohne Rahmen); die Einleitung steht im Kopf und bleibt in allen Zuständen sichtbar, mit zustandsneutralem Wortlaut (Textvorschlag). Ausblenden nach dem Laden verschiebt die Seite (CLS), deshalb kein `korb-leer:hidden` am Kopf (D-046). Ein Summenbegriff: „Gesamtbetrag“.
@@ -377,3 +378,4 @@ Jede Erklärung ist ein Halbsatz zum Einsetzen beim ersten Auftreten eines Begri
 - 1.18 · E7 · K-004 CSS im Dokument, K-006 Ersatzschriften während des Ladens. Grund: Messung Anlauf 1 (`E7-PRUEFER-01-ergebnis.md`, LCP 3/12) und Anlauf 2 (Paket E7-L-43, D-050).
 - 1.19 · E7 · K-007 an den Code angeglichen: B-07 (Keyframes Schublade, Schleier, Untermenü; Schließen ohne Ausgang), B-08 mit Keyframe-Namen, B-07/B-08/B-11 reduziert „sofort“ (globale Regel), B-13 nur am Code belegt, B-29 mit Eingabefeldern und Artikelfilter, Regel „kein Übergang ohne Dauer-Token“. Korrektur zu 1.17: zutritt-signal endet bei 1,60 s (≤ 1,6 s), nicht ≤ 1,55 s. Grund: Registerbefunde R-1 bis R-8 und N-1 der Prüfstufe C, Abschlussversuch 2 (`E7-PRUEFER-C-register.md`, Paket E7-L-44).
 - 2.0 · E2 · Ausbaulauf: Leitidee geschärft (offene Werkstatt, Linie vom Schlüssel über den Code zum Werkstück), Personas und Hauptaufgaben nach G-03, Prinzipien 6 und 7 (kein Wischen für Auswahl, ein Dauermotiv mit Pause), Stack 16.4, Schriften lokal ohne Inter (A-003), PDF (A-004), OKLCH mit Abstufungsregel, Fließtext 17 px, Tippziele 48 px, Leuchten B-30, Bewegungsschalter und Kennungen, B-30 bis B-36, neue Icons, Ton ohne KI-Spuren, Glossar Schließtechnik, K-013 Hub, K-014 Rubriken und Wege. Grund: Auftrag Abschnitte 4, 11, 12, 14; E0-Kundschafter 03; FACHWISSEN.md.
+- 2.1 · E3 · K-005 Abstufungsregel mit Zahlen (accent 0,605, strong 0,485 = Markenblau, soft 0,96, muted 0,90), neue Bereichstöne ohne Lila (Code Messing 97°, Schließanlagen Stahlblau 229°, Service Himbeerrot 2°, übrige neu verteilt mit 31° bis 33°), Funktionsfarben nach der Regel, Lila-Prüfung in OKLCH und HSL; K-006 Schriften als Dateien (Plex Sans variabel, Mono drei Schnitte), Familienname gleich Konstante, Ersatz nur aus globals.css; Typoskala `text-lead` 18 → 20 px und `text-title-sm` 17 → 19 px über dem Fließtext; Token `--leuchten` mit `shadow-leuchten`. Grund: Umsetzung E3-OPUS-02 (A-013).

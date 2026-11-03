@@ -6,7 +6,7 @@ import { ImageResponse } from 'next/og';
 import { profillinienPunkte } from '@/components/visual/profillinie';
 import { NAV_AREAS } from '@/lib/navigation';
 import type { AreaKey } from '@/lib/types';
-import { AREA_THEMES, DEFAULT_AREA_THEME } from '@/lib/visual/area-theme';
+import { AREA_THEMES, DEFAULT_AREA_THEME, oklchZuHex } from '@/lib/visual/area-theme';
 
 /**
  * Vorschaubild für geteilte Links (Kür K-06): eine Werkstattzeichnung im Format
@@ -33,9 +33,9 @@ export function tokensAusCss(css: string): Record<Token, string> {
   return ergebnis;
 }
 
-/** HSL-Tripel „H S% L%“ als Farbwert für das Bild. */
+/** OKLCH-Tripel „L C H“ der Tokens als Hex-Farbe für das Bild (Satori kennt kein OKLCH). */
 export function farbe(tripel: string): string {
-  return `hsl(${tripel})`;
+  return oklchZuHex(tripel);
 }
 
 export interface BildInhalt {

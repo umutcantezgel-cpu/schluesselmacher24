@@ -334,7 +334,7 @@ export default async function AutoschluesselHubPage() {
               <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted max-sm:tracking-label-eng xl:whitespace-nowrap">
                 {feld.label}
               </dt>
-              {/* Werte stehen unten auf einer Grundlinie; Zahlen in Mono, Wortwerte in Inter */}
+              {/* Werte stehen unten auf einer Grundlinie; Zahlen in Mono, Wortwerte in Plex Sans */}
               <dd
                 className={cn(
                   'mt-auto pt-1 text-title-sm font-semibold text-foreground',
