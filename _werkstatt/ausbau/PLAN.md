@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T08:29:21.702Z
+Stand: 2026-11-03T08:56:00.401Z
 
-Etappe 5/12 · Welle 3 · Pflicht 56/128 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 5/12 · Welle 4 · Pflicht 57/128 · Kür 0/10 · läuft 1 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -189,13 +189,13 @@ Geplante Tage: 1.43
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E4-OPUS-04 | Übergang Kachel zu Rubrik (gemeinsames Element, Rückfall, Fokus auf h1), Rubrikkopf, „So läuft Ihr Auftrag ab“ aus Daten | opus-5.5 | L | pflicht | 4 | committet | f0f4bc5 |
-| E4-OPUS-05 | Autoschlüssel-Weg auf Zielniveau: Fahrzeugwahl aus dem Katalog, nicht gefunden als Anfrage, Fahrzeugschein, Schlüsselbild, Anzahlung, Termin (Anzahlungs- und Zahlungsverhalten unverändert, mit Test, G9) | opus-5.5 | L | pflicht | 5 | offen |  |
+| E4-OPUS-05 | Autoschlüssel-Weg auf Zielniveau: Fahrzeugwahl aus dem Katalog, nicht gefunden als Anfrage, Fahrzeugschein, Schlüsselbild, Anzahlung, Termin (Anzahlungs- und Zahlungsverhalten unverändert, mit Test, G9) | opus-5.5 | L | pflicht | 5 | committet | 385ddf9 |
 
 ### Welle 4
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E4-TEXTER-01 | Texte Hub, Kacheln, Autoschlüssel-Rubrik nach Muster ohne KI-Spuren, Längen gemessen | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E4-TEXTER-01 | Texte Hub, Kacheln, Autoschlüssel-Rubrik nach Muster ohne KI-Spuren, Längen gemessen | haiku-5.5 | M | pflicht | 3 | läuft |  |
 
 ### Welle 5
 
