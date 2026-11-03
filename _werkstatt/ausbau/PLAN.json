@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T19:27:31.662Z",
+ "stand": "2026-11-03T22:36:00+00:00",
  "etappen": [
   {
    "kennung": "E0",
@@ -2521,7 +2521,9 @@
     "src/app/(site)/autoschluessel/anfrage/",
     "src/components/flow/flow-shell.tsx",
     "src/components/forms/photo-upload.tsx",
-    "src/components/autoschluessel/optionen.ts"
+    "src/components/autoschluessel/optionen.ts",
+    "content/seo.json",
+    "src/lib/data/defaults/content.ts"
    ],
    "abhaengigkeiten": [
     "E4-JURY-02",
@@ -2539,10 +2541,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "97b4d7d",
    "massstab": null,
    "muster": null
   },
