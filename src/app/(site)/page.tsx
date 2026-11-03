@@ -270,7 +270,7 @@ export default async function HomePage() {
                   nummer="02"
                   eyebrow="Schwerpunkt Autoschlüssel"
                   title="So läuft Ihr Autoschlüssel-Auftrag ab"
-                  lead="Fünf Schritte, mobil bedienbar. Sie geben nur die Daten an, die für Ihr Fahrzeug gebraucht werden."
+                  lead="Vom Fahrzeug bis zum Termin, mobil bedienbar. Sie geben nur die Daten an, die für Ihr Fahrzeug gebraucht werden."
                   profillinie
                 />
                 {/* Telefon: Knöpfe untereinander, der sekundäre Weg als Textlink; ab 640 px nebeneinander */}
