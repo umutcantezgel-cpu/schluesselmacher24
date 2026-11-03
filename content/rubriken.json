@@ -3,7 +3,7 @@
     "id": "autoschluessel",
     "name": "Autoschlüssel",
     "laienname": "Autoschlüssel",
-    "erklaerung": "Nachmachen, programmieren oder ersetzen, mit Termin in unserer Werkstatt in Wetzlar.",
+    "erklaerung": "Nachmachen, programmieren oder ersetzen in unserer Werkstatt in Wetzlar, mit Preis oder Preisrahmen vor dem Termin.",
     "icon": "autoschluessel",
     "ziel": "/autoschluessel",
     "ablauf": [
@@ -64,7 +64,7 @@
         "icon": "foto-hochladen"
       },
       {
-        "titel": "Transponder klären",
+        "titel": "Chip im Schlüssel klären",
         "text": "Ja, nein oder weiß nicht: Ein Motorrad mit Wegfahrsperre startet ohne Chip nicht.",
         "icon": "transponder"
       },
@@ -90,7 +90,7 @@
     "id": "autoschluessel-gehaeuse",
     "name": "Autoschlüsselgehäuse",
     "laienname": "Schlüsselgehäuse",
-    "erklaerung": "Neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt.",
+    "erklaerung": "Ein neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt, und Sie erhalten den Preis mit Zahlungslink.",
     "icon": "schluesselgehaeuse",
     "ziel": "/autoschluessel-gehaeuse",
     "ablauf": [
@@ -131,7 +131,7 @@
     "id": "schluessel-nach-code",
     "name": "Schlüssel nach Code",
     "laienname": "Schlüssel nach Code",
-    "erklaerung": "Für Briefkasten, Möbel und mehr: Code eingeben, bestellen, per Post erhalten.",
+    "erklaerung": "Für Briefkasten, Möbel und mehr: Sie geben den Code ein, bestellen und bezahlen, dann kommt der Schlüssel per Post.",
     "icon": "schluessel-nach-code",
     "ziel": "/schluessel-nach-code",
     "ablauf": [
@@ -169,7 +169,7 @@
     "id": "schluessel-nach-foto",
     "name": "Schlüssel nach Foto",
     "laienname": "Schlüssel nach Foto",
-    "erklaerung": "Fotos hochladen, wir prüfen, ob sich der Schlüssel danach fertigen lässt.",
+    "erklaerung": "Sie laden Fotos hoch und wir prüfen sie; passt alles, erhalten Sie Preis und Zahlungslink.",
     "icon": "schluessel-nach-vorlage",
     "ziel": "/schluessel-nach-vorlage",
     "ablauf": [
@@ -209,7 +209,7 @@
     "id": "schluessel-einschicken",
     "name": "Schlüssel einschicken",
     "laienname": "Schlüssel einschicken",
-    "erklaerung": "Ihren Schlüssel per Post an die Werkstatt schicken, ohne Anfahrt, aus ganz Deutschland.",
+    "erklaerung": "Per Post aus ganz Deutschland an die Werkstatt, ohne Anfahrt, nur nach Freigabe der Fotoanfrage; Sie erhalten ein Angebot mit Zahlungslink.",
     "icon": "versand-paket",
     "ziel": "/schluessel-einschicken",
     "ablauf": [
@@ -248,7 +248,7 @@
     "name": "Sperrschließung",
     "laienname": "Sperrschließung",
     "zusatz": "ein Schlüssel für alle Türen",
-    "erklaerung": "Mehrere gleichschließende Zylinder, ein Schlüssel öffnet alle Türen.",
+    "erklaerung": "Mehrere gleichschließende Zylinder, ein Schlüssel öffnet alle Türen, und Sie sehen den Gesamtpreis vor dem Bezahlen.",
     "icon": "gleichschliessende-zylinder",
     "ziel": "/gleichschliessende-zylinder",
     "ablauf": [
@@ -259,7 +259,7 @@
       },
       {
         "titel": "Maße prüfen",
-        "text": "Mit der Messhilfe Maß A und Maß B kontrollieren.",
+        "text": "Mit der Messhilfe prüfen Sie, wie weit der Zylinder nach außen (Maß A) und nach innen (Maß B) reicht.",
         "icon": "zylinder-mass"
       },
       {
@@ -287,7 +287,7 @@
     "name": "Schließanlage",
     "laienname": "Schließanlage",
     "zusatz": "jedem Schlüssel seine Türen",
-    "erklaerung": "Für Häuser und Firmen: Jeder Schlüssel öffnet genau die Türen, für die er gedacht ist.",
+    "erklaerung": "Für Häuser und Firmen: Jeder Schlüssel öffnet nur die Türen, für die er gedacht ist, und Sie bestellen mit Preis oder fragen ein Angebot an.",
     "icon": "schliessanlagen",
     "ziel": "/schliessanlagen",
     "ablauf": [
@@ -325,7 +325,7 @@
     "id": "elektronische-schliesssysteme",
     "name": "Elektronische Schließsysteme",
     "laienname": "Elektronisch schließen",
-    "erklaerung": "Öffnen mit Chip, Karte oder App: wir beraten und machen ein Angebot.",
+    "erklaerung": "Öffnen mit Chip, Karte oder App: Nach der Beratung erhalten Sie ein Angebot mit allen Kosten.",
     "icon": "elektronische-zutrittsloesungen",
     "ziel": "/elektronische-zutrittsloesungen",
     "ablauf": [
@@ -358,7 +358,7 @@
     "id": "sicherheitstechnik",
     "name": "Sicherheitstechnik",
     "laienname": "Sicherheitstechnik",
-    "erklaerung": "Einbruchschutz, Alarm und Video: Beratung und Angebot für Ihr Objekt.",
+    "erklaerung": "Einbruchschutz, Alarm und Video für Ihr Objekt, mit Beratung und einem Angebot, das alle Kosten nennt.",
     "icon": "sicherheitstechnik",
     "ziel": "/sicherheitstechnik",
     "ablauf": [
@@ -391,7 +391,7 @@
     "id": "schluesseldienst-vor-ort",
     "name": "Schlüsseldienst vor Ort",
     "laienname": "Schlüsseldienst vor Ort",
-    "erklaerung": "Einsatz an Ihrer Tür im Einsatzgebiet der Werkstatt, anderswo über Partner, wo es sie gibt.",
+    "erklaerung": "Einsatz an Ihrer Tür im Einsatzgebiet der Werkstatt, anderswo über Partner; vor der Terminbestätigung erfahren Sie, was er kostet.",
     "icon": "vor-ort",
     "ziel": "/service-und-termin/vor-ort",
     "ablauf": [
@@ -407,7 +407,7 @@
       },
       {
         "titel": "Termin",
-        "text": "Sie erhalten einen Termin mit Preisrahmen.",
+        "text": "Vor der Terminbestätigung erfahren Sie, was der Einsatz kostet.",
         "icon": "termin"
       }
     ],
@@ -424,7 +424,7 @@
     "id": "beratung",
     "name": "Beratung",
     "laienname": "Beratung",
-    "erklaerung": "Für alles, was in keine Rubrik passt: Anliegen schildern, wir rufen zurück.",
+    "erklaerung": "Für alle anderen Anliegen: Sie schildern es kurz, wir rufen zurück und sagen Ihnen, wie es weitergeht und was es kostet.",
     "icon": "beratung-telefon",
     "ziel": "/beratung",
     "ablauf": [
@@ -457,7 +457,7 @@
     "id": "transponder-kopie",
     "name": "Transponder kopieren",
     "laienname": "Transponder kopieren",
-    "erklaerung": "Chip im Autoschlüssel in der Werkstatt kopieren, nur für bestätigte Fahrzeuge.",
+    "erklaerung": "Chip im Autoschlüssel in der Werkstatt kopieren, nur für bestätigte Fahrzeuge; Sie bezahlen und schicken den Schlüssel mit Begleitschein.",
     "icon": "transponder-kopie",
     "ziel": "/transponder-kopie",
     "ablauf": [
@@ -519,8 +519,8 @@
   {
     "id": "tuer-und-schliesstechnik",
     "name": "Türen und Schließtechnik",
-    "laienname": "Türen und Schließtechnik",
-    "erklaerung": "Schlösser, Beschläge und Türschließer: Austausch, Reparatur und Beratung.",
+    "laienname": "Türen und Schlösser",
+    "erklaerung": "Schlösser, Beschläge und Türschließer, ob Austausch, Reparatur oder Beratung; das Angebot nennt alle Kosten.",
     "icon": "tuer-und-schliesstechnik",
     "ziel": "/tuer-und-schliesstechnik",
     "ablauf": [
