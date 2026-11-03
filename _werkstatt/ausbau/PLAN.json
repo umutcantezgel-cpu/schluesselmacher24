@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T10:36:21+00:00",
+ "stand": "2026-11-03T10:55:32+00:00",
  "etappen": [
   {
    "kennung": "E0",
@@ -2247,7 +2247,7 @@
    "stufe": 1,
    "kostenklasse": "M",
    "schreibrechte": [
-    "_werkstatt/ausbau/erhebung/E4-blind-startseite.md",
+    "_werkstatt/ausbau/daten/E4-blind-startseite.md",
     "_werkstatt/ausbau/daten/E4-blind-schluessel.md",
     "_werkstatt/ausbau/berichte/E4-DOKUMENTAR-01.md"
    ],

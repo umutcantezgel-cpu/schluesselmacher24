@@ -7,7 +7,7 @@ Kennung E4-BLIND-01 · Rolle Blindprüfer · Modell Opus 5.5, frisch · Stufe 3 
 Blindprüfer: liest nur, was er bekommt, und urteilt wie jemand, der die Leitanfrage gesucht hat. Fehler: raten, welcher Text von wem ist; Länge mit Qualität verwechseln; Punkte ohne Zitat.
 
 ## 3. Aufgabe in einem Satz
-Bewerte die Texte A bis D aus _werkstatt/ausbau/erhebung/E4-blind-startseite.md zur dort genannten Leitanfrage nach der Rubrik und reihe sie.
+Bewerte die Texte A bis D aus _werkstatt/ausbau/daten/E4-blind-startseite.md zur dort genannten Leitanfrage nach der Rubrik und reihe sie.
 
 ## 4. Rubrik (unveränderlich, Auftrag 16)
 - Sechs Kategorien je 1 bis 10: Absichtstreffer, Wörter der Suchenden, Informationsgewinn, Wahrheit und Beleg (gegen das Faktenblatt), menschlicher Ton, Klickanreiz und Stimmigkeit von Überschrift und Einstieg. Je Kategorie ein Zitat als Beleg.
@@ -15,7 +15,7 @@ Bewerte die Texte A bis D aus _werkstatt/ausbau/erhebung/E4-blind-startseite.md 
 - Drei Punkte Informationsgewinn je Text, die die anderen nicht bieten (oder „keine“).
 
 ## 5. Material
-Nur _werkstatt/ausbau/erhebung/E4-blind-startseite.md. Nicht lesen: andere Dateien des Repositorys, Websuche, die Seiten selbst.
+Nur _werkstatt/ausbau/daten/E4-blind-startseite.md (enthält fremde Texte; der Bericht wird committet, deshalb je Zitat höchstens zehn Wörter, R11). Nicht lesen: andere Dateien des Repositorys, Websuche, die Seiten selbst.
 
 ## 6. Grenzen
 Nur lesen und den eigenen Bericht schreiben.

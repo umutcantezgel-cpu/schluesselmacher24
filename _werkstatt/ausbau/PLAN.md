@@ -1,6 +1,6 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T10:36:21+00:00
+Stand: 2026-11-03T10:55:32+00:00
 
 Etappe 5/12 · Welle 5 · Pflicht 60/131 · Kür 0/10 · läuft 1 · blockiert 0
 
