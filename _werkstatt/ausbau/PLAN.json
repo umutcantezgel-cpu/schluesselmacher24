@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T02:40:34.839Z",
+ "stand": "2026-11-03T02:46:39.980Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -1109,10 +1109,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "48baa5d",
    "massstab": "_werkstatt/ausbau/pakete/E1-AUTOR-01.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },
@@ -1422,7 +1422,7 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "läuft",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -1779,15 +1779,14 @@
    "kennung": "E3-DATENPFLEGER-02",
    "titel": "Kartendaten Hessen aufbereiten (Kreise, Gemeinden, Lizenzvermerk) als vereinfachte Formen",
    "etappe": "E3",
-   "welle": 2,
+   "welle": 1,
    "rolle": "Datenpfleger",
    "modell": "haiku-5.5",
    "stufe": 2,
    "kostenklasse": "M",
    "schreibrechte": [
     "scripts/karte-aufbereiten.mjs",
-    "content/karte/hessen.json",
-    "content/karte/LIZENZ.md"
+    "content/karte/"
    ],
    "abhaengigkeiten": [
     "E2-PRUEFER-01",
@@ -1801,7 +1800,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "läuft",
    "grund": null,
    "versuche": 0,
    "commit": null,
