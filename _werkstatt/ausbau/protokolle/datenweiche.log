@@ -306,3 +306,146 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-03T03:41:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
 2026-11-03T03:41:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
 2026-11-03T03:42:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run scripts/fahrzeuge-import.test.ts src/lib/fahrzeuge
+2026-11-03T03:45:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm audit --omit=dev --json
+2026-11-03T03:46:06+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view next dist-tags --json
+2026-11-03T03:46:08+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view next@16.4 version --json
+2026-11-03T03:46:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view react dist-tags --json
+2026-11-03T03:46:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view react@19.3 version --json
+2026-11-03T03:46:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view react@19.2 version --json
+2026-11-03T03:46:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view eslint-config-next dist-tags --json
+2026-11-03T03:46:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view eslint-config-next@16.4 version --json
+2026-11-03T03:46:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view eslint-config-next@16.2 version --json
+2026-11-03T03:46:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view stripe@22 version --json
+2026-11-03T03:46:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view zod@4 version --json
+2026-11-03T03:46:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view payload@3.90 version --json
+2026-11-03T03:46:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view payload@3.9 version --json
+2026-11-03T03:46:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/richtext-lexical@3.90 version --json
+2026-11-03T03:46:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view tailwindcss@3.4 version --json
+2026-11-03T03:46:16+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view vitest@2.1 version --json
+2026-11-03T03:46:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view typescript@5.9 version --json
+2026-11-03T03:46:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view eslint@9.39 version --json
+2026-11-03T03:46:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view sharp@0.35 version --json
+2026-11-03T03:46:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view happy-dom@21 version --json
+2026-11-03T03:46:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view happy-dom@20 version --json
+2026-11-03T03:46:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view deepmerge@4 version --json
+2026-11-03T03:46:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view esbuild@0.25 version --json
+2026-11-03T03:46:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view drizzle-kit@0.31 version --json
+2026-11-03T03:46:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm outdated --json
+2026-11-03T03:47:05+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm ls happy-dom deepmerge esbuild drizzle-kit @lexical/headless --all --omit=dev
+2026-11-03T03:47:16+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view payload@3.92.1 dependencies --json
+2026-11-03T03:47:16+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/db-postgres@3.92.1 dependencies --json
+2026-11-03T03:47:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/richtext-lexical@3.92.1 dependencies --json
+2026-11-03T03:47:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/drizzle@3.92.1 dependencies --json
+2026-11-03T03:47:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/storage-s3@3.92.1 dependencies --json
+2026-11-03T03:47:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/email-resend@3.92.1 dependencies --json
+2026-11-03T03:47:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view deepmerge version --json
+2026-11-03T03:47:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view drizzle-kit@0.31.8 dependencies --json
+2026-11-03T03:47:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view drizzle-kit@0.31.9 dependencies --json
+2026-11-03T03:47:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view drizzle-kit@0.31.10 dependencies --json
+2026-11-03T03:47:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view drizzle-kit@0.31.11 dependencies --json
+2026-11-03T03:47:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @lexical/headless@0.52 version --json
+2026-11-03T03:47:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @lexical/headless@0.53 version --json
+2026-11-03T03:47:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view happy-dom time --json
+2026-11-03T03:48:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --version
+2026-11-03T03:48:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm --version
+2026-11-03T03:48:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm audit --omit=dev --json
+2026-11-03T03:48:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm outdated --json
+2026-11-03T03:48:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm ls --all
+2026-11-03T03:48:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T03:48:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T03:49:05+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T03:49:28+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T03:50:35+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T03:51:06+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T03:51:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view react time --json
+2026-11-03T03:51:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view react@19.3.1 deprecated
+2026-11-03T03:51:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view react-dom time --json
+2026-11-03T03:51:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view react-dom@19.3.1 deprecated
+2026-11-03T03:51:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @types/react time --json
+2026-11-03T03:51:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @types/react@19.3.0 deprecated
+2026-11-03T03:51:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view next time --json
+2026-11-03T03:51:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view next@16.4.4 deprecated
+2026-11-03T03:51:26+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view eslint-config-next time --json
+2026-11-03T03:51:27+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view eslint-config-next@16.4.4 deprecated
+2026-11-03T03:51:27+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view payload time --json
+2026-11-03T03:51:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view payload@3.92.1 deprecated
+2026-11-03T03:51:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/ui time --json
+2026-11-03T03:51:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/ui@3.92.1 deprecated
+2026-11-03T03:51:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/storage-s3 time --json
+2026-11-03T03:51:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/storage-s3@3.92.1 deprecated
+2026-11-03T03:51:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @hookform/resolvers time --json
+2026-11-03T03:51:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @hookform/resolvers@5.9.2 deprecated
+2026-11-03T03:51:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view react-hook-form time --json
+2026-11-03T03:51:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view react-hook-form@7.91.0 deprecated
+2026-11-03T03:51:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view framer-motion time --json
+2026-11-03T03:51:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view framer-motion@12.43.0 deprecated
+2026-11-03T03:51:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view schema-dts time --json
+2026-11-03T03:51:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view schema-dts@2.1.0 deprecated
+2026-11-03T03:51:35+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view tailwind-merge time --json
+2026-11-03T03:51:35+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view tailwind-merge@3.7.0 deprecated
+2026-11-03T03:51:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view zustand time --json
+2026-11-03T03:51:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view zustand@5.0.16 deprecated
+2026-11-03T03:51:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view autoprefixer time --json
+2026-11-03T03:51:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view autoprefixer@10.6.2 deprecated
+2026-11-03T03:51:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view postcss time --json
+2026-11-03T03:51:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view postcss@8.5.32 deprecated
+2026-11-03T03:51:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @types/node time --json
+2026-11-03T03:51:39+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @types/node@20.19.43 deprecated
+2026-11-03T03:52:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install react@19.3.1 react-dom@19.3.1 --save-exact
+2026-11-03T03:52:03+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --save-dev @types/react@^19.3.0 @types/react-dom@^19.3.0
+2026-11-03T03:52:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install react@19.3.1 react-dom@19.3.1 --save-exact
+2026-11-03T03:52:26+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --save-dev @types/react@^19.3.0 @types/react-dom@^19.3.0
+2026-11-03T03:52:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T03:52:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T03:53:16+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T03:53:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install next@^16.4.4
+2026-11-03T03:54:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --save-dev --save-exact eslint-config-next@16.4.4
+2026-11-03T03:54:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T03:54:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T03:55:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T03:55:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T03:56:58+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T03:57:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install payload@^3.92.1 @payloadcms/db-postgres@^3.92.1 @payloadcms/next@^3.92.1 @payloadcms/richtext-lexical@^3.92.1 @payloadcms/translations@^3.92.1 @payloadcms/ui@^3.92.1
+2026-11-03T03:57:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --save-exact @payloadcms/email-resend@3.92.1 @payloadcms/storage-s3@3.92.1
+2026-11-03T03:57:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T03:57:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T03:58:03+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T03:58:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install payload@^3.92.1 @payloadcms/db-postgres@^3.92.1 @payloadcms/next@^3.92.1 @payloadcms/richtext-lexical@^3.92.1 @payloadcms/translations@^3.92.1 @payloadcms/ui@^3.92.1 @payloadcms/email-resend@3.92.1 @payloadcms/storage-s3@3.92.1
+2026-11-03T03:59:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/plugin-cloud-storage@3.92.1 peerDependencies dependencies --json
+2026-11-03T03:59:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/graphql@3.92.1 peerDependencies dependencies --json
+2026-11-03T03:59:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/drizzle@3.92.1 peerDependencies dependencies --json
+2026-11-03T03:59:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/storage-s3@3.92.1 peerDependencies dependencies --json
+2026-11-03T03:59:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/email-resend@3.92.1 peerDependencies dependencies --json
+2026-11-03T03:59:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/translations@3.92.1 peerDependencies dependencies --json
+2026-11-03T03:59:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --dry-run payload@^3.92.1 @payloadcms/db-postgres@^3.92.1
+2026-11-03T03:59:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --dry-run payload@^3.92.1 @payloadcms/db-postgres@^3.92.1 @payloadcms/next@^3.92.1 @payloadcms/richtext-lexical@^3.92.1 @payloadcms/translations@^3.92.1 @payloadcms/ui@^3.92.1
+2026-11-03T03:59:49+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --dry-run @payloadcms/email-resend@3.92.1 @payloadcms/storage-s3@3.92.1
+2026-11-03T03:59:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm explain payload
+2026-11-03T04:00:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm explain payload
+2026-11-03T04:00:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --dry-run payload@^3.92.1 @payloadcms/db-postgres@^3.92.1 @payloadcms/next@^3.92.1 @payloadcms/richtext-lexical@^3.92.1 @payloadcms/translations@^3.92.1 @payloadcms/ui@^3.92.1 @payloadcms/email-resend@3.92.1 @payloadcms/storage-s3@3.92.1
+2026-11-03T04:00:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --dry-run payload@^3.92.1 @payloadcms/db-postgres@^3.92.1 @payloadcms/next@^3.92.1 @payloadcms/richtext-lexical@^3.92.1 @payloadcms/translations@^3.92.1 @payloadcms/ui@^3.92.1 @payloadcms/email-resend@3.92.1
+2026-11-03T04:00:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --dry-run payload@^3.92.1 @payloadcms/db-postgres@^3.92.1 @payloadcms/next@^3.92.1 @payloadcms/richtext-lexical@^3.92.1 @payloadcms/translations@^3.92.1 @payloadcms/ui@^3.92.1 @payloadcms/storage-s3@3.92.1
+2026-11-03T04:00:26+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --dry-run payload@^3.92.1 @payloadcms/ui@^3.92.1 @payloadcms/translations@^3.92.1 @payloadcms/email-resend@3.92.1 @payloadcms/storage-s3@3.92.1
+2026-11-03T04:00:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --dry-run @payloadcms/db-postgres@^3.92.1 @payloadcms/next@^3.92.1 @payloadcms/richtext-lexical@^3.92.1 @payloadcms/translations@^3.92.1 @payloadcms/ui@^3.92.1 @payloadcms/email-resend@3.92.1 @payloadcms/storage-s3@3.92.1
+2026-11-03T04:00:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --dry-run payload@3.92.1 @payloadcms/db-postgres@3.92.1 @payloadcms/next@3.92.1 @payloadcms/richtext-lexical@3.92.1 @payloadcms/translations@3.92.1 @payloadcms/ui@3.92.1 @payloadcms/email-resend@3.92.1 @payloadcms/storage-s3@3.92.1
+2026-11-03T04:00:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view payload@3.92.1 peerDependencies --json
+2026-11-03T04:00:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/db-postgres@3.92.1 peerDependencies --json
+2026-11-03T04:00:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/drizzle@3.92.1 peerDependencies --json
+2026-11-03T04:00:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/next@3.92.1 peerDependencies --json
+2026-11-03T04:00:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/richtext-lexical@3.92.1 peerDependencies --json
+2026-11-03T04:00:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/translations@3.92.1 peerDependencies --json
+2026-11-03T04:00:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/ui@3.92.1 peerDependencies --json
+2026-11-03T04:00:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/email-resend@3.92.1 peerDependencies --json
+2026-11-03T04:00:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/storage-s3@3.92.1 peerDependencies --json
+2026-11-03T04:00:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/plugin-cloud-storage@3.92.1 peerDependencies --json
+2026-11-03T04:00:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm view @payloadcms/graphql@3.92.1 peerDependencies --json
+2026-11-03T04:01:06+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --dry-run payload@3.92.1
+2026-11-03T04:01:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --dry-run payload@3.92.1 @payloadcms/db-postgres@3.92.1 @payloadcms/drizzle@3.92.1 @payloadcms/email-resend@3.92.1 @payloadcms/graphql@3.92.1 @payloadcms/next@3.92.1 @payloadcms/plugin-cloud-storage@3.92.1 @payloadcms/richtext-lexical@3.92.1 @payloadcms/storage-s3@3.92.1 @payloadcms/ui@3.92.1 @payloadcms/translations@3.92.1
+2026-11-03T04:01:35+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --dry-run --legacy-peer-deps payload@^3.92.1 @payloadcms/db-postgres@^3.92.1 @payloadcms/next@^3.92.1 @payloadcms/richtext-lexical@^3.92.1 @payloadcms/translations@^3.92.1 @payloadcms/ui@^3.92.1 @payloadcms/email-resend@3.92.1 @payloadcms/storage-s3@3.92.1
+2026-11-03T04:01:55+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install --legacy-peer-deps payload@^3.92.1 @payloadcms/db-postgres@^3.92.1 @payloadcms/next@^3.92.1 @payloadcms/richtext-lexical@^3.92.1 @payloadcms/translations@^3.92.1 @payloadcms/ui@^3.92.1 @payloadcms/email-resend@3.92.1 @payloadcms/storage-s3@3.92.1
+2026-11-03T04:02:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install
+2026-11-03T04:02:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm pkg set dependencies.@payloadcms/email-resend=3.92.1 dependencies.@payloadcms/storage-s3=3.92.1
+2026-11-03T04:02:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm install
+2026-11-03T04:02:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T04:02:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T04:03:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
