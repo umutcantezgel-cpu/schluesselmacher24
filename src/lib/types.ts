@@ -895,6 +895,61 @@ export interface ServicePage {
   active: boolean;
 }
 
+/* ---------- Rubriken (Intent-Hub, Navigation, Abläufe) ------------------- */
+
+/** Wie ein Weg endet (KERN K-014): Kasse, Anfrage, Termin mit Anzahlung, Angebot mit Zahlungslink oder Beratung. */
+export type RubrikAbschluss = 'kasse' | 'anfrage' | 'termin-anzahlung' | 'angebot-zahlungslink' | 'beratung';
+
+/** Sichtbarkeit: live im Hub und in der Navigation, später (vorbereitet, unsichtbar) oder aus. */
+export type RubrikStatus = 'live' | 'spaeter' | 'aus';
+
+/** Gruppe der Hauptnavigation nach G-08. */
+export type RubrikNavigation = 'autoschluessel' | 'code' | 'sperrschliessung' | 'schliessanlagen' | 'mehr';
+
+/** Berechtigungsnachweis eines Wegs (R13). */
+export type RubrikNachweis = 'keiner' | 'fahrzeugschein' | 'sicherungskarte';
+
+/** Ein Schritt in „So läuft Ihr Auftrag ab“ (G-10). */
+export interface RubrikSchritt {
+  titel: string;
+  text: string;
+  /** Schlüssel eines Fach-Icons oder einer Glyphe (KERN K-008). */
+  icon: string;
+}
+
+/**
+ * Eine Rubrik: Einstieg im Hub, Eintrag in der Navigation, Ablauf und Abschluss
+ * eines Wegs (G-01 bis G-03, G-10, G-11, G-38). Eine neue Rubrik entsteht als
+ * Datensatz, ohne Umbau der Seite.
+ */
+export interface Rubrik {
+  /** Kennung, zugleich Schlüssel in Navigation und Messung. */
+  id: string;
+  /** Fachlicher Name, etwa für Seitentitel. */
+  name: string;
+  /** Name auf der Kachel, höchstens zwei kurze Zeilen. */
+  laienname: string;
+  /** Laienerklärung, die immer mit dem Namen erscheint (G-09), etwa „ein Schlüssel für alle Türen“. */
+  zusatz?: string;
+  /** Ein Satz, was hier passiert (ab Tablet auf der Kachel, auf der Rubrikseite immer). */
+  erklaerung: string;
+  icon: string;
+  /** Ziel des Tipps auf die Kachel. */
+  ziel: string;
+  ablauf: RubrikSchritt[];
+  abschluss: RubrikAbschluss;
+  /** Upload-Kategorien, die der Weg verlangt (serverseitig geprüft, E3-OPUS-09). */
+  pflichtUploads: string[];
+  nachweis: RubrikNachweis;
+  status: RubrikStatus;
+  /** Reihenfolge im Hub und in der Navigation (kleiner zuerst). */
+  reihenfolge: number;
+  navigation: RubrikNavigation;
+  imHub: boolean;
+  /** Bereich für Farbe und Vorgänge. */
+  bereich: AreaKey;
+}
+
 /* ---------- Konfigurator-Definitionen ----------------------------------- */
 
 /** Erklärung der Schließanlagen-Systeme, für Kunden ohne Vorwissen. */

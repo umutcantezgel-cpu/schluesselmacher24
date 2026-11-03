@@ -76,6 +76,7 @@ export interface Config {
     preisregeln: Preisregeln;
     preisgruppen: Preisgruppen;
     sperrtage: Sperrtage;
+    rubriken: Rubriken;
     seiten: Seiten;
     leistungsseiten: Leistungsseiten;
     ratgeber: Ratgeber;
@@ -102,6 +103,7 @@ export interface Config {
     preisregeln: PreisregelnSelect<false> | PreisregelnSelect<true>;
     preisgruppen: PreisgruppenSelect<false> | PreisgruppenSelect<true>;
     sperrtage: SperrtageSelect<false> | SperrtageSelect<true>;
+    rubriken: RubrikenSelect<false> | RubrikenSelect<true>;
     seiten: SeitenSelect<false> | SeitenSelect<true>;
     leistungsseiten: LeistungsseitenSelect<false> | LeistungsseitenSelect<true>;
     ratgeber: RatgeberSelect<false> | RatgeberSelect<true>;
@@ -845,6 +847,186 @@ export interface Sperrtage {
   createdAt: string;
 }
 /**
+ * Kacheln auf der Startseite („Wobei können wir Ihnen helfen?“) und Einträge in der Navigation. Reihenfolge: kleinere Zahl zuerst.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rubriken".
+ */
+export interface Rubriken {
+  id: number;
+  name: string;
+  /**
+   * Höchstens zwei kurze Zeilen.
+   */
+  laienname: string;
+  /**
+   * Etwa „ein Schlüssel für alle Türen“. Leer lassen, wenn der Name genügt.
+   */
+  zusatz?: string | null;
+  erklaerung: string;
+  icon:
+    | 'alarmtechnik'
+    | 'anzahlung'
+    | 'aussenhautsicherung'
+    | 'autoschluessel'
+    | 'beratung-telefon'
+    | 'datenschutz'
+    | 'einsteckschloss'
+    | 'elektronische-zutrittsloesungen'
+    | 'fahrzeugmarke'
+    | 'fahrzeugoeffnung'
+    | 'foto-hochladen'
+    | 'funkschluessel'
+    | 'gleichschliessende-zylinder'
+    | 'halbzylinder'
+    | 'klappschluessel'
+    | 'knaufzylinder'
+    | 'kombinierte-konzepte'
+    | 'lieferung'
+    | 'mechanischer-schutz'
+    | 'mehrfachverriegelung'
+    | 'montage'
+    | 'nachweis'
+    | 'panik-alarmtaster'
+    | 'panik-fluchttuer'
+    | 'profilzylinder'
+    | 'pruefung'
+    | 'reparatur-austausch'
+    | 'rueckgabe'
+    | 'schliessanlagen'
+    | 'schluessel-kopieren'
+    | 'schluessel-nach-code'
+    | 'schluessel-nach-vorlage'
+    | 'schluessel-programmieren'
+    | 'schluesselbart-fraesen'
+    | 'schutzbeschlag'
+    | 'service-und-termin'
+    | 'sicherheitscheck'
+    | 'sicherheitstechnik'
+    | 'sicherungskarte'
+    | 'smart-key'
+    | 'smarte-funktionen'
+    | 'standort'
+    | 'technische-beratung'
+    | 'termin'
+    | 'transponder'
+    | 'tuer-und-schliesstechnik'
+    | 'tuerschliesser'
+    | 'tuerzusatzschloss'
+    | 'versand-paket'
+    | 'videoueberwachung'
+    | 'warenkorb'
+    | 'werkstatt'
+    | 'zahlung'
+    | 'zylinder-mass'
+    | 'motorradschluessel'
+    | 'schluesselgehaeuse'
+    | 'transponder-kopie'
+    | 'schluesselfinder'
+    | 'vor-ort'
+    | 'karte'
+    | 'video'
+    | 'dokument';
+  /**
+   * Beginnt mit „/“, etwa /autoschluessel.
+   */
+  ziel: string;
+  bereich:
+    | 'autoschluessel'
+    | 'schluessel-nach-vorlage'
+    | 'schluessel-nach-code'
+    | 'gleichschliessende-zylinder'
+    | 'schliessanlagen'
+    | 'elektronische-zutrittsloesungen'
+    | 'tuer-und-schliesstechnik'
+    | 'sicherheitstechnik'
+    | 'service-und-termin';
+  ablauf?:
+    | {
+        titel: string;
+        text: string;
+        icon:
+          | 'alarmtechnik'
+          | 'anzahlung'
+          | 'aussenhautsicherung'
+          | 'autoschluessel'
+          | 'beratung-telefon'
+          | 'datenschutz'
+          | 'einsteckschloss'
+          | 'elektronische-zutrittsloesungen'
+          | 'fahrzeugmarke'
+          | 'fahrzeugoeffnung'
+          | 'foto-hochladen'
+          | 'funkschluessel'
+          | 'gleichschliessende-zylinder'
+          | 'halbzylinder'
+          | 'klappschluessel'
+          | 'knaufzylinder'
+          | 'kombinierte-konzepte'
+          | 'lieferung'
+          | 'mechanischer-schutz'
+          | 'mehrfachverriegelung'
+          | 'montage'
+          | 'nachweis'
+          | 'panik-alarmtaster'
+          | 'panik-fluchttuer'
+          | 'profilzylinder'
+          | 'pruefung'
+          | 'reparatur-austausch'
+          | 'rueckgabe'
+          | 'schliessanlagen'
+          | 'schluessel-kopieren'
+          | 'schluessel-nach-code'
+          | 'schluessel-nach-vorlage'
+          | 'schluessel-programmieren'
+          | 'schluesselbart-fraesen'
+          | 'schutzbeschlag'
+          | 'service-und-termin'
+          | 'sicherheitscheck'
+          | 'sicherheitstechnik'
+          | 'sicherungskarte'
+          | 'smart-key'
+          | 'smarte-funktionen'
+          | 'standort'
+          | 'technische-beratung'
+          | 'termin'
+          | 'transponder'
+          | 'tuer-und-schliesstechnik'
+          | 'tuerschliesser'
+          | 'tuerzusatzschloss'
+          | 'versand-paket'
+          | 'videoueberwachung'
+          | 'warenkorb'
+          | 'werkstatt'
+          | 'zahlung'
+          | 'zylinder-mass'
+          | 'motorradschluessel'
+          | 'schluesselgehaeuse'
+          | 'transponder-kopie'
+          | 'schluesselfinder'
+          | 'vor-ort'
+          | 'karte'
+          | 'video'
+          | 'dokument';
+        id?: string | null;
+      }[]
+    | null;
+  abschluss: 'kasse' | 'anfrage' | 'termin-anzahlung' | 'angebot-zahlungslink' | 'beratung';
+  nachweis: 'keiner' | 'fahrzeugschein' | 'sicherungskarte';
+  pflichtUploads?: ('schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto')[] | null;
+  status: 'live' | 'spaeter' | 'aus';
+  reihenfolge: number;
+  navigation: 'autoschluessel' | 'code' | 'sperrschliessung' | 'schliessanlagen' | 'mehr';
+  imHub?: boolean | null;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "seiten".
  */
@@ -1399,6 +1581,10 @@ export interface PayloadLockedDocument {
         value: number | Sperrtage;
       } | null)
     | ({
+        relationTo: 'rubriken';
+        value: number | Rubriken;
+      } | null)
+    | ({
         relationTo: 'seiten';
         value: number | Seiten;
       } | null)
@@ -1901,6 +2087,38 @@ export interface SperrtageSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rubriken_select".
+ */
+export interface RubrikenSelect<T extends boolean = true> {
+  name?: T;
+  laienname?: T;
+  zusatz?: T;
+  erklaerung?: T;
+  icon?: T;
+  ziel?: T;
+  bereich?: T;
+  ablauf?:
+    | T
+    | {
+        titel?: T;
+        text?: T;
+        icon?: T;
+        id?: T;
+      };
+  abschluss?: T;
+  nachweis?: T;
+  pflichtUploads?: T;
+  status?: T;
+  reihenfolge?: T;
+  navigation?: T;
+  imHub?: T;
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

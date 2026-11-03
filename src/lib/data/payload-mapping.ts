@@ -19,6 +19,7 @@ import type {
   Preisregeln,
   Produkte,
   Ratgeber,
+  Rubriken,
   Seiten,
   Sperrtage,
   Vorgaenge,
@@ -50,6 +51,7 @@ import type {
   PricingGroup,
   PricingRule,
   ReferralInfo,
+  Rubrik,
   SeoFields,
   ServicePage,
   StandardArticle,
@@ -539,6 +541,49 @@ export function fahrzeugmarkeZuPayload(
 }
 
 /* ---------- Inhalte ------------------------------------------------------ */
+
+export function rubrikZuSeite(doc: Rubriken): Rubrik {
+  const rubrik: Rubrik = {
+    id: kennung(doc),
+    name: doc.name,
+    laienname: doc.laienname,
+    erklaerung: doc.erklaerung,
+    icon: doc.icon,
+    ziel: doc.ziel,
+    ablauf: (doc.ablauf ?? []).map((s) => ({ titel: s.titel, text: s.text, icon: s.icon })),
+    abschluss: doc.abschluss,
+    pflichtUploads: [...(doc.pflichtUploads ?? [])],
+    nachweis: doc.nachweis,
+    status: doc.status,
+    reihenfolge: doc.reihenfolge,
+    navigation: doc.navigation,
+    imHub: Boolean(doc.imHub),
+    bereich: doc.bereich as AreaKey,
+  };
+  if (doc.zusatz) rubrik.zusatz = doc.zusatz;
+  return rubrik;
+}
+
+export function rubrikZuPayload(rubrik: Rubrik): RequiredDataFromCollectionSlug<'rubriken'> {
+  return {
+    kennung: rubrik.id,
+    name: rubrik.name,
+    laienname: rubrik.laienname,
+    zusatz: rubrik.zusatz ?? null,
+    erklaerung: rubrik.erklaerung,
+    icon: rubrik.icon as Rubriken['icon'],
+    ziel: rubrik.ziel,
+    ablauf: rubrik.ablauf.map((s) => ({ titel: s.titel, text: s.text, icon: s.icon as NonNullable<Rubriken['ablauf']>[number]['icon'] })),
+    abschluss: rubrik.abschluss,
+    pflichtUploads: rubrik.pflichtUploads as Rubriken['pflichtUploads'],
+    nachweis: rubrik.nachweis,
+    status: rubrik.status,
+    reihenfolge: rubrik.reihenfolge,
+    navigation: rubrik.navigation,
+    imHub: rubrik.imHub,
+    bereich: rubrik.bereich,
+  };
+}
 
 export function leistungsseiteZuSeite(doc: Leistungsseiten): ServicePage {
   return {

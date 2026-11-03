@@ -13,6 +13,7 @@ import type {
   VehicleMake,
   CarKeyService,
   StandardArticle,
+  Rubrik,
 } from '@/lib/types';
 
 /**
@@ -34,6 +35,8 @@ export interface Collections {
   cities: CityPage[];
   blockedDays: BlockedDay[];
   records: BusinessRecord[];
+  /** Rubriken des Hubs und der Navigation (KERN K-014). */
+  rubriken: Rubrik[];
 }
 
 export type CollectionName = keyof Collections;

@@ -56,6 +56,7 @@ const STARTWERT_DATEIEN = {
   cities: 'cities.json',
   blockedDays: 'blocked-days.json',
   nachweise: 'nachweise.json',
+  rubriken: 'rubriken.json',
 } as const;
 
 export type StartwertName = keyof typeof STARTWERT_DATEIEN;
@@ -499,6 +500,22 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
       zuDaten: m.standardartikelZuPayload,
       where: { typ: { equals: 'standard' } },
       abgleich: [{ pfad: 'name' }, { pfad: 'beschreibung' }, { pfad: 'umfang' }, { pfad: 'lieferzeit' }, ...SEO_ABGLEICH],
+    });
+    await eintraegeUebernehmen({
+      name: 'rubriken',
+      collection: 'rubriken',
+      inhalt: await quelle.read('rubriken'),
+      startwert: 'rubriken',
+      schluessel: (r) => r.id,
+      dbSchluessel: kennung,
+      zuDaten: m.rubrikZuPayload,
+      abgleich: [
+        { pfad: 'name' },
+        { pfad: 'laienname' },
+        { pfad: 'zusatz' },
+        { pfad: 'erklaerung' },
+        { pfad: 'ablauf', spalten: ['titel', 'text'] },
+      ],
     });
     await eintraegeUebernehmen({
       name: 'leistungsseiten',

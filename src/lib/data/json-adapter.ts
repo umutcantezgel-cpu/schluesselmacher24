@@ -22,6 +22,7 @@ const FILE_NAMES: Record<CollectionName, string> = {
   cities: 'cities.json',
   blockedDays: 'blocked-days.json',
   records: 'records.json',
+  rubriken: 'rubriken.json',
 };
 
 /**
