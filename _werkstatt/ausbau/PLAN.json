@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T03:03:32.649Z",
+ "stand": "2026-11-03T03:22:00.933Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -1457,10 +1457,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "379cc13",
    "massstab": null,
    "muster": null
   },
@@ -1502,10 +1502,10 @@
    ],
    "art": "pflicht",
    "wirkung": 5,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "ae72510",
    "massstab": null,
    "muster": null
   },
@@ -1660,10 +1660,10 @@
    ],
    "art": "pflicht",
    "wirkung": 2,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "6e5c663",
    "massstab": null,
    "muster": null
   },
@@ -1768,7 +1768,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "läuft",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -1800,10 +1800,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "04fc0f8",
    "massstab": "_werkstatt/ausbau/pakete/E3-DATENPFLEGER-02.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },
