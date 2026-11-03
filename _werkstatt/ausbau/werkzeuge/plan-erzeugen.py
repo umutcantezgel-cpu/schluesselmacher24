@@ -248,6 +248,30 @@ P('EA-ENDPRUEFER-01', 'Endprüfer (frischer Opus): jedes Häkchen, jede Ausnahme
 hk('EA-PRUEFER-02', 'Bestandsabgleich: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen', 1, 'Prüfer', [W + 'erhebung/EA-bestandsabgleich.json'], json.load(open(os.path.join(AUSBAU, 'erhebung', 'E2-zuordnung-eingang.json')))['vorhanden'], ['Z-03'], deps=['E9-PRUEFER-01'], status='offen', klasse='L')
 hk('E2-DATENPFLEGER-01', 'Zuordnung jeder nicht vorhandenen Anforderung (L, EL, M, E) zu Paketen oder Menschensache', 2, 'Datenpfleger', [W + 'erhebung/E2-zuordnung.json'], [], ['Z-03'], deps=['E2-OPUS-02'], status='offen', stufe=2)
 
+hk('E6-BAUMEISTER-07', 'Schlüssel nach Code: Suche und Filter nach Typ, Codelinie und Hersteller, Codeerkennung in der Suche, kompakte Produktseite', 4, 'Baumeister', ['src/app/(site)/schluessel-nach-code/'], ['L-120', 'E-13', 'E-89', 'E-90'], ['Z-05'], deps=['E6-OPUS-01'], status='offen', stufe=2)
+hk('E9-DOKUMENTAR-01', 'Menschensachen fertig vorbereiten: jede Anforderung mit Vorschlag menschensache bekommt einen vollständigen Eintrag in MENSCHEN.md oder AUSSEN.md', 2, 'Dokumentar', [W + 'MENSCHEN.md'], [], ['Z-03', 'Z-22'], deps=['E9-OPUS-01'], status='offen', stufe=2)
+
+def zuordnung_einlesen():
+    pfad = os.path.join(AUSBAU, 'erhebung', 'E2-zuordnung.json')
+    if not os.path.exists(pfad):
+        return
+    z = json.load(open(pfad))['zuordnung']
+    nach_kennung = {p['kennung']: p for p in P_LIST}
+    sonder = {'L-427': ['E9-DOKUMENTAR-01'], 'EL-78': ['E7-OPUS-02']}
+    for e in z:
+        k = e['kennung']
+        if k in sonder:
+            ziele = sonder[k]
+        elif e['vorschlag'] == 'menschensache':
+            ziele = ['E9-DOKUMENTAR-01']
+        elif e['vorschlag'] == 'neu':
+            ziele = ['E6-BAUMEISTER-07']
+        else:
+            ziele = e['pakete']
+        for z_ in ziele:
+            if z_ in nach_kennung and k not in nach_kennung[z_]['anforderungen']:
+                nach_kennung[z_]['anforderungen'].append(k)
+
 def normalisiere():
     for p in P_LIST:
         p['anforderungen'] = [a[2:] if a.startswith('K-') else a for a in p['anforderungen']]
@@ -275,6 +299,7 @@ def pruefe_g_deckung():
 
 def plan():
     normalisiere()
+    zuordnung_einlesen()
     commits_eintragen()
     kl = collections.Counter(p['kostenklasse'] for p in P_LIST)
     pro_tag = {'S': 12, 'M': 8, 'L': 3}
