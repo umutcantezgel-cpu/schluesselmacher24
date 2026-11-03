@@ -381,7 +381,8 @@ export function PhotoUpload({
 
         <div
           className={cn(
-            'flex flex-col justify-center gap-2 rounded-lg border border-dashed p-4',
+            // Nur so hoch wie die Knöpfe, nicht wie das Beispielbild daneben (E4-JURY-02: „Ablage halb so hoch“)
+            'flex flex-col justify-center gap-2 self-start rounded-lg border border-dashed p-4',
             shownError ? 'border-danger bg-danger-soft' : 'border-border-strong bg-surface-muted',
           )}
         >
