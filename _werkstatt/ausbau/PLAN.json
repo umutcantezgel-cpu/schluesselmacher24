@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T22:59:31.379Z",
+ "stand": "2026-11-03T23:07:19+00:00",
  "etappen": [
   {
    "kennung": "E0",
@@ -2748,7 +2748,12 @@
    "stufe": 2,
    "kostenklasse": "M",
    "schreibrechte": [
-    "content/konfigurator-texte.json"
+    "src/lib/konfigurator/masse.ts",
+    "src/lib/konfigurator/vorlagen.ts",
+    "src/components/konfigurator/schliessplan-planer.tsx",
+    "src/components/konfigurator/schliessplan-editor.tsx",
+    "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx",
+    "_werkstatt/ausbau/berichte/E5-AUTOR-01.md"
    ],
    "abhaengigkeiten": [
     "E5-OPUS-02"
@@ -2765,10 +2770,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "782b9e7",
    "massstab": "_werkstatt/ausbau/pakete/E5-AUTOR-01.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
@@ -2890,7 +2895,8 @@
     "src/components/hub/",
     "src/components/visual/inszenierung/",
     "src/components/seo/",
-    "src/fonts/"
+    "src/fonts/",
+    "src/lib/konfigurator/zwischenstand.ts"
    ],
    "abhaengigkeiten": [
     "E5-PRUEFER-02",

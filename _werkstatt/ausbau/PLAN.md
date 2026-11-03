@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T22:59:31.379Z
+Stand: 2026-11-03T23:07:19+00:00
 
-Etappe 6/12 · Welle 3 · Pflicht 76/139 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 6/12 · Welle 3 · Pflicht 77/139 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -260,7 +260,7 @@ Geplante Tage: 1.55
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E5-AUTOR-01 | Messhilfe-Text, Plausibilitätshinweise, Laienerklärung Sperrschließung gegen Schließanlage mit Beispiel, Empfehlung Privat oder Unternehmen | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E5-AUTOR-01 | Messhilfe-Text, Plausibilitätshinweise, Laienerklärung Sperrschließung gegen Schließanlage mit Beispiel, Empfehlung Privat oder Unternehmen | haiku-5.5 | M | pflicht | 3 | committet | 782b9e7 |
 | E5-OPUS-04 | Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand | opus-5.5 | M | pflicht | 4 | offen |  |
 
 ### Welle 4
