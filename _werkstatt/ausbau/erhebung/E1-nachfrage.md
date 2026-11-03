@@ -40,7 +40,7 @@ Leitanfrage „Transponder kopieren Autoschlüssel“
 - „Schlüsselservice Transponder defekt Symptome“ (Werkstatt-Ratgeber) [Quelle: https://kfz-dietrich.com/blog/schluesselservice-transponder-defekt-symptome/ · abgerufen 2026-11-03 · Stufe B]
 - „Woher bekommt man einen Transponder?“ (FAQ, Österreich) [Quelle: https://www.wandernundmehr.at/faq/woher-bekommt-man-einen-transponder · abgerufen 2026-11-03 · Stufe B]
 - Technik laut Werkstatt-Ratgeber: bei Immo 2 und 3 oft nur Chip-Tausch, neuere Systeme brauchen einen kompletten Schlüssel. [Quelle: https://kfz-dietrich.com/blog/autoschluessel-transponder-wie-wegfahrsperre-funktioniert/ · abgerufen 2026-11-03 · Stufe B]
-- Trefferbild: 12 Treffer, meist Foren, keine Hersteller- oder Behördenseite. [Quelle: https://www.bmw-syndikat.de/bmwsyndikatforum/topic96039_Transponder_kaputt_BMW-Talk.html · abgerufen 2026-11-03 · Stufe B]
+- Trefferbild: 12 Treffer, 6 Foren, keine Hersteller- oder Behördenseite. [Quelle: https://www.bmw-syndikat.de/bmwsyndikatforum/topic96039_Transponder_kaputt_BMW-Talk.html · abgerufen 2026-11-03 · Stufe B]
 - KI-Teilfragen (C): Kopieren erlaubt; Chip-Kosten; Chip-Tausch reicht; Ersatz nicht erkannt; codierende Werkstatt.
 
 ### 6 Motorradschlüssel nachmachen · neue Route nötig
@@ -72,7 +72,7 @@ Leitanfrage „Schlüssel per Post nachmachen Deutschland“
 - „Schlüssel verschicken“ (Versand) [Quelle: https://www.hausjournal.net/schluessel-verschicken · abgerufen 2026-11-03 · Stufe B]
 - „unverpackte Schlüssel in Briefkasten werfen“ (Dienst eingestellt) [Quelle: https://www.infranken.de/deutschland/unverpackte-schluessel-in-briefkasten-werfen-deutsche-post-stellt-service-2024-ein-art-5761028 · abgerufen 2026-11-03 · Stufe B]
 - „Schlüssel nachmachen lassen“ (Versandfrage offen) [Quelle: https://www.hausjournal.net/schluessel-nachmachen-lassen · abgerufen 2026-11-03 · Stufe B]
-- Trefferbild: 17 Treffer, 6 Nachrichten zur Post, 3 österreichische Dokumente, kein deutscher Versanddienst. [Quelle: https://www.inside-digital.de/news/post-liefert-nicht-mehr-ende-dezember-2024-ist-schluss · abgerufen 2026-11-03 · Stufe B]
+- Trefferbild: 17 Treffer, 6 Nachrichtenseiten zur Post, 3 österreichische Dokumente, kein deutscher Versanddienst. [Quelle: https://www.inside-digital.de/news/post-liefert-nicht-mehr-ende-dezember-2024-ist-schluss · abgerufen 2026-11-03 · Stufe B]
 - KI-Teilfragen (C): Versand möglich; Versicherung; Versandkosten; Sicherungskarte nötig; Post-Dienste.
 
 ### 10 Sperrschließung oder gleichschließende Zylinder · /gleichschliessende-zylinder
@@ -163,7 +163,7 @@ Leitanfrage „Schlüsselmacher“
 4. Transponder: Rechtslage ungeklärt, Umbaukosten 20 bis 80 EUR nur aus einer KI-Zusammenfassung.
 5. Post: Dienst für unverpackte Schlüssel endete Ende 2024, Versand nach Deutschland nicht belegt.
 6. Nicht übernommen: Hausjournal, echo24, Forenpreise, Schließanlagen-Summen ohne Quelle. Offen: Zylinder-Überstand, Förderung, Motorrad-Route, Einsatzgebiet Hamburg und Berlin.
-7. Nicht erhoben: Suchvorschläge, Kartenergebnisse, Suchvolumen. Die Websuche ist US-gewichtet.
+7. Nicht erhoben: Suchvorschläge, Kartenergebnisse, Suchvolumen. Websuche kann US-gewichtet sein.
 
 ## Selbstprüfung
 Websuchen: 17. Seitenabrufe: 10 (5 robots.txt, 5 Seiten). Belegte Quellen: 73 URLs. Jede Faktenzeile trägt Quelle, Datum und Stufe.
