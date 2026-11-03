@@ -1,0 +1,52 @@
+{
+  "skript": "kontaktbogen",
+  "zeit": "2026-11-03T12:12:05.734Z",
+  "argumente": {
+    "_": [],
+    "bilder": "protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__00.jpg,protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__01.jpg,protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__02.jpg,protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__03.jpg,protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__04.jpg,protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__05.jpg,protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__06.jpg,protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__07.jpg",
+    "ziel": "protokolle/E4-SICHT/a-start-mobil.jpg",
+    "spalten": "4",
+    "titel": "Startseite mobil 390"
+  },
+  "ziel": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-SICHT/a-start-mobil.jpg",
+  "spalten": 4,
+  "titel": "Startseite mobil 390",
+  "bilder": [
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__00.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__01.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__02.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__03.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__04.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__05.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__06.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/bildsatz/H01-start__mobil__07.jpg",
+      "geladen": true
+    }
+  ],
+  "breite": 1440,
+  "hoehe": 900,
+  "bytes": 67058,
+  "nichtGeladen": []
+}

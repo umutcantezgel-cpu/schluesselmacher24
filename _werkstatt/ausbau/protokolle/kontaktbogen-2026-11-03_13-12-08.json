@@ -1,0 +1,36 @@
+{
+  "skript": "kontaktbogen",
+  "zeit": "2026-11-03T12:12:08.809Z",
+  "argumente": {
+    "_": [],
+    "bilder": "protokolle/E4-PRUEFER-01/weg/weg-mobil-1-fahrzeug.jpg,protokolle/E4-PRUEFER-01/weg/weg-mobil-1b-suche-treffer.jpg,protokolle/E4-PRUEFER-01/weg/weg-mobil-2-modell.jpg,protokolle/E4-PRUEFER-01/weg/weg-mobil-3-baujahr-nach-suche.jpg",
+    "ziel": "protokolle/E4-SICHT/d-weg-mobil.jpg",
+    "spalten": "4",
+    "titel": "Assistent mobil Schritt 1 bis 3"
+  },
+  "ziel": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-SICHT/d-weg-mobil.jpg",
+  "spalten": 4,
+  "titel": "Assistent mobil Schritt 1 bis 3",
+  "bilder": [
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/weg/weg-mobil-1-fahrzeug.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/weg/weg-mobil-1b-suche-treffer.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/weg/weg-mobil-2-modell.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/weg/weg-mobil-3-baujahr-nach-suche.jpg",
+      "geladen": true
+    }
+  ],
+  "breite": 1440,
+  "hoehe": 900,
+  "bytes": 39007,
+  "nichtGeladen": []
+}

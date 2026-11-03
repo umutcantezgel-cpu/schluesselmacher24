@@ -1,0 +1,36 @@
+{
+  "skript": "kontaktbogen",
+  "zeit": "2026-11-03T12:12:07.779Z",
+  "argumente": {
+    "_": [],
+    "bilder": "protokolle/E4-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__00.jpg,protokolle/E4-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__01.jpg,protokolle/E4-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__02.jpg,protokolle/E4-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__03.jpg",
+    "ziel": "protokolle/E4-SICHT/c-auto-desktop.jpg",
+    "spalten": "2",
+    "titel": "Autoschluessel Desktop"
+  },
+  "ziel": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-SICHT/c-auto-desktop.jpg",
+  "spalten": 2,
+  "titel": "Autoschluessel Desktop",
+  "bilder": [
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__00.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__01.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__02.jpg",
+      "geladen": true
+    },
+    {
+      "datei": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E4-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__03.jpg",
+      "geladen": true
+    }
+  ],
+  "breite": 1440,
+  "hoehe": 900,
+  "bytes": 52791,
+  "nichtGeladen": []
+}
