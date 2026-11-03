@@ -7,7 +7,7 @@
 // reduziert: Kontext mit „Bewegung reduzieren“ (Desktop), laden, durchscrollen. Befunde: laufende Animationen,
 //   deren Keyframes transform, translate, scale, rotate, top, left, width oder height ändern; sichtbare
 //   Textelemente mit Deckkraft < 0,1 (Vorfahren eingerechnet) oder visibility:hidden („Inhalt verborgen“).
-// einzelbilder: lädt ohne Durchscrollen, scrollt das Element in den Blick, wartet auf das nächste [data-motion] mit
+// einzelbilder: lädt ohne Durchscrollen, scrollt das Element in den Blick, wartet auf das nächste [data-zustand] mit
 //   „play“ (höchstens 5 s) und nimmt 5 Bilder bei 0, ¼, ½, ¾, 1 der ANIMATIONSZEIT auf: alle endlichen Animationen des
 //   Elements (und seiner Hülle) werden pausiert und auf dieselbe absolute Zeit gesetzt (currentTime, inkl. Verzögerung).
 //   Zeitfenster: kleinste Verzögerung bis größte endliche Endzeit; --dauer überschreibt die Länge. --echtzeit: alter
@@ -225,7 +225,7 @@ const RAND_STANDARD = 24;
 
 /**
  * Läuft im Browser (auf dem Element). Bereitet eine Aufnahme vor:
- * 1. wartet (höchstens maxWarten) auf das nächste [data-motion], bis es „play“ zeigt;
+ * 1. wartet (höchstens maxWarten) auf das nächste [data-zustand], bis es „play“ zeigt;
  * 2. wählt den Ausschnitt (zu kleines Element → nächster vorfahr mit role=img oder svg);
  * 3. nur im Modus animationszeit: Animationen bereit abwarten, zwei Frames, alle pausieren,
  *    Zeitfenster bestimmen. Ergebnis: window.__sm24Bewegung = { erfassung, rand, anims }.
@@ -242,15 +242,15 @@ async function bereitstellen(el, { modus, rand, dauerVorgabe, maxWarten }) {
 
   let motion = null;
   if (modus === 'animationszeit') {
-    // Zugehörige Hülle: Vorfahre oder Nachfahre mit [data-motion]. Ein Element in der Dokumentreihenfolge
+    // Zugehörige Hülle: Vorfahre oder Nachfahre mit [data-zustand]. Ein Element in der Dokumentreihenfolge
     // danach gehört nicht dazu; dessen Wartezeit würde das Ergebnis verfälschen.
-    motion = el.closest('[data-motion]') ?? el.querySelector('[data-motion]');
+    motion = el.closest('[data-zustand]') ?? el.querySelector('[data-zustand]');
     if (motion) {
       const t0 = performance.now();
-      while (motion.getAttribute('data-motion') !== 'play' && performance.now() - t0 < maxWarten) await warte(50);
+      while (motion.getAttribute('data-zustand') !== 'play' && performance.now() - t0 < maxWarten) await warte(50);
       info.motion = {
         element: beschreibe(motion),
-        zustand: motion.getAttribute('data-motion'),
+        zustand: motion.getAttribute('data-zustand'),
         wartezeit_ms: Math.round(performance.now() - t0),
       };
     } else {
@@ -417,9 +417,9 @@ async function einzelbilder(args, pfad, dauer) {
     console.log(`\nAnimationszeit-Fenster: ${r1(f.start)} ms bis ${r1(f.ende)} ms · Animationen: ${info.animationen} · unendliche übersprungen: ${info.unendlich}`);
     if (info.motion.element) {
       const hinweis = info.motion.zustand === 'play' ? '' : ' · HINWEIS: nach Wartezeit nicht auf „play“';
-      console.log(`[data-motion]: ${info.motion.element}, Zustand ${info.motion.zustand}, Wartezeit ${info.motion.wartezeit_ms} ms${hinweis}`);
+      console.log(`[data-zustand]: ${info.motion.element}, Zustand ${info.motion.zustand}, Wartezeit ${info.motion.wartezeit_ms} ms${hinweis}`);
     } else {
-      console.log('[data-motion]: keines gefunden, sofort weiter');
+      console.log('[data-zustand]: keines gefunden, sofort weiter');
     }
   }
   console.log(trefferText(treffer));

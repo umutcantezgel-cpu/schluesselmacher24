@@ -116,7 +116,7 @@ export default async function SchliessanlagenKonfiguratorPage() {
                 </span>
                 <GlyphPfeilRechts
                   size={18}
-                  className="mt-1 shrink-0 text-primary transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
+                  className="mt-1 shrink-0 text-primary transition-transform duration-quick ease-standard ruhig:transition-none zeiger:group-hover:translate-x-1"
                 />
               </Link>
             </li>

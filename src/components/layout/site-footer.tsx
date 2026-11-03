@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BewegungSchalter } from '@/components/layout/bewegung-schalter';
 import { Profillinie } from '@/components/visual/profillinie';
 import { getSettings } from '@/lib/data';
 import { defaults } from '@/lib/data/defaults';
@@ -187,6 +188,7 @@ export async function SiteFooter() {
 
         <div className="flex flex-col gap-2 pt-6 font-mono text-caption text-foreground-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {jahrInBerlin()} SCHLÜSSELMACHER24</p>
+          <BewegungSchalter className="-ml-2 self-start sm:order-last sm:ml-0 sm:self-auto" />
           <p>Preise inklusive gesetzlicher Umsatzsteuer, zuzüglich Versandkosten.</p>
         </div>
       </div>

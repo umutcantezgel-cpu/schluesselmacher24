@@ -227,6 +227,12 @@ const config = {
   plugins: [
     /* Zeiger-Details nur bei feinen Zeigegeräten (KERN K-007, B-06): `zeiger:group-hover:…` */
     plugin(({ addVariant }) => {
+      /* Bewegungsschalter (A-007, E3-OPUS-03): `bewegt:` und `ruhig:` folgen html[data-bewegung]
+         (Startskript und Schalter) statt nur der Systemeinstellung; ohne JavaScript fehlt das
+         Attribut, dann gilt die ruhige Fassung. Tailwinds `motion-safe:`/`motion-reduce:` lassen
+         sich nicht umlenken und sind im Projekt gesperrt (bewegung-schalter.test.tsx). */
+      addVariant('bewegt', ":where(:root[data-bewegung='an']) &");
+      addVariant('ruhig', ":where(:root:not([data-bewegung='an'])) &");
       addVariant('zeiger', '@media (hover: hover) and (pointer: fine)');
       /* Sichtbarer Tastaturfokus für Karten mit verstecktem Eingabefeld (KERN K-009) */
       addVariant('fokus-innen', '&:has(:focus-visible)');

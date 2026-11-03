@@ -139,7 +139,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
       <Card className="sm24-leerzustand min-h-96 sm:min-h-64 lg:col-span-8" data-leerzustand>
         <CardBody>
           <p className="flex items-center gap-3 text-body text-foreground-muted" role="status">
-            <GlyphLaden size={18} className="animate-spin motion-reduce:animate-none" />
+            <GlyphLaden size={18} className="animate-spin ruhig:animate-none" />
             Warenkorb wird geladen.
           </p>
         </CardBody>

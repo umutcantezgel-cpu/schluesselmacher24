@@ -185,7 +185,7 @@ export function SiteHeader() {
             href="/autoschluessel/anfrage"
             prefetch={false}
             data-kopfknopf
-            className="hidden min-h-touch items-center whitespace-nowrap rounded-md bg-primary px-4 text-small font-semibold text-primary-foreground transition-colors duration-quick hover:bg-primary-hover active:scale-druck motion-reduce:transform-none sm:inline-flex"
+            className="hidden min-h-touch items-center whitespace-nowrap rounded-md bg-primary px-4 text-small font-semibold text-primary-foreground transition-colors duration-quick hover:bg-primary-hover active:scale-druck ruhig:transform-none sm:inline-flex"
           >
             Termin anfragen
           </Link>

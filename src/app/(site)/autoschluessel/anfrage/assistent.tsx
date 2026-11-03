@@ -1479,7 +1479,7 @@ export function Assistent({
         <div className="space-y-5">
           {quoteLoading && (
             <p className="flex items-center gap-2 text-body text-foreground-muted" role="status">
-              <GlyphLaden size={17} className="animate-spin motion-reduce:animate-none" />
+              <GlyphLaden size={17} className="animate-spin ruhig:animate-none" />
               Ihr Preis wird ermittelt …
             </p>
           )}
@@ -1533,7 +1533,7 @@ export function Assistent({
             </Alert>
           ) : (
             <p className="flex items-center gap-2 text-body text-foreground-muted" role="status">
-              <GlyphLaden size={17} className="animate-spin motion-reduce:animate-none" />
+              <GlyphLaden size={17} className="animate-spin ruhig:animate-none" />
               Ihre Angaben werden geprüft …
             </p>
           )}

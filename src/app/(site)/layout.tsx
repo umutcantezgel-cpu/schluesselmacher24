@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 
 import { schriftKlassen } from '@/fonts/schriften';
+import { STARTSKRIPT } from '@/lib/bewegung';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { MobileActionBar } from '@/components/layout/mobile-action-bar';
@@ -62,6 +63,10 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       className={`${schriftKlassen} h-full`}
       suppressHydrationWarning
     >
+      <head>
+        {/* Bewegung an oder ruhig, vor dem ersten Rendern (A-007): setzt html[data-bewegung]. */}
+        <script dangerouslySetInnerHTML={{ __html: STARTSKRIPT }} />
+      </head>
       <body className="flex min-h-full flex-col">
         <a
           href="#inhalt"

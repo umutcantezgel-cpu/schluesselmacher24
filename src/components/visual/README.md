@@ -340,7 +340,7 @@ Hüllen sind Client-Komponenten (`'use client'`) und importieren Generatoren; Ge
 - `auswahl.ts` enthält reine Helfer (Texte für Screenreader, Tastaturwechsel) ohne React.
 - `code-fundstelle-interaktiv` trägt nach dem ersten Wechsel, `live-schluessel` sobald sich das Profil ändert,
   `sm24-ruhig`: die Einstiegsbewegungen spielen nicht erneut. `schliessplan-interaktiv` und `fraesbahn-bewegung` tragen es nicht.
-- `motion/in-view.tsx` (`InView`) ist ebenfalls eine Client-Hülle; sie steuert nur `data-motion`.
+- `motion/in-view.tsx` (`InView`) ist ebenfalls eine Client-Hülle; sie setzt die Registerkennung `data-motion` (Prop `kennung`, Standard B-27) und steuert nur `data-zustand` (`wait`, `play`). Bewegung insgesamt: `src/lib/bewegung.ts` (A-014).
 
 ## Bildstellen (`ImagePlaceholder`)
 

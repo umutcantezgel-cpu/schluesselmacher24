@@ -437,9 +437,12 @@ header a[aria-label$='Startseite'] > span {
                     geht einmal hinaus (Sichtabnahme E4-L-23, WCAG 2.2.2)
    - `.sm24-scrub-*` an das Scrollen gebundene Szenen (B-03)
    Verzögerung/Dauer einzeln über `--sm24-delay` / `--sm24-duration`.
-   `[data-motion="wait"]` hält die Einstiegs-Animationen an, bis `InView`
-   den Bereich sichtbar meldet (`data-motion="play"`). Ohne JavaScript oder
-   bei „Bewegung reduzieren“ sind alle Inhalte sofort vollständig sichtbar.
+   `[data-zustand="wait"]` hält die Einstiegs-Animationen an, bis `InView`
+   den Bereich sichtbar meldet (`data-zustand="play"`); `data-motion` trägt die
+   Kennung im Bewegungsregister (B-xx). Alles bewegt sich nur bei
+   `html[data-bewegung="an"]` (Startskript aus src/lib/bewegung.ts, Schalter im
+   Fuß). Ohne JavaScript oder bei „ruhig“ sind alle Inhalte sofort vollständig
+   sichtbar.
    ========================================================================== */
 
 @keyframes sm24-draw {
@@ -516,46 +519,44 @@ header a[aria-label$='Startseite'] > span {
   to { clip-path: inset(0 0 0 0); }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .sm24-draw {
-    stroke-dasharray: 1;
-    animation: sm24-draw var(--sm24-duration, var(--dauer-scene)) var(--kurve-draw)
+:where(:root[data-bewegung='an']) .sm24-draw {
+  stroke-dasharray: 1;
+  animation: sm24-draw var(--sm24-duration, var(--dauer-scene)) var(--kurve-draw)
       var(--sm24-delay, 0s) both;
-  }
+}
 
-  .sm24-reveal {
-    animation: sm24-reveal var(--sm24-duration, var(--dauer-enter)) var(--kurve-enter)
+:where(:root[data-bewegung='an']) .sm24-reveal {
+  animation: sm24-reveal var(--sm24-duration, var(--dauer-enter)) var(--kurve-enter)
       var(--sm24-delay, 0s) both;
-  }
+}
 
-  .sm24-fade {
-    animation: sm24-fade var(--sm24-duration, var(--dauer-base)) var(--kurve-standard)
+:where(:root[data-bewegung='an']) .sm24-fade {
+  animation: sm24-fade var(--sm24-duration, var(--dauer-base)) var(--kurve-standard)
       var(--sm24-delay, 0s) both;
-  }
+}
 
-  .sm24-pop {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: sm24-pop var(--sm24-duration, var(--dauer-enter)) var(--kurve-enter)
+:where(:root[data-bewegung='an']) .sm24-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sm24-pop var(--sm24-duration, var(--dauer-enter)) var(--kurve-enter)
       var(--sm24-delay, 0s) both;
-  }
+}
 
-  .sm24-dash {
-    stroke-dasharray: 6 6;
-    animation: sm24-dash var(--sm24-duration, 1.6s) linear var(--sm24-delay, 0s) 1;
-  }
+:where(:root[data-bewegung='an']) .sm24-dash {
+  stroke-dasharray: 6 6;
+  animation: sm24-dash var(--sm24-duration, 1.6s) linear var(--sm24-delay, 0s) 1;
+}
 
-  .sm24-aufdecken {
-    animation: sm24-aufdecken var(--sm24-duration, var(--dauer-scene)) var(--kurve-draw) var(--sm24-delay, 0s) both;
-  }
+:where(:root[data-bewegung='an']) .sm24-aufdecken {
+  animation: sm24-aufdecken var(--sm24-duration, var(--dauer-scene)) var(--kurve-draw) var(--sm24-delay, 0s) both;
+}
 
-  .sm24-schritt-vor {
-    animation: sm24-schritt-vor var(--dauer-base) var(--kurve-enter) both;
-  }
+:where(:root[data-bewegung='an']) .sm24-schritt-vor {
+  animation: sm24-schritt-vor var(--dauer-base) var(--kurve-enter) both;
+}
 
-  .sm24-schritt-zurueck {
-    animation: sm24-schritt-zurueck var(--dauer-base) var(--kurve-enter) both;
-  }
+:where(:root[data-bewegung='an']) .sm24-schritt-zurueck {
+  animation: sm24-schritt-zurueck var(--dauer-base) var(--kurve-enter) both;
 }
 
 /*
@@ -571,10 +572,8 @@ header a[aria-label$='Startseite'] > span {
   animation: none;
 }
 
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  [data-motion='wait'] :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop, .sm24-dash, .sm24-aufdecken) {
-    animation-play-state: paused;
-  }
+:where(:root[data-bewegung='an']) [data-zustand='wait'] :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop, .sm24-dash, .sm24-aufdecken) {
+  animation-play-state: paused;
 }
 
 /* Ohne Scroll-Timeline oder bei reduzierter Bewegung ruht die Anzeige: keine Leiste (B-24; die Regel unten blendet sie ein). */
@@ -588,33 +587,33 @@ header a[aria-label$='Startseite'] > span {
  * Unterstützung stehen die Elemente im Endzustand (keine Animation).
  */
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .sm24-scrub-y,
-    .sm24-scrub-marke {
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: view();
-      animation-range: entry 20% cover 55%;
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-y,
+  :where(:root[data-bewegung='an']) .sm24-scrub-marke {
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 55%;
+  }
 
-    .sm24-scrub-y {
-      transform-origin: top;
-      animation-name: sm24-scrub-y;
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-y {
+    transform-origin: top;
+    animation-name: sm24-scrub-y;
+  }
 
-    .sm24-scrub-marke {
-      animation-name: sm24-scrub-marke;
-      animation-range: entry 60% cover 45%;
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-marke {
+    animation-name: sm24-scrub-marke;
+    animation-range: entry 60% cover 45%;
+  }
 
-    /*
+  /*
      * Lesefortschritt im Ratgeber (B-24): `.sm24-lesen` umschließt Artikel und
      * Verzeichnis. Die Leiste am Verzeichnis wächst, während der Artikel
      * (`.sm24-lesen-artikel`) durch den Bildschirm läuft; die Nummer des
      * Abschnitts (`data-abschnitt`), der die Leselinie bei 40 % kreuzt, wird
      * Primärfarbe (`.sm24-lesen-nummer` mit `data-zu`). Höchstens sechs Abschnitte.
      */
-    /*
+
+  /*
      * Stiftzuhaltung am Scrollen (B-25): `.sm24-szene` am SVG gibt die Zeitleiste vor.
      * Der Schlüssel (`.sm24-scrub-schluessel`, `--schluessel-von` in Einheiten) fährt
      * in der ersten Hälfte ein; je Bohrung heben sich Kernstift und Gehäusestift
@@ -623,86 +622,121 @@ header a[aria-label$='Startseite'] > span {
      * (0–4); die Prüfmarken (`.sm24-scrub-pruefung`) erscheinen zuletzt.
      * Ohne Unterstützung oder bei reduzierter Bewegung steht die Endlage: alles passt.
      */
-    .sm24-szene {
-      view-timeline-name: --szene;
-    }
 
-    /* Ein Rahmen mit `overflow: hidden` (etwa `ImagePlaceholder`) wäre Scrollcontainer der Szene
+  :where(:root[data-bewegung='an']) .sm24-szene {
+    view-timeline-name: --szene;
+  }
+
+  /* Ein Rahmen mit `overflow: hidden` (etwa `ImagePlaceholder`) wäre Scrollcontainer der Szene
        und hielte ihre Zeitleiste an; `clip` schneidet gleich ab, ohne Scrollcontainer zu sein. */
-    :is(.overflow-hidden, .overflow-x-hidden, .overflow-y-hidden):has(.sm24-szene) {
-      overflow: clip;
-    }
 
-    :is(.sm24-scrub-schluessel, .sm24-scrub-stift, .sm24-scrub-feder, .sm24-scrub-pruefung) {
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: --szene;
-    }
+  :where(:root[data-bewegung='an']) :is(.overflow-hidden, .overflow-x-hidden, .overflow-y-hidden):has(.sm24-szene) {
+    overflow: clip;
+  }
 
-    .sm24-scrub-schluessel {
-      animation-name: sm24-schluessel-ein;
-      animation-range: entry 40% cover 45%;
-    }
+  :where(:root[data-bewegung='an']) :is(.sm24-scrub-schluessel, .sm24-scrub-stift, .sm24-scrub-feder, .sm24-scrub-pruefung) {
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: --szene;
+  }
 
-    .sm24-scrub-stift,
-    .sm24-scrub-feder {
-      animation-range: cover calc(42% + var(--stift-nr, 0) * 2%) cover calc(52% + var(--stift-nr, 0) * 2%);
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-schluessel {
+    animation-name: sm24-schluessel-ein;
+    animation-range: entry 40% cover 45%;
+  }
 
-    .sm24-scrub-stift {
-      animation-name: sm24-stift-heben;
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-stift,
+  :where(:root[data-bewegung='an']) .sm24-scrub-feder {
+    animation-range: cover calc(42% + var(--stift-nr, 0) * 2%) cover calc(52% + var(--stift-nr, 0) * 2%);
+  }
 
-    .sm24-scrub-feder {
-      transform-box: fill-box;
-      transform-origin: top;
-      animation-name: sm24-feder-heben;
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-stift {
+    animation-name: sm24-stift-heben;
+  }
 
-    .sm24-scrub-pruefung {
-      animation-name: sm24-erscheinen;
-      animation-range: cover 60% cover 64%;
-    }
+  :where(:root[data-bewegung='an']) .sm24-scrub-feder {
+    transform-box: fill-box;
+    transform-origin: top;
+    animation-name: sm24-feder-heben;
+  }
 
-    .sm24-lesen {
-      timeline-scope: --artikel, --abschnitt-1, --abschnitt-2, --abschnitt-3, --abschnitt-4, --abschnitt-5,
+  :where(:root[data-bewegung='an']) .sm24-scrub-pruefung {
+    animation-name: sm24-erscheinen;
+    animation-range: cover 60% cover 64%;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen {
+    timeline-scope: --artikel, --abschnitt-1, --abschnitt-2, --abschnitt-3, --abschnitt-4, --abschnitt-5,
         --abschnitt-6;
-    }
+  }
 
-    .sm24-lesen-artikel {
-      view-timeline-name: --artikel;
-    }
+  :where(:root[data-bewegung='an']) .sm24-lesen-artikel {
+    view-timeline-name: --artikel;
+  }
 
-    .sm24-lesen-leiste {
-      visibility: visible;
-      transform-origin: top;
-      animation: sm24-scrub-y linear both;
-      animation-timeline: --artikel;
-      animation-range: contain 0% contain 100%;
-    }
+  :where(:root[data-bewegung='an']) .sm24-lesen-leiste {
+    visibility: visible;
+    transform-origin: top;
+    animation: sm24-scrub-y linear both;
+    animation-timeline: --artikel;
+    animation-range: contain 0% contain 100%;
+  }
 
-    .sm24-lesen [data-abschnitt] {
-      view-timeline-inset: 40% 59.9%;
-    }
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt] {
+    view-timeline-inset: 40% 59.9%;
+  }
 
-    .sm24-lesen [data-abschnitt='1'] { view-timeline-name: --abschnitt-1; }
-    .sm24-lesen [data-abschnitt='2'] { view-timeline-name: --abschnitt-2; }
-    .sm24-lesen [data-abschnitt='3'] { view-timeline-name: --abschnitt-3; }
-    .sm24-lesen [data-abschnitt='4'] { view-timeline-name: --abschnitt-4; }
-    .sm24-lesen [data-abschnitt='5'] { view-timeline-name: --abschnitt-5; }
-    .sm24-lesen [data-abschnitt='6'] { view-timeline-name: --abschnitt-6; }
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt='1'] {
+    view-timeline-name: --abschnitt-1;
+  }
 
-    .sm24-lesen-nummer {
-      animation: sm24-lesen-aktiv linear none;
-      animation-range: cover 0% cover 100%;
-    }
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt='2'] {
+    view-timeline-name: --abschnitt-2;
+  }
 
-    .sm24-lesen-nummer[data-zu='1'] { animation-timeline: --abschnitt-1; }
-    .sm24-lesen-nummer[data-zu='2'] { animation-timeline: --abschnitt-2; }
-    .sm24-lesen-nummer[data-zu='3'] { animation-timeline: --abschnitt-3; }
-    .sm24-lesen-nummer[data-zu='4'] { animation-timeline: --abschnitt-4; }
-    .sm24-lesen-nummer[data-zu='5'] { animation-timeline: --abschnitt-5; }
-    .sm24-lesen-nummer[data-zu='6'] { animation-timeline: --abschnitt-6; }
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt='3'] {
+    view-timeline-name: --abschnitt-3;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt='4'] {
+    view-timeline-name: --abschnitt-4;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt='5'] {
+    view-timeline-name: --abschnitt-5;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen [data-abschnitt='6'] {
+    view-timeline-name: --abschnitt-6;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer {
+    animation: sm24-lesen-aktiv linear none;
+    animation-range: cover 0% cover 100%;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer[data-zu='1'] {
+    animation-timeline: --abschnitt-1;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer[data-zu='2'] {
+    animation-timeline: --abschnitt-2;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer[data-zu='3'] {
+    animation-timeline: --abschnitt-3;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer[data-zu='4'] {
+    animation-timeline: --abschnitt-4;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer[data-zu='5'] {
+    animation-timeline: --abschnitt-5;
+  }
+
+  :where(:root[data-bewegung='an']) .sm24-lesen-nummer[data-zu='6'] {
+    animation-timeline: --abschnitt-6;
   }
 }
 
@@ -724,22 +758,31 @@ header a[aria-label$='Startseite'] > span {
   pointer-events: none;
 }
 
-/* Bewegung reduzieren — Layout darf dadurch nicht brechen */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+/* Bewegungsschalter (A-007, B-36): Angabe aus html[data-bewegung], ohne JavaScript ausgeblendet. */
+:root:not([data-bewegung]) .sm24-bewegung-schalter {
+  display: none;
+}
 
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none !important;
-  }
+:root:not([data-bewegung='an']) .sm24-wenn-an,
+:root[data-bewegung='an'] .sm24-wenn-ruhig {
+  display: none;
+}
+
+/* Ruhige Darstellung („ruhig“, Systemeinstellung ohne Wahl oder ohne JavaScript) — Layout darf dadurch nicht brechen */
+:where(:root:not([data-bewegung='an'])),
+:where(:root:not([data-bewegung='an'])) *,
+:where(:root:not([data-bewegung='an'])) *::before,
+:where(:root:not([data-bewegung='an'])) *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+:where(:root:not([data-bewegung='an']))::view-transition-group(*),
+:where(:root:not([data-bewegung='an']))::view-transition-old(*),
+:where(:root:not([data-bewegung='an']))::view-transition-new(*) {
+  animation: none !important;
 }
 
 /* ==========================================================================

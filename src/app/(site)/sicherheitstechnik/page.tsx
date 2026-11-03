@@ -364,7 +364,7 @@ export default async function SicherheitstechnikPage() {
                 {eintrag.link}
                 <GlyphPfeilRechts
                   size={16}
-                  className="transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
+                  className="transition-transform duration-quick ease-standard ruhig:transition-none zeiger:group-hover:translate-x-1"
                 />
               </Link>
             </li>
@@ -382,7 +382,7 @@ export default async function SicherheitstechnikPage() {
                   {link.label}
                   <GlyphPfeilRechts
                     size={16}
-                    className="shrink-0 text-primary transition-transform duration-quick ease-standard motion-reduce:transition-none zeiger:group-hover:translate-x-1"
+                    className="shrink-0 text-primary transition-transform duration-quick ease-standard ruhig:transition-none zeiger:group-hover:translate-x-1"
                   />
                 </Link>
               </li>

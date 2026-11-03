@@ -15,7 +15,7 @@ type Size = 'sm' | 'md' | 'lg';
  */
 const base =
   'group inline-flex items-center justify-center gap-2 rounded-md font-semibold select-none text-center ' +
-  'transition duration-quick ease-standard active:scale-druck motion-reduce:transform-none ' +
+  'transition duration-quick ease-standard active:scale-druck ruhig:transform-none ' +
   'disabled:cursor-not-allowed disabled:opacity-55 disabled:active:scale-100 ' +
   'aria-disabled:cursor-not-allowed aria-disabled:opacity-55';
 
@@ -83,7 +83,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       )}
       {...props}
     >
-      {loading && <GlyphLaden size={18} className="animate-spin motion-reduce:animate-none" />}
+      {loading && <GlyphLaden size={18} className="animate-spin ruhig:animate-none" />}
       {children}
       {pfeil && !loading && <Pfeil />}
     </button>
