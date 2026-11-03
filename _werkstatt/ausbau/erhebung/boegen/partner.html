@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erhebungsbogen PARTNER</title>
+<style>
+@page {
+  size: A4 portrait;
+  margin: 24mm 15mm 22mm 15mm;
+  @top-left { content: "Erhebungsbogen PARTNER"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @top-center { content: "Datum: 03.11.2026"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @top-right { content: "Ausgefüllt von: ______________"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @bottom-left { content: "Vorschlag, bitte prüfen"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @bottom-right { content: "Seite " counter(page) " von " counter(pages); font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+}
+html { font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; background: #fff; }
+body { margin: 0; line-height: 1.25; }
+h1 { font-size: 16pt; margin: 0 0 1mm; }
+.untertitel { margin: 0 0 3mm; font-weight: bold; }
+.intro p { margin: 0 0 1.8mm; }
+.kopfzeile { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin: 4mm 0 5mm; }
+.kopfzeile div { border-bottom: 0.6pt solid #000; padding-bottom: 1mm; }
+.karte { display: grid; grid-template-columns: 1fr 34mm; border: 0.6pt solid #000; margin: 0 0 1.8mm; break-inside: avoid; page-break-inside: avoid; }
+.inhalt { padding: 1.3mm 2.5mm; }
+.h2x { margin: 0; }
+h2 { font-size: 11pt; margin: 3mm 0 1.6mm; text-decoration: underline; }
+.einheit { font-weight: normal; }
+.kopf { margin: 0 0 0.8mm; }
+.ken { font-weight: bold; }
+.gegen { font-weight: bold; margin: 0 0 0.8mm; }
+.zeile { margin: 0.5mm 0 0; }
+.lab { font-weight: bold; }
+.quelle { display: block; color: #000; margin-top: 0.4mm; }
+.hinweis { margin: 1.2mm 0 0; border-top: 0.4pt solid #000; padding-top: 0.8mm; }
+.antwort { border-left: 0.6pt solid #000; padding: 1.6mm 2.2mm; }
+.antwort .form { margin: 0.6mm 0 0; }
+.feld-zeile { margin: 4mm 0 0; border-bottom: 0.6pt solid #000; padding-bottom: 1mm; }
+.fuss { margin-top: 4mm; }
+.ende { margin-top: 2mm; }
+@media screen {
+  body { max-width: 180mm; margin: 0 auto; padding: 10mm 0; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Erhebungsbogen PARTNER</h1>
+  <p class="untertitel">Auftragsarten, die über Partner vermittelt werden können</p>
+  <div class="intro">
+    <p>Entscheiden Sie hier, welche Auftragsarten über Partner vermittelt werden. Schreiben Sie ja oder nein.</p>
+    <p>Provisionen tragen Sie nicht in diesen Bogen ein. Die Spalten Provision und Abrechnungsart bleiben leer, Provisionen kommen nur als Nachricht.</p>
+    <p>Ohne Antwort wird die Auftragsart nicht über Partner vermittelt.</p>
+  </div>
+  <div class="kopfzeile">
+    <div>Ausgefüllt von:</div>
+    <div>Datum:</div>
+  </div>
+</header>
+<main>
+<h2>Auftragsart</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PA-001</span> Autoschlüssel vor Ort: Zweitschlüssel, Ersatzschlüssel, Programmierung <span class="einheit">· Auftragsart, ja oder nein</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> Wir vermitteln Kundenanfragen aus ganz Deutschland an geprüfte, unabhängige Fachbetriebe vor Ort: vor allem für Autoschlüssel. <span class="quelle">Quelle: content/seo.json, route partner-werden, Feld subline</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja, als Anfrage mit Ort <span class="quelle">Quelle: _werkstatt/ausbau/AUFTRAG.md, G-40; _werkstatt/ausbau/FACHWISSEN.md, Abschnitt 8 (Anlernen braucht das Fahrzeug vor Ort, ADAC, Stufe B)</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja oder nein</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PA-002</span> Schlüsseldienst vor Ort: Tür, Schloss oder Zylinder <span class="einheit">· Auftragsart, ja oder nein</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> Einsatz an Ihrer Tür im Einsatzgebiet der Werkstatt, anderswo über Partner, wo es sie gibt. <span class="quelle">Quelle: content/rubriken.json, id schluesseldienst-vor-ort, Feld erklaerung</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja, über Partner dort, wo die Werkstatt nicht tätig ist, als Anfrage mit Ort <span class="quelle">Quelle: _werkstatt/ausbau/AUFTRAG.md, G-40; content/cities.json (Einsätze vor Ort nur nach Prüfung)</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja oder nein</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PA-003</span> Türöffnung an Haus-, Wohnungs- oder Zimmertür <span class="einheit">· Auftragsart, ja oder nein</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> nein, nicht vorgesehen <span class="quelle">Quelle: Bestand nennt keine Türöffnung durch Partner (content/rubriken.json, schluesseldienst-vor-ort; content/service-pages.json)</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja oder nein. Ohne Antwort bleibt die Auftragsart aus.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja oder nein</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PA-004</span> Montage von Zylindern an der Tür <span class="einheit">· Auftragsart, ja oder nein</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> Montage und Anpassung vor Ort <span class="quelle">Quelle: content/service-pages.json, id tuer-schutzbeschlaege, Feld bullets</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Bestand nennt diese Montage nur bei Schutzbeschlägen. Antwort ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja oder nein</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PA-005</span> Montage einer Schließanlage <span class="einheit">· Auftragsart, ja oder nein</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Bestand nennt für Schließanlagen die Fertigung durch die Werkstatt (content/rubriken.json, schliessanlage). Antwort ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja oder nein</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PA-006</span> Beratung vor Ort zu Türen und Schließtechnik <span class="einheit">· Auftragsart, ja oder nein</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> Bestandsaufnahme der vorhandenen Schließtechnik; Einordnung von Schwachstellen; Vorschlag mit mechanischen und elektronischen Möglichkeiten; Grundlage für ein belastbares Angebot <span class="quelle">Quelle: content/service-pages.json, id tuer-technische-beratung, Feld bullets</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> ja, als Beratungsanfrage <span class="quelle">Quelle: _werkstatt/ausbau/AUFTRAG.md, G-34 (individuelle Beratung per Anfrage)</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Antwort ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja oder nein</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PA-007</span> Einbau elektronischer Zutrittslösungen <span class="einheit">· Auftragsart, ja oder nein</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Bestand nennt Beratung und Angebot, keinen Einbau (content/rubriken.json, elektronische-schliesssysteme). Antwort ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">ja oder nein</p>
+    
+  </div>
+</article>
+</main>
+<footer class="fuss">
+  <p class="ende">Rückgabe: siehe LIESMICH.md im Ordner erhebung/boegen. Bitte den Bogen ohne interne Werte zurückgeben.</p>
+</footer>
+</body>
+</html>

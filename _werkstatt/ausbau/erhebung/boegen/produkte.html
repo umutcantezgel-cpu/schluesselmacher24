@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erhebungsbogen PRODUKTE</title>
+<style>
+@page {
+  size: A4 portrait;
+  margin: 24mm 15mm 22mm 15mm;
+  @top-left { content: "Erhebungsbogen PRODUKTE"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @top-center { content: "Datum: 03.11.2026"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @top-right { content: "Ausgefüllt von: ______________"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @bottom-left { content: "Vorschlag, bitte prüfen"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @bottom-right { content: "Seite " counter(page) " von " counter(pages); font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+}
+html { font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; background: #fff; }
+body { margin: 0; line-height: 1.25; }
+h1 { font-size: 16pt; margin: 0 0 1mm; }
+.untertitel { margin: 0 0 3mm; font-weight: bold; }
+.intro p { margin: 0 0 1.8mm; }
+.kopfzeile { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin: 4mm 0 5mm; }
+.kopfzeile div { border-bottom: 0.6pt solid #000; padding-bottom: 1mm; }
+.karte { display: grid; grid-template-columns: 1fr 34mm; border: 0.6pt solid #000; margin: 0 0 1.8mm; break-inside: avoid; page-break-inside: avoid; }
+.inhalt { padding: 1.3mm 2.5mm; }
+.h2x { margin: 0; }
+h2 { font-size: 11pt; margin: 3mm 0 1.6mm; text-decoration: underline; }
+.einheit { font-weight: normal; }
+.kopf { margin: 0 0 0.8mm; }
+.ken { font-weight: bold; }
+.gegen { font-weight: bold; margin: 0 0 0.8mm; }
+.zeile { margin: 0.5mm 0 0; }
+.lab { font-weight: bold; }
+.quelle { display: block; color: #000; margin-top: 0.4mm; }
+.hinweis { margin: 1.2mm 0 0; border-top: 0.4pt solid #000; padding-top: 0.8mm; }
+.antwort { border-left: 0.6pt solid #000; padding: 1.6mm 2.2mm; }
+.antwort .form { margin: 0.6mm 0 0; }
+.feld-zeile { margin: 4mm 0 0; border-bottom: 0.6pt solid #000; padding-bottom: 1mm; }
+.fuss { margin-top: 4mm; }
+.ende { margin-top: 2mm; }
+@media screen {
+  body { max-width: 180mm; margin: 0 auto; padding: 10mm 0; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Erhebungsbogen PRODUKTE</h1>
+  <p class="untertitel">Elektronische Schließsysteme: Hersteller, Produktname und Technik</p>
+  <div class="intro">
+    <p>Nennen Sie einen Produktnamen nur, wenn Sie ihn selbst bestätigen können.</p>
+    <p>Ohne Antwort zeigt die Seite nur Hersteller und Technik, keine Produktnamen. Namen aus dem Gespräch sind bisher nicht belegt.</p>
+  </div>
+  <div class="kopfzeile">
+    <div>Ausgefüllt von:</div>
+    <div>Datum:</div>
+  </div>
+</header>
+<main>
+<h2>Elektronische Zutrittslösungen</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PR-001</span> Technik elektronischer Zutrittslösungen <span class="einheit">· Technik, je Art ja oder nein</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> Elektronische Zutrittskontrolle mit Karte, Transponder, PIN, Smartphone und digitalen Zylindern. Benutzerverwaltung und zeitliche Berechtigungen. <span class="quelle">Quelle: content/seo.json, route elektronische-zutrittsloesungen, Feld seo.description</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> RFID mit Karte und Transponder, PIN, App und digitale Zylinder, wie im Bestand <span class="quelle">Quelle: content/seo.json, route elektronische-zutrittsloesungen (Titel RFID, PIN, App); erhebung/E1-schliesstechnik-systeme.md, Abschnitt 5 (RFID-System, Stufe B)</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bestätigen Sie je Technik mit ja oder nein, was der Betrieb tatsächlich einbaut.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Produktname, Technik, ja oder nein</p>
+    
+  </div>
+</article>
+<h2>Hersteller BKS</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PR-002</span> Elektronisches System von BKS (Produktname bitte nennen) <span class="einheit">· Hersteller, Produktname, Technik</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> BKS, elektronisches RFID-System, nicht mechanisch <span class="quelle">Quelle: erhebung/E1-schliesstechnik-systeme.md, Abschnitt 5 (ixalo, Suchauszug, Stufe B); _werkstatt/ausbau/FACHWISSEN.md, Abschnitt 2</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Bitte den Produktnamen nennen. Der Suchauszug nennt ixalo, im Gespräch fiel Xialo. Beides ist nicht am Original geprüft. Antwort: Produktname, Technik, im Angebot ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Produktname, Technik, ja oder nein</p>
+    
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PR-003</span> Weiteres elektronisches System von BKS (im Gespräch: SE) <span class="einheit">· Hersteller, Produktname, Technik</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Für den Namen SE gibt es keinen Beleg. Bitte Produktname und Technik nennen, falls der Betrieb es führt.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Produktname, Technik, ja oder nein</p>
+    
+  </div>
+</article>
+<h2>Hersteller ABUS</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PR-004</span> Elektronisches System von ABUS (im Gespräch: One) <span class="einheit">· Hersteller, Produktname, Technik</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Die Erhebung nennt für ABUS nur mechanische Systeme. Bitte Produktname und Technik nennen, falls der Betrieb es führt.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Produktname, Technik, ja oder nein</p>
+    
+  </div>
+</article>
+<h2>Hersteller Burg-Wächter</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PR-005</span> Elektronisches System von Burg-Wächter <span class="einheit">· Hersteller, Produktname, Technik</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> kein Eintrag im Bestand</p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Die Erhebung enthält zu diesem Hersteller keine Angabe. Bitte Produktname und Technik nennen, falls der Betrieb es führt.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Produktname, Technik, ja oder nein</p>
+    
+  </div>
+</article>
+<h2>Elektronische Zutrittslösungen</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">PR-006</span> Einbau durch den Betrieb <span class="einheit">· ja oder nein</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> Anfrage stellen, Beratung, Angebot; abschluss: beratung <span class="quelle">Quelle: content/rubriken.json, id elektronische-schliesssysteme, Felder ablauf und abschluss</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> kein Vorschlag mit Quelle</p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Bestand nennt Beratung und Angebot, keinen Einbau. Bitte angeben, ob der Betrieb einbaut.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Produktname, Technik, ja oder nein</p>
+    
+  </div>
+</article>
+</main>
+<footer class="fuss">
+  <p class="ende">Rückgabe: siehe LIESMICH.md im Ordner erhebung/boegen. Bitte den Bogen ohne interne Werte zurückgeben.</p>
+</footer>
+</body>
+</html>

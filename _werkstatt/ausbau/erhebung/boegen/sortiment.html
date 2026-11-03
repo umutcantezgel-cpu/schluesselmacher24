@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erhebungsbogen SORTIMENT</title>
+<style>
+@page {
+  size: A4 portrait;
+  margin: 24mm 15mm 22mm 15mm;
+  @top-left { content: "Erhebungsbogen SORTIMENT"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @top-center { content: "Datum: 03.11.2026"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @top-right { content: "Ausgefüllt von: ______________"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @bottom-left { content: "Vorschlag, bitte prüfen"; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+  @bottom-right { content: "Seite " counter(page) " von " counter(pages); font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; }
+}
+html { font-family: Arial, Helvetica, sans-serif; font-size: 11pt; color: #000; background: #fff; }
+body { margin: 0; line-height: 1.25; }
+h1 { font-size: 16pt; margin: 0 0 1mm; }
+.untertitel { margin: 0 0 3mm; font-weight: bold; }
+.intro p { margin: 0 0 1.8mm; }
+.kopfzeile { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin: 4mm 0 5mm; }
+.kopfzeile div { border-bottom: 0.6pt solid #000; padding-bottom: 1mm; }
+.karte { display: grid; grid-template-columns: 1fr 34mm; border: 0.6pt solid #000; margin: 0 0 1.8mm; break-inside: avoid; page-break-inside: avoid; }
+.inhalt { padding: 1.3mm 2.5mm; }
+.h2x { margin: 0; }
+h2 { font-size: 11pt; margin: 3mm 0 1.6mm; text-decoration: underline; }
+.einheit { font-weight: normal; }
+.kopf { margin: 0 0 0.8mm; }
+.ken { font-weight: bold; }
+.gegen { font-weight: bold; margin: 0 0 0.8mm; }
+.zeile { margin: 0.5mm 0 0; }
+.lab { font-weight: bold; }
+.quelle { display: block; color: #000; margin-top: 0.4mm; }
+.hinweis { margin: 1.2mm 0 0; border-top: 0.4pt solid #000; padding-top: 0.8mm; }
+.antwort { border-left: 0.6pt solid #000; padding: 1.6mm 2.2mm; }
+.antwort .form { margin: 0.6mm 0 0; }
+.feld-zeile { margin: 4mm 0 0; border-bottom: 0.6pt solid #000; padding-bottom: 1mm; }
+.fuss { margin-top: 4mm; }
+.ende { margin-top: 2mm; }
+@media screen {
+  body { max-width: 180mm; margin: 0 auto; padding: 10mm 0; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Erhebungsbogen SORTIMENT</h1>
+  <p class="untertitel">Schlüssel nach Code: welche Codelinien der Betrieb führt</p>
+  <div class="intro">
+    <p>Jede Codelinie hat eine feste Kennung. Die Liste enthält alle Codelinien aus dem Bestand.</p>
+    <p>Tragen Sie in der Antwortspalte ein, ob die Linie im Sortiment ist, wie viele Tage die Lieferung dauert und ob ein Foto vorhanden ist. Den Hersteller nennen Sie im eigenen Feld.</p>
+    <p>Ohne Antwort bleibt die Codelinie wie im Bestand.</p>
+  </div>
+  <div class="kopfzeile">
+    <div>Ausgefüllt von:</div>
+    <div>Datum:</div>
+  </div>
+</header>
+<main>
+<h2>Möbelschlüssel</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-001</span> Büroschrank und Rollcontainer: Serie MS-01 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 8,00 Euro; ab 3 Stück 7,20 Euro; ab 5 Stück 6,56 Euro <span class="quelle">Quelle: content/code-lines.json, id ms-01, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-002</span> Schreibtisch und Sideboard: Serie MS-02 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 8,00 Euro; ab 3 Stück 7,20 Euro; ab 5 Stück 6,56 Euro <span class="quelle">Quelle: content/code-lines.json, id ms-02, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-003</span> Aktenschrank und Registratur: Serie MS-03 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 8,00 Euro; ab 3 Stück 7,20 Euro; ab 5 Stück 6,56 Euro <span class="quelle">Quelle: content/code-lines.json, id ms-03, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-004</span> Vitrine und Glasschrank: Serie MS-04 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 8,00 Euro; ab 3 Stück 7,20 Euro; ab 5 Stück 6,56 Euro <span class="quelle">Quelle: content/code-lines.json, id ms-04, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-005</span> Küchenmöbel und Einbauschrank: Serie MS-05 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 8,00 Euro; ab 3 Stück 7,20 Euro; ab 5 Stück 6,56 Euro <span class="quelle">Quelle: content/code-lines.json, id ms-05, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-006</span> Werkstattschrank und Werkbank: Serie MS-06 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id ms-06, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+<h2>Spindschlüssel</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-007</span> Umkleidespind Sport und Verein: Serie SP-01 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 8,00 Euro; ab 3 Stück 7,20 Euro; ab 5 Stück 6,56 Euro <span class="quelle">Quelle: content/code-lines.json, id sp-01, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-008</span> Betriebsspind und Sozialraum: Serie SP-02 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 8,00 Euro; ab 3 Stück 7,20 Euro; ab 5 Stück 6,56 Euro <span class="quelle">Quelle: content/code-lines.json, id sp-02, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-009</span> Schulspind und Schließfach: Serie SP-03 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id sp-03, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-010</span> Garderobenschrank Hotel und Gastronomie: Serie SP-04 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id sp-04, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-011</span> Wertfach und Schließfachanlage: Serie SP-05 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 10,00 Euro; ab 3 Stück 9,00 Euro; ab 5 Stück 8,20 Euro <span class="quelle">Quelle: content/code-lines.json, id sp-05, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+<h2>Briefkastenschlüssel</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-012</span> Einzelbriefkasten Hauswand: Serie BK-01 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 7,00 Euro; ab 3 Stück 6,30 Euro; ab 5 Stück 5,74 Euro <span class="quelle">Quelle: content/code-lines.json, id bk-01, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-013</span> Briefkastenanlage Mehrfamilienhaus: Serie BK-02 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 8,00 Euro; ab 3 Stück 7,20 Euro; ab 5 Stück 6,56 Euro <span class="quelle">Quelle: content/code-lines.json, id bk-02, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-014</span> Paketkasten und Zustellfach: Serie BK-03 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 8,00 Euro; ab 3 Stück 7,20 Euro; ab 5 Stück 6,56 Euro <span class="quelle">Quelle: content/code-lines.json, id bk-03, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-015</span> Zeitungsrohr und Nebenfach: Serie BK-04 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 7,00 Euro; ab 3 Stück 6,30 Euro; ab 5 Stück 5,74 Euro <span class="quelle">Quelle: content/code-lines.json, id bk-04, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-016</span> Briefkastenanlage Gewerbeobjekt: Serie BK-05 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id bk-05, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+<h2>Profilschlüssel</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-017</span> Profilzylinder Wohnungstür: Serie ZY-01 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 22,00 Euro; ab 3 Stück 19,80 Euro; ab 5 Stück 18,04 Euro <span class="quelle">Quelle: content/code-lines.json, id zy-01, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-018</span> Profilzylinder Haustür mit Sicherungskarte: Serie ZY-02 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 29,00 Euro; ab 3 Stück 26,10 Euro; ab 5 Stück 23,78 Euro <span class="quelle">Quelle: content/code-lines.json, id zy-02, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein. Für diese Linie ist im Bestand ein Foto Pflicht.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-019</span> Nebentür, Keller und Garage: Serie ZY-03 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 19,00 Euro; ab 3 Stück 17,10 Euro; ab 5 Stück 15,58 Euro <span class="quelle">Quelle: content/code-lines.json, id zy-03, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-020</span> Rundzylinder und Ovalzylinder: Serie ZY-04 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 21,00 Euro; ab 3 Stück 18,90 Euro; ab 5 Stück 17,22 Euro <span class="quelle">Quelle: content/code-lines.json, id zy-04, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-021</span> Buntbartschloss Zimmertür: Serie ZY-05 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 6,00 Euro; ab 3 Stück 5,40 Euro; ab 5 Stück 4,92 Euro <span class="quelle">Quelle: content/code-lines.json, id zy-05, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-022</span> Zimmertür mit Chubb-Bart: Serie ZY-06 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 12,00 Euro; ab 3 Stück 10,80 Euro; ab 5 Stück 9,84 Euro <span class="quelle">Quelle: content/code-lines.json, id zy-06, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+<h2>Vorhängeschlossschlüssel</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-023</span> Vorhängeschloss Tor und Zaun: Serie VH-01 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id vh-01, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-024</span> Vorhängeschloss Kette und Transport: Serie VH-02 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id vh-02, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-025</span> Hebelschloss Automat und Kasse: Serie VH-03 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id vh-03, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-026</span> Hebelschloss Schaltschrank: Serie VH-04 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id vh-04, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-027</span> Vorhängeschloss wetterfest Außenbereich: Serie VH-05 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 10,00 Euro; ab 3 Stück 9,00 Euro; ab 5 Stück 8,20 Euro <span class="quelle">Quelle: content/code-lines.json, id vh-05, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+<h2>Technikschlüssel</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-028</span> Zählerschrank und Hausanschluss: Serie TS-01 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id ts-01, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-029</span> Schaltschrank Industrie: Serie TS-02 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 10,00 Euro; ab 3 Stück 9,00 Euro; ab 5 Stück 8,20 Euro <span class="quelle">Quelle: content/code-lines.json, id ts-02, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-030</span> Heizungs- und Technikraum: Serie TS-03 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id ts-03, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-031</span> Aufzug- und Wartungsschrank: Serie TS-04 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 11,00 Euro; ab 3 Stück 9,90 Euro; ab 5 Stück 9,02 Euro <span class="quelle">Quelle: content/code-lines.json, id ts-04, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-032</span> Verteilerkasten Außenbereich: Serie TS-05 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 10,00 Euro; ab 3 Stück 9,00 Euro; ab 5 Stück 8,20 Euro <span class="quelle">Quelle: content/code-lines.json, id ts-05, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+<h2>Fenstergriffschlüssel</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-033</span> Abschließbarer Fenstergriff: Serie FE-01 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 7,00 Euro; ab 3 Stück 6,30 Euro; ab 5 Stück 5,74 Euro <span class="quelle">Quelle: content/code-lines.json, id fe-01, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-034</span> Balkon- und Terrassentür: Serie FE-02 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 8,00 Euro; ab 3 Stück 7,20 Euro; ab 5 Stück 6,56 Euro <span class="quelle">Quelle: content/code-lines.json, id fe-02, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-035</span> Fensterzusatzschloss: Serie FE-03 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id fe-03, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-036</span> Rollladen- und Gittersicherung: Serie FE-04 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id fe-04, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-037</span> Dachfenster und Lichtkuppel: Serie FE-05 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id fe-05, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+<h2>Aufbauschlüssel</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-038</span> Anhänger und Deichselschloss: Serie FA-01 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 10,00 Euro; ab 3 Stück 9,00 Euro; ab 5 Stück 8,20 Euro <span class="quelle">Quelle: content/code-lines.json, id fa-01, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-039</span> Wohnwagen und Wohnmobil Aufbautür: Serie FA-02 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 12,00 Euro; ab 3 Stück 10,80 Euro; ab 5 Stück 9,84 Euro <span class="quelle">Quelle: content/code-lines.json, id fa-02, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-040</span> Serviceklappe und Gaskasten: Serie FA-03 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 10,00 Euro; ab 3 Stück 9,00 Euro; ab 5 Stück 8,20 Euro <span class="quelle">Quelle: content/code-lines.json, id fa-03, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-041</span> Koffer- und Pritschenaufbau: Serie FA-04 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 11,00 Euro; ab 3 Stück 9,90 Euro; ab 5 Stück 9,02 Euro <span class="quelle">Quelle: content/code-lines.json, id fa-04, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-042</span> Dachbox und Trägersystem: Serie FA-05 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 10,00 Euro; ab 3 Stück 9,00 Euro; ab 5 Stück 8,20 Euro <span class="quelle">Quelle: content/code-lines.json, id fa-05, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+<h2>Maschinenschlüssel</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-043</span> Bau- und Landmaschine: Serie MA-01 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 12,00 Euro; ab 3 Stück 10,80 Euro; ab 5 Stück 9,84 Euro <span class="quelle">Quelle: content/code-lines.json, id ma-01, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-044</span> Flurförderzeug und Stapler: Serie MA-02 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 12,00 Euro; ab 3 Stück 10,80 Euro; ab 5 Stück 9,84 Euro <span class="quelle">Quelle: content/code-lines.json, id ma-02, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-045</span> Automat und Warenausgabe: Serie MA-03 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 11,00 Euro; ab 3 Stück 9,90 Euro; ab 5 Stück 9,02 Euro <span class="quelle">Quelle: content/code-lines.json, id ma-03, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-046</span> Aufzug-Notentriegelung: Serie MA-04 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 14,00 Euro; ab 3 Stück 12,60 Euro; ab 5 Stück 11,48 Euro <span class="quelle">Quelle: content/code-lines.json, id ma-04, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-047</span> Kompressor und Anlagenabdeckung: Serie MA-05 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 12,00 Euro; ab 3 Stück 10,80 Euro; ab 5 Stück 9,84 Euro <span class="quelle">Quelle: content/code-lines.json, id ma-05, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+<h2>Objektschlüssel</h2>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-048</span> Müll- und Containerstandplatz: Serie GO-01 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id go-01, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-049</span> Schranke und Poller: Serie GO-02 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 12,00 Euro; ab 3 Stück 10,80 Euro; ab 5 Stück 9,84 Euro <span class="quelle">Quelle: content/code-lines.json, id go-02, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-050</span> Tiefgaragentor und Zufahrt: Serie GO-03 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 12,00 Euro; ab 3 Stück 10,80 Euro; ab 5 Stück 9,84 Euro <span class="quelle">Quelle: content/code-lines.json, id go-03, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-051</span> Gartenhaus und Nebengebäude: Serie GO-04 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 8,00 Euro; ab 3 Stück 7,20 Euro; ab 5 Stück 6,56 Euro <span class="quelle">Quelle: content/code-lines.json, id go-04, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+
+<article class="karte">
+  <div class="inhalt">
+    <p class="gegen"><span class="ken">S-052</span> Sport- und Vereinsanlage: Serie GO-05 <span class="einheit">· Stück, nach Code gefertigt</span></p>
+    <p class="zeile"><span class="lab">Bestand:</span> 9,00 Euro; ab 3 Stück 8,10 Euro; ab 5 Stück 7,38 Euro <span class="quelle">Quelle: content/code-lines.json, id go-05, Felder priceCents und bulkPrices</span></p>
+    <p class="zeile"><span class="lab">Vorschlag:</span> im Sortiment ja. Foto nein (nur Platzhalter im Bestand) <span class="quelle">Quelle: erhebung/E1-interview.md, I-CODE-01 und I-CODE-09</span></p>
+    <p class="hinweis">Vorschlag, bitte prüfen: Der Hersteller fehlt im Bestand (Platzhalter). Antwort: Sortiment ja oder nein, Lieferzeit in Tagen, Foto ja oder nein.</p>
+  </div>
+  <div class="antwort">
+    <p class="lab">Antwort</p>
+    <p class="form">Sortiment ja oder nein; Tage; Foto ja oder nein</p>
+    <p class="feld-zeile">Hersteller (Antwort):</p>
+  </div>
+</article>
+</main>
+<footer class="fuss">
+  <p class="ende">Rückgabe: siehe LIESMICH.md im Ordner erhebung/boegen. Bitte den Bogen ohne interne Werte zurückgeben.</p>
+</footer>
+</body>
+</html>
