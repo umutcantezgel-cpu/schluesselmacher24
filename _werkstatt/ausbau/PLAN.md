@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T02:05:21.623Z
+Stand: 2026-11-03T04:04:02.835Z
 
-Etappe 2/12 · Welle 1 · Pflicht 28/128 · Kür 0/10 · läuft 5 · blockiert 0
+Etappe 2/12 · Welle 3 · Pflicht 49/128 · Kür 0/10 · läuft 1 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -68,24 +68,24 @@ Geplante Tage: 0.71
 | E1-FACHKUNDLER-02 | Schließtechnik: Normen, Schutzfunktionen, Bauformen, Messen | haiku-5.5 | M | pflicht | 3 | committet | 3c27a53 |
 | E1-FACHKUNDLER-03 | Transponder und Klonbarkeit | haiku-5.5 | M | pflicht | 3 | committet | 04b90e7 |
 | E1-RECHERCHEUR-01 | Fahrzeugdatenquellen mit Lizenz | haiku-5.5 | M | pflicht | 3 | committet | 04b90e7 |
-| E1-RECHERCHEUR-02 | Versandwege für Einsenden und Rückversand | haiku-5.5 | M | pflicht | 3 | abgenommen |  |
-| E1-RECHERCHEUR-03 | Wettbewerb: Struktur, Abläufe, Preise | haiku-5.5 | M | pflicht | 3 | läuft |  |
-| E1-RECHERCHEUR-04 | Lagebild Suche und KI-Antworten prüfen | haiku-5.5 | M | pflicht | 3 | läuft |  |
-| E1-RECHERCHEUR-05 | Nachfrage, Familien und Ergebnisbilder | haiku-5.5 | M | pflicht | 3 | abgenommen |  |
-| E1-RECHERCHEUR-06 | Kartendaten Hessen und Videofassade | haiku-5.5 | M | pflicht | 3 | läuft |  |
+| E1-RECHERCHEUR-02 | Versandwege für Einsenden und Rückversand | haiku-5.5 | M | pflicht | 3 | committet | f877181 |
+| E1-RECHERCHEUR-03 | Wettbewerb: Struktur, Abläufe, Preise | haiku-5.5 | M | pflicht | 3 | committet | ac1c859 |
+| E1-RECHERCHEUR-04 | Lagebild Suche und KI-Antworten prüfen | haiku-5.5 | M | pflicht | 3 | committet | e79d57a |
+| E1-RECHERCHEUR-05 | Nachfrage, Familien und Ergebnisbilder | haiku-5.5 | M | pflicht | 3 | committet | 85da489 |
+| E1-RECHERCHEUR-06 | Kartendaten Hessen und Videofassade | haiku-5.5 | M | pflicht | 3 | committet | 571b823 |
 
 ### Welle 2
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E1-FACHKUNDLER-04 | Gegenprüfung der Fachrecherchen und Lückenschlüsse | haiku-5.5 | M | pflicht | 3 | läuft |  |
+| E1-FACHKUNDLER-04 | Gegenprüfung der Fachrecherchen und Lückenschlüsse | haiku-5.5 | M | pflicht | 3 | committet | 571b823 |
 
 ### Welle 3
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E1-OPUS-01 | Verdichten: FACHWISSEN, QUELLEN, WETTBEWERB, KARTE, KANTEN, LAGEBILD Suche | opus-5.5 | L | pflicht | 3 | offen |  |
-| E1-AUTOR-01 | Inhaber-Interview: 12 bis 20 Fragen je Rubrik für MENSCHEN.md | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E1-AUTOR-01 | Inhaber-Interview: 12 bis 20 Fragen je Rubrik für MENSCHEN.md | haiku-5.5 | M | pflicht | 3 | committet | 48baa5d |
 
 ## E2 · Plan, KERN v2, Abnahme
 
@@ -105,7 +105,7 @@ Geplante Tage: 0.43
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E2-PRUEFER-01 | L0: plan.mjs pruefen und Checkliste des Plans | haiku-5.5 | M | pflicht | 3 | committet | def6d00 |
-| E2-PRUEFER-02 | L0: Vorab-Scheitern „Woran stockt der Lauf am dritten Tag?“ | haiku-5.5 | M | pflicht | 3 | abgenommen |  |
+| E2-PRUEFER-02 | L0: Vorab-Scheitern „Woran stockt der Lauf am dritten Tag?“ | haiku-5.5 | M | pflicht | 3 | committet | aee92e5 |
 | E2-DATENPFLEGER-01 | Zuordnung jeder nicht vorhandenen Anforderung (L, EL, M, E) zu Paketen oder Menschensache | haiku-5.5 | M | pflicht | 3 | committet | 0760ee6 |
 
 ## E3 · Fundament: Datenmodelle, Kernlogik, Designsystem, Bewegung, PDF, Versand, Fahrzeuge, Konfigurator-Kern, Partner, Uploads
@@ -119,45 +119,45 @@ Geplante Tage: 2.14
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E3-OPUS-01 | Rubriken-Modell: Sammlung, Migration, content/rubriken.json, Datenweiche, Seed, Tests | opus-5.5 | L | pflicht | 5 | committet | a6cfc30 |
-| E3-OPUS-02 | Designsystem v2: OKLCH-Tokens mit Abstufungsregel, Typografie für Laien, Tippziele, Leuchten als System, Bereichsfarbe ohne Lila, Schriften lokal | opus-5.5 | L | pflicht | 5 | läuft |  |
-| E3-GRAFIKER-01 | Neue Fach-Icons der Familie: Motorradschlüssel, Gehäuse, Transponder-Kopie, Schlüsselfinder, Vor-Ort, Karte, Video, Pause, Bewegung | haiku-5.5 | M | pflicht | 3 | offen |  |
-| E3-DATENPFLEGER-03 | Erhebungsbögen PREISE, KLONBAR, SORTIMENT, PRODUKTE, PARTNER als CSV und Druckseite mit Vorschlägen | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E3-OPUS-02 | Designsystem v2: OKLCH-Tokens mit Abstufungsregel, Typografie für Laien, Tippziele, Leuchten als System, Bereichsfarbe ohne Lila, Schriften lokal | opus-5.5 | L | pflicht | 5 | committet | 4cf61af |
+| E3-GRAFIKER-01 | Neue Fach-Icons der Familie: Motorradschlüssel, Gehäuse, Transponder-Kopie, Schlüsselfinder, Vor-Ort, Karte, Video, Pause, Bewegung | haiku-5.5 | M | pflicht | 3 | committet | 43fcdb9 |
+| E3-DATENPFLEGER-02 | Kartendaten Hessen aufbereiten (Kreise, Gemeinden, Lizenzvermerk) als vereinfachte Formen | haiku-5.5 | M | pflicht | 3 | committet | 04fc0f8 |
+| E3-DATENPFLEGER-03 | Erhebungsbögen PREISE, KLONBAR, SORTIMENT, PRODUKTE, PARTNER als CSV und Druckseite mit Vorschlägen | haiku-5.5 | M | pflicht | 3 | committet | a11effb |
 
 ### Welle 2
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E3-OPUS-03 | Bewegungsmodul mit Schalter „Bewegung an oder ruhig“, Inline-Startskript, data-motion-Register, Pause-Baustein | opus-5.5 | L | pflicht | 4 | offen |  |
-| E3-OPUS-04 | Vorgangsblatt-System als PDF (pdfkit) mit Anhang an Benachrichtigungen und Abruf im Admin | opus-5.5 | L | pflicht | 4 | offen |  |
-| E3-OPUS-10 | Übernahmen aus fremden Branches nach Denkprotokoll (Stripe-API-Version, JSON-LD-Detailseiten); Zahlungsverhalten unverändert, mit Test (G9) | opus-5.5 | M | pflicht | 2 | offen |  |
-| E3-DATENPFLEGER-02 | Kartendaten Hessen aufbereiten (Kreise, Gemeinden, Lizenzvermerk) als vereinfachte Formen | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E3-OPUS-03 | Bewegungsmodul mit Schalter „Bewegung an oder ruhig“, Inline-Startskript, data-motion-Register, Pause-Baustein | opus-5.5 | L | pflicht | 4 | committet | f90d584 |
+| E3-OPUS-04 | Vorgangsblatt-System als PDF (pdfkit) mit Anhang an Benachrichtigungen und Abruf im Admin | opus-5.5 | L | pflicht | 4 | committet | 73c6fb9 |
+| E3-OPUS-10 | Übernahmen aus fremden Branches nach Denkprotokoll (Stripe-API-Version, JSON-LD-Detailseiten); Zahlungsverhalten unverändert, mit Test (G9) | opus-5.5 | M | pflicht | 2 | committet | 6e5c663 |
 
 ### Welle 3
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E3-OPUS-05 | Versand-Adapter: Schnittstelle, Attrappe, Begleitschein-PDF, Anbieter hinter Umgebungsvariablen, Aufpreise aus Einstellungen | opus-5.5 | L | pflicht | 4 | offen |  |
-| E3-OPUS-06 | Fahrzeugkatalog-Modell: Baureihe, Baujahre, Schlüsselarten, Transponder mit Quelle, Klonbarkeit, Gehäuse, Leistungen, Suche mit Tippfehlertoleranz | opus-5.5 | L | pflicht | 5 | offen |  |
-| E3-OPUS-09 | Uploads: neue Kategorien, Pflicht-Uploads und Nachweise serverseitig je Weg, Fristen je Zweck | opus-5.5 | L | pflicht | 5 | offen |  |
+| E3-OPUS-05 | Versand-Adapter: Schnittstelle, Attrappe, Begleitschein-PDF, Anbieter hinter Umgebungsvariablen, Aufpreise aus Einstellungen | opus-5.5 | L | pflicht | 4 | committet | 379cc13 |
+| E3-OPUS-06 | Fahrzeugkatalog-Modell: Baureihe, Baujahre, Schlüsselarten, Transponder mit Quelle, Klonbarkeit, Gehäuse, Leistungen, Suche mit Tippfehlertoleranz | opus-5.5 | L | pflicht | 5 | committet | ae72510 |
+| E3-OPUS-09 | Uploads: neue Kategorien, Pflicht-Uploads und Nachweise serverseitig je Weg, Fristen je Zweck | opus-5.5 | L | pflicht | 5 | committet | 1800660 |
 
 ### Welle 4
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E3-OPUS-07 | Konfigurator-Kern: Systemdaten, Schließplan, Matrix mit Vorlagen, Preisfunktion über die vorhandenen Preisregeln (Preiswerte unverändert, G9), Maßprüfung, Zwischenstand per Link | opus-5.5 | L | pflicht | 5 | offen |  |
-| E3-DATENPFLEGER-01 | Fahrzeugdaten-Import aus offenen Quellen mit Quelle je Eintrag und Abdeckungsmessung | haiku-5.5 | L | pflicht | 3 | offen |  |
+| E3-OPUS-07 | Konfigurator-Kern: Systemdaten, Schließplan, Matrix mit Vorlagen, Preisfunktion über die vorhandenen Preisregeln (Preiswerte unverändert, G9), Maßprüfung, Zwischenstand per Link | opus-5.5 | L | pflicht | 5 | committet | 0c6624d |
+| E3-DATENPFLEGER-01 | Fahrzeugdaten-Import aus offenen Quellen mit Quelle je Eintrag und Abdeckungsmessung | haiku-5.5 | L | pflicht | 3 | committet | bf72638 |
 
 ### Welle 5
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E3-OPUS-08 | Partner-Modelle: Statusautomat Bewerbung, Vermittlungszustände, Abrechnung A und B als reine Funktionen, Zugriffsrechte | opus-5.5 | L | pflicht | 4 | offen |  |
+| E3-OPUS-08 | Partner-Modelle: Statusautomat Bewerbung, Vermittlungszustände, Abrechnung A und B als reine Funktionen, Zugriffsrechte | opus-5.5 | L | pflicht | 4 | committet | 666fd41 |
 
 ### Welle 6
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E3-UPGRADE-01 | Sicherheits- und Minor-Updates (React 19.3, eslint-config-next 16.4, npm audit ohne Major) | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E3-UPGRADE-01 | Sicherheits- und Minor-Updates (React 19.3, eslint-config-next 16.4, npm audit ohne Major) | haiku-5.5 | M | pflicht | 3 | läuft |  |
 
 ### Welle 7
 
