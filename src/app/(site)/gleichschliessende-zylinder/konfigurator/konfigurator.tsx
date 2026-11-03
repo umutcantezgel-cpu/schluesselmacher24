@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -21,6 +21,7 @@ import {
   measureOptions,
   wirksameZusatzIds,
 } from '@/lib/cylinder-rules';
+import { dekodiere, kodiere, passtInLink } from '@/lib/konfigurator';
 import { priceCylinderOrder } from '@/lib/pricing';
 import { formatCents, formatMillimeter } from '@/lib/format';
 import { PreisHinweis } from '@/components/recht/preis-hinweis';
@@ -42,6 +43,8 @@ import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
 import { GlyphPlus } from '@/components/visual/glyphen/plus';
 import { GlyphWarnung } from '@/components/visual/glyphen/warnung';
 import { ZylinderMassLive } from '@/components/visual/interaktiv/zylinder-mass-live';
+
+import { SET_UEBLICH, istStartzustand, masseRueckfragen, planZuPositionen, positionenZuPlan } from './kern';
 
 const FLOW_ID = 'zylinder-konfigurator';
 
@@ -155,6 +158,22 @@ function availableForms(catalog: CylinderCatalog, hersteller?: CylinderManufactu
 
 function herstellerAusState(catalog: CylinderCatalog, manufacturerId: string): CylinderManufacturer | undefined {
   return manufacturerId ? aktiveHersteller(catalog).find((h) => h.id === manufacturerId) : undefined;
+}
+
+/* Adresse als äußerer Zustand wie im Schließplan-Planer (E5-OPUS-02): auf dem Server leer, im
+   Browser die Suche; nach dem Bereinigen meldet ein eigenes Ereignis die neue Adresse. */
+const ADRESSE_EREIGNIS = 'sm24-adresse';
+function abonniereAdresse(melden: () => void) {
+  window.addEventListener('popstate', melden);
+  window.addEventListener(ADRESSE_EREIGNIS, melden);
+  return () => {
+    window.removeEventListener('popstate', melden);
+    window.removeEventListener(ADRESSE_EREIGNIS, melden);
+  };
+}
+function adresseBereinigen() {
+  window.history.replaceState(null, '', window.location.pathname);
+  window.dispatchEvent(new Event(ADRESSE_EREIGNIS));
 }
 
 /** Fortlaufende, vorhersagbare Kennung — gleich auf Server und im Browser. */
@@ -293,6 +312,41 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
   });
 
   const { data } = flow;
+
+  // Zusammenstellung als Link (KE5) in derselben Form wie im Schließplan-Planer (E5-OPUS-02): Ein
+  // unveränderter Start wird sofort ersetzt, eine eigene Zusammenstellung erst nach Rückfrage.
+  const adresse = useSyncExternalStore(abonniereAdresse, () => window.location.search, () => '');
+  const linkRoh = useMemo(() => new URLSearchParams(adresse).get('plan'), [adresse]);
+  const linkPositionen = useMemo(() => {
+    const plan = linkRoh ? dekodiere(linkRoh) : null;
+    return plan ? planZuPositionen(plan) : null;
+  }, [linkRoh]);
+  const linkFehler = Boolean(linkRoh) && !linkPositionen;
+  useEffect(() => {
+    if (linkPositionen && istStartzustand(flow.data.items, flow.data.keyCount, initial)) {
+      flow.update({ items: linkPositionen.items, keyCount: linkPositionen.keyCount });
+      adresseBereinigen();
+    }
+  }, [linkPositionen, flow, initial]);
+  const [linkStatus, setLinkStatus] = useState<{ url: string; kopiert: boolean } | { zuGross: true } | null>(null);
+  const rueckfragen = useMemo(() => masseRueckfragen(data.items, catalog), [data.items, catalog]);
+
+  async function linkKopieren() {
+    const plan = positionenZuPlan(data.items, data.keyCount);
+    if (!passtInLink(plan)) {
+      setLinkStatus({ zuGross: true });
+      return;
+    }
+    const url = `${window.location.origin}${window.location.pathname}?plan=${kodiere(plan)}`;
+    let kopiert = false;
+    try {
+      await navigator.clipboard.writeText(url);
+      kopiert = true;
+    } catch {
+      kopiert = false;
+    }
+    setLinkStatus({ url, kopiert });
+  }
   const hersteller = useMemo(() => herstellerAusState(catalog, data.manufacturerId), [catalog, data.manufacturerId]);
   const draft = useMemo(() => toDraft(data, catalog), [data, catalog]);
   const breakdown = useMemo(() => priceCylinderOrder(draft, catalog), [draft, catalog]);
@@ -494,8 +548,78 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
       submitting={submitting}
       blockedHint={blockedHints[flow.step?.id ?? '']}
       summe={{ label: 'Summe', wert: formatCents(breakdown.totalCents) }}
+      raster="seite"
+      seite={
+        <div className="space-y-4">
+          {/* Laienerklärung mit Beispiel (G-09) und der Weg zur Schließanlage */}
+          <div className="rounded-lg border border-border bg-surface p-4">
+            <p className="text-small font-semibold text-foreground">Sperrschließung: ein Schlüssel für alle Türen</p>
+            <p className="mt-1 text-small leading-relaxed text-foreground-muted">
+              Anders bei einer Schließanlage: Dort öffnet etwa der Schlüssel des Kindes nur sein Zimmer und die
+              Haustür, der Schlüssel der Eltern alle Türen.
+            </p>
+            <Link
+              href="/schliessanlagen/konfigurator/schliessplan"
+              className="mt-2 inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline"
+            >
+              Schließanlage im Schließplan-Planer
+            </Link>
+          </div>
+          <Button variant="outline" size="sm" onClick={linkKopieren}>
+            Zusammenstellung als Link speichern
+          </Button>
+          <div role="status" className="text-small text-foreground-muted">
+            {linkStatus && 'zuGross' in linkStatus && (
+              <p>Die Zusammenstellung ist zu groß für einen Link. Sie bleibt in diesem Browser gespeichert.</p>
+            )}
+            {linkStatus && 'url' in linkStatus && (
+              <>
+                <p>
+                  {linkStatus.kopiert ? 'Link kopiert.' : 'Kopieren Sie diesen Link.'} Er enthält Bauformen, Maße und
+                  die Schlüsselzahl, keine Kontaktdaten; Zusatzoptionen wählen Sie danach neu.
+                </p>
+                {!linkStatus.kopiert && (
+                  <input
+                    readOnly
+                    value={linkStatus.url}
+                    aria-label="Link zur Zusammenstellung"
+                    onFocus={(e) => e.currentTarget.select()}
+                    className="mt-2 w-full rounded-lg border border-input bg-surface px-3 py-2 font-mono text-caption text-foreground"
+                  />
+                )}
+              </>
+            )}
+          </div>
+        </div>
+      }
     >
       <div className="space-y-6">
+        {linkFehler && (
+          <Alert tone="warning" title="Der Link ließ sich nicht öffnen">
+            Er enthält keine Sperrschließung oder ist unvollständig. Einen Plan mit unterschiedlichen
+            Schlüsseln öffnen Sie im Schließplan-Planer.
+          </Alert>
+        )}
+        {linkPositionen && !istStartzustand(data.items, data.keyCount, initial) && (
+          <Alert tone="info" title="Zusammenstellung aus dem Link übernehmen?">
+            <p>Der Link enthält {linkPositionen.items.reduce((n, item) => n + item.qty, 0)} Zylinder und {linkPositionen.keyCount} Schlüssel. Ihre bisherige Zusammenstellung würde ersetzt.</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Button
+                size="sm"
+                onClick={() => {
+                  flow.update({ items: linkPositionen.items, keyCount: linkPositionen.keyCount });
+                  adresseBereinigen();
+                }}
+              >
+                Übernehmen
+              </Button>
+              <Button size="sm" variant="outline" onClick={adresseBereinigen}>
+                Meine behalten
+              </Button>
+            </div>
+          </Alert>
+        )}
+
         {/* Laufende Summe — in jedem Schritt sichtbar, als Schriftfeld in Mono */}
         <div aria-live="polite">
           <dl className="grid grid-cols-2 border-y border-border sm:grid-cols-4">
@@ -621,6 +745,29 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
                 ? `Bisher ${count} von ${catalog.maxCylinders} möglichen Zylindern.`
                 : `Die Höchstzahl von ${catalog.maxCylinders} Zylindern je Bestellung ist erreicht. Für größere Vorhaben planen wir eine Schließanlage.`}
             </p>
+
+            {/* Übliche Sets zwei bis zehn Zylinder (G-28); bestellbar bleibt alles bis zur Höchstzahl (G9) */}
+            {count > SET_UEBLICH.bis && canAddPosition && (
+              <Alert tone="info" title={`Mehr als ${SET_UEBLICH.bis} Zylinder`}>
+                Bis {catalog.maxCylinders} Zylinder bestellen Sie hier direkt. Eine größere Schließung prüfen wir gern
+                vorab mit Ihnen:{' '}
+                <Link href="/service-und-termin/kontakt" className="font-semibold text-primary hover:underline">
+                  Frage zur Zusammenstellung stellen
+                </Link>
+                .
+              </Alert>
+            )}
+
+            {/* Rückfragen der Maßprüfung des Kerns (E5-OPUS-02): halten nichts auf */}
+            {rueckfragen.length > 0 && (
+              <Alert tone="info" title="Bitte prüfen Sie die Maße">
+                <ul className="space-y-1">
+                  {rueckfragen.map((text) => (
+                    <li key={text}>{text}</li>
+                  ))}
+                </ul>
+              </Alert>
+            )}
           </div>
         )}
 
