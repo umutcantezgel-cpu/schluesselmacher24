@@ -36,7 +36,14 @@ Querschnitt: Navigation und Hub stehen im Code (src/lib/navigation.ts); der Schn
 - Typprüfung 0 Fehler · Lint 0 Fehler, 0 Warnungen · Unit-Tests 1.735 von 1.735 (133 Dateien) · Datenbanktests 94 von 94 (15 Dateien).
 - Build ohne Datenbank 224 von 224 Seiten · Build mit lokalem Postgres grün (Migrationen, Seed, Zugang, Livegang-Prüfung, 224 Seiten) · Livegang-Prüfung ohne Lücke in beiden Modi.
 - Inventar laut Quelltext: 55 page.tsx, 181 indexierbare Adressen (alle in der Sitemap), 19 noindex.
-- Messwerte Prüfstufe B: werden in E0-d ergänzt (Lighthouse, axe, Konsole, Bildsatz, Slop-Index, Snippets).
+- Funktionsliste 19 von 19 bestanden, Tastatur 3 von 3 (protokolle/E0-funktionsliste-vorher.json, -tastatur-vorher.json).
+- Erster Bildschirm: 0 von 8 Schnelleinstieg-Kacheln ohne Scrollen sichtbar; Überschrift bei 1.145 bis 1.155 px mobil und 971 px Desktop (protokolle/E0-vorher-hub.json).
+- Bildsatz 70 von 70 Läufen ohne Seitenüberlauf; Kontaktbögen in bilder/vorher.
+- axe WCAG 2.2 AA: je Hauptansicht ein ernster Befund (target-size am Telefon-Link), auch mit offenem Menü; sonst keine.
+- Konsole: 0 Fehler, 0 Warnungen. Reduzierte Bewegung: 0 Befunde.
+- Lighthouse (Median aus 3, simulierte Drosselung): Budget in 0 von 28 Fällen; mobil LCP 2,86 bis 4,41 s, Leistung unter 90 in 11 Ansichten (Start 83), Barrierefreiheit 96 bis 97, SEO 92 (Start 100, Kasse 54 wegen noindex). Eigene Messung mit CDP-Drosselung: Budget in 28 von 28 (LCP mobil 484 bis 652 ms, CLS höchstens 0,010, TBT mobil 138 bis 221 ms). Maßstab für Z-15 ist Lighthouse; die Abweichung wird in E4 an der Startseite aufgeklärt.
+- Inventar: 217 Adressen, 181 indexierbar, 18 noindex, keine Weiterleitungen, Fehlerstatus oder Dubletten. Snippets: Titel bis 580 px 28 von 181, Beschreibung 120 bis 160 Zeichen 146 von 181.
+- Slop-Index 3 bis 16 je Ansicht (H05 16, H10 14, H02 14): S1 Inter überall, S2 Lila der Bereichsfarbe Schließanlagen, S3 Verlauf an der Augenbraue, S5 Radius 0 px auf über 40 % der Flächen, S8 Einblendung auf 12 Ansichten. Stil: 2.744 Gedankenstriche, 659 Bindestrich-Kandidaten, 51 Platzhalter auf 182 Seiten (SLOP-AUDIT.md).
 
 ## 5. Stärken
 - Saubere Technik: strikte Typen, 1.829 grüne Tests, Datenweiche ohne Datenbank, additive Migrationen, Seed mit Startwert-Abgleich.

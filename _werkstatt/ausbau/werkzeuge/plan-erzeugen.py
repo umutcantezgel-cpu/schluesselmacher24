@@ -59,8 +59,8 @@ hk('E0-PRUEFER-03', 'Werkzeuge Lighthouse, Kontaktbogen, Inventar, Snippet', 3, 
 hk('E0-PRUEFER-04', 'Werkzeuge Slop-Scan, Stilprüfer, SVGO, Kontingent', 3, 'Prüfer', [W + 'werkzeuge/slopscan.mjs', W + 'werkzeuge/stil.mjs', W + 'werkzeuge/kontingent.mjs'], [], ['Z-13', 'Z-21'])
 hk('E0-PRUEFER-05', 'Planwerkzeug plan.mjs und anforderungen.mjs', 3, 'Prüfer', [W + 'werkzeuge/plan.mjs', W + 'werkzeuge/anforderungen.mjs'], [], ['Z-01', 'Z-03'], klasse='L', stufe=2)
 hk('E0-PRUEFER-06', 'Funktionsliste F-01 bis F-19 als Bestandsschutz', 3, 'Prüfer', [W + 'werkzeuge/funktionsliste.mjs'], [], ['Z-02'], stufe=2)
-hk('E0-PRUEFER-07', 'Vorher-Stand B1: Bildsatz, axe, Konsole, Bewegung, Kontaktbögen', 4, 'Prüfer', [W + 'bilder/vorher/', W + 'protokolle/E0-vorher-a11y.json'], [], ['Z-04', 'Z-11', 'Z-14'], klasse='L', status='läuft')
-hk('E0-PRUEFER-08', 'Vorher-Stand B2: Lighthouse, Messung, Inventar, Snippets, Slop, Stil', 5, 'Prüfer', [W + 'SLOP-AUDIT.md', W + 'protokolle/E0-vorher-lighthouse-mobil.json'], [], ['Z-13', 'Z-15', 'Z-16'], klasse='L', deps=['E0-PRUEFER-07'], status='offen')
+hk('E0-PRUEFER-07', 'Vorher-Stand B1: Bildsatz, axe, Konsole, Bewegung, Kontaktbögen', 4, 'Prüfer', [W + 'bilder/vorher/', W + 'protokolle/E0-vorher-a11y.json'], [], ['Z-04', 'Z-11', 'Z-14'], klasse='L', status='committet')
+hk('E0-PRUEFER-08', 'Vorher-Stand B2: Lighthouse, Messung, Inventar, Snippets, Slop, Stil', 5, 'Prüfer', [W + 'SLOP-AUDIT.md', W + 'protokolle/E0-vorher-lighthouse-mobil.json'], [], ['Z-13', 'Z-15', 'Z-16'], klasse='L', deps=['E0-PRUEFER-07'], status='committet')
 P('E0-OPUS-02', 'Lagebild, Menschen-Liste, Hauptansichten, Denkprotokolle A-001 bis A-008', 'E0', 4, 'Orchestrator', OPUS, 3, 'M',
   [W + 'LAGEBILD.md', W + 'MENSCHEN.md', W + 'ENTSCHEIDUNGEN.md', W + 'werkzeuge/lib.mjs'], anf=[], krit=['Z-03', 'Z-22'], status='abgenommen')
 
@@ -68,14 +68,14 @@ P('E0-OPUS-02', 'Lagebild, Menschen-Liste, Hauptansichten, Denkprotokolle A-001 
 for k, t, f, anf, krit, st in [
     ('E1-FACHKUNDLER-01', 'Schließtechnik: Systeme, Anlagenarten, ABUS und BKS', 'E1-schliesstechnik-systeme.md', ['G-27', 'G-28', 'G-30', 'G-32', 'G-09'], ['Z-06', 'Z-17'], 'committet'),
     ('E1-FACHKUNDLER-02', 'Schließtechnik: Normen, Schutzfunktionen, Bauformen, Messen', 'E1-schliesstechnik-normen.md', ['G-27', 'G-29', 'G-32', 'G-47'], ['Z-06', 'Z-17'], 'committet'),
-    ('E1-FACHKUNDLER-03', 'Transponder und Klonbarkeit', 'E1-transponder.md', ['G-17', 'G-18'], ['Z-07'], 'läuft'),
-    ('E1-RECHERCHEUR-01', 'Fahrzeugdatenquellen mit Lizenz', 'E1-fahrzeugquellen.md', ['G-14', 'G-17'], ['Z-07'], 'läuft'),
-    ('E1-RECHERCHEUR-02', 'Versandwege für Einsenden und Rückversand', 'E1-versand.md', ['G-24', 'G-25'], ['Z-08'], 'läuft'),
-    ('E1-RECHERCHEUR-03', 'Wettbewerb: Struktur, Abläufe, Preise', 'E1-wettbewerb.md', ['G-31', 'K-KA1', 'K-KA5'], ['Z-17'], 'offen'),
-    ('E1-RECHERCHEUR-04', 'Lagebild Suche und KI-Antworten prüfen', 'E1-lagebild-suche.md', ['K-KT1', 'K-KT3', 'K-KT5', 'K-KL1'], ['Z-16'], 'offen'),
-    ('E1-RECHERCHEUR-05', 'Nachfrage, Familien und Ergebnisbilder', 'E1-nachfrage.md', ['G-41', 'G-43'], ['Z-16', 'Z-17'], 'offen'),
+    ('E1-FACHKUNDLER-03', 'Transponder und Klonbarkeit', 'E1-transponder.md', ['G-17', 'G-18'], ['Z-07'], 'committet'),
+    ('E1-RECHERCHEUR-01', 'Fahrzeugdatenquellen mit Lizenz', 'E1-fahrzeugquellen.md', ['G-14', 'G-17'], ['Z-07'], 'committet'),
+    ('E1-RECHERCHEUR-02', 'Versandwege für Einsenden und Rückversand', 'E1-versand.md', ['G-24', 'G-25'], ['Z-08'], 'abgenommen'),
+    ('E1-RECHERCHEUR-03', 'Wettbewerb: Struktur, Abläufe, Preise', 'E1-wettbewerb.md', ['G-31', 'K-KA1', 'K-KA5'], ['Z-17'], 'läuft'),
+    ('E1-RECHERCHEUR-04', 'Lagebild Suche und KI-Antworten prüfen', 'E1-lagebild-suche.md', ['K-KT1', 'K-KT3', 'K-KT5', 'K-KL1'], ['Z-16'], 'läuft'),
+    ('E1-RECHERCHEUR-05', 'Nachfrage, Familien und Ergebnisbilder', 'E1-nachfrage.md', ['G-41', 'G-43'], ['Z-16', 'Z-17'], 'läuft'),
     ('E1-RECHERCHEUR-06', 'Kartendaten Hessen und Videofassade', 'E1-karte-video.md', ['G-42', 'G-44'], ['Z-10', 'Z-18'], 'offen'),
-    ('E1-FACHKUNDLER-04', 'Gegenprüfung der Fachrecherchen und Lückenschlüsse', 'E1-gegenpruefung.md', ['G-27', 'G-29', 'G-32'], ['Z-17'], 'offen')]:
+    ('E1-FACHKUNDLER-04', 'Gegenprüfung der Fachrecherchen und Lückenschlüsse', 'E1-gegenpruefung.md', ['G-27', 'G-29', 'G-32'], ['Z-17'], 'läuft')]:
     P(k, t, 'E1', 1 if k != 'E1-FACHKUNDLER-04' else 2, k.split('-')[1].capitalize() if 'FACH' not in k else 'Fachkundler', HAIKU, 1, 'M',
       [W + 'erhebung/' + f, W + 'berichte/' + k + '.md'], deps=(['E1-FACHKUNDLER-03'] if k == 'E1-FACHKUNDLER-04' else []),
       anf=anf, krit=krit, massstab=MP + k + '.md', muster=MUSTER_PAKET, status=st)
@@ -88,7 +88,7 @@ hk('E1-AUTOR-01', 'Inhaber-Interview: 12 bis 20 Fragen je Rubrik für MENSCHEN.m
 
 # ---------------------------------------------------------------- E2
 P('E2-OPUS-01', 'Leitidee und Systementscheidungen per Denkprotokoll, KERN.md Version 2', 'E2', 1, 'Orchestrator', OPUS, 3, 'L',
-  [W + 'KERN.md', W + 'ENTSCHEIDUNGEN.md'], deps=['E1-OPUS-01'], anf=['G-05', 'G-06', 'G-11', 'G-12', 'G-13', 'G-48', 'G-51'], krit=['Z-11', 'Z-12', 'Z-13'])
+  [W + 'KERN.md', W + 'ENTSCHEIDUNGEN.md'], deps=['E1-FACHKUNDLER-03'], anf=['G-05', 'G-06', 'G-11', 'G-12', 'G-13', 'G-48', 'G-51'], krit=['Z-11', 'Z-12', 'Z-13'])
 P('E2-OPUS-02', 'PLAN.json, PLAN.md, ABNAHME.md mit Z-01 bis Z-22 und Ausgangswerten', 'E2', 1, 'Orchestrator', OPUS, 3, 'L',
   [W + 'PLAN.json', W + 'PLAN.md', W + 'ABNAHME.md', W + 'werkzeuge/plan-erzeugen.py'], deps=['E2-OPUS-01', 'E0-PRUEFER-08'], anf=[], krit=['Z-01', 'Z-03', 'Z-22'])
 hk('E2-PRUEFER-01', 'L0: plan.mjs pruefen und Checkliste des Plans', 2, 'Prüfer', [W + 'berichte/E2-PRUEFER-01.md'], [], ['Z-01'], deps=['E2-OPUS-02'], status='offen')
@@ -129,7 +129,7 @@ hk('E3-GRAFIKER-01', 'Neue Fach-Icons der Familie: Motorradschlüssel, Gehäuse,
    ['src/components/visual/icons/motorradschluessel.tsx', 'src/components/visual/icons/schluesselgehaeuse.tsx', 'src/components/visual/icons/transponder-kopie.tsx', 'src/components/visual/icons/schluesselfinder.tsx', 'src/components/visual/icons/vor-ort.tsx', 'src/components/visual/icons/karte.tsx', 'src/components/visual/icons/video.tsx', 'src/components/visual/glyphen/pause.tsx', 'src/components/visual/glyphen/bewegung.tsx'],
    ['G-03', 'G-47'], ['Z-11', 'Z-13'], deps=['E2-PRUEFER-01'], status='offen', stufe=2)
 hk('E3-DATENPFLEGER-01', 'Fahrzeugdaten-Import aus offenen Quellen mit Quelle je Eintrag und Abdeckungsmessung', 4, 'Datenpfleger', ['scripts/fahrzeuge-import.mjs', 'scripts/fahrzeuge-import.test.ts', 'content/fahrzeugkatalog.json', W + 'protokolle/E3-abdeckung.md'], ['G-14'], ['Z-07'], deps=['E3-OPUS-06'], status='offen', klasse='L', stufe=2)
-hk('E3-DATENPFLEGER-02', 'Kartendaten Hessen aufbereiten (Kreise, Gemeinden, Lizenzvermerk) als vereinfachte Formen', 2, 'Datenpfleger', ['scripts/karte-aufbereiten.mjs', 'content/karte/hessen.json', 'content/karte/LIZENZ.md'], ['G-42'], ['Z-10'], deps=['E2-PRUEFER-01'], status='offen', stufe=2)
+hk('E3-DATENPFLEGER-02', 'Kartendaten Hessen aufbereiten (Kreise, Gemeinden, Lizenzvermerk) als vereinfachte Formen', 2, 'Datenpfleger', ['scripts/karte-aufbereiten.mjs', 'content/karte/hessen.json', 'content/karte/LIZENZ.md'], ['G-42'], ['Z-10'], deps=['E2-PRUEFER-01', 'E1-RECHERCHEUR-06'], status='offen', stufe=2)
 hk('E3-DATENPFLEGER-03', 'Erhebungsbögen PREISE, KLONBAR, SORTIMENT, PRODUKTE, PARTNER als CSV und Druckseite mit Vorschlägen', 2, 'Datenpfleger', [W + 'erhebung/boegen/'], ['G-18', 'G-22', 'G-33', 'G-40'], ['Z-19'], deps=['E2-PRUEFER-01'], status='offen', stufe=2)
 hk('E3-PRUEFER-01', 'Prüfstufe B Etappe E3 (Build beide Modi, Tests, Funktionsliste, axe, Bildsatz, Datenweiche)', 7, 'Prüfer', [W + 'berichte/E3-PRUEFER-01.md'], [], ['Z-02', 'Z-20'], deps=['E3-UPGRADE-01', 'E3-DATENPFLEGER-01'], status='offen', klasse='L')
 
@@ -152,7 +152,7 @@ P('E4-BLIND-01', 'Blind- und Dominanzprobe der Startseite (frischer Opus)', 'E4'
 
 # ---------------------------------------------------------------- E5 Konfiguratoren
 op('E5-OPUS-01', 'Schließanlagen-Konfigurator: Zylinder und Schlüssel hinzufügen, Matrix, laufender Gesamtpreis, Liste, Speichern, Kasse oder Projektanfrage', 'E5', 1,
-   ['src/app/(site)/schliessanlagen/konfigurator/', 'src/components/konfigurator/'], ['E4-JURY-01'], ['G-27', 'G-30', 'G-35'], ['Z-05', 'Z-06'], wirkung=5)
+   ['src/app/(site)/schliessanlagen/konfigurator/', 'src/components/konfigurator/'], ['E4-JURY-01', 'E1-OPUS-01'], ['G-27', 'G-30', 'G-35'], ['Z-05', 'Z-06'], wirkung=5)
 op('E5-OPUS-02', 'Sperrschließung auf demselben Kern: Sets 2 bis 10 (mehr auf Anfrage, Bestand bis 30), jeder Zylinder einzeln, Schlüsselzahl', 'E5', 2,
    ['src/app/(site)/gleichschliessende-zylinder/konfigurator/'], ['E5-OPUS-01'], ['G-28', 'G-09'], ['Z-06'], wirkung=5)
 op('E5-OPUS-03', 'Schließplan als PDF und Vorgang mit vollständigem Schnappschuss', 'E5', 2, ['src/lib/pdf/schliessplan.ts', 'src/lib/konfigurator/vorgang.ts'], ['E5-OPUS-01'], ['G-27', 'G-37'], ['Z-06', 'Z-19'], klasse='M')
@@ -189,7 +189,7 @@ hk('E7-PRUEFER-01', 'Prüfstufe B Etappe E7 mit axe der Karte und Zugriffsrechte
 
 # ---------------------------------------------------------------- E8 Inhalte, Suche, Nennung, Logo
 op('E8-OPUS-01', 'Suche technisch: Strukturdaten-Graph mit festen @id, Service je Rubrik, kein FAQ-Markup, Meta-Robots, Sitemaps mit echtem lastmod, Bild-Sitemap, Markendefinition wortgleich', 'E8', 1,
-   ['src/components/seo/', 'src/app/sitemap.ts', 'src/app/robots.ts', 'src/app/(site)/layout.tsx'], ['E7-PRUEFER-01'], ['G-43'], ['Z-16'], wirkung=4)
+   ['src/components/seo/', 'src/app/sitemap.ts', 'src/app/robots.ts', 'src/app/(site)/layout.tsx'], ['E7-PRUEFER-01', 'E1-OPUS-01'], ['G-43'], ['Z-16'], wirkung=4)
 op('E8-OPUS-02', 'Schlüsselseiten (höchstens 40): Briefe, Titel mit Leitanfrage unter 580 px, Beschreibung, H1, Kurzantwort, Teilfragen nach KARTE.md', 'E8', 2,
    ['content/seo.json', W + 'REGISTER.md'], ['E8-OPUS-01'], ['G-41', 'G-43'], ['Z-16', 'Z-17'], wirkung=5)
 for i, (t, s) in enumerate([
@@ -245,7 +245,7 @@ op('EA-OPUS-01', 'BERICHT.md mit Galerie und Vorführpfad, MESSPLAN.md, Archiv d
 P('EA-ENDPRUEFER-01', 'Endprüfer (frischer Opus): jedes Häkchen, jede Ausnahme, jeder Endstatus gegen Beleg', 'EA', 4, 'Jury', OPUS, 3, 'L', [W + 'berichte/EA-ENDPRUEFER-01.md'], ['EA-OPUS-01'], [], ['Z-01', 'Z-03', 'Z-22'])
 
 # ---------------------------------------------------------------- Bestandsabgleich (deckt alle „vorhanden“)
-hk('EA-PRUEFER-02', 'Bestandsabgleich: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen', 1, 'Prüfer', [W + 'erhebung/EA-bestandsabgleich.json'], [], ['Z-03'], deps=['E9-PRUEFER-01'], status='offen', klasse='L')
+hk('EA-PRUEFER-02', 'Bestandsabgleich: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen', 1, 'Prüfer', [W + 'erhebung/EA-bestandsabgleich.json'], json.load(open(os.path.join(AUSBAU, 'erhebung', 'E2-zuordnung-eingang.json')))['vorhanden'], ['Z-03'], deps=['E9-PRUEFER-01'], status='offen', klasse='L')
 hk('E2-DATENPFLEGER-01', 'Zuordnung jeder nicht vorhandenen Anforderung (L, EL, M, E) zu Paketen oder Menschensache', 2, 'Datenpfleger', [W + 'erhebung/E2-zuordnung.json'], [], ['Z-03'], deps=['E2-OPUS-02'], status='offen', stufe=2)
 
 def normalisiere():

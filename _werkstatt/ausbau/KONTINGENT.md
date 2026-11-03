@@ -8,3 +8,4 @@ Fenster bis 2026-11-03 03:10 MEZ · Woche bis 2026-11-07 02:00 MEZ.
 | 2026-11-02 22:23 | 2/4/99 | 0/≈5 je Fenster | 0 von 4 | Halten | rate_limit_event 22:23 |
 | 2026-11-02 22:35 | 2+/≈8/99 | 0/≈5 je Fenster | 4 von 4 | Gas | rate_limit_event 22:23 (Welle E0-1 gestartet) |
 | 2026-11-02 23:46 | 28,9/31,7/99 | 0 (21:23)/≈5 je Fenster | 4 von 4 | Halten | kontingent.mjs, 1 Kalibrierpunkt (2 % um 22:23) |
+| 2026-11-03 01:56 | 44,8 %/≈83/99 | 0 (21:23)/≈5 je Fenster | 4 von 4 | Gas | kontingent.mjs, 1 Kalibrierpunkt |

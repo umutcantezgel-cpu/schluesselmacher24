@@ -31,3 +31,8 @@ Für jede Quelle: Zweck · Inhalt · Lizenz und Nutzung · Stand · Abruf · Abl
 
 ## Karte (G-42), Versand (G-24), Suche, Wettbewerb
 - Wird mit den Ergebnissen von E1-RECHERCHEUR-02 bis -06 ergänzt.
+
+## Versand (G-24, G-25, Z-08) · erhebung/E1-versand.md
+- Deutsche Post „Leistungen und Preise“ (Stand 09/2026) und Preisblatt 01/2026: Kompaktbrief 1,10 €, Großbrief 1,80 €, Einschreiben Einwurf 4,15 € im Großbrief (Haftung 20 €), Einschreiben 4,45 € (25 €), Einschreiben Wert 6,25 € (bis 500 €, nur Filiale); DHL Päckchen S 4,19 €, Paket bis 5 kg 7,69 € (500 € Haftung inklusive).
+- AGB Internetmarke und Portokasse (Stand 01/2024): Kundensendungen über die eigene Portokasse unzulässig (Ziffer VI 4); gewerbliche Weitergabe vertragswidrig. Folge: Versandmarken für Kunden nur über DHL Retoure mit Geschäftskundenvertrag (Retouren-API v1.1.0, developer.dhl.com); ohne Vertrag Begleitschein, der Kunde frankiert.
+- Lücken: Retourenpreise nicht veröffentlicht, Haftung Päckchen und Brief ohne Zusatz offen, GLS und DPD ohne Quelle, Preise 2027 nicht geprüft.
