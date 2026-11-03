@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T01:40:59.793Z",
+ "stand": "2026-11-03T01:51:26.445Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -1300,10 +1300,10 @@
    ],
    "art": "pflicht",
    "wirkung": 5,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "a6cfc30",
    "massstab": null,
    "muster": null
   },
@@ -1833,7 +1833,20 @@
    ],
    "abhaengigkeiten": [
     "E3-UPGRADE-01",
-    "E3-DATENPFLEGER-01"
+    "E3-DATENPFLEGER-01",
+    "E3-OPUS-01",
+    "E3-OPUS-02",
+    "E3-OPUS-03",
+    "E3-OPUS-04",
+    "E3-OPUS-05",
+    "E3-OPUS-06",
+    "E3-OPUS-07",
+    "E3-OPUS-08",
+    "E3-OPUS-09",
+    "E3-OPUS-10",
+    "E3-GRAFIKER-01",
+    "E3-DATENPFLEGER-02",
+    "E3-DATENPFLEGER-03"
    ],
    "anforderungen": [
     "M-11"
@@ -2017,7 +2030,8 @@
    "kostenklasse": "L",
    "schreibrechte": [
     "src/app/(site)/autoschluessel/",
-    "src/components/autoschluessel/"
+    "src/components/autoschluessel/",
+    "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
    ],
    "abhaengigkeiten": [
     "E4-OPUS-03"
@@ -2120,7 +2134,12 @@
     "_werkstatt/ausbau/berichte/E4-PRUEFER-01.md"
    ],
    "abhaengigkeiten": [
-    "E4-TEXTER-01"
+    "E4-TEXTER-01",
+    "E4-OPUS-01",
+    "E4-OPUS-02",
+    "E4-OPUS-03",
+    "E4-OPUS-04",
+    "E4-OPUS-05"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -2421,7 +2440,10 @@
    ],
    "abhaengigkeiten": [
     "E5-AUTOR-01",
-    "E5-OPUS-03"
+    "E5-OPUS-03",
+    "E5-OPUS-01",
+    "E5-OPUS-02",
+    "E5-GRAFIKER-01"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -2823,7 +2845,17 @@
     "_werkstatt/ausbau/berichte/E6-PRUEFER-01.md"
    ],
    "abhaengigkeiten": [
-    "E6-OPUS-04"
+    "E6-OPUS-04",
+    "E6-OPUS-01",
+    "E6-OPUS-02",
+    "E6-OPUS-03",
+    "E6-BAUMEISTER-01",
+    "E6-BAUMEISTER-02",
+    "E6-BAUMEISTER-03",
+    "E6-BAUMEISTER-04",
+    "E6-BAUMEISTER-05",
+    "E6-BAUMEISTER-06",
+    "E6-BAUMEISTER-07"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -3030,7 +3062,9 @@
    "abhaengigkeiten": [
     "E7-BAUMEISTER-01",
     "E7-AUTOR-01",
-    "E7-OPUS-02"
+    "E7-OPUS-02",
+    "E7-OPUS-01",
+    "E7-OPUS-03"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -3670,7 +3704,23 @@
     "_werkstatt/ausbau/berichte/E8-PRUEFER-02.md"
    ],
    "abhaengigkeiten": [
-    "E8-FAKTENPRUEFER-01"
+    "E8-FAKTENPRUEFER-01",
+    "E8-OPUS-01",
+    "E8-OPUS-02",
+    "E8-TEXTER-01",
+    "E8-TEXTER-02",
+    "E8-TEXTER-03",
+    "E8-TEXTER-04",
+    "E8-TEXTER-05",
+    "E8-AUTOR-01",
+    "E8-AUTOR-02",
+    "E8-AUTOR-03",
+    "E8-OPUS-03",
+    "E8-OPUS-04",
+    "E8-OPUS-05",
+    "E8-PRUEFER-01",
+    "E8-DOKUMENTAR-01",
+    "E8-DOKUMENTAR-02"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -3906,7 +3956,10 @@
    "abhaengigkeiten": [
     "E9-OPUS-03",
     "E9-OPUS-04",
-    "E9-BAUMEISTER-01"
+    "E9-BAUMEISTER-01",
+    "E9-OPUS-01",
+    "E9-OPUS-02",
+    "E9-DOKUMENTAR-01"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -4209,8 +4262,7 @@
    ],
    "abhaengigkeiten": [
     "E9-PRUEFER-01",
-    "E9-PROBENUTZER-01",
-    "E10-PRUEFER-01"
+    "E9-PROBENUTZER-01"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -5004,8 +5056,6 @@
   "E9-OPUS-01",
   "E9-OPUS-03",
   "E9-PRUEFER-01",
-  "E10-KUER-01",
-  "E10-PRUEFER-01",
   "EA-PRUEFER-01",
   "EA-JURY-01",
   "EA-OPUS-01",

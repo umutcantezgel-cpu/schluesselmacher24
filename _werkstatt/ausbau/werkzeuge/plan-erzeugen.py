@@ -71,8 +71,8 @@ for k, t, f, anf, krit, st in [
     ('E1-FACHKUNDLER-03', 'Transponder und Klonbarkeit', 'E1-transponder.md', ['G-17', 'G-18'], ['Z-07'], 'committet'),
     ('E1-RECHERCHEUR-01', 'Fahrzeugdatenquellen mit Lizenz', 'E1-fahrzeugquellen.md', ['G-14', 'G-17'], ['Z-07'], 'committet'),
     ('E1-RECHERCHEUR-02', 'Versandwege für Einsenden und Rückversand', 'E1-versand.md', ['G-24', 'G-25'], ['Z-08'], 'abgenommen'),
-    ('E1-RECHERCHEUR-03', 'Wettbewerb: Struktur, Abläufe, Preise', 'E1-wettbewerb.md', ['G-31', 'K-KA1', 'K-KA5'], ['Z-17'], 'läuft'),
-    ('E1-RECHERCHEUR-04', 'Lagebild Suche und KI-Antworten prüfen', 'E1-lagebild-suche.md', ['K-KT1', 'K-KT3', 'K-KT5', 'K-KL1'], ['Z-16'], 'läuft'),
+    ('E1-RECHERCHEUR-03', 'Wettbewerb: Struktur, Abläufe, Preise', 'E1-wettbewerb.md', ['G-31', 'K-KA1', 'K-KA5'], ['Z-17'], 'offen'),
+    ('E1-RECHERCHEUR-04', 'Lagebild Suche und KI-Antworten prüfen', 'E1-lagebild-suche.md', ['K-KT1', 'K-KT3', 'K-KT5', 'K-KL1'], ['Z-16'], 'offen'),
     ('E1-RECHERCHEUR-05', 'Nachfrage, Familien und Ergebnisbilder', 'E1-nachfrage.md', ['G-41', 'G-43'], ['Z-16', 'Z-17'], 'läuft'),
     ('E1-RECHERCHEUR-06', 'Kartendaten Hessen und Videofassade', 'E1-karte-video.md', ['G-42', 'G-44'], ['Z-10', 'Z-18'], 'offen'),
     ('E1-FACHKUNDLER-04', 'Gegenprüfung der Fachrecherchen und Lückenschlüsse', 'E1-gegenpruefung.md', ['G-27', 'G-29', 'G-32'], ['Z-17'], 'läuft')]:
@@ -143,7 +143,7 @@ op('E4-OPUS-03', 'Navigation nach G-08 aus den Rubriken (Kopf, Megamenü, Schubl
 op('E4-OPUS-04', 'Übergang Kachel zu Rubrik (gemeinsames Element, Rückfall, Fokus auf h1), Rubrikkopf, „So läuft Ihr Auftrag ab“ aus Daten', 'E4', 3,
    ['src/components/rubrik/', 'src/components/visual/motion/seitenwechsel.tsx'], ['E4-OPUS-03'], ['G-04', 'G-10'], ['Z-12'], wirkung=4)
 op('E4-OPUS-05', 'Autoschlüssel-Weg auf Zielniveau: Fahrzeugwahl aus dem Katalog, nicht gefunden als Anfrage, Fahrzeugschein, Schlüsselbild, Anzahlung, Termin (Anzahlungs- und Zahlungsverhalten unverändert, mit Test, G9)', 'E4', 3,
-   ['src/app/(site)/autoschluessel/', 'src/components/autoschluessel/'], ['E4-OPUS-03'], ['G-14', 'G-15', 'G-16', 'G-17'], ['Z-05', 'Z-07'], wirkung=5)
+   ['src/app/(site)/autoschluessel/', 'src/components/autoschluessel/', W + 'pakete/_MUSTER-REFERENZ.md'], ['E4-OPUS-03'], ['G-14', 'G-15', 'G-16', 'G-17'], ['Z-05', 'Z-07'], wirkung=5)
 hk('E4-TEXTER-01', 'Texte Hub, Kacheln, Autoschlüssel-Rubrik nach Muster ohne KI-Spuren, Längen gemessen', 4, 'Texter', ['content/rubriken.json', 'content/seo.json'], ['G-48', 'G-03'], ['Z-13'], deps=['E4-OPUS-05'], status='offen', stufe=2)
 hk('E4-PROBENUTZER-01', 'Probelauf Startseite und Autoschlüssel-Weg mit vier Personas, mobil und Desktop', 5, 'Probenutzer', [W + 'berichte/E4-PROBENUTZER-01.md'], [], ['Z-05'], deps=['E4-TEXTER-01'], status='offen')
 hk('E4-PRUEFER-01', 'Prüfstufe B Etappe E4 mit Bildfolgen der Inszenierung, Framezeiten, Lighthouse, axe', 5, 'Prüfer', [W + 'berichte/E4-PRUEFER-01.md'], [], ['Z-04', 'Z-12', 'Z-14', 'Z-15'], deps=['E4-TEXTER-01'], status='offen', klasse='L')
@@ -240,7 +240,7 @@ for i, (t, rolle, w, schreib) in enumerate(KUER, start=1):
 hk('E10-PRUEFER-01', 'Prüfstufe B Etappe E10 (Kür)', 2, 'Prüfer', [W + 'berichte/E10-PRUEFER-01.md'], [], ['Z-02', 'Z-11'], deps=[f'E10-KUER-{i:02d}' for i in range(1, 9)], status='offen', klasse='L', art='kuer', wirkung=3)
 
 # ---------------------------------------------------------------- Abschluss
-hk('EA-PRUEFER-01', 'Prüfstufe C: alle Ansichten, Inventarvergleich, Personas, Tastatur, Reflow, Zoom, erzwungene Farben, R1 bis R13, Platzhalter, Livegang', 1, 'Prüfer', [W + 'berichte/EA-PRUEFER-01.md'], [], ['Z-02', 'Z-13', 'Z-14', 'Z-15', 'Z-20'], deps=['E9-PRUEFER-01', 'E9-PROBENUTZER-01', 'E10-PRUEFER-01'], status='offen', klasse='L')
+hk('EA-PRUEFER-01', 'Prüfstufe C: alle Ansichten, Inventarvergleich, Personas, Tastatur, Reflow, Zoom, erzwungene Farben, R1 bis R13, Platzhalter, Livegang', 1, 'Prüfer', [W + 'berichte/EA-PRUEFER-01.md'], [], ['Z-02', 'Z-13', 'Z-14', 'Z-15', 'Z-20'], deps=['E9-PRUEFER-01', 'E9-PROBENUTZER-01'], status='offen', klasse='L')
 hk('EA-SPOTTER-01', 'Sichtung durch drei Spotter V1 bis V9, Slop-Index nachher', 1, 'Prüfer', [W + 'SLOP-AUDIT.md'], ['G-48'], ['Z-13'], deps=['E9-PRUEFER-01'], status='offen')
 P('EA-JURY-01', 'Endjury mit Blindvergleich Vorher und Nachher (frischer Opus)', 'EA', 2, 'Jury', OPUS, 3, 'L', [W + 'berichte/EA-JURY-01.md'], ['EA-PRUEFER-01', 'EA-SPOTTER-01', 'E8-BLIND-01'], [], ['Z-11'])
 op('EA-OPUS-01', 'BERICHT.md mit Galerie und Vorführpfad, MESSPLAN.md, Archiv docs/ausbau, Anleitung Zusammenführen und Zurückrollen, Entwurfs-PR', 'EA', 3, ['docs/ausbau/', W + 'BERICHT.md', W + 'MESSPLAN.md'], ['EA-JURY-01'], [], ['Z-22'], klasse='L')
@@ -285,6 +285,16 @@ def kritischer_pfad():
         memo[k] = best + [k]
         return memo[k]
     return max((laenge(k) for k in nach), key=len)
+
+def pruefer_kanten():
+    """Prüfstufe B einer Etappe hängt ausdrücklich an allen früheren Wellen derselben Etappe (L0 Runde 2)."""
+    for p in P_LIST:
+        if p['rolle'] == 'Prüfer' and 'Prüfstufe B' in p['titel']:
+            for q in P_LIST:
+                if q is p or q['etappe'] != p['etappe'] or q['welle'] >= p['welle']:
+                    continue
+                if q['kennung'] not in p['abhaengigkeiten']:
+                    p['abhaengigkeiten'].append(q['kennung'])
 
 def zuordnung_einlesen():
     pfad = os.path.join(AUSBAU, 'erhebung', 'E2-zuordnung.json')
@@ -336,6 +346,7 @@ def plan():
     normalisiere()
     zuordnung_einlesen()
     muster_setzen()
+    pruefer_kanten()
     status_uebernehmen()
     commits_eintragen()
     kl = collections.Counter(p['kostenklasse'] for p in P_LIST)

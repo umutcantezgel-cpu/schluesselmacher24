@@ -63,3 +63,9 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Befund (E1-RECHERCHEUR-02): Internetmarken aus der eigenen Portokasse dürfen laut AGB nicht für Kundensendungen genutzt werden; für Kundenlabels ist DHL Retoure mit Geschäftskundenvertrag vorgesehen (Retouren-API).
 - Gewählt: Schnittstelle `Versand` mit drei Umsetzungen: `attrappe` (Tests), `begleitschein` (PDF mit Vorgangsnummer, Anschrift der Werkstatt, Inhalt, Hinweis zur Frankierung; Standard), `dhl-retoure` (hinter `VERSAND_PROVIDER=dhl-retoure` und den Zugangsdaten des Inhabers; erst mit Vertrag aktiv). Wahl versichert oder unversichert mit Beträgen aus den Einstellungen; ohne Retourenlabel nennt die Seite die Portopreise der Post als Empfehlung und verspricht nichts „kostenlos“ (R9), bis der Schalter „Retourenlabel aktiv“ gesetzt ist.
 - Umkehrprobe: Schalter aus führt zurück zum Begleitschein; Vorgänge behalten ihren Status.
+
+## A-011 · Kapazität und Paketraten (E2, L0 Runde 2)
+- Ziel: belastbare Tage für den Plan (Auftrag 9: Pakete je Tag je Kostenklasse, 20 % Puffer), nach E4 neu kalibriert.
+- Grundlage E0 und E1 (gemessen): Haiku-Pakete brauchten 15 bis 95 Minuten, Recherchen 60 bis 95, Prüf- und Datenpakete 15 bis 40; vier Plätze liefen meist voll. Daraus etwa 24 Haiku-Pakete der Klasse M je Tag bei vier Plätzen, wenn das Kontingent es trägt. Opus-Kernpakete laufen in der Hauptsitzung nacheinander, gemessen E3-OPUS-01 mit etwa 60 Minuten; Jury, Bildsätze und Kernpakete der Klasse L daher etwa 6 je Tag.
+- Gewählt: S 36, M 24, L 6 je Tag, Puffer 20 %. Ergebnis im Plan: 14,5 Tage. Nach dem Referenztor (E4) misst plan.mjs die tatsächlichen Dauern; die Raten werden dann ersetzt.
+- Folge: Pflichtpakete dürfen nie von Kür abhängen; EA-PRUEFER-01 hängt deshalb nur an E9.

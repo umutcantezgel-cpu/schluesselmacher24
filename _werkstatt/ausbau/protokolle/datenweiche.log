@@ -94,3 +94,12 @@
 2026-11-02T22:37:51+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/slopscan.mjs --routen / --geraet mobil
 2026-11-02T22:38:03+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/slopscan.mjs
 2026-11-03T01:12:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T01:46:14+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx payload generate:types
+2026-11-03T01:46:37+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx payload migrate:create rubriken
+2026-11-03T01:46:53+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T01:47:26+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/rubriken.test.ts src/lib/data/rubriken-mapping.test.ts src/lib/data src/payload
+2026-11-03T01:47:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/rubriken.ts src/lib/rubriken.test.ts src/lib/data src/payload/collections/Rubriken.ts src/payload/seed.ts src/payload.config.ts
+2026-11-03T01:47:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T01:48:10+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T01:49:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T01:50:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
