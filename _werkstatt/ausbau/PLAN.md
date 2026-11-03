@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T10:55:32+00:00
+Stand: 2026-11-03T11:14:02.783Z
 
-Etappe 5/12 · Welle 5 · Pflicht 60/131 · Kür 0/10 · läuft 1 · blockiert 0
+Etappe 5/12 · Welle 6 · Pflicht 61/131 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -203,7 +203,7 @@ Geplante Tage: 1.44
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E4-PROBENUTZER-01 | Probelauf Startseite und Autoschlüssel-Weg mit vier Personas, mobil und Desktop | haiku-5.5 | M | pflicht | 3 | committet | 26a9349 |
 | E4-PRUEFER-01 | Prüfstufe B Etappe E4 mit Bildfolgen der Inszenierung, Framezeiten, Lighthouse, axe | haiku-5.5 | L | pflicht | 3 | committet | f36d3ad |
-| E4-DOKUMENTAR-01 | Unterlagen der Blind- und Dominanzprobe der Startseite: vier neutral benannte Startseitentexte, Faktenblatt, Zuordnung getrennt | haiku-5.5 | M | pflicht | 3 | läuft |  |
+| E4-DOKUMENTAR-01 | Unterlagen der Blind- und Dominanzprobe der Startseite: vier neutral benannte Startseitentexte, Faktenblatt, Zuordnung getrennt | haiku-5.5 | M | pflicht | 3 | committet | 4bdae99 |
 
 ### Welle 6
 
