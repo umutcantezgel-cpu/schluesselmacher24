@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T04:33:41+00:00
+Stand: 2026-11-03T05:00:06.223Z
 
-Etappe 2/12 · Welle 3 · Pflicht 50/128 · Kür 0/10 · läuft 1 · blockiert 0
+Etappe 5/12 · Welle 1 · Pflicht 52/128 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -84,7 +84,7 @@ Geplante Tage: 0.71
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E1-OPUS-01 | Verdichten: FACHWISSEN, QUELLEN, WETTBEWERB, KARTE, KANTEN, LAGEBILD Suche | opus-5.5 | L | pflicht | 3 | offen |  |
+| E1-OPUS-01 | Verdichten: FACHWISSEN, QUELLEN, WETTBEWERB, KARTE, KANTEN, LAGEBILD Suche | opus-5.5 | L | pflicht | 3 | committet | f91bd36 |
 | E1-AUTOR-01 | Inhaber-Interview: 12 bis 20 Fragen je Rubrik für MENSCHEN.md | haiku-5.5 | M | pflicht | 3 | committet | 48baa5d |
 
 ## E2 · Plan, KERN v2, Abnahme
@@ -163,7 +163,7 @@ Geplante Tage: 2.14
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E3-PRUEFER-01 | Prüfstufe B Etappe E3 (Build beide Modi, Tests, Funktionsliste, axe, Bildsatz, Datenweiche) | haiku-5.5 | L | pflicht | 3 | läuft |  |
+| E3-PRUEFER-01 | Prüfstufe B Etappe E3 (Build beide Modi, Tests, Funktionsliste, axe, Bildsatz, Datenweiche) | haiku-5.5 | L | pflicht | 3 | committet | b682602 |
 
 ## E4 · Referenz: Startseite mit Intent-Hub, Inszenierung, Navigation G-08, Übergang, Autoschlüssel-Weg
 

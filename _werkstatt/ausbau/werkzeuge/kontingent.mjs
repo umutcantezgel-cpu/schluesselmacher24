@@ -128,15 +128,20 @@ function kalibrierungLesen() {
   }
 }
 
-/** Faktor je Punkt = Prozent / gewichtete Summe; davon das Mittel der letzten bis zu drei Punkte. */
+/**
+ * Faktor aus den letzten bis zu drei Punkten als Verhältnis der Summen (Prozent gesamt / gewichtet gesamt).
+ * So zählt jeder Punkt nach seiner Genauigkeit: Die Anzeige rundet auf ganze Prozent, ein Punkt mit 2 %
+ * ist darum bis zu 25 % ungenau, einer mit 29 % unter 2 % (A-024). Vorher: ungewichtetes Mittel der Faktoren.
+ */
 function faktorAus(punkte) {
   const gueltig = punkte
     .filter((p) => p.gewichtet > 0 && p.prozent > 0)
     .sort((a, b) => Date.parse(a.zeit) - Date.parse(b.zeit));
   const letzte = gueltig.slice(-3);
   if (!letzte.length) return null;
-  const faktoren = letzte.map((p) => p.prozent / p.gewichtet);
-  return { faktor: faktoren.reduce((s, f) => s + f, 0) / faktoren.length, anzahl: letzte.length, punkte: letzte };
+  const prozent = letzte.reduce((s, p) => s + p.prozent, 0);
+  const gewichtet = letzte.reduce((s, p) => s + p.gewichtet, 0);
+  return { faktor: prozent / gewichtet, anzahl: letzte.length, punkte: letzte };
 }
 
 function main() {

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T04:33:41+00:00",
+ "stand": "2026-11-03T05:00:06.223Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -1079,10 +1079,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "f91bd36",
    "massstab": null,
    "muster": null
   },
@@ -1878,10 +1878,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "b682602",
    "massstab": "_werkstatt/ausbau/pakete/E3-PRUEFER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },
