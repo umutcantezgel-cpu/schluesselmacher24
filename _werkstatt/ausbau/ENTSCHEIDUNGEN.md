@@ -131,3 +131,10 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Restbefunde im Produktionsbaum (17, davon 3 hoch: happy-dom über @lexical/headless, esbuild über drizzle-kit, deepmerge über payload) kommen aus exakt gepinnten Abhängigkeiten von Payload. Kein Override und kein Major: Ein Override bricht die Pins des Herstellers ungeprüft, und kein Kriterium verlangt den Major. Folge: Wiedervorlage bei jedem Payload-Patch und als Punkt der Livegang-Prüfung (E9-OPUS-03); bis dahin verarbeitet die Seite kein fremdes HTML mit Lexical (Eingaben kommen nur von angemeldeten Inhabern).
 - Entwicklungsbaum: Befunde über Vitest 2.1.9 betreffen nur die Testumgebung, nie die Auslieferung; Vitest 3 wäre ein Major ohne Kriterium und bleibt aus (G7).
 - Umkehrprobe: Rückfall auf 16.4.3 und 3.90.2 ist ein Ein-Commit-Rückbau von package.json und Lockfile.
+
+## A-022 · Labor-Hebel KL2 bis KL4 in diesem Lauf nicht gebaut (2026-11-03 05:47, E1-OPUS-01)
+- Ziel: Jeder Hebel aus Auftrag 13 hat einen Status (Z-16); Labor-Hebel nur als Kür.
+- Wege: (1) alle vier Labor-Hebel als Kür bauen · (2) KL1 als Kür, KL2 bis KL4 mit Grund zurückstellen · (3) alle zurückstellen.
+- Bewertung: KL1 (llms.txt) steht schon im Bestand und bleibt mit E10-KUER-06 aktuell. KL2 (WebMCP) braucht das Token eines Ursprungstests, also ein Konto des Inhabers; ohne Token gäbe es nur toten Code. KL3 (Protokolle für KI-Einkauf) berührt Zahl- und Kontoverhalten (G9) und wurde in E1 nicht gegen eine aktuelle Spezifikation geprüft. KL4 (Titeltests in Kohorten) setzt den Livegang voraus (G3). Gewählt: Weg 2.
+- Umkehrprobe: Ein späterer Lauf nimmt KL2 bis KL4 aus KANTEN.md wieder auf, sobald Token, Spezifikationsprüfung mit Inhaberfreigabe oder Livegang vorliegen; nichts im Bestand hängt davon ab.
+- Folge: Status „entfällt“ in ANFORDERUNGEN.json mit Verweis auf diesen Eintrag; KANTEN.md führt sie als zurückgestellt.

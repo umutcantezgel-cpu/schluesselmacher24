@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T04:24:30.225Z
+Stand: 2026-11-03T04:33:41+00:00
 
-Etappe 2/12 · Welle 3 · Pflicht 50/128 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 2/12 · Welle 3 · Pflicht 50/128 · Kür 0/10 · läuft 1 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -163,7 +163,7 @@ Geplante Tage: 2.14
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E3-PRUEFER-01 | Prüfstufe B Etappe E3 (Build beide Modi, Tests, Funktionsliste, axe, Bildsatz, Datenweiche) | haiku-5.5 | L | pflicht | 3 | offen |  |
+| E3-PRUEFER-01 | Prüfstufe B Etappe E3 (Build beide Modi, Tests, Funktionsliste, axe, Bildsatz, Datenweiche) | haiku-5.5 | L | pflicht | 3 | läuft |  |
 
 ## E4 · Referenz: Startseite mit Intent-Hub, Inszenierung, Navigation G-08, Übergang, Autoschlüssel-Weg
 

@@ -66,3 +66,16 @@ Querschnitt: Navigation und Hub stehen im Code (src/lib/navigation.ts); der Schn
 
 ## 7. Fremde Branches (Kundschafter 06)
 Übernahmekandidaten nach Denkprotokoll in E3: fix/stripe-api-version (09e1d57, feste Stripe-API-Version), dependabot next-react (fee7aff, React 19.3.1 und eslint-config-next 16.4.2, Minor), seo/json-ld-detailseiten (abc1908, nur die Seitendateien). Alle übrigen sind enthalten, Major oder riskant.
+
+## 8. Suche und KI-Antworten: geprüftes Lagebild (E1-RECHERCHEUR-04, Stand 2026-11-03)
+Auftrag 13 nennt das Lagebild mit Stand Oktober 2026; die Prüfung gegen offizielle Quellen ergab 11 von 13 Aussagen bestätigt, keine widerlegt. Wo die Quelle genauer ist, gilt diese Fassung (Neueres geht vor). Belege mit Adresse in erhebung/E1-lagebild-suche.md.
+- Spam-Richtlinien: seit 15.05.2026 ausdrücklich auch für generative KI-Antworten in der Google-Suche (Vermerk der Updates-Seite).
+- Cloaking: Die Richtlinie spricht von Inhalten für Nutzer und Suchmaschinen; KI-Crawler nennt sie nicht. Für die Seite gilt trotzdem R1: eine Fassung für Menschen, Suchmaschinen und KI-Crawler.
+- KI-Crawler und JavaScript: belegt nur für Dezember 2024 (Messung Vercel); eine neuere Messung fehlt. Regel KT2 bleibt: alles Wichtige im ersten HTML.
+- Menschliche Prüfung KI-erzeugter Inhalte vor der Veröffentlichung, auch Titel, Beschreibungen, Strukturdaten und Alt-Texte: Leitfaden, im Vermerk vom 01.10.2026 genannt. Folge: REDAKTION.md und Freigabe durch den Inhaber vor dem Livegang.
+- FAQ-Ergebnisse: seit 07.05.2026 entfallen, seit 15.06.2026 nicht mehr sichtbar. Das FAQPage-Markup im Bestand (109 Seiten) fällt in E8-OPUS-01 weg; die Fragen bleiben als sichtbare Teilfragen mit Kurzantwort.
+- Bing Webmaster Tools: KI-Leistung (Zitate, Grounding-Anfragen, zitierte Seiten) als Vorschau seit 10.02.2026; Klicks nicht genannt.
+- IndexNow: erreicht Bing und weitere Dienste, nicht Google.
+- llms.txt: Google Search ignoriert die Datei (Hinweis vom 15.06.2026); der Bestand liefert sie aus denselben Daten wie die Seite (KL1).
+- Neu seit Oktober 2026: Ein gemeinsames robots.txt-Signal gegen KI-Training ist für 2027 angekündigt, ohne Namen; KI-Übersichten und KI-Modus steuert eine Einstellung in der Search Console. Der Bericht zu generativer KI in der Search Console zeigt seit 03.06.2026 Impressionen, für alle Websites seit 31.08.2026.
+- Inhaberentscheidung: Trainings-Bots (MA-19). Such- und Nutzer-Bots bleiben frei (KT1).

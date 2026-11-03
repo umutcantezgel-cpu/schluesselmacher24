@@ -1,7 +1,7 @@
 # PRÜFPUNKT
-Stand: 2026-11-03 04:43 · Sitzung m40jjmy9
-Nächster exakter Schritt: Rückgabe E3-UPGRADE-01 abnehmen (Versionen, Audit, Prüfungen), dann Paketdatei E3-PRUEFER-01 (Prüfstufe B Etappe E3: beide Builds, Unit, DB, Funktionsliste, axe, Bildsatz, Datenweiche) schreiben und starten. Nach R-04: E1-OPUS-01 (Verdichtung: KARTE.md, KANTEN.md, WETTBEWERB.md, LAGEBILD Suche, QUELLEN Karte und Video, FACHWISSEN nach FK-04). Danach E4 (Referenz: Hub, Inszenierung, Navigation, Autoschlüssel-Weg). Tempomat Bremse: wenig Opus, Haiku-Pakete zuerst.
-Laufende Pakete: E3-UPGRADE-01 (package.json, Lockfile) · E1-RECHERCHEUR-04 (erhebung/E1-lagebild-suche.md)
-Letzter grüner Commit: 666fd41 (E3-OPUS-08, Unit 1936/1936, DB 97/97, Build JSON); danach DATEN-Commit E3-DATENPFLEGER-01
+Stand: 2026-11-03 05:26 · Sitzung m40jjmy9
+Nächster exakter Schritt: E1-OPUS-01 verdichten (FACHWISSEN nach FK-04, QUELLEN Karte/Video/Suche/Nachfrage/Wettbewerb, WETTBEWERB.md, KARTE.md, KANTEN.md, LAGEBILD Suche), committen. Parallel läuft E3-PRUEFER-01 (Prüfstufe B mit Admin-Rauchtest); nach seiner Rückgabe E3 abschließen und E4 beginnen (E4-OPUS-01 Hub). Während E3-PRUEFER-01 läuft: kein eigener Build (es baut .next neu und startet den Prüfserver).
+Laufende Pakete: E3-PRUEFER-01 (protokolle/E3-PRUEFER-01-*.log, protokolle/E3-PRUEFER-01/, berichte/E3-PRUEFER-01.md)
+Letzter grüner Commit: 978a830 (E3-UPGRADE-01: Typprüfung, Lint, Unit 1936/1936, DB 97/97, Build JSON 224 Seiten)
 Wartezustand: keiner
-Weckrufe: trig_01B7WhRnheMgCjPkeam1uQrL (04:42 MEZ, fällig), trig_01QDjQrSQU8nDSvcdnR2MWnf (05:14 MEZ)
+Weckrufe: trig_01QDjQrSQU8nDSvcdnR2MWnf (05:14 MEZ, fällig oder verbraucht) · neue Weckrufe beim nächsten Herzschlag prüfen

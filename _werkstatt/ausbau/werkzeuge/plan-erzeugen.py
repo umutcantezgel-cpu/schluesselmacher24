@@ -321,6 +321,30 @@ def zuordnung_einlesen():
             if z_ in nach_kennung and k not in nach_kennung[z_]['anforderungen']:
                 nach_kennung[z_]['anforderungen'].append(k)
 
+# Kanten-Hebel (Auftrag 13) an die Pakete, die sie bauen oder prüfen (KANTEN.md, E1-OPUS-01).
+# KL2, KL3 und KL4 sind zurückgestellt (Status „später“ in ANFORDERUNGEN.json) und hängen nur an E1-OPUS-01.
+KANTEN_PAKETE = {
+    'KT1': ['E8-OPUS-01'], 'KT2': ['E8-PRUEFER-02'], 'KT3': ['E8-OPUS-01'], 'KT4': ['E9-OPUS-03'],
+    'KT5': ['E8-OPUS-01', 'E8-DOKUMENTAR-01'], 'KT6': ['E8-OPUS-01'], 'KT7': ['E8-OPUS-01', 'E8-OPUS-05'],
+    'KT8': ['E4-PRUEFER-01', 'E8-PRUEFER-02'], 'KT9': ['E8-OPUS-03', 'E9-OPUS-03'],
+    'KA1': ['E5-OPUS-01', 'E5-OPUS-02'], 'KA2': ['E8-OPUS-02'], 'KA3': ['E4-OPUS-05', 'E5-OPUS-01', 'E5-GRAFIKER-01'],
+    'KA4': ['E4-OPUS-04', 'E8-AUTOR-02'], 'KA5': ['E5-AUTOR-01'], 'KA6': ['E8-OPUS-02'], 'KA7': ['E8-OPUS-01'],
+    'KA8': ['E8-FAKTENPRUEFER-01'], 'KA9': ['E8-OPUS-03'],
+    'KK1': ['E8-OPUS-02', 'E8-TEXTER-01'], 'KK2': ['E8-OPUS-02'], 'KK3': ['E8-OPUS-02'], 'KK4': ['E8-OPUS-01'],
+    'KK5': ['E8-OPUS-01', 'E10-KUER-04'],
+    'KE1': ['E8-OPUS-01', 'E8-AUTOR-02'], 'KE2': ['E8-DOKUMENTAR-01'], 'KE3': ['E8-DOKUMENTAR-01'],
+    'KE4': ['E8-DOKUMENTAR-01'], 'KE5': ['E4-OPUS-05', 'E5-OPUS-01', 'E5-OPUS-02'], 'KE6': ['E6-OPUS-01'],
+    'KE7': ['E10-KUER-06'], 'KL1': ['E10-KUER-06'],
+}
+
+def kanten_zuordnen():
+    nach_kennung = {p['kennung']: p for p in P_LIST}
+    for k, ziele in KANTEN_PAKETE.items():
+        for z_ in ziele:
+            assert z_ in nach_kennung, f'Kanten-Zuordnung: Paket {z_} fehlt'
+            if k not in nach_kennung[z_]['anforderungen']:
+                nach_kennung[z_]['anforderungen'].append(k)
+
 def normalisiere():
     for p in P_LIST:
         p['anforderungen'] = [a[2:] if a.startswith('K-') else a for a in p['anforderungen']]
@@ -349,6 +373,7 @@ def pruefe_g_deckung():
 def plan():
     normalisiere()
     zuordnung_einlesen()
+    kanten_zuordnen()
     muster_setzen()
     pruefer_kanten()
     status_uebernehmen()

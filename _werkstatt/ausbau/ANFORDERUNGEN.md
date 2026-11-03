@@ -1,8 +1,8 @@
 # Anforderungen des Ausbaulaufs
 
-Stand: 2026-11-03T01:51:12+00:00
+Stand: 2026-11-03T04:33:59.084Z
 
-Einträge: 623 · belegt: 0
+Einträge: 623 · belegt: 7
 
 | Quelle | Einträge | belegt | offen | in Arbeit | umgesetzt | später | menschensache | entfällt |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -11,7 +11,7 @@ Einträge: 623 · belegt: 0
 | EL | 79 | 0 | 79 | 0 | 0 | 0 | 0 | 0 |
 | M | 37 | 0 | 37 | 0 | 0 | 0 | 0 | 0 |
 | E | 138 | 0 | 138 | 0 | 0 | 0 | 0 | 0 |
-| K | 34 | 0 | 34 | 0 | 0 | 0 | 0 | 0 |
+| K | 34 | 7 | 27 | 0 | 4 | 0 | 0 | 3 |
 
 ## G · Gespräch (Abschnitt 4)
 
@@ -631,37 +631,37 @@ Einträge: 623 · belegt: 0
 
 | Kennung | Inhalt | Bestand | Status | Pakete | Beleg |
 | --- | --- | --- | --- | --- | --- |
-| KT1 | Such- und KI-Bots frei | nicht angegeben | offen | E1-OPUS-01, E1-RECHERCHEUR-04 |  |
-| KT2 | alles im ersten HTML | nicht angegeben | offen | E1-OPUS-01 |  |
-| KT3 | Snippet-Freiheit | nicht angegeben | offen | E1-OPUS-01, E1-RECHERCHEUR-04 |  |
-| KT4 | ein Host | nicht angegeben | offen | E1-OPUS-01 |  |
-| KT5 | Bing und IndexNow vorbereitet | nicht angegeben | offen | E1-OPUS-01, E1-RECHERCHEUR-04 |  |
-| KT6 | Sitemaps mit echtem lastmod, Bild- und Video-Sitemap | nicht angegeben | offen | E1-OPUS-01 |  |
-| KT7 | Seitenname und Favicon | nicht angegeben | offen | E1-OPUS-01 |  |
-| KT8 | Tempo-Reserve | nicht angegeben | offen | E1-OPUS-01 |  |
-| KT9 | Sicherheitsheader und saubere Statuscodes | nicht angegeben | offen | E0-OPUS-01, E1-OPUS-01 |  |
-| KA1 | offene Preise und Rechenbeispiele | nicht angegeben | offen | E1-OPUS-01, E1-RECHERCHEUR-03 |  |
-| KA2 | Kurzantworten | nicht angegeben | offen | E1-OPUS-01 |  |
-| KA3 | Informationsgewinn durch Finder, Schließplan, Messhilfe und Rechner | nicht angegeben | offen | E1-OPUS-01 |  |
-| KA4 | Erfahrung der Werkstatt sichtbar | nicht angegeben | offen | E1-OPUS-01 |  |
-| KA5 | sachliche Vergleiche wie Sperrschließung oder Schließanlage | nicht angegeben | offen | E1-OPUS-01, E1-RECHERCHEUR-03 |  |
-| KA6 | echte Kundenfragen | nicht angegeben | offen | E1-OPUS-01 |  |
-| KA7 | Frische nur mit Substanz | nicht angegeben | offen | E1-OPUS-01 |  |
-| KA8 | Belege mit Primärquellen | nicht angegeben | offen | E1-OPUS-01 |  |
-| KA9 | Medien mit Text | nicht angegeben | offen | E1-OPUS-01 |  |
-| KK1 | Titel nach Absicht | nicht angegeben | offen | E1-OPUS-01 |  |
-| KK2 | Beschreibung als kleine Anzeige | nicht angegeben | offen | E1-OPUS-01 |  |
-| KK3 | Sprungmarken | nicht angegeben | offen | E1-OPUS-01 |  |
-| KK4 | gültige Rich Results | nicht angegeben | offen | E1-OPUS-01 |  |
-| KK5 | großes Bild | nicht angegeben | offen | E1-OPUS-01 |  |
-| KE1 | Entitätsgraph | nicht angegeben | offen | E1-OPUS-01 |  |
-| KE2 | fehlende Profile | nicht angegeben | offen | E1-OPUS-01 |  |
-| KE3 | Bewertungen mit Inhalt | nicht angegeben | offen | E1-OPUS-01 |  |
-| KE4 | Erwähnungen über Hersteller, Innung und Presse | nicht angegeben | offen | E1-OPUS-01 |  |
-| KE5 | verlinkbare Werkzeuge | nicht angegeben | offen | E1-OPUS-01 |  |
-| KE6 | agententaugliche Formulare | nicht angegeben | offen | E1-OPUS-01 |  |
-| KE7 | Händler-Feed und Produktdaten für Schlüssel nach Code | nicht angegeben | offen | E1-OPUS-01 |  |
-| KL1 | llms.txt aus denselben Daten | nicht angegeben | offen | E1-OPUS-01, E1-RECHERCHEUR-04 |  |
-| KL2 | WebMCP nur lesend und nur mit Token des Ursprungstests | nicht angegeben | offen | E1-OPUS-01 |  |
-| KL3 | Protokolle für KI-Einkauf nach aktueller Spezifikation | nicht angegeben | offen | E1-OPUS-01 |  |
-| KL4 | Titeltests in Kohorten nach dem Livegang | nicht angegeben | offen | E1-OPUS-01 |  |
+| KT1 | Such- und KI-Bots frei | nicht angegeben | umgesetzt | E1-OPUS-01, E1-RECHERCHEUR-04, E8-OPUS-01 | Bestand: src/app/robots.ts mit Test src/app/robots.test.ts (alle Bots frei außer Backend, Kasse, Schnittstellen); KANTEN.md KT1; Trainings-Bots MA-19 |
+| KT2 | alles im ersten HTML | nicht angegeben | offen | E1-OPUS-01, E8-PRUEFER-02 |  |
+| KT3 | Snippet-Freiheit | nicht angegeben | offen | E1-OPUS-01, E1-RECHERCHEUR-04, E8-OPUS-01 |  |
+| KT4 | ein Host | nicht angegeben | offen | E1-OPUS-01, E9-OPUS-03 |  |
+| KT5 | Bing und IndexNow vorbereitet | nicht angegeben | offen | E1-OPUS-01, E1-RECHERCHEUR-04, E8-DOKUMENTAR-01, E8-OPUS-01 |  |
+| KT6 | Sitemaps mit echtem lastmod, Bild- und Video-Sitemap | nicht angegeben | offen | E1-OPUS-01, E8-OPUS-01 |  |
+| KT7 | Seitenname und Favicon | nicht angegeben | offen | E1-OPUS-01, E8-OPUS-01, E8-OPUS-05 |  |
+| KT8 | Tempo-Reserve | nicht angegeben | offen | E1-OPUS-01, E4-PRUEFER-01, E8-PRUEFER-02 |  |
+| KT9 | Sicherheitsheader und saubere Statuscodes | nicht angegeben | umgesetzt | E0-OPUS-01, E1-OPUS-01, E8-OPUS-03, E9-OPUS-03 | Bestand: next.config.ts (CSP, HSTS mit preload, nosniff, Referrer-Policy, Permissions-Policy), 404 über src/app/(site)/[...unbekannt]; KANTEN.md KT9 |
+| KA1 | offene Preise und Rechenbeispiele | nicht angegeben | offen | E1-OPUS-01, E1-RECHERCHEUR-03, E5-OPUS-01, E5-OPUS-02 |  |
+| KA2 | Kurzantworten | nicht angegeben | offen | E1-OPUS-01, E8-OPUS-02 |  |
+| KA3 | Informationsgewinn durch Finder, Schließplan, Messhilfe und Rechner | nicht angegeben | offen | E1-OPUS-01, E4-OPUS-05, E5-GRAFIKER-01, E5-OPUS-01 |  |
+| KA4 | Erfahrung der Werkstatt sichtbar | nicht angegeben | offen | E1-OPUS-01, E4-OPUS-04, E8-AUTOR-02 |  |
+| KA5 | sachliche Vergleiche wie Sperrschließung oder Schließanlage | nicht angegeben | offen | E1-OPUS-01, E1-RECHERCHEUR-03, E5-AUTOR-01 |  |
+| KA6 | echte Kundenfragen | nicht angegeben | offen | E1-OPUS-01, E8-OPUS-02 |  |
+| KA7 | Frische nur mit Substanz | nicht angegeben | umgesetzt | E1-OPUS-01, E8-OPUS-01 | Bestand: src/app/sitemap.ts setzt lastModified nur aus echten Änderungsdaten (Test src/app/sitemap.test.ts); KANTEN.md KA7 |
+| KA8 | Belege mit Primärquellen | nicht angegeben | offen | E1-OPUS-01, E8-FAKTENPRUEFER-01 |  |
+| KA9 | Medien mit Text | nicht angegeben | offen | E1-OPUS-01, E8-OPUS-03 |  |
+| KK1 | Titel nach Absicht | nicht angegeben | offen | E1-OPUS-01, E8-OPUS-02, E8-TEXTER-01 |  |
+| KK2 | Beschreibung als kleine Anzeige | nicht angegeben | offen | E1-OPUS-01, E8-OPUS-02 |  |
+| KK3 | Sprungmarken | nicht angegeben | offen | E1-OPUS-01, E8-OPUS-02 |  |
+| KK4 | gültige Rich Results | nicht angegeben | offen | E1-OPUS-01, E8-OPUS-01 |  |
+| KK5 | großes Bild | nicht angegeben | offen | E1-OPUS-01, E10-KUER-04, E8-OPUS-01 |  |
+| KE1 | Entitätsgraph | nicht angegeben | offen | E1-OPUS-01, E8-AUTOR-02, E8-OPUS-01 |  |
+| KE2 | fehlende Profile | nicht angegeben | offen | E1-OPUS-01, E8-DOKUMENTAR-01 |  |
+| KE3 | Bewertungen mit Inhalt | nicht angegeben | offen | E1-OPUS-01, E8-DOKUMENTAR-01 |  |
+| KE4 | Erwähnungen über Hersteller, Innung und Presse | nicht angegeben | offen | E1-OPUS-01, E8-DOKUMENTAR-01 |  |
+| KE5 | verlinkbare Werkzeuge | nicht angegeben | offen | E1-OPUS-01, E4-OPUS-05, E5-OPUS-01, E5-OPUS-02 |  |
+| KE6 | agententaugliche Formulare | nicht angegeben | offen | E1-OPUS-01, E6-OPUS-01 |  |
+| KE7 | Händler-Feed und Produktdaten für Schlüssel nach Code | nicht angegeben | offen | E1-OPUS-01, E10-KUER-06 |  |
+| KL1 | llms.txt aus denselben Daten | nicht angegeben | umgesetzt | E1-OPUS-01, E1-RECHERCHEUR-04, E10-KUER-06 | Bestand: src/app/llms.txt/route.ts erzeugt /llms.txt aus Navigation und Firmendaten (R1); KANTEN.md KL1 |
+| KL2 | WebMCP nur lesend und nur mit Token des Ursprungstests | nicht angegeben | entfällt | E1-OPUS-01 | ENTSCHEIDUNGEN.md#A-022; KANTEN.md KL2: WebMCP ohne Token eines Ursprungstests nicht baubar |
+| KL3 | Protokolle für KI-Einkauf nach aktueller Spezifikation | nicht angegeben | entfällt | E1-OPUS-01 | ENTSCHEIDUNGEN.md#A-022; KANTEN.md KL3: Spezifikation ungeprüft, Einkaufsweg berührt G9 |
+| KL4 | Titeltests in Kohorten nach dem Livegang | nicht angegeben | entfällt | E1-OPUS-01 | ENTSCHEIDUNGEN.md#A-022; KANTEN.md KL4: setzt den Livegang voraus (G3) |

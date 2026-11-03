@@ -29,8 +29,35 @@ Für jede Quelle: Zweck · Inhalt · Lizenz und Nutzung · Stand · Abruf · Abl
 ## Schließtechnik (G-27 bis G-32)
 - Herstellerunterlagen ABUS (abus.com per robots.txt gesperrt; nur Suchauszüge und PDF auf c1.abus.com), BKS (bks.de, Produktseiten mit Anmeldung), ASSA ABLOY (dach.assaabloy.com sperrt ClaudeBot), Normenseiten DIN Media, KPK-Verzeichnis (Polizei Niedersachsen, Stand 2025-01), Baunetz Wissen. Einzelheiten in FACHWISSEN.md und den Erhebungen.
 
-## Karte (G-42), Versand (G-24), Suche, Wettbewerb
-- Wird mit den Ergebnissen von E1-RECHERCHEUR-02 bis -06 ergänzt.
+## Karte (G-42) · erhebung/E1-karte-video.md
+- Zweck: Grenzen der Kreise, Städte und Gemeinden in Hessen für die selbst gehostete Karte mit Listenansicht (E7-OPUS-03).
+- Quelle: BKG Verwaltungsgebiete 1:250 000 (VG250), Stand 01.01.2026, jährlich fortgeführt; GeoPackage-ZIP 70.630.747 Byte, SHA-256 6b096eb4862b4eafda9294e425fb5a6d0e7773eb5815a4d4edc78b639ec2728f.
+- Inhalt (Eigenauszählung): Hessen mit 21 Landkreisen und 6 kreisfreien Städten (Hanau kreisfrei seit 01.01.2026, GVBl. 2025 Nr. 16), 421 Städte und Gemeinden, 4 gemeindefreie Gebiete; Lahn-Dill-Kreis mit 23 Kommunen (8 Städte, 15 Gemeinden).
+- Lizenz: Datenlizenz Deutschland Namensnennung 2.0 (dl-de/by-2-0), geldleistungsfrei. Pflicht bei jeder Wiedergabe: „© BKG (Jahr des letzten Datenbezugs) dl-de/by-2-0, Datenquellen: https://sgx.geodatenzentrum.de/web_public/gdz/datenquellen/datenquellen_vg_nuts.pdf“, Links auf https://www.bkg.bund.de und https://www.govdata.de/dl-de/by-2-0, dazu ein Veränderungshinweis (Wortlaut noch nicht abgerufen).
+- Ablage: `_werkstatt/ausbau/daten/geo/vg250/` (nicht committet); ins Projekt nur ein vereinfachter Auszug für Hessen mit Quellenvermerk.
+- Alternativen: HVBG-Verwaltungsgrenzen (Lizenz-ID nicht belegt), opendata.hessen.de (robots.txt HTTP 403), OpenStreetMap (ODbL: Namensnennung; eigene abgeleitete Grenzdateien lösen die Weitergabepflicht aus). Entscheidung: BKG.
+- Lücken: Veränderungshinweis, OSM-Namensnennung im Wortlaut, ältere Gemeindezahlen 422 und 426 aus Suchtreffern (gültig ist 421).
+
+## Video (G-44) · erhebung/E1-karte-video.md
+- Zweck: Anleitungen hinter einer Datenschutz-Fassade (E8-OPUS-03).
+- Quellen: Google-Hilfe zum erweiterten Datenschutzmodus (youtube-nocookie.com, B); Google-Dokumentation VideoObject (Pflicht name, thumbnailUrl, uploadDate; empfohlen contentUrl oder embedUrl; seit 24.09.2026 Feld creator, B); § 25 TDDDG nur als Suchtreffer (C).
+- Folgen: Zwei-Klick-Lösung, vor dem Klick keine Verbindung zu Google (auch kein Vorschaubild von YouTube, eigenes Bild); CSP braucht `frame-src https://www.youtube-nocookie.com`; Hinweistext als Entwurf zur Prüfung durch den Inhaber (R10).
+- Lücken: Speicherung vor dem Klick bei youtube-nocookie.com nicht belegt (Test mit Attrappe vor dem Livegang), Drittlandübermittlung, DSK-Orientierungshilfe nur als Suchtreffer.
+
+## Suche und KI-Antworten (Auftrag 13) · erhebung/E1-lagebild-suche.md
+- Zweck: Prüfung des Lagebilds und der Hebel (LAGEBILD.md Abschnitt 8, KANTEN.md).
+- Quellen (alle abgerufen 2026-11-03, Herstellerangaben Stufe B): developers.google.com (Ranking-Systeme, KI-Funktionen, KI-Leitfaden, Spam-Richtlinien, Hinweise zu generativer KI, Updates-Seite, Strukturdaten LocalBusiness, Product, Merchant Listings, Video, FAQPage, Favicon, Seitennamen, Robots-Meta-Tag, Steuerung „control what you share“, Blogbeiträge vom 03.06. und 30.10.2026), blogs.bing.com (KI-Leistung in Bing Webmaster Tools, 10.02.2026), indexnow.org (Dokumentation und Teilnehmerliste), web.dev (Schwellen der Core Web Vitals), developer.chrome.com (Speculation Rules), Crawler-Seiten von OpenAI, Anthropic und Perplexity; Messung Vercel zu KI-Crawlern (Dezember 2024, Stufe A).
+- Lücken: Bing und llms.txt, offizielle Dokumentation zu Google-Extended, aktuelle Messung der KI-Crawler, Ergebnisbilder für Deutschland.
+
+## Nachfrage (Auftrag 13) · erhebung/E1-nachfrage.md
+- Zweck: Suchfamilien, Leitanfragen und Ergebnisbilder (KARTE.md).
+- Quellen: Suchauszüge und gelesene Seiten vom 2026-11-03 (Stufe B für Formulierungen, A nur für Preisangaben genannter Anbieter: ADAC, AutoScout24, Allianz Direct, pkw.de, GDV). 73 belegte Adressen.
+- Lücken: kein Suchvolumen, keine Suchvorschläge, keine Kartenergebnisse; die Websuche kann US-gewichtet sein. Datenanfrage an den Inhaber: MA-10.
+
+## Wettbewerb (G-31) · erhebung/E1-wettbewerb.md
+- Zweck: Struktur, Abläufe, Preise und Preisgründe von vier Anbietern (WETTBEWERB.md).
+- Quellen: e-schliessanlage.de, schluessel24.com, schliessanlagen-direkt.de, schliesszylinder-shop.com, gelesen am 2026-11-03; autoschluesselgehaeuse.de nicht lesbar (robots.txt HTTP 503).
+- Nutzung: nur als Entscheidungsvorlage, nichts übernehmen (R11); Preise ohne Stand-Datum der Anbieter, Momentaufnahme.
 
 ## Versand (G-24, G-25, Z-08) · erhebung/E1-versand.md
 - Deutsche Post „Leistungen und Preise“ (Stand 09/2026) und Preisblatt 01/2026: Kompaktbrief 1,10 €, Großbrief 1,80 €, Einschreiben Einwurf 4,15 € im Großbrief (Haftung 20 €), Einschreiben 4,45 € (25 €), Einschreiben Wert 6,25 € (bis 500 €, nur Filiale); DHL Päckchen S 4,19 €, Paket bis 5 kg 7,69 € (500 € Haftung inklusive).
