@@ -83,7 +83,7 @@ export function tuerEntfernen(plan: Schliessplan, tuerId: string): Schliessplan 
 }
 
 export function schluesselEntfernen(plan: Schliessplan, schluesselId: string): Schliessplan {
-  const { [schluesselId]: _weg, ...berechtigungen } = plan.berechtigungen;
+  const berechtigungen = Object.fromEntries(Object.entries(plan.berechtigungen).filter(([id]) => id !== schluesselId));
   return { ...plan, schluessel: plan.schluessel.filter((s) => s.id !== schluesselId), berechtigungen };
 }
 
