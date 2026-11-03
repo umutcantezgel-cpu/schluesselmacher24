@@ -34,3 +34,4 @@ STATUS · Sitzung m40jjmy9 · Branch claude/affectionate-knuth-n7mjur · Etappe 
 ## Stundenzeilen (L4)
 - 2026-11-02 22:21 · E0 begonnen: Branch, Arbeitsordner, Auftrag wörtlich, Datenweiche mit Selbsttest (9/9).
 - 2026-11-02 23:25 · E0: Kundschafter 1 bis 6, Anforderungs-Spur (622 Einträge), Planwerkzeug (58 Tests grün), übernommene Werkzeuge 14/14, Funktionsliste 14/14; E1 Recherche begonnen.
+- 2026-11-03 02:13 · Neustart der Umgebung (Container neu gestartet gegen 02:10, Dateien und Git-Stand erhalten). Startritual: Server neu gestartet, keine fremde Sitzung, keine Herzschlag-Lücke über der Frist. Abgebrochen und neu gestartet: E1-RECHERCHEUR-05, E1-FACHKUNDLER-04 (keine Teilausgaben vorhanden); E1-RECHERCHEUR-03 und -04 warten auf freie Plätze. Neu gestartet: E2-DATENPFLEGER-01, E1-RECHERCHEUR-06. Weckruf neu: trig_01QDjQrSQU8nDSvcdnR2MWnf (05:14 MEZ); der 2-h-Weckruf ist verbraucht.

@@ -93,3 +93,4 @@
 2026-11-02T22:34:39+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/slopscan.mjs
 2026-11-02T22:37:51+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/slopscan.mjs --routen / --geraet mobil
 2026-11-02T22:38:03+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/slopscan.mjs
+2026-11-03T01:12:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
