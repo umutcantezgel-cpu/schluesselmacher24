@@ -34,7 +34,7 @@ export function HubKachel({ rubrik }: { rubrik: Rubrik }) {
             {rubrik.laienname}
           </span>
           {rubrik.zusatz && (
-            <span className="trennung-kachel text-caption leading-snug text-foreground-muted md:text-small">{rubrik.zusatz}</span>
+            <span className="trennung-kachel text-balance text-caption leading-snug text-foreground-muted md:text-small">{rubrik.zusatz}</span>
           )}
         </Link>
       </AreaScope>

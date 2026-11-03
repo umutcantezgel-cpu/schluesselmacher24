@@ -291,7 +291,7 @@ export function rubriken(): Rubrik[] {
       id: "schliessanlage",
       name: "Schließanlage",
       laienname: "Schließanlage",
-      zusatz: "jedem Schlüssel seine Türen",
+      zusatz: "wer öffnet welche Tür",
       erklaerung:
         "Für Häuser und Firmen: Jeder Schlüssel öffnet nur die Türen, für die er gedacht ist, und Sie bestellen mit Preis oder fragen ein Angebot an.",
       icon: "schliessanlagen",
@@ -398,7 +398,8 @@ export function rubriken(): Rubrik[] {
     {
       id: "schluesseldienst-vor-ort",
       name: "Schlüsseldienst vor Ort",
-      laienname: "Schlüsseldienst vor Ort",
+      laienname: "Schlüsseldienst",
+      zusatz: "vor Ort, mit Termin",
       erklaerung:
         "Einsatz an Ihrer Tür im Einsatzgebiet der Werkstatt, anderswo über Partner; vor der Terminbestätigung erfahren Sie, was er kostet.",
       icon: "vor-ort",
