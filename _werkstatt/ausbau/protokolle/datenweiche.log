@@ -245,3 +245,64 @@ const {build}=require("esbuild");
 2026-11-03T03:32:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
 2026-11-03T03:32:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/konfigurator
 2026-11-03T03:32:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/konfigurator
+2026-11-03T03:33:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e3-kba/pruefe1.mjs
+2026-11-03T03:34:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --input-type=module -e import { readFileSync } from 'node:fs';
+import { baueKatalog, abdeckung, GESAMTBESTAND, STANDARD_CSV } from '/home/user/schluesselmacher24/scripts/fahrzeuge-import.mjs';
+const csv = readFileSync(STANDARD_CSV, 'utf8');
+const bestand = JSON.parse(readFileSync('/home/user/schluesselmacher24/content/vehicles.json', 'utf8'));
+const { reihen, kennzahlen } = baueKatalog({ csv, bestand });
+console.log(JSON.stringify(kennzahlen));
+const ab = abdeckung(reihen);
+console.log('abdeckung', ab.summe, (ab.anteil * 100).toFixed(4));
+console.log('--- bestand links');
+for (const r of reihen.filter(r => r.bestandsModell)) console.log(`${r.bestandsModell} -> id=${r.id} reihe=${r.reihe} kba=${r.kbaName} alias=${JSON.stringify(r.alias ?? [])} bestand=${r.bestand} rang=${r.rang}`);
+console.log('--- bestand-only rows', reihen.filter(r => r.quelle.startsWith('Bestand')).length);
+console.log('--- merged (more than one KBA name or segment)');
+for (const r of reihen.filter(r => r.kbaName && (r.kbaName.includes(' / ') || (r.segment||'').includes(' / ')))) console.log(`${r.marke} | ${r.reihe} | ${r.kbaName} | ${r.segment} | ${r.bestand}`);
+2026-11-03T03:34:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --input-type=module -e import { readFileSync } from 'node:fs';
+import { baueKatalog } from '/home/user/schluesselmacher24/scripts/fahrzeuge-import.mjs';
+const csv = readFileSync('/home/user/schluesselmacher24/_werkstatt/ausbau/daten/kba/fz12_2026_modellreihen_abgeleitet.csv', 'utf8');
+const bestand = JSON.parse(readFileSync('/home/user/schluesselmacher24/content/vehicles.json', 'utf8'));
+const { reihen } = baueKatalog({ csv, bestand });
+const by = new Map();
+for (const r of reihen) { if (!by.has(r.marke)) by.set(r.marke, []); by.get(r.marke).push(r.reihe + (r.bestandsModell ? '*' : '')); }
+for (const [m, list] of by) console.log(`${m} (${list.length}): ${list.join(' | ')}`);
+2026-11-03T03:34:39+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node scripts/fahrzeuge-import.mjs
+2026-11-03T03:35:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --experimental-strip-types --input-type=module -e import { readFileSync } from 'node:fs';
+const { sucheFahrzeuge } = await import('/home/user/schluesselmacher24/src/lib/fahrzeuge/suche.ts');
+const katalog = JSON.parse(readFileSync('/home/user/schluesselmacher24/content/fahrzeugkatalog.json', 'utf8'));
+for (const q of ['vw golf', 'opel corsa', 'skoda octavia', 'bmw 3er', 'vw jetta', 'mercedes a klasse', 'ssangyong korando', 'vw transporter', 'benz e-klase']) {
+  const t = sucheFahrzeuge(q, katalog, { hoechstens: 4 });
+  console.log(`"${q}": ` + t.map((x) => `${x.reihe.marke} ${x.reihe.reihe} [${x.reihe.bestandsModell ?? '-'}] ${x.punkte.toFixed(2)}`).join(' | '));
+}
+2026-11-03T03:35:24+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx payload generate:types
+2026-11-03T03:35:28+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx payload migrate:create partnerbetriebe
+2026-11-03T03:35:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit
+2026-11-03T03:35:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run scripts/fahrzeuge-import.test.ts src/lib/fahrzeuge
+2026-11-03T03:35:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/partner
+2026-11-03T03:36:16+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit
+2026-11-03T03:36:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint scripts/fahrzeuge-import.mjs scripts/fahrzeuge-import.test.ts
+2026-11-03T03:36:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit --strict --allowJs --esModuleInterop --module esnext --moduleResolution bundler --target es2017 --lib dom,dom.iterable,esnext --skipLibCheck --resolveJsonModule --isolatedModules scripts/fahrzeuge-import.test.ts
+2026-11-03T03:36:37+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T03:36:58+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node --input-type=module -e import { readFileSync } from 'node:fs';
+const k = JSON.parse(readFileSync('/home/user/schluesselmacher24/content/fahrzeugkatalog.json', 'utf8'));
+const G = 49486487;
+const s = k.filter(r => r.bestand).sort((a, b) => b.bestand - a.bestand);
+let cum = 0; const marks = {};
+s.forEach((r, i) => { cum += r.bestand; const p = cum / G * 100; for (const t of [95, 97]) if (marks[t] === undefined && p >= t) marks[t] = { n: i + 1, p: p.toFixed(3) }; });
+console.log(JSON.stringify(marks), 'rows with bestand', s.length, 'total', cum);
+const marken = new Set(s.map(r => r.marke));
+console.log('brands with bestand rows', marken.size);
+const fuer95 = new Set(); cum = 0; const marken95 = new Set();
+s.forEach(r => { if (cum / G < 0.95) { cum += r.bestand; marken95.add(r.marke); } });
+console.log('brands needed for 95 percent (approx, greedy by size):', marken95.size);
+console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fahrzeugkatalog.json').length);
+2026-11-03T03:38:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit
+2026-11-03T03:38:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node scripts/fahrzeuge-import.mjs
+2026-11-03T03:38:53+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run -c vitest.db.config.ts src/lib/partner
+2026-11-03T03:39:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T03:39:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T03:40:07+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T03:41:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T03:41:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T03:42:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run scripts/fahrzeuge-import.test.ts src/lib/fahrzeuge

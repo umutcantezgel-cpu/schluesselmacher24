@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T03:33:34.434Z",
+ "stand": "2026-11-03T03:43:25.931Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -874,10 +874,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "abgenommen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "ac1c859",
    "massstab": "_werkstatt/ausbau/pakete/E1-RECHERCHEUR-03.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },
@@ -1589,10 +1589,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "666fd41",
    "massstab": null,
    "muster": null
   },
@@ -1693,7 +1693,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "läuft",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -1768,10 +1768,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "bf72638",
    "massstab": "_werkstatt/ausbau/pakete/E3-DATENPFLEGER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },
