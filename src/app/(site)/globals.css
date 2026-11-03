@@ -550,6 +550,38 @@ header a[aria-label$='Startseite'] > span {
       var(--sm24-delay, 0s) both;
 }
 
+/* Eingangsinszenierung (B-31): Die Teile laufen von ihrem Startzustand (Variablen --start-*) in das
+   Endbild, nur solange das Startskript `sm24-start` gesetzt hat (höchstens 2 s). Ohne Klasse, ohne
+   JavaScript oder bei „ruhig“ steht sofort das Endbild. */
+.sm24-eingang-teil {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes sm24-eingang {
+  from {
+    transform: translate(var(--start-x, 0px), 0) rotate(var(--start-dreh, 0deg)) scale(var(--start-gross, 1));
+    opacity: var(--start-deckkraft, 1);
+  }
+}
+
+:where(:root.sm24-start[data-bewegung='an']) .sm24-eingang-teil {
+  animation: sm24-eingang var(--eingang-dauer, var(--dauer-enter)) var(--kurve-enter) var(--eingang-verzug, 0s) both;
+}
+
+/* Dauerschleife der Inszenierung (B-32): Schlüssel zieht zurück, Kern dreht zurück, im Takt der Hülle */
+:where(:root[data-bewegung='an']) [data-schleife='an'] :is(.sm24-eingang-schluessel, .sm24-eingang-kern) {
+  transition: transform var(--dauer-slow) var(--kurve-standard);
+}
+
+:where(:root[data-bewegung='an']) [data-schleife='an'][data-phase='b'] .sm24-eingang-schluessel {
+  transform: translateX(-12px);
+}
+
+:where(:root[data-bewegung='an']) [data-schleife='an'][data-phase='b'] .sm24-eingang-kern {
+  transform: rotate(-90deg);
+}
+
 :where(:root[data-bewegung='an']) .sm24-fade {
   animation: sm24-fade var(--sm24-duration, var(--dauer-base)) var(--kurve-standard)
       var(--sm24-delay, 0s) both;

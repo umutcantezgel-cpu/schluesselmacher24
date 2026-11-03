@@ -29,11 +29,11 @@ export function HubKachel({ rubrik }: { rubrik: Rubrik }) {
           href={rubrik.ziel}
           prefetch={false}
           data-rubrik={rubrik.id}
-          className="group flex min-h-24 w-full flex-col items-center gap-1.5 rounded-lg border border-border bg-surface px-1.5 pb-3 pt-3.5 text-center transition duration-quick ease-standard hover:border-area-strong focus-visible:border-area-strong bewegt:hover:shadow-leuchten bewegt:focus-visible:shadow-leuchten bewegt:active:scale-kachel bewegt:active:shadow-leuchten-druck md:items-start md:gap-2 md:px-4 md:pb-4 md:pt-4 md:text-left"
+          className="group flex min-h-24 w-full flex-col items-center gap-1.5 rounded-lg border border-border bg-surface px-1.5 pb-2.5 pt-3 text-center transition duration-quick ease-standard hover:border-area-strong focus-visible:border-area-strong bewegt:hover:shadow-leuchten bewegt:focus-visible:shadow-leuchten bewegt:active:scale-kachel bewegt:active:shadow-leuchten-druck md:items-start md:gap-2 md:px-4 md:pb-4 md:pt-4 md:text-left"
         >
           {mitIcon && (
             <Seitenwechsel name={rubrikUebergang(rubrik.id)}>
-              <FachIcon name={rubrik.icon} size={36} className="shrink-0 text-area-strong md:size-10" />
+              <FachIcon name={rubrik.icon} size={32} className="shrink-0 text-area-strong md:size-10" />
             </Seitenwechsel>
           )}
           <span className="trennung-kachel text-small font-semibold leading-snug text-foreground md:text-title-sm">

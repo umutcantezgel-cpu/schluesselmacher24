@@ -50,7 +50,7 @@ export function IntentHub({ rubriken, satz, telefon, buehne }: IntentHubProps) {
         <ul
           aria-label="Leistungen"
           className={cn(
-            'mt-4 grid grid-cols-3 gap-2 sm:gap-3 lg:col-span-7 lg:row-start-2 lg:mt-8',
+            'mt-3 grid grid-cols-3 gap-2 sm:mt-4 sm:gap-3 lg:col-span-7 lg:row-start-2 lg:mt-8',
             spalten === 4 ? 'md:grid-cols-4' : 'md:grid-cols-3',
           )}
         >
@@ -62,7 +62,7 @@ export function IntentHub({ rubriken, satz, telefon, buehne }: IntentHubProps) {
         {/* Rechte Spalte ab 1024 px: oben die Bühne, unten Anrufen. Darunter löst sich die Hülle auf
             (`contents`): Die Bühne steht als Band über der Frage, Anrufen nach dem Raster. */}
         <div className="contents lg:col-span-5 lg:col-start-8 lg:row-span-3 lg:row-start-1 lg:flex lg:flex-col lg:gap-6">
-          {buehne && <div className="order-first mb-3 lg:order-none lg:mb-0">{buehne}</div>}
+          {buehne && <div className="order-first mb-2 lg:order-none lg:mb-0">{buehne}</div>}
           {telefon && (
             <p className="order-last mt-3 flex flex-wrap items-center gap-x-2 text-body text-foreground-muted lg:order-none lg:mt-auto">
               <GlyphTelefon size={20} className="shrink-0 text-primary" />

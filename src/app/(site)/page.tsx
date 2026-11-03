@@ -6,6 +6,7 @@ import { NAV_AREAS } from '@/lib/navigation';
 import { kontakt } from '@/lib/rechtliches/firma';
 import { telefonLink } from '@/lib/telefon';
 import { IntentHub } from '@/components/hub/intent-hub';
+import { Eingangsinszenierung } from '@/components/visual/inszenierung/eingangsinszenierung';
 import { formatCents } from '@/lib/format';
 import { ButtonLink } from '@/components/ui/button';
 import { SpaetVorladen } from '@/lib/spaet-vorladen';
@@ -39,16 +40,16 @@ const PLAN_MOBIL = { system: 'haupt', tueren: 4 } as const;
 const PLAN_AUSSCHNITT_MOBIL: GrafikAusschnitt = schliessplanAusschnitt(PLAN_MOBIL);
 
 /**
- * Telefon-Ausschnitt der Kopfgrafik (Profilschnitt, unter 640 px): Fenster x 126–476 und y 98–288
- * in der viewBox 480 × 360. Es beginnt rechts der Reidenkante (124 + KONTUR/2 = 125,1) und fasst die
- * Einschnitt-Nummern (y 122), die Spitze (x 456), den gehobenen Fräser (x bis 455,5, y ab 119,5) und die
+ * Telefon-Ausschnitt der Kopfgrafik (Profilschnitt, unter 640 px): Fenster x 62 bis 412 und y 98 bis 288
+ * in der viewBox 480 × 360. Seit G-07 ist der Schlüssel kurz genug, dass das Fenster ihn ganz fasst:
+ * Reide ab x 72, Spitze bei 382, gehobener Fräser bis etwa 381, Einschnitt-Nummern (y 122) und
  * Halm-Bemaßung (Text y 266, Linie 274, Hilfslinien bis 282). Breite 350 ergibt Maßstab 1 bei 390 px,
  * also 12 px Schrift (K-008). Die Bezugswerte hängen an Interna von `generators/profilschnitt.tsx`
  * (REIDE, masslinieY), die nicht exportiert sind: Ändert sich der Generator, hier nachmessen.
  */
 const KOPF_AUSSCHNITT_MOBIL: GrafikAusschnitt = {
   ...PROFILSCHNITT_AUSSCHNITT,
-  x: 126,
+  x: 62,
   hoehe: 190,
   vollBreite: PROFILSCHNITT_GROESSE.breite,
   vollHoehe: PROFILSCHNITT_GROESSE.hoehe,
@@ -122,7 +123,7 @@ export default async function HomePage() {
       <JsonLd data={localBusinessSchema(settings)} />
 
       {/* Erster Bildschirm: Frage, Satz, Kacheln aus den Rubriken, Anrufen (G-01 bis G-05, K-013) */}
-      <IntentHub rubriken={hubRubriken} satz={page?.subline} telefon={telefon} />
+      <IntentHub rubriken={hubRubriken} satz={page?.subline} telefon={telefon} buehne={<Eingangsinszenierung />} />
 
       {/*
         Autoschlüssel direkt nach dem Hub (L-004: Schwerpunkt der Werkstatt): Kopf, Fräsbahn (B-01),
