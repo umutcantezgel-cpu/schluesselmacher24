@@ -218,50 +218,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Vertrauen vor dem Ablauf (Leitfaden Kap. 03) als Prüfprotokoll: ab 1024 px die nummerierten Prüfpunkte links (7), der Kopf rechts (5); mobil Zeilen Nummer | Text */}
-      <Section tone="muted" labelledBy="vertrauen-titel">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
-          <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:-mt-1.5 lg:self-start">
-            <SectionHeading
-              id="vertrauen-titel"
-              eyebrow="Warum wir"
-              title="Eigene Werkstatt, Preis vor dem Termin"
-              lead={VERTRAUENSBASIS}
-            />
-            {/* Die echte Werkstatt – entfällt, solange kein Standort gepflegt ist */}
-            <WerkstattZeile {...werkstattAngaben(settings.company)} className="mt-5" />
-          </div>
-
-          {/* Prüfpunkte mit Haarlinien: mobil Zeilen Nummer | Text, ab 640 px ein 2×2 unter dem Kopf, ab 1024 px ein 2×2 in 7 Spalten links */}
-          <ol className="border-y border-border sm:grid sm:grid-cols-2 lg:col-span-7 lg:col-start-1 lg:row-start-1 lg:self-start">
-            {TRUST_POINTS.map((point, index) => (
-              <li
-                key={point.title}
-                className={cn(
-                  'grid grid-cols-12 gap-x-4 py-6 sm:block sm:pr-4',
-                  index > 0 && 'border-t border-border',
-                  index === 1 && 'sm:border-t-0',
-                  index % 2 === 1 && 'sm:border-l sm:border-border sm:pl-4',
-                )}
-              >
-                <span className="block col-span-2 font-mono text-title font-semibold tabular-nums text-foreground">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <div className="col-span-10 sm:mt-3">
-                  <p className="text-title-sm font-semibold text-foreground">{point.title}</p>
-                  <p className="mt-2 max-w-measure text-body text-foreground-muted">{point.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </Section>
-
       {/* Autoschlüssel-Ablauf: Fortschritt läuft mit dem Scrollen (B-03) */}
       <Section tone="sunken" labelledBy="ablauf-titel">
         <AreaScope area="autoschluessel">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
-            {/* Linke Spalte als Einheit (ohne Klebung): Kopf, Knöpfe, darunter der Funkschlüssel; die Schritte rechts teilen ihre Höhe */}
+            {/* Linke Spalte als Einheit (ohne Klebung): Kopf, Knöpfe, darunter „Warum bei uns“; die Schritte rechts teilen ihre Höhe */}
             <div className="flex flex-col lg:col-span-5">
               <div>
                 <SectionHeading
@@ -288,13 +249,23 @@ export default async function HomePage() {
                   </ButtonLink>
                 </div>
               </div>
-              {/* Funkschlüssel direkt auf der Fläche, bis an den Rand ragend; Unterkante bündig mit dem letzten Schritt */}
-              <div className="-ml-8 hidden pt-10 lg:block">
-                <SchluesselGrafik params={{ typ: 'funk' }} title="Funkschlüssel in Seitenansicht" />
+              {/* Warum bei uns (E4-JURY-02): eingeschmolzen statt eigener Abschnitt, Zusagen ohne Nummern;
+                  Nummern tragen nur die Schritte rechts. Die Werkstatt steht schon im Abschnitt darüber. */}
+              <div className="mt-10">
+                <h3 className="font-mono text-caption font-semibold uppercase tracking-label text-foreground-muted">Warum bei uns</h3>
+                <ul className="mt-3 border-t border-border">
+                  {TRUST_POINTS.map((point) => (
+                    <li key={point.title} className="border-b border-border py-4">
+                      <p className="text-body font-semibold text-foreground">{point.title}</p>
+                      <p className="mt-1 max-w-measure text-pretty text-small text-foreground-muted">{point.body}</p>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 max-w-measure text-pretty text-small text-foreground-muted">{VERTRAUENSBASIS}</p>
               </div>
             </div>
 
-            {/* Ab lg verteilen sich die Schritte über die volle Höhe der Zeile: der letzte Schritt steht mit der Unterkante der Funkschlüssel-Grafik bündig */}
+            {/* Ab lg verteilen sich die Schritte über die volle Höhe der Zeile, neben Kopf und Zusagen */}
             <ol className="relative lg:col-span-7 lg:flex lg:flex-col lg:justify-between">
               {/* Schiene und Fortschritt: der Strich füllt sich, während die Schritte vorbeiziehen */}
               {/* Die Schiene endet unter dem letzten Schritt im Kreis, nicht darunter */}
