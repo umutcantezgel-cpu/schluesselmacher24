@@ -65,9 +65,12 @@ const DRINGLICHKEIT = [
 export function AllgemeineAnfrage({
   themen,
   vorauswahl,
+  fahrzeug,
 }: {
   themen: Array<{ key: AreaKey; label: string; summary: string }>;
   vorauswahl?: string;
+  /** Fahrzeug aus der Suche im Autoschlüssel-Weg, das dort nicht gepflegt ist (G-15). */
+  fahrzeug?: string;
 }) {
   const [dateien, setDateien] = useState<PickedFile[]>([]);
   const [senden, setSenden] = useState(false);
@@ -80,7 +83,11 @@ export function AllgemeineAnfrage({
   const flow = useFlow<FormData>({
     id: 'allgemeine-anfrage',
     steps: STEPS,
-    initial: { ...LEER, thema: vorauswahl && themen.some((t) => t.key === vorauswahl) ? vorauswahl : '' },
+    initial: {
+      ...LEER,
+      thema: vorauswahl && themen.some((t) => t.key === vorauswahl) ? vorauswahl : '',
+      beschreibung: fahrzeug ? `Fahrzeug: ${fahrzeug}. ` : '',
+    },
     validate: (data, stepId) => {
       if (stepId === 'thema') return data.thema !== '';
       if (stepId === 'anliegen') return data.beschreibung.trim().length >= 20;
@@ -303,7 +310,11 @@ export function AllgemeineAnfrage({
             category="dokument"
             id="anfrage-dateien"
             label="Fotos oder Unterlagen"
-            description="Freiwillig. Fotos der betroffenen Tür, des Schlüssels oder vorhandene Unterlagen helfen uns sehr."
+            description={
+              data.thema === 'autoschluessel'
+                ? 'Für einen Autoschlüssel brauchen wir den Fahrzeugschein (Zulassungsbescheinigung Teil I) und ein Foto Ihres Schlüssels von beiden Seiten. Ohne Fahrzeugschein fertigen wir keinen Schlüssel.'
+                : 'Freiwillig. Fotos der betroffenen Tür, des Schlüssels oder vorhandene Unterlagen helfen uns sehr.'
+            }
             example={{
               motif: 'Beispielfoto: betroffene Tür mit Schloss, gut ausgeleuchtet',
               ratio: '4/3',

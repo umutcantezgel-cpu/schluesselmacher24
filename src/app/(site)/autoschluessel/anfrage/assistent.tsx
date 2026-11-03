@@ -36,6 +36,8 @@ import {
   WORKING_KEYS_OPTIONS,
   serviceInfo,
 } from '@/components/autoschluessel/optionen';
+import { FahrzeugSuche } from '@/components/autoschluessel/fahrzeug-suche';
+import { anfrageHref, type FahrzeugZiel, type KatalogEintrag } from '@/components/autoschluessel/fahrzeug-ziel';
 import { PreisAnzeige } from '@/components/autoschluessel/preis-anzeige';
 import { TerminAuswahl } from '@/components/autoschluessel/termin-auswahl';
 import { Bestaetigung } from '@/components/autoschluessel/bestaetigung';
@@ -67,7 +69,7 @@ const FLOW_VERSION = 2;
 const OTHER_MODEL = '__nicht-aufgefuehrt';
 
 /** Allgemeine Anfrage mit vorgewähltem Bereich, wenn die Marke fehlt. */
-const ANFRAGE_OHNE_MARKE = '/service-und-termin/anfrage?thema=autoschluessel';
+const ANFRAGE_OHNE_MARKE = anfrageHref();
 
 const VIN_PATTERN = /^[A-HJ-NPR-Z0-9]{17}$/i;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -78,9 +80,9 @@ const COUNTRIES = ['Deutschland', 'Österreich', 'Schweiz'];
 const STEPS: FlowStep[] = [
   {
     id: 'marke',
-    short: 'Marke',
-    title: 'Welche Marke hat Ihr Fahrzeug?',
-    hint: 'Wir brauchen die Marke, um die passenden Modelle und Schlüsselarten anzuzeigen.',
+    short: 'Fahrzeug',
+    title: 'Welches Fahrzeug haben Sie?',
+    hint: 'Geben Sie Marke und Modell ein oder wählen Sie die Marke. So sehen Sie die passenden Schlüsselarten und Preise.',
   },
   {
     id: 'modell',
@@ -212,6 +214,8 @@ function quoteKeyOf(data: AssistentData): string {
 
 export interface AssistentProps {
   makes: VehicleMake[];
+  /** Fahrzeugkatalog für die Suche (G-14); ohne ihn bleibt nur das Markenraster. */
+  katalog?: KatalogEintrag[];
   services: CarKeyService[];
   /** Ist ein Zahlungsdienstleister angebunden? */
   paymentConfigured: boolean;
@@ -227,6 +231,7 @@ export interface AssistentProps {
 
 export function Assistent({
   makes,
+  katalog = [],
   services,
   paymentConfigured,
   retentionDays,
@@ -493,6 +498,22 @@ export function Assistent({
       slotTime: '',
       depositAccepted: false,
     });
+  }
+
+  /** Treffer der Fahrzeugsuche: gepflegtes Modell direkt zum Baujahr, sonst „Modell nicht aufgeführt“ vorbelegt. */
+  function fahrzeugGewaehlt(ziel: Exclude<FahrzeugZiel, { art: 'anfrage' }>) {
+    const neu: Partial<AssistentData> = {
+      makeSlug: ziel.makeSlug,
+      modelSlug: ziel.art === 'gepflegt' ? ziel.modelSlug : OTHER_MODEL,
+      modelOther: ziel.art === 'gepflegt' ? '' : ziel.modelOther,
+      year: '',
+      keyKind: '',
+      serviceId: '',
+      slotDate: '',
+      slotTime: '',
+      depositAccepted: false,
+    };
+    flow.updateAndGoTo(neu, ziel.art === 'gepflegt' ? 'baujahr' : 'modell');
   }
 
   function selectModel(slug: string) {
@@ -927,6 +948,12 @@ export function Assistent({
       {/* 1 — Marke */}
       {flow.step.id === 'marke' && (
         <div className="space-y-4">
+          {katalog.length > 0 && (
+            <>
+              <FahrzeugSuche katalog={katalog} makes={makes} onWahl={fahrzeugGewaehlt} />
+              <p className="pt-2 font-mono text-caption uppercase tracking-label text-foreground-muted">Oder Marke wählen</p>
+            </>
+          )}
           <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
             {makes.map((entry) => (
               <OptionCard
@@ -942,9 +969,9 @@ export function Assistent({
           </div>
           {/* Fehlt die Marke, führt der Weg über die allgemeine Anfrage mit vorgewähltem Bereich. */}
           <p className="text-small leading-relaxed text-foreground-muted">
-            Ihre Marke ist nicht dabei?{' '}
+            Mein Fahrzeug ist nicht dabei:{' '}
             <Link href={ANFRAGE_OHNE_MARKE} className="font-semibold text-primary hover:underline">
-              Fall schildern
+              Anfrage mit Fahrzeugschein und Schlüsselfoto
             </Link>
           </p>
         </div>

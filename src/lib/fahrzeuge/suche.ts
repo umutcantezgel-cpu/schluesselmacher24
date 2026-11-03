@@ -64,17 +64,20 @@ function wortPunkte(wort: string, woerter: string[]): number {
   return beste;
 }
 
-export interface Treffer {
-  reihe: FahrzeugReihe;
+/** Felder, die die Suche liest; ein schlanker Index für den Browser genügt (E4-OPUS-05). */
+export type SuchReihe = Pick<FahrzeugReihe, 'marke' | 'reihe' | 'alias' | 'bestand' | 'sichtbar'>;
+
+export interface Treffer<T extends SuchReihe = FahrzeugReihe> {
+  reihe: T;
   punkte: number;
 }
 
 /** Sucht Reihen zu einer Eingabe wie „vw golf“, „Mercedes A Klasse“ oder „Volkswagn Glf“. */
-export function sucheFahrzeuge(anfrage: string, katalog: FahrzeugReihe[], { hoechstens = 8 } = {}): Treffer[] {
+export function sucheFahrzeuge<T extends SuchReihe = FahrzeugReihe>(anfrage: string, katalog: readonly T[], { hoechstens = 8 } = {}): Treffer<T>[] {
   const roh = normalisiere(anfrage).split(' ').filter(Boolean);
   if (!roh.length) return [];
   const woerter = roh.flatMap((w) => normalisiere(MARKEN_ALIAS[w] ?? w).split(' '));
-  const treffer: Treffer[] = [];
+  const treffer: Treffer<T>[] = [];
   for (const reihe of katalog) {
     if (!reihe.sichtbar) continue;
     const text = normalisiere([reihe.marke, reihe.reihe, ...(reihe.alias ?? [])].join(' '));

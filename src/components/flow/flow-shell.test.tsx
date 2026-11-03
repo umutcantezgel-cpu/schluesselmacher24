@@ -24,6 +24,7 @@ function ablauf(stepIndex = 1): FlowState<object> {
     next: nichts,
     back: nichts,
     goTo: nichts,
+    updateAndGoTo: nichts,
     isFirst: stepIndex === 0,
     isLast: stepIndex === SCHRITTE.length - 1,
     canContinue: true,

@@ -51,6 +51,8 @@ export interface FlowState<T> {
   next: () => void;
   back: () => void;
   goTo: (stepId: string) => void;
+  /** Daten ändern und in einem Zug zu einem Schritt springen. */
+  updateAndGoTo: (patch: Partial<T>, target: string) => void;
   isFirst: boolean;
   isLast: boolean;
   canContinue: boolean;
@@ -193,6 +195,16 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
     [steps, current, persist],
   );
 
+  /** Daten ändern und in einem Zug zu einem Schritt springen (sonst überschriebe der Sprung die Änderung). */
+  const updateAndGoTo = useCallback(
+    (patch: Partial<T>, target: string) => {
+      if (!steps.some((s) => s.id === target)) return;
+      persist({ ...current, data: { ...current.data, ...patch }, stepId: target });
+      zumSchrittScrollen();
+    },
+    [steps, current, persist],
+  );
+
   const next = useCallback(() => {
     const at = relevantSteps.findIndex((s) => s.id === step?.id);
     const target = relevantSteps[at + 1];
@@ -224,6 +236,7 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
     next,
     back,
     goTo,
+    updateAndGoTo,
     isFirst: stepIndex === 0,
     isLast: stepIndex === relevantSteps.length - 1,
     canContinue: validate ? validate(current.data, step?.id ?? '') : true,
