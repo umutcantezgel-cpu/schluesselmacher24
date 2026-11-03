@@ -10,7 +10,7 @@ import { HILFSLINIE, KONTUR, LINIE, Raster } from '@/components/visual/generator
  * läuft nur, solange das Startskript `sm24-start` gesetzt hat. Ohne JavaScript, bei „ruhig“ oder
  * nach dem Zeitlimit von 2 s steht sofort das Endbild. Dekorativ (`aria-hidden`).
  *
- * `band`: mobil, 320 × 56, eine Zeile. `buehne`: ab 1024 px, 480 × 300, mit Türnummern, auf
+ * `band`: mobil, 320 × 56, eine Zeile. `buehne`: ab 1280 px, 480 × 300, mit Türnummern, auf
  * Zeichenpapier wie die übrigen Grafiken der Seite; das Raster läuft weit über die `viewBox` hinaus,
  * damit die Bühne die ganze rechte Spalte füllt (A-025). Die Beschriftung steht im HTML darüber.
  */

@@ -17,6 +17,10 @@ export { rubrikUebergang };
  * Hover und Fokus holen die Bereichsfarbe der Rubrik hinein (`.hub-tinte` in globals.css). Die
  * Leitkachel (`leit`) ist mobil eine gleich große, getönte Kachel und ab 768 px eine Fläche über
  * zwei Spalten und zwei Reihen mit der Erklärung der Rubrik.
+ *
+ * Trennung (E5-OPUS-05 nach E4-JURY-02): Mobil bleiben drei Spalten (G-02) und die Namen aus G-03,
+ * dort trennt der Browser an der Wortfuge („Sicherheits-technik“). Ab 768 px wird nicht getrennt:
+ * Titel bis 1023 px in 15 px, darüber sind die Kacheln breit genug für die größere Titelschrift.
  */
 export function HubKachel({ rubrik, leit = false }: { rubrik: Rubrik; leit?: boolean }) {
   const mitIcon = Boolean(fachIconKomponente(rubrik.icon));
@@ -29,7 +33,7 @@ export function HubKachel({ rubrik, leit = false }: { rubrik: Rubrik; leit?: boo
           data-rubrik={rubrik.id}
           data-leit={leit ? 'ja' : undefined}
           className={cn(
-            'group flex min-h-24 w-full flex-col items-center gap-1.5 rounded-lg border px-1.5 pb-2.5 pt-3 text-center transition duration-quick ease-standard hover:border-area-strong focus-visible:border-area-strong bewegt:hover:shadow-leuchten bewegt:focus-visible:shadow-leuchten bewegt:active:scale-kachel bewegt:active:shadow-leuchten-druck md:items-start md:gap-2 md:px-4 md:pb-4 md:pt-4 md:text-left',
+            'group flex min-h-24 w-full flex-col items-center gap-1.5 rounded-lg border px-1.5 pb-2.5 pt-3 text-center transition duration-quick ease-standard hover:border-area-strong focus-visible:border-area-strong bewegt:hover:shadow-leuchten bewegt:focus-visible:shadow-leuchten bewegt:active:scale-kachel bewegt:active:shadow-leuchten-druck md:items-start md:gap-2 md:px-4 md:pb-4 md:pt-4 md:text-left xl:px-3.5',
             leit ? 'border-area/40 bg-area-soft md:gap-2 md:p-5' : 'border-border bg-surface',
           )}
         >
@@ -46,14 +50,14 @@ export function HubKachel({ rubrik, leit = false }: { rubrik: Rubrik; leit?: boo
           )}
           <span
             className={cn(
-              'trennung-kachel text-small font-semibold leading-snug text-foreground md:text-title-sm',
+              'trennung-kachel text-small font-semibold leading-snug text-foreground md:hyphens-manual lg:text-title-sm lg:tracking-tight',
               leit && 'md:mt-auto md:text-title',
             )}
           >
             {rubrik.laienname}
           </span>
           {rubrik.zusatz && (
-            <span className="trennung-kachel text-balance text-caption leading-snug text-foreground-muted md:text-small">{rubrik.zusatz}</span>
+            <span className="trennung-kachel text-balance text-caption leading-snug text-foreground-muted md:text-small md:hyphens-manual">{rubrik.zusatz}</span>
           )}
           {leit && rubrik.erklaerung && (
             <span className="hidden max-w-measure text-pretty text-small text-foreground-muted md:block">{rubrik.erklaerung}</span>
