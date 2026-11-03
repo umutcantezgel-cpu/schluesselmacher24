@@ -37,7 +37,9 @@ import {
   serviceInfo,
 } from '@/components/autoschluessel/optionen';
 import { FahrzeugSuche } from '@/components/autoschluessel/fahrzeug-suche';
-import { anfrageHref, type FahrzeugZiel, type KatalogEintrag } from '@/components/autoschluessel/fahrzeug-ziel';
+import { anfrageHref, KATALOG_QUELLE, type FahrzeugZiel, type KatalogEintrag } from '@/components/autoschluessel/fahrzeug-ziel';
+import { ButtonLink } from '@/components/ui/button';
+import { ETAPPEN } from '@/components/autoschluessel/etappen';
 import { PreisAnzeige } from '@/components/autoschluessel/preis-anzeige';
 import { TerminAuswahl } from '@/components/autoschluessel/termin-auswahl';
 import { Bestaetigung } from '@/components/autoschluessel/bestaetigung';
@@ -81,83 +83,116 @@ const COUNTRIES = ['Deutschland', 'Österreich', 'Schweiz'];
 const STEPS: FlowStep[] = [
   {
     id: 'marke',
+    etappe: ETAPPEN.fahrzeug,
     short: 'Fahrzeug',
     title: 'Welches Fahrzeug haben Sie?',
     hint: 'Geben Sie Marke und Modell ein oder wählen Sie die Marke. So sehen Sie die passenden Schlüsselarten und Preise.',
   },
   {
     id: 'modell',
+    etappe: ETAPPEN.fahrzeug,
     short: 'Modell',
     title: 'Welches Modell fahren Sie?',
     hint: 'Das Modell entscheidet darüber, welche Schlüsselarten technisch infrage kommen.',
   },
   {
     id: 'baujahr',
+    etappe: ETAPPEN.fahrzeug,
     short: 'Baujahr',
-    title: 'Baujahr beziehungsweise Erstzulassung',
+    title: 'Baujahr oder Erstzulassung',
     hint: 'Innerhalb einer Baureihe ändert sich die Schlüsseltechnik oft mit dem Modelljahr.',
   },
   {
     id: 'fahrzeugdaten',
+    etappe: ETAPPEN.fahrzeug,
     short: 'Fahrzeugdaten',
     title: 'Weitere Fahrzeugdaten (freiwillig)',
     hint: 'Diese Angaben sind freiwillig. Sie helfen uns, den richtigen Schlüssel eindeutig zuzuordnen.',
   },
   {
     id: 'schluesselart',
+    etappe: ETAPPEN.fahrzeug,
     short: 'Schlüsselart',
     title: 'Welche Schlüsselart haben Sie?',
     hint: 'Angezeigt werden nur die Arten, die für Ihr Modell hinterlegt sind.',
   },
   {
     id: 'vorhandene-schluessel',
+    etappe: ETAPPEN.fahrzeug,
     short: 'Vorhandene',
     title: 'Wie viele funktionierende Schlüssel haben Sie noch?',
     hint: 'Davon hängt ab, wie aufwendig die Arbeit wird und wie belastbar wir den Preis nennen können.',
   },
   {
     id: 'leistung',
+    etappe: ETAPPEN.fahrzeug,
     short: 'Leistung',
     title: 'Was sollen wir für Sie tun?',
     hint: 'Angezeigt werden nur Leistungen, die zu Ihrer Schlüsselart passen.',
   },
   {
     id: 'schluesselfotos',
+    etappe: ETAPPEN.fotos,
     short: 'Schlüsselfotos',
     title: 'Fotos Ihres Schlüssels',
     hint: 'Anhand der Fotos erkennen wir Bauform, Profil und Elektronik. Drei Aufnahmen brauchen wir auf jeden Fall.',
   },
   {
     id: 'fahrzeugschein',
+    etappe: ETAPPEN.fotos,
     short: 'Fahrzeugschein',
     title: 'Zulassungsbescheinigung Teil I',
     hint: 'Wir fertigen Fahrzeugschlüssel nur für Berechtigte. Dafür brauchen wir einen Nachweis.',
   },
   {
     id: 'kontakt',
+    etappe: ETAPPEN.preis,
     short: 'Kontakt',
     title: 'Wie erreichen wir Sie?',
     hint: 'Über diese Angaben bestätigen wir den Termin und melden uns bei Rückfragen.',
   },
   {
     id: 'preis',
+    etappe: ETAPPEN.preis,
     short: 'Preis',
     title: 'Preis für Ihren Fall',
     hint: 'Aus Fahrzeug, Schlüsselart und Leistung ermitteln wir, was für Sie gilt.',
   },
   {
     id: 'anzahlung',
+    etappe: ETAPPEN.anzahlung,
     short: 'Anzahlung',
     title: 'Anzahlung',
     hint: 'Die Anzahlung reserviert Ihren Platz im Terminplan und wird vollständig angerechnet.',
   },
   {
     id: 'termin',
+    etappe: ETAPPEN.termin,
     short: 'Termin',
     title: 'Termin auswählen',
     hint: 'Wählen Sie ein freies Zeitfenster. Danach senden Sie Ihre Anfrage ab.',
   },
 ];
+
+/**
+ * Weg ohne eigene Fotos (A-025, MA-20): Die Fotos bleiben vor der Anzahlung Pflicht (G-16, G9). Wer
+ * keine machen kann, ruft an oder schickt die vorhandene Anfrage ohne Fotos; das Fahrzeug ist dort
+ * schon eingetragen.
+ */
+function OhneFotos({ fahrzeug }: { fahrzeug?: string }) {
+  return (
+    <div className="rounded-lg border border-border bg-surface-muted p-4">
+      <p className="text-body font-semibold text-foreground">Keine Fotos zur Hand?</p>
+      <p className="mt-1 max-w-measure text-small text-foreground-muted">
+        Schicken Sie uns eine Anfrage ohne Fotos. Wir melden uns und sagen Ihnen, welche Unterlagen
+        wir brauchen.
+      </p>
+      <ButtonLink href={anfrageHref(fahrzeug)} variant="outline" size="sm" className="mt-3">
+        Anfrage ohne Fotos senden
+      </ButtonLink>
+    </div>
+  );
+}
 
 /** Hinweis im Fotoschritt, wenn kein funktionierender Schlüssel mehr da ist. */
 const HINWEIS_OHNE_SCHLUESSEL =
@@ -301,6 +336,8 @@ export function Assistent({
 
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  // Erster wählbarer Treffer der Fahrzeugsuche: „Weiter“ übernimmt ihn (A-025)
+  const [vorschlag, setVorschlag] = useState<Exclude<FahrzeugZiel, { art: 'anfrage' }> | null>(null);
   const [done, setDone] = useState<{
     reference: string;
     appointment: AppointmentInfo;
@@ -365,6 +402,8 @@ export function Assistent({
     () => (make && !isOtherModel ? make.models.find((m) => m.slug === data.modelSlug) ?? null : null),
     [make, isOtherModel, data.modelSlug],
   );
+  // Fahrzeug als Text für die Anfrage ohne Fotos
+  const fahrzeugText = make ? `${make.name} ${isOtherModel ? data.modelOther : (model?.name ?? '')}`.trim() : undefined;
 
   const keyKinds = useMemo<KeyKind[]>(() => {
     if (model) return KEY_KIND_ORDER.filter((kind) => model.keyKinds.includes(kind));
@@ -459,13 +498,13 @@ export function Assistent({
   function blockedHint(stepId: string): string {
     switch (stepId) {
       case 'marke':
-        return 'Bitte wählen Sie zuerst eine Marke aus.';
+        return 'Bitte wählen Sie zuerst Ihr Fahrzeug.';
       case 'modell':
         return isOtherModel
           ? 'Bitte tragen Sie die Modellbezeichnung ein.'
           : 'Bitte wählen Sie ein Modell aus.';
       case 'baujahr':
-        return 'Bitte wählen Sie das Baujahr beziehungsweise das Jahr der Erstzulassung.';
+        return 'Bitte wählen Sie das Baujahr oder das Jahr der Erstzulassung.';
       case 'fahrzeugdaten':
         return 'Die Fahrgestellnummer besteht aus genau 17 Zeichen. Bitte prüfen Sie die Eingabe oder lassen Sie das Feld leer.';
       case 'schluesselart':
@@ -938,6 +977,11 @@ export function Assistent({
       onSubmit={handleSubmit}
       submitting={submitting}
       blockedHint={blockedHint(flow.step.id)}
+      vorschlag={
+        flow.step.id === 'marke' && !data.makeSlug && vorschlag
+          ? { hinweis: `Weiter mit ${vorschlag.name}`, onWeiter: () => fahrzeugGewaehlt(vorschlag) }
+          : null
+      }
       raster="seite"
       schutz={schutz}
       abschlussHinweis={
@@ -957,7 +1001,7 @@ export function Assistent({
         <div className="space-y-4">
           {katalog.length > 0 && (
             <>
-              <FahrzeugSuche katalog={katalog} makes={makes} onWahl={fahrzeugGewaehlt} />
+              <FahrzeugSuche katalog={katalog} makes={makes} onWahl={fahrzeugGewaehlt} onVorschlag={setVorschlag} mitQuelle={false} />
               <p className="pt-2 font-mono text-caption uppercase tracking-label text-foreground-muted">Oder Marke wählen</p>
             </>
           )}
@@ -981,6 +1025,8 @@ export function Assistent({
               Anfrage mit Fahrzeugschein und Schlüsselfoto
             </Link>
           </p>
+          {/* Quelle des Katalogs am Ende des Schritts statt im Arbeitsfluss (A-025, MA-17) */}
+          {katalog.length > 0 && <p className="text-caption text-foreground-muted">{KATALOG_QUELLE}</p>}
         </div>
       )}
 
@@ -1257,6 +1303,7 @@ export function Assistent({
               )}
             </p>
           )}
+          <OhneFotos fahrzeug={fahrzeugText} />
           <Alert tone="info" title="So werden die Fotos brauchbar">
             <ul className="space-y-1">
               <li>Legen Sie den Schlüssel auf einen einfarbigen, hellen Untergrund.</li>
@@ -1307,6 +1354,7 @@ export function Assistent({
               )}
             </p>
           )}
+          <OhneFotos fahrzeug={fahrzeugText} />
           <PhotoUpload
             category="fahrzeugschein"
             id="fahrzeugschein"

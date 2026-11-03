@@ -18,6 +18,11 @@ export interface FlowStep {
   hint?: string;
   /** Kurzform für die Fortschrittsanzeige. */
   short: string;
+  /**
+   * Etappe aus Sicht der Kundschaft (A-025), etwa „Fotos hochladen“. Folgen mehrere Schritte mit
+   * derselben Etappe aufeinander, zeigt der Rahmen „Schritt e von E · Etappe“ statt der Schrittzahl.
+   */
+  etappe?: string;
 }
 
 export interface UseFlowOptions<T> {

@@ -96,6 +96,7 @@ export default async function AutoschluesselAnfragePage(props: {
         eyebrow={PROCESS_LABELS['termin-mit-anzahlung'].label}
         art="arbeit"
         title={page?.headline ?? FALLBACK_TITLE}
+        leadClassName="max-sm:hidden"
         lead={
           page?.subline
           ?? 'Sie geben Schritt für Schritt an, welches Fahrzeug und welchen Schlüssel Sie haben. '

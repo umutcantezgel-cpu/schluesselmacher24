@@ -23,16 +23,22 @@ const HINWEIS: Record<FahrzeugZiel['art'], string> = {
  * Fahrzeugsuche über den ganzen Katalog (G-14): Marke und Modell in einem Feld, Tippfehler
  * erlaubt, gewichtet nach Bestand. Ein Treffer führt je nach Datenlage in den Weg mit Preis und
  * Anzahlung, in „Modell nicht aufgeführt“ oder in die Anfrage (G-15). „Nicht dabei“ führt immer
- * in die Anfrage.
+ * in die Anfrage. Mit `onVorschlag` meldet die Suche den ersten wählbaren Treffer, damit „Weiter“ ihn
+ * übernehmen kann (A-025); er trägt dann die Marke „Vorschlag“. Ohne `mitQuelle` steht die Quelle des
+ * Katalogs nicht hier, sondern beim Aufrufer.
  */
 export function FahrzeugSuche({
   katalog,
   makes,
   onWahl,
+  onVorschlag,
+  mitQuelle = true,
 }: {
   katalog: KatalogEintrag[];
   makes: VehicleMake[];
   onWahl: (ziel: Exclude<FahrzeugZiel, { art: 'anfrage' }>) => void;
+  onVorschlag?: (ziel: Exclude<FahrzeugZiel, { art: 'anfrage' }> | null) => void;
+  mitQuelle?: boolean;
 }) {
   const [text, setText] = useState('');
   const liste = useRef<HTMLUListElement>(null);
@@ -42,6 +48,13 @@ export function FahrzeugSuche({
     () => (suche.length >= 2 ? sucheFahrzeuge(suche, katalog, { hoechstens: 6 }).map((t) => fahrzeugZiel(t.reihe, makes, marken)) : []),
     [suche, katalog, makes, marken],
   );
+
+  // Erster wählbarer Treffer als Vorschlag für „Weiter“ (A-025)
+  const erster = treffer[0];
+  const vorschlag = erster && erster.art !== 'anfrage' ? erster : null;
+  useEffect(() => {
+    onVorschlag?.(vorschlag);
+  }, [vorschlag, onVorschlag]);
 
   // Neue Treffer ins Bild holen: Mobil läge die Liste sonst unter der festen Leiste des Ablaufs.
   const anzahl = treffer.length;
@@ -71,11 +84,17 @@ export function FahrzeugSuche({
 
       {treffer.length > 0 && (
         <ul ref={liste} className="scroll-mb-28 divide-y divide-border rounded-lg border border-border bg-surface" aria-label="Treffer">
-          {treffer.map((ziel) => {
+          {treffer.map((ziel, i) => {
+            const vorgeschlagen = Boolean(onVorschlag) && i === 0 && ziel.art !== 'anfrage';
             const inhalt = (
               <>
                 <span className="min-w-0">
-                  <span className="block text-body font-semibold text-foreground">{ziel.name}</span>
+                  <span className="flex flex-wrap items-center gap-x-2 text-body font-semibold text-foreground">
+                    {ziel.name}
+                    {vorgeschlagen && (
+                      <span className="rounded-full bg-primary-soft px-2 font-mono text-caption font-semibold text-primary">Vorschlag</span>
+                    )}
+                  </span>
                   <span className="block text-small text-foreground-muted">{HINWEIS[ziel.art]}</span>
                 </span>
                 <GlyphPfeilRechts size={18} className="shrink-0 text-foreground-muted" />
@@ -109,7 +128,7 @@ export function FahrzeugSuche({
         </p>
       )}
 
-      <p className="text-caption text-foreground-muted">{KATALOG_QUELLE}</p>
+      {mitQuelle && <p className="text-caption text-foreground-muted">{KATALOG_QUELLE}</p>}
     </div>
   );
 }
