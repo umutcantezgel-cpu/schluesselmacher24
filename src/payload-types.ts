@@ -68,6 +68,7 @@ export interface Config {
   blocks: {};
   collections: {
     vorgaenge: Vorgaenge;
+    partnerbetriebe: Partnerbetriebe;
     kundendateien: Kundendateien;
     widerrufe: Widerrufe;
     produkte: Produkte;
@@ -96,6 +97,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     vorgaenge: VorgaengeSelect<false> | VorgaengeSelect<true>;
+    partnerbetriebe: PartnerbetriebeSelect<false> | PartnerbetriebeSelect<true>;
     kundendateien: KundendateienSelect<false> | KundendateienSelect<true>;
     widerrufe: WiderrufeSelect<false> | WiderrufeSelect<true>;
     produkte: ProdukteSelect<false> | ProdukteSelect<true>;
@@ -417,6 +419,108 @@ export interface Kundendateien {
   vorgang?: (number | null) | Vorgaenge;
   aufbewahrenBis?: string | null;
   uploadSchluesselHash?: string | null;
+  prefix?: string | null;
+  _objectKey?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * Freischalten erst nach Prüfung von Gewerbe, Identität und Eignung und mit unterschriebenem Vertrag.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partnerbetriebe".
+ */
+export interface Partnerbetriebe {
+  id: number;
+  firma: string;
+  ansprechpartner?: string | null;
+  email?: string | null;
+  telefon?: string | null;
+  ort: string;
+  status:
+    | 'eingegangen'
+    | 'in-pruefung'
+    | 'nachweise-fehlen'
+    | 'vertrag-versendet'
+    | 'vertrag-unterschrieben'
+    | 'freigeschaltet'
+    | 'pausiert'
+    | 'abgelehnt'
+    | 'beendet';
+  abrechnungsmodell: 'A' | 'B';
+  einsatzgebiet?: {
+    /**
+     * Kommagetrennt, auch Bereiche wie 355*.
+     */
+    postleitzahlen?: string | null;
+    radiusKm?: number | null;
+  };
+  auftragsarten?:
+    | (
+        | 'autoschluessel-vor-ort'
+        | 'schluesseldienst-vor-ort'
+        | 'montage-zylinder'
+        | 'montage-schliessanlage'
+        | 'beratung-vor-ort'
+        | 'einbau-elektronik'
+      )[]
+    | null;
+  pruefung?: {
+    gewerbeGeprueft?: boolean | null;
+    identitaetGeprueft?: boolean | null;
+    eignungGeprueft?: boolean | null;
+    notiz?: string | null;
+  };
+  vertrag?: {
+    versendetAm?: string | null;
+    unterschriebenAm?: string | null;
+    datei?: (number | null) | InterneDateien;
+  };
+  /**
+   * Nur für den Inhaber sichtbar.
+   */
+  provisionen?:
+    | {
+        auftragsart:
+          | 'autoschluessel-vor-ort'
+          | 'schluesseldienst-vor-ort'
+          | 'montage-zylinder'
+          | 'montage-schliessanlage'
+          | 'beratung-vor-ort'
+          | 'einbau-elektronik';
+        prozent?: number | null;
+        festbetrag?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  bewerbung?: (number | null) | Vorgaenge;
+  notiz?: string | null;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+}
+/**
+ * Nur für das Team sichtbar, z. B. Fotos von Zertifikaten und Versicherungsnachweisen.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "interne-dateien".
+ */
+export interface InterneDateien {
+  id: number;
+  beschreibung?: string | null;
   prefix?: string | null;
   _objectKey?: string | null;
   updatedAt: string;
@@ -1424,29 +1528,6 @@ export interface Nachweise {
   deletedAt?: string | null;
 }
 /**
- * Nur für das Team sichtbar, z. B. Fotos von Zertifikaten und Versicherungsnachweisen.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "interne-dateien".
- */
-export interface InterneDateien {
-  id: number;
-  beschreibung?: string | null;
-  prefix?: string | null;
-  _objectKey?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-}
-/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "benutzer".
  */
@@ -1607,6 +1688,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'vorgaenge';
         value: number | Vorgaenge;
+      } | null)
+    | ({
+        relationTo: 'partnerbetriebe';
+        value: number | Partnerbetriebe;
       } | null)
     | ({
         relationTo: 'kundendateien';
@@ -1875,6 +1960,55 @@ export interface VorgaengeSelect<T extends boolean = true> {
   zugriffsHash?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partnerbetriebe_select".
+ */
+export interface PartnerbetriebeSelect<T extends boolean = true> {
+  firma?: T;
+  ansprechpartner?: T;
+  email?: T;
+  telefon?: T;
+  ort?: T;
+  status?: T;
+  abrechnungsmodell?: T;
+  einsatzgebiet?:
+    | T
+    | {
+        postleitzahlen?: T;
+        radiusKm?: T;
+      };
+  auftragsarten?: T;
+  pruefung?:
+    | T
+    | {
+        gewerbeGeprueft?: T;
+        identitaetGeprueft?: T;
+        eignungGeprueft?: T;
+        notiz?: T;
+      };
+  vertrag?:
+    | T
+    | {
+        versendetAm?: T;
+        unterschriebenAm?: T;
+        datei?: T;
+      };
+  provisionen?:
+    | T
+    | {
+        auftragsart?: T;
+        prozent?: T;
+        festbetrag?: T;
+        id?: T;
+      };
+  bewerbung?: T;
+  notiz?: T;
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
