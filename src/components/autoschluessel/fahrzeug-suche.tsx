@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+
+import { scrollVerhalten } from '@/lib/bewegung';
 
 import { Field } from '@/components/forms/field';
 import { TextInput } from '@/components/forms/controls';
@@ -33,12 +35,19 @@ export function FahrzeugSuche({
   onWahl: (ziel: Exclude<FahrzeugZiel, { art: 'anfrage' }>) => void;
 }) {
   const [text, setText] = useState('');
+  const liste = useRef<HTMLUListElement>(null);
   const marken = useMemo(() => markenZuordnung(katalog, makes), [katalog, makes]);
   const suche = text.trim();
   const treffer = useMemo(
     () => (suche.length >= 2 ? sucheFahrzeuge(suche, katalog, { hoechstens: 6 }).map((t) => fahrzeugZiel(t.reihe, makes, marken)) : []),
     [suche, katalog, makes, marken],
   );
+
+  // Neue Treffer ins Bild holen: Mobil läge die Liste sonst unter der festen Leiste des Ablaufs.
+  const anzahl = treffer.length;
+  useEffect(() => {
+    if (anzahl > 0) liste.current?.scrollIntoView({ block: 'nearest', behavior: scrollVerhalten() });
+  }, [anzahl]);
 
   return (
     <div className="space-y-3">
@@ -61,7 +70,7 @@ export function FahrzeugSuche({
       </p>
 
       {treffer.length > 0 && (
-        <ul className="divide-y divide-border rounded-lg border border-border bg-surface" aria-label="Treffer">
+        <ul ref={liste} className="scroll-mb-28 divide-y divide-border rounded-lg border border-border bg-surface" aria-label="Treffer">
           {treffer.map((ziel) => {
             const inhalt = (
               <>
@@ -92,7 +101,7 @@ export function FahrzeugSuche({
       )}
 
       {suche.length >= 2 && treffer.length === 0 && (
-        <p className="text-small text-foreground-muted">
+        <p className="scroll-mb-28 text-small text-foreground-muted">
           Kein Treffer für „{suche}“.{' '}
           <Link href={anfrageHref(suche)} className="font-semibold text-primary hover:underline">
             Fahrzeug trotzdem anfragen

@@ -86,7 +86,7 @@ export function AllgemeineAnfrage({
     initial: {
       ...LEER,
       thema: vorauswahl && themen.some((t) => t.key === vorauswahl) ? vorauswahl : '',
-      beschreibung: fahrzeug ? `Fahrzeug: ${fahrzeug}. ` : '',
+      objekt: fahrzeug ?? '',
     },
     validate: (data, stepId) => {
       if (stepId === 'thema') return data.thema !== '';

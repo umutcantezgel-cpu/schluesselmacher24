@@ -95,4 +95,12 @@ describe('Katalog', () => {
     const zurueck = fahrzeugreiheZuSeite({ ...(fahrzeugreiheZuPayload(voll) as object), id: 1, updatedAt: '', createdAt: '' } as never);
     expect(zurueck).toEqual(voll);
   });
+
+  it('schließt mit einer Generationsangabe wie „Golf 7“ oder „Golf VII“ nichts aus (E4-PROBENUTZER-01)', () => {
+    const katalog = defaults.fahrzeugkatalog();
+    expect(sucheFahrzeuge('VW Golf 7', katalog)[0]?.reihe.bestandsModell).toBe('volkswagen/golf');
+    expect(sucheFahrzeuge('golf vii', katalog)[0]?.reihe.bestandsModell).toBe('volkswagen/golf');
+    expect(sucheFahrzeuge('7', katalog)).toEqual([]);
+    expect(sucheFahrzeuge('golf xyz', katalog)).toEqual([]);
+  });
 });

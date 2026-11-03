@@ -47,6 +47,7 @@ import { GlyphPruefsiegel } from '@/components/visual/glyphen/pruefsiegel';
 import { GlyphWaage } from '@/components/visual/glyphen/waage';
 import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
 import { WerkstattZeile, type WerkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
+import { telefonLink } from '@/lib/telefon';
 import { ausserhalbDerRegion, ausserhalbHinweis, buchungsOrt, terminBeimKunden } from '@/lib/terminort';
 import {
   schluesselfotosFreiwillig,
@@ -376,9 +377,15 @@ export function Assistent({
   const matchingServices = useMemo(
     () =>
       data.keyKind
-        ? services.filter((s) => s.active && s.keyKinds.includes(data.keyKind as KeyKind))
+        ? services.filter(
+            (s) =>
+              s.active &&
+              s.keyKinds.includes(data.keyKind as KeyKind) &&
+              // Ein Zweitschlüssel braucht einen funktionierenden Schlüssel als Vorlage (E4-PROBENUTZER-01).
+              !(s.id === 'zweitschluessel' && data.workingKeys === 0),
+          )
         : [],
-    [services, data.keyKind],
+    [services, data.keyKind, data.workingKeys],
   );
   const service = useMemo(
     () => services.find((s) => s.id === data.serviceId) ?? null,
@@ -1030,6 +1037,16 @@ export function Assistent({
       {/* 3 — Baujahr / Erstzulassung */}
       {flow.step.id === 'baujahr' && (
         <div className="grid gap-4 sm:grid-cols-2">
+          {make && (
+            <p className="flex flex-wrap items-baseline gap-x-3 text-body text-foreground sm:col-span-2">
+              <span>
+                Ihr Fahrzeug: <strong className="font-semibold">{make.name} {isOtherModel ? data.modelOther : (model?.name ?? '')}</strong>
+              </span>
+              <button type="button" onClick={() => flow.goTo('marke')} className="text-small font-semibold text-primary hover:underline">
+                Ändern
+              </button>
+            </p>
+          )}
           <Field
             label="Jahr"
             required
@@ -1228,6 +1245,18 @@ export function Assistent({
       {/* 8 — Schlüsselfotos */}
       {flow.step.id === 'schluesselfotos' && (
         <div className="space-y-7">
+          {werkstatt?.telefon && (
+            <p className="text-small text-foreground-muted">
+              Hilfe bei den Fotos? Rufen Sie uns an:{' '}
+              {telefonLink(werkstatt.telefon) ? (
+                <a href={telefonLink(werkstatt.telefon)!} className="font-mono font-semibold tabular-nums text-primary">
+                  {werkstatt.telefon}
+                </a>
+              ) : (
+                <span className="font-mono tabular-nums">{werkstatt.telefon}</span>
+              )}
+            </p>
+          )}
           <Alert tone="info" title="So werden die Fotos brauchbar">
             <ul className="space-y-1">
               <li>Legen Sie den Schlüssel auf einen einfarbigen, hellen Untergrund.</li>
@@ -1266,6 +1295,18 @@ export function Assistent({
       {/* 9 — Fahrzeugschein */}
       {flow.step.id === 'fahrzeugschein' && (
         <div className="space-y-6">
+          {werkstatt?.telefon && (
+            <p className="text-small text-foreground-muted">
+              Fragen zum Fahrzeugschein? Rufen Sie uns an:{' '}
+              {telefonLink(werkstatt.telefon) ? (
+                <a href={telefonLink(werkstatt.telefon)!} className="font-mono font-semibold tabular-nums text-primary">
+                  {werkstatt.telefon}
+                </a>
+              ) : (
+                <span className="font-mono tabular-nums">{werkstatt.telefon}</span>
+              )}
+            </p>
+          )}
           <PhotoUpload
             category="fahrzeugschein"
             id="fahrzeugschein"

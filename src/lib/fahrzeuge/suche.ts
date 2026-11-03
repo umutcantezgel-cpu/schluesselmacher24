@@ -72,6 +72,12 @@ export interface Treffer<T extends SuchReihe = FahrzeugReihe> {
   punkte: number;
 }
 
+/**
+ * Generationsangaben wie „7“, „8V“ oder „VII“ (etwa „Golf 7“): Der Katalog führt Modellreihen ohne
+ * Generation. Passt ein solches Wort nicht, schließt es eine Reihe nicht aus (E4-PROBENUTZER-01).
+ */
+const GENERATION = /^(\d+[a-z]?|[ivx]{1,4})$/;
+
 /** Sucht Reihen zu einer Eingabe wie „vw golf“, „Mercedes A Klasse“ oder „Volkswagn Glf“. */
 export function sucheFahrzeuge<T extends SuchReihe = FahrzeugReihe>(anfrage: string, katalog: readonly T[], { hoechstens = 8 } = {}): Treffer<T>[] {
   const roh = normalisiere(anfrage).split(' ').filter(Boolean);
@@ -87,12 +93,13 @@ export function sucheFahrzeuge<T extends SuchReihe = FahrzeugReihe>(anfrage: str
     for (const wort of woerter) {
       const p = wortPunkte(wort, eigene);
       if (p === 0) {
+        if (GENERATION.test(wort)) continue;
         alle = false;
         break;
       }
       summe += p;
     }
-    if (!alle) continue;
+    if (!alle || summe === 0) continue;
     const gewicht = reihe.bestand ? Math.log10(reihe.bestand + 1) / 10 : 0;
     treffer.push({ reihe, punkte: summe + gewicht });
   }
