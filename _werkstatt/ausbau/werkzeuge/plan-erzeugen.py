@@ -163,6 +163,11 @@ op('E4-OPUS-08', 'Zweiter Anlauf Assistent: Etappen statt Schrittzählung, Treff
 hk('E4-PRUEFER-02', 'Prüfung des zweiten Anlaufs: Build beide Modi, ganze Testsuite, Funktionsliste, axe, Hub-Messung, Bildsatz und Referenzbilder der drei Ansichten, Bildfolge B-31', 8, 'Prüfer', [W + 'berichte/E4-PRUEFER-02.md'], [], ['Z-04', 'Z-12', 'Z-14'], deps=['E4-OPUS-06', 'E4-OPUS-07', 'E4-OPUS-08'], status='offen', klasse='L')
 hk('E4-PROBENUTZER-02', 'Probelauf zweiter Anlauf: vier Personas mobil und Desktop mit erfundenen Testbildern bis vor die Zahlung, ohne Abbruch', 8, 'Probenutzer', [W + 'berichte/E4-PROBENUTZER-02.md'], [], ['Z-05'], deps=['E4-OPUS-06', 'E4-OPUS-07', 'E4-OPUS-08'], status='offen')
 P('E4-JURY-02', 'Jury zweiter Anlauf (frischer Opus, ohne Kenntnis des ersten Urteils)', 'E4', 9, 'Jury', OPUS, 3, 'L', [W + 'berichte/E4-JURY-02.md'], ['E4-PRUEFER-02', 'E4-PROBENUTZER-02'], [], ['Z-11'], wirkung=4)
+# Tor E4 nach zwei Anläufen nicht erreicht (A-026): Lücke als offener Punkt, Befunde aus E4-JURY-02 als letzte Runde je Ansicht und Kategorie (Auftrag 16)
+op('E5-OPUS-05', 'Referenz-Feinschliff nach E4-JURY-02 (letzte Runde je Ansicht und Kategorie): Bühne mit erkennbarem Autoschlüssel und gefüllter Fläche, Kacheltitel ohne Trennung, Nummern nur bei echten Abfolgen, „Warum wir“ im Autoschlüssel-Abschnitt; Assistent mit einem Zähler, „Vorhandene Schlüssel“, kürzerem Kopf mobil und ruhigerem Fotoschritt', 'E5', 2,
+   ['src/app/(site)/page.tsx', 'src/components/hub/', 'src/components/visual/inszenierung/', 'src/app/(site)/autoschluessel/page.tsx', 'src/app/(site)/autoschluessel/anfrage/', 'src/components/flow/flow-shell.tsx', 'src/components/forms/photo-upload.tsx', 'src/components/autoschluessel/optionen.ts'],
+   ['E4-JURY-02', 'E5-GRAFIKER-02'], ['G-02', 'G-04', 'G-05', 'G-16'], ['Z-04', 'Z-11'], klasse='M', wirkung=4)
+hk('E5-GRAFIKER-02', 'Beispielzeichnungen je Fotoansicht im Autoschlüssel-Fotoschritt (Vorderseite, Rückseite mit Aufdruck, Bart seitlich, Nummer in Nahaufnahme) als SVG nach dem Formsystem', 1, 'Grafiker', ['src/components/visual/generators/foto-ansicht.tsx', 'src/components/visual/generators/foto-ansicht.test.tsx'], ['G-16'], ['Z-11'], deps=['E4-JURY-02'], status='offen', stufe=2)
 
 # ---------------------------------------------------------------- E5 Konfiguratoren
 op('E5-OPUS-01', 'Schließanlagen-Konfigurator: Zylinder und Schlüssel hinzufügen, Matrix, laufender Gesamtpreis, Liste, Speichern, Kasse oder Projektanfrage', 'E5', 1,
@@ -176,9 +181,9 @@ hk('E5-PROBENUTZER-01', 'Probelauf Konfiguratoren mit Hausverwaltung (20 Türen)
 hk('E5-PRUEFER-01', 'Prüfstufe B Etappe E5, Prüfliste G-27 bis G-30', 4, 'Prüfer', [W + 'berichte/E5-PRUEFER-01.md'], [], ['Z-06', 'Z-14'], deps=['E5-AUTOR-01', 'E5-OPUS-03', 'E5-OPUS-04'], status='offen', klasse='L')
 # Befund E4-PRUEFER-01: Lighthouse-Budgets mobil verfehlt (LCP 2,5 bis 3,8 s, SEO 92 auf Unterseiten), keine Route schlechter als E0
 hk('E5-PRUEFER-02', 'Leistungsdiagnose mobil aus Lighthouse-Spuren: LCP-Element und Zeitanteile, blockierende Ressourcen, JavaScript je Route, Hauptthread beim Seitenaufbau, SEO-Abzug der Unterseiten; Vorschläge mit erwarteter Wirkung', 1, 'Prüfer', [W + 'berichte/E5-PRUEFER-02.md', W + 'werkzeuge/leistung-diagnose.mjs'], ['EL-33'], ['Z-15', 'Z-16'], deps=['E4-PRUEFER-01'], status='offen')
-op('E5-OPUS-04', 'Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand', 'E5', 2,
+op('E5-OPUS-04', 'Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand', 'E5', 3,
    ['next.config.ts', 'src/app/(site)/layout.tsx', 'src/app/(site)/globals.css', 'src/app/(site)/page.tsx', 'src/app/(site)/autoschluessel/', 'src/components/layout/', 'src/components/hub/', 'src/components/visual/inszenierung/', 'src/components/seo/', 'src/fonts/'],
-   ['E5-PRUEFER-02'], ['EL-33', 'G-06'], ['Z-15', 'Z-16'], klasse='M', wirkung=4)
+   ['E5-PRUEFER-02', 'E5-OPUS-05'], ['EL-33', 'G-06'], ['Z-15', 'Z-16'], klasse='M', wirkung=4)
 
 # ---------------------------------------------------------------- E6 Übrige Rubriken
 op('E6-OPUS-01', 'Gemeinsamer Abschluss: Wege-Baukasten aus Rubrikdaten (Ablauf, Formular, Upload mit Fotohilfe, Nachweis, Zusammenfassung, Bestätigung, Vorgangsblatt)', 'E6', 1,

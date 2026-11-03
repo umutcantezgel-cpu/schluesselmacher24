@@ -28,7 +28,8 @@
       "status": "offen",
       "pakete": [
         "E4-OPUS-01",
-        "E4-OPUS-06"
+        "E4-OPUS-06",
+        "E5-OPUS-05"
       ],
       "beleg": null
     },
@@ -62,7 +63,8 @@
       "pakete": [
         "E4-OPUS-02",
         "E4-OPUS-04",
-        "E4-OPUS-06"
+        "E4-OPUS-06",
+        "E5-OPUS-05"
       ],
       "beleg": null
     },
@@ -79,7 +81,8 @@
         "E2-OPUS-01",
         "E3-OPUS-02",
         "E4-OPUS-01",
-        "E4-OPUS-06"
+        "E4-OPUS-06",
+        "E5-OPUS-05"
       ],
       "beleg": null
     },
@@ -259,7 +262,9 @@
       "status": "offen",
       "pakete": [
         "E4-OPUS-05",
-        "E4-OPUS-08"
+        "E4-OPUS-08",
+        "E5-GRAFIKER-02",
+        "E5-OPUS-05"
       ],
       "beleg": null
     },

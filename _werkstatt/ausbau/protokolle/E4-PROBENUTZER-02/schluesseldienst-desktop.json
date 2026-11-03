@@ -1,0 +1,235 @@
+{
+  "kennung": "schluesseldienst",
+  "geraet": "desktop",
+  "tippsGesamt": 4,
+  "wischer": 10,
+  "tippsBisErsteEingabe": null,
+  "ersteEingabe": null,
+  "ladeMs": 283,
+  "ziele": {
+    "partner-werden": {
+      "erreicht": true,
+      "ms": 3108,
+      "text": "Seite „Partner werden“ mit Bewerbungsbereich erreicht"
+    }
+  },
+  "abbruch": null,
+  "endknopf": "Partnerseite erreicht, Formular „Jetzt bewerben“ nicht ausgefüllt, nicht gesendet",
+  "reaktionen": [
+    470,
+    466,
+    439,
+    781
+  ],
+  "maxReaktionMs": 781,
+  "telPruefungen": [
+    {
+      "ort": "01 Startseite",
+      "sichtbar": 4,
+      "imBild": 1,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "02 Schlüsseldienst (Fehlgriff)",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "03 Menü Mehr",
+      "sichtbar": 4,
+      "imBild": 1,
+      "fixiertImBild": false
+    },
+    {
+      "ort": "05 Partner werden",
+      "sichtbar": 1,
+      "imBild": 0,
+      "fixiertImBild": false
+    }
+  ],
+  "tippziele": [],
+  "stationen": [
+    {
+      "ms": 309,
+      "ort": "01 Startseite",
+      "url": "/",
+      "fort": "",
+      "ueberschrift": "Wobei können wir Ihnen helfen?",
+      "hoehe": 5866,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 4,
+        "imBild": 1,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 982,
+      "ort": "02 Schlüsseldienst (Fehlgriff)",
+      "url": "/service-und-termin/vor-ort",
+      "fort": "",
+      "ueberschrift": "Was wir direkt bei Ihnen erledigen",
+      "hoehe": 3299,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 2110,
+      "ort": "03 Menü Mehr",
+      "url": "/",
+      "fort": "",
+      "ueberschrift": "Wobei können wir Ihnen helfen?",
+      "hoehe": 5866,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 4,
+        "imBild": 1,
+        "fixiertImBild": false
+      }
+    },
+    {
+      "ms": 3026,
+      "ort": "05 Partner werden",
+      "url": "/partner-werden",
+      "fort": "Schritt 1 von 5 · Betrieb",
+      "ueberschrift": "Partner werden",
+      "hoehe": 3904,
+      "fenster": 900,
+      "fehlerMeldung": false,
+      "anruf": {
+        "sichtbar": 1,
+        "imBild": 0,
+        "fixiertImBild": false
+      }
+    }
+  ],
+  "stolpersteine": [],
+  "bilder": [
+    "schluesseldienst-desktop-01-01-startseite.png",
+    "schluesseldienst-desktop-02-02-schluesseldienst-fehlgriff.png",
+    "schluesseldienst-desktop-03-03-menue-mehr.png",
+    "schluesseldienst-desktop-04-05-partner-werden.png"
+  ],
+  "anfragen": [
+    {
+      "ms": 2751,
+      "methode": "POST",
+      "pfad": "/partner-werden",
+      "host": "localhost:3000",
+      "serveraktion": true,
+      "inhalt": "text/plain;charset=UTF-8",
+      "ziel": ""
+    }
+  ],
+  "formularKlicks": [],
+  "antworten": [
+    {
+      "ms": 2763,
+      "pfad": "/partner-werden",
+      "status": 200,
+      "text": ""
+    }
+  ],
+  "menueOffen": [
+    {
+      "ms": 2357,
+      "menue": "Mehr"
+    }
+  ],
+  "schritte": [
+    {
+      "ms": 309,
+      "typ": "STATION",
+      "text": "01 Startseite · / ·  · Wobei können wir Ihnen helfen?"
+    },
+    {
+      "ms": 405,
+      "typ": "BILD",
+      "text": "schluesseldienst-desktop-01-01-startseite.png"
+    },
+    {
+      "ms": 971,
+      "typ": "TIPP",
+      "text": "„Schlüsseldienst“ → /service-und-termin/vor-ort (470 ms)"
+    },
+    {
+      "ms": 982,
+      "typ": "STATION",
+      "text": "02 Schlüsseldienst (Fehlgriff) · /service-und-termin/vor-ort ·  · Was wir direkt bei Ihnen erledigen"
+    },
+    {
+      "ms": 1055,
+      "typ": "BILD",
+      "text": "schluesseldienst-desktop-02-02-schluesseldienst-fehlgriff.png"
+    },
+    {
+      "ms": 1107,
+      "typ": "PRUEFUNG",
+      "text": "„Partner werden“ auf dieser Seite im Sichtfeld: false"
+    },
+    {
+      "ms": 1621,
+      "typ": "TIPP",
+      "text": "„Startseite“ → / (466 ms)"
+    },
+    {
+      "ms": 2103,
+      "typ": "TIPP",
+      "text": "„Mehr“ → / (439 ms)"
+    },
+    {
+      "ms": 2110,
+      "typ": "STATION",
+      "text": "03 Menü Mehr · / ·  · Wobei können wir Ihnen helfen?"
+    },
+    {
+      "ms": 2207,
+      "typ": "BILD",
+      "text": "schluesseldienst-desktop-03-03-menue-mehr.png"
+    },
+    {
+      "ms": 2268,
+      "typ": "WISCHEN",
+      "text": "10 Bewegung(en), bis der nächste Knopf im Sichtfeld ist"
+    },
+    {
+      "ms": 2357,
+      "typ": "MENUE",
+      "text": "Kopfleisten-Menü offen (Mehr), vor dem Klick mit Escape geschlossen"
+    },
+    {
+      "ms": 3019,
+      "typ": "TIPP",
+      "text": "„Partner werden“ → /partner-werden (781 ms)"
+    },
+    {
+      "ms": 3026,
+      "typ": "STATION",
+      "text": "05 Partner werden · /partner-werden · Schritt 1 von 5 · Betrieb · Partner werden"
+    },
+    {
+      "ms": 3108,
+      "typ": "BILD",
+      "text": "schluesseldienst-desktop-04-05-partner-werden.png"
+    },
+    {
+      "ms": 3108,
+      "typ": "ZIEL",
+      "text": "partner-werden: erreicht · Seite „Partner werden“ mit Bewerbungsbereich erreicht"
+    }
+  ],
+  "konsole": [],
+  "abgebrochen": [],
+  "endMs": 3108,
+  "persona": "schluesseldienst",
+  "basis": null,
+  "url": "http://localhost:3000/partner-werden"
+}
