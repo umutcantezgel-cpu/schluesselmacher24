@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T17:51:47.327Z",
+ "stand": "2026-11-03T19:27:31.662Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -2671,7 +2671,16 @@
    "kostenklasse": "M",
    "schreibrechte": [
     "src/lib/pdf/schliessplan.ts",
-    "src/lib/konfigurator/vorgang.ts"
+    "src/lib/pdf/schliessplan.test.ts",
+    "src/lib/konfigurator/vorgang.ts",
+    "src/lib/konfigurator/vorgang.test.ts",
+    "src/lib/konfigurator/zwischenstand.ts",
+    "src/lib/pdf/vorgangsblatt.ts",
+    "src/lib/actions/records.ts",
+    "src/lib/actions/security.test.ts",
+    "src/lib/server/rate-limit.ts",
+    "src/components/konfigurator/schliessplan-planer.tsx",
+    "src/app/(site)/schliessanlagen/konfigurator/schliessplan/pdf/"
    ],
    "abhaengigkeiten": [
     "E5-OPUS-01"
@@ -2687,10 +2696,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "99b5a9f",
    "massstab": null,
    "muster": null
   },
