@@ -297,6 +297,10 @@ export default async function SchliessanlagenPage() {
             </ButtonLink>
             {/* Ziel des Kopfknopfs erst nach der Fräsbahn vorladen (D-044) */}
             <SpaetVorladen ziele={['/schliessanlagen/konfigurator']} />
+            {/* Schließplan-Planer (E5-OPUS-01): Türen, Schlüssel und Matrix selbst anlegen */}
+            <ButtonLink href="/schliessanlagen/konfigurator/schliessplan" prefetch={false} size="lg" variant="outline">
+              Schließplan selbst anlegen
+            </ButtonLink>
             <ButtonLink href="#systeme" size="lg" variant="outline">
               Zu den Systemen
             </ButtonLink>

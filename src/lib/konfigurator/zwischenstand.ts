@@ -1,7 +1,11 @@
 /*
  * Zwischenstand per Link (Kern laut Plan, G-27): der Schließplan als kurzer Text in der Adresse
  * (Base64url aus JSON, Version vorn). Gelesen wird nur, was dem Schema entspricht; sonst null.
- * Keine Namen oder Kontaktdaten im Link, nur Türen, Schlüssel und Matrix.
+ * Keine Kontaktdaten im Link, nur Türen, Schlüssel und Matrix mit ihren Bezeichnungen.
+ *
+ * Beim Lesen (E5-OPUS-01): Verweise der Matrix auf unbekannte Türen oder Schlüssel fallen weg, jeder
+ * Schlüssel hat eine Zeile, und „Maße geprüft“ wird nie übernommen: Die Bestätigung gibt, wer den
+ * Plan jetzt vor sich hat (G-29).
  */
 
 import { z } from 'zod';
@@ -52,12 +56,28 @@ export function kodiere(plan: Schliessplan): string {
   return `1.${zuBase64url(JSON.stringify(plan))}`;
 }
 
+/** Passt der Plan in einen Link, der sich auch wieder öffnen lässt? Große Pläne bleiben im Browser. */
+export function passtInLink(plan: Schliessplan): boolean {
+  return kodiere(plan).length <= ZWISCHENSTAND_HOECHSTENS;
+}
+
+const eindeutig = (ids: string[]) => new Set(ids).size === ids.length;
+
 export function dekodiere(eingabe: string | null | undefined): Schliessplan | null {
   if (!eingabe || eingabe.length > ZWISCHENSTAND_HOECHSTENS || !eingabe.startsWith('1.')) return null;
   try {
     const roh = JSON.parse(ausBase64url(eingabe.slice(2)));
     const ergebnis = schema.safeParse(roh);
-    return ergebnis.success ? (ergebnis.data as Schliessplan) : null;
+    if (!ergebnis.success) return null;
+    if (!eindeutig(ergebnis.data.tueren.map((t) => t.id)) || !eindeutig(ergebnis.data.schluessel.map((s) => s.id))) return null;
+    const { masseGeprueft: _nieUebernehmen, ...plan } = ergebnis.data;
+    void _nieUebernehmen;
+    const tuerIds = new Set(plan.tueren.map((t) => t.id));
+    const berechtigungen: Record<string, string[]> = {};
+    for (const s of plan.schluessel) {
+      berechtigungen[s.id] = (plan.berechtigungen[s.id] ?? []).filter((id) => tuerIds.has(id));
+    }
+    return { ...plan, berechtigungen } as Schliessplan;
   } catch {
     return null;
   }

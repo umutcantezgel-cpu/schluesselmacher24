@@ -21,6 +21,9 @@ import {
   schluesselHinzufuegen,
   tuerEntfernen,
   tuerHinzufuegen,
+  SCHUTZ_OPTION_ID,
+  passtInLink,
+  schutzUmfang,
   ZWISCHENSTAND_HOECHSTENS,
 } from './index';
 
@@ -154,5 +157,75 @@ describe('Zwischenstand per Link', () => {
     expect(dekodiere('1.%%%')).toBeNull();
     expect(dekodiere(`1.${btoa(JSON.stringify({ version: 1, tueren: [{ id: 't1' }] }))}`)).toBeNull();
     expect(dekodiere(`1.${'A'.repeat(ZWISCHENSTAND_HOECHSTENS)}`)).toBeNull();
+  });
+});
+
+describe('Kern gehärtet für den Schließplan-Planer (E5-OPUS-01)', () => {
+  const mitSchutz = (plan: ReturnType<typeof zweiTuerenEinSchluessel>, ids: string[]) => ({
+    ...plan,
+    tueren: plan.tueren.map((t) => (ids.includes(t.id) ? { ...t, optionen: [SCHUTZ_OPTION_ID] } : t)),
+  });
+
+  it('nennt für einen unvollständigen Plan keinen Preis, sondern den ersten Fehler', () => {
+    const plan = tuerHinzufuegen(zweiTuerenEinSchluessel(), doppel('Garage'));
+    const preis = preisFuerPlan(plan, KATALOG);
+    expect(preis).toEqual({ art: 'offen', grund: expect.stringContaining('Garage') });
+  });
+
+  it('nennt auch bei Maßen außerhalb des Katalogs keinen Preis', () => {
+    const plan = tuerHinzufuegen(leererPlan(), doppel('Haustür', 31, 30));
+    const voll = schluesselHinzufuegen(plan, { bezeichnung: 'Familie', anzahl: 3 }, true);
+    expect(preisFuerPlan(voll, KATALOG).art).toBe('offen');
+  });
+
+  it('rechnet den Aufbohr- und Ziehschutz an allen Türen wie die Kasse (G9)', () => {
+    const plan = mitSchutz(zweiTuerenEinSchluessel(), ['t1', 't2']);
+    expect(schutzUmfang(plan)).toBe('alle');
+    const preis = preisFuerPlan(plan, KATALOG);
+    expect(preis.art).toBe('preis');
+    if (preis.art !== 'preis') return;
+    expect(preis.entwurf.extraIds).toContain(SCHUTZ_OPTION_ID);
+    expect(preis.aufstellung).toEqual(priceCylinderOrder(preis.entwurf, KATALOG));
+  });
+
+  it('macht Schutz an einzelnen Türen zum Angebot statt zu einem Schätzwert (R9)', () => {
+    const plan = mitSchutz(zweiTuerenEinSchluessel(), ['t1']);
+    expect(schutzUmfang(plan)).toBe('einige');
+    expect(preisFuerPlan(plan, KATALOG)).toEqual({ art: 'angebot', grund: expect.stringContaining('einzelnen Türen') });
+  });
+
+  it('übernimmt die Höchstwerte der Kasse: mehr Zylinder als der Katalog erlaubt werden ein Angebot', () => {
+    let plan = leererPlan();
+    for (let n = 1; n <= KATALOG.maxCylinders + 1; n += 1) plan = tuerHinzufuegen(plan, doppel(`Tür ${n}`));
+    plan = schluesselHinzufuegen(plan, { bezeichnung: 'Alle', anzahl: 3 }, true);
+    expect(preisFuerPlan(plan, KATALOG)).toEqual({ art: 'angebot', grund: expect.stringContaining(String(KATALOG.maxCylinders)) });
+  });
+
+  it('übernimmt „Maße geprüft“ nie aus einem Link und lässt fremde Verweise fallen (G-29)', () => {
+    const plan = { ...zweiTuerenEinSchluessel(), masseGeprueft: true };
+    const gelesen = dekodiere(kodiere(plan));
+    expect(gelesen?.masseGeprueft).toBeUndefined();
+    const fremd = { ...zweiTuerenEinSchluessel(), berechtigungen: { s1: ['t1', 't9'], s7: ['t1'] } };
+    expect(dekodiere(kodiere(fremd))?.berechtigungen).toEqual({ s1: ['t1'] });
+  });
+
+  it('lehnt Links mit doppelten Kennungen ab und sagt vorher, ob ein Plan in den Link passt', () => {
+    const plan = zweiTuerenEinSchluessel();
+    const doppelt = { ...plan, tueren: [plan.tueren[0], { ...plan.tueren[1], id: plan.tueren[0].id }] };
+    expect(dekodiere(kodiere(doppelt))).toBeNull();
+    expect(passtInLink(plan)).toBe(true);
+    let gross = leererPlan();
+    for (let n = 1; n <= 40; n += 1) gross = tuerHinzufuegen(gross, doppel(`Wohnung ${n} mit langer Bezeichnung`));
+    for (let n = 1; n <= 6; n += 1) gross = schluesselHinzufuegen(gross, { bezeichnung: `Gruppe ${n}`, anzahl: 2 }, true);
+    expect(passtInLink(gross)).toBe(false);
+  });
+
+  it('macht Planreserve ohne angebotene Option und aktive Hersteller zum Angebot statt zum stillen Fehler', () => {
+    let plan = zweiTuerenEinSchluessel();
+    plan = { ...plan, schluessel: plan.schluessel.map((s) => ({ ...s, reserve: 1 })) };
+    const ohneErweiterbar = { ...KATALOG, extras: KATALOG.extras.map((e) => (e.id === 'gleichschliessung-erweiterbar' ? { ...e, active: false } : e)) };
+    expect(preisFuerPlan(plan, ohneErweiterbar)).toEqual({ art: 'angebot', grund: expect.stringContaining('vormerken') });
+    const mitHersteller = { ...KATALOG, manufacturers: [{ id: 'h1', name: 'Hersteller', active: true, forms: [], surchargeCentsPerCylinder: 0, components: [] }] } as unknown as typeof KATALOG;
+    expect(preisFuerPlan(zweiTuerenEinSchluessel(), mitHersteller)).toEqual({ art: 'angebot', grund: expect.stringContaining('Hersteller') });
   });
 });

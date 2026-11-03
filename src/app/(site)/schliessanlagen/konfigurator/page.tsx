@@ -71,6 +71,11 @@ export default async function SchliessanlagenKonfiguratorPage() {
         <ul className="mt-8 grid border-t border-border md:grid-cols-2">
           {[
             {
+              href: '/schliessanlagen/konfigurator/schliessplan',
+              label: 'Schließplan selbst anlegen',
+              body: 'Türen und Schlüssel anlegen und ankreuzen, wer welche Tür schließt; eine Sperrschließung direkt bestellen.',
+            },
+            {
               href: '/schliessanlagen#systeme',
               label: 'Systeme im Vergleich',
               body: 'Gleichschließung, Zentralschloss, Hauptschlüssel und Generalhauptschlüssel.',
