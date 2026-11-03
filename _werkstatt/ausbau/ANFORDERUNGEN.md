@@ -22,7 +22,7 @@ Einträge: 623 · belegt: 7
 | G-03 | Kacheln in dieser Reihenfolge, als Daten pflegbar: Autoschlüssel · Motorradschlüssel · Autoschlüssel-Gehäuse · Schlüsse… | nicht angegeben | offen | E3-GRAFIKER-01, E3-OPUS-01, E4-OPUS-01, E4-TEXTER-01 |  |
 | G-04 | Eingangsinszenierung: Ein Autoschlüssel wandelt sich in einen Profilzylinder, dann in eine Schließanlage und weiter dur… | nicht angegeben | offen | E4-OPUS-02, E4-OPUS-04 |  |
 | G-05 | Ruhe wie bei Apple: viel Weißraum, wenig Text, große Schrift, große Tippflächen; eine Oma, ein Opa und jemand ohne Gedu… | nicht angegeben | offen | E2-OPUS-01, E3-OPUS-02, E4-OPUS-01 |  |
-| G-06 | Lebendig: mehr Bewegung; das vorhandene Leuchten beim Überfahren gefällt und wird zum System; dezente Dauerbewegung ist… | nicht angegeben | offen | E2-OPUS-01, E3-OPUS-02, E3-OPUS-03, E4-OPUS-02 |  |
+| G-06 | Lebendig: mehr Bewegung; das vorhandene Leuchten beim Überfahren gefällt und wird zum System; dezente Dauerbewegung ist… | nicht angegeben | offen | E2-OPUS-01, E3-OPUS-02, E3-OPUS-03, E4-OPUS-02, E5-OPUS-04 |  |
 | G-07 | Der Schlüssel in der vorhandenen Startseiten-Animation ist zu lang; er bekommt glaubwürdige, kürzere Proportionen. | nicht angegeben | offen | E4-OPUS-02 |  |
 | G-08 | Hauptnavigation: Autoschlüssel · Schlüssel nach Code · Sperrschließungen · Schließanlagen · Mehr. Unter Autoschlüssel l… | nicht angegeben | offen | E4-OPUS-03 |  |
 | G-09 | Sperrschließung trägt überall eine Laienerklärung, etwa „Sperrschließung (ein Schlüssel für alle Türen)“; der Unterschi… | nicht angegeben | offen | E1-FACHKUNDLER-01, E4-OPUS-03, E5-AUTOR-01, E5-OPUS-02, E8-AUTOR-03 |  |
@@ -394,7 +394,7 @@ Einträge: 623 · belegt: 7
 | EL-30 | Eigene, gut verständliche Hauptseite für „Autoschlüssel anfertigen/programmieren“. | vorhanden | offen | EA-PRUEFER-03 |  |
 | EL-31 | Eigene, gut verständliche Hauptseite für „Sperrschließungen“. | vorhanden | offen | EA-PRUEFER-03 |  |
 | EL-32 | Eigene, gut verständliche Hauptseite für „Schließanlagen“. | vorhanden | offen | EA-PRUEFER-03 |  |
-| EL-33 | Mobile-first, gute Ladezeiten, stabile Darstellung, HTTPS und barrierearme Formulare. | vorhanden | offen | EA-PRUEFER-03 |  |
+| EL-33 | Mobile-first, gute Ladezeiten, stabile Darstellung, HTTPS und barrierearme Formulare. | vorhanden | offen | E5-OPUS-04, E5-PRUEFER-02, EA-PRUEFER-03 |  |
 | EL-34 | Sprechende URLs, individuelle Title-Tags und Meta-Beschreibungen, saubere Überschriften. | teilweise | offen | E8-OPUS-01, E8-OPUS-02 |  |
 | EL-35 | XML-Sitemap, interne Links, korrekte robots-/Indexierungssteuerung und Canonical-Angaben. | vorhanden | offen | EA-PRUEFER-03 |  |
 | EL-36 | Produkt-Strukturdaten nur mit zutreffenden Angaben zu Preis und Verfügbarkeit. | vorhanden | offen | EA-PRUEFER-03 |  |

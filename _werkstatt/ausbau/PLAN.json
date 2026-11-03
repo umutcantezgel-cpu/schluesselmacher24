@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T09:45:13+00:00",
+ "stand": "2026-11-03T10:34:40.298Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -52,7 +52,7 @@
     "Z-12",
     "Z-20"
    ],
-   "tage": 2.15
+   "tage": 2.16
   },
   {
    "kennung": "E4",
@@ -68,7 +68,7 @@
     "Z-14",
     "Z-15"
    ],
-   "tage": 1.43
+   "tage": 1.44
   },
   {
    "kennung": "E5",
@@ -80,7 +80,7 @@
     "Z-05",
     "Z-06"
    ],
-   "tage": 1.43
+   "tage": 1.44
   },
   {
    "kennung": "E6",
@@ -93,7 +93,7 @@
     "Z-08",
     "Z-19"
    ],
-   "tage": 1.43
+   "tage": 1.44
   },
   {
    "kennung": "E7",
@@ -105,7 +105,7 @@
     "Z-09",
     "Z-10"
    ],
-   "tage": 1.43
+   "tage": 1.44
   },
   {
    "kennung": "E8",
@@ -120,7 +120,7 @@
     "Z-17",
     "Z-18"
    ],
-   "tage": 1.43
+   "tage": 1.44
   },
   {
    "kennung": "E9",
@@ -132,7 +132,7 @@
     "Z-19",
     "Z-20"
    ],
-   "tage": 1.14
+   "tage": 1.15
   },
   {
    "kennung": "E10",
@@ -144,7 +144,7 @@
     "Z-01",
     "Z-11"
    ],
-   "tage": 1.43
+   "tage": 1.44
   },
   {
    "kennung": "EA",
@@ -2193,10 +2193,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "f36d3ad",
    "massstab": "_werkstatt/ausbau/pakete/E4-PRUEFER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
   },
@@ -2260,7 +2260,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "läuft",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -2522,9 +2522,11 @@
    "abhaengigkeiten": [
     "E5-AUTOR-01",
     "E5-OPUS-03",
+    "E5-OPUS-04",
     "E5-OPUS-01",
     "E5-OPUS-02",
-    "E5-GRAFIKER-01"
+    "E5-GRAFIKER-01",
+    "E5-PRUEFER-02"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -2539,6 +2541,78 @@
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E5-PRUEFER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
+  },
+  {
+   "kennung": "E5-PRUEFER-02",
+   "titel": "Leistungsdiagnose mobil aus Lighthouse-Spuren: LCP-Element und Zeitanteile, blockierende Ressourcen, JavaScript je Route, Hauptthread beim Seitenaufbau, SEO-Abzug der Unterseiten; Vorschläge mit erwarteter Wirkung",
+   "etappe": "E5",
+   "welle": 1,
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "_werkstatt/ausbau/berichte/E5-PRUEFER-02.md"
+   ],
+   "abhaengigkeiten": [
+    "E4-PRUEFER-01"
+   ],
+   "anforderungen": [
+    "EL-33"
+   ],
+   "kriterien": [
+    "Z-15",
+    "Z-16"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/E5-PRUEFER-02.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
+  },
+  {
+   "kennung": "E5-OPUS-04",
+   "titel": "Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand",
+   "etappe": "E5",
+   "welle": 2,
+   "rolle": "Orchestrator",
+   "modell": "opus-5.5",
+   "stufe": 3,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "next.config.ts",
+    "src/app/(site)/layout.tsx",
+    "src/app/(site)/globals.css",
+    "src/app/(site)/page.tsx",
+    "src/app/(site)/autoschluessel/",
+    "src/components/layout/",
+    "src/components/hub/",
+    "src/components/visual/inszenierung/",
+    "src/components/seo/",
+    "src/fonts/"
+   ],
+   "abhaengigkeiten": [
+    "E5-PRUEFER-02"
+   ],
+   "anforderungen": [
+    "EL-33",
+    "G-06"
+   ],
+   "kriterien": [
+    "Z-15",
+    "Z-16"
+   ],
+   "art": "pflicht",
+   "wirkung": 4,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": null,
+   "muster": null
   },
   {
    "kennung": "E6-OPUS-01",
@@ -5298,13 +5372,13 @@
   }
  ],
  "mengengeruest": {
-  "pakete": 139,
-  "pflicht": 129,
+  "pakete": 141,
+  "pflicht": 131,
   "kuer": 10,
-  "opus": 47,
-  "haiku": 92,
+  "opus": 48,
+  "haiku": 93,
   "kostenklassen": {
-   "M": 89,
+   "M": 91,
    "L": 50
   },
   "anforderungen": 623,

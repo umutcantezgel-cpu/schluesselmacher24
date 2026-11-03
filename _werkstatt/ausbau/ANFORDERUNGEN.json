@@ -92,7 +92,8 @@
         "E2-OPUS-01",
         "E3-OPUS-02",
         "E3-OPUS-03",
-        "E4-OPUS-02"
+        "E4-OPUS-02",
+        "E5-OPUS-04"
       ],
       "beleg": null
     },
@@ -6126,6 +6127,8 @@
       "bestand_fundstelle": "src/app/(site)/layout.tsx:71",
       "status": "offen",
       "pakete": [
+        "E5-OPUS-04",
+        "E5-PRUEFER-02",
         "EA-PRUEFER-03"
       ],
       "beleg": null,

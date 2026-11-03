@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T09:45:13+00:00
+Stand: 2026-11-03T10:33:57+00:00
 
-Etappe 5/12 · Welle 5 · Pflicht 59/129 · Kür 0/10 · läuft 1 · blockiert 0
+Etappe 5/12 · Welle 5 · Pflicht 60/131 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -112,7 +112,7 @@ Geplante Tage: 0.43
 
 Tor: Prüfstufe B, Bestand mindestens wie in E0, Datenweiche belegt
 Kriterien: Z-02, Z-06, Z-07, Z-08, Z-09, Z-12, Z-20
-Geplante Tage: 2.15
+Geplante Tage: 2.16
 
 ### Welle 1
 
@@ -169,7 +169,7 @@ Geplante Tage: 2.15
 
 Tor: Prüfstufe B, Jury Start mindestens 8,5 und Weg mindestens 8, Personas ohne Abbruch, Blind- und Dominanzprobe Start
 Kriterien: Z-04, Z-05, Z-11, Z-12, Z-14, Z-15
-Geplante Tage: 1.43
+Geplante Tage: 1.44
 
 ### Welle 1
 
@@ -202,7 +202,7 @@ Geplante Tage: 1.43
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E4-PROBENUTZER-01 | Probelauf Startseite und Autoschlüssel-Weg mit vier Personas, mobil und Desktop | haiku-5.5 | M | pflicht | 3 | committet | 26a9349 |
-| E4-PRUEFER-01 | Prüfstufe B Etappe E4 mit Bildfolgen der Inszenierung, Framezeiten, Lighthouse, axe | haiku-5.5 | L | pflicht | 3 | läuft |  |
+| E4-PRUEFER-01 | Prüfstufe B Etappe E4 mit Bildfolgen der Inszenierung, Framezeiten, Lighthouse, axe | haiku-5.5 | L | pflicht | 3 | committet | f36d3ad |
 | E4-DOKUMENTAR-01 | Unterlagen der Blind- und Dominanzprobe der Startseite: vier neutral benannte Startseitentexte, Faktenblatt, Zuordnung getrennt | haiku-5.5 | M | pflicht | 3 | offen |  |
 
 ### Welle 6
@@ -216,7 +216,7 @@ Geplante Tage: 1.43
 
 Tor: Prüfstufe B, Tests jeder Regel, Probelauf Hausverwaltung
 Kriterien: Z-05, Z-06
-Geplante Tage: 1.43
+Geplante Tage: 1.44
 
 ### Welle 1
 
@@ -224,6 +224,7 @@ Geplante Tage: 1.43
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E5-OPUS-01 | Schließanlagen-Konfigurator: Zylinder und Schlüssel hinzufügen, Matrix, laufender Gesamtpreis, Liste, Speichern, Kasse oder Projektanfrage | opus-5.5 | L | pflicht | 5 | offen |  |
 | E5-GRAFIKER-01 | Messhilfe-Grafik Maß A und B mit Stulpschraube, Beschlag, Überstand (SVG nach Formsystem) | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E5-PRUEFER-02 | Leistungsdiagnose mobil aus Lighthouse-Spuren: LCP-Element und Zeitanteile, blockierende Ressourcen, JavaScript je Route, Hauptthread beim Seitenaufbau, SEO-Abzug der Unterseiten; Vorschläge mit erwarteter Wirkung | haiku-5.5 | M | pflicht | 3 | offen |  |
 
 ### Welle 2
 
@@ -231,6 +232,7 @@ Geplante Tage: 1.43
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E5-OPUS-02 | Sperrschließung auf demselben Kern: Sets 2 bis 10 (mehr auf Anfrage, Bestand bis 30), jeder Zylinder einzeln, Schlüsselzahl | opus-5.5 | L | pflicht | 5 | offen |  |
 | E5-OPUS-03 | Schließplan als PDF und Vorgang mit vollständigem Schnappschuss | opus-5.5 | M | pflicht | 4 | offen |  |
+| E5-OPUS-04 | Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand | opus-5.5 | M | pflicht | 4 | offen |  |
 
 ### Welle 3
 
@@ -249,7 +251,7 @@ Geplante Tage: 1.43
 
 Tor: Prüfstufe B, Probelauf aller neuen Wege
 Kriterien: Z-05, Z-08, Z-19
-Geplante Tage: 1.43
+Geplante Tage: 1.44
 
 ### Welle 1
 
@@ -298,7 +300,7 @@ Geplante Tage: 1.43
 
 Tor: Prüfstufe B, axe Karte, Stadt-Hubs noindex
 Kriterien: Z-09, Z-10
-Geplante Tage: 1.43
+Geplante Tage: 1.44
 
 ### Welle 1
 
@@ -330,7 +332,7 @@ Geplante Tage: 1.43
 
 Tor: Prüfstufe B, Faktenprüfung, Dominanzprobe Schlüsselseiten
 Kriterien: Z-11, Z-13, Z-16, Z-17, Z-18
-Geplante Tage: 1.43
+Geplante Tage: 1.44
 
 ### Welle 1
 
@@ -385,7 +387,7 @@ Geplante Tage: 1.43
 
 Tor: Prüfstufe B, Probelauf im Admin
 Kriterien: Z-19, Z-20
-Geplante Tage: 1.14
+Geplante Tage: 1.15
 
 ### Welle 1
 
@@ -414,7 +416,7 @@ Geplante Tage: 1.14
 
 Tor: Vorrat leer oder LAUFZEIT erreicht (Einstellung: bis Pflicht und Kür erfüllt, also Vorrat leer); Prüfstufe B der Kür
 Kriterien: Z-01, Z-11
-Geplante Tage: 1.43
+Geplante Tage: 1.44
 
 ### Welle 1
 

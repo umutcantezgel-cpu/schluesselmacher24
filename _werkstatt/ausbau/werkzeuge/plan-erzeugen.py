@@ -160,7 +160,12 @@ op('E5-OPUS-03', 'Schließplan als PDF und Vorgang mit vollständigem Schnappsch
 hk('E5-GRAFIKER-01', 'Messhilfe-Grafik Maß A und B mit Stulpschraube, Beschlag, Überstand (SVG nach Formsystem)', 1, 'Grafiker', ['src/components/visual/generators/messhilfe.tsx', 'src/components/visual/generators/messhilfe.test.tsx'], ['G-29', 'G-47'], ['Z-06'], deps=['E4-JURY-01'], status='offen', stufe=2)
 hk('E5-AUTOR-01', 'Messhilfe-Text, Plausibilitätshinweise, Laienerklärung Sperrschließung gegen Schließanlage mit Beispiel, Empfehlung Privat oder Unternehmen', 3, 'Autor', ['content/konfigurator-texte.json'], ['G-09', 'G-29', 'G-30'], ['Z-06', 'Z-17'], deps=['E5-OPUS-02'], status='offen', stufe=2)
 hk('E5-PROBENUTZER-01', 'Probelauf Konfiguratoren mit Hausverwaltung (20 Türen) und Rentnerin', 4, 'Probenutzer', [W + 'berichte/E5-PROBENUTZER-01.md'], [], ['Z-05', 'Z-06'], deps=['E5-AUTOR-01', 'E5-OPUS-03'], status='offen')
-hk('E5-PRUEFER-01', 'Prüfstufe B Etappe E5, Prüfliste G-27 bis G-30', 4, 'Prüfer', [W + 'berichte/E5-PRUEFER-01.md'], [], ['Z-06', 'Z-14'], deps=['E5-AUTOR-01', 'E5-OPUS-03'], status='offen', klasse='L')
+hk('E5-PRUEFER-01', 'Prüfstufe B Etappe E5, Prüfliste G-27 bis G-30', 4, 'Prüfer', [W + 'berichte/E5-PRUEFER-01.md'], [], ['Z-06', 'Z-14'], deps=['E5-AUTOR-01', 'E5-OPUS-03', 'E5-OPUS-04'], status='offen', klasse='L')
+# Befund E4-PRUEFER-01: Lighthouse-Budgets mobil verfehlt (LCP 2,5 bis 3,8 s, SEO 92 auf Unterseiten), keine Route schlechter als E0
+hk('E5-PRUEFER-02', 'Leistungsdiagnose mobil aus Lighthouse-Spuren: LCP-Element und Zeitanteile, blockierende Ressourcen, JavaScript je Route, Hauptthread beim Seitenaufbau, SEO-Abzug der Unterseiten; Vorschläge mit erwarteter Wirkung', 1, 'Prüfer', [W + 'berichte/E5-PRUEFER-02.md'], ['EL-33'], ['Z-15', 'Z-16'], deps=['E4-PRUEFER-01'], status='offen')
+op('E5-OPUS-04', 'Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand', 'E5', 2,
+   ['next.config.ts', 'src/app/(site)/layout.tsx', 'src/app/(site)/globals.css', 'src/app/(site)/page.tsx', 'src/app/(site)/autoschluessel/', 'src/components/layout/', 'src/components/hub/', 'src/components/visual/inszenierung/', 'src/components/seo/', 'src/fonts/'],
+   ['E5-PRUEFER-02'], ['EL-33', 'G-06'], ['Z-15', 'Z-16'], klasse='M', wirkung=4)
 
 # ---------------------------------------------------------------- E6 Übrige Rubriken
 op('E6-OPUS-01', 'Gemeinsamer Abschluss: Wege-Baukasten aus Rubrikdaten (Ablauf, Formular, Upload mit Fotohilfe, Nachweis, Zusammenfassung, Bestätigung, Vorgangsblatt)', 'E6', 1,

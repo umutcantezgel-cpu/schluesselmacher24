@@ -674,3 +674,11 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-03T09:50:05+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
 2026-11-03T09:50:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
 2026-11-03T09:51:22+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T10:29:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/hub src/lib/rubriken.test.ts src/components/rubrik src/lib/navigation.test.ts src/components/layout
+2026-11-03T10:29:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T10:30:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T10:31:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T10:32:03+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T10:32:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/hub/hub-kachel.tsx src/lib/data/defaults/rubriken.ts
+2026-11-03T10:32:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-03T10:32:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/hub src/lib/rubriken.test.ts src/components/rubrik
