@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { BewegungSchalter } from '@/components/layout/bewegung-schalter';
 import { Profillinie } from '@/components/visual/profillinie';
-import { getSettings } from '@/lib/data';
+import { getRubriken, getSettings } from '@/lib/data';
 import { defaults } from '@/lib/data/defaults';
 import { FOOTER_CONTENT, FOOTER_LEGAL, NAV_AREAS, WIDERRUF_BUTTON, type NavLink } from '@/lib/navigation';
 import { formatWeekday } from '@/lib/format';
@@ -37,6 +37,19 @@ export async function SiteFooter() {
     console.error('[fuss] Einstellungen nicht geladen, Standardwerte verwendet', error);
     return defaults.settings();
   });
+  const rubriken = await getRubriken().catch((error: unknown) => {
+    console.error('[fuss] Rubriken nicht geladen, Standardwerte verwendet', error);
+    return defaults.rubriken();
+  });
+  // Leistungen aus den Rubriken (G-11): alle mit Status „live“, ein Ziel nur einmal; dazu jede
+  // Bereichsseite, die keine Rubrik trägt (etwa Service und Termin), damit kein Bestand verloren geht.
+  const leistungen: NavLink[] = [];
+  for (const r of rubriken.filter((x) => x.status === 'live').sort((a, b) => a.reihenfolge - b.reihenfolge)) {
+    if (!leistungen.some((l) => l.href === r.ziel)) leistungen.push({ href: r.ziel, label: r.name });
+  }
+  for (const area of NAV_AREAS) {
+    if (!leistungen.some((l) => l.href === area.href)) leistungen.push({ href: area.href, label: area.label });
+  }
   const { company } = settings;
   // Firmenname, Inhaber und Sitz ohne Land — das Land steht im Fuß nicht.
   const anbieter = anbieterZeilen(company).filter((zeile) => zeile !== company.country);
@@ -120,9 +133,9 @@ export async function SiteFooter() {
 
           {/* Bereiche und Öffnungszeiten */}
           <div className="border-b border-border py-8 md:pl-8 lg:col-span-5 lg:border-b-0 lg:border-r lg:pr-8">
-            <Feldtitel>Bereiche</Feldtitel>
+            <Feldtitel>Leistungen</Feldtitel>
             <ul className="grid grid-cols-2 gap-x-6">
-              {[...NAV_AREAS.map((area) => ({ href: area.href, label: area.label })), ...FOOTER_SHOP].map((link) => (
+              {[...leistungen, ...FOOTER_SHOP].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={linkKlasse}>
                     {link.label}

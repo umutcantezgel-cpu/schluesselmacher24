@@ -8,6 +8,12 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { MobileActionBar } from '@/components/layout/mobile-action-bar';
 import { EinwilligungHinweis } from '@/components/statistik/einwilligung-hinweis';
 import { GoogleAnalytics } from '@/components/statistik/google-analytics';
+import { FachIcon } from '@/components/visual/fach-icon';
+import { getRubriken, getSettings } from '@/lib/data';
+import { defaults } from '@/lib/data/defaults';
+import { navigationsGruppen } from '@/lib/navigation';
+import { kontakt } from '@/lib/rechtliches/firma';
+import { telefonLink } from '@/lib/telefon';
 import { getSiteUrl } from '@/lib/site-url';
 import { gaMessId } from '@/lib/statistik';
 import { googleVerifizierung, indexierungErlaubt } from '@/lib/umgebung';
@@ -56,7 +62,24 @@ export const viewport: Viewport = {
   themeColor: '#fafbfd',
 };
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  // Navigation aus den Rubriken (G-08, G-11). Ist die Datenbank kurz nicht erreichbar, gelten die
+  // Standardwerte wie im Fuß, statt die Seite zu brechen.
+  const [rubriken, settings] = await Promise.all([
+    getRubriken().catch((error: unknown) => {
+      console.error('[kopf] Rubriken nicht geladen, Standardwerte verwendet', error);
+      return defaults.rubriken();
+    }),
+    getSettings().catch(() => defaults.settings()),
+  ]);
+  const gruppen = navigationsGruppen(rubriken);
+  // Fach-Icons auf dem Server gezeichnet: Der Kopf ist eine Client-Komponente, so bleibt der Icon-Code aus dem Bündel.
+  const rubrikIcons = Object.fromEntries(
+    gruppen.flatMap((g) => g.rubriken).map((r) => [r.id, <FachIcon key={r.id} name={r.icon} size={28} />]),
+  );
+  const nummer = kontakt(settings.company).telefon;
+  const telefon = nummer ? { anzeige: nummer, href: telefonLink(nummer) } : null;
+
   return (
     <html
       lang="de"
@@ -75,14 +98,14 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           Zum Inhalt springen
         </a>
 
-        <SiteHeader />
+        <SiteHeader gruppen={gruppen} rubrikIcons={rubrikIcons} telefon={telefon} />
 
         <main id="inhalt" className="flex-1 pt-header">
           {children}
         </main>
 
         <SiteFooter />
-        <MobileActionBar />
+        <MobileActionBar telefonHref={telefon?.href} />
         {gaId && (
           <>
             <GoogleAnalytics messId={gaId} />

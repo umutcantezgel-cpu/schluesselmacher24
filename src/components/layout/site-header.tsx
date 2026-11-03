@@ -9,6 +9,7 @@ import {
   useState,
   type Dispatch,
   type KeyboardEvent as ReactKeyboardEvent,
+  type ReactNode,
   type RefObject,
   type SetStateAction,
 } from 'react';
@@ -20,38 +21,35 @@ import { BereichIcon } from '@/components/visual/bereich-icon';
 import { GlyphKreuz } from '@/components/visual/glyphen/kreuz';
 import { GlyphMenue } from '@/components/visual/glyphen/menue';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { GlyphTelefon } from '@/components/visual/glyphen/telefon';
 import { GlyphWarenkorb } from '@/components/visual/glyphen/warenkorb';
 import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
-import { NAV_AREAS, istAktiv, type NavArea } from '@/lib/navigation';
+import { istAktiv, type NavGruppe, type NavRubrik } from '@/lib/navigation';
 import { useHydrated } from '@/lib/client-state';
 import { useCartStore } from '@/lib/store/cart';
-import type { AreaKey } from '@/lib/types';
+import type { RubrikNavigation } from '@/lib/types';
 import { cn } from '@/lib/cn';
 
 type Stufe = 'lg' | 'xl' | '2xl';
 
 /**
- * Ab welcher Breite ein Bereich mit seiner Kurzbezeichnung in der Leiste steht; ohne Eintrag
- * steht er nur unter „Mehr“ (und immer in der Schublade). Zuerst gemessen mit Inter halbfett:
- * bei 1024 px rund 65 px frei, bei 1280 px rund 45 px, bei 1440 px rund 200 px, ab 1536 px rund
- * 135 px. Seit KERN 2.1 (Plex Sans halbfett, 15 px) nachgemessen: Bei 1024, 1280, 1440 und
- * 1536 px bleibt die Leiste einzeilig ohne Überlauf, mit Kopfknopf „Termin anfragen“.
- * Wer hier etwas ergänzt oder eine Kurzbezeichnung verlängert, misst diese drei Breiten nach.
+ * Ab welcher Breite eine Gruppe der Hauptnavigation (G-08) mit ihrer Kurzbezeichnung in der Leiste
+ * steht; sonst steht sie unter „Mehr“ (und immer in der Schublade). Nachgemessen mit Plex Sans
+ * halbfett 15 px und dem Kopfknopf „Termin anfragen“ (E4-OPUS-03): Bei 1024, 1280, 1440 und 1536 px
+ * bleibt die Leiste einzeilig. Wer eine Kurzbezeichnung verlängert, misst diese Breiten nach.
  */
-const LEISTE: Partial<Record<AreaKey, Stufe>> = {
+const LEISTE: Partial<Record<RubrikNavigation, Stufe>> = {
   autoschluessel: 'lg',
-  'schluessel-nach-code': 'lg',
-  'gleichschliessende-zylinder': 'lg',
-  'schluessel-nach-vorlage': 'xl',
+  code: 'lg',
+  sperrschliessung: 'lg',
   schliessanlagen: 'xl',
-  'elektronische-zutrittsloesungen': '2xl',
 };
 
 /** Sichtbarkeit in der Leiste (die Leiste selbst erscheint erst ab 1024 px). */
 const IN_LEISTE: Record<Stufe, string> = { lg: '', xl: 'hidden xl:block', '2xl': 'hidden 2xl:block' };
-/** Sichtbarkeit unter „Mehr“: dort nur, solange der Bereich nicht in der Leiste steht. */
+/** Sichtbarkeit unter „Mehr“: dort nur, solange die Gruppe nicht in der Leiste steht. */
 const UNTER_MEHR: Record<Stufe, string> = { lg: 'hidden', xl: 'xl:hidden', '2xl': '2xl:hidden' };
-/** Markierung von „Mehr“, wenn die aktuelle Seite in einem Bereich liegt, der ab einer Breite in die Leiste wandert. */
+/** Markierung von „Mehr“, wenn die aktuelle Seite in einer Gruppe liegt, die ab einer Breite in die Leiste wandert. */
 const MEHR_MARKE: Record<Stufe | 'immer', string> = {
   immer: 'scale-x-100',
   lg: 'scale-x-0',
@@ -65,8 +63,20 @@ const MEHR_TEXT: Record<Stufe | 'immer', string> = {
   '2xl': 'text-primary 2xl:text-foreground-muted',
 };
 
-/** Bereiche, die mindestens bei einer Breite unter „Mehr“ stehen — in der Reihenfolge der Navigation. */
-const MEHR_BEREICHE = NAV_AREAS.filter((area) => LEISTE[area.key] !== 'lg');
+/** Ob die Seite zu einer Gruppe gehört: Gruppenseite oder eine ihrer Rubriken. */
+function gruppeAktiv(pathname: string, gruppe: NavGruppe): boolean {
+  if (gruppe.href && istAktiv(pathname, gruppe.href)) return true;
+  return gruppe.rubriken.some((r) => istAktiv(pathname, r.href)) || gruppe.weitere.some((l) => istAktiv(pathname, l.href));
+}
+
+export interface SiteHeaderProps {
+  /** Die fünf Gruppen nach G-08 (`navigationsGruppen` aus den Rubriken). */
+  gruppen: NavGruppe[];
+  /** Fach-Icons der Rubriken, auf dem Server gezeichnet (kein Icon-Code im Browser-Bündel). */
+  rubrikIcons?: Record<string, ReactNode>;
+  /** Telefon für „Anrufen“ in der Schublade. */
+  telefon?: { anzeige: string; href: string | null } | null;
+}
 
 /** Fokussierbare Elemente innerhalb eines Containers (für die Fokusfalle des Drawers). */
 function fokussierbare(container: HTMLElement | null): HTMLElement[] {
@@ -79,7 +89,7 @@ function fokussierbare(container: HTMLElement | null): HTMLElement[] {
 /** Feste Ziele im Kopf: erst nach dem großen Moment vorladen (D-044). */
 const KOPF_ZIELE = ['/', '/warenkorb', '/autoschluessel/anfrage'] as const;
 
-export function SiteHeader() {
+export function SiteHeader({ gruppen, rubrikIcons = {}, telefon }: SiteHeaderProps) {
   const pathname = usePathname();
   useSpaetVorladen(KOPF_ZIELE, pathname);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -158,7 +168,7 @@ export function SiteHeader() {
         </Link>
 
         {/* Hauptnavigation ab Desktop */}
-        <DesktopNav pathname={pathname} openArea={openArea} setOpenArea={setOpenArea} />
+        <DesktopNav gruppen={gruppen} pathname={pathname} openArea={openArea} setOpenArea={setOpenArea} />
 
         <div className="ml-auto flex items-center gap-1 lg:ml-0">
           <Link
@@ -214,89 +224,11 @@ export function SiteHeader() {
         >
           <div className="shell-wide py-8">
             {openArea === 'mehr' ? (
-              <ul className="grid grid-cols-4 gap-6">
-                {MEHR_BEREICHE.map((area) => (
-                  <li key={area.key} className={cn(LEISTE[area.key] && UNTER_MEHR[LEISTE[area.key]!])}>
-                    <AreaScope area={area.key}>
-                      <Link href={area.href} className="group flex gap-3 rounded-md p-2 -m-2 hover:bg-surface-muted">
-                        <BereichIcon area={area.key} size={36} className="text-area-strong" />
-                        <span>
-                          <span className="block text-body font-semibold text-foreground group-hover:text-primary">
-                            {area.label}
-                          </span>
-                          <span className="mt-1 block text-small text-foreground-muted">{area.summary}</span>
-                        </span>
-                      </Link>
-                    </AreaScope>
-                  </li>
-                ))}
-              </ul>
+              <MehrMenue gruppen={gruppen} rubrikIcons={rubrikIcons} />
             ) : (
               (() => {
-                const area = NAV_AREAS.find((a) => a.key === openArea);
-                if (!area) return null;
-                return (
-                  <AreaScope area={area.key}>
-                    <div className="grid grid-cols-12 gap-8">
-                      <div className="col-span-3 border-r border-border pr-8">
-                        <BereichIcon area={area.key} size={48} className="text-area-strong" />
-                        <Link
-                          href={area.href}
-                          className="mt-4 block text-title font-bold text-foreground hover:text-primary"
-                        >
-                          {area.label}
-                        </Link>
-                        <p className="mt-2 text-small text-foreground-muted">{area.summary}</p>
-                      </div>
-                      <div className="col-span-6 grid grid-cols-2 gap-8">
-                        {area.columns.map((column) => (
-                          <div key={column.title}>
-                            <p className="mb-3 font-mono text-caption uppercase tracking-label text-foreground-subtle">
-                              {column.title}
-                            </p>
-                            <ul className="space-y-3">
-                              {column.links.map((link) => (
-                                <li key={link.href}>
-                                  <Link href={link.href} className="group block">
-                                    <span className="block text-small font-semibold text-foreground group-hover:text-primary">
-                                      {link.label}
-                                    </span>
-                                    {link.description && (
-                                      <span className="mt-0.5 block text-small text-foreground-subtle">
-                                        {link.description}
-                                      </span>
-                                    )}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-
-                      {area.highlight && (
-                        <div className="col-span-3 rounded-lg border border-border bg-area-soft p-5">
-                          <p className="font-mono text-caption uppercase tracking-label text-area-strong">
-                            Nächster Schritt
-                          </p>
-                          <Link
-                            href={area.highlight.href}
-                            className="group mt-2 block text-title-sm font-bold text-foreground hover:text-primary"
-                          >
-                            {area.highlight.label}
-                            <GlyphPfeilRechts
-                              size={18}
-                              className="ml-1 inline-block align-text-bottom text-primary transition-transform duration-quick zeiger:group-hover:translate-x-1"
-                            />
-                          </Link>
-                          {area.highlight.description && (
-                            <p className="mt-1.5 text-small text-foreground-muted">{area.highlight.description}</p>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  </AreaScope>
-                );
+                const gruppe = gruppen.find((g) => g.key === openArea);
+                return gruppe ? <GruppenMenue gruppe={gruppe} rubrikIcons={rubrikIcons} /> : null;
               })()
             )}
           </div>
@@ -306,6 +238,9 @@ export function SiteHeader() {
       {/* Schublade für Smartphone und Tablet (B-07) */}
       {drawerOpen && (
         <MobilSchublade
+          gruppen={gruppen}
+          rubrikIcons={rubrikIcons}
+          telefon={telefon}
           pathname={pathname}
           drawerRef={drawerRef}
           openMobileArea={openMobileArea}
@@ -317,27 +252,161 @@ export function SiteHeader() {
   );
 }
 
+/** Eine Rubrik als Menüzeile: Fach-Icon, Name, Laienerklärung. */
+function RubrikZeile({ rubrik, icon, dicht = false }: { rubrik: NavRubrik; icon?: ReactNode; dicht?: boolean }) {
+  return (
+    <AreaScope area={rubrik.bereich}>
+      <Link
+        href={rubrik.href}
+        className={cn(
+          'group flex items-start gap-3 rounded-md transition-colors duration-quick',
+          dicht ? 'min-h-touch py-2' : '-m-2 p-2 hover:bg-surface-muted',
+        )}
+      >
+        <span className="shrink-0 text-area-strong">{icon}</span>
+        <span className="min-w-0">
+          <span className="block text-small font-semibold text-foreground group-hover:text-primary">{rubrik.label}</span>
+          {rubrik.zusatz && <span className="mt-0.5 block text-small text-foreground-muted">{rubrik.zusatz}</span>}
+        </span>
+      </Link>
+    </AreaScope>
+  );
+}
+
+/** Menü einer Gruppe: Kopf, ihre Rubriken, die Spalten des Bestands, der nächste Schritt. */
+function GruppenMenue({ gruppe, rubrikIcons }: { gruppe: NavGruppe; rubrikIcons: Record<string, ReactNode> }) {
+  return (
+    <AreaScope area={gruppe.bereich}>
+      <div className="grid grid-cols-12 gap-8">
+        <div className="col-span-3 border-r border-border pr-8">
+          <BereichIcon area={gruppe.bereich} size={48} className="text-area-strong" />
+          {gruppe.href ? (
+            <Link href={gruppe.href} className="mt-4 block text-title font-bold text-foreground hover:text-primary">
+              {gruppe.label}
+            </Link>
+          ) : (
+            <p className="mt-4 text-title font-bold text-foreground">{gruppe.label}</p>
+          )}
+          {gruppe.zusatz && <p className="mt-1 text-small font-semibold text-area-strong">{gruppe.zusatz}</p>}
+          {gruppe.zusammenfassung && <p className="mt-2 text-small text-foreground-muted">{gruppe.zusammenfassung}</p>}
+        </div>
+        <div className="col-span-6 grid grid-cols-2 gap-8">
+          {gruppe.rubriken.length > 0 && (
+            <div>
+              <p className="mb-3 font-mono text-caption uppercase tracking-label text-foreground-subtle">Bestellen und anfragen</p>
+              <ul className="space-y-3">
+                {gruppe.rubriken.map((rubrik) => (
+                  <li key={rubrik.id}>
+                    <RubrikZeile rubrik={rubrik} icon={rubrikIcons[rubrik.id]} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {gruppe.spalten.map((column) => (
+            <div key={column.title}>
+              <p className="mb-3 font-mono text-caption uppercase tracking-label text-foreground-subtle">{column.title}</p>
+              <ul className="space-y-3">
+                {column.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="group block">
+                      <span className="block text-small font-semibold text-foreground group-hover:text-primary">{link.label}</span>
+                      {link.description && <span className="mt-0.5 block text-small text-foreground-subtle">{link.description}</span>}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {gruppe.hinweis && (
+          <div className="col-span-3 rounded-lg border border-border bg-area-soft p-5">
+            <p className="font-mono text-caption uppercase tracking-label text-area-strong">Nächster Schritt</p>
+            <Link href={gruppe.hinweis.href} className="group mt-2 block text-title-sm font-bold text-foreground hover:text-primary">
+              {gruppe.hinweis.label}
+              <GlyphPfeilRechts
+                size={18}
+                className="ml-1 inline-block align-text-bottom text-primary transition-transform duration-quick zeiger:group-hover:translate-x-1"
+              />
+            </Link>
+            {gruppe.hinweis.description && <p className="mt-1.5 text-small text-foreground-muted">{gruppe.hinweis.description}</p>}
+          </div>
+        )}
+      </div>
+    </AreaScope>
+  );
+}
+
+/** „Mehr“: Gruppen, die bei dieser Breite nicht in die Leiste passen, die Rubriken von „Mehr“ und weitere Seiten. */
+function MehrMenue({ gruppen, rubrikIcons }: { gruppen: NavGruppe[]; rubrikIcons: Record<string, ReactNode> }) {
+  const mehr = gruppen.find((g) => g.key === 'mehr');
+  const ausgelagert = gruppen.filter((g) => g.key !== 'mehr' && LEISTE[g.key] !== 'lg');
+  return (
+    <div className="grid grid-cols-12 gap-8">
+      <ul className="col-span-9 grid grid-cols-3 content-start gap-6">
+        {ausgelagert.map((gruppe) => (
+          <li key={gruppe.key} className={cn(LEISTE[gruppe.key] && UNTER_MEHR[LEISTE[gruppe.key]!])}>
+            <AreaScope area={gruppe.bereich}>
+              <Link href={gruppe.href ?? '/'} className="group -m-2 flex gap-3 rounded-md p-2 hover:bg-surface-muted">
+                <BereichIcon area={gruppe.bereich} size={36} className="shrink-0 text-area-strong" />
+                <span>
+                  <span className="block text-body font-semibold text-foreground group-hover:text-primary">{gruppe.label}</span>
+                  {gruppe.zusatz && <span className="mt-1 block text-small text-foreground-muted">{gruppe.zusatz}</span>}
+                </span>
+              </Link>
+            </AreaScope>
+          </li>
+        ))}
+        {mehr?.rubriken.map((rubrik) => (
+          <li key={rubrik.id}>
+            <RubrikZeile rubrik={rubrik} icon={rubrikIcons[rubrik.id]} />
+          </li>
+        ))}
+      </ul>
+      {mehr && mehr.weitere.length > 0 && (
+        <div className="col-span-3 border-l border-border pl-8">
+          <p className="mb-3 font-mono text-caption uppercase tracking-label text-foreground-subtle">Außerdem</p>
+          <ul className="space-y-3">
+            {mehr.weitere.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="group block">
+                  <span className="block text-small font-semibold text-foreground group-hover:text-primary">{link.label}</span>
+                  {link.description && <span className="mt-0.5 block text-small text-foreground-subtle">{link.description}</span>}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
 type DesktopNavProps = {
+  gruppen: NavGruppe[];
   pathname: string;
   openArea: string | null;
   setOpenArea: Dispatch<SetStateAction<string | null>>;
 };
 
 /**
- * Hauptnavigation ab Desktop. Eigene, gemerkte Komponente: Das Öffnen der Schublade
+ * Hauptnavigation ab Desktop (G-08). Eigene, gemerkte Komponente: Das Öffnen der Schublade
  * zeichnet sie nicht mit neu (E7-L-36).
  */
-const DesktopNav = memo(function DesktopNav({ pathname, openArea, setOpenArea }: DesktopNavProps) {
-  // Liegt die Seite in einem Bereich, der (noch) unter „Mehr“ steht, trägt „Mehr“ die Markierung.
-  const aktiverBereich = NAV_AREAS.find((area) => istAktiv(pathname, area.href));
-  const mehrStufe = aktiverBereich ? (LEISTE[aktiverBereich.key] ?? 'immer') : undefined;
-  const leiste = NAV_AREAS.filter((area) => LEISTE[area.key]).map((area) => ({
-    key: area.key,
-    label: area.navLabel ?? area.label,
-    sichtbar: IN_LEISTE[LEISTE[area.key]!],
-    marke: istAktiv(pathname, area.href) ? 'scale-x-100' : 'scale-x-0',
-    text: istAktiv(pathname, area.href) ? 'text-primary' : '',
-  }));
+const DesktopNav = memo(function DesktopNav({ gruppen, pathname, openArea, setOpenArea }: DesktopNavProps) {
+  // Liegt die Seite in einer Gruppe, die (noch) unter „Mehr“ steht, trägt „Mehr“ die Markierung.
+  const aktiv = gruppen.find((g) => gruppeAktiv(pathname, g));
+  const mehrStufe = aktiv ? (aktiv.key === 'mehr' ? 'immer' : (LEISTE[aktiv.key] ?? 'immer')) : undefined;
+  const leiste = gruppen
+    .filter((g) => g.key !== 'mehr' && LEISTE[g.key])
+    .map((g) => ({
+      key: g.key,
+      label: g.kurz,
+      sichtbar: IN_LEISTE[LEISTE[g.key]!],
+      marke: gruppeAktiv(pathname, g) ? 'scale-x-100' : 'scale-x-0',
+      text: gruppeAktiv(pathname, g) ? 'text-primary' : '',
+    }));
   return (
     <nav className="ml-auto hidden lg:block" aria-label="Hauptnavigation">
       <ul className="flex items-center gap-0.5">
@@ -390,6 +459,9 @@ const DesktopNav = memo(function DesktopNav({ pathname, openArea, setOpenArea }:
 });
 
 type SchubladeProps = {
+  gruppen: NavGruppe[];
+  rubrikIcons: Record<string, ReactNode>;
+  telefon?: { anzeige: string; href: string | null } | null;
   pathname: string;
   drawerRef: RefObject<HTMLDivElement | null>;
   openMobileArea: string | null;
@@ -399,6 +471,9 @@ type SchubladeProps = {
 
 /** Schublade für Smartphone und Tablet (B-07). Wird beim Öffnen eingehängt. */
 const MobilSchublade = memo(function MobilSchublade({
+  gruppen,
+  rubrikIcons,
+  telefon,
   pathname,
   drawerRef,
   openMobileArea,
@@ -453,25 +528,35 @@ const MobilSchublade = memo(function MobilSchublade({
 
         <nav className="flex-1 overflow-y-auto overscroll-contain" aria-label="Hauptnavigation">
           <ul className="divide-y divide-border">
-            {NAV_AREAS.map((area) => (
+            {gruppen.map((gruppe) => (
               <SchubladenZeile
-                key={area.key}
-                area={area}
-                aktiv={istAktiv(pathname, area.href)}
-                offen={openMobileArea === area.key}
+                key={gruppe.key}
+                gruppe={gruppe}
+                rubrikIcons={rubrikIcons}
+                aktiv={gruppeAktiv(pathname, gruppe)}
+                offen={openMobileArea === gruppe.key}
                 onToggle={onToggle}
               />
             ))}
           </ul>
         </nav>
 
-        <div className="shrink-0 border-t border-border p-5">
+        <div className="shrink-0 space-y-3 border-t border-border p-5">
           <Link
             href="/autoschluessel/anfrage"
             className="flex min-h-touch-lg items-center justify-center rounded-md bg-primary px-4 text-body font-semibold text-primary-foreground"
           >
             Autoschlüssel-Termin anfragen
           </Link>
+          {telefon?.href && (
+            <a
+              href={telefon.href}
+              className="flex min-h-touch-lg items-center justify-center gap-2 rounded-md border border-border px-4 text-body font-semibold text-primary"
+            >
+              <GlyphTelefon size={20} aria-hidden />
+              Anrufen: <span className="font-mono tabular-nums">{telefon.anzeige}</span>
+            </a>
+          )}
         </div>
       </div>
     </div>
@@ -479,29 +564,49 @@ const MobilSchublade = memo(function MobilSchublade({
 });
 
 type SchubladenZeileProps = {
-  area: NavArea;
+  gruppe: NavGruppe;
+  rubrikIcons: Record<string, ReactNode>;
   aktiv: boolean;
   offen: boolean;
   onToggle: (key: string) => void;
 };
 
-/** Ein Bereich in der Schublade; beim Auf- und Zuklappen zeichnen nur die betroffenen Zeilen neu. */
-const SchubladenZeile = memo(function SchubladenZeile({ area, aktiv, offen, onToggle }: SchubladenZeileProps) {
+/** Eine Gruppe in der Schublade; beim Auf- und Zuklappen zeichnen nur die betroffenen Zeilen neu. */
+const SchubladenZeile = memo(function SchubladenZeile({ gruppe, rubrikIcons, aktiv, offen, onToggle }: SchubladenZeileProps) {
+  const kopf = (
+    <>
+      <BereichIcon area={gruppe.bereich} size={28} className="shrink-0 text-area-strong" />
+      <span className="min-w-0">
+        <span className="block">{gruppe.label}</span>
+        {gruppe.zusatz && <span className="block text-small font-normal text-foreground-muted">{gruppe.zusatz}</span>}
+      </span>
+    </>
+  );
   return (
     <li>
-      <AreaScope area={area.key}>
+      <AreaScope area={gruppe.bereich}>
         <div className="flex items-stretch">
-          <Link
-            href={area.href}
-            aria-current={aktiv ? 'page' : undefined}
-            className="flex min-h-touch-lg flex-1 items-center gap-3 px-5 py-3 text-body font-semibold text-foreground"
-          >
-            <BereichIcon area={area.key} size={28} className="text-area-strong" />
-            {area.label}
-          </Link>
+          {gruppe.href ? (
+            <Link
+              href={gruppe.href}
+              aria-current={aktiv ? 'page' : undefined}
+              className="flex min-h-touch-lg flex-1 items-center gap-3 px-5 py-3 text-body font-semibold text-foreground"
+            >
+              {kopf}
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={() => onToggle(gruppe.key)}
+              aria-expanded={offen}
+              className="flex min-h-touch-lg flex-1 items-center gap-3 px-5 py-3 text-left text-body font-semibold text-foreground"
+            >
+              {kopf}
+            </button>
+          )}
           <button
             type="button"
-            onClick={() => onToggle(area.key)}
+            onClick={() => onToggle(gruppe.key)}
             aria-expanded={offen}
             className="w-14 shrink-0 border-l border-border text-foreground-subtle"
           >
@@ -509,25 +614,32 @@ const SchubladenZeile = memo(function SchubladenZeile({ area, aktiv, offen, onTo
               size={20}
               className={cn('mx-auto transition-transform duration-base ease-standard', offen && 'rotate-180')}
             />
-            <span className="sr-only">Unterpunkte von {area.label} anzeigen</span>
+            <span className="sr-only">Unterpunkte von {gruppe.label} anzeigen</span>
           </button>
         </div>
 
         {offen && (
           <div className="animate-menue-ein bg-surface-muted px-5 pb-4 pt-1">
-            {area.highlight && (
+            {gruppe.hinweis && (
               <Link
-                href={area.highlight.href}
+                href={gruppe.hinweis.href}
                 className="mb-3 flex min-h-touch items-center rounded-md bg-primary px-4 text-small font-semibold text-primary-foreground"
               >
-                {area.highlight.label}
+                {gruppe.hinweis.label}
               </Link>
             )}
-            {area.columns.map((column) => (
+            {gruppe.rubriken.length > 0 && (
+              <ul className="mb-3">
+                {gruppe.rubriken.map((rubrik) => (
+                  <li key={rubrik.id}>
+                    <RubrikZeile rubrik={rubrik} icon={rubrikIcons[rubrik.id]} dicht />
+                  </li>
+                ))}
+              </ul>
+            )}
+            {gruppe.spalten.map((column) => (
               <div key={column.title} className="mb-3 last:mb-0">
-                <p className="mb-1.5 font-mono text-caption uppercase tracking-label text-foreground-subtle">
-                  {column.title}
-                </p>
+                <p className="mb-1.5 font-mono text-caption uppercase tracking-label text-foreground-subtle">{column.title}</p>
                 <ul>
                   {column.links.map((link) => (
                     <li key={link.href}>
@@ -539,6 +651,17 @@ const SchubladenZeile = memo(function SchubladenZeile({ area, aktiv, offen, onTo
                 </ul>
               </div>
             ))}
+            {gruppe.weitere.length > 0 && (
+              <ul>
+                {gruppe.weitere.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="flex min-h-touch items-center text-small text-foreground-muted">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
       </AreaScope>
