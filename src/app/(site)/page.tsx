@@ -303,7 +303,7 @@ export default async function HomePage() {
             {
               area: 'gleichschliessende-zylinder' as const,
               href: '/gleichschliessende-zylinder/konfigurator',
-              titel: 'Gleichschließende Zylinder',
+              titel: 'Sperrschließung',
               text: 'Mehrere Türen mit einem Schlüssel. Bauform, Maße und Schlüsselanzahl selbst zusammenstellen.',
               /* Bis lg ist die Kartenfläche schmal (230–300 px): dort das schmale Format mit größerer Schrift. */
               grafik: (

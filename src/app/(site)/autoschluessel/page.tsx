@@ -324,9 +324,8 @@ export default async function AutoschluesselHubPage() {
         handlungZuerst
         actions={
           <ButtonLink href="/autoschluessel/anfrage" pfeil prefetch={false} className="whitespace-nowrap">
-            {/* Telefon: Kurzlaut, damit der Knopf einzeilig bleibt */}
-            <span className="sm:hidden">Termin anfragen</span>
-            <span className="hidden sm:inline">Fahrzeug auswählen und Termin anfragen</span>
+            {/* Ein Knopftext je Ziel (E4-JURY-02): wie auf der Startseite und im Kopf der Seite */}
+            Termin anfragen
           </ButtonLink>
         }
       >
@@ -373,7 +372,7 @@ export default async function AutoschluesselHubPage() {
             />
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <ButtonLink href="/autoschluessel/anfrage" size="lg" pfeil>
-                Ablauf starten
+                Termin anfragen
               </ButtonLink>
               <ButtonLink href="/autoschluessel/marken" size="lg" variant="outline">
                 Erst Fahrzeug nachschlagen

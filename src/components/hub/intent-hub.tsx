@@ -66,9 +66,10 @@ export function IntentHub({ rubriken, satz, telefon, buehne }: IntentHubProps) {
 
         {/* Rechte Spalte ab 1280 px neben dem Raster, die Frage steht darüber über die ganze Breite
             (E5-OPUS-05: breitere Kacheln ohne Trennung): die Bühne füllt die Spalte bis zur Zeile Anrufen (A-025).
+            `h-0 min-h-full`: Die Spalte nimmt die Höhe des Rasters an und bestimmt sie nicht mit.
             Darunter löst sich die Hülle auf (`contents`): Die Bühne steht als Band über der Frage,
             Anrufen nach dem Raster. */}
-        <div className="contents xl:col-span-4 xl:col-start-9 xl:row-start-2 xl:mt-8 xl:flex xl:flex-col xl:gap-6">
+        <div className="contents xl:col-span-4 xl:col-start-9 xl:row-start-2 xl:mt-8 xl:flex xl:h-0 xl:min-h-full xl:flex-col xl:gap-6">
           {buehne && <div className="order-first mb-2 xl:order-none xl:mb-0 xl:flex xl:min-h-0 xl:flex-1 xl:flex-col">{buehne}</div>}
           {/* Code-Motiv (B-33): bis 1280 px unter dem Raster, ab 1280 px unter der Bühne, damit die
               linke Spalte kürzer bleibt und Anrufen im ersten Bildschirm steht */}
