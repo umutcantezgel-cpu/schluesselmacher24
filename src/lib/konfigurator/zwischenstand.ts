@@ -8,41 +8,76 @@
  * Plan jetzt vor sich hat (G-29).
  */
 
-import { z } from 'zod';
-
-import type { Schliessplan } from './schliessplan';
-
-/* zod 4 probiert für seinen Schnellpfad `new Function`; die CSP der Seite erlaubt kein `eval`
-   (script-src ohne 'unsafe-eval'), der Versuch landet als Verstoß im Browser (Best Practices 96,
-   E5-OPUS-04). Dieses Modul läuft im Browser, darum hier ohne Schnellpfad. */
-z.config({ jitless: true });
+import type { PlanSchluessel, PlanTuer, Schliessplan } from './schliessplan';
 
 /** Obergrenze, damit der Link in Mail und Messenger heil bleibt. */
 export const ZWISCHENSTAND_HOECHSTENS = 6000;
 
-const text = z.string().max(60);
-const schema = z.object({
-  version: z.literal(1),
-  system: z.string().max(40).optional(),
-  tueren: z.array(z.object({
-    id: z.string().max(12),
-    bezeichnung: text,
-    form: z.enum(['doppelzylinder', 'knaufzylinder', 'halbzylinder']),
-    a: z.number().int().min(0).max(300),
-    b: z.number().int().min(0).max(300).optional(),
-    funktionId: z.string().max(40).optional(),
-    optionen: z.array(z.string().max(40)).max(10).optional(),
-  })).max(100),
-  schluessel: z.array(z.object({
-    id: z.string().max(12),
-    bezeichnung: text,
-    anzahl: z.number().int().min(0).max(500),
-    reserve: z.number().int().min(0).max(500).optional(),
-    kennzeichnung: z.string().max(40).optional(),
-  })).max(100),
-  berechtigungen: z.record(z.string().max(12), z.array(z.string().max(12)).max(100)),
-  masseGeprueft: z.boolean().optional(),
-});
+/*
+ * Schema als kleine Prüffunktionen statt zod (E5-OPUS-04): Das Modul läuft im Browser beider
+ * Konfiguratoren, zod brachte dort rund 34 KiB, die zu fast vier Fünfteln ungenutzt blieben, und
+ * probierte `new Function`, was die CSP als Verstoß meldete. Gleiche Regeln wie vorher: nur bekannte
+ * Felder, Texte mit Höchstlänge, ganze Zahlen im Bereich, höchstens 100 Türen und 100 Schlüssel.
+ */
+type Roh = Record<string, unknown>;
+const FORMEN: ReadonlySet<string> = new Set(['doppelzylinder', 'knaufzylinder', 'halbzylinder']);
+const istObjekt = (x: unknown): x is Roh => typeof x === 'object' && x !== null && !Array.isArray(x);
+const istText = (x: unknown, hoechstens: number): x is string => typeof x === 'string' && x.length <= hoechstens;
+const istGanz = (x: unknown, von: number, bis: number): x is number => typeof x === 'number' && Number.isInteger(x) && x >= von && x <= bis;
+const istTextListe = (x: unknown, hoechstens: number, laenge: number): x is string[] =>
+  Array.isArray(x) && x.length <= hoechstens && x.every((t) => istText(t, laenge));
+
+function tuerAus(x: unknown): PlanTuer | null {
+  if (!istObjekt(x)) return null;
+  const { id, bezeichnung, form, a, b, funktionId, optionen } = x;
+  if (!istText(id, 12) || !istText(bezeichnung, 60) || typeof form !== 'string' || !FORMEN.has(form) || !istGanz(a, 0, 300)) return null;
+  if (b !== undefined && !istGanz(b, 0, 300)) return null;
+  if (funktionId !== undefined && !istText(funktionId, 40)) return null;
+  if (optionen !== undefined && !istTextListe(optionen, 10, 40)) return null;
+  return {
+    id,
+    bezeichnung,
+    form: form as PlanTuer['form'],
+    a,
+    ...(b !== undefined ? { b } : {}),
+    ...(funktionId !== undefined ? { funktionId } : {}),
+    ...(optionen !== undefined ? { optionen: [...optionen] } : {}),
+  };
+}
+
+function schluesselAus(x: unknown): PlanSchluessel | null {
+  if (!istObjekt(x)) return null;
+  const { id, bezeichnung, anzahl, reserve, kennzeichnung } = x;
+  if (!istText(id, 12) || !istText(bezeichnung, 60) || !istGanz(anzahl, 0, 500)) return null;
+  if (reserve !== undefined && !istGanz(reserve, 0, 500)) return null;
+  if (kennzeichnung !== undefined && !istText(kennzeichnung, 40)) return null;
+  return { id, bezeichnung, anzahl, ...(reserve !== undefined ? { reserve } : {}), ...(kennzeichnung !== undefined ? { kennzeichnung } : {}) };
+}
+
+/** Rohform nach Schema, `masseGeprueft` noch dabei; sonst null. */
+function nachSchema(roh: unknown): (Schliessplan & { masseGeprueft?: boolean }) | null {
+  if (!istObjekt(roh) || roh.version !== 1) return null;
+  const { system, tueren, schluessel, berechtigungen, masseGeprueft } = roh;
+  if (system !== undefined && !istText(system, 40)) return null;
+  if (!Array.isArray(tueren) || tueren.length > 100 || !Array.isArray(schluessel) || schluessel.length > 100) return null;
+  if (!istObjekt(berechtigungen) || (masseGeprueft !== undefined && typeof masseGeprueft !== 'boolean')) return null;
+  const t = tueren.map(tuerAus);
+  const s = schluessel.map(schluesselAus);
+  if (t.some((x) => x === null) || s.some((x) => x === null)) return null;
+  const rechte: Record<string, string[]> = {};
+  for (const [schluesselId, ids] of Object.entries(berechtigungen)) {
+    if (!istText(schluesselId, 12) || !istTextListe(ids, 100, 12)) return null;
+    rechte[schluesselId] = [...ids];
+  }
+  return {
+    version: 1,
+    ...(system !== undefined ? { system } : {}),
+    tueren: t as PlanTuer[],
+    schluessel: s as PlanSchluessel[],
+    berechtigungen: rechte,
+    ...(masseGeprueft !== undefined ? { masseGeprueft } : {}),
+  };
+}
 
 /* Base64url ohne Buffer, damit der Kern auch im Browser läuft. */
 function zuBase64url(text: string): string {
@@ -75,10 +110,10 @@ const eindeutig = (ids: string[]) => new Set(ids).size === ids.length;
  * aus dem Planer (E5-OPUS-03), nie der Link (G-29).
  */
 export function planAusDaten(roh: unknown, { masseGeprueft = false }: { masseGeprueft?: boolean } = {}): Schliessplan | null {
-  const ergebnis = schema.safeParse(roh);
-  if (!ergebnis.success) return null;
-  if (!eindeutig(ergebnis.data.tueren.map((t) => t.id)) || !eindeutig(ergebnis.data.schluessel.map((s) => s.id))) return null;
-  const { masseGeprueft: geprueft, ...plan } = ergebnis.data;
+  const daten = nachSchema(roh);
+  if (!daten) return null;
+  if (!eindeutig(daten.tueren.map((t) => t.id)) || !eindeutig(daten.schluessel.map((s) => s.id))) return null;
+  const { masseGeprueft: geprueft, ...plan } = daten;
   const tuerIds = new Set(plan.tueren.map((t) => t.id));
   const berechtigungen: Record<string, string[]> = {};
   for (const s of plan.schluessel) {

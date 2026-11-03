@@ -19,7 +19,9 @@ interface PreisHinweisProps {
 
 /**
  * Pflichtangabe nach der Preisangabenverordnung an jedem Preis: Endpreis
- * inklusive Umsatzsteuer, Versandkosten mit Link auf „Zahlung und Versand“.
+ * inklusive Umsatzsteuer, Versandkosten mit Link auf „Zahlung und Versand“. Der Link lädt nicht vor
+ * (E5-OPUS-04): Er steht oft im ersten Bildschirm, das Vorladen kostete dort rund 23 KiB vor dem
+ * größten Element.
  * Ohne Browser-Logik — nutzbar in Server- und Client-Komponenten.
  */
 export function PreisHinweis({ variante = 'zzgl-versand', alle = false, className }: PreisHinweisProps) {
@@ -28,7 +30,7 @@ export function PreisHinweis({ variante = 'zzgl-versand', alle = false, classNam
       {variante === 'mit-versand' ? (
         <>
           Alle Preise inkl. 19 % USt. Versandarten und Lieferzeiten:{' '}
-          <Link href={VERSAND_UND_ZAHLUNG_HREF} className={linkKlasse}>
+          <Link href={VERSAND_UND_ZAHLUNG_HREF} prefetch={false} className={linkKlasse}>
             Zahlung und Versand
           </Link>
           .
@@ -36,7 +38,7 @@ export function PreisHinweis({ variante = 'zzgl-versand', alle = false, classNam
       ) : (
         <>
           {alle ? 'Alle Preise inkl.' : 'inkl.'} 19 % USt., zzgl.{' '}
-          <Link href={VERSAND_UND_ZAHLUNG_HREF} className={linkKlasse}>
+          <Link href={VERSAND_UND_ZAHLUNG_HREF} prefetch={false} className={linkKlasse}>
             Versandkosten
           </Link>
         </>
