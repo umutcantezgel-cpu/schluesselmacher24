@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ComponentType } from 'react';
 
-import { getPageContent, getServicePages } from '@/lib/data';
+import { getPageContent, getRubrik, getServicePages } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
@@ -93,6 +93,8 @@ const PRINCIPLE = [
 ];
 
 export default async function SicherheitstechnikPage() {
+  // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
+  const rubrik = await getRubrik('sicherheitstechnik');
   const [page, services] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
@@ -117,6 +119,7 @@ export default async function SicherheitstechnikPage() {
 
       {/* Kopf: Fach-Icon als Anker und Ziel des Seitenwechsels (B-13) */}
       <PageHeader
+        rubrik={rubrik}
         bereich="sicherheitstechnik"
         eyebrow="Leistungsbereich"
         title={page?.headline ?? 'Sicherheitstechnik'}

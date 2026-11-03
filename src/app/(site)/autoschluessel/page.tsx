@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactElement } from 'react';
 
-import { getPageContent, getSettings, getVehicleMakes } from '@/lib/data';
+import { getPageContent, getRubrik, getSettings, getVehicleMakes } from '@/lib/data';
 import type { InfoHint, KeyKind } from '@/lib/types';
 import { formatCents } from '@/lib/format';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { cn } from '@/lib/cn';
 import { PageHeader } from '@/components/layout/page-header';
+import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ButtonLink } from '@/components/ui/button';
 import { Accordion } from '@/components/ui/accordion';
@@ -236,6 +237,8 @@ function Weiter({ size = 18, className }: { size?: number; className?: string })
 }
 
 export default async function AutoschluesselHubPage() {
+  // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
+  const rubrik = await getRubrik('autoschluessel');
   const [page, settings, makes] = await Promise.all([
     getPageContent(ROUTE),
     getSettings(),
@@ -246,29 +249,8 @@ export default async function AutoschluesselHubPage() {
   const leadDays = settings.booking.leadTimeDays;
   const modelCount = makes.reduce((sum, make) => sum + make.models.length, 0);
 
-  // Der Ablauf ist überall derselbe; Beträge und Vorlauf kommen aus den Einstellungen.
-  const steps = [
-    {
-      title: 'Fahrzeug wählen',
-      body: 'Marke, Modell, Baujahr und Schlüsselart. Wir fragen nur ab, was für Ihr Fahrzeug zählt.',
-    },
-    {
-      title: 'Fotos hochladen',
-      body: 'Ihren Schlüssel aus drei Richtungen und den Fahrzeugschein.',
-    },
-    {
-      title: 'Preis oder Prüfung',
-      body: 'Sie erhalten einen festen Preis, einen Preisrahmen oder den Hinweis auf eine manuelle Prüfung.',
-    },
-    {
-      title: 'Anzahlung',
-      body: `Standard ${deposit}. Der Betrag wird vollständig auf den Gesamtpreis angerechnet.`,
-    },
-    {
-      title: 'Termin buchen',
-      body: `Der früheste Termin liegt etwa ${leadDays}\u00a0Tage in der Zukunft, weil wir Ihren Schlüssel vorher beschaffen.`,
-    },
-  ];
+  // Der Ablauf kommt aus der Rubrik (G-10, G-11); Anzahlung und Vorlauf setzt er aus den Einstellungen ein.
+  const ablaufWerte = { anzahlung: deposit, vorlauf: `${leadDays}\u00a0Tage` };
 
   // Anzahlung und Vorlauf: ein Text, der zweimal ausgegeben wird (Desktop unter den Knöpfen, mobil nach Schritt 5)
   const anzahlungHinweis = (
@@ -302,6 +284,7 @@ export default async function AutoschluesselHubPage() {
 
       {/* Kopf mit Blickfang (7/5): die vier Schlüsselarten als Zeichnungen, Schriftfeld mit den Eckdaten */}
       <PageHeader
+        rubrik={rubrik}
         bereich="autoschluessel"
         eyebrow="Themenwelt Autoschlüssel"
         title={page?.headline ?? 'Autoschlüssel'}
@@ -469,7 +452,7 @@ export default async function AutoschluesselHubPage() {
             <SectionHeading
               nummer="03"
               eyebrow="Ablauf"
-              title="In fünf Schritten zum Termin"
+              title={`So läuft Ihr Auftrag ab: ${rubrik?.ablauf.length ?? 5} Schritte zum Termin`}
               lead="Mobil bedienbar. Ihre Eingaben bleiben erhalten, wenn Sie zwischendurch abbrechen."
             />
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -485,25 +468,9 @@ export default async function AutoschluesselHubPage() {
             </div>
           </div>
 
-          <ol className="relative lg:col-span-7 lg:col-start-6 lg:row-start-1">
-            {/* Schiene und Fortschritt: der Strich füllt sich, während die Schritte vorbeiziehen */}
-            <span aria-hidden className="absolute bottom-6 left-5 top-6 w-px bg-border-strong" />
-            <span aria-hidden className="sm24-scrub-y absolute bottom-6 left-5 top-6 w-px bg-area" />
-            {steps.map((step, index) => (
-              <li key={step.title} className="relative flex gap-6 pb-10 last:pb-0">
-                <span
-                  aria-hidden
-                  className="sm24-scrub-marke relative z-raised flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-area bg-surface font-mono text-small font-semibold tabular-nums text-area-strong"
-                >
-                  {index + 1}
-                </span>
-                <div className="pt-1.5">
-                  <p className="text-title-sm font-semibold text-foreground">{step.title}</p>
-                  <p className="mt-1.5 max-w-measure text-body text-foreground-muted">{step.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          {rubrik && (
+            <RubrikAblauf rubrik={rubrik} werte={ablaufWerte} className="lg:col-span-7 lg:col-start-6 lg:row-start-1" />
+          )}
 
           {/* Anzahlung und Vorlauf als Zeile mit Glyphe: Desktop unter den Knöpfen, mobil nach Schritt 5 */}
           <div className="flex gap-3 border-t border-border pt-5 lg:hidden">

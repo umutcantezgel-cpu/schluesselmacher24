@@ -805,6 +805,11 @@ header a[aria-label$='Startseite'] > span {
   animation-timing-function: var(--kurve-standard);
 }
 
+/* Rückfall ohne View Transitions (B-35): Der Rubrikkopf blendet nach dem Tipp im Hub kurz über. */
+:where(:root[data-bewegung='an']) .sm24-ueberblendung {
+  animation: sm24-fade var(--dauer-quick) var(--kurve-standard) both;
+}
+
 /* Klicks während des Wechsels erreichen die neue Seite statt der Überlagerung. */
 ::view-transition {
   pointer-events: none;

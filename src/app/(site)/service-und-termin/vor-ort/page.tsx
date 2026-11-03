@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getCities, getSettings } from '@/lib/data';
+import { getCities, getRubrik, getSettings } from '@/lib/data';
 import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
@@ -79,6 +79,8 @@ const SERVICES = [
 ];
 
 export default async function VorOrtPage() {
+  // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
+  const rubrik = await getRubrik('schluesseldienst-vor-ort');
   const [settings, alleGebiete] = await Promise.all([getSettings(), getCities()]);
   // Wie /standorte: Gebiete mit Platzhaltern versprächen Leistungen, die nicht belegt sind (Erg. Leitfaden §5).
   const cities = alleGebiete.filter(stadtIndexierbar);
@@ -87,6 +89,7 @@ export default async function VorOrtPage() {
     <>
       {/* Kopf: Fach-Icon als Anker und Ziel des Seitenwechsels (B-13) */}
       <PageHeader
+        rubrik={rubrik}
         bereich="service-und-termin"
         eyebrow="Vor Ort"
         title="Was wir direkt bei Ihnen erledigen"

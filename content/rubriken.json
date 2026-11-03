@@ -9,27 +9,27 @@
     "ablauf": [
       {
         "titel": "Fahrzeug wählen",
-        "text": "Marke, Modell und Baujahr angeben.",
+        "text": "Marke, Modell, Baujahr und Schlüsselart. Wir fragen nur ab, was für Ihr Fahrzeug zählt.",
         "icon": "fahrzeugmarke"
       },
       {
         "titel": "Fotos hochladen",
-        "text": "Ihren Schlüssel und den Fahrzeugschein fotografieren.",
+        "text": "Ihren Schlüssel aus drei Richtungen und den Fahrzeugschein.",
         "icon": "foto-hochladen"
       },
       {
         "titel": "Preis oder Prüfung",
-        "text": "Sie sehen den Preis sofort oder wir prüfen Ihr Fahrzeug.",
+        "text": "Sie erhalten einen festen Preis, einen Preisrahmen oder den Hinweis auf eine manuelle Prüfung.",
         "icon": "pruefung"
       },
       {
         "titel": "Anzahlung",
-        "text": "Eine Anzahlung sichert Ihren Termin und das Material.",
+        "text": "Standard {anzahlung}. Der Betrag wird vollständig auf den Gesamtpreis angerechnet.",
         "icon": "anzahlung"
       },
       {
-        "titel": "Termin",
-        "text": "Sie kommen mit dem Fahrzeug zur Werkstatt.",
+        "titel": "Termin buchen",
+        "text": "Der früheste Termin liegt etwa {vorlauf} in der Zukunft, weil wir Ihren Schlüssel vorher beschaffen.",
         "icon": "termin"
       }
     ],

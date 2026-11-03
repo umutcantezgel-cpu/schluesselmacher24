@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 
+import { HubWechselMerker } from '@/components/rubrik/rubrik-ankunft';
 import { GlyphTelefon } from '@/components/visual/glyphen/telefon';
 import { cn } from '@/lib/cn';
 import type { Rubrik } from '@/lib/types';
@@ -39,6 +40,7 @@ export function IntentHub({ rubriken, satz, telefon, buehne }: IntentHubProps) {
   const spalten = hubSpalten(rubriken.length);
   return (
     <section aria-labelledby="hub-frage" className="border-b border-border bg-surface">
+      <HubWechselMerker />
       <div className="shell grid grid-cols-1 pb-6 pt-4 sm:pt-6 lg:grid-cols-12 lg:gap-x-gutter lg:pb-10 lg:pt-10">
         <div className="lg:col-span-7 lg:row-start-1">
           <h1 id="hub-frage" className="text-display font-bold text-foreground">

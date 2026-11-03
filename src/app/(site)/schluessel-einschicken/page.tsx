@@ -2,7 +2,7 @@ import type { ComponentType } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getPageContent, getSettings } from '@/lib/data';
+import { getPageContent, getRubrik, getSettings } from '@/lib/data';
 import { firmenname, sitzZeilen, standort } from '@/lib/rechtliches/firma';
 import type { CompanyProfile } from '@/lib/types';
 import { Accordion } from '@/components/ui/accordion';
@@ -116,6 +116,8 @@ function versandAnschrift(company: CompanyProfile): { titel: string; zeilen: str
 }
 
 export default async function SchluesselEinschickenPage() {
+  // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
+  const rubrik = await getRubrik('schluessel-einschicken');
   const [page, settings] = await Promise.all([getPageContent(ROUTE), getSettings()]);
   const anschrift = versandAnschrift(settings.company);
   const faq = page?.faq?.length ? page.faq : FRAGEN;
@@ -133,6 +135,7 @@ export default async function SchluesselEinschickenPage() {
       />
 
       <PageHeader
+        rubrik={rubrik}
         eyebrow="Schlüssel nach Foto oder Vorlage"
         title={page?.headline ?? 'Schlüssel einschicken'}
         lead={page?.subline ?? 'Nur nach Freigabe Ihrer Fotoanfrage oder auf unsere Bitte.'}

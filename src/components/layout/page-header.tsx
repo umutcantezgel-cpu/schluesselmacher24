@@ -1,9 +1,11 @@
 import type { ReactNode } from 'react';
+import { RubrikAnkunft } from '@/components/rubrik/rubrik-ankunft';
 import { BereichIcon } from '@/components/visual/bereich-icon';
-import { Seitenwechsel, bereichsName } from '@/components/visual/motion/seitenwechsel';
+import { FachIcon } from '@/components/visual/fach-icon';
+import { Seitenwechsel, bereichsName, rubrikUebergang } from '@/components/visual/motion/seitenwechsel';
 import { Profillinie } from '@/components/visual/profillinie';
 import { InView } from '@/components/visual/motion/in-view';
-import type { AreaKey } from '@/lib/types';
+import type { AreaKey, Rubrik } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import { Breadcrumbs, type Crumb } from './breadcrumbs';
 
@@ -20,6 +22,12 @@ export interface PageHeaderProps {
   children?: ReactNode;
   /** Leistungsbereich: zeigt sein Fach-Icon groß als Anker des Kopfes (Bereichsfarbe aus `data-area`). */
   bereich?: AreaKey;
+  /**
+   * Rubrik dieser Seite (Ziel einer Hub-Kachel, B-35): Der Kopf zeigt ihr Fach-Icon unter dem Namen
+   * `rubrik-<id>`, in den das Kachel-Icon übergeht; nach dem Tipp im Hub liegt der Fokus auf der h1.
+   * Nur für Rubriken mit Status „live“, sonst gilt `bereich`.
+   */
+  rubrik?: Pick<Rubrik, 'id' | 'icon' | 'status'> | null;
   /**
    * Ansichtsart (KERN K-009): `erzaehl` (Standard) mit großer Überschrift und
    * sich zeichnender Profillinie; `arbeit` ruhig und kompakt für Abläufe,
@@ -43,6 +51,7 @@ export function PageHeader({
   actions,
   children,
   bereich,
+  rubrik,
   art = 'erzaehl',
   visual,
 }: PageHeaderProps) {
@@ -50,12 +59,16 @@ export function PageHeader({
   const mitGrafik = Boolean(visual);
   // Das Fach-Icon ist Ziel des Seitenwechsels aus dem Schnelleinstieg der Startseite (B-13):
   // groß rechts, oder – wenn der Kopf eine Fachgrafik trägt – klein neben der Augenbraue.
-  const icon =
-    bereich && erzaehl ? (
-      <Seitenwechsel name={bereichsName(bereich)}>
-        <BereichIcon area={bereich} size={mitGrafik ? 40 : 112} className="text-area-strong" />
-      </Seitenwechsel>
-    ) : null;
+  const ankunft = rubrik && rubrik.status === 'live' && erzaehl ? rubrik : null;
+  const icon = ankunft ? (
+    <Seitenwechsel name={rubrikUebergang(ankunft.id)}>
+      <FachIcon name={ankunft.icon} size={mitGrafik ? 40 : 112} className="text-area-strong" />
+    </Seitenwechsel>
+  ) : bereich && erzaehl ? (
+    <Seitenwechsel name={bereichsName(bereich)}>
+      <BereichIcon area={bereich} size={mitGrafik ? 40 : 112} className="text-area-strong" />
+    </Seitenwechsel>
+  ) : null;
   const anker = mitGrafik ? null : icon;
 
   const kopf = (
@@ -71,14 +84,17 @@ export function PageHeader({
       {erzaehl && <Profillinie text={title} className="mt-3 text-area" />}
 
       <h1
+        id={ankunft ? 'seiten-titel' : undefined}
+        tabIndex={ankunft ? -1 : undefined}
         className={cn(
-          'text-balance font-bold text-foreground',
+          'text-balance font-bold text-foreground focus:outline-none',
           erzaehl ? 'mt-4 text-display' : 'mt-3 text-headline',
           !eyebrow && !icon && 'mt-0',
         )}
       >
         {title}
       </h1>
+      {ankunft && <RubrikAnkunft rubrikId={ankunft.id} titelId="seiten-titel" />}
       {lead && (
         <p className={cn('mt-4 max-w-measure text-foreground-muted', erzaehl ? 'text-lead' : 'text-body', leadClassName)}>
           {lead}
