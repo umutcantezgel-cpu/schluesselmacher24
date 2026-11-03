@@ -56,7 +56,7 @@ export function rubriken(): Rubrik[] {
     {
       id: 'autoschluessel-gehaeuse',
       name: 'Autoschlüsselgehäuse',
-      laienname: 'Gehäuse für Autoschlüssel',
+      laienname: 'Schlüsselgehäuse',
       erklaerung: 'Neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt.',
       icon: 'schluesselgehaeuse',
       ziel: '/autoschluessel-gehaeuse',
@@ -168,7 +168,7 @@ export function rubriken(): Rubrik[] {
       id: 'schliessanlage',
       name: 'Schließanlage',
       laienname: 'Schließanlage',
-      zusatz: 'jeder Schlüssel öffnet nur seine Türen',
+      zusatz: 'jedem Schlüssel seine Türen',
       erklaerung: 'Für Häuser und Firmen: Jeder Schlüssel öffnet genau die Türen, für die er gedacht ist.',
       icon: 'schliessanlagen',
       ziel: '/schliessanlagen',
@@ -190,7 +190,7 @@ export function rubriken(): Rubrik[] {
     {
       id: 'elektronische-schliesssysteme',
       name: 'Elektronische Schließsysteme',
-      laienname: 'Elektronische Schließsysteme',
+      laienname: 'Elektronisch schließen',
       erklaerung: 'Öffnen mit Chip, Karte oder App: wir beraten und machen ein Angebot.',
       icon: 'elektronische-zutrittsloesungen',
       ziel: '/elektronische-zutrittsloesungen',

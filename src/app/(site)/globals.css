@@ -145,6 +145,8 @@ header a[aria-label$='Startseite'] > span {
 
     /* Leuchten (B-30): Lichthof in der Bereichsfarbe bei Hover und Fokus, nur als Rückmeldung */
     --leuchten: 0 0 24px 0 oklch(var(--area) / 0.28);
+    /* Druck auf eine Kachel (B-34): derselbe Lichthof, kurz kräftiger */
+    --leuchten-druck: 0 0 24px 2px oklch(var(--area) / 0.42);
 
     /* Layout */
     --header-height: 4rem;
@@ -391,6 +393,13 @@ header a[aria-label$='Startseite'] > span {
     text-wrap: balance;
   }
 
+  /* Trennung in schmalen Kacheln (K-013): nur an Stellen mit mindestens 4 Zeichen davor und 5 danach,
+     also „Auto-schlüssel“ und „Schließ-anlage“ statt „Autoschlüs-sel“ (lang="de" ist gesetzt) */
+  .trennung-kachel {
+    hyphens: auto;
+    hyphenate-limit-chars: auto 4 5;
+  }
+
   /* Sicherer Abstand über der mobilen Aktionsleiste */
   .pb-safe-nav {
     padding-bottom: calc(5rem + env(safe-area-inset-bottom));
@@ -452,6 +461,12 @@ header a[aria-label$='Startseite'] > span {
 
 @keyframes sm24-reveal {
   from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Code-Motiv (B-33): Ziffern ordnen sich ein, höchstens 4 px Weg */
+@keyframes sm24-ordnen {
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: none; }
 }
 
@@ -530,6 +545,11 @@ header a[aria-label$='Startseite'] > span {
       var(--sm24-delay, 0s) both;
 }
 
+:where(:root[data-bewegung='an']) .sm24-ordnen {
+  animation: sm24-ordnen var(--sm24-duration, var(--dauer-base)) var(--kurve-standard)
+      var(--sm24-delay, 0s) both;
+}
+
 :where(:root[data-bewegung='an']) .sm24-fade {
   animation: sm24-fade var(--sm24-duration, var(--dauer-base)) var(--kurve-standard)
       var(--sm24-delay, 0s) both;
@@ -572,7 +592,7 @@ header a[aria-label$='Startseite'] > span {
   animation: none;
 }
 
-:where(:root[data-bewegung='an']) [data-zustand='wait'] :is(.sm24-draw, .sm24-reveal, .sm24-fade, .sm24-pop, .sm24-dash, .sm24-aufdecken) {
+:where(:root[data-bewegung='an']) [data-zustand='wait'] :is(.sm24-draw, .sm24-reveal, .sm24-ordnen, .sm24-fade, .sm24-pop, .sm24-dash, .sm24-aufdecken) {
   animation-play-state: paused;
 }
 

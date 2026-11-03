@@ -172,6 +172,8 @@ const config = {
         overlay: '0 2px 6px oklch(var(--shadow-color) / 0.08), 0 20px 44px -14px oklch(var(--shadow-color) / 0.3)',
         /* Leuchten der Kacheln und Hauptaktionen bei Hover und Fokus (B-30, Token --leuchten) */
         leuchten: 'var(--leuchten)',
+        /* Druck auf eine Kachel (B-34, Token --leuchten-druck) */
+        'leuchten-druck': 'var(--leuchten-druck)',
       },
       zIndex: {
         raised: '10',
@@ -193,6 +195,8 @@ const config = {
       scale: {
         /* Knopfdruck (B-05) */
         druck: '0.98',
+        /* Druck auf eine Hub-Kachel (B-34) */
+        kachel: '0.97',
       },
       keyframes: {
         /* Zustandswechsel des Megamenüs (B-08) und des Drawers (B-07) */
