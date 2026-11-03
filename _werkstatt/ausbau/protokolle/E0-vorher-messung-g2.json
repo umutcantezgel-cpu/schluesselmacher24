@@ -1,0 +1,453 @@
+{
+  "skript": "messung",
+  "zeit": "2026-11-03T00:22:25.197Z",
+  "argumente": {
+    "_": [],
+    "routen": "/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage",
+    "laeufe": "3",
+    "profil": "beide",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-messung-g2.json"
+  },
+  "budget": {
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "hinweis": "Werte: Median (Minimum–Maximum) je Ansicht und Profil; INP 0 = kein Ereignis über 16 ms",
+  "serien": [
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 552,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 245,
+          "jsKB": 230.03125,
+          "gesamtKB": 528.0615234375,
+          "ressourcen": 48,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 536,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 200,
+          "jsKB": 230.03125,
+          "gesamtKB": 528.060546875,
+          "ressourcen": 48,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 536,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 219,
+          "jsKB": 230.03125,
+          "gesamtKB": 512.966796875,
+          "ressourcen": 48,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 204,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 27,
+          "jsKB": 297.779296875,
+          "gesamtKB": 859.6826171875,
+          "ressourcen": 106,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 256,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 77,
+          "jsKB": 297.779296875,
+          "gesamtKB": 859.6904296875,
+          "ressourcen": 106,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 240,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 57,
+          "jsKB": 297.779296875,
+          "gesamtKB": 859.685546875,
+          "ressourcen": 106,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 636,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 179,
+          "jsKB": 202.33984375,
+          "gesamtKB": 502.16015625,
+          "ressourcen": 49,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 648,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 206,
+          "jsKB": 202.33984375,
+          "gesamtKB": 502.16015625,
+          "ressourcen": 49,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 604,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 185,
+          "jsKB": 202.33984375,
+          "gesamtKB": 502.16015625,
+          "ressourcen": 49,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 232,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 95,
+          "jsKB": 279.103515625,
+          "gesamtKB": 776.1240234375,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 280,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 39,
+          "jsKB": 279.103515625,
+          "gesamtKB": 776.123046875,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 264,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 66,
+          "jsKB": 279.103515625,
+          "gesamtKB": 776.123046875,
+          "ressourcen": 102,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 616,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 228,
+          "jsKB": 234.1767578125,
+          "gesamtKB": 549.4609375,
+          "ressourcen": 56,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 640,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 209,
+          "jsKB": 234.1767578125,
+          "gesamtKB": 549.4609375,
+          "ressourcen": 56,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 624,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 175,
+          "jsKB": 234.1767578125,
+          "gesamtKB": 549.4609375,
+          "ressourcen": 56,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 280,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 77,
+          "jsKB": 300.5126953125,
+          "gesamtKB": 798.6787109375,
+          "ressourcen": 106,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 220,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 50,
+          "jsKB": 300.5126953125,
+          "gesamtKB": 798.677734375,
+          "ressourcen": 106,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 248,
+          "cls": 0,
+          "inp": 48,
+          "tbt": 48,
+          "jsKB": 300.5126953125,
+          "gesamtKB": 798.6767578125,
+          "ressourcen": 106,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 596,
+          "cls": 0,
+          "inp": 16,
+          "tbt": 138,
+          "jsKB": 239.9912109375,
+          "gesamtKB": 561.5771484375,
+          "ressourcen": 60,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 616,
+          "cls": 0,
+          "inp": 48,
+          "tbt": 152,
+          "jsKB": 238.6826171875,
+          "gesamtKB": 550.564453125,
+          "ressourcen": 59,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 620,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 200,
+          "jsKB": 238.6826171875,
+          "gesamtKB": 549.876953125,
+          "ressourcen": 58,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "profil": "desktop",
+      "laeufe": [
+        {
+          "lcp": 176,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 0,
+          "jsKB": 288.20703125,
+          "gesamtKB": 794.541015625,
+          "ressourcen": 108,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 164,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 6,
+          "jsKB": 288.20703125,
+          "gesamtKB": 794.5419921875,
+          "ressourcen": 108,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 196,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 0,
+          "jsKB": 288.20703125,
+          "gesamtKB": 794.5400390625,
+          "ressourcen": 108,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    }
+  ],
+  "zusammenfassung": [
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "536 (536–552)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (16–24)",
+      "tbt": "219 (200–245)",
+      "jsKB": "230,0 (230,0–230,0)",
+      "gesamtKB": "528,1 (513,0–528,1)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "240 (204–256)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–32)",
+      "tbt": "57 (27–77)",
+      "jsKB": "297,8 (297,8–297,8)",
+      "gesamtKB": "859,7 (859,7–859,7)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H05-code",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "636 (604–648)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (24–40)",
+      "tbt": "185 (179–206)",
+      "jsKB": "202,3 (202,3–202,3)",
+      "gesamtKB": "502,2 (502,2–502,2)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H05-code",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "264 (232–280)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (24–24)",
+      "tbt": "66 (39–95)",
+      "jsKB": "279,1 (279,1–279,1)",
+      "gesamtKB": "776,1 (776,1–776,1)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "624 (616–640)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "16 (16–24)",
+      "tbt": "209 (175–228)",
+      "jsKB": "234,2 (234,2–234,2)",
+      "gesamtKB": "549,5 (549,5–549,5)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "248 (220–280)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "40 (32–48)",
+      "tbt": "50 (48–77)",
+      "jsKB": "300,5 (300,5–300,5)",
+      "gesamtKB": "798,7 (798,7–798,7)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H07-foto",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "616 (596–620)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "24 (16–48)",
+      "tbt": "152 (138–200)",
+      "jsKB": "238,7 (238,7–240,0)",
+      "gesamtKB": "550,6 (549,9–561,6)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H07-foto",
+      "profil": "desktop",
+      "laeufe": "3 von 3",
+      "lcp": "176 (164–196)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (24–32)",
+      "tbt": "0 (0–6)",
+      "jsKB": "288,2 (288,2–288,2)",
+      "gesamtKB": "794,5 (794,5–794,5)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    }
+  ]
+}

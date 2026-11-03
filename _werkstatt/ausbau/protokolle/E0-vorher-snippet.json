@@ -1,0 +1,1864 @@
+{
+  "skript": "snippet",
+  "zeit": "2026-11-03T00:26:56.883Z",
+  "argumente": {
+    "_": [],
+    "inventar": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-inventar.json",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-snippet.json"
+  },
+  "inventar": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-inventar.json",
+  "inventarZeit": "2026-11-03T00:26:37.857Z",
+  "fcMatchArial": "LiberationSans-Regular.ttf: \"Liberation Sans\" \"Regular\"",
+  "schriftpruefung": {
+    "arial": 645.517578125,
+    "liberation": 645.517578125,
+    "ersatz": 806.748046875,
+    "monospace": 806.748046875,
+    "arialGleichLiberation": true,
+    "ersatzGreift": true
+  },
+  "grenzen": {
+    "titelPx": 580,
+    "beschreibungZeichen": [
+      120,
+      160
+    ],
+    "schrift": "20px Arial"
+  },
+  "zusammenfassung": {
+    "seiten": 181,
+    "titelErfuellt": 28,
+    "titelAnteil": "15,5 %",
+    "beschreibungErfuellt": 146,
+    "beschreibungAnteil": "80,7 %",
+    "beideErfuellt": 2,
+    "laengsterTitel": {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ma-01",
+      "px": 842.3
+    },
+    "kuerzesterTitel": {
+      "adresse": "http://localhost:3000/service-und-termin/kontakt",
+      "px": 312
+    },
+    "laengsteBeschreibung": {
+      "adresse": "http://localhost:3000/partner-werden",
+      "zeichen": 166
+    },
+    "kuerzesteBeschreibung": {
+      "adresse": "http://localhost:3000/ratgeber/einbruchschutz-wo-anfangen",
+      "zeichen": 53
+    }
+  },
+  "seiten": [
+    {
+      "adresse": "http://localhost:3000/",
+      "titel": "Autoschlüssel, Schließ- und Sicherheitstechnik in Wetzlar | SCHLÜSSELMACHER24",
+      "titelPx": 752.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 158,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel",
+      "titel": "Autoschlüssel nachmachen und programmieren in Wetzlar | SCHLÜSSELMACHER24",
+      "titelPx": 761.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 154,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/anfrage",
+      "titel": "Autoschlüssel-Anfrage mit Termin und Anzahlung | SCHLÜSSELMACHER24",
+      "titelPx": 681.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 126,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/fahrzeugoeffnung",
+      "titel": "Fahrzeugöffnung — zerstörungsfrei | SCHLÜSSELMACHER24",
+      "titelPx": 558.4,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 110,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/funkschluessel",
+      "titel": "Funkschlüssel und Funkfernbedienung in Wetzlar | SCHLÜSSELMACHER24",
+      "titelPx": 681.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 142,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/kopieren",
+      "titel": "Autoschlüssel kopieren in Wetzlar — was mechanisch geht | SCHLÜSSELMACHER24",
+      "titelPx": 767.4,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 159,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken",
+      "titel": "Autoschlüssel nach Fahrzeugmarke und Modell | SCHLÜSSELMACHER24",
+      "titelPx": 665.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 127,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/audi",
+      "titel": "Audi Autoschlüssel: 5 Modelle, Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 683.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 134,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/audi/a1",
+      "titel": "Audi A1 Autoschlüssel (ab 2010): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 706.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 144,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/audi/a3",
+      "titel": "Audi A3 Autoschlüssel (ab 1996): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 706.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 156,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/audi/a4",
+      "titel": "Audi A4 Autoschlüssel (ab 1994): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 706.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 144,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/audi/a6",
+      "titel": "Audi A6 Autoschlüssel (ab 1997): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 706.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 155,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/audi/q3",
+      "titel": "Audi Q3 Autoschlüssel (ab 2011): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 707.4,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 144,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/bmw",
+      "titel": "BMW Autoschlüssel: 5 Modelle, Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 692.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 136,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/bmw/1er",
+      "titel": "BMW 1er Autoschlüssel (ab 2004): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 719.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 139,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/bmw/3er",
+      "titel": "BMW 3er Autoschlüssel (ab 1998): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 719.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 139,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/bmw/5er",
+      "titel": "BMW 5er Autoschlüssel (ab 1996): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 719.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 139,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/bmw/x1",
+      "titel": "BMW X1 Autoschlüssel (ab 2009): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 715.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 138,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/bmw/x3",
+      "titel": "BMW X3 Autoschlüssel (ab 2003): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 715.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 138,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/fiat",
+      "titel": "Fiat Autoschlüssel: 3 Modelle, Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 676.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 134,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/fiat/500",
+      "titel": "Fiat 500 Autoschlüssel (ab 2007): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 708.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 147,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/fiat/ducato",
+      "titel": "Fiat Ducato Autoschlüssel (ab 2006): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 738.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 150,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/fiat/panda",
+      "titel": "Fiat Panda Autoschlüssel (ab 2003): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 733.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/ford",
+      "titel": "Ford Autoschlüssel: 4 Modelle, Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 684.4,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 144,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/ford/fiesta",
+      "titel": "Ford Fiesta Autoschlüssel (ab 2002): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 737.7,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 150,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/ford/focus",
+      "titel": "Ford Focus Autoschlüssel (ab 1998): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 737.7,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 158,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/ford/kuga",
+      "titel": "Ford Kuga Autoschlüssel (ab 2008): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 730,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 146,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/ford/transit",
+      "titel": "Ford Transit Autoschlüssel (ab 2000): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 743.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 151,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/hyundai",
+      "titel": "Hyundai Autoschlüssel: 3 Modelle, Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 716.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 135,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/hyundai/i20",
+      "titel": "Hyundai i20 Autoschlüssel (ab 2008): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 742.2,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 150,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/hyundai/i30",
+      "titel": "Hyundai i30 Autoschlüssel (ab 2007): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 742.2,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 159,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/hyundai/tucson",
+      "titel": "Hyundai Tucson Autoschlüssel (ab 2004): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 780.4,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 146,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/mercedes-benz",
+      "titel": "Mercedes-Benz Autoschlüssel: 5 Modelle, Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 783.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 144,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/mercedes-benz/a-klasse",
+      "titel": "Mercedes-Benz A-Klasse Autoschlüssel (ab 2004) | SCHLÜSSELMACHER24",
+      "titelPx": 689.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 123,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/mercedes-benz/c-klasse",
+      "titel": "Mercedes-Benz C-Klasse Autoschlüssel (ab 2000) | SCHLÜSSELMACHER24",
+      "titelPx": 691,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 123,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/mercedes-benz/e-klasse",
+      "titel": "Mercedes-Benz E-Klasse Autoschlüssel (ab 2002) | SCHLÜSSELMACHER24",
+      "titelPx": 689.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 123,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/mercedes-benz/sprinter",
+      "titel": "Mercedes-Benz Sprinter Autoschlüssel (ab 2006) | SCHLÜSSELMACHER24",
+      "titelPx": 679.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 124,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/mercedes-benz/vito",
+      "titel": "Mercedes-Benz Vito Autoschlüssel (ab 2003) | SCHLÜSSELMACHER24",
+      "titelPx": 644,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 120,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/opel",
+      "titel": "Opel Autoschlüssel: 4 Modelle, Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 685.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 145,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/opel/astra",
+      "titel": "Opel Astra Autoschlüssel (ab 1998): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 731.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/opel/corsa",
+      "titel": "Opel Corsa Autoschlüssel (ab 2000): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 737.7,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/opel/insignia",
+      "titel": "Opel Insignia Autoschlüssel (ab 2008): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 753.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 150,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/opel/mokka",
+      "titel": "Opel Mokka Autoschlüssel (ab 2012): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 743.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 147,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/renault",
+      "titel": "Renault Autoschlüssel: 4 Modelle, Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 712.2,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 147,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/renault/captur",
+      "titel": "Renault Captur Autoschlüssel (ab 2013): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 771.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 146,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/renault/clio",
+      "titel": "Renault Clio Autoschlüssel (ab 1998): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 745.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 156,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/renault/kangoo",
+      "titel": "Renault Kangoo Autoschlüssel (ab 1997): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 780,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 137,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/renault/megane",
+      "titel": "Renault Mégane Autoschlüssel (ab 1995): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 783.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 146,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/seat",
+      "titel": "SEAT Autoschlüssel: 3 Modelle, Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 694,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 134,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/seat/ateca",
+      "titel": "SEAT Ateca Autoschlüssel (ab 2016): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 744,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 147,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/seat/ibiza",
+      "titel": "SEAT Ibiza Autoschlüssel (ab 2002): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 735.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/seat/leon",
+      "titel": "SEAT Leon Autoschlüssel (ab 1999): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 737.4,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 157,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/skoda",
+      "titel": "Škoda Autoschlüssel: 4 Modelle, Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 700,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 147,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/skoda/fabia",
+      "titel": "Škoda Fabia Autoschlüssel (ab 1999): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 748.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 150,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/skoda/kodiaq",
+      "titel": "Škoda Kodiaq Autoschlüssel (ab 2016): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 761.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/skoda/octavia",
+      "titel": "Škoda Octavia Autoschlüssel (ab 1996): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 766.7,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 145,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/skoda/superb",
+      "titel": "Škoda Superb Autoschlüssel (ab 2001): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 763.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/toyota",
+      "titel": "Toyota Autoschlüssel: 3 Modelle, Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 702.2,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 138,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/toyota/corolla",
+      "titel": "Toyota Corolla Autoschlüssel (ab 1997): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 764.4,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 153,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/toyota/rav4",
+      "titel": "Toyota RAV4 Autoschlüssel (ab 2000): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 751.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 159,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/toyota/yaris",
+      "titel": "Toyota Yaris Autoschlüssel (ab 1999): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 745.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 140,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/volkswagen",
+      "titel": "Volkswagen Autoschlüssel: 6 Modelle, Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 750,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 143,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/volkswagen/golf",
+      "titel": "Volkswagen Golf Autoschlüssel (ab 2003): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 785.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 147,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/volkswagen/passat",
+      "titel": "Volkswagen Passat Autoschlüssel (ab 2005): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 810,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 154,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/volkswagen/polo",
+      "titel": "Volkswagen Polo Autoschlüssel (ab 2002): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 788.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 154,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/volkswagen/t-roc",
+      "titel": "Volkswagen T-Roc Autoschlüssel (ab 2017): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 802.2,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 153,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/volkswagen/tiguan",
+      "titel": "Volkswagen Tiguan Autoschlüssel (ab 2007): Preise und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 809.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 154,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/volkswagen/transporter",
+      "titel": "Volkswagen Transporter Autoschlüssel (ab 2003) | SCHLÜSSELMACHER24",
+      "titelPx": 679.2,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 145,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/nachmachen",
+      "titel": "Autoschlüssel nachmachen in Wetzlar | SCHLÜSSELMACHER24",
+      "titelPx": 581.7,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 158,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/programmieren",
+      "titel": "Autoschlüssel programmieren und anlernen in Wetzlar | SCHLÜSSELMACHER24",
+      "titelPx": 725.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 140,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/schluesselbart-fraesen",
+      "titel": "Schlüsselbart fräsen in Wetzlar — Vorlage oder Fahrzeugdaten | SCHLÜSSELMACHER24",
+      "titelPx": 804.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 129,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/smart-key",
+      "titel": "Smart Key und Keyless in Wetzlar — Ersatz und Programmierung | SCHLÜSSELMACHER24",
+      "titelPx": 827.4,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 150,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/elektronische-zutrittsloesungen",
+      "titel": "Elektronische Zutrittslösungen — RFID, PIN, App | SCHLÜSSELMACHER24",
+      "titelPx": 681,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 145,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/elektronische-zutrittsloesungen/konfigurator",
+      "titel": "Elektronische Zutrittslösung konfigurieren | SCHLÜSSELMACHER24",
+      "titelPx": 611,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 141,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/gleichschliessende-zylinder",
+      "titel": "Sperrschließung: gleichschließende Zylinder bestellen | SCHLÜSSELMACHER24",
+      "titelPx": 723.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 141,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/gleichschliessende-zylinder/konfigurator",
+      "titel": "Gleichschließende Zylinder konfigurieren | SCHLÜSSELMACHER24",
+      "titelPx": 606.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 121,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/partner-werden",
+      "titel": "Partner werden – Auftragsvermittlung für Fachbetriebe | SCHLÜSSELMACHER24",
+      "titelPx": 726.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 166,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu lang"
+    },
+    {
+      "adresse": "http://localhost:3000/ratgeber",
+      "titel": "Ratgeber | SCHLÜSSELMACHER24",
+      "titelPx": 326.4,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 148,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/ratgeber/autoschluessel-verloren-was-tun",
+      "titel": "Autoschlüssel verloren — was jetzt zu tun ist | SCHLÜSSELMACHER24",
+      "titelPx": 639.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 88,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/ratgeber/einbruchschutz-wo-anfangen",
+      "titel": "Einbruchschutz — wo fängt man sinnvoll an? | SCHLÜSSELMACHER24",
+      "titelPx": 643.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 53,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/ratgeber/mechanisch-oder-elektronisch",
+      "titel": "Mechanisch oder elektronisch — was ist sinnvoller? | SCHLÜSSELMACHER24",
+      "titelPx": 702.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 69,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/ratgeber/schluessel-verloren-wohnung",
+      "titel": "Wohnungsschlüssel verloren — Schloss tauschen oder nicht? | SCHLÜSSELMACHER24",
+      "titelPx": 791.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 74,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/ratgeber/schluesselcode-finden",
+      "titel": "Wo finde ich den Schlüsselcode? | SCHLÜSSELMACHER24",
+      "titelPx": 538.4,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 62,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/ratgeber/unterschied-kopie-und-programmierung",
+      "titel": "Kopie oder Programmierung — wo ist der Unterschied? | SCHLÜSSELMACHER24",
+      "titelPx": 735.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 76,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/ratgeber/welche-schliessanlage-passt",
+      "titel": "Welche Schließanlage passt zu meinem Objekt? | SCHLÜSSELMACHER24",
+      "titelPx": 674,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 64,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/ratgeber/zylinder-richtig-ausmessen",
+      "titel": "Zylinder richtig ausmessen | SCHLÜSSELMACHER24",
+      "titelPx": 482,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 58,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/rechtliches/versand-und-zahlung",
+      "titel": "Zahlung und Versand | SCHLÜSSELMACHER24",
+      "titelPx": 434.3,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 75,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/schliessanlagen",
+      "titel": "Schließanlagen planen — Z, HS und GHS | SCHLÜSSELMACHER24",
+      "titelPx": 617.7,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 148,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schliessanlagen/konfigurator",
+      "titel": "Schließanlage planen — Projektkonfigurator | SCHLÜSSELMACHER24",
+      "titelPx": 635.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 155,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-einschicken",
+      "titel": "Schlüssel einschicken: Ablauf, Anschrift und Versand | SCHLÜSSELMACHER24",
+      "titelPx": 714.4,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 152,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code",
+      "titel": "Schlüssel nach Code bestellen | SCHLÜSSELMACHER24",
+      "titelPx": 517.7,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 119,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/bk-01",
+      "titel": "Einzelbriefkasten Hauswand – Briefkastenschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 803.4,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/bk-02",
+      "titel": "Briefkastenanlage Mehrfamilienhaus – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 777.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 152,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/bk-03",
+      "titel": "Paketkasten und Zustellfach – Briefkastenschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 802.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/bk-04",
+      "titel": "Zeitungsrohr und Nebenfach – Briefkastenschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 804.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 160,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/bk-05",
+      "titel": "Briefkastenanlage Gewerbeobjekt – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 754.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 157,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/fa-01",
+      "titel": "Anhänger und Deichselschloss – Aufbauschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 788.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 146,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/fa-02",
+      "titel": "Wohnwagen und Wohnmobil Aufbautür – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 801.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 160,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/fa-03",
+      "titel": "Serviceklappe und Gaskasten – Aufbauschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 780,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 146,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/fa-04",
+      "titel": "Koffer- und Pritschenaufbau – Aufbauschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 763,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 158,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/fa-05",
+      "titel": "Dachbox und Trägersystem – Aufbauschlüssel nach Code (FA-05) | SCHLÜSSELMACHER24",
+      "titelPx": 831.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 151,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/fe-01",
+      "titel": "Abschließbarer Fenstergriff – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 695.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 150,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/fe-02",
+      "titel": "Balkon- und Terrassentür – Fenstergriffschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 775.2,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 159,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/fe-03",
+      "titel": "Fensterzusatzschloss – Fenstergriffschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 744,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 156,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/fe-04",
+      "titel": "Rollladen- und Gittersicherung – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 724.4,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 150,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/fe-05",
+      "titel": "Dachfenster und Lichtkuppel – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 707.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 150,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/go-01",
+      "titel": "Müll- und Containerstandplatz – Objektschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 774.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 146,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/go-02",
+      "titel": "Schranke und Poller – Objektschlüssel nach Code (GO-02) | SCHLÜSSELMACHER24",
+      "titelPx": 767.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 158,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/go-03",
+      "titel": "Tiefgaragentor und Zufahrt – Objektschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 745.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 157,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/go-04",
+      "titel": "Gartenhaus und Nebengebäude – Objektschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 794.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 156,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/go-05",
+      "titel": "Sport- und Vereinsanlage – Objektschlüssel nach Code (GO-05) | SCHLÜSSELMACHER24",
+      "titelPx": 813.4,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 160,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/kategorie/briefkasten-und-postanlagen",
+      "titel": "Briefkasten- und Postanlagen – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 716.7,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 146,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger",
+      "titel": "Fahrzeugaufbauten und Anhänger – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 759,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 145,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/kategorie/fenster-und-balkontechnik",
+      "titel": "Fenster- und Balkontechnik – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 697.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 145,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen",
+      "titel": "Gewerbe, Objekt und Außenanlagen – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 778.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 146,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen",
+      "titel": "Maschinen und Sonderanwendungen – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 785.7,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/kategorie/moebel-und-bueroschloesser",
+      "titel": "Möbel- und Büroschlösser – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 686.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 136,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/kategorie/spind-und-garderobenschloesser",
+      "titel": "Spind- und Garderobenschlösser – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 747.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 143,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke",
+      "titel": "Technik-, Zähler- und Versorgungsschränke nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 733.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 156,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser",
+      "titel": "Vorhänge- und Hebelschlösser – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 727.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 151,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser",
+      "titel": "Zylinder- und Türschlösser – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 691,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 140,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ma-01",
+      "titel": "Bau- und Landmaschine – Maschinenschlüssel nach Code (MA-01) | SCHLÜSSELMACHER24",
+      "titelPx": 842.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 143,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ma-02",
+      "titel": "Flurförderzeug und Stapler – Maschinenschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 785.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ma-03",
+      "titel": "Automat und Warenausgabe – Maschinenschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 801.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 158,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ma-04",
+      "titel": "Aufzug-Notentriegelung – Maschinenschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 757.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 160,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ma-05",
+      "titel": "Kompressor und Anlagenabdeckung – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 777.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 155,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ms-01",
+      "titel": "Büroschrank und Rollcontainer – Möbelschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 778.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 145,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ms-02",
+      "titel": "Schreibtisch und Sideboard – Möbelschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 750,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 144,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ms-03",
+      "titel": "Aktenschrank und Registratur – Möbelschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 768.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 157,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ms-04",
+      "titel": "Vitrine und Glasschrank – Möbelschlüssel nach Code (MS-04) | SCHLÜSSELMACHER24",
+      "titelPx": 795.2,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 157,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ms-05",
+      "titel": "Küchenmöbel und Einbauschrank – Möbelschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 804.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 157,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ms-06",
+      "titel": "Werkstattschrank und Werkbank – Möbelschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 793.7,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 159,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/sp-01",
+      "titel": "Umkleidespind Sport und Verein – Spindschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 787.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 146,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/sp-02",
+      "titel": "Betriebsspind und Sozialraum – Spindschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 767.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 156,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/sp-03",
+      "titel": "Schulspind und Schließfach – Spindschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 748.9,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 145,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/sp-04",
+      "titel": "Garderobenschrank Hotel und Gastronomie – nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 751.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 158,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/sp-05",
+      "titel": "Wertfach und Schließfachanlage – Spindschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 790.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ts-01",
+      "titel": "Zählerschrank und Hausanschluss – Technikschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 825.6,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ts-02",
+      "titel": "Schaltschrank Industrie – Technikschlüssel nach Code (TS-02) | SCHLÜSSELMACHER24",
+      "titelPx": 800,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 150,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ts-03",
+      "titel": "Heizungs- und Technikraum – Technikschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 766.7,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 156,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ts-04",
+      "titel": "Aufzug- und Wartungsschrank – Technikschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 787,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 147,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/ts-05",
+      "titel": "Verteilerkasten Außenbereich – Technikschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 781.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 145,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/vh-01",
+      "titel": "Vorhängeschloss Tor und Zaun – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 730,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 154,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/vh-02",
+      "titel": "Vorhängeschloss Kette und Transport – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 788.2,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 156,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/vh-03",
+      "titel": "Hebelschloss Automat und Kasse – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 753.3,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 150,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/vh-04",
+      "titel": "Hebelschloss Schaltschrank – Schlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 704.4,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 148,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/vh-05",
+      "titel": "Vorhängeschloss wetterfest Außenbereich – nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 737.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 144,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/zy-01",
+      "titel": "Profilzylinder Wohnungstür – Profilschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 735.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 160,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/zy-02",
+      "titel": "Profilzylinder Haustür mit Sicherungskarte – nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 735.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 159,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/zy-03",
+      "titel": "Nebentür, Keller und Garage – Profilschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 751.1,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 147,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/zy-04",
+      "titel": "Rundzylinder und Ovalzylinder – Profilschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 767.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/zy-05",
+      "titel": "Buntbartschloss Zimmertür – Profilschlüssel nach Code | SCHLÜSSELMACHER24",
+      "titelPx": 735.5,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 159,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-code/zy-06",
+      "titel": "Zimmertür mit Chubb-Bart – Profilschlüssel nach Code (ZY-06) | SCHLÜSSELMACHER24",
+      "titelPx": 799.2,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 151,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-vorlage",
+      "titel": "Schlüssel nach Foto oder Vorlage nachmachen lassen | SCHLÜSSELMACHER24",
+      "titelPx": 726.7,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 123,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/schluessel-nach-vorlage/anfrage",
+      "titel": "Schlüssel nach Vorlage anfragen | SCHLÜSSELMACHER24",
+      "titelPx": 536.6,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 109,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/service-und-termin",
+      "titel": "Service und Termin | SCHLÜSSELMACHER24",
+      "titelPx": 415.3,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 99,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/service-und-termin/anfrage",
+      "titel": "Allgemeine Anfrage | SCHLÜSSELMACHER24",
+      "titelPx": 418.7,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 116,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/service-und-termin/kontakt",
+      "titel": "Kontakt | SCHLÜSSELMACHER24",
+      "titelPx": 312,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 59,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/service-und-termin/vor-ort",
+      "titel": "Vor-Ort-Leistungen | SCHLÜSSELMACHER24",
+      "titelPx": 413.1,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 110,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/sicherheitstechnik",
+      "titel": "Sicherheitstechnik — Kamera, Alarm, Einbruchschutz | SCHLÜSSELMACHER24",
+      "titelPx": 718.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 131,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/sicherheitstechnik/alarmtechnik",
+      "titel": "Alarmtechnik | SCHLÜSSELMACHER24",
+      "titelPx": 359.8,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 82,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/sicherheitstechnik/aussenhautsicherung",
+      "titel": "Sicherung der Außenhaut | SCHLÜSSELMACHER24",
+      "titelPx": 472.1,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 73,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/sicherheitstechnik/kombinierte-konzepte",
+      "titel": "Kombinierte Sicherheitskonzepte | SCHLÜSSELMACHER24",
+      "titelPx": 536.5,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 75,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/sicherheitstechnik/mechanischer-schutz",
+      "titel": "Mechanischer Schutz | SCHLÜSSELMACHER24",
+      "titelPx": 435.4,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 72,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/sicherheitstechnik/panik-und-alarmtaster",
+      "titel": "Panik- und Alarmtaster | SCHLÜSSELMACHER24",
+      "titelPx": 447.6,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 83,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/sicherheitstechnik/sicherheitscheck",
+      "titel": "Sicherheitscheck für Ihr Objekt | SCHLÜSSELMACHER24",
+      "titelPx": 516.5,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 121,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/sicherheitstechnik/smarte-funktionen",
+      "titel": "Smarte Funktionen | SCHLÜSSELMACHER24",
+      "titelPx": 413.1,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 74,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/sicherheitstechnik/videoueberwachung",
+      "titel": "Videoüberwachung | SCHLÜSSELMACHER24",
+      "titelPx": 415,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 80,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/standorte",
+      "titel": "Einsatzgebiete | SCHLÜSSELMACHER24",
+      "titelPx": 375.4,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 95,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/standorte/wetzlar",
+      "titel": "Autoschlüssel und Schließtechnik in Wetzlar | SCHLÜSSELMACHER24",
+      "titelPx": 636.2,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 149,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/tuer-und-schliesstechnik",
+      "titel": "Tür- und Schließtechnik — Zylinder, Schlösser, Beschläge | SCHLÜSSELMACHER24",
+      "titelPx": 758.8,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 146,
+      "beschreibungErfuellt": true,
+      "beschreibungGrund": ""
+    },
+    {
+      "adresse": "http://localhost:3000/tuer-und-schliesstechnik/einsteckschloesser",
+      "titel": "Einsteckschlösser | SCHLÜSSELMACHER24",
+      "titelPx": 404.2,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 84,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/tuer-und-schliesstechnik/mehrfachverriegelungen",
+      "titel": "Mehrfachverriegelungen | SCHLÜSSELMACHER24",
+      "titelPx": 459.8,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 69,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/tuer-und-schliesstechnik/montage-und-anpassung",
+      "titel": "Montage und Anpassung | SCHLÜSSELMACHER24",
+      "titelPx": 466.6,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 74,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/tuer-und-schliesstechnik/panik-und-fluchttuertechnik",
+      "titel": "Panik- und Fluchttürtechnik | SCHLÜSSELMACHER24",
+      "titelPx": 486.5,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 76,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder",
+      "titel": "Profilzylinder und Spezialzylinder | SCHLÜSSELMACHER24",
+      "titelPx": 537.6,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 118,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/tuer-und-schliesstechnik/reparatur-und-austausch",
+      "titel": "Reparatur und Austausch von Schließkomponenten | SCHLÜSSELMACHER24",
+      "titelPx": 702.2,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 72,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/tuer-und-schliesstechnik/schutzbeschlaege",
+      "titel": "Schutzbeschläge | SCHLÜSSELMACHER24",
+      "titelPx": 396.5,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 72,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/tuer-und-schliesstechnik/technische-beratung",
+      "titel": "Technische Beratung zu bestehenden Türen | SCHLÜSSELMACHER24",
+      "titelPx": 636.7,
+      "titelErfuellt": false,
+      "titelGrund": "zu breit",
+      "beschreibungZeichen": 65,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/tuer-und-schliesstechnik/tuerschliesser",
+      "titel": "Türschließer | SCHLÜSSELMACHER24",
+      "titelPx": 355.3,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 58,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    },
+    {
+      "adresse": "http://localhost:3000/tuer-und-schliesstechnik/tuerzusatzschloesser",
+      "titel": "Türzusatzschlösser | SCHLÜSSELMACHER24",
+      "titelPx": 416.4,
+      "titelErfuellt": true,
+      "titelGrund": "",
+      "beschreibungZeichen": 78,
+      "beschreibungErfuellt": false,
+      "beschreibungGrund": "zu kurz"
+    }
+  ]
+}

@@ -4,7 +4,7 @@ Abruf: 2026-11-02 · Verfasser: E1-FACHKUNDLER-03 · Vorschläge, bitte prüfen.
 
 Belegstufen: A Messung eines Anbieters (in den Quellen nicht gefunden) · B wörtlich belegte Aussage einer benannten Quelle · C von uns abgeleitet. Ampel gelb. Werbeaussagen sind keine Fakten. Quellen und Märkte: Abschnitt 7.
 
-Begriffe (Stufe C): Transponder ist der Funkchip im Schlüssel, Wegfahrsperre die Diebstahlsperre am Motorstart. Klonen kopiert Chipdaten auf einen Rohling, Anlernen trägt einen Schlüssel im Fahrzeug ein.
+Begriffe (Stufe C): Transponder ist der Funkchip im Schlüssel. Wegfahrsperre ist die Diebstahlsperre am Motorstart. Klonen kopiert Chipdaten auf einen Rohling. Anlernen trägt einen Schlüssel im Fahrzeug ein.
 
 ## 1. Transpondertypen und Chips (Schritt 1)
 
@@ -95,7 +95,7 @@ Gelesen (14, alle abgerufen 2026-11-02):
 11. autel.us (AT100), US, Hersteller, ohne Datum
 12. locksmithledger.com (JMA), US, Fachpresse, Autor JMA-Vertriebsleiter, Stand 2010-12-03
 13. en.wikipedia.org (Digital signature transponder), international, englisch, Enzyklopädie, Stand 2026-09-20
-14. adac.de (Autoschlüssel nachmachen), DE, Automobilclub, Datum 2026-04-13, unklar ob Veröffentlichung oder Aktualisierung
+14. adac.de (Autoschlüssel nachmachen), DE, Automobilclub, Datum 2026-04-13 (Art unklar)
 
 Nur Suchausschnitt, nicht als Fakt: Händler uhs-hardware.com, hickleys.com, clksupplies.com, keyfirst.eu, blog.obdii365.com.
 
@@ -112,8 +112,8 @@ robots.txt je Domain vor dem ersten Abruf geprüft (ti.com mit Crawl-delay 1 Sek
 5. 4D: TI-DST (Dietrich) oder Tiris 4D/4E (Abrites).
 6. DST80: Keine Hersteller-Klonangabe. Tiris DST+ (Abrites) ist nicht als DST80 belegt.
 7. ID44 gleich PCF7935: nur Händlerangaben aus Suchausschnitten, nicht geprüft.
-8. Lücken: Xhorse, Silca RW4 Plus, NXP (Hitag Pro, Hitag 3, Hitag AES). JMA nur mit Stand 2010.
-9. Herstellerseiten ohne Datum (Silca, Abrites, Keyline, Autel, LSC): Aktualität unbekannt.
+8. Lücken laut Abschnitt 7 (Xhorse, Silca RW4 Plus, NXP). JMA nur mit Stand 2010.
+9. Herstellerseiten ohne Datum: Aktualität unbekannt.
 10. Autel führt "MQB" ohne Chipnummer, vermutlich die Fahrzeugplattform. Klären.
 11. Rechtslage zu Besitz, Einsatz und Nachweispflichten nicht erhoben, keine Rechtsquelle gefunden.
 12. Werbeaussagen (Silca "rund 99 %", Keyline "ideal cloning process") nicht übernommen und nicht geprüft.

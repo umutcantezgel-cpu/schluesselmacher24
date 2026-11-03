@@ -1,0 +1,6162 @@
+{
+  "skript": "stil",
+  "zeit": "2026-11-03T00:33:32.107Z",
+  "argumente": {
+    "_": [],
+    "routen": "/schluessel-nach-code/bk-02,/schluessel-nach-code/bk-03,/schluessel-nach-code/bk-04,/schluessel-nach-code/bk-05,/schluessel-nach-code/fa-01,/schluessel-nach-code/fa-02,/schluessel-nach-code/fa-03,/schluessel-nach-code/fa-04,/schluessel-nach-code/fa-05,/schluessel-nach-code/fe-01,/schluessel-nach-code/fe-02,/schluessel-nach-code/fe-03,/schluessel-nach-code/fe-04,/schluessel-nach-code/fe-05,/schluessel-nach-code/go-01,/schluessel-nach-code/go-02,/schluessel-nach-code/go-03,/schluessel-nach-code/go-04,/schluessel-nach-code/go-05,/schluessel-nach-code/kategorie/briefkasten-und-postanlagen,/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger,/schluessel-nach-code/kategorie/fenster-und-balkontechnik,/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen,/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen,/schluessel-nach-code/kategorie/moebel-und-bueroschloesser,/schluessel-nach-code/kategorie/spind-und-garderobenschloesser,/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke,/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser,/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser,/schluessel-nach-code/ma-01,/schluessel-nach-code/ma-02,/schluessel-nach-code/ma-03,/schluessel-nach-code/ma-04,/schluessel-nach-code/ma-05,/schluessel-nach-code/ms-01,/schluessel-nach-code/ms-02,/schluessel-nach-code/ms-03,/schluessel-nach-code/ms-04,/schluessel-nach-code/ms-05,/schluessel-nach-code/ms-06,/schluessel-nach-code/sp-01,/schluessel-nach-code/sp-02,/schluessel-nach-code/sp-03,/schluessel-nach-code/sp-04,/schluessel-nach-code/sp-05,/schluessel-nach-code/ts-01",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E0-vorher-stil-g3.json"
+  },
+  "seitenQuelle": "--routen",
+  "ansichten": [
+    {
+      "name": "/schluessel-nach-code/bk-02",
+      "zeilen": 181,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 8,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE B1042 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ge Mehrfamilienhaus — Serie BK-02: Preis …",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/bk-02"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/bk-02"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/bk-03",
+      "zeilen": 181,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…e). 8,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE 2280A – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ten und Zustellfach — Serie BK-03: Preis …",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/bk-03"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/bk-03"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/bk-04",
+      "zeilen": 181,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 7,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…UM BEISPIELCODE 417 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…srohr und Nebenfach — Serie BK-04: Preis …",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/bk-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/bk-04"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/bk-05",
+      "zeilen": 181,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…BEISPIELCODE GB2104 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…nlage Gewerbeobjekt — Serie BK-05: Preis …",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/bk-05"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/bk-05"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/fa-01",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 10,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 0918 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…und Deichselschloss — Serie FA-01: Preis …",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/fa-01"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/fa-01"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/fa-02",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 12,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…BEISPIELCODE WM2104 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…Wohnmobil Aufbautür — Serie FA-02: Preis …",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/fa-02"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/fa-02"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/fa-03",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 10,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE 21104 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…lappe und Gaskasten — Serie FA-03: Preis …",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/fa-03"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/fa-03"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/fa-04",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 11,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE K2088 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…und Pritschenaufbau — Serie FA-04: Preis …",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/fa-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/fa-04"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/fa-05",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 10,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE N142 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ox und Trägersystem — Serie FA-05: Preis …",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/fa-05"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/fa-05"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/fe-01",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 7,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 0421 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ßbarer Fenstergriff — Serie FE-01: Preis …",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/fe-01"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/fe-01"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/fe-02",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 8,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE B214 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n- und Terrassentür — Serie FE-02: Preis …",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/fe-02"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/fe-02"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/fe-03",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 5510 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ensterzusatzschloss — Serie FE-03: Preis …",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/fe-03"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/fe-03"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/fe-04",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE RG118 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…und Gittersicherung — Serie FE-04: Preis …",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/fe-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/fe-04"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/fe-05",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 0742 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ter und Lichtkuppel — Serie FE-05: Preis …",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/fe-05"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/fe-05"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/go-01",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 2204 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…Containerstandplatz — Serie GO-01: Preis …",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/go-01"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/go-01"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/go-02",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 12,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…BEISPIELCODE SR2140 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…Schranke und Poller — Serie GO-02: Preis …",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/go-02"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/go-02"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/go-03",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 12,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE G1180 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…agentor und Zufahrt — Serie GO-03: Preis …",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/go-03"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/go-03"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/go-04",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 8,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…UM BEISPIELCODE 304 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…us und Nebengebäude — Serie GO-04: Preis …",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/go-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/go-04"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/go-05",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE V1204 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…- und Vereinsanlage — Serie GO-05: Preis …",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/go-05"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/go-05"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen",
+      "zeilen": 99,
+      "zaehl": {
+        "Gedankenstrich": 13,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 1,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 15,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…wir fertigen danach — Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…nn 3 bis 4 Ziffern“ — welches zu Ihrem Sc…",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "…d die Tür offen ist. Mehr im Ratgeber „Wo finde ich den Schlüsselcode?“.",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/kategorie/briefkasten-und-postanlagen"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger",
+      "zeilen": 98,
+      "zaehl": {
+        "Gedankenstrich": 12,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 13,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…wir fertigen danach — Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…nn 3 bis 4 Ziffern“ — welches zu Ihrem Sc…",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/kategorie/fahrzeugaufbauten-und-anhaenger"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik",
+      "zeilen": 98,
+      "zaehl": {
+        "Gedankenstrich": 12,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 13,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…wir fertigen danach — Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…en, dann 3 Ziffern“ — welches zu Ihrem Sc…",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/kategorie/fenster-und-balkontechnik"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen",
+      "zeilen": 98,
+      "zaehl": {
+        "Gedankenstrich": 12,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 13,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…wir fertigen danach — Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…nn 3 bis 4 Ziffern“ — welches zu Ihrem Sc…",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/kategorie/gewerbe-objekt-und-aussenanlagen"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen",
+      "zeilen": 98,
+      "zaehl": {
+        "Gedankenstrich": 12,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 3,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 15,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…wir fertigen danach — Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…t und Warenausgabe, Aufzug-Notentriegelung und Kompressor und …",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Aufzug-Notentriegelung",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…nn 3 bis 4 Ziffern“ — welches zu Ihrem Sc…",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/kategorie/maschinen-und-sonderanwendungen"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser",
+      "zeilen": 103,
+      "zaehl": {
+        "Gedankenstrich": 13,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 1,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 15,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…wir fertigen danach — Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…en, dann 3 Ziffern“ — welches zu Ihrem Sc…",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "…d die Tür offen ist. Mehr im Ratgeber „Wo finde ich den Schlüsselcode?“.",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/kategorie/moebel-und-bueroschloesser"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser",
+      "zeilen": 99,
+      "zaehl": {
+        "Gedankenstrich": 13,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 1,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 15,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…wir fertigen danach — Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…estrich, 2 Ziffern“ — welches zu Ihrem Sc…",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "…d die Tür offen ist. Mehr im Ratgeber „Wo finde ich den Schlüsselcode?“.",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/kategorie/spind-und-garderobenschloesser"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke",
+      "zeilen": 98,
+      "zaehl": {
+        "Gedankenstrich": 12,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 13,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…wir fertigen danach — Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…tional 1 Buchstabe“ — welches zu Ihrem Sc…",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/kategorie/technik-zaehler-und-versorgungsschraenke"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser",
+      "zeilen": 98,
+      "zaehl": {
+        "Gedankenstrich": 12,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 13,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…wir fertigen danach — Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…, dann 1 Buchstabe“ — welches zu Ihrem Sc…",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/kategorie/vorhaenge-und-hebelschloesser"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser",
+      "zeilen": 104,
+      "zaehl": {
+        "Gedankenstrich": 12,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 1,
+        "Floskel": 0,
+        "Bindestrich": 3,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 16,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…wir fertigen danach — Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…r und Zimmertür mit Chubb-Bart. Sie geben den Code…",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Zimmertür mit Chubb-Bart",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…nn 3 bis 4 Ziffern“ — welches zu Ihrem Sc…",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "…oder im Schließplan. Mehr im Ratgeber „Wo finde ich den Schlüsselcode?“.",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/kategorie/zylinder-und-tuerschloesser"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ma-01",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 12,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE 14401 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…u- und Landmaschine — Serie MA-01: Preis …",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Aufzug-Notentriegelung",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ma-01"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ma-01"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ma-02",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 12,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE ST104 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…derzeug und Stapler — Serie MA-02: Preis …",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Aufzug-Notentriegelung",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ma-02"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ma-02"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ma-03",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 11,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 8820 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…at und Warenausgabe — Serie MA-03: Preis …",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Aufzug-Notentriegelung",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ma-03"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ma-03"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ma-04",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 8,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 27,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Aufzug-Notentriegelung",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Aufzug-Notentriegelung",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 14,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…chinenschlüssel für Aufzug-Notentriegelung, gefertigt nach dem…",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…UM BEISPIELCODE N42 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…zug-Notentriegelung — Serie MA-04: Preis …",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Staffelpreise für Aufzug-Notentriegelung — Serie MA-04: Prei…",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…dungen“ und ist für Aufzug-Notentriegelung vorgesehen. Wir fer…",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…nd Sonderanwendung: Aufzug-Notentriegelung",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "… steht der Code bei Aufzug-Notentriegelung?",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ma-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ma-04"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ma-05",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 2,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 12,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…BEISPIELCODE KA1140 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…nd Anlagenabdeckung — Serie MA-05: Preis …",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Aufzug-Notentriegelung",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ma-05"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ma-05"
+        }
+      ]
+    },
+    {
+      "name": "H06-code-produkt",
+      "zeilen": 185,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 8,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 0812 – KEINE ECHTE SCHLIES…",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…k und Rollcontainer — Serie MS-01: Preis …",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H06-code-produkt"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ms-02",
+      "zeilen": 185,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 8,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE C214 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…tisch und Sideboard — Serie MS-02: Preis …",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ms-02"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ms-02"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ms-03",
+      "zeilen": 185,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 8,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 4471 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ank und Registratur — Serie MS-03: Preis …",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ms-03"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ms-03"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ms-04",
+      "zeilen": 185,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 8,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE K118 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ine und Glasschrank — Serie MS-04: Preis …",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ms-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ms-04"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ms-05",
+      "zeilen": 185,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 8,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…UM BEISPIELCODE 226 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…l und Einbauschrank — Serie MS-05: Preis …",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ms-05"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ms-05"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ms-06",
+      "zeilen": 185,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE WB104 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…chrank und Werkbank — Serie MS-06: Preis …",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ms-06"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ms-06"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/sp-01",
+      "zeilen": 181,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 8,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 0347 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…nd Sport und Verein — Serie SP-01: Preis …",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/sp-01"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/sp-01"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/sp-02",
+      "zeilen": 181,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 8,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE S482 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…pind und Sozialraum — Serie SP-02: Preis …",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/sp-02"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/sp-02"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/sp-03",
+      "zeilen": 181,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…BEISPIELCODE 21-508 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ind und Schließfach — Serie SP-03: Preis …",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/sp-03"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/sp-03"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/sp-04",
+      "zeilen": 181,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… BEISPIELCODE GH215 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…tel und Gastronomie — Serie SP-04: Preis …",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/sp-04"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/sp-04"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/sp-05",
+      "zeilen": 181,
+      "zaehl": {
+        "Gedankenstrich": 16,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 21,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…). 10,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…BEISPIELCODE 204-11 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…d Schließfachanlage — Serie SP-05: Preis …",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…dem Schließzylinder — sichtbar, sobald di…",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/sp-05"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/sp-05"
+        }
+      ]
+    },
+    {
+      "name": "/schluessel-nach-code/ts-01",
+      "zeilen": 180,
+      "zaehl": {
+        "Gedankenstrich": 15,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 4,
+        "Floskel": 0,
+        "Bindestrich": 1,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 20,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…n). 9,00 € je Stück – Ihr Originalschlüss…",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…M BEISPIELCODE 1242 – KEINE ECHTE SCHLIES…",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Wo steht der Code?",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…k und Hausanschluss — Serie TS-01: Preis …",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "— gilt für Ihre Auswa…",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "… eingeschränkt sein — Einzelheiten stehen…",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie finden den Code nicht? Der Ratgeber zeigt …",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code? Schlüssel nach Vorl…",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Ratgeber: Wo finde ich den Code?",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00 · 14:00–17:00",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "09:00–13:00",
+          "quelle": "/schluessel-nach-code/ts-01"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "/schluessel-nach-code/ts-01"
+        }
+      ]
+    }
+  ]
+}
