@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T23:07:19+00:00
+Stand: 2026-11-03T23:26:43.055Z
 
-Etappe 6/12 · Welle 3 · Pflicht 77/139 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 6/12 · Welle 3 · Pflicht 78/139 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -267,7 +267,7 @@ Geplante Tage: 1.55
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E5-PROBENUTZER-01 | Probelauf Konfiguratoren mit Hausverwaltung (20 Türen) und Rentnerin | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E5-PROBENUTZER-01 | Probelauf Konfiguratoren mit Hausverwaltung (20 Türen) und Rentnerin | haiku-5.5 | M | pflicht | 3 | committet | b1dd388 |
 | E5-PRUEFER-01 | Prüfstufe B Etappe E5, Prüfliste G-27 bis G-30 | haiku-5.5 | L | pflicht | 3 | offen |  |
 
 ## E6 · Übrige Rubriken, gemeinsamer Abschluss, Einsenden und Versand

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T23:07:19+00:00",
+ "stand": "2026-11-03T23:26:43.055Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -2800,10 +2800,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "b1dd388",
    "massstab": "_werkstatt/ausbau/pakete/E5-PROBENUTZER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
