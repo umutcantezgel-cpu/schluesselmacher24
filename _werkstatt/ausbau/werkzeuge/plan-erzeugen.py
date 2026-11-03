@@ -28,7 +28,7 @@ MUSTER_PAKET = W + 'pakete/_GEMEINSAM.md'
 ETAPPEN = [
   dict(kennung='E0', ziel='Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand', eingang='Auftrag', ausgang='LAGEBILD.md, ANFORDERUNGEN.json, Vorher-Protokolle', tor='Bestand belegt grün (E0-PRUEFER-01), Vorher-Stand Prüfstufe B in Protokollen', kriterien=['Z-02', 'Z-20', 'Z-21'], tage=0.5),
   dict(kennung='E1', ziel='Fachwissen und Recherche', eingang='LAGEBILD.md', ausgang='FACHWISSEN.md, QUELLEN.md, WETTBEWERB.md, KARTE.md, KANTEN.md, LAGEBILD Suche', tor='jede Aussage mit Quelle, Gegenprüfung bestanden', kriterien=['Z-17'], tage=0.5),
-  dict(kennung='E2', ziel='Plan, KERN v2, Abnahme', eingang='E0, E1', ausgang='KERN.md v2, PLAN.json, ABNAHME.md', tor='plan.mjs pruefen OK, Vorab-Scheitern eingearbeitet', kriterien=['Z-01'], tage=0.3),
+  dict(kennung='E2', ziel='Plan, KERN v2, Abnahme', eingang='E0, E1', ausgang='KERN.md v2, PLAN.json, ABNAHME.md', tor='plan.mjs pruefen OK; jeder Befund aus E2-PRUEFER-01 und E2-PRUEFER-02 als Planänderung umgesetzt oder in ENTSCHEIDUNGEN.md begründet verworfen; höchstens zwei Runden', kriterien=['Z-01'], tage=0.3),
   dict(kennung='E3', ziel='Fundament: Datenmodelle, Kernlogik, Designsystem, Bewegung, PDF, Versand, Fahrzeuge, Konfigurator-Kern, Partner, Uploads', eingang='PLAN.json', ausgang='Kernsysteme mit Tests', tor='Prüfstufe B, Bestand mindestens wie in E0, Datenweiche belegt', kriterien=['Z-02', 'Z-06', 'Z-07', 'Z-08', 'Z-09', 'Z-12', 'Z-20'], tage=1.5),
   dict(kennung='E4', ziel='Referenz: Startseite mit Intent-Hub, Inszenierung, Navigation G-08, Übergang, Autoschlüssel-Weg', eingang='E3', ausgang='Referenzansichten', tor='Prüfstufe B, Jury Start mindestens 8,5 und Weg mindestens 8, Personas ohne Abbruch, Blind- und Dominanzprobe Start', kriterien=['Z-04', 'Z-05', 'Z-11', 'Z-12', 'Z-14', 'Z-15'], tage=1.0),
   dict(kennung='E5', ziel='Konfiguratoren Sperrschließung und Schließanlage', eingang='E3-Konfigurator-Kern, Referenz', ausgang='Konfiguratoren mit Schließplan-PDF', tor='Prüfstufe B, Tests jeder Regel, Probelauf Hausverwaltung', kriterien=['Z-05', 'Z-06'], tage=1.0),
@@ -114,19 +114,19 @@ op('E3-OPUS-05', 'Versand-Adapter: Schnittstelle, Attrappe, Begleitschein-PDF, A
    ['src/lib/versand/', 'src/payload/globals/Einstellungen.ts'], ['E3-OPUS-04'], ['G-24', 'G-25'], ['Z-08'], wirkung=4)
 op('E3-OPUS-06', 'Fahrzeugkatalog-Modell: Baureihe, Baujahre, Schlüsselarten, Transponder mit Quelle, Klonbarkeit, Gehäuse, Leistungen, Suche mit Tippfehlertoleranz', 'E3', 3,
    ['src/payload/collections/Fahrzeugmarken.ts', 'src/lib/fahrzeuge/', 'content/vehicles.json'], ['E3-OPUS-01'], ['G-14', 'G-15', 'G-17', 'G-18'], ['Z-07'], wirkung=5)
-op('E3-OPUS-07', 'Konfigurator-Kern: Systemdaten, Schließplan, Matrix mit Vorlagen, Preisfunktion, Maßprüfung, Zwischenstand per Link', 'E3', 4,
+op('E3-OPUS-07', 'Konfigurator-Kern: Systemdaten, Schließplan, Matrix mit Vorlagen, Preisfunktion über die vorhandenen Preisregeln (Preiswerte unverändert, G9), Maßprüfung, Zwischenstand per Link', 'E3', 4,
    ['src/lib/konfigurator/', 'src/payload/globals/Zylinderkatalog.ts', 'content/cylinder-catalog.json'], ['E3-OPUS-06'], ['G-27', 'G-28', 'G-29'], ['Z-06'], wirkung=5)
 op('E3-OPUS-08', 'Partner-Modelle: Statusautomat Bewerbung, Vermittlungszustände, Abrechnung A und B als reine Funktionen, Zugriffsrechte', 'E3', 4,
    ['src/lib/partner/', 'src/payload/collections/Partner.ts', 'src/payload/access/'], ['E3-OPUS-07'], ['G-39', 'G-40'], ['Z-09', 'Z-20'], wirkung=4)
 op('E3-OPUS-09', 'Uploads: neue Kategorien, Pflicht-Uploads und Nachweise serverseitig je Weg, Fristen je Zweck', 'E3', 5,
    ['src/lib/server/datei-pruefung.ts', 'src/lib/server/kundendateien.ts', 'src/lib/server/unterlagen-pflicht.ts', 'src/lib/actions/records.ts', 'src/lib/actions/orders.ts'],
    ['E3-OPUS-08'], ['G-36'], ['Z-05', 'Z-20'], wirkung=5)
-op('E3-OPUS-10', 'Übernahmen aus fremden Branches nach Denkprotokoll (Stripe-API-Version, JSON-LD-Detailseiten)', 'E3', 5,
+op('E3-OPUS-10', 'Übernahmen aus fremden Branches nach Denkprotokoll (Stripe-API-Version, JSON-LD-Detailseiten); Zahlungsverhalten unverändert, mit Test (G9)', 'E3', 5,
    ['src/lib/integrations/stripe.ts', '.github/dependabot.yml', 'src/app/(site)/sicherheitstechnik/[slug]/page.tsx', 'src/app/(site)/tuer-und-schliesstechnik/[slug]/page.tsx'],
    ['E3-OPUS-09'], [], ['Z-02', 'Z-16'], klasse='M', wirkung=2)
 hk('E3-UPGRADE-01', 'Sicherheits- und Minor-Updates (React 19.3, eslint-config-next 16.4, npm audit ohne Major)', 6, 'Prüfer', ['package.json', 'package-lock.json'], [], ['Z-02'], deps=['E3-OPUS-10'], status='offen', stufe=2)
 hk('E3-GRAFIKER-01', 'Neue Fach-Icons der Familie: Motorradschlüssel, Gehäuse, Transponder-Kopie, Schlüsselfinder, Vor-Ort, Karte, Video, Pause, Bewegung', 1, 'Grafiker',
-   ['src/components/visual/icons/motorradschluessel.tsx', 'src/components/visual/icons/schluesselgehaeuse.tsx', 'src/components/visual/icons/transponder-kopie.tsx', 'src/components/visual/icons/schluesselfinder.tsx', 'src/components/visual/icons/vor-ort.tsx', 'src/components/visual/icons/karte.tsx', 'src/components/visual/icons/video.tsx', 'src/components/visual/glyphen/pause.tsx', 'src/components/visual/glyphen/bewegung.tsx'],
+   ['src/components/visual/icons/motorradschluessel.tsx', 'src/components/visual/icons/schluesselgehaeuse.tsx', 'src/components/visual/icons/transponder-kopie.tsx', 'src/components/visual/icons/schluesselfinder.tsx', 'src/components/visual/icons/vor-ort.tsx', 'src/components/visual/icons/karte.tsx', 'src/components/visual/icons/video.tsx', 'src/components/visual/glyphen/pause.tsx', 'src/components/visual/glyphen/bewegung.tsx', 'src/components/visual/icons/icons.test.tsx', 'src/components/visual/glyphen/glyphen.test.tsx'],
    ['G-03', 'G-47'], ['Z-11', 'Z-13'], deps=['E2-PRUEFER-01'], status='offen', stufe=2)
 hk('E3-DATENPFLEGER-01', 'Fahrzeugdaten-Import aus offenen Quellen mit Quelle je Eintrag und Abdeckungsmessung', 4, 'Datenpfleger', ['scripts/fahrzeuge-import.mjs', 'scripts/fahrzeuge-import.test.ts', 'content/fahrzeugkatalog.json', W + 'protokolle/E3-abdeckung.md'], ['G-14'], ['Z-07'], deps=['E3-OPUS-06'], status='offen', klasse='L', stufe=2)
 hk('E3-DATENPFLEGER-02', 'Kartendaten Hessen aufbereiten (Kreise, Gemeinden, Lizenzvermerk) als vereinfachte Formen', 2, 'Datenpfleger', ['scripts/karte-aufbereiten.mjs', 'content/karte/hessen.json', 'content/karte/LIZENZ.md'], ['G-42'], ['Z-10'], deps=['E2-PRUEFER-01', 'E1-RECHERCHEUR-06'], status='offen', stufe=2)
@@ -139,10 +139,10 @@ op('E4-OPUS-01', 'Startseite: Intent-Hub im ersten Bildschirm mit zwölf Kacheln
 op('E4-OPUS-02', 'Eingangsinszenierung: Autoschlüssel fährt in den Zylinder, Zylinder wird Schließanlage; kürzerer Schlüssel, Dauerschleife mit Pause', 'E4', 2,
    ['src/components/visual/inszenierung/', 'src/components/visual/generators/profilschnitt.tsx'], ['E4-OPUS-01'], ['G-04', 'G-06', 'G-07'], ['Z-04', 'Z-12'], wirkung=5)
 op('E4-OPUS-03', 'Navigation nach G-08 aus den Rubriken (Kopf, Megamenü, Schublade, Fuß), Anrufen und Rückruf in einem Schritt', 'E4', 2,
-   ['src/lib/navigation.ts', 'src/lib/navigation.test.ts', 'src/components/layout/site-header.tsx', 'src/components/layout/mobile-action-bar.tsx'], ['E4-OPUS-01'], ['G-08', 'G-09', 'G-11'], ['Z-04', 'Z-05'], wirkung=5)
+   ['src/lib/navigation.ts', 'src/lib/navigation.test.ts', 'src/components/layout/site-header.tsx', 'src/components/layout/mobile-action-bar.tsx', 'src/components/layout/site-footer.tsx'], ['E4-OPUS-01'], ['G-08', 'G-09', 'G-11'], ['Z-04', 'Z-05'], wirkung=5)
 op('E4-OPUS-04', 'Übergang Kachel zu Rubrik (gemeinsames Element, Rückfall, Fokus auf h1), Rubrikkopf, „So läuft Ihr Auftrag ab“ aus Daten', 'E4', 3,
    ['src/components/rubrik/', 'src/components/visual/motion/seitenwechsel.tsx'], ['E4-OPUS-03'], ['G-04', 'G-10'], ['Z-12'], wirkung=4)
-op('E4-OPUS-05', 'Autoschlüssel-Weg auf Zielniveau: Fahrzeugwahl aus dem Katalog, nicht gefunden als Anfrage, Fahrzeugschein, Schlüsselbild, Anzahlung, Termin', 'E4', 3,
+op('E4-OPUS-05', 'Autoschlüssel-Weg auf Zielniveau: Fahrzeugwahl aus dem Katalog, nicht gefunden als Anfrage, Fahrzeugschein, Schlüsselbild, Anzahlung, Termin (Anzahlungs- und Zahlungsverhalten unverändert, mit Test, G9)', 'E4', 3,
    ['src/app/(site)/autoschluessel/', 'src/components/autoschluessel/'], ['E4-OPUS-03'], ['G-14', 'G-15', 'G-16', 'G-17'], ['Z-05', 'Z-07'], wirkung=5)
 hk('E4-TEXTER-01', 'Texte Hub, Kacheln, Autoschlüssel-Rubrik nach Muster ohne KI-Spuren, Längen gemessen', 4, 'Texter', ['content/rubriken.json', 'content/seo.json'], ['G-48', 'G-03'], ['Z-13'], deps=['E4-OPUS-05'], status='offen', stufe=2)
 hk('E4-PROBENUTZER-01', 'Probelauf Startseite und Autoschlüssel-Weg mit vier Personas, mobil und Desktop', 5, 'Probenutzer', [W + 'berichte/E4-PROBENUTZER-01.md'], [], ['Z-05'], deps=['E4-TEXTER-01'], status='offen')
@@ -152,7 +152,7 @@ P('E4-BLIND-01', 'Blind- und Dominanzprobe der Startseite (frischer Opus)', 'E4'
 
 # ---------------------------------------------------------------- E5 Konfiguratoren
 op('E5-OPUS-01', 'Schließanlagen-Konfigurator: Zylinder und Schlüssel hinzufügen, Matrix, laufender Gesamtpreis, Liste, Speichern, Kasse oder Projektanfrage', 'E5', 1,
-   ['src/app/(site)/schliessanlagen/konfigurator/', 'src/components/konfigurator/'], ['E4-JURY-01', 'E1-OPUS-01'], ['G-27', 'G-30', 'G-35'], ['Z-05', 'Z-06'], wirkung=5)
+   ['src/app/(site)/schliessanlagen/konfigurator/', 'src/components/konfigurator/'], ['E4-JURY-01', 'E4-BLIND-01', 'E1-OPUS-01'], ['G-27', 'G-30', 'G-35'], ['Z-05', 'Z-06'], wirkung=5)
 op('E5-OPUS-02', 'Sperrschließung auf demselben Kern: Sets 2 bis 10 (mehr auf Anfrage, Bestand bis 30), jeder Zylinder einzeln, Schlüsselzahl', 'E5', 2,
    ['src/app/(site)/gleichschliessende-zylinder/konfigurator/'], ['E5-OPUS-01'], ['G-28', 'G-09'], ['Z-06'], wirkung=5)
 op('E5-OPUS-03', 'Schließplan als PDF und Vorgang mit vollständigem Schnappschuss', 'E5', 2, ['src/lib/pdf/schliessplan.ts', 'src/lib/konfigurator/vorgang.ts'], ['E5-OPUS-01'], ['G-27', 'G-37'], ['Z-06', 'Z-19'], klasse='M')
@@ -163,7 +163,7 @@ hk('E5-PRUEFER-01', 'Prüfstufe B Etappe E5, Prüfliste G-27 bis G-30', 4, 'Prü
 
 # ---------------------------------------------------------------- E6 Übrige Rubriken
 op('E6-OPUS-01', 'Gemeinsamer Abschluss: Wege-Baukasten aus Rubrikdaten (Ablauf, Formular, Upload mit Fotohilfe, Nachweis, Zusammenfassung, Bestätigung, Vorgangsblatt)', 'E6', 1,
-   ['src/components/weg/', 'src/lib/wege/'], ['E5-PRUEFER-01'], ['G-38', 'G-11', 'G-10'], ['Z-05'], wirkung=5)
+   ['src/components/weg/', 'src/lib/wege/'], ['E5-PRUEFER-01', 'E5-PROBENUTZER-01'], ['G-38', 'G-11', 'G-10'], ['Z-05'], wirkung=5)
 op('E6-OPUS-02', 'Einsenden: Adresse, versichert oder unversichert, Begleitschein oder Versandmarke, Kreislauf bis Rückversand mit Kundenstatus', 'E6', 2,
    ['src/app/(site)/schluessel-einschicken/', 'src/lib/einsenden/'], ['E6-OPUS-01'], ['G-24', 'G-25', 'G-26'], ['Z-08'], wirkung=5)
 op('E6-OPUS-03', 'Transponder-Kopie nur für bestätigte Fahrzeuge: Kasse, Einsenden, Rückversand', 'E6', 3, ['src/app/(site)/autoschluessel/transponder-kopie/'], ['E6-OPUS-02'], ['G-18'], ['Z-05', 'Z-07'], klasse='M')
@@ -175,12 +175,12 @@ for i, (t, pfad, anf) in enumerate([
     ('Schlüsseldienst vor Ort: Anfrage mit Ort für die Vermittlung', 'service-und-termin/vor-ort', ['G-40', 'G-41']),
     ('Schlüssel nach Foto: Fotoanleitung mit drei gezeichneten Beispielen, Hinweis „nicht jedes Foto ablesbar“', 'schluessel-nach-vorlage', ['G-23', 'G-45'])], start=1):
     hk(f'E6-BAUMEISTER-0{i}', t, 3 if i < 4 else 4, 'Baumeister', [f'src/app/(site)/{pfad}/'], anf, ['Z-05'], deps=['E6-OPUS-01'], status='offen', stufe=2)
-op('E6-OPUS-04', 'Vorgangsblatt für jede neue Vorgangsart, Kundenstatus in einfacher Sprache, Terminstatus erweitert', 'E6', 5, ['src/lib/pdf/blaetter/', 'src/app/(site)/service-und-termin/terminstatus/'], ['E6-BAUMEISTER-06'], ['G-37', 'G-25'], ['Z-19'], klasse='M')
+op('E6-OPUS-04', 'Vorgangsblatt für jede neue Vorgangsart, Kundenstatus in einfacher Sprache, Terminstatus erweitert', 'E6', 5, ['src/lib/pdf/blaetter/', 'src/app/(site)/service-und-termin/terminstatus/'], ['E6-BAUMEISTER-06'], ['G-37', 'G-25'], ['Z-19'], klasse='L')
 hk('E6-PROBENUTZER-01', 'Probelauf aller Wege aus Abschnitt 11 mit vier Personas', 6, 'Probenutzer', [W + 'berichte/E6-PROBENUTZER-01.md'], [], ['Z-05'], deps=['E6-OPUS-04'], status='offen', klasse='L')
 hk('E6-PRUEFER-01', 'Prüfstufe B Etappe E6', 6, 'Prüfer', [W + 'berichte/E6-PRUEFER-01.md'], [], ['Z-02', 'Z-08', 'Z-14'], deps=['E6-OPUS-04'], status='offen', klasse='L')
 
 # ---------------------------------------------------------------- E7 Partner, Karte
-op('E7-OPUS-01', 'Partner werden: Bewerbungsdurchlauf mit Status, Nachweise, Vertrag-PDF aus Platzhalter-Vorlage, Unterschrift als Upload, Partner-AGB', 'E7', 1, ['src/app/(site)/partner-werden/', 'src/lib/pdf/partnervertrag.ts'], ['E6-PRUEFER-01'], ['G-39'], ['Z-09'])
+op('E7-OPUS-01', 'Partner werden: Bewerbungsdurchlauf mit Status, Nachweise, Vertrag-PDF aus Platzhalter-Vorlage, Unterschrift als Upload, Partner-AGB und Vertrag nur als markierter Entwurf zur Anwaltsprüfung (R10)', 'E7', 1, ['src/app/(site)/partner-werden/', 'src/lib/pdf/partnervertrag.ts'], ['E6-PRUEFER-01', 'E6-PROBENUTZER-01'], ['G-39'], ['Z-09'])
 op('E7-OPUS-02', 'Vermittlung und Abrechnung A und B im Admin, Provisionen aus den Einstellungen, B ausgeschaltet', 'E7', 2, ['src/payload/components/Vermittlung.tsx', 'src/payload/collections/Vorgaenge.ts'], ['E7-OPUS-01'], ['G-40'], ['Z-09'])
 op('E7-OPUS-03', 'Interaktive Karte Hessen (Kreise, Städte, Gemeinden, Partnergebiete), selbst gehostet, nachgeladen, Listenansicht mit Tastatur', 'E7', 2, ['src/components/karte/', 'src/app/(site)/standorte/'], ['E7-OPUS-01'], ['G-42'], ['Z-10', 'Z-14'])
 hk('E7-BAUMEISTER-01', 'Stadt-Hub-Vorlage mit Stadtteilen als Abschnitten, noindex bis aktiver Partner, Schalter je Stadt', 3, 'Baumeister', ['src/app/(site)/standorte/[city]/'], ['G-41'], ['Z-10'], deps=['E7-OPUS-03'], status='offen', stufe=2)
@@ -205,7 +205,7 @@ for i, (t, s, anf) in enumerate([
     ('Glossar Schließtechnik als Seite aus KERN (Laienerklärungen)', ['src/app/(site)/ratgeber/glossar/'], ['G-09', 'G-32'])], start=1):
     hk(f'E8-AUTOR-0{i}', t, 3, 'Autor', s, anf, ['Z-17'], deps=['E8-OPUS-02'], status='offen', stufe=2, art='pflicht' if i < 3 else 'kuer', wirkung=4 if i < 3 else 3)
 op('E8-OPUS-03', 'Videofassade mit Schrittanleitung und Transkript, CSP gezielt erweitert, VideoObject nur mit echtem Video', 'E8', 3, ['src/components/video/', 'next.config.ts'], ['E8-OPUS-02'], ['G-44'], ['Z-18'], klasse='M')
-op('E8-OPUS-04', 'Agenturnennung nach Abschnitt 15: Fußzeile, nofollow außer Start, Schalter aus, creator im WebSite-Knoten, Test', 'E8', 3, ['src/components/layout/agenturnennung.tsx', 'src/components/layout/agenturnennung.test.tsx'], ['E8-OPUS-02'], [], ['Z-16'], klasse='M', wirkung=2)
+op('E8-OPUS-04', 'Agenturnennung nach Abschnitt 15: Fußzeile, nofollow außer Start, Schalter aus, creator im WebSite-Knoten, Test, Textvorschlag für die Zustimmung, LINKREGISTER.md und REFERENZ.md', 'E8', 3, ['src/components/layout/agenturnennung.tsx', 'src/components/layout/agenturnennung.test.tsx', 'src/components/layout/site-footer.tsx', W + 'LINKREGISTER.md', W + 'REFERENZ.md'], ['E8-OPUS-02'], [], ['Z-16'], klasse='M', wirkung=2)
 op('E8-OPUS-05', 'Drei Logo-Konzepte (Bildmarke, Wortmarke, Favicon ab 16 px, schwarz-weiß und farbig) mit Vergleichsseite', 'E8', 4, [W + 'logo/'], ['E8-OPUS-02'], ['G-12'], ['Z-11'], wirkung=3)
 hk('E8-PRUEFER-01', 'R12-Prüfung der Logo-Konzepte und Ähnlichkeit zu Zeichen der Branche', 5, 'Prüfer', [W + 'berichte/E8-PRUEFER-01.md'], ['G-12'], ['Z-11', 'Z-20'], deps=['E8-OPUS-05'], status='offen')
 hk('E8-DOKUMENTAR-01', 'AUSSEN.md: Profile, Verzeichnisse, Innung, Herstellerverzeichnisse, Bewertungsbitte, Anschreiben an Partner', 4, 'Dokumentar', [W + 'AUSSEN.md'], ['G-41', 'G-43'], ['Z-22'], deps=['E8-OPUS-02'], status='offen', stufe=2)
@@ -224,32 +224,67 @@ hk('E9-PROBENUTZER-01', 'Probelauf im Admin: Dashboard, Vorgangsblätter, Bögen
 hk('E9-PRUEFER-01', 'Prüfstufe B Etappe E9', 3, 'Prüfer', [W + 'berichte/E9-PRUEFER-01.md'], [], ['Z-02', 'Z-19', 'Z-20'], deps=['E9-OPUS-03', 'E9-OPUS-04', 'E9-BAUMEISTER-01'], status='offen', klasse='L')
 
 # ---------------------------------------------------------------- E10 Kür (Vorrat)
-for i, (t, rolle, w) in enumerate([
-    ('Signaturmomente vertiefen (Inszenierung, Übergänge) nach Sichtabnahme', 'Orchestrator', 4),
-    ('Lade-, Leer- und Erfolgszustände mit Charakter', 'Baumeister', 3),
-    ('Fehlerseite 404 und 500 mit Weg zurück zum Hub', 'Baumeister', 2),
-    ('Teilen-Bilder je Rubrik aus dem Formsystem', 'Grafiker', 3),
-    ('Rechner und Vergleiche mit Informationsgewinn (Gleichschließung gegen Schließanlage, Kosten nach Türen)', 'Orchestrator', 4),
-    ('Labor-Kanten: llms.txt aus denselben Daten, Händler-Feed für Schlüssel nach Code', 'Baumeister', 2),
-    ('Leistung und Zugänglichkeit über die Budgets hinaus', 'Prüfer', 3),
-    ('Mikrotypografie (Silbentrennung, Ziffern, Anführungszeichen, Abstände)', 'Texter', 2)], start=1):
+KUER = [
+    ('Signaturmomente vertiefen (Inszenierung, Übergänge) nach Sichtabnahme', 'Orchestrator', 4, ['src/components/visual/inszenierung/', 'src/components/hub/']),
+    ('Lade-, Leer- und Erfolgszustände mit Charakter', 'Baumeister', 3, ['src/components/ui/zustaende/']),
+    ('Fehlerseite 404 und 500 mit Weg zurück zum Hub', 'Baumeister', 2, ['src/app/(site)/not-found.tsx', 'src/app/(site)/error.tsx']),
+    ('Teilen-Bilder je Rubrik aus dem Formsystem', 'Grafiker', 3, ['src/lib/og/']),
+    ('Rechner und Vergleiche mit Informationsgewinn (Gleichschließung gegen Schließanlage, Kosten nach Türen)', 'Orchestrator', 4, ['src/components/calculator/']),
+    ('Labor-Kanten: llms.txt aus denselben Daten, Händler-Feed für Schlüssel nach Code', 'Baumeister', 2, ['src/app/llms.txt/route.ts', 'src/app/feed/']),
+    ('Leistung und Zugänglichkeit über die Budgets hinaus', 'Prüfer', 3, [W + 'protokolle/E10-leistung.md', 'src/app/(site)/layout.tsx']),
+    ('Mikrotypografie (Silbentrennung, Ziffern, Anführungszeichen, Abstände)', 'Texter', 2, ['src/app/(site)/globals.css'])]
+for i, (t, rolle, w, schreib) in enumerate(KUER, start=1):
     mod = OPUS if rolle == 'Orchestrator' else HAIKU
-    P(f'E10-KUER-{i:02d}', t, 'E10', 1, rolle, mod, 3 if mod == OPUS else 2, 'M', [W + f'pakete/E10-KUER-{i:02d}.md'], ['E9-PRUEFER-01'], [], ['Z-01', 'Z-11'], 'kuer', w,
-      massstab=(MP + f'E10-KUER-{i:02d}.md' if mod == HAIKU else None), muster=(MUSTER_PAKET if mod == HAIKU else None))
+    P(f'E10-KUER-{i:02d}', t, 'E10', 1, rolle, mod, 3 if mod == OPUS else 2, 'M', schreib, ['E9-PRUEFER-01'], [], ['Z-01', 'Z-11'], 'kuer', w,
+      massstab=(MP + f'E10-KUER-{i:02d}.md' if mod == HAIKU else None), muster=(W + 'pakete/_MUSTER-REFERENZ.md' if mod == HAIKU else None))
+hk('E10-PRUEFER-01', 'Prüfstufe B Etappe E10 (Kür)', 2, 'Prüfer', [W + 'berichte/E10-PRUEFER-01.md'], [], ['Z-02', 'Z-11'], deps=[f'E10-KUER-{i:02d}' for i in range(1, 9)], status='offen', klasse='L', art='kuer', wirkung=3)
 
 # ---------------------------------------------------------------- Abschluss
-hk('EA-PRUEFER-01', 'Prüfstufe C: alle Ansichten, Inventarvergleich, Personas, Tastatur, Reflow, Zoom, erzwungene Farben, R1 bis R13, Platzhalter, Livegang', 1, 'Prüfer', [W + 'berichte/EA-PRUEFER-01.md'], [], ['Z-02', 'Z-13', 'Z-14', 'Z-15', 'Z-20'], deps=['E9-PRUEFER-01'], status='offen', klasse='L')
+hk('EA-PRUEFER-01', 'Prüfstufe C: alle Ansichten, Inventarvergleich, Personas, Tastatur, Reflow, Zoom, erzwungene Farben, R1 bis R13, Platzhalter, Livegang', 1, 'Prüfer', [W + 'berichte/EA-PRUEFER-01.md'], [], ['Z-02', 'Z-13', 'Z-14', 'Z-15', 'Z-20'], deps=['E9-PRUEFER-01', 'E9-PROBENUTZER-01', 'E10-PRUEFER-01'], status='offen', klasse='L')
 hk('EA-SPOTTER-01', 'Sichtung durch drei Spotter V1 bis V9, Slop-Index nachher', 1, 'Prüfer', [W + 'SLOP-AUDIT.md'], ['G-48'], ['Z-13'], deps=['E9-PRUEFER-01'], status='offen')
-P('EA-JURY-01', 'Endjury mit Blindvergleich Vorher und Nachher (frischer Opus)', 'EA', 2, 'Jury', OPUS, 3, 'L', [W + 'berichte/EA-JURY-01.md'], ['EA-PRUEFER-01', 'EA-SPOTTER-01'], [], ['Z-11'])
+P('EA-JURY-01', 'Endjury mit Blindvergleich Vorher und Nachher (frischer Opus)', 'EA', 2, 'Jury', OPUS, 3, 'L', [W + 'berichte/EA-JURY-01.md'], ['EA-PRUEFER-01', 'EA-SPOTTER-01', 'E8-BLIND-01'], [], ['Z-11'])
 op('EA-OPUS-01', 'BERICHT.md mit Galerie und Vorführpfad, MESSPLAN.md, Archiv docs/ausbau, Anleitung Zusammenführen und Zurückrollen, Entwurfs-PR', 'EA', 3, ['docs/ausbau/', W + 'BERICHT.md', W + 'MESSPLAN.md'], ['EA-JURY-01'], [], ['Z-22'], klasse='L')
-P('EA-ENDPRUEFER-01', 'Endprüfer (frischer Opus): jedes Häkchen, jede Ausnahme, jeder Endstatus gegen Beleg', 'EA', 4, 'Jury', OPUS, 3, 'L', [W + 'berichte/EA-ENDPRUEFER-01.md'], ['EA-OPUS-01'], [], ['Z-01', 'Z-03', 'Z-22'])
+P('EA-ENDPRUEFER-01', 'Endprüfer (frischer Opus): jedes Häkchen, jede Ausnahme, jeder Endstatus gegen Beleg', 'EA', 4, 'Jury', OPUS, 3, 'L', [W + 'berichte/EA-ENDPRUEFER-01.md'], ['EA-OPUS-01', 'EA-PRUEFER-02', 'EA-PRUEFER-03', 'EA-PRUEFER-04'], [], ['Z-01', 'Z-03', 'Z-22'])
 
 # ---------------------------------------------------------------- Bestandsabgleich (deckt alle „vorhanden“)
-hk('EA-PRUEFER-02', 'Bestandsabgleich: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen', 1, 'Prüfer', [W + 'erhebung/EA-bestandsabgleich.json'], json.load(open(os.path.join(AUSBAU, 'erhebung', 'E2-zuordnung-eingang.json')))['vorhanden'], ['Z-03'], deps=['E9-PRUEFER-01'], status='offen', klasse='L')
+_vorh = json.load(open(os.path.join(AUSBAU, 'erhebung', 'E2-zuordnung-eingang.json')))['vorhanden'] + ['M-17']
+for _n, (_t, _filter) in enumerate([('L-001 bis L-299', lambda k: k.startswith('L-') and int(k[2:]) < 300),
+                                     ('L-301 bis L-599', lambda k: k.startswith('L-') and int(k[2:]) >= 300),
+                                     ('EL, M und E', lambda k: not k.startswith('L-'))], start=2):
+    hk(f'EA-PRUEFER-0{_n}', f'Bestandsabgleich {_t}: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen', 1, 'Prüfer',
+       [W + f'erhebung/EA-bestandsabgleich-{_n}.json'], [k for k in _vorh if _filter(k)], ['Z-03'], deps=['E9-PRUEFER-01'], status='offen', klasse='L')
 hk('E2-DATENPFLEGER-01', 'Zuordnung jeder nicht vorhandenen Anforderung (L, EL, M, E) zu Paketen oder Menschensache', 2, 'Datenpfleger', [W + 'erhebung/E2-zuordnung.json'], [], ['Z-03'], deps=['E2-OPUS-02'], status='offen', stufe=2)
 
 hk('E6-BAUMEISTER-07', 'Schlüssel nach Code: Suche und Filter nach Typ, Codelinie und Hersteller, Codeerkennung in der Suche, kompakte Produktseite', 4, 'Baumeister', ['src/app/(site)/schluessel-nach-code/'], ['L-120', 'E-13', 'E-89', 'E-90'], ['Z-05'], deps=['E6-OPUS-01'], status='offen', stufe=2)
 hk('E9-DOKUMENTAR-01', 'Menschensachen fertig vorbereiten: jede Anforderung mit Vorschlag menschensache bekommt einen vollständigen Eintrag in MENSCHEN.md oder AUSSEN.md', 2, 'Dokumentar', [W + 'MENSCHEN.md'], [], ['Z-03', 'Z-22'], deps=['E9-OPUS-01'], status='offen', stufe=2)
+
+def muster_setzen():
+    spaet = {'E5', 'E6', 'E7', 'E8', 'E9', 'E10', 'EA'}
+    for p in P_LIST:
+        if p['modell'] == HAIKU and p['etappe'] in spaet:
+            p['muster'] = W + 'pakete/_MUSTER-REFERENZ.md'
+
+def status_uebernehmen():
+    pfad = os.path.join(AUSBAU, 'PLAN.json')
+    if not os.path.exists(pfad):
+        return
+    alt = {p['kennung']: p for p in json.load(open(pfad))['pakete']}
+    for p in P_LIST:
+        a = alt.get(p['kennung'])
+        if a and a['status'] != 'offen':
+            for f in ('status', 'commit', 'versuche', 'grund'):
+                p[f] = a[f]
+
+def kritischer_pfad():
+    nach = {p['kennung']: p for p in P_LIST}
+    memo = {}
+    def laenge(k):
+        if k in memo: return memo[k]
+        deps = [d for d in nach[k]['abhaengigkeiten'] if d in nach]
+        best = max((laenge(d) for d in deps), key=len, default=[])
+        memo[k] = best + [k]
+        return memo[k]
+    return max((laenge(k) for k in nach), key=len)
 
 def zuordnung_einlesen():
     pfad = os.path.join(AUSBAU, 'erhebung', 'E2-zuordnung.json')
@@ -300,10 +335,14 @@ def pruefe_g_deckung():
 def plan():
     normalisiere()
     zuordnung_einlesen()
+    muster_setzen()
+    status_uebernehmen()
     commits_eintragen()
     kl = collections.Counter(p['kostenklasse'] for p in P_LIST)
-    pro_tag = {'S': 12, 'M': 8, 'L': 3}
-    tage = sum(kl[k] / pro_tag[k] for k in kl) / 3 * 1.2   # drei Klassen teilen sich den Tag
+    # Schätzung E2 (nach E4 neu kalibriert): Haiku-M laufen zu viert parallel (etwa 24 je Tag im Kontingent),
+    # L-Pakete (Opus-Kern, Jury, Bildsätze) nacheinander (etwa 6 je Tag); Tage = Summe je Klasse, Puffer 20 %.
+    pro_tag = {'S': 36, 'M': 24, 'L': 6}
+    tage = sum(kl[k] / pro_tag[k] for k in kl) * 1.2
     pflicht = [p for p in P_LIST if p['art'] == 'pflicht']
     doc = {
         'version': 1,
@@ -312,9 +351,9 @@ def plan():
         'pakete': P_LIST,
         'mengengeruest': {'pakete': len(P_LIST), 'pflicht': len(pflicht), 'kuer': len(P_LIST) - len(pflicht),
                           'opus': sum(p['modell'] == OPUS for p in P_LIST), 'haiku': sum(p['modell'] == HAIKU for p in P_LIST),
-                          'kostenklassen': dict(kl), 'anforderungen': 622, 'kriterien': 22},
+                          'kostenklassen': dict(kl), 'anforderungen': len(json.load(open(os.path.join(AUSBAU, 'ANFORDERUNGEN.json')))['eintraege']), 'kriterien': 22},
         'kapazitaet': {'pakete_pro_tag': pro_tag, 'puffer': 0.2, 'tage': round(tage, 1)},
-        'kritischer_pfad': ['E2-OPUS-02', 'E3-OPUS-01', 'E3-OPUS-06', 'E3-OPUS-07', 'E3-PRUEFER-01', 'E4-OPUS-01', 'E4-OPUS-05', 'E4-JURY-01', 'E5-OPUS-01', 'E6-OPUS-01', 'E6-PRUEFER-01', 'E7-PRUEFER-01', 'E8-PRUEFER-02', 'E9-PRUEFER-01', 'EA-PRUEFER-01', 'EA-ENDPRUEFER-01'],
+        'kritischer_pfad': kritischer_pfad(),
         'vorrat': sorted([p['kennung'] for p in P_LIST if p['art'] == 'kuer'], key=lambda k: -next(p['wirkung'] for p in P_LIST if p['kennung'] == k)),
     }
     return doc

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-02T22:16:12+00:00",
+ "stand": "2026-11-03T01:28:25+00:00",
  "eintraege": [
   {
    "kennung": "G-01",
@@ -11,7 +11,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-01",
+    "E4-OPUS-01"
+   ],
    "beleg": null
   },
   {
@@ -23,7 +26,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-01"
+   ],
    "beleg": null
   },
   {
@@ -35,7 +40,12 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-GRAFIKER-01",
+    "E3-OPUS-01",
+    "E4-OPUS-01",
+    "E4-TEXTER-01"
+   ],
    "beleg": null
   },
   {
@@ -47,7 +57,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-02",
+    "E4-OPUS-04"
+   ],
    "beleg": null
   },
   {
@@ -59,7 +72,11 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-01",
+    "E3-OPUS-02",
+    "E4-OPUS-01"
+   ],
    "beleg": null
   },
   {
@@ -71,7 +88,12 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-01",
+    "E3-OPUS-02",
+    "E3-OPUS-03",
+    "E4-OPUS-02"
+   ],
    "beleg": null
   },
   {
@@ -83,7 +105,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-02"
+   ],
    "beleg": null
   },
   {
@@ -95,7 +119,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-03"
+   ],
    "beleg": null
   },
   {
@@ -107,7 +133,13 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-FACHKUNDLER-01",
+    "E4-OPUS-03",
+    "E5-AUTOR-01",
+    "E5-OPUS-02",
+    "E8-AUTOR-03"
+   ],
    "beleg": null
   },
   {
@@ -119,7 +151,11 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-01",
+    "E4-OPUS-04",
+    "E6-OPUS-01"
+   ],
    "beleg": null
   },
   {
@@ -131,7 +167,12 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-01",
+    "E3-OPUS-01",
+    "E4-OPUS-03",
+    "E6-OPUS-01"
+   ],
    "beleg": null
   },
   {
@@ -143,7 +184,11 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-01",
+    "E8-OPUS-05",
+    "E8-PRUEFER-01"
+   ],
    "beleg": null
   },
   {
@@ -155,7 +200,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-01",
+    "E4-OPUS-01"
+   ],
    "beleg": null
   },
   {
@@ -167,7 +215,12 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-RECHERCHEUR-01",
+    "E3-DATENPFLEGER-01",
+    "E3-OPUS-06",
+    "E4-OPUS-05"
+   ],
    "beleg": null
   },
   {
@@ -179,7 +232,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-06",
+    "E4-OPUS-05"
+   ],
    "beleg": null
   },
   {
@@ -191,7 +247,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-05"
+   ],
    "beleg": null
   },
   {
@@ -203,7 +261,12 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-FACHKUNDLER-03",
+    "E1-RECHERCHEUR-01",
+    "E3-OPUS-06",
+    "E4-OPUS-05"
+   ],
    "beleg": null
   },
   {
@@ -215,7 +278,13 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-FACHKUNDLER-03",
+    "E3-DATENPFLEGER-03",
+    "E3-OPUS-06",
+    "E6-OPUS-03",
+    "E9-OPUS-02"
+   ],
    "beleg": null
   },
   {
@@ -227,7 +296,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-01"
+   ],
    "beleg": null
   },
   {
@@ -239,7 +310,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-02"
+   ],
    "beleg": null
   },
   {
@@ -251,7 +324,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-OPUS-04"
+   ],
    "beleg": null
   },
   {
@@ -263,7 +338,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-DATENPFLEGER-03",
+    "E9-OPUS-02"
+   ],
    "beleg": null
   },
   {
@@ -275,7 +353,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-06",
+    "E8-AUTOR-01"
+   ],
    "beleg": null
   },
   {
@@ -287,7 +368,11 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-RECHERCHEUR-02",
+    "E3-OPUS-05",
+    "E6-OPUS-02"
+   ],
    "beleg": null
   },
   {
@@ -299,7 +384,12 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-RECHERCHEUR-02",
+    "E3-OPUS-05",
+    "E6-OPUS-02",
+    "E6-OPUS-04"
+   ],
    "beleg": null
   },
   {
@@ -311,7 +401,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-02"
+   ],
    "beleg": null
   },
   {
@@ -323,7 +415,14 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-FACHKUNDLER-01",
+    "E1-FACHKUNDLER-02",
+    "E1-FACHKUNDLER-04",
+    "E3-OPUS-07",
+    "E5-OPUS-01",
+    "E5-OPUS-03"
+   ],
    "beleg": null
   },
   {
@@ -335,7 +434,11 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-FACHKUNDLER-01",
+    "E3-OPUS-07",
+    "E5-OPUS-02"
+   ],
    "beleg": null
   },
   {
@@ -347,7 +450,14 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-FACHKUNDLER-02",
+    "E1-FACHKUNDLER-04",
+    "E3-OPUS-07",
+    "E5-AUTOR-01",
+    "E5-GRAFIKER-01",
+    "E8-AUTOR-01"
+   ],
    "beleg": null
   },
   {
@@ -359,7 +469,11 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-FACHKUNDLER-01",
+    "E5-AUTOR-01",
+    "E5-OPUS-01"
+   ],
    "beleg": null
   },
   {
@@ -371,7 +485,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01",
+    "E1-RECHERCHEUR-03"
+   ],
    "beleg": null
   },
   {
@@ -383,7 +500,13 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-FACHKUNDLER-01",
+    "E1-FACHKUNDLER-02",
+    "E1-FACHKUNDLER-04",
+    "E1-OPUS-01",
+    "E8-AUTOR-03"
+   ],
    "beleg": null
   },
   {
@@ -395,7 +518,11 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-DATENPFLEGER-03",
+    "E6-BAUMEISTER-04",
+    "E9-OPUS-02"
+   ],
    "beleg": null
   },
   {
@@ -407,7 +534,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-04"
+   ],
    "beleg": null
   },
   {
@@ -419,7 +548,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E5-OPUS-01"
+   ],
    "beleg": null
   },
   {
@@ -431,7 +562,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-09",
+    "E6-BAUMEISTER-03"
+   ],
    "beleg": null
   },
   {
@@ -443,7 +577,12 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-04",
+    "E5-OPUS-03",
+    "E6-OPUS-04",
+    "E9-BAUMEISTER-01"
+   ],
    "beleg": null
   },
   {
@@ -455,7 +594,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-01",
+    "E6-OPUS-01"
+   ],
    "beleg": null
   },
   {
@@ -467,7 +609,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-08",
+    "E7-OPUS-01"
+   ],
    "beleg": null
   },
   {
@@ -479,7 +624,13 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-DATENPFLEGER-03",
+    "E3-OPUS-08",
+    "E6-BAUMEISTER-05",
+    "E7-OPUS-02",
+    "E9-OPUS-02"
+   ],
    "beleg": null
   },
   {
@@ -491,7 +642,14 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-RECHERCHEUR-05",
+    "E6-BAUMEISTER-05",
+    "E7-AUTOR-01",
+    "E7-BAUMEISTER-01",
+    "E8-DOKUMENTAR-01",
+    "E8-OPUS-02"
+   ],
    "beleg": null
   },
   {
@@ -503,7 +661,11 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-RECHERCHEUR-06",
+    "E3-DATENPFLEGER-02",
+    "E7-OPUS-03"
+   ],
    "beleg": null
   },
   {
@@ -515,7 +677,15 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-RECHERCHEUR-05",
+    "E4-OPUS-01",
+    "E7-AUTOR-01",
+    "E8-AUTOR-02",
+    "E8-DOKUMENTAR-01",
+    "E8-OPUS-01",
+    "E8-OPUS-02"
+   ],
    "beleg": null
   },
   {
@@ -527,7 +697,12 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-RECHERCHEUR-06",
+    "E8-AUTOR-01",
+    "E8-DOKUMENTAR-02",
+    "E8-OPUS-03"
+   ],
    "beleg": null
   },
   {
@@ -539,7 +714,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-06",
+    "E8-DOKUMENTAR-02"
+   ],
    "beleg": null
   },
   {
@@ -551,7 +729,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-DOKUMENTAR-02"
+   ],
    "beleg": null
   },
   {
@@ -563,7 +743,11 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-FACHKUNDLER-02",
+    "E3-GRAFIKER-01",
+    "E5-GRAFIKER-01"
+   ],
    "beleg": null
   },
   {
@@ -575,7 +759,17 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-01",
+    "E4-TEXTER-01",
+    "E8-FAKTENPRUEFER-01",
+    "E8-TEXTER-01",
+    "E8-TEXTER-02",
+    "E8-TEXTER-03",
+    "E8-TEXTER-04",
+    "E8-TEXTER-05",
+    "EA-SPOTTER-01"
+   ],
    "beleg": null
   },
   {
@@ -587,7 +781,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-OPUS-01",
+    "E9-PROBENUTZER-01"
+   ],
    "beleg": null
   },
   {
@@ -599,7 +796,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-OPUS-04"
+   ],
    "beleg": null
   },
   {
@@ -611,7 +810,11 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-AUTOR-01",
+    "E2-OPUS-01",
+    "E8-AUTOR-02"
+   ],
    "beleg": null
   },
   {
@@ -622,7 +825,12 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-01",
+    "E4-JURY-01",
+    "E4-OPUS-01",
+    "EA-JURY-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Titelseite",
    "gruppe": null
@@ -635,7 +843,10 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-JURY-01",
+    "EA-JURY-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -648,7 +859,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:35",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -661,7 +874,11 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/navigation.ts:37",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-01",
+    "E4-OPUS-03",
+    "E8-OPUS-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -674,7 +891,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/navigation.ts:192",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-01",
+    "E4-OPUS-03"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -687,7 +907,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/page.tsx:187",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -700,7 +922,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:304",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -713,7 +937,10 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-JURY-01",
+    "EA-JURY-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -726,7 +953,11 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-JURY-01",
+    "E4-TEXTER-01",
+    "EA-JURY-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -739,7 +970,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/page.tsx:129",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -752,7 +985,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:124",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -765,7 +1000,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:146",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -778,7 +1015,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx:392",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -791,7 +1030,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:852",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -804,7 +1045,11 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/cities.json:3",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-06",
+    "E7-BAUMEISTER-01",
+    "E8-OPUS-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 01 Projektziel und Positionierung",
    "gruppe": null
@@ -817,7 +1062,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/components/layout/site-header.tsx:41",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-03"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -830,7 +1077,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:37",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -843,7 +1092,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:75",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -856,7 +1107,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:99",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -869,7 +1122,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:122",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -882,7 +1137,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:146",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -895,7 +1152,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx:94",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -908,7 +1167,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:192",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -921,7 +1182,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/service-pages.json:396",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -934,7 +1197,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:253",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -947,7 +1212,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:287",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -960,7 +1227,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:288",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -973,7 +1242,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:289",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -986,7 +1257,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:291",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -999,7 +1272,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:292",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -1012,7 +1287,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:293",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -1025,7 +1302,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/rechtliches/layout.tsx:38",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 02 Empfohlene Seitenstruktur",
    "gruppe": null
@@ -1038,7 +1317,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/content.ts:22",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 03 Startseite",
    "gruppe": null
@@ -1051,7 +1332,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/page.tsx:166",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 03 Startseite",
    "gruppe": null
@@ -1064,7 +1347,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/page.tsx:227",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 03 Startseite",
    "gruppe": null
@@ -1077,7 +1362,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/page.tsx:60",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 03 Startseite",
    "gruppe": null
@@ -1090,7 +1377,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/page.tsx:102",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 03 Startseite",
    "gruppe": null
@@ -1103,7 +1392,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/page.tsx:374",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 03 Startseite",
    "gruppe": null
@@ -1116,7 +1407,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/page.tsx:445",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 03 Startseite",
    "gruppe": null
@@ -1129,7 +1422,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/page.tsx:474",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 03 Startseite",
    "gruppe": null
@@ -1142,7 +1437,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/visual/area-theme.ts:17",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 03 Startseite",
    "gruppe": null
@@ -1155,7 +1452,10 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-JURY-01",
+    "EA-JURY-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 03 Startseite",
    "gruppe": null
@@ -1168,7 +1468,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/page.tsx:143",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 03 Startseite",
    "gruppe": null
@@ -1181,7 +1483,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:58",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1194,7 +1498,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:53",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1207,7 +1513,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:51",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1220,7 +1528,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:52",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1233,7 +1543,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/programmieren/page.tsx:24",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1246,7 +1558,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:60",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1259,7 +1573,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:61",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1272,7 +1588,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:54",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1285,7 +1603,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/funkschluessel/page.tsx:56",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1298,7 +1618,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/guides.json:5",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1311,7 +1633,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:62",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1324,7 +1648,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:51",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1337,7 +1663,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:52",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1350,7 +1678,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:53",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1363,7 +1693,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:60",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1376,7 +1708,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:61",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1389,7 +1723,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:54",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1402,7 +1738,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:68",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 04 Autoschlüssel Themenwelt und Leistungsbegriffe",
    "gruppe": null
@@ -1415,7 +1753,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:78",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1428,7 +1768,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:107",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1441,7 +1783,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:80",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1454,7 +1798,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:86",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1467,7 +1813,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:92",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1480,7 +1828,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:1068",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1493,7 +1843,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/autoschluessel/optionen.ts:27",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1506,7 +1858,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:110",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1519,7 +1873,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:116",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1532,7 +1888,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:122",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1545,7 +1903,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:128",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1558,7 +1918,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:134",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1571,7 +1933,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:140",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1584,7 +1948,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:146",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1597,7 +1963,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:152",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1610,7 +1978,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/forms/photo-upload.tsx:402",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1623,7 +1993,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/autoschluessel/optionen.ts:154",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1636,7 +2008,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/forms/photo-upload.tsx:376",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1649,7 +2023,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:1246",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1662,7 +2038,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/pricing.ts:41",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 05 Autoschlüssel: geführter Anfrage und Terminprozess",
    "gruppe": null
@@ -1675,7 +2053,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/globals/Einstellungen.ts:272",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1688,7 +2068,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/settings.json:101",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1701,7 +2083,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/globals/Einstellungen.ts:272",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1714,7 +2098,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/settings.json:102",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1727,7 +2113,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/pricing.ts:120",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1740,7 +2128,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/autoschluessel/preis-anzeige.tsx:56",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1753,7 +2143,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/pricing.ts:87",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1766,7 +2158,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Preisregeln.ts:93",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1779,7 +2173,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Sperrtage.ts:17",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1792,7 +2188,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/umgebung.ts:180",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1805,7 +2203,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/mail/vorlagen/zahlung.ts:30",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1818,7 +2218,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/integrations/stripe.ts:172",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-04"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1831,7 +2233,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/data/defaults/settings.ts:49",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-07",
+    "E4-OPUS-05"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1844,7 +2249,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Preisgruppen.ts:15",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 06 Termin, Preis und Anzahlung",
    "gruppe": null
@@ -1857,7 +2264,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx:30",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -1870,7 +2279,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:84",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -1883,7 +2294,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx:34",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -1896,7 +2309,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx:40",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -1909,7 +2324,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx:46",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -1922,7 +2339,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx:52",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -1935,7 +2354,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx:58",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -1948,7 +2369,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx:64",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -1961,7 +2384,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx:70",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -1974,7 +2399,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx:76",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -1987,7 +2414,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/hooks/vorgang-benachrichtigen.ts:164",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -2000,7 +2429,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/mail/vorlagen/freigabe.ts:131",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -2013,7 +2444,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-einschicken/page.tsx:249",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -2026,7 +2459,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/page.tsx:405",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -2039,7 +2474,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/page.tsx:424",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 07 Schlüssel nach Vorlage",
    "gruppe": null
@@ -2052,7 +2489,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/shop-liste.tsx:128",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2065,7 +2504,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/code-lines.json:4",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2078,7 +2519,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/code-lines.json:9",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2091,7 +2534,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx:56",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2104,7 +2549,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx:235",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2117,7 +2564,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/code-pattern.ts:17",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2130,7 +2579,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/code-lines.json:1057",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2143,7 +2594,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/code-lines.json:6",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2156,7 +2609,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/components/VorgaengeWerkzeuge.tsx:137",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2169,7 +2624,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/shop-liste.tsx:150",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-07"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2182,7 +2639,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Produkte.ts:32",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2195,7 +2654,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/vorgang-status.ts:6",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2208,7 +2669,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/settings.json:151",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2221,7 +2684,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/components/VorgaengeWerkzeuge.tsx:140",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 08 Schlüssel nach Code",
    "gruppe": null
@@ -2234,7 +2699,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx:83",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2247,7 +2714,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx:616",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2260,7 +2729,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/cylinder-catalog.json:51",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-07",
+    "E5-OPUS-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2273,7 +2745,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/cylinder-catalog.json:27",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2286,7 +2760,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/cylinder-catalog.json:126",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2299,7 +2775,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx:622",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E5-OPUS-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2312,7 +2790,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx:635",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2325,7 +2805,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/cylinder-catalog.json:146",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2338,7 +2820,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx:77",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2351,7 +2835,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx:222",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-07",
+    "E5-OPUS-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2364,7 +2851,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/cylinder-catalog.json:6",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2377,7 +2866,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/cylinder-catalog.json:31",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2390,7 +2881,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/cylinder-rules.ts:65",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2403,7 +2896,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx:66",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1, Kap. 09 Gleichschließende Zylinder und Sperrschließungen",
    "gruppe": null
@@ -2416,7 +2911,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/page.tsx:16",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Mechanische Schließanlagen und Systemerklärung",
    "gruppe": null
@@ -2429,7 +2926,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:264",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Mechanische Schließanlagen und Systemerklärung",
    "gruppe": null
@@ -2442,7 +2941,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/schliessanlagen/system-erklaerung.tsx:34",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Systemerklärung, Welche Systeme dem Kunden erklärt werden müssen (Tabelle)",
    "gruppe": null
@@ -2455,7 +2956,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/schliessanlagen/system-erklaerung.tsx:71",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Systemerklärung, Welche Systeme dem Kunden erklärt werden müssen (Tabelle)",
    "gruppe": null
@@ -2468,7 +2971,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/schliessanlagen/system-erklaerung.tsx:109",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Systemerklärung, Welche Systeme dem Kunden erklärt werden müssen (Tabelle)",
    "gruppe": null
@@ -2481,7 +2986,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/schliessanlagen/system-erklaerung.tsx:147",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Systemerklärung, Welche Systeme dem Kunden erklärt werden müssen (Tabelle)",
    "gruppe": null
@@ -2494,7 +3001,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/schliessanlagen/system-erklaerung.tsx:186",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Systemerklärung, Welche Systeme dem Kunden erklärt werden müssen (Tabelle)",
    "gruppe": null
@@ -2507,7 +3016,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/schliessanlagen/system-erklaerung.tsx:251",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Interaktive Erklärung",
    "gruppe": null
@@ -2520,7 +3031,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/ui/info-tip.tsx:42",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Interaktive Erklärung",
    "gruppe": null
@@ -2533,7 +3046,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/schliessanlagen/system-erklaerung.tsx:29",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Interaktive Erklärung",
    "gruppe": null
@@ -2546,7 +3061,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:252",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, geführte Projektplanung",
    "gruppe": null
@@ -2559,7 +3076,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:264",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, Frageblock Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2572,7 +3091,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:1103",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, Frageblock Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2585,7 +3106,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:1208",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, Frageblock Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2598,7 +3121,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:1291",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, Frageblock Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2611,7 +3136,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:1388",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, Frageblock Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2624,7 +3151,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:1484",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, Frageblock Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2637,7 +3166,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:1609",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, Frageblock Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2650,7 +3181,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:1717",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, Frageblock Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2663,7 +3196,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:1785",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, Frageblock Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2676,7 +3211,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:1811",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, Frageblock Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2689,7 +3226,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:252",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, Ausgabe",
    "gruppe": null
@@ -2702,7 +3241,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/druckansichten.ts:80",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Schließanlagen, Ausgabe",
    "gruppe": null
@@ -2715,7 +3256,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:170",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen",
    "gruppe": null
@@ -2728,7 +3271,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:170",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen",
    "gruppe": null
@@ -2741,7 +3286,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx:66",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen, Themenliste (Soll-Liste)",
    "gruppe": null
@@ -2754,7 +3301,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx:80",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen, Themenliste (Soll-Liste)",
    "gruppe": null
@@ -2767,7 +3316,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx:94",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen, Themenliste (Soll-Liste)",
    "gruppe": null
@@ -2780,7 +3331,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx:108",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen, Themenliste (Soll-Liste)",
    "gruppe": null
@@ -2793,7 +3346,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx:122",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen, Themenliste (Soll-Liste)",
    "gruppe": null
@@ -2806,7 +3361,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx:136",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen, Themenliste (Soll-Liste)",
    "gruppe": null
@@ -2819,7 +3376,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx:150",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen, Themenliste (Soll-Liste)",
    "gruppe": null
@@ -2832,7 +3391,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx:164",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen, Themenliste (Soll-Liste)",
    "gruppe": null
@@ -2845,7 +3406,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx:178",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen, Themenliste (Soll-Liste)",
    "gruppe": null
@@ -2858,7 +3421,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx:192",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen, Themenliste (Soll-Liste)",
    "gruppe": null
@@ -2871,7 +3436,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/page.tsx:208",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronische Zutrittslösungen, Themenliste (Soll-Liste)",
    "gruppe": null
@@ -2884,7 +3451,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx:43",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronischer Zutrittskonfigurator, Abfrage Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2897,7 +3466,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx:114",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronischer Zutrittskonfigurator, Abfrage Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2910,7 +3481,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx:135",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronischer Zutrittskonfigurator, Abfrage Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2923,7 +3496,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx:191",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronischer Zutrittskonfigurator, Abfrage Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2936,7 +3511,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx:226",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronischer Zutrittskonfigurator, Abfrage Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2949,7 +3526,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx:82",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronischer Zutrittskonfigurator, Abfrage Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2962,7 +3541,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx:299",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronischer Zutrittskonfigurator, Abfrage Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2975,7 +3556,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx:326",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Elektronischer Zutrittskonfigurator, Abfrage Beispiele (Soll-Liste)",
    "gruppe": null
@@ -2988,7 +3571,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:193",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik",
    "gruppe": null
@@ -3001,7 +3586,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:11",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik, Leistungsliste (Soll-Liste)",
    "gruppe": null
@@ -3014,7 +3601,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:22",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik, Leistungsliste (Soll-Liste)",
    "gruppe": null
@@ -3027,7 +3616,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:33",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik, Leistungsliste (Soll-Liste)",
    "gruppe": null
@@ -3040,7 +3631,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:44",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik, Leistungsliste (Soll-Liste)",
    "gruppe": null
@@ -3053,7 +3646,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:55",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik, Leistungsliste (Soll-Liste)",
    "gruppe": null
@@ -3066,7 +3661,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:66",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik, Leistungsliste (Soll-Liste)",
    "gruppe": null
@@ -3079,7 +3676,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:77",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik, Leistungsliste (Soll-Liste)",
    "gruppe": null
@@ -3092,7 +3691,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:88",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik, Leistungsliste (Soll-Liste)",
    "gruppe": null
@@ -3105,7 +3706,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:99",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik, Leistungsliste (Soll-Liste)",
    "gruppe": null
@@ -3118,7 +3721,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:110",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik, Leistungsliste (Soll-Liste)",
    "gruppe": null
@@ -3131,7 +3736,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/tuer-und-schliesstechnik/page.tsx:66",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik, Interne Verknüpfung",
    "gruppe": null
@@ -3144,7 +3751,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:193",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Tür und Schließtechnik, Interne Verknüpfung",
    "gruppe": null
@@ -3157,7 +3766,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:222",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Sicherheitstechnik und Überwachung",
    "gruppe": null
@@ -3170,7 +3781,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/content.ts:273",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Sicherheitstechnik und Überwachung",
    "gruppe": null
@@ -3183,7 +3796,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:124",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Sicherheitstechnik und Überwachung, Leistungsbereiche (Tabelle)",
    "gruppe": null
@@ -3196,7 +3811,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:135",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Sicherheitstechnik und Überwachung, Leistungsbereiche (Tabelle)",
    "gruppe": null
@@ -3209,7 +3826,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:146",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Sicherheitstechnik und Überwachung, Leistungsbereiche (Tabelle)",
    "gruppe": null
@@ -3222,7 +3841,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:157",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Sicherheitstechnik und Überwachung, Leistungsbereiche (Tabelle)",
    "gruppe": null
@@ -3235,7 +3856,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:168",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Sicherheitstechnik und Überwachung, Leistungsbereiche (Tabelle)",
    "gruppe": null
@@ -3248,7 +3871,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:179",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Sicherheitstechnik und Überwachung, Leistungsbereiche (Tabelle)",
    "gruppe": null
@@ -3261,7 +3886,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/service-pages.ts:190",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Sicherheitstechnik und Überwachung, Leistungsbereiche (Tabelle)",
    "gruppe": null
@@ -3274,7 +3901,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx:236",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Geführter Sicherheitscheck (Soll-Liste)",
    "gruppe": null
@@ -3287,7 +3916,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx:242",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Geführter Sicherheitscheck (Soll-Liste)",
    "gruppe": null
@@ -3300,7 +3931,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx:86",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Geführter Sicherheitscheck (Soll-Liste)",
    "gruppe": null
@@ -3313,7 +3946,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx:96",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Geführter Sicherheitscheck (Soll-Liste)",
    "gruppe": null
@@ -3326,7 +3961,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx:260",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Geführter Sicherheitscheck (Soll-Liste)",
    "gruppe": null
@@ -3339,7 +3976,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx:981",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Geführter Sicherheitscheck (Soll-Liste)",
    "gruppe": null
@@ -3352,7 +3991,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/sicherheitstechnik/page.tsx:307",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Recht und Transparenz",
    "gruppe": null
@@ -3365,7 +4006,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/sicherheitstechnik/page.tsx:317",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Recht und Transparenz",
    "gruppe": null
@@ -3378,7 +4021,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/sicherheitstechnik/page.tsx:321",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Recht und Transparenz",
    "gruppe": null
@@ -3391,7 +4036,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:304",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Vier unterschiedliche Kundenprozesse",
    "gruppe": null
@@ -3404,7 +4051,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:304",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Vier unterschiedliche Kundenprozesse",
    "gruppe": null
@@ -3417,7 +4066,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/store/cart.ts:40",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Vier unterschiedliche Kundenprozesse, Tabelle",
    "gruppe": null
@@ -3430,7 +4081,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/service-und-termin/anfrage/page.tsx:29",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Vier unterschiedliche Kundenprozesse, Tabelle",
    "gruppe": null
@@ -3443,7 +4096,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:945",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E5-OPUS-01",
+    "E6-BAUMEISTER-04"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Vier unterschiedliche Kundenprozesse, Tabelle",
    "gruppe": null
@@ -3456,7 +4112,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:318",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Vier unterschiedliche Kundenprozesse, Tabelle",
    "gruppe": null
@@ -3469,7 +4127,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/flow/flow-shell.tsx:45",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Einheitliches Erlebnis",
    "gruppe": null
@@ -3482,7 +4142,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Fahrzeugmarken.ts:28",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Architektur und deutschlandweiter Ausbau",
    "gruppe": null
@@ -3495,7 +4157,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:52",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Architektur, Leistungscluster (Soll-Liste)",
    "gruppe": null
@@ -3508,7 +4172,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:51",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Architektur, Leistungscluster (Soll-Liste)",
    "gruppe": null
@@ -3521,7 +4187,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:76",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Architektur, Leistungscluster (Soll-Liste)",
    "gruppe": null
@@ -3534,7 +4202,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/page.tsx:36",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Architektur, Leistungscluster (Soll-Liste)",
    "gruppe": null
@@ -3547,7 +4217,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:147",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Architektur, Leistungscluster (Soll-Liste)",
    "gruppe": null
@@ -3560,7 +4232,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:170",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Architektur, Leistungscluster (Soll-Liste)",
    "gruppe": null
@@ -3573,7 +4247,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:235",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Architektur, Leistungscluster (Soll-Liste)",
    "gruppe": null
@@ -3586,7 +4262,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/vehicles.json:19",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-06",
+    "E8-OPUS-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Architektur, Fahrzeug und Stadtseiten (Soll-Liste)",
    "gruppe": null
@@ -3599,7 +4278,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/cities.json:3",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E7-AUTOR-01",
+    "E7-BAUMEISTER-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Architektur, Fahrzeug und Stadtseiten (Soll-Liste)",
    "gruppe": null
@@ -3612,7 +4294,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/guides.json:4",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Architektur, Fahrzeug und Stadtseiten (Soll-Liste)",
    "gruppe": null
@@ -3625,7 +4309,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/code-lines.json:6",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Regel",
    "gruppe": null
@@ -3638,7 +4324,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/payload/fields/gemeinsam.ts:196",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-04",
+    "E8-OPUS-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: SEO Regel",
    "gruppe": null
@@ -3651,7 +4340,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:95",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Technische Anforderungen und Backend",
    "gruppe": null
@@ -3664,7 +4355,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:95",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Technische Anforderungen und Backend",
    "gruppe": null
@@ -3677,7 +4370,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:136",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Technische Anforderungen und Backend, Backend-Funktionen (Tabelle)",
    "gruppe": null
@@ -3690,7 +4385,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:232",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Technische Anforderungen und Backend, Backend-Funktionen (Tabelle)",
    "gruppe": null
@@ -3703,7 +4400,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:150",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Technische Anforderungen und Backend, Backend-Funktionen (Tabelle)",
    "gruppe": null
@@ -3716,7 +4415,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/globals/Einstellungen.ts:277",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Technische Anforderungen und Backend, Backend-Funktionen (Tabelle)",
    "gruppe": null
@@ -3729,7 +4430,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:194",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Technische Anforderungen und Backend, Backend-Funktionen (Tabelle)",
    "gruppe": null
@@ -3742,7 +4445,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Produkte.ts:31",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Technische Anforderungen und Backend, Backend-Funktionen (Tabelle)",
    "gruppe": null
@@ -3755,7 +4460,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/druckansichten.ts:80",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Technische Anforderungen und Backend, Backend-Funktionen (Tabelle)",
    "gruppe": null
@@ -3768,7 +4475,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/fields/gemeinsam.ts:193",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Technische Anforderungen und Backend, Backend-Funktionen (Tabelle)",
    "gruppe": null
@@ -3781,7 +4490,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/vorgaenge-csv.ts:15",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Technische Anforderungen und Backend, Backend-Funktionen (Tabelle)",
    "gruppe": null
@@ -3794,7 +4505,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/components/forms/photo-upload.tsx:420",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-09",
+    "E6-OPUS-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Mobile zuerst (Soll-Liste)",
    "gruppe": null
@@ -3807,7 +4521,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/flow/flow-shell.tsx:125",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Mobile zuerst (Soll-Liste)",
    "gruppe": null
@@ -3820,7 +4536,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Kundendateien.ts:21",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Datenschutz, Sicherheit und rechtliche Pflichtbereiche",
    "gruppe": null
@@ -3833,7 +4551,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/rechtliches/impressum/page.tsx:24",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Datenschutz, Pflichtbereiche (Soll-Liste)",
    "gruppe": null
@@ -3846,7 +4566,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/rechtliches/widerruf/page.tsx:27",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Datenschutz, Pflichtbereiche (Soll-Liste)",
    "gruppe": null
@@ -3859,7 +4581,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/rechtliches/agb/page.tsx:19",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Datenschutz, Pflichtbereiche (Soll-Liste)",
    "gruppe": null
@@ -3872,7 +4596,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/server/datei-pruefung.ts:78",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Datenschutz, Pflichtbereiche (Soll-Liste)",
    "gruppe": null
@@ -3885,7 +4611,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/globals/Einstellungen.ts:335",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Datenschutz, Pflichtbereiche (Soll-Liste)",
    "gruppe": null
@@ -3898,7 +4626,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Kundendateien.ts:21",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Datenschutz, Pflichtbereiche (Soll-Liste)",
    "gruppe": null
@@ -3911,7 +4641,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/einwilligung.ts:13",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Datenschutz, Pflichtbereiche (Soll-Liste)",
    "gruppe": null
@@ -3924,7 +4656,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "docs/LIVEGANG.md:173",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Datenschutz, Pflichtbereiche (Soll-Liste)",
    "gruppe": null
@@ -3937,7 +4671,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/formular-schutz.ts:6",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Datenschutz, Pflichtbereiche (Soll-Liste)",
    "gruppe": null
@@ -3950,7 +4686,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/rechtliches/datenschutz/datenschutz-inhalt.tsx:181",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Datenschutz, Pflichtbereiche (Soll-Liste)",
    "gruppe": null
@@ -3963,7 +4701,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/livegang-pruefung.ts:11",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-OPUS-03"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Vor Livegang",
    "gruppe": null
@@ -3976,7 +4716,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:287",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Vor Livegang",
    "gruppe": null
@@ -3989,7 +4731,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Empfohlene Entwicklungsreihenfolge",
    "gruppe": null
@@ -4002,7 +4746,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:38",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Empfohlene Entwicklungsreihenfolge, Phasen (Soll-Liste)",
    "gruppe": null
@@ -4015,7 +4761,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:123",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Empfohlene Entwicklungsreihenfolge, Phasen (Soll-Liste)",
    "gruppe": null
@@ -4028,7 +4776,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:170",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Empfohlene Entwicklungsreihenfolge, Phasen (Soll-Liste)",
    "gruppe": null
@@ -4041,7 +4791,12 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/cities.json:3",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-06",
+    "E7-BAUMEISTER-01",
+    "E8-AUTOR-01",
+    "E8-OPUS-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Empfohlene Entwicklungsreihenfolge, Phasen (Soll-Liste)",
    "gruppe": null
@@ -4054,7 +4809,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "vercel.json:6",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Empfohlene Entwicklungsreihenfolge, Phasen (Soll-Liste)",
    "gruppe": null
@@ -4067,7 +4824,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:927",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: MVP darf nicht fehlen",
    "gruppe": null
@@ -4080,7 +4839,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/site-url.ts:27",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4093,7 +4854,10 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-01",
+    "E4-OPUS-05"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4106,7 +4870,10 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-03",
+    "E6-BAUMEISTER-04"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4119,7 +4886,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:56",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4132,7 +4901,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/settings.json:101",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4145,7 +4916,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/settings.json:102",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4158,7 +4931,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/anfrage/page.tsx:17",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4171,7 +4946,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/code-lines.json:3",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4184,7 +4961,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx:633",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4197,7 +4976,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:1050",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4210,7 +4991,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:170",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4223,7 +5006,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:193",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4236,7 +5021,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/data/defaults/content.ts:279",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4249,7 +5036,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/navigation.ts:306",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4262,7 +5051,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/forms/photo-upload.tsx:420",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4275,7 +5066,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Einsatzgebiete.ts:9",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Kurzbriefing für den Webdesigner (Soll-Liste)",
    "gruppe": null
@@ -4288,7 +5081,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:95",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Abnahmeziel",
    "gruppe": null
@@ -4301,7 +5096,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/components/flow/flow-shell.tsx:45",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-01",
+    "E6-OPUS-01"
+   ],
    "beleg": null,
    "abschnitt": "Projektleitfaden v2.1: Abnahmeziel",
    "gruppe": null
@@ -4315,7 +5113,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01",
+    "E1-RECHERCHEUR-04"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4328,7 +5129,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4341,7 +5144,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01",
+    "E1-RECHERCHEUR-04"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4354,7 +5160,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4367,7 +5175,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01",
+    "E1-RECHERCHEUR-04"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4380,7 +5191,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4393,7 +5206,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4406,7 +5221,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4419,7 +5236,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E0-OPUS-01",
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4432,7 +5252,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01",
+    "E1-RECHERCHEUR-03"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4445,7 +5268,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4458,7 +5283,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4471,7 +5298,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4484,7 +5313,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01",
+    "E1-RECHERCHEUR-03"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4497,7 +5329,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4510,7 +5344,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4523,7 +5359,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4536,7 +5374,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4549,7 +5389,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4562,7 +5404,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4575,7 +5419,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4588,7 +5434,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4601,7 +5449,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4614,7 +5464,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4627,7 +5479,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4640,7 +5494,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4653,7 +5509,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4666,7 +5524,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4679,7 +5539,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4692,7 +5554,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": false
   },
@@ -4705,7 +5569,10 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01",
+    "E1-RECHERCHEUR-04"
+   ],
    "beleg": null,
    "labor": true
   },
@@ -4718,7 +5585,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": true
   },
@@ -4731,7 +5600,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": true
   },
@@ -4744,7 +5615,9 @@
    "bestand": null,
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-OPUS-01"
+   ],
    "beleg": null,
    "labor": true
   },
@@ -4756,7 +5629,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4768,7 +5643,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4780,7 +5657,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx:97",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4792,7 +5671,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/codelinie.ts:108",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4804,7 +5685,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/forms/photo-upload.tsx:420",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4816,7 +5699,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/vorgang-status.ts:8",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4828,7 +5713,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/foto-freigabe.ts:45",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4840,7 +5727,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/foto-freigabe.ts:26",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4852,7 +5741,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/terminort.ts:41",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4864,7 +5755,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/terminort.ts:3",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4876,7 +5769,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/terminort.ts:39",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4888,7 +5783,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:306",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E5-OPUS-01",
+    "E5-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4900,7 +5798,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:781",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4912,7 +5812,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/cylinder-summary.ts:16",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4924,7 +5826,11 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/terminort.ts:61",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-JURY-01",
+    "E8-AUTOR-02",
+    "EA-JURY-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4936,7 +5842,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/components/layout/mobile-action-bar.tsx:16",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-01",
+    "E4-OPUS-04"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4948,7 +5857,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/vorgang-status.ts:6",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4960,7 +5871,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/foto-freigabe.ts:49",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4972,7 +5885,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/layout/mobile-action-bar.tsx:16",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4984,7 +5899,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -4996,7 +5913,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5008,7 +5927,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx:94",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5020,7 +5941,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx:97",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5032,7 +5955,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/codelinie-texte.ts:37",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5044,7 +5969,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx:94",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5056,7 +5983,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/hersteller/[hersteller]/page.tsx:44",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5068,7 +5997,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/kategorie/[familie]/page.tsx:39",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5080,7 +6011,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/page.tsx:35",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5092,7 +6025,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-einschicken/page.tsx:30",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5104,7 +6039,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/page.tsx:31",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5116,7 +6053,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/seo.json:346",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5128,7 +6067,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/page.tsx:33",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5140,7 +6081,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/layout.tsx:71",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5152,7 +6095,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx:94",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-OPUS-01",
+    "E8-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5164,7 +6110,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/sitemap.ts:1",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5176,7 +6124,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/components/seo/json-ld.tsx:168",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5188,7 +6138,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/umgebung.ts:62",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-OPUS-01",
+    "E9-OPUS-03"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5200,7 +6153,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "next.config.ts:85",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5212,7 +6167,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/umgebung.ts:67",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5224,7 +6181,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/statistik.ts:19",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5236,7 +6195,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/rechtliches/cookie-einstellungen/page.tsx:1",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5248,7 +6209,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/components/ui/image-placeholder.tsx:9",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5260,7 +6223,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/rechtliches/versand-und-zahlung/versand-inhalt.tsx:22",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-02",
+    "E8-TEXTER-03"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5272,7 +6238,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/service-und-termin/vor-ort/page.tsx:84",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-05",
+    "E7-BAUMEISTER-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5284,7 +6253,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/service-und-termin/vor-ort/page.tsx:169",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-05",
+    "E7-AUTOR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5296,7 +6268,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/sitemap.ts:1",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5308,7 +6282,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5320,7 +6296,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:52",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-08",
+    "E7-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5332,7 +6311,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/partner-werden/page.tsx:36",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-08",
+    "E7-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5344,7 +6326,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/partner-werden/page.tsx:55",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E7-OPUS-02",
+    "E8-TEXTER-05"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5356,7 +6341,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/page.tsx:62",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5368,7 +6355,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/page.tsx:91",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5380,7 +6369,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:35",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5392,7 +6383,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-08"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5404,7 +6397,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/partner-formular.tsx:275",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5416,7 +6411,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/partner-formular.tsx:292",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5428,7 +6425,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/partner-formular.tsx:303",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5440,7 +6439,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/partner-formular.tsx:337",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5452,7 +6453,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/partner-formular.tsx:348",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5464,7 +6467,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/partner-formular.tsx:395",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5476,7 +6481,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/partner-formular.tsx:419",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5488,7 +6495,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/partner-formular.tsx:368",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5500,7 +6509,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/partner-formular.tsx:428",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5512,7 +6523,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/partner-formular.tsx:448",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5524,7 +6537,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:52",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5536,7 +6551,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-08"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5548,7 +6565,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5560,7 +6579,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5572,7 +6593,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5584,7 +6607,11 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/payload/globals/Einstellungen.ts:330",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-08",
+    "E3-OPUS-09",
+    "E9-BAUMEISTER-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5596,7 +6623,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5608,7 +6637,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/partner-werden/page.tsx:55",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-TEXTER-05"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5620,7 +6651,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5632,7 +6665,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5644,7 +6679,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5656,7 +6693,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5668,7 +6707,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:52",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5680,7 +6721,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E7-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5692,7 +6735,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5704,7 +6749,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": "src/components/ui/image-placeholder.tsx:9",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5716,7 +6763,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/settings.json:18",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5728,7 +6777,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": "content/code-lines.json:6",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5740,7 +6791,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/cities.json:7",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5752,7 +6805,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5764,7 +6819,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5776,7 +6833,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5788,7 +6847,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5800,7 +6861,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": "package.json:42",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5812,7 +6875,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "package.json:72",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-UPGRADE-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5824,7 +6889,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-PRUEFER-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5836,7 +6903,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "next.config.ts:85",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5848,7 +6917,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5860,7 +6931,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5872,7 +6945,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5884,7 +6959,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5896,7 +6973,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5908,7 +6987,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-vorlage/page.tsx:213",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5920,7 +7001,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5932,7 +7015,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5944,7 +7029,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/page.tsx:90",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5956,7 +7043,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5968,7 +7057,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5980,7 +7071,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/artikel/page.tsx:86",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -5992,7 +7085,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/bestellung/[id]/page.tsx:51",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6004,7 +7099,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6016,7 +7113,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6028,7 +7127,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6040,7 +7141,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6052,7 +7155,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6064,7 +7169,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/payload/collections/Produkte.ts:241",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6076,7 +7183,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6088,7 +7197,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6100,7 +7211,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6112,7 +7225,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/rechtliches/versand-und-zahlung/versand-inhalt.tsx:22",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6124,7 +7239,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/codelinie.ts:108",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6136,7 +7253,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/navigation.ts:36",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-03"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6148,7 +7267,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/rechtliches/texte.ts:15",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6160,7 +7281,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/components/ui/image-placeholder.tsx:9",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6172,7 +7295,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx:137",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-06",
+    "E8-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6184,7 +7310,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/components/forms/photo-upload.tsx:420",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-09",
+    "E6-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6196,7 +7325,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/pricing.ts:42",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6208,7 +7339,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/pricing.ts:118",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6220,7 +7353,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-04"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6232,7 +7367,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/foto-freigabe.ts:51",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6244,7 +7381,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/components/visual/interaktiv/code-fundstelle-interaktiv.tsx:1",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6256,7 +7395,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/codelinie.ts:108",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6268,7 +7409,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/druckansichten.ts:313",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6280,7 +7423,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/page.tsx:117",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-07"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6292,7 +7437,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": "src/payload/globals/Zylinderkatalog.ts:38",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-07"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6304,7 +7451,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/druckansichten.ts:1",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6316,7 +7465,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/sicherheitstechnik/page.tsx:33",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6328,7 +7479,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/cities.json:7",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E7-AUTOR-01",
+    "E7-BAUMEISTER-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6340,7 +7494,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/codelinie-texte.ts:37",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6352,7 +7508,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/api/cron/taeglich/route.ts:35",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6364,7 +7522,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/druckansichten.ts:1",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6376,7 +7536,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/payload/collections/Fahrzeugmarken.ts:81",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-01",
+    "E8-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6388,7 +7551,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6400,7 +7565,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6412,7 +7579,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/codelinie.ts:108",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6424,7 +7593,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/foto-freigabe.ts:45",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6436,7 +7607,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/terminort.ts:39",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6448,7 +7621,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:306",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6460,7 +7635,11 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/terminort.ts:61",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-JURY-01",
+    "E8-AUTOR-02",
+    "EA-JURY-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6472,7 +7651,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/navigation.ts:36",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-01",
+    "E4-OPUS-04"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6484,7 +7666,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/foto-freigabe.ts:3",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6496,7 +7680,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx:97",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6508,7 +7694,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx:94",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6520,7 +7708,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/hersteller/[hersteller]/page.tsx:44",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6532,7 +7722,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-einschicken/page.tsx:30",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6544,7 +7736,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/umgebung.ts:62",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-OPUS-01",
+    "E9-OPUS-03"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6556,7 +7751,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/umgebung.ts:67",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6568,7 +7765,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/statistik.ts:19",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6580,7 +7779,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/components/ui/image-placeholder.tsx:9",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-02",
+    "E8-TEXTER-03"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6592,7 +7794,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/service-und-termin/vor-ort/page.tsx:84",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-05",
+    "E7-BAUMEISTER-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6604,7 +7809,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:52",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-08",
+    "E7-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6616,7 +7824,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/page.tsx:91",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6628,7 +7838,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/payload/collections/Vorgaenge.ts:52",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6640,7 +7852,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6652,7 +7866,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/partner-werden/page.tsx:55",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E7-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6664,7 +7880,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E2-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6676,7 +7894,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/pricing.ts:118",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6688,7 +7908,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx:252",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6700,7 +7922,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/code-lines.json:1057",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6712,7 +7936,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/mail/vorlagen/erinnerung.ts:12",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-05",
+    "E8-TEXTER-05"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6724,7 +7951,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-05"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6736,7 +7965,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/pricing.ts:42",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6748,7 +7979,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/service-und-termin/vor-ort/page.tsx:84",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6760,7 +7993,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/vehicles.json:446",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6772,7 +8007,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/data/defaults/code-lines.ts:221",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-TEXTER-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6784,7 +8021,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/cylinder-catalog.json:183",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6796,7 +8035,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-05"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6808,7 +8049,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/server/termin-verwaltung.ts:50",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-04"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6820,7 +8063,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/payload/hooks/vorgang-benachrichtigen.ts:106",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-04",
+    "E6-OPUS-04"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6832,7 +8078,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-06"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6844,7 +8092,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/server/benachrichtigungen.ts:198",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-04"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6856,7 +8106,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:898",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6868,7 +8120,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6880,7 +8134,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/terminort.ts:17",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-05",
+    "E6-BAUMEISTER-05"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6892,7 +8149,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/anfrage/assistent.tsx:945",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6904,7 +8163,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-05"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6916,7 +8177,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/api/cron/taeglich/route.ts:35",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6928,7 +8191,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/flow/use-flow.ts:99",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6940,7 +8205,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6952,7 +8219,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/settings.json:101",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6964,7 +8233,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6976,7 +8247,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/pricing.ts:118",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -6988,7 +8261,10 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-05",
+    "E8-TEXTER-03"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7000,7 +8276,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/warenkorb/warenkorb-ansicht.tsx:463",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7012,7 +8290,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7024,7 +8304,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/seo.json:10",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7036,7 +8318,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": "src/components/ui/image-placeholder.tsx:9",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7048,7 +8332,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7060,7 +8346,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/cities.json:7",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E7-AUTOR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7072,7 +8360,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/service-und-termin/vor-ort/page.tsx:84",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-05",
+    "E7-AUTOR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7084,7 +8375,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/autoschluessel/marken/[make]/[model]/page.tsx:137",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7096,7 +8389,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/payload/collections/Fahrzeugmarken.ts:81",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-06"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7108,7 +8403,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/vehicles.json:446",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7120,7 +8417,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/components/seo/json-ld.tsx:312",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7132,7 +8431,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/guides.json:1",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-AUTOR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7144,7 +8445,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/artikel/page.tsx:69",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7156,7 +8459,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/navigation.ts:36",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-01",
+    "E4-OPUS-04"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7168,7 +8474,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/navigation.ts:124",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-03"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7180,7 +8488,10 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-04",
+    "E8-TEXTER-04"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7192,7 +8503,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/page.tsx:117",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-07"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7204,7 +8517,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-07"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7216,7 +8531,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/rechtliches/versand-und-zahlung/versand-inhalt.tsx:22",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-05",
+    "E6-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7228,7 +8546,10 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-01",
+    "E8-TEXTER-03"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7240,7 +8561,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx:252",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7252,7 +8575,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7264,7 +8589,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7276,7 +8603,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "content/seo.json:346",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7288,7 +8617,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:306",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-07",
+    "E5-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7300,7 +8632,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/hersteller/[hersteller]/page.tsx:44",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7312,7 +8646,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schluessel-nach-code/[slug]/page.tsx:97",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7324,7 +8660,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/mail/vorlagen/freigabe.ts:1",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-06",
+    "E8-TEXTER-05"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7336,7 +8675,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/foto-freigabe.ts:26",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7348,7 +8689,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "content/code-lines.json:1057",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-09",
+    "E6-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7360,7 +8704,10 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E5-OPUS-01",
+    "E5-OPUS-03"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7372,7 +8719,10 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E7-AUTOR-01",
+    "E8-OPUS-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7384,7 +8734,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx:1788",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7396,7 +8748,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/app/(site)/partner-werden/page.tsx:91",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7408,7 +8762,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7420,7 +8776,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/druckansichten.ts:313",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7432,7 +8790,10 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-05",
+    "E9-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7444,7 +8805,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-04"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7456,7 +8819,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/druckansichten.ts:117",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7468,7 +8833,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7480,7 +8847,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7492,7 +8861,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/vorgaenge-csv.ts:31",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-TEXTER-05",
+    "E9-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7504,7 +8876,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/kennzahlen.ts:32",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-04",
+    "E9-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7516,7 +8891,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7528,7 +8905,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E3-OPUS-04"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7540,7 +8919,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/kalender-ics.ts:60",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7552,7 +8933,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/server/benachrichtigungen.ts:198",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-04"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7564,7 +8947,10 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/lib/mail/vorlagen/zahlung.ts:105",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-05",
+    "E6-OPUS-04"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7576,7 +8962,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": "src/lib/rechtliches/zahlarten.ts:18",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7588,7 +8976,9 @@
    "bestand": "fehlt",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7600,7 +8990,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/components/layout/site-footer.tsx:43",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E4-OPUS-03"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7612,7 +9004,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/app/(site)/bestellung/[id]/jetzt-bezahlen.tsx:26",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7624,7 +9018,9 @@
    "bestand": "teilweise",
    "bestand_fundstelle": "src/payload/globals/Einstellungen.ts:19",
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7636,7 +9032,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7648,7 +9046,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7660,7 +9060,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E6-BAUMEISTER-05"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7672,7 +9074,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7684,7 +9088,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E8-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7696,7 +9102,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E1-RECHERCHEUR-05"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7708,7 +9116,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-OPUS-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7720,7 +9130,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7732,7 +9144,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7744,7 +9158,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-OPUS-03"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7756,7 +9172,9 @@
    "bestand": "vorhanden",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "EA-PRUEFER-02"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7768,7 +9186,9 @@
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
    "status": "offen",
-   "pakete": [],
+   "pakete": [
+    "E9-OPUS-03"
+   ],
    "beleg": null,
    "gruppe": null
   },
@@ -7779,6 +9199,20 @@
    "inhalt": "Nächster Schritt: Der Inhaber beantwortet F-10 bis F-15, F-23 und F-27; danach Paket A umsetzen und I-59 aktivieren.",
    "bestand": "nicht pruefbar",
    "bestand_fundstelle": null,
+   "status": "offen",
+   "pakete": [
+    "E9-DOKUMENTAR-01"
+   ],
+   "beleg": null,
+   "gruppe": null
+  },
+  {
+   "kennung": "M-17",
+   "quelle": "M",
+   "fundstelle": "docs/gestaltung/MENSCHEN.md:25",
+   "inhalt": "Codelinien-Texte: Startwerte korrigiert (laut Wortlaut erledigt).",
+   "bestand": "vorhanden",
+   "bestand_fundstelle": "docs/gestaltung/MENSCHEN.md:25",
    "status": "offen",
    "pakete": [],
    "beleg": null,

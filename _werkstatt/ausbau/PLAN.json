@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T01:27:58.487Z",
+ "stand": "2026-11-03T01:40:59.793Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -31,7 +31,7 @@
    "ziel": "Plan, KERN v2, Abnahme",
    "eingang": "E0, E1",
    "ausgang": "KERN.md v2, PLAN.json, ABNAHME.md",
-   "tor": "plan.mjs pruefen OK, Vorab-Scheitern eingearbeitet",
+   "tor": "plan.mjs pruefen OK; jeder Befund aus E2-PRUEFER-01 und E2-PRUEFER-02 als Planänderung umgesetzt oder in ENTSCHEIDUNGEN.md begründet verworfen; höchstens zwei Runden",
    "kriterien": [
     "Z-01"
    ],
@@ -686,10 +686,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "abgenommen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "7aaf72a",
    "massstab": null,
    "muster": null
   },
@@ -874,7 +874,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "offen",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -906,7 +906,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "offen",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -1220,7 +1220,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "abgenommen",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -1249,7 +1249,7 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "läuft",
    "grund": null,
    "versuche": 0,
    "commit": null,
@@ -1499,7 +1499,7 @@
   },
   {
    "kennung": "E3-OPUS-07",
-   "titel": "Konfigurator-Kern: Systemdaten, Schließplan, Matrix mit Vorlagen, Preisfunktion, Maßprüfung, Zwischenstand per Link",
+   "titel": "Konfigurator-Kern: Systemdaten, Schließplan, Matrix mit Vorlagen, Preisfunktion über die vorhandenen Preisregeln (Preiswerte unverändert, G9), Maßprüfung, Zwischenstand per Link",
    "etappe": "E3",
    "welle": 4,
    "rolle": "Orchestrator",
@@ -1617,7 +1617,7 @@
   },
   {
    "kennung": "E3-OPUS-10",
-   "titel": "Übernahmen aus fremden Branches nach Denkprotokoll (Stripe-API-Version, JSON-LD-Detailseiten)",
+   "titel": "Übernahmen aus fremden Branches nach Denkprotokoll (Stripe-API-Version, JSON-LD-Detailseiten); Zahlungsverhalten unverändert, mit Test (G9)",
    "etappe": "E3",
    "welle": 5,
    "rolle": "Orchestrator",
@@ -1696,7 +1696,9 @@
     "src/components/visual/icons/karte.tsx",
     "src/components/visual/icons/video.tsx",
     "src/components/visual/glyphen/pause.tsx",
-    "src/components/visual/glyphen/bewegung.tsx"
+    "src/components/visual/glyphen/bewegung.tsx",
+    "src/components/visual/icons/icons.test.tsx",
+    "src/components/visual/glyphen/glyphen.test.tsx"
    ],
    "abhaengigkeiten": [
     "E2-PRUEFER-01"
@@ -1936,7 +1938,8 @@
     "src/lib/navigation.ts",
     "src/lib/navigation.test.ts",
     "src/components/layout/site-header.tsx",
-    "src/components/layout/mobile-action-bar.tsx"
+    "src/components/layout/mobile-action-bar.tsx",
+    "src/components/layout/site-footer.tsx"
    ],
    "abhaengigkeiten": [
     "E4-OPUS-01"
@@ -2005,7 +2008,7 @@
   },
   {
    "kennung": "E4-OPUS-05",
-   "titel": "Autoschlüssel-Weg auf Zielniveau: Fahrzeugwahl aus dem Katalog, nicht gefunden als Anfrage, Fahrzeugschein, Schlüsselbild, Anzahlung, Termin",
+   "titel": "Autoschlüssel-Weg auf Zielniveau: Fahrzeugwahl aus dem Katalog, nicht gefunden als Anfrage, Fahrzeugschein, Schlüsselbild, Anzahlung, Termin (Anzahlungs- und Zahlungsverhalten unverändert, mit Test, G9)",
    "etappe": "E4",
    "welle": 3,
    "rolle": "Orchestrator",
@@ -2215,6 +2218,7 @@
    ],
    "abhaengigkeiten": [
     "E4-JURY-01",
+    "E4-BLIND-01",
     "E1-OPUS-01"
    ],
    "anforderungen": [
@@ -2338,7 +2342,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E5-GRAFIKER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E5-AUTOR-01",
@@ -2371,7 +2375,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E5-AUTOR-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E5-PROBENUTZER-01",
@@ -2401,7 +2405,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E5-PROBENUTZER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E5-PRUEFER-01",
@@ -2431,7 +2435,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E5-PRUEFER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E6-OPUS-01",
@@ -2447,7 +2451,8 @@
     "src/lib/wege/"
    ],
    "abhaengigkeiten": [
-    "E5-PRUEFER-01"
+    "E5-PRUEFER-01",
+    "E5-PROBENUTZER-01"
    ],
    "anforderungen": [
     "G-38",
@@ -2573,7 +2578,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E6-BAUMEISTER-02",
@@ -2603,7 +2608,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-02.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E6-BAUMEISTER-03",
@@ -2633,7 +2638,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-03.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E6-BAUMEISTER-04",
@@ -2666,7 +2671,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-04.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E6-BAUMEISTER-05",
@@ -2706,7 +2711,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-05.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E6-BAUMEISTER-06",
@@ -2738,7 +2743,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-06.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E6-OPUS-04",
@@ -2748,7 +2753,7 @@
    "rolle": "Orchestrator",
    "modell": "opus-5.5",
    "stufe": 3,
-   "kostenklasse": "M",
+   "kostenklasse": "L",
    "schreibrechte": [
     "src/lib/pdf/blaetter/",
     "src/app/(site)/service-und-termin/terminstatus/"
@@ -2803,7 +2808,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E6-PROBENUTZER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E6-PRUEFER-01",
@@ -2833,11 +2838,11 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E6-PRUEFER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E7-OPUS-01",
-   "titel": "Partner werden: Bewerbungsdurchlauf mit Status, Nachweise, Vertrag-PDF aus Platzhalter-Vorlage, Unterschrift als Upload, Partner-AGB",
+   "titel": "Partner werden: Bewerbungsdurchlauf mit Status, Nachweise, Vertrag-PDF aus Platzhalter-Vorlage, Unterschrift als Upload, Partner-AGB und Vertrag nur als markierter Entwurf zur Anwaltsprüfung (R10)",
    "etappe": "E7",
    "welle": 1,
    "rolle": "Orchestrator",
@@ -2849,7 +2854,8 @@
     "src/lib/pdf/partnervertrag.ts"
    ],
    "abhaengigkeiten": [
-    "E6-PRUEFER-01"
+    "E6-PRUEFER-01",
+    "E6-PROBENUTZER-01"
    ],
    "anforderungen": [
     "G-39",
@@ -2969,7 +2975,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E7-BAUMEISTER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E7-AUTOR-01",
@@ -3007,7 +3013,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E7-AUTOR-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E7-PRUEFER-01",
@@ -3039,7 +3045,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E7-PRUEFER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-OPUS-01",
@@ -3165,7 +3171,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-TEXTER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-TEXTER-02",
@@ -3196,7 +3202,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-TEXTER-02.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-TEXTER-03",
@@ -3231,7 +3237,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-TEXTER-03.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-TEXTER-04",
@@ -3264,7 +3270,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-TEXTER-04.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-TEXTER-05",
@@ -3300,7 +3306,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-TEXTER-05.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-AUTOR-01",
@@ -3334,7 +3340,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-AUTOR-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-AUTOR-02",
@@ -3367,7 +3373,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-AUTOR-02.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-AUTOR-03",
@@ -3398,7 +3404,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-AUTOR-03.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-OPUS-03",
@@ -3433,7 +3439,7 @@
   },
   {
    "kennung": "E8-OPUS-04",
-   "titel": "Agenturnennung nach Abschnitt 15: Fußzeile, nofollow außer Start, Schalter aus, creator im WebSite-Knoten, Test",
+   "titel": "Agenturnennung nach Abschnitt 15: Fußzeile, nofollow außer Start, Schalter aus, creator im WebSite-Knoten, Test, Textvorschlag für die Zustimmung, LINKREGISTER.md und REFERENZ.md",
    "etappe": "E8",
    "welle": 3,
    "rolle": "Orchestrator",
@@ -3442,7 +3448,10 @@
    "kostenklasse": "M",
    "schreibrechte": [
     "src/components/layout/agenturnennung.tsx",
-    "src/components/layout/agenturnennung.test.tsx"
+    "src/components/layout/agenturnennung.test.tsx",
+    "src/components/layout/site-footer.tsx",
+    "_werkstatt/ausbau/LINKREGISTER.md",
+    "_werkstatt/ausbau/REFERENZ.md"
    ],
    "abhaengigkeiten": [
     "E8-OPUS-02"
@@ -3519,7 +3528,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-PRUEFER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-DOKUMENTAR-01",
@@ -3552,7 +3561,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-DOKUMENTAR-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-DOKUMENTAR-02",
@@ -3587,7 +3596,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-DOKUMENTAR-02.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-FAKTENPRUEFER-01",
@@ -3618,7 +3627,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-FAKTENPRUEFER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E8-BLIND-01",
@@ -3675,7 +3684,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E8-PRUEFER-02.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E9-OPUS-01",
@@ -3848,7 +3857,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E9-BAUMEISTER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E9-PROBENUTZER-01",
@@ -3880,7 +3889,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E9-PROBENUTZER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E9-PRUEFER-01",
@@ -3912,7 +3921,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E9-PRUEFER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E10-KUER-01",
@@ -3924,7 +3933,8 @@
    "stufe": 3,
    "kostenklasse": "M",
    "schreibrechte": [
-    "_werkstatt/ausbau/pakete/E10-KUER-01.md"
+    "src/components/visual/inszenierung/",
+    "src/components/hub/"
    ],
    "abhaengigkeiten": [
     "E9-PRUEFER-01"
@@ -3953,7 +3963,7 @@
    "stufe": 2,
    "kostenklasse": "M",
    "schreibrechte": [
-    "_werkstatt/ausbau/pakete/E10-KUER-02.md"
+    "src/components/ui/zustaende/"
    ],
    "abhaengigkeiten": [
     "E9-PRUEFER-01"
@@ -3970,7 +3980,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E10-KUER-02.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E10-KUER-03",
@@ -3982,7 +3992,8 @@
    "stufe": 2,
    "kostenklasse": "M",
    "schreibrechte": [
-    "_werkstatt/ausbau/pakete/E10-KUER-03.md"
+    "src/app/(site)/not-found.tsx",
+    "src/app/(site)/error.tsx"
    ],
    "abhaengigkeiten": [
     "E9-PRUEFER-01"
@@ -3999,7 +4010,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E10-KUER-03.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E10-KUER-04",
@@ -4011,7 +4022,7 @@
    "stufe": 2,
    "kostenklasse": "M",
    "schreibrechte": [
-    "_werkstatt/ausbau/pakete/E10-KUER-04.md"
+    "src/lib/og/"
    ],
    "abhaengigkeiten": [
     "E9-PRUEFER-01"
@@ -4028,7 +4039,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E10-KUER-04.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E10-KUER-05",
@@ -4040,7 +4051,7 @@
    "stufe": 3,
    "kostenklasse": "M",
    "schreibrechte": [
-    "_werkstatt/ausbau/pakete/E10-KUER-05.md"
+    "src/components/calculator/"
    ],
    "abhaengigkeiten": [
     "E9-PRUEFER-01"
@@ -4069,7 +4080,8 @@
    "stufe": 2,
    "kostenklasse": "M",
    "schreibrechte": [
-    "_werkstatt/ausbau/pakete/E10-KUER-06.md"
+    "src/app/llms.txt/route.ts",
+    "src/app/feed/"
    ],
    "abhaengigkeiten": [
     "E9-PRUEFER-01"
@@ -4086,7 +4098,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E10-KUER-06.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E10-KUER-07",
@@ -4098,7 +4110,8 @@
    "stufe": 2,
    "kostenklasse": "M",
    "schreibrechte": [
-    "_werkstatt/ausbau/pakete/E10-KUER-07.md"
+    "_werkstatt/ausbau/protokolle/E10-leistung.md",
+    "src/app/(site)/layout.tsx"
    ],
    "abhaengigkeiten": [
     "E9-PRUEFER-01"
@@ -4115,7 +4128,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E10-KUER-07.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E10-KUER-08",
@@ -4127,7 +4140,7 @@
    "stufe": 2,
    "kostenklasse": "M",
    "schreibrechte": [
-    "_werkstatt/ausbau/pakete/E10-KUER-08.md"
+    "src/app/(site)/globals.css"
    ],
    "abhaengigkeiten": [
     "E9-PRUEFER-01"
@@ -4144,7 +4157,43 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E10-KUER-08.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
+  },
+  {
+   "kennung": "E10-PRUEFER-01",
+   "titel": "Prüfstufe B Etappe E10 (Kür)",
+   "etappe": "E10",
+   "welle": 2,
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "L",
+   "schreibrechte": [
+    "_werkstatt/ausbau/berichte/E10-PRUEFER-01.md"
+   ],
+   "abhaengigkeiten": [
+    "E10-KUER-01",
+    "E10-KUER-02",
+    "E10-KUER-03",
+    "E10-KUER-04",
+    "E10-KUER-05",
+    "E10-KUER-06",
+    "E10-KUER-07",
+    "E10-KUER-08"
+   ],
+   "anforderungen": [],
+   "kriterien": [
+    "Z-02",
+    "Z-11"
+   ],
+   "art": "kuer",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/E10-PRUEFER-01.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "EA-PRUEFER-01",
@@ -4159,7 +4208,9 @@
     "_werkstatt/ausbau/berichte/EA-PRUEFER-01.md"
    ],
    "abhaengigkeiten": [
-    "E9-PRUEFER-01"
+    "E9-PRUEFER-01",
+    "E9-PROBENUTZER-01",
+    "E10-PRUEFER-01"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -4176,7 +4227,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "EA-SPOTTER-01",
@@ -4206,7 +4257,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/EA-SPOTTER-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "EA-JURY-01",
@@ -4222,7 +4273,8 @@
    ],
    "abhaengigkeiten": [
     "EA-PRUEFER-01",
-    "EA-SPOTTER-01"
+    "EA-SPOTTER-01",
+    "E8-BLIND-01"
    ],
    "anforderungen": [
     "L-001",
@@ -4291,7 +4343,10 @@
     "_werkstatt/ausbau/berichte/EA-ENDPRUEFER-01.md"
    ],
    "abhaengigkeiten": [
-    "EA-OPUS-01"
+    "EA-OPUS-01",
+    "EA-PRUEFER-02",
+    "EA-PRUEFER-03",
+    "EA-PRUEFER-04"
    ],
    "anforderungen": [],
    "kriterien": [
@@ -4310,7 +4365,7 @@
   },
   {
    "kennung": "EA-PRUEFER-02",
-   "titel": "Bestandsabgleich: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
+   "titel": "Bestandsabgleich L-001 bis L-299: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
    "etappe": "EA",
    "welle": 1,
    "rolle": "Prüfer",
@@ -4318,7 +4373,7 @@
    "stufe": 1,
    "kostenklasse": "L",
    "schreibrechte": [
-    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich.json"
+    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-2.json"
    ],
    "abhaengigkeiten": [
     "E9-PRUEFER-01"
@@ -4442,7 +4497,36 @@
     "L-135",
     "L-136",
     "L-137",
-    "L-138",
+    "L-138"
+   ],
+   "kriterien": [
+    "Z-03"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-02.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
+  },
+  {
+   "kennung": "EA-PRUEFER-03",
+   "titel": "Bestandsabgleich L-301 bis L-599: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
+   "etappe": "EA",
+   "welle": 1,
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "L",
+   "schreibrechte": [
+    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-3.json"
+   ],
+   "abhaengigkeiten": [
+    "E9-PRUEFER-01"
+   ],
+   "anforderungen": [
     "L-301",
     "L-302",
     "L-303",
@@ -4572,7 +4656,36 @@
     "L-442",
     "L-443",
     "L-444",
-    "L-445",
+    "L-445"
+   ],
+   "kriterien": [
+    "Z-03"
+   ],
+   "art": "pflicht",
+   "wirkung": 3,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-03.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
+  },
+  {
+   "kennung": "EA-PRUEFER-04",
+   "titel": "Bestandsabgleich EL, M und E: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen",
+   "etappe": "EA",
+   "welle": 1,
+   "rolle": "Prüfer",
+   "modell": "haiku-5.5",
+   "stufe": 1,
+   "kostenklasse": "L",
+   "schreibrechte": [
+    "_werkstatt/ausbau/erhebung/EA-bestandsabgleich-4.json"
+   ],
+   "abhaengigkeiten": [
+    "E9-PRUEFER-01"
+   ],
+   "anforderungen": [
     "EL-03",
     "EL-05",
     "EL-06",
@@ -4644,7 +4757,8 @@
     "E-108",
     "E-111",
     "E-121",
-    "E-136"
+    "E-136",
+    "M-17"
    ],
    "kriterien": [
     "Z-03"
@@ -4655,8 +4769,8 @@
    "grund": null,
    "versuche": 0,
    "commit": null,
-   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-02.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "massstab": "_werkstatt/ausbau/pakete/EA-PRUEFER-04.md",
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E2-DATENPFLEGER-01",
@@ -4717,7 +4831,7 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-07.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
   {
    "kennung": "E9-DOKUMENTAR-01",
@@ -4826,47 +4940,75 @@
    "versuche": 0,
    "commit": null,
    "massstab": "_werkstatt/ausbau/pakete/E9-DOKUMENTAR-01.md",
-   "muster": "_werkstatt/ausbau/pakete/_GEMEINSAM.md"
+   "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   }
  ],
  "mengengeruest": {
-  "pakete": 129,
-  "pflicht": 120,
-  "kuer": 9,
+  "pakete": 132,
+  "pflicht": 122,
+  "kuer": 10,
   "opus": 47,
-  "haiku": 82,
+  "haiku": 85,
   "kostenklassen": {
-   "M": 80,
-   "L": 49
+   "M": 79,
+   "L": 53
   },
-  "anforderungen": 622,
+  "anforderungen": 623,
   "kriterien": 22
  },
  "kapazitaet": {
   "pakete_pro_tag": {
-   "S": 12,
-   "M": 8,
-   "L": 3
+   "S": 36,
+   "M": 24,
+   "L": 6
   },
   "puffer": 0.2,
-  "tage": 10.5
+  "tage": 14.5
  },
  "kritischer_pfad": [
+  "E1-FACHKUNDLER-03",
+  "E2-OPUS-01",
   "E2-OPUS-02",
+  "E2-PRUEFER-01",
   "E3-OPUS-01",
   "E3-OPUS-06",
   "E3-OPUS-07",
+  "E3-OPUS-08",
+  "E3-OPUS-09",
+  "E3-OPUS-10",
+  "E3-UPGRADE-01",
   "E3-PRUEFER-01",
   "E4-OPUS-01",
+  "E4-OPUS-03",
   "E4-OPUS-05",
+  "E4-TEXTER-01",
+  "E4-PRUEFER-01",
   "E4-JURY-01",
   "E5-OPUS-01",
+  "E5-OPUS-02",
+  "E5-AUTOR-01",
+  "E5-PRUEFER-01",
   "E6-OPUS-01",
+  "E6-BAUMEISTER-06",
+  "E6-OPUS-04",
   "E6-PRUEFER-01",
+  "E7-OPUS-01",
+  "E7-OPUS-03",
+  "E7-BAUMEISTER-01",
   "E7-PRUEFER-01",
+  "E8-OPUS-01",
+  "E8-OPUS-02",
+  "E8-AUTOR-01",
+  "E8-FAKTENPRUEFER-01",
   "E8-PRUEFER-02",
+  "E9-OPUS-01",
+  "E9-OPUS-03",
   "E9-PRUEFER-01",
+  "E10-KUER-01",
+  "E10-PRUEFER-01",
   "EA-PRUEFER-01",
+  "EA-JURY-01",
+  "EA-OPUS-01",
   "EA-ENDPRUEFER-01"
  ],
  "vorrat": [
@@ -4876,6 +5018,7 @@
   "E10-KUER-02",
   "E10-KUER-04",
   "E10-KUER-07",
+  "E10-PRUEFER-01",
   "E10-KUER-03",
   "E10-KUER-06",
   "E10-KUER-08"

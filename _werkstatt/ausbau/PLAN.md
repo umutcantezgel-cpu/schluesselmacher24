@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T01:27:11+00:00
+Stand: 2026-11-03T01:40:59.793Z
 
-Etappe 1/12 · Welle 4 · Pflicht 22/120 · Kür 0/9 · läuft 4 · blockiert 0
+Etappe 2/12 · Welle 1 · Pflicht 23/122 · Kür 0/10 · läuft 4 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -46,7 +46,7 @@ Geplante Tage: 0.5
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E0-PRUEFER-07 | Vorher-Stand B1: Bildsatz, axe, Konsole, Bewegung, Kontaktbögen | haiku-5.5 | L | pflicht | 3 | committet | d93f8ca |
-| E0-OPUS-02 | Lagebild, Menschen-Liste, Hauptansichten, Denkprotokolle A-001 bis A-008 | opus-5.5 | M | pflicht | 3 | abgenommen |  |
+| E0-OPUS-02 | Lagebild, Menschen-Liste, Hauptansichten, Denkprotokolle A-001 bis A-008 | opus-5.5 | M | pflicht | 3 | committet | 7aaf72a |
 
 ### Welle 5
 
@@ -69,10 +69,10 @@ Geplante Tage: 0.5
 | E1-FACHKUNDLER-03 | Transponder und Klonbarkeit | haiku-5.5 | M | pflicht | 3 | committet | 04b90e7 |
 | E1-RECHERCHEUR-01 | Fahrzeugdatenquellen mit Lizenz | haiku-5.5 | M | pflicht | 3 | committet | 04b90e7 |
 | E1-RECHERCHEUR-02 | Versandwege für Einsenden und Rückversand | haiku-5.5 | M | pflicht | 3 | abgenommen |  |
-| E1-RECHERCHEUR-03 | Wettbewerb: Struktur, Abläufe, Preise | haiku-5.5 | M | pflicht | 3 | läuft |  |
-| E1-RECHERCHEUR-04 | Lagebild Suche und KI-Antworten prüfen | haiku-5.5 | M | pflicht | 3 | läuft |  |
+| E1-RECHERCHEUR-03 | Wettbewerb: Struktur, Abläufe, Preise | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E1-RECHERCHEUR-04 | Lagebild Suche und KI-Antworten prüfen | haiku-5.5 | M | pflicht | 3 | offen |  |
 | E1-RECHERCHEUR-05 | Nachfrage, Familien und Ergebnisbilder | haiku-5.5 | M | pflicht | 3 | läuft |  |
-| E1-RECHERCHEUR-06 | Kartendaten Hessen und Videofassade | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E1-RECHERCHEUR-06 | Kartendaten Hessen und Videofassade | haiku-5.5 | M | pflicht | 3 | läuft |  |
 
 ### Welle 2
 
@@ -89,7 +89,7 @@ Geplante Tage: 0.5
 
 ## E2 · Plan, KERN v2, Abnahme
 
-Tor: plan.mjs pruefen OK, Vorab-Scheitern eingearbeitet
+Tor: plan.mjs pruefen OK; jeder Befund aus E2-PRUEFER-01 und E2-PRUEFER-02 als Planänderung umgesetzt oder in ENTSCHEIDUNGEN.md begründet verworfen; höchstens zwei Runden
 Kriterien: Z-01
 Geplante Tage: 0.3
 
@@ -104,9 +104,9 @@ Geplante Tage: 0.3
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E2-PRUEFER-01 | L0: plan.mjs pruefen und Checkliste des Plans | haiku-5.5 | M | pflicht | 3 | offen |  |
-| E2-PRUEFER-02 | L0: Vorab-Scheitern „Woran stockt der Lauf am dritten Tag?“ | haiku-5.5 | M | pflicht | 3 | offen |  |
-| E2-DATENPFLEGER-01 | Zuordnung jeder nicht vorhandenen Anforderung (L, EL, M, E) zu Paketen oder Menschensache | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E2-PRUEFER-01 | L0: plan.mjs pruefen und Checkliste des Plans | haiku-5.5 | M | pflicht | 3 | abgenommen |  |
+| E2-PRUEFER-02 | L0: Vorab-Scheitern „Woran stockt der Lauf am dritten Tag?“ | haiku-5.5 | M | pflicht | 3 | läuft |  |
+| E2-DATENPFLEGER-01 | Zuordnung jeder nicht vorhandenen Anforderung (L, EL, M, E) zu Paketen oder Menschensache | haiku-5.5 | M | pflicht | 3 | abgenommen |  |
 
 ## E3 · Fundament: Datenmodelle, Kernlogik, Designsystem, Bewegung, PDF, Versand, Fahrzeuge, Konfigurator-Kern, Partner, Uploads
 
@@ -142,7 +142,7 @@ Geplante Tage: 1.5
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E3-OPUS-07 | Konfigurator-Kern: Systemdaten, Schließplan, Matrix mit Vorlagen, Preisfunktion, Maßprüfung, Zwischenstand per Link | opus-5.5 | L | pflicht | 5 | offen |  |
+| E3-OPUS-07 | Konfigurator-Kern: Systemdaten, Schließplan, Matrix mit Vorlagen, Preisfunktion über die vorhandenen Preisregeln (Preiswerte unverändert, G9), Maßprüfung, Zwischenstand per Link | opus-5.5 | L | pflicht | 5 | offen |  |
 | E3-OPUS-08 | Partner-Modelle: Statusautomat Bewerbung, Vermittlungszustände, Abrechnung A und B als reine Funktionen, Zugriffsrechte | opus-5.5 | L | pflicht | 4 | offen |  |
 | E3-DATENPFLEGER-01 | Fahrzeugdaten-Import aus offenen Quellen mit Quelle je Eintrag und Abdeckungsmessung | haiku-5.5 | L | pflicht | 3 | offen |  |
 
@@ -151,7 +151,7 @@ Geplante Tage: 1.5
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E3-OPUS-09 | Uploads: neue Kategorien, Pflicht-Uploads und Nachweise serverseitig je Weg, Fristen je Zweck | opus-5.5 | L | pflicht | 5 | offen |  |
-| E3-OPUS-10 | Übernahmen aus fremden Branches nach Denkprotokoll (Stripe-API-Version, JSON-LD-Detailseiten) | opus-5.5 | M | pflicht | 2 | offen |  |
+| E3-OPUS-10 | Übernahmen aus fremden Branches nach Denkprotokoll (Stripe-API-Version, JSON-LD-Detailseiten); Zahlungsverhalten unverändert, mit Test (G9) | opus-5.5 | M | pflicht | 2 | offen |  |
 
 ### Welle 6
 
@@ -189,7 +189,7 @@ Geplante Tage: 1
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E4-OPUS-04 | Übergang Kachel zu Rubrik (gemeinsames Element, Rückfall, Fokus auf h1), Rubrikkopf, „So läuft Ihr Auftrag ab“ aus Daten | opus-5.5 | L | pflicht | 4 | offen |  |
-| E4-OPUS-05 | Autoschlüssel-Weg auf Zielniveau: Fahrzeugwahl aus dem Katalog, nicht gefunden als Anfrage, Fahrzeugschein, Schlüsselbild, Anzahlung, Termin | opus-5.5 | L | pflicht | 5 | offen |  |
+| E4-OPUS-05 | Autoschlüssel-Weg auf Zielniveau: Fahrzeugwahl aus dem Katalog, nicht gefunden als Anfrage, Fahrzeugschein, Schlüsselbild, Anzahlung, Termin (Anzahlungs- und Zahlungsverhalten unverändert, mit Test, G9) | opus-5.5 | L | pflicht | 5 | offen |  |
 
 ### Welle 4
 
@@ -284,7 +284,7 @@ Geplante Tage: 1
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E6-OPUS-04 | Vorgangsblatt für jede neue Vorgangsart, Kundenstatus in einfacher Sprache, Terminstatus erweitert | opus-5.5 | M | pflicht | 4 | offen |  |
+| E6-OPUS-04 | Vorgangsblatt für jede neue Vorgangsart, Kundenstatus in einfacher Sprache, Terminstatus erweitert | opus-5.5 | L | pflicht | 4 | offen |  |
 
 ### Welle 6
 
@@ -303,7 +303,7 @@ Geplante Tage: 1
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E7-OPUS-01 | Partner werden: Bewerbungsdurchlauf mit Status, Nachweise, Vertrag-PDF aus Platzhalter-Vorlage, Unterschrift als Upload, Partner-AGB | opus-5.5 | L | pflicht | 4 | offen |  |
+| E7-OPUS-01 | Partner werden: Bewerbungsdurchlauf mit Status, Nachweise, Vertrag-PDF aus Platzhalter-Vorlage, Unterschrift als Upload, Partner-AGB und Vertrag nur als markierter Entwurf zur Anwaltsprüfung (R10) | opus-5.5 | L | pflicht | 4 | offen |  |
 
 ### Welle 2
 
@@ -356,7 +356,7 @@ Geplante Tage: 1
 | E8-AUTOR-02 | Über uns nur aus Belegen (Werkstatt Wetzlar, Inhaber, Ablauf), Markendefinition | haiku-5.5 | M | pflicht | 4 | offen |  |
 | E8-AUTOR-03 | Glossar Schließtechnik als Seite aus KERN (Laienerklärungen) | haiku-5.5 | M | kuer | 3 | offen |  |
 | E8-OPUS-03 | Videofassade mit Schrittanleitung und Transkript, CSP gezielt erweitert, VideoObject nur mit echtem Video | opus-5.5 | M | pflicht | 4 | offen |  |
-| E8-OPUS-04 | Agenturnennung nach Abschnitt 15: Fußzeile, nofollow außer Start, Schalter aus, creator im WebSite-Knoten, Test | opus-5.5 | M | pflicht | 2 | offen |  |
+| E8-OPUS-04 | Agenturnennung nach Abschnitt 15: Fußzeile, nofollow außer Start, Schalter aus, creator im WebSite-Knoten, Test, Textvorschlag für die Zustimmung, LINKREGISTER.md und REFERENZ.md | opus-5.5 | M | pflicht | 2 | offen |  |
 
 ### Welle 4
 
@@ -428,6 +428,12 @@ Geplante Tage: 1
 | E10-KUER-07 | Leistung und Zugänglichkeit über die Budgets hinaus | haiku-5.5 | M | kuer | 3 | offen |  |
 | E10-KUER-08 | Mikrotypografie (Silbentrennung, Ziffern, Anführungszeichen, Abstände) | haiku-5.5 | M | kuer | 2 | offen |  |
 
+### Welle 2
+
+| Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| E10-PRUEFER-01 | Prüfstufe B Etappe E10 (Kür) | haiku-5.5 | L | kuer | 3 | offen |  |
+
 ## EA · Abschluss: Prüfstufe C, Endjury, Bericht, Archiv, Endprüfer
 
 Tor: plan.mjs abschluss BEREIT, Endprüfer bestätigt
@@ -440,7 +446,9 @@ Geplante Tage: 0.5
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | EA-PRUEFER-01 | Prüfstufe C: alle Ansichten, Inventarvergleich, Personas, Tastatur, Reflow, Zoom, erzwungene Farben, R1 bis R13, Platzhalter, Livegang | haiku-5.5 | L | pflicht | 3 | offen |  |
 | EA-SPOTTER-01 | Sichtung durch drei Spotter V1 bis V9, Slop-Index nachher | haiku-5.5 | M | pflicht | 3 | offen |  |
-| EA-PRUEFER-02 | Bestandsabgleich: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen | haiku-5.5 | L | pflicht | 3 | offen |  |
+| EA-PRUEFER-02 | Bestandsabgleich L-001 bis L-299: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen | haiku-5.5 | L | pflicht | 3 | offen |  |
+| EA-PRUEFER-03 | Bestandsabgleich L-301 bis L-599: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen | haiku-5.5 | L | pflicht | 3 | offen |  |
+| EA-PRUEFER-04 | Bestandsabgleich EL, M und E: jede Anforderung mit Bestand „vorhanden“ am Endstand nachprüfen und mit Beleg auf umgesetzt setzen | haiku-5.5 | L | pflicht | 3 | offen |  |
 
 ### Welle 2
 
@@ -462,8 +470,8 @@ Geplante Tage: 0.5
 
 ## Kritischer Pfad
 
-E2-OPUS-02 → E3-OPUS-01 → E3-OPUS-06 → E3-OPUS-07 → E3-PRUEFER-01 → E4-OPUS-01 → E4-OPUS-05 → E4-JURY-01 → E5-OPUS-01 → E6-OPUS-01 → E6-PRUEFER-01 → E7-PRUEFER-01 → E8-PRUEFER-02 → E9-PRUEFER-01 → EA-PRUEFER-01 → EA-ENDPRUEFER-01
+E1-FACHKUNDLER-03 → E2-OPUS-01 → E2-OPUS-02 → E2-PRUEFER-01 → E3-OPUS-01 → E3-OPUS-06 → E3-OPUS-07 → E3-OPUS-08 → E3-OPUS-09 → E3-OPUS-10 → E3-UPGRADE-01 → E3-PRUEFER-01 → E4-OPUS-01 → E4-OPUS-03 → E4-OPUS-05 → E4-TEXTER-01 → E4-PRUEFER-01 → E4-JURY-01 → E5-OPUS-01 → E5-OPUS-02 → E5-AUTOR-01 → E5-PRUEFER-01 → E6-OPUS-01 → E6-BAUMEISTER-06 → E6-OPUS-04 → E6-PRUEFER-01 → E7-OPUS-01 → E7-OPUS-03 → E7-BAUMEISTER-01 → E7-PRUEFER-01 → E8-OPUS-01 → E8-OPUS-02 → E8-AUTOR-01 → E8-FAKTENPRUEFER-01 → E8-PRUEFER-02 → E9-OPUS-01 → E9-OPUS-03 → E9-PRUEFER-01 → E10-KUER-01 → E10-PRUEFER-01 → EA-PRUEFER-01 → EA-JURY-01 → EA-OPUS-01 → EA-ENDPRUEFER-01
 
 ## Vorrat
 
-E10-KUER-01, E10-KUER-05, E8-AUTOR-03, E10-KUER-02, E10-KUER-04, E10-KUER-07, E10-KUER-03, E10-KUER-06, E10-KUER-08
+E10-KUER-01, E10-KUER-05, E8-AUTOR-03, E10-KUER-02, E10-KUER-04, E10-KUER-07, E10-PRUEFER-01, E10-KUER-03, E10-KUER-06, E10-KUER-08
