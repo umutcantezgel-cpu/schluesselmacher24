@@ -144,6 +144,7 @@ Ausnahmen nach D-010 stehen als Zahl mit Kommentar im Quelltext (K-008); neue Za
 | `code` | Text (es zählen die ersten 40 Zeichen) → daraus abgeleitetes Profil, bewusst ohne Ziffern | – |
 | `anzahl` | 1–3 (ganzzahlig); weitere Schlüssel versetzt dahinter, etwa für „Kopie“ | `1` |
 | `rohling` | `true` – nur `zylinder`: gerader Halm, Einschnittzone gestrichelt (vor der Code-Eingabe) | – |
+| `ansicht` | `vorn` · `hinten` · `bart` · `detail` – nur `funk`: Tastenseite, Rückseite mit Kennzeichnungsfeld, Bart von der Seite, Prägung unter der Lupe (Beispiele im Fotoschritt, E5-GRAFIKER-02) | Seitenansicht |
 
 Beim `smart-key` gibt es keinen Bart; `funk` und `smart-key` zeigen Funkbögen.
 
@@ -156,6 +157,8 @@ Beim `smart-key` gibt es keinen Bart; `funk` und `smart-key` zeigen Funkbögen.
 | `innen` | Maß B (innen) in mm, 25–100 (bei `profil-halb` ohne Wirkung) | `30` |
 | `knaufseite` | `innen` · `aussen` (nur bei `knauf`) | `innen` |
 | `format` | `breit` (480 × 270) · `schmal` (300 × 220, Schrift 16/15 für Telefone) | `breit` |
+| `beschlag` | `an` · `aus`: Türblatt hinter dem Zylinder und Schutzbeschlag außen davor (E5-GRAFIKER-01) | `aus` |
+| `ueberstand` | `an` · `aus` (nur mit `beschlag: 'an'`): Strecke vom Zylinderende bis zum Beschlag, beschriftet „Überstand“, ohne Zahl | `an` |
 
 Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende, maßstäblich. `ablauf`, `zylinder-mass` und `schliessplan` stehen in `SCHMALES_FORMAT` der Registry (die schmale Fassung hat in `ImagePlaceholder` Vorrang vor einem `ausschnitt`); `schmaleFassung(ref)` liefert den Verweis mit `format: 'schmal'`.
 
