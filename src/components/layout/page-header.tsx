@@ -39,6 +39,11 @@ export interface PageHeaderProps {
    * Bereichs steht dann klein neben der Augenbraue (bleibt Ziel des Seitenwechsels B-13).
    */
   visual?: ReactNode;
+  /**
+   * Mobil Aktionen und Schriftfeld vor der Fachgrafik (A-025), wenn die Grafik hoch ist und der
+   * Knopf sonst unter die Aktionsleiste rutscht; ab 1024 px ändert sich nichts.
+   */
+  handlungZuerst?: boolean;
 }
 
 /** Einheitlicher Seitenkopf für alle Bereiche – als Kopf einer Werkstattzeichnung. */
@@ -54,6 +59,7 @@ export function PageHeader({
   rubrik,
   art = 'erzaehl',
   visual,
+  handlungZuerst = false,
 }: PageHeaderProps) {
   const erzaehl = art === 'erzaehl';
   const mitGrafik = Boolean(visual);
@@ -115,7 +121,14 @@ export function PageHeader({
             <div className="lg:col-span-7 lg:self-end">{kopf}</div>
             {/* Die Zeichnung startet nach dem Hydrieren, sobald sie im Bild ist – wie der Hero der
                 Startseite (B-27); vorher läuft im Ladefenster keine Malarbeit (E7-L-38). */}
-            <InView className="lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:self-center">{visual}</InView>
+            <InView
+              className={cn(
+                'lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:self-center',
+                handlungZuerst && 'order-last lg:order-none',
+              )}
+            >
+              {visual}
+            </InView>
             {(actions || children) && (
               <div className="lg:col-span-7 lg:self-start lg:pt-7">
                 {actions && <div className="flex flex-wrap items-center gap-3">{actions}</div>}

@@ -3,6 +3,7 @@ import { createElement, type ComponentType, type ReactElement } from 'react';
 import type { VisualParamValue, VisualRef } from '@/lib/types';
 
 import { AblaufGrafik } from './generators/ablauf';
+import { AutoschluesselAufbau } from './generators/autoschluessel-aufbau';
 import { CodeFundstelleGrafik } from './generators/code-fundstelle';
 import { ProfilschnittGrafik } from './generators/profilschnitt';
 import { SchliessplanGrafik } from './generators/schliessplan';
@@ -34,6 +35,7 @@ export type VisualComponent = ComponentType<VisualProps>;
  */
 const REGISTRY: Record<string, VisualComponent> = {
   ablauf: AblaufGrafik,
+  'autoschluessel-aufbau': AutoschluesselAufbau,
   'code-fundstelle': CodeFundstelleGrafik,
   profilschnitt: ProfilschnittGrafik,
   schliessplan: SchliessplanGrafik,
