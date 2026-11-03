@@ -558,6 +558,11 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
               Anders bei einer Schließanlage: Dort öffnet etwa der Schlüssel des Kindes nur sein Zimmer und die
               Haustür, der Schlüssel der Eltern alle Türen.
             </p>
+            {/* Privat oder Unternehmen (G-30) */}
+            <p className="mt-2 text-small leading-relaxed text-foreground-muted">
+              Für ein Haus oder ein kleines Team genügt meist die Sperrschließung. Für Firmen mit mehreren Bereichen
+              empfehlen wir eine Schließanlage.
+            </p>
             <Link
               href="/schliessanlagen/konfigurator/schliessplan"
               className="mt-2 inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline"

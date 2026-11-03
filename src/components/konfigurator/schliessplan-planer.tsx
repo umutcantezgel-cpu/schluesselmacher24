@@ -402,6 +402,17 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
               </div>
             </Alert>
           )}
+          {/* Privat oder Unternehmen (G-30): Empfehlung vor der Wahl, mit Beratung als Ausweg */}
+          <div className="rounded-lg border border-border bg-surface p-4">
+            <p className="text-small font-semibold text-foreground">Haus, kleines Team oder Firma?</p>
+            <p className="mt-1 text-small leading-relaxed text-foreground-muted">
+              Für ein Haus oder ein kleines Team genügt meist eine Sperrschließung: ein Schlüssel für alle Türen. Für
+              Firmen mit mehreren Bereichen empfehlen wir eine Schließanlage, in der jeder nur seine Türen öffnet.
+            </p>
+            <Link href="/service-und-termin/kontakt" className="mt-2 inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline">
+              Unsicher? Wir beraten Sie
+            </Link>
+          </div>
           <fieldset>
             <legend className="sr-only">Womit möchten Sie anfangen?</legend>
             <div className="grid gap-3 md:grid-cols-2">
