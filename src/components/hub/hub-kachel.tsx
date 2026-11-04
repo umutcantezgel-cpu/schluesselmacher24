@@ -33,7 +33,7 @@ export function HubKachel({ rubrik, leit = false }: { rubrik: Rubrik; leit?: boo
           data-rubrik={rubrik.id}
           data-leit={leit ? 'ja' : undefined}
           className={cn(
-            'group flex min-h-24 w-full flex-col items-center gap-1.5 rounded-lg border px-1.5 pb-2.5 pt-3 text-center transition duration-quick ease-standard hover:border-area-strong focus-visible:border-area-strong bewegt:hover:shadow-leuchten bewegt:focus-visible:shadow-leuchten bewegt:active:scale-kachel bewegt:active:shadow-leuchten-druck md:items-start md:gap-2 md:px-4 md:pb-4 md:pt-4 md:text-left xl:px-3.5',
+            'group flex min-h-24 w-full flex-col items-center gap-1 rounded-lg border px-1.5 pb-2 pt-2 text-center transition duration-quick ease-standard hover:border-area-strong focus-visible:border-area-strong bewegt:hover:shadow-leuchten bewegt:focus-visible:shadow-leuchten bewegt:active:scale-kachel bewegt:active:shadow-leuchten-druck md:items-start md:gap-2 md:px-4 md:pb-4 md:pt-4 md:text-left xl:px-3.5',
             leit ? 'border-area/40 bg-area-soft md:gap-2 md:p-5' : 'border-border bg-surface',
           )}
         >
@@ -42,7 +42,7 @@ export function HubKachel({ rubrik, leit = false }: { rubrik: Rubrik; leit?: boo
               <Seitenwechsel name={rubrikUebergang(rubrik.id)}>
                 <FachIcon
                   name={rubrik.icon}
-                  size={32}
+                  size={28}
                   className={cn('shrink-0 text-area-strong transition-colors duration-quick md:size-10', leit && 'md:size-14')}
                 />
               </Seitenwechsel>
@@ -50,14 +50,14 @@ export function HubKachel({ rubrik, leit = false }: { rubrik: Rubrik; leit?: boo
           )}
           <span
             className={cn(
-              'trennung-kachel text-small font-semibold leading-snug text-foreground md:hyphens-manual lg:text-title-sm lg:tracking-tight',
+              'trennung-kachel text-small font-semibold leading-tight text-foreground md:hyphens-manual md:leading-snug lg:text-title-sm lg:tracking-tight',
               leit && 'md:mt-auto md:text-title',
             )}
           >
             {rubrik.laienname}
           </span>
           {rubrik.zusatz && (
-            <span className="trennung-kachel text-balance text-caption leading-snug text-foreground-muted md:text-small md:hyphens-manual">{rubrik.zusatz}</span>
+            <span className="trennung-kachel text-balance text-caption leading-tight text-foreground-muted md:text-small md:hyphens-manual md:leading-snug">{rubrik.zusatz}</span>
           )}
           {leit && rubrik.erklaerung && (
             <span className="hidden max-w-measure text-pretty text-small text-foreground-muted md:block">{rubrik.erklaerung}</span>
