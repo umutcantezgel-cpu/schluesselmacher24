@@ -26,6 +26,8 @@ export interface BestellFormularProps {
   line: CodeLine;
   /** Werkstatt unter der Zwischensumme — ohne gepflegten Standort entfällt die Zeile. */
   werkstatt?: WerkstattAngaben;
+  /** Code aus der Adresse (`?code=`), nur als Vorbelegung; schon gegen das Format geprüft. */
+  anfangsCode?: string | null;
 }
 
 /**
@@ -35,8 +37,8 @@ export interface BestellFormularProps {
  * erst, wenn das Feld verlassen wurde — sonst wird schon während der ersten
  * Zeichen bemängelt.
  */
-export function BestellFormular({ line, werkstatt }: BestellFormularProps) {
-  const [code, setCode] = useState('');
+export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormularProps) {
+  const [code, setCode] = useState(anfangsCode ?? '');
   const [touched, setTouched] = useState(false);
   const [qty, setQty] = useState(1);
   const [photos, setPhotos] = useState<PickedFile[]>([]);
@@ -266,7 +268,7 @@ export function BestellFormular({ line, werkstatt }: BestellFormularProps) {
                       >
                         {formatNumber(tier.minQty)} Stück
                         {index === activeTierIndex && (
-                          <span className="sr-only"> — gilt für Ihre Auswahl</span>
+                          <span className="sr-only">: gilt für Ihre Auswahl</span>
                         )}
                       </th>
                       <td

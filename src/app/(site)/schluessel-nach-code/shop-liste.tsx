@@ -25,6 +25,7 @@ import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
 import { GlyphZuruecksetzen } from '@/components/visual/glyphen/zuruecksetzen';
 import { motionStyle } from '@/components/visual/motion/motion-style';
 import { useAbsichtVorladen } from '@/lib/absicht-vorladen';
+import { nachCodeHref } from './[slug]/code-uebernahme';
 
 /** Sammelwert „keine Einschränkung“ in den Auswahlfeldern. */
 const ALL = 'alle';
@@ -402,6 +403,8 @@ export function ShopListe({ lines, className }: ShopListeProps) {
                       const staffel = line.bulkPrices?.[0];
                       const aufgeklappteZeile = zeile >= VORSCHAU && offen;
                       const ziel = `/schluessel-nach-code/${line.slug}`;
+                      // Nur Treffer der Codesuche bekommen den Knopf; die Adresse trägt den Code.
+                      const bestellLink = codeTreffer.has(line.id) ? nachCodeHref(line.slug, query) : null;
                       return (
                         <li
                           key={line.id}
@@ -449,6 +452,15 @@ export function ShopListe({ lines, className }: ShopListeProps) {
                               )}
                             </span>
                           </Link>
+                          {bestellLink && (
+                            <div className="flex justify-end pb-4">
+                              <ButtonLink href={bestellLink} size="sm" prefetch={false}>
+                                Nach Code bestellen
+                                {/* Je Treffer ein eigener Name für Screenreader (WCAG 2.4.4); sichtbar bleibt der Knopftext. */}
+                                <span className="sr-only">: {titelOf(line)}</span>
+                              </ButtonLink>
+                            </div>
+                          )}
                         </li>
                       );
                     })}
