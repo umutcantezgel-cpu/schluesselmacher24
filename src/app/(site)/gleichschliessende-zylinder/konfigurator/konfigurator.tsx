@@ -568,6 +568,12 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
               empfehlen wir eine Schließanlage.
             </p>
             <Link
+              href="/service-und-termin/kontakt"
+              className="mt-1 inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline"
+            >
+              Unsicher? Wir beraten Sie
+            </Link>
+            <Link
               href="/schliessanlagen/konfigurator/schliessplan"
               className="mt-2 inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline"
             >
