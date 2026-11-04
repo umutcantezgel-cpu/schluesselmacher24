@@ -1,39 +1,37 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata } from 'next';
+import Link from 'next/link';
 
-import { getSettings } from "@/lib/data";
-import { formatWeekday } from "@/lib/format";
-import { enthaeltPlatzhalter } from "@/lib/platzhalter";
-import { anbieterZeilen, standort } from "@/lib/rechtliches/firma";
-import { telefonLink } from "@/lib/telefon";
-import { Alert } from "@/components/ui/alert";
-import { ButtonLink } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/ui/image-placeholder";
-import { PageHeader } from "@/components/layout/page-header";
-import { Section, SectionHeading } from "@/components/layout/section";
-import { GlyphInfo } from "@/components/visual/glyphen/info";
-import { GlyphMail } from "@/components/visual/glyphen/mail";
-import { GlyphOrt } from "@/components/visual/glyphen/ort";
-import { GlyphTelefon } from "@/components/visual/glyphen/telefon";
+import { getSettings } from '@/lib/data';
+import { formatWeekday } from '@/lib/format';
+import { enthaeltPlatzhalter } from '@/lib/platzhalter';
+import { anbieterZeilen, standort } from '@/lib/rechtliches/firma';
+import { telefonLink } from '@/lib/telefon';
+import { Alert } from '@/components/ui/alert';
+import { ButtonLink } from '@/components/ui/button';
+import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { PageHeader } from '@/components/layout/page-header';
+import { Section, SectionHeading } from '@/components/layout/section';
+import { GlyphInfo } from '@/components/visual/glyphen/info';
+import { GlyphMail } from '@/components/visual/glyphen/mail';
+import { GlyphOrt } from '@/components/visual/glyphen/ort';
+import { GlyphTelefon } from '@/components/visual/glyphen/telefon';
 
-import { KontaktFormular } from "./kontakt-formular";
+import { KontaktFormular } from './kontakt-formular';
 
 export const metadata: Metadata = {
-  title: "Kontakt",
-  description: "Anschrift, Erreichbarkeit und Anfahrt zu SCHLÜSSELMACHER24.",
-  alternates: { canonical: "/service-und-termin/kontakt" },
+  title: 'Kontakt',
+  description: 'Anschrift, Erreichbarkeit und Anfahrt zu SCHLÜSSELMACHER24.',
+  alternates: { canonical: '/service-und-termin/kontakt' },
 };
 
 /** Hinweis zur Anfahrt aus der Redaktion. Solange er einen Platzhalter enthält, bleibt er ungezeigt. */
 const ANFAHRT_HINWEIS =
-  "[Platzhalter: Hinweise zur Anfahrt, zu Parkmöglichkeiten und zur Erreichbarkeit mit öffentlichen Verkehrsmitteln eintragen. Eine eingebettete Karte eines externen Anbieters ist erst nach Einwilligung zulässig und muss über die Cookie-Einstellungen gesteuert werden.]";
+  '[Platzhalter: Hinweise zur Anfahrt, zu Parkmöglichkeiten und zur Erreichbarkeit mit öffentlichen Verkehrsmitteln eintragen. Eine eingebettete Karte eines externen Anbieters ist erst nach Einwilligung zulässig und muss über die Cookie-Einstellungen gesteuert werden.]';
 
 export default async function KontaktPage() {
   const settings = await getSettings();
   const { company } = settings;
-  const anbieter = anbieterZeilen(company).filter(
-    (zeile) => zeile !== company.country,
-  );
+  const anbieter = anbieterZeilen(company).filter((zeile) => zeile !== company.country);
   const telefonHref = telefonLink(company.phone);
   const werkstatt = standort(company);
 
@@ -46,49 +44,33 @@ export default async function KontaktPage() {
         title="So erreichen Sie uns"
         lead="Für konkrete Aufträge nutzen Sie bitte die geführten Abläufe. Dort erfassen wir gleich alles, was wir brauchen."
         crumbs={[
-          { href: "/service-und-termin", label: "Service und Termin" },
-          { href: "/service-und-termin/kontakt", label: "Kontakt" },
+          { href: '/service-und-termin', label: 'Service und Termin' },
+          { href: '/service-und-termin/kontakt', label: 'Kontakt' },
         ]}
-        actions={
-          <ButtonLink href="/service-und-termin/anfrage">
-            Anfrage stellen
-          </ButtonLink>
-        }
+        actions={<ButtonLink href="/service-und-termin/anfrage">Anfrage stellen</ButtonLink>}
       />
 
       <Section>
         {/* Redaktionshinweis nur im Entwicklungsmodus (D-016), wie im Fuß */}
-        {company.isPlaceholder && process.env.NODE_ENV !== "production" && (
-          <Alert
-            tone="warning"
-            title="Kontaktdaten noch nicht hinterlegt"
-            className="mb-8"
-          >
-            Anschrift, Telefonnummer und E-Mail-Adresse sind derzeit
-            Platzhalter. Sie werden im Backend unter „Einstellungen“ gepflegt
-            und müssen vor dem Livegang ersetzt werden.
+        {company.isPlaceholder && process.env.NODE_ENV !== 'production' && (
+          <Alert tone="warning" title="Kontaktdaten noch nicht hinterlegt" className="mb-8">
+            Anschrift, Telefonnummer und E-Mail-Adresse sind derzeit Platzhalter. Sie werden im
+            Backend unter „Einstellungen“ gepflegt und müssen vor dem Livegang ersetzt werden.
           </Alert>
         )}
 
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:col-span-7">
-            <SectionHeading
-              nummer="01"
-              eyebrow="Erreichbarkeit"
-              title="Fachbetrieb"
-            />
+            <SectionHeading nummer="01" eyebrow="Erreichbarkeit" title="Fachbetrieb" />
 
             {company.isPlaceholder ? (
               /* Ohne hinterlegte Daten keine Anschrift, kein tel:- oder mailto:-Link mit Platzhalter */
               <p className="mt-6 flex max-w-measure gap-3 text-small text-foreground-muted">
                 <GlyphInfo size={18} className="mt-0.5 shrink-0 text-primary" />
                 <span>
-                  Anschrift, Telefon und E-Mail sind noch nicht hinterlegt. Für
-                  Ihr Anliegen stellen Sie bitte eine{" "}
-                  <Link
-                    href="/service-und-termin/anfrage"
-                    className="font-semibold underline"
-                  >
+                  Anschrift, Telefon und E-Mail sind noch nicht hinterlegt. Für Ihr Anliegen stellen Sie
+                  bitte eine{' '}
+                  <Link href="/service-und-termin/anfrage" className="font-semibold underline">
                     Anfrage
                   </Link>
                   .
@@ -98,14 +80,8 @@ export default async function KontaktPage() {
               <dl className="mt-6 border-t border-border">
                 <div className="border-b border-border py-5">
                   <dt className="flex items-center gap-4 font-mono text-caption uppercase tracking-label text-foreground-muted">
-                    <GlyphOrt
-                      size={20}
-                      className="shrink-0 text-primary"
-                      aria-hidden="true"
-                    />
-                    <span className="min-w-0">
-                      {werkstatt ? "Firmensitz" : "Anschrift"}
-                    </span>
+                    <GlyphOrt size={20} className="shrink-0 text-primary" />
+                    <span className="min-w-0">{werkstatt ? 'Firmensitz' : 'Anschrift'}</span>
                   </dt>
                   <dd className="mt-2 pl-9 text-body text-foreground">
                     {anbieter.map((zeile, index) => (
@@ -120,11 +96,7 @@ export default async function KontaktPage() {
                 {werkstatt && (
                   <div className="border-b border-border py-5">
                     <dt className="flex items-center gap-4 font-mono text-caption uppercase tracking-label text-foreground-muted">
-                      <GlyphOrt
-                        size={20}
-                        className="shrink-0 text-primary"
-                        aria-hidden="true"
-                      />
+                      <GlyphOrt size={20} className="shrink-0 text-primary" />
                       <span className="min-w-0">{werkstatt.label}</span>
                     </dt>
                     <dd className="mt-2 pl-9 text-body text-foreground">
@@ -137,11 +109,7 @@ export default async function KontaktPage() {
 
                 <div className="border-b border-border py-5">
                   <dt className="flex items-center gap-4 font-mono text-caption uppercase tracking-label text-foreground-muted">
-                    <GlyphTelefon
-                      size={20}
-                      className="shrink-0 text-primary"
-                      aria-hidden="true"
-                    />
+                    <GlyphTelefon size={20} className="shrink-0 text-primary" />
                     <span className="min-w-0">Telefon</span>
                   </dt>
                   <dd className="mt-2 pl-9 font-mono tabular-nums text-body text-foreground">
@@ -160,11 +128,7 @@ export default async function KontaktPage() {
 
                 <div className="border-b border-border py-5">
                   <dt className="flex items-center gap-4 font-mono text-caption uppercase tracking-label text-foreground-muted">
-                    <GlyphMail
-                      size={20}
-                      className="shrink-0 text-primary"
-                      aria-hidden="true"
-                    />
+                    <GlyphMail size={20} className="shrink-0 text-primary" />
                     <span className="min-w-0">E-Mail</span>
                   </dt>
                   <dd className="mt-2 pl-9 break-words text-body text-foreground">
@@ -179,42 +143,31 @@ export default async function KontaktPage() {
               </dl>
             )}
 
-            <h3 className="mt-12 text-title-sm font-semibold text-foreground">
-              Öffnungszeiten
-            </h3>
+            <h3 className="mt-12 text-title-sm font-semibold text-foreground">Öffnungszeiten</h3>
             <dl className="mt-6 border-t border-border">
               {settings.openingHours.map((entry) => (
                 <div
                   key={entry.day}
                   className="grid gap-1 border-b border-border py-3 sm:grid-cols-3 sm:gap-x-4"
                 >
-                  <dt className="text-foreground-muted">
-                    {formatWeekday(entry.day)}
-                  </dt>
+                  <dt className="text-foreground-muted">{formatWeekday(entry.day)}</dt>
                   <dd className="font-mono tabular-nums text-foreground sm:col-span-2">
                     {entry.spans.length === 0
-                      ? "geschlossen"
-                      : entry.spans.map((s) => `${s.from}–${s.to}`).join(" · ")}
+                      ? 'geschlossen'
+                      : entry.spans.map((s) => `${s.from}–${s.to}`).join(' · ')}
                   </dd>
                 </div>
               ))}
             </dl>
 
             <Alert tone="info" className="mt-8">
-              Arbeiten an Fahrzeugen und Schließanlagen finden ausschließlich
-              nach Terminvereinbarung statt. Bitte buchen Sie Ihren Termin über
-              den{" "}
-              <Link
-                href="/autoschluessel/anfrage"
-                className="font-semibold underline"
-              >
+              Arbeiten an Fahrzeugen und Schließanlagen finden ausschließlich nach Terminvereinbarung
+              statt. Bitte buchen Sie Ihren Termin über den{' '}
+              <Link href="/autoschluessel/anfrage" className="font-semibold underline">
                 Autoschlüssel-Ablauf
-              </Link>{" "}
-              oder stellen Sie eine{" "}
-              <Link
-                href="/service-und-termin/anfrage"
-                className="font-semibold underline"
-              >
+              </Link>{' '}
+              oder stellen Sie eine{' '}
+              <Link href="/service-und-termin/anfrage" className="font-semibold underline">
                 allgemeine Anfrage
               </Link>
               .
@@ -224,24 +177,21 @@ export default async function KontaktPage() {
           <div className="lg:col-span-5">
             <ImagePlaceholder
               slot={{
-                motif: "Foto des Betriebs: Eingang und Fassade mit Hausnummer",
-                ratio: "4/3",
-                note: "Hilft Kundinnen und Kunden beim Wiederfinden vor Ort.",
+                motif: 'Foto des Betriebs: Eingang und Fassade mit Hausnummer',
+                ratio: '4/3',
+                note: 'Hilft Kundinnen und Kunden beim Wiederfinden vor Ort.',
               }}
             />
             <ImagePlaceholder
               slot={{
-                motif:
-                  "Anfahrtsskizze: Lage, Parkmöglichkeiten und nächste Haltestelle",
-                ratio: "4/3",
-                note: "Einfache Zeichnung oder Kartenausschnitt mit geklärten Nutzungsrechten.",
+                motif: 'Anfahrtsskizze: Lage, Parkmöglichkeiten und nächste Haltestelle',
+                ratio: '4/3',
+                note: 'Einfache Zeichnung oder Kartenausschnitt mit geklärten Nutzungsrechten.',
               }}
               className="mt-4"
             />
             {!enthaeltPlatzhalter(ANFAHRT_HINWEIS) && (
-              <p className="mt-4 text-small text-foreground-muted">
-                {ANFAHRT_HINWEIS}
-              </p>
+              <p className="mt-4 text-small text-foreground-muted">{ANFAHRT_HINWEIS}</p>
             )}
           </div>
         </div>
@@ -255,11 +205,8 @@ export default async function KontaktPage() {
           lead="Kurze Frage, ein Foto dazu: Wir antworten auf dem Weg, den Sie wählen."
         />
         <p className="mt-4 max-w-measure text-small text-foreground-muted">
-          Ausführliche Anliegen mit allen Angaben schicken Sie über die{" "}
-          <Link
-            href="/service-und-termin/anfrage"
-            className="font-semibold underline"
-          >
+          Ausführliche Anliegen mit allen Angaben schicken Sie über die{' '}
+          <Link href="/service-und-termin/anfrage" className="font-semibold underline">
             Anfrage
           </Link>
           .
