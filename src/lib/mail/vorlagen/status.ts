@@ -5,6 +5,7 @@
  * Absage aus der eigenen Vorlage `./freigabe`.
  */
 
+import { istEinsendung } from '../../einsenden/vorgang';
 import { istFotoanfrage } from '../../foto-freigabe';
 import type { BusinessRecord, ShipmentCarrier } from '../../types';
 import { anrede, baueMail, type Baustein, type MailInhalt } from '../html';
@@ -26,7 +27,8 @@ export function istStatusMitMail(status: string): status is StatusMitMail {
   return (STATUS_MIT_MAIL as readonly string[]).includes(status);
 }
 
-const DIENSTLEISTER: Record<ShipmentCarrier, string> = {
+/** Name des Versanddienstleisters für Kundentexte, Mails und Vorgangsblatt. */
+export const DIENSTLEISTER: Record<ShipmentCarrier, string> = {
   dhl: 'DHL',
   dpd: 'DPD',
   'deutsche-post': 'Deutsche Post',
@@ -106,7 +108,13 @@ export function statusMail({ vorgang, status, nachricht, kontext, zahlungsLink, 
       break;
     case 'versendet': {
       betreff = `Ihre Sendung ist unterwegs – ${vorgang.reference}`;
-      bausteine.push({ art: 'absatz', text: 'Ihre Bestellung hat unsere Werkstatt verlassen und ist auf dem Weg zu Ihnen.' });
+      // Foto-Anfrage und Einsendung (E6-OPUS-04, G-25): Es kommen Schlüssel zurück, keine Bestellung.
+      const versandText = istFotoanfrage(vorgang)
+        ? istEinsendung(vorgang)
+          ? 'Ihr Original und die Kopien haben unsere Werkstatt verlassen und sind auf dem Weg zu Ihnen.'
+          : 'Ihr Schlüssel hat unsere Werkstatt verlassen und ist auf dem Weg zu Ihnen.'
+        : 'Ihre Bestellung hat unsere Werkstatt verlassen und ist auf dem Weg zu Ihnen.';
+      bausteine.push({ art: 'absatz', text: versandText });
       break;
     }
     case 'storniert':

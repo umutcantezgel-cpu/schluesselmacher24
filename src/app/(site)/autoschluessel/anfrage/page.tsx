@@ -11,6 +11,7 @@ import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { katalogIndex } from '@/components/autoschluessel/fahrzeug-ziel';
 import { Assistent } from './assistent';
+import { vorherAusAdresse } from '@/lib/zahlung/neu-buchen';
 
 const ROUTE = 'autoschluessel/anfrage';
 
@@ -85,6 +86,8 @@ export default async function AutoschluesselAnfragePage(props: {
   const model = make?.models.find((entry) => entry.slug === wantedModel) ?? null;
   // ?vorhanden= (etwa aus dem Ratgeber zum Verlust) nur mit einem Wert aus der Auswahl.
   const wantedWorkingKeys = first(searchParams.vorhanden);
+  // ?vorher= aus „Termin neu buchen“ (E-120): nur in der Form einer Vorgangsnummer, geprüft wird auf dem Server.
+  const vorherigerVorgang = vorherAusAdresse(first(searchParams.vorher));
   const workingKeys =
     WORKING_KEYS_OPTIONS.find((option) => String(option.value) === wantedWorkingKeys)?.value ?? null;
 
@@ -122,6 +125,7 @@ export default async function AutoschluesselAnfragePage(props: {
           currentYear={jahrInBerlin()}
           preselect={{ makeSlug: make?.slug ?? '', modelSlug: model?.slug ?? '', workingKeys }}
           werkstatt={werkstattAngaben(settings.company)}
+          vorherigerVorgang={vorherigerVorgang}
         />
       </div>
 

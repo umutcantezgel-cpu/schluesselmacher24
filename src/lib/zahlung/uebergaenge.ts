@@ -67,7 +67,9 @@ export type ZahlungsErgebnis =
 export type ZahlungsMail =
   | { art: 'bezahlt' }
   | { art: 'nicht-abgeschlossen'; terminFreigegeben: boolean }
-  | { art: 'erstattet'; betragCent: number };
+  | { art: 'erstattet'; betragCent: number }
+  /** Nur an das Team: Anzahlung zu einem schon bearbeiteten Termin nicht eingegangen, der Termin bleibt (E-60). */
+  | { art: 'team-anzahlung-offen' };
 
 export interface Uebergang {
   aenderung: VorgangsAenderung | null;
@@ -227,7 +229,20 @@ function nichtAbgeschlossen(
 
   if (vorgang.status === 'neu') {
     return {
-      aenderung: { status: 'storniert', payment, timeline: [...vorgang.timeline, eintrag(jetzt, VERLAUF.terminFrei)] },
+      aenderung: {
+        status: 'storniert',
+        payment,
+        timeline: [...vorgang.timeline, eintrag(jetzt, VERLAUF.terminFrei)],
+        // Statuswechsel ohne Team (E-58): intern mit Grund, wie im Tagesabgleich.
+        internalNotes: [
+          ...vorgang.internalNotes,
+          eintrag(
+            jetzt,
+            `Automatisch storniert: Anzahlung nicht eingegangen (${grund === 'abgelaufen' ? 'Zahlungslink abgelaufen' : 'Zahlung fehlgeschlagen'}). `
+              + 'Status von „Neu“ auf „Storniert“, Zeitfenster freigegeben.',
+          ),
+        ],
+      },
       ergebnis: 'termin-freigegeben',
       mail: { art: 'nicht-abgeschlossen', terminFreigegeben: true },
     };
@@ -245,7 +260,13 @@ function nichtAbgeschlossen(
       ),
     ];
   }
-  return { aenderung, ergebnis: grund === 'abgelaufen' ? 'abgelaufen' : 'fehlgeschlagen' };
+  return {
+    aenderung,
+    ergebnis: grund === 'abgelaufen' ? 'abgelaufen' : 'fehlgeschlagen',
+    // Das Team erfährt es per Mail, nicht nur aus der Notiz (E-60); der Kunde bekommt hier keine Mail.
+    // Nur, solange der Termin noch läuft: nicht nach Storno, Absage oder Abschluss.
+    ...(!ohneAuftrag(vorgang.status) && vorgang.status !== 'abgeschlossen' ? { mail: { art: 'team-anzahlung-offen' } as const } : {}),
+  };
 }
 
 export function zahlungsUebergang(

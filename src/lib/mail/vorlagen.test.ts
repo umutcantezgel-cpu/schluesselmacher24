@@ -157,6 +157,21 @@ describe('Eingangsbestätigung an den Kunden', () => {
 });
 
 describe('Mail an den Betrieb', () => {
+  it('sagt, ob das Vorgangsblatt angehängt ist, oder dass es nicht erzeugt werden konnte', () => {
+    const daten = { vorgang: vorgang(), adminUrl: 'https://schluesselmacher24.de/admin/collections/vorgaenge/42', kontext: { site: SITE } };
+    const angehaengt = betriebNeuerVorgang({ ...daten, anhang: 'angehaengt' });
+    expect(angehaengt.text).toContain(
+      'Das Vorgangsblatt mit allen Angaben hängt als PDF an. Kontaktdaten, Angaben und Unterlagen stehen auch im Backend.',
+    );
+    const fehlgeschlagen = betriebNeuerVorgang({ ...daten, anhang: 'fehlgeschlagen' });
+    expect(fehlgeschlagen.text).toContain(
+      'Das Vorgangsblatt konnte nicht als PDF erzeugt werden. Im Backend können Sie es abrufen. Kontaktdaten, Angaben und Unterlagen stehen dort.',
+    );
+    const ohneAngabe = betriebNeuerVorgang(daten);
+    expect(ohneAngabe.text).toContain('Kontaktdaten, Angaben und Unterlagen stehen im Backend.');
+    expect(ohneAngabe.text).not.toContain('Vorgangsblatt');
+  });
+
   it('enthält nur Eckdaten und den Backend-Link — nie Link-Schlüssel, Zusammenfassung oder Lieferhinweis', () => {
     const mail = betriebNeuerVorgang({
       vorgang: vorgang(),

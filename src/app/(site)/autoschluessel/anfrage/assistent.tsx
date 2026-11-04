@@ -261,6 +261,8 @@ export interface AssistentProps {
   currentYear: number;
   /** Vorbelegung aus ?marke=, ?modell= und ?vorhanden=. */
   preselect: { makeSlug: string; modelSlug: string; workingKeys: number | null };
+  /** Nummer eines stornierten Termins, dessen Anzahlung nicht einging (E-120); der Server prüft sie. */
+  vorherigerVorgang?: string;
   /** Werkstatt und Telefon über dem Buchungsknopf – fehlt der Standort, entfällt die Zeile. */
   werkstatt?: WerkstattAngaben;
 }
@@ -274,6 +276,7 @@ export function Assistent({
   currentYear,
   preselect,
   werkstatt,
+  vorherigerVorgang,
 }: AssistentProps) {
   const initial = useMemo<AssistentData>(
     () => ({
@@ -870,6 +873,7 @@ export function Assistent({
           country: data.country,
         },
         payload: {
+          ...(vorherigerVorgang ? { vorherigerVorgang } : {}),
           makeSlug: data.makeSlug,
           makeName: make?.name,
           modelSlug: isOtherModel ? null : model?.slug,

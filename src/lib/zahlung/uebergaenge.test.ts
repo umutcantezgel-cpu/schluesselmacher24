@@ -162,6 +162,8 @@ describe('zahlungsUebergang: nicht abgeschlossen', () => {
     const u = zahlungsUebergang(vorgang(), expired(), KONTEXT);
     expect(u?.ergebnis).toBe('termin-freigegeben');
     expect(u?.aenderung?.status).toBe('storniert');
+    // E-58: Der Statuswechsel ohne Team steht mit Grund in den internen Notizen.
+    expect(u?.aenderung?.internalNotes?.at(-1)?.message).toMatch(/^Automatisch storniert: Anzahlung nicht eingegangen \((Zahlungslink abgelaufen|Zahlung fehlgeschlagen)\)/);
     expect(u?.aenderung?.payment?.status).toBe('fehlgeschlagen');
     expect(u?.aenderung?.timeline?.at(-1)?.message).toBe(VERLAUF.terminFrei);
     expect(u?.mail).toEqual({ art: 'nicht-abgeschlossen', terminFreigegeben: true });
@@ -172,6 +174,13 @@ describe('zahlungsUebergang: nicht abgeschlossen', () => {
     expect(u?.aenderung?.status).toBeUndefined();
     expect(u?.aenderung?.payment?.status).toBe('fehlgeschlagen');
     expect(u?.aenderung?.internalNotes?.[0].message).toContain('nicht automatisch storniert');
+    // E-60: Das Team bekommt eine Mail; der Kunde nicht (keine Mail an ihn in diesem Fall).
+    expect(u?.mail).toEqual({ art: 'team-anzahlung-offen' });
+  });
+
+  it.each(['nicht-moeglich', 'abgeschlossen'] as const)('meldet dem Team keinen bleibenden Termin, wenn er %s ist', (status) => {
+    const u = zahlungsUebergang(vorgang({ status }), expired(), KONTEXT);
+    expect(u?.aenderung?.payment?.status).toBe('fehlgeschlagen');
     expect(u?.mail).toBeUndefined();
   });
 

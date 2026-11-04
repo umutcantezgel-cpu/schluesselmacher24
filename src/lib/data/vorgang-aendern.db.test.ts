@@ -192,7 +192,8 @@ describe('vorgangAendern', () => {
       expect(doc.termin).toMatchObject({ datum: '2081-05-05', uhrzeit: '11:00' });
       expect(doc.zahlung).toMatchObject({ status: 'offen', checkoutSitzung: 'cs_neu', erstattetCent: 0 });
       expect(doc.mails).toHaveLength(1);
-      expect(doc.verlauf?.at(-1)?.text).toBe('Termin verlegt.');
+      // Der inzwischen ergänzte Systemeintrag bleibt; danach folgt der Kundeneintrag dieses Statuswechsels (E6-OPUS-04).
+      expect(doc.verlauf?.slice(-2).map((e) => e.text)).toEqual(['Termin verlegt.', 'Termin vereinbart: Ihr Termin ist verbindlich eingeplant.']);
       // Die inzwischen ergänzte Notiz bleibt; dazu der Statusverlauf dieses Speicherns.
       expect(doc.notizen?.map((n) => n.text)).toEqual([
         'Streitfall eröffnet.',

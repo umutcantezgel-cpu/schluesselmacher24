@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 import { fetchRecordStatus } from '@/lib/actions/booking';
-import { EINSENDE_STATUS } from '@/lib/einsenden/vorgang';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/format';
 import type { AppointmentInfo, PaymentInfo, RecordStatus, SummarySection } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
@@ -14,37 +13,6 @@ import { Field } from '@/components/forms/field';
 import { TextInput } from '@/components/forms/controls';
 import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphSuche } from '@/components/visual/glyphen/suche';
-
-/** Name und Erklärung des Status; bei Einsendungen dieselben wie auf der Vorgangsseite (E6-OPUS-02). */
-function statusText({ status, einsendung }: { status: RecordStatus; einsendung?: boolean }): { label: string; erklaerung: string } {
-  const eigen = einsendung ? EINSENDE_STATUS[status] : undefined;
-  return eigen ? { label: eigen.label, erklaerung: eigen.text } : STATUS_TEXT[status];
-}
-
-const STATUS_TEXT: Record<RecordStatus, { label: string; erklaerung: string }> = {
-  neu: { label: 'Eingegangen', erklaerung: 'Ihr Vorgang liegt uns vor und wird in Kürze gesichtet.' },
-  'in-pruefung': { label: 'In Prüfung', erklaerung: 'Wir prüfen Machbarkeit, Unterlagen und Preis.' },
-  geprueft: { label: 'Geprüft', erklaerung: 'Die Prüfung ist abgeschlossen. Sie hören von uns.' },
-  freigegeben: {
-    label: 'Freigegeben',
-    erklaerung:
-      'Die Anfertigung ist nach unserer Prüfung möglich; Preis und Weg zur Zahlung stehen in unserer E-Mail. '
-      + 'Die Freigabe ist noch keine Fertigungszusage: Den Auftrag erteilen Sie mit der Zahlung.',
-  },
-  'nicht-moeglich': {
-    label: 'Nicht möglich',
-    erklaerung: 'Nach unserer Prüfung können wir diesen Auftrag leider nicht ausführen. Einzelheiten stehen in unserer E-Mail.',
-  },
-  'wartet-auf-kunde': {
-    label: 'Rückfrage an Sie',
-    erklaerung: 'Wir brauchen noch eine Angabe oder eine Unterlage von Ihnen. Einzelheiten stehen in unserer E-Mail.',
-  },
-  'in-fertigung': { label: 'In Fertigung', erklaerung: 'Ihr Auftrag wird bearbeitet.' },
-  terminiert: { label: 'Termin steht', erklaerung: 'Ihr Termin ist verbindlich eingeplant.' },
-  versendet: { label: 'Versendet', erklaerung: 'Ihre Sendung ist auf dem Weg.' },
-  abgeschlossen: { label: 'Abgeschlossen', erklaerung: 'Der Vorgang ist erledigt.' },
-  storniert: { label: 'Storniert', erklaerung: 'Der Vorgang wurde storniert.' },
-};
 
 const STATUS_TON: Record<RecordStatus, 'neutral' | 'primary' | 'success' | 'warning' | 'danger'> = {
   neu: 'primary',
@@ -70,6 +38,12 @@ const ZAHLUNG_TEXT: Record<PaymentInfo['status'], string> = {
 interface Ergebnis {
   reference: string;
   status: RecordStatus;
+  /** Name und Erklärung des Status in einfacher Sprache, vom Server aus derselben Quelle wie die Vorgangsseite. */
+  statusLabel: string;
+  statusText: string;
+  statusHinweis?: string;
+  /** Nach dem Versand: Dienstleister, Sendungsnummer, Verfolgungslink. */
+  sendung?: { dienstleister?: string; nummer?: string; link?: string };
   createdAt: string;
   updatedAt: string;
   appointment?: AppointmentInfo;
@@ -171,11 +145,12 @@ export function TerminStatusFormular() {
                   {ergebnis.reference}
                 </p>
               </div>
-              <Badge tone={STATUS_TON[ergebnis.status]}>{statusText(ergebnis).label}</Badge>
+              <Badge tone={STATUS_TON[ergebnis.status]}>{ergebnis.statusLabel}</Badge>
             </div>
 
             <p className="mt-4 text-body text-foreground-muted">
-              {statusText(ergebnis).erklaerung}
+              {ergebnis.statusText}
+              {ergebnis.statusHinweis && <span className="mt-2 block">{ergebnis.statusHinweis}</span>}
             </p>
 
             <dl className="mt-5 border-t border-border">
@@ -207,13 +182,35 @@ export function TerminStatusFormular() {
                 </div>
               )}
 
+              {ergebnis.sendung && (
+                <div className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4">
+                  <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">Sendung</dt>
+                  <dd className="text-body text-foreground sm:col-span-7 sm:text-right">
+                    {ergebnis.sendung.dienstleister}
+                    {ergebnis.sendung.nummer && (
+                      <span className="block font-mono tabular-nums">{ergebnis.sendung.nummer}</span>
+                    )}
+                    {ergebnis.sendung.link && (
+                      <a
+                        href={ergebnis.sendung.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 inline-flex min-h-touch items-center font-semibold text-primary underline"
+                      >
+                        Sendung verfolgen
+                      </a>
+                    )}
+                  </dd>
+                </div>
+              )}
+
               {ergebnis.payment && (
                 <div className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4">
                   <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">Zahlung</dt>
                   <dd className="text-body text-foreground sm:col-span-7 sm:text-right">
                     {ergebnis.payment.scope === 'anzahlung' ? 'Anzahlung' : 'Gesamtbetrag'}{' '}
-                    <span className="font-mono tabular-nums">{formatCents(ergebnis.payment.amountCents)}</span>{' '}
-                    — {ZAHLUNG_TEXT[ergebnis.payment.status]}
+                    <span className="font-mono tabular-nums">{formatCents(ergebnis.payment.amountCents)}</span>:{' '}
+                    {ZAHLUNG_TEXT[ergebnis.payment.status]}
                     {ergebnis.payment.paidAt && `, bezahlt am ${formatDateTime(ergebnis.payment.paidAt)}`}
                   </dd>
                 </div>

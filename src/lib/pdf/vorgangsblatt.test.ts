@@ -4,12 +4,13 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { vorgangsblattHtml } from '../druckansichten';
-import { formatCents } from '../format';
+import { formatCents, formatDateTime } from '../format';
 import { echteEinstellungen } from '../rechtliches/test-hilfen';
 import type { BusinessRecord } from '../types';
 import { STATUS_REIHENFOLGE } from '../vorgang-status';
 import { oklchZuHex } from '../visual/area-theme';
 
+import type { BlattAbschnitt, BlattBild } from './blatt';
 import { PDF_FARBEN, erzeugePdf } from './erzeuge-pdf';
 import { SCHRIFT_DATEIEN, laeufe } from './schriften';
 import { NAECHSTER_SCHRITT, VORSCHAU_ARTEN, vorgangsblattDateiname, vorgangsblattInhalt } from './vorgangsblatt';
@@ -94,11 +95,13 @@ describe('vorgangsblattInhalt', () => {
   it('zeigt Fahrzeugscheine und Dokumente nie als Bild (Datenminimierung, A-015)', () => {
     expect(VORSCHAU_ARTEN).not.toContain('fahrzeugschein');
     expect(VORSCHAU_ARTEN).not.toContain('dokument');
-    const unterlagen = blatt.abschnitte.find((a) => a.titel === 'Unterlagen');
+    const mitBild = vorgangsblattInhalt({ vorgang: vorgang(), jetzt: JETZT, bilder: [{ name: 'schluessel.jpg', daten: new Uint8Array([1]) }] });
+    const unterlagen = mitBild.abschnitte.find((a) => a.titel === 'Unterlagen');
     expect(unterlagen?.tabelle?.zeilen).toEqual([
       ['Schlüsselfoto', 'schluessel.jpg', 'im Backend, Vorschau unten'],
       ['Fahrzeugschein', 'fahrzeugschein.jpg', 'im Backend'],
     ]);
+    expect(unterlagen?.bilder?.map((b) => b.name)).toEqual(['schluessel.jpg']);
   });
 
   it('enthält jede Angabe des Druckblatts', () => {
@@ -113,6 +116,161 @@ describe('vorgangsblattInhalt', () => {
   it('baut einen sicheren Dateinamen', () => {
     expect(vorgangsblattDateiname('SM24-T-2026-0007')).toBe('Vorgangsblatt-SM24-T-2026-0007.pdf');
     expect(vorgangsblattDateiname('../x y')).toBe('Vorgangsblatt-xy.pdf');
+  });
+});
+
+describe('vorgangsblattInhalt: Preis, Bestätigungen, Lieferung und ehrliche Vorschau', () => {
+  const wert = (abschnitt: BlattAbschnitt | undefined, name: string) => abschnitt?.zeilen?.find((z) => z.name === name)?.wert;
+  const titelListe = (abschnitte: BlattAbschnitt[]) => abschnitte.map((a) => a.titel);
+
+  it('zeigt den Festpreis vom Server direkt vor der Zahlung', () => {
+    const blatt = vorgangsblattInhalt({
+      vorgang: vorgang({
+        quote: { mode: 'fest', priceCents: 12900, depositCents: 4900, remainderCents: 8000, slotMinutes: 90, leadTimeDays: 1, requiresVehicleOnSite: true, note: 'Fahrzeug bitte sauber' },
+      }),
+      jetzt: JETZT,
+    });
+    const titel = titelListe(blatt.abschnitte);
+    expect(titel.indexOf('Preis (vom Server ermittelt)')).toBe(titel.indexOf('Zahlung') - 1);
+    const preis = blatt.abschnitte.find((a) => a.titel === 'Preis (vom Server ermittelt)');
+    expect(wert(preis, 'Preisart')).toBe('Festpreis');
+    expect(wert(preis, 'Preis')).toBe(formatCents(12900));
+    expect(wert(preis, 'Anzahlung')).toBe(formatCents(4900));
+    expect(wert(preis, 'Rest nach Anzahlung')).toBe(formatCents(8000));
+    expect(wert(preis, 'Dauer')).toBe('1 Std. 30 Min.');
+    expect(wert(preis, 'Vorlauf')).toBe('1 Tag');
+    expect(wert(preis, 'Fahrzeug vor Ort nötig')).toBe('ja');
+    expect(wert(preis, 'Hinweis')).toBe('Fahrzeug bitte sauber');
+  });
+
+  it('zeigt den Preisrahmen mit Spanne und ohne Festpreis-Zeilen', () => {
+    const blatt = vorgangsblattInhalt({
+      vorgang: vorgang({
+        quote: { mode: 'rahmen', priceFromCents: 8900, priceToCents: 14900, depositCents: 0, slotMinutes: 60, leadTimeDays: 3, requiresVehicleOnSite: false },
+      }),
+      jetzt: JETZT,
+    });
+    const preis = blatt.abschnitte.find((a) => a.titel === 'Preis (vom Server ermittelt)');
+    expect(wert(preis, 'Preisart')).toBe('Preisrahmen');
+    expect(wert(preis, 'Preis')).toBe(`${formatCents(8900)} bis ${formatCents(14900)}`);
+    expect(wert(preis, 'Rest nach Anzahlung')).toBe('');
+    expect(wert(preis, 'Vorlauf')).toBe('3 Tage');
+    expect(wert(preis, 'Fahrzeug vor Ort nötig')).toBe('nein');
+  });
+
+  it('zeigt bei einer Prüfung ohne Betrag keinen Preis', () => {
+    const blatt = vorgangsblattInhalt({
+      vorgang: vorgang({ quote: { mode: 'pruefung', depositCents: 0, slotMinutes: 30, leadTimeDays: 0, requiresVehicleOnSite: false } }),
+      jetzt: JETZT,
+    });
+    const preis = blatt.abschnitte.find((a) => a.titel === 'Preis (vom Server ermittelt)');
+    expect(wert(preis, 'Preisart')).toBe('Preis nach Prüfung');
+    expect(wert(preis, 'Preis')).toBe('');
+    expect(wert(preis, 'Vorlauf')).toBe('0 Tage');
+  });
+
+  it('zeigt Bestätigungen, Zeitpunkt, Fassung, Lieferhinweis und Sendung in der Reihenfolge des Blatts', () => {
+    const blatt = vorgangsblattInhalt({
+      vorgang: vorgang({
+        kind: 'bestellung',
+        consents: { terms: true, withdrawalNotice: true, customMade: true, at: '2026-11-02T08:14:00.000Z', version: '2026-10-01' },
+        payload: { deliveryNote: 'Bitte an der Nebentür klingeln', berechtigt: true, datenschutz: false },
+        shipment: { carrier: 'dhl', trackingNumber: 'TEST0000001' },
+      }),
+      jetzt: JETZT,
+    });
+    const bestaetigungen = blatt.abschnitte.find((a) => a.titel === 'Bestätigungen des Kunden');
+    expect(bestaetigungen?.zeilen?.map((z) => [z.name, z.wert])).toEqual([
+      ['AGB', 'ja'],
+      ['Widerrufsbelehrung', 'ja'],
+      ['Sonderanfertigung (kein Widerruf)', 'ja'],
+      ['Zeitpunkt', `${formatDateTime('2026-11-02T08:14:00.000Z')} Uhr`],
+      ['Fassung der Rechtstexte', '2026-10-01'],
+      ['Berechtigung (vor Ort nachzuweisen)', 'ja'],
+    ]);
+    const lieferung = blatt.abschnitte.find((a) => a.titel === 'Lieferung und Versand');
+    expect(lieferung?.zeilen).toEqual([
+      { name: 'Lieferhinweis', wert: 'Bitte an der Nebentür klingeln' },
+      { name: 'Versanddienst', wert: 'DHL' },
+      { name: 'Sendungsnummer', wert: 'TEST0000001', mono: true },
+    ]);
+    const titel = titelListe(blatt.abschnitte);
+    expect(titel.indexOf('Bestätigungen des Kunden')).toBeLessThan(titel.indexOf('Lieferung und Versand'));
+    expect(titel.indexOf('Lieferung und Versand')).toBeLessThan(titel.indexOf('Unterlagen'));
+  });
+
+  it('zeigt die Datenschutz-Bestätigung der Partner-Bewerbung und lässt leere Lieferhinweise weg', () => {
+    const blatt = vorgangsblattInhalt({ vorgang: vorgang({ kind: 'partner', payload: { datenschutz: true, deliveryNote: '' } }), jetzt: JETZT });
+    const bestaetigungen = blatt.abschnitte.find((a) => a.titel === 'Bestätigungen des Kunden');
+    expect(bestaetigungen?.zeilen).toEqual([{ name: 'Datenschutzhinweis bestätigt', wert: 'ja' }]);
+    expect(titelListe(blatt.abschnitte)).not.toContain('Lieferung und Versand');
+  });
+
+  it('nennt bei mehr Fotos als Bilder die Zahl und markiert nur wirklich gezeichnete Bilder', () => {
+    const fotos = Array.from({ length: 8 }, (_, i) => ({
+      id: `f${i + 1}`,
+      fileName: `foto-${i + 1}.jpg`,
+      sizeBytes: 1,
+      mimeType: 'image/jpeg',
+      category: 'schluesselfoto' as const,
+      storageKey: String(20 + i),
+      uploadedAt: '2026-11-02T08:15:00.000Z',
+    }));
+    const bilder: BlattBild[] = fotos.slice(0, 6).map((f) => ({ name: f.fileName, daten: new Uint8Array([1]) }));
+    const blatt = vorgangsblattInhalt({ vorgang: vorgang({ kind: 'anfrage', area: 'schluessel-nach-vorlage', uploads: fotos }), bilder, jetzt: JETZT });
+    const unterlagen = blatt.abschnitte.find((a) => a.titel === 'Unterlagen');
+    expect(unterlagen?.text).toBe('Vorschau der ersten 6 von 8 Fotos. Alle Fotos stehen im Backend.');
+    const zeilen = unterlagen?.tabelle?.zeilen ?? [];
+    expect(zeilen).toHaveLength(8);
+    expect(zeilen.slice(0, 6).every((z) => z[2] === 'im Backend, Vorschau unten')).toBe(true);
+    expect(zeilen.slice(6).every((z) => z[2] === 'im Backend')).toBe(true);
+    expect(unterlagen?.bilder?.map((b) => b.name)).toEqual(fotos.slice(0, 6).map((f) => f.fileName));
+  });
+
+  it('verspricht ohne gezeichnetes Bild keine Vorschau unten', () => {
+    const blatt = vorgangsblattInhalt({ vorgang: vorgang(), jetzt: JETZT });
+    const unterlagen = blatt.abschnitte.find((a) => a.titel === 'Unterlagen');
+    const zeilen = unterlagen?.tabelle?.zeilen ?? [];
+    expect(zeilen.flat()).not.toContain('im Backend, Vorschau unten');
+    expect(zeilen[0][2]).toBe('im Backend');
+    expect(unterlagen?.text).toBe('Keine Vorschau im Blatt. Alle Fotos stehen im Backend.');
+    expect(unterlagen?.bilder).toBeUndefined();
+  });
+
+  it('markiert bei gleichen Dateinamen keine Datei mit „Vorschau unten“', () => {
+    const fotos = Array.from({ length: 7 }, (_, i) => ({
+      id: `g${i + 1}`,
+      fileName: 'IMG_0001.jpg',
+      sizeBytes: 1,
+      mimeType: 'image/jpeg',
+      category: 'schluesselfoto' as const,
+      storageKey: String(40 + i),
+      uploadedAt: '2026-11-02T08:15:00.000Z',
+    }));
+    const bilder: BlattBild[] = fotos.slice(0, 6).map((f) => ({ name: f.fileName, daten: new Uint8Array([1]) }));
+    const blatt = vorgangsblattInhalt({ vorgang: vorgang({ kind: 'anfrage', area: 'schluessel-nach-vorlage', uploads: fotos }), bilder, jetzt: JETZT });
+    const unterlagen = blatt.abschnitte.find((a) => a.titel === 'Unterlagen');
+    const zeilen = unterlagen?.tabelle?.zeilen ?? [];
+    expect(zeilen.flat()).not.toContain('im Backend, Vorschau unten');
+    expect(zeilen.every((z) => z[2] === 'im Backend')).toBe(true);
+    expect(unterlagen?.text).toBe('Vorschau der ersten 6 von 7 Fotos. Alle Fotos stehen im Backend.');
+  });
+
+  it('zählt nur Bilder als vorschaufähig, also keinen Grundriss als PDF', () => {
+    const uploads = [
+      { id: 'h1', fileName: 'schluesselfoto.jpg', sizeBytes: 1, mimeType: 'image/jpeg', category: 'schluesselfoto' as const, storageKey: '50', uploadedAt: '2026-11-02T08:15:00.000Z' },
+      { id: 'h2', fileName: 'grundriss.pdf', sizeBytes: 1, mimeType: 'application/pdf', category: 'grundriss' as const, storageKey: '51', uploadedAt: '2026-11-02T08:15:00.000Z' },
+    ];
+    const bilder: BlattBild[] = [{ name: 'schluesselfoto.jpg', daten: new Uint8Array([1]) }];
+    const blatt = vorgangsblattInhalt({ vorgang: vorgang({ kind: 'anfrage', area: 'schluessel-nach-vorlage', uploads }), bilder, jetzt: JETZT });
+    const unterlagen = blatt.abschnitte.find((a) => a.titel === 'Unterlagen');
+    expect(unterlagen?.text).toBeUndefined();
+    expect(unterlagen?.tabelle?.zeilen.map((z) => z[2])).toEqual(['im Backend, Vorschau unten', 'im Backend']);
+  });
+
+  it('lässt die neuen Abschnitte weg, wenn es nichts zu zeigen gibt', () => {
+    const blatt = vorgangsblattInhalt({ vorgang: vorgang({ uploads: [] }), jetzt: JETZT });
+    expect(titelListe(blatt.abschnitte)).toEqual(['Kunde', 'Angaben des Kunden: Fahrzeug', 'Zahlung', 'Verlauf', 'Interne Notizen']);
   });
 });
 

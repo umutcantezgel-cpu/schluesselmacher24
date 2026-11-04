@@ -147,6 +147,26 @@ export const Vorgaenge: CollectionConfig = {
       ],
     },
     {
+      // Telefontermin (E-57): technisch der Ablauf „Termin mit Anzahlung“, aber ohne Online-Anzahlung.
+      // Nur Anzeige, nicht gespeichert (virtuell, keine Migration).
+      name: 'telefonterminHinweis',
+      type: 'text',
+      label: 'Telefontermin',
+      virtual: true,
+      admin: {
+        readOnly: true,
+        condition: (data) => (data?.daten as Record<string, unknown> | null | undefined)?.telefonisch === true,
+      },
+      hooks: {
+        afterRead: [
+          ({ siblingData }) =>
+            (siblingData?.daten as Record<string, unknown> | null | undefined)?.telefonisch === true
+              ? 'Telefonisch vereinbart: ohne Online-Anzahlung und ohne Zustimmungen aus dem Assistenten.'
+              : null,
+        ],
+      },
+    },
+    {
       name: 'status',
       type: 'select',
       label: 'Status',
@@ -443,7 +463,8 @@ export const Vorgaenge: CollectionConfig = {
         },
         {
           label: 'Versand',
-          admin: { condition: (data) => data?.art === 'bestellung' },
+          // Auch bei „Schlüssel nach Vorlage“ (Foto-Anfrage, Einsendung): Die Schlüssel gehen per Post zurück (G-25).
+          admin: { condition: (data) => data?.art === 'bestellung' || (data?.art === 'anfrage' && data?.bereich === 'schluessel-nach-vorlage') },
           fields: [
             {
               name: 'versand',

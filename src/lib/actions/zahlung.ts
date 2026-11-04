@@ -7,6 +7,7 @@ import { FOTOANFRAGE_ZAHLUNG, istFotoanfrage } from '@/lib/foto-freigabe';
 import { verifyAccessToken } from '@/lib/server/access-token';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import { terminNochBezahlbar } from '@/lib/zahlung/ansicht';
+import { neuBuchenHref } from '@/lib/zahlung/neu-buchen';
 import { sitzungVerbuchen } from '@/lib/zahlung/verbuchen';
 
 export interface ZahlungFortsetzenErgebnis {
@@ -18,7 +19,6 @@ export interface ZahlungFortsetzenErgebnis {
   neuBuchen?: string;
 }
 
-const NEU_BUCHEN = '/autoschluessel/anfrage';
 const UNGUELTIG = 'Dieser Link ist ungültig. Bitte nutzen Sie den Link aus Ihrer Bestätigung.';
 const FEHLER = 'Die Zahlung konnte gerade nicht gestartet werden. Bitte versuchen Sie es in einigen Minuten erneut.';
 const ABGELAUFEN = 'Die Reservierung ist abgelaufen – bitte buchen Sie den Termin neu.';
@@ -50,7 +50,7 @@ export async function zahlungFortsetzen(eingabe: { recordId: string; token: stri
   const termin = vorgang.kind === 'termin';
   if (vorgang.status === 'storniert') {
     return termin
-      ? { ok: false, meldung: 'Dieser Termin ist storniert.', neuBuchen: NEU_BUCHEN }
+      ? { ok: false, meldung: 'Dieser Termin ist storniert.', neuBuchen: neuBuchenHref(vorgang) }
       : { ok: false, meldung: 'Dieser Vorgang ist storniert.' };
   }
   if (vorgang.status === 'nicht-moeglich') {
@@ -85,9 +85,13 @@ export async function zahlungFortsetzen(eingabe: { recordId: string; token: stri
       }
     }
 
+    // Ein Termin, den das Team schon bearbeitet, wird nicht neu gebucht (E6-OPUS-04, wie auf der Vorgangsseite).
+    if (termin && vorgang.status !== 'neu') {
+      return { ok: false, meldung: 'Ihr Termin wird bereits bearbeitet. Zur Anzahlung melden wir uns bei Ihnen.' };
+    }
     // Neue Zahlungsseite — beim Termin nur, solange er reserviert ist.
     if (termin && (zahlung.status !== 'offen' || !terminNochBezahlbar(vorgang, new Date()) || zahlung.checkoutSessionId)) {
-      return { ok: false, meldung: ABGELAUFEN, neuBuchen: NEU_BUCHEN };
+      return { ok: false, meldung: ABGELAUFEN, neuBuchen: neuBuchenHref(vorgang) };
     }
 
     const ergebnis = await createPayment({

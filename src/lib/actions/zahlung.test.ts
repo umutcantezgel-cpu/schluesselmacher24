@@ -106,7 +106,18 @@ describe('zahlungFortsetzen', () => {
     expect(await zahlungFortsetzen({ recordId: '42', token })).toEqual({
       ok: false,
       meldung: 'Die Reservierung ist abgelaufen – bitte buchen Sie den Termin neu.',
-      neuBuchen: '/autoschluessel/anfrage',
+      // Mit der alten Nummer, damit der neue Termin auf den alten verweist (E-120).
+      neuBuchen: '/autoschluessel/anfrage?vorher=SM24-T-2026-0001',
+    });
+    expect(zahlungStarten).not.toHaveBeenCalled();
+  });
+
+  it('bietet bei einem schon bearbeiteten Termin keine Neubuchung an (E6-OPUS-04)', async () => {
+    gespeichert = vorgang({ kind: 'termin', status: 'terminiert', reference: 'SM24-T-2026-0001', lines: undefined, totals: undefined }, { scope: 'anzahlung' });
+    abrufen.mockResolvedValue({ id: 'cs_alt', status: 'expired', url: null });
+    expect(await zahlungFortsetzen({ recordId: '42', token })).toEqual({
+      ok: false,
+      meldung: 'Ihr Termin wird bereits bearbeitet. Zur Anzahlung melden wir uns bei Ihnen.',
     });
     expect(zahlungStarten).not.toHaveBeenCalled();
   });
@@ -138,7 +149,7 @@ describe('zahlungFortsetzen', () => {
     // Ein Termin muss dagegen neu gebucht werden.
     gespeichert = vorgang({ kind: 'termin', lines: undefined, totals: undefined }, { scope: 'anzahlung', status: 'fehlgeschlagen' });
     zahlungStarten.mockClear();
-    expect(await zahlungFortsetzen({ recordId: '42', token })).toMatchObject({ ok: false, neuBuchen: '/autoschluessel/anfrage' });
+    expect(await zahlungFortsetzen({ recordId: '42', token })).toMatchObject({ ok: false, neuBuchen: expect.stringMatching(/^\/autoschluessel\/anfrage(\?|$)/) });
     expect(zahlungStarten).not.toHaveBeenCalled();
   });
 

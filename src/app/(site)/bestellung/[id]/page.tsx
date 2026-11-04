@@ -12,11 +12,12 @@ import { widerrufErklaerenHref } from '@/lib/navigation';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/format';
 import { mailHinweis } from '@/lib/mail/hinweise';
 import { vorgangOrtText } from '@/lib/terminort';
-import type { OrderLine, OrderTotals, PaymentInfo, RecordKind, RecordStatus, SummarySection } from '@/lib/types';
+import type { OrderLine, OrderTotals, PaymentInfo, RecordStatus, SummarySection } from '@/lib/types';
 import { naechsteSchritte } from '@/lib/wege/naechste-schritte';
 import { begleitscheinAnzeigen } from '@/lib/einsenden/schein';
-import { EINSENDE_STATUS, istEinsendung } from '@/lib/einsenden/vorgang';
+import { ART_FUER_KUNDEN, kundenSendung, kundenStatus } from '@/lib/kundenstatus';
 import { zahlungsAnsicht } from '@/lib/zahlung/ansicht';
+import { neuBuchenHref } from '@/lib/zahlung/neu-buchen';
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { PageHeader } from '@/components/layout/page-header';
@@ -37,28 +38,6 @@ interface BestellungSeiteProps {
 
 type Tonfall = 'neutral' | 'primary' | 'accent' | 'success' | 'warning' | 'danger' | 'outline';
 
-const KIND_LABELS: Record<RecordKind, string> = {
-  bestellung: 'Bestellung',
-  anfrage: 'Anfrage',
-  termin: 'Termin',
-  projekt: 'Projekt',
-  partner: 'Partner-Bewerbung',
-};
-
-const STATUS_LABELS: Record<RecordStatus, string> = {
-  neu: 'Eingegangen',
-  'in-pruefung': 'In Prüfung',
-  geprueft: 'Geprüft',
-  freigegeben: 'Freigegeben',
-  'nicht-moeglich': 'Nicht möglich',
-  'wartet-auf-kunde': 'Wartet auf Ihre Rückmeldung',
-  'in-fertigung': 'In Fertigung',
-  terminiert: 'Termin vereinbart',
-  versendet: 'Versendet',
-  abgeschlossen: 'Abgeschlossen',
-  storniert: 'Storniert',
-};
-
 const STATUS_TONE: Record<RecordStatus, Tonfall> = {
   neu: 'primary',
   'in-pruefung': 'primary',
@@ -76,7 +55,7 @@ const STATUS_TONE: Record<RecordStatus, Tonfall> = {
 const PAYMENT_LABELS: Record<PaymentInfo['status'], string> = {
   offen: 'Offen',
   bezahlt: 'Bezahlt',
-  fehlgeschlagen: 'Fehlgeschlagen',
+  fehlgeschlagen: 'Nicht abgeschlossen',
   erstattet: 'Erstattet',
 };
 
@@ -178,13 +157,14 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
     ? einsendeAnschrift((await getSettings().catch(() => null))?.company)
     : [];
 
-  const kindLabel = KIND_LABELS[record.kind];
+  const kindLabel = ART_FUER_KUNDEN[record.kind];
+  // Kundenstatus aus einer Quelle (E6-OPUS-04): dieselben Wörter wie im Terminstatus.
+  const stand = kundenStatus(record);
+  const sendung = kundenSendung(record);
   // Dieselben Schritte wie in der Bestätigung am Ende des Weges (G-38, R4).
   const schritte = naechsteSchritte(record);
   const freigegeben = fotoanfrage && record.status === 'freigegeben';
   // Einsendung (E6-OPUS-02): eigene Namen für die ersten Status, Begleitschein bis zum Eingang.
-  const einsendung = istEinsendung(record);
-  const einsendeStatus = einsendung ? EINSENDE_STATUS[record.status] : undefined;
   const begleitscheinHref = begleitscheinAnzeigen(record)
     ? `/bestellung/${encodeURIComponent(record.id)}/begleitschein?t=${encodeURIComponent(token)}`
     : null;
@@ -261,11 +241,11 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
       <PageHeader
         art="arbeit"
         eyebrow={record.kind === 'bestellung' ? 'Direkt kaufen' : kindLabel}
-        title={freigegeben ? 'Anfrage freigegeben' : `${kindLabel} eingegangen`}
+        title={stand.titel}
         lead={
           freigegeben
             ? 'Wir können Ihren Schlüssel nach Ihrer Vorlage anfertigen. Mit der Zahlung erteilen Sie den Auftrag.'
-            : 'Wir haben Ihren Vorgang aufgenommen. Bitte bewahren Sie die Vorgangsnummer auf — damit finden Sie den Stand jederzeit wieder.'
+            : 'Bewahren Sie die Vorgangsnummer auf: Damit finden Sie den Stand jederzeit wieder.'
         }
         crumbs={[{ href: `/bestellung/${record.id}`, label: `${kindLabel} ${record.reference}` }]}
       />
@@ -288,7 +268,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
 
               <div className="mt-4 flex flex-wrap gap-2">
                 <Badge tone={STATUS_TONE[record.status]}>
-                  Status: {einsendeStatus?.label ?? STATUS_LABELS[record.status]}
+                  Status: {stand.label}
                 </Badge>
                 {record.payment && (
                   <Badge tone={PAYMENT_TONE[record.payment.status]}>
@@ -308,7 +288,26 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
               </Alert>
             )}
 
-            {einsendeStatus && <p className="text-body text-foreground-muted">{einsendeStatus.text}</p>}
+            {/* Was gerade geschieht, in einfacher Sprache; nach dem Versand mit Sendungsnummer (G-25). */}
+            <div className="space-y-3">
+              <p className="max-w-measure text-body text-foreground-muted">{stand.text}</p>
+              {sendung && (
+                <p className="text-small text-foreground">
+                  {[sendung.dienstleister, sendung.nummer && `Sendungsnummer ${sendung.nummer}`].filter(Boolean).join(', ')}
+                  {sendung.link && (
+                    <a
+                      href={sendung.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-flex min-h-touch items-center gap-1.5 font-semibold text-primary hover:underline"
+                    >
+                      Sendung verfolgen
+                      <GlyphPfeilRechts size={18} />
+                    </a>
+                  )}
+                </p>
+              )}
+            </div>
 
             {begleitscheinHref && (
               <section className="border-t border-border pt-8">
@@ -368,7 +367,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                       {zahlung.neuBuchen && (
                         <>
                           {' '}
-                          <Link href="/autoschluessel/anfrage" className="font-semibold text-primary hover:underline">
+                          <Link href={neuBuchenHref(record)} className="font-semibold text-primary hover:underline">
                             Termin neu buchen
                           </Link>
                         </>
@@ -401,14 +400,28 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
             <section className="border-t border-border pt-8">
               <h2 className="text-title-sm font-semibold text-foreground">Wie es weitergeht</h2>
 
-              <ol className="mt-6 divide-y divide-border border-y border-border">
-                {schritte.map((schritt, index) => (
-                  <li key={schritt.titel} className="py-4">
-                    <p className="text-body font-semibold text-foreground">{index + 1}. {schritt.titel}</p>
-                    <p className="mt-1 text-small leading-relaxed text-foreground-muted">{schritt.text}</p>
-                  </li>
-                ))}
-              </ol>
+              {/* Erledigte Vorgänge versprechen keine weiteren Schritte (E6-OPUS-04). */}
+              {stand.erledigt && zahlung?.neuBuchen ? (
+                <p className="mt-4 text-small leading-relaxed text-foreground-muted">
+                  Dieser Termin ist storniert. Einen neuen Termin können Sie jederzeit buchen.{' '}
+                  <Link href={neuBuchenHref(record)} className="font-semibold text-primary hover:underline">
+                    Termin neu buchen
+                  </Link>
+                </p>
+              ) : stand.erledigt ? (
+                <p className="mt-4 text-small leading-relaxed text-foreground-muted">
+                  Von Ihrer Seite ist für diesen Vorgang nichts mehr zu tun. Bei Fragen erreichen Sie uns über die Kontaktseite.
+                </p>
+              ) : (
+                <ol className="mt-6 divide-y divide-border border-y border-border">
+                  {schritte.map((schritt, index) => (
+                    <li key={schritt.titel} className="py-4">
+                      <p className="text-body font-semibold text-foreground">{index + 1}. {schritt.titel}</p>
+                      <p className="mt-1 text-small leading-relaxed text-foreground-muted">{schritt.text}</p>
+                    </li>
+                  ))}
+                </ol>
+              )}
 
               <div className="mt-6">
                 <p className="text-small leading-relaxed text-foreground-muted">
