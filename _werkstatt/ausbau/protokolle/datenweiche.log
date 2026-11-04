@@ -1332,3 +1332,17 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-04T18:24:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
 2026-11-04T18:26:08+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
 2026-11-04T18:26:14+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/a11y.mjs --routen /service-und-termin/kontakt --geraet beide
+2026-11-04T23:17:31+00:00	ABBRUCH	json	FREMD_DB zeigt auf Datenbank-Host db.gefaelscht-produktion.supabase.co
+2026-11-04T23:17:32+00:00	ABBRUCH	json	ALT_URL zeigt auf Datenbank-Host prod.beispiel-firma.de
+2026-11-04T23:17:32+00:00	ABBRUCH	json	MEIN_BUCKET enthält die Adresse eines Fremddienstes (r2.cloudflarestorage.com)
+2026-11-04T23:17:32+00:00	ABBRUCH	json	IRGENDWAS enthält einen Zahlungs- oder Mailschlüssel
+2026-11-04T23:17:32+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "[$DATABASE_URL$STORAGE_BUCKET$PAYMENT_API_KEY]"
+2026-11-04T23:17:32+00:00	json	als=root	hosts=localhost	env-dateien= DATABASE_URL GEHEIM_NEU NOCH_EINS	sh -c echo "[$DATABASE_URL|$GEHEIM_NEU|$NOCH_EINS|]"
+2026-11-04T23:17:32+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$SM24_DATA $SM24_STORAGE $NEXT_PUBLIC_SITE_URL"
+2026-11-04T23:17:32+00:00	pg	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$DATABASE_URL"
+2026-11-04T23:17:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm ci --no-audit --no-fund
+2026-11-04T23:18:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm ci --no-audit --no-fund
+2026-11-04T23:19:02+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T23:20:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit
+2026-11-04T23:20:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/partner-werden/partner-formular.tsx
+2026-11-04T23:20:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
