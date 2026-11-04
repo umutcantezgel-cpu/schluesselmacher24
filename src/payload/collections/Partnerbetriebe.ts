@@ -3,6 +3,7 @@ import type { CollectionConfig } from 'payload';
 import { BEWERBUNG_STATUS, statuswechselPruefen, type BewerbungStatus } from '../../lib/partner/bewerbung';
 import { feldNurInhaber, istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
 import { euroFeld, kennungFeld } from '../fields/gemeinsam';
+import { partnervertragEndpunkte } from '../hooks/partnervertrag-pdf';
 
 /** Auftragsarten der Vermittlung (Bogen PARTNER, G-40). */
 export const AUFTRAGSARTEN = [
@@ -30,6 +31,7 @@ export const Partnerbetriebe: CollectionConfig = {
   },
   access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber },
   trash: true,
+  endpoints: partnervertragEndpunkte,
   hooks: {
     beforeChange: [
       ({ data, originalDoc }) => {
@@ -114,6 +116,12 @@ export const Partnerbetriebe: CollectionConfig = {
         ] },
         { name: 'datei', type: 'relationship', relationTo: 'interne-dateien', label: 'Unterschriebener Vertrag' },
       ],
+    },
+    {
+      // Partnervertrag als PDF aus der Vorlage (E7-OPUS-01, G-39); ohne Vorlage des Anwalts ein Entwurf.
+      name: 'partnervertragPdf',
+      type: 'ui',
+      admin: { position: 'sidebar', components: { Field: '/payload/components/PartnervertragKnopf#PartnervertragKnopf' } },
     },
     {
       name: 'provisionen',
