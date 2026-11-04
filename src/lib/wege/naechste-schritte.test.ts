@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
+import { istFotoanfrage } from '../foto-freigabe';
 import { PLANER_QUELLE } from '../konfigurator/vorgang';
 import type { RecordKind } from '../types';
 import {
@@ -8,7 +9,7 @@ import {
   SCHRITTE_NACH_ART,
   SCHRITTE_PLANER,
   SCHRITTE_SCHLIESSANLAGE,
-  SCHRITTE_SICHERHEITSCHECK,
+  SCHRITTE_SICHERHEITSTECHNIK,
   SCHRITTE_ZUTRITT,
   naechsteSchritte,
 } from './naechste-schritte';
@@ -19,7 +20,7 @@ const ALLE = [
   SCHRITTE_SCHLIESSANLAGE,
   SCHRITTE_PLANER,
   SCHRITTE_ZUTRITT,
-  SCHRITTE_SICHERHEITSCHECK,
+  SCHRITTE_SICHERHEITSTECHNIK,
 ];
 
 describe('So geht es weiter (G-38, E6-OPUS-01)', () => {
@@ -39,7 +40,7 @@ describe('So geht es weiter (G-38, E6-OPUS-01)', () => {
     const fall = (kind: RecordKind, area: string, process: string, payload: Record<string, unknown> = {}) =>
       naechsteSchritte({ kind, area: area as never, process: process as never, payload });
     expect(fall('anfrage', 'schluessel-nach-vorlage', 'gefuehrte-anfrage')).toBe(SCHRITTE_FOTOANFRAGE);
-    expect(fall('anfrage', 'sicherheitstechnik', 'gefuehrte-anfrage', { legalNoticeShown: false })).toBe(SCHRITTE_SICHERHEITSCHECK);
+    expect(fall('anfrage', 'sicherheitstechnik', 'gefuehrte-anfrage', { legalNoticeShown: false })).toBe(SCHRITTE_SICHERHEITSTECHNIK);
     expect(fall('projekt', 'schliessanlagen', 'projektkonfigurator')).toBe(SCHRITTE_SCHLIESSANLAGE);
     expect(fall('projekt', 'schliessanlagen', 'projektkonfigurator', { quelle: PLANER_QUELLE })).toBe(SCHRITTE_PLANER);
     expect(fall('projekt', 'elektronische-zutrittsloesungen', 'projektkonfigurator')).toBe(SCHRITTE_ZUTRITT);
@@ -48,11 +49,14 @@ describe('So geht es weiter (G-38, E6-OPUS-01)', () => {
     expect(fall('bestellung', 'schluessel-nach-code', 'kasse')).toBe(SCHRITTE_NACH_ART.bestellung);
   });
 
-  it('lässt der allgemeinen Anfrage ihre Schritte, auch wenn ihr Thema ein Bereich mit eigenem Weg ist', () => {
-    for (const thema of ['schluessel-nach-vorlage', 'sicherheitstechnik', 'service-und-termin', '']) {
-      const area = (thema || 'service-und-termin') as never;
-      expect(naechsteSchritte({ kind: 'anfrage', area, process: 'gefuehrte-anfrage', payload: { thema } })).toBe(SCHRITTE_NACH_ART.anfrage);
+  it('folgt bei Foto-Anfragen derselben Regel wie die Foto-Freigabe, auch für die allgemeine Anfrage zum Thema', () => {
+    for (const thema of ['schluessel-nach-vorlage', 'sicherheitstechnik', 'schliessanlagen', 'service-und-termin']) {
+      const vorgang = { kind: 'anfrage' as const, area: thema as never, process: 'gefuehrte-anfrage' as never, payload: { thema } };
+      expect(naechsteSchritte(vorgang) === SCHRITTE_FOTOANFRAGE).toBe(istFotoanfrage(vorgang));
     }
+    const allgemein = (thema: string) => naechsteSchritte({ kind: 'anfrage', area: thema as never, process: 'gefuehrte-anfrage', payload: { thema } });
+    expect(allgemein('sicherheitstechnik')).toBe(SCHRITTE_SICHERHEITSTECHNIK);
+    expect(allgemein('service-und-termin')).toBe(SCHRITTE_NACH_ART.anfrage);
   });
 
   it('sagt bei der Foto-Anfrage weder Fertigung noch Einsendung vorab zu (R4, R13)', () => {

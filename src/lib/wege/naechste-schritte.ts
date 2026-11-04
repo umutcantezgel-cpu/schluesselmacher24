@@ -8,6 +8,7 @@
  * Reine Daten ohne Abhängigkeiten, im Browser und auf dem Server nutzbar.
  */
 
+import { istFotoanfrage } from '@/lib/foto-freigabe';
 import type { BusinessRecord, RecordKind } from '@/lib/types';
 
 export interface NaechsterSchritt {
@@ -89,8 +90,8 @@ export const SCHRITTE_ZUTRITT: NaechsterSchritt[] = [
   { titel: 'Angebot', text: 'Sie erhalten ein Angebot mit nachvollziehbaren Positionen und allen Kosten.' },
 ];
 
-/** Anfrage aus dem Sicherheitscheck. */
-export const SCHRITTE_SICHERHEITSCHECK: NaechsterSchritt[] = [
+/** Anfrage zur Sicherheitstechnik (Sicherheitscheck oder allgemeine Anfrage zu diesem Bereich). */
+export const SCHRITTE_SICHERHEITSTECHNIK: NaechsterSchritt[] = [
   { titel: 'Einschätzung', text: 'Wir prüfen Ihre Angaben und melden uns mit einer Einschätzung.' },
   { titel: 'Beratung', text: 'Am Telefon oder vor Ort im Einsatzgebiet.' },
   { titel: 'Angebot', text: 'Sie erhalten ein Angebot mit allen Kosten.' },
@@ -100,13 +101,13 @@ type Vorgang = Pick<BusinessRecord, 'kind' | 'area' | 'process'> & { payload?: R
 
 /**
  * Die Schritte nach dem Absenden für einen Vorgang; die Bestätigung im Weg zeigt dieselben.
- * Die allgemeine Anfrage trägt ihr Thema im payload (`thema`) und behält die allgemeinen Schritte,
- * auch wenn das Thema ein Bereich mit eigenem Weg ist: Sie hat weder Fotos noch Sicherheitscheck.
+ * Eine Foto-Anfrage erkennt dieselbe Regel wie die Foto-Freigabe (`istFotoanfrage`), damit
+ * Schritte und Freigabe-Block auf der Statusseite zusammenpassen, auch bei einer allgemeinen
+ * Anfrage zum Thema „Schlüssel nach Vorlage“.
  */
 export function naechsteSchritte(vorgang: Vorgang): NaechsterSchritt[] {
-  if (vorgang.kind === 'anfrage' && typeof vorgang.payload?.thema === 'string') return SCHRITTE_NACH_ART.anfrage;
-  if (vorgang.kind === 'anfrage' && vorgang.area === 'schluessel-nach-vorlage') return SCHRITTE_FOTOANFRAGE;
-  if (vorgang.kind === 'anfrage' && vorgang.area === 'sicherheitstechnik' && vorgang.process === 'gefuehrte-anfrage') return SCHRITTE_SICHERHEITSCHECK;
+  if (istFotoanfrage(vorgang)) return SCHRITTE_FOTOANFRAGE;
+  if (vorgang.kind === 'anfrage' && vorgang.area === 'sicherheitstechnik' && vorgang.process === 'gefuehrte-anfrage') return SCHRITTE_SICHERHEITSTECHNIK;
   if (vorgang.kind === 'projekt' && vorgang.process === 'projektkonfigurator') {
     if (vorgang.area === 'elektronische-zutrittsloesungen') return SCHRITTE_ZUTRITT;
     if (vorgang.area === 'schliessanlagen') return vorgang.payload?.quelle === PLANER ? SCHRITTE_PLANER : SCHRITTE_SCHLIESSANLAGE;

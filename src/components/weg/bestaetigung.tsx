@@ -64,6 +64,7 @@ export function WegBestaetigung({
   const rahmen = useRef<HTMLDivElement>(null);
   const ueberschrift = useRef<HTMLHeadingElement>(null);
   const schritteId = useId();
+  const nummerId = useId();
 
   useEffect(() => {
     rahmen.current?.scrollIntoView?.({ block: 'start', behavior: scrollVerhalten() });
@@ -74,17 +75,23 @@ export function WegBestaetigung({
     <div ref={rahmen} className="max-w-3xl" data-bestaetigung>
       <div className="flex items-center gap-4">
         <CheckDraw title={marke} size={56} />
-        <p className="font-mono text-caption uppercase tracking-label text-success">{marke}</p>
+        {/* Hilfsmittel hören die Marke schon am Haken (role="img") */}
+        <p aria-hidden className="font-mono text-caption uppercase tracking-label text-success">
+          {marke}
+        </p>
       </div>
 
-      <h2 ref={ueberschrift} tabIndex={-1} className="mt-5 text-headline text-foreground focus:outline-none">
+      {/* Beim Fokus sagen Hilfsmittel mit der Überschrift auch die Vorgangsnummer an */}
+      <h2 ref={ueberschrift} tabIndex={-1} aria-describedby={nummerId} className="mt-5 text-headline text-foreground focus:outline-none">
         {titel}
       </h2>
       <div className="mt-3 max-w-measure text-body leading-relaxed text-foreground-muted">{text}</div>
 
       <div className="mt-6 rounded-lg border border-border bg-surface-muted p-5">
-        <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Ihre Vorgangsnummer</p>
-        <p className="mt-1 break-words font-mono text-headline tabular-nums text-foreground">{reference}</p>
+        <div id={nummerId}>
+          <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Ihre Vorgangsnummer</p>
+          <p className="mt-1 break-words font-mono text-headline tabular-nums text-foreground">{reference}</p>
+        </div>
         <p className="mt-2 text-small leading-relaxed text-foreground-muted">
           {nummerHinweis ??
             (statusAbrufbar

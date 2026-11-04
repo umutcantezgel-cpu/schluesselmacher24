@@ -16,7 +16,7 @@ import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/comp
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { SummaryList } from '@/components/layout/summary-list';
 import { WegBestaetigung } from '@/components/weg/bestaetigung';
-import { SCHRITTE_NACH_ART } from '@/lib/wege/naechste-schritte';
+import { naechsteSchritte, type NaechsterSchritt } from '@/lib/wege/naechste-schritte';
 
 const STEPS: FlowStep[] = [
   { id: 'thema', short: 'Thema', title: 'Worum geht es?', hint: 'So landet Ihre Anfrage gleich bei der richtigen Person.' },
@@ -75,7 +75,7 @@ export function AllgemeineAnfrage({
   const [dateien, setDateien] = useState<PickedFile[]>([]);
   const [senden, setSenden] = useState(false);
   const [fehler, setFehler] = useState<string | null>(null);
-  const [erfolg, setErfolg] = useState<{ reference: string; notices: string[]; summary: SummarySection[] } | null>(null);
+  const [erfolg, setErfolg] = useState<{ reference: string; notices: string[]; summary: SummarySection[]; schritte: NaechsterSchritt[] } | null>(null);
 
   const schutz = useFormularSchutz();
 
@@ -141,10 +141,11 @@ export function AllgemeineAnfrage({
     // Laufende Uploads abschließen, damit ihre Kennungen mitgehen.
     await uploadsAbwarten();
 
+    const area = (data.thema || 'service-und-termin') as AreaKey;
     const ergebnis = await submitRecord({
       schutz: await schutz.daten(),
       kind: 'anfrage',
-      area: (data.thema || 'service-und-termin') as AreaKey,
+      area,
       process: 'gefuehrte-anfrage',
       contact: {
         salutation: data.anrede || undefined,
@@ -171,7 +172,9 @@ export function AllgemeineAnfrage({
     }
 
     clearFlow('allgemeine-anfrage');
-    setErfolg({ reference: ergebnis.reference ?? '', notices: ergebnis.notices, summary: zusammenfassung });
+    // Dieselben Schritte, die die Statusseite für diesen Vorgang zeigt (Thema gleich Bereich).
+    const schritte = naechsteSchritte({ kind: 'anfrage', area, process: 'gefuehrte-anfrage', payload: { thema: data.thema } });
+    setErfolg({ reference: ergebnis.reference ?? '', notices: ergebnis.notices, summary: zusammenfassung, schritte });
   }
 
   if (erfolg) {
@@ -182,7 +185,7 @@ export function AllgemeineAnfrage({
         text="Wir sehen uns Ihre Angaben an und melden uns mit einer Einschätzung."
         reference={erfolg.reference}
         notices={erfolg.notices}
-        schritte={SCHRITTE_NACH_ART.anfrage}
+        schritte={erfolg.schritte}
         summary={erfolg.summary}
         zurueck={{ href: '/', label: 'Zur Startseite' }}
         weitere={[{ href: '/ratgeber', label: 'Ratgeber lesen' }]}

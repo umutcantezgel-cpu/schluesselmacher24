@@ -18,7 +18,7 @@ import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { SummaryList } from '@/components/layout/summary-list';
 import { WegBestaetigung } from '@/components/weg/bestaetigung';
-import { SCHRITTE_SICHERHEITSCHECK } from '@/lib/wege/naechste-schritte';
+import { SCHRITTE_SICHERHEITSTECHNIK } from '@/lib/wege/naechste-schritte';
 
 const FLOW_ID = 'sicherheitscheck';
 
@@ -616,7 +616,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
           text="Wir prüfen Ihre Angaben und melden uns mit einer Einschätzung sowie den nächsten Schritten."
           reference={result.reference ?? ''}
           notices={result.notices}
-          schritte={SCHRITTE_SICHERHEITSCHECK}
+          schritte={SCHRITTE_SICHERHEITSTECHNIK}
           summary={summary}
           zurueck={{ href: '/sicherheitstechnik', label: 'Zurück zur Sicherheitstechnik' }}
         >
