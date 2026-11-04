@@ -21,6 +21,8 @@ export const PDF_FARBEN = {
 const SEITE = { breite: 595.28, hoehe: 841.89, rand: 48, oben: 54, unten: 62 };
 const INHALT = SEITE.breite - 2 * SEITE.rand;
 const ZEILENABSTAND = 1.6;
+/** Breite des Adressfelds (Begleitschein, zum Ausschneiden oder Abschreiben). */
+const ADRESSFELD_BREITE = 260;
 
 type Dokument = InstanceType<typeof PDFDocument>;
 interface Fontkit {
@@ -209,7 +211,7 @@ class Zeichner {
     const zeile = abschnitt.zeilen?.find((z) => z.wert !== '');
     if (zeile) return this.hoehe(zeile.wert, { breite: INHALT * 0.68 - 8 }) + 6;
     if (abschnitt.text) return this.hoehe(abschnitt.text) + 4;
-    if (abschnitt.adressfeld) return 24 + abschnitt.adressfeld.length * 19 + 14;
+    if (abschnitt.adressfeld) return this.adresszeilen(abschnitt.adressfeld).hoehe + 14;
     return INHALT * 0.25 + 28;
   }
 
@@ -236,16 +238,27 @@ class Zeichner {
     if (abschnitt.adressfeld?.length) this.adressfeld(abschnitt.adressfeld);
   }
 
+  /**
+   * Zeilen des Adressfelds mit gemessener Höhe: Eine lange Zeile (etwa ein Firmenname mit Inhaber)
+   * bricht um und schiebt die folgenden nach unten, statt sie zu überdecken (E6-OPUS-02).
+   */
+  private adresszeilen(zeilen: string[]): { stile: Stil[]; abstaende: number[]; hoehe: number } {
+    const stile = zeilen.map((_, i): Stil => ({ schnitt: i === 0 ? 'fett' : 'normal', groesse: 13, breite: ADRESSFELD_BREITE - 28 }));
+    const abstaende = zeilen.map((zeile, i) => Math.max(19, this.hoehe(zeile, stile[i]) + 3));
+    return { stile, abstaende, hoehe: 24 + abstaende.reduce((a, b) => a + b, 0) };
+  }
+
   private adressfeld(zeilen: string[]): void {
-    const breite = 260;
-    const hoehe = 24 + zeilen.length * 19;
+    const { stile, abstaende, hoehe } = this.adresszeilen(zeilen);
     this.platz(hoehe + 10);
     const y = this.doc.y + 4;
     this.doc.save();
-    this.doc.rect(SEITE.rand, y, breite, hoehe).dash(4, { space: 3 }).lineWidth(1).strokeColor(PDF_FARBEN.leise).stroke();
+    this.doc.rect(SEITE.rand, y, ADRESSFELD_BREITE, hoehe).dash(4, { space: 3 }).lineWidth(1).strokeColor(PDF_FARBEN.leise).stroke();
     this.doc.restore();
+    let zeileY = y + 12;
     zeilen.forEach((zeile, i) => {
-      this.schreibe(zeile, SEITE.rand + 14, y + 12 + i * 19, { schnitt: i === 0 ? 'fett' : 'normal', groesse: 13, breite: breite - 28 });
+      this.schreibe(zeile, SEITE.rand + 14, zeileY, stile[i]);
+      zeileY += abstaende[i];
     });
     this.doc.y = y + hoehe + 8;
   }

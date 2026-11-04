@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { defaults } from '../data/defaults';
 import { vorgangZuPayload, vorgangZuSeite } from '../data/payload-mapping';
 import { fotoanfrageVerlauf } from '../foto-freigabe';
+import { erzeugePdf } from '../pdf/erzeuge-pdf';
 import { kundeEingang, statusMail } from '../mail/vorlagen';
 import { echteEinstellungen } from '../rechtliches/test-hilfen';
 import type { BusinessRecord, CompanyProfile, ContactDetails } from '../types';
@@ -178,5 +179,24 @@ describe('Einsendung in Mails, Verlauf und Datenabbildung (Gegenprüfung E6-OPUS
     expect(zurueck.approval?.sendInRequired).toBe(false);
     const foto = vorgang({ payload: { sicherungskarte: 'nein' }, approval: { sendInRequired: true } });
     expect(vorgangZuSeite(gespeichert(foto) as never).approval?.sendInRequired).toBe(true);
+  });
+});
+
+describe('Adressfeld des Begleitscheins (Sichtprüfung E6-OPUS-02)', () => {
+  /** Höhe des gestrichelten Rahmens (Breite 260) im unkomprimierten PDF. */
+  async function rahmenhoehe(name: string): Promise<number> {
+    const pdf = await erzeugePdf(
+      { titel: 'Begleitschein', nummer: 'SM24-A-2026-0007', stand: new Date('2026-11-04T05:00:00.000Z'), kopf: [], abschnitte: [{ titel: 'Anschrift für den Umschlag', adressfeld: [name, 'Werkstattgasse 7', '35578 Wetzlar'] }], fuss: 'Probe' },
+      { komprimieren: false },
+    );
+    const treffer = pdf.toString('latin1').match(/[\d.]+ [\d.]+ 260 ([\d.]+) re/);
+    return Number(treffer?.[1] ?? 0);
+  }
+
+  it('wächst mit einem umbrechenden Firmennamen, statt die Straße zu überdecken', async () => {
+    const kurz = await rahmenhoehe('Testwerkstatt Lahn');
+    const lang = await rahmenhoehe('SCHLÜSSELMACHER24 – Inhaberin Erika Mustermann-Beispiel');
+    expect(kurz).toBeGreaterThan(0);
+    expect(lang).toBeGreaterThan(kurz + 10);
   });
 });
