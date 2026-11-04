@@ -14,6 +14,8 @@ import { mailHinweis } from '@/lib/mail/hinweise';
 import { vorgangOrtText } from '@/lib/terminort';
 import type { OrderLine, OrderTotals, PaymentInfo, RecordKind, RecordStatus, SummarySection } from '@/lib/types';
 import { naechsteSchritte } from '@/lib/wege/naechste-schritte';
+import { begleitscheinAnzeigen } from '@/lib/einsenden/schein';
+import { EINSENDE_STATUS, istEinsendung } from '@/lib/einsenden/vorgang';
 import { zahlungsAnsicht } from '@/lib/zahlung/ansicht';
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
@@ -180,6 +182,12 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
   // Dieselben Schritte wie in der Bestätigung am Ende des Weges (G-38, R4).
   const schritte = naechsteSchritte(record);
   const freigegeben = fotoanfrage && record.status === 'freigegeben';
+  // Einsendung (E6-OPUS-02): eigene Namen für die ersten Status, Begleitschein bis zum Eingang.
+  const einsendung = istEinsendung(record);
+  const einsendeStatus = einsendung ? EINSENDE_STATUS[record.status] : undefined;
+  const begleitscheinHref = begleitscheinAnzeigen(record)
+    ? `/bestellung/${encodeURIComponent(record.id)}/begleitschein?t=${encodeURIComponent(token)}`
+    : null;
   const zahlung = zahlungsAnsicht(record, {
     online: paymentStatus().configured,
     abbruch: geladen.abbruch,
@@ -280,7 +288,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
 
               <div className="mt-4 flex flex-wrap gap-2">
                 <Badge tone={STATUS_TONE[record.status]}>
-                  Status: {STATUS_LABELS[record.status]}
+                  Status: {einsendeStatus?.label ?? STATUS_LABELS[record.status]}
                 </Badge>
                 {record.payment && (
                   <Badge tone={PAYMENT_TONE[record.payment.status]}>
@@ -298,6 +306,24 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                   ))}
                 </ul>
               </Alert>
+            )}
+
+            {einsendeStatus && <p className="text-body text-foreground-muted">{einsendeStatus.text}</p>}
+
+            {begleitscheinHref && (
+              <section className="border-t border-border pt-8">
+                <h2 className="text-title-sm font-semibold text-foreground">Begleitschein</h2>
+                <p className="mt-2 max-w-measure text-small leading-relaxed text-foreground-muted">
+                  Ausdrucken und mit dem Schlüssel in einen gepolsterten Umschlag legen. Die Anschrift für den Umschlag steht darauf.
+                </p>
+                <a
+                  href={begleitscheinHref}
+                  className="mt-4 inline-flex min-h-touch items-center gap-1.5 text-small font-semibold text-primary hover:underline"
+                >
+                  Begleitschein herunterladen (PDF)
+                  <GlyphPfeilRechts size={18} />
+                </a>
+              </section>
             )}
 
             {fotoanfrage && <FotoErgebnis record={record} einsendeAnschrift={einsendeZeilen} />}

@@ -44,6 +44,7 @@ export const LIMITS = {
   preis: { name: 'preis', limit: 60, windowMs: 10 * 60 * 1000 },
   // Schließplan als PDF aus dem Planer: je Aufruf ein Satz mit pdfkit, darum knapper.
   schliessplanPdf: { name: 'schliessplan-pdf', limit: 20, windowMs: 10 * 60 * 1000 },
+  begleitschein: { name: 'begleitschein', limit: 20, windowMs: 10 * 60 * 1000 },
 } satisfies Record<string, RateLimitRule>;
 
 export const RATE_LIMIT_MESSAGE =

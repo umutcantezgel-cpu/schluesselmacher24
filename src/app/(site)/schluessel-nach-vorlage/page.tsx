@@ -275,9 +275,13 @@ export default async function SchluesselNachVorlagePage() {
 
             <Alert tone="info" title="Ihr Original bleibt bei Ihnen" className="mt-7">
               Für die Anfrage müssen Sie den Originalschlüssel <strong>nicht</strong> einsenden.
-              Wir arbeiten zuerst mit Ihren Fotos. Eine Einsendung kommt nur infrage, wenn die
-              Bilder für eine sichere Bestimmung nicht ausreichen — und erst, nachdem wir Sie
-              darum gebeten haben.
+              Wir arbeiten zuerst mit Ihren Fotos und bitten nur um das Original, wenn die Bilder
+              für eine sichere Bestimmung nicht ausreichen. Wer den Schlüssel lieber gleich
+              einschickt,{' '}
+              <Link href="/schluessel-einschicken" className="font-semibold underline">
+                meldet die Einsendung an
+              </Link>
+              .
             </Alert>
 
             <div className="mt-7">
@@ -404,10 +408,10 @@ export default async function SchluesselNachVorlagePage() {
 
             <div className="prose-sm24 mt-6 max-w-none">
               <p>
-                Senden Sie bitte nichts unaufgefordert ein. Die Versandadresse und den genauen
-                Umfang nennen wir Ihnen mit der Freigabe — zusammen mit Ihrer Vorgangsnummer.
-                Senden Sie das Original erst, nachdem Sie den Auftrag mit der Zahlung erteilt
-                haben.
+                Senden Sie während der Fotoanfrage bitte nichts unaufgefordert ein. Die Versandadresse
+                und den genauen Umfang nennen wir Ihnen mit der Freigabe, zusammen mit Ihrer
+                Vorgangsnummer; den Begleitschein finden Sie dann auf Ihrer Vorgangsseite. Senden Sie
+                das Original erst, nachdem Sie den Auftrag mit der Zahlung erteilt haben.
               </p>
             </div>
 

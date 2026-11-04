@@ -1,8 +1,10 @@
-import type { ComponentType } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getPageContent, getRubrik, getSettings } from '@/lib/data';
+import { defaults } from '@/lib/data/defaults';
+import { einsendeAngebotFuerWeg } from '@/lib/einsenden/schein';
+import { formatCents } from '@/lib/format';
 import { firmenname, sitzZeilen, standort } from '@/lib/rechtliches/firma';
 import type { CompanyProfile } from '@/lib/types';
 import { Accordion } from '@/components/ui/accordion';
@@ -10,28 +12,29 @@ import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
+import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
-import type { IconProps } from '@/components/visual/icons/icon-base';
-import { IconPruefung } from '@/components/visual/icons/pruefung';
-import { IconRueckgabe } from '@/components/visual/icons/rueckgabe';
-import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
-import { IconWerkstatt } from '@/components/visual/icons/werkstatt';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { GlyphOrt } from '@/components/visual/glyphen/ort';
 
 const ROUTE = 'schluessel-einschicken';
+const ANMELDEN = '/schluessel-einschicken/anmelden';
 
-/* Inhalt aus dem Abschnitt „Einsendung“ der Vorlage-Seite und ihren Fragen — keine Preise, keine Fristen. */
+/*
+ * Schlüssel einschicken (G-24 bis G-26, E6-OPUS-02): Anmeldung mit Begleitschein, Versand versichert oder
+ * unversichert, Rücksendung. Preise nur aus den Einstellungen (Porto der Post als Empfehlung, Aufpreise
+ * des Betriebs); „kostenlos“ steht nur mit echtem Retourenlabel (R9, A-035).
+ */
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Schlüssel einschicken',
+    title: page?.seo.title ?? 'Schlüssel einschicken: Begleitschein und Rückversand',
     description:
       page?.seo.description
-      ?? 'Schlüssel einschicken nur nach Freigabe Ihrer Fotoanfrage oder auf unsere Bitte: wohin, was '
-        + 'beiliegen soll und wie Sie sicher versenden.',
+      ?? 'Schlüssel aus ganz Deutschland einschicken: Einsendung anmelden, Begleitschein ausdrucken, versichert oder '
+        + 'unversichert versenden. Original und Kopien kommen zurück.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }
@@ -41,68 +44,46 @@ const CRUMBS = [
   { href: `/${ROUTE}`, label: 'Schlüssel einschicken' },
 ];
 
-const ABLAUF: Array<{ icon: ComponentType<IconProps>; title: string; body: string }> = [
-  {
-    icon: IconPruefung,
-    title: 'Erst die Fotoanfrage',
-    body:
-      'Sie schicken uns Fotos Ihres Schlüssels. Wir prüfen, ob eine Anfertigung möglich ist, und melden '
-      + 'uns mit dem Ergebnis — als Freigabe, Rückfrage oder Absage.',
-  },
-  {
-    icon: IconVersandPaket,
-    title: 'Einschicken nur, wenn nötig',
-    body:
-      'Reichen die Fotos für eine sichere Bestimmung nicht aus, bitten wir Sie um das Original — mit '
-      + 'Ihrer Vorgangsnummer und der Anschrift für die Sendung.',
-  },
-  {
-    icon: IconWerkstatt,
-    title: 'Anfertigung in der Werkstatt',
-    body: 'Mit dem Original vor uns fertigen wir den neuen Schlüssel.',
-  },
-  {
-    icon: IconRueckgabe,
-    title: 'Rücksendung',
-    body:
-      'Ihr Original kommt mit dem fertigen Schlüssel zu Ihnen zurück, auf Wunsch getrennt voneinander. '
-      + 'Die Versandart stimmen wir vorher mit Ihnen ab.',
-  },
-];
-
 const BEILAGE = [
-  'Ein Zettel mit Ihrer Vorgangsnummer, Ihrem Namen und Ihrer Telefonnummer.',
-  'Die vollständige Rücksendeadresse.',
-  'Nur den betreffenden Schlüssel — ohne Schlüsselring, Anhänger und weitere Schlüssel.',
-  'Falls vorhanden: eine Kopie der Sicherungskarte oder des Berechtigungsnachweises.',
+  'Der Begleitschein mit Ihrer Vorgangsnummer und Ihrer Rücksendeanschrift.',
+  'Nur die betreffenden Schlüssel, ohne Schlüsselring und Anhänger.',
+  'Ein gepolsterter Umschlag, damit der Schlüssel ihn nicht durchstößt.',
+  'Bei Schlüsseln mit Sicherungskarte: eine Kopie der Karte, falls Sie bei der Anmeldung kein Foto hochgeladen haben. Die Karte selbst behalten Sie.',
 ];
 
-/** Grundbestand der Fragen, solange in der Datenschicht keine gepflegt sind (Antworten aus der Vorlage-Seite). */
-const FRAGEN = [
-  {
-    question: 'Muss ich meinen Schlüssel einschicken?',
-    answer:
-      'Zunächst nicht. Für die Anfrage genügen Fotos. Ihr Schlüssel bleibt bei Ihnen. Nur wenn die Bilder '
-      + 'für eine sichere Bestimmung nicht ausreichen, bitten wir Sie um die Einsendung des Originals — mit '
-      + 'einer eigenen Anweisung dazu.',
-  },
-  {
-    question: 'Kann ich den Schlüssel auch ohne Anfrage einschicken?',
-    answer:
-      'Bitte nicht. Senden Sie nichts unaufgefordert ein: Ohne Vorgangsnummer können wir eine Sendung '
-      + 'keinem Auftrag zuordnen. Beginnen Sie mit der Fotoanfrage — die Versandanschrift und den genauen '
-      + 'Umfang nennen wir Ihnen mit dem Ergebnis der Prüfung.',
-  },
-  {
-    question: 'Und bei Schlüsseln mit Sicherungskarte oder geschütztem Profil?',
-    answer:
-      'Solche Schlüssel sind nur eingeschränkt nachzufertigen. Je nach System ist ein Nachweis der '
-      + 'Berechtigung oder der Weg über den Hersteller nötig. Das prüfen wir im Einzelfall und sagen Ihnen '
-      + 'das Ergebnis.',
-  },
-];
+/** Grundbestand der Fragen, solange in der Datenschicht keine gepflegt sind. */
+function fragen(porto: { versichert: string; haftung: number }) {
+  return [
+    {
+      question: 'Muss ich meinen Schlüssel einschicken?',
+      answer:
+        'Nein. Oft genügen Fotos: Mit der Fotoanfrage bleibt Ihr Schlüssel bei Ihnen, und wir bitten nur um das Original, '
+        + 'wenn die Bilder für eine sichere Bestimmung nicht ausreichen. Wer den Schlüssel lieber gleich einschickt, meldet '
+        + 'die Einsendung an und bekommt einen Begleitschein.',
+    },
+    {
+      question: 'Kann ich den Schlüssel ohne Anmeldung einschicken?',
+      answer:
+        'Bitte nicht. Ohne Begleitschein oder Vorgangsnummer können wir eine Sendung keinem Auftrag zuordnen. Die Anmeldung '
+        + 'dauert wenige Minuten; danach drucken Sie den Begleitschein aus.',
+    },
+    {
+      question: 'Was kostet das Einschicken?',
+      answer:
+        `Das Porto für den Weg zu uns zahlen Sie bei der Post; empfohlen ist ein Einschreiben (${porto.versichert}, Haftung bis `
+        + `${porto.haftung} €). Den Preis für die Kopien nennen wir Ihnen nach der Prüfung mit der Freigabe, bevor Sie etwas `
+        + 'bezahlen. Erst mit Ihrer Zahlung erteilen Sie den Auftrag.',
+    },
+    {
+      question: 'Und bei Schlüsseln mit Sicherungskarte oder geschütztem Profil?',
+      answer:
+        'Solche Schlüssel fertigen wir nur gegen die Karte: Bei der Anmeldung laden Sie ein Foto der Sicherungskarte hoch. Je '
+        + 'nach System ist zusätzlich der Weg über den Hersteller nötig. Das prüfen wir im Einzelfall und sagen Ihnen das Ergebnis.',
+    },
+  ];
+}
 
-/** Anschrift für die Sendung: die Werkstatt, sonst der Firmensitz — nur veröffentlichte Angaben. */
+/** Anschrift für die Sendung: die Werkstatt, sonst der Firmensitz; nur veröffentlichte Angaben. */
 function versandAnschrift(company: CompanyProfile): { titel: string; zeilen: string[] } | null {
   const werkstatt = standort(company);
   if (werkstatt) {
@@ -120,7 +101,11 @@ export default async function SchluesselEinschickenPage() {
   const rubrik = await getRubrik('schluessel-einschicken');
   const [page, settings] = await Promise.all([getPageContent(ROUTE), getSettings()]);
   const anschrift = versandAnschrift(settings.company);
-  const faq = page?.faq?.length ? page.faq : FRAGEN;
+  const einstellungen = settings.sendIn ?? defaults.settings().sendIn!;
+  const angebot = einsendeAngebotFuerWeg(einstellungen);
+  const faq = page?.faq?.length
+    ? page.faq
+    : fragen({ versichert: formatCents(einstellungen.portoVersichertCents), haftung: einstellungen.haftungVersichertEuro });
 
   return (
     <>
@@ -138,16 +123,19 @@ export default async function SchluesselEinschickenPage() {
         rubrik={rubrik}
         eyebrow="Schlüssel nach Foto oder Vorlage"
         title={page?.headline ?? 'Schlüssel einschicken'}
-        lead={page?.subline ?? 'Nur nach Freigabe Ihrer Fotoanfrage oder auf unsere Bitte.'}
+        lead={
+          page?.subline
+          ?? 'Schlüsseldienst online, ohne Anfahrt: Einsendung anmelden, Begleitschein ausdrucken, Schlüssel einschicken. Original und Kopien kommen zu Ihnen zurück.'
+        }
         crumbs={CRUMBS}
         bereich="schluessel-nach-vorlage"
         actions={
           <>
-            <ButtonLink href="/schluessel-nach-vorlage/anfrage" size="lg" pfeil>
-              Foto prüfen lassen
+            <ButtonLink href={ANMELDEN} size="lg" pfeil>
+              Einsendung anmelden
             </ButtonLink>
-            <ButtonLink href="/service-und-termin/terminstatus" size="lg" variant="outline">
-              Stand meines Vorgangs
+            <ButtonLink href="/schluessel-nach-vorlage/anfrage" size="lg" variant="outline">
+              Erst Foto prüfen lassen
             </ButtonLink>
           </>
         }
@@ -155,54 +143,76 @@ export default async function SchluesselEinschickenPage() {
         {page?.intro && <p className="max-w-measure text-body text-foreground-muted">{page.intro}</p>}
       </PageHeader>
 
-      {/* 01 Wann: erst die Fotoanfrage, dann — falls nötig — die Einsendung */}
-      <Section labelledBy="wann-titel">
+      {/* 01 Ablauf aus den Rubrikdaten (G-10, G-11); Fotos zuerst bleibt als Weg ohne Versand */}
+      <Section labelledBy="ablauf-titel">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
             <SectionHeading
-              id="wann-titel"
+              id="ablauf-titel"
               nummer="01"
-              eyebrow="Wann"
-              title="Erst prüfen, dann einschicken"
-              lead="Meist genügen uns Fotos. Das Original brauchen wir nur, wenn die Bilder für eine sichere Bestimmung nicht ausreichen."
+              eyebrow="So läuft Ihr Auftrag ab"
+              title="Vom Umschlag zurück zu Ihnen"
+              lead="Ohne Anfahrt, aus ganz Deutschland. Die Rücksendung geht an eine Anschrift in Deutschland."
             />
-            <Alert tone="warning" title="Bitte nichts unaufgefordert einsenden" className="mt-7">
-              Schicken Sie Ihren Schlüssel erst, wenn wir Ihre Fotoanfrage freigegeben oder Sie
-              ausdrücklich um das Original gebeten haben. Eine Prüfung ist noch keine Zusage zur
-              Anfertigung.
+            <Alert tone="info" title="Oft genügen Fotos" className="mt-7">
+              Lassen Sie Ihren Schlüssel zuerst nach Fotos prüfen, dann bleibt er bei Ihnen. Reichen die Bilder nicht, bitten wir
+              Sie um das Original.{' '}
+              <Link href="/schluessel-nach-vorlage/anfrage" className="font-semibold underline">
+                Foto prüfen lassen
+              </Link>
             </Alert>
+            <Alert tone="warning" title="Bitte nur mit Begleitschein einschicken" className="mt-4">
+              Ohne Begleitschein können wir eine Sendung keinem Auftrag zuordnen. Eine Prüfung ist noch keine Zusage zur Anfertigung.
+            </Alert>
+            <div className="mt-7">
+              <ButtonLink href={ANMELDEN} pfeil>
+                Einsendung anmelden
+              </ButtonLink>
+            </div>
           </div>
 
-          <ol className="border-t border-border lg:col-span-7">
-            {ABLAUF.map((schritt, index) => {
-              const Icon = schritt.icon;
-              return (
-                <li key={schritt.title} className="flex gap-5 border-b border-border py-6">
-                  <span className="w-6 shrink-0 pt-1 font-mono text-caption tabular-nums text-foreground-muted">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <Icon size={40} className="shrink-0 text-area-strong" />
-                  <div className="min-w-0">
-                    <h3 className="text-title-sm font-semibold text-foreground">{schritt.title}</h3>
-                    <p className="mt-1 max-w-measure text-small text-foreground-muted">{schritt.body}</p>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
+          {rubrik && <RubrikAblauf rubrik={rubrik} variante="liste" className="lg:col-span-7" />}
         </div>
       </Section>
 
-      {/* 02 Wohin und was beiliegen soll */}
-      <Section tone="muted" labelledBy="wohin-titel">
+      {/* 02 Versand: versichert empfohlen, Porto der Post und Aufpreise aus den Einstellungen (G-24, R9) */}
+      <Section tone="muted" labelledBy="versand-titel">
+        <SectionHeading
+          id="versand-titel"
+          nummer="02"
+          eyebrow="Versand"
+          title="Versichert oder unversichert"
+          lead={angebot.satz}
+        />
+        <div className="mt-8 grid gap-6 md:grid-cols-2 md:gap-gutter">
+          {angebot.optionen.map((option) => (
+            <Card key={option.art}>
+              <CardBody>
+                <h3 className="text-title-sm font-semibold text-foreground">
+                  {option.titel}
+                  {option.empfohlen && <span className="ml-2 font-mono text-caption uppercase tracking-label text-success">empfohlen</span>}
+                </h3>
+                <p className="mt-2 text-small leading-relaxed text-foreground-muted">{option.hinweis}</p>
+                {option.aufpreisCents > 0 && (
+                  <p className="mt-2 text-small font-semibold text-foreground">Aufpreis {formatCents(option.aufpreisCents)}</p>
+                )}
+              </CardBody>
+            </Card>
+          ))}
+        </div>
+        {angebot.stand && <p className="mt-6 max-w-measure text-small text-foreground-subtle">Portopreise: {angebot.stand}</p>}
+      </Section>
+
+      {/* 03 Wohin und was beiliegen soll */}
+      <Section labelledBy="wohin-titel">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           <div className="lg:col-span-5">
             <SectionHeading
               id="wohin-titel"
-              nummer="02"
+              nummer="03"
               eyebrow="Wohin"
               title="An unsere Werkstatt"
-              lead="Maßgeblich ist die Anschrift aus unserer Rückmeldung zu Ihrer Anfrage — zusammen mit Ihrer Vorgangsnummer."
+              lead="Die Anschrift steht auch auf Ihrem Begleitschein, zusammen mit Ihrer Vorgangsnummer."
             />
             {anschrift ? (
               <address className="mt-6 flex items-start gap-3 rounded-lg border border-border bg-surface p-5 not-italic">
@@ -218,14 +228,14 @@ export default async function SchluesselEinschickenPage() {
               </address>
             ) : (
               <p className="mt-6 max-w-measure text-small text-foreground-muted">
-                Die Versandanschrift nennen wir Ihnen mit dem Ergebnis der Prüfung.
+                Die Versandanschrift steht auf Ihrem Begleitschein.
               </p>
             )}
           </div>
 
           <Card className="lg:col-span-7">
             <CardBody>
-              <h3 className="text-title-sm font-semibold text-foreground">Was der Sendung beiliegen soll</h3>
+              <h3 className="text-title-sm font-semibold text-foreground">Was in den Umschlag gehört</h3>
               <ul className="mt-4 space-y-3">
                 {BEILAGE.map((eintrag) => (
                   <li key={eintrag} className="flex gap-3">
@@ -239,37 +249,31 @@ export default async function SchluesselEinschickenPage() {
         </div>
       </Section>
 
-      {/* 03 Verpackung, Versand und Rücksendung */}
-      <Section labelledBy="versand-titel">
-        <SectionHeading
-          id="versand-titel"
-          nummer="03"
-          eyebrow="Versand"
-          title="Sicher hin und zurück"
-        />
+      {/* 04 Verpackung, Versand und Rücksendung */}
+      <Section tone="muted" labelledBy="zurueck-titel">
+        <SectionHeading id="zurueck-titel" nummer="04" eyebrow="Rücksendung" title="Sicher hin und zurück" />
         <div className="mt-8 grid gap-6 md:grid-cols-2 md:gap-gutter">
           <Alert tone="legal" title="Versand mit Sendungsverfolgung">
-            Wählen Sie einen versicherten oder mindestens nachverfolgbaren Versand. Ein Schlüssel im
-            unverfolgten Brief ist bei Verlust nicht auffindbar und nicht ersetzbar. Verpacken Sie
-            den Schlüssel so, dass er den Umschlag nicht durchstoßen kann.
+            Wählen Sie einen versicherten oder mindestens nachverfolgbaren Versand. Ein Schlüssel im unverfolgten Brief ist bei
+            Verlust nicht auffindbar und nicht ersetzbar. Verpacken Sie den Schlüssel so, dass er den Umschlag nicht durchstoßen kann.
           </Alert>
-          <Alert tone="info" title="Rücksendung mit dem fertigen Schlüssel">
-            Nach der Anfertigung erhalten Sie Ihr Original zusammen mit dem neuen Schlüssel zurück —
-            auf Wunsch getrennt voneinander. Die Versandart stimmen wir vorher mit Ihnen ab.
+          <Alert tone="info" title="Rücksendung mit den Kopien">
+            Nach der Anfertigung erhalten Sie Ihr Original zusammen mit den Kopien zurück, auf Wunsch getrennt voneinander. Die
+            Versandart für die Rücksendung stimmen wir vorher mit Ihnen ab; die Sendungsnummer schicken wir Ihnen per E-Mail.
           </Alert>
         </div>
         <p className="mt-6 max-w-measure text-small text-foreground-muted">
-          Noch keine Anfrage gestellt?{' '}
-          <Link href="/schluessel-nach-vorlage" className="font-semibold text-primary hover:underline">
-            So funktioniert der Schlüssel nach Foto oder Vorlage
+          Den Stand Ihrer Einsendung sehen Sie jederzeit unter{' '}
+          <Link href="/service-und-termin/terminstatus" className="font-semibold text-primary hover:underline">
+            Stand des Vorgangs
           </Link>
           .
         </p>
       </Section>
 
-      {/* 04 Fragen */}
-      <Section tone="muted" labelledBy="fragen-titel">
-        <SectionHeading id="fragen-titel" nummer="04" eyebrow="Fragen" title="Häufige Fragen zur Einsendung" />
+      {/* 05 Fragen */}
+      <Section labelledBy="fragen-titel">
+        <SectionHeading id="fragen-titel" nummer="05" eyebrow="Fragen" title="Häufige Fragen zur Einsendung" />
         <Accordion items={faq} className="mt-8" />
       </Section>
     </>

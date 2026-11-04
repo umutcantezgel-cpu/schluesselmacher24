@@ -8,6 +8,7 @@
  * Reine Daten ohne Abhängigkeiten, im Browser und auf dem Server nutzbar.
  */
 
+import { istEinsendung } from '@/lib/einsenden/vorgang';
 import { istFotoanfrage } from '@/lib/foto-freigabe';
 import type { BusinessRecord, RecordKind } from '@/lib/types';
 
@@ -68,6 +69,26 @@ export const SCHRITTE_FOTOANFRAGE: NaechsterSchritt[] = [
   },
 ];
 
+/** Schlüssel einschicken (G-24, G-25): Begleitschein, Eingang, Freigabe mit Zahlung, Rückversand. */
+export const SCHRITTE_EINSENDUNG: NaechsterSchritt[] = [
+  {
+    titel: 'Einschicken',
+    text: 'Den Begleitschein ausdrucken, mit dem Schlüssel in einen gepolsterten Umschlag legen und bei der Post aufgeben.',
+  },
+  {
+    titel: 'Eingang und Prüfung',
+    text: 'Sobald Ihr Schlüssel ankommt, steht das auf Ihrer Vorgangsseite. Wir prüfen, ob eine Kopie möglich ist; gehört der Schlüssel zu einer Anlage mit Sicherungskarte, prüfen wir den Nachweis vor der Fertigung.',
+  },
+  {
+    titel: 'Preis und Auftrag',
+    text: 'Ist die Kopie möglich, erhalten Sie die Freigabe mit Preis und einen persönlichen Zahlungslink per E-Mail. Erst mit Ihrer Zahlung erteilen Sie den Auftrag. Geht es nicht, schicken wir Ihnen Ihr Original zurück.',
+  },
+  {
+    titel: 'Anfertigung und Rückversand',
+    text: 'Nach Zahlungseingang fertigen wir die Kopien und schicken sie mit Ihrem Original zurück. Die Sendungsnummer bekommen Sie per E-Mail.',
+  },
+];
+
 /** Projekt aus dem Projektkonfigurator Schließanlage. */
 export const SCHRITTE_SCHLIESSANLAGE: NaechsterSchritt[] = [
   { titel: 'Prüfung Ihrer Angaben', text: 'Wir prüfen Ihre Angaben und melden uns bei offenen Punkten.' },
@@ -106,6 +127,7 @@ type Vorgang = Pick<BusinessRecord, 'kind' | 'area' | 'process'> & { payload?: R
  * Anfrage zum Thema „Schlüssel nach Vorlage“.
  */
 export function naechsteSchritte(vorgang: Vorgang): NaechsterSchritt[] {
+  if (istEinsendung(vorgang)) return SCHRITTE_EINSENDUNG;
   if (istFotoanfrage(vorgang)) return SCHRITTE_FOTOANFRAGE;
   if (vorgang.kind === 'anfrage' && vorgang.area === 'sicherheitstechnik' && vorgang.process === 'gefuehrte-anfrage') return SCHRITTE_SICHERHEITSTECHNIK;
   if (vorgang.kind === 'projekt' && vorgang.process === 'projektkonfigurator') {

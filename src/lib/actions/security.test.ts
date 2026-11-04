@@ -196,6 +196,36 @@ describe('submitRecord', () => {
     expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'unklar' }, uploads: [foto] })).ok).toBe(true);
   });
 
+  it('legt eine Einsendung nur mit geprüften Angaben an, ohne Begleitschein bei Platzhalter-Firmendaten (G-24, E6-OPUS-02)', async () => {
+    const basis = { kind: 'anfrage' as const, area: 'schluessel-nach-vorlage' as const, process: 'gefuehrte-anfrage' as const, contact, uploads: [] };
+    const gueltig = { quelle: 'einsenden', originale: 2, stueckzahl: 3, beschriftung: ' AB 123 ', hinweis: '', sicherungskarte: 'nein', versand: 'versichert' };
+    const gefaelscht = [{ title: 'Preis', rows: [{ label: 'Preis', value: 'Gesamt 1,00 €' }] }];
+    const ok = await submitRecord({ ...basis, summary: gefaelscht, payload: { ...gueltig, betragCents: 1 } });
+    expect(ok.ok).toBe(true);
+    // Die Standard-Einstellungen tragen Platzhalter-Firmendaten: Dann entsteht kein Begleitschein mit
+    // erfundener Anschrift, sondern ein Hinweis auf die Vorgangsseite (Erzeugung: einsenden/schein.test.ts).
+    expect(ok.begleitschein).toBeUndefined();
+    expect(ok.notices.join(' ')).toContain('Begleitschein');
+    const vorgang = stored[0];
+    expect(vorgang.payload).toEqual({
+      quelle: 'einsenden', originale: 2, stueckzahl: 3, beschriftung: 'AB 123', hinweis: null, sicherungskarte: 'nein', versand: 'versichert', originalEingesendet: true,
+    });
+    expect(JSON.stringify(vorgang.summary)).not.toContain('1,00 €');
+    expect(vorgang.summary.map((teil) => teil.title)).toEqual(['Einsendung', 'Kontakt und Rücksendung']);
+
+    const anzahl = stored.length;
+    for (const falsch of [{ stueckzahl: 99 }, { originale: 0 }, { versand: 'express' }, { sicherungskarte: '' }, { beschriftung: 'x'.repeat(81) }]) {
+      expect((await submitRecord({ ...basis, summary: [], payload: { ...gueltig, ...falsch } })).ok, JSON.stringify(falsch)).toBe(false);
+    }
+    expect((await submitRecord({ ...basis, contact: { ...contact, postalCode: '' }, summary: [], payload: gueltig })).ok).toBe(false);
+    expect((await submitRecord({ ...basis, area: 'schliessanlagen', summary: [], payload: gueltig })).ok).toBe(false);
+    // Sicherungskarte „ja“ verlangt das Foto der Karte wie die Foto-Anfrage (R13).
+    const ohneKarte = await submitRecord({ ...basis, summary: [], payload: { ...gueltig, sicherungskarte: 'ja' } });
+    expect(ohneKarte.ok).toBe(false);
+    expect(ohneKarte.error).toContain('Sicherungskarte');
+    expect(stored).toHaveLength(anzahl);
+  });
+
   it('lehnt Bestellungen außerhalb der Kasse ab', async () => {
     const result = await submitRecord({
       kind: 'bestellung',

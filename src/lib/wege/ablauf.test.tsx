@@ -12,9 +12,7 @@ const RUBRIKEN = defaults.rubriken();
 const rubrik = (id: string) => RUBRIKEN.find((r) => r.id === id)!;
 
 /** Rubriken, deren Seite der Ablauf erst mit einem späteren Paket erreicht (mit Grund). */
-const SPAETER: Record<string, string> = {
-  'schluessel-einschicken': 'E6-OPUS-02 baut die Seite mit Begleitschein neu und setzt dabei den Ablauf aus den Daten ein.',
-};
+const SPAETER: Record<string, string> = {};
 
 /**
  * Icons der Ablaufzeilen, wie der Seed sie angelegt hat. In einer bestehenden Datenbank übernimmt der
