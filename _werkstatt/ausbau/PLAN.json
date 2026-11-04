@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-04T01:50:58+00:00",
+ "stand": "2026-11-04T02:15:16+00:00",
  "etappen": [
   {
    "kennung": "E0",
@@ -2938,7 +2938,22 @@
     "src/app/(site)/schluessel-nach-vorlage/",
     "src/app/(site)/service-und-termin/anfrage/",
     "content/rubriken.json",
-    "src/lib/data/defaults/rubriken.ts"
+    "src/lib/data/defaults/rubriken.ts",
+    "src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx",
+    "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx",
+    "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx",
+    "src/app/(site)/partner-werden/partner-formular.tsx",
+    "src/components/konfigurator/schliessplan-planer.tsx",
+    "src/app/(site)/bestellung/[id]/page.tsx",
+    "src/components/rubrik/rubrik-ablauf.tsx",
+    "src/app/(site)/schluessel-nach-code/page.tsx",
+    "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+    "src/app/(site)/schliessanlagen/page.tsx",
+    "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+    "src/app/(site)/sicherheitstechnik/page.tsx",
+    "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+    "src/app/(site)/autoschluessel/marken/page.tsx",
+    "src/app/(site)/tuer-und-schliesstechnik/page.tsx"
    ],
    "abhaengigkeiten": [
     "E5-PRUEFER-01",
