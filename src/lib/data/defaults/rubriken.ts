@@ -446,7 +446,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Rückruf",
-          text: "Wir rufen Sie zu Ihrer Wunschzeit zurück.",
+          text: "Wir rufen Sie zurück, nach Möglichkeit in dem Zeitraum, den Sie nennen.",
           icon: "beratung-telefon",
         },
         {
