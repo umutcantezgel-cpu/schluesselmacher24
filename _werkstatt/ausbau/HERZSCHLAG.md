@@ -1,7 +1,7 @@
 # HERZSCHLAG
-Zeit: 2026-11-04 08:38 MEZ
+Zeit: 2026-11-04 09:08 MEZ
 Sitzung: m40jjmy9
-Zustand: AKTIV (Livegang auf Anweisung: PR nach main; Bremse bis zum Fensterwechsel 09:10)
-Etappe und Welle: E6 Welle 4: Paketdateien BAUMEISTER-05, -06, -07 bereit (ea50d96), Start 09:10
-Letzter grüner Commit: cac398f (Unit 2145, Build grün; Lint und Typprüfung erneut grün um 08:30)
+Zustand: AKTIV (Livegang 2 erledigt: PR 965 gemergt, e5a294f, A-038; neues Fenster ab 09:10)
+Etappe und Welle: E6 Welle 4: BAUMEISTER-05, -06, -07 starten als Workflow mit Haiku
+Letzter grüner Commit: e5a294f (CI auf main grün, Lauf 50)
 ARBEITSBRANCH: claude/affectionate-knuth-n7mjur
