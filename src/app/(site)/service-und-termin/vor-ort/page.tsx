@@ -12,6 +12,8 @@ import { Section, SectionHeading } from '@/components/layout/section';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
+import { EinsatzFormular } from './einsatz-formular';
+
 export const metadata: Metadata = {
   title: 'Vor-Ort-Leistungen',
   description:
@@ -71,8 +73,8 @@ const SERVICES = [
   {
     title: 'Bestandsaufnahme und Beratung',
     body:
-      'Wir sehen uns die vorhandene Situation an und sagen Ihnen, was sinnvoll ist — als Grundlage '
-      + 'für ein belastbares Angebot.',
+      'Wir sehen uns die vorhandene Situation an und sagen Ihnen, was sinnvoll ist. Das ist die '
+      + 'Grundlage für ein belastbares Angebot.',
     needs: ['Zugang zum Objekt', 'vorhandene Unterlagen, falls verfügbar'],
     href: '/service-und-termin/anfrage',
     cta: 'Beratungstermin anfragen',
@@ -99,6 +101,7 @@ export default async function VorOrtPage() {
           { href: '/service-und-termin', label: 'Service und Termin' },
           { href: '/service-und-termin/vor-ort', label: 'Vor-Ort-Leistungen' },
         ]}
+        actions={<ButtonLink href="#einsatz">Einsatz anfragen</ButtonLink>}
       />
 
       <Section>
@@ -206,8 +209,22 @@ export default async function VorOrtPage() {
         </div>
       </Section>
 
+      {/* Einsatz anfragen: eingebettete Anfrage mit Ort (G-40, Teil Anfrage) */}
+      <Section id="einsatz" tone="muted" labelledBy="einsatz-titel">
+        <SectionHeading
+          id="einsatz-titel"
+          nummer="02"
+          eyebrow="Anfrage"
+          title="Einsatz anfragen"
+          lead="Sagen Sie uns, wo und was zu tun ist. Wir klären, ob die Werkstatt oder ein Partner zu Ihnen kommen kann."
+        />
+        <div className="mt-8 max-w-3xl">
+          <EinsatzFormular />
+        </div>
+      </Section>
+
       {/* Ablauf aus den Rubrikdaten (G-10, G-11) */}
-      <RubrikAblaufAbschnitt rubrik={rubrik} nummer="02" tone="muted" titel="Vom Anliegen zum Termin" />
+      <RubrikAblaufAbschnitt rubrik={rubrik} nummer="03" titel="Vom Anliegen zum Termin" />
     </>
   );
 }

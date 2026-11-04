@@ -202,6 +202,17 @@ describe('submitRecord', () => {
     expect(ohne.ok).toBe(false);
   });
 
+  it('nimmt eine Einsatz-Anfrage vor Ort nur mit bestätigter Berechtigung an (R13, E6-BAUMEISTER-05)', async () => {
+    const basis = { kind: 'anfrage' as const, area: 'service-und-termin' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [], uploads: [] };
+    const angaben = { quelle: 'vor-ort', anliegen: 'Etwas anderes', beschreibung: 'Testanfrage ohne echten Einsatz', zeitraum: 'flexibel' };
+    expect((await submitRecord({ ...basis, payload: angaben })).ok).toBe(false);
+    expect((await submitRecord({ ...basis, payload: { ...angaben, berechtigt: 'true' } })).ok).toBe(false);
+    expect((await submitRecord({ ...basis, payload: { ...angaben, berechtigt: false } })).ok).toBe(false);
+    expect((await submitRecord({ ...basis, payload: { ...angaben, berechtigt: true } })).ok).toBe(true);
+    // Andere Anfragen kennen die Frage nicht.
+    expect((await submitRecord({ ...basis, payload: { quelle: 'kontakt' } })).ok).toBe(true);
+  });
+
   it('verlangt bei Motorrad und Gehäuse die Unterlagen der Rubrik (R13, E6)', async () => {
     const basis = { kind: 'anfrage' as const, area: 'autoschluessel' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [] };
     const foto = { fileName: 'schluessel.jpg', sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'schluesselfoto' as const };

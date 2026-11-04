@@ -13,7 +13,7 @@ import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/se
 import { publicRecordSchema, terminZustimmungenSchema, type TerminZustimmungen } from '@/lib/server/record-schema';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import { fahrzeugscheinPruefen, nachweisPruefen, rubrikUnterlagenPruefen } from '@/lib/server/unterlagen-pflicht';
-import { QUELLE_RUBRIK, fotoAnfrageVerlangtKarte } from '@/lib/wege/nachweis';
+import { QUELLE_RUBRIK, fotoAnfrageVerlangtKarte, vorOrtOhneBerechtigung } from '@/lib/wege/nachweis';
 import type {
   AppointmentInfo,
   AreaKey,
@@ -250,6 +250,11 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     if (fehlt) {
       return { ok: false, notices: [], error: fehlt };
     }
+  }
+
+  // Einsatz vor Ort (E6-BAUMEISTER-05): nur mit bestätigter Berechtigung (R13).
+  if (data.kind === 'anfrage' && vorOrtOhneBerechtigung(payload)) {
+    return { ok: false, notices: [], error: INVALID_INPUT };
   }
 
   const result = await createRecord({

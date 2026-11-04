@@ -44,6 +44,17 @@ export function fotoAnfrageVerlangtKarte(payload: Record<string, unknown>): bool
   return payload.sicherungskarte === 'ja';
 }
 
+/** Quelle der Einsatz-Anfrage vor Ort (E6-BAUMEISTER-05). */
+export const VOR_ORT_QUELLE = 'vor-ort';
+
+/**
+ * Arbeiten an Türen und Schlössern vor Ort nur mit bestätigter Berechtigung (R13): Die Anfrage trägt
+ * `berechtigt: true`, sonst nimmt der Server sie nicht an. Der Nachweis selbst folgt vor Ort.
+ */
+export function vorOrtOhneBerechtigung(payload: Record<string, unknown>): boolean {
+  return payload.quelle === VOR_ORT_QUELLE && payload.berechtigt !== true;
+}
+
 /** Gültige Antwort aus dem payload, sonst leer (ältere Anfragen kennen die Frage nicht). */
 export function kartenAntwort(wert: unknown): KartenAntwort {
   return wert === 'ja' || wert === 'nein' || wert === 'unklar' ? wert : '';
