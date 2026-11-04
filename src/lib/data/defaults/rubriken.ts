@@ -146,7 +146,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Bestellen",
-          text: "Code eingeben, Stückzahl wählen, bezahlen.",
+          text: "Code eingeben, Stückzahl wählen, bezahlen. Bei geschütztem Profil ein Foto der Sicherungskarte hochladen.",
           icon: "warenkorb",
         },
         {
@@ -180,7 +180,7 @@ export function rubriken(): Rubrik[] {
       ablauf: [
         {
           titel: "Fotos hochladen",
-          text: "Vorderseite, Rückseite und Spitze fotografieren.",
+          text: "Vorderseite, Rückseite und Spitze fotografieren. Gibt es eine Sicherungskarte, auch die Karte.",
           icon: "foto-hochladen",
         },
         {
@@ -318,7 +318,7 @@ export function rubriken(): Rubrik[] {
           icon: "werkstatt",
         },
       ],
-      abschluss: "kasse",
+      abschluss: "anfrage",
       pflichtUploads: [],
       nachweis: "keiner",
       status: "live",
@@ -520,7 +520,7 @@ export function rubriken(): Rubrik[] {
       ],
       abschluss: "anfrage",
       pflichtUploads: [],
-      nachweis: "keiner",
+      nachweis: "fahrzeugschein",
       status: "live",
       reihenfolge: 140,
       navigation: "autoschluessel",

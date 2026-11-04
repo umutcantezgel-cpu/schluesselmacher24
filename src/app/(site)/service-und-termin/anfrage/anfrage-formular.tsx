@@ -312,7 +312,7 @@ export function AllgemeineAnfrage({
             label="Fotos oder Unterlagen"
             description={
               data.thema === 'autoschluessel'
-                ? 'Für einen Autoschlüssel brauchen wir den Fahrzeugschein (Zulassungsbescheinigung Teil I) und ein Foto Ihres Schlüssels von beiden Seiten. Ohne Fahrzeugschein fertigen wir keinen Schlüssel.'
+                ? 'Für die Anfrage freiwillig. Fertigen können wir den Schlüssel nur mit Fahrzeugschein (Zulassungsbescheinigung Teil I); legen Sie ihn gern schon hier bei, dazu ein Foto Ihres Schlüssels von beiden Seiten.'
                 : 'Freiwillig. Fotos der betroffenen Tür, des Schlüssels oder vorhandene Unterlagen helfen uns sehr.'
             }
             example={{

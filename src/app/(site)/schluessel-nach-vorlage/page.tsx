@@ -90,7 +90,7 @@ const STEPS: Array<{ icon: ComponentType<IconProps>; title: string; body: string
     title: 'Fotos hochladen',
     body:
       'Sie fotografieren den Schlüssel aus drei Richtungen und tragen ein, was auf ihm '
-      + 'steht. Der Ablauf hat acht Schritte und lässt sich am Smartphone bedienen.',
+      + 'steht. Das Formular führt Sie Schritt für Schritt und lässt sich am Smartphone bedienen.',
   },
   {
     icon: IconPruefung,
@@ -306,7 +306,7 @@ export default async function SchluesselNachVorlagePage() {
         </dl>
       </PageHeader>
 
-      {/* Ablauf: vier Schritte als Stückliste mit Fach-Icons */}
+      {/* Ablauf als Stückliste mit Fach-Icons; die Überschrift nennt keine Zahl (R4, E6-OPUS-01) */}
       <Section labelledBy="ablauf-titel">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
@@ -314,7 +314,7 @@ export default async function SchluesselNachVorlagePage() {
               id="ablauf-titel"
               nummer="01"
               eyebrow="Ablauf"
-              title="Fünf Schritte von der Anfrage bis zum Schlüssel"
+              title="Von der Anfrage bis zum Schlüssel"
               lead={process.hint}
             />
 
