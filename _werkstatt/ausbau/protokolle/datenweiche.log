@@ -1266,3 +1266,4 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-04T17:12:13+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/protokolle/E6-PROBENUTZER-01/lauf.mjs
 2026-11-04T17:15:38+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/protokolle/E6-PROBENUTZER-01/lauf.mjs
 2026-11-04T17:19:28+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/protokolle/E6-PROBENUTZER-01/lauf.mjs
+2026-11-04T17:25:46+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
