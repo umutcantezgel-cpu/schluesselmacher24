@@ -1,0 +1,2515 @@
+{
+  "skript": "bildsatz",
+  "zeit": "2026-11-03T23:42:57.969Z",
+  "argumente": {
+    "_": [],
+    "routen": "/,/autoschluessel,/autoschluessel/marken/volkswagen/golf,/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage,/schluessel-einschicken,/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator,/schliessanlagen/konfigurator/schliessplan,/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen,/gleichschliessende-zylinder",
+    "ziel": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz.json"
+  },
+  "max": 15,
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "geraet": "mobil-klein",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 11,
+      "seitenausschnitte": 11,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 32,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.smmx-auto > div > div.relative > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.shell > div.-mx-5 > div.contents > a.group"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.-mx-5 > div.contents > a.group > div.border-b"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.contents > a.group > div.border-b > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > g.sm24-reveal"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.border-b > svg.block > g.sm24-reveal > path.fill-surface"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.border-b > svg.block > g.sm24-reveal > path.fill-area-muted60"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.border-b > svg.block > g.sm24-reveal > path.stroke-foreground"
+        }
+      ],
+      "befundText": "32: über den rechten Rand div.smmx-auto > div > div.relative > svg.block; über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.shell > div.-mx-5 > div.contents > a.group",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil-klein__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil-klein__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil-klein__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil-klein__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil-klein__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil-klein__10.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "mobil",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 10,
+      "seitenausschnitte": 10,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 32,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.smmx-auto > div > div.relative > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.shell > div.-mx-5 > div.contents > a.group"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.-mx-5 > div.contents > a.group > div.border-b"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.contents > a.group > div.border-b > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > g.sm24-reveal"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.border-b > svg.block > g.sm24-reveal > path.fill-surface"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.border-b > svg.block > g.sm24-reveal > path.fill-area-muted60"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.border-b > svg.block > g.sm24-reveal > path.stroke-foreground"
+        }
+      ],
+      "befundText": "32: über den rechten Rand div.smmx-auto > div > div.relative > svg.block; über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.shell > div.-mx-5 > div.contents > a.group",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__mobil__09.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "tablet",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 7,
+      "seitenausschnitte": 7,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 3,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.order-2 > div.hidden > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "3: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.block > path.stroke-area-muted40; über den rechten Rand div.order-2 > div.hidden > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__tablet__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__tablet__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__tablet__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__tablet__06.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "desktop",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 2,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "a.group > div.border-b > svg.h-auto > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "2: über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand a.group > div.border-b > svg.h-auto > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__desktop__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__desktop__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__desktop__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "H01-start",
+      "geraet": "breit",
+      "pfad": "/",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__breit__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__breit__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H01-start__breit__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "geraet": "mobil-klein",
+      "pfad": "/autoschluessel",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 16,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 85,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > figure > ol.-mx-5 > li.flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure > ol.-mx-5 > li.flex > p.font-mono"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure > ol.-mx-5 > li.flex > div.sm24-reveal"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.-mx-5 > li.flex > div.sm24-reveal > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.sm24-reveal > svg.block > g"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.sm24-reveal > svg.block > g > g.sm24-reveal"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "svg.block > g > g.sm24-reveal > path.fill-surface"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "svg.block > g > g.sm24-reveal > rect.fill-surface"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "svg.block > g > g.sm24-reveal > path.fill-area-muted"
+        }
+      ],
+      "befundText": "85: über den rechten Rand div.lgcol-span-5 > figure > ol.-mx-5 > li.flex; über den rechten Rand figure > ol.-mx-5 > li.flex > p.font-mono; über den rechten Rand figure > ol.-mx-5 > li.flex > div.sm24-reveal",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__11.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__12.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__13.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil-klein__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "geraet": "mobil",
+      "pfad": "/autoschluessel",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 15,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 85,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > figure > ol.-mx-5 > li.flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure > ol.-mx-5 > li.flex > p.font-mono"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure > ol.-mx-5 > li.flex > div.sm24-reveal"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.-mx-5 > li.flex > div.sm24-reveal > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.sm24-reveal > svg.block > g"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.sm24-reveal > svg.block > g > g.sm24-reveal"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "svg.block > g > g.sm24-reveal > path.fill-surface"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "svg.block > g > g.sm24-reveal > rect.fill-surface"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "svg.block > g > g.sm24-reveal > path.fill-area-muted"
+        }
+      ],
+      "befundText": "85: über den rechten Rand div.lgcol-span-5 > figure > ol.-mx-5 > li.flex; über den rechten Rand figure > ol.-mx-5 > li.flex > p.font-mono; über den rechten Rand figure > ol.-mx-5 > li.flex > div.sm24-reveal",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__11.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__12.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__13.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__mobil__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "geraet": "tablet",
+      "pfad": "/autoschluessel",
+      "status": 200,
+      "ausschnitte": 10,
+      "seitenausschnitte": 10,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 3,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.m-0 > div.rounded-lg > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "3: über den rechten Rand li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand li.flex > div.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand figure.m-0 > div.rounded-lg > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__tablet__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__tablet__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__tablet__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__tablet__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__tablet__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__tablet__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__tablet__09.jpg"
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "geraet": "desktop",
+      "pfad": "/autoschluessel",
+      "status": 200,
+      "ausschnitte": 9,
+      "seitenausschnitte": 9,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__desktop__08.jpg"
+      ]
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "geraet": "breit",
+      "pfad": "/autoschluessel",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__breit__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__breit__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__breit__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__breit__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__breit__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H02-autoschluessel__breit__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "geraet": "mobil-klein",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 16,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 4,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.smmx-auto > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "4: über den rechten Rand div.smmx-auto > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__11.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__12.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__13.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil-klein__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "geraet": "mobil",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "status": 200,
+      "ausschnitte": 14,
+      "seitenausschnitte": 14,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 4,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.smmx-auto > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "4: über den rechten Rand div.smmx-auto > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__11.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__12.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__mobil__13.jpg"
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "geraet": "tablet",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "status": 200,
+      "ausschnitte": 9,
+      "seitenausschnitte": 9,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 2,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.smmx-auto > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "2: über den rechten Rand div.smmx-auto > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand ol.mt-8 > li.sm24-reveal > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__tablet__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__tablet__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__tablet__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__tablet__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__tablet__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__tablet__08.jpg"
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "geraet": "desktop",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.smmx-auto > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.smmx-auto > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__desktop__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__desktop__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__desktop__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__desktop__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__desktop__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "geraet": "breit",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "status": 200,
+      "ausschnitte": 7,
+      "seitenausschnitte": 7,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__breit__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__breit__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__breit__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__breit__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H03-modell-golf__breit__06.jpg"
+      ]
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "geraet": "mobil-klein",
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__mobil-klein__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "geraet": "mobil",
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__mobil__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "geraet": "tablet",
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__tablet__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "geraet": "desktop",
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__desktop__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "geraet": "breit",
+      "pfad": "/autoschluessel/anfrage",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H04-autoschluessel-anfrage__breit__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "H05-code",
+      "geraet": "mobil-klein",
+      "pfad": "/schluessel-nach-code",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 17,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 7,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.min-w-0 > nav.sticky > ul.relative > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.sticky > ul.relative > li.shrink-0 > a.inline-flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.min-w-0 > nav.sticky > ul.relative > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.sticky > ul.relative > li.shrink-0 > a.inline-flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.min-w-0 > nav.sticky > ul.relative > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.sticky > ul.relative > li.shrink-0 > a.inline-flex"
+        }
+      ],
+      "befundText": "7: über den rechten Rand div.lgcol-span-5 > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40; über den rechten Rand div.min-w-0 > nav.sticky > ul.relative > li.shrink-0; über den rechten Rand nav.sticky > ul.relative > li.shrink-0 > a.inline-flex",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__11.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__12.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__13.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil-klein__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "H05-code",
+      "geraet": "mobil",
+      "pfad": "/schluessel-nach-code",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 15,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 7,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.min-w-0 > nav.sticky > ul.relative > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.sticky > ul.relative > li.shrink-0 > a.inline-flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.min-w-0 > nav.sticky > ul.relative > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.sticky > ul.relative > li.shrink-0 > a.inline-flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.min-w-0 > nav.sticky > ul.relative > li.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "nav.sticky > ul.relative > li.shrink-0 > a.inline-flex"
+        }
+      ],
+      "befundText": "7: über den rechten Rand div.lgcol-span-5 > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40; über den rechten Rand div.min-w-0 > nav.sticky > ul.relative > li.shrink-0; über den rechten Rand nav.sticky > ul.relative > li.shrink-0 > a.inline-flex",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__11.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__12.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__13.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__mobil__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "H05-code",
+      "geraet": "tablet",
+      "pfad": "/schluessel-nach-code",
+      "status": 200,
+      "ausschnitte": 10,
+      "seitenausschnitte": 10,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__tablet__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__tablet__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__tablet__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__tablet__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__tablet__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__tablet__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__tablet__09.jpg"
+      ]
+    },
+    {
+      "ansicht": "H05-code",
+      "geraet": "desktop",
+      "pfad": "/schluessel-nach-code",
+      "status": 200,
+      "ausschnitte": 9,
+      "seitenausschnitte": 9,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.sm24-ausschnitt > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__desktop__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__desktop__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__desktop__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__desktop__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__desktop__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__desktop__08.jpg"
+      ]
+    },
+    {
+      "ansicht": "H05-code",
+      "geraet": "breit",
+      "pfad": "/schluessel-nach-code",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__breit__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__breit__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__breit__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__breit__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__breit__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H05-code__breit__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "geraet": "mobil-klein",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "status": 200,
+      "ausschnitte": 12,
+      "seitenausschnitte": 12,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 7,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.m-0 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.rounded-lg > div > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.grid > div.-mx-5 > div.flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "button#_R_46lbsnpfeivb_-tab-sicherungskarte"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "button#_R_46lbsnpfeivb_-tab-zylinderstirn"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div#_R_46lbsnpfeivb_-panel > div > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "7: über den rechten Rand figure.m-0 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand figure.rounded-lg > div > svg.block > path.stroke-area-muted40; über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil-klein__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil-klein__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil-klein__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil-klein__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil-klein__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil-klein__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil-klein__11.jpg"
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "geraet": "mobil",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "status": 200,
+      "ausschnitte": 11,
+      "seitenausschnitte": 11,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 6,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.m-0 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.rounded-lg > div > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.grid > div.-mx-5 > div.flex"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "button#_R_46lbsnpfeivb_-tab-zylinderstirn"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div#_R_46lbsnpfeivb_-panel > div > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "6: über den rechten Rand figure.m-0 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand figure.rounded-lg > div > svg.block > path.stroke-area-muted40; über den rechten Rand div > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__mobil__10.jpg"
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "geraet": "tablet",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 3,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.m-0 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.rounded-lg > div > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div#_R_46lbsnpfeivb_-panel > div > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "3: über den rechten Rand figure.m-0 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand figure.rounded-lg > div > svg.block > path.stroke-area-muted40; über den rechten Rand div#_R_46lbsnpfeivb_-panel > div > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__tablet__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__tablet__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__tablet__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__tablet__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__tablet__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "geraet": "desktop",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.m-0 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand figure.m-0 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__desktop__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__desktop__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__desktop__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "geraet": "breit",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__breit__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__breit__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H06-code-produkt__breit__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H07-foto",
+      "geraet": "mobil-klein",
+      "pfad": "/schluessel-nach-vorlage",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 15,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 5,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.rounded-lg > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "5: über den rechten Rand div.lgcol-span-5 > div.rounded-lg > svg.block > path.stroke-area-muted40; über den rechten Rand div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__11.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__12.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__13.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil-klein__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "H07-foto",
+      "geraet": "mobil",
+      "pfad": "/schluessel-nach-vorlage",
+      "status": 200,
+      "ausschnitte": 14,
+      "seitenausschnitte": 14,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 5,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.rounded-lg > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "5: über den rechten Rand div.lgcol-span-5 > div.rounded-lg > svg.block > path.stroke-area-muted40; über den rechten Rand div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__11.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__12.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__mobil__13.jpg"
+      ]
+    },
+    {
+      "ansicht": "H07-foto",
+      "geraet": "tablet",
+      "pfad": "/schluessel-nach-vorlage",
+      "status": 200,
+      "ausschnitte": 9,
+      "seitenausschnitte": 9,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 3,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.rounded-lg > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "3: über den rechten Rand div.lgcol-span-5 > div.rounded-lg > svg.block > path.stroke-area-muted40; über den rechten Rand div.sm24-reveal > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__tablet__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__tablet__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__tablet__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__tablet__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__tablet__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__tablet__08.jpg"
+      ]
+    },
+    {
+      "ansicht": "H07-foto",
+      "geraet": "desktop",
+      "pfad": "/schluessel-nach-vorlage",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__desktop__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__desktop__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__desktop__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__desktop__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__desktop__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H07-foto",
+      "geraet": "breit",
+      "pfad": "/schluessel-nach-vorlage",
+      "status": 200,
+      "ausschnitte": 7,
+      "seitenausschnitte": 7,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__breit__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__breit__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__breit__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__breit__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H07-foto__breit__06.jpg"
+      ]
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "geraet": "mobil-klein",
+      "pfad": "/schluessel-einschicken",
+      "status": 200,
+      "ausschnitte": 9,
+      "seitenausschnitte": 9,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil-klein__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil-klein__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil-klein__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil-klein__08.jpg"
+      ]
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "geraet": "mobil",
+      "pfad": "/schluessel-einschicken",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__mobil__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "geraet": "tablet",
+      "pfad": "/schluessel-einschicken",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__tablet__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__tablet__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "geraet": "desktop",
+      "pfad": "/schluessel-einschicken",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__desktop__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__desktop__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "geraet": "breit",
+      "pfad": "/schluessel-einschicken",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__breit__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H08-einschicken__breit__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "geraet": "mobil-klein",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "status": 200,
+      "ausschnitte": 9,
+      "seitenausschnitte": 9,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.sm24-ruhig > div.animate-schleier-ein > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand figure.sm24-ruhig > div.animate-schleier-ein > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil-klein__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil-klein__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil-klein__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil-klein__08.jpg"
+      ]
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "geraet": "mobil",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.sm24-ruhig > div.animate-schleier-ein > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand figure.sm24-ruhig > div.animate-schleier-ein > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__mobil__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "geraet": "tablet",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.sm24-ruhig > div.animate-schleier-ein > svg.h-auto > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand figure.sm24-ruhig > div.animate-schleier-ein > svg.h-auto > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__tablet__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__tablet__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "geraet": "desktop",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__desktop__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__desktop__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "geraet": "breit",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__breit__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H09-sperrschliessung-konfigurator__breit__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "geraet": "mobil-klein",
+      "pfad": "/schliessanlagen",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 16,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 59,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "button#_R_152npfeivb_-system-haupt"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "button#_R_152npfeivb_-system-generalhaupt"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.smhidden > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.-mx-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.mt-6 > div > div.-mx-5 > div.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.-mx-5 > div.shrink-0 > p.text-title-sm"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.-mx-5 > div.shrink-0 > dl.mt-3"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.-mx-5 > div.shrink-0 > dl.mt-3 > div.py-3"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.shrink-0 > dl.mt-3 > div.py-3 > dt.font-mono"
+        }
+      ],
+      "befundText": "59: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand button#_R_152npfeivb_-system-haupt; über den rechten Rand button#_R_152npfeivb_-system-generalhaupt",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__11.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__12.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__13.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil-klein__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "geraet": "mobil",
+      "pfad": "/schliessanlagen",
+      "status": 200,
+      "ausschnitte": 14,
+      "seitenausschnitte": 14,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 60,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "button#_R_152npfeivb_-system-haupt"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "button#_R_152npfeivb_-system-generalhaupt"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.smhidden > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.-mx-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.mt-6 > div > div.-mx-5 > div.shrink-0"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.-mx-5 > div.shrink-0 > p.text-title-sm"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.-mx-5 > div.shrink-0 > p.text-title-sm > span.font-mono"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.-mx-5 > div.shrink-0 > dl.mt-3"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.-mx-5 > div.shrink-0 > dl.mt-3 > div.py-3"
+        }
+      ],
+      "befundText": "60: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand button#_R_152npfeivb_-system-haupt; über den rechten Rand button#_R_152npfeivb_-system-generalhaupt",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__11.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__12.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__mobil__13.jpg"
+      ]
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "geraet": "tablet",
+      "pfad": "/schliessanlagen",
+      "status": 200,
+      "ausschnitte": 11,
+      "seitenausschnitte": 11,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 4,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.hidden > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.-mx-5 > div.relative > svg.absolute > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "4: über den rechten Rand div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40; über den rechten Rand div > div.hidden > svg.block > path.stroke-area-muted40; über den rechten Rand div.-mx-5 > div.relative > svg.absolute > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__tablet__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__tablet__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__tablet__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__tablet__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__tablet__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__tablet__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__tablet__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__tablet__10.jpg"
+      ]
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "geraet": "desktop",
+      "pfad": "/schliessanlagen",
+      "status": 200,
+      "ausschnitte": 9,
+      "seitenausschnitte": 9,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 3,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div > div.hidden > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.grid > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "3: über den rechten Rand div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40; über den rechten Rand div > div.hidden > svg.block > path.stroke-area-muted40; über den rechten Rand div.grid > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__desktop__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__desktop__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__desktop__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__desktop__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__desktop__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__desktop__08.jpg"
+      ]
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "geraet": "breit",
+      "pfad": "/schliessanlagen",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__breit__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__breit__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__breit__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__breit__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__breit__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H10-schliessanlagen__breit__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "geraet": "mobil-klein",
+      "pfad": "/schliessanlagen/konfigurator",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__mobil-klein__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "geraet": "mobil",
+      "pfad": "/schliessanlagen/konfigurator",
+      "status": 200,
+      "ausschnitte": 6,
+      "seitenausschnitte": 6,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__mobil__05.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "geraet": "tablet",
+      "pfad": "/schliessanlagen/konfigurator",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__tablet__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "geraet": "desktop",
+      "pfad": "/schliessanlagen/konfigurator",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__desktop__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "geraet": "breit",
+      "pfad": "/schliessanlagen/konfigurator",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H11-schliessanlagen-konfigurator__breit__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "schliessanlagen-konfigurator-schliessplan",
+      "geraet": "mobil-klein",
+      "pfad": "/schliessanlagen/konfigurator/schliessplan",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__mobil-klein__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "schliessanlagen-konfigurator-schliessplan",
+      "geraet": "mobil",
+      "pfad": "/schliessanlagen/konfigurator/schliessplan",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__mobil__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "schliessanlagen-konfigurator-schliessplan",
+      "geraet": "tablet",
+      "pfad": "/schliessanlagen/konfigurator/schliessplan",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__tablet__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "schliessanlagen-konfigurator-schliessplan",
+      "geraet": "desktop",
+      "pfad": "/schliessanlagen/konfigurator/schliessplan",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__desktop__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "schliessanlagen-konfigurator-schliessplan",
+      "geraet": "breit",
+      "pfad": "/schliessanlagen/konfigurator/schliessplan",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/schliessanlagen-konfigurator-schliessplan__breit__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "geraet": "mobil-klein",
+      "pfad": "/partner-werden",
+      "status": 200,
+      "ausschnitte": 8,
+      "seitenausschnitte": 8,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil-klein__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil-klein__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil-klein__07.jpg"
+      ]
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "geraet": "mobil",
+      "pfad": "/partner-werden",
+      "status": 200,
+      "ausschnitte": 7,
+      "seitenausschnitte": 7,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__mobil__06.jpg"
+      ]
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "geraet": "tablet",
+      "pfad": "/partner-werden",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__tablet__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__tablet__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "geraet": "desktop",
+      "pfad": "/partner-werden",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__desktop__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__desktop__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "geraet": "breit",
+      "pfad": "/partner-werden",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__breit__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H12-partner-werden__breit__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H13-kasse",
+      "geraet": "mobil-klein",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__mobil-klein__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H13-kasse",
+      "geraet": "mobil",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__mobil__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H13-kasse",
+      "geraet": "tablet",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__tablet__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "H13-kasse",
+      "geraet": "desktop",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__desktop__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H13-kasse",
+      "geraet": "breit",
+      "pfad": "/kasse",
+      "status": 200,
+      "ausschnitte": 2,
+      "seitenausschnitte": 2,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H13-kasse__breit__01.jpg"
+      ]
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "geraet": "mobil-klein",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__mobil-klein__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "geraet": "mobil",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "status": 200,
+      "ausschnitte": 5,
+      "seitenausschnitte": 5,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__mobil__04.jpg"
+      ]
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "geraet": "tablet",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "status": 200,
+      "ausschnitte": 4,
+      "seitenausschnitte": 4,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__tablet__03.jpg"
+      ]
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "geraet": "desktop",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 1,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "1: über den rechten Rand div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__desktop__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "geraet": "breit",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "status": 200,
+      "ausschnitte": 3,
+      "seitenausschnitte": 3,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/H14-ratgeber-messen__breit__02.jpg"
+      ]
+    },
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "geraet": "mobil-klein",
+      "pfad": "/gleichschliessende-zylinder",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 19,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 8,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > figure.-mx-5 > div.relative > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > rect.fill-surface"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > rect.fill-area-soft"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > path.stroke-foreground"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "8: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-7 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-7 > figure.-mx-5 > div.relative > svg.block",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__11.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__12.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__13.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil-klein__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "geraet": "mobil",
+      "pfad": "/gleichschliessende-zylinder",
+      "status": 200,
+      "ausschnitte": 15,
+      "seitenausschnitte": 17,
+      "gekappt": true,
+      "ueberlauf": false,
+      "befundeGesamt": 8,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > figure.-mx-5 > div.relative > svg.block"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > rect.fill-surface"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > rect.fill-area-soft"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > path.stroke-foreground"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.block > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "8: über den rechten Rand div.lgcol-span-5 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-7 > div.relative > svg.block > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-7 > figure.-mx-5 > div.relative > svg.block",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__10.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__11.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__12.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__13.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__mobil__14.jpg"
+      ]
+    },
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "geraet": "tablet",
+      "pfad": "/gleichschliessende-zylinder",
+      "status": 200,
+      "ausschnitte": 11,
+      "seitenausschnitte": 11,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 4,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.absolute > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.absolute > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "4: über den rechten Rand div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-7 > div.relative > svg.absolute > path.stroke-area-muted40; über den rechten Rand figure.-mx-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__tablet__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__tablet__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__tablet__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__tablet__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__tablet__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__tablet__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__tablet__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__tablet__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__tablet__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__tablet__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__tablet__10.jpg"
+      ]
+    },
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "geraet": "desktop",
+      "pfad": "/gleichschliessende-zylinder",
+      "status": 200,
+      "ausschnitte": 11,
+      "seitenausschnitte": 11,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 4,
+      "befunde": [
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.absolute > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "figure.-mx-5 > div.relative > svg.block > path.stroke-area-muted40"
+        },
+        {
+          "grund": "über den rechten Rand",
+          "selektor": "div.lgcol-span-7 > div.relative > svg.absolute > path.stroke-area-muted40"
+        }
+      ],
+      "befundText": "4: über den rechten Rand div.lgcol-span-5 > div.relative > svg.absolute > path.stroke-area-muted40; über den rechten Rand div.lgcol-span-7 > div.relative > svg.absolute > path.stroke-area-muted40; über den rechten Rand figure.-mx-5 > div.relative > svg.block > path.stroke-area-muted40",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__desktop__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__desktop__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__desktop__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__desktop__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__desktop__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__desktop__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__desktop__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__desktop__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__desktop__08.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__desktop__09.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__desktop__10.jpg"
+      ]
+    },
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "geraet": "breit",
+      "pfad": "/gleichschliessende-zylinder",
+      "status": 200,
+      "ausschnitte": 9,
+      "seitenausschnitte": 9,
+      "gekappt": false,
+      "ueberlauf": false,
+      "befundeGesamt": 0,
+      "befunde": [],
+      "befundText": "–",
+      "dateien": [
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__breit__00.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__breit__01.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__breit__02.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__breit__03.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__breit__04.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__breit__05.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__breit__06.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__breit__07.jpg",
+        "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz/gleichschliessende-zylinder__breit__08.jpg"
+      ]
+    }
+  ]
+}

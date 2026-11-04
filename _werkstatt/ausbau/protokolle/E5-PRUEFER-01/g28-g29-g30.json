@@ -1,0 +1,200 @@
+{
+ "desktop_g30_start": [
+  "Auf beiden Seiten mit Schlüssel bedienbar. Die übliche Bauform für Haus-, Wohnungs- und Nebentüren.",
+  "Bei einer Schließanlage ist das anders. Dort öffnet der Schlüssel des Kindes etwa nur sein Zimmer und die Haustür, der Schlüssel der Eltern alle Türen.",
+  "Für ein Haus oder ein kleines Team genügt meist die Sperrschließung. Für Firmen mit mehreren Bereichen empfehlen wir eine Schließanlage."
+ ],
+ "desktop_g28_verlauf": [
+  {
+   "vor": 0,
+   "knopfAktiv": true,
+   "positionenSichtbar": 3
+  },
+  {
+   "vor": 1,
+   "knopfAktiv": true,
+   "positionenSichtbar": 8
+  },
+  {
+   "vor": 2,
+   "knopfAktiv": true,
+   "positionenSichtbar": 12
+  },
+  {
+   "vor": 3,
+   "knopfAktiv": true,
+   "positionenSichtbar": 16
+  },
+  {
+   "vor": 4,
+   "knopfAktiv": true,
+   "positionenSichtbar": 20
+  },
+  {
+   "vor": 5,
+   "knopfAktiv": true,
+   "positionenSichtbar": 24
+  },
+  {
+   "vor": 6,
+   "knopfAktiv": true,
+   "positionenSichtbar": 28
+  },
+  {
+   "vor": 7,
+   "knopfAktiv": true,
+   "positionenSichtbar": 32
+  },
+  {
+   "vor": 8,
+   "knopfAktiv": true,
+   "positionenSichtbar": 36
+  },
+  {
+   "vor": 9,
+   "knopfAktiv": true,
+   "positionenSichtbar": 40
+  },
+  {
+   "vor": 10,
+   "knopfAktiv": true,
+   "positionenSichtbar": 44
+  },
+  {
+   "vor": 11,
+   "knopfAktiv": true,
+   "positionenSichtbar": 48
+  }
+ ],
+ "desktop_g28_hinweise": [
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Stückzahl Position 10 verringern",
+  "Stückzahl Position 10 erhöhen",
+  "Höchstens 18 Stück möglich."
+ ],
+ "mobil_g30_start": [
+  "Auf beiden Seiten mit Schlüssel bedienbar. Die übliche Bauform für Haus-, Wohnungs- und Nebentüren.",
+  "Bei einer Schließanlage ist das anders. Dort öffnet der Schlüssel des Kindes etwa nur sein Zimmer und die Haustür, der Schlüssel der Eltern alle Türen.",
+  "Für ein Haus oder ein kleines Team genügt meist die Sperrschließung. Für Firmen mit mehreren Bereichen empfehlen wir eine Schließanlage."
+ ],
+ "mobil_g28_verlauf": [
+  {
+   "vor": 0,
+   "knopfAktiv": true,
+   "positionenSichtbar": 3
+  },
+  {
+   "vor": 1,
+   "knopfAktiv": true,
+   "positionenSichtbar": 8
+  },
+  {
+   "vor": 2,
+   "knopfAktiv": true,
+   "positionenSichtbar": 12
+  },
+  {
+   "vor": 3,
+   "knopfAktiv": true,
+   "positionenSichtbar": 16
+  },
+  {
+   "vor": 4,
+   "knopfAktiv": true,
+   "positionenSichtbar": 20
+  },
+  {
+   "vor": 5,
+   "knopfAktiv": true,
+   "positionenSichtbar": 24
+  },
+  {
+   "vor": 6,
+   "knopfAktiv": true,
+   "positionenSichtbar": 28
+  },
+  {
+   "vor": 7,
+   "knopfAktiv": true,
+   "positionenSichtbar": 32
+  },
+  {
+   "vor": 8,
+   "knopfAktiv": true,
+   "positionenSichtbar": 36
+  },
+  {
+   "vor": 9,
+   "knopfAktiv": true,
+   "positionenSichtbar": 40
+  },
+  {
+   "vor": 10,
+   "knopfAktiv": true,
+   "positionenSichtbar": 44
+  },
+  {
+   "vor": 11,
+   "knopfAktiv": true,
+   "positionenSichtbar": 48
+  }
+ ],
+ "mobil_g28_hinweise": [
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Höchstens 18 Stück möglich.",
+  "Stückzahl Position 10 verringern",
+  "Stückzahl Position 10 erhöhen",
+  "Höchstens 18 Stück möglich."
+ ],
+ "g29_messhilfe_grafik": 24,
+ "g29_messhilfe_text": [
+  "Bauform, Maße, Funktion und Anzahl gemeinsamer Schlüssel.",
+  "Legen Sie für jede Tür eine Position an. Bauform, Maße und Stückzahl bestimmen Sie je Position getrennt.",
+  "Zylinder richtig ausmessen",
+  "Maße dieser Tür",
+  "Erklärung zu So messen Sie richtig",
+  "Maß A (außen)*",
+  "Maß B (innen)*",
+  "Mitte Stulpschraube",
+  "Gemessen wird ab der Mitte der Stulpschraube, der langen Schraube in der Türkante. Maß A messen Sie nach außen, Maß B nach innen. Gesamtlänge dieser Position: 70 mm. Bis 70 mm gilt der Grundpreis, darüber kommen 3,50 € je angefangene 5 mm hinzu.",
+  "Zylinder richtig ausmessen"
+ ],
+ "g29_selects": [
+  {
+   "name": "",
+   "label": "Maß A (außen)* (Pflichtangabe)",
+   "n": 12
+  },
+  {
+   "name": "",
+   "label": "Maß B (innen)* (Pflichtangabe)",
+   "n": 12
+  }
+ ],
+ "g29_selectsMit80": 2,
+ "g29_rueckfrage_nach_80_27": [
+  "Bauform, Maße, Funktion und Anzahl gemeinsamer Schlüssel.",
+  "Legen Sie für jede Tür eine Position an. Bauform, Maße und Stückzahl bestimmen Sie je Position getrennt.",
+  "Maße dieser Tür",
+  "Maß A (außen)*",
+  "Maß B (innen)*",
+  "Gemessen wird ab der Mitte der Stulpschraube, der langen Schraube in der Türkante. Maß A messen Sie nach außen, Maß B nach innen. Gesamtlänge dieser Position: 107 mm. Bis 70 mm gilt der Grundpreis, darüber kommen 3,50 € je angefangene 5 mm hinzu.",
+  "Bitte prüfen Sie die Maße",
+  "„Tür 1“: Maß A und Maß B unterscheiden sich um 53 mm. Bitte prüfen Sie, ob Sie Maß A nach außen und Maß B nach innen gemessen haben."
+ ]
+}

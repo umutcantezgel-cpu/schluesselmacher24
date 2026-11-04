@@ -1,0 +1,568 @@
+{
+  "skript": "werte-suche",
+  "zeit": "2026-11-03T23:52:40.794Z",
+  "argumente": {
+    "_": [],
+    "seit": "822a0d9",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/werte-suche.json"
+  },
+  "seit": "822a0d9",
+  "dateien": 578,
+  "summeOhneAusnahmen": 45,
+  "summeAusnahmen": 34,
+  "funde": [
+    {
+      "datei": "src/app/(payload)/custom.css",
+      "zeile": 14,
+      "kategorie": "Hex-Farbe",
+      "fund": "#1d5fd1",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/(payload)/custom.css",
+      "zeile": 15,
+      "kategorie": "Hex-Farbe",
+      "fund": "#1a54b8",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/(payload)/custom.css",
+      "zeile": 16,
+      "kategorie": "Hex-Farbe",
+      "fund": "#eaf1ff",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/(payload)/custom.css",
+      "zeile": 17,
+      "kategorie": "Hex-Farbe",
+      "fund": "#dce8ff",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/(site)/layout.tsx",
+      "zeile": 62,
+      "kategorie": "Hex-Farbe",
+      "fund": "#fafbfd",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/app/apple-icon.tsx",
+      "zeile": 18,
+      "kategorie": "Hex-Farbe",
+      "fund": "#0f172a",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 14,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 15,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 16,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 17,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 18,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 19,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 34,
+      "kategorie": "style mit Zahl + px/rem",
+      "fund": "style={{\n            boxSizing: 'border-box',\n            maxWidth: '40rem',\n   ",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 45,
+      "kategorie": "style mit Zahl + px/rem",
+      "fund": "style={{\n              marginTop: '1.5rem',\n              padding: '1.5rem',\n   ",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 54,
+      "kategorie": "style mit Zahl + px/rem",
+      "fund": "style={{ margin: 0, fontSize: '1.5rem', lineHeight: 1.3 }}",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 55,
+      "kategorie": "style mit Zahl + px/rem",
+      "fund": "style={{ margin: '0.75rem 0 0', lineHeight: 1.6, color: FARBE.leise }}",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 60,
+      "kategorie": "style mit Zahl + px/rem",
+      "fund": "style={{ margin: '1rem 0 0', fontSize: '0.8125rem', color: FARBE.leise, fontFami",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 67,
+      "kategorie": "style mit Zahl + px/rem",
+      "fund": "style={{\n                marginTop: '1.5rem',\n                minHeight: '44px',",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/global-error.tsx",
+      "zeile": 74,
+      "kategorie": "Hex-Farbe",
+      "fund": "#fff",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/app/manifest.test.ts",
+      "zeile": 11,
+      "kategorie": "Hex-Farbe",
+      "fund": "#fafbfd",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/forms/formular-schutz.tsx",
+      "zeile": 116,
+      "kategorie": "style mit Zahl + px/rem",
+      "fund": "style={{ position: 'absolute', left: '-10000px', top: 'auto', width: 1, height: ",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/components/forms/photo-upload.tsx",
+      "zeile": 151,
+      "kategorie": "Hex-Farbe",
+      "fund": "#fff",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/konfigurator/schliessplan-editor.tsx",
+      "zeile": 313,
+      "kategorie": "Tailwind-Klasse mit []",
+      "fund": "sm:grid-cols-[1fr_auto_auto]",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/components/statistik/einwilligung-hinweis.tsx",
+      "zeile": 33,
+      "kategorie": "Tailwind-Klasse mit []",
+      "fund": "bottom-[calc(5rem+env(safe-area-inset-bottom))]",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/components/visual/generators/ablauf.test.tsx",
+      "zeile": 26,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/ablauf.test.tsx",
+      "zeile": 27,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/code-fundstelle.test.tsx",
+      "zeile": 23,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/code-fundstelle.test.tsx",
+      "zeile": 24,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/profilschnitt.test.tsx",
+      "zeile": 20,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/profilschnitt.test.tsx",
+      "zeile": 21,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/schliessplan.test.tsx",
+      "zeile": 23,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/schliessplan.test.tsx",
+      "zeile": 24,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/schluessel.test.tsx",
+      "zeile": 24,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/schluessel.test.tsx",
+      "zeile": 25,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/stiftzuhaltung.test.tsx",
+      "zeile": 21,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/stiftzuhaltung.test.tsx",
+      "zeile": 22,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/tuer-schutz.test.tsx",
+      "zeile": 23,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/tuer-schutz.test.tsx",
+      "zeile": 24,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/zutritt-signal.test.tsx",
+      "zeile": 23,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/zutritt-signal.test.tsx",
+      "zeile": 24,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/zylinder-mass.test.tsx",
+      "zeile": 24,
+      "kategorie": "Farbfunktion",
+      "fund": "rgb(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/components/visual/generators/zylinder-mass.test.tsx",
+      "zeile": 25,
+      "kategorie": "Farbfunktion",
+      "fund": "oklch(",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 46,
+      "kategorie": "Hex-Farbe",
+      "fund": "#192133",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 46,
+      "kategorie": "Hex-Farbe",
+      "fund": "#fff",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 47,
+      "kategorie": "Hex-Farbe",
+      "fund": "#1d5fd1",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 49,
+      "kategorie": "Hex-Farbe",
+      "fund": "#1d5fd1",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 50,
+      "kategorie": "Hex-Farbe",
+      "fund": "#5B6578",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 52,
+      "kategorie": "Hex-Farbe",
+      "fund": "#D9E0EA",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 56,
+      "kategorie": "Hex-Farbe",
+      "fund": "#E5EAF1",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 57,
+      "kategorie": "Hex-Farbe",
+      "fund": "#5B6578",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 63,
+      "kategorie": "Hex-Farbe",
+      "fund": "#F7F9FC",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 63,
+      "kategorie": "Hex-Farbe",
+      "fund": "#D9E0EA",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 64,
+      "kategorie": "Hex-Farbe",
+      "fund": "#1d5fd1",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 64,
+      "kategorie": "Hex-Farbe",
+      "fund": "#1d5fd1",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 64,
+      "kategorie": "Hex-Farbe",
+      "fund": "#fff",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/druckansichten.ts",
+      "zeile": 65,
+      "kategorie": "Hex-Farbe",
+      "fund": "#D9E0EA",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/mail/html.ts",
+      "zeile": 44,
+      "kategorie": "Hex-Farbe",
+      "fund": "#F7F9FC",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/mail/html.ts",
+      "zeile": 45,
+      "kategorie": "Hex-Farbe",
+      "fund": "#FFFFFF",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/mail/html.ts",
+      "zeile": 46,
+      "kategorie": "Hex-Farbe",
+      "fund": "#1d5fd1",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/mail/html.ts",
+      "zeile": 47,
+      "kategorie": "Hex-Farbe",
+      "fund": "#D9E0EA",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/mail/html.ts",
+      "zeile": 48,
+      "kategorie": "Hex-Farbe",
+      "fund": "#192133",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/mail/html.ts",
+      "zeile": 49,
+      "kategorie": "Hex-Farbe",
+      "fund": "#5B6578",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/mail/html.ts",
+      "zeile": 50,
+      "kategorie": "Hex-Farbe",
+      "fund": "#EEF3FC",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/mail/html.ts",
+      "zeile": 152,
+      "kategorie": "Hex-Farbe",
+      "fund": "#FFFFFF",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/lib/og/bereichsbild.test.ts",
+      "zeile": 27,
+      "kategorie": "Hex-Farbe",
+      "fund": "#145bb8",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/og/bereichsbild.test.ts",
+      "zeile": 28,
+      "kategorie": "Hex-Farbe",
+      "fund": "#ffffff",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/pdf/erzeuge-pdf.ts",
+      "zeile": 14,
+      "kategorie": "Hex-Farbe",
+      "fund": "#192133",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/pdf/erzeuge-pdf.ts",
+      "zeile": 15,
+      "kategorie": "Hex-Farbe",
+      "fund": "#4f5a6d",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/pdf/erzeuge-pdf.ts",
+      "zeile": 16,
+      "kategorie": "Hex-Farbe",
+      "fund": "#dae2ec",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/pdf/erzeuge-pdf.ts",
+      "zeile": 17,
+      "kategorie": "Hex-Farbe",
+      "fund": "#145bb8",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/pdf/erzeuge-pdf.ts",
+      "zeile": 18,
+      "kategorie": "Hex-Farbe",
+      "fund": "#f2f6fb",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/server/kundendateien.db.test.ts",
+      "zeile": 107,
+      "kategorie": "Tailwind-Klasse mit []",
+      "fund": "image-[0-9a-f]",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/visual/area-theme.test.ts",
+      "zeile": 82,
+      "kategorie": "Hex-Farbe",
+      "fund": "#ffffff",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/visual/area-theme.test.ts",
+      "zeile": 83,
+      "kategorie": "Hex-Farbe",
+      "fund": "#000000",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/visual/area-theme.test.ts",
+      "zeile": 85,
+      "kategorie": "Hex-Farbe",
+      "fund": "#145bb8",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/visual/area-theme.test.ts",
+      "zeile": 131,
+      "kategorie": "Tailwind-Klasse mit []",
+      "fund": "--[a-z-]",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/lib/visual/area-theme.test.ts",
+      "zeile": 140,
+      "kategorie": "Hex-Farbe",
+      "fund": "#145bb8",
+      "ausnahme": true
+    },
+    {
+      "datei": "src/payload/components/Anbindungen.tsx",
+      "zeile": 20,
+      "kategorie": "style mit Zahl + px/rem",
+      "fund": "style={{ borderTop: '1px solid var(--theme-elevation-150)', paddingTop: 'var(--b",
+      "ausnahme": false
+    },
+    {
+      "datei": "src/payload/components/Kennzahlen.tsx",
+      "zeile": 54,
+      "kategorie": "style mit Zahl + px/rem",
+      "fund": "style={{ display: 'grid', gap: 'calc(var(--base) * 2)', gridTemplateColumns: 're",
+      "ausnahme": false
+    }
+  ]
+}

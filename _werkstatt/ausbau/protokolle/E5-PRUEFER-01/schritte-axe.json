@@ -1,0 +1,234 @@
+[
+ {
+  "konfigurator": "schliessplan",
+  "geraet": "mobil",
+  "schritt": 1,
+  "aktiv": "1.Start",
+  "ueberschrift": "Schließplan selbst anlegen",
+  "weiter": {
+   "deaktiviert": true
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/schliessplan__mobil__s1.jpg"
+ },
+ {
+  "konfigurator": "schliessplan",
+  "geraet": "mobil",
+  "schritt": 2,
+  "aktiv": "2.Türen",
+  "ueberschrift": "Schließplan selbst anlegen",
+  "weiter": {
+   "deaktiviert": false
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/schliessplan__mobil__s2.jpg"
+ },
+ {
+  "konfigurator": "schliessplan",
+  "geraet": "mobil",
+  "schritt": 3,
+  "aktiv": "3.Schlüssel",
+  "ueberschrift": "Schließplan selbst anlegen",
+  "weiter": {
+   "deaktiviert": false
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/schliessplan__mobil__s3.jpg"
+ },
+ {
+  "konfigurator": "schliessplan",
+  "geraet": "mobil",
+  "schritt": 4,
+  "aktiv": "4.Prüfen",
+  "ueberschrift": "Schließplan selbst anlegen",
+  "weiter": {
+   "deaktiviert": true
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/schliessplan__mobil__s4.jpg"
+ },
+ {
+  "konfigurator": "schliessplan",
+  "geraet": "mobil",
+  "schritt": 5,
+  "aktiv": "5.Abschluss",
+  "ueberschrift": "Schließplan selbst anlegen",
+  "weiter": null,
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/schliessplan__mobil__s5.jpg"
+ },
+ {
+  "konfigurator": "schliessplan",
+  "geraet": "desktop",
+  "schritt": 1,
+  "aktiv": "1.Start",
+  "ueberschrift": "Schließplan selbst anlegen",
+  "weiter": {
+   "deaktiviert": true
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/schliessplan__desktop__s1.jpg"
+ },
+ {
+  "konfigurator": "schliessplan",
+  "geraet": "desktop",
+  "schritt": 2,
+  "aktiv": "2.Türen",
+  "ueberschrift": "Schließplan selbst anlegen",
+  "weiter": {
+   "deaktiviert": false
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/schliessplan__desktop__s2.jpg"
+ },
+ {
+  "konfigurator": "schliessplan",
+  "geraet": "desktop",
+  "schritt": 3,
+  "aktiv": "3.Schlüssel",
+  "ueberschrift": "Schließplan selbst anlegen",
+  "weiter": {
+   "deaktiviert": false
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/schliessplan__desktop__s3.jpg"
+ },
+ {
+  "konfigurator": "schliessplan",
+  "geraet": "desktop",
+  "schritt": 4,
+  "aktiv": "4.Prüfen",
+  "ueberschrift": "Schließplan selbst anlegen",
+  "weiter": {
+   "deaktiviert": true
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/schliessplan__desktop__s4.jpg"
+ },
+ {
+  "konfigurator": "schliessplan",
+  "geraet": "desktop",
+  "schritt": 5,
+  "aktiv": "5.Abschluss",
+  "ueberschrift": "Schließplan selbst anlegen",
+  "weiter": null,
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/schliessplan__desktop__s5.jpg"
+ },
+ {
+  "konfigurator": "sperrschliessung",
+  "geraet": "mobil",
+  "schritt": 1,
+  "aktiv": "1.Zylinder",
+  "ueberschrift": "Gleichschließende Zylinder zusammenstellen",
+  "weiter": {
+   "deaktiviert": false
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/sperrschliessung__mobil__s1.jpg"
+ },
+ {
+  "konfigurator": "sperrschliessung",
+  "geraet": "mobil",
+  "schritt": 2,
+  "aktiv": "2.Schlüssel",
+  "ueberschrift": "Gleichschließende Zylinder zusammenstellen",
+  "weiter": {
+   "deaktiviert": false
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/sperrschliessung__mobil__s2.jpg"
+ },
+ {
+  "konfigurator": "sperrschliessung",
+  "geraet": "mobil",
+  "schritt": 3,
+  "aktiv": "3.Optionen",
+  "ueberschrift": "Gleichschließende Zylinder zusammenstellen",
+  "weiter": {
+   "deaktiviert": false
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/sperrschliessung__mobil__s3.jpg"
+ },
+ {
+  "konfigurator": "sperrschliessung",
+  "geraet": "mobil",
+  "schritt": 4,
+  "aktiv": "4.Erweiterung",
+  "ueberschrift": "Gleichschließende Zylinder zusammenstellen",
+  "weiter": {
+   "deaktiviert": true
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/sperrschliessung__mobil__s4.jpg"
+ },
+ {
+  "konfigurator": "sperrschliessung",
+  "geraet": "mobil",
+  "schritt": 5,
+  "aktiv": "5.Zusammenfassung",
+  "ueberschrift": "Gleichschließende Zylinder zusammenstellen",
+  "weiter": null,
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/sperrschliessung__mobil__s5.jpg"
+ },
+ {
+  "konfigurator": "sperrschliessung",
+  "geraet": "desktop",
+  "schritt": 1,
+  "aktiv": "1.Zylinder",
+  "ueberschrift": "Gleichschließende Zylinder zusammenstellen",
+  "weiter": {
+   "deaktiviert": false
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/sperrschliessung__desktop__s1.jpg"
+ },
+ {
+  "konfigurator": "sperrschliessung",
+  "geraet": "desktop",
+  "schritt": 2,
+  "aktiv": "2.Schlüssel",
+  "ueberschrift": "Gleichschließende Zylinder zusammenstellen",
+  "weiter": {
+   "deaktiviert": false
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/sperrschliessung__desktop__s2.jpg"
+ },
+ {
+  "konfigurator": "sperrschliessung",
+  "geraet": "desktop",
+  "schritt": 3,
+  "aktiv": "3.Optionen",
+  "ueberschrift": "Gleichschließende Zylinder zusammenstellen",
+  "weiter": {
+   "deaktiviert": false
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/sperrschliessung__desktop__s3.jpg"
+ },
+ {
+  "konfigurator": "sperrschliessung",
+  "geraet": "desktop",
+  "schritt": 4,
+  "aktiv": "4.Erweiterung",
+  "ueberschrift": "Gleichschließende Zylinder zusammenstellen",
+  "weiter": {
+   "deaktiviert": true
+  },
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/sperrschliessung__desktop__s4.jpg"
+ },
+ {
+  "konfigurator": "sperrschliessung",
+  "geraet": "desktop",
+  "schritt": 5,
+  "aktiv": "5.Zusammenfassung",
+  "ueberschrift": "Gleichschließende Zylinder zusammenstellen",
+  "weiter": null,
+  "verstoesse": [],
+  "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bilder-schritte/sperrschliessung__desktop__s5.jpg"
+ }
+]
