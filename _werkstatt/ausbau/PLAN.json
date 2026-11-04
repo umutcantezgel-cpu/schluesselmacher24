@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-04T03:27:59.854Z",
+ "stand": "2026-11-04T03:49:30+00:00",
  "etappen": [
   {
    "kennung": "E0",
@@ -3001,7 +3001,18 @@
    "kostenklasse": "L",
    "schreibrechte": [
     "src/app/(site)/schluessel-einschicken/",
-    "src/lib/einsenden/"
+    "src/lib/einsenden/",
+    "src/app/(site)/bestellung/[id]/",
+    "src/lib/actions/records.ts",
+    "src/lib/actions/security.test.ts",
+    "src/lib/server/rate-limit.ts",
+    "src/lib/wege/naechste-schritte.ts",
+    "src/lib/wege/ablauf.test.tsx",
+    "src/app/sitemap.ts",
+    "content/seo.json",
+    "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+    "src/lib/mail/vorlagen/",
+    "src/app/(site)/service-und-termin/terminstatus/"
    ],
    "abhaengigkeiten": [
     "E6-OPUS-01"

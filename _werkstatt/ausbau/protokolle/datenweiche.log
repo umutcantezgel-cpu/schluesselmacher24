@@ -1042,3 +1042,16 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-04T03:26:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/rubrik src/lib/wege
 2026-11-04T03:26:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
 2026-11-04T03:27:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T03:38:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:41:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:41:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:42:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:45:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:46:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/actions/security.test.ts -t Einsendung
+2026-11-04T03:46:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/actions/security.test.ts -t Einsendung
+2026-11-04T03:46:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/actions/security.test.ts
+2026-11-04T03:47:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/einsenden src/lib/wege src/lib/versand
+2026-11-04T03:47:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/einsenden src/app/(site)/schluessel-einschicken src/app/(site)/bestellung/[id] src/lib/actions/records.ts src/lib/actions/security.test.ts src/lib/wege src/lib/server/rate-limit.ts src/app/sitemap.ts src/app/(site)/schluessel-nach-vorlage/page.tsx
+2026-11-04T03:47:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T03:47:58+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T03:49:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/einsenden src/lib/actions/security.test.ts
