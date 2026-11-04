@@ -1,0 +1,252 @@
+{
+  "id": "verwalterin-mobil",
+  "persona": "Frau Testverwalterin",
+  "geraet": "mobil 390×844",
+  "tippsBisEingabe": 1,
+  "tippsBisZiel": 9,
+  "schritte": [
+    {
+      "tipp": 1,
+      "knopf": "Schlüsseldienst vor Ort",
+      "von": "/"
+    },
+    {
+      "tipp": 2,
+      "knopf": "Einsatz anfragen",
+      "von": "/service-und-termin/vor-ort"
+    },
+    {
+      "tipp": 3,
+      "knopf": "Weiter",
+      "von": "/service-und-termin/vor-ort",
+      "formularSchritt": true
+    },
+    {
+      "tipp": 4,
+      "knopf": "Weiter",
+      "von": "/service-und-termin/vor-ort",
+      "formularSchritt": true
+    },
+    {
+      "tipp": 5,
+      "knopf": "Kontakt",
+      "von": "/service-und-termin/vor-ort"
+    },
+    {
+      "tipp": 6,
+      "knopf": "Weiter",
+      "von": "/service-und-termin/kontakt",
+      "formularSchritt": true
+    },
+    {
+      "tipp": 7,
+      "knopf": "Weiter",
+      "von": "/service-und-termin/kontakt",
+      "formularSchritt": true
+    },
+    {
+      "tipp": 8,
+      "knopf": "Terminstatus",
+      "von": "/service-und-termin/kontakt"
+    },
+    {
+      "tipp": 9,
+      "knopf": "Stand abrufen",
+      "von": "/service-und-termin/terminstatus",
+      "formularSchritt": true
+    }
+  ],
+  "seiten": [
+    {
+      "pfad": "/",
+      "h1": "Wobei können wir Ihnen helfen?",
+      "erster": "Wir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": false,
+      "text": "Wobei können wir Ihnen helfen?\n\nWir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland.\n\nAutoschlüssel\nMotorradschlüssel\nSchlüsselgehäuse\nSchlüssel nach Code\nSchlüssel nach Foto\nSchlüssel einschicken\nSperrschließung\nein Schlüssel für alle Türen\nSchließanlage\nwer öffnet welche Tür\nElektronisch schließen\nSicherheitstechnik\nSchlüsseldienst\nvor Ort, mit Termin\nBeratung\n\nLieber anrufen:\n06441 8056279\n\nAUTOSCHLÜSSEL\n\nAutoschlüssel nachmachen und programmieren\n\nTermin in der Werkstatt in Wetzlar, für Mittelhessen und alle, die anreisen.\n\nPROFILSCHNITT\n1\n2\n3\n4\n5\n6\nHalm · 6 Einschnitte\nRohling\ngefrästes Profil\n\nRohling\ngefrästes Profil\n\nAutoschlüssel-Termin anfragen\nSchlüssel nach Code bestellen\nANZAHLUNG\n69,90 €\nVORLAUF\nca. 7 Tage\nVERSAND\nbundesweit\nWerkstatt und Abholung: Langgasse 70, 35576 Wetzlar · 06441 8056279\n\nSCHWERPUNKT AUTOSCHLÜSSEL\n\nSo läuft Ihr Autoschlüssel-Auftrag ab\n\nVom Fahrzeug bis zum Termin. Sie geben nur an, was für Ihr Fahrzeug zählt.\n\nTermin anfragen\nAlle Leistungen\nWARUM BEI UNS\n\nFachbetrieb mit eigener Werkstatt\n\nWir fertigen im eigenen Betrieb an unseren Maschinen, nicht unterwegs im Fahrzeug.\n\nErst prüfen, dann buchen\n\nWir sagen Ihnen vor der Terminbestätigung, was machbar ist und was es kostet. Keine Überraschung vor Ort.\n\nNachvollziehbare Abläufe\n\nJeder Vorgang bekommt eine Nummer. Den Stand können Sie jederzeit selbst abrufen.\n\nSichere Zahlung\n\nDie Anzahlung wird vollständig auf den Gesamtpreis angerechnet.\n\nHinter SCHLÜSSELMACHER24 steht die Schlüssel Schmiede in Wetzlar mit Werkstatt, fachlicher Beratung und eigener Fertigung.\n\n1\n\nFahrzeug wählen\n\nMarke, Modell, Baujahr und Schlüsselart.\n\n2\n\nFotos hochladen\n\nSchlüssel aus drei Richtungen und den Fahrzeugschein.\n\n3\n\nPreis oder Prüfung\n\nFester Preis, Preisrahmen oder Hinweis auf manuelle Prüfung.\n\n4\n\nAnzahlung\n\nStandard 69,90 €, wird voll angerechnet.\n\n5\n\nTermin buchen\n\nFrühester Termin nach etwa 7 Tagen Vorlauf. Zum Termin bringen Sie Ausweisdokument und Fahrzeugschein mit.\n\nDIREKT KAUFEN\n\nBestellen ohne Termin\n\nDIREKT KAUFEN\n\nSchlüssel nach Code\n\nCode eingeben, Stückzahl wählen, bestellen. Ihr Originalschlüssel bleibt bei Ihnen.\n\nA 30\nB 40\naußen\ninnen\nMitte Stulpschraube\n\nDIREKT KAUFEN\n\nSperrschließung\n\nMehrere Türen mit einem Schlüssel. Bauform, Maße und Schlüsselanzahl selbst zusammenstellen.\n\nES\nES\nES\nES\nHS\n\nPROJEKTE\n\nGrößere Vorhaben planen wir strukturiert\n\nSchließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik erfassen wir über geführte Kon"
+    },
+    {
+      "pfad": "/service-und-termin/vor-ort",
+      "h1": "Was wir direkt bei Ihnen erledigen",
+      "erster": "Nicht jede Arbeit lässt sich per Versand lösen. Hier steht, was vor Ort passiert und was dafür vorbereitet sein sollte.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": true,
+      "text": "Startseite\nService und Termin\nVor-Ort-Leistungen\n\nVOR ORT\n\nWas wir direkt bei Ihnen erledigen\n\nNicht jede Arbeit lässt sich per Versand lösen. Hier steht, was vor Ort passiert und was dafür vorbereitet sein sollte.\n\nEinsatz anfragen\n\n01\nVOR ORT\n\nLeistungen im Überblick\nAutoschlüssel am Fahrzeug: Termin anfragen\n01\n\nAutoschlüssel am Fahrzeug\n\nProgrammieren und Anlernen setzen Zugriff auf das Fahrzeug voraus. Diese Arbeiten lassen sich nicht per Versand erledigen: Sie bringen das Fahrzeug zum Termin in unsere Werkstatt in Wetzlar. Ein Einsatz bei Ihnen ist nur nach individueller Prüfung möglich.\n\nBITTE VORBEREITEN\n\n· Fahrzeug zum Termin in der Werkstatt\n· Fahrzeugschein im Original\n· Nachweis, dass Sie über das Fahrzeug verfügen dürfen\nTermin anfragen\nZylinder- und Schlosstausch: Zur Tür- und Schließtechnik\n02\n\nZylinder- und Schlosstausch\n\nAustausch von Zylindern, Einsteckschlössern, Beschlägen und Türzusatzschlössern an der eingebauten Tür.\n\nBITTE VORBEREITEN\n\n· Zugang zur Tür\n· Maße oder der ausgebaute Zylinder\n· freier Arbeitsbereich\nZur Tür- und Schließtechnik\nMontage von Schließanlagen: Projekt erfassen\n03\n\nMontage von Schließanlagen\n\nEinbau der Zylinder nach Schließplan, Beschriftung der Schlüssel und Übergabe der Unterlagen.\n\nBITTE VORBEREITEN\n\n· Zugang zu allen Türen der Anlage\n· anwesende verantwortliche Person\n· Schließplan\nProjekt erfassen\nElektronische Zutrittslösungen einrichten: Bedarf erfassen\n04\n\nElektronische Zutrittslösungen einrichten\n\nMontage, Einrichtung der Benutzerverwaltung und Einweisung in die Bedienung.\n\nBITTE VORBEREITEN\n\n· Strom und, falls nötig, Netzwerk\n· Liste der Nutzer und Berechtigungen\nBedarf erfassen\nSicherheitstechnik installieren: Sicherheitscheck starten\n05\n\nSicherheitstechnik installieren\n\nMontage von Kameras, Meldern und Kontakten sowie Einrichtung der Alarmierungswege.\n\nBITTE VORBEREITEN\n\n· Zugang zu allen betroffenen Bereichen\n· Internetzugang, falls App-Steuerung gewünscht\nSicherheitscheck starten\nBestandsaufnahme und Beratung: Beratungstermin anfragen\n06\n\nBestandsaufnahme und Beratung\n\nWir sehen uns die vorhandene Situation an und sagen Ihnen, was sinnvoll ist. Das ist die Grundlage für ein belastbares Angebot.\n\nBITTE VORBEREITEN\n\n· Zugang zum Objekt\n· vorhandene Unterlagen, falls verfügbar\nBeratungstermin anfragen\n1\nZusatzschloss\n2\nSchutzbeschlag\n3\nSchließzylinder\n4\nSchließblech\n5\nBandseite\n1\n2\n3\n4\n5\n\nNachweis der Verfügungsberechtigung\n\nVor Arbeiten an Fahrzeugen, Türen und Schließanlagen weisen Sie bitte nach,"
+    },
+    {
+      "pfad": "/service-und-termin/vor-ort",
+      "h1": "Was wir direkt bei Ihnen erledigen",
+      "erster": "Nicht jede Arbeit lässt sich per Versand lösen. Hier steht, was vor Ort passiert und was dafür vorbereitet sein sollte.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": true,
+      "text": "Startseite\nService und Termin\nVor-Ort-Leistungen\n\nVOR ORT\n\nWas wir direkt bei Ihnen erledigen\n\nNicht jede Arbeit lässt sich per Versand lösen. Hier steht, was vor Ort passiert und was dafür vorbereitet sein sollte.\n\nEinsatz anfragen\n\n01\nVOR ORT\n\nLeistungen im Überblick\nAutoschlüssel am Fahrzeug: Termin anfragen\n01\n\nAutoschlüssel am Fahrzeug\n\nProgrammieren und Anlernen setzen Zugriff auf das Fahrzeug voraus. Diese Arbeiten lassen sich nicht per Versand erledigen: Sie bringen das Fahrzeug zum Termin in unsere Werkstatt in Wetzlar. Ein Einsatz bei Ihnen ist nur nach individueller Prüfung möglich.\n\nBITTE VORBEREITEN\n\n· Fahrzeug zum Termin in der Werkstatt\n· Fahrzeugschein im Original\n· Nachweis, dass Sie über das Fahrzeug verfügen dürfen\nTermin anfragen\nZylinder- und Schlosstausch: Zur Tür- und Schließtechnik\n02\n\nZylinder- und Schlosstausch\n\nAustausch von Zylindern, Einsteckschlössern, Beschlägen und Türzusatzschlössern an der eingebauten Tür.\n\nBITTE VORBEREITEN\n\n· Zugang zur Tür\n· Maße oder der ausgebaute Zylinder\n· freier Arbeitsbereich\nZur Tür- und Schließtechnik\nMontage von Schließanlagen: Projekt erfassen\n03\n\nMontage von Schließanlagen\n\nEinbau der Zylinder nach Schließplan, Beschriftung der Schlüssel und Übergabe der Unterlagen.\n\nBITTE VORBEREITEN\n\n· Zugang zu allen Türen der Anlage\n· anwesende verantwortliche Person\n· Schließplan\nProjekt erfassen\nElektronische Zutrittslösungen einrichten: Bedarf erfassen\n04\n\nElektronische Zutrittslösungen einrichten\n\nMontage, Einrichtung der Benutzerverwaltung und Einweisung in die Bedienung.\n\nBITTE VORBEREITEN\n\n· Strom und, falls nötig, Netzwerk\n· Liste der Nutzer und Berechtigungen\nBedarf erfassen\nSicherheitstechnik installieren: Sicherheitscheck starten\n05\n\nSicherheitstechnik installieren\n\nMontage von Kameras, Meldern und Kontakten sowie Einrichtung der Alarmierungswege.\n\nBITTE VORBEREITEN\n\n· Zugang zu allen betroffenen Bereichen\n· Internetzugang, falls App-Steuerung gewünscht\nSicherheitscheck starten\nBestandsaufnahme und Beratung: Beratungstermin anfragen\n06\n\nBestandsaufnahme und Beratung\n\nWir sehen uns die vorhandene Situation an und sagen Ihnen, was sinnvoll ist. Das ist die Grundlage für ein belastbares Angebot.\n\nBITTE VORBEREITEN\n\n· Zugang zum Objekt\n· vorhandene Unterlagen, falls verfügbar\nBeratungstermin anfragen\n1\nZusatzschloss\n2\nSchutzbeschlag\n3\nSchließzylinder\n4\nSchließblech\n5\nBandseite\n1\n2\n3\n4\n5\n\nNachweis der Verfügungsberechtigung\n\nVor Arbeiten an Fahrzeugen, Türen und Schließanlagen weisen Sie bitte nach,"
+    },
+    {
+      "pfad": "/service-und-termin/kontakt",
+      "h1": "So erreichen Sie uns",
+      "erster": "Für konkrete Aufträge nutzen Sie bitte die geführten Abläufe. Dort erfassen wir gleich alles, was wir brauchen.",
+      "kostenGenannt": false,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": true,
+      "text": "Startseite\nService und Termin\nKontakt\n\nKONTAKT\n\nSo erreichen Sie uns\n\nFür konkrete Aufträge nutzen Sie bitte die geführten Abläufe. Dort erfassen wir gleich alles, was wir brauchen.\n\nAnfrage stellen\n\n01\nERREICHBARKEIT\n\nFachbetrieb\nFIRMENSITZ\nSCHLÜSSELMACHER24 – Inhaber Mina Saad\nGloelstraße 11\n35576 Wetzlar\nWERKSTATT UND ABHOLUNG\nLanggasse 70\n35576 Wetzlar\nTELEFON\n06441 8056279\nE-MAIL\ninfo@schluesselmacher24.de\nÖffnungszeiten\nMontag\n09:00–13:00 · 14:00–17:00\nDienstag\n09:00–13:00 · 14:00–17:00\nMittwoch\n09:00–13:00 · 14:00–17:00\nDonnerstag\n09:00–13:00 · 14:00–17:00\nFreitag\n09:00–13:00\nSamstag\ngeschlossen\nSonntag\ngeschlossen\nArbeiten an Fahrzeugen und Schließanlagen finden ausschließlich nach Terminvereinbarung statt. Bitte buchen Sie Ihren Termin über den Autoschlüssel-Ablauf oder stellen Sie eine allgemeine Anfrage.\n\n02\nNACHRICHT\n\nNachricht schreiben\n\nKurze Frage, ein Foto dazu: Wir antworten auf dem Weg, den Sie wählen.\n\nAusführliche Anliegen mit allen Angaben schicken Sie über die Anfrage.\n\nBitte dieses Feld leer lassen\n\nSchritt 1 von 3 · Nachricht\n\nIhre Nachricht\n\nWorum geht es? Ein Foto ist freiwillig.\n\nAnliegen*\n(Pflichtangabe)\nBitte wählen\nFrage zu einem laufenden Auftrag\nFrage zu einer Leistung\nRückmeldung zu unserer Arbeit\nEtwas anderes\nIhre Nachricht*\n(Pflichtangabe)\n\nMindestens 10 Zeichen, höchstens 2000.\n\nVorgangsnummer (freiwillig)\n\nFalls Sie schon eine haben.\n\nFotos (freiwillig)\n\nBis zu drei Fotos, zum Beispiel von der Tür, vom Schlüssel oder vom Schloss.\n\nSO SOLLTE DAS FOTO AUSSEHEN\n\nFoto aufnehmen\nDatei auswählen\n\nFotos bis 12 MB · PDF bis 4 MB · bis zu 3 Dateien\n\nBitte wählen Sie ein Anliegen und schreiben Sie Ihre Nachricht (10 bis 2000 Zeichen).\n\nWeiter"
+    },
+    {
+      "pfad": "/service-und-termin/terminstatus",
+      "h1": "Stand Ihres Vorgangs",
+      "erster": "Geben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.",
+      "kostenGenannt": false,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": true,
+      "text": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen"
+    }
+  ],
+  "stolpersteine": [
+    {
+      "art": "feld_fehlt",
+      "text": "Feld PLZ|Postleitzahl auf keinem Schritt gefunden",
+      "seite": "/service-und-termin/kontakt"
+    },
+    {
+      "art": "feld_fehlt",
+      "text": "Feld ^Ort\\b|^Stadt auf keinem Schritt gefunden",
+      "seite": "/service-und-termin/kontakt"
+    },
+    {
+      "art": "feld_fehlt",
+      "text": "Feld Stra(ß|ss)e auf keinem Schritt gefunden",
+      "seite": "/service-und-termin/kontakt"
+    }
+  ],
+  "stopps": [
+    {
+      "grund": "Einsatz-Anfrage Zylindertausch bis vor Absenden",
+      "seite": "/service-und-termin/vor-ort",
+      "bild": "bilder/verwalterin-mobil-01-stopp.jpg"
+    },
+    {
+      "grund": "Kontakt mit Foto bis vor Absenden",
+      "seite": "/service-und-termin/kontakt",
+      "bild": "bilder/verwalterin-mobil-02-stopp.jpg"
+    }
+  ],
+  "befunde": {
+    "auswahl": [
+      "Anliegen|Leistung|Art = Zylinder oder Schloss tauschen",
+      "Anliegen = Frage zu einem laufenden Auftrag"
+    ],
+    "pflichtfelder": [
+      "Auswahlgruppe ohne Vorauswahl = In den nächsten Tagen",
+      "Auswahlgruppe ohne Vorauswahl = Per E-Mail Die Antwort kommt an die E-Mail-Adresse"
+    ],
+    "letzterSchritt_1": [
+      "Einsatz anfragen"
+    ],
+    "letzterSchritt_2": [
+      "Nachricht absenden"
+    ],
+    "terminstatus": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen\n\nNichts gefunden\n\nZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.",
+    "terminstatusAbgesendet": true
+  },
+  "konsole": [],
+  "bilder": [
+    "bilder/verwalterin-mobil-03-terminstatus.jpg"
+  ],
+  "posts": [
+    {
+      "seite": "/service-und-termin/vor-ort",
+      "url": "/service-und-termin/vor-ort",
+      "aktion": true,
+      "laenge": 2,
+      "kopf": "[]",
+      "nachKnopf": null
+    },
+    {
+      "seite": "/service-und-termin/kontakt",
+      "url": "/service-und-termin/kontakt",
+      "aktion": true,
+      "laenge": 2,
+      "kopf": "[]",
+      "nachKnopf": "Weiter"
+    },
+    {
+      "seite": "/service-und-termin/kontakt",
+      "url": "/api/kunden-upload",
+      "aktion": false,
+      "laenge": 299,
+      "kopf": "------WebKitFormBoundarys2UrFAaNHoCBm1EE",
+      "nachKnopf": "Weiter"
+    },
+    {
+      "seite": "/service-und-termin/terminstatus",
+      "url": "/service-und-termin/terminstatus",
+      "aktion": true,
+      "laenge": 43,
+      "kopf": "[\"SM24-T-2026-9999\",\"<mail>",
+      "nachKnopf": "Weiter"
+    }
+  ],
+  "fehler": null,
+  "formularSchritte": 4,
+  "letzterKnopf": [
+    "Nachricht absenden"
+  ],
+  "ms": 9220,
+  "zielErreicht": true,
+  "abgefangen": [
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/service-und-termin/vor-ort",
+      "laenge": 2
+    },
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/service-und-termin/kontakt",
+      "laenge": 2
+    },
+    {
+      "art": "upload",
+      "methode": "POST",
+      "url": "/api/kunden-upload"
+    }
+  ],
+  "fremdAbgebrochen": 0,
+  "formularSendungen": [
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/service-und-termin/vor-ort",
+      "laenge": 2
+    },
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/service-und-termin/kontakt",
+      "laenge": 2
+    },
+    {
+      "art": "upload",
+      "methode": "POST",
+      "url": "/api/kunden-upload"
+    }
+  ]
+}

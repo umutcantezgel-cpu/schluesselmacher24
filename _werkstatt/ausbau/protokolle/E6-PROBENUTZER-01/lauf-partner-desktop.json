@@ -1,0 +1,220 @@
+{
+  "id": "partner-desktop",
+  "persona": "Herr Testpartner",
+  "geraet": "desktop 1440×900",
+  "tippsBisEingabe": 1,
+  "tippsBisZiel": 6,
+  "schritte": [
+    {
+      "tipp": 1,
+      "knopf": "Partner werden",
+      "von": "/"
+    },
+    {
+      "tipp": 2,
+      "knopf": "Weiter",
+      "von": "/partner-werden",
+      "formularSchritt": true
+    },
+    {
+      "tipp": 3,
+      "knopf": "Weiter",
+      "von": "/partner-werden",
+      "formularSchritt": true
+    },
+    {
+      "tipp": 4,
+      "knopf": "Schlüsseldienst vor Ort",
+      "von": "/partner-werden"
+    },
+    {
+      "tipp": 5,
+      "knopf": "Terminstatus",
+      "von": "/service-und-termin/vor-ort"
+    },
+    {
+      "tipp": 6,
+      "knopf": "Stand abrufen",
+      "von": "/service-und-termin/terminstatus",
+      "formularSchritt": true
+    }
+  ],
+  "seiten": [
+    {
+      "pfad": "/",
+      "h1": "Wobei können wir Ihnen helfen?",
+      "erster": "Wir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": false,
+      "text": "Wobei können wir Ihnen helfen?\n\nWir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland.\n\nAutoschlüssel\nMotorradschlüssel\nSchlüsselgehäuse\nSchlüssel nach Code\nSchlüssel nach Foto\nSchlüssel einschicken\nSperrschließung\nein Schlüssel für alle Türen\nSchließanlage\nwer öffnet welche Tür\nElektronisch schließen\nSicherheitstechnik\nSchlüsseldienst\nvor Ort, mit Termin\nBeratung\n\nSCHLÜSSEL · ZYLINDER · SCHLIESSPLAN\n\n02\n03\n04\nBART\nTRANSPONDER\n01\n3\n5\n2\n6\n4\n1\n4\n\nLieber anrufen:\n06441 8056279\n\nAUTOSCHLÜSSEL\n\nAutoschlüssel nachmachen und programmieren\n\nTermin in der Werkstatt in Wetzlar, für Mittelhessen und alle, die anreisen.\n\nPROFILSCHNITT\n1\n2\n3\n4\n5\n6\nHalm · 6 Einschnitte\nRohling\ngefrästes Profil\nAutoschlüssel-Termin anfragen\nSchlüssel nach Code bestellen\nANZAHLUNG\n69,90 €\nVORLAUF\nca. 7 Tage\nVERSAND\nbundesweit\nWerkstatt und Abholung: Langgasse 70, 35576 Wetzlar · 06441 8056279\n\nSCHWERPUNKT AUTOSCHLÜSSEL\n\nSo läuft Ihr Autoschlüssel-Auftrag ab\n\nVom Fahrzeug bis zum Termin. Sie geben nur an, was für Ihr Fahrzeug zählt.\n\nTermin anfragen\nAlle Leistungen\nWARUM BEI UNS\n\nFachbetrieb mit eigener Werkstatt\n\nWir fertigen im eigenen Betrieb an unseren Maschinen, nicht unterwegs im Fahrzeug.\n\nErst prüfen, dann buchen\n\nWir sagen Ihnen vor der Terminbestätigung, was machbar ist und was es kostet. Keine Überraschung vor Ort.\n\nNachvollziehbare Abläufe\n\nJeder Vorgang bekommt eine Nummer. Den Stand können Sie jederzeit selbst abrufen.\n\nSichere Zahlung\n\nDie Anzahlung wird vollständig auf den Gesamtpreis angerechnet.\n\nHinter SCHLÜSSELMACHER24 steht die Schlüssel Schmiede in Wetzlar mit Werkstatt, fachlicher Beratung und eigener Fertigung.\n\n1\n\nFahrzeug wählen\n\nMarke, Modell, Baujahr und Schlüsselart.\n\n2\n\nFotos hochladen\n\nSchlüssel aus drei Richtungen und den Fahrzeugschein.\n\n3\n\nPreis oder Prüfung\n\nFester Preis, Preisrahmen oder Hinweis auf manuelle Prüfung.\n\n4\n\nAnzahlung\n\nStandard 69,90 €, wird voll angerechnet.\n\n5\n\nTermin buchen\n\nFrühester Termin nach etwa 7 Tagen Vorlauf. Zum Termin bringen Sie Ausweisdokument und Fahrzeugschein mit.\n\nDIREKT KAUFEN\n\nBestellen ohne Termin\n\nDIREKT KAUFEN\n\nSchlüssel nach Code\n\nCode eingeben, Stückzahl wählen, bestellen. Ihr Originalschlüssel bleibt bei Ihnen.\n\nA 30\nB 40\naußen\ninnen\nMitte Stulpschraube\n\nDIREKT KAUFEN\n\nSperrschließung\n\nMehrere Türen mit einem Schlüssel. Bauform, Maße und Schlüsselanzahl selbst zusammenstellen.\n\nES\nES\nGS\nES\nES\nGS\nHGS\nES\nGS\nES\nGS\nHGS\nGHS\n\nPROJEKTE\n\nGrößere Vorhaben planen wir strukturiert\n\nSchließanlagen, ele"
+    },
+    {
+      "pfad": "/partner-werden",
+      "h1": "Partner werden",
+      "erster": "Wir vermitteln Kundenanfragen aus ganz Deutschland an geprüfte, unabhängige Fachbetriebe vor Ort — vor allem für Autoschlüssel.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": false
+      },
+      "eingabe": true,
+      "text": "Startseite\nPartner werden\n\nFÜR FACHBETRIEBE\n\nPartner werden\n\nWir vermitteln Kundenanfragen aus ganz Deutschland an geprüfte, unabhängige Fachbetriebe vor Ort — vor allem für Autoschlüssel.\n\nJetzt bewerben\n\nBei uns gehen auch Anfragen aus Regionen ein, in denen wir selbst nicht tätig sind. Diese Aufträge vermitteln wir an zuverlässige Fachbetriebe vor Ort. Sie bewerben sich mit wenigen Angaben; wir prüfen Ihre Bewerbung und melden uns bei Ihnen.\n\n01\nABLAUF\n\nSo funktioniert die Vermittlung\n\nWir prüfen jede Anfrage, bevor sie an einen Partnerbetrieb geht. Ihr Betrieb bleibt eigenständig.\n\n01\nWir prüfen die Anfrage\n\nKundinnen und Kunden stellen ihre Anfrage bei uns. Wir prüfen sie fachlich und klären, was gebraucht wird — zum Beispiel Fahrzeug, Schlüsselart und Berechtigung.\n\n02\nIhr Betrieb übernimmt nach Abstimmung\n\nPasst die Anfrage zu Ihrem Einsatzgebiet und Ihren Leistungen, fragen wir Sie an. Sie übernehmen den Auftrag erst nach Abstimmung mit uns.\n\n03\nSie führen aus und rechnen ab\n\nIhr Betrieb führt die Leistung aus und rechnet direkt mit dem Kunden ab. Der Kunde erfährt vorher, welcher Betrieb ausführt und sein Vertragspartner ist.\n\n04\nVermittlungsprovision\n\nFür vermittelte Aufträge stellen wir Ihrem Betrieb eine Vermittlungsprovision in Rechnung. Höhe, Abrechnung und Reklamationen regelt der Partnervertrag.\n\n02\nVOR DER FREISCHALTUNG\n\nWir prüfen jeden Partnerbetrieb\n\nKundinnen und Kunden sollen sich auf jeden vermittelten Betrieb verlassen können.\n\nGewerbeanmeldung bzw. Eintragung Ihres Betriebs\nFachliche Eignung für die angebotenen Leistungen\nZuverlässigkeit und klare Preisregeln gegenüber Kunden\nBei Autoschlüsseln: wie Identität und Berechtigung der Kunden geprüft werden\nEin schriftlicher Partnervertrag zu Provision, Abrechnung, Reklamation und Verantwortung\n\n03\nBEWERBUNG\n\nAls Partnerbetrieb bewerben\n\nWenige Angaben genügen. Wir melden uns nach der Prüfung per E-Mail oder Telefon.\n\nMit der Bewerbung entsteht keine Verpflichtung. Ob und ab wann wir Aufträge vermitteln, hängt von der Prüfung und den Anfragen in Ihrer Region ab.\nBitte dieses Feld leer lassen\n\nSchritt 1 von 5 · Betrieb\n\n1.\nBetrieb\n2.\nEinsatzgebiet\n3.\nLeistungen\n4.\nNachweise\n5.\nAbsenden\nIhr Betrieb\n\nFirma und Ansprechpartner für die Zusammenarbeit.\n\nFirmenname*\n(Pflichtangabe)\nAnrede\nkeine Angabe\nFrau\nHerr\nVorname (Ansprechpartner)*\n(Pflichtangabe)\nNachname (Ansprechpartner)*\n(Pflichtangabe)\nE-Mail-Adresse*\n(Pflichtangabe)\n\nHierüber erhalten Sie unsere Rückmeldung.\n\nTelefon*\n(Pflichtangabe"
+    },
+    {
+      "pfad": "/service-und-termin/vor-ort",
+      "h1": "Was wir direkt bei Ihnen erledigen",
+      "erster": "Nicht jede Arbeit lässt sich per Versand lösen. Hier steht, was vor Ort passiert und was dafür vorbereitet sein sollte.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": false
+      },
+      "eingabe": true,
+      "text": "Startseite\nService und Termin\nVor-Ort-Leistungen\n\nVOR ORT\n\nWas wir direkt bei Ihnen erledigen\n\nNicht jede Arbeit lässt sich per Versand lösen. Hier steht, was vor Ort passiert und was dafür vorbereitet sein sollte.\n\nEinsatz anfragen\n\n01\nVOR ORT\n\nLeistungen im Überblick\nAutoschlüssel am Fahrzeug: Termin anfragen\n01\n\nAutoschlüssel am Fahrzeug\n\nProgrammieren und Anlernen setzen Zugriff auf das Fahrzeug voraus. Diese Arbeiten lassen sich nicht per Versand erledigen: Sie bringen das Fahrzeug zum Termin in unsere Werkstatt in Wetzlar. Ein Einsatz bei Ihnen ist nur nach individueller Prüfung möglich.\n\nBITTE VORBEREITEN\n\n· Fahrzeug zum Termin in der Werkstatt\n· Fahrzeugschein im Original\n· Nachweis, dass Sie über das Fahrzeug verfügen dürfen\nTermin anfragen\nZylinder- und Schlosstausch: Zur Tür- und Schließtechnik\n02\n\nZylinder- und Schlosstausch\n\nAustausch von Zylindern, Einsteckschlössern, Beschlägen und Türzusatzschlössern an der eingebauten Tür.\n\nBITTE VORBEREITEN\n\n· Zugang zur Tür\n· Maße oder der ausgebaute Zylinder\n· freier Arbeitsbereich\nZur Tür- und Schließtechnik\nMontage von Schließanlagen: Projekt erfassen\n03\n\nMontage von Schließanlagen\n\nEinbau der Zylinder nach Schließplan, Beschriftung der Schlüssel und Übergabe der Unterlagen.\n\nBITTE VORBEREITEN\n\n· Zugang zu allen Türen der Anlage\n· anwesende verantwortliche Person\n· Schließplan\nProjekt erfassen\nElektronische Zutrittslösungen einrichten: Bedarf erfassen\n04\n\nElektronische Zutrittslösungen einrichten\n\nMontage, Einrichtung der Benutzerverwaltung und Einweisung in die Bedienung.\n\nBITTE VORBEREITEN\n\n· Strom und, falls nötig, Netzwerk\n· Liste der Nutzer und Berechtigungen\nBedarf erfassen\nSicherheitstechnik installieren: Sicherheitscheck starten\n05\n\nSicherheitstechnik installieren\n\nMontage von Kameras, Meldern und Kontakten sowie Einrichtung der Alarmierungswege.\n\nBITTE VORBEREITEN\n\n· Zugang zu allen betroffenen Bereichen\n· Internetzugang, falls App-Steuerung gewünscht\nSicherheitscheck starten\nBestandsaufnahme und Beratung: Beratungstermin anfragen\n06\n\nBestandsaufnahme und Beratung\n\nWir sehen uns die vorhandene Situation an und sagen Ihnen, was sinnvoll ist. Das ist die Grundlage für ein belastbares Angebot.\n\nBITTE VORBEREITEN\n\n· Zugang zum Objekt\n· vorhandene Unterlagen, falls verfügbar\nBeratungstermin anfragen\n1\nZusatzschloss\n2\nSchutzbeschlag\n3\nSchließzylinder\n4\nSchließblech\n5\nBandseite\n1\n2\n3\n4\n5\n\nNachweis der Verfügungsberechtigung\n\nVor Arbeiten an Fahrzeugen, Türen und Schließanlagen weisen Sie bitte nach,"
+    },
+    {
+      "pfad": "/service-und-termin/terminstatus",
+      "h1": "Stand Ihres Vorgangs",
+      "erster": "Geben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.",
+      "kostenGenannt": false,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": false
+      },
+      "eingabe": true,
+      "text": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen"
+    }
+  ],
+  "stolpersteine": [
+    {
+      "art": "weiter_gesperrt",
+      "text": "„Weiter“ bleibt auf Schritt 3 deaktiviert, obwohl die sichtbaren Pflichtfelder gefüllt sind",
+      "seite": "/partner-werden"
+    },
+    {
+      "art": "feld_fehlt",
+      "text": "Feld Stra(ß|ss)e auf keinem Schritt gefunden",
+      "seite": "/partner-werden"
+    }
+  ],
+  "stopps": [
+    {
+      "grund": "Partneranfrage bis vor Absenden",
+      "seite": "/partner-werden",
+      "bild": "bilder/partner-desktop-02-stopp.jpg"
+    }
+  ],
+  "befunde": {
+    "partnerseite": [
+      "Partner werden",
+      "Partner werden",
+      "Wir vermitteln Kundenanfragen aus ganz Deutschland an geprüfte, unabhängige Fachbetriebe vor Ort — vor allem für Autoschlüssel.",
+      "So funktioniert die Vermittlung",
+      "Wir prüfen jede Anfrage, bevor sie an einen Partnerbetrieb geht.",
+      "Kundinnen und Kunden stellen ihre Anfrage bei uns."
+    ],
+    "pflichtfelder": [
+      "Einsatzradius in Kilometern* (Pflichtangabe) = 30",
+      "Auswahlgruppe ohne Vorauswahl = Ja Wir arbeiten auch vor Ort beim Kunden oder am F"
+    ],
+    "leere_textfelder_schritt_3": 2,
+    "steuerelemente_schritt_3_/partner-werden": [
+      "BUTTON/button req=undefined leer=true an=false dis=false | Betrieb",
+      "BUTTON/button req=undefined leer=true an=false dis=false | Einsatzgebiet",
+      "BUTTON/button req=undefined leer=true an=false dis=false | 3. Leistungen",
+      "BUTTON/button req=undefined leer=true an=false dis=true | 4. Nachweise",
+      "BUTTON/button req=undefined leer=true an=false dis=true | 5. Absenden",
+      "INPUT/checkbox req=false leer=false an=false dis=false | Autoschlüssel Nachmachen, programmieren, anlernen.",
+      "INPUT/checkbox req=false leer=false an=false dis=false | Schließtechnik Zylinder, Schlösser, Schließanlagen.",
+      "INPUT/checkbox req=false leer=false an=false dis=false | Türöffnung Öffnung von Wohnungs-, Haus- und Fahrzeugtüren.",
+      "INPUT/checkbox req=false leer=false an=false dis=false | Zutritt Elektronische Zutrittslösungen.",
+      "INPUT/checkbox req=false leer=false an=false dis=false | Sicherheitstechnik Einbruchschutz, Alarm- und Videotechnik.",
+      "TEXTAREA/textarea req=false leer=false an=false dis=false | Autohersteller und Systeme",
+      "TEXTAREA/textarea req=false leer=false an=false dis=false | Qualifikationen",
+      "BUTTON/submit req=undefined leer=true an=false dis=false | Zurück",
+      "BUTTON/submit req=undefined leer=true an=false dis=true | Weiter"
+    ],
+    "letzterSchritt_1": [
+      "5.Absenden",
+      "Weiter"
+    ],
+    "vorOrtPartner": [
+      "Wir klären, ob die Werkstatt oder ein Partner zu Ihnen kommen kann.",
+      "Ob die Werkstatt oder ein Partner kommen kann."
+    ],
+    "terminstatus": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen\n\nNichts gefunden\n\nZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.",
+    "terminstatusAbgesendet": true
+  },
+  "konsole": [],
+  "bilder": [
+    "bilder/partner-desktop-01-weiter-gesperrt.jpg",
+    "bilder/partner-desktop-03-terminstatus.jpg"
+  ],
+  "posts": [
+    {
+      "seite": "/partner-werden",
+      "url": "/partner-werden",
+      "aktion": true,
+      "laenge": 2,
+      "kopf": "[]",
+      "nachKnopf": null
+    },
+    {
+      "seite": "/service-und-termin/vor-ort",
+      "url": "/service-und-termin/vor-ort",
+      "aktion": true,
+      "laenge": 2,
+      "kopf": "[]",
+      "nachKnopf": "Weiter"
+    },
+    {
+      "seite": "/service-und-termin/terminstatus",
+      "url": "/service-und-termin/terminstatus",
+      "aktion": true,
+      "laenge": 43,
+      "kopf": "[\"SM24-T-2026-9999\",\"<mail>",
+      "nachKnopf": "Weiter"
+    }
+  ],
+  "fehler": null,
+  "formularSchritte": 2,
+  "letzterKnopf": [
+    "5.Absenden",
+    "Weiter"
+  ],
+  "ms": 6556,
+  "zielErreicht": true,
+  "abgefangen": [
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/partner-werden",
+      "laenge": 2
+    },
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/service-und-termin/vor-ort",
+      "laenge": 2
+    }
+  ],
+  "fremdAbgebrochen": 0,
+  "formularSendungen": [
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/partner-werden",
+      "laenge": 2
+    },
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/service-und-termin/vor-ort",
+      "laenge": 2
+    }
+  ]
+}

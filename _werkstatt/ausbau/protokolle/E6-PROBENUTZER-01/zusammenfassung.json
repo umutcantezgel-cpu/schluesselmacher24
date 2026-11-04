@@ -1,0 +1,826 @@
+[
+  {
+    "id": "rentnerin-mobil",
+    "persona": "Frau Testrentnerin",
+    "geraet": "mobil 390×844",
+    "ms": 11770,
+    "tippsBisEingabe": 3,
+    "tippsBisZiel": 12,
+    "zielErreicht": true,
+    "stopps": [
+      "Einsendung-Anmeldung bis vor Absenden",
+      "Beratung mit Rückruf bis vor Absenden"
+    ],
+    "stolpersteine": [
+      {
+        "art": "feld_fehlt",
+        "text": "Feld Stra(ß|ss)e auf keinem Schritt gefunden",
+        "seite": "/beratung"
+      }
+    ],
+    "posts": [
+      {
+        "seite": "/schluessel-einschicken/anmelden",
+        "url": "/schluessel-einschicken/anmelden",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": null
+      },
+      {
+        "seite": "/beratung",
+        "url": "/beratung",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": "Weiter"
+      },
+      {
+        "seite": "/service-und-termin/terminstatus",
+        "url": "/service-und-termin/terminstatus",
+        "aktion": true,
+        "laenge": 43,
+        "kopf": "[\"SM24-T-2026-9999\",\"<mail>",
+        "nachKnopf": "Weiter"
+      }
+    ],
+    "abgefangen": [
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/schluessel-einschicken/anmelden",
+        "laenge": 2
+      },
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/beratung",
+        "laenge": 2
+      }
+    ],
+    "fremdAbgebrochen": 0,
+    "konsole": [],
+    "fehler": null,
+    "befunde": {
+      "pflichtfelder": [
+        "Auswahlgruppe ohne Vorauswahl = Weiß ich nicht Wir prüfen das anhand Ihrer Fotos u",
+        "Auswahlgruppe ohne Vorauswahl = Versichert Empfohlen: als Einschreiben, 4,45 € bei",
+        "Auswahlgruppe ohne Vorauswahl = Vormittags"
+      ],
+      "letzterSchritt_1": [],
+      "auswahl": [
+        "Thema|Anliegen|Art = Schlüsselaufbewahrung"
+      ],
+      "letzterSchritt_2": [
+        "Rückruf anfragen"
+      ],
+      "terminstatus": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen\n\nNichts gefunden\n\nZu viele Anfragen in kurzer Zeit. Bitte warten Sie einige Minuten und versuchen Sie es erneut. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.",
+      "terminstatusAbgesendet": true
+    },
+    "schritte": 12
+  },
+  {
+    "id": "rentnerin-desktop",
+    "persona": "Frau Testrentnerin",
+    "geraet": "desktop 1440×900",
+    "ms": 11907,
+    "tippsBisEingabe": 3,
+    "tippsBisZiel": 12,
+    "zielErreicht": true,
+    "stopps": [
+      "Einsendung-Anmeldung bis vor Absenden",
+      "Beratung mit Rückruf bis vor Absenden"
+    ],
+    "stolpersteine": [
+      {
+        "art": "feld_fehlt",
+        "text": "Feld Stra(ß|ss)e auf keinem Schritt gefunden",
+        "seite": "/beratung"
+      }
+    ],
+    "posts": [
+      {
+        "seite": "/schluessel-einschicken/anmelden",
+        "url": "/schluessel-einschicken/anmelden",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": null
+      },
+      {
+        "seite": "/beratung",
+        "url": "/beratung",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": "Weiter"
+      },
+      {
+        "seite": "/service-und-termin/terminstatus",
+        "url": "/service-und-termin/terminstatus",
+        "aktion": true,
+        "laenge": 43,
+        "kopf": "[\"SM24-T-2026-9999\",\"<mail>",
+        "nachKnopf": "Weiter"
+      }
+    ],
+    "abgefangen": [
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/schluessel-einschicken/anmelden",
+        "laenge": 2
+      },
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/beratung",
+        "laenge": 2
+      }
+    ],
+    "fremdAbgebrochen": 0,
+    "konsole": [],
+    "fehler": null,
+    "befunde": {
+      "pflichtfelder": [
+        "Auswahlgruppe ohne Vorauswahl = Weiß ich nicht Wir prüfen das anhand Ihrer Fotos u",
+        "Auswahlgruppe ohne Vorauswahl = Versichert Empfohlen: als Einschreiben, 4,45 € bei",
+        "Auswahlgruppe ohne Vorauswahl = Vormittags"
+      ],
+      "letzterSchritt_1": [
+        "5.Absenden"
+      ],
+      "auswahl": [
+        "Thema|Anliegen|Art = Schlüsselaufbewahrung"
+      ],
+      "letzterSchritt_2": [
+        "Rückruf",
+        "3.Absenden",
+        "Rückruf anfragen"
+      ],
+      "terminstatus": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen\n\nNichts gefunden\n\nZu viele Anfragen in kurzer Zeit. Bitte warten Sie einige Minuten und versuchen Sie es erneut. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.",
+      "terminstatusAbgesendet": true
+    },
+    "schritte": 12
+  },
+  {
+    "id": "eilige-mobil",
+    "persona": "Herr Testeilig",
+    "geraet": "mobil 390×844",
+    "ms": 75421,
+    "tippsBisEingabe": 3,
+    "tippsBisZiel": 39,
+    "zielErreicht": true,
+    "stopps": [
+      "Warenkorb, nicht zur Kasse"
+    ],
+    "stolpersteine": [
+      {
+        "art": "menue",
+        "text": "Menü musste erst geöffnet werden, bevor der Weg sichtbar war",
+        "seite": "/autoschluessel"
+      },
+      {
+        "art": "zoegern",
+        "text": "Weg „Autoschlüssel-Termin anfragen“ brauchte über 5 s bis zur Sichtbarkeit",
+        "seite": "/autoschluessel"
+      }
+    ],
+    "posts": [
+      {
+        "seite": "/autoschluessel/anfrage",
+        "url": "/autoschluessel/anfrage",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": null
+      },
+      {
+        "seite": "/autoschluessel/anfrage",
+        "url": "/api/kunden-upload",
+        "aktion": false,
+        "laenge": 305,
+        "kopf": "------WebKitFormBoundaryBuMiS1PjQNtQCnP8",
+        "nachKnopf": null
+      },
+      {
+        "seite": "/autoschluessel/anfrage",
+        "url": "/api/kunden-upload",
+        "aktion": false,
+        "laenge": 305,
+        "kopf": "------WebKitFormBoundaryGc1LXZGBBdohhKMv",
+        "nachKnopf": null
+      },
+      {
+        "seite": "/service-und-termin/terminstatus",
+        "url": "/service-und-termin/terminstatus",
+        "aktion": true,
+        "laenge": 43,
+        "kopf": "[\"SM24-T-2026-9999\",\"<mail>",
+        "nachKnopf": null
+      }
+    ],
+    "abgefangen": [
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/autoschluessel/anfrage",
+        "laenge": 2
+      },
+      {
+        "art": "upload",
+        "methode": "POST",
+        "url": "/api/kunden-upload"
+      },
+      {
+        "art": "upload",
+        "methode": "POST",
+        "url": "/api/kunden-upload"
+      }
+    ],
+    "fremdAbgebrochen": 0,
+    "konsole": [],
+    "fehler": null,
+    "befunde": {
+      "assistent": [
+        "Volkswagen 6 Modelle",
+        "Weiter",
+        "Golf ab 2003",
+        "Weiter",
+        "Auswahl Liste, Option 2",
+        "Weiter",
+        "Weiter",
+        "Mechanischer Schlüssel Schlüssel ohne Tasten und o",
+        "Weiter",
+        "Kein funktionierender Schlüssel Alle Schlüssel sin",
+        "Weiter",
+        "Ersatzschlüssel bei Verlust Alle Schlüssel verlore",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter"
+      ],
+      "assistentEnde": "Startseite Autoschlüssel Anfrage mit Termin TERMIN MIT ANZAHLUNG Autoschlüssel anfragen Bitte dieses Feld leer lassen Schritt 2 von 5 · Fotos hochladen Zulassungsbescheinigung Teil I Wir fertigen Fahrzeugschlüssel nur für Berechtigte. Dafür brauchen wir einen Nachweis. Fragen zum Fahrzeugschein? Rufen Sie uns an: 06441 8056279 Keine Fotos zur Hand? Schicken Sie uns eine Anfrage ohne Fotos. Wir melden uns und sagen Ihnen, welche Unterlagen wir brauchen. Anfrage ohne Fotos senden Zulassungsbescheinigung Teil I (Fahrzeugschein)* Als Foto oder als PDF. Bitte vollständig und lesbar, alle vier Ecken im Bild. SO SOLLTE DAS FOTO AUSSEHEN Foto aufnehmen Datei auswählen Fotos bis 12 MB · PDF bis 4 MB testbild-erfunden.png testbild-erfunden.png entfernen Die Datei konnte nicht hochgeladen werden. Erneut versuchen testbild-erfunden.png: Die Datei konnte nicht hochgeladen werden. Zweck und Aufbewahru",
+      "motorrad": [
+        "Anfrage mit Fahrzeugschein und Foto Ihres Schlüssels.",
+        "Anfrage stellen",
+        "Anfrage stellen",
+        "Fotos hochladen",
+        "Fahrzeugschein und Ihren Schlüssel fotografieren.",
+        "Wenn Sie es nicht wissen, wählen Sie „weiß nicht“; wir klären es anhand Ihrer Fotos."
+      ],
+      "gehaeuse": [
+        "Anfrage mit Fahrzeug, Foto Ihres Schlüssels und Fahrzeugschein.",
+        "Anfrage stellen",
+        "Anfrage stellen",
+        "Fahrzeug und Fotos senden",
+        "Fahrzeug angeben, Schlüssel und Fahrzeugschein fotografieren.",
+        "Ob das bei Ihrem Schlüssel geht, sehen wir an Ihren Fotos."
+      ],
+      "warenkorb": [
+        "Warenkorb",
+        "Warenkorb",
+        "Prüfen Sie Ihre Positionen, wählen Sie die Versandart und gehen Sie anschließend zur Kasse.",
+        "Summe",
+        "Zwischensumme",
+        "Gesamtbetrag"
+      ],
+      "terminstatus": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen\n\nNichts gefunden\n\nZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.",
+      "terminstatusAbgesendet": true
+    },
+    "schritte": 11
+  },
+  {
+    "id": "eilige-desktop",
+    "persona": "Herr Testeilig",
+    "geraet": "desktop 1440×900",
+    "ms": 69986,
+    "tippsBisEingabe": 2,
+    "tippsBisZiel": 38,
+    "zielErreicht": true,
+    "stopps": [
+      "Warenkorb, nicht zur Kasse"
+    ],
+    "stolpersteine": [],
+    "posts": [
+      {
+        "seite": "/autoschluessel/anfrage",
+        "url": "/autoschluessel/anfrage",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": null
+      },
+      {
+        "seite": "/autoschluessel/anfrage",
+        "url": "/api/kunden-upload",
+        "aktion": false,
+        "laenge": 305,
+        "kopf": "------WebKitFormBoundaryYKwyAPO0En8jHvK9",
+        "nachKnopf": null
+      },
+      {
+        "seite": "/autoschluessel/anfrage",
+        "url": "/api/kunden-upload",
+        "aktion": false,
+        "laenge": 305,
+        "kopf": "------WebKitFormBoundaryrf5jaurTA3sUqs6B",
+        "nachKnopf": null
+      },
+      {
+        "seite": "/service-und-termin/terminstatus",
+        "url": "/service-und-termin/terminstatus",
+        "aktion": true,
+        "laenge": 43,
+        "kopf": "[\"SM24-T-2026-9999\",\"<mail>",
+        "nachKnopf": null
+      }
+    ],
+    "abgefangen": [
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/autoschluessel/anfrage",
+        "laenge": 2
+      },
+      {
+        "art": "upload",
+        "methode": "POST",
+        "url": "/api/kunden-upload"
+      },
+      {
+        "art": "upload",
+        "methode": "POST",
+        "url": "/api/kunden-upload"
+      }
+    ],
+    "fremdAbgebrochen": 0,
+    "konsole": [],
+    "fehler": null,
+    "befunde": {
+      "assistent": [
+        "Volkswagen 6 Modelle",
+        "Weiter",
+        "Golf ab 2003",
+        "Weiter",
+        "Auswahl Liste, Option 2",
+        "Weiter",
+        "Weiter",
+        "Mechanischer Schlüssel Schlüssel ohne Tasten und o",
+        "Weiter",
+        "Kein funktionierender Schlüssel Alle Schlüssel sin",
+        "Weiter",
+        "Ersatzschlüssel bei Verlust Alle Schlüssel verlore",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter",
+        "Foto hochgeladen (erfundene Testdatei)",
+        "Weiter"
+      ],
+      "assistentEnde": "Startseite Autoschlüssel Anfrage mit Termin TERMIN MIT ANZAHLUNG Autoschlüssel anfragen Fahrzeug angeben, Fotos hochladen, Preis sehen, Termin buchen. Bitte dieses Feld leer lassen Schritt 2 von 5 · Fotos hochladen Zulassungsbescheinigung Teil I Wir fertigen Fahrzeugschlüssel nur für Berechtigte. Dafür brauchen wir einen Nachweis. Fragen zum Fahrzeugschein? Rufen Sie uns an: 06441 8056279 Keine Fotos zur Hand? Schicken Sie uns eine Anfrage ohne Fotos. Wir melden uns und sagen Ihnen, welche Unterlagen wir brauchen. Anfrage ohne Fotos senden Zulassungsbescheinigung Teil I (Fahrzeugschein)* Als Foto oder als PDF. Bitte vollständig und lesbar, alle vier Ecken im Bild. SO SOLLTE DAS FOTO AUSSEHEN Foto aufnehmen Datei auswählen Fotos bis 12 MB · PDF bis 4 MB testbild-erfunden.png testbild-erfunden.png entfernen Die Datei konnte nicht hochgeladen werden. Erneut versuchen testbild-erfunden.png: ",
+      "motorrad": [
+        "Anfrage mit Fahrzeugschein und Foto Ihres Schlüssels.",
+        "Anfrage stellen",
+        "Anfrage stellen",
+        "Fotos hochladen",
+        "Fahrzeugschein und Ihren Schlüssel fotografieren.",
+        "Wenn Sie es nicht wissen, wählen Sie „weiß nicht“; wir klären es anhand Ihrer Fotos."
+      ],
+      "gehaeuse": [
+        "Anfrage mit Fahrzeug, Foto Ihres Schlüssels und Fahrzeugschein.",
+        "Anfrage stellen",
+        "Anfrage stellen",
+        "Fahrzeug und Fotos senden",
+        "Fahrzeug angeben, Schlüssel und Fahrzeugschein fotografieren.",
+        "Ob das bei Ihrem Schlüssel geht, sehen wir an Ihren Fotos."
+      ],
+      "warenkorb": [
+        "Warenkorb",
+        "Warenkorb",
+        "Prüfen Sie Ihre Positionen, wählen Sie die Versandart und gehen Sie anschließend zur Kasse.",
+        "Summe",
+        "Zwischensumme",
+        "Gesamtbetrag"
+      ],
+      "terminstatus": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen\n\nNichts gefunden\n\nZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.",
+      "terminstatusAbgesendet": true
+    },
+    "schritte": 11
+  },
+  {
+    "id": "verwalterin-mobil",
+    "persona": "Frau Testverwalterin",
+    "geraet": "mobil 390×844",
+    "ms": 9220,
+    "tippsBisEingabe": 1,
+    "tippsBisZiel": 9,
+    "zielErreicht": true,
+    "stopps": [
+      "Einsatz-Anfrage Zylindertausch bis vor Absenden",
+      "Kontakt mit Foto bis vor Absenden"
+    ],
+    "stolpersteine": [
+      {
+        "art": "feld_fehlt",
+        "text": "Feld PLZ|Postleitzahl auf keinem Schritt gefunden",
+        "seite": "/service-und-termin/kontakt"
+      },
+      {
+        "art": "feld_fehlt",
+        "text": "Feld ^Ort\\b|^Stadt auf keinem Schritt gefunden",
+        "seite": "/service-und-termin/kontakt"
+      },
+      {
+        "art": "feld_fehlt",
+        "text": "Feld Stra(ß|ss)e auf keinem Schritt gefunden",
+        "seite": "/service-und-termin/kontakt"
+      }
+    ],
+    "posts": [
+      {
+        "seite": "/service-und-termin/vor-ort",
+        "url": "/service-und-termin/vor-ort",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": null
+      },
+      {
+        "seite": "/service-und-termin/kontakt",
+        "url": "/service-und-termin/kontakt",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": "Weiter"
+      },
+      {
+        "seite": "/service-und-termin/kontakt",
+        "url": "/api/kunden-upload",
+        "aktion": false,
+        "laenge": 299,
+        "kopf": "------WebKitFormBoundarys2UrFAaNHoCBm1EE",
+        "nachKnopf": "Weiter"
+      },
+      {
+        "seite": "/service-und-termin/terminstatus",
+        "url": "/service-und-termin/terminstatus",
+        "aktion": true,
+        "laenge": 43,
+        "kopf": "[\"SM24-T-2026-9999\",\"<mail>",
+        "nachKnopf": "Weiter"
+      }
+    ],
+    "abgefangen": [
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/service-und-termin/vor-ort",
+        "laenge": 2
+      },
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/service-und-termin/kontakt",
+        "laenge": 2
+      },
+      {
+        "art": "upload",
+        "methode": "POST",
+        "url": "/api/kunden-upload"
+      }
+    ],
+    "fremdAbgebrochen": 0,
+    "konsole": [],
+    "fehler": null,
+    "befunde": {
+      "auswahl": [
+        "Anliegen|Leistung|Art = Zylinder oder Schloss tauschen",
+        "Anliegen = Frage zu einem laufenden Auftrag"
+      ],
+      "pflichtfelder": [
+        "Auswahlgruppe ohne Vorauswahl = In den nächsten Tagen",
+        "Auswahlgruppe ohne Vorauswahl = Per E-Mail Die Antwort kommt an die E-Mail-Adresse"
+      ],
+      "letzterSchritt_1": [
+        "Einsatz anfragen"
+      ],
+      "letzterSchritt_2": [
+        "Nachricht absenden"
+      ],
+      "terminstatus": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen\n\nNichts gefunden\n\nZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.",
+      "terminstatusAbgesendet": true
+    },
+    "schritte": 9
+  },
+  {
+    "id": "verwalterin-desktop",
+    "persona": "Frau Testverwalterin",
+    "geraet": "desktop 1440×900",
+    "ms": 8330,
+    "tippsBisEingabe": 1,
+    "tippsBisZiel": 8,
+    "zielErreicht": true,
+    "stopps": [
+      "Einsatz-Anfrage Zylindertausch bis vor Absenden",
+      "Kontakt mit Foto bis vor Absenden"
+    ],
+    "stolpersteine": [
+      {
+        "art": "feld_fehlt",
+        "text": "Feld PLZ|Postleitzahl auf keinem Schritt gefunden",
+        "seite": "/service-und-termin/vor-ort"
+      },
+      {
+        "art": "feld_fehlt",
+        "text": "Feld ^Ort\\b|^Stadt auf keinem Schritt gefunden",
+        "seite": "/service-und-termin/vor-ort"
+      },
+      {
+        "art": "feld_fehlt",
+        "text": "Feld Stra(ß|ss)e auf keinem Schritt gefunden",
+        "seite": "/service-und-termin/vor-ort"
+      }
+    ],
+    "posts": [
+      {
+        "seite": "/service-und-termin/vor-ort",
+        "url": "/service-und-termin/vor-ort",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": null
+      },
+      {
+        "seite": "/service-und-termin/terminstatus",
+        "url": "/service-und-termin/terminstatus",
+        "aktion": true,
+        "laenge": 43,
+        "kopf": "[\"SM24-T-2026-9999\",\"<mail>",
+        "nachKnopf": "Weiter"
+      }
+    ],
+    "abgefangen": [
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/service-und-termin/vor-ort",
+        "laenge": 2
+      }
+    ],
+    "fremdAbgebrochen": 0,
+    "konsole": [],
+    "fehler": null,
+    "befunde": {
+      "auswahl": [
+        "Anliegen|Leistung|Art = Zylinder oder Schloss tauschen"
+      ],
+      "pflichtfelder": [
+        "Auswahlgruppe ohne Vorauswahl = In den nächsten Tagen"
+      ],
+      "letzterSchritt_1": [
+        "3.Absenden",
+        "Einsatz anfragen"
+      ],
+      "letzterSchritt_2": [
+        "3.Absenden",
+        "Einsatz anfragen"
+      ],
+      "terminstatus": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen\n\nNichts gefunden\n\nZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.",
+      "terminstatusAbgesendet": true
+    },
+    "schritte": 8
+  },
+  {
+    "id": "partner-mobil",
+    "persona": "Herr Testpartner",
+    "geraet": "mobil 390×844",
+    "ms": 6665,
+    "tippsBisEingabe": 1,
+    "tippsBisZiel": 6,
+    "zielErreicht": true,
+    "stopps": [
+      "Partneranfrage bis vor Absenden"
+    ],
+    "stolpersteine": [
+      {
+        "art": "weiter_gesperrt",
+        "text": "„Weiter“ bleibt auf Schritt 3 deaktiviert, obwohl die sichtbaren Pflichtfelder gefüllt sind",
+        "seite": "/partner-werden"
+      },
+      {
+        "art": "feld_fehlt",
+        "text": "Feld Stra(ß|ss)e auf keinem Schritt gefunden",
+        "seite": "/partner-werden"
+      }
+    ],
+    "posts": [
+      {
+        "seite": "/partner-werden",
+        "url": "/partner-werden",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": null
+      },
+      {
+        "seite": "/service-und-termin/vor-ort",
+        "url": "/service-und-termin/vor-ort",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": "Weiter"
+      },
+      {
+        "seite": "/service-und-termin/terminstatus",
+        "url": "/service-und-termin/terminstatus",
+        "aktion": true,
+        "laenge": 43,
+        "kopf": "[\"SM24-T-2026-9999\",\"<mail>",
+        "nachKnopf": "Weiter"
+      }
+    ],
+    "abgefangen": [
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/partner-werden",
+        "laenge": 2
+      },
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/service-und-termin/vor-ort",
+        "laenge": 2
+      }
+    ],
+    "fremdAbgebrochen": 0,
+    "konsole": [],
+    "fehler": null,
+    "befunde": {
+      "partnerseite": [
+        "Partner werden",
+        "Partner werden",
+        "Wir vermitteln Kundenanfragen aus ganz Deutschland an geprüfte, unabhängige Fachbetriebe vor Ort — vor allem für Autoschlüssel.",
+        "So funktioniert die Vermittlung",
+        "Wir prüfen jede Anfrage, bevor sie an einen Partnerbetrieb geht.",
+        "Kundinnen und Kunden stellen ihre Anfrage bei uns."
+      ],
+      "pflichtfelder": [
+        "Einsatzradius in Kilometern* (Pflichtangabe) = 30",
+        "Auswahlgruppe ohne Vorauswahl = Ja Wir arbeiten auch vor Ort beim Kunden oder am F"
+      ],
+      "leere_textfelder_schritt_3": 2,
+      "steuerelemente_schritt_3_/partner-werden": [
+        "INPUT/checkbox req=false leer=false an=false dis=false | Autoschlüssel Nachmachen, programmieren, anlernen.",
+        "INPUT/checkbox req=false leer=false an=false dis=false | Schließtechnik Zylinder, Schlösser, Schließanlagen.",
+        "INPUT/checkbox req=false leer=false an=false dis=false | Türöffnung Öffnung von Wohnungs-, Haus- und Fahrzeugtüren.",
+        "INPUT/checkbox req=false leer=false an=false dis=false | Zutritt Elektronische Zutrittslösungen.",
+        "INPUT/checkbox req=false leer=false an=false dis=false | Sicherheitstechnik Einbruchschutz, Alarm- und Videotechnik.",
+        "TEXTAREA/textarea req=false leer=false an=false dis=false | Autohersteller und Systeme",
+        "TEXTAREA/textarea req=false leer=false an=false dis=false | Qualifikationen",
+        "BUTTON/submit req=undefined leer=true an=false dis=false | Zurück",
+        "BUTTON/submit req=undefined leer=true an=false dis=true | Weiter"
+      ],
+      "letzterSchritt_1": [
+        "Weiter"
+      ],
+      "vorOrtPartner": [
+        "Wir klären, ob die Werkstatt oder ein Partner zu Ihnen kommen kann.",
+        "Ob die Werkstatt oder ein Partner kommen kann."
+      ],
+      "terminstatus": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen\n\nNichts gefunden\n\nZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.",
+      "terminstatusAbgesendet": true
+    },
+    "schritte": 6
+  },
+  {
+    "id": "partner-desktop",
+    "persona": "Herr Testpartner",
+    "geraet": "desktop 1440×900",
+    "ms": 6556,
+    "tippsBisEingabe": 1,
+    "tippsBisZiel": 6,
+    "zielErreicht": true,
+    "stopps": [
+      "Partneranfrage bis vor Absenden"
+    ],
+    "stolpersteine": [
+      {
+        "art": "weiter_gesperrt",
+        "text": "„Weiter“ bleibt auf Schritt 3 deaktiviert, obwohl die sichtbaren Pflichtfelder gefüllt sind",
+        "seite": "/partner-werden"
+      },
+      {
+        "art": "feld_fehlt",
+        "text": "Feld Stra(ß|ss)e auf keinem Schritt gefunden",
+        "seite": "/partner-werden"
+      }
+    ],
+    "posts": [
+      {
+        "seite": "/partner-werden",
+        "url": "/partner-werden",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": null
+      },
+      {
+        "seite": "/service-und-termin/vor-ort",
+        "url": "/service-und-termin/vor-ort",
+        "aktion": true,
+        "laenge": 2,
+        "kopf": "[]",
+        "nachKnopf": "Weiter"
+      },
+      {
+        "seite": "/service-und-termin/terminstatus",
+        "url": "/service-und-termin/terminstatus",
+        "aktion": true,
+        "laenge": 43,
+        "kopf": "[\"SM24-T-2026-9999\",\"<mail>",
+        "nachKnopf": "Weiter"
+      }
+    ],
+    "abgefangen": [
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/partner-werden",
+        "laenge": 2
+      },
+      {
+        "art": "action-unbekannt",
+        "methode": "POST",
+        "url": "/service-und-termin/vor-ort",
+        "laenge": 2
+      }
+    ],
+    "fremdAbgebrochen": 0,
+    "konsole": [],
+    "fehler": null,
+    "befunde": {
+      "partnerseite": [
+        "Partner werden",
+        "Partner werden",
+        "Wir vermitteln Kundenanfragen aus ganz Deutschland an geprüfte, unabhängige Fachbetriebe vor Ort — vor allem für Autoschlüssel.",
+        "So funktioniert die Vermittlung",
+        "Wir prüfen jede Anfrage, bevor sie an einen Partnerbetrieb geht.",
+        "Kundinnen und Kunden stellen ihre Anfrage bei uns."
+      ],
+      "pflichtfelder": [
+        "Einsatzradius in Kilometern* (Pflichtangabe) = 30",
+        "Auswahlgruppe ohne Vorauswahl = Ja Wir arbeiten auch vor Ort beim Kunden oder am F"
+      ],
+      "leere_textfelder_schritt_3": 2,
+      "steuerelemente_schritt_3_/partner-werden": [
+        "BUTTON/button req=undefined leer=true an=false dis=false | Betrieb",
+        "BUTTON/button req=undefined leer=true an=false dis=false | Einsatzgebiet",
+        "BUTTON/button req=undefined leer=true an=false dis=false | 3. Leistungen",
+        "BUTTON/button req=undefined leer=true an=false dis=true | 4. Nachweise",
+        "BUTTON/button req=undefined leer=true an=false dis=true | 5. Absenden",
+        "INPUT/checkbox req=false leer=false an=false dis=false | Autoschlüssel Nachmachen, programmieren, anlernen.",
+        "INPUT/checkbox req=false leer=false an=false dis=false | Schließtechnik Zylinder, Schlösser, Schließanlagen.",
+        "INPUT/checkbox req=false leer=false an=false dis=false | Türöffnung Öffnung von Wohnungs-, Haus- und Fahrzeugtüren.",
+        "INPUT/checkbox req=false leer=false an=false dis=false | Zutritt Elektronische Zutrittslösungen.",
+        "INPUT/checkbox req=false leer=false an=false dis=false | Sicherheitstechnik Einbruchschutz, Alarm- und Videotechnik.",
+        "TEXTAREA/textarea req=false leer=false an=false dis=false | Autohersteller und Systeme",
+        "TEXTAREA/textarea req=false leer=false an=false dis=false | Qualifikationen",
+        "BUTTON/submit req=undefined leer=true an=false dis=false | Zurück",
+        "BUTTON/submit req=undefined leer=true an=false dis=true | Weiter"
+      ],
+      "letzterSchritt_1": [
+        "5.Absenden",
+        "Weiter"
+      ],
+      "vorOrtPartner": [
+        "Wir klären, ob die Werkstatt oder ein Partner zu Ihnen kommen kann.",
+        "Ob die Werkstatt oder ein Partner kommen kann."
+      ],
+      "terminstatus": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen\n\nNichts gefunden\n\nZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.",
+      "terminstatusAbgesendet": true
+    },
+    "schritte": 6
+  }
+]
