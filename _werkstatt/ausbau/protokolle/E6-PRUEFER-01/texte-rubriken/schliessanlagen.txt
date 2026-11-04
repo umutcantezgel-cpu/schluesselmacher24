@@ -1,0 +1,275 @@
+Startseite
+Schließanlagen
+
+LEISTUNGSBEREICH
+
+Mechanische Schließanlagen
+
+Von der Hauptschlüsselanlage bis zur Generalhauptschlüsselanlage.
+
+ES
+ES
+ES
+ES
+HS
+Schließanlage konfigurieren
+Schließplan selbst anlegen
+Zu den Systemen
+
+Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert werden kann.
+
+Der Weg dorthin ist immer derselbe: Sie erfassen Ihr Objekt, Ihre Nutzer und Ihre Türen. Daraus entsteht ein Schließplan, den wir gemeinsam mit Ihnen abstimmen. Erst danach wird gefertigt.
+
+PROJEKTKONFIGURATOR
+Sie erfassen Ihr Projekt, wir erstellen daraus ein Angebot.
+
+SO LÄUFT IHR AUFTRAG AB
+
+1
+
+Schritt 1:
+Türen und Schlüssel planen
+
+Zylinder je Tür und Schlüssel je Person anlegen.
+
+2
+
+Schritt 2:
+Schließplan prüfen
+
+Sie sehen, welcher Schlüssel welche Tür öffnet.
+
+3
+
+Schritt 3:
+Bestellen oder Angebot
+
+Mit Preis bestellen oder ein Angebot anfragen.
+
+4
+
+Schritt 4:
+Fertigung
+
+Die Werkstatt prüft den Plan und fertigt die Anlage.
+
+Schließstelle
+Erklärung zu Schließstelle
+Jede Stelle, an der geschlossen wird — meist ein Zylinder in einer Tür.
+Schließplan
+Erklärung zu Schließplan
+Die Tabelle, in der steht, welcher Schlüssel welche Tür öffnet.
+Sicherungskarte
+Erklärung zu Sicherungskarte
+Der Nachweis, mit dem Schlüssel zu einer bestehenden Anlage nachbestellt werden.
+
+01
+SYSTEME
+
+Die fünf Systeme in einfacher Sprache
+
+Die vollständige Bezeichnung steht immer zuerst, die übliche Abkürzung folgt in Klammern. Vorwissen brauchen Sie nicht.
+
+Gleichschließung
+Zentralschlossanlage
+Hauptschlüsselanlage
+Generalhauptschlüsselanlage
+1
+2
+3
+4
+SCHLÜSSEL WÄHLEN
+Schlüssel
+TÜR WÄHLEN
+Tür 1
+Tür 2
+Tür 3
+Tür 4
+
+Wählen Sie einen Schlüssel oder eine Tür.
+
+Gleichschließung
+Erklärung zu Gleichschließung
+
+Alle Zylinder der Anlage haben dieselbe Schließung. Ein einziger Schlüssel sperrt jede Tür, die dazugehört. Es gibt keine Rangfolge und keine Unterscheidung zwischen Personen: Wer den Schlüssel hat, kommt überall hinein.
+
+Ein Schlüsselprofil für alle Türen
+Keine Berechtigungsstufen
+Schnell geplant, wenige Angaben nötig
+
+GEEIGNET FÜR
+
+Einfamilienhaus, Wohnung mit Keller und Garage, kleine Einheiten mit wenigen Türen und nur einer Nutzergruppe.
+
+ES
+ES
+GS
+ES
+ES
+GS
+HGS
+ES
+GS
+ES
+frei
+frei
+GS
+HGS
+GHS
+Erweiterbare Anlage
+Erklärung zu Erweiterbare Anlage
+
+Kein eigenes Schließsystem, sondern eine Entscheidung bei der Planung: Im Schließplan bleiben Plätze für Türen und Nutzer frei, die es heute noch nicht gibt. Jedes der vier Systeme lässt sich so anlegen. Ohne diese Reserve muss eine Anlage später unter Umständen neu aufgebaut werden.
+
+Freie Plätze im Schließplan
+Spätere Türen ohne Neuaufbau
+Muss zu Beginn festgelegt werden
+
+GEEIGNET FÜR
+
+Alle, die mit Umbau, Anbau, weiteren Mietparteien oder zusätzlichen Immobilien rechnen.
+
+Die Systeme im Vergleich
+
+Wenn Sie unsicher sind, welches System zu Ihnen passt: Die Tabelle zeigt die Unterschiede nebeneinander. Im Konfigurator leiten wir daraus einen Vorschlag ab.
+
+Gleichschließung
+
+WER ÖFFNET WAS
+Jeder Schlüssel öffnet jede Tür der Anlage.
+TYPISCH FÜR
+Haus, Wohnung, Garage, Gartenhaus
+ERWEITERBAR
+Begrenzt — weitere Zylinder in derselben Schließung sind möglich.
+
+Zentralschlossanlage (Z)
+
+WER ÖFFNET WAS
+Eigener Schlüssel: eigene Tür plus alle gemeinsamen Türen. Kein übergeordneter Schlüssel.
+TYPISCH FÜR
+Mehrfamilienhaus, Wohnanlage, Bürogemeinschaft
+ERWEITERBAR
+Ja, wenn der Schließplan Reserven für weitere Parteien vorsieht.
+
+Hauptschlüsselanlage (HS)
+
+WER ÖFFNET WAS
+Nutzerschlüssel: nur die zugewiesenen Türen. Hauptschlüssel: alle Türen der Anlage.
+TYPISCH FÜR
+Betrieb, Praxis, Schule, Verwaltung
+ERWEITERBAR
+Ja, wenn im Schließplan Reserven für weitere Türen und Nutzer eingeplant sind.
+
+Generalhauptschlüsselanlage (GHS)
+
+WER ÖFFNET WAS
+Mehrere Stufen: Nutzer, Abteilung oder Gebäude, darüber der Generalhauptschlüssel für alles.
+TYPISCH FÜR
+Mehrere Gebäude, Hausverwaltung, öffentliche Einrichtung
+ERWEITERBAR
+Ja — dieses System ist auf Wachstum ausgelegt, sofern die Ebenen sauber geplant sind.
+
+Erweiterbare Anlage
+
+WER ÖFFNET WAS
+Wie im gewählten System — zusätzlich sind Reserven für später vorgesehen.
+TYPISCH FÜR
+Wachsende Betriebe, Bauvorhaben in Abschnitten, Verwaltungen mit Zukäufen
+ERWEITERBAR
+Ja — das ist der Zweck dieser Planung.
+
+02
+FÜR WEN
+
+Wer plant welche Anlage?
+
+Die Zuordnung ist ein Anhaltspunkt, keine Festlegung. Entscheidend sind Ihre Türen und Ihre Zuständigkeiten.
+
+01
+Privat
+Haus oder Wohnung mit Nebentüren: Keller, Garage, Gartentor, Briefkasten. Meist genügt eine Gleichschließung — ein Schlüssel für alles.
+Kleine Vorhaben direkt konfigurieren
+02
+Unternehmen
+Büro, Werkstatt, Lager, Serverraum: Nicht jede Person braucht jede Tür. Eine Hauptschlüsselanlage (HS) bildet Zuständigkeiten ab, ohne den Alltag zu erschweren.
+Schließanlage konfigurieren
+03
+Hausverwaltung
+Mehrere Parteien, gemeinsame Türen, wechselnde Mieter. Eine Zentralschlossanlage (Z) trennt die Wohnungen und öffnet die gemeinsamen Zugänge für alle.
+Schließanlage konfigurieren
+04
+Öffentliche Einrichtung
+Schule, Verwaltung, Einrichtung mit Publikumsverkehr: viele Bereiche, klar getrennte Zuständigkeiten und ein nachvollziehbarer Schließplan.
+Schließanlage konfigurieren
+05
+Mehrere Gebäude
+Verteilte Standorte oder eine größere Liegenschaft: Eine Generalhauptschlüsselanlage (GHS) fasst mehrere Gebäude unter einer gemeinsamen Ebene zusammen.
+Schließanlage konfigurieren
+
+03
+GLEICHSCHLIESSUNG
+
+Wenige Türen, ein Schlüssel für alles?
+
+Dann brauchen Sie keinen Schließplan. Gleichschließende Zylinder stellen Sie selbst zusammen — Bauform, Maße und Anzahl der gemeinsamen Schlüssel — und bestellen direkt. Der Projektkonfigurator lohnt sich erst, wenn unterschiedliche Personen unterschiedliche Türen öffnen sollen.
+
+Zu den gleichschließenden Zylindern
+Trotzdem Schließanlage konfigurieren
+
+Woran Sie den Unterschied erkennen
+
+Sobald jemand eine Tür nicht öffnen können soll — etwa ein Mieter die Wohnung nebenan oder eine Aushilfe das Büro der Leitung — reicht eine Gleichschließung nicht mehr aus. Dann planen wir eine Anlage mit Ebenen.
+
+04
+NACHBESTELLEN
+
+Schlüssel nachbestellen (mit Sicherungskarte)
+
+Gehört zu Ihrer Schließung eine Sicherungskarte, bestellen Sie weitere Schlüssel direkt nach Code.
+
+Code der Schließung eingeben (2 Buchstaben, dann 6 Ziffern).
+Pflicht: Bitte laden Sie ein Foto Ihrer Sicherungskarte hoch. Bei Anlagen mit Sicherungskarte bestellt nur, wer die Karte vorlegt.
+Nachschlüssel werden nur gegen Vorlage der Sicherungskarte gefertigt.
+Schlüssel nachbestellen (mit Sicherungskarte)
+Karte nicht zur Hand? Anfrage stellen
+
+05
+FRAGEN
+
+Häufige Fragen zu Schließanlagen
+Muss ich die Abkürzungen Z, HS und GHS kennen, bevor ich anfrage?
+
+Nein. Im Konfigurator beschreiben Sie Ihr Objekt und wer welche Tür öffnen soll. Daraus leiten wir einen Vorschlag für das passende System ab und besprechen ihn mit Ihnen.
+
+Was ist der Unterschied zwischen einer Gleichschließung und einer Schließanlage?
+Kann ich eine Anlage später erweitern?
+Ich habe schon eine Anlage. Können Sie sie ergänzen?
+Wie kommt der Preis zustande?
+Brauchen alle Türen denselben Zylinder?
+Was passiert, wenn ein Hauptschlüssel verloren geht?
+Wer darf Nachschlüssel bestellen?
+Was gilt an Flucht- und Rettungswegen?
+Wie pflege ich die Zylinder?
+
+06
+WEITERLESEN
+
+Passend dazu
+01
+Projektkonfigurator
+Zehn Frageblöcke zu Objekt, Nutzern, Türen und Berechtigungen.
+02
+Gleichschließende Zylinder
+Für kleine Vorhaben ohne Berechtigungsstufen.
+03
+Elektronische Zutrittslösungen
+Wenn Rechte änderbar sein sollen, ohne Zylinder zu tauschen.
+04
+Tür- und Schließtechnik
+Zylinder, Schlösser und Beschläge rund um die Tür.
+05
+Welche Anlage passt?
+Entscheidungshilfe im Ratgeber.
+06
+Kontakt
+Wenn Sie vor der Erfassung eine Frage klären möchten.

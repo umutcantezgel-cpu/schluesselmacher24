@@ -1,0 +1,48 @@
+{
+  "pfad": "/beratung",
+  "geraet": "mobil",
+  "schritte": [
+    {
+      "n": 0,
+      "titel": "Schritt 1 von 3 · Anliegen | Beratung mit Rückruf",
+      "aktionen": [
+        "text:Erika Testku",
+        "text:Erika Testku",
+        "select",
+        "datei",
+        "datei"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 1,
+      "titel": "Schritt 2 von 3 · Rückruf | Beratung mit Rückruf",
+      "aktionen": [
+        "text:Erika Testku",
+        "text:Erika Testku",
+        "text:01234 567890",
+        "text:test@example",
+        "select",
+        "radio"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 2,
+      "titel": "Schritt 3 von 3 · Absenden | Beratung mit Rückruf",
+      "aktionen": [],
+      "uploadsFertig": true,
+      "weiterVorhanden": false,
+      "aktion": "gesperrt-oder-ende"
+    }
+  ],
+  "preisGefunden": null,
+  "ende": "gesperrt",
+  "endAusschnitt": "Startseite Service und Termin Beratung BERATUNG Beratung mit Rückruf Für alle Anliegen, die nicht zu einem der anderen Wege passen. Schildern Sie Ihr Anliegen kurz, wir rufen Sie zurück. Rückruf anfragen 01 SO LÄUFT IHR AUFTRAG AB Vom Anliegen bis zur Lösung Rückruf anfragen 1 Schritt 1: Anliegen schildern Ein paar Sätze und gern ein Foto genügen. 2 Schritt 2: Rückruf Wir rufen Sie zurü",
+  "preisAmEnde": false,
+  "abgefangen": 3
+}

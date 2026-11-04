@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-04T17:25:25.906Z",
+ "stand": "2026-11-04T18:15:58.944Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -3366,10 +3366,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "läuft",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "8c0d3ad",
    "massstab": "_werkstatt/ausbau/pakete/E6-PRUEFER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },

@@ -1,0 +1,550 @@
+{
+  "zeit": "2026-11-04T17:42:08.475Z",
+  "menue": false,
+  "zeilen": [
+    {
+      "pfad": "/",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/autoschluessel",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/autoschluessel",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/autoschluessel/anfrage",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/autoschluessel/gehaeuse",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/autoschluessel/gehaeuse",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/autoschluessel/gehaeuse/anfrage",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/autoschluessel/gehaeuse/anfrage",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/motorradschluessel",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/motorradschluessel",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/motorradschluessel/anfrage",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/motorradschluessel/anfrage",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-nach-code",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-nach-code",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-nach-code/ms-01",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-nach-vorlage",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-nach-vorlage/anfrage",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-nach-vorlage/anfrage",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-einschicken",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-einschicken",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-einschicken/anmelden",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-einschicken/anmelden",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/gleichschliessende-zylinder",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/gleichschliessende-zylinder",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schliessanlagen",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schliessanlagen",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schliessanlagen/konfigurator",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/elektronische-zutrittsloesungen",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/elektronische-zutrittsloesungen",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/sicherheitstechnik",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/sicherheitstechnik",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/service-und-termin/vor-ort",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/service-und-termin/vor-ort",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/service-und-termin/anfrage",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/service-und-termin/anfrage",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/service-und-termin/kontakt",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 2,
+      "stellen": 9,
+      "liste": [
+        {
+          "id": "definition-list",
+          "impact": "serious",
+          "help": "<dl> elements must only directly contain properly-ordered <dt> and <dd> groups, <script>, <template> or <div> elements",
+          "nodes": 1,
+          "ziele": [
+            ".lg\\:col-span-7 > dl:nth-child(2)"
+          ]
+        },
+        {
+          "id": "dlitem",
+          "impact": "serious",
+          "help": "<dt> and <dd> elements must be contained by a <dl>",
+          "nodes": 8,
+          "ziele": [
+            ".py-5.gap-4.border-b:nth-child(1) > .min-w-0 > .uppercase.tracking-label",
+            ".py-5.gap-4.border-b:nth-child(1) > .min-w-0 > .mt-2.text-body"
+          ]
+        }
+      ]
+    },
+    {
+      "pfad": "/service-und-termin/kontakt",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 2,
+      "stellen": 9,
+      "liste": [
+        {
+          "id": "definition-list",
+          "impact": "serious",
+          "help": "<dl> elements must only directly contain properly-ordered <dt> and <dd> groups, <script>, <template> or <div> elements",
+          "nodes": 1,
+          "ziele": [
+            ".lg\\:col-span-7 > dl:nth-child(2)"
+          ]
+        },
+        {
+          "id": "dlitem",
+          "impact": "serious",
+          "help": "<dt> and <dd> elements must be contained by a <dl>",
+          "nodes": 8,
+          "ziele": [
+            ".py-5.gap-4.border-b:nth-child(1) > .min-w-0 > .uppercase.tracking-label",
+            ".py-5.gap-4.border-b:nth-child(1) > .min-w-0 > .mt-2.text-body"
+          ]
+        }
+      ]
+    },
+    {
+      "pfad": "/service-und-termin/terminstatus",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/service-und-termin/terminstatus",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/beratung",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/beratung",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/partner-werden",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/partner-werden",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/kasse",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/kasse",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "mobil",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "geraet": "desktop",
+      "menue": null,
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    }
+  ]
+}

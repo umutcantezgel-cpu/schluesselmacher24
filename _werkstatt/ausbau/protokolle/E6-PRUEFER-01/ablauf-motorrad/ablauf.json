@@ -1,0 +1,68 @@
+{
+  "pfad": "/motorradschluessel/anfrage",
+  "geraet": "mobil",
+  "schritte": [
+    {
+      "n": 0,
+      "titel": "Schritt 1 von 5 · Motorrad | Motorradschlüssel anfragen",
+      "aktionen": [
+        "text:Erika Testku",
+        "text:01234 567890",
+        "text:Erika Testku",
+        "text:2015"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 1,
+      "titel": "Schritt 2 von 5 · Chip | Motorradschlüssel anfragen",
+      "aktionen": [
+        "radio"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 2,
+      "titel": "Schritt 3 von 5 · Fotos | Motorradschlüssel anfragen",
+      "aktionen": [
+        "datei",
+        "datei",
+        "datei",
+        "datei"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 3,
+      "titel": "Schritt 4 von 5 · Kontakt | Motorradschlüssel anfragen",
+      "aktionen": [
+        "text:Erika Testku",
+        "text:Erika Testku",
+        "text:test@example",
+        "text:01234 567890"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 4,
+      "titel": "Schritt 5 von 5 · Absenden | Motorradschlüssel anfragen",
+      "aktionen": [],
+      "uploadsFertig": true,
+      "weiterVorhanden": false,
+      "aktion": "gesperrt-oder-ende"
+    }
+  ],
+  "preisGefunden": null,
+  "ende": "gesperrt",
+  "endAusschnitt": "Startseite Motorradschlüssel Anfrage GEFÜHRTE ANFRAGE Motorradschlüssel anfragen Fünf Schritte: Motorrad, Chip, Fotos, Kontakt und Absenden. Mit der Anfrage entsteht noch kein Vertrag. Bitte dieses Feld leer lassen Schritt 5 von 5 · Absenden Angaben prüfen und Anfrage absenden Nach dem Absenden erhalten Sie eine Bestätigung mit Ihrer Nummer. Noch kein Vertrag Mit dem Absenden stellen Sie ",
+  "preisAmEnde": false,
+  "abgefangen": 5
+}

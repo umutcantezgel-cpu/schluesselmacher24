@@ -1,0 +1,138 @@
+{
+  "pfad": "/autoschluessel/anfrage",
+  "geraet": "mobil",
+  "schritte": [
+    {
+      "n": 0,
+      "titel": "Schritt 1 von 5 · Fahrzeug wählen | Autoschlüssel anfragen",
+      "aktionen": [
+        "text:Erika Testku",
+        "radio"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 1,
+      "titel": "Schritt 1 von 5 · Fahrzeug wählen | Autoschlüssel anfragen",
+      "aktionen": [
+        "radio"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 2,
+      "titel": "Schritt 1 von 5 · Fahrzeug wählen | Autoschlüssel anfragen",
+      "aktionen": [
+        "select",
+        "select"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 3,
+      "titel": "Schritt 1 von 5 · Fahrzeug wählen | Autoschlüssel anfragen",
+      "aktionen": [],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 4,
+      "titel": "Schritt 1 von 5 · Fahrzeug wählen | Autoschlüssel anfragen",
+      "aktionen": [
+        "radio"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 5,
+      "titel": "Schritt 1 von 5 · Fahrzeug wählen | Autoschlüssel anfragen",
+      "aktionen": [
+        "radio"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 6,
+      "titel": "Schritt 1 von 5 · Fahrzeug wählen | Autoschlüssel anfragen",
+      "aktionen": [
+        "radio"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 7,
+      "titel": "Schritt 2 von 5 · Fotos hochladen | Autoschlüssel anfragen",
+      "aktionen": [
+        "datei",
+        "datei",
+        "datei",
+        "datei",
+        "datei",
+        "datei",
+        "datei",
+        "datei"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 8,
+      "titel": "Schritt 2 von 5 · Fotos hochladen | Autoschlüssel anfragen",
+      "aktionen": [
+        "check",
+        "datei",
+        "datei"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 9,
+      "titel": "Schritt 3 von 5 · Preis oder Prüfung | Autoschlüssel anfragen",
+      "aktionen": [
+        "text:Erika Testku",
+        "text:Erika Testku",
+        "text:test@example",
+        "text:01234 567890",
+        "text:35578",
+        "text:Teststraße 1",
+        "select"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 10,
+      "titel": "Schritt 3 von 5 · Preis oder Prüfung | Autoschlüssel anfragen",
+      "aktionen": [],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "hinweis": "Preis sichtbar"
+    }
+  ],
+  "preisGefunden": {
+    "schritt": 10,
+    "titel": "Schritt 3 von 5 · Preis oder Prüfung | Autoschlüssel anfragen",
+    "ausschnitt": "329,00 € — 489,00 €"
+  },
+  "ende": "preis",
+  "endAusschnitt": "Startseite Autoschlüssel Anfrage mit Termin TERMIN MIT ANZAHLUNG Autoschlüssel anfragen Bitte dieses Feld leer lassen Schritt 3 von 5 · Preis oder Prüfung Preis für Ihren Fall Aus Fahrzeug, Schlüsselart und Leistung ermitteln wir, was für Sie gilt. GRUNDLAGE Volkswagen Golf, Baujahr 2026, Mechanischer Schlüssel, Ersatzschlüssel bei Verlust. PREISRAHMEN FÜR IHRE ANGABEN Von — bis 329,00 € —",
+  "preisAmEnde": true,
+  "abgefangen": 11
+}

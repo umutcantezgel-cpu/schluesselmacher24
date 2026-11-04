@@ -1,7 +1,8 @@
 # PRÜFPUNKT
-Stand: 2026-11-04 18:25 · Sitzung 886a8f6e (übernommen von m40jjmy9)
-Nächster exakter Schritt: Bericht E6-PRUEFER-01 abnehmen (berichte/E6-PRUEFER-01.md), Rot beheben, Gelb nach Wirkung; dann Tor E6 (plan.mjs abschluss) und Etappe E7 (E7-OPUS-01 Partner werden).
-Laufende Pakete: E6-PRUEFER-01 (Haiku-Agent, Schreibrechte protokolle/E6-PRUEFER-01/, berichte/E6-PRUEFER-01.md; baut neu und startet den Prüfserver neu). Bricht die Sitzung ab: auf offen setzen und neu starten. E6-PROBENUTZER-01 committet (7319905, ohne Produktbefund), E6-OPUS-03 zurückgestellt.
-Letzter grüner Commit: c9e50f3 (E6-OPUS-04; Unit 2226, DB 97, Build grün). main = 11a6c00.
-Umgebung: npm ci und JSON-Build in dieser Umgebung erledigt, Prüfserver Port 3000 läuft (server.sh status).
-Tempomat: Woche 78 % um 17:34, Warnschwelle überschritten; je Fenster höchstens rund 2 Wochenpunkte. Keine langen Wartepausen in langem Verlauf.
+Stand: 2026-11-04 19:16 · Sitzung 886a8f6e (übernommen von m40jjmy9)
+Nächster exakter Schritt: Etappe E7 beginnen: AUFTRAG.md Abschnitte zu E7 (Partner werden, R10) neu lesen, dann E7-OPUS-01 (Stufe 3, Orchestrator) nach Tempomat; plan.mjs naechste.
+Laufende Pakete: keine. E6-PROBENUTZER-01 committet (7319905), E6-PRUEFER-01 committet (8c0d3ad, gelb ohne Rot), E6-OPUS-03 zurückgestellt (A-036, A-037).
+Letzter grüner Commit: 8c0d3ad (Kontakt a11y und Hinweis, Gedankenstriche; Unit 2226, Typprüfung, Lint, Build grün). main = 11a6c00.
+Vorgemerkt: G-24 Porto beim Kunden (G9, Inhaber); LCP-Budget weiter verfehlt (A-032).
+Umgebung: npm ci, JSON-Build, Prüfserver Port 3000, Werkzeug-Abhängigkeiten /root/sm24-werkzeuge (einrichtung.md Schritt 11).
+Tempomat: Woche 78 % um 17:34; diese Sitzung verbrauchte zwei Haiku-Läufe (rund 560 000 Agenten-Token, etwa 1,1 Wochenpunkte) und eigene Schritte. Vor E7 messen.

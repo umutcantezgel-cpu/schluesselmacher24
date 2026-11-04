@@ -1,0 +1,35 @@
+{
+  "pfad": "/service-und-termin/anfrage",
+  "geraet": "mobil",
+  "schritte": [
+    {
+      "n": 0,
+      "titel": "Schritt 1 von 5 · Thema | Allgemeine Anfrage",
+      "aktionen": [
+        "text:Erika Testku",
+        "radio"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "weiter"
+    },
+    {
+      "n": 1,
+      "titel": "Schritt 2 von 5 · Anliegen | Allgemeine Anfrage",
+      "aktionen": [
+        "text:Erika Testku",
+        "text:Erika Testku"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "gesperrt-oder-ende"
+    }
+  ],
+  "preisGefunden": null,
+  "ende": "gesperrt",
+  "endAusschnitt": "Startseite Service und Termin Anfrage GEFÜHRTE ANFRAGE Allgemeine Anfrage Wenn Ihr Anliegen in keinen der Fachbereiche passt: Beschreiben Sie kurz, worum es geht. Wir melden uns mit einer Einschätzung. Bitte dieses Feld leer lassen Schritt 2 von 5 · Anliegen Beschreiben Sie Ihr Anliegen Je konkreter Ihre Angaben, desto genauer unsere Einschätzung. Was sollen wir für Sie tun?* (Pflichtangab",
+  "preisAmEnde": false,
+  "abgefangen": 1
+}

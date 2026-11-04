@@ -1,0 +1,876 @@
+[
+  {
+    "kennung": "hub",
+    "pfad": "/",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Wobei können wir Ihnen helfen/i",
+        "gefunden": true,
+        "beleg": "Wobei können wir Ihnen helfen?"
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 41,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/hub-390-mobil.png"
+  },
+  {
+    "kennung": "G10-autoschluessel",
+    "pfad": "/autoschluessel",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/So läuft Ihr Auftrag ab/",
+        "gefunden": true,
+        "beleg": "So läuft Ihr Auftrag ab: 5 Schritte zum Termin"
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 64,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g10-autoschluessel-mobil.png"
+  },
+  {
+    "kennung": "G10-motorrad",
+    "pfad": "/motorradschluessel",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/So läuft Ihr Auftrag ab/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 10,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g10-motorrad-mobil.png"
+  },
+  {
+    "kennung": "G10-gehaeuse",
+    "pfad": "/autoschluessel/gehaeuse",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/So läuft Ihr Auftrag ab/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 10,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g10-gehaeuse-mobil.png"
+  },
+  {
+    "kennung": "G10-code",
+    "pfad": "/schluessel-nach-code",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/So läuft Ihr Auftrag ab/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 93,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g10-code-mobil.png"
+  },
+  {
+    "kennung": "G10-vorlage",
+    "pfad": "/schluessel-nach-vorlage",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/So läuft Ihr Auftrag ab/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 39,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g10-vorlage-mobil.png"
+  },
+  {
+    "kennung": "G10-einschicken",
+    "pfad": "/schluessel-einschicken",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/So läuft Ihr Auftrag ab/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 23,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g10-einschicken-mobil.png"
+  },
+  {
+    "kennung": "G10-sperr",
+    "pfad": "/gleichschliessende-zylinder",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/So läuft Ihr Auftrag ab/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 53,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g10-sperr-mobil.png"
+  },
+  {
+    "kennung": "G10-schliessanlage",
+    "pfad": "/schliessanlagen",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/So läuft Ihr Auftrag ab/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 58,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g10-schliessanlage-mobil.png"
+  },
+  {
+    "kennung": "G10-elektronik",
+    "pfad": "/elektronische-zutrittsloesungen",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/So läuft Ihr Auftrag ab/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 72,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g10-elektronik-mobil.png"
+  },
+  {
+    "kennung": "G10-sicherheit",
+    "pfad": "/sicherheitstechnik",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/So läuft Ihr Auftrag ab/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 28,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g10-sicherheit-mobil.png"
+  },
+  {
+    "kennung": "G10-vor-ort",
+    "pfad": "/service-und-termin/vor-ort",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/So läuft Ihr Auftrag ab/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 2,
+    "svgs": 19,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g10-vor-ort-mobil.png"
+  },
+  {
+    "kennung": "G10-beratung",
+    "pfad": "/beratung",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/So läuft Ihr Auftrag ab/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 2,
+    "svgs": 11,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g10-beratung-mobil.png"
+  },
+  {
+    "kennung": "G19-motorrad-anfrage",
+    "pfad": "/motorradschluessel/anfrage",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Transponder/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Wegfahrsperre/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Fahrzeugschein/",
+        "gefunden": true,
+        "beleg": "Hersteller und Typ tragen Sie frei ein, so wie sie im Fahrzeugschein stehen."
+      },
+      {
+        "regex": "/Baujahr/",
+        "gefunden": true,
+        "beleg": "Baujahr*"
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 3,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g19-motorrad-mobil-oben.png"
+  },
+  {
+    "kennung": "G20-gehaeuse-anfrage",
+    "pfad": "/autoschluessel/gehaeuse/anfrage",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/1998/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/2022/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Fahrzeugschein/",
+        "gefunden": true,
+        "beleg": "Marke und Modell tragen Sie frei ein, so wie sie im Fahrzeugschein stehen."
+      },
+      {
+        "regex": "/Zahlungslink/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Versandschein/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 4,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g20-gehaeuse-mobil-oben.png"
+  },
+  {
+    "kennung": "G23-vorlage",
+    "pfad": "/schluessel-nach-vorlage",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/so soll das Foto aussehen/i",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/ablesbar/",
+        "gefunden": true,
+        "beleg": "Nicht jedes Foto ist ablesbar. Reichen die Bilder für eine sichere Bestimmung nicht, bitten wir Sie"
+      },
+      {
+        "regex": "/Fertigungszusage/",
+        "gefunden": true,
+        "beleg": "age oder, wenn es nicht geht, eine Absage. Die Prüfung ist noch keine Fertigungszusage."
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 39,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g23-vorlage-mobil-oben.png"
+  },
+  {
+    "kennung": "G23-vorlage-anfrage",
+    "pfad": "/schluessel-nach-vorlage/anfrage",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/ablesbar/",
+        "gefunden": true,
+        "beleg": "Nicht jedes Foto ist ablesbar. Reichen die Bilder für eine sichere Bestimmung nicht, bitten wir Sie"
+      },
+      {
+        "regex": "/Fertigungszusage/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Beispiel/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 2,
+    "svgs": 11,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g23-vorlage-anfrage-mobil.png"
+  },
+  {
+    "kennung": "G24-einschicken",
+    "pfad": "/schluessel-einschicken",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Versandmarke|Versandlabel|Versandschein/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/versichert/",
+        "gefunden": true,
+        "beleg": "Versichert oder unversichert"
+      },
+      {
+        "regex": "/empfohlen/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/kostenlos|keine Kosten|Kosten/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 23,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g24-einschicken-mobil-oben.png"
+  },
+  {
+    "kennung": "G24-einschicken-anmelden",
+    "pfad": "/schluessel-einschicken/anmelden",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Name/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Anschrift/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/versichert/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Begleitschein|Versandlabel|Versandmarke/",
+        "gefunden": true,
+        "beleg": "sel, Nachweis, Versand und Rücksendeanschrift. Danach drucken Sie den Begleitschein aus und schicken den Schlüssel ein."
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 7,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g24-anmelden-mobil-oben.png"
+  },
+  {
+    "kennung": "G25-einschicken",
+    "pfad": "/schluessel-einschicken",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Rückversand/",
+        "gefunden": true,
+        "beleg": "Rückversand"
+      },
+      {
+        "regex": "/Status/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Eingang/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 23,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g25-einschicken-mobil.png"
+  },
+  {
+    "kennung": "G26-einschicken",
+    "pfad": "/schluessel-einschicken",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/ländlich|abgelegen|Anfahrt/",
+        "gefunden": true,
+        "beleg": "Schlüsseldienst online, ohne Anfahrt: Einsendung anmelden, Begleitschein ausdrucken, Schlüssel einschicken"
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 23,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g26-einschicken-mobil.png"
+  },
+  {
+    "kennung": "G33-elektronik",
+    "pfad": "/elektronische-zutrittsloesungen",
+    "geraet": "desktop",
+    "treffer": [
+      {
+        "regex": "/NFC/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/RFID/",
+        "gefunden": true,
+        "beleg": "RFID-Transponder und Zutrittskarten"
+      },
+      {
+        "regex": "/auf Anfrage/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 72,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g33-elektronik-desktop-oben.png"
+  },
+  {
+    "kennung": "G33-elektronik-marken",
+    "pfad": "/elektronische-zutrittsloesungen",
+    "geraet": "desktop",
+    "treffer": [
+      {
+        "regex": "/BKS/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/ABUS/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Burg-Wächter/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Xialo/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/\\bOne\\b/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/\\bSE\\b/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 72,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g33-marken-desktop-oben.png"
+  },
+  {
+    "kennung": "G34-tuer",
+    "pfad": "/tuer-und-schliesstechnik",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Schließtechnik/",
+        "gefunden": true,
+        "beleg": "Tür- und Schließtechnik"
+      },
+      {
+        "regex": "/Beratung/",
+        "gefunden": true,
+        "beleg": "Beratungstermin vereinbaren"
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 49,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g34-tuer-mobil.png"
+  },
+  {
+    "kennung": "G34-sicherheit",
+    "pfad": "/sicherheitstechnik",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Einbruchschutz/",
+        "gefunden": true,
+        "beleg": "Einbruchschutz, Überwachung und Alarmierung."
+      },
+      {
+        "regex": "/Alarm/",
+        "gefunden": true,
+        "beleg": "Einbruchschutz, Überwachung und Alarmierung."
+      },
+      {
+        "regex": "/Videoüberwachung/",
+        "gefunden": true,
+        "beleg": "Videoüberwachung"
+      },
+      {
+        "regex": "/Schlüsselaufbewahrung/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Türsicherheit/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 28,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g34-sicherheit-mobil.png"
+  },
+  {
+    "kennung": "G36-kontakt",
+    "pfad": "/service-und-termin/kontakt",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Fotos/",
+        "gefunden": true,
+        "beleg": "Fotos (freiwillig)"
+      },
+      {
+        "regex": "/übertragen|hochgeladen|sofort/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 2,
+    "svgs": 15,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g36-kontakt-mobil.png"
+  },
+  {
+    "kennung": "G37-anfrage",
+    "pfad": "/autoschluessel/anfrage",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/PDF/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 8,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g37-autoschluessel-mobil-oben.png"
+  },
+  {
+    "kennung": "G38-kasse",
+    "pfad": "/kasse",
+    "geraet": "desktop",
+    "treffer": [
+      {
+        "regex": "/Anzahlung|Zahlungslink|Zahlung/",
+        "gefunden": true,
+        "beleg": "Zahlung und Versand"
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 11,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g38-kasse-desktop.png"
+  },
+  {
+    "kennung": "G40-partner",
+    "pfad": "/partner-werden",
+    "geraet": "desktop",
+    "treffer": [
+      {
+        "regex": "/Provision/",
+        "gefunden": true,
+        "beleg": "Ein schriftlicher Partnervertrag zu Provision, Abrechnung, Reklamation und Verantwortung"
+      },
+      {
+        "regex": "/Modell/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Partner/",
+        "gefunden": true,
+        "beleg": "Partner werden"
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 16,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g40-partner-desktop.png"
+  },
+  {
+    "kennung": "G41-standorte",
+    "pfad": "/standorte",
+    "geraet": "desktop",
+    "treffer": [
+      {
+        "regex": "/Hamburg|Berlin|Rostock/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Wetzlar/",
+        "gefunden": true,
+        "beleg": "Werkstatt und Abholung: Langgasse 70, 35576 Wetzlar"
+      },
+      {
+        "regex": "/Einsatzgebiet|Versand/",
+        "gefunden": true,
+        "beleg": "Einsatzgebiete"
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 7,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g41-standorte-desktop-oben.png"
+  },
+  {
+    "kennung": "G45-vorlage-bild",
+    "pfad": "/schluessel-nach-vorlage/anfrage",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Beispiel/",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/so soll/i",
+        "gefunden": true,
+        "beleg": "SO SOLLTE DAS FOTO AUSSEHEN"
+      }
+    ],
+    "fileInputs": 2,
+    "svgs": 11,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/g45-anfrage-mobil-oben.png"
+  },
+  {
+    "kennung": "BER-beratung",
+    "pfad": "/beratung",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Rückruf/",
+        "gefunden": true,
+        "beleg": "Beratung mit Rückruf"
+      },
+      {
+        "regex": "/Uhrzeit/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 2,
+    "svgs": 11,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/beratung-mobil.png"
+  },
+  {
+    "kennung": "VOR-ORT",
+    "pfad": "/service-und-termin/vor-ort",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Berechtigung/",
+        "gefunden": true,
+        "beleg": "· Liste der Nutzer und Berechtigungen"
+      },
+      {
+        "regex": "/Einsatz/",
+        "gefunden": true,
+        "beleg": "Einsatz anfragen"
+      }
+    ],
+    "fileInputs": 2,
+    "svgs": 19,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/vor-ort-mobil.png"
+  },
+  {
+    "kennung": "MOTORRAD-ANFRAGE-BILD",
+    "pfad": "/motorradschluessel/anfrage",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Transponder/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 3,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/motorrad-anfrage-mobil-oben.png"
+  },
+  {
+    "kennung": "GEHAEUSE-ANFRAGE-BILD",
+    "pfad": "/autoschluessel/gehaeuse/anfrage",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/1998/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 4,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/gehaeuse-anfrage-mobil-oben.png"
+  },
+  {
+    "kennung": "EINSCHICKEN-BILD",
+    "pfad": "/schluessel-einschicken",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Versandmarke|Versandlabel|Versandschein|versichert/",
+        "gefunden": true,
+        "beleg": "Versichert oder unversichert"
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 23,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/einschicken-mobil.png"
+  },
+  {
+    "kennung": "KONTAKT-BILD",
+    "pfad": "/service-und-termin/kontakt",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/Fotos/",
+        "gefunden": true,
+        "beleg": "Fotos (freiwillig)"
+      }
+    ],
+    "fileInputs": 2,
+    "svgs": 15,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/kontakt-fotos-mobil.png"
+  },
+  {
+    "kennung": "VORLAGE-BILD",
+    "pfad": "/schluessel-nach-vorlage",
+    "geraet": "mobil",
+    "treffer": [
+      {
+        "regex": "/so soll das Foto aussehen/i",
+        "gefunden": false,
+        "beleg": ""
+      },
+      {
+        "regex": "/Beispiel/",
+        "gefunden": false,
+        "beleg": ""
+      }
+    ],
+    "fileInputs": 0,
+    "svgs": 39,
+    "imgs": 0,
+    "bild": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/pruefliste/bilder/vorlage-beispiele-mobil-oben.png"
+  },
+  {
+    "kennung": "hub-kacheln",
+    "geraet": "mobil",
+    "sichtbarVollstaendig": [
+      "/autoschluessel",
+      "/motorradschluessel",
+      "/autoschluessel/gehaeuse",
+      "/schluessel-nach-code",
+      "/schluessel-nach-vorlage",
+      "/schluessel-einschicken",
+      "/gleichschliessende-zylinder",
+      "/schliessanlagen",
+      "/elektronische-zutrittsloesungen",
+      "/sicherheitstechnik",
+      "/service-und-termin/vor-ort",
+      "/beratung"
+    ],
+    "sichtbarTeilweise": [],
+    "gesamtAufHub": [
+      "/autoschluessel",
+      "/motorradschluessel",
+      "/autoschluessel/gehaeuse",
+      "/schluessel-nach-code",
+      "/schluessel-nach-vorlage",
+      "/schluessel-einschicken",
+      "/gleichschliessende-zylinder",
+      "/schliessanlagen",
+      "/elektronische-zutrittsloesungen",
+      "/sicherheitstechnik",
+      "/service-und-termin/vor-ort",
+      "/beratung"
+    ]
+  },
+  {
+    "kennung": "hub-kacheln",
+    "geraet": "mobil-klein",
+    "sichtbarVollstaendig": [
+      "/autoschluessel",
+      "/motorradschluessel",
+      "/autoschluessel/gehaeuse",
+      "/schluessel-nach-code",
+      "/schluessel-nach-vorlage",
+      "/schluessel-einschicken",
+      "/gleichschliessende-zylinder",
+      "/schliessanlagen",
+      "/elektronische-zutrittsloesungen",
+      "/sicherheitstechnik",
+      "/service-und-termin/vor-ort",
+      "/beratung"
+    ],
+    "sichtbarTeilweise": [],
+    "gesamtAufHub": [
+      "/autoschluessel",
+      "/motorradschluessel",
+      "/autoschluessel/gehaeuse",
+      "/schluessel-nach-code",
+      "/schluessel-nach-vorlage",
+      "/schluessel-einschicken",
+      "/gleichschliessende-zylinder",
+      "/schliessanlagen",
+      "/elektronische-zutrittsloesungen",
+      "/sicherheitstechnik",
+      "/service-und-termin/vor-ort",
+      "/beratung"
+    ]
+  }
+]
