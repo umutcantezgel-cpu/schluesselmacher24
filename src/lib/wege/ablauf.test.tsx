@@ -15,7 +15,38 @@ const SPAETER: Record<string, string> = {
   'schluessel-einschicken': 'E6-OPUS-02 baut die Seite mit Begleitschein neu und setzt dabei den Ablauf aus den Daten ein.',
 };
 
+/**
+ * Icons der Ablaufzeilen, wie der Seed sie angelegt hat. In einer bestehenden Datenbank übernimmt der
+ * Seed je Zeile nur Titel und Text, das Icon bleibt an seiner Stelle (src/payload/seed.ts,
+ * zeilenAbgleichen). Neue Schritte deshalb nur anhängen und vorhandene Icons nicht umstellen;
+ * bewusst geänderte Icons brauchen einen eigenen Weg in die Datenbank.
+ */
+const ICONS_GESEEDET: Record<string, string[]> = {
+  'autoschluessel': ['fahrzeugmarke', 'foto-hochladen', 'pruefung', 'anzahlung', 'termin'],
+  'motorradschluessel': ['fahrzeugmarke', 'foto-hochladen', 'transponder', 'beratung-telefon'],
+  'autoschluessel-gehaeuse': ['foto-hochladen', 'zahlung', 'versand-paket', 'lieferung'],
+  'schluessel-nach-code': ['schluessel-nach-code', 'warenkorb', 'werkstatt', 'lieferung'],
+  'schluessel-nach-foto': ['foto-hochladen', 'pruefung', 'zahlung', 'lieferung'],
+  'schluessel-einschicken': ['dokument', 'versand-paket', 'werkstatt', 'lieferung'],
+  'sperrschliessung': ['profilzylinder', 'zylinder-mass', 'warenkorb', 'werkstatt'],
+  'schliessanlage': ['schliessanlagen', 'pruefung', 'warenkorb', 'werkstatt'],
+  'elektronische-schliesssysteme': ['nachweis', 'technische-beratung', 'dokument'],
+  'sicherheitstechnik': ['foto-hochladen', 'technische-beratung', 'dokument'],
+  'schluesseldienst-vor-ort': ['standort', 'beratung-telefon', 'termin'],
+  'beratung': ['foto-hochladen', 'beratung-telefon', 'dokument'],
+  'transponder-kopie': ['fahrzeugmarke', 'versand-paket', 'lieferung'],
+  'schluesselfinder': ['fahrzeugmarke', 'pruefung'],
+  'tuer-und-schliesstechnik': ['foto-hochladen', 'technische-beratung', 'dokument'],
+};
+
 describe('Ablauf je Rubrik aus den Daten (G-10, G-11, E6-OPUS-01)', () => {
+  it('stellt die Icons vorhandener Ablaufzeilen nicht um (Seed-Abgleich)', () => {
+    for (const r of RUBRIKEN) {
+      const vorher = ICONS_GESEEDET[r.id] ?? [];
+      expect(r.ablauf.slice(0, vorher.length).map((s) => s.icon), r.id).toEqual(vorher);
+    }
+  });
+
   it('zeigt auf jeder Live-Rubrikseite den Ablauf aus den Rubrikdaten', () => {
     for (const r of RUBRIKEN.filter((x) => x.status === 'live')) {
       if (SPAETER[r.id]) continue;
