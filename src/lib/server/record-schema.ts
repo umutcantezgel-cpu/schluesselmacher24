@@ -26,7 +26,8 @@ export const contactSchema = z.object({
   lastName: text(120).min(1),
   company: text(200).optional(),
   email: z.string().trim().max(254).email(),
-  phone: text(60),
+  // Pflicht wie im Backend (Vorgänge, Feld Telefon): ohne Datenbank fiele ein leeres Feld sonst erst im Betrieb auf.
+  phone: text(60).min(1),
   street: text(200).optional(),
   postalCode: text(20).optional(),
   city: text(120).optional(),

@@ -197,6 +197,11 @@ describe('submitRecord', () => {
     expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'unklar' }, uploads: [foto] })).ok).toBe(true);
   });
 
+  it('lehnt einen Vorgang ohne Telefonnummer ab, wie das Backend (E6-BAUMEISTER-03)', async () => {
+    const ohne = await submitRecord({ kind: 'anfrage', area: 'service-und-termin', process: 'gefuehrte-anfrage', contact: { ...contact, phone: '  ' }, payload: { quelle: 'kontakt' }, summary: [], uploads: [] });
+    expect(ohne.ok).toBe(false);
+  });
+
   it('verlangt bei Motorrad und Gehäuse die Unterlagen der Rubrik (R13, E6)', async () => {
     const basis = { kind: 'anfrage' as const, area: 'autoschluessel' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [] };
     const foto = { fileName: 'schluessel.jpg', sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'schluesselfoto' as const };

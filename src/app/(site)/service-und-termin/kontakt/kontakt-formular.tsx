@@ -56,7 +56,7 @@ function kontaktAus(d: KontaktDaten): ContactDetails {
     firstName: d.vorname.trim(),
     lastName: d.nachname.trim(),
     email: d.email.trim(),
-    phone: d.antwortweg === 'telefon' ? d.telefon.trim() : '',
+    phone: d.telefon.trim(),
     country: 'Deutschland',
   };
 }
@@ -135,7 +135,7 @@ export function KontaktFormular() {
 
   const gesperrt: Record<string, string> = {
     nachricht: `Bitte wählen Sie ein Anliegen und schreiben Sie Ihre Nachricht (${NACHRICHT_MINDESTENS} bis ${NACHRICHT_HOECHSTENS} Zeichen).`,
-    kontakt: 'Bitte füllen Sie Vor- und Nachname sowie E-Mail aus, wählen Sie den Antwortweg und geben Sie bei Telefon Nummer und Zeitfenster an.',
+    kontakt: 'Bitte füllen Sie Vor- und Nachname, E-Mail und Telefon aus und wählen Sie den Antwortweg, beim Telefon auch das Zeitfenster.',
   };
 
   return (
@@ -274,6 +274,22 @@ export function KontaktFormular() {
                 )}
               </Field>
             </div>
+            <div className="sm:col-span-2">
+              <Field label="Telefon" required hint="Mindestens sechs Ziffern, mit Vorwahl.">
+                {({ id, describedBy, invalid }) => (
+                  <TextInput
+                    id={id}
+                    type="tel"
+                    inputMode="tel"
+                    aria-describedby={describedBy}
+                    invalid={invalid}
+                    autoComplete="tel"
+                    value={data.telefon}
+                    onChange={(e) => flow.set('telefon', e.target.value)}
+                  />
+                )}
+              </Field>
+            </div>
           </div>
 
           <fieldset className="space-y-3">
@@ -298,20 +314,6 @@ export function KontaktFormular() {
 
           {data.antwortweg === 'telefon' && (
             <>
-              <Field label="Telefon" required hint="Mindestens sechs Ziffern, mit Vorwahl.">
-                {({ id, describedBy, invalid }) => (
-                  <TextInput
-                    id={id}
-                    type="tel"
-                    inputMode="tel"
-                    aria-describedby={describedBy}
-                    invalid={invalid}
-                    autoComplete="tel"
-                    value={data.telefon}
-                    onChange={(e) => flow.set('telefon', e.target.value)}
-                  />
-                )}
-              </Field>
 
               <fieldset className="space-y-3">
                 <legend className="mb-1 text-small font-semibold text-foreground">Zu welcher Tageszeit passt es Ihnen?</legend>

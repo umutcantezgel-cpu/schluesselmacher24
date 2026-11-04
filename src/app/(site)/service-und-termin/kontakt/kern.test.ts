@@ -19,6 +19,7 @@ function daten(aenderungen: Partial<KontaktDaten> = {}): KontaktDaten {
     vorname: 'Erika',
     nachname: 'Muster',
     email: 'erika@example.test',
+    telefon: '0641 123456',
     antwortweg: 'email',
     ...aenderungen,
   };
@@ -62,8 +63,9 @@ describe('schrittGueltig · nachricht', () => {
 });
 
 describe('schrittGueltig · kontakt', () => {
-  it('ist gültig mit E-Mail als Antwortweg ohne Telefon', () => {
-    expect(schrittGueltig(daten({ antwortweg: 'email', telefon: '' }), 'kontakt')).toBe(true);
+  it('verlangt auch beim Antwortweg E-Mail eine Telefonnummer (Pflichtfeld des Vorgangs)', () => {
+    expect(schrittGueltig(daten({ antwortweg: 'email', telefon: '' }), 'kontakt')).toBe(false);
+    expect(schrittGueltig(daten({ antwortweg: 'email', telefon: '0641 123456' }), 'kontakt')).toBe(true);
   });
 
   it('verlangt einen gewählten Antwortweg', () => {
@@ -92,8 +94,8 @@ describe('schrittGueltig · kontakt', () => {
     expect(schrittGueltig(daten({ antwortweg: 'telefon', telefon: '0641 123456', zeitfenster: 'nachmittags' }), 'kontakt')).toBe(true);
   });
 
-  it('verlangt die Telefonnummer nur beim Antwortweg Telefon', () => {
-    expect(schrittGueltig(daten({ antwortweg: 'email', telefon: '' }), 'kontakt')).toBe(true);
+  it('verlangt das Zeitfenster nur beim Antwortweg Telefon', () => {
+    expect(schrittGueltig(daten({ antwortweg: 'email', zeitfenster: '' }), 'kontakt')).toBe(true);
   });
 });
 
@@ -127,9 +129,9 @@ describe('kontaktZusammenfassung', () => {
     expect(nachricht.rows.find((r) => r.label === 'Fotos')?.value).toBe('2 Datei(en)');
   });
 
-  it('zeigt Telefon und Zeitfenster nur beim Antwortweg Telefon', () => {
+  it('zeigt das Telefon immer und das Zeitfenster nur beim Antwortweg Telefon', () => {
     const perMail = kontaktZusammenfassung(daten({ antwortweg: 'email' }))[1];
-    expect(perMail.rows.map((r) => r.label)).not.toContain('Telefon');
+    expect(perMail.rows.map((r) => r.label)).toContain('Telefon');
     expect(perMail.rows.map((r) => r.label)).not.toContain('Zeitfenster');
     expect(perMail.rows.find((r) => r.label === 'Antwort per')?.value).toBe('E-Mail');
 

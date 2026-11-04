@@ -76,15 +76,17 @@ function nachrichtGueltig(daten: KontaktDaten): boolean {
   );
 }
 
+/**
+ * Telefon ist immer Pflicht: Jeder Vorgang trägt eine Telefonnummer (Pflichtfeld im Backend), auch wenn
+ * die Antwort per E-Mail kommen soll. Das Zeitfenster gilt nur beim Antwortweg Telefon.
+ */
 function kontaktGueltig(daten: KontaktDaten): boolean {
   if (laenge(daten.vorname) < 2 || laenge(daten.nachname) < 2) return false;
   if (!EMAIL_MUSTER.test(daten.email.trim())) return false;
+  if (daten.telefon.replace(/\D/g, '').length < TELEFON_MINDESTENS_ZIFFERN) return false;
   if (daten.antwortweg === 'email') return true;
   if (daten.antwortweg === 'telefon') {
-    return (
-      daten.telefon.replace(/\D/g, '').length >= TELEFON_MINDESTENS_ZIFFERN
-      && (daten.zeitfenster === 'vormittags' || daten.zeitfenster === 'nachmittags' || daten.zeitfenster === 'egal')
-    );
+    return daten.zeitfenster === 'vormittags' || daten.zeitfenster === 'nachmittags' || daten.zeitfenster === 'egal';
   }
   return false;
 }
@@ -120,12 +122,8 @@ export function kontaktZusammenfassung(daten: KontaktDaten, anzahlFotos = 0): Su
           label: 'Antwort per',
           value: daten.antwortweg === 'telefon' ? 'Telefon' : daten.antwortweg === 'email' ? 'E-Mail' : 'keine Angabe',
         },
-        ...(telefonWeg
-          ? [
-              { label: 'Telefon', value: daten.telefon.trim() || 'keine Angabe' },
-              { label: 'Zeitfenster', value: ZEITFENSTER_LABEL[daten.zeitfenster as Zeitfenster] ?? 'keine Angabe' },
-            ]
-          : []),
+        { label: 'Telefon', value: daten.telefon.trim() || 'keine Angabe' },
+        ...(telefonWeg ? [{ label: 'Zeitfenster', value: ZEITFENSTER_LABEL[daten.zeitfenster as Zeitfenster] ?? 'keine Angabe' }] : []),
       ],
     },
   ];
