@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-04T04:11:17.021Z",
+ "stand": "2026-11-04T04:18:15.278Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -3066,8 +3066,8 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
-   "grund": null,
+   "status": "zurückgestellt",
+   "grund": "wartet auf Bogen KLONBAR, Preis und rechtliche Einordnung (MA-04, MA-27, A-036); die Transponder-Kopie bleibt verborgen (G-18)",
    "versuche": 0,
    "commit": null,
    "massstab": null,
