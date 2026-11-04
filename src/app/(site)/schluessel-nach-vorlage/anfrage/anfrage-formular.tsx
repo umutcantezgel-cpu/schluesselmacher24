@@ -9,9 +9,7 @@ import { submitRecord, type SubmitResult } from '@/lib/actions/records';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import type { ImageSlot, InfoHint, SummarySection } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
-import { Badge } from '@/components/ui/badge';
-import { Button, ButtonLink } from '@/components/ui/button';
-import { Card, CardBody } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { InfoTip } from '@/components/ui/info-tip';
 import { Field } from '@/components/forms/field';
 import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
@@ -22,7 +20,8 @@ import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
-import { CheckDraw } from '@/components/visual/motion/check-draw';
+import { WegBestaetigung } from '@/components/weg/bestaetigung';
+import { SCHRITTE_FOTOANFRAGE } from '@/lib/wege/naechste-schritte';
 import { KARTEN_ANTWORTEN, KARTEN_LABEL, kartenAntwort, type KartenAntwort } from '@/lib/wege/nachweis';
 
 const FLOW_ID = 'schluessel-nach-vorlage-anfrage';
@@ -407,109 +406,25 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
 
   if (result?.ok) {
     return (
-      <div className="max-w-3xl">
-        <div className="flex items-center gap-4">
-          <CheckDraw title="Anfrage eingegangen" size={56} />
-          <Badge tone="success">Anfrage eingegangen</Badge>
-        </div>
-
-        <h2 className="mt-5 text-headline text-foreground">
-          Ihre Anfrage liegt uns vor
-        </h2>
-        <p className="mt-3 text-body leading-relaxed text-foreground-muted">
-          Wir prüfen Ihre Fotos und melden uns mit dem Ergebnis: ob eine Anfertigung möglich ist
-          und was sie kostet. Ein Vertrag ist damit noch nicht geschlossen — und die Prüfung ist
-          noch keine Fertigungszusage.
-        </p>
-
-        <Card className="mt-6">
-          <CardBody>
-            <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-              Ihre Vorgangsnummer
-            </p>
-            <p className="mt-1.5 break-words font-mono text-headline tabular-nums text-foreground">
-              {result.reference}
-            </p>
-            <p className="mt-3 text-small leading-relaxed text-foreground-muted">
-              Bitte notieren Sie diese Nummer. Sie brauchen sie für jede Rückfrage und für den
-              Abruf des Bearbeitungsstands.
-            </p>
-          </CardBody>
-        </Card>
-
-        {result.notices.length > 0 && (
-          <div className="mt-5 space-y-3">
-            {result.notices.map((notice) => (
-              <Alert key={notice} tone="warning" title="Hinweis">
-                {notice}
-              </Alert>
-            ))}
-          </div>
-        )}
-
-        <h3 className="mt-8 text-title-sm font-semibold text-foreground">Wie es weitergeht</h3>
-        <ol className="mt-4 border-t border-border">
-          {[
-            {
-              title: 'Wir prüfen Ihre Fotos',
-              body: 'Profil, Rohling und Beschriftung werden bestimmt.',
-            },
-            {
-              title: 'Sie erhalten das Ergebnis',
-              body:
-                'Per E-Mail an die angegebene Adresse: die Freigabe mit Preis, eine Rückfrage '
-                + 'oder — wenn es nicht geht — eine Absage.',
-            },
-            {
-              title: 'Sie entscheiden',
-              body:
-                'Mit der Freigabe erhalten Sie einen persönlichen Zahlungslink. Erst mit Ihrer '
-                + 'Zahlung erteilen Sie den Auftrag; bis dahin entstehen Ihnen keine Verpflichtungen.',
-            },
-            {
-              title: 'Nur falls nötig: Einsendung',
-              body:
-                'Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und '
-                + 'Vorgangsnummer in der Freigabe. Senden Sie bitte nichts unaufgefordert ein.',
-            },
-          ].map((step, index) => (
-            <li key={step.title} className="flex items-baseline gap-4 border-b border-border py-4">
-              <span aria-hidden className="w-6 shrink-0 font-mono text-small font-semibold tabular-nums text-primary">
-                {index + 1}
-              </span>
-              <div className="min-w-0">
-                <p className="text-body font-semibold text-foreground">{step.title}</p>
-                <p className="mt-1 text-small leading-relaxed text-foreground-muted">{step.body}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-
-        <h3 className="mt-8 text-title-sm font-semibold text-foreground">Ihre Angaben</h3>
-        <SummaryList sections={summary} variante="schriftfeld" className="mt-4" />
-
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/service-und-termin/terminstatus" pfeil className="w-full justify-between sm:w-auto">
-            Bearbeitungsstand abrufen
-          </ButtonLink>
-          <ButtonLink href="/schluessel-nach-vorlage" variant="outline">
-            Zurück zur Übersicht
-          </ButtonLink>
-        </div>
-
-        <p className="mt-8 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-6 text-small">
-          <span className="font-semibold text-foreground-muted">Ebenfalls passend:</span>
-          <Link href="/schluessel-nach-code" className="flex min-h-touch items-center font-semibold text-primary hover:underline">
-            Schlüssel nach Code
-          </Link>
-          <Link href="/autoschluessel/kopieren" className="flex min-h-touch items-center font-semibold text-primary hover:underline">
-            Autoschlüssel kopieren
-          </Link>
-          <Link href="/autoschluessel/programmieren" className="flex min-h-touch items-center font-semibold text-primary hover:underline">
-            Programmieren und anlernen
-          </Link>
-        </p>
-      </div>
+      <WegBestaetigung
+        marke="Anfrage eingegangen"
+        titel="Ihre Anfrage liegt uns vor"
+        text={
+          'Wir prüfen Ihre Fotos und melden uns mit dem Ergebnis: ob eine Anfertigung möglich ist und was sie kostet. '
+          + 'Ein Vertrag ist damit noch nicht geschlossen, und die Prüfung ist noch keine Fertigungszusage.'
+        }
+        reference={result.reference ?? ''}
+        nummerHinweis="Bitte notieren Sie diese Nummer. Sie brauchen sie für jede Rückfrage und für den Abruf des Bearbeitungsstands."
+        notices={result.notices}
+        schritte={SCHRITTE_FOTOANFRAGE}
+        summary={summary}
+        zurueck={{ href: '/schluessel-nach-vorlage', label: 'Zurück zur Übersicht' }}
+        weitere={[
+          { href: '/schluessel-nach-code', label: 'Schlüssel nach Code' },
+          { href: '/autoschluessel/kopieren', label: 'Autoschlüssel kopieren' },
+          { href: '/autoschluessel/programmieren', label: 'Programmieren und anlernen' },
+        ]}
+      />
     );
   }
 

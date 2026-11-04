@@ -13,6 +13,7 @@ import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/f
 import { mailHinweis } from '@/lib/mail/hinweise';
 import { vorgangOrtText } from '@/lib/terminort';
 import type { OrderLine, OrderTotals, PaymentInfo, RecordKind, RecordStatus, SummarySection } from '@/lib/types';
+import { naechsteSchritte } from '@/lib/wege/naechste-schritte';
 import { zahlungsAnsicht } from '@/lib/zahlung/ansicht';
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
@@ -162,52 +163,6 @@ async function loadAuthorisedRecord(props: BestellungSeiteProps) {
   return { record, token, abbruch: erster(suche.abbruch) === '1', rueckkehr: erster(suche.rueckkehr) === '1' };
 }
 
-/** Nächste Schritte je Art des Vorgangs. */
-const SCHRITTE: Record<RecordKind, Array<{ titel: string; text: string }>> = {
-  bestellung: [
-    { titel: 'Prüfung Ihrer Angaben', text: 'Wir prüfen Code, Maße und Zusammenstellung, bevor etwas gefertigt wird.' },
-    { titel: 'Zahlung', text: 'Gefertigt wird nach Zahlungseingang. Solange die Zahlung offen ist, können Sie sie hier fortsetzen.' },
-    {
-      titel: 'Fertigung und Versand',
-      text: 'Danach fertigen wir Ihre Bestellung und versenden sie auf dem von Ihnen gewählten Weg. Sie werden über jeden Schritt informiert.',
-    },
-  ],
-  termin: [
-    { titel: 'Anzahlung', text: 'Mit der Anzahlung ist Ihr Zeitfenster fest für Sie reserviert. Sie wird auf den Gesamtpreis angerechnet.' },
-    { titel: 'Prüfung Ihrer Angaben', text: 'Wir prüfen Fahrzeug, Unterlagen und Leistung und melden uns, falls etwas fehlt.' },
-    { titel: 'Termin', text: 'Wir sind zum vereinbarten Termin für Sie da. Über Änderungen informieren wir Sie per E-Mail.' },
-  ],
-  anfrage: [
-    { titel: 'Sichtung', text: 'Wir sichten Ihre Angaben und Unterlagen.' },
-    { titel: 'Rückmeldung', text: 'Wir melden uns mit einem Angebot oder dem nächsten Schritt.' },
-  ],
-  projekt: [
-    { titel: 'Sichtung', text: 'Wir sichten Ihre Angaben und Unterlagen.' },
-    { titel: 'Rückmeldung', text: 'Wir melden uns mit einem Angebot oder einem Vorschlag für einen Termin vor Ort.' },
-  ],
-  partner: [
-    { titel: 'Prüfung', text: 'Wir prüfen Ihre Angaben zu Betrieb, Leistungen und Qualifikation.' },
-    { titel: 'Rückmeldung', text: 'Wir melden uns mit dem nächsten Schritt.' },
-  ],
-};
-
-/** Schlüssel nach Vorlage: Prüfung → Freigabe, Rückfrage oder Absage → Auftrag per Zahlung (Erg. Leitfaden §2). */
-const SCHRITTE_FOTOANFRAGE: Array<{ titel: string; text: string }> = [
-  { titel: 'Prüfung Ihrer Fotos', text: 'Wir bestimmen Profil und Rohling und prüfen, ob eine Anfertigung nach Ihrer Vorlage möglich ist.' },
-  {
-    titel: 'Ergebnis',
-    text: 'Sie erhalten die Freigabe mit Preis, eine Rückfrage oder — wenn es nicht geht — eine Absage. Die Prüfung ist noch keine Fertigungszusage.',
-  },
-  {
-    titel: 'Auftrag mit der Zahlung',
-    text: 'Nach der Freigabe erteilen Sie den Auftrag, indem Sie über Ihren persönlichen Link bezahlen. Erst danach fertigen wir.',
-  },
-  {
-    titel: 'Anfertigung',
-    text: 'Brauchen wir das Original, senden Sie es nach der Anleitung aus der Freigabe ein. Über jeden Schritt informieren wir Sie per E-Mail.',
-  },
-];
-
 export default async function BestellungSeite(props: BestellungSeiteProps) {
   // Persönliche Daten: immer zur Anfragezeit rendern, nie aus einem Seiten-Cache.
   await connection();
@@ -222,7 +177,8 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
     : [];
 
   const kindLabel = KIND_LABELS[record.kind];
-  const schritte = fotoanfrage ? SCHRITTE_FOTOANFRAGE : SCHRITTE[record.kind];
+  // Dieselben Schritte wie in der Bestätigung am Ende des Weges (G-38, R4).
+  const schritte = naechsteSchritte(record);
   const freigegeben = fotoanfrage && record.status === 'freigegeben';
   const zahlung = zahlungsAnsicht(record, {
     online: paymentStatus().configured,

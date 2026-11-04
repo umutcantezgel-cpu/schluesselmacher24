@@ -4,11 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 import { submitRecord } from '@/lib/actions/records';
-import { scrollVerhalten } from '@/lib/bewegung';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import type { SummarySection } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
-import { ButtonLink } from '@/components/ui/button';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { Field } from '@/components/forms/field';
@@ -16,7 +14,8 @@ import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { SummaryList } from '@/components/layout/summary-list';
-import { CheckDraw } from '@/components/visual/motion/check-draw';
+import { WegBestaetigung } from '@/components/weg/bestaetigung';
+import { SCHRITTE_NACH_ART } from '@/lib/wege/naechste-schritte';
 
 /* Bewerbung über „Partner werden“ (Erg. Leitfaden §7): kurz, ohne Partnerportal.
  * Gespeichert wird ein Vorgang der Art „partner“; das Team prüft im Backend. */
@@ -207,7 +206,6 @@ export function PartnerFormular() {
       setErfolg({ reference: ergebnis.reference ?? '', notices: ergebnis.notices });
       // Messung (Strang S4 hört darauf): Partneranmeldung abgesendet.
       window.dispatchEvent(new CustomEvent('sm24:aktion', { detail: { aktion: 'partneranmeldung' } }));
-      window.scrollTo({ top: 0, behavior: scrollVerhalten() });
     } catch {
       setFehler('Die Verbindung wurde unterbrochen. Bitte versuchen Sie es noch einmal.');
     } finally {
@@ -217,38 +215,17 @@ export function PartnerFormular() {
 
   if (erfolg) {
     return (
-      <div className="max-w-2xl" role="status">
-        <div className="rounded-lg border border-border bg-surface p-6">
-          <CheckDraw title="Bewerbung eingegangen" size={56} />
-          <h2 className="mt-4 text-title font-semibold text-foreground">Ihre Bewerbung ist bei uns</h2>
-          <p className="mt-2 text-body text-foreground-muted">
-            Vielen Dank. Wir prüfen Ihre Angaben und melden uns bei Ihnen. Eine Zusammenarbeit
-            beginnt erst nach dieser Prüfung und mit einem Partnervertrag.
-          </p>
-          <p className="mt-5 font-mono text-caption uppercase tracking-label text-foreground-muted">Ihre Vorgangsnummer</p>
-          <p className="mt-1 break-words font-mono text-title-sm font-semibold tabular-nums text-foreground">{erfolg.reference}</p>
-          <p className="mt-2 text-small text-foreground-muted">
-            Bitte nennen Sie diese Nummer, wenn Sie sich bei uns melden.
-          </p>
-        </div>
-
-        {erfolg.notices.length > 0 && (
-          <Alert tone="info" title="Hinweise" className="mt-4">
-            <ul className="space-y-1">
-              {erfolg.notices.map((notice) => (
-                <li key={notice}>{notice}</li>
-              ))}
-            </ul>
-          </Alert>
-        )}
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <ButtonLink href="/">Zur Startseite</ButtonLink>
-          <ButtonLink href="/service-und-termin/kontakt" variant="outline">
-            Kontakt
-          </ButtonLink>
-        </div>
-      </div>
+      <WegBestaetigung
+        marke="Bewerbung eingegangen"
+        titel="Ihre Bewerbung ist bei uns"
+        text="Vielen Dank. Wir prüfen Ihre Angaben und melden uns bei Ihnen."
+        reference={erfolg.reference}
+        notices={erfolg.notices}
+        schritte={SCHRITTE_NACH_ART.partner}
+        summary={zusammenfassung}
+        statusAbrufbar={false}
+        zurueck={{ href: '/', label: 'Zur Startseite' }}
+      />
     );
   }
 

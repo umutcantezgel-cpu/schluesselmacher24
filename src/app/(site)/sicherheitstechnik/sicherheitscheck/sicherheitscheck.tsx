@@ -8,7 +8,6 @@ import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import type { InfoHint, SummarySection, UploadRef } from '@/lib/types';
 import { aktionMelden } from '@/lib/statistik';
 import { Alert } from '@/components/ui/alert';
-import { ButtonLink } from '@/components/ui/button';
 import { InfoTip } from '@/components/ui/info-tip';
 import { Field } from '@/components/forms/field';
 import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
@@ -18,7 +17,8 @@ import { FlowShell } from '@/components/flow/flow-shell';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { SummaryList } from '@/components/layout/summary-list';
-import { CheckDraw } from '@/components/visual/motion/check-draw';
+import { WegBestaetigung } from '@/components/weg/bestaetigung';
+import { SCHRITTE_SICHERHEITSCHECK } from '@/lib/wege/naechste-schritte';
 
 const FLOW_ID = 'sicherheitscheck';
 
@@ -609,52 +609,19 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
 
   if (result?.ok) {
     return (
-      <div className="mx-auto max-w-2xl">
-        <div className="rounded-lg border border-border bg-surface p-6 md:p-8">
-          <CheckDraw size={56} />
-
-          <h2 className="mt-5 text-headline text-foreground">
-            Ihre Anfrage ist bei uns eingegangen
-          </h2>
-          <p className="mt-2 text-body leading-relaxed text-foreground-muted">
-            Wir prüfen Ihre Angaben und melden uns mit einer Einschätzung sowie den nächsten
-            Schritten.
-          </p>
-
-          <div className="mt-6 rounded-lg border border-border bg-surface-muted p-5">
-            <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-              Ihre Vorgangsnummer
-            </p>
-            <p className="mt-1 break-words font-mono text-headline tabular-nums text-foreground">
-              {result.reference}
-            </p>
-            <p className="mt-2 text-small leading-relaxed text-foreground-muted">
-              Bitte notieren Sie sich diese Nummer. Damit können Sie den Stand Ihres Vorgangs
-              abrufen.
-            </p>
-          </div>
-
-          {result.notices.length > 0 && (
-            <div className="mt-5 space-y-3">
-              {result.notices.map((notice) => (
-                <Alert key={notice} tone="warning">
-                  {notice}
-                </Alert>
-              ))}
-            </div>
-          )}
-
+      <div className="mx-auto max-w-3xl">
+        <WegBestaetigung
+          marke="Anfrage eingegangen"
+          titel="Ihre Anfrage ist bei uns eingegangen"
+          text="Wir prüfen Ihre Angaben und melden uns mit einer Einschätzung sowie den nächsten Schritten."
+          reference={result.reference ?? ''}
+          notices={result.notices}
+          schritte={SCHRITTE_SICHERHEITSCHECK}
+          summary={summary}
+          zurueck={{ href: '/sicherheitstechnik', label: 'Zurück zur Sicherheitstechnik' }}
+        >
           {legalRelevant && <LegalNotice className="mt-5" />}
-
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/service-und-termin/terminstatus" size="lg">
-              Stand des Vorgangs abrufen
-            </ButtonLink>
-            <ButtonLink href="/sicherheitstechnik" size="lg" variant="outline">
-              Zurück zur Sicherheitstechnik
-            </ButtonLink>
-          </div>
-        </div>
+        </WegBestaetigung>
       </div>
     );
   }

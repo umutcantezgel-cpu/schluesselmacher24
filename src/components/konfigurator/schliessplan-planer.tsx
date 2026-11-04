@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -13,6 +13,7 @@ import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { Alert } from '@/components/ui/alert';
 import { Button, ButtonLink } from '@/components/ui/button';
 import { ZylinderMassGrafik } from '@/components/visual/generators/zylinder-mass';
+import { WegBestaetigung } from '@/components/weg/bestaetigung';
 import { submitRecord } from '@/lib/actions/records';
 import { ERWEITERBAR_OPTION_ID } from '@/lib/cylinder-rules';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
@@ -33,6 +34,7 @@ import {
   type Vorlage,
 } from '@/lib/konfigurator';
 import { SCHLIESSPLAN_DATEINAME } from '@/lib/pdf/schliessplan';
+import { SCHRITTE_PLANER } from '@/lib/wege/naechste-schritte';
 import { aktionMelden } from '@/lib/statistik';
 import { useCartStore } from '@/lib/store/cart';
 import type { ContactDetails, CylinderCatalog } from '@/lib/types';
@@ -133,11 +135,10 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
   const schutz = useFormularSchutz();
   const [submitting, setSubmitting] = useState(false);
   const [fehler, setFehler] = useState<string | null>(null);
-  const [ergebnis, setErgebnis] = useState<{ reference: string } | null>(null);
+  const [ergebnis, setErgebnis] = useState<{ reference: string; notices: string[] } | null>(null);
   const [linkStatus, setLinkStatus] = useState<{ url: string; kopiert: boolean } | { zuGross: true } | null>(null);
   /** Vorlage, die einen vorhandenen Plan ersetzen würde, bis zur Bestätigung. */
   const [ersetzenDurch, setErsetzenDurch] = useState<string | null>(null);
-  const erfolgRef = useRef<HTMLHeadingElement>(null);
 
   const flow = useFlow<PlanerDaten>({
     id: FLOW_ID,
@@ -181,10 +182,6 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
       adresseBereinigen();
     }
   }, [linkPlan, flow]);
-
-  useEffect(() => {
-    if (ergebnis) erfolgRef.current?.focus();
-  }, [ergebnis]);
 
   const preis = useMemo(() => preisFuerPlan(d.plan, katalog, d.extraIds), [d.plan, katalog, d.extraIds]);
   const setPlan = (plan: Schliessplan) => flow.update({ plan });
@@ -248,7 +245,7 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
       if (response.ok && response.reference) {
         aktionMelden('projektanfrage', 'schliessanlagen');
         clearFlow(FLOW_ID);
-        setErgebnis({ reference: response.reference });
+        setErgebnis({ reference: response.reference, notices: response.notices });
       } else {
         setFehler(response.error ?? 'Der Vorgang konnte nicht gespeichert werden.');
       }
@@ -261,25 +258,23 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
 
   if (ergebnis) {
     return (
-      <div className="mx-auto max-w-measure space-y-5 py-6" role="status">
-        <h2 ref={erfolgRef} tabIndex={-1} className="text-title font-bold text-foreground focus:outline-none">
-          Ihr Schließplan ist angekommen
-        </h2>
-        <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Ihre Vorgangsnummer</p>
-        <p className="font-mono text-title font-semibold tabular-nums text-foreground">{ergebnis.reference}</p>
-        <p className="text-body text-foreground-muted">
-          Danke. Ihr Schließplan ist bei uns angekommen, mit allen Türen, Schlüsseln und der Matrix. Wir prüfen ihn und schicken Ihnen ein Angebot.
-        </p>
-        <p className="text-body text-foreground-muted">
-          Bewahren Sie die Vorgangsnummer auf: Unter ihr ist Ihr Schließplan mit allen Türen und Schlüsseln gespeichert, auch für spätere
-          Nachbestellungen.{' '}
-          <Link href="/schliessanlagen#nachbestellen" className="font-semibold text-primary underline-offset-2 hover:underline">
-            So bestellen Sie später nach
-          </Link>
-        </p>
-        <ButtonLink href="/schliessanlagen" variant="outline">
-          Zurück zu den Schließanlagen
-        </ButtonLink>
+      <div className="mx-auto max-w-3xl py-6">
+        <WegBestaetigung
+          marke="Schließplan eingegangen"
+          titel="Ihr Schließplan ist angekommen"
+          text="Danke. Ihr Schließplan ist bei uns angekommen, mit allen Türen, Schlüsseln und der Matrix. Wir prüfen ihn und schicken Ihnen ein Angebot."
+          reference={ergebnis.reference}
+          nummerHinweis="Bewahren Sie die Vorgangsnummer auf: Unter ihr ist Ihr Schließplan mit allen Türen und Schlüsseln gespeichert, auch für spätere Nachbestellungen. Mit ihr und Ihrer E-Mail-Adresse rufen Sie den Stand Ihres Vorgangs ab."
+          notices={ergebnis.notices}
+          schritte={SCHRITTE_PLANER}
+          zurueck={{ href: '/schliessanlagen', label: 'Zurück zu den Schließanlagen' }}
+        >
+          <p className="mt-5 text-small leading-relaxed text-foreground-muted">
+            <Link href="/schliessanlagen#nachbestellen" className="font-semibold text-primary underline-offset-2 hover:underline">
+              So bestellen Sie später nach
+            </Link>
+          </p>
+        </WegBestaetigung>
       </div>
     );
   }
