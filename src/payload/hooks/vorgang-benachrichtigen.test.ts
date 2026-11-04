@@ -272,7 +272,13 @@ describe('Statusverlauf und Foto-Freigabe', () => {
       am: expect.any(String),
       text: 'Status von „In Prüfung“ auf „Versendet“ geändert (Mina Saad).',
     });
-    // Kundensichtbar nur die Schritte der Foto-Prüfung.
+    // Kundensichtbar in einfacher Sprache (E6-OPUS-04, E-58, G-25), mit Zeit und Team als Urheber.
+    expect(data.verlauf).toEqual([{ am: expect.any(String), von: 'team', text: expect.stringMatching(/^Versendet: /) }]);
+  });
+
+  it('schreibt beim Zurücksetzen auf „Neu“ keinen Kundeneintrag, wohl aber die Notiz', () => {
+    const data = vor({ data: { ...doc(), status: 'neu' }, originalDoc: doc(), operation: 'update', req: req() });
+    expect(data.notizen?.at(-1)?.text).toBe('Status von „In Prüfung“ auf „Neu“ geändert (Mina Saad).');
     expect(data.verlauf).toEqual([]);
   });
 

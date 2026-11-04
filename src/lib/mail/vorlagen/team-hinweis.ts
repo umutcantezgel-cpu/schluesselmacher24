@@ -62,8 +62,8 @@ export function betriebRueckrufEmpfohlen({ vorgang, adminUrl, kontext }: Rueckru
         art: 'absatz',
         text:
           'die Anzahlung zu diesem Termin ist nicht eingegangen (abgebrochen, abgelehnt oder abgelaufen). Das '
-          + 'Zeitfenster ist wieder frei, der Kunde hat eine Mail mit dem Link zur neuen Buchung erhalten. '
-          + 'Ein kurzer Rückruf wird empfohlen.',
+          + 'Zeitfenster ist wieder frei. An den Kunden ging eine Mail mit dem Link zur neuen Buchung; ob sie '
+          + 'zugestellt wurde, steht im Backend unter „E-Mails“. Ein kurzer Rückruf wird empfohlen.',
       },
       {
         art: 'felder',
@@ -76,6 +76,42 @@ export function betriebRueckrufEmpfohlen({ vorgang, adminUrl, kontext }: Rueckru
           ...terminZeilen(vorgang, kontext.firma).map(([label, wert]): [string, string] =>
             label === 'Termin' ? ['Freigegebener Termin', wert] : [label, wert],
           ),
+        ],
+      },
+      { art: 'knopf', href: adminUrl, label: 'Im Backend öffnen' },
+    ],
+    site: kontext.site,
+  });
+}
+
+/**
+ * Anzahlung zu einem Termin, den das Team schon bearbeitet, ist nicht eingegangen (E-60, E-119): Der Termin
+ * bleibt bestehen, der Kunde bekommt keine automatische Mail. Das Team klärt den Fall selbst.
+ */
+export function betriebAnzahlungOffen({ vorgang, adminUrl, kontext }: RueckrufDaten): MailInhalt {
+  const name = [vorgang.contact.firstName, vorgang.contact.lastName].filter(Boolean).join(' ');
+  const fahrzeug = fahrzeugText(vorgang);
+  return baueMail({
+    betreff: `Anzahlung nicht eingegangen, Termin bleibt: ${vorgang.reference}`,
+    vorschau: `${name}: Die Anzahlung ist nicht eingegangen. Der Termin wurde nicht storniert.`,
+    anrede: 'Hallo Team,',
+    bausteine: [
+      {
+        art: 'absatz',
+        text:
+          'die Anzahlung zu diesem Termin ist nicht eingegangen (abgebrochen, abgelehnt oder abgelaufen). Der Termin '
+          + 'wurde nicht automatisch storniert, weil er schon bearbeitet wird. Der Kunde hat dazu keine automatische '
+          + 'Mail bekommen. Bitte klären Sie mit ihm, wie es weitergeht.',
+      },
+      {
+        art: 'felder',
+        zeilen: [
+          ['Vorgangsnummer', vorgang.reference],
+          ['Name', name],
+          ['Telefon', vorgang.contact.phone],
+          ...(fahrzeug ? [['Fahrzeug', fahrzeug] as [string, string]] : []),
+          ['Leistung', leistungText(vorgang)],
+          ...terminZeilen(vorgang, kontext.firma),
         ],
       },
       { art: 'knopf', href: adminUrl, label: 'Im Backend öffnen' },

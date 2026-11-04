@@ -1,6 +1,7 @@
 'use server';
 
-import { getCollection, getRubrik, getSettings } from '@/lib/data';
+import { getCollection, getRecordByReference, getRubrik, getSettings, vorgangAendern } from '@/lib/data';
+import { folgeterminErlaubt, vorherAusAdresse } from '@/lib/zahlung/neu-buchen';
 import { defaults } from '@/lib/data/defaults';
 import { begleitscheinZumVorgang } from '@/lib/einsenden/schein';
 import { EINSENDE_QUELLE, einsendeVorgang } from '@/lib/einsenden/vorgang';
@@ -13,7 +14,7 @@ import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/se
 import { publicRecordSchema, terminZustimmungenSchema, type TerminZustimmungen } from '@/lib/server/record-schema';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import { fahrzeugscheinPruefen, nachweisPruefen, rubrikUnterlagenPruefen } from '@/lib/server/unterlagen-pflicht';
-import { QUELLE_RUBRIK, fotoAnfrageVerlangtKarte } from '@/lib/wege/nachweis';
+import { QUELLE_RUBRIK, fotoAnfrageVerlangtKarte, vorOrtOhneBerechtigung } from '@/lib/wege/nachweis';
 import type {
   AppointmentInfo,
   AreaKey,
@@ -244,12 +245,38 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     }
   }
 
+  // Folgetermin nach nicht eingegangener Anzahlung (E-120): Verweis nur auf einen stornierten Termin derselben
+  // E-Mail-Adresse; sonst fällt er weg. Nach dem Anlegen bekommen beide Vorgänge einen Eintrag.
+  let vorherigerTermin: { id: string; reference: string } | null = null;
+  if ('vorherigerVorgang' in payload) {
+    const nummer = typeof payload.vorherigerVorgang === 'string' ? vorherAusAdresse(payload.vorherigerVorgang) : undefined;
+    let alt: Awaited<ReturnType<typeof getRecordByReference>> = null;
+    try {
+      alt = data.kind === 'termin' && nummer ? await getRecordByReference(nummer) : null;
+    } catch (fehler) {
+      // Die Verknüpfung ist ein Zusatz: Ein Lesefehler kostet nur den Verweis, nie die Buchung.
+      console.error('[termin] Vorheriger Termin nicht lesbar', fehler);
+    }
+    payload = { ...payload };
+    if (alt && folgeterminErlaubt(alt, data.contact.email)) {
+      vorherigerTermin = { id: alt.id, reference: alt.reference };
+      payload.vorherigerVorgang = alt.reference;
+    } else {
+      delete payload.vorherigerVorgang;
+    }
+  }
+
   // Berechtigungsnachweis der Foto-Anfrage (R13, E6-OPUS-01): Wer eine Sicherungskarte angibt, lädt sie hoch.
   if (data.kind === 'anfrage' && data.area === 'schluessel-nach-vorlage' && fotoAnfrageVerlangtKarte(payload)) {
     const fehlt = nachweisPruefen('sicherungskarte', data.uploads, storageStatus().configured);
     if (fehlt) {
       return { ok: false, notices: [], error: fehlt };
     }
+  }
+
+  // Einsatz vor Ort (E6-BAUMEISTER-05): nur mit bestätigter Berechtigung (R13).
+  if (data.kind === 'anfrage' && vorOrtOhneBerechtigung(payload)) {
+    return { ok: false, notices: [], error: INVALID_INPUT };
   }
 
   const result = await createRecord({
@@ -265,6 +292,26 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     payment,
     consents,
   });
+
+  if (vorherigerTermin && result.ok && result.reference && result.recordId) {
+    const jetzt = new Date().toISOString();
+    const neu = result.reference;
+    const alt = vorherigerTermin;
+    try {
+      await vorgangAendern(alt.id, (v) => ({
+        timeline: [...v.timeline, { at: jetzt, actor: 'system', message: `Neuer Termin gebucht: ${neu}.` }],
+        internalNotes: [...v.internalNotes, { at: jetzt, actor: 'system', message: `Folgetermin ${neu} gebucht.` }],
+      }));
+      await vorgangAendern(result.recordId, (v) => ({
+        internalNotes: [
+          ...v.internalNotes,
+          { at: jetzt, actor: 'system', message: `Folgetermin zu ${alt.reference}: Die Anzahlung dort ist nicht eingegangen.` },
+        ],
+      }));
+    } catch (fehler) {
+      console.error('[termin] Folgetermin nicht verknüpft', fehler);
+    }
+  }
 
   // Begleitschein der Einsendung gleich mitgeben; fehlt er, steht er später auf der Vorgangsseite.
   const notices = [...result.notices];

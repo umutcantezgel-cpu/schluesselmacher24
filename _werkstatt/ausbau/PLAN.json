@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-04T05:39:06.368Z",
+ "stand": "2026-11-04T09:26:54.422Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -3229,10 +3229,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "3f49c08",
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-05.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
@@ -3261,10 +3261,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "ec036c2",
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-06.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
@@ -3298,10 +3298,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "c9e50f3",
    "massstab": null,
    "muster": null
   },
@@ -5637,10 +5637,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "83d90ee",
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-07.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },

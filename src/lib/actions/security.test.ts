@@ -43,6 +43,7 @@ vi.mock('@/lib/data', () => {
     getCollection: async (name: keyof typeof defaults) => defaults[name](),
     getRubrik: async (id: string) => defaults.rubriken().find((r) => r.id === id) ?? null,
     getAppointments: async (von: string, bis: string) => (vorab.veraltet ? [] : termine(von, bis)),
+    getRecordByReference: async (nummer: string) => stored.find((r) => r.reference === nummer) ?? null,
     // Wie die Datenschicht: Termin unter Sperre frisch prüfen, dann Nummer vergeben.
     vorgangAnlegen: async ({ art, jahr, aufbauen, termin }: VorgangsAnlage) => {
       if (termin?.kunde && offene(termin.kunde.email, termin.kunde.abDatum) >= termin.kunde.hoechstensOffen) {
@@ -202,6 +203,17 @@ describe('submitRecord', () => {
     expect(ohne.ok).toBe(false);
   });
 
+  it('nimmt eine Einsatz-Anfrage vor Ort nur mit bestätigter Berechtigung an (R13, E6-BAUMEISTER-05)', async () => {
+    const basis = { kind: 'anfrage' as const, area: 'service-und-termin' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [], uploads: [] };
+    const angaben = { quelle: 'vor-ort', anliegen: 'Etwas anderes', beschreibung: 'Testanfrage ohne echten Einsatz', zeitraum: 'flexibel' };
+    expect((await submitRecord({ ...basis, payload: angaben })).ok).toBe(false);
+    expect((await submitRecord({ ...basis, payload: { ...angaben, berechtigt: 'true' } })).ok).toBe(false);
+    expect((await submitRecord({ ...basis, payload: { ...angaben, berechtigt: false } })).ok).toBe(false);
+    expect((await submitRecord({ ...basis, payload: { ...angaben, berechtigt: true } })).ok).toBe(true);
+    // Andere Anfragen kennen die Frage nicht.
+    expect((await submitRecord({ ...basis, payload: { quelle: 'kontakt' } })).ok).toBe(true);
+  });
+
   it('verlangt bei Motorrad und Gehäuse die Unterlagen der Rubrik (R13, E6)', async () => {
     const basis = { kind: 'anfrage' as const, area: 'autoschluessel' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [] };
     const foto = { fileName: 'schluessel.jpg', sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'schluesselfoto' as const };
@@ -347,6 +359,39 @@ describe('submitRecord', () => {
         return { date: slot.date, time: slot.time };
       });
     }
+
+    it('verknüpft einen Folgetermin nur mit einem stornierten Termin derselben E-Mail-Adresse (E-120)', async () => {
+      const [erstes, zweites, drittes] = await freieFenster(3);
+      expect((await buchen(erstes)).ok).toBe(true);
+      const alt = stored[0];
+      // Ohne Storno kein Verweis: Der alte Termin läuft noch.
+      expect((await buchen(zweites, { payload: { vorherigerVorgang: alt.reference } })).ok).toBe(true);
+      expect(stored[0].payload).not.toHaveProperty('vorherigerVorgang');
+      expect(alt.timeline.some((e) => e.message.startsWith('Neuer Termin gebucht'))).toBe(false);
+
+      // Anzahlung nicht eingegangen: Der alte Termin ist storniert.
+      const index = stored.findIndex((r) => r.id === alt.id);
+      stored[index] = { ...stored[index], status: 'storniert', payment: { ...stored[index].payment!, status: 'fehlgeschlagen' } };
+      const result = await buchen(drittes, { payload: { vorherigerVorgang: alt.reference.toLowerCase() } });
+      expect(result.ok).toBe(true);
+      const neu = stored.find((r) => r.reference === result.reference)!;
+      expect(neu.payload.vorherigerVorgang).toBe(alt.reference);
+      expect(neu.internalNotes.at(-1)?.message).toBe(`Folgetermin zu ${alt.reference}: Die Anzahlung dort ist nicht eingegangen.`);
+      const altNachher = stored.find((r) => r.id === alt.id)!;
+      expect(altNachher.timeline.at(-1)?.message).toBe(`Neuer Termin gebucht: ${neu.reference}.`);
+    });
+
+    it('übernimmt keinen Verweis auf den Termin einer anderen E-Mail-Adresse (E-120)', async () => {
+      const [erstes, zweites] = await freieFenster(2);
+      expect((await buchen(erstes, { contact: { ...contact, email: 'andere.person@example.invalid' } })).ok).toBe(true);
+      const fremd = stored[0];
+      const index = stored.findIndex((r) => r.id === fremd.id);
+      stored[index] = { ...stored[index], status: 'storniert' };
+      const result = await buchen(zweites, { payload: { vorherigerVorgang: fremd.reference } });
+      expect(result.ok).toBe(true);
+      expect(stored.find((r) => r.reference === result.reference)!.payload).not.toHaveProperty('vorherigerVorgang');
+      expect(stored.find((r) => r.id === fremd.id)!.timeline.some((e) => e.message.startsWith('Neuer Termin gebucht'))).toBe(false);
+    });
 
     it('speichert die Zustimmungen mit Zeitpunkt und Fassung der Rechtstexte', async () => {
       const result = await buchen(await freiesFenster());

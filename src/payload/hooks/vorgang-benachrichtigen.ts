@@ -3,7 +3,8 @@ import { APIError, isolateObjectProperty, type CollectionAfterChangeHook, type C
 import { einstellungenZuSeite, vorgangAenderungZuPayload, vorgangZuSeite } from '../../lib/data/payload-mapping';
 import { EINSENDE_QUELLE } from '../../lib/einsenden/vorgang';
 import { formatCents } from '../../lib/format';
-import { auftragErteiltVerlauf, fotoanfrageVerlauf, freigabeZahlbar, istFotoanfrage } from '../../lib/foto-freigabe';
+import { auftragErteiltVerlauf, freigabeZahlbar, istFotoanfrage } from '../../lib/foto-freigabe';
+import { kundenVerlauf } from '../../lib/kundenstatus';
 import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from '../../lib/mail/versand';
 import { BESTAETIGENDE_STATUS, sendeVertragsbestaetigung, vertragsbestaetigungOffen } from '../../lib/mail/vertrag';
 import { vorgangsLink } from '../../lib/mail/vorlagen/gemeinsam';
@@ -108,6 +109,7 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
   const notiz = (text: string) => {
     data.notizen = [...(data.notizen ?? originalDoc.notizen ?? []), { am: jetzt, von: 'team', text }];
   };
+  let auftragErteilt = false;
   const verlauf = (text: string) => {
     data.verlauf = [...(data.verlauf ?? originalDoc.verlauf ?? []), { am: jetzt, von: 'team', text }];
   };
@@ -147,6 +149,7 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
         if (!data.zahlung.umfang && mitPreis) data.zahlung = { ...data.zahlung, umfang: 'gesamt', betragCent: preis };
         data.status = 'in-fertigung';
         verlauf(auftragErteiltVerlauf(!einsendung && freigabe?.einsendenNoetig === true));
+        auftragErteilt = true;
       }
     }
     notiz(
@@ -159,8 +162,15 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
   if (data.status && data.status !== originalDoc.status) {
     // Statusverlauf (Erg. Leitfaden §2): intern mit altem und neuem Status, Zeit und Bearbeiter.
     notiz(`Status von „${statusBezeichnung(originalDoc.status)}“ auf „${statusBezeichnung(data.status)}“ geändert (${bearbeiter}).`);
-    // Für den Kunden nur die Schritte der Foto-Prüfung (Statusabfrage).
-    const kundentext = fotoanfrage ? fotoanfrageVerlauf(data.status, mitPreis, einsendung) : null;
+    // Für den Kunden (E6-OPUS-04, E-58, G-25): jeder Schritt in einfacher Sprache, bei Foto-Anfragen mit
+    // den Sätzen der Foto-Prüfung. Nach „Auftrag erteilt“ (Zahlung von Hand) kein zweiter Eintrag.
+    const kundentext = auftragErteilt
+      ? null
+      : kundenVerlauf(
+          { kind: originalDoc.art, area: originalDoc.bereich as AreaKey, status: data.status, payload: (originalDoc.daten ?? undefined) as Record<string, unknown> | undefined },
+          data.status,
+          mitPreis,
+        );
     if (kundentext) verlauf(kundentext);
 
     // Foto-Freigabe: Zeitpunkt der ersten Freigabe festhalten (Systemfeld).

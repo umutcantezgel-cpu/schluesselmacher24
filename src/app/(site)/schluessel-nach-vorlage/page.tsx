@@ -327,6 +327,10 @@ export default async function SchluesselNachVorlagePage() {
           ))}
         </ol>
 
+        <p className="mt-6 max-w-measure text-small text-foreground-muted">
+          Nicht jedes Foto ist ablesbar. Reichen die Bilder für eine sichere Bestimmung nicht, bitten wir Sie, den Schlüssel einzuschicken.
+        </p>
+
         <Card className="mt-6">
           <CardBody>
             <p className="flex items-center gap-2 text-title-sm font-semibold text-foreground">

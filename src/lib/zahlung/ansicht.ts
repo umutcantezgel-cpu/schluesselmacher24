@@ -83,6 +83,11 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   }
 
   if (zahlung.status === 'fehlgeschlagen') {
+    // Ein Termin, den das Team schon bearbeitet, bleibt bestehen (Übergang ohne Storno): kein Aufruf zum
+    // Neubuchen, sondern derselbe Satz wie in der Mail (E6-OPUS-04).
+    if (termin && vorgang.status !== 'neu') {
+      return { ton: 'warning', titel: 'Anzahlung nicht eingegangen', text: 'Die Anzahlung ist nicht eingegangen. Wir melden uns bei Ihnen zum weiteren Vorgehen.' };
+    }
     return termin
       ? { ton: 'danger', titel: 'Anzahlung nicht abgeschlossen', text: 'Die Anzahlung ist nicht eingegangen. Bitte buchen Sie den Termin neu.', neuBuchen: true }
       : { ton: 'danger', titel: 'Zahlung nicht abgeschlossen', text: 'Die Zahlung wurde nicht abgeschlossen. Sie können sie erneut starten.', knopf: 'erneut' };
@@ -100,6 +105,10 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   }
 
   if (termin) {
+    // Ein Termin, den das Team schon bearbeitet, wird nicht neu gebucht (E6-OPUS-04, wie bei „fehlgeschlagen“).
+    if (vorgang.status !== 'neu') {
+      return { ton: 'info', titel: 'Anzahlung offen', text: 'Ihr Termin wird bereits bearbeitet. Zur Anzahlung melden wir uns bei Ihnen.' };
+    }
     if (!terminNochBezahlbar(vorgang, umfeld.jetzt)) {
       return {
         ton: 'danger',

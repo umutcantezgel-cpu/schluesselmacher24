@@ -58,6 +58,7 @@ type Aufruf = {
   antwortAn?: string[];
   schluessel?: string;
   anhaenge?: Array<{ filename: string; content: string; content_type?: string }>;
+  text?: string;
 };
 const aufrufe: Aufruf[] = [];
 let antworten: Array<{ status: number; body: unknown }> = [];
@@ -71,6 +72,7 @@ function fetchErsatz() {
       antwortAn: body.reply_to,
       schluessel: (init.headers as Record<string, string>)['Idempotency-Key'],
       anhaenge: body.attachments,
+      text: body.text,
     });
     const naechste = antworten.shift() ?? { status: 200, body: { id: `re_${aufrufe.length}` } };
     return new Response(JSON.stringify(naechste.body), { status: naechste.status });
@@ -125,6 +127,9 @@ describe('benachrichtigeNeuerVorgang', () => {
     expect(team?.anhaenge).toHaveLength(1);
     expect(team?.anhaenge?.[0]).toMatchObject({ filename: 'Vorgangsblatt-SM24-T-2026-0007.pdf', content_type: 'application/pdf' });
     expect(Buffer.from(team?.anhaenge?.[0].content ?? '', 'base64').subarray(0, 5).toString('latin1')).toBe('%PDF-');
+    /* Die Betriebsmail sagt, dass das Blatt anhängt (Erzeugung gelungen). */
+    expect(team?.text).toContain('Das Vorgangsblatt mit allen Angaben hängt als PDF an.');
+    expect(team?.text).not.toContain('konnte nicht als PDF erzeugt werden');
 
     expect(gespeichert.mailLog?.map((m) => [m.kind, m.result])).toEqual([
       ['eingang-kunde', 'gesendet'],
@@ -191,6 +196,18 @@ describe('benachrichtigeZahlung', () => {
       schluessel: 'lokal-SM24-T-2026-0007-team-hinweis-rueckruf',
     });
     expect(gespeichert.mailLog?.map((m) => m.kind)).toEqual(['zahlung-nicht-abgeschlossen', 'team-hinweis']);
+  });
+
+  it('meldet dem Team eine ausgebliebene Anzahlung zu einem bleibenden Termin, ohne Mail an den Kunden (E-60)', async () => {
+    mailEinrichten();
+    await benachrichtigeZahlung({ vorgang: vorgang(), mail: { art: 'team-anzahlung-offen' }, ereignisId: 'evt_4' });
+    expect(aufrufe).toHaveLength(1);
+    expect(aufrufe[0]).toMatchObject({
+      an: ['team@schluesselmacher24.de', 'inhaber@schluesselmacher24.de'],
+      betreff: 'Anzahlung nicht eingegangen, Termin bleibt: SM24-T-2026-0007',
+      schluessel: 'lokal-SM24-T-2026-0007-team-hinweis-anzahlung-offen:evt_4',
+    });
+    expect(gespeichert.mailLog?.map((m) => m.kind)).toEqual(['team-hinweis']);
   });
 
   it('empfiehlt keinen Rückruf, solange der Termin bestehen bleibt', async () => {

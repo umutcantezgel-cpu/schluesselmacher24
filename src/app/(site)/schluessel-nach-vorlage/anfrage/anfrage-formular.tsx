@@ -175,19 +175,26 @@ const EXAMPLE_FRONT: ImageSlot = {
   motif: 'Beispielfoto: Schlüssel flach von oben, Kopf und Bart vollständig im Bild',
   ratio: '4/3',
   note: 'Heller, neutraler Untergrund. Kein direkter Blitz.',
+  visual: { generator: 'schluessel', params: { typ: 'zylinder' } },
 };
 
 const EXAMPLE_BACK: ImageSlot = {
   motif: 'Beispielfoto: gewendeter Schlüssel, Prägung auf der Rückseite lesbar',
   ratio: '4/3',
   note: 'Gleicher Abstand und Untergrund wie bei der Vorderseite.',
+  visual: { generator: 'schluessel', params: { typ: 'zylinder', code: 'rueckseite' } },
 };
 
 const EXAMPLE_TIP: ImageSlot = {
   motif: 'Beispielfoto: Blick von vorne auf die Schlüsselspitze, Profilquerschnitt erkennbar',
   ratio: '1/1',
   note: 'Schlüssel aufstellen oder anlehnen, damit die Spitze zur Kamera zeigt.',
+  visual: { generator: 'profilschnitt', params: { beschriftung: false } },
 };
+
+/* Hinweis zur Ablesbarkeit (G-23), steht über dem ersten Foto. */
+const HINWEIS_ABLESBARKEIT =
+  'Nicht jedes Foto ist ablesbar. Reichen die Bilder für eine sichere Bestimmung nicht, bitten wir Sie, den Schlüssel einzuschicken.';
 
 const EXAMPLE_MARKS: ImageSlot = {
   motif: 'Beispielfoto: Nahaufnahme der Prägung auf dem Schlüsselkopf',
@@ -468,6 +475,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
           onChange={setFotoVorderseite}
           hint={HINT_FOTO}
           retentionDays={photoRetentionDays}
+          vorab={HINWEIS_ABLESBARKEIT}
         />
       )}
 
@@ -870,6 +878,7 @@ function FotoSchritt({
   onChange,
   hint,
   retentionDays,
+  vorab,
 }: {
   id: string;
   label: string;
@@ -879,9 +888,11 @@ function FotoSchritt({
   onChange: (files: PickedFile[]) => void;
   hint: InfoHint;
   retentionDays: number;
+  vorab?: string;
 }) {
   return (
     <div className="max-w-3xl space-y-5">
+      {vorab && <p className="text-small leading-relaxed text-foreground-muted">{vorab}</p>}
       <div className="flex items-center gap-2">
         <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Worauf es bei der Aufnahme ankommt</p>
         <InfoTip hint={hint} />

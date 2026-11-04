@@ -1,7 +1,8 @@
 # PRÜFPUNKT
-Stand: 2026-11-03 14:57 · Sitzung m40jjmy9
-Nächster exakter Schritt: Rückgaben E5-GRAFIKER-01 und E5-GRAFIKER-02 abnehmen (Prüfstufe A, Bild, Commit je Paket); ab 18:10 E5-OPUS-01 Schließanlagen-Konfigurator selbst bauen (Paket im Plan, KERN, Next-Doku lesen), danach E5-OPUS-05 Feinschliff und E5-OPUS-04 Leistung
-Laufende Pakete: E5-GRAFIKER-01 (zylinder-mass.tsx und Test), E5-GRAFIKER-02 (schluessel.tsx und Test, optionen.ts nur example)
-Letzter grüner Commit: aac4204 (Build JSON und pg 224, Unit 1997/1997, DB 97/97); danach nur Texte (0c8832d)
-Wartezustand: Bremse bis 18:10 (Fenster ≈17 % gegen Soll ≈9, Fensterziel 23,4)
-Weckrufe: Wachhund trig_01E2ucuvFev7RmWBRwQsyLaw alle 2 h (nächster 13:22 MEZ); einmalige Weckrufe 06:20 und 07:05 sind verbraucht
+Stand: 2026-11-04 13:04 · Sitzung m40jjmy9 (übergibt an die Sitzung der geplanten Aufgabe „SM24 Übernahme 14:12“, trig_01Gye1nkcYVH1aCgUxKVN9wU)
+Nächster exakter Schritt: Startritual (8.6) mit Einrichtung nach protokolle/einrichtung.md, Prüfserver bauen und starten (`sicher.sh --json -- npm run build`, dann `werkzeuge/server.sh start`), dann E6-PROBENUTZER-01 nach pakete/E6-PROBENUTZER-01.md mit einem Haiku-Probenutzer (Workflow oder Agent, model haiku, Denkstufe nach Tempomat); Bericht abnehmen, Befunde nach Wirkung beheben oder vormerken. Danach Paketdatei E6-PRUEFER-01 schreiben (Prüfstufe B der Etappe E6; offen: E6-OPUS-03 zurückgestellt nach A-036 und A-037, Gedankenstriche im Bestand laut berichte/E6-BAUMEISTER-05-07.md und berichte/E6-OPUS-04.md) und ausführen; dann Etappe E7.
+Laufende Pakete: keine. E6-PROBENUTZER-01 und E6-PRUEFER-01 stehen auf offen, E6-OPUS-03 auf zurückgestellt.
+Letzter grüner Commit: c9e50f3 (E6-OPUS-04; Unit 2226, DB 97, Build grün; Funktionsliste F-01, F-03, F-04, F-07, F-08, F-14, F-17, F-18, F-19 bestanden). Danach nur Werkstatt-Dateien.
+Livegang: main = e5a294f (PR 965 auf Anweisung, A-038). Produktion wartet auf MA-23 (Domain und Produktionsbuild im Vercel-Team team-1d0c, kein Zugang). Seit e5a294f auf dem Branch: Welle 4 (3f49c08, ec036c2, 83d90ee) und E6-OPUS-04 (c9e50f3), noch nicht auf main; ein neuer PR nur auf Anweisung des Nutzers.
+Tempomat: Fenster 55 % um 12:56 (Ziel 19 %, Reset 14:10), Woche 72 % (Reset Sa 02:00), Spielraum rund 2,3 Wochenpunkte je Fenster. Lehre dieses Tages (KONTINGENT 12:38): Mit langem Verlauf kostet jeder Schritt viel; Aufwachen nach 40 Minuten und mehr 11 bis 15 Fensterpunkte, kurze Wartebefehle 1 bis 2. Darum diese Übergabe an eine frische Sitzung. Haiku-Workflows kosteten heute rund 1 Wochenpunkt je 500 000 Agenten-Token.
+Weckrufe: Wachhund trig_01E2ucuvFev7RmWBRwQsyLaw alle 2 h (:22 UTC); Übernahme trig_01Gye1nkcYVH1aCgUxKVN9wU einmalig 14:12 MEZ. Ultracode war in der übergebenden Sitzung an (Workflows für größere Aufgaben, Agenten mit model haiku nach Abschnitt 4).

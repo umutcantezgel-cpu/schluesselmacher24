@@ -5,6 +5,7 @@ import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limi
 import { getAppointments, getCollection, getRecordByReference, getSettings } from '@/lib/data';
 import { heuteInBerlin } from '@/lib/berliner-zeit';
 import { istEinsendung } from '@/lib/einsenden/vorgang';
+import { kundenSendung, kundenStatus } from '@/lib/kundenstatus';
 import { addDays, availableSlots, bookableDays, earliestBookableDate, minutenInBerlin } from '@/lib/scheduling';
 import { quoteCarKeyService } from '@/lib/pricing';
 import { vorgangOrtText } from '@/lib/terminort';
@@ -129,14 +130,24 @@ export async function fetchRecordStatus(reference: string, email: string) {
     };
   }
 
+  // Kundenstatus aus einer Quelle (E6-OPUS-04): dieselben Wörter wie auf der Vorgangsseite, mit den
+  // eigenen Namen der Foto-Anfrage und der Einsendung (E6-OPUS-02).
+  const anzeige = kundenStatus(record);
   return {
     ok: true as const,
     record: {
       reference: record.reference,
       kind: record.kind,
       status: record.status,
-      // Einsendung (E6-OPUS-02): eigene Namen für „angemeldet“ und „Schlüssel eingegangen“.
-      einsendung: istEinsendung(record),
+      statusLabel: anzeige.label,
+      statusText: anzeige.text,
+      // Der Begleitschein liegt auf der Vorgangsseite; hierher führt nur der Link aus der Eingangsbestätigung.
+      statusHinweis:
+        istEinsendung(record) && record.status === 'neu'
+          ? 'Den Begleitschein finden Sie über den Knopf „Vorgang und Begleitschein ansehen“ in unserer Eingangsbestätigung.'
+          : undefined,
+      // Nach dem Versand: Dienstleister, Sendungsnummer und öffentlicher Verfolgungslink (G-25).
+      sendung: kundenSendung(record),
       createdAt: record.createdAt,
       updatedAt: record.updatedAt,
       appointment: record.appointment,

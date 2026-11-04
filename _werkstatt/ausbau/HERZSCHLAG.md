@@ -1,7 +1,7 @@
 # HERZSCHLAG
-Zeit: 2026-11-04 08:38 MEZ
+Zeit: 2026-11-04 13:04 MEZ
 Sitzung: m40jjmy9
-Zustand: AKTIV (Livegang auf Anweisung: PR nach main; Bremse bis zum Fensterwechsel 09:10)
-Etappe und Welle: E6 Welle 4: Paketdateien BAUMEISTER-05, -06, -07 bereit (ea50d96), Start 09:10
-Letzter grüner Commit: cac398f (Unit 2145, Build grün; Lint und Typprüfung erneut grün um 08:30)
+Zustand: ÜBERGEBEN (an die Sitzung der geplanten Aufgabe „SM24 Übernahme 14:12“, trig_01Gye1nkcYVH1aCgUxKVN9wU; diese Sitzung arbeitet nicht weiter)
+Etappe und Welle: E6 Welle 6: E6-PROBENUTZER-01, danach E6-PRUEFER-01
+Letzter grüner Commit: c9e50f3 (Unit 2226, DB 97, Build grün)
 ARBEITSBRANCH: claude/affectionate-knuth-n7mjur

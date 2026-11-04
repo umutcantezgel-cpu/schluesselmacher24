@@ -25,7 +25,7 @@ import {
   widerrufEingang,
   type StatusMitMail,
 } from '@/lib/mail/vorlagen';
-import { betriebRueckrufEmpfohlen } from '@/lib/mail/vorlagen/team-hinweis';
+import { betriebAnzahlungOffen, betriebRueckrufEmpfohlen } from '@/lib/mail/vorlagen/team-hinweis';
 import { onlineZahlarten } from '@/lib/rechtliches/zahlarten';
 import type { BusinessRecord, MailLogEntry, Settings } from '@/lib/types';
 import type { MailAnhang } from '@/lib/mail/transport-resend';
@@ -143,7 +143,7 @@ export async function benachrichtigeNeuerVorgang({ saved, token, settings }: Neu
         sendeVorlage({
           art: 'eingang-team',
           an: teamAn,
-          inhalt: betriebNeuerVorgang({ vorgang: saved, adminUrl: adminLink(saved.id), kontext }),
+          inhalt: betriebNeuerVorgang({ vorgang: saved, adminUrl: adminLink(saved.id), kontext, anhang: anhaenge ? 'angehaengt' : 'fehlgeschlagen' }),
           idempotenzSchluessel: idempotenzSchluessel(saved.reference, 'eingang-team'),
           anhaenge,
         }),
@@ -234,6 +234,21 @@ export async function benachrichtigeZahlung({
           }
         }
         break;
+      case 'team-anzahlung-offen': {
+        const teamAn = teamEmpfaenger(settings.company);
+        if (vorgang.kind === 'termin' && teamAn.length) {
+          sendungen.push(
+            sendeVorlage({
+              art: 'team-hinweis',
+              an: teamAn,
+              inhalt: betriebAnzahlungOffen({ vorgang, kontext, adminUrl: adminLink(vorgang.id) }),
+              // Einmal je Vorgang und Ereignis.
+              idempotenzSchluessel: idempotenzSchluessel(vorgang.reference, 'team-hinweis', `anzahlung-offen:${ereignisId}`),
+            }),
+          );
+        }
+        break;
+      }
       case 'erstattet':
         sendungen.push(
           sendeVorlage({

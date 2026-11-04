@@ -62,6 +62,20 @@ describe('zahlungsAnsicht', () => {
     expect(zahlungsAnsicht(termin({ status: 'storniert' }, { status: 'fehlgeschlagen' }), UMFELD)?.knopf).toBeUndefined();
   });
 
+  it('bietet bei einem schon bearbeiteten Termin mit offener Anzahlung keine Neubuchung an (E6-OPUS-04)', () => {
+    const ansicht = zahlungsAnsicht(termin({ status: 'terminiert' }), UMFELD);
+    expect(ansicht).toMatchObject({ titel: 'Anzahlung offen', text: expect.stringContaining('melden wir uns') });
+    expect(ansicht?.neuBuchen).toBeUndefined();
+    expect(ansicht?.knopf).toBeUndefined();
+  });
+
+  it('ruft bei einem schon bearbeiteten Termin nicht zum Neubuchen auf, wie die Mail (E6-OPUS-04)', () => {
+    const ansicht = zahlungsAnsicht(termin({ status: 'terminiert' }, { status: 'fehlgeschlagen' }), UMFELD);
+    expect(ansicht).toMatchObject({ titel: 'Anzahlung nicht eingegangen', text: expect.stringContaining('Wir melden uns bei Ihnen') });
+    expect(ansicht?.neuBuchen).toBeUndefined();
+    expect(ansicht?.knopf).toBeUndefined();
+  });
+
   it('bleibt ohne Online-Zahlung beim bisherigen Hinweis', () => {
     expect(zahlungsAnsicht(vorgang({}, { checkoutSessionId: undefined }), { ...UMFELD, online: false })).toMatchObject({
       titel: 'Zahlung noch offen',

@@ -9,8 +9,9 @@ import { istEinsendung } from '../einsenden/vorgang';
 import { KATEGORIE_LABEL, POSITION_LABEL } from '../druckansichten';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '../format';
 import { ART_LABEL, BEREICH_LABEL, UMFANG_LABEL, ZAHLUNG_LABEL } from '../mail/vorlagen/gemeinsam';
+import { DIENSTLEISTER } from '../mail/vorlagen/status';
 import { vorgangOrtText } from '../terminort';
-import type { BusinessRecord, CompanyProfile, RecordStatus, UploadRef } from '../types';
+import type { BusinessRecord, CompanyProfile, PriceQuote, RecordConsents, RecordStatus, UploadRef } from '../types';
 import { STATUS_LABEL } from '../vorgang-status';
 
 import { schnappschussAusVorgang } from '../konfigurator/vorgang';
@@ -19,6 +20,9 @@ import { schliessplanAbschnitte } from './schliessplan';
 
 /** Arten, die als Vorschaubild ins Blatt dürfen (A-015); Fahrzeugschein und Dokument nie. */
 export const VORSCHAU_ARTEN: ReadonlyArray<UploadRef['category']> = ['schluesselfoto', 'objektfoto', 'grundriss'];
+
+/** Bildtypen, die als Vorschau gelesen werden können (wie `vorschauKandidaten` in vorschaubilder.ts). */
+const VORSCHAU_BILDTYPEN = /^image\/(jpeg|png|webp|heic|heif)$/;
 
 /** Nächster Schritt fürs Team je Status (Arbeitsablauf, keine Zusage an den Kunden). */
 export const NAECHSTER_SCHRITT: Record<RecordStatus, string> = {
@@ -48,6 +52,80 @@ function anschrift(vorgang: BusinessRecord): string {
 }
 
 const uhr = (iso: string) => `${formatDateTime(iso)} Uhr`;
+
+const PREISART: Record<PriceQuote['mode'], string> = {
+  fest: 'Festpreis',
+  rahmen: 'Preisrahmen',
+  pruefung: 'Preis nach Prüfung',
+};
+
+/** Preis vom Server (`vorgang.quote`): nur anzeigen, was gespeichert ist (G9). */
+function preisAbschnitt(quote: PriceQuote): BlattAbschnitt {
+  let preis = '';
+  if (quote.mode === 'fest' && quote.priceCents !== undefined) preis = formatCents(quote.priceCents);
+  if (quote.mode === 'rahmen' && quote.priceFromCents !== undefined && quote.priceToCents !== undefined) {
+    preis = `${formatCents(quote.priceFromCents)} bis ${formatCents(quote.priceToCents)}`;
+  }
+  return {
+    titel: 'Preis (vom Server ermittelt)',
+    zeilen: [
+      { name: 'Preisart', wert: PREISART[quote.mode] },
+      { name: 'Preis', wert: preis },
+      // Gespeicherte Angebote älterer Stände können Felder auslassen: dann leer statt „NaN“.
+      { name: 'Anzahlung', wert: typeof quote.depositCents === 'number' ? formatCents(quote.depositCents) : '' },
+      { name: 'Rest nach Anzahlung', wert: typeof quote.remainderCents === 'number' ? formatCents(quote.remainderCents) : '' },
+      { name: 'Dauer', wert: typeof quote.slotMinutes === 'number' ? formatDuration(quote.slotMinutes) : '' },
+      { name: 'Vorlauf', wert: typeof quote.leadTimeDays !== 'number' ? '' : quote.leadTimeDays === 1 ? '1 Tag' : `${quote.leadTimeDays} Tage` },
+      { name: 'Fahrzeug vor Ort nötig', wert: typeof quote.requiresVehicleOnSite === 'boolean' ? (quote.requiresVehicleOnSite ? 'ja' : 'nein') : '' },
+      { name: 'Hinweis', wert: quote.note ?? '' },
+    ],
+  };
+}
+
+/** Zustimmungen aus `vorgang.consents`, Bezeichnungen wie in der Gruppe `zustimmungen` (Payload). */
+const ZUSTIMMUNG_NAMEN: ReadonlyArray<[keyof RecordConsents, string]> = [
+  ['terms', 'AGB'],
+  ['withdrawalNotice', 'Widerrufsbelehrung'],
+  ['earlyStart', 'Beginn vor Ende der Widerrufsfrist'],
+  ['customMade', 'Sonderanfertigung (kein Widerruf)'],
+  ['deposit', 'Anzahlung'],
+  ['authorization', 'Berechtigung'],
+];
+
+/** Bestätigungen aus `vorgang.payload`, nur bei `true`. */
+const PAYLOAD_BESTAETIGUNGEN: ReadonlyArray<[string, string]> = [
+  ['berechtigt', 'Berechtigung (vor Ort nachzuweisen)'],
+  ['datenschutz', 'Datenschutzhinweis bestätigt'],
+  ['consent', 'Einwilligung erteilt'],
+  ['legalNoticeShown', 'Rechtlicher Hinweis angezeigt'],
+];
+
+function bestaetigungenAbschnitt(vorgang: BusinessRecord): BlattAbschnitt | undefined {
+  const consents = vorgang.consents ?? {};
+  const zustimmungen: BlattZeile[] = ZUSTIMMUNG_NAMEN.filter(([schluessel]) => consents[schluessel] === true).map(([, name]) => ({ name, wert: 'ja' }));
+  const angaben: BlattZeile[] = PAYLOAD_BESTAETIGUNGEN.filter(([schluessel]) => vorgang.payload[schluessel] === true).map(([, name]) => ({
+    name,
+    wert: 'ja',
+  }));
+  if (!zustimmungen.length && !angaben.length) return undefined;
+  const zeilen: BlattZeile[] = [...zustimmungen];
+  if (consents.at) zeilen.push({ name: 'Zeitpunkt', wert: uhr(consents.at) });
+  if (consents.version) zeilen.push({ name: 'Fassung der Rechtstexte', wert: consents.version });
+  zeilen.push(...angaben);
+  return { titel: 'Bestätigungen des Kunden', zeilen };
+}
+
+/** Lieferhinweis aus dem Formular und Versand aus `vorgang.shipment`, nur was vorhanden ist. */
+function lieferungAbschnitt(vorgang: BusinessRecord): BlattAbschnitt | undefined {
+  const zeilen: BlattZeile[] = [];
+  const hinweis = vorgang.payload.deliveryNote;
+  if (typeof hinweis === 'string' && hinweis !== '') zeilen.push({ name: 'Lieferhinweis', wert: hinweis });
+  const carrier = vorgang.shipment?.carrier;
+  if (carrier) zeilen.push({ name: 'Versanddienst', wert: DIENSTLEISTER[carrier] });
+  const sendungsnummer = vorgang.shipment?.trackingNumber;
+  if (sendungsnummer) zeilen.push({ name: 'Sendungsnummer', wert: sendungsnummer, mono: true });
+  return zeilen.length ? { titel: 'Lieferung und Versand', zeilen } : undefined;
+}
 
 export interface VorgangsblattEingabe {
   vorgang: BusinessRecord;
@@ -127,6 +205,8 @@ export function vorgangsblattInhalt({ vorgang, firma, bilder = [], jetzt = new D
   const schliessplan = schnappschussAusVorgang(vorgang);
   if (schliessplan) abschnitte.push(...schliessplanAbschnitte(schliessplan));
 
+  if (vorgang.quote) abschnitte.push(preisAbschnitt(vorgang.quote));
+
   if (vorgang.payment) {
     const zahlung = vorgang.payment;
     const zeilen: BlattZeile[] = [
@@ -156,7 +236,30 @@ export function vorgangsblattInhalt({ vorgang, firma, bilder = [], jetzt = new D
     });
   }
 
+  const bestaetigungen = bestaetigungenAbschnitt(vorgang);
+  if (bestaetigungen) abschnitte.push(bestaetigungen);
+
+  const lieferung = lieferungAbschnitt(vorgang);
+  if (lieferung) abschnitte.push(lieferung);
+
   if (vorgang.uploads.length) {
+    // Ehrlich (A-015): „Vorschau unten“ nur für Dateien, deren Bild wirklich gezeichnet wird.
+    // Bilder sind nur über den Dateinamen zugeordnet; bei gleichen Namen bleibt die Zuordnung offen, dann ohne Hinweis.
+    const bildNamen = new Set(bilder.map((bild) => bild.name));
+    const namenAnzahl = new Map<string, number>();
+    for (const datei of vorgang.uploads) namenAnzahl.set(datei.fileName, (namenAnzahl.get(datei.fileName) ?? 0) + 1);
+    // Vorschaufähige Fotos: Art, Ablage und Bildtyp (wie vorschaubilder.ts, dort ohne Import hierher), von denen höchstens sechs als Bild erscheinen.
+    const vorschaufaehig = vorgang.uploads.filter(
+      (datei) => Boolean(datei.storageKey) && VORSCHAU_ARTEN.includes(datei.category) && VORSCHAU_BILDTYPEN.test(datei.mimeType),
+    );
+    const vorschauText =
+      bilder.length >= vorschaufaehig.length
+        ? undefined
+        : bilder.length === 0
+          ? 'Keine Vorschau im Blatt. Alle Fotos stehen im Backend.'
+          : bilder.length === 1
+            ? `Vorschau des ersten von ${vorschaufaehig.length} Fotos. Alle Fotos stehen im Backend.`
+            : `Vorschau der ersten ${bilder.length} von ${vorschaufaehig.length} Fotos. Alle Fotos stehen im Backend.`;
     abschnitte.push({
       titel: 'Unterlagen',
       tabelle: {
@@ -165,9 +268,14 @@ export function vorgangsblattInhalt({ vorgang, firma, bilder = [], jetzt = new D
         zeilen: vorgang.uploads.map((datei) => [
           KATEGORIE_LABEL[datei.category] ?? datei.category,
           datei.fileName,
-          datei.storageKey ? (VORSCHAU_ARTEN.includes(datei.category) ? 'im Backend, Vorschau unten' : 'im Backend') : 'nicht gespeichert',
+          datei.storageKey
+            ? bildNamen.has(datei.fileName) && namenAnzahl.get(datei.fileName) === 1 && VORSCHAU_ARTEN.includes(datei.category)
+              ? 'im Backend, Vorschau unten'
+              : 'im Backend'
+            : 'nicht gespeichert',
         ]),
       },
+      text: vorschauText,
       bilder: bilder.length ? bilder : undefined,
     });
   }

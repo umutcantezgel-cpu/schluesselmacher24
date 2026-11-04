@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import { notFound, permanentRedirect } from 'next/navigation';
 
 import { getCodeLines } from '@/lib/data';
@@ -22,6 +23,7 @@ import { CodeFundstelleInteraktiv } from '@/components/visual/interaktiv/code-fu
 import { PROFILSCHNITT_GROESSE } from '@/components/visual/generators/profilschnitt';
 
 import { BestellFormular } from './bestell-formular';
+import { CodeAusAdresse } from './code-aus-adresse';
 import { LinienListe } from '../linien-liste';
 import { RATGEBER_FUNDSTELLE, shopDaten } from '../shop-daten';
 import { getSiteUrl } from '@/lib/site-url';
@@ -212,7 +214,10 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           {/* Bestellung steht im DOM zuerst: mobil oben, ab lg rechts. Lese- und Fokusfolge entsprechen der Sichtfolge. */}
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-8 lg:row-start-1">
-            <BestellFormular line={line} werkstatt={werkstattAngaben(settings.company)} />
+            {/* Code aus der Adresse (?code=) liest eine Client-Komponente; die Grenze hält die Seite statisch. */}
+            <Suspense fallback={<BestellFormular line={line} werkstatt={werkstattAngaben(settings.company)} />}>
+              <CodeAusAdresse line={line} werkstatt={werkstattAngaben(settings.company)} />
+            </Suspense>
           </div>
 
           {/* Codefundstelle, Angaben, Hinweis und Passende Seiten: ab lg links, füllen die Spalte unter dem Kopf */}

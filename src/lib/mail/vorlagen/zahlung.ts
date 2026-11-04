@@ -3,6 +3,7 @@
 import { formatCents, formatDate } from '../../format';
 import { istFotoanfrage } from '../../foto-freigabe';
 import type { BusinessRecord } from '../../types';
+import { neuBuchenHref } from '../../zahlung/neu-buchen';
 import { anrede, baueMail, type Baustein, type MailInhalt } from '../html';
 import {
   ANTWORT_HINWEIS,
@@ -107,7 +108,7 @@ export function kundeNichtAbgeschlossen({
     });
     bausteine.push(nummerBaustein(vorgang), { art: 'felder', zeilen: terminZeilen(vorgang, kontext.firma) });
     if (terminFreigegeben) {
-      bausteine.push({ art: 'knopf', href: `${ohneSchraegstrich(kontext.site)}/autoschluessel/anfrage`, label: 'Neuen Termin buchen' });
+      bausteine.push({ art: 'knopf', href: `${ohneSchraegstrich(kontext.site)}${neuBuchenHref(vorgang)}`, label: 'Neuen Termin buchen' });
     }
   } else if (istFotoanfrage(vorgang)) {
     // Der Link aus der Freigabe-Mail ersetzt den aus der Eingangsbestätigung.

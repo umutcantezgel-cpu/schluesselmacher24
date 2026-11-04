@@ -4,7 +4,7 @@ import { echteEinstellungen, platzhalterEinstellungen } from '../rechtliches/tes
 import type { BusinessRecord } from '../types';
 import { kundeErinnerung, terminKalender } from './vorlagen/erinnerung';
 import { terminZeilen } from './vorlagen/gemeinsam';
-import { betriebRueckrufEmpfohlen } from './vorlagen/team-hinweis';
+import { betriebAnzahlungOffen, betriebRueckrufEmpfohlen } from './vorlagen/team-hinweis';
 
 /* Termin-Erinnerung mit Kalendereintrag, Terminort in den Mails und der
  * Hinweis „Rückruf empfohlen“ an das Team. */
@@ -141,5 +141,24 @@ describe('Rückruf empfohlen (Team)', () => {
     const ohne = betriebRueckrufEmpfohlen({ vorgang: termin({ summary: [] }), adminUrl: 'https://x.de/admin', kontext });
     expect(ohne.text).toContain('Fahrzeug: Volkswagen Golf (2017)');
     expect(ohne.text).toContain('Leistung: Zweitschlüssel');
+  });
+
+  it('behauptet keine Zustellung der Kundenmail, sondern verweist auf das Mailprotokoll (E-119)', () => {
+    expect(mail.text).not.toContain('hat eine Mail');
+    expect(mail.text).toContain('im Backend unter „E-Mails“');
+  });
+});
+
+describe('Anzahlung nicht eingegangen, Termin bleibt (Team, E-60)', () => {
+  const mail = betriebAnzahlungOffen({ vorgang: termin({ status: 'terminiert' }), adminUrl: 'https://schluesselmacher24.de/admin/collections/vorgaenge/42', kontext });
+
+  it('sagt, dass der Termin bleibt und der Kunde keine automatische Mail bekam', () => {
+    expect(mail.betreff).toBe('Anzahlung nicht eingegangen, Termin bleibt: SM24-T-2026-0007');
+    expect(mail.text).toContain('nicht automatisch storniert');
+    expect(mail.text).toContain('keine automatische');
+    expect(mail.text).toContain('Telefon: 0301234567');
+    expect(mail.text).toContain('Termin: Dienstag, 27. Oktober 2026, 10:00 Uhr');
+    expect(mail.text).not.toContain('erika@example.org');
+    expect(`${mail.betreff} ${mail.text}`).not.toMatch(/[–—!]/);
   });
 });

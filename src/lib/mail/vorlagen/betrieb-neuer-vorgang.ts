@@ -16,9 +16,18 @@ export interface BetriebNeuerVorgangDaten {
   /** Link auf den Vorgang im Backend. */
   adminUrl: string;
   kontext: VorlagenKontext;
+  /** Ob das Vorgangsblatt als PDF angehängt ist (sonst: Erzeugung fehlgeschlagen). */
+  anhang?: 'angehaengt' | 'fehlgeschlagen';
 }
 
-export function betriebNeuerVorgang({ vorgang, adminUrl, kontext }: BetriebNeuerVorgangDaten): MailInhalt {
+const LETZTER_ABSATZ = 'Kontaktdaten, Angaben und Unterlagen stehen im Backend.';
+
+const ANHANG_ABSATZ: Record<'angehaengt' | 'fehlgeschlagen', string> = {
+  angehaengt: 'Das Vorgangsblatt mit allen Angaben hängt als PDF an. Kontaktdaten, Angaben und Unterlagen stehen auch im Backend.',
+  fehlgeschlagen: 'Das Vorgangsblatt konnte nicht als PDF erzeugt werden. Im Backend können Sie es abrufen. Kontaktdaten, Angaben und Unterlagen stehen dort.',
+};
+
+export function betriebNeuerVorgang({ vorgang, adminUrl, kontext, anhang }: BetriebNeuerVorgangDaten): MailInhalt {
   const name = [vorgang.contact.firstName, vorgang.contact.lastName].filter(Boolean).join(' ');
   if (vorgang.kind === 'partner') return partnerBewerbung(vorgang, name, adminUrl, kontext);
   return baueMail({
@@ -39,7 +48,7 @@ export function betriebNeuerVorgang({ vorgang, adminUrl, kontext }: BetriebNeuer
         ],
       },
       { art: 'knopf', href: adminUrl, label: 'Im Backend öffnen' },
-      { art: 'absatz', text: 'Kontaktdaten, Angaben und Unterlagen stehen im Backend.' },
+      { art: 'absatz', text: anhang ? ANHANG_ABSATZ[anhang] : LETZTER_ABSATZ },
     ],
     site: kontext.site,
   });

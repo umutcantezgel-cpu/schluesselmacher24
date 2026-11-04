@@ -192,6 +192,7 @@ export interface Vorgaenge {
     | 'sicherheitstechnik'
     | 'service-und-termin';
   prozess: 'direktkauf' | 'gefuehrte-anfrage' | 'projektkonfigurator' | 'termin-mit-anzahlung';
+  telefonterminHinweis?: string | null;
   status:
     | 'neu'
     | 'in-pruefung'
@@ -1820,6 +1821,7 @@ export interface VorgaengeSelect<T extends boolean = true> {
   art?: T;
   bereich?: T;
   prozess?: T;
+  telefonterminHinweis?: T;
   status?: T;
   kundeInformieren?: T;
   nachrichtAnKunde?: T;
