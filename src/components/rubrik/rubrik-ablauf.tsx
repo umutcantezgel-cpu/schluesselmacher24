@@ -1,8 +1,25 @@
-import type { ReactNode } from 'react';
+import { createElement, type ComponentType, type ReactNode } from 'react';
 
 import { Section, SectionHeading } from '@/components/layout/section';
-import { FachIcon } from '@/components/visual/fach-icon';
+import { fachIconKomponente } from '@/components/visual/fach-icon';
+import { GlyphDokument } from '@/components/visual/glyphen/dokument';
+import type { IconProps } from '@/components/visual/icons/icon-base';
 import type { Rubrik } from '@/lib/types';
+
+/** Glyphen, die ein Ablaufschritt statt eines Fach-Icons tragen darf (RUBRIK_ICONS, Abschnitt „Glyphen“). */
+const ABLAUF_GLYPHEN: Record<string, ComponentType<IconProps>> = { dokument: GlyphDokument };
+
+/** Bild eines Ablaufschritts: das Fach-Icon des Namens, sonst die Glyphe gleichen Namens. */
+export function ablaufIconKomponente(name: string | null | undefined): ComponentType<IconProps> | undefined {
+  if (!name) return undefined;
+  return fachIconKomponente(name) ?? ABLAUF_GLYPHEN[name];
+}
+
+/** Das Nachschlagen geschieht hier, damit beim Rendern keine Komponente entsteht (react-hooks/static-components). */
+function AblaufIcon({ name, ...props }: IconProps & { name: string }) {
+  const komponente = ablaufIconKomponente(name);
+  return komponente ? createElement(komponente, props) : null;
+}
 
 /** Platzhalter in Schritt-Texten, die aus den Einstellungen gefüllt werden (G9: Werte nie im Text). */
 export const ABLAUF_PLATZHALTER = ['anzahlung', 'vorlauf'] as const;
@@ -48,7 +65,7 @@ export function RubrikAblauf({
             <span aria-hidden className="w-6 shrink-0 pt-1 font-mono text-caption tabular-nums text-foreground-muted">
               {String(index + 1).padStart(2, '0')}
             </span>
-            <FachIcon name={schritt.icon} size={40} aria-hidden className="shrink-0 text-area-strong" />
+            <AblaufIcon name={schritt.icon} size={40} aria-hidden className="shrink-0 text-area-strong" />
             <div className="min-w-0">
               <h3 className="text-title-sm font-semibold text-foreground">
                 <span className="sr-only">Schritt {index + 1}: </span>
@@ -76,7 +93,7 @@ export function RubrikAblauf({
           </span>
           <div className="pt-1.5">
             <p className="flex items-center gap-2.5 text-title-sm font-semibold text-foreground">
-              <FachIcon name={schritt.icon} size={28} aria-hidden className="shrink-0 text-area-strong" />
+              <AblaufIcon name={schritt.icon} size={28} aria-hidden className="shrink-0 text-area-strong" />
               <span>
                 <span className="sr-only">Schritt {index + 1}: </span>
                 {schritt.titel}

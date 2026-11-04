@@ -3,7 +3,8 @@ import path from 'node:path';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
-import { RubrikAblauf, RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
+import { ablaufIconKomponente, RubrikAblauf, RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
+import { RUBRIK_ICONS } from '@/lib/rubriken';
 
 import { defaults } from '../data/defaults';
 
@@ -45,6 +46,13 @@ describe('Ablauf je Rubrik aus den Daten (G-10, G-11, E6-OPUS-01)', () => {
       const vorher = ICONS_GESEEDET[r.id] ?? [];
       expect(r.ablauf.slice(0, vorher.length).map((s) => s.icon), r.id).toEqual(vorher);
     }
+  });
+
+  it('hat für jeden zugelassenen Icon-Namen ein Bild, auch für Glyphen wie „dokument“', () => {
+    for (const name of RUBRIK_ICONS) expect(ablaufIconKomponente(name), name).toBeDefined();
+    for (const r of RUBRIKEN) for (const s of r.ablauf) expect(ablaufIconKomponente(s.icon), `${r.id}: ${s.titel}`).toBeDefined();
+    const html = renderToStaticMarkup(<RubrikAblauf rubrik={rubrik('sicherheitstechnik')} />);
+    expect(html.match(/<svg/g)?.length ?? 0).toBeGreaterThanOrEqual(rubrik('sicherheitstechnik').ablauf.length);
   });
 
   it('zeigt auf jeder Live-Rubrikseite den Ablauf aus den Rubrikdaten', () => {
