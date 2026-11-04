@@ -1195,3 +1195,47 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-04T08:33:00+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/w4/sicht.mjs /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/w4
 2026-11-04T08:33:47+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/w4/sicht.mjs /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/w4
 2026-11-04T08:34:53+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/w4/vorort2.mjs /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/w4
+2026-11-04T08:54:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf/vorgangsblatt.test.ts src/lib/mail/vorlagen.test.ts src/lib/server/benachrichtigungen.test.ts
+2026-11-04T08:54:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf src/lib/mail src/lib/server
+2026-11-04T08:54:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T08:55:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/pdf src/lib/mail src/lib/server
+2026-11-04T08:55:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf src/lib/mail src/lib/server
+2026-11-04T08:55:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T08:55:55+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T08:56:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/pdf src/lib/mail src/lib/server
+2026-11-04T08:56:39+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf src/lib/mail src/lib/server
+2026-11-04T08:56:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T08:57:02+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/kundenstatus.test.ts src/payload/hooks src/lib/mail src/lib/einsenden src/lib/actions
+2026-11-04T08:57:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/pdf src/lib/mail src/lib/server
+2026-11-04T08:57:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/kundenstatus.test.ts src/payload/hooks/vorgang-benachrichtigen.test.ts
+2026-11-04T08:57:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T08:58:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/kundenstatus.ts src/lib/kundenstatus.test.ts src/lib/actions/booking.ts src/app/(site)/bestellung src/app/(site)/service-und-termin/terminstatus src/payload/hooks/vorgang-benachrichtigen.ts src/payload/hooks/vorgang-benachrichtigen.test.ts src/lib/mail/vorlagen/status.ts src/payload/collections/Vorgaenge.ts
+2026-11-04T08:59:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/zahlung
+2026-11-04T09:00:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/zahlung
+2026-11-04T09:01:06+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf src/lib/mail src/lib/server
+2026-11-04T09:01:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T09:01:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/pdf src/lib/mail src/lib/server
+2026-11-04T09:01:55+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T09:02:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/pdf src/lib/mail src/lib/server
+2026-11-04T09:02:39+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/zahlung src/lib/actions src/lib/mail
+2026-11-04T09:02:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/actions/zahlung.test.ts
+2026-11-04T09:03:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf src/lib/mail src/lib/server src/lib/zahlung src/lib/actions src/lib/kundenstatus.test.ts src/payload
+2026-11-04T09:04:58+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/zahlung src/lib/mail src/lib/server
+2026-11-04T09:05:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T09:05:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-04T09:06:27+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T09:07:15+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-04T09:09:25+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-04T09:11:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T09:12:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/zahlung src/lib/actions src/lib/mail src/lib/server
+2026-11-04T09:12:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T09:12:36+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-03,F-04,F-08,F-18 --json /tmp/sm24-fl-o4.json
+2026-11-04T09:12:40+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/kundenstatus.test.ts src/lib/zahlung src/lib/actions src/payload
+2026-11-04T09:15:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit
+2026-11-04T09:15:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf src/lib/mail src/lib/server
+2026-11-04T09:21:26+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/kundenstatus.test.ts src/lib/actions src/lib/zahlung src/lib/server src/lib/mail src/payload src/lib/pdf
+2026-11-04T09:21:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T09:22:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-04T09:22:49+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T09:23:28+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-04T09:25:04+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
