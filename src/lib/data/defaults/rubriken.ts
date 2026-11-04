@@ -96,7 +96,7 @@ export function rubriken(): Rubrik[] {
       name: "Autoschlüsselgehäuse",
       laienname: "Schlüsselgehäuse",
       erklaerung:
-        "Ein neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt, und Sie erhalten den Preis mit Zahlungslink.",
+        "Ein neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt. Nach Ihrer Anfrage nennen wir Ihnen den Preis.",
       icon: "schluesselgehaeuse",
       ziel: "/autoschluessel/gehaeuse",
       ablauf: [
@@ -124,7 +124,7 @@ export function rubriken(): Rubrik[] {
       abschluss: "angebot-zahlungslink",
       pflichtUploads: ["fahrzeugschein", "schluesselfoto"],
       nachweis: "fahrzeugschein",
-      status: "spaeter",
+      status: "live",
       reihenfolge: 30,
       navigation: "autoschluessel",
       imHub: true,

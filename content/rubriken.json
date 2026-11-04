@@ -90,7 +90,7 @@
     "id": "autoschluessel-gehaeuse",
     "name": "Autoschlüsselgehäuse",
     "laienname": "Schlüsselgehäuse",
-    "erklaerung": "Ein neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt, und Sie erhalten den Preis mit Zahlungslink.",
+    "erklaerung": "Ein neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt. Nach Ihrer Anfrage nennen wir Ihnen den Preis.",
     "icon": "schluesselgehaeuse",
     "ziel": "/autoschluessel/gehaeuse",
     "ablauf": [
@@ -121,7 +121,7 @@
       "schluesselfoto"
     ],
     "nachweis": "fahrzeugschein",
-    "status": "spaeter",
+    "status": "live",
     "reihenfolge": 30,
     "navigation": "autoschluessel",
     "imHub": true,

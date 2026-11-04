@@ -47,6 +47,8 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '/schluessel-einschicken/anmelden', priority: 0.7 },
   { path: '/motorradschluessel', priority: 0.7 },
   { path: '/motorradschluessel/anfrage', priority: 0.6 },
+  { path: '/autoschluessel/gehaeuse', priority: 0.7 },
+  { path: '/autoschluessel/gehaeuse/anfrage', priority: 0.6 },
   { path: '/schluessel-einschicken', priority: 0.7 },
   { path: '/schluessel-nach-code', priority: 0.8 },
   { path: '/gleichschliessende-zylinder', priority: 0.8 },
