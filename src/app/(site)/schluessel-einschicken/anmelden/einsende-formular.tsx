@@ -102,7 +102,7 @@ function kontaktAus(d: EinsendeDaten): ContactDetails {
   };
 }
 
-function payloadAus(d: EinsendeDaten): EinsendePayload {
+function payloadAus(d: EinsendeDaten & { versand: VersandArt }): EinsendePayload {
   return {
     quelle: EINSENDE_QUELLE,
     originale: d.originale,
@@ -110,7 +110,7 @@ function payloadAus(d: EinsendeDaten): EinsendePayload {
     beschriftung: d.beschriftung.trim() || null,
     hinweis: d.hinweis.trim() || null,
     sicherungskarte: kartenAntwort(d.sicherungskarte) || 'unklar',
-    versand: d.versand || 'versichert',
+    versand: d.versand,
     originalEingesendet: true,
   };
 }
@@ -178,9 +178,18 @@ export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
   // Bei „Sicherungskarte ja“ gehört ein Foto der Karte dazu (R13); der Server prüft es noch einmal.
   const karteFehlt = data.sicherungskarte === 'ja' && fotoKarte.length === 0;
   const shellFlow = { ...flow, canContinue: flow.canContinue && !(flow.step?.id === 'nachweis' && karteFehlt) };
-  const summary = useMemo(() => einsendeZusammenfassung(payloadAus(data), kontaktAus(data)), [data]);
+  // Vorschau erst mit gewählter Versandart (keine Vorbelegung, auch nicht hier).
+  const summary = useMemo(() => {
+    const versand = data.versand;
+    return versand ? einsendeZusammenfassung(payloadAus({ ...data, versand }), kontaktAus(data)) : [];
+  }, [data]);
 
   async function absenden() {
+    const versand = data.versand;
+    if (!versand) {
+      flow.goTo('versand');
+      return;
+    }
     setSubmitting(true);
     setFehler(null);
     await uploadsAbwarten();
@@ -191,7 +200,7 @@ export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
         area: 'schluessel-nach-vorlage',
         process: 'gefuehrte-anfrage',
         contact: kontaktAus(data),
-        payload: { ...payloadAus(data) },
+        payload: { ...payloadAus({ ...data, versand }) },
         // Die Zusammenfassung baut der Server aus den geprüften Angaben.
         summary: [],
         uploads: data.sicherungskarte === 'ja' ? fotoKarte.map((file) => alsUpload(file, 'sicherungskarte')) : [],

@@ -26,6 +26,7 @@ import type {
   Vorgaenge,
   Zylinderkatalog,
 } from '@/payload-types';
+import { istEinsendung } from '../einsenden/vorgang';
 import { rabattAusPreis, staffelPreis } from '../staffel';
 import type {
   ApprovalInfo,
@@ -1200,11 +1201,12 @@ const versandZuPayload = (shipment: ShipmentInfo) => ({
   sendungsnummer: shipment.trackingNumber,
 });
 
-function freigabeZuSeite(f: Vorgaenge['freigabe']): ApprovalInfo | undefined {
+function freigabeZuSeite(f: Vorgaenge['freigabe'], einsendung = false): ApprovalInfo | undefined {
   if (!f) return undefined;
   const approval: ApprovalInfo = {};
   if (f.preisCent !== null && f.preisCent !== undefined) approval.priceCents = Number(f.preisCent);
-  if (typeof f.einsendenNoetig === 'boolean') approval.sendInRequired = f.einsendenNoetig;
+  // Einsendung (E6-OPUS-02): Das Original liegt schon vor; das Häkchen gilt dort nie.
+  if (typeof f.einsendenNoetig === 'boolean') approval.sendInRequired = einsendung ? false : f.einsendenNoetig;
   if (f.hinweis) approval.note = f.hinweis;
   if (f.freigegebenAm) approval.approvedAt = f.freigegebenAm;
   return Object.keys(approval).length ? approval : undefined;
@@ -1352,7 +1354,7 @@ export function vorgangZuSeite(doc: Vorgaenge): BusinessRecord {
   if (shipment) record.shipment = shipment;
   const consents = zustimmungenZuSeite(doc.zustimmungen);
   if (consents) record.consents = consents;
-  const approval = freigabeZuSeite(doc.freigabe);
+  const approval = freigabeZuSeite(doc.freigabe, istEinsendung(record));
   if (approval) record.approval = approval;
   const referral = vermittlungZuSeite(doc.vermittlung);
   if (referral) record.referral = referral;

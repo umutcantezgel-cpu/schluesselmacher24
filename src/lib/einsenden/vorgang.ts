@@ -11,10 +11,11 @@
  * Reine Funktionen ohne Seiteneffekte, im Browser und auf dem Server nutzbar.
  */
 
-import { istFotoanfrage } from '@/lib/foto-freigabe';
-import type { BusinessRecord, ContactDetails, RecordStatus, SummarySection } from '@/lib/types';
-import type { VersandArt } from '@/lib/versand/typen';
-import { KARTEN_LABEL, kartenAntwort } from '@/lib/wege/nachweis';
+// Nur relative Importe: Mails und Datenabbildung laden dieses Modul auch in Backend-Hooks.
+import { istFotoanfrage } from '../foto-freigabe';
+import type { BusinessRecord, ContactDetails, RecordStatus, SummarySection } from '../types';
+import type { VersandArt } from '../versand/typen';
+import { KARTEN_LABEL, kartenAntwort } from '../wege/nachweis';
 
 export const EINSENDE_QUELLE = 'einsenden';
 export const MAX_ORIGINALE = 10;

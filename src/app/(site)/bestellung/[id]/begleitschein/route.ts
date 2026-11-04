@@ -2,13 +2,14 @@ import type { NextRequest } from 'next/server';
 
 import { getRecord, getSettings } from '@/lib/data';
 import { defaults } from '@/lib/data/defaults';
-import { begleitscheinZumVorgang } from '@/lib/einsenden/schein';
+import { begleitscheinAnzeigen, begleitscheinZumVorgang } from '@/lib/einsenden/schein';
 import { verifyAccessToken } from '@/lib/server/access-token';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 
 /**
  * Begleitschein zum Vorgang als PDF (G-24, E6-OPUS-02): für Einsendungen und für Foto-Anfragen, deren
- * Freigabe das Original verlangt. Nur mit dem Link-Schlüssel der Vorgangsseite (`?t=`); ein
+ * Freigabe das Original verlangt, solange die Vorgangsseite ihn zeigt (bei Einsendungen bis zum Eingang).
+ * Nur mit dem Link-Schlüssel der Vorgangsseite (`?t=`); ein
  * unbekannter Vorgang und ein falscher Schlüssel sehen gleich aus. Gespeichert wird nichts.
  */
 const KOPF = { 'cache-control': 'no-store', 'x-robots-tag': 'noindex', 'referrer-policy': 'no-referrer' };
@@ -29,7 +30,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       company: settings.company,
       einstellungen: settings.sendIn ?? defaults.settings().sendIn!,
     });
-    if (!schein) return textAntwort('Zu diesem Vorgang gibt es keinen Begleitschein.', 404);
+    if (!schein || !begleitscheinAnzeigen(vorgang)) return textAntwort('Zu diesem Vorgang gibt es keinen Begleitschein.', 404);
     return new Response(new Uint8Array(schein.pdf), {
       headers: { ...KOPF, 'content-type': 'application/pdf', 'content-disposition': `attachment; filename="${schein.dateiname}"` },
     });

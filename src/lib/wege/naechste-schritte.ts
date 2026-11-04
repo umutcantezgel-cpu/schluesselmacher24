@@ -85,7 +85,7 @@ export const SCHRITTE_EINSENDUNG: NaechsterSchritt[] = [
   },
   {
     titel: 'Anfertigung und Rückversand',
-    text: 'Nach Zahlungseingang fertigen wir die Kopien und schicken sie mit Ihrem Original zurück. Die Sendungsnummer bekommen Sie per E-Mail.',
+    text: 'Nach Zahlungseingang fertigen wir die Kopien und schicken sie mit Ihrem Original zurück. Sobald die Sendung unterwegs ist, bekommen Sie eine E-Mail, mit Sendungsnummer, wenn die Sendung eine hat.',
   },
 ];
 

@@ -259,7 +259,8 @@ export default async function SchluesselEinschickenPage() {
           </Alert>
           <Alert tone="info" title="Rücksendung mit den Kopien">
             Nach der Anfertigung erhalten Sie Ihr Original zusammen mit den Kopien zurück, auf Wunsch getrennt voneinander. Die
-            Versandart für die Rücksendung stimmen wir vorher mit Ihnen ab; die Sendungsnummer schicken wir Ihnen per E-Mail.
+            Versandart für die Rücksendung stimmen wir vorher mit Ihnen ab. Sobald die Sendung unterwegs ist, bekommen Sie eine
+            E-Mail, mit Sendungsnummer, wenn die Sendung eine hat.
           </Alert>
         </div>
         <p className="mt-6 max-w-measure text-small text-foreground-muted">

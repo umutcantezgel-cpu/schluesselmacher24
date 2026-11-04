@@ -42,10 +42,11 @@ export function gewuenschteStueckzahl(vorgang: Pick<BusinessRecord, 'payload'>):
  * Kundensichtbare Verlaufseinträge zu den Schritten der Foto-Prüfung. Die
  * übrigen Statuswechsel stehen nur in den internen Notizen.
  */
-export function fotoanfrageVerlauf(status: RecordStatus, mitPreis: boolean): string | null {
+export function fotoanfrageVerlauf(status: RecordStatus, mitPreis: boolean, einsendung = false): string | null {
   switch (status) {
     case 'in-pruefung':
-      return 'Wir prüfen Ihre Fotos.';
+      // Bei einer Einsendung (E6-OPUS-02) heißt dieser Schritt: Der Schlüssel ist angekommen.
+      return einsendung ? 'Ihr Schlüssel ist bei uns eingegangen und wird geprüft.' : 'Wir prüfen Ihre Fotos.';
     case 'geprueft':
       return 'Prüfung abgeschlossen. Das Ergebnis erhalten Sie in Kürze.';
     case 'freigegeben':
@@ -55,7 +56,9 @@ export function fotoanfrageVerlauf(status: RecordStatus, mitPreis: boolean): str
     case 'wartet-auf-kunde':
       return 'Rückfrage: Für die Prüfung brauchen wir noch eine Angabe von Ihnen.';
     case 'nicht-moeglich':
-      return 'Geprüft: Eine Anfertigung nach Ihrer Vorlage ist leider nicht möglich.';
+      return einsendung
+        ? 'Geprüft: Eine Kopie ist leider nicht möglich. Ihr Original schicken wir Ihnen zurück.'
+        : 'Geprüft: Eine Anfertigung nach Ihrer Vorlage ist leider nicht möglich.';
     default:
       return null;
   }

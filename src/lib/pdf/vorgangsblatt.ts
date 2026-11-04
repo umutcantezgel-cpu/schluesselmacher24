@@ -5,6 +5,7 @@
  * Dokumente stehen nur als Eintrag in der Liste, nie als Bild. Reine Funktion, nur relative Importe.
  */
 
+import { istEinsendung } from '../einsenden/vorgang';
 import { KATEGORIE_LABEL, POSITION_LABEL } from '../druckansichten';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '../format';
 import { ART_LABEL, BEREICH_LABEL, UMFANG_LABEL, ZAHLUNG_LABEL } from '../mail/vorlagen/gemeinsam';
@@ -145,7 +146,10 @@ export function vorgangsblattInhalt({ vorgang, firma, bilder = [], jetzt = new D
       titel: 'Freigabe',
       zeilen: [
         { name: 'Preis', wert: freigabe.priceCents !== undefined ? formatCents(freigabe.priceCents) : '' },
-        { name: 'Originalschlüssel einsenden', wert: freigabe.sendInRequired === undefined ? '' : freigabe.sendInRequired ? 'ja' : 'nein' },
+        {
+          name: 'Originalschlüssel einsenden',
+          wert: istEinsendung(vorgang) ? 'liegt vor (Einsendung)' : freigabe.sendInRequired === undefined ? '' : freigabe.sendInRequired ? 'ja' : 'nein',
+        },
         { name: 'Hinweis an den Kunden', wert: freigabe.note ?? '' },
         { name: 'Freigegeben am', wert: freigabe.approvedAt ? uhr(freigabe.approvedAt) : '' },
       ],

@@ -11,6 +11,7 @@
  * Einsendung bildet der Aufrufer (`einsendeAnschrift` in ./einsendung.ts).
  */
 
+import { istEinsendung } from '../../einsenden/vorgang';
 import { formatCents } from '../../format';
 import { gewuenschteStueckzahl } from '../../foto-freigabe';
 import type { BusinessRecord } from '../../types';
@@ -71,16 +72,26 @@ function freigegeben({ vorgang, nachricht, kontext, zahlungsLink, einsendeAnschr
   const freigabe = vorgang.approval ?? {};
   const preis = freigabe.priceCents && freigabe.priceCents > 0 ? freigabe.priceCents : undefined;
   const bezahlt = vorgang.payment?.status === 'bezahlt';
-  const einsenden = freigabe.sendInRequired === true;
+  // Bei einer Einsendung liegt das Original schon bei uns (E6-OPUS-02).
+  const einsendung = istEinsendung(vorgang);
+  const einsenden = !einsendung && freigabe.sendInRequired === true;
   const stueck = gewuenschteStueckzahl(vorgang);
 
   const felder: Array<[string, string]> = [['Ergebnis der Prüfung', 'Anfertigung möglich']];
   if (stueck) felder.push(['Stückzahl laut Ihrer Anfrage', String(stueck)]);
   felder.push(['Preis', preis ? `${formatCents(preis)} inkl. Umsatzsteuer` : 'nennen wir Ihnen gesondert']);
-  felder.push(['Originalschlüssel', einsenden ? 'bitte einsenden (Anleitung unten)' : 'nicht nötig — wir fertigen nach Ihren Fotos']);
+  felder.push([
+    'Originalschlüssel',
+    einsendung ? 'liegt bei uns und kommt mit den Kopien zurück' : einsenden ? 'bitte einsenden (Anleitung unten)' : 'nicht nötig — wir fertigen nach Ihren Fotos',
+  ]);
 
   const bausteine: Baustein[] = [
-    { art: 'absatz', text: 'wir haben Ihre Fotos geprüft: Wir können Ihren Schlüssel nach Ihrer Vorlage anfertigen.' },
+    {
+      art: 'absatz',
+      text: einsendung
+        ? 'wir haben Ihren eingeschickten Schlüssel geprüft: Wir können die Kopien anfertigen.'
+        : 'wir haben Ihre Fotos geprüft: Wir können Ihren Schlüssel nach Ihrer Vorlage anfertigen.',
+    },
     nummerBaustein(vorgang),
     { art: 'felder', zeilen: felder },
     ...nachrichten(freigabe.note, nachricht, 'Hinweis zur Freigabe'),
@@ -133,7 +144,7 @@ function freigegeben({ vorgang, nachricht, kontext, zahlungsLink, einsendeAnschr
   bausteine.push(ANTWORT_HINWEIS);
 
   return baueMail({
-    betreff: `Ihre Anfrage ist freigegeben – ${vorgang.reference}`,
+    betreff: `${einsendung ? 'Ihre Einsendung' : 'Ihre Anfrage'} ist freigegeben – ${vorgang.reference}`,
     vorschau: preis
       ? `Anfertigung möglich, Preis ${formatCents(preis)}. Mit der Zahlung erteilen Sie den Auftrag.`
       : 'Anfertigung möglich. Den Preis nennen wir Ihnen gesondert.',
@@ -146,11 +157,12 @@ function freigegeben({ vorgang, nachricht, kontext, zahlungsLink, einsendeAnschr
 
 function nichtMoeglich({ vorgang, nachricht, kontext }: FreigabeMailDaten): MailInhalt {
   const zahlung = vorgang.payment;
+  const einsendung = istEinsendung(vorgang);
   const bausteine: Baustein[] = [
     {
       art: 'absatz',
       text:
-        'vielen Dank für Ihre Anfrage und Ihre Fotos. Wir haben Ihren Schlüssel sorgfältig geprüft. Leider können '
+        `vielen Dank für Ihre ${einsendung ? 'Einsendung' : 'Anfrage und Ihre Fotos'}. Wir haben Ihren Schlüssel sorgfältig geprüft. Leider können `
         + 'wir ihn nicht nach Ihrer Vorlage anfertigen.',
     },
     nummerBaustein(vorgang),
@@ -158,8 +170,10 @@ function nichtMoeglich({ vorgang, nachricht, kontext }: FreigabeMailDaten): Mail
     {
       art: 'absatz',
       text:
-        'Ein Auftrag ist damit nicht zustande gekommen; Sie müssen nichts weiter tun. Bitte senden Sie uns Ihren '
-        + 'Originalschlüssel nicht zu.'
+        (einsendung
+          ? 'Ein Auftrag ist damit nicht zustande gekommen; Sie müssen nichts weiter tun. Ihr Original schicken wir Ihnen zurück.'
+          : 'Ein Auftrag ist damit nicht zustande gekommen; Sie müssen nichts weiter tun. Bitte senden Sie uns Ihren '
+            + 'Originalschlüssel nicht zu.')
         + (zahlung?.status === 'bezahlt'
           ? ' Zu Ihrer bereits geleisteten Zahlung melden wir uns gesondert.'
           : zahlung?.status === 'offen'
@@ -180,10 +194,13 @@ function nichtMoeglich({ vorgang, nachricht, kontext }: FreigabeMailDaten): Mail
 
 function rueckfrage({ vorgang, nachricht, kontext }: FreigabeMailDaten): MailInhalt {
   const text = nachricht?.trim();
+  const einsendung = istEinsendung(vorgang);
   const bausteine: Baustein[] = [
     {
       art: 'absatz',
-      text: 'für die Prüfung Ihres Schlüssels brauchen wir noch etwas von Ihnen — etwa ein weiteres Foto oder eine Angabe.',
+      text: einsendung
+        ? 'für die Prüfung Ihres Schlüssels brauchen wir noch eine Angabe von Ihnen.'
+        : 'für die Prüfung Ihres Schlüssels brauchen wir noch etwas von Ihnen — etwa ein weiteres Foto oder eine Angabe.',
     },
     nummerBaustein(vorgang),
     text
@@ -193,8 +210,10 @@ function rueckfrage({ vorgang, nachricht, kontext }: FreigabeMailDaten): MailInh
       art: 'absatz',
       text:
         'Antworten Sie einfach auf diese E-Mail und nennen Sie Ihre Vorgangsnummer. Sobald Ihre Antwort da ist, '
-        + 'setzen wir die Prüfung fort. Ihren Originalschlüssel senden Sie bitte erst ein, wenn wir Sie ausdrücklich '
-        + 'darum bitten.',
+        + 'setzen wir die Prüfung fort. '
+        + (einsendung
+          ? 'Ihr Schlüssel bleibt so lange bei uns.'
+          : 'Ihren Originalschlüssel senden Sie bitte erst ein, wenn wir Sie ausdrücklich darum bitten.'),
     },
     { art: 'knopf', href: statusLink(kontext.site), label: 'Stand abrufen' },
   ];

@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
 import { defaults } from '../data/defaults';
+import { vorgangZuPayload, vorgangZuSeite } from '../data/payload-mapping';
+import { fotoanfrageVerlauf } from '../foto-freigabe';
+import { kundeEingang, statusMail } from '../mail/vorlagen';
+import { echteEinstellungen } from '../rechtliches/test-hilfen';
 import type { BusinessRecord, CompanyProfile, ContactDetails } from '../types';
 import { SCHRITTE_EINSENDUNG, naechsteSchritte } from '../wege/naechste-schritte';
 import { begleitscheinAnzeigen, begleitscheinZumVorgang, brauchtBegleitschein, einsendeAngebotFuerWeg, werkstattAnschrift } from './schein';
@@ -133,5 +137,46 @@ describe('Begleitschein (G-24, R9, A-035)', () => {
     const foto = vorgang({ payload: { sicherungskarte: 'nein' }, status: 'freigegeben' });
     expect(begleitscheinAnzeigen(foto)).toBe(false);
     expect(begleitscheinAnzeigen({ ...foto, approval: { sendInRequired: true } })).toBe(true);
+  });
+});
+
+describe('Einsendung in Mails, Verlauf und Datenabbildung (Gegenprüfung E6-OPUS-02)', () => {
+  const kontext = { site: 'https://schluesselmacher24.de', firma: echteEinstellungen().company };
+  const einsendung = (teil: Partial<BusinessRecord> = {}) => vorgang({ approval: { sendInRequired: true, priceCents: 2490 }, ...teil });
+
+  it('spricht in Freigabe, Absage und Rückfrage vom eingeschickten Schlüssel, nicht von Fotos', () => {
+    const frei = statusMail({ vorgang: einsendung({ status: 'freigegeben' }), status: 'freigegeben', kontext, einsendeAnschrift: ['Werkstatt'] });
+    expect(frei.betreff).toContain('Ihre Einsendung ist freigegeben');
+    expect(frei.text).toContain('liegt bei uns und kommt mit den Kopien zurück');
+    expect(frei.text).not.toMatch(/nach Ihren Fotos|Fotos geprüft|Anleitung unten|Zettel mit Ihrer Vorgangsnummer/);
+
+    const nein = statusMail({ vorgang: einsendung({ status: 'nicht-moeglich' }), status: 'nicht-moeglich', kontext });
+    expect(nein.text).toContain('Ihr Original schicken wir Ihnen zurück');
+    expect(nein.text).not.toContain('Originalschlüssel nicht zu');
+    expect(nein.text).not.toContain('Ihre Fotos');
+
+    const frage = statusMail({ vorgang: einsendung({ status: 'wartet-auf-kunde' }), status: 'wartet-auf-kunde', kontext });
+    expect(frage.text).not.toMatch(/weiteres Foto|senden Sie bitte erst ein/);
+    expect(frage.text).toContain('Ihr Schlüssel bleibt so lange bei uns');
+  });
+
+  it('kündigt in der Eingangsmail den Begleitschein an', () => {
+    const mail = kundeEingang({ vorgang: vorgang(), token: 'link-schluessel', onlineZahlung: false, kontext });
+    expect(mail.betreff).toBe('Ihre Einsendung SM24-A-2026-0007 ist angemeldet');
+    expect(mail.text).toContain('Begleitschein');
+  });
+
+  it('schreibt in den Verlauf „Schlüssel eingegangen“ statt „Fotos“', () => {
+    expect(fotoanfrageVerlauf('in-pruefung', false, true)).toBe('Ihr Schlüssel ist bei uns eingegangen und wird geprüft.');
+    expect(fotoanfrageVerlauf('in-pruefung', false)).toBe('Wir prüfen Ihre Fotos.');
+    expect(fotoanfrageVerlauf('nicht-moeglich', false, true)).toContain('Ihr Original schicken wir Ihnen zurück');
+  });
+
+  it('liest „Original einsenden“ bei Einsendungen aus der Datenbank immer als nein', () => {
+    const gespeichert = (record: BusinessRecord) => ({ ...vorgangZuPayload(record), id: 7, createdAt: record.createdAt, updatedAt: record.updatedAt });
+    const zurueck = vorgangZuSeite(gespeichert(einsendung()) as never);
+    expect(zurueck.approval?.sendInRequired).toBe(false);
+    const foto = vorgang({ payload: { sicherungskarte: 'nein' }, approval: { sendInRequired: true } });
+    expect(vorgangZuSeite(gespeichert(foto) as never).approval?.sendInRequired).toBe(true);
   });
 });

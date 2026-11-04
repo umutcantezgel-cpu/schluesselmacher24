@@ -1,6 +1,7 @@
 import { APIError, isolateObjectProperty, type CollectionAfterChangeHook, type CollectionBeforeChangeHook, type PayloadRequest } from 'payload';
 
 import { einstellungenZuSeite, vorgangAenderungZuPayload, vorgangZuSeite } from '../../lib/data/payload-mapping';
+import { EINSENDE_QUELLE } from '../../lib/einsenden/vorgang';
 import { formatCents } from '../../lib/format';
 import { auftragErteiltVerlauf, fotoanfrageVerlauf, freigabeZahlbar, istFotoanfrage } from '../../lib/foto-freigabe';
 import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from '../../lib/mail/versand';
@@ -98,6 +99,8 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
   const vorhaben: Vorhaben = {};
   const bearbeiter = benutzerName(req.user);
   const fotoanfrage = istFotoanfrage({ kind: originalDoc.art, area: originalDoc.bereich as AreaKey });
+  // Einsendung (E6-OPUS-02): Das Original liegt schon vor; „Original einsenden“ gilt hier nie.
+  const einsendung = fotoanfrage && (originalDoc.daten as Record<string, unknown> | null | undefined)?.quelle === EINSENDE_QUELLE;
   const freigabe = data.freigabe ?? originalDoc.freigabe;
   const preis = Number(freigabe?.preisCent ?? 0);
   const mitPreis = Number.isSafeInteger(preis) && preis > 0;
@@ -143,7 +146,7 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
       if (fotoanfrage && (data.status ?? originalDoc.status) === 'freigegeben') {
         if (!data.zahlung.umfang && mitPreis) data.zahlung = { ...data.zahlung, umfang: 'gesamt', betragCent: preis };
         data.status = 'in-fertigung';
-        verlauf(auftragErteiltVerlauf(freigabe?.einsendenNoetig === true));
+        verlauf(auftragErteiltVerlauf(!einsendung && freigabe?.einsendenNoetig === true));
       }
     }
     notiz(
@@ -157,7 +160,7 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
     // Statusverlauf (Erg. Leitfaden §2): intern mit altem und neuem Status, Zeit und Bearbeiter.
     notiz(`Status von „${statusBezeichnung(originalDoc.status)}“ auf „${statusBezeichnung(data.status)}“ geändert (${bearbeiter}).`);
     // Für den Kunden nur die Schritte der Foto-Prüfung (Statusabfrage).
-    const kundentext = fotoanfrage ? fotoanfrageVerlauf(data.status, mitPreis) : null;
+    const kundentext = fotoanfrage ? fotoanfrageVerlauf(data.status, mitPreis, einsendung) : null;
     if (kundentext) verlauf(kundentext);
 
     // Foto-Freigabe: Zeitpunkt der ersten Freigabe festhalten (Systemfeld).
