@@ -23,6 +23,7 @@ import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { CheckDraw } from '@/components/visual/motion/check-draw';
+import { KARTEN_ANTWORTEN, KARTEN_LABEL, kartenAntwort, type KartenAntwort } from '@/lib/wege/nachweis';
 
 const FLOW_ID = 'schluessel-nach-vorlage-anfrage';
 const MAX_STUECK = 20;
@@ -84,6 +85,8 @@ interface AnfrageData {
   herstellerUnbekannt: boolean;
   nummern: string;
   keineBeschriftung: boolean;
+  /** Berechtigungsnachweis (R13): Gibt es eine Sicherungskarte? */
+  sicherungskarte: KartenAntwort;
   stueckzahl: number;
   anmerkung: string;
   anrede: string;
@@ -104,6 +107,7 @@ const INITIAL: AnfrageData = {
   herstellerUnbekannt: false,
   nummern: '',
   keineBeschriftung: false,
+  sicherungskarte: '',
   stueckzahl: 1,
   anmerkung: '',
   anrede: '',
@@ -192,6 +196,13 @@ const EXAMPLE_MARKS: ImageSlot = {
   note: 'Nah genug, dass jede Ziffer einzeln lesbar ist.',
 };
 
+/** Beispiel für das Foto der Sicherungskarte (R13): ganze Karte, Nummer lesbar. */
+const EXAMPLE_KARTE: ImageSlot = {
+  motif: 'Beispielfoto: Sicherungskarte von vorn, ganze Karte im Bild, Kartennummer lesbar',
+  ratio: '3/2',
+  note: 'Die ganze Karte, scharf und ohne Spiegelung.',
+};
+
 const AUFNAHME_HINWEISE = [
   'Scharf stellen und erst danach auslösen.',
   'Helles, gleichmäßiges Licht — kein direkter Blitz, keine Spiegelungen.',
@@ -213,6 +224,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
   const [fotoRueckseite, setFotoRueckseite] = useState<PickedFile[]>([]);
   const [fotoSpitze, setFotoSpitze] = useState<PickedFile[]>([]);
   const [fotoBeschriftung, setFotoBeschriftung] = useState<PickedFile[]>([]);
+  const [fotoKarte, setFotoKarte] = useState<PickedFile[]>([]);
 
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<SubmitResult | null>(null);
@@ -231,7 +243,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
         case 'hersteller':
           return data.herstellerUnbekannt || data.hersteller.trim().length > 0;
         case 'nummern':
-          return data.keineBeschriftung || data.nummern.trim().length > 0;
+          return (data.keineBeschriftung || data.nummern.trim().length > 0) && kartenAntwort(data.sicherungskarte) !== '';
         case 'stueckzahl':
           return data.stueckzahl >= 1 && data.stueckzahl <= MAX_STUECK;
         case 'kontakt':
@@ -257,7 +269,9 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
     'foto-spitze': fotoSpitze,
   };
 
-  const aktuelleFotosOk = (fotoStatus[flow.step?.id ?? '']?.length ?? 1) > 0;
+  // Bei „Sicherungskarte ja“ gehört ein Foto der Karte dazu (R13); der Server prüft es noch einmal.
+  const karteFehlt = data.sicherungskarte === 'ja' && fotoKarte.length === 0;
+  const aktuelleFotosOk = (fotoStatus[flow.step?.id ?? '']?.length ?? 1) > 0 && !(flow.step?.id === 'nummern' && karteFehlt);
 
   // Fotos zählen nicht zum gespeicherten Zustand, deshalb wird die
   // Weiter-Sperre hier ergänzt.
@@ -280,6 +294,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
           { label: 'Rückseite', value: dateiAngabe(fotoRueckseite, true) },
           { label: 'Spitze und Profil', value: dateiAngabe(fotoSpitze, true) },
           { label: 'Nahaufnahmen der Beschriftung', value: dateiAngabe(fotoBeschriftung, false) },
+          ...(data.sicherungskarte ? [{ label: 'Sicherungskarte', value: KARTEN_LABEL[data.sicherungskarte] }] : []),
         ],
       },
       {
@@ -361,10 +376,14 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
           stueckzahl: data.stueckzahl,
           anmerkung: data.anmerkung.trim() || null,
           fotoAnzahl: alleFotos.length,
+          sicherungskarte: kartenAntwort(data.sicherungskarte) || null,
           originalEingesendet: false,
         },
         summary,
-        uploads: alleFotos.map((file) => alsUpload(file, 'schluesselfoto')),
+        uploads: [
+          ...alleFotos.map((file) => alsUpload(file, 'schluesselfoto')),
+          ...(data.sicherungskarte === 'ja' ? fotoKarte.map((file) => alsUpload(file, 'sicherungskarte')) : []),
+        ],
       });
       schutz.antwortBeachten(antwort);
 
@@ -501,7 +520,9 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
     'foto-rueckseite': 'Bitte fügen Sie ein Foto der Rückseite hinzu.',
     'foto-spitze': 'Bitte fügen Sie ein Foto von vorne auf die Spitze hinzu.',
     hersteller: 'Bitte tragen Sie den Hersteller ein oder wählen Sie „nicht bekannt“.',
-    nummern: 'Bitte übertragen Sie die Beschriftung oder wählen Sie „keine erkennbar“.',
+    nummern: karteFehlt
+      ? 'Bitte laden Sie ein Foto Ihrer Sicherungskarte hoch.'
+      : 'Bitte übertragen Sie die Beschriftung oder wählen Sie „keine erkennbar“ und beantworten Sie die Frage zur Sicherungskarte.',
     kontakt: 'Bitte füllen Sie Vorname, Nachname, E-Mail, Telefon und Versandland aus.',
   };
 
@@ -651,6 +672,39 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
               maxFiles={3}
             />
           </div>
+
+          {/* Berechtigungsnachweis (R13, E6-OPUS-01): Schlüssel mit geschütztem Profil nur gegen die Karte */}
+          <fieldset className="space-y-3 border-t border-border pt-5">
+            <legend className="text-body font-semibold text-foreground">Gibt es zu Ihrem Schlüssel eine Sicherungskarte?</legend>
+            <p className="text-small text-foreground-muted">
+              Die Sicherungskarte gehört zu Schlüsseln mit geschütztem Profil, etwa in Schließanlagen. Solche Schlüssel
+              fertigen wir nur gegen die Karte.
+            </p>
+            {KARTEN_ANTWORTEN.map((antwort) => (
+              <OptionCard
+                key={antwort.wert}
+                name="sicherungskarte"
+                value={antwort.wert}
+                checked={data.sicherungskarte === antwort.wert}
+                onSelect={() => flow.set('sicherungskarte', antwort.wert)}
+                title={antwort.titel}
+                description={antwort.satz}
+              />
+            ))}
+            {data.sicherungskarte === 'ja' && (
+              <PhotoUpload
+                category="sicherungskarte"
+                id="foto-sicherungskarte"
+                label="Foto Ihrer Sicherungskarte"
+                description="Die ganze Karte, scharf und gut lesbar. Wir nutzen das Foto nur für diesen Auftrag."
+                example={EXAMPLE_KARTE}
+                files={fotoKarte}
+                onChange={setFotoKarte}
+                maxFiles={2}
+                multiple
+              />
+            )}
+          </fieldset>
         </div>
       )}
 

@@ -9,7 +9,8 @@ import { createRecord, verifyCarKeyBooking, type GepruefteAngaben } from '@/lib/
 import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
 import { publicRecordSchema, terminZustimmungenSchema, type TerminZustimmungen } from '@/lib/server/record-schema';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
-import { fahrzeugscheinPruefen } from '@/lib/server/unterlagen-pflicht';
+import { fahrzeugscheinPruefen, nachweisPruefen } from '@/lib/server/unterlagen-pflicht';
+import { fotoAnfrageVerlangtKarte } from '@/lib/wege/nachweis';
 import type {
   AppointmentInfo,
   AreaKey,
@@ -207,6 +208,14 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   } else if (SCHNAPPSCHUSS_FELD in payload) {
     payload = { ...payload };
     delete payload[SCHNAPPSCHUSS_FELD];
+  }
+
+  // Berechtigungsnachweis der Foto-Anfrage (R13, E6-OPUS-01): Wer eine Sicherungskarte angibt, lädt sie hoch.
+  if (data.kind === 'anfrage' && data.area === 'schluessel-nach-vorlage' && fotoAnfrageVerlangtKarte(payload)) {
+    const fehlt = nachweisPruefen('sicherungskarte', data.uploads, storageStatus().configured);
+    if (fehlt) {
+      return { ok: false, notices: [], error: fehlt };
+    }
   }
 
   const result = await createRecord({

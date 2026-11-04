@@ -10,6 +10,7 @@ import { validateCylinderDraft } from '@/lib/cylinder-rules';
 import { zylinderDetails } from '@/lib/cylinder-summary';
 import { formatCents } from '@/lib/format';
 import { SCHUTZ_ERNEUERT, type FormularSchutz, type SchutzAntwort } from '@/lib/formular-schutz';
+import { storageStatus } from '@/lib/integrations';
 import { LIEFERLAND, istSonderanfertigung } from '@/lib/kasse';
 import { availableShipping, cartTotals, priceCylinderOrder, unitPriceForCodeLine } from '@/lib/pricing';
 import { RECHTSTEXTE_FASSUNG } from '@/lib/rechtliches/texte';
@@ -17,8 +18,10 @@ import { createRecord } from '@/lib/server/create-record';
 import { KUNDENDATEI_ID_MUSTER, UPLOAD_TOKEN_MUSTER } from '@/lib/server/datei-pruefung';
 import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
+import { nachweisPruefen } from '@/lib/server/unterlagen-pflicht';
 import { contactSchema } from '@/lib/server/record-schema';
 import type { Cart, CartItem, ContactDetails, OrderLine, OrderTotals, RecordConsents, SummarySection } from '@/lib/types';
+import { codeVerlangtKarte } from '@/lib/wege/nachweis';
 
 export interface CheckoutInput {
   items: CartItem[];
@@ -204,6 +207,11 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
       }
       if (item.qty > line.maxQty) {
         return fail(`Von „${line.name}“ sind höchstens ${line.maxQty} Stück je Bestellung möglich.`);
+      }
+      // Berechtigungsnachweis (R13, E-102): Das Pflichtfoto einer Codelinie ist die Sicherungskarte.
+      if (codeVerlangtKarte(line)) {
+        const fehlt = nachweisPruefen('sicherungskarte', item.photoRefs, storageStatus().configured);
+        if (fehlt) return fail(fehlt);
       }
       const unit = unitPriceForCodeLine(line, item.qty);
       verified.push({ ...item, unitPriceCents: unit });

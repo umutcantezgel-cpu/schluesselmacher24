@@ -184,6 +184,18 @@ describe('submitRecord', () => {
     expect(stored[0].payload).not.toHaveProperty('schnappschuss');
   });
 
+  it('verlangt bei der Foto-Anfrage mit Sicherungskarte ein Foto der Karte (R13, E6-OPUS-01)', async () => {
+    const basis = { kind: 'anfrage' as const, area: 'schluessel-nach-vorlage' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [] };
+    const foto = { fileName: 'schluessel.jpg', sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'schluesselfoto' as const };
+    const karte = { ...foto, fileName: 'karte.jpg', category: 'sicherungskarte' as const };
+    const ohneKarte = await submitRecord({ ...basis, payload: { sicherungskarte: 'ja' }, uploads: [foto] });
+    expect(ohneKarte.ok).toBe(false);
+    expect(ohneKarte.error).toContain('Sicherungskarte');
+    expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'ja' }, uploads: [foto, karte] })).ok).toBe(true);
+    expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'nein' }, uploads: [foto] })).ok).toBe(true);
+    expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'unklar' }, uploads: [foto] })).ok).toBe(true);
+  });
+
   it('lehnt Bestellungen außerhalb der Kasse ab', async () => {
     const result = await submitRecord({
       kind: 'bestellung',
@@ -487,6 +499,33 @@ describe('submitOrder', () => {
       expectedTotalCents,
     });
   }
+
+  it('verlangt bei geschützten Codelinien die Sicherungskarte auch auf dem Server (R13, E6-OPUS-01)', async () => {
+    const geschuetzt = defaults.codeLines().find((l) => l.photoUpload === 'pflicht' && l.active && !l.example)!;
+    const foto = (category: 'schluesselfoto' | 'sicherungskarte') => ({
+      id: `datei-${category}`,
+      fileName: `${category}.jpg`,
+      sizeBytes: 120_000,
+      mimeType: 'image/jpeg',
+      category,
+      uploadedAt: '2026-11-04T02:00:00.000Z',
+    });
+    const bestellung = (photoRefs: ReturnType<typeof foto>[]) =>
+      submitOrder({
+        items: [{ kind: 'code-schluessel', uid: 'k', codeLineId: geschuetzt.id, code: geschuetzt.codeExample, qty: 1, unitPriceCents: 1, photoRefs }],
+        shippingOptionId: shipping.id,
+        contact,
+        acceptedTerms: true,
+        acceptedCustomMade: true,
+        expectedTotalCents: geschuetzt.priceCents + shipping.priceCents,
+      });
+    const ohne = await bestellung([]);
+    expect(ohne.ok).toBe(false);
+    expect(ohne.error).toContain('Sicherungskarte');
+    expect((await bestellung([foto('schluesselfoto')])).ok).toBe(false);
+    expect((await bestellung([foto('sicherungskarte')])).ok).toBe(true);
+    expect(stored[0].uploads.map((u) => u.category)).toEqual(['sicherungskarte']);
+  });
 
   it('bestellt nur zum angezeigten Betrag und meldet eine Abweichung', async () => {
     const result = await order(1);

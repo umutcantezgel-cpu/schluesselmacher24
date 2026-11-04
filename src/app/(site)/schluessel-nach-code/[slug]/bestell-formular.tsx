@@ -16,6 +16,7 @@ import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { Field } from '@/components/forms/field';
 import { QuantityInput, TextInput } from '@/components/forms/controls';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
+import { codeFotoKategorie } from '@/lib/wege/nachweis';
 import { GlyphHaken } from '@/components/visual/glyphen/haken';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphWarenkorb } from '@/components/visual/glyphen/warenkorb';
@@ -109,7 +110,7 @@ export function BestellFormular({ line, werkstatt }: BestellFormularProps) {
     await uploadsAbwarten();
     const photoRefs: UploadRef[] = photos.map((file) => ({
       id: file.id,
-      ...alsUpload(file, 'schluesselfoto'),
+      ...alsUpload(file, codeFotoKategorie(line)),
       uploadedAt: new Date().toISOString(),
     }));
 
@@ -287,10 +288,10 @@ export function BestellFormular({ line, werkstatt }: BestellFormularProps) {
         {/* Foto — nur wenn die Codelinie es vorsieht */}
         {showPhotoUpload && (
           <PhotoUpload
-            category="schluesselfoto"
+            category={codeFotoKategorie(line)}
             kamera="ruhig"
             id={`foto-${line.slug}`}
-            label={photoRequired ? 'Foto des Schlüssels' : 'Foto des Schlüssels (freiwillig)'}
+            label={photoRequired ? 'Foto Ihrer Sicherungskarte' : 'Foto des Schlüssels (freiwillig)'}
             description={
               line.photoUploadHint
               ?? 'Ein Foto hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.'
