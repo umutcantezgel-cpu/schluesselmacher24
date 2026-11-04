@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-04T03:27:59.854Z
+Stand: 2026-11-04T04:11:17.021Z
 
-Etappe 7/12 · Welle 2 · Pflicht 81/140 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 7/12 · Welle 3 · Pflicht 82/140 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -286,7 +286,7 @@ Geplante Tage: 1.56
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E6-OPUS-02 | Einsenden: Adresse, versichert oder unversichert, Begleitschein oder Versandmarke, Kreislauf bis Rückversand mit Kundenstatus | opus-5.5 | L | pflicht | 5 | offen |  |
+| E6-OPUS-02 | Einsenden: Adresse, versichert oder unversichert, Begleitschein oder Versandmarke, Kreislauf bis Rückversand mit Kundenstatus | opus-5.5 | L | pflicht | 5 | committet | 3b5c7b9 |
 
 ### Welle 3
 

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-04T03:49:30+00:00",
+ "stand": "2026-11-04T04:11:17.021Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -3012,7 +3012,13 @@
     "content/seo.json",
     "src/app/(site)/schluessel-nach-vorlage/page.tsx",
     "src/lib/mail/vorlagen/",
-    "src/app/(site)/service-und-termin/terminstatus/"
+    "src/app/(site)/service-und-termin/terminstatus/",
+    "src/lib/foto-freigabe.ts",
+    "src/payload/hooks/vorgang-benachrichtigen.ts",
+    "src/lib/data/payload-mapping.ts",
+    "src/payload/collections/Vorgaenge.ts",
+    "src/lib/pdf/vorgangsblatt.ts",
+    "src/lib/actions/booking.ts"
    ],
    "abhaengigkeiten": [
     "E6-OPUS-01"
@@ -3029,10 +3035,10 @@
    ],
    "art": "pflicht",
    "wirkung": 5,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "3b5c7b9",
    "massstab": null,
    "muster": null
   },
