@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-04T05:23:07.825Z
+Stand: 2026-11-04T05:39:06.368Z
 
-Etappe 7/12 · Welle 3 · Pflicht 85/140 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 7/12 · Welle 4 · Pflicht 86/140 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -301,7 +301,7 @@ Geplante Tage: 1.56
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E6-BAUMEISTER-04 | Beratungsanfragen Elektronik, Tür und Schließtechnik, Sicherheitstechnik, Schlüsselaufbewahrung | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E6-BAUMEISTER-04 | Beratungsanfragen Elektronik, Tür und Schließtechnik, Sicherheitstechnik, Schlüsselaufbewahrung | haiku-5.5 | M | pflicht | 3 | committet | cac398f |
 | E6-BAUMEISTER-05 | Schlüsseldienst vor Ort: Anfrage mit Ort für die Vermittlung | haiku-5.5 | M | pflicht | 3 | offen |  |
 | E6-BAUMEISTER-06 | Schlüssel nach Foto: Fotoanleitung mit drei gezeichneten Beispielen, Hinweis „nicht jedes Foto ablesbar“ | haiku-5.5 | M | pflicht | 3 | offen |  |
 | E6-BAUMEISTER-07 | Schlüssel nach Code: Suche und Filter nach Typ, Codelinie und Hersteller, Codeerkennung in der Suche, kompakte Produktseite | haiku-5.5 | M | pflicht | 3 | offen |  |
