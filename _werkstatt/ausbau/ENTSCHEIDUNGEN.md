@@ -209,3 +209,9 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - G-28 teilweise: Der Bestand bestellt bis 30 Zylinder direkt; G-28 nennt „mehr auf Anfrage“ ab zehn. G9 (Bestellverhalten erweitern, nicht verändern) geht vor: ab elf Zylindern steht ein Hinweis mit dem Weg zur Frage, bestellbar bleibt alles bis 30. Eine Anfrageschwelle ab elf entscheidet der Inhaber (MA-25).
 - G-29 teilweise: Ein Video zur Messhilfe fehlt (Aufnahme beim Inhaber, MA-05 Fotos); „Maße geprüft“ ist im Planer Pflicht, im Sperrschließungs-Konfigurator des Bestands nicht. Eine neue Pflichtbestätigung im Bestellweg verändert den Ablauf (G9) und geht als Frage an den Inhaber (MA-25); bis dahin bleiben dort Messhilfe, Maßrückfragen und die Anfertigungs-Bestätigung der Kasse.
 - Tor E5: bestanden mit diesen offenen Punkten. Weiter mit E6.
+
+## A-034 · Ablaufzeilen der Rubriken: Icons bleiben an ihrer Stelle, neue Schritte nur anhängen (2026-11-04 04:20, E6-OPUS-01)
+- Frage: Der Seed übernimmt Textänderungen aus content/rubriken.json in bestehende Datenbanken je Ablaufzeile nur für Titel und Text; Icon und übrige Spalten der alten Zeile an gleicher Stelle bleiben (src/payload/seed.ts, zeilenAbgleichen). Wie ändern Pakete einen Ablauf, ohne in der Produktion falsche Icons zu erzeugen?
+- Entscheidung: Vorhandene Ablaufzeilen behalten ihr Icon und ihre Reihenfolge; Texte dürfen sich ändern, neue Schritte kommen nur ans Ende. Ein Test (src/lib/wege/ablauf.test.tsx, ICONS_GESEEDET) hält die Reihenfolge aller Rubriken fest. Der Foto-Ablauf hat deshalb vier statt fünf Schritte; alle Aussagen der bisherigen Seitenliste stehen in diesen vier.
+- Folge: Wer ein Icon bewusst ändern will, braucht einen eigenen Weg in die Datenbank (Migration oder Backend) und passt den Test mit Begründung an.
+- Umkehrprobe: Lässt der Inhaber Abläufe im Backend selbst pflegen, gilt dort sein Stand; der Seed überschreibt dann nichts mehr.

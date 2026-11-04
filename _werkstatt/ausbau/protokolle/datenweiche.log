@@ -1037,3 +1037,8 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-04T02:42:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-06,F-07,F-08,F-15 --json /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/fl-e6o1.json
 2026-11-04T02:43:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-06,F-07,F-08,F-15 --json /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/fl-e6o1.json
 2026-11-04T02:44:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-06,F-07,F-08,F-15 --json /tmp/sm24-fl-e6o1.json
+2026-11-04T03:12:04+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T03:26:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/wege src/components/rubrik src/lib/rubriken.test.ts src/components/visual
+2026-11-04T03:26:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/rubrik src/lib/wege
+2026-11-04T03:26:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:27:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run

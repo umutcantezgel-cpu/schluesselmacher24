@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-04T00:09:55.165Z
+Stand: 2026-11-04T03:27:59.854Z
 
-Etappe 7/12 · Welle 1 · Pflicht 80/140 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 7/12 · Welle 2 · Pflicht 81/140 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -280,7 +280,7 @@ Geplante Tage: 1.56
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E6-OPUS-01 | Gemeinsamer Abschluss: Wege-Baukasten aus Rubrikdaten (Ablauf, Formular, Upload mit Fotohilfe, Nachweis, Zusammenfassung, Bestätigung, Vorgangsblatt) | opus-5.5 | L | pflicht | 5 | offen |  |
+| E6-OPUS-01 | Gemeinsamer Abschluss: Wege-Baukasten aus Rubrikdaten (Ablauf, Formular, Upload mit Fotohilfe, Nachweis, Zusammenfassung, Bestätigung, Vorgangsblatt) | opus-5.5 | L | pflicht | 5 | committet | ea67244 |
 
 ### Welle 2
 
