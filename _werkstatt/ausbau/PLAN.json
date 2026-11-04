@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-04T01:50:46+00:00",
+ "stand": "2026-11-04T01:50:58+00:00",
  "etappen": [
   {
    "kennung": "E0",
@@ -2930,7 +2930,15 @@
    "kostenklasse": "L",
    "schreibrechte": [
     "src/components/weg/",
-    "src/lib/wege/"
+    "src/lib/wege/",
+    "src/lib/actions/orders.ts",
+    "src/lib/actions/records.ts",
+    "src/lib/actions/security.test.ts",
+    "src/app/(site)/schluessel-nach-code/[slug]/bestell-formular.tsx",
+    "src/app/(site)/schluessel-nach-vorlage/",
+    "src/app/(site)/service-und-termin/anfrage/",
+    "content/rubriken.json",
+    "src/lib/data/defaults/rubriken.ts"
    ],
    "abhaengigkeiten": [
     "E5-PRUEFER-01",
