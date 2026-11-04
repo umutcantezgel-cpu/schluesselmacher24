@@ -41,6 +41,7 @@ vi.mock('@/lib/data', () => {
     ZuVieleOffeneTermineFehler,
     getSettings: async () => defaults.settings(),
     getCollection: async (name: keyof typeof defaults) => defaults[name](),
+    getRubrik: async (id: string) => defaults.rubriken().find((r) => r.id === id) ?? null,
     getAppointments: async (von: string, bis: string) => (vorab.veraltet ? [] : termine(von, bis)),
     // Wie die Datenschicht: Termin unter Sperre frisch prüfen, dann Nummer vergeben.
     vorgangAnlegen: async ({ art, jahr, aufbauen, termin }: VorgangsAnlage) => {
@@ -194,6 +195,20 @@ describe('submitRecord', () => {
     expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'ja' }, uploads: [foto, karte] })).ok).toBe(true);
     expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'nein' }, uploads: [foto] })).ok).toBe(true);
     expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'unklar' }, uploads: [foto] })).ok).toBe(true);
+  });
+
+  it('verlangt bei Motorrad und Gehäuse die Unterlagen der Rubrik (R13, E6)', async () => {
+    const basis = { kind: 'anfrage' as const, area: 'autoschluessel' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [] };
+    const foto = { fileName: 'schluessel.jpg', sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'schluesselfoto' as const };
+    for (const quelle of ['motorrad', 'gehaeuse']) {
+      const ohne = await submitRecord({ ...basis, payload: { quelle }, uploads: [foto] });
+      expect(ohne.ok, quelle).toBe(false);
+      expect(ohne.error, quelle).toContain('Fahrzeugschein');
+      const ohneFoto = await submitRecord({ ...basis, payload: { quelle }, uploads: [fahrzeugschein] });
+      expect(ohneFoto.ok, quelle).toBe(false);
+      expect((await submitRecord({ ...basis, payload: { quelle }, uploads: [fahrzeugschein, foto] })).ok, quelle).toBe(true);
+      expect((await submitRecord({ ...basis, area: 'schluessel-nach-vorlage', payload: { quelle }, uploads: [fahrzeugschein, foto] })).ok, quelle).toBe(false);
+    }
   });
 
   it('legt eine Einsendung nur mit geprüften Angaben an, ohne Begleitschein bei Platzhalter-Firmendaten (G-24, E6-OPUS-02)', async () => {

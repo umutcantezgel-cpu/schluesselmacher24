@@ -48,3 +48,13 @@ export function fotoAnfrageVerlangtKarte(payload: Record<string, unknown>): bool
 export function kartenAntwort(wert: unknown): KartenAntwort {
   return wert === 'ja' || wert === 'nein' || wert === 'unklar' ? wert : '';
 }
+
+/**
+ * Anfragen aus Rubrik-Wegen ohne eigene Vorgangsart (E6): Die Quelle im payload bestimmt die Rubrik,
+ * deren Nachweis und Pflicht-Uploads der Server verlangt (R13). Die Regeln selbst stehen in den
+ * Rubrikdaten (G-11); hier steht nur, welcher Weg zu welcher Rubrik gehört.
+ */
+export const QUELLE_RUBRIK: Readonly<Record<string, string>> = {
+  motorrad: 'motorradschluessel',
+  gehaeuse: 'autoschluessel-gehaeuse',
+};

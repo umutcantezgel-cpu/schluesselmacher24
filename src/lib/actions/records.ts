@@ -1,6 +1,6 @@
 'use server';
 
-import { getCollection, getSettings } from '@/lib/data';
+import { getCollection, getRubrik, getSettings } from '@/lib/data';
 import { defaults } from '@/lib/data/defaults';
 import { begleitscheinZumVorgang } from '@/lib/einsenden/schein';
 import { EINSENDE_QUELLE, einsendeVorgang } from '@/lib/einsenden/vorgang';
@@ -12,8 +12,8 @@ import { createRecord, verifyCarKeyBooking, type GepruefteAngaben } from '@/lib/
 import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
 import { publicRecordSchema, terminZustimmungenSchema, type TerminZustimmungen } from '@/lib/server/record-schema';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
-import { fahrzeugscheinPruefen, nachweisPruefen } from '@/lib/server/unterlagen-pflicht';
-import { fotoAnfrageVerlangtKarte } from '@/lib/wege/nachweis';
+import { fahrzeugscheinPruefen, nachweisPruefen, rubrikUnterlagenPruefen } from '@/lib/server/unterlagen-pflicht';
+import { QUELLE_RUBRIK, fotoAnfrageVerlangtKarte } from '@/lib/wege/nachweis';
 import type {
   AppointmentInfo,
   AreaKey,
@@ -229,6 +229,19 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     }
     payload = { ...vorgang.payload };
     summary = vorgang.summary;
+  }
+
+  // Anfragen aus Rubrik-Wegen (Motorrad, Gehäuse): Nachweis und Pflicht-Uploads der Rubrik (R13, G-11).
+  const rubrikId = data.kind === 'anfrage' && typeof payload.quelle === 'string' ? QUELLE_RUBRIK[payload.quelle] : undefined;
+  if (rubrikId) {
+    const rubrik = data.area === 'autoschluessel' ? await getRubrik(rubrikId) : null;
+    if (!rubrik) {
+      return { ok: false, notices: [], error: INVALID_INPUT };
+    }
+    const fehlt = rubrikUnterlagenPruefen(rubrik, data.uploads, storageStatus().configured);
+    if (fehlt) {
+      return { ok: false, notices: [], error: fehlt };
+    }
   }
 
   // Berechtigungsnachweis der Foto-Anfrage (R13, E6-OPUS-01): Wer eine Sicherungskarte angibt, lädt sie hoch.
