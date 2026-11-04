@@ -98,7 +98,7 @@ export function rubriken(): Rubrik[] {
       erklaerung:
         "Ein neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt, und Sie erhalten den Preis mit Zahlungslink.",
       icon: "schluesselgehaeuse",
-      ziel: "/autoschluessel-gehaeuse",
+      ziel: "/autoschluessel/gehaeuse",
       ablauf: [
         {
           titel: "Fahrzeug und Fotos senden",
@@ -106,13 +106,13 @@ export function rubriken(): Rubrik[] {
           icon: "foto-hochladen",
         },
         {
-          titel: "Preis mit Zahlungslink",
-          text: "Sie erhalten den Preis und buchen mit einem Klick.",
+          titel: "Preis erhalten",
+          text: "Wir prüfen Ihre Angaben und melden uns mit dem Preis und dem weiteren Ablauf.",
           icon: "zahlung",
         },
         {
           titel: "Schlüssel einschicken",
-          text: "Mit dem Begleitschein an unsere Werkstatt.",
+          text: "Nach Ihrer Zusage schicken Sie den Schlüssel an unsere Werkstatt.",
           icon: "versand-paket",
         },
         {
