@@ -32,6 +32,12 @@ export interface FlowShellProps<T extends object> {
   summe?: { label: string; wert: string };
   /** Bot-Schutz des Ablaufs (`useFormularSchutz`): rendert das versteckte Honigtopf-Feld. */
   schutz?: FormularSchutzHandle;
+  /**
+   * Das Formular steht als Abschnitt in einer längeren Seite (Kontakt, Beratung): Die Leiste mit
+   * „Weiter“ steht auch am Smartphone am Ende des Schritts statt fest am Bildschirmrand, und die
+   * Aktionsleiste der Seite mit „Anrufen“ bleibt sichtbar (K-014, E6).
+   */
+  eingebettet?: boolean;
   /** Hinweis unter dem letzten Schritt, direkt über dem Absenden (etwa zu AGB bei Anfragen). */
   abschlussHinweis?: ReactNode;
   /**
@@ -80,6 +86,7 @@ export function FlowShell<T extends object>({
   schutz,
   abschlussHinweis,
   vorschlag = null,
+  eingebettet = false,
   children,
 }: FlowShellProps<T>) {
   const etappen = etappenAus(flow.steps);
@@ -217,7 +224,7 @@ export function FlowShell<T extends object>({
   );
 
   return (
-    <div data-ablauf className="sm24-ablauf relative pb-40 md:pb-8">
+    <div data-ablauf data-eingebettet={eingebettet ? 'ja' : undefined} className={cn('sm24-ablauf relative', eingebettet ? 'pb-8' : 'pb-40 md:pb-8')}>
       {schutz && <SchutzFelder schutz={schutz} />}
       {/* Fortschritt: klebendes Band über die ganze Breite der Shell, auf allen Breiten gleich
           (eine Zeile „Schritt n von m · Name“, der Ablauftitel steht schon in der h1). Mit Etappen zählt
@@ -319,7 +326,11 @@ export function FlowShell<T extends object>({
               Weiter rechtsbündig in Inhaltsbreite. */}
           <div
             className={cn(
-              'sm24-ablauf-leiste fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface p-4',
+              // Eingebettet steht die Leiste auch am Smartphone am Ende des Schritts: Die Aktionsleiste
+              // der Seite mit „Anrufen“ bleibt sichtbar, nichts überdeckt sich.
+              eingebettet
+                ? 'sm24-ablauf-leiste mt-8 pb-4'
+                : 'sm24-ablauf-leiste fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface p-4',
               'md:static md:mt-8 md:border-0 md:bg-transparent md:p-0 md:pb-4',
             )}
           >

@@ -140,6 +140,7 @@ export function KontaktFormular() {
 
   return (
     <FlowShell
+      eingebettet
       schutz={schutz}
       abschlussHinweis={<AnfrageHinweis />}
       flow={flow}

@@ -218,13 +218,13 @@ header a[aria-label$='Startseite'] > span {
 
   /* Seiten mit eigener Aktionsleiste unten (FlowShell, gefüllter Warenkorb: `.sm24-eigene-leiste`)
      blenden die globale Leiste aus – zwei feste Leisten übereinander verdecken Inhalt. */
-  body:has(.sm24-ablauf, .sm24-eigene-leiste) [data-aktionsleiste] {
+  body:has(.sm24-ablauf:not([data-eingebettet]), .sm24-eigene-leiste) [data-aktionsleiste] {
     display: none;
   }
 
   /* Im laufenden Ablauf bleibt „Weiter“ die einzige Hauptaktion; der Kopfknopf kehrt auf der
      Bestätigung zurück (dort fehlt `.sm24-ablauf`). Spezifität schlägt `sm:inline-flex`. */
-  body:has(.sm24-ablauf) [data-kopfknopf] {
+  body:has(.sm24-ablauf:not([data-eingebettet])) [data-kopfknopf] {
     display: none;
   }
 
