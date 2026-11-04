@@ -50,6 +50,7 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '/gleichschliessende-zylinder/konfigurator', priority: 0.7 },
   { path: '/schliessanlagen', priority: 0.8 },
   { path: '/schliessanlagen/konfigurator', priority: 0.7 },
+  { path: '/schliessanlagen/konfigurator/schliessplan', priority: 0.7 },
   { path: '/elektronische-zutrittsloesungen', priority: 0.8 },
   { path: '/elektronische-zutrittsloesungen/konfigurator', priority: 0.7 },
   { path: '/tuer-und-schliesstechnik', priority: 0.8 },
