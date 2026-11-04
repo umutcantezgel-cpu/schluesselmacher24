@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 import { fetchRecordStatus } from '@/lib/actions/booking';
+import { EINSENDE_STATUS } from '@/lib/einsenden/vorgang';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/format';
 import type { AppointmentInfo, PaymentInfo, RecordStatus, SummarySection } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
@@ -13,6 +14,12 @@ import { Field } from '@/components/forms/field';
 import { TextInput } from '@/components/forms/controls';
 import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphSuche } from '@/components/visual/glyphen/suche';
+
+/** Name und Erklärung des Status; bei Einsendungen dieselben wie auf der Vorgangsseite (E6-OPUS-02). */
+function statusText({ status, einsendung }: { status: RecordStatus; einsendung?: boolean }): { label: string; erklaerung: string } {
+  const eigen = einsendung ? EINSENDE_STATUS[status] : undefined;
+  return eigen ? { label: eigen.label, erklaerung: eigen.text } : STATUS_TEXT[status];
+}
 
 const STATUS_TEXT: Record<RecordStatus, { label: string; erklaerung: string }> = {
   neu: { label: 'Eingegangen', erklaerung: 'Ihr Vorgang liegt uns vor und wird in Kürze gesichtet.' },
@@ -164,11 +171,11 @@ export function TerminStatusFormular() {
                   {ergebnis.reference}
                 </p>
               </div>
-              <Badge tone={STATUS_TON[ergebnis.status]}>{STATUS_TEXT[ergebnis.status].label}</Badge>
+              <Badge tone={STATUS_TON[ergebnis.status]}>{statusText(ergebnis).label}</Badge>
             </div>
 
             <p className="mt-4 text-body text-foreground-muted">
-              {STATUS_TEXT[ergebnis.status].erklaerung}
+              {statusText(ergebnis).erklaerung}
             </p>
 
             <dl className="mt-5 border-t border-border">

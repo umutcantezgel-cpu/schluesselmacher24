@@ -55,7 +55,7 @@ const KOPF_AUSSCHNITT_MOBIL: GrafikAusschnitt = {
   vollHoehe: PROFILSCHNITT_GROESSE.hoehe,
 };
 
-/** Vertrauensbasis nach Erg. Leitfaden §1 — nur diese belegte Aussage, ohne Zahlen oder Siegel. */
+/** Vertrauensbasis nach Erg. Leitfaden §1 – nur diese belegte Aussage, ohne Zahlen oder Siegel. */
 const VERTRAUENSBASIS =
   'Hinter SCHLÜSSELMACHER24 steht die Schlüssel Schmiede in Wetzlar mit Werkstatt, fachlicher '
   + 'Beratung und eigener Fertigung.';
@@ -212,62 +212,21 @@ export default async function HomePage() {
                 </div>
               ))}
             </dl>
-            {/* Die echte Werkstatt unter den Eckdaten — entfällt, solange kein Standort gepflegt ist */}
+            {/* Die echte Werkstatt unter den Eckdaten – entfällt, solange kein Standort gepflegt ist */}
             <WerkstattZeile {...werkstattAngaben(settings.company)} className="mt-4" />
           </div>
         </div>
       </section>
 
-      {/* Vertrauen vor dem Ablauf (Leitfaden Kap. 03) als Prüfprotokoll: ab 1024 px die nummerierten Prüfpunkte links (7), der Kopf rechts (5); mobil Zeilen Nummer | Text */}
-      <Section tone="muted" labelledBy="vertrauen-titel">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
-          <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:-mt-1.5 lg:self-start">
-            <SectionHeading
-              id="vertrauen-titel"
-              nummer="01"
-              eyebrow="Warum wir"
-              title="Eigene Werkstatt, Preis vor dem Termin"
-              lead={VERTRAUENSBASIS}
-            />
-            {/* Die echte Werkstatt — entfällt, solange kein Standort gepflegt ist */}
-            <WerkstattZeile {...werkstattAngaben(settings.company)} className="mt-5" />
-          </div>
-
-          {/* Prüfpunkte mit Haarlinien: mobil Zeilen Nummer | Text, ab 640 px ein 2×2 unter dem Kopf, ab 1024 px ein 2×2 in 7 Spalten links */}
-          <ol className="border-y border-border sm:grid sm:grid-cols-2 lg:col-span-7 lg:col-start-1 lg:row-start-1 lg:self-start">
-            {TRUST_POINTS.map((point, index) => (
-              <li
-                key={point.title}
-                className={cn(
-                  'grid grid-cols-12 gap-x-4 py-6 sm:block sm:pr-4',
-                  index > 0 && 'border-t border-border',
-                  index === 1 && 'sm:border-t-0',
-                  index % 2 === 1 && 'sm:border-l sm:border-border sm:pl-4',
-                )}
-              >
-                <span className="block col-span-2 font-mono text-title font-semibold tabular-nums text-foreground">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <div className="col-span-10 sm:mt-3">
-                  <p className="text-title-sm font-semibold text-foreground">{point.title}</p>
-                  <p className="mt-2 max-w-measure text-body text-foreground-muted">{point.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </Section>
-
       {/* Autoschlüssel-Ablauf: Fortschritt läuft mit dem Scrollen (B-03) */}
       <Section tone="sunken" labelledBy="ablauf-titel">
         <AreaScope area="autoschluessel">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
-            {/* Linke Spalte als Einheit (ohne Klebung): Kopf, Knöpfe, darunter der Funkschlüssel; die Schritte rechts teilen ihre Höhe */}
+            {/* Linke Spalte als Einheit (ohne Klebung): Kopf, Knöpfe, darunter „Warum bei uns“; die Schritte rechts teilen ihre Höhe */}
             <div className="flex flex-col lg:col-span-5">
               <div>
                 <SectionHeading
                   id="ablauf-titel"
-                  nummer="02"
                   eyebrow="Schwerpunkt Autoschlüssel"
                   title="So läuft Ihr Autoschlüssel-Auftrag ab"
                   lead="Vom Fahrzeug bis zum Termin. Sie geben nur an, was für Ihr Fahrzeug zählt."
@@ -290,13 +249,23 @@ export default async function HomePage() {
                   </ButtonLink>
                 </div>
               </div>
-              {/* Funkschlüssel direkt auf der Fläche, bis an den Rand ragend; Unterkante bündig mit dem letzten Schritt */}
-              <div className="-ml-8 hidden pt-10 lg:block">
-                <SchluesselGrafik params={{ typ: 'funk' }} title="Funkschlüssel in Seitenansicht" />
+              {/* Warum bei uns (E4-JURY-02): eingeschmolzen statt eigener Abschnitt, Zusagen ohne Nummern;
+                  Nummern tragen nur die Schritte rechts. Die Werkstatt steht schon im Abschnitt darüber. */}
+              <div className="mt-10">
+                <h3 className="font-mono text-caption font-semibold uppercase tracking-label text-foreground-muted">Warum bei uns</h3>
+                <ul className="mt-3 border-t border-border">
+                  {TRUST_POINTS.map((point) => (
+                    <li key={point.title} className="border-b border-border py-4">
+                      <p className="text-body font-semibold text-foreground">{point.title}</p>
+                      <p className="mt-1 max-w-measure text-pretty text-small text-foreground-muted">{point.body}</p>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 max-w-measure text-pretty text-small text-foreground-muted">{VERTRAUENSBASIS}</p>
               </div>
             </div>
 
-            {/* Ab lg verteilen sich die Schritte über die volle Höhe der Zeile: der letzte Schritt steht mit der Unterkante der Funkschlüssel-Grafik bündig */}
+            {/* Ab lg verteilen sich die Schritte über die volle Höhe der Zeile, neben Kopf und Zusagen */}
             <ol className="relative lg:col-span-7 lg:flex lg:flex-col lg:justify-between">
               {/* Schiene und Fortschritt: der Strich füllt sich, während die Schritte vorbeiziehen */}
               {/* Die Schiene endet unter dem letzten Schritt im Kreis, nicht darunter */}
@@ -320,7 +289,7 @@ export default async function HomePage() {
 
       {/* Direkt kaufen: zwei Zeichnungsblätter */}
       <Section tone="muted" labelledBy="direktkauf-titel">
-        <SectionHeading id="direktkauf-titel" nummer="03" eyebrow="Direkt kaufen" title="Bestellen ohne Termin" />
+        <SectionHeading id="direktkauf-titel" eyebrow="Direkt kaufen" title="Bestellen ohne Termin" />
         {/* Mobil eine Leiste mit sichtbarem Anschnitt, ab 768 px zwei Spalten */}
         <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-gutter md:overflow-visible md:px-0 md:pb-0 scroll-px-5 sm:scroll-px-6 md:scroll-px-0">
           {[
@@ -334,7 +303,7 @@ export default async function HomePage() {
             {
               area: 'gleichschliessende-zylinder' as const,
               href: '/gleichschliessende-zylinder/konfigurator',
-              titel: 'Gleichschließende Zylinder',
+              titel: 'Sperrschließung',
               text: 'Mehrere Türen mit einem Schlüssel. Bauform, Maße und Schlüsselanzahl selbst zusammenstellen.',
               /* Bis lg ist die Kartenfläche schmal (230–300 px): dort das schmale Format mit größerer Schrift. */
               grafik: (
@@ -389,7 +358,6 @@ export default async function HomePage() {
           <div className="order-1 lg:order-2 lg:col-span-5">
             <SectionHeading
               id="projekte-titel"
-              nummer="04"
               eyebrow="Projekte"
               title="Größere Vorhaben planen wir strukturiert"
               lead="Schließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik erfassen wir über geführte Konfiguratoren. Am Ende steht eine Zusammenfassung, aus der ein belastbares Angebot wird."
@@ -420,7 +388,7 @@ export default async function HomePage() {
       {/* Ratgeber: Kopf oben, drei Spalten wie eine Zeitungsseite */}
       <Section tone="muted" tight labelledBy="ratgeber-titel">
         <div className="flex flex-wrap items-end justify-between gap-x-gutter gap-y-4">
-          <SectionHeading id="ratgeber-titel" nummer="05" eyebrow="Ratgeber" title="Antworten auf die häufigsten Fragen" />
+          <SectionHeading id="ratgeber-titel" eyebrow="Ratgeber" title="Antworten auf die häufigsten Fragen" />
           <Link href="/ratgeber" className="group inline-flex min-h-touch items-center gap-1.5 text-body font-semibold text-primary">
             Alle Ratgeber
             <Weiter />

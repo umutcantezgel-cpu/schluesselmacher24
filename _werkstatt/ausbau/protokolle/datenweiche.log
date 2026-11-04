@@ -865,3 +865,274 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-03T17:47:49+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
 2026-11-03T17:48:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
 2026-11-03T17:48:58+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T18:17:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T18:17:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T18:18:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T18:18:44+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T18:59:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run pruefen:livegang
+2026-11-03T19:20:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/konfigurator src/lib/pdf src/lib/actions/security.test.ts
+2026-11-03T19:21:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T19:22:08+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/konfigurator src/lib/pdf src/lib/actions src/lib/server/rate-limit.ts src/components/konfigurator src/app/(site)/schliessanlagen
+2026-11-03T19:22:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T19:22:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T19:23:49+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T19:24:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf/schliessplan.test.ts
+2026-11-03T19:25:09+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T19:26:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/pdf src/lib/konfigurator
+2026-11-03T19:29:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/flow src/components/autoschluessel src/app/(site)/autoschluessel
+2026-11-03T19:29:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/flow/flow-shell.tsx src/app/(site)/autoschluessel/anfrage/assistent.tsx src/components/autoschluessel/optionen.ts
+2026-11-03T19:29:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T19:31:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/konfigurator src/lib/pdf src/lib/actions/security.test.ts src/components/konfigurator
+2026-11-03T19:31:55+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T19:32:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/konfigurator src/lib/pdf src/lib/actions src/components/konfigurator src/app/(site)/schliessanlagen
+2026-11-03T19:32:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T19:35:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/flow src/components/autoschluessel src/app/(site)/autoschluessel src/app/(site)/page src/components/hub
+2026-11-03T19:35:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/page.tsx src/app/(site)/autoschluessel/page.tsx src/app/(site)/autoschluessel/anfrage src/components/flow/flow-shell.tsx src/components/autoschluessel/optionen.ts
+2026-11-03T19:35:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T19:38:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/forms src/components/autoschluessel src/app/(site)/autoschluessel
+2026-11-03T19:38:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/forms/photo-upload.tsx src/components/autoschluessel/optionen.ts
+2026-11-03T19:40:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T19:41:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T19:41:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/data src/app/(site)/autoschluessel
+2026-11-03T22:13:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T22:17:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T22:19:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T22:20:27+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T22:21:03+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T22:21:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/hub src/components/visual src/app/(site)/page
+2026-11-03T22:21:27+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/hub src/components/visual/inszenierung
+2026-11-03T22:21:54+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T22:23:58+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/visual/inszenierung
+2026-11-03T22:23:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/visual/inszenierung
+2026-11-03T22:24:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T22:24:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T22:25:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T22:26:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/page.tsx
+2026-11-03T22:26:40+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T22:27:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T22:27:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T22:28:08+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T22:29:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T22:30:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T22:31:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T22:31:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T22:32:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T22:32:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/hub src/app/(site)/page.tsx src/app/(site)/autoschluessel/page.tsx src/lib/data/defaults/rubriken.ts
+2026-11-03T22:32:51+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T22:33:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T22:44:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/gleichschliessende-zylinder/konfigurator/kern.test.ts
+2026-11-03T22:45:16+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T22:45:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/gleichschliessende-zylinder/konfigurator
+2026-11-03T22:45:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/gleichschliessende-zylinder src/lib/konfigurator
+2026-11-03T22:45:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T22:46:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T22:47:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T22:50:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/gleichschliessende-zylinder/konfigurator/kern.test.ts
+2026-11-03T22:56:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/gleichschliessende-zylinder/konfigurator/kern.test.ts
+2026-11-03T22:57:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T22:57:26+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/gleichschliessende-zylinder/konfigurator
+2026-11-03T22:57:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T22:58:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T22:58:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T23:00:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/konfigurator src/app/(site)/gleichschliessende-zylinder/konfigurator
+2026-11-03T23:01:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/konfigurator src/app/(site)/gleichschliessende-zylinder
+2026-11-03T23:03:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/konfigurator src/components/konfigurator src/app/(site)/gleichschliessende-zylinder
+2026-11-03T23:03:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/konfigurator src/components/konfigurator src/app/(site)/gleichschliessende-zylinder/konfigurator
+2026-11-03T23:04:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T23:05:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T23:05:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T23:06:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T23:09:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/konfigurator src/app/(site)/gleichschliessende-zylinder src/components/konfigurator src/lib/actions/security.test.ts src/lib/pdf
+2026-11-03T23:09:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/konfigurator
+2026-11-03T23:09:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T23:09:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/recht
+2026-11-03T23:09:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/recht/preis-hinweis.tsx src/lib/konfigurator/zwischenstand.ts
+2026-11-03T23:23:27+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T23:23:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/flow src/components/konfigurator src/app/(site)/gleichschliessende-zylinder/konfigurator
+2026-11-03T23:23:51+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/flow src/components/konfigurator src/app/(site)/gleichschliessende-zylinder src/app/(site)/autoschluessel
+2026-11-03T23:24:04+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T23:24:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T23:26:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T23:28:53+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T23:29:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-03T23:30:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-03T23:30:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-03T23:30:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-03T23:31:06+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-03T23:31:31+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-03T23:32:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/konsole.mjs --routen /,/autoschluessel,/autoschluessel/marken/volkswagen/golf,/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage,/schluessel-einschicken,/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator,/schliessanlagen/konfigurator/schliessplan,/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen,/gleichschliessende-zylinder --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/konsole.json
+2026-11-03T23:33:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/konsole.mjs --routen /,/autoschluessel,/autoschluessel/marken/volkswagen/golf,/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage,/schluessel-einschicken,/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator,/schliessanlagen/konfigurator/schliessplan,/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen,/gleichschliessende-zylinder --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/konsole.json
+2026-11-03T23:34:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/funktionsliste.json --md /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/funktionsliste.md
+2026-11-03T23:35:40+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/bildsatz.mjs --routen /,/autoschluessel,/autoschluessel/marken/volkswagen/golf,/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage,/schluessel-einschicken,/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator,/schliessanlagen/konfigurator/schliessplan,/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen,/gleichschliessende-zylinder --ziel /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz.json
+2026-11-03T23:35:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/bildsatz.mjs --routen /,/autoschluessel,/autoschluessel/marken/volkswagen/golf,/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage,/schluessel-einschicken,/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator,/schliessanlagen/konfigurator/schliessplan,/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen,/gleichschliessende-zylinder --ziel /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bildsatz.json
+2026-11-03T23:43:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/a11y.mjs --routen /,/autoschluessel,/autoschluessel/marken/volkswagen/golf,/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage,/schluessel-einschicken,/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator,/schliessanlagen/konfigurator/schliessplan,/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen,/gleichschliessende-zylinder --geraet beide --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/a11y.json
+2026-11-03T23:43:17+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/a11y.mjs --routen /,/autoschluessel,/autoschluessel/marken/volkswagen/golf,/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage,/schluessel-einschicken,/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator,/schliessanlagen/konfigurator/schliessplan,/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen,/gleichschliessende-zylinder --geraet beide --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/a11y.json
+2026-11-03T23:45:05+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/probe.mjs /schliessanlagen/konfigurator/schliessplan desktop
+2026-11-03T23:45:32+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/schritte.mjs mobil,desktop /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/schritte-axe.json
+2026-11-03T23:45:58+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/start.mjs
+2026-11-03T23:46:18+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/schritte.mjs mobil,desktop /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/schritte-axe.json
+2026-11-03T23:47:10+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/schritte.mjs mobil,desktop /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/schritte-axe.json
+2026-11-03T23:48:04+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/menues.mjs
+2026-11-03T23:48:48+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/menues.mjs
+2026-11-03T23:49:02+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/lighthouse.mjs --routen /,/autoschluessel,/autoschluessel/anfrage,/gleichschliessende-zylinder/konfigurator,/schliessanlagen/konfigurator/schliessplan --laeufe 3 --profil mobil --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/lighthouse-mobil.json
+2026-11-03T23:51:35+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/bewegung.mjs reduziert --routen /,/autoschluessel,/autoschluessel/marken/volkswagen/golf,/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage,/schluessel-einschicken,/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator,/schliessanlagen/konfigurator/schliessplan,/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen,/gleichschliessende-zylinder --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bewegung-reduziert.json
+2026-11-03T23:52:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/werte-suche.mjs --seit b8e7ea7 --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/werte-suche.json
+2026-11-03T23:52:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/werte-suche.mjs --seit 822a0d9 --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/werte-suche.json
+2026-11-03T23:52:40+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	git cat-file -t 822a0d9
+2026-11-03T23:52:40+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/werte-suche.mjs --seit 822a0d9 --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/werte-suche.json
+2026-11-03T23:52:56+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/slopscan.mjs --routen /,/autoschluessel,/autoschluessel/marken/volkswagen/golf,/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage,/schluessel-einschicken,/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator,/schliessanlagen/konfigurator/schliessplan,/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen,/gleichschliessende-zylinder --geraet beide --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/slopscan.json
+2026-11-03T23:54:35+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/inventar.mjs --json /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/inventar.json
+2026-11-03T23:55:06+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/planlink.mjs
+2026-11-03T23:55:49+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/planlink.mjs
+2026-11-03T23:56:37+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/planer-ui.mjs desktop
+2026-11-03T23:56:57+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/planer-ui.mjs desktop /gleichschliessende-zylinder/konfigurator sperr
+2026-11-03T23:57:25+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/g28.mjs
+2026-11-03T23:57:50+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/g28b.mjs
+2026-11-03T23:58:34+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/planer-ui.mjs desktop /gleichschliessende-zylinder/konfigurator sperr
+2026-11-03T23:59:17+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/planer-ui.mjs desktop /gleichschliessende-zylinder/konfigurator sperr
+2026-11-03T23:59:46+00:00	json	als=root	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/e5p01/g30.mjs
+2026-11-04T00:07:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf
+2026-11-04T00:07:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf/schliessplan.test.ts -t Textebene
+2026-11-04T00:07:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/pdf src/app/(site)/gleichschliessende-zylinder/konfigurator
+2026-11-04T00:07:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-04T00:08:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T00:08:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T00:09:02+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-04T00:09:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/sitemap.test.ts
+2026-11-04T01:38:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T01:41:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-04T01:42:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/wege src/lib/actions src/app/(site)/schluessel-nach-vorlage/anfrage src/app/(site)/schluessel-nach-code
+2026-11-04T01:42:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-04T01:43:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/schluessel-nach-vorlage/anfrage
+2026-11-04T01:43:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/wege src/lib/actions/security.test.ts src/app/(site)/schluessel-nach-vorlage src/app/(site)/schluessel-nach-code
+2026-11-04T01:44:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-04T01:44:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T01:46:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T01:48:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/data src/lib/rubriken src/app/(site)/service-und-termin src/app/(site)/schluessel-nach-vorlage src/components/rubrik src/components/hub
+2026-11-04T01:48:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/service-und-termin/anfrage src/app/(site)/schluessel-nach-vorlage src/lib/data/defaults/rubriken.ts
+2026-11-04T01:48:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-04T01:49:09+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-04T02:11:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/wege src/components/weg
+2026-11-04T02:11:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/wege src/components/weg
+2026-11-04T02:11:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T02:12:16+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/weg src/lib/wege src/app/(site)/service-und-termin/anfrage/anfrage-formular.tsx src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx src/app/(site)/partner-werden/partner-formular.tsx src/components/konfigurator/schliessplan-planer.tsx src/app/(site)/bestellung/[id]/page.tsx
+2026-11-04T02:12:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T02:13:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T02:17:02+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/wege src/components/weg
+2026-11-04T02:17:04+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/weg/bestaetigung.tsx src/lib/wege/naechste-schritte.ts src/lib/wege/naechste-schritte.test.ts src/components/weg/bestaetigung.test.tsx src/app/(site)/service-und-termin/anfrage/anfrage-formular.tsx src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx src/app/(site)/partner-werden/partner-formular.tsx src/components/konfigurator/schliessplan-planer.tsx src/app/(site)/bestellung/[id]/page.tsx
+2026-11-04T02:20:58+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/wege src/components/weg src/app/(site)/bestellung
+2026-11-04T02:21:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T02:21:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/wege src/components/weg src/app/(site)/service-und-termin/anfrage/anfrage-formular.tsx src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx
+2026-11-04T02:35:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/rubriken.test.ts src/components/rubrik
+2026-11-04T02:38:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T02:38:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/rubrik src/app/(site)/schluessel-nach-vorlage/page.tsx src/app/(site)/elektronische-zutrittsloesungen/page.tsx src/app/(site)/sicherheitstechnik/page.tsx src/app/(site)/tuer-und-schliesstechnik/page.tsx src/app/(site)/schliessanlagen/page.tsx src/app/(site)/schluessel-nach-code/page.tsx src/app/(site)/gleichschliessende-zylinder/page.tsx src/app/(site)/service-und-termin/vor-ort/page.tsx src/app/(site)/autoschluessel/marken/page.tsx
+2026-11-04T02:38:35+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/autoschluessel/marken/page.tsx
+2026-11-04T02:39:02+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/wege src/components/rubrik src/lib/rubriken.test.ts
+2026-11-04T02:39:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T02:39:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T02:41:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/wege src/components/rubrik src/lib/rubriken.test.ts src/payload
+2026-11-04T02:42:03+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/wege/ablauf.test.tsx
+2026-11-04T02:42:06+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/wege/ablauf.test.tsx
+2026-11-04T02:42:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T02:42:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-06,F-07,F-08,F-15 --json /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/fl-e6o1.json
+2026-11-04T02:43:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-06,F-07,F-08,F-15 --json /tmp/claude-0/-home-user-schluesselmacher24/32e5ae2d-ba98-54a7-b6bd-638f5566c75b/scratchpad/fl-e6o1.json
+2026-11-04T02:44:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-06,F-07,F-08,F-15 --json /tmp/sm24-fl-e6o1.json
+2026-11-04T03:12:04+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T03:26:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/wege src/components/rubrik src/lib/rubriken.test.ts src/components/visual
+2026-11-04T03:26:32+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/rubrik src/lib/wege
+2026-11-04T03:26:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:27:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T03:38:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:41:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:41:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:42:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:45:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:46:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/actions/security.test.ts -t Einsendung
+2026-11-04T03:46:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/actions/security.test.ts -t Einsendung
+2026-11-04T03:46:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/actions/security.test.ts
+2026-11-04T03:47:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/einsenden src/lib/wege src/lib/versand
+2026-11-04T03:47:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/einsenden src/app/(site)/schluessel-einschicken src/app/(site)/bestellung/[id] src/lib/actions/records.ts src/lib/actions/security.test.ts src/lib/wege src/lib/server/rate-limit.ts src/app/sitemap.ts src/app/(site)/schluessel-nach-vorlage/page.tsx
+2026-11-04T03:47:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T03:47:58+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T03:49:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/einsenden src/lib/actions/security.test.ts
+2026-11-04T03:50:02+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T03:56:25+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:57:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T03:58:06+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/einsenden
+2026-11-04T03:58:11+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/einsenden
+2026-11-04T03:58:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/einsenden src/lib/mail src/lib/data/payload-mapping.test.ts src/payload src/lib/actions src/lib/pdf
+2026-11-04T03:58:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/einsenden src/lib/mail/vorlagen src/lib/foto-freigabe.ts src/payload/hooks/vorgang-benachrichtigen.ts src/lib/data/payload-mapping.ts src/payload/collections/Vorgaenge.ts src/lib/pdf/vorgangsblatt.ts src/lib/actions/booking.ts src/app/(site)/service-und-termin/terminstatus src/app/(site)/bestellung/[id] src/app/(site)/schluessel-einschicken src/lib/wege
+2026-11-04T03:58:42+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run -c vitest.db.config.ts
+2026-11-04T04:00:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T04:00:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T04:01:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T04:01:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-07,F-08,F-19 --json /tmp/sm24-fl-e6o2.json
+2026-11-04T04:08:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:08:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/einsenden src/lib/pdf src/lib/versand
+2026-11-04T04:09:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/pdf/erzeuge-pdf.ts src/lib/einsenden
+2026-11-04T04:09:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/rubriken.test.ts src/lib/wege
+2026-11-04T04:09:51+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/rubriken.test.ts src/lib/wege
+2026-11-04T04:09:53+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:10:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/schluessel-einschicken
+2026-11-04T04:10:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T04:13:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/actions/security.test.ts src/lib/wege
+2026-11-04T04:13:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:13:55+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/actions/records.ts src/lib/wege/nachweis.ts src/lib/actions/security.test.ts
+2026-11-04T04:17:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/service-und-termin/kontakt
+2026-11-04T04:17:49+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/service-und-termin/kontakt
+2026-11-04T04:17:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:18:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/service-und-termin/kontakt
+2026-11-04T04:18:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:18:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/motorradschluessel
+2026-11-04T04:18:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:18:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/service-und-termin/kontakt
+2026-11-04T04:18:54+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:19:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/motorradschluessel
+2026-11-04T04:19:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:22:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:23:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T04:23:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T04:24:49+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T04:27:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/hub src/lib/rubriken.test.ts
+2026-11-04T04:27:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T04:27:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T04:28:40+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-11,F-19 --json /tmp/sm24-fl-e6w3.json
+2026-11-04T04:29:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/service-und-termin/kontakt src/app/(site)/motorradschluessel src/components/hub
+2026-11-04T04:30:39+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/service-und-termin/kontakt
+2026-11-04T04:30:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/service-und-termin/kontakt
+2026-11-04T04:30:54+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:31:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/service-und-termin/kontakt
+2026-11-04T04:31:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T04:32:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/actions/security.test.ts
+2026-11-04T04:32:24+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run -c vitest.db.config.ts
+2026-11-04T04:33:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/server/record-schema.ts src/lib/actions/security.test.ts
+2026-11-04T05:14:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/rubriken.test.ts src/lib/wege/ablauf.test.tsx
+2026-11-04T05:17:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/autoschluessel/gehaeuse
+2026-11-04T05:17:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T05:17:51+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/autoschluessel/gehaeuse
+2026-11-04T05:20:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T05:20:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T05:21:16+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T05:22:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T05:25:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/rubriken.test.ts
+2026-11-04T05:27:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/beratung
+2026-11-04T05:27:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T05:27:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T05:28:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/beratung
+2026-11-04T05:29:27+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T05:29:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T05:30:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T05:31:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T05:31:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-11 --json /tmp/sm24-fl-e6b.json
+2026-11-04T05:33:05+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T05:33:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/flow src/app/(site)/beratung src/app/(site)/service-und-termin/kontakt
+2026-11-04T05:33:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T05:34:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T05:35:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T05:36:02+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/flow
+2026-11-04T05:36:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T05:36:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T05:37:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T05:38:04+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/components/flow src/app/(site)/beratung src/app/(site)/service-und-termin/kontakt
+2026-11-04T07:33:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-04T07:34:53+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .

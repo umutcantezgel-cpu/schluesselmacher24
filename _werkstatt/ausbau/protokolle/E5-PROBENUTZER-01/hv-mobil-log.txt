@@ -1,0 +1,37 @@
+[1.0s] Start /schliessanlagen geladen
+[1.0s] Bild 01-startseite: Seitenbreite 390/390, Ziele unter 24 px: 4
+[1.3s] Link "Schließplan selbst anlegen" -> http://localhost:3000/schliessanlagen/konfigurator/schliessplan
+[1.3s] Bild 02-planer-start: Seitenbreite 390/390, Ziele unter 24 px: 9
+[1.3s] REQ POST http://localhost:3000/schliessanlagen/konfigurator/schliessplan next-action=ja ct=text/plain;charset=UTF-8
+[1.3s] Vorlage "Mehrfamilienhaus mit vier Wohnungen" gewählt (Radio, Label über sichtbare Karte)
+[1.4s] Weiter -> Schritt 2 Türen
+[1.4s] Türen nach Vorlage: 6
+[2.6s] Tür hinzufügen, bis 20 Türen
+[3.2s] 20 Türen benannt: Haustür, Keller, Müllraum, Fahrradraum, Wohnung 1, Wohnung 2, Wohnung 3, Wohnung 4, Wohnung 5, Wohnung 6, Wohnung 7, Wohnung 8, Wohnung 9, Wohnung 10, Wohnung 11, Wohnung 12, Wohnung 13, Wohnung 14, Wohnung 15, Wohnung 16
+[3.2s] Bild 03-tueren-ausgefuellt: Seitenbreite 390/390, Ziele unter 24 px: 24
+[3.3s] Schritt-2-Warnungen: []
+[3.3s] Weiter -> Schritt 3 Schlüssel
+[3.3s] Schlüssel nach Vorlage: 5
+[6.0s] Schlüssel-Felder gefunden: 17
+[9.1s] 17 Schlüssel angelegt: Verwaltung 2 plus 2 vorgemerkt, je Wohnung 3
+[21.7s] Fehlende Matrixfelder: 0
+[21.7s] Matrix 17 × 20 gesetzt
+[21.7s] Bild 04-schluessel-matrix: Seitenbreite 390/390, Ziele unter 24 px: 361
+[21.8s] Schritt-3-Warnungen: []
+[21.9s] Weiter -> Schritt 4 Prüfen
+[22.3s] Schritt 4 ohne Maß-Häkchen: Weiter gedrückt, bleibt auf Schritt 4? Schritt 4 von 5 · Prüfen
+[22.7s] Häkchen "Maße geprüft" gesetzt
+[22.7s] Bild 05-pruefen: Seitenbreite 390/390, Ziele unter 24 px: 7
+[22.8s] Weiter -> Schritt 5 Abschluss
+[23.2s] Bild 06-abschluss-leer: Seitenbreite 390/390, Ziele unter 24 px: 7
+[23.2s] Schritt 5 Felder: 8
+[23.3s] Kontaktdaten (Testdaten) eingetragen, Datenschutz-Häkchen gesetzt; Angebot anfragen NICHT geklickt
+[23.3s] Bild 07-abschluss-ausgefuellt: Seitenbreite 390/390, Ziele unter 24 px: 7
+[23.4s] Sichtbar auf diesem Gerät: "Plan als Link speichern" NEIN · "Schließplan als PDF" NEIN
+[23.4s] Bild 08-link-gespeichert: Seitenbreite 390/390, Ziele unter 24 px: 7
+[23.4s] PDF-Link auf diesem Gerät nicht erreichbar: vorhanden, nicht sichtbar, Ahnen: hidden lg:sticky lg:top-36 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:block lg:self-start
+[23.9s] Bild 09-nach-pdf: Seitenbreite 390/390, Ziele unter 24 px: 7
+[23.9s] Endzustand URL: http://localhost:3000/schliessanlagen/konfigurator/schliessplan
+[23.9s] Schritt-Zeile Ende: Schritt 5 von 5 · Abschluss
+[23.9s] POST-Anfragen bisher: ["POST http://localhost:3000/schliessanlagen/konfigurator/schliessplan"]
+[23.9s] blockiert: 0

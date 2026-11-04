@@ -11,6 +11,7 @@
  * laden diese Vorlage deshalb erst bei Bedarf (src/lib/mail/vertrag.ts).
  */
 
+import { istEinsendung } from '../../einsenden/vorgang';
 import { formatCents, formatDateTime } from '../../format';
 import { gewuenschteStueckzahl, istFotoanfrage } from '../../foto-freigabe';
 import { eigentextAlsText } from '../../rechtliches/eigentext-text';
@@ -139,7 +140,10 @@ function fotoauftragInhalt(vorgang: BusinessRecord): Array<[string, string]> {
   if (stueck) zeilen.push(['Stückzahl laut Ihrer Anfrage', String(stueck)]);
   const preis = freigabe.priceCents ?? vorgang.payment?.amountCents;
   if (preis !== undefined) zeilen.push(['Preis laut Freigabe', `${formatCents(preis)} (inkl. 19 % USt.)`]);
-  zeilen.push(['Originalschlüssel', freigabe.sendInRequired ? 'Einsendung erforderlich (siehe E-Mail zur Freigabe)' : 'keine Einsendung nötig']);
+  zeilen.push([
+    'Originalschlüssel',
+    istEinsendung(vorgang) ? 'liegt bei uns und kommt mit den Kopien zurück' : freigabe.sendInRequired ? 'Einsendung erforderlich (siehe E-Mail zur Freigabe)' : 'keine Einsendung nötig',
+  ]);
   if (freigabe.note?.trim()) zeilen.push(['Hinweis zur Freigabe', freigabe.note.trim().slice(0, 2000)]);
   return zeilen;
 }

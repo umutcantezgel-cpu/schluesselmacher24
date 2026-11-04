@@ -1,13 +1,19 @@
 'use server';
 
+import { getCollection, getRubrik, getSettings } from '@/lib/data';
+import { defaults } from '@/lib/data/defaults';
+import { begleitscheinZumVorgang } from '@/lib/einsenden/schein';
+import { EINSENDE_QUELLE, einsendeVorgang } from '@/lib/einsenden/vorgang';
 import { SCHUTZ_ERNEUERT, type FormularSchutz, type SchutzAntwort } from '@/lib/formular-schutz';
 import { storageStatus } from '@/lib/integrations';
+import { PLANER_QUELLE, SCHNAPPSCHUSS_FELD, planerVorgang } from '@/lib/konfigurator/vorgang';
 import { RECHTSTEXTE_FASSUNG } from '@/lib/rechtliches/texte';
 import { createRecord, verifyCarKeyBooking, type GepruefteAngaben } from '@/lib/server/create-record';
 import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
 import { publicRecordSchema, terminZustimmungenSchema, type TerminZustimmungen } from '@/lib/server/record-schema';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
-import { fahrzeugscheinPruefen } from '@/lib/server/unterlagen-pflicht';
+import { fahrzeugscheinPruefen, nachweisPruefen, rubrikUnterlagenPruefen } from '@/lib/server/unterlagen-pflicht';
+import { QUELLE_RUBRIK, fotoAnfrageVerlangtKarte } from '@/lib/wege/nachweis';
 import type {
   AppointmentInfo,
   AreaKey,
@@ -60,6 +66,8 @@ export interface SubmitResult extends SchutzAntwort {
   recordId?: string;
   /** Wohin der Kunde zum Bezahlen geleitet wird, sobald angebunden. */
   redirectUrl?: string;
+  /** Begleitschein einer Einsendung als PDF (Base64), zum Speichern gleich nach dem Absenden (G-24). */
+  begleitschein?: { dateiname: string; pdfBase64: string };
   /** Hinweise zu nicht angebundenen Diensten. */
   notices: string[];
   error?: string;
@@ -67,6 +75,10 @@ export interface SubmitResult extends SchutzAntwort {
 
 const INVALID_INPUT =
   'Einige Angaben sind unvollständig oder ungültig. Bitte prüfen Sie das Formular.';
+
+const BEGLEITSCHEIN_SPAETER =
+  'Den Begleitschein konnten wir gerade nicht erzeugen. Sie finden ihn auf Ihrer Vorgangsseite; '
+  + 'den Link dorthin schicken wir Ihnen per E-Mail. Bitte schicken Sie Ihren Schlüssel erst mit dem Begleitschein ein.';
 
 const ZUSTIMMUNG_FEHLT =
   'Bitte bestätigen Sie im Schritt „Anzahlung“ alle Punkte, um den Termin verbindlich zu buchen.';
@@ -190,12 +202,62 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     };
   }
 
+  // Anfrage aus dem Schließplan-Planer (E5-OPUS-03): Der Server prüft den Plan selbst und legt den
+  // Schnappschuss mit den Namen aus dem Katalog in den Vorgang; nichts davon kommt aus dem Browser.
+  // Auch die Zusammenfassung baut der Server aus dem Plan; die aus dem Browser fällt weg. Andere
+  // Anfragen dürfen keinen Schnappschuss mitbringen.
+  let payload = data.payload;
+  if (data.kind === 'projekt' && payload.quelle === PLANER_QUELLE) {
+    const vorgang = planerVorgang(payload, await getCollection('cylinderCatalog'));
+    if (!vorgang.ok) {
+      return { ok: false, notices: [], error: INVALID_INPUT };
+    }
+    payload = vorgang.payload;
+    summary = vorgang.summary;
+  } else if (SCHNAPPSCHUSS_FELD in payload) {
+    payload = { ...payload };
+    delete payload[SCHNAPPSCHUSS_FELD];
+  }
+
+  // Einsendung (E6-OPUS-02): Der Server prüft die Angaben selbst und baut Payload und Zusammenfassung
+  // neu; die Zusammenfassung aus dem Browser fällt weg. Eine Einsendung ist immer „Schlüssel nach Vorlage“.
+  const einsendung = data.kind === 'anfrage' && payload.quelle === EINSENDE_QUELLE;
+  if (einsendung) {
+    const vorgang = data.area === 'schluessel-nach-vorlage' ? einsendeVorgang(payload, data.contact) : null;
+    if (!vorgang?.ok) {
+      return { ok: false, notices: [], error: INVALID_INPUT };
+    }
+    payload = { ...vorgang.payload };
+    summary = vorgang.summary;
+  }
+
+  // Anfragen aus Rubrik-Wegen (Motorrad, Gehäuse): Nachweis und Pflicht-Uploads der Rubrik (R13, G-11).
+  const rubrikId = data.kind === 'anfrage' && typeof payload.quelle === 'string' ? QUELLE_RUBRIK[payload.quelle] : undefined;
+  if (rubrikId) {
+    const rubrik = data.area === 'autoschluessel' ? await getRubrik(rubrikId) : null;
+    if (!rubrik) {
+      return { ok: false, notices: [], error: INVALID_INPUT };
+    }
+    const fehlt = rubrikUnterlagenPruefen(rubrik, data.uploads, storageStatus().configured);
+    if (fehlt) {
+      return { ok: false, notices: [], error: fehlt };
+    }
+  }
+
+  // Berechtigungsnachweis der Foto-Anfrage (R13, E6-OPUS-01): Wer eine Sicherungskarte angibt, lädt sie hoch.
+  if (data.kind === 'anfrage' && data.area === 'schluessel-nach-vorlage' && fotoAnfrageVerlangtKarte(payload)) {
+    const fehlt = nachweisPruefen('sicherungskarte', data.uploads, storageStatus().configured);
+    if (fehlt) {
+      return { ok: false, notices: [], error: fehlt };
+    }
+  }
+
   const result = await createRecord({
     kind: data.kind,
     area: data.area,
     process: data.process,
     contact: data.contact,
-    payload: data.payload,
+    payload,
     summary,
     uploads: data.uploads,
     quote,
@@ -204,13 +266,31 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     consents,
   });
 
+  // Begleitschein der Einsendung gleich mitgeben; fehlt er, steht er später auf der Vorgangsseite.
+  const notices = [...result.notices];
+  let begleitschein: SubmitResult['begleitschein'];
+  if (einsendung && result.ok && result.reference) {
+    try {
+      const settings = await getSettings();
+      const schein = await begleitscheinZumVorgang(
+        { reference: result.reference, kind: data.kind, area: data.area, contact: data.contact, payload },
+        { company: settings.company, einstellungen: settings.sendIn ?? defaults.settings().sendIn! },
+      );
+      if (schein) begleitschein = { dateiname: schein.dateiname, pdfBase64: schein.pdf.toString('base64') };
+    } catch (fehler) {
+      console.error('[einsenden] Begleitschein fehlgeschlagen', fehler);
+    }
+    if (!begleitschein) notices.push(BEGLEITSCHEIN_SPAETER);
+  }
+
   // Der Link-Schlüssel gehört nur zur Bestellbestätigung und bleibt hier intern.
   return {
     ok: result.ok,
     reference: result.reference,
     recordId: result.recordId,
     redirectUrl: result.redirectUrl,
-    notices: result.notices,
+    begleitschein,
+    notices,
     error: result.error,
   };
 }

@@ -1,7 +1,7 @@
 # HERZSCHLAG
-Zeit: 2026-11-03 19:48 MEZ
+Zeit: 2026-11-04 08:38 MEZ
 Sitzung: m40jjmy9
-Zustand: AKTIV (Bremse: Kontofenster 44 % um 19:36 durch fremde Nutzung, eigene Sitzung nur Wartebefehle; Fortsetzung nach dem Fensterwechsel für 23:12 geplant)
-Etappe und Welle: E5 Welle 2 (E5-OPUS-03, -05, -02 bereit) · Entwurfs-PR 960 für den Livegang offen (A-028) · Tempomat Bremse
-Letzter grüner Commit: 05d8776 (Unit 2028/2028, Build JSON 225, Funktionsliste 19/19)
+Zustand: AKTIV (Livegang auf Anweisung: PR nach main; Bremse bis zum Fensterwechsel 09:10)
+Etappe und Welle: E6 Welle 4: Paketdateien BAUMEISTER-05, -06, -07 bereit (ea50d96), Start 09:10
+Letzter grüner Commit: cac398f (Unit 2145, Build grün; Lint und Typprüfung erneut grün um 08:30)
 ARBEITSBRANCH: claude/affectionate-knuth-n7mjur

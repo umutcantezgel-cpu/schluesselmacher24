@@ -5,6 +5,7 @@
  * Dokumente stehen nur als Eintrag in der Liste, nie als Bild. Reine Funktion, nur relative Importe.
  */
 
+import { istEinsendung } from '../einsenden/vorgang';
 import { KATEGORIE_LABEL, POSITION_LABEL } from '../druckansichten';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '../format';
 import { ART_LABEL, BEREICH_LABEL, UMFANG_LABEL, ZAHLUNG_LABEL } from '../mail/vorlagen/gemeinsam';
@@ -12,7 +13,9 @@ import { vorgangOrtText } from '../terminort';
 import type { BusinessRecord, CompanyProfile, RecordStatus, UploadRef } from '../types';
 import { STATUS_LABEL } from '../vorgang-status';
 
+import { schnappschussAusVorgang } from '../konfigurator/vorgang';
 import type { Blatt, BlattAbschnitt, BlattBild, BlattZeile } from './blatt';
+import { schliessplanAbschnitte } from './schliessplan';
 
 /** Arten, die als Vorschaubild ins Blatt dürfen (A-015); Fahrzeugschein und Dokument nie. */
 export const VORSCHAU_ARTEN: ReadonlyArray<UploadRef['category']> = ['schluesselfoto', 'objektfoto', 'grundriss'];
@@ -120,6 +123,10 @@ export function vorgangsblattInhalt({ vorgang, firma, bilder = [], jetzt = new D
     });
   });
 
+  // Schließplan aus dem Planer (E5-OPUS-03): der Schnappschuss, den der Server beim Eingang gebildet hat.
+  const schliessplan = schnappschussAusVorgang(vorgang);
+  if (schliessplan) abschnitte.push(...schliessplanAbschnitte(schliessplan));
+
   if (vorgang.payment) {
     const zahlung = vorgang.payment;
     const zeilen: BlattZeile[] = [
@@ -139,7 +146,10 @@ export function vorgangsblattInhalt({ vorgang, firma, bilder = [], jetzt = new D
       titel: 'Freigabe',
       zeilen: [
         { name: 'Preis', wert: freigabe.priceCents !== undefined ? formatCents(freigabe.priceCents) : '' },
-        { name: 'Originalschlüssel einsenden', wert: freigabe.sendInRequired === undefined ? '' : freigabe.sendInRequired ? 'ja' : 'nein' },
+        {
+          name: 'Originalschlüssel einsenden',
+          wert: istEinsendung(vorgang) ? 'liegt vor (Einsendung)' : freigabe.sendInRequired === undefined ? '' : freigabe.sendInRequired ? 'ja' : 'nein',
+        },
         { name: 'Hinweis an den Kunden', wert: freigabe.note ?? '' },
         { name: 'Freigegeben am', wert: freigabe.approvedAt ? uhr(freigabe.approvedAt) : '' },
       ],

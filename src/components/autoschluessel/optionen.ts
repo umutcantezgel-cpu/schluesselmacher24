@@ -153,8 +153,8 @@ export const KEY_PHOTO_SLOTS: PhotoSlotDef[] = [
     id: 'vorderseite',
     label: 'Vorderseite des Schlüssels',
     description:
-      'Tastenseite vollständig im Bild, von oben aufgenommen. Bitte auf einen einfarbigen '
-      + 'Untergrund legen und ohne Blitz fotografieren.',
+      // Untergrund und Blitz stehen einmal in den Fototipps über den Feldern (E4-JURY-02).
+      'Tastenseite vollständig im Bild, von oben aufgenommen.',
     example: {
       motif: 'Beispielfoto: Autoschlüssel von vorn, Tastenseite vollständig und scharf',
       ratio: '16/9',
@@ -179,7 +179,7 @@ export const KEY_PHOTO_SLOTS: PhotoSlotDef[] = [
   },
   {
     id: 'bart',
-    label: 'Schlüsselbart beziehungsweise Spitze',
+    label: 'Schlüsselbart oder Spitze',
     description:
       'Bart von der Seite aufnehmen, sodass das Profil und die Fräsungen erkennbar sind. Bei einem '
       + 'Klappschlüssel bitte ausgeklappt fotografieren.',
@@ -214,7 +214,7 @@ export const REGISTRATION_EXAMPLE: ImageSlot = {
 };
 
 /**
- * Erklärung zu einer Leistung — aus den gepflegten Leistungsdaten gebaut. Mit Modell gilt dieselbe
+ * Erklärung zu einer Leistung – aus den gepflegten Leistungsdaten gebaut. Mit Modell gilt dieselbe
  * Regel wie in der Preisermittlung (`fahrzeugVorOrtNoetig`).
  */
 export function serviceInfo(service: CarKeyService, model?: VehicleModel | null): InfoHint {

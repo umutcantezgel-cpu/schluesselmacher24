@@ -8,6 +8,7 @@
  * Kein Freitext aus dem Formular außer dem streng geprüften Namen.
  */
 
+import { istEinsendung } from '../../einsenden/vorgang';
 import { formatDateTime } from '../../format';
 import type { BusinessRecord } from '../../types';
 import { anrede, baueMail, type Baustein, type MailInhalt } from '../html';
@@ -84,10 +85,16 @@ function zahlungsHinweis(vorgang: BusinessRecord, onlineZahlung: boolean): Baust
   };
 }
 
+/** Einsendung (E6-OPUS-02): angemeldet, der Schlüssel kommt erst noch; der Begleitschein liegt auf der Vorgangsseite. */
+const EINSENDUNG_EINLEITUNG =
+  'vielen Dank für Ihre Anmeldung. Bitte schicken Sie Ihren Schlüssel mit dem Begleitschein an unsere Werkstatt; '
+  + 'die Anschrift steht darauf. Den Begleitschein finden Sie auch auf Ihrer Vorgangsseite.';
+
 export function kundeEingang({ vorgang, token, onlineZahlung, kontext }: KundeEingangDaten): MailInhalt {
   const art = vorgang.kind;
-  const betreff = BETREFF[art].replace('{nr}', vorgang.reference);
-  const bausteine: Baustein[] = [{ art: 'absatz', text: EINLEITUNG[art] }, nummerBaustein(vorgang)];
+  const einsendung = istEinsendung(vorgang);
+  const betreff = einsendung ? `Ihre Einsendung ${vorgang.reference} ist angemeldet` : BETREFF[art].replace('{nr}', vorgang.reference);
+  const bausteine: Baustein[] = [{ art: 'absatz', text: einsendung ? EINSENDUNG_EINLEITUNG : EINLEITUNG[art] }, nummerBaustein(vorgang)];
 
   const felder: Array<[string, string]> = [['Art', ART_LABEL[art]], ...terminZeilen(vorgang, kontext.firma)];
   if (art === 'bestellung' && vorgang.lines?.length) {
@@ -107,7 +114,7 @@ export function kundeEingang({ vorgang, token, onlineZahlung, kontext }: KundeEi
   if (hinweis) bausteine.push(hinweis);
 
   bausteine.push(
-    { art: 'knopf', href: vorgangsLink(kontext.site, vorgang.id, token), label: 'Vorgang ansehen' },
+    { art: 'knopf', href: vorgangsLink(kontext.site, vorgang.id, token), label: einsendung ? 'Vorgang und Begleitschein ansehen' : 'Vorgang ansehen' },
     {
       art: 'absatz',
       text: 'Über diesen persönlichen Link sehen Sie jederzeit Ihre Angaben und den Stand. Bitte geben Sie ihn nicht weiter.',
@@ -117,7 +124,7 @@ export function kundeEingang({ vorgang, token, onlineZahlung, kontext }: KundeEi
 
   return baueMail({
     betreff,
-    vorschau: `${ART_LABEL[art]} ${vorgang.reference} ist bei uns eingegangen.`,
+    vorschau: einsendung ? `Einsendung ${vorgang.reference}: Bitte mit dem Begleitschein einschicken.` : `${ART_LABEL[art]} ${vorgang.reference} ist bei uns eingegangen.`,
     anrede: anrede(vorgang.contact),
     bausteine,
     firma: kontext.firma,

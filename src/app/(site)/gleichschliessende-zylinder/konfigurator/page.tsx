@@ -66,7 +66,6 @@ export default async function CylinderConfiguratorPage() {
       {/* Zusatzabstand, damit die feste Ablauf-Navigation nichts verdeckt. */}
       <Section id="weiterfuehrend" tone="muted" tight className="pb-28 md:pb-14">
         <SectionHeading
-          nummer="01"
           eyebrow="Weiterführend"
           title="Wenn Sie vorher etwas nachlesen möchten"
           className="[&_h2]:text-title [&_h2]:tracking-normal"

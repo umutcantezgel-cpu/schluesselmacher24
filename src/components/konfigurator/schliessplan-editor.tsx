@@ -245,7 +245,7 @@ export function TuerenListe({ plan, katalog, onChange }: EditorProps) {
                             }),
                           )
                         }
-                        className="h-5 w-5 shrink-0 rounded border-border-strong"
+                        className="h-6 w-6 shrink-0 rounded border-border-strong"
                       />
                       <span className="text-body text-foreground">{schutz.label}</span>
                     </label>
@@ -358,7 +358,7 @@ export function SchluesselMatrix({ plan, onChange }: Omit<EditorProps, 'katalog'
                           type="checkbox"
                           checked={alle}
                           onChange={(e) => onChange(alleTueren(plan, s.id, e.target.checked))}
-                          className="h-5 w-5 shrink-0 rounded border-border-strong"
+                          className="h-6 w-6 shrink-0 rounded border-border-strong"
                         />
                         <span className="text-body font-semibold text-foreground">alle Türen</span>
                       </label>
@@ -370,7 +370,7 @@ export function SchluesselMatrix({ plan, onChange }: Omit<EditorProps, 'katalog'
                             type="checkbox"
                             checked={darf(s.id, t.id)}
                             onChange={(e) => onChange(berechtigen(plan, s.id, t.id, e.target.checked))}
-                            className="h-5 w-5 shrink-0 rounded border-border-strong"
+                            className="h-6 w-6 shrink-0 rounded border-border-strong"
                           />
                           <span className="text-body text-foreground">{t.bezeichnung || 'Tür ohne Bezeichnung'}</span>
                         </label>
@@ -423,7 +423,7 @@ export function SchluesselMatrix({ plan, onChange }: Omit<EditorProps, 'katalog'
                             checked={darf(s.id, t.id)}
                             onChange={(e) => onChange(berechtigen(plan, s.id, t.id, e.target.checked))}
                             aria-label={`„${s.bezeichnung || 'Schlüssel'}“ schließt „${t.bezeichnung || 'Tür'}“`}
-                            className="h-5 w-5 rounded border-border-strong"
+                            className="h-6 w-6 rounded border-border-strong"
                           />
                         </label>
                       </td>
@@ -514,7 +514,7 @@ export function PlanSumme({ plan, katalog, extraIds = [] }: { plan: Schliessplan
       {preis.art !== 'preis' && <p className="mt-2 text-small text-foreground-muted">{preis.grund}</p>}
       {preis.art === 'preis' && (
         <p className="mt-2 text-small text-foreground-muted">
-          Alle Schlüssel schließen alle Türen (Sperrschließung). Preis wie im Konfigurator für gleichschließende Zylinder, inklusive{' '}
+          Alle Schlüssel schließen alle Türen. Man nennt das eine Sperrschließung. Preis wie im Konfigurator für gleichschließende Zylinder, inklusive{' '}
           {katalog.includedKeys} Schlüssel.
         </p>
       )}

@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-03T17:51:47.327Z
+Stand: 2026-11-04T05:39:06.368Z
 
-Etappe 6/12 · Welle 2 · Pflicht 73/139 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 7/12 · Welle 4 · Pflicht 86/140 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -112,7 +112,7 @@ Geplante Tage: 0.47
 
 Tor: Prüfstufe B, Bestand mindestens wie in E0, Datenweiche belegt
 Kriterien: Z-02, Z-06, Z-07, Z-08, Z-09, Z-12, Z-20
-Geplante Tage: 2.33
+Geplante Tage: 2.34
 
 ### Welle 1
 
@@ -169,7 +169,7 @@ Geplante Tage: 2.33
 
 Tor: Prüfstufe B, Jury Start mindestens 8,5 und Weg mindestens 8, Personas ohne Abbruch, Blind- und Dominanzprobe Start
 Kriterien: Z-04, Z-05, Z-11, Z-12, Z-14, Z-15
-Geplante Tage: 1.55
+Geplante Tage: 1.56
 
 ### Welle 1
 
@@ -237,7 +237,7 @@ Geplante Tage: 1.55
 
 Tor: Prüfstufe B, Tests jeder Regel, Probelauf Hausverwaltung
 Kriterien: Z-05, Z-06
-Geplante Tage: 1.55
+Geplante Tage: 1.56
 
 ### Welle 1
 
@@ -252,56 +252,56 @@ Geplante Tage: 1.55
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E5-OPUS-05 | Referenz-Feinschliff nach E4-JURY-02 (letzte Runde je Ansicht und Kategorie): Bühne mit erkennbarem Autoschlüssel und gefüllter Fläche, Kacheltitel ohne Trennung, Nummern nur bei echten Abfolgen, „Warum wir“ im Autoschlüssel-Abschnitt; Assistent mit einem Zähler, „Vorhandene Schlüssel“, kürzerem Kopf mobil und ruhigerem Fotoschritt | opus-5.5 | M | pflicht | 4 | offen |  |
-| E5-OPUS-02 | Sperrschließung auf demselben Kern: Sets 2 bis 10 (mehr auf Anfrage, Bestand bis 30), jeder Zylinder einzeln, Schlüsselzahl | opus-5.5 | L | pflicht | 5 | offen |  |
-| E5-OPUS-03 | Schließplan als PDF und Vorgang mit vollständigem Schnappschuss | opus-5.5 | M | pflicht | 4 | offen |  |
+| E5-OPUS-05 | Referenz-Feinschliff nach E4-JURY-02 (letzte Runde je Ansicht und Kategorie): Bühne mit erkennbarem Autoschlüssel und gefüllter Fläche, Kacheltitel ohne Trennung, Nummern nur bei echten Abfolgen, „Warum wir“ im Autoschlüssel-Abschnitt; Assistent mit einem Zähler, „Vorhandene Schlüssel“, kürzerem Kopf mobil und ruhigerem Fotoschritt | opus-5.5 | M | pflicht | 4 | committet | 97b4d7d |
+| E5-OPUS-02 | Sperrschließung auf demselben Kern: Sets 2 bis 10 (mehr auf Anfrage, Bestand bis 30), jeder Zylinder einzeln, Schlüsselzahl | opus-5.5 | L | pflicht | 5 | committet | a9c4a3e |
+| E5-OPUS-03 | Schließplan als PDF und Vorgang mit vollständigem Schnappschuss | opus-5.5 | M | pflicht | 4 | committet | 99b5a9f |
 
 ### Welle 3
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E5-AUTOR-01 | Messhilfe-Text, Plausibilitätshinweise, Laienerklärung Sperrschließung gegen Schließanlage mit Beispiel, Empfehlung Privat oder Unternehmen | haiku-5.5 | M | pflicht | 3 | offen |  |
-| E5-OPUS-04 | Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand | opus-5.5 | M | pflicht | 4 | offen |  |
+| E5-AUTOR-01 | Messhilfe-Text, Plausibilitätshinweise, Laienerklärung Sperrschließung gegen Schließanlage mit Beispiel, Empfehlung Privat oder Unternehmen | haiku-5.5 | M | pflicht | 3 | committet | 782b9e7 |
+| E5-OPUS-04 | Leistungsbudgets: LCP mobil höchstens 2,5 s und Leistung mindestens 90 auf den Hauptansichten, SEO 100, ohne Verlust an Inszenierung und Bestand | opus-5.5 | M | pflicht | 4 | committet | 591769a |
 
 ### Welle 4
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E5-PROBENUTZER-01 | Probelauf Konfiguratoren mit Hausverwaltung (20 Türen) und Rentnerin | haiku-5.5 | M | pflicht | 3 | offen |  |
-| E5-PRUEFER-01 | Prüfstufe B Etappe E5, Prüfliste G-27 bis G-30 | haiku-5.5 | L | pflicht | 3 | offen |  |
+| E5-PROBENUTZER-01 | Probelauf Konfiguratoren mit Hausverwaltung (20 Türen) und Rentnerin | haiku-5.5 | M | pflicht | 3 | committet | b1dd388 |
+| E5-PRUEFER-01 | Prüfstufe B Etappe E5, Prüfliste G-27 bis G-30 | haiku-5.5 | L | pflicht | 3 | committet | 2883129 |
 
 ## E6 · Übrige Rubriken, gemeinsamer Abschluss, Einsenden und Versand
 
 Tor: Prüfstufe B, Probelauf aller neuen Wege
 Kriterien: Z-05, Z-08, Z-19
-Geplante Tage: 1.55
+Geplante Tage: 1.56
 
 ### Welle 1
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E6-OPUS-01 | Gemeinsamer Abschluss: Wege-Baukasten aus Rubrikdaten (Ablauf, Formular, Upload mit Fotohilfe, Nachweis, Zusammenfassung, Bestätigung, Vorgangsblatt) | opus-5.5 | L | pflicht | 5 | offen |  |
+| E6-OPUS-01 | Gemeinsamer Abschluss: Wege-Baukasten aus Rubrikdaten (Ablauf, Formular, Upload mit Fotohilfe, Nachweis, Zusammenfassung, Bestätigung, Vorgangsblatt) | opus-5.5 | L | pflicht | 5 | committet | ea67244 |
 
 ### Welle 2
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E6-OPUS-02 | Einsenden: Adresse, versichert oder unversichert, Begleitschein oder Versandmarke, Kreislauf bis Rückversand mit Kundenstatus | opus-5.5 | L | pflicht | 5 | offen |  |
+| E6-OPUS-02 | Einsenden: Adresse, versichert oder unversichert, Begleitschein oder Versandmarke, Kreislauf bis Rückversand mit Kundenstatus | opus-5.5 | L | pflicht | 5 | committet | 3b5c7b9 |
 
 ### Welle 3
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E6-OPUS-03 | Transponder-Kopie nur für bestätigte Fahrzeuge: Kasse, Einsenden, Rückversand | opus-5.5 | M | pflicht | 4 | offen |  |
-| E6-BAUMEISTER-01 | Motorradschlüssel-Anfrage mit Transponder-Pflichtfrage | haiku-5.5 | M | pflicht | 3 | offen |  |
-| E6-BAUMEISTER-02 | Autoschlüssel-Gehäuse: Anfrage, Angebot mit Zahlungslink, Einsenden | haiku-5.5 | M | pflicht | 3 | offen |  |
-| E6-BAUMEISTER-03 | Kontaktformular mit Foto-Upload und Rückruf | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E6-OPUS-03 | Transponder-Kopie nur für bestätigte Fahrzeuge: Kasse, Einsenden, Rückversand | opus-5.5 | M | pflicht | 4 | zurückgestellt |  |
+| E6-BAUMEISTER-01 | Motorradschlüssel-Anfrage mit Transponder-Pflichtfrage | haiku-5.5 | M | pflicht | 3 | committet | dc0893b |
+| E6-BAUMEISTER-02 | Autoschlüssel-Gehäuse: Anfrage, Angebot mit Zahlungslink, Einsenden | haiku-5.5 | M | pflicht | 3 | committet | 9bfec4c |
+| E6-BAUMEISTER-03 | Kontaktformular mit Foto-Upload und Rückruf | haiku-5.5 | M | pflicht | 3 | committet | 667efab |
 
 ### Welle 4
 
 | Kennung | Titel | Modell | Klasse | Art | Wirkung | Status | Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| E6-BAUMEISTER-04 | Beratungsanfragen Elektronik, Tür und Schließtechnik, Sicherheitstechnik, Schlüsselaufbewahrung | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E6-BAUMEISTER-04 | Beratungsanfragen Elektronik, Tür und Schließtechnik, Sicherheitstechnik, Schlüsselaufbewahrung | haiku-5.5 | M | pflicht | 3 | committet | cac398f |
 | E6-BAUMEISTER-05 | Schlüsseldienst vor Ort: Anfrage mit Ort für die Vermittlung | haiku-5.5 | M | pflicht | 3 | offen |  |
 | E6-BAUMEISTER-06 | Schlüssel nach Foto: Fotoanleitung mit drei gezeichneten Beispielen, Hinweis „nicht jedes Foto ablesbar“ | haiku-5.5 | M | pflicht | 3 | offen |  |
 | E6-BAUMEISTER-07 | Schlüssel nach Code: Suche und Filter nach Typ, Codelinie und Hersteller, Codeerkennung in der Suche, kompakte Produktseite | haiku-5.5 | M | pflicht | 3 | offen |  |
@@ -323,7 +323,7 @@ Geplante Tage: 1.55
 
 Tor: Prüfstufe B, axe Karte, Stadt-Hubs noindex
 Kriterien: Z-09, Z-10
-Geplante Tage: 1.55
+Geplante Tage: 1.56
 
 ### Welle 1
 
@@ -355,7 +355,7 @@ Geplante Tage: 1.55
 
 Tor: Prüfstufe B, Faktenprüfung, Dominanzprobe Schlüsselseiten
 Kriterien: Z-11, Z-13, Z-16, Z-17, Z-18
-Geplante Tage: 1.55
+Geplante Tage: 1.56
 
 ### Welle 1
 
@@ -410,7 +410,7 @@ Geplante Tage: 1.55
 
 Tor: Prüfstufe B, Probelauf im Admin
 Kriterien: Z-19, Z-20
-Geplante Tage: 1.24
+Geplante Tage: 1.25
 
 ### Welle 1
 
@@ -425,6 +425,7 @@ Geplante Tage: 1.24
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E9-OPUS-03 | Livegang-Prüfung erweitern: jede neue Einstellung, jeder Schalter, jede Menschensache | opus-5.5 | M | pflicht | 4 | offen |  |
 | E9-OPUS-04 | Später-Bausteine: G-21 Einzel- und Teileverkauf (Datenmodell, Konzept, Schalter) und G-50 Chat-KI (Konzept, abgeschaltete Schnittstelle) | opus-5.5 | M | pflicht | 4 | offen |  |
+| E9-OPUS-05 | Leistung Rest nach E5-OPUS-04: LCP mobil in der Lighthouse-Simulation höchstens 2,5 s auf den Hauptansichten (Schriften vor dem ersten Bild, ungenutzter Code der Kopf- und Leistenbündel, Dokumentgewicht mit RSC-Nutzlast und Inline-SVG, Polyfills nach Entscheidung über Zielbrowser) | opus-5.5 | M | pflicht | 4 | offen |  |
 | E9-BAUMEISTER-01 | Aufbewahrung: alle neuen Upload-Zwecke in Fristen und Bereinigung | haiku-5.5 | M | pflicht | 3 | offen |  |
 | E9-DOKUMENTAR-01 | Menschensachen fertig vorbereiten: jede Anforderung mit Vorschlag menschensache bekommt einen vollständigen Eintrag in MENSCHEN.md oder AUSSEN.md | haiku-5.5 | M | pflicht | 3 | offen |  |
 
@@ -439,7 +440,7 @@ Geplante Tage: 1.24
 
 Tor: Vorrat leer oder LAUFZEIT erreicht (Einstellung: bis Pflicht und Kür erfüllt, also Vorrat leer); Prüfstufe B der Kür
 Kriterien: Z-01, Z-11
-Geplante Tage: 1.55
+Geplante Tage: 1.56
 
 ### Welle 1
 

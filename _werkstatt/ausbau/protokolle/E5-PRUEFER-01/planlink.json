@@ -1,0 +1,33 @@
+{
+ "abschlussTexte": [
+  "A|Startseite|http://localhost:3000/",
+  "A|Schließanlagen|http://localhost:3000/schliessanlagen",
+  "INPUT||",
+  "INPUT||",
+  "BUTTON|Zurück|",
+  "BUTTON|In den Warenkorb|",
+  "BUTTON|Start|",
+  "BUTTON|Türen|",
+  "BUTTON|Schlüssel|",
+  "BUTTON|Prüfen|",
+  "BUTTON|5.Abschluss|",
+  "BUTTON|Plan als Link speichern|",
+  "A|Schließplan als PDF|http://localhost:3000/schliessanlagen/konfigurator/schliessplan/pdf?plan=1.eyJ2ZXJzaW9uIjoxLCJ0dWVyZW4iOlt7ImJlemVpY2hudW5nIjoiSGF1c3TDvHIiLCJmb3JtIjoiZG9wcGVsenlsaW5kZXIiLCJhIjozMCwiYiI6MzAsImlkIjoidDEifV0sInNjaGx1ZXNzZWwiOlt7ImJlemVpY2hudW5nIjoiRmFtaWxpZSIsImFuemFobCI6MywiaWQiOiJzMSJ9XSwiYmVyZWNodGlndW5nZW4iOnsiczEiOlsidDEiXX0sIm1hc3NlR2VwcnVlZnQiOnRydWV9",
+  "DIV||"
+ ],
+ "knopfe": [
+  "Warenkorb, leer",
+  "Termin anfragen",
+  "In den Warenkorb",
+  "Plan als Link speichern",
+  "Schließplan als PDF"
+ ],
+ "nachLinkKnopf": [
+  "INPUT||",
+  "INPUT||",
+  "A|Schließplan als PDF|http://localhost:3000/schliessanlagen/konfigurator/schliessplan/pdf?plan=1.eyJ2ZXJzaW9uIjoxLCJ0dWVyZW4iOlt7ImJlemVpY2hudW5nIjoiSGF1c3TDvHIiLCJmb3JtIjoiZG9wcGVsenlsaW5kZXIiLCJhIjozMCwiYiI6MzAsImlkIjoidDEifV0sInNjaGx1ZXNzZWwiOlt7ImJlemVpY2hudW5nIjoiRmFtaWxpZSIsImFuemFobCI6MywiaWQiOiJzMSJ9XSwiYmVyZWNodGlndW5nZW4iOnsiczEiOlsidDEiXX0sIm1hc3NlR2VwcnVlZnQiOnRydWV9",
+  "DIV|Link kopiert. Er enthält Türen, Schlüssel und Bezeichnungen, keine Kontaktdaten.|"
+ ],
+ "url": "http://localhost:3000/schliessanlagen/konfigurator/schliessplan",
+ "anfragenNachExtern": []
+}

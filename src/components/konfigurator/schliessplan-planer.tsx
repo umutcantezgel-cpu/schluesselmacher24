@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -13,16 +13,15 @@ import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { Alert } from '@/components/ui/alert';
 import { Button, ButtonLink } from '@/components/ui/button';
 import { ZylinderMassGrafik } from '@/components/visual/generators/zylinder-mass';
+import { WegBestaetigung } from '@/components/weg/bestaetigung';
 import { submitRecord } from '@/lib/actions/records';
 import { ERWEITERBAR_OPTION_ID } from '@/lib/cylinder-rules';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { formatCents } from '@/lib/format';
 import {
-  EBENE_TEXT,
   SCHUTZ_OPTION_ID,
   VORLAGEN,
   dekodiere,
-  ebene,
   kodiere,
   leererPlan,
   passtInLink,
@@ -34,9 +33,11 @@ import {
   type Schliessplan,
   type Vorlage,
 } from '@/lib/konfigurator';
+import { SCHLIESSPLAN_DATEINAME } from '@/lib/pdf/schliessplan';
+import { SCHRITTE_PLANER } from '@/lib/wege/naechste-schritte';
 import { aktionMelden } from '@/lib/statistik';
 import { useCartStore } from '@/lib/store/cart';
-import type { ContactDetails, CylinderCatalog, SummarySection } from '@/lib/types';
+import type { ContactDetails, CylinderCatalog } from '@/lib/types';
 
 import { neueTuer, PlanBefunde, PlanSumme, SchluesselMatrix, summeKurz, TuerenListe } from './schliessplan-editor';
 
@@ -64,7 +65,7 @@ const STEPS: FlowStep[] = [
     id: 'tueren',
     short: 'Türen',
     title: 'Welche Türen gehören dazu?',
-    hint: 'Je Tür ein Zylinder. Die Maße A und B messen Sie an der Tür ab der Mitte der Stulpschraube.',
+    hint: 'Je Tür ein Zylinder. Gemessen wird ab der Mitte der Stulpschraube, der langen Schraube in der Türkante. Maß A reicht nach außen, Maß B nach innen.',
   },
   {
     id: 'schluessel',
@@ -82,7 +83,7 @@ const STEPS: FlowStep[] = [
     id: 'abschluss',
     short: 'Abschluss',
     title: 'Bestellen oder Angebot anfragen',
-    hint: 'Eine Sperrschließung bestellen Sie direkt. Für eine Schließanlage mit Ebenen schicken wir Ihnen ein Angebot.',
+    hint: 'Eine Sperrschließung bestellen Sie direkt. Für eine Schließanlage mit Ebenen, also mit Schlüsseln, die nicht alle Türen öffnen, schicken wir Ihnen ein Angebot.',
   },
 ];
 
@@ -128,50 +129,16 @@ function leererStart(katalog: CylinderCatalog): Schliessplan {
   return schluesselHinzufuegen(mitTuer, { bezeichnung: 'Familie', anzahl: 3 }, true);
 }
 
-/** Zusammenfassung für Vorgang und Mail: Türen, Schlüssel mit ihren Türen, Zusatzwünsche, Preisart. */
-function zusammenfassung(plan: Schliessplan, katalog: CylinderCatalog, preisText: string, extraIds: string[]): SummarySection[] {
-  const formName = (id: string) => katalog.forms.find((f) => f.id === id)?.label ?? id;
-  const tuerName = new Map(plan.tueren.map((t) => [t.id, t.bezeichnung]));
-  return [
-    {
-      title: 'Türen',
-      rows: plan.tueren.map((t) => ({
-        label: t.bezeichnung,
-        value: [
-          formName(t.form),
-          t.b !== undefined ? `A ${t.a} mm, B ${t.b} mm` : `A ${t.a} mm`,
-          t.funktionId ? katalog.functions.find((f) => f.id === t.funktionId)?.label : null,
-          t.optionen?.includes(SCHUTZ_OPTION_ID) ? katalog.extras.find((e) => e.id === SCHUTZ_OPTION_ID)?.label : null,
-        ]
-          .filter(Boolean)
-          .join(' · '),
-      })),
-    },
-    {
-      title: 'Schlüssel',
-      rows: plan.schluessel.map((s) => ({
-        label: `${s.bezeichnung} (${s.anzahl}${s.reserve ? `, ${s.reserve} vorgemerkt` : ''})`,
-        value: `${EBENE_TEXT[ebene(plan, s.id)]}: ${(plan.berechtigungen[s.id] ?? []).map((id) => tuerName.get(id) ?? id).join(', ') || 'keine'}`,
-      })),
-    },
-    ...(extraIds.length
-      ? [{ title: 'Zusatzwünsche', rows: extraIds.map((id) => ({ label: katalog.extras.find((e) => e.id === id)?.label ?? id, value: 'gewünscht' })) }]
-      : []),
-    { title: 'Preis', rows: [{ label: 'Preis', value: preisText }] },
-  ];
-}
-
 export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
   const router = useRouter();
   const addCylinderOrder = useCartStore((state) => state.addCylinderOrder);
   const schutz = useFormularSchutz();
   const [submitting, setSubmitting] = useState(false);
   const [fehler, setFehler] = useState<string | null>(null);
-  const [ergebnis, setErgebnis] = useState<{ reference: string } | null>(null);
+  const [ergebnis, setErgebnis] = useState<{ reference: string; notices: string[] } | null>(null);
   const [linkStatus, setLinkStatus] = useState<{ url: string; kopiert: boolean } | { zuGross: true } | null>(null);
   /** Vorlage, die einen vorhandenen Plan ersetzen würde, bis zur Bestätigung. */
   const [ersetzenDurch, setErsetzenDurch] = useState<string | null>(null);
-  const erfolgRef = useRef<HTMLHeadingElement>(null);
 
   const flow = useFlow<PlanerDaten>({
     id: FLOW_ID,
@@ -215,10 +182,6 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
       adresseBereinigen();
     }
   }, [linkPlan, flow]);
-
-  useEffect(() => {
-    if (ergebnis) erfolgRef.current?.focus();
-  }, [ergebnis]);
 
   const preis = useMemo(() => preisFuerPlan(d.plan, katalog, d.extraIds), [d.plan, katalog, d.extraIds]);
   const setPlan = (plan: Schliessplan) => flow.update({ plan });
@@ -266,7 +229,6 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
       router.push('/warenkorb');
       return;
     }
-    const preisText = preis.art === 'angebot' ? `Angebot: ${preis.grund}` : 'offen';
     try {
       const response = await submitRecord({
         schutz: await schutz.daten(),
@@ -275,14 +237,15 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
         process: 'projektkonfigurator',
         contact: d.contact,
         payload: { quelle: 'schliessplan-planer', schliessplan: d.plan, extraIds: d.extraIds, notiz: d.notiz, consent: d.consent },
-        summary: zusammenfassung(d.plan, katalog, preisText, d.extraIds),
+        // Zusammenfassung und Schnappschuss bildet der Server aus dem Plan (E5-OPUS-03).
+        summary: [],
         uploads: [],
       });
       schutz.antwortBeachten(response);
       if (response.ok && response.reference) {
         aktionMelden('projektanfrage', 'schliessanlagen');
         clearFlow(FLOW_ID);
-        setErgebnis({ reference: response.reference });
+        setErgebnis({ reference: response.reference, notices: response.notices });
       } else {
         setFehler(response.error ?? 'Der Vorgang konnte nicht gespeichert werden.');
       }
@@ -295,18 +258,23 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
 
   if (ergebnis) {
     return (
-      <div className="mx-auto max-w-measure space-y-5 py-6" role="status">
-        <h2 ref={erfolgRef} tabIndex={-1} className="text-title font-bold text-foreground focus:outline-none">
-          Ihr Schließplan ist angekommen
-        </h2>
-        <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Ihre Vorgangsnummer</p>
-        <p className="font-mono text-title font-semibold tabular-nums text-foreground">{ergebnis.reference}</p>
-        <p className="text-body text-foreground-muted">
-          Danke. Ihr Schließplan ist bei uns angekommen, mit allen Türen, Schlüsseln und der Matrix. Wir prüfen ihn und schicken Ihnen ein Angebot.
-        </p>
-        <ButtonLink href="/schliessanlagen" variant="outline">
-          Zurück zu den Schließanlagen
-        </ButtonLink>
+      <div className="mx-auto max-w-3xl py-6">
+        <WegBestaetigung
+          marke="Schließplan eingegangen"
+          titel="Ihr Schließplan ist angekommen"
+          text="Danke. Ihr Schließplan ist bei uns angekommen, mit allen Türen, Schlüsseln und der Matrix. Wir prüfen ihn und schicken Ihnen ein Angebot."
+          reference={ergebnis.reference}
+          nummerHinweis="Bewahren Sie die Vorgangsnummer auf: Unter ihr ist Ihr Schließplan mit allen Türen und Schlüsseln gespeichert, auch für spätere Nachbestellungen. Mit ihr und Ihrer E-Mail-Adresse rufen Sie den Stand Ihres Vorgangs ab."
+          notices={ergebnis.notices}
+          schritte={SCHRITTE_PLANER}
+          zurueck={{ href: '/schliessanlagen', label: 'Zurück zu den Schließanlagen' }}
+        >
+          <p className="mt-5 text-small leading-relaxed text-foreground-muted">
+            <Link href="/schliessanlagen#nachbestellen" className="font-semibold text-primary underline-offset-2 hover:underline">
+              So bestellen Sie später nach
+            </Link>
+          </p>
+        </WegBestaetigung>
       </div>
     );
   }
@@ -319,6 +287,11 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
     abschluss: preis.art === 'preis' ? 'Bitte bestätigen Sie die Maße.' : 'Bitte füllen Sie die Pflichtangaben aus und stimmen Sie der Verarbeitung zu.',
   };
   const setContact = (key: keyof ContactDetails, value: string) => flow.update({ contact: { ...d.contact, [key]: value } });
+  /* Schließplan als PDF über denselben Link wie „Plan als Link speichern“; große Pläne gehen mit der Anfrage. */
+  const pdfHref =
+    d.plan.tueren.length > 0 && passtInLink(d.plan)
+      ? `/schliessanlagen/konfigurator/schliessplan/pdf?plan=${kodiere(d.plan)}${d.extraIds.length ? `&wuensche=${encodeURIComponent(d.extraIds.join(','))}` : ''}`
+      : null;
 
   return (
     <FlowShell
@@ -336,9 +309,16 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
         d.plan.tueren.length > 0 && (
           <div className="space-y-3">
             <PlanSumme plan={d.plan} katalog={katalog} extraIds={d.extraIds} />
-            <Button variant="outline" size="sm" onClick={linkKopieren}>
-              Plan als Link speichern
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button variant="outline" size="sm" onClick={linkKopieren}>
+                Plan als Link speichern
+              </Button>
+              {pdfHref && (
+                <ButtonLink href={pdfHref} download={SCHLIESSPLAN_DATEINAME} prefetch={false} variant="outline" size="sm">
+                  Schließplan als PDF
+                </ButtonLink>
+              )}
+            </div>
             <div role="status" className="text-small text-foreground-muted">
               {linkStatus && 'zuGross' in linkStatus && (
                 <p>Der Plan ist zu groß für einen Link. Er bleibt in diesem Browser gespeichert; zur Weitergabe senden Sie uns die Anfrage.</p>
@@ -417,6 +397,17 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
               </div>
             </Alert>
           )}
+          {/* Privat oder Unternehmen (G-30): Empfehlung vor der Wahl, mit Beratung als Ausweg */}
+          <div className="rounded-lg border border-border bg-surface p-4">
+            <p className="text-small font-semibold text-foreground">Haus, kleines Team oder Firma?</p>
+            <p className="mt-1 text-small leading-relaxed text-foreground-muted">
+              Für ein Haus oder ein kleines Team genügt meist eine Sperrschließung: ein Schlüssel für alle Türen. Für
+              Firmen mit mehreren Bereichen empfehlen wir eine Schließanlage, in der jeder nur seine Türen öffnet.
+            </p>
+            <Link href="/service-und-termin/kontakt" className="mt-2 inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline">
+              Unsicher? Wir beraten Sie
+            </Link>
+          </div>
           <fieldset>
             <legend className="sr-only">Womit möchten Sie anfangen?</legend>
             <div className="grid gap-3 md:grid-cols-2">
@@ -455,9 +446,9 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
         <div className="space-y-6">
           <PlanBefunde plan={d.plan} katalog={katalog} />
           <figure className="m-0 rounded-lg border border-border bg-surface p-3 sm:p-4">
-            <ZylinderMassGrafik params={{ beschlag: 'an' }} title="So messen Sie Maß A und B: ab der Mitte der Stulpschraube bis zum Zylinderende" />
+            <ZylinderMassGrafik params={{ beschlag: 'an' }} title="So messen Sie Maß A und Maß B: ab der Mitte der Stulpschraube bis zum Zylinderende" />
             <figcaption className="mt-2 text-small text-foreground-muted">
-              Gemessen wird ab der Mitte der Stulpschraube bis zum Zylinderende, außen A, innen B. Ein Schutzbeschlag zählt mit.
+              Gemessen wird ab der Mitte der Stulpschraube bis zum Zylinderende. Maß A misst man nach außen, Maß B nach innen. Ein Schutzbeschlag zählt mit.
             </figcaption>
           </figure>
           {planExtras.length > 0 && (

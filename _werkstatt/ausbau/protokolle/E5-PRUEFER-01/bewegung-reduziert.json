@@ -1,0 +1,142 @@
+{
+  "skript": "bewegung-reduziert",
+  "zeit": "2026-11-03T23:52:15.690Z",
+  "argumente": {
+    "_": [
+      "reduziert"
+    ],
+    "routen": "/,/autoschluessel,/autoschluessel/marken/volkswagen/golf,/autoschluessel/anfrage,/schluessel-nach-code,/schluessel-nach-code/ms-01,/schluessel-nach-vorlage,/schluessel-einschicken,/gleichschliessende-zylinder/konfigurator,/schliessanlagen,/schliessanlagen/konfigurator,/schliessanlagen/konfigurator/schliessplan,/partner-werden,/kasse,/ratgeber/zylinder-richtig-ausmessen,/gleichschliessende-zylinder",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E5-PRUEFER-01/bewegung-reduziert.json",
+    "echtzeit": false
+  },
+  "zeilen": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 190
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 216
+    },
+    {
+      "ansicht": "H03-modell-golf",
+      "pfad": "/autoschluessel/marken/volkswagen/golf",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 225
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 129
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 395
+    },
+    {
+      "ansicht": "H06-code-produkt",
+      "pfad": "/schluessel-nach-code/ms-01",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 202
+    },
+    {
+      "ansicht": "H07-foto",
+      "pfad": "/schluessel-nach-vorlage",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 176
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 120
+    },
+    {
+      "ansicht": "H09-sperrschliessung-konfigurator",
+      "pfad": "/gleichschliessende-zylinder/konfigurator",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 146
+    },
+    {
+      "ansicht": "H10-schliessanlagen",
+      "pfad": "/schliessanlagen",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 246
+    },
+    {
+      "ansicht": "H11-schliessanlagen-konfigurator",
+      "pfad": "/schliessanlagen/konfigurator",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 116
+    },
+    {
+      "ansicht": "schliessanlagen-konfigurator-schliessplan",
+      "pfad": "/schliessanlagen/konfigurator/schliessplan",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 95
+    },
+    {
+      "ansicht": "H12-partner-werden",
+      "pfad": "/partner-werden",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 122
+    },
+    {
+      "ansicht": "H13-kasse",
+      "pfad": "/kasse",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 79
+    },
+    {
+      "ansicht": "H14-ratgeber-messen",
+      "pfad": "/ratgeber/zylinder-richtig-ausmessen",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 91
+    },
+    {
+      "ansicht": "gleichschliessende-zylinder",
+      "pfad": "/gleichschliessende-zylinder",
+      "laufend": 0,
+      "animationen": [],
+      "verborgen": [],
+      "textElemente": 252
+    }
+  ]
+}

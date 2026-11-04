@@ -41,6 +41,7 @@ vi.mock('@/lib/data', () => {
     ZuVieleOffeneTermineFehler,
     getSettings: async () => defaults.settings(),
     getCollection: async (name: keyof typeof defaults) => defaults[name](),
+    getRubrik: async (id: string) => defaults.rubriken().find((r) => r.id === id) ?? null,
     getAppointments: async (von: string, bis: string) => (vorab.veraltet ? [] : termine(von, bis)),
     // Wie die Datenschicht: Termin unter Sperre frisch prüfen, dann Nummer vergeben.
     vorgangAnlegen: async ({ art, jahr, aufbauen, termin }: VorgangsAnlage) => {
@@ -133,6 +134,116 @@ describe('submitRecord', () => {
     expect(stored).toHaveLength(0);
     expect((await bewerbung('service-und-termin', { datenschutz: true })).ok).toBe(true);
     expect(stored[0]).toMatchObject({ kind: 'partner', area: 'service-und-termin' });
+  });
+
+  it('baut Anfragen aus dem Schließplan-Planer auf dem Server neu (E5-OPUS-03)', async () => {
+    const form = defaults.cylinderCatalog().forms[0].id;
+    const plan = {
+      version: 1,
+      tueren: [
+        { id: 't1', bezeichnung: 'Haustür', form, a: 30, b: 35 },
+        { id: 't2', bezeichnung: 'Keller', form, a: 30, b: 30 },
+      ],
+      schluessel: [
+        { id: 's1', bezeichnung: 'Hausverwaltung', anzahl: 2, reserve: 1 },
+        { id: 's2', bezeichnung: 'Mieter', anzahl: 3 },
+      ],
+      berechtigungen: { s1: ['t1', 't2', 'tX'], s2: ['t1'] },
+      masseGeprueft: true,
+    };
+    const basis = { kind: 'projekt' as const, area: 'schliessanlagen' as const, process: 'projektkonfigurator' as const, contact, summary: [], uploads: [] };
+    const ok = await submitRecord({
+      ...basis,
+      payload: { quelle: 'schliessplan-planer', schliessplan: plan, extraIds: ['erfunden'], notiz: '  Bitte vorher anrufen  ', consent: true, schnappschuss: { gefaelscht: true }, betragCents: 1 },
+    });
+    expect(ok.ok).toBe(true);
+    const payload = stored[0].payload;
+    expect(Object.keys(payload).sort()).toEqual(['consent', 'extraIds', 'notiz', 'quelle', 'schliessplan', 'schnappschuss']);
+    expect(payload).toMatchObject({ extraIds: [], notiz: 'Bitte vorher anrufen', consent: true });
+    expect(payload.schnappschuss).toMatchObject({
+      masseGeprueft: true,
+      schluessel: [{ bezeichnung: 'Hausverwaltung', tueren: [1, 2], reserve: 1 }, { bezeichnung: 'Mieter', tueren: [1] }],
+    });
+
+    const leer = await submitRecord({ ...basis, payload: { quelle: 'schliessplan-planer', schliessplan: { version: 1, tueren: [], schluessel: [], berechtigungen: {} } } });
+    expect(leer.ok).toBe(false);
+    expect(stored).toHaveLength(1);
+  });
+
+  it('nimmt bei Planer-Anfragen keine Zusammenfassung und bei anderen Anfragen keinen Schnappschuss aus dem Browser', async () => {
+    const form = defaults.cylinderCatalog().forms[0].id;
+    const plan = { version: 1, tueren: [{ id: 't1', bezeichnung: 'Haustür', form, a: 30, b: 35 }], schluessel: [{ id: 's1', bezeichnung: 'Familie', anzahl: 3 }], berechtigungen: { s1: ['t1'] } };
+    const gefaelscht = [{ title: 'Preis', rows: [{ label: 'Preis', value: 'Gesamt 1,00 € laut Katalog' }] }];
+    await submitRecord({ kind: 'projekt', area: 'schliessanlagen', process: 'projektkonfigurator', contact, summary: gefaelscht, uploads: [], payload: { quelle: 'schliessplan-planer', schliessplan: plan, notiz: 'Bitte vorher anrufen' } });
+    const planer = stored[0];
+    expect(JSON.stringify(planer.summary)).not.toContain('1,00 €');
+    expect(planer.summary.map((teil) => teil.title)).toEqual(['Türen', 'Schlüssel', 'Preis', 'Nachricht']);
+
+    const schnappschuss = (planer.payload as Record<string, unknown>).schnappschuss;
+    await submitRecord({ kind: 'anfrage', area: 'schliessanlagen', process: 'gefuehrte-anfrage', contact, summary: [], uploads: [], payload: { schnappschuss } });
+    expect(stored[0].kind).toBe('anfrage');
+    expect(stored[0].payload).not.toHaveProperty('schnappschuss');
+  });
+
+  it('verlangt bei der Foto-Anfrage mit Sicherungskarte ein Foto der Karte (R13, E6-OPUS-01)', async () => {
+    const basis = { kind: 'anfrage' as const, area: 'schluessel-nach-vorlage' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [] };
+    const foto = { fileName: 'schluessel.jpg', sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'schluesselfoto' as const };
+    const karte = { ...foto, fileName: 'karte.jpg', category: 'sicherungskarte' as const };
+    const ohneKarte = await submitRecord({ ...basis, payload: { sicherungskarte: 'ja' }, uploads: [foto] });
+    expect(ohneKarte.ok).toBe(false);
+    expect(ohneKarte.error).toContain('Sicherungskarte');
+    expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'ja' }, uploads: [foto, karte] })).ok).toBe(true);
+    expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'nein' }, uploads: [foto] })).ok).toBe(true);
+    expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'unklar' }, uploads: [foto] })).ok).toBe(true);
+  });
+
+  it('lehnt einen Vorgang ohne Telefonnummer ab, wie das Backend (E6-BAUMEISTER-03)', async () => {
+    const ohne = await submitRecord({ kind: 'anfrage', area: 'service-und-termin', process: 'gefuehrte-anfrage', contact: { ...contact, phone: '  ' }, payload: { quelle: 'kontakt' }, summary: [], uploads: [] });
+    expect(ohne.ok).toBe(false);
+  });
+
+  it('verlangt bei Motorrad und Gehäuse die Unterlagen der Rubrik (R13, E6)', async () => {
+    const basis = { kind: 'anfrage' as const, area: 'autoschluessel' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [] };
+    const foto = { fileName: 'schluessel.jpg', sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'schluesselfoto' as const };
+    for (const quelle of ['motorrad', 'gehaeuse']) {
+      const ohne = await submitRecord({ ...basis, payload: { quelle }, uploads: [foto] });
+      expect(ohne.ok, quelle).toBe(false);
+      expect(ohne.error, quelle).toContain('Fahrzeugschein');
+      const ohneFoto = await submitRecord({ ...basis, payload: { quelle }, uploads: [fahrzeugschein] });
+      expect(ohneFoto.ok, quelle).toBe(false);
+      expect((await submitRecord({ ...basis, payload: { quelle }, uploads: [fahrzeugschein, foto] })).ok, quelle).toBe(true);
+      expect((await submitRecord({ ...basis, area: 'schluessel-nach-vorlage', payload: { quelle }, uploads: [fahrzeugschein, foto] })).ok, quelle).toBe(false);
+    }
+  });
+
+  it('legt eine Einsendung nur mit geprüften Angaben an, ohne Begleitschein bei Platzhalter-Firmendaten (G-24, E6-OPUS-02)', async () => {
+    const basis = { kind: 'anfrage' as const, area: 'schluessel-nach-vorlage' as const, process: 'gefuehrte-anfrage' as const, contact, uploads: [] };
+    const gueltig = { quelle: 'einsenden', originale: 2, stueckzahl: 3, beschriftung: ' AB 123 ', hinweis: '', sicherungskarte: 'nein', versand: 'versichert' };
+    const gefaelscht = [{ title: 'Preis', rows: [{ label: 'Preis', value: 'Gesamt 1,00 €' }] }];
+    const ok = await submitRecord({ ...basis, summary: gefaelscht, payload: { ...gueltig, betragCents: 1 } });
+    expect(ok.ok).toBe(true);
+    // Die Standard-Einstellungen tragen Platzhalter-Firmendaten: Dann entsteht kein Begleitschein mit
+    // erfundener Anschrift, sondern ein Hinweis auf die Vorgangsseite (Erzeugung: einsenden/schein.test.ts).
+    expect(ok.begleitschein).toBeUndefined();
+    expect(ok.notices.join(' ')).toContain('Begleitschein');
+    const vorgang = stored[0];
+    expect(vorgang.payload).toEqual({
+      quelle: 'einsenden', originale: 2, stueckzahl: 3, beschriftung: 'AB 123', hinweis: null, sicherungskarte: 'nein', versand: 'versichert', originalEingesendet: true,
+    });
+    expect(JSON.stringify(vorgang.summary)).not.toContain('1,00 €');
+    expect(vorgang.summary.map((teil) => teil.title)).toEqual(['Einsendung', 'Kontakt und Rücksendung']);
+
+    const anzahl = stored.length;
+    for (const falsch of [{ stueckzahl: 99 }, { originale: 0 }, { versand: 'express' }, { sicherungskarte: '' }, { beschriftung: 'x'.repeat(81) }]) {
+      expect((await submitRecord({ ...basis, summary: [], payload: { ...gueltig, ...falsch } })).ok, JSON.stringify(falsch)).toBe(false);
+    }
+    expect((await submitRecord({ ...basis, contact: { ...contact, postalCode: '' }, summary: [], payload: gueltig })).ok).toBe(false);
+    expect((await submitRecord({ ...basis, area: 'schliessanlagen', summary: [], payload: gueltig })).ok).toBe(false);
+    // Sicherungskarte „ja“ verlangt das Foto der Karte wie die Foto-Anfrage (R13).
+    const ohneKarte = await submitRecord({ ...basis, summary: [], payload: { ...gueltig, sicherungskarte: 'ja' } });
+    expect(ohneKarte.ok).toBe(false);
+    expect(ohneKarte.error).toContain('Sicherungskarte');
+    expect(stored).toHaveLength(anzahl);
   });
 
   it('lehnt Bestellungen außerhalb der Kasse ab', async () => {
@@ -438,6 +549,33 @@ describe('submitOrder', () => {
       expectedTotalCents,
     });
   }
+
+  it('verlangt bei geschützten Codelinien die Sicherungskarte auch auf dem Server (R13, E6-OPUS-01)', async () => {
+    const geschuetzt = defaults.codeLines().find((l) => l.photoUpload === 'pflicht' && l.active && !l.example)!;
+    const foto = (category: 'schluesselfoto' | 'sicherungskarte') => ({
+      id: `datei-${category}`,
+      fileName: `${category}.jpg`,
+      sizeBytes: 120_000,
+      mimeType: 'image/jpeg',
+      category,
+      uploadedAt: '2026-11-04T02:00:00.000Z',
+    });
+    const bestellung = (photoRefs: ReturnType<typeof foto>[]) =>
+      submitOrder({
+        items: [{ kind: 'code-schluessel', uid: 'k', codeLineId: geschuetzt.id, code: geschuetzt.codeExample, qty: 1, unitPriceCents: 1, photoRefs }],
+        shippingOptionId: shipping.id,
+        contact,
+        acceptedTerms: true,
+        acceptedCustomMade: true,
+        expectedTotalCents: geschuetzt.priceCents + shipping.priceCents,
+      });
+    const ohne = await bestellung([]);
+    expect(ohne.ok).toBe(false);
+    expect(ohne.error).toContain('Sicherungskarte');
+    expect((await bestellung([foto('schluesselfoto')])).ok).toBe(false);
+    expect((await bestellung([foto('sicherungskarte')])).ok).toBe(true);
+    expect(stored[0].uploads.map((u) => u.category)).toEqual(['sicherungskarte']);
+  });
 
   it('bestellt nur zum angezeigten Betrag und meldet eine Abweichung', async () => {
     const result = await order(1);

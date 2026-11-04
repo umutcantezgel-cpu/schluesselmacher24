@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-03T17:51:47.327Z",
+ "stand": "2026-11-04T05:39:06.368Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -52,7 +52,7 @@
     "Z-12",
     "Z-20"
    ],
-   "tage": 2.33
+   "tage": 2.34
   },
   {
    "kennung": "E4",
@@ -68,7 +68,7 @@
     "Z-14",
     "Z-15"
    ],
-   "tage": 1.55
+   "tage": 1.56
   },
   {
    "kennung": "E5",
@@ -80,7 +80,7 @@
     "Z-05",
     "Z-06"
    ],
-   "tage": 1.55
+   "tage": 1.56
   },
   {
    "kennung": "E6",
@@ -93,7 +93,7 @@
     "Z-08",
     "Z-19"
    ],
-   "tage": 1.55
+   "tage": 1.56
   },
   {
    "kennung": "E7",
@@ -105,7 +105,7 @@
     "Z-09",
     "Z-10"
    ],
-   "tage": 1.55
+   "tage": 1.56
   },
   {
    "kennung": "E8",
@@ -120,7 +120,7 @@
     "Z-17",
     "Z-18"
    ],
-   "tage": 1.55
+   "tage": 1.56
   },
   {
    "kennung": "E9",
@@ -132,7 +132,7 @@
     "Z-19",
     "Z-20"
    ],
-   "tage": 1.24
+   "tage": 1.25
   },
   {
    "kennung": "E10",
@@ -144,7 +144,7 @@
     "Z-01",
     "Z-11"
    ],
-   "tage": 1.55
+   "tage": 1.56
   },
   {
    "kennung": "EA",
@@ -2521,7 +2521,9 @@
     "src/app/(site)/autoschluessel/anfrage/",
     "src/components/flow/flow-shell.tsx",
     "src/components/forms/photo-upload.tsx",
-    "src/components/autoschluessel/optionen.ts"
+    "src/components/autoschluessel/optionen.ts",
+    "content/seo.json",
+    "src/lib/data/defaults/content.ts"
    ],
    "abhaengigkeiten": [
     "E4-JURY-02",
@@ -2539,10 +2541,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "97b4d7d",
    "massstab": null,
    "muster": null
   },
@@ -2653,10 +2655,10 @@
    ],
    "art": "pflicht",
    "wirkung": 5,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "a9c4a3e",
    "massstab": null,
    "muster": null
   },
@@ -2671,7 +2673,16 @@
    "kostenklasse": "M",
    "schreibrechte": [
     "src/lib/pdf/schliessplan.ts",
-    "src/lib/konfigurator/vorgang.ts"
+    "src/lib/pdf/schliessplan.test.ts",
+    "src/lib/konfigurator/vorgang.ts",
+    "src/lib/konfigurator/vorgang.test.ts",
+    "src/lib/konfigurator/zwischenstand.ts",
+    "src/lib/pdf/vorgangsblatt.ts",
+    "src/lib/actions/records.ts",
+    "src/lib/actions/security.test.ts",
+    "src/lib/server/rate-limit.ts",
+    "src/components/konfigurator/schliessplan-planer.tsx",
+    "src/app/(site)/schliessanlagen/konfigurator/schliessplan/pdf/"
    ],
    "abhaengigkeiten": [
     "E5-OPUS-01"
@@ -2687,10 +2698,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "99b5a9f",
    "massstab": null,
    "muster": null
   },
@@ -2737,7 +2748,12 @@
    "stufe": 2,
    "kostenklasse": "M",
    "schreibrechte": [
-    "content/konfigurator-texte.json"
+    "src/lib/konfigurator/masse.ts",
+    "src/lib/konfigurator/vorlagen.ts",
+    "src/components/konfigurator/schliessplan-planer.tsx",
+    "src/components/konfigurator/schliessplan-editor.tsx",
+    "src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx",
+    "_werkstatt/ausbau/berichte/E5-AUTOR-01.md"
    ],
    "abhaengigkeiten": [
     "E5-OPUS-02"
@@ -2754,10 +2770,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "782b9e7",
    "massstab": "_werkstatt/ausbau/pakete/E5-AUTOR-01.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
@@ -2784,10 +2800,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "b1dd388",
    "massstab": "_werkstatt/ausbau/pakete/E5-PROBENUTZER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
@@ -2821,10 +2837,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "2883129",
    "massstab": "_werkstatt/ausbau/pakete/E5-PRUEFER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
@@ -2879,7 +2895,8 @@
     "src/components/hub/",
     "src/components/visual/inszenierung/",
     "src/components/seo/",
-    "src/fonts/"
+    "src/fonts/",
+    "src/lib/konfigurator/zwischenstand.ts"
    ],
    "abhaengigkeiten": [
     "E5-PRUEFER-02",
@@ -2895,10 +2912,10 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "591769a",
    "massstab": null,
    "muster": null
   },
@@ -2913,7 +2930,30 @@
    "kostenklasse": "L",
    "schreibrechte": [
     "src/components/weg/",
-    "src/lib/wege/"
+    "src/lib/wege/",
+    "src/lib/actions/orders.ts",
+    "src/lib/actions/records.ts",
+    "src/lib/actions/security.test.ts",
+    "src/app/(site)/schluessel-nach-code/[slug]/bestell-formular.tsx",
+    "src/app/(site)/schluessel-nach-vorlage/",
+    "src/app/(site)/service-und-termin/anfrage/",
+    "content/rubriken.json",
+    "src/lib/data/defaults/rubriken.ts",
+    "src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx",
+    "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx",
+    "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx",
+    "src/app/(site)/partner-werden/partner-formular.tsx",
+    "src/components/konfigurator/schliessplan-planer.tsx",
+    "src/app/(site)/bestellung/[id]/page.tsx",
+    "src/components/rubrik/rubrik-ablauf.tsx",
+    "src/app/(site)/schluessel-nach-code/page.tsx",
+    "src/app/(site)/gleichschliessende-zylinder/page.tsx",
+    "src/app/(site)/schliessanlagen/page.tsx",
+    "src/app/(site)/elektronische-zutrittsloesungen/page.tsx",
+    "src/app/(site)/sicherheitstechnik/page.tsx",
+    "src/app/(site)/service-und-termin/vor-ort/page.tsx",
+    "src/app/(site)/autoschluessel/marken/page.tsx",
+    "src/app/(site)/tuer-und-schliesstechnik/page.tsx"
    ],
    "abhaengigkeiten": [
     "E5-PRUEFER-01",
@@ -2943,10 +2983,10 @@
    ],
    "art": "pflicht",
    "wirkung": 5,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "ea67244",
    "massstab": null,
    "muster": null
   },
@@ -2961,7 +3001,24 @@
    "kostenklasse": "L",
    "schreibrechte": [
     "src/app/(site)/schluessel-einschicken/",
-    "src/lib/einsenden/"
+    "src/lib/einsenden/",
+    "src/app/(site)/bestellung/[id]/",
+    "src/lib/actions/records.ts",
+    "src/lib/actions/security.test.ts",
+    "src/lib/server/rate-limit.ts",
+    "src/lib/wege/naechste-schritte.ts",
+    "src/lib/wege/ablauf.test.tsx",
+    "src/app/sitemap.ts",
+    "content/seo.json",
+    "src/app/(site)/schluessel-nach-vorlage/page.tsx",
+    "src/lib/mail/vorlagen/",
+    "src/app/(site)/service-und-termin/terminstatus/",
+    "src/lib/foto-freigabe.ts",
+    "src/payload/hooks/vorgang-benachrichtigen.ts",
+    "src/lib/data/payload-mapping.ts",
+    "src/payload/collections/Vorgaenge.ts",
+    "src/lib/pdf/vorgangsblatt.ts",
+    "src/lib/actions/booking.ts"
    ],
    "abhaengigkeiten": [
     "E6-OPUS-01"
@@ -2978,10 +3035,10 @@
    ],
    "art": "pflicht",
    "wirkung": 5,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "3b5c7b9",
    "massstab": null,
    "muster": null
   },
@@ -3009,8 +3066,8 @@
    ],
    "art": "pflicht",
    "wirkung": 4,
-   "status": "offen",
-   "grund": null,
+   "status": "zurückgestellt",
+   "grund": "wartet auf Bogen KLONBAR, Preis und rechtliche Einordnung (MA-04, MA-27, A-036); die Transponder-Kopie bleibt verborgen (G-18)",
    "versuche": 0,
    "commit": null,
    "massstab": null,
@@ -3039,10 +3096,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "dc0893b",
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-01.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
@@ -3069,10 +3126,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "9bfec4c",
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-02.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
@@ -3099,10 +3156,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "667efab",
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-03.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
@@ -3132,10 +3189,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "cac398f",
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-04.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },
@@ -4357,6 +4414,43 @@
    "muster": null
   },
   {
+   "kennung": "E9-OPUS-05",
+   "titel": "Leistung Rest nach E5-OPUS-04: LCP mobil in der Lighthouse-Simulation höchstens 2,5 s auf den Hauptansichten (Schriften vor dem ersten Bild, ungenutzter Code der Kopf- und Leistenbündel, Dokumentgewicht mit RSC-Nutzlast und Inline-SVG, Polyfills nach Entscheidung über Zielbrowser)",
+   "etappe": "E9",
+   "welle": 2,
+   "rolle": "Orchestrator",
+   "modell": "opus-5.5",
+   "stufe": 3,
+   "kostenklasse": "M",
+   "schreibrechte": [
+    "next.config.ts",
+    "src/app/(site)/layout.tsx",
+    "src/app/(site)/globals.css",
+    "src/components/layout/",
+    "src/fonts/",
+    "package.json"
+   ],
+   "abhaengigkeiten": [
+    "E5-OPUS-04"
+   ],
+   "anforderungen": [
+    "EL-33",
+    "G-06"
+   ],
+   "kriterien": [
+    "Z-15",
+    "Z-16"
+   ],
+   "art": "pflicht",
+   "wirkung": 4,
+   "status": "offen",
+   "grund": null,
+   "versuche": 0,
+   "commit": null,
+   "massstab": null,
+   "muster": null
+  },
+  {
    "kennung": "E9-BAUMEISTER-01",
    "titel": "Aufbewahrung: alle neuen Upload-Zwecke in Fristen und Bereinigung",
    "etappe": "E9",
@@ -4438,6 +4532,7 @@
     "E9-BAUMEISTER-01",
     "E9-OPUS-01",
     "E9-OPUS-02",
+    "E9-OPUS-05",
     "E9-DOKUMENTAR-01"
    ],
    "anforderungen": [],
@@ -5660,13 +5755,13 @@
   }
  ],
  "mengengeruest": {
-  "pakete": 149,
-  "pflicht": 139,
+  "pakete": 150,
+  "pflicht": 140,
   "kuer": 10,
-  "opus": 53,
+  "opus": 54,
   "haiku": 96,
   "kostenklassen": {
-   "M": 94,
+   "M": 95,
    "L": 55
   },
   "anforderungen": 623,
@@ -5679,7 +5774,7 @@
    "L": 6
   },
   "puffer": 0.2,
-  "tage": 15.7
+  "tage": 15.8
  },
  "kritischer_pfad": [
   "E1-FACHKUNDLER-03",

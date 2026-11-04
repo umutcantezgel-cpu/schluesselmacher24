@@ -9,8 +9,6 @@ import { scrollVerhalten } from '@/lib/bewegung';
 import type { InfoHint, SummarySection } from '@/lib/types';
 import { aktionMelden } from '@/lib/statistik';
 import { Alert } from '@/components/ui/alert';
-import { ButtonLink } from '@/components/ui/button';
-import { Card, CardBody } from '@/components/ui/card';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
@@ -18,7 +16,8 @@ import { Field } from '@/components/forms/field';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
 import { SummaryList } from '@/components/layout/summary-list';
-import { CheckDraw } from '@/components/visual/motion/check-draw';
+import { WegBestaetigung } from '@/components/weg/bestaetigung';
+import { SCHRITTE_ZUTRITT } from '@/lib/wege/naechste-schritte';
 
 /* ==========================================================================
    Zutrittskonfigurator — acht Abfragen, danach Zusammenfassung.
@@ -695,43 +694,17 @@ export function ZutrittKonfigurator() {
 
   if (result) {
     return (
-      <div className="mx-auto max-w-2xl" role="status">
-        <Card>
-          <CardBody>
-            <CheckDraw title="Projekt eingegangen" />
-            <div className="mt-4 min-w-0">
-              <h2 className="text-title font-bold text-foreground">Ihr Projekt ist eingegangen</h2>
-              <p className="mt-2 text-body text-foreground-muted">
-                Wir prüfen Ihre Angaben und melden uns mit den nächsten Schritten. Bitte notieren
-                Sie sich Ihre Vorgangsnummer.
-              </p>
-            </div>
-
-            <div className="mt-5 rounded-lg border border-border bg-surface-muted p-4">
-              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                Vorgangsnummer
-              </p>
-              <p className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">{result.reference}</p>
-            </div>
-
-            {result.notices.length > 0 && (
-              <div className="mt-4 space-y-3">
-                {result.notices.map((notice) => (
-                  <Alert key={notice} tone="warning">
-                    {notice}
-                  </Alert>
-                ))}
-              </div>
-            )}
-
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/service-und-termin/terminstatus">Stand abrufen</ButtonLink>
-              <ButtonLink href="/elektronische-zutrittsloesungen" variant="outline">
-                Zurück zur Übersicht
-              </ButtonLink>
-            </div>
-          </CardBody>
-        </Card>
+      <div className="mx-auto max-w-3xl">
+        <WegBestaetigung
+          marke="Projekt eingegangen"
+          titel="Ihr Projekt ist eingegangen"
+          text="Wir prüfen Ihre Angaben und melden uns mit den nächsten Schritten."
+          reference={result.reference}
+          notices={result.notices}
+          schritte={SCHRITTE_ZUTRITT}
+          summary={[...answerSummary, buildContactSummary(data)]}
+          zurueck={{ href: '/elektronische-zutrittsloesungen', label: 'Zurück zur Übersicht' }}
+        />
       </div>
     );
   }

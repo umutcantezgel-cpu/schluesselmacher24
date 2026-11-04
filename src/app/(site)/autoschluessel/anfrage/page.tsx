@@ -14,9 +14,9 @@ import { Assistent } from './assistent';
 
 const ROUTE = 'autoschluessel/anfrage';
 
-const FALLBACK_TITLE = 'Autoschlüssel-Anfrage mit Termin und Anzahlung';
+const FALLBACK_TITLE = 'Autoschlüssel anfragen';
 const FALLBACK_DESCRIPTION =
-  'Fahrzeug, Schlüsselart und Leistung in 13 Schritten angeben, Fotos und Fahrzeugschein '
+  'Fahrzeug, Schlüsselart und Leistung Schritt für Schritt angeben, Fotos und Fahrzeugschein '
   + 'hochladen, Preis oder Preisrahmen sehen und einen festen Termin buchen.';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,13 +28,13 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-/** Ein Suchparameter kann mehrfach vorkommen — dann zählt der erste Wert. */
+/** Ein Suchparameter kann mehrfach vorkommen – dann zählt der erste Wert. */
 function first(value: string | string[] | undefined): string {
   if (Array.isArray(value)) return value[0] ?? '';
   return value ?? '';
 }
 
-/** Verwandte Seiten — ein Ablauf soll nie in einer Sackgasse enden. */
+/** Verwandte Seiten – ein Ablauf soll nie in einer Sackgasse enden. */
 const RELATED_LINKS = [
   {
     href: '/autoschluessel',
@@ -48,7 +48,7 @@ const RELATED_LINKS = [
   },
   {
     href: '/ratgeber/autoschluessel-verloren-was-tun',
-    label: 'Schlüssel verloren — was tun?',
+    label: 'Schlüssel verloren – was tun?',
     description: 'Die sinnvolle Reihenfolge, wenn kein Schlüssel mehr da ist.',
   },
   {
@@ -127,7 +127,6 @@ export default async function AutoschluesselAnfragePage(props: {
 
       <Section tone="muted" tight>
         <SectionHeading
-          nummer="01"
           eyebrow="Weiterführend"
           title="Passende Seiten zu diesem Ablauf"
           lead="Falls Sie vor dem Absenden noch etwas nachlesen möchten."

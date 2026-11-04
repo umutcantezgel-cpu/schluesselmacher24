@@ -321,7 +321,13 @@ export const Vorgaenge: CollectionConfig = {
                   type: 'row',
                   fields: [
                     { name: 'preisCent', type: 'number', label: 'Preis (Cent)', min: 0, admin: { width: '34%', step: 1, description: 'Betrag, den der Kunde über den Zahlungslink zahlt — inklusive Umsatzsteuer und, falls angefallen, Versand. In Cent (24,90 € = 2490).' } },
-                    { name: 'einsendenNoetig', type: 'checkbox', label: 'Originalschlüssel einsenden', admin: { width: '33%' } },
+                    {
+                      name: 'einsendenNoetig',
+                      type: 'checkbox',
+                      label: 'Originalschlüssel einsenden',
+                      // Bei einer Einsendung (E6-OPUS-02) liegt das Original schon vor.
+                      admin: { width: '33%', condition: (daten) => (daten?.daten as Record<string, unknown> | undefined)?.quelle !== 'einsenden' },
+                    },
                     { name: 'freigegebenAm', type: 'date', label: 'Freigegeben am', admin: { width: '33%', ...nurLesen, ...zeitpunkt }, ...systemFeld },
                   ],
                 },

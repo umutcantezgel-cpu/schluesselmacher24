@@ -7,7 +7,6 @@ import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { submitRecord } from '@/lib/actions/records';
 import type { AreaKey, SummarySection } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
-import { ButtonLink } from '@/components/ui/button';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
@@ -16,7 +15,8 @@ import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { SummaryList } from '@/components/layout/summary-list';
-import { CheckDraw } from '@/components/visual/motion/check-draw';
+import { WegBestaetigung } from '@/components/weg/bestaetigung';
+import { naechsteSchritte, type NaechsterSchritt } from '@/lib/wege/naechste-schritte';
 
 const STEPS: FlowStep[] = [
   { id: 'thema', short: 'Thema', title: 'Worum geht es?', hint: 'So landet Ihre Anfrage gleich bei der richtigen Person.' },
@@ -75,7 +75,7 @@ export function AllgemeineAnfrage({
   const [dateien, setDateien] = useState<PickedFile[]>([]);
   const [senden, setSenden] = useState(false);
   const [fehler, setFehler] = useState<string | null>(null);
-  const [erfolg, setErfolg] = useState<{ reference: string; notices: string[] } | null>(null);
+  const [erfolg, setErfolg] = useState<{ reference: string; notices: string[]; summary: SummarySection[]; schritte: NaechsterSchritt[] } | null>(null);
 
   const schutz = useFormularSchutz();
 
@@ -141,10 +141,11 @@ export function AllgemeineAnfrage({
     // Laufende Uploads abschließen, damit ihre Kennungen mitgehen.
     await uploadsAbwarten();
 
+    const area = (data.thema || 'service-und-termin') as AreaKey;
     const ergebnis = await submitRecord({
       schutz: await schutz.daten(),
       kind: 'anfrage',
-      area: (data.thema || 'service-und-termin') as AreaKey,
+      area,
       process: 'gefuehrte-anfrage',
       contact: {
         salutation: data.anrede || undefined,
@@ -171,50 +172,24 @@ export function AllgemeineAnfrage({
     }
 
     clearFlow('allgemeine-anfrage');
-    setErfolg({ reference: ergebnis.reference ?? '', notices: ergebnis.notices });
+    // Dieselben Schritte, die die Statusseite für diesen Vorgang zeigt (Thema gleich Bereich).
+    const schritte = naechsteSchritte({ kind: 'anfrage', area, process: 'gefuehrte-anfrage', payload: { thema: data.thema } });
+    setErfolg({ reference: ergebnis.reference ?? '', notices: ergebnis.notices, summary: zusammenfassung, schritte });
   }
 
   if (erfolg) {
     return (
-      <div className="max-w-2xl" role="status">
-        <div className="rounded-lg border border-border bg-surface p-6">
-          <CheckDraw title="Anfrage eingegangen" size={56} />
-          <h2 className="mt-4 text-title font-semibold text-foreground">Ihre Anfrage ist bei uns</h2>
-          <p className="mt-2 text-body text-foreground-muted">
-            Wir sehen uns Ihre Angaben an und melden uns mit einer Einschätzung.
-          </p>
-          <p className="mt-5 font-mono text-caption uppercase tracking-label text-foreground-muted">
-            Ihre Vorgangsnummer
-          </p>
-          <p className="mt-1 break-words font-mono text-title-sm font-semibold tabular-nums text-foreground">
-            {erfolg.reference}
-          </p>
-          <p className="mt-2 text-small text-foreground-muted">
-            Bitte bewahren Sie diese Nummer auf. Mit ihr und Ihrer E-Mail-Adresse rufen Sie den{' '}
-            <Link href="/service-und-termin/terminstatus" className="font-semibold underline">
-              Stand Ihres Vorgangs
-            </Link>{' '}
-            ab.
-          </p>
-        </div>
-
-        {erfolg.notices.length > 0 && (
-          <Alert tone="info" title="Hinweise" className="mt-4">
-            <ul className="space-y-1">
-              {erfolg.notices.map((notice) => (
-                <li key={notice}>{notice}</li>
-              ))}
-            </ul>
-          </Alert>
-        )}
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <ButtonLink href="/">Zur Startseite</ButtonLink>
-          <ButtonLink href="/ratgeber" variant="outline">
-            Ratgeber lesen
-          </ButtonLink>
-        </div>
-      </div>
+      <WegBestaetigung
+        marke="Anfrage eingegangen"
+        titel="Ihre Anfrage ist bei uns"
+        text="Wir sehen uns Ihre Angaben an und melden uns mit einer Einschätzung."
+        reference={erfolg.reference}
+        notices={erfolg.notices}
+        schritte={erfolg.schritte}
+        summary={erfolg.summary}
+        zurueck={{ href: '/', label: 'Zur Startseite' }}
+        weitere={[{ href: '/ratgeber', label: 'Ratgeber lesen' }]}
+      />
     );
   }
 
@@ -312,7 +287,7 @@ export function AllgemeineAnfrage({
             label="Fotos oder Unterlagen"
             description={
               data.thema === 'autoschluessel'
-                ? 'Für einen Autoschlüssel brauchen wir den Fahrzeugschein (Zulassungsbescheinigung Teil I) und ein Foto Ihres Schlüssels von beiden Seiten. Ohne Fahrzeugschein fertigen wir keinen Schlüssel.'
+                ? 'Für die Anfrage freiwillig. Fertigen können wir den Schlüssel nur mit Fahrzeugschein (Zulassungsbescheinigung Teil I); legen Sie ihn gern schon hier bei, dazu ein Foto Ihres Schlüssels von beiden Seiten.'
                 : 'Freiwillig. Fotos der betroffenen Tür, des Schlüssels oder vorhandene Unterlagen helfen uns sehr.'
             }
             example={{

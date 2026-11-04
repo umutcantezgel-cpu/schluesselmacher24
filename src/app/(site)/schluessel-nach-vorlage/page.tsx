@@ -1,4 +1,3 @@
-import type { ComponentType } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -7,12 +6,6 @@ import { PROCESS_LABELS } from '@/lib/navigation';
 import { istPlatzhalter } from '@/lib/platzhalter';
 import type { ImageSlot } from '@/lib/types';
 import { cn } from '@/lib/cn';
-import type { IconProps } from '@/components/visual/icons/icon-base';
-import { IconFotoHochladen } from '@/components/visual/icons/foto-hochladen';
-import { IconNachweis } from '@/components/visual/icons/nachweis';
-import { IconPruefung } from '@/components/visual/icons/pruefung';
-import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
-import { IconZahlung } from '@/components/visual/icons/zahlung';
 import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { GlyphLineal } from '@/components/visual/glyphen/lineal';
@@ -24,6 +17,7 @@ import { Alert } from '@/components/ui/alert';
 import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
+import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 
@@ -81,45 +75,6 @@ const PHOTOS: Array<{ title: string; body: string; slot: ImageSlot }> = [
       note: 'Schlüssel aufstellen oder anlehnen, damit die Spitze zur Kamera zeigt.',
       visual: { generator: 'profilschnitt', params: { beschriftung: false } },
     },
-  },
-];
-
-const STEPS: Array<{ icon: ComponentType<IconProps>; title: string; body: string }> = [
-  {
-    icon: IconFotoHochladen,
-    title: 'Fotos hochladen',
-    body:
-      'Sie fotografieren den Schlüssel aus drei Richtungen und tragen ein, was auf ihm '
-      + 'steht. Der Ablauf hat acht Schritte und lässt sich am Smartphone bedienen.',
-  },
-  {
-    icon: IconPruefung,
-    title: 'Wir prüfen',
-    body:
-      'Wir bestimmen Profil und Rohling, lesen Beschriftungen aus und klären, ob eine '
-      + 'Nachfertigung nach Ihren Bildern möglich ist.',
-  },
-  {
-    icon: IconNachweis,
-    title: 'Freigabe, Rückfrage oder Absage',
-    body:
-      'Ist die Anfertigung möglich, erhalten Sie die Freigabe mit Preis per E-Mail. Fehlt '
-      + 'uns noch etwas, melden wir uns mit einer Rückfrage; geht es nicht, sagen wir es '
-      + 'Ihnen. Die Prüfung ist noch keine Fertigungszusage.',
-  },
-  {
-    icon: IconZahlung,
-    title: 'Auftrag mit dem Zahlungslink',
-    body:
-      'Mit der Freigabe erhalten Sie einen persönlichen Zahlungslink. Erst mit Ihrer Zahlung '
-      + 'erteilen Sie den Auftrag — danach fertigen wir.',
-  },
-  {
-    icon: IconVersandPaket,
-    title: 'Nur falls nötig: Einsendung',
-    body:
-      'Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und '
-      + 'Vorgangsnummer in der Freigabe. Vorher senden Sie bitte nichts ein.',
   },
 ];
 
@@ -306,23 +261,27 @@ export default async function SchluesselNachVorlagePage() {
         </dl>
       </PageHeader>
 
-      {/* Ablauf: vier Schritte als Stückliste mit Fach-Icons */}
+      {/* Ablauf als Stückliste mit Fach-Icons; die Überschrift nennt keine Zahl (R4, E6-OPUS-01) */}
       <Section labelledBy="ablauf-titel">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
             <SectionHeading
               id="ablauf-titel"
               nummer="01"
-              eyebrow="Ablauf"
-              title="Fünf Schritte von der Anfrage bis zum Schlüssel"
+              eyebrow="So läuft Ihr Auftrag ab"
+              title="Von der Anfrage bis zum Schlüssel"
               lead={process.hint}
             />
 
             <Alert tone="info" title="Ihr Original bleibt bei Ihnen" className="mt-7">
               Für die Anfrage müssen Sie den Originalschlüssel <strong>nicht</strong> einsenden.
-              Wir arbeiten zuerst mit Ihren Fotos. Eine Einsendung kommt nur infrage, wenn die
-              Bilder für eine sichere Bestimmung nicht ausreichen — und erst, nachdem wir Sie
-              darum gebeten haben.
+              Wir arbeiten zuerst mit Ihren Fotos und bitten nur um das Original, wenn die Bilder
+              für eine sichere Bestimmung nicht ausreichen. Wer den Schlüssel lieber gleich
+              einschickt,{' '}
+              <Link href="/schluessel-einschicken" className="font-semibold underline">
+                meldet die Einsendung an
+              </Link>
+              .
             </Alert>
 
             <div className="mt-7">
@@ -332,23 +291,8 @@ export default async function SchluesselNachVorlagePage() {
             </div>
           </div>
 
-          <ol className="border-t border-border lg:col-span-7">
-            {STEPS.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <li key={step.title} className="flex gap-5 border-b border-border py-6">
-                  <span className="w-6 shrink-0 pt-1 font-mono text-caption tabular-nums text-foreground-muted">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <Icon size={40} className="shrink-0 text-area-strong" />
-                  <div className="min-w-0">
-                    <h3 className="text-title-sm font-semibold text-foreground">{step.title}</h3>
-                    <p className="mt-1 max-w-measure text-small text-foreground-muted">{step.body}</p>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
+          {/* Ablauf aus den Rubrikdaten (G-10, G-11): dieselben Schritte wie überall, wo die Rubrik erscheint */}
+          {rubrik && <RubrikAblauf rubrik={rubrik} variante="liste" className="lg:col-span-7" />}
         </div>
       </Section>
 
@@ -464,10 +408,10 @@ export default async function SchluesselNachVorlagePage() {
 
             <div className="prose-sm24 mt-6 max-w-none">
               <p>
-                Senden Sie bitte nichts unaufgefordert ein. Die Versandadresse und den genauen
-                Umfang nennen wir Ihnen mit der Freigabe — zusammen mit Ihrer Vorgangsnummer.
-                Senden Sie das Original erst, nachdem Sie den Auftrag mit der Zahlung erteilt
-                haben.
+                Senden Sie während der Fotoanfrage bitte nichts unaufgefordert ein. Die Versandadresse
+                und den genauen Umfang nennen wir Ihnen mit der Freigabe, zusammen mit Ihrer
+                Vorgangsnummer; den Begleitschein finden Sie dann auf Ihrer Vorgangsseite. Senden Sie
+                das Original erst, nachdem Sie den Auftrag mit der Zahlung erteilt haben.
               </p>
             </div>
 

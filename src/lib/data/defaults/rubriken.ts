@@ -85,7 +85,7 @@ export function rubriken(): Rubrik[] {
       abschluss: "anfrage",
       pflichtUploads: ["fahrzeugschein", "schluesselfoto"],
       nachweis: "fahrzeugschein",
-      status: "spaeter",
+      status: "live",
       reihenfolge: 20,
       navigation: "autoschluessel",
       imHub: true,
@@ -96,9 +96,9 @@ export function rubriken(): Rubrik[] {
       name: "Autoschlüsselgehäuse",
       laienname: "Schlüsselgehäuse",
       erklaerung:
-        "Ein neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt, und Sie erhalten den Preis mit Zahlungslink.",
+        "Ein neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt. Nach Ihrer Anfrage nennen wir Ihnen den Preis.",
       icon: "schluesselgehaeuse",
-      ziel: "/autoschluessel-gehaeuse",
+      ziel: "/autoschluessel/gehaeuse",
       ablauf: [
         {
           titel: "Fahrzeug und Fotos senden",
@@ -106,13 +106,13 @@ export function rubriken(): Rubrik[] {
           icon: "foto-hochladen",
         },
         {
-          titel: "Preis mit Zahlungslink",
-          text: "Sie erhalten den Preis und buchen mit einem Klick.",
+          titel: "Preis erhalten",
+          text: "Wir prüfen Ihre Angaben und melden uns mit dem Preis und dem weiteren Ablauf.",
           icon: "zahlung",
         },
         {
           titel: "Schlüssel einschicken",
-          text: "Mit dem Begleitschein an unsere Werkstatt.",
+          text: "Nach Ihrer Zusage schicken Sie den Schlüssel an unsere Werkstatt.",
           icon: "versand-paket",
         },
         {
@@ -124,7 +124,7 @@ export function rubriken(): Rubrik[] {
       abschluss: "angebot-zahlungslink",
       pflichtUploads: ["fahrzeugschein", "schluesselfoto"],
       nachweis: "fahrzeugschein",
-      status: "spaeter",
+      status: "live",
       reihenfolge: 30,
       navigation: "autoschluessel",
       imHub: true,
@@ -146,7 +146,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Bestellen",
-          text: "Code eingeben, Stückzahl wählen, bezahlen.",
+          text: "Code eingeben, Stückzahl wählen, bezahlen. Bei geschütztem Profil ein Foto der Sicherungskarte hochladen.",
           icon: "warenkorb",
         },
         {
@@ -180,22 +180,22 @@ export function rubriken(): Rubrik[] {
       ablauf: [
         {
           titel: "Fotos hochladen",
-          text: "Vorderseite, Rückseite und Spitze fotografieren.",
+          text: "Sie fotografieren den Schlüssel aus drei Richtungen und tragen ein, was auf ihm steht. Gibt es eine Sicherungskarte, fotografieren Sie auch die Karte. Das Formular führt Sie Schritt für Schritt und lässt sich am Smartphone bedienen.",
           icon: "foto-hochladen",
         },
         {
-          titel: "Prüfung",
-          text: "Wir prüfen die Fotos. Eine Prüfung ist noch keine Zusage.",
+          titel: "Prüfung und Ergebnis",
+          text: "Wir bestimmen Profil und Rohling, lesen Beschriftungen aus und klären, ob eine Nachfertigung nach Ihren Bildern möglich ist. Sie erhalten per E-Mail die Freigabe mit Preis, eine Rückfrage oder, wenn es nicht geht, eine Absage. Die Prüfung ist noch keine Fertigungszusage.",
           icon: "pruefung",
         },
         {
-          titel: "Preis mit Zahlungslink",
-          text: "Passt alles, erhalten Sie Preis und Zahlungslink.",
+          titel: "Auftrag mit dem Zahlungslink",
+          text: "Mit der Freigabe erhalten Sie einen persönlichen Zahlungslink. Erst mit Ihrer Zahlung erteilen Sie den Auftrag.",
           icon: "zahlung",
         },
         {
           titel: "Fertigung und Versand",
-          text: "Wir fertigen und schicken den Schlüssel zu Ihnen.",
+          text: "Danach fertigen wir und schicken den Schlüssel zu Ihnen. Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und Vorgangsnummer in der Freigabe; vorher senden Sie bitte nichts ein.",
           icon: "lieferung",
         },
       ],
@@ -229,7 +229,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Prüfung und Anfertigung",
-          text: "Wir prüfen den Schlüssel und fertigen die Kopie.",
+          text: "Wir prüfen den Schlüssel und nennen Ihnen den Preis. Nach Ihrer Zahlung fertigen wir die Kopie.",
           icon: "werkstatt",
         },
         {
@@ -318,7 +318,7 @@ export function rubriken(): Rubrik[] {
           icon: "werkstatt",
         },
       ],
-      abschluss: "kasse",
+      abschluss: "anfrage",
       pflichtUploads: [],
       nachweis: "keiner",
       status: "live",
@@ -337,18 +337,18 @@ export function rubriken(): Rubrik[] {
       ziel: "/elektronische-zutrittsloesungen",
       ablauf: [
         {
-          titel: "Anfrage stellen",
-          text: "Türen, Nutzer und Wünsche kurz beschreiben.",
+          titel: "Bedarf erfassen",
+          text: "Objekt, Umfang, Medien, Verwaltung, Berechtigungen, Standorte, Integration und Service im Konfigurator beschreiben.",
           icon: "nachweis",
         },
         {
-          titel: "Beratung",
-          text: "Wir klären mit Ihnen das passende System.",
+          titel: "Prüfung und Beratung",
+          text: "Wir schauen uns die Türsituation an, sagen Ihnen, was technisch möglich ist, und klären mit Ihnen das passende System.",
           icon: "technische-beratung",
         },
         {
           titel: "Angebot",
-          text: "Sie erhalten ein Angebot mit allen Kosten.",
+          text: "Sie erhalten ein Angebot mit nachvollziehbaren Positionen und allen Kosten.",
           icon: "dokument",
         },
       ],
@@ -446,7 +446,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Rückruf",
-          text: "Wir rufen Sie zu Ihrer Wunschzeit zurück.",
+          text: "Wir rufen Sie zurück, nach Möglichkeit in dem Zeitraum, den Sie nennen.",
           icon: "beratung-telefon",
         },
         {
@@ -458,7 +458,7 @@ export function rubriken(): Rubrik[] {
       abschluss: "beratung",
       pflichtUploads: [],
       nachweis: "keiner",
-      status: "spaeter",
+      status: "live",
       reihenfolge: 120,
       navigation: "mehr",
       imHub: true,
@@ -520,7 +520,7 @@ export function rubriken(): Rubrik[] {
       ],
       abschluss: "anfrage",
       pflichtUploads: [],
-      nachweis: "keiner",
+      nachweis: "fahrzeugschein",
       status: "live",
       reihenfolge: 140,
       navigation: "autoschluessel",

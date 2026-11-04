@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { formatCents } from '@/lib/format';
+import { istEinsendung } from '@/lib/einsenden/vorgang';
 import { freigabeZahlbar, gewuenschteStueckzahl } from '@/lib/foto-freigabe';
 import type { BusinessRecord } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
@@ -16,12 +17,14 @@ const NACH_FREIGABE = new Set(['freigegeben', 'in-fertigung', 'versendet', 'abge
 export function FotoErgebnis({ record, einsendeAnschrift }: { record: BusinessRecord; einsendeAnschrift: string[] }) {
   const freigabe = record.approval ?? {};
   const hinweis = freigabe.note?.trim();
+  // Bei einer Einsendung liegt das Original schon in der Werkstatt (E6-OPUS-02).
+  const einsendung = istEinsendung(record);
 
   if (record.status === 'nicht-moeglich') {
     return (
       <Alert tone="danger" title="Anfertigung leider nicht möglich">
         Nach unserer Prüfung können wir diesen Schlüssel nicht nach Ihrer Vorlage anfertigen. Ein Auftrag ist
-        nicht zustande gekommen.
+        nicht zustande gekommen.{einsendung ? ' Ihr Original schicken wir Ihnen zurück.' : ''}
         {hinweis && <span className="mt-2 block whitespace-pre-line">{hinweis}</span>}
       </Alert>
     );
@@ -29,7 +32,7 @@ export function FotoErgebnis({ record, einsendeAnschrift }: { record: BusinessRe
   if (record.status === 'wartet-auf-kunde') {
     return (
       <Alert tone="warning" title="Rückfrage zu Ihrer Anfrage">
-        Für die Prüfung brauchen wir noch eine Angabe oder ein weiteres Foto von Ihnen. Einzelheiten stehen in
+        Für die Prüfung brauchen wir noch {einsendung ? 'eine Angabe' : 'eine Angabe oder ein weiteres Foto'} von Ihnen. Einzelheiten stehen in
         unserer E-Mail — antworten Sie einfach darauf.
       </Alert>
     );
@@ -44,7 +47,10 @@ export function FotoErgebnis({ record, einsendeAnschrift }: { record: BusinessRe
   const zeilen: Array<[string, string]> = [['Ergebnis der Prüfung', 'Anfertigung möglich']];
   if (stueck) zeilen.push(['Stückzahl laut Ihrer Anfrage', String(stueck)]);
   zeilen.push(['Preis', preis ? `${formatCents(preis)} inkl. USt.` : 'nennen wir Ihnen gesondert']);
-  zeilen.push(['Originalschlüssel', freigabe.sendInRequired ? 'bitte einsenden' : 'nicht nötig — wir fertigen nach Ihren Fotos']);
+  zeilen.push([
+    'Originalschlüssel',
+    einsendung ? 'liegt bei uns und kommt mit den Kopien zurück' : freigabe.sendInRequired ? 'bitte einsenden' : 'nicht nötig — wir fertigen nach Ihren Fotos',
+  ]);
 
   return (
     <section className="border-t border-border pt-8">

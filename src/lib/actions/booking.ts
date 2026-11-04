@@ -4,6 +4,7 @@ import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limi
 
 import { getAppointments, getCollection, getRecordByReference, getSettings } from '@/lib/data';
 import { heuteInBerlin } from '@/lib/berliner-zeit';
+import { istEinsendung } from '@/lib/einsenden/vorgang';
 import { addDays, availableSlots, bookableDays, earliestBookableDate, minutenInBerlin } from '@/lib/scheduling';
 import { quoteCarKeyService } from '@/lib/pricing';
 import { vorgangOrtText } from '@/lib/terminort';
@@ -134,6 +135,8 @@ export async function fetchRecordStatus(reference: string, email: string) {
       reference: record.reference,
       kind: record.kind,
       status: record.status,
+      // Einsendung (E6-OPUS-02): eigene Namen für „angemeldet“ und „Schlüssel eingegangen“.
+      einsendung: istEinsendung(record),
       createdAt: record.createdAt,
       updatedAt: record.updatedAt,
       appointment: record.appointment,

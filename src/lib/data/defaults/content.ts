@@ -302,7 +302,7 @@ export function pages(): PageContent[] {
     },
     {
       route: 'autoschluessel/anfrage',
-      headline: 'Autoschlüssel-Anfrage mit Termin und Anzahlung',
+      headline: 'Autoschlüssel anfragen',
       subline: 'Fahrzeug angeben, Fotos hochladen, Preis sehen, Termin buchen.',
       intro:
         'Sie geben Schritt für Schritt an, welches Fahrzeug und welchen Schlüssel Sie haben. Am '

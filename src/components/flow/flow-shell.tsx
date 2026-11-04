@@ -32,6 +32,12 @@ export interface FlowShellProps<T extends object> {
   summe?: { label: string; wert: string };
   /** Bot-Schutz des Ablaufs (`useFormularSchutz`): rendert das versteckte Honigtopf-Feld. */
   schutz?: FormularSchutzHandle;
+  /**
+   * Das Formular steht als Abschnitt in einer längeren Seite (Kontakt, Beratung): Die Leiste mit
+   * „Weiter“ steht auch am Smartphone am Ende des Schritts statt fest am Bildschirmrand, und die
+   * Aktionsleiste der Seite mit „Anrufen“ bleibt sichtbar (K-014, E6).
+   */
+  eingebettet?: boolean;
   /** Hinweis unter dem letzten Schritt, direkt über dem Absenden (etwa zu AGB bei Anfragen). */
   abschlussHinweis?: ReactNode;
   /**
@@ -80,6 +86,7 @@ export function FlowShell<T extends object>({
   schutz,
   abschlussHinweis,
   vorschlag = null,
+  eingebettet = false,
   children,
 }: FlowShellProps<T>) {
   const etappen = etappenAus(flow.steps);
@@ -217,22 +224,17 @@ export function FlowShell<T extends object>({
   );
 
   return (
-    <div data-ablauf className="sm24-ablauf relative pb-40 md:pb-8">
+    <div data-ablauf data-eingebettet={eingebettet ? 'ja' : undefined} className={cn('sm24-ablauf relative', eingebettet ? 'pb-8' : 'pb-40 md:pb-8')}>
       {schutz && <SchutzFelder schutz={schutz} />}
       {/* Fortschritt: klebendes Band über die ganze Breite der Shell, auf allen Breiten gleich
-          (eine Zeile „Schritt n von m · Name“, der Ablauftitel steht schon in der h1). */}
+          (eine Zeile „Schritt n von m · Name“, der Ablauftitel steht schon in der h1). Mit Etappen zählt
+          das Band nur die Etappen; die Teilschritte zeigt die Liste daneben (E5-OPUS-05, ein Zähler). */}
       <div className="sticky top-header z-sticky -mx-5 border-b border-border bg-background px-5 py-3 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div className="flex items-baseline justify-between gap-3">
           <p className="min-w-0 truncate whitespace-nowrap text-caption font-mono tabular-nums text-foreground-muted">
             {etappe ? (
               <>
                 Schritt {etappeJetzt + 1} von {etappen.length} · {etappe.name}
-                {etappe.bis > etappe.von && (
-                  <span className="text-foreground-subtle">
-                    {' '}
-                    · {flow.stepIndex - etappe.von + 1} von {etappe.bis - etappe.von + 1}
-                  </span>
-                )}
               </>
             ) : (
               <>
@@ -320,16 +322,20 @@ export function FlowShell<T extends object>({
             </div>
           </div>
 
-          {/* Navigation — am Smartphone fest am unteren Rand, ab Tablet eine Zeile: Zurück links,
+          {/* Navigation – am Smartphone fest am unteren Rand, ab Tablet eine Zeile: Zurück links,
               Weiter rechtsbündig in Inhaltsbreite. */}
           <div
             className={cn(
-              'sm24-ablauf-leiste fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface p-4',
+              // Eingebettet steht die Leiste auch am Smartphone am Ende des Schritts: Die Aktionsleiste
+              // der Seite mit „Anrufen“ bleibt sichtbar, nichts überdeckt sich.
+              eingebettet
+                ? 'sm24-ablauf-leiste mt-8 pb-4'
+                : 'sm24-ablauf-leiste fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface p-4',
               'md:static md:mt-8 md:border-0 md:bg-transparent md:p-0 md:pb-4',
             )}
           >
             {!flow.canContinue && (vorschlag?.hinweis ?? blockedHint) && (
-              <p className="mb-2 text-center text-small text-foreground-subtle md:text-right">{vorschlag?.hinweis ?? blockedHint}</p>
+              <p className="mb-2 text-center text-small text-foreground-muted md:text-right">{vorschlag?.hinweis ?? blockedHint}</p>
             )}
             <div className="mx-auto flex max-w-shell items-center gap-3 md:mx-0">
               {/* Mobil steht die laufende Summe links, wie in der Leiste des Warenkorbs. */}
@@ -383,11 +389,12 @@ export function FlowShell<T extends object>({
         </div>
 
         {/* Klebende Seite (Raster `seite`, ab 1024 px): Schrittliste senkrecht, darunter der Zusatz.
-            Darunter blendet sie aus, das Band nennt den Schritt. */}
+            Darunter entfällt die Schrittliste (das Band nennt den Schritt), der Zusatz folgt dem Schritt. */}
         {mitSeite && (
-          <div className="hidden lg:sticky lg:top-36 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:block lg:self-start">
-            {schrittliste}
-            {seite && <div className="mt-6">{seite}</div>}
+          <div className={cn('lg:sticky lg:top-36 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:self-start', seite ? 'mt-10 lg:mt-0' : 'hidden lg:block')}>
+            <div className="hidden lg:block">{schrittliste}</div>
+            {/* Unter 1024 px steht der Zusatz nach dem Schritt (E5-PROBENUTZER-01: Link und PDF waren mobil unsichtbar). */}
+            {seite && <div className="lg:mt-6">{seite}</div>}
           </div>
         )}
       </div>

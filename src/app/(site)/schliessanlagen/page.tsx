@@ -13,6 +13,7 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
 import { NachbestellenAbschnitt, sicherungskartenLinie } from '@/components/schliessung/nachbestellen';
+import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ErweiterbareAnlage, SystemVergleich, systemReiter } from '@/components/schliessanlagen/system-erklaerung';
 import { BereichIcon } from '@/components/visual/bereich-icon';
@@ -333,6 +334,14 @@ export default async function SchliessanlagenPage() {
                 {process.hint}
               </dd>
             </dl>
+
+            {/* Schritte aus den Rubrikdaten (G-10, G-11) */}
+            {rubrik && (
+              <>
+                <p className="mt-8 font-mono text-caption uppercase tracking-label text-foreground-muted">So läuft Ihr Auftrag ab</p>
+                <RubrikAblauf rubrik={rubrik} className="mt-5" />
+              </>
+            )}
           </div>
 
           <dl className="border-t border-border lg:col-span-5">

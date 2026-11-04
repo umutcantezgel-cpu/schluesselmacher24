@@ -1,0 +1,32 @@
+[0.9s] Start /schliessanlagen
+[1.0s] Bild 01-start: Seitenbreite 390/390
+[1.1s] Mobil: "Menü öffnen" geklickt
+[1.6s] Mobil sichtbare Menü-Links: ["Sperrschließungen ein Schlüssel für alle Türen -> /gleichschliessende-zylinder","Zu den gleichschließenden Zylindern -> /gleichschliessende-zylinder","02 Gleichschließende Zylinder Für kleine Vorhaben ohne Berec -> /gleichschliessende-zylinder","03 Elektronische Zutrittslösungen Wenn Rechte änderbar sein  -> /elektronische-zutrittsloesungen","04 Tür- und Schließtechnik Zylinder, Schlösser und Beschläge -> /tuer-und-schliesstechnik","Sperrschließung -> /gleichschliessende-zylinder"]
+[1.6s] Bild 02-menue: Seitenbreite 390/390
+[1.6s] Sichtbare Links zur Sperrschließung: 5
+[1.7s] Landingpage Sperrschließung über sichtbaren Link: http://localhost:3000/gleichschliessende-zylinder
+[1.7s] Bild 03-landing: Seitenbreite 390/390
+[1.9s] "Zum Konfigurator" -> Schritt 1
+[1.9s] Weitere Tür hinzufügen -> Position 2
+[2.0s] Weitere Tür hinzufügen -> Position 3
+[2.0s] Position 1 (Haustür): Doppelzylinder, Maß A/B 35/35
+[2.1s] Position 2 (Kellertür): Doppelzylinder, Maß A/B 35/35
+[2.1s] Position 3 (Garage): Halbzylinder, nur Maß A 35 (Maß B entfällt)
+[2.1s] Bild 04-zylinder-ausgefuellt: Seitenbreite 390/390
+[2.1s] Schritt-1-Hinweise: []
+[2.2s] Weiter -> Schritt 2 Schlüssel
+[2.2s] Anzahl gemeinsamer Schlüssel auf 4 gesetzt
+[2.2s] Bild 05-schluessel: Seitenbreite 390/390
+[2.3s] Weiter -> Schritt 3 Optionen (ohne Auswahl)
+[2.4s] Weiter -> Schritt 4 Erweiterung
+[2.7s] Schritt 4: Weiter ist vor Auswahl deaktiviert: true
+[2.7s] "Nein, abgeschlossener Satz" gewählt
+[2.8s] Weiter -> Schritt 5 Zusammenfassung
+[2.8s] Bild 06-zusammenfassung: Seitenbreite 390/390
+[2.8s] Schritt 5 Knöpfe gespeichert
+[3.7s] In den Warenkorb geklickt -> http://localhost:3000/warenkorb
+[3.7s] Warenkorb-Text: ["Prüfen Sie Ihre Positionen, wählen Sie die Versandart und gehen Sie anschließend zur Kasse.","Positionen (1)","Gleichschließende Zylinder","3 Zylinder · eine gemeinsame Schließung","35 mm / 35 mm · Standardfunktion · 1 Stück","35 mm / 35 mm · Standardfunktion · 1 Stück","35 mm · Standardfunktion · 1 Stück","Gemeinsame Schlüssel","4 Stück","Stückzahl 1 — eine Zusammenstellung. Weitere Zylinder ändern Sie im Konfigurator.","Position entfernen",": Gleichschließende Zylinder","121,90 €","7,95 €","0,00 €","Weiter einkaufen: Schlüssel nach Code oder Zylinder-Konfigurator.","Summe","121,90 €","7,95 €","Gesamtbetrag","129,85 €","20,73 €","Gesamtbetrag 129,85 €","Schlüssel nach Code bestellen","Gleichschließende Zylinder zusammenstellen"]
+[3.7s] Kasse NICHT angeklickt
+[3.7s] Bild 07-nach-warenkorb: Seitenbreite 390/390
+[3.7s] POST/Aktionen: []
+[3.7s] blockiert: 0

@@ -284,13 +284,13 @@
   {
     "route": "schluessel-einschicken",
     "headline": "Schlüssel einschicken",
-    "subline": "Nur nach Freigabe Ihrer Fotoanfrage oder auf unsere Bitte — so kommt Ihr Schlüssel sicher an und zurück.",
-    "intro": "Meist genügen uns Fotos Ihres Schlüssels. Brauchen wir doch das Original, sagen wir es Ihnen mit dem Ergebnis der Prüfung. Hier steht, wie die Einsendung dann abläuft: wohin, was beiliegen soll und wie Sie sicher versenden.",
+    "subline": "Schlüsseldienst online, ohne Anfahrt: Einsendung anmelden, Begleitschein ausdrucken, Schlüssel einschicken. Original und Kopien kommen zu Ihnen zurück.",
+    "intro": "Kein Schlüsseldienst in der Nähe oder keine Zeit für den Weg? Schicken Sie Ihren Schlüssel aus ganz Deutschland an unsere Werkstatt. Oft genügen auch Fotos: Dann lassen Sie ihn zuerst prüfen und behalten ihn so lange.",
     "sections": [],
     "faq": [],
     "seo": {
-      "title": "Schlüssel einschicken: Ablauf, Anschrift und Versand",
-      "description": "Schlüssel einschicken nur nach Freigabe Ihrer Fotoanfrage oder auf unsere Bitte: wohin, was beiliegen soll und wie Sie mit Sendungsverfolgung versenden.",
+      "title": "Schlüssel einschicken: Begleitschein und Rückversand",
+      "description": "Schlüssel aus ganz Deutschland einschicken: Einsendung anmelden, Begleitschein ausdrucken, versichert oder unversichert versenden. Original und Kopien kommen zurück.",
       "internalLinks": [
         {
           "href": "/schluessel-nach-vorlage",
@@ -499,7 +499,7 @@
   },
   {
     "route": "autoschluessel/anfrage",
-    "headline": "Autoschlüssel-Anfrage mit Termin und Anzahlung",
+    "headline": "Autoschlüssel anfragen",
     "subline": "Fahrzeug angeben, Fotos hochladen, Preis sehen, Termin buchen.",
     "intro": "Sie geben Schritt für Schritt an, welches Fahrzeug und welchen Schlüssel Sie haben. Am Ende sehen Sie den Preis oder den Preisrahmen, leisten eine Anzahlung und buchen einen festen Termin. Ihre Eingaben werden im Browser zwischengespeichert.",
     "sections": [],

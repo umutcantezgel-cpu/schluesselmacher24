@@ -30,7 +30,7 @@ export interface IntentHubProps {
   satz?: string | null;
   /** Telefonnummer wie gepflegt und ihr `tel:`-Link; ohne Link erscheint die Nummer als Text. */
   telefon?: { anzeige: string; href: string | null } | null;
-  /** Bühne der Eingangsinszenierung (B-31): mobil ein schmales Band über der Frage, ab 1024 px rechts. */
+  /** Bühne der Eingangsinszenierung (B-31): bis 1279 px ein schmales Band über der Frage, ab 1280 px rechts. */
   buehne?: ReactNode;
 }
 
@@ -44,8 +44,8 @@ export function IntentHub({ rubriken, satz, telefon, buehne }: IntentHubProps) {
   return (
     <section aria-labelledby="hub-frage" className="border-b border-border bg-surface">
       <HubWechselMerker />
-      <div className="shell grid grid-cols-1 pb-6 pt-4 sm:pt-6 lg:grid-cols-12 lg:gap-x-gutter lg:pb-10 lg:pt-10">
-        <div className="lg:col-span-7 lg:row-start-1">
+      <div className="shell grid grid-cols-1 pb-6 pt-4 sm:pt-6 lg:pb-10 lg:pt-10 xl:grid-cols-12 xl:gap-x-gutter">
+        <div className="xl:col-span-12 xl:row-start-1">
           <h1 id="hub-frage" className="text-display font-bold text-foreground">
             {HUB_FRAGE}
           </h1>
@@ -55,7 +55,7 @@ export function IntentHub({ rubriken, satz, telefon, buehne }: IntentHubProps) {
         <ul
           aria-label="Leistungen"
           className={cn(
-            'mt-3 grid grid-cols-3 gap-2 sm:mt-4 sm:gap-3 lg:col-span-7 lg:row-start-2 lg:mt-8',
+            'mt-3 grid grid-cols-3 gap-2 sm:mt-4 sm:gap-3 lg:mt-6 xl:col-span-8 xl:row-start-2 xl:mt-8',
             spalten === 4 ? 'md:grid-cols-4' : 'md:grid-cols-3',
           )}
         >
@@ -64,16 +64,18 @@ export function IntentHub({ rubriken, satz, telefon, buehne }: IntentHubProps) {
           ))}
         </ul>
 
-        {/* Rechte Spalte ab 1024 px: die Bühne füllt die Spalte bis zur Zeile Anrufen (A-025).
+        {/* Rechte Spalte ab 1280 px neben dem Raster, die Frage steht darüber über die ganze Breite
+            (E5-OPUS-05: breitere Kacheln ohne Trennung): die Bühne füllt die Spalte bis zur Zeile Anrufen (A-025).
+            `h-0 min-h-full`: Die Spalte nimmt die Höhe des Rasters an und bestimmt sie nicht mit.
             Darunter löst sich die Hülle auf (`contents`): Die Bühne steht als Band über der Frage,
             Anrufen nach dem Raster. */}
-        <div className="contents lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:flex lg:flex-col lg:gap-6">
-          {buehne && <div className="order-first mb-2 lg:order-none lg:mb-0 lg:flex lg:min-h-0 lg:flex-1 lg:flex-col">{buehne}</div>}
-          {/* Code-Motiv (B-33): bis 1024 px unter dem Raster, ab 1024 px unter der Bühne, damit die
+        <div className="contents xl:col-span-4 xl:col-start-9 xl:row-start-2 xl:mt-8 xl:flex xl:h-0 xl:min-h-full xl:flex-col xl:gap-6">
+          {buehne && <div className="order-first mb-2 xl:order-none xl:mb-0 xl:flex xl:min-h-0 xl:flex-1 xl:flex-col">{buehne}</div>}
+          {/* Code-Motiv (B-33): bis 1280 px unter dem Raster, ab 1280 px unter der Bühne, damit die
               linke Spalte kürzer bleibt und Anrufen im ersten Bildschirm steht */}
-          <CodeMotiv className="order-last mt-6 hidden sm:block lg:order-none lg:mt-0" />
+          <CodeMotiv className="order-last mt-6 hidden sm:block xl:order-none xl:mt-0" />
           {telefon && (
-            <p className="order-last mt-3 flex flex-wrap items-center gap-x-2 text-body text-foreground-muted lg:order-none lg:mt-auto">
+            <p className="order-last mt-3 flex flex-wrap items-center gap-x-2 text-body text-foreground-muted xl:order-none xl:mt-auto">
               <GlyphTelefon size={20} className="shrink-0 text-primary" />
               <span>Lieber anrufen:</span>
               {telefon.href ? (

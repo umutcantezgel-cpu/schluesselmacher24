@@ -1,0 +1,22 @@
+# E6-OPUS-02 · Schlüssel einschicken: Anmeldung, Begleitschein, Kreislauf bis zur Rücksendung
+
+Paket der Etappe E6, Welle 2 (Opus, Klasse L). Anforderungen G-24, G-25, G-26, EL-43, E-38; Kriterium Z-08. Commits c6ba49d (Teil 1), 91e8713 (Teil 2 mit den Befunden der Gegenprüfung), da1536c und 3b5c7b9 (Befunde der Sichtprüfung).
+
+## Ergebnis
+- Anmeldung (G-24): /schluessel-einschicken/anmelden in fünf Schritten: Schlüssel im Umschlag und gewünschte Kopien, Sicherungskarte (bei „ja“ Foto der Karte, R13), Versand versichert (empfohlen) oder unversichert ohne Vorauswahl, Kontakt mit Rücksendeanschrift, Prüfen. Danach die gemeinsame Bestätigung mit dem Begleitschein als PDF aus der Antwort des Servers.
+- Vorgang: Eine Einsendung ist ein Vorgang „Schlüssel nach Vorlage“ mit Quelle „einsenden“. Freigabe mit Preis und Zahlungslink, Nachweis der Sicherungskarte, Vorgangsseite und Vorgangsblatt gelten wie bei der Foto-Anfrage; kein Zahlungsablauf verändert (G9). Der Server prüft alle Angaben und baut Payload und Zusammenfassung selbst (lib/einsenden/vorgang.ts).
+- Begleitschein (Z-08): über den Versand-Adapter aus E3 (lib/einsenden/schein.ts). Empfänger ist die Werkstatt aus echten Firmendaten, nie Platzhalter; in Probeläufen die Attrappe. Ein echtes Retourenlabel erzeugt der Weg noch nicht, „kostenlos“ steht deshalb nirgends (R9, A-035). Auf der Vorgangsseite lässt sich der Begleitschein bis zum Eingang erneut laden (Route mit Link-Schlüssel), ebenso bei Foto-Anfragen, deren Freigabe das Original verlangt.
+- Kreislauf (G-25): Angemeldet → Schlüssel eingegangen (in Prüfung) → Freigabe mit Preis und Zahlungslink, Rückfrage oder Absage mit Rücksendung des Originals → Anfertigung nach Zahlung → Rücksendung mit Mail und, wo vorhanden, Sendungsnummer. Dieselben Statusnamen auf der Vorgangsseite und im Statusabruf; „So geht es weiter“ aus SCHRITTE_EINSENDUNG.
+- Mails, Verlauf und Backend sprechen bei Einsendungen vom eingeschickten Schlüssel: Freigabe, Absage, Rückfrage, Eingangsbestätigung, Vertragsbestätigung, Kundenverlauf. „Originalschlüssel einsenden“ gilt bei Einsendungen nie (Datenabbildung, ausgeblendetes Häkchen im Backend).
+- Seite /schluessel-einschicken (G-26, EL-43): „Schlüsseldienst online, ohne Anfahrt, aus ganz Deutschland“, Anmeldung als Hauptweg, Ablauf aus den Rubrikdaten, Versand mit Porto und Haftung aus den Einstellungen, Anschrift, Beilage, Rücksendung, Fragen. Fotos zuerst bleibt als Weg ohne Versand, auf beiden Seiten benannt.
+
+## Prüfung
+- Prüfstufe A: Typprüfung und Lint ohne Befund, Unit 2087 von 2087, DB 97 von 97, Build ohne Datenbank grün (227 Seiten), Funktionsliste F-07, F-08 und F-19 bestanden.
+- Tests: Prüfung und Grenzen, Zusammenfassung, Status, Begleitschein (Platzhalter, Attrappe, kein Label trotz Umgebung), Absenden über submitRecord (keine Zusammenfassung aus dem Browser, Karte bei „ja“), Mails und Verlauf ohne Foto-Texte, Datenabbildung.
+- Sichtprüfung durch einen Haiku-Prüfer (Playwright gegen den Prüfserver, fremde Dienste abgefangen, erfundene Testdaten): /schluessel-einschicken bei 390 und 1440 px ohne Überlauf und Konsolenfehler, vier Ablaufschritte, nirgends „kostenlos“; Anmeldung bis zum Absenden ohne Fehler, Bestätigung „Ihr Begleitschein ist bereit“ mit Vorgangsnummer, Download des Begleitscheins (PDF, 14,6 kB); Statusabruf zeigt „Angemeldet“ mit Erklärung. Urteil an den Bildern: Im Begleitschein überdeckte der umbrechende Firmenname die Straße (behoben in da1536c, Adressfeld misst seine Zeilen, Test); „empfohlen“ stand doppelt, und der Ablaufschritt „Prüfung und Anfertigung“ verschwieg Preis und Zahlung (behoben in 3b5c7b9).
+- Gegenprüfung durch einen Haiku-Skeptiker, neun Befunde, alle behoben in 91e8713: Freigabe-, Absage- und Rückfragemail mit Foto- und Einsendetexten (hoch), Häkchen „Original einsenden“ bei Einsendungen (hoch), Kundenverlauf „Wir prüfen Ihre Fotos“ (mittel), Route ohne Statusprüfung (mittel), Zusage der Sendungsnummer (niedrig), Eingangsmail ohne Begleitschein (niedrig), Vorbelegung der Versandart in der Vorschau (niedrig).
+
+## Offen
+- Echtes Retourenlabel mit Versandvertrag (MA-08): einmal erzeugen, in der Ablage speichern, dann die Texte auf „kostenlos“ umstellen (A-035).
+- Aufpreise versichert und unversichert stehen in den Einstellungen auf 0 €; Werte setzt der Inhaber (MA-04). Ob der Freigabepreis die Rücksendung einschließt, entscheidet der Inhaber; die Seiten sagen dazu nichts zu (MA-26).
+- Video „Schlüssel einschicken“ (G-44) folgt mit E8.

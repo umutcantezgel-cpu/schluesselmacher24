@@ -10,9 +10,10 @@ import { HILFSLINIE, KONTUR, LINIE, Raster } from '@/components/visual/generator
  * läuft nur, solange das Startskript `sm24-start` gesetzt hat. Ohne JavaScript, bei „ruhig“ oder
  * nach dem Zeitlimit von 2 s steht sofort das Endbild. Dekorativ (`aria-hidden`).
  *
- * `band`: mobil, 320 × 56, eine Zeile. `buehne`: ab 1024 px, 480 × 300, mit Türnummern, auf
- * Zeichenpapier wie die übrigen Grafiken der Seite; das Raster läuft weit über die `viewBox` hinaus,
- * damit die Bühne die ganze rechte Spalte füllt (A-025). Die Beschriftung steht im HTML darüber.
+ * `band`: bis 1279 px, 320 × 56, eine Zeile. `buehne`: ab 1280 px, hochkant 360 × 400, oben der
+ * Autoschlüssel groß mit Bart, Taste und Transponder (beschriftet), darunter der Plan mit Türnummern,
+ * auf Zeichenpapier wie die übrigen Grafiken der Seite; das Raster läuft weit über die `viewBox`
+ * hinaus, damit die Bühne die ganze rechte Spalte füllt (A-025). Die Beschriftung steht im HTML darüber.
  */
 export type EingangVariante = 'band' | 'buehne';
 
@@ -34,6 +35,10 @@ interface Aufbau {
   nummern: boolean;
   /** Start: Weg des Schlüssels nach links und Lage des Paars vor dem Einrücken. */
   start: { schluesselX: number; paarX: number; paarGross: number };
+  /** Linien des Plans: in einer Reihe (Band) oder von Tür 01 nach unten zu den übrigen Türen (Bühne). */
+  plan: 'waagerecht' | 'senkrecht';
+  /** Schlüssel mit Transponder und Beschriftung von Bart und Transponder (nur auf der großen Bühne). */
+  details: boolean;
 }
 
 export const EINGANG_AUFBAU: Record<EingangVariante, Aufbau> = {
@@ -50,20 +55,26 @@ export const EINGANG_AUFBAU: Record<EingangVariante, Aufbau> = {
     ],
     nummern: false,
     start: { schluesselX: -36, paarX: 24, paarGross: 1.15 },
+    plan: 'waagerecht',
+    details: false,
   },
+  // Hochkant für die rechte Spalte ab 1280 px (E5-OPUS-05): oben der Autoschlüssel groß mit Bart und
+  // Transponder in Tür 01, darunter der Plan mit den Türen 02 bis 04 (E4-JURY-02: Bühne füllen).
   buehne: {
-    breite: 480,
-    hoehe: 300,
-    spitze: { x: 180, y: 150 },
-    schluessel: 1,
-    tuer01: { x: 206, y: 150, r: 26 },
+    breite: 360,
+    hoehe: 400,
+    spitze: { x: 246, y: 130 },
+    schluessel: 1.5,
+    tuer01: { x: 276, y: 130, r: 30 },
     tueren: [
-      { x: 326, y: 86, r: 16 },
-      { x: 326, y: 214, r: 16 },
-      { x: 430, y: 150, r: 16 },
+      { x: 96, y: 300, r: 18 },
+      { x: 186, y: 300, r: 18 },
+      { x: 276, y: 300, r: 18 },
     ],
     nummern: true,
-    start: { schluesselX: -72, paarX: 56, paarGross: 1.2 },
+    start: { schluesselX: -60, paarX: -36, paarGross: 1.1 },
+    plan: 'senkrecht',
+    details: true,
   },
 };
 
@@ -97,14 +108,36 @@ export function teil(verzug: number, dauer: number, start: Partial<Record<keyof 
  * Autoschlüssel in Seitenansicht mit dem Ursprung an der Spitze: Gehäuse 72 × 40 mit Taste,
  * Halm 60 × 14 mit drei Einschnitten (Verhältnis gut 4 : 1, G-07), Spitze schräg.
  */
-function Autoschluessel() {
+function Autoschluessel({ details = false }: { details?: boolean }) {
   const halm =
     'M-60 -7 L-52 -7 L-48 -3 L-43 -3 L-39 -7 L-32 -7 L-28 -2 L-23 -2 L-19 -7 L-16 -7 L-14 -4 L-11 -4 L-9 -7 L-8 -7 L0 0 L-8 7 L-60 7 Z';
   return (
     <g>
       <rect x={-132} y={-20} width={72} height={40} rx={12} className="fill-surface" stroke="currentColor" strokeWidth={KONTUR} />
-      <circle cx={-104} cy={0} r={7} className="fill-primary-soft" stroke="currentColor" strokeWidth={LINIE} />
+      {details ? (
+        <>
+          {/* Taste und Transponder als Glaskapsel mit Spule im Kopf des Schlüssels */}
+          <circle cx={-117} cy={0} r={6} className="fill-primary-soft" stroke="currentColor" strokeWidth={LINIE} />
+          <rect x={-104} y={-5} width={34} height={10} rx={5} className="fill-primary-soft" stroke="currentColor" strokeWidth={HILFSLINIE} />
+          <path d="M-100 0 l2 -3 l2 6 l2 -6 l2 6 l2 -6 l2 6 l2 -6 l2 6 l2 -6 l2 6 l2 -6 l2 3" stroke="currentColor" strokeWidth={HILFSLINIE} fill="none" />
+        </>
+      ) : (
+        <circle cx={-104} cy={0} r={7} className="fill-primary-soft" stroke="currentColor" strokeWidth={LINIE} />
+      )}
       <path d={halm} className="fill-surface" stroke="currentColor" strokeWidth={LINIE} strokeLinejoin="round" />
+    </g>
+  );
+}
+
+/** Beschriftung mit Hinweislinie im Strich der Werkstattzeichnungen, nur auf der Bühne. */
+function Hinweis({ x, y, zuY, text }: { x: number; y: number; zuY: number; text: string }) {
+  return (
+    <g>
+      <line x1={x} y1={zuY} x2={x} y2={y < zuY ? y + 4 : y - 12} stroke="currentColor" strokeWidth={HILFSLINIE} />
+      <circle cx={x} cy={zuY} r={2} className="fill-current" />
+      <text x={x} y={y} textAnchor="middle" className="fill-foreground-muted font-mono text-caption uppercase">
+        {text}
+      </text>
     </g>
   );
 }
@@ -152,10 +185,10 @@ export function EingangSzene({ variante, className }: { variante: EingangVariant
           style={teil(tuer.verzug + i * tuer.staffel, tuer.dauer, { deckkraft: '0', gross: '0.85' })}
         >
           <line
-            x1={a.tuer01.x + a.tuer01.r}
-            y1={a.tuer01.y}
-            x2={z.x - z.r}
-            y2={z.y}
+            x1={a.plan === 'senkrecht' ? a.tuer01.x : a.tuer01.x + a.tuer01.r}
+            y1={a.plan === 'senkrecht' ? nummerY(a.tuer01) + 10 : a.tuer01.y}
+            x2={a.plan === 'senkrecht' ? z.x : z.x - z.r}
+            y2={a.plan === 'senkrecht' ? z.y - z.r - 6 : z.y}
             stroke="currentColor"
             strokeWidth={HILFSLINIE}
             strokeDasharray="3 4"
@@ -170,12 +203,23 @@ export function EingangSzene({ variante, className }: { variante: EingangVariant
         </g>
       ))}
 
+      {/* Beschriftung von Bart und Transponder: blendet mit der letzten Tür ein */}
+      {a.details && (
+        <g
+          className="sm24-eingang-teil text-primary"
+          style={teil(tuer.verzug + (a.tueren.length - 1) * tuer.staffel, tuer.dauer, { deckkraft: '0', gross: '1' })}
+        >
+          <Hinweis x={a.spitze.x - 30 * a.schluessel} y={a.spitze.y - 34} zuY={a.spitze.y - 9 * a.schluessel} text="Bart" />
+          <Hinweis x={a.spitze.x - 87 * a.schluessel} y={a.spitze.y + 62} zuY={a.spitze.y + 4 * a.schluessel} text="Transponder" />
+        </g>
+      )}
+
       {/* Paar aus Schlüssel und Tür 01: rückt zuletzt aus der Mitte in den Plan */}
       <g className="sm24-eingang-teil text-primary" style={teil(paar.verzug, paar.dauer, { x: `${a.start.paarX}px`, gross: String(a.start.paarGross) })}>
         <ProfilZylinder z={a.tuer01} kern={teil(kern.verzug, kern.dauer, { dreh: '-90deg' })} />
         <g transform={`translate(${a.spitze.x} ${a.spitze.y}) scale(${a.schluessel})`}>
           <g className="sm24-eingang-teil sm24-eingang-schluessel" style={teil(schluessel.verzug, schluessel.dauer, { x: `${a.start.schluesselX / a.schluessel}px` })}>
-            <Autoschluessel />
+            <Autoschluessel details={a.details} />
           </g>
         </g>
         {a.nummern && (

@@ -17,14 +17,15 @@ import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { SummaryList } from '@/components/layout/summary-list';
 import { Alert } from '@/components/ui/alert';
-import { Button, ButtonLink } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { InfoTip } from '@/components/ui/info-tip';
 import { SchliessplanGrafik } from '@/components/visual/generators/schliessplan';
 import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { GlyphPlus } from '@/components/visual/glyphen/plus';
-import { CheckDraw } from '@/components/visual/motion/check-draw';
+import { WegBestaetigung } from '@/components/weg/bestaetigung';
+import { SCHRITTE_SCHLIESSANLAGE } from '@/lib/wege/naechste-schritte';
 
 /* ==========================================================================
    Datenmodell des Konfigurators
@@ -973,67 +974,17 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
 
   if (result) {
     return (
-      <div className="mx-auto max-w-3xl" role="status">
-        <CheckDraw title="Ihr Projekt ist eingegangen" size={56} className="mb-5" />
-        <Alert tone="success" title="Ihr Projekt ist bei uns eingegangen">
-          Wir haben Ihre Angaben aufgenommen und melden uns mit Rückfragen oder einem Vorschlag
-          für den Schließplan.
-        </Alert>
-
-        <div className="mt-6 border-y border-border py-5">
-          <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-            Ihre Vorgangsnummer
-          </p>
-          <p className="mt-1 font-mono text-title-sm font-semibold tabular-nums text-foreground">
-            {result.reference}
-          </p>
-          <p className="mt-2 text-small leading-relaxed text-foreground-muted">
-            Bitte notieren Sie sich diese Nummer. Mit ihr können Sie den Stand Ihres Vorgangs
-            jederzeit abrufen.
-          </p>
-        </div>
-
-        {result.notices.length > 0 && (
-          <div className="mt-4 space-y-3">
-            {result.notices.map((notice) => (
-              <Alert key={notice} tone="warning">
-                {notice}
-              </Alert>
-            ))}
-          </div>
-        )}
-
-        <h2 className="mt-8 text-title font-bold text-foreground">Wie es weitergeht</h2>
-        <ol className="mt-4 border-t border-border">
-          {[
-            'Wir prüfen Ihre Angaben und melden uns bei offenen Punkten.',
-            'Gemeinsam legen wir fest, welches System zu Ihrem Objekt passt.',
-            'Sie erhalten einen Entwurf des Schließplans zur Abstimmung.',
-            'Erst nach Ihrer Freigabe wird die Anlage gefertigt.',
-          ].map((text, index) => (
-            <li key={text} className="flex gap-4 border-b border-border py-4">
-              <span
-                aria-hidden
-                className="w-6 shrink-0 pt-0.5 font-mono text-small font-semibold tabular-nums text-foreground-muted"
-              >
-                {index + 1}
-              </span>
-              <span className="text-small leading-relaxed text-foreground-muted">{text}</span>
-            </li>
-          ))}
-        </ol>
-
-        <div className="mt-8">
-          <h2 className="text-title font-bold text-foreground">Ihre Angaben</h2>
-          <SummaryList sections={summary} variante="schriftfeld" className="mt-4" />
-        </div>
-
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/service-und-termin/terminstatus">Stand des Vorgangs abrufen</ButtonLink>
-          <ButtonLink href="/schliessanlagen" variant="outline">
-            Zurück zu den Schließanlagen
-          </ButtonLink>
-        </div>
+      <div className="mx-auto max-w-3xl">
+        <WegBestaetigung
+          marke="Projekt eingegangen"
+          titel="Ihr Projekt ist bei uns eingegangen"
+          text="Wir haben Ihre Angaben aufgenommen und melden uns mit Rückfragen oder einem Vorschlag für den Schließplan."
+          reference={result.reference}
+          notices={result.notices}
+          schritte={SCHRITTE_SCHLIESSANLAGE}
+          summary={summary}
+          zurueck={{ href: '/schliessanlagen', label: 'Zurück zu den Schließanlagen' }}
+        />
       </div>
     );
   }

@@ -1,0 +1,41 @@
+[
+ {
+  "zustand": "mobil H01 Schublade offen",
+  "verstoesse": [],
+  "offen": 1
+ },
+ {
+  "sichtbareMenuepunkte": [
+   "Autoschlüssel",
+   "Nach Code",
+   "Sperrschließungen",
+   "Schließanlagen",
+   "Mehr"
+  ]
+ },
+ {
+  "zustand": "desktop H01 Megamenue Autoschlüssel",
+  "verstoesse": [],
+  "offen": 1
+ },
+ {
+  "zustand": "desktop H01 Megamenue Nach Code",
+  "verstoesse": [],
+  "offen": 1
+ },
+ {
+  "zustand": "desktop H01 Megamenue Sperrschließungen",
+  "verstoesse": [],
+  "offen": 1
+ },
+ {
+  "zustand": "desktop H01 Megamenue Schließanlagen",
+  "verstoesse": [],
+  "offen": 1
+ },
+ {
+  "zustand": "desktop H01 Megamenue Mehr",
+  "verstoesse": [],
+  "offen": 1
+ }
+]

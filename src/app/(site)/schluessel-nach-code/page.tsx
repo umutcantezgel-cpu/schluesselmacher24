@@ -9,6 +9,7 @@ import type { NavLink } from '@/lib/navigation';
 import { ButtonLink } from '@/components/ui/button';
 import { ausschnittStil } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
+import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
@@ -236,11 +237,23 @@ export default async function SchluesselNachCodePage() {
         )}
       </Section>
 
-      {/* Ton wechselt zur Liste darüber (K-006); die Fundstelle steht im Kopf */}
-      <Section tight labelledBy="weiter-titel">
+      {/* Ablauf aus den Rubrikdaten (G-10, G-11) */}
+      <RubrikAblaufAbschnitt
+        rubrik={rubrik}
+        nummer="03"
+        titel="Vom Code zum fertigen Schlüssel"
+        aktion={
+          <ButtonLink href="#codelinien" variant="outline">
+            Codelinie finden
+          </ButtonLink>
+        }
+      />
+
+      {/* Ton wechselt zum Ablauf darüber (K-006); die Fundstelle steht im Kopf */}
+      <Section tone="muted" tight labelledBy="weiter-titel">
         <SectionHeading
           id="weiter-titel"
-          nummer="03"
+          nummer="04"
           eyebrow="Weiterlesen"
           title="Passende Bereiche und Erklärungen"
           lead="Wenn der Code fehlt oder mehrere Türen zusammengehören, führen diese Wege weiter."

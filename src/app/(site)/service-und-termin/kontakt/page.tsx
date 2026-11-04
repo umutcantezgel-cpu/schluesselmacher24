@@ -16,6 +16,8 @@ import { GlyphMail } from '@/components/visual/glyphen/mail';
 import { GlyphOrt } from '@/components/visual/glyphen/ort';
 import { GlyphTelefon } from '@/components/visual/glyphen/telefon';
 
+import { KontaktFormular } from './kontakt-formular';
+
 export const metadata: Metadata = {
   title: 'Kontakt',
   description: 'Anschrift, Erreichbarkeit und Anfahrt zu SCHLÜSSELMACHER24.',
@@ -40,7 +42,7 @@ export default async function KontaktPage() {
         bereich="service-und-termin"
         eyebrow="Kontakt"
         title="So erreichen Sie uns"
-        lead="Für konkrete Aufträge nutzen Sie bitte die geführten Abläufe — dort erfassen wir gleich alles, was wir brauchen."
+        lead="Für konkrete Aufträge nutzen Sie bitte die geführten Abläufe. Dort erfassen wir gleich alles, was wir brauchen."
         crumbs={[
           { href: '/service-und-termin', label: 'Service und Termin' },
           { href: '/service-und-termin/kontakt', label: 'Kontakt' },
@@ -200,6 +202,25 @@ export default async function KontaktPage() {
               <p className="mt-4 text-small text-foreground-muted">{ANFAHRT_HINWEIS}</p>
             )}
           </div>
+        </div>
+      </Section>
+
+      <Section tone="muted">
+        <SectionHeading
+          nummer="02"
+          eyebrow="Nachricht"
+          title="Nachricht schreiben"
+          lead="Kurze Frage, ein Foto dazu: Wir antworten auf dem Weg, den Sie wählen."
+        />
+        <p className="mt-4 max-w-measure text-small text-foreground-muted">
+          Ausführliche Anliegen mit allen Angaben schicken Sie über die{' '}
+          <Link href="/service-und-termin/anfrage" className="font-semibold underline">
+            Anfrage
+          </Link>
+          .
+        </p>
+        <div className="mt-8 max-w-3xl">
+          <KontaktFormular />
         </div>
       </Section>
     </>

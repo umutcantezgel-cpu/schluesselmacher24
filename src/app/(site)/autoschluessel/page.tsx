@@ -30,7 +30,7 @@ const ROUTE = 'autoschluessel';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Autoschlüssel — Leistungen im Überblick',
+    title: page?.seo.title ?? 'Autoschlüssel – Leistungen im Überblick',
     description:
       page?.seo.description
       ?? 'Autoschlüssel nachmachen, kopieren, programmieren und reparieren. Alle Leistungen, '
@@ -44,7 +44,7 @@ const TRANSPONDER_HINT: InfoHint = {
   body:
     'Im Schlüssel sitzt ein kleiner Chip, der Transponder. Beim Starten fragt das Fahrzeug diesen '
     + 'Chip ab. Passt die Antwort nicht, bleibt die Wegfahrsperre aktiv und der Motor springt nicht '
-    + 'an — auch dann, wenn der mechanische Bart passt und die Tür aufgeht.',
+    + 'an – auch dann, wenn der mechanische Bart passt und die Tür aufgeht.',
   figure: {
     motif: 'Makroaufnahme: geöffnetes Schlüsselgehäuse mit sichtbarem Transponder',
     ratio: '3/2',
@@ -96,7 +96,7 @@ const TOPIC_GROUPS: TopicGroup[] = [
       {
         term: 'Autoschlüssel nachmachen',
         href: '/autoschluessel/nachmachen',
-        body: 'Ein vollständiger weiterer Schlüssel — mechanisch gefertigt und elektronisch angelernt.',
+        body: 'Ein vollständiger weiterer Schlüssel – mechanisch gefertigt und elektronisch angelernt.',
       },
       {
         term: 'Zweitschlüssel',
@@ -116,7 +116,7 @@ const TOPIC_GROUPS: TopicGroup[] = [
       {
         term: 'Schlüsselbart fräsen',
         href: '/autoschluessel/schluesselbart-fraesen',
-        body: 'Der metallene Teil des Schlüssels — nach Vorlage oder geeigneten Fahrzeugdaten.',
+        body: 'Der metallene Teil des Schlüssels – nach Vorlage oder geeigneten Fahrzeugdaten.',
         hint: BART_HINT,
       },
     ],
@@ -159,7 +159,7 @@ const TOPIC_GROUPS: TopicGroup[] = [
       {
         term: 'Gehäuse, Tasten und Batterie',
         href: '/autoschluessel/funkschluessel',
-        body: 'Gebrochenes Gehäuse, klemmende Tasten oder schwache Batterie — die Elektronik bleibt erhalten.',
+        body: 'Gebrochenes Gehäuse, klemmende Tasten oder schwache Batterie – die Elektronik bleibt erhalten.',
       },
       {
         term: 'Schlüsselverlust',
@@ -201,7 +201,7 @@ const FAQ = [
     question: 'Kann ich meinen Schlüssel einschicken?',
     answer:
       'Für mechanische Arbeiten ist ein Versand in vielen Fällen möglich. Muss der Schlüssel am '
-      + 'Fahrzeug angelernt werden, hilft ein Versand nicht weiter — dann ist ein Termin mit Fahrzeug '
+      + 'Fahrzeug angelernt werden, hilft ein Versand nicht weiter – dann ist ein Termin mit Fahrzeug '
       + 'der richtige Weg.',
   },
   {
@@ -324,9 +324,8 @@ export default async function AutoschluesselHubPage() {
         handlungZuerst
         actions={
           <ButtonLink href="/autoschluessel/anfrage" pfeil prefetch={false} className="whitespace-nowrap">
-            {/* Telefon: Kurzlaut, damit der Knopf einzeilig bleibt */}
-            <span className="sm:hidden">Termin anfragen</span>
-            <span className="hidden sm:inline">Fahrzeug auswählen und Termin anfragen</span>
+            {/* Ein Knopftext je Ziel (E4-JURY-02): wie auf der Startseite und im Kopf der Seite */}
+            Termin anfragen
           </ButtonLink>
         }
       >
@@ -367,14 +366,13 @@ export default async function AutoschluesselHubPage() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-start">
             <SectionHeading
-              nummer="01"
               eyebrow="Ablauf"
               title={`So läuft Ihr Auftrag ab: ${rubrik?.ablauf.length ?? 5} Schritte zum Termin`}
               lead={`${page?.intro ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder Preisrahmen. Erst dann buchen Sie einen Termin.'} Ihre Eingaben bleiben erhalten, wenn Sie zwischendurch abbrechen.`}
             />
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <ButtonLink href="/autoschluessel/anfrage" size="lg" pfeil>
-                Ablauf starten
+                Termin anfragen
               </ButtonLink>
               <ButtonLink href="/autoschluessel/marken" size="lg" variant="outline">
                 Erst Fahrzeug nachschlagen
@@ -400,7 +398,6 @@ export default async function AutoschluesselHubPage() {
       <Section id="aufbau" labelledBy="aufbau-titel">
         <SectionHeading
           id="aufbau-titel"
-          nummer="02"
           eyebrow="Aufbau"
           title="Was in Ihrem Autoschlüssel steckt"
           lead="Ein Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem mechanischen Bart und der Elektronik. Davon hängen Aufwand, Termin und Preis ab."
@@ -451,7 +448,6 @@ export default async function AutoschluesselHubPage() {
       {/* Leistungsbegriffe als Begriffsliste mit Haarlinien; die ganze Zeile ist der Link */}
       <Section tone="muted" id="leistungen">
         <SectionHeading
-          nummer="03"
           eyebrow="Leistungen"
           title="Von Anlernen bis Zweitschlüssel"
           lead="Die Begriffe werden im Alltag oft vermischt. Hier steht, was jeweils gemeint ist und wohin er führt."
@@ -505,7 +501,7 @@ export default async function AutoschluesselHubPage() {
 
       {/* Abschnitt 04: Schlüsselarten als Erklärung; die Zeichnungen stehen schon im Kopf (A-025) */}
       <Section id="schluesselarten" labelledBy="schluesselarten-titel" tight>
-        <SectionHeading id="schluesselarten-titel" nummer="04" eyebrow="Schlüsselarten" title="Welche Schlüsselart Sie haben" />
+        <SectionHeading id="schluesselarten-titel" eyebrow="Schlüsselarten" title="Welche Schlüsselart Sie haben" />
         <div className="mt-8 lg:grid lg:grid-cols-12 lg:gap-gutter">
           <dl className="grid border-t border-border sm:grid-cols-2 sm:gap-x-gutter lg:col-span-8">
             {SCHLUESSELARTEN_BEGRIFFE.map((art) => (
@@ -527,7 +523,6 @@ export default async function AutoschluesselHubPage() {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-gutter">
           <div className="lg:col-span-7">
             <SectionHeading
-              nummer="05"
               eyebrow="Fahrzeuge"
               title="Was für Ihre Marke und Ihr Modell gilt"
               lead={`Zu ${makes.length} Marken und ${modelCount} Modellen haben wir hinterlegt, welche Schlüsselarten vorkommen und ob das Fahrzeug zum Anlernen in die Werkstatt mitkommen muss.`}
@@ -558,7 +553,6 @@ export default async function AutoschluesselHubPage() {
       {/* Fragen */}
       <Section>
         <SectionHeading
-          nummer="06"
           eyebrow="Häufige Fragen"
           title="Was vor dem Auftrag meist offen ist"
           className="max-w-2xl"
@@ -569,7 +563,6 @@ export default async function AutoschluesselHubPage() {
       {/* Weiterführend als Stückliste mit Haarlinien; die ganze Zeile ist der Link */}
       <Section tone="muted" tight>
         <SectionHeading
-          nummer="07"
           eyebrow="Weiterlesen"
           title="Zum Nachlesen"
           lead="Passend zum Thema Autoschlüssel."
