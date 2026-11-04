@@ -66,6 +66,19 @@ describe('Schließplan als eigenes Blatt und im Vorgangsblatt (E5-OPUS-03, G-37)
     expect(text.match(/\/Type \/Page\b/g)?.length ?? 0).toBeGreaterThan(1);
   });
 
+  it('ordnet jedem Zeichen seinen Text zu, auch einem u nach einem ü (Textebene, E5-PRUEFER-01)', async () => {
+    const pdf = await erzeugePdf(
+      { titel: 'Probe', nummer: 'Türen', stand: JETZT, kopf: [{ name: 'Tür', wert: 'Haustür' }], abschnitte: [{ titel: 'Bauform', text: 'Bauform und Schutz laut Katalog' }], fuss: 'Fuß' },
+      { komprimieren: false },
+    );
+    const text = pdf.toString('latin1');
+    const tabellen = [...text.matchAll(/begincmap[\s\S]*?endcmap/g)].map((m) => m[0]);
+    expect(tabellen.length).toBeGreaterThan(0);
+    // Jede Glyphe hat ein Zeichen; ein leerer Eintrag <> ließe das Zeichen beim Kopieren und Suchen fehlen.
+    for (const t of tabellen) expect(t).not.toContain('<>');
+    expect(tabellen.join(' ')).toMatch(/<0075>/);
+  });
+
   it('hängt die Abschnitte an das Vorgangsblatt, wenn der Vorgang einen Schnappschuss trägt', () => {
     const vorgang: BusinessRecord = {
       id: '9',

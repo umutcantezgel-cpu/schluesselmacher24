@@ -26,6 +26,18 @@ type Dokument = InstanceType<typeof PDFDocument>;
 interface Fontkit {
   hasGlyphForCodePoint(cp: number): boolean;
   glyphForCodePoint(cp: number): { advanceWidth: number; bbox: unknown };
+  characterSet: number[];
+}
+
+/**
+ * Textebene (E5-PRUEFER-01): fontkit legt jede Glyphe beim ersten Zugriff in einen Zwischenspeicher
+ * und behält die Zeichen dieses ersten Zugriffs. Liest `lesbar` die Umrisse eines zusammengesetzten
+ * Umlauts (ü aus u und Trema), entsteht die Glyphe „u“ dabei ohne Zeichen, und jedes spätere u
+ * fehlte in der Zuordnung zum Text (ToUnicode leer, „Ha stür“ beim Kopieren). Deshalb werden alle
+ * Glyphen der Schrift zuerst über ihr Zeichen angelegt, bevor irgendetwas sie liest.
+ */
+function zeichenVorbelegen(font: Fontkit): void {
+  for (const cp of font.characterSet) font.glyphForCodePoint(cp);
 }
 
 /**
@@ -77,7 +89,9 @@ export async function erzeugePdf(blatt: Blatt, { komprimieren = true }: PdfOptio
     if (abdeckung.has(datei.name)) continue;
     doc.registerFont(datei.name, await schriftDaten(datei.datei));
     doc.font(datei.name);
-    abdeckung.set(datei.name, (doc as unknown as { _font: { font: Fontkit } })._font.font);
+    const font = (doc as unknown as { _font: { font: Fontkit } })._font.font;
+    zeichenVorbelegen(font);
+    abdeckung.set(datei.name, font);
   }
   const merk = new Map<string, boolean>();
   const hat = (schrift: string, cp: number) => {
