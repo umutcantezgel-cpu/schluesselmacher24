@@ -188,10 +188,8 @@ export default async function SchluesselEinschickenPage() {
           {angebot.optionen.map((option) => (
             <Card key={option.art}>
               <CardBody>
-                <h3 className="text-title-sm font-semibold text-foreground">
-                  {option.titel}
-                  {option.empfohlen && <span className="ml-2 font-mono text-caption uppercase tracking-label text-success">empfohlen</span>}
-                </h3>
+                {/* „Empfohlen“ steht schon im Hinweis der Option */}
+                <h3 className="text-title-sm font-semibold text-foreground">{option.titel}</h3>
                 <p className="mt-2 text-small leading-relaxed text-foreground-muted">{option.hinweis}</p>
                 {option.aufpreisCents > 0 && (
                   <p className="mt-2 text-small font-semibold text-foreground">Aufpreis {formatCents(option.aufpreisCents)}</p>

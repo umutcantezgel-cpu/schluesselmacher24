@@ -375,7 +375,7 @@ export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
               value={option.art}
               checked={data.versand === option.art}
               onSelect={() => flow.set('versand', option.art)}
-              title={option.empfohlen ? `${option.titel} (empfohlen)` : option.titel}
+              title={option.titel}
               description={`${option.hinweis}${option.aufpreisCents > 0 ? ` Aufpreis ${formatCents(option.aufpreisCents)}.` : ''}`}
             />
           ))}

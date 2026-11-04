@@ -229,7 +229,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Prüfung und Anfertigung",
-          text: "Wir prüfen den Schlüssel und fertigen die Kopie.",
+          text: "Wir prüfen den Schlüssel und nennen Ihnen den Preis. Nach Ihrer Zahlung fertigen wir die Kopie.",
           icon: "werkstatt",
         },
         {
