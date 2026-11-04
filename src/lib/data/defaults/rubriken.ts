@@ -458,7 +458,7 @@ export function rubriken(): Rubrik[] {
       abschluss: "beratung",
       pflichtUploads: [],
       nachweis: "keiner",
-      status: "spaeter",
+      status: "live",
       reihenfolge: 120,
       navigation: "mehr",
       imHub: true,
