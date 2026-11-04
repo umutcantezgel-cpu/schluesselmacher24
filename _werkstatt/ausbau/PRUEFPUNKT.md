@@ -1,8 +1,13 @@
 # PRÜFPUNKT
-Stand: 2026-11-04 19:16 · Sitzung 886a8f6e (übernommen von m40jjmy9)
-Nächster exakter Schritt: Etappe E7 beginnen: AUFTRAG.md Abschnitte zu E7 (Partner werden, R10) neu lesen, dann E7-OPUS-01 (Stufe 3, Orchestrator) nach Tempomat; plan.mjs naechste.
-Laufende Pakete: keine. E6-PROBENUTZER-01 committet (7319905), E6-PRUEFER-01 committet (8c0d3ad, gelb ohne Rot), E6-OPUS-03 zurückgestellt (A-036, A-037).
-Letzter grüner Commit: 8c0d3ad (Kontakt a11y und Hinweis, Gedankenstriche; Unit 2226, Typprüfung, Lint, Build grün). main = 11a6c00.
-Vorgemerkt: G-24 Porto beim Kunden (G9, Inhaber); LCP-Budget weiter verfehlt (A-032).
-Umgebung: npm ci, JSON-Build, Prüfserver Port 3000, Werkzeug-Abhängigkeiten /root/sm24-werkzeuge (einrichtung.md Schritt 11).
-Tempomat: Woche 78 % um 17:34; diese Sitzung verbrauchte zwei Haiku-Läufe (rund 560 000 Agenten-Token, etwa 1,1 Wochenpunkte) und eigene Schritte. Vor E7 messen.
+Stand: 2026-11-04 19:27 · Sitzung 886a8f6e (übernommen von m40jjmy9)
+Nächster exakter Schritt: E7-OPUS-01 Teil 2 nach dem Fenster-Reset (00:10). Offen in E7-OPUS-01 (G-39, E-44):
+  (a) Unterschrift als Upload: Der Partnerbetrieb bekommt im Status „vertrag-versendet“ einen Einmal-Link (Muster: Kunden-Uploads mit Signaturprüfung und Einmal-Schlüssel, src/lib/server/kundendateien.ts, /api/kunden-upload). Die Datei landet in interne-dateien und wird an vertrag.datei gehängt; danach setzt ein Mensch „vertrag-unterschrieben“.
+  (b) Nachweise (Sammlung Nachweise) in der Bewerbung: Gewerbe, Identität, Eignung als Upload im Formular /partner-werden oder per Nachreich-Link bei „nachweise-fehlen“.
+  (c) Status für den Bewerber: die Bestätigung auf /partner-werden zeigt heute statusAbrufbar={false}; prüfen, ob der Terminstatus (Kundenstatus aus einer Quelle, G-25) die Bewerbung abbilden kann.
+  (d) Verweis auf die Partner-AGB im Formular als markierter Platzhalter bis MA-29.
+  Danach Abnahme, Paket committet, weiter mit E7-OPUS-02 und E7-OPUS-03 (Welle 2).
+Laufende Pakete: E7-OPUS-01 (Orchestrator, Teil 1 committet: 9db8e29 Partnervertrag-PDF mit Endpunkt und Knopf im Admin). Keine Agenten laufen.
+Letzter grüner Commit: 9db8e29 (Typprüfung, Lint 0, Unit 2239, DB 97, Build 232/232, axe Kontakt 0). main = 11a6c00.
+Vorgemerkt: G-24 Porto beim Kunden (G9); MA-29 Vertragstext und Partner-AGB vom Anwalt; LCP-Budget (A-032).
+Umgebung: npm ci, JSON-Build, Prüfserver Port 3000, Werkzeug-Abhängigkeiten /root/sm24-werkzeuge (einrichtung.md Schritt 11). Achtung: Prettier im Projekt ohne Konfiguration; nur neue Dateien mit --single-quote --print-width 160 --trailing-comma all formatieren, nie Bestand.
+Tempomat: Woche 81 % um 19:26, Fenster 4 % (seit 19:10). Halten bis zum Reset 00:10; je Fenster höchstens rund 1,85 Wochenpunkte.

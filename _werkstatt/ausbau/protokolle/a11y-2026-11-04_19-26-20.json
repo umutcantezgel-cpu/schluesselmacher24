@@ -1,0 +1,48 @@
+{
+  "skript": "a11y",
+  "zeit": "2026-11-04T18:26:20.963Z",
+  "argumente": {
+    "_": [],
+    "routen": "/service-und-termin/kontakt",
+    "geraet": "beide"
+  },
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "zeilen": [
+    {
+      "ansicht": "service-und-termin-kontakt",
+      "pfad": "/service-und-termin/kontakt",
+      "geraet": "mobil",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    },
+    {
+      "ansicht": "service-und-termin-kontakt",
+      "pfad": "/service-und-termin/kontakt",
+      "geraet": "desktop",
+      "zaehl": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "regeln": 0,
+      "stellen": 0,
+      "details": [],
+      "verstoesse": []
+    }
+  ]
+}

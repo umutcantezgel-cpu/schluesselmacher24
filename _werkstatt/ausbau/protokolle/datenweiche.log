@@ -1316,3 +1316,19 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-04T18:12:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
 2026-11-04T18:12:34+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/a11y.mjs --routen /service-und-termin/kontakt --geraet beide
 2026-11-04T18:12:52+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/lighthouse.mjs --routen /,/autoschluessel,/schluessel-einschicken,/service-und-termin/vor-ort,/schluessel-nach-code --laeufe 3 --profil mobil --json _werkstatt/ausbau/protokolle/E6-PRUEFER-01/lighthouse-mobil.json
+2026-11-04T18:18:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/pdf/partnervertrag.test.ts
+2026-11-04T18:19:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run generate:importmap
+2026-11-04T18:19:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run generate:importmap
+2026-11-04T18:19:35+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run generate:importmap
+2026-11-04T18:19:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx prettier --write src/lib/pdf/partnervertrag.ts src/lib/pdf/partnervertrag.test.ts src/payload/hooks/partnervertrag-pdf.ts src/payload/hooks/partnervertrag-pdf.test.ts src/payload/components/PartnervertragKnopf.tsx src/payload/collections/Partnerbetriebe.ts
+2026-11-04T18:19:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/payload/hooks/partnervertrag-pdf.test.ts src/lib/pdf/partnervertrag.test.ts
+2026-11-04T18:20:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-04T18:20:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-04T18:21:39+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx prettier --single-quote --print-width 160 --trailing-comma all --write src/lib/pdf/partnervertrag.ts src/lib/pdf/partnervertrag.test.ts src/payload/hooks/partnervertrag-pdf.ts src/payload/hooks/partnervertrag-pdf.test.ts src/payload/components/PartnervertragKnopf.tsx
+2026-11-04T18:21:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-04T18:22:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-04T18:22:50+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:unit
+2026-11-04T18:23:32+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npm run test:db
+2026-11-04T18:24:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T18:26:08+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T18:26:14+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/a11y.mjs --routen /service-und-termin/kontakt --geraet beide
