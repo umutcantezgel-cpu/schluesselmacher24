@@ -85,7 +85,7 @@ export function rubriken(): Rubrik[] {
       abschluss: "anfrage",
       pflichtUploads: ["fahrzeugschein", "schluesselfoto"],
       nachweis: "fahrzeugschein",
-      status: "spaeter",
+      status: "live",
       reihenfolge: 20,
       navigation: "autoschluessel",
       imHub: true,
