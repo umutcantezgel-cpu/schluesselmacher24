@@ -310,7 +310,8 @@ export function aktuelleEtappe(plan) {
 
 // Kleinste Welle mit offenen Paketen in dieser Etappe, sonst null.
 export function kleinsteOffeneWelle(plan, etappe) {
-  const wellen = (plan.pakete ?? []).filter((p) => p.etappe === etappe && offen(p)).map((p) => p.welle);
+  // Zurückgestellte Pakete (mit Grund, etwa „wartet auf Material“) halten die nächste Welle nicht auf.
+  const wellen = (plan.pakete ?? []).filter((p) => p.etappe === etappe && offen(p) && p.status !== 'zurückgestellt').map((p) => p.welle);
   return wellen.length ? Math.min(...wellen) : null;
 }
 
@@ -318,7 +319,8 @@ export function kleinsteOffeneWelle(plan, etappe) {
 export function istBereit(plan, p) {
   const erfuellt = (dep) => {
     const d = (plan.pakete ?? []).find((q) => q.kennung === dep);
-    return Boolean(d) && ['abgenommen', 'committet'].includes(d.status);
+    // Zurückgestellt zählt wie erledigt: Das Paket ist mit Grund aus dem Lauf genommen (A-037).
+    return Boolean(d) && ['abgenommen', 'committet', 'zurückgestellt'].includes(d.status);
   };
   return ['offen', 'bereit'].includes(p.status) && p.abhaengigkeiten.every(erfuellt);
 }

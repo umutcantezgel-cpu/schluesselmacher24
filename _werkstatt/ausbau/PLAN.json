@@ -1,6 +1,6 @@
 {
  "version": 1,
- "stand": "2026-11-04T04:34:11.492Z",
+ "stand": "2026-11-04T05:23:07.825Z",
  "etappen": [
   {
    "kennung": "E0",
@@ -3126,10 +3126,10 @@
    ],
    "art": "pflicht",
    "wirkung": 3,
-   "status": "offen",
+   "status": "committet",
    "grund": null,
    "versuche": 0,
-   "commit": null,
+   "commit": "9bfec4c",
    "massstab": "_werkstatt/ausbau/pakete/E6-BAUMEISTER-02.md",
    "muster": "_werkstatt/ausbau/pakete/_MUSTER-REFERENZ.md"
   },

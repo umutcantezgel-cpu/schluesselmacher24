@@ -1107,3 +1107,10 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-04T04:32:24+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run -c vitest.db.config.ts
 2026-11-04T04:33:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/server/record-schema.ts src/lib/actions/security.test.ts
 2026-11-04T05:14:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/rubriken.test.ts src/lib/wege/ablauf.test.tsx
+2026-11-04T05:17:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/autoschluessel/gehaeuse
+2026-11-04T05:17:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T05:17:51+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/autoschluessel/gehaeuse
+2026-11-04T05:20:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T05:20:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T05:21:16+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T05:22:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000

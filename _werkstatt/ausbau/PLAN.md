@@ -1,8 +1,8 @@
 # Plan des Ausbaulaufs
 
-Stand: 2026-11-04T04:34:11.492Z
+Stand: 2026-11-04T05:23:07.825Z
 
-Etappe 7/12 · Welle 3 · Pflicht 84/140 · Kür 0/10 · läuft 0 · blockiert 0
+Etappe 7/12 · Welle 3 · Pflicht 85/140 · Kür 0/10 · läuft 0 · blockiert 0
 
 ## E0 · Start, Datenweiche, Werkzeuge, Lagebild, Anforderungs-Spur, Vorher-Stand
 
@@ -294,7 +294,7 @@ Geplante Tage: 1.56
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E6-OPUS-03 | Transponder-Kopie nur für bestätigte Fahrzeuge: Kasse, Einsenden, Rückversand | opus-5.5 | M | pflicht | 4 | zurückgestellt |  |
 | E6-BAUMEISTER-01 | Motorradschlüssel-Anfrage mit Transponder-Pflichtfrage | haiku-5.5 | M | pflicht | 3 | committet | dc0893b |
-| E6-BAUMEISTER-02 | Autoschlüssel-Gehäuse: Anfrage, Angebot mit Zahlungslink, Einsenden | haiku-5.5 | M | pflicht | 3 | offen |  |
+| E6-BAUMEISTER-02 | Autoschlüssel-Gehäuse: Anfrage, Angebot mit Zahlungslink, Einsenden | haiku-5.5 | M | pflicht | 3 | committet | 9bfec4c |
 | E6-BAUMEISTER-03 | Kontaktformular mit Foto-Upload und Rückruf | haiku-5.5 | M | pflicht | 3 | committet | 667efab |
 
 ### Welle 4

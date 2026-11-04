@@ -227,3 +227,9 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Entscheidung: Die Freigabe mit Zahlungslink wird nicht auf Gehäuse und Transponder übertragen, bis Inhaber und Anwalt die Einordnung und die Texte festgelegt haben (MA-27). Das Gehäuse geht als Anfrage mit Fahrzeug, Fotos und Fahrzeugschein online (E6-BAUMEISTER-02); der Inhaber antwortet mit Preis und Ablauf. Die Ablaufschritte der Rubrik sagen nichts zu, was der Weg noch nicht tut (R4). Die Transponder-Kopie bleibt verborgen, bis zusätzlich der Bogen KLONBAR beantwortet ist (G-18, MA-04); E6-OPUS-03 ist zurückgestellt.
 - Folge: Nach der Antwort auf MA-27 kommt die Freigabe für Gehäuse und Transponder als Leistung neben Vorlage und Einsendung (freigabeLeistung, Texte je Leistung), mit den freigegebenen Rechtstexten; Begleitschein und Rücksendung stehen dafür schon bereit (E6-OPUS-02).
 - Umkehrprobe: Sagt der Anwalt, dass dieselben Regeln wie bei der Anfertigung nach Vorlage gelten, entfällt nur die Wartezeit; nichts muss zurückgebaut werden.
+
+## A-037 · Zurückgestellte Pakete halten weder Wellen noch abhängige Prüfungen auf (2026-11-04 06:35, Plan)
+- Frage: E6-OPUS-03 (Transponder-Kopie) wartet auf den Bogen KLONBAR und die Rechtsfrage MA-27. plan.mjs zählte zurückgestellte Pakete als offen; damit blieb Welle 3 offen, Welle 4 kam nie an die Reihe, und die Prüfstufe B der Etappe hing am wartenden Paket.
+- Entscheidung: Ein zurückgestelltes Paket (immer mit Grund, plan.mjs pruefen verlangt ihn) zählt für die kleinste offene Welle nicht mehr und erfüllt Abhängigkeiten wie ein erledigtes. Die Prüfstufe B führt es als offenen Punkt; sein Grund steht im Plan und in ENTSCHEIDUNGEN.
+- Folge: Die Etappe läuft weiter, das zurückgestellte Paket kommt mit dem Material zurück (Status offen, neue Welle).
+- Umkehrprobe: Braucht ein späteres Paket das zurückgestellte wirklich, nennt der Plan die Abhängigkeit ausdrücklich und das Paket wird mit zurückgestellt.
