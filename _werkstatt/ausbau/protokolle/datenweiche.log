@@ -1082,3 +1082,27 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-04T04:17:49+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/service-und-termin/kontakt
 2026-11-04T04:17:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
 2026-11-04T04:18:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/service-und-termin/kontakt
+2026-11-04T04:18:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:18:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/motorradschluessel
+2026-11-04T04:18:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:18:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/service-und-termin/kontakt
+2026-11-04T04:18:54+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:19:19+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/motorradschluessel
+2026-11-04T04:19:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:22:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:23:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T04:23:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T04:24:49+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T04:27:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/hub src/lib/rubriken.test.ts
+2026-11-04T04:27:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-04T04:27:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-04T04:28:40+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/funktionsliste.mjs --nur F-11,F-19 --json /tmp/sm24-fl-e6w3.json
+2026-11-04T04:29:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/service-und-termin/kontakt src/app/(site)/motorradschluessel src/components/hub
+2026-11-04T04:30:39+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/service-und-termin/kontakt
+2026-11-04T04:30:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/service-und-termin/kontakt
+2026-11-04T04:30:54+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit -p .
+2026-11-04T04:31:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/service-und-termin/kontakt
+2026-11-04T04:31:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-04T04:32:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/actions/security.test.ts
+2026-11-04T04:32:24+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run -c vitest.db.config.ts
+2026-11-04T04:33:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/lib/server/record-schema.ts src/lib/actions/security.test.ts
