@@ -14,6 +14,7 @@ import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { PageHeader } from '@/components/layout/page-header';
 import { NachbestellenAbschnitt, sicherungskartenLinie } from '@/components/schliessung/nachbestellen';
+import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { BereichIcon } from '@/components/visual/bereich-icon';
@@ -268,6 +269,17 @@ export default async function CylinderOverviewPage() {
             </figure>
           </div>
         </div>
+
+        {/* Ablauf aus den Rubrikdaten (G-10, G-11), im Abschnitt des Grundprinzips */}
+        {rubrik && (
+          <div className="mt-14 grid gap-8 border-t border-border pt-10 lg:grid-cols-12 lg:gap-gutter">
+            <div className="lg:col-span-5">
+              <h3 className="font-mono text-caption uppercase tracking-label text-foreground-muted">So läuft Ihr Auftrag ab</h3>
+              <p className="mt-2 text-title-sm font-semibold text-foreground">Von der Zusammenstellung bis zur Lieferung</p>
+            </div>
+            <RubrikAblauf rubrik={rubrik} className="lg:col-span-7" />
+          </div>
+        )}
       </Section>
 
       {/* 02 Bauformen: Stückliste mit Fach-Icons */}

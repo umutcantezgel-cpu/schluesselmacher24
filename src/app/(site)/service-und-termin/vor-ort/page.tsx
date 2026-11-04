@@ -7,6 +7,7 @@ import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
+import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
@@ -204,6 +205,9 @@ export default async function VorOrtPage() {
           </div>
         </div>
       </Section>
+
+      {/* Ablauf aus den Rubrikdaten (G-10, G-11) */}
+      <RubrikAblaufAbschnitt rubrik={rubrik} nummer="02" tone="muted" titel="Vom Anliegen zum Termin" />
     </>
   );
 }

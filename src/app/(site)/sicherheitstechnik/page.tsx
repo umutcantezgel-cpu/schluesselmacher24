@@ -8,6 +8,7 @@ import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
+import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { BereichIcon } from '@/components/visual/bereich-icon';
@@ -194,10 +195,12 @@ export default async function SicherheitstechnikPage() {
 
           <div className="border-y border-border py-6 lg:col-span-5">
             <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-              Ablauf in diesem Bereich
+              So läuft Ihr Auftrag ab
             </p>
             <p className="mt-2 text-title-sm font-semibold text-foreground">{process.label}</p>
             <p className="mt-2 max-w-measure text-small text-foreground-muted">{process.hint}</p>
+            {/* Schritte aus den Rubrikdaten (G-10, G-11) */}
+            {rubrik && <RubrikAblauf rubrik={rubrik} className="mt-6" />}
             <div className="mt-5">
               <ButtonLink href={`/${ROUTE}/sicherheitscheck`} variant="outline">
                 Bestandsaufnahme starten

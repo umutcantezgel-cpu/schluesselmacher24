@@ -11,6 +11,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { InfoTip } from '@/components/ui/info-tip';
 import { PageHeader } from '@/components/layout/page-header';
+import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { ZutrittSignalGrafik } from '@/components/visual/generators/zutritt-signal';
@@ -237,22 +238,6 @@ function spaltenStart(spalten: number, breiteWide: number): number[] {
 
 const SPALTE_AB_SM = spaltenStart(2, 1);
 const SPALTE_AB_LG = spaltenStart(3, 2);
-
-/** Drei Schritte nach dem Konfigurator (Abschnitt 03). */
-const ABLAUF = [
-  {
-    titel: 'Bedarf erfassen.',
-    text: 'Objekt, Umfang, Medien, Verwaltung, Berechtigungen, Standorte, Integration und Service.',
-  },
-  {
-    titel: 'Prüfen.',
-    text: 'Wir schauen uns die Türsituation an und sagen Ihnen, was technisch möglich ist.',
-  },
-  {
-    titel: 'Angebot.',
-    text: 'Sie erhalten eine Aufstellung mit nachvollziehbaren Positionen.',
-  },
-] as const;
 
 const PROTOCOL_HINT = {
   title: 'Protokollierung betrifft personenbezogene Daten',
@@ -642,24 +627,13 @@ export default async function ElektronischeZutrittsloesungenPage() {
           <div className="lg:col-span-7 lg:col-start-6 lg:row-start-1">
             <SectionHeading
               nummer="03"
-              eyebrow="So geht es weiter"
+              eyebrow="So läuft Ihr Auftrag ab"
               title="Vom Bedarf zum Angebot"
               lead="Der Konfigurator stellt acht Fragen zu Ihrem Objekt. Sie können jederzeit unterbrechen — Ihre Angaben bleiben im Browser gespeichert."
             />
 
-            <ol className="mt-7 border-t border-border text-small text-foreground-muted">
-              {ABLAUF.map((schritt, index) => (
-                <li key={schritt.titel} className="flex gap-4 border-b border-border py-4">
-                  <span className="w-6 shrink-0 font-mono text-caption leading-6 tabular-nums text-foreground-muted">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span>
-                    <span className="font-semibold text-foreground">{schritt.titel}</span>{' '}
-                    {schritt.text}
-                  </span>
-                </li>
-              ))}
-            </ol>
+            {/* Ablauf aus den Rubrikdaten (G-10, G-11) */}
+            {rubrik && <RubrikAblauf rubrik={rubrik} variante="liste" className="mt-7" />}
 
             <div className="mt-7">
               <ButtonLink href={`/${ROUTE}/konfigurator`} size="lg" pfeil>

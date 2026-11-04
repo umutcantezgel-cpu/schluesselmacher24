@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getPageContent, getVehicleMakes } from '@/lib/data';
+import { getPageContent, getRubrik, getVehicleMakes } from '@/lib/data';
 import type { KeyKind, VehicleMake } from '@/lib/types';
 import { formatNumber } from '@/lib/format';
 import { PageHeader } from '@/components/layout/page-header';
+import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ButtonLink } from '@/components/ui/button';
 import { Alert } from '@/components/ui/alert';
@@ -45,7 +46,7 @@ function keyKindsOfMake(make: VehicleMake): KeyKind[] {
 }
 
 export default async function MarkenPage() {
-  const [page, makes] = await Promise.all([getPageContent(ROUTE), getVehicleMakes()]);
+  const [page, makes, rubrik] = await Promise.all([getPageContent(ROUTE), getVehicleMakes(), getRubrik('schluesselfinder')]);
 
   const sorted = [...makes].sort((a, b) => a.name.localeCompare(b.name, 'de'));
   const modelCount = makes.reduce((sum, make) => sum + make.models.length, 0);
@@ -173,6 +174,13 @@ export default async function MarkenPage() {
               title="Der nächste Schritt"
               lead="Im geführten Ablauf wählen Sie Marke, Modell und Baujahr aus und laden Ihre Fotos hoch."
             />
+            {/* Ablauf aus den Rubrikdaten (G-10, G-11) */}
+            {rubrik && (
+              <>
+                <p className="mt-8 font-mono text-caption uppercase tracking-label text-foreground-muted">So läuft Ihr Auftrag ab</p>
+                <RubrikAblauf rubrik={rubrik} className="mt-5" />
+              </>
+            )}
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/autoschluessel/anfrage" size="lg" pfeil>
                 Fahrzeug auswählen

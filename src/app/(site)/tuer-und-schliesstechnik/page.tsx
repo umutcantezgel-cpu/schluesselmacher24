@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ComponentType } from 'react';
 
-import { getPageContent, getServicePages } from '@/lib/data';
+import { getPageContent, getRubrik, getServicePages } from '@/lib/data';
 import { getNachweise } from '@/lib/data/nachweise';
 import { getRichtwerte } from '@/lib/data/richtwerte';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -13,6 +13,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
 import { PageHeader } from '@/components/layout/page-header';
+import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { Accordion } from '@/components/ui/accordion';
 import { TuerAbsicherungRechner } from '@/components/calculator/tuer-absicherung-rechner';
@@ -129,11 +130,12 @@ const EXPERT_FAQ = [
 ];
 
 export default async function TuerUndSchliesstechnikPage() {
-  const [page, services, richtwerte, nachweise] = await Promise.all([
+  const [page, services, richtwerte, nachweise, rubrik] = await Promise.all([
     getPageContent(ROUTE),
     getServicePages(ROUTE),
     getRichtwerte(),
     getNachweise(),
+    getRubrik('tuer-und-schliesstechnik'),
   ]);
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
@@ -246,7 +248,7 @@ export default async function TuerUndSchliesstechnikPage() {
             {/* Schriftfeld: der Ablauf in diesem Bereich wie eine Zeile der Bemaßung; das Ziel führt zum Rechner. */}
             <dl className="border-t border-border py-6 lg:col-span-5 lg:border-l lg:border-t-0 lg:pl-gutter">
               <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                Ablauf in diesem Bereich
+                So läuft Ihr Auftrag ab
               </dt>
               <dd className="mt-1">
                 <Link
@@ -263,6 +265,12 @@ export default async function TuerUndSchliesstechnikPage() {
               <dd className="mt-2 max-w-measure text-small text-foreground-muted">
                 {process.hint} Wir analysieren die bauliche Substanz Ihrer Tür und erstellen darauf basierend ein präzises Sicherheitskonzept, bevor wir Komponenten austauschen.
               </dd>
+              {/* Schritte aus den Rubrikdaten (G-10, G-11) */}
+              {rubrik && (
+                <dd className="mt-6">
+                  <RubrikAblauf rubrik={rubrik} />
+                </dd>
+              )}
             </dl>
           </div>
         </div>

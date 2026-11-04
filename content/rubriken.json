@@ -175,23 +175,28 @@
     "ablauf": [
       {
         "titel": "Fotos hochladen",
-        "text": "Vorderseite, Rückseite und Spitze fotografieren. Gibt es eine Sicherungskarte, auch die Karte.",
+        "text": "Sie fotografieren den Schlüssel aus drei Richtungen und tragen ein, was auf ihm steht. Gibt es eine Sicherungskarte, fotografieren Sie auch die Karte. Das Formular führt Sie Schritt für Schritt und lässt sich am Smartphone bedienen.",
         "icon": "foto-hochladen"
       },
       {
-        "titel": "Prüfung",
-        "text": "Wir prüfen die Fotos. Eine Prüfung ist noch keine Zusage.",
+        "titel": "Wir prüfen",
+        "text": "Wir bestimmen Profil und Rohling, lesen Beschriftungen aus und klären, ob eine Nachfertigung nach Ihren Bildern möglich ist.",
         "icon": "pruefung"
       },
       {
-        "titel": "Preis mit Zahlungslink",
-        "text": "Passt alles, erhalten Sie Preis und Zahlungslink.",
+        "titel": "Freigabe, Rückfrage oder Absage",
+        "text": "Ist die Anfertigung möglich, erhalten Sie die Freigabe mit Preis per E-Mail. Fehlt uns noch etwas, melden wir uns mit einer Rückfrage; geht es nicht, sagen wir es Ihnen. Die Prüfung ist noch keine Fertigungszusage.",
+        "icon": "nachweis"
+      },
+      {
+        "titel": "Auftrag mit dem Zahlungslink",
+        "text": "Mit der Freigabe erhalten Sie einen persönlichen Zahlungslink. Erst mit Ihrer Zahlung erteilen Sie den Auftrag; danach fertigen wir und schicken den Schlüssel zu Ihnen.",
         "icon": "zahlung"
       },
       {
-        "titel": "Fertigung und Versand",
-        "text": "Wir fertigen und schicken den Schlüssel zu Ihnen.",
-        "icon": "lieferung"
+        "titel": "Nur falls nötig: Einsendung",
+        "text": "Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und Vorgangsnummer in der Freigabe. Vorher senden Sie bitte nichts ein.",
+        "icon": "versand-paket"
       }
     ],
     "abschluss": "angebot-zahlungslink",
@@ -330,18 +335,18 @@
     "ziel": "/elektronische-zutrittsloesungen",
     "ablauf": [
       {
-        "titel": "Anfrage stellen",
-        "text": "Türen, Nutzer und Wünsche kurz beschreiben.",
+        "titel": "Bedarf erfassen",
+        "text": "Objekt, Umfang, Medien, Verwaltung, Berechtigungen, Standorte, Integration und Service im Konfigurator beschreiben.",
         "icon": "nachweis"
       },
       {
-        "titel": "Beratung",
-        "text": "Wir klären mit Ihnen das passende System.",
+        "titel": "Prüfung und Beratung",
+        "text": "Wir schauen uns die Türsituation an, sagen Ihnen, was technisch möglich ist, und klären mit Ihnen das passende System.",
         "icon": "technische-beratung"
       },
       {
         "titel": "Angebot",
-        "text": "Sie erhalten ein Angebot mit allen Kosten.",
+        "text": "Sie erhalten ein Angebot mit nachvollziehbaren Positionen und allen Kosten.",
         "icon": "dokument"
       }
     ],
