@@ -253,3 +253,9 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Vorher geprüft: CI des PR grün am Kopf 6ce9e84 (Lauf 41867458081, alle Schritte einzeln erfolgreich), lokal Unit 2226, DB 97, Build grün.
 - Umsetzung: Merge-Commit 11a6c00; Arbeitsbranch per Vorlauf auf origin/main (6ce9e84 ist Vorfahre, kein erzwungener Push). Der Push auf main löst bei Vercel den Produktionsbuild aus.
 - Nebenbefund: Die geplante Übernahme um 14:12 (trig_01Gye1nkcYVH1aCgUxKVN9wU) und der Wachhund um 17:22 konnten nicht pushen (403), weil geplante Aufgaben ohne Repository-Quelle starten und dort kein add_repo zur Verfügung steht. Fortsetzung deshalb als neue Sitzung mit Repository-Quelle und Arbeitsbranch (MENSCHEN: Wachhund braucht dieselbe Quelle).
+
+## A-041 · PR 967 auf ausdrückliche Anweisung des Nutzers gemergt; Lauf an sauberem Punkt angehalten (2026-11-05 05:07, Nutzer)
+- Anlass: „Finalisiere alles und stelle es live“ (04:58). Die laufende Fortsetzungssitzung 4135bd22 begann keinen neuen Teil mehr, setzte den Herzschlag auf WARTET AUF FREIGABE und löschte ihre Selbstweckungen (664ad0b, 1340e86). Offen im Plan: E7-OPUS-01 Teil 3 (Unterschrift als Upload) und die Etappen E7 bis E10.
+- Vorher geprüft: CI des PR grün am Kopf 1340e86 (Lauf 41965160563); Partnervertrag-PDF nur für Inhaber und Mitarbeiter, jedes Blatt „Entwurf, nicht unterschreiben“ bis zur Vorlage des Anwalts (R10, MA-29).
+- Umsetzung: Merge-Commit 322572a, Arbeitsbranch per Vorlauf auf main. Der Push auf main löst bei Vercel den Produktionsbuild aus; Domain und Umgebungsvariablen bleiben beim Nutzer (MA-23).
+- Fortsetzung: Ein neuer Auftrag des Nutzers hebt WARTET AUF FREIGABE auf; dann übernimmt eine frische Sitzung mit Repository-Quelle ab PRUEFPUNKT.md.
