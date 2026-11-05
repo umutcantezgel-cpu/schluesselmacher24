@@ -1,0 +1,216 @@
+
+> schluesselmacher24@0.1.0 build
+> node scripts/build.mjs
+
+
+▶ Datenbank bereitstellen
+Externe Datenbank (DATABASE_URL) — lokales Postgres wird nicht gestartet.
+
+▶ Migrationen
+[17:25:51] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[17:25:51] [32mINFO[39m: [36mReading migration files from /home/user/schluesselmacher24/src/migrations[39m
+[17:25:51] [32mINFO[39m: [36mMigrating: 20260924_001201_initial[39m
+[17:25:51] [32mINFO[39m: [36mMigrated:  20260924_001201_initial (73ms)[39m
+[17:25:51] [32mINFO[39m: [36mMigrating: 20260924_004222_datenmodell[39m
+[17:25:51] [32mINFO[39m: [36mMigrated:  20260924_004222_datenmodell (293ms)[39m
+[17:25:51] [32mINFO[39m: [36mMigrating: 20260924_042804_auftraege_und_nachweise[39m
+[17:25:51] [32mINFO[39m: [36mMigrated:  20260924_042804_auftraege_und_nachweise (37ms)[39m
+[17:25:51] [32mINFO[39m: [36mMigrating: 20260924_042900_sm24_tabellen[39m
+[17:25:51] [32mINFO[39m: [36mMigrated:  20260924_042900_sm24_tabellen (5ms)[39m
+[17:25:51] [32mINFO[39m: [36mMigrating: 20261024_213449_livegang[39m
+[17:25:51] [32mINFO[39m: [36mMigrated:  20261024_213449_livegang (24ms)[39m
+[17:25:51] [32mINFO[39m: [36mMigrating: 20261025_132045_leitfaden[39m
+[17:25:51] [32mINFO[39m: [36mMigrated:  20261025_132045_leitfaden (40ms)[39m
+[17:25:51] [32mINFO[39m: [36mMigrating: 20261025_132935_leitfaden_daten[39m
+[17:25:51] [32mINFO[39m: [36mMigrated:  20261025_132935_leitfaden_daten (7ms)[39m
+[17:25:51] [32mINFO[39m: [36mMigrating: 20261103_014640_rubriken[39m
+[17:25:51] [32mINFO[39m: [36mMigrated:  20261103_014640_rubriken (23ms)[39m
+[17:25:51] [32mINFO[39m: [36mMigrating: 20261103_030613_einsenden[39m
+[17:25:52] [32mINFO[39m: [36mMigrated:  20261103_030613_einsenden (4ms)[39m
+[17:25:52] [32mINFO[39m: [36mMigrating: 20261103_031720_fahrzeugreihen[39m
+[17:25:52] [32mINFO[39m: [36mMigrated:  20261103_031720_fahrzeugreihen (11ms)[39m
+[17:25:52] [32mINFO[39m: [36mMigrating: 20261103_032353_nachweise[39m
+[17:25:52] [32mINFO[39m: [36mMigrated:  20261103_032353_nachweise (1ms)[39m
+[17:25:52] [32mINFO[39m: [36mMigrating: 20261103_033531_partnerbetriebe[39m
+[17:25:52] [32mINFO[39m: [36mMigrated:  20261103_033531_partnerbetriebe (19ms)[39m
+[17:25:52] [32mINFO[39m: [36mDone.[39m
+
+▶ Seed
+[17:25:55] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Inhalte übernehmen …
+  einstellungen: übernommen
+  zylinderkatalog: übernommen
+  preisgruppen: 4 angelegt
+  autoschluessel-leistungen: 6 angelegt
+  preisregeln: 24 angelegt
+  fahrzeugmarken: 12 angelegt
+  codelinien: 52 angelegt
+  beispielartikel: 8 angelegt
+  rubriken: 15 angelegt
+  fahrzeugreihen: 624 angelegt
+  leistungsseiten: 17 angelegt
+  seiten: 26 angelegt
+  ratgeber: 8 angelegt
+  einsatzgebiete: 1 angelegt
+  sperrtage: 5 angelegt
+  nachweise: 1 angelegt
+  richtwerte: übernommen
+Fertig.
+
+▶ Erster Backend-Zugang
+[17:26:05] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Zugang inhaber@beispiel.test angelegt.
+
+▶ Livegang-Prüfung
+[17:26:09] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Livegang-Prüfung: keine Platzhalter gefunden.
+
+▶ Next.js-Build
+▲ Next.js 16.4.4 (Turbopack)
+✓ Running next.config.ts took 47ms
+- Experiments (use with caution):
+  ✓ inlineCss
+  ⨯ turbopackServerFastRefresh
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 2.2s
+  Running TypeScript ...
+  Finished TypeScript in 25.8s ...
+  Collecting page data using 3 workers ...
+<claude-code-hint v="1" type="plugin" value="stripe@claude-plugins-official" />
+<claude-code-hint v="1" type="plugin" value="stripe@claude-plugins-official" />
+  Generating static pages using 3 workers (0/232) ...
+  Generating static pages using 3 workers (58/232) 
+  Generating static pages using 3 workers (116/232) 
+  Generating static pages using 3 workers (174/232) 
+✓ Generating static pages using 3 workers (232/232) in 10.1s
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /[...unbekannt]
+├ ƒ /admin/[[...segments]]
+├ ƒ /api/[...slug]
+├ ƒ /api/cron/taeglich
+├ ƒ /api/cron/zahlungen
+├ ƒ /api/kunden-upload
+├ ƒ /api/zahlung/rueckkehr
+├ ƒ /api/zahlung/stripe
+├ ○ /apple-icon
+├ ○ /artikel
+├   /artikel/[slug]
+│ ├ ● /artikel/beispiel-schluesselkasten
+│ ├ ● /artikel/beispiel-schluesselsafe-zahlencode
+│ ├ ● /artikel/beispiel-schluesselkappen-set
+│ └ ● [+5 more paths]
+├ ○ /autoschluessel
+├ ƒ /autoschluessel/anfrage
+├ ○ /autoschluessel/fahrzeugoeffnung
+├ ○ /autoschluessel/funkschluessel
+├ ○ /autoschluessel/gehaeuse
+├ ○ /autoschluessel/gehaeuse/anfrage
+├ ○ /autoschluessel/kopieren
+├ ○ /autoschluessel/marken
+├   /autoschluessel/marken/[make]
+│ ├ ● /autoschluessel/marken/volkswagen
+│ ├ ● /autoschluessel/marken/bmw
+│ ├ ● /autoschluessel/marken/mercedes-benz
+│ └ ● [+9 more paths]
+├   /autoschluessel/marken/[make]/[model]
+│ ├ ● /autoschluessel/marken/volkswagen/golf
+│ ├ ● /autoschluessel/marken/volkswagen/polo
+│ ├ ● /autoschluessel/marken/volkswagen/passat
+│ └ ● [+46 more paths]
+├ ○ /autoschluessel/nachmachen
+├ ○ /autoschluessel/opengraph-image-c05pb1
+├ ○ /autoschluessel/programmieren
+├ ○ /autoschluessel/schluesselbart-fraesen
+├ ○ /autoschluessel/smart-key
+├ ○ /beratung
+├ ƒ /bestellung/[id]
+├ ƒ /bestellung/[id]/begleitschein
+├ ○ /elektronische-zutrittsloesungen
+├ ○ /elektronische-zutrittsloesungen/konfigurator
+├ ○ /elektronische-zutrittsloesungen/opengraph-image-ierpbj
+├ ○ /gleichschliessende-zylinder
+├ ○ /gleichschliessende-zylinder/konfigurator
+├ ○ /gleichschliessende-zylinder/opengraph-image-19p65f
+├ ○ /icon.svg
+├ ○ /kasse
+├ ○ /llms.txt
+├ ○ /manifest.webmanifest
+├ ○ /motorradschluessel
+├ ○ /motorradschluessel/anfrage
+├ ○ /opengraph-image-12o0cb
+├ ○ /partner-werden
+├ ○ /ratgeber
+├   /ratgeber/[slug]
+│ ├ ● /ratgeber/autoschluessel-verloren-was-tun
+│ ├ ● /ratgeber/unterschied-kopie-und-programmierung
+│ ├ ● /ratgeber/zylinder-richtig-ausmessen
+│ └ ● [+5 more paths]
+├ ○ /rechtliches/agb
+├ ○ /rechtliches/cookie-einstellungen
+├ ○ /rechtliches/datenschutz
+├ ○ /rechtliches/impressum
+├ ○ /rechtliches/versand-und-zahlung
+├ ○ /rechtliches/widerruf
+├ ƒ /rechtliches/widerruf/erklaeren
+├ ○ /robots.txt
+├ ○ /schliessanlagen
+├ ○ /schliessanlagen/konfigurator
+├ ○ /schliessanlagen/konfigurator/schliessplan
+├ ƒ /schliessanlagen/konfigurator/schliessplan/pdf
+├ ○ /schliessanlagen/opengraph-image-1vjrui
+├ ○ /schluessel-einschicken
+├ ○ /schluessel-einschicken/anmelden
+├ ○ /schluessel-einschicken/opengraph-image-ip3out
+├ ○ /schluessel-nach-code
+├   /schluessel-nach-code/[slug]
+│ ├ ● /schluessel-nach-code/ms-01
+│ ├ ● /schluessel-nach-code/ms-02
+│ ├ ● /schluessel-nach-code/ms-03
+│ └ ● [+49 more paths]
+├ ● /schluessel-nach-code/hersteller/[hersteller]
+├   /schluessel-nach-code/kategorie/[familie]
+│ ├ ● /schluessel-nach-code/kategorie/moebel-und-bueroschloesser
+│ ├ ● /schluessel-nach-code/kategorie/spind-und-garderobenschloesser
+│ ├ ● /schluessel-nach-code/kategorie/briefkasten-und-postanlagen
+│ └ ● [+7 more paths]
+├ ○ /schluessel-nach-code/opengraph-image-1qg2h2
+├ ○ /schluessel-nach-vorlage
+├ ○ /schluessel-nach-vorlage/anfrage
+├ ○ /schluessel-nach-vorlage/opengraph-image-z36fs8
+├ ○ /service-und-termin
+├ ƒ /service-und-termin/anfrage
+├ ○ /service-und-termin/kontakt
+├ ○ /service-und-termin/opengraph-image-c539ca
+├ ○ /service-und-termin/terminstatus
+├ ○ /service-und-termin/vor-ort
+├ ○ /sicherheitstechnik
+├   /sicherheitstechnik/[slug]
+│ ├ ● /sicherheitstechnik/videoueberwachung
+│ ├ ● /sicherheitstechnik/alarmtechnik
+│ ├ ● /sicherheitstechnik/aussenhautsicherung
+│ └ ● [+4 more paths]
+├ ○ /sicherheitstechnik/opengraph-image-1r33uu
+├ ○ /sicherheitstechnik/sicherheitscheck
+├ ○ /sitemap.xml
+├ ○ /standorte
+├   /standorte/[city]
+│ └ ● /standorte/wetzlar
+├ ○ /tuer-und-schliesstechnik
+├   /tuer-und-schliesstechnik/[slug]
+│ ├ ● /tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder
+│ ├ ● /tuer-und-schliesstechnik/einsteckschloesser
+│ ├ ● /tuer-und-schliesstechnik/mehrfachverriegelungen
+│ └ ● [+7 more paths]
+├ ○ /tuer-und-schliesstechnik/opengraph-image-eevp0u
+└ ○ /warenkorb
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

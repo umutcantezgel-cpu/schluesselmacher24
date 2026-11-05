@@ -38,3 +38,10 @@ Pfade: /, /autoschluessel, /schluessel-nach-code, /kasse, /admin, /gibt-es-nicht
 - Schritt 10 rot: Vielleicht läuft auf Port 3000 schon ein Server. Im Container fehlt `ss`; `/proc/net/tcp` zeigt die belegten Ports (3000 entspricht 0BB8).
 - Fehlerzeile `invalid value for parameter "port": ""` bei `sicher.sh --pg`: PGPORT war leer. Seit 21:37 setzt sicher.sh PGPORT auf 5433. Kehrt die Zeile zurück, die Fassung von sicher.sh prüfen.
 - Bis 21:37 protokollierte die Datenweiche `--pg`-Läufe erst nach dem Start von Postgres. Seitdem steht die Protokollzeile davor.
+
+## 11. Werkzeug-Abhängigkeiten (ergänzt 2026-11-04 durch 886a8f6e)
+In einer neuen Umgebung fehlt `/root/sm24-werkzeuge`, und a11y.mjs und lighthouse.mjs brechen dann mit ENOENT ab.
+```
+mkdir -p /root/sm24-werkzeuge && cp /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/package.json /root/sm24-werkzeuge/ && cd /root/sm24-werkzeuge && npm install --no-audit --no-fund --ignore-scripts && ln -sfn /root/sm24-werkzeuge/node_modules /home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/node_modules
+```
+Erwartet: „added 163 packages“. Aufrufe danach mit `sicher.sh --json --als-root -- node …`.

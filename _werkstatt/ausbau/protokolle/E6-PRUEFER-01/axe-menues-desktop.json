@@ -1,0 +1,33 @@
+{
+  "zeit": "2026-11-04T17:43:19.932Z",
+  "menue": true,
+  "zeilen": [
+    {
+      "pfad": "/",
+      "geraet": "desktop",
+      "menue": "Megamenue 1",
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/autoschluessel",
+      "geraet": "desktop",
+      "menue": "Megamenue 1",
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    },
+    {
+      "pfad": "/schluessel-einschicken",
+      "geraet": "desktop",
+      "menue": "Megamenue 1",
+      "axe": "4.12.0",
+      "verstoesse": 0,
+      "stellen": 0,
+      "liste": []
+    }
+  ]
+}

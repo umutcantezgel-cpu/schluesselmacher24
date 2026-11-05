@@ -247,3 +247,9 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Anzahlung (E-60, E-119, E-120): nur Erweiterungen. Neue Team-Mail bei ausgebliebener Anzahlung zu einem laufenden Termin, keine neue Kundenmail; bei laufendem Termin keine Aufforderung zum Neubuchen (Seite und Aktion sagen „Wir melden uns“, wie die Mail). Folgetermin: Verweis über `?vorher=` nur auf einen stornierten Termin derselben E-Mail-Adresse, Einträge in beiden Vorgängen, ein Fehler kostet nur den Verweis. Beträge, Einwilligungen und Zahlungsschritte unverändert.
 - Kundenverlauf: Jeder Statuswechsel durch das Team ist für den Kunden sichtbar (vorher nur bei der Foto-Prüfung), intern bleibt die Notiz mit altem und neuem Status und Bearbeiter.
 - Umkehrprobe: Jede Stelle ist einzeln zurücknehmbar; keine Migration, keine neue Bibliothek.
+
+## A-040 · PR 966 auf ausdrückliche Anweisung des Nutzers gemergt; Arbeitsbranch vorwärts auf main (2026-11-04 17:35, Nutzer)
+- Anlass: „Ja, du kannst alles auf Main tun, damit wir ein Redeploy by Self triggern.“ Wie bei A-029 und A-038 hebt das für diesen Schritt G2 (nie main) auf; G3 und G4 bleiben: keine Änderung an Vercel, Konten, Domain oder Schlüsseln durch den Orchestrator.
+- Vorher geprüft: CI des PR grün am Kopf 6ce9e84 (Lauf 41867458081, alle Schritte einzeln erfolgreich), lokal Unit 2226, DB 97, Build grün.
+- Umsetzung: Merge-Commit 11a6c00; Arbeitsbranch per Vorlauf auf origin/main (6ce9e84 ist Vorfahre, kein erzwungener Push). Der Push auf main löst bei Vercel den Produktionsbuild aus.
+- Nebenbefund: Die geplante Übernahme um 14:12 (trig_01Gye1nkcYVH1aCgUxKVN9wU) und der Wachhund um 17:22 konnten nicht pushen (403), weil geplante Aufgaben ohne Repository-Quelle starten und dort kein add_repo zur Verfügung steht. Fortsetzung deshalb als neue Sitzung mit Repository-Quelle und Arbeitsbranch (MENSCHEN: Wachhund braucht dieselbe Quelle).

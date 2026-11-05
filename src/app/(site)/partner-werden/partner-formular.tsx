@@ -223,7 +223,6 @@ export function PartnerFormular() {
         notices={erfolg.notices}
         schritte={SCHRITTE_NACH_ART.partner}
         summary={zusammenfassung}
-        statusAbrufbar={false}
         zurueck={{ href: '/', label: 'Zur Startseite' }}
       />
     );
@@ -441,7 +440,8 @@ export function PartnerFormular() {
             <Alert tone="info">
               Mit der Bewerbung entsteht noch keine Zusammenarbeit und keine Verpflichtung. Vor einer
               Freischaltung prüfen wir Gewerbe, fachliche Eignung und Zuverlässigkeit; Grundlage der
-              Zusammenarbeit ist ein Partnervertrag.
+              Zusammenarbeit ist ein Partnervertrag. Den Vertrag und die Partner-AGB erhalten Sie vor
+              Vertragsschluss zur Prüfung.
             </Alert>
 
             <label className="flex min-h-touch cursor-pointer items-start gap-3 rounded-lg border border-border bg-surface p-4">

@@ -212,7 +212,7 @@ export function KontaktFormular() {
             category="dokument"
             id="kontakt-fotos"
             label="Fotos (freiwillig)"
-            description="Bis zu drei Fotos, zum Beispiel von der Tür, vom Schlüssel oder vom Schloss."
+            description="Bis zu drei Fotos, zum Beispiel von der Tür, vom Schlüssel oder vom Schloss. Jedes Foto wird schon beim Auswählen übertragen."
             example={EXAMPLE_FOTO}
             files={fotos}
             onChange={setFotos}

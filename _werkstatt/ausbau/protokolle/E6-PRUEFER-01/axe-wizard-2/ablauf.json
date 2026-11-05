@@ -1,0 +1,73 @@
+{
+  "pfad": "/autoschluessel/gehaeuse/anfrage",
+  "geraet": "mobil",
+  "schritte": [
+    {
+      "n": 0,
+      "titel": "Schritt 1 von 5 · Fahrzeug | Gehäuse-Anfrage",
+      "aktionen": [
+        "text:Erika Testku",
+        "text:Erika Testku",
+        "text:Erika Testku",
+        "text:2015"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "weiter"
+    },
+    {
+      "n": 1,
+      "titel": "Schritt 2 von 5 · Tasten | Gehäuse-Anfrage",
+      "aktionen": [
+        "radio"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "weiter"
+    },
+    {
+      "n": 2,
+      "titel": "Schritt 3 von 5 · Fotos | Gehäuse-Anfrage",
+      "aktionen": [
+        "datei",
+        "datei",
+        "datei",
+        "datei"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "weiter"
+    },
+    {
+      "n": 3,
+      "titel": "Schritt 4 von 5 · Kontakt | Gehäuse-Anfrage",
+      "aktionen": [
+        "text:Erika Testku",
+        "text:Erika Testku",
+        "text:test@example",
+        "text:01234 567890"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "weiter"
+    },
+    {
+      "n": 4,
+      "titel": "Schritt 5 von 5 · Absenden | Gehäuse-Anfrage",
+      "aktionen": [],
+      "uploadsFertig": true,
+      "weiterVorhanden": false,
+      "axe": [],
+      "aktion": "gesperrt-oder-ende"
+    }
+  ],
+  "preisGefunden": null,
+  "ende": "gesperrt",
+  "endAusschnitt": "Startseite Autoschlüssel Gehäuse Anfrage GEFÜHRTE ANFRAGE Gehäuse-Anfrage Fünf Schritte: Fahrzeug, Tasten, Fotos, Kontakt und Absenden. Mit der Anfrage entsteht noch kein Vertrag. Bitte dieses Feld leer lassen Schritt 5 von 5 · Absenden Angaben prüfen und Anfrage absenden Nach dem Absenden erhalten Sie eine Bestätigung mit Ihrer Nummer. Noch kein Vertrag Mit dem Absenden stellen Sie eine ",
+  "preisAmEnde": false,
+  "abgefangen": 5
+}

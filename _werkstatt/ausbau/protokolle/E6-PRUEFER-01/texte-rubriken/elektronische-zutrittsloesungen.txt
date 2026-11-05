@@ -1,0 +1,225 @@
+Startseite
+Elektronische Zutrittslösungen
+
+PROJEKTKONFIGURATOR
+
+Elektronische Zutrittslösungen
+
+Karte, Transponder, PIN, App und digitale Zylinder.
+
+Bedarf erfassen
+
+Elektronische Zutrittslösungen ersetzen den mechanischen Schlüssel oder ergänzen ihn. Verlorene Medien sperren Sie selbst — ohne die Zylinder zu tauschen.
+
+Auf dieser Seite finden Sie die elf Bausteine, aus denen sich eine solche Lösung zusammensetzt. Sie müssen nicht alle davon nutzen: In vielen Objekten reichen zwei oder drei Bausteine aus. Welche das sind, klären wir anhand Ihrer Angaben im Konfigurator.
+
+PROJEKTKONFIGURATOR
+
+Sie erfassen Ihr Projekt, wir erstellen daraus ein Angebot.
+
+01
+BAUSTEINE
+
+Elf Bausteine einer elektronischen Zutrittslösung
+
+Jeder Baustein löst eine bestimmte Aufgabe. Erst die Kombination ergibt die Lösung für Ihr Objekt.
+
+BAUSTEIN 1
+Erklärung zu Welches Medium passt?
+RFID-Transponder und Zutrittskarten
+
+Ein Transponder oder eine Karte wird vor einen Leser gehalten, der die hinterlegte Berechtigung prüft. Das Medium selbst trägt keinen Bart und lässt sich nicht nachfeilen.
+
+Karten im Scheckkartenformat, Schlüsselanhänger oder Aufkleber
+Ein Medium kann mehrere Türen öffnen, ohne dass Schlüssel dazukommen
+Ausgabe und Entzug erfolgen in der Verwaltung, nicht an der Tür
+BAUSTEIN 2
+Smartphone- und App-Steuerung
+
+Die Berechtigung liegt auf dem Mobiltelefon der Nutzerin oder des Nutzers. Das ist praktisch, wenn Personen kurzfristig Zutritt brauchen und kein Medium übergeben werden kann.
+
+Keine Übergabe eines Gegenstands nötig
+Setzt voraus, dass alle Beteiligten ein geeignetes Gerät haben und bedienen wollen
+Sinnvoll als Ergänzung, selten als einziges Medium
+BAUSTEIN 3
+PIN-Code und Tastatur
+
+Zutritt über eine Zahlenkombination an einer Tastatur. Es muss nichts mitgeführt werden — dafür muss der Code bekannt und vertraulich bleiben.
+
+Gut für Räume mit wechselnden, kurz anwesenden Personen
+Codes sollten je Person oder Gruppe vergeben und regelmäßig gewechselt werden
+Häufig in Kombination mit Karte oder Transponder eingesetzt
+BAUSTEIN 4
+Digitale Zylinder
+
+Ein digitaler Zylinder ersetzt den mechanischen Zylinder in der vorhandenen Tür. Der Knauf dreht erst dann durch, wenn ein berechtigtes Medium erkannt wurde.
+
+In der Regel ohne Kabel und ohne Eingriff in das Türblatt
+Maße der Tür und die vorhandene Beschlagsituation entscheiden über die Auswahl
+Batteriebetrieben — der Wechselrhythmus gehört in die Planung
+BAUSTEIN 5
+Elektronische Beschläge und Smart Locks
+
+Statt des Zylinders wird der Beschlag oder der komplette Griffbereich getauscht. Das ist sinnvoll, wenn zusätzlich zur Leseeinheit eine andere Griffform oder ein Schutzbeschlag nötig ist.
+
+Leser und Griff bilden eine Einheit
+Einsatz hängt von Türstärke, Dornmaß und Schlossart ab
+Bei Brand- und Fluchttüren gelten besondere Anforderungen an die Ausführung
+BAUSTEIN 6
+Zeitlich begrenzte Zugangsberechtigungen
+
+Eine Berechtigung erhält ein Start- und ein Enddatum. Nach Ablauf verliert das Medium seine Gültigkeit, ohne dass jemand es zurückgeben muss.
+
+Passend für Handwerk, Reinigung, Praktikum oder befristete Verträge
+Verhindert, dass alte Berechtigungen unbemerkt bestehen bleiben
+Der Ablauf wird bei der Einrichtung festgelegt und lässt sich später ändern
+BAUSTEIN 7
+Benutzerverwaltung und Berechtigungsgruppen
+
+Nutzer werden zu Gruppen zusammengefasst — etwa Verwaltung, Werkstatt oder Reinigung. Berechtigungen werden an der Gruppe gepflegt, nicht an jeder einzelnen Person.
+
+Neue Personen übernehmen die Rechte ihrer Gruppe
+Änderungen wirken auf alle Mitglieder gleichzeitig
+Die Gruppenstruktur sollte vor dem Aufbau der Anlage festgelegt werden
+BAUSTEIN 8
+Berechtigungen nach Wochentag oder Uhrzeit
+
+Zusätzlich zur Frage, wer eine Tür öffnen darf, lässt sich festlegen, wann. Ein Medium öffnet dann nur innerhalb der hinterlegten Zeitfenster.
+
+Zum Beispiel Reinigung nur dienstags und donnerstags am Abend
+Zeitfenster je Tür und je Gruppe unterschiedlich möglich
+Feiertage und Ausnahmen sind je nach System gesondert zu pflegen
+BAUSTEIN 9
+Erklärung zu Lokal oder online verwaltet
+Verlorene Karten und Transponder schnell sperren
+
+Geht ein Medium verloren, wird es gesperrt. Die Zylinder bleiben, wie sie sind — der Austausch ganzer Schließungen entfällt.
+
+Ersatzmedium wird mit denselben Rechten ausgegeben
+Bei lokal verwalteten Anlagen muss die Sperre an die betroffenen Türen übertragen werden
+Bei online verwalteten Anlagen wirkt die Sperre unmittelbar
+BAUSTEIN 10
+Ereignisprotokoll — optional
+
+Manche Systeme können festhalten, welches Medium wann an welcher Tür verwendet wurde. Diese Funktion ist optional und nur dort einsetzbar, wo System und Einsatzbereich das rechtmäßig zulassen.
+
+Umfang und Aufbewahrungsdauer werden vor der Einrichtung festgelegt
+In vielen Objekten ist die Funktion nicht erforderlich und bleibt abgeschaltet
+Ob und wie protokolliert wird, entscheiden Sie als Betreiber
+BAUSTEIN 11
+Kombination aus mechanischer und elektronischer Lösung
+
+Beide Welten lassen sich verbinden: elektronisch an den Türen mit wechselnden Nutzern, mechanisch überall dort, wo sich selten etwas ändert.
+
+Häufig elektronisch an Haupteingang, Technik- und Lagerräumen
+Mechanisch an Innentüren mit festem Nutzerkreis
+Beide Teile werden gemeinsam geplant, damit die Schlüsselübersicht stimmig bleibt
+
+Protokollierung betrifft personenbezogene Daten
+
+Ein Ereignisprotokoll hält fest, welches Medium wann an welcher Tür verwendet wurde. Damit entstehen personenbezogene Daten. Für die zulässige Nutzung — Zweck, Umfang, Aufbewahrungsdauer und die Beteiligung betroffener Personen oder einer Interessenvertretung — ist der Betreiber der Anlage verantwortlich.
+
+Wie wir mit personenbezogenen Daten umgehen, steht in unserer Datenschutzerklärung.
+
+02
+ENTSCHEIDUNGSHILFE
+
+Mechanisch oder elektronisch?
+
+Die Antwort hängt weniger am Objekt als an einer Frage: Wie oft ändert sich, wer hineindarf?
+
+Bleibt der Nutzerkreis über Jahre gleich, ist eine mechanische Anlage robust, wartungsarm und unabhängig von Strom und Netz. Wechseln Personen regelmäßig, kostet jeder Verlust bei Mechanik Zylinder und Schlüssel — elektronisch kostet er eine Sperrung. Deshalb ist die Mischung aus beidem in der Praxis häufig die sachlich richtige Lösung.
+
+Zum Ratgeber
+Mechanische Schließanlagen
+Fester Nutzerkreis, selten Änderungen
+MECHANISCH
+Meist ausreichend und wartungsarm
+ELEKTRONISCH
+Selten nötig
+Nutzer wechseln regelmäßig
+MECHANISCH
+Jeder Verlust kann einen Zylindertausch bedeuten
+ELEKTRONISCH
+Medium sperren, Ersatz ausgeben — Zylinder bleiben
+Zutritt nur zu bestimmten Zeiten
+MECHANISCH
+Nicht abbildbar
+ELEKTRONISCH
+Über Zeitfenster je Gruppe abbildbar
+Mehrere Liegenschaften
+MECHANISCH
+Getrennte Schließpläne je Objekt
+ELEKTRONISCH
+Gemeinsame Verwaltung möglich
+Strom, Batterie und Netz unerwünscht
+MECHANISCH
+Klarer Vorteil
+ELEKTRONISCH
+Nur eingeschränkt sinnvoll
+
+03
+SO LÄUFT IHR AUFTRAG AB
+
+Vom Bedarf zum Angebot
+
+Der Konfigurator stellt acht Fragen zu Ihrem Objekt. Sie können jederzeit unterbrechen — Ihre Angaben bleiben im Browser gespeichert.
+
+01
+Schritt 1:
+Bedarf erfassen
+
+Objekt, Umfang, Medien, Verwaltung, Berechtigungen, Standorte, Integration und Service im Konfigurator beschreiben.
+
+02
+Schritt 2:
+Prüfung und Beratung
+
+Wir schauen uns die Türsituation an, sagen Ihnen, was technisch möglich ist, und klären mit Ihnen das passende System.
+
+03
+Schritt 3:
+Angebot
+
+Sie erhalten ein Angebot mit nachvollziehbaren Positionen und allen Kosten.
+
+Bedarf erfassen
+
+04
+HÄUFIGE FRAGEN
+
+Was Kundinnen und Kunden vorab wissen wollen
+Muss ich für eine elektronische Lösung neue Türen einbauen?
+
+In der Regel nicht. Digitale Zylinder ersetzen meist den vorhandenen Zylinder, elektronische Beschläge den vorhandenen Beschlag. Ob das bei Ihrer Tür funktioniert, hängt von Maßen, Schlossart und Türsituation ab. Das klären wir vor dem Angebot.
+
+Was passiert, wenn eine Karte oder ein Transponder verloren geht?
+Kann ich mechanische und elektronische Türen mischen?
+Werden Zutritte automatisch aufgezeichnet?
+Was ist der Unterschied zwischen lokal und online verwalteten Systemen?
+Was kostet eine elektronische Zutrittslösung?
+
+05
+WEITERLESEN
+
+Passende Bereiche
+Zutrittskonfigurator
+Acht Fragen zu Ihrem Objekt — daraus wird das Angebot.
+Ansehen
+Mechanische Schließanlagen
+Gleichschließung, Zentralschloss, Haupt- und Generalhauptschlüssel.
+Ansehen
+Ratgeber: mechanisch oder elektronisch?
+Entscheidungshilfe anhand der Frage, wie oft sich etwas ändert.
+Ansehen
+Gleichschließende Zylinder
+Mehrere Türen mit einem mechanischen Schlüssel.
+Ansehen
+Tür- und Schließtechnik
+Zylinder, Schlösser, Beschläge und Türtechnik.
+Ansehen
+Sicherheitstechnik
+Einbruchschutz, Überwachung und Alarmierung.
+Ansehen
+
+Sie sind unsicher, ob Ihr Vorhaben hierher gehört? Allgemeine Anfrage stellen — wir ordnen es für Sie ein.

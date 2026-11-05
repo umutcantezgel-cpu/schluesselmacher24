@@ -154,7 +154,7 @@ export async function attrappenSetzen(context) {
       return route.fulfill({
         status: 200,
         contentType: 'application/json',
-        body: JSON.stringify({ ok: true, id: 'attrappe-upload', schluessel: 'attrappe' }),
+        body: JSON.stringify({ ok: true, id: 'attrappe-upload', uploadToken: 'attrappe-token', schluessel: 'attrappe' }),
       });
     }
     const action = req.headers()['next-action'];

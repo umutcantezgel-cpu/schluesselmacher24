@@ -3,6 +3,7 @@ import { VorgangsblattKnopf as VorgangsblattKnopf_1582ece8fd27138b4964598e268494
 import { TerminVerschieben as TerminVerschieben_bd501514f0546f17ffc3ae7327e14806 } from '../../../payload/components/TerminVerschieben'
 import { StripeLink as StripeLink_93f7020958f194c58a5525561020cceb } from '../../../payload/components/StripeLink'
 import { VorgaengeWerkzeuge as VorgaengeWerkzeuge_a6117e4679cb3b948f245e05432911e8 } from '../../../payload/components/VorgaengeWerkzeuge'
+import { PartnervertragKnopf as PartnervertragKnopf_4650257e05d8e8591d9ea1bdf9fbb0ba } from '../../../payload/components/PartnervertragKnopf'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -40,6 +41,7 @@ export const importMap = {
   "/payload/components/TerminVerschieben#TerminVerschieben": TerminVerschieben_bd501514f0546f17ffc3ae7327e14806,
   "/payload/components/StripeLink#StripeLink": StripeLink_93f7020958f194c58a5525561020cceb,
   "/payload/components/VorgaengeWerkzeuge#VorgaengeWerkzeuge": VorgaengeWerkzeuge_a6117e4679cb3b948f245e05432911e8,
+  "/payload/components/PartnervertragKnopf#PartnervertragKnopf": PartnervertragKnopf_4650257e05d8e8591d9ea1bdf9fbb0ba,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,

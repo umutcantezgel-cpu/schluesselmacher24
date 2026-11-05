@@ -49,7 +49,7 @@ export function FotoErgebnis({ record, einsendeAnschrift }: { record: BusinessRe
   zeilen.push(['Preis', preis ? `${formatCents(preis)} inkl. USt.` : 'nennen wir Ihnen gesondert']);
   zeilen.push([
     'Originalschlüssel',
-    einsendung ? 'liegt bei uns und kommt mit den Kopien zurück' : freigabe.sendInRequired ? 'bitte einsenden' : 'nicht nötig — wir fertigen nach Ihren Fotos',
+    einsendung ? 'liegt bei uns und kommt mit den Kopien zurück' : freigabe.sendInRequired ? 'bitte einsenden' : 'nicht nötig, wir fertigen nach Ihren Fotos',
   ]);
 
   return (

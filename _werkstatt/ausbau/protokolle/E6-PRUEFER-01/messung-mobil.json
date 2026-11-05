@@ -1,0 +1,345 @@
+{
+  "skript": "messung",
+  "zeit": "2026-11-04T17:45:31.258Z",
+  "argumente": {
+    "_": [],
+    "routen": "/,/autoschluessel,/schluessel-einschicken,/service-und-termin/vor-ort,/schluessel-nach-code,/autoschluessel/anfrage",
+    "laeufe": "3",
+    "profil": "mobil",
+    "json": "/home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/E6-PRUEFER-01/messung-mobil.json"
+  },
+  "budget": {
+    "lcp": 2500,
+    "cls": 0.1,
+    "inp": 200
+  },
+  "hinweis": "Werte: Median (Minimum–Maximum) je Ansicht und Profil; INP 0 = kein Ereignis über 16 ms",
+  "serien": [
+    {
+      "ansicht": "H01-start",
+      "pfad": "/",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 936,
+          "cls": 0,
+          "inp": 72,
+          "tbt": 235,
+          "jsKB": 252.69921875,
+          "gesamtKB": 547.5595703125,
+          "ressourcen": 57,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 796,
+          "cls": 0,
+          "inp": 80,
+          "tbt": 276,
+          "jsKB": 209.2919921875,
+          "gesamtKB": 465.84375,
+          "ressourcen": 53,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 804,
+          "cls": 0,
+          "inp": 88,
+          "tbt": 307,
+          "jsKB": 246.1962890625,
+          "gesamtKB": 518.634765625,
+          "ressourcen": 55,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "pfad": "/autoschluessel",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 804,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 218,
+          "jsKB": 237.3115234375,
+          "gesamtKB": 608.0048828125,
+          "ressourcen": 69,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 836,
+          "cls": 0,
+          "inp": 72,
+          "tbt": 536,
+          "jsKB": 212.9150390625,
+          "gesamtKB": 590.2333984375,
+          "ressourcen": 69,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 828,
+          "cls": 0,
+          "inp": 64,
+          "tbt": 288,
+          "jsKB": 206.412109375,
+          "gesamtKB": 579.3095703125,
+          "ressourcen": 70,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "pfad": "/schluessel-einschicken",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 752,
+          "cls": 0,
+          "inp": 48,
+          "tbt": 425,
+          "jsKB": 257.9111328125,
+          "gesamtKB": 499.5712890625,
+          "ressourcen": 55,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 728,
+          "cls": 0,
+          "inp": 56,
+          "tbt": 370,
+          "jsKB": 257.9111328125,
+          "gesamtKB": 517.5048828125,
+          "ressourcen": 56,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 660,
+          "cls": 0,
+          "inp": 24,
+          "tbt": 240,
+          "jsKB": 258.91796875,
+          "gesamtKB": 488.82421875,
+          "ressourcen": 55,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "service-und-termin-vor-ort",
+      "pfad": "/service-und-termin/vor-ort",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 768,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 291,
+          "jsKB": 300.3369140625,
+          "gesamtKB": 585.328125,
+          "ressourcen": 64,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 720,
+          "cls": 0,
+          "inp": 64,
+          "tbt": 407,
+          "jsKB": 288.5185546875,
+          "gesamtKB": 592.5849609375,
+          "ressourcen": 66,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 852,
+          "cls": 0,
+          "inp": 56,
+          "tbt": 463,
+          "jsKB": 300.3369140625,
+          "gesamtKB": 584.8330078125,
+          "ressourcen": 65,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H05-code",
+      "pfad": "/schluessel-nach-code",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 980,
+          "cls": 0,
+          "inp": 56,
+          "tbt": 364,
+          "jsKB": 244.3154296875,
+          "gesamtKB": 558.4453125,
+          "ressourcen": 54,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 832,
+          "cls": 0,
+          "inp": 40,
+          "tbt": 490,
+          "jsKB": 206.4814453125,
+          "gesamtKB": 483.279296875,
+          "ressourcen": 49,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 880,
+          "cls": 0,
+          "inp": 48,
+          "tbt": 314,
+          "jsKB": 244.3154296875,
+          "gesamtKB": 559.53125,
+          "ressourcen": 56,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "pfad": "/autoschluessel/anfrage",
+      "profil": "mobil",
+      "laeufe": [
+        {
+          "lcp": 600,
+          "cls": 0,
+          "inp": 48,
+          "tbt": 573,
+          "jsKB": 239.986328125,
+          "gesamtKB": 505.3759765625,
+          "ressourcen": 48,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 664,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 464,
+          "jsKB": 238.9794921875,
+          "gesamtKB": 504.369140625,
+          "ressourcen": 47,
+          "klick": true,
+          "navigiert": false
+        },
+        {
+          "lcp": 616,
+          "cls": 0,
+          "inp": 32,
+          "tbt": 392,
+          "jsKB": 238.9794921875,
+          "gesamtKB": 504.9228515625,
+          "ressourcen": 48,
+          "klick": true,
+          "navigiert": false
+        }
+      ],
+      "fehler": []
+    }
+  ],
+  "zusammenfassung": [
+    {
+      "ansicht": "H01-start",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "804 (796–936)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "80 (72–88)",
+      "tbt": "276 (235–307)",
+      "jsKB": "246,2 (209,3–252,7)",
+      "gesamtKB": "518,6 (465,8–547,6)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H02-autoschluessel",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "828 (804–836)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "64 (32–72)",
+      "tbt": "288 (218–536)",
+      "jsKB": "212,9 (206,4–237,3)",
+      "gesamtKB": "590,2 (579,3–608,0)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H08-einschicken",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "728 (660–752)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "48 (24–56)",
+      "tbt": "370 (240–425)",
+      "jsKB": "257,9 (257,9–258,9)",
+      "gesamtKB": "499,6 (488,8–517,5)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "service-und-termin-vor-ort",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "768 (720–852)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "56 (32–64)",
+      "tbt": "407 (291–463)",
+      "jsKB": "300,3 (288,5–300,3)",
+      "gesamtKB": "585,3 (584,8–592,6)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H05-code",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "880 (832–980)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "48 (40–56)",
+      "tbt": "364 (314–490)",
+      "jsKB": "244,3 (206,5–244,3)",
+      "gesamtKB": "558,4 (483,3–559,5)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    },
+    {
+      "ansicht": "H04-autoschluessel-anfrage",
+      "profil": "mobil",
+      "laeufe": "3 von 3",
+      "lcp": "616 (600–664)",
+      "cls": "0,000 (0,000–0,000)",
+      "inp": "32 (32–48)",
+      "tbt": "464 (392–573)",
+      "jsKB": "239,0 (239,0–240,0)",
+      "gesamtKB": "504,9 (504,4–505,4)",
+      "budget": "eingehalten",
+      "verstoesse": []
+    }
+  ]
+}

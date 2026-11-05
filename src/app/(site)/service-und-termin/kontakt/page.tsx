@@ -78,75 +78,67 @@ export default async function KontaktPage() {
               </p>
             ) : (
               <dl className="mt-6 border-t border-border">
-                <div className="flex gap-4 border-b border-border py-5">
-                  <GlyphOrt size={20} className="mt-1 shrink-0 text-primary" />
-                  <div className="min-w-0">
-                    <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                      {werkstatt ? 'Firmensitz' : 'Anschrift'}
-                    </dt>
-                    <dd className="mt-2 text-body text-foreground">
-                      {anbieter.map((zeile, index) => (
-                        <span key={zeile}>
-                          {index > 0 && <br />}
-                          {zeile}
-                        </span>
-                      ))}
-                    </dd>
-                  </div>
+                <div className="border-b border-border py-5">
+                  <dt className="flex items-center gap-4 font-mono text-caption uppercase tracking-label text-foreground-muted">
+                    <GlyphOrt size={20} className="shrink-0 text-primary" />
+                    <span className="min-w-0">{werkstatt ? 'Firmensitz' : 'Anschrift'}</span>
+                  </dt>
+                  <dd className="mt-2 pl-9 text-body text-foreground">
+                    {anbieter.map((zeile, index) => (
+                      <span key={zeile}>
+                        {index > 0 && <br />}
+                        {zeile}
+                      </span>
+                    ))}
+                  </dd>
                 </div>
 
                 {werkstatt && (
-                  <div className="flex gap-4 border-b border-border py-5">
-                    <GlyphOrt size={20} className="mt-1 shrink-0 text-primary" />
-                    <div className="min-w-0">
-                      <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                        {werkstatt.label}
-                      </dt>
-                      <dd className="mt-2 text-body text-foreground">
-                        {werkstatt.street}
-                        <br />
-                        {werkstatt.postalCode} {werkstatt.city}
-                      </dd>
-                    </div>
+                  <div className="border-b border-border py-5">
+                    <dt className="flex items-center gap-4 font-mono text-caption uppercase tracking-label text-foreground-muted">
+                      <GlyphOrt size={20} className="shrink-0 text-primary" />
+                      <span className="min-w-0">{werkstatt.label}</span>
+                    </dt>
+                    <dd className="mt-2 pl-9 text-body text-foreground">
+                      {werkstatt.street}
+                      <br />
+                      {werkstatt.postalCode} {werkstatt.city}
+                    </dd>
                   </div>
                 )}
 
-                <div className="flex gap-4 border-b border-border py-5">
-                  <GlyphTelefon size={20} className="mt-1 shrink-0 text-primary" />
-                  <div className="min-w-0">
-                    <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                      Telefon
-                    </dt>
-                    <dd className="mt-2 font-mono tabular-nums text-body text-foreground">
-                      {telefonHref ? (
-                        <a
-                          href={telefonHref}
-                          className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
-                        >
-                          {company.phone}
-                        </a>
-                      ) : (
-                        company.phone
-                      )}
-                    </dd>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 border-b border-border py-5">
-                  <GlyphMail size={20} className="mt-1 shrink-0 text-primary" />
-                  <div className="min-w-0">
-                    <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                      E-Mail
-                    </dt>
-                    <dd className="mt-2 break-words text-body text-foreground">
+                <div className="border-b border-border py-5">
+                  <dt className="flex items-center gap-4 font-mono text-caption uppercase tracking-label text-foreground-muted">
+                    <GlyphTelefon size={20} className="shrink-0 text-primary" />
+                    <span className="min-w-0">Telefon</span>
+                  </dt>
+                  <dd className="mt-2 pl-9 font-mono tabular-nums text-body text-foreground">
+                    {telefonHref ? (
                       <a
-                        href={`mailto:${company.email}`}
+                        href={telefonHref}
                         className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
                       >
-                        {company.email}
+                        {company.phone}
                       </a>
-                    </dd>
-                  </div>
+                    ) : (
+                      company.phone
+                    )}
+                  </dd>
+                </div>
+
+                <div className="border-b border-border py-5">
+                  <dt className="flex items-center gap-4 font-mono text-caption uppercase tracking-label text-foreground-muted">
+                    <GlyphMail size={20} className="shrink-0 text-primary" />
+                    <span className="min-w-0">E-Mail</span>
+                  </dt>
+                  <dd className="mt-2 pl-9 break-words text-body text-foreground">
+                    <a
+                      href={`mailto:${company.email}`}
+                      className="inline-flex min-h-touch items-center hover:text-primary hover:underline"
+                    >
+                      {company.email}
+                    </a>
+                  </dd>
                 </div>
               </dl>
             )}

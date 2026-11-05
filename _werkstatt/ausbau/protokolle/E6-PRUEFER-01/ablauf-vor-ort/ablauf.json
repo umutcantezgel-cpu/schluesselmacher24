@@ -1,0 +1,51 @@
+{
+  "pfad": "/service-und-termin/vor-ort",
+  "geraet": "mobil",
+  "schritte": [
+    {
+      "n": 0,
+      "titel": "Schritt 1 von 3 · Anliegen | Was wir direkt bei Ihnen erledigen",
+      "aktionen": [
+        "text:Erika Testku",
+        "text:Erika Testku",
+        "text:35578",
+        "text:Teststraße 1",
+        "select",
+        "datei",
+        "datei"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 1,
+      "titel": "Schritt 2 von 3 · Kontakt | Was wir direkt bei Ihnen erledigen",
+      "aktionen": [
+        "text:Erika Testku",
+        "text:Erika Testku",
+        "text:01234 567890",
+        "text:test@example",
+        "select",
+        "radio",
+        "check"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 2,
+      "titel": "Schritt 3 von 3 · Absenden | Was wir direkt bei Ihnen erledigen",
+      "aktionen": [],
+      "uploadsFertig": true,
+      "weiterVorhanden": false,
+      "aktion": "gesperrt-oder-ende"
+    }
+  ],
+  "preisGefunden": null,
+  "ende": "gesperrt",
+  "endAusschnitt": "Startseite Service und Termin Vor-Ort-Leistungen VOR ORT Was wir direkt bei Ihnen erledigen Nicht jede Arbeit lässt sich per Versand lösen. Hier steht, was vor Ort passiert und was dafür vorbereitet sein sollte. Einsatz anfragen 01 VOR ORT Leistungen im Überblick Autoschlüssel am Fahrzeug: Termin anfragen 01 Autoschlüssel am Fahrzeug Programmieren und Anlernen setzen Zugriff auf das Fahrze",
+  "preisAmEnde": false,
+  "abgefangen": 3
+}

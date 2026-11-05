@@ -1,0 +1,257 @@
+{
+  "id": "rentnerin-desktop",
+  "persona": "Frau Testrentnerin",
+  "geraet": "desktop 1440×900",
+  "tippsBisEingabe": 3,
+  "tippsBisZiel": 12,
+  "schritte": [
+    {
+      "tipp": 1,
+      "knopf": "Schlüssel nach Foto",
+      "von": "/"
+    },
+    {
+      "tipp": 2,
+      "knopf": "Alles zur Einsendung: Schlüssel einschicken",
+      "von": "/schluessel-nach-vorlage"
+    },
+    {
+      "tipp": 3,
+      "knopf": "Einsendung anmelden",
+      "von": "/schluessel-einschicken"
+    },
+    {
+      "tipp": 4,
+      "knopf": "Weiter",
+      "von": "/schluessel-einschicken/anmelden",
+      "formularSchritt": true
+    },
+    {
+      "tipp": 5,
+      "knopf": "Weiter",
+      "von": "/schluessel-einschicken/anmelden",
+      "formularSchritt": true
+    },
+    {
+      "tipp": 6,
+      "knopf": "Weiter",
+      "von": "/schluessel-einschicken/anmelden",
+      "formularSchritt": true
+    },
+    {
+      "tipp": 7,
+      "knopf": "Weiter",
+      "von": "/schluessel-einschicken/anmelden",
+      "formularSchritt": true
+    },
+    {
+      "tipp": 8,
+      "knopf": "Beratung",
+      "von": "/schluessel-einschicken/anmelden"
+    },
+    {
+      "tipp": 9,
+      "knopf": "Weiter",
+      "von": "/beratung",
+      "formularSchritt": true
+    },
+    {
+      "tipp": 10,
+      "knopf": "Weiter",
+      "von": "/beratung",
+      "formularSchritt": true
+    },
+    {
+      "tipp": 11,
+      "knopf": "Terminstatus",
+      "von": "/beratung"
+    },
+    {
+      "tipp": 12,
+      "knopf": "Stand abrufen",
+      "von": "/service-und-termin/terminstatus",
+      "formularSchritt": true
+    }
+  ],
+  "seiten": [
+    {
+      "pfad": "/",
+      "h1": "Wobei können wir Ihnen helfen?",
+      "erster": "Wir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": false,
+      "text": "Wobei können wir Ihnen helfen?\n\nWir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland.\n\nAutoschlüssel\nMotorradschlüssel\nSchlüsselgehäuse\nSchlüssel nach Code\nSchlüssel nach Foto\nSchlüssel einschicken\nSperrschließung\nein Schlüssel für alle Türen\nSchließanlage\nwer öffnet welche Tür\nElektronisch schließen\nSicherheitstechnik\nSchlüsseldienst\nvor Ort, mit Termin\nBeratung\n\nSCHLÜSSEL · ZYLINDER · SCHLIESSPLAN\n\n02\n03\n04\nBART\nTRANSPONDER\n01\n3\n5\n2\n6\n4\n1\n4\n\nLieber anrufen:\n06441 8056279\n\nAUTOSCHLÜSSEL\n\nAutoschlüssel nachmachen und programmieren\n\nTermin in der Werkstatt in Wetzlar, für Mittelhessen und alle, die anreisen.\n\nPROFILSCHNITT\n1\n2\n3\n4\n5\n6\nHalm · 6 Einschnitte\nRohling\ngefrästes Profil\nAutoschlüssel-Termin anfragen\nSchlüssel nach Code bestellen\nANZAHLUNG\n69,90 €\nVORLAUF\nca. 7 Tage\nVERSAND\nbundesweit\nWerkstatt und Abholung: Langgasse 70, 35576 Wetzlar · 06441 8056279\n\nSCHWERPUNKT AUTOSCHLÜSSEL\n\nSo läuft Ihr Autoschlüssel-Auftrag ab\n\nVom Fahrzeug bis zum Termin. Sie geben nur an, was für Ihr Fahrzeug zählt.\n\nTermin anfragen\nAlle Leistungen\nWARUM BEI UNS\n\nFachbetrieb mit eigener Werkstatt\n\nWir fertigen im eigenen Betrieb an unseren Maschinen, nicht unterwegs im Fahrzeug.\n\nErst prüfen, dann buchen\n\nWir sagen Ihnen vor der Terminbestätigung, was machbar ist und was es kostet. Keine Überraschung vor Ort.\n\nNachvollziehbare Abläufe\n\nJeder Vorgang bekommt eine Nummer. Den Stand können Sie jederzeit selbst abrufen.\n\nSichere Zahlung\n\nDie Anzahlung wird vollständig auf den Gesamtpreis angerechnet.\n\nHinter SCHLÜSSELMACHER24 steht die Schlüssel Schmiede in Wetzlar mit Werkstatt, fachlicher Beratung und eigener Fertigung.\n\n1\n\nFahrzeug wählen\n\nMarke, Modell, Baujahr und Schlüsselart.\n\n2\n\nFotos hochladen\n\nSchlüssel aus drei Richtungen und den Fahrzeugschein.\n\n3\n\nPreis oder Prüfung\n\nFester Preis, Preisrahmen oder Hinweis auf manuelle Prüfung.\n\n4\n\nAnzahlung\n\nStandard 69,90 €, wird voll angerechnet.\n\n5\n\nTermin buchen\n\nFrühester Termin nach etwa 7 Tagen Vorlauf. Zum Termin bringen Sie Ausweisdokument und Fahrzeugschein mit.\n\nDIREKT KAUFEN\n\nBestellen ohne Termin\n\nDIREKT KAUFEN\n\nSchlüssel nach Code\n\nCode eingeben, Stückzahl wählen, bestellen. Ihr Originalschlüssel bleibt bei Ihnen.\n\nA 30\nB 40\naußen\ninnen\nMitte Stulpschraube\n\nDIREKT KAUFEN\n\nSperrschließung\n\nMehrere Türen mit einem Schlüssel. Bauform, Maße und Schlüsselanzahl selbst zusammenstellen.\n\nES\nES\nGS\nES\nES\nGS\nHGS\nES\nGS\nES\nGS\nHGS\nGHS\n\nPROJEKTE\n\nGrößere Vorhaben planen wir strukturiert\n\nSchließanlagen, ele"
+    },
+    {
+      "pfad": "/schluessel-nach-vorlage",
+      "h1": "Schlüssel nach Foto oder Vorlage",
+      "erster": "Sie haben den Schlüssel — wir prüfen anhand Ihrer Fotos, ob wir ihn nachfertigen können.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": false
+      },
+      "eingabe": false,
+      "text": "Startseite\nSchlüssel nach Foto oder Vorlage\n\nGEFÜHRTE ANFRAGE\n\nSchlüssel nach Foto oder Vorlage\n\nSie haben den Schlüssel — wir prüfen anhand Ihrer Fotos, ob wir ihn nachfertigen können.\n\nFoto prüfen lassen\n\nSie fotografieren Ihren Schlüssel aus drei Richtungen und schicken uns die Bilder. Wir sagen Ihnen, ob eine Anfertigung möglich ist und was sie kostet. Einsenden müssen Sie Ihren Schlüssel zunächst nicht.\n\nABLAUF\nGeführte Anfrage\nAUFNAHMEN\n3\nORIGINAL\nBleibt bei Ihnen\nEINSENDUNG\nNur auf Aufforderung\n\n01\nSO LÄUFT IHR AUFTRAG AB\n\nVon der Anfrage bis zum Schlüssel\n\nWir prüfen Ihren Fall und melden uns mit Machbarkeit und Preis.\n\nIhr Original bleibt bei Ihnen\n\nFür die Anfrage müssen Sie den Originalschlüssel nicht einsenden. Wir arbeiten zuerst mit Ihren Fotos und bitten nur um das Original, wenn die Bilder für eine sichere Bestimmung nicht ausreichen. Wer den Schlüssel lieber gleich einschickt, meldet die Einsendung an.\nFoto prüfen lassen\n01\nSchritt 1:\nFotos hochladen\n\nSie fotografieren den Schlüssel aus drei Richtungen und tragen ein, was auf ihm steht. Gibt es eine Sicherungskarte, fotografieren Sie auch die Karte. Das Formular führt Sie Schritt für Schritt und lässt sich am Smartphone bedienen.\n\n02\nSchritt 2:\nPrüfung und Ergebnis\n\nWir bestimmen Profil und Rohling, lesen Beschriftungen aus und klären, ob eine Nachfertigung nach Ihren Bildern möglich ist. Sie erhalten per E-Mail die Freigabe mit Preis, eine Rückfrage oder, wenn es nicht geht, eine Absage. Die Prüfung ist noch keine Fertigungszusage.\n\n03\nSchritt 3:\nAuftrag mit dem Zahlungslink\n\nMit der Freigabe erhalten Sie einen persönlichen Zahlungslink. Erst mit Ihrer Zahlung erteilen Sie den Auftrag.\n\n04\nSchritt 4:\nFertigung und Versand\n\nDanach fertigen wir und schicken den Schlüssel zu Ihnen. Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und Vorgangsnummer in der Freigabe; vorher senden Sie bitte nichts ein.\n\n02\nVORBEREITUNG\n\nDiese drei Aufnahmen brauchen wir\n\nScharf, gut ausgeleuchtet, formatfüllend und ohne Blitzreflexe. Prägungen müssen lesbar sein.\n\n01 · FOTO\n\nVorderseite\n\nDer Schlüssel flach von oben, vollständig im Bild. Kopf und Bart müssen zusammen zu sehen sein.\n\n02 · FOTO\n\nRückseite\n\nDerselbe Schlüssel gewendet. Viele Schlüssel tragen nur auf einer Seite eine Beschriftung.\n\n03 · FOTO\n\nSpitze und Profil\n\nVon vorne auf die Spitze fotografiert. Aus dieser Ansicht erkennen wir den Profilquerschnitt und damit den passenden Rohling.\n\nNicht jedes Foto ist ablesbar. Reichen die"
+    },
+    {
+      "pfad": "/schluessel-einschicken",
+      "h1": "Schlüssel einschicken",
+      "erster": "SCHLÜSSEL NACH FOTO ODER VORLAGE",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": false
+      },
+      "eingabe": false,
+      "text": "Startseite\nSchlüssel nach Foto oder Vorlage\nSchlüssel einschicken\n\nSCHLÜSSEL NACH FOTO ODER VORLAGE\n\nSchlüssel einschicken\n\nSchlüsseldienst online, ohne Anfahrt: Einsendung anmelden, Begleitschein ausdrucken, Schlüssel einschicken. Original und Kopien kommen zu Ihnen zurück.\n\nEinsendung anmelden\nErst Foto prüfen lassen\n\nKein Schlüsseldienst in der Nähe oder keine Zeit für den Weg? Schicken Sie Ihren Schlüssel aus ganz Deutschland an unsere Werkstatt. Oft genügen auch Fotos: Dann lassen Sie ihn zuerst prüfen und behalten ihn so lange.\n\n01\nSO LÄUFT IHR AUFTRAG AB\n\nVom Umschlag zurück zu Ihnen\n\nOhne Anfahrt, aus ganz Deutschland. Die Rücksendung geht an eine Anschrift in Deutschland.\n\nOft genügen Fotos\n\nLassen Sie Ihren Schlüssel zuerst nach Fotos prüfen, dann bleibt er bei Ihnen. Reichen die Bilder nicht, bitten wir Sie um das Original. Foto prüfen lassen\n\nBitte nur mit Begleitschein einschicken\n\nOhne Begleitschein können wir eine Sendung keinem Auftrag zuordnen. Eine Prüfung ist noch keine Zusage zur Anfertigung.\nEinsendung anmelden\n01\nSchritt 1:\nBegleitschein erstellen\n\nName und Anschrift eingeben, Begleitschein ausdrucken.\n\n02\nSchritt 2:\nEinschicken\n\nSchlüssel mit Begleitschein in einen Umschlag.\n\n03\nSchritt 3:\nPrüfung und Anfertigung\n\nWir prüfen den Schlüssel und nennen Ihnen den Preis. Nach Ihrer Zahlung fertigen wir die Kopie.\n\n04\nSchritt 4:\nRückversand\n\nOriginal und Kopie kommen zu Ihnen zurück.\n\n02\nVERSAND\n\nVersichert oder unversichert\n\nSie drucken den Begleitschein aus und frankieren den Umschlag selbst; das Porto zahlen Sie bei der Post.\n\nVersichert\n\nEmpfohlen: als Einschreiben, 4,45 € bei der Post, Haftung bis 25 €.\n\nUnversichert\n\nAls Großbrief, 1,80 € bei der Post, ohne Haftung bei Verlust.\n\nPortopreise: Deutsche Post, Preise ab 1.1.2026: Einschreiben 4,45 €, Großbrief 1,80 €\n\n03\nWOHIN\n\nAn unsere Werkstatt\n\nDie Anschrift steht auch auf Ihrem Begleitschein, zusammen mit Ihrer Vorgangsnummer.\n\nWerkstatt und Abholung\nSCHLÜSSELMACHER24 – Inhaber Mina Saad\nLanggasse 70\n35576 Wetzlar\nWas in den Umschlag gehört\nDer Begleitschein mit Ihrer Vorgangsnummer und Ihrer Rücksendeanschrift.\nNur die betreffenden Schlüssel, ohne Schlüsselring und Anhänger.\nEin gepolsterter Umschlag, damit der Schlüssel ihn nicht durchstößt.\nBei Schlüsseln mit Sicherungskarte: eine Kopie der Karte, falls Sie bei der Anmeldung kein Foto hochgeladen haben. Die Karte selbst behalten Sie.\n\n04\nRÜCKSENDUNG\n\nSicher hin und zurück\n\nVersand mit Sendungsverfolgung\n\nWählen Sie einen versiche"
+    },
+    {
+      "pfad": "/schluessel-einschicken/anmelden",
+      "h1": "Einsendung anmelden",
+      "erster": "Fünf Schritte: Schlüssel, Nachweis, Versand und Rücksendeanschrift. Danach drucken Sie den Begleitschein aus und schicken den Schlüssel ein.",
+      "kostenGenannt": false,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": false
+      },
+      "eingabe": true,
+      "text": "Startseite\nSchlüssel einschicken\nAnmelden\n\nGEFÜHRTE ANFRAGE\n\nEinsendung anmelden\n\nFünf Schritte: Schlüssel, Nachweis, Versand und Rücksendeanschrift. Danach drucken Sie den Begleitschein aus und schicken den Schlüssel ein.\n\nBitte dieses Feld leer lassen\n\nSchritt 1 von 5 · Schlüssel\n\n1.\nSchlüssel\n2.\nNachweis\n3.\nVersand\n4.\nKontakt\n5.\nAbsenden\nWas schicken Sie ein?\n\nWie viele Schlüssel im Umschlag liegen und wie viele Kopien Sie brauchen.\n\nSCHLÜSSEL IM UMSCHLAG\n\nSchlüssel im Umschlag verringern\nSchlüssel im Umschlag erhöhen\n\nGEWÜNSCHTE KOPIEN\n\nGewünschte Kopien verringern\nGewünschte Kopien erhöhen\n\nAutoschlüssel und Transponder schicken Sie bitte nicht hier ein; dafür gibt es den Bereich Autoschlüssel.\n\nBeschriftung auf dem Schlüssel (freiwillig)\n\nNummer oder Hersteller, falls etwas eingeprägt ist.\n\nHinweis (freiwillig)\n\nZum Beispiel, ob das Schloss schwergängig ist oder was zusammengehört.\n\nWeiter\n\nLieber erst prüfen lassen?\nFoto prüfen lassen, ohne den Schlüssel aus der Hand zu geben"
+    },
+    {
+      "pfad": "/beratung",
+      "h1": "Beratung mit Rückruf",
+      "erster": "Für alle Anliegen, die nicht zu einem der anderen Wege passen. Schildern Sie Ihr Anliegen kurz, wir rufen Sie zurück.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": true,
+      "text": "Startseite\nService und Termin\nBeratung\n\nBERATUNG\n\nBeratung mit Rückruf\n\nFür alle Anliegen, die nicht zu einem der anderen Wege passen. Schildern Sie Ihr Anliegen kurz, wir rufen Sie zurück.\n\nRückruf anfragen\n\n01\nSO LÄUFT IHR AUFTRAG AB\n\nVom Anliegen bis zur Lösung\nRückruf anfragen\n1\n\nSchritt 1:\nAnliegen schildern\n\nEin paar Sätze und gern ein Foto genügen.\n\n2\n\nSchritt 2:\nRückruf\n\nWir rufen Sie zurück, nach Möglichkeit in dem Zeitraum, den Sie nennen.\n\n3\n\nSchritt 3:\nLösung\n\nSie erhalten einen Vorschlag mit Preis oder eine Anfrage wird angelegt.\n\n02\nWEGWEISER\n\nThemen mit eigenem Weg\n\nFür diese Themen gibt es eine eigene Seite mit einem passenden Weg. Dort finden Sie auch die Anfrage für Ihr Anliegen.\n\nElektronische Schließsysteme\n\nZutritt mit Code, Chip oder Transponder, zum Beispiel per NFC oder RFID.\n\nTüren und Schließtechnik\n\nSchlösser, Zylinder und Beschläge, die zu Ihrer Tür passen.\n\nSicherheitstechnik mit Einbruchschutz, Alarm, Video und Schlüsselaufbewahrung\n\nTechnik für Ihr Objekt, mit Beratung und einem Angebot, das alle Kosten nennt.\n\nSchließanlage planen\n\nMehrere Türen, ein System: Wir planen die Schließanlage mit Ihnen.\n\n03\nRÜCKRUF\n\nRückruf anfragen\n\nSie nennen Ihr Anliegen und einen Zeitraum. Wir rufen Sie unter Ihrer Telefonnummer an.\n\nBitte dieses Feld leer lassen\n\nSchritt 1 von 3 · Anliegen\n\n1.\nAnliegen\n2.\nRückruf\n3.\nAbsenden\nIhr Anliegen\n\nWorum geht es? Ein Foto ist freiwillig.\n\nThema*\n(Pflichtangabe)\nBitte wählen\nElektronische Schließsysteme\nTüren und Schließtechnik\nSicherheitstechnik\nSchlüsselaufbewahrung\nEtwas anderes\nIhr Anliegen*\n(Pflichtangabe)\n\nMindestens 10 Zeichen, höchstens 2000.\n\nFotos (freiwillig)\n\nBis zu drei Fotos, zum Beispiel von der Tür, vom Schlüssel oder vom Schloss.\n\nSO SOLLTE DAS FOTO AUSSEHEN\n\nFoto aufnehmen\nDatei auswählen\n\nFotos bis 12 MB · PDF bis 4 MB · bis zu 3 Dateien\n\nBitte wählen Sie ein Thema und beschreiben Sie Ihr Anliegen (10 bis 2000 Zeichen).\n\nWeiter"
+    },
+    {
+      "pfad": "/service-und-termin/terminstatus",
+      "h1": "Stand Ihres Vorgangs",
+      "erster": "Geben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.",
+      "kostenGenannt": false,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": false
+      },
+      "eingabe": true,
+      "text": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen"
+    }
+  ],
+  "stolpersteine": [
+    {
+      "art": "feld_fehlt",
+      "text": "Feld Stra(ß|ss)e auf keinem Schritt gefunden",
+      "seite": "/beratung"
+    }
+  ],
+  "stopps": [
+    {
+      "grund": "Einsendung-Anmeldung bis vor Absenden",
+      "seite": "/schluessel-einschicken/anmelden",
+      "bild": "bilder/rentnerin-desktop-01-stopp.jpg"
+    },
+    {
+      "grund": "Beratung mit Rückruf bis vor Absenden",
+      "seite": "/beratung",
+      "bild": "bilder/rentnerin-desktop-02-stopp.jpg"
+    }
+  ],
+  "befunde": {
+    "pflichtfelder": [
+      "Auswahlgruppe ohne Vorauswahl = Weiß ich nicht Wir prüfen das anhand Ihrer Fotos u",
+      "Auswahlgruppe ohne Vorauswahl = Versichert Empfohlen: als Einschreiben, 4,45 € bei",
+      "Auswahlgruppe ohne Vorauswahl = Vormittags"
+    ],
+    "letzterSchritt_1": [
+      "5.Absenden"
+    ],
+    "auswahl": [
+      "Thema|Anliegen|Art = Schlüsselaufbewahrung"
+    ],
+    "letzterSchritt_2": [
+      "Rückruf",
+      "3.Absenden",
+      "Rückruf anfragen"
+    ],
+    "terminstatus": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen\n\nNichts gefunden\n\nZu viele Anfragen in kurzer Zeit. Bitte warten Sie einige Minuten und versuchen Sie es erneut. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.",
+    "terminstatusAbgesendet": true
+  },
+  "konsole": [],
+  "bilder": [
+    "bilder/rentnerin-desktop-03-terminstatus.jpg"
+  ],
+  "posts": [
+    {
+      "seite": "/schluessel-einschicken/anmelden",
+      "url": "/schluessel-einschicken/anmelden",
+      "aktion": true,
+      "laenge": 2,
+      "kopf": "[]",
+      "nachKnopf": null
+    },
+    {
+      "seite": "/beratung",
+      "url": "/beratung",
+      "aktion": true,
+      "laenge": 2,
+      "kopf": "[]",
+      "nachKnopf": "Weiter"
+    },
+    {
+      "seite": "/service-und-termin/terminstatus",
+      "url": "/service-und-termin/terminstatus",
+      "aktion": true,
+      "laenge": 43,
+      "kopf": "[\"SM24-T-2026-9999\",\"<mail>",
+      "nachKnopf": "Weiter"
+    }
+  ],
+  "fehler": null,
+  "formularSchritte": 6,
+  "letzterKnopf": [
+    "Rückruf",
+    "3.Absenden",
+    "Rückruf anfragen"
+  ],
+  "ms": 11907,
+  "zielErreicht": true,
+  "abgefangen": [
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/schluessel-einschicken/anmelden",
+      "laenge": 2
+    },
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/beratung",
+      "laenge": 2
+    }
+  ],
+  "fremdAbgebrochen": 0,
+  "formularSendungen": [
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/schluessel-einschicken/anmelden",
+      "laenge": 2
+    },
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/beratung",
+      "laenge": 2
+    }
+  ]
+}

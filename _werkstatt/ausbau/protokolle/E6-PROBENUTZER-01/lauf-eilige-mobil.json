@@ -1,0 +1,356 @@
+{
+  "id": "eilige-mobil",
+  "persona": "Herr Testeilig",
+  "geraet": "mobil 390×844",
+  "tippsBisEingabe": 3,
+  "tippsBisZiel": 39,
+  "schritte": [
+    {
+      "tipp": 1,
+      "knopf": "Autoschlüssel",
+      "von": "/"
+    },
+    {
+      "tipp": 3,
+      "knopf": "Autoschlüssel-Termin anfragen",
+      "von": "/autoschluessel"
+    },
+    {
+      "tipp": 31,
+      "knopf": "Motorradschlüssel",
+      "von": "/autoschluessel/anfrage"
+    },
+    {
+      "tipp": 32,
+      "knopf": "SCHLÜSSELMACHER 24",
+      "von": "/motorradschluessel"
+    },
+    {
+      "tipp": 33,
+      "knopf": "Schlüsselgehäuse",
+      "von": "/"
+    },
+    {
+      "tipp": 34,
+      "knopf": "Schlüssel nach Code",
+      "von": "/autoschluessel/gehaeuse"
+    },
+    {
+      "tipp": 35,
+      "knopf": "Nach Code bestellen : Büroschrank und Rollcontainer",
+      "von": "/schluessel-nach-code"
+    },
+    {
+      "tipp": 36,
+      "knopf": "In den Warenkorb",
+      "von": "/schluessel-nach-code/ms-01"
+    },
+    {
+      "tipp": 37,
+      "knopf": "1 Warenkorb, 1 Artikel",
+      "von": "/schluessel-nach-code/ms-01"
+    },
+    {
+      "tipp": 38,
+      "knopf": "Terminstatus",
+      "von": "/warenkorb"
+    },
+    {
+      "tipp": 39,
+      "knopf": "Stand abrufen",
+      "von": "/service-und-termin/terminstatus",
+      "formularSchritt": true
+    }
+  ],
+  "seiten": [
+    {
+      "pfad": "/",
+      "h1": "Wobei können wir Ihnen helfen?",
+      "erster": "Wir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": false,
+      "text": "Wobei können wir Ihnen helfen?\n\nWir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland.\n\nAutoschlüssel\nMotorradschlüssel\nSchlüsselgehäuse\nSchlüssel nach Code\nSchlüssel nach Foto\nSchlüssel einschicken\nSperrschließung\nein Schlüssel für alle Türen\nSchließanlage\nwer öffnet welche Tür\nElektronisch schließen\nSicherheitstechnik\nSchlüsseldienst\nvor Ort, mit Termin\nBeratung\n\nLieber anrufen:\n06441 8056279\n\nAUTOSCHLÜSSEL\n\nAutoschlüssel nachmachen und programmieren\n\nTermin in der Werkstatt in Wetzlar, für Mittelhessen und alle, die anreisen.\n\nPROFILSCHNITT\n1\n2\n3\n4\n5\n6\nHalm · 6 Einschnitte\nRohling\ngefrästes Profil\n\nRohling\ngefrästes Profil\n\nAutoschlüssel-Termin anfragen\nSchlüssel nach Code bestellen\nANZAHLUNG\n69,90 €\nVORLAUF\nca. 7 Tage\nVERSAND\nbundesweit\nWerkstatt und Abholung: Langgasse 70, 35576 Wetzlar · 06441 8056279\n\nSCHWERPUNKT AUTOSCHLÜSSEL\n\nSo läuft Ihr Autoschlüssel-Auftrag ab\n\nVom Fahrzeug bis zum Termin. Sie geben nur an, was für Ihr Fahrzeug zählt.\n\nTermin anfragen\nAlle Leistungen\nWARUM BEI UNS\n\nFachbetrieb mit eigener Werkstatt\n\nWir fertigen im eigenen Betrieb an unseren Maschinen, nicht unterwegs im Fahrzeug.\n\nErst prüfen, dann buchen\n\nWir sagen Ihnen vor der Terminbestätigung, was machbar ist und was es kostet. Keine Überraschung vor Ort.\n\nNachvollziehbare Abläufe\n\nJeder Vorgang bekommt eine Nummer. Den Stand können Sie jederzeit selbst abrufen.\n\nSichere Zahlung\n\nDie Anzahlung wird vollständig auf den Gesamtpreis angerechnet.\n\nHinter SCHLÜSSELMACHER24 steht die Schlüssel Schmiede in Wetzlar mit Werkstatt, fachlicher Beratung und eigener Fertigung.\n\n1\n\nFahrzeug wählen\n\nMarke, Modell, Baujahr und Schlüsselart.\n\n2\n\nFotos hochladen\n\nSchlüssel aus drei Richtungen und den Fahrzeugschein.\n\n3\n\nPreis oder Prüfung\n\nFester Preis, Preisrahmen oder Hinweis auf manuelle Prüfung.\n\n4\n\nAnzahlung\n\nStandard 69,90 €, wird voll angerechnet.\n\n5\n\nTermin buchen\n\nFrühester Termin nach etwa 7 Tagen Vorlauf. Zum Termin bringen Sie Ausweisdokument und Fahrzeugschein mit.\n\nDIREKT KAUFEN\n\nBestellen ohne Termin\n\nDIREKT KAUFEN\n\nSchlüssel nach Code\n\nCode eingeben, Stückzahl wählen, bestellen. Ihr Originalschlüssel bleibt bei Ihnen.\n\nA 30\nB 40\naußen\ninnen\nMitte Stulpschraube\n\nDIREKT KAUFEN\n\nSperrschließung\n\nMehrere Türen mit einem Schlüssel. Bauform, Maße und Schlüsselanzahl selbst zusammenstellen.\n\nES\nES\nES\nES\nHS\n\nPROJEKTE\n\nGrößere Vorhaben planen wir strukturiert\n\nSchließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik erfassen wir über geführte Kon"
+    },
+    {
+      "pfad": "/autoschluessel",
+      "h1": "Autoschlüssel",
+      "erster": "Nachmachen, programmieren, reparieren, mit festem Termin in Wetzlar. Für Mittelhessen und alle, die anreisen.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": false,
+      "text": "Startseite\nAutoschlüssel\n\nTHEMENWELT AUTOSCHLÜSSEL\n\nAutoschlüssel\n\nNachmachen, programmieren, reparieren, mit festem Termin in Wetzlar. Für Mittelhessen und alle, die anreisen.\n\n01\n\nMechanischer Schlüssel\n\n02\n\nFunkschlüssel\n\n03\n\nKlappschlüssel\n\n04\n\nSmart Key\n\nSchematische Darstellung, nicht maßstäblich.\nTermin anfragen\nABLAUF\nTermin mit Anzahlung\nANZAHLUNG\n69,90 €\nVORLAUF\nca. 7 Tage\nWERKSTATT\nWetzlar\n\nABLAUF\n\nSo läuft Ihr Auftrag ab: 5 Schritte zum Termin\n\nOb Zweitschlüssel, Ersatz nach Verlust, Programmierung oder Reparatur: Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder Preisrahmen. Erst dann buchen Sie einen Termin. Ihre Eingaben bleiben erhalten, wenn Sie zwischendurch abbrechen.\n\nTermin anfragen\nErst Fahrzeug nachschlagen\n1\n\nSchritt 1:\nFahrzeug wählen\n\nMarke, Modell, Baujahr und Schlüsselart. Wir fragen nur ab, was für Ihr Fahrzeug zählt.\n\n2\n\nSchritt 2:\nFotos hochladen\n\nIhren Schlüssel aus drei Richtungen und den Fahrzeugschein.\n\n3\n\nSchritt 3:\nPreis oder Prüfung\n\nSie erhalten einen festen Preis, einen Preisrahmen oder den Hinweis auf eine manuelle Prüfung.\n\n4\n\nSchritt 4:\nAnzahlung\n\nStandard 69,90 €. Der Betrag wird vollständig auf den Gesamtpreis angerechnet.\n\n5\n\nSchritt 5:\nTermin buchen\n\nDer früheste Termin liegt etwa 7 Tage in der Zukunft, weil wir Ihren Schlüssel vorher beschaffen. Zum Termin bringen Sie Ausweisdokument und Fahrzeugschein mit.\n\nAnzahlung und Vorlauf\n\nDie Anzahlung beträgt standardmäßig 69,90 € und wird vollständig auf den Gesamtpreis angerechnet. Der Vorlauf von etwa 7 Tagen entsteht durch die Beschaffung des passenden Schlüssels. Für einzelne Fahrzeuge und Leistungen können abweichende Werte gelten. Diese sehen Sie im Ablauf, bevor Sie etwas verbindlich buchen.\n\nAUFBAU\n\nWas in Ihrem Autoschlüssel steckt\n\nEin Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem mechanischen Bart und der Elektronik. Davon hängen Aufwand, Termin und Preis ab.\n\n1\n2\n3\n4\n5\nSchematische Darstellung, nicht maßstäblich.\n1\nSchlüsselbart\n\nDer gefräste Bart öffnet die Tür. Für den Motorstart braucht es meist mehr.\n\nSchlüsselbart fräsen\nAutoschlüssel kopieren\n\n2\nTransponder\n\nEr meldet den Schlüssel bei der Wegfahrsperre an. Ohne angelernten Transponder startet das Fahrzeug nicht; zum Anlernen muss das Fahrzeug vor Ort sein.\n\nProgrammieren und anlernen\n\n3\nPlatine mit Sender\n\nDer Sender öffnet und schließt das Fahrzeug per Taste.\n\nFunkschlüssel\n\n4\nBatterie\n\nBei den meisten Fahrzeugen bleibt die Programmierun"
+    },
+    {
+      "pfad": "/autoschluessel/anfrage",
+      "h1": "Autoschlüssel anfragen",
+      "erster": "Fahrzeug angeben, Fotos hochladen, Preis sehen, Termin buchen.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": false
+      },
+      "eingabe": true,
+      "text": "Startseite\nAutoschlüssel\nAnfrage mit Termin\n\nTERMIN MIT ANZAHLUNG\n\nAutoschlüssel anfragen\nBitte dieses Feld leer lassen\n\nSchritt 1 von 5 · Fahrzeug wählen\n\nWelches Fahrzeug haben Sie?\n\nGeben Sie Marke und Modell ein oder wählen Sie die Marke. So sehen Sie die passenden Schlüsselarten und Preise.\n\nMarke und Modell\n\nZum Beispiel „VW Golf“ oder „Opel Corsa“. Tippfehler sind kein Problem.\n\nODER MARKE WÄHLEN\n\nVolkswagen\n6 Modelle\nBMW\n5 Modelle\nMercedes-Benz\n5 Modelle\nAudi\n5 Modelle\nOpel\n4 Modelle\nFord\n4 Modelle\nŠkoda\n4 Modelle\nSEAT\n3 Modelle\nRenault\n4 Modelle\nToyota\n3 Modelle\nFiat\n3 Modelle\nHyundai\n3 Modelle\n\nMein Fahrzeug ist nicht dabei: Anfrage mit Fahrzeugschein und Schlüsselfoto\n\nQuelle der Marken und Modellreihen: Kraftfahrt-Bundesamt (KBA), FZ 12, Stand 1.1.2026, Datenlizenz Deutschland, Namensnennung, Version 2.0\n\nBitte wählen Sie zuerst Ihr Fahrzeug.\n\nWeiter\n\nWEITERFÜHREND\n\nPassende Seiten zu diesem Ablauf\n\nFalls Sie vor dem Absenden noch etwas nachlesen möchten.\n\nBereich Autoschlüssel\nAlle Leistungen rund um Fahrzeugschlüssel im Überblick.\nMarken und Modelle\nWas bei Ihrem Fahrzeug technisch möglich ist.\nSchlüssel verloren – was tun?\nDie sinnvolle Reihenfolge, wenn kein Schlüssel mehr da ist.\nTerminstatus abrufen\nStand eines bestehenden Vorgangs mit Nummer und E-Mail-Adresse.\nDatenschutz\nWas mit Ihren Fotos, Unterlagen und Kontaktdaten geschieht."
+    },
+    {
+      "pfad": "/autoschluessel/anfrage",
+      "h1": "Autoschlüssel anfragen",
+      "erster": "Fahrzeug angeben, Fotos hochladen, Preis sehen, Termin buchen.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": true,
+      "text": "Startseite\nAutoschlüssel\nAnfrage mit Termin\n\nTERMIN MIT ANZAHLUNG\n\nAutoschlüssel anfragen\nBitte dieses Feld leer lassen\n\nSchritt 2 von 5 · Fotos hochladen\n\nZulassungsbescheinigung Teil I\n\nWir fertigen Fahrzeugschlüssel nur für Berechtigte. Dafür brauchen wir einen Nachweis.\n\nFragen zum Fahrzeugschein? Rufen Sie uns an: 06441 8056279\n\nKeine Fotos zur Hand?\n\nSchicken Sie uns eine Anfrage ohne Fotos. Wir melden uns und sagen Ihnen, welche Unterlagen wir brauchen.\n\nAnfrage ohne Fotos senden\n\nZulassungsbescheinigung Teil I (Fahrzeugschein)*\n\nAls Foto oder als PDF. Bitte vollständig und lesbar, alle vier Ecken im Bild.\n\nSO SOLLTE DAS FOTO AUSSEHEN\n\nFoto aufnehmen\nDatei auswählen\n\nFotos bis 12 MB · PDF bis 4 MB\n\ntestbild-erfunden.png\ntestbild-erfunden.png entfernen\nDie Datei konnte nicht hochgeladen werden.\nErneut versuchen\n\ntestbild-erfunden.png: Die Datei konnte nicht hochgeladen werden.\n\nZweck und Aufbewahrung\n\nWir fertigen Fahrzeugschlüssel ausschließlich für Berechtigte. Die Zulassungsbescheinigung dient allein diesem Nachweis und der Zuordnung Ihres Fahrzeugs. Wir bewahren sie höchstens 90 Tage nach dem Hochladen auf und löschen sie danach. Eine Weitergabe zu anderen Zwecken findet nicht statt.\n\nAngaben, die für diesen Zweck nicht nötig sind, dürfen Sie vor dem Hochladen unkenntlich machen.\n\nIch bin berechtigt, für dieses Fahrzeug einen Schlüssel anfertigen zu lassen.\nHalterin, Halter oder von ihnen beauftragt. Den Nachweis können wir beim Termin erneut sehen wollen.\n\nBitte laden Sie die Zulassungsbescheinigung hoch und bestätigen Sie Ihre Berechtigung.\n\nZurück\nWeiter\n\nWEITERFÜHREND\n\nPassende Seiten zu diesem Ablauf\n\nFalls Sie vor dem Absenden noch etwas nachlesen möchten.\n\nBereich Autoschlüssel\nAlle Leistungen rund um Fahrzeugschlüssel im Überblick.\nMarken und Modelle\nWas bei Ihrem Fahrzeug technisch möglich ist.\nSchlüssel verloren – was tun?\nDie sinnvolle Reihenfolge, wenn kein Schlüssel mehr da ist.\nTerminstatus abrufen\nStand eines bestehenden Vorgangs mit Nummer und E-Mail-Adresse.\nDatenschutz\nWas mit Ihren Fotos, Unterlagen und Kontaktdaten geschieht."
+    },
+    {
+      "pfad": "/motorradschluessel",
+      "h1": "Motorradschlüssel nachmachen lassen",
+      "erster": "Anfrage mit Fahrzeugschein und Foto Ihres Schlüssels. Wir prüfen Ihre Angaben und melden uns mit Preis und Termin.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": false,
+      "text": "Startseite\nAutoschlüssel\nMotorradschlüssel\n\nAUTOSCHLÜSSEL\n\nMotorradschlüssel nachmachen lassen\n\nAnfrage mit Fahrzeugschein und Foto Ihres Schlüssels. Wir prüfen Ihre Angaben und melden uns mit Preis und Termin.\n\nAnfrage stellen\n\n01\nSO LÄUFT IHR AUFTRAG AB\n\nVom Fahrzeugschein bis zum Preis\nAnfrage stellen\n1\n\nSchritt 1:\nMotorrad angeben\n\nTyp und Baujahr eintragen.\n\n2\n\nSchritt 2:\nFotos hochladen\n\nFahrzeugschein und Ihren Schlüssel fotografieren.\n\n3\n\nSchritt 3:\nChip im Schlüssel klären\n\nJa, nein oder weiß nicht: Ein Motorrad mit Wegfahrsperre startet ohne Chip nicht.\n\n4\n\nSchritt 4:\nPreis erhalten\n\nWir prüfen und melden uns mit Preis und Termin.\n\n02\nWEGFAHRSPERRE\n\nChip im Schlüssel\n\nEin Motorrad mit Wegfahrsperre springt ohne den passenden Chip im Schlüssel nicht an. Deshalb fragen wir, ob Ihr Schlüssel einen Chip hat. Wenn Sie es nicht wissen, wählen Sie „weiß nicht“; wir klären es anhand Ihrer Fotos."
+    },
+    {
+      "pfad": "/",
+      "h1": "Wobei können wir Ihnen helfen?",
+      "erster": "Wir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": false,
+      "text": "Wobei können wir Ihnen helfen?\n\nWir fertigen in Wetzlar. Schlüssel nach Code schicken wir in ganz Deutschland.\n\nAutoschlüssel\nMotorradschlüssel\nSchlüsselgehäuse\nSchlüssel nach Code\nSchlüssel nach Foto\nSchlüssel einschicken\nSperrschließung\nein Schlüssel für alle Türen\nSchließanlage\nwer öffnet welche Tür\nElektronisch schließen\nSicherheitstechnik\nSchlüsseldienst\nvor Ort, mit Termin\nBeratung\n\nLieber anrufen:\n06441 8056279\n\nAUTOSCHLÜSSEL\n\nAutoschlüssel nachmachen und programmieren\n\nTermin in der Werkstatt in Wetzlar, für Mittelhessen und alle, die anreisen.\n\nPROFILSCHNITT\n1\n2\n3\n4\n5\n6\nHalm · 6 Einschnitte\nRohling\ngefrästes Profil\n\nRohling\ngefrästes Profil\n\nAutoschlüssel-Termin anfragen\nSchlüssel nach Code bestellen\nANZAHLUNG\n69,90 €\nVORLAUF\nca. 7 Tage\nVERSAND\nbundesweit\nWerkstatt und Abholung: Langgasse 70, 35576 Wetzlar · 06441 8056279\n\nSCHWERPUNKT AUTOSCHLÜSSEL\n\nSo läuft Ihr Autoschlüssel-Auftrag ab\n\nVom Fahrzeug bis zum Termin. Sie geben nur an, was für Ihr Fahrzeug zählt.\n\nTermin anfragen\nAlle Leistungen\nWARUM BEI UNS\n\nFachbetrieb mit eigener Werkstatt\n\nWir fertigen im eigenen Betrieb an unseren Maschinen, nicht unterwegs im Fahrzeug.\n\nErst prüfen, dann buchen\n\nWir sagen Ihnen vor der Terminbestätigung, was machbar ist und was es kostet. Keine Überraschung vor Ort.\n\nNachvollziehbare Abläufe\n\nJeder Vorgang bekommt eine Nummer. Den Stand können Sie jederzeit selbst abrufen.\n\nSichere Zahlung\n\nDie Anzahlung wird vollständig auf den Gesamtpreis angerechnet.\n\nHinter SCHLÜSSELMACHER24 steht die Schlüssel Schmiede in Wetzlar mit Werkstatt, fachlicher Beratung und eigener Fertigung.\n\n1\n\nFahrzeug wählen\n\nMarke, Modell, Baujahr und Schlüsselart.\n\n2\n\nFotos hochladen\n\nSchlüssel aus drei Richtungen und den Fahrzeugschein.\n\n3\n\nPreis oder Prüfung\n\nFester Preis, Preisrahmen oder Hinweis auf manuelle Prüfung.\n\n4\n\nAnzahlung\n\nStandard 69,90 €, wird voll angerechnet.\n\n5\n\nTermin buchen\n\nFrühester Termin nach etwa 7 Tagen Vorlauf. Zum Termin bringen Sie Ausweisdokument und Fahrzeugschein mit.\n\nDIREKT KAUFEN\n\nBestellen ohne Termin\n\nDIREKT KAUFEN\n\nSchlüssel nach Code\n\nCode eingeben, Stückzahl wählen, bestellen. Ihr Originalschlüssel bleibt bei Ihnen.\n\nA 30\nB 40\naußen\ninnen\nMitte Stulpschraube\n\nDIREKT KAUFEN\n\nSperrschließung\n\nMehrere Türen mit einem Schlüssel. Bauform, Maße und Schlüsselanzahl selbst zusammenstellen.\n\nES\nES\nES\nES\nHS\n\nPROJEKTE\n\nGrößere Vorhaben planen wir strukturiert\n\nSchließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik erfassen wir über geführte Kon"
+    },
+    {
+      "pfad": "/autoschluessel/gehaeuse",
+      "h1": "Autoschlüssel-Gehäuse erneuern",
+      "erster": "Anfrage mit Fahrzeug, Foto Ihres Schlüssels und Fahrzeugschein. Wir prüfen Ihre Angaben und melden uns mit Preis und Ablauf.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": false,
+      "text": "Startseite\nAutoschlüssel\nGehäuse\n\nAUTOSCHLÜSSEL\n\nAutoschlüssel-Gehäuse erneuern\n\nAnfrage mit Fahrzeug, Foto Ihres Schlüssels und Fahrzeugschein. Wir prüfen Ihre Angaben und melden uns mit Preis und Ablauf.\n\nAnfrage stellen\n\n01\nSO LÄUFT IHR AUFTRAG AB\n\nVom Fahrzeug bis zum Preis\nAnfrage stellen\n1\n\nSchritt 1:\nFahrzeug und Fotos senden\n\nFahrzeug angeben, Schlüssel und Fahrzeugschein fotografieren.\n\n2\n\nSchritt 2:\nPreis erhalten\n\nWir prüfen Ihre Angaben und melden uns mit dem Preis und dem weiteren Ablauf.\n\n3\n\nSchritt 3:\nSchlüssel einschicken\n\nNach Ihrer Zusage schicken Sie den Schlüssel an unsere Werkstatt.\n\n4\n\nSchritt 4:\nRückversand\n\nIhr Schlüssel kommt im neuen Gehäuse zurück.\n\n02\nGEHÄUSE\n\nWann ein neues Gehäuse hilft\n\nIst das Gehäuse gebrochen oder klemmen die Tasten, tauschen wir die Hülle; die vorhandene Elektronik bleibt erhalten. Ob das bei Ihrem Schlüssel geht, sehen wir an Ihren Fotos.\n\nFunkschlüssel und Gehäuse im Überblick"
+    },
+    {
+      "pfad": "/schluessel-nach-code",
+      "h1": "Schlüssel nach Code",
+      "erster": "Code eingeben, bestellen, fertig. Ohne Einsendung des Originals.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": true,
+      "text": "Startseite\nSchlüssel nach Code\n\nDIREKT KAUFEN\n\nSchlüssel nach Code\n\nCode eingeben, bestellen, fertig. Ohne Einsendung des Originals.\n\nAm Schlüsselkopf\nNach Code bestellen\n\nIhr Originalschlüssel bleibt bei Ihnen\n\nBei allen Artikeln in diesem Bereich ist keine Einsendung des Originalschlüssels nötig. Wir fertigen den Schlüssel allein anhand des Codes, den Sie bei der Bestellung angeben. Sie können Ihr Schloss also weiter benutzen, während der Nachschlüssel entsteht.\n\nKein Code vorhanden? Dann geht es über Schlüssel nach Vorlage weiter.\n\n01\nCODELINIEN\n\nPassende Codelinie finden\n\nViele Schlösser tragen einen aufgedruckten oder eingeprägten Code. Mit diesem Code fertigen wir den passenden Schlüssel an — Sie behalten Ihren Originalschlüssel.\n\nAlle Preise inkl. 19 % USt., zzgl. Versandkosten\n\nSuche\n\nZum Beispiel Briefkasten, Spind, eine Serienkennung oder der Code von Ihrem Schloss — dann erscheinen die Linien, deren Codeformat passt.\n\n52 von 52 Codelinien\n\nFilter anzeigen\nMS\n· Möbel- und Büroschloss\nSP\n· Spind- und Garderobenschloss\nBK\n· Briefkasten- und Postanlage\nZY\n· Zylinder- und Türschloss\nVH\n· Vorhänge- und Hebelschloss\nTS\n· Technik- und Zählerschrank\nFE\n· Fenster- und Balkontechnik\nFA\n· Fahrzeugaufbau und Anhänger\nMA\n· Maschine und Sonderanwendung\nGO\n· Gewerbe und Außenanlage\nMS · MÖBEL- UND BÜROSCHLOSS\n\nMöbelschlüssel · Preis je Stück · Staffelpreis ab 3 Stück\n\nMS-01\nBüroschrank und Rollcontainer\n3 bis 4 Ziffern\n8,00 €\nMS-02\nSchreibtisch und Sideboard\n1 bis 2 Buchstaben, dann 3 Ziffern\n8,00 €\nMS-03\nAktenschrank und Registratur\n4 Ziffern\n8,00 €\nMS-04\nVitrine und Glasschrank\n1 Buchstabe, dann 2 bis 3 Ziffern\n8,00 €\nAlle 6 anzeigen\nSP · SPIND- UND GARDEROBENSCHLOSS\n\nSpindschlüssel · Preis je Stück · Staffelpreis ab 3 Stück\n\nSP-01\nUmkleidespind Sport und Verein\n3 bis 4 Ziffern\n8,00 €\nSP-02\nBetriebsspind und Sozialraum\n1 Buchstabe, dann 3 Ziffern\n8,00 €\nSP-03\nSchulspind und Schließfach\n2 Ziffern, Bindestrich, 3 Ziffern\n9,00 €\nSP-04\nGarderobenschrank Hotel und Gastronomie\n2 Buchstaben, dann 2 bis 3 Ziffern\n9,00 €\nAlle 5 anzeigen\nBK · BRIEFKASTEN- UND POSTANLAGE\n\nBriefkastenschlüssel · Preis je Stück · Staffelpreis ab 3 Stück\n\nBK-01\nEinzelbriefkasten Hauswand\n3 bis 5 Ziffern\n7,00 €\nBK-02\nBriefkastenanlage Mehrfamilienhaus\n1 Buchstabe, dann 4 Ziffern\n8,00 €\nBK-03\nPaketkasten und Zustellfach\n4 Ziffern, optional 1 Buchstabe\n8,00 €\nBK-04\nZeitungsrohr und Nebenfach\n3 Ziffern\n7,00 €\nAlle 5 anzeigen\nZY · ZYLINDER- UND TÜRSCHLOSS\n\nProfilschlüssel · Preis je Stück · Sta"
+    },
+    {
+      "pfad": "/schluessel-nach-code/ms-01",
+      "h1": "Büroschrank und Rollcontainer",
+      "erster": "Möbelschlüssel für Büroschrank und Rollcontainer, gefertigt nach dem Code, den Sie eingeben (3 bis 4 Ziffern). 8,00 € je Stück – Ihr Originalschlüssel bleibt bei Ihnen.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": true,
+      "text": "Startseite\nSchlüssel nach Code\nMöbel- und Büroschlösser\nBüroschrank und Rollcontainer\n\nMS-01 · DIREKT KAUFEN\n\nBüroschrank und Rollcontainer\n\nMöbelschlüssel für Büroschrank und Rollcontainer, gefertigt nach dem Code, den Sie eingeben (3 bis 4 Ziffern). 8,00 € je Stück – Ihr Originalschlüssel bleibt bei Ihnen.\n\nPROFILSCHNITT\n1\n2\n3\n4\n5\n6\nHalm · 6 Einschnitte\nRohling\ngefrästes Profil\nDARSTELLUNG ZUM BEISPIELCODE 0812 – KEINE ECHTE SCHLIESSUNG\nOhne Einsendung des Originalschlüssels\nMöbelschlüssel\nCodeformat:\n3 bis 4 Ziffern\nSchlüssel nach Code bestellen\n\nSie behalten Ihren Originalschlüssel. Wir fertigen allein nach dem Code, den Sie hier eintragen.\n\nSchlüsselcode*\n(Pflichtangabe)\nErklärung zu Wo steht der Code?\n\nDer Code passt zum erwarteten Format.\n\nErwartetes Format: 3 bis 4 Ziffern. Beispiel: 0812.\n\nDARSTELLUNG ZUM CODE – KEINE ECHTE SCHLIESSUNG\nStückzahl\nErklärung zu Staffelpreise\nStückzahl verringern\nStückzahl erhöhen\n\nHöchstens 20 Stück je Bestellung.\n\nStaffelpreise für Büroschrank und Rollcontainer — Serie MS-01: Preis je Stück nach Stückzahl.\nAb Stückzahl\tPreis je Stück\n1 Stück\n: gilt für Ihre Auswahl\n\t8,00 €\n3 Stück\t7,20 €\n5 Stück\t6,56 €\n\nFoto des Schlüssels (freiwillig)\n\nEin Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.\n\nSO SOLLTE DAS FOTO AUSSEHEN\n\nFoto aufnehmen\nAus Galerie wählen\n\nFotos bis 12 MB\n\nPreis je Stück\n8,00 €\nStückzahl\n1\nZwischensumme\n8,00 €\n\ninkl. 19 % USt., zzgl. Versandkosten\n\nDie Versandart wählen Sie im Warenkorb. Sie wird dort mit den Kosten ausgewiesen.\n\nWerkstatt und Abholung: Langgasse 70, 35576 Wetzlar · 06441 8056279\nIn den Warenkorb\n\nDie Fertigung erfolgt nach Ihrer Codeangabe. Bei kundenspezifischer Anfertigung kann das Widerrufsrecht eingeschränkt sein — Einzelheiten stehen unter Widerruf und Rückgabe.\n\n01\nCODEFUNDSTELLE\n\nWo steht der Code?\n\nBei Möbel-, Spind- und Briefkastenschlössern steht der Code häufig auf der Stirnseite des Schlosses oder auf dem Schließzylinder — sichtbar, sobald die Tür offen ist.\n\nDer Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf. Erwartetes Format: 3 bis 4 Ziffern.\n\nAm Schlüsselkopf\nAuf der Sicherungskarte\nAuf der Zylinderstirn\n\nSie finden den Code nicht? Der Ratgeber zeigt die üblichen Fundstellen. Ohne Code ist Schlüssel nach Vorlage der passende Weg.\n\n02\nANGABEN\n\nTechnische Angaben\n\nDie Codelinie MS-01 gehört zur Anwendungsfamilie „Möbel- und Büroschlösser“ und ist für Büroschrank und Rollcontainer vorgesehen. Wir fertigen den Mö"
+    },
+    {
+      "pfad": "/warenkorb",
+      "h1": "Warenkorb",
+      "erster": "Prüfen Sie Ihre Positionen, wählen Sie die Versandart und gehen Sie anschließend zur Kasse.",
+      "kostenGenannt": true,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": false
+      },
+      "eingabe": true,
+      "text": "Startseite\nWarenkorb\n\nDIREKT KAUFEN\n\nWarenkorb\n\nPrüfen Sie Ihre Positionen, wählen Sie die Versandart und gehen Sie anschließend zur Kasse.\n\nPositionen (1)\nBüroschrank und Rollcontainer — Serie MS-01\n\nMöbelschlüssel\n\nSchlüssel nach Code\nCode:\n0812\nStückzahl\nErklärung zu Preis nach Stückzahl\nStückzahl Büroschrank und Rollcontainer — Serie MS-01 verringern\nStückzahl Büroschrank und Rollcontainer — Serie MS-01 erhöhen\n\n8,00 €\n\n8,00 € je Stück\n\nPosition entfernen\n: Büroschrank und Rollcontainer — Serie MS-01\nVersandart\nErklärung zu Versandarten\nVersand verfolgbar\n4,95 €\nVersand mit Sendungsverfolgung. Geeignet für einzelne Schlüssel.\nErklärung zu Versand verfolgbar\nPaket versichert\n7,95 €\nVersicherter Paketversand mit Sendungsverfolgung.\nErklärung zu Paket versichert\nAbholung im Fachbetrieb\n0,00 €\nSie holen Ihre Bestellung nach Benachrichtigung selbst ab.\nErklärung zu Abholung im Fachbetrieb\n\nWeiter einkaufen: Schlüssel nach Code oder Zylinder-Konfigurator.\n\nSumme\nZwischensumme\n8,00 €\nVersand\nVersand verfolgbar\n4,95 €\nGesamtbetrag\n12,95 €\ndarin enthaltene Umsatzsteuer (19 %)\n2,07 €\n\nAlle Preise inkl. 19 % USt. Versandarten und Lieferzeiten: Zahlung und Versand.\n\nZur Kasse\n\nHinweis zur Preisberechnung: Der endgültige Preis wird beim Absenden der Bestellung noch einmal auf unserem Server berechnet. Maßgeblich sind die dort hinterlegten Preise.\n\nGesamtbetrag 12,95 €\n\nZur Kasse\n\n01\nWEITERLESEN\n\nPassend dazu\nSchlüssel nach Code bestellen\nGleichschließende Zylinder zusammenstellen\nZahlung und Versand\nWiderruf und Rückgabe\nKontakt"
+    },
+    {
+      "pfad": "/service-und-termin/terminstatus",
+      "h1": "Stand Ihres Vorgangs",
+      "erster": "Geben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.",
+      "kostenGenannt": false,
+      "anruf": {
+        "vorhanden": true,
+        "ohneScrollen": true
+      },
+      "eingabe": true,
+      "text": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen"
+    }
+  ],
+  "stolpersteine": [
+    {
+      "art": "menue",
+      "text": "Menü musste erst geöffnet werden, bevor der Weg sichtbar war",
+      "seite": "/autoschluessel"
+    },
+    {
+      "art": "zoegern",
+      "text": "Weg „Autoschlüssel-Termin anfragen“ brauchte über 5 s bis zur Sichtbarkeit",
+      "seite": "/autoschluessel"
+    }
+  ],
+  "stopps": [
+    {
+      "grund": "Warenkorb, nicht zur Kasse",
+      "seite": "/warenkorb",
+      "bild": "bilder/eilige-mobil-03-stopp.jpg"
+    }
+  ],
+  "befunde": {
+    "assistent": [
+      "Volkswagen 6 Modelle",
+      "Weiter",
+      "Golf ab 2003",
+      "Weiter",
+      "Auswahl Liste, Option 2",
+      "Weiter",
+      "Weiter",
+      "Mechanischer Schlüssel Schlüssel ohne Tasten und o",
+      "Weiter",
+      "Kein funktionierender Schlüssel Alle Schlüssel sin",
+      "Weiter",
+      "Ersatzschlüssel bei Verlust Alle Schlüssel verlore",
+      "Weiter",
+      "Foto hochgeladen (erfundene Testdatei)",
+      "Weiter",
+      "Foto hochgeladen (erfundene Testdatei)",
+      "Weiter",
+      "Foto hochgeladen (erfundene Testdatei)",
+      "Weiter",
+      "Foto hochgeladen (erfundene Testdatei)",
+      "Weiter",
+      "Foto hochgeladen (erfundene Testdatei)",
+      "Weiter",
+      "Foto hochgeladen (erfundene Testdatei)",
+      "Weiter",
+      "Foto hochgeladen (erfundene Testdatei)",
+      "Weiter"
+    ],
+    "assistentEnde": "Startseite Autoschlüssel Anfrage mit Termin TERMIN MIT ANZAHLUNG Autoschlüssel anfragen Bitte dieses Feld leer lassen Schritt 2 von 5 · Fotos hochladen Zulassungsbescheinigung Teil I Wir fertigen Fahrzeugschlüssel nur für Berechtigte. Dafür brauchen wir einen Nachweis. Fragen zum Fahrzeugschein? Rufen Sie uns an: 06441 8056279 Keine Fotos zur Hand? Schicken Sie uns eine Anfrage ohne Fotos. Wir melden uns und sagen Ihnen, welche Unterlagen wir brauchen. Anfrage ohne Fotos senden Zulassungsbescheinigung Teil I (Fahrzeugschein)* Als Foto oder als PDF. Bitte vollständig und lesbar, alle vier Ecken im Bild. SO SOLLTE DAS FOTO AUSSEHEN Foto aufnehmen Datei auswählen Fotos bis 12 MB · PDF bis 4 MB testbild-erfunden.png testbild-erfunden.png entfernen Die Datei konnte nicht hochgeladen werden. Erneut versuchen testbild-erfunden.png: Die Datei konnte nicht hochgeladen werden. Zweck und Aufbewahru",
+    "motorrad": [
+      "Anfrage mit Fahrzeugschein und Foto Ihres Schlüssels.",
+      "Anfrage stellen",
+      "Anfrage stellen",
+      "Fotos hochladen",
+      "Fahrzeugschein und Ihren Schlüssel fotografieren.",
+      "Wenn Sie es nicht wissen, wählen Sie „weiß nicht“; wir klären es anhand Ihrer Fotos."
+    ],
+    "gehaeuse": [
+      "Anfrage mit Fahrzeug, Foto Ihres Schlüssels und Fahrzeugschein.",
+      "Anfrage stellen",
+      "Anfrage stellen",
+      "Fahrzeug und Fotos senden",
+      "Fahrzeug angeben, Schlüssel und Fahrzeugschein fotografieren.",
+      "Ob das bei Ihrem Schlüssel geht, sehen wir an Ihren Fotos."
+    ],
+    "warenkorb": [
+      "Warenkorb",
+      "Warenkorb",
+      "Prüfen Sie Ihre Positionen, wählen Sie die Versandart und gehen Sie anschließend zur Kasse.",
+      "Summe",
+      "Zwischensumme",
+      "Gesamtbetrag"
+    ],
+    "terminstatus": "Startseite\nService und Termin\nTerminstatus\n\nTERMINSTATUS\n\nStand Ihres Vorgangs\n\nGeben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben.\n\nVorgangsnummer*\n(Pflichtangabe)\n\nSteht in Ihrer Bestätigung, zum Beispiel SM24-T-2026-0001.\n\nE-Mail-Adresse*\n(Pflichtangabe)\n\nDie Adresse, mit der Sie den Vorgang angelegt haben.\n\nStand abrufen\n\nNichts gefunden\n\nZu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden. Bitte prüfen Sie Ihre Eingabe. Nehmen Sie Kontakt auf, wenn Sie Ihre Nummer nicht mehr haben.",
+    "terminstatusAbgesendet": true
+  },
+  "konsole": [],
+  "bilder": [
+    "bilder/eilige-mobil-01-zoegern.jpg",
+    "bilder/eilige-mobil-02-assistent.jpg",
+    "bilder/eilige-mobil-04-terminstatus.jpg"
+  ],
+  "posts": [
+    {
+      "seite": "/autoschluessel/anfrage",
+      "url": "/autoschluessel/anfrage",
+      "aktion": true,
+      "laenge": 2,
+      "kopf": "[]",
+      "nachKnopf": null
+    },
+    {
+      "seite": "/autoschluessel/anfrage",
+      "url": "/api/kunden-upload",
+      "aktion": false,
+      "laenge": 305,
+      "kopf": "------WebKitFormBoundaryBuMiS1PjQNtQCnP8",
+      "nachKnopf": null
+    },
+    {
+      "seite": "/autoschluessel/anfrage",
+      "url": "/api/kunden-upload",
+      "aktion": false,
+      "laenge": 305,
+      "kopf": "------WebKitFormBoundaryGc1LXZGBBdohhKMv",
+      "nachKnopf": null
+    },
+    {
+      "seite": "/service-und-termin/terminstatus",
+      "url": "/service-und-termin/terminstatus",
+      "aktion": true,
+      "laenge": 43,
+      "kopf": "[\"SM24-T-2026-9999\",\"<mail>",
+      "nachKnopf": null
+    }
+  ],
+  "fehler": null,
+  "ms": 75421,
+  "zielErreicht": true,
+  "abgefangen": [
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/autoschluessel/anfrage",
+      "laenge": 2
+    },
+    {
+      "art": "upload",
+      "methode": "POST",
+      "url": "/api/kunden-upload"
+    },
+    {
+      "art": "upload",
+      "methode": "POST",
+      "url": "/api/kunden-upload"
+    }
+  ],
+  "fremdAbgebrochen": 0,
+  "formularSendungen": [
+    {
+      "art": "action-unbekannt",
+      "methode": "POST",
+      "url": "/autoschluessel/anfrage",
+      "laenge": 2
+    },
+    {
+      "art": "upload",
+      "methode": "POST",
+      "url": "/api/kunden-upload"
+    },
+    {
+      "art": "upload",
+      "methode": "POST",
+      "url": "/api/kunden-upload"
+    }
+  ]
+}

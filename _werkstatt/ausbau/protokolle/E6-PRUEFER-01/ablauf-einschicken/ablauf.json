@@ -1,0 +1,47 @@
+{
+  "pfad": "/schluessel-einschicken/anmelden",
+  "geraet": "mobil",
+  "schritte": [
+    {
+      "n": 0,
+      "titel": "Schritt 1 von 5 · Schlüssel | Einsendung anmelden",
+      "aktionen": [
+        "text:Erika Testku"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 1,
+      "titel": "Schritt 2 von 5 · Nachweis | Einsendung anmelden",
+      "aktionen": [
+        "radio",
+        "datei",
+        "datei"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "aktion": "weiter"
+    },
+    {
+      "n": 2,
+      "titel": "Schritt 3 von 5 · Versand | Einsendung anmelden",
+      "aktionen": [
+        "radio"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "hinweis": "Preis sichtbar"
+    }
+  ],
+  "preisGefunden": {
+    "schritt": 2,
+    "titel": "Schritt 3 von 5 · Versand | Einsendung anmelden",
+    "ausschnitt": "Empfohlen: als Einschreiben, 4,45 € bei der Post, Haftung bis 25 €."
+  },
+  "ende": "preis",
+  "endAusschnitt": "Startseite Schlüssel einschicken Anmelden GEFÜHRTE ANFRAGE Einsendung anmelden Fünf Schritte: Schlüssel, Nachweis, Versand und Rücksendeanschrift. Danach drucken Sie den Begleitschein aus und schicken den Schlüssel ein. Bitte dieses Feld leer lassen Schritt 3 von 5 · Versand Wie schicken Sie den Schlüssel? Ihre Wahl steht auf dem Begleitschein. Versand Sie drucken den Begleitschein aus un",
+  "preisAmEnde": true,
+  "abgefangen": 3
+}

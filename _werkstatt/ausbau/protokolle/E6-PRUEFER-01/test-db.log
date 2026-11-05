@@ -1,0 +1,627 @@
+
+> schluesselmacher24@0.1.0 test:db
+> vitest run -c vitest.db.config.ts
+
+
+ RUN  v2.1.9 /home/user/schluesselmacher24
+
+[17:29:44] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/data/vorgaenge.db.test.ts (13 tests) 2693ms
+   ✓ Vorgangsnummern > vergibt lückenlos und je Art und Jahr getrennt 309ms
+   ✓ Termine > bucht bei zwei gleichzeitigen Anfragen dasselbe Zeitfenster genau einmal 486ms
+[17:29:49] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/data/vorgang-aendern.db.test.ts (10 tests) 2748ms
+   ✓ vorgangAendern > ändert nur die genannten Gruppen — Dateien und Mailprotokoll bleiben 562ms
+   ✓ vorgangAendern > veraltetes Backend-Formular > überschreibt keine Systemfelder, keinen verschobenen Termin und keine neuen Notizen 606ms
+   ✓ vorgangAendern > veraltetes Backend-Formular > lehnt das Zurückdrehen einer inzwischen eingegangenen Zahlung mit 409 ab 501ms
+[17:29:54] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/server/kundendateien.db.test.ts (12 tests) 1583ms
+   ✓ Kundendateien speichern > ist ohne Anmeldung weder lesbar noch anlegbar; den Hash sieht auch das Team nicht 387ms
+   ✓ Aufbewahrung > löscht Eintrag und Datei — im Probelauf nichts 414ms
+[17:29:58] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[17:29:58] [32mINFO[39m: [36mEinsatzgebiet „test-platzhalter“ mit Platzhaltern in den Papierkorb gelegt[39m
+[17:29:58] [32mINFO[39m: [36m1 online gebuchte Termine auf „Werkstatt“ umgestellt[39m
+[17:29:58] [32mINFO[39m: [36mFahrzeugmarke „Renault“: Adressen korrigiert[39m
+[17:29:58] [32mINFO[39m: [36mFahrzeugmarke „Škoda“: Adressen korrigiert[39m
+[17:29:59] [32mINFO[39m: [36mZY-02: Foto der Sicherungskarte ist jetzt Pflicht[39m
+ ✓ src/payload/leitfaden.db.test.ts (6 tests) 1555ms
+   ✓ Datenmigration leitfaden_daten > legt Einsatzgebiete mit Platzhaltern in den Papierkorb und lässt echte stehen 348ms
+   ✓ Vorgänge: Partner, Freigabe und Vermittlung > hält den Zeitpunkt der Freigabe fest, wenn das Team „Freigegeben“ setzt 395ms
+[17:30:02] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+(node:11962) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+Inhalte übernehmen …
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  einstellungen: bereits übernommen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  zylinderkatalog: bereits übernommen
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  preisgruppen: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  autoschluessel-leistungen: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  preisregeln: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  fahrzeugmarken: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  codelinien: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  beispielartikel: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  rubriken: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  fahrzeugreihen: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  leistungsseiten: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  seiten: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  ratgeber: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  einsatzgebiete: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  sperrtage: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  nachweise: aktuell
+
+stdout | src/lib/data/payload.db.test.ts > Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an
+  richtwerte: bereits übernommen
+Fertig.
+
+ ✓ src/lib/data/payload.db.test.ts (14 tests) 1801ms
+   ✓ Übernahme der Inhalte (Seed) > legt endgültig gelöschte Inhalte beim nächsten Build nicht wieder an 508ms
+[17:30:06] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/server/termin-erinnerungen.db.test.ts (3 tests) 999ms
+   ✓ terminErinnerungenSenden > erinnert an die Termine von morgen, einmal, und nach einer Verschiebung erneut 790ms
+<claude-code-hint v="1" type="plugin" value="stripe@claude-plugins-official" />
+[17:30:09] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/server/freigabe.db.test.ts (2 tests) 1024ms
+[17:30:13] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+Inhalte übernehmen …
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  einstellungen: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  zylinderkatalog: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  preisgruppen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  autoschluessel-leistungen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  preisregeln: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  fahrzeugmarken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  codelinien: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  beispielartikel: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  rubriken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  fahrzeugreihen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  leistungsseiten: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  seiten: 1 angelegt
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  ratgeber: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  einsatzgebiete: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  sperrtage: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  nachweise: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  richtwerte: bereits übernommen
+Fertig.
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+Inhalte übernehmen …
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  einstellungen: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  zylinderkatalog: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  preisgruppen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  autoschluessel-leistungen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  preisregeln: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  fahrzeugmarken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  codelinien: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  beispielartikel: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  rubriken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  fahrzeugreihen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  leistungsseiten: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  seiten: 1 abgeglichen
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  ratgeber: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  einsatzgebiete: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  sperrtage: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  nachweise: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht
+  richtwerte: bereits übernommen
+Fertig.
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+Inhalte übernehmen …
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  einstellungen: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  zylinderkatalog: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  preisgruppen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  autoschluessel-leistungen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  preisregeln: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  fahrzeugmarken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  codelinien: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  beispielartikel: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  rubriken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  fahrzeugreihen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  leistungsseiten: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  seiten: 1 angelegt
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  ratgeber: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  einsatzgebiete: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  sperrtage: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  nachweise: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  richtwerte: bereits übernommen
+Fertig.
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+Inhalte übernehmen …
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  einstellungen: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  zylinderkatalog: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  preisgruppen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  autoschluessel-leistungen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  preisregeln: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  fahrzeugmarken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  codelinien: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  beispielartikel: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  rubriken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  fahrzeugreihen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  leistungsseiten: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  seiten: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  ratgeber: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  einsatzgebiete: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  sperrtage: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  nachweise: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an
+  richtwerte: bereits übernommen
+Fertig.
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+Inhalte übernehmen …
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  einstellungen: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  zylinderkatalog: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  preisgruppen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  autoschluessel-leistungen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  preisregeln: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  fahrzeugmarken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  codelinien: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  beispielartikel: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  rubriken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  fahrzeugreihen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  leistungsseiten: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  seiten: 1 angelegt
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  ratgeber: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  einsatzgebiete: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  sperrtage: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  nachweise: aktuell
+
+stdout | src/payload/seed.db.test.ts > Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt
+  richtwerte: bereits übernommen
+Fertig.
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+Inhalte übernehmen …
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  einstellungen: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  zylinderkatalog: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  preisgruppen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  autoschluessel-leistungen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  preisregeln: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  fahrzeugmarken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  codelinien: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  beispielartikel: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  rubriken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  fahrzeugreihen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  leistungsseiten: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  seiten: 2 abgeglichen
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  ratgeber: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  einsatzgebiete: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  sperrtage: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  nachweise: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  richtwerte: bereits übernommen
+Fertig.
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+Inhalte übernehmen …
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  einstellungen: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  zylinderkatalog: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  preisgruppen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  autoschluessel-leistungen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  preisregeln: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  fahrzeugmarken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  codelinien: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  beispielartikel: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  rubriken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  fahrzeugreihen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  leistungsseiten: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  seiten: 1 abgeglichen
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  ratgeber: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  einsatzgebiete: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  sperrtage: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  nachweise: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen
+  richtwerte: bereits übernommen
+Fertig.
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+Inhalte übernehmen …
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  einstellungen: ergänzt (buchung)
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  zylinderkatalog: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  preisgruppen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  autoschluessel-leistungen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  preisregeln: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  fahrzeugmarken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  codelinien: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  beispielartikel: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  rubriken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  fahrzeugreihen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  leistungsseiten: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  seiten: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  ratgeber: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  einsatzgebiete: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  sperrtage: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  nachweise: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  richtwerte: bereits übernommen
+Fertig.
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+Inhalte übernehmen …
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  einstellungen: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  zylinderkatalog: bereits übernommen
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  preisgruppen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  autoschluessel-leistungen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  preisregeln: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  fahrzeugmarken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  codelinien: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  beispielartikel: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  rubriken: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  fahrzeugreihen: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  leistungsseiten: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  seiten: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  ratgeber: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  einsatzgebiete: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  sperrtage: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  nachweise: aktuell
+
+stdout | src/payload/seed.db.test.ts > Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen
+  richtwerte: bereits übernommen
+Fertig.
+
+ ✓ src/payload/seed.db.test.ts (5 tests) 3880ms
+   ✓ Seed je Eintrag > legt einen fehlenden Eintrag an und überschreibt einen geänderten nicht 1205ms
+   ✓ Seed je Eintrag > legt einen gelöschten Eintrag nicht wieder an 691ms
+   ✓ Seed je Eintrag > übernimmt beim ersten Lauf die Schlüssel des Livegang-Stands — Gelöschtes bleibt weg, Neues kommt 305ms
+   ✓ Startwert-Abgleich > ersetzt nur Texte, die noch genau einem Startwert entsprechen 815ms
+   ✓ Startwert-Abgleich > füllt neue, leere Felder der Einstellungen und lässt gepflegte stehen 773ms
+<claude-code-hint v="1" type="plugin" value="stripe@claude-plugins-official" />
+[17:30:19] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/zahlung/verbuchen.db.test.ts (4 tests) 1296ms
+   ✓ sitzungVerbuchen > bucht Webhook und Rückkehr gleichzeitig genau einmal 409ms
+   ✓ benachrichtigeNeuerVorgang > schreibt das Mailprotokoll an den gespeicherten Vorgang, ohne anderes zu verlieren 618ms
+[17:30:22] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/server/rate-limit.db.test.ts (6 tests) 292ms
+[17:30:25] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/data/nachweise.db.test.ts (6 tests) 428ms
+[17:30:28] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/data/richtwerte.db.test.ts (4 tests) 477ms
+[17:30:31] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+(node:12287) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ ✓ src/payload/hooks/benutzer-schutz.db.test.ts (4 tests) 1143ms
+   ✓ Erstregistrierung > sperrt jedes Anlegen ohne Anmeldung aus dem Netz, nicht aber admin-anlegen und eigenen Servercode 695ms
+[17:30:35] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/rechtliches/widerruf-speicher.db.test.ts (2 tests) 505ms
+   ✓ Widerruf in der Datenbank > speichert, ordnet zu und vermerkt Bestätigung und Notiz am Vorgang 345ms
+[17:30:38] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/server/create-record.db.test.ts (3 tests) 1024ms
+   ✓ Hochgeladene Dateien am Vorgang > ordnet die Datei mit gültigem Schlüssel zu und speichert den Schlüssel nie 411ms
+[17:30:41] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ src/lib/partner/partnerbetriebe.db.test.ts (3 tests) 1144ms
+
+ Test Files  16 passed (16)
+      Tests  97 passed (97)
+   Start at  17:29:22
+   Duration  79.87s (transform 1.83s, setup 59ms, collect 34.50s, tests 22.59s, environment 4ms, prepare 1.42s)
+

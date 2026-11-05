@@ -1,0 +1,13 @@
+a/src/app/(site)/autoschluessel/gehaeuse/anfrage/anfrage-formular.tsx :: +  { id: 'tasten', title: 'Wie viele Tasten hat der Schlüssel?', hint: 'Die Anzahl hilft uns bei der Prüfung. Wenn Sie es nicht wissen, wählen Sie „Weiß ich nicht�
+a/src/app/(site)/autoschluessel/gehaeuse/anfrage/anfrage-formular.tsx :: +            Die Anzahl der Tasten hilft uns bei der Prüfung. Wenn Sie es nicht wissen, wählen Sie „Weiß ich nicht“; wir klären
+a/src/app/(site)/bestellung/[id]/foto-ergebnis.tsx :: +    einsendung ? 'liegt bei uns und kommt mit den Kopien zurück' : freigabe.sendInRequired ? 'bitte einsenden' : 'nicht nötig — wir fertigen nach Ihren Fotos',
+a/src/app/(site)/motorradschluessel/anfrage/anfrage-formular.tsx :: +            wählen Sie „Weiß ich nicht“; wir klären es anhand Ihrer Fotos.
+a/src/app/(site)/motorradschluessel/page.tsx :: +          Schlüssel einen Chip hat. Wenn Sie es nicht wissen, wählen Sie „weiß nicht“; wir klären es anhand Ihrer Fotos.
+a/src/app/(site)/schluessel-einschicken/page.tsx :: +        + `${porto.haftung} €). Den Preis für die Kopien nennen wir Ihnen nach der Prüfung mit der Freigabe, bevor Sie etwas `
+a/src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx :: +      : 'Bitte übertragen Sie die Beschriftung oder wählen Sie „keine erkennbar“ und beantworten Sie die Frage zur Sicherungskarte.',
+a/src/lib/actions/booking.ts :: +          ? 'Den Begleitschein finden Sie über den Knopf „Vorgang und Begleitschein ansehen“ in unserer Eingangsbestätigung.'
+a/src/lib/mail/vorlagen/freigabe.ts :: +    einsendung ? 'liegt bei uns und kommt mit den Kopien zurück' : einsenden ? 'bitte einsenden (Anleitung unten)' : 'nicht nötig — wir fertigen nach Ihren Fotos',
+a/src/lib/mail/vorlagen/freigabe.ts :: +    betreff: `${einsendung ? 'Ihre Einsendung' : 'Ihre Anfrage'} ist freigegeben – ${vorgang.reference}`,
+a/src/lib/mail/vorlagen/freigabe.ts :: +        : 'für die Prüfung Ihres Schlüssels brauchen wir noch etwas von Ihnen — etwa ein weiteres Foto oder eine Angabe.',
+a/src/lib/mail/vorlagen/team-hinweis.ts :: +          + 'zugestellt wurde, steht im Backend unter „E-Mails“. Ein kurzer Rückruf wird empfohlen.',
+a/src/lib/zahlung/uebergaenge.ts :: +              + 'Status von „Neu“ auf „Storniert“, Zeitfenster freigegeben.',

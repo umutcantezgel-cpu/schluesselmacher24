@@ -1,0 +1,294 @@
+
+> schluesselmacher24@0.1.0 test:unit
+> vitest run
+
+
+ RUN  v2.1.9 /home/user/schluesselmacher24
+
+ ✓ src/lib/pricing.test.ts (43 tests) 27ms
+ ✓ src/components/visual/generators/ablauf.test.tsx (31 tests) 251ms
+ ✓ src/components/visual/generators/schliessplan.test.tsx (39 tests) 455ms
+ ✓ src/lib/scheduling.test.ts (37 tests) 27ms
+stderr | src/payload/hooks/vorgang-benachrichtigen.test.ts > Statusverlauf und Foto-Freigabe > sendet die Freigabe mit neuem persönlichem Zahlungslink und ersetzt den Hash erst nach dem Versand
+[mail] Versand abgelehnt: HTTP 422 (validation_error)
+
+stderr | src/payload/hooks/vorgang-benachrichtigen.test.ts > POST /api/vorgaenge/:id/bestaetigung-senden > behält den alten Link, wenn die Mail scheitert
+[mail] Versand abgelehnt: HTTP 422 (validation_error)
+
+ ✓ src/payload/hooks/vorgang-benachrichtigen.test.ts (24 tests) 107ms
+ ✓ src/lib/data/payload-mapping.test.ts (18 tests) 51ms
+ ✓ src/components/layout/summary-list.test.tsx (12 tests) 53ms
+ ✓ src/lib/zahlung/uebergaenge.test.ts (21 tests) 16ms
+ ✓ src/lib/actions/security.test.ts (48 tests) 402ms
+ ✓ src/lib/pdf/vorgangsblatt.test.ts (23 tests) 1432ms
+   ✓ erzeugePdf > erzeugt ein gültiges PDF mit Titel, Nummer, Namen mit latin-ext und Fußzeile 546ms
+   ✓ erzeugePdf > bricht lange Inhalte auf mehrere Seiten um 486ms
+   ✓ erzeugePdf > komprimiert im Betrieb 369ms
+ ✓ src/lib/mail/vorlagen.test.ts (13 tests) 26ms
+ ✓ src/components/visual/generators/schluessel.test.tsx (27 tests) 327ms
+ ✓ src/components/visual/generators/zylinder-mass.test.tsx (19 tests) 292ms
+ ✓ src/lib/konfigurator/konfigurator.test.ts (22 tests) 27ms
+ ✓ src/lib/mail/freigabe.test.ts (11 tests) 21ms
+stderr | src/lib/server/benachrichtigungen.test.ts > benachrichtigeNeuerVorgang > meldet eine gescheiterte Kundenmail als Hinweis — die Betriebsmail geht trotzdem
+[mail] Versand abgelehnt: HTTP 422 (validation_error)
+
+stderr | src/lib/server/benachrichtigungen.test.ts > benachrichtigeNeuerVorgang > schickt ohne Team-Adresse und mit Platzhalter-Firma keine Betriebsmail
+[benachrichtigung] Keine Adresse für Betriebsmails (MAIL_TEAM_ADDRESS fehlt).
+
+ ✓ src/lib/server/benachrichtigungen.test.ts (13 tests) 1222ms
+   ✓ benachrichtigeNeuerVorgang > schreibt Kunde und Betrieb an und protokolliert beide Mails am Vorgang 794ms
+   ✓ benachrichtigeNeuerVorgang > meldet eine gescheiterte Kundenmail als Hinweis — die Betriebsmail geht trotzdem 375ms
+ ✓ src/lib/actions/zahlung.test.ts (11 tests) 13ms
+ ✓ src/components/visual/icons/icons.test.tsx (369 tests) 245ms
+ ✓ src/lib/einsenden/einsenden.test.ts (13 tests) 1987ms
+   ✓ Begleitschein (G-24, R9, A-035) > erzeugt das PDF für Einsendungen und Freigaben mit Einsendung, sonst nichts 907ms
+   ✓ Begleitschein (G-24, R9, A-035) > erzeugt in Probeläufen die Attrappe und nie ein echtes Label 670ms
+   ✓ Adressfeld des Begleitscheins (Sichtprüfung E6-OPUS-02) > wächst mit einem umbrechenden Firmennamen, statt die Straße zu überdecken 386ms
+ ✓ src/lib/artikel.test.ts (24 tests) 25ms
+ ✓ src/components/visual/generators/tuer-schutz.test.tsx (13 tests) 248ms
+ ✓ src/lib/integrations/stripe.test.ts (11 tests) 26ms
+ ✓ src/lib/richtwerte/rechnen.test.ts (19 tests) 10ms
+ ✓ src/lib/mail/vertragsbestaetigung.test.ts (6 tests) 37ms
+ ✓ src/lib/mail/termin-mails.test.ts (12 tests) 18ms
+ ✓ src/components/visual/generators/stiftzuhaltung.test.tsx (17 tests) 333ms
+stderr | src/lib/mail/transport-resend.test.ts > sendeUeberResend > wiederholt 4xx nicht
+[mail] Versand abgelehnt: HTTP 422 (validation_error)
+
+stderr | src/lib/mail/transport-resend.test.ts > sendeUeberResend > wiederholt 429 und 5xx genau einmal
+[mail] Versand abgelehnt: HTTP 503
+
+stderr | src/lib/mail/transport-resend.test.ts > sendeUeberResend > wiederholt ein erschöpftes Tageskontingent nicht
+[mail] Versand abgelehnt: HTTP 429 (daily_quota_exceeded)
+
+ ✓ src/lib/mail/transport-resend.test.ts (12 tests) 84ms
+ ✓ scripts/fahrzeuge-import.test.ts (16 tests) 12ms
+ ✓ src/app/(site)/api/kunden-upload/route.test.ts (12 tests) 200ms
+ ✓ src/lib/umgebung.test.ts (15 tests) 18ms
+ ✓ src/lib/rechtliches/widerruf-aufnahme.test.ts (11 tests) 32ms
+<claude-code-hint v="1" type="plugin" value="stripe@claude-plugins-official" />
+stderr | src/app/(site)/api/zahlung/stripe/route.test.ts > POST /api/zahlung/stripe > antwortet 500, wenn das Verbuchen scheitert — Stripe stellt dann erneut zu
+[zahlung] Webhook checkout.session.completed (evt_3gfvg63olla) nicht verbucht Error: Datenbank weg
+    at /home/user/schluesselmacher24/src/app/(site)/api/zahlung/stripe/route.test.ts:38:29
+    at mockCall (file:///home/user/schluesselmacher24/node_modules/@vitest/spy/dist/index.js:61:17)
+    at spy (file:///home/user/schluesselmacher24/node_modules/tinyspy/dist/index.js:45:80)
+    at Proxy.zahlungsereignisVerbuchen (/home/user/schluesselmacher24/src/app/(site)/api/zahlung/stripe/route.test.ts:3:37)
+    at verbuchen (/home/user/schluesselmacher24/src/lib/zahlung/verbuchen.ts:76:26)
+    at sitzungVerbuchen (/home/user/schluesselmacher24/src/lib/zahlung/verbuchen.ts:100:10)
+    at Module.stripeEreignisVerbuchen (/home/user/schluesselmacher24/src/lib/zahlung/verbuchen.ts:128:14)
+    at POST (/home/user/schluesselmacher24/src/app/(site)/api/zahlung/stripe/route.ts:48:28)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at /home/user/schluesselmacher24/src/app/(site)/api/zahlung/stripe/route.test.ts:173:22
+
+ ✓ src/app/(site)/api/zahlung/stripe/route.test.ts (9 tests) 56ms
+ ✓ src/lib/druckansichten.test.ts (6 tests) 15ms
+ ✓ src/lib/codelinie-texte.test.ts (11 tests) 246ms
+ ✓ src/app/(site)/service-und-termin/vor-ort/kern.test.ts (24 tests) 14ms
+ ✓ src/lib/actions/widerruf.test.ts (10 tests) 35ms
+ ✓ src/components/visual/generators/code-fundstelle.test.tsx (11 tests) 112ms
+ ✓ src/lib/server/termin-verwaltung.test.ts (7 tests) 38ms
+ ✓ src/lib/fahrzeug-texte.test.ts (9 tests) 38ms
+ ✓ src/lib/versand/versand.test.ts (12 tests) 1385ms
+   ✓ DHL Retoure > fällt bei einem Fehler auf den Begleitschein zurück 578ms
+   ✓ Begleitschein > ist ein PDF; die Attrappe ist als solche erkennbar 787ms
+ ✓ src/lib/visual/motiv.test.ts (15 tests) 12ms
+ ✓ src/app/(site)/service-und-termin/kontakt/kern.test.ts (22 tests) 16ms
+ ✓ scripts/build.test.ts (9 tests) 11ms
+ ✓ src/lib/kundenstatus.test.ts (10 tests) 23ms
+ ✓ src/components/hub/hub.test.tsx (17 tests) 131ms
+ ✓ src/components/visual/generators/profilschnitt.test.tsx (12 tests) 98ms
+ ✓ src/lib/zahlung/ansicht.test.ts (9 tests) 18ms
+ ✓ src/lib/pdf/schliessplan.test.ts (5 tests) 848ms
+   ✓ Schließplan als eigenes Blatt und im Vorgangsblatt (E5-OPUS-03, G-37) > erzeugt ein mehrseitiges PDF mit Titel „Schließplan“ für große Pläne 630ms
+ ✓ src/lib/rechtliches/verarbeitungen.test.tsx (9 tests) 96ms
+ ✓ src/lib/termin-erinnerung.test.ts (9 tests) 11ms
+ ✓ src/lib/rechtliches/texte.test.ts (12 tests) 12ms
+ ✓ src/lib/pdf/partnervertrag.test.ts (10 tests) 553ms
+   ✓ Partnervertrag als Blatt (E7-OPUS-01, G-39, R10) > lässt sich als PDF setzen 529ms
+ ✓ src/app/(site)/gleichschliessende-zylinder/konfigurator/kern.test.ts (8 tests) 18ms
+ ✓ src/lib/partner/partner.test.ts (10 tests) 10ms
+ ✓ src/lib/visual/area-theme.test.ts (61 tests) 44ms
+ ✓ src/app/(site)/api/cron/taeglich/route.test.ts (9 tests) 24ms
+ ✓ src/components/visual/registry.test.tsx (46 tests) 397ms
+ ✓ src/lib/wege/ablauf.test.tsx (7 tests) 51ms
+ ✓ src/lib/richtwerte/uebersetzung.test.ts (9 tests) 10ms
+ ✓ src/components/visual/generators/zutritt-signal.test.tsx (8 tests) 96ms
+ ✓ src/components/calculator/rechner.test.tsx (7 tests) 78ms
+ ✓ src/app/(site)/beratung/kern.test.ts (18 tests) 12ms
+ ✓ src/payload/betrieb.test.ts (10 tests) 23ms
+ ✓ src/app/sitemap.test.ts (5 tests) 16ms
+ ✓ src/lib/format.test.ts (24 tests) 17ms
+ ✓ src/lib/konfigurator/vorgang.test.ts (8 tests) 18ms
+ ✓ src/lib/server/datei-pruefung.test.ts (8 tests) 15ms
+ ✓ src/components/ui/image-placeholder.test.tsx (12 tests) 112ms
+ ✓ src/components/forms/photo-upload.test.tsx (9 tests) 45ms
+ ✓ src/lib/codelinie.test.ts (14 tests) 23ms
+ ✓ src/lib/fahrzeuge/fahrzeuge.test.ts (9 tests) 18ms
+6:23:09 PM [vite] warning: invalid import "./${datei}.tsx". Variable imports cannot import their own directory, place imports in a separate directory or make the import filename more specific. For example: import(`./foo/${bar}.js`).
+  Plugin: vite:dynamic-import-vars
+  File: /home/user/schluesselmacher24/src/components/visual/glyphen/glyphen.test.tsx
+ ✓ src/lib/wege/naechste-schritte.test.ts (6 tests) 14ms
+ ✓ src/components/visual/glyphen/glyphen.test.tsx (212 tests) 155ms
+ ✓ src/app/(site)/autoschluessel/gehaeuse/anfrage/kern.test.ts (8 tests) 11ms
+ ✓ src/lib/bewegung.test.ts (10 tests) 13ms
+ ✓ src/payload/hooks/termin-aktionen.test.ts (6 tests) 19ms
+ ✓ src/app/(site)/motorradschluessel/anfrage/kern.test.ts (8 tests) 16ms
+ ✓ src/lib/terminort.test.ts (10 tests) 9ms
+ ✓ src/lib/vorgaenge-csv.test.ts (6 tests) 18ms
+ ✓ src/lib/navigation.test.ts (14 tests) 11ms
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > addCodeKey legt einen Eintrag an
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > fasst gleiche Codelinie und gleichen Code zusammen: Menge addiert, Preis aktualisiert
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > ein anderer Code ergibt einen zweiten Eintrag
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > addCylinderOrder legt einen Eintrag mit Entwurf und Preis an
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > addStandard legt einen Eintrag an und addiert gleiche Artikel
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > updateQty ändert die Menge, begrenzt auf mindestens 1, und nur bei Code- und Standardartikeln
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > remove entfernt genau einen Eintrag
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > setShipping setzt die Versandart
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > clear leert Einträge und Versandart
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+stderr | src/lib/store/cart.test.ts > Warenkorb-Store (Charakterisierung) > count() summiert die Mengen über alle Einträge
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+[zustand persist middleware] Unable to update item 'sm24-warenkorb', the given storage is currently unavailable.
+
+ ✓ src/lib/store/cart.test.ts (10 tests) 12ms
+ ✓ src/components/autoschluessel/schluesselarten-reihe.test.tsx (11 tests) 17ms
+ ✓ src/lib/rubriken.test.ts (12 tests) 40ms
+ ✓ src/components/visual/interaktiv/schliessplan-interaktiv.test.tsx (8 tests) 141ms
+ ✓ src/lib/kennzahlen.test.ts (5 tests) 6ms
+ ✓ src/components/autoschluessel/termin-auswahl.test.tsx (8 tests) 77ms
+stderr | src/app/(site)/api/zahlung/rueckkehr/route.test.ts > GET /api/zahlung/rueckkehr > leitet auch weiter, wenn Stripe nicht antwortet
+[zahlung] Rückkehr nicht verbucht Error: Netzwerk
+    at /home/user/schluesselmacher24/src/app/(site)/api/zahlung/rueckkehr/route.test.ts:100:31
+    at file:///home/user/schluesselmacher24/node_modules/@vitest/runner/dist/index.js:146:14
+    at file:///home/user/schluesselmacher24/node_modules/@vitest/runner/dist/index.js:533:11
+    at runWithTimeout (file:///home/user/schluesselmacher24/node_modules/@vitest/runner/dist/index.js:39:7)
+    at runTest (file:///home/user/schluesselmacher24/node_modules/@vitest/runner/dist/index.js:1056:17)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at runSuite (file:///home/user/schluesselmacher24/node_modules/@vitest/runner/dist/index.js:1205:15)
+    at runSuite (file:///home/user/schluesselmacher24/node_modules/@vitest/runner/dist/index.js:1205:15)
+    at runFiles (file:///home/user/schluesselmacher24/node_modules/@vitest/runner/dist/index.js:1262:5)
+    at startTests (file:///home/user/schluesselmacher24/node_modules/@vitest/runner/dist/index.js:1271:3)
+
+ ✓ src/app/(site)/api/zahlung/rueckkehr/route.test.ts (5 tests) 82ms
+ ✓ src/payload/hooks/druckansichten.test.ts (5 tests) 474ms
+   ✓ Vorgangsblatt als PDF (G-37) > liefert ein PDF zum Ansehen, ohne Zwischenspeicher und ohne Einbetten 444ms
+ ✓ src/components/visual/generators/grafik-basis.test.tsx (12 tests) 28ms
+ ✓ src/components/visual/motion/draw-on.test.tsx (6 tests) 32ms
+ ✓ src/components/rubrik/rubrik.test.tsx (8 tests) 65ms
+ ✓ src/lib/cylinder-summary.test.ts (6 tests) 9ms
+ ✓ src/components/konfigurator/schliessplan-editor.test.tsx (6 tests) 91ms
+ ✓ src/components/autoschluessel/bestaetigung.test.tsx (7 tests) 18ms
+ ✓ src/components/flow/flow-shell.test.tsx (5 tests) 72ms
+ ✓ src/lib/server/unterlagen-pflicht.test.ts (8 tests) 5ms
+ ✓ src/components/visual/interaktiv/fraesbahn-bewegung.test.tsx (11 tests) 32ms
+ ✓ src/components/autoschluessel/fahrzeug-ziel.test.ts (7 tests) 30ms
+ ✓ src/lib/livegang-pruefung.test.ts (7 tests) 16ms
+ ✓ src/components/visual/inszenierung/eingang.test.tsx (8 tests) 49ms
+ ✓ src/lib/rechtliches/firma.test.ts (6 tests) 9ms
+ ✓ src/lib/flow/use-flow.test.ts (7 tests) 14ms
+ ✓ src/components/visual/einsatzradius.test.tsx (8 tests) 50ms
+ ✓ src/components/visual/profillinie.test.tsx (8 tests) 57ms
+ ✓ src/lib/feiertage.test.ts (13 tests) 22ms
+ ✓ src/lib/actions/statusabruf.test.ts (3 tests) 10ms
+ ✓ src/lib/cn.test.ts (7 tests) 25ms
+ ✓ src/components/weg/bestaetigung.test.tsx (4 tests) 47ms
+ ✓ src/components/visual/motion/check-draw.test.tsx (6 tests) 30ms
+ ✓ src/lib/cylinder-rules.test.ts (4 tests) 7ms
+ ✓ src/app/(site)/rechtliches/impressum/impressum-inhalt.test.tsx (5 tests) 29ms
+ ✓ src/payload/globals/Einstellungen.test.ts (5 tests) 6ms
+ ✓ src/components/layout/bewegung-schalter.test.tsx (5 tests) 37ms
+ ✓ src/app/(site)/autoschluessel/anfrage/unterlagen-pruefung.test.ts (5 tests) 6ms
+ ✓ src/lib/server/ratenzaehler.test.ts (7 tests) 19ms
+ ✓ src/components/recht/recht.test.tsx (4 tests) 26ms
+ ✓ src/components/visual/interaktiv/auswahl.test.ts (7 tests) 6ms
+ ✓ src/app/(site)/layout.test.ts (3 tests) 9ms
+ ✓ src/app/(site)/rechtliches/versand-und-zahlung/versand-inhalt.test.tsx (5 tests) 40ms
+ ✓ src/components/layout/page-header.test.tsx (4 tests) 55ms
+ ✓ src/payload/hooks/partnervertrag-pdf.test.ts (3 tests) 502ms
+   ✓ Partnervertrag als PDF (E7-OPUS-01, G-39) > liest mit den Rechten der Person und liefert einen Entwurf als PDF ohne Zwischenspeicher 496ms
+ ✓ src/lib/reference.test.ts (12 tests) 10ms
+ ✓ src/lib/zahlung/neu-buchen.test.ts (4 tests) 7ms
+ ✓ src/lib/kalender-ics.test.ts (4 tests) 6ms
+ ✓ src/components/layout/site-footer.test.tsx (3 tests) 65ms
+ ✓ src/lib/statistik.test.ts (5 tests) 5ms
+ ✓ src/components/vertrauen/werkstatt-zeile.test.tsx (6 tests) 37ms
+ ✓ src/payload/collections/vorgaenge-felder.test.ts (2 tests) 11ms
+ ✓ src/components/seo/json-ld.test.ts (3 tests) 10ms
+ ✓ src/components/forms/option-card.test.tsx (4 tests) 41ms
+ ✓ src/components/visual/interaktiv/zylinder-mass-live.test.tsx (4 tests) 51ms
+ ✓ src/lib/site-url.test.ts (4 tests) 5ms
+ ✓ src/components/visual/bereich-icon.test.tsx (13 tests) 54ms
+ ✓ src/lib/berliner-zeit.test.ts (5 tests) 9ms
+ ✓ src/app/(site)/schluessel-nach-vorlage/anfrage/beispiele.test.ts (6 tests) 6ms
+ ✓ src/app/(site)/schluessel-nach-code/[slug]/code-uebernahme.test.ts (9 tests) 8ms
+ ✓ src/app/(site)/api/cron/zahlungen/route.test.ts (4 tests) 15ms
+ ✓ src/lib/reference-sequence.test.ts (5 tests) 4ms
+ ✓ src/app/(site)/canonical.test.ts (3 tests) 20ms
+ ✓ src/components/vertrauen/nachweise-liste.test.tsx (4 tests) 32ms
+ ✓ src/lib/wege/nachweis.test.ts (3 tests) 9ms
+ ✓ src/components/visual/motion/reveal.test.tsx (4 tests) 32ms
+ ✓ src/components/visual/motion/dauerschleife.test.tsx (4 tests) 33ms
+ ✓ src/lib/design-tokens.test.ts (3 tests) 51ms
+ ✓ src/app/robots.test.ts (4 tests) 7ms
+ ✓ src/lib/og/bereichsbild.test.ts (4 tests) 11ms
+ ✓ src/components/autoschluessel/vehicle-facts.test.ts (5 tests) 8ms
+ ✓ src/components/visual/generators/autoschluessel-aufbau.test.tsx (4 tests) 6ms
+ ✓ src/components/layout/breadcrumbs.test.tsx (1 test) 42ms
+ ✓ src/lib/platzhalter.test.ts (4 tests) 6ms
+ ✓ src/components/ui/button.test.tsx (3 tests) 34ms
+ ✓ src/lib/rechtliches/zahlarten.test.ts (2 tests) 8ms
+ ✓ src/lib/telefon.test.ts (3 tests) 6ms
+ ✓ src/components/visual/motion/in-view.test.ts (3 tests) 9ms
+ ✓ src/app/(site)/seitenstruktur.test.ts (2 tests) 9ms
+ ✓ src/lib/code-pattern.test.ts (10 tests) 11ms
+ ✓ src/app/global-error.test.ts (7 tests) 4ms
+ ✓ src/components/visual/schluesselart-zeichnung.test.tsx (3 tests) 39ms
+ ✓ src/app/(site)/rechtliches/cookie-einstellungen/page.test.tsx (2 tests) 32ms
+ ✓ src/lib/data/seitentexte.test.ts (8 tests) 7ms
+ ✓ src/components/visual/interaktiv/code-fundstelle-interaktiv.test.tsx (2 tests) 50ms
+ ✓ src/lib/absicht-vorladen.test.ts (2 tests) 5ms
+ ✓ src/components/ui/alert.test.tsx (3 tests) 27ms
+ ✓ src/lib/staffel.test.ts (2 tests) 16ms
+ ✓ src/components/visual/interaktiv/live-schluessel.test.tsx (2 tests) 23ms
+ ✓ src/components/autoschluessel/etappen.test.ts (2 tests) 4ms
+ ✓ src/components/vertrauen/zahlarten-zeile.test.tsx (2 tests) 21ms
+ ✓ src/lib/spaet-vorladen.test.ts (3 tests) 4ms
+ ✓ src/components/visual/motion/seitenwechsel.test.tsx (2 tests) 14ms
+ ✓ src/components/visual/icons/icon-base.test.tsx (2 tests) 32ms
+ ✓ src/app/manifest.test.ts (1 test) 5ms
+ ✓ src/lib/data/rubriken-mapping.test.ts (1 test) 5ms
+
+ Test Files  172 passed (172)
+      Tests  2239 passed (2239)
+   Start at  18:22:51
+   Duration  36.73s (transform 9.41s, setup 665ms, collect 38.87s, tests 16.35s, environment 50ms, prepare 16.53s)
+

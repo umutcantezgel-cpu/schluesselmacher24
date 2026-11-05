@@ -82,7 +82,7 @@ function freigegeben({ vorgang, nachricht, kontext, zahlungsLink, einsendeAnschr
   felder.push(['Preis', preis ? `${formatCents(preis)} inkl. Umsatzsteuer` : 'nennen wir Ihnen gesondert']);
   felder.push([
     'Originalschlüssel',
-    einsendung ? 'liegt bei uns und kommt mit den Kopien zurück' : einsenden ? 'bitte einsenden (Anleitung unten)' : 'nicht nötig — wir fertigen nach Ihren Fotos',
+    einsendung ? 'liegt bei uns und kommt mit den Kopien zurück' : einsenden ? 'bitte einsenden (Anleitung unten)' : 'nicht nötig, wir fertigen nach Ihren Fotos',
   ]);
 
   const bausteine: Baustein[] = [

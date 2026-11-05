@@ -1,0 +1,10 @@
+/ | mobil | menue=1 | Regeln 0 | Stellen 0 | 
+/ | desktop | menue=kein Knopf | Regeln 0 | Stellen 0 | 
+/autoschluessel | mobil | menue=2 | Regeln 0 | Stellen 0 | 
+/autoschluessel | desktop | menue=kein Knopf | Regeln 0 | Stellen 0 | 
+/schluessel-einschicken | mobil | menue=2 | Regeln 0 | Stellen 0 | 
+/schluessel-einschicken | desktop | menue=kein Knopf | Regeln 0 | Stellen 0 | 
+/service-und-termin/vor-ort | mobil | menue=1 | Regeln 0 | Stellen 0 | 
+/service-und-termin/vor-ort | desktop | menue=kein Knopf | Regeln 0 | Stellen 0 | 
+/autoschluessel/anfrage | mobil | menue=1 | Regeln 0 | Stellen 0 | 
+/autoschluessel/anfrage | desktop | menue=kein Knopf | Regeln 0 | Stellen 0 | 

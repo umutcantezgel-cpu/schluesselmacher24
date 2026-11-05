@@ -1,0 +1,113 @@
+{
+  "pfad": "/schluessel-nach-vorlage/anfrage",
+  "geraet": "mobil",
+  "schritte": [
+    {
+      "n": 0,
+      "titel": "Schritt 1 von 8 · Vorderseite | Anfrage: Schlüssel nach Vorlage",
+      "aktionen": [
+        "text:Erika Testku",
+        "datei",
+        "datei"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "weiter"
+    },
+    {
+      "n": 1,
+      "titel": "Schritt 2 von 8 · Rückseite | Anfrage: Schlüssel nach Vorlage",
+      "aktionen": [
+        "datei",
+        "datei"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "weiter"
+    },
+    {
+      "n": 2,
+      "titel": "Schritt 3 von 8 · Spitze | Anfrage: Schlüssel nach Vorlage",
+      "aktionen": [
+        "datei",
+        "datei"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "weiter"
+    },
+    {
+      "n": 3,
+      "titel": "Schritt 4 von 8 · Hersteller | Anfrage: Schlüssel nach Vorlage",
+      "aktionen": [
+        "text:01234 567890",
+        "check"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "weiter"
+    },
+    {
+      "n": 4,
+      "titel": "Schritt 5 von 8 · Nummern | Anfrage: Schlüssel nach Vorlage",
+      "aktionen": [
+        "text:Erika Testku",
+        "radio",
+        "check",
+        "datei",
+        "datei",
+        "datei",
+        "datei"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "weiter"
+    },
+    {
+      "n": 5,
+      "titel": "Schritt 6 von 8 · Stückzahl | Anfrage: Schlüssel nach Vorlage",
+      "aktionen": [],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "weiter"
+    },
+    {
+      "n": 6,
+      "titel": "Schritt 7 von 8 · Kontakt | Anfrage: Schlüssel nach Vorlage",
+      "aktionen": [
+        "text:Erika Testku",
+        "text:Erika Testku",
+        "text:test@example",
+        "text:01234 567890",
+        "text:Teststraße 1",
+        "text:35578",
+        "text:Teststraße 1",
+        "select"
+      ],
+      "uploadsFertig": true,
+      "weiterVorhanden": true,
+      "axe": [],
+      "aktion": "weiter"
+    },
+    {
+      "n": 7,
+      "titel": "Schritt 8 von 8 · Absenden | Anfrage: Schlüssel nach Vorlage",
+      "aktionen": [],
+      "uploadsFertig": true,
+      "weiterVorhanden": false,
+      "axe": [],
+      "aktion": "gesperrt-oder-ende"
+    }
+  ],
+  "preisGefunden": null,
+  "ende": "gesperrt",
+  "endAusschnitt": "Startseite Schlüssel nach Vorlage Anfrage GEFÜHRTE ANFRAGE Anfrage: Schlüssel nach Vorlage Drei Fotos genügen für die Prüfung. Bitte dieses Feld leer lassen Schritt 8 von 8 · Absenden Anfrage prüfen und absenden Bitte kontrollieren Sie Ihre Angaben. Mit dem Absenden entsteht noch kein Vertrag. Noch kein Vertrag Mit dem Absenden stellen Sie eine Anfrage. Preis und Machbarkeit nennen wir Ih",
+  "preisAmEnde": false,
+  "abgefangen": 11
+}
