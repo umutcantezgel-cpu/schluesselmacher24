@@ -40,7 +40,7 @@
     "@payloadcms/translations": "^3.92.1",
     "@payloadcms/ui": "^3.92.1",
     "framer-motion": "^12.43.0",
-    "graphql": "^16.14.2",
+    "graphql": "^17.1.0",
     "next": "^16.4.4",
     "payload": "^3.92.1",
     "pdfkit": "0.20.2",
