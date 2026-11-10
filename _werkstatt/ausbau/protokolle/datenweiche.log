@@ -1346,3 +1346,31 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-04T23:20:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsc --noEmit
 2026-11-04T23:20:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx eslint src/app/(site)/partner-werden/partner-formular.tsx
 2026-11-04T23:20:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-10T21:38:22+00:00	ABBRUCH	json	FREMD_DB zeigt auf Datenbank-Host db.gefaelscht-produktion.supabase.co
+2026-11-10T21:38:22+00:00	ABBRUCH	json	ALT_URL zeigt auf Datenbank-Host prod.beispiel-firma.de
+2026-11-10T21:38:22+00:00	ABBRUCH	json	MEIN_BUCKET enthält die Adresse eines Fremddienstes (r2.cloudflarestorage.com)
+2026-11-10T21:38:22+00:00	ABBRUCH	json	IRGENDWAS enthält einen Zahlungs- oder Mailschlüssel
+2026-11-10T21:38:22+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "[$DATABASE_URL$STORAGE_BUCKET$PAYMENT_API_KEY]"
+2026-11-10T21:38:23+00:00	json	als=root	hosts=localhost	env-dateien= DATABASE_URL GEHEIM_NEU NOCH_EINS	sh -c echo "[$DATABASE_URL|$GEHEIM_NEU|$NOCH_EINS|]"
+2026-11-10T21:38:23+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$SM24_DATA $SM24_STORAGE $NEXT_PUBLIC_SITE_URL"
+2026-11-10T21:38:23+00:00	pg	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$DATABASE_URL"
+2026-11-10T21:40:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm ci --no-audit --no-fund
+2026-11-10T21:44:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env -u SM24_DATA VERCEL=1 VERCEL_ENV=production PAYLOAD_SECRET= NEXT_PUBLIC_SITE_URL= node scripts/build.mjs
+2026-11-10T21:47:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run scripts/build.test.ts src/lib/umgebung.test.ts src/app/robots.test.ts
+2026-11-10T21:47:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run scripts/build.test.ts src/lib/umgebung.test.ts src/app/robots.test.ts
+2026-11-10T21:47:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env -u SM24_DATA npx vitest run scripts/build.test.ts src/lib/umgebung.test.ts src/app/robots.test.ts
+2026-11-10T21:48:04+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env -u SM24_DATA -u SM24_STORAGE -u SEED_ADMIN_EMAIL -u SEED_ADMIN_PASSWORD VERCEL=1 VERCEL_ENV=production VERCEL_URL=schluesselmacher24-abc123xyz-team-1d0c.vercel.app VERCEL_BRANCH_URL=schluesselmacher24-git-main-team-1d0c.vercel.app VERCEL_PROJECT_PRODUCTION_URL=schluesselmacher24.vercel.app VERCEL_GIT_COMMIT_REF=main PAYLOAD_SECRET= NEXT_PUBLIC_SITE_URL= node scripts/build.mjs
+2026-11-10T21:52:49+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run scripts/build.test.ts src/lib/umgebung.test.ts src/app/robots.test.ts src/lib/server/create-record.test.ts
+2026-11-10T21:53:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-10T21:53:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-10T21:53:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-10T21:54:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env -u SM24_DATA npx vitest run
+2026-11-10T21:54:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env -u SM24_DATA -u SM24_STORAGE -u SEED_ADMIN_EMAIL -u SEED_ADMIN_PASSWORD VERCEL=1 VERCEL_ENV=production VERCEL_URL=schluesselmacher24-abc123xyz-team-1d0c.vercel.app VERCEL_BRANCH_URL=schluesselmacher24-git-main-team-1d0c.vercel.app VERCEL_PROJECT_PRODUCTION_URL=schluesselmacher24.vercel.app VERCEL_GIT_COMMIT_REF=main PAYLOAD_SECRET= NEXT_PUBLIC_SITE_URL= node scripts/build.mjs
+2026-11-10T21:55:39+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env -u SM24_DATA -u SM24_STORAGE -u SEED_ADMIN_EMAIL -u SEED_ADMIN_PASSWORD VERCEL=1 VERCEL_ENV=production VERCEL_URL=schluesselmacher24-abc123xyz-team-1d0c.vercel.app VERCEL_BRANCH_URL=schluesselmacher24-git-main-team-1d0c.vercel.app VERCEL_PROJECT_PRODUCTION_URL=schluesselmacher24.vercel.app VERCEL_GIT_COMMIT_REF=main PAYLOAD_SECRET= NEXT_PUBLIC_SITE_URL= npx next start -p 3000
+2026-11-10T21:58:44+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run -c vitest.db.config.ts
+2026-11-10T22:01:31+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-10T22:01:51+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-10T22:02:15+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env -u SM24_DATA npx vitest run
+2026-11-10T22:02:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-10T22:03:08+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env -u SM24_DATA -u SM24_STORAGE -u SEED_ADMIN_EMAIL -u SEED_ADMIN_PASSWORD VERCEL=1 VERCEL_ENV=production VERCEL_URL=schluesselmacher24-abc123xyz-team-1d0c.vercel.app VERCEL_BRANCH_URL=schluesselmacher24-git-main-team-1d0c.vercel.app VERCEL_PROJECT_PRODUCTION_URL=schluesselmacher24.vercel.app VERCEL_GIT_COMMIT_REF=main PAYLOAD_SECRET= NEXT_PUBLIC_SITE_URL= node scripts/build.mjs
+2026-11-10T22:04:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env -u SM24_DATA -u SM24_STORAGE -u SEED_ADMIN_EMAIL -u SEED_ADMIN_PASSWORD VERCEL=1 VERCEL_ENV=production VERCEL_URL=schluesselmacher24-abc123xyz-team-1d0c.vercel.app VERCEL_BRANCH_URL=schluesselmacher24-git-main-team-1d0c.vercel.app VERCEL_PROJECT_PRODUCTION_URL=schluesselmacher24.vercel.app VERCEL_GIT_COMMIT_REF=main PAYLOAD_SECRET= NEXT_PUBLIC_SITE_URL= npx next start -p 3000

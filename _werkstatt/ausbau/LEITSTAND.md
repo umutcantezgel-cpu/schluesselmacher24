@@ -1,7 +1,7 @@
 # LEITSTAND · Ausbaulauf SCHLÜSSELMACHER24 (nur Orchestrator)
 Nordstern: schluesselmacher24.de wird auf dem Bestand zum klarsten Schlüsseldienst online: Hub „Wobei können wir Ihnen helfen?“ im ersten Bildschirm, jeder Weg endet in derselben Kasse oder einer vollständigen Anfrage mit PDF, jede Anforderung belegt, lebendig, schnell, zugänglich, rechtlich sauber, nichts vom Bestand verloren.
 Startritual (8.6): 1 `TZ=Europe/Berlin date`, Umgebung · 2 Sitzung aus .git/sm24-sitzung · 3 Branch nach 8.2, `git fetch origin` · 4 Herzschlag-Probe (8.7) · 5 PRUEFPUNKT.md, STATUS.md, KONTINGENT.md, `node _werkstatt/ausbau/werkzeuge/plan.mjs stand` · 6 neue Umgebung: Einrichtung nach protokolle/einrichtung.md · 7 abgebrochene Pakete zurücksetzen · 8 Weckrufe spannen, Herzschlag, `plan.mjs naechste`.
-ARBEITSBRANCH: claude/affectionate-knuth-n7mjur · Sitzung: m40jjmy9 · Repo öffentlich → SCHUTZMODUS an (G13).
+ARBEITSBRANCH: claude/designs-texte-live-czlz4t · Sitzung: 013c22e5 · Repo öffentlich → SCHUTZMODUS an (G13).
 Datenweiche: jeder Projektbefehl nur über `_werkstatt/ausbau/werkzeuge/sicher.sh [--json|--pg] -- <befehl>` (als root läuft er als ubuntu); Selbsttest `sicher.test.sh`.
 Grenzen:
 - G1 nur dieses Repo; fremde Seiten nur lesend, ≤1 Abruf/s, robots.txt; Suche nur über Websuche.
