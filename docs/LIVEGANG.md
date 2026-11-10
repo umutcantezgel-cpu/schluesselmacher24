@@ -4,6 +4,21 @@ Der Code ist fertig: Zahlung (Stripe), E-Mails (Resend), Datenbank und Dateiabla
 
 Alle Variablen mit Erklärung stehen in `.env.example`. Auf Vercel gehören sie **nur in den Scope „Production“**. Vorschau-Deployments bauen ohne Datenbank, Zahlung und Mails und können so nichts kaputt machen.
 
+## Schaufenster: Stand vor dem Livegang
+
+Solange die Konten nicht eingerichtet sind, läuft die Produktion bei Vercel als **Schaufenster**. Der Schalter `scripts/schaufenster.json` (`"aktiv": true`) erlaubt dafür einen Produktions-Build ohne Datenbank. Die Seite zeigt Gestaltung und Inhalte aus `content/*.json`, damit sie sich ansehen und abnehmen lässt. Ohne den Schalter bricht ein Produktions-Build ohne Datenbank ab.
+
+Im Schaufenster gilt:
+
+- Bestellungen, Anfragen, Terminbuchungen und Uploads werden abgelehnt. Es wird nichts gespeichert, keine E-Mail verschickt und keine Zahlung gestartet. Formulare melden nach dem Absenden: „Das Absenden ist auf dieser Website noch nicht freigeschaltet. Bitte rufen Sie uns an oder schreiben Sie uns eine E-Mail.“ Upload-Felder melden entsprechend, dass sich Dateien noch nicht hochladen lassen.
+- Der Widerruf verweist auf die E-Mail-Adresse des Betriebs.
+- Das Backend (`/admin`) ist nicht nutzbar und zeigt eine Fehlerseite. Die täglichen Crons tun nichts (503 ohne `CRON_SECRET` oder ohne Datenbank, der Zahlungsabgleich wird übersprungen).
+- Suchmaschinen sind gesperrt (`robots.txt` und noindex), wie bei Vorschauen.
+- Die Rechtsseiten zeigen den Kasten „Hinweis für die Redaktion“: Die Texte sind Entwürfe.
+- Erreichbar ist das Schaufenster unter der Vercel-Adresse des Projekts (`<projekt>.vercel.app`). Die Domain zeigt es erst, wenn sie im Projekt eingetragen ist (Schritt 5.3).
+
+Das Schaufenster endet von selbst: Sobald in Vercel (Scope Production) eine Datenbank gesetzt ist (Schritte 2 und 5), gilt wieder die volle Pflichtprüfung, und der Build legt Tabellen, Inhalte und den ersten Zugang an. Danach in `scripts/schaufenster.json` `"aktiv": false` eintragen, sonst fiele die Produktion nach einem Verlust der Datenbank-Variablen still ins Schaufenster zurück. `SM24_SCHAUFENSTER=0` in Vercel verhindert auch ohne Commit weitere Schaufenster-Builds (`=1` erlaubt sie ohne die Datei). Die Variable wirkt nur beim Build: Das laufende Deployment bleibt erreichbar, bis ein anderes ausgeliefert oder es in Vercel entfernt wird.
+
 ## Überblick
 
 | Dienst | Wofür | Tarif |
@@ -108,7 +123,7 @@ Das Projekt `schluesselmacher24` ist bereits mit dem GitHub-Repo verbunden (Team
 ## 6. Erster Deploy und Abnahme
 
 1. **Deployments → Redeploy** auf `main`, ohne Build-Cache. Im Build-Log läuft:
-   - Prüfung der Pflichtvariablen (bricht mit klarer Meldung ab, wenn etwas fehlt)
+   - Prüfung der Pflichtvariablen (bricht mit klarer Meldung ab, wenn etwas fehlt; ganz ohne Datenbank baut nur das Schaufenster, siehe oben)
    - Migrationen, Seed (Firmendaten, Preise, Inhalte)
    - Anlage des ersten Backend-Zugangs
    - Livegang-Prüfung (bricht ab, wenn Firmendaten oder Rechtsseiten noch Platzhalter enthalten)

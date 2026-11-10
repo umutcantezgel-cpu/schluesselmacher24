@@ -3,7 +3,8 @@
  * Produktionsbuild (`npm run build`, auch auf Vercel).
  *
  * 1. Pflichtprüfungen: Ein Produktions-Build (VERCEL_ENV=production) bricht
- *    ab ohne Datenbank, PAYLOAD_SECRET oder NEXT_PUBLIC_SITE_URL und ohne
+ *    ab ohne Datenbank (Ausnahme: Schaufenster, siehe unten), ohne
+ *    PAYLOAD_SECRET oder NEXT_PUBLIC_SITE_URL und ohne
  *    verschlüsselte Datenbankverbindung (DATABASE_CA_CERT oder sslmode). Fehlende
  *    Anbindungen (Cron, Dateiablage, Mail, Zahlung) ergeben Warnungen.
  * 2. Mit Datenbank — lokal und in Produktion, in Vorschauen nur mit
@@ -19,13 +20,21 @@
  *    Datenbank ändern.
  * 3. `next build`. Ohne Datenbank liest die Seite content/*.json.
  *
+ * Schaufenster: Nur mit ausdrücklichem Schalter (scripts/schaufenster.json,
+ * `aktiv: true`) darf ein Produktions-Build ohne Datenbank laufen. Die Seite
+ * zeigt dann Gestaltung und Inhalte aus content/*.json, nimmt aber nichts an
+ * und bleibt für Suchmaschinen gesperrt (src/lib/umgebung.ts). Sobald eine
+ * Datenbank gesetzt ist, gilt die volle Pflichtprüfung — der Schalter lockert
+ * sie nicht.
+ *
  * Bewusst reines Node-ESM ohne TypeScript-Importe: Die Prüfungen hier sind
  * eigenständig (gleiche Regeln wie src/lib/umgebung.ts). Jeder Fehler endet
  * mit einem Exit-Code ungleich 0.
  */
 import { spawnSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 /** @typedef {Record<string, string | undefined>} Umgebung */
 
@@ -58,6 +67,41 @@ export function istProduktionsBuild(env) {
   return env.VERCEL_ENV === 'production';
 }
 
+/** Schalter des Schaufensters, neben diesem Skript. */
+export const SCHAUFENSTER_DATEI = path.join(path.dirname(fileURLToPath(import.meta.url)), 'schaufenster.json');
+
+export const SCHAUFENSTER_HINWEIS =
+  'SCHAUFENSTER: Produktions-Build ohne Datenbank (Schalter in scripts/schaufenster.json). Die Seite zeigt Gestaltung und '
+  + 'Inhalte aus content/*.json. Backend, Bestellungen, Anfragen, Uploads, E-Mails und Online-Zahlung sind aus, '
+  + 'Suchmaschinen bleiben gesperrt. Ende des Schaufensters: Datenbank-Variablen in Vercel setzen (docs/LIVEGANG.md), '
+  + 'dann gilt wieder die volle Pflichtprüfung.';
+
+/**
+ * Liest `aktiv` aus der Schalterdatei. Fehlt sie oder ist sie ungültig, ist
+ * das Schaufenster aus — im Zweifel gilt die Pflichtprüfung.
+ * @param {string} [datei]
+ */
+export function schaufensterSchalter(datei = SCHAUFENSTER_DATEI) {
+  try {
+    return JSON.parse(readFileSync(datei, 'utf8')).aktiv === true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Ist das Schaufenster erlaubt? SM24_SCHAUFENSTER=1 oder =0 in der Umgebung
+ * geht dem Schalter der Datei vor (in Vercel ohne Commit umstellbar).
+ * @param {Umgebung} env
+ * @param {boolean} [dateiAktiv]
+ */
+export function schaufensterErlaubt(env, dateiAktiv = false) {
+  const schalter = wert(env, 'SM24_SCHAUFENSTER');
+  if (schalter === '1') return true;
+  if (schalter === '0') return false;
+  return dateiAktiv;
+}
+
 /** sslmode-Werte, mit denen `pg` ohne eigenes Zertifikat verschlüsselt verbindet. */
 const SSL_MODI = ['require', 'verify-ca', 'verify-full'];
 
@@ -87,14 +131,26 @@ const ANBINDUNGEN = [
 /**
  * Prüft die Umgebung vor dem Build.
  * @param {Umgebung} env
+ * @param {{ schaufenster?: boolean }} [optionen] `schaufenster`: Schalter ist an (schaufensterErlaubt)
  * @returns {{ fehler: string[], warnungen: string[] }}
  */
-export function pruefeUmgebung(env) {
+export function pruefeUmgebung(env, { schaufenster = false } = {}) {
   /** @type {string[]} */
   const fehler = [];
   /** @type {string[]} */
   const warnungen = [];
   if (!istProduktionsBuild(env)) return { fehler, warnungen };
+
+  // Schaufenster: nur ganz ohne Datenbank. Geheimnis, Site-URL und Anbindungen
+  // braucht es dann nicht — das Backend ist aus (src/payload/betrieb.ts), die
+  // Adresse kommt von Vercel (src/lib/site-url.ts).
+  if (schaufenster && !datenbankUrl(env)) {
+    warnungen.push(SCHAUFENSTER_HINWEIS);
+    return { fehler, warnungen };
+  }
+  if (schaufenster) {
+    warnungen.push('Der Schaufenster-Schalter ist noch an, wirkt aber nicht mehr: Eine Datenbank ist gesetzt. Bitte scripts/schaufenster.json auf "aktiv": false stellen.');
+  }
 
   if (!datenbankUrl(env)) fehler.push('DATABASE_URL (oder POSTGRES_URL) fehlt — ohne Datenbank kein Backend, keine Vorgänge.');
   else if (env.SM24_DATA === 'json') fehler.push('SM24_DATA=json ist in Produktion nicht erlaubt (Seite liefe ohne Datenbank).');
@@ -184,12 +240,16 @@ async function main() {
   await umgebungLaden();
   const env = /** @type {Umgebung} */ (process.env);
 
-  const { fehler, warnungen } = pruefeUmgebung(env);
+  const schaufenster = schaufensterErlaubt(env, schaufensterSchalter());
+  const { fehler, warnungen } = pruefeUmgebung(env, { schaufenster });
   for (const warnung of warnungen) console.warn(`⚠ ${warnung}`);
   if (fehler.length) {
     console.error('Produktions-Build abgebrochen:');
     for (const eintrag of fehler) console.error(`  ✗ ${eintrag}`);
     console.error('Variablen in Vercel unter Settings → Environment Variables (Production) setzen.');
+    if (!datenbankUrl(env)) {
+      console.error('Nur zur Sichtprüfung ohne Datenbank: Schaufenster einschalten (scripts/schaufenster.json, docs/LIVEGANG.md).');
+    }
     process.exit(1);
   }
 

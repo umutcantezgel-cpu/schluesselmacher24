@@ -1,0 +1,6 @@
+{
+  "aktiv": true,
+  "seit": "2026-11-10",
+  "grund": "Sichtprüfung von Gestaltung und Texten durch den Inhaber vor dem Livegang. Ohne diesen Schalter bricht der Produktions-Build ohne Datenbank ab (scripts/build.mjs).",
+  "ende": "Datenbank-Variablen in Vercel setzen (docs/LIVEGANG.md, Abschnitte 2 und 5), danach hier \"aktiv\": false eintragen."
+}

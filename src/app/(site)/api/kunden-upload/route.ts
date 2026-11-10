@@ -12,7 +12,9 @@ import {
   saeubereDateiname,
 } from '@/lib/server/datei-pruefung';
 import { aufbewahrenBis, speichereKundendatei } from '@/lib/server/kundendateien';
+import { OHNE_SPEICHER_UPLOAD } from '@/lib/server/ohne-speicher';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
+import { speichernMoeglich } from '@/lib/umgebung';
 
 /*
  * POST /api/kunden-upload — eine Datei je Aufruf (Feld „datei“) plus „kategorie“.
@@ -62,6 +64,10 @@ export async function POST(request: Request): Promise<Response> {
   if (!gleicheHerkunft(request)) {
     return fehler(403, 'Die Anfrage wurde abgelehnt. Bitte laden Sie die Datei direkt über unser Formular hoch.');
   }
+
+  // Schaufenster und Vorschauen ohne Datenbank: Auch das Formular lehnt danach ab.
+  // Deshalb hier nicht „trotzdem absenden“ versprechen.
+  if (!speichernMoeglich()) return fehler(503, OHNE_SPEICHER_UPLOAD);
 
   if (!storageStatus().configured) {
     return fehler(

@@ -53,14 +53,45 @@ export function istProduktion(): boolean {
   return process.env.NODE_ENV === 'production';
 }
 
+/**
+ * Schaufenster: Produktion auf Vercel ohne Datenbank. Das lässt der Build nur
+ * mit ausdrücklichem Schalter zu (scripts/build.mjs, scripts/schaufenster.json).
+ * Die Seite zeigt dann Gestaltung und Inhalte aus content/*.json, nimmt aber
+ * nichts an: Formulare und Uploads lehnen ehrlich ab (src/lib/server/ohne-speicher.ts),
+ * die Datenschicht schreibt ohnehin nicht (src/lib/data/json-adapter.ts).
+ */
+export function istSchaufenster(): boolean {
+  return Boolean(process.env.VERCEL) && process.env.VERCEL_ENV === 'production' && !mitDatenbank();
+}
+
+/**
+ * Redaktions- und Prüfhinweise zeigen (etwa „Diese Rechtstexte sind Entwürfe“)?
+ * Überall außer auf der Live-Seite. Das Schaufenster dient der Sichtprüfung
+ * und zeigt sie deshalb wie eine Vorschau — sonst stünden ungeprüfte Entwürfe
+ * öffentlich ohne ihren Hinweis da.
+ */
+export function pruefhinweiseZeigen(): boolean {
+  return !istProduktion() || istSchaufenster();
+}
+
+/**
+ * Kann die Seite Vorgänge dauerhaft speichern? Nicht ohne Datenbank auf einem
+ * schreibgeschützten Dateisystem (Schaufenster und Vorschauen auf Vercel).
+ */
+export function speichernMoeglich(): boolean {
+  return mitDatenbank() || dateisystemSchreibbar();
+}
+
 /* ---------- Suchmaschinen ------------------------------------------------ */
 
 /**
  * Dürfen Suchmaschinen die Seiten aufnehmen? Nur in der Produktion — Vorschau-
  * Deployments und lokale Entwicklung stehen auf noindex (Erg. Leitfaden §4).
+ * Das Schaufenster zählt wie eine Vorschau: Eine Seite, die keine Bestellung
+ * annimmt, gehört nicht in den Index.
  */
 export function indexierungErlaubt(): boolean {
-  return istProduktion();
+  return istProduktion() && !istSchaufenster();
 }
 
 /** Bestätigung für die Google Search Console (`GOOGLE_SITE_VERIFICATION`), falls gesetzt. */

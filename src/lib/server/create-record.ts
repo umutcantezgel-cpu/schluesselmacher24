@@ -19,6 +19,7 @@ import { buildRecordId } from '@/lib/reference';
 import { VERLAUF } from '@/lib/zahlung/uebergaenge';
 import { heuteInBerlin, jahrInBerlin } from '@/lib/berliner-zeit';
 import { availableSlots, minutenInBerlin } from '@/lib/scheduling';
+import { speichernMoeglich } from '@/lib/umgebung';
 import type {
   AppointmentInfo,
   AreaKey,
@@ -40,6 +41,7 @@ import type {
 
 import { createAccessToken } from './access-token';
 import { benachrichtigeNeuerVorgang } from './benachrichtigungen';
+import { OHNE_SPEICHER } from './ohne-speicher';
 
 /**
  * Eingabe für einen Vorgang, die bereits geprüft ist.
@@ -80,6 +82,8 @@ export interface CreateRecordResult {
 const GENERIC_ERROR =
   'Der Vorgang konnte gerade nicht gespeichert werden. Bitte versuchen Sie es in einigen Minuten erneut.';
 
+export { OHNE_SPEICHER };
+
 const SLOT_TAKEN =
   'Der gewählte Termin ist inzwischen nicht mehr frei. Bitte wählen Sie ein anderes '
   + 'Zeitfenster aus.';
@@ -99,6 +103,10 @@ type PaymentRequest = NonNullable<TrustedRecordInput['payment']>;
 
 export async function createRecord(input: TrustedRecordInput): Promise<CreateRecordResult> {
   const notices: string[] = [];
+  // Ohne Datenbank auf schreibgeschütztem Dateisystem lehnt die Datenschicht jedes
+  // Speichern ab (src/lib/data/json-adapter.ts). Das gleich und ehrlich sagen,
+  // statt „in einigen Minuten erneut“ zu versprechen.
+  if (!speichernMoeglich()) return { ok: false, notices, error: OHNE_SPEICHER };
   const now = new Date();
   const timestamp = now.toISOString();
   const { token, hash } = createAccessToken();

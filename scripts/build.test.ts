@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
-import { planeBuild, pruefeUmgebung } from './build.mjs';
+import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+
+import { planeBuild, pruefeUmgebung, SCHAUFENSTER_DATEI, schaufensterErlaubt, schaufensterSchalter } from './build.mjs';
 
 const PRODUKTION = {
   VERCEL: '1',
@@ -87,6 +91,96 @@ describe('pruefeUmgebung', () => {
   it('prüft außerhalb der Produktion nichts', () => {
     expect(pruefeUmgebung({ VERCEL: '1', VERCEL_ENV: 'preview' })).toEqual({ fehler: [], warnungen: [] });
     expect(pruefeUmgebung({})).toEqual({ fehler: [], warnungen: [] });
+  });
+});
+
+describe('Schaufenster', () => {
+  const OHNE_DATENBANK = { VERCEL: '1', VERCEL_ENV: 'production' };
+
+  it('ohne Schalter bricht die Produktion ohne Datenbank weiter ab', () => {
+    expect(pruefeUmgebung(OHNE_DATENBANK).fehler).toHaveLength(3);
+    expect(pruefeUmgebung(OHNE_DATENBANK, { schaufenster: false }).fehler).toHaveLength(3);
+  });
+
+  it('mit Schalter läuft die Produktion ohne Datenbank durch und sagt es deutlich', () => {
+    const { fehler, warnungen } = pruefeUmgebung(OHNE_DATENBANK, { schaufenster: true });
+    expect(fehler).toEqual([]);
+    expect(warnungen).toHaveLength(1);
+    expect(warnungen[0]).toMatch(/^SCHAUFENSTER: Produktions-Build ohne Datenbank/);
+    expect(warnungen[0]).toMatch(/Suchmaschinen bleiben gesperrt/);
+    // Der Build selbst ist dann derselbe wie in einer Vorschau ohne Datenbank.
+    expect(namen(OHNE_DATENBANK)).toEqual(['Next.js-Build']);
+  });
+
+  it('lockert nichts, sobald eine Datenbank gesetzt ist', () => {
+    // Vollständige Produktion: nur der Hinweis, den Schalter auszuschalten.
+    const voll = pruefeUmgebung(PRODUKTION, { schaufenster: true });
+    expect(voll.fehler).toEqual([]);
+    expect(voll.warnungen).toHaveLength(1);
+    expect(voll.warnungen[0]).toMatch(/Schaufenster-Schalter ist noch an/);
+
+    // Jede Pflichtprüfung gilt weiter wie ohne Schalter.
+    const faelle = [
+      { ...PRODUKTION, PAYLOAD_SECRET: '' },
+      { ...PRODUKTION, NEXT_PUBLIC_SITE_URL: undefined },
+      { ...PRODUKTION, DATABASE_CA_CERT: ' ' },
+      { ...PRODUKTION, SM24_DATA: 'json' },
+    ];
+    for (const env of faelle) {
+      expect(pruefeUmgebung(env, { schaufenster: true }).fehler).toEqual(pruefeUmgebung(env).fehler);
+      expect(pruefeUmgebung(env, { schaufenster: true }).fehler).toHaveLength(1);
+    }
+    expect(namen(PRODUKTION)).toEqual(['Migrationen', 'Seed', 'Erster Backend-Zugang', 'Livegang-Prüfung', 'Next.js-Build']);
+
+    // Auch die Datenbank der Vercel-Integration (POSTGRES_URL) zählt als gesetzt.
+    const integration = { ...PRODUKTION, DATABASE_URL: undefined, POSTGRES_URL: 'postgres://vercel', PAYLOAD_SECRET: '' };
+    expect(pruefeUmgebung(integration, { schaufenster: true }).fehler).toEqual(pruefeUmgebung(integration).fehler);
+    expect(pruefeUmgebung(integration, { schaufenster: true }).fehler).toHaveLength(1);
+  });
+
+  it('zählt eine leere Datenbank-Adresse als ohne Datenbank', () => {
+    const leer = { ...OHNE_DATENBANK, DATABASE_URL: '  ', POSTGRES_URL: '' };
+    expect(pruefeUmgebung(leer, { schaufenster: true }).fehler).toEqual([]);
+    expect(pruefeUmgebung(leer).fehler).toHaveLength(3);
+  });
+
+  it('gilt nur in der Produktion', () => {
+    expect(pruefeUmgebung({ VERCEL: '1', VERCEL_ENV: 'preview' }, { schaufenster: true })).toEqual({ fehler: [], warnungen: [] });
+    expect(pruefeUmgebung({}, { schaufenster: true })).toEqual({ fehler: [], warnungen: [] });
+  });
+
+  it('liest den Schalter aus der Datei; fehlt sie oder ist sie ungültig, ist er aus', () => {
+    const ordner = mkdtempSync(path.join(tmpdir(), 'sm24-schaufenster-'));
+    const datei = (name: string, inhalt: string) => {
+      const pfad = path.join(ordner, name);
+      writeFileSync(pfad, inhalt);
+      return pfad;
+    };
+    expect(schaufensterSchalter(datei('an.json', '{ "aktiv": true }'))).toBe(true);
+    expect(schaufensterSchalter(datei('aus.json', '{ "aktiv": false }'))).toBe(false);
+    expect(schaufensterSchalter(datei('text.json', '{ "aktiv": "true" }'))).toBe(false);
+    expect(schaufensterSchalter(datei('leer.json', '{}'))).toBe(false);
+    expect(schaufensterSchalter(datei('kaputt.json', '{ aktiv'))).toBe(false);
+    expect(schaufensterSchalter(path.join(ordner, 'fehlt.json'))).toBe(false);
+  });
+
+  it('SM24_SCHAUFENSTER in der Umgebung geht der Datei vor', () => {
+    expect(schaufensterErlaubt({}, true)).toBe(true);
+    expect(schaufensterErlaubt({}, false)).toBe(false);
+    expect(schaufensterErlaubt({})).toBe(false);
+    expect(schaufensterErlaubt({ SM24_SCHAUFENSTER: '0' }, true)).toBe(false);
+    expect(schaufensterErlaubt({ SM24_SCHAUFENSTER: ' 1 ' }, false)).toBe(true);
+    expect(schaufensterErlaubt({ SM24_SCHAUFENSTER: 'ja' }, false)).toBe(false);
+    expect(schaufensterErlaubt({ SM24_SCHAUFENSTER: '' }, true)).toBe(true);
+  });
+
+  it('die Schalterdatei liegt im Repository neben dem Build-Skript und ist gültig', () => {
+    expect(SCHAUFENSTER_DATEI).toMatch(/scripts[\\/]schaufenster\.json$/);
+    // Ohne catch: Fehlt die Datei oder ist sie kaputt, schlägt der Test fehl —
+    // sonst bräche erst der Produktions-Build bei Vercel ab.
+    const inhalt = JSON.parse(readFileSync(SCHAUFENSTER_DATEI, 'utf8')) as { aktiv?: unknown };
+    expect(typeof inhalt.aktiv).toBe('boolean');
+    expect(schaufensterSchalter()).toBe(inhalt.aktiv);
   });
 });
 

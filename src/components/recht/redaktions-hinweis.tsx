@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
 
 import { Alert } from '@/components/ui/alert';
-import { istProduktion } from '@/lib/umgebung';
+import { pruefhinweiseZeigen } from '@/lib/umgebung';
 
 /**
  * Hinweis für Inhaber und Redaktion — erscheint nur außerhalb der Produktion
- * (lokal und in Vercel-Vorschauen), nie für Besucher der Live-Seite.
+ * (lokal, in Vercel-Vorschauen und im Schaufenster), nie für Besucher der Live-Seite.
  */
 export function RedaktionsHinweis({
   title,
@@ -16,7 +16,7 @@ export function RedaktionsHinweis({
   children: ReactNode;
   className?: string;
 }) {
-  if (istProduktion()) return null;
+  if (!pruefhinweiseZeigen()) return null;
   return (
     <Alert tone="warning" title={title} className={className}>
       {children}

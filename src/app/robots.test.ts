@@ -22,9 +22,22 @@ describe('robots.txt', () => {
   it('erlaubt in der Produktion das Crawlen und nennt die Sitemap', () => {
     vi.stubEnv('VERCEL', '1');
     vi.stubEnv('VERCEL_ENV', 'production');
+    vi.stubEnv('DATABASE_URL', 'postgres://pooler/db');
+    // Die eigene Shell darf den JSON-Modus nicht erzwingen (dann wäre es das Schaufenster).
+    vi.stubEnv('SM24_DATA', '');
     const regeln = robots();
     expect(regeln.rules).toEqual([expect.objectContaining({ userAgent: '*', allow: '/' })]);
     expect(regeln.sitemap).toMatch(/\/sitemap\.xml$/);
+  });
+
+  it('sperrt im Schaufenster (Produktion ohne Datenbank) alles wie in einer Vorschau', () => {
+    vi.stubEnv('VERCEL', '1');
+    vi.stubEnv('VERCEL_ENV', 'production');
+    vi.stubEnv('DATABASE_URL', '');
+    vi.stubEnv('POSTGRES_URL', '');
+    const regeln = robots();
+    expect(regeln.rules).toEqual([{ userAgent: '*', disallow: '/' }]);
+    expect(regeln.sitemap).toBeUndefined();
   });
 });
 

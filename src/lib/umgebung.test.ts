@@ -8,9 +8,12 @@ import {
   googleVerifizierung,
   indexierungErlaubt,
   istProduktion,
+  istSchaufenster,
   mailKonfiguration,
   mitDatenbank,
+  pruefhinweiseZeigen,
   serverUrl,
+  speichernMoeglich,
   zahlungKonfiguration,
 } from './umgebung';
 
@@ -84,15 +87,74 @@ describe('Dateisystem und Produktion', () => {
   });
 });
 
+describe('Schaufenster', () => {
+  it('ist nur die Produktion auf Vercel ohne Datenbank', () => {
+    expect(istSchaufenster()).toBe(false);
+    vi.stubEnv('NODE_ENV', 'production');
+    expect(istSchaufenster()).toBe(false);
+    vi.stubEnv('VERCEL', '1');
+    vi.stubEnv('VERCEL_ENV', 'preview');
+    expect(istSchaufenster()).toBe(false);
+    vi.stubEnv('VERCEL_ENV', 'production');
+    expect(istSchaufenster()).toBe(true);
+    vi.stubEnv('DATABASE_URL', 'postgres://pooler/db');
+    expect(istSchaufenster()).toBe(false);
+    vi.stubEnv('SM24_DATA', 'json');
+    expect(istSchaufenster()).toBe(true);
+  });
+
+  it('zeigt Redaktions- und Prüfhinweise überall außer auf der Live-Seite', () => {
+    // Lokal in der Entwicklung
+    expect(pruefhinweiseZeigen()).toBe(true);
+    // Lokaler Produktionsstart: wie die Live-Seite
+    vi.stubEnv('NODE_ENV', 'production');
+    expect(pruefhinweiseZeigen()).toBe(false);
+    // Vorschau auf Vercel
+    vi.stubEnv('VERCEL', '1');
+    vi.stubEnv('VERCEL_ENV', 'preview');
+    expect(pruefhinweiseZeigen()).toBe(true);
+    // Schaufenster: Produktion ohne Datenbank
+    vi.stubEnv('VERCEL_ENV', 'production');
+    expect(pruefhinweiseZeigen()).toBe(true);
+    // Live-Seite: Produktion mit Datenbank
+    vi.stubEnv('DATABASE_URL', 'postgres://pooler/db');
+    expect(pruefhinweiseZeigen()).toBe(false);
+  });
+
+  it('kann nur mit Datenbank oder beschreibbarem Dateisystem speichern', () => {
+    expect(speichernMoeglich()).toBe(true);
+    vi.stubEnv('SM24_READONLY_CONTENT', '1');
+    expect(speichernMoeglich()).toBe(false);
+    vi.stubEnv('SM24_READONLY_CONTENT', undefined);
+    vi.stubEnv('VERCEL', '1');
+    expect(speichernMoeglich()).toBe(false);
+    vi.stubEnv('DATABASE_URL', 'postgres://pooler/db');
+    expect(speichernMoeglich()).toBe(true);
+    vi.stubEnv('SM24_DATA', 'json');
+    expect(speichernMoeglich()).toBe(false);
+  });
+});
+
 describe('Suchmaschinen', () => {
   it('erlaubt die Indexierung nur in der Produktion', () => {
     vi.stubEnv('NODE_ENV', 'development');
     expect(indexierungErlaubt()).toBe(false);
     vi.stubEnv('NODE_ENV', 'production');
+    expect(indexierungErlaubt()).toBe(true);
     vi.stubEnv('VERCEL', '1');
     vi.stubEnv('VERCEL_ENV', 'preview');
     expect(indexierungErlaubt()).toBe(false);
+    vi.stubEnv('DATABASE_URL', 'postgres://pooler/db');
+    expect(indexierungErlaubt()).toBe(false);
     vi.stubEnv('VERCEL_ENV', 'production');
+    expect(indexierungErlaubt()).toBe(true);
+  });
+
+  it('sperrt das Schaufenster wie eine Vorschau', () => {
+    vi.stubEnv('VERCEL', '1');
+    vi.stubEnv('VERCEL_ENV', 'production');
+    expect(indexierungErlaubt()).toBe(false);
+    vi.stubEnv('POSTGRES_URL', 'postgres://vercel/db');
     expect(indexierungErlaubt()).toBe(true);
   });
 

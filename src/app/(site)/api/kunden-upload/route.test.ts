@@ -199,6 +199,23 @@ describe('POST /api/kunden-upload', () => {
     expect(await fehlerVon(response)).toMatch(/trotzdem absenden/);
   });
 
+  it('verspricht ohne Speicher (Schaufenster, Vorschau ohne Datenbank) kein späteres Absenden', async () => {
+    vi.stubEnv('VERCEL', '1');
+    vi.stubEnv('VERCEL_ENV', 'production');
+    vi.stubEnv('DATABASE_URL', '');
+    vi.stubEnv('POSTGRES_URL', '');
+    try {
+      const response = await route.POST(anfrage(formular({ kategorie: 'dokument', datei: [JPEG, 'a.jpg'] })));
+      expect(response.status).toBe(503);
+      const meldung = await fehlerVon(response);
+      expect(meldung).toMatch(/noch nicht hochladen/);
+      expect(meldung).not.toMatch(/trotzdem absenden/);
+      expect(speichere).not.toHaveBeenCalled();
+    } finally {
+      vi.unstubAllEnvs();
+    }
+  });
+
   it('unterscheidet beschädigte Dateien von Speicherfehlern', async () => {
     speichere.mockRejectedValueOnce(Object.assign(new Error('Invalid PDF file.'), { name: 'ValidationError' }));
     const beschaedigt = await route.POST(anfrage(formular({ kategorie: 'dokument', datei: [PDF, 'a.pdf'] })));

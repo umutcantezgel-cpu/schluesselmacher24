@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { FOOTER_LEGAL } from '@/lib/navigation';
 import { Alert } from '@/components/ui/alert';
-import { istProduktion } from '@/lib/umgebung';
+import { pruefhinweiseZeigen } from '@/lib/umgebung';
 
 export default function RechtlichesLayout({ children }: { children: ReactNode }) {
   return (
@@ -31,14 +31,14 @@ export default function RechtlichesLayout({ children }: { children: ReactNode })
         </nav>
 
         <div className="min-w-0 lg:col-span-8 lg:col-start-5">
-          {/* Nur außerhalb der Produktion: Die Texte sind Entwürfe und brauchen die Freigabe des Inhabers. */}
-          {!istProduktion() && (
+          {/* Nicht auf der Live-Seite, aber im Schaufenster: Die Texte sind Entwürfe und brauchen die Freigabe des Inhabers. */}
+          {pruefhinweiseZeigen() && (
             <Alert tone="legal" title="Hinweis für die Redaktion" className="mb-8 max-w-measure">
               Diese Rechtstexte sind vollständige Entwürfe aus den Firmendaten im Backend. Sie müssen
               <strong> vor dem Livegang juristisch geprüft</strong> und freigegeben werden. Eine
               eigene Fassung (etwa vom Anwalt) lässt sich im Backend unter „Einstellungen →
-              Rechtstexte“ hinterlegen und ersetzt dann den Entwurf. Dieser Kasten erscheint auf der
-              Live-Seite nicht.
+              Rechtstexte“ hinterlegen und ersetzt dann den Entwurf. Dieser Kasten erscheint nach dem
+              Livegang nicht mehr.
             </Alert>
           )}
 

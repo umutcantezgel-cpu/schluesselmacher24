@@ -7,7 +7,8 @@
  *   npm run pruefen:livegang
  *
  * Exit 1 bei einem Fund. Der Produktions-Build bricht dann ab
- * (scripts/build.mjs), andere Builds warnen nur.
+ * (scripts/build.mjs), andere Builds warnen nur. Ohne Datenbank (Schaufenster)
+ * läuft die Prüfung im Build nicht.
  */
 import { readFileSync } from 'node:fs';
 import path from 'node:path';

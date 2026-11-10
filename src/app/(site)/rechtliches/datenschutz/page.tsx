@@ -5,7 +5,7 @@ import { RedaktionsHinweis } from '@/components/recht/redaktions-hinweis';
 import { getSettings } from '@/lib/data';
 import { firmaVeroeffentlichbar } from '@/lib/rechtliches/firma';
 import { gaMessId } from '@/lib/statistik';
-import { istProduktion } from '@/lib/umgebung';
+import { pruefhinweiseZeigen } from '@/lib/umgebung';
 
 import { DatenschutzInhalt } from './datenschutz-inhalt';
 
@@ -25,7 +25,7 @@ export default async function DatenschutzPage() {
   return (
     <DatenschutzInhalt
       settings={settings}
-      pruefhinweise={!istProduktion()}
+      pruefhinweise={pruefhinweiseZeigen()}
       statistik={Boolean(gaMessId())}
       hinweis={
         !firmaVeroeffentlichbar(settings.company) && (
