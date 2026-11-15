@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: 'Ratgeber',
   description:
     'Antworten auf die häufigsten Fragen rund um Autoschlüssel, Schlüssel, Schließtechnik und '
-    + 'Einbruchschutz — jeweils mit einem klaren nächsten Schritt.',
+    + 'Einbruchschutz, jeweils mit einem klaren nächsten Schritt.',
   alternates: { canonical: '/ratgeber' },
 };
 

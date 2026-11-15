@@ -184,7 +184,7 @@ export default async function ModelPage(props: PageProps) {
       value:
         model.keyKinds.length > 0
           ? model.keyKinds.map((kind) => keyKindLabel(kind))
-          : 'nicht erfasst — wir klären das anhand Ihrer Schlüsselfotos',
+          : 'Nicht erfasst. Wir klären das anhand Ihrer Schlüsselfotos.',
     },
     {
       label: 'Fahrzeug zum Anlernen mitbringen',
@@ -222,38 +222,39 @@ export default async function ModelPage(props: PageProps) {
     {
       titel: daten.mitFahrzeug.length
         ? 'Ihr Fahrzeug muss zum Termin da sein'
-        : 'Ohne Fahrzeug möglich',
+        : daten.ohneFahrzeug.length
+          ? 'Ohne Fahrzeug möglich'
+          : 'Fahrzeug zum Termin',
       text: [
         daten.mitFahrzeug.length
-          ? `${daten.ohneFahrzeug.length ? `Für ${aufzaehlung(daten.mitFahrzeug.map((l) => `„${l}“`))}` : 'Für alle angebotenen Leistungen'} braucht es Zugriff auf Ihren ${make.name} ${model.name}; ein Versand des Schlüssels löst die Aufgabe dann nicht.`
+          ? `${daten.ohneFahrzeug.length ? `Für ${aufzaehlung(daten.mitFahrzeug.map((l) => `„${l}“`))}` : 'Für alle angebotenen Leistungen'} muss Ihr ${make.name} ${model.name} bei uns sein. Den Schlüssel nur einzuschicken reicht dann nicht.`
           : undefined,
         daten.ohneFahrzeug.length
           ? `${aufzaehlung(daten.ohneFahrzeug.map((l) => `„${l}“`))} ${daten.ohneFahrzeug.length === 1 ? 'geht' : 'gehen'} ohne Fahrzeug.`
           : undefined,
       ]
         .filter(Boolean)
-        .join(' ') || 'Ob das Fahrzeug nötig ist, hängt von der Leistung ab — das zeigt der Ablauf.',
+        .join(' ') || 'Ob das Fahrzeug nötig ist, hängt von der Leistung ab. Das sehen Sie im Ablauf.',
     },
     {
       titel: 'Baujahr entscheidet mit',
-      text: `${baujahrSatz} Innerhalb einer Baureihe ändern sich Schlüsselsysteme im Laufe der Zeit. `
-        + 'Geben Sie im Ablauf daher bitte das Baujahr Ihres Fahrzeugs an — es beeinflusst '
-        + 'Beschaffung und Aufwand.',
+      text: `${baujahrSatz} Auch innerhalb einer Baureihe ändern sich die Schlüssel mit der Zeit. `
+        + 'Geben Sie deshalb im Ablauf das Baujahr Ihres Fahrzeugs an. Es bestimmt Beschaffung '
+        + 'und Aufwand mit.',
     },
     {
       titel: 'Anzahlung und Vorlauf',
       text: [
-        daten.anzahlung ? `Die Anzahlung beträgt bei ${make.name} ${model.name} ${daten.anzahlung} und wird vollständig auf den Gesamtpreis angerechnet.` : undefined,
-        daten.vorlauf ? `Der früheste Termin liegt etwa ${daten.vorlauf} in der Zukunft, weil wir den passenden Schlüssel vorher beschaffen.` : undefined,
+        daten.anzahlung ? `Die Anzahlung für ${make.name} ${model.name} beträgt ${daten.anzahlung}. Sie wird vollständig auf den Gesamtpreis angerechnet.` : undefined,
+        daten.vorlauf ? `Bis zum frühesten Termin dauert es etwa ${daten.vorlauf}, weil wir den passenden Schlüssel vorher beschaffen.` : undefined,
       ]
         .filter(Boolean)
         .join(' ') || 'Anzahlung und Vorlauf sehen Sie im Ablauf, sobald die Leistung gewählt ist.',
     },
     {
       titel: 'Ein vorhandener Schlüssel hilft',
-      text: 'Solange mindestens ein funktionierender Schlüssel da ist, ist der Ablauf deutlich '
-        + 'planbarer. Ist kein Schlüssel mehr vorhanden, prüfen wir Unterlagen und '
-        + 'Machbarkeit gesondert, bevor ein Termin bestätigt wird.',
+      text: 'Mit einem funktionierenden Schlüssel lässt sich der Auftrag besser planen. Ist keiner '
+        + 'mehr da, prüfen wir Unterlagen und Machbarkeit einzeln. Erst dann bestätigen wir den Termin.',
     },
   ];
 
@@ -275,7 +276,7 @@ export default async function ModelPage(props: PageProps) {
         crumbs={crumbs}
         actions={
           <ButtonLink href={assistantHref} pfeil>
-            Mit diesem Fahrzeug starten
+            Termin anfragen
           </ButtonLink>
         }
         visual={
@@ -341,7 +342,7 @@ export default async function ModelPage(props: PageProps) {
             nummer="01"
             eyebrow="Datensatz"
             title="Das ist zu diesem Modell hinterlegt"
-            lead="Diese Angaben stammen aus unserem Fahrzeugdatensatz. Was darin nicht steht, erfinden wir nicht — das klären wir anhand Ihrer Schlüsselfotos."
+            lead="Diese Angaben stammen aus unseren Fahrzeugdaten. Was dort fehlt, klären wir anhand Ihrer Schlüsselfotos."
           />
           <div className="lg:col-span-7">
             <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
@@ -385,7 +386,7 @@ export default async function ModelPage(props: PageProps) {
           nummer="02"
           eyebrow="Leistungen und Preise"
           title={`Leistungen für ${make.name} ${model.name}`}
-          lead="Berechnet wie im Termin-Assistenten für dieses Modell, wenn mindestens ein funktionierender Schlüssel vorhanden ist."
+          lead="Die Preise gelten, wenn Sie noch einen funktionierenden Schlüssel haben. Wo es ohne Schlüssel anders ist, steht das dabei. Es sind dieselben Preise wie bei der Terminanfrage."
         />
         {preise.length > 0 ? (
           <ul className="mt-8 border-t border-border">
@@ -426,7 +427,7 @@ export default async function ModelPage(props: PageProps) {
                         {[...new Set(eintrag.ohneSchluessel.map((zeile) => preisAngabe(zeile.quote)))].join(' / ')}
                       </span>
                       {eintrag.ohneSchluessel.some((zeile) => erstNachPruefung(zeile.quote))
-                        && ' — verbindlich nach Prüfung der Unterlagen'}
+                        && ', verbindlich nach Prüfung der Unterlagen'}
                       .
                     </p>
                   )}
@@ -503,7 +504,7 @@ export default async function ModelPage(props: PageProps) {
             nummer="04"
             eyebrow="Einordnung"
             title="Was das für Ihren Auftrag bedeutet"
-            lead="Die technischen Angaben allein helfen wenig. Hier steht, was daraus für Ablauf, Termin und Aufwand folgt."
+            lead="Hier steht, was die Angaben für Ablauf, Termin und Aufwand bedeuten."
           />
 
           <ol className="border-t border-border lg:col-span-7">
@@ -530,7 +531,7 @@ export default async function ModelPage(props: PageProps) {
               nummer="05"
               eyebrow="Termin"
               title={werkstatt ? `Termin in der Werkstatt in ${werkstatt.city}` : 'Den Termin vorbereiten'}
-              lead="Kunden aus Mittelhessen und darüber hinaus können für ihren Termin anreisen; Einsätze vor Ort nur nach Prüfung."
+              lead="Sie kommen zum Termin in unsere Werkstatt, gern auch von außerhalb Mittelhessens."
             />
             {werkstatt && (
               <address className="mt-6 text-body not-italic text-foreground">
@@ -596,9 +597,9 @@ export default async function ModelPage(props: PageProps) {
                 <p className="mb-1 font-bold">Angaben ohne Gewähr für Ihr konkretes Fahrzeug</p>
                 Der Datensatz beschreibt die Baureihe {model.name}, nicht Ihr einzelnes Fahrzeug. Ausstattung,
                 Sonderausstattung, Umbauten und das genaue Baujahr können abweichen. Wir legen uns erst
-                fest, wenn uns Ihre Schlüsselfotos und der Fahrzeugschein vorliegen. Angaben, die hier
-                nicht stehen — etwa Rohlingstyp oder Elektronikvariante —, klären wir in der Prüfung und
-                nennen sie Ihnen vor der Terminbestätigung.
+                fest, wenn wir Ihre Schlüsselfotos und den Fahrzeugschein haben. Was hier fehlt, etwa
+                die Art des Rohlings oder der Elektronik, klären wir bei der Prüfung. Das Ergebnis
+                nennen wir Ihnen vor der Terminbestätigung.
               </div>
             </div>
           </div>
@@ -613,11 +614,11 @@ export default async function ModelPage(props: PageProps) {
               nummer="08"
               eyebrow="Anfrage"
               title="Der nächste Schritt"
-              lead="Marke und Modell sind im Ablauf schon vorbelegt. Sie ergänzen Baujahr, Schlüsselart und Ihre Fotos."
+              lead="Marke und Modell sind im Ablauf schon eingetragen. Sie ergänzen Baujahr und Schlüsselart und laden den Fahrzeugschein und Ihre Schlüsselfotos hoch. Sind alle Schlüssel verloren, entfallen die Fotos."
             />
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={assistantHref} size="lg" pfeil>
-                Mit diesem Fahrzeug starten
+                Termin anfragen
               </ButtonLink>
               <ButtonLink
                 href={`/autoschluessel/marken/${make.slug}`}

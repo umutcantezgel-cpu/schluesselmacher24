@@ -25,7 +25,7 @@ const istStandardartikel = (data: Record<string, unknown> | undefined) => data?.
  * Duplizieren (FA-KERN-05, FA-22-02). Payload hängt an eindeutige Textfelder sonst „ - Copy“ an: Die Adresse
  * wäre ungültig und die Kennung (Bezug von Warenkörben und Bestellungen) eine Abwandlung des Originals.
  * - Adresse: Original mit „-kopie-“ und einem kurzen Zeitstempel, damit sie eindeutig und gültig bleibt.
- * - Kennung: leer; beim Speichern übernimmt sie die neue Adresse (kennungFeld). Bestellungen des Originals
+ * - Kennung: leer (`null`); beim Speichern übernimmt sie die neue Adresse (kennungFeld). Bestellungen des Originals
  *   verweisen weiter nur auf dessen Kennung.
  * - Stand: Die Kopie startet immer als Entwurf.
  * - Bilder: Die Kopie verweist auf dieselben Bilder der Medienablage; es entstehen keine neuen Dateien.
@@ -36,7 +36,8 @@ export function kopieAdresse(slug: unknown, jetzt = Date.now()): string | undefi
   return `${slug.slice(0, 80 - zusatz.length).replace(/-+$/, '')}${zusatz}`;
 }
 const adresseBeimDuplizieren: FieldHook = ({ value }) => kopieAdresse(value);
-const kennungBeimDuplizieren: FieldHook = () => undefined;
+// `null`, nicht `undefined`: Bei `undefined` behält Payload den Wert des Originals.
+const kennungBeimDuplizieren: FieldHook = () => null;
 
 /** Beim Anlegen aus einer Kopie: immer als Entwurf (Payload reicht das Original als `originalDoc` durch). */
 export const kopieAlsEntwurf: CollectionBeforeChangeHook = ({ data, operation, originalDoc }) => {
@@ -49,6 +50,18 @@ export const kopieAlsEntwurf: CollectionBeforeChangeHook = ({ data, operation, o
 
 function mitDuplizierHaken(feld: TextField, haken: FieldHook): TextField {
   return { ...feld, hooks: { ...feld.hooks, beforeDuplicate: [haken] } } as TextField;
+}
+
+/**
+ * Beim Duplizieren reicht Payload das Original auch beim Anlegen als `originalDoc` an die Feld-Hooks. Die
+ * Kennung hielte dann die des Originals fest; beim Anlegen zählt darum nur die neue Adresse.
+ */
+function kennungOhneOriginalBeimAnlegen(feld: TextField): TextField {
+  const haken = (feld.hooks?.beforeChange ?? []).map(
+    (h): FieldHook =>
+      (args) => (args.operation === 'create' ? h({ ...args, originalDoc: undefined }) : h(args)),
+  );
+  return { ...feld, hooks: { ...feld.hooks, beforeChange: haken } } as TextField;
 }
 
 /**
@@ -102,7 +115,7 @@ export const Produkte: CollectionConfig = {
       }),
       adresseBeimDuplizieren,
     ),
-    mitDuplizierHaken(kennungFeld(), kennungBeimDuplizieren),
+    mitDuplizierHaken(kennungOhneOriginalBeimAnlegen(kennungFeld()), kennungBeimDuplizieren),
     {
       name: 'beispiel',
       type: 'checkbox',

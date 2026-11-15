@@ -39,11 +39,13 @@ export function pages(): PageContent[] {
     {
       route: 'autoschluessel',
       headline: 'Autoschlüssel',
-      subline: 'Nachmachen, programmieren, reparieren — mit klarem Ablauf und festem Termin.',
+      subline:
+        'Wir machen Autoschlüssel nach, programmieren und reparieren sie. Sie kommen mit festem Termin '
+        + 'in unsere Werkstatt in Wetzlar, gern auch von weiter her.',
       intro:
         'Ob Zweitschlüssel, Ersatz nach Verlust, Programmierung oder Reparatur: Wir klären zuerst, '
-        + 'was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder Preisrahmen. Erst dann '
-        + 'buchen Sie einen Termin.',
+        + 'was Ihr Fahrzeug braucht. Dann nennen wir Ihnen den Preis oder einen Preisrahmen. Erst '
+        + 'danach buchen Sie einen Termin.',
       title: 'Autoschlüssel-Werkstatt in Wetzlar',
       description:
         'Autoschlüssel nachmachen, programmieren und reparieren in Wetzlar. Wir klären zuerst, '
@@ -293,11 +295,11 @@ export function pages(): PageContent[] {
     {
       route: 'autoschluessel/marken',
       headline: 'Fahrzeugmarken und Modelle',
-      subline: 'Was bei Ihrem Fahrzeug technisch möglich ist.',
+      subline: 'Sehen Sie nach, welche Schlüsselarten es für Ihr Fahrzeug gibt und ob es zum Anlernen zu uns muss.',
       intro:
-        'Welche Schlüsselart Ihr Fahrzeug hat und ob es zum Anlernen vor Ort sein muss, hängt '
-        + 'von Marke, Modell und Baujahr ab. Hier finden Sie, was wir zu den gängigen Fahrzeugen '
-        + 'hinterlegt haben.',
+        'Welche Schlüsselart Ihr Fahrzeug hat, hängt von Marke, Modell und Baujahr ab. Davon hängt '
+        + 'auch ab, ob Ihr Fahrzeug zum Anlernen bei uns sein muss. Beim Anlernen tragen wir den neuen '
+        + 'Schlüssel im Fahrzeug ein. Hier sehen Sie, was wir zu gängigen Fahrzeugen hinterlegt haben.',
       title: 'Autoschlüssel je Marke und Modell',
       description:
         'Welche Schlüsselart hat Ihr Fahrzeug, und muss es zum Anlernen vor Ort sein? Das hängt '

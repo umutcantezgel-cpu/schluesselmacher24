@@ -13,7 +13,7 @@ import { formatCents, formatNumber } from '@/lib/format';
 import { istPlatzhalter } from '@/lib/platzhalter';
 import { keyKindLabel, keyKindShortLabel } from '@/components/autoschluessel/key-kinds';
 import { formatModelYears, hatBaujahre } from '@/components/autoschluessel/vehicle-facts';
-import { titelPasst } from '@/lib/titelbreite';
+import { MARKENZUSATZ, TITEL_MAX_ZEICHEN, titelPasst } from '@/lib/titelbreite';
 
 /* ==========================================================================
    Texte der Marken- und Modellseiten (Autoschlüssel)
@@ -27,7 +27,7 @@ import { titelPasst } from '@/lib/titelbreite';
    ========================================================================== */
 
 /** Höchstlänge des Titels ohne den Markenzusatz der Vorlage (fertig höchstens 60 Zeichen und 580 px). */
-export const TITEL_MAX = 40;
+export const TITEL_MAX = TITEL_MAX_ZEICHEN - [...MARKENZUSATZ].length;
 export const BESCHREIBUNG_MIN = 120;
 export const BESCHREIBUNG_MAX = 160;
 
@@ -206,7 +206,14 @@ export function modellTexte(
 
   // Titel ohne Baujahr und ohne Preise: Marke und Modell vorn, samt Markenzusatz in 580 px (FA-SEO-01B).
   const eigenerTitel = model.seo?.title?.trim();
-  const metaTitel = eigenerTitel || ersterPassender([`${name} Autoschlüssel`, `${name} Schlüssel`, name]);
+  const metaTitel = eigenerTitel || ersterPassender([
+    `${name} Autoschlüssel`,
+    `${name} Schlüssel`,
+    name,
+    // Nur bei sehr langen Marken- und Modellnamen: das Modell allein (FA-SEO-01B, Nachbesserung).
+    `${model.name} Autoschlüssel`,
+    model.name,
+  ]);
 
   // Beschreibung aus dem, was die Seite zeigt: Baujahre, Schlüsselarten, Preis je Leistung oder
   // Prüfung, Termin in der Werkstatt, Fahrzeug zum Termin. Keine Beträge und keine Fristen.
@@ -238,10 +245,15 @@ export function modellTexte(
   const einleitung =
     eigeneEinleitung
     ?? [
-      `Für ${name}${erfasst ? ` (Baujahre ${jahre})` : ''} sind ${arten.length ? `${formatNumber(arten.length)} Schlüsselarten erfasst: ${aufzaehlung(arten)}` : 'noch keine Schlüsselarten erfasst'}.`,
-      preise.length
-        ? `${formatNumber(preise.length)} ${preise.length === 1 ? 'Leistung ist' : 'Leistungen sind'} möglich${ab !== undefined ? `, Preise ab ${formatCents(ab)}` : ''} — berechnet wie im Termin-Assistenten.`
-        : undefined,
+      arten.length
+        ? `Für ${name}${erfasst ? ` (Baujahre ${jahre})` : ''} haben wir ${arten.length === 1 ? 'eine Schlüsselart' : `${formatNumber(arten.length)} Schlüsselarten`} erfasst: ${aufzaehlung(arten)}.`
+        : `Für ${name}${erfasst ? ` (Baujahre ${jahre})` : ''} haben wir noch keine Schlüsselart erfasst.`,
+      // Preis aus den Preisregeln dieses Modells: Untergrenze, sonst Prüfung; ohne Leistung kein Satz.
+      !preise.length
+        ? undefined
+        : ab !== undefined
+          ? `Die Preise beginnen bei ${formatCents(ab)}.`
+          : 'Den Preis nennen wir nach Prüfung Ihrer Unterlagen.',
     ]
       .filter(Boolean)
       .join(' ');
@@ -250,8 +262,8 @@ export function modellTexte(
     {
       question: `Welche Schlüsselarten gibt es für ${name}?`,
       answer: arten.length
-        ? `Für ${name}${erfasst ? ` (${jahre})` : ''} sind erfasst: ${aufzaehlung(arten)}. Welche Ihr Fahrzeug hat, erkennen wir an Ihren Schlüsselfotos und den Fahrzeugdaten.`
-        : 'Für dieses Modell sind noch keine Schlüsselarten erfasst. Wir klären das anhand Ihrer Schlüsselfotos und der Fahrzeugdaten.',
+        ? `Für ${name}${erfasst ? ` (${jahre})` : ''} haben wir erfasst: ${aufzaehlung(arten)}. Welche Art Ihr Fahrzeug hat, sehen wir an Ihren Schlüsselfotos und den Fahrzeugdaten.`
+        : 'Für dieses Modell haben wir noch keine Schlüsselart erfasst. Wir klären das anhand Ihrer Schlüsselfotos und der Fahrzeugdaten.',
     },
   ];
   // Fahrzeugbedarf, Anzahlung und Vorlauf stehen in der Einordnung der Seite — hier nicht doppelt.
@@ -261,7 +273,7 @@ export function modellTexte(
       question: alle
         ? `Warum gibt es für ${name} keinen festen Preis?`
         : `Warum steht bei manchen Leistungen für ${name} kein fester Preis?`,
-      answer: `${alle ? `Bei ${name}` : `Bei ${leistungen(daten.pruefung)}`} hängt der Aufwand vom einzelnen Fahrzeug ab. Der Preis wird verbindlich nach Prüfung der Unterlagen; wir nennen ihn vor der Terminbestätigung.`,
+      answer: `${alle ? `Bei ${name}` : `Bei ${leistungen(daten.pruefung)}`} hängt der Aufwand vom einzelnen Fahrzeug ab. Den Preis nennen wir verbindlich nach Prüfung der Unterlagen, noch vor der Terminbestätigung.`,
     });
   }
 
@@ -271,18 +283,21 @@ export function modellTexte(
           {
             titel: `Ihr Fahrzeug (${name})`,
             text: daten.ohneFahrzeug.length
-              ? `Nötig für ${leistungen(daten.mitFahrzeug)}.`
-              : 'Nötig für alle hier angebotenen Leistungen.',
+              ? `Wir brauchen es für ${leistungen(daten.mitFahrzeug)}.`
+              : 'Wir brauchen es für alle Leistungen auf dieser Seite.',
           },
         ]
       : []),
     {
       titel: 'Alle vorhandenen Schlüssel',
-      text: 'Bei manchen Fahrzeugen werden beim Anlernen sämtliche Schlüssel neu erfasst.',
+      text: 'Bei manchen Fahrzeugen müssen beim Anlernen alle Schlüssel neu eingetragen werden.',
     },
     {
       titel: 'Fahrzeugschein und Ausweisdokument',
-      text: 'Zulassungsbescheinigung Teil I — wir arbeiten nur an Fahrzeugen, über die Sie verfügen dürfen.',
+      // Nachweis im Wortlaut der Leistungsseiten (FA-INHALT-03A, R13).
+      text: 'Wir arbeiten nur an Fahrzeugen, über die Sie nachweislich verfügen dürfen. Sie zeigen uns Ihren '
+        + 'Ausweis und den Fahrzeugschein (Zulassungsbescheinigung Teil I). Steht das Fahrzeug nicht auf '
+        + 'Ihren Namen, brauchen wir zusätzlich eine Vollmacht des Halters.',
     },
   ];
 
@@ -308,11 +323,19 @@ export function markenTexte(make: VehicleMake): MarkenTexte {
   const modelle = [...make.models].sort((a, b) => a.name.localeCompare(b.name, 'de')).map((m) => m.name);
   const metaTitel =
     make.seo?.title?.trim()
-    || ersterPassender([`${make.name} Autoschlüssel je Modell`, `Autoschlüssel für ${make.name}`, `${make.name} Autoschlüssel`]);
+    || ersterPassender([
+      `${make.name} Autoschlüssel je Modell`,
+      `Autoschlüssel für ${make.name}`,
+      `${make.name} Autoschlüssel`,
+      make.name,
+    ]);
   // Lange Modelllisten kürzen, damit Platz für die Sätze zur Seite bleibt.
   const alleModelle = aufzaehlung(modelle);
+  const anzahl = `${formatNumber(zahl)} ${zahl === 1 ? 'Modell' : 'Modelle'}`;
   const modellText =
-    alleModelle.length <= 70 ? alleModelle : `${formatNumber(zahl)} Modelle, darunter ${aufzaehlung(modelle.slice(0, 3))}`;
+    [alleModelle, `${anzahl}, darunter ${aufzaehlung(modelle.slice(0, 3))}`, `${anzahl}, darunter ${modelle[0]}`].find(
+      (text) => text.length <= 70,
+    ) ?? anzahl;
   const metaBeschreibung =
     make.seo?.description?.trim()
     || imRahmen(`Autoschlüssel für ${make.name}: ${modellText}.`, [

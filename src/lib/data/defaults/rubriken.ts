@@ -24,23 +24,23 @@ export function rubriken(): Rubrik[] {
           icon: "fahrzeugmarke",
         },
         {
-          titel: "Fotos hochladen",
-          text: "Ihren Schlüssel aus drei Richtungen und den Fahrzeugschein.",
+          titel: "Unterlagen hochladen",
+          text: "Den Fahrzeugschein und drei Fotos Ihres Schlüssels. Sind alle Schlüssel verloren, entfallen die Fotos.",
           icon: "foto-hochladen",
         },
         {
           titel: "Preis oder Prüfung",
-          text: "Sie erhalten einen festen Preis, einen Preisrahmen oder den Hinweis auf eine manuelle Prüfung.",
+          text: "Sie sehen einen festen Preis oder einen Preisrahmen. Manche Fälle prüfen wir zuerst von Hand.",
           icon: "pruefung",
         },
         {
           titel: "Anzahlung",
-          text: "Standard {anzahlung}. Der Betrag wird vollständig auf den Gesamtpreis angerechnet.",
+          text: "In der Regel {anzahlung}. Die Anzahlung wird voll auf den Preis angerechnet.",
           icon: "anzahlung",
         },
         {
           titel: "Termin buchen",
-          text: "Der früheste Termin liegt etwa {vorlauf} in der Zukunft, weil wir Ihren Schlüssel vorher beschaffen. Zum Termin bringen Sie Ausweisdokument und Fahrzeugschein mit.",
+          text: "Der früheste Termin liegt etwa {vorlauf} in der Zukunft, weil wir Ihren Schlüssel vorher beschaffen. Zum Termin zeigen Sie uns Ihren Ausweis und den Fahrzeugschein. Steht das Fahrzeug nicht auf Ihren Namen, brauchen wir zusätzlich eine Vollmacht des Halters.",
           icon: "termin",
         },
       ],

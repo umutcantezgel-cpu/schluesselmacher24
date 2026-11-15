@@ -10,6 +10,7 @@ import vehiclesJson from '../../content/vehicles.json';
  * keine Einsatzgebiete, die noch Platzhalter enthalten. */
 
 const gebiete: { liste: CityPage[] } = { liste: [] };
+const rubrikAus = new Set<string>();
 const daten: { linien: CodeLine[]; marken: VehicleMake[]; artikel: StandardArticle[] } = { linien: [], marken: [], artikel: [] };
 
 vi.mock('@/lib/data', () => ({
@@ -22,6 +23,8 @@ vi.mock('@/lib/data', () => ({
   ],
   getGuides: async () => [],
   getCities: async () => gebiete.liste,
+  // Rubriken (FA-KERN-05): alle live, außer ein Test schaltet eine ab.
+  getRubriken: async () => defaults.rubriken().map((r) => ({ ...r, status: rubrikAus.has(r.id) ? 'spaeter' : 'live' })),
 }));
 
 const { default: sitemap } = await import('./sitemap');
@@ -174,5 +177,22 @@ describe('Sitemap', () => {
     } finally {
       motorrad.indexierbar = true;
     }
+  });
+
+  it('lässt Seiten einer Klasse weg, deren Rubrik nicht live ist (FA-KERN-05)', async () => {
+    const pfade = async () => (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
+    rubrikAus.add('motorradschluessel');
+    rubrikAus.add('fahrradschluessel');
+    try {
+      const urls = await pfade();
+      for (const pfad of ['/motorradschluessel', '/motorradschluessel/anfrage', '/fahrradschluessel', '/fahrradschluessel/anfrage']) {
+        expect(urls, pfad).not.toContain(pfad);
+      }
+      // Die anderen freigegebenen Klassen bleiben.
+      expect(urls).toContain('/roller-und-kleinstfahrzeuge');
+    } finally {
+      rubrikAus.clear();
+    }
+    expect(await pfade()).toContain('/fahrradschluessel');
   });
 });

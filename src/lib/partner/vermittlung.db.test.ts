@@ -154,7 +154,7 @@ describe('Vermittlung und Auszahlung in der Datenbank', () => {
     for (const status of ['neu', 'geprueft', 'partner-angefragt'] as const) {
       await alsTeam(auftrag.id, { vermittlung: { status, partnerbetrieb: partnerId } });
     }
-    const erstattet = await alsTeam(auftrag.id, { erstattung: { art: 'teilweise', betragCent: 5_000, grund: 'Kulanz' } });
+    const erstattet = await alsTeam(auftrag.id, { erstattung: { weg: 'zahlungsdienst', art: 'teilweise', betragCent: 5_000, grund: 'Kulanz' } });
     expect(erstattet.zahlung).toMatchObject({ status: 'teilweise-erstattet', erstattetCent: 5_000 });
     expect(erstattet.auszahlung?.stand).toBe('gesperrt');
     const gelesen = await getRecord(auftrag.id);

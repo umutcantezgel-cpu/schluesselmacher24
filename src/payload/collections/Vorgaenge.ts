@@ -297,10 +297,13 @@ export const Vorgaenge: CollectionConfig = {
     {
       name: 'nachrichtAnKunde',
       type: 'textarea',
-      label: 'Nachricht an den Kunden',
+      // Eigener Name, damit er nicht mit dem Knopf „Nachricht an den Kunden“ (FA-KERN-05) verwechselt wird.
+      label: 'Zusatz zur Statusmail',
       admin: {
         position: 'sidebar',
-        description: 'Optional. Wird in die E-Mail zur nächsten Statusänderung übernommen und danach geleert.',
+        description:
+          'Optional. Wird in die E-Mail zur nächsten Statusänderung übernommen und danach geleert. '
+          + 'Der Text steht danach mit der ganzen Mail im Reiter „E-Mails“.',
       },
     },
     {

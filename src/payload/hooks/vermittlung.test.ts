@@ -259,7 +259,7 @@ describe('Storno und Rückzahlung', () => {
 
   it('erfasst eine Teilerstattung, setzt „teilweise erstattet“ und sperrt die Auszahlung', async () => {
     const original = bestaetigt();
-    const data = await speichern(original, { erstattung: { art: 'teilweise', betragCent: 5_000, grund: 'Kulanz, Wartezeit' } });
+    const data = await speichern(original, { erstattung: { weg: 'zahlungsdienst', art: 'teilweise', betragCent: 5_000, grund: 'Kulanz, Wartezeit' } });
     expect(data.zahlung).toMatchObject({ status: 'teilweise-erstattet', erstattetCent: 5_000 });
     expect(data.auszahlung?.stand).toBe('gesperrt');
     expect(texte(data)).toContain('Auszahlung an den Partner gesperrt (Erstattung).');
@@ -271,20 +271,20 @@ describe('Storno und Rückzahlung', () => {
 
   it('prüft Art, Betrag und Grund und erstattet nur bezahlte Vorgänge', async () => {
     const original = bestaetigt();
-    await expect(speichern(original, { erstattung: { art: 'teilweise', betragCent: 5_000 } })).rejects.toThrow(ERSTATTUNG_MELDUNG.grund);
-    await expect(speichern(original, { erstattung: { art: 'teilweise', betragCent: 30_000, grund: 'x' } })).rejects.toThrow(ERSTATTUNG_MELDUNG.teilweise);
-    await expect(speichern(original, { erstattung: { art: 'ganz', betragCent: 40_000, grund: 'x' } })).rejects.toThrow(/höher als die Zahlung/);
-    const ganz = await speichern(original, { erstattung: { art: 'ganz', grund: 'Storno durch den Kunden' } });
+    await expect(speichern(original, { erstattung: { weg: 'zahlungsdienst', art: 'teilweise', betragCent: 5_000 } })).rejects.toThrow(ERSTATTUNG_MELDUNG.grund);
+    await expect(speichern(original, { erstattung: { weg: 'zahlungsdienst', art: 'teilweise', betragCent: 30_000, grund: 'x' } })).rejects.toThrow(ERSTATTUNG_MELDUNG.teilweise);
+    await expect(speichern(original, { erstattung: { weg: 'zahlungsdienst', art: 'ganz', betragCent: 40_000, grund: 'x' } })).rejects.toThrow(/höher als die Zahlung/);
+    const ganz = await speichern(original, { erstattung: { weg: 'zahlungsdienst', art: 'ganz', grund: 'Storno durch den Kunden' } });
     expect(ganz.zahlung).toMatchObject({ status: 'erstattet', erstattetCent: 30_000 });
     expect(ganz.auszahlung?.stand).toBe('gesperrt');
 
     const offen = doc({ zahlung: { umfang: 'gesamt', betragCent: 30_000, status: 'offen' } });
-    await expect(speichern(offen, { erstattung: { art: 'ganz', grund: 'x' } })).rejects.toThrow(ERSTATTUNG_MELDUNG.nichtBezahlt);
+    await expect(speichern(offen, { erstattung: { weg: 'zahlungsdienst', art: 'ganz', grund: 'x' } })).rejects.toThrow(ERSTATTUNG_MELDUNG.nichtBezahlt);
   });
 
   it('lässt den Zahlungsstand nach einer Erstattung nicht von Hand zurücksetzen; die Freigabe bleibt gesperrt', async () => {
     const original = bestaetigt();
-    const data = await speichern(original, { erstattung: { art: 'teilweise', betragCent: 5_000, grund: 'Kulanz' } });
+    const data = await speichern(original, { erstattung: { weg: 'zahlungsdienst', art: 'teilweise', betragCent: 5_000, grund: 'Kulanz' } });
     const erstattet = { ...original, ...data } as Vorgaenge;
     await expect(speichern(erstattet, { zahlung: { ...erstattet.zahlung, status: 'bezahlt' } })).rejects.toThrow(ERSTATTUNG_MELDUNG.zurueck);
     // Ohne Zahlungsreferenz greift dieselbe Sperre auch für „offen“ und „fehlgeschlagen“.
@@ -309,7 +309,7 @@ describe('Storno und Rückzahlung', () => {
 
   it('vermerkt die Sperre nur, wo es eine Partnerauszahlung gibt', async () => {
     const geprueft = doc();
-    const data = await speichern(geprueft, { erstattung: { art: 'ganz', grund: 'Storno vor der Vermittlung' } });
+    const data = await speichern(geprueft, { erstattung: { weg: 'zahlungsdienst', art: 'ganz', grund: 'Storno vor der Vermittlung' } });
     expect(texte(data)).not.toContain('Auszahlung an den Partner gesperrt (Erstattung).');
     expect(data.auszahlung?.stand ?? null).toBeNull();
   });

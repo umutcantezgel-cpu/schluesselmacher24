@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.seo.title ?? 'Gehäuse für Autoschlüssel anfragen',
     description:
       page?.seo.description
-      ?? 'In fünf Schritten zum neuen Gehäuse: Fahrzeug, Zahl der Tasten, Fotos von Schlüssel und Fahrzeugschein, Kontakt. Mit der Anfrage entsteht noch kein Vertrag.',
+      ?? 'In fünf Schritten zum neuen Gehäuse: Fahrzeug, Tasten, Fotos von Schlüssel und Fahrzeugschein, Kontakt und Absenden. Mit der Anfrage entsteht noch kein Vertrag.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

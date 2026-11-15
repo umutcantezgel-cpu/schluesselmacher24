@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.seo.title ?? 'Motorradschlüssel anfragen',
     description:
       page?.seo.description
-      ?? 'In sechs Schritten zum Motorradschlüssel: Motorrad, Schlüssel mit drei Fotos, Unterlagen, Beschreibung und Kontakt. Mit der Anfrage entsteht kein Vertrag.',
+      ?? 'Motorradschlüssel in sechs Schritten: Motorrad, Schlüssel und Chip, Unterlagen und drei Fotos, Beschreibung, Kontakt und Absenden. Die Anfrage ist kein Vertrag.',
     alternates: { canonical: `/${ROUTE}` },
     // Schalter `indexierbar` der Klasse (ANFRAGE_FORMULAR.motorrad), wie bei den anderen Klassen; Rubrik nicht live: noindex.
     ...(await robotsNachStand('motorrad')),

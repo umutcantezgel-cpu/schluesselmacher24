@@ -19,9 +19,15 @@ vi.mock('next/navigation', () => ({
   useSearchParams: () => new URLSearchParams(),
 }));
 
+// Rubriken der Klassen (FA-KERN-05): live, außer ein Test schaltet eine ab.
+const nichtLive = new Set<string>();
 vi.mock('@/lib/data', () => ({
   getPageContent: async () => null,
   getSettings: async () => defaults.settings(),
+  getRubrik: async (id: string) => {
+    const rubrik = defaults.rubriken().find((r) => r.id === id);
+    return rubrik && !nichtLive.has(id) ? { ...rubrik, status: 'live' } : null;
+  },
 }));
 
 const { EinstiegSeite, FahrzeugAnfrageInhalt, seitenMetadata } = await import('./seiten');
@@ -78,7 +84,8 @@ describe('Motorradseiten', () => {
       expect(String(offen.description).length).toBeGreaterThanOrEqual(120);
       expect(String(offen.description).length).toBeLessThanOrEqual(160);
     }
-    expect(String((await anfrage.generateMetadata()).title)).toBe('Motorradschlüssel: Anfrage mit Fahrzeugschein und drei Fotos');
+    // Suchtitel samt Marke in 580 px (FA-SEO-01B); die Unterlagen nennt die Beschreibung.
+    expect(String((await anfrage.generateMetadata()).title)).toBe('Motorradschlüssel anfragen');
     const motorrad = ANFRAGE_FORMULAR.motorrad as { indexierbar: boolean };
     motorrad.indexierbar = false;
     try {
@@ -161,5 +168,49 @@ describe('Seiten der neuen Klassen', () => {
     expect(new Set(texte).size).toBe(texte.length);
     // Kein Gedankenstrich in den Seitentexten.
     for (const text of texte) expect(text).not.toMatch(/[–—]| - /);
+  });
+});
+
+describe('Rubrik nicht live (FA-KERN-05)', () => {
+  it.each(['motorrad', ...NEU] as const)('%s: Hinweis mit Telefon statt Formular, Seiten auf noindex', async (klasse) => {
+    const { KLASSE_RUBRIK } = await import('./seiten');
+    nichtLive.add(KLASSE_RUBRIK[klasse]);
+    try {
+      const html = renderToStaticMarkup(await FahrzeugAnfrageInhalt({ klasse }));
+      expect(html).toContain('data-block="rubrik-pausiert"');
+      expect(html).toContain('Diese Anfrage ist gerade nicht online möglich');
+      expect(html).not.toContain('<form');
+      expect(html).not.toContain(ANFRAGE_FORMULAR[klasse].fahrzeugFrage.replace('?', ''));
+      if (klasse !== 'motorrad') {
+        expect((await seitenMetadata(klasse, 'anfrage')).robots).toEqual({ index: false, follow: true });
+        if (ANFRAGE_FORMULAR[klasse].einstieg) {
+          expect((await seitenMetadata(klasse, 'einstieg')).robots).toEqual({ index: false, follow: true });
+        }
+      }
+    } finally {
+      nichtLive.clear();
+    }
+  });
+
+  it('Einstiegsseite zeigt den Hinweis statt des Knopfs zur Anfrage', async () => {
+    nichtLive.add('fahrradschluessel');
+    try {
+      const html = renderToStaticMarkup(await EinstiegSeite({ klasse: 'fahrrad', abschnitte: [{ titel: 'Testabschnitt', absaetze: ['Testabsatz.'] }] }));
+      expect(html).toContain('data-block="rubrik-pausiert"');
+      expect(html).not.toContain(`href="${ANFRAGE_FORMULAR.fahrrad.anfrage}"`);
+    } finally {
+      nichtLive.clear();
+    }
+  });
+
+  it('Motorradseiten: Rubrik nicht live heißt noindex und kein Knopf zur Anfrage', async () => {
+    const einstieg = await import('@/app/(site)/motorradschluessel/page');
+    const anfrage = await import('@/app/(site)/motorradschluessel/anfrage/page');
+    nichtLive.add('motorradschluessel');
+    try {
+      for (const seite of [einstieg, anfrage]) expect((await seite.generateMetadata()).robots).toEqual({ index: false, follow: true });
+    } finally {
+      nichtLive.clear();
+    }
   });
 });

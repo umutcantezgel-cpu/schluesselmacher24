@@ -9,7 +9,7 @@ import { VersandInhalt } from './versand-inhalt';
 export const metadata: Metadata = {
   title: 'Zahlung und Versand',
   description:
-    'Liefergebiet, Versandarten und Lieferzeiten, Zahlungsarten und die Anzahlung bei '
+    'Liefergebiet, Versandarten mit Kosten, Zahlungsarten und die Anzahlung bei '
     + 'Terminaufträgen: So laufen Zahlung und Versand bei SCHLÜSSELMACHER24.',
   alternates: { canonical: '/rechtliches/versand-und-zahlung' },
 };

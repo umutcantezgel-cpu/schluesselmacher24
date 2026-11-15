@@ -25,8 +25,8 @@ function nomen(n: number, einzahl: string, mehrzahl: string): string {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const [page, makes] = await Promise.all([getPageContent(ROUTE), getVehicleMakes()]);
-  const modelCount = makes.reduce((sum, make) => sum + make.models.length, 0);
+  // Rückfall ohne Zahlen: gleich content/seo.json (FA-SEO-01B).
+  const page = await getPageContent(ROUTE);
 
   return {
     title: page?.seo.title ?? 'Autoschlüssel je Marke und Modell',
@@ -70,16 +70,17 @@ export default async function MarkenPage() {
         title={page?.headline ?? 'Marken und Modelle'}
         lead={
           page?.subline
-          ?? 'Schlagen Sie nach, welche Schlüsselarten bei Ihrem Fahrzeug vorkommen und ob es zum '
-            + 'Anlernen bei uns stehen muss.'
+          ?? 'Sehen Sie nach, welche Schlüsselarten es für Ihr Fahrzeug gibt und ob es zum Anlernen '
+            + 'zu uns muss.'
         }
         crumbs={[
           { href: '/autoschluessel', label: 'Autoschlüssel' },
           { href: '/autoschluessel/marken', label: 'Marken' },
         ]}
         actions={
+          /* Ein Knopftext je Ziel (A-031) */
           <ButtonLink href="/autoschluessel/anfrage" pfeil>
-            Fahrzeug auswählen und Termin starten
+            Termin anfragen
           </ButtonLink>
         }
       />
@@ -92,19 +93,18 @@ export default async function MarkenPage() {
               <p>
                 {page?.intro
                   ?? `Für ${formatNumber(makes.length)} ${nomen(makes.length, 'Marke', 'Marken')} `
-                    + `mit insgesamt ${formatNumber(modelCount)} ${nomen(modelCount, 'Modell', 'Modellen')} `
-                    + 'haben wir hinterlegt, welche Schlüsselarten vorkommen und ob das '
-                    + 'Fahrzeug zum Anlernen in die Werkstatt mitkommen muss.'}
+                    + `mit ${formatNumber(modelCount)} ${nomen(modelCount, 'Modell', 'Modellen')} `
+                    + 'zeigen wir, welche Schlüsselarten es gibt. Sie sehen auch, ob das '
+                    + 'Fahrzeug zum Anlernen in die Werkstatt muss.'}
               </p>
               <p>
-                Diese Angaben sind eine Orientierung für die Planung. Welche Variante Ihr Fahrzeug
-                tatsächlich hat, erkennen wir sicher erst an Ihren Schlüsselfotos und den
-                Fahrzeugdaten — Ausstattung und Baujahr können innerhalb einer Baureihe abweichen.
+                Die Angaben helfen bei der Planung. Welche Variante Ihr Fahrzeug wirklich hat, sehen
+                wir erst an Ihren Schlüsselfotos und den Fahrzeugdaten. Denn Ausstattung und Baujahr
+                können innerhalb einer Baureihe abweichen.
               </p>
               <p>
-                Ist Ihre Marke oder Ihr Modell nicht aufgeführt, heißt das nicht, dass wir nicht
-                helfen können. Nutzen Sie in diesem Fall den geführten Ablauf, damit wir Ihren Fall
-                einzeln prüfen.
+                Fehlt Ihre Marke oder Ihr Modell, können wir vielleicht trotzdem helfen. Senden Sie
+                uns eine Anfrage. Wir prüfen Ihr Fahrzeug einzeln.
               </p>
             </div>
 
@@ -133,7 +133,7 @@ export default async function MarkenPage() {
         <SectionHeading
           eyebrow="Übersicht"
           title="Alle erfassten Hersteller"
-          lead="Alphabetisch sortiert, mit der Anzahl der hinterlegten Modelle."
+          lead="Nach dem Alphabet sortiert. Bei jeder Marke steht, wie viele Modelle wir hinterlegt haben."
         />
 
         {/* Stückliste: je Marke eine ganze Zeile als Link, ab lg zwei Spalten */}
@@ -176,7 +176,7 @@ export default async function MarkenPage() {
           <SectionHeading
             eyebrow="Von A bis Z"
             title="Alle Automarken im Fahrzeugkatalog"
-            lead={`${formatNumber(azMarken.length)} Marken aus der Statistik des Kraftfahrt-Bundesamts. Marken mit eigener Seite führen dorthin, alle anderen in die Anfrage, in der wir Ihr Fahrzeug einzeln prüfen.`}
+            lead={`Hier stehen ${formatNumber(azMarken.length)} Automarken aus der Statistik des Kraftfahrt-Bundesamts. Hat eine Marke eine eigene Seite, kommen Sie dorthin. Sonst kommen Sie zur Anfrage, und wir prüfen Ihr Fahrzeug einzeln.`}
           />
           <ul className="mt-8 grid grid-cols-2 gap-x-gutter border-t border-border sm:grid-cols-3 lg:grid-cols-4">
             {azMarken.map(({ marke, reihen }) => {
@@ -210,7 +210,7 @@ export default async function MarkenPage() {
           <div className="lg:col-span-7">
             <SectionHeading
               title="Der nächste Schritt"
-              lead="Im geführten Ablauf wählen Sie Marke, Modell und Baujahr aus und laden Ihre Fotos hoch."
+              lead="Bei der Terminanfrage wählen Sie Marke, Modell und Baujahr. Dann laden Sie den Fahrzeugschein und drei Fotos Ihres Schlüssels hoch. Sind alle Schlüssel verloren, entfallen die Fotos."
             />
             {/* Ablauf aus den Rubrikdaten (G-10, G-11) */}
             {rubrik && (
@@ -221,7 +221,7 @@ export default async function MarkenPage() {
             )}
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/autoschluessel/anfrage" size="lg" pfeil>
-                Fahrzeug auswählen
+                Termin anfragen
               </ButtonLink>
               <ButtonLink href="/autoschluessel" size="lg" variant="outline">
                 Alle Leistungen ansehen

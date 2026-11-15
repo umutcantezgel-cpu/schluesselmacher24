@@ -33,8 +33,8 @@
   {
     "route": "autoschluessel",
     "headline": "Autoschlüssel",
-    "subline": "Nachmachen, programmieren, reparieren, mit festem Termin in Wetzlar. Für Mittelhessen und alle, die anreisen.",
-    "intro": "Ob Zweitschlüssel, Ersatz nach Verlust, Programmierung oder Reparatur: Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder Preisrahmen. Erst dann buchen Sie einen Termin.",
+    "subline": "Wir machen Autoschlüssel nach, programmieren und reparieren sie. Sie kommen mit festem Termin in unsere Werkstatt in Wetzlar, gern auch von weiter her.",
+    "intro": "Ob Zweitschlüssel, Ersatz nach Verlust, Programmierung oder Reparatur: Wir klären zuerst, was Ihr Fahrzeug braucht. Dann nennen wir Ihnen den Preis oder einen Preisrahmen. Erst danach buchen Sie einen Termin.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -473,8 +473,8 @@
   {
     "route": "autoschluessel/marken",
     "headline": "Fahrzeugmarken und Modelle",
-    "subline": "Was bei Ihrem Fahrzeug technisch möglich ist.",
-    "intro": "Welche Schlüsselart Ihr Fahrzeug hat und ob es zum Anlernen, dem Eintragen des Schlüssels im Auto, vor Ort sein muss, hängt von Marke, Modell und Baujahr ab. Hier finden Sie, was wir zu den gängigen Fahrzeugen hinterlegt haben.",
+    "subline": "Sehen Sie nach, welche Schlüsselarten es für Ihr Fahrzeug gibt und ob es zum Anlernen zu uns muss.",
+    "intro": "Welche Schlüsselart Ihr Fahrzeug hat, hängt von Marke, Modell und Baujahr ab. Davon hängt auch ab, ob Ihr Fahrzeug zum Anlernen bei uns sein muss. Beim Anlernen tragen wir den neuen Schlüssel im Fahrzeug ein. Hier sehen Sie, was wir zu gängigen Fahrzeugen hinterlegt haben.",
     "sections": [],
     "faq": [],
     "seo": {

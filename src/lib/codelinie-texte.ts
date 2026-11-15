@@ -2,6 +2,7 @@ import type { CodeLine, Guide, ShippingOption } from '@/lib/types';
 import { generatorTexte } from '@/lib/data/defaults/code-lines';
 import { formatCents, formatNumber } from '@/lib/format';
 import { unitPriceForCodeLine } from '@/lib/pricing';
+import { MARKENZUSATZ, TITEL_MAX_ZEICHEN, titelPasst } from '@/lib/titelbreite';
 import {
   anwendungKurz,
   codelinienFamilie,
@@ -24,9 +25,13 @@ import {
    diese Linie (`generatorTexte`), verglichen ohne Groß- und Kleinschreibung.
    ========================================================================== */
 
-/** Höchstlänge des Titels ohne den Markenzusatz der Vorlage. */
-export const TITEL_MAX = 60;
-/** Höchstlänge der Meta-Beschreibung. */
+/**
+ * Höchstlänge des Titels ohne den Markenzusatz der Vorlage. Der fertige Titel samt
+ * „ | SCHLÜSSELMACHER24“ bleibt zusätzlich in 60 Zeichen und 580 px (`titelPasst`, FA-SEO-01B).
+ */
+export const TITEL_MAX = TITEL_MAX_ZEICHEN - [...MARKENZUSATZ].length;
+/** Mindest- und Höchstlänge der Meta-Beschreibung. */
+export const BESCHREIBUNG_MIN = 120;
 export const BESCHREIBUNG_MAX = 160;
 
 function normal(text: string): string {
@@ -70,6 +75,26 @@ function bisLaenge(pflicht: string, optional: string[], max: number): string {
     if (`${text} ${teil}`.length <= max) text = `${text} ${teil}`;
   }
   return text;
+}
+
+/**
+ * Beschreibung zwischen `BESCHREIBUNG_MIN` und `BESCHREIBUNG_MAX` Zeichen: Pflichtsatz und so viele
+ * der weiteren Sätze, wie hineinpassen, frühere vor späteren. Reicht keine Auswahl in den Rahmen,
+ * gilt die längste Auswahl bis zur Höchstlänge (FA-SEO-01B).
+ */
+function imRahmen(pflicht: string, optional: Array<string | undefined>): string {
+  const teile = optional.filter((teil): teil is string => Boolean(teil));
+  const suche = (text: string, i: number): string | undefined => {
+    if (i === teile.length) return text.length >= BESCHREIBUNG_MIN && text.length <= BESCHREIBUNG_MAX ? text : undefined;
+    const mit = `${text} ${teile[i]}`;
+    return (mit.length <= BESCHREIBUNG_MAX ? suche(mit, i + 1) : undefined) ?? suche(text, i + 1);
+  };
+  return suche(pflicht, 0) ?? bisLaenge(pflicht, teile, BESCHREIBUNG_MAX);
+}
+
+/** Erster Titelvorschlag, der samt Markenzusatz in 580 px und 60 Zeichen passt, sonst der letzte. */
+function ersterPassender(vorschlaege: string[]): string {
+  return vorschlaege.find(titelPasst) ?? vorschlaege[vorschlaege.length - 1];
 }
 
 /** Staffelstufen unterhalb der Höchstmenge, die wirklich günstiger sind. */
@@ -205,28 +230,36 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
   const verwandte = verwandteLinien(line, kontext.alle);
   const hinweisFoto = gepflegt(line.photoUploadHint);
 
-  /* Titel: der erste Vorschlag, der in 60 Zeichen passt. */
+  /* Titel: der erste Vorschlag, der samt Markenzusatz in 580 px und 60 Zeichen passt; ohne Gedankenstrich. */
   const titelVorschlaege = [
-    ...(marke ? [`${art} ${marke} nach Code – ${kurz}`, `${art} ${marke} nach Code (${kennung})`] : []),
-    `${kurz} – ${art} nach Code (${kennung})`,
-    `${kurz} – ${art} nach Code`,
-    `${kurz} – Schlüssel nach Code`,
-    `${kurz} – nach Code`,
-    `${kurz} (${kennung})`,
+    ...(marke
+      ? [
+          `${art} ${marke} nach Code: ${kurz}`,
+          `${art} ${marke} nach Code (${kennung})`,
+          `${art} ${marke} (${kennung})`,
+          ...(hersteller ? [`${hersteller} ${art} (${kennung})`] : []),
+        ]
+      : []),
+    `${kurz}: ${art} nach Code`,
+    `${kurz}: Schlüssel nach Code`,
+    `${kurz} nach Code`,
+    `${art} nach Code (${kennung})`,
+    `${art} (${kennung})`,
   ];
-  const metaTitel = eigen.titel ?? titelVorschlaege.find((t) => t.length <= TITEL_MAX) ?? kurz;
+  const metaTitel = eigen.titel ?? ersterPassender(titelVorschlaege);
 
+  // Beschreibung aus den Angaben der Seite, ohne Beträge (FA-SEO-01B); Preis und Staffel stehen auf der Seite.
   const metaBeschreibung =
     eigen.metaBeschreibung
-    ?? bisLaenge(
-      `${art} für ${kurz} nach Code bestellen – Codelinie ${kennung}${marke ? `, ${marke}` : ''}.`,
+    ?? imRahmen(
+      `${art} für ${kurz} nach Code bestellen: Codelinie ${kennung}${marke ? `, ${marke}` : ''}.`,
       [
-        ...(format ? [`Codeformat: ${format}${beispiel ? `, z. B. ${beispiel}` : ''}.`] : []),
-        `${preis} je Stück.`,
-        'Ohne Einsendung des Originalschlüssels.',
-        ...(stufen[0] ? [`Ab ${formatNumber(stufen[0].minQty)} Stück ${formatCents(stufen[0].priceCents)}.`] : []),
+        format ? `Codeformat: ${format}${beispiel ? `, z. B. ${beispiel}` : ''}.` : undefined,
+        // Wie in der Einleitung und im Bestellformular; ein Satz, nicht zwei gleichbedeutende.
+        'Ihr Originalschlüssel bleibt bei Ihnen.',
+        stufen[0] ? `Staffelpreis ab ${formatNumber(stufen[0].minQty)} Stück.` : undefined,
+        'Sie geben den Code ein, wir fertigen danach.',
       ],
-      BESCHREIBUNG_MAX,
     );
 
   const einleitung =
@@ -362,14 +395,16 @@ export function kategorieTexte(
   const hersteller = eindeutig(lines.map((line) => gepflegt(line.manufacturer)));
   const fundstelle = lines.map((line) => fundstelleAusRatgeber(ratgeber, line)).find(Boolean);
 
-  const titelVorschlaege = [`${name} – Schlüssel nach Code`, `${name} nach Code`, name];
-  const metaTitel = titelVorschlaege.find((t) => t.length <= TITEL_MAX) ?? name;
+  const titelVorschlaege = [`${name}: Schlüssel nach Code`, `${name} nach Code`, `${typText} nach Code`, name];
+  const metaTitel = ersterPassender(titelVorschlaege);
 
-  const metaBeschreibung = bisLaenge(
-    `${typText} nach Code für ${name}: ${formatNumber(zahl)} ${nomen}, ${spanne} je Stück.`,
-    [`Für ${aufzaehlung(anwendungen)}.`, 'Ohne Einsendung des Originalschlüssels.'],
-    BESCHREIBUNG_MAX,
-  );
+  // Ohne Beträge (FA-SEO-01B); die Preisspanne steht auf der Seite.
+  const metaBeschreibung = imRahmen(`${typText} nach Code für ${name}: ${formatNumber(zahl)} ${nomen}.`, [
+    `Für ${aufzaehlung(anwendungen)}.`,
+    'Ohne Einsendung des Originalschlüssels.',
+    'Den Preis je Stück sehen Sie bei jeder Linie.',
+    'Sie geben den Code ein, wir fertigen danach.',
+  ]);
 
   const einleitung =
     `${formatNumber(zahl)} ${nomen} für ${aufzaehlung(anwendungen)}. `
@@ -408,14 +443,16 @@ export function herstellerTexte(name: string, lines: CodeLine[]): GruppenTexte {
   const spanne = preisSpanne(lines);
 
   const titelVorschlaege = [`${name}: Schlüssel nach Code bestellen`, `${name}: Schlüssel nach Code`, name];
-  const metaTitel = titelVorschlaege.find((t) => t.length <= TITEL_MAX) ?? name;
-  const metaBeschreibung = bisLaenge(
-    `Schlüssel nach Code für Schlösser von ${name}: ${formatNumber(zahl)} ${nomen}, ${spanne} je Stück.`,
+  const metaTitel = ersterPassender(titelVorschlaege);
+  // Ohne Beträge (FA-SEO-01B); die Preisspanne steht auf der Seite.
+  const metaBeschreibung = imRahmen(
+    `Schlüssel nach Code für Schlösser von ${name}: ${formatNumber(zahl)} ${nomen}.`,
     [
-      ...(typen.length ? [`${aufzaehlung(typen)}.`] : []),
+      typen.length ? `${aufzaehlung(typen)}.` : undefined,
       'Ohne Einsendung des Originalschlüssels.',
+      'Den Preis je Stück sehen Sie bei jeder Linie.',
+      'Sie geben den Code ein, wir fertigen danach.',
     ],
-    BESCHREIBUNG_MAX,
   );
   const einleitung =
     `${formatNumber(zahl)} ${nomen} für Schlösser von ${name}${familien.length ? ` aus ${aufzaehlung(familien)}` : ''}. `

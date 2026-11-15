@@ -15,6 +15,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { InfoTip } from '@/components/ui/info-tip';
 import { KEY_KIND_HINT, ON_SITE_HINT, keyKindDescription, keyKindLabel } from '@/components/autoschluessel/key-kinds';
 import { SCHLUESSELARTEN_REIHE, SchluesselartenReihe } from '@/components/autoschluessel/schluesselarten-reihe';
+import { anfrageHref } from '@/components/autoschluessel/fahrzeug-ziel';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import type { IconProps } from '@/components/visual/icons/icon-base';
 import { IconReparaturAustausch } from '@/components/visual/icons/reparatur-austausch';
@@ -43,8 +44,8 @@ const TRANSPONDER_HINT: InfoHint = {
   title: 'Transponder und Wegfahrsperre',
   body:
     'Im Schlüssel sitzt ein kleiner Chip, der Transponder. Beim Starten fragt das Fahrzeug diesen '
-    + 'Chip ab. Passt die Antwort nicht, bleibt die Wegfahrsperre aktiv und der Motor springt nicht '
-    + 'an – auch dann, wenn der mechanische Bart passt und die Tür aufgeht.',
+    + 'Chip ab. Passt die Antwort nicht, bleibt die Wegfahrsperre aktiv. Dann springt der Motor nicht '
+    + 'an, auch wenn der Bart passt und die Tür aufgeht.',
   figure: {
     motif: 'Makroaufnahme: geöffnetes Schlüsselgehäuse mit sichtbarem Transponder',
     ratio: '3/2',
@@ -53,11 +54,10 @@ const TRANSPONDER_HINT: InfoHint = {
 };
 
 const BART_HINT: InfoHint = {
-  title: 'Was ist der Schlüsselbart?',
+  title: 'Der Schlüsselbart',
   body:
-    'Der Bart ist der metallene Teil des Schlüssels, der in das Schloss passt. Er wird nach einer '
-    + 'Vorlage oder nach geeigneten Fahrzeugdaten gefräst. Mit der Elektronik im Schlüssel hat er '
-    + 'nichts zu tun.',
+    'Der Bart ist der Teil aus Metall, der ins Schloss passt. Wir fräsen ihn nach einer Vorlage '
+    + 'oder nach passenden Fahrzeugdaten. Mit der Elektronik im Schlüssel hat er nichts zu tun.',
   figure: {
     motif: 'Messzeichnung: Schlüsselbart mit Einschnitten und Bezeichnung der Positionen',
     ratio: '3/2',
@@ -67,7 +67,7 @@ const BART_HINT: InfoHint = {
 const SMART_KEY_HINT: InfoHint = {
   title: 'Smart Key und Keyless',
   body:
-    'Bei diesen Systemen erkennt das Fahrzeug den Schlüssel, sobald er sich in der Nähe befindet. '
+    'Hier erkennt das Fahrzeug den Schlüssel, sobald er in der Nähe ist. '
     + 'Sie öffnen und starten, ohne den Schlüssel in die Hand zu nehmen. Beschaffung und Anlernen '
     + 'sind aufwendiger als bei einem einfachen Funkschlüssel.',
 };
@@ -90,86 +90,86 @@ interface TopicGroup {
 const TOPIC_GROUPS: TopicGroup[] = [
   {
     title: 'Schlüssel anfertigen',
-    lead: 'Alles, was einen zusätzlichen oder neuen Schlüssel für Ihr Fahrzeug betrifft.',
+    lead: 'Wenn Sie einen zusätzlichen oder neuen Schlüssel für Ihr Fahrzeug brauchen.',
     icon: IconSchluesselKopieren,
     topics: [
       {
         term: 'Autoschlüssel nachmachen',
         href: '/autoschluessel/nachmachen',
-        body: 'Ein vollständiger weiterer Schlüssel – mechanisch gefertigt und elektronisch angelernt.',
+        body: 'Ein vollständiger weiterer Schlüssel. Wir fräsen den Bart und lernen die Elektronik an.',
       },
       {
         term: 'Zweitschlüssel',
         href: '/autoschluessel/nachmachen',
-        body: 'Ein zusätzlicher Schlüssel, solange mindestens ein funktionierender vorhanden ist.',
+        body: 'Ein zusätzlicher Schlüssel, solange noch mindestens einer funktioniert.',
       },
       {
         term: 'Ersatzschlüssel nach Verlust',
         href: '/autoschluessel/nachmachen',
-        body: 'Kein Schlüssel mehr vorhanden. Umfang und Machbarkeit prüfen wir im Einzelfall.',
+        body: 'Sie haben keinen Schlüssel mehr. Was machbar ist, prüfen wir für jeden Fall einzeln.',
       },
       {
         term: 'Autoschlüssel kopieren',
         href: '/autoschluessel/kopieren',
-        body: 'Mechanische Kopie nach Vorlage. Ohne Elektronik startet sie das Fahrzeug nicht.',
+        body: 'Wir kopieren nur den Bart nach Ihrem Schlüssel. Ohne Elektronik startet die Kopie das Fahrzeug nicht.',
       },
       {
         term: 'Schlüsselbart fräsen',
         href: '/autoschluessel/schluesselbart-fraesen',
-        body: 'Der metallene Teil des Schlüssels – nach Vorlage oder geeigneten Fahrzeugdaten.',
+        body: 'Wir fräsen den Teil aus Metall nach einer Vorlage oder nach passenden Fahrzeugdaten.',
         hint: BART_HINT,
       },
     ],
   },
   {
     title: 'Elektronik und Programmierung',
-    lead: 'Damit das Fahrzeug den Schlüssel erkennt und annimmt.',
+    lead: 'Hier geht es darum, dass Ihr Fahrzeug den Schlüssel erkennt.',
     icon: IconSchluesselProgrammieren,
     topics: [
       {
         term: 'Programmieren und anlernen',
         href: '/autoschluessel/programmieren',
-        body: 'Der Schlüssel wird dem Fahrzeug bekannt gemacht. Dafür ist Zugriff auf das Fahrzeug nötig.',
+        body: 'Wir tragen den Schlüssel im Fahrzeug ein. Dafür muss das Fahrzeug vor Ort sein.',
         hint: ON_SITE_HINT,
       },
       {
         term: 'Transponder und Wegfahrsperre',
         href: '/autoschluessel/programmieren',
-        body: 'Der Chip im Schlüssel entscheidet darüber, ob der Motor startet.',
+        body: 'Der Chip im Schlüssel entscheidet, ob der Motor startet.',
         hint: TRANSPONDER_HINT,
       },
       {
         term: 'Funkschlüssel',
         href: '/autoschluessel/funkschluessel',
-        body: 'Fernbedienung zum Ver- und Entriegeln. Funk und Wegfahrsperre sind getrennte Funktionen.',
+        body: 'Damit öffnen und schließen Sie per Taste. Der Funk arbeitet getrennt von der Wegfahrsperre.',
       },
       {
         term: 'Smart Key und Keyless',
         href: '/autoschluessel/smart-key',
-        body: 'Schlüsselloser Zugang und Start. Mehr Vorlauf und mehr Zeit am Fahrzeug einplanen.',
+        body: 'Öffnen und starten, ohne den Schlüssel in die Hand zu nehmen. Planen Sie mehr Vorlauf und mehr Zeit am Fahrzeug ein.',
         hint: SMART_KEY_HINT,
       },
     ],
   },
   {
     title: 'Reparatur und Sonderfälle',
-    lead: 'Wenn der vorhandene Schlüssel nicht mehr richtig arbeitet oder gar nicht greifbar ist.',
+    lead: 'Wenn Ihr Schlüssel nicht mehr richtig funktioniert oder nicht greifbar ist.',
     icon: IconReparaturAustausch,
     topics: [
       {
         term: 'Gehäuse, Tasten und Batterie',
         href: '/autoschluessel/funkschluessel',
-        body: 'Gebrochenes Gehäuse, klemmende Tasten oder schwache Batterie – die Elektronik bleibt erhalten.',
+        body: 'Bei gebrochenem Gehäuse, klemmenden Tasten oder schwacher Batterie. Die vorhandene Elektronik bleibt erhalten.',
       },
       {
         term: 'Schlüsselverlust',
         href: '/autoschluessel/nachmachen',
-        body: 'Die richtige Reihenfolge spart Zeit: erst prüfen, was noch vorhanden ist, dann beauftragen.',
+        body: 'Prüfen Sie zuerst, was noch vorhanden ist. Beauftragen Sie uns danach. Das spart Zeit.',
       },
       {
         term: 'Fahrzeugöffnung',
         href: '/autoschluessel/fahrzeugoeffnung',
-        body: 'Zerstörungsfreies Öffnen als eigene Leistung. Sie ersetzt keinen Ersatzschlüssel.',
+        body: 'Wir öffnen Ihr Fahrzeug, ohne etwas zu beschädigen. Das ist eine eigene Leistung und ersetzt keinen Ersatzschlüssel.',
       },
     ],
   },
@@ -179,30 +179,28 @@ const FAQ = [
   {
     question: 'Muss mein Fahrzeug für einen neuen Autoschlüssel vor Ort sein?',
     answer:
-      'Für rein mechanische Arbeiten am Bart in vielen Fällen nicht. Sobald der Schlüssel elektronisch '
-      + 'angelernt werden muss, ist Zugriff auf das Fahrzeug erforderlich. Ob das bei Ihrem Fahrzeug '
-      + 'der Fall ist, sehen Sie auf der jeweiligen Modellseite und im geführten Ablauf.',
+      'Wenn wir nur den Bart fräsen, muss Ihr Fahrzeug oft nicht da sein. Muss der Schlüssel '
+      + 'elektronisch angelernt werden, brauchen wir das Fahrzeug. Ob das für Ihr Fahrzeug gilt, sehen Sie auf der Modellseite und im Ablauf.',
   },
   {
     question: 'Was kostet ein neuer Autoschlüssel?',
     answer:
-      'Das hängt vom Fahrzeug und von der Schlüsselart ab. Im geführten Ablauf erhalten Sie nach der '
-      + 'Auswahl Ihres Fahrzeugs entweder einen festen Preis, einen Preisrahmen oder den Hinweis, dass '
-      + 'wir Ihren Fall zuerst manuell prüfen. Erst danach buchen Sie einen Termin.',
+      'Das hängt vom Fahrzeug und von der Schlüsselart ab. Nach der Wahl Ihres Fahrzeugs sehen Sie '
+      + 'einen festen Preis oder einen Preisrahmen. Manche Fälle prüfen wir zuerst von Hand. Erst '
+      + 'danach buchen Sie einen Termin.',
   },
   {
     question: 'Warum brauchen Sie Fotos von meinem Schlüssel?',
     answer:
-      'Die Bauform sagt uns, welches Gehäuse, welcher Rohling und welche Elektronik verbaut sind. '
-      + 'Drei Aufnahmen aus unterschiedlichen Richtungen reichen in aller Regel aus. Das erspart '
-      + 'Rückfragen und verhindert, dass beim Termin etwas fehlt.',
+      'Auf den Fotos sehen wir, welches Gehäuse, welcher Rohling und welche Elektronik verbaut sind. '
+      + 'Der Rohling ist der Schlüssel vor dem Fräsen. Drei Fotos aus verschiedenen Richtungen reichen meist aus. So sparen wir Rückfragen, und beim '
+      + 'Termin fehlt seltener etwas. Sind alle Schlüssel verloren, entfallen die Fotos.',
   },
   {
     question: 'Kann ich meinen Schlüssel einschicken?',
     answer:
-      'Für mechanische Arbeiten ist ein Versand in vielen Fällen möglich. Muss der Schlüssel am '
-      + 'Fahrzeug angelernt werden, hilft ein Versand nicht weiter – dann ist ein Termin mit Fahrzeug '
-      + 'der richtige Weg.',
+      'Für Arbeiten nur am Bart geht das oft. Muss der Schlüssel am Fahrzeug angelernt werden, hilft '
+      + 'der Versand nicht. Dann brauchen Sie einen Termin mit Fahrzeug.',
   },
   {
     question: 'Wofür ist die Anzahlung?',
@@ -211,10 +209,11 @@ const FAQ = [
       + 'vollständig auf den Gesamtpreis angerechnet.',
   },
   {
-    question: 'Ich habe meinen Schlüssel im Fahrzeug eingeschlossen. Was jetzt?',
+    question: 'Mein Schlüssel ist im Fahrzeug eingeschlossen. Was kann ich tun?',
     answer:
-      'Dafür gibt es die Fahrzeugöffnung als eigene Leistung. Bitte halten Sie einen Nachweis bereit, '
-      + 'dass Sie über das Fahrzeug verfügen dürfen.',
+      'Dafür gibt es die Fahrzeugöffnung als eigene Leistung. Halten Sie einen Nachweis bereit, dass '
+      + 'Sie über das Fahrzeug verfügen dürfen: Ihren Ausweis und den Fahrzeugschein. Steht das '
+      + 'Fahrzeug nicht auf Ihren Namen, brauchen wir zusätzlich eine Vollmacht oder Bestätigung des Halters.',
   },
 ];
 
@@ -240,14 +239,14 @@ function Weiter({ size = 18, className }: { size?: number; className?: string })
 /** Positionen der Aufbauzeichnung mit den Leistungen dazu; Aussagen aus dem Bestand (A-025, R4). */
 const AUFBAU_TEXTE: Record<number, { text: string; links: { href: string; label: string }[] }> = {
   1: {
-    text: 'Der gefräste Bart öffnet die Tür. Für den Motorstart braucht es meist mehr.',
+    text: 'Der gefräste Bart öffnet die Tür. Zum Starten braucht es meist auch den Transponder.',
     links: [
       { href: '/autoschluessel/schluesselbart-fraesen', label: 'Schlüsselbart fräsen' },
       { href: '/autoschluessel/kopieren', label: 'Autoschlüssel kopieren' },
     ],
   },
   2: {
-    text: 'Er meldet den Schlüssel bei der Wegfahrsperre an. Ohne angelernten Transponder startet das Fahrzeug nicht; zum Anlernen muss das Fahrzeug vor Ort sein.',
+    text: 'Er meldet den Schlüssel bei der Wegfahrsperre an. Ohne angelernten Transponder startet das Fahrzeug nicht. Zum Anlernen muss das Fahrzeug vor Ort sein.',
     links: [{ href: '/autoschluessel/programmieren', label: 'Programmieren und anlernen' }],
   },
   3: {
@@ -289,12 +288,12 @@ export default async function AutoschluesselHubPage() {
       <div className="min-w-0 max-w-measure text-small leading-relaxed">
         <p className="mb-1 font-semibold text-foreground">Anzahlung und Vorlauf</p>
         <p className="text-foreground-muted">
-          Die Anzahlung beträgt standardmäßig{' '}
-          <span className="font-mono tabular-nums text-foreground">{deposit}</span> und wird
-          vollständig auf den Gesamtpreis angerechnet. Der Vorlauf von etwa{' '}
+          Die Anzahlung beträgt in der Regel{' '}
+          <span className="font-mono tabular-nums text-foreground">{deposit}</span>. Sie wird
+          vollständig auf den Gesamtpreis angerechnet. Bis zum Termin vergehen etwa{' '}
           <span className="font-mono tabular-nums text-foreground">{leadDays}</span>
-          {'\u00a0'}Tagen entsteht durch die Beschaffung des passenden Schlüssels. Für einzelne Fahrzeuge und Leistungen
-          können abweichende Werte gelten. Diese sehen Sie im Ablauf, bevor Sie etwas verbindlich buchen.
+          {'\u00a0'}Tage, weil wir den passenden Schlüssel erst beschaffen. Bei manchen Fahrzeugen und Leistungen
+          können andere Werte gelten. Sie sehen sie im Ablauf, bevor Sie verbindlich buchen.
         </p>
       </div>
     </>
@@ -318,7 +317,10 @@ export default async function AutoschluesselHubPage() {
         bereich="autoschluessel"
         eyebrow="Themenwelt Autoschlüssel"
         title={page?.headline ?? 'Autoschlüssel'}
-        lead={page?.subline ?? 'Nachmachen, programmieren, reparieren, mit klarem Ablauf und festem Termin.'}
+        lead={
+          page?.subline
+          ?? 'Wir machen Autoschlüssel nach, programmieren und reparieren sie. Sie kommen mit festem Termin in unsere Werkstatt in Wetzlar, gern auch von weiter her.'
+        }
         crumbs={[{ href: '/autoschluessel', label: 'Autoschlüssel' }]}
         visual={<SchluesselartenReihe variante="kopf" />}
         handlungZuerst
@@ -366,16 +368,16 @@ export default async function AutoschluesselHubPage() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-start">
             <SectionHeading
-              eyebrow="Ablauf"
-              title={`So läuft Ihr Auftrag ab: ${rubrik?.ablauf.length ?? 5} Schritte zum Termin`}
-              lead={`${page?.intro ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder Preisrahmen. Erst dann buchen Sie einen Termin.'} Ihre Eingaben bleiben erhalten, wenn Sie zwischendurch abbrechen.`}
+              eyebrow={`Ablauf in ${rubrik?.ablauf.length ?? 5} Schritten`}
+              title="So läuft Ihr Auftrag ab"
+              lead={`${page?.intro ?? 'Wir klären zuerst, was Ihr Fahrzeug braucht. Dann nennen wir Ihnen den Preis oder einen Preisrahmen. Erst danach buchen Sie einen Termin.'} Ihre Eingaben bleiben erhalten, wenn Sie zwischendurch abbrechen.`}
             />
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <ButtonLink href="/autoschluessel/anfrage" size="lg" pfeil>
                 Termin anfragen
               </ButtonLink>
               <ButtonLink href="/autoschluessel/marken" size="lg" variant="outline">
-                Erst Fahrzeug nachschlagen
+                Fahrzeug nachschlagen
               </ButtonLink>
             </div>
             <div className="mt-8 hidden gap-3 border-t border-border pt-5 lg:flex">
@@ -400,7 +402,7 @@ export default async function AutoschluesselHubPage() {
           id="aufbau-titel"
           eyebrow="Aufbau"
           title="Was in Ihrem Autoschlüssel steckt"
-          lead="Ein Autoschlüssel besteht aus zwei Teilen, die getrennt betrachtet werden: dem mechanischen Bart und der Elektronik. Davon hängen Aufwand, Termin und Preis ab."
+          lead="Ein Autoschlüssel hat zwei Teile, den Bart aus Metall und die Elektronik. Wir betrachten beide getrennt. Davon hängen Aufwand, Termin und Preis ab."
         />
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <figure className="m-0 lg:col-span-7">
@@ -450,7 +452,7 @@ export default async function AutoschluesselHubPage() {
         <SectionHeading
           eyebrow="Leistungen"
           title="Von Anlernen bis Zweitschlüssel"
-          lead="Die Begriffe werden im Alltag oft vermischt. Hier steht, was jeweils gemeint ist und wohin er führt."
+          lead="Die Begriffe werden oft verwechselt. Hier steht, was jeder Begriff meint. Jede Zeile führt zur passenden Leistung."
         />
 
         <div className="mt-10 space-y-12">
@@ -525,13 +527,42 @@ export default async function AutoschluesselHubPage() {
             <SectionHeading
               eyebrow="Fahrzeuge"
               title="Was für Ihre Marke und Ihr Modell gilt"
-              lead={`Zu ${makes.length} Marken und ${modelCount} Modellen haben wir hinterlegt, welche Schlüsselarten vorkommen und ob das Fahrzeug zum Anlernen in die Werkstatt mitkommen muss.`}
+              lead={`Für ${makes.length} Marken und ${modelCount} Modelle zeigen wir, welche Schlüsselarten es gibt. Sie sehen auch, ob das Fahrzeug zum Anlernen in die Werkstatt muss.`}
             />
-            <div className="mt-7 flex flex-wrap items-center gap-3">
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
               <ButtonLink href="/autoschluessel/marken" pfeil>
                 Alle Marken
               </ButtonLink>
+              {/* Ausweg wie auf Markenübersicht und Markenseite (FA-KERN-02B); der Block selbst steht dort. */}
+              <Link
+                href={anfrageHref()}
+                className="group inline-flex min-h-touch items-center gap-1.5 text-small font-semibold text-primary"
+              >
+                Fahrzeug nicht gefunden?
+                <Weiter size={16} />
+              </Link>
             </div>
+            {/* Die anderen Fahrzeugklassen (FA-06) als Verweise; ihre Seiten gehören zu FA-KERN-05. */}
+            <p id="andere-fahrzeuge" className="mt-5 text-small text-foreground-muted">Schlüssel für andere Fahrzeuge:</p>
+            <ul aria-labelledby="andere-fahrzeuge" className="mt-1 flex flex-wrap gap-x-5">
+              {[
+                { href: '/motorradschluessel', label: 'Motorradschlüssel' },
+                { href: '/roller-und-kleinstfahrzeuge', label: 'Rollerschlüssel' },
+                { href: '/e-scooter', label: 'E-Scooter-Schlüssel' },
+                { href: '/seniorenmobile', label: 'Seniorenmobil-Schlüssel' },
+                { href: '/fahrradschluessel', label: 'Fahrradschlüssel' },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="group inline-flex min-h-touch items-center gap-1.5 text-small font-semibold text-primary"
+                  >
+                    {link.label}
+                    <Weiter size={16} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:col-span-5">
@@ -565,13 +596,13 @@ export default async function AutoschluesselHubPage() {
         <SectionHeading
           eyebrow="Weiterlesen"
           title="Zum Nachlesen"
-          lead="Passend zum Thema Autoschlüssel."
+          lead="Weitere Seiten zum Thema Autoschlüssel."
         />
         <ul className="mt-6 grid border-t border-border md:grid-cols-2 md:gap-x-gutter">
           {[
-            { href: '/autoschluessel/anfrage', label: 'Geführter Ablauf', description: 'Fahrzeug wählen, Preis erhalten, Termin buchen' },
+            { href: '/autoschluessel/anfrage', label: 'Termin anfragen', description: 'Fahrzeug wählen, Preis sehen, Termin buchen' },
             { href: '/autoschluessel/marken', label: 'Marken und Modelle', description: 'Schlüsselarten je Fahrzeug nachschlagen' },
-            { href: '/ratgeber/autoschluessel-verloren-was-tun', label: 'Schlüssel verloren: was tun?', description: 'Die richtige Reihenfolge' },
+            { href: '/ratgeber/autoschluessel-verloren-was-tun', label: 'Schlüssel verloren: was tun?', description: 'Was Sie zuerst tun sollten' },
             { href: '/ratgeber/unterschied-kopie-und-programmierung', label: 'Kopie oder Programmierung?', description: 'Der Unterschied kurz erklärt' },
             { href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage', description: 'Für Schlüssel ohne Fahrzeugbezug' },
             { href: '/service-und-termin/terminstatus', label: 'Terminstatus', description: 'Stand Ihres Vorgangs abrufen' },

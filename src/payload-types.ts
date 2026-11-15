@@ -223,7 +223,7 @@ export interface Vorgaenge {
    */
   kundeInformieren?: boolean | null;
   /**
-   * Optional. Wird in die E-Mail zur nächsten Statusänderung übernommen und danach geleert.
+   * Optional. Wird in die E-Mail zur nächsten Statusänderung übernommen und danach geleert. Der Text steht danach mit der ganzen Mail im Reiter „E-Mails“.
    */
   nachrichtAnKunde?: string | null;
   /**

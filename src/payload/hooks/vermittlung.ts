@@ -90,7 +90,9 @@ export const ERSTATTUNG_MELDUNG = {
   weniger: (bisher: number) =>
     `Bereits ${formatCents(bisher)} erstattet. Der Betrag ist die Summe aller Erstattungen und kann nicht kleiner werden.`,
   grund: 'Bitte einen Grund für die Erstattung eintragen.',
-  zurueck: 'Zu diesem Vorgang ist eine Erstattung erfasst. Der Zahlungsstand lässt sich nicht von Hand zurücksetzen.',
+  zurueck:
+    'Zu diesem Vorgang ist eine Erstattung erfasst. Der Zahlungsstand lässt sich nicht von Hand zurücksetzen. '
+    + 'War die Erstattung ein Irrtum, tragen Sie in der Gruppe „Erstattung“ unter „Berichtigung: Grund“ den Grund ein und setzen den Betrag kleiner.',
   nurGruppe: '„Erstattet“ und „Teilweise erstattet“ setzen Sie über die Gruppe „Erstattung“ mit Betrag, Datum und Grund.',
 } as const;
 

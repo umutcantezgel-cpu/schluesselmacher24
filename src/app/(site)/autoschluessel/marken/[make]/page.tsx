@@ -6,7 +6,7 @@ import { getCollection, getSettings, getVehicleMake, getVehicleMakes } from '@/l
 import type { KeyKind, VehicleMake } from '@/lib/types';
 import { formatCents, formatNumber } from '@/lib/format';
 import { cn } from '@/lib/cn';
-import { eckdaten, leistungsPreise, markeIndexierbar, markenTexte, preisAb } from '@/lib/fahrzeug-texte';
+import { aufzaehlung, eckdaten, leistungsPreise, markeIndexierbar, markenTexte, preisAb } from '@/lib/fahrzeug-texte';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -99,8 +99,7 @@ export default async function MakePage(props: PageProps) {
   ];
 
   const modellSatz =
-    `Zu ${make.name} ${models.length === 1 ? 'ist' : 'sind'} bei uns `
-    + `${formatNumber(models.length)} ${nomen(models.length, 'Modell', 'Modelle')} hinterlegt.`;
+    `Zu ${make.name} haben wir ${formatNumber(models.length)} ${nomen(models.length, 'Modell', 'Modelle')} hinterlegt.`;
 
   const felder = [
     { label: 'Hinterlegte Modelle', wert: formatNumber(models.length) },
@@ -121,11 +120,11 @@ export default async function MakePage(props: PageProps) {
       <PageHeader
         eyebrow="Fahrzeugmarke"
         title={`Autoschlüssel für ${make.name}`}
-        lead={`${models.map((m) => m.name).join(', ')}: Baujahre, Schlüsselarten und Preise je Modell — berechnet wie im Termin-Assistenten.`}
+        lead={`Für ${aufzaehlung(models.map((m) => m.name))} sehen Sie Baujahre, Schlüsselarten und Preise. Es sind dieselben Preise wie bei der Terminanfrage.`}
         crumbs={crumbs}
         actions={
           <ButtonLink href={`/autoschluessel/anfrage?marke=${make.slug}`} pfeil>
-            {make.name} auswählen
+            Termin anfragen
           </ButtonLink>
         }
       >
@@ -156,30 +155,31 @@ export default async function MakePage(props: PageProps) {
       <Section>
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           <div className="lg:col-span-7">
-            <SectionHeading title={`${make.name} und die verbauten Schlüsselsysteme`} />
+            <SectionHeading title={`Diese Schlüssel gibt es für ${make.name}`} />
 
             <div className="prose-sm24 mt-5">
               {make.intro ? (
                 <p>{make.intro}</p>
               ) : (
                 <p>
-                  {modellSatz} Welche Schlüsselart Ihr Fahrzeug hat, erkennen wir an Ihren
+                  {modellSatz} Welche Schlüsselart Ihr Fahrzeug hat, sehen wir an Ihren
                   Schlüsselfotos und den Fahrzeugdaten.
                 </p>
               )}
               {kinds.length > 0 && (
                 <p>
-                  Im Datensatz sind zu dieser Marke folgende Schlüsselarten erfasst:{' '}
-                  {kinds.map((kind) => keyKindLabel(kind)).join(', ')}. Das heißt nicht, dass jedes
-                  Modell alle diese Varianten hat — die Zuordnung je Modell steht in der Tabelle
-                  darunter.
+                  {`Für ${make.name} haben wir diese Schlüsselarten erfasst: `
+                    + `${aufzaehlung(kinds.map((kind) => keyKindLabel(kind)))}.`}
+                  {kinds.length > 1 && ' Nicht jedes Modell hat alle. Was zu welchem Modell gehört, steht in der Liste darunter.'}
                 </p>
               )}
               <p>
                 {onSiteCount === models.length
-                  ? 'Bei allen hier erfassten Modellen ist zum elektronischen Anlernen Zugriff auf das Fahrzeug nötig.'
-                  : `Bei ${formatNumber(onSiteCount)} von ${formatNumber(models.length)} Modellen ist zum elektronischen Anlernen Zugriff auf das Fahrzeug nötig.`}{' '}
-                Rein mechanische Arbeiten am Bart sind davon nicht betroffen.
+                  ? 'Bei allen Modellen hier muss das Fahrzeug zum Anlernen vor Ort sein.'
+                  : onSiteCount === 0
+                    ? 'Bei keinem Modell hier muss das Fahrzeug zum Anlernen vor Ort sein.'
+                    : `Bei ${formatNumber(onSiteCount)} von ${formatNumber(models.length)} Modellen muss das Fahrzeug zum Anlernen vor Ort sein.`}
+                {onSiteCount > 0 && ' Für Arbeiten nur am Bart gilt das nicht.'}
               </p>
             </div>
 
@@ -208,7 +208,7 @@ export default async function MakePage(props: PageProps) {
         <SectionHeading
           eyebrow="Modelle"
           title={`Alle erfassten ${make.name}-Modelle`}
-          lead="Baujahre, mögliche Schlüsselarten, ob das Fahrzeug zum Anlernen bei uns stehen muss, und der niedrigste Preis der angebotenen Leistungen."
+          lead="Zu jedem Modell stehen Baujahre, Schlüsselarten und der niedrigste Preis. Sie sehen auch, ob das Fahrzeug zum Anlernen bei uns sein muss."
         />
 
         <div className="mt-8 hidden md:block">
@@ -343,7 +343,7 @@ export default async function MakePage(props: PageProps) {
           telefon={kontakt(settings.company).telefon}
           erreichbarkeit={erreichbarkeit(settings)}
           href={anfrageHref({ marke: make.name })}
-          satz={`Die Liste zeigt nicht jede Baureihe und Ausstattung. Ist Ihr ${make.name} nicht dabei, senden Sie uns trotzdem Ihre Anfrage: Fahrzeugdaten, Fahrzeugschein, drei Fotos Ihres Schlüssels und eine kurze Beschreibung.`}
+          satz={`Die Liste zeigt nicht jede Baureihe und Ausstattung. Ist Ihr ${make.name} nicht dabei, senden Sie uns trotzdem eine Anfrage. Wir brauchen Fahrzeugdaten, Fahrzeugschein, drei Fotos Ihres Schlüssels und eine kurze Beschreibung. Sind alle Schlüssel verloren, entfallen die Fotos.`}
           className="mt-6"
         />
       </Section>
@@ -354,11 +354,11 @@ export default async function MakePage(props: PageProps) {
           <div className="lg:col-span-7">
             <SectionHeading
               title="Der nächste Schritt"
-              lead={`Wählen Sie Ihr ${make.name}-Modell aus, laden Sie Ihre Schlüsselfotos hoch und sehen Sie Preis oder Preisrahmen — noch vor der Buchung.`}
+              lead={`Wählen Sie Ihr ${make.name}-Modell und laden Sie Fahrzeugschein und Schlüsselfotos hoch. Sind alle Schlüssel verloren, entfallen die Fotos. Den Preis oder Preisrahmen sehen Sie vor der Buchung.`}
             />
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={`/autoschluessel/anfrage?marke=${make.slug}`} size="lg" pfeil>
-                Ablauf mit {make.name} starten
+                Termin anfragen
               </ButtonLink>
               <ButtonLink href="/autoschluessel/marken" size="lg" variant="outline">
                 Andere Marke wählen

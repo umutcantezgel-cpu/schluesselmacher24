@@ -4,8 +4,30 @@ import path from 'node:path';
 import ts from 'typescript';
 import { describe, expect, it } from 'vitest';
 
-import type { PageContent, ServicePage } from '@/lib/types';
-import { pages } from './defaults/content';
+import codeLinesJson from '../../../content/code-lines.json';
+import servicesJson from '../../../content/car-key-services.json';
+import rulesJson from '../../../content/service-pricing.json';
+import settingsJson from '../../../content/settings.json';
+import vehiclesJson from '../../../content/vehicles.json';
+import type {
+  CarKeyService,
+  CityPage,
+  CodeLine,
+  Guide,
+  PageContent,
+  PricingRule,
+  ServicePage,
+  Settings,
+  VehicleMake,
+} from '@/lib/types';
+import { codeFamilien, codeHersteller } from '@/lib/codelinie';
+import { codelinienTexte, herstellerTexte, kategorieTexte } from '@/lib/codelinie-texte';
+import { ERREICHBARKEIT_STANDARD, erreichbarkeit, erreichbarkeitSatz } from '@/lib/erreichbarkeit';
+import { KONTAKT_TITEL, kontaktBeschreibung } from '@/app/(site)/service-und-termin/kontakt/suchtexte';
+import { leistungsPreise, markenTexte, modellTexte } from '@/lib/fahrzeug-texte';
+import { GEWINNUNG_SEITEN } from '@/lib/partner/gewinnung';
+import { TITEL_MAX_PX, titelBreitePx } from '@/lib/titelbreite';
+import { guides, pages } from './defaults/content';
 import { servicePages } from './defaults/service-pages';
 
 /*
@@ -208,5 +230,333 @@ describe('Rückfälle in generateMetadata tragen dieselben Suchergebnis-Texte wi
       expect(text).not.toMatch(/[–—]| - /);
       expect(text).not.toMatch(VERBOTEN);
     }
+  });
+});
+
+/* ==========================================================================
+   Teil B (FA-SEO-01B): übrige Seiten
+
+   Gleiche Regeln wie oben, dazu die Breite: Der fertige Titel samt Marke bleibt in 580 px bei
+   20px Arial (`titelPasst`, obere Schranke der Messung in werkzeuge/onpage.mjs). Quellen:
+   - Marken- und Modellseiten über die Generatoren in src/lib/fahrzeug-texte.ts, Daten
+     content/vehicles.json, dazu erfundene lange Namen;
+   - Codelinien-, Kategorie- und Herstellerseiten über src/lib/codelinie-texte.ts (Vorlagen);
+   - Ratgeber aus content/guides.json, Rückfall guides() wortgleich;
+   - Orte aus content/cities.json;
+   - Partnerseiten aus src/lib/partner/gewinnung.ts;
+   - feste `metadata` und Rückfälle in generateMetadata unter src/app/(site), gelesen aus dem
+     Quelltext wie in Teil A.
+   Ausnahme Kontakt: Die Beschreibung nennt die Erreichbarkeit aus den gepflegten Einstellungen im
+   Wortlaut des Inhabers (FA-23, R1, R9). Nur dieser Satz ist von der Prüfung auf Zusagen
+   ausgenommen; der Rest der Beschreibung wird wie überall geprüft.
+   ========================================================================== */
+
+const MARKEN = vehiclesJson as VehicleMake[];
+const KONTEXT_FAHRZEUG = {
+  services: servicesJson as CarKeyService[],
+  rules: rulesJson as PricingRule[],
+  booking: (settingsJson as unknown as Settings).booking,
+};
+const WERKSTATT = { street: 'Musterweg 1', postalCode: '35576', city: 'Wetzlar' };
+const LINIEN = codeLinesJson as CodeLine[];
+const RATGEBER_JSON = lies<Guide[]>('guides.json');
+const ORTE = lies<CityPage[]>('cities.json');
+const KONTEXT_CODE = {
+  alle: LINIEN,
+  versand: (settingsJson as unknown as Settings).shipping,
+  ratgeber: RATGEBER_JSON.find((g) => g.slug === 'schluesselcode-finden') ?? null,
+};
+
+/** Titel (ohne Marke) und Beschreibung nach den Regeln aus Teil A und der Breite. */
+function pruefeSuchtexte(wo: string, titel: string, beschreibung: string, optionen: { noindex?: boolean; erlaubterWortlaut?: string } = {}) {
+  const fertig = `${titel}${VORLAGE}`;
+  expect(zeichen(fertig), `${wo}: ${fertig}`).toBeLessThanOrEqual(TITEL_MAX);
+  expect(titelBreitePx(fertig), `${wo}: ${fertig}`).toBeLessThanOrEqual(TITEL_MAX_PX);
+  expect(titel, wo).not.toContain('|');
+  expect(titel, wo).not.toContain(MARKE);
+  const n = zeichen(beschreibung.trim());
+  expect(n, `${wo}: ${beschreibung}`).toBeLessThanOrEqual(BESCHR_MAX);
+  if (optionen.noindex) expect(n, wo).toBeGreaterThan(0);
+  else expect(n, `${wo}: ${n} Zeichen: ${beschreibung}`).toBeGreaterThanOrEqual(BESCHR_MIN);
+  for (const text of [titel, beschreibung]) {
+    expect(text, wo).not.toMatch(/[–—]| - /);
+    // Nur der freigegebene Wortlaut fällt heraus, alles Übrige wird auf Zusagen geprüft.
+    const ohneWortlaut = optionen.erlaubterWortlaut ? text.split(optionen.erlaubterWortlaut).join(' ') : text;
+    expect(ohneWortlaut, wo).not.toMatch(VERBOTEN);
+  }
+}
+
+const doppelte = (werte: string[]) => werte.filter((w, i) => werte.indexOf(w) !== i);
+
+describe('Marken- und Modellseiten über den Generator (FA-SEO-01B)', () => {
+  const marken = MARKEN.map((make) => ({ wo: make.slug, ...markenTexte(make) }));
+  const modelle = MARKEN.flatMap((make) =>
+    make.models.map((model) => ({
+      wo: `${make.slug}/${model.slug}`,
+      ...modellTexte(make, model, leistungsPreise(make, model, KONTEXT_FAHRZEUG), WERKSTATT),
+    })),
+  );
+
+  it.each(marken)('Marke $wo: Titel und Beschreibung in den Grenzen', ({ wo, metaTitel, metaBeschreibung }) => {
+    pruefeSuchtexte(wo, metaTitel, metaBeschreibung);
+  });
+
+  it.each(modelle)('Modell $wo: Titel und Beschreibung in den Grenzen', ({ wo, metaTitel, metaBeschreibung }) => {
+    pruefeSuchtexte(wo, metaTitel, metaBeschreibung);
+  });
+
+  it('kein Titel und keine Beschreibung doppelt über Marken und Modelle', () => {
+    const alle = [...marken, ...modelle];
+    expect(doppelte(alle.map((t) => t.metaTitel))).toEqual([]);
+    expect(doppelte(alle.map((t) => t.metaBeschreibung))).toEqual([]);
+  });
+
+  it('keine Beträge und keine Fristen in den Beschreibungen (R3, R4)', () => {
+    for (const t of [...marken, ...modelle]) expect(t.metaBeschreibung, t.wo).not.toMatch(/€|\d+,\d\d|Vorlauf|Tage/);
+  });
+
+  it('lange Namen: Titel und Beschreibung bleiben in den Grenzen', () => {
+    const vorlage = MARKEN.find((m) => m.models.length > 0)!;
+    const lang: VehicleMake = {
+      ...vorlage,
+      name: 'Mercedes-Benz Nutzfahrzeuge',
+      slug: 'lang',
+      models: vorlage.models.map((model, i) => ({ ...model, name: `Sprinter Kastenwagen Hochdach ${i + 1}` })),
+    };
+    pruefeSuchtexte('lange Marke', markenTexte(lang).metaTitel, markenTexte(lang).metaBeschreibung);
+    const model = lang.models[0];
+    const t = modellTexte(lang, model, leistungsPreise(lang, model, KONTEXT_FAHRZEUG), WERKSTATT);
+    pruefeSuchtexte('langes Modell', t.metaTitel, t.metaBeschreibung);
+    expect(t.metaTitel).toBe(`${model.name}`);
+  });
+});
+
+describe('Codelinien-, Kategorie- und Herstellerseiten (Vorlagen, FA-SEO-01B)', () => {
+  const linien = LINIEN.map((line) => ({ wo: line.id, ...codelinienTexte(line, KONTEXT_CODE) }));
+  const kategorien = codeFamilien(LINIEN).map((f) => ({ wo: f.adresse, ...kategorieTexte(f.name, f.lines, KONTEXT_CODE.ratgeber) }));
+  const hersteller = codeHersteller(LINIEN).map((h) => ({ wo: h.adresse, ...herstellerTexte(h.name, h.lines) }));
+
+  it.each([...linien, ...kategorien, ...hersteller])('$wo: Titel und Beschreibung in den Grenzen, ohne Beträge', ({ wo, metaTitel, metaBeschreibung }) => {
+    pruefeSuchtexte(wo, metaTitel, metaBeschreibung);
+  });
+
+  it('kein Titel und keine Beschreibung doppelt', () => {
+    const alle = [...linien, ...kategorien, ...hersteller];
+    expect(doppelte(alle.map((t) => t.metaTitel))).toEqual([]);
+    expect(doppelte(alle.map((t) => t.metaBeschreibung))).toEqual([]);
+  });
+});
+
+describe('Ratgeber (FA-SEO-01B)', () => {
+  it.each(RATGEBER_JSON.map((g) => [g.slug, g] as const))('%s: Suchtexte in den Grenzen, Titel ohne Gedankenstrich', (slug, g) => {
+    pruefeSuchtexte(slug, g.seo.title, g.seo.description);
+    expect(g.title, slug).not.toMatch(/[–—]| - /);
+  });
+
+  it('kein Titel und keine Beschreibung doppelt, auch nicht gegen Teil A', () => {
+    const titel = [...RATGEBER_JSON.map((g) => `${g.seo.title}${VORLAGE}`), ...eintraege.map((e) => e.titel)];
+    const beschreibungen = [...RATGEBER_JSON.map((g) => g.seo.description), ...eintraege.map((e) => e.beschreibung)];
+    expect(doppelte(titel)).toEqual([]);
+    expect(doppelte(beschreibungen)).toEqual([]);
+  });
+
+  it('„Autoschlüssel verloren“ nennt die Reihenfolge wie der sichtbare Text: prüfen, sichern, anfragen', () => {
+    const g = RATGEBER_JSON.find((x) => x.slug === 'autoschluessel-verloren-was-tun')!;
+    expect(g.excerpt).toMatch(/prüfen, dann sichern, dann anfragen/i);
+    expect(g.seo.description).toMatch(/prüfen, dann sichern, dann .*anfragen/);
+  });
+
+  it('der Verweis auf Schlüssel nach Code heißt „Schlüssel nach Code“', () => {
+    const verweise = RATGEBER_JSON.flatMap((g) => [g.nextStep, ...g.seo.internalLinks]);
+    expect(verweise.some((v) => v.label === 'Codelinien ansehen')).toBe(false);
+    for (const v of verweise.filter((x) => x.href === '/schluessel-nach-code')) expect(v.label).toBe('Schlüssel nach Code');
+  });
+
+  it('Rückfall guides() ist wortgleich mit content/guides.json', () => {
+    const auswahl = (g: Guide) => ({
+      slug: g.slug,
+      title: g.title,
+      excerpt: g.excerpt,
+      topic: g.topic,
+      body: g.body.map((b) => ({ heading: b.heading, text: b.text })),
+      nextStep: { href: g.nextStep.href, label: g.nextStep.label },
+      seo: {
+        title: g.seo.title,
+        description: g.seo.description,
+        internalLinks: g.seo.internalLinks.map((l) => ({ href: l.href, label: l.label })),
+      },
+    });
+    expect(guides().map(auswahl)).toEqual(RATGEBER_JSON.map(auswahl));
+  });
+});
+
+describe('Orte und Partnerseiten (FA-SEO-01B)', () => {
+  it.each(ORTE.map((c) => [c.slug, c] as const))('Ort %s: Suchtexte in den Grenzen', (slug, c) => {
+    pruefeSuchtexte(slug, c.seo.title, c.seo.description, { noindex: c.seo.noindex === true });
+  });
+
+  it.each(GEWINNUNG_SEITEN.map((s) => [s.slug, s] as const))('Partnerseite %s: Suchtexte in den Grenzen', (slug, s) => {
+    pruefeSuchtexte(slug, s.titel, s.beschreibung);
+  });
+
+  it('der Verweis der Orte auf die Autoschlüssel-Anfrage heißt „Termin anfragen“ (A-031)', () => {
+    const anfrage = ORTE.flatMap((c) => c.seo.internalLinks).filter((l) => l.href === '/autoschluessel/anfrage');
+    for (const l of anfrage) expect(l.label).toBe('Termin anfragen');
+  });
+});
+
+/** Feste Metadaten einer Seite: `export const metadata = {…}` oder das Objekt, das generateMetadata zurückgibt. */
+function festeMetadaten(route: string) {
+  const datei = path.join(process.cwd(), 'src', 'app', '(site)', route, 'page.tsx');
+  const quelle = ts.createSourceFile(datei, readFileSync(datei, 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const konstanten = new Map<string, ts.Expression>();
+  const objekte: ts.ObjectLiteralExpression[] = [];
+  const besuchen = (knoten: ts.Node) => {
+    if (ts.isVariableDeclaration(knoten) && ts.isIdentifier(knoten.name) && knoten.initializer) {
+      konstanten.set(knoten.name.text, knoten.initializer);
+      if (knoten.name.text === 'metadata' && ts.isObjectLiteralExpression(knoten.initializer)) objekte.push(knoten.initializer);
+    }
+    if (ts.isFunctionDeclaration(knoten) && knoten.name?.text === 'generateMetadata' && knoten.body) {
+      const rueckgaben = (n: ts.Node) => {
+        if (ts.isReturnStatement(n) && n.expression && ts.isObjectLiteralExpression(n.expression)) objekte.push(n.expression);
+        ts.forEachChild(n, rueckgaben);
+      };
+      rueckgaben(knoten.body);
+    }
+    ts.forEachChild(knoten, besuchen);
+  };
+  besuchen(quelle);
+  const auswerten = (k: ts.Expression): string => {
+    if (ts.isParenthesizedExpression(k)) return auswerten(k.expression);
+    if (ts.isStringLiteral(k) || ts.isNoSubstitutionTemplateLiteral(k)) return k.text;
+    if (ts.isBinaryExpression(k) && k.operatorToken.kind === ts.SyntaxKind.PlusToken) return auswerten(k.left) + auswerten(k.right);
+    if (ts.isIdentifier(k) && konstanten.has(k.text)) return auswerten(konstanten.get(k.text)!);
+    throw new Error(`${route}: nicht auswertbar: ${k.getText(quelle)}`);
+  };
+  const feld = (objekt: ts.ObjectLiteralExpression, name: string) => {
+    const p = objekt.properties.find((x): x is ts.PropertyAssignment => ts.isPropertyAssignment(x) && x.name.getText(quelle) === name);
+    return p ? auswerten(p.initializer) : undefined;
+  };
+  // Das Objekt mit Titel und Beschreibung; „nicht gefunden“-Zweige tragen nur einen Titel.
+  const treffer = objekte.find((o) => feld(o, 'description') !== undefined);
+  expect(treffer, `${route}: Metadaten mit Beschreibung`).toBeDefined();
+  const robots = treffer!.properties.some((x) => ts.isPropertyAssignment(x) && x.name.getText(quelle) === 'robots' && /index:\s*false/.test(x.initializer.getText(quelle)));
+  return { titel: feld(treffer!, 'title')!, beschreibung: feld(treffer!, 'description')!, noindex: robots };
+}
+
+const FESTE_METADATEN = [
+  'service-und-termin/vor-ort',
+  'service-und-termin/anfrage',
+  'service-und-termin/terminstatus',
+  'beratung',
+  'schliessanlagen/konfigurator/schliessplan',
+  'rechtliches/versand-und-zahlung',
+  'standorte',
+  'ratgeber',
+];
+
+/** Rückfälle in generateMetadata (`page?.seo.title ?? …`) der Ordner, die Teil A ausgenommen hat. */
+const RUECKFAELLE_B = [
+  'autoschluessel',
+  'autoschluessel/nachmachen',
+  'autoschluessel/programmieren',
+  'autoschluessel/kopieren',
+  'autoschluessel/funkschluessel',
+  'autoschluessel/smart-key',
+  'autoschluessel/schluesselbart-fraesen',
+  'autoschluessel/fahrzeugoeffnung',
+  'autoschluessel/marken',
+  'autoschluessel/anfrage',
+  'autoschluessel/gehaeuse',
+  'autoschluessel/gehaeuse/anfrage',
+  'motorradschluessel',
+  'motorradschluessel/anfrage',
+];
+
+describe('Feste Metadaten und Rückfälle der übrigen Seiten (FA-SEO-01B)', () => {
+  const feste = FESTE_METADATEN.map((route) => ({ route, ...festeMetadaten(route) }));
+  const rueckfaelle = RUECKFAELLE_B.map((route) => ({ route, ...rueckfaelleAusQuelltext(route) }));
+
+  it.each(feste)('/$route: feste Metadaten in den Grenzen', ({ route, titel, beschreibung, noindex }) => {
+    pruefeSuchtexte(route, titel, beschreibung, { noindex });
+  });
+
+  it.each(rueckfaelle)('/$route: Rückfall gleich content/seo.json oder in den Grenzen', ({ route, titel, beschreibung }) => {
+    const daten = seiten.find((s) => s.route === route);
+    if (daten) {
+      expect(titel, route).toBe(daten.seo.title);
+      expect(beschreibung, route).toBe(daten.seo.description);
+    }
+    pruefeSuchtexte(route, titel, beschreibung);
+  });
+
+  it('kein Titel und keine Beschreibung doppelt über alle Seiten beider Teile', () => {
+    const titel = [
+      ...eintraege.map((e) => e.titel),
+      ...feste.map((f) => `${f.titel}${VORLAGE}`),
+      `${KONTAKT_TITEL}${VORLAGE}`,
+      ...rueckfaelle.filter((r) => !seiten.some((s) => s.route === r.route)).map((r) => `${r.titel}${VORLAGE}`),
+      ...RATGEBER_JSON.map((g) => `${g.seo.title}${VORLAGE}`),
+      ...ORTE.map((c) => `${c.seo.title}${VORLAGE}`),
+      ...GEWINNUNG_SEITEN.map((s) => `${s.titel}${VORLAGE}`),
+    ];
+    const beschreibungen = [
+      ...eintraege.map((e) => e.beschreibung),
+      ...feste.map((f) => f.beschreibung),
+      kontaktBeschreibung(settingsJson as unknown as Settings),
+      ...rueckfaelle.filter((r) => !seiten.some((s) => s.route === r.route)).map((r) => r.beschreibung),
+      ...RATGEBER_JSON.map((g) => g.seo.description),
+      ...ORTE.map((c) => c.seo.description),
+      ...GEWINNUNG_SEITEN.map((s) => s.beschreibung),
+    ];
+    expect(doppelte(titel)).toEqual([]);
+    expect(doppelte(beschreibungen)).toEqual([]);
+  });
+});
+
+describe('Kontakt: Erreichbarkeit aus den gepflegten Einstellungen (FA-SEO-01B, FA-23)', () => {
+  const gepflegt = settingsJson as unknown as Settings;
+
+  it('die Seite bildet die Beschreibung aus denselben Einstellungen wie den sichtbaren Abschnitt', () => {
+    const datei = path.join(process.cwd(), 'src', 'app', '(site)', 'service-und-termin', 'kontakt', 'page.tsx');
+    const quelle = readFileSync(datei, 'utf8');
+    expect(quelle).toMatch(/export async function generateMetadata/);
+    expect(quelle).toContain('kontaktBeschreibung(settings)');
+    expect(quelle).toContain('erreichbarkeit(settings)');
+    expect(quelle).not.toMatch(/export const metadata/);
+  });
+
+  it('mit dem Stand aus content/settings.json: Wortlaut des Inhabers, in den Grenzen', () => {
+    const satz = erreichbarkeitSatz(erreichbarkeit(gepflegt));
+    const beschreibung = kontaktBeschreibung(gepflegt);
+    expect(beschreibung).toContain(satz);
+    pruefeSuchtexte('kontakt', KONTAKT_TITEL, beschreibung, { erlaubterWortlaut: satz });
+  });
+
+  it('ohne gepflegte Erreichbarkeit: der Standard im Wortlaut des Inhabers', () => {
+    const satz = erreichbarkeitSatz(ERREICHBARKEIT_STANDARD);
+    const beschreibung = kontaktBeschreibung({ reachability: undefined });
+    expect(beschreibung).toBe(`Anschrift, Telefon und E-Mail. ${satz}`);
+    pruefeSuchtexte('kontakt (Standard)', KONTAKT_TITEL, beschreibung, { erlaubterWortlaut: satz });
+  });
+
+  it('abweichende Erreichbarkeit ohne Notdienst: das Suchergebnis folgt, keine 24 Stunden mehr', () => {
+    const angabe = { kernaussage: 'Telefonisch montags bis freitags erreichbar', zeilen: ['Werkstatt nach Terminvereinbarung'], rundUmDieUhr: false };
+    const beschreibung = kontaktBeschreibung({ reachability: angabe });
+    expect(beschreibung).toContain(erreichbarkeitSatz(angabe));
+    expect(beschreibung).not.toMatch(/24 Stunden|rund um die Uhr|Notdienst/);
+    pruefeSuchtexte('kontakt (abweichend)', KONTAKT_TITEL, beschreibung);
+  });
+
+  it('zu lange Erreichbarkeit: nur die Kernaussage, höchstens 160 Zeichen', () => {
+    const angabe = {
+      kernaussage: 'Telefonisch montags bis freitags erreichbar',
+      zeilen: ['Samstags nach Vereinbarung in der Werkstatt', 'Persönliche Beratung und Abholung nur nach vorheriger Terminvereinbarung'],
+      rundUmDieUhr: false,
+    };
+    const beschreibung = kontaktBeschreibung({ reachability: angabe });
+    expect(beschreibung).toContain('Telefonisch montags bis freitags erreichbar.');
+    expect(beschreibung).not.toContain('Samstags');
+    pruefeSuchtexte('kontakt (lang)', KONTAKT_TITEL, beschreibung);
   });
 });

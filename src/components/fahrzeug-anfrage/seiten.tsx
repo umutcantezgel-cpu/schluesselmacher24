@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 import { PageHeader } from '@/components/layout/page-header';
@@ -57,6 +58,19 @@ export async function robotsNachStand(klasse: FormularKlasse): Promise<Pick<Meta
 /** Ruhiger Hinweis statt des Formulars, solange die Rubrik nicht live ist; mit Telefon, wenn gepflegt. */
 export async function RubrikPausiertHinweis({ className }: { className?: string }) {
   const { telefon, erreichbarkeit: angabe } = await hilfeAngaben();
+  return <RubrikPausiertInhalt className={className} telefon={telefon} angabe={angabe} />;
+}
+
+/** Inhalt des Hinweises, mit Telefon und Erreichbarkeit von außen (synchron, auch für Tests). */
+function RubrikPausiertInhalt({
+  className,
+  telefon,
+  angabe,
+}: {
+  className?: string;
+  telefon: Awaited<ReturnType<typeof hilfeAngaben>>['telefon'];
+  angabe: Awaited<ReturnType<typeof hilfeAngaben>>['erreichbarkeit'];
+}) {
   const telefonHref = telefonLink(telefon);
   return (
     <div className={className} data-block="rubrik-pausiert">
@@ -75,9 +89,9 @@ export async function RubrikPausiertHinweis({ className }: { className?: string 
         ) : (
           <>
             Bitte schreiben Sie uns über das{' '}
-            <a href="/service-und-termin/kontakt" className="font-semibold text-primary">
+            <Link href="/service-und-termin/kontakt" className="font-semibold text-primary">
               Kontaktformular
-            </a>
+            </Link>
             . Wir melden uns bei Ihnen.
           </>
         )}
@@ -120,8 +134,8 @@ type Suchparameter = { [key: string]: string | string[] | undefined };
  */
 export async function FahrzeugAnfrageInhalt({ klasse, suchparameter }: { klasse: FormularKlasse; suchparameter?: Suchparameter }) {
   // Rubrik nicht live (FA-KERN-05): Hinweis mit Telefon statt eines Formulars, das der Server ablehnen würde.
-  if (!(await rubrikLive(klasse))) return <RubrikPausiertHinweis />;
-  const { telefon, erreichbarkeit: angabe } = await hilfeAngaben();
+  const [live, { telefon, erreichbarkeit: angabe }] = await Promise.all([rubrikLive(klasse), hilfeAngaben()]);
+  if (!live) return <RubrikPausiertInhalt telefon={telefon} angabe={angabe} />;
   const vorbelegung = klasse === 'nicht-gefunden' && suchparameter ? vorbelegungAus(suchparameter) : undefined;
   return (
     <FahrzeugAnfrageFormular
@@ -267,7 +281,7 @@ export async function EinstiegSeite({
         <div className="mt-6 max-w-3xl">
           <UnterlagenAusRegel klasse={klasse} />
         </div>
-        {!live && <RubrikPausiertHinweis className="mt-8" />}
+        {!live && <RubrikPausiertInhalt className="mt-8" telefon={hilfe.telefon} angabe={hilfe.erreichbarkeit} />}
         {live && (
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
             <ButtonLink href={formular.anfrage} size="lg" pfeil>

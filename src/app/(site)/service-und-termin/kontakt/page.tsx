@@ -18,15 +18,17 @@ import { GlyphOrt } from '@/components/visual/glyphen/ort';
 import { GlyphTelefon } from '@/components/visual/glyphen/telefon';
 
 import { KontaktFormular } from './kontakt-formular';
+import { KONTAKT_TITEL, kontaktBeschreibung } from './suchtexte';
 
-export const metadata: Metadata = {
-  title: 'Kontakt und Erreichbarkeit',
-  // Erreichbarkeit im Wortlaut des Inhabers (FA-23, ERREICHBARKEIT_STANDARD), wie im Abschnitt „Erreichbarkeit“.
-  description:
-    'Anschrift, Telefon und E-Mail. 24 Stunden erreichbar. Notdienst rund um die Uhr. '
-    + 'Werkstatt und persönliche Beratung nach Terminvereinbarung.',
-  alternates: { canonical: '/service-und-termin/kontakt' },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  // Erreichbarkeit aus denselben Einstellungen wie der Abschnitt „Erreichbarkeit“ (FA-23, R1, R9).
+  const settings = await getSettings();
+  return {
+    title: KONTAKT_TITEL,
+    description: kontaktBeschreibung(settings),
+    alternates: { canonical: '/service-und-termin/kontakt' },
+  };
+}
 
 /** Hinweis zur Anfahrt aus der Redaktion. Solange er einen Platzhalter enthält, bleibt er ungezeigt. */
 const ANFAHRT_HINWEIS =

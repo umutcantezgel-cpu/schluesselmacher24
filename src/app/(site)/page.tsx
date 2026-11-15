@@ -16,6 +16,7 @@ import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
 import { WerkstattZeile, werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { erreichbarkeit } from '@/lib/erreichbarkeit';
+import { CODE_ANFRAGE_PFAD } from '@/lib/wege/code-anfrage';
 import { AreaScope } from '@/components/visual/area-scope';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { PROFILSCHNITT_AUSSCHNITT, PROFILSCHNITT_GROESSE } from '@/components/visual/generators/profilschnitt';
@@ -72,14 +73,14 @@ const TRUST_POINTS = [
   },
   {
     title: 'Erst prüfen, dann buchen',
-    body: 'Wir sagen Ihnen vor der Terminbestätigung, was machbar ist und was es kostet. Keine Überraschung vor Ort.',
+    body: 'Vor der Terminbestätigung sagen wir Ihnen, was machbar ist und was es kostet.',
   },
   {
-    title: 'Nachvollziehbare Abläufe',
-    body: 'Jeder Vorgang bekommt eine Nummer. Den Stand können Sie jederzeit selbst abrufen.',
+    title: 'Stand selbst abrufen',
+    body: 'Jeder Auftrag bekommt eine Vorgangsnummer. Mit ihr und Ihrer E-Mail-Adresse sehen Sie den Stand selbst nach.',
   },
   {
-    title: 'Sichere Zahlung',
+    title: 'Anzahlung zählt zum Preis',
     body: 'Die Anzahlung wird vollständig auf den Gesamtpreis angerechnet.',
   },
 ];
@@ -94,8 +95,10 @@ function Weiter({ className }: { className?: string }) {
   );
 }
 
-/** Ziele der Knöpfe im Autoschlüssel-Abschnitt, spät vorgeladen (D-044). */
-const HERO_ZIELE = ['/autoschluessel/anfrage', '/schluessel-nach-code'] as const;
+/** Ziele der Knöpfe im Autoschlüssel-Abschnitt, spät vorgeladen (D-044). Ohne Codeprodukte führt der Code-Verweis direkt in „Code anfragen“ (A-046). */
+function heroZiele(codeProdukte: boolean): string[] {
+  return ['/autoschluessel/anfrage', codeProdukte ? '/schluessel-nach-code' : CODE_ANFRAGE_PFAD];
+}
 
 export default async function HomePage() {
   const [page, settings, guides, hubRubriken, codeLines] = await Promise.all([
@@ -107,6 +110,7 @@ export default async function HomePage() {
   ]);
   // „Bestellen ohne Termin“: Solange es keine echten Codeprodukte gibt, verspricht die Karte keine Bestellung (A-046).
   const codeProdukte = codeLines.length > 0;
+  const codeZiel = codeProdukte ? '/schluessel-nach-code' : CODE_ANFRAGE_PFAD;
 
   const nummer = kontakt(settings.company).telefon;
   const telefon = nummer ? { anzeige: nummer, href: telefonLink(nummer) } : null;
@@ -116,10 +120,14 @@ export default async function HomePage() {
 
   const carKeySteps = [
     { title: 'Fahrzeug wählen', body: 'Marke, Modell, Baujahr und Schlüsselart.' },
-    { title: 'Fotos hochladen', body: 'Schlüssel aus drei Richtungen und den Fahrzeugschein.' },
-    { title: 'Preis oder Prüfung', body: 'Fester Preis, Preisrahmen oder Hinweis auf manuelle Prüfung.' },
-    { title: 'Anzahlung', body: `Standard ${deposit}, wird voll angerechnet.` },
-    { title: 'Termin buchen', body: `Frühester Termin nach etwa ${leadDays}\u00a0Tagen Vorlauf. Zum Termin bringen Sie Ausweisdokument und Fahrzeugschein mit.` },
+    {
+      title: 'Unterlagen hochladen',
+      body: 'Den Fahrzeugschein und drei Fotos Ihres Schlüssels. Sind alle Schlüssel verloren, entfallen die Fotos.',
+    },
+    { title: 'Preis oder Prüfung', body: 'Sie sehen einen festen Preis oder einen Preisrahmen. Manche Fälle prüfen wir zuerst von Hand.' },
+    { title: 'Anzahlung', body: `In der Regel ${deposit}. Sie wird voll auf den Preis angerechnet.` },
+    { title: 'Termin buchen', body: `Der früheste Termin ist in etwa ${leadDays}\u00a0Tagen. Zum Termin zeigen Sie uns Ihren Ausweis und den Fahrzeugschein. `
+      + 'Steht das Fahrzeug nicht auf Ihren Namen, brauchen wir zusätzlich eine Vollmacht des Halters.' },
   ];
 
   const projekte = NAV_AREAS.filter((a) =>
@@ -152,7 +160,7 @@ export default async function HomePage() {
               {page?.headline ?? 'Autoschlüssel nachmachen und programmieren'}
             </h2>
             <p className="mt-4 max-w-measure text-lead text-foreground-muted">
-              Termin in der Werkstatt in Wetzlar, für Mittelhessen und alle, die anreisen.
+              Sie bekommen einen festen Termin in unserer Werkstatt in Wetzlar, auch wenn Sie von weiter her anreisen.
             </p>
           </div>
 
@@ -187,12 +195,12 @@ export default async function HomePage() {
           <div className="flex flex-col lg:col-span-6">
             <div className="flex flex-col items-start gap-x-6 gap-y-3 sm:flex-row sm:flex-wrap sm:items-center lg:mt-8">
               {/* Ziele des ersten Bildschirms erst nach der Fräsbahn vorladen (D-044) */}
-              <SpaetVorladen ziele={HERO_ZIELE} />
+              <SpaetVorladen ziele={heroZiele(codeProdukte)} />
               <ButtonLink href="/autoschluessel/anfrage" prefetch={false} size="lg" pfeil className="w-full sm:w-auto">
                 Autoschlüssel-Termin anfragen
               </ButtonLink>
               <Link
-                href="/schluessel-nach-code"
+                href={codeZiel}
                 prefetch={false}
                 className="group inline-flex min-h-touch items-center gap-1.5 text-body font-semibold text-primary"
               >
@@ -243,7 +251,7 @@ export default async function HomePage() {
                   id="ablauf-titel"
                   eyebrow="Schwerpunkt Autoschlüssel"
                   title="So läuft Ihr Autoschlüssel-Auftrag ab"
-                  lead="Vom Fahrzeug bis zum Termin. Sie geben nur an, was für Ihr Fahrzeug zählt."
+                  lead="Sie gehen Schritt für Schritt vom Fahrzeug bis zum Termin. Wir fragen nur, was für Ihr Fahrzeug zählt."
                   profillinie
                 />
                 {/* Telefon: Knöpfe untereinander, der sekundäre Weg als Textlink; ab 640 px nebeneinander */}
@@ -303,18 +311,24 @@ export default async function HomePage() {
 
       {/* Direkt kaufen: zwei Zeichnungsblätter */}
       <Section tone="muted" labelledBy="direktkauf-titel">
-        <SectionHeading id="direktkauf-titel" eyebrow="Direkt kaufen" title="Bestellen ohne Termin" />
+        {/* Ohne veröffentlichte Codeprodukte ist nur die Sperrschließung bestellbar (A-046): Kopf sagt das. */}
+        <SectionHeading
+          id="direktkauf-titel"
+          eyebrow={codeProdukte ? 'Direkt kaufen' : 'Ohne Termin'}
+          title={codeProdukte ? 'Bestellen ohne Termin' : 'Ohne Termin bestellen oder anfragen'}
+        />
         {/* Mobil eine Leiste mit sichtbarem Anschnitt, ab 768 px zwei Spalten */}
         <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-gutter md:overflow-visible md:px-0 md:pb-0 scroll-px-5 sm:scroll-px-6 md:scroll-px-0">
           {[
             {
               area: 'schluessel-nach-code' as const,
-              href: '/schluessel-nach-code',
+              href: codeZiel,
               titel: 'Schlüssel nach Code',
               marke: codeProdukte ? 'Direkt kaufen' : 'Auf Anfrage',
               text: codeProdukte
-                ? 'Code eingeben, Stückzahl wählen, bestellen. Ihr Originalschlüssel bleibt bei Ihnen.'
-                : 'Code nennen, wir prüfen ihn und melden uns. Ihr Originalschlüssel bleibt bei Ihnen.',
+                ? 'Sie geben den Code ein, wählen die Stückzahl und bestellen. Ihr Originalschlüssel bleibt bei Ihnen.'
+                : 'Sie nennen uns den Code Ihres Schlosses, wir prüfen ihn und melden uns. '
+                  + 'Ihr Originalschlüssel bleibt bei Ihnen.',
               grafik: <SchluesselGrafik params={{ typ: 'zylinder', code: 'SM24' }} title="Schlüssel mit Profil nach Code" />,
             },
             {
@@ -322,7 +336,7 @@ export default async function HomePage() {
               href: '/gleichschliessende-zylinder/konfigurator',
               titel: 'Sperrschließung',
               marke: 'Direkt kaufen',
-              text: 'Mehrere Türen mit einem Schlüssel. Bauform, Maße und Schlüsselanzahl selbst zusammenstellen.',
+              text: 'Ein Schlüssel für mehrere Türen. Im Konfigurator wählen Sie Bauform, Maße und Zahl der Schlüssel und bestellen direkt.',
               /* Bis lg ist die Kartenfläche schmal (230–300 px): dort das schmale Format mit größerer Schrift. */
               grafik: (
                 <>
@@ -377,8 +391,8 @@ export default async function HomePage() {
             <SectionHeading
               id="projekte-titel"
               eyebrow="Projekte"
-              title="Größere Vorhaben planen wir strukturiert"
-              lead="Schließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik erfassen wir über geführte Konfiguratoren. Am Ende steht eine Zusammenfassung, aus der ein belastbares Angebot wird."
+              title="Größere Vorhaben planen wir mit Ihnen"
+              lead="Für Schließanlagen, elektronische Zutrittslösungen und Sicherheitstechnik fragen wir Ihren Bedarf Schritt für Schritt ab. Am Ende steht eine Zusammenfassung. Daraus erstellen wir Ihr Angebot."
             />
             <ul className="mt-8 border-t border-border">
               {projekte.map((area) => (
@@ -409,7 +423,7 @@ export default async function HomePage() {
 
       <Section tone="muted" tight labelledBy="ratgeber-titel">
         <div className="flex flex-wrap items-end justify-between gap-x-gutter gap-y-4">
-          <SectionHeading id="ratgeber-titel" eyebrow="Ratgeber" title="Antworten auf die häufigsten Fragen" />
+          <SectionHeading id="ratgeber-titel" eyebrow="Ratgeber" title="Antworten auf häufige Fragen" />
           <Link href="/ratgeber" className="group inline-flex min-h-touch items-center gap-1.5 text-body font-semibold text-primary">
             Alle Ratgeber
             <Weiter />

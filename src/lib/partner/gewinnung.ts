@@ -380,7 +380,7 @@ const NETZWERK_DEUTSCHLAND: GewinnungSeite = {
   pfad: '/partner-werden/netzwerk-deutschland',
   kurzname: 'Netzwerk Deutschland',
   kurztext: 'Leistungen, Qualitätsstandard und die Länder, in denen wir Partner suchen.',
-  titel: 'Fahrzeugschlüssel-Netzwerk Deutschland',
+  titel: 'Netzwerk für Fahrzeugschlüssel',
   beschreibung:
     'Das Partnernetz von SCHLÜSSELMACHER24 für Autoschlüssel und Fahrzeugschlüssel: Leistungen, '
     + 'Qualitätsstandard und die Bundesländer, in denen wir Partner suchen.',
@@ -529,7 +529,7 @@ const KOOPERATION: GewinnungSeite = {
   pfad: '/partner-werden/kooperation',
   kurzname: 'Kooperation',
   kurztext: 'Für Betriebe, die selbst keine Schlüssel fertigen und Fälle weitergeben wollen.',
-  titel: 'Autoschlüssel-Kooperation für Betriebe',
+  titel: 'Kooperation für Autoschlüssel-Fälle',
   beschreibung:
     'Für Autohäuser, Fuhrparks, Pannenhilfe und Verwaltungen mit Fahrzeugen: Autoschlüssel-Fälle an '
     + 'SCHLÜSSELMACHER24 weitergeben, ohne selbst zu fertigen.',
