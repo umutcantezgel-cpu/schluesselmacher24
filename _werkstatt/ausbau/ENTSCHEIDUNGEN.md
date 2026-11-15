@@ -324,3 +324,14 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Im Direktweg (Hauptzentrale, Eigenbereich) bleibt das bestehende Verhalten der Anzahlung unverändert (G9: erweitern ja, verändern nein); neu sind Auftragsweg, Restbetrag und die Stände. Der Eigenbereich wird aus den Einstellungen gelesen statt fest aus dem Code.
 - Zuordnung bei mehreren passenden Partnern trifft das Team im Admin; eine automatische Regel wird nicht erfunden.
 - Umkehrprobe: Ohne Schalter ändert sich für Kunden nichts außer der klareren Anzeige; neue Felder sind additiv.
+
+## A-050 · Einsendung: drei Varianten des Inhabers statt „versichert“ und „unversichert“ (2026-11-15 13:30, FA-SHOP-03, FA-13)
+- Der Bestand bot „versichert“ (Einschreiben, Haftung 25 Euro) und „unversichert“ (Großbrief). Der Inhaber nennt DHL Paket (Haftung bis 500 Euro, Empfehlung für wertvolle Originalschlüssel), Einschreiben Einwurf (Haftung nur bis 20 Euro, nicht als voll versichert darstellen) und Einschreiben Wert (Sonderfall, Einlieferung in der Filiale).
+- Entscheidung: Die Varianten werden Daten in den Einstellungen mit Haftung als Zahl, Porto mit Stand und Quelle, Empfehlung und Sonderfall-Schalter; das Wort „versichert“ steht bei keiner Variante allein (R9). Der Großbrief entfällt als Kundenwahl. Posttarife sind fremde Preise und stehen nur als belegte Angabe mit Stand (G9 betrifft die eigenen Preise des Betriebs). Label über die Schnittstelle bleibt abgeschaltet, bis ein Geschäftskundenvertrag vorliegt (MA-08).
+- Umkehrprobe: Die alten Felder bleiben lesbar; die Varianten lassen sich im Admin deaktivieren.
+
+## A-051 · Ortsstamm aus dem amtlichen Gemeindeverzeichnis, Ortsseiten nur mit Substanz (2026-11-15 13:35, FA-PLATTFORM-03, FA-09, Anhang A)
+- Quellen: Gemeindeverzeichnis des Statistischen Bundesamtes, Gebietsstand 31.12.2025 (Vervielfältigung mit Quellenangabe gestattet, Vermerk in der Datei) für Gemeinde, Kreis, Land, Postleitzahl des Verwaltungssitzes und Koordinaten; GeoNames (CC BY 4.0) für die Zuordnung aller Postleitzahlen. Beide einmal abgerufen, Rohdateien in `_werkstatt/ausbau/daten/orte`.
+- Zwei Ebenen: Der Ortsstamm (alle Gemeinden) ist reine Stammdaten ohne Seiten. Ortsseiten bleiben redaktionelle Einträge, verweisen auf den Stamm und werden nur indexiert, wenn sie eigenen Text und einen Leistungsweg haben (Werkstatt, freigeschalteter Partner oder eingetragene Verfügbarkeit). So ist die Forderung „alle Gemeinden technisch verfügbar“ erfüllt, ohne eine einzige Brückenseite zu erzeugen (R2, R3; der Inhaber verlangt dasselbe).
+- Anhang A wird als Prioritätsliste mit Gemeindeschlüsseln geführt; aus ihr entsteht keine Seite automatisch. Suchvolumen und Fahrzeit bleiben leere, pflegbare Felder (R4).
+- Umkehrprobe: Der Stamm ist additiv; ohne ihn arbeiten die Ortsseiten wie bisher.
