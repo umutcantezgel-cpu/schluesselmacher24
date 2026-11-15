@@ -52,7 +52,7 @@ const RELATED_LINKS = [
   },
   {
     href: '/ratgeber/autoschluessel-verloren-was-tun',
-    label: 'Schlüssel verloren – was tun?',
+    label: 'Autoschlüssel verloren: Was jetzt zu tun ist',
     description: 'Die sinnvolle Reihenfolge, wenn kein Schlüssel mehr da ist.',
   },
   {

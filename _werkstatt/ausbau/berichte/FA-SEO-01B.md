@@ -187,3 +187,10 @@ Prüfung nach der Nachbesserung, über die Datenweiche (`sicher.sh --json`):
 | `npm run lint` | ohne Befund |
 
 Weitere geänderte Dateien in der Nachbesserung: `src/app/(site)/service-und-termin/kontakt/page.tsx`, `src/app/(site)/service-und-termin/kontakt/suchtexte.ts` (neu), `src/app/(site)/rechtliches/versand-und-zahlung/page.tsx`, `src/app/(site)/motorradschluessel/anfrage/page.tsx`, `src/app/(site)/autoschluessel/gehaeuse/anfrage/page.tsx`, `content/cities.json`, `src/lib/codelinie-texte.ts`, `src/lib/fahrzeug-texte.ts`, `src/lib/data/seo-laengen.test.ts`, dieser Bericht.
+
+## ABNAHME (Orchestrator, 15.11.2026)
+
+- **Seed-Abgleich für Ortsseiten ergänzt** (Befund 3): Der Plan `einsatzgebiete` in `src/payload/seed.ts` gleicht jetzt `seo.titel`, `seo.beschreibung` und die Verweise ab wie Ratgeber und Seiten. Der neue Wetzlar-Titel und der Verweis „Termin anfragen“ kommen damit auch in einer bestehenden Datenbank an, solange der Betrieb sie nicht selbst geändert hat. Der Datenbanktest zum Seed läuft mit der Abnahme von FA-KERN-05.
+- **Verweis mit Gedankenstrich** (Befund 7): Im Termin-Assistenten heißt der Verweis auf den Ratgeber jetzt wie dessen Titel „Autoschlüssel verloren: Was jetzt zu tun ist“.
+- **Preise in Suchergebnis-Texten** (offene Frage 1): bleiben draußen, auch bei Code- und Artikelseiten; der Preis steht auf der Seite und, wo er echt ist, in den Strukturdaten (FA-SHOP-01B).
+- Typprüfung, Lint und Unit-Tests waren grün (3.095 Tests, mit den Tests gleichzeitig laufender Pakete). Build und Onpage-Messung folgen mit der Abnahme von FA-KERN-05, weil ein Build während dessen Umbau scheitern kann.

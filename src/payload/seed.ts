@@ -602,6 +602,8 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
       schluessel: (c) => c.id,
       dbSchluessel: kennung,
       zuDaten: m.einsatzgebietZuPayload,
+      // Titel, Beschreibung und Verweise der Ortsseiten folgen den Startwerten, solange der Betrieb sie nicht geändert hat (FA-SEO-01B).
+      abgleich: [...SEO_ABGLEICH],
     });
     await eintraegeUebernehmen({
       name: 'sperrtage',
