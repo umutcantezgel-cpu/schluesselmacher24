@@ -24,12 +24,11 @@ async function umbenennen(db: MigrateUpArgs['db'], von: string, nach: string): P
 
 export async function up({ db }: MigrateUpArgs): Promise<void> {
   await umbenennen(db, ALT, NEU)
+  // Nur der aktuelle Stand; die Versionen der Rubrik bleiben als Verlauf, wie sie waren.
   await db.execute(sql`UPDATE "rubriken" SET "im_hub" = false WHERE "kennung" = 'schluessel-einschicken';`)
-  await db.execute(sql`UPDATE "_rubriken_v" SET "version_im_hub" = false WHERE "version_kennung" = 'schluessel-einschicken' AND "latest" = true;`)
 }
 
 export async function down({ db }: MigrateDownArgs): Promise<void> {
   await umbenennen(db, NEU, ALT)
   await db.execute(sql`UPDATE "rubriken" SET "im_hub" = true WHERE "kennung" = 'schluessel-einschicken';`)
-  await db.execute(sql`UPDATE "_rubriken_v" SET "version_im_hub" = true WHERE "version_kennung" = 'schluessel-einschicken' AND "latest" = true;`)
 }
