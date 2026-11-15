@@ -14,9 +14,10 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 |---|---|---|---|---|
 | FA-SOFORT-01 | Ein Markenorange statt Blau, die 24 orange | FA-04 | nein | committet 65a74e9 |
 | FA-SOFORT-02 | Erreichbarkeit statt Öffnungszeiten; Adresse Langgasse 61; Satz der Startseite | FA-23, FA-24, FA-03 (Sprache) | ja (klein) | committet b14913a |
-| FA-SOFORT-03 | Leistung „Schlüssel nach Foto“ entfernen, Rubrik „Schlüssel nach Vorlage“ | FA-03, FA-12 | nein (Datenmigration Kennung) | läuft |
+| FA-SOFORT-03 | Leistung „Schlüssel nach Foto“ entfernen, Rubrik „Schlüssel nach Vorlage“ | FA-03, FA-12 | nein (Datenmigration Kennung) | committet 9c61bca (DB und Build mit der Welle) |
 | FA-SOFORT-04 | Demo-Daten raus: Beispiel-Codelinien und Beispielartikel nie live, „Code anfragen“ | FA-10-02, FA-11-02, FA-11-17 | nein | läuft |
-| FA-SOFORT-05 | Hauptzugänge im Hub nach FA-03 (14 Einträge) mit Anfragewegen für Roller, Kleinstfahrzeuge, E-Scooter, Seniorenmobile, Fahrrad; allgemeine Anfrage | FA-03, FA-06-05/06/14 | ja (Rubrik-Werte) | offen, nach FA-KERN-01 |
+| FA-SOFORT-05A | Vier Fach-Icons: Roller, E-Scooter, Seniorenmobil, Fahrradschlüssel | FA-03 | nein | läuft |
+| FA-SOFORT-05 | Hauptzugänge im Hub nach FA-03 (14 Einträge), Rubriken und Navigation; die Anfragewege baut FA-KERN-02 | FA-03, FA-06-05/06/14 | ja (Rubrik-Werte) | offen, nach FA-KERN-02 |
 
 ## Priorität 2 · Kern
 | Paket | Inhalt | Anforderungen | Schema | Status |
@@ -40,7 +41,7 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 | Paket | Inhalt | Anforderungen | Schema | Status |
 |---|---|---|---|---|
 | FA-PLATTFORM-01 | Partnernetz nur für Autoschlüssel: Leistungen nach FA-07, Qualitätskontrolle mit Besuch vor Ort, Pausieren wirkt, Region zuordnen, Lead-Verlauf | FA-07, FA-08-09 bis -15, FA-22-36 bis -41 | ja | offen |
-| FA-PLATTFORM-02 | Partnergewinnung: Startseiten-Sektion „Autoschlüssel Profi? Partner werden“, fünf Landingpages mit eigener Substanz, Formularfelder | FA-08-01 bis -08 | nein | offen |
+| FA-PLATTFORM-02 | Partnergewinnung: Startseiten-Sektion „Autoschlüssel Profi? Partner werden“, fünf Seiten mit eigenem Anliegen | FA-08-01 bis -08 | nein | committet 4f494ef; Einbindung in Startseite, Fuß und Sitemap folgt mit der Welle |
 | FA-PLATTFORM-03 | Ortsdatenbasis: amtliches Gemeindeverzeichnis importierbar, Stadt, Landkreis, Postleitzahl, Partnerregion verknüpft; Anhang A als Prioritätsliste; Veröffentlichung nur mit Substanz | FA-09, Anhang A, FA-AB-05 | ja | offen, wartet auf Recherche 02 |
 | FA-PLATTFORM-04 | Unterschrift des Partnervertrags als Upload (Rest aus E7-OPUS-01 Teil 3) | G-39 | nein | offen |
 
@@ -49,15 +50,15 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 |---|---|---|---|---|
 | FA-INHALT-01 | Tutorials: Rubrik, zehn Themen als Struktur, YouTube-Einbettung mit Einwilligung, im Admin ohne Entwickler pflegbar, Videos auf Leistungsseiten | FA-21, FA-22-32 | ja | offen |
 | FA-INHALT-02 | Hersteller und Systeme früh sichtbar: Bereich auf der Startseite, BKS, ABUS, BURG-WÄCHTER sachlich; Logos erst nach Freigabe | FA-17-02, -03, -20, FA-19 | ja (Logo-Feld) | offen, wartet auf Recherche 06 |
-| FA-INHALT-03 | Texte menschlicher: kurze, klare Sätze auf Leistungsseiten, Gegenprüfung durch zwei unabhängige Leser, ohne Gedankenstriche | FA-02 | nein | offen |
+| FA-INHALT-03 | Texte menschlicher: kurze, klare Sätze auf Leistungsseiten, Gegenprüfung durch zwei unabhängige Leser, ohne Gedankenstriche | FA-02 | nein | Gruppe A (sieben Autoschlüssel-Leistungsseiten) läuft; weitere Gruppen offen |
 | FA-INHALT-04 | Bilder: Vorher-Nachher-Baustein, Logo unten rechts für eigene Fotos, Alt-Text-Pflicht, Hinweise zu Kennzeichen und Personen | FA-20 | ja | offen; Fotos fehlen (MA-05) |
-| FA-INHALT-05 | Schließanlagen, Zutritt, Sicherheitstechnik: Zielgruppen, Erweiterbarkeit, Hinweis zu verdeckter Aufzeichnung, Erklärtexte pflegbar | FA-16-06, -09, -21, FA-17-18, FA-18-09, -13, -14 | nein | offen |
+| FA-INHALT-05 | Schließanlagen, Zutritt, Sicherheitstechnik: Zielgruppen, Erweiterbarkeit, Hinweis zu Ton und Aufzeichnung (FA-16-21 Erklärtexte pflegbar bleibt offen) | FA-16-06, -09, FA-17-18, FA-18-09, -13, -14 | nein | committet f54ce64 |
 
 ## Priorität 6 · SEO
 | Paket | Inhalt | Anforderungen | Schema | Status |
 |---|---|---|---|---|
 | FA-SEO-01 | Titel und Beschreibungen in den Längen, Strukturdaten für Betrieb, Leistungen, Produkte, Brotkrumen überall, FAQ-Auszeichnung nach R8, Canonical und Indexstatus im Admin | FA-25, FA-22-44, -45 | ja (klein) | offen |
-| FA-SEO-02 | Eigene Onpage-Prüfung nach den Kriterien von Seobility über den Build; Schutz jeder Staging-Adresse | FA-25-20 bis -22, FA-AB-04 | nein | offen, wartet auf Recherche 05 |
+| FA-SEO-02 | Eigene Onpage-Prüfung nach den Kriterien von Seobility über den Build (Schutz jeder Staging-Adresse liegt bei FA-SEO-01) | FA-25-21, -22, FA-AB-04 | nein | committet 1436cf3 |
 
 ## Priorität 7 · QA
 | Paket | Inhalt | Anforderungen | Schema | Status |
