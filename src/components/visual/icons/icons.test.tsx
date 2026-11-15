@@ -28,6 +28,11 @@ import { IconFahrzeugoeffnung } from './fahrzeugoeffnung';
 import { IconSchluesselKopieren } from './schluessel-kopieren';
 import { IconFahrzeugmarke } from './fahrzeugmarke';
 import { IconMotorradschluessel } from './motorradschluessel';
+// Kleinstfahrzeuge & Fahrrad
+import { IconRoller } from './roller';
+import { IconEScooter } from './e-scooter';
+import { IconSeniorenmobil } from './seniorenmobil';
+import { IconFahrradschluessel } from './fahrradschluessel';
 import { IconSchluesselgehaeuse } from './schluesselgehaeuse';
 import { IconTransponderKopie } from './transponder-kopie';
 import { IconSchluesselfinder } from './schluesselfinder';
@@ -97,6 +102,11 @@ const ICONS: Record<string, ComponentType<IconProps>> = {
   'schluessel-kopieren': IconSchluesselKopieren,
   fahrzeugmarke: IconFahrzeugmarke,
   motorradschluessel: IconMotorradschluessel,
+  // Kleinstfahrzeuge & Fahrrad
+  roller: IconRoller,
+  'e-scooter': IconEScooter,
+  seniorenmobil: IconSeniorenmobil,
+  fahrradschluessel: IconFahrradschluessel,
   schluesselgehaeuse: IconSchluesselgehaeuse,
   'transponder-kopie': IconTransponderKopie,
   schluesselfinder: IconSchluesselfinder,

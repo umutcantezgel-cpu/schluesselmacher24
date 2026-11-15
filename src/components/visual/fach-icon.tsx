@@ -7,8 +7,10 @@ import { IconAussenhautsicherung } from './icons/aussenhautsicherung';
 import { IconAutoschluessel } from './icons/autoschluessel';
 import { IconBeratungTelefon } from './icons/beratung-telefon';
 import { IconDatenschutz } from './icons/datenschutz';
+import { IconEScooter } from './icons/e-scooter';
 import { IconEinsteckschloss } from './icons/einsteckschloss';
 import { IconElektronischeZutrittsloesungen } from './icons/elektronische-zutrittsloesungen';
+import { IconFahrradschluessel } from './icons/fahrradschluessel';
 import { IconFahrzeugmarke } from './icons/fahrzeugmarke';
 import { IconFahrzeugoeffnung } from './icons/fahrzeugoeffnung';
 import { IconFotoHochladen } from './icons/foto-hochladen';
@@ -30,6 +32,7 @@ import { IconPanikFluchttuer } from './icons/panik-fluchttuer';
 import { IconProfilzylinder } from './icons/profilzylinder';
 import { IconPruefung } from './icons/pruefung';
 import { IconReparaturAustausch } from './icons/reparatur-austausch';
+import { IconRoller } from './icons/roller';
 import { IconRueckgabe } from './icons/rueckgabe';
 import { IconSchliessanlagen } from './icons/schliessanlagen';
 import { IconSchluesselKopieren } from './icons/schluessel-kopieren';
@@ -40,6 +43,7 @@ import { IconSchluesselbartFraesen } from './icons/schluesselbart-fraesen';
 import { IconSchluesselfinder } from './icons/schluesselfinder';
 import { IconSchluesselgehaeuse } from './icons/schluesselgehaeuse';
 import { IconSchutzbeschlag } from './icons/schutzbeschlag';
+import { IconSeniorenmobil } from './icons/seniorenmobil';
 import { IconServiceUndTermin } from './icons/service-und-termin';
 import { IconSicherheitscheck } from './icons/sicherheitscheck';
 import { IconSicherheitstechnik } from './icons/sicherheitstechnik';
@@ -76,8 +80,10 @@ export const FACH_ICON_REGISTRY = {
   'autoschluessel': IconAutoschluessel,
   'beratung-telefon': IconBeratungTelefon,
   'datenschutz': IconDatenschutz,
+  'e-scooter': IconEScooter,
   'einsteckschloss': IconEinsteckschloss,
   'elektronische-zutrittsloesungen': IconElektronischeZutrittsloesungen,
+  'fahrradschluessel': IconFahrradschluessel,
   'fahrzeugmarke': IconFahrzeugmarke,
   'fahrzeugoeffnung': IconFahrzeugoeffnung,
   'foto-hochladen': IconFotoHochladen,
@@ -99,6 +105,7 @@ export const FACH_ICON_REGISTRY = {
   'profilzylinder': IconProfilzylinder,
   'pruefung': IconPruefung,
   'reparatur-austausch': IconReparaturAustausch,
+  'roller': IconRoller,
   'rueckgabe': IconRueckgabe,
   'schliessanlagen': IconSchliessanlagen,
   'schluessel-kopieren': IconSchluesselKopieren,
@@ -109,6 +116,7 @@ export const FACH_ICON_REGISTRY = {
   'schluesselfinder': IconSchluesselfinder,
   'schluesselgehaeuse': IconSchluesselgehaeuse,
   'schutzbeschlag': IconSchutzbeschlag,
+  'seniorenmobil': IconSeniorenmobil,
   'service-und-termin': IconServiceUndTermin,
   'sicherheitscheck': IconSicherheitscheck,
   'sicherheitstechnik': IconSicherheitstechnik,
