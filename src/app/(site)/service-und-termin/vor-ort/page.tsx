@@ -17,8 +17,8 @@ import { EinsatzFormular } from './einsatz-formular';
 export const metadata: Metadata = {
   title: 'Service vor Ort nach Termin',
   description:
-    'Welche Arbeiten wir direkt bei Ihnen im Objekt oder am Fahrzeug erledigen und was dafür '
-    + 'vorbereitet sein muss.',
+    'Welche Arbeiten wir bei Ihnen im Objekt oder am Fahrzeug erledigen und was Sie dafür '
+    + 'vorbereiten. Den Einsatz fragen Sie direkt auf dieser Seite an.',
   alternates: { canonical: '/service-und-termin/vor-ort' },
 };
 

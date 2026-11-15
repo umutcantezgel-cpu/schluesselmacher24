@@ -3,8 +3,12 @@ import type { CollectionConfig } from 'payload';
 import { istInhaber, istTeam } from '../access/rollen';
 import { bildFeld, seoFeld } from '../fields/gemeinsam';
 import { erneuernHooks } from '../hooks/revalidate';
+import { neueSeiteVorAenderung } from '../hooks/seiten-adresse';
 
-/** Pflegbare Texte der festen Seiten (Überschrift, Einleitung, Fragen, Suchmaschinen). */
+/**
+ * Pflegbare Texte der festen Seiten (Überschrift, Einleitung, Fragen, Suchmaschinen) und eigene
+ * Inhaltsseiten mit freier Adresse (FA-KERN-05): Sie erscheinen über die Auffangroute unter `/<adresse>`.
+ */
 export const Seiten: CollectionConfig = {
   slug: 'seiten',
   labels: { singular: 'Seitentext', plural: 'Seitentexte' },
@@ -16,7 +20,7 @@ export const Seiten: CollectionConfig = {
   },
   access: { read: istTeam, create: istInhaber, update: istTeam, delete: istInhaber, readVersions: istTeam },
   versions: { drafts: true, maxPerDoc: 30 },
-  hooks: erneuernHooks,
+  hooks: { ...erneuernHooks, beforeChange: [neueSeiteVorAenderung] },
   fields: [
     {
       name: 'route',
@@ -24,10 +28,14 @@ export const Seiten: CollectionConfig = {
       label: 'Seite (Adresse)',
       unique: true,
       index: true,
+      // Nur beim Anlegen einer neuen Seite wählbar, danach fest (FA-KERN-05). Geprüft in `neueSeiteVorAenderung`.
+      access: { update: () => false },
       admin: {
         position: 'sidebar',
-        readOnly: true,
-        description: 'Adresse ohne führenden Schrägstrich; leer = Startseite.',
+        description:
+          'Adresse ohne führenden Schrägstrich; leer = Startseite. Neue Seite: ein freier Name aus Kleinbuchstaben, '
+          + 'Ziffern und Bindestrichen, etwa „schluessel-fuer-vereine“. Danach nicht mehr änderbar. '
+          + 'Neue Seiten stehen zunächst auf „Nicht in Suchmaschinen aufnehmen“.',
       },
     },
     { name: 'headline', type: 'text', label: 'Überschrift', required: true },

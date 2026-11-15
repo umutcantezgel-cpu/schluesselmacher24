@@ -133,6 +133,10 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
       // Jahr der Werkstatt: Silvester nach 23 Uhr UTC zählt schon das neue Jahr.
       jahr: jahrInBerlin(now),
       termin,
+      // Partnertermin ohne Zeitfenster mit Zahlung (FA-KERN-05): dieselbe Begrenzung je E-Mail-Adresse.
+      ...(input.kind === 'termin' && !input.appointment && input.payment
+        ? { kunde: { email: input.contact.email, hoechstensOffen: OFFENE_TERMINE_JE_EMAIL, abDatum: heuteInBerlin() } }
+        : {}),
       aufbauen: (reference) => ({
         area: input.area,
         process: input.process,

@@ -11,11 +11,11 @@ const ROUTE = 'autoschluessel/kopieren';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Autoschlüssel kopieren — was mechanisch möglich ist',
+    title: page?.seo.title ?? 'Autoschlüssel kopieren in Wetzlar',
     description:
       page?.seo.description
-      ?? 'Mechanische Kopie von Autoschlüsseln nach Vorlage. Wir erklären, wann eine Kopie reicht '
-        + 'und wann zusätzlich programmiert werden muss.',
+      ?? 'Wir kopieren den mechanischen Teil Ihres Autoschlüssels nach Vorlage. Der Kopie fehlt '
+        + 'der Transponder, darum klären wir vorab, was in Ihrem Fall reicht.',
     alternates: { canonical: '/autoschluessel/kopieren' },
   };
 }

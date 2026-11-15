@@ -18,10 +18,10 @@ const CRUMBS = [
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Autoschlüssel-Gehäuse erneuern: Anfrage mit Fotos',
+    title: page?.seo.title ?? 'Autoschlüssel-Gehäuse erneuern',
     description:
       page?.seo.description
-      ?? 'Gehäuse für Ihren Autoschlüssel anfragen: Fahrzeug, drei Fotos Ihres Schlüssels und Fahrzeugschein. Wir melden uns mit Preis und Ablauf.',
+      ?? 'Ein neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt. Senden Sie Fahrzeug, drei Fotos des Schlüssels und den Fahrzeugschein, wir nennen den Preis.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

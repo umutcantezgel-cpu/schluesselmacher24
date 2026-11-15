@@ -6,6 +6,8 @@ import { VORGANG_STATUS } from '../fields/vorgang-status';
 import { auftragswegVorAenderung, partnerVorschlaege } from '../hooks/auftragsweg';
 import { vermittlungNachAenderung, vermittlungVorAenderung } from '../hooks/vermittlung';
 import { bestaetigungSenden } from '../hooks/bestaetigung-senden';
+import { kundenNachrichtSenden } from '../hooks/kunden-nachricht';
+import { korrekturText, stornoKorrekturVorAenderung } from '../hooks/storno-korrektur';
 import { druckansichten } from '../hooks/druckansichten';
 import { terminAktionen } from '../hooks/termin-aktionen';
 import { vorgangNachAenderung, vorgangVorAenderung } from '../hooks/vorgang-benachrichtigen';
@@ -13,6 +15,7 @@ import { AUFTRAGSWEGE, AUFTRAGSWEG_LABEL } from '../../lib/auftragsweg';
 import { KATEGORIE_LABEL } from '../../lib/druckansichten';
 import { AUSZAHLUNG_LABEL, VERMITTLUNG_LABEL, VERMITTLUNG_STAENDE } from '../../lib/partner/vermittlung';
 import { aktiverAuszahlungswegText } from '../../lib/zahlung/auszahlung';
+import { ERSTATTUNGS_WEGE, STORNO_ENTSCHEIDUNGEN, zahlungsstandText } from '../../lib/zahlung/erstattung';
 import { AUFTRAGSARTEN } from './Partnerbetriebe';
 import { fahrzeugklasseText } from '../../lib/fahrzeuge/anfrage-klassen';
 import { unterlagenHinweis } from '../../lib/server/unterlagen-pflicht';
@@ -74,6 +77,7 @@ export const MAIL_ARTEN = [
   { label: 'Ergebnis der Foto-Prüfung', value: 'freigabe' },
   { label: 'Hinweis an das Team', value: 'team-hinweis' },
   { label: 'Bitte um Bestätigung der Ausführung', value: 'ausfuehrung' },
+  { label: 'Nachricht des Teams', value: 'nachricht' },
   { label: 'Sonstige', value: 'sonstige' },
 ];
 
@@ -130,7 +134,8 @@ function eintragFelder(): Field[] {
  * Vorgänge entstehen nur auf dem Server (Kasse, Formulare, Buchung) — über
  * das Backend und die Programmierschnittstelle kann niemand einen anlegen.
  * Beträge und Positionen sind festgeschrieben; das Team pflegt Status,
- * Zahlungsstand und interne Notizen.
+ * Zahlungsstand und interne Notizen. Änderungen nach der Bestellung stehen als
+ * Korrekturposition daneben (FA-KERN-05).
  */
 export const Vorgaenge: CollectionConfig = {
   slug: 'vorgaenge',
@@ -177,10 +182,11 @@ export const Vorgaenge: CollectionConfig = {
     // (Begründung Pflicht) und Restbetrag (FA-KERN-03).
     // Vermittlung, Auszahlung und Erstattung (FA-KERN-04) vor dem Restbetrag, weil eine Erstattung den
     // Zahlungsstand ändert.
-    beforeChange: [vorgangVorAenderung, vermittlungVorAenderung, auftragswegVorAenderung],
+    // Storno mit Entscheidung zur Erstattung und Korrekturpositionen (FA-KERN-05) nach der Erstattung.
+    beforeChange: [vorgangVorAenderung, vermittlungVorAenderung, stornoKorrekturVorAenderung, auftragswegVorAenderung],
     afterChange: [vorgangNachAenderung, vermittlungNachAenderung],
   },
-  endpoints: [bestaetigungSenden, ...terminAktionen, ...druckansichten],
+  endpoints: [bestaetigungSenden, kundenNachrichtSenden, ...terminAktionen, ...druckansichten],
   fields: [
     {
       type: 'row',
@@ -298,9 +304,42 @@ export const Vorgaenge: CollectionConfig = {
       },
     },
     {
+      // Freie Nachricht mit Betreff und Text, auf Wunsch aus einer Vorlage (FA-KERN-05).
+      name: 'kundenNachricht',
+      type: 'ui',
+      admin: { position: 'sidebar', components: { Field: '/payload/components/KundenNachricht#KundenNachricht' } },
+    },
+    {
       name: 'bestaetigungSenden',
       type: 'ui',
       admin: { position: 'sidebar', components: { Field: '/payload/components/BestaetigungSenden#BestaetigungSenden' } },
+    },
+    {
+      // Storno einer Zahlung, die eingegangen ist: Entscheidung zur Erstattung ist Pflicht (FA-KERN-05).
+      name: 'storno',
+      type: 'group',
+      label: 'Storno: Erstattung',
+      admin: {
+        position: 'sidebar',
+        condition: (data) => {
+          const zahlung = (data?.zahlung as { status?: string } | undefined)?.status;
+          return zahlung === 'bezahlt' || zahlung === 'teilweise-erstattet' || Boolean((data?.storno as { entscheidung?: string } | undefined)?.entscheidung);
+        },
+        description:
+          'Vor dem Stornieren einer bezahlten Zahlung wählen. Bei „ganz“ oder „teilweise“ die Erstattung im Reiter „Zahlung“ '
+          + 'eintragen, bei „keine“ den Grund.',
+      },
+      fields: [
+        { name: 'entscheidung', type: 'select', label: 'Erstattung beim Storno', options: [...STORNO_ENTSCHEIDUNGEN] },
+        {
+          name: 'grund',
+          type: 'text',
+          label: 'Grund ohne Erstattung',
+          admin: { condition: (_data, sib) => sib?.entscheidung === 'keine' },
+        },
+        { name: 'entschiedenAm', type: 'date', label: 'Entschieden am', admin: { ...nurLesen, ...zeitpunkt }, ...systemFeld },
+        { name: 'entschiedenVon', type: 'text', label: 'Entschieden von', admin: nurLesen, ...systemFeld },
+      ],
     },
     {
       // Vorgangsblatt zum Drucken / als PDF speichern (Leitfaden Kap. 11 und 17).
@@ -698,6 +737,47 @@ export const Vorgaenge: CollectionConfig = {
                 { name: 'versandart', type: 'text', label: 'Versandart' },
               ],
             },
+            {
+              // Korrekturpositionen (FA-KERN-05): Positionen und Summen bleiben festgeschrieben, eine Korrektur ist
+              // ein eigener Beleg mit Betrag, Grund, Datum und Bearbeiter. Nicht änderbar, nicht löschbar.
+              name: 'korrekturen',
+              type: 'array',
+              label: 'Korrekturpositionen',
+              labels: { singular: 'Korrektur', plural: 'Korrekturen' },
+              admin: {
+                description:
+                  'Für eine Änderung nach der Bestellung, etwa Nachlass oder Zusatzleistung. Betrag in Cent, plus oder minus '
+                  + '(5,00 € Nachlass = -500). Eine gespeicherte Korrektur bleibt stehen; berichtigt wird mit einer weiteren Korrektur.',
+              },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'betragCent', type: 'number', label: 'Betrag (Cent, plus oder minus)', required: true, admin: { width: '25%', step: 1 } },
+                    { name: 'grund', type: 'text', label: 'Grund', required: true, admin: { width: '35%' } },
+                    { name: 'am', type: 'date', label: 'Datum', admin: { width: '20%', ...nurLesen, ...zeitpunkt }, ...systemFeld },
+                    { name: 'von', type: 'text', label: 'Wer', admin: { width: '20%', ...nurLesen }, ...systemFeld },
+                  ],
+                },
+              ],
+            },
+            {
+              // Nur Anzeige, nicht gespeichert (virtuell, keine Migration).
+              name: 'summeNachKorrektur',
+              type: 'text',
+              label: 'Summe nach Korrektur',
+              virtual: true,
+              admin: { readOnly: true, condition: (data) => Array.isArray(data?.korrekturen) && data.korrekturen.length > 0 },
+              hooks: {
+                afterRead: [
+                  ({ data }) =>
+                    korrekturText(
+                      (data?.summen as { gesamtCent?: number | null } | undefined)?.gesamtCent,
+                      data?.korrekturen as Array<{ betragCent?: number | null }> | undefined,
+                    ),
+                ],
+              },
+            },
           ],
         },
         {
@@ -725,6 +805,12 @@ export const Vorgaenge: CollectionConfig = {
         {
           label: 'Kontakt',
           fields: [
+            {
+              // mailto: und tel: (FA-KERN-05). Nachrichten mit Verlauf: „Nachricht an den Kunden“ in der Seitenleiste.
+              name: 'kontaktVerweise',
+              type: 'ui',
+              admin: { components: { Field: '/payload/components/KontaktVerweise#KontaktVerweise' } },
+            },
             {
               name: 'kontakt',
               type: 'group',
@@ -802,6 +888,24 @@ export const Vorgaenge: CollectionConfig = {
                   ],
                 },
                 {
+                  // Eindeutiger Stand in einem Satz, mit Betrag bei Teilerstattung (FA-KERN-05). Nur Anzeige (virtuell).
+                  name: 'standText',
+                  type: 'text',
+                  label: 'Stand der Zahlung',
+                  virtual: true,
+                  admin: { readOnly: true, condition: (_data, sib) => Boolean(sib?.status) },
+                  hooks: {
+                    afterRead: [
+                      ({ siblingData }) =>
+                        zahlungsstandText({
+                          status: siblingData?.status,
+                          betragCent: siblingData?.betragCent,
+                          erstattetCent: siblingData?.erstattetCent,
+                        }),
+                    ],
+                  },
+                },
+                {
                   name: 'anbieterRef',
                   type: 'text',
                   label: 'Zahlungskennung (Stripe)',
@@ -827,9 +931,9 @@ export const Vorgaenge: CollectionConfig = {
               label: 'Erstattung',
               admin: {
                 description:
-                  'Für bezahlte Vorgänge: Art, Betrag (Summe aller Erstattungen), Datum und Grund eintragen. Der Zahlungsstand '
+                  'Für bezahlte Vorgänge: Art, Betrag (Summe aller Erstattungen), Datum, Grund, Weg und Beleg eintragen. Der Zahlungsstand '
                   + 'wird „erstattet“ oder „teilweise erstattet“, bei Partneraufträgen ist die Auszahlung danach gesperrt. '
-                  + 'Das Geld selbst erstatten Sie im Stripe-Dashboard oder per Überweisung.',
+                  + 'Das Geld selbst erstatten Sie im Stripe-Dashboard, per Überweisung oder bar.',
               },
               fields: [
                 {
@@ -849,6 +953,35 @@ export const Vorgaenge: CollectionConfig = {
                     { name: 'am', type: 'date', label: 'Erstattet am', admin: { width: '25%', ...zeitpunkt } },
                     { name: 'grund', type: 'text', label: 'Grund', admin: { width: '25%' } },
                   ],
+                },
+                {
+                  // Weg und Beleg (FA-KERN-05): außerhalb des Zahlungsdienstes mit Beleg.
+                  type: 'row',
+                  fields: [
+                    { name: 'weg', type: 'select', label: 'Weg', options: [...ERSTATTUNGS_WEGE], admin: { width: '34%' } },
+                    {
+                      name: 'beleg',
+                      type: 'text',
+                      label: 'Beleg oder Referenz',
+                      admin: { width: '66%', description: 'Bei Überweisung, bar oder sonstigem Weg Pflicht (Buchungstext, Quittungsnummer).' },
+                    },
+                  ],
+                },
+                {
+                  name: 'berichtigungGrund',
+                  type: 'text',
+                  label: 'Berichtigung: Grund',
+                  admin: {
+                    condition: (_data, sib) => Boolean(sib?.art),
+                    description:
+                      'Nur bei einem Irrtum: Grund eintragen und Betrag kleiner setzen (oder Art leeren). Geht nur bei Erstattungen '
+                      + 'außerhalb des Zahlungsdienstes und ohne Vermittlung. Steht danach in den Notizen und wird geleert.',
+                  },
+                },
+                {
+                  name: 'zahlungsdienstKnopf',
+                  type: 'ui',
+                  admin: { components: { Field: '/payload/components/ErstattungZahlungsdienst#ErstattungZahlungsdienst' } },
                 },
               ],
             },
@@ -885,7 +1018,12 @@ export const Vorgaenge: CollectionConfig = {
               type: 'array',
               label: 'E-Mails',
               labels: { singular: 'E-Mail', plural: 'E-Mails' },
-              admin: { ...nurLesen, description: 'Automatisch versendete E-Mails zu diesem Vorgang.' },
+              admin: {
+                ...nurLesen,
+                description:
+                  'Alle E-Mails zu diesem Vorgang, automatisch oder von Hand, mit Betreff und vollständigem Text. '
+                  + 'Antworten des Kunden kommen in Ihr Postfach, nicht hierher.',
+              },
               ...systemFeld,
               fields: [
                 {
@@ -915,6 +1053,9 @@ export const Vorgaenge: CollectionConfig = {
                     { name: 'fehler', type: 'text', label: 'Fehler', admin: { width: '40%' } },
                   ],
                 },
+                // Betreff und vollständiger Text (FA-KERN-05). Aufbewahrung wie der Vorgang.
+                { name: 'betreff', type: 'text', label: 'Betreff' },
+                { name: 'text', type: 'textarea', label: 'Text' },
               ],
             },
           ],

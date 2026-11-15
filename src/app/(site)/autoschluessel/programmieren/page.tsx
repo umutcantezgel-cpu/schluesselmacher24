@@ -11,11 +11,11 @@ const ROUTE = 'autoschluessel/programmieren';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Autoschlüssel programmieren und anlernen',
+    title: page?.seo.title ?? 'Autoschlüssel anlernen in Wetzlar',
     description:
       page?.seo.description
-      ?? 'Transponder, Wegfahrsperre, Funkfernbedienung und Smart Key anlernen lassen. '
-        + 'Termin mit Fahrzeug vor Ort.',
+      ?? 'Wir machen einen neuen oder vorhandenen Schlüssel Ihrem Fahrzeug bekannt. Zum Anlernen '
+        + 'in Wetzlar brauchen wir in aller Regel Ihr Fahrzeug.',
     alternates: { canonical: '/autoschluessel/programmieren' },
   };
 }

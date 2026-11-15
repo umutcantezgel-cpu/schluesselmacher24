@@ -7,8 +7,11 @@ import vehiclesJson from '../../content/vehicles.json';
 import type { CarKeyService, PricingRule, Settings, VehicleMake } from '@/lib/types';
 import { quoteCarKeyService } from '@/lib/pricing';
 
+import { titelPasst } from '@/lib/titelbreite';
+
 import {
   BESCHREIBUNG_MAX,
+  BESCHREIBUNG_MIN,
   TITEL_MAX,
   leistungsPreise,
   markenTexte,
@@ -82,7 +85,9 @@ describe('modellTexte', () => {
     expect(golf.metaTitel.length).toBeLessThanOrEqual(TITEL_MAX);
     expect(golf.metaBeschreibung.length).toBeLessThanOrEqual(BESCHREIBUNG_MAX);
     expect(golf.metaBeschreibung).toContain('Termin in Wetzlar');
-    expect(golf.metaBeschreibung).toContain('249,00');
+    // Preis oder Prüfung als Satz, ohne Betrag und ohne Frist (FA-SEO-01B); die Beträge stehen auf der Seite.
+    expect(golf.metaBeschreibung).toContain('Preis je Leistung');
+    expect(golf.metaBeschreibung).not.toMatch(/€|\d+,\d\d|Vorlauf|Tage/);
     expect(golf.mitbringen.map((p) => p.titel)).toContain('Fahrzeugschein und Ausweisdokument');
   });
 
@@ -93,6 +98,8 @@ describe('modellTexte', () => {
     expect(alle).toHaveLength(49);
     for (const t of alle) {
       expect(t.metaTitel.length, t.metaTitel).toBeLessThanOrEqual(TITEL_MAX);
+      expect(titelPasst(t.metaTitel), t.metaTitel).toBe(true);
+      expect(t.metaBeschreibung.length, t.metaBeschreibung).toBeGreaterThanOrEqual(BESCHREIBUNG_MIN);
       expect(t.metaBeschreibung.length, t.metaBeschreibung).toBeLessThanOrEqual(BESCHREIBUNG_MAX);
     }
     expect(new Set(alle.map((t) => t.metaTitel)).size).toBe(49);

@@ -6,6 +6,7 @@ import {
   getCodeLines,
   getCollection,
   getGuides,
+  getRubriken,
   getServicePages,
   getVehicleMakes,
 } from '@/lib/data';
@@ -18,7 +19,8 @@ import {
   kategoriePfad,
 } from '@/lib/codelinie';
 import { markeIndexierbar, modellIndexierbar } from '@/lib/fahrzeug-texte';
-import { ANFRAGE_FORMULAR, FORMULAR_KLASSEN } from '@/lib/fahrzeuge/anfrage-klassen';
+import { KLASSE_RUBRIK } from '@/components/fahrzeug-anfrage/seiten';
+import { ANFRAGE_FORMULAR, FORMULAR_KLASSEN, type FormularKlasse } from '@/lib/fahrzeuge/anfrage-klassen';
 import { GEWINNUNG_SEITEN } from '@/lib/partner/gewinnung';
 import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
 import { getSiteUrl } from '@/lib/site-url';
@@ -76,12 +78,12 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
 ];
 
 /**
- * Seiten einer Klasse mit ausgeschaltetem Schalter `indexierbar` (noindex): Sie fehlen in der Sitemap, auch
- * wenn sie unter den festen Seiten stehen (Motorrad).
+ * Seiten einer Klasse mit ausgeschaltetem Schalter `indexierbar` oder mit einer Rubrik, die nicht live ist
+ * (noindex, FA-KERN-05): Sie fehlen in der Sitemap, auch wenn sie unter den festen Seiten stehen (Motorrad).
  */
-function gesperrteKlassenSeiten(): Set<string> {
+function gesperrteKlassenSeiten(nichtLive: ReadonlySet<FormularKlasse>): Set<string> {
   return new Set(
-    FORMULAR_KLASSEN.filter((klasse) => !ANFRAGE_FORMULAR[klasse].indexierbar).flatMap((klasse) => {
+    FORMULAR_KLASSEN.filter((klasse) => !ANFRAGE_FORMULAR[klasse].indexierbar || nichtLive.has(klasse)).flatMap((klasse) => {
       const { einstieg, anfrage } = ANFRAGE_FORMULAR[klasse];
       return [...(einstieg ? [einstieg] : []), anfrage];
     }),
@@ -93,9 +95,9 @@ function gesperrteKlassenSeiten(): Set<string> {
  * wenn ihr Schalter `indexierbar` an ist (sonst noindex). Was schon unter den festen Seiten steht (Motorrad),
  * kommt nicht doppelt.
  */
-function klassenSeiten(): Array<{ path: string; priority: number }> {
+function klassenSeiten(nichtLive: ReadonlySet<FormularKlasse>): Array<{ path: string; priority: number }> {
   const fest = new Set(STATIC_ROUTES.map((route) => route.path));
-  return FORMULAR_KLASSEN.filter((klasse) => ANFRAGE_FORMULAR[klasse].indexierbar)
+  return FORMULAR_KLASSEN.filter((klasse) => ANFRAGE_FORMULAR[klasse].indexierbar && !nichtLive.has(klasse))
     .flatMap((klasse) => {
       const { einstieg, anfrage } = ANFRAGE_FORMULAR[klasse];
       return [...(einstieg ? [{ path: einstieg, priority: 0.7 }] : []), { path: anfrage, priority: 0.6 }];
@@ -117,7 +119,7 @@ function geaendert(...werte: Array<string | undefined>): { lastModified: Date } 
 const zuletzt = (lines: CodeLine[]) => geaendert(...lines.map((line) => line.updatedAt));
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [makes, codeLines, articles, servicePages, guides, cities, pages] = await Promise.all([
+  const [makes, codeLines, articles, servicePages, guides, cities, pages, rubriken] = await Promise.all([
     getVehicleMakes(),
     getCodeLines(),
     getCollection('standardArticles'),
@@ -125,12 +127,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getGuides(),
     getCities(),
     getCollection('pages'),
+    getRubriken(),
   ]);
+
+  // Klassen, deren Rubrik nicht live ist (FA-KERN-05). „Nicht gefunden“ gehört zu den Autoschlüsseln.
+  const live = new Set(rubriken.filter((r) => r.status === 'live').map((r) => r.id));
+  const nichtLive = new Set(FORMULAR_KLASSEN.filter((klasse) => !live.has(KLASSE_RUBRIK[klasse])));
 
   const seitenStand = new Map(pages.map((page) => [page.route, page.updatedAt]));
 
-  const gesperrt = gesperrteKlassenSeiten();
-  const entries: MetadataRoute.Sitemap = [...STATIC_ROUTES.filter((route) => !gesperrt.has(route.path)), ...klassenSeiten()].map((route) => ({
+  const gesperrt = gesperrteKlassenSeiten(nichtLive);
+  const entries: MetadataRoute.Sitemap = [...STATIC_ROUTES.filter((route) => !gesperrt.has(route.path)), ...klassenSeiten(nichtLive)].map((route) => ({
     url: `${siteUrl}${route.path}`,
     ...geaendert(seitenStand.get(route.path.replace(/^\//, ''))),
     changeFrequency: 'weekly',

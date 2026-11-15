@@ -9,11 +9,11 @@ const ROUTE = 'autoschluessel/schluesselbart-fraesen';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Schlüsselbart fräsen nach Vorlage oder Fahrzeugdaten',
+    title: page?.seo.title ?? 'Schlüsselbart fräsen in Wetzlar',
     description:
       page?.seo.description
-      ?? 'Schlüsselbart für Autoschlüssel fräsen lassen — nach Original oder geeigneten '
-        + 'Fahrzeugdaten.',
+      ?? 'Wir fräsen den Bart Ihres Autoschlüssels nach Vorlage oder nach Fahrzeugdaten. Der Bart '
+        + 'ist der metallene Teil mit den Einschnitten, der ins Schloss passt.',
     alternates: { canonical: '/autoschluessel/schluesselbart-fraesen' },
   };
 }

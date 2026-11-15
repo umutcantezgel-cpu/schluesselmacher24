@@ -3,10 +3,11 @@ import type { ReactNode } from 'react';
 
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { Erreichbarkeit as ErreichbarkeitAnzeige } from '@/components/vertrauen/erreichbarkeit';
 import { jahrInBerlin } from '@/lib/berliner-zeit';
-import { getPageContent, getSettings } from '@/lib/data';
+import { getPageContent, getRubrik, getSettings } from '@/lib/data';
 import { erreichbarkeit } from '@/lib/erreichbarkeit';
 import { ANFRAGE_FORMULAR, KLASSEN_SEITEN, type FormularKlasse, type SeitenKopf } from '@/lib/fahrzeuge/anfrage-klassen';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -29,6 +30,63 @@ export function robotsFuer(klasse: FormularKlasse): Pick<Metadata, 'robots'> {
   return ANFRAGE_FORMULAR[klasse].indexierbar ? {} : { robots: { index: false, follow: true } };
 }
 
+/**
+ * Rubrik je Klasse (FA-SOFORT-05, wie in `src/lib/actions/records.ts`): Steht sie im Backend nicht auf „live“,
+ * lehnt der Server die Anfrage ab. Die Seiten zeigen dann einen ruhigen Hinweis mit Telefon statt des
+ * Formulars, stehen auf noindex und fehlen in der Sitemap (FA-KERN-05).
+ */
+export const KLASSE_RUBRIK: Readonly<Record<FormularKlasse, string>> = {
+  motorrad: 'motorradschluessel',
+  roller: 'roller-und-kleinstfahrzeuge',
+  'e-scooter': 'e-scooter',
+  seniorenmobil: 'seniorenmobile',
+  fahrrad: 'fahrradschluessel',
+  'nicht-gefunden': 'autoschluessel',
+};
+
+/** Ist die Rubrik der Klasse live? Abgeschaltet, „später“ oder gelöscht heißt: nein. */
+export async function rubrikLive(klasse: FormularKlasse): Promise<boolean> {
+  return (await getRubrik(KLASSE_RUBRIK[klasse]))?.status === 'live';
+}
+
+/** Robots-Angabe nach Schalter und Rubrik: Ist die Rubrik nicht live, steht die Seite auf noindex. */
+export async function robotsNachStand(klasse: FormularKlasse): Promise<Pick<Metadata, 'robots'>> {
+  return (await rubrikLive(klasse)) ? robotsFuer(klasse) : { robots: { index: false, follow: true } };
+}
+
+/** Ruhiger Hinweis statt des Formulars, solange die Rubrik nicht live ist; mit Telefon, wenn gepflegt. */
+export async function RubrikPausiertHinweis({ className }: { className?: string }) {
+  const { telefon, erreichbarkeit: angabe } = await hilfeAngaben();
+  const telefonHref = telefonLink(telefon);
+  return (
+    <div className={className} data-block="rubrik-pausiert">
+      <Alert tone="info" title="Diese Anfrage ist gerade nicht online möglich">
+        {telefon ? (
+          <>
+            Bitte rufen Sie uns an, wir helfen Ihnen gern weiter:{' '}
+            {telefonHref ? (
+              <a href={telefonHref} className="whitespace-nowrap font-mono font-semibold tabular-nums text-primary">
+                {telefon}
+              </a>
+            ) : (
+              <span className="whitespace-nowrap font-mono tabular-nums">{telefon}</span>
+            )}
+          </>
+        ) : (
+          <>
+            Bitte schreiben Sie uns über das{' '}
+            <a href="/service-und-termin/kontakt" className="font-semibold text-primary">
+              Kontaktformular
+            </a>
+            . Wir melden uns bei Ihnen.
+          </>
+        )}
+      </Alert>
+      {telefon && <ErreichbarkeitAnzeige angabe={angabe} className="mt-4" />}
+    </div>
+  );
+}
+
 async function kopfMit(kopf: SeitenKopf) {
   const page = await getPageContent(kopf.route);
   return {
@@ -45,7 +103,7 @@ export async function seitenMetadata(klasse: Exclude<FormularKlasse, 'motorrad'>
   const kopf = KLASSEN_SEITEN[klasse][art];
   if (!kopf) return {};
   const texte = await kopfMit(kopf);
-  return { title: texte.title, description: texte.description, alternates: { canonical: `/${kopf.route}` }, ...robotsFuer(klasse) };
+  return { title: texte.title, description: texte.description, alternates: { canonical: `/${kopf.route}` }, ...(await robotsNachStand(klasse)) };
 }
 
 /** Telefon und Erreichbarkeit aus den Einstellungen; nur veröffentlichte, gepflegte Angaben. */
@@ -61,6 +119,8 @@ type Suchparameter = { [key: string]: string | string[] | undefined };
  * Erreichbarkeit, Jahr und, bei „nicht gefunden“, die Vorbelegung aus der Adresse.
  */
 export async function FahrzeugAnfrageInhalt({ klasse, suchparameter }: { klasse: FormularKlasse; suchparameter?: Suchparameter }) {
+  // Rubrik nicht live (FA-KERN-05): Hinweis mit Telefon statt eines Formulars, das der Server ablehnen würde.
+  if (!(await rubrikLive(klasse))) return <RubrikPausiertHinweis />;
   const { telefon, erreichbarkeit: angabe } = await hilfeAngaben();
   const vorbelegung = klasse === 'nicht-gefunden' && suchparameter ? vorbelegungAus(suchparameter) : undefined;
   return (
@@ -163,7 +223,7 @@ export async function EinstiegSeite({
 }) {
   const formular = ANFRAGE_FORMULAR[klasse];
   const kopfDaten = KLASSEN_SEITEN[klasse].einstieg!;
-  const [kopf, hilfe] = await Promise.all([kopfMit(kopfDaten), hilfeAngaben()]);
+  const [kopf, hilfe, live] = await Promise.all([kopfMit(kopfDaten), hilfeAngaben(), rubrikLive(klasse)]);
   const telefonHref = telefonLink(hilfe.telefon);
   const crumbs = [...bereichsKrume(klasse), { href: formular.einstieg!, label: kopf.headline }];
 
@@ -176,9 +236,11 @@ export async function EinstiegSeite({
         crumbs={crumbs}
         bereich="autoschluessel"
         actions={
-          <ButtonLink href={formular.anfrage} size="lg" pfeil>
-            Anfrage stellen
-          </ButtonLink>
+          live ? (
+            <ButtonLink href={formular.anfrage} size="lg" pfeil>
+              Anfrage stellen
+            </ButtonLink>
+          ) : undefined
         }
       />
 
@@ -205,24 +267,27 @@ export async function EinstiegSeite({
         <div className="mt-6 max-w-3xl">
           <UnterlagenAusRegel klasse={klasse} />
         </div>
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <ButtonLink href={formular.anfrage} size="lg" pfeil>
-            Anfrage stellen
-          </ButtonLink>
-          {hilfe.telefon && (
-            <p className="text-body text-foreground-muted">
-              Lieber persönlich?{' '}
-              {telefonHref ? (
-                <a href={telefonHref} className="whitespace-nowrap font-mono font-semibold tabular-nums text-primary">
-                  {hilfe.telefon}
-                </a>
-              ) : (
-                <span className="whitespace-nowrap font-mono tabular-nums">{hilfe.telefon}</span>
-              )}
-            </p>
-          )}
-        </div>
-        {hilfe.telefon && <ErreichbarkeitAnzeige angabe={hilfe.erreichbarkeit} className="mt-4" />}
+        {!live && <RubrikPausiertHinweis className="mt-8" />}
+        {live && (
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <ButtonLink href={formular.anfrage} size="lg" pfeil>
+              Anfrage stellen
+            </ButtonLink>
+            {hilfe.telefon && (
+              <p className="text-body text-foreground-muted">
+                Lieber persönlich?{' '}
+                {telefonHref ? (
+                  <a href={telefonHref} className="whitespace-nowrap font-mono font-semibold tabular-nums text-primary">
+                    {hilfe.telefon}
+                  </a>
+                ) : (
+                  <span className="whitespace-nowrap font-mono tabular-nums">{hilfe.telefon}</span>
+                )}
+              </p>
+            )}
+          </div>
+        )}
+        {live && hilfe.telefon && <ErreichbarkeitAnzeige angabe={hilfe.erreichbarkeit} className="mt-4" />}
       </Section>
     </>
   );

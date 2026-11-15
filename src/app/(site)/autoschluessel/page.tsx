@@ -30,11 +30,11 @@ const ROUTE = 'autoschluessel';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Autoschlüssel – Leistungen im Überblick',
+    title: page?.seo.title ?? 'Autoschlüssel-Werkstatt in Wetzlar',
     description:
       page?.seo.description
-      ?? 'Autoschlüssel nachmachen, kopieren, programmieren und reparieren. Alle Leistungen, '
-        + 'der Ablauf und die passenden Fahrzeugmarken im Überblick.',
+      ?? 'Autoschlüssel nachmachen, programmieren und reparieren in Wetzlar. Wir klären zuerst, '
+        + 'was Ihr Fahrzeug braucht. Danach buchen Sie einen festen Termin.',
     alternates: { canonical: '/autoschluessel' },
   };
 }

@@ -726,6 +726,8 @@ export type MailKind =
   | 'team-hinweis'
   /** Bitte an den Kunden, die Ausführung eines vermittelten Auftrags zu bestätigen (FA-KERN-04). */
   | 'ausfuehrung'
+  /** Nachricht des Teams aus dem Vorgang, mit Betreff und Text (FA-KERN-05). */
+  | 'nachricht'
   | 'sonstige';
 
 /** Eintrag im Mailprotokoll eines Vorgangs. */
@@ -738,6 +740,10 @@ export interface MailLogEntry {
   /** Kennung beim Mailanbieter. */
   providerId?: string;
   error?: string;
+  /** Betreff, wie er hinausging (FA-KERN-05). */
+  subject?: string;
+  /** Vollständiger Text der Mail (Textfassung), damit der Verlauf am Vorgang lesbar bleibt (FA-KERN-05). */
+  body?: string;
 }
 
 export type ShipmentCarrier = 'dhl' | 'dpd' | 'deutsche-post' | 'hermes' | 'gls' | 'ups' | 'sonstige';
@@ -853,6 +859,10 @@ export interface RefundInfo {
   amountCents?: number;
   at?: string;
   reason?: string;
+  /** Weg der Erstattung (FA-KERN-05): Zahlungsdienst, Überweisung, bar oder sonstiger. */
+  method?: 'zahlungsdienst' | 'ueberweisung' | 'bar' | 'sonstige';
+  /** Beleg oder Referenz, etwa Buchungstext, Quittungsnummer oder Kennung beim Zahlungsdienst. */
+  receipt?: string;
 }
 
 export interface TimelineEntry {

@@ -20,8 +20,11 @@ import { GlyphTelefon } from '@/components/visual/glyphen/telefon';
 import { KontaktFormular } from './kontakt-formular';
 
 export const metadata: Metadata = {
-  title: 'Kontakt',
-  description: 'Anschrift, Erreichbarkeit und Anfahrt zu SCHLÜSSELMACHER24.',
+  title: 'Kontakt und Erreichbarkeit',
+  // Erreichbarkeit im Wortlaut des Inhabers (FA-23, ERREICHBARKEIT_STANDARD), wie im Abschnitt „Erreichbarkeit“.
+  description:
+    'Anschrift, Telefon und E-Mail. 24 Stunden erreichbar. Notdienst rund um die Uhr. '
+    + 'Werkstatt und persönliche Beratung nach Terminvereinbarung.',
   alternates: { canonical: '/service-und-termin/kontakt' },
 };
 

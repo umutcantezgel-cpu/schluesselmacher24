@@ -4,20 +4,20 @@ import { PageHeader } from '@/components/layout/page-header';
 import { getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 
-import { FahrzeugAnfrageInhalt, robotsFuer } from '@/components/fahrzeug-anfrage/seiten';
+import { FahrzeugAnfrageInhalt, robotsNachStand } from '@/components/fahrzeug-anfrage/seiten';
 
 const ROUTE = 'motorradschluessel/anfrage';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Motorradschlüssel: Anfrage mit Fahrzeugschein und drei Fotos',
+    title: page?.seo.title ?? 'Motorradschlüssel anfragen',
     description:
       page?.seo.description
-      ?? 'Anfrage für einen Motorradschlüssel: Typ und Baujahr, Angabe zum Chip, Fahrzeugschein, drei Fotos des Schlüssels und eine kurze Beschreibung.',
+      ?? 'In sechs Schritten zum Motorradschlüssel: Motorrad, Schlüssel mit drei Fotos, Unterlagen, Beschreibung und Kontakt. Mit der Anfrage entsteht kein Vertrag.',
     alternates: { canonical: `/${ROUTE}` },
-    // Schalter `indexierbar` der Klasse (ANFRAGE_FORMULAR.motorrad), wie bei den anderen Klassen.
-    ...robotsFuer('motorrad'),
+    // Schalter `indexierbar` der Klasse (ANFRAGE_FORMULAR.motorrad), wie bei den anderen Klassen; Rubrik nicht live: noindex.
+    ...(await robotsNachStand('motorrad')),
   };
 }
 

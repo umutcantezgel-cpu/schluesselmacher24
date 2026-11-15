@@ -10,11 +10,11 @@ const ROUTE = 'autoschluessel/funkschluessel';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Funkschlüssel und Funkfernbedienung',
+    title: page?.seo.title ?? 'Funkschlüssel reparieren in Wetzlar',
     description:
       page?.seo.description
-      ?? 'Funkschlüssel reparieren, Gehäuse und Tasten tauschen, Funkfunktion prüfen und Ersatz '
-        + 'anfertigen lassen.',
+      ?? 'Reagiert das Fahrzeug nicht mehr auf Knopfdruck? Wir prüfen Batterie, Tasten und '
+        + 'Elektronik, reparieren Gehäuse und Funk oder fertigen einen neuen Schlüssel.',
     alternates: { canonical: '/autoschluessel/funkschluessel' },
   };
 }

@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
-import { UnterlagenAusRegel, robotsFuer } from '@/components/fahrzeug-anfrage/seiten';
+import { RubrikPausiertHinweis, UnterlagenAusRegel, robotsNachStand } from '@/components/fahrzeug-anfrage/seiten';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { ButtonLink } from '@/components/ui/button';
 import { getPageContent, getRubrik } from '@/lib/data';
@@ -18,19 +18,21 @@ const CRUMBS = [
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Motorradschlüssel nachmachen lassen: Anfrage mit Fotos',
+    title: page?.seo.title ?? 'Motorradschlüssel nachmachen',
     description:
       page?.seo.description
-      ?? 'Motorradschlüssel anfragen mit Fahrzeugschein, drei Fotos des Schlüssels und einer kurzen Beschreibung. Wir melden uns mit Preis und Termin.',
+      ?? 'Motorradschlüssel anfragen mit Fahrzeugschein, drei Fotos des Schlüssels und der Angabe zum Chip. Wir prüfen Ihre Angaben und melden uns mit Preis und Termin.',
     alternates: { canonical: `/${ROUTE}` },
-    // Schalter `indexierbar` der Klasse (ANFRAGE_FORMULAR.motorrad), wie bei den anderen Klassen.
-    ...robotsFuer('motorrad'),
+    // Schalter `indexierbar` der Klasse (ANFRAGE_FORMULAR.motorrad), wie bei den anderen Klassen; Rubrik nicht live: noindex.
+    ...(await robotsNachStand('motorrad')),
   };
 }
 
 /** Rubrikseite Motorradschlüssel (G-19, E6-BAUMEISTER-01): Ablauf, Chip-Frage, Weg in die Anfrage. */
 export default async function MotorradschluesselPage() {
   const [rubrik, page] = await Promise.all([getRubrik('motorradschluessel'), getPageContent(ROUTE)]);
+  // Rubrik nicht live (FA-KERN-05): Hinweis mit Telefon statt der Knöpfe zur Anfrage.
+  const live = rubrik?.status === 'live';
 
   return (
     <>
@@ -54,9 +56,11 @@ export default async function MotorradschluesselPage() {
         crumbs={CRUMBS}
         bereich="autoschluessel"
         actions={
-          <ButtonLink href={ANFRAGE} size="lg" pfeil>
-            Anfrage stellen
-          </ButtonLink>
+          live ? (
+            <ButtonLink href={ANFRAGE} size="lg" pfeil>
+              Anfrage stellen
+            </ButtonLink>
+          ) : undefined
         }
       />
 
@@ -66,9 +70,11 @@ export default async function MotorradschluesselPage() {
         nummer="01"
         titel="Vom Fahrzeugschein bis zum Preis"
         aktion={
-          <ButtonLink href={ANFRAGE} pfeil>
-            Anfrage stellen
-          </ButtonLink>
+          live ? (
+            <ButtonLink href={ANFRAGE} pfeil>
+              Anfrage stellen
+            </ButtonLink>
+          ) : undefined
         }
       />
 
@@ -87,11 +93,15 @@ export default async function MotorradschluesselPage() {
         <div className="mt-6 max-w-3xl">
           <UnterlagenAusRegel klasse="motorrad" />
         </div>
-        <div className="mt-8">
-          <ButtonLink href={ANFRAGE} pfeil>
-            Anfrage stellen
-          </ButtonLink>
-        </div>
+        {live ? (
+          <div className="mt-8">
+            <ButtonLink href={ANFRAGE} pfeil>
+              Anfrage stellen
+            </ButtonLink>
+          </div>
+        ) : (
+          <RubrikPausiertHinweis className="mt-8" />
+        )}
       </Section>
     </>
   );

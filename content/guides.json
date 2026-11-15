@@ -2,7 +2,7 @@
   {
     "id": "autoschluessel-verloren-was-tun",
     "slug": "autoschluessel-verloren-was-tun",
-    "title": "Autoschlüssel verloren — was jetzt zu tun ist",
+    "title": "Autoschlüssel verloren: Was jetzt zu tun ist",
     "excerpt": "Suchen Sie zuerst gründlich nach dem Schlüssel. Hilft das nicht, gehen Sie Schritt für Schritt vor. Erst prüfen, dann sichern, dann anfragen.",
     "topic": "autoschluessel",
     "body": [
@@ -32,8 +32,8 @@
       "label": "Anfrage für Ersatzschlüssel starten"
     },
     "seo": {
-      "title": "Autoschlüssel verloren — was jetzt zu tun ist",
-      "description": "Die richtige Reihenfolge spart Zeit und Geld: erst sichern, dann prüfen, dann bestellen.",
+      "title": "Autoschlüssel verloren: Was tun?",
+      "description": "Suchen Sie zuerst gründlich. Hilft das nicht, gehen Sie in dieser Reihenfolge vor: erst prüfen, dann sichern, dann einen Ersatzschlüssel anfragen.",
       "internalLinks": [
         {
           "href": "/ratgeber",
@@ -50,7 +50,7 @@
   {
     "id": "unterschied-kopie-und-programmierung",
     "slug": "unterschied-kopie-und-programmierung",
-    "title": "Kopie oder Programmierung — wo ist der Unterschied?",
+    "title": "Kopie oder Programmierung: Wo ist der Unterschied?",
     "excerpt": "Eine reine Kopie kann Türen und Klappen öffnen. Soll der Schlüssel auch den Motor starten, muss er meist zusätzlich programmiert werden.",
     "topic": "autoschluessel",
     "body": [
@@ -76,8 +76,8 @@
       "label": "Programmierung und Anlernen"
     },
     "seo": {
-      "title": "Kopie oder Programmierung — wo ist der Unterschied?",
-      "description": "Ein gefräster Bart öffnet die Tür. Für den Motorstart braucht es meist mehr.",
+      "title": "Autoschlüssel: Kopie oder Anlernen?",
+      "description": "Eine reine Kopie öffnet Türen und Klappen. Soll der Schlüssel auch den Motor starten, muss sein Chip meist zusätzlich am Fahrzeug angelernt werden.",
       "internalLinks": [
         {
           "href": "/ratgeber",
@@ -121,7 +121,7 @@
     },
     "seo": {
       "title": "Zylinder richtig ausmessen",
-      "description": "Maß A und Maß B — gemessen ab der Mitte der Stulpschraube.",
+      "description": "Sie messen zwei Längen: Maß A nach außen und Maß B nach innen, beide ab der Mitte der Stulpschraube. So gehen Sie vor, und diese Fehler vermeiden Sie.",
       "internalLinks": [
         {
           "href": "/ratgeber",
@@ -172,8 +172,8 @@
       "label": "Projekt erfassen"
     },
     "seo": {
-      "title": "Welche Schließanlage passt zu meinem Objekt?",
-      "description": "Gleichschließung, Z, HS oder GHS — in einfacher Sprache erklärt.",
+      "title": "Welche Schließanlage passt zu mir?",
+      "description": "Gleichschließung, Zentralschlossanlage, Hauptschlüsselanlage oder Generalhauptschlüsselanlage: Es hängt davon ab, wer welche Türen öffnen soll.",
       "internalLinks": [
         {
           "href": "/ratgeber",
@@ -221,7 +221,7 @@
     },
     "seo": {
       "title": "Wo finde ich den Schlüsselcode?",
-      "description": "Auf dem Schloss, auf dem Schlüsselkopf oder in den Unterlagen.",
+      "description": "Der Code steht auf dem Schloss, auf dem Schlüsselkopf oder in Ihren Unterlagen. Finden Sie keinen, hilft der Weg über Schlüssel nach Vorlage mit drei Fotos.",
       "internalLinks": [
         {
           "href": "/ratgeber",
@@ -229,7 +229,7 @@
         },
         {
           "href": "/schluessel-nach-code",
-          "label": "Codelinien ansehen"
+          "label": "Schlüssel nach Code"
         }
       ]
     },
@@ -238,7 +238,7 @@
   {
     "id": "einbruchschutz-wo-anfangen",
     "slug": "einbruchschutz-wo-anfangen",
-    "title": "Einbruchschutz — wo fängt man sinnvoll an?",
+    "title": "Einbruchschutz: Wo fängt man sinnvoll an?",
     "excerpt": "Fangen Sie bei Türen und Fenstern an, die man ohne Hilfsmittel erreicht. Dort hilft zuerst gute Mechanik. Meldetechnik und Kamera ergänzen sie später.",
     "topic": "sicherheitstechnik",
     "body": [
@@ -268,8 +268,8 @@
       "label": "Sicherheitscheck starten"
     },
     "seo": {
-      "title": "Einbruchschutz — wo fängt man sinnvoll an?",
-      "description": "Erst die erreichbaren Stellen, dann die Meldetechnik.",
+      "title": "Einbruchschutz: Wo fange ich an?",
+      "description": "Fangen Sie bei Türen und Fenstern an, die man ohne Hilfsmittel erreicht. Dort hilft zuerst gute Mechanik. Meldetechnik und Kamera ergänzen sie später.",
       "internalLinks": [
         {
           "href": "/ratgeber",
@@ -286,7 +286,7 @@
   {
     "id": "schluessel-verloren-wohnung",
     "slug": "schluessel-verloren-wohnung",
-    "title": "Wohnungsschlüssel verloren — Schloss tauschen oder nicht?",
+    "title": "Wohnungsschlüssel verloren: Schloss tauschen oder nicht?",
     "excerpt": "Das hängt davon ab, ob jemand den Schlüssel Ihrer Wohnung zuordnen kann. Hing eine Adresse am Schlüsselbund, sollten Sie handeln. Oft genügt dann ein neuer Zylinder an der betroffenen Tür.",
     "topic": "tuer-und-schliesstechnik",
     "body": [
@@ -312,8 +312,8 @@
       "label": "Gleichschließende Zylinder"
     },
     "seo": {
-      "title": "Wohnungsschlüssel verloren — Schloss tauschen oder nicht?",
-      "description": "Es kommt darauf an, ob der Schlüssel Ihrer Wohnung zugeordnet werden kann.",
+      "title": "Wohnungsschlüssel verloren",
+      "description": "Ob Sie das Schloss tauschen sollten, hängt davon ab, ob ein Finder den Schlüssel Ihrer Wohnung zuordnen kann. Oft genügt ein neuer Zylinder an der Tür.",
       "internalLinks": [
         {
           "href": "/ratgeber",
@@ -330,7 +330,7 @@
   {
     "id": "mechanisch-oder-elektronisch",
     "slug": "mechanisch-oder-elektronisch",
-    "title": "Mechanisch oder elektronisch — was ist sinnvoller?",
+    "title": "Mechanisch oder elektronisch: Was ist sinnvoller?",
     "excerpt": "Entscheidend ist, wie oft sich etwas ändert. Bleiben die Nutzer gleich, ist Mechanik robust und wartungsarm. Wechseln sie oft, spielt Elektronik ihre Stärke aus.",
     "topic": "elektronische-zutrittsloesungen",
     "body": [
@@ -356,8 +356,8 @@
       "label": "Bedarf erfassen"
     },
     "seo": {
-      "title": "Mechanisch oder elektronisch — was ist sinnvoller?",
-      "description": "Beides hat seinen Platz. Entscheidend ist, wie oft sich etwas ändert.",
+      "title": "Zutritt mechanisch oder elektronisch?",
+      "description": "Entscheidend ist, wie oft sich etwas ändert. Bei festen Nutzern ist Mechanik robust und wartungsarm, bei wechselnden Nutzern spielt Elektronik ihre Stärke aus.",
       "internalLinks": [
         {
           "href": "/ratgeber",

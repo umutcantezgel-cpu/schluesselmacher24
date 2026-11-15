@@ -485,134 +485,194 @@ export function guides(): Guide[] {
     topic: Guide['topic'];
     body: Array<[string, string]>;
     next: [string, string];
+    /** Suchergebnis-Texte und Verweise, wortgleich mit content/guides.json (FA-SEO-01B). */
+    seo: { title: string; description: string; links: Array<[string, string]> };
   }> = [
     {
       slug: 'autoschluessel-verloren-was-tun',
-      title: 'Autoschlüssel verloren — was jetzt zu tun ist',
+      title: 'Autoschlüssel verloren: Was jetzt zu tun ist',
       excerpt:
-        'Die richtige Reihenfolge spart Zeit und Geld: erst sichern, dann prüfen, dann bestellen.',
+        'Suchen Sie zuerst gründlich nach dem Schlüssel. Hilft das nicht, gehen Sie Schritt für '
+        + 'Schritt vor. Erst prüfen, dann sichern, dann anfragen.',
       topic: 'autoschluessel',
       body: [
         [
-          'Zuerst: Ruhe bewahren und nachsehen',
-          'Prüfen Sie zuerst die üblichen Stellen und fragen Sie an den Orten nach, an denen Sie '
-            + 'zuletzt waren. Ein wiedergefundener Schlüssel ist immer die günstigste Lösung.',
+          'Zuerst gründlich suchen',
+          'Sehen Sie an den üblichen Stellen nach. Fragen Sie dort nach, wo Sie zuletzt waren. Ein '
+            + 'wiedergefundener Schlüssel ist immer die günstigste Lösung.',
         ],
         [
-          'Prüfen: Ist noch ein Schlüssel vorhanden?',
-          'Wenn noch ein funktionierender Schlüssel da ist, ist der Aufwand für einen Ersatz '
-            + 'deutlich geringer. Ist kein Schlüssel mehr vorhanden, ist mehr Vorarbeit nötig — '
-            + 'und wir brauchen Ihre Fahrzeugpapiere.',
+          'Prüfen, ob noch ein Schlüssel da ist',
+          'Haben Sie noch einen funktionierenden Schlüssel, ist der Aufwand für den Ersatz deutlich '
+            + 'geringer. Ist kein Schlüssel mehr da, braucht es mehr Vorarbeit. Dann brauchen wir auch '
+            + 'Ihre Fahrzeugpapiere.',
         ],
         [
-          'Sicherheitsfrage: Sollte etwas gesperrt werden?',
-          'Wenn der Schlüssel zusammen mit Unterlagen verloren ging, aus denen sich Ihre Adresse '
-            + 'ergibt, sprechen Sie mit uns über das weitere Vorgehen. In manchen Fällen ist es '
-            + 'sinnvoll, den verlorenen Schlüssel aus dem Fahrzeug zu entfernen.',
+          'Klären, ob etwas gesperrt werden sollte',
+          'Vielleicht lagen beim Schlüssel Unterlagen, aus denen sich Ihre Adresse ergibt. Dann '
+            + 'sprechen Sie mit uns über das weitere Vorgehen. In manchen Fällen ist es sinnvoll, den '
+            + 'verlorenen Schlüssel aus dem Fahrzeug zu entfernen.',
         ],
         [
           'Was wir von Ihnen brauchen',
-          'Fahrzeugmarke, Modell und Baujahr, Fotos eines vorhandenen Schlüssels, falls es einen '
-            + 'gibt, und den Fahrzeugschein. Damit können wir Machbarkeit und Preis einordnen.',
+          'Wir brauchen Marke, Modell und Baujahr des Fahrzeugs. Als Nachweis, dass Sie den '
+            + 'Schlüssel bekommen dürfen, zeigen Sie uns Ihren Ausweis und den Fahrzeugschein. Steht '
+            + 'das Fahrzeug nicht auf Ihren Namen, brauchen wir zusätzlich eine Vollmacht des Halters. '
+            + 'Gibt es noch einen Schlüssel, schicken Sie uns Fotos davon. Damit können wir Machbarkeit '
+            + 'und Preis einordnen.',
         ],
       ],
       next: ['/autoschluessel/anfrage?vorhanden=0', 'Anfrage für Ersatzschlüssel starten'],
+      seo: {
+        title: 'Autoschlüssel verloren: Was tun?',
+        description:
+          'Suchen Sie zuerst gründlich. Hilft das nicht, gehen Sie in dieser Reihenfolge vor: erst '
+          + 'prüfen, dann sichern, dann einen Ersatzschlüssel anfragen.',
+        links: [
+          ['/ratgeber', 'Alle Ratgeber'],
+          ['/autoschluessel/anfrage?vorhanden=0', 'Anfrage für Ersatzschlüssel starten'],
+        ],
+      },
     },
     {
       slug: 'unterschied-kopie-und-programmierung',
-      title: 'Kopie oder Programmierung — wo ist der Unterschied?',
+      title: 'Kopie oder Programmierung: Wo ist der Unterschied?',
       excerpt:
-        'Ein gefräster Bart öffnet die Tür. Für den Motorstart braucht es meist mehr.',
+        'Eine reine Kopie kann Türen und Klappen öffnen. Soll der Schlüssel auch den Motor '
+        + 'starten, muss er meist zusätzlich programmiert werden.',
       topic: 'autoschluessel',
       body: [
         [
           'Der mechanische Teil',
-          'Der Bart ist der gefräste Teil des Schlüssels. Er passt in das Schloss und öffnet Tür '
-            + 'oder Lenkradschloss. Diesen Teil können wir nach Vorlage oder geeigneten '
-            + 'Fahrzeugdaten anfertigen.',
+          'Der Bart ist der gefräste Teil des Schlüssels. Er passt ins Schloss und öffnet Tür oder '
+            + 'Lenkradschloss. Diesen Teil fertigen wir nach Vorlage oder nach geeigneten '
+            + 'Fahrzeugdaten.',
         ],
         [
           'Der elektronische Teil',
-          'Im Schlüssel sitzt meist zusätzlich ein Transponder. Das Fahrzeug startet nur, wenn es '
-            + 'diesen Transponder kennt. Dieses Anlernen ist ein eigener Arbeitsschritt am Fahrzeug.',
+          'Im Schlüssel sitzt meist zusätzlich ein Transponder, also ein kleiner Chip. Das Fahrzeug '
+            + 'startet nur, wenn es diesen Chip kennt. Dieses Anlernen ist ein eigener Arbeitsschritt '
+            + 'am Fahrzeug.',
         ],
         [
           'Was das für Sie bedeutet',
-          'Eine reine Kopie kann ausreichen, wenn Sie nur eine Tür oder eine Klappe öffnen wollen. '
-            + 'Soll der Schlüssel das Fahrzeug starten, gehört die Programmierung dazu.',
+          'Wollen Sie nur eine Tür oder eine Klappe öffnen, kann eine reine Kopie reichen. Soll der '
+            + 'Schlüssel das Fahrzeug starten, gehört die Programmierung dazu.',
         ],
       ],
       next: ['/autoschluessel/programmieren', 'Programmierung und Anlernen'],
+      seo: {
+        title: 'Autoschlüssel: Kopie oder Anlernen?',
+        description:
+          'Eine reine Kopie öffnet Türen und Klappen. Soll der Schlüssel auch den Motor starten, '
+          + 'muss sein Chip meist zusätzlich am Fahrzeug angelernt werden.',
+        links: [
+          ['/ratgeber', 'Alle Ratgeber'],
+          ['/autoschluessel/programmieren', 'Programmierung und Anlernen'],
+        ],
+      },
     },
     {
       slug: 'zylinder-richtig-ausmessen',
       title: 'Zylinder richtig ausmessen',
-      excerpt: 'Maß A und Maß B — gemessen ab der Mitte der Stulpschraube.',
+      excerpt:
+        'Sie messen zwei Längen, Maß A nach außen und Maß B nach innen. Beide messen Sie ab der '
+        + 'Mitte der Stulpschraube in der schmalen Stirnseite der Tür.',
       topic: 'gleichschliessende-zylinder',
       body: [
         [
           'Der Bezugspunkt',
-          'Gemessen wird immer ab der Mitte der Stulpschraube — das ist die Schraube in der '
-            + 'schmalen Stirnseite der Tür. Von dort nach außen ist Maß A, nach innen Maß B.',
+          'Gemessen wird immer ab der Mitte der Stulpschraube. Das ist die Schraube in der schmalen '
+            + 'Stirnseite der Tür. Von dort nach außen ist Maß A, nach innen Maß B.',
         ],
         [
           'So gehen Sie vor',
-          'Öffnen Sie die Tür und messen Sie mit einem Lineal oder Zollstock von der Schraubenmitte '
-            + 'bis zum jeweiligen Ende des Zylinders. Runden Sie auf volle 5 Millimeter.',
+          'Öffnen Sie die Tür. Messen Sie mit Lineal oder Zollstock von der Schraubenmitte bis zum '
+            + 'Ende des Zylinders, einmal außen und einmal innen. Runden Sie auf die nächsten vollen 5 '
+            + 'Millimeter auf.',
         ],
         [
           'Typische Fehler',
-          'Ein zu kurzer Zylinder lässt sich nicht sicher betätigen. Ein zu langer steht über und '
-            + 'bietet unnötig Angriffsfläche. Ein Überstand von mehr als etwa 3 Millimetern sollte '
-            + 'durch einen passenden Schutzbeschlag abgedeckt sein.',
+          'Ein zu kurzer Zylinder lässt sich nicht sicher bedienen. Ein zu langer steht über und '
+            + 'bietet unnötig Angriffsfläche. Der Zylinder sollte höchstens 3 Millimeter über den '
+            + 'Beschlag außen vorstehen. Sonst braucht es einen Schutzbeschlag. Das ist ein verstärkter '
+            + 'Beschlag außen an der Tür.',
         ],
       ],
       next: ['/gleichschliessende-zylinder', 'Zylinder konfigurieren'],
+      seo: {
+        title: 'Zylinder richtig ausmessen',
+        description:
+          'Sie messen zwei Längen: Maß A nach außen und Maß B nach innen, beide ab der Mitte der '
+          + 'Stulpschraube. So gehen Sie vor, und diese Fehler vermeiden Sie.',
+        links: [
+          ['/ratgeber', 'Alle Ratgeber'],
+          ['/gleichschliessende-zylinder', 'Zylinder konfigurieren'],
+        ],
+      },
     },
     {
       slug: 'welche-schliessanlage-passt',
       title: 'Welche Schließanlage passt zu meinem Objekt?',
-      excerpt: 'Gleichschließung, Z, HS oder GHS — in einfacher Sprache erklärt.',
+      excerpt:
+        'Das hängt davon ab, wer welche Türen öffnen soll. Öffnet ein Schlüssel alle Türen, ist '
+        + 'das eine Gleichschließung. Brauchen Personen unterschiedliche Rechte, passt eine '
+        + 'Schließanlage.',
       topic: 'schliessanlagen',
       body: [
         [
           'Gleichschließung',
-          'Alle Zylinder werden mit demselben Schlüssel geöffnet. Passt für ein Einfamilienhaus '
-            + 'oder einen klar abgegrenzten Bereich.',
+          'Alle Zylinder öffnen mit demselben Schlüssel. Das passt für ein Einfamilienhaus oder '
+            + 'einen klar abgegrenzten Bereich.',
         ],
         [
           'Zentralschlossanlage (Z)',
-          'Jeder hat seinen eigenen Schlüssel für die eigene Tür. Zusätzlich öffnet jeder Schlüssel '
-            + 'eine gemeinsame Tür, meist den Hauseingang. Typisch für Mehrfamilienhäuser.',
+          'Jeder hat einen eigenen Schlüssel für die eigene Tür. Zusätzlich öffnet jeder dieser '
+            + 'Schlüssel die gemeinsamen Türen, meist den Hauseingang. Das ist typisch für '
+            + 'Mehrfamilienhäuser.',
         ],
         [
           'Hauptschlüsselanlage (HS)',
-          'Einzelschlüssel öffnen bestimmte Türen. Ein Hauptschlüssel öffnet alle oder eine größere '
-            + 'Gruppe davon. Typisch für Betriebe und Verwaltungen.',
+          'Jeder Einzelschlüssel öffnet nur die Türen, die ihm zugeordnet sind. Ein Hauptschlüssel '
+            + 'öffnet alle ihm zugeordneten Türen, meist alle Türen der Anlage. Das ist typisch für '
+            + 'Betriebe und Verwaltungen.',
         ],
         [
           'Generalhauptschlüsselanlage (GHS)',
-          'Mehrere Ebenen: Abteilungs- oder Bereichsschlüssel, darüber Hauptschlüssel und ganz oben '
-            + 'ein Generalhauptschlüssel. Für größere Liegenschaften mit mehreren Gebäuden.',
+          'Diese Anlage hat mehrere Ebenen. Unten stehen Schlüssel für einzelne Abteilungen oder '
+            + 'Bereiche, darüber Hauptschlüssel. Ganz oben steht ein Generalhauptschlüssel. Das passt '
+            + 'für größere Grundstücke mit mehreren Gebäuden.',
         ],
         [
-          'Und die Erweiterbarkeit?',
-          'Planen Sie früh mit, ob später Türen, Nutzer oder Gebäude dazukommen. Eine Anlage, die '
-            + 'von Anfang an Reserve hat, lässt sich später ergänzen, ohne alles zu tauschen.',
+          'An später denken',
+          'Planen Sie früh, ob später Türen, Nutzer oder Gebäude dazukommen. Hat die Anlage von '
+            + 'Anfang an Reserve, lässt sie sich später ergänzen. Sie müssen dann nicht alles tauschen.',
         ],
       ],
       next: ['/schliessanlagen/konfigurator', 'Projekt erfassen'],
+      seo: {
+        title: 'Welche Schließanlage passt zu mir?',
+        description:
+          'Gleichschließung, Zentralschlossanlage, Hauptschlüsselanlage oder '
+          + 'Generalhauptschlüsselanlage: Es hängt davon ab, wer welche Türen öffnen soll.',
+        links: [
+          ['/ratgeber', 'Alle Ratgeber'],
+          ['/schliessanlagen/konfigurator', 'Projekt erfassen'],
+        ],
+      },
     },
     {
       slug: 'schluesselcode-finden',
       title: 'Wo finde ich den Schlüsselcode?',
-      excerpt: 'Auf dem Schloss, auf dem Schlüsselkopf oder in den Unterlagen.',
+      excerpt:
+        'Der Code steht auf dem Schloss, auf dem Schlüsselkopf oder in Ihren Unterlagen. Finden '
+        + 'Sie keinen, hilft der Weg über Schlüssel nach Vorlage.',
       topic: 'schluessel-nach-code',
       body: [
         [
           'Am Schloss selbst',
           'Bei Möbel-, Spind- und Briefkastenschlössern steht der Code häufig auf der Stirnseite '
-            + 'des Schlosses oder auf dem Schließzylinder — sichtbar, sobald die Tür offen ist.',
+            + 'des Schlosses oder auf dem Schließzylinder. Sie sehen ihn, sobald die Tür offen ist.',
         ],
         [
           'Auf dem Schlüssel',
@@ -622,92 +682,145 @@ export function guides(): Guide[] {
         [
           'In den Unterlagen',
           'Bei Schließanlagen und geschützten Systemen steht die Nummer auf der Sicherungskarte '
-            + 'oder im Schließplan. Bewahren Sie diese Unterlagen getrennt von den Schlüsseln auf.',
+            + 'oder im Schließplan. Die Sicherungskarte ist zugleich Ihr Nachweis, dass Sie '
+            + 'Nachschlüssel bestellen dürfen. Bewahren Sie diese Unterlagen getrennt von den '
+            + 'Schlüsseln auf.',
         ],
         [
           'Wenn Sie keinen Code finden',
-          'Dann ist der Weg über Schlüssel nach Vorlage der richtige: drei Fotos, und wir prüfen, '
-            + 'ob eine Anfertigung möglich ist.',
+          'Dann nutzen Sie Schlüssel nach Vorlage. Sie schicken uns drei Fotos, und wir prüfen, ob '
+            + 'eine Anfertigung möglich ist.',
         ],
       ],
-      next: ['/schluessel-nach-code', 'Codelinien ansehen'],
+      next: ['/schluessel-nach-code', 'Schlüssel nach Code'],
+      seo: {
+        title: 'Wo finde ich den Schlüsselcode?',
+        description:
+          'Der Code steht auf dem Schloss, auf dem Schlüsselkopf oder in Ihren Unterlagen. Finden '
+          + 'Sie keinen, hilft der Weg über Schlüssel nach Vorlage mit drei Fotos.',
+        links: [
+          ['/ratgeber', 'Alle Ratgeber'],
+          ['/schluessel-nach-code', 'Schlüssel nach Code'],
+        ],
+      },
     },
     {
       slug: 'einbruchschutz-wo-anfangen',
-      title: 'Einbruchschutz — wo fängt man sinnvoll an?',
-      excerpt: 'Erst die erreichbaren Stellen, dann die Meldetechnik.',
+      title: 'Einbruchschutz: Wo fängt man sinnvoll an?',
+      excerpt:
+        'Fangen Sie bei Türen und Fenstern an, die man ohne Hilfsmittel erreicht. Dort hilft '
+        + 'zuerst gute Mechanik. Meldetechnik und Kamera ergänzen sie später.',
       topic: 'sicherheitstechnik',
       body: [
         [
           'Schauen Sie von außen auf Ihr Gebäude',
-          'Welche Türen und Fenster sind ohne Hilfsmittel erreichbar? Genau dort beginnt sinnvoller '
-            + 'Schutz — nicht bei der Kamera.',
+          'Prüfen Sie, welche Türen und Fenster man ohne Hilfsmittel erreicht. Genau dort beginnt '
+            + 'sinnvoller Schutz, nicht bei der Kamera.',
         ],
         [
           'Mechanik zuerst',
-          'Mechanik hält auf und kostet Zeit. Zusatzschlösser, Schutzbeschläge und geeignete '
-            + 'Zylinder wirken auch dann, wenn niemand zu Hause ist und kein Strom fließt.',
+          'Mechanik hält Einbrecher auf und kostet sie Zeit. Zusatzschlösser, Schutzbeschläge und '
+            + 'geeignete Zylinder wirken auch, wenn niemand zu Hause ist. Sie brauchen dafür keinen '
+            + 'Strom.',
         ],
         [
           'Dann Meldetechnik',
-          'Alarm- und Meldetechnik erkennt und informiert. Sie ersetzt keine Mechanik, sondern '
-            + 'ergänzt sie.',
+          'Alarm- und Meldetechnik erkennt einen Einbruch und gibt Bescheid. Sie ersetzt keine '
+            + 'Mechanik, sondern ergänzt sie.',
         ],
         [
-          'Kamera zuletzt — und rechtlich sauber',
+          'Kamera zuletzt und rechtlich sauber',
           'Kameras helfen bei der Aufklärung. Achten Sie darauf, dass Sie nur Ihren eigenen Bereich '
             + 'erfassen. Öffentliche Flächen und Nachbargrundstücke dürfen nicht gefilmt werden.',
         ],
       ],
       next: ['/sicherheitstechnik/sicherheitscheck', 'Sicherheitscheck starten'],
+      seo: {
+        title: 'Einbruchschutz: Wo fange ich an?',
+        description:
+          'Fangen Sie bei Türen und Fenstern an, die man ohne Hilfsmittel erreicht. Dort hilft '
+          + 'zuerst gute Mechanik. Meldetechnik und Kamera ergänzen sie später.',
+        links: [
+          ['/ratgeber', 'Alle Ratgeber'],
+          ['/sicherheitstechnik/sicherheitscheck', 'Sicherheitscheck starten'],
+        ],
+      },
     },
     {
       slug: 'schluessel-verloren-wohnung',
-      title: 'Wohnungsschlüssel verloren — Schloss tauschen oder nicht?',
-      excerpt: 'Es kommt darauf an, ob der Schlüssel Ihrer Wohnung zugeordnet werden kann.',
+      title: 'Wohnungsschlüssel verloren: Schloss tauschen oder nicht?',
+      excerpt:
+        'Das hängt davon ab, ob jemand den Schlüssel Ihrer Wohnung zuordnen kann. Hing eine '
+        + 'Adresse am Schlüsselbund, sollten Sie handeln. Oft genügt dann ein neuer Zylinder an der '
+        + 'betroffenen Tür.',
       topic: 'tuer-und-schliesstechnik',
       body: [
         [
           'Die entscheidende Frage',
-          'Kann jemand den gefundenen Schlüssel Ihrer Wohnung zuordnen? Wenn am Schlüsselbund eine '
-            + 'Adresse oder ein beschrifteter Anhänger hing, sollten Sie handeln.',
+          'Entscheidend ist, ob ein Finder den Schlüssel Ihrer Wohnung zuordnen kann. Hing am '
+            + 'Schlüsselbund eine Adresse oder ein beschrifteter Anhänger, sollten Sie handeln.',
         ],
         [
           'Bei einer Schließanlage',
-          'Gehört der Schlüssel zu einer Anlage, betrifft der Verlust nicht nur Ihre Tür. '
-            + 'Informieren Sie in diesem Fall Vermieter oder Verwaltung.',
+          'Gehört der Schlüssel zu einer Schließanlage, betrifft der Verlust nicht nur Ihre Tür. '
+            + 'Sagen Sie dann Ihrem Vermieter oder der Hausverwaltung Bescheid.',
         ],
         [
           'Die praktische Lösung',
-          'Oft genügt ein Zylindertausch an der betroffenen Tür. Wenn mehrere Türen betroffen sind, '
-            + 'ist eine gleichschließende Lösung häufig günstiger als einzelne Zylinder.',
+          'Oft genügt es, an der betroffenen Tür den Zylinder zu tauschen. Der Zylinder ist der '
+            + 'Teil des Schlosses, in den Sie den Schlüssel stecken. Sind mehrere Türen betroffen, sind '
+            + 'gleichschließende Zylinder häufig günstiger als einzelne. Gleichschließend heißt, ein '
+            + 'Schlüssel öffnet alle diese Türen.',
         ],
       ],
       next: ['/gleichschliessende-zylinder', 'Gleichschließende Zylinder'],
+      seo: {
+        title: 'Wohnungsschlüssel verloren',
+        description:
+          'Ob Sie das Schloss tauschen sollten, hängt davon ab, ob ein Finder den Schlüssel Ihrer '
+          + 'Wohnung zuordnen kann. Oft genügt ein neuer Zylinder an der Tür.',
+        links: [
+          ['/ratgeber', 'Alle Ratgeber'],
+          ['/gleichschliessende-zylinder', 'Gleichschließende Zylinder'],
+        ],
+      },
     },
     {
       slug: 'mechanisch-oder-elektronisch',
-      title: 'Mechanisch oder elektronisch — was ist sinnvoller?',
-      excerpt: 'Beides hat seinen Platz. Entscheidend ist, wie oft sich etwas ändert.',
+      title: 'Mechanisch oder elektronisch: Was ist sinnvoller?',
+      excerpt:
+        'Entscheidend ist, wie oft sich etwas ändert. Bleiben die Nutzer gleich, ist Mechanik '
+        + 'robust und wartungsarm. Wechseln sie oft, spielt Elektronik ihre Stärke aus.',
       topic: 'elektronische-zutrittsloesungen',
       body: [
         [
           'Wenn sich selten etwas ändert',
-          'Bei einem Einfamilienhaus mit festen Nutzern ist eine mechanische Lösung robust, '
-            + 'wartungsarm und unabhängig von Strom und Netz.',
+          'Bei einem Einfamilienhaus mit festen Nutzern ist eine mechanische Lösung robust und '
+            + 'wartungsarm. Sie funktioniert ohne Strom und Netz.',
         ],
         [
           'Wenn sich häufig etwas ändert',
-          'Wechseln Nutzer regelmäßig — Personal, Reinigung, Handwerk, Mieter — spielt Elektronik '
-            + 'ihre Stärke aus: Ein verlorenes Medium wird gesperrt, statt Zylinder zu tauschen.',
+          'Wechseln Nutzer regelmäßig, etwa Personal, Reinigung, Handwerker oder Mieter, spielt '
+            + 'Elektronik ihre Stärke aus. Geht ein elektronischer Schlüssel oder eine Karte verloren, '
+            + 'lässt sich beides sperren. Zylinder müssen Sie dafür nicht tauschen.',
         ],
         [
           'Die Kombination',
-          'In der Praxis ist die Mischung häufig die beste Lösung: elektronisch an den Türen mit '
-            + 'wechselnden Nutzern, mechanisch überall dort, wo Ruhe herrscht.',
+          'In der Praxis ist eine Mischung häufig die beste Lösung. Elektronik kommt an die Türen '
+            + 'mit wechselnden Nutzern, Mechanik überall dort, wo sich wenig ändert.',
         ],
       ],
       next: ['/elektronische-zutrittsloesungen/konfigurator', 'Bedarf erfassen'],
+      seo: {
+        title: 'Zutritt mechanisch oder elektronisch?',
+        description:
+          'Entscheidend ist, wie oft sich etwas ändert. Bei festen Nutzern ist Mechanik robust und '
+          + 'wartungsarm, bei wechselnden Nutzern spielt Elektronik ihre Stärke aus.',
+        links: [
+          ['/ratgeber', 'Alle Ratgeber'],
+          ['/elektronische-zutrittsloesungen/konfigurator', 'Bedarf erfassen'],
+        ],
+      },
     },
   ];
 
@@ -721,12 +834,9 @@ export function guides(): Guide[] {
     image: { motif: `Beitragsbild: ${g.title}`, ratio: '16/9' },
     nextStep: { href: g.next[0], label: g.next[1] },
     seo: {
-      title: `${g.title}`,
-      description: g.excerpt,
-      internalLinks: [
-        { href: '/ratgeber', label: 'Alle Ratgeber' },
-        { href: g.next[0], label: g.next[1] },
-      ],
+      title: g.seo.title,
+      description: g.seo.description,
+      internalLinks: g.seo.links.map(([href, label]) => ({ href, label })),
     },
     updatedAt: now,
   }));

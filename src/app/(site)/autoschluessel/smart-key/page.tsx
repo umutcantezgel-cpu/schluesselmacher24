@@ -11,11 +11,11 @@ const ROUTE = 'autoschluessel/smart-key';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Smart Key und Keyless — Ersatz und Programmierung',
+    title: page?.seo.title ?? 'Smart Key und Keyless in Wetzlar',
     description:
       page?.seo.description
-      ?? 'Smart Key und schlüssellose Systeme: Ersatz, Programmierung und Prüfung. Mit Vorlaufzeit '
-        + 'und festem Termin.',
+      ?? 'Ein Smart Key ist ein Schlüssel, den das Fahrzeug in der Nähe erkennt. Wir beschaffen '
+        + 'Ersatz für Ihren Smart Key und lernen ihn an Ihrem Fahrzeug an.',
     alternates: { canonical: '/autoschluessel/smart-key' },
   };
 }

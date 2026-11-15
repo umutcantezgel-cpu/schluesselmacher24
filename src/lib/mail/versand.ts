@@ -68,10 +68,31 @@ export interface VorlageSenden {
   transport?: TransportOptionen;
 }
 
+/** Obergrenze für den gespeicherten Text einer Mail (Zeichen); längere Texte werden gekürzt und markiert. */
+export const MAILTEXT_HOECHSTENS = 60_000;
+
+/**
+ * Betreff und Text einer Mail für den Verlauf am Vorgang (FA-KERN-05): die Textfassung, die auch
+ * hinausgeht, ohne HTML. Sehr lange Texte (etwa Rechtstexte in der Vertragsbestätigung) werden gekürzt.
+ */
+export function mailVerlaufText(inhalt: Pick<MailInhalt, 'betreff' | 'text'> | undefined): Pick<MailLogEntry, 'subject' | 'body'> {
+  if (!inhalt) return {};
+  const text = typeof inhalt.text === 'string' ? inhalt.text : '';
+  const body = text.length > MAILTEXT_HOECHSTENS ? `${text.slice(0, MAILTEXT_HOECHSTENS)}\n\n[Text gekürzt]` : text;
+  return { ...(inhalt.betreff ? { subject: inhalt.betreff } : {}), ...(body ? { body } : {}) };
+}
+
 /** Sendet eine Vorlage und liefert den Eintrag fürs Mailprotokoll. Wirft nie. */
 export async function sendeVorlage(senden: VorlageSenden): Promise<MailLogEntry> {
   const an = (Array.isArray(senden.an) ? senden.an : [senden.an]).filter(Boolean);
-  const eintrag: MailLogEntry = { kind: senden.art, to: an.join(', '), at: new Date().toISOString(), result: 'fehlgeschlagen' };
+  const eintrag: MailLogEntry = {
+    kind: senden.art,
+    to: an.join(', '),
+    at: new Date().toISOString(),
+    result: 'fehlgeschlagen',
+    // Betreff und vollständiger Text bleiben am Vorgang lesbar (FA-KERN-05), auch wenn der Versand scheitert.
+    ...mailVerlaufText(senden.inhalt),
+  };
   try {
     const ergebnis = await sendeUeberResend(
       {

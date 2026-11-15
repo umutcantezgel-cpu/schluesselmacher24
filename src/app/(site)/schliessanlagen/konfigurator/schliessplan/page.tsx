@@ -13,8 +13,8 @@ import { getCollection } from '@/lib/data';
 export const metadata: Metadata = {
   title: 'Schließplan selbst anlegen',
   description:
-    'Türen und Schlüssel anlegen und ankreuzen, wer welche Tür schließt. Eine Sperrschließung bestellen Sie direkt mit Preis, '
-    + 'für eine Schließanlage mit Ebenen schicken wir Ihnen ein Angebot. Der Plan lässt sich als Link speichern.',
+    'Türen und Schlüssel anlegen, dann ankreuzen, wer welche Tür schließt. Ihr Plan bleibt in '
+    + 'diesem Browser gespeichert und lässt sich als Link weitergeben.',
   alternates: { canonical: '/schliessanlagen/konfigurator/schliessplan' },
 };
 

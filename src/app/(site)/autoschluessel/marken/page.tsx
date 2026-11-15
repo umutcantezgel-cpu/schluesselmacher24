@@ -29,12 +29,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const modelCount = makes.reduce((sum, make) => sum + make.models.length, 0);
 
   return {
-    title: page?.seo.title ?? 'Autoschlüssel nach Marke und Modell',
+    title: page?.seo.title ?? 'Autoschlüssel je Marke und Modell',
     description:
       page?.seo.description
-      ?? `Zu ${makes.length} ${nomen(makes.length, 'Fahrzeugmarke', 'Fahrzeugmarken')} und `
-        + `${modelCount} ${nomen(modelCount, 'Modell', 'Modellen')} finden Sie hier, welche `
-        + 'Schlüsselarten vorkommen und ob das Fahrzeug zum Anlernen in die Werkstatt mitkommen muss.',
+      ?? 'Welche Schlüsselart hat Ihr Fahrzeug, und muss es zum Anlernen vor Ort sein? Das hängt '
+        + 'von Marke, Modell und Baujahr ab. Hier finden Sie die gängigen Fahrzeuge.',
     alternates: { canonical: '/autoschluessel/marken' },
   };
 }

@@ -11,10 +11,10 @@ const ROUTE = 'autoschluessel/gehaeuse/anfrage';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Gehäuse-Anfrage: Fahrzeug, Fotos von Schlüssel und Fahrzeugschein',
+    title: page?.seo.title ?? 'Gehäuse für Autoschlüssel anfragen',
     description:
       page?.seo.description
-      ?? 'Anfrage für ein Autoschlüssel-Gehäuse: Fahrzeug, Anzahl der Tasten, Fotos von Schlüssel und Fahrzeugschein und Kontakt.',
+      ?? 'In fünf Schritten zum neuen Gehäuse: Fahrzeug, Zahl der Tasten, Fotos von Schlüssel und Fahrzeugschein, Kontakt. Mit der Anfrage entsteht noch kein Vertrag.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

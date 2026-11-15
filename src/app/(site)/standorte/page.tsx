@@ -21,7 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Einsatzgebiete',
     description:
-      'Vor-Ort-Leistungen nach Absprache, Versand von Schlüsseln und Zylindern innerhalb Deutschlands.',
+      'Schlüssel nach Code und gleichschließende Zylinder versenden wir innerhalb Deutschlands. '
+      + 'Hier finden Sie unsere Werkstatt und unsere Einsatzgebiete.',
     alternates: { canonical: '/standorte' },
     // Ohne fertig gepflegtes Gebiet hat die Seite keinen eigenen Inhalt für Suchmaschinen.
     ...(gebiete.length === 0 ? { robots: { index: false, follow: true } } : {}),

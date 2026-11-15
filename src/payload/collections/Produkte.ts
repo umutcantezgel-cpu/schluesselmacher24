@@ -1,4 +1,4 @@
-import type { CollectionConfig, TextFieldSingleValidation } from 'payload';
+import type { CollectionBeforeChangeHook, CollectionConfig, FieldHook, TextField, TextFieldSingleValidation } from 'payload';
 
 import { pruefeCodeMuster, codePasst } from '../../lib/code-pattern';
 import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
@@ -20,6 +20,36 @@ const istCodeSchluessel = (data: Record<string, unknown> | undefined) => data?.t
 const RESERVIERTE_ADRESSEN = new Set(['kategorie', 'hersteller']);
 const slugPruefung = slugFeld().validate as (wert: unknown, optionen: unknown) => true | string;
 const istStandardartikel = (data: Record<string, unknown> | undefined) => data?.typ === 'standard';
+
+/*
+ * Duplizieren (FA-KERN-05, FA-22-02). Payload hängt an eindeutige Textfelder sonst „ - Copy“ an: Die Adresse
+ * wäre ungültig und die Kennung (Bezug von Warenkörben und Bestellungen) eine Abwandlung des Originals.
+ * - Adresse: Original mit „-kopie-“ und einem kurzen Zeitstempel, damit sie eindeutig und gültig bleibt.
+ * - Kennung: leer; beim Speichern übernimmt sie die neue Adresse (kennungFeld). Bestellungen des Originals
+ *   verweisen weiter nur auf dessen Kennung.
+ * - Stand: Die Kopie startet immer als Entwurf.
+ * - Bilder: Die Kopie verweist auf dieselben Bilder der Medienablage; es entstehen keine neuen Dateien.
+ */
+export function kopieAdresse(slug: unknown, jetzt = Date.now()): string | undefined {
+  if (typeof slug !== 'string' || !slug) return undefined;
+  const zusatz = `-kopie-${jetzt.toString(36)}`;
+  return `${slug.slice(0, 80 - zusatz.length).replace(/-+$/, '')}${zusatz}`;
+}
+const adresseBeimDuplizieren: FieldHook = ({ value }) => kopieAdresse(value);
+const kennungBeimDuplizieren: FieldHook = () => undefined;
+
+/** Beim Anlegen aus einer Kopie: immer als Entwurf (Payload reicht das Original als `originalDoc` durch). */
+export const kopieAlsEntwurf: CollectionBeforeChangeHook = ({ data, operation, originalDoc }) => {
+  // Bei einem neuen Artikel ist `originalDoc` leer; beim Duplizieren trägt es Name und Adresse des Originals.
+  if (operation === 'create' && typeof (originalDoc as { name?: unknown } | undefined)?.name === 'string') {
+    data._status = 'draft';
+  }
+  return data;
+};
+
+function mitDuplizierHaken(feld: TextField, haken: FieldHook): TextField {
+  return { ...feld, hooks: { ...feld.hooks, beforeDuplicate: [haken] } } as TextField;
+}
 
 /**
  * Artikel im Shop: Schlüssel nach Code und Standardartikel.
@@ -49,7 +79,7 @@ export const Produkte: CollectionConfig = {
   },
   versions: { drafts: { schedulePublish: true }, maxPerDoc: 50 },
   trash: true,
-  hooks: { ...erneuernHooks, beforeDelete: [loeschsperre] },
+  hooks: { ...erneuernHooks, beforeChange: [kopieAlsEntwurf], beforeDelete: [loeschsperre] },
   fields: [
     {
       name: 'typ',
@@ -63,13 +93,16 @@ export const Produkte: CollectionConfig = {
       ],
       admin: { position: 'sidebar' },
     },
-    slugFeld({
-      validate: ((wert: unknown, optionen: unknown) =>
-        typeof wert === 'string' && RESERVIERTE_ADRESSEN.has(wert)
-          ? 'Diese Adresse ist für eine Übersichtsseite reserviert. Bitte eine andere wählen.'
-          : slugPruefung(wert, optionen)) as TextFieldSingleValidation,
-    }),
-    kennungFeld(),
+    mitDuplizierHaken(
+      slugFeld({
+        validate: ((wert: unknown, optionen: unknown) =>
+          typeof wert === 'string' && RESERVIERTE_ADRESSEN.has(wert)
+            ? 'Diese Adresse ist für eine Übersichtsseite reserviert. Bitte eine andere wählen.'
+            : slugPruefung(wert, optionen)) as TextFieldSingleValidation,
+      }),
+      adresseBeimDuplizieren,
+    ),
+    mitDuplizierHaken(kennungFeld(), kennungBeimDuplizieren),
     {
       name: 'beispiel',
       type: 'checkbox',

@@ -1225,6 +1225,9 @@ const mailZuPayload = (m: MailLogEntry) => ({
   ergebnis: m.result,
   anbieterId: m.providerId,
   fehler: m.error,
+  // Betreff und Text (FA-KERN-05): beim erneuten Schreiben des Protokolls nie verlieren.
+  betreff: m.subject,
+  text: m.body,
 });
 
 function mailsZuSeite(mails: Vorgaenge['mails']): MailLogEntry[] | undefined {
@@ -1233,6 +1236,8 @@ function mailsZuSeite(mails: Vorgaenge['mails']): MailLogEntry[] | undefined {
     const eintrag: MailLogEntry = { kind: m.art, to: m.an, at: m.am, result: m.ergebnis };
     if (m.anbieterId) eintrag.providerId = m.anbieterId;
     if (m.fehler) eintrag.error = m.fehler;
+    if (m.betreff) eintrag.subject = m.betreff;
+    if (m.text) eintrag.body = m.text;
     return eintrag;
   });
 }
@@ -1359,11 +1364,21 @@ function erstattungZuSeite(e: Vorgaenge['erstattung']): RefundInfo | undefined {
   if (typeof e.betragCent === 'number') refund.amountCents = e.betragCent;
   if (e.am) refund.at = e.am;
   if (e.grund) refund.reason = e.grund;
+  // Weg und Beleg (FA-KERN-05).
+  if (e.weg) refund.method = e.weg;
+  if (e.beleg) refund.receipt = e.beleg;
   return Object.keys(refund).length ? refund : undefined;
 }
 
 function erstattungZuPayload(refund: RefundInfo): NonNullable<VorgangDaten['erstattung']> {
-  return { art: refund.kind ?? null, betragCent: refund.amountCents ?? null, am: refund.at ?? null, grund: refund.reason ?? null };
+  return {
+    art: refund.kind ?? null,
+    betragCent: refund.amountCents ?? null,
+    am: refund.at ?? null,
+    grund: refund.reason ?? null,
+    weg: refund.method ?? null,
+    beleg: refund.receipt ?? null,
+  };
 }
 
 /** Gesamtpreis und Rest (FA-KERN-03); ohne Angaben `undefined`. */

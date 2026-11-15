@@ -156,10 +156,24 @@ export interface TerminSperre {
    * Höchstzahl offener, unbezahlter Termine je E-Mail-Adresse (Schutz gegen
    * Kalenderblockaden). Gezählt werden nicht stornierte, nicht
    * abgeschlossene Termine ab `abDatum`, deren Zahlung offen oder
-   * fehlgeschlagen ist.
+   * fehlgeschlagen ist, dazu Termine ohne Zeitfenster aus den letzten
+   * `OHNE_ZEITFENSTER_STUNDEN` (Partnertermin, FA-KERN-05).
    */
-  kunde?: { email: string; hoechstensOffen: number; abDatum: string };
+  kunde?: KundenSperre;
 }
+
+/** Begrenzung offener, unbezahlter Termine je E-Mail-Adresse. */
+export interface KundenSperre {
+  email: string;
+  hoechstensOffen: number;
+  abDatum: string;
+}
+
+/**
+ * Termine ohne Zeitfenster (Partnertermin, FA-KERN-05) zählen so lange als offen, wie ihre Zahlung noch
+ * angefangen werden kann; danach verfallen sie wie ein Termin in der Vergangenheit.
+ */
+export const OHNE_ZEITFENSTER_STUNDEN = 24;
 
 export interface VorgangsAnlage {
   art: RecordKind;
@@ -168,6 +182,11 @@ export interface VorgangsAnlage {
   /** Baut den Vorgang, sobald seine Nummer feststeht. */
   aufbauen: (nummer: string) => NeuerVorgang;
   termin?: TerminSperre;
+  /**
+   * Begrenzung offener, unbezahlter Termine je E-Mail-Adresse für einen Termin ohne Zeitfenster (Partnertermin
+   * mit Zahlung, FA-KERN-05). Mit Zeitfenster gilt `termin.kunde`.
+   */
+  kunde?: KundenSperre;
 }
 
 /** Zu dieser E-Mail-Adresse sind schon zu viele Termine ohne Zahlung offen. */
@@ -244,22 +263,28 @@ export async function vorgangAnlegen(anlage: VorgangsAnlage): Promise<Vorgang> {
 
   const payload = await payloadInstanz();
   return inTransaktion(payload, async ({ execute, req }) => {
+    // Reihenfolge der Sperren: erst Kunde, dann Tag — überall gleich, sonst droht eine Verklemmung.
+    const kunde = anlage.termin?.kunde ?? (anlage.art === 'termin' ? anlage.kunde : undefined);
+    if (kunde) {
+      const email = kunde.email.trim().toLowerCase();
+      const seit = new Date(Date.now() - OHNE_ZEITFENSTER_STUNDEN * 60 * 60 * 1000).toISOString();
+      await execute(sql`SELECT pg_advisory_xact_lock(hashtext(${`sm24:termin-kunde:${email}`}))`);
+      // Mit Zeitfenster ab heute; ohne Zeitfenster (Partnertermin) aus den letzten 24 Stunden.
+      const { rows } = await execute(sql`
+        SELECT count(*)::int AS anzahl FROM vorgaenge
+        WHERE art = 'termin'
+          AND lower(kontakt_email) = ${email}
+          AND status NOT IN ('storniert', 'abgeschlossen')
+          AND zahlung_status IN ('offen', 'fehlgeschlagen')
+          AND (
+            termin_datum >= ${kunde.abDatum}
+            OR ((termin_datum IS NULL OR termin_datum = '') AND created_at > ${seit})
+          )
+      `);
+      if (Number(rows[0]?.anzahl ?? 0) >= kunde.hoechstensOffen) throw new ZuVieleOffeneTermineFehler();
+    }
     if (anlage.termin) {
-      const { datum, istFrei, kunde } = anlage.termin;
-      if (kunde) {
-        // Reihenfolge der Sperren: erst Kunde, dann Tag — überall gleich, sonst droht eine Verklemmung.
-        const email = kunde.email.trim().toLowerCase();
-        await execute(sql`SELECT pg_advisory_xact_lock(hashtext(${`sm24:termin-kunde:${email}`}))`);
-        const { rows } = await execute(sql`
-          SELECT count(*)::int AS anzahl FROM vorgaenge
-          WHERE art = 'termin'
-            AND lower(kontakt_email) = ${email}
-            AND status NOT IN ('storniert', 'abgeschlossen')
-            AND zahlung_status IN ('offen', 'fehlgeschlagen')
-            AND termin_datum >= ${kunde.abDatum}
-        `);
-        if (Number(rows[0]?.anzahl ?? 0) >= kunde.hoechstensOffen) throw new ZuVieleOffeneTermineFehler();
-      }
+      const { datum, istFrei } = anlage.termin;
       await execute(sql`SELECT pg_advisory_xact_lock(hashtext(${`sm24:termin:${datum}`}))`);
       const tag = await vorgaengeFinden(payload, terminImZeitraum(datum, datum), req());
       if (!istFrei(tag)) throw new TerminVergebenFehler(datum);
@@ -638,7 +663,9 @@ function offeneTermine(items: Vorgang[], email: string, abDatum: string): number
       && r.status !== 'storniert'
       && r.status !== 'abgeschlossen'
       && (r.payment?.status === 'offen' || r.payment?.status === 'fehlgeschlagen')
-      && (r.appointment?.date ?? '') >= abDatum,
+      && (r.appointment?.date
+        ? r.appointment.date >= abDatum
+        : Date.parse(r.createdAt) > Date.now() - OHNE_ZEITFENSTER_STUNDEN * 60 * 60 * 1000),
   ).length;
 }
 
@@ -667,11 +694,12 @@ async function vorgaengeFinden(
 /** Dateimodus: ohne Datenbank gibt es keine Transaktion — nur für Notfälle und Werkzeuge. */
 async function vorgangAnlegenOhneDatenbank(anlage: VorgangsAnlage): Promise<Vorgang> {
   const items = await readRecordsFresh();
+  const kunde = anlage.termin?.kunde ?? (anlage.art === 'termin' ? anlage.kunde : undefined);
+  if (kunde && offeneTermine(items, kunde.email, kunde.abDatum) >= kunde.hoechstensOffen) {
+    throw new ZuVieleOffeneTermineFehler();
+  }
   if (anlage.termin) {
-    const { datum, istFrei, kunde } = anlage.termin;
-    if (kunde && offeneTermine(items, kunde.email, kunde.abDatum) >= kunde.hoechstensOffen) {
-      throw new ZuVieleOffeneTermineFehler();
-    }
+    const { datum, istFrei } = anlage.termin;
     if (!istFrei(items.filter((r) => hatTerminImZeitraum(r, datum, datum)))) {
       throw new TerminVergebenFehler(datum);
     }

@@ -11,11 +11,11 @@ const ROUTE = 'autoschluessel/fahrzeugoeffnung';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Fahrzeugöffnung — zerstörungsfrei',
+    title: page?.seo.title ?? 'Zerstörungsfreie Fahrzeugöffnung',
     description:
       page?.seo.description
-      ?? 'Zerstörungsfreie Fahrzeugöffnung als eigene Serviceleistung. Nachweis der '
-        + 'Verfügungsberechtigung erforderlich.',
+      ?? 'Wir öffnen Ihr Fahrzeug zerstörungsfrei, wenn Sie ausgesperrt sind. Vor Ort weisen Sie '
+        + 'bitte nach, dass Sie über das Fahrzeug verfügen dürfen.',
     alternates: { canonical: '/autoschluessel/fahrzeugoeffnung' },
   };
 }

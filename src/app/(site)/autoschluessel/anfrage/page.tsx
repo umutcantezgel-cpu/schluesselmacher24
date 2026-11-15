@@ -17,14 +17,16 @@ import { vorherAusAdresse } from '@/lib/zahlung/neu-buchen';
 const ROUTE = 'autoschluessel/anfrage';
 
 const FALLBACK_TITLE = 'Autoschlüssel anfragen';
+/** Suchergebnis-Texte ohne Daten, gleich content/seo.json (FA-SEO-01B). */
+const FALLBACK_SEO_TITLE = 'Autoschlüssel-Anfrage mit Termin';
 const FALLBACK_DESCRIPTION =
-  'Fahrzeug, Schlüsselart und Leistung Schritt für Schritt angeben, Fotos und Fahrzeugschein '
-  + 'hochladen, Preis oder Preisrahmen sehen und einen festen Termin buchen.';
+  'Sie geben Schritt für Schritt Fahrzeug und Schlüssel an und laden Fotos hoch. Am Ende '
+  + 'leisten Sie eine Anzahlung und buchen einen festen Termin.';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? FALLBACK_TITLE,
+    title: page?.seo.title ?? FALLBACK_SEO_TITLE,
     description: page?.seo.description ?? FALLBACK_DESCRIPTION,
     alternates: { canonical: '/autoschluessel/anfrage' },
   };

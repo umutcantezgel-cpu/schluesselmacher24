@@ -13,6 +13,7 @@ import { formatCents, formatNumber } from '@/lib/format';
 import { istPlatzhalter } from '@/lib/platzhalter';
 import { keyKindLabel, keyKindShortLabel } from '@/components/autoschluessel/key-kinds';
 import { formatModelYears, hatBaujahre } from '@/components/autoschluessel/vehicle-facts';
+import { titelPasst } from '@/lib/titelbreite';
 
 /* ==========================================================================
    Texte der Marken- und Modellseiten (Autoschlüssel)
@@ -25,7 +26,9 @@ import { formatModelYears, hatBaujahre } from '@/components/autoschluessel/vehic
    Beschreibung) gehen immer vor.
    ========================================================================== */
 
-export const TITEL_MAX = 60;
+/** Höchstlänge des Titels ohne den Markenzusatz der Vorlage (fertig höchstens 60 Zeichen und 580 px). */
+export const TITEL_MAX = 40;
+export const BESCHREIBUNG_MIN = 120;
 export const BESCHREIBUNG_MAX = 160;
 
 /** Ein Preis, wie ihn der Assistent für diese Eingaben nennt. */
@@ -136,6 +139,26 @@ function bisLaenge(pflicht: string, optional: Array<string | undefined>, max: nu
   return text;
 }
 
+/**
+ * Beschreibung zwischen `BESCHREIBUNG_MIN` und `BESCHREIBUNG_MAX` Zeichen: Pflichtsatz und so viele
+ * der weiteren Sätze, wie hineinpassen, frühere vor späteren. Reicht keine Auswahl in den Rahmen,
+ * gilt die längste Auswahl bis zur Höchstlänge.
+ */
+function imRahmen(pflicht: string, optional: Array<string | undefined>): string {
+  const teile = optional.filter((teil): teil is string => Boolean(teil));
+  const suche = (text: string, i: number): string | undefined => {
+    if (i === teile.length) return text.length >= BESCHREIBUNG_MIN && text.length <= BESCHREIBUNG_MAX ? text : undefined;
+    const mit = `${text} ${teile[i]}`;
+    return (mit.length <= BESCHREIBUNG_MAX ? suche(mit, i + 1) : undefined) ?? suche(text, i + 1);
+  };
+  return suche(pflicht, 0) ?? bisLaenge(pflicht, teile, BESCHREIBUNG_MAX);
+}
+
+/** Erster Titelvorschlag, der samt Markenzusatz in 580 px und 60 Zeichen passt, sonst der letzte. */
+function ersterPassender(vorschlaege: string[]): string {
+  return vorschlaege.find(titelPasst) ?? vorschlaege[vorschlaege.length - 1];
+}
+
 const tage = (n: number) => `${formatNumber(n)} ${n === 1 ? 'Tag' : 'Tage'}`;
 
 /** Leistungsnamen in Anführungszeichen — sie enthalten selbst Kommas („Gehäuse, Tasten und Batterie“). */
@@ -181,31 +204,34 @@ export function modellTexte(
   const daten = eckdaten(preise);
   const ab = preisAb(preise);
 
-  const titelVorschlaege = [
-    ...(erfasst ? [`${name} Autoschlüssel (${jahre}): Preise und Termin`, `${name} Autoschlüssel (${jahre})`] : []),
-    `${name} Autoschlüssel: Preise und Termin`,
-    `${name} Autoschlüssel`,
-  ];
+  // Titel ohne Baujahr und ohne Preise: Marke und Modell vorn, samt Markenzusatz in 580 px (FA-SEO-01B).
   const eigenerTitel = model.seo?.title?.trim();
-  const metaTitel = eigenerTitel || (titelVorschlaege.find((t) => t.length <= TITEL_MAX) ?? `${name} Autoschlüssel`);
+  const metaTitel = eigenerTitel || ersterPassender([`${name} Autoschlüssel`, `${name} Schlüssel`, name]);
 
-  const erstePreise = preise
-    .filter((p) => p.mitSchluessel.length === 1 && !erstNachPruefung(p.mitSchluessel[0].quote))
-    .slice(0, 2)
-    .map((p) => `${p.service.label}: ${preisAngabe(p.mitSchluessel[0].quote)}.`);
+  // Beschreibung aus dem, was die Seite zeigt: Baujahre, Schlüsselarten, Preis je Leistung oder
+  // Prüfung, Termin in der Werkstatt, Fahrzeug zum Termin. Keine Beträge und keine Fristen.
   const eigeneBeschreibung = model.seo?.description?.trim();
   const kurzArten = model.keyKinds.map((art) => keyKindShortLabel(art));
+  const ort = werkstatt ? ` in ${werkstatt.city}` : ' in der Werkstatt';
+  const preisUndTermin = !preise.length
+    ? `Termin${ort}.`
+    : !daten.pruefung.length
+      ? `Preis je Leistung und Termin${ort}.`
+      : daten.pruefung.length === preise.length
+        ? `Preis nach Prüfung der Unterlagen, Termin${ort}.`
+        : `Preis je Leistung, teils nach Prüfung, und Termin${ort}.`;
   const metaBeschreibung =
     eigeneBeschreibung
-    || bisLaenge(
-      `Autoschlüssel für ${name}${erfasst ? ` (${jahre})` : ''}${kurzArten.length ? ` – ${aufzaehlung(kurzArten)}` : ''}.`,
+    || imRahmen(
+      kurzArten.length
+        ? `Autoschlüssel für ${name}${erfasst ? ` (${jahre})` : ''}: ${aufzaehlung(kurzArten)}.`
+        : `Autoschlüssel für ${name}${erfasst ? ` (${jahre})` : ''}. Die Schlüsselart klären wir anhand Ihrer Fotos.`,
       [
-        erstePreise[0],
-        werkstatt ? `Termin in ${werkstatt.city}.` : undefined,
-        ...erstePreise.slice(1),
-        daten.vorlauf ? `Vorlauf ${daten.vorlauf}.` : undefined,
+        preisUndTermin,
+        daten.mitFahrzeug.length ? 'Zum Termin bringen Sie Ihr Fahrzeug mit.' : undefined,
+        'Bringen Sie alle vorhandenen Schlüssel mit.',
+        'Bitte Fahrzeugschein und Ausweis mitbringen.',
       ],
-      BESCHREIBUNG_MAX,
     );
 
   const eigeneEinleitung = !istPlatzhalter(model.intro) ? model.intro!.trim() : undefined;
@@ -280,19 +306,20 @@ export interface MarkenTexte {
 export function markenTexte(make: VehicleMake): MarkenTexte {
   const zahl = make.models.length;
   const modelle = [...make.models].sort((a, b) => a.name.localeCompare(b.name, 'de')).map((m) => m.name);
-  const titelVorschlaege = [
-    `${make.name} Autoschlüssel: ${formatNumber(zahl)} ${zahl === 1 ? 'Modell' : 'Modelle'}, Preise und Termin`,
-    `${make.name} Autoschlüssel: Modelle und Preise`,
-    `${make.name} Autoschlüssel`,
-  ];
-  const metaTitel = make.seo?.title?.trim() || (titelVorschlaege.find((t) => t.length <= TITEL_MAX) ?? `${make.name} Autoschlüssel`);
+  const metaTitel =
+    make.seo?.title?.trim()
+    || ersterPassender([`${make.name} Autoschlüssel je Modell`, `Autoschlüssel für ${make.name}`, `${make.name} Autoschlüssel`]);
+  // Lange Modelllisten kürzen, damit Platz für die Sätze zur Seite bleibt.
+  const alleModelle = aufzaehlung(modelle);
+  const modellText =
+    alleModelle.length <= 70 ? alleModelle : `${formatNumber(zahl)} Modelle, darunter ${aufzaehlung(modelle.slice(0, 3))}`;
   const metaBeschreibung =
     make.seo?.description?.trim()
-    || bisLaenge(
-      `Autoschlüssel für ${make.name}: ${aufzaehlung(modelle)}.`,
-      ['Baujahre, Schlüsselarten und Preise wie im Termin-Assistenten.', 'Termin in der Werkstatt.'],
-      BESCHREIBUNG_MAX,
-    );
+    || imRahmen(`Autoschlüssel für ${make.name}: ${modellText}.`, [
+      'Je Modell sehen Sie Baujahre, Schlüsselarten und Preise.',
+      'Termin in der Werkstatt.',
+      'Welche Schlüsselart Ihr Fahrzeug hat, erkennen wir an Ihren Schlüsselfotos.',
+    ]);
   return { metaTitel, metaBeschreibung, noindex: Boolean(make.seo?.noindex) };
 }
 

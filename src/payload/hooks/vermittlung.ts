@@ -25,6 +25,7 @@ import { kontakt } from '../../lib/rechtliches/firma';
 import type { ReferralStatus } from '../../lib/types';
 import { mailKonfiguration } from '../../lib/umgebung';
 import { auszahlungswegFuer, type Ueberweisen } from '../../lib/zahlung/auszahlung';
+import { ERSTATTUNG_MELDUNG_WEG, ERSTATTUNGS_WEGE, belegPflicht } from '../../lib/zahlung/erstattung';
 import type { Partnerbetriebe, Vorgaenge } from '../../payload-types';
 
 import { SYSTEM_AENDERUNG, benutzerName, einstellungenLaden, vorgangVermerken } from './vorgang-benachrichtigen';
@@ -374,10 +375,14 @@ function erstattungPruefen(
   if (!data.erstattung) return false;
   const alt = originalDoc.erstattung ?? {};
   const neu = { ...alt, ...data.erstattung };
+  // Berichtigung eines Irrtums (FA-KERN-05): nur mit Grund, nur kleiner, nur außerhalb des Zahlungsdienstes.
+  if ((neu.berichtigungGrund ?? '').trim()) return erstattungBerichtigen(data, originalDoc, k);
   const gleich =
     (neu.art ?? null) === (alt.art ?? null)
     && zahl(neu.betragCent) === zahl(alt.betragCent)
     && (neu.grund ?? '') === (alt.grund ?? '')
+    && (neu.weg ?? null) === (alt.weg ?? null)
+    && (neu.beleg ?? '') === (alt.beleg ?? '')
     && (neu.am ? Date.parse(neu.am) : null) === (alt.am ? Date.parse(alt.am) : null);
   if (gleich || (!neu.art && zahl(neu.betragCent) === undefined && !(neu.grund ?? '').trim())) return false;
 
@@ -394,9 +399,14 @@ function erstattungPruefen(
   if (betrag < bisher) throw new APIError(ERSTATTUNG_MELDUNG.weniger(bisher), 400);
   const grund = (neu.grund ?? '').trim();
   if (!grund) throw new APIError(ERSTATTUNG_MELDUNG.grund, 400);
+  // Weg und Beleg (FA-KERN-05): Außerhalb des Zahlungsdienstes ist ein Beleg Pflicht.
+  if (!neu.weg) throw new APIError(ERSTATTUNG_MELDUNG_WEG.weg, 400);
+  const beleg = (neu.beleg ?? '').trim();
+  if (belegPflicht(neu.weg) && !beleg) throw new APIError(ERSTATTUNG_MELDUNG_WEG.beleg, 400);
   const am = neu.am || k.jetzt;
+  const wegText = ERSTATTUNGS_WEGE.find((w) => w.value === neu.weg)?.label ?? neu.weg;
 
-  data.erstattung = { ...neu, betragCent: betrag, am, grund };
+  data.erstattung = { ...neu, betragCent: betrag, am, grund, beleg: beleg || null, berichtigungGrund: null };
   data.zahlung = {
     ...(originalDoc.zahlung ?? {}),
     ...(data.zahlung ?? {}),
@@ -405,9 +415,56 @@ function erstattungPruefen(
   };
   k.notiz(
     `Erstattung erfasst: ${neu.art === 'ganz' ? 'ganz' : 'teilweise'}, ${formatCents(betrag)} am ${formatDateTime(am)}, `
+      + `Weg: ${wegText}${beleg ? `, Beleg: ${beleg.slice(0, 200)}` : ''}, `
       + `Grund: ${grund.slice(0, 300)} (${k.bearbeiter}). Das Geld erstatten Sie im Stripe-Dashboard oder per Überweisung.`,
   );
   if (betrag > bisher) k.verlauf(`Wir haben eine Erstattung über ${formatCents(betrag - bisher)} veranlasst.`);
+  return true;
+}
+
+/**
+ * Berichtigung einer irrtümlich erfassten Erstattung (FA-KERN-05). Der Zahlungsstand nach einer Erstattung
+ * lässt sich nicht von Hand zurücksetzen (FA-KERN-04); dieser Weg ist die dokumentierte Ausnahme:
+ * - nur mit Grund (Feld „Berichtigung: Grund“), der in die Notizen kommt und danach geleert wird,
+ * - nur kleiner (Betrag oder ganz leeren), nie größer,
+ * - nur für Erstattungen außerhalb des Zahlungsdienstes (den Stand dort belegt der Webhook),
+ * - nicht bei einem vermittelten Auftrag (dort sperrt die Erstattung die Partnerauszahlung).
+ */
+function erstattungBerichtigen(
+  data: Partial<Vorgaenge>,
+  originalDoc: Vorgaenge,
+  k: { jetzt: string; bearbeiter: string; notiz: (t: string) => void; verlauf: (t: string) => void },
+): boolean {
+  const alt = originalDoc.erstattung ?? {};
+  const neu = { ...alt, ...data.erstattung };
+  const grund = (neu.berichtigungGrund ?? '').trim();
+  const bisher = zahl(alt.betragCent) ?? 0;
+  if (!alt.art || bisher <= 0) throw new APIError(ERSTATTUNG_MELDUNG_WEG.berichtigungOhne, 400);
+  const ausserhalb = belegPflicht(alt.weg) || (!alt.weg && !originalDoc.zahlung?.anbieterRef);
+  if (!ausserhalb) throw new APIError(ERSTATTUNG_MELDUNG_WEG.berichtigungZahlungsdienst, 400);
+  if (istVermittlungsStand(originalDoc.vermittlung?.status)) throw new APIError(ERSTATTUNG_MELDUNG_WEG.berichtigungVermittlung, 400);
+  const betrag = neu.art ? (zahl(neu.betragCent) ?? 0) : 0;
+  if (betrag < 0 || betrag > bisher) throw new APIError(ERSTATTUNG_MELDUNG_WEG.berichtigungHoeher, 400);
+  const gezahlt = zahl(originalDoc.zahlung?.betragCent) ?? 0;
+
+  if (betrag === 0) {
+    data.erstattung = { art: null, betragCent: null, am: null, grund: null, weg: null, beleg: null, berichtigungGrund: null };
+    data.zahlung = { ...(originalDoc.zahlung ?? {}), ...(data.zahlung ?? {}), status: 'bezahlt', erstattetCent: null };
+  } else {
+    const ganz = gezahlt > 0 && betrag >= gezahlt;
+    data.erstattung = { ...neu, art: ganz ? 'ganz' : 'teilweise', betragCent: betrag, berichtigungGrund: null };
+    data.zahlung = {
+      ...(originalDoc.zahlung ?? {}),
+      ...(data.zahlung ?? {}),
+      status: ganz ? 'erstattet' : 'teilweise-erstattet',
+      erstattetCent: betrag,
+    };
+  }
+  k.notiz(
+    `Erstattung berichtigt: von ${formatCents(bisher)} auf ${formatCents(betrag)}. Grund: ${grund.slice(0, 300)} (${k.bearbeiter}). `
+      + `Zahlungsstand jetzt „${betrag === 0 ? 'Bezahlt' : data.zahlung.status === 'erstattet' ? 'Erstattet' : 'Teilweise erstattet'}“.`,
+  );
+  k.verlauf(betrag === 0 ? 'Berichtigung: Es wurde nichts erstattet.' : `Berichtigung: Erstattet sind insgesamt ${formatCents(betrag)}.`);
   return true;
 }
 

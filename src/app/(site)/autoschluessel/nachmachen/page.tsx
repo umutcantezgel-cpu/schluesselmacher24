@@ -10,11 +10,11 @@ const ROUTE = 'autoschluessel/nachmachen';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Autoschlüssel nachmachen — Zweit- und Ersatzschlüssel',
+    title: page?.seo.title ?? 'Zweitschlüssel fürs Auto in Wetzlar',
     description:
       page?.seo.description
-      ?? 'Zweitschlüssel und Ersatzschlüssel für Ihr Fahrzeug anfertigen lassen — mit '
-        + 'Schlüsselfotos, Preisangabe und fester Terminbuchung.',
+      ?? 'Wir fertigen einen Zweitschlüssel oder Ersatzschlüssel für Ihr Fahrzeug in Wetzlar. Ist '
+        + 'kein Schlüssel mehr da, prüfen wir Ihren Fall zuerst einzeln.',
     alternates: { canonical: '/autoschluessel/nachmachen' },
   };
 }
