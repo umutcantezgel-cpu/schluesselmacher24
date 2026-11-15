@@ -30,7 +30,7 @@ const ROUTE = 'sicherheitstechnik';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Sicherheitstechnik: Einbruchschutz',
+    title: page?.seo.title ?? 'Sicherheitstechnik gegen Einbruch',
     description:
       page?.seo.description
       ?? 'Einbruchschutz, Überwachung und Alarmierung: Mechanik hält auf, Meldetechnik erkennt, '

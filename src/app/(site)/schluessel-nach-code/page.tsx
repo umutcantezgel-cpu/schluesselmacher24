@@ -74,7 +74,8 @@ function WeiterIcon({ href }: { href: string }) {
 /** Titel und Beschreibung ohne echte Codeprodukte (A-046): nichts ist bestellbar, kein Sortiment. */
 const OHNE_PRODUKTE_SEO = {
   title: 'Schlüssel nach Code anfragen',
-  description: 'Nennen Sie uns Ihren Schlüsselcode. Wir prüfen ihn und melden uns. Ohne Einsendung des Originals.',
+  description:
+    'Nennen Sie uns den Code auf Ihrem Schloss oder Schlüssel. Wir prüfen, ob wir danach fertigen können, und melden uns. Ihr Originalschlüssel bleibt bei Ihnen.',
 } as const;
 
 export async function generateMetadata(): Promise<Metadata> {

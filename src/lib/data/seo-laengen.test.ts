@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
+import ts from 'typescript';
 import { describe, expect, it } from 'vitest';
 
 import type { PageContent, ServicePage } from '@/lib/types';
@@ -123,5 +124,89 @@ describe('Rückfälle tragen dieselben Suchergebnis-Texte wie die Daten (FA-SEO-
     const anfrage = links.filter((l) => l.href === '/autoschluessel/anfrage');
     expect(anfrage.length).toBeGreaterThan(0);
     for (const l of anfrage) expect(l.label).toBe('Termin anfragen');
+  });
+});
+
+/*
+ * Rückfälle in generateMetadata der Seiten (Nachbesserung zu FA-SEO-01A).
+ *
+ * Seiten dürfen nur page.tsx-eigene Exporte haben, darum liest der Test die Rückfälle aus dem
+ * Quelltext: Gesucht wird `page?.seo.title ?? …` und `page?.seo.description ?? …`. Rechts davon
+ * stehen ein Text, verkettete Texte oder eine Konstante derselben Datei. Hat die Route einen
+ * Eintrag in content/seo.json, muss der Rückfall gleich lauten; sonst gelten die Längenregeln.
+ */
+const SEITEN_MIT_RUECKFALL = [
+  '',
+  'service-und-termin',
+  'partner-werden',
+  'tuer-und-schliesstechnik',
+  'sicherheitstechnik',
+  'sicherheitstechnik/sicherheitscheck',
+  'schluessel-einschicken',
+  'schluessel-einschicken/anmelden',
+  'schliessanlagen',
+  'schliessanlagen/konfigurator',
+  'schluessel-nach-vorlage',
+  'schluessel-nach-vorlage/anfrage',
+  'schluessel-nach-code',
+  'elektronische-zutrittsloesungen',
+  'elektronische-zutrittsloesungen/konfigurator',
+  'gleichschliessende-zylinder',
+  'gleichschliessende-zylinder/konfigurator',
+];
+
+function rueckfaelleAusQuelltext(route: string) {
+  const datei = path.join(process.cwd(), 'src', 'app', '(site)', route, 'page.tsx');
+  const quelle = ts.createSourceFile(datei, readFileSync(datei, 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const konstanten = new Map<string, ts.Expression>();
+  const funde: Record<'title' | 'description', ts.Expression[]> = { title: [], description: [] };
+
+  const auswerten = (knoten: ts.Expression): string => {
+    if (ts.isParenthesizedExpression(knoten)) return auswerten(knoten.expression);
+    if (ts.isStringLiteral(knoten) || ts.isNoSubstitutionTemplateLiteral(knoten)) return knoten.text;
+    if (ts.isBinaryExpression(knoten) && knoten.operatorToken.kind === ts.SyntaxKind.PlusToken) {
+      return auswerten(knoten.left) + auswerten(knoten.right);
+    }
+    if (ts.isIdentifier(knoten) && konstanten.has(knoten.text)) return auswerten(konstanten.get(knoten.text)!);
+    throw new Error(`${route}: Rückfall nicht auswertbar: ${knoten.getText(quelle)}`);
+  };
+
+  const besuchen = (knoten: ts.Node) => {
+    if (ts.isVariableDeclaration(knoten) && ts.isIdentifier(knoten.name) && knoten.initializer) {
+      konstanten.set(knoten.name.text, knoten.initializer);
+    }
+    if (ts.isBinaryExpression(knoten) && knoten.operatorToken.kind === ts.SyntaxKind.QuestionQuestionToken) {
+      const links = knoten.left.getText(quelle).replace(/\s+/g, '');
+      const feld = /^page\?\.seo\.(title|description)$/.exec(links)?.[1] as 'title' | 'description' | undefined;
+      if (feld) funde[feld].push(knoten.right);
+    }
+    ts.forEachChild(knoten, besuchen);
+  };
+  besuchen(quelle);
+
+  const eins = (feld: 'title' | 'description') => {
+    expect(funde[feld].length, `${route}: genau ein Rückfall für seo.${feld}`).toBe(1);
+    return auswerten(funde[feld][0]);
+  };
+  return { titel: eins('title'), beschreibung: eins('description') };
+}
+
+describe('Rückfälle in generateMetadata tragen dieselben Suchergebnis-Texte wie die Daten (FA-SEO-01A)', () => {
+  it.each(SEITEN_MIT_RUECKFALL)('„/%s“: Rückfall gleich content/seo.json oder in den Längen', (route) => {
+    const { titel, beschreibung } = rueckfaelleAusQuelltext(route);
+    const daten = seiten.find((s) => s.route === route);
+    if (daten) {
+      expect(titel).toBe(daten.seo.title);
+      expect(beschreibung).toBe(daten.seo.description);
+      return;
+    }
+    const fertig = fertigerTitel(route, titel);
+    expect(zeichen(fertig), fertig).toBeLessThanOrEqual(TITEL_MAX);
+    expect(zeichen(beschreibung), beschreibung).toBeGreaterThanOrEqual(BESCHR_MIN);
+    expect(zeichen(beschreibung), beschreibung).toBeLessThanOrEqual(BESCHR_MAX);
+    for (const text of [fertig, beschreibung]) {
+      expect(text).not.toMatch(/[–—]| - /);
+      expect(text).not.toMatch(VERBOTEN);
+    }
   });
 });

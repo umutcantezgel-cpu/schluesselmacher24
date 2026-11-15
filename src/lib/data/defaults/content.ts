@@ -280,7 +280,7 @@ export function pages(): PageContent[] {
       intro:
         'Sicherheit entsteht aus dem Zusammenspiel: Mechanik hält auf, Meldetechnik erkennt, '
         + 'Alarmierung informiert. Wir planen die Bereiche gemeinsam statt einzeln.',
-      title: 'Sicherheitstechnik: Einbruchschutz',
+      title: 'Sicherheitstechnik gegen Einbruch',
       description:
         'Einbruchschutz, Überwachung und Alarmierung: Mechanik hält auf, Meldetechnik erkennt, '
         + 'Alarmierung informiert. Wir planen die Bereiche gemeinsam statt einzeln.',

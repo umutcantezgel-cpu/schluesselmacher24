@@ -190,8 +190,26 @@ export function seoFeld(): GroupField {
     label: 'Suchmaschinen',
     admin: { description: 'Titel und Beschreibung, wie sie bei Google erscheinen.' },
     fields: [
-      { name: 'titel', type: 'text', label: 'Seitentitel', maxLength: 90 },
-      { name: 'beschreibung', type: 'textarea', label: 'Beschreibung', maxLength: 320 },
+      {
+        name: 'titel',
+        type: 'text',
+        label: 'Seitentitel',
+        maxLength: 90,
+        admin: {
+          description:
+            'Am besten höchstens 40 Zeichen, das wichtigste Wort vorn. Den Zusatz „| SCHLÜSSELMACHER24“ hängt die Seite selbst an; nur bei der Startseite steht er im Titel.',
+        },
+      },
+      {
+        name: 'beschreibung',
+        type: 'textarea',
+        label: 'Beschreibung',
+        maxLength: 320,
+        admin: {
+          description:
+            'Ein bis zwei ganze Sätze mit 120 bis 160 Zeichen. Schreiben Sie nur, was auch auf der Seite steht: keine Preise, keine Zeiten, keine Versprechen.',
+        },
+      },
       {
         name: 'interneLinks',
         type: 'array',

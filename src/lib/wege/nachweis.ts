@@ -12,7 +12,7 @@
  * Reine Funktionen ohne Seiteneffekte, im Browser und auf dem Server nutzbar.
  */
 
-import type { CodeLine, UploadRef } from '@/lib/types';
+import type { CodeLine, UploadRef, UploadSteckplatz } from '@/lib/types';
 
 /** Antwort auf die Frage nach der Sicherungskarte in der Foto-Anfrage. */
 export type KartenAntwort = '' | 'ja' | 'nein' | 'unklar';
@@ -69,3 +69,68 @@ export const QUELLE_RUBRIK: Readonly<Record<string, string>> = {
   motorrad: 'motorradschluessel',
   gehaeuse: 'autoschluessel-gehaeuse',
 };
+
+/* ==========================================================================
+   Steckplätze der Kundendateien (FA-KERN-02, A-048)
+   Jede Datei trägt neben der Kategorie einen Steckplatz. Der Server vergibt und prüft ihn beim
+   Hochladen und übernimmt ihn beim Absenden nur aus der gespeicherten Kundendatei.
+   ========================================================================== */
+
+export const UPLOAD_STECKPLAETZE = [
+  'fahrzeugschein',
+  'schluessel-vorderseite',
+  'schluessel-rueckseite',
+  'schluessel-spitze',
+  'ersatznachweis',
+  'typenschild',
+  'sicherungskarte',
+  'sonstiges',
+] as const satisfies readonly UploadSteckplatz[];
+
+/** Die drei Schlüsselfotos in der Reihenfolge der Fotoanleitung. */
+export const SCHLUESSEL_STECKPLAETZE = ['schluessel-vorderseite', 'schluessel-rueckseite', 'schluessel-spitze'] as const satisfies readonly UploadSteckplatz[];
+
+/** Beschriftung im Backend, im Vorgangsblatt und in der Mail an das Team. */
+export const STECKPLATZ_LABEL: Record<UploadSteckplatz, string> = {
+  fahrzeugschein: 'Fahrzeugschein',
+  'schluessel-vorderseite': 'Schlüssel Vorderseite',
+  'schluessel-rueckseite': 'Schlüssel Rückseite',
+  'schluessel-spitze': 'Schlüssel Spitze und Profil von vorne',
+  ersatznachweis: 'Ersatznachweis',
+  typenschild: 'Typenschild',
+  sicherungskarte: 'Sicherungskarte',
+  sonstiges: 'Sonstiges',
+};
+
+/**
+ * Welche Kategorie zu welchem Steckplatz passt. Der Fahrzeugschein-Steckplatz nimmt nur die Kategorie
+ * Fahrzeugschein; ein Ersatznachweis ist nie ein Fahrzeugschein (R13). „Sonstiges“ passt zu jeder Kategorie.
+ */
+export const STECKPLATZ_KATEGORIEN: Record<UploadSteckplatz, readonly UploadRef['category'][] | 'alle'> = {
+  fahrzeugschein: ['fahrzeugschein'],
+  'schluessel-vorderseite': ['schluesselfoto'],
+  'schluessel-rueckseite': ['schluesselfoto'],
+  'schluessel-spitze': ['schluesselfoto'],
+  ersatznachweis: ['dokument'],
+  typenschild: ['dokument'],
+  sicherungskarte: ['sicherungskarte'],
+  sonstiges: 'alle',
+};
+
+/** Passt der Steckplatz zur Kategorie? Ohne Steckplatz (ältere Formulare) immer ja. */
+export function steckplatzPasst(kategorie: UploadRef['category'], steckplatz: UploadSteckplatz | undefined | null): boolean {
+  if (!steckplatz) return true;
+  const erlaubt = STECKPLATZ_KATEGORIEN[steckplatz];
+  return erlaubt === 'alle' || erlaubt.includes(kategorie);
+}
+
+/** Bezeichnung einer Datei: Steckplatz, sonst die Kategorie (ältere Vorgänge). */
+export function dateiBezeichnung(
+  datei: Pick<UploadRef, 'category' | 'steckplatz'>,
+  kategorieLabel: Partial<Record<UploadRef['category'], string>>,
+): string {
+  const art = kategorieLabel[datei.category] ?? datei.category;
+  if (!datei.steckplatz) return art;
+  if (datei.steckplatz === 'sonstiges') return `${art} (Sonstiges)`;
+  return STECKPLATZ_LABEL[datei.steckplatz] ?? art;
+}

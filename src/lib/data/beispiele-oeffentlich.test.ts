@@ -112,7 +112,9 @@ describe('Beispiel-Einträge ohne SM24_BEISPIELE', () => {
     const seite = await import('@/app/(site)/schluessel-nach-code/page');
     const ohne = await seite.generateMetadata();
     expect(ohne.title).toBe('Schlüssel nach Code anfragen');
-    expect(ohne.description).toBe('Nennen Sie uns Ihren Schlüsselcode. Wir prüfen ihn und melden uns. Ohne Einsendung des Originals.');
+    expect(ohne.description).toBe(
+      'Nennen Sie uns den Code auf Ihrem Schloss oder Schlüssel. Wir prüfen, ob wir danach fertigen können, und melden uns. Ihr Originalschlüssel bleibt bei Ihnen.',
+    );
     expect(`${String(ohne.title)} ${ohne.description}`).not.toMatch(/bestellen|Möbel|Briefkasten|Spind/);
 
     // Mit Codelinien gilt wieder der gepflegte Text.

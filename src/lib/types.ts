@@ -615,8 +615,28 @@ export interface UploadRef {
    * beim Absenden dem Vorgang zu; gespeichert wird er nie.
    */
   uploadToken?: string;
+  /**
+   * Steckplatz der Datei (FA-KERN-02, A-048): welche Aufnahme oder Unterlage sie ist. Fehlt bei
+   * Dateien aus der Zeit davor. Der Server übernimmt ihn nur aus der gespeicherten Kundendatei.
+   */
+  steckplatz?: UploadSteckplatz;
   uploadedAt: string;
 }
+
+/**
+ * Steckplätze der Kundendateien (FA-KERN-02, A-048): Fahrzeugschein, die drei Schlüsselfotos
+ * (Vorderseite, Rückseite, Spitze beziehungsweise Profil von vorne), Ersatznachweis und Typenschild
+ * bei Kleinstfahrzeugen, Sicherungskarte und Sonstiges.
+ */
+export type UploadSteckplatz =
+  | 'fahrzeugschein'
+  | 'schluessel-vorderseite'
+  | 'schluessel-rueckseite'
+  | 'schluessel-spitze'
+  | 'ersatznachweis'
+  | 'typenschild'
+  | 'sicherungskarte'
+  | 'sonstiges';
 
 /* ---------- Vorgänge (zentrale Backend-Struktur) ------------------------- */
 
