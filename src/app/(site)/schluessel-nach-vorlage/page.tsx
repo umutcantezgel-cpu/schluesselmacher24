@@ -422,7 +422,7 @@ export default async function SchluesselNachVorlagePage() {
             <SectionHeading
               nummer="04"
               eyebrow="Original einsenden"
-              title="Nur wenn nötig"
+              title="Wenn die Fertigung das Original braucht"
               lead="Bei ungewöhnlichen Profilen oder unleserlichen Prägungen ist eine sichere Fertigung nur am Original möglich. Dann senden Sie den Schlüssel ein."
             />
 
