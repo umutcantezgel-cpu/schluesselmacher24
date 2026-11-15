@@ -942,8 +942,9 @@ export function pkwErgaenzung(blatt, katalog, quelle = FZ2_QUELLE) {
       continue;
     }
     const k = `${marke}|${kompakt(reihe)}`;
-    if (!gruppen.has(k)) gruppen.set(k, { marke, reihe, namen: new Set(), hersteller: new Set(), bestand: 0 });
+    if (!gruppen.has(k)) gruppen.set(k, { marke, reihe, namen: new Set(), hersteller: new Set(), bestand: 0, typzeilen: 0 });
     const g = gruppen.get(k);
+    g.typzeilen += 1;
     g.namen.add(t.handelsname);
     g.hersteller.add(t.hersteller);
     g.bestand += t.anzahl;
@@ -967,11 +968,12 @@ export function pkwErgaenzung(blatt, katalog, quelle = FZ2_QUELLE) {
       const g = gruppen.get(k);
       gruppen.delete(k);
       if (vorhanden) {
-        zaehler.entspricht += g.namen.size;
+        zaehler.entspricht += g.typzeilen;
         continue;
       }
-      if (!gruppen.has(ziel)) gruppen.set(ziel, { marke, reihe: zahl, namen: new Set(), hersteller: new Set(), bestand: 0 });
+      if (!gruppen.has(ziel)) gruppen.set(ziel, { marke, reihe: zahl, namen: new Set(), hersteller: new Set(), bestand: 0, typzeilen: 0 });
       const t = gruppen.get(ziel);
+      t.typzeilen += g.typzeilen;
       for (const n of g.namen) t.namen.add(n);
       for (const h of g.hersteller) t.hersteller.add(h);
       t.bestand += g.bestand;
