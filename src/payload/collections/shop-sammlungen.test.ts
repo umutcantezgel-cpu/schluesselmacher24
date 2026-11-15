@@ -35,8 +35,15 @@ describe('Produkte', () => {
 
 describe('Shop-Kategorien', () => {
   it('bildet eine leere Adresse aus dem Namen', () => {
-    expect(adresseAusName(aufruf({ data: { name: 'Schließtechnik und Zubehör' } }))).toMatchObject({ slug: 'schliesstechnik-und-zubehoer' });
-    expect(adresseAusName(aufruf({ data: { name: 'Neu', slug: 'eigene' } }))).toMatchObject({ slug: 'eigene' });
+    expect(adresseAusName(aufruf({ operation: 'create', data: { name: 'Schließtechnik und Zubehör' } }))).toMatchObject({ slug: 'schliesstechnik-und-zubehoer' });
+    expect(adresseAusName(aufruf({ operation: 'create', data: { name: 'Neu', slug: 'eigene' } }))).toMatchObject({ slug: 'eigene' });
+  });
+
+  it('lässt die Adresse beim Ändern stehen, außer sie wird ausdrücklich geleert', () => {
+    const teil = adresseAusName(aufruf({ operation: 'update', data: { name: 'Neuer Name' }, originalDoc: { name: 'Alt', slug: 'eigene' } }));
+    expect(teil).not.toHaveProperty('slug');
+    const geleert = adresseAusName(aufruf({ operation: 'update', data: { slug: '' }, originalDoc: { name: 'Alter Name', slug: 'eigene' } }));
+    expect(geleert).toMatchObject({ slug: 'alter-name' });
   });
 
   it('merkt die alte Adresse, wenn der Betreiber sie ändert', () => {

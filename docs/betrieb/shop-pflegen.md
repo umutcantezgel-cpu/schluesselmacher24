@@ -43,6 +43,8 @@ Vorher: Gibt es den Hersteller schon unter **Shop › Hersteller**? Wenn nicht, 
 7. Reiter **Suchmaschinen**: Titel und Beschreibung, wenn Sie eigene Texte möchten.
 8. Unten **Entwurf speichern**. Wenn alles stimmt: **Veröffentlichen**.
 
+Hinweis: Lieferzeit, System und Codebereich erscheinen bei Schlüsseln nach Code mit dem nächsten Ausbau der Shopseiten. Tragen Sie sie trotzdem jetzt schon ein. Bei Standardartikeln steht die Lieferzeit schon auf der Seite.
+
 Schneller geht es mit einer Kopie: Einen ähnlichen Artikel öffnen, oben rechts im Menü **Duplizieren** wählen. Die Kopie bekommt eine neue Adresse mit „kopie“ darin und eine neue Kennung, und sie ist ein Entwurf. Adresse, Name, System, Codebereich und Code anpassen, dann veröffentlichen.
 
 Die Liste **Artikel** zeigt die Spalten Hersteller, System, Preis, Verfügbarkeit und Kategorie. Über **Spalten** oben lassen sich weitere einblenden.
@@ -54,11 +56,13 @@ Die Liste **Artikel** zeigt die Spalten Hersteller, System, Preis, Verfügbarkei
 3. **Übergeordnete Kategorie**: leer für eine Hauptkategorie. Für eine Unterkategorie hier die Hauptkategorie wählen.
 4. **Beschreibung**: ein bis zwei kurze Sätze für Kunden.
 5. **Wohin führt die Kategorie?** und **Ziel (Adresse)**: etwa „Schlüssel nach Code (Produktliste)“ mit `/schluessel-nach-code`. Gibt es noch keine Produkte, „Anfrage“ wählen und die Adresse der passenden Anfrage eintragen.
-6. **Hinweis, solange Produkte fehlen**: etwa „Produkte folgen; bis dahin Anfrage“. Leer lassen, sobald es Produkte gibt.
-7. **Reihenfolge**: kleinere Zahl steht weiter vorn. **Im Shop zeigen**: Haken setzen, wenn Kunden die Kategorie sehen sollen.
+6. **Hinweis, solange Produkte fehlen**: etwa „Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.“ Leer lassen, sobald es Produkte gibt.
+7. **Reihenfolge**: kleinere Zahl steht weiter vorn. **Im Shop zeigen**: Haken setzen, wenn Kunden die Kategorie später sehen sollen.
 8. **Speichern**.
 
-Umbenennen: Den **Namen** einfach ändern. Ändern Sie die **Adresse**, merkt sich die Kategorie die alte unter **Frühere Adressen**. Alte Links führen dann weiter auf die neue Adresse.
+Umbenennen: Den **Namen** einfach ändern, die Adresse bleibt dabei gleich. Ändern Sie die **Adresse**, merkt sich die Kategorie die alte unter **Frühere Adressen**.
+
+Hinweis: Die Kategorien, Hersteller und Weiterleitungen erscheinen mit dem nächsten Ausbau der Shopseiten auf der Seite. Bis dahin pflegen Sie die Einträge schon vor; Kunden sehen sie noch nicht, und frühere Adressen leiten noch nicht weiter.
 
 Ein Artikel kommt in eine Kategorie über das Feld **Kategorie** rechts im Artikel.
 
@@ -70,6 +74,8 @@ Ein Artikel kommt in eine Kategorie über das Feld **Kategorie** rechts im Artik
 4. **Wir bieten Produkte dieses Herstellers an**: Haken setzen, sobald es Produkte gibt.
 5. **Logo** nur, wenn der Hersteller die Nutzung erlaubt hat. Dann **Freigabe liegt vor** anhaken und notieren, wer wann zugestimmt hat. Ohne Haken zeigt die Seite kein Logo.
 6. **Speichern**.
+
+Hinweis: Hersteller, Logo und der Haken „angeboten“ erscheinen mit dem nächsten Ausbau der Shopseiten auf der Seite.
 
 ## 4. Preis ändern
 

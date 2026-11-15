@@ -168,7 +168,7 @@ export async function fetchRecordStatus(reference: string, email: string) {
       // Der Begleitschein liegt auf der Vorgangsseite; hierher führt nur der Link aus der Eingangsbestätigung.
       statusHinweis:
         istEinsendung(record) && record.status === 'neu'
-          ? 'Den Begleitschein finden Sie über den Knopf „Vorgang und Begleitschein ansehen“ in unserer Eingangsbestätigung.'
+          ? 'Den Begleitschein finden Sie über den Knopf „Stand und Begleitschein ansehen“ in unserer Eingangsbestätigung.'
           : undefined,
       // Nach dem Versand: Dienstleister, Sendungsnummer und öffentlicher Verfolgungslink (G-25).
       sendung: kundenSendung(record),

@@ -23,7 +23,8 @@ export const Hersteller: CollectionConfig = {
     listSearchableFields: ['name', 'slug'],
     description:
       'Liste der Hersteller. Bitte jeden Hersteller nur einmal anlegen, in seiner eigenen Schreibweise. '
-      + 'Artikel wählen ihren Hersteller aus dieser Liste.',
+      + 'Artikel wählen ihren Hersteller aus dieser Liste. '
+      + 'Hersteller, Logo und der Haken „angeboten“ erscheinen mit dem nächsten Ausbau der Shopseiten auf der Seite.',
     pagination: { defaultLimit: 50 },
   },
   access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber, readVersions: istTeam },

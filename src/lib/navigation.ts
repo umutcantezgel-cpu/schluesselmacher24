@@ -265,7 +265,7 @@ export const NAV_AREAS: NavArea[] = [
         title: 'Service',
         links: [
           { href: '/service-und-termin/anfrage', label: 'Anfrage zu einer Leistung', description: 'Fachbereich wählen und anfragen' },
-          { href: '/service-und-termin/terminstatus', label: 'Terminstatus', description: 'Stand Ihres Vorgangs' },
+          { href: '/service-und-termin/terminstatus', label: 'Terminstatus', description: 'Stand Ihres Auftrags' },
           { href: '/service-und-termin/vor-ort', label: 'Service vor Ort nach Termin', description: 'Was wir beim Kunden erledigen' },
           { href: '/service-und-termin/kontakt', label: 'Kontakt', description: 'Erreichbarkeit und Anfahrt' },
         ],

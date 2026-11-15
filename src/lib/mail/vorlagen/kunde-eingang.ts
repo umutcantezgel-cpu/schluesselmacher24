@@ -128,7 +128,7 @@ export function kundeEingang({ vorgang, token, onlineZahlung, kontext }: KundeEi
   if (hinweis) bausteine.push(hinweis);
 
   bausteine.push(
-    { art: 'knopf', href: vorgangsLink(kontext.site, vorgang.id, token), label: einsendung ? 'Vorgang und Begleitschein ansehen' : 'Vorgang ansehen' },
+    { art: 'knopf', href: vorgangsLink(kontext.site, vorgang.id, token), label: einsendung ? 'Stand und Begleitschein ansehen' : 'Stand ansehen' },
     {
       art: 'absatz',
       text: 'Über diesen persönlichen Link sehen Sie jederzeit Ihre Angaben und den Stand. Bitte geben Sie ihn nicht weiter.',

@@ -213,14 +213,20 @@ export const Produkte: CollectionConfig = {
                   name: 'system',
                   type: 'text',
                   label: 'System',
-                  admin: { width: '50%', description: 'So, wie der Hersteller das Schließsystem nennt. Pflicht bei neuen Codeprodukten.' },
+                  admin: {
+                    width: '50%',
+                    description: 'So, wie der Hersteller das Schließsystem nennt. Pflicht bei neuen Codeprodukten. Erscheint mit dem nächsten Ausbau der Shopseiten.',
+                  },
                   validate: systemPruefen as TextFieldSingleValidation,
                 },
                 {
                   name: 'codebereich',
                   type: 'text',
                   label: 'Codebereich',
-                  admin: { width: '50%', description: 'Von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“.' },
+                  admin: {
+                    width: '50%',
+                    description: 'Von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“. Erscheint mit dem nächsten Ausbau der Shopseiten.',
+                  },
                 },
               ],
             },
@@ -254,7 +260,11 @@ export const Produkte: CollectionConfig = {
               name: 'lieferzeit',
               type: 'text',
               label: 'Lieferzeit',
-              admin: { description: 'Etwa „2 bis 4 Werktage“. Leer lassen, wenn die Lieferzeit der Versandart gilt.' },
+              admin: {
+                description:
+                  'Etwa „2 bis 4 Werktage“. Leer lassen, wenn die Lieferzeit der Versandart gilt. '
+                  + 'Lieferzeit, System und Codebereich erscheinen bei Schlüsseln nach Code mit dem nächsten Ausbau der Shopseiten.',
+              },
             },
             {
               name: 'schlagworte',

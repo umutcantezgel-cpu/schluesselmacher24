@@ -475,10 +475,11 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
     // Shop-Kategorien und Hersteller (FA-SHOP-01) vor den Artikeln, damit deren Verweise aufgelöst werden.
     // Übergeordnete Kategorien werden über die Kennung verknüpft; der Startbestand hat nur Hauptkategorien.
     const vorhandeneKategorien = await kennungen('kategorien');
+    const kategorienInhalt = await quelle.read('kategorien');
     await eintraegeUebernehmen({
       name: 'kategorien',
       collection: 'kategorien',
-      inhalt: await quelle.read('kategorien'),
+      inhalt: kategorienInhalt,
       startwert: 'kategorien',
       schluessel: (k) => k.id,
       dbSchluessel: kennung,
@@ -492,6 +493,23 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
         ...SEO_ABGLEICH,
       ],
     });
+    // Zweiter Durchgang: In diesem Lauf neu angelegte Unterkategorien bekommen ihre übergeordnete
+    // Kategorie, auch wenn diese erst im selben Lauf entstand. Bestehende Einträge bleiben, wie der
+    // Betrieb sie eingeordnet hat.
+    const kategorienIds = await kennungen('kategorien');
+    for (const k of kategorienInhalt) {
+      const id = kategorienIds.get(k.id);
+      const elternId = k.eltern ? kategorienIds.get(k.eltern) : undefined;
+      if (!id || !elternId || vorhandeneKategorien.has(k.id)) continue;
+      try {
+        const doc = await payload.findByID({ collection: 'kategorien', id, depth: 0 });
+        if (doc.eltern != null) continue;
+        await payload.update({ collection: 'kategorien', id, data: { eltern: elternId }, context });
+      } catch (fehler) {
+        const grund = fehler instanceof Error ? fehler.message : String(fehler);
+        console.warn(`  kategorien: übergeordnete Kategorie für „${k.id}“ nicht gesetzt – ${grund}`);
+      }
+    }
     await eintraegeUebernehmen({
       name: 'hersteller',
       collection: 'hersteller',

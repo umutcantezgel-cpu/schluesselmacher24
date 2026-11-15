@@ -354,7 +354,7 @@ describe('Bitte um Bestätigung an den Kunden', () => {
     const gespeichert = doc({ vermittlung: { status: 'erledigt', partnerbetrieb: 7 } });
     await vermittlungNachAenderung({ doc: gespeichert, operation: 'update', req: r } as never);
     expect(mails).toHaveLength(1);
-    expect(mails[0].betreff).toBe('Auftrag wurde ausgeführt: bitte bestätigen (SM24-T-2026-0042)');
+    expect(mails[0].betreff).toBe('Bitte bestätigen Sie die Ausführung (SM24-T-2026-0042)');
     const link = mails[0].text.match(/\/auftrag-bestaetigen\/42\?k=([\w-]+)/);
     expect(link).not.toBeNull();
     const geschrieben = update.mock.calls[0][0].data as Partial<Vorgaenge>;

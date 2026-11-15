@@ -87,7 +87,7 @@ Bestätigungen
 
 Kundenmails
 1. Betreffe enden jetzt mit der Nummer in Klammern, etwa „Ihr Termin steht (SM24-T-2026-0007)“. Findet das Team die Nummer so gut wie bisher nach dem Gedankenstrich?
-2. Storno-Mail: Betreff „Storniert (Nummer)“, Text „die Stornierung ist bei uns eingetragen. Sie müssen nichts mehr tun.“ Gilt das auch, wenn der Kunde selbst storniert hat?
+2. Storno-Mail (nach Nachbesserung): Betreff „Ihr Auftrag wurde storniert (Nummer)“, Text „Ihr Auftrag ist storniert. Sie müssen nichts mehr tun.“ Die Mail geht für jede Art hinaus; „Auftrag“ steht auch für Anfragen (siehe OFFENE FRAGEN 8).
 3. Nachrichtvorlage „Unterlagen fehlen“: „Danach arbeiten wir an Ihrem Auftrag weiter.“ statt „Danach geht es sofort weiter.“
 
 ## OFFENE FRAGEN
@@ -95,8 +95,10 @@ Kundenmails
 2. Knopf „Vorgang ansehen“ und „Vorgang und Begleitschein ansehen“ in der Eingangsmail: Der zweite Name steht wörtlich im Statushinweis von `src/lib/actions/booking.ts` („über den Knopf „Vorgang und Begleitschein ansehen““). Diese Datei darf ich nicht ändern. Vorschlag: beide gemeinsam ändern, etwa „Angaben und Begleitschein ansehen“. Im selben Hinweis steht auch „Vorgangsseite“.
 3. Stand „terminiert“: „Ihr Termin ist verbindlich eingeplant.“ ohne zweiten Satz. Ein „Sie müssen nichts tun“ wäre falsch, weil beim Autoschlüssel Ausweis und Fahrzeugschein mitzubringen sind. Ein Hinweis auf die Mitbringliste fehlt bei Partnerterminen ohne Termindaten. Der Satz ist auch in `vorgang-aendern.db.test.ts` gebunden. Bitte entscheiden, ob ein zweiter Satz gewünscht ist und wie er lautet.
 4. Schritt „Anzahlung“ in `SCHRITTE_NACH_ART.termin` gilt für jeden Termin, auch im Partnerweg mit Gesamtbetrag. Die Auswahl der Schritte ist Logik (nicht mein Schreibrecht). Für FA-KERN-03/04: im Partnerweg eigene Schritte („Gesamtbetrag“, „vermittelter Termin“).
-5. Fehlermeldungen aus Server-Aktionen sind nicht mein Schreibrecht: „Zu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden.“, „Dieser Vorgang ist storniert.“ aus `actions/zahlung.ts`, `ergebnis.meldung` beim Bezahlen. Sie sagen „Vorgang“ und sollten mit den Texten hier angeglichen werden.
+5. Fehlermeldungen aus Server-Aktionen sind nicht mein Schreibrecht: „Zu dieser Kombination aus Vorgangsnummer und E-Mail-Adresse wurde nichts gefunden.“, „Dieser Vorgang ist storniert.“ aus `actions/zahlung.ts`, `ergebnis.meldung` beim Bezahlen. Sie sagen „Vorgang“ und sollten mit den Texten hier angeglichen werden. Ebenso `PAYMENT_NOT_STARTED` in `src/lib/server/create-record.ts` („Die Online-Zahlung konnte gerade nicht gestartet werden. Ihr Vorgang ist gespeichert; …“, erscheint in Kasse und Bestätigung) und die Meldung in `src/lib/integrations/stripe.ts` („Ihr Vorgang ist gespeichert. Die Zahlungsinformationen erhalten Sie von uns.“). Vorschlag: „Online bezahlen ging gerade nicht. Ihre Angaben sind gespeichert. Wir melden uns bei Ihnen mit den Angaben zur Zahlung.“
 6. Eine unabhängige Gegenlesung durch zwei andere Leser (Haiku als älterer Kunde, Opus als Tatsachenprüfer) fehlt. Hier habe ich nur selbst in zwei Durchgängen gelesen.
+8. Storno-Mail und Rückfall „storniert“: Ein Wortlaut je Art (Bestellung, Termin, Anfrage, Partner-Bewerbung) bräuchte einen neuen Platzhalter aus `ART_FUER_KUNDEN`; `kundenstatus.ts` importiert aus `mail/vorlagen/status.ts`, der Rückweg wäre ein Ringimport. Deshalb jetzt neutral („Ihr Auftrag“ in der Mail, „Das ist storniert.“ auf der Seite unter dem Titel „<Art> storniert“). Für ein Paket mit Logikrecht: Betreff mit der Art bilden.
+9. Begleitschein-Antwort ohne Begleitschein (`bestellung/[id]/begleitschein/route.ts`): Sie bleibt eine reine Textseite. Besser wäre eine Weiterleitung zurück zur Seite des Auftrags mit Hinweis (Logik, nicht mein Schreibrecht).
 7. Kasse-Zusammenfassung: Unterzeilen der Zylinder beginnen mit „— “ (`— ${zeile.label}` in `kasse-formular.tsx`, Zeile 209). Das ist ein Einrückungszeichen, kein Satz. Ich habe es gelassen, weil der Warenkorb (FA-SHOP-01) dieselbe Darstellung haben sollte. Vorschlag: beide gemeinsam auf eine Einrückung ohne Strich umstellen.
 
 ## FÜR MENSCHEN
@@ -113,3 +115,28 @@ Schlusslauf über die Datenweiche: vitest 209 Dateien, 3169 Tests grün. typeche
 In Zwischenläufen waren fremde Stellen rot, im Schlusslauf aber grün:
 - typecheck: Datenbanktests von FA-SHOP-01 (`shop-grundlage.db.test.ts`, `payload.db.test.ts`, `vorgaenge.db.test.ts`, `admin-alltag.db.test.ts`; Typen von `produkte` und `hersteller` im Umbau).
 - vitest: je ein Test von FA-SEO-01C (`json-ld.test.ts`, `waisen.test.ts`).
+
+## Nachbesserung
+Zwei Gegenprüfer, 15 gelbe Befunde (zum Teil doppelt). Alle am Code geprüft. Nur Wortlaut geändert, keine Bedingung, kein Platzhalter.
+1. Schritt „Zahlung“ (`naechste-schritte.ts`): behoben. Ohne Online-Zahlung gibt es keinen Knopf, mit bezahlter Zahlung keinen Hinweis; jede Ortsangabe wäre in einem Fall falsch. Jetzt nur „Wir fertigen, sobald Ihre Zahlung da ist.“ Was mit einer offenen Zahlung zu tun ist, sagt der Zahlungshinweis der Seite.
+2. BESTELLUNG „in Prüfung“ (`kundenstatus.ts`): behoben. „Sie müssen dafür nichts tun.“ gestrichen, weil die Zahlung in der Prüfung offen sein kann.
+3. und 12. Storno-Mail (`status.ts`): behoben. Betreff „Ihr Auftrag wurde storniert (Nummer)“, Text „Ihr Auftrag ist storniert. Sie müssen nichts mehr tun.“, neutral, ob Team oder Kunde storniert hat. Der Zahlungs-Zusatz und seine Bedingung unverändert. Die Art im Betreff (Vorschlag mit `ART_FUER_KUNDEN`) nicht umgesetzt: neuer Platzhalter und Ringimport (OFFENE FRAGEN 8).
+4. Begleitschein-Antwort (`begleitschein/route.ts`): behoben. „Hierfür brauchen Sie keinen Begleitschein. Den Stand sehen Sie auf der Seite, von der Sie gekommen sind.“ Ohne „Vorgang“ und mit nächstem Schritt; „Anfrage“ habe ich nicht geschrieben, weil der Link auch zu einer Bestellung gehören kann. Rücklink statt Textseite unter OFFENE FRAGEN 9.
+5. `PAYMENT_NOT_STARTED` (`server/create-record.ts`): zutreffend, aber nicht mein Schreibrecht. Unter OFFENE FRAGEN 5 ergänzt, zusammen mit der gleichartigen Meldung in `integrations/stripe.ts`.
+6. „jede Position“ (`naechste-schritte.ts`, Zutritt): behoben. „Sie bekommen ein Angebot, in dem jede Leistung mit ihrem Preis steht.“ Die Aussage unter WAS UND WARUM stimmt damit.
+7. und 14. Fehlermeldung E-Mail (`kasse-formular.tsx`): behoben. „Diese E-Mail-Adresse stimmt so nicht. Bitte prüfen Sie sie auf Tippfehler.“ Der Vorschlag mit einer Beispieladresse ging nicht: Der Test `src/lib/mail/adressen.test.ts` (FA-24) erlaubt im ausgelieferten Bestand nur Adressen der eigenen Domain und schlug mit „name@beispiel.de“ an.
+8. und 15. Leerzustand der Kasse: behoben. „Legen Sie zuerst etwas in den Warenkorb. Diese Angebote können Sie direkt bestellen:“ Das ist keine vollständige Liste mehr und bleibt mit dem Shop richtig.
+9. Einsende-Liste (`foto-ergebnis.tsx`): behoben. Vierter Punkt wie in der Freigabemail: „Legen Sie, falls vorhanden, eine Kopie der Sicherungskarte oder des Berechtigungsnachweises bei.“ (R13). Seite und Mail sagen jetzt dasselbe.
+10. Betreff der Ausführungsmail (`ausfuehrung.ts`): behoben. „Bitte bestätigen Sie die Ausführung (Nummer)“. Der Knopf bleibt wie begründet. Erwartung in `src/payload/hooks/vermittlung.test.ts` an einer Stelle angepasst (nur der Betreff, nicht gelockert).
+11. Abschnittstitel „Gesamtpreis und Rest“ (`bestellung/[id]/page.tsx`): behoben. Jetzt „Beträge“, passt mit und ohne Rest. Die Filterbedingung unverändert.
+13. Rückfall „storniert“ (`kundenstatus.ts`, ALLGEMEIN): behoben. „Das ist storniert. Sie müssen nichts mehr tun.“ Darüber steht der Titel mit der Art („Partner-Bewerbung storniert“, „Projekt storniert“), daher kein falsches Wort.
+
+Prüfung nach der Nachbesserung über die Datenweiche: vitest 210 Dateien, 3173 Tests grün. typecheck 0 Fehler. lint 0 Fehler. Ein Zwischenlauf war rot (`adressen.test.ts`, eigene Beispieladresse, siehe 7); behoben, nicht gelockert.
+
+## ABNAHME (Orchestrator, 15.11.2026)
+
+- **„Vorgang“ aus sichtbaren Texten entfernt, wo das Paket kein Schreibrecht hatte** (offene Fragen 1, 2 und 5): Der Mailknopf heißt „Stand ansehen“ beziehungsweise „Stand und Begleitschein ansehen“ (`kunde-eingang.ts`, gleichlautend im Statushinweis in `booking.ts`). Die Terminstatus-Seite heißt „Stand Ihres Auftrags“ (Überschrift, Name in den Strukturdaten, Beschreibungen in Navigation, Übersicht und Verweislisten). Meldungen beim Bezahlen (`actions/zahlung.ts`) sagen „Das ist bereits bezahlt. Sie müssen nichts mehr tun.“ und „Das ist storniert. Eine Zahlung ist nicht mehr möglich.“; wenn die Online-Zahlung nicht startet, heißt es „Ihre Angaben sind gespeichert“. Die Vorgangsnummer heißt weiter Vorgangsnummer. Drei Testerwartungen sind an den neuen Wortlaut angepasst.
+- **Nicht geändert:** die Verarbeitungsübersicht (`verarbeitungen.ts`, Rechtstext) und Notizen für das Team.
+- Unit 3.174 Tests in 210 Dateien grün (mit den Tests des gleichzeitig laufenden FA-SHOP-01), Typprüfung und Lint grün laut Schlusslauf des Pakets. Datenbanktests (eine angepasste Betreff-Erwartung in `termin-erinnerungen.db.test.ts`), Build und Sichtprobe folgen mit der Abnahme von FA-SHOP-01.
+- **Offen für später (Logik, kein Text):** Storno-Mail mit der Art im Betreff; Begleitschein-Adresse leitet auf die Seite des Auftrags weiter statt eine Textseite zu zeigen; Schritt „Anzahlung“ in den nächsten Schritten bei Partnerterminen mit Gesamtbetrag.
+- **Fragen an Menschen** stehen in MA-41 (Wortlaut Storno, Vorgangsnummer in Klammern im Betreff) und MA-40 (Rechtstexte der Kasse nur zur Prüfung).

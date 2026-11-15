@@ -134,7 +134,7 @@ describe('zahlungFortsetzen', () => {
     expect(verbuchen).toHaveBeenCalledWith('rueckkehr:cs_alt', 'checkout.session.completed', expect.anything());
 
     gespeichert = vorgang({}, { status: 'bezahlt' });
-    expect(await zahlungFortsetzen({ recordId: '42', token })).toEqual({ ok: false, meldung: 'Dieser Vorgang ist bereits bezahlt.' });
+    expect(await zahlungFortsetzen({ recordId: '42', token })).toEqual({ ok: false, meldung: 'Das ist bereits bezahlt. Sie müssen nichts mehr tun.' });
   });
 
   it('startet nach gescheiterter Lastschrift eine neue Sitzung, statt „eingeleitet“ zu melden', async () => {
@@ -155,7 +155,7 @@ describe('zahlungFortsetzen', () => {
 
   it('bietet bei stornierten Vorgängen keine Zahlung an', async () => {
     gespeichert = vorgang({ status: 'storniert' });
-    expect(await zahlungFortsetzen({ recordId: '42', token })).toMatchObject({ ok: false, meldung: 'Dieser Vorgang ist storniert.' });
+    expect(await zahlungFortsetzen({ recordId: '42', token })).toMatchObject({ ok: false, meldung: 'Das ist storniert. Eine Zahlung ist nicht mehr möglich.' });
     expect(abrufen).not.toHaveBeenCalled();
   });
 });

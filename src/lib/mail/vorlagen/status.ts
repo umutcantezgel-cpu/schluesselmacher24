@@ -125,11 +125,11 @@ export function statusMail({ vorgang, status, nachricht, kontext, zahlungsLink, 
       break;
     }
     case 'storniert':
-      betreff = `Storniert (${vorgang.reference})`;
+      betreff = `Ihr Auftrag wurde storniert (${vorgang.reference})`;
       bausteine.push({
         art: 'absatz',
         text:
-          'die Stornierung ist bei uns eingetragen. Sie müssen nichts mehr tun.'
+          'Ihr Auftrag ist storniert. Sie müssen nichts mehr tun.'
           + (zahlungEingegangen(vorgang.payment?.status) ? ' Zu einer bereits geleisteten Zahlung melden wir uns gesondert.' : ''),
       });
       break;

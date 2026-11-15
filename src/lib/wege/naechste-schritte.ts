@@ -24,7 +24,7 @@ const PLANER = 'schliessplan-planer';
 export const SCHRITTE_NACH_ART: Record<RecordKind, NaechsterSchritt[]> = {
   bestellung: [
     { titel: 'Prüfung Ihrer Angaben', text: 'Wir prüfen Code, Maße und Zusammenstellung, bevor wir etwas fertigen.' },
-    { titel: 'Zahlung', text: 'Wir fertigen, sobald Ihre Zahlung da ist. Ist die Zahlung noch offen, können Sie auf dieser Seite weiter bezahlen.' },
+    { titel: 'Zahlung', text: 'Wir fertigen, sobald Ihre Zahlung da ist.' },
     {
       titel: 'Fertigung und Versand',
       text: 'Danach fertigen wir Ihre Bestellung und versenden sie mit der Versandart, die Sie gewählt haben. Wir sagen Ihnen bei jedem Schritt Bescheid.',
@@ -108,7 +108,7 @@ export const SCHRITTE_PLANER: NaechsterSchritt[] = [
 export const SCHRITTE_ZUTRITT: NaechsterSchritt[] = [
   { titel: 'Prüfung', text: 'Wir schauen uns die Türsituation an und sagen Ihnen, was technisch möglich ist.' },
   { titel: 'Beratung', text: 'Wir klären mit Ihnen das passende System.' },
-  { titel: 'Angebot', text: 'Sie bekommen ein Angebot, in dem jede Position und alle Kosten stehen.' },
+  { titel: 'Angebot', text: 'Sie bekommen ein Angebot, in dem jede Leistung mit ihrem Preis steht.' },
 ];
 
 /** Anfrage zur Sicherheitstechnik (Sicherheitscheck oder allgemeine Anfrage zu diesem Bereich). */

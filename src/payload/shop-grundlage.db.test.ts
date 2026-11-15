@@ -2,10 +2,13 @@ import { getPayload, type Payload } from 'payload';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import config from '@payload-config';
+import type { CollectionName, Collections } from '@/lib/data/adapter';
 import { defaults } from '@/lib/data/defaults';
+import { JsonFileAdapter } from '@/lib/data/json-adapter';
 import { PayloadAdapter } from '@/lib/data/payload-adapter';
+import type { ShopKategorie } from '@/lib/types';
 import { kategorieAufloesen, sichtbareKategorien } from '@/lib/data/shop';
-import { inhalteUebernehmen } from './seed';
+import { inhalteUebernehmen, type InhaltsQuelle } from './seed';
 
 /* Shop-Grundlage (FA-SHOP-01) gegen die Testdatenbank: Startbestand der Kategorien aus dem Seed,
  * Umbenennen mit Weiterleitung, Unterkategorien ohne Kreis, Hersteller-Stammliste, System als Pflicht,
@@ -105,6 +108,50 @@ describe('Shop-Kategorien', () => {
     ).rejects.toThrow();
     const unveraendert = await payload.findByID({ collection: 'kategorien', id: elternId, depth: 0 });
     expect(unveraendert.eltern ?? null).toBeNull();
+  });
+});
+
+describe('Stabile Adresse und Unterkategorien im Seed', () => {
+  it('ein Teil-Update des Namens lässt die Adresse unverändert', async () => {
+    const id = await kategorieId('autoschluesselgehaeuse');
+    const vorher = await payload.findByID({ collection: 'kategorien', id, depth: 0 });
+    try {
+      const neu = await payload.update({ collection: 'kategorien', id, data: { name: 'Neuer Name' }, context });
+      expect(neu.slug).toBe(vorher.slug);
+      expect(neu.fruehereAdressen ?? []).toEqual(vorher.fruehereAdressen ?? []);
+    } finally {
+      await payload.update({ collection: 'kategorien', id, data: { name: vorher.name }, context });
+    }
+  });
+
+  it('verknüpft eine neue Unterkategorie aus dem Inhalt schon im ersten Lauf mit ihrer Hauptkategorie', async () => {
+    const dateien = new JsonFileAdapter();
+    const unter: ShopKategorie = {
+      id: 'test-seed-unterkategorie',
+      slug: 'test-seed-unterkategorie',
+      name: 'Test Seed Unterkategorie',
+      beschreibung: 'Unterkategorie zum Test.',
+      eltern: 'test-seed-hauptkategorie',
+      reihenfolge: 10,
+      art: 'codeprodukte',
+      ziel: '/schluessel-nach-code',
+      sichtbar: true,
+      fruehereAdressen: [],
+    };
+    // Die Hauptkategorie steht in der Liste hinter der Unterkategorie und entsteht im selben Lauf.
+    const haupt: ShopKategorie = { ...unter, id: 'test-seed-hauptkategorie', slug: 'test-seed-hauptkategorie', name: 'Test Seed Hauptkategorie', eltern: undefined };
+    const quelle: InhaltsQuelle = {
+      async read<K extends CollectionName>(name: K): Promise<Collections[K]> {
+        const inhalt = await dateien.read(name);
+        return (name === 'kategorien' ? [...(inhalt as ShopKategorie[]), unter, haupt] : inhalt) as Collections[K];
+      },
+    };
+    await inhalteUebernehmen(payload, { quelle, startwerte: [] });
+    const unterId = await kategorieId('test-seed-unterkategorie');
+    const hauptId = await kategorieId('test-seed-hauptkategorie');
+    aufraeumen.push({ collection: 'kategorien', id: hauptId }, { collection: 'kategorien', id: unterId });
+    const doc = await payload.findByID({ collection: 'kategorien', id: unterId, depth: 0 });
+    expect(doc.eltern).toBe(hauptId);
   });
 });
 

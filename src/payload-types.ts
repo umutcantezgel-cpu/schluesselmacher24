@@ -764,11 +764,11 @@ export interface Produkte {
    */
   hersteller?: string | null;
   /**
-   * So, wie der Hersteller das Schließsystem nennt. Pflicht bei neuen Codeprodukten.
+   * So, wie der Hersteller das Schließsystem nennt. Pflicht bei neuen Codeprodukten. Erscheint mit dem nächsten Ausbau der Shopseiten.
    */
   system?: string | null;
   /**
-   * Von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“.
+   * Von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“. Erscheint mit dem nächsten Ausbau der Shopseiten.
    */
   codebereich?: string | null;
   /**
@@ -792,7 +792,7 @@ export interface Produkte {
       }[]
     | null;
   /**
-   * Etwa „2 bis 4 Werktage“. Leer lassen, wenn die Lieferzeit der Versandart gilt.
+   * Etwa „2 bis 4 Werktage“. Leer lassen, wenn die Lieferzeit der Versandart gilt. Lieferzeit, System und Codebereich erscheinen bei Schlüsseln nach Code mit dem nächsten Ausbau der Shopseiten.
    */
   lieferzeit?: string | null;
   schlagworte?: string[] | null;
@@ -902,7 +902,7 @@ export interface Produkte {
   _status?: ('draft' | 'published') | null;
 }
 /**
- * Kategorien und Unterkategorien des Shops. Reihenfolge: kleinere Zahl zuerst. Eine Unterkategorie entsteht, wenn Sie oben eine übergeordnete Kategorie wählen.
+ * Kategorien und Unterkategorien des Shops. Reihenfolge: kleinere Zahl zuerst. Eine Unterkategorie entsteht, wenn Sie oben eine übergeordnete Kategorie wählen. Die Kategorien erscheinen mit dem nächsten Ausbau der Shopseiten auf der Seite.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "kategorien".
@@ -927,7 +927,7 @@ export interface Kategorien {
    */
   ziel: string;
   /**
-   * Etwa „Produkte folgen; bis dahin Anfrage“. Leer lassen, wenn es Produkte gibt.
+   * Etwa „Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.“ Leer lassen, wenn es Produkte gibt.
    */
   hinweis?: string | null;
   bild?: {
@@ -943,7 +943,7 @@ export interface Kategorien {
     hinweis?: string | null;
   };
   /**
-   * Wird automatisch ergänzt, wenn Sie die Adresse ändern. Diese Adressen leiten auf die aktuelle weiter.
+   * Wird automatisch ergänzt, wenn Sie die Adresse ändern. Die Weiterleitung auf die aktuelle Adresse kommt mit dem nächsten Ausbau der Shopseiten.
    */
   fruehereAdressen?:
     | {
@@ -985,7 +985,7 @@ export interface Kategorien {
     };
   };
   /**
-   * Nur Kleinbuchstaben, Ziffern und Bindestriche. Leer lassen: wird aus dem Namen gebildet. Ändern Sie sie, leitet die alte weiter.
+   * Nur Kleinbuchstaben, Ziffern und Bindestriche. Leer lassen: wird aus dem Namen gebildet. Ändern Sie sie, merkt sich die Kategorie die alte.
    */
   slug?: string | null;
   /**
@@ -1057,7 +1057,7 @@ export interface Medien {
   };
 }
 /**
- * Liste der Hersteller. Bitte jeden Hersteller nur einmal anlegen, in seiner eigenen Schreibweise. Artikel wählen ihren Hersteller aus dieser Liste.
+ * Liste der Hersteller. Bitte jeden Hersteller nur einmal anlegen, in seiner eigenen Schreibweise. Artikel wählen ihren Hersteller aus dieser Liste. Hersteller, Logo und der Haken „angeboten“ erscheinen mit dem nächsten Ausbau der Shopseiten auf der Seite.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hersteller".

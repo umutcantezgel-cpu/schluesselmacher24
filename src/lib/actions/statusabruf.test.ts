@@ -50,7 +50,7 @@ describe('Statusabruf in einfacher Sprache (E6-OPUS-04)', () => {
     expect(antwort.ok).toBe(true);
     if (!antwort.ok) return;
     expect(antwort.record).toMatchObject({ statusLabel: 'Angemeldet', statusText: expect.stringContaining('Begleitschein') });
-    expect(antwort.record.statusHinweis).toContain('Vorgang und Begleitschein ansehen');
+    expect(antwort.record.statusHinweis).toContain('Stand und Begleitschein ansehen');
     expect(antwort.record.sendung).toBeUndefined();
   });
 

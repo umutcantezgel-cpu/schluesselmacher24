@@ -618,7 +618,7 @@ export default async function AutoschluesselHubPage() {
             { href: '/ratgeber/autoschluessel-verloren-was-tun', label: 'Schlüssel verloren: was tun?', description: 'Was Sie zuerst tun sollten' },
             { href: '/ratgeber/unterschied-kopie-und-programmierung', label: 'Kopie oder Programmierung?', description: 'Der Unterschied kurz erklärt' },
             { href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage', description: 'Für Schlüssel ohne Fahrzeugbezug' },
-            { href: '/service-und-termin/terminstatus', label: 'Terminstatus', description: 'Stand Ihres Vorgangs abrufen' },
+            { href: '/service-und-termin/terminstatus', label: 'Terminstatus', description: 'Stand Ihres Auftrags abrufen' },
           ].map((link) => (
             <li
               key={link.href}

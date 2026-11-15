@@ -247,7 +247,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
     // offenen Betrag wäre missverständlich.
     const zahlungOffen = Boolean(record.payment && record.payment.status !== 'bezahlt' && record.payment.status !== 'teilweise-erstattet');
     const betraege = auftragswegZeilen(record).filter(([name]) => name !== 'Auftragsweg' && !(zahlungOffen && name.startsWith('Rest')));
-    if (betraege.length) abschnitte.push({ title: 'Gesamtpreis und Rest', rows: betraege.map(([label, value]) => ({ label, value })) });
+    if (betraege.length) abschnitte.push({ title: 'Beträge', rows: betraege.map(([label, value]) => ({ label, value })) });
   }
 
   return (

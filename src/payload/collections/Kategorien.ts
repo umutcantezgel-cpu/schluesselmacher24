@@ -32,9 +32,17 @@ export function freiwilligeAdresse(beschreibung: string): TextField {
   });
 }
 
-/** Leere Adresse beim Anlegen aus dem Namen bilden: Der Betreiber muss sie nicht selbst schreiben. */
-export const adresseAusName: CollectionBeforeValidateHook = ({ data }) => {
-  if (data && !data.slug && typeof data.name === 'string') data.slug = slugify(data.name);
+/**
+ * Leere Adresse aus dem Namen bilden: Der Betreiber muss sie nicht selbst schreiben.
+ * Beim Anlegen, wenn sie fehlt; beim Ändern nur, wenn sie ausdrücklich geleert wird.
+ * Ein Teil-Update ohne `slug` (etwa der Startwert-Abgleich des Namens) lässt die
+ * Adresse stehen, damit sie stabil bleibt.
+ */
+export const adresseAusName: CollectionBeforeValidateHook = ({ data, operation, originalDoc }) => {
+  if (!data) return data;
+  const leer = operation === 'update' ? data.slug === '' || data.slug === null : !data.slug;
+  const name = typeof data.name === 'string' ? data.name : typeof originalDoc?.name === 'string' ? originalDoc.name : undefined;
+  if (leer && name) data.slug = slugify(name);
   return data;
 };
 
@@ -83,7 +91,8 @@ const elternPruefen: Validate = async (wert, { id, req }) => {
 /**
  * Shop-Kategorien (FA-10, FA-22-04, FA-22-05): Hauptkategorien und
  * Unterkategorien als Datensätze. Artikel verweisen über das Feld „Kategorie“
- * hierher. Eine geänderte Adresse bleibt als Weiterleitung erreichbar.
+ * hierher. Eine geänderte Adresse wird unter „Frühere Adressen“ gemerkt; die
+ * Seiten mit Weiterleitung baut FA-SHOP-01B.
  */
 export const Kategorien: CollectionConfig = {
   slug: 'kategorien',
@@ -95,7 +104,8 @@ export const Kategorien: CollectionConfig = {
     listSearchableFields: ['name', 'slug'],
     description:
       'Kategorien und Unterkategorien des Shops. Reihenfolge: kleinere Zahl zuerst. '
-      + 'Eine Unterkategorie entsteht, wenn Sie oben eine übergeordnete Kategorie wählen.',
+      + 'Eine Unterkategorie entsteht, wenn Sie oben eine übergeordnete Kategorie wählen. '
+      + 'Die Kategorien erscheinen mit dem nächsten Ausbau der Shopseiten auf der Seite.',
     pagination: { defaultLimit: 50 },
   },
   access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber, readVersions: istTeam },
@@ -150,7 +160,7 @@ export const Kategorien: CollectionConfig = {
           type: 'text',
           label: 'Hinweis, solange Produkte fehlen',
           maxLength: 80,
-          admin: { width: '33%', description: 'Etwa „Produkte folgen; bis dahin Anfrage“. Leer lassen, wenn es Produkte gibt.' },
+          admin: { width: '33%', description: 'Etwa „Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.“ Leer lassen, wenn es Produkte gibt.' },
         },
       ],
     },
@@ -161,7 +171,8 @@ export const Kategorien: CollectionConfig = {
       label: 'Frühere Adressen',
       labels: { singular: 'Frühere Adresse', plural: 'Frühere Adressen' },
       admin: {
-        description: 'Wird automatisch ergänzt, wenn Sie die Adresse ändern. Diese Adressen leiten auf die aktuelle weiter.',
+        description:
+          'Wird automatisch ergänzt, wenn Sie die Adresse ändern. Die Weiterleitung auf die aktuelle Adresse kommt mit dem nächsten Ausbau der Shopseiten.',
         initCollapsed: true,
       },
       fields: [{ name: 'adresse', type: 'text', label: 'Adresse', required: true }],
@@ -173,7 +184,7 @@ export const Kategorien: CollectionConfig = {
       fields: [seoFeld()],
     },
     freiwilligeAdresse(
-      'Nur Kleinbuchstaben, Ziffern und Bindestriche. Leer lassen: wird aus dem Namen gebildet. Ändern Sie sie, leitet die alte weiter.',
+      'Nur Kleinbuchstaben, Ziffern und Bindestriche. Leer lassen: wird aus dem Namen gebildet. Ändern Sie sie, merkt sich die Kategorie die alte.',
     ),
     kennungFeld(),
     {

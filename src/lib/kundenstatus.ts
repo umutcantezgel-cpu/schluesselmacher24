@@ -62,11 +62,11 @@ const ALLGEMEIN: Record<RecordStatus, Eintrag> = {
   terminiert: { label: 'Termin vereinbart', text: 'Ihr Termin ist verbindlich eingeplant.' },
   versendet: { label: 'Versendet', text: 'Ihre Sendung ist auf dem Weg zu Ihnen.' },
   abgeschlossen: { label: 'Abgeschlossen', text: 'Wir haben alles erledigt. Sie müssen nichts mehr tun.' },
-  storniert: { label: 'Storniert', text: 'Ihre Anfrage wurde storniert.' },
+  storniert: { label: 'Storniert', text: 'Das ist storniert. Sie müssen nichts mehr tun.' },
 };
 
 const BESTELLUNG: Partial<Record<RecordStatus, Eintrag>> = {
-  'in-pruefung': { label: 'In Prüfung', text: 'Wir prüfen Ihre Bestellung. Sie müssen dafür nichts tun.' },
+  'in-pruefung': { label: 'In Prüfung', text: 'Wir prüfen Ihre Bestellung.' },
   storniert: { label: 'Storniert', text: 'Ihre Bestellung wurde storniert.' },
   'in-fertigung': { label: 'In Anfertigung', text: 'Wir fertigen Ihre Bestellung an.' },
   versendet: { label: 'Versendet', text: 'Ihre Bestellung ist auf dem Weg zu Ihnen.' },

@@ -14,7 +14,7 @@
     "id": "schluessel-nach-vorlage",
     "slug": "schluessel-nach-vorlage",
     "name": "Schlüssel nach Vorlage",
-    "beschreibung": "Schlüssel nach Ihrem vorhandenen Schlüssel, per Einsendung oder in der Werkstatt.",
+    "beschreibung": "Schlüssel nach Ihrem vorhandenen Schlüssel. Sie schicken uns Fotos, wir prüfen die Nachfertigung.",
     "reihenfolge": 20,
     "art": "anfrage",
     "ziel": "/schluessel-nach-vorlage",
@@ -25,11 +25,11 @@
     "id": "autoschluessel-produkte",
     "slug": "autoschluessel-produkte",
     "name": "Autoschlüssel als Produkte",
-    "beschreibung": "Autoschlüssel zum Bestellen. Der Termin in der Werkstatt bleibt ein eigener Weg.",
+    "beschreibung": "Autoschlüssel als Produkt im Shop. Bis es so weit ist, fragen Sie bitte an. Der Termin in der Werkstatt bleibt ein eigener Weg.",
     "reihenfolge": 30,
     "art": "anfrage",
     "ziel": "/service-und-termin/anfrage?thema=autoschluessel&anliegen=frage",
-    "hinweis": "Produkte folgen; bis dahin Anfrage",
+    "hinweis": "Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.",
     "sichtbar": true,
     "fruehereAdressen": []
   },
@@ -41,7 +41,7 @@
     "reihenfolge": 40,
     "art": "anfrage",
     "ziel": "/autoschluessel/gehaeuse",
-    "hinweis": "Produkte folgen; bis dahin Anfrage",
+    "hinweis": "Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.",
     "sichtbar": true,
     "fruehereAdressen": []
   },
@@ -53,7 +53,7 @@
     "reihenfolge": 50,
     "art": "anfrage",
     "ziel": "/autoschluessel/gehaeuse/anfrage",
-    "hinweis": "Produkte folgen; bis dahin Anfrage",
+    "hinweis": "Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.",
     "sichtbar": true,
     "fruehereAdressen": []
   },
@@ -65,7 +65,7 @@
     "reihenfolge": 60,
     "art": "anfrage",
     "ziel": "/service-und-termin/anfrage",
-    "hinweis": "Produkte folgen; bis dahin Anfrage",
+    "hinweis": "Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.",
     "sichtbar": true,
     "fruehereAdressen": []
   },
@@ -99,7 +99,7 @@
     "reihenfolge": 90,
     "art": "anfrage",
     "ziel": "/sicherheitstechnik",
-    "hinweis": "Produkte folgen; bis dahin Anfrage",
+    "hinweis": "Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.",
     "sichtbar": false,
     "fruehereAdressen": []
   }

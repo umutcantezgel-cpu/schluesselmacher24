@@ -75,7 +75,7 @@ function pruefen(werte: Eingaben): Fehler {
 
   if (!werte.email.trim()) fehler.email = 'Bitte geben Sie Ihre E-Mail-Adresse an.';
   else if (!EMAIL_MUSTER.test(werte.email.trim()))
-    fehler.email = 'Bitte prüfen Sie die E-Mail-Adresse. Sie ist so nicht vollständig.';
+    fehler.email = 'Diese E-Mail-Adresse stimmt so nicht. Bitte prüfen Sie sie auf Tippfehler.';
 
   if (!werte.phone.trim()) fehler.phone = 'Bitte geben Sie eine Telefonnummer für Rückfragen an.';
   else if (!TELEFON_MUSTER.test(werte.phone.trim()))
@@ -374,7 +374,7 @@ export function KasseFormular({
           <div className="min-w-0 max-w-xl">
             <h2 className="text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
             <p className="mt-2 text-small text-foreground-muted">
-              Legen Sie zuerst etwas in den Warenkorb. Hier finden Sie unsere Angebote ohne Termin.
+              Legen Sie zuerst etwas in den Warenkorb. Diese Angebote können Sie direkt bestellen:
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/schluessel-nach-code">Schlüssel nach Code</ButtonLink>

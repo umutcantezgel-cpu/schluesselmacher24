@@ -662,13 +662,13 @@
   {
     "route": "service-und-termin",
     "headline": "Service und Termin",
-    "subline": "Hier stellen Sie eine Anfrage, sehen den Stand Ihres Vorgangs oder nehmen Kontakt mit uns auf.",
+    "subline": "Hier stellen Sie eine Anfrage, sehen den Stand Ihres Auftrags oder nehmen Kontakt mit uns auf.",
     "intro": "Wählen Sie den Weg, der zu Ihrem Anliegen passt. Gehört es in keinen der Fachbereiche, stellen Sie eine allgemeine Anfrage.",
     "sections": [],
     "faq": [],
     "seo": {
       "title": "Service und Termin",
-      "description": "Hier stellen Sie eine allgemeine Anfrage, sehen den Stand Ihres Vorgangs oder nehmen Kontakt mit uns auf. Wählen Sie den Weg, der zu Ihrem Anliegen passt.",
+      "description": "Hier stellen Sie eine allgemeine Anfrage, sehen den Stand Ihres Auftrags oder nehmen Kontakt mit uns auf. Wählen Sie den Weg, der zu Ihrem Anliegen passt.",
       "internalLinks": [
         {
           "href": "/service-und-termin/anfrage",

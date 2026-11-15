@@ -6,6 +6,8 @@ import { Card, CardBody, CardHeader } from '@/components/ui/card';
 export interface VerfuegbarkeitHinweisProps {
   /** Nur `auf-anfrage` oder `nicht-lieferbar`; lieferbare Artikel zeigen den Kaufbereich. */
   verfuegbarkeit: Exclude<Verfuegbarkeit, 'lieferbar'>;
+  /** Was nicht bestellbar ist, als Satzanfang: „Diesen Schlüssel“ auf Codeseiten, „Diesen Artikel“ bei Artikeln. */
+  was: 'Diesen Schlüssel' | 'Diesen Artikel';
   /** Anfrage für „auf Anfrage“, etwa „Code anfragen“ mit vorbelegtem Schloss. */
   anfrage: { href: string; label: string };
   /** Übersicht für „nicht lieferbar“. */
@@ -17,7 +19,7 @@ export interface VerfuegbarkeitHinweisProps {
  * Bestellen. „Auf Anfrage“ führt in die Anfrage, „nicht lieferbar“ sagt es
  * schlicht und zeigt die Übersicht. Bestellungen sperrt der Server ohnehin.
  */
-export function VerfuegbarkeitHinweis({ verfuegbarkeit, anfrage, uebersicht }: VerfuegbarkeitHinweisProps) {
+export function VerfuegbarkeitHinweis({ verfuegbarkeit, was, anfrage, uebersicht }: VerfuegbarkeitHinweisProps) {
   const aufAnfrage = verfuegbarkeit === 'auf-anfrage';
   return (
     <Card>
@@ -28,8 +30,8 @@ export function VerfuegbarkeitHinweis({ verfuegbarkeit, anfrage, uebersicht }: V
       <CardBody className="flex flex-col gap-4">
         <p className="text-small leading-relaxed text-foreground-muted">
           {aufAnfrage
-            ? 'Diesen Artikel bestellen Sie nicht direkt. Fragen Sie ihn bei uns an. Wir prüfen Ihre Angaben und melden uns.'
-            : 'Diesen Artikel können Sie zurzeit nicht bestellen.'}
+            ? `${was} bestellen Sie nicht direkt. Fragen Sie ihn bei uns an. Wir prüfen Ihre Angaben und melden uns.`
+            : `${was} können Sie zurzeit nicht bestellen.`}
         </p>
         {aufAnfrage ? (
           <ButtonLink href={anfrage.href} size="lg" fullWidth prefetch={false}>

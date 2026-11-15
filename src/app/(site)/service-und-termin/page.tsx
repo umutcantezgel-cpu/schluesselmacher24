@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.seo.title ?? 'Service und Termin',
     description:
       page?.seo.description
-      ?? 'Hier stellen Sie eine allgemeine Anfrage, sehen den Stand Ihres Vorgangs oder nehmen Kontakt mit '
+      ?? 'Hier stellen Sie eine allgemeine Anfrage, sehen den Stand Ihres Auftrags oder nehmen Kontakt mit '
         + 'uns auf. Wählen Sie den Weg, der zu Ihrem Anliegen passt.',
     alternates: { canonical: '/service-und-termin' },
   };
@@ -46,7 +46,7 @@ const ENTRIES: Array<{ href: string; label: string; description: string; icon: C
   {
     href: '/service-und-termin/terminstatus',
     label: 'Terminstatus',
-    description: 'Stand Ihres Vorgangs mit Vorgangsnummer und E-Mail-Adresse abrufen.',
+    description: 'Stand Ihres Auftrags mit Vorgangsnummer und E-Mail-Adresse abrufen.',
     icon: IconTermin,
   },
   {

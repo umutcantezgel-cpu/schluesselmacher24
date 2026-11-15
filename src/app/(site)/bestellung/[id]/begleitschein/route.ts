@@ -30,7 +30,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       company: settings.company,
       einstellungen: settings.sendIn ?? defaults.settings().sendIn!,
     });
-    if (!schein || !begleitscheinAnzeigen(vorgang)) return textAntwort('Zu diesem Vorgang gibt es keinen Begleitschein.', 404);
+    if (!schein || !begleitscheinAnzeigen(vorgang)) return textAntwort('Hierfür brauchen Sie keinen Begleitschein. Den Stand sehen Sie auf der Seite, von der Sie gekommen sind.', 404);
     return new Response(new Uint8Array(schein.pdf), {
       headers: { ...KOPF, 'content-type': 'application/pdf', 'content-disposition': `attachment; filename="${schein.dateiname}"` },
     });

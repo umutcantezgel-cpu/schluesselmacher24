@@ -33,10 +33,14 @@ function testLinien() {
   ];
 }
 
-/** Standardartikel für die Kassentests: die Beispielartikel, dazu ein echter, der nicht lieferbar ist. */
+/** Standardartikel für die Kassentests: die Beispielartikel, dazu zwei echte, die nicht bestellbar sind. */
 function testArtikel() {
   const artikel = defaults.standardArticles();
-  return [...artikel, { ...artikel[0], id: 'test-artikel-nicht-lieferbar', slug: 'test-artikel-nicht-lieferbar', name: 'Artikel nicht lieferbar', example: false, availability: 'nicht-lieferbar' as const }];
+  return [
+    ...artikel,
+    { ...artikel[0], id: 'test-artikel-auf-anfrage', slug: 'test-artikel-auf-anfrage', name: 'Artikel auf Anfrage', example: false, availability: 'auf-anfrage' as const },
+    { ...artikel[0], id: 'test-artikel-nicht-lieferbar', slug: 'test-artikel-nicht-lieferbar', name: 'Artikel nicht lieferbar', example: false, availability: 'nicht-lieferbar' as const },
+  ];
 }
 
 vi.mock('next/headers', () => ({
@@ -1265,8 +1269,11 @@ describe('submitOrder', () => {
     expect(stored).toHaveLength(0);
   });
 
-  it('sperrt einen nicht lieferbaren Artikel auf dem Server (FA-22-10)', async () => {
-    const artikel = testArtikel().find((a) => a.id === 'test-artikel-nicht-lieferbar')!;
+  it.each([
+    ['test-artikel-auf-anfrage', 'nur auf Anfrage'],
+    ['test-artikel-nicht-lieferbar', 'derzeit nicht lieferbar'],
+  ])('sperrt den Artikel %s auf dem Server (FA-22-10)', async (id, meldung) => {
+    const artikel = testArtikel().find((a) => a.id === id)!;
     const result = await submitOrder({
       items: [{ kind: 'standard', uid: 'n', productId: artikel.id, label: artikel.name, shippingClass: artikel.shippingClass, qty: 1, unitPriceCents: artikel.priceCents }],
       shippingOptionId: shipping.id,
@@ -1276,7 +1283,7 @@ describe('submitOrder', () => {
       expectedTotalCents: artikel.priceCents,
     });
     expect(result.ok).toBe(false);
-    expect(result.error).toContain('derzeit nicht lieferbar');
+    expect(result.error).toContain(meldung);
     expect(stored).toHaveLength(0);
   });
 

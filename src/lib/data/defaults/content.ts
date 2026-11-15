@@ -412,14 +412,14 @@ export function pages(): PageContent[] {
       route: 'service-und-termin',
       headline: 'Service und Termin',
       subline:
-        'Hier stellen Sie eine Anfrage, sehen den Stand Ihres Vorgangs oder nehmen Kontakt mit '
+        'Hier stellen Sie eine Anfrage, sehen den Stand Ihres Auftrags oder nehmen Kontakt mit '
         + 'uns auf.',
       intro:
         'Wählen Sie den Weg, der zu Ihrem Anliegen passt. Gehört es in keinen der Fachbereiche, '
         + 'stellen Sie eine allgemeine Anfrage.',
       title: 'Service und Termin',
       description:
-        'Hier stellen Sie eine allgemeine Anfrage, sehen den Stand Ihres Vorgangs oder nehmen '
+        'Hier stellen Sie eine allgemeine Anfrage, sehen den Stand Ihres Auftrags oder nehmen '
         + 'Kontakt mit uns auf. Wählen Sie den Weg, der zu Ihrem Anliegen passt.',
       links: [
         ['/service-und-termin/anfrage', 'Anfrage zu einer Leistung'],

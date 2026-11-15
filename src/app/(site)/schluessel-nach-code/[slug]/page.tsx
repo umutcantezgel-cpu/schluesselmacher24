@@ -11,7 +11,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
-import { JsonLd, productSchema, breadcrumbSchema, faqSchema } from '@/components/seo/json-ld';
+import { JsonLd, KENNUNG, productSchema, breadcrumbSchema, faqSchema } from '@/components/seo/json-ld';
 import { GpsrAngaben } from '@/components/recht/gpsr-angaben';
 import { werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { PageHeader } from '@/components/layout/page-header';
@@ -39,7 +39,7 @@ import {
   kategoriePfad,
 } from '@/lib/codelinie';
 import { codelinienTexte, staffelStufen } from '@/lib/codelinie-texte';
-import { verfuegbarkeitVon } from '@/lib/data/shop';
+import { VERFUEGBARKEIT_LABEL, verfuegbarkeitVon } from '@/lib/data/shop';
 import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 import { VerfuegbarkeitHinweis } from '../verfuegbarkeit-hinweis';
 
@@ -114,6 +114,9 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
   const familie = codelinienFamilie(line);
   const hersteller = gepflegt(line.manufacturer);
   const stufen = staffelStufen(line);
+  // Verfügbarkeit (FA-22-10): Nur lieferbare Linien zeigen den Kaufbereich, Bestellangaben und ein Angebot in den Strukturdaten (R8).
+  const verfuegbarkeit = verfuegbarkeitVon(line);
+  const bestellbar = verfuegbarkeit === 'lieferbar';
 
   // Nur gepflegte Angaben: Platzhalter (etwa „[Hersteller eintragen]“) und leere Felder entfallen.
   const facts: Array<{ label: string; value: string | undefined; mono?: boolean }> = [
@@ -129,17 +132,17 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
       mono: true,
     },
     { label: 'Lieferumfang', value: gepflegt(line.scope) },
-    { label: 'Stückzahl je Bestellung', value: `1 bis ${formatNumber(line.maxQty)} Stück`, mono: true },
+    { label: 'Stückzahl je Bestellung', value: bestellbar ? `1 bis ${formatNumber(line.maxQty)} Stück` : undefined, mono: true },
     {
       label: 'Staffelpreise',
-      value: stufen.length
+      value: bestellbar && stufen.length
         ? stufen.map((s) => `ab ${formatNumber(s.minQty)} Stück: ${formatCents(s.priceCents)}`).join(' · ')
         : undefined,
       mono: true,
     },
     {
       label: 'Versand',
-      value: texte.versand.length
+      value: bestellbar && texte.versand.length
         ? texte.versand
             .map((o) => `${o.label}: ${o.priceCents > 0 ? formatCents(o.priceCents) : 'ohne Versandkosten'}`)
             .join(' · ')
@@ -169,16 +172,33 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
   const seitenUrl = `${getSiteUrl()}${codelinienPfad(line)}`;
   const titel = codelinienTitel(line);
   const ratgeberVorhanden = Boolean(ratgeber);
-  // Verfügbarkeit (FA-22-10): Nur lieferbare Linien zeigen den Kaufbereich und ein Angebot in den Strukturdaten (R8).
-  const verfuegbarkeit = verfuegbarkeitVon(line);
 
   return (
     <>
-      {verfuegbarkeit === 'lieferbar' && <JsonLd data={productSchema(line, texte.beschreibung)} />}
+      {bestellbar ? (
+        <JsonLd data={productSchema(line, texte.beschreibung)} />
+      ) : (
+        /* Ohne Angebot: nur die Webseite, auf die FAQ und Brotkrumen verweisen (kein Verweis ins Leere). */
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@graph': [
+              {
+                '@type': 'WebPage',
+                '@id': `${seitenUrl}/#webpage`,
+                url: seitenUrl,
+                name: line.name,
+                isPartOf: { '@id': KENNUNG.website },
+                about: { '@id': KENNUNG.organisation },
+              },
+            ],
+          }}
+        />
+      )}
       <JsonLd data={breadcrumbSchema(crumbs, seitenUrl)} />
       {texte.faq.length > 0 && <JsonLd data={faqSchema(texte.faq, seitenUrl)} />}
       <PageHeader
-        eyebrow={`${kennung} · ${PROCESS_LABELS.direktkauf.label}`}
+        eyebrow={`${kennung} · ${bestellbar ? PROCESS_LABELS.direktkauf.label : VERFUEGBARKEIT_LABEL[verfuegbarkeit]}`}
         title={titel}
         lead={texte.einleitung}
         crumbs={crumbs}
@@ -219,7 +239,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           {/* Bestellung steht im DOM zuerst: mobil oben, ab lg rechts. Lese- und Fokusfolge entsprechen der Sichtfolge. */}
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-8 lg:row-start-1">
-            {verfuegbarkeit === 'lieferbar' ? (
+            {bestellbar ? (
               /* Code aus der Adresse (?code=) liest eine Client-Komponente; die Grenze hält die Seite statisch. */
               <Suspense fallback={<BestellFormular line={line} werkstatt={werkstattAngaben(settings.company)} />}>
                 <CodeAusAdresse line={line} werkstatt={werkstattAngaben(settings.company)} />
@@ -227,6 +247,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
             ) : (
               <VerfuegbarkeitHinweis
                 verfuegbarkeit={verfuegbarkeit}
+                was="Diesen Schlüssel"
                 anfrage={{ href: codeAnfragePfad({ schloss: line.name }), label: 'Code anfragen' }}
                 uebersicht={{ href: '/schluessel-nach-code', label: 'Alle Codelinien' }}
               />
@@ -304,8 +325,8 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
             <Alert tone="legal" title="Anfertigung nach Ihrer Codeangabe" className="mt-10">
               <p>
                 Dieser Schlüssel wird eigens für Sie nach dem Code gefertigt, den Sie angeben. Ein
-                falsch eingegebener Code führt zu einem nicht passenden Schlüssel. Bitte prüfen Sie
-                Ihre Eingabe deshalb vor dem Absenden.
+                falsch eingegebener Code führt zu einem nicht passenden Schlüssel.
+                {bestellbar && ' Bitte prüfen Sie Ihre Eingabe deshalb vor dem Absenden.'}
               </p>
               <p className="mt-2">
                 Weil der Schlüssel nach Ihrer Angabe angefertigt wird, besteht nach § 312g Abs. 2

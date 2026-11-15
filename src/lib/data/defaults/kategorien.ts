@@ -1,7 +1,7 @@
 import type { ShopKategorie } from '@/lib/types';
 
 /** Hinweis für Kategorien, zu denen es noch keine Produkte gibt (FA-SHOP-01). */
-export const HINWEIS_PRODUKTE_FOLGEN = 'Produkte folgen; bis dahin Anfrage';
+export const HINWEIS_PRODUKTE_FOLGEN = 'Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.';
 
 /**
  * Startbestand der Shop-Kategorien: die neun Hauptkategorien aus Abschnitt 10
@@ -32,7 +32,7 @@ export function kategorien(): ShopKategorie[] {
       id: 'schluessel-nach-vorlage',
       slug: 'schluessel-nach-vorlage',
       name: 'Schlüssel nach Vorlage',
-      beschreibung: 'Schlüssel nach Ihrem vorhandenen Schlüssel, per Einsendung oder in der Werkstatt.',
+      beschreibung: 'Schlüssel nach Ihrem vorhandenen Schlüssel. Sie schicken uns Fotos, wir prüfen die Nachfertigung.',
       reihenfolge: 20,
       art: 'anfrage',
       ziel: '/schluessel-nach-vorlage',
@@ -43,7 +43,7 @@ export function kategorien(): ShopKategorie[] {
       id: 'autoschluessel-produkte',
       slug: 'autoschluessel-produkte',
       name: 'Autoschlüssel als Produkte',
-      beschreibung: 'Autoschlüssel zum Bestellen. Der Termin in der Werkstatt bleibt ein eigener Weg.',
+      beschreibung: 'Autoschlüssel als Produkt im Shop. Bis es so weit ist, fragen Sie bitte an. Der Termin in der Werkstatt bleibt ein eigener Weg.',
       reihenfolge: 30,
       art: 'anfrage',
       ziel: '/service-und-termin/anfrage?thema=autoschluessel&anliegen=frage',

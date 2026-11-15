@@ -115,6 +115,7 @@ export function FotoErgebnis({ record, einsendeAnschrift }: { record: BusinessRe
               Ihrem Namen und Ihrer Telefonnummer bei.
             </li>
             <li>Senden Sie nur diesen Schlüssel, ohne Schlüsselring und Anhänger.</li>
+            <li>Legen Sie, falls vorhanden, eine Kopie der Sicherungskarte oder des Berechtigungsnachweises bei.</li>
             <li>Versenden Sie versichert oder mindestens mit Sendungsverfolgung.</li>
           </ul>
         </div>

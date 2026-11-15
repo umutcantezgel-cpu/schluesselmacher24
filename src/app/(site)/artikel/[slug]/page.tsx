@@ -27,7 +27,7 @@ import { IconRueckgabe } from '@/components/visual/icons/rueckgabe';
 import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
 import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
 
-import { verfuegbarkeitVon } from '@/lib/data/shop';
+import { VERFUEGBARKEIT_LABEL, verfuegbarkeitVon } from '@/lib/data/shop';
 import { VerfuegbarkeitHinweis } from '../../schluessel-nach-code/verfuegbarkeit-hinweis';
 
 import { ArtikelKauf } from './artikel-kauf';
@@ -101,12 +101,14 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
   const hersteller = herstellerVon(article.manufacturer);
   // Verfügbarkeit (FA-22-10): „auf Anfrage“ und „nicht lieferbar“ ersetzen den Kaufbereich; der Server sperrt die Bestellung.
   const verfuegbarkeit = verfuegbarkeitVon(article);
+  const bestellbar = verfuegbarkeit === 'lieferbar';
 
   // Nur gepflegte Angaben — fehlende Werte werden nicht ergänzt.
   const eigenschaften = [
     ...(hersteller ? [{ name: 'Hersteller', value: hersteller }] : []),
     ...article.properties.filter((p) => p.name.trim() && p.value.trim()),
-    ...(article.deliveryTime.trim() ? [{ name: 'Lieferzeit', value: article.deliveryTime }] : []),
+    // Lieferzeit nur, solange der Artikel bestellbar ist.
+    ...(bestellbar && article.deliveryTime.trim() ? [{ name: 'Lieferzeit', value: article.deliveryTime }] : []),
   ];
 
   const galerie: ImageSlot[] = article.gallery.map((bild) => ({
@@ -151,7 +153,13 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
       {produkt && <JsonLd data={produkt} />}
 
       <PageHeader
-        eyebrow={article.example ? 'Beispielartikel' : PROCESS_LABELS.direktkauf.label}
+        eyebrow={
+          article.example
+            ? 'Beispielartikel'
+            : bestellbar
+              ? PROCESS_LABELS.direktkauf.label
+              : VERFUEGBARKEIT_LABEL[verfuegbarkeit]
+        }
         title={article.name}
         crumbs={crumbs}
       >
@@ -196,7 +204,7 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
           </div>
 
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:self-start">
-            {verfuegbarkeit === 'lieferbar' ? (
+            {bestellbar ? (
               <ArtikelKauf
                 article={{
                   id: article.id,
@@ -211,6 +219,7 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
             ) : (
               <VerfuegbarkeitHinweis
                 verfuegbarkeit={verfuegbarkeit}
+                was="Diesen Artikel"
                 anfrage={{ href: '/service-und-termin/anfrage', label: 'Artikel anfragen' }}
                 uebersicht={{ href: '/artikel', label: 'Alle Artikel' }}
               />
@@ -255,7 +264,11 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
             <div className="mt-12 border-t border-border pt-8">
               <SectionHeading nummer={nr('versand')} eyebrow="Lieferung" title="Versand" />
               <p className="prose-sm24 mt-4">
-                Die Versandart wählen Sie im Warenkorb.
+                {bestellbar
+                  ? 'Die Versandart wählen Sie im Warenkorb.'
+                  : verfuegbarkeit === 'auf-anfrage'
+                    ? 'Diesen Artikel bestellen Sie nicht über den Warenkorb, sondern fragen ihn an.'
+                    : 'Ist der Artikel wieder lieferbar, wählen Sie die Versandart im Warenkorb.'}
                 {versandarten.length > 0 && ' Für diesen Artikel kommen folgende Versandarten in Frage:'}
               </p>
               {versandarten.length > 0 && (

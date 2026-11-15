@@ -19,7 +19,7 @@ export interface AusfuehrungDaten {
 
 export function ausfuehrungBestaetigenMail({ vorgang, kontext, link, telefon }: AusfuehrungDaten): MailInhalt {
   return baueMail({
-    betreff: `Auftrag wurde ausgeführt: bitte bestätigen (${vorgang.reference})`,
+    betreff: `Bitte bestätigen Sie die Ausführung (${vorgang.reference})`,
     vorschau: 'Bitte bestätigen Sie kurz, dass Ihr Auftrag ausgeführt wurde.',
     anrede: anrede(vorgang.contact),
     bausteine: [

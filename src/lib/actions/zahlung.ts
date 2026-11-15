@@ -44,19 +44,19 @@ export async function zahlungFortsetzen(eingabe: { recordId: string; token: stri
   if (!vorgang || !verifyAccessToken(token, vorgang.accessTokenHash)) return { ok: false, meldung: UNGUELTIG };
 
   const zahlung = vorgang.payment;
-  if (!zahlung) return { ok: false, meldung: 'Für diesen Vorgang ist keine Online-Zahlung vorgesehen.' };
+  if (!zahlung) return { ok: false, meldung: 'Hierfür ist keine Online-Zahlung vorgesehen.' };
   // „Teilweise erstattet“ (FA-KERN-04) ist ebenfalls schon bezahlt.
   if (zahlung.status === 'bezahlt' || zahlung.status === 'erstattet' || zahlung.status === 'teilweise-erstattet') {
-    return { ok: false, meldung: 'Dieser Vorgang ist bereits bezahlt.' };
+    return { ok: false, meldung: 'Das ist bereits bezahlt. Sie müssen nichts mehr tun.' };
   }
   const termin = vorgang.kind === 'termin';
   if (vorgang.status === 'storniert') {
     return termin
       ? { ok: false, meldung: 'Dieser Termin ist storniert.', neuBuchen: neuBuchenHref(vorgang) }
-      : { ok: false, meldung: 'Dieser Vorgang ist storniert.' };
+      : { ok: false, meldung: 'Das ist storniert. Eine Zahlung ist nicht mehr möglich.' };
   }
   if (vorgang.status === 'nicht-moeglich') {
-    return { ok: false, meldung: 'Für diesen Vorgang ist keine Zahlung möglich.' };
+    return { ok: false, meldung: 'Hierfür ist gerade keine Zahlung möglich. Bitte rufen Sie uns an, wenn Sie etwas anderes erwartet haben.' };
   }
   const foto = istFotoanfrage(vorgang);
   // Partner-Anfrage ohne Festpreis (FA-KERN-03): bezahlt wird erst nach der Freigabe mit Gesamtpreis.

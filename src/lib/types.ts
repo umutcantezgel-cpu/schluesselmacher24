@@ -421,7 +421,7 @@ export interface ShopKategorie {
   art: KategorieArt;
   /** Ziel des Wegs heute, etwa „/schluessel-nach-code“. */
   ziel: string;
-  /** Ehrlicher Zustand, solange es keine Produkte gibt (etwa „Produkte folgen; bis dahin Anfrage“). */
+  /** Ehrlicher Zustand, solange es keine Produkte gibt (etwa „Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.“). */
   hinweis?: string;
   /** Im Shop zeigen. */
   sichtbar: boolean;

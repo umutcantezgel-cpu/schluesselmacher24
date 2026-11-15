@@ -102,7 +102,7 @@ const ZU_VIELE_OFFENE_TERMINE =
   + 'Sie zuerst deren Zahlung ab oder melden Sie sich bei uns — wir helfen gern weiter.';
 
 const PAYMENT_NOT_STARTED =
-  'Die Online-Zahlung konnte gerade nicht gestartet werden. Ihr Vorgang ist gespeichert; '
+  'Die Online-Zahlung konnte gerade nicht gestartet werden. Ihre Angaben sind gespeichert; '
   + 'wir melden uns mit den Zahlungsinformationen.';
 
 type PaymentRequest = NonNullable<TrustedRecordInput['payment']>;

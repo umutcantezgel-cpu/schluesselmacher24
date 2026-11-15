@@ -209,7 +209,7 @@ export async function starteCheckout(intent: PaymentIntent): Promise<PaymentResu
   if (!Number.isSafeInteger(intent.amountCents) || intent.amountCents < MINDESTBETRAG_CENT) {
     return {
       status: 'offen',
-      message: 'Ihr Vorgang ist gespeichert. Die Zahlungsinformationen erhalten Sie von uns.',
+      message: 'Ihre Angaben sind gespeichert. Die Zahlungsinformationen erhalten Sie von uns.',
       internalNote:
         `Keine Online-Zahlung gestartet: Der Betrag liegt unter ${MINDESTBETRAG_CENT} Cent (Mindestbetrag bei Stripe). `
         + 'Bitte die Zahlung anders abwickeln.',
