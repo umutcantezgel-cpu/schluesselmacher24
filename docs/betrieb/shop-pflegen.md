@@ -43,7 +43,7 @@ Vorher: Gibt es den Hersteller schon unter **Shop › Hersteller**? Wenn nicht, 
 7. Reiter **Suchmaschinen**: Titel und Beschreibung, wenn Sie eigene Texte möchten.
 8. Unten **Entwurf speichern**. Wenn alles stimmt: **Veröffentlichen**.
 
-Hinweis: Lieferzeit, System und Codebereich erscheinen bei Schlüsseln nach Code mit dem nächsten Ausbau der Shopseiten. Tragen Sie sie trotzdem jetzt schon ein. Bei Standardartikeln steht die Lieferzeit schon auf der Seite.
+Auf der Seite stehen Codeprodukte nach Hersteller gruppiert, darunter nach System. Lieferzeit, System und Codebereich erscheinen in der Liste und auf der Seite des Produkts. Die Lieferzeit zeigt die Seite nur, solange das Produkt lieferbar ist.
 
 Schneller geht es mit einer Kopie: Einen ähnlichen Artikel öffnen, oben rechts im Menü **Duplizieren** wählen. Die Kopie bekommt eine neue Adresse mit „kopie“ darin und eine neue Kennung, und sie ist ein Entwurf. Adresse, Name, System, Codebereich und Code anpassen, dann veröffentlichen.
 
@@ -57,12 +57,16 @@ Die Liste **Artikel** zeigt die Spalten Hersteller, System, Preis, Verfügbarkei
 4. **Beschreibung**: ein bis zwei kurze Sätze für Kunden.
 5. **Wohin führt die Kategorie?** und **Ziel (Adresse)**: etwa „Schlüssel nach Code (Produktliste)“ mit `/schluessel-nach-code`. Gibt es noch keine Produkte, „Anfrage“ wählen und die Adresse der passenden Anfrage eintragen.
 6. **Hinweis, solange Produkte fehlen**: etwa „Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.“ Leer lassen, sobald es Produkte gibt.
-7. **Reihenfolge**: kleinere Zahl steht weiter vorn. **Im Shop zeigen**: Haken setzen, wenn Kunden die Kategorie später sehen sollen.
+7. **Reihenfolge**: kleinere Zahl steht weiter vorn. **Im Shop zeigen**: Haken setzen, wenn Kunden die Kategorie sehen sollen.
 8. **Speichern**.
 
 Umbenennen: Den **Namen** einfach ändern, die Adresse bleibt dabei gleich. Ändern Sie die **Adresse**, merkt sich die Kategorie die alte unter **Frühere Adressen**.
 
-Hinweis: Die Kategorien, Hersteller und Weiterleitungen erscheinen mit dem nächsten Ausbau der Shopseiten auf der Seite. Bis dahin pflegen Sie die Einträge schon vor; Kunden sehen sie noch nicht, und frühere Adressen leiten noch nicht weiter.
+So erscheinen die Kategorien auf der Seite:
+
+- Die Hauptkategorien mit Haken **Im Shop zeigen** stehen in ihrer Reihenfolge auf der Seite `/shop`. Jede führt auf ihr **Ziel**. Gibt es noch keine Produkte, steht dort der **Hinweis** und der Weg führt in die passende Anfrage. Die Anfrage übernimmt dabei den Namen der Kategorie.
+- Eine Unterkategorie von **Schlüssel nach Code** bekommt eine eigene Seite unter `/schluessel-nach-code/kategorie/…`, sobald ihr ein Artikel zugeordnet ist. Ändern Sie dort die Adresse, leitet die frühere Adresse dauerhaft auf die neue weiter.
+- Ohne Haken bleibt die Kategorie samt Unterkategorien verborgen.
 
 Ein Artikel kommt in eine Kategorie über das Feld **Kategorie** rechts im Artikel.
 
@@ -75,7 +79,7 @@ Ein Artikel kommt in eine Kategorie über das Feld **Kategorie** rechts im Artik
 5. **Logo** nur, wenn der Hersteller die Nutzung erlaubt hat. Dann **Freigabe liegt vor** anhaken und notieren, wer wann zugestimmt hat. Ohne Haken zeigt die Seite kein Logo.
 6. **Speichern**.
 
-Hinweis: Hersteller, Logo und der Haken „angeboten“ erscheinen mit dem nächsten Ausbau der Shopseiten auf der Seite.
+Bei **Schlüssel nach Code** bekommt ein Hersteller eine eigene Seite unter `/schluessel-nach-code/hersteller/…`, sobald ihm mindestens ein veröffentlichtes Produkt zugeordnet ist. Dort stehen nur seine Produkte, nach System geordnet. Ein Hersteller ohne Produkte hat keine Seite. Das Logo erscheint nur mit Haken **Freigabe liegt vor**, sonst steht der Name als Text.
 
 ## 4. Preis ändern
 
@@ -92,7 +96,7 @@ Bestellungen, die schon eingegangen sind, behalten ihren Preis.
 3. **Motiv** kurz beschreiben, etwa „Schlüssel der Serie 100 von vorn“. Das dient auch als Bildbeschreibung für Menschen, die nicht sehen.
 4. **Veröffentlichen**.
 
-Hinweis: Bei Standardartikeln erscheint das Produktbild schon auf der Seite. Bei Schlüsseln nach Code zeigt die Seite derzeit das Bild der Codefundstelle (Reiter **Code**); das Produktbild kommt mit dem nächsten Ausbau der Shopseiten dazu.
+Das Produktbild erscheint in der Liste und oben auf der Seite des Produkts. Ohne Foto zeigt die Liste ein Symbol und die Seite eine Zeichnung zum Beispielcode. Weitere Bilder (Galerie) zeigt die Seite bisher nur bei Standardartikeln.
 
 ## 6. Produkt auf „nicht lieferbar“ setzen
 
@@ -103,10 +107,31 @@ Hinweis: Bei Standardartikeln erscheint das Produktbild schon auf der Seite. Bei
    - **Derzeit nicht lieferbar**: kein Warenkorb, keine Bestellung. Die Seite sagt es ruhig und zeigt die Übersicht.
 3. **Veröffentlichen**.
 
-Liegt der Artikel schon in einem Warenkorb, nimmt die Kasse die Bestellung nicht an und bittet den Kunden, ihn zu entfernen.
+Liegt der Artikel schon in einem Warenkorb, kennzeichnet der Warenkorb die Position mit der Verfügbarkeit und bittet den Kunden, sie zu entfernen. Die Kasse nimmt die Bestellung nicht an.
 
 Soll ein Artikel gar nicht mehr erscheinen, legen Sie ihn in den Papierkorb (oben rechts im Menü **Löschen**). Artikel, auf die sich Bestellungen beziehen, lassen sich nicht endgültig löschen.
 
 ## 7. Vorschau
 
 Oben rechts im Artikel öffnet **Vorschau** die Seite des Artikels. Sie zeigt die veröffentlichte Fassung. Ein Entwurf ist dort erst nach dem Veröffentlichen zu sehen.
+
+## 8. Angebote aus einer Tabelle übernehmen
+
+Viele Codeprodukte auf einmal, etwa die bestehenden Angebote, kommen über eine Tabelle in den Shop. Das Skript prüft jede Zeile und rät nichts. Passt etwas nicht, bricht es ab, nennt jede Stelle und ändert nichts.
+
+1. Die Vorlage `_werkstatt/ausbau/erhebung/boegen/SORTIMENT-vorlage.csv` in einem Tabellenprogramm öffnen. Die zwei Zeilen mit „Beispiel“ sind nur Muster und werden nie übernommen.
+2. Je Angebot eine Zeile ausfüllen:
+   - **hersteller**: genau wie unter **Shop › Hersteller**. Steht er dort nicht, schlägt das Skript einen neuen Eintrag vor. Legen Sie ihn zuerst an (Abschnitt 3).
+   - **system** und **codebereich**: wie der Hersteller sie nennt, etwa „1 bis 999“.
+   - **beispielcode** und **codeformat**: das Prüfmuster, etwa `^[0-9]{3,4}$`. Der Beispielcode muss dazu passen.
+   - **preis**: Preis je Stück, etwa `9,90`. **staffel** freiwillig, etwa `3:8,90|5:7,90` (ab 3 Stück 8,90 Euro je Stück, ab 5 Stück 7,90 Euro).
+   - **max_stueck**: höchstens so viele Stück je Bestellung, 1 bis 99.
+   - **hinweise**: wo der Code steht. **bild_datei**: Name des eigenen Fotos. Das Foto laden Sie danach im Backend hoch (Abschnitt 5).
+   - **kategorie**: leer für „Schlüssel nach Code“ oder der Name einer ihrer Unterkategorien.
+   - **quelle**: woher die Angaben stammen, etwa die Nummer Ihres eigenen Angebots. Pflicht.
+3. Als CSV (UTF-8, Semikolon) unter `_werkstatt/ausbau/eingang/sortiment.csv` speichern.
+4. Ein Entwickler oder der Betrieb ruft `node scripts/sortiment-import.mjs --trocken` auf. Das prüft nur. Ohne Meldung folgt `node scripts/sortiment-import.mjs`. Es schreibt die Angebote in `content/code-lines.json`.
+5. `npm run seed` legt die neuen Angebote in der Datenbank an. Vorhandene Einträge bleiben unberührt.
+6. Danach jedes neue Produkt im Backend öffnen: Produktbild hochladen, Texte prüfen, **Veröffentlichen**.
+
+Nur eigene Angaben und Fotos verwenden. Keine Texte oder Bilder aus Angeboten anderer übernehmen.
