@@ -55,6 +55,8 @@ export function settings(): Settings {
       federalState: 'HE',
       // Termin-Erinnerung einen Tag vorher (0 = aus), im Backend änderbar.
       reminderDaysBefore: 1,
+      // Regionaler Eigenbereich (FA-KERN-03): bisher fest im Code (PLZ-Bereich 35), jetzt im Backend pflegbar.
+      ownArea: { label: 'Wetzlar und Umgebung', postalPatterns: ['35*'] },
       windows: [
         { from: '09:00', to: '10:00' },
         { from: '10:00', to: '11:00' },

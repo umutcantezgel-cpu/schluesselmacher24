@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import type { AppointmentInfo, CompanyLocation, PriceQuote, SummarySection } from '@/lib/types';
 import { formatCents, formatDate, formatDuration, formatTime } from '@/lib/format';
+import { faelligZeilen, terminortZeile, zahlungsPlan, PARTNER_NACH_ZAHLUNG, PARTNER_OHNE_FESTPREIS, type Auftragsweg } from '@/lib/auftragsweg';
 import { terminOrtText } from '@/lib/terminort';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
@@ -14,7 +15,10 @@ import { IconZahlung } from '@/components/visual/icons/zahlung';
 
 export interface BestaetigungProps {
   reference: string;
-  appointment: AppointmentInfo;
+  /** Fehlt im Partnerweg: Den Termin stimmt der Partnerbetrieb ab (FA-KERN-03). */
+  appointment?: AppointmentInfo;
+  /** Auftragsweg; ohne Angabe ein Werkstatttermin wie bisher. */
+  weg?: Auftragsweg;
   quote: PriceQuote;
   summary: SummarySection[];
   notices: string[];
@@ -30,6 +34,7 @@ export interface BestaetigungProps {
 export function Bestaetigung({
   reference,
   appointment,
+  weg = 'hauptzentrale',
   quote,
   summary,
   notices,
@@ -37,6 +42,8 @@ export function Bestaetigung({
   reserviertBis,
   werkstatt,
 }: BestaetigungProps) {
+  const plan = zahlungsPlan(weg, quote);
+  const partner = weg === 'partner';
   return (
     <div className="space-y-6">
       <div className="rounded-lg border border-border bg-surface p-6">
@@ -62,6 +69,25 @@ export function Bestaetigung({
         </div>
       </div>
 
+      {/* Terminort und Beträge vor der Zahlung (FA-KERN-03) */}
+      <div className="space-y-2">
+        <p className="text-body font-semibold text-foreground">{terminortZeile(weg, werkstatt?.city)}</p>
+        <dl className="divide-y divide-border border-y border-border">
+          {faelligZeilen(weg, quote).map((zeile) => (
+            <div key={zeile.label} className="flex flex-wrap items-baseline justify-between gap-2 py-2">
+              <dt className="text-small text-foreground-muted">{zeile.label}</dt>
+              <dd className="font-mono text-title-sm font-semibold tabular-nums text-foreground">{zeile.value}</dd>
+            </div>
+          ))}
+        </dl>
+        {partner && (
+          <p className="text-small leading-relaxed text-foreground-muted">
+            {plan.art === 'anfrage' ? PARTNER_OHNE_FESTPREIS : PARTNER_NACH_ZAHLUNG}
+          </p>
+        )}
+      </div>
+
+      {appointment && !partner && (
       <div className="grid gap-3 sm:grid-cols-2">
         <Card>
           <CardBody className="flex items-start gap-3">
@@ -102,8 +128,20 @@ export function Bestaetigung({
           </CardBody>
         </Card>
       </div>
+      )}
 
-      {redirectUrl && (
+      {redirectUrl && partner && (
+        <div className="space-y-3">
+          <Alert tone="warning" title="Gesamtbetrag offen" role="status">
+            Sie werden zur sicheren Zahlungsseite weitergeleitet. Verbindlich wird Ihr Auftrag erst mit der Zahlung.
+          </Alert>
+          <ButtonLink href={redirectUrl} size="lg">
+            Gesamtbetrag jetzt bezahlen
+          </ButtonLink>
+        </div>
+      )}
+
+      {redirectUrl && !partner && (
         <div className="space-y-3">
           <Alert tone="warning" title={reserviertBis ? `Reserviert bis ${formatTime(reserviertBis)} Uhr` : 'Anzahlung offen'} role="status">
             Sie werden zur sicheren Zahlungsseite weitergeleitet. Geht die Anzahlung bis dahin nicht ein, geben wir das

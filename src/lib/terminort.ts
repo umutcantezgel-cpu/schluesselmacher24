@@ -10,8 +10,9 @@
    Backend laden diese Datei ebenfalls.
    ========================================================================== */
 
+import { eigenbereichMuster, plzPasst } from './auftragsweg';
 import { angabe, firmaVeroeffentlichbar, standort } from './rechtliches/firma';
-import type { AppointmentInfo, BusinessRecord, CompanyLocation, CompanyProfile } from './types';
+import type { AppointmentInfo, BusinessRecord, CompanyLocation, CompanyProfile, OwnArea } from './types';
 
 /** Außeneinsätze nur nach Prüfung — Wortlaut für Assistent, Mails und Hinweise. */
 export const AUSSENEINSATZ_HINWEIS =
@@ -37,9 +38,6 @@ export function buchungsOrt(leistung: string | null | undefined): AppointmentInf
 export const BEIM_KUNDEN_HINWEIS =
   'Die Leistung findet bei Ihrem Fahrzeug statt. Ort und Anfahrt klären wir nach der Buchung telefonisch mit Ihnen; '
   + 'außerhalb von Wetzlar und Umgebung nur nach individueller Prüfung von Aufwand und Kosten.';
-
-/** Leitbereich der Werkstatt (Wetzlar und Umgebung). */
-const PLZ_REGION = '35';
 
 /**
  * Anschrift der Werkstatt: der gepflegte Standort („Werkstatt und Abholung“),
@@ -95,14 +93,15 @@ export function vorgangOrtText(
 }
 
 /**
- * Liegt die Anschrift außerhalb der Region der Werkstatt (PLZ-Bereich 35)?
+ * Liegt die Anschrift außerhalb des regionalen Eigenbereichs der Werkstatt? Die Muster stehen in den
+ * Einstellungen (Reiter Termine, FA-KERN-03); ohne Angabe gilt der Rückfall `35*`.
  * Erst mit vollständiger Postleitzahl — beim Tippen erscheint nichts.
  */
-export function ausserhalbDerRegion(postleitzahl: string, land = 'Deutschland'): boolean {
+export function ausserhalbDerRegion(postleitzahl: string, land = 'Deutschland', eigenbereich?: OwnArea): boolean {
   const plz = postleitzahl.trim();
   if (!/^\d{4,5}$/.test(plz)) return false;
   if (land !== 'Deutschland') return true;
-  return plz.length === 5 && !plz.startsWith(PLZ_REGION);
+  return plz.length === 5 && !plzPasst(plz, eigenbereichMuster(eigenbereich));
 }
 
 /** Hinweis für Anfragen von außerhalb der Region. */

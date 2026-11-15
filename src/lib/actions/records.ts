@@ -1,5 +1,15 @@
 'use server';
 
+import {
+  AUFTRAGSWEG_DATEN,
+  PARTNER_ZAHLUNG,
+  restbetragCents,
+  standortText,
+  wegFuerStandort,
+  zahlungsPlan,
+  type Auftragsweg,
+  type Terminstandort,
+} from '@/lib/auftragsweg';
 import { getCollection, getRecordByReference, getRubrik, getSettings, vorgangAendern } from '@/lib/data';
 import { folgeterminErlaubt, vorherAusAdresse } from '@/lib/zahlung/neu-buchen';
 import { defaults } from '@/lib/data/defaults';
@@ -8,6 +18,7 @@ import { EINSENDE_QUELLE, einsendeVorgang } from '@/lib/einsenden/vorgang';
 import { SCHUTZ_ERNEUERT, type FormularSchutz, type SchutzAntwort } from '@/lib/formular-schutz';
 import { storageStatus } from '@/lib/integrations';
 import { PLANER_QUELLE, SCHNAPPSCHUSS_FELD, planerVorgang } from '@/lib/konfigurator/vorgang';
+import { standorteErmitteln } from '@/lib/partner/partnerweg-daten';
 import { RECHTSTEXTE_FASSUNG } from '@/lib/rechtliches/texte';
 import { createRecord, verifyCarKeyBooking, type GepruefteAngaben } from '@/lib/server/create-record';
 import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
@@ -37,6 +48,7 @@ import type {
   ProcessKind,
   RecordConsents,
   RecordKind,
+  RemainderInfo,
   SummarySection,
   UploadRef,
 } from '@/lib/types';
@@ -68,6 +80,11 @@ export interface SubmitInput {
     keyKind: KeyKind;
     workingKeys: number;
   };
+  /**
+   * Nur Termine: gewählter Terminstandort (FA-KERN-03). Nur ein Wunsch: Der Server ermittelt die
+   * möglichen Standorte selbst; ohne passenden Partner oder ohne Schalter gilt die Werkstatt.
+   */
+  terminstandort?: Terminstandort;
   /** Nur Termine: Pflicht-Zustimmungen aus dem Anzahlungsschritt (alle müssen `true` sein). */
   consents?: { [K in keyof TerminZustimmungen]: boolean };
   /** Bot-Schutz: Honigtopf und signierter Startzeitpunkt. */
@@ -179,7 +196,7 @@ const ZUSTIMMUNG_FEHLT =
   'Bitte bestätigen Sie im Schritt „Anzahlung“ alle Punkte, um den Termin verbindlich zu buchen.';
 
 /** Zeilen der Zusammenfassung, die bei Terminen der Server aus den Stammdaten setzt. */
-const GEPRUEFTE_ZEILEN = new Set(['Gewünschte Leistung', 'Marke', 'Modell']);
+const GEPRUEFTE_ZEILEN = new Set(['Gewünschte Leistung', 'Marke', 'Modell', 'Terminstandort']);
 
 /**
  * Leistung und Fahrzeug eines Termins aus den Stammdaten statt aus dem
@@ -271,9 +288,14 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
 
   let quote: PriceQuote | undefined;
   let appointment: AppointmentInfo | undefined;
-  let payment: { scope: 'anzahlung'; amountCents: number; description: string } | undefined;
+  let payment: { scope: 'anzahlung' | 'gesamt'; amountCents: number; description: string } | undefined;
   let consents: RecordConsents | undefined;
   let summary = data.summary;
+  // Auftragsweg (FA-KERN-03, A-049): vom Server ermittelt, nie aus dem Browser übernommen.
+  let auftragsweg: Auftragsweg | undefined;
+  let remainder: RemainderInfo | undefined;
+  let art: RecordKind = data.kind;
+  let prozess: ProcessKind = data.process;
 
   if (data.kind === 'termin') {
     // Zustimmungen sind Pflicht und werden als Nachweis gespeichert — nicht
@@ -312,14 +334,47 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
       return { ok: false, notices: [], error: verified.error };
     }
     quote = verified.quote;
-    appointment = verified.appointment;
     summary = mitGeprueftenAngaben(data.summary, verified.angaben);
-    payment = {
-      scope: 'anzahlung',
-      amountCents: verified.quote.depositCents,
-      // Vom Server gebildet — der Text aus dem Browser geht nirgends hin.
-      description: 'Anzahlung Autoschlüssel-Termin',
-    };
+
+    // Auftragsweg aus Postleitzahl, gewähltem Standort, Leistung, Eigenbereich und Partnern (FA-KERN-03).
+    // Den Partner bietet der Server nur mit Schalter und passendem, freigeschaltetem Partner an.
+    const ermittlung = await standorteErmitteln({
+      postleitzahl: data.contact.postalCode ?? '',
+      land: data.contact.country,
+      leistung: data.verify.serviceId,
+    });
+    auftragsweg = wegFuerStandort(ermittlung, input.terminstandort);
+    const plan = zahlungsPlan(auftragsweg, verified.quote);
+    // Eigener Abschnitt direkt hinter „Leistung und Fahrzeug“; den ersten Abschnitt lesen Vertragsbestätigung und Export.
+    summary = [
+      summary[0],
+      { title: 'Terminstandort', rows: [{ label: 'Terminstandort', value: standortText(auftragsweg === 'partner' ? 'partner' : 'werkstatt') }] },
+      ...summary.slice(1),
+    ];
+
+    if (plan.art === 'anzahlung') {
+      // Direktweg (Hauptzentrale, Eigenbereich): Anzahlung wie im Bestand, voll angerechnet, Rest beim Termin.
+      appointment = verified.appointment;
+      payment = {
+        scope: 'anzahlung',
+        amountCents: verified.quote.depositCents,
+        // Vom Server gebildet — der Text aus dem Browser geht nirgends hin.
+        description: 'Anzahlung Autoschlüssel-Termin',
+      };
+      if (typeof plan.gesamtCents === 'number') {
+        remainder = { totalCents: plan.gesamtCents, remainderCents: restbetragCents(plan.gesamtCents, { amountCents: plan.jetztCents, status: 'offen' }) };
+      }
+    } else if (plan.art === 'gesamt') {
+      // Partnerweg mit Festpreis: Gesamtbetrag sofort, nie nur die Anzahlung. Den genauen Termin stimmt der
+      // Partnerbetrieb nach der Zahlung ab; ein Zeitfenster der Werkstatt wird nicht belegt.
+      payment = { scope: 'gesamt', amountCents: plan.jetztCents, description: PARTNER_ZAHLUNG };
+      remainder = { totalCents: plan.gesamtCents, remainderCents: 0 };
+    } else {
+      // Partnerweg ohne Festpreis: Anfrage ohne Zahlung. Das Team trägt den Gesamtpreis ein und gibt frei;
+      // der Kunde erhält den persönlichen Zahlungslink über den Gesamtbetrag (vorgang-benachrichtigen.ts).
+      art = 'anfrage';
+      prozess = 'gefuehrte-anfrage';
+    }
   }
 
   // Anfrage aus dem Schließplan-Planer (E5-OPUS-03): Der Server prüft den Plan selbst und legt den
@@ -327,6 +382,12 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   // Auch die Zusammenfassung baut der Server aus dem Plan; die aus dem Browser fällt weg. Andere
   // Anfragen dürfen keinen Schnappschuss mitbringen.
   let payload = data.payload;
+  // Den Auftragsweg in den Daten schreibt nur der Server (FA-KERN-03).
+  if (AUFTRAGSWEG_DATEN in payload) {
+    payload = { ...payload };
+    delete payload[AUFTRAGSWEG_DATEN];
+  }
+  if (auftragsweg) payload = { ...payload, [AUFTRAGSWEG_DATEN]: auftragsweg };
   if (data.kind === 'projekt' && payload.quelle === PLANER_QUELLE) {
     const vorgang = planerVorgang(payload, await getCollection('cylinderCatalog'));
     if (!vorgang.ok) {
@@ -449,9 +510,9 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   }
 
   const result = await createRecord({
-    kind: data.kind,
+    kind: art,
     area: data.area,
-    process: data.process,
+    process: prozess,
     contact: data.contact,
     payload,
     summary,
@@ -461,6 +522,20 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     payment,
     consents,
   });
+
+  // Auftragsweg und Gesamtpreis als eigene Felder am Vorgang (FA-KERN-03). Ein Fehler hier kostet nur die
+  // Felder: Der Weg steht auch in den Daten des Vorgangs und wird daraus gelesen (`auftragswegVon`).
+  if (auftragsweg && result.ok && result.recordId) {
+    const weg = auftragsweg;
+    try {
+      await vorgangAendern(result.recordId, (v) => ({
+        auftragsweg: weg,
+        ...(remainder ? { remainder: { ...remainder, remainderCents: restbetragCents(remainder.totalCents, v.payment) ?? remainder.remainderCents } } : {}),
+      }));
+    } catch (fehler) {
+      console.error('[termin] Auftragsweg nicht gespeichert', fehler);
+    }
+  }
 
   if (vorherigerTermin && result.ok && result.reference && result.recordId) {
     const jetzt = new Date().toISOString();

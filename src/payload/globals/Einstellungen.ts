@@ -334,6 +334,30 @@ export const Einstellungen: GlobalConfig = {
               max: 14,
               admin: { step: 1, description: 'Wie viele Tage vor dem Termin der Kunde eine Erinnerung erhält. 0 = keine Erinnerung.' },
             },
+            {
+              // Regionaler Eigenbereich (FA-KERN-03, A-049): Aufträge aus diesen Postleitzahlen laufen als
+              // regionaler Direkttermin mit Anzahlung. Ohne Angabe gilt 35*.
+              name: 'eigenbereich',
+              type: 'group',
+              label: 'Regionaler Eigenbereich',
+              admin: {
+                description:
+                  'Postleitzahlen, für die ein Termin als regionaler Direkttermin gilt (Anzahlung, Rest beim Termin). '
+                  + 'Außerhalb läuft er über die Hauptzentrale oder, wenn eingeschaltet, über einen Partnerbetrieb.',
+              },
+              fields: [
+                { type: 'row', fields: [
+                  { name: 'bezeichnung', type: 'text', label: 'Bezeichnung', defaultValue: 'Wetzlar und Umgebung', admin: { width: '40%' } },
+                  {
+                    name: 'postleitzahlen',
+                    type: 'text',
+                    label: 'Postleitzahlen',
+                    defaultValue: '35*',
+                    admin: { width: '60%', description: 'Kommagetrennt, auch Bereiche wie 35* oder 355*. Leer = 35*.' },
+                  },
+                ] },
+              ],
+            },
           ],
         },
         {

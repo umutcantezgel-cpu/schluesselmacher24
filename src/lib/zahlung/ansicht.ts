@@ -6,6 +6,7 @@
    ========================================================================== */
 
 import { formatDateTime, formatTime } from '@/lib/format';
+import { istPartnerAnfrage } from '@/lib/auftragsweg';
 import { istFotoanfrage } from '@/lib/foto-freigabe';
 import type { BusinessRecord } from '@/lib/types';
 
@@ -45,15 +46,20 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   if (!zahlung) return null;
   const termin = vorgang.kind === 'termin';
   const foto = istFotoanfrage(vorgang);
+  // Partnerweg (FA-KERN-03): Termin mit Gesamtbetrag oder freigegebene Partner-Anfrage.
+  const partnerAnfrage = istPartnerAnfrage(vorgang);
+  const gesamtTermin = termin && zahlung.scope === 'gesamt';
   // „Nicht möglich“ beendet den Vorgang wie eine Stornierung: keine offene Zahlung mehr anzeigen.
   if (vorgang.status === 'nicht-moeglich' && zahlung.status !== 'bezahlt' && zahlung.status !== 'erstattet') return null;
   const storniert = vorgang.status === 'storniert';
 
   if (zahlung.status === 'bezahlt') {
     if (!umfeld.rueckkehr) return null;
-    const text = termin
-      ? 'Ihre Anzahlung ist eingegangen.'
-      : foto
+    const text = gesamtTermin || partnerAnfrage
+      ? 'Ihre Zahlung ist eingegangen. Damit ist Ihr Auftrag verbindlich.'
+      : termin
+        ? 'Ihre Anzahlung ist eingegangen.'
+        : foto
         ? 'Ihre Zahlung ist eingegangen. Damit ist Ihr Auftrag erteilt.'
         : 'Ihre Zahlung ist eingegangen.';
     return { ton: 'success', titel: 'Vielen Dank', text };
@@ -70,7 +76,7 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   }
 
   // Fotoanfrage: Bezahlt wird nur, solange sie freigegeben ist (nicht bei Rückfrage oder Absage).
-  if (foto && !storniert && vorgang.status !== 'freigegeben') {
+  if ((foto || partnerAnfrage) && !storniert && vorgang.status !== 'freigegeben') {
     return zahlung.status === 'offen'
       ? { ton: 'info', titel: 'Zahlung derzeit nicht möglich', text: 'Wir prüfen Ihre Anfrage noch einmal und melden uns bei Ihnen.' }
       : null;
@@ -118,6 +124,14 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
       };
     }
     const bis = zahlung.expiresAt ? ` bis ${formatTime(zahlung.expiresAt)} Uhr` : '';
+    if (gesamtTermin) {
+      return {
+        ton: umfeld.abbruch ? 'warning' : 'info',
+        titel: umfeld.abbruch ? 'Zahlung abgebrochen' : 'Gesamtbetrag noch offen',
+        text: `Ihr Auftrag ist${bis} vorgemerkt. Verbindlich wird er erst mit Ihrer Zahlung des Gesamtbetrags.`,
+        knopf: 'jetzt',
+      };
+    }
     return {
       ton: umfeld.abbruch ? 'warning' : 'info',
       titel: umfeld.abbruch ? 'Zahlung abgebrochen' : 'Anzahlung noch offen',
@@ -134,6 +148,14 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   }
   if (abgelaufen) {
     return { ton: 'warning', titel: 'Zahlungslink abgelaufen', text: `${gespeichert} Starten Sie die Zahlung bitte erneut.`, knopf: 'erneut' };
+  }
+  if (!zahlung.checkoutSessionId && partnerAnfrage) {
+    return {
+      ton: 'info',
+      titel: 'Freigegeben – Zahlung offen',
+      text: 'Wir können Ihren Auftrag über einen Partnerbetrieb ausführen. Verbindlich wird er mit Ihrer Zahlung des Gesamtbetrags.',
+      knopf: 'jetzt',
+    };
   }
   if (!zahlung.checkoutSessionId) {
     return foto

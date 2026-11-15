@@ -1,7 +1,8 @@
 /* Gemeinsame Bausteine der Mailvorlagen. Reine Funktionen, relative Importe. */
 
+import { auftragswegVon, faelligZeilen, istPartnerAnfrage, terminortZeile } from '../../auftragsweg';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '../../format';
-import { vorgangOrtText } from '../../terminort';
+import { vorgangOrtText, werkstattAnschrift } from '../../terminort';
 import type { AreaKey, BusinessRecord, CompanyProfile, PaymentInfo, RecordKind } from '../../types';
 import type { Baustein } from '../html';
 
@@ -72,6 +73,26 @@ export function terminZeilen(vorgang: BusinessRecord, firma?: CompanyProfile): A
     ['Dauer', formatDuration(termin.durationMinutes)],
     ['Ort', vorgangOrtText(vorgang, firma) ?? ''],
   ];
+}
+
+/**
+ * Terminort vor der Zahlung (FA-KERN-03): „Ihr Termin: in unserer Werkstatt in Wetzlar“ oder der
+ * vermittelte Partnertermin, dazu Gesamtpreis oder Preisrahmen und im Direktweg der Rest beim Termin.
+ * Nur bei Autoschlüssel-Terminen und Partner-Anfragen, sonst `null`.
+ */
+export function terminortAngaben(
+  vorgang: BusinessRecord,
+  firma?: CompanyProfile,
+): { zeile: string; felder: Array<[string, string]> } | null {
+  if (vorgang.kind !== 'termin' && !istPartnerAnfrage(vorgang)) return null;
+  const weg = auftragswegVon(vorgang) ?? 'partner';
+  const zeile = `${terminortZeile(weg, werkstattAnschrift(firma)?.city)}.`;
+  if (!vorgang.quote) return { zeile, felder: [] };
+  // „Jetzt fällig“ steht schon in den Zahlungszeilen (Anzahlung oder Gesamtbetrag).
+  const felder = faelligZeilen(weg, vorgang.quote)
+    .filter((z) => !z.label.startsWith('Jetzt fällig'))
+    .map((z): [string, string] => [z.label, z.value]);
+  return { zeile, felder };
 }
 
 export function zahlungsZeilen(vorgang: BusinessRecord): Array<[string, string]> {

@@ -11,7 +11,8 @@ import { mailStatus, paymentStatus, storageStatus } from '@/lib/integrations';
 import { widerrufErklaerenHref } from '@/lib/navigation';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '@/lib/format';
 import { mailHinweis } from '@/lib/mail/hinweise';
-import { vorgangOrtText } from '@/lib/terminort';
+import { vorgangOrtText, werkstattAnschrift } from '@/lib/terminort';
+import { auftragswegVon, auftragswegZeilen, istPartnerAnfrage, terminortZeile } from '@/lib/auftragsweg';
 import type { OrderLine, OrderTotals, PaymentInfo, RecordStatus, SummarySection } from '@/lib/types';
 import { naechsteSchritte } from '@/lib/wege/naechste-schritte';
 import { begleitscheinAnzeigen } from '@/lib/einsenden/schein';
@@ -236,6 +237,14 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
     });
   }
 
+  // Terminort und Beträge (FA-KERN-03): bei Autoschlüssel-Terminen und Partner-Anfragen.
+  const weg = record.kind === 'termin' || istPartnerAnfrage(record) ? auftragswegVon(record) : undefined;
+  const terminort = weg ? terminortZeile(weg, werkstattAnschrift((await getSettings().catch(() => null))?.company)?.city) : null;
+  if (weg) {
+    const betraege = auftragswegZeilen(record).filter(([name]) => name !== 'Auftragsweg');
+    if (betraege.length) abschnitte.push({ title: 'Gesamtpreis und Rest', rows: betraege.map(([label, value]) => ({ label, value })) });
+  }
+
   return (
     <>
       <PageHeader
@@ -291,6 +300,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
             {/* Was gerade geschieht, in einfacher Sprache; nach dem Versand mit Sendungsnummer (G-25). */}
             <div className="space-y-3">
               <p className="max-w-measure text-body text-foreground-muted">{stand.text}</p>
+              {terminort && <p className="max-w-measure text-body font-semibold text-foreground">{terminort}</p>}
               {sendung && (
                 <p className="text-small text-foreground">
                   {[sendung.dienstleister, sendung.nummer && `Sendungsnummer ${sendung.nummer}`].filter(Boolean).join(', ')}

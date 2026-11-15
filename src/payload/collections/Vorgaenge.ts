@@ -3,10 +3,12 @@ import type { CollectionConfig, Field } from 'payload';
 import { istInhaber, istTeam } from '../access/rollen';
 import { BEREICHE, PROZESSE } from '../fields/gemeinsam';
 import { VORGANG_STATUS } from '../fields/vorgang-status';
+import { auftragswegVorAenderung, partnerVorschlaege } from '../hooks/auftragsweg';
 import { bestaetigungSenden } from '../hooks/bestaetigung-senden';
 import { druckansichten } from '../hooks/druckansichten';
 import { terminAktionen } from '../hooks/termin-aktionen';
 import { vorgangNachAenderung, vorgangVorAenderung } from '../hooks/vorgang-benachrichtigen';
+import { AUFTRAGSWEGE, AUFTRAGSWEG_LABEL } from '../../lib/auftragsweg';
 import { KATEGORIE_LABEL } from '../../lib/druckansichten';
 import { fahrzeugklasseText } from '../../lib/fahrzeuge/anfrage-klassen';
 import { unterlagenHinweis } from '../../lib/server/unterlagen-pflicht';
@@ -93,6 +95,16 @@ export const VERSANDDIENSTLEISTER = [
   { label: 'Sonstige', value: 'sonstige' },
 ];
 
+/** Zahlart des Restbetrags beim Termin (FA-KERN-03). */
+export const REST_ZAHLARTEN = [
+  { label: 'Bar', value: 'bar' },
+  { label: 'Karte', value: 'karte' },
+  { label: 'Überweisung', value: 'ueberweisung' },
+];
+
+/** Auftragsweg (FA-KERN-03, A-049): Hauptzentrale, regionaler Eigenbereich oder Partnernetzwerk. */
+export const AUFTRAGSWEG_OPTIONEN = AUFTRAGSWEGE.map((value) => ({ label: AUFTRAGSWEG_LABEL[value], value }));
+
 const zeitpunkt = { date: { pickerAppearance: 'dayAndTime' as const, displayFormat: 'dd.MM.yyyy HH:mm' } };
 
 function eintragFelder(): Field[] {
@@ -123,7 +135,8 @@ export const Vorgaenge: CollectionConfig = {
     group: 'Aufträge',
     useAsTitle: 'nummer',
     // Stand der Vermittlung als Spalte (Erg. Leitfaden §7); filterbar über „Filter“ → „Vermittlung“.
-    defaultColumns: ['nummer', 'art', 'bereich', 'status', 'vermittlung.status', 'createdAt'],
+    // Auftragsweg, Zahlungsstand und Rest offen als Spalten und Filter (FA-KERN-03).
+    defaultColumns: ['nummer', 'art', 'bereich', 'status', 'auftragsweg', 'zahlung.status', 'restzahlung.restCent', 'vermittlung.status', 'createdAt'],
     listSearchableFields: ['nummer', 'kontakt.email', 'kontakt.nachname', 'kontakt.firma', 'vermittlung.notiz'],
     pagination: { defaultLimit: 50 },
     description:
@@ -144,8 +157,9 @@ export const Vorgaenge: CollectionConfig = {
     delete: istInhaber,
   },
   hooks: {
-    // Statusmails, Zahlung von Hand, offene Zahlungsseite beim Stornieren beenden.
-    beforeChange: [vorgangVorAenderung],
+    // Statusmails, Zahlung von Hand, offene Zahlungsseite beim Stornieren beenden; danach Auftragsweg
+    // (Begründung Pflicht) und Restbetrag (FA-KERN-03).
+    beforeChange: [vorgangVorAenderung, auftragswegVorAenderung],
     afterChange: [vorgangNachAenderung],
   },
   endpoints: [bestaetigungSenden, ...terminAktionen, ...druckansichten],
@@ -217,6 +231,30 @@ export const Vorgaenge: CollectionConfig = {
       index: true,
       options: VORGANG_STATUS,
       admin: { position: 'sidebar' },
+    },
+    {
+      // Auftragsweg (FA-KERN-03, A-049): vom Server bei der Buchung gesetzt; Änderung nur mit Begründung.
+      name: 'auftragsweg',
+      type: 'select',
+      label: 'Auftragsweg',
+      index: true,
+      options: AUFTRAGSWEG_OPTIONEN,
+      admin: {
+        position: 'sidebar',
+        description:
+          'Hauptzentrale und Eigenbereich: Anzahlung, Rest beim Termin. Partnernetzwerk: Gesamtbetrag vor der Vermittlung. '
+          + 'Ändern nur mit Begründung (steht danach in den Notizen).',
+      },
+    },
+    {
+      name: 'auftragswegGrund',
+      type: 'text',
+      label: 'Begründung für den geänderten Auftragsweg',
+      admin: {
+        position: 'sidebar',
+        condition: (data) => data?.bereich === 'autoschluessel' || Boolean(data?.auftragsweg),
+        description: 'Pflicht, wenn Sie den Auftragsweg ändern. Wird in die Notizen übernommen und danach geleert.',
+      },
     },
     {
       name: 'kundeInformieren',
@@ -448,6 +486,25 @@ export const Vorgaenge: CollectionConfig = {
                     { name: 'provisionCent', type: 'number', label: 'Provision (Cent)', min: 0, admin: { width: '20%', step: 1 } },
                   ],
                 },
+                {
+                  // Verweis auf den Partnerbetrieb (FA-KERN-03), zusätzlich zur Bewerbung. Nur freigeschaltete
+                  // Betriebe sind wählbar; welcher passt, zeigt die Vorschlagsliste darunter. Das Team entscheidet.
+                  name: 'partnerbetrieb',
+                  type: 'relationship',
+                  relationTo: 'partnerbetriebe',
+                  label: 'Partnerbetrieb (Sammlung Partnerbetriebe)',
+                  filterOptions: { status: { equals: 'freigeschaltet' } },
+                  admin: { description: 'Nur freigeschaltete Partnerbetriebe. Bei mehreren passenden entscheidet das Team.' },
+                },
+                {
+                  // Nur Anzeige, nicht gespeichert (virtuell, keine Migration).
+                  name: 'partnerVorschlaege',
+                  type: 'textarea',
+                  label: 'Passende Partnerbetriebe (Vorschlag)',
+                  virtual: true,
+                  admin: { readOnly: true, condition: (_data, siblingData) => Boolean(siblingData?.partnerVorschlaege) },
+                  hooks: { afterRead: [partnerVorschlaege] },
+                },
                 { name: 'notiz', type: 'textarea', label: 'Notiz zur Vermittlung', admin: { description: 'Nur für das Team sichtbar.' } },
               ],
             },
@@ -631,6 +688,29 @@ export const Vorgaenge: CollectionConfig = {
                   fields: [
                     { name: 'erstattetCent', type: 'number', label: 'Erstattet (Cent)', admin: { width: '50%', ...nurLesen }, ...systemFeld },
                     { name: 'ablaufAm', type: 'date', label: 'Zahlung möglich bis', admin: { width: '50%', ...nurLesen, ...zeitpunkt }, ...systemFeld },
+                  ],
+                },
+              ],
+            },
+            {
+              // Gesamtpreis und Rest beim Termin (FA-KERN-03). Der Rest wird beim Speichern berechnet.
+              name: 'restzahlung',
+              type: 'group',
+              label: 'Gesamtpreis und Rest',
+              admin: {
+                description:
+                  'Gesamtpreis eintragen, sobald er feststeht; der Rest ist Gesamtpreis minus Online-Zahlung. '
+                  + 'Bei einer Partner-Anfrage ohne Festpreis: Gesamtpreis eintragen und Status „Freigegeben“ setzen, '
+                  + 'dann erhält der Kunde den persönlichen Zahlungslink über den Gesamtbetrag.',
+              },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'gesamtpreisCent', type: 'number', label: 'Gesamtpreis (Cent)', min: 0, admin: { width: '25%', step: 1 } },
+                    { name: 'restCent', type: 'number', label: 'Rest (Cent, berechnet)', index: true, admin: { width: '25%', ...nurLesen } },
+                    { name: 'restBezahltAm', type: 'date', label: 'Rest bezahlt am', admin: { width: '25%', ...zeitpunkt } },
+                    { name: 'restZahlart', type: 'select', label: 'Zahlart beim Termin', options: REST_ZAHLARTEN, admin: { width: '25%' } },
                   ],
                 },
               ],

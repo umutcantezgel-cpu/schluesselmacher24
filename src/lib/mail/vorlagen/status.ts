@@ -5,11 +5,13 @@
  * Absage aus der eigenen Vorlage `./freigabe`.
  */
 
+import { istPartnerAnfrage } from '../../auftragsweg';
 import { istEinsendung } from '../../einsenden/vorgang';
 import { istFotoanfrage } from '../../foto-freigabe';
 import type { BusinessRecord, ShipmentCarrier } from '../../types';
 import { anrede, baueMail, type Baustein, type MailInhalt } from '../html';
 import { freigabeMail } from './freigabe';
+import { partnerFreigabeMail } from './partner-freigabe';
 import { ANTWORT_HINWEIS, nummerBaustein, statusLink, terminZeilen, type VorlagenKontext } from './gemeinsam';
 
 /** Status, zu denen der Kunde eine Mail erhält. */
@@ -74,6 +76,10 @@ export interface StatusMailDaten {
 export function statusMail({ vorgang, status, nachricht, kontext, zahlungsLink, einsendeAnschrift }: StatusMailDaten): MailInhalt {
   if (istFotoanfrage(vorgang) && (status === 'freigegeben' || status === 'nicht-moeglich' || status === 'wartet-auf-kunde')) {
     return freigabeMail({ vorgang, ergebnis: status, nachricht, kontext, zahlungsLink, einsendeAnschrift });
+  }
+  // Partner-Anfrage ohne Festpreis (FA-KERN-03): Gesamtpreis und persönlicher Zahlungslink.
+  if (istPartnerAnfrage(vorgang) && status === 'freigegeben') {
+    return partnerFreigabeMail({ vorgang, nachricht, kontext, zahlungsLink });
   }
 
   const bausteine: Baustein[] = [];

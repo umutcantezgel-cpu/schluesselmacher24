@@ -12,6 +12,7 @@
      ihn schon bestätigt, bleibt er stehen; das Team sieht eine Notiz.
    ========================================================================== */
 
+import { auftragswegVon, istPartnerAnfrage } from '@/lib/auftragsweg';
 import { formatCents } from '@/lib/format';
 import { auftragErteiltVerlauf, istFotoanfrage } from '@/lib/foto-freigabe';
 import type { VorgangsAenderung } from '@/lib/data/payload-mapping';
@@ -88,6 +89,8 @@ export interface UebergangsKontext {
 export const VERLAUF = {
   bezahlt: 'Zahlung eingegangen.',
   anzahlung: 'Anzahlung eingegangen.',
+  /** Partnerweg (FA-KERN-03): Gesamtbetrag eingegangen. */
+  partner: 'Zahlung eingegangen. Ihr Auftrag ist verbindlich; wir geben ihn an den Partnerbetrieb weiter, der den Termin mit Ihnen abstimmt.',
   ausstehend: 'Zahlung eingeleitet – die Bestätigung der Bank steht noch aus.',
   fehlgeschlagen: 'Zahlung nicht abgeschlossen.',
   terminFrei: 'Die Anzahlung ist nicht eingegangen. Der Termin wurde freigegeben.',
@@ -158,7 +161,7 @@ function bezahlt(
           : 'Zahlung eingegangen, obwohl der Vorgang auf „Nicht möglich“ steht – bitte Erstattung prüfen.',
       ),
     );
-  } else if (istFotoanfrage(vorgang) && !NACH_FREIGABE.includes(vorgang.status)) {
+  } else if ((istFotoanfrage(vorgang) || istPartnerAnfrage(vorgang)) && !NACH_FREIGABE.includes(vorgang.status)) {
     // Etwa gleichzeitig zur Rückfrage bezahlt: kein Auftrag, das Team entscheidet.
     notizen.push(
       eintrag(
@@ -168,7 +171,16 @@ function bezahlt(
     );
   }
 
-  const timeline = [...vorgang.timeline, eintrag(kontext.jetzt, vorgang.kind === 'termin' ? VERLAUF.anzahlung : VERLAUF.bezahlt)];
+  // Partnerweg (FA-KERN-03): Gesamtbetrag statt Anzahlung; erst damit ist der Auftrag verbindlich.
+  const partnerweg = zahlung.scope === 'gesamt' && auftragswegVon(vorgang) === 'partner'
+    && (vorgang.kind === 'termin' || (istPartnerAnfrage(vorgang) && vorgang.status === 'freigegeben'));
+  const timeline = [
+    ...vorgang.timeline,
+    eintrag(kontext.jetzt, partnerweg ? VERLAUF.partner : vorgang.kind === 'termin' ? VERLAUF.anzahlung : VERLAUF.bezahlt),
+  ];
+  if (partnerweg) {
+    notizen.push(eintrag(kontext.jetzt, 'Partnerweg: Gesamtbetrag eingegangen. Der Auftrag kann jetzt an den Partnerbetrieb freigegeben werden.'));
+  }
   const aenderung: VorgangsAenderung = {
     payment: {
       ...zahlung,
@@ -312,7 +324,7 @@ export function zahlungsUebergang(
       if (zu === 'frueher') return null;
       // Fotoanfrage nicht (mehr) freigegeben, oder Sitzung zu einem alten Freigabepreis:
       // Es gilt die Rückfrage-, Absage- bzw. neue Freigabe-Mail, keine „nicht abgeschlossen“-Mail.
-      if (istFotoanfrage(vorgang) && vorgang.status !== 'freigegeben') return null;
+      if ((istFotoanfrage(vorgang) || istPartnerAnfrage(vorgang)) && vorgang.status !== 'freigegeben') return null;
       if (sitzung.betragCent !== null && sitzung.betragCent !== zahlung.amountCents) return null;
       if (ereignis.typ === 'checkout.session.async_payment_failed') {
         if (zahlung.status !== 'offen') return null;

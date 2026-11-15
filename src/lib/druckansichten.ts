@@ -12,6 +12,7 @@
    Reine Funktionen, nur relative Importe (Endpunkte im Backend).
    ========================================================================== */
 
+import { auftragswegZeilen } from './auftragsweg';
 import { formatCents, formatDate, formatDateTime, formatDuration } from './format';
 import { fahrzeugklasseText } from './fahrzeuge/anfrage-klassen';
 import { escapeHtml } from './mail/html';
@@ -198,6 +199,12 @@ export function vorgangsblattHtml({ vorgang, firma, nonce, jetzt = new Date() }:
       ]),
       '</section>',
     );
+  }
+
+  // Auftragsweg, Gesamtpreis und Rest (FA-KERN-03).
+  const wegZeilen = auftragswegZeilen(vorgang);
+  if (wegZeilen.length) {
+    teile.push('<section><h2>Auftragsweg und Rest</h2>', tabelle(wegZeilen.map(([name, wert]) => [name, t(wert)])), '</section>');
   }
 
   if (vorgang.approval && Object.keys(vorgang.approval).length) {

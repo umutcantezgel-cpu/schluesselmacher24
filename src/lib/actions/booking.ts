@@ -9,6 +9,8 @@ import { kundenSendung, kundenStatus } from '@/lib/kundenstatus';
 import { addDays, availableSlots, bookableDays, earliestBookableDate, minutenInBerlin } from '@/lib/scheduling';
 import { quoteCarKeyService } from '@/lib/pricing';
 import { vorgangOrtText } from '@/lib/terminort';
+import type { Auftragsweg, Terminstandort } from '@/lib/auftragsweg';
+import { standorteErmitteln } from '@/lib/partner/partnerweg-daten';
 import type { KeyKind, PriceQuote, TimeSlot } from '@/lib/types';
 
 export interface QuoteRequest {
@@ -53,6 +55,28 @@ export async function fetchQuote(request: QuoteRequest): Promise<QuoteResponse> 
   );
 
   return { ok: true, quote };
+}
+
+export interface StandorteResponse {
+  /** Standorte, die der Kunde wählen kann; die Werkstatt steht immer zuerst. */
+  standorte: Array<{ standort: Terminstandort; weg: Auftragsweg }>;
+  /** Partnerweg eingeschaltet, aber in dieser Region noch kein Partnerbetrieb. */
+  ohnePartner: boolean;
+  error?: string;
+}
+
+/**
+ * Terminstandorte für eine Postleitzahl (FA-KERN-03): die Werkstatt immer, ein vermittelter
+ * Partnerbetrieb nur mit Schalter und passendem, freigeschaltetem Partner. Ohne Partnernamen.
+ */
+export async function fetchTerminstandorte(eingabe: { postleitzahl: string; land?: string; leistung?: string }): Promise<StandorteResponse> {
+  const werkstatt: StandorteResponse = { standorte: [{ standort: 'werkstatt', weg: 'hauptzentrale' }], ohnePartner: false };
+  if (!(await allowRequest(LIMITS.preis))) return { ...werkstatt, error: RATE_LIMIT_MESSAGE };
+  const plz = typeof eingabe?.postleitzahl === 'string' ? eingabe.postleitzahl.trim().slice(0, 10) : '';
+  const land = typeof eingabe?.land === 'string' ? eingabe.land.slice(0, 60) : undefined;
+  const leistung = typeof eingabe?.leistung === 'string' ? eingabe.leistung.slice(0, 80) : undefined;
+  const ermittlung = await standorteErmitteln({ postleitzahl: plz, land, leistung });
+  return { standorte: ermittlung.standorte, ohnePartner: ermittlung.ohnePartner };
 }
 
 export interface SlotsResponse {

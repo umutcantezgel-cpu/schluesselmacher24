@@ -5,6 +5,7 @@
  * Dokumente stehen nur als Eintrag in der Liste, nie als Bild. Reine Funktion, nur relative Importe.
  */
 
+import { auftragswegZeilen } from '../auftragsweg';
 import { istEinsendung } from '../einsenden/vorgang';
 import { KATEGORIE_LABEL, POSITION_LABEL } from '../druckansichten';
 import { fahrzeugklasseText } from '../fahrzeuge/anfrage-klassen';
@@ -223,6 +224,10 @@ export function vorgangsblattInhalt({ vorgang, firma, bilder = [], jetzt = new D
     ];
     abschnitte.push({ titel: 'Zahlung', zeilen });
   }
+
+  // Auftragsweg, Gesamtpreis und Rest (FA-KERN-03).
+  const weg = auftragswegZeilen(vorgang);
+  if (weg.length) abschnitte.push({ titel: 'Auftragsweg und Rest', zeilen: weg.map(([name, wert]) => ({ name, wert })) });
 
   if (vorgang.approval && Object.keys(vorgang.approval).length) {
     const freigabe = vorgang.approval;

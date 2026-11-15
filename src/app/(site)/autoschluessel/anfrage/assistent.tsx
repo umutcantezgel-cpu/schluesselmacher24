@@ -8,13 +8,25 @@ import type {
   CarKeyService,
   Erreichbarkeit,
   KeyKind,
+  OwnArea,
   PriceQuote,
   SummarySection,
   UploadRef,
   VehicleMake,
 } from '@/lib/types';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
-import { fetchQuote, fetchSlots, type SlotsResponse } from '@/lib/actions/booking';
+import { fetchQuote, fetchSlots, fetchTerminstandorte, type SlotsResponse, type StandorteResponse } from '@/lib/actions/booking';
+import {
+  KEIN_PARTNER_HINWEIS,
+  PARTNER_NACH_ZAHLUNG,
+  PARTNER_OHNE_FESTPREIS,
+  faelligZeilen,
+  standortText,
+  terminortZeile,
+  zahlungsPlan,
+  type Auftragsweg,
+  type Terminstandort,
+} from '@/lib/auftragsweg';
 import { submitRecord } from '@/lib/actions/records';
 import { erreichbarkeitSatz } from '@/lib/erreichbarkeit';
 import { formatCents, formatDuration } from '@/lib/format';
@@ -69,7 +81,7 @@ import {
 
 const FLOW_ID = 'autoschluessel-anfrage';
 /** Erhöhen, sobald sich AssistentData ändert – alte Zwischenstände verfallen. */
-const FLOW_VERSION = 2;
+const FLOW_VERSION = 3;
 
 /** Kennung für „Modell nicht in der Liste“. */
 const OTHER_MODEL = '__nicht-aufgefuehrt';
@@ -266,6 +278,18 @@ interface AssistentData {
   earlyStartRequested: boolean;
   slotDate: string;
   slotTime: string;
+  /** Gewählter Terminstandort (FA-KERN-03); der Partner erscheint nur, wenn der Server ihn anbietet. */
+  terminstandort: Terminstandort;
+}
+
+/** Ende der Reservierung ab jetzt (Stripe hält die Zahlungsseite 31 Minuten offen, angezeigt werden 30). */
+function reservierungsEnde(): string {
+  return new Date(Date.now() + 30 * 60 * 1000).toISOString();
+}
+
+/** Schlüssel für die Terminstandorte: Postleitzahl, Land und Leistung. */
+function standorteKeyOf(data: AssistentData): string {
+  return [data.postalCode.trim(), data.country, data.serviceId].join('|');
 }
 
 /**
@@ -302,6 +326,8 @@ export interface AssistentProps {
   werkstatt?: WerkstattAngaben;
   /** Erreichbarkeit aus den Einstellungen, neben der Telefonnummer in der Hilfe bei den Unterlagen. */
   erreichbarkeit?: Erreichbarkeit;
+  /** Regionaler Eigenbereich aus den Einstellungen (FA-KERN-03); ohne Angabe gilt 35*. */
+  eigenbereich?: OwnArea;
 }
 
 export function Assistent({
@@ -315,6 +341,7 @@ export function Assistent({
   werkstatt,
   erreichbarkeit,
   vorherigerVorgang,
+  eigenbereich,
 }: AssistentProps) {
   const initial = useMemo<AssistentData>(
     () => ({
@@ -348,6 +375,7 @@ export function Assistent({
       earlyStartRequested: false,
       slotDate: '',
       slotTime: '',
+      terminstandort: 'werkstatt',
     }),
     [preselect.makeSlug, preselect.modelSlug, preselect.workingKeys],
   );
@@ -378,13 +406,18 @@ export function Assistent({
     error: string | null;
   } | null>(null);
 
+  /* Terminstandorte (FA-KERN-03) hängen an Postleitzahl, Land und Leistung; der Server ermittelt sie. */
+  const [standorteResult, setStandorteResult] = useState<{ key: string; daten: StandorteResponse } | null>(null);
+
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   // Erster wählbarer Treffer der Fahrzeugsuche: „Weiter“ übernimmt ihn (A-025)
   const [vorschlag, setVorschlag] = useState<FahrzeugWahl | null>(null);
   const [done, setDone] = useState<{
     reference: string;
-    appointment: AppointmentInfo;
+    /** Fehlt im Partnerweg: Den Termin stimmt der Partnerbetrieb ab. */
+    appointment?: AppointmentInfo;
+    weg: Auftragsweg;
     quote: PriceQuote;
     summary: SummarySection[];
     notices: string[];
@@ -407,6 +440,21 @@ export function Assistent({
 
   function slotsFor(current: AssistentData): SlotsResponse | null {
     return slotsResult?.key === slotsKeyOf(current) ? slotsResult.days : null;
+  }
+
+  function standorteFor(current: AssistentData): StandorteResponse | null {
+    return standorteResult?.key === standorteKeyOf(current) ? standorteResult.daten : null;
+  }
+
+  /** Partner gewählt und vom Server angeboten? Sonst gilt der Werkstatttermin. */
+  function partnerGewaehlt(current: AssistentData): boolean {
+    return current.terminstandort === 'partner' && Boolean(standorteFor(current)?.standorte.some((s) => s.standort === 'partner'));
+  }
+
+  /** Weg zum gewählten Standort, wie ihn der Server ermitteln wird. */
+  function wegFor(current: AssistentData): Auftragsweg {
+    if (partnerGewaehlt(current)) return 'partner';
+    return standorteFor(current)?.standorte[0]?.weg ?? 'hauptzentrale';
   }
 
   /**
@@ -534,7 +582,8 @@ export function Assistent({
           && current.earlyStartRequested
         );
       case 'termin':
-        return isSelectedSlotFree(current);
+        // Partnerweg: Den Termin stimmt der Partnerbetrieb nach der Zahlung ab (FA-KERN-03).
+        return partnerGewaehlt(current) || isSelectedSlotFree(current);
       default:
         return true;
     }
@@ -696,9 +745,35 @@ export function Assistent({
     };
   }, [needsQuote, hasQuoteInputs, quoteKey, data.makeSlug, model?.slug, data.serviceId, data.keyKind, data.workingKeys]);
 
+  /* ---------- Terminstandorte laden (FA-KERN-03) ------------------------- */
+
+  const standorteKey = standorteKeyOf(data);
+  const standorte = standorteFor(data);
+  const weg = wegFor(data);
+  const partnerweg = weg === 'partner';
+  const plan = quote ? zahlungsPlan(weg, quote) : null;
+  const werkstattStadt = werkstatt?.standort?.city;
+  const kontaktVollstaendig = isContactComplete(data);
+
+  useEffect(() => {
+    if (!needsQuote || !kontaktVollstaendig) return;
+    let cancelled = false;
+    fetchTerminstandorte({ postleitzahl: data.postalCode.trim(), land: data.country, leistung: data.serviceId })
+      .then((daten) => {
+        if (!cancelled) setStandorteResult({ key: standorteKey, daten });
+      })
+      .catch(() => {
+        // Ohne Antwort bleibt es beim Werkstatttermin wie bisher.
+        if (!cancelled) setStandorteResult({ key: standorteKey, daten: { standorte: [{ standort: 'werkstatt', weg: 'hauptzentrale' }], ohnePartner: false } });
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [needsQuote, kontaktVollstaendig, standorteKey, data.postalCode, data.country, data.serviceId]);
+
   /* ---------- Termine laden --------------------------------------------- */
 
-  const isSlotStep = flow.step.id === 'termin';
+  const isSlotStep = flow.step.id === 'termin' && !partnerweg;
   const slotMinutes = quote?.slotMinutes ?? null;
   const leadTimeDays = quote?.leadTimeDays ?? null;
   const slotsKey = slotsKeyOf(data);
@@ -800,40 +875,55 @@ export function Assistent({
           },
         ],
       },
-      {
-        title: 'Preis und Anzahlung',
-        rows: [
-          {
-            label:
-              current.mode === 'fest'
-                ? 'Gesamtpreis'
-                : current.mode === 'rahmen'
-                  ? 'Preisrahmen'
-                  : 'Preis',
-            value: priceValue(current),
+      partnerweg
+        ? {
+            // Partnerweg (FA-KERN-03): nie nur die Anzahlung.
+            title: 'Preis und Zahlung',
+            rows: faelligZeilen('partner', current),
+          }
+        : {
+            title: 'Preis und Anzahlung',
+            rows: [
+              {
+                label:
+                  current.mode === 'fest'
+                    ? 'Gesamtpreis'
+                    : current.mode === 'rahmen'
+                      ? 'Preisrahmen'
+                      : 'Preis',
+                value: priceValue(current),
+              },
+              { label: 'Anzahlung', value: formatCents(current.depositCents) },
+              ...(current.mode === 'fest' && current.remainderCents !== undefined
+                ? [{ label: 'Restbetrag beim Termin', value: formatCents(current.remainderCents) }]
+                : []),
+            ],
           },
-          { label: 'Anzahlung', value: formatCents(current.depositCents) },
-          ...(current.mode === 'fest' && current.remainderCents !== undefined
-            ? [{ label: 'Restbetrag beim Termin', value: formatCents(current.remainderCents) }]
-            : []),
-        ],
-      },
-      {
-        title: 'Termin',
-        rows: [
-          { label: 'Datum', value: data.slotDate },
-          { label: 'Uhrzeit', value: `${data.slotTime} Uhr` },
-          { label: 'Eingeplante Dauer', value: formatDuration(current.slotMinutes) },
-          {
-            label: 'Art des Termins',
-            value: terminBeimKunden(data.serviceId)
-              ? 'Bei Ihrem Fahrzeug (Ort nach telefonischer Absprache)'
-              : current.requiresVehicleOnSite
-                ? 'In der Werkstatt, mit Fahrzeug'
-                : 'In der Werkstatt',
+      partnerweg
+        ? {
+            title: 'Termin',
+            rows: [
+              { label: 'Terminstandort', value: standortText('partner') },
+              { label: 'Termin', value: 'stimmt der Partnerbetrieb nach Ihrer Zahlung mit Ihnen ab' },
+            ],
+          }
+        : {
+            title: 'Termin',
+            rows: [
+              { label: 'Terminstandort', value: standortText('werkstatt', werkstattStadt) },
+              { label: 'Datum', value: data.slotDate },
+              { label: 'Uhrzeit', value: `${data.slotTime} Uhr` },
+              { label: 'Eingeplante Dauer', value: formatDuration(current.slotMinutes) },
+              {
+                label: 'Art des Termins',
+                value: terminBeimKunden(data.serviceId)
+                  ? 'Bei Ihrem Fahrzeug (Ort nach telefonischer Absprache)'
+                  : current.requiresVehicleOnSite
+                    ? 'In der Werkstatt, mit Fahrzeug'
+                    : 'In der Werkstatt',
+              },
+            ],
           },
-        ],
-      },
       {
         title: 'Kontakt',
         rows: [
@@ -883,7 +973,7 @@ export function Assistent({
   }
 
   async function handleSubmit() {
-    if (!quote || !data.slotDate || !data.slotTime) return;
+    if (!quote || (!partnerweg && (!data.slotDate || !data.slotTime))) return;
     // Laufende Uploads abschließen, damit ihre Kennungen mitgehen.
     await uploadsAbwarten();
 
@@ -901,14 +991,17 @@ export function Assistent({
     setSubmitting(true);
     setSubmitError(null);
 
-    const appointment: AppointmentInfo = {
-      date: data.slotDate,
-      time: data.slotTime,
-      durationMinutes: quote.slotMinutes,
-      // Online gebuchte Termine finden in der Werkstatt statt (Erg. Leitfaden §1),
-      // Leistungen beim Fahrzeug des Kunden (Fahrzeugöffnung) nach Absprache.
-      location: buchungsOrt(data.serviceId),
-    };
+    // Im Partnerweg stimmt der Partnerbetrieb den Termin ab; es wird kein Zeitfenster der Werkstatt belegt.
+    const appointment: AppointmentInfo | undefined = partnerweg
+      ? undefined
+      : {
+          date: data.slotDate,
+          time: data.slotTime,
+          durationMinutes: quote.slotMinutes,
+          // Online gebuchte Termine finden in der Werkstatt statt (Erg. Leitfaden §1),
+          // Leistungen beim Fahrzeug des Kunden (Fahrzeugöffnung) nach Absprache.
+          location: buchungsOrt(data.serviceId),
+        };
     const summary = buildSummary(quote);
 
     try {
@@ -970,11 +1063,15 @@ export function Assistent({
           keyKind: data.keyKind as KeyKind,
           workingKeys: data.workingKeys ?? 0,
         },
-        payment: {
-          scope: 'anzahlung',
-          amountCents: quote.depositCents,
-          description: `Anzahlung für ${service?.label ?? 'Autoschlüssel-Leistung'}`,
-        },
+        // Nur ein Wunsch: Der Server ermittelt Standort, Weg und Betrag selbst (FA-KERN-03).
+        terminstandort: partnerweg ? 'partner' : 'werkstatt',
+        payment: plan?.art === 'gesamt'
+          ? { scope: 'gesamt', amountCents: plan.jetztCents, description: 'Gesamtbetrag Autoschlüssel-Auftrag' }
+          : {
+              scope: 'anzahlung',
+              amountCents: quote.depositCents,
+              description: `Anzahlung für ${service?.label ?? 'Autoschlüssel-Leistung'}`,
+            },
         schutz: await schutz.daten(),
       });
       schutz.antwortBeachten(result);
@@ -985,12 +1082,13 @@ export function Assistent({
         setDone({
           reference: result.reference,
           appointment,
+          weg,
           quote,
           summary,
           notices: result.notices,
           redirectUrl: result.redirectUrl,
           // Stripe hält die Zahlungsseite 31 Minuten offen – angezeigt wird die sichere Untergrenze.
-          reserviertBis: result.redirectUrl ? new Date(Date.now() + 30 * 60 * 1000).toISOString() : undefined,
+          reserviertBis: result.redirectUrl ? reservierungsEnde() : undefined,
         });
         clearFlow(FLOW_ID);
         // Wie in der Kasse: sofort zur Zahlungsseite. Ohne Anzahlung wird das Zeitfenster wieder frei.
@@ -1012,6 +1110,7 @@ export function Assistent({
       <Bestaetigung
         reference={done.reference}
         appointment={done.appointment}
+        weg={done.weg}
         quote={done.quote}
         summary={done.summary}
         notices={done.notices}
@@ -1029,13 +1128,26 @@ export function Assistent({
   const anzeigeFlow =
     flow.step.id === 'schluesselfotos' && data.workingKeys === 0
       ? { ...flow, step: { ...flow.step, hint: fotosFreiwillig ? HINWEIS_KEIN_SCHLUESSEL_BESTAETIGT : HINWEIS_OHNE_SCHLUESSEL } }
-      : flow;
+      : partnerweg && flow.step.id === 'anzahlung'
+        ? {
+            ...flow,
+            step: {
+              ...flow.step,
+              title: 'Zahlung',
+              hint: plan?.art === 'anfrage'
+                ? 'Ohne festen Preis senden Sie zuerst eine Anfrage. Bezahlt wird erst, wenn wir Ihnen den Gesamtpreis genannt haben.'
+                : 'Beim vermittelten Termin zahlen Sie den Gesamtbetrag vorab. Erst damit wird der Auftrag verbindlich.',
+            },
+          }
+        : partnerweg && flow.step.id === 'termin'
+          ? { ...flow, step: { ...flow.step, title: 'Termin beim Partnerbetrieb', hint: 'Den genauen Termin stimmt der Partnerbetrieb mit Ihnen ab.' } }
+          : flow;
 
   return (
     <FlowShell
       flow={anzeigeFlow}
       title="Autoschlüssel: Anfrage mit Termin"
-      submitLabel="Zahlungspflichtig buchen"
+      submitLabel={partnerweg && plan?.art === 'anfrage' ? 'Anfrage senden' : 'Zahlungspflichtig buchen'}
       onSubmit={handleSubmit}
       submitting={submitting}
       blockedHint={blockedHint(flow.step.id)}
@@ -1612,7 +1724,7 @@ export function Assistent({
             </div>
 
             {/* Erg. Leitfaden §1: Schwerpunkt Wetzlar – Kunden von außerhalb reisen an. */}
-            {ausserhalbDerRegion(data.postalCode, data.country) && (
+            {ausserhalbDerRegion(data.postalCode, data.country, eigenbereich) && (
               <Alert tone="info" title="Termin in unserer Werkstatt" className="sm:col-span-2">
                 {ausserhalbHinweis(werkstatt?.standort?.city)}
               </Alert>
@@ -1693,7 +1805,48 @@ export function Assistent({
                 </CardBody>
               </Card>
 
-              <PreisAnzeige quote={quote} beimKunden={terminBeimKunden(data.serviceId)} />
+              {/* Terminstandort (FA-KERN-03): Werkstatt immer; ein Partnerbetrieb nur, wenn der Server ihn anbietet. */}
+              <div className="space-y-3">
+                <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Terminstandort</p>
+                {standorte && standorte.standorte.length > 1 ? (
+                  <div className="grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Terminstandort">
+                    {standorte.standorte.map((angebot) => (
+                      <OptionCard
+                        key={angebot.standort}
+                        name="terminstandort"
+                        value={angebot.standort}
+                        checked={(partnerweg ? 'partner' : 'werkstatt') === angebot.standort}
+                        onSelect={() => flow.set('terminstandort', angebot.standort)}
+                        title={standortText(angebot.standort, werkstattStadt)}
+                        description={
+                          angebot.standort === 'partner'
+                            ? 'Zahlung des Gesamtbetrags vorab, der Partnerbetrieb stimmt den Termin mit Ihnen ab.'
+                            : 'Anzahlung jetzt, Rest beim Termin.'
+                        }
+                      />
+                    ))}
+                  </div>
+                ) : null}
+                <p className="text-body font-semibold text-foreground">{terminortZeile(weg, werkstattStadt)}</p>
+                {standorte?.ohnePartner && (
+                  <Alert tone="info" title="Noch kein Partnerbetrieb in Ihrer Region">
+                    {KEIN_PARTNER_HINWEIS}{' '}
+                    <Link href={ANFRAGE_OHNE_MARKE} className="font-semibold text-primary hover:underline">
+                      Zur Anfrage
+                    </Link>
+                  </Alert>
+                )}
+                <dl className="divide-y divide-border border-y border-border">
+                  {faelligZeilen(weg, quote).map((zeile) => (
+                    <div key={zeile.label} className="flex flex-wrap items-baseline justify-between gap-2 py-2">
+                      <dt className="text-small text-foreground-muted">{zeile.label}</dt>
+                      <dd className="font-mono text-title-sm font-semibold tabular-nums text-foreground">{zeile.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+
+              <PreisAnzeige quote={quote} beimKunden={terminBeimKunden(data.serviceId)} weg={weg} />
 
               <div role="note" className="flex items-start gap-2 text-small leading-relaxed text-foreground-muted">
                 <GlyphWaage size={16} className="mt-0.5 shrink-0" />
@@ -1730,9 +1883,82 @@ export function Assistent({
         </div>
       )}
 
-      {/* 12 – Anzahlung */}
-      {flow.step.id === 'anzahlung' && quote && (
+      {/* 12 – Zahlung im Partnerweg (FA-KERN-03): Gesamtbetrag vorab oder Anfrage ohne Zahlung */}
+      {flow.step.id === 'anzahlung' && quote && partnerweg && (
         <div className="space-y-5">
+          <p className="text-body font-semibold text-foreground">{terminortZeile('partner')}</p>
+          <dl className="divide-y divide-border border-y border-border">
+            {faelligZeilen('partner', quote).map((zeile) => (
+              <div key={zeile.label} className="flex flex-wrap items-baseline justify-between gap-2 py-2.5">
+                <dt className="text-small text-foreground-muted">{zeile.label}</dt>
+                <dd className="font-mono text-title-sm font-semibold tabular-nums text-foreground">{zeile.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="text-small leading-relaxed text-foreground-muted">
+            {plan?.art === 'anfrage' ? PARTNER_OHNE_FESTPREIS : PARTNER_NACH_ZAHLUNG}
+          </p>
+
+          {!paymentConfigured && plan?.art === 'gesamt' && (
+            <Alert tone="warning" title="Online-Zahlung ist noch nicht eingerichtet">
+              <p>
+                Ihr Vorgang wird mit dem Zahlungsstatus „offen“ angelegt. Wir melden uns mit den
+                Zahlungsinformationen. Bitte bewahren Sie Ihre Vorgangsnummer auf.
+              </p>
+            </Alert>
+          )}
+
+          <OptionCard
+            name="anzahlung"
+            value="bestaetigt"
+            multiple
+            checked={data.depositAccepted}
+            onSelect={() => flow.set('depositAccepted', !data.depositAccepted)}
+            title={
+              plan?.art === 'gesamt'
+                ? `Ich habe verstanden, dass der Gesamtbetrag von ${formatCents(plan.jetztCents)} vorab fällig ist.`
+                : 'Ich habe verstanden, dass mein Auftrag erst mit der Zahlung des Gesamtpreises verbindlich wird.'
+            }
+            description="Eine Anzahlung allein reicht beim vermittelten Termin nicht aus."
+          />
+
+          <p className="text-small leading-relaxed text-foreground-muted">
+            Bitte lesen Sie vor der Buchung unsere{' '}
+            <Link href="/rechtliches/agb" target="_blank" className="font-semibold text-primary hover:underline">
+              AGB
+            </Link>{' '}
+            und die{' '}
+            <Link href="/rechtliches/widerruf" target="_blank" className="font-semibold text-primary hover:underline">
+              Widerrufsbelehrung
+            </Link>
+            . Beide öffnen sich in einem neuen Fenster; Ihre Angaben bleiben hier erhalten.
+          </p>
+
+          <OptionCard
+            name="agb"
+            value="bestaetigt"
+            multiple
+            checked={data.termsAccepted}
+            onSelect={() => flow.set('termsAccepted', !data.termsAccepted)}
+            title="Ich habe die AGB gelesen und die Widerrufsbelehrung zur Kenntnis genommen."
+          />
+
+          <OptionCard
+            name="vorzeitiger-beginn"
+            value="verlangt"
+            multiple
+            checked={data.earlyStartRequested}
+            onSelect={() => flow.set('earlyStartRequested', !data.earlyStartRequested)}
+            title="Ich verlange ausdrücklich, dass Sie vor Ablauf der Widerrufsfrist mit der Leistung beginnen (z. B. Rohling bestellen)."
+            description="Mir ist bekannt, dass ich bei vollständiger Vertragserfüllung mein Widerrufsrecht verliere und bei Widerruf Wertersatz leiste."
+          />
+        </div>
+      )}
+
+      {/* 12 – Anzahlung */}
+      {flow.step.id === 'anzahlung' && quote && !partnerweg && (
+        <div className="space-y-5">
+          <p className="text-body font-semibold text-foreground">{terminortZeile(weg, werkstattStadt)}</p>
           <dl className="border-y border-border py-5">
             <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
               Jetzt fällig
@@ -1829,8 +2055,18 @@ export function Assistent({
         </div>
       )}
 
+      {/* 13 – Termin im Partnerweg: kein Zeitfenster der Werkstatt (FA-KERN-03) */}
+      {flow.step.id === 'termin' && quote && partnerweg && (
+        <div className="space-y-4">
+          <p className="text-body font-semibold text-foreground">{terminortZeile('partner')}</p>
+          <p className="text-small leading-relaxed text-foreground-muted">
+            {plan?.art === 'anfrage' ? PARTNER_OHNE_FESTPREIS : PARTNER_NACH_ZAHLUNG}
+          </p>
+        </div>
+      )}
+
       {/* 13 – Termin */}
-      {flow.step.id === 'termin' && quote && (
+      {flow.step.id === 'termin' && quote && !partnerweg && (
         <TerminAuswahl
           days={slots?.days ?? []}
           loading={slotsLoading}

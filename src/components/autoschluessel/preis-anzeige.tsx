@@ -1,5 +1,6 @@
 'use client';
 
+import type { Auftragsweg } from '@/lib/auftragsweg';
 import type { PriceQuote } from '@/lib/types';
 import { formatCents, formatDuration } from '@/lib/format';
 import { InfoTip } from '@/components/ui/info-tip';
@@ -11,6 +12,8 @@ export interface PreisAnzeigeProps {
   quote: PriceQuote;
   /** Leistung beim Fahrzeug des Kunden (Fahrzeugöffnung): Das Fahrzeug kommt nicht in die Werkstatt. */
   beimKunden?: boolean;
+  /** Auftragsweg (FA-KERN-03): Im Partnerweg gibt es keine Anzahlung, sondern den Gesamtbetrag vorab. */
+  weg?: Auftragsweg;
 }
 
 /** Eine Zeile der bemaßten Liste: Bezeichnung links, Zahl rechts in Mono. */
@@ -41,7 +44,8 @@ function Zeile({ label, value, strong }: { label: string; value: string; strong?
  * bewusst unterschiedlich dargestellt, damit keine Zusage entsteht,
  * die noch nicht belastbar ist.
  */
-export function PreisAnzeige({ quote, beimKunden = false }: PreisAnzeigeProps) {
+export function PreisAnzeige({ quote, beimKunden = false, weg }: PreisAnzeigeProps) {
+  const partner = weg === 'partner';
   return (
     <div className="space-y-4">
       {quote.mode === 'fest' && quote.priceCents !== undefined && (
@@ -51,11 +55,17 @@ export function PreisAnzeige({ quote, beimKunden = false }: PreisAnzeigeProps) {
           </p>
           <dl className="mt-3 divide-y divide-border">
             <Zeile label="Gesamtpreis" value={formatCents(quote.priceCents)} strong />
-            <Zeile label="Davon jetzt als Anzahlung" value={formatCents(quote.depositCents)} />
-            <Zeile
-              label="Restbetrag beim Termin"
-              value={formatCents(quote.remainderCents ?? Math.max(0, quote.priceCents - quote.depositCents))}
-            />
+            {partner ? (
+              <Zeile label="Jetzt fällig (Gesamtbetrag)" value={formatCents(quote.priceCents)} />
+            ) : (
+              <>
+                <Zeile label="Davon jetzt als Anzahlung" value={formatCents(quote.depositCents)} />
+                <Zeile
+                  label="Restbetrag beim Termin"
+                  value={formatCents(quote.remainderCents ?? Math.max(0, quote.priceCents - quote.depositCents))}
+                />
+              </>
+            )}
           </dl>
           <p className="mt-3 text-small leading-relaxed text-foreground-muted">
             Der Gesamtpreis gilt für die gewählte Leistung und die von Ihnen angegebene
@@ -82,7 +92,11 @@ export function PreisAnzeige({ quote, beimKunden = false }: PreisAnzeigeProps) {
               }
               strong
             />
-            <Zeile label="Anzahlung jetzt" value={formatCents(quote.depositCents)} />
+            {partner ? (
+              <Zeile label="Jetzt fällig" value="keine Zahlung, erst nach unserem Preis" />
+            ) : (
+              <Zeile label="Anzahlung jetzt" value={formatCents(quote.depositCents)} />
+            )}
           </dl>
           <p className="mt-3 text-small leading-relaxed text-foreground-muted">
             Ein Preisrahmen bedeutet: Der endgültige Betrag hängt davon ab, welcher Schlüssel
@@ -102,10 +116,17 @@ export function PreisAnzeige({ quote, beimKunden = false }: PreisAnzeigeProps) {
             ohne vorherige Prüfung. Sie können den Termin vormerken lassen; verbindlich wird er erst,
             wenn wir Ihre Unterlagen geprüft und Ihnen den Preis genannt haben.
           </p>
-          <p className="mt-2 text-small leading-relaxed text-foreground-muted">
-            Eine Anzahlung von {formatCents(quote.depositCents)} sichert Ihnen den Platz im
-            Terminplan und wird vollständig auf den späteren Gesamtpreis angerechnet.
-          </p>
+          {partner ? (
+            <p className="mt-2 text-small leading-relaxed text-foreground-muted">
+              Beim vermittelten Termin zahlen Sie erst, wenn wir Ihnen den Gesamtpreis genannt haben, und dann den
+              ganzen Betrag.
+            </p>
+          ) : (
+            <p className="mt-2 text-small leading-relaxed text-foreground-muted">
+              Eine Anzahlung von {formatCents(quote.depositCents)} sichert Ihnen den Platz im
+              Terminplan und wird vollständig auf den späteren Gesamtpreis angerechnet.
+            </p>
+          )}
         </div>
       )}
 

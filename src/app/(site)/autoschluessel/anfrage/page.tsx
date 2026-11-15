@@ -125,6 +125,7 @@ export default async function AutoschluesselAnfragePage(props: {
           preselect={{ makeSlug: make?.slug ?? '', modelSlug: model?.slug ?? '', workingKeys }}
           werkstatt={werkstattAngaben(settings.company)}
           erreichbarkeit={erreichbarkeit(settings)}
+          eigenbereich={settings.booking.ownArea}
           vorherigerVorgang={vorherigerVorgang}
         />
       </div>

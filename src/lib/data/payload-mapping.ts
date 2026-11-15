@@ -26,6 +26,7 @@ import type {
   Vorgaenge,
   Zylinderkatalog,
 } from '@/payload-types';
+import { istAuftragsweg, plzMusterAusText, restbetragCents } from '../auftragsweg';
 import { istEinsendung } from '../einsenden/vorgang';
 import { rabattAusPreis, staffelPreis } from '../staffel';
 import type {
@@ -53,6 +54,7 @@ import type {
   PricingGroup,
   PricingRule,
   ReferralInfo,
+  RemainderInfo,
   FahrzeugReihe,
   Rubrik,
   SeoFields,
@@ -846,6 +848,13 @@ function erreichbarkeitZuSeite(e: Partial<Record<string, unknown>> | null | unde
   return { kernaussage, zeilen, rundUmDieUhr: e?.rundUmDieUhr === true };
 }
 
+/** Regionaler Eigenbereich (FA-KERN-03); ohne gültiges Muster `undefined`, dann gilt der Rückfall 35*. */
+function eigenbereichZuSeite(e: { bezeichnung?: string | null; postleitzahlen?: string | null } | null | undefined): Settings['booking']['ownArea'] {
+  const postalPatterns = plzMusterAusText(e?.postleitzahlen);
+  if (!postalPatterns.length) return undefined;
+  return { label: e?.bezeichnung?.trim() || 'Eigenbereich', postalPatterns };
+}
+
 export function einstellungenZuSeite(doc: Einstellungen): Settings {
   const f = doc.firma;
   const company: Settings['company'] = {
@@ -917,6 +926,8 @@ export function einstellungenZuSeite(doc: Einstellungen): Settings {
   const reachability = erreichbarkeitZuSeite(doc.erreichbarkeit);
   if (reachability) settings.reachability = reachability;
   if (doc.buchung.bundesland) settings.booking.federalState = doc.buchung.bundesland;
+  const ownArea = eigenbereichZuSeite(doc.buchung.eigenbereich);
+  if (ownArea) settings.booking.ownArea = ownArea;
   const legalTexts = rechtstexteZuSeite(doc.rechtstexte);
   if (legalTexts) settings.legalTexts = legalTexts;
   return settings;
@@ -971,6 +982,9 @@ export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
       bundesland: s.booking.federalState,
       fenster: s.booking.windows.map((z) => ({ von: z.from, bis: z.to })),
       erinnerungTageVorher: s.booking.reminderDaysBefore,
+      eigenbereich: s.booking.ownArea
+        ? { bezeichnung: s.booking.ownArea.label, postleitzahlen: s.booking.ownArea.postalPatterns.join(', ') }
+        : undefined,
     },
     versand: s.shipping.map((v) => ({
       kennung: v.id,
@@ -1156,6 +1170,8 @@ export type VorgangsAenderung = Partial<
     | 'accessTokenHash'
     | 'approval'
     | 'referral'
+    | 'auftragsweg'
+    | 'remainder'
   >
 >;
 
@@ -1261,6 +1277,8 @@ function vermittlungZuSeite(v: Vorgaenge['vermittlung']): ReferralInfo | undefin
   if (v.status) referral.status = v.status;
   const partner = typeof v.partner === 'number' ? v.partner : v.partner?.id;
   if (partner !== null && partner !== undefined) referral.partnerId = String(partner);
+  const betrieb = typeof v.partnerbetrieb === 'number' ? v.partnerbetrieb : v.partnerbetrieb?.id;
+  if (betrieb !== null && betrieb !== undefined) referral.partnerBetriebId = String(betrieb);
   if (v.provisionCent !== null && v.provisionCent !== undefined) referral.commissionCents = Number(v.provisionCent);
   if (v.notiz) referral.note = v.notiz;
   return Object.keys(referral).length ? referral : undefined;
@@ -1275,8 +1293,34 @@ function vermittlungZuPayload(referral: ReferralInfo): NonNullable<VorgangDaten[
   return {
     status: referral.status ?? null,
     partner: referral.partnerId ? Number(referral.partnerId) : null,
+    partnerbetrieb: referral.partnerBetriebId ? Number(referral.partnerBetriebId) : null,
     provisionCent: referral.commissionCents ?? null,
     notiz: referral.note ?? null,
+  };
+}
+
+/** Gesamtpreis und Rest (FA-KERN-03); ohne Angaben `undefined`. */
+function restzahlungZuSeite(r: Vorgaenge['restzahlung']): RemainderInfo | undefined {
+  if (!r) return undefined;
+  const remainder: RemainderInfo = {};
+  if (r.gesamtpreisCent !== null && r.gesamtpreisCent !== undefined) remainder.totalCents = Number(r.gesamtpreisCent);
+  if (r.restCent !== null && r.restCent !== undefined) remainder.remainderCents = Number(r.restCent);
+  if (r.restBezahltAm) remainder.paidAt = r.restBezahltAm;
+  if (r.restZahlart) remainder.method = r.restZahlart;
+  return Object.keys(remainder).length ? remainder : undefined;
+}
+
+/**
+ * Immer die ganze Gruppe. Mit Zahlung wird der Rest aus Gesamtpreis und Zahlung neu berechnet; ohne gilt
+ * der übergebene Rest. Beim Speichern in der Datenbank rechnet der Hook `restbetragBerechnen` ihn ohnehin neu.
+ */
+function restzahlungZuPayload(remainder: RemainderInfo, payment?: PaymentInfo): NonNullable<VorgangDaten['restzahlung']> {
+  const rest = payment ? (restbetragCents(remainder.totalCents, payment) ?? remainder.remainderCents) : remainder.remainderCents;
+  return {
+    gesamtpreisCent: remainder.totalCents ?? null,
+    restCent: rest ?? null,
+    restBezahltAm: remainder.paidAt ?? null,
+    restZahlart: remainder.method ?? null,
   };
 }
 
@@ -1387,6 +1431,9 @@ export function vorgangZuSeite(doc: Vorgaenge): BusinessRecord {
   if (approval) record.approval = approval;
   const referral = vermittlungZuSeite(doc.vermittlung);
   if (referral) record.referral = referral;
+  if (istAuftragsweg(doc.auftragsweg)) record.auftragsweg = doc.auftragsweg;
+  const remainder = restzahlungZuSeite(doc.restzahlung);
+  if (remainder) record.remainder = remainder;
   return record;
 }
 
@@ -1458,6 +1505,8 @@ export function vorgangZuPayload(record: BusinessRecord): VorgangDaten {
     zustimmungen: record.consents ? zustimmungenZuPayload(record.consents) : undefined,
     freigabe: record.approval ? freigabeZuPayload(record.approval) : undefined,
     vermittlung: record.referral ? vermittlungZuPayload(record.referral) : undefined,
+    auftragsweg: record.auftragsweg,
+    restzahlung: record.remainder ? restzahlungZuPayload(record.remainder, record.payment) : undefined,
   };
 }
 
@@ -1486,5 +1535,7 @@ export function vorgangAenderungZuPayload(aenderung: VorgangsAenderung): Partial
   if (aenderung.accessTokenHash !== undefined) daten.zugriffsHash = aenderung.accessTokenHash;
   if (aenderung.approval !== undefined) daten.freigabe = freigabeZuPayload(aenderung.approval);
   if (aenderung.referral !== undefined) daten.vermittlung = vermittlungZuPayload(aenderung.referral);
+  if (aenderung.auftragsweg !== undefined) daten.auftragsweg = aenderung.auftragsweg;
+  if (aenderung.remainder !== undefined) daten.restzahlung = restzahlungZuPayload(aenderung.remainder, aenderung.payment);
   return daten;
 }

@@ -1,5 +1,6 @@
 import { APIError, isolateObjectProperty, type CollectionAfterChangeHook, type CollectionBeforeChangeHook, type PayloadRequest } from 'payload';
 
+import { istPartnerAnfrage, partnerFreigabeZahlbar } from '../../lib/auftragsweg';
 import { einstellungenZuSeite, vorgangAenderungZuPayload, vorgangZuSeite } from '../../lib/data/payload-mapping';
 import { EINSENDE_QUELLE } from '../../lib/einsenden/vorgang';
 import { formatCents } from '../../lib/format';
@@ -103,7 +104,15 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
   // Einsendung (E6-OPUS-02): Das Original liegt schon vor; „Original einsenden“ gilt hier nie.
   const einsendung = fotoanfrage && (originalDoc.daten as Record<string, unknown> | null | undefined)?.quelle === EINSENDE_QUELLE;
   const freigabe = data.freigabe ?? originalDoc.freigabe;
-  const preis = Number(freigabe?.preisCent ?? 0);
+  // Partner-Anfrage ohne Festpreis (FA-KERN-03): Freigabe mit Zahlungslink über den Gesamtpreis aus „Gesamtpreis und Rest“.
+  const partnerAnfrage = istPartnerAnfrage({
+    kind: originalDoc.art,
+    area: originalDoc.bereich as AreaKey,
+    auftragsweg: (data.auftragsweg === undefined ? originalDoc.auftragsweg : data.auftragsweg) ?? undefined,
+    payload: (originalDoc.daten ?? undefined) as Record<string, unknown> | undefined,
+  });
+  const mitFreigabeZahlung = fotoanfrage || partnerAnfrage;
+  const preis = Number((partnerAnfrage ? (data.restzahlung ?? originalDoc.restzahlung)?.gesamtpreisCent : freigabe?.preisCent) ?? 0);
   const mitPreis = Number.isSafeInteger(preis) && preis > 0;
   const informieren = (data.kundeInformieren ?? originalDoc.kundeInformieren) !== false;
   const notiz = (text: string) => {
@@ -198,7 +207,7 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
 
   // Foto-Freigabe mit Preis: Zahlung anlegen — beim Wechsel auf „Freigegeben“
   // oder wenn der Preis danach eingetragen bzw. geändert wird.
-  if (fotoanfrage && (data.status ?? originalDoc.status) === 'freigegeben' && mitPreis) {
+  if (mitFreigabeZahlung && (data.status ?? originalDoc.status) === 'freigegeben' && mitPreis) {
     const alt = originalDoc.zahlung;
     const erledigt = alt?.status === 'bezahlt' || alt?.status === 'erstattet';
     const betragAlt = alt?.umfang ? (alt.betragCent ?? null) : null;
@@ -236,7 +245,7 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
   // Der Kunde bekommt den Zahlungslink erst wieder mit einem neuen Preis.
   const offeneZahlung = originalDoc.zahlung;
   if (
-    fotoanfrage
+    mitFreigabeZahlung
     && (data.status ?? originalDoc.status) === 'freigegeben'
     && !mitPreis
     && offeneZahlung?.umfang
@@ -307,10 +316,10 @@ async function freigabeAngaben(
   settings: Settings | undefined,
   site: string,
 ): Promise<{ mail: Pick<StatusMailDaten, 'zahlungsLink' | 'einsendeAnschrift'>; hash?: string }> {
-  if (status !== 'freigegeben' || !istFotoanfrage(vorgang)) return { mail: {} };
+  if (status !== 'freigegeben' || !(istFotoanfrage(vorgang) || istPartnerAnfrage(vorgang))) return { mail: {} };
   const mail: Pick<StatusMailDaten, 'zahlungsLink' | 'einsendeAnschrift'> = {};
   let hash: string | undefined;
-  if (freigabeZahlbar(vorgang) && zahlungKonfiguration()) {
+  if ((freigabeZahlbar(vorgang) || partnerFreigabeZahlbar(vorgang)) && zahlungKonfiguration()) {
     // Erst hier laden: Der Link-Schlüssel gehört zum Server der Seite.
     const { createAccessToken } = await import('../../lib/server/access-token');
     const neu = createAccessToken();

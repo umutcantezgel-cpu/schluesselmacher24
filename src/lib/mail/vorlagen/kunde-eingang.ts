@@ -18,6 +18,7 @@ import {
   nummerBaustein,
   positionsZeilen,
   terminZeilen,
+  terminortAngaben,
   vorgangsLink,
   zahlungsZeilen,
   type VorlagenKontext,
@@ -101,7 +102,10 @@ export function kundeEingang({ vorgang, token, onlineZahlung, kontext }: KundeEi
     bausteine.push({ art: 'felder', zeilen: felder });
     bausteine.push({ art: 'ueberschrift', text: 'Ihre Bestellung' }, { art: 'felder', zeilen: positionsZeilen(vorgang) });
   } else {
-    bausteine.push({ art: 'felder', zeilen: [...felder, ...zahlungsZeilen(vorgang)] });
+    // Terminort und Beträge vor der Zahlung (FA-KERN-03).
+    const ort = terminortAngaben(vorgang, kontext.firma);
+    if (ort) bausteine.push({ art: 'absatz', text: ort.zeile });
+    bausteine.push({ art: 'felder', zeilen: [...felder, ...zahlungsZeilen(vorgang), ...(ort?.felder ?? [])] });
   }
   if (art === 'termin' && vorgang.quote?.mode === 'pruefung') {
     bausteine.push({

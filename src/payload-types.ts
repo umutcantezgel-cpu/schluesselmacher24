@@ -207,6 +207,14 @@ export interface Vorgaenge {
     | 'abgeschlossen'
     | 'storniert';
   /**
+   * Hauptzentrale und Eigenbereich: Anzahlung, Rest beim Termin. Partnernetzwerk: Gesamtbetrag vor der Vermittlung. Ändern nur mit Begründung (steht danach in den Notizen).
+   */
+  auftragsweg?: ('hauptzentrale' | 'eigenbereich' | 'partner') | null;
+  /**
+   * Pflicht, wenn Sie den Auftragsweg ändern. Wird in die Notizen übernommen und danach geleert.
+   */
+  auftragswegGrund?: string | null;
+  /**
    * Mail geht bei „Freigegeben“, „Nicht möglich“, „Wartet auf Kunde“, „Terminiert“, „Versendet“ und „Storniert“. Bei Schlüsseln nach Vorlage enthält die Freigabe Preis, Zahlungslink und ggf. die Einsendeanweisung. Haken entfernen, um diesen einen Wechsel still zu speichern.
    */
   kundeInformieren?: boolean | null;
@@ -271,6 +279,11 @@ export interface Vorgaenge {
     partner?: (number | null) | Vorgaenge;
     provisionCent?: number | null;
     /**
+     * Nur freigeschaltete Partnerbetriebe. Bei mehreren passenden entscheidet das Team.
+     */
+    partnerbetrieb?: (number | null) | Partnerbetriebe;
+    partnerVorschlaege?: string | null;
+    /**
      * Nur für das Team sichtbar.
      */
     notiz?: string | null;
@@ -329,6 +342,15 @@ export interface Vorgaenge {
     checkoutSitzung?: string | null;
     erstattetCent?: number | null;
     ablaufAm?: string | null;
+  };
+  /**
+   * Gesamtpreis eintragen, sobald er feststeht; der Rest ist Gesamtpreis minus Online-Zahlung. Bei einer Partner-Anfrage ohne Festpreis: Gesamtpreis eintragen und Status „Freigegeben“ setzen, dann erhält der Kunde den persönlichen Zahlungslink über den Gesamtbetrag.
+   */
+  restzahlung?: {
+    gesamtpreisCent?: number | null;
+    restCent?: number | null;
+    restBezahltAm?: string | null;
+    restZahlart?: ('bar' | 'karte' | 'ueberweisung') | null;
   };
   /**
    * Automatisch versendete E-Mails zu diesem Vorgang.
@@ -471,6 +493,9 @@ export interface Partnerbetriebe {
     | 'pausiert'
     | 'abgelehnt'
     | 'beendet';
+  /**
+   * B ist erst wählbar, wenn der Schalter PARTNERMODELL_B nach rechtlicher Klärung eingeschaltet ist.
+   */
   abrechnungsmodell: 'A' | 'B';
   einsatzgebiet?: {
     /**
@@ -1901,6 +1926,8 @@ export interface VorgaengeSelect<T extends boolean = true> {
   telefonterminHinweis?: T;
   fahrzeugklasse?: T;
   status?: T;
+  auftragsweg?: T;
+  auftragswegGrund?: T;
   kundeInformieren?: T;
   nachrichtAnKunde?: T;
   zusammenfassung?:
@@ -1952,6 +1979,8 @@ export interface VorgaengeSelect<T extends boolean = true> {
         status?: T;
         partner?: T;
         provisionCent?: T;
+        partnerbetrieb?: T;
+        partnerVorschlaege?: T;
         notiz?: T;
       };
   positionen?:
@@ -2007,6 +2036,14 @@ export interface VorgaengeSelect<T extends boolean = true> {
         checkoutSitzung?: T;
         erstattetCent?: T;
         ablaufAm?: T;
+      };
+  restzahlung?:
+    | T
+    | {
+        gesamtpreisCent?: T;
+        restCent?: T;
+        restBezahltAm?: T;
+        restZahlart?: T;
       };
   mails?:
     | T
@@ -3218,6 +3255,16 @@ export interface Einstellungen {
      * Wie viele Tage vor dem Termin der Kunde eine Erinnerung erhält. 0 = keine Erinnerung.
      */
     erinnerungTageVorher?: number | null;
+    /**
+     * Postleitzahlen, für die ein Termin als regionaler Direkttermin gilt (Anzahlung, Rest beim Termin). Außerhalb läuft er über die Hauptzentrale oder, wenn eingeschaltet, über einen Partnerbetrieb.
+     */
+    eigenbereich?: {
+      bezeichnung?: string | null;
+      /**
+       * Kommagetrennt, auch Bereiche wie 35* oder 355*. Leer = 35*.
+       */
+      postleitzahlen?: string | null;
+    };
   };
   versand?:
     | {
@@ -3614,6 +3661,12 @@ export interface EinstellungenSelect<T extends boolean = true> {
               id?: T;
             };
         erinnerungTageVorher?: T;
+        eigenbereich?:
+          | T
+          | {
+              bezeichnung?: T;
+              postleitzahlen?: T;
+            };
       };
   versand?:
     | T

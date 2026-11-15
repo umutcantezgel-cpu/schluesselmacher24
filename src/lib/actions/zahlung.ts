@@ -3,6 +3,7 @@
 import { getRecord, vorgangAendern } from '@/lib/data';
 import { createPayment, paymentStatus } from '@/lib/integrations';
 import { checkoutAbrufen } from '@/lib/integrations/stripe';
+import { PARTNER_ZAHLUNG, istPartnerAnfrage } from '@/lib/auftragsweg';
 import { FOTOANFRAGE_ZAHLUNG, istFotoanfrage } from '@/lib/foto-freigabe';
 import { verifyAccessToken } from '@/lib/server/access-token';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
@@ -57,7 +58,9 @@ export async function zahlungFortsetzen(eingabe: { recordId: string; token: stri
     return { ok: false, meldung: 'Für diesen Vorgang ist keine Zahlung möglich.' };
   }
   const foto = istFotoanfrage(vorgang);
-  if (foto && vorgang.status !== 'freigegeben') {
+  // Partner-Anfrage ohne Festpreis (FA-KERN-03): bezahlt wird erst nach der Freigabe mit Gesamtpreis.
+  const partnerAnfrage = istPartnerAnfrage(vorgang);
+  if ((foto || partnerAnfrage) && vorgang.status !== 'freigegeben') {
     return { ok: false, meldung: 'Für diese Anfrage ist derzeit keine Zahlung möglich. Wir melden uns bei Ihnen.' };
   }
   if (!paymentStatus().configured) {
@@ -100,7 +103,15 @@ export async function zahlungFortsetzen(eingabe: { recordId: string; token: stri
       recordKind: vorgang.kind,
       amountCents: zahlung.amountCents,
       scope: zahlung.scope,
-      description: termin ? 'Anzahlung Autoschlüssel-Termin' : foto ? FOTOANFRAGE_ZAHLUNG : 'Bestellung',
+      // Partnerweg (FA-KERN-03): Gesamtbetrag, nie nur die Anzahlung.
+      description:
+        zahlung.scope === 'gesamt' && (termin || partnerAnfrage)
+          ? PARTNER_ZAHLUNG
+          : termin
+            ? 'Anzahlung Autoschlüssel-Termin'
+            : foto
+              ? FOTOANFRAGE_ZAHLUNG
+              : 'Bestellung',
       accessToken: token,
       customerEmail: vorgang.contact.email,
       lines: vorgang.lines,

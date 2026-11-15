@@ -167,6 +167,19 @@ export interface BookingDefaults {
   federalState?: FederalState;
   /** Termin-Erinnerung: so viele Tage vor dem Termin. 0 = keine Erinnerung. */
   reminderDaysBefore: number;
+  /**
+   * Regionaler Eigenbereich (FA-KERN-03, A-049): Postleitzahlen-Muster wie `35*`. Fehlt der Wert in
+   * älteren Ständen, gilt der Rückfall `35*` (src/lib/auftragsweg.ts).
+   */
+  ownArea?: OwnArea;
+}
+
+/** Regionaler Eigenbereich der Werkstatt (FA-KERN-03). */
+export interface OwnArea {
+  /** Bezeichnung, etwa „Wetzlar und Umgebung“. */
+  label: string;
+  /** Postleitzahlen oder Muster mit `*` am Ende, etwa `35*` oder `355*`. */
+  postalPatterns: string[];
 }
 
 /**
@@ -777,6 +790,8 @@ export interface ReferralInfo {
   status?: ReferralStatus;
   /** Kennung (`BusinessRecord.id`) der Partner-Bewerbung, Art `partner`. */
   partnerId?: string;
+  /** Kennung des Partnerbetriebs (Sammlung `partnerbetriebe`, FA-KERN-03); setzt das Team im Admin. */
+  partnerBetriebId?: string;
   /** Vereinbarte Provision in Cent. */
   commissionCents?: number;
   /** Interne Notiz. */
@@ -857,6 +872,31 @@ export interface BusinessRecord {
   approval?: ApprovalInfo;
   /** Nur wenn der Vorgang an einen Partnerbetrieb vermittelt wird. */
   referral?: ReferralInfo;
+  /**
+   * Auftragsweg (FA-KERN-03, A-049): Hauptzentrale, regionaler Eigenbereich oder Partnernetzwerk. Vom
+   * Server bei der Buchung gesetzt, im Admin mit Begründung änderbar. Fehlt bei älteren Vorgängen.
+   */
+  auftragsweg?: Auftragsweg;
+  /** Gesamtpreis und Rest beim Termin (FA-KERN-03); fehlt, solange nichts feststeht. */
+  remainder?: RemainderInfo;
+}
+
+/** Auftragsweg eines Autoschlüssel-Auftrags (FA-KERN-03). */
+export type Auftragsweg = 'hauptzentrale' | 'eigenbereich' | 'partner';
+
+/** Zahlart des Restbetrags beim Termin. */
+export type RestZahlart = 'bar' | 'karte' | 'ueberweisung';
+
+/** Gesamtpreis und Restbetrag eines Vorgangs (Backend: Gruppe `restzahlung`). */
+export interface RemainderInfo {
+  /** Gesamtpreis in Cent, sobald er feststeht. */
+  totalCents?: number;
+  /** Rest nach Anrechnung der Online-Zahlung, berechnet (src/lib/auftragsweg.ts, `restbetragCents`). */
+  remainderCents?: number;
+  /** Rest beim Termin bezahlt am (ISO). */
+  paidAt?: string;
+  /** Zahlart beim Termin. */
+  method?: RestZahlart;
 }
 
 export interface SummarySection {

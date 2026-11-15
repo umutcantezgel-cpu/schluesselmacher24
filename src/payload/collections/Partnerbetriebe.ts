@@ -76,9 +76,13 @@ export const Partnerbetriebe: CollectionConfig = {
           defaultValue: 'A',
           options: [
             { label: 'A: Partner rechnet ab, Provision per Rechnung', value: 'A' },
-            { label: 'B: Kunde zahlt an uns (ausgeschaltet)', value: 'B' },
+            // Modell des Inhabers für Plattformaufträge (FA-KERN-03, A-049); wählbar mit PARTNERMODELL_B=aktiv.
+            { label: 'B: Kunde zahlt an Schlüsselmacher24, Auszahlung an den Partner', value: 'B' },
           ],
-          admin: { width: '50%' },
+          admin: {
+            width: '50%',
+            description: 'B ist erst wählbar, wenn der Schalter PARTNERMODELL_B nach rechtlicher Klärung eingeschaltet ist.',
+          },
         },
       ],
     },

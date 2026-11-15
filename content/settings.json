@@ -109,6 +109,12 @@
     "slotsPerWindow": 1,
     "federalState": "HE",
     "reminderDaysBefore": 1,
+    "ownArea": {
+      "label": "Wetzlar und Umgebung",
+      "postalPatterns": [
+        "35*"
+      ]
+    },
     "windows": [
       {
         "from": "09:00",

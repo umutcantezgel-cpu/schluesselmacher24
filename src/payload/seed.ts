@@ -640,6 +640,8 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
 const GLOBAL_ERGAENZUNGEN = {
   einstellungen: [
     'buchung.erinnerungTageVorher',
+    'buchung.eigenbereich.bezeichnung',
+    'buchung.eigenbereich.postleitzahlen',
     'einsenden.portoVersichert',
     'einsenden.portoUnversichert',
     'einsenden.haftungVersichert',
