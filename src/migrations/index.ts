@@ -13,6 +13,7 @@ import * as migration_20261103_033531_partnerbetriebe from './20261103_033531_pa
 import * as migration_20261115_111543_erreichbarkeit from './20261115_111543_erreichbarkeit';
 import * as migration_20261115_120000_rubrik_nach_vorlage from './20261115_120000_rubrik_nach_vorlage';
 import * as migration_20261115_130000_musterdaten_beispiel from './20261115_130000_musterdaten_beispiel';
+import * as migration_20261115_140000_fahrzeugklasse from './20261115_140000_fahrzeugklasse';
 
 export const migrations = [
   {
@@ -89,5 +90,10 @@ export const migrations = [
     up: migration_20261115_130000_musterdaten_beispiel.up,
     down: migration_20261115_130000_musterdaten_beispiel.down,
     name: '20261115_130000_musterdaten_beispiel',
+  },
+  {
+    up: migration_20261115_140000_fahrzeugklasse.up,
+    down: migration_20261115_140000_fahrzeugklasse.down,
+    name: '20261115_140000_fahrzeugklasse',
   },
 ];

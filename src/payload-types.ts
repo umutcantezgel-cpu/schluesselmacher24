@@ -886,6 +886,10 @@ export interface Preisgruppen {
  */
 export interface Fahrzeugreihen {
   id: number;
+  /**
+   * Pkw für den Autoschlüssel-Weg, Kraftrad für den Motorradweg.
+   */
+  klasse: 'pkw' | 'kraftrad';
   marke: string;
   reihe: string;
   kbaName?: string | null;
@@ -917,6 +921,18 @@ export interface Fahrzeugreihen {
   klonbar: 'unbekannt' | 'bestaetigt' | 'nein';
   gehaeuse: 'unbekannt' | 'verfuegbar' | 'nicht-verfuegbar';
   leistungen?: ('nachmachen' | 'programmieren' | 'gehaeuse-tausch' | 'transponder-kopie')[] | null;
+  /**
+   * Nur mit Quelle. Mit Generationen bietet der Assistent die Auswahl an, sonst das Baujahr. Die Bezeichnung findet auch die Suche („Golf 7“).
+   */
+  generationen?:
+    | {
+        bezeichnung: string;
+        baujahrVon?: number | null;
+        baujahrBis?: number | null;
+        quelle: string;
+        id?: string | null;
+      }[]
+    | null;
   alias?:
     | {
         begriff: string;
@@ -2228,6 +2244,7 @@ export interface FahrzeugmarkenSelect<T extends boolean = true> {
  * via the `definition` "fahrzeugreihen_select".
  */
 export interface FahrzeugreihenSelect<T extends boolean = true> {
+  klasse?: T;
   marke?: T;
   reihe?: T;
   kbaName?: T;
@@ -2249,6 +2266,15 @@ export interface FahrzeugreihenSelect<T extends boolean = true> {
   klonbar?: T;
   gehaeuse?: T;
   leistungen?: T;
+  generationen?:
+    | T
+    | {
+        bezeichnung?: T;
+        baujahrVon?: T;
+        baujahrBis?: T;
+        quelle?: T;
+        id?: T;
+      };
   alias?:
     | T
     | {
@@ -3036,6 +3062,9 @@ export interface Einstellungen {
     ort: string;
     land: string;
     telefon: string;
+    /**
+     * Die Adresse für Kunden. Sie muss auf schluesselmacher24.de liegen, sonst hält die Livegang-Prüfung die Veröffentlichung an.
+     */
     email: string;
     ustId?: string | null;
     /**

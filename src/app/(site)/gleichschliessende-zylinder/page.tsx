@@ -48,47 +48,45 @@ const FALLBACK_FAQ = [
   {
     question: 'Was bedeutet „gleichschließend“ genau?',
     answer:
-      'Alle bestellten Zylinder bekommen dieselbe Schließung. Ein einziger Schlüssel sperrt damit '
-      + 'jede dieser Türen. Die Zylinder dürfen dabei unterschiedliche Bauformen und '
-      + 'unterschiedliche Maße haben.',
+      'Alle bestellten Zylinder bekommen dieselbe Schließung. Ein Schlüssel sperrt dann jede '
+      + 'dieser Türen. Bauform und Maße dürfen sich von Tür zu Tür unterscheiden.',
   },
   {
     question: 'Passen die neuen Zylinder in meine vorhandenen Türen?',
     answer:
-      'Das hängt allein von den Maßen ab. Messen Sie jeden vorhandenen Zylinder einzeln aus und '
-      + 'geben Sie die Maße im Konfigurator je Position an. Türen desselben Hauses haben oft '
+      'Das hängt von den Maßen ab. Messen Sie jeden vorhandenen Zylinder einzeln aus. Im '
+      + 'Konfigurator geben Sie die Maße für jede Tür getrennt an. Türen im selben Haus haben oft '
       + 'unterschiedliche Maße.',
   },
   {
     question: 'Kann ich Doppelzylinder, Knaufzylinder und Halbzylinder mischen?',
     answer:
-      'Ja. Die Bauform wählen Sie je Position getrennt. Entscheidend für die Gleichschließung ist '
-      + 'nicht die Bauform, sondern dass alle Zylinder aus derselben Bestellung stammen.',
+      'Ja. Die Bauform wählen Sie für jede Tür getrennt. Für die Gleichschließung zählt nicht die '
+      + 'Bauform. Wichtig ist, dass alle Zylinder aus derselben Bestellung stammen.',
   },
   {
     question: 'Wie viele Schlüssel bekomme ich?',
     answer:
-      'Sie legen die Gesamtzahl der gemeinsamen Schlüssel im zweiten Schritt des Konfigurators '
-      + 'fest. Ein Teil ist im Preis enthalten, jeder weitere Schlüssel wird einzeln berechnet. '
-      + 'Jeder dieser Schlüssel sperrt alle Zylinder der Bestellung.',
+      'Die Zahl der Schlüssel legen Sie im zweiten Schritt des Konfigurators fest. Einige sind im '
+      + 'Preis enthalten, jeder weitere wird einzeln berechnet. Jeder dieser Schlüssel sperrt alle '
+      + 'Zylinder der Bestellung.',
   },
   {
     question: 'Kann ich später weitere Zylinder mit derselben Schließung nachbestellen?',
     answer:
-      'Nur, wenn Ihre Schließung bei uns hinterlegt wird. Diese Hinterlegung wählen Sie im '
-      + 'Konfigurator als Option aus. Ohne sie ist eine passgenaue Erweiterung später nicht in '
-      + 'jedem Fall möglich.',
+      'Ja, wenn wir Ihre Schließung hinterlegen. Das wählen Sie im Konfigurator als Option aus. '
+      + 'Ohne Hinterlegung können wir später nicht in jedem Fall passende Zylinder nachfertigen.',
   },
   {
     question: 'Wann brauche ich statt einer Gleichschließung eine Schließanlage?',
     answer:
-      'Sobald nicht mehr alle Personen überall hineinkommen sollen. Eine Gleichschließung kennt '
-      + 'nur einen Berechtigungsgrad. Wer Türen und Nutzer getrennt steuern möchte, plant eine '
+      'Sobald nicht mehr jede Person überall hinein soll. Bei einer Gleichschließung öffnet jeder '
+      + 'Schlüssel jede Tür. Wenn Sie festlegen möchten, wer welche Tür öffnet, brauchen Sie eine '
       + 'Schließanlage.',
   },
 ];
 
-/** Beispiel aus der Beratungspraxis — keine Preis- oder Produktangabe. */
+/** Beispiel einer Bestellung, kein echter Auftrag; keine Preis- oder Produktangabe. */
 const ORDER_EXAMPLE = [
   { position: 'Haustür', form: 'Doppelzylinder', measure: '30 / 35' },
   { position: 'Wohnungstür', form: 'Doppelzylinder', measure: '40 / 40' },
@@ -207,19 +205,19 @@ export default async function CylinderOverviewPage() {
 
             <div className="prose-sm24 mt-6">
               <p>
-                Bei einer Gleichschließung erhalten alle Zylinder einer Bestellung dieselbe
-                Schließung. Jeder mitgelieferte Schlüssel sperrt damit jede dieser Türen. Sie
-                tragen nur noch einen Schlüssel statt eines Bundes.
+                Alle Zylinder einer Bestellung bekommen dieselbe Schließung. Jeder mitgelieferte
+                Schlüssel sperrt jede dieser Türen. Sie brauchen also nur noch einen Schlüssel statt
+                eines ganzen Bundes.
               </p>
               <p>
-                Die Zylinder dürfen dabei völlig unterschiedlich sein: eine Haustür braucht andere
-                Maße als eine Kellertür, ein Garagentor eine andere Bauform als eine Wohnungstür.
-                Entscheidend ist allein, dass alle Zylinder gemeinsam gefertigt werden.
+                Die Zylinder selbst dürfen verschieden sein. Eine Haustür braucht andere Maße als eine
+                Kellertür. Ein Garagentor kann eine andere Bauform brauchen als die Wohnungstür.
+                Wichtig ist nur, dass alle Zylinder zusammen gefertigt werden.
               </p>
               <p>
-                Was eine Gleichschließung nicht leistet: Sie unterscheidet nicht zwischen Personen.
-                Alle Schlüssel können alles. Sobald einzelne Personen nur bestimmte Türen öffnen
-                sollen, ist eine Schließanlage der richtige Weg.
+                Eine Gleichschließung unterscheidet nicht zwischen Personen. Jeder Schlüssel öffnet
+                jede Tür. Sollen einzelne Personen nur bestimmte Türen öffnen, brauchen Sie eine
+                Schließanlage.
               </p>
             </div>
 
@@ -288,7 +286,7 @@ export default async function CylinderOverviewPage() {
           nummer="02"
           eyebrow="Bauformen"
           title="Welche Bauform passt an welche Tür?"
-          lead="Die Bauform bestimmt, wie der Zylinder bedient wird. Sie wählen sie im Konfigurator für jede Tür einzeln."
+          lead="Die Bauform bestimmt, wie Sie den Zylinder bedienen, zum Beispiel mit Schlüssel auf beiden Seiten oder mit Knauf. Sie wählen sie im Konfigurator für jede Tür einzeln."
         />
 
         <ul className="mt-10 border-t border-border">
@@ -359,7 +357,7 @@ export default async function CylinderOverviewPage() {
           nummer="03"
           eyebrow="Funktion"
           title="Funktion des Zylinders"
-          lead="Zusätzlich zur Bauform legen Sie je Tür fest, wie sich der Zylinder verhält, wenn innen ein Schlüssel steckt. Nicht jede Funktion ist für jede Bauform verfügbar."
+          lead="Für jede Tür legen Sie fest, was passiert, wenn innen ein Schlüssel steckt. Mit der Not- und Gefahrenfunktion lässt sich die Tür dann trotzdem von außen öffnen. Nicht jede Funktion gibt es für jede Bauform."
         />
 
         <ul className="mt-10 grid border-t border-border md:grid-cols-2">
@@ -416,15 +414,15 @@ export default async function CylinderOverviewPage() {
               {[
                 {
                   title: 'Stulpschraube suchen',
-                  body: 'Das ist die Schraube in der Türkante, die den Zylinder hält. Ihre Mitte ist der Nullpunkt für beide Maße.',
+                  body: 'Das ist die Schraube in der Türkante, die den Zylinder hält. Von ihrer Mitte aus messen Sie beide Maße.',
                 },
                 {
                   title: 'Maß A nach außen messen',
-                  body: 'Von der Mitte der Stulpschraube bis zum äußeren Ende des Zylinders auf der Außenseite der Tür.',
+                  body: 'Maß A ist die Länge nach außen. Messen Sie von der Mitte der Stulpschraube bis zum Ende des Zylinders auf der Außenseite der Tür.',
                 },
                 {
                   title: 'Maß B nach innen messen',
-                  body: 'Von der Mitte der Stulpschraube bis zum Ende auf der Innenseite. Beim Halbzylinder entfällt dieses Maß.',
+                  body: 'Maß B ist die Länge nach innen. Messen Sie von der Mitte der Stulpschraube bis zum Ende auf der Innenseite. Ein Halbzylinder hat dieses Maß nicht.',
                 },
                 {
                   title: 'Jede Tür einzeln notieren',
@@ -449,16 +447,16 @@ export default async function CylinderOverviewPage() {
             </ol>
 
             <Alert tone="warning" title="Maß vor Bestellung prüfen" className="mt-7">
-              Ein zu kurzer Zylinder lässt sich nicht sicher schließen, ein zu langer steht vor und
-              lässt sich leichter angreifen. Die Zylinder werden nach Ihren Angaben gefertigt —
-              prüfen Sie die Maße deshalb vor dem Absenden noch einmal.
+              Ein zu kurzer Zylinder lässt sich nicht sicher schließen. Ein zu langer steht vor und
+              ist leichter anzugreifen. Wir fertigen die Zylinder nach Ihren Angaben. Prüfen Sie die
+              Maße deshalb vor dem Absenden noch einmal.
             </Alert>
 
             <p className="mt-5 flex items-start gap-3 text-small text-foreground-muted">
               <GlyphInfo size={18} className="mt-0.5 shrink-0 text-foreground-muted" />
               <span>
-                Im Konfigurator wählen Sie Maß A und Maß B in Fünf-Millimeter-Schritten aus. Die
-                Zeichnung und der Messhinweis stehen dort direkt neben der Auswahl.
+                Im Konfigurator wählen Sie Maß A und Maß B in Schritten von fünf Millimetern aus.
+                Zeichnung und Messhinweis stehen dort direkt neben der Auswahl.
               </span>
             </p>
 
@@ -482,8 +480,8 @@ export default async function CylinderOverviewPage() {
         <SectionHeading
           nummer="05"
           eyebrow="Beispiel"
-          title="So sieht eine typische Bestellung aus"
-          lead="Drei Türen, drei verschiedene Maße, eine gemeinsame Schließung. Die Anzahl der gemeinsamen Schlüssel legen Sie selbst fest."
+          title="Beispiel für eine Bestellung"
+          lead="Drei Türen mit verschiedenen Maßen bekommen eine gemeinsame Schließung. Wie viele Schlüssel Sie dazu möchten, legen Sie selbst fest."
         />
 
         <table className="mt-8 hidden w-full border-collapse overflow-hidden rounded-lg border border-border bg-surface text-left md:table">
@@ -549,11 +547,10 @@ export default async function CylinderOverviewPage() {
         </dl>
 
         <p className="mt-5 max-w-measure text-small text-foreground-muted">
-          Alle drei Zylinder erhalten dieselbe Schließung. Dazu kommt die von Ihnen gewählte Anzahl
-          gemeinsamer Schlüssel — {catalog.includedKeys} Schlüssel sind im Grundpreis enthalten,
-          jeder weitere kostet {formatCents(catalog.keyPriceCents)}. Insgesamt sind bis zu{' '}
-          {catalog.maxKeys} gemeinsame Schlüssel und {catalog.maxCylinders} Zylinder je Bestellung
-          möglich.
+          Alle drei Zylinder bekommen dieselbe Schließung. Dazu kommen so viele gemeinsame
+          Schlüssel, wie Sie wählen. {catalog.includedKeys} Schlüssel sind im Grundpreis enthalten,
+          jeder weitere kostet {formatCents(catalog.keyPriceCents)}. Je Bestellung sind bis zu{' '}
+          {catalog.maxKeys} gemeinsame Schlüssel und {catalog.maxCylinders} Zylinder möglich.
         </p>
 
         <div className="mt-7">
@@ -574,7 +571,7 @@ export default async function CylinderOverviewPage() {
           nummer="06"
           eyebrow="Schutz und Optionen"
           title="Was Sie zusätzlich festlegen können"
-          lead="Diese Optionen wählen Sie im dritten Schritt des Konfigurators aus. Jede Option ist einzeln abwählbar."
+          lead="Diese Optionen wählen Sie im dritten Schritt des Konfigurators. Jede Option können Sie einzeln abwählen."
         />
 
         <ul className="mt-10 border-t border-border">
@@ -608,19 +605,19 @@ export default async function CylinderOverviewPage() {
           nummer="07"
           eyebrow="Abgrenzung"
           title="Gleichschließung oder Schließanlage?"
-          lead="Beide Wege führen zu weniger Schlüsseln. Der Unterschied liegt darin, ob zwischen Personen unterschieden werden muss."
+          lead="Mit beiden haben Sie weniger Schlüssel. Der Unterschied ist, ob verschiedene Personen verschiedene Türen öffnen sollen."
         />
 
         <div className="mt-10 grid border-t border-border md:grid-cols-2">
           <div className="border-b border-border py-8 md:border-b-0 md:pr-gutter">
             <h3 className="text-title-sm font-semibold text-foreground">Gleichschließung</h3>
             <p className="mt-2 max-w-measure text-small text-foreground-muted">
-              Alle Zylinder haben dieselbe Schließung, alle Schlüssel öffnen alles. Passend für
+              Alle Zylinder haben dieselbe Schließung. Jeder Schlüssel öffnet alles. Das passt für
               Einfamilienhäuser, Wohnungen mit Nebenräumen, Garagen und kleine Betriebe, in denen
               jede Person überall hinein darf.
             </p>
             <ul className="mt-4 list-disc space-y-2 pl-5 text-small text-foreground-muted marker:text-area">
-              <li>Ein Berechtigungsgrad für alle</li>
+              <li>Alle Schlüssel haben dieselben Rechte</li>
               <li>Direkt im Konfigurator bestellbar</li>
               <li>Erweiterbar nur, wenn die Schließung hinterlegt wird</li>
             </ul>
@@ -639,13 +636,13 @@ export default async function CylinderOverviewPage() {
           <div className="py-8 md:border-l md:border-border md:pl-gutter">
             <h3 className="text-title-sm font-semibold text-foreground">Schließanlage</h3>
             <p className="mt-2 max-w-measure text-small text-foreground-muted">
-              Türen und Personen werden getrennt geplant: Wer darf welche Tür öffnen? Passend für
-              Mehrfamilienhäuser, Verwaltungen, Praxen und Betriebe mit mehreren Bereichen.
+              Hier legen Sie fest, wer welche Tür öffnen darf. Das passt für Mehrfamilienhäuser,
+              Verwaltungen, Praxen und Betriebe mit mehreren Bereichen.
             </p>
             <ul className="mt-4 list-disc space-y-2 pl-5 text-small text-foreground-muted marker:text-area">
-              <li>Mehrere Berechtigungsgrade, zum Beispiel mit Hauptschlüssel</li>
-              <li>Erfassung über den Projektkonfigurator statt Direktkauf</li>
-              <li>Planung mit Schließplan und Angebot</li>
+              <li>Verschiedene Rechte, zum Beispiel ein Hauptschlüssel für alle Türen</li>
+              <li>Sie erfassen Ihr Vorhaben im Projektkonfigurator, statt direkt zu kaufen</li>
+              <li>Wir planen mit Schließplan und schicken Ihnen ein Angebot</li>
             </ul>
             <Link
               href="/schliessanlagen"
@@ -680,7 +677,7 @@ export default async function CylinderOverviewPage() {
           nummer="10"
           eyebrow="Weiterlesen"
           title="Passende Bereiche"
-          lead="Wenn eine Gleichschließung nicht das Richtige ist, führen diese Wege weiter."
+          lead="Passt eine Gleichschließung nicht, finden Sie hier andere Wege."
         />
 
         <ul className="mt-8 border-t border-border">

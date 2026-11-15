@@ -55,7 +55,7 @@ const ENTRIES: Array<{ href: string; label: string; description: string; icon: C
   {
     href: '/service-und-termin/kontakt',
     label: 'Kontakt',
-    description: 'Erreichbarkeit, Anschrift und Anfahrt.',
+    description: 'Anschrift, Telefon, E-Mail und Erreichbarkeit.',
     icon: IconBeratungTelefon,
   },
 ];
@@ -64,28 +64,28 @@ const ENTRIES: Array<{ href: string; label: string; description: string; icon: C
 const PHASEN: Array<{ kurz: string; name: string; text: string }> = [
   {
     kurz: 'Bedarfsanalyse',
-    name: 'Initiierung und Bedarfsanalyse',
-    text: 'Im ersten Schritt erfassen wir nicht nur die offensichtlichen Anforderungen, sondern analysieren auch die verborgenen Risikofaktoren. Dies beinhaltet die Bewertung von Türbeschaffenheiten, Zylindermaßen, elektronischen Schnittstellen und den allgemeinen architektonischen Gegebenheiten vor Ort.',
+    name: 'Bedarf klären',
+    text: 'Zuerst klären wir, was Sie brauchen. Wir sehen uns Türen, Zylindermaße, vorhandene Technik und das Gebäude an. Dabei suchen wir auch Schwachstellen, die nicht sofort auffallen.',
   },
   {
     kurz: 'Projektierung',
-    name: 'Projektierung und Lösungsdesign',
-    text: 'Basierend auf der Analyse entwickeln wir ein fundiertes Konzept. Bei Schließanlagen bedeutet dies die Erstellung präziser Schließpläne unter Berücksichtigung komplexer Hierarchien und Zutrittsberechtigungen. Bei elektronischen Systemen planen wir die Vernetzung, Stromversorgung und Integration in bestehende IT- oder Smart-Home-Umgebungen.',
+    name: 'Planen',
+    text: 'Danach planen wir die Lösung. Bei Schließanlagen ist das ein Schließplan, der festlegt, wer welche Tür öffnet. Bei elektronischen Systemen planen wir auch Netz, Stromversorgung und die Anbindung an Ihre vorhandene IT oder Ihr Smart Home.',
   },
   {
     kurz: 'Fertigung',
-    name: 'Präzise Fertigung und Vorkonfiguration',
-    text: 'Bevor wir vor Ort tätig werden, bereiten wir alle Komponenten in unserer Fachwerkstatt vor. Zylinder werden nach Maß gefertigt, Transponder codiert und elektronische Komponenten vorab getestet, um die Ausfallzeiten vor Ort auf ein absolutes Minimum zu reduzieren.',
+    name: 'Fertigen und vorbereiten',
+    text: 'Vor dem Termin bereiten wir alles in unserer Werkstatt vor. Wir fertigen Zylinder nach Maß, richten Transponder ein und testen elektronische Teile vorab. So dauert die Arbeit vor Ort möglichst kurz.',
   },
   {
     kurz: 'Montage',
-    name: 'Fachgerechte Montage und Integration',
-    text: 'Unsere Techniker installieren die Systeme mit höchster handwerklicher Präzision. Dies umfasst die fachgerechte Montage mechanischer Sicherungen ebenso wie die Verkabelung und Inbetriebnahme komplexer elektronischer Anlagen, stets unter Einhaltung geltender Normen und Sicherheitsrichtlinien (z.B. DIN 18252 für Profilzylinder, DIN EN 1303).',
+    name: 'Montieren',
+    text: 'Wir bauen mechanische Sicherungen ein. Elektronische Anlagen verkabeln wir und nehmen sie in Betrieb. Dabei halten wir die geltenden Normen und Sicherheitsregeln ein, bei Profilzylindern zum Beispiel DIN 18252 und DIN EN 1303.',
   },
   {
     kurz: 'Dokumentation',
-    name: 'Dokumentation und Systemübergabe',
-    text: 'Jedes Projekt schließt mit einer umfassenden Dokumentation ab. Sie erhalten Sicherungskarten, detaillierte Schließpläne, Bedienungsanleitungen und Protokolle, die eine lückenlose Nachvollziehbarkeit und zukünftige Erweiterbarkeit garantieren.',
+    name: 'Unterlagen übergeben',
+    text: 'Zum Schluss bekommen Sie alle Unterlagen. Dazu gehören Sicherungskarten, Schließpläne, Bedienungsanleitungen und Protokolle. So bleibt die Anlage nachvollziehbar und lässt sich später erweitern.',
   },
 ];
 const PHASEN_SCHRITTE = PHASEN.map((p) => p.kurz).join('|');
@@ -94,24 +94,24 @@ const PHASEN_TITEL = `Phasen eines Auftrags: ${PHASEN.map((p) => p.kurz).join(',
 /** Sichtbare FAQ der Seite — auch Grundlage der strukturierten Daten. */
 const SERVICE_FAQ = [
   {
-    question: 'Wie lange dauert die Implementierung einer komplexen Schließanlage?',
-    answer: 'Die Dauer variiert stark nach Umfang und Komplexität. Nach der Bestandsaufnahme und Freigabe des Schließplans hängt die Liefer- und Fertigungszeit vom Hersteller und vom Umfang ab; den verbindlichen Zeitplan nennen wir mit dem Angebot. Die Montage vor Ort stimmen wir so ab, dass Ihr Betriebsablauf möglichst wenig gestört wird. Elektronische Systeme erfordern oft zusätzliche Vorbereitungen in der IT-Infrastruktur.'
+    question: 'Wie lange dauert es, bis eine große Schließanlage fertig ist?',
+    answer: 'Das hängt stark vom Umfang ab. Zuerst kommen die Bestandsaufnahme und Ihre Freigabe des Schließplans. Wie lange Fertigung und Lieferung danach dauern, hängt vom Hersteller und vom Umfang ab. Den verbindlichen Zeitplan nennen wir mit dem Angebot. Die Montage stimmen wir so ab, dass Ihr Betrieb möglichst wenig gestört wird. Elektronische Systeme brauchen oft zusätzliche Vorbereitung an Netz und IT.'
   },
   {
-    question: 'Sind elektronische Zutrittssysteme sicher vor Hacker-Angriffen?',
-    answer: 'Absolute Sicherheit gibt es in der IT nicht, wir empfehlen deshalb Systeme, die aktuelle kryptografische Standards nutzen. Die Kommunikation zwischen Transponder, Leser und Steuergerät erfolgt zumeist verschlüsselt (z.B. AES-128 oder höher). Zudem achten wir auf eine sichere Netzwerkarchitektur und empfehlen regelmäßige Firmware-Updates, um das Sicherheitsniveau kontinuierlich aufrechtzuerhalten.'
+    question: 'Sind elektronische Zutrittssysteme sicher vor Hackern?',
+    answer: 'Völlige Sicherheit gibt es in der IT nicht. Deshalb empfehlen wir Systeme mit aktueller Verschlüsselung. Transponder, Leser und Steuergerät tauschen ihre Daten meist verschlüsselt aus. Wir achten auf ein sicher aufgebautes Netz. Außerdem empfehlen wir, die Software der Geräte regelmäßig zu aktualisieren.'
   },
   {
     question: 'Was passiert bei einem Stromausfall mit elektronischen Schlössern?',
-    answer: 'Viele elektronische Türkomponenten sind batteriebetrieben oder verfügen über Notstromakkus. Bei batteriebetriebenen Zylindern erhalten Sie rechtzeitig Warnungen bei niedrigem Batteriestand. Vernetzte, kabelgebundene Systeme lassen sich über eine unterbrechungsfreie Stromversorgung (USV) gegen Ausfälle absichern. Fluchtwege sind mechanisch so konstruiert, dass sie jederzeit von innen passierbar bleiben.'
+    answer: 'Viele elektronische Teile an der Tür laufen mit Batterie oder haben einen Notstrom-Akku. Bei Zylindern mit Batterie werden Sie rechtzeitig gewarnt, wenn die Batterie schwach wird. Verkabelte Systeme lassen sich mit einer unterbrechungsfreien Stromversorgung absichern. Fluchtwege sind mechanisch so gebaut, dass man sie von innen jederzeit öffnen kann.'
   },
   {
-    question: 'Können bestehende mechanische Schließanlagen elektronisch aufgerüstet werden?',
-    answer: 'Ja, in vielen Fällen ist eine hybride Lösung oder eine schrittweise Migration möglich und wirtschaftlich sinnvoll. Wir können beispielsweise stark frequentierte Außentüren mit elektronischen Zylindern oder Wandlesern ausstatten, während Innentüren weiterhin mechanisch betrieben werden. Dies erfordert jedoch eine sorgfältige Analyse der vorhandenen Türen und Einsteckschlösser, um Kompatibilität und Zertifizierungen (z.B. Brandschutz) nicht zu gefährden.'
+    question: 'Kann man eine vorhandene mechanische Schließanlage elektronisch erweitern?',
+    answer: 'Ja, oft geht das schrittweise, und es lohnt sich auch. Viel genutzte Außentüren bekommen zum Beispiel elektronische Zylinder oder einen Leser an der Wand. Innentüren bleiben mechanisch. Vorher prüfen wir die vorhandenen Türen und Einsteckschlösser genau. Alles muss zusammenpassen, und Zulassungen, etwa für den Brandschutz, dürfen nicht verloren gehen.'
   },
   {
-    question: 'Welche Informationen benötigen Sie für einen fundierten Kostenvoranschlag?',
-    answer: 'Für eine präzise Kalkulation benötigen wir detaillierte Angaben zum Objekt: Anzahl und Art der Türen (Holz, Metall, Glas, Brandschutz), die gewünschte Sicherheitsstufe, eine grobe Vorstellung der Nutzerhierarchie (wer darf wohin?) und idealerweise Grundrisspläne. Je mehr Kontext wir im Vorfeld erhalten, desto genauer und zielgerichteter können wir die Architektur planen und kalkulieren. Der Orientierungsrechner auf dieser Seite nennt für einzelne Serviceleistungen höchstens eine unverbindliche Spanne und ersetzt kein Angebot.'
+    question: 'Was brauchen Sie für einen genauen Kostenvoranschlag?',
+    answer: 'Wir brauchen möglichst genaue Angaben zum Objekt. Dazu gehören Zahl und Art der Türen, etwa Holz, Metall, Glas oder Brandschutztür. Wichtig sind auch die gewünschte Sicherheitsstufe, wer wohin darf und, wenn vorhanden, Grundrisse. Je mehr wir vorher wissen, desto genauer können wir planen und rechnen. Der Orientierungsrechner auf dieser Seite nennt für einzelne Serviceleistungen höchstens eine unverbindliche Spanne und ersetzt kein Angebot.'
   }
 ];
 
@@ -213,8 +213,8 @@ export default async function ServiceUndTerminPage() {
         <SectionHeading
           nummer="02"
           eyebrow="Wege zu uns"
-          title="Vier Abläufe, ein Erlebnis"
-          lead="Je nach Anliegen führt ein anderer Weg schneller zum Ziel. Bedienung, Sprache und Gestaltung sind überall gleich."
+          title="Vier Abläufe"
+          lead="Je nach Anliegen ist ein anderer Weg der schnellste. Die Bedienung ist überall gleich."
         />
 
         <ul className="mt-12 -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:scroll-px-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-0 md:overflow-visible md:scroll-px-0 md:border-t md:border-border md:px-0 md:pb-0 lg:grid-cols-4">
@@ -268,15 +268,18 @@ export default async function ServiceUndTerminPage() {
             <SectionHeading
               nummer="03"
               eyebrow="Vorgehen"
-              title="Präzision in jedem Schritt: Unsere Service-Architektur"
-              lead="Wir verstehen Schließtechnik und Sicherheitssysteme nicht als isolierte Produkte, sondern als integrierte architektonische Lösungen, die höchste Ansprüche an Präzision, Zuverlässigkeit und Langlebigkeit erfüllen müssen."
+              title="So arbeiten wir"
+              lead="Wir planen Schließ- und Sicherheitstechnik als Ganzes, nicht als einzelne Produkte."
             />
           </div>
 
           <div className="lg:col-span-7">
             <div className="prose-sm24">
               <p>
-                Die Konzeption und Implementierung moderner Schließ- und Sicherheitstechnik erfordert ein tiefgreifendes Verständnis für mechanische Präzision, elektronische Integration und architektonische Rahmenbedingungen. Unser Service-Ansatz basiert auf einer strikten, methodischen Vorgehensweise, die sicherstellt, dass jede von uns geplante und umgesetzte Lösung exakt auf die spezifischen Anforderungen des jeweiligen Objekts abgestimmt ist. Wir lehnen standardisierte &quot;Out-of-the-box&quot;-Lösungen ab, wo maßgeschneiderte Sicherheit gefordert ist. Jeder Auftrag beginnt mit einer detaillierten Analyse der bestehenden Infrastruktur, der Identifikation potenzieller Schwachstellen und der Definition eines klaren, bedarfsorientierten Schutzziels.
+                Jeder Auftrag beginnt mit einem genauen Blick auf das, was schon da ist. Wir suchen
+                Schwachstellen und klären mit Ihnen, wovor Sie sich schützen wollen. Danach planen
+                wir eine Lösung, die zu Ihrem Objekt passt. Eine Lösung von der Stange setzen wir
+                nicht ein, wenn Ihr Objekt etwas anderes braucht.
               </p>
             </div>
 
@@ -285,14 +288,14 @@ export default async function ServiceUndTerminPage() {
                 <summary className="flex min-h-touch cursor-pointer list-none items-center justify-between gap-4 py-5 text-foreground transition-colors duration-quick hover:text-primary [&::-webkit-details-marker]:hidden">
                   <h3 className="min-w-0 text-title-sm font-semibold">
                     <span className="block font-mono text-caption font-normal tabular-nums text-foreground-muted">03.1</span>
-                    Die Phasen unserer Service-Implementierung
+                    Ein Auftrag in fünf Schritten
                   </h3>
                   <GlyphWinkelUnten size={18} className="shrink-0 text-foreground-muted transition-transform duration-base ease-standard group-open:rotate-180" />
                 </summary>
                 <div className="sm24-fade pb-8 [--sm24-duration:var(--dauer-quick)]">
                   <div className="prose-sm24">
                     <p>
-                      Unser Prozess ist in streng definierte Phasen unterteilt, die von der initialen Bestandsaufnahme bis zur finalen Abnahme und Dokumentation reichen.
+                      Jeder Auftrag läuft in festen Schritten ab, von der Bestandsaufnahme bis zur Abnahme und Übergabe der Unterlagen.
                     </p>
                   </div>
                   <dl className="mt-6 max-w-measure border-t border-border">
@@ -312,17 +315,17 @@ export default async function ServiceUndTerminPage() {
                 <summary className="flex min-h-touch cursor-pointer list-none items-center justify-between gap-4 py-5 text-foreground transition-colors duration-quick hover:text-primary [&::-webkit-details-marker]:hidden">
                   <h3 className="min-w-0 text-title-sm font-semibold">
                     <span className="block font-mono text-caption font-normal tabular-nums text-foreground-muted">03.2</span>
-                    Technologische Standards und Materialqualität
+                    Produkte und Technik
                   </h3>
                   <GlyphWinkelUnten size={18} className="shrink-0 text-foreground-muted transition-transform duration-base ease-standard group-open:rotate-180" />
                 </summary>
                 <div className="sm24-fade pb-8 [--sm24-duration:var(--dauer-quick)]">
                   <div className="prose-sm24">
                     <p>
-                      Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Entscheidend sind mechanische Stabilität, Schutz gegen Manipulation und eine lange Nutzungsdauer — die konkrete Auswahl stimmen wir mit Ihnen im Angebot ab.
+                      Welche Produkte wir einsetzen, richtet sich nach Tür, Schutzziel und Budget. Wichtig sind Stabilität, Schutz gegen Manipulation und eine lange Lebensdauer. Die genaue Auswahl stimmen wir im Angebot mit Ihnen ab.
                     </p>
                     <p>
-                      Bei mechanischen Zylindern achten wir auf Merkmale wie Bohr- und Ziehschutz, patentierte Schlüsselprofile (um illegale Kopien zu verhindern) und modulare Bauweisen, die nachträgliche Längenanpassungen ermöglichen. Im Bereich der Elektronik empfehlen wir Systeme mit verschlüsselter Kommunikation (z.B. MIFARE DESFire EV2/EV3, Bluetooth Low Energy mit AES-128-Verschlüsselung) und ausfallsichere Systeme, die auch bei Stromausfall eine definierte Grundsicherheit gewährleisten. Die nahtlose Verzahnung von Mechanik und Elektronik (Mechatronik) bildet oft den Kern unserer fortschrittlichsten Lösungen.
+                      Bei mechanischen Zylindern achten wir auf Schutz gegen Aufbohren und Ziehen. Patentierte Schlüsselprofile sollen verhindern, dass jemand ohne Berechtigung Kopien anfertigt. Manche Zylinder lassen sich später in der Länge anpassen. Bei Elektronik empfehlen wir Systeme, die ihre Daten verschlüsselt übertragen und auch bei Stromausfall sicher bleiben. Oft verbinden wir Mechanik und Elektronik in einer Lösung.
                     </p>
                   </div>
                 </div>
@@ -331,17 +334,17 @@ export default async function ServiceUndTerminPage() {
                 <summary className="flex min-h-touch cursor-pointer list-none items-center justify-between gap-4 py-5 text-foreground transition-colors duration-quick hover:text-primary [&::-webkit-details-marker]:hidden">
                   <h3 className="min-w-0 text-title-sm font-semibold">
                     <span className="block font-mono text-caption font-normal tabular-nums text-foreground-muted">03.3</span>
-                    Nachhaltigkeit und Lebenszyklus-Management
+                    Erweitern und warten
                   </h3>
                   <GlyphWinkelUnten size={18} className="shrink-0 text-foreground-muted transition-transform duration-base ease-standard group-open:rotate-180" />
                 </summary>
                 <div className="sm24-fade pb-8 [--sm24-duration:var(--dauer-quick)]">
                   <div className="prose-sm24">
                     <p>
-                      Eine professionelle Sicherheitslösung ist eine langfristige Investition. Daher legen wir großen Wert auf das Lebenszyklus-Management der von uns betreuten Systeme. Dies beginnt bereits bei der Planung durch die Wahl skalierbarer und modularer Architekturen. Wenn sich Ihre Anforderungen ändern – sei es durch räumliche Erweiterungen, organisatorische Umstrukturierungen oder veränderte Bedrohungslagen – lassen sich unsere Systeme effizient anpassen.
+                      Eine Sicherheitslösung soll viele Jahre halten. Deshalb planen wir sie von Anfang an so, dass sie mitwachsen kann. Ändert sich etwas, etwa durch einen Anbau, eine neue Abteilung oder eine neue Gefahrenlage, lässt sich die Anlage anpassen.
                     </p>
                     <p>
-                      Darüber hinaus bieten wir strukturierte Wartungskonzepte an. Regelmäßige Inspektionen, Software-Updates für elektronische Komponenten und die präventive Wartung hochbeanspruchter mechanischer Teile stellen sicher, dass das Sicherheitsniveau über Jahre hinweg konstant hoch bleibt und kostspielige Totalausfälle vermieden werden.
+                      Wir bieten auch regelmäßige Wartung an. Dazu gehören Inspektionen, Updates für elektronische Teile und die Pflege stark beanspruchter Mechanik. So bleibt die Sicherheit über Jahre erhalten, und teure Ausfälle lassen sich vermeiden.
                     </p>
                   </div>
                 </div>
@@ -357,10 +360,10 @@ export default async function ServiceUndTerminPage() {
                 <div className="sm24-fade pb-8 [--sm24-duration:var(--dauer-quick)]">
                   <div className="prose-sm24">
                     <p>
-                      Neben Privatkunden betreuen wir Gewerbeobjekte, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und abgestimmte organisatorische Abläufe, die wir vor der Planung gemeinsam mit Ihnen klären.
+                      Neben Privatkunden betreuen wir Gewerbe, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und feste Abläufe. Diese klären wir vor der Planung mit Ihnen.
                     </p>
                     <p>
-                      Wir verstehen die Herausforderungen von Fluchtwegsteuerung (gemäß DIN EN 179 und DIN EN 1125), Brandschutzvorgaben und die Integration von Zutrittskontrollsystemen in übergeordnete Gebäudeleittechnik. Für den gewerblichen Bereich planen wir Lösungen so, dass sie mit weiteren Türen, Nutzern und Standorten mitwachsen können.
+                      Dort geht es oft auch um Fluchtwege, Brandschutz und die Anbindung der Zutrittskontrolle an die Gebäudetechnik. Für Betriebe planen wir so, dass weitere Türen, Nutzer und Standorte dazukommen können.
                     </p>
                   </div>
                 </div>
@@ -391,8 +394,8 @@ export default async function ServiceUndTerminPage() {
         <SectionHeading
           nummer="05"
           eyebrow="Fachwissen"
-          title="Häufig gestellte Fragen (FAQ)"
-          lead="Detaillierte Antworten auf die wichtigsten Fragen rund um unsere Services, Abläufe und technischen Standards."
+          title="Häufige Fragen"
+          lead="Antworten zu Ablauf, Technik und Kosten."
         />
         <Accordion items={SERVICE_FAQ} className="mt-12 max-w-4xl" />
       </Section>

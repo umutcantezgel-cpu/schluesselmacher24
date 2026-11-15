@@ -16,6 +16,7 @@ import { submitRecord, type SubmitResult } from '@/lib/actions/records';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import type { ImageSlot } from '@/lib/types';
 import { naechsteSchritte } from '@/lib/wege/naechste-schritte';
+import { KRAFTRAD_QUELLE } from '@/components/autoschluessel/fahrzeug-ziel';
 
 import {
   INITIAL,
@@ -29,11 +30,12 @@ import {
   type MotorradDaten,
   type MotorradSchritt,
 } from './kern';
+import { MotorradSuche } from './motorrad-suche';
 
 const FLOW_ID = 'motorradschluessel-anfrage';
 
 const STEPS: FlowStep[] = [
-  { id: 'motorrad', title: 'Welches Motorrad ist es?', hint: 'Hersteller und Typ tragen Sie frei ein, so wie sie im Fahrzeugschein stehen.', short: 'Motorrad' },
+  { id: 'motorrad', title: 'Welches Motorrad ist es?', hint: 'Suchen Sie Ihr Motorrad oder tragen Sie Hersteller und Typ so ein, wie sie im Fahrzeugschein stehen.', short: 'Motorrad' },
   { id: 'transponder', title: 'Hat Ihr Schlüssel einen Chip?', hint: 'Die Antwort bestimmt, wie wir den Schlüssel bestimmen.', short: 'Chip' },
   { id: 'unterlagen', title: 'Fotos von Schlüssel und Fahrzeugschein', hint: 'Beide Fotos brauchen wir. Den Fahrzeugschein können Sie auch als PDF hochladen.', short: 'Fotos' },
   { id: 'kontakt', title: 'Kontakt', hint: 'Hierhin schicken wir Ihre Rückmeldung.', short: 'Kontakt' },
@@ -169,6 +171,17 @@ export function AnfrageFormular() {
 
       {flow.step?.id === 'motorrad' && (
         <div className="grid max-w-3xl gap-5 sm:grid-cols-2">
+          {/* Suche über die Krafträder aus KBA FZ 2 als Erleichterung (A-047); die freie Eingabe bleibt. */}
+          <div className="sm:col-span-2">
+            <MotorradSuche
+              onWahl={(eintrag) =>
+                flow.update({ hersteller: eintrag.marke.slice(0, MAX_HERSTELLER), modell: eintrag.reihe.slice(0, MAX_MODELL) })
+              }
+            />
+          </div>
+          <p className="text-small leading-relaxed text-foreground-muted sm:col-span-2">
+            Fahrzeug nicht gefunden? Tragen Sie Hersteller und Typ selbst ein.
+          </p>
           <div className="sm:col-span-2">
             <Field label="Hersteller" required hint={`Höchstens ${MAX_HERSTELLER} Zeichen.`}>
               {({ id, describedBy, invalid }) => (
@@ -213,6 +226,8 @@ export function AnfrageFormular() {
               />
             )}
           </Field>
+          {/* Quellenvermerk am Ende des Schritts (Datenlizenz, A-047) */}
+          <p className="text-caption text-foreground-muted sm:col-span-2">{KRAFTRAD_QUELLE}</p>
         </div>
       )}
 

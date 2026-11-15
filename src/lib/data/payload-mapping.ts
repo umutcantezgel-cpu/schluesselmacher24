@@ -548,6 +548,7 @@ export function fahrzeugmarkeZuPayload(
 export function fahrzeugreiheZuSeite(doc: Fahrzeugreihen): FahrzeugReihe {
   const reihe: FahrzeugReihe = {
     id: kennung(doc),
+    klasse: (doc.klasse ?? 'pkw') as NonNullable<FahrzeugReihe['klasse']>,
     marke: doc.marke,
     reihe: doc.reihe,
     quelle: doc.quelle,
@@ -567,12 +568,22 @@ export function fahrzeugreiheZuSeite(doc: Fahrzeugreihen): FahrzeugReihe {
   if (doc.transponder?.typ && doc.transponder.quelle) reihe.transponder = { typ: doc.transponder.typ, quelle: doc.transponder.quelle };
   const alias = (doc.alias ?? []).map((a) => a.begriff).filter((b): b is string => Boolean(b));
   if (alias.length) reihe.alias = alias;
+  const generationen = (doc.generationen ?? [])
+    .filter((g) => g.bezeichnung && g.quelle)
+    .map((g) => ({
+      bezeichnung: g.bezeichnung,
+      ...(typeof g.baujahrVon === 'number' ? { baujahrVon: g.baujahrVon } : {}),
+      ...(typeof g.baujahrBis === 'number' ? { baujahrBis: g.baujahrBis } : {}),
+      quelle: g.quelle,
+    }));
+  if (generationen.length) reihe.generationen = generationen;
   return reihe;
 }
 
 export function fahrzeugreiheZuPayload(reihe: FahrzeugReihe): RequiredDataFromCollectionSlug<'fahrzeugreihen'> {
   return {
     kennung: reihe.id,
+    klasse: reihe.klasse ?? 'pkw',
     marke: reihe.marke,
     reihe: reihe.reihe,
     kbaName: reihe.kbaName,
@@ -589,6 +600,7 @@ export function fahrzeugreiheZuPayload(reihe: FahrzeugReihe): RequiredDataFromCo
     gehaeuse: reihe.gehaeuse,
     leistungen: reihe.leistungen,
     alias: (reihe.alias ?? []).map((begriff) => ({ begriff })),
+    generationen: (reihe.generationen ?? []).map((g) => ({ bezeichnung: g.bezeichnung, baujahrVon: g.baujahrVon, baujahrBis: g.baujahrBis, quelle: g.quelle })),
     sichtbar: reihe.sichtbar,
   };
 }

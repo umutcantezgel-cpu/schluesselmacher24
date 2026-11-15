@@ -4,7 +4,7 @@
  * Bestand laut KBA, damit häufige Fahrzeuge zuerst stehen. Reine Funktionen.
  */
 
-import type { FahrzeugReihe } from '../types';
+import type { FahrzeugKlasse, FahrzeugReihe } from '../types';
 
 /** Kleinschreibung, ohne Akzente, ß als ss, nur Buchstaben und Ziffern. */
 export function normalisiere(text: string): string {
@@ -28,6 +28,19 @@ export const MARKEN_ALIAS: Readonly<Record<string, string>> = {
   landrover: 'land rover',
   ssangyong: 'kgm',
   bmw: 'bmw',
+};
+
+/**
+ * Untermarken und ihre Stammmarke (FA-06-U3), belegt durch die Handelsnamen in KBA FZ 2.2 („CUPRA LEON“ unter
+ * SEAT (E), „ABARTH 500“ unter FCA (I), „BMW ALPINA B3“, „Genesis GV80“ unter HYUNDAI MOTOR (ROK)). Das KBA
+ * führt etwa den Cupra Born unter SEAT: „Cupra Born“ findet deshalb auch SEAT Born, eigene Reihen der
+ * Untermarke stehen davor. Dieselbe Liste nutzt der Import (scripts/fahrzeuge-import-fz2.mjs).
+ */
+export const UNTERMARKEN: Readonly<Record<string, string>> = {
+  abarth: 'fiat',
+  alpina: 'bmw',
+  cupra: 'seat',
+  genesis: 'hyundai',
 };
 
 /** Abstand nach Damerau-Levenshtein (Vertauschung zählt einmal), mit Abbruch über `grenze`. */
@@ -65,7 +78,10 @@ function wortPunkte(wort: string, woerter: string[]): number {
 }
 
 /** Felder, die die Suche liest; ein schlanker Index für den Browser genügt (E4-OPUS-05). */
-export type SuchReihe = Pick<FahrzeugReihe, 'marke' | 'reihe' | 'alias' | 'bestand' | 'sichtbar'>;
+export type SuchReihe = Pick<FahrzeugReihe, 'marke' | 'reihe' | 'alias' | 'bestand' | 'sichtbar' | 'klasse'> & {
+  /** Bezeichnungen der Generationen („Golf 7“, „W205“) als weitere Treffertexte. */
+  generationen?: ReadonlyArray<{ bezeichnung: string }>;
+};
 
 export interface Treffer<T extends SuchReihe = FahrzeugReihe> {
   reihe: T;
@@ -73,25 +89,36 @@ export interface Treffer<T extends SuchReihe = FahrzeugReihe> {
 }
 
 /**
- * Generationsangaben wie „7“, „8V“ oder „VII“ (etwa „Golf 7“): Der Katalog führt Modellreihen ohne
- * Generation. Passt ein solches Wort nicht, schließt es eine Reihe nicht aus (E4-PROBENUTZER-01).
+ * Generationsangaben wie „7“, „8V“ oder „VII“ (etwa „Golf 7“): Die meisten Reihen tragen keine Generation.
+ * Passt ein solches Wort nicht, schließt es eine Reihe nicht aus (E4-PROBENUTZER-01); gepflegte Generationen
+ * zählen als Treffertext.
  */
 const GENERATION = /^(\d+[a-z]?|[ivx]{1,4})$/;
 
-/** Sucht Reihen zu einer Eingabe wie „vw golf“, „Mercedes A Klasse“ oder „Volkswagn Glf“. */
-export function sucheFahrzeuge<T extends SuchReihe = FahrzeugReihe>(anfrage: string, katalog: readonly T[], { hoechstens = 8 } = {}): Treffer<T>[] {
+/**
+ * Sucht Reihen zu einer Eingabe wie „vw golf“, „Mercedes A Klasse“ oder „Volkswagn Glf“. Mit `klasse` nur
+ * Reihen dieser Fahrzeugklasse (Autoschlüssel: pkw, Motorradweg: kraftrad); Reihen ohne Klasse sind Pkw.
+ */
+export function sucheFahrzeuge<T extends SuchReihe = FahrzeugReihe>(
+  anfrage: string,
+  katalog: readonly T[],
+  { hoechstens = 8, klasse }: { hoechstens?: number; klasse?: FahrzeugKlasse } = {},
+): Treffer<T>[] {
   const roh = normalisiere(anfrage).split(' ').filter(Boolean);
   if (!roh.length) return [];
   const woerter = roh.flatMap((w) => normalisiere(MARKEN_ALIAS[w] ?? w).split(' '));
   const treffer: Treffer<T>[] = [];
   for (const reihe of katalog) {
     if (!reihe.sichtbar) continue;
-    const text = normalisiere([reihe.marke, reihe.reihe, ...(reihe.alias ?? [])].join(' '));
+    if (klasse && (reihe.klasse ?? 'pkw') !== klasse) continue;
+    const text = normalisiere([reihe.marke, reihe.reihe, ...(reihe.alias ?? []), ...(reihe.generationen ?? []).map((g) => g.bezeichnung)].join(' '));
     const eigene = text.split(' ').concat(text.replace(/ /g, ''));
     let summe = 0;
     let alle = true;
     for (const wort of woerter) {
-      const p = wortPunkte(wort, eigene);
+      // Untermarke: eigene Reihen voll, Reihen der Stammmarke etwas schwächer.
+      const stamm = UNTERMARKEN[wort];
+      const p = Math.max(wortPunkte(wort, eigene), stamm ? Math.min(2, wortPunkte(stamm, eigene)) : 0);
       if (p === 0) {
         if (GENERATION.test(wort)) continue;
         alle = false;

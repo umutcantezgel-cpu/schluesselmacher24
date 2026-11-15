@@ -36,8 +36,8 @@ import {
   WORKING_KEYS_OPTIONS,
   serviceInfo,
 } from '@/components/autoschluessel/optionen';
-import { FahrzeugSuche } from '@/components/autoschluessel/fahrzeug-suche';
-import { anfrageHref, KATALOG_QUELLE, type FahrzeugZiel, type KatalogEintrag } from '@/components/autoschluessel/fahrzeug-ziel';
+import { FahrzeugSuche, type FahrzeugWahl } from '@/components/autoschluessel/fahrzeug-suche';
+import { anfrageHref, KATALOG_QUELLE, type KatalogEintrag } from '@/components/autoschluessel/fahrzeug-ziel';
 import { ButtonLink } from '@/components/ui/button';
 import { ETAPPEN } from '@/components/autoschluessel/etappen';
 import { PreisAnzeige } from '@/components/autoschluessel/preis-anzeige';
@@ -204,6 +204,10 @@ interface AssistentData {
   modelSlug: string;
   /** Freitext, wenn das Modell nicht aufgeführt ist. */
   modelOther: string;
+  /** Generationen der in der Suche gewählten Reihe (A-047); leer, wenn sie keine trägt. */
+  generationen: NonNullable<KatalogEintrag['generationen']>;
+  /** Gewählte Generation (Bezeichnung), freiwillig. */
+  generation: string;
   year: string;
   /** Monat der Erstzulassung, freiwillig ("1" bis "12"). */
   registrationMonth: string;
@@ -250,8 +254,8 @@ function quoteKeyOf(data: AssistentData): string {
 
 export interface AssistentProps {
   makes: VehicleMake[];
-  /** Fahrzeugkatalog für die Suche (G-14); ohne ihn bleibt nur das Markenraster. */
-  katalog?: KatalogEintrag[];
+  /** Adresse, unter der die Suche den Fahrzeugkatalog nachlädt (G-14, A-047); ohne sie bleibt nur das Markenraster. */
+  katalogAdresse?: string;
   services: CarKeyService[];
   /** Ist ein Zahlungsdienstleister angebunden? */
   paymentConfigured: boolean;
@@ -269,7 +273,7 @@ export interface AssistentProps {
 
 export function Assistent({
   makes,
-  katalog = [],
+  katalogAdresse,
   services,
   paymentConfigured,
   retentionDays,
@@ -283,6 +287,8 @@ export function Assistent({
       makeSlug: preselect.makeSlug,
       modelSlug: preselect.modelSlug,
       modelOther: '',
+      generationen: [],
+      generation: '',
       year: '',
       registrationMonth: '',
       engine: '',
@@ -340,7 +346,7 @@ export function Assistent({
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   // Erster wählbarer Treffer der Fahrzeugsuche: „Weiter“ übernimmt ihn (A-025)
-  const [vorschlag, setVorschlag] = useState<Exclude<FahrzeugZiel, { art: 'anfrage' }> | null>(null);
+  const [vorschlag, setVorschlag] = useState<FahrzeugWahl | null>(null);
   const [done, setDone] = useState<{
     reference: string;
     appointment: AppointmentInfo;
@@ -441,10 +447,14 @@ export function Assistent({
         ? Math.min(...make.models.map((m) => m.yearFrom))
         : currentYear;
     const to = model?.yearTo ?? currentYear;
+    // Gewählte Generation mit Bauzeitraum (A-047): nur ihre Jahre, sonst die Jahre wie bisher.
+    const generation = data.generationen.find((g) => g.bezeichnung === data.generation);
+    const von = generation?.baujahrVon ? Math.max(from, generation.baujahrVon) : from;
+    const bis = generation?.baujahrBis ? Math.min(to, generation.baujahrBis) : to;
     const list: number[] = [];
-    for (let year = to; year >= from; year -= 1) list.push(year);
+    for (let year = bis >= von ? bis : to; year >= (bis >= von ? von : from); year -= 1) list.push(year);
     return list;
-  }, [make, model, currentYear]);
+  }, [make, model, currentYear, data.generationen, data.generation]);
 
   const months = useMemo(() => {
     const formatter = new Intl.DateTimeFormat('de-DE', { month: 'long' });
@@ -540,6 +550,8 @@ export function Assistent({
       makeSlug: slug,
       modelSlug: '',
       modelOther: '',
+      generationen: [],
+      generation: '',
       year: '',
       keyKind: '',
       serviceId: '',
@@ -549,12 +561,17 @@ export function Assistent({
     });
   }
 
-  /** Treffer der Fahrzeugsuche: gepflegtes Modell direkt zum Baujahr, sonst „Modell nicht aufgeführt“ vorbelegt. */
-  function fahrzeugGewaehlt(ziel: Exclude<FahrzeugZiel, { art: 'anfrage' }>) {
+  /**
+   * Treffer der Fahrzeugsuche: gepflegtes Modell direkt zum Baujahr, sonst „Modell nicht aufgeführt“
+   * vorbelegt. Trägt die Reihe Generationen, bietet der Schritt Baujahr sie zur Auswahl an (A-047).
+   */
+  function fahrzeugGewaehlt({ ziel, eintrag }: FahrzeugWahl) {
     const neu: Partial<AssistentData> = {
       makeSlug: ziel.makeSlug,
       modelSlug: ziel.art === 'gepflegt' ? ziel.modelSlug : OTHER_MODEL,
       modelOther: ziel.art === 'gepflegt' ? '' : ziel.modelOther,
+      generationen: eintrag.generationen ?? [],
+      generation: '',
       year: '',
       keyKind: '',
       serviceId: '',
@@ -569,6 +586,8 @@ export function Assistent({
     flow.update({
       modelSlug: slug,
       modelOther: '',
+      generationen: [],
+      generation: '',
       year: '',
       keyKind: '',
       serviceId: '',
@@ -713,6 +732,7 @@ export function Assistent({
         label: 'Modell',
         value: isOtherModel ? `${modelName} (nicht in der Liste aufgeführt)` : modelName || '–',
       },
+      ...(data.generation ? [{ label: 'Generation', value: data.generation }] : []),
       {
         label: 'Baujahr / Erstzulassung',
         value: data.registrationMonth
@@ -983,7 +1003,7 @@ export function Assistent({
       blockedHint={blockedHint(flow.step.id)}
       vorschlag={
         flow.step.id === 'marke' && !data.makeSlug && vorschlag
-          ? { hinweis: `Weiter mit ${vorschlag.name}`, onWeiter: () => fahrzeugGewaehlt(vorschlag) }
+          ? { hinweis: `Weiter mit ${vorschlag.ziel.name}`, onWeiter: () => fahrzeugGewaehlt(vorschlag) }
           : null
       }
       raster="seite"
@@ -1003,9 +1023,9 @@ export function Assistent({
       {/* 1 – Marke */}
       {flow.step.id === 'marke' && (
         <div className="space-y-4">
-          {katalog.length > 0 && (
+          {katalogAdresse && (
             <>
-              <FahrzeugSuche katalog={katalog} makes={makes} onWahl={fahrzeugGewaehlt} onVorschlag={setVorschlag} mitQuelle={false} />
+              <FahrzeugSuche katalogAdresse={katalogAdresse} makes={makes} onWahl={fahrzeugGewaehlt} onVorschlag={setVorschlag} mitQuelle={false} />
               <p className="pt-2 font-mono text-caption uppercase tracking-label text-foreground-muted">Oder Marke wählen</p>
             </>
           )}
@@ -1030,7 +1050,7 @@ export function Assistent({
             </Link>
           </p>
           {/* Quelle des Katalogs am Ende des Schritts statt im Arbeitsfluss (A-025, MA-17) */}
-          {katalog.length > 0 && <p className="text-caption text-foreground-muted">{KATALOG_QUELLE}</p>}
+          {katalogAdresse && <p className="text-caption text-foreground-muted">{KATALOG_QUELLE}</p>}
         </div>
       )}
 
@@ -1096,6 +1116,29 @@ export function Assistent({
                 Ändern
               </button>
             </p>
+          )}
+          {/* Generation nur bei Reihen, die welche tragen (A-047); sonst bleibt es beim Baujahr. */}
+          {data.generationen.length > 0 && (
+            <div className="sm:col-span-2">
+              <Field label="Generation (freiwillig)" hint="Grenzt die Jahre auf den Bauzeitraum der Generation ein.">
+                {({ id, describedBy }) => (
+                  <Select
+                    id={id}
+                    aria-describedby={describedBy}
+                    value={data.generation}
+                    onChange={(event) => flow.update({ generation: event.target.value, year: '' })}
+                  >
+                    <option value="">Weiß ich nicht</option>
+                    {data.generationen.map((g) => (
+                      <option key={g.bezeichnung} value={g.bezeichnung}>
+                        {g.bezeichnung}
+                        {g.baujahrVon ? ` (${g.baujahrVon} bis ${g.baujahrBis ?? 'heute'})` : ''}
+                      </option>
+                    ))}
+                  </Select>
+                )}
+              </Field>
+            </div>
           )}
           <Field
             label="Jahr"

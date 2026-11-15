@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getPageContent, getRubrik, getVehicleMakes } from '@/lib/data';
+import { getFahrzeugkatalog, getPageContent, getRubrik, getVehicleMakes } from '@/lib/data';
 import type { KeyKind, VehicleMake } from '@/lib/types';
 import { formatNumber } from '@/lib/format';
 import { PageHeader } from '@/components/layout/page-header';
@@ -13,6 +13,7 @@ import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { KeyKindBadges, KEY_KIND_HINT } from '@/components/autoschluessel/key-kinds';
+import { anfrageHref, KATALOG_QUELLE, katalogIndex, markenAZ, markenZuordnung } from '@/components/autoschluessel/fahrzeug-ziel';
 
 const ROUTE = 'autoschluessel/marken';
 
@@ -46,7 +47,16 @@ function keyKindsOfMake(make: VehicleMake): KeyKind[] {
 }
 
 export default async function MarkenPage() {
-  const [page, makes, rubrik] = await Promise.all([getPageContent(ROUTE), getVehicleMakes(), getRubrik('schluesselfinder')]);
+  const [page, makes, rubrik, katalog] = await Promise.all([
+    getPageContent(ROUTE),
+    getVehicleMakes(),
+    getRubrik('schluesselfinder'),
+    getFahrzeugkatalog(),
+  ]);
+  // Alle Automarken des Katalogs von A bis Z (A-047): mit Markenseite dorthin, sonst in die Anfrage.
+  // Es entstehen keine neuen Seiten (R2).
+  const azMarken = markenAZ(katalog, 'pkw');
+  const markenSeite = markenZuordnung(katalogIndex(katalog, 'pkw'), makes);
 
   const sorted = [...makes].sort((a, b) => a.name.localeCompare(b.name, 'de'));
   const modelCount = makes.reduce((sum, make) => sum + make.models.length, 0);
@@ -166,6 +176,45 @@ export default async function MarkenPage() {
           — wir prüfen ihn einzeln.
         </Alert>
       </Section>
+
+      {azMarken.length > 0 && (
+        <Section>
+          <SectionHeading
+            eyebrow="Von A bis Z"
+            title="Alle Automarken im Fahrzeugkatalog"
+            lead={`${formatNumber(azMarken.length)} Marken aus der Statistik des Kraftfahrt-Bundesamts. Marken mit eigener Seite führen dorthin, alle anderen in die Anfrage, in der wir Ihr Fahrzeug einzeln prüfen.`}
+          />
+          <ul className="mt-8 grid grid-cols-2 gap-x-gutter border-t border-border sm:grid-cols-3 lg:grid-cols-4">
+            {azMarken.map(({ marke, reihen }) => {
+              const slug = markenSeite.get(marke);
+              return (
+                <li key={marke} className="border-b border-border">
+                  <Link
+                    href={slug ? `/autoschluessel/marken/${slug}` : anfrageHref(marke)}
+                    className="group flex min-h-touch items-center justify-between gap-3 py-3"
+                  >
+                    <span className="min-w-0">
+                      <span className="block text-body font-semibold text-foreground group-hover:text-primary">{marke}</span>
+                      <span className="block font-mono text-caption tabular-nums text-foreground-muted">
+                        {`${formatNumber(reihen)} ${nomen(reihen, 'Modellreihe', 'Modellreihen')}${slug ? '' : ', Anfrage'}`}
+                      </span>
+                    </span>
+                    <GlyphPfeilRechts size={16} className="shrink-0 text-foreground-subtle" />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <p className="mt-6 text-small text-foreground-muted">
+            Fahrzeug nicht gefunden?{' '}
+            <Link href={anfrageHref()} className="font-semibold text-primary hover:underline">
+              Anfrage mit Fahrzeugschein und Schlüsselfoto
+            </Link>
+          </p>
+          {/* Quellenvermerk am Ende des Abschnitts (Datenlizenz, MA-17) */}
+          <p className="mt-4 text-caption text-foreground-muted">{KATALOG_QUELLE}</p>
+        </Section>
+      )}
 
       <Section tight>
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-gutter">

@@ -35,29 +35,29 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     label: 'Gleichschließung',
     short: '',
     explanation:
-      'Alle Zylinder der Anlage haben dieselbe Schließung. Ein einziger Schlüssel sperrt jede '
-      + 'Tür, die dazugehört. Es gibt keine Rangfolge und keine Unterscheidung zwischen '
-      + 'Personen: Wer den Schlüssel hat, kommt überall hinein.',
+      'Alle Zylinder haben dieselbe Schließung. Ein Schlüssel sperrt jede Tür, die dazugehört. '
+      + 'Es gibt keinen Schlüssel mit mehr Rechten und keinen Unterschied zwischen Personen. Wer '
+      + 'den Schlüssel hat, kommt überall hinein.',
     suitableFor:
       'Einfamilienhaus, Wohnung mit Keller und Garage, kleine Einheiten mit wenigen Türen und '
       + 'nur einer Nutzergruppe.',
     opensWhat: 'Jeder Schlüssel öffnet jede Tür der Anlage.',
     typicalFor: 'Haus, Wohnung, Garage, Gartenhaus',
-    expandable: 'Begrenzt — weitere Zylinder in derselben Schließung sind möglich.',
+    expandable: 'Begrenzt. Weitere Zylinder mit derselben Schließung sind möglich.',
     info: {
       title: 'Gleichschließung',
       body:
-        'Gleichschließend heißt: gleiche Schließung in allen Zylindern. Das ist die einfachste '
-        + 'Form und noch kein Schließplan mit Ebenen. Wenn später einzelne Personen nur einzelne '
-        + 'Türen öffnen sollen, reicht eine Gleichschließung nicht mehr aus.',
+        'Gleichschließend heißt, dass alle Zylinder dieselbe Schließung haben. Das ist die '
+        + 'einfachste Form, ganz ohne Stufen im Schließplan. Sollen später einzelne Personen nur '
+        + 'einzelne Türen öffnen, reicht eine Gleichschließung nicht mehr aus.',
       figure: {
         motif: 'Schemazeichnung Gleichschließung: ein Schlüssel, Linien zu allen Türen',
         ratio: '4/3',
       },
     },
     bullets: [
-      'Ein Schlüsselprofil für alle Türen',
-      'Keine Berechtigungsstufen',
+      'Ein Schlüssel für alle Türen',
+      'Alle Schlüssel haben dieselben Rechte',
       'Schnell geplant, wenige Angaben nötig',
     ],
     figure: {
@@ -72,31 +72,31 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     label: 'Zentralschlossanlage',
     short: 'Z',
     explanation:
-      'Jede Partei erhält einen eigenen Schlüssel, der nur die eigene Tür öffnet. Zusätzlich '
-      + 'öffnen alle diese Schlüssel die gemeinsam genutzten Türen — zum Beispiel Hauseingang, '
-      + 'Keller, Müllraum oder Fahrradraum. Einen Schlüssel, der alle Wohnungen öffnet, gibt es '
-      + 'in diesem System nicht.',
+      'Bei einer Zentralschließung öffnen mehrere verschiedene Einzelschlüssel dieselben '
+      + 'gemeinsamen Türen. Im Mehrfamilienhaus hat jede Partei einen eigenen Schlüssel für die '
+      + 'eigene Wohnung. Derselbe Schlüssel öffnet auch Hauseingang, Keller, Müllraum oder '
+      + 'Fahrradraum. Einen Schlüssel für alle Wohnungen gibt es hier nicht.',
     suitableFor:
-      'Mehrfamilienhaus und Wohnanlage: mehrere Parteien, eigene Türen, gemeinsame Zugänge.',
+      'Mehrfamilienhaus und Wohnanlage mit mehreren Parteien, eigenen Türen und gemeinsamen Zugängen.',
     opensWhat:
-      'Eigener Schlüssel: eigene Tür plus alle gemeinsamen Türen. Kein übergeordneter Schlüssel.',
+      'Jeder Schlüssel öffnet die eigene Tür und alle gemeinsamen Türen. Einen Hauptschlüssel gibt es nicht.',
     typicalFor: 'Mehrfamilienhaus, Wohnanlage, Bürogemeinschaft',
     expandable: 'Ja, wenn der Schließplan Reserven für weitere Parteien vorsieht.',
     info: {
       title: 'Zentralschlossanlage (Z)',
       body:
-        'Das „Z“ steht für Zentralschloss: Die gemeinsamen Türen sind die Zentralschlösser, die '
-        + 'jeder Schlüssel der Anlage öffnet. Die Wohnungstüren bleiben voneinander getrennt. '
-        + 'Damit behält jede Partei ihren eigenen Bereich für sich.',
+        'Das „Z“ steht für Zentralschloss. Man sagt auch Zentralschließung. Zentralschlösser '
+        + 'sitzen in den gemeinsamen Türen, und jeder Schlüssel der Anlage öffnet sie. Die '
+        + 'Wohnungstüren bleiben voneinander getrennt. So behält jede Partei ihren eigenen Bereich.',
       figure: {
         motif: 'Schemazeichnung Zentralschlossanlage: drei Wohnungsschlüssel, alle öffnen die Haustür',
         ratio: '4/3',
       },
     },
     bullets: [
-      'Eigene Tür bleibt privat',
-      'Gemeinsame Türen für alle geöffnet',
-      'Kein Schlüssel über alle Wohnungen',
+      'Die eigene Tür bleibt privat',
+      'Gemeinsame Türen öffnet jeder Schlüssel',
+      'Kein Schlüssel für alle Wohnungen',
     ],
     figure: {
       motif: 'Schemazeichnung Zentralschlossanlage: Wohnungstüren getrennt, Haustür und Keller gemeinsam',
@@ -110,22 +110,22 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     label: 'Hauptschlüsselanlage',
     short: 'HS',
     explanation:
-      'Jede Person öffnet mit ihrem Schlüssel genau die Türen, für die sie zuständig ist. '
-      + 'Zusätzlich gibt es einen Hauptschlüssel, der alle Türen der Anlage öffnet. Wer welchen '
-      + 'Schlüssel bekommt, wird vorher in einem Schließplan festgelegt.',
+      'Bei einer Hauptschlüsselanlage hat jede Person feste Rechte. Ihr Schlüssel öffnet genau die '
+      + 'Türen, die ihr zugeordnet sind. Ein Hauptschlüssel öffnet alle Türen der Anlage. Wer '
+      + 'welchen Schlüssel bekommt, legen wir vorher im Schließplan fest.',
     suitableFor:
       'Betrieb, Praxis, Kanzlei, Schule oder Verwaltungsgebäude mit mehreren Abteilungen und '
       + 'unterschiedlichen Zuständigkeiten.',
     opensWhat:
-      'Nutzerschlüssel: nur die zugewiesenen Türen. Hauptschlüssel: alle Türen der Anlage.',
+      'Jeder Nutzerschlüssel öffnet nur seine Türen. Der Hauptschlüssel öffnet alle Türen der Anlage.',
     typicalFor: 'Betrieb, Praxis, Schule, Verwaltung',
     expandable: 'Ja, wenn im Schließplan Reserven für weitere Türen und Nutzer eingeplant sind.',
     info: {
       title: 'Hauptschlüsselanlage (HS)',
       body:
         '„HS“ ist die übliche Abkürzung für Hauptschlüssel. Der Hauptschlüssel liegt meist bei '
-        + 'der Leitung oder der Haustechnik. Für den Alltag erhält jede Person nur die Türen, '
-        + 'die sie wirklich braucht — das begrenzt den Aufwand, wenn ein Schlüssel abhandenkommt.',
+        + 'der Leitung oder der Haustechnik. Im Alltag öffnet jede Person nur die Türen, die sie '
+        + 'wirklich braucht. Geht ein Schlüssel verloren, hält sich der Aufwand so in Grenzen.',
       figure: {
         motif: 'Schemazeichnung Hauptschlüsselanlage: Hauptschlüssel über drei Abteilungsschlüsseln',
         ratio: '4/3',
@@ -148,22 +148,22 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     label: 'Generalhauptschlüsselanlage',
     short: 'GHS',
     explanation:
-      'Mehrere Hauptschlüsselanlagen werden unter einem übergeordneten Schlüssel zusammengefasst. '
-      + 'So entstehen mehrere Ebenen: Nutzer, Abteilung oder Gebäude, und darüber der '
-      + 'Generalhauptschlüssel, der alles öffnet. Jede Ebene lässt sich getrennt planen.',
+      'Eine Generalhauptschlüsselanlage hat mehrere Bereiche und mehrere Stufen. Jeder Bereich, '
+      + 'etwa ein Gebäude oder eine Abteilung, hat einen eigenen Hauptschlüssel. Ganz oben steht '
+      + 'der Generalhauptschlüssel, der alles öffnet. Jede Stufe lässt sich getrennt planen.',
     suitableFor:
       'Mehrere Gebäude, größere Liegenschaften, Hausverwaltungen mit vielen Objekten und '
       + 'öffentliche Einrichtungen mit mehreren Bereichen.',
     opensWhat:
-      'Mehrere Stufen: Nutzer, Abteilung oder Gebäude, darüber der Generalhauptschlüssel für alles.',
+      'Nutzer, Abteilung oder Gebäude bilden eigene Stufen. Der Generalhauptschlüssel öffnet alles.',
     typicalFor: 'Mehrere Gebäude, Hausverwaltung, öffentliche Einrichtung',
-    expandable: 'Ja — dieses System ist auf Wachstum ausgelegt, sofern die Ebenen sauber geplant sind.',
+    expandable: 'Ja. Das System ist auf Wachstum ausgelegt, wenn die Ebenen sauber geplant sind.',
     info: {
       title: 'Generalhauptschlüsselanlage (GHS)',
       body:
-        '„GHS“ steht für Generalhauptschlüssel. Der Unterschied zur Hauptschlüsselanlage ist die '
-        + 'zusätzliche Ebene: Jedes Gebäude oder jede Abteilung hat einen eigenen Hauptschlüssel, '
-        + 'und darüber steht ein Schlüssel für die gesamte Liegenschaft. Je mehr Ebenen, desto '
+        '„GHS“ steht für Generalhauptschlüssel. Anders als bei der Hauptschlüsselanlage gibt es '
+        + 'eine Ebene mehr. Jedes Gebäude oder jede Abteilung hat einen eigenen Hauptschlüssel. '
+        + 'Darüber steht ein Schlüssel für die gesamte Liegenschaft. Je mehr Ebenen, desto '
         + 'wichtiger ist eine saubere Planung von Anfang an.',
       figure: {
         motif: 'Schemazeichnung Generalhauptschlüsselanlage: drei Ebenen als Baumstruktur',
@@ -187,21 +187,21 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     label: 'Erweiterbare Anlage',
     short: '',
     explanation:
-      'Kein eigenes Schließsystem, sondern eine Entscheidung bei der Planung: Im Schließplan '
-      + 'bleiben Plätze für Türen und Nutzer frei, die es heute noch nicht gibt. Jedes der vier '
-      + 'Systeme lässt sich so anlegen. Ohne diese Reserve muss eine Anlage später unter '
+      'Das ist kein eigenes Schließsystem, sondern eine Entscheidung bei der Planung. Im '
+      + 'Schließplan bleiben Plätze frei für Türen und Nutzer, die es heute noch nicht gibt. Das '
+      + 'geht bei jedem der vier Systeme. Ohne diese Reserve muss eine Anlage später unter '
       + 'Umständen neu aufgebaut werden.',
     suitableFor:
       'Alle, die mit Umbau, Anbau, weiteren Mietparteien oder zusätzlichen Immobilien rechnen.',
-    opensWhat: 'Wie im gewählten System — zusätzlich sind Reserven für später vorgesehen.',
+    opensWhat: 'Wie im gewählten System, dazu Reserven für später.',
     typicalFor: 'Wachsende Betriebe, Bauvorhaben in Abschnitten, Verwaltungen mit Zukäufen',
-    expandable: 'Ja — das ist der Zweck dieser Planung.',
+    expandable: 'Ja. Dafür ist diese Planung da.',
     info: {
       title: 'Erweiterbare Anlage',
       body:
-        'Beim Anlegen des Schließplans wird festgelegt, wie viele zusätzliche Türen und '
-        + 'Schließungen später noch möglich sein sollen. Sagen Sie uns dafür, was Sie in den '
-        + 'nächsten Jahren vorhaben — auch wenn es noch nicht entschieden ist.',
+        'Beim Anlegen des Schließplans legen wir fest, wie viele Türen und Schließungen später '
+        + 'noch dazukommen können. Sagen Sie uns dafür, was Sie in den nächsten Jahren vorhaben. '
+        + 'Das gilt auch, wenn noch nichts entschieden ist.',
       figure: {
         motif: 'Schemazeichnung erweiterbare Anlage: belegte und freie Plätze im Schließplan',
         ratio: '4/3',

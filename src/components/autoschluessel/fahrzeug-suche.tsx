@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { scrollVerhalten } from '@/lib/bewegung';
 
@@ -13,6 +13,54 @@ import type { VehicleMake } from '@/lib/types';
 
 import { anfrageHref, fahrzeugZiel, KATALOG_QUELLE, markenZuordnung, type FahrzeugZiel, type KatalogEintrag } from './fahrzeug-ziel';
 
+/** Geladene Kataloge je Adresse: Ein Schrittwechsel lädt nicht neu. */
+const geladen = new Map<string, Promise<KatalogEintrag[]>>();
+
+export type KatalogStatus = 'leer' | 'laedt' | 'bereit' | 'fehler';
+
+/**
+ * Katalog einer Klasse nachladen (A-047): erst beim ersten Gebrauch der Suche, nicht mit der Seite. Ein
+ * Fehler lässt sich mit `laden` erneut versuchen; die Wege ohne Suche bleiben davon unberührt.
+ */
+export function useKatalog(adresse: string): { status: KatalogStatus; katalog: KatalogEintrag[]; laden: () => void } {
+  const [zustand, setZustand] = useState<{ status: KatalogStatus; katalog: KatalogEintrag[] }>({ status: 'leer', katalog: [] });
+  const aktiv = useRef(true);
+  useEffect(() => {
+    aktiv.current = true;
+    return () => {
+      aktiv.current = false;
+    };
+  }, []);
+  const laden = useCallback(() => {
+    setZustand((z) => (z.status === 'leer' || z.status === 'fehler' ? { ...z, status: 'laedt' } : z));
+    let anfrage = geladen.get(adresse);
+    if (!anfrage) {
+      anfrage = fetch(adresse, { headers: { Accept: 'application/json' } }).then(async (antwort) => {
+        if (!antwort.ok) throw new Error(`Katalog: ${antwort.status}`);
+        const daten: unknown = await antwort.json();
+        return Array.isArray(daten) ? (daten as KatalogEintrag[]) : [];
+      });
+      geladen.set(adresse, anfrage);
+    }
+    anfrage.then(
+      (katalog) => {
+        if (aktiv.current) setZustand({ status: 'bereit', katalog });
+      },
+      () => {
+        geladen.delete(adresse);
+        if (aktiv.current) setZustand({ status: 'fehler', katalog: [] });
+      },
+    );
+  }, [adresse]);
+  return { ...zustand, laden };
+}
+
+/** Gewählter Treffer: Ziel im Ablauf und der Katalogeintrag (etwa für Generationen). */
+export interface FahrzeugWahl {
+  ziel: Exclude<FahrzeugZiel, { art: 'anfrage' }>;
+  eintrag: KatalogEintrag;
+}
+
 const HINWEIS: Record<FahrzeugZiel['art'], string> = {
   gepflegt: 'Preis und Termin online',
   marke: 'Termin nach Prüfung Ihrer Angaben',
@@ -20,38 +68,45 @@ const HINWEIS: Record<FahrzeugZiel['art'], string> = {
 };
 
 /**
- * Fahrzeugsuche über den ganzen Katalog (G-14): Marke und Modell in einem Feld, Tippfehler
- * erlaubt, gewichtet nach Bestand. Ein Treffer führt je nach Datenlage in den Weg mit Preis und
- * Anzahlung, in „Modell nicht aufgeführt“ oder in die Anfrage (G-15). „Nicht dabei“ führt immer
- * in die Anfrage. Mit `onVorschlag` meldet die Suche den ersten wählbaren Treffer, damit „Weiter“ ihn
- * übernehmen kann (A-025); er trägt dann die Marke „Vorschlag“. Ohne `mitQuelle` steht die Quelle des
- * Katalogs nicht hier, sondern beim Aufrufer.
+ * Fahrzeugsuche über den Pkw-Katalog (G-14): Marke und Modell in einem Feld, Tippfehler erlaubt,
+ * gewichtet nach Bestand. Der Katalog kommt erst beim ersten Gebrauch aus `katalogAdresse` (A-047). Ein
+ * Treffer führt je nach Datenlage in den Weg mit Preis und Anzahlung, in „Modell nicht aufgeführt“ oder
+ * in die Anfrage (G-15). „Nicht dabei“ führt immer in die Anfrage. Mit `onVorschlag` meldet die Suche den
+ * ersten wählbaren Treffer, damit „Weiter“ ihn übernehmen kann (A-025); er trägt dann die Marke
+ * „Vorschlag“. Ohne `mitQuelle` steht die Quelle des Katalogs nicht hier, sondern beim Aufrufer.
  */
 export function FahrzeugSuche({
-  katalog,
+  katalogAdresse,
   makes,
   onWahl,
   onVorschlag,
   mitQuelle = true,
 }: {
-  katalog: KatalogEintrag[];
+  katalogAdresse: string;
   makes: VehicleMake[];
-  onWahl: (ziel: Exclude<FahrzeugZiel, { art: 'anfrage' }>) => void;
-  onVorschlag?: (ziel: Exclude<FahrzeugZiel, { art: 'anfrage' }> | null) => void;
+  onWahl: (wahl: FahrzeugWahl) => void;
+  onVorschlag?: (wahl: FahrzeugWahl | null) => void;
   mitQuelle?: boolean;
 }) {
   const [text, setText] = useState('');
   const liste = useRef<HTMLUListElement>(null);
+  const { status, katalog, laden } = useKatalog(katalogAdresse);
   const marken = useMemo(() => markenZuordnung(katalog, makes), [katalog, makes]);
   const suche = text.trim();
   const treffer = useMemo(
-    () => (suche.length >= 2 ? sucheFahrzeuge(suche, katalog, { hoechstens: 6 }).map((t) => fahrzeugZiel(t.reihe, makes, marken)) : []),
+    () =>
+      suche.length >= 2
+        ? sucheFahrzeuge(suche, katalog, { hoechstens: 6, klasse: 'pkw' }).map((t) => ({ ziel: fahrzeugZiel(t.reihe, makes, marken), eintrag: t.reihe }))
+        : [],
     [suche, katalog, makes, marken],
   );
 
   // Erster wählbarer Treffer als Vorschlag für „Weiter“ (A-025)
   const erster = treffer[0];
-  const vorschlag = erster && erster.art !== 'anfrage' ? erster : null;
+  const vorschlag = useMemo<FahrzeugWahl | null>(
+    () => (erster && erster.ziel.art !== 'anfrage' ? { ziel: erster.ziel, eintrag: erster.eintrag } : null),
+    [erster],
+  );
   useEffect(() => {
     onVorschlag?.(vorschlag);
   }, [vorschlag, onVorschlag]);
@@ -71,7 +126,11 @@ export function FahrzeugSuche({
             aria-describedby={describedBy}
             type="search"
             value={text}
-            onChange={(event) => setText(event.target.value)}
+            onFocus={laden}
+            onChange={(event) => {
+              setText(event.target.value);
+              laden();
+            }}
             autoComplete="off"
             enterKeyHint="search"
           />
@@ -79,12 +138,26 @@ export function FahrzeugSuche({
       </Field>
 
       <p aria-live="polite" className="sr-only">
-        {suche.length >= 2 ? `${treffer.length} Treffer` : ''}
+        {suche.length >= 2 && status === 'bereit' ? `${treffer.length} Treffer` : ''}
       </p>
+
+      {suche.length >= 2 && status === 'laedt' && <p className="text-small text-foreground-muted">Fahrzeugliste wird geladen.</p>}
+      {status === 'fehler' && (
+        <p className="text-small text-foreground-muted" role="status">
+          Die Fahrzeugliste ist gerade nicht erreichbar.{' '}
+          <button type="button" onClick={laden} className="font-semibold text-primary hover:underline">
+            Erneut versuchen
+          </button>{' '}
+          oder{' '}
+          <Link href={anfrageHref(suche)} className="font-semibold text-primary hover:underline">
+            Fahrzeug anfragen
+          </Link>
+        </p>
+      )}
 
       {treffer.length > 0 && (
         <ul ref={liste} className="scroll-mb-28 divide-y divide-border rounded-lg border border-border bg-surface" aria-label="Treffer">
-          {treffer.map((ziel, i) => {
+          {treffer.map(({ ziel, eintrag }, i) => {
             const vorgeschlagen = Boolean(onVorschlag) && i === 0 && ziel.art !== 'anfrage';
             const inhalt = (
               <>
@@ -103,13 +176,13 @@ export function FahrzeugSuche({
             const klasse =
               'flex min-h-touch-lg w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors duration-quick hover:bg-surface-muted';
             return (
-              <li key={ziel.name}>
+              <li key={eintrag.id}>
                 {ziel.art === 'anfrage' ? (
                   <Link href={anfrageHref(ziel.name)} className={klasse}>
                     {inhalt}
                   </Link>
                 ) : (
-                  <button type="button" onClick={() => onWahl(ziel)} className={klasse}>
+                  <button type="button" onClick={() => onWahl({ ziel, eintrag })} className={klasse}>
                     {inhalt}
                   </button>
                 )}
@@ -119,7 +192,7 @@ export function FahrzeugSuche({
         </ul>
       )}
 
-      {suche.length >= 2 && treffer.length === 0 && (
+      {suche.length >= 2 && status === 'bereit' && treffer.length === 0 && (
         <p className="scroll-mb-28 text-small text-foreground-muted">
           Kein Treffer für „{suche}“.{' '}
           <Link href={anfrageHref(suche)} className="font-semibold text-primary hover:underline">

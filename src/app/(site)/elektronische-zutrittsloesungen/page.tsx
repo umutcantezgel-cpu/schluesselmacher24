@@ -66,12 +66,13 @@ const BLOCKS: BuildingBlock[] = [
     id: 'rfid',
     title: 'RFID-Transponder und Zutrittskarten',
     body:
-      'Ein Transponder oder eine Karte wird vor einen Leser gehalten, der die hinterlegte '
-      + 'Berechtigung prüft. Das Medium selbst trägt keinen Bart und lässt sich nicht nachfeilen.',
+      'RFID heißt, dass ein Chip per Funk gelesen wird. Sie halten eine Karte oder einen '
+      + 'Transponder, also einen kleinen Anhänger mit Chip, vor einen Leser. Der Leser prüft, ob '
+      + 'Sie hinein dürfen. Das Medium hat keinen Bart und lässt sich nicht nachfeilen.',
     points: [
       'Karten im Scheckkartenformat, Schlüsselanhänger oder Aufkleber',
       'Ein Medium kann mehrere Türen öffnen, ohne dass Schlüssel dazukommen',
-      'Ausgabe und Entzug erfolgen in der Verwaltung, nicht an der Tür',
+      'Ausgeben und Entziehen erledigen Sie in der Verwaltung, nicht an der Tür',
     ],
     icon: IconTransponder,
     iconSize: 40,
@@ -80,8 +81,8 @@ const BLOCKS: BuildingBlock[] = [
     id: 'smartphone',
     title: 'Smartphone- und App-Steuerung',
     body:
-      'Die Berechtigung liegt auf dem Mobiltelefon der Nutzerin oder des Nutzers. Das ist '
-      + 'praktisch, wenn Personen kurzfristig Zutritt brauchen und kein Medium übergeben werden kann.',
+      'Die Berechtigung liegt in einer App auf dem Smartphone. Das ist praktisch, wenn jemand '
+      + 'kurzfristig hinein muss und Sie keine Karte übergeben können.',
     points: [
       'Keine Übergabe eines Gegenstands nötig',
       'Setzt voraus, dass alle Beteiligten ein geeignetes Gerät haben und bedienen wollen',
@@ -94,8 +95,8 @@ const BLOCKS: BuildingBlock[] = [
     id: 'pin',
     title: 'PIN-Code und Tastatur',
     body:
-      'Zutritt über eine Zahlenkombination an einer Tastatur. Es muss nichts mitgeführt werden — '
-      + 'dafür muss der Code bekannt und vertraulich bleiben.',
+      'Sie tippen eine Zahlenfolge an einer Tastatur ein. Mitnehmen müssen Sie nichts. Dafür muss '
+      + 'der Code bekannt sein und geheim bleiben.',
     points: [
       'Gut für Räume mit wechselnden, kurz anwesenden Personen',
       'Codes sollten je Person oder Gruppe vergeben und regelmäßig gewechselt werden',
@@ -108,12 +109,13 @@ const BLOCKS: BuildingBlock[] = [
     id: 'digitale-zylinder',
     title: 'Digitale Zylinder',
     body:
-      'Ein digitaler Zylinder ersetzt den mechanischen Zylinder in der vorhandenen Tür. Der Knauf '
-      + 'dreht erst dann durch, wenn ein berechtigtes Medium erkannt wurde.',
+      'Ein digitaler Zylinder kommt statt des mechanischen Zylinders in Ihre vorhandene Tür. Erst '
+      + 'wenn er eine berechtigte Karte oder einen berechtigten Transponder erkennt, können Sie mit '
+      + 'dem Knauf schließen.',
     points: [
       'In der Regel ohne Kabel und ohne Eingriff in das Türblatt',
       'Maße der Tür und die vorhandene Beschlagsituation entscheiden über die Auswahl',
-      'Batteriebetrieben — der Wechselrhythmus gehört in die Planung',
+      'Läuft mit Batterie, deshalb gehört der Batteriewechsel in die Planung',
     ],
     icon: IconProfilzylinder,
     iconSize: 40,
@@ -122,11 +124,12 @@ const BLOCKS: BuildingBlock[] = [
     id: 'beschlaege',
     title: 'Elektronische Beschläge und Smart Locks',
     body:
-      'Statt des Zylinders wird der Beschlag oder der komplette Griffbereich getauscht. Das ist '
-      + 'sinnvoll, wenn zusätzlich zur Leseeinheit eine andere Griffform oder ein Schutzbeschlag nötig ist.',
+      'Hier wird nicht der Zylinder getauscht, sondern der Beschlag mit dem ganzen Griffbereich. '
+      + 'Das ist sinnvoll, wenn Sie zum Leser auch einen anderen Griff oder einen Schutzbeschlag '
+      + 'brauchen.',
     points: [
       'Leser und Griff bilden eine Einheit',
-      'Einsatz hängt von Türstärke, Dornmaß und Schlossart ab',
+      'Ob er passt, hängt von Türstärke, Schlossart und Dornmaß ab, dem Abstand von der Türkante zur Mitte des Zylinders',
       'Bei Brand- und Fluchttüren gelten besondere Anforderungen an die Ausführung',
     ],
     icon: IconSchutzbeschlag,
@@ -136,8 +139,8 @@ const BLOCKS: BuildingBlock[] = [
     id: 'zeitlich-begrenzt',
     title: 'Zeitlich begrenzte Zugangsberechtigungen',
     body:
-      'Eine Berechtigung erhält ein Start- und ein Enddatum. Nach Ablauf verliert das Medium seine '
-      + 'Gültigkeit, ohne dass jemand es zurückgeben muss.',
+      'Eine Berechtigung bekommt ein Start- und ein Enddatum. Danach öffnet das Medium nicht mehr, '
+      + 'auch wenn niemand es zurückgegeben hat.',
     points: [
       'Passend für Handwerk, Reinigung, Praktikum oder befristete Verträge',
       'Verhindert, dass alte Berechtigungen unbemerkt bestehen bleiben',
@@ -150,8 +153,8 @@ const BLOCKS: BuildingBlock[] = [
     id: 'benutzerverwaltung',
     title: 'Benutzerverwaltung und Berechtigungsgruppen',
     body:
-      'Nutzer werden zu Gruppen zusammengefasst — etwa Verwaltung, Werkstatt oder Reinigung. '
-      + 'Berechtigungen werden an der Gruppe gepflegt, nicht an jeder einzelnen Person.',
+      'Sie fassen Nutzer zu Gruppen zusammen, etwa Verwaltung, Werkstatt oder Reinigung. Die '
+      + 'Rechte pflegen Sie dann für die Gruppe, nicht für jede einzelne Person.',
     points: [
       'Neue Personen übernehmen die Rechte ihrer Gruppe',
       'Änderungen wirken auf alle Mitglieder gleichzeitig',
@@ -164,8 +167,8 @@ const BLOCKS: BuildingBlock[] = [
     id: 'zeitprofile',
     title: 'Berechtigungen nach Wochentag oder Uhrzeit',
     body:
-      'Zusätzlich zur Frage, wer eine Tür öffnen darf, lässt sich festlegen, wann. Ein Medium '
-      + 'öffnet dann nur innerhalb der hinterlegten Zeitfenster.',
+      'Sie legen nicht nur fest, wer eine Tür öffnen darf, sondern auch wann. Ein Medium öffnet '
+      + 'dann nur in den hinterlegten Zeitfenstern.',
     points: [
       'Zum Beispiel Reinigung nur dienstags und donnerstags am Abend',
       'Zeitfenster je Tür und je Gruppe unterschiedlich möglich',
@@ -178,19 +181,19 @@ const BLOCKS: BuildingBlock[] = [
     id: 'sperren',
     title: 'Verlorene Karten und Transponder schnell sperren',
     body:
-      'Geht ein Medium verloren, wird es gesperrt. Die Zylinder bleiben, wie sie sind — der '
-      + 'Austausch ganzer Schließungen entfällt.',
+      'Geht eine Karte oder ein Transponder verloren, wird das Medium gesperrt. Die Zylinder '
+      + 'bleiben, wie sie sind. Ganze Schließungen müssen Sie nicht austauschen.',
     points: [
       'Ersatzmedium wird mit denselben Rechten ausgegeben',
       'Bei lokal verwalteten Anlagen muss die Sperre an die betroffenen Türen übertragen werden',
-      'Bei online verwalteten Anlagen wirkt die Sperre unmittelbar',
+      'Bei online verwalteten Anlagen wirkt die Sperre sofort',
     ],
     icon: GlyphVerbot,
     iconSize: 24,
   },
   {
     id: 'protokoll',
-    title: 'Ereignisprotokoll — optional',
+    title: 'Ereignisprotokoll (optional)',
     body:
       'Manche Systeme können festhalten, welches Medium wann an welcher Tür verwendet wurde. Diese '
       + 'Funktion ist optional und nur dort einsetzbar, wo System und Einsatzbereich das '
@@ -208,12 +211,12 @@ const BLOCKS: BuildingBlock[] = [
     id: 'kombination',
     title: 'Kombination aus mechanischer und elektronischer Lösung',
     body:
-      'Beide Welten lassen sich verbinden: elektronisch an den Türen mit wechselnden Nutzern, '
-      + 'mechanisch überall dort, wo sich selten etwas ändert.',
+      'Sie können beides verbinden. Türen, an denen die Nutzer oft wechseln, bekommen eine '
+      + 'elektronische Lösung. Wo sich selten etwas ändert, bleibt es beim mechanischen Schlüssel.',
     points: [
       'Häufig elektronisch an Haupteingang, Technik- und Lagerräumen',
       'Mechanisch an Innentüren mit festem Nutzerkreis',
-      'Beide Teile werden gemeinsam geplant, damit die Schlüsselübersicht stimmig bleibt',
+      'Wir planen beide Teile zusammen, damit die Übersicht über alle Schlüssel und Medien stimmt',
     ],
     icon: IconKombinierteKonzepte,
     iconSize: 40,
@@ -243,9 +246,9 @@ const PROTOCOL_HINT = {
   title: 'Protokollierung betrifft personenbezogene Daten',
   body:
     'Ein Ereignisprotokoll hält fest, welches Medium wann an welcher Tür verwendet wurde. Damit '
-    + 'entstehen personenbezogene Daten. Für die zulässige Nutzung — Zweck, Umfang, '
-    + 'Aufbewahrungsdauer und die Beteiligung betroffener Personen oder einer Interessenvertretung '
-    + '— ist der Betreiber der Anlage verantwortlich.',
+    + 'entstehen personenbezogene Daten. Für die zulässige Nutzung ist der Betreiber der Anlage '
+    + 'verantwortlich. Dazu gehören Zweck, Umfang, Aufbewahrungsdauer und die Beteiligung '
+    + 'betroffener Personen oder einer Interessenvertretung.',
 };
 
 const MEDIA_HINT = {
@@ -260,11 +263,11 @@ const MEDIA_HINT = {
 const ADMIN_HINT = {
   title: 'Lokal oder online verwaltet',
   body:
-    'Lokal verwaltet heißt: Berechtigungen werden mit einem Programmiergerät oder einem '
-    + 'Mastermedium direkt an die Tür gebracht. Online verwaltet heißt: Die Türen sind mit einer '
-    + 'Verwaltungsstelle verbunden, Änderungen und Sperren wirken ohne Gang zur Tür. Lokal ist '
-    + 'einfacher und unabhängiger, online ist bei vielen Türen und häufigen Änderungen deutlich '
-    + 'weniger Aufwand.',
+    'Lokal verwaltet heißt, dass Sie Berechtigungen direkt an der Tür übertragen. Dafür nutzen Sie '
+    + 'ein Programmiergerät oder ein Mastermedium, also eine Karte mit Verwaltungsrechten. Online '
+    + 'verwaltet heißt, dass die Türen mit einer Verwaltungsstelle verbunden sind. Änderungen und '
+    + 'Sperren wirken dann, ohne dass jemand zur Tür geht. Lokal ist einfacher und unabhängiger. '
+    + 'Online macht bei vielen Türen und häufigen Änderungen deutlich weniger Arbeit.',
 };
 
 const DECISION_ROWS = [
@@ -276,7 +279,7 @@ const DECISION_ROWS = [
   {
     situation: 'Nutzer wechseln regelmäßig',
     mechanisch: 'Jeder Verlust kann einen Zylindertausch bedeuten',
-    elektronisch: 'Medium sperren, Ersatz ausgeben — Zylinder bleiben',
+    elektronisch: 'Medium sperren und Ersatz ausgeben, die Zylinder bleiben',
   },
   {
     situation: 'Zutritt nur zu bestimmten Zeiten',
@@ -299,44 +302,43 @@ const FALLBACK_FAQ = [
   {
     question: 'Muss ich für eine elektronische Lösung neue Türen einbauen?',
     answer:
-      'In der Regel nicht. Digitale Zylinder ersetzen meist den vorhandenen Zylinder, '
-      + 'elektronische Beschläge den vorhandenen Beschlag. Ob das bei Ihrer Tür funktioniert, '
-      + 'hängt von Maßen, Schlossart und Türsituation ab. Das klären wir vor dem Angebot.',
+      'In der Regel nicht. Ein digitaler Zylinder ersetzt meist den vorhandenen Zylinder, ein '
+      + 'elektronischer Beschlag den vorhandenen Beschlag. Ob das bei Ihrer Tür geht, hängt von '
+      + 'Maßen, Schlossart und Einbau ab. Das klären wir vor dem Angebot.',
   },
   {
     question: 'Was passiert, wenn eine Karte oder ein Transponder verloren geht?',
     answer:
-      'Das Medium wird gesperrt und ein Ersatz mit denselben Rechten ausgegeben. Die Zylinder '
+      'Das Medium wird gesperrt, und Sie bekommen Ersatz mit denselben Rechten. Die Zylinder '
       + 'müssen dafür nicht getauscht werden. Bei lokal verwalteten Anlagen muss die Sperre an die '
-      + 'betroffenen Türen übertragen werden, bei online verwalteten Anlagen wirkt sie unmittelbar.',
+      + 'betroffenen Türen übertragen werden. Bei online verwalteten Anlagen wirkt sie sofort.',
   },
   {
     question: 'Kann ich mechanische und elektronische Türen mischen?',
     answer:
-      'Ja. Das ist sogar der häufigste Fall. Elektronisch werden die Türen ausgestattet, an denen '
-      + 'sich der Nutzerkreis ändert; alle übrigen Türen bleiben mechanisch. Wichtig ist, beide '
-      + 'Teile gemeinsam zu planen.',
+      'Ja, das kommt oft vor. Türen, an denen die Nutzer wechseln, bekommen eine elektronische '
+      + 'Lösung. Alle übrigen Türen bleiben mechanisch. Wichtig ist, beide Teile zusammen zu planen.',
   },
   {
     question: 'Werden Zutritte automatisch aufgezeichnet?',
     answer:
-      'Nein. Ein Ereignisprotokoll ist eine optionale Funktion, die nicht in jedem System und '
-      + 'nicht in jedem Einsatzbereich rechtmäßig genutzt werden kann. Ob protokolliert wird, '
-      + 'entscheiden Sie als Betreiber; die Verantwortung für die zulässige Nutzung liegt bei Ihnen.',
+      'Nein. Ein Ereignisprotokoll ist eine optionale Funktion. Sie lässt sich nicht in jedem '
+      + 'System und nicht in jedem Einsatzbereich rechtmäßig nutzen. Ob protokolliert wird, '
+      + 'entscheiden Sie als Betreiber. Die Verantwortung für die zulässige Nutzung liegt bei Ihnen.',
   },
   {
     question: 'Was ist der Unterschied zwischen lokal und online verwalteten Systemen?',
     answer:
       'Bei lokal verwalteten Systemen bringen Sie Änderungen mit einem Programmiergerät oder einem '
       + 'Mastermedium an die jeweilige Tür. Bei online verwalteten Systemen sind die Türen mit '
-      + 'einer Verwaltungsstelle verbunden, Änderungen und Sperren wirken ohne Gang zur Tür.',
+      + 'einer Verwaltungsstelle verbunden. Änderungen und Sperren wirken dann ohne Gang zur Tür.',
   },
   {
     question: 'Was kostet eine elektronische Zutrittslösung?',
     answer:
-      'Das hängt von der Anzahl der Türen und Nutzer, den gewählten Medien, der Verwaltungsart und '
-      + 'dem Montageumfang ab. Erfassen Sie Ihr Vorhaben im Konfigurator — daraus erstellen wir ein '
-      + 'Angebot mit nachvollziehbaren Positionen.',
+      'Das hängt von der Zahl der Türen und Nutzer ab, von den Medien, der Art der Verwaltung und '
+      + 'dem Aufwand für die Montage. Erfassen Sie Ihr Vorhaben im Konfigurator. Daraus erstellen '
+      + 'wir ein Angebot mit nachvollziehbaren Positionen.',
   },
 ];
 
@@ -344,7 +346,7 @@ const RELATED_LINKS = [
   {
     href: '/elektronische-zutrittsloesungen/konfigurator',
     label: 'Zutrittskonfigurator',
-    description: 'Acht Fragen zu Ihrem Objekt — daraus wird das Angebot.',
+    description: 'Acht Fragen zu Ihrem Objekt. Daraus erstellen wir das Angebot.',
   },
   {
     href: '/schliessanlagen',
@@ -397,7 +399,7 @@ export default async function ElektronischeZutrittsloesungenPage() {
         rubrik={rubrik}
         eyebrow={process.label}
         title={page?.headline ?? 'Elektronische Zutrittslösungen'}
-        lead={page?.subline ?? 'Karte, Transponder, PIN, App und digitale Zylinder.'}
+        lead={page?.subline ?? 'Zutritt mit Karte, Transponder, PIN, App oder digitalem Zylinder. Wir planen die Lösung für Ihr Objekt und richten sie ein.'}
         crumbs={[{ href: `/${ROUTE}`, label: 'Elektronische Zutrittslösungen' }]}
         bereich="elektronische-zutrittsloesungen"
         visual={
@@ -419,15 +421,15 @@ export default async function ElektronischeZutrittsloesungenPage() {
           <div className="lg:col-span-7">
             <p className="prose-sm24 max-w-2xl text-body">
               {page?.intro
-                ?? 'Elektronische Zutrittslösungen ersetzen den mechanischen Schlüssel oder ergänzen '
-                  + 'ihn. Verlorene Medien sperren Sie selbst — ohne die Zylinder zu tauschen.'}
+                ?? 'Eine elektronische Zutrittslösung ersetzt den mechanischen Schlüssel oder ergänzt '
+                  + 'ihn. Geht eine Karte oder ein Transponder verloren, sperren Sie das Medium '
+                  + 'selbst. Die Zylinder müssen Sie dafür nicht tauschen.'}
             </p>
 
             <p className="prose-sm24 mt-4 max-w-2xl">
-              Auf dieser Seite finden Sie die elf Bausteine, aus denen sich eine solche Lösung
-              zusammensetzt. Sie müssen nicht alle davon nutzen: In vielen Objekten reichen zwei
-              oder drei Bausteine aus. Welche das sind, klären wir anhand Ihrer Angaben im
-              Konfigurator.
+              Hier finden Sie die elf Bausteine, aus denen sich eine solche Lösung zusammensetzt.
+              Sie brauchen nicht alle. In vielen Objekten reichen zwei oder drei. Welche das sind,
+              klären wir mit Ihren Angaben aus dem Konfigurator.
             </p>
 
             <div className="mt-6 rounded-lg border border-border bg-surface-muted p-4">
@@ -459,7 +461,7 @@ export default async function ElektronischeZutrittsloesungenPage() {
           nummer="01"
           eyebrow="Bausteine"
           title="Elf Bausteine einer elektronischen Zutrittslösung"
-          lead="Jeder Baustein löst eine bestimmte Aufgabe. Erst die Kombination ergibt die Lösung für Ihr Objekt."
+          lead="Jeder Baustein löst eine Aufgabe. Zusammen ergeben sie die Lösung für Ihr Objekt."
           className="sm24-reveal"
         />
 
@@ -536,16 +538,16 @@ export default async function ElektronischeZutrittsloesungenPage() {
             <SectionHeading
               nummer="02"
               eyebrow="Entscheidungshilfe"
-              title="Mechanisch oder elektronisch?"
-              lead="Die Antwort hängt weniger am Objekt als an einer Frage: Wie oft ändert sich, wer hineindarf?"
+              title="Mechanisch, elektronisch oder beides"
+              lead="Das hängt weniger vom Objekt ab als davon, wie oft sich ändert, wer hinein darf."
             />
 
             <p className="prose-sm24 mt-5">
-              Bleibt der Nutzerkreis über Jahre gleich, ist eine mechanische Anlage robust,
-              wartungsarm und unabhängig von Strom und Netz. Wechseln Personen regelmäßig, kostet
-              jeder Verlust bei Mechanik Zylinder und Schlüssel — elektronisch kostet er eine
-              Sperrung. Deshalb ist die Mischung aus beidem in der Praxis häufig die sachlich
-              richtige Lösung.
+              Bleiben die Nutzer über Jahre gleich, ist eine mechanische Anlage robust und
+              wartungsarm. Sie braucht weder Strom noch Netz. Wechseln die Personen regelmäßig,
+              kostet bei Mechanik jeder Verlust neue Zylinder und Schlüssel. Elektronisch sperren
+              Sie nur das verlorene Medium. Deshalb ist eine Mischung aus beidem in der Praxis oft
+              die richtige Lösung.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
@@ -629,7 +631,7 @@ export default async function ElektronischeZutrittsloesungenPage() {
               nummer="03"
               eyebrow="So läuft Ihr Auftrag ab"
               title="Vom Bedarf zum Angebot"
-              lead="Der Konfigurator stellt acht Fragen zu Ihrem Objekt. Sie können jederzeit unterbrechen — Ihre Angaben bleiben im Browser gespeichert."
+              lead="Der Konfigurator stellt acht Fragen zu Ihrem Objekt. Sie können jederzeit unterbrechen. Ihre Angaben bleiben im Browser gespeichert."
             />
 
             {/* Ablauf aus den Rubrikdaten (G-10, G-11) */}
@@ -662,7 +664,7 @@ export default async function ElektronischeZutrittsloesungenPage() {
         <SectionHeading
           nummer="04"
           eyebrow="Häufige Fragen"
-          title="Was Kundinnen und Kunden vorab wissen wollen"
+          title="Häufige Fragen zu elektronischen Zutrittslösungen"
         />
         <Accordion items={faq} className="mt-8" />
       </Section>
@@ -704,14 +706,14 @@ export default async function ElektronischeZutrittsloesungenPage() {
         <p className="mt-6 flex gap-2 text-small text-foreground-muted">
           <GlyphGebaeude size={16} className="mt-0.5 shrink-0" />
           <span>
-            Sie sind unsicher, ob Ihr Vorhaben hierher gehört?{' '}
+            Passt Ihr Vorhaben nicht genau hierher, stellen Sie eine{' '}
             <Link
               href="/service-und-termin/anfrage"
               className="font-semibold text-primary hover:underline"
             >
-              Allgemeine Anfrage stellen
-            </Link>{' '}
-            — wir ordnen es für Sie ein.
+              allgemeine Anfrage
+            </Link>
+            . Wir ordnen es für Sie ein.
           </span>
         </p>
       </Section>

@@ -306,10 +306,33 @@ export function handelsnameAnzeige(text) {
 
 /* ---------- Krafträder ---------------------------------------------------- */
 
+/** Das KBA kürzt Handelsnamen auf 25 Zeichen. */
+export const KBA_NAMENSLAENGE = 25;
+
 /**
- * Katalogzeilen der Klasse „kraftrad“ aus Blatt FZ 2.6. Gleiche Handelsnamen eines Herstellers werden über
- * Groß- und Kleinschreibung und Zeichen hinweg zusammengeführt (`schluessel`), ebenso Hersteller, die nach
- * der Regel denselben Anzeigenamen tragen (HONDA (J), HONDA (I) …).
+ * Reihenname eines Kraftrads aus dem Handelsnamen: der erste Teil (Komma oder Semikolon) ohne den
+ * vorangestellten Herstellernamen („KTM 125 DUKE“ → „125 Duke“, „BMW R1100 GS“ → „R1100 GS“); die
+ * weiteren Teile werden Suchbegriffe. Ein auf 25 Zeichen gekürzter letzter Teil („…, R 120“) fällt weg.
+ */
+export function kraftradName(handelsname, kbaHersteller, marke) {
+  let alle = teile(handelsname);
+  if (handelsname.length === KBA_NAMENSLAENGE && alle.length > 1) alle = alle.slice(0, -1);
+  const vorsilben = [ohneLaenderkuerzel(kbaHersteller), marke, ohneLaenderkuerzel(kbaHersteller).split(/[ -]/)[0]]
+    .map((v) => v.toUpperCase())
+    .sort((a, b) => b.length - a.length);
+  const ohneMarke = (teil) => {
+    const gross = teil.toUpperCase();
+    const v = vorsilben.find((x) => gross.startsWith(`${x} `));
+    return v ? teil.slice(v.length + 1).trim() : teil;
+  };
+  const namen = alle.map(ohneMarke).filter((n) => /\p{L}|\p{N}/u.test(n)).map(handelsnameAnzeige);
+  return { reihe: namen[0] ?? '', weitere: namen.slice(1) };
+}
+
+/**
+ * Katalogzeilen der Klasse „kraftrad“ aus Blatt FZ 2.6. Gleiche Reihennamen (`kraftradName`) eines Herstellers
+ * werden über Groß- und Kleinschreibung und Zeichen hinweg zusammengeführt (`schluessel`), ebenso Hersteller,
+ * die nach der Regel denselben Anzeigenamen tragen (HONDA (J), HONDA (I) …).
  */
 export function kraftraeder(blatt, quelle = FZ2_QUELLE) {
   const { typen, insgesamt } = leseHandelsnamen(blatt, 'FZ 2.6', { anzahl: 'Deutschland' });
@@ -329,29 +352,41 @@ export function kraftraeder(blatt, quelle = FZ2_QUELLE) {
     }
     const marke = herstellerAnzeige(t.hersteller);
     herstellerNamen.set(t.hersteller, marke);
-    const k = `${marke}|${schluessel(t.handelsname)}`;
-    if (!gruppen.has(k)) gruppen.set(k, { marke, namen: new Map(), hersteller: new Set(), bestand: 0 });
+    const { reihe, weitere } = kraftradName(t.handelsname, t.hersteller, marke);
+    if (!reihe) {
+      zaehler.ohneName += 1;
+      zaehler.ohneNameBestand += t.anzahl;
+      continue;
+    }
+    const k = `${marke}|${schluessel(reihe)}`;
+    if (!gruppen.has(k)) gruppen.set(k, { marke, reihen: new Map(), weitere: new Set(), namen: new Set(), hersteller: new Set(), bestand: 0 });
     const g = gruppen.get(k);
-    g.namen.set(t.handelsname, (g.namen.get(t.handelsname) ?? 0) + t.anzahl);
+    g.reihen.set(reihe, (g.reihen.get(reihe) ?? 0) + t.anzahl);
+    for (const w of weitere) g.weitere.add(w);
+    g.namen.add(t.handelsname);
     g.hersteller.add(t.hersteller);
     g.bestand += t.anzahl;
   }
   const reihen = [];
   for (const g of gruppen.values()) {
     // Schreibweise mit dem größten Bestand, bei Gleichstand die zuerst gelesene.
-    const [haupt] = [...g.namen.entries()].sort((a, b) => b[1] - a[1]);
-    const reihe = handelsnameAnzeige(haupt[0]);
+    const [[reihe]] = [...g.reihen.entries()].sort((a, b) => b[1] - a[1]);
+    // Weitere Namen nur mit Buchstaben und ab drei Zeichen: „N“ oder „2“ aus „S 50 B 1,N,B 2“ sind Ausstattungen.
+    const alias = [...g.weitere]
+      .filter((w) => schluessel(w) !== schluessel(reihe) && schluessel(w).length >= 3 && /\p{L}/u.test(w))
+      .slice(0, 6);
     reihen.push({
       id: `kraftrad-${kennung(g.marke, reihe)}`,
       klasse: 'kraftrad',
       marke: g.marke,
       reihe,
-      kbaName: [...g.hersteller].join(' / ') + ': ' + [...g.namen.keys()].join(' / '),
+      kbaName: [...g.hersteller].join(' / ') + ': ' + [...g.namen].join(' / '),
       bestand: g.bestand,
       quelle,
       klonbar: 'unbekannt',
       gehaeuse: 'unbekannt',
       leistungen: [],
+      ...(alias.length ? { alias } : {}),
       sichtbar: true,
     });
   }
@@ -526,34 +561,67 @@ export const MARKENWORTE = [
   ['BMW', 'BMW'],
 ].sort((a, b) => b[0].length - a[0].length);
 
+/** Markenworte, die Teil des Modellnamens bleiben: „RANGE ROVER EVOQUE“ ist bei Land Rover die Reihe „Range Rover Evoque“. */
+const MARKENWORT_BLEIBT = new Set(['RANGE ROVER']);
+
+/**
+ * Untermarken und ihre Stammmarke, belegt durch die Handelsnamen in FZ 2.2 („CUPRA LEON“ unter SEAT (E),
+ * „ABARTH 500“ unter FCA (I), „BMW ALPINA B3“ unter ALPINA, „Genesis GV80“ unter HYUNDAI MOTOR (ROK)).
+ * Gleiche Reihennamen bei Unter- und Stammmarke sind keine Dublette. Dieselbe Liste nutzt die Suche
+ * (src/lib/fahrzeuge/suche.ts, UNTERMARKEN; der Test hält beide gleich).
+ */
+export const UNTERMARKEN = { Abarth: 'Fiat', Alpina: 'BMW', Cupra: 'SEAT', Genesis: 'Hyundai' };
+
 /** Marke eines Handelsnamens nach Markenwort; `rest` ist der Name ohne Markenwort. */
 export function markeAusName(teil) {
   const gross = teil.toUpperCase();
   for (const [wort, marke] of MARKENWORTE) {
-    if (gross === wort) return { marke, rest: '' };
-    if (gross.startsWith(`${wort} `) || gross.startsWith(`${wort}-`)) return { marke, rest: teil.slice(wort.length + 1).trim() };
+    const rest = (laenge) => (MARKENWORT_BLEIBT.has(wort) ? teil.trim() : teil.slice(laenge).trim());
+    if (gross === wort) return { marke, rest: rest(wort.length) };
+    if (gross.startsWith(`${wort} `) || gross.startsWith(`${wort}-`)) return { marke, rest: rest(wort.length + 1) };
+    // Ohne Leerzeichen vor einer Ziffer: „MAZDA2“, „NISSAN300 ZX“, „WARTBURG353 W“.
+    if (gross.startsWith(wort) && /\d/.test(gross.charAt(wort.length))) return { marke, rest: rest(wort.length) };
   }
   // Abarth steht bei FCA auch hinten: „500 ABARTH“, „PUNTO ABARTH“.
   if (/\sABARTH$/.test(gross)) return { marke: 'Abarth', rest: teil.slice(0, -' ABARTH'.length).trim() };
   return null;
 }
 
+/**
+ * Markenwort in einem weiteren Teil: allein („One Cabrio,MINI“) ab drei Buchstaben, denn „MG“ ist bei Kia ein
+ * Modellkürzel („Magentis,Optima,MG“); mit Namen nur, wenn er dem ersten Teil gleicht („G80, Genesis G80“).
+ * „MASTER,NISSAN INTERSTAR“ belegt keine Marke für Master. Vom KBA auf 25 Zeichen gekürzte Reste („…,In“)
+ * zählen nie.
+ */
+function markeAusRest(teil, erster) {
+  const m = markeAusName(teil);
+  if (!m) return null;
+  if (m.rest === '') return teil.length >= 3 ? m : null;
+  return kompakt(m.rest) === kompakt(erster) ? m : null;
+}
+
 /** Teile eines Handelsnamens (Komma oder Semikolon), ohne Leeres. */
 export function teile(handelsname) {
-  return handelsname.split(/\s*[,;]\s*/).map((t) => t.replace(/\s+/g, ' ').trim()).filter(Boolean);
+  return handelsname
+    .split(/\s*[,;]\s*|\s+(?:od\.|oder|or|o\.)\s*/i)
+    .map((t) => t.replace(/^[^\p{L}\p{N}]+|[()]+$/gu, '')).map((t) => t.replace(/\s+/g, ' ').trim()).filter(Boolean);
 }
 
 const kompakt = (text) => schluessel(text);
 
-/** Schlüssel der vorhandenen Reihen einer Marke: Reihenname, Teile, Aliase, KBA-Name ohne Markenwort. */
+/** Schlüssel der vorhandenen Reihen einer Marke: Reihenname, Teile und Aliase. */
 export function reihenSchluessel(reihen) {
   const schluesselListe = [];
   for (const r of reihen) {
-    const quellen = [r.reihe, ...(r.alias ?? [])];
-    for (const q of quellen) {
+    for (const q of [r.reihe, ...(r.alias ?? [])]) {
       for (const t of q.split(/\s*(?:,|\/)\s*/)) {
         const k = kompakt(t);
         if (k) schluesselListe.push({ k, reihe: r, klasse: /^([a-z]{1,3})klasse$/.exec(k)?.[1], er: /^(\d)er$/.exec(k)?.[1] });
+        // Erstes Wort eines mehrteiligen Namens, wenn es für sich ein Modellname ist: „SX4 S-Cross“ → SX4.
+        const erstes = kompakt(t.split(' ')[0] ?? '');
+        if (erstes !== k && (/\d/.test(erstes) ? erstes.length >= 3 : erstes.length >= 4) && !/^[a-z]{1,3}$/.test(erstes)) {
+          schluesselListe.push({ k: erstes, reihe: r, genau: true });
+        }
       }
     }
   }
@@ -564,7 +632,8 @@ export function reihenSchluessel(reihen) {
  * Entspricht ein Teil eines Handelsnamens einer vorhandenen Reihe? Vergleich auf kompakten Namen
  * (klein, ohne Akzente, ohne Zeichen und Leerzeichen):
  *   a) gleich, oder der Teil beginnt mit dem Reihennamen, wenn dieser mindestens zwei Zeichen hat
- *      („GOLF VARIANT“ → Golf, „XC90 T8“ → XC90);
+ *      („GOLF VARIANT“ → Golf, „XC90 T8“ → XC90); ein Reihenname aus einem Zeichen nur mit Wechsel
+ *      zwischen Ziffer und Buchstabe („3 CABRIO“ → DS 3, aber „E:NY1“ nicht → Honda e);
  *   b) Klassen: „A 180“, „E 220 D“ → A-Klasse, E-Klasse (Buchstaben vor der ersten Ziffer);
  *   c) BMW-Reihen: „320D“ → 3er (erste Ziffer, dann zwei Ziffern);
  *   d) reine Zahlenreihen mit Buchstaben davor: „V40“, „S 60“ → Volvo 40, 60.
@@ -574,9 +643,9 @@ export function entsprichtReihe(teil, schluesselListe) {
   if (!p) return null;
   for (const s of schluesselListe) {
     if (p === s.k) return s.reihe;
+    if (s.genau) continue;
     if (s.k.length >= 2 && p.startsWith(s.k)) return s.reihe;
-    // Einzelzeichen nur mit Wechsel von Ziffer zu Buchstabe oder umgekehrt: „3 CABRIO“ → DS 3, nicht „E:NY1“ → Honda e.
-    if (s.k.length === 1 && p.startsWith(s.k) && /\d/.test(s.k) !== /\d/.test(p[1])) return s.reihe;
+    if (s.k.length === 1 && p.startsWith(s.k) && /\d/.test(s.k) !== /\d/.test(p[1] ?? '')) return s.reihe;
     if (s.klasse && new RegExp(`^${s.klasse}\\d`).test(p)) return s.reihe;
     if (s.er && new RegExp(`^${s.er}\\d\\d`).test(p)) return s.reihe;
     if (/^\d+$/.test(s.k) && new RegExp(`^[a-z]{1,2}${s.k}(?!\\d)`).test(p)) return s.reihe;
@@ -584,15 +653,50 @@ export function entsprichtReihe(teil, schluesselListe) {
   return null;
 }
 
-/** Reihenname einer neuen Zeile: erstes Wort des ersten Teils, ein kurzes Buchstabenwort mit der Zahl danach. */
+/**
+ * Ausstattungs-, Aufbau- und Sammelwörter: Ein Name, der nur aus ihnen besteht („GL“, „SPORT,GSI“,
+ * „COUPE“, „KOMBI“), bezeichnet kein Modell und wird gelistet, nicht übernommen.
+ */
+export const AUSSTATTUNG = new Set([
+  'l', 'ls', 'gl', 'gls', 'glx', 'gt', 'gts', 'gti', 'gsi', 'gte', 'gtl', 's', 'se', 'sel', 'sr', 'cd', 'cdx', 'cs', 'csi', 'csl', 'tl', 'cl',
+  'coupe', 'coupé', 'cabrio', 'cabriolet', 'kabriolet', 'roadster', 'targa', 'turbo', 'sport', 'business', 'kombi', 'bus', 'city',
+  'eco', 'swing', 'joy', 'club', 'royal', 'berlina', 'limousine', 'electric', 'drive', 'edition', 'reihe', 'executive', 'k', 'x', 'z', 'm', 'e', 'f',
+]);
+
+/** Name besteht nur aus Ausstattungswörtern? */
+export function nurAusstattung(teil) {
+  const woerter = teil.toLowerCase().split(/[^a-z0-9äöüéß]+/).filter(Boolean);
+  return woerter.length > 0 && woerter.every((w) => AUSSTATTUNG.has(w));
+}
+
+/** Wörter, die allein kein Modellname sind und das folgende Wort mitnehmen („NEW BEETLE“, „STREET KA“). */
+const NAMENSANFANG = new Set(['new', 'grand', 'street', 'flying', 'marco', 'john', 'range', 'space', 'karmann', 'cont', 'sport', 'super']);
+
+/**
+ * Reihenname einer neuen Zeile aus dem ersten Teil: das erste Wort; ein kurzes Buchstabenwort mit der
+ * Zahl danach („P 601“, „F 355“); eine Zahl mit kurzem Buchstabenwort danach („2 CV“, „17 M“); ein
+ * Namensanfang mit dem folgenden Wort („Street Ka“).
+ */
 export function neueReihe(teil) {
   const woerter = teil.replace(/\s+/g, ' ').trim().split(' ');
-  if (woerter.length > 1 && /^[A-Za-z]{1,2}$/.test(woerter[0]) && /^\d/.test(woerter[1])) return `${woerter[0]} ${woerter[1]}`;
-  return woerter[0];
+  const [a, b] = woerter;
+  if (b !== undefined) {
+    if (/^[A-Za-z]{1,2}$/.test(a) && /^\d/.test(b)) return `${a} ${b}`;
+    if (/^\d{1,2}$/.test(a) && /^[A-Za-z]{1,3}$/.test(b)) return `${a} ${b}`;
+    if (NAMENSANFANG.has(a.toLowerCase().replace(/\.$/, '')) && /^[\p{L}]+$/u.test(b)) return `${a} ${b}`;
+  }
+  return a;
 }
 
 /**
  * Pkw-Zeilen aus Blatt FZ 2.2, die der Katalog noch nicht führt. `katalog` sind die vorhandenen Zeilen.
+ *
+ * Marke: Markenwort im ersten Teil des Handelsnamens, sonst in einem weiteren Teil, sonst ein Markenwort,
+ * das bei demselben Hersteller an einem Namen mit demselben ersten Wort belegt ist („Cooper Clubman,MINI“
+ * belegt Cooper als MINI), sonst die Marke des Herstellers. Bei Herstellern mehrerer Marken ohne Beleg wird
+ * der Name gelistet. Übernommen wird nur, was keiner Reihe derselben Marke entspricht (`entsprichtReihe`),
+ * nicht genau wie eine Reihe einer anderen Marke heißt (Kooperationsmodelle wie „DUSTER“ bei Renault) und
+ * nicht nur aus Ausstattungswörtern besteht.
  */
 export function pkwErgaenzung(blatt, katalog, quelle = FZ2_QUELLE) {
   const { typen } = leseHandelsnamen(blatt, 'FZ 2.2', { anzahl: 'Insgesamt', wohnmobile: 'Wohnmobile' });
@@ -604,8 +708,15 @@ export function pkwErgaenzung(blatt, katalog, quelle = FZ2_QUELLE) {
   }
   const vorhandeneIds = new Set(katalog.map((r) => r.id));
   const schluesselJeMarke = new Map([...vorhandeneMarken].map(([m, rs]) => [m, reihenSchluessel(rs)]));
-  const zaehler = { typzeilen: typen.length, sammel: 0, ohneName: 0, wohnmobil: 0, wohnmobilBestand: 0, entspricht: 0, nurMarke: 0, ohneMarke: [], neu: 0 };
-  const gruppen = new Map();
+  const alleSchluessel = new Map();
+  for (const [m, liste] of schluesselJeMarke) for (const s of liste) alleSchluessel.set(s.k, [...(alleSchluessel.get(s.k) ?? []), m]);
+  const zaehler = {
+    typzeilen: typen.length, sammel: 0, ohneName: 0, wohnmobil: 0, wohnmobilBestand: 0, entspricht: 0, andereMarke: [],
+    nurMarke: 0, ausstattung: [], ohneMarke: [], neu: 0,
+  };
+
+  // 1. Je Zeile: Markenwort im ersten oder einem weiteren Teil, erstes Wort des Namens.
+  const zeilen = [];
   for (const t of typen) {
     if (!(t.hersteller in PKW_HERSTELLER)) throw new Error(`FZ 2.2: Hersteller „${t.hersteller}“ fehlt in PKW_HERSTELLER`);
     if (istSammelzeile(t.handelsname)) {
@@ -622,22 +733,47 @@ export function pkwErgaenzung(blatt, katalog, quelle = FZ2_QUELLE) {
       zaehler.wohnmobilBestand += t.anzahl;
       continue;
     }
-    const [erster] = teile(t.handelsname);
-    const ausName = markeAusName(erster);
-    const marke = ausName?.marke ?? PKW_HERSTELLER[t.hersteller];
+    const alle = teile(t.handelsname);
+    const ersterTreffer = markeAusName(alle[0]);
+    const weitererTreffer = alle.slice(1).map((teil) => markeAusRest(teil, alle[0])).find(Boolean);
+    const erstesWort = kompakt((ersterTreffer ? ersterTreffer.rest : alle[0]).split(' ')[0] ?? '');
+    zeilen.push({ t, alle, ersterTreffer, weitererTreffer, erstesWort });
+  }
+  const belege = new Map();
+  for (const z of zeilen) {
+    // Belegt wird nur über einen weiteren Teil („Cooper Clubman,MINI“); ein Markenwort vorn („CUPRA LEON“)
+    // gilt für diese Zeile allein, sonst würde jeder „LEON“ von SEAT zu Cupra.
+    const beleg = z.ersterTreffer ? undefined : z.weitererTreffer?.marke;
+    if (!beleg || beleg === PKW_HERSTELLER[z.t.hersteller] || !z.erstesWort) continue;
+    const k = `${z.t.hersteller}|${z.erstesWort}`;
+    belege.set(k, new Set([...(belege.get(k) ?? []), beleg]));
+  }
+
+  // 2. Marke festlegen, mit dem Bestand abgleichen, neue Reihen bilden.
+  const gruppen = new Map();
+  for (const { t, alle, ersterTreffer, weitererTreffer, erstesWort } of zeilen) {
+    const beleg = belege.get(`${t.hersteller}|${erstesWort}`);
+    const marke =
+      ersterTreffer?.marke ?? weitererTreffer?.marke ?? (beleg?.size === 1 ? [...beleg][0] : undefined) ?? PKW_HERSTELLER[t.hersteller];
     if (!marke) {
       zaehler.ohneMarke.push(`${t.hersteller}: ${t.handelsname}`);
       continue;
     }
-    // Teile ohne Markenwort derselben Marke.
-    const namensTeile = teile(t.handelsname)
+    // Teile ohne Markenwort derselben Marke; Teile einer anderen Marke fallen weg.
+    const namensTeile = alle
       .map((teil) => {
         const m = markeAusName(teil);
-        return m && m.marke === marke ? m.rest : teil;
+        if (!m) return teil;
+        return m.marke === marke ? m.rest : '';
       })
       .filter(Boolean);
     if (!namensTeile.length) {
       zaehler.nurMarke += 1;
+      continue;
+    }
+    // Nach dem Markenwort folgt eine zweite Marke („VW PORSCHE 914“): nicht sicher zuzuordnen.
+    if (markeAusName(namensTeile[0])) {
+      zaehler.ohneMarke.push(`${t.hersteller}: ${t.handelsname}`);
       continue;
     }
     const liste = schluesselJeMarke.get(marke);
@@ -649,6 +785,20 @@ export function pkwErgaenzung(blatt, katalog, quelle = FZ2_QUELLE) {
     // Gleicher Name wie eine vorhandene Reihe derselben Marke: keine Dublette.
     if (vorhandeneIds.has(kennung(marke, reihe))) {
       zaehler.entspricht += 1;
+      continue;
+    }
+    // Genau der Name einer Reihe einer anderen Marke: Kooperations- oder Lizenzmodell, keine zweite Zeile.
+    // Nur Namen mit Buchstaben und mindestens drei Zeichen: „80“ heißt bei Audi und Volvo verschieden.
+    const fremd = (teil) => {
+      const k = kompakt(teil);
+      return k.length >= 3 && /[a-z]/.test(k) && !AUSSTATTUNG.has(k) && (alleSchluessel.get(k) ?? []).some((m) => m !== marke && UNTERMARKEN[marke] !== m);
+    };
+    if (fremd(reihe) || fremd(namensTeile[0])) {
+      zaehler.andereMarke.push(`${t.hersteller}: ${t.handelsname} → ${marke}`);
+      continue;
+    }
+    if (nurAusstattung(namensTeile[0]) || kompakt(reihe).length < 2) {
+      zaehler.ausstattung.push(`${t.hersteller}: ${t.handelsname}`);
       continue;
     }
     const k = `${marke}|${kompakt(reihe)}`;
@@ -743,12 +893,17 @@ function main(argumente) {
   const p = pkw.zaehler;
   console.log(
     `FZ 2.2: ${p.typzeilen} Typzeilen, ${p.sammel} Sammelzeilen, ${p.ohneName} ohne Handelsnamen, ${p.wohnmobil} Wohnmobil-Aufbauten `
-      + `(${zahlText.format(p.wohnmobilBestand)}), ${p.entspricht} entsprechen einer Reihe, ${p.nurMarke} nur Markenname, `
-      + `${p.ohneMarke.length} ohne sichere Marke, ${p.neu} neue Reihen; neue Marken: ${p.neueMarken.join(', ')}`,
+      + `(${zahlText.format(p.wohnmobilBestand)}), ${p.entspricht} entsprechen einer Reihe, ${p.andereMarke.length} heißen wie eine Reihe einer `
+      + `anderen Marke, ${p.nurMarke} nur Markenname, ${p.ausstattung.length} nur Ausstattungswörter, ${p.ohneMarke.length} ohne sichere `
+      + `Marke, ${p.neu} neue Reihen; neue Marken: ${p.neueMarken.join(', ')}`,
   );
   if (liste) {
     console.log('\nOhne sichere Marke (gelistet, nicht übernommen):');
     for (const n of p.ohneMarke) console.log(`  ${n}`);
+    console.log('\nName einer Reihe einer anderen Marke (gelistet, nicht übernommen):');
+    for (const n of p.andereMarke) console.log(`  ${n}`);
+    console.log('\nNur Ausstattungswörter (gelistet, nicht übernommen):');
+    for (const n of p.ausstattung) console.log(`  ${n}`);
     console.log('\nNeue Pkw-Reihen:');
     for (const r of pkw.reihen) console.log(`  ${r.marke} | ${r.reihe} | ${r.bestand} | ${r.kbaName}`);
   }

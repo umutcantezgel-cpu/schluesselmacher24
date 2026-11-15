@@ -1,6 +1,21 @@
 /* Fahrzeugkatalog (G-14, G-17, G-18, A-009): Auswahlwerte und Regeln. Reine Funktionen. */
 
-import type { FahrzeugLeistung, FahrzeugReihe, GehaeuseStand, Klonbarkeit, VehicleMake } from '../types';
+import type { FahrzeugKlasse, FahrzeugLeistung, FahrzeugReihe, GehaeuseStand, Klonbarkeit, VehicleMake } from '../types';
+
+/**
+ * Fahrzeugklassen des Katalogs (A-047). Pkw und Krafträder (Motorräder, Leichtkrafträder und zugelassene
+ * Roller, wie das KBA sie in FZ 2 führt). Eine weitere Klasse ist hier ein Eintrag, im Typ FahrzeugKlasse
+ * ein Wert und in der Datenbank ein Enum-Wert (additive Migration).
+ */
+export const FAHRZEUGKLASSEN: ReadonlyArray<{ value: FahrzeugKlasse; label: string }> = [
+  { value: 'pkw', label: 'Pkw' },
+  { value: 'kraftrad', label: 'Kraftrad' },
+];
+
+/** Klasse einer Reihe; ältere Daten ohne Klasse sind Pkw. */
+export function klasseVon(reihe: Pick<FahrzeugReihe, 'klasse'>): FahrzeugKlasse {
+  return reihe.klasse ?? 'pkw';
+}
 
 export const KLONBARKEIT: ReadonlyArray<{ value: Klonbarkeit; label: string }> = [
   { value: 'unbekannt', label: 'Unbekannt' },
@@ -43,6 +58,7 @@ export function reihenAusBestand(marken: VehicleMake[]): FahrzeugReihe[] {
     marke.models.map((modell) => {
       const reihe: FahrzeugReihe = {
         id: reiheKennung(marke.name, modell.name),
+        klasse: 'pkw',
         marke: marke.name,
         reihe: modell.name,
         quelle: 'Bestand: content/vehicles.json',

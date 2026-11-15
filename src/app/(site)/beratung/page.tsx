@@ -35,7 +35,7 @@ const THEMEN_MIT_EIGENEM_WEG = [
   {
     href: '/schliessanlagen',
     label: 'Schließanlage planen',
-    text: 'Mehrere Türen, ein System: Wir planen die Schließanlage mit Ihnen.',
+    text: 'Für mehrere Türen planen wir mit Ihnen eine Schließanlage.',
   },
 ];
 
@@ -48,7 +48,7 @@ export default async function BeratungPage() {
         bereich="service-und-termin"
         eyebrow="Beratung"
         title="Beratung mit Rückruf"
-        lead="Für alle Anliegen, die nicht zu einem der anderen Wege passen. Schildern Sie Ihr Anliegen kurz, wir rufen Sie zurück."
+        lead="Passt Ihr Anliegen zu keinem der anderen Wege, sind Sie hier richtig. Schildern Sie es kurz, wir rufen Sie zurück."
         crumbs={[
           { href: '/service-und-termin', label: 'Service und Termin' },
           { href: '/beratung', label: 'Beratung' },

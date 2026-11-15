@@ -26,9 +26,9 @@ const SERVICES = [
   {
     title: 'Autoschlüssel am Fahrzeug',
     body:
-      'Programmieren und Anlernen setzen Zugriff auf das Fahrzeug voraus. Diese Arbeiten lassen '
-      + 'sich nicht per Versand erledigen: Sie bringen das Fahrzeug zum Termin in unsere Werkstatt '
-      + 'in Wetzlar. Ein Einsatz bei Ihnen ist nur nach individueller Prüfung möglich.',
+      'Zum Programmieren und Anlernen brauchen wir Ihr Fahrzeug. Per Versand geht das nicht. Sie '
+      + 'bringen das Fahrzeug zum Termin in unsere Werkstatt in Wetzlar. Ob wir auch zu Ihnen '
+      + 'kommen können, prüfen wir im Einzelfall.',
     needs: [
       'Fahrzeug zum Termin in der Werkstatt',
       'Fahrzeugschein im Original',
@@ -40,24 +40,24 @@ const SERVICES = [
   {
     title: 'Zylinder- und Schlosstausch',
     body:
-      'Austausch von Zylindern, Einsteckschlössern, Beschlägen und Türzusatzschlössern an der '
-      + 'eingebauten Tür.',
-    needs: ['Zugang zur Tür', 'Maße oder der ausgebaute Zylinder', 'freier Arbeitsbereich'],
+      'Wir tauschen Zylinder, Einsteckschlösser, Beschläge und Türzusatzschlösser an Ihrer '
+      + 'eingebauten Tür aus.',
+    needs: ['Zugang zur Tür', 'Maße oder der ausgebaute Zylinder', 'Platz zum Arbeiten an der Tür'],
     href: '/tuer-und-schliesstechnik',
     cta: 'Zur Tür- und Schließtechnik',
   },
   {
     title: 'Montage von Schließanlagen',
     body:
-      'Einbau der Zylinder nach Schließplan, Beschriftung der Schlüssel und Übergabe der '
-      + 'Unterlagen.',
-    needs: ['Zugang zu allen Türen der Anlage', 'anwesende verantwortliche Person', 'Schließplan'],
+      'Wir bauen die Zylinder nach Schließplan ein, beschriften die Schlüssel und übergeben Ihnen '
+      + 'die Unterlagen.',
+    needs: ['Zugang zu allen Türen der Anlage', 'eine verantwortliche Person vor Ort', 'Schließplan'],
     href: '/schliessanlagen/konfigurator',
     cta: 'Projekt erfassen',
   },
   {
     title: 'Elektronische Zutrittslösungen einrichten',
-    body: 'Montage, Einrichtung der Benutzerverwaltung und Einweisung in die Bedienung.',
+    body: 'Wir montieren die Technik, richten die Benutzerverwaltung ein und zeigen Ihnen die Bedienung.',
     needs: ['Strom und, falls nötig, Netzwerk', 'Liste der Nutzer und Berechtigungen'],
     href: '/elektronische-zutrittsloesungen/konfigurator',
     cta: 'Bedarf erfassen',
@@ -65,7 +65,8 @@ const SERVICES = [
   {
     title: 'Sicherheitstechnik installieren',
     body:
-      'Montage von Kameras, Meldern und Kontakten sowie Einrichtung der Alarmierungswege.',
+      'Wir montieren Kameras, Melder und Kontakte. Dazu richten wir ein, wie und an wen ein Alarm '
+      + 'gemeldet wird.',
     needs: ['Zugang zu allen betroffenen Bereichen', 'Internetzugang, falls App-Steuerung gewünscht'],
     href: '/sicherheitstechnik/sicherheitscheck',
     cta: 'Sicherheitscheck starten',
@@ -73,11 +74,11 @@ const SERVICES = [
   {
     title: 'Bestandsaufnahme und Beratung',
     body:
-      'Wir sehen uns die vorhandene Situation an und sagen Ihnen, was sinnvoll ist. Das ist die '
-      + 'Grundlage für ein belastbares Angebot.',
+      'Wir sehen uns an, was vorhanden ist, und sagen Ihnen, was sinnvoll ist. Darauf baut ein '
+      + 'verlässliches Angebot auf.',
     needs: ['Zugang zum Objekt', 'vorhandene Unterlagen, falls verfügbar'],
     href: '/service-und-termin/anfrage',
-    cta: 'Beratungstermin anfragen',
+    cta: 'Anfrage stellen',
   },
 ];
 
@@ -96,7 +97,7 @@ export default async function VorOrtPage() {
         bereich="service-und-termin"
         eyebrow="Vor Ort"
         title="Was wir direkt bei Ihnen erledigen"
-        lead="Nicht jede Arbeit lässt sich per Versand lösen. Hier steht, was vor Ort passiert und was dafür vorbereitet sein sollte."
+        lead="Nicht jede Arbeit geht per Versand. Hier lesen Sie, was vor Ort passiert und was Sie dafür vorbereiten sollten."
         crumbs={[
           { href: '/service-und-termin', label: 'Service und Termin' },
           { href: '/service-und-termin/vor-ort', label: 'Vor-Ort-Leistungen' },
@@ -176,8 +177,8 @@ export default async function VorOrtPage() {
                   Einsatzgebiete
                 </p>
                 <p className="mt-2 max-w-measure text-small text-foreground-muted">
-                  Werkstatt, Anreise und regionale Leistungen stehen auf diesen Seiten. Bestellungen aus
-                  dem Shop liefern wir deutschlandweit.
+                  Auf diesen Seiten finden Sie Werkstatt, Anreise und Leistungen in Ihrer Region.
+                  Bestellungen aus dem Shop liefern wir in ganz Deutschland.
                 </p>
                 <ul className="mt-3 flex flex-wrap gap-x-4">
                   {cities.map((city) => (
@@ -197,12 +198,12 @@ export default async function VorOrtPage() {
             <div className="mt-8 border-y border-border py-6">
               <p className="text-title-sm font-semibold text-foreground">Terminvorlauf</p>
               <p className="mt-2 max-w-measure text-small text-foreground-muted">
-                Termine für Autoschlüssel bieten wir in der Regel ab etwa{' '}
-                {settings.booking.leadTimeDays} Tagen an, damit fahrzeugspezifisches Material sicher
-                beschafft und vorbereitet werden kann.
+                Termine für Autoschlüssel gibt es in der Regel frühestens nach etwa{' '}
+                {settings.booking.leadTimeDays} Tagen. So können wir die Teile für Ihr Fahrzeug
+                sicher besorgen und vorbereiten.
               </p>
               <ButtonLink href="/autoschluessel/anfrage" className="mt-4" size="sm">
-                Termin starten
+                Termin anfragen
               </ButtonLink>
             </div>
           </div>

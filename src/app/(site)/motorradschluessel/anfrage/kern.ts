@@ -1,6 +1,7 @@
 /*
- * Motorradschlüssel-Anfrage (G-19, E6-BAUMEISTER-01): reine Funktionen ohne React. Hersteller und Typ sind
- * freie Eingaben. Es gibt keine Fahrzeugdatenbank und keine Modellliste (G-19). Fahrzeugschein und
+ * Motorradschlüssel-Anfrage (G-19, E6-BAUMEISTER-01, A-047): reine Funktionen ohne React. Hersteller und Typ
+ * sind freie Eingaben; die Suche über die Krafträder aus KBA FZ 2 füllt sie nur vor (Erleichterung, kein
+ * Pflichtweg), die freie Eingabe bleibt der Ausweg für jedes Fahrzeug. Fahrzeugschein und
  * Schlüsselfoto prüft das Formular selbst (R13).
  */
 

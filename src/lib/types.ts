@@ -944,10 +944,23 @@ export interface ServicePage {
 export type Klonbarkeit = 'unbekannt' | 'bestaetigt' | 'nein';
 export type GehaeuseStand = 'unbekannt' | 'verfuegbar' | 'nicht-verfuegbar';
 export type FahrzeugLeistung = 'nachmachen' | 'programmieren' | 'gehaeuse-tausch' | 'transponder-kopie';
+/** Fahrzeugklasse (A-047): Pkw und Krafträder, wie das KBA sie führt. Weitere Klassen sind ein Eintrag in FAHRZEUGKLASSEN. */
+export type FahrzeugKlasse = 'pkw' | 'kraftrad';
+
+/** Generation einer Reihe mit Bauzeitraum, nur mit Quelle (A-047, R4). */
+export interface FahrzeugGeneration {
+  /** Bezeichnung, etwa „Golf 7“ oder „W205“. */
+  bezeichnung: string;
+  baujahrVon?: number;
+  baujahrBis?: number;
+  quelle: string;
+}
 
 /** Eine Modellreihe des Katalogs (KBA FZ 12 oder Bestand), mit Quelle je Angabe. */
 export interface FahrzeugReihe {
   id: string;
+  /** Fahrzeugklasse; fehlt sie (ältere Daten), gilt „pkw“. */
+  klasse?: FahrzeugKlasse;
   marke: string;
   reihe: string;
   /** Name in der KBA-Statistik, etwa „VW GOLF, JETTA“. */
@@ -971,6 +984,8 @@ export interface FahrzeugReihe {
   leistungen: FahrzeugLeistung[];
   /** Weitere Suchbegriffe, etwa „Golf Variant“. */
   alias?: string[];
+  /** Generationen mit Bauzeitraum, nur mit Quelle; ohne sie wählt der Kunde das Baujahr. */
+  generationen?: FahrzeugGeneration[];
   sichtbar: boolean;
 }
 

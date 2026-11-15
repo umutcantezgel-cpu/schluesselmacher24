@@ -27,7 +27,7 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 | FA-KERN-03 | Auftragsweg und Zahlung: Hauptzentrale, Eigenbereich, Partner aus Postleitzahl und Terminort; Anzahlung 69,90 nur im Direktweg; Partnerauftrag erst nach Vollzahlung; Anzeige vor der Zahlung; Restbetrag | FA-05-12 bis -16, -20, FA-22-17 bis -19 | ja | offen |
 | FA-KERN-04 | Partnerauszahlung im Admin: Partnerbetrag, Plattformanteil, Status bis „zur Auszahlung freigegeben“, Freigabe nach Bestätigung, Storno und Rückzahlung mit eindeutigem Stand | FA-05-17 bis -19, FA-22-20 bis -24, -27 | ja | offen, nach FA-KERN-03 und Recherche 04 |
 | FA-KERN-05 | Admin Alltag: Kundenkontakt aus dem Auftrag mit Verlauf, Verfügbarkeit, Lieferzeit, Bestellung bearbeiten, Duplizieren geprüft | FA-22-02, -09, -10, -12, -13, -15, -16 | ja | offen |
-| FA-KERN-06 | Mail: alle Systemmails mit der Domainadresse, Prüfung in der Livegang-Prüfung; Anleitung Zoho, SPF, DKIM, DMARC | FA-24 | nein | läuft |
+| FA-KERN-06 | Mail: alle Systemmails mit der Domainadresse, Prüfung in der Livegang-Prüfung; Anleitung Zoho, SPF, DKIM, DMARC | FA-24 | nein | committet 0927630 |
 
 ## Priorität 3 · Shop
 | Paket | Inhalt | Anforderungen | Schema | Status |
@@ -50,7 +50,7 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 |---|---|---|---|---|
 | FA-INHALT-01 | Tutorials: Rubrik, zehn Themen als Struktur, YouTube-Einbettung mit Einwilligung, im Admin ohne Entwickler pflegbar, Videos auf Leistungsseiten | FA-21, FA-22-32 | ja | offen |
 | FA-INHALT-02 | Hersteller und Systeme früh sichtbar: Bereich auf der Startseite, BKS, ABUS, BURG-WÄCHTER sachlich; Logos erst nach Freigabe | FA-17-02, -03, -20, FA-19 | ja (Logo-Feld) | offen, wartet auf Recherche 06 |
-| FA-INHALT-03 | Texte menschlicher: kurze, klare Sätze auf Leistungsseiten, Gegenprüfung durch zwei unabhängige Leser, ohne Gedankenstriche | FA-02 | nein | Gruppe A (sieben Autoschlüssel-Leistungsseiten) und Gruppe B (Sicherheitstechnik, Tür- und Schließtechnik) laufen; weitere Gruppen offen |
+| FA-INHALT-03 | Texte menschlicher: kurze, klare Sätze auf Leistungsseiten, Gegenprüfung durch zwei unabhängige Leser, ohne Gedankenstriche | FA-02 | nein | Gruppe A (Autoschlüssel-Leistungsseiten) committet 9788b33 · Gruppe B (Tür- und Sicherheitstechnik) committet fbcc918 · Gruppen C (Rubrikseiten Zylinder, Schließanlagen, Zutritt, Service), D (Schlüsselwege im Shop) und E (Ratgeber, Artikel, Warenkorb) laufen · offen: Startseite und Fahrzeugseiten (nach FA-KERN-02 und FA-SOFORT-05), Kasse und Bestellung (nach FA-KERN-03), Mails und PDF |
 | FA-INHALT-04 | Bilder: Vorher-Nachher-Baustein, Logo unten rechts für eigene Fotos, Alt-Text-Pflicht, Hinweise zu Kennzeichen und Personen | FA-20 | ja | offen; Fotos fehlen (MA-05) |
 | FA-INHALT-05 | Schließanlagen, Zutritt, Sicherheitstechnik: Zielgruppen, Erweiterbarkeit, Hinweis zu Ton und Aufzeichnung (FA-16-21 Erklärtexte pflegbar bleibt offen) | FA-16-06, -09, FA-17-18, FA-18-09, -13, -14 | nein | committet f54ce64 |
 

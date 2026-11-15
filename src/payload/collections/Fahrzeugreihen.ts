@@ -1,14 +1,15 @@
 import type { CollectionConfig } from 'payload';
 
-import { GEHAEUSE, KLONBARKEIT, LEISTUNGEN } from '../../lib/fahrzeuge/katalog';
+import { FAHRZEUGKLASSEN, GEHAEUSE, KLONBARKEIT, LEISTUNGEN } from '../../lib/fahrzeuge/katalog';
 import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
 import { kennungFeld } from '../fields/gemeinsam';
 import { erneuernHooks } from '../hooks/revalidate';
 
 /**
- * Fahrzeugkatalog (G-14, G-17, G-18, A-009): alle Modellreihen aus der KBA-Statistik FZ 12,
- * dazu die gepflegten Modelle des Bestands. Jede Angabe trägt ihre Quelle; Klonbarkeit erscheint
- * auf der Seite erst nach Bestätigung im Bogen KLONBAR.
+ * Fahrzeugkatalog (G-14, G-17, G-18, A-009, A-047): alle Modellreihen aus der KBA-Statistik FZ 12,
+ * Krafträder und seltene Marken aus KBA FZ 2, dazu die gepflegten Modelle des Bestands. Jede Angabe
+ * trägt ihre Quelle; Klonbarkeit erscheint auf der Seite erst nach Bestätigung im Bogen KLONBAR.
+ * Generationen nur mit Quelle; ohne sie wählt der Kunde das Baujahr.
  */
 export const Fahrzeugreihen: CollectionConfig = {
   slug: 'fahrzeugreihen',
@@ -16,7 +17,7 @@ export const Fahrzeugreihen: CollectionConfig = {
   admin: {
     group: 'Autoschlüssel',
     useAsTitle: 'reihe',
-    defaultColumns: ['marke', 'reihe', 'bestand', 'klonbar', 'sichtbar'],
+    defaultColumns: ['klasse', 'marke', 'reihe', 'bestand', 'klonbar', 'sichtbar'],
     listSearchableFields: ['marke', 'reihe', 'kbaName'],
     description: 'Modellreihen für die Fahrzeugsuche. Preise und Schlüsselarten kommen aus den gepflegten Marken und Modellen (Spalte „Gepflegtes Modell“).',
   },
@@ -25,6 +26,16 @@ export const Fahrzeugreihen: CollectionConfig = {
   defaultSort: 'marke',
   hooks: erneuernHooks,
   fields: [
+    {
+      name: 'klasse',
+      type: 'select',
+      label: 'Klasse',
+      required: true,
+      defaultValue: 'pkw',
+      index: true,
+      options: [...FAHRZEUGKLASSEN],
+      admin: { description: 'Pkw für den Autoschlüssel-Weg, Kraftrad für den Motorradweg.' },
+    },
     {
       type: 'row',
       fields: [
@@ -78,6 +89,27 @@ export const Fahrzeugreihen: CollectionConfig = {
         },
         { name: 'gehaeuse', type: 'select', label: 'Gehäuse', required: true, defaultValue: 'unbekannt', options: [...GEHAEUSE], admin: { width: '33%' } },
         { name: 'leistungen', type: 'select', label: 'Leistungen', hasMany: true, options: [...LEISTUNGEN], admin: { width: '33%' } },
+      ],
+    },
+    {
+      name: 'generationen',
+      type: 'array',
+      label: 'Generationen',
+      labels: { singular: 'Generation', plural: 'Generationen' },
+      admin: {
+        description: 'Nur mit Quelle. Mit Generationen bietet der Assistent die Auswahl an, sonst das Baujahr. Die Bezeichnung findet auch die Suche („Golf 7“).',
+        initCollapsed: true,
+      },
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            { name: 'bezeichnung', type: 'text', label: 'Bezeichnung', required: true, admin: { width: '30%' } },
+            { name: 'baujahrVon', type: 'number', label: 'Baujahr von', min: 1900, max: 2100, admin: { width: '20%' } },
+            { name: 'baujahrBis', type: 'number', label: 'Baujahr bis', min: 1900, max: 2100, admin: { width: '20%' } },
+            { name: 'quelle', type: 'text', label: 'Quelle', required: true, admin: { width: '30%' } },
+          ],
+        },
       ],
     },
     {

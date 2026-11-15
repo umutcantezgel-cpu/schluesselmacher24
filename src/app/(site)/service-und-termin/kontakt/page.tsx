@@ -43,7 +43,7 @@ export default async function KontaktPage() {
         bereich="service-und-termin"
         eyebrow="Kontakt"
         title="So erreichen Sie uns"
-        lead="Für konkrete Aufträge nutzen Sie bitte die geführten Abläufe. Dort erfassen wir gleich alles, was wir brauchen."
+        lead="Hier finden Sie Anschrift, Telefon und E-Mail. Für einen Auftrag stellen Sie am besten eine Anfrage, dort fragen wir gleich alles Nötige ab."
         crumbs={[
           { href: '/service-und-termin', label: 'Service und Termin' },
           { href: '/service-und-termin/kontakt', label: 'Kontakt' },
@@ -62,7 +62,7 @@ export default async function KontaktPage() {
 
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:col-span-7">
-            <SectionHeading nummer="01" eyebrow="Erreichbarkeit" title="Fachbetrieb" />
+            <SectionHeading nummer="01" eyebrow="Erreichbarkeit" title="Anschrift und Kontakt" />
 
             {company.isPlaceholder ? (
               /* Ohne hinterlegte Daten keine Anschrift, kein tel:- oder mailto:-Link mit Platzhalter */
@@ -148,12 +148,11 @@ export default async function KontaktPage() {
             <Erreichbarkeit angabe={erreichbarkeit(settings)} groesse="gross" className="mt-6 border-t border-border pt-6" />
 
             <Alert tone="info" className="mt-8">
-              Arbeiten an Fahrzeugen und Schließanlagen finden ausschließlich nach Terminvereinbarung
-              statt. Bitte buchen Sie Ihren Termin über den{' '}
+              Einen Termin für Ihr Fahrzeug buchen Sie über den{' '}
               <Link href="/autoschluessel/anfrage" className="font-semibold underline">
                 Autoschlüssel-Ablauf
-              </Link>{' '}
-              oder stellen Sie eine{' '}
+              </Link>
+              . Für Arbeiten an Türen und Schließanlagen stellen Sie bitte eine{' '}
               <Link href="/service-und-termin/anfrage" className="font-semibold underline">
                 allgemeine Anfrage
               </Link>
@@ -189,7 +188,7 @@ export default async function KontaktPage() {
           nummer="02"
           eyebrow="Nachricht"
           title="Nachricht schreiben"
-          lead="Kurze Frage, ein Foto dazu: Wir antworten auf dem Weg, den Sie wählen."
+          lead="Schreiben Sie uns eine kurze Frage, gern mit Foto. Wir antworten auf dem Weg, den Sie wählen."
         />
         <p className="mt-4 max-w-measure text-small text-foreground-muted">
           Ausführliche Anliegen mit allen Angaben schicken Sie über die{' '}

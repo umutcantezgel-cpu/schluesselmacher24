@@ -1,4 +1,4 @@
-import type { FahrzeugReihe, VehicleMake } from '@/lib/types';
+import type { FahrzeugKlasse, FahrzeugReihe, VehicleMake } from '@/lib/types';
 import type { SuchReihe } from '@/lib/fahrzeuge/suche';
 
 /** Schlanker Eintrag des Fahrzeugkatalogs für die Suche im Browser (G-14). */
@@ -6,25 +6,64 @@ export interface KatalogEintrag extends SuchReihe {
   id: string;
   /** „makeSlug/modelSlug“ eines gepflegten Modells (Preise, Schlüsselarten), sonst leer. */
   bestandsModell?: string;
+  /** Generationen mit Bauzeitraum, nur bei Reihen, die welche tragen (A-047). */
+  generationen?: Array<{ bezeichnung: string; baujahrVon?: number; baujahrBis?: number }>;
 }
 
-/** Quellenvermerk des Katalogs (QUELLEN.md, MA-17), sichtbar überall, wo der Katalog genutzt wird. */
-export const KATALOG_QUELLE =
-  'Quelle der Marken und Modellreihen: Kraftfahrt-Bundesamt (KBA), FZ 12, Stand 1.1.2026, Datenlizenz Deutschland, Namensnennung, Version 2.0';
+/** Quellenvermerk der Pkw-Daten aus FZ 12 (QUELLEN.md, MA-17), im Wortlaut wie bisher. */
+const FZ12_VERMERK = 'Kraftfahrt-Bundesamt (KBA), FZ 12, Stand 1.1.2026, Datenlizenz Deutschland, Namensnennung, Version 2.0';
+/** Quellenvermerk der Daten aus FZ 2, im Wortlaut des Blatts „Impressum“ der Datei (QUELLEN.md). */
+const FZ2_VERMERK = 'Kraftfahrt-Bundesamt (KBA), FZ 2, Stand 1.1.2026, © Kraftfahrt-Bundesamt, Flensburg, Datenlizenz Deutschland - Namensnennung - Version 2.0';
 
-/** Nur sichtbare Reihen, nur die Felder der Suche. */
-export function katalogIndex(reihen: readonly FahrzeugReihe[]): KatalogEintrag[] {
+/** Quellenvermerk des Pkw-Katalogs, sichtbar überall, wo der Katalog genutzt wird (Fahrzeugsuche, Markenübersicht). */
+export const KATALOG_QUELLE = `Quelle der Marken und Modellreihen: ${FZ12_VERMERK}; seltene Marken und weitere Handelsnamen: ${FZ2_VERMERK}`;
+
+/** Quellenvermerk der Krafträder im Motorradweg. */
+export const KRAFTRAD_QUELLE = `Quelle der Hersteller und Handelsnamen: ${FZ2_VERMERK}`;
+
+/**
+ * Adressen, unter denen der Browser den Katalog einer Klasse nachlädt (A-047): Der Katalog gehört nicht in
+ * den ersten Seitenaufruf, die Suche holt ihn beim ersten Gebrauch.
+ */
+export const KATALOG_ADRESSE: Readonly<Record<FahrzeugKlasse, string>> = {
+  pkw: '/autoschluessel/anfrage/fahrzeuge',
+  kraftrad: '/motorradschluessel/anfrage/fahrzeuge',
+};
+
+/** Nur sichtbare Reihen, nur die Felder der Suche; mit `klasse` nur Reihen dieser Klasse (ohne Klasse: Pkw). */
+export function katalogIndex(reihen: readonly FahrzeugReihe[], klasse?: FahrzeugKlasse): KatalogEintrag[] {
   return reihen
-    .filter((r) => r.sichtbar)
+    .filter((r) => r.sichtbar && (!klasse || (r.klasse ?? 'pkw') === klasse))
     .map((r) => ({
       id: r.id,
       marke: r.marke,
       reihe: r.reihe,
       sichtbar: true,
+      ...(r.klasse && r.klasse !== 'pkw' ? { klasse: r.klasse } : {}),
       ...(r.alias?.length ? { alias: r.alias } : {}),
       ...(r.bestand ? { bestand: r.bestand } : {}),
       ...(r.bestandsModell ? { bestandsModell: r.bestandsModell } : {}),
+      ...(r.generationen?.length
+        ? {
+            generationen: r.generationen.map((g) => ({
+              bezeichnung: g.bezeichnung,
+              ...(g.baujahrVon ? { baujahrVon: g.baujahrVon } : {}),
+              ...(g.baujahrBis ? { baujahrBis: g.baujahrBis } : {}),
+            })),
+          }
+        : {}),
     }));
+}
+
+/** Alle Marken einer Klasse von A bis Z, mit Zahl der Reihen (Markenübersicht). */
+export function markenAZ(reihen: readonly FahrzeugReihe[], klasse: FahrzeugKlasse = 'pkw'): Array<{ marke: string; reihen: number }> {
+  const zahl = new Map<string, number>();
+  for (const r of reihen) {
+    if (!r.sichtbar || (r.klasse ?? 'pkw') !== klasse) continue;
+    zahl.set(r.marke, (zahl.get(r.marke) ?? 0) + 1);
+  }
+  const sortierer = new Intl.Collator('de', { sensitivity: 'base' });
+  return [...zahl].map(([marke, n]) => ({ marke, reihen: n })).sort((a, b) => sortierer.compare(a.marke, b.marke));
 }
 
 export type FahrzeugZiel =
