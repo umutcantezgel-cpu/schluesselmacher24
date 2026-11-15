@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 import type { Settings } from '@/lib/types';
 
-import { AbsendeFehler, HILFE_BLOCK, HilfeBlock, OffenerSchritt, TelefonHilfe } from './hilfe';
+import { AbsendeFehler, HILFE_BLOCK, HilfeBlock, OffenerSchritt, RUECKRUF_HREF, TelefonHilfe } from './hilfe';
 import { hilfeAus, type HilfeKontakt } from './hilfe-daten';
 
 const HILFE: HilfeKontakt = {
@@ -35,6 +35,13 @@ describe('Hilfeblock in den Formularen (FA-QA-02)', () => {
     expect(html).not.toContain('tel:');
     expect(html).toContain('Rückruf erbitten');
     expect(renderToStaticMarkup(<TelefonHilfe />)).toBe('');
+  });
+
+  it('„Rückruf erbitten“ lädt die Seite neu (<a>), damit die Warnung vor dem Verlassen greift', () => {
+    const html = renderToStaticMarkup(<HilfeBlock hilfe={HILFE} spaeter mitDateien />);
+    expect(html).toContain(`<a href="${RUECKRUF_HREF}"`);
+    const fehler = renderToStaticMarkup(<AbsendeFehler fehler="x" />);
+    expect(fehler).toContain(`<a href="${RUECKRUF_HREF}"`);
   });
 
   it('im Rückrufformular selbst ohne Rückruf-Verweis', () => {

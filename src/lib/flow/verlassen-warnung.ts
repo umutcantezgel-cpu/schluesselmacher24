@@ -1,10 +1,28 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-/** Frage vor dem Verlassen, wenn sonst Angaben verloren gingen (FA Abschnitt 26, FA-QA-02). */
+/** Frage vor dem Verlassen, wenn gewählte Dateien verloren gingen (FA Abschnitt 26, FA-QA-02). */
 export const VERLASSEN_FRAGE =
   'Wenn Sie die Seite jetzt verlassen, gehen Ihre ausgewählten Dateien verloren. Ihre übrigen Angaben bleiben auf diesem Gerät gespeichert. Seite trotzdem verlassen?';
+
+/** Frage, wenn sich der Zwischenstand nicht speichern ließ (privates Fenster, volle Ablage). */
+export const VERLASSEN_FRAGE_UNGESPEICHERT =
+  'Ihre Angaben konnten auf diesem Gerät nicht gespeichert werden. Wenn Sie die Seite jetzt verlassen, gehen sie verloren. Seite trotzdem verlassen?';
+
+/** Warum gewarnt wird: gewählte Dateien und/oder ein Zwischenstand, der sich nicht speichern ließ. */
+export interface VerlassenGrund {
+  dateien: boolean;
+  ungespeichert: boolean;
+}
+
+/** Die passende Frage zum Grund, oder `null`, wenn nichts verloren ginge. */
+export function verlassenFrage({ dateien, ungespeichert }: VerlassenGrund): string | null {
+  // Ließ sich nichts speichern, gehen alle Angaben verloren, mit oder ohne Dateien.
+  if (ungespeichert) return VERLASSEN_FRAGE_UNGESPEICHERT;
+  if (dateien) return VERLASSEN_FRAGE;
+  return null;
+}
 
 /** Kennung des Wacheintrags in der Browser-Historie. */
 const WACHE = 'sm24Wache';
@@ -23,50 +41,109 @@ export interface WachFenster {
 }
 
 /**
+ * Laufende Rücknahmen einer Wache je Fenster: `history.back()` wirkt erst mit dem nächsten
+ * `popstate`. Richtet sich die Warnung vorher neu ein (etwa beim zweiten Durchlauf eines Effekts),
+ * darf dieses `popstate` nicht als Verlassen gelten.
+ */
+const ruecknahmen = new WeakMap<WachFenster, { offen: number; hoerer: ((event: never) => void) | null }>();
+
+function ruecknahmeVon(fenster: WachFenster) {
+  let r = ruecknahmen.get(fenster);
+  if (!r) {
+    r = { offen: 0, hoerer: null };
+    ruecknahmen.set(fenster, r);
+  }
+  return r;
+}
+
+/**
  * Richtet die Warnung ein und gibt das Aufräumen zurück:
  *
- * - Neuladen, Schließen, fremde Seite: die Rückfrage des Browsers (`beforeunload`).
+ * - Neuladen, Schließen, Adresse eingeben und Verweise, die die Seite neu laden (`<a>`): die
+ *   Rückfrage des Browsers (`beforeunload`). Ein Wechsel innerhalb der App über `next/link` löst sie
+ *   nicht aus; deshalb führen die Verweise in den Hilfeblöcken der Formulare als `<a>` hinaus.
  * - Browser- oder Android-Zurück: Ein Wacheintrag mit derselben Adresse liegt oben in der Historie.
  *   Zurück nimmt ihn weg; die Seite bleibt, und das Formular fragt. Wer verlassen will, geht weiter
  *   zurück, sonst kommt die Wache wieder. Next.js übernimmt eigene `pushState`-Aufrufe (Dokumentation
  *   „Linking and Navigating“, `window.history.pushState`).
+ * - Endet die Warnung ohne Verlassen (Dateien entfernt, Absenden, Bestätigung), nimmt das Aufräumen
+ *   die Wache wieder aus der Historie, damit das nächste Zurück sichtbar zurückführt.
+ *
+ * `frage` wird bei jedem Zurück neu gelesen, damit ein Wechsel des Grundes keine neue Wache braucht.
  */
-export function wacheEinrichten(fenster: WachFenster): () => void {
+export function wacheEinrichten(fenster: WachFenster, frage: () => string = () => VERLASSEN_FRAGE): () => void {
+  const r = ruecknahmeVon(fenster);
+  let verlassen = false;
+
   const vorUnload = (event: { preventDefault: () => void; returnValue: unknown }) => {
     event.preventDefault();
     // Ältere Browser zeigen die Rückfrage nur mit gesetztem Rückgabewert.
     event.returnValue = '';
   };
   const zurueck = (event: { state: unknown }) => {
+    if (r.offen > 0) {
+      // Das Zurück einer früheren Rücknahme: kein Verlassen. Die Warnung gilt weiter, also Wache neu.
+      r.offen -= 1;
+      if (!istWache(event.state)) fenster.history.pushState({ [WACHE]: true }, '', fenster.location.href);
+      return;
+    }
     if (istWache(event.state)) return;
-    if (fenster.confirm(VERLASSEN_FRAGE)) {
-      aufraeumen();
+    if (fenster.confirm(frage())) {
+      verlassen = true;
+      entfernen();
       fenster.history.back();
     } else {
       fenster.history.pushState({ [WACHE]: true }, '', fenster.location.href);
     }
   };
-  function aufraeumen() {
+  function entfernen() {
     fenster.removeEventListener('beforeunload', vorUnload as (event: never) => void);
     fenster.removeEventListener('popstate', zurueck as (event: never) => void);
   }
 
+  // Eine noch laufende Rücknahme übernimmt ab jetzt `zurueck`.
+  if (r.hoerer) {
+    fenster.removeEventListener('popstate', r.hoerer);
+    r.hoerer = null;
+  }
   fenster.addEventListener('beforeunload', vorUnload as (event: never) => void);
   if (!istWache(fenster.history.state)) {
     fenster.history.pushState({ [WACHE]: true }, '', fenster.location.href);
   }
   fenster.addEventListener('popstate', zurueck as (event: never) => void);
-  return aufraeumen;
+
+  return () => {
+    entfernen();
+    if (verlassen || !istWache(fenster.history.state)) return;
+    // Wache wegnehmen; das folgende popstate fängt ein kurzer Hörer ab (oder `zurueck` einer neuen Wache).
+    r.offen += 1;
+    const einmal = () => {
+      r.offen = Math.max(0, r.offen - 1);
+      fenster.removeEventListener('popstate', einmal as (event: never) => void);
+      if (r.hoerer === (einmal as (event: never) => void)) r.hoerer = null;
+    };
+    if (r.hoerer) fenster.removeEventListener('popstate', r.hoerer);
+    r.hoerer = einmal as (event: never) => void;
+    fenster.addEventListener('popstate', r.hoerer);
+    fenster.history.back();
+  };
 }
 
 /**
  * Warnt, bevor ein Ablauf verlassen wird, solange dabei etwas verloren ginge: ausgewählte Dateien, die
- * nie im Browser gespeichert werden, oder ein Zwischenstand, der sich nicht speichern ließ. Ohne Grund
- * zur Warnung tut der Hook nichts, und die Historie bleibt unberührt.
+ * nie im Browser gespeichert werden, oder ein Zwischenstand, der sich nicht speichern ließ. Die Frage
+ * nennt den Grund. Ohne Grund zur Warnung legt der Hook keine Wache an; endet die Warnung, nimmt er
+ * die Wache wieder weg.
  */
-export function useVerlassenWarnung(warnen: boolean): void {
+export function useVerlassenWarnung(grund: VerlassenGrund): void {
+  const frage = verlassenFrage(grund);
+  const frageRef = useRef(frage);
+  useEffect(() => {
+    frageRef.current = frage;
+  }, [frage]);
+  const warnen = frage !== null;
   useEffect(() => {
     if (!warnen || typeof window === 'undefined') return;
-    return wacheEinrichten(window as unknown as WachFenster);
+    return wacheEinrichten(window as unknown as WachFenster, () => frageRef.current ?? VERLASSEN_FRAGE);
   }, [warnen]);
 }

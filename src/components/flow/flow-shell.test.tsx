@@ -2,7 +2,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { FlowState, FlowStep } from '@/lib/flow/use-flow';
-import { FlowShell, GESPERRT_STANDARD, fortschrittText, type FlowShellProps } from './flow-shell';
+import { FlowShell, GESPERRT_STANDARD, fortschrittText, verlassenGrundAus, type FlowShellProps } from './flow-shell';
 
 const SCHRITTE: FlowStep[] = [
   { id: 'a', title: 'Erster Schritt', short: 'Marke' },
@@ -130,5 +130,20 @@ describe('FlowShell', () => {
   it('die Schrittliste ab Tablet ist nicht kleiner als 15 px', () => {
     const html = rahmen();
     expect(html).not.toMatch(/<button[^>]*class="[^"]*text-caption[^"]*"[^>]*>(?:<span|<svg)/);
+  });
+});
+
+describe('FlowShell: Grund der Warnung vor dem Verlassen (FA-QA-02)', () => {
+  it('Zwischenstand nicht gespeichert, keine Dateien: Grund „nicht gespeichert“, nicht „Dateien“', () => {
+    expect(verlassenGrundAus({ submitting: false, ungesichert: false, saved: false })).toEqual({ dateien: false, ungespeichert: true });
+  });
+
+  it('Dateien gewählt, Stand gespeichert: Grund „Dateien“', () => {
+    expect(verlassenGrundAus({ submitting: false, ungesichert: true, saved: true })).toEqual({ dateien: true, ungespeichert: false });
+  });
+
+  it('beim Absenden und ohne Grund keine Warnung', () => {
+    expect(verlassenGrundAus({ submitting: true, ungesichert: true, saved: false })).toEqual({ dateien: false, ungespeichert: false });
+    expect(verlassenGrundAus({ submitting: false, ungesichert: false, saved: true })).toEqual({ dateien: false, ungespeichert: false });
   });
 });

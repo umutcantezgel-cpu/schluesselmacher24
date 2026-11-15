@@ -207,8 +207,11 @@ export function BeratungFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
             allowDocuments
           />
 
-          {/* Wer nicht schreiben mag, ruft direkt an (FA-QA-02). Ein Rückruf-Verweis entfällt: Das ist er. */}
-          <HilfeBlock hilfe={hilfe} stelle="anliegen" titel="Lieber gleich anrufen?" satz="Sie müssen nicht alles aufschreiben. Rufen Sie uns an." rueckruf={false} />
+          {/* Wer nicht schreiben mag, ruft direkt an (FA-QA-02). Ein Rückruf-Verweis entfällt: Das ist er.
+              Ohne veröffentlichte Nummer kein Block, sonst stünde „Rufen Sie uns an“ ohne Nummer da. */}
+          {hilfe?.telefon && (
+            <HilfeBlock hilfe={hilfe} stelle="anliegen" titel="Lieber gleich anrufen?" satz="Sie müssen nicht alles aufschreiben. Rufen Sie uns an." rueckruf={false} />
+          )}
         </div>
       )}
 

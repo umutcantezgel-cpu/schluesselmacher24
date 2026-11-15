@@ -169,7 +169,7 @@ describe('Betrieb als feste Kennung (FA-25-08)', () => {
     expect(webseite.breadcrumb).toEqual({ '@id': seite[3]['@id'] });
     expect(webseite.mainEntity).toEqual({ '@id': seite[1]['@id'] });
     expect(seite[2].isPartOf).toEqual({ '@id': webseite['@id'] });
-    const produkt = seite[1] as { brand?: { name: string }; offers: { price: string; availability: string } };
+    const produkt = seite[1] as unknown as { brand?: { name: string }; offers: { price: string; availability: string } };
     expect(produkt.brand?.name).toBe('Testmarke');
     expect(produkt.offers).toMatchObject({ price: '12.90', availability: 'https://schema.org/InStock' });
   });

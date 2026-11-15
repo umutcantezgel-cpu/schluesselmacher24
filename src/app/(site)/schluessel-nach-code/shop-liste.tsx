@@ -55,6 +55,8 @@ export interface ShopListeProps {
   lines: CodeLine[];
   /** Hersteller-Stammliste: Reihenfolge und Adressen der Herstellerseiten. */
   hersteller?: ShopHersteller[];
+  /** Anfangswert der Suche, etwa ein Code; ohne Angabe leer. */
+  startSuche?: string;
   className?: string;
 }
 
@@ -71,8 +73,8 @@ export interface ShopListeProps {
  * erreichbar ist (Erg. Leitfaden §3). Am Smartphone sind die Auswahlfelder
  * eingeklappt und je System nur die ersten Zeilen sichtbar.
  */
-export function ShopListe({ lines, hersteller = [], className }: ShopListeProps) {
-  const [query, setQuery] = useState('');
+export function ShopListe({ lines, hersteller = [], startSuche = '', className }: ShopListeProps) {
+  const [query, setQuery] = useState(startSuche);
   const [manufacturer, setManufacturer] = useState(ALL);
   const [system, setSystem] = useState(ALL);
   const [keyType, setKeyType] = useState(ALL);

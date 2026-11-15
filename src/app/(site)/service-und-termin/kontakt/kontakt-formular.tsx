@@ -222,7 +222,10 @@ export function KontaktFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
           />
 
           {/* Wer nicht schreiben mag, ruft an oder bittet um Rückruf (FA-QA-02). */}
-          <HilfeBlock hilfe={hilfe} stelle="nachricht" titel="Lieber gleich anrufen?" satz="Sie müssen nicht alles aufschreiben. Rufen Sie uns an." />
+          {/* Ohne veröffentlichte Nummer kein Block, sonst stünde „Rufen Sie uns an“ ohne Nummer da (FA-QA-02). */}
+          {hilfe?.telefon && (
+            <HilfeBlock hilfe={hilfe} stelle="nachricht" titel="Lieber gleich anrufen?" satz="Sie müssen nicht alles aufschreiben. Rufen Sie uns an." />
+          )}
         </div>
       )}
 

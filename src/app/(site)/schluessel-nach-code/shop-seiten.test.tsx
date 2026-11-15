@@ -73,34 +73,20 @@ describe('Shop-Liste nach Hersteller und System', () => {
   });
 });
 
-describe('Bestellknöpfe der Codesuche', async () => {
-  // Die Suche läuft im Browser; hier wird sie mit vorbelegtem Zustand nachgestellt.
-  const React = await import('react');
-  const echt = React.useState;
-
+describe('Bestellknöpfe der Codesuche', () => {
   it('„nicht lieferbar“ ohne Warenkorb, „auf Anfrage“ mit „Code anfragen“, lieferbar mit „Nach Code bestellen“', () => {
     const lines = [
       linie('ms-01', { manufacturerId: 'testwerk', system: 'A' }),
       linie('ms-02', { manufacturerId: 'testwerk', system: 'B', availability: 'nicht-lieferbar' }),
       linie('ms-03', { manufacturerId: 'testwerk', system: 'C', availability: 'auf-anfrage' }),
-    ];
-    let erster = true;
-    const spy = vi.spyOn(React, 'useState').mockImplementation(((anfang: unknown) => {
-      // Der erste Zustand der Liste ist die Sucheingabe: ein Code, der zu allen drei Linien passt.
-      if (erster) {
-        erster = false;
-        return ['0812', () => {}];
-      }
-      return echt(anfang as never);
-    }) as typeof React.useState);
-    try {
-      const html = renderToStaticMarkup(<ShopListe lines={lines} hersteller={STAMM} />);
-      expect(html.match(/Nach Code bestellen/g)).toHaveLength(1);
-      expect(html).toContain('href="/service-und-termin/anfrage?thema=schluessel-nach-code&amp;code=0812&amp;schloss=');
-      // Je Treffer ein Knopf: einer zum Warenkorb, einer zur Anfrage, keiner für „nicht lieferbar“.
-      expect(html.match(/sr-only">: /g)).toHaveLength(2);
-    } finally {
-      spy.mockRestore();
-    }
+    ].map((l) => ({ ...l, codePattern: '^[0-9]{4}$' }));
+    // Ein Code, der zum Codeformat aller drei Linien passt.
+    const html = renderToStaticMarkup(<ShopListe lines={lines} hersteller={STAMM} startSuche="0812" />);
+    expect(html.match(/passt zum Codeformat<\/span>/g)).toHaveLength(3);
+    expect(html.match(/>Nach Code bestellen</g)).toHaveLength(1);
+    expect(html).toContain('href="/schluessel-nach-code/ms-01?code=0812"');
+    expect(html).toContain('href="/service-und-termin/anfrage?thema=schluessel-nach-code&amp;code=0812&amp;schloss=');
+    // Je Treffer mit Bestellweg ein Knopf: einer zum Warenkorb, einer zur Anfrage, keiner für „nicht lieferbar“.
+    expect(html.match(/<span class="sr-only">: /g)).toHaveLength(2);
   });
 });

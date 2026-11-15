@@ -32,6 +32,7 @@ export const VORHANDENE_ROUTEN: readonly string[] = [
   'schluessel-nach-vorlage',
   'seniorenmobile',
   'service-und-termin',
+  'shop',
   'sicherheitstechnik',
   'standorte',
   'tuer-und-schliesstechnik',

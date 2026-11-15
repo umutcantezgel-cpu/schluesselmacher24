@@ -798,9 +798,9 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
               satz={
                 <>
                   Die Anleitung{' '}
-                  <a href="#weiterfuehrend" className="font-semibold text-primary underline">
+                  <Link href="/gleichschliessende-zylinder#messen" className="font-semibold text-primary underline">
                     Zylinder richtig ausmessen
-                  </a>{' '}
+                  </Link>{' '}
                   zeigt, wo Sie messen. Oder rufen Sie uns an. Sie können uns auch eine{' '}
                   <Link href="/service-und-termin/anfrage" className="font-semibold text-primary underline">
                     Anfrage mit Foto Ihres Zylinders

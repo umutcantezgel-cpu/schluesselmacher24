@@ -9,6 +9,7 @@ import { FlowShell } from '@/components/flow/flow-shell';
 import { TextArea, TextInput } from '@/components/forms/controls';
 import { Field } from '@/components/forms/field';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
+import { AbsendeFehler } from '@/components/forms/hilfe';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten } from '@/components/forms/photo-upload';
 import { SummaryList } from '@/components/layout/summary-list';
@@ -155,6 +156,12 @@ export function FahrzeugAnfrageFormular({ klasse, pflichtTabelle, telefon, errei
     jahr,
   });
   const { data } = flow;
+  // Ist irgendeine Datei gewählt? Dann fragt der Browser vor dem Verlassen nach (FA-QA-02).
+  const dateienGewaehlt =
+    dateien.fahrzeugschein.length > 0
+    || dateien.ersatznachweis.length > 0
+    || dateien.typenschild.length > 0
+    || Object.values(dateien.fotos).some((liste) => liste.length > 0);
   const summary = useMemo(() => zusammenfassung(klasse, data), [klasse, data]);
   const schrittName = (id: AnfrageSchritt) => schritteFuer(klasse).find((s) => s.id === id)?.short ?? id;
 
@@ -241,12 +248,11 @@ export function FahrzeugAnfrageFormular({ klasse, pflichtTabelle, telefon, errei
       onSubmit={absenden}
       submitting={submitting}
       blockedHint={blockedHints[(flow.step?.id ?? 'fahrzeug') as AnfrageSchritt]}
+      // Wie in den übrigen Formularen (FA-QA-02): Sind Dateien gewählt, fragt der Browser vor dem Verlassen nach.
+      ungesichert={dateienGewaehlt}
+      mitDateien
     >
-      {fehler && (
-        <Alert tone="warning" title="Absenden nicht möglich" className="mb-6" role="alert">
-          {fehler}
-        </Alert>
-      )}
+      {fehler && <AbsendeFehler fehler={fehler} hilfe={{ telefon, erreichbarkeit }} />}
 
       {/* Gespeicherter Zwischenstand mit anderem Fahrzeug als in der Suche: fragen, nicht still verwerfen. */}
       {vorbelegungAnbieten && (

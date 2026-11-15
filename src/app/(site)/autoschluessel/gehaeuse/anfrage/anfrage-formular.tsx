@@ -219,7 +219,7 @@ export function AnfrageFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
             )}
           </Field>
           <div className="sm:col-span-2">
-            <HilfeBlock hilfe={hilfe} stelle="fahrzeug" satz="Marke, Modell und Baujahr stehen im Fahrzeugschein. Wir helfen Ihnen beim Suchen." />
+            <HilfeBlock hilfe={hilfe} stelle="fahrzeug" satz="Marke und Modell stehen im Fahrzeugschein. Als Baujahr reicht das Jahr der Erstzulassung (Feld B). Wir helfen Ihnen beim Suchen." />
           </div>
         </div>
       )}

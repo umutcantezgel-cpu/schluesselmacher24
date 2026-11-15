@@ -70,6 +70,23 @@ describe('Bedienbarkeit aller mehrstufigen Formulare (FA-QA-02, FA Abschnitt 26)
     expect(lies(seite)).toMatch(/hilfe=\{hilfeAus\(|erreichbarkeit=\{erreichbarkeit\(settings\)\}/);
   });
 
+  it.each(FORMULARE.filter((f) => /beratung-formular|kontakt-formular/.test(f.datei)))(
+    '$name: „Lieber gleich anrufen?“ nur mit veröffentlichter Nummer',
+    ({ datei }) => {
+      expect(lies(datei)).toMatch(/\{hilfe\?\.telefon && \(\s*<HilfeBlock\b[^>]*titel="Lieber gleich anrufen\?"/);
+    },
+  );
+
+  it('Zylinder: „Maß unbekannt“ führt direkt zur Anleitung', () => {
+    expect(lies('src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx')).toContain('href="/gleichschliessende-zylinder#messen"');
+  });
+
+  it('Gehäuse: der Hilfesatz nennt die Erstzulassung statt eines Baujahrs im Fahrzeugschein', () => {
+    const quelle = lies('src/app/(site)/autoschluessel/gehaeuse/anfrage/anfrage-formular.tsx');
+    expect(quelle).toContain('Jahr der Erstzulassung (Feld B)');
+    expect(quelle).not.toContain('Baujahr stehen im Fahrzeugschein');
+  });
+
   it('das Muster (gemeinsame Fahrzeugschlüssel-Anfrage) trägt Fortschritt, Hilfe und Hinweis am Knopf', () => {
     const quelle = lies('src/components/fahrzeug-anfrage/formular.tsx');
     expect(quelle).toContain('<FlowShell');

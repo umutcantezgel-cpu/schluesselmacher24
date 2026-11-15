@@ -44,7 +44,7 @@ function zeile(felder: Partial<Record<(typeof SPALTEN)[number], string>> = {}): 
     quelle: 'Eigenes Angebot Nr. 1 (Test)',
     ...felder,
   };
-  return SPALTEN.map((spalte) => `"${werte[spalte]}"`).join(';');
+  return SPALTEN.map((spalte: string) => `"${(werte as Record<string, string>)[spalte]}"`).join(';');
 }
 const tabelle = (...zeilen: string[]) => [KOPF, ...zeilen].join('\r\n');
 const lauf = (text: string, bestand: CodeLine[] = []) => importiere({ text, bestand, hersteller: HERSTELLER, kategorien: KATEGORIEN });

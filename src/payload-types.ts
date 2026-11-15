@@ -902,7 +902,7 @@ export interface Produkte {
   _status?: ('draft' | 'published') | null;
 }
 /**
- * Kategorien und Unterkategorien des Shops. Reihenfolge: kleinere Zahl zuerst. Eine Unterkategorie entsteht, wenn Sie oben eine übergeordnete Kategorie wählen. Die Kategorien erscheinen mit dem nächsten Ausbau der Shopseiten auf der Seite.
+ * Kategorien und Unterkategorien des Shops. Reihenfolge: kleinere Zahl zuerst. Eine Unterkategorie entsteht, wenn Sie oben eine übergeordnete Kategorie wählen. Hauptkategorien mit Haken „Im Shop zeigen“ stehen in dieser Reihenfolge auf der Seite /shop. Unterkategorien von „Schlüssel nach Code“ bekommen eine eigene Seite, sobald ihnen ein Artikel zugeordnet ist.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "kategorien".
@@ -943,7 +943,7 @@ export interface Kategorien {
     hinweis?: string | null;
   };
   /**
-   * Wird automatisch ergänzt, wenn Sie die Adresse ändern. Die Weiterleitung auf die aktuelle Adresse kommt mit dem nächsten Ausbau der Shopseiten.
+   * Wird automatisch ergänzt, wenn Sie die Adresse ändern. Bei Unterkategorien von „Schlüssel nach Code“ leiten frühere Adressen dauerhaft auf die aktuelle weiter.
    */
   fruehereAdressen?:
     | {
@@ -1057,7 +1057,7 @@ export interface Medien {
   };
 }
 /**
- * Liste der Hersteller. Bitte jeden Hersteller nur einmal anlegen, in seiner eigenen Schreibweise. Artikel wählen ihren Hersteller aus dieser Liste. Hersteller, Logo und der Haken „angeboten“ erscheinen mit dem nächsten Ausbau der Shopseiten auf der Seite.
+ * Liste der Hersteller. Bitte jeden Hersteller nur einmal anlegen, in seiner eigenen Schreibweise. Artikel wählen ihren Hersteller aus dieser Liste. Mit dem Haken „angeboten“ erscheint der Hersteller sofort auf der Startseite und, wenn ihm ein Bereich zugeordnet ist, auf den Seiten Sperrschließungen und elektronischer Zutritt. Ein Logo erscheint nur mit Datei und Haken „Freigabe liegt vor“. Bei Schlüssel nach Code bekommt ein Hersteller eine eigene Seite, sobald ihm mindestens ein veröffentlichter Artikel zugeordnet ist.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hersteller".
@@ -1069,7 +1069,7 @@ export interface Hersteller {
    */
   name: string;
   /**
-   * Ein kurzer Satz, etwa an welchen Schlössern die Systeme sitzen. Nur, was Sie belegen können.
+   * Ein kurzer Satz, etwa an welchen Schlössern die Systeme sitzen. Nur, was Sie belegen können. Für BKS, ABUS und BURG-WÄCHTER zeigt die Seite zurzeit feste Texte je Bereich; dieses Feld erscheint bei allen anderen Herstellern.
    */
   einsatz?: string | null;
   angeboten?: boolean | null;

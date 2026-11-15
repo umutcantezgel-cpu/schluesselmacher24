@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 import { Alert } from '@/components/ui/alert';
@@ -18,6 +17,12 @@ import type { HilfeKontakt } from './hilfe-daten';
 
 /** Kennung des Hilfeblocks, für Tests und die Sichtprobe. */
 export const HILFE_BLOCK = 'hilfe';
+
+/**
+ * Ziel „Rückruf erbitten“. Bewusst als `<a>` gesetzt, nicht als `next/link`: Ein Wechsel innerhalb der
+ * App löst weder `beforeunload` noch `popstate` aus, und gewählte Dateien gingen ohne Rückfrage verloren.
+ */
+export const RUECKRUF_HREF = '/beratung#rueckruf';
 
 /** Telefonnummer als Verweis, darunter die Erreichbarkeit; ohne Nummer nichts. */
 export function TelefonHilfe({ telefon, erreichbarkeit, className }: HilfeKontakt & { className?: string }) {
@@ -86,9 +91,9 @@ export function HilfeBlock({
           )}
           {rueckruf && (
             <li>
-              <Link href="/beratung#rueckruf" className="inline-flex min-h-touch items-center font-semibold text-primary underline">
+              <a href={RUECKRUF_HREF} className="inline-flex min-h-touch items-center font-semibold text-primary underline">
                 Rückruf erbitten
-              </Link>
+              </a>
               : Wir rufen Sie an und klären Ihre Fragen.
             </li>
           )}
@@ -134,9 +139,9 @@ export function AbsendeFehler({
         ) : (
           <>
             {' '}oder{' '}
-            <Link href="/beratung#rueckruf" className="font-semibold text-primary underline">
+            <a href={RUECKRUF_HREF} className="font-semibold text-primary underline">
               erbitten Sie einen Rückruf
-            </Link>
+            </a>
             .
           </>
         )}

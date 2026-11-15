@@ -2,7 +2,7 @@
 
 import { useId, useState, type ReactNode } from 'react';
 import type { FlowState, FlowStep } from '@/lib/flow/use-flow';
-import { useVerlassenWarnung } from '@/lib/flow/verlassen-warnung';
+import { useVerlassenWarnung, type VerlassenGrund } from '@/lib/flow/verlassen-warnung';
 import { cn } from '@/lib/cn';
 import { Button } from '@/components/ui/button';
 import { SchutzFelder, type FormularSchutzHandle } from '@/components/forms/formular-schutz';
@@ -88,6 +88,20 @@ export function etappenAus(steps: Pick<FlowStep, 'etappe'>[]): Etappe[] {
   return liste;
 }
 
+/** Grund der Warnung vor dem Verlassen; während des Absendens keiner (FA-QA-02). */
+export function verlassenGrundAus({
+  submitting,
+  ungesichert,
+  saved,
+}: {
+  submitting: boolean;
+  ungesichert: boolean;
+  saved: boolean;
+}): VerlassenGrund {
+  if (submitting) return { dateien: false, ungespeichert: false };
+  return { dateien: ungesichert, ungespeichert: !saved };
+}
+
 /**
  * Gemeinsamer Rahmen für alle mehrstufigen Abläufe:
  * Fortschrittsanzeige, Schrittüberschrift, Navigation und der Hinweis
@@ -113,7 +127,8 @@ export function FlowShell<T extends object>({
 }: FlowShellProps<T>) {
   const hinweisId = useId();
   // Browser-Zurück, Neuladen und Schließen fragen nach, solange dabei etwas verloren ginge (FA-QA-02).
-  useVerlassenWarnung(!submitting && (ungesichert || !flow.saved));
+  // Die Frage nennt den Grund: gewählte Dateien oder ein Zwischenstand, der sich nicht speichern ließ.
+  useVerlassenWarnung(verlassenGrundAus({ submitting, ungesichert, saved: flow.saved }));
   const etappen = etappenAus(flow.steps);
   const etappeJetzt = etappen.findIndex((e) => flow.stepIndex >= e.von && flow.stepIndex <= e.bis);
   const etappe = etappeJetzt >= 0 ? etappen[etappeJetzt] : null;

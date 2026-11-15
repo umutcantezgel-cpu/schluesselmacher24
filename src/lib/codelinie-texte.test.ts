@@ -168,3 +168,31 @@ describe('kategorieTexte', () => {
     expect(a.fundstelle).toContain('Möbel-');
   });
 });
+
+describe('codelinienTexte nach Verfügbarkeit (FA-SHOP-01B)', () => {
+  const alle = (t: ReturnType<typeof texte>) => [t.metaBeschreibung, t.einleitung, t.beschreibung, ...t.faq.flatMap((f) => [f.question, f.answer])].join(' ');
+
+  it('„auf Anfrage“ beschreibt keinen Direktkauf, keine Stückzahl und keinen Preis', () => {
+    const t = texte({ ...linie('ms-01'), availability: 'auf-anfrage' });
+    const text = alle(t);
+    expect(t.metaBeschreibung).toContain('nach Code anfragen');
+    expect(text).not.toMatch(/bestellen:|Bestellformular|je Bestellung|je Stück|€/);
+    expect(t.einleitung).toContain('fragen Sie bei uns an');
+    expect(t.faq.find((f) => f.question.startsWith('Was kostet'))?.answer).toContain('Angebot');
+  });
+
+  it('„nicht lieferbar“ sagt es und nennt weder Preis noch Bestellweg', () => {
+    const t = texte({ ...linie('ms-01'), availability: 'nicht-lieferbar' });
+    const text = alle(t);
+    expect(t.metaBeschreibung).toContain('derzeit nicht lieferbar');
+    expect(text).not.toMatch(/bestellen:|Bestellformular|je Bestellung|je Stück|€/);
+    expect(t.faq.some((f) => f.question.startsWith('Was kostet'))).toBe(false);
+  });
+
+  it('lieferbar bleibt beim Direktkauf, ohne Gedankenstrich in der Einleitung', () => {
+    const t = texte(linie('ms-01'));
+    expect(t.metaBeschreibung).toContain('nach Code bestellen');
+    expect(t.einleitung).not.toMatch(/[—–]/);
+    expect(t.faq.find((f) => f.question.startsWith('Wie sieht'))?.answer).toContain('Bestellformular');
+  });
+});

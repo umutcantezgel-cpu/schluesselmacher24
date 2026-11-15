@@ -275,6 +275,9 @@ function kategorieKette(kategorien, id) {
  * Prüft alle Zeilen und baut die Codelinien. Reine Funktion. Ergebnis: `linien` (nur wenn `fehler` und
  * `vorschlaege` leer sind, sind sie verwendbar), `fehler` als Liste in Klartext je Zeile,
  * `vorschlaege` für neue Hersteller-Stammeinträge.
+ *
+ * @param {Array<Record<string, any>>} zeilen
+ * @param {{ hersteller?: Array<Record<string, any>>, kategorien?: Array<Record<string, any>> }} [optionen]
  */
 export function pruefeSortiment(zeilen, { hersteller = [], kategorien = [] } = {}) {
   const fehler = [];
@@ -392,7 +395,11 @@ export function pruefeSortiment(zeilen, { hersteller = [], kategorien = [] } = {
   return {
     linien,
     fehler,
-    vorschlaege: [...vorschlaege.values()].map(({ zeilen: _zeilen, ...rest }) => rest),
+    vorschlaege: [...vorschlaege.values()].map((v) => {
+      const eintrag = { ...v };
+      delete eintrag.zeilen;
+      return eintrag;
+    }),
     uebersprungen,
   };
 }
