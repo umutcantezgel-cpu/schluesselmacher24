@@ -15,6 +15,7 @@ import * as migration_20261115_120000_rubrik_nach_vorlage from './20261115_12000
 import * as migration_20261115_130000_musterdaten_beispiel from './20261115_130000_musterdaten_beispiel';
 import * as migration_20261115_140000_fahrzeugklasse from './20261115_140000_fahrzeugklasse';
 import * as migration_20261115_165108_steckplaetze from './20261115_165108_steckplaetze';
+import * as migration_20261115_182441_rubrik_symbole_fahrzeugklassen from './20261115_182441_rubrik_symbole_fahrzeugklassen';
 
 export const migrations = [
   {
@@ -100,6 +101,11 @@ export const migrations = [
   {
     up: migration_20261115_165108_steckplaetze.up,
     down: migration_20261115_165108_steckplaetze.down,
-    name: '20261115_165108_steckplaetze'
+    name: '20261115_165108_steckplaetze',
+  },
+  {
+    up: migration_20261115_182441_rubrik_symbole_fahrzeugklassen.up,
+    down: migration_20261115_182441_rubrik_symbole_fahrzeugklassen.down,
+    name: '20261115_182441_rubrik_symbole_fahrzeugklassen'
   },
 ];

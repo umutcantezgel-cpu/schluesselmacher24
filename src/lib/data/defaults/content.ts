@@ -420,7 +420,7 @@ export function pages(): PageContent[] {
         'Hier stellen Sie eine allgemeine Anfrage, sehen den Stand Ihres Vorgangs oder nehmen '
         + 'Kontakt mit uns auf. Wählen Sie den Weg, der zu Ihrem Anliegen passt.',
       links: [
-        ['/service-und-termin/anfrage', 'Allgemeine Anfrage'],
+        ['/service-und-termin/anfrage', 'Anfrage zu einer Leistung'],
         ['/service-und-termin/terminstatus', 'Terminstatus prüfen'],
       ],
     },

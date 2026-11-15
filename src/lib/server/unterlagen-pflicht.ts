@@ -56,6 +56,9 @@ export function fahrzeugscheinPruefen(uploads: readonly UploadAngabe[], ablageEi
    mit unverändertem Verhalten. Kein Weg schwächt einen Nachweis.
    ========================================================================== */
 
+export const ERSATZNACHWEIS_FEHLT =
+  'Bitte laden Sie Ihren Nachweis hoch, zum Beispiel Betriebserlaubnis, Versicherungsbescheinigung oder Kaufbeleg.';
+
 export const SICHERUNGSKARTE_FEHLT =
   'Bitte laden Sie ein Foto Ihrer Sicherungskarte hoch. Ohne Karte fertigen wir Schlüssel mit geschütztem Profil nicht an.';
 
@@ -83,6 +86,8 @@ function hochgeladen(uploads: readonly UploadAngabe[], kategorie: UploadRef['cat
 export function nachweisPruefen(nachweis: RubrikNachweis, uploads: readonly UploadAngabe[], ablageEingerichtet: boolean): string | null {
   if (nachweis === 'fahrzeugschein') return fahrzeugscheinPruefen(uploads, ablageEingerichtet);
   if (nachweis === 'sicherungskarte') return hochgeladen(uploads, 'sicherungskarte', ablageEingerichtet) ? null : SICHERUNGSKARTE_FEHLT;
+  // Ersatznachweis der Kleinstfahrzeuge: nie stillschweigend wie „kein Nachweis“ behandeln (R13).
+  if (nachweis === 'ersatznachweis') return hochgeladen(uploads, 'dokument', ablageEingerichtet) ? null : ERSATZNACHWEIS_FEHLT;
   return null;
 }
 

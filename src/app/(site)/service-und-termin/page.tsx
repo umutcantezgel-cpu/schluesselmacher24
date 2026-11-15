@@ -39,8 +39,8 @@ export async function generateMetadata(): Promise<Metadata> {
 const ENTRIES: Array<{ href: string; label: string; description: string; icon: ComponentType<IconProps> }> = [
   {
     href: '/service-und-termin/anfrage',
-    label: 'Allgemeine Anfrage',
-    description: 'Wenn Ihr Anliegen in keinen der Fachbereiche passt.',
+    label: 'Anfrage zu einer Leistung',
+    description: 'Frage oder Anliegen zu einem unserer Fachbereiche.',
     icon: IconServiceUndTermin,
   },
   {
@@ -51,7 +51,7 @@ const ENTRIES: Array<{ href: string; label: string; description: string; icon: C
   },
   {
     href: '/service-und-termin/vor-ort',
-    label: 'Vor-Ort-Leistungen',
+    label: 'Service vor Ort nach Termin',
     description: 'Was wir direkt bei Ihnen im Objekt erledigen.',
     icon: IconStandort,
   },

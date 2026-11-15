@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 
 import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import { EinstiegSeite, seitenMetadata, type EinstiegAbschnitt } from '@/components/fahrzeug-anfrage/seiten';
+import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
+import { getRubrik } from '@/lib/data';
 
 /*
  * Eigener Inhalt dieser Seite (R3): Beim Fahrrad zählt das Schloss; Hersteller, Schlüsselnummer und
@@ -36,5 +38,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /** Einstiegsseite Fahrradschlüssel (FA-KERN-02B). */
 export default async function FahrradschluesselPage() {
-  return <EinstiegSeite klasse="fahrrad" abschnitte={ABSCHNITTE} />;
+  const ablauf = (
+    <RubrikAblaufAbschnitt
+      rubrik={await getRubrik('fahrradschluessel')}
+      nummer={String(ABSCHNITTE.length + 1).padStart(2, '0')}
+      titel="So läuft Ihre Anfrage ab"
+    />
+  );
+  return <EinstiegSeite klasse="fahrrad" abschnitte={ABSCHNITTE} ablauf={ablauf} />;
 }

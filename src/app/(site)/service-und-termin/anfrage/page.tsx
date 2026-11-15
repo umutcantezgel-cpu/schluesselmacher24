@@ -11,10 +11,10 @@ import { PageHeader } from '@/components/layout/page-header';
 import { AllgemeineAnfrage } from './anfrage-formular';
 
 export const metadata: Metadata = {
-  title: 'Allgemeine Anfrage',
+  title: 'Anfrage zu einer Leistung',
   description:
-    'Stellen Sie eine Anfrage, wenn Ihr Anliegen in keinen der Fachbereiche passt. Wir melden '
-    + 'uns mit einer Einschätzung.',
+    'Sie haben eine Frage oder ein Anliegen zu einem unserer Fachbereiche? Wählen Sie den Bereich und '
+    + 'beschreiben Sie kurz, worum es geht. Wir melden uns bei Ihnen.',
   alternates: { canonical: '/service-und-termin/anfrage' },
 };
 
@@ -47,11 +47,11 @@ export default async function AnfragePage(props: {
         eyebrow="Geführte Anfrage"
         bereich="service-und-termin"
         art="arbeit"
-        title={codeAnfrage ? 'Code anfragen' : 'Allgemeine Anfrage'}
+        title={codeAnfrage ? 'Code anfragen' : 'Anfrage zu einer Leistung'}
         lead={
           codeAnfrage
             ? 'Nennen Sie Hersteller oder Schloss, den Code wie aufgedruckt und die Stückzahl. Wir prüfen den Code und melden uns mit einem Angebot oder einer Rückfrage.'
-            : 'Wenn Ihr Anliegen in keinen der Fachbereiche passt: Beschreiben Sie kurz, worum es geht. Wir melden uns mit einer Einschätzung.'
+            : 'Wählen Sie den Fachbereich und beschreiben Sie kurz, worum es geht. Wir melden uns mit einer Einschätzung.'
         }
         crumbs={[
           { href: '/service-und-termin', label: 'Service und Termin' },

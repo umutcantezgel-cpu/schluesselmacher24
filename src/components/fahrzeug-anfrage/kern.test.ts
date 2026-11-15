@@ -55,8 +55,8 @@ describe('Klassendaten der gemeinsamen Anfrage (FA-KERN-02B)', () => {
     expect(ANFRAGE_FORMULAR.seniorenmobil.anfrage).toBe('/seniorenmobile/anfrage');
     expect(ANFRAGE_FORMULAR.fahrrad.anfrage).toBe('/fahrradschluessel/anfrage');
     expect(ANFRAGE_FORMULAR['nicht-gefunden'].anfrage).toBe('/autoschluessel/fahrzeug-nicht-gefunden');
-    // Neue Seiten bleiben auf noindex, bis der Orchestrator sie freigibt; das Motorrad ist schon öffentlich.
-    expect(FORMULAR_KLASSEN.filter((k) => ANFRAGE_FORMULAR[k].indexierbar)).toEqual(['motorrad']);
+    // Neue Seiten bleiben auf noindex, bis sie freigegeben sind: Motorrad öffentlich, Roller und Fahrrad seit FA-SOFORT-05.
+    expect(FORMULAR_KLASSEN.filter((k) => ANFRAGE_FORMULAR[k].indexierbar)).toEqual(['motorrad', 'roller', 'fahrrad']);
     // Katalogsuche nur für Krafträder, Chip-Frage für Motorrad, Roller und „nicht gefunden“.
     expect(FORMULAR_KLASSEN.filter((k) => ANFRAGE_FORMULAR[k].katalog === 'kraftrad')).toEqual(['motorrad', 'roller']);
     expect(FORMULAR_KLASSEN.filter((k) => ANFRAGE_FORMULAR[k].chip)).toEqual(['motorrad', 'roller', 'nicht-gefunden']);

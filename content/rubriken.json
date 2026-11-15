@@ -2,7 +2,7 @@
   {
     "id": "autoschluessel",
     "name": "Autoschlüssel",
-    "laienname": "Autoschlüssel",
+    "laienname": "Auto",
     "erklaerung": "Nachmachen, programmieren oder ersetzen in unserer Werkstatt in Wetzlar, mit Preis oder Preisrahmen vor dem Termin.",
     "icon": "autoschluessel",
     "ziel": "/autoschluessel",
@@ -48,8 +48,8 @@
   {
     "id": "motorradschluessel",
     "name": "Motorradschlüssel",
-    "laienname": "Motorradschlüssel",
-    "erklaerung": "Anfrage mit Fahrzeugschein und Foto, wir melden uns mit Preis und Termin.",
+    "laienname": "Motorrad",
+    "erklaerung": "Anfrage mit Fahrzeugschein und drei Fotos Ihres Schlüssels, wir melden uns mit Preis und Termin.",
     "icon": "motorradschluessel",
     "ziel": "/motorradschluessel",
     "ablauf": [
@@ -87,6 +87,459 @@
     "bereich": "autoschluessel"
   },
   {
+    "id": "roller-und-kleinstfahrzeuge",
+    "name": "Roller und Kleinstfahrzeuge",
+    "laienname": "Roller",
+    "erklaerung": "Für Roller, Mofa und Moped: Anfrage mit Fahrzeugschein oder Ersatznachweis und drei Fotos, wir melden uns mit Preis und Termin.",
+    "icon": "roller",
+    "ziel": "/roller-und-kleinstfahrzeuge",
+    "ablauf": [
+      {
+        "titel": "Fahrzeug angeben",
+        "text": "Hersteller und Typ, dazu ob Ihr Fahrzeug einen Fahrzeugschein oder ein Versicherungskennzeichen hat.",
+        "icon": "roller"
+      },
+      {
+        "titel": "Schlüssel und Chip",
+        "text": "Ob Sie noch einen Schlüssel haben und ob ein Chip darin steckt. Wissen Sie es nicht, klären wir es anhand Ihrer Fotos.",
+        "icon": "transponder"
+      },
+      {
+        "titel": "Unterlagen hochladen",
+        "text": "Den Fahrzeugschein, bei Versicherungskennzeichen einen Ersatznachweis, dazu drei Fotos Ihres Schlüssels, wenn Sie noch einen haben.",
+        "icon": "foto-hochladen"
+      },
+      {
+        "titel": "Preis erhalten",
+        "text": "Wir prüfen und melden uns mit Preis und Termin.",
+        "icon": "beratung-telefon"
+      }
+    ],
+    "abschluss": "anfrage",
+    "pflichtUploads": [
+      "schluesselfoto"
+    ],
+    "nachweis": "fahrzeugschein",
+    "status": "live",
+    "reihenfolge": 30,
+    "navigation": "autoschluessel",
+    "imHub": true,
+    "bereich": "autoschluessel"
+  },
+  {
+    "id": "e-scooter",
+    "name": "E-Scooter und ähnliche Elektrofahrzeuge",
+    "laienname": "E-Scooter",
+    "erklaerung": "Anfrage mit Nachweis, Typenschild und drei Fotos Ihres Schlüssels, wir melden uns mit Preis und Termin.",
+    "icon": "e-scooter",
+    "ziel": "/e-scooter",
+    "ablauf": [
+      {
+        "titel": "Fahrzeug angeben",
+        "text": "Hersteller und Typ Ihres Fahrzeugs.",
+        "icon": "e-scooter"
+      },
+      {
+        "titel": "Schlüssel angeben",
+        "text": "Ob Sie noch einen Schlüssel haben. Für welches Schloss Sie ihn brauchen, schreiben Sie in die Beschreibung.",
+        "icon": "schluessel-kopieren"
+      },
+      {
+        "titel": "Nachweis, Typenschild und drei Fotos hochladen",
+        "text": "Ein Nachweis wie Kaufbeleg oder Versicherungsbescheinigung, das Typenschild oder die Fahrzeug-Identifizierungsnummer und drei Fotos Ihres Schlüssels, wenn Sie noch einen haben.",
+        "icon": "foto-hochladen"
+      },
+      {
+        "titel": "Preis erhalten",
+        "text": "Wir prüfen und melden uns mit Preis und Termin.",
+        "icon": "beratung-telefon"
+      }
+    ],
+    "abschluss": "anfrage",
+    "pflichtUploads": [
+      "dokument",
+      "schluesselfoto"
+    ],
+    "nachweis": "ersatznachweis",
+    "status": "live",
+    "reihenfolge": 40,
+    "navigation": "autoschluessel",
+    "imHub": true,
+    "bereich": "autoschluessel"
+  },
+  {
+    "id": "seniorenmobile",
+    "name": "Seniorenmobile und vergleichbare Fahrzeuge",
+    "laienname": "Seniorenmobil",
+    "erklaerung": "Für Seniorenmobil, Elektromobil und Krankenfahrstuhl: Anfrage mit Nachweis und drei Fotos, wir melden uns mit Preis und Termin.",
+    "icon": "seniorenmobil",
+    "ziel": "/seniorenmobile",
+    "ablauf": [
+      {
+        "titel": "Fahrzeug angeben",
+        "text": "Hersteller und Typ Ihres Fahrzeugs.",
+        "icon": "seniorenmobil"
+      },
+      {
+        "titel": "Schlüssel angeben",
+        "text": "Ob Sie noch einen Schlüssel haben.",
+        "icon": "schluessel-kopieren"
+      },
+      {
+        "titel": "Nachweis, Typenschild und drei Fotos hochladen",
+        "text": "Ein Nachweis wie Betriebserlaubnis, Versicherungsbescheinigung oder Kaufbeleg, das Typenschild oder die Fahrzeug-Identifizierungsnummer und drei Fotos Ihres Schlüssels, wenn Sie noch einen haben.",
+        "icon": "foto-hochladen"
+      },
+      {
+        "titel": "Preis erhalten",
+        "text": "Wir prüfen und melden uns mit Preis und Termin.",
+        "icon": "beratung-telefon"
+      }
+    ],
+    "abschluss": "anfrage",
+    "pflichtUploads": [
+      "dokument",
+      "schluesselfoto"
+    ],
+    "nachweis": "ersatznachweis",
+    "status": "live",
+    "reihenfolge": 50,
+    "navigation": "autoschluessel",
+    "imHub": true,
+    "bereich": "autoschluessel"
+  },
+  {
+    "id": "fahrradschluessel",
+    "name": "Fahrradschlüssel",
+    "laienname": "Fahrrad",
+    "erklaerung": "Für das Schloss Ihres Fahrrads: Anfrage mit Schlüsselnummer, Kaufbeleg oder Codekarte und drei Fotos, wir melden uns mit Preis und Termin.",
+    "icon": "fahrradschluessel",
+    "ziel": "/fahrradschluessel",
+    "ablauf": [
+      {
+        "titel": "Schloss angeben",
+        "text": "Hersteller des Schlosses und die Schlüsselnummer.",
+        "icon": "fahrradschluessel"
+      },
+      {
+        "titel": "Schlüssel angeben",
+        "text": "Ob Sie noch einen Schlüssel haben.",
+        "icon": "schluessel-kopieren"
+      },
+      {
+        "titel": "Kaufbeleg oder Codekarte und drei Fotos hochladen",
+        "text": "Der Kaufbeleg oder die Codekarte des Schlosses und drei Fotos Ihres Schlüssels, wenn Sie noch einen haben.",
+        "icon": "foto-hochladen"
+      },
+      {
+        "titel": "Preis erhalten",
+        "text": "Wir prüfen und melden uns mit Preis und Termin.",
+        "icon": "beratung-telefon"
+      }
+    ],
+    "abschluss": "anfrage",
+    "pflichtUploads": [
+      "dokument",
+      "schluesselfoto"
+    ],
+    "nachweis": "ersatznachweis",
+    "status": "live",
+    "reihenfolge": 60,
+    "navigation": "autoschluessel",
+    "imHub": true,
+    "bereich": "autoschluessel"
+  },
+  {
+    "id": "schluessel-nach-vorlage",
+    "name": "Schlüssel nach Vorlage oder einschicken",
+    "laienname": "Nach Vorlage",
+    "zusatz": "per Foto anfragen",
+    "erklaerung": "Sie laden drei Fotos hoch, wir prüfen Schlüsselart und Machbarkeit und nennen Ihnen Preis und Weg.",
+    "icon": "schluessel-nach-vorlage",
+    "ziel": "/schluessel-nach-vorlage",
+    "ablauf": [
+      {
+        "titel": "Fotos hochladen",
+        "text": "Sie fotografieren den Schlüssel aus drei Richtungen und tragen ein, was auf ihm steht. Gibt es eine Sicherungskarte, fotografieren Sie auch die Karte. Das Formular führt Sie Schritt für Schritt und lässt sich am Smartphone bedienen.",
+        "icon": "foto-hochladen"
+      },
+      {
+        "titel": "Prüfung und Ergebnis",
+        "text": "Wir bestimmen Schlüsselart, Profil und Beschriftung und prüfen die Machbarkeit. Schließwerte lesen wir nicht aus Fotos ab. Sie erhalten per E-Mail die Freigabe mit Preis und Weg. Gefertigt wird nach den Angaben auf dem Schlüssel oder am eingesendeten Original. Geht es nicht, erhalten Sie eine Rückfrage oder eine Absage. Die Prüfung ist noch keine Fertigungszusage.",
+        "icon": "pruefung"
+      },
+      {
+        "titel": "Auftrag mit dem Zahlungslink",
+        "text": "Mit der Freigabe erhalten Sie einen persönlichen Zahlungslink. Erst mit Ihrer Zahlung erteilen Sie den Auftrag.",
+        "icon": "zahlung"
+      },
+      {
+        "titel": "Fertigung und Versand",
+        "text": "Danach fertigen wir und schicken den Schlüssel zu Ihnen. Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und Vorgangsnummer in der Freigabe. Solange wir Ihre Anfrage prüfen, senden Sie bitte nichts unaufgefordert ein.",
+        "icon": "lieferung"
+      }
+    ],
+    "abschluss": "angebot-zahlungslink",
+    "pflichtUploads": [
+      "schluesselfoto"
+    ],
+    "nachweis": "sicherungskarte",
+    "status": "live",
+    "reihenfolge": 70,
+    "navigation": "code",
+    "imHub": true,
+    "bereich": "schluessel-nach-vorlage"
+  },
+  {
+    "id": "schluessel-nach-code",
+    "name": "Schlüssel nach Code",
+    "laienname": "Nach Code",
+    "erklaerung": "Für Briefkasten, Möbel und mehr: Sie geben den Code ein, bestellen und bezahlen, dann kommt der Schlüssel per Post.",
+    "icon": "schluessel-nach-code",
+    "ziel": "/schluessel-nach-code",
+    "ablauf": [
+      {
+        "titel": "Code finden",
+        "text": "Die Nummer steht auf dem Schlüssel oder am Schloss.",
+        "icon": "schluessel-nach-code"
+      },
+      {
+        "titel": "Bestellen",
+        "text": "Code eingeben, Stückzahl wählen, bezahlen. Bei geschütztem Profil ein Foto der Sicherungskarte hochladen.",
+        "icon": "warenkorb"
+      },
+      {
+        "titel": "Fertigung",
+        "text": "Wir fertigen den Schlüssel in unserer Werkstatt.",
+        "icon": "werkstatt"
+      },
+      {
+        "titel": "Versand",
+        "text": "Der Schlüssel kommt per Post zu Ihnen.",
+        "icon": "lieferung"
+      }
+    ],
+    "abschluss": "kasse",
+    "pflichtUploads": [],
+    "nachweis": "sicherungskarte",
+    "status": "live",
+    "reihenfolge": 80,
+    "navigation": "code",
+    "imHub": true,
+    "bereich": "schluessel-nach-code"
+  },
+  {
+    "id": "sperrschliessung",
+    "name": "Sperrschließungen und gleichschließende Zylinder",
+    "laienname": "Zylinder",
+    "zusatz": "ein Schlüssel für alle Türen",
+    "erklaerung": "Mehrere gleichschließende Zylinder, ein Schlüssel öffnet alle Türen, und Sie sehen den Gesamtpreis vor dem Bezahlen.",
+    "icon": "gleichschliessende-zylinder",
+    "ziel": "/gleichschliessende-zylinder",
+    "ablauf": [
+      {
+        "titel": "Zylinder zusammenstellen",
+        "text": "Je Tür Bauform und Maße wählen.",
+        "icon": "profilzylinder"
+      },
+      {
+        "titel": "Maße prüfen",
+        "text": "Mit der Messhilfe prüfen Sie, wie weit der Zylinder nach außen (Maß A) und nach innen (Maß B) reicht.",
+        "icon": "zylinder-mass"
+      },
+      {
+        "titel": "Bestellen",
+        "text": "Gesamtpreis sehen und bezahlen.",
+        "icon": "warenkorb"
+      },
+      {
+        "titel": "Fertigung und Versand",
+        "text": "Die Werkstatt prüft Ihre Maße vor der Fertigung.",
+        "icon": "werkstatt"
+      }
+    ],
+    "abschluss": "kasse",
+    "pflichtUploads": [],
+    "nachweis": "keiner",
+    "status": "live",
+    "reihenfolge": 90,
+    "navigation": "sperrschliessung",
+    "imHub": true,
+    "bereich": "gleichschliessende-zylinder"
+  },
+  {
+    "id": "schliessanlage",
+    "name": "Schließanlagen",
+    "laienname": "Schließanlage",
+    "zusatz": "wer öffnet welche Tür",
+    "erklaerung": "Für Häuser und Firmen: Jeder Schlüssel öffnet nur die Türen, für die er gedacht ist, und Sie bestellen mit Preis oder fragen ein Angebot an.",
+    "icon": "schliessanlagen",
+    "ziel": "/schliessanlagen",
+    "ablauf": [
+      {
+        "titel": "Türen und Schlüssel planen",
+        "text": "Zylinder je Tür und Schlüssel je Person anlegen.",
+        "icon": "schliessanlagen"
+      },
+      {
+        "titel": "Schließplan prüfen",
+        "text": "Sie sehen, welcher Schlüssel welche Tür öffnet.",
+        "icon": "pruefung"
+      },
+      {
+        "titel": "Bestellen oder Angebot",
+        "text": "Mit Preis bestellen oder ein Angebot anfragen.",
+        "icon": "warenkorb"
+      },
+      {
+        "titel": "Fertigung",
+        "text": "Die Werkstatt prüft den Plan und fertigt die Anlage.",
+        "icon": "werkstatt"
+      }
+    ],
+    "abschluss": "anfrage",
+    "pflichtUploads": [],
+    "nachweis": "keiner",
+    "status": "live",
+    "reihenfolge": 100,
+    "navigation": "schliessanlagen",
+    "imHub": true,
+    "bereich": "schliessanlagen"
+  },
+  {
+    "id": "elektronische-schliesssysteme",
+    "name": "Elektronische Zutrittslösungen",
+    "laienname": "Zutritt",
+    "erklaerung": "Öffnen mit Chip, Karte oder App: Nach der Beratung erhalten Sie ein Angebot mit allen Kosten.",
+    "icon": "elektronische-zutrittsloesungen",
+    "ziel": "/elektronische-zutrittsloesungen",
+    "ablauf": [
+      {
+        "titel": "Bedarf erfassen",
+        "text": "Objekt, Umfang, Medien, Verwaltung, Berechtigungen, Standorte, Integration und Service im Konfigurator beschreiben.",
+        "icon": "nachweis"
+      },
+      {
+        "titel": "Prüfung und Beratung",
+        "text": "Wir schauen uns die Türsituation an, sagen Ihnen, was technisch möglich ist, und klären mit Ihnen das passende System.",
+        "icon": "technische-beratung"
+      },
+      {
+        "titel": "Angebot",
+        "text": "Sie erhalten ein Angebot mit nachvollziehbaren Positionen und allen Kosten.",
+        "icon": "dokument"
+      }
+    ],
+    "abschluss": "beratung",
+    "pflichtUploads": [],
+    "nachweis": "keiner",
+    "status": "live",
+    "reihenfolge": 110,
+    "navigation": "mehr",
+    "imHub": true,
+    "bereich": "elektronische-zutrittsloesungen"
+  },
+  {
+    "id": "sicherheitstechnik",
+    "name": "Sicherheitstechnik",
+    "laienname": "Sicherheitstechnik",
+    "erklaerung": "Einbruchschutz, Alarm und Video für Ihr Objekt, mit Beratung und einem Angebot, das alle Kosten nennt.",
+    "icon": "sicherheitstechnik",
+    "ziel": "/sicherheitstechnik",
+    "ablauf": [
+      {
+        "titel": "Anfrage stellen",
+        "text": "Objekt und Anliegen kurz beschreiben, gern mit Fotos.",
+        "icon": "foto-hochladen"
+      },
+      {
+        "titel": "Beratung",
+        "text": "Am Telefon oder vor Ort im Einsatzgebiet.",
+        "icon": "technische-beratung"
+      },
+      {
+        "titel": "Angebot",
+        "text": "Sie erhalten ein Angebot mit allen Kosten.",
+        "icon": "dokument"
+      }
+    ],
+    "abschluss": "beratung",
+    "pflichtUploads": [],
+    "nachweis": "keiner",
+    "status": "live",
+    "reihenfolge": 120,
+    "navigation": "mehr",
+    "imHub": true,
+    "bereich": "sicherheitstechnik"
+  },
+  {
+    "id": "schluesseldienst-vor-ort",
+    "name": "Service vor Ort nach Termin",
+    "laienname": "Vor Ort",
+    "erklaerung": "Einsatz an Ihrer Tür im Einsatzgebiet der Werkstatt, anderswo über Partner; vor der Terminbestätigung erfahren Sie, was er kostet.",
+    "icon": "vor-ort",
+    "ziel": "/service-und-termin/vor-ort",
+    "ablauf": [
+      {
+        "titel": "Ort und Anliegen angeben",
+        "text": "Wo und was: Tür, Schloss oder Zylinder.",
+        "icon": "standort"
+      },
+      {
+        "titel": "Wir klären den Einsatz",
+        "text": "Ob die Werkstatt oder ein Partner kommen kann.",
+        "icon": "beratung-telefon"
+      },
+      {
+        "titel": "Termin",
+        "text": "Vor der Terminbestätigung erfahren Sie, was der Einsatz kostet.",
+        "icon": "termin"
+      }
+    ],
+    "abschluss": "anfrage",
+    "pflichtUploads": [],
+    "nachweis": "keiner",
+    "status": "live",
+    "reihenfolge": 130,
+    "navigation": "mehr",
+    "imHub": true,
+    "bereich": "service-und-termin"
+  },
+  {
+    "id": "beratung",
+    "name": "Allgemeine Anfrage",
+    "laienname": "Anfrage",
+    "zusatz": "für Sonderfälle",
+    "erklaerung": "Für alle anderen Anliegen: Sie schildern es kurz, wir rufen zurück und sagen Ihnen, wie es weitergeht und was es kostet.",
+    "icon": "beratung-telefon",
+    "ziel": "/beratung",
+    "ablauf": [
+      {
+        "titel": "Anliegen schildern",
+        "text": "Ein paar Sätze und gern ein Foto genügen.",
+        "icon": "foto-hochladen"
+      },
+      {
+        "titel": "Rückruf",
+        "text": "Wir rufen Sie zurück, nach Möglichkeit in dem Zeitraum, den Sie nennen.",
+        "icon": "beratung-telefon"
+      },
+      {
+        "titel": "Lösung",
+        "text": "Sie erhalten einen Vorschlag mit Preis oder eine Anfrage wird angelegt.",
+        "icon": "dokument"
+      }
+    ],
+    "abschluss": "beratung",
+    "pflichtUploads": [],
+    "nachweis": "keiner",
+    "status": "live",
+    "reihenfolge": 140,
+    "navigation": "mehr",
+    "imHub": true,
+    "bereich": "service-und-termin"
+  },
+  {
     "id": "autoschluessel-gehaeuse",
     "name": "Autoschlüsselgehäuse",
     "laienname": "Schlüsselgehäuse",
@@ -122,89 +575,10 @@
     ],
     "nachweis": "fahrzeugschein",
     "status": "live",
-    "reihenfolge": 30,
+    "reihenfolge": 150,
     "navigation": "autoschluessel",
-    "imHub": true,
+    "imHub": false,
     "bereich": "autoschluessel"
-  },
-  {
-    "id": "schluessel-nach-code",
-    "name": "Schlüssel nach Code",
-    "laienname": "Schlüssel nach Code",
-    "erklaerung": "Für Briefkasten, Möbel und mehr: Sie geben den Code ein, bestellen und bezahlen, dann kommt der Schlüssel per Post.",
-    "icon": "schluessel-nach-code",
-    "ziel": "/schluessel-nach-code",
-    "ablauf": [
-      {
-        "titel": "Code finden",
-        "text": "Die Nummer steht auf dem Schlüssel oder am Schloss.",
-        "icon": "schluessel-nach-code"
-      },
-      {
-        "titel": "Bestellen",
-        "text": "Code eingeben, Stückzahl wählen, bezahlen. Bei geschütztem Profil ein Foto der Sicherungskarte hochladen.",
-        "icon": "warenkorb"
-      },
-      {
-        "titel": "Fertigung",
-        "text": "Wir fertigen den Schlüssel in unserer Werkstatt.",
-        "icon": "werkstatt"
-      },
-      {
-        "titel": "Versand",
-        "text": "Der Schlüssel kommt per Post zu Ihnen.",
-        "icon": "lieferung"
-      }
-    ],
-    "abschluss": "kasse",
-    "pflichtUploads": [],
-    "nachweis": "sicherungskarte",
-    "status": "live",
-    "reihenfolge": 40,
-    "navigation": "code",
-    "imHub": true,
-    "bereich": "schluessel-nach-code"
-  },
-  {
-    "id": "schluessel-nach-vorlage",
-    "name": "Schlüssel nach Vorlage",
-    "laienname": "Schlüssel nach Vorlage",
-    "zusatz": "per Foto anfragen oder einschicken",
-    "erklaerung": "Sie laden drei Fotos hoch, wir prüfen Schlüsselart und Machbarkeit und nennen Ihnen Preis und Weg.",
-    "icon": "schluessel-nach-vorlage",
-    "ziel": "/schluessel-nach-vorlage",
-    "ablauf": [
-      {
-        "titel": "Fotos hochladen",
-        "text": "Sie fotografieren den Schlüssel aus drei Richtungen und tragen ein, was auf ihm steht. Gibt es eine Sicherungskarte, fotografieren Sie auch die Karte. Das Formular führt Sie Schritt für Schritt und lässt sich am Smartphone bedienen.",
-        "icon": "foto-hochladen"
-      },
-      {
-        "titel": "Prüfung und Ergebnis",
-        "text": "Wir bestimmen Schlüsselart, Profil und Beschriftung und prüfen die Machbarkeit. Schließwerte lesen wir nicht aus Fotos ab. Sie erhalten per E-Mail die Freigabe mit Preis und Weg. Gefertigt wird nach den Angaben auf dem Schlüssel oder am eingesendeten Original. Geht es nicht, erhalten Sie eine Rückfrage oder eine Absage. Die Prüfung ist noch keine Fertigungszusage.",
-        "icon": "pruefung"
-      },
-      {
-        "titel": "Auftrag mit dem Zahlungslink",
-        "text": "Mit der Freigabe erhalten Sie einen persönlichen Zahlungslink. Erst mit Ihrer Zahlung erteilen Sie den Auftrag.",
-        "icon": "zahlung"
-      },
-      {
-        "titel": "Fertigung und Versand",
-        "text": "Danach fertigen wir und schicken den Schlüssel zu Ihnen. Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und Vorgangsnummer in der Freigabe. Solange wir Ihre Anfrage prüfen, senden Sie bitte nichts unaufgefordert ein.",
-        "icon": "lieferung"
-      }
-    ],
-    "abschluss": "angebot-zahlungslink",
-    "pflichtUploads": [
-      "schluesselfoto"
-    ],
-    "nachweis": "sicherungskarte",
-    "status": "live",
-    "reihenfolge": 50,
-    "navigation": "code",
-    "imHub": true,
-    "bereich": "schluessel-nach-vorlage"
   },
   {
     "id": "schluessel-einschicken",
@@ -239,221 +613,10 @@
     "pflichtUploads": [],
     "nachweis": "sicherungskarte",
     "status": "live",
-    "reihenfolge": 60,
+    "reihenfolge": 160,
     "navigation": "code",
     "imHub": false,
     "bereich": "schluessel-nach-vorlage"
-  },
-  {
-    "id": "sperrschliessung",
-    "name": "Sperrschließung",
-    "laienname": "Sperrschließung",
-    "zusatz": "ein Schlüssel für alle Türen",
-    "erklaerung": "Mehrere gleichschließende Zylinder, ein Schlüssel öffnet alle Türen, und Sie sehen den Gesamtpreis vor dem Bezahlen.",
-    "icon": "gleichschliessende-zylinder",
-    "ziel": "/gleichschliessende-zylinder",
-    "ablauf": [
-      {
-        "titel": "Zylinder zusammenstellen",
-        "text": "Je Tür Bauform und Maße wählen.",
-        "icon": "profilzylinder"
-      },
-      {
-        "titel": "Maße prüfen",
-        "text": "Mit der Messhilfe prüfen Sie, wie weit der Zylinder nach außen (Maß A) und nach innen (Maß B) reicht.",
-        "icon": "zylinder-mass"
-      },
-      {
-        "titel": "Bestellen",
-        "text": "Gesamtpreis sehen und bezahlen.",
-        "icon": "warenkorb"
-      },
-      {
-        "titel": "Fertigung und Versand",
-        "text": "Die Werkstatt prüft Ihre Maße vor der Fertigung.",
-        "icon": "werkstatt"
-      }
-    ],
-    "abschluss": "kasse",
-    "pflichtUploads": [],
-    "nachweis": "keiner",
-    "status": "live",
-    "reihenfolge": 70,
-    "navigation": "sperrschliessung",
-    "imHub": true,
-    "bereich": "gleichschliessende-zylinder"
-  },
-  {
-    "id": "schliessanlage",
-    "name": "Schließanlage",
-    "laienname": "Schließanlage",
-    "zusatz": "wer öffnet welche Tür",
-    "erklaerung": "Für Häuser und Firmen: Jeder Schlüssel öffnet nur die Türen, für die er gedacht ist, und Sie bestellen mit Preis oder fragen ein Angebot an.",
-    "icon": "schliessanlagen",
-    "ziel": "/schliessanlagen",
-    "ablauf": [
-      {
-        "titel": "Türen und Schlüssel planen",
-        "text": "Zylinder je Tür und Schlüssel je Person anlegen.",
-        "icon": "schliessanlagen"
-      },
-      {
-        "titel": "Schließplan prüfen",
-        "text": "Sie sehen, welcher Schlüssel welche Tür öffnet.",
-        "icon": "pruefung"
-      },
-      {
-        "titel": "Bestellen oder Angebot",
-        "text": "Mit Preis bestellen oder ein Angebot anfragen.",
-        "icon": "warenkorb"
-      },
-      {
-        "titel": "Fertigung",
-        "text": "Die Werkstatt prüft den Plan und fertigt die Anlage.",
-        "icon": "werkstatt"
-      }
-    ],
-    "abschluss": "anfrage",
-    "pflichtUploads": [],
-    "nachweis": "keiner",
-    "status": "live",
-    "reihenfolge": 80,
-    "navigation": "schliessanlagen",
-    "imHub": true,
-    "bereich": "schliessanlagen"
-  },
-  {
-    "id": "elektronische-schliesssysteme",
-    "name": "Elektronische Schließsysteme",
-    "laienname": "Elektronisch schließen",
-    "erklaerung": "Öffnen mit Chip, Karte oder App: Nach der Beratung erhalten Sie ein Angebot mit allen Kosten.",
-    "icon": "elektronische-zutrittsloesungen",
-    "ziel": "/elektronische-zutrittsloesungen",
-    "ablauf": [
-      {
-        "titel": "Bedarf erfassen",
-        "text": "Objekt, Umfang, Medien, Verwaltung, Berechtigungen, Standorte, Integration und Service im Konfigurator beschreiben.",
-        "icon": "nachweis"
-      },
-      {
-        "titel": "Prüfung und Beratung",
-        "text": "Wir schauen uns die Türsituation an, sagen Ihnen, was technisch möglich ist, und klären mit Ihnen das passende System.",
-        "icon": "technische-beratung"
-      },
-      {
-        "titel": "Angebot",
-        "text": "Sie erhalten ein Angebot mit nachvollziehbaren Positionen und allen Kosten.",
-        "icon": "dokument"
-      }
-    ],
-    "abschluss": "beratung",
-    "pflichtUploads": [],
-    "nachweis": "keiner",
-    "status": "live",
-    "reihenfolge": 90,
-    "navigation": "mehr",
-    "imHub": true,
-    "bereich": "elektronische-zutrittsloesungen"
-  },
-  {
-    "id": "sicherheitstechnik",
-    "name": "Sicherheitstechnik",
-    "laienname": "Sicherheitstechnik",
-    "erklaerung": "Einbruchschutz, Alarm und Video für Ihr Objekt, mit Beratung und einem Angebot, das alle Kosten nennt.",
-    "icon": "sicherheitstechnik",
-    "ziel": "/sicherheitstechnik",
-    "ablauf": [
-      {
-        "titel": "Anfrage stellen",
-        "text": "Objekt und Anliegen kurz beschreiben, gern mit Fotos.",
-        "icon": "foto-hochladen"
-      },
-      {
-        "titel": "Beratung",
-        "text": "Am Telefon oder vor Ort im Einsatzgebiet.",
-        "icon": "technische-beratung"
-      },
-      {
-        "titel": "Angebot",
-        "text": "Sie erhalten ein Angebot mit allen Kosten.",
-        "icon": "dokument"
-      }
-    ],
-    "abschluss": "beratung",
-    "pflichtUploads": [],
-    "nachweis": "keiner",
-    "status": "live",
-    "reihenfolge": 100,
-    "navigation": "mehr",
-    "imHub": true,
-    "bereich": "sicherheitstechnik"
-  },
-  {
-    "id": "schluesseldienst-vor-ort",
-    "name": "Schlüsseldienst vor Ort",
-    "laienname": "Schlüsseldienst",
-    "zusatz": "vor Ort, mit Termin",
-    "erklaerung": "Einsatz an Ihrer Tür im Einsatzgebiet der Werkstatt, anderswo über Partner; vor der Terminbestätigung erfahren Sie, was er kostet.",
-    "icon": "vor-ort",
-    "ziel": "/service-und-termin/vor-ort",
-    "ablauf": [
-      {
-        "titel": "Ort und Anliegen angeben",
-        "text": "Wo und was: Tür, Schloss oder Zylinder.",
-        "icon": "standort"
-      },
-      {
-        "titel": "Wir klären den Einsatz",
-        "text": "Ob die Werkstatt oder ein Partner kommen kann.",
-        "icon": "beratung-telefon"
-      },
-      {
-        "titel": "Termin",
-        "text": "Vor der Terminbestätigung erfahren Sie, was der Einsatz kostet.",
-        "icon": "termin"
-      }
-    ],
-    "abschluss": "anfrage",
-    "pflichtUploads": [],
-    "nachweis": "keiner",
-    "status": "live",
-    "reihenfolge": 110,
-    "navigation": "mehr",
-    "imHub": true,
-    "bereich": "service-und-termin"
-  },
-  {
-    "id": "beratung",
-    "name": "Beratung",
-    "laienname": "Beratung",
-    "erklaerung": "Für alle anderen Anliegen: Sie schildern es kurz, wir rufen zurück und sagen Ihnen, wie es weitergeht und was es kostet.",
-    "icon": "beratung-telefon",
-    "ziel": "/beratung",
-    "ablauf": [
-      {
-        "titel": "Anliegen schildern",
-        "text": "Ein paar Sätze und gern ein Foto genügen.",
-        "icon": "foto-hochladen"
-      },
-      {
-        "titel": "Rückruf",
-        "text": "Wir rufen Sie zurück, nach Möglichkeit in dem Zeitraum, den Sie nennen.",
-        "icon": "beratung-telefon"
-      },
-      {
-        "titel": "Lösung",
-        "text": "Sie erhalten einen Vorschlag mit Preis oder eine Anfrage wird angelegt.",
-        "icon": "dokument"
-      }
-    ],
-    "abschluss": "beratung",
-    "pflichtUploads": [],
-    "nachweis": "keiner",
-    "status": "live",
-    "reihenfolge": 120,
-    "navigation": "mehr",
-    "imHub": true,
-    "bereich": "service-und-termin"
   },
   {
     "id": "transponder-kopie",
@@ -485,7 +648,7 @@
     ],
     "nachweis": "fahrzeugschein",
     "status": "spaeter",
-    "reihenfolge": 130,
+    "reihenfolge": 170,
     "navigation": "autoschluessel",
     "imHub": false,
     "bereich": "autoschluessel"
@@ -513,7 +676,7 @@
     "pflichtUploads": [],
     "nachweis": "fahrzeugschein",
     "status": "live",
-    "reihenfolge": 140,
+    "reihenfolge": 180,
     "navigation": "autoschluessel",
     "imHub": false,
     "bereich": "autoschluessel"
@@ -546,7 +709,7 @@
     "pflichtUploads": [],
     "nachweis": "keiner",
     "status": "live",
-    "reihenfolge": 150,
+    "reihenfolge": 190,
     "navigation": "mehr",
     "imHub": false,
     "bereich": "tuer-und-schliesstechnik"

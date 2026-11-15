@@ -1,4 +1,5 @@
 import { getCodeLines, getSettings } from '@/lib/data';
+import { ANFRAGE_FORMULAR, KLASSEN_SEITEN } from '@/lib/fahrzeuge/anfrage-klassen';
 import { getSiteUrl } from '@/lib/site-url';
 import { NAV_AREAS } from '@/lib/navigation';
 import { GEWINNUNG_SEITEN } from '@/lib/partner/gewinnung';
@@ -26,6 +27,14 @@ export async function GET() {
     return `- [${area.label}](${site}${area.href}): ${summary}`;
   }).join('\n');
 
+  // Weitere Fahrzeuge (FA-SOFORT-05): nur Einstiegsseiten, die freigegeben sind (Schalter `indexierbar`).
+  const fahrzeuge = (Object.keys(KLASSEN_SEITEN) as Array<keyof typeof KLASSEN_SEITEN>)
+    .filter((klasse) => ANFRAGE_FORMULAR[klasse].indexierbar && KLASSEN_SEITEN[klasse].einstieg)
+    .map((klasse) => {
+      const seite = KLASSEN_SEITEN[klasse].einstieg!;
+      return `- [${seite.headline}](${site}/${seite.route}): ${seite.subline}`;
+    });
+
   const body = [
     '# SCHLÜSSELMACHER24',
     '',
@@ -38,6 +47,7 @@ export async function GET() {
     '## Bereiche',
     '',
     bereiche,
+    ...(fahrzeuge.length ? ['', '## Weitere Fahrzeuge', '', ...fahrzeuge] : []),
     '',
     '## Hilfreiche Seiten',
     '',

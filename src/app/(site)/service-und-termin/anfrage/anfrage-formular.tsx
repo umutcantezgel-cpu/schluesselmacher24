@@ -291,7 +291,7 @@ export function AllgemeineAnfrage({
         schutz={schutz}
         abschlussHinweis={<AnfrageHinweis />}
         flow={flow}
-        title={themaFest ? 'Code anfragen' : 'Allgemeine Anfrage'}
+        title={themaFest ? 'Code anfragen' : 'Anfrage zu einer Leistung'}
         submitLabel="Anfrage absenden"
         onSubmit={absenden}
         submitting={senden}

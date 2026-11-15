@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -147,7 +148,19 @@ export interface EinstiegAbschnitt {
  * Fahrzeugart anders ist, was wir brauchen (aus der Regel), Knopf zur Anfrage, Telefon. Keine Preise,
  * keine Zeiten, keine Marken- oder Modellversprechen (R4).
  */
-export async function EinstiegSeite({ klasse, abschnitte }: { klasse: Exclude<FormularKlasse, 'motorrad' | 'nicht-gefunden'>; abschnitte: EinstiegAbschnitt[] }) {
+/**
+ * `ablauf`: der Ablauf aus den Rubrikdaten (G-10, FA-SOFORT-05), etwa `<RubrikAblaufAbschnitt …/>`; er steht
+ * nach den eigenen Abschnitten und vor „Das brauchen wir von Ihnen“.
+ */
+export async function EinstiegSeite({
+  klasse,
+  abschnitte,
+  ablauf,
+}: {
+  klasse: Exclude<FormularKlasse, 'motorrad' | 'nicht-gefunden'>;
+  abschnitte: EinstiegAbschnitt[];
+  ablauf?: ReactNode;
+}) {
   const formular = ANFRAGE_FORMULAR[klasse];
   const kopfDaten = KLASSEN_SEITEN[klasse].einstieg!;
   const [kopf, hilfe] = await Promise.all([kopfMit(kopfDaten), hilfeAngaben()]);
@@ -185,8 +198,10 @@ export async function EinstiegSeite({ klasse, abschnitte }: { klasse: Exclude<Fo
         </div>
       </Section>
 
+      {ablauf}
+
       <Section tone="muted" labelledBy="unterlagen-titel">
-        <SectionHeading id="unterlagen-titel" nummer={String(abschnitte.length + 1).padStart(2, '0')} eyebrow="Für die Anfrage" title="Das brauchen wir von Ihnen" />
+        <SectionHeading id="unterlagen-titel" nummer={String(abschnitte.length + (ablauf ? 2 : 1)).padStart(2, '0')} eyebrow="Für die Anfrage" title="Das brauchen wir von Ihnen" />
         <div className="mt-6 max-w-3xl">
           <UnterlagenAusRegel klasse={klasse} />
         </div>

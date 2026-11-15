@@ -136,34 +136,32 @@ describe('Sitemap', () => {
     }
   });
 
-  it('führt die Seiten der neuen Fahrzeugklassen erst, wenn ihr Schalter an ist (FA-KERN-02B)', async () => {
-    const neu = [
-      '/roller-und-kleinstfahrzeuge',
-      '/roller-und-kleinstfahrzeuge/anfrage',
-      '/e-scooter',
-      '/e-scooter/anfrage',
-      '/seniorenmobile',
-      '/seniorenmobile/anfrage',
-      '/fahrradschluessel',
-      '/fahrradschluessel/anfrage',
-      '/autoschluessel/fahrzeug-nicht-gefunden',
-    ];
+  it('führt die Seiten der neuen Fahrzeugklassen erst, wenn ihr Schalter an ist (FA-KERN-02B, FA-SOFORT-05)', async () => {
+    // Freigegeben in FA-SOFORT-05: Roller und Fahrrad. Noch nicht: E-Scooter, Seniorenmobil, „nicht gefunden“.
+    const frei = ['/roller-und-kleinstfahrzeuge', '/roller-und-kleinstfahrzeuge/anfrage', '/fahrradschluessel', '/fahrradschluessel/anfrage'];
+    const gesperrt = ['/e-scooter', '/e-scooter/anfrage', '/seniorenmobile', '/seniorenmobile/anfrage', '/autoschluessel/fahrzeug-nicht-gefunden'];
     const pfade = async () => (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
     let urls = await pfade();
-    for (const pfad of neu) expect(urls, pfad).not.toContain(pfad);
+    for (const pfad of frei) expect(urls.filter((u) => u === pfad), pfad).toHaveLength(1);
+    for (const pfad of gesperrt) expect(urls, pfad).not.toContain(pfad);
     // Das Motorrad ist freigegeben und steht genau einmal da.
     expect(urls.filter((u) => u === '/motorradschluessel')).toHaveLength(1);
     expect(urls.filter((u) => u === '/motorradschluessel/anfrage')).toHaveLength(1);
 
     const roller = ANFRAGE_FORMULAR.roller as { indexierbar: boolean };
-    roller.indexierbar = true;
+    const scooter = ANFRAGE_FORMULAR['e-scooter'] as { indexierbar: boolean };
+    roller.indexierbar = false;
+    scooter.indexierbar = true;
     try {
       urls = await pfade();
-      expect(urls).toContain('/roller-und-kleinstfahrzeuge');
-      expect(urls).toContain('/roller-und-kleinstfahrzeuge/anfrage');
-      expect(urls).not.toContain('/e-scooter');
+      expect(urls).not.toContain('/roller-und-kleinstfahrzeuge');
+      expect(urls).not.toContain('/roller-und-kleinstfahrzeuge/anfrage');
+      expect(urls).toContain('/e-scooter');
+      expect(urls).toContain('/e-scooter/anfrage');
+      expect(urls).not.toContain('/seniorenmobile');
     } finally {
-      roller.indexierbar = false;
+      roller.indexierbar = true;
+      scooter.indexierbar = false;
     }
 
     // Auch das Motorrad folgt seinem Schalter: aus, dann fehlen beide festen Seiten.

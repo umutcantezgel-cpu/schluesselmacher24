@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 
 import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import { EinstiegSeite, seitenMetadata, type EinstiegAbschnitt } from '@/components/fahrzeug-anfrage/seiten';
+import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
+import { getRubrik } from '@/lib/data';
 
 /*
  * Eigener Inhalt dieser Seite (R3): Seniorenmobile haben meist keinen Fahrzeugschein, und das Fahrzeug
@@ -35,5 +37,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /** Einstiegsseite Seniorenmobile und vergleichbare Fahrzeuge (FA-KERN-02B). */
 export default async function SeniorenmobilePage() {
-  return <EinstiegSeite klasse="seniorenmobil" abschnitte={ABSCHNITTE} />;
+  const ablauf = (
+    <RubrikAblaufAbschnitt
+      rubrik={await getRubrik('seniorenmobile')}
+      nummer={String(ABSCHNITTE.length + 1).padStart(2, '0')}
+      titel="So läuft Ihre Anfrage ab"
+    />
+  );
+  return <EinstiegSeite klasse="seniorenmobil" abschnitte={ABSCHNITTE} ablauf={ablauf} />;
 }

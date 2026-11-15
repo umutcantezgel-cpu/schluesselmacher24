@@ -90,15 +90,27 @@ describe('Motorradseiten', () => {
 });
 
 describe('Seiten der neuen Klassen', () => {
-  it.each(NEU)('%s: Einstiegsseite und Anfrage auf noindex, solange der Schalter aus ist', async (klasse) => {
-    expect(ANFRAGE_FORMULAR[klasse].indexierbar).toBe(false);
-    const anfrage = await seitenMetadata(klasse, 'anfrage');
-    expect(anfrage.robots).toEqual({ index: false, follow: true });
-    expect(anfrage.alternates?.canonical).toBe(ANFRAGE_FORMULAR[klasse].anfrage);
-    if (ANFRAGE_FORMULAR[klasse].einstieg) {
-      const einstieg = await seitenMetadata(klasse, 'einstieg');
-      expect(einstieg.robots).toEqual({ index: false, follow: true });
-      expect(einstieg.alternates?.canonical).toBe(ANFRAGE_FORMULAR[klasse].einstieg);
+  it('gibt Roller und Fahrrad frei, E-Scooter, Seniorenmobil und „nicht gefunden“ noch nicht (FA-SOFORT-05)', () => {
+    expect(NEU.filter((klasse) => ANFRAGE_FORMULAR[klasse].indexierbar)).toEqual(['roller', 'fahrrad']);
+  });
+
+  it.each(NEU)('%s: Einstiegsseite und Anfrage auf noindex, solange der Schalter aus ist, sonst ohne', async (klasse) => {
+    const schalter = ANFRAGE_FORMULAR[klasse] as { indexierbar: boolean };
+    const vorher = schalter.indexierbar;
+    try {
+      for (const an of [false, true]) {
+        schalter.indexierbar = an;
+        const anfrage = await seitenMetadata(klasse, 'anfrage');
+        expect(anfrage.robots).toEqual(an ? undefined : { index: false, follow: true });
+        expect(anfrage.alternates?.canonical).toBe(ANFRAGE_FORMULAR[klasse].anfrage);
+        if (ANFRAGE_FORMULAR[klasse].einstieg) {
+          const einstieg = await seitenMetadata(klasse, 'einstieg');
+          expect(einstieg.robots).toEqual(an ? undefined : { index: false, follow: true });
+          expect(einstieg.alternates?.canonical).toBe(ANFRAGE_FORMULAR[klasse].einstieg);
+        }
+      }
+    } finally {
+      schalter.indexierbar = vorher;
     }
   });
 

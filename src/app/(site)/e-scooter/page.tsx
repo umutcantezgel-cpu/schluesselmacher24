@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 
 import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import { EinstiegSeite, seitenMetadata, type EinstiegAbschnitt } from '@/components/fahrzeug-anfrage/seiten';
+import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
+import { getRubrik } from '@/lib/data';
 
 /*
  * Eigener Inhalt dieser Seite (R3): E-Scooter haben keinen Fahrzeugschein; Nachweis, Typenschild und die
@@ -36,5 +38,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /** Einstiegsseite E-Scooter und ähnliche Elektrofahrzeuge (FA-KERN-02B). */
 export default async function EScooterPage() {
-  return <EinstiegSeite klasse="e-scooter" abschnitte={ABSCHNITTE} />;
+  const ablauf = (
+    <RubrikAblaufAbschnitt
+      rubrik={await getRubrik('e-scooter')}
+      nummer={String(ABSCHNITTE.length + 1).padStart(2, '0')}
+      titel="So läuft Ihre Anfrage ab"
+    />
+  );
+  return <EinstiegSeite klasse="e-scooter" abschnitte={ABSCHNITTE} ablauf={ablauf} />;
 }

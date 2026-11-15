@@ -9,7 +9,7 @@
 import type { SummarySection } from '@/lib/types';
 
 export const THEMEN = [
-  'Elektronische Schließsysteme',
+  'Elektronische Zutrittslösungen',
   'Türen und Schließtechnik',
   'Sicherheitstechnik',
   'Schlüsselaufbewahrung',

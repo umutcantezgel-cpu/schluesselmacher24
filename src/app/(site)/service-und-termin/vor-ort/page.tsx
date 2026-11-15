@@ -15,7 +15,7 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { EinsatzFormular } from './einsatz-formular';
 
 export const metadata: Metadata = {
-  title: 'Vor-Ort-Leistungen',
+  title: 'Service vor Ort nach Termin',
   description:
     'Welche Arbeiten wir direkt bei Ihnen im Objekt oder am Fahrzeug erledigen und was dafür '
     + 'vorbereitet sein muss.',
@@ -100,7 +100,7 @@ export default async function VorOrtPage() {
         lead="Nicht jede Arbeit geht per Versand. Hier lesen Sie, was vor Ort passiert und was Sie dafür vorbereiten sollten."
         crumbs={[
           { href: '/service-und-termin', label: 'Service und Termin' },
-          { href: '/service-und-termin/vor-ort', label: 'Vor-Ort-Leistungen' },
+          { href: '/service-und-termin/vor-ort', label: 'Service vor Ort nach Termin' },
         ]}
         actions={<ButtonLink href="#einsatz">Einsatz anfragen</ButtonLink>}
       />

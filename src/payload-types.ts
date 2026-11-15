@@ -1057,13 +1057,16 @@ export interface Sperrtage {
  */
 export interface Rubriken {
   id: number;
+  /**
+   * Voller Name: in Navigation und Fuß, ab Tablet auf der Kachel.
+   */
   name: string;
   /**
-   * Höchstens zwei kurze Zeilen.
+   * Kurz, höchstens zwei Wörter je Zeile, etwa „Roller“ oder „Nach Code“. Der volle Name wird dazu vorgelesen.
    */
   laienname: string;
   /**
-   * Etwa „ein Schlüssel für alle Türen“. Leer lassen, wenn der Name genügt.
+   * Etwa „ein Schlüssel für alle Türen“. Auf der Kachel ab Tablet, bei der Sperrschließung immer. Leer lassen, wenn der Name genügt.
    */
   zusatz?: string | null;
   erklaerung: string;
@@ -1129,6 +1132,10 @@ export interface Rubriken {
     | 'vor-ort'
     | 'karte'
     | 'video'
+    | 'roller'
+    | 'e-scooter'
+    | 'seniorenmobil'
+    | 'fahrradschluessel'
     | 'dokument';
   /**
    * Beginnt mit „/“, etwa /autoschluessel.
@@ -1210,12 +1217,16 @@ export interface Rubriken {
           | 'vor-ort'
           | 'karte'
           | 'video'
+          | 'roller'
+          | 'e-scooter'
+          | 'seniorenmobil'
+          | 'fahrradschluessel'
           | 'dokument';
         id?: string | null;
       }[]
     | null;
   abschluss: 'kasse' | 'anfrage' | 'termin-anzahlung' | 'angebot-zahlungslink' | 'beratung';
-  nachweis: 'keiner' | 'fahrzeugschein' | 'sicherungskarte';
+  nachweis: 'keiner' | 'fahrzeugschein' | 'sicherungskarte' | 'ersatznachweis';
   pflichtUploads?:
     | (
         'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto' | 'sicherungskarte' | 'vollmacht'

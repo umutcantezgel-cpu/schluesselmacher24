@@ -524,6 +524,11 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
         { pfad: 'zusatz' },
         { pfad: 'erklaerung' },
         { pfad: 'ablauf', spalten: ['titel', 'text'] },
+        // Hub des Inhabers (FA-SOFORT-05): Reihenfolge und Hub-Haken folgen künftigen Änderungen im Inhalt,
+        // solange der Betrieb sie nicht selbst geändert hat. Bestehende Datenbanken setzt die Datenmigration
+        // 20261115 „rubrik_symbole_fahrzeugklassen“ einmal auf die Reihenfolge des Inhabers.
+        { pfad: 'reihenfolge' },
+        { pfad: 'imHub' },
       ],
     });
     // Fahrzeugkatalog (A-009): Zeilen anlegen, gepflegte Angaben (Klonbarkeit, Transponder) nie überschreiben.

@@ -10,8 +10,9 @@ import { getRubrik } from '@/lib/data';
 import { BeratungFormular } from './beratung-formular';
 
 export const metadata: Metadata = {
-  title: 'Beratung mit Rückruf',
-  description: 'Schildern Sie Ihr Anliegen, wir rufen Sie zurück. Beratung per Anfrage bei SCHLÜSSELMACHER24 in Wetzlar.',
+  title: 'Allgemeine Anfrage und Beratung',
+  description:
+    'Ihr Anliegen passt zu keinem der anderen Wege? Schildern Sie es kurz, wir rufen Sie zurück. Allgemeine Anfrage und Beratung mit Rückruf.',
   alternates: { canonical: '/beratung' },
 };
 
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 const THEMEN_MIT_EIGENEM_WEG = [
   {
     href: '/elektronische-zutrittsloesungen',
-    label: 'Elektronische Schließsysteme',
+    label: 'Elektronische Zutrittslösungen',
     text: 'Zutritt mit Code, Chip oder Transponder, zum Beispiel per NFC oder RFID.',
   },
   {
@@ -46,12 +47,12 @@ export default async function BeratungPage() {
       <PageHeader
         rubrik={await getRubrik('beratung')}
         bereich="service-und-termin"
-        eyebrow="Beratung"
-        title="Beratung mit Rückruf"
+        eyebrow="Beratung mit Rückruf"
+        title="Allgemeine Anfrage"
         lead="Passt Ihr Anliegen zu keinem der anderen Wege, sind Sie hier richtig. Schildern Sie es kurz, wir rufen Sie zurück."
         crumbs={[
           { href: '/service-und-termin', label: 'Service und Termin' },
-          { href: '/beratung', label: 'Beratung' },
+          { href: '/beratung', label: 'Allgemeine Anfrage' },
         ]}
         actions={<ButtonLink href="#rueckruf">Rückruf anfragen</ButtonLink>}
       />

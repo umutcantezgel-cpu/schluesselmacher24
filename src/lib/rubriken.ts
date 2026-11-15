@@ -21,6 +21,8 @@ export const RUBRIK_ICONS = [
   'videoueberwachung', 'warenkorb', 'werkstatt', 'zahlung', 'zylinder-mass',
   // Neue Fach-Icons (E3-GRAFIKER-01)
   'motorradschluessel', 'schluesselgehaeuse', 'transponder-kopie', 'schluesselfinder', 'vor-ort', 'karte', 'video',
+  // Fahrzeugklassen (FA-SOFORT-05A, im Hub seit FA-SOFORT-05)
+  'roller', 'e-scooter', 'seniorenmobil', 'fahrradschluessel',
   // Glyphen
   'dokument',
 ] as const;
@@ -54,6 +56,7 @@ export const RUBRIK_NACHWEISE: ReadonlyArray<{ value: RubrikNachweis; label: str
   { value: 'keiner', label: 'Kein Nachweis nötig' },
   { value: 'fahrzeugschein', label: 'Fahrzeugschein auf den Besteller oder Vollmacht' },
   { value: 'sicherungskarte', label: 'Sicherungskarte bei geschützten Profilen' },
+  { value: 'ersatznachweis', label: 'Ersatznachweis bei Fahrzeugen ohne Fahrzeugschein' },
 ];
 
 /** Upload-Kategorien der vorhandenen Strecke (src/lib/server/datei-pruefung.ts). */

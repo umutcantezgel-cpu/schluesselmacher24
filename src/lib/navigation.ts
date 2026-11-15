@@ -66,6 +66,11 @@ export const NAV_AREAS: NavArea[] = [
         title: 'Fahrzeuge',
         links: [
           { href: '/autoschluessel/marken', label: 'Marken und Modelle', description: 'Was für Ihr Fahrzeug gilt' },
+          {
+            href: '/autoschluessel/fahrzeug-nicht-gefunden',
+            label: 'Fahrzeug nicht gefunden?',
+            description: 'Anfrage mit Fahrzeugschein und Fotos',
+          },
           { href: '/ratgeber/autoschluessel-verloren-was-tun', label: 'Schlüssel verloren?', description: 'Die richtige Reihenfolge' },
         ],
       },
@@ -259,9 +264,9 @@ export const NAV_AREAS: NavArea[] = [
       {
         title: 'Service',
         links: [
-          { href: '/service-und-termin/anfrage', label: 'Allgemeine Anfrage', description: 'Wenn nichts anderes passt' },
+          { href: '/service-und-termin/anfrage', label: 'Anfrage zu einer Leistung', description: 'Fachbereich wählen und anfragen' },
           { href: '/service-und-termin/terminstatus', label: 'Terminstatus', description: 'Stand Ihres Vorgangs' },
-          { href: '/service-und-termin/vor-ort', label: 'Vor-Ort-Leistungen', description: 'Was wir beim Kunden erledigen' },
+          { href: '/service-und-termin/vor-ort', label: 'Service vor Ort nach Termin', description: 'Was wir beim Kunden erledigen' },
           { href: '/service-und-termin/kontakt', label: 'Kontakt', description: 'Erreichbarkeit und Anfahrt' },
         ],
       },
@@ -285,6 +290,8 @@ export interface NavRubrik {
   zusatz?: string;
   icon: string;
   bereich: AreaKey;
+  /** Zwischenzeile, unter der die Rubrik in ihrer Gruppe steht, etwa „Weitere Fahrzeuge“. */
+  abschnitt?: string;
 }
 
 export interface NavGruppe {
@@ -315,6 +322,32 @@ export const MEHR_LINKS: NavLink[] = [
   { href: '/service-und-termin', label: 'Service und Termin', description: 'Terminstatus, Vor-Ort-Einsatz und Ablauf' },
   { href: '/service-und-termin/kontakt', label: 'Kontakt' },
 ];
+
+/** Zwischenzeile der Fahrzeugklassen in der Gruppe „Autoschlüssel“ (FA-03, A-052). */
+export const WEITERE_FAHRZEUGE = 'Weitere Fahrzeuge';
+
+/** Rubriken, die in ihrer Gruppe unter einer Zwischenzeile stehen; alle übrigen stehen darüber. */
+const RUBRIK_ABSCHNITT: Readonly<Record<string, string>> = {
+  'roller-und-kleinstfahrzeuge': WEITERE_FAHRZEUGE,
+  'e-scooter': WEITERE_FAHRZEUGE,
+  seniorenmobile: WEITERE_FAHRZEUGE,
+  fahrradschluessel: WEITERE_FAHRZEUGE,
+};
+
+/**
+ * Die Rubriken einer Gruppe in Abschnitten: zuerst die ohne Zwischenzeile, dann je Zwischenzeile in
+ * der Reihenfolge, in der sie zuerst vorkommt. Innerhalb eines Abschnitts bleibt die Reihenfolge.
+ */
+export function rubrikAbschnitte(rubriken: readonly NavRubrik[]): Array<{ titel?: string; rubriken: NavRubrik[] }> {
+  const abschnitte: Array<{ titel?: string; rubriken: NavRubrik[] }> = [{ rubriken: rubriken.filter((r) => !r.abschnitt) }];
+  for (const r of rubriken) {
+    if (!r.abschnitt) continue;
+    const vorhanden = abschnitte.find((a) => a.titel === r.abschnitt);
+    if (vorhanden) vorhanden.rubriken.push(r);
+    else abschnitte.push({ titel: r.abschnitt, rubriken: [r] });
+  }
+  return abschnitte.filter((a) => a.rubriken.length > 0);
+}
 
 const GRUPPEN_AUFBAU: ReadonlyArray<{
   key: RubrikNavigation;
@@ -356,6 +389,7 @@ export function navigationsGruppen(rubriken: readonly Rubrik[]): NavGruppe[] {
         zusatz: r.zusatz || undefined,
         icon: r.icon,
         bereich: r.bereich,
+        ...(RUBRIK_ABSCHNITT[r.id] ? { abschnitt: RUBRIK_ABSCHNITT[r.id] } : {}),
       })),
       spalten: bereich?.columns ?? [],
       hinweis: bereich?.highlight,

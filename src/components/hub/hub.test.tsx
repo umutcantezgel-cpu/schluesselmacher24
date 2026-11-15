@@ -9,7 +9,7 @@ import { hubKacheln, RUBRIK_ICONS } from '@/lib/rubriken';
 import type { Rubrik } from '@/lib/types';
 
 import { CODE_MOTIV_ZIFFERN, CodeMotiv, codeMotivPfad } from './code-motiv';
-import { rubrikUebergang } from './hub-kachel';
+import { kurzImNamen, rubrikUebergang, ZUSATZ_AUF_DEM_TELEFON } from './hub-kachel';
 import { HUB_FRAGE, hubRaster, IntentHub } from './intent-hub';
 
 const ICON_ORDNER = path.join(process.cwd(), 'src/components/visual/icons');
@@ -44,17 +44,50 @@ describe('Icon-Registry', () => {
   });
 });
 
-describe('Raster des Hubs (G-02, A-025)', () => {
-  it('setzt eine Leitkachel, wenn sie mit den übrigen Kacheln vier Spalten genau füllt', () => {
-    expect(hubRaster(9)).toEqual({ spalten: 4, leit: true });
-    expect(hubRaster(13)).toEqual({ spalten: 4, leit: true });
+describe('Raster des Hubs (G-02, FA-03, A-052)', () => {
+  /** Spaltenklassen der gezeichneten Liste und Zahl der Kacheln. */
+  const raster = (anzahl: number) => {
+    const html = renderToStaticMarkup(<IntentHub rubriken={hubKacheln(defaults.rubriken()).slice(0, anzahl)} />);
+    const klassen = html.match(/<ul aria-label="Leistungen" class="([^"]*)"/)?.[1].split(' ') ?? [];
+    return { klassen, kacheln: html.match(/data-rubrik=/g)?.length ?? 0 };
+  };
+  /** Kacheln je Reihe bei n Kacheln und s Spalten (die letzte Reihe linksbündig). */
+  const reihen = (n: number, s: number) => Array.from({ length: Math.ceil(n / s) }, (_, i) => Math.min(s, n - i * s));
+
+  it('zeichnet die 14 Hauptzugänge auf dem Telefon in drei Spalten (3, 3, 3, 3, 2) und ab 768 px in vier (4, 4, 4, 2)', () => {
+    const { klassen, kacheln } = raster(14);
+    expect(kacheln).toBe(14);
+    expect(klassen).toContain('grid-cols-3');
+    expect(klassen).toContain('md:grid-cols-4');
+    expect(klassen).not.toContain('md:grid-cols-3');
+    expect(reihen(kacheln, 3)).toEqual([3, 3, 3, 3, 2]);
+    expect(reihen(kacheln, 4)).toEqual([4, 4, 4, 2]);
   });
 
-  it('wählt sonst drei Spalten, wenn sich die Zahl nur durch drei teilt, und vier in allen anderen Fällen', () => {
-    expect(hubRaster(12)).toEqual({ spalten: 4, leit: false });
-    expect(hubRaster(11)).toEqual({ spalten: 4, leit: false });
-    expect(hubRaster(8)).toEqual({ spalten: 4, leit: false });
-    expect(hubRaster(6)).toEqual({ spalten: 3, leit: false });
+  it('zeichnet bei 13 Kacheln dieselben Spalten; die einzelne Kachel in der letzten Reihe ist hingenommen', () => {
+    const { klassen, kacheln } = raster(13);
+    expect(kacheln).toBe(13);
+    expect(klassen).toContain('grid-cols-3');
+    expect(klassen).toContain('md:grid-cols-4');
+    expect(reihen(kacheln, 3)).toEqual([3, 3, 3, 3, 1]);
+    expect(reihen(kacheln, 4)).toEqual([4, 4, 4, 1]);
+  });
+
+  it('setzt ab 768 px immer vier Spalten ohne Leitkachel, bei bis zu drei Kacheln drei', () => {
+    for (const anzahl of [4, 9, 11, 12, 13, 14, 16]) expect(hubRaster(anzahl).spalten).toBe(4);
+    expect(hubRaster(3).spalten).toBe(3);
+    expect(hubRaster(1).spalten).toBe(3);
+    const { klassen } = raster(3);
+    expect(klassen).toContain('md:grid-cols-3');
+    expect(klassen).not.toContain('md:grid-cols-4');
+  });
+
+  it('zeichnet die Kacheln ohne Leitkachel und ohne Spannen, die letzte Reihe linksbündig', () => {
+    const html = renderToStaticMarkup(<IntentHub rubriken={hubKacheln(defaults.rubriken())} />);
+    expect(html).not.toContain('data-leit');
+    expect(html).not.toMatch(/col-span-2|row-span-2|justify-items-center|place-content-center/);
+    expect(html).toContain('grid-cols-3');
+    expect(html).toContain('md:grid-cols-4');
   });
 });
 
@@ -85,6 +118,76 @@ describe('Intent-Hub', () => {
     for (const r of defaults.rubriken().filter((x) => x.imHub)) expect(fachIconKomponente(r.icon)).toBeDefined();
     const namen = defaults.rubriken().map((r) => rubrikUebergang(r.id));
     expect(new Set(namen).size).toBe(namen.length);
+  });
+
+  it('zeigt genau die 14 Hauptzugänge des Inhabers in seiner Reihenfolge (FA-03, A-052)', () => {
+    expect(live.map((r) => r.id)).toEqual([
+      'autoschluessel',
+      'motorradschluessel',
+      'roller-und-kleinstfahrzeuge',
+      'e-scooter',
+      'seniorenmobile',
+      'fahrradschluessel',
+      'schluessel-nach-vorlage',
+      'schluessel-nach-code',
+      'sperrschliessung',
+      'schliessanlage',
+      'elektronische-schliesssysteme',
+      'sicherheitstechnik',
+      'schluesseldienst-vor-ort',
+      'beratung',
+    ]);
+  });
+
+  it('zeigt auf dem Telefon den kurzen Namen und nennt den vollen Namen als zugänglichen Namen, sichtbar ab 768 px', () => {
+    const html = renderToStaticMarkup(<IntentHub rubriken={live} telefon={telefon} />);
+    for (const r of live) {
+      const kachel = html.slice(html.indexOf(`data-rubrik="${r.id}"`), html.indexOf('</a>', html.indexOf(`data-rubrik="${r.id}"`)));
+      expect(kachel, r.id).toMatch(new RegExp(`data-kachelname="voll" class="sr-only[^"]* md:not-sr-only[^"]*">${r.name}<`));
+      // Name im Namen (WCAG 2.5.3) mit ganzen Wörtern: Steht der kurze Name als Wort im vollen, bleibt
+      // er verborgen; sonst ist er Teil des zugänglichen Namens und steht vorn, durch Komma getrennt.
+      const alsWort = new RegExp(`(?<![\\p{L}\\p{N}])${r.laienname}(?![\\p{L}\\p{N}])`, 'iu').test(r.name);
+      expect(kurzImNamen(r.laienname, r.name), r.id).toBe(alsWort);
+      if (alsWort) {
+        expect(kachel, r.id).toMatch(new RegExp(`aria-hidden="true" data-kachelname="kurz" class="[^"]*md:hidden[^"]*">${r.laienname}<`));
+      } else {
+        expect(kachel, r.id).toMatch(new RegExp(`<span data-kachelname="kurz" class="[^"]*md:hidden[^"]*">${r.laienname}</span><span class="sr-only md:hidden">, </span><span data-kachelname="voll"`));
+      }
+    }
+  });
+
+  it('erkennt den kurzen Namen nur als ganzes Wort im vollen Namen (WCAG 2.5.3)', () => {
+    expect(kurzImNamen('Auto', 'Autoschlüssel')).toBe(false);
+    expect(kurzImNamen('Fahrrad', 'Fahrradschlüssel')).toBe(false);
+    expect(kurzImNamen('Zutritt', 'Elektronische Zutrittslösungen')).toBe(false);
+    expect(kurzImNamen('Schließanlage', 'Schließanlagen')).toBe(false);
+    expect(kurzImNamen('Roller', 'Roller und Kleinstfahrzeuge')).toBe(true);
+    expect(kurzImNamen('Nach Vorlage', 'Schlüssel nach Vorlage oder einschicken')).toBe(true);
+    expect(kurzImNamen('Zylinder', 'Sperrschließungen und gleichschließende Zylinder')).toBe(true);
+    expect(kurzImNamen('E-Scooter', 'E-Scooter und ähnliche Elektrofahrzeuge')).toBe(true);
+  });
+
+  it('hält die Schrift der Kacheln bei mindestens 13 px und die Trefferfläche bei 44 px (FA-01)', () => {
+    const html = renderToStaticMarkup(<IntentHub rubriken={live} />);
+    const kacheln = [...html.matchAll(/<a [^>]*data-rubrik="[^"]+"[^>]*>[\s\S]*?<\/a>/g)].map((m) => m[0]);
+    expect(kacheln).toHaveLength(14);
+    for (const kachel of kacheln) {
+      // text-caption sind 12 px; die Kachel nutzt text-small (15 px) und größer.
+      expect(kachel).not.toContain('text-caption');
+      expect(kachel).toMatch(/class="group [^"]*min-h-touch /);
+    }
+  });
+
+  it('zeigt die Laienerklärung auf dem Telefon nur bei der Sperrschließung, sonst ab 768 px (G-09, Höhe)', () => {
+    expect([...ZUSATZ_AUF_DEM_TELEFON]).toEqual(['sperrschliessung']);
+    const html = renderToStaticMarkup(<IntentHub rubriken={live} />);
+    for (const r of live.filter((x) => x.zusatz)) {
+      const start = html.indexOf(`data-rubrik="${r.id}"`);
+      const kachel = html.slice(start, html.indexOf('</a>', start));
+      const zusatz = kachel.match(/data-kachelname="zusatz" class="([^"]*)"/)?.[1] ?? '';
+      if (r.id === 'sperrschliessung') expect(zusatz).not.toMatch(/(^| )sr-only/);
+      else expect(zusatz, r.id).toMatch(/(^| )sr-only .*md:not-sr-only/);
+    }
   });
 
   it('trägt die Laienerklärung der Sperrschließung auf der Kachel (G-09)', () => {

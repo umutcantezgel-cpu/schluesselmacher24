@@ -13,13 +13,20 @@ import type { Rubrik } from './types';
 const ALLE = rubriken();
 const JSON_INHALT = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'content', 'rubriken.json'), 'utf8')) as Rubrik[];
 
-/** Reihenfolge der Hub-Kacheln nach G-03; „Schlüssel einschicken“ ist seit FA-03 kein eigener Hauptzugang mehr. */
-const G03 = [
+/**
+ * Die 14 Hauptzugänge des Inhabers in seiner Reihenfolge (Arbeitsanweisung vom 11.11.2026, FA-03, A-052).
+ * „Schlüssel einschicken“ steht im Zugang „Schlüssel nach Vorlage oder einschicken“, das Gehäuse wird
+ * Shop-Kategorie (FA-SHOP-02); beide Seiten bleiben, nur ohne Kachel.
+ */
+const FA03 = [
   'autoschluessel',
   'motorradschluessel',
-  'autoschluessel-gehaeuse',
-  'schluessel-nach-code',
+  'roller-und-kleinstfahrzeuge',
+  'e-scooter',
+  'seniorenmobile',
+  'fahrradschluessel',
   'schluessel-nach-vorlage',
+  'schluessel-nach-code',
   'sperrschliessung',
   'schliessanlage',
   'elektronische-schliesssysteme',
@@ -27,6 +34,11 @@ const G03 = [
   'schluesseldienst-vor-ort',
   'beratung',
 ];
+
+/** Seite unter einer Adresse: page.tsx im Ordner der Adresse (Routengruppe „(site)“). */
+function seiteVorhanden(ziel: string): boolean {
+  return fs.existsSync(path.join(process.cwd(), 'src', 'app', '(site)', ...ziel.split('/').filter(Boolean), 'page.tsx'));
+}
 
 function texte(r: Rubrik): string[] {
   return [r.name, r.laienname, r.zusatz ?? '', r.erklaerung, ...r.ablauf.flatMap((s) => [s.titel, s.text])];
@@ -37,9 +49,50 @@ describe('Rubriken-Modell (G-03, G-11, KERN K-014)', () => {
     expect(JSON_INHALT).toEqual(ALLE);
   });
 
-  it('der Hub führt die elf Rubriken aus G-03 in dieser Reihenfolge', () => {
-    const hub = sortiereRubriken(ALLE).filter((r) => r.imHub).map((r) => r.id);
-    expect(hub).toEqual(G03);
+  it('der Hub führt genau die 14 Hauptzugänge des Inhabers in seiner Reihenfolge, in Zehnerschritten', () => {
+    const hub = sortiereRubriken(ALLE).filter((r) => r.imHub);
+    expect(hub.map((r) => r.id)).toEqual(FA03);
+    expect(hub.map((r) => r.reihenfolge)).toEqual(FA03.map((_, i) => (i + 1) * 10));
+    expect(hubKacheln(JSON_INHALT).map((r) => r.id)).toEqual(FA03);
+  });
+
+  it('jede Kachel führt auf eine Seite, die es gibt (keine Sackgasse)', () => {
+    for (const r of hubKacheln(ALLE)) expect(seiteVorhanden(r.ziel), `${r.id}: ${r.ziel}`).toBe(true);
+    // Die Seiten ohne Kachel bleiben erreichbar.
+    for (const id of ['autoschluessel-gehaeuse', 'schluessel-einschicken']) {
+      const r = ALLE.find((x) => x.id === id)!;
+      expect(r.imHub, id).toBe(false);
+      expect(r.status, id).toBe('live');
+      expect(seiteVorhanden(r.ziel), r.ziel).toBe(true);
+    }
+  });
+
+  it('trägt die Namen des Inhabers; die Kachelnamen für das Telefon sind kurz und stecken im vollen Namen', () => {
+    const name = new Map(ALLE.map((r) => [r.id, r.name]));
+    expect(name.get('roller-und-kleinstfahrzeuge')).toBe('Roller und Kleinstfahrzeuge');
+    expect(name.get('e-scooter')).toBe('E-Scooter und ähnliche Elektrofahrzeuge');
+    expect(name.get('seniorenmobile')).toBe('Seniorenmobile und vergleichbare Fahrzeuge');
+    expect(name.get('fahrradschluessel')).toBe('Fahrradschlüssel');
+    expect(name.get('sperrschliessung')).toBe('Sperrschließungen und gleichschließende Zylinder');
+    expect(name.get('elektronische-schliesssysteme')).toBe('Elektronische Zutrittslösungen');
+    expect(name.get('schluesseldienst-vor-ort')).toBe('Service vor Ort nach Termin');
+    expect(name.get('beratung')).toBe('Allgemeine Anfrage');
+    expect(ALLE.find((r) => r.id === 'beratung')?.zusatz).toBe('für Sonderfälle');
+    for (const r of hubKacheln(ALLE)) {
+      expect(r.laienname.split(/\s+/).length, r.id).toBeLessThanOrEqual(2);
+      expect(r.name.toLowerCase(), r.id).toContain(r.laienname.toLowerCase());
+    }
+  });
+
+  it('verspricht mit „Service vor Ort nach Termin“ keinen Notdienst (R9)', () => {
+    const vorOrt = ALLE.find((r) => r.id === 'schluesseldienst-vor-ort')!;
+    for (const t of texte(vorOrt)) expect(t).not.toMatch(/notdienst|24 ?stunden|rund um die uhr|sofort/i);
+    expect(vorOrt.ziel).toBe('/service-und-termin/vor-ort');
+    expect(ALLE.find((r) => r.id === 'elektronische-schliesssysteme')?.ziel).toBe('/elektronische-zutrittsloesungen');
+  });
+
+  it('die allgemeine Anfrage führt in die Beratung mit Rückruf, die ohne Vorwissen eine freie Anfrage annimmt', () => {
+    expect(ALLE.find((r) => r.id === 'beratung')?.ziel).toBe('/beratung');
   });
 
   it('Kennungen sind eindeutig und Reihenfolgen steigen', () => {
@@ -90,7 +143,17 @@ describe('Rubriken-Modell (G-03, G-11, KERN K-014)', () => {
     expect(nach.get('schliessanlage')?.zusatz).toBeTruthy();
   });
 
-  it('Wege, an deren Ende ein Fahrzeugschlüssel entsteht, verlangen den Fahrzeugschein (R13)', () => {
+  it('Wege, an deren Ende ein Fahrzeugschlüssel entsteht, verlangen den Fahrzeugschein oder den Ersatznachweis (R13)', () => {
+    for (const id of ['e-scooter', 'seniorenmobile', 'fahrradschluessel']) {
+      const r = ALLE.find((x) => x.id === id);
+      expect(r?.nachweis, id).toBe('ersatznachweis');
+      expect(r?.pflichtUploads, id).toEqual(['dokument', 'schluesselfoto']);
+    }
+    // Roller: Fahrzeugschein, bei Versicherungskennzeichen der Ersatznachweis; das sagt der Ablauf.
+    const roller = ALLE.find((x) => x.id === 'roller-und-kleinstfahrzeuge')!;
+    expect(roller.nachweis).toBe('fahrzeugschein');
+    expect(roller.ablauf.some((s) => /Versicherungskennzeichen[^.]*Ersatznachweis/.test(s.text))).toBe(true);
+    expect(ALLE.find((x) => x.id === 'motorradschluessel')?.erklaerung).toContain('Fahrzeugschein und drei Fotos Ihres Schlüssels');
     for (const id of ['autoschluessel', 'motorradschluessel', 'autoschluessel-gehaeuse', 'transponder-kopie']) {
       const r = ALLE.find((x) => x.id === id);
       expect(r?.nachweis, id).toBe('fahrzeugschein');
@@ -104,7 +167,7 @@ describe('Rubriken-Modell (G-03, G-11, KERN K-014)', () => {
   it('hubKacheln zeigt nur live geschaltete Hub-Rubriken in Reihenfolge', () => {
     const kacheln = hubKacheln(ALLE);
     expect(kacheln.every((r) => r.status === 'live' && r.imHub)).toBe(true);
-    expect(kacheln.map((r) => r.id)).toEqual(G03.filter((id) => ALLE.find((r) => r.id === id)?.status === 'live'));
+    expect(kacheln.map((r) => r.id)).toEqual(FA03.filter((id) => ALLE.find((r) => r.id === id)?.status === 'live'));
   });
 
   it('rubrikenNachGruppe folgt der Navigation aus G-08', () => {
@@ -122,9 +185,10 @@ describe('Rubriken-Modell (G-03, G-11, KERN K-014)', () => {
     expect(JSON.stringify(NAV_AREAS)).not.toMatch(nachFoto);
     expect(JSON.stringify(seiten)).not.toMatch(nachFoto);
 
+    // Seit FA-SOFORT-05 trägt der Zugang den Namen des Inhabers, der kurze Kachelname bleibt „Nach Vorlage“.
     const vorlage = ALLE.find((r) => r.id === 'schluessel-nach-vorlage')!;
-    expect(vorlage.name).toBe('Schlüssel nach Vorlage');
-    expect(vorlage.laienname).toBe('Schlüssel nach Vorlage');
+    expect(vorlage.name).toBe('Schlüssel nach Vorlage oder einschicken');
+    expect(vorlage.laienname).toBe('Nach Vorlage');
     expect(NAV_AREAS.find((a) => a.key === 'schluessel-nach-vorlage')?.label).toBe('Schlüssel nach Vorlage');
   });
 

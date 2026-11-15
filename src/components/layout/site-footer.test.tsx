@@ -52,6 +52,23 @@ describe('SiteFooter', () => {
     expect(html).not.toMatch(/Öffnungszeiten|geschlossen|09:00|13:00|17:00/);
   });
 
+  it('nennt die neuen Fahrzeugklassen und die Namen des Inhabers, nicht mehr die alten (FA-03)', async () => {
+    zustand.fehler = false;
+    const html = renderToStaticMarkup(await SiteFooter());
+    for (const name of [
+      'Roller und Kleinstfahrzeuge',
+      'E-Scooter und ähnliche Elektrofahrzeuge',
+      'Seniorenmobile und vergleichbare Fahrzeuge',
+      'Fahrradschlüssel',
+      'Elektronische Zutrittslösungen',
+      'Service vor Ort nach Termin',
+    ]) {
+      expect(html).toContain(`>${name}<`);
+    }
+    expect(html).not.toContain('Elektronische Schließsysteme');
+    expect(html).not.toContain('Schlüsseldienst vor Ort');
+  });
+
   it('listet die Leistungen aus den Rubriken und behält jede Bereichsseite (G-11, nichts geht verloren)', async () => {
     zustand.fehler = false;
     const html = renderToStaticMarkup(await SiteFooter());

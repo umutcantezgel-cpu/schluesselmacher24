@@ -14,6 +14,10 @@ import type { BusinessRecord, CylinderOrderDraft, UploadRef } from '@/lib/types'
 const stored: BusinessRecord[] = [];
 /** Simuliert eine veraltete Vorabprüfung: Termine sind zwischenzeitlich vergeben worden. */
 const vorab = { veraltet: false };
+/** Im Backend abgeschaltete Rubriken (Status „aus“): getRubrik liefert sie nicht. */
+const abgeschaltet = new Set<string>();
+/** Rubriken mit Status „später“: getRubrik liefert sie, aber nicht live. */
+const spaeterGeschaltet = new Set<string>();
 
 /** Codelinien für die Kassentests: die Musterdaten als echte Linien, dazu eine Beispiel-Linie. */
 function testLinien() {
@@ -49,7 +53,11 @@ vi.mock('@/lib/data', () => {
     // Die Muster-Codelinien sind Beispiele (A-046); für die Bestelllogik gelten sie hier als echte Linien,
     // dazu eine Beispiel-Linie, die die Kasse ablehnen muss.
     getCollection: async (name: keyof typeof defaults) => (name === 'codeLines' ? testLinien() : defaults[name]()),
-    getRubrik: async (id: string) => defaults.rubriken().find((r) => r.id === id) ?? null,
+    getRubrik: async (id: string) => {
+      if (abgeschaltet.has(id)) return null;
+      const r = defaults.rubriken().find((x) => x.id === id) ?? null;
+      return r && spaeterGeschaltet.has(id) ? { ...r, status: 'spaeter' as const } : r;
+    },
     getAppointments: async (von: string, bis: string) => (vorab.veraltet ? [] : termine(von, bis)),
     getRecordByReference: async (nummer: string) => stored.find((r) => r.reference === nummer) ?? null,
     // Wie die Datenschicht: Termin unter Sperre frisch prüfen, dann Nummer vergeben.
@@ -150,6 +158,8 @@ const BESCHREIBUNG = 'Zweitschlüssel gewünscht, bitte Rückmeldung.';
 beforeEach(() => {
   stored.length = 0;
   vorab.veraltet = false;
+  abgeschaltet.clear();
+  spaeterGeschaltet.clear();
   ablage.an = false;
   ablage.dateien.clear();
   resetRateLimits();
@@ -997,6 +1007,58 @@ describe('submitRecord: gemeinsame Fahrzeugschlüssel-Anfrage aus dem Formular (
       const result = await submitRecord(eingabe);
       expect(result.ok, `${name} ohne ${platz}`).toBe(false);
       expect(result.error).toContain('Bitte ergänzen Sie');
+    }
+    expect(stored).toHaveLength(0);
+  });
+
+  /** Rubrik je Klasse (FA-SOFORT-05): Eine im Backend abgeschaltete Rubrik sperrt auch ihren Weg. */
+  const RUBRIK_DER_KLASSE: Record<string, string> = {
+    motorrad: 'motorradschluessel',
+    'roller mit Fahrzeugschein': 'roller-und-kleinstfahrzeuge',
+    'roller mit Versicherungskennzeichen': 'roller-und-kleinstfahrzeuge',
+    'e-scooter': 'e-scooter',
+    seniorenmobil: 'seniorenmobile',
+    fahrrad: 'fahrradschluessel',
+    'nicht-gefunden': 'autoschluessel',
+  };
+
+  it.each(Object.keys(FAELLE))('%s: abgeschaltete Rubrik sperrt den Weg, die anderen Rubriken nicht', async (name) => {
+    const rubrik = RUBRIK_DER_KLASSE[name];
+    expect(defaults.rubriken().some((r) => r.id === rubrik && r.status === 'live')).toBe(true);
+    abgeschaltet.add(rubrik);
+    const gesperrt = await submitRecord(ausFormular(name).eingabe);
+    expect(gesperrt.ok, name).toBe(false);
+    // Kein Formularfehler, den der Kunde nicht beheben kann, sondern der Weg zum Telefon.
+    // Die Nummer im Startinhalt ist ein Platzhalter und erscheint deshalb nicht in der Meldung.
+    expect(gesperrt.error).toBe('Diese Anfrage ist gerade nicht möglich. Bitte rufen Sie uns an.');
+    expect(stored).toHaveLength(0);
+    // Status „später“ sperrt den Weg ebenso.
+    abgeschaltet.clear();
+    spaeterGeschaltet.add(rubrik);
+    resetRateLimits();
+    const spaeter = await submitRecord(ausFormular(name).eingabe);
+    expect(spaeter.ok, name).toBe(false);
+    expect(spaeter.error).toContain('Diese Anfrage ist gerade nicht möglich');
+    expect(stored).toHaveLength(0);
+    spaeterGeschaltet.clear();
+    // Eine fremde Rubrik abzuschalten, ändert an diesem Weg nichts.
+    abgeschaltet.clear();
+    abgeschaltet.add(rubrik === 'sicherheitstechnik' ? 'beratung' : 'sicherheitstechnik');
+    resetRateLimits();
+    expect((await submitRecord(ausFormular(name).eingabe)).ok, name).toBe(true);
+  });
+
+  it('die Rubrikprüfung lockert die Pflichtregel nicht: mit eingeschalteter Rubrik fehlt der Fahrzeugschein weiter', async () => {
+    const ohneSchein = await submitRecord(ausFormular('motorrad', (d) => (d.fahrzeugschein = [])).eingabe);
+    expect(ohneSchein.ok).toBe(false);
+    expect(ohneSchein.error).toContain('Fahrzeugschein');
+  });
+
+  it('lehnt eine unbekannte Klasse ab', async () => {
+    const { eingabe } = ausFormular('motorrad');
+    for (const klasse of ['constructor', 'toString', 'lkw']) {
+      resetRateLimits();
+      expect((await submitRecord({ ...eingabe, payload: { ...eingabe.payload, klasse } })).ok, klasse).toBe(false);
     }
     expect(stored).toHaveLength(0);
   });

@@ -201,7 +201,7 @@ export default async function FahrzeugoeffnungPage() {
       related={[
         { href: '/autoschluessel/nachmachen', label: 'Ersatzschlüssel anfertigen', description: 'Der Schritt nach der Öffnung' },
         { href: '/ratgeber/autoschluessel-verloren-was-tun', label: 'Autoschlüssel verloren', description: 'Was Sie jetzt in welcher Reihenfolge tun' },
-        { href: '/service-und-termin/vor-ort', label: 'Vor-Ort-Leistungen', description: 'Was wir beim Kunden erledigen' },
+        { href: '/service-und-termin/vor-ort', label: 'Service vor Ort nach Termin', description: 'Was wir beim Kunden erledigen' },
         { href: '/autoschluessel', label: 'Alle Autoschlüssel-Leistungen', description: 'Zurück zur Übersicht' },
       ]}
     >

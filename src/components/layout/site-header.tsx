@@ -24,7 +24,7 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { GlyphTelefon } from '@/components/visual/glyphen/telefon';
 import { GlyphWarenkorb } from '@/components/visual/glyphen/warenkorb';
 import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
-import { istAktiv, type NavGruppe, type NavRubrik } from '@/lib/navigation';
+import { istAktiv, rubrikAbschnitte, type NavGruppe, type NavRubrik } from '@/lib/navigation';
 import { useHydrated } from '@/lib/client-state';
 import { useCartStore } from '@/lib/store/cart';
 import type { RubrikNavigation } from '@/lib/types';
@@ -294,13 +294,19 @@ function GruppenMenue({ gruppe, rubrikIcons }: { gruppe: NavGruppe; rubrikIcons:
           {gruppe.rubriken.length > 0 && (
             <div>
               <p className="mb-3 font-mono text-caption uppercase tracking-label text-foreground-subtle">Bestellen und anfragen</p>
-              <ul className="space-y-3">
-                {gruppe.rubriken.map((rubrik) => (
-                  <li key={rubrik.id}>
-                    <RubrikZeile rubrik={rubrik} icon={rubrikIcons[rubrik.id]} />
-                  </li>
-                ))}
-              </ul>
+              {rubrikAbschnitte(gruppe.rubriken).map((abschnitt) => (
+                <div key={abschnitt.titel ?? 'haupt'} className={cn(abschnitt.titel && 'mt-5')}>
+                  {/* Zwischenzeile, etwa „Weitere Fahrzeuge“ (FA-03) */}
+                  {abschnitt.titel && <p className="mb-3 text-small font-semibold text-foreground-muted">{abschnitt.titel}</p>}
+                  <ul className="space-y-3">
+                    {abschnitt.rubriken.map((rubrik) => (
+                      <li key={rubrik.id}>
+                        <RubrikZeile rubrik={rubrik} icon={rubrikIcons[rubrik.id]} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           )}
           {gruppe.spalten.map((column) => (
@@ -628,15 +634,20 @@ const SchubladenZeile = memo(function SchubladenZeile({ gruppe, rubrikIcons, akt
                 {gruppe.hinweis.label}
               </Link>
             )}
-            {gruppe.rubriken.length > 0 && (
-              <ul className="mb-3">
-                {gruppe.rubriken.map((rubrik) => (
-                  <li key={rubrik.id}>
-                    <RubrikZeile rubrik={rubrik} icon={rubrikIcons[rubrik.id]} dicht />
-                  </li>
-                ))}
-              </ul>
-            )}
+            {rubrikAbschnitte(gruppe.rubriken).map((abschnitt) => (
+              <div key={abschnitt.titel ?? 'haupt'} className="mb-3">
+                {abschnitt.titel && (
+                  <p className="mb-1.5 font-mono text-caption uppercase tracking-label text-foreground-subtle">{abschnitt.titel}</p>
+                )}
+                <ul>
+                  {abschnitt.rubriken.map((rubrik) => (
+                    <li key={rubrik.id}>
+                      <RubrikZeile rubrik={rubrik} icon={rubrikIcons[rubrik.id]} dicht />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
             {gruppe.spalten.map((column) => (
               <div key={column.title} className="mb-3 last:mb-0">
                 <p className="mb-1.5 font-mono text-caption uppercase tracking-label text-foreground-subtle">{column.title}</p>

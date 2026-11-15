@@ -208,7 +208,8 @@ export const ANFRAGE_FORMULAR: Readonly<Record<FormularKlasse, AnfrageFormularDa
     klasse: 'roller',
     anfrage: '/roller-und-kleinstfahrzeuge/anfrage',
     einstieg: '/roller-und-kleinstfahrzeuge',
-    indexierbar: false,
+    // Freigegeben in FA-SOFORT-05 (eigener Nutzen, kein Platzhalter, kein doppelter Text: R2, R3).
+    indexierbar: true,
     titel: 'Roller, Mofa oder Moped: Anfrage',
     fahrzeugFrage: 'Welcher Roller ist es?',
     fahrzeugHinweis: 'Suchen Sie Ihr Fahrzeug oder tragen Sie Hersteller und Typ selbst ein. Sagen Sie uns dann, ob es einen Fahrzeugschein hat.',
@@ -226,6 +227,8 @@ export const ANFRAGE_FORMULAR: Readonly<Record<FormularKlasse, AnfrageFormularDa
     klasse: 'e-scooter',
     anfrage: '/e-scooter/anfrage',
     einstieg: '/e-scooter',
+    // Noch nicht freigegeben (FA-SOFORT-05): Unterzeile und große Teile des Textes gleichen sich auf den Seiten
+    // E-Scooter und Seniorenmobile (R3); erst mit eigenem Text je Seite freigeben.
     indexierbar: false,
     titel: 'E-Scooter: Anfrage',
     fahrzeugFrage: 'Welches Fahrzeug ist es?',
@@ -244,6 +247,8 @@ export const ANFRAGE_FORMULAR: Readonly<Record<FormularKlasse, AnfrageFormularDa
     klasse: 'seniorenmobil',
     anfrage: '/seniorenmobile/anfrage',
     einstieg: '/seniorenmobile',
+    // Noch nicht freigegeben (FA-SOFORT-05): Unterzeile und große Teile des Textes gleichen sich auf den Seiten
+    // E-Scooter und Seniorenmobile (R3); erst mit eigenem Text je Seite freigeben.
     indexierbar: false,
     titel: 'Seniorenmobil: Anfrage',
     fahrzeugFrage: 'Welches Fahrzeug ist es?',
@@ -262,7 +267,8 @@ export const ANFRAGE_FORMULAR: Readonly<Record<FormularKlasse, AnfrageFormularDa
     klasse: 'fahrrad',
     anfrage: '/fahrradschluessel/anfrage',
     einstieg: '/fahrradschluessel',
-    indexierbar: false,
+    // Freigegeben in FA-SOFORT-05 (eigener Nutzen, kein Platzhalter, kein doppelter Text: R2, R3).
+    indexierbar: true,
     titel: 'Fahrradschlüssel: Anfrage',
     fahrzeugFrage: 'Um welches Schloss geht es?',
     fahrzeugHinweis: 'Hersteller und Schlüsselnummer stehen oft auf dem Schlüssel, auf dem Schloss oder auf der Codekarte.',

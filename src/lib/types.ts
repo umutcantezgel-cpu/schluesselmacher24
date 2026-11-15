@@ -1018,7 +1018,7 @@ export type RubrikStatus = 'live' | 'spaeter' | 'aus';
 export type RubrikNavigation = 'autoschluessel' | 'code' | 'sperrschliessung' | 'schliessanlagen' | 'mehr';
 
 /** Berechtigungsnachweis eines Wegs (R13). */
-export type RubrikNachweis = 'keiner' | 'fahrzeugschein' | 'sicherungskarte';
+export type RubrikNachweis = 'keiner' | 'fahrzeugschein' | 'sicherungskarte' | 'ersatznachweis';
 
 /** Ein Schritt in „So läuft Ihr Auftrag ab“ (G-10). */
 export interface RubrikSchritt {

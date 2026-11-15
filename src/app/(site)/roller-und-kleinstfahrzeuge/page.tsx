@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 
 import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import { EinstiegSeite, seitenMetadata, type EinstiegAbschnitt } from '@/components/fahrzeug-anfrage/seiten';
+import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
+import { getRubrik } from '@/lib/data';
 
 /*
  * Eigener Inhalt dieser Seite (R3): Roller, Mofa und Moped gibt es mit Fahrzeugschein und mit
@@ -36,5 +38,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /** Einstiegsseite Roller und Kleinstfahrzeuge (FA-KERN-02B). */
 export default async function RollerPage() {
-  return <EinstiegSeite klasse="roller" abschnitte={ABSCHNITTE} />;
+  const ablauf = (
+    <RubrikAblaufAbschnitt
+      rubrik={await getRubrik('roller-und-kleinstfahrzeuge')}
+      nummer={String(ABSCHNITTE.length + 1).padStart(2, '0')}
+      titel="So läuft Ihre Anfrage ab"
+    />
+  );
+  return <EinstiegSeite klasse="roller" abschnitte={ABSCHNITTE} ablauf={ablauf} />;
 }

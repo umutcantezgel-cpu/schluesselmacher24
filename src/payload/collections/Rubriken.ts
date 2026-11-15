@@ -38,21 +38,33 @@ export const Rubriken: CollectionConfig = {
     {
       type: 'row',
       fields: [
-        { name: 'name', type: 'text', label: 'Name', required: true, admin: { width: '34%' } },
+        {
+          name: 'name',
+          type: 'text',
+          label: 'Name',
+          required: true,
+          admin: { width: '34%', description: 'Voller Name: in Navigation und Fuß, ab Tablet auf der Kachel.' },
+        },
         {
           name: 'laienname',
           type: 'text',
-          label: 'Name auf der Kachel',
+          label: 'Name auf der Kachel (Telefon)',
           required: true,
           maxLength: 40,
-          admin: { width: '33%', description: 'Höchstens zwei kurze Zeilen.' },
+          admin: {
+            width: '33%',
+            description: 'Kurz, höchstens zwei Wörter je Zeile, etwa „Roller“ oder „Nach Code“. Der volle Name wird dazu vorgelesen.',
+          },
         },
         {
           name: 'zusatz',
           type: 'text',
-          label: 'Laienerklärung (immer sichtbar)',
+          label: 'Laienerklärung (ab Tablet sichtbar)',
           maxLength: 48,
-          admin: { width: '33%', description: 'Etwa „ein Schlüssel für alle Türen“. Leer lassen, wenn der Name genügt.' },
+          admin: {
+            width: '33%',
+            description: 'Etwa „ein Schlüssel für alle Türen“. Auf der Kachel ab Tablet, bei der Sperrschließung immer. Leer lassen, wenn der Name genügt.',
+          },
         },
       ],
     },

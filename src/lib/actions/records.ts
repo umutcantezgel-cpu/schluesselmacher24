@@ -25,6 +25,8 @@ import {
   type UnterlagenWeg,
 } from '@/lib/server/unterlagen-pflicht';
 import { QUELLE_RUBRIK, fotoAnfrageVerlangtKarte, vorOrtOhneBerechtigung } from '@/lib/wege/nachweis';
+import { FAHRZEUG_ANFRAGE_QUELLE, type AnfrageKlasse } from '@/lib/fahrzeuge/anfrage-klassen';
+import { istPlatzhalter } from '@/lib/platzhalter';
 import { CODE_ANFRAGE_QUELLE, codeAnfragePruefen, mitGeprueftemCode } from '@/lib/wege/code-anfrage';
 import type {
   AppointmentInfo,
@@ -85,8 +87,29 @@ export interface SubmitResult extends SchutzAntwort {
   error?: string;
 }
 
+/**
+ * Rubrik je Klasse der gemeinsamen Fahrzeug-Anfrage (FA-SOFORT-05); „nicht gefunden“ und das Auto (die
+ * Pflichtregel kennt es auch hier) gehören zu den Autoschlüsseln.
+ */
+const KLASSE_RUBRIK: ReadonlyMap<string, string> = new Map(
+  Object.entries({
+    auto: 'autoschluessel',
+    motorrad: 'motorradschluessel',
+    roller: 'roller-und-kleinstfahrzeuge',
+    'e-scooter': 'e-scooter',
+    seniorenmobil: 'seniorenmobile',
+    fahrrad: 'fahrradschluessel',
+    'nicht-gefunden': 'autoschluessel',
+  } satisfies Record<AnfrageKlasse, string>),
+);
+
 const INVALID_INPUT =
   'Einige Angaben sind unvollständig oder ungültig. Bitte prüfen Sie das Formular.';
+
+/** Meldung, wenn die Rubrik einer Fahrzeugklasse im Backend nicht live ist (FA-SOFORT-05). */
+function wegGesperrtMeldung(telefon: string | undefined): string {
+  return `Diese Anfrage ist gerade nicht möglich. Bitte rufen Sie uns an${telefon ? `: ${telefon}` : ''}.`;
+}
 
 const BEGLEITSCHEIN_SPAETER =
   'Den Begleitschein konnten wir gerade nicht erzeugen. Sie finden ihn auf Ihrer Vorgangsseite; '
@@ -361,6 +384,22 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     const fehlt = rubrikUnterlagenPruefen({ nachweis: rubrik.nachweis, pflichtUploads }, uploads, storageStatus().configured);
     if (fehlt) {
       return { ok: false, notices: [], error: fehlt };
+    }
+  }
+
+  // Gemeinsame Fahrzeug-Anfrage (FA-KERN-02B, FA-SOFORT-05): Jede Klasse gehört zu ihrer Rubrik. Steht die
+  // Rubrik im Backend nicht auf „live“ (abgeschaltet, „später“ oder gelöscht), ist auch der Weg gesperrt;
+  // der Kunde bekommt dann keinen Formularfehler, den er nicht beheben kann, sondern den Weg zum Telefon.
+  // Welche Unterlagen Pflicht sind, entscheidet allein die Pflichtregel oben; diese Prüfung kommt nur
+  // hinzu und lockert nichts.
+  if (data.kind === 'anfrage' && payload.quelle === FAHRZEUG_ANFRAGE_QUELLE) {
+    const klasseRubrik = typeof payload.klasse === 'string' ? KLASSE_RUBRIK.get(payload.klasse) : undefined;
+    if (!klasseRubrik || data.area !== 'autoschluessel') {
+      return { ok: false, notices: [], error: INVALID_INPUT };
+    }
+    if ((await getRubrik(klasseRubrik))?.status !== 'live') {
+      const telefon = (await getSettings()).company?.phone ?? '';
+      return { ok: false, notices: [], error: wegGesperrtMeldung(istPlatzhalter(telefon) ? undefined : telefon.trim()) };
     }
   }
 
