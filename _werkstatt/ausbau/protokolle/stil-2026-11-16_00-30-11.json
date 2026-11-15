@@ -1,0 +1,959 @@
+{
+  "skript": "stil",
+  "zeit": "2026-11-15T23:30:11.271Z",
+  "argumente": {
+    "_": [],
+    "help": true
+  },
+  "seitenQuelle": "Hauptansichten",
+  "ansichten": [
+    {
+      "name": "H01-start",
+      "zeilen": 230,
+      "zaehl": {
+        "Gedankenstrich": 1,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 2,
+        "Floskel": 1,
+        "Bindestrich": 6,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 10,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Termin anfragen",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "So läuft Ihr Autoschlüssel-Auftrag ab",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Profi? Partner werden",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Sie fertigen und programmieren Autoschlüssel? Dann werden Sie Par…",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kopie oder Programmierung: Wo ist der Unterschied?",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H01-start"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H01-start"
+        }
+      ]
+    },
+    {
+      "name": "H02-autoschluessel",
+      "zeilen": 250,
+      "zaehl": {
+        "Gedankenstrich": 1,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 1,
+        "Floskel": 1,
+        "Bindestrich": 5,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 8,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Fahrzeug nicht gefunden?",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Seniorenmobil-Schlüssel",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Mercedes-Benz",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H02-autoschluessel"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H02-autoschluessel"
+        }
+      ]
+    },
+    {
+      "name": "H03-modell-golf",
+      "zeilen": 209,
+      "zaehl": {
+        "Gedankenstrich": 1,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 1,
+        "Floskel": 1,
+        "Bindestrich": 7,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 10,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Erklärung zu Was bedeuten die Schlüsselarten?",
+          "quelle": "H03-modell-golf"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Andere Volkswagen-Modelle",
+          "quelle": "H03-modell-golf"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Weitere Volkswagen-Modelle",
+          "quelle": "H03-modell-golf"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Volkswagen-Modelle",
+          "quelle": "H03-modell-golf"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Autoschlüssel-Leistungen",
+          "quelle": "H03-modell-golf"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H03-modell-golf"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H03-modell-golf"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H03-modell-golf"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H03-modell-golf"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H03-modell-golf"
+        }
+      ]
+    },
+    {
+      "name": "H04-autoschluessel-anfrage",
+      "zeilen": 127,
+      "zaehl": {
+        "Gedankenstrich": 3,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 1,
+        "Floskel": 2,
+        "Bindestrich": 7,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 13,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Mercedes-Benz",
+          "quelle": "H04-autoschluessel-anfrage"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Fahrzeug nicht gefunden?",
+          "quelle": "H04-autoschluessel-anfrage"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "…reichbar. Notdienst rund um die Uhr. Werkstatt und pers…",
+          "quelle": "H04-autoschluessel-anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…enlizenz Deutschland - Namensnennung - Vers…",
+          "quelle": "H04-autoschluessel-anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…land - Namensnennung - Version 2.0",
+          "quelle": "H04-autoschluessel-anfrage"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…n und Modellreihen: Kraftfahrt-Bundesamt (KBA), FZ 12, Stand…",
+          "quelle": "H04-autoschluessel-anfrage"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…itere Handelsnamen: Kraftfahrt-Bundesamt (KBA), FZ 2, Stand …",
+          "quelle": "H04-autoschluessel-anfrage"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…, Stand 1.1.2026, © Kraftfahrt-Bundesamt, Flensburg, Datenli…",
+          "quelle": "H04-autoschluessel-anfrage"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H04-autoschluessel-anfrage"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H04-autoschluessel-anfrage"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H04-autoschluessel-anfrage"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H04-autoschluessel-anfrage"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H04-autoschluessel-anfrage"
+        }
+      ]
+    },
+    {
+      "name": "H05-code",
+      "zeilen": 109,
+      "zaehl": {
+        "Gedankenstrich": 1,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 3,
+        "Floskel": 1,
+        "Bindestrich": 4,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 9,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code vorhanden? Dann hilft Ihnen Sc…",
+          "quelle": "H05-code"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Code vorhanden? Schlüssel nach Vorl…",
+          "quelle": "H05-code"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Wo finde ich den Schlüsselcode?",
+          "quelle": "H05-code"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H05-code"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H05-code"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H05-code"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H05-code"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H05-code"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H05-code"
+        }
+      ]
+    },
+    {
+      "name": "H06-code-produkt",
+      "zeilen": 78,
+      "zaehl": {
+        "Gedankenstrich": 2,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 1,
+        "Bindestrich": 4,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 7,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHNITT A–A · SCHLÜSSEL PASST …",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…status, Kontakt und Vor-Ort-Leistungen.",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H06-code-produkt"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H06-code-produkt"
+        }
+      ]
+    },
+    {
+      "name": "H07-foto",
+      "zeilen": 164,
+      "zaehl": {
+        "Gedankenstrich": 1,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 2,
+        "Floskel": 1,
+        "Bindestrich": 3,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 7,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Wo steht der Schlüsselcode?",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Code vorhanden? Schlüssel nach Code",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H07-foto"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H07-foto"
+        }
+      ]
+    },
+    {
+      "name": "H08-einschicken",
+      "zeilen": 129,
+      "zaehl": {
+        "Gedankenstrich": 2,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 2,
+        "Floskel": 1,
+        "Bindestrich": 3,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 8,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Kein Schlüsseldienst in der Nähe oder keine Zeit für den Weg? Dann schicken Sie I…",
+          "quelle": "H08-einschicken"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H08-einschicken"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Code vorhanden? Schlüssel nach Code",
+          "quelle": "H08-einschicken"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H08-einschicken"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H08-einschicken"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H08-einschicken"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H08-einschicken"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H08-einschicken"
+        }
+      ]
+    },
+    {
+      "name": "H09-sperrschliessung-konfigurator",
+      "zeilen": 176,
+      "zaehl": {
+        "Gedankenstrich": 2,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 3,
+        "Floskel": 2,
+        "Bindestrich": 4,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 11,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHEMATISCH – MASSGEBLICH SIND DI…",
+          "quelle": "H09-sperrschliessung-konfigurator"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Maß unbekannt oder unsicher?",
+          "quelle": "H09-sperrschliessung-konfigurator"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H09-sperrschliessung-konfigurator"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Unsicher? Wir beraten SieSchl…",
+          "quelle": "H09-sperrschliessung-konfigurator"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "…SieSchließanlage im Schließplan-Planer",
+          "quelle": "H09-sperrschliessung-konfigurator"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Größeres Vorhaben? Zu den Schließanlag…",
+          "quelle": "H09-sperrschliessung-konfigurator"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H09-sperrschliessung-konfigurator"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H09-sperrschliessung-konfigurator"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H09-sperrschliessung-konfigurator"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H09-sperrschliessung-konfigurator"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H09-sperrschliessung-konfigurator"
+        }
+      ]
+    },
+    {
+      "name": "H10-schliessanlagen",
+      "zeilen": 233,
+      "zaehl": {
+        "Gedankenstrich": 1,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 2,
+        "Floskel": 1,
+        "Bindestrich": 3,
+        "Platzhalter": 1,
+        "Dreierreihe": 0,
+        "befunde": 8,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Platzhalter",
+          "typ": "Befund",
+          "auszug": "…e übliche Abkürzung folgt in Klammern.",
+          "quelle": "H10-schliessanlagen"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Karte nicht zur Hand? Anfrage stellen",
+          "quelle": "H10-schliessanlagen"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Welche Anlage passt?",
+          "quelle": "H10-schliessanlagen"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H10-schliessanlagen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H10-schliessanlagen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H10-schliessanlagen"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H10-schliessanlagen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H10-schliessanlagen"
+        }
+      ]
+    },
+    {
+      "name": "H11-schliessanlagen-konfigurator",
+      "zeilen": 119,
+      "zaehl": {
+        "Gedankenstrich": 2,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 3,
+        "Floskel": 1,
+        "Bindestrich": 3,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 9,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Für wen planen wir die Anlage?*",
+          "quelle": "H11-schliessanlagen-konfigurator"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Nur wenige Türen?",
+          "quelle": "H11-schliessanlagen-konfigurator"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "…ne Gleichschließung — direkt konfigurierb…",
+          "quelle": "H11-schliessanlagen-konfigurator"
+        },
+        {
+          "regel": "Frage",
+          "typ": "Befund",
+          "auszug": "Lieber elektronisch?",
+          "quelle": "H11-schliessanlagen-konfigurator"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H11-schliessanlagen-konfigurator"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H11-schliessanlagen-konfigurator"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H11-schliessanlagen-konfigurator"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H11-schliessanlagen-konfigurator"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H11-schliessanlagen-konfigurator"
+        }
+      ]
+    },
+    {
+      "name": "H12-partner-werden",
+      "zeilen": 162,
+      "zaehl": {
+        "Gedankenstrich": 1,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 1,
+        "Bindestrich": 4,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 6,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Kfz-Betriebe",
+          "quelle": "H12-partner-werden"
+        },
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H12-partner-werden"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H12-partner-werden"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H12-partner-werden"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H12-partner-werden"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H12-partner-werden"
+        }
+      ]
+    },
+    {
+      "name": "H13-kasse",
+      "zeilen": 67,
+      "zaehl": {
+        "Gedankenstrich": 1,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 1,
+        "Bindestrich": 3,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 5,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H13-kasse"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H13-kasse"
+        }
+      ]
+    },
+    {
+      "name": "H14-ratgeber-messen",
+      "zeilen": 82,
+      "zaehl": {
+        "Gedankenstrich": 1,
+        "Ausrufezeichen": 0,
+        "Emoji": 0,
+        "Frage": 0,
+        "Floskel": 1,
+        "Bindestrich": 3,
+        "Platzhalter": 0,
+        "Dreierreihe": 0,
+        "befunde": 5,
+        "hinweise": 0
+      },
+      "funde": [
+        {
+          "regel": "Gedankenstrich",
+          "typ": "Befund",
+          "auszug": "SCHLÜSSELMACHER24 – Inhaber Mina Saad",
+          "quelle": "H14-ratgeber-messen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Autoschlüssel-Finder",
+          "quelle": "H14-ratgeber-messen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Alle Shop-Kategorien",
+          "quelle": "H14-ratgeber-messen"
+        },
+        {
+          "regel": "Floskel",
+          "typ": "Befund",
+          "auszug": "Notdienst rund um die Uhr",
+          "quelle": "H14-ratgeber-messen"
+        },
+        {
+          "regel": "Bindestrich",
+          "typ": "Befund",
+          "auszug": "Cookie-Einstellungen",
+          "quelle": "H14-ratgeber-messen"
+        }
+      ]
+    }
+  ]
+}

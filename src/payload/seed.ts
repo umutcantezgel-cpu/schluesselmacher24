@@ -115,6 +115,12 @@ interface AbgleichFeld {
    * Bild) bleibt beim Abgleich erhalten.
    */
   spalten?: string[];
+  /**
+   * Neues Feld eines schon angelegten Eintrags (etwa die Bereiche der Hersteller, FA-SHOP-04): Ist es
+   * in der Datenbank leer und gibt es dafür noch keinen eigenen Stand, wird es mit dem Startwert
+   * gefüllt. Danach gilt der Abgleich wie bei jedem Feld; leert der Betrieb es später, bleibt es leer.
+   */
+  leerErgaenzen?: boolean;
 }
 
 const SEO_ABGLEICH: AbgleichFeld[] = [
@@ -341,7 +347,8 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
         // früheren Startwert bewusst wieder her, bleibt dieser stehen.
         const unveraendert = eigenerStand[feld.pfad] !== undefined
           ? eigenerStand[feld.pfad] === summeDb
-          : frueher.get(schluessel)?.get(feld.pfad)?.has(summeDb);
+          : frueher.get(schluessel)?.get(feld.pfad)?.has(summeDb)
+            || (feld.leerErgaenzen === true && summeDb === pruefsumme(vergleichswert({}, feld)));
         if (!unveraendert) continue; // vom Betrieb geändert — bleibt
         const wert = feld.spalten
           ? zeilenAbgleichen(lesen(doc, feld.pfad), lesen(neu, feld.pfad), feld.spalten)
@@ -518,7 +525,8 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
       schluessel: (h) => h.id,
       dbSchluessel: kennung,
       zuDaten: m.herstellerZuPayload,
-      abgleich: [{ pfad: 'einsatz' }],
+      // Bereiche (FA-SHOP-04): bei schon angelegten Herstellern einmal mit den Startwerten füllen.
+      abgleich: [{ pfad: 'einsatz' }, { pfad: 'bereiche', spalten: ['art', 'einsatz'], leerErgaenzen: true }],
     });
     const produktVerweise: m.ProduktVerweise = {
       kategorien: await kennungen('kategorien'),

@@ -772,6 +772,7 @@ export function herstellerZuSeite(doc: Hersteller): ShopHersteller {
     einsatz: doc.einsatz ?? '',
     angeboten: Boolean(doc.angeboten),
     reihenfolge: doc.reihenfolge,
+    bereiche: (doc.bereiche ?? []).map((b) => ({ art: b.art, einsatz: b.einsatz })),
   };
   if (doc.logo?.freigabe) {
     const bild = medienBild(doc.logo.bild, `Logo ${doc.name}`);
@@ -789,6 +790,7 @@ export function herstellerZuPayload(hersteller: ShopHersteller): RequiredDataFro
     einsatz: hersteller.einsatz,
     angeboten: hersteller.angeboten,
     reihenfolge: hersteller.reihenfolge,
+    bereiche: (hersteller.bereiche ?? []).map((b) => ({ art: b.art, einsatz: b.einsatz })),
   };
 }
 
@@ -1168,6 +1170,33 @@ export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
 
 type ZylinderDaten = Omit<Zylinderkatalog, 'id' | 'updatedAt' | 'createdAt'>;
 
+/** Haken „Preis nicht bestätigt“ nur übernehmen, wenn er gesetzt ist; sonst bleibt das Feld weg wie im Bestand. */
+function unbestaetigt<T extends object>(eintrag: T, haken: boolean | null | undefined): T & { priceUnconfirmed?: boolean } {
+  return haken === true ? { ...eintrag, priceUnconfirmed: true } : eintrag;
+}
+
+/** Hersteller aus der Liste (FA-SHOP-04): Name und Kennung aus dem Stamm, sonst die eigenen Felder älterer Einträge. */
+function zylinderHerstellerZuSeite(h: NonNullable<Zylinderkatalog['hersteller']>[number]): CylinderCatalog['manufacturers'][number] {
+  const stamm = h.stamm && typeof h.stamm === 'object' ? h.stamm : undefined;
+  const stammId = stamm ? stamm.kennung || stamm.slug || undefined : undefined;
+  const eintrag: CylinderCatalog['manufacturers'][number] = {
+    id: stammId ?? h.kennung ?? '',
+    name: stamm?.name ?? h.name ?? '',
+    // Ohne Haken nicht angeboten — anders als bei Bauformen und Funktionen.
+    active: h.aktiv === true,
+    description: h.beschreibung ?? '',
+    surchargeCentsPerCylinder: zuCent(h.aufpreisJeZylinder),
+    forms: h.bauformen ?? [],
+    components: (h.zusatzkomponenten ?? []).map((k) => ({
+      name: k.name,
+      priceCents: zuCent(k.preis),
+      description: k.beschreibung ?? '',
+    })),
+  };
+  if (stammId) eintrag.stammId = stammId;
+  return unbestaetigt(eintrag, h.preisNichtBestaetigt);
+}
+
 export function zylinderkatalogZuSeite(doc: Zylinderkatalog): CylinderCatalog {
   const katalog: CylinderCatalog = {
     keyPriceCents: zuCent(doc.schluesselPreis),
@@ -1179,7 +1208,7 @@ export function zylinderkatalogZuSeite(doc: Zylinderkatalog): CylinderCatalog {
     forms: (doc.bauformen ?? []).map((b) => {
       const measureLabels: CylinderCatalog['forms'][number]['measureLabels'] = { a: b.massLabelA };
       if (b.massLabelB) measureLabels.b = b.massLabelB;
-      return {
+      return unbestaetigt({
         id: b.kennung,
         label: b.label,
         description: b.beschreibung,
@@ -1194,9 +1223,9 @@ export function zylinderkatalogZuSeite(doc: Zylinderkatalog): CylinderCatalog {
         lengthSurchargeCents: zuCent(b.laengenAufpreis),
         baseLengthMm: b.grundlaengeMm,
         active: b.aktiv !== false,
-      };
+      }, b.preisNichtBestaetigt);
     }),
-    functions: (doc.funktionen ?? []).map((f) => ({
+    functions: (doc.funktionen ?? []).map((f) => unbestaetigt({
       id: f.kennung,
       label: f.label,
       description: f.beschreibung,
@@ -1204,8 +1233,8 @@ export function zylinderkatalogZuSeite(doc: Zylinderkatalog): CylinderCatalog {
       info: infoZuSeite(f.info),
       forms: f.bauformen,
       active: f.aktiv !== false,
-    })),
-    extras: (doc.extras ?? []).map((e) => ({
+    }, f.preisNichtBestaetigt)),
+    extras: (doc.extras ?? []).map((e) => unbestaetigt({
       id: e.kennung,
       label: e.label,
       description: e.beschreibung,
@@ -1213,30 +1242,23 @@ export function zylinderkatalogZuSeite(doc: Zylinderkatalog): CylinderCatalog {
       unit: e.einheit,
       info: infoZuSeite(e.info),
       active: e.aktiv !== false,
-    })),
-    manufacturers: (doc.hersteller ?? []).map((h) => ({
-      id: h.kennung,
-      name: h.name,
-      // Ohne Haken nicht angeboten — anders als bei Bauformen und Funktionen.
-      active: h.aktiv === true,
-      description: h.beschreibung ?? '',
-      surchargeCentsPerCylinder: zuCent(h.aufpreisJeZylinder),
-      forms: h.bauformen ?? [],
-      components: (h.zusatzkomponenten ?? []).map((k) => ({
-        name: k.name,
-        priceCents: zuCent(k.preis),
-        description: k.beschreibung ?? '',
-      })),
-    })),
+    }, e.preisNichtBestaetigt)),
+    manufacturers: (doc.hersteller ?? []).map(zylinderHerstellerZuSeite),
   };
+  if (doc.schluesselPreisNichtBestaetigt === true) katalog.keyPriceUnconfirmed = true;
   const gpsr = gpsrZuSeite(doc.gpsr);
   if (gpsr) katalog.gpsr = gpsr;
   return katalog;
 }
 
-export function zylinderkatalogZuPayload(c: CylinderCatalog): ZylinderDaten {
+/**
+ * `hersteller`: Kennung → ID der Hersteller-Liste. Mit ihr wird ein Eintrag mit `stammId` wieder mit
+ * dem Stamm verknüpft; ohne Karte oder ohne Treffer bleibt er ein älterer Eintrag mit eigenem Namen.
+ */
+export function zylinderkatalogZuPayload(c: CylinderCatalog, verweise: { hersteller?: Map<string, number> } = {}): ZylinderDaten {
   return {
     schluesselPreis: zuEuro(c.keyPriceCents),
+    schluesselPreisNichtBestaetigt: c.keyPriceUnconfirmed === true,
     inklusiveSchluessel: c.includedKeys,
     maxSchluessel: c.maxKeys,
     maxZylinder: c.maxCylinders,
@@ -1256,6 +1278,7 @@ export function zylinderkatalogZuPayload(c: CylinderCatalog): ZylinderDaten {
       grundlaengeMm: f.baseLengthMm,
       grundpreis: zuEuro(f.basePriceCents),
       laengenAufpreis: zuEuro(f.lengthSurchargeCents),
+      preisNichtBestaetigt: f.priceUnconfirmed === true,
       info: infoZuPayload(f.info),
       grafik: bildZuPayload(f.figure),
     })),
@@ -1266,6 +1289,7 @@ export function zylinderkatalogZuPayload(c: CylinderCatalog): ZylinderDaten {
       beschreibung: f.description,
       aufpreis: zuEuro(f.surchargeCents),
       bauformen: f.forms,
+      preisNichtBestaetigt: f.priceUnconfirmed === true,
       info: infoZuPayload(f.info),
     })),
     extras: c.extras.map((e) => ({
@@ -1275,12 +1299,15 @@ export function zylinderkatalogZuPayload(c: CylinderCatalog): ZylinderDaten {
       beschreibung: e.description,
       preis: zuEuro(e.priceCents),
       einheit: e.unit,
+      preisNichtBestaetigt: e.priceUnconfirmed === true,
       info: infoZuPayload(e.info),
     })),
     hersteller: (c.manufacturers ?? []).map((h) => ({
+      stamm: (h.stammId ? verweise.hersteller?.get(h.stammId) : undefined) ?? null,
       kennung: h.id,
       name: h.name,
       aktiv: h.active,
+      preisNichtBestaetigt: h.priceUnconfirmed === true,
       beschreibung: h.description,
       aufpreisJeZylinder: zuEuro(h.surchargeCentsPerCylinder),
       bauformen: h.forms,

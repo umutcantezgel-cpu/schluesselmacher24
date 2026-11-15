@@ -7,10 +7,12 @@ import { defaults } from '@/lib/data/defaults';
 import { herstellerZuPayload, herstellerZuSeite } from '@/lib/data/payload-mapping';
 import type { ShopHersteller } from '@/lib/types';
 
-import { BEREICHE, HERSTELLER_BEREICHE, herstellerFuerAnzeige } from './bereiche';
+import { BEREICHE, bereicheDesHerstellers, herstellerFuerAnzeige } from './bereiche';
 import { HerstellerBereich, namensliste } from './hersteller-bereich';
 
 const startbestand = () => defaults.hersteller();
+/** Alle Einsatztexte je Bereich aus dem Startbestand. */
+const bereichsTexte = () => startbestand().flatMap((h) => (h.bereiche ?? []).map((b) => b.einsatz));
 const zeichne = (hersteller: ShopHersteller[], bereich?: 'sperrschliessung' | 'zutritt') =>
   renderToStaticMarkup(<HerstellerBereich hersteller={hersteller} bereich={bereich} />);
 
@@ -75,6 +77,47 @@ describe('HerstellerBereich: Daten', () => {
     expect(zeichne([neu])).toContain('Möbelschlösser');
   });
 
+  it('liest Bereiche und Einsatztexte aus den Daten (FA-SHOP-04): eine Änderung im Admin wirkt sofort', () => {
+    const geaendert = startbestand().map((h) => {
+      if (h.id === 'burg-waechter') return { ...h, bereiche: [{ art: 'sperrschliessung' as const, einsatz: 'Testtext Sperrschließung' }] };
+      if (h.id === 'abus') return { ...h, bereiche: [] };
+      return h;
+    });
+    expect(herstellerFuerAnzeige(geaendert, 'sperrschliessung').map((e) => [e.id, e.bereiche[0].einsatz])).toEqual([
+      ['bks', 'BKS stellt Schließzylinder für Gleichschließungen und Schließanlagen her.'],
+      ['burg-waechter', 'Testtext Sperrschließung'],
+    ]);
+    expect(herstellerFuerAnzeige(geaendert, 'zutritt').map((e) => e.id)).toEqual(['bks']);
+    // ABUS ohne Bereich: nur noch auf der Startseite, mit dem allgemeinen Einsatztext
+    expect(herstellerFuerAnzeige(geaendert).find((e) => e.id === 'abus')?.bereiche).toEqual([]);
+    expect(zeichne(geaendert, 'sperrschliessung')).toContain('Testtext Sperrschließung');
+  });
+
+  it('zeigt Bereiche in fester Reihenfolge, je Bereich nur den ersten Text, leere Texte nicht', () => {
+    const h: ShopHersteller = {
+      ...startbestand()[0],
+      bereiche: [
+        { art: 'zutritt', einsatz: 'Zutritt eins' },
+        { art: 'sperrschliessung', einsatz: '  ' },
+        { art: 'zutritt', einsatz: 'Zutritt zwei' },
+      ],
+    };
+    expect(bereicheDesHerstellers(h)).toEqual({ zutritt: 'Zutritt eins' });
+    expect(herstellerFuerAnzeige([h])[0].bereiche).toEqual([{ art: 'zutritt', einsatz: 'Zutritt eins' }]);
+  });
+
+  it('Startwerte im JSON-Rückfall und in den Defaults stimmen überein', () => {
+    const json = JSON.parse(readFileSync(path.join(process.cwd(), 'content/hersteller.json'), 'utf8')) as ShopHersteller[];
+    expect(json).toEqual(startbestand());
+  });
+
+  it('Bereiche gehen verlustfrei durch das Mapping', () => {
+    for (const h of startbestand()) {
+      const doc = { ...herstellerZuPayload(h), id: 1, updatedAt: '', createdAt: '' };
+      expect(herstellerZuSeite(doc as never).bereiche).toEqual(h.bereiche);
+    }
+  });
+
   it('jeder Bereich zeigt auf eine Seite der Anwendung', () => {
     for (const b of Object.values(BEREICHE)) {
       const seite = path.join(process.cwd(), 'src/app/(site)', b.href.replace(/^\//, ''), 'page.tsx');
@@ -82,15 +125,12 @@ describe('HerstellerBereich: Daten', () => {
     }
   });
 
-  it('Zuordnung nur für Hersteller der Stammliste, Texte kurz und ohne Gedankenstriche', () => {
-    const ids = startbestand().map((h) => h.id);
-    for (const [id, texte] of Object.entries(HERSTELLER_BEREICHE)) {
-      expect(ids).toContain(id);
-      for (const text of Object.values(texte)) {
-        expect(text).not.toMatch(/[–—]/);
-        expect(text.length).toBeLessThanOrEqual(300);
-        expect(text).not.toMatch(/€|Euro|Partner/);
-      }
+  it('Texte je Bereich kurz und ohne Gedankenstriche', () => {
+    expect(bereichsTexte()).toHaveLength(5);
+    for (const text of bereichsTexte()) {
+      expect(text).not.toMatch(/[–—]/);
+      expect(text.length).toBeLessThanOrEqual(300);
+      expect(text).not.toMatch(/€|Euro|Partner/);
     }
     for (const h of startbestand()) {
       expect(h.einsatz).not.toMatch(/[–—]/);
@@ -100,9 +140,7 @@ describe('HerstellerBereich: Daten', () => {
 
   it('nennt keine Produktreihen, solange der Inhaber sie nicht bestätigt hat (R4)', () => {
     const reihen = /belvius|\bSE\b|wAppLoxx|secuENTRY/i;
-    for (const texte of Object.values(HERSTELLER_BEREICHE)) {
-      for (const text of Object.values(texte)) expect(text).not.toMatch(reihen);
-    }
+    for (const text of bereichsTexte()) expect(text).not.toMatch(reihen);
     for (const h of startbestand()) expect(h.einsatz).not.toMatch(reihen);
     expect(zeichne(startbestand())).not.toMatch(reihen);
   });

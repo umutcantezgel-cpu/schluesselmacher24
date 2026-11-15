@@ -5,7 +5,17 @@
     "name": "BKS",
     "einsatz": "Schließzylinder für Gleichschließungen und Schließanlagen sowie elektronische Schließsysteme.",
     "angeboten": true,
-    "reihenfolge": 10
+    "reihenfolge": 10,
+    "bereiche": [
+      {
+        "art": "sperrschliessung",
+        "einsatz": "BKS stellt Schließzylinder für Gleichschließungen und Schließanlagen her."
+      },
+      {
+        "art": "zutritt",
+        "einsatz": "BKS stellt elektronische Schließsysteme mit Zylindern, Beschlägen, Wandlesern und Transpondern her."
+      }
+    ]
   },
   {
     "id": "abus",
@@ -13,7 +23,17 @@
     "name": "ABUS",
     "einsatz": "Schließzylinder für Gleichschließungen und Schließanlagen sowie Zutrittssysteme mit Wandlesern.",
     "angeboten": true,
-    "reihenfolge": 20
+    "reihenfolge": 20,
+    "bereiche": [
+      {
+        "art": "sperrschliessung",
+        "einsatz": "ABUS bietet Schließzylinder als Gleichschließung und als Schließanlage mit Schließplan an."
+      },
+      {
+        "art": "zutritt",
+        "einsatz": "ABUS stellt Zutrittssysteme mit Wandlesern und batteriebetriebenen Zylindern her, gedacht für kleine bis mittlere Objekte und Einfamilienhäuser."
+      }
+    ]
   },
   {
     "id": "burg-waechter",
@@ -21,6 +41,12 @@
     "name": "BURG-WÄCHTER",
     "einsatz": "Elektronische Zylinder für Unternehmen, Behörden und Privatnutzer.",
     "angeboten": true,
-    "reihenfolge": 30
+    "reihenfolge": 30,
+    "bereiche": [
+      {
+        "art": "zutritt",
+        "einsatz": "BURG-WÄCHTER stellt elektronische Zylinder für Unternehmen, Behörden und Privatnutzer her."
+      }
+    ]
   }
 ]

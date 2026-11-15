@@ -1,10 +1,12 @@
-import type { ImageSlot, MediaImage, ShopHersteller } from '@/lib/types';
+import type { HerstellerBereichArt, ImageSlot, MediaImage, ShopHersteller } from '@/lib/types';
 
 /*
  * Hersteller nach Bereich (FA-INHALT-02, Abschnitte 15, 17 und 19 der
  * Arbeitsanweisung): Welcher Hersteller in welchem Bereich erscheint und wofür
- * seine Systeme dort eingesetzt werden. Die Sammlung „Hersteller“ hat dafür
- * noch kein Feld; bis es eins gibt, steht die Zuordnung nur hier.
+ * seine Systeme dort eingesetzt werden. Seit FA-SHOP-04 kommt beides aus den
+ * Daten (Sammlung „Hersteller“, Feld „Bereiche“); der Betrieb pflegt es im
+ * Admin. Startwerte in `content/hersteller.json` und
+ * `src/lib/data/defaults/hersteller.ts`.
  *
  * Einsatztexte nur aus Herstellerquellen (Recherche FA-RECHERCHE-06, R4),
  * sachlich, ohne Leistungsversprechen und ohne Preise (R12). Keine Namen von
@@ -12,7 +14,7 @@ import type { ImageSlot, MediaImage, ShopHersteller } from '@/lib/types';
  * verbaut (R4); vor dem Livegang gibt der Inhaber die Texte frei.
  */
 
-export type HerstellerBereichArt = 'sperrschliessung' | 'zutritt';
+export type { HerstellerBereichArt };
 
 export interface BereichInfo {
   titel: string;
@@ -28,22 +30,15 @@ export const BEREICHE: Record<HerstellerBereichArt, BereichInfo> = {
 /** Reihenfolge der Bereiche auf einer Karte. */
 export const BEREICH_REIHENFOLGE: HerstellerBereichArt[] = ['sperrschliessung', 'zutritt'];
 
-/** Kennung des Herstellers (Stammliste) → Einsatzzweck je Bereich. */
-export const HERSTELLER_BEREICHE: Record<string, Partial<Record<HerstellerBereichArt, string>>> = {
-  bks: {
-    sperrschliessung: 'BKS stellt Schließzylinder für Gleichschließungen und Schließanlagen her.',
-    zutritt: 'BKS stellt elektronische Schließsysteme mit Zylindern, Beschlägen, Wandlesern und Transpondern her.',
-  },
-  abus: {
-    sperrschliessung: 'ABUS bietet Schließzylinder als Gleichschließung und als Schließanlage mit Schließplan an.',
-    zutritt:
-      'ABUS stellt Zutrittssysteme mit Wandlesern und batteriebetriebenen Zylindern her, '
-      + 'gedacht für kleine bis mittlere Objekte und Einfamilienhäuser.',
-  },
-  'burg-waechter': {
-    zutritt: 'BURG-WÄCHTER stellt elektronische Zylinder für Unternehmen, Behörden und Privatnutzer her.',
-  },
-};
+/** Einsatztext je Bereich aus den Daten; leere Texte und unbekannte Bereiche zählen nicht. */
+export function bereicheDesHerstellers(h: Pick<ShopHersteller, 'bereiche'>): Partial<Record<HerstellerBereichArt, string>> {
+  const zuordnung: Partial<Record<HerstellerBereichArt, string>> = {};
+  for (const b of h.bereiche ?? []) {
+    const text = b.einsatz?.trim();
+    if (text && b.art in BEREICHE && !zuordnung[b.art]) zuordnung[b.art] = text;
+  }
+  return zuordnung;
+}
 
 export interface HerstellerEintrag {
   id: string;
@@ -74,7 +69,7 @@ export function herstellerFuerAnzeige(hersteller: ShopHersteller[], bereich?: He
     .filter((h) => h.angeboten)
     .sort((a, b) => a.reihenfolge - b.reihenfolge || a.name.localeCompare(b.name, 'de'))
     .map((h) => {
-      const zuordnung = HERSTELLER_BEREICHE[h.id] ?? {};
+      const zuordnung = bereicheDesHerstellers(h);
       const arten = bereich ? [bereich] : BEREICH_REIHENFOLGE;
       const eintrag: HerstellerEintrag = {
         id: h.id,

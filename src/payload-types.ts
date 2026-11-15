@@ -1057,7 +1057,7 @@ export interface Medien {
   };
 }
 /**
- * Liste der Hersteller. Bitte jeden Hersteller nur einmal anlegen, in seiner eigenen Schreibweise. Artikel wählen ihren Hersteller aus dieser Liste. Mit dem Haken „angeboten“ erscheint der Hersteller sofort auf der Startseite und, wenn ihm ein Bereich zugeordnet ist, auf den Seiten Sperrschließungen und elektronischer Zutritt. Ein Logo erscheint nur mit Datei und Haken „Freigabe liegt vor“. Bei Schlüssel nach Code bekommt ein Hersteller eine eigene Seite, sobald ihm mindestens ein veröffentlichter Artikel zugeordnet ist.
+ * Liste der Hersteller. Bitte jeden Hersteller nur einmal anlegen, in seiner eigenen Schreibweise. Artikel wählen ihren Hersteller aus dieser Liste. Mit dem Haken „angeboten“ erscheint der Hersteller sofort auf der Startseite und auf den Seiten der Bereiche, die Sie ihm unter „Bereiche“ zuordnen (Sperrschließungen, elektronischer Zutritt). Ein Logo erscheint nur mit Datei und Haken „Freigabe liegt vor“. Bei Schlüssel nach Code bekommt ein Hersteller eine eigene Seite, sobald ihm mindestens ein veröffentlichter Artikel zugeordnet ist.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hersteller".
@@ -1069,9 +1069,22 @@ export interface Hersteller {
    */
   name: string;
   /**
-   * Ein kurzer Satz, etwa an welchen Schlössern die Systeme sitzen. Nur, was Sie belegen können. Für BKS, ABUS und BURG-WÄCHTER zeigt die Seite zurzeit feste Texte je Bereich; dieses Feld erscheint bei allen anderen Herstellern.
+   * Ein kurzer Satz, etwa an welchen Schlössern die Systeme sitzen. Nur, was Sie belegen können. Erscheint auf der Startseite nur bei Herstellern ohne Bereich; mit Bereich zeigt die Seite den Text des Bereichs.
    */
   einsatz?: string | null;
+  /**
+   * In welchen Bereichen der Hersteller erscheint, mit einem Satz je Bereich, wofür seine Systeme dort eingesetzt werden. Ohne Bereich erscheint er nur auf der Startseite. Jeden Bereich nur einmal anlegen. Nur, was Sie belegen können, ohne Preise.
+   */
+  bereiche?:
+    | {
+        art: 'sperrschliessung' | 'zutritt';
+        /**
+         * Ein sachlicher Satz, ohne Preise und ohne Produktreihen, die wir nicht verbauen.
+         */
+        einsatz: string;
+        id?: string | null;
+      }[]
+    | null;
   angeboten?: boolean | null;
   /**
    * Nur hochladen, wenn der Hersteller die Nutzung erlaubt hat.
@@ -2699,6 +2712,13 @@ export interface KategorienSelect<T extends boolean = true> {
 export interface HerstellerSelect<T extends boolean = true> {
   name?: T;
   einsatz?: T;
+  bereiche?:
+    | T
+    | {
+        art?: T;
+        einsatz?: T;
+        id?: T;
+      };
   angeboten?: T;
   logo?:
     | T
@@ -3357,6 +3377,10 @@ export interface Zylinderkatalog {
   inklusiveSchluessel: number;
   maxSchluessel: number;
   maxZylinder: number;
+  /**
+   * Setzen Sie den Haken, solange der Preis noch nicht geprüft ist. Dann lässt sich mit mehr als den inklusiven Schlüsseln nichts bestellen; Kunden schicken stattdessen eine Anfrage und bekommen ein Angebot.
+   */
+  schluesselPreisNichtBestaetigt?: boolean | null;
   messInfo: {
     titel: string;
     text: string;
@@ -3400,6 +3424,10 @@ export interface Zylinderkatalog {
         grundlaengeMm: number;
         grundpreis: number;
         laengenAufpreis: number;
+        /**
+         * Setzen Sie den Haken, solange der Preis noch nicht geprüft ist. Dann lässt sich mit dieser Bauform nichts bestellen; Kunden schicken stattdessen eine Anfrage und bekommen ein Angebot.
+         */
+        preisNichtBestaetigt?: boolean | null;
         info: {
           titel: string;
           text: string;
@@ -3439,6 +3467,10 @@ export interface Zylinderkatalog {
         beschreibung: string;
         aufpreis: number;
         bauformen: ('doppelzylinder' | 'knaufzylinder' | 'halbzylinder')[];
+        /**
+         * Setzen Sie den Haken, solange der Preis noch nicht geprüft ist. Dann lässt sich mit dieser Funktion nichts bestellen; Kunden schicken stattdessen eine Anfrage und bekommen ein Angebot.
+         */
+        preisNichtBestaetigt?: boolean | null;
         info: {
           titel: string;
           text: string;
@@ -3466,6 +3498,10 @@ export interface Zylinderkatalog {
         beschreibung: string;
         preis: number;
         einheit: 'einmal' | 'stueck';
+        /**
+         * Setzen Sie den Haken, solange der Preis noch nicht geprüft ist. Dann lässt sich mit diesem Extra nichts bestellen; Kunden schicken stattdessen eine Anfrage und bekommen ein Angebot.
+         */
+        preisNichtBestaetigt?: boolean | null;
         info: {
           titel: string;
           text: string;
@@ -3487,18 +3523,29 @@ export interface Zylinderkatalog {
     | null;
   hersteller?:
     | {
-        name: string;
+        /**
+         * Name und Kennung übernimmt der Eintrag beim Speichern aus der Hersteller-Liste.
+         */
+        stamm?: (number | null) | Hersteller;
+        aktiv?: boolean | null;
+        /**
+         * Nur für ältere Einträge ohne Auswahl aus der Liste. Besser: oben den Hersteller wählen.
+         */
+        name?: string | null;
         /**
          * z. B. „abus“.
          */
-        kennung: string;
-        aktiv?: boolean | null;
+        kennung?: string | null;
         beschreibung?: string | null;
         aufpreisJeZylinder?: number | null;
         /**
          * Leer = für alle Bauformen.
          */
         bauformen?: ('doppelzylinder' | 'knaufzylinder' | 'halbzylinder')[] | null;
+        /**
+         * Setzen Sie den Haken, solange der Preis noch nicht geprüft ist. Dann lässt sich mit diesem Hersteller (Aufpreis und Zusatzkomponenten) nichts bestellen; Kunden schicken stattdessen eine Anfrage und bekommen ein Angebot.
+         */
+        preisNichtBestaetigt?: boolean | null;
         zusatzkomponenten?:
           | {
               name: string;
@@ -3830,6 +3877,7 @@ export interface ZylinderkatalogSelect<T extends boolean = true> {
   inklusiveSchluessel?: T;
   maxSchluessel?: T;
   maxZylinder?: T;
+  schluesselPreisNichtBestaetigt?: T;
   messInfo?:
     | T
     | {
@@ -3868,6 +3916,7 @@ export interface ZylinderkatalogSelect<T extends boolean = true> {
         grundlaengeMm?: T;
         grundpreis?: T;
         laengenAufpreis?: T;
+        preisNichtBestaetigt?: T;
         info?:
           | T
           | {
@@ -3901,6 +3950,7 @@ export interface ZylinderkatalogSelect<T extends boolean = true> {
         beschreibung?: T;
         aufpreis?: T;
         bauformen?: T;
+        preisNichtBestaetigt?: T;
         info?:
           | T
           | {
@@ -3926,6 +3976,7 @@ export interface ZylinderkatalogSelect<T extends boolean = true> {
         beschreibung?: T;
         preis?: T;
         einheit?: T;
+        preisNichtBestaetigt?: T;
         info?:
           | T
           | {
@@ -3945,12 +3996,14 @@ export interface ZylinderkatalogSelect<T extends boolean = true> {
   hersteller?:
     | T
     | {
+        stamm?: T;
+        aktiv?: T;
         name?: T;
         kennung?: T;
-        aktiv?: T;
         beschreibung?: T;
         aufpreisJeZylinder?: T;
         bauformen?: T;
+        preisNichtBestaetigt?: T;
         zusatzkomponenten?:
           | T
           | {

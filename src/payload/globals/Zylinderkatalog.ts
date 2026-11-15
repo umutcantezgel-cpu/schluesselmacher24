@@ -1,4 +1,4 @@
-import type { GlobalConfig } from 'payload';
+import type { CheckboxField, GlobalBeforeValidateHook, GlobalConfig } from 'payload';
 
 import { istInhaber, istTeam } from '../access/rollen';
 import { bildFeld, euroFeld, gpsrFeld, infoFeld, slugFeld } from '../fields/gemeinsam';
@@ -10,13 +10,59 @@ export const BAUFORMEN = [
   { label: 'Halbzylinder', value: 'halbzylinder' },
 ];
 
+/**
+ * Haken „Preis nicht bestätigt“ (FA-SHOP-04): Solange er gesetzt ist, lässt sich nichts mit diesem
+ * Eintrag bestellen; der Konfigurator führt dann in die Anfrage mit Angebot. Standard: nicht gesetzt,
+ * damit sich am Bestand nichts ändert. Der Preis selbst bleibt, wie er ist.
+ */
+function preisNichtBestaetigtFeld(name = 'preisNichtBestaetigt', wofuer = 'diesem Eintrag'): CheckboxField {
+  return {
+    name,
+    type: 'checkbox',
+    label: 'Preis nicht bestätigt',
+    defaultValue: false,
+    admin: {
+      description:
+        `Setzen Sie den Haken, solange der Preis noch nicht geprüft ist. Dann lässt sich mit ${wofuer} nichts bestellen; `
+        + 'Kunden schicken stattdessen eine Anfrage und bekommen ein Angebot.',
+    },
+  };
+}
+
+/** Kennung aus einem Verweis: Zahl, Text oder das geladene Dokument. */
+function verweisId(wert: unknown): number | string | undefined {
+  if (wert && typeof wert === 'object' && 'id' in wert) return (wert as { id: number | string }).id;
+  return typeof wert === 'number' || (typeof wert === 'string' && wert !== '') ? wert : undefined;
+}
+
+/**
+ * Hersteller aus der Hersteller-Liste (FA-SHOP-04): Name und Kennung übernimmt der Eintrag aus dem
+ * Stamm, damit jeder Hersteller nur einmal gepflegt wird. Einträge ohne Auswahl behalten ihre Werte.
+ */
+export const herstellerAusStamm: GlobalBeforeValidateHook = async ({ data, req }) => {
+  const zeilen = (data as { hersteller?: unknown } | undefined)?.hersteller;
+  if (!Array.isArray(zeilen)) return data;
+  for (const zeile of zeilen as Array<Record<string, unknown>>) {
+    const id = verweisId(zeile?.stamm);
+    if (id === undefined) continue;
+    try {
+      const stamm = await req.payload.findByID({ collection: 'hersteller', id, depth: 0, req, overrideAccess: true, trash: true });
+      zeile.name = stamm.name;
+      zeile.kennung = stamm.kennung || stamm.slug || zeile.kennung;
+    } catch {
+      // Nicht gefunden: Die Prüfung des Verweises meldet das; die bisherigen Werte bleiben.
+    }
+  }
+  return data;
+};
+
 /** Bauformen, Funktionen und Extras für gleichschließende Zylinder. */
 export const Zylinderkatalog: GlobalConfig = {
   slug: 'zylinderkatalog',
   label: 'Zylinderkatalog',
   admin: { group: 'Shop' },
   access: { read: istTeam, update: istInhaber },
-  hooks: { afterChange: [nachGlobalAenderung] },
+  hooks: { beforeValidate: [herstellerAusStamm], afterChange: [nachGlobalAenderung] },
   fields: [
     {
       type: 'tabs',
@@ -30,6 +76,7 @@ export const Zylinderkatalog: GlobalConfig = {
               { name: 'maxSchluessel', type: 'number', label: 'Höchstens Schlüssel', required: true, min: 1, max: 100, admin: { width: '25%', step: 1 } },
               { name: 'maxZylinder', type: 'number', label: 'Höchstens Zylinder', required: true, min: 1, max: 100, admin: { width: '25%', step: 1 } },
             ] },
+            preisNichtBestaetigtFeld('schluesselPreisNichtBestaetigt', 'mehr als den inklusiven Schlüsseln'),
             infoFeld('messInfo', 'Erklärung: richtig messen'),
             bildFeld('messGrafik', 'Grafik: richtig messen', '16/9'),
           ],
@@ -67,6 +114,7 @@ export const Zylinderkatalog: GlobalConfig = {
                   euroFeld('grundpreis', 'Grundpreis', { required: true, admin: { width: '50%', step: 0.01 } }),
                   euroFeld('laengenAufpreis', 'Aufpreis je angefangene 5 mm', { required: true, admin: { width: '50%', step: 0.01 } }),
                 ] },
+                preisNichtBestaetigtFeld('preisNichtBestaetigt', 'dieser Bauform'),
                 infoFeld('info', 'Erklärung'),
                 bildFeld('grafik', 'Grafik', '4/3'),
               ],
@@ -92,6 +140,7 @@ export const Zylinderkatalog: GlobalConfig = {
                   euroFeld('aufpreis', 'Aufpreis', { required: true, admin: { width: '40%', step: 0.01 } }),
                   { name: 'bauformen', type: 'select', label: 'Für Bauformen', hasMany: true, required: true, options: BAUFORMEN, admin: { width: '60%' } },
                 ] },
+                preisNichtBestaetigtFeld('preisNichtBestaetigt', 'dieser Funktion'),
                 infoFeld('info', 'Erklärung'),
               ],
             },
@@ -119,6 +168,7 @@ export const Zylinderkatalog: GlobalConfig = {
                     { label: 'Je Zylinder', value: 'stueck' },
                   ], admin: { width: '50%' } },
                 ] },
+                preisNichtBestaetigtFeld('preisNichtBestaetigt', 'diesem Extra'),
                 infoFeld('info', 'Erklärung'),
               ],
             },
@@ -127,7 +177,8 @@ export const Zylinderkatalog: GlobalConfig = {
         {
           label: 'Hersteller',
           description:
-            'Hersteller und Systeme für den Konfigurator (z. B. ABUS, BKS). Der Konfigurator fragt den Hersteller '
+            'Hersteller und Systeme für den Konfigurator (z. B. ABUS, BKS). Wählen Sie den Hersteller aus der Hersteller-Liste '
+            + '(Shop › Hersteller); Name und Kennung kommen von dort. Der Konfigurator fragt den Hersteller '
             + 'erst ab, wenn mindestens ein Eintrag angeboten wird.',
           fields: [
             {
@@ -137,9 +188,38 @@ export const Zylinderkatalog: GlobalConfig = {
               labels: { singular: 'Hersteller', plural: 'Hersteller' },
               fields: [
                 { type: 'row', fields: [
-                  { name: 'name', type: 'text', label: 'Name', required: true, admin: { width: '40%' } },
-                  slugFeld({ name: 'kennung', label: 'Kennung', unique: false, index: false, admin: { width: '40%', description: 'z. B. „abus“.' } }),
+                  {
+                    name: 'stamm',
+                    type: 'relationship',
+                    relationTo: 'hersteller',
+                    label: 'Hersteller aus der Liste',
+                    admin: { width: '80%', description: 'Name und Kennung übernimmt der Eintrag beim Speichern aus der Hersteller-Liste.' },
+                  },
                   { name: 'aktiv', type: 'checkbox', label: 'Angeboten', defaultValue: false, admin: { width: '20%' } },
+                ] },
+                { type: 'row', fields: [
+                  {
+                    name: 'name',
+                    type: 'text',
+                    label: 'Name (älterer Eintrag)',
+                    required: true,
+                    admin: {
+                      width: '50%',
+                      condition: (_daten: unknown, zeile: { stamm?: unknown } | undefined) => verweisId(zeile?.stamm) === undefined,
+                      description: 'Nur für ältere Einträge ohne Auswahl aus der Liste. Besser: oben den Hersteller wählen.',
+                    },
+                  },
+                  slugFeld({
+                    name: 'kennung',
+                    label: 'Kennung (älterer Eintrag)',
+                    unique: false,
+                    index: false,
+                    admin: {
+                      width: '50%',
+                      description: 'z. B. „abus“.',
+                      condition: (_daten: unknown, zeile: { stamm?: unknown } | undefined) => verweisId(zeile?.stamm) === undefined,
+                    },
+                  }),
                 ] },
                 { name: 'beschreibung', type: 'textarea', label: 'Beschreibung' },
                 { type: 'row', fields: [
@@ -153,6 +233,7 @@ export const Zylinderkatalog: GlobalConfig = {
                     admin: { width: '60%', description: 'Leer = für alle Bauformen.' },
                   },
                 ] },
+                preisNichtBestaetigtFeld('preisNichtBestaetigt', 'diesem Hersteller (Aufpreis und Zusatzkomponenten)'),
                 {
                   name: 'zusatzkomponenten',
                   type: 'array',

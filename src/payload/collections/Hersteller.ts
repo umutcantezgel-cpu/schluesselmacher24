@@ -24,8 +24,8 @@ export const Hersteller: CollectionConfig = {
     description:
       'Liste der Hersteller. Bitte jeden Hersteller nur einmal anlegen, in seiner eigenen Schreibweise. '
       + 'Artikel wählen ihren Hersteller aus dieser Liste. '
-      + 'Mit dem Haken „angeboten“ erscheint der Hersteller sofort auf der Startseite und, wenn ihm ein Bereich zugeordnet ist, '
-      + 'auf den Seiten Sperrschließungen und elektronischer Zutritt. Ein Logo erscheint nur mit Datei und Haken „Freigabe liegt vor“. '
+      + 'Mit dem Haken „angeboten“ erscheint der Hersteller sofort auf der Startseite und auf den Seiten der Bereiche, '
+      + 'die Sie ihm unter „Bereiche“ zuordnen (Sperrschließungen, elektronischer Zutritt). Ein Logo erscheint nur mit Datei und Haken „Freigabe liegt vor“. '
       + 'Bei Schlüssel nach Code bekommt ein Hersteller eine eigene Seite, sobald ihm mindestens ein veröffentlichter Artikel zugeordnet ist.',
     pagination: { defaultLimit: 50 },
   },
@@ -52,8 +52,43 @@ export const Hersteller: CollectionConfig = {
       admin: {
         description:
           'Ein kurzer Satz, etwa an welchen Schlössern die Systeme sitzen. Nur, was Sie belegen können. '
-          + 'Für BKS, ABUS und BURG-WÄCHTER zeigt die Seite zurzeit feste Texte je Bereich; dieses Feld erscheint bei allen anderen Herstellern.',
+          + 'Erscheint auf der Startseite nur bei Herstellern ohne Bereich; mit Bereich zeigt die Seite den Text des Bereichs.',
       },
+    },
+    {
+      name: 'bereiche',
+      type: 'array',
+      label: 'Bereiche',
+      labels: { singular: 'Bereich', plural: 'Bereiche' },
+      admin: {
+        description:
+          'In welchen Bereichen der Hersteller erscheint, mit einem Satz je Bereich, wofür seine Systeme dort eingesetzt werden. '
+          + 'Ohne Bereich erscheint er nur auf der Startseite. Jeden Bereich nur einmal anlegen. Nur, was Sie belegen können, ohne Preise.',
+      },
+      validate: (wert: unknown) => {
+        const arten = (Array.isArray(wert) ? wert : []).map((zeile) => (zeile as { art?: string })?.art);
+        return new Set(arten).size === arten.length || 'Jeder Bereich darf nur einmal vorkommen.';
+      },
+      fields: [
+        {
+          name: 'art',
+          type: 'select',
+          label: 'Bereich',
+          required: true,
+          options: [
+            { label: 'Sperrschließungen', value: 'sperrschliessung' },
+            { label: 'Elektronischer Zutritt', value: 'zutritt' },
+          ],
+        },
+        {
+          name: 'einsatz',
+          type: 'textarea',
+          label: 'Wofür die Systeme in diesem Bereich eingesetzt werden',
+          required: true,
+          maxLength: 300,
+          admin: { description: 'Ein sachlicher Satz, ohne Preise und ohne Produktreihen, die wir nicht verbauen.' },
+        },
+      ],
     },
     {
       name: 'angeboten',

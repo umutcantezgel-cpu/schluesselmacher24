@@ -432,6 +432,15 @@ export interface ShopKategorie {
   fruehereAdressen: string[];
 }
 
+/** Bereich, in dem ein Hersteller erscheint (FA-SHOP-04, vorher fest in `components/hersteller/bereiche.ts`). */
+export type HerstellerBereichArt = 'sperrschliessung' | 'zutritt';
+
+/** Ein Bereich des Herstellers mit seinem Einsatztext dort. */
+export interface HerstellerBereichZuordnung {
+  art: HerstellerBereichArt;
+  einsatz: string;
+}
+
 /** Ein Hersteller der Stammliste (FA-11-05 bis FA-11-07). */
 export interface ShopHersteller {
   id: string;
@@ -443,6 +452,11 @@ export interface ShopHersteller {
   /** Wir bieten Produkte dieses Herstellers an. */
   angeboten: boolean;
   reihenfolge: number;
+  /**
+   * Bereiche mit Einsatztext je Bereich (FA-SHOP-04), in der Reihenfolge aus dem Admin.
+   * Fehlt oder leer: Der Hersteller erscheint auf keiner Bereichsseite.
+   */
+  bereiche?: HerstellerBereichZuordnung[];
   /** Logo nur mit vorliegender Freigabe (R12); ohne Freigabe fehlt es hier ganz. */
   logo?: ImageSlot;
 }
@@ -558,6 +572,8 @@ export interface CylinderFormOption {
   lengthSurchargeCents: number;
   baseLengthMm: number;
   active: boolean;
+  /** Haken „Preis nicht bestätigt“ (FA-SHOP-04): nicht bestellbar, nur als Angebot. */
+  priceUnconfirmed?: boolean;
 }
 
 export interface CylinderFunctionOption {
@@ -569,6 +585,8 @@ export interface CylinderFunctionOption {
   /** Nur für diese Bauformen verfügbar. */
   forms: CylinderForm[];
   active: boolean;
+  /** Haken „Preis nicht bestätigt“ (FA-SHOP-04). */
+  priceUnconfirmed?: boolean;
 }
 
 export interface CylinderExtraOption {
@@ -580,6 +598,8 @@ export interface CylinderExtraOption {
   unit: 'einmal' | 'stueck';
   info: InfoHint;
   active: boolean;
+  /** Haken „Preis nicht bestätigt“ (FA-SHOP-04). */
+  priceUnconfirmed?: boolean;
 }
 
 /** Zusatzkomponente eines Zylinder-Herstellers, z. B. eine Sicherungskarte. */
@@ -595,9 +615,12 @@ export interface CylinderManufacturerComponent {
  * ein Eintrag aktiv ist.
  */
 export interface CylinderManufacturer {
-  /** Kennung, z. B. "abus". */
+  /** Kennung, z. B. "abus". Mit Auswahl aus der Hersteller-Liste die Kennung des Stammeintrags. */
   id: string;
+  /** Name; mit Auswahl aus der Hersteller-Liste der Name dort. */
   name: string;
+  /** Kennung des Eintrags in der Hersteller-Liste (FA-SHOP-04); fehlt bei älteren Einträgen. */
+  stammId?: string;
   active: boolean;
   description: string;
   /** Aufpreis je Zylinder in Cent (Backend: Euro, `aufpreisJeZylinder`). */
@@ -605,6 +628,8 @@ export interface CylinderManufacturer {
   /** Für diese Bauformen; leer = alle. */
   forms: CylinderForm[];
   components: CylinderManufacturerComponent[];
+  /** Haken „Preis nicht bestätigt“ (FA-SHOP-04): gilt für Aufpreis und Zusatzkomponenten. */
+  priceUnconfirmed?: boolean;
 }
 
 export interface CylinderCatalog {
@@ -613,6 +638,8 @@ export interface CylinderCatalog {
   extras: CylinderExtraOption[];
   /** Preis je zusätzlichem gemeinsamen Schlüssel. */
   keyPriceCents: number;
+  /** Haken „Preis nicht bestätigt“ für den Schlüsselpreis (FA-SHOP-04). */
+  keyPriceUnconfirmed?: boolean;
   /** Im Grundpreis enthaltene Schlüssel. */
   includedKeys: number;
   maxKeys: number;
