@@ -1,0 +1,38 @@
+# FA-SEO-01 · SEO-Architektur: Titel und Beschreibungen in den Längen, Strukturdaten für Betrieb, Leistungen, Produkte und Brotkrumen, Canonical und Indexstatus im Admin, interne Verlinkung
+
+Kopf: Etappe FA Priorität 6 · Rolle Baumeister und Texter · Modell Opus · Stufe 3 (Indexierung, Strukturdaten) · Kostenklasse L · ändert das Datenschema (ein Feld) und nutzt `sicher.sh --pg` · Anforderungen FA-25-00 bis FA-25-20, FA-22-42 bis FA-22-45, FA-23 (Metadaten), FA-27-17 · Befunde: `berichte/FA-ABGLEICH.md` Block 11 und 10, `berichte/FA-KUNDSCHAFTER-11.md`, `berichte/FA-BLINDPRUEFUNG-11.md` · Messung: `berichte/FA-SEO-02-onpage.md` und das Werkzeug `werkzeuge/onpage.mjs` · Recherche: `erhebung/FA-RECHERCHE-05.md`.
+
+## Aufgabe in einem Satz
+Bringe die technische SEO-Grundlage auf den Stand, den der Inhaber verlangt, und schließe jede Lücke, die die eigene Onpage-Prüfung auf den wichtigen Seiten meldet, ohne Inhalte für Suchmaschinen zu erfinden.
+
+## Vorgabe des Inhabers (wörtlich, Arbeitsanweisung vom 11.11.2026, Abschnitt 25)
+„SEO muss von Anfang an technisch mitgedacht werden. Saubere URLs, Seitentitel, Meta Beschreibungen, Überschriftenstruktur, Canonicals, XML Sitemap und robots.txt. Strukturierte Daten für Betrieb, Produkte, Leistungen, Breadcrumbs und passende Inhalte. Sehr gute mobile Performance, optimierte Bilder und kurze Ladezeiten. Interne Verlinkung zwischen Marke, Modell, Leistung, Stadt, Partner, Shop und Ratgeber. Staging nicht versehentlich indexieren. Seobility für technische und Onpage Kontrolle verwenden.“ Zielwert: bei den wichtigen Seiten möglichst über 95 Prozent; „echte Inhalte, Nutzbarkeit und saubere Technik gehen vor künstlichem Score Tuning.“ Abschnitt 22: „SEO Felder wie Title, Description, Canonical und Indexstatus bei Bedarf bearbeiten.“ Abschnitt 23: Erreichbarkeit überall konsistent, auch in Metadaten.
+
+## So bauen
+1. Lies den Lauf der Onpage-Prüfung (`berichte/FA-SEO-02-onpage.md`) und starte sie selbst neu, wenn ein frischer Build läuft (der Orchestrator sagt dir im Auftrag, ob der Server aktuell ist; sonst arbeite nach dem Bericht). Behebe die Befunde an der Quelle (Daten oder Vorlage), nie durch Ausnahmen im Werkzeug (G8).
+2. Titel und Beschreibungen: jede indexierbare Seite mit eindeutigem Titel bis 60 Zeichen (ohne den Markenzusatz doppelt zu führen) und eindeutiger Beschreibung von 120 bis 160 Zeichen, aus den Fakten der Seite, ohne Gedankenstriche, ohne Füllwörter. Quellen: `content/seo.json`, `content/service-pages.json`, `content/guides.json`, Rückfälle in `src/lib/data/defaults`, Generatoren für Marken-, Modell- und Codeseiten. Ein Test prüft Längen und Eindeutigkeit über alle Datenquellen.
+3. Überschriften: genau eine h1 je Seite, keine übersprungenen Ebenen; behebe, was die Prüfung meldet.
+4. Strukturdaten (nur für Sichtbares, R8): der Betrieb (Locksmith mit Anschrift, Telefon und Kontaktpunkt rund um die Uhr, wie in `localBusinessSchema`) als eine feste Kennung, auf die jede Seite verweist, statt nur auf der Startseite; Leistungsseiten mit `Service` (Anbieter, Gebiet, Bezeichnung); Produkte mit `Product` und `Offer` nur bei echtem Preis und echter Verfügbarkeit; Brotkrumen auf jeder Seite unterhalb der Startseite; Ratgeber und Tutorials als `Article`. `FAQPage` nur dort, wo Fragen und Antworten sichtbar auf der Seite stehen; prüfe den Bestand (109 Seiten laut Lagebild) gegen den Plan des alten Laufs und R8 und entferne die Auszeichnung, wo sie nur in Erwartung besonderer Ergebnisse gesetzt ist. Keine doppelten Kennungen.
+5. Canonical und Indexstatus im Admin: Die SEO-Felder der Sammlungen bekommen ein freiwilliges Feld „Canonical (nur bei Bedarf)“, das nur Adressen der eigenen Seite annimmt; ohne Eintrag gilt die berechnete Adresse. Der Schalter „nicht indexieren“ wirkt in jeder Sammlung, die ihn hat (heute bei Ratgebern wirkungslos: beheben). Hilfetexte in Alltagssprache.
+6. Staging und Schaufenster: Eine Stelle entscheidet, ob eine Umgebung indexierbar ist (lies `src/lib/umgebung.ts`, `robots`, `scripts/schaufenster.json`); jede Adresse außer der echten Produktionsdomain liefert `noindex` als Kopfzeile und Meta-Angabe, ohne die Seite in `robots.txt` zu sperren (sonst sieht die Suchmaschine das `noindex` nicht; Quelle in der Recherche). Schließe die Lücke „Produktionsbetrieb außerhalb von Vercel“. Tests für jede Kombination der Umgebung.
+7. Interne Verlinkung: Marke ↔ Modell ↔ Leistung, Leistung ↔ Ratgeber oder Tutorial, Leistung ↔ Ortsseite (nur veröffentlichte), Shop-Kategorie ↔ Ratgeber, Partnerseiten ↔ Autoschlüssel. Baue eine kleine, datengetriebene Verweisliste („Passt dazu“) statt handgesetzter Linkblöcke; keine Suchbegriffe als Anker im Fuß (R6). Jede indexierbare Seite hat mindestens einen eingehenden internen Verweis (die Prüfung meldet Waisen).
+8. Leistung: Miss mit dem vorhandenen Lighthouse-Werkzeug die Startseite und drei wichtige Seiten (Median aus drei Läufen); behebe, was ohne Umbau geht (Bildgrößen, Vorabladen, unnötiger Code im ersten Laden); größere Umbauten nur als Vorschlag im Bericht.
+9. Metadaten und Erreichbarkeit: keine Zeitangaben in Titeln oder Beschreibungen, die der Erreichbarkeit des Inhabers widersprechen; die Kontaktseite nennt die Erreichbarkeit in der Beschreibung.
+
+## Schreibrechte
+content/seo.json, content/service-pages.json, content/guides.json (nur SEO-Felder und Verweislisten), zugehörige Rückfälle in src/lib/data/defaults, src/components/seo/**, src/lib/rechtliches/indexierung.ts, src/lib/umgebung.ts (nur Indexierbarkeit), src/app/robots.ts, src/app/sitemap.ts, src/app/(site)/layout.tsx (nur Metadaten und Strukturdaten), Seitenvorlagen unter src/app/(site) nur für Überschriftenebenen, Brotkrumen, Strukturdaten und die Verweisliste, die Feldgruppe `seo` der Sammlungen (src/payload/fields), neue Migration (`sicher.sh --pg -- npx payload migrate:create seo_canonical`), src/migrations/index.ts, src/payload-types.ts, Mapping der SEO-Felder; zugehörige Tests; _werkstatt/ausbau/berichte/FA-SEO-01.md.
+Nicht anfassen: sichtbare Fließtexte der Leistungsseiten (das macht FA-INHALT-03), Preise, Rechtstexte, Navigation.
+
+## Prüfen
+- `_werkstatt/ausbau/werkzeuge/sicher.sh --json -- npx vitest run`, `… -- npm run typecheck`, `… -- npm run lint`
+- `_werkstatt/ausbau/werkzeuge/sicher.sh --pg -- npx vitest run -c vitest.db.config.ts`
+- `_werkstatt/ausbau/werkzeuge/sicher.sh --json -- npm run build`; danach den Prüfserver neu starten (`bash _werkstatt/ausbau/werkzeuge/server.sh neu`) und die Onpage-Prüfung über alle Seiten laufen lassen; nenne Median, Zahl der Seiten unter 95 und die verbleibenden Befunde mit Grund.
+- Lies vor Änderungen an Next-Schnittstellen die Anleitungen in `node_modules/next/dist/docs` (Metadaten, robots, sitemap). Kein git.
+
+## Grenzen
+R1 (eine Fassung für Mensch und Bot), R2, R3, R6, R7, R8, G8, G9. Texte kurz, ohne Gedankenstriche. Prettier nicht auf Bestand anwenden.
+
+## Ausgabeformular
+GEÄNDERTE DATEIEN · WAS UND WARUM · PRÜFUNG UND ERGEBNIS (Zahlen vorher und nachher) · BELEGE · OFFENE FRAGEN.
+Markiere Unsicheres als OFFENE FRAGE statt zu raten, und erfülle nur deinen Auftrag.
+=== ENDE FA-SEO-01 · BEREIT ZUR RÜCKGABE ===

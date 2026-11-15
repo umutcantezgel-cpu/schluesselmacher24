@@ -1,0 +1,32 @@
+# FA-KERN-05 · Admin im Alltag: Kunden aus dem Auftrag kontaktieren mit Verlauf, Bestellung bearbeiten und stornieren mit Erstattung, Duplizieren geprüft, Betreiberanleitung
+
+Kopf: Etappe FA Priorität 2 · Rolle Baumeister · Modell Opus · Stufe 3 · Kostenklasse L · ändert das Datenschema und nutzt `sicher.sh --pg` · Anforderungen FA-22-00, FA-22-02, FA-22-11 bis FA-22-16, FA-22-24, FA-22-27, FA-22-33, FA-22-46 · Befunde: `berichte/FA-ABGLEICH.md` Block 10, `berichte/FA-BLINDPRUEFUNG-10.md` · Voraussetzung: FA-KERN-03 ist abgenommen (Zahlungsstände, Restbetrag).
+
+## Aufgabe in einem Satz
+Schließe die Lücken, wegen derer der Betreiber im Alltag noch einen Entwickler bräuchte: Kundenkontakt mit nachvollziehbarem Mailverlauf, Bearbeiten und Stornieren von Bestellungen mit sauber dokumentierter Erstattung, geprüftes Duplizieren und eine Anleitung in Alltagssprache.
+
+## Vorgabe des Inhabers (wörtlich, Arbeitsanweisung vom 11.11.2026, Abschnitt 22)
+„Dieser Punkt ist immens wichtig. Der Shop und die Website müssen im Alltag ohne ständige Entwickleranfragen verwaltet werden können.“ Bestellungen ansehen, bearbeiten, stornieren und Status ändern · Kunden direkt aus dem Auftrag kontaktieren beziehungsweise E Mail Verlauf nachvollziehen · Rückzahlungen und Stornierungen mit eindeutigem Zahlungsstatus verwalten · Rückerstattungen und Stornos sauber dokumentieren · Bilder, Videos, Texte und Ratgeber selbst ergänzen. Grundsatz: „Es ist die Website des Betreibers. Die tägliche Pflege darf nicht davon abhängen, dass Umut für jede Kleinigkeit kontaktiert werden muss.“
+
+## So bauen
+1. Kundenkontakt aus dem Vorgang: Knopf „Nachricht an den Kunden“ mit Betreff und Text (Vorlagen für häufige Fälle als Daten: Rückfrage, Unterlagen fehlen, Termin verschieben, Abholung bereit; kurze, freundliche Texte ohne Gedankenstriche), Versand über den vorhandenen Mailweg. Jede Mail an den Kunden (automatisch oder von Hand) wird am Vorgang mit Zeit, Art, Empfänger, Betreff, vollständigem Text und Ergebnis gespeichert und ist dort lesbar (heute nur Art, Empfänger, Zeit und Ergebnis; der freie Text wird nach dem Versand geleert). Dazu `mailto:`- und `tel:`-Verweise am Kontakt. Antworten des Kunden laufen in das Postfach; nenne im Bericht, was für einen Rückkanal nötig wäre.
+2. Bestellung bearbeiten: Status, Notizen, Versand, Zahlung wie im Bestand. Positionen und Summen bleiben nach der Zahlung festgeschrieben (Beleg); neu ist eine dokumentierte Korrektur: „Korrekturposition“ mit Betrag (plus oder minus), Grund, Datum, wer; die Summe „nach Korrektur“ steht daneben, die ursprüngliche bleibt sichtbar.
+3. Stornieren und Erstatten: Beim Storno einer bezahlten Bestellung fragt der Admin ausdrücklich nach der Erstattung (ganz, teilweise mit Betrag, keine mit Grund). Erstattungen über den Zahlungsdienst werden wie im Bestand über den Webhook belegt; neu sind Erstattungen außerhalb (bar, Überweisung) mit Betrag, Datum, Weg und Beleg. Der Zahlungsstand zeigt eindeutig: bezahlt, teilweise erstattet (mit Betrag), erstattet. Der Code löst selbst keine Zahlung aus (G5); ein Knopf „Erstattung beim Zahlungsdienst auslösen“ ist als abgeschaltete, getestete Funktion vorbereitet (Attrappe), mit Verweis auf das Dashboard des Zahlungsdienstes.
+4. Duplizieren: Test und, wo nötig, Korrektur, damit ein dupliziertes Produkt eine neue Kennung und Adresse bekommt, als Entwurf startet und keine Bestellungen oder Bilder des Originals mitzieht, die nicht dupliziert werden dürfen.
+5. Texte und neue Seiten: Der Betreiber kann eine neue Inhaltsseite mit eigener Adresse anlegen (heute ist das Feld `route` schreibgeschützt): Adresse nur unter einem freien, ungefährlichen Pfad (keine vorhandene Route, keine reservierten Namen), Titel, Text, SEO-Felder, veröffentlicht oder Entwurf; standardmäßig `noindex`, bis der Betreiber es ändert. Die Seite erscheint über eine bestehende Auffangroute für Inhaltsseiten; prüfe, was der Bestand dafür hat (`src/app/(site)/[...unbekannt]`), und erweitere es ohne neue Bibliothek.
+6. Betreiberanleitung `docs/betrieb/admin-alltag.md` in Alltagssprache, Schritt für Schritt mit den Namen der Knöpfe: Bestellung ansehen und Status ändern, Kunden anschreiben, stornieren und erstatten, Produkt anlegen und duplizieren, Bild tauschen, Text ändern, neue Seite, Ratgeber schreiben, Erreichbarkeit ändern, Termine sperren. Verweise auf die Anleitungen der anderen Pakete, falls vorhanden.
+
+## Schreibrechte
+src/payload/collections/Vorgaenge.ts (Mailverlauf, Korrektur, Erstattung), Seiten.ts (neue Seiten), Produkte.ts (nur Duplizieren-Haken), src/payload/hooks/**, src/payload/components/** (Knöpfe und Anzeigen am Vorgang), neue Migration (`sicher.sh --pg -- npx payload migrate:create admin_alltag`), src/migrations/index.ts, src/payload-types.ts, src/lib/mail/** (Verlauf speichern, Vorlagen der freien Nachricht), src/lib/zahlung/** (Erstattungsstand), src/lib/data/payload-mapping.ts (nur die neuen Felder), src/app/(site)/[...unbekannt]/** oder die Auffangroute, docs/betrieb/admin-alltag.md, zugehörige Tests, _werkstatt/ausbau/berichte/FA-KERN-05.md.
+Nicht anfassen: Partner- und Auszahlungslogik (FA-KERN-03), Shop-Modell (FA-SHOP-01), Preise, Rechtstexte, Navigation.
+
+## Prüfen
+`_werkstatt/ausbau/werkzeuge/sicher.sh --json -- npx vitest run`, `… -- npm run typecheck`, `… -- npm run lint`, `… --pg -- npx vitest run -c vitest.db.config.ts`, `… --json -- npm run build`. Tests: Mailtext bleibt im Verlauf lesbar; Storno ohne Entscheidung zur Erstattung nicht möglich; Teilerstattung zeigt Betrag und Stand; Duplikat hat neue Kennung; neue Seite unter reservierter Adresse abgelehnt. Kein Server, kein git.
+
+## Grenzen
+G4, G5 (keine echten Mails oder Erstattungen), G6, G8, G9 (bestehende Zahlungsabläufe nur erweitern), R10 (Aufbewahrung der Mailtexte: nenne im Bericht die Frist, die gelten soll, als Frage für den Inhaber; halte dich bis dahin an die Frist der Vorgänge). Texte kurz, ohne Gedankenstriche. Prettier nicht auf Bestand anwenden.
+
+## Ausgabeformular
+GEÄNDERTE DATEIEN · WAS UND WARUM · PRÜFUNG UND ERGEBNIS · BELEGE · OFFENE FRAGEN · FÜR MENSCHEN.
+Markiere Unsicheres als OFFENE FRAGE statt zu raten, und erfülle nur deinen Auftrag.
+=== ENDE FA-KERN-05 · BEREIT ZUR RÜCKGABE ===
