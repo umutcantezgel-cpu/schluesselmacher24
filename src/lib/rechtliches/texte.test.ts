@@ -9,13 +9,13 @@ import {
   widerrufsadressat,
   type RechtsAbschnitt,
 } from './texte';
-import { echteEinstellungen, platzhalterEinstellungen } from './test-hilfen';
+import { einstellungenMitWerkstatt, platzhalterEinstellungen } from './test-hilfen';
 
 const SITE = 'https://schluesselmacher24.de';
 const text = (abschnitte: RechtsAbschnitt[]) => abschnitteAlsText(abschnitte);
 
 describe('Widerrufsbelehrung', () => {
-  const firma = echteEinstellungen().company;
+  const firma = einstellungenMitWerkstatt().company;
 
   it('lässt die Frist bei Waren mit dem Erhalt beginnen', () => {
     const belehrung = text(widerrufsbelehrung('waren', firma, SITE));
@@ -33,7 +33,7 @@ describe('Widerrufsbelehrung', () => {
 
   it('nennt den Widerrufsadressaten vollständig und den Online-Widerruf', () => {
     expect(widerrufsadressat(firma)).toBe(
-      'SCHLÜSSELMACHER24 – Inhaber Mina Saad, Gloelstraße 11, 35576 Wetzlar, Telefon 06441 8056279, E-Mail info@schluesselmacher24.de',
+      'SCHLÜSSELMACHER24 – Inhaber Mina Saad, Langgasse 61, 35576 Wetzlar, Telefon 06441 8056279, E-Mail info@schluesselmacher24.de',
     );
     expect(text(widerrufsbelehrung('waren', firma, SITE))).toContain(`${SITE}/rechtliches/widerruf/erklaeren`);
   });
@@ -47,7 +47,7 @@ describe('Widerrufsbelehrung', () => {
 
   it('richtet das Muster-Widerrufsformular an den Anbieter mit E-Mail', () => {
     const formular = text([musterWiderrufsformular(firma)]);
-    expect(formular).toContain('– An SCHLÜSSELMACHER24 – Inhaber Mina Saad, Gloelstraße 11, 35576 Wetzlar, E-Mail info@schluesselmacher24.de:');
+    expect(formular).toContain('– An SCHLÜSSELMACHER24 – Inhaber Mina Saad, Langgasse 61, 35576 Wetzlar, E-Mail info@schluesselmacher24.de:');
     expect(formular).toContain('(*) Unzutreffendes streichen.');
   });
 
@@ -64,7 +64,7 @@ describe('Widerrufsbelehrung', () => {
 });
 
 describe('AGB', () => {
-  const settings = echteEinstellungen();
+  const settings = einstellungenMitWerkstatt();
 
   it('nennt die konfigurierten Zahlarten und Stripe', () => {
     const agb = text(agbAbschnitte({ settings, zahlarten: ['PayPal', 'Klarna'], siteUrl: SITE }));
@@ -102,7 +102,7 @@ describe('AGB', () => {
     expect(agb).toContain('Die Anzahlung wird vollständig mit dem Endpreis verrechnet.');
     expect(agb).toContain('richtet sich nach der individuellen Vereinbarung');
     expect(agb).toContain('19 %');
-    expect(agb).toContain('Langgasse 70, 35576 Wetzlar');
+    expect(agb).toContain('Werkstattweg 7, 35576 Wetzlar');
   });
 
   it('ist durchnummeriert und enthält Firmendaten nur aus den Einstellungen', () => {

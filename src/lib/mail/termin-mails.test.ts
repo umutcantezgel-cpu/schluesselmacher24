@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { echteEinstellungen, platzhalterEinstellungen } from '../rechtliches/test-hilfen';
+import { einstellungenMitWerkstatt, platzhalterEinstellungen } from '../rechtliches/test-hilfen';
 import type { BusinessRecord } from '../types';
 import { kundeErinnerung, terminKalender } from './vorlagen/erinnerung';
 import { terminZeilen } from './vorlagen/gemeinsam';
@@ -9,7 +9,7 @@ import { betriebAnzahlungOffen, betriebRueckrufEmpfohlen } from './vorlagen/team
 /* Termin-Erinnerung mit Kalendereintrag, Terminort in den Mails und der
  * Hinweis „Rückruf empfohlen“ an das Team. */
 
-const kontext = { site: 'https://schluesselmacher24.de', firma: echteEinstellungen().company };
+const kontext = { site: 'https://schluesselmacher24.de', firma: einstellungenMitWerkstatt().company };
 
 function termin(teil: Partial<BusinessRecord> = {}): BusinessRecord {
   return {
@@ -52,7 +52,7 @@ describe('Termin-Erinnerung', () => {
     expect(mail.text).toContain('Guten Tag Erika Muster,');
     expect(mail.text).toContain('Termin: Dienstag, 27. Oktober 2026, 10:00 Uhr');
     expect(mail.text).toContain('Dauer: 1 Std. 30 Min.');
-    expect(mail.text).toContain('Ort: In unserer Werkstatt, mit Fahrzeug (Langgasse 70, 35576 Wetzlar)');
+    expect(mail.text).toContain('Ort: In unserer Werkstatt, mit Fahrzeug (Werkstattweg 7, 35576 Wetzlar)');
     expect(mail.text).toContain('Telefon: 06441 8056279');
   });
 
@@ -70,15 +70,15 @@ describe('Termin-Erinnerung', () => {
 
   it('ohne Fahrzeugleistung kein Fahrzeug in der Liste, außerhalb der Autoschlüssel keine Liste', () => {
     const ohneFahrzeug = kundeErinnerung({ vorgang: termin({ quote: { ...termin().quote!, requiresVehicleOnSite: false } }), kontext });
-    expect(ohneFahrzeug.text).toContain('Ort: In unserer Werkstatt (Langgasse 70, 35576 Wetzlar)');
+    expect(ohneFahrzeug.text).toContain('Ort: In unserer Werkstatt (Werkstattweg 7, 35576 Wetzlar)');
     expect(ohneFahrzeug.text).not.toContain('• Ihr Fahrzeug');
     const tuer = kundeErinnerung({ vorgang: termin({ area: 'tuer-und-schliesstechnik', quote: undefined }), kontext });
     expect(tuer.text).not.toContain('Bitte mitbringen');
   });
 
   it('nennt die Werkstatt im Fuß, mit Platzhalter-Firma gar keine Anschrift', () => {
-    expect(mail.text).toContain('Werkstatt und Abholung: Langgasse 70, 35576 Wetzlar');
-    expect(mail.text).toContain('Gloelstraße 11');
+    expect(mail.text).toContain('Werkstatt und Abholung: Werkstattweg 7, 35576 Wetzlar');
+    expect(mail.text).toContain('Langgasse 61');
     const platzhalter = kundeErinnerung({ vorgang: termin(), kontext: { ...kontext, firma: platzhalterEinstellungen().company } });
     expect(platzhalter.text).toContain('Ort: In unserer Werkstatt, mit Fahrzeug\n');
     expect(platzhalter.text).not.toContain('[');
@@ -98,7 +98,7 @@ describe('Kalendereintrag zur Erinnerung', () => {
   it('Termin in UTC aus deutscher Zeit (27.10.: Winterzeit), Dauer und Ort', () => {
     expect(entfaltet).toContain('DTSTART:20261027T090000Z');
     expect(entfaltet).toContain('DTEND:20261027T103000Z');
-    expect(entfaltet).toContain('LOCATION:SCHLÜSSELMACHER24\\, Langgasse 70\\, 35576 Wetzlar');
+    expect(entfaltet).toContain('LOCATION:SCHLÜSSELMACHER24\\, Werkstattweg 7\\, 35576 Wetzlar');
     expect(entfaltet).toContain('SUMMARY:Termin bei SCHLÜSSELMACHER24 (SM24-T-2026-0007)');
     expect(entfaltet).toContain('Bitte mitbringen:\\n- Ihr Fahrzeug');
     expect(entfaltet).toContain('URL:https://schluesselmacher24.de/service-und-termin/terminstatus');
@@ -112,7 +112,7 @@ describe('Kalendereintrag zur Erinnerung', () => {
 
 describe('Terminort in allen Terminmails', () => {
   it('Werkstatt mit Anschrift statt „Ort stimmen wir mit Ihnen ab“', () => {
-    expect(terminZeilen(termin(), kontext.firma)).toContainEqual(['Ort', 'In unserer Werkstatt, mit Fahrzeug (Langgasse 70, 35576 Wetzlar)']);
+    expect(terminZeilen(termin(), kontext.firma)).toContainEqual(['Ort', 'In unserer Werkstatt, mit Fahrzeug (Werkstattweg 7, 35576 Wetzlar)']);
     expect(terminZeilen(termin({ appointment: { ...termin().appointment!, location: 'vor-ort' } }), kontext.firma)).toContainEqual([
       'Ort',
       'Bei Ihnen vor Ort (nach Absprache)',

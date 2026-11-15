@@ -4,7 +4,7 @@
     "brandName": "SCHLÜSSELMACHER24",
     "legalForm": "einzelunternehmen",
     "owner": "Mina Saad",
-    "street": "Gloelstraße 11",
+    "street": "Langgasse 61",
     "postalCode": "35576",
     "city": "Wetzlar",
     "country": "Deutschland",
@@ -16,14 +16,8 @@
     "managingDirector": "Mina Saad",
     "profession": "Schlüsseldienst und Sicherheitstechnik",
     "chamber": "Handwerkskammer Wiesbaden, Zweigstelle Wetzlar, Ederstraße 2, 35576 Wetzlar",
-    "contentResponsible": "Mina Saad, Gloelstraße 11, 35576 Wetzlar",
+    "contentResponsible": "Mina Saad, Langgasse 61, 35576 Wetzlar",
     "taxNumber": "03986300160",
-    "location": {
-      "label": "Werkstatt und Abholung",
-      "street": "Langgasse 70",
-      "postalCode": "35576",
-      "city": "Wetzlar"
-    },
     "isPlaceholder": false
   },
   "openingHours": [
@@ -97,6 +91,14 @@
       "spans": []
     }
   ],
+  "reachability": {
+    "kernaussage": "24 Stunden erreichbar",
+    "zeilen": [
+      "Notdienst rund um die Uhr",
+      "Werkstatt und persönliche Beratung nach Terminvereinbarung"
+    ],
+    "rundUmDieUhr": true
+  },
   "booking": {
     "leadTimeDays": 7,
     "depositCents": 6990,

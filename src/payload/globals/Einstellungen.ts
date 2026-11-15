@@ -249,16 +249,48 @@ export const Einstellungen: GlobalConfig = {
           ],
         },
         {
-          label: 'Öffnungszeiten',
+          label: 'Erreichbarkeit',
           fields: [
+            {
+              name: 'erreichbarkeit',
+              type: 'group',
+              label: 'Erreichbarkeit für Kunden',
+              admin: {
+                description:
+                  'Steht in der Fußzeile, auf der Kontaktseite, auf den Standortseiten und in den strukturierten Daten. '
+                  + 'Feste Öffnungszeiten zeigt die Seite nicht: Die Werkstatt arbeitet nach Termin.',
+              },
+              fields: [
+                { name: 'kernaussage', type: 'text', label: 'Kernaussage', defaultValue: '24 Stunden erreichbar' },
+                {
+                  name: 'zeilen',
+                  type: 'textarea',
+                  label: 'Weitere Zeilen',
+                  defaultValue: 'Notdienst rund um die Uhr\nWerkstatt und persönliche Beratung nach Terminvereinbarung',
+                  admin: { description: 'Eine Aussage je Zeile.' },
+                },
+                {
+                  name: 'rundUmDieUhr',
+                  type: 'checkbox',
+                  label: 'Am Telefon an allen Tagen rund um die Uhr erreichbar',
+                  defaultValue: true,
+                  admin: { description: 'Mit Haken steht das auch in den Angaben für Suchmaschinen (Kontakt, nicht Ladenöffnung).' },
+                },
+              ],
+            },
             {
               name: 'oeffnungszeiten',
               type: 'array',
-              label: 'Öffnungszeiten',
+              label: 'Terminzeiten der Werkstatt',
               labels: { singular: 'Tag', plural: 'Tage' },
+              admin: {
+                description:
+                  'Nur für die Terminvergabe: In diesen Zeiten dürfen buchbare Zeitfenster liegen. '
+                  + 'Auf der Seite erscheinen sie nicht als Öffnungszeiten.',
+              },
               fields: [
                 { name: 'tag', type: 'select', label: 'Wochentag', required: true, options: WOCHENTAGE },
-                { ...zeitfensterFeld('zeiten', 'Geöffnet'), admin: { description: 'Leer lassen = geschlossen.' } },
+                { ...zeitfensterFeld('zeiten', 'Termine möglich'), admin: { description: 'Leer lassen = an diesem Tag keine Termine.' } },
               ],
             },
           ],

@@ -47,12 +47,12 @@ describe('Bestaetigung', () => {
   });
 
   it('nennt die Werkstatt als Ort und bittet bei Fahrzeugleistungen um das Fahrzeug', () => {
-    const werkstatt = { label: 'Werkstatt und Abholung', street: 'Langgasse 70', postalCode: '35576', city: 'Wetzlar' };
+    const werkstatt = { label: 'Werkstatt und Abholung', street: 'Werkstattweg 7', postalCode: '35576', city: 'Wetzlar' };
     expect(html).toContain('In unserer Werkstatt.');
     const mitFahrzeug = renderToStaticMarkup(
       <Bestaetigung {...beispiel} werkstatt={werkstatt} quote={{ ...beispiel.quote, requiresVehicleOnSite: true }} />,
     );
-    expect(mitFahrzeug).toContain('In unserer Werkstatt, mit Fahrzeug (Langgasse 70, 35576 Wetzlar).');
+    expect(mitFahrzeug).toContain('In unserer Werkstatt, mit Fahrzeug (Werkstattweg 7, 35576 Wetzlar).');
     expect(mitFahrzeug).toContain('Bitte bringen Sie Ihr Fahrzeug zum Termin mit.');
     expect(mitFahrzeug).not.toContain('stimmen wir');
   });

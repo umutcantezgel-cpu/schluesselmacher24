@@ -2,6 +2,7 @@ import type { CityPage, CodeLine, Guide, Settings } from '@/lib/types';
 import { getSiteUrl } from '@/lib/site-url';
 import { angabe, firmaVeroeffentlichbar, kontakt, standort, ustId } from '@/lib/rechtliches/firma';
 import { telefonE164 } from '@/lib/telefon';
+import { erreichbarkeit } from '@/lib/erreichbarkeit';
 import { istPlatzhalter } from '@/lib/platzhalter';
 import type { Graph, DayOfWeek, Thing } from 'schema-dts';
 
@@ -73,16 +74,25 @@ export function localBusinessSchema(settings: Settings): Graph {
     ...(vatID ? { vatID } : {}),
   };
 
-  const openingHours = settings.openingHours
-    .filter((entry) => entry.spans.length > 0)
-    .flatMap((entry) =>
-      entry.spans.map((span) => ({
-        '@type': 'OpeningHoursSpecification' as const,
-        dayOfWeek: WEEKDAYS[entry.day - 1] as DayOfWeek,
-        opens: span.from,
-        closes: span.to,
-      })),
-    );
+  /* Keine Öffnungszeiten (FA-23): Die Werkstatt arbeitet nach Termin und ist kein Ladenlokal mit festen
+     Zeiten. Ausgezeichnet wird nur, was sichtbar auf der Seite steht: am Telefon rund um die Uhr erreichbar. */
+  const erreichbar = erreichbarkeit(settings);
+  const kontaktpunkt =
+    veroeffentlichbar && telephone && erreichbar.rundUmDieUhr
+      ? {
+          '@type': 'ContactPoint' as const,
+          contactType: 'customer service',
+          telephone,
+          areaServed: 'DE',
+          availableLanguage: 'de',
+          hoursAvailable: {
+            '@type': 'OpeningHoursSpecification' as const,
+            dayOfWeek: [...WEEKDAYS] as DayOfWeek[],
+            opens: '00:00',
+            closes: '23:59',
+          },
+        }
+      : undefined;
 
   return {
     '@context': 'https://schema.org',
@@ -121,7 +131,7 @@ export function localBusinessSchema(settings: Settings): Graph {
           + 'Zutrittslösungen und Sicherheitstechnik.',
         ...kontaktAngaben,
         ...(betriebsort ? { address: betriebsort } : {}),
-        ...(veroeffentlichbar && openingHours.length ? { openingHoursSpecification: openingHours } : {}),
+        ...(kontaktpunkt ? { contactPoint: kontaktpunkt } : {}),
       }
     ]
   } satisfies Graph;

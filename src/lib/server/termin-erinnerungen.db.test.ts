@@ -107,7 +107,7 @@ describe('terminErinnerungenSenden', () => {
     const ics = Buffer.from(mail.anhaenge[0].content, 'base64').toString('utf8');
     // 10:00 Uhr Sommerzeit = 08:00 UTC; Werkstatt aus den Firmendaten des Seeds.
     expect(ics).toContain('DTSTART:20840510T080000Z');
-    expect(ics.replace(/\r\n /g, '')).toContain('Langgasse 70\\, 35576 Wetzlar');
+    expect(ics.replace(/\r\n /g, '')).toContain('Langgasse 61\\, 35576 Wetzlar');
 
     const gespeichert = await getRecord(bezahlt.id);
     expect(gespeichert?.mailLog?.map((m) => [m.kind, m.result, m.to])).toEqual([['erinnerung', 'gesendet', 'bezahlt@example.org']]);

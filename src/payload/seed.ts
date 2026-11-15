@@ -631,6 +631,8 @@ const GLOBAL_ERGAENZUNGEN = {
     'einsenden.portoUnversichert',
     'einsenden.haftungVersichert',
     'einsenden.portoStand',
+    'erreichbarkeit.kernaussage',
+    'erreichbarkeit.zeilen',
   ],
   zylinderkatalog: [] as string[],
   richtwerte: [] as string[],

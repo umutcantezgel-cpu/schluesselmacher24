@@ -2,12 +2,12 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import { ZAHLART_TEXTE, ZAHLUNG_OHNE_ONLINE } from '@/lib/rechtliches/zahlarten';
-import { echteEinstellungen, platzhalterEinstellungen } from '@/lib/rechtliches/test-hilfen';
+import { einstellungenMitWerkstatt, platzhalterEinstellungen } from '@/lib/rechtliches/test-hilfen';
 
 import { VersandInhalt } from './versand-inhalt';
 
 describe('Zahlung und Versand', () => {
-  const settings = echteEinstellungen();
+  const settings = einstellungenMitWerkstatt();
 
   it('listet die Online-Zahlarten aus derselben Quelle wie der Checkout', () => {
     const html = renderToStaticMarkup(<VersandInhalt settings={settings} zahlarten={[ZAHLART_TEXTE.card, 'PayPal']} />);
@@ -29,7 +29,7 @@ describe('Zahlung und Versand', () => {
     expect(html).not.toContain('[Platzhalter');
     expect(html).not.toContain('Kleinunternehmer');
     expect(html).toContain('vollständig mit dem Endpreis verrechnet');
-    expect(html).toContain('Langgasse 70');
+    expect(html).toContain('Werkstattweg 7');
   });
 
   it('zeigt Lieferzeiten nur, wenn sie gepflegt sind', () => {

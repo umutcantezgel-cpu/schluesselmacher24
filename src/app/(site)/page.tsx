@@ -14,6 +14,7 @@ import { ImagePlaceholder, ausschnittStil, type GrafikAusschnitt } from '@/compo
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
 import { WerkstattZeile, werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
+import { erreichbarkeit } from '@/lib/erreichbarkeit';
 import { AreaScope } from '@/components/visual/area-scope';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { PROFILSCHNITT_AUSSCHNITT, PROFILSCHNITT_GROESSE } from '@/components/visual/generators/profilschnitt';
@@ -123,7 +124,13 @@ export default async function HomePage() {
       <JsonLd data={localBusinessSchema(settings)} />
 
       {/* Erster Bildschirm: Frage, Satz, Kacheln aus den Rubriken, Anrufen (G-01 bis G-05, K-013) */}
-      <IntentHub rubriken={hubRubriken} satz={page?.subline} telefon={telefon} buehne={<Eingangsinszenierung />} />
+      <IntentHub
+        rubriken={hubRubriken}
+        satz={page?.subline}
+        telefon={telefon}
+        erreichbar={erreichbarkeit(settings).kernaussage}
+        buehne={<Eingangsinszenierung />}
+      />
 
       {/*
         Autoschlüssel direkt nach dem Hub (L-004: Schwerpunkt der Werkstatt): Kopf, Fräsbahn (B-01),
@@ -212,7 +219,7 @@ export default async function HomePage() {
                 </div>
               ))}
             </dl>
-            {/* Die echte Werkstatt unter den Eckdaten – entfällt, solange kein Standort gepflegt ist */}
+            {/* Die echte Werkstatt unter den Eckdaten – entfällt ohne veröffentlichbare Anschrift */}
             <WerkstattZeile {...werkstattAngaben(settings.company)} className="mt-4" />
           </div>
         </div>

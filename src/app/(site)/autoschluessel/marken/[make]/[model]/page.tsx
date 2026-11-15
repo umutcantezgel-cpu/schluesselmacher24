@@ -522,7 +522,7 @@ export default async function ModelPage(props: PageProps) {
         </div>
       </Section>
 
-      {/* Termin in der Werkstatt: Anschrift und Öffnungszeiten aus den Einstellungen, Mitbringliste */}
+      {/* Termin in der Werkstatt: Anschrift aus den Einstellungen, Mitbringliste */}
       <Section>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:col-span-5">
@@ -539,13 +539,13 @@ export default async function ModelPage(props: PageProps) {
                 {werkstatt.street}, {werkstatt.postalCode} {werkstatt.city}
               </address>
             )}
-            {/* Öffnungszeiten und Anreise stehen auf der Standortseite (aus den Einstellungen). */}
+            {/* Erreichbarkeit und Anreise stehen auf der Standortseite (aus den Einstellungen). */}
             {werkstattSeite && (
               <Link
                 href={`/standorte/${werkstattSeite.slug}`}
                 className="mt-4 inline-flex min-h-touch items-center gap-1.5 text-small font-semibold text-primary hover:underline"
               >
-                Öffnungszeiten und Anreise: Standort {werkstattSeite.city}
+                Erreichbarkeit und Anreise: Standort {werkstattSeite.city}
                 <GlyphPfeilRechts size={16} />
               </Link>
             )}

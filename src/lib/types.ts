@@ -75,11 +75,28 @@ export type AreaKey =
 
 /* ---------- Globale Einstellungen --------------------------------------- */
 
+/**
+ * Terminzeiten der Werkstatt: der Rahmen, in dem Zeitfenster für Termine liegen dürfen. Nur für die
+ * Terminvergabe; auf der Seite erscheinen sie nicht als Öffnungszeiten (FA-23, A-043).
+ */
 export interface OpeningHour {
   /** 1 = Montag … 7 = Sonntag */
   day: number;
-  /** Leer = geschlossen. Mehrere Zeitfenster möglich. */
+  /** Leer = kein Termin an diesem Tag. Mehrere Zeitfenster möglich. */
   spans: { from: string; to: string }[];
+}
+
+/**
+ * Erreichbarkeit im Wortlaut des Inhabers (Arbeitsanweisung vom 11.11.2026, FA-23). Sie steht überall,
+ * wo früher Öffnungszeiten standen: Die Werkstatt ist kein Ladenlokal mit festen Zeiten.
+ */
+export interface Erreichbarkeit {
+  /** Kernaussage, z. B. „24 Stunden erreichbar“. */
+  kernaussage: string;
+  /** Weitere Zeilen unter der Kernaussage. */
+  zeilen: string[];
+  /** Telefonisch an allen Tagen rund um die Uhr erreichbar; steuert die Angabe in den Strukturdaten. */
+  rundUmDieUhr: boolean;
 }
 
 export type LegalForm = 'einzelunternehmen' | 'eingetragener-kaufmann' | 'gmbh' | 'ug';
@@ -171,7 +188,10 @@ export interface LegalTexts {
 
 export interface Settings {
   company: CompanyProfile;
+  /** Terminzeiten der Werkstatt, nur für die Terminvergabe (nie als Öffnungszeiten anzeigen). */
   openingHours: OpeningHour[];
+  /** Erreichbarkeit für Kunden. Fehlt in älteren Ständen; dann gilt `ERREICHBARKEIT_STANDARD`. */
+  reachability?: Erreichbarkeit;
   booking: BookingDefaults;
   /** Versandarten für den Shop. */
   shipping: ShippingOption[];

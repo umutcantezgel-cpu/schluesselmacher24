@@ -1,23 +1,23 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
-import { echteEinstellungen, platzhalterEinstellungen } from '@/lib/rechtliches/test-hilfen';
+import { einstellungenMitWerkstatt, platzhalterEinstellungen } from '@/lib/rechtliches/test-hilfen';
 
 import { ImpressumInhalt } from './impressum-inhalt';
 
 describe('Impressum', () => {
-  const firma = echteEinstellungen().company;
+  const firma = einstellungenMitWerkstatt().company;
 
   it('enthält die Pflichtangaben des Einzelunternehmens', () => {
     const html = renderToStaticMarkup(<ImpressumInhalt company={firma} />);
     expect(html).toContain('Angaben gemäß § 5 DDG');
     expect(html).toContain('SCHLÜSSELMACHER24 – Inhaber Mina Saad');
     expect(html).toContain('Inhaber: Mina Saad');
-    expect(html).toContain('Gloelstraße 11');
+    expect(html).toContain('Langgasse 61');
     expect(html).toContain('href="tel:+4964418056279"');
     expect(html).toContain('mailto:info@schluesselmacher24.de');
     expect(html).toContain('Werkstatt und Abholung');
-    expect(html).toContain('Langgasse 70');
+    expect(html).toContain('Werkstattweg 7');
     expect(html).toContain('§ 27a Umsatzsteuergesetz');
     expect(html).toContain('DE 282140471');
     expect(html).toContain('Handwerkskammer Wiesbaden');

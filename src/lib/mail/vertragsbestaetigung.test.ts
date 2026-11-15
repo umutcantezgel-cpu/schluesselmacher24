@@ -68,7 +68,7 @@ describe('Vertragsbestätigung', () => {
     const text = mail.text;
 
     // Anbieterkennung, aber nie die Steuernummer.
-    expect(text).toContain('Gloelstraße 11');
+    expect(text).toContain('Langgasse 61');
     expect(text).toContain('USt-IdNr.');
     expect(text).not.toContain(settings.company.taxNumber!);
     // Positionen ohne Code (Sicherheit), mit Versand und Summe.

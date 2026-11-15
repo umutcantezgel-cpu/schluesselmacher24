@@ -4,10 +4,11 @@ import { Profillinie } from '@/components/visual/profillinie';
 import { getRubriken, getSettings } from '@/lib/data';
 import { defaults } from '@/lib/data/defaults';
 import { FOOTER_CONTENT, FOOTER_LEGAL, NAV_AREAS, WIDERRUF_BUTTON, type NavLink } from '@/lib/navigation';
-import { formatWeekday } from '@/lib/format';
 import { jahrInBerlin } from '@/lib/berliner-zeit';
 import { anbieterZeilen, kontakt, standort } from '@/lib/rechtliches/firma';
 import { telefonLink } from '@/lib/telefon';
+import { Erreichbarkeit } from '@/components/vertrauen/erreichbarkeit';
+import { erreichbarkeit } from '@/lib/erreichbarkeit';
 
 /**
  * Shop-Seiten ohne eigenen Leistungsbereich — stehen im Anschluss an die Bereiche.
@@ -131,7 +132,7 @@ export async function SiteFooter() {
             )}
           </div>
 
-          {/* Bereiche und Öffnungszeiten */}
+          {/* Bereiche und Erreichbarkeit */}
           <div className="border-b border-border py-8 md:pl-8 lg:col-span-5 lg:border-b-0 lg:border-r lg:pr-8">
             <Feldtitel>Leistungen</Feldtitel>
             <ul className="grid grid-cols-2 gap-x-6">
@@ -145,19 +146,8 @@ export async function SiteFooter() {
             </ul>
 
             <div className="mt-8">
-              <Feldtitel>Öffnungszeiten</Feldtitel>
-              <dl className="grid max-w-md grid-cols-3 gap-y-1 text-small">
-                {settings.openingHours.map((entry) => (
-                  <div key={entry.day} className="contents">
-                    <dt className="text-foreground-muted">{formatWeekday(entry.day)}</dt>
-                    <dd className="col-span-2 font-mono tabular-nums text-foreground">
-                      {entry.spans.length === 0
-                        ? 'geschlossen'
-                        : entry.spans.map((s) => `${s.from}–${s.to}`).join(' · ')}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+              <Feldtitel>Erreichbarkeit</Feldtitel>
+              <Erreichbarkeit angabe={erreichbarkeit(settings)} className="max-w-md" />
             </div>
           </div>
 

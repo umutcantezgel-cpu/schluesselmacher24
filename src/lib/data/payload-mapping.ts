@@ -826,6 +826,14 @@ function einsendenZuSeite(e: Partial<Record<string, unknown>> | null | undefined
   };
 }
 
+/** Erreichbarkeit aus dem Global; ohne Kernaussage (ältere Datenbankstände) gilt der Standard der Seite. */
+function erreichbarkeitZuSeite(e: Partial<Record<string, unknown>> | null | undefined): Settings['reachability'] {
+  const kernaussage = typeof e?.kernaussage === 'string' ? e.kernaussage.trim() : '';
+  if (!kernaussage) return undefined;
+  const zeilen = typeof e?.zeilen === 'string' ? e.zeilen.split(/\r?\n/).map((zeile) => zeile.trim()).filter(Boolean) : [];
+  return { kernaussage, zeilen, rundUmDieUhr: e?.rundUmDieUhr === true };
+}
+
 export function einstellungenZuSeite(doc: Einstellungen): Settings {
   const f = doc.firma;
   const company: Settings['company'] = {
@@ -894,6 +902,8 @@ export function einstellungenZuSeite(doc: Einstellungen): Settings {
     sendIn: einsendenZuSeite(doc.einsenden),
     updatedAt: doc.updatedAt ?? new Date(0).toISOString(),
   };
+  const reachability = erreichbarkeitZuSeite(doc.erreichbarkeit);
+  if (reachability) settings.reachability = reachability;
   if (doc.buchung.bundesland) settings.booking.federalState = doc.buchung.bundesland;
   const legalTexts = rechtstexteZuSeite(doc.rechtstexte);
   if (legalTexts) settings.legalTexts = legalTexts;
@@ -927,6 +937,13 @@ export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
         ? { bezeichnung: c.location.label, strasse: c.location.street, plz: c.location.postalCode, ort: c.location.city }
         : undefined,
     },
+    erreichbarkeit: s.reachability
+      ? {
+          kernaussage: s.reachability.kernaussage,
+          zeilen: s.reachability.zeilen.join('\n'),
+          rundUmDieUhr: s.reachability.rundUmDieUhr,
+        }
+      : undefined,
     oeffnungszeiten: s.openingHours.map((o) => ({
       tag: String(o.day) as '1',
       zeiten: o.spans.map((z) => ({ von: z.from, bis: z.to })),

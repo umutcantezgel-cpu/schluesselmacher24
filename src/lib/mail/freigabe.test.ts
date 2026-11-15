@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { echteEinstellungen, platzhalterEinstellungen } from '@/lib/rechtliches/test-hilfen';
+import { einstellungenMitWerkstatt, platzhalterEinstellungen } from '@/lib/rechtliches/test-hilfen';
 import type { BusinessRecord } from '@/lib/types';
 
 import { einsendeAnschrift } from './einsendung';
@@ -19,7 +19,7 @@ import { mailArtZumStatus } from './vorlagen/status';
  * Mails rund um „Partner werden“. */
 
 const SITE = 'https://schluesselmacher24.de';
-const settings = echteEinstellungen();
+const settings = einstellungenMitWerkstatt();
 const kontext = { site: SITE, firma: settings.company };
 const LINK = `${SITE}/bestellung/51?t=neuer-link-schluessel`;
 const ANSCHRIFT = einsendeAnschrift(settings.company);
@@ -48,11 +48,11 @@ function fotoanfrage(teil: Partial<BusinessRecord> = {}): BusinessRecord {
 
 describe('Einsendeanschrift', () => {
   it('nimmt die Werkstatt mit Firmenname — nie Platzhalter', () => {
-    expect(ANSCHRIFT).toEqual(['SCHLÜSSELMACHER24 – Inhaber Mina Saad', 'Langgasse 70', '35576 Wetzlar', 'Deutschland']);
+    expect(ANSCHRIFT).toEqual(['SCHLÜSSELMACHER24 – Inhaber Mina Saad', 'Werkstattweg 7', '35576 Wetzlar', 'Deutschland']);
     expect(einsendeAnschrift(platzhalterEinstellungen().company)).toEqual([]);
     expect(einsendeAnschrift({ ...settings.company, location: undefined })).toEqual([
       'SCHLÜSSELMACHER24 – Inhaber Mina Saad',
-      'Gloelstraße 11',
+      'Langgasse 61',
       '35576 Wetzlar',
       'Deutschland',
     ]);
@@ -82,7 +82,7 @@ describe('Freigabe-Mail', () => {
       expect(inhalt).toContain(`${SITE}/rechtliches/agb`);
       expect(inhalt).toContain('Rohling BKS, Profil 32.');
       expect(inhalt).toContain('Bitte den Schlüssel gut verpacken.');
-      expect(inhalt).toContain('Langgasse 70');
+      expect(inhalt).toContain('Werkstattweg 7');
       expect(inhalt).toContain('Vorgangsnummer SM24-A-2026-0011');
       expect(inhalt).toContain('erst, nachdem Sie den Auftrag mit der Zahlung erteilt haben');
       // Angaben des Kunden zum Schlüssel gehen nicht in die Mail.

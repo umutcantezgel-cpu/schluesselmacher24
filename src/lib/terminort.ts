@@ -58,7 +58,7 @@ export function werkstattAnschrift(company: CompanyProfile | undefined): Company
   return { label: 'Werkstatt', street, postalCode, city };
 }
 
-/** „Langgasse 70, 35576 Wetzlar“. */
+/** „Langgasse 61, 35576 Wetzlar“. */
 export function anschriftEinzeilig(anschrift: Pick<CompanyLocation, 'street' | 'postalCode' | 'city'>): string {
   return `${anschrift.street}, ${anschrift.postalCode} ${anschrift.city}`;
 }
@@ -77,7 +77,7 @@ export interface TerminOrtOptionen {
 
 /**
  * Ort für Kundinnen und Kunden, z. B. „In unserer Werkstatt, mit Fahrzeug
- * (Langgasse 70, 35576 Wetzlar)“ oder „Bei Ihnen vor Ort (nach Absprache)“.
+ * (Langgasse 61, 35576 Wetzlar)“ oder „Bei Ihnen vor Ort (nach Absprache)“.
  */
 export function terminOrtText(termin: Pick<AppointmentInfo, 'location'>, optionen: TerminOrtOptionen = {}): string {
   if (termin.location === 'vor-ort') return 'Bei Ihnen vor Ort (nach Absprache)';

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { inProduktion, produktionslisteHtml, produktionsPositionen, vorgangsblattHtml } from './druckansichten';
-import { echteEinstellungen } from './rechtliches/test-hilfen';
+import { einstellungenMitWerkstatt } from './rechtliches/test-hilfen';
 import type { BusinessRecord } from './types';
 
 const JETZT = new Date('2026-10-25T09:00:00.000Z');
@@ -39,7 +39,7 @@ function vorgang(teil: Partial<BusinessRecord>): BusinessRecord {
 }
 
 describe('Vorgangsblatt', () => {
-  const html = vorgangsblattHtml({ vorgang: vorgang({}), firma: echteEinstellungen().company, nonce: 'abc123', jetzt: JETZT });
+  const html = vorgangsblattHtml({ vorgang: vorgang({}), firma: einstellungenMitWerkstatt().company, nonce: 'abc123', jetzt: JETZT });
 
   it('Kopf mit Nummer, Art, Bereich, Status und Kunde', () => {
     expect(html.startsWith('<!doctype html><html lang="de">')).toBe(true);
@@ -78,12 +78,12 @@ describe('Vorgangsblatt', () => {
         quote: { mode: 'fest', depositCents: 6990, slotMinutes: 90, leadTimeDays: 7, requiresVehicleOnSite: true },
         payment: { scope: 'anzahlung', amountCents: 6990, status: 'bezahlt', paidAt: '2026-10-20T08:20:00.000Z' },
       }),
-      firma: echteEinstellungen().company,
+      firma: einstellungenMitWerkstatt().company,
       nonce: 'n',
       jetzt: JETZT,
     });
     expect(termin).toContain('Montag, 2. November 2026, 09:00 Uhr');
-    expect(termin).toContain('In unserer Werkstatt, mit Fahrzeug (Langgasse 70, 35576 Wetzlar)');
+    expect(termin).toContain('In unserer Werkstatt, mit Fahrzeug (Werkstattweg 7, 35576 Wetzlar)');
     expect(termin).toContain('<th>Anzahlung</th><td>69,90');
 
     const bestellung = vorgangsblattHtml({

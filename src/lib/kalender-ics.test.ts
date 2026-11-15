@@ -10,7 +10,7 @@ describe('Kalendereintrag (.ics)', () => {
     beginn: new Date('2026-10-27T09:00:00.000Z'),
     ende: new Date('2026-10-27T10:30:00.000Z'),
     titel: 'Termin bei SCHLÜSSELMACHER24 (SM24-T-2026-0001)',
-    ort: 'SCHLÜSSELMACHER24, Langgasse 70, 35576 Wetzlar',
+    ort: 'SCHLÜSSELMACHER24, Werkstattweg 7, 35576 Wetzlar',
     beschreibung: 'Vorgangsnummer: SM24-T-2026-0001\nBitte mitbringen:\n- Alle vorhandenen Schlüssel; auch defekte',
     url: 'https://schluesselmacher24.de/service-und-termin/terminstatus',
     erstellt: new Date('2026-10-26T02:17:05.123Z'),
@@ -29,7 +29,7 @@ describe('Kalendereintrag (.ics)', () => {
 
   it('maskiert Kommas, Semikolons und Zeilenumbrüche', () => {
     const entfaltet = datei.replace(/\r\n /g, '');
-    expect(entfaltet).toContain('LOCATION:SCHLÜSSELMACHER24\\, Langgasse 70\\, 35576 Wetzlar');
+    expect(entfaltet).toContain('LOCATION:SCHLÜSSELMACHER24\\, Werkstattweg 7\\, 35576 Wetzlar');
     expect(entfaltet).toContain('Bitte mitbringen:\\n- Alle vorhandenen Schlüssel\\; auch defekte');
     expect(icsText('a\\b')).toBe('a\\\\b');
   });

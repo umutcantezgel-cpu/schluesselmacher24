@@ -3067,11 +3067,28 @@ export interface Einstellungen {
       ort?: string | null;
     };
   };
+  /**
+   * Steht in der Fußzeile, auf der Kontaktseite, auf den Standortseiten und in den strukturierten Daten. Feste Öffnungszeiten zeigt die Seite nicht: Die Werkstatt arbeitet nach Termin.
+   */
+  erreichbarkeit?: {
+    kernaussage?: string | null;
+    /**
+     * Eine Aussage je Zeile.
+     */
+    zeilen?: string | null;
+    /**
+     * Mit Haken steht das auch in den Angaben für Suchmaschinen (Kontakt, nicht Ladenöffnung).
+     */
+    rundUmDieUhr?: boolean | null;
+  };
+  /**
+   * Nur für die Terminvergabe: In diesen Zeiten dürfen buchbare Zeitfenster liegen. Auf der Seite erscheinen sie nicht als Öffnungszeiten.
+   */
   oeffnungszeiten?:
     | {
         tag: '1' | '2' | '3' | '4' | '5' | '6' | '7';
         /**
-         * Leer lassen = geschlossen.
+         * Leer lassen = an diesem Tag keine Termine.
          */
         zeiten?:
           | {
@@ -3464,6 +3481,13 @@ export interface EinstellungenSelect<T extends boolean = true> {
               plz?: T;
               ort?: T;
             };
+      };
+  erreichbarkeit?:
+    | T
+    | {
+        kernaussage?: T;
+        zeilen?: T;
+        rundUmDieUhr?: T;
       };
   oeffnungszeiten?:
     | T

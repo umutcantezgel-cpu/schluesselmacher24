@@ -22,7 +22,7 @@ const SERVICES = servicesJson as CarKeyService[];
 const RULES = rulesJson as PricingRule[];
 const BOOKING = (settingsJson as unknown as Settings).booking;
 const kontext = { services: SERVICES, rules: RULES, booking: BOOKING };
-const WERKSTATT = { street: 'Langgasse 70', postalCode: '35576', city: 'Wetzlar' };
+const WERKSTATT = { street: 'Werkstattweg 7', postalCode: '35576', city: 'Wetzlar' };
 
 const marke = (slug: string) => MARKEN.find((m) => m.slug === slug)!;
 const modell = (makeSlug: string, modelSlug: string) => marke(makeSlug).models.find((m) => m.slug === modelSlug)!;

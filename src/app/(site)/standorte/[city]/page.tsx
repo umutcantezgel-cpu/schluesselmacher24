@@ -3,12 +3,13 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { getCities, getCity, getSettings } from '@/lib/data';
-import { formatWeekday } from '@/lib/format';
 import { standort } from '@/lib/rechtliches/firma';
 import { areaByKey } from '@/lib/navigation';
 import { enthaeltPlatzhalter, istPlatzhalter } from '@/lib/platzhalter';
 import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
 import { cn } from '@/lib/cn';
+import { Erreichbarkeit } from '@/components/vertrauen/erreichbarkeit';
+import { erreichbarkeit } from '@/lib/erreichbarkeit';
 import { ButtonLink } from '@/components/ui/button';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -49,10 +50,9 @@ export default async function CityPage(props: { params: Promise<{ city: string }
 
   if (!city) notFound();
 
-  // Die Werkstatt steht in den Einstellungen; liegt sie in dieser Stadt, zeigt die Seite Anschrift und Öffnungszeiten.
+  // Die Werkstatt steht in den Einstellungen; liegt sie in dieser Stadt, zeigt die Seite Anschrift und Erreichbarkeit.
   const werkstatt = standort(settings.company);
   const werkstattHier = werkstatt && werkstatt.city === city.city ? werkstatt : undefined;
-  const oeffnungszeiten = settings.openingHours.filter((eintrag) => eintrag.spans.length > 0);
   const mitRadius = city.onSiteRadiusKm > 0;
   const lead = werkstattHier
     ? `Unsere Werkstatt: ${werkstattHier.street}, ${werkstattHier.postalCode} ${werkstattHier.city}. Einsätze vor Ort nur nach Prüfung; Bestellungen aus dem Shop liefern wir innerhalb Deutschlands.`
@@ -143,23 +143,8 @@ export default async function CityPage(props: { params: Promise<{ city: string }
                 <br />
                 {werkstattHier.postalCode} {werkstattHier.city}
               </address>
-              {oeffnungszeiten.length > 0 && (
-                <>
-                  <p className="mt-6 font-mono text-caption uppercase tracking-label text-foreground-muted">
-                    Öffnungszeiten
-                  </p>
-                  <dl className="mt-2 grid max-w-md grid-cols-3 gap-y-1 text-small">
-                    {oeffnungszeiten.map((eintrag) => (
-                      <div key={eintrag.day} className="contents">
-                        <dt className="text-foreground-muted">{formatWeekday(eintrag.day)}</dt>
-                        <dd className="col-span-2 font-mono tabular-nums text-foreground">
-                          {eintrag.spans.map((span) => `${span.from}–${span.to}`).join(' · ')}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
-                </>
-              )}
+              <p className="mt-6 font-mono text-caption uppercase tracking-label text-foreground-muted">Erreichbarkeit</p>
+              <Erreichbarkeit angabe={erreichbarkeit(settings)} className="mt-2 max-w-md" />
             </div>
           </div>
         </Section>

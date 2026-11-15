@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { einstellungenZuPayload } from '../../lib/data/payload-mapping';
 import { formatCents } from '../../lib/format';
-import { echteEinstellungen } from '../../lib/rechtliches/test-hilfen';
+import { einstellungenMitWerkstatt } from '../../lib/rechtliches/test-hilfen';
 import { hashToken } from '../../lib/server/access-token';
 import type { Vorgaenge } from '../../payload-types';
 import { bestaetigungSendenHandler } from './bestaetigung-senden';
@@ -218,7 +218,7 @@ describe('vorgangNachAenderung', () => {
 
   it('sendet beim Annehmen die Vertragsbestätigung genau einmal', async () => {
     const r = req();
-    r.payload.findGlobal = vi.fn(async () => einstellungenZuPayload(echteEinstellungen()) as never);
+    r.payload.findGlobal = vi.fn(async () => einstellungenZuPayload(einstellungenMitWerkstatt()) as never);
     r.context['sm24Vorhaben:42'] = { vertrag: true };
     const ergebnis = await nach({ doc: doc({ status: 'geprueft' }), operation: 'update', req: r });
     expect(gesendet).toHaveLength(1);
@@ -233,7 +233,7 @@ describe('vorgangNachAenderung', () => {
 
   it('sendet für Anfragen keine Vertragsbestätigung', async () => {
     const r = req();
-    r.payload.findGlobal = vi.fn(async () => einstellungenZuPayload(echteEinstellungen()) as never);
+    r.payload.findGlobal = vi.fn(async () => einstellungenZuPayload(einstellungenMitWerkstatt()) as never);
     r.context['sm24Vorhaben:42'] = { vertrag: true };
     await nach({ doc: doc({ art: 'anfrage', status: 'geprueft' }), operation: 'update', req: r });
     expect(gesendet).toHaveLength(0);
@@ -337,7 +337,7 @@ describe('Statusverlauf und Foto-Freigabe', () => {
       }),
     );
     const r = req();
-    r.payload.findGlobal = vi.fn(async () => einstellungenZuPayload(echteEinstellungen()) as never);
+    r.payload.findGlobal = vi.fn(async () => einstellungenZuPayload(einstellungenMitWerkstatt()) as never);
     r.context['sm24Vorhaben:42'] = { statusMail: { status: 'freigegeben' } };
     const gespeichert = foto({
       status: 'freigegeben',
@@ -349,7 +349,7 @@ describe('Statusverlauf und Foto-Freigabe', () => {
     expect(texte).toHaveLength(1);
     const link = texte[0].match(/https?:\/\/\S+\/bestellung\/42\?t=([\w-]+)/);
     expect(link).not.toBeNull();
-    expect(texte[0]).toContain('Langgasse 70');
+    expect(texte[0]).toContain('Werkstattweg 7');
     const daten = update.mock.calls[0][0].data as Partial<Vorgaenge>;
     expect(daten.zugriffsHash).toBe(hashToken(link![1]));
     expect(daten.mails?.[0]).toMatchObject({ art: 'freigabe', ergebnis: 'gesendet' });

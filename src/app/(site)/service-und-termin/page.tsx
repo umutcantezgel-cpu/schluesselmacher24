@@ -5,9 +5,10 @@ import type { ComponentType } from 'react';
 import { getPageContent, getSettings } from '@/lib/data';
 import { getRichtwerte } from '@/lib/data/richtwerte';
 import { NAV_AREAS, PROCESS_LABELS } from '@/lib/navigation';
-import { formatWeekday } from '@/lib/format';
 import { enthaeltPlatzhalter, istPlatzhalter } from '@/lib/platzhalter';
 import { cn } from '@/lib/cn';
+import { Erreichbarkeit } from '@/components/vertrauen/erreichbarkeit';
+import { erreichbarkeit } from '@/lib/erreichbarkeit';
 import { Accordion } from '@/components/ui/accordion';
 import { PageHeader } from '@/components/layout/page-header';
 import { ServiceEinsatzRechner } from '@/components/calculator/service-einsatz-rechner';
@@ -396,25 +397,11 @@ export default async function ServiceUndTerminPage() {
         <Accordion items={SERVICE_FAQ} className="mt-12 max-w-4xl" />
       </Section>
 
-      {/* 06 Öffnungszeiten als Schriftfeld, darunter die Verweise als Stückliste */}
+      {/* 06 Erreichbarkeit, darunter die Verweise als Stückliste */}
       <Section tight tone="muted">
-        <SectionHeading nummer="06" eyebrow="Erreichbarkeit" title="Öffnungszeiten" />
+        <SectionHeading nummer="06" eyebrow="Erreichbarkeit" title="So erreichen Sie uns" />
 
-        <dl className="mt-12 max-w-md border-t border-border">
-          {settings.openingHours.map((entry) => (
-            <div
-              key={entry.day}
-              className="grid gap-1 border-b border-border py-3 sm:grid-cols-3 sm:gap-x-4"
-            >
-              <dt className="text-foreground-muted">{formatWeekday(entry.day)}</dt>
-              <dd className="font-mono tabular-nums text-foreground sm:col-span-2">
-                {entry.spans.length === 0
-                  ? 'geschlossen'
-                  : entry.spans.map((s) => `${s.from}–${s.to}`).join(' · ')}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <Erreichbarkeit angabe={erreichbarkeit(settings)} groesse="gross" className="mt-12 max-w-xl border-t border-border pt-6" />
 
         {weitereLinks.length > 0 && (
           <ul className="mt-12 border-t border-border">

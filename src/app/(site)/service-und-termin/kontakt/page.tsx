@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getSettings } from '@/lib/data';
-import { formatWeekday } from '@/lib/format';
 import { enthaeltPlatzhalter } from '@/lib/platzhalter';
 import { anbieterZeilen, standort } from '@/lib/rechtliches/firma';
 import { telefonLink } from '@/lib/telefon';
+import { Erreichbarkeit } from '@/components/vertrauen/erreichbarkeit';
+import { erreichbarkeit } from '@/lib/erreichbarkeit';
 import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
@@ -143,22 +144,8 @@ export default async function KontaktPage() {
               </dl>
             )}
 
-            <h3 className="mt-12 text-title-sm font-semibold text-foreground">Öffnungszeiten</h3>
-            <dl className="mt-6 border-t border-border">
-              {settings.openingHours.map((entry) => (
-                <div
-                  key={entry.day}
-                  className="grid gap-1 border-b border-border py-3 sm:grid-cols-3 sm:gap-x-4"
-                >
-                  <dt className="text-foreground-muted">{formatWeekday(entry.day)}</dt>
-                  <dd className="font-mono tabular-nums text-foreground sm:col-span-2">
-                    {entry.spans.length === 0
-                      ? 'geschlossen'
-                      : entry.spans.map((s) => `${s.from}–${s.to}`).join(' · ')}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <h3 className="mt-12 text-title-sm font-semibold text-foreground">Erreichbarkeit</h3>
+            <Erreichbarkeit angabe={erreichbarkeit(settings)} groesse="gross" className="mt-6 border-t border-border pt-6" />
 
             <Alert tone="info" className="mt-8">
               Arbeiten an Fahrzeugen und Schließanlagen finden ausschließlich nach Terminvereinbarung

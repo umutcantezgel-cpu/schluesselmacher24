@@ -30,6 +30,8 @@ export interface IntentHubProps {
   satz?: string | null;
   /** Telefonnummer wie gepflegt und ihr `tel:`-Link; ohne Link erscheint die Nummer als Text. */
   telefon?: { anzeige: string; href: string | null } | null;
+  /** Kernaussage der Erreichbarkeit neben der Nummer, etwa „24 Stunden erreichbar“ (FA-23). */
+  erreichbar?: string | null;
   /** Bühne der Eingangsinszenierung (B-31): bis 1279 px ein schmales Band über der Frage, ab 1280 px rechts. */
   buehne?: ReactNode;
 }
@@ -39,7 +41,7 @@ export interface IntentHubProps {
  * aus den Rubriken, Anrufen. Kein Wischen, kein Karussell: Bei 390 × 844 und 1440 × 900 stehen alle
  * Kacheln ohne Scrollen im Bild, bei 360 × 780 mindestens neun. Das größte Element ist die Frage.
  */
-export function IntentHub({ rubriken, satz, telefon, buehne }: IntentHubProps) {
+export function IntentHub({ rubriken, satz, telefon, erreichbar, buehne }: IntentHubProps) {
   const { spalten, leit } = hubRaster(rubriken.length);
   return (
     <section aria-labelledby="hub-frage" className="border-b border-border bg-surface">
@@ -88,6 +90,7 @@ export function IntentHub({ rubriken, satz, telefon, buehne }: IntentHubProps) {
               ) : (
                 <span className="font-mono font-semibold tabular-nums text-foreground">{telefon.anzeige}</span>
               )}
+              {erreichbar && <span className="basis-full text-small font-semibold text-foreground">{erreichbar}</span>}
             </p>
           )}
         </div>

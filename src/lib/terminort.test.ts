@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { defaults } from './data/defaults';
-import { echteEinstellungen } from './rechtliches/test-hilfen';
+import { einstellungenMitWerkstatt } from './rechtliches/test-hilfen';
 import {
   AUSSENEINSATZ_HINWEIS,
   ausserhalbDerRegion,
@@ -14,21 +14,21 @@ import {
   werkstattAnschrift,
 } from './terminort';
 
-/** Echte Firmendaten aus content/settings.json: Sitz Gloelstraße 11, Werkstatt Langgasse 70. */
-const FIRMA = echteEinstellungen().company;
+/** Echte Firmendaten mit erfundenem zweitem Standort: Sitz Langgasse 61, Werkstatt Werkstattweg 7. */
+const FIRMA = einstellungenMitWerkstatt().company;
 
 describe('Werkstatt-Anschrift', () => {
   it('nimmt den gepflegten Standort', () => {
     expect(werkstattAnschrift(FIRMA)).toEqual({
       label: 'Werkstatt und Abholung',
-      street: 'Langgasse 70',
+      street: 'Werkstattweg 7',
       postalCode: '35576',
       city: 'Wetzlar',
     });
   });
 
   it('nimmt ohne eigenen Standort den Firmensitz, mit Platzhaltern nichts', () => {
-    expect(werkstattAnschrift({ ...FIRMA, location: undefined })).toMatchObject({ street: 'Gloelstraße 11', city: 'Wetzlar' });
+    expect(werkstattAnschrift({ ...FIRMA, location: undefined })).toMatchObject({ street: 'Langgasse 61', city: 'Wetzlar' });
     expect(werkstattAnschrift(defaults.settings().company)).toBeUndefined();
     expect(werkstattAnschrift(undefined)).toBeUndefined();
   });
@@ -38,9 +38,9 @@ describe('Terminort-Texte', () => {
   const werkstatt = werkstattAnschrift(FIRMA);
 
   it('Werkstatt mit Anschrift, Fahrzeugtermin „in der Werkstatt, mit Fahrzeug“', () => {
-    expect(terminOrtText({ location: 'werkstatt' }, { werkstatt })).toBe('In unserer Werkstatt (Langgasse 70, 35576 Wetzlar)');
+    expect(terminOrtText({ location: 'werkstatt' }, { werkstatt })).toBe('In unserer Werkstatt (Werkstattweg 7, 35576 Wetzlar)');
     expect(terminOrtText({ location: 'werkstatt' }, { werkstatt, mitFahrzeug: true })).toBe(
-      'In unserer Werkstatt, mit Fahrzeug (Langgasse 70, 35576 Wetzlar)',
+      'In unserer Werkstatt, mit Fahrzeug (Werkstattweg 7, 35576 Wetzlar)',
     );
     expect(terminOrtText({ location: 'werkstatt' })).toBe('In unserer Werkstatt');
   });
@@ -58,9 +58,9 @@ describe('Terminort-Texte', () => {
       requiresVehicleOnSite: true,
     };
     const appointment = { date: '2026-11-02', time: '09:00', durationMinutes: 60, location: 'werkstatt' as const };
-    expect(vorgangOrtText({ appointment, quote }, FIRMA)).toBe('In unserer Werkstatt, mit Fahrzeug (Langgasse 70, 35576 Wetzlar)');
+    expect(vorgangOrtText({ appointment, quote }, FIRMA)).toBe('In unserer Werkstatt, mit Fahrzeug (Werkstattweg 7, 35576 Wetzlar)');
     expect(vorgangOrtText({ appointment, quote: { ...quote, requiresVehicleOnSite: false } }, FIRMA)).toBe(
-      'In unserer Werkstatt (Langgasse 70, 35576 Wetzlar)',
+      'In unserer Werkstatt (Werkstattweg 7, 35576 Wetzlar)',
     );
     expect(vorgangOrtText({ appointment: undefined, quote }, FIRMA)).toBeUndefined();
   });

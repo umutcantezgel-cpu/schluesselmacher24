@@ -1,4 +1,5 @@
-import { kontakt, standort } from '@/lib/rechtliches/firma';
+import { kontakt } from '@/lib/rechtliches/firma';
+import { werkstattAnschrift } from '@/lib/terminort';
 import { telefonLink } from '@/lib/telefon';
 import type { CompanyLocation, CompanyProfile } from '@/lib/types';
 import { cn } from '@/lib/cn';
@@ -6,16 +7,16 @@ import { GlyphOrt } from '@/components/visual/glyphen/ort';
 
 /** Werkstatt und Telefon als einfache Daten — so auch an Client-Komponenten übergebbar. */
 export interface WerkstattAngaben {
-  /** Aus `standort(company)`: fehlt, wenn nicht gepflegt oder gleich dem Firmensitz. */
+  /** Aus `werkstattAnschrift(company)`: der eigene Standort, sonst der Firmensitz als „Werkstatt“. */
   standort?: CompanyLocation;
   /** Aus `kontakt(company)`: nur veröffentlichte, gepflegte Nummer. */
   telefon?: string;
 }
 
-/** Werkstatt und Telefon aus den Firmendaten, mit denselben Regeln wie im Fuß. */
+/** Werkstatt und Telefon aus den Firmendaten; nur veröffentlichte, gepflegte Angaben. */
 export function werkstattAngaben(company: CompanyProfile): WerkstattAngaben {
   const angaben: WerkstattAngaben = {};
-  const werkstatt = standort(company);
+  const werkstatt = werkstattAnschrift(company);
   const telefon = kontakt(company).telefon;
   if (werkstatt) angaben.standort = werkstatt;
   if (telefon) angaben.telefon = telefon;
@@ -31,8 +32,8 @@ export interface WerkstattZeileProps extends WerkstattAngaben {
  * Bezeichnung, Anschrift und Telefon als `tel:`-Link. Ohne Browser-Logik —
  * nutzbar in Server- und Client-Komponenten.
  *
- * Ohne gepflegten Standort erscheint nichts; Öffnungszeiten nennt die Zeile
- * bewusst nicht.
+ * Liegt die Werkstatt am Firmensitz, steht dessen Anschrift als „Werkstatt“. Ohne
+ * veröffentlichbare Anschrift erscheint nichts; Zeiten nennt die Zeile bewusst nicht.
  */
 export function WerkstattZeile({ standort: werkstatt, telefon, className }: WerkstattZeileProps) {
   if (!werkstatt) return null;

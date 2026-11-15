@@ -12,7 +12,7 @@ const echteFirma = {
   marke: 'SCHLÜSSELMACHER24',
   rechtsform: 'einzelunternehmen',
   inhaber: 'Mina Saad',
-  strasse: 'Gloelstraße 11',
+  strasse: 'Langgasse 61',
   plz: '35576',
   ort: 'Wetzlar',
   land: 'Deutschland',
@@ -21,7 +21,7 @@ const echteFirma = {
   ustId: 'DE 282140471',
   registergericht: '',
   registernummer: null,
-  standort: { bezeichnung: 'Werkstatt und Abholung', strasse: 'Langgasse 70', plz: '35576', ort: 'Wetzlar' },
+  standort: { bezeichnung: 'Werkstatt und Abholung', strasse: 'Werkstattweg 7', plz: '35576', ort: 'Wetzlar' },
 };
 
 function pruefen(firma: Record<string, unknown>) {

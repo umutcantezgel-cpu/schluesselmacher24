@@ -85,18 +85,18 @@ describe('TerminAuswahl als Tagesleiste', () => {
   });
 
   it('nennt die Werkstatt als Ort und Außeneinsätze nur nach Prüfung', () => {
-    const werkstatt = { label: 'Werkstatt und Abholung', street: 'Langgasse 70', postalCode: '35576', city: 'Wetzlar' };
+    const werkstatt = { label: 'Werkstatt und Abholung', street: 'Werkstattweg 7', postalCode: '35576', city: 'Wetzlar' };
     const html = rendern({ werkstatt });
-    expect(html).toContain('Termin in unserer Werkstatt: Langgasse 70, 35576 Wetzlar');
+    expect(html).toContain('Termin in unserer Werkstatt: Werkstattweg 7, 35576 Wetzlar');
     expect(html).toContain('nur nach individueller Prüfung möglich');
     expect(html).not.toContain('stimmen wir');
   });
 
   it('bittet bei Leistungen am Fahrzeug, das Fahrzeug in die Werkstatt mitzubringen', () => {
-    const werkstatt = { label: 'Werkstatt und Abholung', street: 'Langgasse 70', postalCode: '35576', city: 'Wetzlar' };
+    const werkstatt = { label: 'Werkstatt und Abholung', street: 'Werkstattweg 7', postalCode: '35576', city: 'Wetzlar' };
     const html = rendern({ werkstatt, requiresVehicleOnSite: true });
     expect(html).toContain('Bitte bringen Sie Ihr Fahrzeug mit');
-    expect(html).toContain('in unserer Werkstatt statt, mit Fahrzeug: Werkstatt und Abholung, Langgasse 70, 35576 Wetzlar.');
+    expect(html).toContain('in unserer Werkstatt statt, mit Fahrzeug: Werkstatt und Abholung, Werkstattweg 7, 35576 Wetzlar.');
     expect(html).not.toContain('Vor-Ort-Termin');
   });
 });

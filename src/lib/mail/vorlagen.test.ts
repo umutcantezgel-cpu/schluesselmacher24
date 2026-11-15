@@ -24,7 +24,7 @@ const TOKEN = 'geheimer-link-schluessel-1234567890';
 const FIRMA: CompanyProfile = {
   ...defaults.settings().company,
   legalName: 'SCHLÜSSELMACHER24 – Inhaber Mina Saad',
-  street: 'Gloelstraße 11',
+  street: 'Langgasse 61',
   postalCode: '35576',
   city: 'Wetzlar',
   phone: '06441 8056279',
