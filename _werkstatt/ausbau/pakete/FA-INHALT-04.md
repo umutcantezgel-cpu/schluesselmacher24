@@ -8,6 +8,11 @@ Bereite die Seite so vor, dass der Betreiber echte Fotos aus Werkstatt und Büro
 ## Vorgabe des Inhabers (wörtlich, Abschnitte 20 und 04)
 „Auf der Seite fehlen deutlich zu viele Bilder. Sie darf nicht hauptsächlich aus Text, Icons und Formularen bestehen. Echte Bilder aus Werkstatt und Büro. Maschinen, Fräsarbeiten, Programmiergeräte, Schlüssel, Gehäuse, Zylinder und Schließanlagen. Fahrzeuge und Arbeitssituationen, soweit datenschutzrechtlich sauber. Vorher Nachher Bilder bei Gehäuseumbauten und Reparaturen. Hochwertige Bilder aus eigenem Bestand können dezent mit Logo unten rechts versehen werden. Bilder technisch für schnelle Ladezeiten optimieren und mit sinnvollen Alt Texten versehen.“ · „Bilder aus dem eigenen Betrieb können dezent mit Schlüsselmacher24 Branding beziehungsweise Logo unten rechts versehen werden, sofern das Bild dadurch nicht unruhig wirkt.“
 
+## Zuschnitt (vom Orchestrator, 16.11.2026)
+Das Paket ist geteilt. Du baust Teil A (dieser Auftrag): die Punkte 1, 2 und 5 unter „So bauen“ (Bildstellen-Verzeichnis mit `BILDBEDARF.md`, jede Bildstelle aus dem Admin füllbar, Ladezeit). Wortmarke unten rechts (Punkt 3), Alt-Text und Datenschutz-Angaben an der Medienablage (Punkt 4) und die Betreiberanleitung (Punkt 6) gehören zu Teil B (`pakete/FA-INHALT-04B.md`); `src/payload/collections/Medien.ts` und die Hooks der Medienablage fasst du in Teil A nicht an. Schreibe am Ende des Berichts einen Abschnitt „Stand für Teil B“.
+
+Stand des Bestands seit dem Brief: Produkte haben `produktbild` und `weitereBilder` (Codeprodukte zeigen beide seit FA-SHOP-01B), Hersteller ein Logo-Feld mit Freigabe-Haken (FA-SHOP-01), Umbau-Beispiele mit Vorher- und Nachher-Bild kommen aus FA-SHOP-02, Tutorials mit Bildern je Schritt aus FA-INHALT-01 (prüfe, was davon schon abgenommen ist, und zähle diese Stellen als „füllbar“). Die Beispielzeilen der Uploads heißen ohne echtes Foto „Darauf muss zu sehen sein“ (FA-QA-02); mit einem echten Beispielfoto aus dem Admin darf dort wieder ein Bild stehen.
+
 ## Lage
 Es liegen keine Fotos vor (MA-05). Die Seite hat Bildstellen (`ImageSlot` mit `motif`), die sich aus Daten zeichnen, solange kein Foto hinterlegt ist. Erfundene oder generierte Bilder, die als echte Werkstatt gelten könnten, sind ausgeschlossen (R4).
 
