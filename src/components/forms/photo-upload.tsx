@@ -8,7 +8,7 @@ import { GlyphLaden } from '@/components/visual/glyphen/laden';
 import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
 import { GlyphWarnung } from '@/components/visual/glyphen/warnung';
 import { GlyphZuruecksetzen } from '@/components/visual/glyphen/zuruecksetzen';
-import type { ImageSlot, UploadRef } from '@/lib/types';
+import type { ImageSlot, UploadRef, UploadSteckplatz } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import Image from 'next/image';
 import { formatFileSize } from '@/lib/format';
@@ -60,7 +60,7 @@ export async function uploadsAbwarten(): Promise<void> {
  * Angaben einer ausgewählten Datei für das Absenden. Hochgeladene Dateien
  * tragen Kennung und Einmal-Schlüssel; andere sind nur als Absicht vermerkt.
  */
-export function alsUpload(file: PickedFile, category: UploadKategorie): UploadMeta {
+export function alsUpload(file: PickedFile, category: UploadKategorie, steckplatz?: UploadSteckplatz): UploadMeta {
   const ergebnis = ergebnisse.get(file.id)
     ?? (file.storageKey && file.uploadToken ? { storageKey: file.storageKey, uploadToken: file.uploadToken } : undefined);
   return {
@@ -68,6 +68,8 @@ export function alsUpload(file: PickedFile, category: UploadKategorie): UploadMe
     sizeBytes: file.sizeBytes,
     mimeType: file.mimeType,
     category,
+    // Steckplatz (FA-KERN-02): Der Server übernimmt ihn nur aus der gespeicherten Kundendatei.
+    ...(steckplatz ? { steckplatz } : {}),
     ...(ergebnis ?? {}),
   };
 }
@@ -177,12 +179,14 @@ export function uploadFehler(status: number, daten: { error?: unknown }): string
 async function hochladen(
   file: File,
   category: UploadKategorie,
+  steckplatz?: UploadSteckplatz,
 ): Promise<{ ok: true; storageKey: string; uploadToken: string } | { ok: false; fehler: string }> {
   const { blob, name } = await verkleinern(file);
   // Prüfung nach dem Verkleinern: maßgeblich ist, was tatsächlich gesendet wird.
   if (blob.size > MAX_UPLOAD_BYTES) return { ok: false, fehler: MELDUNG_UPLOAD_ZU_GROSS };
   const body = new FormData();
   body.append('kategorie', category);
+  if (steckplatz) body.append('steckplatz', steckplatz);
   body.append('datei', blob, name);
   try {
     const response = await fetch('/api/kunden-upload', { method: 'POST', body });
@@ -214,6 +218,8 @@ export interface PhotoUploadProps {
    * sicher hochgeladen (Aufbewahrungsfrist je Art).
    */
   category?: UploadKategorie;
+  /** Steckplatz der Datei (FA-KERN-02), etwa „schluessel-vorderseite“; der Server prüft und speichert ihn. */
+  steckplatz?: UploadSteckplatz;
   error?: string;
   /**
    * Gewicht des Knopfs „Foto aufnehmen“: `betont` (Standard) gefüllt; `ruhig` als Rahmenknopf, wenn eine andere Handlung die Hauptaktion ist.
@@ -237,6 +243,7 @@ export function PhotoUpload({
   maxFiles = 4,
   allowDocuments = false,
   category,
+  steckplatz,
   error,
   kamera = 'betont',
 }: PhotoUploadProps) {
@@ -264,7 +271,7 @@ export function PhotoUpload({
 
   function starten(fileId: string, file: File, name: string) {
     if (!category) return;
-    const auftrag = hochladen(file, category).then((ergebnis) => {
+    const auftrag = hochladen(file, category, steckplatz).then((ergebnis) => {
       laufend.delete(fileId);
       if (ergebnis.ok) {
         ergebnisse.set(fileId, { storageKey: ergebnis.storageKey, uploadToken: ergebnis.uploadToken });

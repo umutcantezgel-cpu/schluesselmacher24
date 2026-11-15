@@ -143,6 +143,8 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
           sizeBytes: upload.sizeBytes,
           mimeType: upload.mimeType,
           category: upload.category,
+          // Steckplatz (FA-KERN-02): bei eingerichteter Ablage vom Server aus der Kundendatei gesetzt.
+          ...(upload.steckplatz ? { steckplatz: upload.steckplatz } : {}),
           id: `${buildRecordId(reference)}-datei-${index + 1}`,
           uploadedAt: timestamp,
         })),

@@ -18,6 +18,7 @@ import { ART_LABEL, BEREICH_LABEL, UMFANG_LABEL, ZAHLUNG_LABEL } from './mail/vo
 import { vorgangOrtText } from './terminort';
 import type { BusinessRecord, CompanyProfile, OrderLine, UploadRef } from './types';
 import { STATUS_LABEL } from './vorgang-status';
+import { dateiBezeichnung } from './wege/nachweis';
 
 export const KATEGORIE_LABEL: Record<UploadRef['category'], string> = {
   schluesselfoto: 'Schlüsselfoto',
@@ -216,7 +217,7 @@ export function vorgangsblattHtml({ vorgang, firma, nonce, jetzt = new Date() }:
         + vorgang.uploads
           .map(
             (datei) =>
-              `<tr><td>${t(KATEGORIE_LABEL[datei.category] ?? datei.category)}</td><td>${t(datei.fileName)}</td>`
+              `<tr><td>${t(dateiBezeichnung(datei, KATEGORIE_LABEL))}</td><td>${t(datei.fileName)}</td>`
               + `<td class="leise">${datei.storageKey ? 'im Backend' : 'nicht gespeichert'}</td></tr>`,
           )
           .join('')

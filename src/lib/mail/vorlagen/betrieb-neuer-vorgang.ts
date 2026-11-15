@@ -7,7 +7,9 @@
  * fremden Postfächern und den Protokollen des Mailanbieters.
  */
 
+import { KATEGORIE_LABEL } from '../../druckansichten';
 import type { BusinessRecord } from '../../types';
+import { dateiBezeichnung } from '../../wege/nachweis';
 import { baueMail, type MailInhalt } from '../html';
 import { ART_LABEL, BEREICH_LABEL, terminZeilen, zahlungsZeilen, type VorlagenKontext } from './gemeinsam';
 
@@ -45,6 +47,7 @@ export function betriebNeuerVorgang({ vorgang, adminUrl, kontext, anhang }: Betr
           ['Name', name],
           ...terminZeilen(vorgang, kontext.firma),
           ...zahlungsZeilen(vorgang),
+          ...unterlagenZeilen(vorgang),
         ],
       },
       { art: 'knopf', href: adminUrl, label: 'Im Backend öffnen' },
@@ -52,6 +55,20 @@ export function betriebNeuerVorgang({ vorgang, adminUrl, kontext, anhang }: Betr
     ],
     site: kontext.site,
   });
+}
+
+/**
+ * Unterlagen nach Steckplatz (FA-KERN-02): nur die Bezeichnungen, keine Dateinamen und keine Inhalte.
+ * Mehrere Dateien desselben Steckplatzes stehen einmal mit Anzahl.
+ */
+export function unterlagenZeilen(vorgang: Pick<BusinessRecord, 'uploads'>): Array<[string, string]> {
+  if (!vorgang.uploads?.length) return [];
+  const anzahl = new Map<string, number>();
+  for (const datei of vorgang.uploads) {
+    const name = dateiBezeichnung(datei, KATEGORIE_LABEL);
+    anzahl.set(name, (anzahl.get(name) ?? 0) + 1);
+  }
+  return [['Unterlagen', [...anzahl].map(([name, n]) => (n > 1 ? `${name} (${n})` : name)).join(', ')]];
 }
 
 /** Bewerbung über „Partner werden“ (Erg. Leitfaden §7): Firma statt Bereich, Hinweis auf die Prüfung. */

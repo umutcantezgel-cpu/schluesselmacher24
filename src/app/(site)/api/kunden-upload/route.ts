@@ -15,9 +15,12 @@ import { aufbewahrenBis, speichereKundendatei } from '@/lib/server/kundendateien
 import { OHNE_SPEICHER_UPLOAD } from '@/lib/server/ohne-speicher';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import { speichernMoeglich } from '@/lib/umgebung';
+import { UPLOAD_STECKPLAETZE, steckplatzPasst } from '@/lib/wege/nachweis';
 
 /*
- * POST /api/kunden-upload — eine Datei je Aufruf (Feld „datei“) plus „kategorie“.
+ * POST /api/kunden-upload — eine Datei je Aufruf (Feld „datei“) plus „kategorie“ und, wo das
+ * Formular Steckplätze kennt, „steckplatz“ (FA-KERN-02). Der Server prüft, ob der Steckplatz zur
+ * Kategorie passt, und speichert ihn an der Kundendatei; beim Absenden zählt nur dieser Wert.
  *
  * Liegt neben der Payload-Schnittstelle /api/[...slug]; der feste Pfad hat
  * Vorrang vor dem Sammelpfad. Bewusst nur POST: Es gibt keine Liste und keinen
@@ -31,6 +34,7 @@ import { speichernMoeglich } from '@/lib/umgebung';
 const MAX_ANFRAGE_BYTES = MAX_PDF_BYTES + 256 * 1024;
 
 const kategorieSchema = z.enum(UPLOAD_KATEGORIEN);
+const steckplatzSchema = z.enum(UPLOAD_STECKPLAETZE);
 
 function antwort(status: number, body: Record<string, unknown>): Response {
   return Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
@@ -110,6 +114,17 @@ export async function POST(request: Request): Promise<Response> {
     return fehler(400, 'Es fehlt die Angabe, um welche Unterlage es sich handelt. Bitte laden Sie die Seite neu.');
   }
 
+  // Steckplatz (FA-KERN-02): freiwillig, aber wenn angegeben, dann gültig und passend zur Kategorie.
+  const steckplatzRoh = formular.get('steckplatz');
+  let steckplatz: z.infer<typeof steckplatzSchema> | undefined;
+  if (steckplatzRoh !== null && steckplatzRoh !== '') {
+    const geprueft = steckplatzSchema.safeParse(steckplatzRoh);
+    if (!geprueft.success || !steckplatzPasst(kategorie.data, geprueft.data)) {
+      return fehler(400, 'Die Datei passt nicht zu diesem Feld. Bitte laden Sie die Seite neu und wählen Sie die Datei erneut aus.');
+    }
+    steckplatz = geprueft.data;
+  }
+
   // Maßgeblich ist der Inhalt: Endung und Typangabe des Browsers zählen nicht.
   const daten = new Uint8Array(await datei.arrayBuffer());
   const pruefung = pruefeDatei(daten, kategorie.data);
@@ -123,7 +138,8 @@ export async function POST(request: Request): Promise<Response> {
       typ: pruefung.typ,
       dateiname: saeubereDateiname(datei.name, pruefung.typ.endung),
       kategorie: kategorie.data,
-      aufbewahrenBis: aufbewahrenBis(kategorie.data, settings.retentionDays),
+      ...(steckplatz ? { steckplatz } : {}),
+      aufbewahrenBis: aufbewahrenBis(kategorie.data, settings.retentionDays, new Date(), steckplatz),
       uploadSchluesselHash: hash,
     });
 

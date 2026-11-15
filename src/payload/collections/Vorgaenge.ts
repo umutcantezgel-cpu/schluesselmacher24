@@ -7,6 +7,30 @@ import { bestaetigungSenden } from '../hooks/bestaetigung-senden';
 import { druckansichten } from '../hooks/druckansichten';
 import { terminAktionen } from '../hooks/termin-aktionen';
 import { vorgangNachAenderung, vorgangVorAenderung } from '../hooks/vorgang-benachrichtigen';
+import { KATEGORIE_LABEL } from '../../lib/druckansichten';
+import { unterlagenHinweis } from '../../lib/server/unterlagen-pflicht';
+import type { UploadRef } from '../../lib/types';
+import { dateiBezeichnung } from '../../lib/wege/nachweis';
+
+/**
+ * Übersicht der Unterlagen im Vorgang (FA-KERN-02): je Datei der Steckplatz, dazu der Hinweis, wenn ein
+ * Pflicht-Steckplatz fehlt (etwa bei älteren Vorgängen). `null`, wenn es nichts zu zeigen gibt.
+ */
+export function steckplatzUebersicht(daten: Record<string, unknown> | null | undefined): string | null {
+  if (!daten) return null;
+  const uploads = Array.isArray(daten.uploads) ? (daten.uploads as UploadRef[]) : [];
+  const zeilen = uploads.map(
+    (datei) => `${dateiBezeichnung(datei, KATEGORIE_LABEL)}: ${datei.fileName}${datei.storageKey ? '' : ' (nicht gespeichert)'}`,
+  );
+  const hinweis = unterlagenHinweis({
+    kind: String(daten.art ?? ''),
+    area: String(daten.bereich ?? ''),
+    payload: (daten.daten as Record<string, unknown> | null | undefined) ?? {},
+    uploads,
+  });
+  if (hinweis) zeilen.push(`Hinweis: ${hinweis}`);
+  return zeilen.length ? zeilen.join('\n') : null;
+}
 
 export { VORGANG_STATUS };
 
@@ -256,6 +280,19 @@ export const Vorgaenge: CollectionConfig = {
               label: 'Hochgeladene Dateien',
               admin: nurLesen,
               ...systemFeld,
+            },
+            {
+              // Dateien mit ihrem Steckplatz und Hinweis auf fehlende Pflicht-Steckplätze (FA-KERN-02).
+              // Nur Anzeige, nicht gespeichert (virtuell, keine Migration).
+              name: 'unterlagenSteckplaetze',
+              type: 'textarea',
+              label: 'Unterlagen nach Steckplatz',
+              virtual: true,
+              admin: {
+                readOnly: true,
+                condition: (data) => steckplatzUebersicht(data) !== null,
+              },
+              hooks: { afterRead: [({ siblingData }) => steckplatzUebersicht(siblingData)] },
             },
             {
               name: 'termin',

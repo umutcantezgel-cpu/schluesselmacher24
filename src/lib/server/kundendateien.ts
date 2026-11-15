@@ -3,7 +3,7 @@ import { randomBytes } from 'node:crypto';
 import { sql, type PostgresAdapter } from '@payloadcms/db-postgres';
 import type { Payload, PayloadRequest } from 'payload';
 
-import type { Settings } from '@/lib/types';
+import type { Settings, UploadSteckplatz } from '@/lib/types';
 
 import { KUNDENDATEI_ID_MUSTER, type Dateityp, type UploadKategorie } from './datei-pruefung';
 
@@ -44,8 +44,23 @@ const FRIST_JE_KATEGORIE: Record<UploadKategorie, keyof Fristen> = {
   vollmacht: 'vehicleRegistration',
 };
 
-export function aufbewahrenBis(kategorie: UploadKategorie, fristen: Fristen, jetzt = new Date()): Date {
-  const tage = Math.trunc(Number(fristen[FRIST_JE_KATEGORIE[kategorie]]));
+/**
+ * Steckplätze mit eigener Frist (FA-KERN-02): Ersatznachweis und Typenschild sind Nachweise der
+ * Berechtigung und fallen unter „Fahrzeugschein und Nachweise“, auch wenn sie als Dokument kommen.
+ * Alle anderen Steckplätze folgen der Frist ihrer Kategorie.
+ */
+const FRIST_JE_STECKPLATZ: Partial<Record<UploadSteckplatz, keyof Fristen>> = {
+  ersatznachweis: 'vehicleRegistration',
+  typenschild: 'vehicleRegistration',
+};
+
+/** Frist einer Unterlage: erst der Steckplatz, dann die Kategorie. */
+export function fristArt(kategorie: UploadKategorie, steckplatz?: UploadSteckplatz | null): keyof Fristen {
+  return (steckplatz ? FRIST_JE_STECKPLATZ[steckplatz] : undefined) ?? FRIST_JE_KATEGORIE[kategorie];
+}
+
+export function aufbewahrenBis(kategorie: UploadKategorie, fristen: Fristen, jetzt = new Date(), steckplatz?: UploadSteckplatz | null): Date {
+  const tage = Math.trunc(Number(fristen[fristArt(kategorie, steckplatz)]));
   // Mindestens ein Tag: sonst verschwände die Datei, bevor das Formular abgeschickt ist.
   const sicher = Number.isFinite(tage) ? Math.min(Math.max(tage, 1), 3650) : 1;
   return new Date(jetzt.getTime() + sicher * TAG_MS);
@@ -96,6 +111,8 @@ export interface NeueKundendatei {
   /** Bereits gesäubert, mit Endung. */
   dateiname: string;
   kategorie: UploadKategorie;
+  /** Steckplatz (FA-KERN-02), vom Server geprüft; fehlt bei Formularen ohne Steckplätze. */
+  steckplatz?: UploadSteckplatz;
   aufbewahrenBis: Date;
   /** Hash des Upload-Schlüssels (access-token.ts). */
   uploadSchluesselHash: string;
@@ -109,6 +126,7 @@ export interface GespeicherteKundendatei {
   sizeBytes: number;
   mimeType: string;
   category: UploadKategorie;
+  steckplatz?: UploadSteckplatz;
 }
 
 export async function speichereKundendatei(neu: NeueKundendatei): Promise<GespeicherteKundendatei> {
@@ -121,6 +139,7 @@ export async function speichereKundendatei(neu: NeueKundendatei): Promise<Gespei
     collection: 'kundendateien',
     data: {
       kategorie: neu.kategorie,
+      ...(neu.steckplatz ? { steckplatz: neu.steckplatz } : {}),
       aufbewahrenBis: neu.aufbewahrenBis.toISOString(),
       uploadSchluesselHash: neu.uploadSchluesselHash,
     },
@@ -134,7 +153,48 @@ export async function speichereKundendatei(neu: NeueKundendatei): Promise<Gespei
     sizeBytes: doc.filesize ?? daten.byteLength,
     mimeType: doc.mimeType ?? neu.typ.mimeType,
     category: doc.kategorie,
+    ...(doc.steckplatz ? { steckplatz: doc.steckplatz } : {}),
   };
+}
+
+/* ---------- Prüfen vor dem Absenden ------------------------------------- */
+
+/** Was der Server zu einer hochgeladenen Datei gespeichert hat. */
+export interface GepruefteKundendatei {
+  kategorie: UploadKategorie;
+  steckplatz: UploadSteckplatz | null;
+}
+
+/**
+ * Liest zu jedem Verweis die gespeicherte Kundendatei, ohne etwas zu ändern (FA-KERN-02). Nur eine
+ * noch keinem Vorgang zugeordnete Datei mit passendem Einmal-Schlüssel zählt; sonst steht `null` an
+ * dieser Stelle. So übernimmt die Pflichtprüfung Kategorie und Steckplatz nie aus dem Browser.
+ */
+export async function kundendateienPruefen({
+  uploads,
+  payload: payloadArg,
+}: {
+  uploads: UploadVerweis[];
+  payload?: Payload;
+}): Promise<Array<GepruefteKundendatei | null>> {
+  const payload = await payloadAus(payloadArg);
+  const { verifyAccessToken } = await import('./access-token');
+  const ergebnis: Array<GepruefteKundendatei | null> = [];
+  for (const upload of uploads.slice(0, 50)) {
+    const id = alsId(upload.id);
+    if (id === null) {
+      ergebnis.push(null);
+      continue;
+    }
+    const doc = await payload.findByID({ collection: 'kundendateien', id, depth: 0, overrideAccess: true, disableErrors: true });
+    const hash = doc?.uploadSchluesselHash;
+    if (!doc || doc.vorgang != null || !hash || !verifyAccessToken(upload.uploadToken, hash)) {
+      ergebnis.push(null);
+      continue;
+    }
+    ergebnis.push({ kategorie: doc.kategorie, steckplatz: (doc.steckplatz as UploadSteckplatz | null | undefined) ?? null });
+  }
+  return ergebnis;
 }
 
 /* ---------- Zuordnen zum Vorgang ---------------------------------------- */

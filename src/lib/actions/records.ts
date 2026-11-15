@@ -13,7 +13,15 @@ import { createRecord, verifyCarKeyBooking, type GepruefteAngaben } from '@/lib/
 import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
 import { publicRecordSchema, terminZustimmungenSchema, type TerminZustimmungen } from '@/lib/server/record-schema';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
-import { fahrzeugscheinPruefen, nachweisPruefen, rubrikUnterlagenPruefen } from '@/lib/server/unterlagen-pflicht';
+import {
+  fahrzeugFall,
+  fehlendePflichtunterlagen,
+  nachweisPruefen,
+  rubrikUnterlagenPruefen,
+  unterlagenMeldung,
+  unterlagenWeg,
+  type UnterlagenWeg,
+} from '@/lib/server/unterlagen-pflicht';
 import { QUELLE_RUBRIK, fotoAnfrageVerlangtKarte, vorOrtOhneBerechtigung } from '@/lib/wege/nachweis';
 import { CODE_ANFRAGE_QUELLE, codeAnfragePruefen, mitGeprueftemCode } from '@/lib/wege/code-anfrage';
 import type {
@@ -82,6 +90,66 @@ const BEGLEITSCHEIN_SPAETER =
   'Den Begleitschein konnten wir gerade nicht erzeugen. Sie finden ihn auf Ihrer Vorgangsseite; '
   + 'den Link dorthin schicken wir Ihnen per E-Mail. Bitte schicken Sie Ihren Schlüssel erst mit dem Begleitschein ein.';
 
+const STECKPLATZ_GEFAELSCHT =
+  'Die Zuordnung Ihrer Fotos und Unterlagen stimmt nicht. Bitte laden Sie sie in den einzelnen Feldern erneut hoch.';
+
+const UNTERLAGEN_NICHT_PRUEFBAR =
+  'Ihre Unterlagen konnten gerade nicht geprüft werden. Bitte versuchen Sie es in einigen Minuten erneut.';
+
+const TASTEN_FEHLT = 'Bitte geben Sie an, wie viele Tasten der Schlüssel hat.';
+const STUECKZAHL_UNGUELTIG = 'Bitte geben Sie eine Stückzahl von 1 bis 20 an.';
+const TASTEN_ANTWORTEN = new Set(['1-2', '3-4', 'unklar']);
+
+type UploadEingabe = SubmitInput['uploads'][number];
+
+/**
+ * Steckplatz und Kategorie aus der gespeicherten Kundendatei (FA-KERN-02, A-048): nie aus dem Browser.
+ * Mit Dateiablage liest der Server jede Datei mit Kennung und Einmal-Schlüssel nach. Passt die Angabe des
+ * Browsers nicht zum gespeicherten Steckplatz oder nennt er dieselbe Datei zweimal, lehnt er ab. Eine
+ * Datei, die sich nicht bestätigen lässt, zählt nicht als hochgeladen. Ohne Ablage bleibt die Angabe des
+ * Browsers, geprüft nur auf Steckplatz und Kategorie (record-schema.ts).
+ */
+async function unterlagenAusAblage(uploads: UploadEingabe[]): Promise<{ ok: true; uploads: UploadEingabe[] } | { ok: false; error: string }> {
+  if (!storageStatus().configured) return { ok: true, uploads };
+  const verweise = uploads.flatMap((upload, index) =>
+    upload.storageKey && upload.uploadToken ? [{ index, id: upload.storageKey, uploadToken: upload.uploadToken }] : [],
+  );
+  if (verweise.length === 0) return { ok: true, uploads };
+  if (new Set(verweise.map((v) => v.id)).size !== verweise.length) return { ok: false, error: STECKPLATZ_GEFAELSCHT };
+  let geprueft: Awaited<ReturnType<typeof import('@/lib/server/kundendateien').kundendateienPruefen>>;
+  try {
+    const { kundendateienPruefen } = await import('@/lib/server/kundendateien');
+    geprueft = await kundendateienPruefen({ uploads: verweise.map(({ id, uploadToken }) => ({ id, uploadToken })) });
+  } catch (fehler) {
+    console.error('[vorgang] Unterlagen nicht prüfbar', fehler);
+    return { ok: false, error: UNTERLAGEN_NICHT_PRUEFBAR };
+  }
+  const neu = uploads.map((upload) => ({ ...upload }));
+  for (const [stelle, verweis] of verweise.entries()) {
+    const datei = geprueft[stelle];
+    const upload = neu[verweis.index];
+    if (!datei) {
+      delete upload.storageKey;
+      delete upload.uploadToken;
+      continue;
+    }
+    if (datei.kategorie !== upload.category || (datei.steckplatz ?? undefined) !== (upload.steckplatz ?? undefined)) {
+      return { ok: false, error: STECKPLATZ_GEFAELSCHT };
+    }
+  }
+  return { ok: true, uploads: neu };
+}
+
+/** Pflichtunterlagen nach der einen Regel (unterlagen-pflicht.ts): Meldung, die sagt, was fehlt, oder `null`. */
+function pflichtMeldung(
+  vorgang: { kind: RecordKind; area: AreaKey; payload: Record<string, unknown>; workingKeys?: number | null },
+  uploads: UploadEingabe[],
+): string | null {
+  const fehlt = fehlendePflichtunterlagen(vorgang, uploads, storageStatus().configured);
+  if (fehlt === 'ungueltig') return INVALID_INPUT;
+  return fehlt ? unterlagenMeldung(fehlt) : null;
+}
+
 const ZUSTIMMUNG_FEHLT =
   'Bitte bestätigen Sie im Schritt „Anzahlung“ alle Punkte, um den Termin verbindlich zu buchen.';
 
@@ -145,6 +213,17 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   }
   const data = parsed.data;
 
+  // Wege mit Pflichtunterlagen (FA-KERN-02): Steckplätze aus der Ablage bestätigen, bevor geprüft wird.
+  const weg: UnterlagenWeg | null = unterlagenWeg(data);
+  let uploads = data.uploads;
+  if (weg) {
+    const bestaetigt = await unterlagenAusAblage(uploads);
+    if (!bestaetigt.ok) {
+      return { ok: false, notices: [], error: bestaetigt.error };
+    }
+    uploads = bestaetigt.uploads;
+  }
+
   if (data.kind === 'bestellung') {
     return { ok: false, notices: [], error: 'Bestellungen werden über die Kasse abgeschlossen.' };
   }
@@ -181,8 +260,10 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     if (!data.verify) {
       return { ok: false, notices: [], error: INVALID_INPUT };
     }
-    // Fahrzeugschein ist Pflicht (Leitfaden Kap. 05, Schritt 9) — auch bei Totalverlust.
-    const unterlagen = fahrzeugscheinPruefen(data.uploads, storageStatus().configured);
+    // Pflichtunterlagen (FA-KERN-02): Fahrzeugschein immer, auch bei Totalverlust; die drei Schlüsselfotos,
+    // außer bei ausdrücklich bestätigtem Totalverlust (keine funktionierenden Schlüssel und kein Schlüssel mehr);
+    // eine kurze Beschreibung des Anliegens.
+    const unterlagen = pflichtMeldung({ ...data, workingKeys: data.verify.workingKeys }, uploads);
     if (unterlagen) {
       return { ok: false, notices: [], error: unterlagen };
     }
@@ -233,14 +314,37 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     summary = vorgang.summary;
   }
 
+  // Gehäuse (FA-05-10): Die Tastenzahl ist Pflicht und wird hier geprüft, nicht nur im Browser.
+  if (weg === 'gehaeuse' && !TASTEN_ANTWORTEN.has(String(payload.tasten))) {
+    return { ok: false, notices: [], error: TASTEN_FEHLT };
+  }
+  // Schlüssel nach Vorlage (FA-12-03): Stückzahl 1 bis 20 wie bei der Einsendung.
+  if (weg === 'vorlage') {
+    const stueck = payload.stueckzahl;
+    if (typeof stueck !== 'number' || !Number.isInteger(stueck) || stueck < 1 || stueck > 20) {
+      return { ok: false, notices: [], error: STUECKZAHL_UNGUELTIG };
+    }
+  }
+
+  // Pflichtunterlagen der Anfrage-Wege (FA-KERN-02): Motorrad, Gehäuse, Foto-Anfrage, gemeinsame Fahrzeug-Anfrage.
+  if (weg && weg !== 'termin') {
+    const fehlt = pflichtMeldung({ ...data, payload }, uploads);
+    if (fehlt) {
+      return { ok: false, notices: [], error: fehlt };
+    }
+  }
+
   // Anfragen aus Rubrik-Wegen (Motorrad, Gehäuse): Nachweis und Pflicht-Uploads der Rubrik (R13, G-11).
+  // Bei bestätigtem Totalverlust entfällt das Schlüsselfoto (FA-KERN-02); der Nachweis bleibt.
   const rubrikId = data.kind === 'anfrage' && typeof payload.quelle === 'string' ? QUELLE_RUBRIK[payload.quelle] : undefined;
   if (rubrikId) {
     const rubrik = data.area === 'autoschluessel' ? await getRubrik(rubrikId) : null;
     if (!rubrik) {
       return { ok: false, notices: [], error: INVALID_INPUT };
     }
-    const fehlt = rubrikUnterlagenPruefen(rubrik, data.uploads, storageStatus().configured);
+    const fall = weg === 'motorrad' || weg === 'gehaeuse' ? fahrzeugFall(weg, payload) : null;
+    const pflichtUploads = fall?.keinSchluesselMehr ? rubrik.pflichtUploads.filter((art) => art !== 'schluesselfoto') : rubrik.pflichtUploads;
+    const fehlt = rubrikUnterlagenPruefen({ nachweis: rubrik.nachweis, pflichtUploads }, uploads, storageStatus().configured);
     if (fehlt) {
       return { ok: false, notices: [], error: fehlt };
     }
@@ -269,7 +373,7 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
 
   // Berechtigungsnachweis der Foto-Anfrage (R13, E6-OPUS-01): Wer eine Sicherungskarte angibt, lädt sie hoch.
   if (data.kind === 'anfrage' && data.area === 'schluessel-nach-vorlage' && fotoAnfrageVerlangtKarte(payload)) {
-    const fehlt = nachweisPruefen('sicherungskarte', data.uploads, storageStatus().configured);
+    const fehlt = nachweisPruefen('sicherungskarte', uploads, storageStatus().configured);
     if (fehlt) {
       return { ok: false, notices: [], error: fehlt };
     }
@@ -298,7 +402,7 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     contact: data.contact,
     payload,
     summary,
-    uploads: data.uploads,
+    uploads,
     quote,
     appointment,
     payment,

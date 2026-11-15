@@ -44,6 +44,9 @@ export function fotoAnfrageVerlangtKarte(payload: Record<string, unknown>): bool
   return payload.sicherungskarte === 'ja';
 }
 
+/** Quelle der Foto-Anfrage „Schlüssel nach Vorlage“ (FA-KERN-02); die Pflichtregel erkennt den Weg daran. */
+export const FOTO_ANFRAGE_QUELLE = 'foto-anfrage';
+
 /** Quelle der Einsatz-Anfrage vor Ort (E6-BAUMEISTER-05). */
 export const VOR_ORT_QUELLE = 'vor-ort';
 

@@ -2,6 +2,8 @@ import 'server-only';
 
 import { z } from 'zod';
 
+import { UPLOAD_STECKPLAETZE, steckplatzPasst } from '@/lib/wege/nachweis';
+
 import { KUNDENDATEI_ID_MUSTER, UPLOAD_KATEGORIEN, UPLOAD_TOKEN_MUSTER } from './datei-pruefung';
 
 /* Prüfregeln für alles, was aus dem Browser in einen Vorgang gelangt. */
@@ -54,7 +56,10 @@ export const uploadMetaSchema = z
       // Ob beides zusammenpasst, prüft erst die Zuordnung zum Vorgang.
       storageKey: z.string().regex(KUNDENDATEI_ID_MUSTER).optional(),
       uploadToken: z.string().regex(UPLOAD_TOKEN_MUSTER).optional(),
-    }),
+      // Steckplatz (FA-KERN-02): muss zur Kategorie passen. Mit Dateiablage gilt nur, was der Server
+      // beim Hochladen gespeichert hat (records.ts, kundendateienPruefen).
+      steckplatz: z.enum(UPLOAD_STECKPLAETZE).optional(),
+    }).refine((upload) => steckplatzPasst(upload.category, upload.steckplatz), 'Steckplatz und Art der Datei passen nicht zusammen.'),
   )
   .max(30);
 

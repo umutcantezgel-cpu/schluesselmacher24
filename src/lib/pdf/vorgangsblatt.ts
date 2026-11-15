@@ -13,6 +13,7 @@ import { DIENSTLEISTER } from '../mail/vorlagen/status';
 import { vorgangOrtText } from '../terminort';
 import type { BusinessRecord, CompanyProfile, PriceQuote, RecordConsents, RecordStatus, UploadRef } from '../types';
 import { STATUS_LABEL } from '../vorgang-status';
+import { dateiBezeichnung } from '../wege/nachweis';
 
 import { schnappschussAusVorgang } from '../konfigurator/vorgang';
 import type { Blatt, BlattAbschnitt, BlattBild, BlattZeile } from './blatt';
@@ -266,7 +267,8 @@ export function vorgangsblattInhalt({ vorgang, firma, bilder = [], jetzt = new D
         kopf: ['Art', 'Datei', 'Ablage'],
         breiten: [0.26, 0.5, 0.24],
         zeilen: vorgang.uploads.map((datei) => [
-          KATEGORIE_LABEL[datei.category] ?? datei.category,
+          // Steckplatz statt nur der Art (FA-KERN-02); ältere Dateien zeigen ihre Art.
+          dateiBezeichnung(datei, KATEGORIE_LABEL),
           datei.fileName,
           datei.storageKey
             ? bildNamen.has(datei.fileName) && namenAnzahl.get(datei.fileName) === 1 && VORSCHAU_ARTEN.includes(datei.category)

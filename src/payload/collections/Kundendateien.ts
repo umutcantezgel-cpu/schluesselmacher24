@@ -1,6 +1,7 @@
 import path from 'node:path';
 import type { CollectionConfig } from 'payload';
 
+import { STECKPLATZ_LABEL, UPLOAD_STECKPLAETZE } from '../../lib/wege/nachweis';
 import { istInhaber, istTeam } from '../access/rollen';
 
 /**
@@ -14,7 +15,7 @@ export const Kundendateien: CollectionConfig = {
   admin: {
     group: 'Aufträge',
     useAsTitle: 'filename',
-    defaultColumns: ['filename', 'kategorie', 'vorgang', 'aufbewahrenBis', 'createdAt'],
+    defaultColumns: ['filename', 'kategorie', 'steckplatz', 'vorgang', 'aufbewahrenBis', 'createdAt'],
     description: 'Von Kunden hochgeladene Unterlagen. Werden nach Ablauf der Aufbewahrungsfrist gelöscht.',
   },
   access: {
@@ -43,6 +44,16 @@ export const Kundendateien: CollectionConfig = {
         { label: 'Sicherungskarte', value: 'sicherungskarte' },
         { label: 'Vollmacht', value: 'vollmacht' },
       ],
+    },
+    {
+      // Steckplatz (FA-KERN-02, A-048): welche Aufnahme oder Unterlage die Datei ist. Setzt nur der
+      // Upload-Weg nach seiner Prüfung; ältere Dateien haben keinen.
+      name: 'steckplatz',
+      type: 'select',
+      label: 'Steckplatz',
+      options: UPLOAD_STECKPLAETZE.map((value) => ({ label: STECKPLATZ_LABEL[value], value })),
+      admin: { readOnly: true },
+      access: { update: () => false },
     },
     { name: 'vorgang', type: 'relationship', relationTo: 'vorgaenge', label: 'Vorgang', index: true },
     {
