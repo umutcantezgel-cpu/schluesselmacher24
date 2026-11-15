@@ -14,20 +14,20 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 |---|---|---|---|---|
 | FA-SOFORT-01 | Ein Markenorange statt Blau, die 24 orange | FA-04 | nein | committet 65a74e9 |
 | FA-SOFORT-02 | Erreichbarkeit statt Öffnungszeiten; Adresse Langgasse 61; Satz der Startseite | FA-23, FA-24, FA-03 (Sprache) | ja (klein) | committet b14913a |
-| FA-SOFORT-03 | Leistung „Schlüssel nach Foto“ entfernen, Rubrik „Schlüssel nach Vorlage“ | FA-03, FA-12 | nein (Datenmigration Kennung) | committet 9c61bca (DB und Build mit der Welle) |
-| FA-SOFORT-04 | Demo-Daten raus: Beispiel-Codelinien und Beispielartikel nie live, „Code anfragen“ | FA-10-02, FA-11-02, FA-11-17 | nein | läuft |
-| FA-SOFORT-05A | Vier Fach-Icons: Roller, E-Scooter, Seniorenmobil, Fahrradschlüssel | FA-03 | nein | läuft |
+| FA-SOFORT-03 | Leistung „Schlüssel nach Foto“ entfernen, Rubrik „Schlüssel nach Vorlage“ | FA-03, FA-12 | nein (Datenmigration Kennung) | committet 9c61bca, Migration berichtigt 01fb7cc |
+| FA-SOFORT-04 | Demo-Daten raus: Beispiel-Codelinien und Beispielartikel nie live, „Code anfragen“ | FA-10-02, FA-11-02, FA-11-17 | nein | committet 97087fe |
+| FA-SOFORT-05A | Vier Fach-Icons: Roller, E-Scooter, Seniorenmobil, Fahrradschlüssel | FA-03 | nein | committet 93273e0 |
 | FA-SOFORT-05 | Hauptzugänge im Hub nach FA-03 (14 Einträge), Rubriken und Navigation; die Anfragewege baut FA-KERN-02 | FA-03, FA-06-05/06/14 | ja (Rubrik-Werte) | offen, nach FA-KERN-02 |
 
 ## Priorität 2 · Kern
 | Paket | Inhalt | Anforderungen | Schema | Status |
 |---|---|---|---|---|
-| FA-KERN-01 | Fahrzeugdatenbank: Fahrzeugklasse, Generationen mit Bauzeitraum, Quelle je Zeile, Importweg aus amtlicher und offener Quelle, Suche über alle Klassen, Marken A bis Z mit Untermarken | FA-06-01 bis -08, -U3 | ja | offen, wartet auf Recherche 01 |
+| FA-KERN-01 | Fahrzeugdatenbank: Fahrzeugklasse, Generationen mit Bauzeitraum, Quelle je Zeile, Importweg aus amtlicher und offener Quelle, Suche über alle Klassen, Marken A bis Z mit Untermarken | FA-06-01 bis -08, -U3 | ja | läuft |
 | FA-KERN-02 | Pflichtuploads serverseitig (Fahrzeugschein, drei Schlüsselfotos, Beschreibung) in allen Fahrzeugschlüssel-Wegen; „Fahrzeug nicht gefunden?“ überall mit Telefon und direkter Hilfe; Ersatzunterlage bei Kleinstfahrzeugen | FA-06-09 bis -17, -U1, -U2, FA-05-10, FA-05-11, FA-12-01, FA-12-03 | nein | offen |
 | FA-KERN-03 | Auftragsweg und Zahlung: Hauptzentrale, Eigenbereich, Partner aus Postleitzahl und Terminort; Anzahlung 69,90 nur im Direktweg; Partnerauftrag erst nach Vollzahlung; Anzeige vor der Zahlung; Restbetrag | FA-05-12 bis -16, -20, FA-22-17 bis -19 | ja | offen |
 | FA-KERN-04 | Partnerauszahlung im Admin: Partnerbetrag, Plattformanteil, Status bis „zur Auszahlung freigegeben“, Freigabe nach Bestätigung, Storno und Rückzahlung mit eindeutigem Stand | FA-05-17 bis -19, FA-22-20 bis -24, -27 | ja | offen, nach FA-KERN-03 und Recherche 04 |
 | FA-KERN-05 | Admin Alltag: Kundenkontakt aus dem Auftrag mit Verlauf, Verfügbarkeit, Lieferzeit, Bestellung bearbeiten, Duplizieren geprüft | FA-22-02, -09, -10, -12, -13, -15, -16 | ja | offen |
-| FA-KERN-06 | Mail: alle Systemmails mit der Domainadresse, Prüfung in der Livegang-Prüfung; Anleitung Zoho, SPF, DKIM, DMARC | FA-24 | nein | offen |
+| FA-KERN-06 | Mail: alle Systemmails mit der Domainadresse, Prüfung in der Livegang-Prüfung; Anleitung Zoho, SPF, DKIM, DMARC | FA-24 | nein | läuft |
 
 ## Priorität 3 · Shop
 | Paket | Inhalt | Anforderungen | Schema | Status |
@@ -41,7 +41,7 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 | Paket | Inhalt | Anforderungen | Schema | Status |
 |---|---|---|---|---|
 | FA-PLATTFORM-01 | Partnernetz nur für Autoschlüssel: Leistungen nach FA-07, Qualitätskontrolle mit Besuch vor Ort, Pausieren wirkt, Region zuordnen, Lead-Verlauf | FA-07, FA-08-09 bis -15, FA-22-36 bis -41 | ja | offen |
-| FA-PLATTFORM-02 | Partnergewinnung: Startseiten-Sektion „Autoschlüssel Profi? Partner werden“, fünf Seiten mit eigenem Anliegen | FA-08-01 bis -08 | nein | committet 4f494ef; Einbindung in Startseite, Fuß und Sitemap folgt mit der Welle |
+| FA-PLATTFORM-02 | Partnergewinnung: Startseiten-Sektion „Autoschlüssel Profi? Partner werden“, fünf Seiten mit eigenem Anliegen | FA-08-01 bis -08 | nein | committet 4f494ef, Einbindung in Startseite, Fuß und Sitemap mit 97087fe |
 | FA-PLATTFORM-03 | Ortsdatenbasis: amtliches Gemeindeverzeichnis importierbar, Stadt, Landkreis, Postleitzahl, Partnerregion verknüpft; Anhang A als Prioritätsliste; Veröffentlichung nur mit Substanz | FA-09, Anhang A, FA-AB-05 | ja | offen, wartet auf Recherche 02 |
 | FA-PLATTFORM-04 | Unterschrift des Partnervertrags als Upload (Rest aus E7-OPUS-01 Teil 3) | G-39 | nein | offen |
 
@@ -50,7 +50,7 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 |---|---|---|---|---|
 | FA-INHALT-01 | Tutorials: Rubrik, zehn Themen als Struktur, YouTube-Einbettung mit Einwilligung, im Admin ohne Entwickler pflegbar, Videos auf Leistungsseiten | FA-21, FA-22-32 | ja | offen |
 | FA-INHALT-02 | Hersteller und Systeme früh sichtbar: Bereich auf der Startseite, BKS, ABUS, BURG-WÄCHTER sachlich; Logos erst nach Freigabe | FA-17-02, -03, -20, FA-19 | ja (Logo-Feld) | offen, wartet auf Recherche 06 |
-| FA-INHALT-03 | Texte menschlicher: kurze, klare Sätze auf Leistungsseiten, Gegenprüfung durch zwei unabhängige Leser, ohne Gedankenstriche | FA-02 | nein | Gruppe A (sieben Autoschlüssel-Leistungsseiten) läuft; weitere Gruppen offen |
+| FA-INHALT-03 | Texte menschlicher: kurze, klare Sätze auf Leistungsseiten, Gegenprüfung durch zwei unabhängige Leser, ohne Gedankenstriche | FA-02 | nein | Gruppe A (sieben Autoschlüssel-Leistungsseiten) und Gruppe B (Sicherheitstechnik, Tür- und Schließtechnik) laufen; weitere Gruppen offen |
 | FA-INHALT-04 | Bilder: Vorher-Nachher-Baustein, Logo unten rechts für eigene Fotos, Alt-Text-Pflicht, Hinweise zu Kennzeichen und Personen | FA-20 | ja | offen; Fotos fehlen (MA-05) |
 | FA-INHALT-05 | Schließanlagen, Zutritt, Sicherheitstechnik: Zielgruppen, Erweiterbarkeit, Hinweis zu Ton und Aufzeichnung (FA-16-21 Erklärtexte pflegbar bleibt offen) | FA-16-06, -09, FA-17-18, FA-18-09, -13, -14 | nein | committet f54ce64 |
 
