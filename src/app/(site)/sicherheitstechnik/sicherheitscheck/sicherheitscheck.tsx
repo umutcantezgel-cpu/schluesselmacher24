@@ -10,6 +10,8 @@ import { aktionMelden } from '@/lib/statistik';
 import { Alert } from '@/components/ui/alert';
 import { InfoTip } from '@/components/ui/info-tip';
 import { Field } from '@/components/forms/field';
+import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
@@ -412,12 +414,24 @@ function LegalNotice({ className }: { className?: string }) {
 
 /* ---------- Ablauf ------------------------------------------------------- */
 
+/** Was im Schritt noch fehlt, in einem Satz (FA-QA-02); die Angaben, die die Prüfung verlangt. */
+const GESPERRT: Record<string, string> = {
+  objekt: 'Bitte wählen Sie die Objektart.',
+  zugaenge: 'Bitte geben Sie an, wie viele Zugänge von außen es gibt (mindestens 1).',
+  bestand: 'Bitte wählen Sie, was bereits vorhanden ist, oder „Nichts vorhanden“ oder „Unbekannt“.',
+  schwerpunkte: 'Bitte wählen Sie mindestens einen Schwerpunkt.',
+  netz: 'Bitte beantworten Sie die vier Fragen zu Internet, WLAN, App-Steuerung und Protokollen. „Weiß ich nicht“ ist erlaubt.',
+  rahmen: 'Bitte sagen Sie uns, ob Sie einen Vor-Ort-Termin anfragen möchten.',
+  kontakt: 'Bitte füllen Sie Vorname, Nachname, E-Mail, Telefon und Land aus und stimmen Sie der Datenschutzerklärung zu.',
+  zusammenfassung: 'Bitte füllen Sie Vorname, Nachname, E-Mail, Telefon und Land aus und stimmen Sie der Datenschutzerklärung zu.',
+};
+
 export interface SicherheitscheckProps {
   /** Aufbewahrungsfristen aus den Einstellungen, in Tagen. */
   retention: { floorPlans: number; objectPhotos: number };
 }
 
-export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
+export function Sicherheitscheck({ retention, hilfe }: SicherheitscheckProps) {
   const [objectPhotos, setObjectPhotos] = useState<PickedFile[]>([]);
   const [floorPlans, setFloorPlans] = useState<PickedFile[]>([]);
   const [submitting, setSubmitting] = useState(false);
@@ -640,13 +654,11 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
       submitLabel="Anfrage absenden"
       onSubmit={handleSubmit}
       submitting={submitting}
-      blockedHint="Bitte füllen Sie die Pflichtangaben dieses Schrittes aus."
+      blockedHint={GESPERRT[flow.step?.id ?? '']}
+      ungesichert={objectPhotos.length > 0 || floorPlans.length > 0}
+      mitDateien
     >
-      {error && (
-        <Alert tone="warning" title="Senden nicht möglich" className="mb-5" role="alert">
-          {error}
-        </Alert>
-      )}
+      {error && <AbsendeFehler fehler={error} hilfe={hilfe} titel="Senden nicht möglich" className="mb-5" />}
 
       {/* 1 Objektart */}
       {flow.step?.id === 'objekt' && (
@@ -926,6 +938,11 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
         </div>
       )}
 
+      {/* Technische Fragen ohne Fachwissen: Telefon und Rückruf (FA-QA-02). */}
+      {flow.step?.id === 'netz' && (
+        <HilfeBlock hilfe={hilfe} stelle="technik" satz="Wählen Sie „Weiß ich nicht“, wenn Sie unsicher sind. Wir klären das mit Ihnen." className="mt-8" />
+      )}
+
       {/* 7 Unterlagen */}
       {flow.step?.id === 'unterlagen' && (
         <div className="space-y-8">
@@ -964,6 +981,7 @@ export function Sicherheitscheck({ retention }: SicherheitscheckProps) {
             Ohne Unterlagen geht es auch weiter. Wir klären die offenen Punkte dann schriftlich oder
             bei einem Termin vor Ort.
           </Alert>
+          <HilfeBlock hilfe={hilfe} stelle="unterlagen" titel="Unsicher, was Sie hochladen sollen?" spaeter mitDateien />
         </div>
       )}
 

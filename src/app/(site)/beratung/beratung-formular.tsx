@@ -5,6 +5,8 @@ import { useMemo, useState } from 'react';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { Field } from '@/components/forms/field';
+import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
@@ -63,7 +65,7 @@ function kontaktAus(d: BeratungDaten): ContactDetails {
 }
 
 /** Rückruf-Anfrage „Beratung“ (G-34): drei Schritte, danach die gemeinsame Bestätigung. */
-export function BeratungFormular() {
+export function BeratungFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
   const [fotos, setFotos] = useState<PickedFile[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<SubmitResult | null>(null);
@@ -148,12 +150,10 @@ export function BeratungFormular() {
       onSubmit={absenden}
       submitting={submitting}
       blockedHint={gesperrt[flow.step?.id ?? ''] ?? 'Bitte füllen Sie die Pflichtangaben dieses Schrittes aus.'}
+      ungesichert={fotos.length > 0}
+      mitDateien
     >
-      {fehler && (
-        <Alert tone="warning" title="Das hat nicht geklappt" className="mb-6" role="alert">
-          {fehler}
-        </Alert>
-      )}
+      {fehler && <AbsendeFehler fehler={fehler} hilfe={hilfe} titel="Das hat nicht geklappt" />}
 
       {flow.step?.id === 'anliegen' && (
         <div className="max-w-3xl space-y-6">
@@ -206,6 +206,9 @@ export function BeratungFormular() {
             maxFiles={3}
             allowDocuments
           />
+
+          {/* Wer nicht schreiben mag, ruft direkt an (FA-QA-02). Ein Rückruf-Verweis entfällt: Das ist er. */}
+          <HilfeBlock hilfe={hilfe} stelle="anliegen" titel="Lieber gleich anrufen?" satz="Sie müssen nicht alles aufschreiben. Rufen Sie uns an." rueckruf={false} />
         </div>
       )}
 

@@ -5,10 +5,11 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { ButtonLink } from '@/components/ui/button';
-import { getRubrik } from '@/lib/data';
+import { getRubrik, getSettings } from '@/lib/data';
 
 import { BeratungFormular } from './beratung-formular';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
 
 export const metadata: Metadata = {
   title: 'Allgemeine Anfrage und Beratung',
@@ -98,7 +99,7 @@ export default async function BeratungPage() {
           lead="Sie nennen Ihr Anliegen und einen Zeitraum. Wir rufen Sie unter Ihrer Telefonnummer an."
         />
         <div className="mt-8 max-w-3xl">
-          <BeratungFormular />
+          <BeratungFormular hilfe={hilfeAus(await getSettings())} />
         </div>
       </Section>
     </>

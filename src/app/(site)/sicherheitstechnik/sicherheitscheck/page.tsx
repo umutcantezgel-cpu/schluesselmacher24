@@ -9,6 +9,7 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { IconSicherheitscheck } from '@/components/visual/icons/sicherheitscheck';
 import { Sicherheitscheck } from './sicherheitscheck';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
 
 const ROUTE = 'sicherheitstechnik/sicherheitscheck';
 
@@ -76,6 +77,7 @@ export default async function SicherheitscheckPage() {
 
       <div className="shell py-8 md:py-12">
         <Sicherheitscheck
+          hilfe={hilfeAus(settings)}
           retention={{
             floorPlans: settings.retentionDays.floorPlans,
             objectPhotos: settings.retentionDays.projectDocuments,
