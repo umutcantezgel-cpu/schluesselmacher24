@@ -15,6 +15,13 @@ import { ButtonLink } from '@/components/ui/button';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { GewinnungLink, PunktListe } from '@/components/partner/gewinnung-seite';
+import {
+  GEWINNUNG_SEITEN,
+  HAUPTSEITE_ZAHLWEG,
+  NUR_FAHRZEUGSCHLUESSEL,
+  PARTNER_LEISTUNGEN,
+} from '@/lib/partner/gewinnung';
 
 import { PartnerFormular } from './partner-formular';
 
@@ -23,23 +30,27 @@ const ROUTE = 'partner-werden';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Partner werden – Auftragsvermittlung für Fachbetriebe',
+    title: page?.seo.title ?? 'Autoschlüssel-Partner werden',
     description:
       page?.seo.description
-      ?? 'Für Schlüsseldienste und Fachbetriebe: Bewerben Sie sich als Partner von SCHLÜSSELMACHER24. '
-        + 'Wir prüfen Anfragen und vermitteln sie an geprüfte Betriebe vor Ort.',
+      ?? 'Für Fachbetriebe für Autoschlüssel und Fahrzeugschlüssel: Werden Sie Partner von '
+        + 'SCHLÜSSELMACHER24. Wir geben geprüfte Anfragen aus Ihrer Region weiter.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }
 
-/* Ablauf einer Vermittlung (Erg. Leitfaden §6). Die Höhe der Provision steht im Partnervertrag, nicht hier. */
+/*
+ * Ablauf einer Vermittlung (Erg. Leitfaden §6). Die Höhe der Provision steht im Partnervertrag, nicht hier.
+ * Schritte 03 und 04 hängen vom Zahlweg ab und kommen aus `gewinnung.ts`, damit Hauptseite und
+ * Partnerseiten denselben Zahlweg nennen (G9).
+ */
 const ABLAUF: Array<{ icon: ComponentType<IconProps>; title: string; body: string }> = [
   {
     icon: IconPruefung,
     title: 'Wir prüfen die Anfrage',
     body:
       'Kundinnen und Kunden stellen ihre Anfrage bei uns. Wir prüfen sie fachlich und klären, was gebraucht '
-      + 'wird — zum Beispiel Fahrzeug, Schlüsselart und Berechtigung.',
+      + 'wird, zum Beispiel Fahrzeug, Schlüsselart und Berechtigung.',
   },
   {
     icon: IconWerkstatt,
@@ -48,20 +59,8 @@ const ABLAUF: Array<{ icon: ComponentType<IconProps>; title: string; body: strin
       'Passt die Anfrage zu Ihrem Einsatzgebiet und Ihren Leistungen, fragen wir Sie an. Sie übernehmen den '
       + 'Auftrag erst nach Abstimmung mit uns.',
   },
-  {
-    icon: IconZahlung,
-    title: 'Sie führen aus und rechnen ab',
-    body:
-      'Ihr Betrieb führt die Leistung aus und rechnet direkt mit dem Kunden ab. Der Kunde erfährt vorher, '
-      + 'welcher Betrieb ausführt und sein Vertragspartner ist.',
-  },
-  {
-    icon: IconNachweis,
-    title: 'Vermittlungsprovision',
-    body:
-      'Für vermittelte Aufträge stellen wir Ihrem Betrieb eine Vermittlungsprovision in Rechnung. Höhe, '
-      + 'Abrechnung und Reklamationen regelt der Partnervertrag.',
-  },
+  { icon: IconZahlung, title: HAUPTSEITE_ZAHLWEG[0].titel, body: HAUPTSEITE_ZAHLWEG[0].text },
+  { icon: IconNachweis, title: HAUPTSEITE_ZAHLWEG[1].titel, body: HAUPTSEITE_ZAHLWEG[1].text },
 ];
 
 /* Was vor einer Freischaltung geprüft und vereinbart wird (Erg. Leitfaden §7). */
@@ -93,7 +92,7 @@ export default async function PartnerWerdenPage() {
         title={page?.headline ?? 'Partner werden'}
         lead={
           page?.subline
-          ?? 'Wir vermitteln Kundenanfragen aus ganz Deutschland an geprüfte, unabhängige Fachbetriebe vor Ort.'
+          ?? 'Wir geben geprüfte Anfragen zu Autoschlüsseln und Fahrzeugschlüsseln an Fachbetriebe vor Ort weiter.'
         }
         crumbs={[{ href: `/${ROUTE}`, label: 'Partner werden' }]}
         actions={
@@ -103,14 +102,35 @@ export default async function PartnerWerdenPage() {
         }
       >
         {page?.intro && <p className="max-w-measure text-body text-foreground-muted">{page.intro}</p>}
+        <Alert tone="info" title={NUR_FAHRZEUGSCHLUESSEL.titel} className={page?.intro ? 'mt-6 max-w-3xl' : 'max-w-3xl'}>
+          {NUR_FAHRZEUGSCHLUESSEL.text}
+        </Alert>
       </PageHeader>
 
-      <Section labelledBy="ablauf-titel">
+      {/* Leistungsliste des Inhabers (Abschnitt 07, FA-07-02 bis FA-07-12) */}
+      <Section labelledBy="leistungen-titel">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-5">
+            <SectionHeading
+              id="leistungen-titel"
+              nummer="01"
+              eyebrow="Leistungen"
+              title="Leistungen im Partnernetz"
+              lead="Niemand muss alle anbieten. Nennen Sie in der Bewerbung Ihre Leistungen und Geräte."
+            />
+          </div>
+          <div className="lg:col-span-7">
+            <PunktListe punkte={PARTNER_LEISTUNGEN} />
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="muted" labelledBy="ablauf-titel">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:col-span-5">
             <SectionHeading
               id="ablauf-titel"
-              nummer="01"
+              nummer="02"
               eyebrow="Ablauf"
               title="So funktioniert die Vermittlung"
               lead="Wir prüfen jede Anfrage, bevor sie an einen Partnerbetrieb geht. Ihr Betrieb bleibt eigenständig."
@@ -136,22 +156,58 @@ export default async function PartnerWerdenPage() {
         </div>
       </Section>
 
-      <Section tone="muted" labelledBy="pruefung-titel">
+      <Section labelledBy="pruefung-titel">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:col-span-5">
             <SectionHeading
               id="pruefung-titel"
-              nummer="02"
+              nummer="03"
               eyebrow="Vor der Freischaltung"
               title="Wir prüfen jeden Partnerbetrieb"
               lead="Kundinnen und Kunden sollen sich auf jeden vermittelten Betrieb verlassen können."
             />
           </div>
-          <ul className="space-y-3 lg:col-span-7">
-            {PRUEFUNG.map((punkt) => (
-              <li key={punkt} className="flex gap-3">
-                <GlyphHakenKreis size={16} className="mt-0.5 shrink-0 text-primary" />
-                <span className="text-small text-foreground-muted">{punkt}</span>
+          <div className="lg:col-span-7">
+            <ul className="space-y-3">
+              {PRUEFUNG.map((punkt) => (
+                <li key={punkt} className="flex gap-3">
+                  <GlyphHakenKreis size={16} className="mt-0.5 shrink-0 text-primary" />
+                  <span className="text-small text-foreground-muted">{punkt}</span>
+                </li>
+              ))}
+            </ul>
+            {/* Besuch vor Ort, Ausstattung, Region und Radius, Pausieren und Sperren stehen im Qualitätsstandard. */}
+            <Link
+              href="/partner-werden/netzwerk-deutschland#netzwerk-qualitaet"
+              className="group mt-6 inline-flex min-h-touch items-center gap-1.5 text-body font-semibold text-primary"
+            >
+              Der ganze Qualitätsstandard
+              <GlyphPfeilRechts
+                size={16}
+                aria-hidden
+                className="shrink-0 transition-transform duration-quick ease-standard group-hover:translate-x-1"
+              />
+            </Link>
+          </div>
+        </div>
+      </Section>
+
+      {/* Stückliste der Partnerseiten (FA-08-03 bis FA-08-08) */}
+      <Section tone="muted" labelledBy="mehr-titel">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+          <div className="lg:col-span-5">
+            <SectionHeading
+              id="mehr-titel"
+              nummer="04"
+              eyebrow="Mehr für Partner"
+              title="Alles zum Partnernetz"
+              lead="Jede Seite beantwortet eine eigene Frage, bevor Sie sich bewerben."
+            />
+          </div>
+          <ul className="border-t border-border lg:col-span-7">
+            {GEWINNUNG_SEITEN.map((seite) => (
+              <li key={seite.slug} className="border-b border-border">
+                <GewinnungLink href={seite.pfad} label={seite.kurzname} text={seite.kurztext} />
               </li>
             ))}
           </ul>
@@ -161,7 +217,7 @@ export default async function PartnerWerdenPage() {
       <Section id="bewerbung" labelledBy="bewerbung-titel">
         <SectionHeading
           id="bewerbung-titel"
-          nummer="03"
+          nummer="05"
           eyebrow="Bewerbung"
           title="Als Partnerbetrieb bewerben"
           lead="Wenige Angaben genügen. Wir melden uns nach der Prüfung per E-Mail oder Telefon."
