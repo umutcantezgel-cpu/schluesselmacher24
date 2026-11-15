@@ -1,0 +1,32 @@
+# FA-SHOP-02 · Autoschlüsselgehäuse, Reparatur und Customizing: Shopprodukte mit Fahrzeugbezug, Einsendeservice, eigene Rubrik mit Vorher-Nachher und Kompatibilität
+
+Kopf: Etappe FA Priorität 3 · Rolle Baumeister und Autor · Modell Opus · Stufe 3 (Datenmodell) · Kostenklasse L · ändert das Datenschema und nutzt `sicher.sh --pg` · Anforderungen FA-14-01 bis FA-14-10, FA-10-05 bis FA-10-08, FA-20-05, FA-22-29, FA-22-30 · Befunde: `berichte/FA-ABGLEICH.md` Blöcke 07, 05, 10, `berichte/FA-KUNDSCHAFTER-07.md`, `berichte/FA-BLINDPRUEFUNG-07.md` · Voraussetzung: FA-SHOP-01 (Kategorien, Hersteller, Verfügbarkeit) und FA-KERN-02 (Steckplätze) sind abgenommen.
+
+## Aufgabe in einem Satz
+Baue den Bereich Gehäuse, Reparatur und Customizing so aus, dass der Betreiber Gehäuse und Ersatzteile als Produkte nach Hersteller, Modell, Tastenzahl und Schlüsseltyp pflegt, Kunden einen Umbau oder eine Reparatur per Einsendung beauftragen und die Rubrik Customizing mit Vorher-Nachher-Bildern und klaren Kompatibilitätshinweisen steht, ohne falsche Versprechen.
+
+## Vorgabe des Inhabers (wörtlich, Arbeitsanweisung vom 11.11.2026, Abschnitt 14)
+„Dieser Bereich soll deutlich größer werden und sowohl Shopprodukte als auch Dienstleistungen enthalten.“ Gehäuse und Reparatur: Ersatzgehäuse nach Hersteller, Modell, Tastenanzahl und Schlüsseltyp · Klappschlüsselgehäuse, Smart Key Gehäuse, Karten Gehäuse und weitere Bauformen · Tasten, Gummimatten, Batterie, Klappmechanismus, Schlüsselbart und weitere Ersatzteile · Einsendeservice: vorhandene Elektronik und Transponder übernehmen, wenn technisch möglich. Modifikation und optische Aufwertung: Eigene Rubrik für Customizing, Modifikation und optische Erneuerung · Ältere Schlüssel können in modernere Gehäuseoptik umgebaut werden, wenn technisch kompatibel · Beispielidee: alter Fahrzeugschlüssel mit neuerer Gehäuseform und modernerer Optik · Vorher Nachher Bilder, klare Kompatibilitätshinweise und Auswahl nach Fahrzeug beziehungsweise Schlüsseltyp · „Keine falschen Versprechen: Optischer Umbau nur dort anbieten, wo Elektronik, Transponder, Tasten und Bart technisch passend übernommen werden können.“
+
+## So bauen
+1. Produktart für Gehäuse und Ersatzteile (Erweiterung der Artikel, additiv): Merkmale Fahrzeugmarke (aus dem Fahrzeugkatalog), Modelle oder Reihen (Mehrfachauswahl), Baujahre (von, bis), Bauform (Klappschlüssel, Smart Key, Karte, Fernbedienung, Schlüsselkopf, weitere; als pflegbare Liste), Tastenzahl, Schlüsseltyp, Teileart (Gehäuse, Tasten, Gummimatte, Batterie, Klappmechanismus, Schlüsselbart, weitere), Kompatibilitätshinweis (Pflichttext: was übernommen wird, was nicht passt), „Elektronik und Transponder werden übernommen“ (ja, nein, nur nach Prüfung). Listen- und Detailseiten mit Filter nach Marke, Modell, Bauform, Tastenzahl; Auswahl „Mein Fahrzeug“ über die Fahrzeugsuche.
+2. Dienstleistungen als buchbare Einträge mit Einsendung: „Gehäusetausch im Einsendeservice“, „Reparatur (Tasten, Mechanik)“, „Umbau auf anderes Gehäuse (Customizing)“. Ohne Preis des Inhabers läuft der Weg als Anfrage mit Angebot und Zahlungslink (Bestand, A-036); mit Preis als Produkt mit Kasse und anschließender Einsendung. Die Einsendung nutzt die Varianten aus FA-SHOP-03 (Empfehlung DHL Paket für Schlüssel mit Elektronik) und den Begleitschein. Pflichtunterlagen: Fahrzeugschein und drei Schlüsselfotos über die Steckplätze (R13).
+3. Rubrik „Customizing“ unter `/autoschluessel/customizing`: was möglich ist (optische Erneuerung, Umbau in eine neuere Gehäuseform), unter welchen Bedingungen (Elektronik, Transponder, Tasten und Bart müssen übernommen werden können), wie die Prüfung läuft (Fotos, Fahrzeug, Schlüsseltyp → Rückmeldung, ob es geht), Auswahl nach Fahrzeug oder Schlüsseltyp, klarer Satz gegen falsche Erwartungen im Wortlaut des Inhabers. Keine Beispiele mit konkreten Fahrzeugen oder Gehäusen, die nicht belegt sind (R4): Die „Beispielidee“ steht als allgemeine Erklärung, bis der Betreiber echte Fälle einträgt.
+4. Baustein `VorherNachher` (zwei Bilder mit Beschriftung, Schieberegler mit Tastaturbedienung, bei reduzierter Bewegung nebeneinander) und ein Datentyp „Umbau-Beispiel“ (Vorher-Bild, Nachher-Bild, Fahrzeug, Schlüsseltyp, was übernommen wurde, Hinweis), im Admin pflegbar, auf Customizing, Gehäuse und Reparatur einsetzbar. Ohne echte Bilder erscheint der Baustein nicht (keine erfundenen oder generierten Bilder, R4).
+5. Kategorien: Die Shop-Kategorien „Autoschlüsselgehäuse“, „Gehäuseumbau und Reparaturservice“ und „Customizing und Modifikation“ (FA-SHOP-01) zeigen auf diese Seiten und Listen.
+6. Betreiberanleitung `docs/betrieb/gehaeuse-pflegen.md`.
+
+## Schreibrechte
+src/payload/collections/Produkte.ts (Merkmale), neue Sammlung für Umbau-Beispiele, neue Migration (`sicher.sh --pg -- npx payload migrate:create gehaeuse`), src/migrations/index.ts, src/payload-types.ts, src/payload/seed.ts, src/lib/data/**, src/lib/types.ts, src/lib/artikel.ts, src/app/(site)/autoschluessel/gehaeuse/**, neu src/app/(site)/autoschluessel/customizing/**, src/app/(site)/artikel/** (Filter), src/components/visual/** oder neu src/components/bild/vorher-nachher.tsx, content/kategorien.json (nur die drei Ziele), docs/betrieb/gehaeuse-pflegen.md, zugehörige Tests, _werkstatt/ausbau/berichte/FA-SHOP-02.md.
+Nicht anfassen: Preise, content/vehicles.json, Navigation, Startseite, Rubriken (gewünschte Einträge als Liste in den Bericht).
+
+## Prüfen
+`_werkstatt/ausbau/werkzeuge/sicher.sh --json -- npx vitest run`, `… -- npm run typecheck`, `… -- npm run lint`, `… --pg -- npx vitest run -c vitest.db.config.ts`, `… --json -- npm run build`. Kein Server, kein git.
+
+## Grenzen
+G4, G5, G6, G8, G9 (keine Preise erfinden), R4, R9, R11, R13. Texte kurz, ohne Gedankenstriche. Prettier nicht auf Bestand anwenden.
+
+## Ausgabeformular
+GEÄNDERTE DATEIEN · WAS UND WARUM · GEMEINSAME DATEIEN · PRÜFUNG UND ERGEBNIS · BELEGE · OFFENE FRAGEN · FÜR MENSCHEN.
+Markiere Unsicheres als OFFENE FRAGE statt zu raten, und erfülle nur deinen Auftrag.
+=== ENDE FA-SHOP-02 · BEREIT ZUR RÜCKGABE ===
