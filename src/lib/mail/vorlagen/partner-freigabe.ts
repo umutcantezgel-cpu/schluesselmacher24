@@ -48,7 +48,7 @@ export function partnerFreigabeMail({ vorgang, nachricht, kontext, zahlungsLink 
   }
   bausteine.push(ANTWORT_HINWEIS);
   return baueMail({
-    betreff: `Ihr Auftrag ist freigegeben – ${vorgang.reference}`,
+    betreff: `Ihr Auftrag ${vorgang.reference} ist freigegeben`,
     anrede: anrede(vorgang.contact),
     bausteine,
     firma: kontext.firma,

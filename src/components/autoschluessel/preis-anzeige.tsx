@@ -1,6 +1,6 @@
 'use client';
 
-import type { Auftragsweg } from '@/lib/auftragsweg';
+import { PARTNER_JETZT_NICHTS, type Auftragsweg } from '@/lib/auftragsweg';
 import type { PriceQuote } from '@/lib/types';
 import { formatCents, formatDuration } from '@/lib/format';
 import { InfoTip } from '@/components/ui/info-tip';
@@ -93,7 +93,7 @@ export function PreisAnzeige({ quote, beimKunden = false, weg }: PreisAnzeigePro
               strong
             />
             {partner ? (
-              <Zeile label="Jetzt fällig" value="keine Zahlung, erst nach unserem Preis" />
+              <Zeile label="Jetzt fällig" value={PARTNER_JETZT_NICHTS} />
             ) : (
               <Zeile label="Anzahlung jetzt" value={formatCents(quote.depositCents)} />
             )}
@@ -113,8 +113,14 @@ export function PreisAnzeige({ quote, beimKunden = false, weg }: PreisAnzeigePro
           </p>
           <p className="mt-2 text-small leading-relaxed text-foreground-muted">
             Für diese Kombination aus Fahrzeug, Schlüsselart und Leistung nennen wir keinen Preis
-            ohne vorherige Prüfung. Sie können den Termin vormerken lassen; verbindlich wird er erst,
-            wenn wir Ihre Unterlagen geprüft und Ihnen den Preis genannt haben.
+            ohne vorherige Prüfung.
+            {/* Im Partnerweg wird kein Termin vorgemerkt, es entsteht eine Anfrage (FA-KERN-03). */}
+            {!partner && (
+              <>
+                {' '}Sie können den Termin vormerken lassen; verbindlich wird er erst,
+                wenn wir Ihre Unterlagen geprüft und Ihnen den Preis genannt haben.
+              </>
+            )}
           </p>
           {partner ? (
             <p className="mt-2 text-small leading-relaxed text-foreground-muted">

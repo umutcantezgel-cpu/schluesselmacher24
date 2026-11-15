@@ -10,7 +10,7 @@
    Backend laden diese Datei ebenfalls.
    ========================================================================== */
 
-import { eigenbereichMuster, plzPasst } from './auftragsweg';
+import { EIGENBEREICH_STANDARD, eigenbereichMuster, plzPasst } from './auftragsweg';
 import { angabe, firmaVeroeffentlichbar, standort } from './rechtliches/firma';
 import type { AppointmentInfo, BusinessRecord, CompanyLocation, CompanyProfile, OwnArea } from './types';
 
@@ -34,10 +34,17 @@ export function buchungsOrt(leistung: string | null | undefined): AppointmentInf
   return terminBeimKunden(leistung) ? 'vor-ort' : 'werkstatt';
 }
 
-/** Hinweis für Leistungen beim Kunden — Assistent und Bestätigung. */
-export const BEIM_KUNDEN_HINWEIS =
-  'Die Leistung findet bei Ihrem Fahrzeug statt. Ort und Anfahrt klären wir nach der Buchung telefonisch mit Ihnen; '
-  + 'außerhalb von Wetzlar und Umgebung nur nach individueller Prüfung von Aufwand und Kosten.';
+/**
+ * Hinweis für Leistungen beim Kunden — Assistent und Bestätigung. `bereich` ist die Bezeichnung des
+ * regionalen Eigenbereichs aus den Einstellungen (Reiter Termine, FA-KERN-03).
+ */
+export function beimKundenHinweis(bereich: string = EIGENBEREICH_STANDARD.label): string {
+  return 'Die Leistung findet bei Ihrem Fahrzeug statt. Ort und Anfahrt klären wir nach der Buchung telefonisch mit Ihnen; '
+    + `außerhalb von ${bereich.trim() || EIGENBEREICH_STANDARD.label} nur nach individueller Prüfung von Aufwand und Kosten.`;
+}
+
+/** Hinweis mit der Standardbezeichnung des Eigenbereichs. */
+export const BEIM_KUNDEN_HINWEIS = beimKundenHinweis();
 
 /**
  * Anschrift der Werkstatt: der gepflegte Standort („Werkstatt und Abholung“),

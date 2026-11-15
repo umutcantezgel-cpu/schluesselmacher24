@@ -69,6 +69,16 @@ function zahlungsHinweis(vorgang: BusinessRecord, onlineZahlung: boolean): Baust
   }
   if (vorgang.kind === 'termin') {
     const bis = zahlung.expiresAt ? ` bis ${formatDateTime(zahlung.expiresAt)} Uhr` : '';
+    // Partnerweg (FA-KERN-03): Gesamtbetrag statt Anzahlung, kein reserviertes Zeitfenster der Werkstatt.
+    if (zahlung.scope === 'gesamt') {
+      return {
+        art: 'hinweis',
+        titel: 'Zahlung noch offen',
+        text:
+          `Bitte bezahlen Sie den Gesamtbetrag${bis}. Verbindlich wird Ihr Auftrag erst mit Ihrer Zahlung; `
+          + 'geht sie nicht ein, kommt der Auftrag nicht zustande.',
+      };
+    }
     return {
       art: 'hinweis',
       titel: 'Anzahlung noch offen',

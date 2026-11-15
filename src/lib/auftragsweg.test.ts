@@ -13,13 +13,16 @@ import {
   plzPasst,
   restbetragCents,
   restOffen,
+  standortText,
   terminortZeile,
   terminstandorte,
   wegFuerStandort,
   zahlungsPlan,
+  zustimmungNeuNoetig,
+  zustimmungsSchluessel,
   type PartnerFuerWeg,
 } from './auftragsweg';
-import { ausserhalbDerRegion } from './terminort';
+import { ausserhalbDerRegion, beimKundenHinweis, buchungsOrt } from './terminort';
 import type { BusinessRecord, PriceQuote } from './types';
 
 /* FA-KERN-03, A-049: Auftragsweg aus Postleitzahl, Standort, Eigenbereich und Partnern; Zahlung je Weg. */
@@ -33,6 +36,7 @@ const partner = (teil: Partial<PartnerFuerWeg> = {}): PartnerFuerWeg => ({
   status: 'freigeschaltet',
   postleitzahlen: ['60*'],
   auftragsarten: ['autoschluessel-vor-ort'],
+  abrechnungsmodell: 'B',
   ...teil,
 });
 
@@ -90,6 +94,8 @@ describe('Weg je Postleitzahl', () => {
       partner({ status: 'vertrag-unterschrieben' }),
       partner({ auftragsarten: ['montage-zylinder'] }),
       partner({ postleitzahlen: ['61*'] }),
+      // Modell A (Kunde zahlt an den Partner) passt nicht zum Partnerweg, in dem an Schlüsselmacher24 gezahlt wird.
+      partner({ abrechnungsmodell: 'A' }),
     ]) {
       const e = terminstandorte({ ...basis, postleitzahl: '60311', partner: [p] });
       expect(e.standorte.map((s) => s.standort)).toEqual(['werkstatt']);
@@ -132,17 +138,49 @@ describe('Zahlung je Weg', () => {
     expect(faelligZeilen('hauptzentrale', fest).map((z) => z.label)).toEqual(['Jetzt fällig (Anzahlung)', 'Gesamtpreis', 'Rest beim Termin']);
     expect(faelligZeilen('partner', fest).map((z) => z.label)).toEqual(['Jetzt fällig', 'Gesamtpreis']);
     expect(faelligZeilen('partner', rahmen)).toEqual([
-      { label: 'Jetzt fällig', value: 'keine Zahlung, erst nach unserem Preis' },
+      { label: 'Jetzt fällig', value: 'Jetzt nichts. Sie zahlen erst, wenn wir Ihnen den Preis genannt haben.' },
       { label: 'Preisrahmen', value: expect.stringContaining('bis') },
     ]);
     expect(terminortZeile('eigenbereich', 'Wetzlar')).toBe('Ihr Termin: in unserer Werkstatt in Wetzlar');
     expect(terminortZeile('partner')).toBe('Ihr Termin: bei einem Partnerbetrieb in Ihrer Region, vermittelt durch Schlüsselmacher24');
   });
+
+  it('Fahrzeugöffnung: der Termin ist beim Fahrzeug des Kunden, nicht in der Werkstatt', () => {
+    const ort = buchungsOrt('fahrzeugoeffnung');
+    expect(ort).toBe('vor-ort');
+    expect(terminortZeile('eigenbereich', 'Wetzlar', ort)).toBe('Ihr Termin: bei Ihrem Fahrzeug, Ort nach telefonischer Absprache');
+    expect(terminortZeile('hauptzentrale', 'Wetzlar', ort)).not.toContain('Werkstatt');
+    expect(standortText('werkstatt', 'Wetzlar', ort)).toBe('Bei Ihrem Fahrzeug (Ort nach telefonischer Absprache)');
+    // Andere Leistungen bleiben in der Werkstatt; der Partnerweg bleibt vermittelt.
+    expect(terminortZeile('hauptzentrale', 'Wetzlar', buchungsOrt('nachmachen'))).toBe('Ihr Termin: in unserer Werkstatt in Wetzlar');
+    expect(terminortZeile('partner', 'Wetzlar', ort)).toContain('Partnerbetrieb');
+  });
+
+  it('nennt im Hinweis beim Fahrzeug die gepflegte Bezeichnung des Eigenbereichs', () => {
+    expect(beimKundenHinweis('Mittelhessen')).toContain('außerhalb von Mittelhessen');
+    expect(beimKundenHinweis()).toContain('außerhalb von Wetzlar und Umgebung');
+  });
+
+  it('Wechsel Werkstatt zu Partner: die Zustimmung zur Zahlung muss neu gegeben werden', () => {
+    const werkstatt = zustimmungsSchluessel(zahlungsPlan('hauptzentrale', fest));
+    const partnerPlan = zustimmungsSchluessel(zahlungsPlan('partner', fest));
+    expect(zustimmungNeuNoetig(werkstatt, partnerPlan)).toBe(true);
+    expect(zustimmungNeuNoetig(partnerPlan, werkstatt)).toBe(true);
+    // Hauptzentrale und Eigenbereich: derselbe Betrag, die Zustimmung bleibt.
+    expect(zustimmungNeuNoetig(werkstatt, zustimmungsSchluessel(zahlungsPlan('eigenbereich', fest)))).toBe(false);
+    // Plan noch nicht geladen: nichts zurücksetzen.
+    expect(zustimmungNeuNoetig('', partnerPlan)).toBe(false);
+    expect(zustimmungNeuNoetig(werkstatt, zustimmungsSchluessel(null))).toBe(false);
+  });
 });
 
 describe('Restbetrag', () => {
-  it('ist Gesamtpreis minus Online-Zahlung, nie negativ, ohne Gesamtpreis unbekannt', () => {
-    expect(restbetragCents(24_900, { amountCents: 6_990, status: 'offen' })).toBe(17_910);
+  it('ist Gesamtpreis minus eingegangener Online-Zahlung, nie negativ, ohne Gesamtpreis unbekannt', () => {
+    // Offen oder fehlgeschlagen: noch nichts angerechnet (Direktweg und Partnerweg).
+    expect(restbetragCents(24_900, { amountCents: 6_990, status: 'offen' })).toBe(24_900);
+    expect(restbetragCents(24_900, { amountCents: 6_990, status: 'fehlgeschlagen' })).toBe(24_900);
+    expect(restbetragCents(24_900, { amountCents: 24_900, status: 'offen' })).toBe(24_900);
+    expect(restbetragCents(24_900, { amountCents: 24_900, status: 'fehlgeschlagen' })).toBe(24_900);
     expect(restbetragCents(24_900, { amountCents: 6_990, status: 'bezahlt' })).toBe(17_910);
     expect(restbetragCents(24_900, { amountCents: 24_900, status: 'bezahlt' })).toBe(0);
     expect(restbetragCents(5_000, { amountCents: 6_990, status: 'bezahlt' })).toBe(0);

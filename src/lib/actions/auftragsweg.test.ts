@@ -12,7 +12,7 @@ import type { BusinessRecord } from '@/lib/types';
 const stored: BusinessRecord[] = [];
 const partner = {
   aktiv: false,
-  liste: [] as Array<{ id: string; status: 'freigeschaltet' | 'pausiert'; postleitzahlen: string[]; auftragsarten: string[] }>,
+  liste: [] as Array<{ id: string; status: 'freigeschaltet' | 'pausiert'; postleitzahlen: string[]; auftragsarten: string[]; abrechnungsmodell: 'A' | 'B' }>,
 };
 
 vi.mock('next/headers', () => ({
@@ -121,7 +121,7 @@ async function buchen(plz: string, anpassen: Partial<Eingabe> = {}) {
 beforeEach(() => {
   stored.length = 0;
   partner.aktiv = false;
-  partner.liste = [{ id: '7', status: 'freigeschaltet', postleitzahlen: ['60*'], auftragsarten: ['autoschluessel-vor-ort'] }];
+  partner.liste = [{ id: '7', status: 'freigeschaltet', postleitzahlen: ['60*'], auftragsarten: ['autoschluessel-vor-ort'], abrechnungsmodell: 'B' }];
   resetRateLimits();
 });
 
@@ -136,8 +136,8 @@ describe('Auftragsweg bei der Buchung (FA-KERN-03)', () => {
     expect(v.appointment?.location).toBe('werkstatt');
     expect(v.payment).toMatchObject({ scope: 'anzahlung', amountCents: v.quote!.depositCents, status: 'offen' });
     expect(v.quote?.mode).toBe('fest');
-    // Restbetrag richtig berechnet: Gesamtpreis minus Anzahlung.
-    expect(v.remainder).toEqual({ totalCents: v.quote!.priceCents, remainderCents: v.quote!.priceCents! - v.quote!.depositCents });
+    // Restbetrag: Angerechnet wird erst die eingegangene Anzahlung; vorher ist der Rest der Gesamtpreis.
+    expect(v.remainder).toEqual({ totalCents: v.quote!.priceCents, remainderCents: v.quote!.priceCents });
     expect(v.summary.map((s) => s.title).slice(0, 2)).toEqual(['Leistung und Fahrzeug', 'Terminstandort']);
   });
 
@@ -177,7 +177,8 @@ describe('Auftragsweg bei der Buchung (FA-KERN-03)', () => {
     expect(v.payment).toMatchObject({ scope: 'gesamt', amountCents: v.quote!.priceCents, status: 'offen' });
     expect(v.payment!.amountCents).toBeGreaterThan(v.quote!.depositCents);
     expect(v.appointment).toBeUndefined();
-    expect(v.remainder).toEqual({ totalCents: v.quote!.priceCents, remainderCents: 0 });
+    // Vor dem Zahlungseingang ist nichts angerechnet; der Rest fällt erst mit der Zahlung auf null.
+    expect(v.remainder).toEqual({ totalCents: v.quote!.priceCents, remainderCents: v.quote!.priceCents });
   });
 
   it('Partnerweg ohne Festpreis: Anfrage ohne Zahlung, Unterlagen bleiben Pflicht', async () => {

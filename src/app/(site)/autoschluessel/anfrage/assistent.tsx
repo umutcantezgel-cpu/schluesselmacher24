@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 
 import type {
@@ -23,6 +23,8 @@ import {
   faelligZeilen,
   standortText,
   terminortZeile,
+  zustimmungNeuNoetig,
+  zustimmungsSchluessel,
   zahlungsPlan,
   type Auftragsweg,
   type Terminstandort,
@@ -753,6 +755,8 @@ export function Assistent({
   const partnerweg = weg === 'partner';
   const plan = quote ? zahlungsPlan(weg, quote) : null;
   const werkstattStadt = werkstatt?.standort?.city;
+  // Ort des Direkttermins: Werkstatt oder beim Fahrzeug (Fahrzeugöffnung).
+  const direktOrt = buchungsOrt(data.serviceId);
   const kontaktVollstaendig = isContactComplete(data);
 
   useEffect(() => {
@@ -770,6 +774,19 @@ export function Assistent({
       cancelled = true;
     };
   }, [needsQuote, kontaktVollstaendig, standorteKey, data.postalCode, data.country, data.serviceId]);
+
+  // Die Zustimmung zur Zahlung gilt nur für den Betrag, den der Kunde bestätigt hat (FA-KERN-03): Wechselt
+  // der Zahlungsplan, etwa durch einen anderen Standort oder eine andere Postleitzahl, muss sie neu her.
+  const planSchluessel = zustimmungsSchluessel(plan);
+  const letzterPlan = useRef(planSchluessel);
+  const zustimmungGegeben = data.depositAccepted;
+  const setFlow = flow.set;
+  useEffect(() => {
+    if (!planSchluessel) return;
+    const vorher = letzterPlan.current;
+    letzterPlan.current = planSchluessel;
+    if (zustimmungGegeben && zustimmungNeuNoetig(vorher, planSchluessel)) setFlow('depositAccepted', false);
+  }, [planSchluessel, zustimmungGegeben, setFlow]);
 
   /* ---------- Termine laden --------------------------------------------- */
 
@@ -910,7 +927,7 @@ export function Assistent({
         : {
             title: 'Termin',
             rows: [
-              { label: 'Terminstandort', value: standortText('werkstatt', werkstattStadt) },
+              { label: 'Terminstandort', value: standortText('werkstatt', werkstattStadt, buchungsOrt(data.serviceId)) },
               { label: 'Datum', value: data.slotDate },
               { label: 'Uhrzeit', value: `${data.slotTime} Uhr` },
               { label: 'Eingeplante Dauer', value: formatDuration(current.slotMinutes) },
@@ -1724,7 +1741,8 @@ export function Assistent({
             </div>
 
             {/* Erg. Leitfaden §1: Schwerpunkt Wetzlar – Kunden von außerhalb reisen an. */}
-            {ausserhalbDerRegion(data.postalCode, data.country, eigenbereich) && (
+            {/* Bietet der Server einen Partnerbetrieb an (FA-KERN-03), stimmt „Termine nur in der Werkstatt“ nicht. */}
+            {ausserhalbDerRegion(data.postalCode, data.country, eigenbereich) && !standorte?.standorte.some((s) => s.standort === 'partner') && (
               <Alert tone="info" title="Termin in unserer Werkstatt" className="sm:col-span-2">
                 {ausserhalbHinweis(werkstatt?.standort?.city)}
               </Alert>
@@ -1816,8 +1834,9 @@ export function Assistent({
                         name="terminstandort"
                         value={angebot.standort}
                         checked={(partnerweg ? 'partner' : 'werkstatt') === angebot.standort}
-                        onSelect={() => flow.set('terminstandort', angebot.standort)}
-                        title={standortText(angebot.standort, werkstattStadt)}
+                        // Anderer Standort, anderer Betrag: Die Zustimmung zur Zahlung muss neu gegeben werden.
+                        onSelect={() => flow.update({ terminstandort: angebot.standort, depositAccepted: false })}
+                        title={standortText(angebot.standort, werkstattStadt, direktOrt)}
                         description={
                           angebot.standort === 'partner'
                             ? 'Zahlung des Gesamtbetrags vorab, der Partnerbetrieb stimmt den Termin mit Ihnen ab.'
@@ -1827,7 +1846,7 @@ export function Assistent({
                     ))}
                   </div>
                 ) : null}
-                <p className="text-body font-semibold text-foreground">{terminortZeile(weg, werkstattStadt)}</p>
+                <p className="text-body font-semibold text-foreground">{terminortZeile(weg, werkstattStadt, direktOrt)}</p>
                 {standorte?.ohnePartner && (
                   <Alert tone="info" title="Noch kein Partnerbetrieb in Ihrer Region">
                     {KEIN_PARTNER_HINWEIS}{' '}
@@ -1958,7 +1977,7 @@ export function Assistent({
       {/* 12 – Anzahlung */}
       {flow.step.id === 'anzahlung' && quote && !partnerweg && (
         <div className="space-y-5">
-          <p className="text-body font-semibold text-foreground">{terminortZeile(weg, werkstattStadt)}</p>
+          <p className="text-body font-semibold text-foreground">{terminortZeile(weg, werkstattStadt, direktOrt)}</p>
           <dl className="border-y border-border py-5">
             <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
               Jetzt fällig
@@ -2075,6 +2094,7 @@ export function Assistent({
           slotMinutes={quote.slotMinutes}
           requiresVehicleOnSite={quote.requiresVehicleOnSite}
           beimKunden={terminBeimKunden(data.serviceId)}
+          eigenbereichName={eigenbereich?.label}
           werkstatt={werkstatt?.standort}
           staleSelection={staleSlotSelection}
           selectedDate={data.slotDate}

@@ -20,6 +20,7 @@ import { storageStatus } from '@/lib/integrations';
 import { PLANER_QUELLE, SCHNAPPSCHUSS_FELD, planerVorgang } from '@/lib/konfigurator/vorgang';
 import { standorteErmitteln } from '@/lib/partner/partnerweg-daten';
 import { RECHTSTEXTE_FASSUNG } from '@/lib/rechtliches/texte';
+import { buchungsOrt } from '@/lib/terminort';
 import { createRecord, verifyCarKeyBooking, type GepruefteAngaben } from '@/lib/server/create-record';
 import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/server/formular-schutz';
 import { publicRecordSchema, terminZustimmungenSchema, type TerminZustimmungen } from '@/lib/server/record-schema';
@@ -348,7 +349,7 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     // Eigener Abschnitt direkt hinter „Leistung und Fahrzeug“; den ersten Abschnitt lesen Vertragsbestätigung und Export.
     summary = [
       summary[0],
-      { title: 'Terminstandort', rows: [{ label: 'Terminstandort', value: standortText(auftragsweg === 'partner' ? 'partner' : 'werkstatt') }] },
+      { title: 'Terminstandort', rows: [{ label: 'Terminstandort', value: standortText(auftragsweg === 'partner' ? 'partner' : 'werkstatt', undefined, buchungsOrt(data.verify.serviceId)) }] },
       ...summary.slice(1),
     ];
 
@@ -368,7 +369,7 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
       // Partnerweg mit Festpreis: Gesamtbetrag sofort, nie nur die Anzahlung. Den genauen Termin stimmt der
       // Partnerbetrieb nach der Zahlung ab; ein Zeitfenster der Werkstatt wird nicht belegt.
       payment = { scope: 'gesamt', amountCents: plan.jetztCents, description: PARTNER_ZAHLUNG };
-      remainder = { totalCents: plan.gesamtCents, remainderCents: 0 };
+      remainder = { totalCents: plan.gesamtCents, remainderCents: restbetragCents(plan.gesamtCents, { amountCents: plan.jetztCents, status: 'offen' }) };
     } else {
       // Partnerweg ohne Festpreis: Anfrage ohne Zahlung. Das Team trägt den Gesamtpreis ein und gibt frei;
       // der Kunde erhält den persönlichen Zahlungslink über den Gesamtbetrag (vorgang-benachrichtigen.ts).

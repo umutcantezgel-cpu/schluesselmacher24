@@ -20,7 +20,7 @@
 import { formatCents, formatDateTime } from './format';
 import { darfVermitteln } from './partner/vermittlung';
 import type { BewerbungStatus } from './partner/bewerbung';
-import type { Auftragsweg, BusinessRecord, OwnArea, PaymentInfo, PriceQuote } from './types';
+import type { AppointmentInfo, Auftragsweg, BusinessRecord, OwnArea, PaymentInfo, PriceQuote } from './types';
 
 export type { Auftragsweg };
 
@@ -83,19 +83,26 @@ export interface PartnerFuerWeg {
   /** Einsatzgebiet: Postleitzahlen oder Muster wie `355*`. */
   postleitzahlen: string[];
   auftragsarten: string[];
+  /**
+   * Abrechnungsmodell des Partnerbetriebs. Im Partnerweg zahlt der Kunde an Schlüsselmacher24 (A-049 Nr. 8),
+   * deshalb zählen nur Betriebe mit Modell `B`; Modell `A` (Kunde zahlt an den Partner) passt nicht dazu.
+   */
+  abrechnungsmodell: 'A' | 'B';
 }
 
 /**
  * Partner, die diesen Auftrag bekommen dürfen: freigeschaltet (also nicht pausiert, beendet oder in
- * Prüfung), passende Auftragsart, Postleitzahl im Einsatzgebiet. Bei mehreren entscheidet das Team im
- * Admin (A-049); hier gibt es keine Rangfolge.
+ * Prüfung), Abrechnungsmodell B, passende Auftragsart, Postleitzahl im Einsatzgebiet. Bei mehreren
+ * entscheidet das Team im Admin (A-049); hier gibt es keine Rangfolge.
  */
 export function passendePartner(
   postleitzahl: string,
   partner: readonly PartnerFuerWeg[],
   auftragsart: string = AUFTRAGSART_AUTOSCHLUESSEL,
 ): PartnerFuerWeg[] {
-  return partner.filter((p) => darfVermitteln(p, auftragsart) && plzPasst(postleitzahl, p.postleitzahlen));
+  return partner.filter(
+    (p) => p.abrechnungsmodell === 'B' && darfVermitteln(p, auftragsart) && plzPasst(postleitzahl, p.postleitzahlen),
+  );
 }
 
 /** Ist der Partnerweg für Kunden eingeschaltet? Nur mit `PARTNERMODELL_B=aktiv` (A-049). */
@@ -200,6 +207,20 @@ export function zahlungsPlan(weg: Auftragsweg, quote: PriceQuote): ZahlungsPlan 
   return { art: 'anzahlung', jetztCents: quote.depositCents };
 }
 
+/**
+ * Schlüssel des Zahlungsplans für die Zustimmung im Assistenten: Die Zustimmung gilt nur für den Betrag,
+ * den der Kunde gesehen hat. Ändert sich der Schlüssel (anderer Standort, andere Postleitzahl und damit
+ * anderer Weg), muss er neu zustimmen.
+ */
+export function zustimmungsSchluessel(plan: ZahlungsPlan | null | undefined): string {
+  return plan ? `${plan.art}|${plan.jetztCents}` : '';
+}
+
+/** Muss die Zustimmung zur Zahlung neu gegeben werden? Nur bei einem Wechsel zwischen zwei bekannten Plänen. */
+export function zustimmungNeuNoetig(vorher: string, jetzt: string): boolean {
+  return Boolean(vorher && jetzt && vorher !== jetzt);
+}
+
 /** Preisrahmen oder „nach Prüfung“ als Text. */
 export function preisrahmenText(quote: Pick<PriceQuote, 'mode' | 'priceFromCents' | 'priceToCents'>): string {
   if (quote.mode === 'rahmen' && typeof quote.priceFromCents === 'number') {
@@ -224,7 +245,7 @@ export function faelligZeilen(weg: Auftragsweg, quote: PriceQuote): Array<{ labe
   }
   if (plan.art === 'anfrage') {
     return [
-      { label: 'Jetzt fällig', value: 'keine Zahlung, erst nach unserem Preis' },
+      { label: 'Jetzt fällig', value: PARTNER_JETZT_NICHTS },
       { label: 'Preisrahmen', value: preisrahmenText(quote) },
     ];
   }
@@ -246,7 +267,8 @@ export function faelligZeilen(weg: Auftragsweg, quote: PriceQuote): Array<{ labe
 
 /**
  * Rest nach Anrechnung der Online-Zahlung: Gesamtpreis minus Betrag der Zahlung (Anzahlung oder
- * Gesamtbetrag), solange sie nicht erstattet ist. Ohne Gesamtpreis gibt es keinen Rest (`undefined`).
+ * Gesamtbetrag). Angerechnet wird nur eine eingegangene Zahlung (`bezahlt`); offen, fehlgeschlagen oder
+ * erstattet zählt nichts. Ohne Gesamtpreis gibt es keinen Rest (`undefined`).
  * Den Zahlungsstand „teilweise erstattet“ ergänzt FA-KERN-04.
  */
 export function restbetragCents(
@@ -254,7 +276,7 @@ export function restbetragCents(
   zahlung: Pick<PaymentInfo, 'amountCents' | 'status'> | null | undefined,
 ): number | undefined {
   if (typeof gesamtpreisCents !== 'number' || !Number.isFinite(gesamtpreisCents) || gesamtpreisCents < 0) return undefined;
-  const angerechnet = zahlung && zahlung.status !== 'erstattet' ? Math.max(0, zahlung.amountCents || 0) : 0;
+  const angerechnet = zahlung?.status === 'bezahlt' ? Math.max(0, zahlung.amountCents || 0) : 0;
   return Math.max(0, Math.round(gesamtpreisCents) - angerechnet);
 }
 
@@ -273,9 +295,11 @@ export function restOffen(vorgang: Pick<BusinessRecord, 'remainder'>): boolean {
 export const AUFTRAGSWEG_DATEN = 'auftragsweg';
 
 /**
- * Weg eines Vorgangs: das gespeicherte Feld, sonst bei Autoschlüssel-Terminen abgeleitet (ein Termin
- * mit Gesamtbetrag ist vermittelt, jeder andere ein Werkstatttermin). Ältere Vorgänge und Vorgänge
- * außerhalb des Autoschlüssel-Bereichs haben keinen Weg.
+ * Weg eines Vorgangs: das gespeicherte Feld, sonst der Wert in den Daten. Fehlt beides (ältere Termine),
+ * wird er abgeleitet: Ein Termin mit Gesamtbetrag gilt als vermittelt, jeder andere als Werkstatttermin
+ * (`hauptzentrale`), auch im Eigenbereich, weil der Weg dort früher nicht gespeichert wurde. Der Ort
+ * (Werkstatt oder beim Fahrzeug) steht im Termin selbst. Vorgänge, die kein Termin sind, haben ohne
+ * gespeicherten Wert keinen Weg.
  */
 export function auftragswegVon(
   vorgang: Pick<BusinessRecord, 'auftragsweg' | 'kind' | 'payment'> & { payload?: Record<string, unknown> | null },
@@ -318,17 +342,25 @@ export function auftragswegZeilen(
 /* ---------- Texte für Kunden -------------------------------------------- */
 
 /**
- * Die eine Zeile vor der Zahlung (Assistent, Zusammenfassung, Zahlungsseite, Bestätigung, Mail):
- * „Ihr Termin: in unserer Werkstatt in Wetzlar“ oder der vermittelte Partnertermin.
+ * Ort des Direkttermins: `werkstatt` (Werkstatt in Wetzlar) oder `vor-ort` (bei Leistungen wie der
+ * Fahrzeugöffnung beim Fahrzeug des Kunden, `buchungsOrt` in src/lib/terminort.ts).
  */
-export function terminortZeile(weg: Auftragsweg, werkstattStadt?: string): string {
+export type DirektOrt = AppointmentInfo['location'];
+
+/**
+ * Die eine Zeile vor der Zahlung (Assistent, Zusammenfassung, Zahlungsseite, Bestätigung, Mail):
+ * „Ihr Termin: in unserer Werkstatt in Wetzlar“, beim Fahrzeug des Kunden oder der vermittelte Partnertermin.
+ */
+export function terminortZeile(weg: Auftragsweg, werkstattStadt?: string, ort?: DirektOrt): string {
   if (weg === 'partner') return 'Ihr Termin: bei einem Partnerbetrieb in Ihrer Region, vermittelt durch Schlüsselmacher24';
+  if (ort === 'vor-ort') return 'Ihr Termin: bei Ihrem Fahrzeug, Ort nach telefonischer Absprache';
   return werkstattStadt ? `Ihr Termin: in unserer Werkstatt in ${werkstattStadt}` : 'Ihr Termin: in unserer Werkstatt';
 }
 
 /** Auswahltext je Standort im Assistenten. */
-export function standortText(standort: Terminstandort, werkstattStadt?: string): string {
+export function standortText(standort: Terminstandort, werkstattStadt?: string, ort?: DirektOrt): string {
   if (standort === 'partner') return 'Termin bei einem Partnerbetrieb in Ihrer Region (vermittelt)';
+  if (ort === 'vor-ort') return 'Bei Ihrem Fahrzeug (Ort nach telefonischer Absprache)';
   return werkstattStadt ? `In unserer Werkstatt in ${werkstattStadt}` : 'In unserer Werkstatt';
 }
 
@@ -341,6 +373,16 @@ export const KEIN_PARTNER_HINWEIS =
 export const PARTNER_NACH_ZAHLUNG =
   'Verbindlich wird der Auftrag mit Ihrer Zahlung. Danach geben wir ihn an den Partnerbetrieb weiter, '
   + 'der den genauen Termin mit Ihnen abstimmt.';
+
+/**
+ * Partnerweg mit Gesamtbetrag: Die Zahlung ist nicht eingegangen (abgelaufen oder fehlgeschlagen). Es gibt
+ * weder eine Anzahlung noch ein reserviertes Zeitfenster der Werkstatt.
+ */
+export const PARTNER_NICHT_ZUSTANDE =
+  'Ihre Zahlung ist nicht eingegangen. Der Auftrag ist nicht zustande gekommen. Sie können ihn neu buchen.';
+
+/** „Jetzt fällig“ bei der Partner-Anfrage ohne Festpreis. */
+export const PARTNER_JETZT_NICHTS = 'Jetzt nichts. Sie zahlen erst, wenn wir Ihnen den Preis genannt haben.';
 
 /** Partnerweg ohne Festpreis: Anfrage ohne Zahlung. */
 export const PARTNER_OHNE_FESTPREIS =

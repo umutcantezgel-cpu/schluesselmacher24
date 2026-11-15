@@ -23,13 +23,14 @@ export async function partnerFuerAuftragsweg(): Promise<PartnerFuerWeg[]> {
       depth: 0,
       limit: 500,
       overrideAccess: true,
-      select: { status: true, einsatzgebiet: true, auftragsarten: true },
+      select: { status: true, einsatzgebiet: true, auftragsarten: true, abrechnungsmodell: true },
     });
     return gefunden.docs.map((doc) => ({
       id: String(doc.id),
       status: doc.status as BewerbungStatus,
       postleitzahlen: plzMusterAusText(doc.einsatzgebiet?.postleitzahlen),
       auftragsarten: [...(doc.auftragsarten ?? [])],
+      abrechnungsmodell: doc.abrechnungsmodell === 'B' ? 'B' : 'A',
     }));
   } catch (fehler) {
     // Ohne Partnerliste bleibt der Werkstatttermin; der Kunde wird nie in einen Weg ohne Partner geschickt.

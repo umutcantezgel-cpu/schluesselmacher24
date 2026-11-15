@@ -12,7 +12,7 @@
      ihn schon bestätigt, bleibt er stehen; das Team sieht eine Notiz.
    ========================================================================== */
 
-import { auftragswegVon, istPartnerAnfrage } from '@/lib/auftragsweg';
+import { PARTNER_NICHT_ZUSTANDE, auftragswegVon, istPartnerAnfrage, restbetragCents } from '@/lib/auftragsweg';
 import { formatCents } from '@/lib/format';
 import { auftragErteiltVerlauf, istFotoanfrage } from '@/lib/foto-freigabe';
 import type { VorgangsAenderung } from '@/lib/data/payload-mapping';
@@ -94,6 +94,8 @@ export const VERLAUF = {
   ausstehend: 'Zahlung eingeleitet – die Bestätigung der Bank steht noch aus.',
   fehlgeschlagen: 'Zahlung nicht abgeschlossen.',
   terminFrei: 'Die Anzahlung ist nicht eingegangen. Der Termin wurde freigegeben.',
+  /** Partnerweg (FA-KERN-03): Gesamtbetrag nicht eingegangen; es gab weder Anzahlung noch Zeitfenster. */
+  partnerNichtZustande: PARTNER_NICHT_ZUSTANDE,
   abgelaufen: 'Zahlungslink abgelaufen.',
   gestartet: 'Online-Zahlung gestartet.',
   /** Merkmal für den Abgleich: Stripe war eingerichtet, die Sitzung kam nicht zustande. */
@@ -102,6 +104,16 @@ export const VERLAUF = {
 
 function eintrag(at: string, message: string): TimelineEntry {
   return { at, actor: 'system', message };
+}
+
+/**
+ * Rest neu (FA-KERN-03): Angerechnet wird nur eine bezahlte Zahlung. In der Datenbank rechnet der Hook
+ * ohnehin bei jedem Speichern; hier steht es für den Dateimodus und für den Vorgang im Speicher.
+ */
+function mitRest(vorgang: BusinessRecord, payment: PaymentInfo): Pick<VorgangsAenderung, 'remainder'> {
+  const r = vorgang.remainder;
+  if (typeof r?.totalCents !== 'number') return {};
+  return { remainder: { ...r, remainderCents: restbetragCents(r.totalCents, payment) ?? r.remainderCents } };
 }
 
 /** Gehört die Sitzung zu diesem Vorgang — und ist sie die zuletzt gestartete? */
@@ -181,16 +193,14 @@ function bezahlt(
   if (partnerweg) {
     notizen.push(eintrag(kontext.jetzt, 'Partnerweg: Gesamtbetrag eingegangen. Der Auftrag kann jetzt an den Partnerbetrieb freigegeben werden.'));
   }
-  const aenderung: VorgangsAenderung = {
-    payment: {
-      ...zahlung,
-      status: 'bezahlt',
-      paidAt: kontext.jetzt,
-      checkoutSessionId: sitzung.id,
-      ...(sitzung.paymentIntent ? { providerRef: sitzung.paymentIntent } : {}),
-    },
-    timeline,
+  const neueZahlung: PaymentInfo = {
+    ...zahlung,
+    status: 'bezahlt',
+    paidAt: kontext.jetzt,
+    checkoutSessionId: sitzung.id,
+    ...(sitzung.paymentIntent ? { providerRef: sitzung.paymentIntent } : {}),
   };
+  const aenderung: VorgangsAenderung = { payment: neueZahlung, timeline, ...mitRest(vorgang, neueZahlung) };
   // Freigegebene Fotoanfrage: Mit der Zahlung erteilt der Kunde den Auftrag (Erg. Leitfaden §2).
   if (istFotoanfrage(vorgang) && vorgang.status === 'freigegeben') {
     const einsenden = vorgang.approval?.sendInRequired === true;
@@ -238,20 +248,24 @@ function nichtAbgeschlossen(
   }
 
   const payment: PaymentInfo = { ...zahlung, status: 'fehlgeschlagen' };
+  // Partnerweg mit Gesamtbetrag (FA-KERN-03): keine Anzahlung, kein Zeitfenster der Werkstatt.
+  const gesamt = zahlung.scope === 'gesamt';
+  const ursache = grund === 'abgelaufen' ? 'Zahlungslink abgelaufen' : 'Zahlung fehlgeschlagen';
 
   if (vorgang.status === 'neu') {
     return {
       aenderung: {
         status: 'storniert',
         payment,
-        timeline: [...vorgang.timeline, eintrag(jetzt, VERLAUF.terminFrei)],
+        timeline: [...vorgang.timeline, eintrag(jetzt, gesamt ? VERLAUF.partnerNichtZustande : VERLAUF.terminFrei)],
         // Statuswechsel ohne Team (E-58): intern mit Grund, wie im Tagesabgleich.
         internalNotes: [
           ...vorgang.internalNotes,
           eintrag(
             jetzt,
-            `Automatisch storniert: Anzahlung nicht eingegangen (${grund === 'abgelaufen' ? 'Zahlungslink abgelaufen' : 'Zahlung fehlgeschlagen'}). `
-              + 'Status von „Neu“ auf „Storniert“, Zeitfenster freigegeben.',
+            gesamt
+              ? `Automatisch storniert: Gesamtbetrag im Partnerweg nicht eingegangen (${ursache}). Status von „Neu“ auf „Storniert“.`
+              : `Automatisch storniert: Anzahlung nicht eingegangen (${ursache}). Status von „Neu“ auf „Storniert“, Zeitfenster freigegeben.`,
           ),
         ],
       },
@@ -267,8 +281,8 @@ function nichtAbgeschlossen(
       ...vorgang.internalNotes,
       eintrag(
         jetzt,
-        `Anzahlung nicht eingegangen (${grund === 'abgelaufen' ? 'Zahlungslink abgelaufen' : 'Zahlung fehlgeschlagen'}). `
-          + `Der Termin wurde nicht automatisch storniert, weil er schon bearbeitet wird (Status „${vorgang.status}“).`,
+        `${gesamt ? 'Gesamtbetrag im Partnerweg' : 'Anzahlung'} nicht eingegangen (${ursache}). `
+          + `Der ${gesamt ? 'Auftrag' : 'Termin'} wurde nicht automatisch storniert, weil er schon bearbeitet wird (Status „${vorgang.status}“).`,
       ),
     ];
   }
@@ -340,9 +354,11 @@ export function zahlungsUebergang(
       const bisher = zahlung.refundedCents ?? 0;
       if (erstattetCent <= bisher && (!vollstaendig || zahlung.status === 'erstattet')) return null;
       const neu = Math.max(erstattetCent - bisher, 0);
+      const erstattet: PaymentInfo = { ...zahlung, refundedCents: erstattetCent, status: vollstaendig ? 'erstattet' : zahlung.status };
       return {
         aenderung: {
-          payment: { ...zahlung, refundedCents: erstattetCent, status: vollstaendig ? 'erstattet' : zahlung.status },
+          payment: erstattet,
+          ...mitRest(vorgang, erstattet),
           timeline: [
             ...vorgang.timeline,
             eintrag(kontext.jetzt, vollstaendig ? `Betrag erstattet (${formatCents(erstattetCent)}).` : `Teilbetrag erstattet (${formatCents(neu)}).`),

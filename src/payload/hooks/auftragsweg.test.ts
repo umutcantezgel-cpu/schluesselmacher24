@@ -100,6 +100,16 @@ describe('Restbetrag', () => {
       req: req(null),
     } as never) as Partial<Vorgaenge>;
     expect(erstattet.restzahlung?.restCent).toBe(24_900);
+    // Offen oder fehlgeschlagen zählt nicht (Direktweg und Partnerweg).
+    for (const status of ['offen', 'fehlgeschlagen'] as const) {
+      const ohne = auftragswegVorAenderung({
+        data: { zahlung: { umfang: 'anzahlung', betragCent: 6990, status } },
+        originalDoc: doc({ restzahlung: { gesamtpreisCent: 24_900, restCent: 17_910 } }),
+        operation: 'update',
+        req: req(null),
+      } as never) as Partial<Vorgaenge>;
+      expect(ohne.restzahlung?.restCent).toBe(24_900);
+    }
   });
 
   it('vermerkt „Rest bezahlt am“ mit Betrag und Zahlart', () => {
@@ -130,7 +140,8 @@ describe('Partner-Anfrage ohne Festpreis: Freigabe mit Zahlungslink über den Ge
     const original = anfrage();
     const data = speichern({ data: { ...original, status: 'freigegeben', restzahlung: { gesamtpreisCent: 31_900 } }, originalDoc: original, req: r });
     expect(data.zahlung).toMatchObject({ umfang: 'gesamt', betragCent: 31_900, status: 'offen' });
-    expect(data.restzahlung?.restCent).toBe(0);
+    // Noch nicht bezahlt: nichts angerechnet, Rest offen bis zum Zahlungseingang.
+    expect(data.restzahlung?.restCent).toBe(31_900);
     expect(r.context['sm24Vorhaben:42']).toMatchObject({ statusMail: { status: 'freigegeben' } });
     expect(data.notizen?.map((n) => n.text)).toContain(`Zahlung über ${formatCents(31_900)} zur Freigabe angelegt (Mina Saad).`);
   });
@@ -169,7 +180,7 @@ describe('Partner-Anfrage ohne Festpreis: Freigabe mit Zahlungslink über den Ge
     const gespeichert = anfrage({ status: 'freigegeben', zahlung: { umfang: 'gesamt', betragCent: 31_900, status: 'offen' }, restzahlung: { gesamtpreisCent: 31_900, restCent: 0 } });
     await vorgangNachAenderung({ doc: gespeichert, operation: 'update', req: r } as never);
     expect(mails).toHaveLength(1);
-    expect(mails[0].betreff).toContain('Ihr Auftrag ist freigegeben');
+    expect(mails[0].betreff).toBe('Ihr Auftrag SM24-T-2026-0042 ist freigegeben');
     expect(mails[0].text).toMatch(/\/bestellung\/42\?t=[\w-]+/);
     expect(mails[0].text).toContain('Partnerbetrieb in Ihrer Region');
     expect(mails[0].text.replace(/ /g, ' ')).toContain(formatCents(31_900).replace(/ /g, ' '));
@@ -177,13 +188,15 @@ describe('Partner-Anfrage ohne Festpreis: Freigabe mit Zahlungslink über den Ge
 });
 
 describe('Vorschlagsliste der passenden Partner', () => {
-  it('nennt nur freigeschaltete Partner mit passender Auftragsart und Postleitzahl, nur im Partnerweg', async () => {
+  it('nennt nur freigeschaltete Partner mit Modell B, passender Auftragsart und Postleitzahl, nur im Partnerweg', async () => {
     const r = req();
     r.payload.find = vi.fn(async () => ({
       docs: [
-        { id: 1, firma: 'Schlüssel Main GmbH', ort: 'Frankfurt', status: 'freigeschaltet', einsatzgebiet: { postleitzahlen: '603*, 604*' }, auftragsarten: ['autoschluessel-vor-ort'] },
-        { id: 2, firma: 'Zylinder Nord', ort: 'Kassel', status: 'freigeschaltet', einsatzgebiet: { postleitzahlen: '60*' }, auftragsarten: ['montage-zylinder'] },
-        { id: 3, firma: 'Auto Süd', ort: 'Darmstadt', status: 'freigeschaltet', einsatzgebiet: { postleitzahlen: '64*' }, auftragsarten: ['autoschluessel-vor-ort'] },
+        { id: 1, firma: 'Schlüssel Main GmbH', ort: 'Frankfurt', status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { postleitzahlen: '603*, 604*' }, auftragsarten: ['autoschluessel-vor-ort'] },
+        { id: 2, firma: 'Zylinder Nord', ort: 'Kassel', status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { postleitzahlen: '60*' }, auftragsarten: ['montage-zylinder'] },
+        { id: 3, firma: 'Auto Süd', ort: 'Darmstadt', status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { postleitzahlen: '64*' }, auftragsarten: ['autoschluessel-vor-ort'] },
+        // Modell A: Der Kunde zahlt an den Partner; passt nicht zum Partnerweg (A-049 Nr. 8).
+        { id: 4, firma: 'Main Schlüssel A', ort: 'Offenbach', status: 'freigeschaltet', abrechnungsmodell: 'A', einsatzgebiet: { postleitzahlen: '60*' }, auftragsarten: ['autoschluessel-vor-ort'] },
       ],
     }));
     const vorschlag = await partnerVorschlaege({ data: doc({ auftragsweg: 'partner' }), req: r } as never);

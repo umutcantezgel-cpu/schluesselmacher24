@@ -143,6 +143,45 @@ function NachFahrzeugklasse() {
   );
 }
 
+/**
+ * Fertige Filter für Auftragsweg, Zahlungsstand und Rest offen (FA-KERN-03). Dieselben Filter gehen auch
+ * über „Filter“ in der Liste; die Spalten Auftragsweg, Zahlungsstand und Rest stehen in der Übersicht.
+ */
+export const AUFTRAGSWEG_FILTER: ReadonlyArray<{ label: string; suche: string }> = [
+  { label: 'Hauptzentrale', suche: '?where[auftragsweg][equals]=hauptzentrale' },
+  { label: 'Eigenbereich', suche: '?where[auftragsweg][equals]=eigenbereich' },
+  { label: 'Partnernetzwerk', suche: '?where[auftragsweg][equals]=partner' },
+  { label: 'Zahlung offen', suche: '?where[zahlung.status][equals]=offen' },
+  {
+    label: 'Rest offen',
+    suche:
+      '?where[and][0][restzahlung.restCent][greater_than]=0&where[and][1][restzahlung.restBezahltAm][exists]=false'
+      + '&where[and][2][status][not_in][0]=storniert&where[and][2][status][not_in][1]=nicht-moeglich',
+  },
+];
+
+function NachAuftragsweg() {
+  return (
+    <div className="sm24-werkzeug__formular">
+      <div className="sm24-aktion__zeile">
+        {AUFTRAGSWEG_FILTER.map((filter) => (
+          <a key={filter.label} className="btn btn--style-secondary btn--size-small" href={filter.suche}>
+            {filter.label}
+          </a>
+        ))}
+        <a className="btn btn--style-secondary btn--size-small" href="?">
+          Alle Vorgänge
+        </a>
+      </div>
+      <p className="field-description">
+        Auftragsweg setzt der Server bei der Buchung; ältere Vorgänge tragen keinen. Rest offen: Gesamtpreis
+        eingetragen, Rest größer null, noch nicht als bezahlt vermerkt, nicht storniert oder abgelehnt. Angerechnet
+        ist nur eine eingegangene Online-Zahlung; vor dem Zahlungseingang ist der Rest der Gesamtpreis.
+      </p>
+    </div>
+  );
+}
+
 export function VorgaengeWerkzeuge() {
   const { config } = useConfig();
   const { user } = useAuth();
@@ -165,6 +204,10 @@ export function VorgaengeWerkzeuge() {
             Hinweisen — zum Drucken oder als PDF speichern.
           </p>
         </div>
+      </details>
+      <details>
+        <summary>Nach Auftragsweg, Zahlung und Rest</summary>
+        <NachAuftragsweg />
       </details>
       <details>
         <summary>Anfragen nach Fahrzeugklasse</summary>

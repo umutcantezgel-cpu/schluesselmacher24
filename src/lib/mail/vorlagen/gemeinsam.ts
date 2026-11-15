@@ -86,7 +86,7 @@ export function terminortAngaben(
 ): { zeile: string; felder: Array<[string, string]> } | null {
   if (vorgang.kind !== 'termin' && !istPartnerAnfrage(vorgang)) return null;
   const weg = auftragswegVon(vorgang) ?? 'partner';
-  const zeile = `${terminortZeile(weg, werkstattAnschrift(firma)?.city)}.`;
+  const zeile = `${terminortZeile(weg, werkstattAnschrift(firma)?.city, vorgang.appointment?.location)}.`;
   if (!vorgang.quote) return { zeile, felder: [] };
   // „Jetzt fällig“ steht schon in den Zahlungszeilen (Anzahlung oder Gesamtbetrag).
   const felder = faelligZeilen(weg, vorgang.quote)

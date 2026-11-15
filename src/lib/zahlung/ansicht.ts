@@ -6,7 +6,7 @@
    ========================================================================== */
 
 import { formatDateTime, formatTime } from '@/lib/format';
-import { istPartnerAnfrage } from '@/lib/auftragsweg';
+import { PARTNER_NICHT_ZUSTANDE, istPartnerAnfrage } from '@/lib/auftragsweg';
 import { istFotoanfrage } from '@/lib/foto-freigabe';
 import type { BusinessRecord } from '@/lib/types';
 
@@ -83,6 +83,10 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   }
 
   if (storniert) {
+    // Partnerweg (FA-KERN-03): Gesamtbetrag statt Anzahlung, kein reserviertes Zeitfenster.
+    if (gesamtTermin) {
+      return { ton: 'danger', titel: 'Auftrag storniert', text: 'Dieser Auftrag ist storniert. Gern können Sie ihn neu buchen.', neuBuchen: true };
+    }
     return termin
       ? { ton: 'danger', titel: 'Termin nicht mehr reserviert', text: 'Dieser Termin ist storniert. Gern können Sie einen neuen Termin buchen.', neuBuchen: true }
       : { ton: 'danger', titel: 'Vorgang storniert', text: 'Dieser Vorgang ist storniert. Eine Zahlung ist nicht mehr nötig.' };
@@ -91,6 +95,11 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   if (zahlung.status === 'fehlgeschlagen') {
     // Ein Termin, den das Team schon bearbeitet, bleibt bestehen (Übergang ohne Storno): kein Aufruf zum
     // Neubuchen, sondern derselbe Satz wie in der Mail (E6-OPUS-04).
+    if (gesamtTermin) {
+      return vorgang.status !== 'neu'
+        ? { ton: 'warning', titel: 'Zahlung nicht eingegangen', text: 'Ihre Zahlung ist nicht eingegangen. Wir melden uns bei Ihnen zum weiteren Vorgehen.' }
+        : { ton: 'danger', titel: 'Zahlung nicht eingegangen', text: PARTNER_NICHT_ZUSTANDE, neuBuchen: true };
+    }
     if (termin && vorgang.status !== 'neu') {
       return { ton: 'warning', titel: 'Anzahlung nicht eingegangen', text: 'Die Anzahlung ist nicht eingegangen. Wir melden uns bei Ihnen zum weiteren Vorgehen.' };
     }
@@ -113,9 +122,13 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   if (termin) {
     // Ein Termin, den das Team schon bearbeitet, wird nicht neu gebucht (E6-OPUS-04, wie bei „fehlgeschlagen“).
     if (vorgang.status !== 'neu') {
+      if (gesamtTermin) {
+        return { ton: 'info', titel: 'Zahlung offen', text: 'Ihr Auftrag wird bereits bearbeitet. Zur Zahlung melden wir uns bei Ihnen.' };
+      }
       return { ton: 'info', titel: 'Anzahlung offen', text: 'Ihr Termin wird bereits bearbeitet. Zur Anzahlung melden wir uns bei Ihnen.' };
     }
     if (!terminNochBezahlbar(vorgang, umfeld.jetzt)) {
+      if (gesamtTermin) return { ton: 'danger', titel: 'Zahlung nicht eingegangen', text: PARTNER_NICHT_ZUSTANDE, neuBuchen: true };
       return {
         ton: 'danger',
         titel: 'Reservierung abgelaufen',
@@ -152,7 +165,7 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   if (!zahlung.checkoutSessionId && partnerAnfrage) {
     return {
       ton: 'info',
-      titel: 'Freigegeben – Zahlung offen',
+      titel: 'Freigegeben, Zahlung offen',
       text: 'Wir können Ihren Auftrag über einen Partnerbetrieb ausführen. Verbindlich wird er mit Ihrer Zahlung des Gesamtbetrags.',
       knopf: 'jetzt',
     };

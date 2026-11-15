@@ -1312,7 +1312,7 @@ function restzahlungZuSeite(r: Vorgaenge['restzahlung']): RemainderInfo | undefi
 
 /**
  * Immer die ganze Gruppe. Mit Zahlung wird der Rest aus Gesamtpreis und Zahlung neu berechnet; ohne gilt
- * der übergebene Rest. Beim Speichern in der Datenbank rechnet der Hook `restbetragBerechnen` ihn ohnehin neu.
+ * der übergebene Rest. Beim Speichern in der Datenbank rechnet der Hook `auftragswegVorAenderung` (src/payload/hooks/auftragsweg.ts) ihn ohnehin neu.
  */
 function restzahlungZuPayload(remainder: RemainderInfo, payment?: PaymentInfo): NonNullable<VorgangDaten['restzahlung']> {
   const rest = payment ? (restbetragCents(remainder.totalCents, payment) ?? remainder.remainderCents) : remainder.remainderCents;

@@ -71,18 +71,22 @@ export const auftragswegVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({
   return data;
 };
 
-/** Partnerbetrieb für die Vorschlagsliste: nur Stand, Einsatzgebiet und Auftragsarten zählen. */
-export function partnerFuerWeg(doc: Pick<Partnerbetriebe, 'id' | 'status' | 'einsatzgebiet' | 'auftragsarten'>): PartnerFuerWeg {
+/** Partnerbetrieb für die Vorschlagsliste: nur Stand, Einsatzgebiet, Auftragsarten und Abrechnungsmodell zählen. */
+export function partnerFuerWeg(
+  doc: Pick<Partnerbetriebe, 'id' | 'status' | 'einsatzgebiet' | 'auftragsarten'> & { abrechnungsmodell?: Partnerbetriebe['abrechnungsmodell'] | null },
+): PartnerFuerWeg {
   return {
     id: String(doc.id),
     status: doc.status as BewerbungStatus,
     postleitzahlen: plzMusterAusText(doc.einsatzgebiet?.postleitzahlen),
     auftragsarten: [...(doc.auftragsarten ?? [])],
+    // Ohne Angabe gilt Modell A wie im Standard der Sammlung; im Partnerweg zählt nur Modell B (A-049 Nr. 8).
+    abrechnungsmodell: doc.abrechnungsmodell === 'B' ? 'B' : 'A',
   };
 }
 
 /**
- * Vorschlagsliste am Vorgang (FA-KERN-03): freigeschaltete Partnerbetriebe mit passender Auftragsart, deren
+ * Vorschlagsliste am Vorgang (FA-KERN-03): freigeschaltete Partnerbetriebe mit Modell B und passender Auftragsart, deren
  * Einsatzgebiet die Postleitzahl des Kunden abdeckt. Nur bei Vorgängen im Partnerweg; die Zuordnung trifft
  * das Team (A-049), eine Rangfolge gibt es nicht.
  */

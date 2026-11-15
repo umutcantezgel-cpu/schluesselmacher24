@@ -5,7 +5,7 @@ import { useState } from 'react';
 import type { CompanyLocation, TimeSlot } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import { formatDate, formatDuration } from '@/lib/format';
-import { AUSSENEINSATZ_HINWEIS, BEIM_KUNDEN_HINWEIS, anschriftEinzeilig } from '@/lib/terminort';
+import { AUSSENEINSATZ_HINWEIS, anschriftEinzeilig, beimKundenHinweis } from '@/lib/terminort';
 import { Alert } from '@/components/ui/alert';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphKalender } from '@/components/visual/glyphen/kalender';
@@ -21,6 +21,8 @@ export interface TerminAuswahlProps {
   requiresVehicleOnSite: boolean;
   /** Leistung beim Fahrzeug des Kunden (Fahrzeugöffnung): kein Werkstatttermin. */
   beimKunden?: boolean;
+  /** Bezeichnung des regionalen Eigenbereichs aus den Einstellungen (FA-KERN-03), etwa „Wetzlar und Umgebung“. */
+  eigenbereichName?: string;
   /** Werkstatt, in der der Termin stattfindet (`standort` aus den Firmendaten). */
   werkstatt?: CompanyLocation;
   /**
@@ -66,6 +68,7 @@ export function TerminAuswahl({
   slotMinutes,
   requiresVehicleOnSite,
   beimKunden = false,
+  eigenbereichName,
   werkstatt,
   staleSelection = false,
   selectedDate,
@@ -204,7 +207,7 @@ export function TerminAuswahl({
       {/* Terminort (Erg. Leitfaden §1): Kundinnen und Kunden kommen zur Werkstatt. */}
       {beimKunden ? (
         <Alert tone="info" title="Termin bei Ihrem Fahrzeug">
-          <p>{BEIM_KUNDEN_HINWEIS}</p>
+          <p>{beimKundenHinweis(eigenbereichName)}</p>
         </Alert>
       ) : requiresVehicleOnSite ? (
         <Alert tone="warning" title="Bitte bringen Sie Ihr Fahrzeug mit">

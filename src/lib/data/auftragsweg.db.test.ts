@@ -43,7 +43,12 @@ describe('Auftragsweg und Rest in der Datenbank', () => {
     const termin = await neuerTermin();
     const mitWeg = await vorgangAendern(termin.id, () => ({ auftragsweg: 'eigenbereich', remainder: { totalCents: 24_900, remainderCents: 17_910 } }));
     expect(mitWeg?.auftragsweg).toBe('eigenbereich');
-    expect(mitWeg?.remainder).toEqual({ totalCents: 24_900, remainderCents: 17_910 });
+    // Anzahlung noch offen: nichts angerechnet, der Hook setzt den Rest auf den Gesamtpreis.
+    expect(mitWeg?.remainder).toEqual({ totalCents: 24_900, remainderCents: 24_900 });
+
+    // Anzahlung eingegangen: jetzt angerechnet.
+    const bezahlt = await vorgangAendern(termin.id, (v) => ({ payment: { ...v.payment!, status: 'bezahlt' } }));
+    expect(bezahlt?.remainder?.remainderCents).toBe(17_910);
 
     // Zahlung erstattet: Der Hook rechnet den Rest neu, auch bei einer Änderung des Servers.
     const erstattet = await vorgangAendern(termin.id, (v) => ({ payment: { ...v.payment!, status: 'erstattet' } }));

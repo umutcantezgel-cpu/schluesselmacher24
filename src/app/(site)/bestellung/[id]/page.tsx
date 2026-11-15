@@ -239,9 +239,12 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
 
   // Terminort und Beträge (FA-KERN-03): bei Autoschlüssel-Terminen und Partner-Anfragen.
   const weg = record.kind === 'termin' || istPartnerAnfrage(record) ? auftragswegVon(record) : undefined;
-  const terminort = weg ? terminortZeile(weg, werkstattAnschrift((await getSettings().catch(() => null))?.company)?.city) : null;
+  const terminort = weg ? terminortZeile(weg, werkstattAnschrift((await getSettings().catch(() => null))?.company)?.city, record.appointment?.location) : null;
   if (weg) {
-    const betraege = auftragswegZeilen(record).filter(([name]) => name !== 'Auftragsweg');
+    // Den Rest erst nach dem Zahlungseingang zeigen: Vorher ist nichts angerechnet, und ein Rest neben dem
+    // offenen Betrag wäre missverständlich.
+    const zahlungOffen = Boolean(record.payment && record.payment.status !== 'bezahlt');
+    const betraege = auftragswegZeilen(record).filter(([name]) => name !== 'Auftragsweg' && !(zahlungOffen && name.startsWith('Rest')));
     if (betraege.length) abschnitte.push({ title: 'Gesamtpreis und Rest', rows: betraege.map(([label, value]) => ({ label, value })) });
   }
 

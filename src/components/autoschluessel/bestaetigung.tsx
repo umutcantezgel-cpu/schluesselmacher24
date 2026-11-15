@@ -71,7 +71,7 @@ export function Bestaetigung({
 
       {/* Terminort und Beträge vor der Zahlung (FA-KERN-03) */}
       <div className="space-y-2">
-        <p className="text-body font-semibold text-foreground">{terminortZeile(weg, werkstatt?.city)}</p>
+        <p className="text-body font-semibold text-foreground">{terminortZeile(weg, werkstatt?.city, appointment?.location)}</p>
         <dl className="divide-y divide-border border-y border-border">
           {faelligZeilen(weg, quote).map((zeile) => (
             <div key={zeile.label} className="flex flex-wrap items-baseline justify-between gap-2 py-2">
