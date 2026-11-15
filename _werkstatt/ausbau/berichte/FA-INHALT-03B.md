@@ -19,7 +19,7 @@ Nicht berührt: `seo.title`, `seo.description`, Titel der Leistungen, `ctaHref`,
 - Keine Titeländerung (kein Titel trug einen Gedankenstrich). Knöpfe unverändert („Anfrage starten“, „Sicherheitscheck starten“).
 
 **Bereichsseite Tür- und Schließtechnik:**
-- Entfernt, weil nicht belegt (R4, R9, Paketvorgabe zu Normen): Empfehlung „mindestens RC2, bei erhöhtem Schutzbedarf RC3“ und „DIN EN 1627“; „strenge gesetzliche Normen (EN 179 … EN 1125 …)“ in der FAQ; „Wir sind zertifiziert … nach DIN EN 179 und DIN EN 1125“ (ohne Nachweis im Bestand; `Nachweise.ts` verlangt für „zertifiziert“ einen Nachweis); „eine der häufigsten Einbruchmethoden“ (Zahl ohne Quelle); „T30“. Alles steht unter OFFENE FRAGEN.
+- Entfernt, weil nicht belegt (R4, R9, Paketvorgabe zu Normen): Empfehlung „mindestens RC2, bei erhöhtem Schutzbedarf RC3“ und „DIN EN 1627“; „strenge gesetzliche Normen“ in der FAQ; das Wort „zertifiziert“ (Nachweis steht auf „bereithalten“, siehe Nachbesserung; die Normen DIN EN 179 und DIN EN 1125 bleiben, belegt durch den Nachweis in `seed.ts` und `startwerte/2026-10-25/nachweise.json`); „eine der häufigsten Einbruchmethoden“ (Zahl ohne Quelle); „T30“. Alles steht unter OFFENE FRAGEN.
 - Der Punkt „Widerstandsklassen (RC)“ ist ersetzt durch „Schloss und Schließblech“ (Aussage aus dem Fließtext derselben Seite). „Zieh- und Bohrschutz … verhindern“ heißt „Ziehschutz … erschweren“ (ehrlicher, die Beschreibung nannte nur Kernziehen).
 - Werbesprache ersetzt: „Ganzheitliche …“, „Architektur der Sicherheit“, „Technische Spezialisierung“, „Kernkompetenzen … Präzise Handwerkskunst trifft auf modernste Sicherheitstechnik“, „Regulatorik“, „höchste fachliche Expertise“, „Systemerweiterungen / Gewerkeübergreifende Lösungen“, „Ideal für“, „Die flexible Alternative“, „transparente Aufklärung … komplexesten Fragen“.
 - FAQ: gleiche fünf Fragen, gleiche Kernaussagen, kurze Sätze. Längster Satz vorher 31 Wörter, jetzt 20. Die FAQ ist zugleich die Strukturdatenquelle (R8: Sichtbares und Strukturdaten bleiben gleich).
@@ -27,7 +27,7 @@ Nicht berührt: `seo.title`, `seo.description`, Titel der Leistungen, `ctaHref`,
 - Rückfalltitel und -untertitel im Kopf (nur sichtbar ohne Daten) an `content.ts` angeglichen.
 
 **Bereichsseite Sicherheitstechnik:**
-- Gedankenstriche aus den drei Grundsatz-Texten und zwei Punkten des Rechtskastens entfernt (dort nur Satzzeichen getauscht, Wortlaut gleich). Der Satz zur verdeckten Audioüberwachung und `HINWEIS_TON_UND_AUFZEICHNUNG` sind wörtlich unverändert; ein neuer Test hält den Satz auf beiden Seiten fest.
+- Gedankenstrich aus einem Grundsatz-Text („Meldetechnik erkennt“) entfernt, zwei weitere Grundsatz-Texte umformuliert. Der Rechtskasten steht wieder wörtlich und mit seinen Satzzeichen auf dem alten Stand (siehe Nachbesserung). Der Satz zur verdeckten Audioüberwachung und `HINWEIS_TON_UND_AUFZEICHNUNG` sind wörtlich unverändert; ein neuer Test hält den Satz auf beiden Seiten fest.
 - „Sieben Bereiche, die zusammen gedacht werden“ (feste Zahl, Floskel „Stückwerk“) heißt „Die Bereiche im Einzelnen“.
 - Zweiter Knopf zum Sicherheitscheck hieß „Bestandsaufnahme starten“, jetzt „Sicherheitscheck starten“ wie der Kopfknopf (A-031).
 
@@ -102,7 +102,7 @@ Gegenlesen: Diese Teilaufgabe hatte kein Werkzeug, um unabhängige Agenten zu st
 **Panik- und Fluchttürtechnik**
 1. Welche Panikschlösser und Panikstangen bietet der Betrieb an („im Rahmen unserer Leistungen“)?
 2. „Die Anforderungen hängen vom Gebäude ab und müssen vorab geklärt werden“: Wer klärt das, Kunde oder Betrieb?
-3. Bereichsseite: Zertifizierung nach DIN EN 179 und 1125 gestrichen. Falls es sie gibt, als Nachweis hinterlegen.
+3. Bereichsseite: „Wir bearbeiten und warten Notausgangs- und Paniktürverschlüsse nach DIN EN 179 und DIN EN 1125.“ Bis das Dokument hinterlegt ist: so lassen, „Fachkunde“ ergänzen oder die Norm weglassen?
 
 **Reparatur und Austausch**
 1. „Türfalz“ ohne Erklärung.
@@ -160,14 +160,14 @@ Gegenlesen: Diese Teilaufgabe hatte kein Werkzeug, um unabhängige Agenten zu st
 3. Abschnitt 03: „Im Schadensfall kann das zu Fragen der Haftung führen.“ Ist das rechtlich so in Ordnung?
 
 **Bereichsseite Sicherheitstechnik**
-1. Rechtskasten: Nur Gedankenstriche durch Kommas ersetzt. Bitte mit der anwaltlichen Prüfung (MA-40) abgleichen.
+1. Rechtskasten: unverändert (auch die Gedankenstriche). Ob sie wegfallen, entscheidet die anwaltliche Prüfung (MA-40).
 2. „kosten einen Einbrecher Zeit und Kraft“: Ton in Ordnung (keine Angstmache)?
 3. „Welche Bereiche zu Ihrem Gebäude passen, klären wir im Sicherheitscheck“: Der Check sammelt Angaben; klärt der Betrieb danach?
 
 ## OFFENE FRAGEN
-- OFFENE FRAGE: Normen und Klassen von der Bereichsseite Tür gestrichen, weil nicht in `FACHWISSEN.md` oder den Daten belegt: DIN EN 1627, Empfehlung RC2/RC3, EN 179, EN 1125, T30. Soll der Inhaber Quellen liefern, damit sie zurückkommen?
-- OFFENE FRAGE: „Wir sind zertifiziert für … Flucht- und Rettungswegtechnik nach DIN EN 179 und DIN EN 1125“ gestrichen. Liegt ein Nachweis vor, gehört er in die Sammlung Nachweise (dann zeigt die Seite ihn über `NachweiseListe`).
-- OFFENE FRAGE: Die SEO-Beschreibungen von „Profilzylinder und Spezialzylinder“ und „Montage und Anpassung“ tragen weiter Gedankenstriche, ebenso die Rückfall-Metadaten der Bereichsseite Tür („Ganzheitliche …“) und `content.ts`. Das gehört zu FA-SEO-01.
+- OFFENE FRAGE: Normen und Klassen von der Bereichsseite Tür gestrichen, weil nicht in `FACHWISSEN.md` oder den Daten belegt: DIN EN 1627, Empfehlung RC2/RC3, T30. (DIN EN 179 und DIN EN 1125 sind belegt und stehen wieder.) Soll der Inhaber Quellen liefern, damit sie zurückkommen?
+- OFFENE FRAGE (Inhaber): Der Nachweis „Flucht- und Rettungswegtechnik nach DIN EN 179 und DIN EN 1125“ ist angelegt (Status „bereithalten“); es fehlt nur das Dokument. Bis dahin steht ohne „zertifiziert“: „Wir bearbeiten und warten Notausgangs- und Paniktürverschlüsse nach DIN EN 179 und DIN EN 1125.“ Der Inhaber entscheidet, ob bis zum Hochladen „Fachkunde“ oder gar keine Normangabe dasteht. „Zertifiziert“ erst, wenn der Nachweis auf „Liegt vor“ steht.
+- OFFENE FRAGE, Übergabe an FA-SEO-01: Bei allen 17 Leistungen weicht `seo.description` jetzt vom sichtbaren Kurztext ab (vorher gleich; im Rückfall daraus abgeleitet). Die Beschreibung geht in die Meta-Beschreibung und in die Strukturdaten (`sicherheitstechnik/[slug]/page.tsx:90`, `tuer-und-schliesstechnik/[slug]/page.tsx:69`). **Dringend:** `sicherheit-alarmtechnik` sagt dort weiter „…die auffällige Ereignisse zuverlässig erkennen“; genau diese Zusage ist im sichtbaren Text als unbelegt gestrichen (R4, R8). Außerdem tragen die SEO-Beschreibungen von „Profilzylinder und Spezialzylinder“ und „Montage und Anpassung“ Gedankenstriche, ebenso die Rückfall-Metadaten der Bereichsseite Tür („Ganzheitliche …“) und `content.ts`. Das Paket durfte SEO-Felder nicht anfassen (ein Test hält sie fest). Der Orchestrator entscheidet, ob FA-INHALT-03B vor der Abnahme auf FA-SEO-01 wartet oder ob die SEO-Beschreibung der Alarmtechnik in einem eigenen kleinen SEO-Schritt nachgezogen wird.
 - OFFENE FRAGE: Die Leistungsseiten bestehen aus Kurztext und vier Punkten. Einen eigenen Abschnitt „Was es kostet“ oder „Ihr Nachweis“ gibt es nicht; der Datentyp hat keine Felder dafür. Ein Ausbau braucht ein Paket mit Datenschema.
 - OFFENE FRAGE: Der Hinweis im Ablaufkasten („Wir prüfen Ihren Fall und melden uns mit Machbarkeit und Preis.“) kommt aus `PROCESS_LABELS` in `src/lib/navigation.ts` (gesperrt) und blieb.
 - OFFENE FRAGE: Gegenlesen durch zwei unabhängige Agenten (Haiku als Laie, Opus für Tatsachen) gegen den git diff nachholen, ebenso eine Messung mit `stil.mjs` bei laufendem Server.
@@ -175,9 +175,31 @@ Gegenlesen: Diese Teilaufgabe hatte kein Werkzeug, um unabhängige Agenten zu st
 
 ## PRÜFUNG
 Über die Datenweiche (`sicher.sh --json`):
-- `npx vitest run`: 184 Testdateien, 2376 Tests, alle bestanden (davon 4 neu in `service-pages.test.ts`).
+- `npx vitest run`: 184 Testdateien, 2381 Tests, alle bestanden (davon 4 neu in `service-pages.test.ts`; Stand nach der Nachbesserung, die Zahl enthält Tests gleichzeitig laufender Pakete).
 - `npm run typecheck`: ohne Fehler.
 - `npm run lint`: ohne Fehler.
 - Kein Build, kein Server, kein git, keine `--pg`-Befehle.
 
+## NACHBESSERUNG
+Befunde der Gegenprüfung, je am Code geprüft:
+1. [rot] Zertifizierungssatz Bereichsseite Tür: **behoben.** Der Befund stimmt: Der Nachweis „Flucht- und Rettungswegtechnik nach DIN EN 179 und DIN EN 1125“ steht in `src/payload/seed.ts` und `content/startwerte/2026-10-25/nachweise.json` (Status „bereithalten“), die Begründung „ohne Nachweis im Bestand“ war falsch. Neu im Kasten: „Wir bearbeiten und warten Notausgangs- und Paniktürverschlüsse nach DIN EN 179 und DIN EN 1125.“ Ohne „zertifiziert“, weil das Dokument noch fehlt. OFFENE FRAGE berichtigt.
+2. [rot] FAQ Flucht- und Rettungswege: **behoben.** Neu: „Für Notausgänge gilt DIN EN 179, für Paniktüren DIN EN 1125.“ Damit nennen Tür-, Schließanlagen- und Service-Seite die Normen einheitlich; die FAQ-Strukturdaten folgen dem sichtbaren Text.
+3. [rot] SEO-Beschreibung weicht vom Kurztext ab: **behoben im Bericht** (Übergabe). Der Befund stimmt; das Paket verbietet, SEO-Felder anzufassen, und `service-pages.test.ts` hält sie gleich den Startwerten. Deshalb steht die Abweichung bei allen 17 Leistungen samt der dringenden Zusage „zuverlässig“ (Alarmtechnik) unter OFFENE FRAGEN mit Übergabe an FA-SEO-01 und der Entscheidungsfrage an den Orchestrator.
+4. [gelb] Marke „Normen und Brandschutz“: **nicht zutreffend mehr.** Nach Befund 1 nennt der Kasten wieder DIN EN 179 und DIN EN 1125, die Marke passt also zum Inhalt und bleibt.
+5. [gelb] Vorspann Leistungen: **behoben.** Neu: „Hier finden Sie unsere Leistungen an der Tür, vom Zylinder bis zum Türschließer. Jede Leistung hat eine eigene Seite.“
+6. [gelb] Wer die Empfänger festlegt: **behoben.** Bereichsseite Sicherheitstechnik: „Wer benachrichtigt wird, legen Sie mit uns vorab fest.“ Panik- und Alarmtaster (JSON und Rückfall gleich): „Wir richten die Taster ein und legen mit Ihnen vorab fest, wer sie erhält.“ (ein Satz, damit der Kurztext bei zwei Sätzen bleibt).
+7. [gelb] „Prüfung der Tür und ihrer Lage vor Ort“: **behoben.** Jetzt „Wir prüfen die Tür vor Ort“, gleichlautend in JSON und Rückfall.
+8. [gelb] Satzzeichen im Rechtskasten der Bereichsseite Sicherheitstechnik: **behoben.** Beide Gedankenstriche (Zeilen 315 und 334) stehen wieder wie in der alten Fassung; der Kasten ist wörtlich und zeichengleich unverändert, bis MA-40 entscheidet. Schlussredaktion angepasst.
+9. [gelb] Dachzeile „Normen und Brandschutz“ und Kommentar: **nicht zutreffend mehr**, aus demselben Grund wie Befund 4 (die Normen stehen wieder im Abschnitt).
+10. [gelb] Bericht: **behoben.** Satz berichtigt (ein Gedankenstrich aus dem Grundsatz „Meldetechnik erkennt“ entfernt, zwei Grundsatz-Texte umformuliert); Prüfzahlen auf 2381 Tests aktualisiert.
+
+Prüfung nach der Nachbesserung über die Datenweiche (`sicher.sh --json`): `npx vitest run` 184 Testdateien, 2381 Tests, alle bestanden; `npm run typecheck` ohne Fehler; `npm run lint` ohne Fehler. Kein Build, kein Server, kein git.
+
 === ENDE FA-INHALT-03B · BERICHT ===
+
+## ABNAHME (Orchestrator, 15.11.2026)
+
+- **Strukturdaten der Leistungsseiten nennen jetzt den sichtbaren Kurztext** (R8): `sicherheitstechnik/[slug]/page.tsx` und `tuer-und-schliesstechnik/[slug]/page.tsx` geben `page.summary` statt `page.seo.description` in die Seitenauszeichnung. Damit beschreibt die Auszeichnung wieder genau das, was im Kopf der Seite steht.
+- **Meta-Beschreibungen der 17 Leistungen** bleiben bis FA-SEO-01 auf dem Startwert. Dort werden sie aus dem sichtbaren Kurztext neu gefasst; die Zusage „zuverlässig“ bei der Alarmtechnik steht als Pflichtpunkt in der Paketdatei FA-SEO-01. Der Test in `service-pages.test.ts`, der die SEO-Felder festhält, wird in FA-SEO-01 mit umgestellt.
+- **Normangabe DIN EN 179 und DIN EN 1125** steht ohne „zertifiziert“, bis der Nachweis auf „Liegt vor“ steht (MA-42).
+- **Rechtskasten Sicherheitstechnik** unverändert, bis die anwaltliche Prüfung vorliegt (MA-40).

@@ -87,7 +87,7 @@ export function servicePages(): ServicePage[] {
       [
         'Panikschlösser und Panikstangen im Rahmen unserer Leistungen',
         'Schloss, Beschlag und Zylinder aufeinander abgestimmt',
-        'Prüfung der Tür und ihrer Lage vor Ort',
+        'Wir prüfen die Tür vor Ort',
         'Die Anforderungen hängen vom Gebäude ab und müssen vorab geklärt werden',
       ],
       'Türtechnik, die im Notfall aus dem Gebäude heraus jederzeit begehbar bleibt.',
@@ -194,7 +194,7 @@ export function servicePages(): ServicePage[] {
     [
       'panik-und-alarmtaster',
       'Panik- und Alarmtaster',
-      'Mit einem Panik- oder Alarmtaster lösen Sie im Notfall eine Benachrichtigung aus. Wir richten die Taster ein und legen vorab fest, wer sie erhält.',
+      'Mit einem Panik- oder Alarmtaster lösen Sie im Notfall eine Benachrichtigung aus. Wir richten die Taster ein und legen mit Ihnen vorab fest, wer sie erhält.',
       [
         'Fest montierte oder mobile Taster',
         'Feste Wege für die Benachrichtigung',

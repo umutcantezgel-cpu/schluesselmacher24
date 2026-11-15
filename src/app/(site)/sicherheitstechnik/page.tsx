@@ -89,7 +89,7 @@ const PRINCIPLE = [
     term: 'Alarmierung informiert',
     body:
       'Signalgeber und Benachrichtigungen erreichen die Person, die reagieren kann. '
-      + 'Wer benachrichtigt wird, legen wir vorab fest.',
+      + 'Wer benachrichtigt wird, legen Sie mit uns vorab fest.',
     href: `/${ROUTE}/panik-und-alarmtaster`,
     linkLabel: 'Zu Panik- und Alarmtastern',
   },
@@ -312,7 +312,7 @@ export default async function SicherheitstechnikPage() {
             <ul className="mt-4 space-y-3 text-small leading-relaxed text-foreground-muted">
               <li>
                 Wer eine Anlage mit Video-, Audio- oder Protokollfunktion betreibt, verantwortet deren
-                rechtmäßige Nutzung, also Zweck, Umfang, Speicherdauer, Zugriff und Kennzeichnung.
+                rechtmäßige Nutzung — also Zweck, Umfang, Speicherdauer, Zugriff und Kennzeichnung.
                 Wir liefern und montieren die Technik und beraten technisch; eine Rechtsberatung ist
                 das ausdrücklich nicht.
               </li>
@@ -331,7 +331,7 @@ export default async function SicherheitstechnikPage() {
                 etwa für die Kommunikation an der eigenen Tür oder für eine vereinbarte Alarmierung.
               </li>
               <li>
-                Protokollfunktionen, etwa Zutritts-, Ereignis- oder Bedienprotokolle, erfassen
+                Protokollfunktionen — etwa Zutritts-, Ereignis- oder Bedienprotokolle — erfassen
                 personenbezogene Daten. Zweck, Speicherdauer und Zugriffsberechtigung legen Sie vorab
                 fest; im Beschäftigtenkontext ist zusätzlich die betriebliche Mitbestimmung zu
                 beachten.

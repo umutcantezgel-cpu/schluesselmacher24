@@ -115,7 +115,7 @@ const EXPERT_FAQ = [
   {
     question: 'Welche Anforderungen gibt es an Schlösser für Flucht- und Rettungswege?',
     answer:
-      'Eine Tür im Fluchtweg muss sich von innen jederzeit und ohne Schlüssel öffnen lassen. Das gilt auch, wenn sie von außen verriegelt ist. Dafür gibt es Panikschlösser mit passenden Beschlägen, etwa Drücker oder Panikstangen. Änderungen an diesen Türen sind nur mit zugelassenen Teilen und fachgerecht erlaubt. Sonst kann die Zulassung der Tür verloren gehen.',
+      'Eine Tür im Fluchtweg muss sich von innen jederzeit und ohne Schlüssel öffnen lassen. Das gilt auch, wenn sie von außen verriegelt ist. Für Notausgänge gilt DIN EN 179, für Paniktüren DIN EN 1125. Dafür gibt es Panikschlösser mit passenden Beschlägen, etwa Drücker oder Panikstangen. Änderungen an diesen Türen sind nur mit zugelassenen Teilen und fachgerecht erlaubt. Sonst kann die Zulassung der Tür verloren gehen.',
   },
   {
     question: 'Lässt sich jede Haustür mit einem elektronischen Schloss nachrüsten?',
@@ -284,7 +284,7 @@ export default async function TuerUndSchliesstechnikPage() {
           nummer="02"
           eyebrow="Leistungen"
           title="Unsere Leistungen an der Tür"
-          lead="Von Zylinder und Schloss bis zum Türschließer. Jede Leistung hat eine eigene Seite mit allem, was dazugehört."
+          lead="Hier finden Sie unsere Leistungen an der Tür, vom Zylinder bis zum Türschließer. Jede Leistung hat eine eigene Seite."
         />
 
         {/* Zweispaltige Haarlinienliste ab lg: zehn Leistungen ergeben fünf volle Zeilen ohne Waise.
@@ -345,7 +345,7 @@ export default async function TuerUndSchliesstechnikPage() {
                 An Brand-, Rauchschutz- und Fluchttüren gelten die bauaufsichtlichen Zulassungen der Tür. Wird dort etwa eine Mehrfachverriegelung falsch nachgerüstet, kann die Zulassung erlöschen. Im Schadensfall kann das zu Fragen der Haftung führen.
               </p>
               <p>
-                Deshalb prüfen wir jede Änderung an diesen Türen vorher darauf, ob sie zulässig ist. Was wir ändern, dokumentieren wir.
+                Wir bearbeiten und warten Notausgangs- und Paniktürverschlüsse nach DIN EN 179 und DIN EN 1125. Jede Änderung an diesen Türen prüfen wir vorher darauf, ob sie zulässig ist. Was wir ändern, dokumentieren wir.
               </p>
             </div>
             <Link
