@@ -50,14 +50,14 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 |---|---|---|---|---|
 | FA-INHALT-01 | Tutorials: Rubrik, zehn Themen als Struktur, YouTube-Einbettung mit Einwilligung, im Admin ohne Entwickler pflegbar, Videos auf Leistungsseiten | FA-21, FA-22-32 | ja | offen |
 | FA-INHALT-02 | Hersteller und Systeme früh sichtbar: Bereich auf der Startseite, BKS, ABUS, BURG-WÄCHTER sachlich; Logos erst nach Freigabe | FA-17-02, -03, -20, FA-19 | ja (Logo-Feld) | offen, wartet auf Recherche 06 |
-| FA-INHALT-03 | Texte menschlicher: kurze, klare Sätze auf Leistungsseiten, Gegenprüfung durch zwei unabhängige Leser, ohne Gedankenstriche | FA-02 | nein | Gruppe A (Autoschlüssel-Leistungsseiten) committet 9788b33 · B (Tür- und Sicherheitstechnik) fbcc918 · C (Rubrikseiten Zylinder, Schließanlagen, Zutritt, Service) 24e22aa · D (Schlüsselwege im Shop) 292c5a6 · E (Ratgeber, Artikel, Warenkorb) läuft · offen: Startseite und Fahrzeugseiten (nach FA-KERN-02 und FA-SOFORT-05), Kasse und Bestellung (nach FA-KERN-03), Mails und PDF |
+| FA-INHALT-03 | Texte menschlicher: kurze, klare Sätze auf Leistungsseiten, Gegenprüfung durch zwei unabhängige Leser, ohne Gedankenstriche | FA-02 | nein | Gruppen A bis F committet (Autoschlüssel-Leistungen, Tür- und Sicherheitstechnik, Rubrikseiten, Schlüsselwege im Shop, Ratgeber mit Artikeln und Warenkorb, Startseite mit Fahrzeugseiten) · offen: Kasse und Bestellung, Mails und PDF, Standorte (nach FA-PLATTFORM-03) |
 | FA-INHALT-04 | Bilder: Vorher-Nachher-Baustein, Logo unten rechts für eigene Fotos, Alt-Text-Pflicht, Hinweise zu Kennzeichen und Personen | FA-20 | ja | offen; Fotos fehlen (MA-05) |
 | FA-INHALT-05 | Schließanlagen, Zutritt, Sicherheitstechnik: Zielgruppen, Erweiterbarkeit, Hinweis zu Ton und Aufzeichnung (FA-16-21 Erklärtexte pflegbar bleibt offen) | FA-16-06, -09, FA-17-18, FA-18-09, -13, -14 | nein | committet f54ce64 |
 
 ## Priorität 6 · SEO
 | Paket | Inhalt | Anforderungen | Schema | Status |
 |---|---|---|---|---|
-| FA-SEO-01 | Titel und Beschreibungen in den Längen, Strukturdaten für Betrieb, Leistungen, Produkte, Brotkrumen überall, FAQ-Auszeichnung nach R8, Canonical und Indexstatus im Admin | FA-25, FA-22-44, -45 | ja (klein) | Teil A committet 5674196 · Teil B (FA-SEO-01B: Titel und Beschreibungen der übrigen Seiten, Rückfall der Ratgeber) läuft · offen danach: Strukturdaten, Canonical-Feld, Indexierbarkeit, Verweislisten |
+| FA-SEO-01 | Titel und Beschreibungen in den Längen, Strukturdaten für Betrieb, Leistungen, Produkte, Brotkrumen überall, FAQ-Auszeichnung nach R8, Canonical und Indexstatus im Admin | FA-25, FA-22-44, -45 | ja (klein) | Teil A committet 5674196 · Teil B (übrige Titel und Beschreibungen, Rückfall der Ratgeber) committet, Build und Onpage-Messung folgen · Teil C (Strukturdaten, Überschriften, Indexierbarkeit, Verweislisten) läuft · offen: Canonical-Feld im Admin (Schema) |
 | FA-SEO-02 | Eigene Onpage-Prüfung nach den Kriterien von Seobility über den Build (Schutz jeder Staging-Adresse liegt bei FA-SEO-01) | FA-25-21, -22, FA-AB-04 | nein | committet 1436cf3 |
 
 ## Priorität 7 · QA
