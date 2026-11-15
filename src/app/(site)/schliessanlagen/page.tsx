@@ -107,7 +107,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
   },
   {
     icon: GlyphGebaeude,
-    title: 'Unternehmen',
+    title: 'Gewerbe',
     body:
       'Büro, Werkstatt, Lager, Serverraum: Nicht jede Person braucht jede Tür. Eine '
       + 'Hauptschlüsselanlage (HS) bildet Zuständigkeiten ab, ohne den Alltag zu erschweren.',
@@ -134,7 +134,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
   },
   {
     icon: BereichsZeichen,
-    title: 'Mehrere Gebäude',
+    title: 'Mehrere Liegenschaften',
     body:
       'Verteilte Standorte oder eine größere Liegenschaft: Eine Generalhauptschlüsselanlage '
       + '(GHS) fasst mehrere Gebäude unter einer gemeinsamen Ebene zusammen.',

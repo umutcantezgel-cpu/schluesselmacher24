@@ -165,7 +165,7 @@ export function servicePages(): ServicePage[] {
     ],
     [
       'smarte-funktionen',
-      'Smarte Funktionen',
+      'Smart-Home-Sicherheitsfunktionen',
       'Anwesenheitssimulation, Beleuchtung und Schaltmodule, sinnvoll eingesetzt.',
       [
         'Anwesenheitssimulation bei Abwesenheit',

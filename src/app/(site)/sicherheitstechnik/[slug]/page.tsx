@@ -13,6 +13,8 @@ import { GlyphHaken } from '@/components/visual/glyphen/haken';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
+import { HINWEIS_TON_UND_AUFZEICHNUNG } from '../rechtshinweis-ton';
+
 const AREA = 'sicherheitstechnik';
 const AREA_LABEL = 'Sicherheitstechnik';
 
@@ -162,6 +164,9 @@ export default async function SecurityDetailPage(props: PageProps) {
                 Flächen und Nachbargrundstücke nicht erfassen. Verdeckte Audioüberwachung bieten wir
                 nicht als Standardprodukt an; Gegensprech- und Alarmfunktionen richten wir nur für
                 zulässige Einsatzzwecke ein. Wir beraten technisch und leisten keine Rechtsberatung.
+              </p>
+              <p className="mt-3 max-w-measure text-small leading-relaxed text-foreground-muted">
+                {HINWEIS_TON_UND_AUFZEICHNUNG}
               </p>
               <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
                 <Link

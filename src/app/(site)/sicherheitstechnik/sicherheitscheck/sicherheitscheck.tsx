@@ -20,6 +20,8 @@ import { SummaryList } from '@/components/layout/summary-list';
 import { WegBestaetigung } from '@/components/weg/bestaetigung';
 import { SCHRITTE_SICHERHEITSTECHNIK } from '@/lib/wege/naechste-schritte';
 
+import { HINWEIS_TON_UND_AUFZEICHNUNG } from '../rechtshinweis-ton';
+
 const FLOW_ID = 'sicherheitscheck';
 
 /* ---------- Auswahllisten ------------------------------------------------ */
@@ -392,6 +394,7 @@ function LegalNotice({ className }: { className?: string }) {
           Verdeckte Audioüberwachung bieten wir nicht als Standardprodukt an. Gegensprech- und
           Alarmfunktionen richten wir nur für zulässige Einsatzzwecke ein.
         </li>
+        <li>{HINWEIS_TON_UND_AUFZEICHNUNG}</li>
         <li>
           Protokollfunktionen erfassen personenbezogene Daten. Im Beschäftigtenkontext ist
           zusätzlich die betriebliche Mitbestimmung zu beachten.

@@ -68,9 +68,16 @@ interface KeyEntry {
   count: number;
 }
 
-interface ProjectData {
+export interface ProjectData {
   /* 1 Kundentyp */
-  customerType: '' | 'privat' | 'unternehmen' | 'hausverwaltung' | 'oeffentlich' | 'organisation';
+  customerType:
+    | ''
+    | 'privat'
+    | 'unternehmen'
+    | 'hausverwaltung'
+    | 'oeffentlich'
+    | 'mehrere-liegenschaften'
+    | 'organisation';
   organisation: string;
 
   /* 2 Objekt */
@@ -79,6 +86,8 @@ interface ProjectData {
   areas: number;
   lockPoints: number;
   objectNote: string;
+  /** Nur bei der Zielgruppe „Mehrere Liegenschaften“: Schlüssel über mehrere Liegenschaften hinweg. */
+  crossPropertyKeys: '' | 'ja' | 'nein' | 'unklar';
 
   /* 3 Nutzer */
   userCount: number;
@@ -127,7 +136,7 @@ interface ProjectData {
 
 const FLOW_ID = 'schliessanlagen-projekt';
 
-const INITIAL: ProjectData = {
+export const INITIAL: ProjectData = {
   customerType: '',
   organisation: '',
 
@@ -136,6 +145,7 @@ const INITIAL: ProjectData = {
   areas: 1,
   lockPoints: 1,
   objectNote: '',
+  crossPropertyKeys: '',
 
   userCount: 1,
   keyHolders: 1,
@@ -259,16 +269,22 @@ const STEPS: FlowStep[] = [
    Beschriftungen und Ableitungen
    ========================================================================== */
 
-const CUSTOMER_TYPES: { value: ProjectData['customerType']; title: string; body: string }[] = [
+/** Nutzlast des Vorgangs: übergreifende Schlüssel nur bei mehreren Liegenschaften. */
+export function buildPayloadBase(d: ProjectData): ProjectData {
+  return d.customerType === 'mehrere-liegenschaften' ? { ...d } : { ...d, crossPropertyKeys: '' };
+}
+
+export const CUSTOMER_TYPES: { value: ProjectData['customerType']; title: string; body: string }[] = [
   {
     value: 'privat',
     title: 'Privat',
     body: 'Eigenes Haus oder eigene Wohnung, meist mit Keller, Garage oder Gartentor.',
   },
   {
+    // Gespeicherter Wert bleibt „unternehmen“, damit ältere Vorgänge gültig bleiben.
     value: 'unternehmen',
-    title: 'Unternehmen',
-    body: 'Betrieb, Büro, Praxis, Werkstatt, Handel oder Lager.',
+    title: 'Gewerbe',
+    body: 'Unternehmen, Betrieb, Büro, Praxis, Werkstatt, Handel oder Lager.',
   },
   {
     value: 'hausverwaltung',
@@ -281,6 +297,11 @@ const CUSTOMER_TYPES: { value: ProjectData['customerType']; title: string; body:
     body: 'Verwaltung, Schule, Einrichtung mit Publikumsverkehr.',
   },
   {
+    value: 'mehrere-liegenschaften',
+    title: 'Mehrere Liegenschaften',
+    body: 'Mehrere Grundstücke oder Standorte, die eine gemeinsame Anlage bekommen sollen.',
+  },
+  {
     value: 'organisation',
     title: 'Sonstige Organisation',
     body: 'Verein, Genossenschaft, Stiftung oder etwas anderes.',
@@ -290,6 +311,12 @@ const CUSTOMER_TYPES: { value: ProjectData['customerType']; title: string; body:
 const CUSTOMER_LABELS: Record<string, string> = Object.fromEntries(
   CUSTOMER_TYPES.map((t) => [t.value, t.title]),
 );
+
+const CROSS_KEY_LABELS: Record<string, string> = {
+  ja: 'Ja, einzelne Schlüssel sollen mehrere Liegenschaften öffnen',
+  nein: 'Nein, jede Liegenschaft bleibt für sich',
+  unklar: 'Noch nicht entschieden',
+};
 
 const EXISTING_LABELS: Record<string, string> = {
   ja: 'Ja, eine Anlage ist vorhanden',
@@ -349,7 +376,7 @@ const SYSTEM_NAMES = {
   ghs: 'Generalhauptschlüsselanlage (GHS)',
 } as const;
 
-interface Recommendation {
+export interface Recommendation {
   system: string;
   reasons: string[];
 }
@@ -358,7 +385,7 @@ interface Recommendation {
  * Einordnung aus den Angaben — ausdrücklich ein Vorschlag.
  * Jede Regel nennt den Grund, damit die Empfehlung nachvollziehbar bleibt.
  */
-function recommend(d: ProjectData): Recommendation {
+export function recommend(d: ProjectData): Recommendation {
   const reasons: string[] = [];
   let system: string;
 
@@ -383,6 +410,10 @@ function recommend(d: ProjectData): Recommendation {
     system = SYSTEM_NAMES.hs;
     reasons.push('Die Nutzer sollen nur ihre eigenen Türen öffnen.');
     reasons.push('Zusätzlich soll ein Schlüssel alle Türen der Anlage öffnen.');
+  }
+
+  if (d.customerType === 'mehrere-liegenschaften' && d.crossPropertyKeys === 'ja') {
+    reasons.push('Einzelne Schlüssel sollen über mehrere Liegenschaften hinweg schließen.');
   }
 
   if (d.masterKeyWanted === 'unklar') {
@@ -410,12 +441,19 @@ function isFilled(value: string): boolean {
   return value.trim().length > 0;
 }
 
-function validateStep(d: ProjectData, stepId: string): boolean {
+export function validateStep(d: ProjectData, stepId: string): boolean {
   switch (stepId) {
     case 'kundentyp':
       return d.customerType !== '';
     case 'objekt':
-      return d.buildings >= 1 && d.areas >= 1 && d.lockPoints >= 1 && d.properties >= 1;
+      return (
+        d.buildings >= 1
+        && d.areas >= 1
+        && d.lockPoints >= 1
+        && d.properties >= 1
+        && (d.customerType !== 'mehrere-liegenschaften'
+          || (d.properties >= 2 && d.crossPropertyKeys !== ''))
+      );
     case 'nutzer':
       return d.userCount >= 1 && d.keyHolders >= 1 && d.differentRights !== '';
     case 'bestand':
@@ -481,7 +519,7 @@ function doorLine(door: DoorEntry, types: DoorTypeOption[]): string {
   return parts.join(' · ');
 }
 
-function buildSummary(
+export function buildSummary(
   d: ProjectData,
   types: DoorTypeOption[],
   planFiles: PickedFile[],
@@ -500,6 +538,14 @@ function buildSummary(
       rows: [
         { label: 'Art des Auftraggebers', value: CUSTOMER_LABELS[d.customerType] ?? 'Keine Angabe' },
         { label: 'Organisation', value: isFilled(d.organisation) ? d.organisation.trim() : 'Keine Angabe' },
+        ...(d.customerType === 'mehrere-liegenschaften'
+          ? [
+            {
+              label: 'Übergreifende Schlüssel',
+              value: CROSS_KEY_LABELS[d.crossPropertyKeys] ?? 'Keine Angabe',
+            },
+          ]
+          : []),
       ],
     },
     {
@@ -946,7 +992,7 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
         process: 'projektkonfigurator',
         contact: d.contact,
         payload: {
-          ...d,
+          ...buildPayloadBase(d),
           gewuenschtesSystem: DESIRED_SYSTEM_LABELS[d.desiredSystem] ?? null,
           empfehlung: recommendation.system,
           empfehlungBegruendung: recommendation.reasons,
@@ -1021,9 +1067,16 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
                 name="kundentyp"
                 value={option.value}
                 checked={d.customerType === option.value}
-                onSelect={(value) =>
-                  flow.set('customerType', value as ProjectData['customerType'])
-                }
+                onSelect={(value) => {
+                  const customerType = value as ProjectData['customerType'];
+                  // Mehrere Liegenschaften heißt mindestens zwei; das Zählfeld folgt der Wahl.
+                  // Die Frage nach übergreifenden Schlüsseln gilt nur dort; beim Wechsel leeren.
+                  if (customerType === 'mehrere-liegenschaften') {
+                    flow.update({ customerType, properties: Math.max(d.properties, 2) });
+                  } else {
+                    flow.update({ customerType, crossPropertyKeys: '' });
+                  }
+                }}
                 title={option.title}
                 description={option.body}
               />
@@ -1114,6 +1167,34 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
               )}
             </Field>
           </div>
+
+          {d.customerType === 'mehrere-liegenschaften' && (
+            <>
+              {d.properties < 2 && (
+                <Alert tone="warning" title="Mindestens zwei Liegenschaften">
+                  Sie haben „Mehrere Liegenschaften“ gewählt. Bitte geben Sie oben mindestens 2 an.
+                </Alert>
+              )}
+              <Question
+                title="Sollen einzelne Schlüssel mehrere Liegenschaften öffnen?"
+                required
+                hint="Zum Beispiel ein Schlüssel für Haustechnik oder Verwaltung, der an allen Standorten schließt."
+              >
+                {Object.entries(CROSS_KEY_LABELS).map(([value, title]) => (
+                  <OptionCard
+                    key={value}
+                    name="uebergreifend"
+                    value={value}
+                    checked={d.crossPropertyKeys === value}
+                    onSelect={() =>
+                      flow.set('crossPropertyKeys', value as ProjectData['crossPropertyKeys'])
+                    }
+                    title={title}
+                  />
+                ))}
+              </Question>
+            </>
+          )}
 
           <Field
             label="Besonderheiten am Objekt"

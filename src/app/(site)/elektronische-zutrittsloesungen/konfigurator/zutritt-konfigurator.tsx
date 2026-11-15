@@ -127,6 +127,29 @@ const NUTZER: Choice[] = [
   { id: 'unklar', title: 'Noch nicht bekannt' },
 ];
 
+/* ---------- 2b Erweiterbarkeit ------------------------------------------- */
+
+const ERWEITERUNG_INFO: InfoHint = {
+  title: 'Warum wir nach später fragen',
+  body:
+    'Wie viele Türen und Nutzer ein System verwalten kann, hängt von seiner Auslegung ab. '
+    + 'Wer spätere Ergänzungen früh nennt, bekommt eine Anlage, die mitwachsen kann, statt sie '
+    + 'später umbauen zu müssen.',
+};
+
+const ERWEITERUNG: Choice[] = [
+  { id: 'keine', title: 'Nein, der Umfang bleibt so' },
+  { id: 'tueren', title: 'Ja, weitere Türen' },
+  { id: 'nutzer', title: 'Ja, weitere Nutzer' },
+  { id: 'beides', title: 'Ja, weitere Türen und Nutzer' },
+  { id: 'unklar', title: 'Noch nicht absehbar' },
+];
+
+/** Nur bei einem klaren Ja fragt der Konfigurator nach dem ungefähren Zuwachs. */
+export function fragtZuwachs(erweiterung: string): boolean {
+  return ['tueren', 'nutzer', 'beides'].includes(erweiterung);
+}
+
 /* ---------- 3 Identmedium ------------------------------------------------ */
 
 const MEDIEN: Choice[] = [
@@ -426,11 +449,15 @@ const STEPS: FlowStep[] = [
 
 /* ---------- Daten -------------------------------------------------------- */
 
-interface ZutrittData {
+export interface ZutrittData {
   objekt: string;
   tueren: string;
   nutzer: string;
   umfangNotiz: string;
+  /** Spätere Erweiterung (FA-17-18): ob Türen oder Nutzer hinzukommen sollen. */
+  erweiterung: string;
+  /** Ungefährer Zuwachs, freiwillig. */
+  erweiterungUmfang: string;
   medien: string[];
   verwaltung: string;
   berechtigungen: string[];
@@ -451,11 +478,13 @@ interface ZutrittData {
   nachricht: string;
 }
 
-const INITIAL: ZutrittData = {
+export const INITIAL: ZutrittData = {
   objekt: '',
   tueren: '',
   nutzer: '',
   umfangNotiz: '',
+  erweiterung: '',
+  erweiterungUmfang: '',
   medien: [],
   verwaltung: '',
   berechtigungen: [],
@@ -504,7 +533,12 @@ function optionalRow(label: string, value: string) {
 }
 
 /** Die acht Abfragen als strukturierte Zusammenfassung. */
-function buildAnswerSummary(data: ZutrittData): SummarySection[] {
+/** Nutzlast des Vorgangs: abhängige Felder nur, wenn ihre Frage gestellt wurde. */
+export function buildPayload(data: ZutrittData): ZutrittData {
+  return fragtZuwachs(data.erweiterung) ? { ...data } : { ...data, erweiterungUmfang: '' };
+}
+
+export function buildAnswerSummary(data: ZutrittData): SummarySection[] {
   return [
     {
       title: '1. Objekt',
@@ -516,6 +550,10 @@ function buildAnswerSummary(data: ZutrittData): SummarySection[] {
         { label: 'Anzahl Türen', value: labelOf(TUEREN, data.tueren) },
         { label: 'Anzahl Nutzer', value: labelOf(NUTZER, data.nutzer) },
         ...optionalRow('Ergänzung', data.umfangNotiz),
+        { label: 'Spätere Erweiterung', value: labelOf(ERWEITERUNG, data.erweiterung) },
+        ...(fragtZuwachs(data.erweiterung)
+          ? optionalRow('Ungefährer Zuwachs', data.erweiterungUmfang)
+          : []),
       ],
     },
     {
@@ -574,12 +612,12 @@ function isEmail(value: string): boolean {
   return trimmed.length > 4 && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(trimmed);
 }
 
-function validate(data: ZutrittData, stepId: string): boolean {
+export function validate(data: ZutrittData, stepId: string): boolean {
   switch (stepId) {
     case 'objekt':
       return data.objekt !== '';
     case 'umfang':
-      return data.tueren !== '' && data.nutzer !== '';
+      return data.tueren !== '' && data.nutzer !== '' && data.erweiterung !== '';
     case 'medien':
       return data.medien.length > 0;
     case 'verwaltung':
@@ -606,7 +644,7 @@ function validate(data: ZutrittData, stepId: string): boolean {
 
 const BLOCKED_HINTS: Record<string, string> = {
   objekt: 'Bitte wählen Sie eine Objektart aus.',
-  umfang: 'Bitte wählen Sie je einen Bereich für Türen und Nutzer.',
+  umfang: 'Bitte wählen Sie je einen Bereich für Türen und Nutzer und sagen Sie, ob später etwas hinzukommt.',
   medien: 'Bitte wählen Sie mindestens ein Medium aus.',
   verwaltung: 'Bitte wählen Sie eine Verwaltungsart aus.',
   berechtigungen: 'Bitte wählen Sie mindestens einen Punkt aus.',
@@ -668,7 +706,7 @@ export function ZutrittKonfigurator() {
         city: data.ort.trim() || undefined,
         country: 'Deutschland',
       },
-      payload: { ...data },
+      payload: { ...buildPayload(data) },
       summary: [...answerSummary, buildContactSummary(data)],
       uploads: [],
     });
@@ -804,6 +842,45 @@ export function ZutrittKonfigurator() {
               />
             )}
           </Field>
+
+          <fieldset>
+            <legend className="mb-3 text-small font-bold text-foreground">
+              Sollen später Türen oder Nutzer hinzukommen?
+            </legend>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {ERWEITERUNG.map((choice, index) => (
+                <OptionCard
+                  key={choice.id}
+                  name="erweiterung"
+                  value={choice.id}
+                  checked={data.erweiterung === choice.id}
+                  onSelect={(value) =>
+                    fragtZuwachs(value)
+                      ? set('erweiterung', value)
+                      : flow.update({ erweiterung: value, erweiterungUmfang: '' })
+                  }
+                  title={choice.title}
+                  info={index === 0 ? ERWEITERUNG_INFO : undefined}
+                />
+              ))}
+            </div>
+          </fieldset>
+
+          {fragtZuwachs(data.erweiterung) && (
+            <Field
+              label="Ungefähr wie viele?"
+              hint="Freiwillig. Eine Schätzung genügt, zum Beispiel: etwa 5 Türen und 20 Personen in zwei Jahren."
+            >
+              {({ id, describedBy }) => (
+                <TextInput
+                  id={id}
+                  aria-describedby={describedBy}
+                  value={data.erweiterungUmfang}
+                  onChange={(event) => set('erweiterungUmfang', event.target.value)}
+                />
+              )}
+            </Field>
+          )}
         </div>
       )}
 

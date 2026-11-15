@@ -23,6 +23,8 @@ import { IconPanikAlarmtaster } from '@/components/visual/icons/panik-alarmtaste
 import { IconSmarteFunktionen } from '@/components/visual/icons/smarte-funktionen';
 import { IconVideoueberwachung } from '@/components/visual/icons/videoueberwachung';
 
+import { HINWEIS_TON_UND_AUFZEICHNUNG } from './rechtshinweis-ton';
+
 const ROUTE = 'sicherheitstechnik';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -323,6 +325,7 @@ export default async function SicherheitstechnikPage() {
                 Verdeckte Audioüberwachung bieten wir nicht als Standardprodukt an. Mikrofone und
                 Aufzeichnung von Ton sind im Regelfall abgeschaltet.
               </li>
+              <li>{HINWEIS_TON_UND_AUFZEICHNUNG}</li>
               <li>
                 Gegensprech- und Alarmfunktionen richten wir nur für zulässige Einsatzzwecke ein,
                 etwa für die Kommunikation an der eigenen Tür oder für eine vereinbarte Alarmierung.

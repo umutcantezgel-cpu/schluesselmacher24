@@ -493,7 +493,7 @@
     "id": "sicherheit-smarte-funktionen",
     "slug": "smarte-funktionen",
     "area": "sicherheitstechnik",
-    "title": "Smarte Funktionen",
+    "title": "Smart-Home-Sicherheitsfunktionen",
     "summary": "Anwesenheitssimulation, Beleuchtung und Schaltmodule, sinnvoll eingesetzt.",
     "bullets": [
       "Anwesenheitssimulation bei Abwesenheit",
@@ -502,7 +502,7 @@
       "Fernsteuerung über gesicherte Zugänge"
     ],
     "image": {
-      "motif": "Anwendungsfoto: Smarte Funktionen",
+      "motif": "Anwendungsfoto: Smart-Home-Sicherheitsfunktionen",
       "ratio": "4/3"
     },
     "process": "gefuehrte-anfrage",
@@ -510,7 +510,7 @@
     "ctaLabel": "Sicherheitscheck starten",
     "active": true,
     "seo": {
-      "title": "Smarte Funktionen",
+      "title": "Smart-Home-Sicherheitsfunktionen",
       "description": "Anwesenheitssimulation, Beleuchtung und Schaltmodule, sinnvoll eingesetzt.",
       "internalLinks": [
         {

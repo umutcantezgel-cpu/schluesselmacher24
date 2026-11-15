@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /* Acht Abfragen — die Reihenfolge entspricht der Reihenfolge im Konfigurator. */
 const QUESTIONS = [
   'Objekt',
-  'Umfang',
+  'Umfang und Erweiterung',
   'Identmedium',
   'Verwaltung',
   'Berechtigungen',

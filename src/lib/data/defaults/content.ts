@@ -228,7 +228,7 @@ export function pages(): PageContent[] {
         + 'einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert werden kann.',
       title: 'Schließanlagen planen — Z, HS und GHS',
       description:
-        'Mechanische Schließanlagen für Privat, Unternehmen und Hausverwaltungen. '
+        'Mechanische Schließanlagen für Privat, Gewerbe und Hausverwaltungen. '
         + 'Gleichschließung, Zentralschloss, Hauptschlüssel und Generalhauptschlüssel.',
       links: [
         ['/schliessanlagen/konfigurator', 'Projekt erfassen'],
@@ -419,17 +419,17 @@ export function pages(): PageContent[] {
       route: 'partner-werden',
       headline: 'Partner werden',
       subline:
-        'Wir vermitteln Kundenanfragen aus ganz Deutschland an geprüfte, unabhängige Fachbetriebe vor Ort — '
-        + 'vor allem für Autoschlüssel.',
+        'Wir geben geprüfte Anfragen zu Autoschlüsseln und Fahrzeugschlüsseln an Fachbetriebe vor Ort weiter.',
       intro:
         'Bei uns gehen auch Anfragen aus Regionen ein, in denen wir selbst nicht tätig sind. Diese Aufträge '
         + 'vermitteln wir an zuverlässige Fachbetriebe vor Ort. Sie bewerben sich mit wenigen Angaben; wir prüfen '
         + 'Ihre Bewerbung und melden uns bei Ihnen.',
-      title: 'Partner werden – Auftragsvermittlung für Fachbetriebe',
+      title: 'Autoschlüssel-Partner werden',
       description:
-        'Für Schlüsseldienste und Fachbetriebe: Als Partner von SCHLÜSSELMACHER24 übernehmen Sie geprüfte '
-        + 'Kundenanfragen aus Ihrer Region und rechnen direkt mit dem Kunden ab.',
+        'Für Fachbetriebe für Autoschlüssel und Fahrzeugschlüssel: Werden Sie Partner von SCHLÜSSELMACHER24. '
+        + 'Wir geben geprüfte Anfragen aus Ihrer Region weiter.',
       links: [
+        ['/partner-werden/netzwerk-deutschland', 'Das Partnernetz für Fahrzeugschlüssel'],
         ['/autoschluessel', 'Autoschlüssel'],
         ['/service-und-termin/kontakt', 'Kontakt'],
       ],
