@@ -57,7 +57,7 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 ## Priorität 6 · SEO
 | Paket | Inhalt | Anforderungen | Schema | Status |
 |---|---|---|---|---|
-| FA-SEO-01 | Titel und Beschreibungen in den Längen, Strukturdaten für Betrieb, Leistungen, Produkte, Brotkrumen überall, FAQ-Auszeichnung nach R8, Canonical und Indexstatus im Admin | FA-25, FA-22-44, -45 | ja (klein) | Teil A committet 5674196 · Teil B (übrige Titel und Beschreibungen, Rückfall der Ratgeber) committet, Build und Onpage-Messung folgen · Teil C (Strukturdaten, Überschriften, Indexierbarkeit, Verweislisten) läuft · offen: Canonical-Feld im Admin (Schema) |
+| FA-SEO-01 | Titel und Beschreibungen in den Längen, Strukturdaten für Betrieb, Leistungen, Produkte, Brotkrumen überall, FAQ-Auszeichnung nach R8, Canonical und Indexstatus im Admin | FA-25, FA-22-44, -45 | ja (klein) | Teil A (5674196), Teil B (05ca154) und Teil C (c8f1913: Strukturdaten, Indexierbarkeit mit Kopfzeile, Verweise, Waisen-Test) committet; Build und Onpage-Messung für B und C folgen mit FA-SHOP-01 · offen: Canonical-Feld im Admin (Schema) |
 | FA-SEO-02 | Eigene Onpage-Prüfung nach den Kriterien von Seobility über den Build (Schutz jeder Staging-Adresse liegt bei FA-SEO-01) | FA-25-21, -22, FA-AB-04 | nein | committet 1436cf3 |
 
 ## Priorität 7 · QA
