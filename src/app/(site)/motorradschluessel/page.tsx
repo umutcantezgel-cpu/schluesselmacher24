@@ -7,6 +7,7 @@ import { RubrikPausiertHinweis, UnterlagenAusRegel, robotsNachStand } from '@/co
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { ButtonLink } from '@/components/ui/button';
 import { getPageContent, getRubrik } from '@/lib/data';
+import { PasstDazu } from '@/components/seo/passt-dazu';
 
 const ROUTE = 'motorradschluessel';
 const ANFRAGE = '/motorradschluessel/anfrage';
@@ -106,6 +107,8 @@ export default async function MotorradschluesselPage() {
           <RubrikPausiertHinweis className="mt-8" />
         )}
       </Section>
+      {/* Verweisliste aus den Daten: eigene Links und Gegenrichtung (FA-SEO-01C) */}
+      <PasstDazu pfad={`/${ROUTE}`} eigene={page?.seo.internalLinks} />
     </>
   );
 }

@@ -33,6 +33,7 @@ import { IconSchutzbeschlag } from '@/components/visual/icons/schutzbeschlag';
 import { IconTechnischeBeratung } from '@/components/visual/icons/technische-beratung';
 import { IconTuerschliesser } from '@/components/visual/icons/tuerschliesser';
 import { IconTuerzusatzschloss } from '@/components/visual/icons/tuerzusatzschloss';
+import { PasstDazu } from '@/components/seo/passt-dazu';
 
 const ROUTE = 'tuer-und-schliesstechnik';
 
@@ -430,6 +431,8 @@ export default async function TuerUndSchliesstechnikPage() {
           </ol>
         </div>
       </Section>
+      {/* Verweisliste aus den Daten: eigene Links und Gegenrichtung (FA-SEO-01C) */}
+      <PasstDazu pfad={`/${ROUTE}`} eigene={page?.seo.internalLinks} />
     </>
   );
 }

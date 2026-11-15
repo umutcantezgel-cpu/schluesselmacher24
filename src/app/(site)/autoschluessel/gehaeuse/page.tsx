@@ -7,6 +7,7 @@ import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { ButtonLink } from '@/components/ui/button';
 import { getPageContent, getRubrik } from '@/lib/data';
+import { PasstDazu } from '@/components/seo/passt-dazu';
 
 const ROUTE = 'autoschluessel/gehaeuse';
 const ANFRAGE = '/autoschluessel/gehaeuse/anfrage';
@@ -86,6 +87,8 @@ export default async function AutoschluesselGehaeusePage() {
           </Link>
         </p>
       </Section>
+      {/* Verweisliste aus den Daten: eigene Links und Gegenrichtung (FA-SEO-01C) */}
+      <PasstDazu pfad={`/${ROUTE}`} eigene={page?.seo.internalLinks} />
     </>
   );
 }

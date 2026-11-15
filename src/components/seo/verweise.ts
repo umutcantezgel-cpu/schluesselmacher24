@@ -41,11 +41,14 @@ function istLeseseite(pfad: string): boolean {
   return !/\/(anfrage|anmelden|fahrzeug-nicht-gefunden)$/.test(pfad) && pfad !== '/';
 }
 
-/** Quellen, die auf `pfad` verweisen (Gegenrichtung), ohne `pfad` selbst und ohne Abläufe. */
+/**
+ * Quellen, die auf `pfad` verweisen (Gegenrichtung), ohne `pfad` selbst, ohne Abläufe und ohne eigene
+ * Unterseiten (`/bereich/…` → `/bereich`): Die Bereichsseite listet ihre Unterseiten ohnehin.
+ */
 export function eingehendeVerweise(pfad: string, quellen: VerweisQuelle[]): Verweis[] {
   const ziel = zielPfad(pfad);
   return quellen
-    .filter((quelle) => quelle.pfad !== ziel && istLeseseite(quelle.pfad))
+    .filter((quelle) => quelle.pfad !== ziel && !quelle.pfad.startsWith(`${ziel}/`) && istLeseseite(quelle.pfad))
     .filter((quelle) => quelle.links.some((link) => zielPfad(link.href) === ziel))
     .map((quelle) => ({ href: quelle.pfad, label: quelle.titel }));
 }

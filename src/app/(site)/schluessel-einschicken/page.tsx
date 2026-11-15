@@ -17,6 +17,7 @@ import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { GlyphOrt } from '@/components/visual/glyphen/ort';
+import { PasstDazu } from '@/components/seo/passt-dazu';
 
 const ROUTE = 'schluessel-einschicken';
 const ANMELDEN = '/schluessel-einschicken/anmelden';
@@ -280,6 +281,8 @@ export default async function SchluesselEinschickenPage() {
         <SectionHeading id="fragen-titel" nummer="05" eyebrow="Fragen" title="Häufige Fragen zur Einsendung" />
         <Accordion items={faq} className="mt-8" />
       </Section>
+      {/* Verweisliste aus den Daten: eigene Links und Gegenrichtung (FA-SEO-01C) */}
+      <PasstDazu pfad={`/${ROUTE}`} eigene={page?.seo.internalLinks} />
     </>
   );
 }

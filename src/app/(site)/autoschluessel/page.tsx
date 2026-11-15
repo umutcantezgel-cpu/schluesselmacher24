@@ -25,8 +25,18 @@ import { AUFBAU_TEILE, AutoschluesselAufbau } from '@/components/visual/generato
 import { standort } from '@/lib/rechtliches/firma';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { PasstDazu } from '@/components/seo/passt-dazu';
 
 const ROUTE = 'autoschluessel';
+
+/** Ziele, die diese Seite schon verlinkt; „Passt dazu“ zeigt sie nicht noch einmal. */
+const AUF_DER_SEITE = [
+  '/autoschluessel/anfrage', '/autoschluessel/nachmachen', '/autoschluessel/programmieren', '/autoschluessel/kopieren',
+  '/autoschluessel/schluesselbart-fraesen', '/autoschluessel/funkschluessel', '/autoschluessel/smart-key',
+  '/autoschluessel/fahrzeugoeffnung', '/autoschluessel/marken', '/motorradschluessel', '/roller-und-kleinstfahrzeuge',
+  '/e-scooter', '/seniorenmobile', '/fahrradschluessel', '/ratgeber/autoschluessel-verloren-was-tun',
+  '/ratgeber/unterschied-kopie-und-programmierung', '/schluessel-nach-vorlage', '/service-und-termin/terminstatus',
+];
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
@@ -626,6 +636,9 @@ export default async function AutoschluesselHubPage() {
           ))}
         </ul>
       </Section>
+      {/* Verweisliste aus den Daten: eigene Links und Gegenrichtung (FA-SEO-01C) */}
+      {/* Ohne die Ziele, die diese Seite schon zeigt (Leistungen, Fahrzeugklassen, „Zum Nachlesen“). */}
+      <PasstDazu pfad={`/${ROUTE}`} eigene={page?.seo.internalLinks} ausser={AUF_DER_SEITE} />
     </>
   );
 }
