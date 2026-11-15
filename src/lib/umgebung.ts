@@ -104,6 +104,9 @@ export const PRODUKTIONSDOMAIN = 'schluesselmacher24.de';
  *   build auf einem eigenen Server (Prüfserver, Staging) bleibt auf noindex,
  *   bis `SM24_INDEXIERUNG=an` ausdrücklich gesetzt ist.
  * - `SM24_INDEXIERUNG=aus` sperrt überall, auch auf Vercel (Notbremse).
+ *
+ * Wirkt beim Build: robots.txt, die Meta-Angabe statischer Seiten und die Kopfzeilen-Regel werden dann
+ * erzeugt. Den Schalter deshalb beim Build setzen; eine Änderung braucht einen neuen Build/ein neues Deployment.
  */
 export function indexierungErlaubt(): boolean {
   const schalter = process.env.SM24_INDEXIERUNG?.trim().toLowerCase();
@@ -124,15 +127,28 @@ export interface KopfzeilenRegel {
 export const PRODUKTIONS_HOST_MUSTER = `(?:www\\.)?${PRODUKTIONSDOMAIN.replace(/\./g, '\\.')}`;
 
 /**
+ * Hosts ohne Kopfzeile, wenn die Indexierung erlaubt ist: die Produktionsdomain und die eigene Maschine
+ * (`localhost`, `127.0.0.1`). Die Loopback-Adressen erreicht keine Suchmaschine; ausgenommen sind sie nur,
+ * damit ein Messlauf gegen einen lokal mit `SM24_INDEXIERUNG=an` gebauten Server (Seobility-Ersatz
+ * `onpage.mjs`) die Seiten so sieht wie die Produktion. Next.js vergleicht den Host ohne Port.
+ */
+export const OHNE_NOINDEX_HOST_MUSTER = `(?:${PRODUKTIONS_HOST_MUSTER}|localhost|127\\.0\\.0\\.1)`;
+
+/**
  * `X-Robots-Tag: noindex` als Kopfzeile für `next.config.ts` (`headers()`).
  * Ist die Indexierung nicht erlaubt, gilt sie für jede Adresse; sonst für jede
- * Adresse außer der Produktionsdomain. robots.txt sperrt dabei nichts, damit
+ * Adresse außer der Produktionsdomain (und der eigenen Maschine, siehe
+ * `OHNE_NOINDEX_HOST_MUSTER`). robots.txt sperrt dabei nichts, damit
  * Suchmaschinen das noindex überhaupt lesen (FA-RECHERCHE-05, Abschnitt 4).
+ *
+ * Wie robots.txt und die Meta-Angabe des Layouts wird diese Regel beim Build
+ * festgelegt (`headers()` landet im Routen-Manifest): `SM24_INDEXIERUNG` muss beim
+ * Build gesetzt sein, eine Änderung braucht einen neuen Build bzw. ein neues Deployment.
  */
 export function suchmaschinenKopfzeilen(): KopfzeilenRegel[] {
   const headers = [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }];
   if (!indexierungErlaubt()) return [{ source: '/:path*', headers }];
-  return [{ source: '/:path*', missing: [{ type: 'host', value: PRODUKTIONS_HOST_MUSTER }], headers }];
+  return [{ source: '/:path*', missing: [{ type: 'host', value: OHNE_NOINDEX_HOST_MUSTER }], headers }];
 }
 
 /** Bestätigung für die Google Search Console (`GOOGLE_SITE_VERIFICATION`), falls gesetzt. */

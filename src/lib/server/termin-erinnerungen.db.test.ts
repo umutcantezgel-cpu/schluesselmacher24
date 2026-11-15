@@ -100,7 +100,7 @@ describe('terminErinnerungenSenden', () => {
     expect(erster).toEqual({ tageVorher: 1, termintag: '2084-05-10', termine: 2, gesendet: 2, bereitsErinnert: 0, fehlgeschlagen: 0 });
     expect(sendungen.map((s) => s.an[0]).sort()).toEqual(['bezahlt@example.org', 'telefon@example.org']);
     const mail = sendungen.find((s) => s.an[0] === 'bezahlt@example.org')!;
-    expect(mail.betreff).toBe(`Erinnerung an Ihren Termin am 10.05.2084 um 10:00 Uhr – ${bezahlt.reference}`);
+    expect(mail.betreff).toBe(`Erinnerung an Ihren Termin am 10.05.2084 um 10:00 Uhr (${bezahlt.reference})`);
     expect(mail.schluessel).toBe(`lokal-${bezahlt.reference}-erinnerung-2084-05-10-10:00`);
     expect(mail.anhaenge).toHaveLength(1);
     expect(mail.anhaenge[0].filename).toBe(`termin-${bezahlt.reference}.ics`);

@@ -1,0 +1,106 @@
+[
+  {
+    "id": "schluessel-nach-code",
+    "slug": "schluessel-nach-code",
+    "name": "Schlüssel nach Code",
+    "beschreibung": "Schlüssel nach dem Code auf Schloss, Schlüssel oder Sicherungskarte. Ohne Einsendung des Originals.",
+    "reihenfolge": 10,
+    "art": "codeprodukte",
+    "ziel": "/schluessel-nach-code",
+    "sichtbar": true,
+    "fruehereAdressen": []
+  },
+  {
+    "id": "schluessel-nach-vorlage",
+    "slug": "schluessel-nach-vorlage",
+    "name": "Schlüssel nach Vorlage",
+    "beschreibung": "Schlüssel nach Ihrem vorhandenen Schlüssel, per Einsendung oder in der Werkstatt.",
+    "reihenfolge": 20,
+    "art": "anfrage",
+    "ziel": "/schluessel-nach-vorlage",
+    "sichtbar": true,
+    "fruehereAdressen": []
+  },
+  {
+    "id": "autoschluessel-produkte",
+    "slug": "autoschluessel-produkte",
+    "name": "Autoschlüssel als Produkte",
+    "beschreibung": "Autoschlüssel zum Bestellen. Der Termin in der Werkstatt bleibt ein eigener Weg.",
+    "reihenfolge": 30,
+    "art": "anfrage",
+    "ziel": "/service-und-termin/anfrage?thema=autoschluessel&anliegen=frage",
+    "hinweis": "Produkte folgen; bis dahin Anfrage",
+    "sichtbar": true,
+    "fruehereAdressen": []
+  },
+  {
+    "id": "autoschluesselgehaeuse",
+    "slug": "autoschluesselgehaeuse",
+    "name": "Autoschlüsselgehäuse",
+    "beschreibung": "Neue Gehäuse für Autoschlüssel.",
+    "reihenfolge": 40,
+    "art": "anfrage",
+    "ziel": "/autoschluessel/gehaeuse",
+    "hinweis": "Produkte folgen; bis dahin Anfrage",
+    "sichtbar": true,
+    "fruehereAdressen": []
+  },
+  {
+    "id": "gehaeuseumbau-und-reparaturservice",
+    "slug": "gehaeuseumbau-und-reparaturservice",
+    "name": "Gehäuseumbau und Reparaturservice",
+    "beschreibung": "Wir bauen Ihren Autoschlüssel in ein neues Gehäuse um oder reparieren ihn.",
+    "reihenfolge": 50,
+    "art": "anfrage",
+    "ziel": "/autoschluessel/gehaeuse/anfrage",
+    "hinweis": "Produkte folgen; bis dahin Anfrage",
+    "sichtbar": true,
+    "fruehereAdressen": []
+  },
+  {
+    "id": "customizing-und-modifikation",
+    "slug": "customizing-und-modifikation",
+    "name": "Customizing und Modifikation",
+    "beschreibung": "Schlüssel nach Ihren Wünschen anpassen.",
+    "reihenfolge": 60,
+    "art": "anfrage",
+    "ziel": "/service-und-termin/anfrage",
+    "hinweis": "Produkte folgen; bis dahin Anfrage",
+    "sichtbar": true,
+    "fruehereAdressen": []
+  },
+  {
+    "id": "gleichschliessende-zylinder",
+    "slug": "gleichschliessende-zylinder",
+    "name": "Gleichschließende Zylinder und Sperrschließungen",
+    "beschreibung": "Mehrere Zylinder, ein Schlüssel für alle. Im Konfigurator zusammenstellen.",
+    "reihenfolge": 70,
+    "art": "konfigurator",
+    "ziel": "/gleichschliessende-zylinder/konfigurator",
+    "sichtbar": true,
+    "fruehereAdressen": []
+  },
+  {
+    "id": "schliesstechnik-und-zubehoer",
+    "slug": "schliesstechnik-und-zubehoer",
+    "name": "Schließtechnik und Zubehör",
+    "beschreibung": "Artikel rund um Tür und Schloss.",
+    "reihenfolge": 80,
+    "art": "artikel",
+    "ziel": "/artikel",
+    "sichtbar": true,
+    "fruehereAdressen": []
+  },
+  {
+    "id": "weitere-sicherheitstechnik",
+    "slug": "weitere-sicherheitstechnik",
+    "name": "Weitere Sicherheitstechnik",
+    "beschreibung": "Weitere geeignete Produkte der Sicherheitstechnik.",
+    "reihenfolge": 90,
+    "art": "anfrage",
+    "ziel": "/sicherheitstechnik",
+    "hinweis": "Produkte folgen; bis dahin Anfrage",
+    "sichtbar": false,
+    "fruehereAdressen": []
+  }
+]

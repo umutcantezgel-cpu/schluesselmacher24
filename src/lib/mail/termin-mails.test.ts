@@ -48,7 +48,7 @@ describe('Termin-Erinnerung', () => {
   const mail = kundeErinnerung({ vorgang: termin(), kontext });
 
   it('nennt Datum, Uhrzeit, Dauer, Werkstatt mit Fahrzeug und Telefon', () => {
-    expect(mail.betreff).toBe('Erinnerung an Ihren Termin am 27.10.2026 um 10:00 Uhr – SM24-T-2026-0007');
+    expect(mail.betreff).toBe('Erinnerung an Ihren Termin am 27.10.2026 um 10:00 Uhr (SM24-T-2026-0007)');
     expect(mail.text).toContain('Guten Tag Erika Muster,');
     expect(mail.text).toContain('Termin: Dienstag, 27. Oktober 2026, 10:00 Uhr');
     expect(mail.text).toContain('Dauer: 1 Std. 30 Min.');

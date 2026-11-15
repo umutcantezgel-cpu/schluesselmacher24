@@ -1,5 +1,6 @@
 import type { Graph, Product } from 'schema-dts';
 
+import { istBestellbar } from '@/lib/data/shop';
 import { formatCents, formatNumber } from '@/lib/format';
 import { unitPriceForCodeLine } from '@/lib/pricing';
 import { getSiteUrl } from '@/lib/site-url';
@@ -186,7 +187,8 @@ export function produktJsonLd(
   article: StandardArticle,
   siteUrl: string = getSiteUrl(),
 ): Graph | null {
-  if (article.example) return null;
+  // Nur bestellbare Artikel tragen ein Angebot: Beispiele, „auf Anfrage“ und „nicht lieferbar“ nicht (R8).
+  if (!istBestellbar(article)) return null;
 
   const pageUrl = `${siteUrl}${artikelPfad(article.slug)}`;
   const bilder = [

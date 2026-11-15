@@ -39,6 +39,9 @@ import {
   kategoriePfad,
 } from '@/lib/codelinie';
 import { codelinienTexte, staffelStufen } from '@/lib/codelinie-texte';
+import { verfuegbarkeitVon } from '@/lib/data/shop';
+import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
+import { VerfuegbarkeitHinweis } from '../verfuegbarkeit-hinweis';
 
 /** Telefon-Ausschnitt des Profilschnitts (viewBox 480 × 360): Halm ab der Schulter, die Reide samt Kontur (bis x 125,1) ganz außerhalb; Nummern, Spitze, Fräser und Bemaßung (bis y 282) innen; rechter Rand wie PROFILSCHNITT_AUSSCHNITT (462). Schrift 11,5 px bei 320 px Zeichnungsbreite (360 px Viewport), etwa 10 px bei 280 px (320 px Viewport), darunter die Kern-Mindestgröße (K-008). */
 const PROFILSCHNITT_HALM = {
@@ -166,10 +169,12 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
   const seitenUrl = `${getSiteUrl()}${codelinienPfad(line)}`;
   const titel = codelinienTitel(line);
   const ratgeberVorhanden = Boolean(ratgeber);
+  // Verfügbarkeit (FA-22-10): Nur lieferbare Linien zeigen den Kaufbereich und ein Angebot in den Strukturdaten (R8).
+  const verfuegbarkeit = verfuegbarkeitVon(line);
 
   return (
     <>
-      <JsonLd data={productSchema(line, texte.beschreibung)} />
+      {verfuegbarkeit === 'lieferbar' && <JsonLd data={productSchema(line, texte.beschreibung)} />}
       <JsonLd data={breadcrumbSchema(crumbs, seitenUrl)} />
       {texte.faq.length > 0 && <JsonLd data={faqSchema(texte.faq, seitenUrl)} />}
       <PageHeader
@@ -214,10 +219,18 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           {/* Bestellung steht im DOM zuerst: mobil oben, ab lg rechts. Lese- und Fokusfolge entsprechen der Sichtfolge. */}
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-8 lg:row-start-1">
-            {/* Code aus der Adresse (?code=) liest eine Client-Komponente; die Grenze hält die Seite statisch. */}
-            <Suspense fallback={<BestellFormular line={line} werkstatt={werkstattAngaben(settings.company)} />}>
-              <CodeAusAdresse line={line} werkstatt={werkstattAngaben(settings.company)} />
-            </Suspense>
+            {verfuegbarkeit === 'lieferbar' ? (
+              /* Code aus der Adresse (?code=) liest eine Client-Komponente; die Grenze hält die Seite statisch. */
+              <Suspense fallback={<BestellFormular line={line} werkstatt={werkstattAngaben(settings.company)} />}>
+                <CodeAusAdresse line={line} werkstatt={werkstattAngaben(settings.company)} />
+              </Suspense>
+            ) : (
+              <VerfuegbarkeitHinweis
+                verfuegbarkeit={verfuegbarkeit}
+                anfrage={{ href: codeAnfragePfad({ schloss: line.name }), label: 'Code anfragen' }}
+                uebersicht={{ href: '/schluessel-nach-code', label: 'Alle Codelinien' }}
+              />
+            )}
           </div>
 
           {/* Codefundstelle, Angaben, Hinweis und Passende Seiten: ab lg links, füllen die Spalte unter dem Kopf */}

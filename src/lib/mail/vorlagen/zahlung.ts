@@ -36,9 +36,9 @@ export function kundeBezahlt({ vorgang, kontext }: ZahlungsDaten): MailInhalt {
     ? `Ihre Anzahlung ist bei uns eingegangen, vielen Dank. Ihr Termin am ${formatDate(vorgang.appointment!.date)} `
       + `um ${vorgang.appointment!.time} Uhr bleibt für Sie reserviert.`
     : foto
-      ? 'Ihre Zahlung ist bei uns eingegangen, vielen Dank. Damit ist Ihr Auftrag erteilt: Wir fertigen Ihren '
+      ? 'Ihre Zahlung ist bei uns eingegangen, vielen Dank. Damit ist Ihr Auftrag erteilt. Wir fertigen Ihren '
         + 'Schlüssel nach Ihrer Vorlage und melden uns, sobald es Neuigkeiten gibt.'
-      : 'Ihre Zahlung ist bei uns eingegangen, vielen Dank. Wir bearbeiten Ihren Vorgang jetzt weiter und '
+      : 'Ihre Zahlung ist bei uns eingegangen, vielen Dank. Wir bearbeiten Ihren Auftrag jetzt weiter und '
         + 'melden uns, sobald es Neuigkeiten gibt.';
   const bausteine: Baustein[] = [
     { art: 'absatz', text: einleitung },
@@ -52,12 +52,12 @@ export function kundeBezahlt({ vorgang, kontext }: ZahlungsDaten): MailInhalt {
       titel: 'Bitte jetzt den Originalschlüssel einsenden',
       text:
         'Die Anschrift und was der Sendung beiliegen soll, stehen in unserer E-Mail zur Freigabe. Bitte legen Sie '
-        + `Ihre Vorgangsnummer ${vorgang.reference} bei. Gefertigt wird, sobald Ihr Schlüssel bei uns ist.`,
+        + `Ihre Vorgangsnummer ${vorgang.reference} bei. Wir fertigen, sobald Ihr Schlüssel bei uns ist.`,
     });
   }
   bausteine.push({ art: 'knopf', href: statusLink(kontext.site), label: 'Stand abrufen' }, ANTWORT_HINWEIS);
   return baueMail({
-    betreff: `Zahlung erhalten – ${vorgang.reference}`,
+    betreff: `Zahlung erhalten (${vorgang.reference})`,
     vorschau: foto ? 'Ihre Zahlung ist eingegangen, Ihr Auftrag ist erteilt.' : 'Ihre Zahlung ist eingegangen.',
     anrede: anrede(vorgang.contact),
     bausteine,
@@ -110,7 +110,7 @@ export function kundeNichtAbgeschlossen({
       {
         art: 'absatz',
         text: terminFreigegeben
-          ? `zu Ihrem Auftrag über einen Partnerbetrieb gilt: ${PARTNER_NICHT_ZUSTANDE}`
+          ? PARTNER_NICHT_ZUSTANDE
           : 'die Zahlung des Gesamtbetrags zu Ihrem Auftrag ist nicht bei uns eingegangen. Wir melden uns bei Ihnen.',
       },
       nummerBaustein(vorgang),
@@ -123,8 +123,8 @@ export function kundeNichtAbgeschlossen({
       {
         art: 'absatz',
         text:
-          'die Zahlung zu Ihrem freigegebenen Auftrag wurde nicht abgeschlossen. Sie können sie über den persönlichen '
-          + 'Link aus unserer E-Mail zur Freigabe fortsetzen. Verbindlich wird der Auftrag erst mit Ihrer Zahlung.',
+          'die Zahlung zu Ihrem freigegebenen Auftrag wurde nicht abgeschlossen. Über den persönlichen Link aus '
+          + 'unserer E-Mail zur Freigabe können Sie weiter bezahlen. Verbindlich wird der Auftrag erst mit Ihrer Zahlung.',
       },
       nummerBaustein(vorgang),
     );
@@ -133,7 +133,7 @@ export function kundeNichtAbgeschlossen({
       art: 'absatz',
       text: terminFreigegeben
         ? 'die Anzahlung für Ihren Termin ist nicht bei uns eingegangen. Das reservierte Zeitfenster haben wir '
-          + 'deshalb wieder freigegeben. Gern können Sie einen neuen Termin buchen.'
+          + 'deshalb wieder freigegeben. Sie können gern einen neuen Termin buchen.'
         : 'die Anzahlung für Ihren Termin ist nicht bei uns eingegangen. Wir melden uns bei Ihnen.',
     });
     bausteine.push(nummerBaustein(vorgang), { art: 'felder', zeilen: terminZeilen(vorgang, kontext.firma) });
@@ -146,9 +146,9 @@ export function kundeNichtAbgeschlossen({
       {
         art: 'absatz',
         text:
-          'die Zahlung zu Ihrer freigegebenen Anfrage wurde nicht abgeschlossen. Die Freigabe bleibt bestehen. Sie '
-          + 'können die Zahlung über den persönlichen Link aus unserer E-Mail zur Freigabe jederzeit fortsetzen — '
-          + 'erst mit der Zahlung erteilen Sie den Auftrag.',
+          'die Zahlung zu Ihrer freigegebenen Anfrage wurde nicht abgeschlossen. Die Freigabe bleibt bestehen. Über den '
+          + 'persönlichen Link aus unserer E-Mail zur Freigabe können Sie jederzeit weiter bezahlen. '
+          + 'Erst mit der Zahlung erteilen Sie den Auftrag.',
       },
       nummerBaustein(vorgang),
     );
@@ -157,15 +157,15 @@ export function kundeNichtAbgeschlossen({
       {
         art: 'absatz',
         text:
-          'die Zahlung zu Ihrem Vorgang wurde nicht abgeschlossen. Ihre Angaben bleiben gespeichert. Sie können '
-          + 'die Zahlung über den persönlichen Link aus Ihrer Eingangsbestätigung jederzeit fortsetzen.',
+          'Ihre Zahlung wurde nicht abgeschlossen. Ihre Angaben bleiben gespeichert. Über den persönlichen Link '
+          + 'aus Ihrer Eingangsbestätigung können Sie jederzeit weiter bezahlen.',
       },
       nummerBaustein(vorgang),
     );
   }
   bausteine.push(ANTWORT_HINWEIS);
   return baueMail({
-    betreff: `Zahlung nicht abgeschlossen – ${vorgang.reference}`,
+    betreff: `Zahlung nicht abgeschlossen (${vorgang.reference})`,
     anrede: anrede(vorgang.contact),
     bausteine,
     firma: kontext.firma,
@@ -176,7 +176,7 @@ export function kundeNichtAbgeschlossen({
 /** Erstattung veranlasst (ganz oder teilweise). */
 export function kundeErstattet({ vorgang, kontext, betragCent }: ZahlungsDaten & { betragCent: number }): MailInhalt {
   return baueMail({
-    betreff: `Erstattung veranlasst – ${vorgang.reference}`,
+    betreff: `Erstattung veranlasst (${vorgang.reference})`,
     anrede: anrede(vorgang.contact),
     bausteine: [
       {

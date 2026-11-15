@@ -48,9 +48,9 @@ const EINLEITUNG: Record<BusinessRecord['kind'], string> = {
     + 'Annahme Ihrer Bestellung.',
   termin:
     'vielen Dank für Ihre Terminbuchung. Mit dieser E-Mail bestätigen wir, dass sie bei uns eingegangen ist.',
-  anfrage: 'vielen Dank für Ihre Anfrage. Wir sichten Ihre Angaben und melden uns mit dem nächsten Schritt.',
+  anfrage: 'vielen Dank für Ihre Anfrage. Wir sehen uns Ihre Angaben an und melden uns mit dem nächsten Schritt.',
   projekt:
-    'vielen Dank für Ihre Projektanfrage. Wir sichten Ihre Angaben und Unterlagen und melden uns mit dem '
+    'vielen Dank für Ihre Projektanfrage. Wir sehen uns Ihre Angaben und Unterlagen an und melden uns mit dem '
     + 'nächsten Schritt.',
   partner:
     'vielen Dank für Ihre Bewerbung als Partnerbetrieb. Wir prüfen Ihre Angaben und melden uns mit dem '
@@ -75,8 +75,8 @@ function zahlungsHinweis(vorgang: BusinessRecord, onlineZahlung: boolean): Baust
         art: 'hinweis',
         titel: 'Zahlung noch offen',
         text:
-          `Bitte bezahlen Sie den Gesamtbetrag${bis}. Verbindlich wird Ihr Auftrag erst mit Ihrer Zahlung; `
-          + 'geht sie nicht ein, kommt der Auftrag nicht zustande.',
+          `Bitte bezahlen Sie den Gesamtbetrag${bis}. Verbindlich wird Ihr Auftrag erst mit Ihrer Zahlung. `
+          + 'Geht sie nicht ein, kommt der Auftrag nicht zustande.',
       };
     }
     return {
@@ -91,15 +91,15 @@ function zahlungsHinweis(vorgang: BusinessRecord, onlineZahlung: boolean): Baust
     art: 'hinweis',
     titel: 'Zahlung noch offen',
     text:
-      'Bitte schließen Sie die Zahlung ab. Über den Link unten können Sie sie jederzeit fortsetzen; '
-      + 'gefertigt wird erst nach Zahlungseingang.',
+      'Bitte schließen Sie die Zahlung ab. Über den Link unten können Sie jederzeit weiter bezahlen. '
+      + 'Wir fertigen erst, wenn Ihre Zahlung da ist.',
   };
 }
 
 /** Einsendung (E6-OPUS-02): angemeldet, der Schlüssel kommt erst noch; der Begleitschein liegt auf der Vorgangsseite. */
 const EINSENDUNG_EINLEITUNG =
-  'vielen Dank für Ihre Anmeldung. Bitte schicken Sie Ihren Schlüssel mit dem Begleitschein an unsere Werkstatt; '
-  + 'die Anschrift steht darauf. Den Begleitschein finden Sie auch auf Ihrer Vorgangsseite.';
+  'vielen Dank für Ihre Anmeldung. Bitte schicken Sie Ihren Schlüssel mit dem Begleitschein an unsere Werkstatt. '
+  + 'Die Anschrift steht darauf. Den Begleitschein finden Sie über den Knopf unten.';
 
 export function kundeEingang({ vorgang, token, onlineZahlung, kontext }: KundeEingangDaten): MailInhalt {
   const art = vorgang.kind;

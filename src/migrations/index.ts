@@ -19,6 +19,7 @@ import * as migration_20261115_182441_rubrik_symbole_fahrzeugklassen from './202
 import * as migration_20261115_191734_auftragsweg from './20261115_191734_auftragsweg';
 import * as migration_20261115_200046_vermittlung_auszahlung from './20261115_200046_vermittlung_auszahlung';
 import * as migration_20261115_210337_admin_alltag from './20261115_210337_admin_alltag';
+import * as migration_20261115_215557_shop_grundlage from './20261115_215557_shop_grundlage';
 
 export const migrations = [
   {
@@ -124,6 +125,11 @@ export const migrations = [
   {
     up: migration_20261115_210337_admin_alltag.up,
     down: migration_20261115_210337_admin_alltag.down,
-    name: '20261115_210337_admin_alltag'
+    name: '20261115_210337_admin_alltag',
+  },
+  {
+    up: migration_20261115_215557_shop_grundlage.up,
+    down: migration_20261115_215557_shop_grundlage.down,
+    name: '20261115_215557_shop_grundlage'
   },
 ];

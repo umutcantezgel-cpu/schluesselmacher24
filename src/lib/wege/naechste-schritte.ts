@@ -23,25 +23,25 @@ const PLANER = 'schliessplan-planer';
 /** Je Art des Vorgangs, wenn der Weg keine eigenen Schritte hat. */
 export const SCHRITTE_NACH_ART: Record<RecordKind, NaechsterSchritt[]> = {
   bestellung: [
-    { titel: 'Prüfung Ihrer Angaben', text: 'Wir prüfen Code, Maße und Zusammenstellung, bevor etwas gefertigt wird.' },
-    { titel: 'Zahlung', text: 'Gefertigt wird nach Zahlungseingang. Solange die Zahlung offen ist, können Sie sie hier fortsetzen.' },
+    { titel: 'Prüfung Ihrer Angaben', text: 'Wir prüfen Code, Maße und Zusammenstellung, bevor wir etwas fertigen.' },
+    { titel: 'Zahlung', text: 'Wir fertigen, sobald Ihre Zahlung da ist. Ist die Zahlung noch offen, können Sie auf dieser Seite weiter bezahlen.' },
     {
       titel: 'Fertigung und Versand',
-      text: 'Danach fertigen wir Ihre Bestellung und versenden sie auf dem von Ihnen gewählten Weg. Sie werden über jeden Schritt informiert.',
+      text: 'Danach fertigen wir Ihre Bestellung und versenden sie mit der Versandart, die Sie gewählt haben. Wir sagen Ihnen bei jedem Schritt Bescheid.',
     },
   ],
   termin: [
-    { titel: 'Anzahlung', text: 'Mit der Anzahlung ist Ihr Zeitfenster fest für Sie reserviert. Sie wird auf den Gesamtpreis angerechnet.' },
-    { titel: 'Prüfung Ihrer Angaben', text: 'Wir prüfen Fahrzeug, Unterlagen und Leistung und melden uns, falls etwas fehlt.' },
-    { titel: 'Termin', text: 'Wir sind zum vereinbarten Termin für Sie da. Über Änderungen informieren wir Sie per E-Mail.' },
+    { titel: 'Anzahlung', text: 'Mit der Anzahlung ist Ihr Zeitfenster fest für Sie reserviert. Wir rechnen sie auf den Gesamtpreis an.' },
+    { titel: 'Prüfung Ihrer Angaben', text: 'Wir prüfen Fahrzeug, Unterlagen und Leistung. Fehlt etwas, melden wir uns bei Ihnen.' },
+    { titel: 'Termin', text: 'Zum vereinbarten Termin sind wir für Sie da. Ändert sich etwas, schreiben wir Ihnen eine E-Mail.' },
   ],
   anfrage: [
-    { titel: 'Sichtung', text: 'Wir sichten Ihre Angaben und Unterlagen.' },
+    { titel: 'Wir sehen uns alles an', text: 'Wir sehen uns Ihre Angaben und Unterlagen an. Sie müssen dafür nichts tun.' },
     { titel: 'Rückmeldung', text: 'Wir melden uns mit einem Angebot oder dem nächsten Schritt.' },
   ],
   projekt: [
-    { titel: 'Sichtung', text: 'Wir sichten Ihre Angaben und Unterlagen.' },
-    { titel: 'Rückmeldung', text: 'Wir melden uns mit einem Angebot oder einem Vorschlag für einen Termin vor Ort.' },
+    { titel: 'Wir sehen uns alles an', text: 'Wir sehen uns Ihre Angaben und Unterlagen an. Sie müssen dafür nichts tun.' },
+    { titel: 'Rückmeldung', text: 'Wir melden uns mit einem Angebot oder schlagen Ihnen einen Termin vor Ort vor.' },
   ],
   partner: [
     { titel: 'Prüfung', text: 'Wir prüfen Ihre Angaben zu Betrieb, Leistungen und Qualifikation.' },
@@ -53,19 +53,19 @@ export const SCHRITTE_NACH_ART: Record<RecordKind, NaechsterSchritt[]> = {
 export const SCHRITTE_FOTOANFRAGE: NaechsterSchritt[] = [
   {
     titel: 'Prüfung Ihrer Fotos',
-    text: 'Wir bestimmen Profil und Rohling, lesen Beschriftungen aus und klären, ob eine Anfertigung nach Ihrer Vorlage möglich ist. Gehört der Schlüssel zu einer Anlage mit Sicherungskarte, prüfen wir den Nachweis vor der Fertigung.',
+    text: 'Wir bestimmen auf den Fotos die Form des Schlüssels und den passenden Rohling. So klären wir, ob wir den Schlüssel nach Ihrer Vorlage anfertigen können. Gehört er zu einer Anlage mit Sicherungskarte, prüfen wir vorher Ihren Nachweis.',
   },
   {
     titel: 'Ergebnis per E-Mail',
-    text: 'Sie erhalten die Freigabe mit Preis, eine Rückfrage oder, wenn es nicht geht, eine Absage. Die Prüfung ist noch keine Fertigungszusage.',
+    text: 'Sie bekommen per E-Mail die Freigabe mit Preis, eine Rückfrage oder eine Absage. Die Prüfung ist noch keine Fertigungszusage.',
   },
   {
     titel: 'Auftrag mit der Zahlung',
-    text: 'Mit der Freigabe erhalten Sie einen persönlichen Zahlungslink. Erst mit Ihrer Zahlung erteilen Sie den Auftrag; bis dahin entstehen Ihnen keine Verpflichtungen.',
+    text: 'Mit der Freigabe bekommen Sie einen persönlichen Link zum Bezahlen. Erst mit Ihrer Zahlung erteilen Sie den Auftrag. Bis dahin entstehen Ihnen keine Verpflichtungen.',
   },
   {
     titel: 'Anfertigung',
-    text: 'Danach fertigen wir. Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und Vorgangsnummer in der Freigabe; bitte senden Sie nichts unaufgefordert ein.',
+    text: 'Danach fertigen wir. Brauchen wir Ihr Original, steht in der Freigabe, wohin Sie es schicken und welche Vorgangsnummer Sie beilegen. Bitte senden Sie nichts unaufgefordert ein.',
   },
 ];
 
@@ -73,26 +73,26 @@ export const SCHRITTE_FOTOANFRAGE: NaechsterSchritt[] = [
 export const SCHRITTE_EINSENDUNG: NaechsterSchritt[] = [
   {
     titel: 'Einschicken',
-    text: 'Den Begleitschein ausdrucken, mit dem Schlüssel in einen gepolsterten Umschlag legen und bei der Post aufgeben.',
+    text: 'Drucken Sie den Begleitschein aus. Legen Sie ihn mit dem Schlüssel in einen gepolsterten Umschlag und geben Sie ihn bei der Post auf.',
   },
   {
     titel: 'Eingang und Prüfung',
-    text: 'Sobald Ihr Schlüssel ankommt, steht das auf Ihrer Vorgangsseite. Wir prüfen, ob eine Kopie möglich ist; gehört der Schlüssel zu einer Anlage mit Sicherungskarte, prüfen wir den Nachweis vor der Fertigung.',
+    text: 'Sobald Ihr Schlüssel ankommt, sehen Sie das im Stand Ihrer Anfrage. Wir prüfen, ob eine Kopie möglich ist. Gehört der Schlüssel zu einer Anlage mit Sicherungskarte, prüfen wir vorher Ihren Nachweis.',
   },
   {
     titel: 'Preis und Auftrag',
-    text: 'Ist die Kopie möglich, erhalten Sie die Freigabe mit Preis und einen persönlichen Zahlungslink per E-Mail. Erst mit Ihrer Zahlung erteilen Sie den Auftrag. Geht es nicht, schicken wir Ihnen Ihr Original zurück.',
+    text: 'Ist eine Kopie möglich, bekommen Sie per E-Mail die Freigabe mit Preis und einen persönlichen Link zum Bezahlen. Erst mit Ihrer Zahlung erteilen Sie den Auftrag. Geht es nicht, schicken wir Ihnen Ihr Original zurück.',
   },
   {
     titel: 'Anfertigung und Rückversand',
-    text: 'Nach Zahlungseingang fertigen wir die Kopien und schicken sie mit Ihrem Original zurück. Sobald die Sendung unterwegs ist, bekommen Sie eine E-Mail, mit Sendungsnummer, wenn die Sendung eine hat.',
+    text: 'Nach Ihrer Zahlung fertigen wir die Kopien und schicken sie mit Ihrem Original zurück. Sobald die Sendung unterwegs ist, bekommen Sie eine E-Mail. Hat die Sendung eine Sendungsnummer, steht sie darin.',
   },
 ];
 
 /** Projekt aus dem Projektkonfigurator Schließanlage. */
 export const SCHRITTE_SCHLIESSANLAGE: NaechsterSchritt[] = [
   { titel: 'Prüfung Ihrer Angaben', text: 'Wir prüfen Ihre Angaben und melden uns bei offenen Punkten.' },
-  { titel: 'Abstimmung', text: 'Gemeinsam legen wir fest, welches System zu Ihrem Objekt passt.' },
+  { titel: 'Abstimmung', text: 'Wir klären mit Ihnen, welches System zu Ihrem Gebäude passt.' },
   { titel: 'Entwurf des Schließplans', text: 'Sie erhalten einen Entwurf des Schließplans zur Abstimmung.' },
   { titel: 'Fertigung nach Freigabe', text: 'Erst nach Ihrer Freigabe wird die Anlage gefertigt.' },
 ];
@@ -108,13 +108,13 @@ export const SCHRITTE_PLANER: NaechsterSchritt[] = [
 export const SCHRITTE_ZUTRITT: NaechsterSchritt[] = [
   { titel: 'Prüfung', text: 'Wir schauen uns die Türsituation an und sagen Ihnen, was technisch möglich ist.' },
   { titel: 'Beratung', text: 'Wir klären mit Ihnen das passende System.' },
-  { titel: 'Angebot', text: 'Sie erhalten ein Angebot mit nachvollziehbaren Positionen und allen Kosten.' },
+  { titel: 'Angebot', text: 'Sie bekommen ein Angebot, in dem jede Position und alle Kosten stehen.' },
 ];
 
 /** Anfrage zur Sicherheitstechnik (Sicherheitscheck oder allgemeine Anfrage zu diesem Bereich). */
 export const SCHRITTE_SICHERHEITSTECHNIK: NaechsterSchritt[] = [
   { titel: 'Einschätzung', text: 'Wir prüfen Ihre Angaben und melden uns mit einer Einschätzung.' },
-  { titel: 'Beratung', text: 'Am Telefon oder vor Ort im Einsatzgebiet.' },
+  { titel: 'Beratung', text: 'Wir beraten Sie am Telefon oder vor Ort, wenn Ihr Objekt in unserem Einsatzgebiet liegt.' },
   { titel: 'Angebot', text: 'Sie erhalten ein Angebot mit allen Kosten.' },
 ];
 

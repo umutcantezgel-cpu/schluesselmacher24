@@ -21,7 +21,8 @@ start() {
   cd "$REPO"
   # Über die Datenweiche (Auftrag 8.4): JSON-Modus, als Nutzer ubuntu. `9>&-` schließt die Sperre für den
   # Serverprozess; sonst erbt er sie, und ein weiteres `start` bliebe an `flock` hängen (E3-PRUEFER-01).
-  SICHER_PORT="$PORT" nohup "$REPO/_werkstatt/ausbau/werkzeuge/sicher.sh" --json -- npx next start -p "$PORT" >"$LOG" 2>&1 9>&- &
+  # SM24_INDEXIERUNG=an wie beim Prüfbuild (abnahme.sh): dynamische Seiten sehen denselben Schalter wie statische.
+  SM24_INDEXIERUNG=an SICHER_PORT="$PORT" nohup "$REPO/_werkstatt/ausbau/werkzeuge/sicher.sh" --json -- npx next start -p "$PORT" >"$LOG" 2>&1 9>&- &
   echo $! >"$PIDDATEI"
   for _ in $(seq 1 90); do
     if laeuft; then echo "gestartet (PID $(cat "$PIDDATEI"), Port ${PORT})"; return 0; fi

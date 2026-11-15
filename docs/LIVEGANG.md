@@ -13,9 +13,18 @@ Im Schaufenster gilt:
 - Bestellungen, Anfragen, Terminbuchungen und Uploads werden abgelehnt. Es wird nichts gespeichert, keine E-Mail verschickt und keine Zahlung gestartet. Formulare melden nach dem Absenden: „Das Absenden ist auf dieser Website noch nicht freigeschaltet. Bitte rufen Sie uns an oder schreiben Sie uns eine E-Mail.“ Upload-Felder melden entsprechend, dass sich Dateien noch nicht hochladen lassen.
 - Der Widerruf verweist auf die E-Mail-Adresse des Betriebs.
 - Das Backend (`/admin`) ist nicht nutzbar und zeigt eine Fehlerseite. Die täglichen Crons tun nichts (503 ohne `CRON_SECRET` oder ohne Datenbank, der Zahlungsabgleich wird übersprungen).
-- Suchmaschinen sind gesperrt (`robots.txt` und noindex), wie bei Vorschauen.
+- Suchmaschinen nehmen nichts auf: Jede Seite trägt noindex (als Angabe in der Seite und als Kopfzeile `X-Robots-Tag`), wie bei Vorschauen. `robots.txt` sperrt die Seite dabei nicht, sonst könnten Suchmaschinen das noindex gar nicht lesen.
 - Die Rechtsseiten zeigen den Kasten „Hinweis für die Redaktion“: Die Texte sind Entwürfe.
 - Erreichbar ist das Schaufenster unter der Vercel-Adresse des Projekts (`<projekt>.vercel.app`). Die Domain zeigt es erst, wenn sie im Projekt eingetragen ist (Schritt 5.3).
+
+**Wann die Seite in Suchmaschinen erscheinen darf.** Das entscheidet eine Stelle (`indexierungErlaubt()` in `src/lib/umgebung.ts`), und zwar beim Build:
+
+- Produktion bei Vercel mit Datenbank: ja, aber nur unter `schluesselmacher24.de` und `www.schluesselmacher24.de`. Die Vercel-Adresse (`*.vercel.app`) und jede andere Adresse liefern weiter die Kopfzeile `X-Robots-Tag: noindex`.
+- Vorschau und Schaufenster: nein.
+- Eigener Server außerhalb von Vercel: nur mit `SM24_INDEXIERUNG=an`.
+- `SM24_INDEXIERUNG=aus` ist die Notbremse: Dann wird nichts aufgenommen, auch nicht die Produktion.
+
+Der Wert muss beim Build gesetzt sein; jede Änderung braucht ein neues Deployment. Im Normalfall bleibt die Variable in Vercel leer.
 
 Das Schaufenster endet von selbst: Sobald in Vercel (Scope Production) eine Datenbank gesetzt ist (Schritte 2 und 5), gilt wieder die volle Pflichtprüfung, und der Build legt Tabellen, Inhalte und den ersten Zugang an. Danach in `scripts/schaufenster.json` `"aktiv": false` eintragen, sonst fiele die Produktion nach einem Verlust der Datenbank-Variablen still ins Schaufenster zurück. `SM24_SCHAUFENSTER=0` in Vercel verhindert auch ohne Commit weitere Schaufenster-Builds (`=1` erlaubt sie ohne die Datei). Die Variable wirkt nur beim Build: Das laufende Deployment bleibt erreichbar, bis ein anderes ausgeliefert oder es in Vercel entfernt wird.
 

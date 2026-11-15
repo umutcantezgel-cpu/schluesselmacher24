@@ -85,8 +85,8 @@ export function FotoErgebnis({ record, einsendeAnschrift }: { record: BusinessRe
         </Alert>
       )}
       {!preis && record.status === 'freigegeben' && (
-        <Alert tone="info" title="Preis folgt" className="mt-6">
-          Den Preis nennen wir Ihnen gesondert. Gefertigt wird erst, wenn Sie den Auftrag danach erteilt haben.
+        <Alert tone="info" title="Preis noch offen" className="mt-6">
+          Den Preis nennen wir Ihnen gesondert. Wir fertigen erst, wenn Sie danach den Auftrag erteilt haben.
         </Alert>
       )}
 
@@ -96,7 +96,7 @@ export function FotoErgebnis({ record, einsendeAnschrift }: { record: BusinessRe
           <p className="mt-2 text-small leading-relaxed text-foreground-muted">
             {record.status === 'freigegeben'
               ? 'Bitte senden Sie Ihren Originalschlüssel erst, nachdem Sie den Auftrag erteilt haben.'
-              : 'Gefertigt wird, sobald Ihr Originalschlüssel bei uns ist.'}
+              : 'Wir fertigen, sobald Ihr Originalschlüssel bei uns ist.'}
           </p>
           {einsendeAnschrift.length > 0 ? (
             <address className="mt-3 text-small not-italic text-foreground">
@@ -111,11 +111,11 @@ export function FotoErgebnis({ record, einsendeAnschrift }: { record: BusinessRe
           )}
           <ul className="mt-3 list-disc space-y-1 pl-4 text-small text-foreground-muted">
             <li>
-              Zettel mit Ihrer Vorgangsnummer <span className="font-mono tabular-nums">{record.reference}</span>, Ihrem
-              Namen und Ihrer Telefonnummer beilegen.
+              Legen Sie einen Zettel mit Ihrer Vorgangsnummer <span className="font-mono tabular-nums">{record.reference}</span>,
+              Ihrem Namen und Ihrer Telefonnummer bei.
             </li>
-            <li>Nur den betreffenden Schlüssel senden, ohne Schlüsselring und Anhänger.</li>
-            <li>Versichert oder mindestens nachverfolgbar versenden.</li>
+            <li>Senden Sie nur diesen Schlüssel, ohne Schlüsselring und Anhänger.</li>
+            <li>Versenden Sie versichert oder mindestens mit Sendungsverfolgung.</li>
           </ul>
         </div>
       )}

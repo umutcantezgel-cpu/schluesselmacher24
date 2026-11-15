@@ -24,6 +24,8 @@ const FILE_NAMES: Record<CollectionName, string> = {
   records: 'records.json',
   rubriken: 'rubriken.json',
   fahrzeugkatalog: 'fahrzeugkatalog.json',
+  kategorien: 'kategorien.json',
+  hersteller: 'hersteller.json',
 };
 
 /**

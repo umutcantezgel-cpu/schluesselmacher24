@@ -177,7 +177,7 @@ describe('benachrichtigeZahlung', () => {
     mailEinrichten();
     await benachrichtigeZahlung({ vorgang: vorgang(), mail: { art: 'bezahlt' }, ereignisId: 'evt_1' });
     expect(aufrufe.map((a) => a.betreff)).toEqual([
-      'Zahlung erhalten – SM24-T-2026-0007',
+      'Zahlung erhalten (SM24-T-2026-0007)',
       'Bezahlt: Termin SM24-T-2026-0007',
       'Vertragsbestätigung – SM24-T-2026-0007',
     ]);

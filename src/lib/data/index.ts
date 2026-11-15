@@ -15,7 +15,8 @@ import {
 } from './payload-mapping';
 import { oeffentlicheEintraege } from '@/lib/beispiele';
 import { buildRecordId, buildReference, counterKey, nextSequenceFromExisting } from '@/lib/reference';
-import type { AppointmentInfo, FahrzeugReihe, RecordKind, Rubrik } from '@/lib/types';
+import { herstellerSortiert, kategorieAufloesen, kategorienSortiert, sichtbareKategorien, type KategorieTreffer } from './shop';
+import type { AppointmentInfo, FahrzeugReihe, RecordKind, Rubrik, ShopHersteller, ShopKategorie } from '@/lib/types';
 import { mitDatenbank } from '@/lib/umgebung';
 import type { Vorgaenge } from '@/payload-types';
 
@@ -108,6 +109,28 @@ export async function getFahrzeugkatalog(): Promise<FahrzeugReihe[]> {
 
 export async function getRubrik(id: string): Promise<Rubrik | null> {
   return (await getRubriken()).find((r) => r.id === id) ?? null;
+}
+
+/* ---------- Shop-Kategorien und Hersteller (FA-SHOP-01) ------------------ */
+
+/** Alle Shop-Kategorien nach Reihenfolge, auch verborgene (Backend, Import). */
+export async function getKategorien(): Promise<ShopKategorie[]> {
+  return kategorienSortiert(await getCollection('kategorien'));
+}
+
+/** Kategorien, die im Shop erscheinen (Haken gesetzt, auch bei allen übergeordneten). */
+export async function getShopKategorien(): Promise<ShopKategorie[]> {
+  return sichtbareKategorien(await getCollection('kategorien'));
+}
+
+/** Sichtbare Kategorie zu einer Adresse; eine frühere Adresse kommt als Weiterleitung zurück. */
+export async function getKategorie(slug: string): Promise<KategorieTreffer | null> {
+  return kategorieAufloesen(await getCollection('kategorien'), slug);
+}
+
+/** Hersteller-Stammliste nach Reihenfolge. */
+export async function getHersteller(): Promise<ShopHersteller[]> {
+  return herstellerSortiert(await getCollection('hersteller'));
 }
 
 export async function getGuides() {

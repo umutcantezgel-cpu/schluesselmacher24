@@ -47,9 +47,9 @@ export function Bestaetigung({
   return (
     <div className="space-y-6">
       <div className="rounded-lg border border-border bg-surface p-6">
-        <CheckDraw title="Vorgang angelegt" size={56} />
+        <CheckDraw title="Eingegangen" size={56} />
         <p className="mt-4 font-mono text-caption uppercase tracking-label text-success">
-          Vorgang angelegt
+          Eingegangen
         </p>
         <h2 className="mt-2 text-headline text-foreground">
           Ihre Anfrage ist bei uns eingegangen
@@ -63,8 +63,8 @@ export function Bestaetigung({
             {reference}
           </p>
           <p className="mt-2 text-small leading-relaxed text-foreground-muted">
-            Bitte bewahren Sie diese Nummer auf. Zusammen mit Ihrer E-Mail-Adresse rufen Sie damit
-            jederzeit den Stand Ihres Vorgangs ab.
+            Bitte heben Sie diese Nummer auf. Mit ihr und Ihrer E-Mail-Adresse sehen Sie jederzeit
+            den Stand nach.
           </p>
         </div>
       </div>
@@ -170,7 +170,7 @@ export function Bestaetigung({
 
       <div className="flex flex-col gap-3 border-t border-border pt-6 sm:flex-row">
         <ButtonLink href="/service-und-termin/terminstatus" variant="outline">
-          Stand des Vorgangs abrufen
+          Stand abrufen
         </ButtonLink>
         <ButtonLink href="/autoschluessel" variant="ghost">
           Zurück zum Bereich Autoschlüssel

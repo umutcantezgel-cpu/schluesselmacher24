@@ -206,7 +206,7 @@ describe('vorgangNachAenderung', () => {
     const ergebnis = await nach({ doc: doc({ status: 'versendet' }), operation: 'update', req: r });
 
     expect(gesendet).toHaveLength(1);
-    expect(gesendet[0]).toMatchObject({ an: ['erika@example.org'], betreff: 'Ihre Sendung ist unterwegs – SM24-B-2026-0007' });
+    expect(gesendet[0]).toMatchObject({ an: ['erika@example.org'], betreff: 'Ihre Sendung ist unterwegs (SM24-B-2026-0007)' });
     expect(gesendet[0].schluessel).toBe('lokal-SM24-B-2026-0007-status-versendet-2026-10-24T12:00:00.000Z');
     expect(systemBeimSpeichern).toBe(true);
     expect(r.context[SYSTEM_AENDERUNG]).toBeUndefined();
@@ -368,7 +368,7 @@ describe('Statusverlauf und Foto-Freigabe', () => {
     r.context['sm24Vorhaben:42'] = { statusMail: { status: 'freigegeben' } };
     await nach({ doc: foto({ status: 'freigegeben', zahlung: { umfang: 'gesamt', betragCent: 2490, status: 'offen' } }), operation: 'update', req: r });
     expect(gesendet).toHaveLength(1);
-    expect(gesendet[0].betreff).toBe('Ihre Anfrage ist freigegeben – SM24-A-2026-0011');
+    expect(gesendet[0].betreff).toBe('Ihre Anfrage ist freigegeben (SM24-A-2026-0011)');
     expect((update.mock.calls[0][0].data as Partial<Vorgaenge>).zugriffsHash).toBeUndefined();
   });
 });

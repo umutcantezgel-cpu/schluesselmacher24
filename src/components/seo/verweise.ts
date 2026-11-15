@@ -76,6 +76,15 @@ export function passtDazu(
   return ergebnis;
 }
 
+/**
+ * Nur die Gegenrichtung für Seiten mit eigenem, handgesetztem Linkblock (Schließanlagen, elektronische
+ * Zutrittslösungen, Sicherheitstechnik): Ratgeber, veröffentlichte Ortsseiten und Seiten, die auf `pfad`
+ * verweisen, ohne die Ziele, die der Block schon zeigt (`ausser`). Fehlen die Daten, bleibt die Liste leer.
+ */
+export async function gegenrichtung(pfad: string, { ausser = [], max = 3 }: { ausser?: string[]; max?: number } = {}): Promise<Verweis[]> {
+  return passtDazu(pfad, [], await verweisQuellen(), { ausser, max });
+}
+
 /* ---------- Quellen aus der Datenschicht --------------------------------- */
 
 export function quellenAusSeiten(seiten: PageContent[]): VerweisQuelle[] {
@@ -117,8 +126,9 @@ export function quellenAusOrten(orte: CityPage[]): VerweisQuelle[] {
 
 /**
  * Alle Quellen der Verweisliste. Fehlt eine Sammlung, fehlen nur ihre Verweise. Reihenfolge = Vorrang in
- * der Gegenrichtung: Ratgeber und Orte vor Seiten, Leistungsseiten zuletzt (deren Bereichsseite listet
- * sie ohnehin).
+ * der Gegenrichtung: veröffentlichte Ortsseiten zuerst (wenige, und jede angebotene Leistung soll auf sie
+ * zurückverweisen, FA-25-17), dann Ratgeber, dann Seiten, Leistungsseiten zuletzt (deren Bereichsseite
+ * listet sie ohnehin).
  */
 export async function verweisQuellen(): Promise<VerweisQuelle[]> {
   const leer = <T>(): T[] => [];
@@ -128,5 +138,5 @@ export async function verweisQuellen(): Promise<VerweisQuelle[]> {
     getGuides().catch(leer<Guide>),
     getCities().catch(leer<CityPage>),
   ]);
-  return [...quellenAusRatgebern(ratgeber), ...quellenAusOrten(orte), ...quellenAusSeiten(seiten), ...quellenAusLeistungen(leistungen)];
+  return [...quellenAusOrten(orte), ...quellenAusRatgebern(ratgeber), ...quellenAusSeiten(seiten), ...quellenAusLeistungen(leistungen)];
 }

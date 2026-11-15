@@ -25,7 +25,7 @@ export const NACHRICHT_VORLAGEN: readonly NachrichtVorlage[] = [
     betreff: 'Bitte Unterlagen nachreichen ({nummer})',
     text:
       'damit wir Ihren Auftrag bearbeiten können, fehlt uns noch etwas:\n\n\n'
-      + 'Bitte schicken Sie es uns als Antwort auf diese E-Mail. Danach geht es sofort weiter.',
+      + 'Bitte schicken Sie es uns als Antwort auf diese E-Mail. Danach arbeiten wir an Ihrem Auftrag weiter.',
   },
   {
     id: 'termin-verschieben',
@@ -40,7 +40,7 @@ export const NACHRICHT_VORLAGEN: readonly NachrichtVorlage[] = [
     name: 'Abholung bereit',
     betreff: 'Ihr Auftrag ist fertig ({nummer})',
     text:
-      'gute Nachricht: Ihr Auftrag ist fertig und liegt zur Abholung bereit.\n\n'
+      'Ihr Auftrag ist fertig und liegt zur Abholung bereit.\n\n'
       + 'Bitte bringen Sie Ihre Vorgangsnummer und einen Ausweis mit. Wir freuen uns auf Sie.',
   },
 ];

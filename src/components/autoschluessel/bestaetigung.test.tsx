@@ -30,12 +30,12 @@ describe('Bestaetigung', () => {
     expect(html).toContain('Ihre Vorgangsnummer');
   });
 
-  it('zeigt den Bestätigungshaken CheckDraw mit Titel „Vorgang angelegt“ in 56 px', () => {
+  it('zeigt den Bestätigungshaken CheckDraw mit Titel „Eingegangen“ in 56 px', () => {
     expect(html).toMatch(/^<div class="space-y-6"><div class="rounded-lg border border-border bg-surface p-6"><svg[^>]*\brole="img"/);
-    expect(html).toContain('<title>Vorgang angelegt</title>');
-    expect(html).toContain('aria-label="Vorgang angelegt"');
+    expect(html).toContain('<title>Eingegangen</title>');
+    expect(html).toContain('aria-label="Eingegangen"');
     expect(html).toMatch(/<svg[^>]*width="56"[^>]*height="56"/);
-    expect(html).toContain('>Vorgang angelegt</p>');
+    expect(html).toContain('>Eingegangen</p>');
   });
 
   it('nennen Termin und Anzahlung mit ihren Werten', () => {

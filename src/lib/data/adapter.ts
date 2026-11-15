@@ -15,6 +15,8 @@ import type {
   CarKeyService,
   StandardArticle,
   Rubrik,
+  ShopHersteller,
+  ShopKategorie,
 } from '@/lib/types';
 
 /**
@@ -40,6 +42,10 @@ export interface Collections {
   rubriken: Rubrik[];
   /** Fahrzeugkatalog: Modellreihen mit Quelle (A-009). */
   fahrzeugkatalog: FahrzeugReihe[];
+  /** Shop-Kategorien mit Unterkategorien (FA-SHOP-01). */
+  kategorien: ShopKategorie[];
+  /** Hersteller-Stammliste (FA-SHOP-01). */
+  hersteller: ShopHersteller[];
 }
 
 export type CollectionName = keyof Collections;

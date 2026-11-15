@@ -46,27 +46,28 @@ export const ART_FUER_KUNDEN: Record<RecordKind, string> = {
 type Eintrag = { label: string; text: string };
 
 const ALLGEMEIN: Record<RecordStatus, Eintrag> = {
-  neu: { label: 'Eingegangen', text: 'Ihr Vorgang liegt uns vor. Wir sehen ihn uns an und melden uns.' },
-  'in-pruefung': { label: 'In Prüfung', text: 'Wir prüfen Ihre Angaben und Unterlagen.' },
-  geprueft: { label: 'Geprüft', text: 'Die Prüfung ist abgeschlossen. Sie hören von uns.' },
-  freigegeben: { label: 'Freigegeben', text: 'Wir haben Ihre Anfrage geprüft. Wie es weitergeht, steht in unserer E-Mail.' },
+  neu: { label: 'Eingegangen', text: 'Ihre Angaben sind bei uns eingegangen. Wir sehen sie uns an und melden uns bei Ihnen.' },
+  'in-pruefung': { label: 'In Prüfung', text: 'Wir prüfen Ihre Angaben und Unterlagen. Sie müssen dafür nichts tun.' },
+  geprueft: { label: 'Geprüft', text: 'Wir haben Ihre Angaben geprüft. Sie hören von uns.' },
+  freigegeben: { label: 'Freigegeben', text: 'Wir haben Ihre Anfrage geprüft. Was Sie jetzt tun können, steht in unserer E-Mail.' },
   'nicht-moeglich': {
     label: 'Nicht möglich',
     text: 'Nach unserer Prüfung können wir diesen Auftrag leider nicht ausführen. Einzelheiten stehen in unserer E-Mail.',
   },
   'wartet-auf-kunde': {
     label: 'Rückfrage an Sie',
-    text: 'Wir brauchen noch eine Angabe oder eine Unterlage von Ihnen. Einzelheiten stehen in unserer E-Mail.',
+    text: 'Wir brauchen noch eine Angabe oder eine Unterlage von Ihnen. Was genau, steht in unserer E-Mail.',
   },
-  'in-fertigung': { label: 'In Arbeit', text: 'Wir arbeiten an Ihrem Auftrag.' },
+  'in-fertigung': { label: 'In Arbeit', text: 'Wir arbeiten an Ihrem Auftrag. Sie müssen nichts tun.' },
   terminiert: { label: 'Termin vereinbart', text: 'Ihr Termin ist verbindlich eingeplant.' },
   versendet: { label: 'Versendet', text: 'Ihre Sendung ist auf dem Weg zu Ihnen.' },
-  abgeschlossen: { label: 'Abgeschlossen', text: 'Der Vorgang ist erledigt.' },
-  storniert: { label: 'Storniert', text: 'Der Vorgang wurde storniert.' },
+  abgeschlossen: { label: 'Abgeschlossen', text: 'Wir haben alles erledigt. Sie müssen nichts mehr tun.' },
+  storniert: { label: 'Storniert', text: 'Ihre Anfrage wurde storniert.' },
 };
 
 const BESTELLUNG: Partial<Record<RecordStatus, Eintrag>> = {
-  'in-pruefung': { label: 'In Prüfung', text: 'Wir prüfen Ihre Bestellung.' },
+  'in-pruefung': { label: 'In Prüfung', text: 'Wir prüfen Ihre Bestellung. Sie müssen dafür nichts tun.' },
+  storniert: { label: 'Storniert', text: 'Ihre Bestellung wurde storniert.' },
   'in-fertigung': { label: 'In Anfertigung', text: 'Wir fertigen Ihre Bestellung an.' },
   versendet: { label: 'Versendet', text: 'Ihre Bestellung ist auf dem Weg zu Ihnen.' },
 };
@@ -82,7 +83,7 @@ const FOTO: Partial<Record<RecordStatus, Eintrag>> = {
   freigegeben: {
     label: 'Freigegeben',
     text:
-      'Wir können Ihren Schlüssel nach Ihrer Vorlage anfertigen. Preis und Zahlung finden Sie auf Ihrer Vorgangsseite '
+      'Wir können Ihren Schlüssel nach Ihrer Vorlage anfertigen. Preis und Zahlung finden Sie auf der Seite zu Ihrer Anfrage '
       + 'und in unserer E-Mail. Den Auftrag erteilen Sie mit der Zahlung.',
   },
   'nicht-moeglich': {
@@ -91,7 +92,7 @@ const FOTO: Partial<Record<RecordStatus, Eintrag>> = {
   },
   'wartet-auf-kunde': {
     label: 'Rückfrage an Sie',
-    text: 'Wir brauchen noch eine Angabe oder ein weiteres Foto von Ihnen. Einzelheiten stehen in unserer E-Mail.',
+    text: 'Wir brauchen noch eine Angabe oder ein weiteres Foto von Ihnen. Was genau, steht in unserer E-Mail.',
   },
   'in-fertigung': { label: 'In Anfertigung', text: 'Wir fertigen Ihren Schlüssel an.' },
   versendet: { label: 'Versendet', text: 'Ihr Schlüssel ist auf dem Weg zu Ihnen.' },
@@ -102,12 +103,12 @@ const EINSENDUNG: Partial<Record<RecordStatus, Eintrag>> = {
   freigegeben: {
     label: 'Freigegeben',
     text:
-      'Wir können Kopien Ihres Schlüssels anfertigen. Preis und Zahlung finden Sie auf Ihrer Vorgangsseite '
+      'Wir können Kopien Ihres Schlüssels anfertigen. Preis und Zahlung finden Sie auf der Seite zu Ihrer Anfrage '
       + 'und in unserer E-Mail. Den Auftrag erteilen Sie mit der Zahlung.',
   },
   'wartet-auf-kunde': {
     label: 'Rückfrage an Sie',
-    text: 'Wir brauchen noch eine Angabe von Ihnen. Einzelheiten stehen in unserer E-Mail.',
+    text: 'Wir brauchen noch eine Angabe von Ihnen. Was genau, steht in unserer E-Mail.',
   },
   'in-fertigung': { label: 'In Anfertigung', text: 'Wir fertigen Ihre Kopien an. Ihr Original liegt bei uns.' },
   versendet: { label: 'Versendet', text: 'Ihr Original und die Kopien sind auf dem Weg zu Ihnen.' },

@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url';
 import { withPayload } from '@payloadcms/next/withPayload';
 import type { NextConfig } from 'next';
 
+import { suchmaschinenKopfzeilen } from './src/lib/umgebung';
+
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const isDev = process.env.NODE_ENV === 'development';
 /** Google Analytics 4 (nur nach Einwilligung geladen): Freigaben in der CSP nur mit gültiger Mess-ID. */
@@ -94,7 +96,8 @@ const nextConfig: NextConfig = {
     return webpackConfig;
   },
   async headers() {
-    return [{ source: '/(.*)', headers: securityHeaders }];
+    // Suchmaschinen: noindex als Kopfzeile für jede Adresse außer der Produktionsdomain (FA-25-20, FA-SEO-01C).
+    return [{ source: '/(.*)', headers: securityHeaders }, ...suchmaschinenKopfzeilen()];
   },
   // Frühere Adressen mit verlorenem Akzent (Datenmigration 20261025 „leitfaden_daten“).
   async redirects() {

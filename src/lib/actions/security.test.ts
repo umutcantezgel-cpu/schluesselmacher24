@@ -19,10 +19,24 @@ const abgeschaltet = new Set<string>();
 /** Rubriken mit Status „später“: getRubrik liefert sie, aber nicht live. */
 const spaeterGeschaltet = new Set<string>();
 
-/** Codelinien für die Kassentests: die Musterdaten als echte Linien, dazu eine Beispiel-Linie. */
+/**
+ * Codelinien für die Kassentests: die Musterdaten als echte Linien, dazu eine Beispiel-Linie und je eine
+ * Linie „auf Anfrage“ und „nicht lieferbar“ (FA-SHOP-01).
+ */
 function testLinien() {
   const linien = defaults.codeLines().map((l) => ({ ...l, example: false }));
-  return [...linien, { ...linien[0], id: 'test-beispiel-linie', slug: 'test-beispiel-linie', example: true }];
+  return [
+    ...linien,
+    { ...linien[0], id: 'test-beispiel-linie', slug: 'test-beispiel-linie', example: true },
+    { ...linien[0], id: 'test-auf-anfrage', slug: 'test-auf-anfrage', name: 'Linie auf Anfrage', availability: 'auf-anfrage' as const },
+    { ...linien[0], id: 'test-nicht-lieferbar', slug: 'test-nicht-lieferbar', name: 'Linie nicht lieferbar', availability: 'nicht-lieferbar' as const },
+  ];
+}
+
+/** Standardartikel für die Kassentests: die Beispielartikel, dazu ein echter, der nicht lieferbar ist. */
+function testArtikel() {
+  const artikel = defaults.standardArticles();
+  return [...artikel, { ...artikel[0], id: 'test-artikel-nicht-lieferbar', slug: 'test-artikel-nicht-lieferbar', name: 'Artikel nicht lieferbar', example: false, availability: 'nicht-lieferbar' as const }];
 }
 
 vi.mock('next/headers', () => ({
@@ -52,7 +66,8 @@ vi.mock('@/lib/data', () => {
     getSettings: async () => defaults.settings(),
     // Die Muster-Codelinien sind Beispiele (A-046); für die Bestelllogik gelten sie hier als echte Linien,
     // dazu eine Beispiel-Linie, die die Kasse ablehnen muss.
-    getCollection: async (name: keyof typeof defaults) => (name === 'codeLines' ? testLinien() : defaults[name]()),
+    getCollection: async (name: keyof typeof defaults) =>
+      name === 'codeLines' ? testLinien() : name === 'standardArticles' ? testArtikel() : defaults[name](),
     getRubrik: async (id: string) => {
       if (abgeschaltet.has(id)) return null;
       const r = defaults.rubriken().find((x) => x.id === id) ?? null;
@@ -1229,6 +1244,39 @@ describe('submitOrder', () => {
     });
     expect(result.ok).toBe(false);
     expect(result.error).toContain('nicht mehr verfügbar');
+    expect(stored).toHaveLength(0);
+  });
+
+  it.each([
+    ['test-auf-anfrage', 'nur auf Anfrage'],
+    ['test-nicht-lieferbar', 'derzeit nicht lieferbar'],
+  ])('sperrt die Codelinie %s auf dem Server (FA-22-10)', async (id, meldung) => {
+    const linie = testLinien().find((l) => l.id === id)!;
+    const result = await submitOrder({
+      items: [{ kind: 'code-schluessel', uid: 'v', codeLineId: linie.id, code: linie.codeExample, qty: 1, unitPriceCents: linie.priceCents, photoRefs: [] }],
+      shippingOptionId: shipping.id,
+      contact,
+      acceptedTerms: true,
+      acceptedCustomMade: true,
+      expectedTotalCents: linie.priceCents + shipping.priceCents,
+    });
+    expect(result.ok).toBe(false);
+    expect(result.error).toContain(meldung);
+    expect(stored).toHaveLength(0);
+  });
+
+  it('sperrt einen nicht lieferbaren Artikel auf dem Server (FA-22-10)', async () => {
+    const artikel = testArtikel().find((a) => a.id === 'test-artikel-nicht-lieferbar')!;
+    const result = await submitOrder({
+      items: [{ kind: 'standard', uid: 'n', productId: artikel.id, label: artikel.name, shippingClass: artikel.shippingClass, qty: 1, unitPriceCents: artikel.priceCents }],
+      shippingOptionId: shipping.id,
+      contact,
+      acceptedTerms: true,
+      acceptedCustomMade: true,
+      expectedTotalCents: artikel.priceCents,
+    });
+    expect(result.ok).toBe(false);
+    expect(result.error).toContain('derzeit nicht lieferbar');
     expect(stored).toHaveLength(0);
   });
 

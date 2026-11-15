@@ -17,8 +17,7 @@ import { AreaScope } from '@/components/visual/area-scope';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { EinsatzradiusZeichnung } from '@/components/visual/einsatzradius';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
-import { JsonLd, breadcrumbSchema, serviceAreaSchema } from '@/components/seo/json-ld';
-import { getSiteUrl } from '@/lib/site-url';
+import { JsonLd, serviceAreaSchema } from '@/components/seo/json-ld';
 
 export async function generateStaticParams() {
   const cities = await getCities();
@@ -109,8 +108,7 @@ export default async function CityPage(props: { params: Promise<{ city: string }
 
   return (
     <>
-      <JsonLd data={serviceAreaSchema(city)} />
-      <JsonLd data={breadcrumbSchema(crumbs, `${getSiteUrl()}/standorte/${city.slug}`)} />
+      <JsonLd data={serviceAreaSchema(city, crumbs)} />
 
       <PageHeader
         eyebrow={city.state}

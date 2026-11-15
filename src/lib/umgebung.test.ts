@@ -12,6 +12,7 @@ import {
   mailKonfiguration,
   mitDatenbank,
   pruefhinweiseZeigen,
+  OHNE_NOINDEX_HOST_MUSTER,
   PRODUKTIONS_HOST_MUSTER,
   serverUrl,
   speichernMoeglich,
@@ -187,8 +188,16 @@ describe('Suchmaschinen', () => {
     const regeln = suchmaschinenKopfzeilen();
     expect(regeln).toHaveLength(1);
     expect(regeln[0].headers).toEqual([{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]);
-    // Nicht indexierbar: noindex für jede Adresse; indexierbar: für jede außer der Produktionsdomain.
-    expect(regeln[0].missing).toEqual(erwartet ? [{ type: 'host', value: PRODUKTIONS_HOST_MUSTER }] : undefined);
+    // Nicht indexierbar: noindex für jede Adresse; indexierbar: für jede außer der Produktionsdomain (und Loopback).
+    expect(regeln[0].missing).toEqual(erwartet ? [{ type: 'host', value: OHNE_NOINDEX_HOST_MUSTER }] : undefined);
+  });
+
+  it('nimmt bei erlaubter Indexierung nur Produktionsdomain und Loopback von der Kopfzeile aus', () => {
+    const muster = new RegExp(`^${OHNE_NOINDEX_HOST_MUSTER}$`);
+    for (const host of ['schluesselmacher24.de', 'www.schluesselmacher24.de', 'localhost', '127.0.0.1']) expect(muster.test(host)).toBe(true);
+    for (const fremd of ['schluesselmacher24.vercel.app', 'sm24-git-main.vercel.app', 'localhost.example.com', '127.0.0.10', 'staging.schluesselmacher24.de', '192.168.0.5']) {
+      expect(muster.test(fremd)).toBe(false);
+    }
   });
 
   it('nimmt nur die Produktionsdomain mit oder ohne www von der Kopfzeile aus', () => {

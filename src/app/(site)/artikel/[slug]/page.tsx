@@ -27,6 +27,9 @@ import { IconRueckgabe } from '@/components/visual/icons/rueckgabe';
 import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
 import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
 
+import { verfuegbarkeitVon } from '@/lib/data/shop';
+import { VerfuegbarkeitHinweis } from '../../schluessel-nach-code/verfuegbarkeit-hinweis';
+
 import { ArtikelKauf } from './artikel-kauf';
 
 interface ArtikelSeiteProps {
@@ -96,6 +99,8 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
   const produkt = produktJsonLd(article);
   const versandarten = versandartenFuer(article, settings.shipping);
   const hersteller = herstellerVon(article.manufacturer);
+  // Verfügbarkeit (FA-22-10): „auf Anfrage“ und „nicht lieferbar“ ersetzen den Kaufbereich; der Server sperrt die Bestellung.
+  const verfuegbarkeit = verfuegbarkeitVon(article);
 
   // Nur gepflegte Angaben — fehlende Werte werden nicht ergänzt.
   const eigenschaften = [
@@ -191,17 +196,25 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
           </div>
 
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:self-start">
-            <ArtikelKauf
-              article={{
-                id: article.id,
-                name: article.name,
-                priceCents: article.priceCents,
-                bulkPrices: article.bulkPrices,
-                maxQty: article.maxQty,
-                shippingClass: article.shippingClass,
-                example: article.example,
-              }}
-            />
+            {verfuegbarkeit === 'lieferbar' ? (
+              <ArtikelKauf
+                article={{
+                  id: article.id,
+                  name: article.name,
+                  priceCents: article.priceCents,
+                  bulkPrices: article.bulkPrices,
+                  maxQty: article.maxQty,
+                  shippingClass: article.shippingClass,
+                  example: article.example,
+                }}
+              />
+            ) : (
+              <VerfuegbarkeitHinweis
+                verfuegbarkeit={verfuegbarkeit}
+                anfrage={{ href: '/service-und-termin/anfrage', label: 'Artikel anfragen' }}
+                uebersicht={{ href: '/artikel', label: 'Alle Artikel' }}
+              />
+            )}
           </div>
 
           <div className="min-w-0 lg:col-span-7 lg:col-start-1 lg:row-start-2">

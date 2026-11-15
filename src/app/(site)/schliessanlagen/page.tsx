@@ -25,6 +25,7 @@ import { GlyphPersonen } from '@/components/visual/glyphen/personen';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { SchliessplanInteraktiv } from '@/components/visual/interaktiv/schliessplan-interaktiv';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { gegenrichtung } from '@/components/seo/verweise';
 
 const ROUTE = 'schliessanlagen';
 
@@ -258,6 +259,11 @@ export default async function SchliessanlagenPage() {
   // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
   const rubrik = await getRubrik('schliessanlage');
   const [page, codeLines] = await Promise.all([getPageContent(ROUTE), getCodeLines()]);
+  // Gegenrichtung der Verweisliste (FA-SEO-01C): Ratgeber und veröffentlichte Ortsseiten, die hierher verweisen.
+  const weiterfuehrend: Array<{ href: string; label: string; body?: string }> = [
+    ...WEITERFUEHREND,
+    ...(await gegenrichtung(`/${ROUTE}`, { ausser: WEITERFUEHREND.map((link) => link.href) })),
+  ];
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
 
@@ -501,7 +507,7 @@ export default async function SchliessanlagenPage() {
           <SectionHeading nummer="06" eyebrow="Weiterlesen" title="Passend dazu" className="lg:col-span-4" />
 
           <ol className="border-t border-border lg:col-span-8">
-            {WEITERFUEHREND.map((link, index) => (
+            {weiterfuehrend.map((link, index) => (
               <li key={link.href} className="border-b border-border">
                 <Link
                   href={link.href}
@@ -514,9 +520,11 @@ export default async function SchliessanlagenPage() {
                     <span className="block text-title-sm font-semibold text-foreground group-hover:text-primary">
                       {link.label}
                     </span>
-                    <span className="mt-1 block max-w-measure text-small leading-relaxed text-foreground-muted">
-                      {link.body}
-                    </span>
+                    {link.body && (
+                      <span className="mt-1 block max-w-measure text-small leading-relaxed text-foreground-muted">
+                        {link.body}
+                      </span>
+                    )}
                   </span>
                   <GlyphPfeilRechts
                     size={18}

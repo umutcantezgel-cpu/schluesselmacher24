@@ -72,6 +72,8 @@ export interface Config {
     kundendateien: Kundendateien;
     widerrufe: Widerrufe;
     produkte: Produkte;
+    kategorien: Kategorien;
+    hersteller: Hersteller;
     fahrzeugmarken: Fahrzeugmarken;
     fahrzeugreihen: Fahrzeugreihen;
     'autoschluessel-leistungen': AutoschluesselLeistungen;
@@ -105,6 +107,8 @@ export interface Config {
     kundendateien: KundendateienSelect<false> | KundendateienSelect<true>;
     widerrufe: WiderrufeSelect<false> | WiderrufeSelect<true>;
     produkte: ProdukteSelect<false> | ProdukteSelect<true>;
+    kategorien: KategorienSelect<false> | KategorienSelect<true>;
+    hersteller: HerstellerSelect<false> | HerstellerSelect<true>;
     fahrzeugmarken: FahrzeugmarkenSelect<false> | FahrzeugmarkenSelect<true>;
     fahrzeugreihen: FahrzeugreihenSelect<false> | FahrzeugreihenSelect<true>;
     'autoschluessel-leistungen': AutoschluesselLeistungenSelect<false> | AutoschluesselLeistungenSelect<true>;
@@ -740,10 +744,33 @@ export interface Produkte {
    * Beispiel: erscheint nicht auf der Seite. Nicht in Listen, Suche und Sitemap, nicht bestellbar. Für echte Artikel den Haken entfernen.
    */
   beispiel?: boolean | null;
+  /**
+   * Lieferbar: in den Warenkorb. Auf Anfrage: Kunden fragen an, kein Warenkorb. Derzeit nicht lieferbar: kein Warenkorb, keine Bestellung, die Seite sagt es.
+   */
+  verfuegbarkeit?: ('lieferbar' | 'auf-anfrage' | 'nicht-lieferbar') | null;
+  /**
+   * In welcher Shop-Kategorie der Artikel steht.
+   */
+  kategorie?: (number | null) | Kategorien;
   name: string;
   beschreibung: string;
-  hersteller?: string | null;
+  /**
+   * Aus der Liste wählen. Fehlt er, zuerst unter Shop › Hersteller anlegen.
+   */
+  herstellerAuswahl?: (number | null) | Hersteller;
   schluesseltyp?: string | null;
+  /**
+   * Nur noch zum Lesen. Gilt, solange oben kein Hersteller gewählt ist.
+   */
+  hersteller?: string | null;
+  /**
+   * So, wie der Hersteller das Schließsystem nennt. Pflicht bei neuen Codeprodukten.
+   */
+  system?: string | null;
+  /**
+   * Von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“.
+   */
+  codebereich?: string | null;
   /**
    * Schlüsselprofil laut Hersteller.
    */
@@ -764,6 +791,9 @@ export interface Produkte {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Etwa „2 bis 4 Werktage“. Leer lassen, wenn die Lieferzeit der Versandart gilt.
+   */
   lieferzeit?: string | null;
   schlagworte?: string[] | null;
   /**
@@ -872,6 +902,109 @@ export interface Produkte {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Kategorien und Unterkategorien des Shops. Reihenfolge: kleinere Zahl zuerst. Eine Unterkategorie entsteht, wenn Sie oben eine übergeordnete Kategorie wählen.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "kategorien".
+ */
+export interface Kategorien {
+  id: number;
+  /**
+   * So steht die Kategorie im Shop.
+   */
+  name: string;
+  /**
+   * Leer lassen für eine Hauptkategorie. Für eine Unterkategorie hier die Hauptkategorie wählen.
+   */
+  eltern?: (number | null) | Kategorien;
+  /**
+   * Ein bis zwei kurze Sätze für Kunden.
+   */
+  beschreibung: string;
+  art: 'codeprodukte' | 'artikel' | 'konfigurator' | 'anfrage';
+  /**
+   * Beginnt mit „/“, etwa /schluessel-nach-code.
+   */
+  ziel: string;
+  /**
+   * Etwa „Produkte folgen; bis dahin Anfrage“. Leer lassen, wenn es Produkte gibt.
+   */
+  hinweis?: string | null;
+  bild?: {
+    /**
+     * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+     */
+    motiv?: string | null;
+    format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+    /**
+     * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+     */
+    bild?: (number | null) | Medien;
+    hinweis?: string | null;
+  };
+  /**
+   * Wird automatisch ergänzt, wenn Sie die Adresse ändern. Diese Adressen leiten auf die aktuelle weiter.
+   */
+  fruehereAdressen?:
+    | {
+        adresse: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Titel und Beschreibung, wie sie bei Google erscheinen.
+   */
+  seo?: {
+    /**
+     * Am besten höchstens 40 Zeichen, das wichtigste Wort vorn. Den Zusatz „| SCHLÜSSELMACHER24“ hängt die Seite selbst an; nur bei der Startseite steht er im Titel.
+     */
+    titel?: string | null;
+    /**
+     * Ein bis zwei ganze Sätze mit 120 bis 160 Zeichen. Schreiben Sie nur, was auch auf der Seite steht: keine Preise, keine Zeiten, keine Versprechen.
+     */
+    beschreibung?: string | null;
+    interneLinks?:
+      | {
+          href: string;
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    noindex?: boolean | null;
+    socialBild?: {
+      /**
+       * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+       */
+      motiv?: string | null;
+      format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+      /**
+       * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+       */
+      bild?: (number | null) | Medien;
+      hinweis?: string | null;
+    };
+  };
+  /**
+   * Nur Kleinbuchstaben, Ziffern und Bindestriche. Leer lassen: wird aus dem Namen gebildet. Ändern Sie sie, leitet die alte weiter.
+   */
+  slug?: string | null;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  /**
+   * Kleinere Zahl steht weiter vorn.
+   */
+  reihenfolge: number;
+  /**
+   * Ohne Haken bleibt die Kategorie samt Unterkategorien verborgen.
+   */
+  imShop?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+}
+/**
  * Fotos höchstens 4 MB groß hochladen (JPEG, PNG, WebP oder AVIF), am besten mit 1600–2560 Pixel Breite.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -922,6 +1055,53 @@ export interface Medien {
       filename?: string | null;
     };
   };
+}
+/**
+ * Liste der Hersteller. Bitte jeden Hersteller nur einmal anlegen, in seiner eigenen Schreibweise. Artikel wählen ihren Hersteller aus dieser Liste.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hersteller".
+ */
+export interface Hersteller {
+  id: number;
+  /**
+   * Genau so geschrieben wie vom Hersteller selbst, etwa mit Großbuchstaben.
+   */
+  name: string;
+  /**
+   * Ein kurzer Satz, etwa an welchen Schlössern die Systeme sitzen. Nur, was Sie belegen können.
+   */
+  einsatz?: string | null;
+  angeboten?: boolean | null;
+  /**
+   * Nur hochladen, wenn der Hersteller die Nutzung erlaubt hat.
+   */
+  logo?: {
+    bild?: (number | null) | Medien;
+    /**
+     * Ohne diesen Haken zeigt die Seite kein Logo.
+     */
+    freigabe?: boolean | null;
+    /**
+     * Nur intern.
+     */
+    freigabeNotiz?: string | null;
+  };
+  /**
+   * Nur Kleinbuchstaben, Ziffern und Bindestriche. Leer lassen: wird aus dem Namen gebildet.
+   */
+  slug?: string | null;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  /**
+   * Kleinere Zahl steht weiter vorn.
+   */
+  reihenfolge: number;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1924,6 +2104,14 @@ export interface PayloadLockedDocument {
         value: number | Produkte;
       } | null)
     | ({
+        relationTo: 'kategorien';
+        value: number | Kategorien;
+      } | null)
+    | ({
+        relationTo: 'hersteller';
+        value: number | Hersteller;
+      } | null)
+    | ({
         relationTo: 'fahrzeugmarken';
         value: number | Fahrzeugmarken;
       } | null)
@@ -2357,10 +2545,15 @@ export interface ProdukteSelect<T extends boolean = true> {
   slug?: T;
   kennung?: T;
   beispiel?: T;
+  verfuegbarkeit?: T;
+  kategorie?: T;
   name?: T;
   beschreibung?: T;
-  hersteller?: T;
+  herstellerAuswahl?: T;
   schluesseltyp?: T;
+  hersteller?: T;
+  system?: T;
+  codebereich?: T;
   profil?: T;
   codeserie?: T;
   einsatz?: T;
@@ -2443,6 +2636,83 @@ export interface ProdukteSelect<T extends boolean = true> {
   createdAt?: T;
   deletedAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "kategorien_select".
+ */
+export interface KategorienSelect<T extends boolean = true> {
+  name?: T;
+  eltern?: T;
+  beschreibung?: T;
+  art?: T;
+  ziel?: T;
+  hinweis?: T;
+  bild?:
+    | T
+    | {
+        motiv?: T;
+        format?: T;
+        bild?: T;
+        hinweis?: T;
+      };
+  fruehereAdressen?:
+    | T
+    | {
+        adresse?: T;
+        id?: T;
+      };
+  seo?:
+    | T
+    | {
+        titel?: T;
+        beschreibung?: T;
+        interneLinks?:
+          | T
+          | {
+              href?: T;
+              label?: T;
+              id?: T;
+            };
+        noindex?: T;
+        socialBild?:
+          | T
+          | {
+              motiv?: T;
+              format?: T;
+              bild?: T;
+              hinweis?: T;
+            };
+      };
+  slug?: T;
+  kennung?: T;
+  reihenfolge?: T;
+  imShop?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hersteller_select".
+ */
+export interface HerstellerSelect<T extends boolean = true> {
+  name?: T;
+  einsatz?: T;
+  angeboten?: T;
+  logo?:
+    | T
+    | {
+        bild?: T;
+        freigabe?: T;
+        freigabeNotiz?: T;
+      };
+  slug?: T;
+  kennung?: T;
+  reihenfolge?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

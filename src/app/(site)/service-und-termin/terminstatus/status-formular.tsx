@@ -103,7 +103,7 @@ export function TerminStatusFormular() {
             )}
           </Field>
 
-          <Field label="E-Mail-Adresse" required hint="Die Adresse, mit der Sie den Vorgang angelegt haben.">
+          <Field label="E-Mail-Adresse" required hint="Die Adresse, die Sie bei Ihrem Auftrag oder Ihrer Anfrage angegeben haben.">
             {({ id, describedBy }) => (
               <TextInput
                 id={id}
@@ -126,11 +126,11 @@ export function TerminStatusFormular() {
 
       {fehler && (
         <Alert tone="warning" title="Nichts gefunden" className="mt-6" role="alert">
-          {fehler}{' '}
+          {fehler} Wenn Sie die Nummer nicht mehr haben, helfen wir Ihnen über die{' '}
           <Link href="/service-und-termin/kontakt" className="font-semibold underline">
-            Nehmen Sie Kontakt auf
+            Kontaktseite
           </Link>
-          , wenn Sie Ihre Nummer nicht mehr haben.
+          {' '}weiter.
         </Alert>
       )}
 
@@ -140,7 +140,7 @@ export function TerminStatusFormular() {
             <div className="flex flex-wrap items-end justify-between gap-3 border-b border-border pb-4">
               <div>
                 <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
-                  Vorgang
+                  Vorgangsnummer
                 </p>
                 <p className="mt-1 break-words font-mono text-title-sm font-semibold tabular-nums text-foreground">
                   {ergebnis.reference}
@@ -156,14 +156,14 @@ export function TerminStatusFormular() {
 
             <dl className="mt-5 border-t border-border">
               <div className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4">
-                <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">Angelegt</dt>
+                <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">Eingegangen am</dt>
                 <dd className="font-mono text-body tabular-nums text-foreground sm:col-span-7 sm:text-right">
                   {formatDateTime(ergebnis.createdAt)}
                 </dd>
               </div>
               <div className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4">
                 <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">
-                  Zuletzt aktualisiert
+                  Zuletzt geändert
                 </dt>
                 <dd className="font-mono text-body tabular-nums text-foreground sm:col-span-7 sm:text-right">
                   {formatDateTime(ergebnis.updatedAt)}
@@ -246,12 +246,12 @@ export function TerminStatusFormular() {
           )}
 
           <Alert tone="info">
-            Passt etwas nicht oder möchten Sie Ihren Termin verschieben? Melden Sie sich mit Ihrer
-            Vorgangsnummer über die{' '}
+            Wenn etwas nicht stimmt oder Sie einen Termin verschieben möchten, schreiben Sie uns
+            über die{' '}
             <Link href="/service-und-termin/kontakt" className="font-semibold underline">
               Kontaktseite
             </Link>
-            .
+            . Bitte nennen Sie dabei Ihre Vorgangsnummer.
           </Alert>
         </div>
       )}

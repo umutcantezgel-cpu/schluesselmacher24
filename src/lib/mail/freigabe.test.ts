@@ -69,7 +69,7 @@ describe('Freigabe-Mail', () => {
       zahlungsLink: LINK,
       einsendeAnschrift: ANSCHRIFT,
     });
-    expect(mail.betreff).toBe('Ihre Anfrage ist freigegeben – SM24-A-2026-0011');
+    expect(mail.betreff).toBe('Ihre Anfrage ist freigegeben (SM24-A-2026-0011)');
     expect(mailArtZumStatus('freigegeben')).toBe('freigabe');
     for (const inhalt of [mail.text, mail.html]) {
       expect(inhalt).toContain('Anfertigung möglich');
@@ -119,7 +119,7 @@ describe('Freigabe-Mail', () => {
       status: 'nicht-moeglich',
       kontext,
     });
-    expect(mail.betreff).toBe('Ergebnis Ihrer Anfrage – SM24-A-2026-0011');
+    expect(mail.betreff).toBe('Ergebnis Ihrer Anfrage (SM24-A-2026-0011)');
     expect(mail.text).toContain('Leider können wir ihn nicht nach Ihrer Vorlage anfertigen.');
     expect(mail.text).toContain('Begründung');
     expect(mail.text).toContain('Das Profil ist geschützt.');
@@ -135,7 +135,7 @@ describe('Freigabe-Mail', () => {
       nachricht: 'Bitte senden Sie ein schärferes Foto der Spitze.',
       kontext,
     });
-    expect(mail.betreff).toBe('Rückfrage zu Ihrer Anfrage – SM24-A-2026-0011');
+    expect(mail.betreff).toBe('Rückfrage zu Ihrer Anfrage (SM24-A-2026-0011)');
     expect(mail.text).toContain('Unsere Rückfrage');
     expect(mail.text).toContain('Bitte senden Sie ein schärferes Foto der Spitze.');
     expect(mail.text).toContain('erst ein, wenn wir Sie ausdrücklich darum bitten');
@@ -144,7 +144,7 @@ describe('Freigabe-Mail', () => {
   it('lässt andere Vorgänge bei der bisherigen Statusmail', () => {
     const anfrage = fotoanfrage({ area: 'schliessanlagen', approval: undefined, payment: undefined });
     expect(statusMail({ vorgang: anfrage, status: 'wartet-auf-kunde', kontext }).betreff).toBe(
-      'Wir brauchen noch etwas von Ihnen – SM24-A-2026-0011',
+      'Wir brauchen noch etwas von Ihnen (SM24-A-2026-0011)',
     );
   });
 });

@@ -61,6 +61,8 @@ const STARTWERT_DATEIEN = {
   nachweise: 'nachweise.json',
   rubriken: 'rubriken.json',
   fahrzeugkatalog: 'fahrzeugkatalog.json',
+  kategorien: 'kategorien.json',
+  hersteller: 'hersteller.json',
 } as const;
 
 export type StartwertName = keyof typeof STARTWERT_DATEIEN;
@@ -470,6 +472,41 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
       // Datenmigration 20261025 „leitfaden_daten“.
       umbenannt: { koda: 'skoda' },
     });
+    // Shop-Kategorien und Hersteller (FA-SHOP-01) vor den Artikeln, damit deren Verweise aufgelöst werden.
+    // Übergeordnete Kategorien werden über die Kennung verknüpft; der Startbestand hat nur Hauptkategorien.
+    const vorhandeneKategorien = await kennungen('kategorien');
+    await eintraegeUebernehmen({
+      name: 'kategorien',
+      collection: 'kategorien',
+      inhalt: await quelle.read('kategorien'),
+      startwert: 'kategorien',
+      schluessel: (k) => k.id,
+      dbSchluessel: kennung,
+      zuDaten: (k) => m.kategorieZuPayload(k, vorhandeneKategorien),
+      abgleich: [
+        { pfad: 'name' },
+        { pfad: 'beschreibung' },
+        { pfad: 'hinweis' },
+        { pfad: 'ziel' },
+        { pfad: 'reihenfolge' },
+        ...SEO_ABGLEICH,
+      ],
+    });
+    await eintraegeUebernehmen({
+      name: 'hersteller',
+      collection: 'hersteller',
+      inhalt: await quelle.read('hersteller'),
+      startwert: 'hersteller',
+      schluessel: (h) => h.id,
+      dbSchluessel: kennung,
+      zuDaten: m.herstellerZuPayload,
+      abgleich: [{ pfad: 'einsatz' }],
+    });
+    const produktVerweise: m.ProduktVerweise = {
+      kategorien: await kennungen('kategorien'),
+      hersteller: await kennungen('hersteller'),
+    };
+
     await eintraegeUebernehmen({
       name: 'codelinien',
       collection: 'produkte',
@@ -479,7 +516,7 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
       startwert: 'codeLines',
       schluessel: (l) => l.id,
       dbSchluessel: kennung,
-      zuDaten: m.codeLineZuPayload,
+      zuDaten: (l) => m.codeLineZuPayload(l, produktVerweise),
       where: { typ: { equals: 'code_key' } },
       abgleich: [
         { pfad: 'name' },
@@ -504,7 +541,7 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
       startwert: 'standardArticles',
       schluessel: (a) => a.id,
       dbSchluessel: kennung,
-      zuDaten: m.standardartikelZuPayload,
+      zuDaten: (a) => m.standardartikelZuPayload(a, produktVerweise),
       where: { typ: { equals: 'standard' } },
       abgleich: [{ pfad: 'name' }, { pfad: 'beschreibung' }, { pfad: 'umfang' }, { pfad: 'lieferzeit' }, ...SEO_ABGLEICH],
     });

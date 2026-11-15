@@ -36,7 +36,11 @@ export const KENNUNG = {
   betrieb: `${siteUrl}/#localbusiness`,
 } as const;
 
-/** Leistungsgebiet einer Leistungsseite: bundesweit wie der Kontaktpunkt des Betriebs (areaServed DE). */
+/**
+ * Leistungsgebiet „Deutschland“ — nur für Leistungen, deren Seite das bundesweite Gebiet sichtbar nennt
+ * (etwa die Einsendung: „Sie schicken aus ganz Deutschland“). Werkstatt- und Vor-Ort-Leistungen tragen
+ * kein Gebiet: Vor-Ort-Einsätze gibt es nur nach Prüfung im Einsatzgebiet der Werkstatt (R4, R8).
+ */
 const GEBIET_DEUTSCHLAND = { '@type': 'Country' as const, name: 'Deutschland' };
 
 const WEEKDAYS = [
@@ -152,25 +156,17 @@ export function localBusinessSchema(settings: Settings): Graph {
  */
 export function productSchema(line: CodeLine, beschreibung: string = line.description): Graph {
   const productUrl = `${siteUrl}/schluessel-nach-code/${line.slug}`;
+  // Organisation und Website stehen im Root-Layout (localBusinessSchema); hier nur Verweise (keine doppelten Kennungen).
   return {
     '@context': 'https://schema.org',
     '@graph': [
-      {
-        '@type': 'Organization',
-        '@id': `${siteUrl}/#organization`,
-      },
-      {
-        '@type': 'WebSite',
-        '@id': `${siteUrl}/#website`,
-        publisher: { '@id': `${siteUrl}/#organization` },
-      },
       {
         '@type': 'WebPage',
         '@id': `${productUrl}/#webpage`,
         url: productUrl,
         name: line.name,
-        isPartOf: { '@id': `${siteUrl}/#website` },
-        about: { '@id': `${siteUrl}/#organization` },
+        isPartOf: { '@id': KENNUNG.website },
+        about: { '@id': KENNUNG.organisation },
       },
       {
         '@type': 'Product',
@@ -196,9 +192,22 @@ export function productSchema(line: CodeLine, beschreibung: string = line.descri
   } satisfies Graph;
 }
 
-/** Ein Ratgeberbeitrag. Organisation und Website stehen im Root-Layout; hier nur Verweise darauf. */
-export function articleSchema(guide: Guide): Graph {
+/** Brotkrumen als Teil eines Seiten-Graphen: Verweis an der Webseite und die Liste selbst. */
+function krumenTeil(pageUrl: string, crumbs?: Array<{ href: string; label: string }>) {
+  if (!crumbs?.length) return { verweis: {}, knoten: [] as Thing[] };
+  return {
+    verweis: { breadcrumb: { '@id': `${pageUrl}/#breadcrumb` } },
+    knoten: [{ '@type': 'BreadcrumbList', '@id': `${pageUrl}/#breadcrumb`, itemListElement: brotkrumen(crumbs) }] as Thing[],
+  };
+}
+
+/**
+ * Ein Ratgeberbeitrag mit seinen sichtbaren Brotkrumen in einem Graphen (eine Webseite je Seite).
+ * Organisation und Website stehen im Root-Layout; hier nur Verweise darauf.
+ */
+export function articleSchema(guide: Guide, crumbs?: Array<{ href: string; label: string }>): Graph {
   const articleUrl = `${siteUrl}/ratgeber/${guide.slug}`;
+  const krumen = krumenTeil(articleUrl, crumbs);
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -210,6 +219,7 @@ export function articleSchema(guide: Guide): Graph {
         inLanguage: 'de-DE',
         isPartOf: { '@id': KENNUNG.website },
         about: { '@id': KENNUNG.organisation },
+        ...krumen.verweis,
       },
       {
         '@type': 'Article',
@@ -220,26 +230,21 @@ export function articleSchema(guide: Guide): Graph {
         dateModified: guide.updatedAt,
         mainEntityOfPage: { '@id': `${articleUrl}/#webpage` },
         publisher: { '@id': KENNUNG.organisation },
-      }
+      },
+      ...krumen.knoten,
     ]
   } satisfies Graph;
 }
 
 /**
  * Häufige Fragen einer Seite. Nur mit Fragen und Antworten aufrufen, die auf der Seite sichtbar
- * und vollständig stehen (R8); sonst keine FAQPage.
+ * und vollständig stehen (R8); sonst keine FAQPage. Die Webseite (`…/#webpage`) definiert der
+ * Hauptgraph der Seite (etwa `productSchema`); hier steht nur der Verweis darauf.
  */
 export function faqSchema(items: Array<{ question: string; answer: string }>, pageUrl: string = siteUrl): Graph {
   return {
     '@context': 'https://schema.org',
     '@graph': [
-      {
-        '@type': 'WebPage',
-        '@id': `${pageUrl}/#webpage`,
-        url: pageUrl,
-        isPartOf: { '@id': KENNUNG.website },
-        about: { '@id': KENNUNG.organisation },
-      },
       {
         '@type': 'FAQPage',
         '@id': `${pageUrl}/#faq`,
@@ -254,9 +259,10 @@ export function faqSchema(items: Array<{ question: string; answer: string }>, pa
   } satisfies Graph;
 }
 
-/** Ein Einsatzgebiet: Leistung des Betriebs in einer Stadt. */
-export function serviceAreaSchema(city: CityPage): Graph {
+/** Ein Einsatzgebiet: Leistung des Betriebs in einer Stadt, mit den sichtbaren Brotkrumen in einem Graphen. */
+export function serviceAreaSchema(city: CityPage, crumbs?: Array<{ href: string; label: string }>): Graph {
   const pageUrl = `${siteUrl}/standorte/${city.slug}`;
+  const krumen = krumenTeil(pageUrl, crumbs);
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -269,6 +275,7 @@ export function serviceAreaSchema(city: CityPage): Graph {
         isPartOf: { '@id': KENNUNG.website },
         about: { '@id': KENNUNG.organisation },
         mainEntity: { '@id': `${pageUrl}/#service` },
+        ...krumen.verweis,
       },
       {
         '@type': 'Service',
@@ -281,24 +288,21 @@ export function serviceAreaSchema(city: CityPage): Graph {
           containedInPlace: { '@type': 'AdministrativeArea', name: city.state },
         },
         provider: { '@id': KENNUNG.betrieb },
-      }
+      },
+      ...krumen.knoten,
     ]
   } satisfies Graph;
 }
 
-/** Brotkrumenpfad — hilft bei der Einordnung tiefer Seiten. Nur zusammen mit sichtbaren Brotkrumen. */
+/**
+ * Brotkrumenpfad — hilft bei der Einordnung tiefer Seiten. Nur zusammen mit sichtbaren Brotkrumen.
+ * Nur die Liste: Die Webseite definiert der Hauptgraph der Seite (keine doppelte Kennung). Ratgeber
+ * und Ortsseiten übergeben ihre Brotkrumen direkt an `articleSchema` bzw. `serviceAreaSchema`.
+ */
 export function breadcrumbSchema(crumbs: Array<{ href: string; label: string }>, pageUrl: string = siteUrl): Graph {
   return {
     '@context': 'https://schema.org',
     '@graph': [
-      {
-        '@type': 'WebPage',
-        '@id': `${pageUrl}/#webpage`,
-        url: pageUrl,
-        isPartOf: { '@id': KENNUNG.website },
-        about: { '@id': KENNUNG.organisation },
-        breadcrumb: { '@id': `${pageUrl}/#breadcrumb` },
-      },
       {
         '@type': 'BreadcrumbList',
         '@id': `${pageUrl}/#breadcrumb`,
@@ -324,6 +328,11 @@ export interface LeistungsAngabe {
   name: string;
   /** Der sichtbare Kurztext (Einleitung im Seitenkopf); ohne sichtbaren Kurztext entfällt er. */
   description?: string;
+  /**
+   * Nur setzen, wenn die Seite das bundesweite Gebiet sichtbar nennt (Einsendung, Versand). Ohne Angabe
+   * trägt die Leistung kein `areaServed` — Werkstatt- und Vor-Ort-Leistungen behaupten kein Gebiet (R4, R8).
+   */
+  bundesweit?: boolean;
 }
 
 /**
@@ -368,7 +377,7 @@ export function pageGraphSchema(input: {
       name: input.service.name,
       ...(input.service.description ? { description: input.service.description } : {}),
       provider: { '@id': KENNUNG.betrieb },
-      areaServed: GEBIET_DEUTSCHLAND,
+      ...(input.service.bundesweit ? { areaServed: GEBIET_DEUTSCHLAND } : {}),
       url: pageUrl,
     });
   }

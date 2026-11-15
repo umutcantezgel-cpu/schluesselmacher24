@@ -89,32 +89,32 @@ export function statusMail({ vorgang, status, nachricht, kontext, zahlungsLink, 
   switch (status) {
     // Freigabe und Absage gibt es nur bei Fotoanfragen (oben); dies ist der Rückfall für andere Vorgänge.
     case 'freigegeben':
-      betreff = `Ihre Anfrage ist freigegeben – ${vorgang.reference}`;
+      betreff = `Ihre Anfrage ist freigegeben (${vorgang.reference})`;
       bausteine.push({
         art: 'absatz',
-        text: 'wir haben Ihre Anfrage geprüft: Die Anfertigung ist möglich. Wir melden uns mit dem nächsten Schritt.',
+        text: 'wir haben Ihre Anfrage geprüft. Die Anfertigung ist möglich. Sie müssen jetzt nichts tun, wir melden uns mit dem nächsten Schritt.',
       });
       break;
     case 'nicht-moeglich':
-      betreff = `Ergebnis Ihrer Anfrage – ${vorgang.reference}`;
+      betreff = `Ergebnis Ihrer Anfrage (${vorgang.reference})`;
       bausteine.push({
         art: 'absatz',
-        text: 'wir haben Ihre Anfrage geprüft. Leider können wir diesen Schlüssel nicht anfertigen.',
+        text: 'wir haben Ihre Anfrage geprüft. Leider können wir diesen Schlüssel nicht anfertigen. Sie müssen nichts weiter tun.',
       });
       break;
     case 'wartet-auf-kunde':
-      betreff = `Wir brauchen noch etwas von Ihnen – ${vorgang.reference}`;
+      betreff = `Wir brauchen noch etwas von Ihnen (${vorgang.reference})`;
       bausteine.push({
         art: 'absatz',
-        text: 'für Ihren Vorgang brauchen wir noch eine Angabe oder Unterlage von Ihnen. Antworten Sie einfach auf diese E-Mail.',
+        text: 'wir brauchen noch eine Angabe oder Unterlage von Ihnen. Bitte antworten Sie einfach auf diese E-Mail.',
       });
       break;
     case 'terminiert':
-      betreff = `Ihr Termin steht – ${vorgang.reference}`;
+      betreff = `Ihr Termin steht (${vorgang.reference})`;
       bausteine.push({ art: 'absatz', text: 'Ihr Termin ist bei uns verbindlich eingeplant.' });
       break;
     case 'versendet': {
-      betreff = `Ihre Sendung ist unterwegs – ${vorgang.reference}`;
+      betreff = `Ihre Sendung ist unterwegs (${vorgang.reference})`;
       // Foto-Anfrage und Einsendung (E6-OPUS-04, G-25): Es kommen Schlüssel zurück, keine Bestellung.
       const versandText = istFotoanfrage(vorgang)
         ? istEinsendung(vorgang)
@@ -125,11 +125,11 @@ export function statusMail({ vorgang, status, nachricht, kontext, zahlungsLink, 
       break;
     }
     case 'storniert':
-      betreff = `Ihr Vorgang wurde storniert – ${vorgang.reference}`;
+      betreff = `Storniert (${vorgang.reference})`;
       bausteine.push({
         art: 'absatz',
         text:
-          'Ihr Vorgang wurde storniert.'
+          'die Stornierung ist bei uns eingetragen. Sie müssen nichts mehr tun.'
           + (zahlungEingegangen(vorgang.payment?.status) ? ' Zu einer bereits geleisteten Zahlung melden wir uns gesondert.' : ''),
       });
       break;

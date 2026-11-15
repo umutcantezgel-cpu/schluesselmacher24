@@ -75,11 +75,11 @@ function pruefen(werte: Eingaben): Fehler {
 
   if (!werte.email.trim()) fehler.email = 'Bitte geben Sie Ihre E-Mail-Adresse an.';
   else if (!EMAIL_MUSTER.test(werte.email.trim()))
-    fehler.email = 'Diese E-Mail-Adresse hat kein gültiges Format.';
+    fehler.email = 'Bitte prüfen Sie die E-Mail-Adresse. Sie ist so nicht vollständig.';
 
   if (!werte.phone.trim()) fehler.phone = 'Bitte geben Sie eine Telefonnummer für Rückfragen an.';
   else if (!TELEFON_MUSTER.test(werte.phone.trim()))
-    fehler.phone = 'Bitte geben Sie die Telefonnummer nur mit Ziffern und Trennzeichen an.';
+    fehler.phone = 'Bitte schreiben Sie die Telefonnummer nur mit Ziffern, Leerzeichen und Zeichen wie + oder /.';
 
   if (!werte.street.trim()) fehler.street = 'Bitte geben Sie Straße und Hausnummer an.';
   if (!werte.city.trim()) fehler.city = 'Bitte geben Sie den Ort an.';
@@ -280,7 +280,7 @@ export function KasseFormular({
     }
 
     if (!shippingOptionId) {
-      setFormularFehler('Bitte wählen Sie zuerst im Warenkorb eine Versandart.');
+      setFormularFehler('Bitte wählen Sie im Warenkorb zuerst eine Versandart.');
       return;
     }
 
@@ -314,7 +314,7 @@ export function KasseFormular({
     if (!ergebnis.ok) {
       setSendet(false);
       setHinweise(ergebnis.notices);
-      setFormularFehler(ergebnis.error ?? 'Die Bestellung konnte nicht abgeschlossen werden.');
+      setFormularFehler(ergebnis.error ?? 'Die Bestellung ist nicht angekommen. Bitte versuchen Sie es noch einmal.');
       return;
     }
 
@@ -343,8 +343,8 @@ export function KasseFormular({
         <CardBody>
           <p className="text-body text-foreground-muted" role="status">
             {zurZahlung
-              ? 'Ihre Bestellung wurde aufgenommen. Sie werden zur sicheren Zahlungsseite weitergeleitet.'
-              : 'Ihre Bestellung wurde aufgenommen. Sie werden zur Bestätigung weitergeleitet.'}
+              ? 'Ihre Bestellung ist gespeichert. Gleich öffnet sich die sichere Zahlungsseite.'
+              : 'Ihre Bestellung ist gespeichert. Gleich sehen Sie Ihre Bestätigung.'}
           </p>
         </CardBody>
       </Card>
@@ -357,7 +357,7 @@ export function KasseFormular({
       <Card className="sm24-leerzustand min-h-96 sm:min-h-64 lg:col-span-8" data-leerzustand>
         <CardBody>
           <p className="text-body text-foreground-muted" role="status">
-            Bestelldaten werden geladen.
+            Ihr Warenkorb wird geladen.
           </p>
         </CardBody>
       </Card>
@@ -374,7 +374,7 @@ export function KasseFormular({
           <div className="min-w-0 max-w-xl">
             <h2 className="text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
             <p className="mt-2 text-small text-foreground-muted">
-              Ohne Positionen lässt sich keine Bestellung abschließen.
+              Legen Sie zuerst etwas in den Warenkorb. Hier finden Sie unsere Angebote ohne Termin.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/schluessel-nach-code">Schlüssel nach Code</ButtonLink>
@@ -393,9 +393,9 @@ export function KasseFormular({
       <SchutzFelder schutz={schutz} />
       <div className="space-y-10 lg:col-span-7">
         {!paymentConfigured && (
-          <Alert tone="warning" title="Zahlung derzeit nicht online möglich">
-            Es ist noch kein Zahlungsdienstleister angebunden. Ihre Bestellung wird mit dem
-            Zahlungsstatus „offen“ gespeichert; wir melden uns mit den Zahlungsinformationen.
+          <Alert tone="warning" title="Online bezahlen geht zurzeit nicht">
+            Sie können trotzdem bestellen. Die Zahlung steht dann auf „offen“. Wir melden uns
+            bei Ihnen mit den Angaben zur Zahlung.
           </Alert>
         )}
 
@@ -506,8 +506,8 @@ export function KasseFormular({
                 title: 'Warum eine Telefonnummer?',
                 body:
                   'Bei Schlüsseln nach Code und bei Zylindern kommt es auf Code und Maße an. '
-                  + 'Wenn eine Angabe unklar ist, klären wir das vor der Fertigung lieber kurz '
-                  + 'telefonisch, statt eine falsche Anfertigung zu liefern.',
+                  + 'Ist eine Angabe unklar, rufen wir Sie kurz an, bevor wir fertigen. '
+                  + 'So vermeiden wir eine falsche Anfertigung.',
               }}
             >
               {({ id, describedBy, invalid }) => (
@@ -734,8 +734,8 @@ export function KasseFormular({
         </Button>
 
         <p className="text-small leading-relaxed text-foreground-muted">
-          Beim Absenden wird der Preis auf unserem Server noch einmal berechnet. Maßgeblich sind
-          die dort hinterlegten Preise. Anschließend erhalten Sie eine Vorgangsnummer.
+          Beim Absenden rechnen wir den Preis noch einmal nach. Es gelten die Preise in unserem
+          System. Danach bekommen Sie eine Vorgangsnummer.
         </p>
 
         <p className="text-small leading-relaxed text-foreground-muted">

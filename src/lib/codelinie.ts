@@ -66,6 +66,11 @@ export function codelinieIndexierbar(line: Pick<CodeLine, 'example' | 'seo'>): b
   return !line.example && !line.seo.noindex;
 }
 
+/* ---------- Verfügbarkeit (FA-22-10) ------------------------------------- */
+
+// Gemeinsame Regel für Seite, Kasse und Backend; ohne Abhängigkeiten in src/lib/data/shop.ts.
+export { VERFUEGBARKEITEN, VERFUEGBARKEIT_LABEL, istBestellbar, verfuegbarkeitVon } from '@/lib/data/shop';
+
 /* ---------- Kategorien und Hersteller ------------------------------------ */
 
 export interface CodeFamilie {

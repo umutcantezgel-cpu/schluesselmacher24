@@ -15,7 +15,9 @@ import { AutoschluesselLeistungen } from './payload/collections/AutoschluesselLe
 import { Benutzer } from './payload/collections/Benutzer';
 import { Einsatzgebiete } from './payload/collections/Einsatzgebiete';
 import { Fahrzeugmarken } from './payload/collections/Fahrzeugmarken';
+import { Hersteller } from './payload/collections/Hersteller';
 import { InterneDateien } from './payload/collections/InterneDateien';
+import { Kategorien } from './payload/collections/Kategorien';
 import { Kundendateien } from './payload/collections/Kundendateien';
 import { Leistungsseiten } from './payload/collections/Leistungsseiten';
 import { Medien } from './payload/collections/Medien';
@@ -77,6 +79,8 @@ export default buildConfig({
     Widerrufe,
     // Shop
     Produkte,
+    Kategorien,
+    Hersteller,
     // Autoschlüssel
     Fahrzeugmarken,
     Fahrzeugreihen,

@@ -120,7 +120,8 @@ export default async function SchluesselEinschickenPage() {
         data={pageGraphSchema({
           path: `/${ROUTE}`,
           name: page?.headline ?? 'Schlüssel einschicken',
-          service: { name: page?.headline ?? 'Schlüssel einschicken', description: kurztext },
+          // Bundesweit nur hier: Die Seite nennt es sichtbar („Sie schicken aus ganz Deutschland“).
+          service: { name: page?.headline ?? 'Schlüssel einschicken', description: kurztext, bundesweit: true },
           description: page?.seo.description,
           crumbs: CRUMBS,
           faq,

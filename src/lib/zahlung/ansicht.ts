@@ -72,7 +72,7 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
     return {
       ton: 'info',
       titel: 'Zahlung noch offen',
-      text: 'Ihr Vorgang ist gespeichert. Wir melden uns mit den Zahlungsinformationen zu dieser Vorgangsnummer.',
+      text: 'Ihre Angaben sind gespeichert. Sie müssen jetzt nichts tun. Wir melden uns bei Ihnen mit den Angaben zur Zahlung.',
     };
   }
 
@@ -90,7 +90,7 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
     }
     return termin
       ? { ton: 'danger', titel: 'Termin nicht mehr reserviert', text: 'Dieser Termin ist storniert. Gern können Sie einen neuen Termin buchen.', neuBuchen: true }
-      : { ton: 'danger', titel: 'Vorgang storniert', text: 'Dieser Vorgang ist storniert. Eine Zahlung ist nicht mehr nötig.' };
+      : { ton: 'danger', titel: 'Storniert', text: 'Eine Zahlung ist nicht mehr nötig. Sie müssen nichts mehr tun.' };
   }
 
   if (zahlung.status === 'fehlgeschlagen') {
@@ -106,7 +106,7 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
     }
     return termin
       ? { ton: 'danger', titel: 'Anzahlung nicht abgeschlossen', text: 'Die Anzahlung ist nicht eingegangen. Bitte buchen Sie den Termin neu.', neuBuchen: true }
-      : { ton: 'danger', titel: 'Zahlung nicht abgeschlossen', text: 'Die Zahlung wurde nicht abgeschlossen. Sie können sie erneut starten.', knopf: 'erneut' };
+      : { ton: 'danger', titel: 'Zahlung nicht abgeschlossen', text: 'Die Zahlung ist nicht abgeschlossen. Sie können es mit dem Knopf unten noch einmal versuchen.', knopf: 'erneut' };
   }
 
   // Zahlung offen.
@@ -115,8 +115,8 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
       ton: 'info',
       titel: 'Zahlung wird bestätigt',
       text:
-        'Sie kommen von der Zahlungsseite zurück. Die Bestätigung kann einige Augenblicke dauern — bei Lastschrift '
-        + 'auch einige Tage. Laden Sie die Seite später neu; wir informieren Sie zusätzlich per E-Mail.',
+        'Sie kommen von der Zahlungsseite zurück. Die Bestätigung kann einige Augenblicke dauern, bei Lastschrift '
+        + 'auch einige Tage. Laden Sie die Seite später neu. Wir schreiben Ihnen außerdem eine E-Mail.',
     };
   }
 
@@ -161,7 +161,7 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
     return { ton: 'warning', titel: 'Zahlung abgebrochen', text: `${gespeichert} Sie können die Zahlung jederzeit fortsetzen.`, knopf: 'jetzt' };
   }
   if (abgelaufen) {
-    return { ton: 'warning', titel: 'Zahlungslink abgelaufen', text: `${gespeichert} Starten Sie die Zahlung bitte erneut.`, knopf: 'erneut' };
+    return { ton: 'warning', titel: 'Zahlungslink abgelaufen', text: `${gespeichert} Bitte starten Sie die Zahlung noch einmal.`, knopf: 'erneut' };
   }
   if (!zahlung.checkoutSessionId && partnerAnfrage) {
     return {
@@ -175,20 +175,20 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
     return foto
       ? {
           ton: 'info',
-          titel: 'Freigegeben – Zahlung offen',
+          titel: 'Freigegeben, Zahlung offen',
           text:
-            'Wir können Ihren Schlüssel anfertigen. Mit der Zahlung erteilen Sie den Auftrag; erst danach fertigen wir.',
+            'Wir können Ihren Schlüssel anfertigen. Mit der Zahlung erteilen Sie den Auftrag. Erst danach fertigen wir.',
           knopf: 'jetzt',
         }
-      : { ton: 'warning', titel: 'Zahlung noch offen', text: 'Die Online-Zahlung wurde noch nicht gestartet.', knopf: 'jetzt' };
+      : { ton: 'warning', titel: 'Zahlung noch offen', text: 'Sie haben noch nicht bezahlt. Bitte starten Sie die Zahlung mit dem Knopf unten.', knopf: 'jetzt' };
   }
   const bis = zahlung.expiresAt ? ` Der Zahlungslink gilt bis ${formatDateTime(zahlung.expiresAt)} Uhr.` : '';
   return {
     ton: 'info',
     titel: 'Zahlung noch offen',
     text: foto
-      ? `Mit der Zahlung erteilen Sie den Auftrag; gefertigt wird erst nach Zahlungseingang.${bis}`
-      : `Gefertigt wird erst nach Zahlungseingang.${bis}`,
+      ? `Mit der Zahlung erteilen Sie den Auftrag. Wir fertigen erst, wenn Ihre Zahlung da ist.${bis}`
+      : `Wir fertigen erst, wenn Ihre Zahlung da ist.${bis}`,
     knopf: 'jetzt',
   };
 }

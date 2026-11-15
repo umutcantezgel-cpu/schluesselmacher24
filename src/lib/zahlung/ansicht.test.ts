@@ -93,7 +93,7 @@ describe('zahlungsAnsicht: Fotoanfrage', () => {
     );
 
   it('bietet nach der Freigabe „Jetzt bezahlen“ und sagt, dass erst die Zahlung den Auftrag auslöst', () => {
-    expect(zahlungsAnsicht(foto(), UMFELD)).toMatchObject({ titel: 'Freigegeben – Zahlung offen', knopf: 'jetzt' });
+    expect(zahlungsAnsicht(foto(), UMFELD)).toMatchObject({ titel: 'Freigegeben, Zahlung offen', knopf: 'jetzt' });
     expect(zahlungsAnsicht(foto({}, { checkoutSessionId: 'cs_1', expiresAt: '2026-10-25T10:50:00.000Z' }), UMFELD)?.text).toContain(
       'Mit der Zahlung erteilen Sie den Auftrag',
     );

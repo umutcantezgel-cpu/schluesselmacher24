@@ -6,6 +6,7 @@ import { UPLOAD_KATEGORIEN } from '@/lib/server/datei-pruefung';
 
 import { getCollection, getSettings } from '@/lib/data';
 import { codePasst } from '@/lib/code-pattern';
+import { verfuegbarkeitVon } from '@/lib/data/shop';
 import { validateCylinderDraft } from '@/lib/cylinder-rules';
 import { zylinderDetails } from '@/lib/cylinder-summary';
 import { formatCents } from '@/lib/format';
@@ -20,7 +21,7 @@ import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/se
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import { nachweisPruefen } from '@/lib/server/unterlagen-pflicht';
 import { contactSchema } from '@/lib/server/record-schema';
-import type { Cart, CartItem, ContactDetails, OrderLine, OrderTotals, RecordConsents, SummarySection } from '@/lib/types';
+import type { Cart, CartItem, ContactDetails, OrderLine, OrderTotals, RecordConsents, SummarySection, Verfuegbarkeit } from '@/lib/types';
 import { codeVerlangtKarte } from '@/lib/wege/nachweis';
 
 export interface CheckoutInput {
@@ -142,6 +143,21 @@ function fail(error: string): CheckoutResult {
 }
 
 /**
+ * Verfügbarkeit (FA-22-10): Nur lieferbare Artikel werden bestellt. Gilt auch für Positionen,
+ * die schon im Warenkorb lagen, bevor der Betrieb die Verfügbarkeit geändert hat.
+ */
+function nichtBestellbar(artikel: { name: string; availability?: Verfuegbarkeit }): string | null {
+  switch (verfuegbarkeitVon(artikel)) {
+    case 'nicht-lieferbar':
+      return `„${artikel.name}“ ist derzeit nicht lieferbar. Bitte entfernen Sie den Artikel aus dem Warenkorb.`;
+    case 'auf-anfrage':
+      return `„${artikel.name}“ gibt es nur auf Anfrage. Bitte entfernen Sie den Artikel aus dem Warenkorb und fragen Sie ihn bei uns an.`;
+    default:
+      return null;
+  }
+}
+
+/**
  * Kennung der Position für eine Zylinder-Zusammenstellung. Sie ist kein
  * Artikel, sondern entsteht im Konfigurator aus dem Zylinderkatalog.
  */
@@ -202,6 +218,8 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
       if (!line) {
         return fail('Ein Artikel im Warenkorb ist nicht mehr verfügbar. Bitte prüfen Sie Ihren Warenkorb.');
       }
+      const gesperrt = nichtBestellbar(line);
+      if (gesperrt) return fail(gesperrt);
       if (!codePasst(line.codePattern, item.code)) {
         return fail(`Der Code „${item.code}“ passt nicht zum erwarteten Format (${line.codeFormatLabel}).`);
       }
@@ -236,6 +254,8 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
       if (article.example) {
         return fail(`„${article.name}“ ist ein Beispielartikel und kann nicht bestellt werden.`);
       }
+      const gesperrt = nichtBestellbar(article);
+      if (gesperrt) return fail(gesperrt);
       if (item.qty > article.maxQty) {
         return fail(`Von „${article.name}“ sind höchstens ${article.maxQty} Stück je Bestellung möglich.`);
       }

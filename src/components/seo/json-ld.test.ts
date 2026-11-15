@@ -1,10 +1,10 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { echteEinstellungen, einstellungenMitWerkstatt, platzhalterEinstellungen } from '@/lib/rechtliches/test-hilfen';
 
-import { KENNUNG, articleSchema, breadcrumbSchema, localBusinessSchema, pageGraphSchema, serviceAreaSchema } from './json-ld';
+import { KENNUNG, articleSchema, breadcrumbSchema, faqSchema, localBusinessSchema, pageGraphSchema, productSchema, serviceAreaSchema } from './json-ld';
 
 type Knoten = Record<string, unknown> & { '@type': string };
 
@@ -96,9 +96,25 @@ describe('Betrieb als feste Kennung (FA-25-08)', () => {
       name: 'Schließanlagen',
       description: 'Wir planen Ihre Schließanlage.',
       provider: { '@id': KENNUNG.betrieb },
-      areaServed: { '@type': 'Country', name: 'Deutschland' },
     });
     expect(Object.keys(service.provider as object)).toEqual(['@id']);
+  });
+
+  it('ein Leistungsgebiet steht nur, wo die Seite es sichtbar nennt (R4, R8)', () => {
+    const service = (bundesweit?: boolean) =>
+      graph(pageGraphSchema({ path: '/x', name: 'X', service: { name: 'X', ...(bundesweit ? { bundesweit } : {}) } })).find((k) => k['@type'] === 'Service')!;
+    expect(service()).not.toHaveProperty('areaServed');
+    expect(service(true).areaServed).toEqual({ '@type': 'Country', name: 'Deutschland' });
+  });
+
+  it('Fahrzeugöffnung und andere Werkstatt- und Vor-Ort-Leistungen tragen kein Gebiet Deutschland; nur die Einsendung', () => {
+    const seiten = path.join(__dirname, '../../app/(site)');
+    const mitGebiet = (readdirSync(seiten, { recursive: true, encoding: 'utf8' }) as string[])
+      .filter((datei) => datei.endsWith('page.tsx') && readFileSync(path.join(seiten, datei), 'utf8').includes('bundesweit: true'))
+      .map((datei) => datei.split(path.sep).join('/'));
+    expect(mitGebiet).toEqual(['schluessel-einschicken/page.tsx']);
+    expect(readFileSync(path.join(seiten, 'autoschluessel/fahrzeugoeffnung/page.tsx'), 'utf8')).toContain('LeistungsArtikel');
+    expect(readFileSync(path.join(__dirname, 'seiten-daten.tsx'), 'utf8')).not.toContain('bundesweit');
   });
 
   it('auf einer Seite kommt jede Kennung nur einmal als Definition vor (Layout + Seite)', () => {
@@ -115,6 +131,38 @@ describe('Betrieb als feste Kennung (FA-25-08)', () => {
     ];
     const kennungen = knotenDerSeite.map((k) => k['@id']);
     expect(new Set(kennungen).size).toBe(kennungen.length);
+  });
+
+  const KRUMEN = [{ href: '/ratgeber', label: 'Ratgeber' }, { href: '/ratgeber/s', label: 'T' }];
+  const definitionen = (...graphen: Knoten[][]) => graphen.flat().map((k) => k['@id']);
+  const einmalig = (kennungen: unknown[]) => expect(kennungen.filter((k, i) => kennungen.indexOf(k) !== i)).toEqual([]);
+
+  it('Ratgeber: Artikel und Brotkrumen in einem Graphen, eine Webseite, keine doppelte Kennung', () => {
+    const seite = graph(articleSchema({ slug: 's', title: 'T', excerpt: 'E', updatedAt: '2026-11-01' } as Parameters<typeof articleSchema>[0], KRUMEN));
+    expect(seite.filter((k) => k['@type'] === 'WebPage')).toHaveLength(1);
+    expect(seite.find((k) => k['@type'] === 'WebPage')!.breadcrumb).toEqual({ '@id': seite.find((k) => k['@type'] === 'BreadcrumbList')!['@id'] });
+    einmalig(definitionen(graph(localBusinessSchema(echteEinstellungen())), seite));
+  });
+
+  it('Ortsseite: Einsatzgebiet und Brotkrumen in einem Graphen, eine Webseite, keine doppelte Kennung', () => {
+    const seite = graph(serviceAreaSchema({ slug: 'w', city: 'Wetzlar', state: 'Hessen' } as Parameters<typeof serviceAreaSchema>[0], [{ href: '/standorte', label: 'Standorte' }, { href: '/standorte/w', label: 'Wetzlar' }]));
+    expect(seite.filter((k) => k['@type'] === 'WebPage')).toHaveLength(1);
+    expect(seite.map((k) => k['@type'])).toContain('BreadcrumbList');
+    einmalig(definitionen(graph(localBusinessSchema(echteEinstellungen())), seite));
+  });
+
+  it('Codelinie: Produkt, Brotkrumen und Fragen ohne zweite Organisation, Website oder Webseite', () => {
+    const linie = { slug: 'ab-12', name: 'AB 12', description: 'D', application: 'Haus', manufacturer: '[Platzhalter]', priceCents: 1290, active: true } as Parameters<typeof productSchema>[0];
+    const url = `${KENNUNG.website.replace('/#website', '')}/schluessel-nach-code/ab-12`;
+    const graphen = [
+      graph(localBusinessSchema(echteEinstellungen())),
+      graph(productSchema(linie)),
+      graph(breadcrumbSchema([{ href: '/schluessel-nach-code', label: 'Shop' }], url)),
+      graph(faqSchema([{ question: 'F?', answer: 'A.' }], url)),
+    ];
+    einmalig(definitionen(...graphen));
+    expect(graphen.flat().filter((k) => k['@type'] === 'WebPage')).toHaveLength(1);
+    expect(graphen.flat().filter((k) => k['@type'] === 'Organization' || k['@type'] === 'WebSite')).toHaveLength(2);
   });
 
   it('ohne sichtbaren Kurztext hat die Leistung keine Beschreibung', () => {
@@ -148,5 +196,12 @@ describe('Einbindung', () => {
   it('das Root-Layout bindet den Betrieb auf jeder Seite ein, die Startseite nicht noch einmal', () => {
     expect(quelle('layout.tsx')).toContain('<JsonLd data={localBusinessSchema(settings)} />');
     expect(quelle('page.tsx')).not.toContain('localBusinessSchema');
+  });
+
+  it('Ratgeber und Ortsseite bauen einen Graphen, ohne zweite Webseite aus breadcrumbSchema', () => {
+    for (const datei of ['ratgeber/[slug]/page.tsx', 'standorte/[city]/page.tsx']) {
+      expect(quelle(datei)).not.toContain('breadcrumbSchema');
+      expect(quelle(datei)).toMatch(/(articleSchema|serviceAreaSchema)\([^)]*, crumbs\)/);
+    }
   });
 });

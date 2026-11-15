@@ -58,16 +58,16 @@ export function kundeErinnerung({ vorgang, kontext }: ErinnerungDaten): MailInha
   bausteine.push(
     {
       art: 'hinweis',
-      titel: 'Termin verhindert?',
-      text: 'Bitte melden Sie sich rechtzeitig bei uns – telefonisch oder per Antwort auf diese E-Mail.',
+      titel: 'Wenn Sie nicht kommen können',
+      text: 'Bitte sagen Sie uns rechtzeitig Bescheid. Rufen Sie an oder antworten Sie auf diese E-Mail.',
     },
-    { art: 'absatz', text: 'Im Anhang finden Sie den Termin als Kalendereintrag (.ics).' },
+    { art: 'absatz', text: 'Im Anhang finden Sie den Termin als Datei für Ihren Kalender.' },
     { art: 'knopf', href: statusLink(kontext.site), label: 'Stand abrufen' },
     ANTWORT_HINWEIS,
   );
 
   return baueMail({
-    betreff: `Erinnerung an Ihren Termin am ${formatDateShort(termin.date)} um ${termin.time} Uhr – ${vorgang.reference}`,
+    betreff: `Erinnerung an Ihren Termin am ${formatDateShort(termin.date)} um ${termin.time} Uhr (${vorgang.reference})`,
     vorschau: `Ihr Termin am ${formatDate(termin.date)} um ${termin.time} Uhr.`,
     anrede: anrede(vorgang.contact),
     bausteine,

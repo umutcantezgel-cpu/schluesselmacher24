@@ -8,10 +8,9 @@ import { ablaufAusText } from '@/lib/visual/motiv';
 import { ButtonLink } from '@/components/ui/button';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
-import { JsonLd, articleSchema, breadcrumbSchema } from '@/components/seo/json-ld';
+import { JsonLd, articleSchema } from '@/components/seo/json-ld';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { Profillinie } from '@/components/visual/profillinie';
-import { getSiteUrl } from '@/lib/site-url';
 
 export async function generateStaticParams() {
   const guides = await getGuides();
@@ -117,8 +116,7 @@ export default async function GuidePage(props: { params: Promise<{ slug: string 
 
   return (
     <>
-      <JsonLd data={articleSchema(guide)} />
-      <JsonLd data={breadcrumbSchema(crumbs, `${getSiteUrl()}/ratgeber/${guide.slug}`)} />
+      <JsonLd data={articleSchema(guide, crumbs)} />
 
       <PageHeader
         eyebrow={area?.label ?? 'Ratgeber'}

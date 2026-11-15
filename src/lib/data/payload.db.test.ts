@@ -21,6 +21,8 @@ const basis = {
   codeFormat: '4 Ziffern',
   codeMuster: '^[0-9]{4}$',
   codeBeispiel: '1234',
+  // Pflicht bei echten Codeprodukten (FA-SHOP-01).
+  system: 'Testsystem',
 };
 
 beforeAll(async () => {

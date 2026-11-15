@@ -187,8 +187,8 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
   if (mail) hinweise.push(mail);
   if (record.uploads.length > 0 && !storageStatus().configured) {
     hinweise.push(
-      'Ihre Dateien konnten noch nicht dauerhaft gespeichert werden. Wir melden uns, '
-      + 'falls wir sie erneut benötigen.',
+      'Ihre Dateien sind noch nicht dauerhaft gespeichert. '
+      + 'Brauchen wir sie noch einmal, melden wir uns bei Ihnen.',
     );
   }
 
@@ -259,7 +259,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
         lead={
           freigegeben
             ? 'Wir können Ihren Schlüssel nach Ihrer Vorlage anfertigen. Mit der Zahlung erteilen Sie den Auftrag.'
-            : 'Bewahren Sie die Vorgangsnummer auf: Damit finden Sie den Stand jederzeit wieder.'
+            : 'Bitte heben Sie die Vorgangsnummer auf. Mit ihr und Ihrer E-Mail-Adresse sehen Sie den Stand jederzeit nach.'
         }
         crumbs={[{ href: `/bestellung/${record.id}`, label: `${kindLabel} ${record.reference}` }]}
       />
@@ -276,8 +276,8 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                 {record.reference}
               </p>
               <p className="mt-3 text-small leading-relaxed text-foreground-muted">
-                Ein Klick auf die Nummer markiert sie vollständig — danach können Sie sie
-                kopieren. Eingegangen am {formatDateTime(record.createdAt)}.
+                Ein Klick auf die Nummer markiert sie ganz. Dann können Sie sie kopieren.
+                Eingegangen am {formatDateTime(record.createdAt)}.
               </p>
 
               <div className="mt-4 flex flex-wrap gap-2">
@@ -328,7 +328,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
               <section className="border-t border-border pt-8">
                 <h2 className="text-title-sm font-semibold text-foreground">Begleitschein</h2>
                 <p className="mt-2 max-w-measure text-small leading-relaxed text-foreground-muted">
-                  Ausdrucken und mit dem Schlüssel in einen gepolsterten Umschlag legen. Die Anschrift für den Umschlag steht darauf.
+                  Drucken Sie den Begleitschein aus. Legen Sie ihn mit dem Schlüssel in einen gepolsterten Umschlag. Die Anschrift für den Umschlag steht darauf.
                 </p>
                 <a
                   href={begleitscheinHref}
@@ -429,7 +429,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                 </p>
               ) : stand.erledigt ? (
                 <p className="mt-4 text-small leading-relaxed text-foreground-muted">
-                  Von Ihrer Seite ist für diesen Vorgang nichts mehr zu tun. Bei Fragen erreichen Sie uns über die Kontaktseite.
+                  Sie müssen nichts mehr tun. Bei Fragen erreichen Sie uns über die Kontaktseite.
                 </p>
               ) : (
                 <ol className="mt-6 divide-y divide-border border-y border-border">
@@ -444,20 +444,20 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
 
               <div className="mt-6">
                 <p className="text-small leading-relaxed text-foreground-muted">
-                  Den aktuellen Stand rufen Sie jederzeit mit Ihrer Vorgangsnummer ab.
+                  Den Stand sehen Sie jederzeit mit Ihrer Vorgangsnummer und Ihrer E-Mail-Adresse nach.
                 </p>
                 <Link
                   href="/service-und-termin/terminstatus"
                   className="mt-3 inline-flex min-h-touch items-center gap-1.5 text-small font-semibold text-primary hover:underline"
                 >
-                  Stand des Vorgangs abrufen
+                  Stand abrufen
                   <GlyphPfeilRechts size={18} />
                 </Link>
               </div>
             </section>
 
             <section className="border-t border-border pt-8">
-              <h2 className="text-title-sm font-semibold text-foreground">Fragen zu Ihrem Vorgang?</h2>
+              <h2 className="text-title-sm font-semibold text-foreground">Fragen und Hilfe</h2>
               <ul className="mt-4 divide-y divide-border border-y border-border">
                 {[
                   { href: '/service-und-termin/kontakt', label: 'Kontakt aufnehmen' },

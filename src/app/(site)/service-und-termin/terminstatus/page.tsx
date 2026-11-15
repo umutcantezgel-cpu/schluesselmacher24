@@ -27,7 +27,7 @@ export default function TerminStatusPage() {
         bereich="service-und-termin"
         art="arbeit"
         title="Stand Ihres Vorgangs"
-        lead="Geben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben."
+        lead="Geben Sie Ihre Vorgangsnummer und Ihre E-Mail-Adresse ein. Dann sehen Sie, wie weit Ihr Auftrag oder Ihre Anfrage ist."
         crumbs={crumbs}
       />
 

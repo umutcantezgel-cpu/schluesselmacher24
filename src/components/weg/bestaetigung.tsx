@@ -95,8 +95,8 @@ export function WegBestaetigung({
         <p className="mt-2 text-small leading-relaxed text-foreground-muted">
           {nummerHinweis ??
             (statusAbrufbar
-              ? 'Bitte bewahren Sie diese Nummer auf. Mit ihr und Ihrer E-Mail-Adresse rufen Sie jederzeit den Stand Ihres Vorgangs ab.'
-              : 'Bitte bewahren Sie diese Nummer auf und nennen Sie sie, wenn Sie sich bei uns melden.')}
+              ? 'Bitte heben Sie diese Nummer auf. Mit ihr und Ihrer E-Mail-Adresse sehen Sie jederzeit den Stand nach.'
+              : 'Bitte heben Sie diese Nummer auf und nennen Sie sie, wenn Sie sich bei uns melden.')}
         </p>
       </div>
 
@@ -143,7 +143,7 @@ export function WegBestaetigung({
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
         {statusAbrufbar && (
           <ButtonLink href={STATUS_HREF} pfeil className="w-full justify-between sm:w-auto">
-            Stand des Vorgangs abrufen
+            Stand abrufen
           </ButtonLink>
         )}
         <ButtonLink href={zurueck.href} variant={statusAbrufbar ? 'outline' : 'primary'}>

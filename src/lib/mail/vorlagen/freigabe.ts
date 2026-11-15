@@ -60,10 +60,10 @@ function einsendeBausteine(vorgang: BusinessRecord, mitPreis: boolean, anschrift
     {
       art: 'absatz',
       text: [
-        `– Legen Sie einen Zettel mit Ihrer Vorgangsnummer ${vorgang.reference}, Ihrem Namen und Ihrer Telefonnummer bei.`,
-        '– Senden Sie nur den betreffenden Schlüssel, ohne Schlüsselring und Anhänger.',
-        '– Falls vorhanden: eine Kopie der Sicherungskarte oder des Berechtigungsnachweises.',
-        '– Wählen Sie einen versicherten oder mindestens nachverfolgbaren Versand.',
+        `• Legen Sie einen Zettel mit Ihrer Vorgangsnummer ${vorgang.reference}, Ihrem Namen und Ihrer Telefonnummer bei.`,
+        '• Senden Sie nur diesen Schlüssel, ohne Schlüsselring und Anhänger.',
+        '• Legen Sie, falls vorhanden, eine Kopie der Sicherungskarte oder des Berechtigungsnachweises bei.',
+        '• Versenden Sie versichert oder mindestens mit Sendungsverfolgung.',
       ].join('\n'),
     },
   ];
@@ -90,8 +90,8 @@ function freigegeben({ vorgang, nachricht, kontext, zahlungsLink, einsendeAnschr
     {
       art: 'absatz',
       text: einsendung
-        ? 'wir haben Ihren eingeschickten Schlüssel geprüft: Wir können die Kopien anfertigen.'
-        : 'wir haben Ihre Fotos geprüft: Wir können Ihren Schlüssel nach Ihrer Vorlage anfertigen.',
+        ? 'wir haben Ihren eingeschickten Schlüssel geprüft. Wir können die Kopien anfertigen.'
+        : 'wir haben Ihre Fotos geprüft. Wir können Ihren Schlüssel nach Ihrer Vorlage anfertigen.',
     },
     nummerBaustein(vorgang),
     { art: 'felder', zeilen: felder },
@@ -116,9 +116,9 @@ function freigegeben({ vorgang, nachricht, kontext, zahlungsLink, einsendeAnschr
         {
           art: 'absatz',
           text:
-            'Über diesen persönlichen Link sehen Sie die Freigabe und bezahlen über unseren Zahlungsdienstleister. '
-            + 'Links aus früheren E-Mails zu diesem Vorgang gelten nicht mehr. Bitte nutzen Sie diesen. '
-            + 'Bitte geben Sie den Link nicht weiter.',
+            'Über diesen persönlichen Link sehen Sie die Freigabe und bezahlen bei unserem Zahlungsdienstleister. '
+            + 'Links aus früheren E-Mails gelten nicht mehr. Bitte nutzen Sie nur diesen Link '
+            + 'und geben Sie ihn nicht weiter.',
         },
       );
     } else {
@@ -135,8 +135,8 @@ function freigegeben({ vorgang, nachricht, kontext, zahlungsLink, einsendeAnschr
     bausteine.push({
       art: 'absatz',
       text:
-        'Den Preis nennen wir Ihnen in einer gesonderten Nachricht. Diese Freigabe ist noch keine Fertigungszusage: '
-        + 'Gefertigt wird erst, wenn Sie den Auftrag danach erteilt haben.',
+        'Den Preis nennen wir Ihnen in einer gesonderten Nachricht. Diese Freigabe ist noch keine Fertigungszusage. '
+        + 'Wir fertigen erst, wenn Sie danach den Auftrag erteilt haben.',
     });
   }
 
@@ -145,7 +145,7 @@ function freigegeben({ vorgang, nachricht, kontext, zahlungsLink, einsendeAnschr
   bausteine.push(ANTWORT_HINWEIS);
 
   return baueMail({
-    betreff: `${einsendung ? 'Ihre Einsendung' : 'Ihre Anfrage'} ist freigegeben – ${vorgang.reference}`,
+    betreff: `${einsendung ? 'Ihre Einsendung' : 'Ihre Anfrage'} ist freigegeben (${vorgang.reference})`,
     vorschau: preis
       ? `Anfertigung möglich, Preis ${formatCents(preis)}. Mit der Zahlung erteilen Sie den Auftrag.`
       : 'Anfertigung möglich. Den Preis nennen wir Ihnen gesondert.',
@@ -172,8 +172,8 @@ function nichtMoeglich({ vorgang, nachricht, kontext }: FreigabeMailDaten): Mail
       art: 'absatz',
       text:
         (einsendung
-          ? 'Ein Auftrag ist damit nicht zustande gekommen; Sie müssen nichts weiter tun. Ihr Original schicken wir Ihnen zurück.'
-          : 'Ein Auftrag ist damit nicht zustande gekommen; Sie müssen nichts weiter tun. Bitte senden Sie uns Ihren '
+          ? 'Ein Auftrag ist damit nicht zustande gekommen. Sie müssen nichts weiter tun. Ihr Original schicken wir Ihnen zurück.'
+          : 'Ein Auftrag ist damit nicht zustande gekommen. Sie müssen nichts weiter tun. Bitte senden Sie uns Ihren '
             + 'Originalschlüssel nicht zu.')
         + (zahlungEingegangen(zahlung?.status)
           ? ' Zu Ihrer bereits geleisteten Zahlung melden wir uns gesondert.'
@@ -184,7 +184,7 @@ function nichtMoeglich({ vorgang, nachricht, kontext }: FreigabeMailDaten): Mail
     ANTWORT_HINWEIS,
   ];
   return baueMail({
-    betreff: `Ergebnis Ihrer Anfrage – ${vorgang.reference}`,
+    betreff: `Ergebnis Ihrer Anfrage (${vorgang.reference})`,
     vorschau: 'Wir haben Ihre Anfrage geprüft.',
     anrede: anrede(vorgang.contact),
     bausteine,
@@ -219,7 +219,7 @@ function rueckfrage({ vorgang, nachricht, kontext }: FreigabeMailDaten): MailInh
     { art: 'knopf', href: statusLink(kontext.site), label: 'Stand abrufen' },
   ];
   return baueMail({
-    betreff: `Rückfrage zu Ihrer Anfrage – ${vorgang.reference}`,
+    betreff: `Rückfrage zu Ihrer Anfrage (${vorgang.reference})`,
     vorschau: 'Für die Prüfung brauchen wir noch eine Angabe von Ihnen.',
     anrede: anrede(vorgang.contact),
     bausteine,

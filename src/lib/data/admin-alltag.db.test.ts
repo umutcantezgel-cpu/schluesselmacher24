@@ -149,6 +149,7 @@ describe('Produkt duplizieren', () => {
         codeFormat: '4 Ziffern',
         codeMuster: '^[0-9]{4}$',
         codeBeispiel: '1234',
+        system: 'Testsystem',
         _status: 'published',
       },
       context,

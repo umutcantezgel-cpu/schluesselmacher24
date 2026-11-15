@@ -1,6 +1,7 @@
 import type { CollectionBeforeChangeHook, CollectionConfig, FieldHook, TextField, TextFieldSingleValidation } from 'payload';
 
 import { pruefeCodeMuster, codePasst } from '../../lib/code-pattern';
+import { VERFUEGBARKEITEN, VERFUEGBARKEIT_LABEL } from '../../lib/data/shop';
 import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
 import {
   VERSANDKLASSEN,
@@ -15,6 +16,26 @@ import { loeschsperre } from '../hooks/loeschsperre';
 import { erneuernHooks } from '../hooks/revalidate';
 
 const istCodeSchluessel = (data: Record<string, unknown> | undefined) => data?.typ !== 'standard';
+
+/** Auswahl der Verfügbarkeit (FA-22-10); Texte wie auf der Seite (`VERFUEGBARKEIT_LABEL`). */
+export const VERFUEGBARKEIT_OPTIONEN = VERFUEGBARKEITEN.map((value) => ({ label: VERFUEGBARKEIT_LABEL[value], value }));
+
+/**
+ * System ist bei echten Codeprodukten Pflicht (FA-11-08). Geprüft wird beim Veröffentlichen
+ * (Entwürfe speichert Payload ohne Prüfung). Beispiel-Einträge aus der Zeit vor A-046 sind ausgenommen.
+ */
+export const systemPruefen = (wert: unknown, { data }: { data?: Record<string, unknown> }) => {
+  if (!istCodeSchluessel(data) || data?.beispiel) return true;
+  return typeof wert === 'string' && wert.trim() ? true : 'Bitte das System eintragen, so wie der Hersteller es nennt.';
+};
+
+/** Vorschau: die öffentliche Seite des Artikels (zeigt die veröffentlichte Fassung). */
+export function vorschauPfad(doc: Record<string, unknown> | null | undefined): string | null {
+  const slug = typeof doc?.slug === 'string' ? doc.slug : '';
+  if (!slug) return null;
+  // Gleich `artikelPfad` und `codelinienPfad`; hier ohne deren Abhängigkeiten, weil die Sammlung auch im Werkzeug läuft.
+  return doc?.typ === 'standard' ? `/artikel/${slug}` : `/schluessel-nach-code/${slug}`;
+}
 
 /** Adressen der Übersichtsseiten unter /schluessel-nach-code/ — kein Artikel darf sie belegen. */
 const RESERVIERTE_ADRESSEN = new Set(['kategorie', 'hersteller']);
@@ -76,8 +97,10 @@ export const Produkte: CollectionConfig = {
   admin: {
     group: 'Shop',
     useAsTitle: 'name',
-    defaultColumns: ['name', 'typ', 'preis', 'beispiel', '_status', 'updatedAt'],
-    listSearchableFields: ['name', 'kennung', 'hersteller', 'einsatz'],
+    defaultColumns: ['name', 'herstellerAuswahl', 'system', 'preis', 'verfuegbarkeit', 'kategorie', '_status'],
+    listSearchableFields: ['name', 'kennung', 'hersteller', 'system', 'einsatz'],
+    // Öffnet die Seite des Artikels. Sie zeigt die veröffentlichte Fassung; Entwürfe sind dort noch nicht zu sehen.
+    preview: (doc) => vorschauPfad(doc),
     description:
       'Neue Artikel als Entwurf anlegen und erst veröffentlichen, wenn alles stimmt. '
       + 'Nicht mehr angebotene Artikel in den Papierkorb legen — sie lassen sich wiederherstellen.',
@@ -129,6 +152,28 @@ export const Produkte: CollectionConfig = {
       },
     },
     {
+      name: 'verfuegbarkeit',
+      type: 'select',
+      label: 'Verfügbarkeit',
+      // Nicht Pflicht, damit ältere Einträge und Werkzeuge ohne Angabe gültig bleiben: leer gilt als lieferbar.
+      defaultValue: 'lieferbar',
+      options: VERFUEGBARKEIT_OPTIONEN,
+      admin: {
+        isClearable: false,
+        position: 'sidebar',
+        description:
+          'Lieferbar: in den Warenkorb. Auf Anfrage: Kunden fragen an, kein Warenkorb. '
+          + 'Derzeit nicht lieferbar: kein Warenkorb, keine Bestellung, die Seite sagt es.',
+      },
+    },
+    {
+      name: 'kategorie',
+      type: 'relationship',
+      relationTo: 'kategorien',
+      label: 'Kategorie',
+      admin: { position: 'sidebar', description: 'In welcher Shop-Kategorie der Artikel steht.' },
+    },
+    {
       type: 'tabs',
       tabs: [
         {
@@ -139,8 +184,44 @@ export const Produkte: CollectionConfig = {
             {
               type: 'row',
               fields: [
-                { name: 'hersteller', type: 'text', label: 'Hersteller', admin: { width: '50%' } },
+                {
+                  name: 'herstellerAuswahl',
+                  type: 'relationship',
+                  relationTo: 'hersteller',
+                  label: 'Hersteller',
+                  admin: { width: '50%', description: 'Aus der Liste wählen. Fehlt er, zuerst unter Shop › Hersteller anlegen.' },
+                },
                 { name: 'schluesseltyp', type: 'text', label: 'Schlüsseltyp', admin: { width: '50%' } },
+              ],
+            },
+            {
+              name: 'hersteller',
+              type: 'text',
+              label: 'Hersteller (alter Freitext)',
+              admin: {
+                readOnly: true,
+                // Nur sichtbar, wenn ein alter Eintrag ihn noch trägt.
+                condition: (data) => typeof data?.hersteller === 'string' && data.hersteller.trim() !== '',
+                description: 'Nur noch zum Lesen. Gilt, solange oben kein Hersteller gewählt ist.',
+              },
+            },
+            {
+              type: 'row',
+              admin: { condition: istCodeSchluessel },
+              fields: [
+                {
+                  name: 'system',
+                  type: 'text',
+                  label: 'System',
+                  admin: { width: '50%', description: 'So, wie der Hersteller das Schließsystem nennt. Pflicht bei neuen Codeprodukten.' },
+                  validate: systemPruefen as TextFieldSingleValidation,
+                },
+                {
+                  name: 'codebereich',
+                  type: 'text',
+                  label: 'Codebereich',
+                  admin: { width: '50%', description: 'Von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“.' },
+                },
               ],
             },
             {
@@ -169,7 +250,12 @@ export const Produkte: CollectionConfig = {
                 },
               ],
             },
-            { name: 'lieferzeit', type: 'text', label: 'Lieferzeit', admin: { condition: istStandardartikel } },
+            {
+              name: 'lieferzeit',
+              type: 'text',
+              label: 'Lieferzeit',
+              admin: { description: 'Etwa „2 bis 4 Werktage“. Leer lassen, wenn die Lieferzeit der Versandart gilt.' },
+            },
             {
               name: 'schlagworte',
               type: 'text',

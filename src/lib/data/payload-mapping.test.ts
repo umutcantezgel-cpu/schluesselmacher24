@@ -379,3 +379,77 @@ describe('Übersetzung Payload ↔ Seite', () => {
     expect(() => m.zylinderkatalogZuPayload(defaults.cylinderCatalog())).not.toThrow();
   });
 });
+
+describe('Shop-Grundlage (FA-SHOP-01)', () => {
+  it('Shop-Kategorien samt Unterkategorie, Bild, Suchmaschinen und früheren Adressen', () => {
+    const start = defaults.kategorien();
+    const ids = new Map(start.map((k, i) => [k.id, i + 1]));
+    start.forEach((k, index) => {
+      expect(m.kategorieZuSeite(gespeichert(m.kategorieZuPayload(k, ids), index + 1) as never), k.id).toEqual(k);
+    });
+    const unter = {
+      ...start[0],
+      id: 'test-unter',
+      slug: 'test-unter',
+      eltern: start[0].id,
+      bild: { motif: 'Schlüssel auf Holz', ratio: '4/3' as const },
+      seo: { title: 'Eigener Titel', description: 'Eigene Beschreibung', internalLinks: [] },
+      fruehereAdressen: ['alt-1', 'alt-2'],
+    };
+    const daten = m.kategorieZuPayload(unter, ids);
+    expect(daten.eltern).toBe(1);
+    // Payload liefert die übergeordnete Kategorie mit depth 1 als Dokument.
+    const doc = gespeichert({ ...daten, eltern: gespeichert(m.kategorieZuPayload(start[0]), 1) }, 99);
+    expect(m.kategorieZuSeite(doc as never)).toEqual(unter);
+  });
+
+  it('Hersteller: Logo nur mit Freigabe (R12)', () => {
+    const hersteller = { id: 'test-hersteller', slug: 'test-hersteller', name: 'Testhersteller', einsatz: 'Möbelschlösser', angeboten: true, reihenfolge: 10 };
+    const daten = m.herstellerZuPayload(hersteller);
+    expect(m.herstellerZuSeite(gespeichert(daten, 1) as never)).toEqual(hersteller);
+    const logo = { id: 7, url: '/api/medien/file/logo.png', alt: '', width: 200, height: 200 };
+    const ohne = m.herstellerZuSeite(gespeichert({ ...daten, logo: { bild: logo, freigabe: false } }, 1) as never);
+    expect(ohne.logo).toBeUndefined();
+    const mit = m.herstellerZuSeite(gespeichert({ ...daten, logo: { bild: logo, freigabe: true } }, 1) as never);
+    expect(mit.logo?.bild?.url).toBe('/api/medien/file/logo.png');
+    expect(mit.logo?.motif).toBe('Logo Testhersteller');
+  });
+
+  it('Codeprodukt mit System, Codebereich, Lieferzeit, Verfügbarkeit, Kategorie und Hersteller', async () => {
+    const [line] = await read('codeLines');
+    const voll = {
+      ...line,
+      manufacturer: 'Testhersteller',
+      system: 'System T',
+      codeRange: '1 bis 999',
+      deliveryTime: '2 bis 4 Werktage',
+      availability: 'auf-anfrage' as const,
+      categoryId: 'schluessel-nach-code',
+      manufacturerId: 'test-hersteller',
+    };
+    if (!voll.bulkPrices?.length) delete voll.bulkPrices;
+    const verweise = { kategorien: new Map([['schluessel-nach-code', 3]]), hersteller: new Map([['test-hersteller', 4]]) };
+    const daten = m.codeLineZuPayload(voll, verweise);
+    expect(daten).toMatchObject({ system: 'System T', codebereich: '1 bis 999', lieferzeit: '2 bis 4 Werktage', verfuegbarkeit: 'auf-anfrage', kategorie: 3, herstellerAuswahl: 4 });
+    const doc = gespeichert({
+      ...daten,
+      kategorie: { id: 3, kennung: 'schluessel-nach-code', slug: 'schluessel-nach-code' },
+      herstellerAuswahl: { id: 4, kennung: 'test-hersteller', slug: 'test-hersteller', name: 'Testhersteller' },
+    }, 1);
+    expect(m.codeLineZuSeite(doc as never)).toEqual({ ...voll, updatedAt: STAND });
+
+    // Ohne Verweise bleiben die Felder leer; lieferbar ist der Normalfall und wird nicht eigens geführt.
+    const schlicht = m.codeLineZuPayload(line);
+    expect(schlicht).toMatchObject({ verfuegbarkeit: 'lieferbar', kategorie: null, herstellerAuswahl: null, system: null });
+    expect(m.codeLineZuSeite(gespeichert(schlicht, 1) as never).availability).toBeUndefined();
+  });
+
+  it('Hersteller aus der Stammliste geht vor dem alten Freitext', async () => {
+    const [article] = await read('standardArticles');
+    const daten = { ...m.standardartikelZuPayload(article), hersteller: 'Alter Freitext' };
+    expect(m.standardartikelZuSeite(gespeichert(daten, 1) as never).manufacturer).toBe('Alter Freitext');
+    const gewaehlt = { ...daten, herstellerAuswahl: { id: 4, kennung: 'neu', name: 'Neuer Name' }, verfuegbarkeit: 'nicht-lieferbar' };
+    const seite = m.standardartikelZuSeite(gespeichert(gewaehlt, 1) as never);
+    expect(seite).toMatchObject({ manufacturer: 'Neuer Name', manufacturerId: 'neu', availability: 'nicht-lieferbar' });
+  });
+});

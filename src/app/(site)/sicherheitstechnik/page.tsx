@@ -11,6 +11,7 @@ import { PageHeader } from '@/components/layout/page-header';
 import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { gegenrichtung } from '@/components/seo/verweise';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schutz';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
@@ -105,10 +106,15 @@ export default async function SicherheitstechnikPage() {
   ]);
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
-  /* Verweise der Redaktion ohne die Ziele, die Abschnitt 04 schon zeigt. */
-  const weitereLinks = (page?.seo.internalLinks ?? []).filter(
+  /* Verweise der Redaktion ohne die Ziele, die Abschnitt 04 schon zeigt, dazu die Gegenrichtung der
+     Verweisliste (Ratgeber und veröffentlichte Ortsseiten, die hierher verweisen; FA-SEO-01C). */
+  const redaktion = (page?.seo.internalLinks ?? []).filter(
     (link) => !WEITER.some((eintrag) => eintrag.href === link.href),
   );
+  const weitereLinks = [
+    ...redaktion,
+    ...(await gegenrichtung(`/${ROUTE}`, { ausser: [...WEITER, ...redaktion].map((link) => link.href) })),
+  ];
 
   return (
     <>

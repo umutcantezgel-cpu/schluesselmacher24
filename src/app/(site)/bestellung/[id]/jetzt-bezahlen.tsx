@@ -28,9 +28,9 @@ export function JetztBezahlen({ recordId, token, label }: JetztBezahlenProps) {
         window.location.assign(ergebnis.url);
         return;
       }
-      setMeldung({ text: ergebnis.meldung ?? 'Die Zahlung konnte gerade nicht gestartet werden.', neuBuchen: ergebnis.neuBuchen });
+      setMeldung({ text: ergebnis.meldung ?? 'Die Zahlungsseite lässt sich gerade nicht öffnen. Bitte versuchen Sie es gleich noch einmal.', neuBuchen: ergebnis.neuBuchen });
     } catch {
-      setMeldung({ text: 'Die Zahlung konnte gerade nicht gestartet werden. Bitte versuchen Sie es erneut.' });
+      setMeldung({ text: 'Die Zahlungsseite lässt sich gerade nicht öffnen. Bitte versuchen Sie es gleich noch einmal.' });
     }
     setLaeuft(false);
   }

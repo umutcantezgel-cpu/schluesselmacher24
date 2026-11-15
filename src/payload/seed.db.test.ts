@@ -158,7 +158,7 @@ describe('Beispiel-Einträge (A-046)', () => {
     expect(process.env.SM24_BEISPIELE).toBe('1');
     const muster = (await dateien.read('codeLines'))[0];
     const artikel = defaults.standardArticles()[0];
-    const linie = (id: string, example: boolean): CodeLine => ({ ...muster, id, slug: id, name: `Testlinie ${id}`, example });
+    const linie = (id: string, example: boolean): CodeLine => ({ ...muster, id, slug: id, name: `Testlinie ${id}`, system: 'Testsystem', example });
     const ware = (id: string, example: boolean): StandardArticle => ({ ...artikel, id, slug: id, name: `Testartikel ${id}`, example });
     const quelle: InhaltsQuelle = {
       async read<K extends CollectionName>(name: K): Promise<Collections[K]> {

@@ -384,6 +384,69 @@ export interface ProductSafetyInfo {
   safetyNotes?: string;
 }
 
+/* ---------- Shop: Verfügbarkeit, Kategorien, Hersteller (FA-SHOP-01) ----- */
+
+/**
+ * Verfügbarkeit eines Artikels (FA-22-10). Fehlt die Angabe, gilt `lieferbar`.
+ * - `lieferbar`: in den Warenkorb und bestellbar.
+ * - `auf-anfrage`: kein Warenkorb; der Weg führt in die Anfrage („Code anfragen“).
+ * - `nicht-lieferbar`: kein Warenkorb, keine Bestellung; die Seite sagt es ruhig.
+ */
+export type Verfuegbarkeit = 'lieferbar' | 'auf-anfrage' | 'nicht-lieferbar';
+
+/**
+ * Wie eine Shop-Kategorie heute endet:
+ * - `codeprodukte`: Liste der Schlüssel nach Code,
+ * - `artikel`: Liste der Artikel (Schließtechnik und Zubehör),
+ * - `konfigurator`: Zusammenstellung im Konfigurator,
+ * - `anfrage`: noch keine Produkte; der Weg führt in eine Anfrage.
+ */
+export type KategorieArt = 'codeprodukte' | 'artikel' | 'konfigurator' | 'anfrage';
+
+/**
+ * Eine Shop-Kategorie (FA-10, FA-22-04, FA-22-05). Gepflegt im Backend
+ * (Sammlung „Shop-Kategorien“); ohne Datenbank aus `content/kategorien.json`.
+ */
+export interface ShopKategorie {
+  /** Feste Kennung; Produkte verweisen über sie auf die Kategorie. */
+  id: string;
+  /** Adresse (URL-Teil), eindeutig. */
+  slug: string;
+  name: string;
+  beschreibung: string;
+  /** Kennung der übergeordneten Kategorie; fehlt bei Hauptkategorien. */
+  eltern?: string;
+  /** Kleinere Zahl zuerst. */
+  reihenfolge: number;
+  art: KategorieArt;
+  /** Ziel des Wegs heute, etwa „/schluessel-nach-code“. */
+  ziel: string;
+  /** Ehrlicher Zustand, solange es keine Produkte gibt (etwa „Produkte folgen; bis dahin Anfrage“). */
+  hinweis?: string;
+  /** Im Shop zeigen. */
+  sichtbar: boolean;
+  bild?: ImageSlot;
+  /** Eigene Angaben für Suchmaschinen, nur wenn gepflegt. */
+  seo?: SeoFields;
+  /** Frühere Adressen; sie leiten auf die aktuelle weiter. */
+  fruehereAdressen: string[];
+}
+
+/** Ein Hersteller der Stammliste (FA-11-05 bis FA-11-07). */
+export interface ShopHersteller {
+  id: string;
+  slug: string;
+  /** Name in der Schreibweise des Herstellers. */
+  name: string;
+  /** Kurzer Text: wofür die Systeme eingesetzt werden. */
+  einsatz: string;
+  /** Wir bieten Produkte dieses Herstellers an. */
+  angeboten: boolean;
+  reihenfolge: number;
+  /** Logo nur mit vorliegender Freigabe (R12); ohne Freigabe fehlt es hier ganz. */
+  logo?: ImageSlot;
+}
+
 /* ---------- Schlüssel nach Code (Shop) ---------------------------------- */
 
 export interface CodeLine {
@@ -395,6 +458,18 @@ export interface CodeLine {
   profile?: string;
   /** Codeserie bzw. Schließungsserie, nur wenn gepflegt. */
   codeSeries?: string;
+  /** System laut Hersteller (FA-11-08), nur wenn gepflegt. */
+  system?: string;
+  /** Codebereich „von bis“ oder Muster, wie der Hersteller ihn nennt (FA-11-09), nur wenn gepflegt. */
+  codeRange?: string;
+  /** Lieferzeit als Text, nur wenn gepflegt. */
+  deliveryTime?: string;
+  /** Fehlt = lieferbar. */
+  availability?: Verfuegbarkeit;
+  /** Kennung der Shop-Kategorie, nur wenn zugeordnet. */
+  categoryId?: string;
+  /** Kennung des Herstellers aus der Stammliste, nur wenn ausgewählt. */
+  manufacturerId?: string;
   /** Wofür die Codelinie eingesetzt wird, z. B. "Möbelschloss". */
   application: string;
   keyType: string;
@@ -451,6 +526,12 @@ export interface StandardArticle {
   /** Beispielartikel: sichtbar, aber nicht bestellbar und nicht in Suchmaschinen. */
   example: boolean;
   gpsr?: ProductSafetyInfo;
+  /** Fehlt = lieferbar. */
+  availability?: Verfuegbarkeit;
+  /** Kennung der Shop-Kategorie, nur wenn zugeordnet. */
+  categoryId?: string;
+  /** Kennung des Herstellers aus der Stammliste, nur wenn ausgewählt. */
+  manufacturerId?: string;
 }
 
 /* ---------- Gleichschließende Zylinder ---------------------------------- */

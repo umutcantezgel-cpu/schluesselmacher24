@@ -11,6 +11,8 @@ import type {
   Einsatzgebiete,
   Einstellungen,
   Fahrzeugmarken,
+  Hersteller,
+  Kategorien,
   Leistungsseiten,
   Preisgruppen,
   Preisregeln,
@@ -120,6 +122,15 @@ export class PayloadAdapter implements DataAdapter {
       case 'rubriken': {
         const docs = await alle<Rubriken>('rubriken', undefined, 'reihenfolge');
         return docs.length ? docs.map(m.rubrikZuSeite) : defaults.rubriken();
+      }
+      // Shop-Kategorien und Hersteller (FA-SHOP-01): leere Sammlung (frische Datenbank ohne Seed) = Startbestand.
+      case 'kategorien': {
+        const docs = await alle<Kategorien>('kategorien', undefined, 'reihenfolge');
+        return docs.length ? docs.map(m.kategorieZuSeite) : defaults.kategorien();
+      }
+      case 'hersteller': {
+        const docs = await alle<Hersteller>('hersteller', undefined, 'reihenfolge');
+        return docs.length ? docs.map(m.herstellerZuSeite) : defaults.hersteller();
       }
     }
   }

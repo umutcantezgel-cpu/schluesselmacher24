@@ -1,4 +1,6 @@
-import { describe, expect, it } from 'vitest';
+import { existsSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import type { CityPage } from '@/lib/types';
 
@@ -64,5 +66,43 @@ describe('Verweisliste „Passt dazu“', () => {
     expect(quellen[0].titel).toBe('Schlüssel- und Schließtechnik in wetzlar');
     expect(quellen[0].links.map((l) => l.href)).toEqual(['/standorte', '/autoschluessel', '/schliessanlagen']);
     expect(eingehendeVerweise('/autoschluessel', quellen)).toEqual([{ href: '/standorte/wetzlar', label: 'Schlüssel- und Schließtechnik in wetzlar' }]);
+  });
+});
+
+describe('Leistung ↔ Ortsseite mit den echten Inhalten (FA-25-17)', () => {
+  afterEach(() => vi.unstubAllEnvs());
+
+  it('jede Leistung aus servicesOffered einer veröffentlichten Ortsseite verweist auf diese Ortsseite', async () => {
+    vi.stubEnv('SM24_DATA', 'json');
+    vi.resetModules();
+    const { getCities, getPageContent } = await import('@/lib/data');
+    const { stadtIndexierbar } = await import('@/lib/rechtliches/indexierung');
+    const { areaByKey } = await import('@/lib/navigation');
+    const verweise = await import('./verweise');
+    const quellen = await verweise.verweisQuellen();
+
+    const orte = (await getCities()).filter(stadtIndexierbar);
+    expect(orte.length).toBeGreaterThan(0);
+    const fehlend: string[] = [];
+    for (const ort of orte) {
+      const ortPfad = `/standorte/${ort.slug}`;
+      for (const key of ort.servicesOffered) {
+        const ziel = areaByKey(key)?.href;
+        if (!ziel) continue;
+        const datei = path.resolve(__dirname, '../../app/(site)', `.${ziel}`, 'page.tsx');
+        const quelle = existsSync(datei) ? readFileSync(datei, 'utf8') : '';
+        // Was die Seite zeigt, konservativ gerechnet (ohne `ausser`, das nur Platz schafft):
+        // „Passt dazu“ = eigene gepflegte Links + Gegenrichtung (max. 6); sonst nur die Gegenrichtung im eigenen Block (max. 3).
+        let gezeigt: string[] = [];
+        if (quelle.includes('<PasstDazu')) {
+          const eigene = (await getPageContent(ziel.slice(1)))?.seo.internalLinks ?? [];
+          gezeigt = verweise.passtDazu(ziel, eigene, quellen).map((v) => v.href);
+        } else if (quelle.includes('gegenrichtung(')) {
+          gezeigt = verweise.passtDazu(ziel, [], quellen, { max: 3 }).map((v) => v.href);
+        }
+        if (!gezeigt.includes(ortPfad)) fehlend.push(`${ziel} → ${ortPfad}`);
+      }
+    }
+    expect(fehlend).toEqual([]);
   });
 });

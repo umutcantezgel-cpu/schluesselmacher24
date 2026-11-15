@@ -12,6 +12,8 @@ import { cities, guides, pages } from './content';
 import { blockedDays } from './schedule';
 import { rubriken } from './rubriken';
 import { fahrzeugkatalog } from './fahrzeugkatalog';
+import { kategorien } from './kategorien';
+import { hersteller } from './hersteller';
 
 function records(): BusinessRecord[] {
   return [];
@@ -38,6 +40,8 @@ export const defaults: { [K in CollectionName]: () => Collections[K] } = {
   records,
   rubriken,
   fahrzeugkatalog,
+  kategorien,
+  hersteller,
 };
 
 export { codeLineFamilies } from './code-lines';

@@ -14,6 +14,7 @@ import { PageHeader } from '@/components/layout/page-header';
 import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { gegenrichtung } from '@/components/seo/verweise';
 import { ZutrittSignalGrafik } from '@/components/visual/generators/zutritt-signal';
 import { GlyphGebaeude } from '@/components/visual/glyphen/gebaeude';
 import { GlyphHaken } from '@/components/visual/glyphen/haken';
@@ -379,6 +380,11 @@ export default async function ElektronischeZutrittsloesungenPage() {
   // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
   const rubrik = await getRubrik('elektronische-schliesssysteme');
   const page = await getPageContent(ROUTE);
+  // Gegenrichtung der Verweisliste (FA-SEO-01C): Ratgeber und veröffentlichte Ortsseiten, die hierher verweisen.
+  const passendeBereiche: Array<{ href: string; label: string; description?: string }> = [
+    ...RELATED_LINKS,
+    ...(await gegenrichtung(`/${ROUTE}`, { ausser: RELATED_LINKS.map((link) => link.href) })),
+  ];
   const faq = page?.faq.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
 
@@ -679,7 +685,7 @@ export default async function ElektronischeZutrittsloesungenPage() {
         <SectionHeading nummer="05" eyebrow="Weiterlesen" title="Passende Bereiche" />
 
         <ul className="mt-8 border-t border-border">
-          {RELATED_LINKS.map((link, index) => (
+          {passendeBereiche.map((link, index) => (
             <li key={link.href} className="border-b border-border">
               <Link
                 href={link.href}
@@ -692,9 +698,11 @@ export default async function ElektronischeZutrittsloesungenPage() {
                   <span className="block text-title-sm font-semibold text-foreground group-hover:text-primary">
                     {link.label}
                   </span>
-                  <span className="mt-1 block text-small text-foreground-muted">
-                    {link.description}
-                  </span>
+                  {link.description && (
+                    <span className="mt-1 block text-small text-foreground-muted">
+                      {link.description}
+                    </span>
+                  )}
                 </span>
                 <span className="flex shrink-0 items-center gap-1.5 text-small font-semibold text-primary">
                   Ansehen

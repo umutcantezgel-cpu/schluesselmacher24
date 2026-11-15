@@ -40,7 +40,10 @@ if [ "$ohne_db" -eq 0 ]; then
   ohne_farbe "$roh/$kennung-db.log" | grep -E "^ FAIL |Test Files|Tests |Error:|error:" | sort -u | head -15
 fi
 if [ "$ohne_build" -eq 0 ]; then
-  schritt "Build ohne Datenbank" build "$weiche" --json -- npm run build
+  # SM24_INDEXIERUNG=an: Der Prüfbuild bildet die Produktion ab (FA-SEO-01C). Ohne den Schalter stünde jede
+  # Seite außerhalb von Vercel auf noindex, und die Onpage-Messung sähe nicht, was Suchmaschinen sehen.
+  # Der Schalter wirkt beim Build; localhost ist von der noindex-Kopfzeile ausgenommen und von außen nicht erreichbar.
+  schritt "Build ohne Datenbank" build env SM24_INDEXIERUNG=an "$weiche" --json -- npm run build
   grep -E "Generating static pages|Failed|Error occurred|Type error" "$roh/$kennung-build.log" | tail -4
 fi
 if [ "$rot" -eq 0 ]; then echo "ABNAHME $kennung: GRÜN"; else echo "ABNAHME $kennung: ROT"; fi

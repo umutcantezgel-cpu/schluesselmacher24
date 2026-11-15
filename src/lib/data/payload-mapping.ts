@@ -13,6 +13,8 @@ import type {
   Einsatzgebiete,
   Einstellungen,
   Fahrzeugmarken,
+  Hersteller,
+  Kategorien,
   Leistungsseiten,
   Medien,
   Preisgruppen,
@@ -63,8 +65,11 @@ import type {
   ServicePage,
   StandardArticle,
   Settings,
+  ShopHersteller,
+  ShopKategorie,
   VehicleMake,
   VehicleModelSeo,
+  Verfuegbarkeit,
 } from '@/lib/types';
 
 /* ---------- Grundbausteine ----------------------------------------------- */
@@ -238,9 +243,53 @@ export function gpsrZuPayload(info: ProductSafetyInfo | undefined) {
   };
 }
 
+/* ---------- Artikel: gemeinsame Felder (FA-SHOP-01) --------------------- */
+
+/** Datenbank-IDs je Kennung für die Verweise eines Artikels (Seed und Import). */
+export interface ProduktVerweise {
+  kategorien?: Map<string, number>;
+  hersteller?: Map<string, number>;
+}
+
+type ShopVerweis = number | { id: number; kennung?: string | null; slug?: string | null; name?: string | null } | null | undefined;
+
+/**
+ * Felder, die alle Artikelarten teilen: Hersteller aus der Stammliste (sonst der
+ * alte Freitext), Kategorie und Verfügbarkeit. Nur gesetzte Werte kommen zurück;
+ * `lieferbar` ist der Normalfall und wird nicht eigens geführt.
+ */
+function shopFelderZuSeite(doc: Produkte): {
+  manufacturer: string;
+  extra: { availability?: Verfuegbarkeit; categoryId?: string; manufacturerId?: string };
+} {
+  const auswahl = doc.herstellerAuswahl as ShopVerweis;
+  const extra: { availability?: Verfuegbarkeit; categoryId?: string; manufacturerId?: string } = {};
+  let manufacturer = doc.hersteller ?? '';
+  if (auswahl && typeof auswahl === 'object') {
+    manufacturer = auswahl.name ?? manufacturer;
+    extra.manufacturerId = kennung(auswahl);
+  }
+  const kategorie = doc.kategorie as ShopVerweis;
+  if (kategorie && typeof kategorie === 'object') extra.categoryId = kennung(kategorie);
+  if (doc.verfuegbarkeit && doc.verfuegbarkeit !== 'lieferbar') extra.availability = doc.verfuegbarkeit;
+  return { manufacturer, extra };
+}
+
+function shopFelderZuPayload(
+  item: { availability?: Verfuegbarkeit; categoryId?: string; manufacturerId?: string },
+  verweise: ProduktVerweise = {},
+) {
+  return {
+    verfuegbarkeit: item.availability ?? 'lieferbar',
+    kategorie: item.categoryId ? (verweise.kategorien?.get(item.categoryId) ?? null) : null,
+    herstellerAuswahl: item.manufacturerId ? (verweise.hersteller?.get(item.manufacturerId) ?? null) : null,
+  } as const;
+}
+
 /* ---------- Artikel (Schlüssel nach Code) -------------------------------- */
 
 export function codeLineZuSeite(doc: Produkte): CodeLine {
+  const shop = shopFelderZuSeite(doc);
   const priceCents = zuCent(doc.preis);
   const bulkPrices = [...(doc.staffeln ?? [])]
     .sort((a, b) => a.abMenge - b.abMenge)
@@ -249,7 +298,7 @@ export function codeLineZuSeite(doc: Produkte): CodeLine {
     id: kennung(doc),
     slug: doc.slug,
     name: doc.name,
-    manufacturer: doc.hersteller ?? '',
+    manufacturer: shop.manufacturer,
     application: doc.einsatz ?? '',
     keyType: doc.schluesseltyp ?? '',
     description: doc.beschreibung,
@@ -273,6 +322,13 @@ export function codeLineZuSeite(doc: Produkte): CodeLine {
   if (profile) line.profile = profile;
   const codeSeries = optText(doc.codeserie);
   if (codeSeries) line.codeSeries = codeSeries;
+  const system = optText(doc.system);
+  if (system) line.system = system;
+  const codeRange = optText(doc.codebereich);
+  if (codeRange) line.codeRange = codeRange;
+  const deliveryTime = optText(doc.lieferzeit);
+  if (deliveryTime) line.deliveryTime = deliveryTime;
+  Object.assign(line, shop.extra);
   if (doc.fotoHinweis) line.photoUploadHint = doc.fotoHinweis;
   if (doc.beispiel) line.example = true;
   const gpsr = gpsrZuSeite(doc.gpsr);
@@ -281,8 +337,9 @@ export function codeLineZuSeite(doc: Produkte): CodeLine {
   return line;
 }
 
-export function codeLineZuPayload(line: CodeLine): RequiredDataFromCollectionSlug<'produkte'> {
+export function codeLineZuPayload(line: CodeLine, verweise?: ProduktVerweise): RequiredDataFromCollectionSlug<'produkte'> {
   return {
+    ...shopFelderZuPayload(line, verweise),
     typ: 'code_key',
     kennung: line.id,
     slug: line.slug,
@@ -292,6 +349,9 @@ export function codeLineZuPayload(line: CodeLine): RequiredDataFromCollectionSlu
     hersteller: line.manufacturer,
     profil: line.profile ?? null,
     codeserie: line.codeSeries ?? null,
+    system: line.system ?? null,
+    codebereich: line.codeRange ?? null,
+    lieferzeit: line.deliveryTime ?? null,
     einsatz: line.application,
     schluesseltyp: line.keyType,
     umfang: line.scope,
@@ -320,6 +380,7 @@ export function codeLineZuPayload(line: CodeLine): RequiredDataFromCollectionSlu
 /* ---------- Artikel (Standardartikel) ----------------------------------- */
 
 export function standardartikelZuSeite(doc: Produkte): StandardArticle {
+  const shop = shopFelderZuSeite(doc);
   const priceCents = zuCent(doc.preis);
   const bulkPrices = [...(doc.staffeln ?? [])]
     .sort((a, b) => a.abMenge - b.abMenge)
@@ -332,7 +393,7 @@ export function standardartikelZuSeite(doc: Produkte): StandardArticle {
     slug: doc.slug,
     name: doc.name,
     description: doc.beschreibung,
-    manufacturer: doc.hersteller ?? '',
+    manufacturer: shop.manufacturer,
     scope: doc.umfang ?? '',
     properties: (doc.eigenschaften ?? []).map((e) => ({ name: e.name, value: e.wert })),
     deliveryTime: doc.lieferzeit ?? '',
@@ -350,11 +411,13 @@ export function standardartikelZuSeite(doc: Produkte): StandardArticle {
   if (bulkPrices.length) article.bulkPrices = bulkPrices;
   const gpsr = gpsrZuSeite(doc.gpsr);
   if (gpsr) article.gpsr = gpsr;
+  Object.assign(article, shop.extra);
   return article;
 }
 
-export function standardartikelZuPayload(article: StandardArticle): RequiredDataFromCollectionSlug<'produkte'> {
+export function standardartikelZuPayload(article: StandardArticle, verweise?: ProduktVerweise): RequiredDataFromCollectionSlug<'produkte'> {
   return {
+    ...shopFelderZuPayload(article, verweise),
     typ: 'standard',
     kennung: article.id,
     slug: article.slug,
@@ -649,6 +712,79 @@ export function rubrikZuPayload(rubrik: Rubrik): RequiredDataFromCollectionSlug<
     navigation: rubrik.navigation,
     imHub: rubrik.imHub,
     bereich: rubrik.bereich,
+  };
+}
+
+/* ---------- Shop-Kategorien und Hersteller (FA-SHOP-01) ----------------- */
+
+export function kategorieZuSeite(doc: Kategorien): ShopKategorie {
+  const kategorie: ShopKategorie = {
+    id: kennung(doc),
+    slug: doc.slug ?? kennung(doc),
+    name: doc.name,
+    beschreibung: doc.beschreibung,
+    reihenfolge: doc.reihenfolge,
+    art: doc.art,
+    ziel: doc.ziel,
+    sichtbar: doc.imShop !== false,
+    fruehereAdressen: (doc.fruehereAdressen ?? []).map((z) => z.adresse).filter(Boolean),
+  };
+  const eltern = doc.eltern as ShopVerweis;
+  if (eltern && typeof eltern === 'object') kategorie.eltern = kennung(eltern);
+  if (doc.hinweis) kategorie.hinweis = doc.hinweis;
+  if (doc.bild?.motiv || (doc.bild?.bild && typeof doc.bild.bild !== 'number')) {
+    kategorie.bild = bildZuSeite(doc.bild, doc.name, '4/3');
+  }
+  const seo = eigeneSeoZuSeite(doc.seo);
+  if (seo) kategorie.seo = seo;
+  return kategorie;
+}
+
+/** `ids`: Datenbank-ID je Kennung, für die übergeordnete Kategorie. Fehlt sie, bleibt das Feld leer. */
+export function kategorieZuPayload(kategorie: ShopKategorie, ids?: Map<string, number>): RequiredDataFromCollectionSlug<'kategorien'> {
+  return {
+    kennung: kategorie.id,
+    slug: kategorie.slug,
+    name: kategorie.name,
+    beschreibung: kategorie.beschreibung,
+    eltern: kategorie.eltern ? (ids?.get(kategorie.eltern) ?? null) : null,
+    reihenfolge: kategorie.reihenfolge,
+    art: kategorie.art,
+    ziel: kategorie.ziel,
+    hinweis: kategorie.hinweis ?? null,
+    imShop: kategorie.sichtbar,
+    bild: bildZuPayload(kategorie.bild),
+    seo: kategorie.seo ? seoZuPayload(kategorie.seo) : undefined,
+    fruehereAdressen: kategorie.fruehereAdressen.map((adresse) => ({ adresse })),
+  };
+}
+
+/** Logo nur mit Freigabe (R12): ohne Haken „Freigabe liegt vor“ kommt es nicht auf die Seite. */
+export function herstellerZuSeite(doc: Hersteller): ShopHersteller {
+  const hersteller: ShopHersteller = {
+    id: kennung(doc),
+    slug: doc.slug ?? kennung(doc),
+    name: doc.name,
+    einsatz: doc.einsatz ?? '',
+    angeboten: Boolean(doc.angeboten),
+    reihenfolge: doc.reihenfolge,
+  };
+  if (doc.logo?.freigabe) {
+    const bild = medienBild(doc.logo.bild, `Logo ${doc.name}`);
+    if (bild) hersteller.logo = { motif: `Logo ${doc.name}`, ratio: '1/1', bild };
+  }
+  return hersteller;
+}
+
+/** Logos kommen nie aus dem Inhalt: Sie brauchen eine Datei und die Freigabe im Backend. */
+export function herstellerZuPayload(hersteller: ShopHersteller): RequiredDataFromCollectionSlug<'hersteller'> {
+  return {
+    kennung: hersteller.id,
+    slug: hersteller.slug,
+    name: hersteller.name,
+    einsatz: hersteller.einsatz,
+    angeboten: hersteller.angeboten,
+    reihenfolge: hersteller.reihenfolge,
   };
 }
 
