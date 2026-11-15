@@ -72,9 +72,9 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     label: 'Zentralschlossanlage',
     short: 'Z',
     explanation:
-      'Bei einer Zentralschließung öffnen mehrere verschiedene Einzelschlüssel dieselben '
-      + 'gemeinsamen Türen. Im Mehrfamilienhaus hat jede Partei einen eigenen Schlüssel für die '
-      + 'eigene Wohnung. Derselbe Schlüssel öffnet auch Hauseingang, Keller, Müllraum oder '
+      'Bei einer Zentralschlossanlage, auch Zentralschließung genannt, öffnen mehrere verschiedene '
+      + 'Einzelschlüssel dieselben gemeinsamen Türen. Im Mehrfamilienhaus hat jede Partei einen '
+      + 'eigenen Schlüssel für die eigene Wohnung. Derselbe Schlüssel öffnet auch Hauseingang, Keller, Müllraum oder '
       + 'Fahrradraum. Einen Schlüssel für alle Wohnungen gibt es hier nicht.',
     suitableFor:
       'Mehrfamilienhaus und Wohnanlage mit mehreren Parteien, eigenen Türen und gemeinsamen Zugängen.',
@@ -111,8 +111,9 @@ export const LOCK_SYSTEMS: LockSystemEntry[] = [
     short: 'HS',
     explanation:
       'Bei einer Hauptschlüsselanlage hat jede Person feste Rechte. Ihr Schlüssel öffnet genau die '
-      + 'Türen, die ihr zugeordnet sind. Ein Hauptschlüssel öffnet alle Türen der Anlage. Wer '
-      + 'welchen Schlüssel bekommt, legen wir vorher im Schließplan fest.',
+      + 'Türen, die ihr zugeordnet sind. Ein Hauptschlüssel öffnet alle ihm zugeordneten Türen, '
+      + 'meist alle Türen der Anlage. Wer welchen Schlüssel bekommt, legen wir vorher im '
+      + 'Schließplan fest.',
     suitableFor:
       'Betrieb, Praxis, Kanzlei, Schule oder Verwaltungsgebäude mit mehreren Abteilungen und '
       + 'unterschiedlichen Zuständigkeiten.',

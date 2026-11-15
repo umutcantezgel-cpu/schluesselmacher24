@@ -96,7 +96,7 @@ export default async function VorOrtPage() {
         rubrik={rubrik}
         bereich="service-und-termin"
         eyebrow="Vor Ort"
-        title="Was wir direkt bei Ihnen erledigen"
+        title="Arbeiten vor Ort und in unserer Werkstatt"
         lead="Nicht jede Arbeit geht per Versand. Hier lesen Sie, was vor Ort passiert und was Sie dafür vorbereiten sollten."
         crumbs={[
           { href: '/service-und-termin', label: 'Service und Termin' },
@@ -198,7 +198,7 @@ export default async function VorOrtPage() {
             <div className="mt-8 border-y border-border py-6">
               <p className="text-title-sm font-semibold text-foreground">Terminvorlauf</p>
               <p className="mt-2 max-w-measure text-small text-foreground-muted">
-                Termine für Autoschlüssel gibt es in der Regel frühestens nach etwa{' '}
+                Termine für Autoschlüssel gibt es in der Regel ab etwa{' '}
                 {settings.booking.leadTimeDays} Tagen. So können wir die Teile für Ihr Fahrzeug
                 sicher besorgen und vorbereiten.
               </p>

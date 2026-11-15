@@ -284,8 +284,8 @@
   {
     "route": "schluessel-einschicken",
     "headline": "Schlüssel einschicken",
-    "subline": "Melden Sie die Einsendung an, drucken Sie den Begleitschein aus und schicken Sie uns den Schlüssel. Original und Kopien kommen zu Ihnen zurück.",
-    "intro": "Sie müssen nicht zu uns kommen. Schicken Sie Ihren Schlüssel aus ganz Deutschland an unsere Werkstatt. Sie können ihn auch zuerst anhand von drei Fotos prüfen lassen. Dann bleibt er vorerst bei Ihnen.",
+    "subline": "Schlüsseldienst online, ohne Anfahrt. Sie melden die Einsendung an und schicken den Schlüssel mit Begleitschein. Original und Kopien kommen zu Ihnen zurück.",
+    "intro": "Kein Schlüsseldienst in der Nähe oder keine Zeit für den Weg? Dann schicken Sie Ihren Schlüssel aus ganz Deutschland an unsere Werkstatt. Sie können ihn auch zuerst anhand von drei Fotos prüfen lassen. Dann bleibt er vorerst bei Ihnen.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -365,7 +365,7 @@
   {
     "route": "schliessanlagen",
     "headline": "Mechanische Schließanlagen",
-    "subline": "Wir planen Ihre Schließanlage mit Ihnen, von der Zentralschließung bis zur Generalhauptschlüsselanlage.",
+    "subline": "Wir planen Ihre Schließanlage mit Ihnen, von der Gleichschließung bis zur Generalhauptschlüsselanlage.",
     "intro": "Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Arten in einfacher Sprache. Ihre Anlage planen wir so, dass sie später erweitert werden kann.",
     "sections": [],
     "faq": [],

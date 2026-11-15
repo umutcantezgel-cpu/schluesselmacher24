@@ -61,6 +61,29 @@ describe('sucheFahrzeuge', () => {
   it('erfindet keine Treffer für Unbekanntes', () => {
     expect(sucheFahrzeuge('Traktor Lanz', KATALOG)).toEqual([]);
   });
+
+  it('filtert nach Fahrzeugklasse; Reihen ohne Klasse sind Pkw (A-047)', () => {
+    const gemischt = [...KATALOG, reihe('Kawasaki', 'Z900', 30_000, { klasse: 'kraftrad' }), reihe('Volkswagen', 'Golfmobil', 10, { klasse: 'kraftrad' })];
+    expect(sucheFahrzeuge('kawasaki', gemischt, { klasse: 'pkw' })).toEqual([]);
+    expect(sucheFahrzeuge('kawasaki z900', gemischt, { klasse: 'kraftrad' })[0]?.reihe.reihe).toBe('Z900');
+    expect(sucheFahrzeuge('golf', gemischt, { klasse: 'kraftrad' }).map((t) => t.reihe.reihe)).not.toContain('Golf');
+    expect(sucheFahrzeuge('golf', gemischt, { klasse: 'pkw' })[0]?.reihe.reihe).toBe('Golf');
+    expect(sucheFahrzeuge('kawasaki', gemischt).length).toBe(1);
+  });
+
+  it('nutzt gepflegte Generationen als Treffertext', () => {
+    // Erfundene Bezeichnung nur für den Test (keine Fahrzeugdaten, R4).
+    const mitGeneration = [...KATALOG, reihe('Testmarke', 'Alpha', 5, { generationen: [{ bezeichnung: 'Zeta Neu', quelle: 'Test' }] })];
+    expect(sucheFahrzeuge('zeta neu', mitGeneration)[0]?.reihe.reihe).toBe('Alpha');
+    expect(sucheFahrzeuge('zeta neu', KATALOG)).toEqual([]);
+  });
+
+  it('findet zu einer Untermarke auch Reihen der Stammmarke, eigene zuerst (FA-06-U3)', () => {
+    const mitUntermarke = [...KATALOG, reihe('SEAT', 'Leon', 400_000), reihe('SEAT', 'Born', 5_000), reihe('Cupra', 'Formentor', 50_000)];
+    expect(sucheFahrzeuge('cupra formentor', mitUntermarke)[0]?.reihe.marke).toBe('Cupra');
+    expect(sucheFahrzeuge('cupra born', mitUntermarke)[0]?.reihe).toMatchObject({ marke: 'SEAT', reihe: 'Born' });
+    expect(sucheFahrzeuge('cupra', mitUntermarke)[0]?.reihe.marke).toBe('Cupra');
+  });
 });
 
 describe('Katalog', () => {
@@ -91,6 +114,8 @@ describe('Katalog', () => {
       gehaeuse: 'verfuegbar',
       leistungen: ['nachmachen', 'programmieren'],
       alias: ['Golf Variant'],
+      klasse: 'pkw',
+      generationen: [{ bezeichnung: 'Testgeneration', baujahrVon: 2012, baujahrBis: 2019, quelle: 'Test' }, { bezeichnung: 'Ohne Jahre', quelle: 'Test' }],
     });
     const zurueck = fahrzeugreiheZuSeite({ ...(fahrzeugreiheZuPayload(voll) as object), id: 1, updatedAt: '', createdAt: '' } as never);
     expect(zurueck).toEqual(voll);

@@ -31,7 +31,7 @@ export interface Kennzahl {
 
 export const KENNZAHLEN: Kennzahl[] = [
   { id: 'bestellungen', label: 'Bestellungen', passt: (v) => v.art === 'bestellung' },
-  { id: 'fotoanfragen', label: 'Fotoanfragen (Schlüssel nach Vorlage)', passt: (v) => v.bereich === 'schluessel-nach-vorlage' },
+  { id: 'fotoanfragen', label: 'Anfragen Schlüssel nach Vorlage', passt: (v) => v.bereich === 'schluessel-nach-vorlage' },
   { id: 'terminanfragen', label: 'Terminanfragen', passt: (v) => v.art === 'termin' },
   { id: 'projektanfragen', label: 'Projektanfragen', passt: (v) => v.art === 'projekt' },
   { id: 'partneranmeldungen', label: 'Partneranmeldungen', passt: (v) => v.art === 'partner' },

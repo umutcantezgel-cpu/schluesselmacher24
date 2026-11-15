@@ -117,6 +117,7 @@ export function leseXlsx(puffer, nurBlaetter) {
     const pfad = /\bTarget="([^"]+)"/.exec(m[1])?.[1];
     if (id && pfad) ziel.set(id, pfad.startsWith('/') ? pfad.slice(1) : `xl/${pfad}`);
   }
+  /** @type {Record<string, Array<Record<string, string>>>} */
   const blaetter = {};
   for (const m of mappe.matchAll(/<sheet\b([^>]*)\/>/g)) {
     const name = xmlText(/\bname="([^"]+)"/.exec(m[1])?.[1] ?? '');
@@ -176,6 +177,7 @@ export function leseHandelsnamen(zeilen, blatt, spalten) {
     if (!fund) throw new Error(`${blatt}: Spalte „${text}“ fehlt im Kopf`);
     spalteVon[schluesselName] = fund[0];
   }
+  /** @type {Array<{ zeile: number, hersteller: string, handelsname: string, typ: string, [wert: string]: any }>} */
   const typen = [];
   const summen = new Map();
   let hersteller = null;
@@ -337,6 +339,7 @@ export function kraftradName(handelsname, kbaHersteller, marke) {
 export function kraftraeder(blatt, quelle = FZ2_QUELLE) {
   const { typen, insgesamt } = leseHandelsnamen(blatt, 'FZ 2.6', { anzahl: 'Deutschland' });
   const gruppen = new Map();
+  /** @type {Record<string, any>} */
   const zaehler = { typzeilen: typen.length, sammel: 0, sammelBestand: 0, ohneName: 0, ohneNameBestand: 0, abgelehnt: [] };
   const herstellerNamen = new Map();
   for (const t of typen) {
@@ -632,11 +635,12 @@ export function reihenSchluessel(reihen) {
  * Entspricht ein Teil eines Handelsnamens einer vorhandenen Reihe? Vergleich auf kompakten Namen
  * (klein, ohne Akzente, ohne Zeichen und Leerzeichen):
  *   a) gleich, oder der Teil beginnt mit dem Reihennamen, wenn dieser mindestens zwei Zeichen hat
- *      („GOLF VARIANT“ → Golf, „XC90 T8“ → XC90); ein Reihenname aus einem Zeichen nur mit Wechsel
+ *      („GOLF VARIANT“ → Golf, „XC90 T8“ → XC90, aber „400“ nicht → 40); ein Reihenname aus einem Zeichen nur mit Wechsel
  *      zwischen Ziffer und Buchstabe („3 CABRIO“ → DS 3, aber „E:NY1“ nicht → Honda e);
  *   b) Klassen: „A 180“, „E 220 D“ → A-Klasse, E-Klasse (Buchstaben vor der ersten Ziffer);
  *   c) BMW-Reihen: „320D“ → 3er (erste Ziffer, dann zwei Ziffern);
- *   d) reine Zahlenreihen mit Buchstaben davor: „V40“, „S 60“ → Volvo 40, 60.
+ *   d) reine Zahlenreihen ab zwei Ziffern mit Buchstaben davor: „V40“, „S 60“ → Volvo 40, 60 (aber „M3“
+ *      nicht → DS 3).
  */
 export function entsprichtReihe(teil, schluesselListe) {
   const p = kompakt(teil);
@@ -644,11 +648,12 @@ export function entsprichtReihe(teil, schluesselListe) {
   for (const s of schluesselListe) {
     if (p === s.k) return s.reihe;
     if (s.genau) continue;
-    if (s.k.length >= 2 && p.startsWith(s.k)) return s.reihe;
+    // Endet der Reihenname auf eine Ziffer, ist eine weitere Ziffer ein anderes Modell („400“ ist nicht Volvo 40).
+    if (s.k.length >= 2 && p.startsWith(s.k) && !(/\d$/.test(s.k) && /\d/.test(p.charAt(s.k.length)))) return s.reihe;
     if (s.k.length === 1 && p.startsWith(s.k) && /\d/.test(s.k) !== /\d/.test(p[1] ?? '')) return s.reihe;
     if (s.klasse && new RegExp(`^${s.klasse}\\d`).test(p)) return s.reihe;
     if (s.er && new RegExp(`^${s.er}\\d\\d`).test(p)) return s.reihe;
-    if (/^\d+$/.test(s.k) && new RegExp(`^[a-z]{1,2}${s.k}(?!\\d)`).test(p)) return s.reihe;
+    if (/^\d{2,}$/.test(s.k) && new RegExp(`^[a-z]{1,2}${s.k}(?!\\d)`).test(p)) return s.reihe;
   }
   return null;
 }
@@ -710,6 +715,7 @@ export function pkwErgaenzung(blatt, katalog, quelle = FZ2_QUELLE) {
   const schluesselJeMarke = new Map([...vorhandeneMarken].map(([m, rs]) => [m, reihenSchluessel(rs)]));
   const alleSchluessel = new Map();
   for (const [m, liste] of schluesselJeMarke) for (const s of liste) alleSchluessel.set(s.k, [...(alleSchluessel.get(s.k) ?? []), m]);
+  /** @type {Record<string, any>} */
   const zaehler = {
     typzeilen: typen.length, sammel: 0, ohneName: 0, wohnmobil: 0, wohnmobilBestand: 0, entspricht: 0, andereMarke: [],
     nurMarke: 0, ausstattung: [], ohneMarke: [], neu: 0,
@@ -829,6 +835,12 @@ export function pkwErgaenzung(blatt, katalog, quelle = FZ2_QUELLE) {
 /* ---------- Zusammenführen ------------------------------------------------ */
 
 const sortierer = new Intl.Collator('de', { numeric: true, sensitivity: 'base' });
+/** Reihenfolge der Klassen im Katalog wie in FAHRZEUGKLASSEN (src/lib/fahrzeuge/katalog.ts): erst Pkw. */
+export const KLASSEN_FOLGE = ['pkw', 'kraftrad'];
+const klassenRang = (klasse) => {
+  const rang = KLASSEN_FOLGE.indexOf(klasse ?? 'pkw');
+  return rang < 0 ? KLASSEN_FOLGE.length : rang;
+};
 
 /**
  * Neuer Katalog: vorhandene Zeilen (ohne frühere FZ-2-Zeilen, mit Klasse „pkw“, wo sie fehlt) und die
@@ -845,7 +857,7 @@ export function fuehreZusammen(katalog, neue) {
   }
   return [...bleibende, ...neue].sort(
     (a, b) =>
-      sortierer.compare(a.klasse ?? 'pkw', b.klasse ?? 'pkw')
+      klassenRang(a.klasse) - klassenRang(b.klasse)
       || sortierer.compare(a.marke, b.marke)
       || sortierer.compare(a.reihe, b.reihe)
       || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0),

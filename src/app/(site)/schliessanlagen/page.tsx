@@ -110,7 +110,8 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
     title: 'Gewerbe',
     body:
       'Büro, Werkstatt, Lager oder Serverraum. Nicht jede Person braucht jede Tür. Bei einer '
-      + 'Hauptschlüsselanlage (HS) öffnet jeder Schlüssel nur die Türen, für die sein Nutzer zuständig ist.',
+      + 'Hauptschlüsselanlage (HS) öffnet jeder Schlüssel nur die Türen, die sein Besitzer braucht. '
+      + 'Der Hauptschlüssel öffnet alle Türen.',
     href: '/schliessanlagen/konfigurator',
     linkLabel: 'Schließanlage konfigurieren',
   },
@@ -138,7 +139,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
     title: 'Mehrere Liegenschaften',
     body:
       'Mehrere Standorte oder eine größere Liegenschaft. Bei einer Generalhauptschlüsselanlage '
-      + '(GHS) hat jedes Gebäude einen eigenen Hauptschlüssel. Der Generalhauptschlüssel öffnet alle.',
+      + '(GHS) hat jedes Gebäude einen eigenen Hauptschlüssel. Der Generalhauptschlüssel öffnet alle Türen.',
     href: '/schliessanlagen/konfigurator',
     linkLabel: 'Schließanlage konfigurieren',
   },
@@ -241,8 +242,8 @@ const FALLBACK_FAQ = [
     answer:
       'Türen in Flucht- und Rettungswegen müssen sich in Fluchtrichtung jederzeit ohne Schlüssel '
       + 'öffnen lassen. Für Notausgänge gilt DIN EN 179, für Paniktüren DIN EN 1125. Dafür gibt es '
-      + 'eigene Verschlüsse und passende Zylinder. Kennzeichnen Sie solche Türen im Konfigurator. Dann berücksichtigen wir '
-      + 'sie im Schließplan.',
+      + 'eigene Verschlüsse und passende Zylinder. Kennzeichnen Sie solche Türen im Konfigurator. '
+      + 'Dann berücksichtigen wir sie im Schließplan.',
   },
   {
     question: 'Wie pflege ich die Zylinder?',
@@ -276,7 +277,7 @@ export default async function SchliessanlagenPage() {
         eyebrow="Leistungsbereich"
         bereich={ROUTE}
         title={page?.headline ?? 'Mechanische Schließanlagen'}
-        lead={page?.subline ?? 'Wir planen Ihre Schließanlage mit Ihnen, von der Zentralschließung bis zur Generalhauptschlüsselanlage.'}
+        lead={page?.subline ?? 'Wir planen Ihre Schließanlage mit Ihnen, von der Gleichschließung bis zur Generalhauptschlüsselanlage.'}
         crumbs={[{ href: '/schliessanlagen', label: 'Schließanlagen' }]}
         /* Blickfang im Kopf: der Schließplan in Stufe HS, ohne Auswahlknöpfe. */
         visual={

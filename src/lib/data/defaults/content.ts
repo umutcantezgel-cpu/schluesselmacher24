@@ -225,7 +225,7 @@ export function pages(): PageContent[] {
       route: 'schliessanlagen',
       headline: 'Mechanische Schließanlagen',
       subline:
-        'Wir planen Ihre Schließanlage mit Ihnen, von der Zentralschließung bis zur '
+        'Wir planen Ihre Schließanlage mit Ihnen, von der Gleichschließung bis zur '
         + 'Generalhauptschlüsselanlage.',
       intro:
         'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Arten in '

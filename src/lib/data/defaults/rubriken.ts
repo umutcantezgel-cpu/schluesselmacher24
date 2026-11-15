@@ -196,7 +196,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Fertigung und Versand",
-          text: "Danach fertigen wir und schicken den Schlüssel zu Ihnen. Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und Vorgangsnummer in der Freigabe. Während der Fotoanfrage senden Sie bitte nichts unaufgefordert ein.",
+          text: "Danach fertigen wir und schicken den Schlüssel zu Ihnen. Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und Vorgangsnummer in der Freigabe. Solange wir Ihre Anfrage prüfen, senden Sie bitte nichts unaufgefordert ein.",
           icon: "lieferung",
         },
       ],

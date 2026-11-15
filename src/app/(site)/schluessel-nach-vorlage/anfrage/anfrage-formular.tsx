@@ -44,19 +44,19 @@ const STEPS: FlowStep[] = [
   {
     id: 'foto-spitze',
     title: 'Foto von vorne auf Spitze und Profil',
-    hint: 'Aus dieser Ansicht bestimmen wir den Profilquerschnitt und damit den passenden Rohling.',
+    hint: 'Daran erkennen wir das Profil und damit den passenden Rohling, also den ungefrästen Schlüssel.',
     short: 'Spitze',
   },
   {
     id: 'hersteller',
     title: 'Hersteller oder Marke',
-    hint: 'Falls bekannt. Ist nichts lesbar, wählen Sie einfach „nicht bekannt“.',
+    hint: 'Falls bekannt. Ist nichts lesbar, wählen Sie „Hersteller ist nicht bekannt oder nicht lesbar“.',
     short: 'Hersteller',
   },
   {
     id: 'nummern',
     title: 'Nummern und Beschriftungen',
-    hint: 'Alles, was auf dem Schlüssel steht — Zahlen, Buchstaben, Punkte, Striche.',
+    hint: 'Alles, was auf dem Schlüssel steht: Zahlen, Buchstaben, Punkte oder Striche.',
     short: 'Nummern',
   },
   {
@@ -128,8 +128,8 @@ const HINT_FOTO: InfoHint = {
   title: 'Warum drei Aufnahmen?',
   body:
     'Vorderseite und Rückseite zeigen die Form des Barts und die Beschriftung. Die Aufnahme '
-    + 'von vorne zeigt den Profilquerschnitt. Erst alle drei zusammen ergeben eine sichere '
-    + 'Bestimmung des Rohlings.',
+    + 'von vorne zeigt das Profil im Querschnitt. Erst mit allen drei Fotos bestimmen wir den '
+    + 'passenden Rohling sicher.',
 };
 
 const HINT_HERSTELLER: InfoHint = {
@@ -137,7 +137,7 @@ const HINT_HERSTELLER: InfoHint = {
   body:
     'Meist auf dem Schlüsselkopf, seltener auf dem Bart oder auf dem Schloss selbst. Häufig '
     + 'ist es ein kurzer Schriftzug oder ein Symbol. Wenn Sie nichts finden, ist das kein '
-    + 'Hindernis — wir bestimmen den Schlüssel dann über Profil und Form.',
+    + 'Hindernis. Wir bestimmen den Schlüssel dann über Profil und Form.',
 };
 
 const HINT_NUMMERN: InfoHint = {
@@ -211,7 +211,7 @@ const EXAMPLE_KARTE: ImageSlot = {
 
 const AUFNAHME_HINWEISE = [
   'Scharf stellen und erst danach auslösen.',
-  'Helles, gleichmäßiges Licht — kein direkter Blitz, keine Spiegelungen.',
+  'Helles, gleichmäßiges Licht, ohne direkten Blitz und ohne Spiegelungen.',
   'Prägungen und Beschriftungen müssen lesbar sein.',
   'Schlüssel formatfüllend aufnehmen, Rand nur knapp mitnehmen.',
 ];
@@ -335,7 +335,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
             value:
               [data.strasse.trim(), [data.plz.trim(), data.ort.trim()].filter(Boolean).join(' ')]
                 .filter(Boolean)
-                .join(', ') || 'folgt bei Auftragserteilung',
+                .join(', ') || 'erst bei Auftragserteilung nötig',
           },
           { label: 'Versandland', value: landLabel || 'keine Angabe' },
         ],
@@ -417,7 +417,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
         marke="Anfrage eingegangen"
         titel="Ihre Anfrage liegt uns vor"
         text={
-          'Wir prüfen Ihre Fotos und melden uns mit dem Ergebnis: ob eine Anfertigung möglich ist und was sie kostet. '
+          'Wir prüfen Ihre Fotos. Dann sagen wir Ihnen, ob wir den Schlüssel anfertigen können und was er kostet. '
           + 'Ein Vertrag ist damit noch nicht geschlossen, und die Prüfung ist noch keine Fertigungszusage.'
         }
         reference={result.reference ?? ''}
@@ -441,11 +441,11 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
     'foto-vorderseite': 'Bitte fügen Sie ein Foto der Vorderseite hinzu.',
     'foto-rueckseite': 'Bitte fügen Sie ein Foto der Rückseite hinzu.',
     'foto-spitze': 'Bitte fügen Sie ein Foto von vorne auf die Spitze hinzu.',
-    hersteller: 'Bitte tragen Sie den Hersteller ein oder wählen Sie „nicht bekannt“.',
+    hersteller: 'Bitte tragen Sie den Hersteller ein oder wählen Sie „Hersteller ist nicht bekannt oder nicht lesbar“.',
     nummern: karteFehlt
       ? 'Bitte laden Sie ein Foto Ihrer Sicherungskarte hoch.'
-      : 'Bitte übertragen Sie die Beschriftung oder wählen Sie „keine erkennbar“ und beantworten Sie die Frage zur Sicherungskarte.',
-    kontakt: 'Bitte füllen Sie Vorname, Nachname, E-Mail, Telefon und Versandland aus.',
+      : 'Bitte übertragen Sie die Beschriftung oder wählen Sie „Auf dem Schlüssel ist nichts erkennbar“. Beantworten Sie außerdem die Frage nach der Sicherungskarte.',
+    kontakt: 'Bitte füllen Sie Vorname, Nachname, E-Mail und Telefon aus. Wenn Sie eine Postleitzahl angeben, muss sie fünfstellig sein.',
   };
 
   return (
@@ -453,7 +453,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       schutz={schutz}
       abschlussHinweis={<AnfrageHinweis />}
       flow={shellFlow}
-      title="Schlüssel nach Vorlage — Anfrage"
+      title="Schlüssel nach Vorlage anfragen"
       submitLabel="Anfrage absenden"
       onSubmit={handleSubmit}
       submitting={submitting}
@@ -483,7 +483,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
         <FotoSchritt
           id="foto-rueckseite"
           label="Rückseite des Schlüssels"
-          description="Wenden Sie den Schlüssel und fotografieren Sie erneut von oben — gleicher Abstand, gleicher Untergrund."
+          description="Wenden Sie den Schlüssel und fotografieren Sie ihn erneut von oben, mit gleichem Abstand und gleichem Untergrund."
           example={EXAMPLE_BACK}
           files={fotoRueckseite}
           onChange={setFotoRueckseite}
@@ -545,13 +545,13 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
         <div className="max-w-3xl space-y-5">
           <Alert tone="info" title="Bitte zusätzlich fotografieren">
             Übertragen Sie die Zeichen hier als Text <strong>und</strong> fotografieren Sie sie
-            deutlich. Bei kleinen Prägungen hilft eine Nahaufnahme, auf der jede Ziffer einzeln
-            lesbar ist — so lassen sich Verwechslungen wie 0 und O oder 1 und 7 ausschließen.
+            deutlich. Bei kleinen Prägungen hilft eine Nahaufnahme, auf der jede Ziffer lesbar
+            ist. So vermeiden wir Verwechslungen wie 0 und O oder 1 und 7.
           </Alert>
 
           <Field
             label="Nummern und Beschriftungen"
-            hint="Jede Zeile eine Fundstelle, zum Beispiel: Kopf: AB 1234 — Bart: 7."
+            hint="Jede Stelle in eine eigene Zeile, zum Beispiel „Kopf: AB 1234“ und darunter „Bart: 7“."
             info={HINT_NUMMERN}
           >
             {({ id, describedBy }) => (
@@ -579,7 +579,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
               })
             }
             title="Auf dem Schlüssel ist nichts erkennbar"
-            description="Auch dann ist eine Bestimmung häufig möglich — sie dauert nur etwas länger."
+            description="Auch dann können wir den Schlüssel oft bestimmen. Es dauert nur etwas länger."
           />
 
           <div className="border-t border-border pt-5">
@@ -601,7 +601,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
             <legend className="text-body font-semibold text-foreground">Gibt es zu Ihrem Schlüssel eine Sicherungskarte?</legend>
             <p className="text-small text-foreground-muted">
               Die Sicherungskarte gehört zu Schlüsseln mit geschütztem Profil, etwa in Schließanlagen. Solche Schlüssel
-              fertigen wir nur gegen die Karte.
+              fertigen wir nur gegen die Karte. Sie zeigt, dass Sie den Schlüssel nachmachen lassen dürfen.
             </p>
             {KARTEN_ANTWORTEN.map((antwort) => (
               <OptionCard
@@ -846,7 +846,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
             || fotoRueckseite.length === 0
             || fotoSpitze.length === 0) && (
             <Alert tone="warning" title="Fotos fehlen">
-              Mindestens eine der drei Pflichtaufnahmen fehlt — das passiert zum Beispiel, wenn
+              Mindestens eine der drei Pflichtaufnahmen fehlt. Das passiert zum Beispiel, wenn
               die Seite zwischendurch neu geladen wurde. Fotos werden aus Datenschutzgründen
               nicht zwischengespeichert.
               <span className="mt-3 block">

@@ -571,7 +571,7 @@ export default async function CylinderOverviewPage() {
           nummer="06"
           eyebrow="Schutz und Optionen"
           title="Was Sie zusätzlich festlegen können"
-          lead="Diese Optionen wählen Sie im dritten Schritt des Konfigurators. Jede Option können Sie einzeln abwählen."
+          lead="Diese Optionen wählen Sie im dritten Schritt des Konfigurators. Dazu gehört die Sicherungskarte, also ein Nachweis, ohne den niemand Nachschlüssel bestellen kann. Jede Option können Sie einzeln abwählen."
         />
 
         <ul className="mt-10 border-t border-border">

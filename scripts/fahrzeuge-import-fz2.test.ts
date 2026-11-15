@@ -11,6 +11,7 @@ import {
   handelsnameAnzeige,
   herstellerAnzeige,
   istSammelzeile,
+  KLASSEN_FOLGE,
   kraftradName,
   kraftraeder,
   leseHandelsnamen,
@@ -24,6 +25,7 @@ import {
   STANDARD_XLSX,
   UNTERMARKEN,
 } from './fahrzeuge-import-fz2.mjs';
+import { FAHRZEUGKLASSEN } from '../src/lib/fahrzeuge/katalog';
 import { UNTERMARKEN as SUCHE_UNTERMARKEN } from '../src/lib/fahrzeuge/suche';
 
 /* Kleine Zip-Datei im Aufbau einer xlsx (G4: erfundene Inhalte), Einträge gespeichert oder komprimiert. */
@@ -116,7 +118,7 @@ describe('Tabellen nach Herstellern und Handelsnamen', () => {
   it('liest Fortsetzungszeilen und prüft die Summen des KBA', () => {
     const { typen, insgesamt } = leseHandelsnamen(blattKraftrad(), 'FZ 2.6', { anzahl: 'Deutschland' });
     expect(insgesamt.anzahl).toBe(1046);
-    expect(typen.map((t: { handelsname: string; anzahl: number }) => [t.handelsname, t.anzahl])).toEqual([
+    expect(typen.map((t) => [t.handelsname, t.anzahl])).toEqual([
       ['', 5],
       ['ALPHA 125', 100],
       ['ALPHA 125', 50],
@@ -202,9 +204,9 @@ describe('Krafträder aus FZ 2.6', () => {
 
   it('nimmt den Herstellernamen vorn weg und lässt einen gekürzten letzten Teil fallen', () => {
     expect(kraftradName('KTM 125 DUKE', 'KTM (A)', 'KTM')).toEqual({ reihe: '125 Duke', weitere: [] });
-    expect(kraftradName('BMW R1100 GS, BMW R1100 R', 'BMW', 'BMW')).toEqual({ reihe: 'R1100 GS', weitere: ['R1100 R'] });
-    // 25 Zeichen: Das KBA hat gekürzt, „R 120“ ist kein Name.
-    expect(kraftradName('R 1200 GS Adventure, R 120', 'BMW', 'BMW')).toEqual({ reihe: 'R 1200 GS Adventure', weitere: [] });
+    expect(kraftradName('BMW R850 GS, BMW R850 R', 'BMW', 'BMW')).toEqual({ reihe: 'R850 GS', weitere: ['R850 R'] });
+    // Genau 25 Zeichen: Das KBA hat gekürzt, „R 12“ ist kein Name.
+    expect(kraftradName('R 1200 GS Adventure, R 12', 'BMW', 'BMW')).toEqual({ reihe: 'R 1200 GS Adventure', weitere: [] });
   });
 });
 
@@ -303,6 +305,10 @@ describe('Zusammenführen', () => {
     const neu = fuehreZusammen(alt, [zeile('c', FZ2_QUELLE, 'kraftrad')]);
     expect(neu.map((r: { id: string; klasse: string }) => [r.id, r.klasse])).toEqual([['a', 'pkw'], ['c', 'kraftrad']]);
     expect(() => fuehreZusammen(alt, [zeile('a', FZ2_QUELLE, 'pkw')])).toThrow(/doppelt/);
+  });
+
+  it('ordnet die Klassen wie die Auswahlliste des Backends', () => {
+    expect(KLASSEN_FOLGE).toEqual(FAHRZEUGKLASSEN.map((k) => k.value));
   });
 });
 

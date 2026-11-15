@@ -13,6 +13,14 @@ Für jede Quelle: Zweck · Inhalt · Lizenz und Nutzung · Stand · Abruf · Abl
 - Abdeckung: 348 größte Reihen = 95,004 % (Reserve 1.961 Fahrzeuge), 535 Reihen = 97 %, 26 Marken für 95 %. Ziel des Katalogs: alle 649 benannten Reihen, mindestens die 535 für 97 %.
 - Lücken: kein Baujahr, keine Generation, Markennamen als Präfix in Großbuchstaben (Aliasliste nötig: VW → Volkswagen, MERCEDES → Mercedes-Benz, SKODA → Škoda, SSANGYONG → KGM). Wortlaut der Datenlizenz-Seite nicht abgerufen (robots.txt sperrt /DE/Service/).
 
+### KBA FZ 2 · Bestand an Kraftfahrzeugen und Kraftfahrzeuganhängern nach Herstellern und Handelsnamen (FA-KERN-01, A-047)
+- Zweck: Fahrzeugklasse Kraftrad (Motorräder, Leichtkrafträder, zugelassene Roller) für den Motorradweg; seltene Automarken und Handelsnamen, die FZ 12 nicht führt.
+- Inhalt: Stichtag 1. Januar 2026, veröffentlicht 30. Juli 2026, jährlich. Blätter FZ 2.1 bis 2.4 Pkw, FZ 2.5 und 2.6 Krafträder, FZ 2.7 bis 2.10 Nutzfahrzeuge, FZ 2.11 Anhänger. Genutzt: FZ 2.2 (Pkw nach Herstellern, Handelsnamen und Merkmalen, 16.524 Typzeilen) und FZ 2.6 (Krafträder nach Herstellern, Handelsnamen und Bundesländern, 2.887 Typzeilen, 5.071.468 Krafträder). Die Prüfsummen des KBA je Hersteller und insgesamt gehen beim Einlesen auf.
+- Lizenz: Blatt „Impressum“, Zeile „Nutzungsbedingungen“, wörtlich: „© Kraftfahrt-Bundesamt, Flensburg“ und „Datenlizenz Deutschland - Namensnennung - Version 2.0“. Quellenvermerk je Zeile in content/fahrzeugkatalog.json: „Quelle: Kraftfahrt-Bundesamt (KBA), FZ 2, Stand 1.1.2026, © Kraftfahrt-Bundesamt, Flensburg, Datenlizenz Deutschland - Namensnennung - Version 2.0“; sichtbar am Ende der Fahrzeugsuche, der Markenübersicht und des Fahrzeugschritts im Motorradweg.
+- Abruf: https://www.kba.de/SharedDocs/Downloads/DE/Statistik/Fahrzeuge/FZ2/fz2_2026.xlsx (Produktseite https://www.kba.de/DE/Statistik/Produktkatalog/produkte/Fahrzeuge/fz2), SHA-256 8dc0b15cfe8a6eed1fb2062b85e0d47141303032c6c8a3ad1e2fe0cfb3bd49a4, 4.680.834 Byte.
+- Ablage: `_werkstatt/ausbau/daten/kba/fz2_2026.xlsx` (nicht committet). Übernahme mit `node scripts/fahrzeuge-import-fz2.mjs [--trocken] [--liste]` direkt aus der xlsx-Datei (Bordmittel von Node, keine abgeleitete CSV).
+- Lücken: kein Baujahr, keine Generation; Handelsnamen auf 25 Zeichen gekürzt; die Sammelzeilen „SONSTIGE/NICHT GETYPT“ in FZ 2.6 (79 Zeilen, 1.438.872 Krafträder) nennen kein Modell; keine E-Scooter, Mofas mit Versicherungskennzeichen, Seniorenmobile und Fahrräder.
+
 ### Wikidata · Automodelle mit Hersteller und Bauzeitraum
 - Zweck: Bauzeiträume je Generation, wo vorhanden.
 - Lizenz: strukturierte Daten CC0.

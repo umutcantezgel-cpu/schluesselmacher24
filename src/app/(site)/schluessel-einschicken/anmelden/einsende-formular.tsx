@@ -236,8 +236,8 @@ export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
           <div className="mt-6 rounded-lg border border-border bg-surface p-5">
             <p className="text-body font-semibold text-foreground">Begleitschein</p>
             <p className="mt-1 text-small leading-relaxed text-foreground-muted">
-              Ausdrucken oder die Anschrift abschreiben. Den Begleitschein finden Sie auch auf Ihrer Vorgangsseite; den Link
-              dorthin schicken wir Ihnen per E-Mail.
+              Drucken Sie ihn aus oder schreiben Sie die Anschrift ab. Den Begleitschein finden Sie auch auf Ihrer Vorgangsseite.
+              Den Link dorthin schicken wir Ihnen per E-Mail.
             </p>
             <Button className="mt-4" onClick={() => speichern(schein)}>
               Begleitschein herunterladen (PDF)
@@ -301,7 +301,7 @@ export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
             </div>
           </div>
           <p className="text-small text-foreground-muted">
-            Autoschlüssel und Transponder schicken Sie bitte nicht hier ein; dafür gibt es den Bereich Autoschlüssel.
+            Autoschlüssel und Transponder schicken Sie bitte nicht hier ein. Dafür gibt es den Bereich Autoschlüssel.
           </p>
           <Field label="Beschriftung auf dem Schlüssel (freiwillig)" hint="Nummer oder Hersteller, falls etwas eingeprägt ist.">
             {({ id, describedBy }) => (
@@ -335,7 +335,7 @@ export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
           <legend className="text-body font-semibold text-foreground">Gibt es zu Ihrem Schlüssel eine Sicherungskarte?</legend>
           <p className="text-small text-foreground-muted">
             Die Sicherungskarte gehört zu Schlüsseln mit geschütztem Profil, etwa in Schließanlagen. Solche Schlüssel fertigen wir
-            nur gegen die Karte.
+            nur gegen die Karte. Sie zeigt, dass Sie den Schlüssel nachmachen lassen dürfen.
           </p>
           {KARTEN_ANTWORTEN.map((antwort) => (
             <OptionCard

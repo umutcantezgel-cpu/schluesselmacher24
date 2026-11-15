@@ -36,7 +36,7 @@ const BASE_LINKS: NavLink[] = [
   {
     href: '/schluessel-nach-vorlage',
     label: 'Kein Code vorhanden? Schlüssel nach Vorlage',
-    description: 'Drei Fotos hochladen, wir prüfen Machbarkeit und Preis.',
+    description: 'Mit drei Fotos prüfen wir, ob wir den Schlüssel nachfertigen können.',
   },
   {
     href: '/ratgeber/schluesselcode-finden',
@@ -128,7 +128,7 @@ export default async function SchluesselNachCodePage() {
         title={page?.headline ?? 'Schlüssel nach Code'}
         lead={
           ohneProdukte
-            ? 'Code nennen, wir prüfen ihn und melden uns. Ihr Originalschlüssel bleibt bei Ihnen.'
+            ? 'Sie nennen uns den Code Ihres Schlosses, wir prüfen ihn und melden uns. Ihr Originalschlüssel bleibt bei Ihnen.'
             : (page?.subline ?? 'Code eingeben, Stückzahl wählen, bestellen.')
         }
         crumbs={[{ href: '/schluessel-nach-code', label: 'Schlüssel nach Code' }]}
@@ -161,9 +161,8 @@ export default async function SchluesselNachCodePage() {
           <div className="min-w-0">
             <p className="text-foreground">Ihr Originalschlüssel bleibt bei Ihnen</p>
             <p className="mt-2">
-              In diesem Bereich ist keine Einsendung des Originalschlüssels nötig. Wir fertigen
-              den Schlüssel allein anhand des Codes, den Sie uns nennen. Sie können Ihr Schloss
-              also weiter benutzen, während der Nachschlüssel entsteht.
+              Sie müssen Ihren Schlüssel nicht einschicken. Wir fertigen den neuen Schlüssel nur
+              nach dem Code, den Sie uns nennen. So können Sie Ihr Schloss weiter benutzen.
             </p>
             <p className="mt-2">
               Kein Code vorhanden?{' '}
@@ -172,7 +171,7 @@ export default async function SchluesselNachCodePage() {
                 prefetch={false}
                 className="font-semibold text-primary hover:underline"
               >
-                Dann geht es über Schlüssel nach Vorlage weiter.
+                Dann hilft Ihnen Schlüssel nach Vorlage.
               </Link>
             </p>
           </div>
@@ -189,17 +188,18 @@ export default async function SchluesselNachCodePage() {
             title="Code anfragen"
             lead={
               page?.intro
-              ?? 'Viele Schlösser tragen einen aufgedruckten oder eingeprägten Code. Mit diesem Code fertigen wir den passenden Schlüssel an.'
+              ?? 'Viele Schlösser tragen einen aufgedruckten oder eingeprägten Code. Nach diesem Code fertigen wir den passenden Schlüssel.'
             }
           />
           <div role="note" className="mt-8 flex max-w-measure items-start gap-3 border-t border-border pt-6">
             <GlyphInfo size={18} className="mt-1 shrink-0 text-foreground-muted" />
             <div className="min-w-0">
-              <p className="text-body font-semibold text-foreground">Die Codeprodukte werden gerade eingepflegt.</p>
+              <p className="text-body font-semibold text-foreground">Direkt bestellen können Sie hier noch nicht.</p>
               <p className="mt-2 text-body text-foreground-muted">
-                Bis dahin prüfen wir Ihren Code auf Anfrage. Nennen Sie uns Hersteller oder Schloss, den
-                Code wie aufgedruckt und die Stückzahl. Ein Foto von Schlüssel oder Schloss hilft, ist aber
-                freiwillig. Wir melden uns mit einem Angebot oder einer Rückfrage.
+                Bis dahin prüfen wir Ihren Code auf Anfrage. Nennen Sie uns den Hersteller oder das Schloss,
+                den Code genau wie aufgedruckt und die Stückzahl. Ein Foto von Schlüssel oder Schloss hilft
+                uns, ist aber freiwillig. Außerdem bestätigen Sie, dass Sie den Schlüssel nachmachen lassen dürfen.
+                So schützen wir Ihr Schloss vor Unbefugten. Wir melden uns mit einem Angebot oder einer Rückfrage.
               </p>
               <div className="mt-6">
                 <ButtonLink href={CODE_ANFRAGE_PFAD} pfeil>
@@ -219,8 +219,8 @@ export default async function SchluesselNachCodePage() {
           title="Passende Codelinie finden"
           lead={
             page?.intro
-            ?? 'Suchen Sie nach Anwendung, Schlüsseltyp, Hersteller oder Ihrem Schlüsselcode und grenzen Sie das '
-              + 'Ergebnis über die Filter ein.'
+            ?? 'Suchen Sie nach Anwendung, Schlüsseltyp, Hersteller oder Ihrem Code. Mit den Filtern grenzen Sie '
+              + 'die Liste weiter ein.'
           }
         />
 
@@ -242,7 +242,7 @@ export default async function SchluesselNachCodePage() {
           nummer="02"
           eyebrow="Kategorien"
           title="Codelinien nach Anwendung"
-          lead="Jede Anwendungsfamilie hat eine eigene Seite mit allen Linien, Codeformaten und Preisen."
+          lead="Für jede Anwendung gibt es eine eigene Seite mit allen Linien, Codeformaten und Preisen."
         />
         <ul className="mt-8 border-t border-border md:grid md:grid-cols-2 md:gap-x-gutter">
           {familien.map((familie) => {
@@ -308,7 +308,7 @@ export default async function SchluesselNachCodePage() {
         titel="Vom Code zum fertigen Schlüssel"
         lead={
           ohneProdukte
-            ? 'Sobald die Codeprodukte eingepflegt sind, läuft die Bestellung so. Bis dahin beginnt alles mit Ihrer Anfrage.'
+            ? 'So läuft es, sobald Sie hier direkt nach Code bestellen können. Bis dahin beginnt alles mit Ihrer Anfrage.'
             : undefined
         }
         aktion={
@@ -331,7 +331,7 @@ export default async function SchluesselNachCodePage() {
           nummer={ohneProdukte ? '03' : '04'}
           eyebrow="Weiterlesen"
           title="Passende Bereiche und Erklärungen"
-          lead="Wenn der Code fehlt oder mehrere Türen zusammengehören, führen diese Wege weiter."
+          lead="Hier geht es weiter, wenn der Code fehlt oder mehrere Türen zusammengehören."
         />
 
         {/* Stückliste mit Fach-Icons: die ganze Zeile ist der Link */}

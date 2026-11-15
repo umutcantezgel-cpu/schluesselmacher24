@@ -43,7 +43,7 @@ export default async function KontaktPage() {
         bereich="service-und-termin"
         eyebrow="Kontakt"
         title="So erreichen Sie uns"
-        lead="Hier finden Sie Anschrift, Telefon und E-Mail. Für einen Auftrag stellen Sie am besten eine Anfrage, dort fragen wir gleich alles Nötige ab."
+        lead="Hier finden Sie Anschrift, Telefon und E-Mail. Für einen Auftrag nutzen Sie am besten den passenden Ablauf, dort fragen wir gleich alles Nötige ab."
         crumbs={[
           { href: '/service-und-termin', label: 'Service und Termin' },
           { href: '/service-und-termin/kontakt', label: 'Kontakt' },

@@ -208,7 +208,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
       >
         <Field
           label="Suche"
-          hint="Zum Beispiel Briefkasten, Spind, eine Serienkennung oder der Code von Ihrem Schloss — dann erscheinen die Linien, deren Codeformat passt."
+          hint="Zum Beispiel Briefkasten, Spind, eine Serienkennung oder der Code von Ihrem Schloss. Bei einem Code sehen Sie die Linien, deren Codeformat dazu passt."
         >
           {({ id: fieldId, describedBy }) => (
             <TextInput
@@ -282,10 +282,9 @@ export function ShopListe({ lines, className }: ShopListeProps) {
             info={{
               title: 'Was ist der Schlüsseltyp?',
               body:
-                'Der Schlüsseltyp beschreibt die Bauform des Schlüssels, zum Beispiel '
-                + 'Möbelschlüssel oder Profilschlüssel. Er steht meist in den Unterlagen des '
-                + 'Schlosses. Wenn Sie unsicher sind, lassen Sie das Feld auf „Alle“ und suchen '
-                + 'stattdessen nach der Anwendung.',
+                'Der Schlüsseltyp ist die Bauform des Schlüssels, zum Beispiel Möbelschlüssel '
+                + 'oder Profilschlüssel. Er steht meist in den Unterlagen des Schlosses. Sind Sie '
+                + 'unsicher, lassen Sie das Feld auf „Alle“ und suchen nach der Anwendung.',
             }}
           >
             {({ id: fieldId }) => (
@@ -305,9 +304,9 @@ export function ShopListe({ lines, className }: ShopListeProps) {
             info={{
               title: 'Was ist eine Anwendungsfamilie?',
               body:
-                'Die Anwendungsfamilie fasst Schlösser mit ähnlichem Einsatzzweck zusammen, '
-                + 'zum Beispiel Briefkastenanlagen oder Technikschränke. Sie ist der schnellste '
-                + 'Weg, wenn Sie den Schlüsseltyp nicht kennen.',
+                'Die Anwendungsfamilie fasst Schlösser für denselben Zweck zusammen, zum Beispiel '
+                + 'Briefkastenanlagen oder Technikschränke. Damit finden Sie am schnellsten zum Ziel, '
+                + 'wenn Sie den Schlüsseltyp nicht kennen.',
             }}
           >
             {({ id: fieldId }) => (
@@ -505,9 +504,9 @@ export function ShopListe({ lines, className }: ShopListeProps) {
                 Zu dieser Auswahl gibt es keine Codelinie.
               </p>
               <p className="mt-2 max-w-md text-small leading-relaxed text-foreground-muted">
-                Setzen Sie die Filter zurück oder suchen Sie mit einem anderen Begriff. Wenn Ihr
-                Schloss keinen Code trägt, ist der Weg über Schlüssel nach Vorlage der richtige:
-                Dort genügen Fotos Ihres Schlüssels.
+                Setzen Sie die Filter zurück oder suchen Sie mit einem anderen Begriff. Trägt Ihr
+                Schloss keinen Code, hilft Schlüssel nach Vorlage. Dort schicken Sie uns zuerst
+                Fotos Ihres Schlüssels.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 sm:justify-center">

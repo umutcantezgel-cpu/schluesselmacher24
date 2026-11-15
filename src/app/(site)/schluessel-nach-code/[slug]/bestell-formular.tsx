@@ -73,8 +73,9 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
     ? undefined
     : trimmed === ''
       ? 'Bitte geben Sie den Schlüsselcode ein.'
-      : `Der Code passt nicht zum erwarteten Format. Erwartet wird: ${line.codeFormatLabel}. `
-        + `Beispiel: ${line.codeExample}. Passt Ihr Code zu keiner Linie, fragen Sie ihn bei uns an.`;
+      : `Dieser Code hat nicht das passende Format. Das passende Format ist: ${line.codeFormatLabel} (zum Beispiel `
+        + `${line.codeExample}). Bitte prüfen Sie Ihre Eingabe. Passt Ihr Code trotzdem nicht, fragen Sie ihn `
+        + 'über „Code anfragen“ bei uns an.';
   // Unpassender Code: Weg in die Code-Anfrage (FA-11-17), mit Code und Linie vorbelegt.
   const anfrageZeigen = touched && trimmed !== '' && !codeValid;
 
@@ -141,7 +142,7 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
       <CardHeader>
         <h2 className="text-title-sm font-semibold text-foreground">Schlüssel nach Code bestellen</h2>
         <p className="mt-1 text-small leading-relaxed text-foreground-muted">
-          Sie behalten Ihren Originalschlüssel. Wir fertigen allein nach dem Code, den Sie hier
+          Ihr Originalschlüssel bleibt bei Ihnen. Wir fertigen nur nach dem Code, den Sie hier
           eintragen.
         </p>
       </CardHeader>
@@ -227,8 +228,7 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
               title: 'Staffelpreise',
               body:
                 'Ab bestimmten Stückzahlen sinkt der Preis je Schlüssel. Die Tabelle unter der '
-                + 'Stückzahl zeigt, ab wann welcher Preis gilt. Der Gesamtpreis wird sofort '
-                + 'neu berechnet.',
+                + 'Stückzahl zeigt, ab wann welcher Preis gilt. Die Zwischensumme passt sich sofort an.',
             }}
           >
             {({ id }) => (
@@ -322,7 +322,7 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
             required={photoRequired}
             error={
               photoTouched && photoMissing
-                ? 'Für diese Codelinie ist ein Foto erforderlich. Bitte fügen Sie eine Aufnahme hinzu.'
+                ? 'Für diese Codelinie brauchen wir ein Foto Ihrer Sicherungskarte. Die Karte zeigt, dass Sie diesen Schlüssel bestellen dürfen. Bitte fügen Sie das Foto hinzu.'
                 : undefined
             }
           />
@@ -360,7 +360,7 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
               <span>
                 {!codeValid
                   ? 'Bitte tragen Sie zuerst den Schlüsselcode ein.'
-                  : 'Bitte fügen Sie das erforderliche Foto hinzu.'}
+                  : 'Bitte fügen Sie noch das Foto Ihrer Sicherungskarte hinzu.'}
               </span>
             </p>
           )}

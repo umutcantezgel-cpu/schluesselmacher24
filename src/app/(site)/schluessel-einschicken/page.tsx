@@ -58,14 +58,14 @@ function fragen(porto: { versichert: string; haftung: number }) {
       question: 'Muss ich meinen Schlüssel einschicken?',
       answer:
         'Nicht unbedingt. Sie können ihn zuerst anhand von drei Fotos prüfen lassen, dann bleibt er vorerst bei Ihnen. '
-        + 'Oder Sie schicken ihn gleich ein: Dafür melden Sie die Einsendung an und bekommen einen Begleitschein. '
+        + 'Oder Sie schicken ihn gleich ein. Dafür melden Sie die Einsendung an und bekommen einen Begleitschein. '
         + 'Ist eine sichere Fertigung nur am Original möglich, bitten wir Sie danach um die Einsendung.',
     },
     {
       question: 'Kann ich den Schlüssel ohne Anmeldung einschicken?',
       answer:
         'Bitte nicht. Ohne Begleitschein oder Vorgangsnummer können wir eine Sendung keinem Auftrag zuordnen. Die Anmeldung '
-        + 'dauert wenige Minuten; danach drucken Sie den Begleitschein aus.',
+        + 'dauert wenige Minuten. Danach drucken Sie den Begleitschein aus.',
     },
     {
       question: 'Was kostet das Einschicken?',
@@ -77,8 +77,9 @@ function fragen(porto: { versichert: string; haftung: number }) {
     {
       question: 'Und bei Schlüsseln mit Sicherungskarte oder geschütztem Profil?',
       answer:
-        'Solche Schlüssel fertigen wir nur gegen die Karte: Bei der Anmeldung laden Sie ein Foto der Sicherungskarte hoch. Je '
-        + 'nach System ist zusätzlich der Weg über den Hersteller nötig. Das prüfen wir im Einzelfall und sagen Ihnen das Ergebnis.',
+        'Solche Schlüssel fertigen wir nur gegen die Karte. Sie zeigt, dass Sie den Schlüssel nachmachen lassen dürfen. Bei der '
+        + 'Anmeldung laden Sie deshalb ein Foto der Sicherungskarte hoch. Je nach System ist zusätzlich der Weg über den '
+        + 'Hersteller nötig. Das prüfen wir im Einzelfall und sagen Ihnen das Ergebnis.',
     },
   ];
 }
@@ -125,7 +126,7 @@ export default async function SchluesselEinschickenPage() {
         title={page?.headline ?? 'Schlüssel einschicken'}
         lead={
           page?.subline
-          ?? 'Schlüsseldienst online, ohne Anfahrt: Einsendung anmelden, Begleitschein ausdrucken, Schlüssel einschicken. Original und Kopien kommen zu Ihnen zurück.'
+          ?? 'Schlüsseldienst online, ohne Anfahrt. Sie melden die Einsendung an und schicken den Schlüssel mit Begleitschein. Original und Kopien kommen zu Ihnen zurück.'
         }
         crumbs={CRUMBS}
         bereich="schluessel-nach-vorlage"
@@ -152,7 +153,7 @@ export default async function SchluesselEinschickenPage() {
               nummer="01"
               eyebrow="So läuft Ihr Auftrag ab"
               title="Vom Umschlag zurück zu Ihnen"
-              lead="Ohne Anfahrt, aus ganz Deutschland. Die Rücksendung geht an eine Anschrift in Deutschland."
+              lead="Sie schicken aus ganz Deutschland und müssen nicht zu uns kommen. Die Rücksendung geht an eine Anschrift in Deutschland."
             />
             <Alert tone="info" title="Zwei Wege zum Schlüssel nach Vorlage" className="mt-7">
               Sie schicken das Original gleich ein. Oder Sie lassen den Schlüssel zuerst anhand von drei Fotos prüfen, dann bleibt
@@ -259,7 +260,7 @@ export default async function SchluesselEinschickenPage() {
           <Alert tone="info" title="Rücksendung mit den Kopien">
             Nach der Anfertigung erhalten Sie Ihr Original zusammen mit den Kopien zurück, auf Wunsch getrennt voneinander. Die
             Versandart für die Rücksendung stimmen wir vorher mit Ihnen ab. Sobald die Sendung unterwegs ist, bekommen Sie eine
-            E-Mail, mit Sendungsnummer, wenn die Sendung eine hat.
+            E-Mail. Hat die Sendung eine Sendungsnummer, steht sie darin.
           </Alert>
         </div>
         <p className="mt-6 max-w-measure text-small text-foreground-muted">

@@ -157,7 +157,7 @@ describe('Zahlung einer freigegebenen Fotoanfrage', () => {
     expect(mail.text).toContain('Damit ist Ihr Auftrag erteilt');
     expect(mail.text).toContain('Bitte jetzt den Originalschlüssel einsenden');
     const team = betriebBezahlt({ vorgang: bezahlt, kontext, adminUrl: `${SITE}/admin/collections/vorgaenge/51` });
-    expect(team.betreff).toBe('Bezahlt: Fotoanfrage SM24-A-2026-0011');
+    expect(team.betreff).toBe('Bezahlt: Schlüssel nach Vorlage SM24-A-2026-0011');
     expect(team.text).toContain('„In Fertigung“');
     expect(team.text).toContain('Originalschlüssel muss noch eingesendet werden');
   });

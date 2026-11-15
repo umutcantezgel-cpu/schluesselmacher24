@@ -110,8 +110,8 @@ const BLOCKS: BuildingBlock[] = [
     title: 'Digitale Zylinder',
     body:
       'Ein digitaler Zylinder kommt statt des mechanischen Zylinders in Ihre vorhandene Tür. Erst '
-      + 'wenn er eine berechtigte Karte oder einen berechtigten Transponder erkennt, können Sie mit '
-      + 'dem Knauf schließen.',
+      + 'wenn er ein berechtigtes Medium erkennt, etwa eine Karte oder einen Transponder, können '
+      + 'Sie mit dem Knauf schließen.',
     points: [
       'In der Regel ohne Kabel und ohne Eingriff in das Türblatt',
       'Maße der Tür und die vorhandene Beschlagsituation entscheiden über die Auswahl',

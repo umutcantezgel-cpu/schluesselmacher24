@@ -66,15 +66,15 @@ export function betriebBezahlt({ vorgang, kontext, adminUrl }: ZahlungsDaten & {
   const foto = istFotoanfrage(vorgang);
   const auftrag = foto && vorgang.status === 'in-fertigung';
   const einleitung = foto && !auftrag
-    ? `zu dieser Fotoanfrage ist eine Zahlung eingegangen, obwohl sie nicht freigegeben ist (Status „${vorgang.status}“). `
+    ? `zu dieser Anfrage „Schlüssel nach Vorlage“ ist eine Zahlung eingegangen, obwohl sie nicht freigegeben ist (Status „${vorgang.status}“). `
       + 'Bitte prüfen und die Zahlung gegebenenfalls erstatten.'
     : auftrag
-    ? 'zu dieser freigegebenen Fotoanfrage (Schlüssel nach Vorlage) ist die Online-Zahlung eingegangen. Der Auftrag '
+    ? 'zu dieser freigegebenen Anfrage „Schlüssel nach Vorlage“ ist die Online-Zahlung eingegangen. Der Auftrag '
       + 'ist erteilt, der Status steht auf „In Fertigung“.'
       + (vorgang.approval?.sendInRequired ? ' Der Originalschlüssel muss noch eingesendet werden.' : '')
     : 'zu diesem Vorgang ist die Online-Zahlung eingegangen.';
   return baueMail({
-    betreff: `Bezahlt: ${foto ? 'Fotoanfrage' : ART_LABEL[vorgang.kind]} ${vorgang.reference}`,
+    betreff: `Bezahlt: ${foto ? 'Schlüssel nach Vorlage' : ART_LABEL[vorgang.kind]} ${vorgang.reference}`,
     anrede: 'Hallo Team,',
     bausteine: [
       { art: 'absatz', text: einleitung },

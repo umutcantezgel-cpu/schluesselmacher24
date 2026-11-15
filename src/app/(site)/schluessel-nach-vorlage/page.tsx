@@ -83,7 +83,7 @@ const WEITER: Array<{ href: string; label: string; body: string }> = [
   {
     href: '/schluessel-nach-code',
     label: 'Schlüssel nach Code',
-    body: 'Trägt Ihr Schloss einen Code, bestellen Sie direkt, ohne Prüfung der Fotos.',
+    body: 'Trägt Ihr Schloss einen Code, fertigen wir nach diesem Code. Ihren Schlüssel müssen Sie dafür nicht fotografieren. Den Nachweis, dass Sie ihn nachmachen lassen dürfen, brauchen wir trotzdem.',
   },
   {
     href: '/autoschluessel/kopieren',
@@ -138,15 +138,16 @@ export default async function SchluesselNachVorlagePage() {
             question: 'Muss ich meinen Schlüssel einschicken?',
             answer:
               'Zunächst nicht. Für die Anfrage genügen drei Fotos, Ihr Schlüssel bleibt bei Ihnen. '
-              + 'Ist eine sichere Fertigung nur am Original möglich, bitten wir Sie um die Einsendung, '
-              + 'mit einer eigenen Anweisung dazu. Sie können den Schlüssel auch gleich einschicken, '
+              + 'Ist eine sichere Fertigung nur am Original möglich, bitten wir Sie um die Einsendung '
+              + 'und sagen Ihnen, wie sie abläuft. Sie können den Schlüssel auch gleich einschicken, '
               + 'ohne vorher Fotos zu senden.',
           },
           {
             question: 'Woran erkennen Sie, ob eine Nachfertigung möglich ist?',
             answer:
-              'Entscheidend sind der Profilquerschnitt, die Form des Rohlings und die '
-              + 'Beschriftung auf Kopf oder Bart. Daran bestimmen wir Schlüsselart und Rohling. '
+              'Entscheidend sind das Profil, also die Form im Querschnitt, die Form des Rohlings und '
+              + 'die Beschriftung auf Kopf oder Bart. Daran bestimmen wir die Schlüsselart und den Rohling, '
+              + 'aus dem der neue Schlüssel entsteht. '
               + 'Schließwerte lesen wir nicht aus Fotos ab. Gefertigt wird nach den Angaben auf dem '
               + 'Schlüssel oder am eingesendeten Original.',
           },
@@ -176,14 +177,15 @@ export default async function SchluesselNachVorlagePage() {
             answer:
               'Für den mechanischen Teil ja. Der Bart lässt sich nach Vorlage anfertigen. '
               + 'Mechanische Autoschlüssel und reine Schlüsselbärte können Sie je nach Fall auch einsenden. '
-              + 'Transponder, Funk und Wegfahrsperre sind davon getrennt zu betrachten und in '
-              + 'aller Regel nur am Fahrzeug anzulernen.',
+              + 'Transponder, Funk und Wegfahrsperre sind ein eigener Schritt. Sie lassen sich in '
+              + 'aller Regel nur am Fahrzeug anlernen.',
           },
           {
             question: 'Und bei Schlüsseln mit Sicherungskarte oder geschütztem Profil?',
             answer:
-              'Solche Schlüssel sind nur eingeschränkt nachzufertigen. Je nach System ist ein '
-              + 'Nachweis der Berechtigung oder der Weg über den Hersteller nötig. Das prüfen wir '
+              'Solche Schlüssel fertigen wir nur eingeschränkt nach. Je nach System brauchen wir einen '
+              + 'Nachweis der Berechtigung, etwa die Sicherungskarte, oder der Weg führt über den Hersteller. '
+              + 'Der Nachweis verhindert, dass Unbefugte Ihren Schlüssel nachmachen lassen. Das prüfen wir '
               + 'im Einzelfall und sagen Ihnen das Ergebnis.',
           },
           {
@@ -287,8 +289,8 @@ export default async function SchluesselNachVorlagePage() {
 
             <Alert tone="info" title="Ihr Original bleibt zunächst bei Ihnen" className="mt-7">
               Für die Anfrage müssen Sie den Originalschlüssel <strong>nicht</strong> einsenden.
-              Wir bestimmen den Schlüssel anhand Ihrer Fotos und bitten nur um das Original, wenn
-              eine sichere Fertigung nur am Original möglich ist. Wer den Schlüssel lieber gleich
+              Wir bestimmen den Schlüssel anhand Ihrer Fotos. Das Original brauchen wir nur, wenn
+              eine sichere Fertigung anders nicht möglich ist. Wer den Schlüssel lieber gleich
               einschickt,{' '}
               <Link href="/schluessel-einschicken" className="font-semibold underline">
                 meldet die Einsendung an
@@ -314,7 +316,7 @@ export default async function SchluesselNachVorlagePage() {
           nummer="02"
           eyebrow="Vorbereitung"
           title="Diese drei Aufnahmen brauchen wir"
-          lead="Scharf, gut ausgeleuchtet, formatfüllend und ohne Blitzreflexe. Beschriftungen und Prägungen müssen lesbar sein."
+          lead="Die Fotos sollen scharf und hell sein, ohne Blitzreflexe. Der Schlüssel soll das Bild fast ganz ausfüllen. Beschriftungen und Prägungen müssen lesbar sein."
         />
 
         {/* Ab md teilen sich die Blätter die Zeilen (Subgrid): Die Titel stehen auf
@@ -350,9 +352,9 @@ export default async function SchluesselNachVorlagePage() {
               Beschriftungen mitfotografieren
             </p>
             <p className="mt-2 max-w-measure text-small text-foreground-muted">
-              Zahlen und Buchstaben auf Kopf, Bart oder Schaft sind für die Bestimmung besonders
-              wertvoll. Tragen Sie sie im Formular als Text ein und fotografieren Sie sie
-              zusätzlich deutlich, bei kleinen Prägungen als Nahaufnahme.
+              Zahlen und Buchstaben auf Kopf, Bart oder Schaft helfen uns sehr bei der Bestimmung.
+              Tragen Sie sie im Formular als Text ein. Fotografieren Sie sie zusätzlich, bei kleinen
+              Prägungen aus der Nähe.
             </p>
           </CardBody>
         </Card>
@@ -377,9 +379,9 @@ export default async function SchluesselNachVorlagePage() {
               </p>
               <p>
                 Ein nachgefertigter Bart öffnet bei vielen Fahrzeugen die Tür, startet den
-                Motor aber nicht. Denn Transponder, Funkfernbedienung und Wegfahrsperre müssen
-                dem Fahrzeug erst bekannt gemacht werden. Dafür ist in aller Regel Zugriff auf
-                das Fahrzeug nötig.
+                Motor aber nicht. Denn der Chip im Schlüssel (Transponder), die Funkfernbedienung
+                und die Wegfahrsperre müssen dem Fahrzeug erst bekannt gemacht werden. Dafür ist in
+                aller Regel das Fahrzeug selbst nötig.
               </p>
               <p>
                 Mechanische Autoschlüssel und reine Schlüsselbärte können Sie je nach Fall auch
@@ -428,14 +430,14 @@ export default async function SchluesselNachVorlagePage() {
 
             <div className="prose-sm24 mt-6 max-w-none">
               <p>
-                Senden Sie während der Fotoanfrage bitte nichts unaufgefordert ein. Die Versandadresse
-                und den genauen Umfang nennen wir Ihnen mit der Freigabe, zusammen mit Ihrer
-                Vorgangsnummer; den Begleitschein finden Sie dann auf Ihrer Vorgangsseite. Senden Sie
+                Läuft Ihre Anfrage mit Fotos, schicken Sie bitte nichts unaufgefordert ein. Mit der
+                Freigabe nennen wir Ihnen die Versandadresse, den genauen Umfang und Ihre
+                Vorgangsnummer. Den Begleitschein finden Sie dann auf Ihrer Vorgangsseite. Senden Sie
                 das Original erst, nachdem Sie den Auftrag mit der Zahlung erteilt haben.
               </p>
               <p>
-                Ohne Fotoanfrage können Sie den Schlüssel auch direkt einschicken. Dafür melden Sie
-                die Einsendung an und legen den Begleitschein bei.
+                Sie können den Schlüssel auch ohne vorherige Anfrage direkt einschicken. Dafür melden
+                Sie die Einsendung an und legen den Begleitschein bei.
               </p>
             </div>
 
@@ -495,7 +497,7 @@ export default async function SchluesselNachVorlagePage() {
           nummer="06"
           eyebrow="Weiter im Thema"
           title="Passende Bereiche"
-          lead="Manchmal führt ein anderer Weg schneller zum Ziel."
+          lead="Vielleicht passt einer dieser Wege besser zu Ihrem Fall."
         />
 
         <ul className="mt-8 grid border-t border-border sm:grid-cols-2 sm:gap-x-gutter lg:grid-cols-3">

@@ -192,7 +192,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
               }}
             />
             <figcaption className="mt-2 font-mono text-caption uppercase tracking-label text-foreground-muted">
-              Darstellung zum Beispielcode {line.codeExample} –{' '}
+              Darstellung zum Beispielcode {line.codeExample},{' '}
               <span className="whitespace-nowrap">keine echte Schließung</span>
             </figcaption>
           </figure>
