@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import { EinstiegSeite, seitenMetadata, type EinstiegAbschnitt } from '@/components/fahrzeug-anfrage/seiten';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
-import { getRubrik } from '@/lib/data';
+import { getPageContent, getRubrik } from '@/lib/data';
 import { KlassenSeitenDaten } from '@/components/seo/seiten-daten';
+import { PasstDazu } from '@/components/seo/passt-dazu';
 
 /*
  * Eigener Inhalt dieser Seite (R3): E-Scooter haben keinen Fahrzeugschein; Nachweis, Typenschild und die
@@ -50,6 +51,8 @@ export default async function EScooterPage() {
     <>
       <KlassenSeitenDaten klasse="e-scooter" art="einstieg" />
       <EinstiegSeite klasse="e-scooter" abschnitte={ABSCHNITTE} ablauf={ablauf} />
+      {/* Verweisliste aus den Daten: eigene Links und Gegenrichtung (FA-SEO-01C) */}
+      <PasstDazu pfad="/e-scooter" eigene={(await getPageContent('e-scooter'))?.seo.internalLinks} />
     </>
   );
 }

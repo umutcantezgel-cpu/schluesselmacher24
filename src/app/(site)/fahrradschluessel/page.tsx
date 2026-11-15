@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import { EinstiegSeite, seitenMetadata, type EinstiegAbschnitt } from '@/components/fahrzeug-anfrage/seiten';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
-import { getRubrik } from '@/lib/data';
+import { getPageContent, getRubrik } from '@/lib/data';
 import { KlassenSeitenDaten } from '@/components/seo/seiten-daten';
+import { PasstDazu } from '@/components/seo/passt-dazu';
 
 /*
  * Eigener Inhalt dieser Seite (R3): Beim Fahrrad zählt das Schloss; Hersteller, Schlüsselnummer und
@@ -50,6 +51,8 @@ export default async function FahrradschluesselPage() {
     <>
       <KlassenSeitenDaten klasse="fahrrad" art="einstieg" />
       <EinstiegSeite klasse="fahrrad" abschnitte={ABSCHNITTE} ablauf={ablauf} />
+      {/* Verweisliste aus den Daten: eigene Links und Gegenrichtung (FA-SEO-01C) */}
+      <PasstDazu pfad="/fahrradschluessel" eigene={(await getPageContent('fahrradschluessel'))?.seo.internalLinks} />
     </>
   );
 }

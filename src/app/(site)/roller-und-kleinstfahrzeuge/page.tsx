@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import { EinstiegSeite, seitenMetadata, type EinstiegAbschnitt } from '@/components/fahrzeug-anfrage/seiten';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
-import { getRubrik } from '@/lib/data';
+import { getPageContent, getRubrik } from '@/lib/data';
 import { KlassenSeitenDaten } from '@/components/seo/seiten-daten';
+import { PasstDazu } from '@/components/seo/passt-dazu';
 
 /*
  * Eigener Inhalt dieser Seite (R3): Roller, Mofa und Moped gibt es mit Fahrzeugschein und mit
@@ -50,6 +51,8 @@ export default async function RollerPage() {
     <>
       <KlassenSeitenDaten klasse="roller" art="einstieg" />
       <EinstiegSeite klasse="roller" abschnitte={ABSCHNITTE} ablauf={ablauf} />
+      {/* Verweisliste aus den Daten: eigene Links und Gegenrichtung (FA-SEO-01C) */}
+      <PasstDazu pfad="/roller-und-kleinstfahrzeuge" eigene={(await getPageContent('roller-und-kleinstfahrzeuge'))?.seo.internalLinks} />
     </>
   );
 }
