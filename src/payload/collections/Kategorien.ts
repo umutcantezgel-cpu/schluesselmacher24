@@ -105,7 +105,8 @@ export const Kategorien: CollectionConfig = {
     description:
       'Kategorien und Unterkategorien des Shops. Reihenfolge: kleinere Zahl zuerst. '
       + 'Eine Unterkategorie entsteht, wenn Sie oben eine übergeordnete Kategorie wählen. '
-      + 'Die Kategorien erscheinen mit dem nächsten Ausbau der Shopseiten auf der Seite.',
+      + 'Hauptkategorien mit Haken „Im Shop zeigen“ stehen in dieser Reihenfolge auf der Seite /shop. '
+      + 'Unterkategorien von „Schlüssel nach Code“ bekommen eine eigene Seite, sobald ihnen ein Artikel zugeordnet ist.',
     pagination: { defaultLimit: 50 },
   },
   access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber, readVersions: istTeam },
@@ -172,7 +173,7 @@ export const Kategorien: CollectionConfig = {
       labels: { singular: 'Frühere Adresse', plural: 'Frühere Adressen' },
       admin: {
         description:
-          'Wird automatisch ergänzt, wenn Sie die Adresse ändern. Die Weiterleitung auf die aktuelle Adresse kommt mit dem nächsten Ausbau der Shopseiten.',
+          'Wird automatisch ergänzt, wenn Sie die Adresse ändern. Bei Unterkategorien von „Schlüssel nach Code“ leiten frühere Adressen dauerhaft auf die aktuelle weiter.',
         initCollapsed: true,
       },
       fields: [{ name: 'adresse', type: 'text', label: 'Adresse', required: true }],

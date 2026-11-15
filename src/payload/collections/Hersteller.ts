@@ -25,7 +25,8 @@ export const Hersteller: CollectionConfig = {
       'Liste der Hersteller. Bitte jeden Hersteller nur einmal anlegen, in seiner eigenen Schreibweise. '
       + 'Artikel wählen ihren Hersteller aus dieser Liste. '
       + 'Mit dem Haken „angeboten“ erscheint der Hersteller sofort auf der Startseite und, wenn ihm ein Bereich zugeordnet ist, '
-      + 'auf den Seiten Sperrschließungen und elektronischer Zutritt. Ein Logo erscheint nur mit Datei und Haken „Freigabe liegt vor“.',
+      + 'auf den Seiten Sperrschließungen und elektronischer Zutritt. Ein Logo erscheint nur mit Datei und Haken „Freigabe liegt vor“. '
+      + 'Bei Schlüssel nach Code bekommt ein Hersteller eine eigene Seite, sobald ihm mindestens ein veröffentlichter Artikel zugeordnet ist.',
     pagination: { defaultLimit: 50 },
   },
   access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber, readVersions: istTeam },
