@@ -325,7 +325,7 @@ describe('erzeugePdf', () => {
     expect(PDF_FARBEN.text).toBe(oklchZuHex('0.2497 0.0366 266'));
     expect(PDF_FARBEN.leise).toBe(oklchZuHex('0.4654 0.0347 262.8'));
     expect(PDF_FARBEN.linie).toBe(oklchZuHex('0.9091 0.0162 255'));
-    expect(PDF_FARBEN.primaer).toBe(oklchZuHex('0.4852 0.1611 257.63'));
+    expect(PDF_FARBEN.primaer).toBe(oklchZuHex('0.555 0.168 41'));
     expect(PDF_FARBEN.flaeche).toBe(oklchZuHex('0.971 0.0077 255'));
   });
 

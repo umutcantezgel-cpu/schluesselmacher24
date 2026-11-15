@@ -43,11 +43,11 @@ export interface Mailgeruest {
 const FARBE = {
   papier: '#F7F9FC',
   flaeche: '#FFFFFF',
-  linie: '#1d5fd1',
+  linie: '#c04606',
   haarlinie: '#D9E0EA',
   text: '#192133',
   leise: '#5B6578',
-  hinweis: '#EEF3FC',
+  hinweis: '#FDEEE9',
 };
 
 const SCHRIFT = "'IBM Plex Sans', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";

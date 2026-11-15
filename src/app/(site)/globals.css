@@ -64,13 +64,14 @@ header a[aria-label$='Startseite'] > span {
 
 /* ==========================================================================
    SCHLÜSSELMACHER24 — Designsystem (KERN 2.0)
-   Hell, freundlich, farbig — und trotzdem fachlich. Klares Blau auf hellem
-   Grund, dazu je Leistungsbereich eine eigene Akzentfarbe (`--area*`, aus
-   `src/lib/visual/area-theme.ts`, gesetzt über `[data-area]`).
-   Farben als OKLCH-Tripel „L C H“ (Tailwind: `oklch(var(--x) / <alpha-value>)`).
-   Abstufungsregel: Text- und Aktionsfarben L 0,485 (so hell wie das Markenblau),
-   Grafikfarben L 0,605, helle Flächen L 0,96; je Familie ein Farbton. Neutrale
-   Stufen im Stahlblau (H 255 bis 266, Buntheit unter 0,05).
+   Hell, ruhig und fachlich. Eine einzige Akzentfarbe, das Markenorange
+   (Arbeitsanweisung des Inhabers vom 11.11.2026, FA-04): Schaltflächen, aktive
+   Zustände, Icons und Handlungsaufrufe. Die Bereiche (`--area*`, aus
+   `src/lib/visual/area-theme.ts`, gesetzt über `[data-area]`) tragen dasselbe
+   Orange. Farben als OKLCH-Tripel „L C H“ (Tailwind: `oklch(var(--x) / <alpha-value>)`).
+   Abstufungsregel: Text- und Aktionsfarbe L 0,555, Grafikfarbe L 0,62, helle
+   Flächen L 0,96; ein Farbton (41°). Neutrale Stufen im Stahlblau (H 255 bis 266,
+   Buntheit unter 0,05); die dunklen neutralen Flächen bleiben.
    Bewusst KEINE Notdienst-Optik (kein Gelb/Schwarz, keine Signalfarben
    als Flächen), kein Lila und kein Indigo. Kontraste, Farbraum und Regel prüft
    `src/lib/visual/area-theme.test.ts`.
@@ -95,12 +96,12 @@ header a[aria-label$='Startseite'] > span {
     --border: 0.9091 0.0162 255;
     --border-strong: 0.8119 0.024 255.1;
     --input: 0.8684 0.0209 255.1;
-    --ring: 0.605 0.162 257.63;
+    --ring: 0.62 0.185 41;
 
-    /* Primär — klares Blau (Markenwert der Wortmarke, unverändert) */
-    --primary: 0.4852 0.1611 257.63;
-    --primary-hover: 0.4245 0.1409 257.63;
-    --primary-soft: 0.96 0.018 257.63;
+    /* Primär — Markenorange (die „24“ der Wortmarke, Links, Schaltflächen) */
+    --primary: 0.555 0.168 41;
+    --primary-hover: 0.495 0.15 41;
+    --primary-soft: 0.96 0.018 41;
     --primary-foreground: 1 0 0;
 
     /* Sekundär */
@@ -119,8 +120,9 @@ header a[aria-label$='Startseite'] > span {
     --warning-soft: 0.96 0.017 62.2;
     --danger: 0.485 0.161 25.4;
     --danger-soft: 0.96 0.013 25.4;
-    --info: 0.4852 0.1611 257.63;
-    --info-soft: 0.96 0.018 257.63;
+    /* Hinweis: neutral in der Tinte der Seite, kein zweiter Farbakzent */
+    --info: 0.4654 0.0347 262.8;
+    --info-soft: 0.971 0.0077 255;
 
     /* Karten / Popover */
     --card: 1 0 0;

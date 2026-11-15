@@ -8,23 +8,25 @@ import type { AreaKey } from '@/lib/types';
  * verwenden nur `text-area-strong`, `bg-area-soft`, `fill-area` usw. — nie
  * einen festen Farbwert.
  *
- * Werte als OKLCH-Tripel „L C H“ (wie alle Tokens in `globals.css`, KERN 2.0).
- * Abstufungsregel (ABSTUFUNG): Jede Familie hat einen Farbton H und vier feste
- * Helligkeiten; die Buntheit C ist gedeckelt und bleibt im sRGB-Farbraum.
- * - `accent` L 0,605: Flächen und Linien in Grafiken (≥ 3:1 auf Weiß und `soft`)
- * - `strong` L 0,485 (accent minus 0,12, so hell wie das Markenblau `--primary`):
- *   Text, Schaltflächen, Kennzeichnungen (≥ 4,5:1 auf Weiß und `soft`)
- * - `soft`   L 0,96: heller Hintergrund des Bereichs
+ * Seit der Arbeitsanweisung des Inhabers vom 11.11.2026 (FA-04, A-043) gibt es
+ * eine einzige Akzentfarbe: das Markenorange. Schaltflächen, aktive Zustände,
+ * Icons und Handlungsaufrufe tragen überall dasselbe Orange; die dunklen und
+ * hellen neutralen Flächen bleiben. Die Tabelle je Bereich bleibt als Quelle
+ * bestehen, damit ein Bereich später wieder einen eigenen Ton bekommen kann,
+ * ohne dass eine Seite angefasst wird.
+ *
+ * Werte als OKLCH-Tripel „L C H“ (wie alle Tokens in `globals.css`).
+ * Abstufungsregel (ABSTUFUNG): ein Farbton H und vier feste Helligkeiten; die
+ * Buntheit C ist gedeckelt und bleibt im sRGB-Farbraum.
+ * - `accent` L 0,62: Flächen und Linien in Grafiken, Fokusring (≥ 3:1 auf Weiß und `soft`)
+ * - `strong` L 0,555 (= `--primary`): Text, Schaltflächen mit weißer Schrift,
+ *   Kennzeichnungen (≥ 4,5:1 auf Weiß und `soft`)
+ * - `soft`   L 0,96: heller Hintergrund
  * - `muted`  L 0,90: zarte Linien und Füllungen in Grafiken (rein dekorativ)
  *
- * Gleiche Helligkeit heißt in OKLCH gleiche Wirkung: Kein Bereich drängt sich vor.
- * Kein Lila und kein Indigo (Anti-Slop S2): kein Farbton zwischen 270° und 335°
- * (OKLCH), und auch umgerechnet kein HSL-Ton zwischen 230° und 330° (A-005).
- * Kein Signalgelb und kein Schwarz: keine Notdienstoptik; Messing (Code) ist ein
- * gedecktes Ocker. Benachbarte Bereiche liegen im Farbton mindestens 30°
- * auseinander (Sichtabnahme E2-L-07, D-017), Code und Schließanlagen mindestens
- * 40° (E4-L-23). Die Töne folgen der Werkstatt: Messing für Code, Kupfer für
- * Zylinder, Stahlblau für Schließanlagen, Signalrot für Sicherheitstechnik.
+ * Kein Lila und kein Indigo (Anti-Slop S2). Kein Signalgelb auf Schwarz: keine
+ * Notdienstoptik. Statusfarben (Erfolg, Warnung, Fehler) stehen in `globals.css`
+ * und sind nie Markenfläche.
  */
 export interface AreaTheme {
   label: string;
@@ -34,88 +36,39 @@ export interface AreaTheme {
   muted: string;
 }
 
-/** Abstufungsregel: Helligkeit L je Stufe und Obergrenze der Buntheit C (KERN 2.0). */
+/** Abstufungsregel: Helligkeit L je Stufe und Obergrenze der Buntheit C. */
 export const ABSTUFUNG = {
-  accent: { L: 0.605, cHoechstens: 0.162 },
-  strong: { L: 0.485, cHoechstens: 0.162 },
+  accent: { L: 0.62, cHoechstens: 0.185 },
+  strong: { L: 0.555, cHoechstens: 0.168 },
   soft: { L: 0.96, cHoechstens: 0.022 },
   muted: { L: 0.9, cHoechstens: 0.06 },
 } as const;
 
-/** Grundfarbe außerhalb der Bereiche (Startseite, Warenkorb, Kasse …): das Markenblau. */
-export const DEFAULT_AREA_THEME: AreaTheme = {
-  label: 'Allgemein',
-  accent: '0.605 0.162 257.63',
-  /* = --primary (Wortmarke, G9): genau der bisherige Wert, innerhalb der Regel */
-  strong: '0.4852 0.1611 257.63',
-  soft: '0.96 0.018 257.63',
-  muted: '0.9 0.047 257.63',
-};
+/** Farbton des Markenorange in Grad (OKLCH). */
+export const MARKEN_FARBTON = 41;
+
+/** Das Markenorange in vier Stufen: #dd530f, #c04606, #fdeee9, #fbd4c7. */
+const MARKENORANGE = {
+  accent: '0.62 0.185 41',
+  /* = --primary: Wortmarke „24“, Links, Schaltflächen */
+  strong: '0.555 0.168 41',
+  soft: '0.96 0.018 41',
+  muted: '0.9 0.047 41',
+} as const;
+
+/** Grundfarbe außerhalb der Bereiche (Startseite, Warenkorb, Kasse …): das Markenorange. */
+export const DEFAULT_AREA_THEME: AreaTheme = { label: 'Allgemein', ...MARKENORANGE };
 
 export const AREA_THEMES: Record<AreaKey, AreaTheme> = {
-  autoschluessel: {
-    label: 'Autoschlüssel',
-    accent: '0.605 0.162 262',
-    strong: '0.485 0.162 262',
-    soft: '0.96 0.018 262',
-    muted: '0.9 0.047 262',
-  },
-  'schluessel-nach-vorlage': {
-    label: 'Schlüssel nach Vorlage',
-    accent: '0.605 0.127 163',
-    strong: '0.485 0.102 163',
-    soft: '0.96 0.022 163',
-    muted: '0.9 0.060 163',
-  },
-  'schluessel-nach-code': {
-    label: 'Schlüssel nach Code',
-    accent: '0.605 0.121 97',
-    strong: '0.485 0.097 97',
-    soft: '0.96 0.022 97',
-    muted: '0.9 0.060 97',
-  },
-  'gleichschliessende-zylinder': {
-    label: 'Gleichschließende Zylinder',
-    accent: '0.605 0.132 65',
-    strong: '0.485 0.106 65',
-    soft: '0.96 0.022 65',
-    muted: '0.9 0.060 65',
-  },
-  schliessanlagen: {
-    label: 'Schließanlagen',
-    accent: '0.605 0.116 229',
-    strong: '0.485 0.093 229',
-    soft: '0.96 0.022 229',
-    muted: '0.9 0.060 229',
-  },
-  'elektronische-zutrittsloesungen': {
-    label: 'Elektronische Zutrittslösungen',
-    accent: '0.605 0.100 196',
-    strong: '0.485 0.080 196',
-    soft: '0.96 0.022 196',
-    muted: '0.9 0.060 196',
-  },
-  'tuer-und-schliesstechnik': {
-    label: 'Tür- und Schließtechnik',
-    accent: '0.605 0.158 130',
-    strong: '0.485 0.127 130',
-    soft: '0.96 0.022 130',
-    muted: '0.9 0.060 130',
-  },
-  sicherheitstechnik: {
-    label: 'Sicherheitstechnik',
-    accent: '0.605 0.162 33',
-    strong: '0.485 0.162 33',
-    soft: '0.96 0.019 33',
-    muted: '0.9 0.051 33',
-  },
-  'service-und-termin': {
-    label: 'Service und Termin',
-    accent: '0.605 0.162 2',
-    strong: '0.485 0.162 2',
-    soft: '0.96 0.020 2',
-    muted: '0.9 0.054 2',
-  },
+  autoschluessel: { label: 'Autoschlüssel', ...MARKENORANGE },
+  'schluessel-nach-vorlage': { label: 'Schlüssel nach Vorlage', ...MARKENORANGE },
+  'schluessel-nach-code': { label: 'Schlüssel nach Code', ...MARKENORANGE },
+  'gleichschliessende-zylinder': { label: 'Gleichschließende Zylinder', ...MARKENORANGE },
+  schliessanlagen: { label: 'Schließanlagen', ...MARKENORANGE },
+  'elektronische-zutrittsloesungen': { label: 'Elektronische Zutrittslösungen', ...MARKENORANGE },
+  'tuer-und-schliesstechnik': { label: 'Tür- und Schließtechnik', ...MARKENORANGE },
+  sicherheitstechnik: { label: 'Sicherheitstechnik', ...MARKENORANGE },
+  'service-und-termin': { label: 'Service und Termin', ...MARKENORANGE },
 };
 
 export const AREA_KEYS_WITH_THEME = Object.keys(AREA_THEMES) as AreaKey[];

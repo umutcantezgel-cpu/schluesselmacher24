@@ -7,6 +7,7 @@ import {
   ABSTUFUNG,
   AREA_THEMES,
   DEFAULT_AREA_THEME,
+  MARKEN_FARBTON,
   WEISS,
   contrastRatio,
   farbton,
@@ -49,19 +50,18 @@ describe('Bereichsfarben', () => {
     expect(Object.keys(AREA_THEMES).sort()).toEqual([...AREA_KEYS].sort());
   });
 
-  it('benachbarte Bereiche liegen im Farbton mindestens 30° auseinander', () => {
-    const toene = Object.values(AREA_THEMES)
-      .map((theme) => farbton(theme.accent))
-      .sort((a, b) => a - b);
-    toene.forEach((ton, index) => {
-      const naechster = toene[(index + 1) % toene.length];
-      expect((naechster - ton + 360) % 360).toBeGreaterThanOrEqual(30);
-    });
+  it('alle Bereiche tragen dasselbe Markenorange (Arbeitsanweisung vom 11.11.2026, FA-04)', () => {
+    for (const theme of Object.values(AREA_THEMES)) {
+      expect({ ...theme, label: '' }).toEqual({ ...DEFAULT_AREA_THEME, label: '' });
+    }
+    expect(farbton(DEFAULT_AREA_THEME.accent)).toBe(MARKEN_FARBTON);
   });
 
-  it('Code und Schließanlagen liegen mindestens 40° auseinander (Sichtabnahme E4-L-23)', () => {
-    const ton = (key: keyof typeof AREA_THEMES) => farbton(AREA_THEMES[key].accent);
-    expect(ton('schliessanlagen') - ton('schluessel-nach-code')).toBeGreaterThanOrEqual(40);
+  it('das Markenorange ist ein Orange: Farbton zwischen Rot und Gelb, kräftig genug', () => {
+    expect(MARKEN_FARBTON).toBeGreaterThanOrEqual(35);
+    expect(MARKEN_FARBTON).toBeLessThanOrEqual(60);
+    expect(parseOklch(DEFAULT_AREA_THEME.accent)[1]).toBeGreaterThanOrEqual(0.15);
+    expect(parseOklch(DEFAULT_AREA_THEME.strong)[1]).toBeGreaterThanOrEqual(0.14);
   });
 
   it('Fläche, Text und Linie eines Bereichs teilen seinen Farbton', () => {
@@ -81,7 +81,9 @@ describe('Umrechnung', () => {
   it('rechnet OKLCH in Hex um und erkennt Lila', () => {
     expect(oklchZuHex(WEISS)).toBe('#ffffff');
     expect(oklchZuHex('0 0 0')).toBe('#000000');
-    /* Bestand: Primärblau HSL 214 80% 40% */
+    /* Markenorange: Text- und Aktionsfarbe */
+    expect(oklchZuHex('0.555 0.168 41')).toBe('#c04606');
+    /* früheres Primärblau HSL 214 80% 40%, als Rechenprobe */
     expect(oklchZuHex('0.4852 0.1611 257.63')).toBe('#145bb8');
     expect(istLilaOderIndigo('0.606 0.25 292.7')).toBe(true); /* Tailwind violet-500 */
     expect(istLilaOderIndigo('0.585 0.233 277.1')).toBe(true); /* Tailwind indigo-500 */
@@ -135,10 +137,18 @@ describe('Grundfarben in globals.css', () => {
     }
   });
 
-  it('das Markenblau bleibt der bisherige Wert und ist die Grundfarbe für Text (Wortmarke, G9)', () => {
+  it('das Markenorange ist die Grundfarbe für Text und Aktionen (Wortmarke „24“, FA-04)', () => {
     expect(token('primary')).toBe(DEFAULT_AREA_THEME.strong);
-    expect(oklchZuHex(token('primary'))).toBe('#145bb8');
+    expect(oklchZuHex(token('primary'))).toBe('#c04606');
     expect(token('ring')).toBe(DEFAULT_AREA_THEME.accent);
     expect(token('primary-soft')).toBe(DEFAULT_AREA_THEME.soft);
+  });
+
+  it('kein blauer Akzent mehr: Aktions- und Hinweisfarben liegen nicht im Blau', () => {
+    const blau = (wert: string) => {
+      const [, c, h] = parseOklch(wert);
+      return c > 0.06 && h >= 200 && h <= 270;
+    };
+    for (const name of ['primary', 'primary-hover', 'ring', 'info']) expect(blau(token(name)), name).toBe(false);
   });
 });

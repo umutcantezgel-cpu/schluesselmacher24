@@ -11,10 +11,10 @@
 
 /* Markenfarbe für Schaltflächen und Links — hell und freundlich wie die Seite. */
 :root {
-  --theme-success-500: #1d5fd1;
-  --theme-success-600: #1a54b8;
-  --theme-success-100: #eaf1ff;
-  --theme-success-150: #dce8ff;
+  --theme-success-500: #c04606;
+  --theme-success-600: #a43b04;
+  --theme-success-100: #fdeee9;
+  --theme-success-150: #fbd4c7;
 }
 
 /* Eigene Aktionen: Termin verschieben (Seitenleiste), Werkzeuge über der Vorgangsliste. */

@@ -222,7 +222,7 @@ const FAQ = [
 const SCHLUESSELARTEN_BEGRIFFE: KeyKind[] = [...SCHLUESSELARTEN_REIHE.map(({ art }) => art), 'keyless'];
 
 /**
- * Zeilenpfeil: gedämpft in Ruhe, bei Hover und Fokus der Zeile in Primärblau; bei feinem
+ * Zeilenpfeil: gedämpft in Ruhe, bei Hover und Fokus der Zeile in der Markenfarbe; bei feinem
  * Zeiger rückt er nach rechts (B-06).
  */
 function Weiter({ size = 18, className }: { size?: number; className?: string }) {

@@ -14,7 +14,7 @@ export const PDF_FARBEN = {
   text: '#192133',
   leise: '#4f5a6d',
   linie: '#dae2ec',
-  primaer: '#145bb8',
+  primaer: '#c04606',
   flaeche: '#f2f6fb',
 } as const;
 

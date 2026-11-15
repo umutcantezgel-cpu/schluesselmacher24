@@ -16,7 +16,7 @@ const FARBE = {
   text: 'oklch(0.2497 0.0366 266)',
   leise: 'oklch(0.4654 0.0347 262.8)',
   linie: 'oklch(0.9091 0.0162 255)',
-  primaer: 'oklch(0.4852 0.1611 257.63)',
+  primaer: 'oklch(0.555 0.168 41)',
 };
 
 /* Ohne die Schriftdateien des Layouts: Plex Sans, falls installiert, sonst Systemschriften. */

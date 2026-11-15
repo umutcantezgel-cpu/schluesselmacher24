@@ -44,9 +44,9 @@ const STIL = `
   @page { size: A4; margin: 14mm 12mm; }
   * { box-sizing: border-box; }
   body { margin: 0; padding: 16px; font: 10.5pt/1.4 -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #192133; background: #fff; }
-  header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; border-bottom: 2px solid #1d5fd1; padding-bottom: 6px; margin-bottom: 12px; }
+  header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; border-bottom: 2px solid #c04606; padding-bottom: 6px; margin-bottom: 12px; }
   .marke { font-weight: 700; letter-spacing: 0.02em; }
-  .marke span { color: #1d5fd1; }
+  .marke span { color: #c04606; }
   .leise { color: #5B6578; font-size: 9pt; }
   h1 { font-size: 15pt; margin: 0 0 8px; }
   h2 { font-size: 11.5pt; margin: 14px 0 6px; padding-bottom: 2px; border-bottom: 1px solid #D9E0EA; }
@@ -61,7 +61,7 @@ const STIL = `
   section { break-inside: avoid; }
   tr { break-inside: avoid; }
   .werkzeug { position: sticky; top: 0; background: #F7F9FC; border: 1px solid #D9E0EA; padding: 8px 12px; margin-bottom: 12px; display: flex; gap: 12px; align-items: center; }
-  .werkzeug button { font: inherit; font-weight: 600; padding: 6px 14px; border: 1px solid #1d5fd1; background: #1d5fd1; color: #fff; border-radius: 4px; cursor: pointer; }
+  .werkzeug button { font: inherit; font-weight: 600; padding: 6px 14px; border: 1px solid #c04606; background: #c04606; color: #fff; border-radius: 4px; cursor: pointer; }
   footer { margin-top: 16px; padding-top: 6px; border-top: 1px solid #D9E0EA; }
   @media print { body { padding: 0; } .werkzeug { display: none; } a { color: inherit; text-decoration: none; } }
 `;
