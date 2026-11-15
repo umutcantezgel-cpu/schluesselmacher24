@@ -22,9 +22,18 @@ Zeige den Shop so, wie der Inhaber ihn beschreibt: Produkte nach Hersteller und 
 6. Sitemap: Kategorie-, Hersteller- und Produktseiten nach der Index-Regel (nur veröffentlichte, keine Beispiele, keine leeren Herstellerseiten).
 7. Navigation und Startseite: gemeinsame Dateien. Nenne im Bericht die gewünschten Einträge als exakte Liste.
 
+## Stand nach FA-SHOP-01 (vom Orchestrator, 15.11.2026)
+FA-SHOP-01 hat Sammlungen, Felder, JSON-Rückfall, Seed und die Serversperre für nicht Bestellbares gebaut; die Übergabe mit Funktionen, Typen und Feldern steht in `berichte/FA-SHOP-01.md`, Abschnitt „FÜR FA-SHOP-01B“. Diese Punkte hat es offen gelassen; sie gehören zu deinem Auftrag:
+1. Kategorien wirken auf der Seite: „Im Shop zeigen“ steuert die Sichtbarkeit; frühere Adressen einer umbenannten Kategorie leiten weiter. Die Anleitung `docs/betrieb/shop-pflegen.md` und die Hilfetexte im Admin sagen heute ehrlich „kommt mit dem nächsten Ausbau“: Stelle sie um, sobald es gebaut ist.
+2. Codeprodukt zeigt Lieferzeit, System und Codebereich auf Liste und Detailseite.
+3. Texte nach Verfügbarkeit: `src/lib/codelinie-texte.ts` braucht je eine Fassung für „lieferbar“, „auf Anfrage“ und „nicht lieferbar“ (Meta-Beschreibung, Einleitung, der Satz zur Stückzahl, die Frage zum Bestellformular), damit die Seite keinen Direktkauf beschreibt, den der Server ablehnt (R4). Titel und Beschreibungen bleiben in den Längen (`src/lib/data/seo-laengen.test.ts`).
+4. „Artikel anfragen“ und Kategorien ohne Produkte: Die Anfrage übernimmt den Namen des Artikels oder der Kategorie aus der Adresse (nur als Vorbelegung, bereinigt wie bei „Code anfragen“, `src/lib/wege/code-anfrage.ts`), damit der Kunde ihn nicht selbst benennen muss. Für die Kategorien „Autoschlüssel als Produkte“, „Gehäuseumbau und Reparaturservice“ und „Customizing und Modifikation“ führt der Verweis in einen Weg, der zum Anliegen passt (Gehäuse-Anfrage, sonst die Anfrage zu einer Leistung mit Thema Autoschlüssel und Anliegen „Frage“).
+5. Warenkorb und Kasse: Eine Position, die inzwischen nicht mehr bestellbar ist, wird schon im Warenkorb ruhig gekennzeichnet (heute lehnt erst der Server beim Absenden ab). Die Unterzeilen der Zylinder beginnen in Warenkorb und Kasse mit „— “: ohne Gedankenstrich.
+6. Titel und Beschreibungen der neuen Seiten in den Längen; Strukturdaten als ein Graph je Seite (Punkt 4a).
+
 ## Schreibrechte
 - neu: scripts/sortiment-import.mjs mit Test, Vorlage unter _werkstatt/ausbau/erhebung/boegen/, bei Bedarf src/app/(site)/shop/**
-- ändern: src/app/(site)/schluessel-nach-code/**, src/app/(site)/artikel/**, src/lib/codelinie.ts, src/lib/artikel.ts, src/lib/data/** (nur Lesewege für Kategorien und Hersteller), src/components/seo/json-ld.tsx (nur Product, Offer, Brotkrumen dieser Seiten), src/app/sitemap.ts, next.config (nur Weiterleitungen alter Kategorieadressen, falls nötig), docs/betrieb/shop-pflegen.md
+- ändern: src/app/(site)/schluessel-nach-code/**, src/app/(site)/artikel/**, src/app/(site)/warenkorb/** und src/app/(site)/kasse/** (nur Punkt 5 oben, keine Rechtstexte und Zustimmungen), src/app/(site)/service-und-termin/anfrage/** (nur die Vorbelegung aus Punkt 4), src/lib/codelinie.ts, src/lib/codelinie-texte.ts, src/lib/artikel.ts, src/payload/collections/Kategorien.ts und Hersteller.ts (nur Hilfetexte), src/lib/data/** (nur Lesewege für Kategorien und Hersteller), src/components/seo/json-ld.tsx (nur Product, Offer, Brotkrumen dieser Seiten), src/app/sitemap.ts, next.config (nur Weiterleitungen alter Kategorieadressen, falls nötig), docs/betrieb/shop-pflegen.md
 - zugehörige Tests; _werkstatt/ausbau/berichte/FA-SHOP-01B.md
 Nicht anfassen: content/code-lines.json (bleibt Musterdatensatz, außer durch den Import in Tests auf Kopien), Preise im Bestand, content/rubriken.json, Navigation und Startseite, Zylinderkatalog (FA-SHOP-04), Rechtstexte, die Sammlungen selbst (fertig aus FA-SHOP-01).
 
