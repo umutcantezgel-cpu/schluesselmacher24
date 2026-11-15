@@ -79,7 +79,9 @@ describe('Rubriken-Modell (G-03, G-11, KERN K-014)', () => {
     expect(name.get('beratung')).toBe('Allgemeine Anfrage');
     expect(ALLE.find((r) => r.id === 'beratung')?.zusatz).toBe('für Sonderfälle');
     for (const r of hubKacheln(ALLE)) {
-      expect(r.laienname.split(/\s+/).length, r.id).toBeLessThanOrEqual(2);
+      // Kurz genug für zwei Zeilen auf dem Telefon: höchstens drei Wörter und 24 Zeichen (FA-SOFORT-05).
+      expect(r.laienname.split(/\s+/).length, r.id).toBeLessThanOrEqual(3);
+      expect(r.laienname.length, r.id).toBeLessThanOrEqual(24);
       expect(r.name.toLowerCase(), r.id).toContain(r.laienname.toLowerCase());
     }
   });
@@ -185,10 +187,10 @@ describe('Rubriken-Modell (G-03, G-11, KERN K-014)', () => {
     expect(JSON.stringify(NAV_AREAS)).not.toMatch(nachFoto);
     expect(JSON.stringify(seiten)).not.toMatch(nachFoto);
 
-    // Seit FA-SOFORT-05 trägt der Zugang den Namen des Inhabers, der kurze Kachelname bleibt „Nach Vorlage“.
+    // Seit FA-SOFORT-05 trägt der Zugang den Namen des Inhabers; der kurze Kachelname nennt beide Wege.
     const vorlage = ALLE.find((r) => r.id === 'schluessel-nach-vorlage')!;
     expect(vorlage.name).toBe('Schlüssel nach Vorlage oder einschicken');
-    expect(vorlage.laienname).toBe('Nach Vorlage');
+    expect(vorlage.laienname).toBe('Vorlage oder einschicken');
     expect(NAV_AREAS.find((a) => a.key === 'schluessel-nach-vorlage')?.label).toBe('Schlüssel nach Vorlage');
   });
 

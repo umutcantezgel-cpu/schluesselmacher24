@@ -356,3 +356,9 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Entscheidung: FA-KERN-02 baut Steckplätze und die eine Pflichtregel in die bestehenden Wege ein und legt die Klassen als Daten an. FA-KERN-02B baut darauf die gemeinsame Anfrage, die Einstiegsseiten und „Fahrzeug nicht gefunden?“. FA-SOFORT-05 folgt nach Teil B.
 - Suche: Ein Suchwort, das im Namen der Reihe trifft, zählt mehr als eines, das nur über einen weiteren Namen (Alias, Generation) trifft. Sonst stünde bei „Vespa GTS“ die häufigere Vespa GTV vorn, die „GTS“ nur als weiteren Namen führt.
 - Umkehrprobe: Der Aufschlag ist eine Konstante in `src/lib/fahrzeuge/suche.ts`; die Teilung der Pakete ändert nichts am Ergebnis.
+
+## A-056 · „Allgemeine Anfrage“ ist ein Name für ein Ziel (2026-11-15 20:20, FA-SOFORT-05, FA-03)
+- Nach dem Umbau des Hubs gab es zwei Seiten mit demselben Anspruch: `/beratung` („Passt Ihr Anliegen zu keinem der anderen Wege“) und `/service-und-termin/anfrage` („wenn Ihr Anliegen in keinen der Fachbereiche passt“), die zweite hieß „Allgemeine Anfrage“. Die Kachel des Inhabers „Allgemeine Anfrage für Sonderfälle“ führt nach `/beratung`, weil dort ein freier Text mit Rückruf genügt und niemand erst einen von neun Fachbereichen wählen muss.
+- Entscheidung: `/beratung` trägt den Namen „Allgemeine Anfrage“ (mit Rückruf). `/service-und-termin/anfrage` heißt „Anfrage zu einer Leistung“: Fachbereich wählen, Frage stellen; wer dort einen Schlüssel will, wird in den geführten Weg verwiesen (FA-KERN-02B). Kennungen, Adressen und gespeicherte Vorgänge bleiben.
+- Kachelname auf dem Telefon für den siebten Zugang: „Vorlage oder einschicken“.
+- Umkehrprobe: reine Beschriftungen; die Namen der Rubriken sind Daten im Admin.

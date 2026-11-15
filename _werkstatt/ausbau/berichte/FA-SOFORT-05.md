@@ -384,3 +384,16 @@ src/components/hub/hub.test.tsx, dieser Bericht.
 - Orchestrator: Sichtprobe bei 1440 × 900 verbindlich vor der Abnahme (Befund 9).
 
 === ENDE FA-SOFORT-05 · BEREIT ZUR RÜCKGABE ===
+
+## ABNAHME (Orchestrator, 15.11.2026)
+
+- **Prüfkette grün** (`werkzeuge/abnahme.sh FA-SOFORT-05`): Typprüfung, Lint, Unit 2.787 Tests in 192 Dateien, Datenbanktests 107 in 18 Dateien (mit der Migration `20261115_182441_rubrik_symbole_fahrzeugklassen`), Build ohne Datenbank 177 von 177 Seiten.
+- **Roter Test behoben:** Der vorbereitete Patch ist eingespielt. Die vier Einstiegsseiten (Roller, E-Scooter, Seniorenmobil, Fahrrad) zeigen jetzt den Ablauf aus den Rubrikdaten (`EinstiegSeite` mit `ablauf`, je Seite `RubrikAblaufAbschnitt`). `ablauf.test.tsx` ist grün; die Ablauftexte im Admin wirken damit sichtbar.
+- **Sichtprobe im Browser** (Startseite, Attrappen, keine Fehler in der Konsole):
+  - 390 × 844: Frage, Satz (drei Zeilen), alle 14 Kacheln, „Lieber anrufen“ mit Nummer und „24 Stunden erreichbar“ stehen über der unteren Leiste.
+  - 360 × 780: alle 14 Kacheln über der Leiste; die Anrufzeile liegt darunter (Vorgabe: mindestens zwölf Kacheln).
+  - 768 × 1024 und 1440 × 900: vier Spalten (4, 4, 4, 2) mit den vollen Namen des Inhabers; bei 1440 × 900 enden die letzte Reihe und die Anrufzeile knapp über dem unteren Rand.
+- **Ein Name, ein Ziel (A-056):** Die Kachel „Allgemeine Anfrage“ führt nach `/beratung`. Die Seite heißt jetzt selbst „Allgemeine Anfrage“ (Dachzeile „Beratung mit Rückruf“, Titel „Allgemeine Anfrage und Beratung“). Die Seite `/service-und-termin/anfrage` heißt überall „Anfrage zu einer Leistung“ (Titel, Überschrift, Kopf des Formulars, Übersicht Service und Termin, Verweislisten). „Vor-Ort-Leistungen“ heißt als Seitentitel, Brotkrume und Verweis „Service vor Ort nach Termin“. In der Beratung heißt das Thema „Elektronische Zutrittslösungen“; ältere Vorgänge behalten ihren gespeicherten Wert.
+- **Nachweis `ersatznachweis` schließt jetzt ab** (Befund 12): `nachweisPruefen` verlangt dafür ein Dokument, statt den Wert wie „kein Nachweis“ zu behandeln (R13).
+- **Kachelname auf dem Telefon:** „Vorlage oder einschicken“ statt „Nach Vorlage“, weil der Inhaber beide Wege in einem Zugang nennt und das Einschicken sonst auf dem Telefon nicht sichtbar wäre. Die Regel im Test lautet jetzt: höchstens drei Wörter und 24 Zeichen (zwei Zeilen), der kurze Name steckt im vollen.
+- **Offen (kein Mangel der Abnahme):** Bei abgeschalteter Rubrik lehnt der Server die Anfrage ab und nennt das Telefon; die Einstiegsseite selbst bleibt erreichbar (Nachpaket mit FA-KERN-05). Der Satz unter der Frage braucht auf dem Telefon drei Zeilen; kürzen kann ihn nur der Inhaber (MA-45). E-Scooter und Seniorenmobil bleiben auf noindex, bis jede Seite eigenen Text hat (MA-45).

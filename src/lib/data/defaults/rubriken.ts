@@ -251,7 +251,7 @@ export function rubriken(): Rubrik[] {
     {
       id: "schluessel-nach-vorlage",
       name: "Schlüssel nach Vorlage oder einschicken",
-      laienname: "Nach Vorlage",
+      laienname: "Vorlage oder einschicken",
       zusatz: "per Foto anfragen",
       erklaerung:
         "Sie laden drei Fotos hoch, wir prüfen Schlüsselart und Machbarkeit und nennen Ihnen Preis und Weg.",
