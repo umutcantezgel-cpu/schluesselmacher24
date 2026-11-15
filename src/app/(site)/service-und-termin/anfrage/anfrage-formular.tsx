@@ -113,9 +113,15 @@ export function AllgemeineAnfrage({
   fahrzeug,
   codeVorbelegung,
   themaFest = false,
+  anliegenVorauswahl,
 }: {
   themen: Array<{ key: AreaKey; label: string; summary: string }>;
   vorauswahl?: string;
+  /**
+   * Die Adresse sagt schon, dass es um eine Frage oder ein anderes Anliegen geht (`?anliegen=frage`),
+   * etwa bei „Kooperation anfragen“ für Betriebe: Die Frage „Was möchten Sie?“ ist dann vorbelegt.
+   */
+  anliegenVorauswahl?: 'frage';
   /** Fahrzeug aus der Suche im Autoschlüssel-Weg, das dort nicht gepflegt ist (G-15). */
   fahrzeug?: string;
   /** Code und Schloss aus der Adresse, etwa von einer Produktseite (nur Vorbelegung). */
@@ -143,6 +149,7 @@ export function AllgemeineAnfrage({
     initial: {
       ...LEER,
       thema: vorauswahl && themen.some((t) => t.key === vorauswahl) ? vorauswahl : '',
+      anliegenArt: vorauswahl && anliegenVorauswahl ? anliegenVorauswahl : '',
       objekt: fahrzeug ?? '',
       code: codeVorbelegung?.code ?? '',
       schloss: codeVorbelegung?.schloss ?? '',

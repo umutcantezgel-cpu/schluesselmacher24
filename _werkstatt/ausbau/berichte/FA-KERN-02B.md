@@ -138,3 +138,12 @@ Geänderte Dateien der Nachbesserung: src/components/fahrzeug-anfrage/{formular.
 - Markenseiten: Die alte Box „Modell nicht dabei?“ ist im Block aufgegangen (Befund 8); bitte bestätigen.
 
 === ENDE FA-KERN-02B · BEREIT ZUR RÜCKGABE ===
+
+## ABNAHME (Orchestrator, 15.11.2026)
+
+- **Prüfkette grün** (`werkzeuge/abnahme.sh FA-KERN-02B`): Typprüfung, Lint, Unit 2.760 Tests in 192 Dateien, Datenbanktests 103 in 17 Dateien, Build ohne Datenbank 177 von 177 Seiten (neun neue Seiten).
+- **Sichtprobe im Browser** bei 390 × 844 (Attrappen, keine Uploads, kein Absenden): Fahrradanfrage und E-Scooter-Anfrage je bis Schritt 3 „Unterlagen und Fotos“. Schritt 1 zeigt den Hilfeblock mit Rückruf; Schritt 2 die Karte „keinen Schlüssel mehr“; Schritt 3 die Wahl des Nachweises (Kaufbeleg oder Codekarte beim Fahrrad), die drei Foto-Plätze, „Später weitermachen“ und Rückruf; „Weiter“ bleibt gesperrt und die Leiste nennt, was fehlt. Einstiegsseite Roller und „Fahrzeug nicht gefunden“ laden ohne Fehler in der Konsole.
+- **Nachgezogen (Partnerweg):** „Kooperation anfragen“ auf den Partnerseiten führt weiter in die allgemeine Anfrage, jetzt mit `?anliegen=frage`: Die Frage „Was möchten Sie?“ ist dort vorbelegt mit „Frage oder anderes Anliegen“, damit ein Betrieb nicht vor der Schlüssel-Frage steht (`gewinnung.ts`, `anfrage/page.tsx`, `anfrage-formular.tsx`; Test der Partnerseite an die HTML-Schreibweise der Adresse angepasst).
+- **Entschieden:** Die alte Box „Modell nicht dabei?“ auf den Markenseiten durfte im neuen Block aufgehen. Fahrrad, E-Scooter und Seniorenmobil bleiben im Vorgangsbereich Autoschlüssel (ein Orange für alle Bereiche, A-044); eigene Rubriken bekommen sie in FA-SOFORT-05. Die Zuordnung Klasse zu Rubrik (abgeschaltete Rubrik sperrt den Weg) und der Nachweis-Wert `ersatznachweis` stehen in der Paketdatei FA-SOFORT-05.
+- **Bekannt und offen:** Für Ersatznachweis und Typenschild gibt es noch kein echtes Beispielbild; der Rahmen „So sollte das Foto aussehen“ zeigt dort ein Symbol (MA-05, eigene Fotos). Ältere Motorradanfragen mit der Quelle `motorrad` tragen keine Klasse und erscheinen nicht im Klassenfilter des Admins.
+- **Fragen an den Inhaber** (MA-38, MA-41): Chip-Frage bei E-Scooter und Seniorenmobil, Baujahr als Pflicht, Fahrzeugart bei „nicht gefunden“, Wortlaut der vier Einstiegsseiten und der neuen Hilfetexte.

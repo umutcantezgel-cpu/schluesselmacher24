@@ -602,8 +602,9 @@ const KOOPERATION: GewinnungSeite = {
   naechsterSchritt: {
     ueberschrift: 'Kooperation anfragen',
     text: 'Beschreiben Sie kurz Ihren Betrieb und Ihre Fälle. Wir melden uns bei Ihnen.',
-    // Vorbelegt mit dem Bereich Autoschlüssel (`?thema=` der Anfrage), damit der Fall richtig ankommt.
-    primaer: { href: '/service-und-termin/anfrage?thema=autoschluessel', label: 'Kooperation anfragen' },
+    // Vorbelegt mit dem Bereich Autoschlüssel (`?thema=` der Anfrage), damit der Fall richtig ankommt, und
+    // mit „Frage oder anderes Anliegen“ (`?anliegen=frage`): Ein Betrieb will keinen Schlüssel bestellen.
+    primaer: { href: '/service-und-termin/anfrage?thema=autoschluessel&anliegen=frage', label: 'Kooperation anfragen' },
     sekundaer: { href: PARTNER_HAUPTSEITE, label: 'Partnerbetrieb werden' },
   },
 };

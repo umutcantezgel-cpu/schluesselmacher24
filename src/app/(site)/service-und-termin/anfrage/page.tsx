@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 };
 
 export default async function AnfragePage(props: {
-  searchParams: Promise<{ thema?: string; fahrzeug?: string; code?: string; schloss?: string }>;
+  searchParams: Promise<{ thema?: string; fahrzeug?: string; code?: string; schloss?: string; anliegen?: string }>;
 }) {
-  const { thema, fahrzeug, code, schloss } = await props.searchParams;
+  const { thema, fahrzeug, code, schloss, anliegen } = await props.searchParams;
   // Fahrzeug aus der Suche im Autoschlüssel-Weg (G-15): nur als kurzer Text in die Beschreibung.
   const fahrzeugText = typeof fahrzeug === 'string' ? fahrzeug.replace(/[^\p{L}\p{N} .\-/]/gu, '').trim().slice(0, 80) : '';
 
@@ -66,6 +66,7 @@ export default async function AnfragePage(props: {
           fahrzeug={fahrzeugText || undefined}
           codeVorbelegung={codeVorbelegung}
           themaFest={codeAnfrage}
+          anliegenVorauswahl={anliegen === 'frage' ? 'frage' : undefined}
         />
       </div>
     </>

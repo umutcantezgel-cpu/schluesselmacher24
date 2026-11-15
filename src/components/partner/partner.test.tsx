@@ -39,7 +39,8 @@ describe('Partnerseiten: Vorlage', () => {
       // Verweise auf alle anderen Partnerseiten und zur Bewerbung
       for (const andere of GEWINNUNG_SEITEN.filter((s) => s !== seite)) expect(html).toContain(`href="${andere.pfad}"`);
       expect(html).toContain('href="/partner-werden"');
-      expect(html).toContain(`href="${seite.naechsterSchritt.primaer.href}"`);
+      // Im HTML steht „&“ in Adressen als „&amp;“.
+      expect(html).toContain(`href="${seite.naechsterSchritt.primaer.href.replace(/&/g, '&amp;')}"`);
 
       // Telefon aus den Einstellungen
       expect(html).toContain('href="tel:+4964418056279"');
