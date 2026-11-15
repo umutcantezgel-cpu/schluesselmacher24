@@ -150,7 +150,7 @@ export default async function ServiceDetailPage(props: PageProps) {
                     </span>
                   </span>
                   <span className="inline-flex shrink-0 items-center gap-1.5 text-small font-semibold text-primary">
-                    Leistungsdetails
+                    Ansehen
                     <GlyphPfeilRechts
                       size={16}
                       className="transition-transform duration-quick group-hover:translate-x-1"

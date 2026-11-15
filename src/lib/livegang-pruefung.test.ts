@@ -6,7 +6,7 @@ import { afterAll, describe, expect, it } from 'vitest';
 
 import { einstellungenZuPayload } from './data/payload-mapping';
 import { defaults } from './data/defaults';
-import { beispielFunde, firmendatenFunde, musterKennungen, platzhalterImText, rechtsseitenFunde } from './livegang-pruefung';
+import { beispielFunde, firmendatenFunde, mailadresseFunde, musterKennungen, platzhalterImText, rechtsseitenFunde, umgebungsMailFunde } from './livegang-pruefung';
 import type { Settings } from './types';
 
 const settingsJson = (await import('../../content/settings.json')).default as unknown as Settings;
@@ -31,6 +31,71 @@ describe('firmendatenFunde', () => {
 
   it('meldet fehlende Firmendaten', async () => {
     expect(await firmendatenFunde(null)).toHaveLength(1);
+  });
+
+  it('meldet eine Firmen-E-Mail außerhalb der eigenen Domain, ohne den Wert auszugeben (FA-24)', async () => {
+    const firma = { ...einstellungenZuPayload(settingsJson).firma, email: 'kunde.fremd@gmail.com' };
+    const funde = await firmendatenFunde(firma as Record<string, unknown>);
+    expect(funde).toHaveLength(1);
+    expect(funde[0].ort).toBe('Einstellungen › Firma › E-Mail');
+    expect(funde[0].hinweis).toMatch(/eigenen Domain schluesselmacher24\.de/);
+    expect(JSON.stringify(funde)).not.toContain('gmail');
+  });
+
+  it('meldet eine Firmen-E-Mail mit Platzhalter genau einmal, unter „Noch offen“', async () => {
+    const firma = { ...einstellungenZuPayload(settingsJson).firma, email: '[Platzhalter: E-Mail-Adresse]' };
+    const funde = await firmendatenFunde(firma as Record<string, unknown>);
+    expect(funde).toHaveLength(1);
+    expect(funde[0].hinweis).toMatch(/Noch offen: .*E-Mail/);
+    expect(JSON.stringify(funde)).not.toContain('Platzhalter: E-Mail');
+  });
+});
+
+describe('mailadresseFunde (FA-24)', () => {
+  it('lässt eine Adresse auf der eigenen Domain durch, auch in Großschreibung', () => {
+    expect(mailadresseFunde('info@schluesselmacher24.de')).toEqual([]);
+    expect(mailadresseFunde(' Info@Schluesselmacher24.DE ')).toEqual([]);
+  });
+
+  it('meldet leer und fremde Domains; ein Platzhalter steht unter firmendatenPruefen', () => {
+    expect(mailadresseFunde('')).toHaveLength(1);
+    expect(mailadresseFunde(undefined)).toHaveLength(1);
+    expect(mailadresseFunde('[Platzhalter: E-Mail-Adresse]')).toEqual([]);
+    expect(mailadresseFunde('info@schluesselmacher24.de.example.org')[0].hinweis).toMatch(/eigenen Domain/);
+    expect(mailadresseFunde('info@xschluesselmacher24.de')[0].hinweis).toMatch(/eigenen Domain/);
+  });
+});
+
+describe('umgebungsMailFunde (FA-24)', () => {
+  it('lässt Adressen auf der eigenen Domain durch, auch mehrere Betriebsempfänger', () => {
+    expect(
+      umgebungsMailFunde({
+        MAIL_FROM_ADDRESS: 'info@schluesselmacher24.de',
+        MAIL_REPLY_TO: ' Info@Schluesselmacher24.DE ',
+        MAIL_TEAM_ADDRESS: 'info@schluesselmacher24.de, team@schluesselmacher24.de',
+      }),
+    ).toEqual([]);
+  });
+
+  it('lässt nicht gesetzte und leere Variablen durch', () => {
+    expect(umgebungsMailFunde({})).toEqual([]);
+    expect(umgebungsMailFunde({ MAIL_REPLY_TO: '', MAIL_TEAM_ADDRESS: ' , ' })).toEqual([]);
+  });
+
+  it('meldet eine fremde Antwortadresse nur mit dem Variablennamen', () => {
+    const funde = umgebungsMailFunde({ MAIL_FROM_ADDRESS: 'info@schluesselmacher24.de', MAIL_REPLY_TO: 'kunde.fremd@gmail.com' });
+    expect(funde).toHaveLength(1);
+    expect(funde[0].ort).toBe('Umgebung › MAIL_REPLY_TO');
+    expect(JSON.stringify(funde)).not.toContain('gmail');
+  });
+
+  it('meldet fremden Absender und fremde Betriebsempfänger je Variable einmal', () => {
+    const funde = umgebungsMailFunde({
+      MAIL_FROM_ADDRESS: 'shop@example.org',
+      MAIL_TEAM_ADDRESS: 'info@schluesselmacher24.de, werkstatt@example.org, inhaber@example.org',
+    });
+    expect(funde.map((fund) => fund.ort)).toEqual(['Umgebung › MAIL_FROM_ADDRESS', 'Umgebung › MAIL_TEAM_ADDRESS']);
+    expect(JSON.stringify(funde)).not.toContain('example');
   });
 });
 

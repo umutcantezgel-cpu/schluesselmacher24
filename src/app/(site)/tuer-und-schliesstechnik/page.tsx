@@ -67,25 +67,25 @@ const RELATED_AREAS: { area: AreaKey; href: string; label: string; body: string 
     area: 'gleichschliessende-zylinder',
     href: '/gleichschliessende-zylinder',
     label: 'Gleichschließende Zylinder',
-    body: 'Mehrere Türen mit demselben Schlüssel schließen — ohne vollständige Anlagenplanung. Ideal für Einfamilienhäuser und kleine Gewerbeobjekte.',
+    body: 'Mehrere Türen schließen mit demselben Schlüssel. Dafür braucht es keine ganze Schließanlage. Das passt etwa für Einfamilienhäuser und kleine Betriebe.',
   },
   {
     area: 'schliessanlagen',
     href: '/schliessanlagen',
     label: 'Schließanlagen',
-    body: 'Wenn verschiedene Personen unterschiedlich weit schließen sollen, wird daraus eine Anlage. Strukturierte Hierarchien für komplexe Gebäude.',
+    body: 'Wenn verschiedene Personen unterschiedlich viele Türen öffnen sollen, wird daraus eine Schließanlage. Das ist bei größeren Gebäuden üblich.',
   },
   {
     area: 'elektronische-zutrittsloesungen',
     href: '/elektronische-zutrittsloesungen',
     label: 'Elektronische Zutrittslösungen',
-    body: 'Karte, Transponder, PIN oder App statt Schlüssel — auch in Verbindung mit vorhandener Mechanik. Die flexible Alternative zur klassischen Mechanik.',
+    body: 'Karte, Transponder, PIN oder App statt Schlüssel. Das geht auch zusammen mit vorhandener Mechanik.',
   },
   {
     area: 'sicherheitstechnik',
     href: '/sicherheitstechnik',
     label: 'Sicherheitstechnik',
-    body: 'Wenn zusätzlich erkannt und gemeldet werden soll, was an der Tür passiert. Alarmanlagen und Überwachungssysteme.',
+    body: 'Alarmanlagen und Kameras melden, was an der Tür passiert. Sie ergänzen den mechanischen Schutz.',
   },
 ];
 
@@ -103,29 +103,29 @@ function Marke({ nummer }: { nummer: number }) {
 
 const EXPERT_FAQ = [
   {
-    question: 'Wann reicht ein Zylindertausch und wann muss die gesamte Türtechnik erneuert werden?',
+    question: 'Wann reicht ein neuer Zylinder und wann muss mehr an der Tür erneuert werden?',
     answer:
-      'Ein einfacher Zylindertausch reicht oft aus, wenn Sie lediglich die Schließhoheit nach einem Schlüsselverlust oder Mieterwechsel wiederherstellen möchten, vorausgesetzt das Einsteckschloss und der Beschlag sind noch intakt und bieten ausreichend Schutz. Wenn die Tür jedoch veraltet ist, das Schloss hakt, der Beschlag keinen Ziehschutz bietet oder Sie den Einbruchschutz substanziell erhöhen wollen (z. B. auf Widerstandsklasse RC2 oder RC3), muss die Tür als Gesamtsystem betrachtet werden. Oft empfiehlt sich dann die Nachrüstung einer Mehrfachverriegelung oder eines Querriegelschlosses in Kombination mit einem Schutzbeschlag.',
+      'Nach einem Schlüsselverlust oder einem Mieterwechsel reicht oft ein neuer Zylinder. Dann haben nur Sie wieder alle Schlüssel. Voraussetzung ist, dass Schloss und Beschlag in Ordnung sind und ausreichend schützen. Ist die Tür alt, hakt das Schloss oder fehlt dem Beschlag der Ziehschutz, sehen wir uns die ganze Tür an. Das gilt auch, wenn Sie den Einbruchschutz deutlich verbessern wollen. Oft hilft dann eine Mehrfachverriegelung oder ein Querriegelschloss zusammen mit einem Schutzbeschlag.',
   },
   {
     question: 'Was ist der Unterschied zwischen einem Einsteckschloss und einer Mehrfachverriegelung?',
     answer:
-      'Ein Einsteckschloss verriegelt die Tür an genau einem Punkt, nämlich in Höhe des Schlosses über den Riegel. Eine Mehrfachverriegelung (oft auch als Stangenschloss bezeichnet) verriegelt die Tür zusätzlich an weiteren Punkten – meist oben und unten – über Schwenkriegel, Bolzen oder Pilzzapfen. Dadurch wird die Kraft bei einem Einbruchsversuch auf den gesamten Türrahmen verteilt, was ein Aufhebeln massiv erschwert und die Sicherheit signifikant erhöht.',
+      'Ein Einsteckschloss verriegelt die Tür an einem Punkt, in Höhe des Schlosses. Eine Mehrfachverriegelung, auch Stangenschloss genannt, verriegelt zusätzlich an weiteren Punkten, meist oben und unten. Dafür sorgen Schwenkriegel, Bolzen oder Pilzzapfen. So verteilt sich die Kraft bei einem Einbruchsversuch auf den ganzen Rahmen. Die Tür lässt sich dann deutlich schwerer aufhebeln.',
   },
   {
     question: 'Welche Anforderungen gibt es an Schlösser für Flucht- und Rettungswege?',
     answer:
-      'Für Flucht- und Rettungswege gelten strenge gesetzliche Normen (EN 179 für Notausgänge und EN 1125 für Paniktüren). Das wichtigste Prinzip ist: Eine Tür im Fluchtweg muss sich von innen jederzeit und ohne Schlüssel öffnen lassen, auch wenn sie von außen verriegelt ist. Dies wird durch spezielle Panikschlösser und entsprechende Beschläge (wie Drücker oder Panikstangen) realisiert. Modifikationen an diesen Türen dürfen nur mit zugelassenen Komponenten und fachgerecht erfolgen, um die Zulassung nicht zu verlieren.',
+      'Eine Tür im Fluchtweg muss sich von innen jederzeit und ohne Schlüssel öffnen lassen. Das gilt auch, wenn sie von außen verriegelt ist. Dafür gibt es Panikschlösser mit passenden Beschlägen, etwa Drücker oder Panikstangen. Änderungen an diesen Türen sind nur mit zugelassenen Teilen und fachgerecht erlaubt. Sonst kann die Zulassung der Tür verloren gehen.',
   },
   {
     question: 'Lässt sich jede Haustür mit einem elektronischen Schloss nachrüsten?',
     answer:
-      'In den meisten Fällen ja. Es gibt elektronische Zylinder, die den mechanischen Profilzylinder exakt ersetzen und ohne Kabelverlegung installiert werden können (Batteriebetrieb). Für vollautomatische Motorschlösser (die die Tür von selbst auf- und zuschließen) ist jedoch eine Stromversorgung im Türblatt erforderlich. Ist diese nicht vorhanden, können motorische Aufsatzantriebe auf den bestehenden Zylinder (mit Not- und Gefahrenfunktion) gesetzt werden. Wir prüfen die Gegebenheiten vor Ort und empfehlen die passende Lösung.',
+      'Oft ja. Ein elektronischer Zylinder ersetzt den mechanischen Profilzylinder genau. Er läuft mit Batterie, Kabel sind nicht nötig. Ein Motorschloss schließt die Tür von selbst auf und zu. Dafür braucht es Strom im Türblatt. Fehlt dieser, kann ein Antrieb auf den vorhandenen Zylinder gesetzt werden. Der Zylinder braucht dann eine Not- und Gefahrenfunktion. Wir prüfen Ihre Tür vor Ort und empfehlen eine passende Lösung.',
   },
   {
-    question: 'Wie pflege ich meine Schließzylinder und Türschlösser richtig?',
+    question: 'Wie pflege ich Zylinder und Türschlösser richtig?',
     answer:
-      'Verwenden Sie für Schließzylinder niemals herkömmliches Öl oder harzende Schmiermittel, da diese den feinen Mechanismus im Inneren verkleben können. Nutzen Sie stattdessen spezielles Pflegespray für Schließzylinder (nicht fettend, z. B. auf Teflon- oder Graphitbasis). Einsteckschlösser und Mehrfachverriegelungen können hingegen an den beweglichen Teilen (Falle, Riegel) sparsam mit einem geeigneten Schmierfett behandelt werden. Schließbleche sollten regelmäßig auf festen Sitz geprüft und justiert werden, damit die Tür leichtgängig ins Schloss fällt und kein unnötiger Druck auf den Schlüssel ausgeübt wird.',
+      'Geben Sie kein normales Öl und kein harzendes Schmiermittel in den Zylinder. Beides kann die feine Mechanik verkleben. Nehmen Sie ein Pflegespray für Schließzylinder, das nicht fettet, etwa auf Teflon- oder Graphitbasis. Bei Einsteckschlössern und Mehrfachverriegelungen dürfen Falle und Riegel sparsam etwas Schmierfett bekommen. Prüfen Sie ab und zu, ob das Schließblech fest sitzt. Dann fällt die Tür leicht ins Schloss, und der Schlüssel muss nicht gegen Druck arbeiten.',
   },
 ];
 
@@ -155,8 +155,8 @@ export default async function TuerUndSchliesstechnikPage() {
 
       <PageHeader
         eyebrow="Leistungsbereich"
-        title={page?.headline ?? 'Ganzheitliche Tür- und Schließtechnik'}
-        lead={page?.subline ?? 'Sicherheit erfordert Systemverständnis. Vom hochsicheren Zylinder über Mehrfachverriegelungen bis zum geprüften Schutzbeschlag.'}
+        title={page?.headline ?? 'Tür- und Schließtechnik'}
+        lead={page?.subline ?? 'Zylinder, Schlösser, Beschläge und Türtechnik.'}
         crumbs={[{ href: `/${ROUTE}`, label: 'Tür- und Schließtechnik' }]}
         bereich={ROUTE}
         /* Blickfang im Kopf (E4-L-23): die nummerierte Tür, auf Papier ohne Rahmen. */
@@ -175,7 +175,7 @@ export default async function TuerUndSchliesstechnikPage() {
         actions={
           <>
             <ButtonLink href={`/service-und-termin/anfrage?thema=${ROUTE}`} prefetch={false} size="lg" pfeil>
-              Beratungstermin vereinbaren
+              Anfrage starten
             </ButtonLink>
             {/* Ziel des Kopfknopfs erst nach der Fräsbahn vorladen (D-044) */}
             <SpaetVorladen ziele={[`/service-und-termin/anfrage?thema=${ROUTE}`]} />
@@ -189,9 +189,9 @@ export default async function TuerUndSchliesstechnikPage() {
         <div className="grid gap-12 lg:grid-cols-12 lg:grid-rows-kopf lg:items-start lg:gap-x-gutter lg:gap-y-8">
           <SectionHeading
             nummer="01"
-            eyebrow="Architektur der Sicherheit"
-            title="Die Tür als geschlossenes Sicherheitssystem"
-            lead="Wirkungsvoller Einbruchschutz und reibungslose Funktion entstehen nicht durch Einzelkomponenten, sondern durch das präzise Zusammenspiel aller Elemente einer Tür."
+            eyebrow="Grundlagen"
+            title="Eine Tür ist so sicher wie ihr schwächstes Teil"
+            lead="Zylinder, Schloss, Beschlag und Schließblech arbeiten zusammen. Deshalb sehen wir uns die ganze Tür an und nicht nur ein Teil."
             className="lg:col-span-7 lg:row-start-1"
           />
 
@@ -206,22 +206,24 @@ export default async function TuerUndSchliesstechnikPage() {
           <div className="space-y-8 lg:col-span-7 lg:row-start-2">
             <div className="prose-sm24">
               <p>
-                Die Sicherheit einer Tür wird stets durch ihr schwächstes Glied definiert. Ein hochkomplexer, aufbohrgeschützter Schließzylinder verfehlt seine Wirkung vollständig, wenn das dazugehörige Einsteckschloss einer Hebelwirkung nicht standhält oder der Schutzbeschlag von außen einfach abmontiert werden kann. <strong>Ganzheitliche Tür- und Schließtechnik</strong> bedeutet, die physikalischen Kräfte und potenziellen Angriffsvektoren zu verstehen und das Türsystem entsprechend aufzubauen.
+                Ein guter Zylinder mit Bohrschutz hilft wenig, wenn das Schloss beim Hebeln nachgibt. Dasselbe gilt, wenn sich der Beschlag von außen abschrauben lässt. Wir sehen uns an, wo an Ihrer Tür Kraft angreifen kann. Danach richten wir <strong>Zylinder, Schloss und Beschlag</strong> aufeinander aus.
               </p>
 
-              <h3 className="mt-8 mb-4 text-title font-bold text-foreground tracking-tight">Mechanische Kernkomponenten im Verbund</h3>
+              <h3 className="mt-8 mb-4 text-title font-bold text-foreground tracking-tight">Vier Teile, die zusammenarbeiten</h3>
               <p>
-                Das Fundament jeder mechanischen Türsicherung bildet das Zusammenspiel aus <strong>Profilzylinder</strong><Marke nummer={3} />, <strong>Einsteckschloss</strong>, <strong>Schutzbeschlag</strong><Marke nummer={2} /> und <strong>Schließblech</strong><Marke nummer={4} /> im Rahmen.
-                Der Zylinder identifiziert den berechtigten Schlüssel. Das Einsteckschloss übersetzt diese Drehbewegung in die Ver- oder Entriegelung. Der Schutzbeschlag schirmt den Zylinder vor mechanischen Angriffen (Ziehen, Abbrechen) ab, und das Schließblech nimmt die Riegelkraft auf und leitet sie in das Mauerwerk ab.
+                Der <strong>Profilzylinder</strong><Marke nummer={3} /> erkennt den richtigen Schlüssel.
+                Das <strong>Einsteckschloss</strong> macht aus der Drehung des Schlüssels das Ver- und Entriegeln.
+                Der <strong>Schutzbeschlag</strong><Marke nummer={2} /> schützt den Zylinder vor Ziehen und Abbrechen.
+                Das <strong>Schließblech</strong><Marke nummer={4} /> im Rahmen nimmt den Riegel auf und leitet die Kraft in die Wand.
               </p>
             </div>
 
             {/* Haarlinienliste: die drei Schutzpunkte als Stückliste */}
             <ul className="grid border-t border-border">
               {[
-                { title: 'Widerstandsklassen (RC)', desc: 'Wir orientieren uns bei der Konzeption an den DIN EN 1627 Normen. Für den privaten Bereich empfehlen wir mindestens RC2, bei erhöhtem Schutzbedarf RC3.' },
-                { title: 'Zieh- und Bohrschutz', desc: 'Sicherheitsrosetten und Schutzbeschläge mit Zylinderabdeckung verhindern das gewaltsame Kernziehen, eine der häufigsten Einbruchmethoden.' },
-                { title: 'Mehrfachverriegelung', desc: 'Die Verteilung der Schließpunkte über die gesamte Türhöhe verhindert ein Aufhebeln der Tür effektiv. Die Riegel greifen dabei tief in massive Schließleisten.' }
+                { title: 'Schloss und Schließblech', desc: 'Das Schloss muss beim Hebeln halten. Das Schließblech muss fest im Rahmen sitzen.' },
+                { title: 'Ziehschutz', desc: 'Sicherheitsrosetten und Schutzbeschläge mit Zylinderabdeckung erschweren es, den Zylinderkern mit Gewalt herauszuziehen.' },
+                { title: 'Mehrfachverriegelung', desc: 'Die Tür schließt an mehreren Punkten über ihre ganze Höhe. Das macht das Aufhebeln deutlich schwerer.' }
               ].map((item, idx) => (
                 <li key={idx} className="flex gap-4 border-b border-border py-6">
                   <GlyphHakenKreis size={22} className="mt-0.5 shrink-0 text-area-strong" />
@@ -238,9 +240,9 @@ export default async function TuerUndSchliesstechnikPage() {
           <div className="grid border-y border-border lg:col-span-12 lg:row-start-3 lg:grid-cols-12 lg:gap-x-gutter">
             <div className="py-6 lg:col-span-7">
               <div className="prose-sm24">
-                <h3 className="mb-4 text-title font-bold text-foreground tracking-tight">Elektronik trifft Mechanik</h3>
+                <h3 className="mb-4 text-title font-bold text-foreground tracking-tight">Wenn Elektronik dazukommt</h3>
                 <p>
-                  Die moderne Türtechnik verschmilzt zunehmend mit elektronischen Systemen. Mechatronische Zylinder, Motorschlösser und digitale Zutrittskontrollen erfordern ein noch tieferes Systemverständnis. Ein Motorschloss muss beispielsweise so konfiguriert sein, dass es im Brandfall eine sichere Flucht ermöglicht, während es im verriegelten Zustand maximalen Widerstand gegen Einbruch bietet.
+                  An vielen Türen kommt heute Elektronik dazu: elektronische Zylinder, Motorschlösser oder eine Zutrittskontrolle. Dann muss beides zusammenpassen. Ein Motorschloss etwa muss im Brandfall den Weg nach draußen freigeben. Verriegelt soll es trotzdem gut gegen Einbruch schützen.
                 </p>
               </div>
             </div>
@@ -263,7 +265,7 @@ export default async function TuerUndSchliesstechnikPage() {
                 </Link>
               </dd>
               <dd className="mt-2 max-w-measure text-small text-foreground-muted">
-                {process.hint} Wir analysieren die bauliche Substanz Ihrer Tür und erstellen darauf basierend ein präzises Sicherheitskonzept, bevor wir Komponenten austauschen.
+                {process.hint} Bevor wir Teile tauschen, prüfen wir Ihre Tür und schlagen vor, was sinnvoll ist.
               </dd>
               {/* Schritte aus den Rubrikdaten (G-10, G-11) */}
               {rubrik && (
@@ -280,9 +282,9 @@ export default async function TuerUndSchliesstechnikPage() {
       <Section tone="muted">
         <SectionHeading
           nummer="02"
-          eyebrow="Leistungsportfolio"
-          title="Technische Spezialisierung"
-          lead="Unsere Kernkompetenzen in der Tür- und Schließtechnik. Präzise Handwerkskunst trifft auf modernste Sicherheitstechnik."
+          eyebrow="Leistungen"
+          title="Unsere Leistungen an der Tür"
+          lead="Von Zylinder und Schloss bis zum Türschließer. Jede Leistung hat eine eigene Seite mit allem, was dazugehört."
         />
 
         {/* Zweispaltige Haarlinienliste ab lg: zehn Leistungen ergeben fünf volle Zeilen ohne Waise.
@@ -337,20 +339,20 @@ export default async function TuerUndSchliesstechnikPage() {
                 Normen und Brandschutz
               </p>
             </div>
-            <h2 className="mt-3 text-headline font-bold text-foreground">Regulatorik: Fluchtwege und Brandschutz</h2>
+            <h2 className="mt-3 text-headline font-bold text-foreground">Fluchttüren und Brandschutztüren</h2>
             <div className="prose-sm24 mt-6">
               <p>
-                Eingriffe an Brand-, Rauchschutz- oder Fluchttüren erfordern höchste fachliche Expertise und die strikte Einhaltung bauaufsichtlicher Zulassungen. Eine nachträglich falsch montierte Mehrfachverriegelung an einer T30-Brandschutztür kann zum sofortigen Erlöschen der Zulassung führen – mit gravierenden haftungsrechtlichen Konsequenzen im Schadensfall.
+                An Brand-, Rauchschutz- und Fluchttüren gelten die bauaufsichtlichen Zulassungen der Tür. Wird dort etwa eine Mehrfachverriegelung falsch nachgerüstet, kann die Zulassung erlöschen. Im Schadensfall kann das zu Fragen der Haftung führen.
               </p>
               <p>
-                Wir sind zertifiziert für die Bearbeitung und Instandhaltung von Flucht- und Rettungswegtechnik nach DIN EN 179 und DIN EN 1125. Jede technische Modifikation wird vorab auf Zulässigkeit geprüft und fachgerecht dokumentiert.
+                Deshalb prüfen wir jede Änderung an diesen Türen vorher darauf, ob sie zulässig ist. Was wir ändern, dokumentieren wir.
               </p>
             </div>
             <Link
               href={`/${ROUTE}/panik-und-fluchttuertechnik`}
               className="group mt-6 inline-flex min-h-touch items-center gap-2 font-semibold text-primary transition-colors duration-quick ease-standard hover:text-primary-hover"
             >
-              Spezifikationen für Paniktechnik
+              Zur Panik- und Fluchttürtechnik
               <GlyphPfeilRechts size={18} className="shrink-0 transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1" />
             </Link>
           </div>
@@ -363,9 +365,9 @@ export default async function TuerUndSchliesstechnikPage() {
       <Section id="fachwissen">
         <SectionHeading
           nummer="04"
-          eyebrow="Fachwissen & Beratung"
-          title="Häufig gestellte Fragen zur Türtechnik"
-          lead="Wir legen Wert auf transparente Aufklärung. Hier beantworten wir die komplexesten Fragen rund um Zylinder, Schlösser und mechanische Sicherheit."
+          eyebrow="Fragen und Antworten"
+          title="Häufige Fragen zur Türtechnik"
+          lead="Kurze Antworten zu Zylindern, Schlössern, elektronischer Nachrüstung und Pflege."
           className="max-w-3xl"
         />
         <div className="mt-12">
@@ -378,9 +380,9 @@ export default async function TuerUndSchliesstechnikPage() {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <SectionHeading
             nummer="05"
-            eyebrow="Systemerweiterungen"
-            title="Gewerkeübergreifende Lösungen"
-            lead="Tür- und Schließtechnik ist oft der erste Schritt. Erweitern Sie Ihr System um vernetzte oder komplexe Hierarchien."
+            eyebrow="Angrenzende Bereiche"
+            title="Wenn es um mehr als eine Tür geht"
+            lead="Oft beginnt es mit einer Tür. Diese Bereiche schließen daran an."
             className="lg:col-span-5"
           />
 

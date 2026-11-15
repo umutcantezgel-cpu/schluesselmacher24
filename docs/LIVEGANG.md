@@ -35,7 +35,7 @@ Reihenfolge: **1 Postfach → 2 Supabase → 3 Resend → 4 Stripe (Testmodus) �
 
 ## 1. Postfach
 
-`info@schluesselmacher24.de` als echtes Postfach einrichten (beim Domain- oder Mailhoster). Hier landen Antworten der Kunden und die Betriebsmails: neuer Vorgang, Zahlung eingegangen, Widerruf eingegangen.
+`info@schluesselmacher24.de` als echtes Postfach einrichten, bei Zoho Mail (Schritt für Schritt mit SPF, DKIM und DMARC: `docs/betrieb/mail-einrichten.md`). Hier landen Antworten der Kunden und die Betriebsmails: neuer Vorgang, Zahlung eingegangen, Widerruf eingegangen.
 
 ## 2. Supabase: Datenbank und Dateiablage
 
@@ -58,7 +58,7 @@ Reihenfolge: **1 Postfach → 2 Supabase → 3 Resend → 4 Stripe (Testmodus) �
 ## 3. Resend: E-Mail-Versand
 
 1. Konto anlegen, **Domains → Add domain** `schluesselmacher24.de`, Region **EU (Frankfurt)**, falls angeboten.
-2. Die angezeigten DNS-Einträge beim Domainhoster setzen:
+2. Die angezeigten DNS-Einträge beim Domainhoster setzen (Zusammenspiel mit Zoho und SPF: `docs/betrieb/mail-einrichten.md`):
    - DKIM (TXT)
    - SPF (MX + TXT auf der Unterdomain `send`)
    - zusätzlich DMARC: TXT auf `_dmarc` mit `v=DMARC1; p=none; rua=mailto:info@schluesselmacher24.de`

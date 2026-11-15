@@ -72,24 +72,24 @@ const PRINCIPLE = [
   {
     term: 'Mechanik hält auf',
     body:
-      'Zylinder, Schlösser, Beschläge und Zusatzsicherungen kosten Zeit und Kraft. Ohne diesen '
-      + 'Grundschutz meldet jede Elektronik nur, dass bereits etwas passiert ist.',
+      'Zylinder, Schlösser, Beschläge und Zusatzsicherungen kosten einen Einbrecher Zeit und Kraft. '
+      + 'Ohne diesen Grundschutz meldet die Elektronik nur, dass schon etwas passiert ist.',
     href: '/tuer-und-schliesstechnik',
     linkLabel: 'Zur Tür- und Schließtechnik',
   },
   {
     term: 'Meldetechnik erkennt',
     body:
-      'Melder, Kontakte und Kameras erkennen, dass an einer Stelle etwas geschieht — an der Tür, '
-      + 'am Fenster, an der Scheibe oder im Raum.',
+      'Melder, Kontakte und Kameras erkennen, wenn an der Tür, am Fenster, an der Scheibe oder '
+      + 'im Raum etwas geschieht.',
     href: `/${ROUTE}/alarmtechnik`,
     linkLabel: 'Zur Alarmtechnik',
   },
   {
     term: 'Alarmierung informiert',
     body:
-      'Signalgeber und Benachrichtigungen bringen die Information dorthin, wo jemand darauf '
-      + 'reagieren kann. Der Weg wird vorab festgelegt.',
+      'Signalgeber und Benachrichtigungen erreichen die Person, die reagieren kann. '
+      + 'Wer benachrichtigt wird, legen wir vorab fest.',
     href: `/${ROUTE}/panik-und-alarmtaster`,
     linkLabel: 'Zu Panik- und Alarmtastern',
   },
@@ -205,7 +205,7 @@ export default async function SicherheitstechnikPage() {
             {rubrik && <RubrikAblauf rubrik={rubrik} className="mt-6" />}
             <div className="mt-5">
               <ButtonLink href={`/${ROUTE}/sicherheitscheck`} variant="outline">
-                Bestandsaufnahme starten
+                Sicherheitscheck starten
               </ButtonLink>
             </div>
           </div>
@@ -217,8 +217,8 @@ export default async function SicherheitstechnikPage() {
         <SectionHeading
           nummer="02"
           eyebrow="Bereiche"
-          title="Sieben Bereiche, die zusammen gedacht werden"
-          lead="Einzeln betrachtet bleibt jeder Bereich Stückwerk. Welche Kombination zu Ihrem Objekt passt, klären wir in der Bestandsaufnahme."
+          title="Die Bereiche im Einzelnen"
+          lead="Jeder Bereich hat eine eigene Seite. Welche Bereiche zu Ihrem Gebäude passen, klären wir im Sicherheitscheck."
         />
 
         <ul className="mt-12 grid border-t border-border sm:grid-cols-2 lg:grid-cols-3">
@@ -312,7 +312,7 @@ export default async function SicherheitstechnikPage() {
             <ul className="mt-4 space-y-3 text-small leading-relaxed text-foreground-muted">
               <li>
                 Wer eine Anlage mit Video-, Audio- oder Protokollfunktion betreibt, verantwortet deren
-                rechtmäßige Nutzung — also Zweck, Umfang, Speicherdauer, Zugriff und Kennzeichnung.
+                rechtmäßige Nutzung, also Zweck, Umfang, Speicherdauer, Zugriff und Kennzeichnung.
                 Wir liefern und montieren die Technik und beraten technisch; eine Rechtsberatung ist
                 das ausdrücklich nicht.
               </li>
@@ -331,7 +331,7 @@ export default async function SicherheitstechnikPage() {
                 etwa für die Kommunikation an der eigenen Tür oder für eine vereinbarte Alarmierung.
               </li>
               <li>
-                Protokollfunktionen — etwa Zutritts-, Ereignis- oder Bedienprotokolle — erfassen
+                Protokollfunktionen, etwa Zutritts-, Ereignis- oder Bedienprotokolle, erfassen
                 personenbezogene Daten. Zweck, Speicherdauer und Zugriffsberechtigung legen Sie vorab
                 fest; im Beschäftigtenkontext ist zusätzlich die betriebliche Mitbestimmung zu
                 beachten.

@@ -1,7 +1,8 @@
 /**
  * Prüft vor dem Livegang, ob noch Redaktions-Platzhalter sichtbar wären:
  * - Firmendaten (Global „Einstellungen“, Tab „Firma“; ohne Datenbank
- *   content/settings.json),
+ *   content/settings.json) und die Mailadressen der Umgebung (Absender,
+ *   Antwortadresse, Betriebsempfänger: nur auf der eigenen Domain),
  * - Quelltext der Rechtsseiten unter src/app/(site)/rechtliches/,
  * - Beispiel-Einträge (A-046): SM24_BEISPIELE=1 oder ein veröffentlichtes
  *   Produkt aus den Musterdaten ohne Beispiel-Haken (ohne Datenbank
@@ -24,7 +25,7 @@ import { createLocalReq, getPayload } from 'payload';
 
 import { JsonFileAdapter } from '../lib/data/json-adapter';
 import { einstellungenZuPayload } from '../lib/data/payload-mapping';
-import { beispielFunde, firmendatenFunde, rechtsseitenFunde, type Fund, type ProduktEintrag } from '../lib/livegang-pruefung';
+import { beispielFunde, firmendatenFunde, rechtsseitenFunde, umgebungsMailFunde, type Fund, type ProduktEintrag } from '../lib/livegang-pruefung';
 import type { Settings } from '../lib/types';
 import { mitDatenbank } from '../lib/umgebung';
 
@@ -60,6 +61,7 @@ async function produkte(): Promise<ProduktEintrag[]> {
 try {
   const funde = [
     ...(await firmendaten()),
+    ...umgebungsMailFunde(),
     ...beispielFunde(await produkte()),
     ...rechtsseitenFunde(path.resolve(process.cwd(), 'src/app/(site)/rechtliches')),
   ];

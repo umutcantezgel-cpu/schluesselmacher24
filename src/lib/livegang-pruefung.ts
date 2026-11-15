@@ -50,6 +50,58 @@ export async function firmendatenFunde(firma: Firma | null | undefined, req?: Pa
       funde.push({ ort: 'Einstellungen › Firma', hinweis: fehler.message });
     }
   }
+  funde.push(...mailadresseFunde(firma.email));
+  return funde;
+}
+
+/** Die Domain, auf der Kundenanfragen und Betriebsmails liegen (FA-24, Vorgabe des Inhabers). */
+export const EIGENE_MAILDOMAIN = 'schluesselmacher24.de';
+
+const EIGENE_MUSTER = new RegExp(`^[^\\s@]+@${EIGENE_MAILDOMAIN.replace(/\./g, '\\.')}$`, 'i');
+
+/** Liegt die Adresse auf der eigenen Domain? Leerzeichen am Rand zählen nicht. */
+export function liegtAufEigenerDomain(wert: string): boolean {
+  return EIGENE_MUSTER.test(wert.trim());
+}
+
+/**
+ * Die Firmen-E-Mail ist die Kundenadresse der Seite: Sie muss echt sein und
+ * auf der eigenen Domain liegen. Ein Platzhalter meldet firmendatenPruefen schon
+ * unter „Noch offen“, deshalb steht er hier nicht noch einmal. Gemeldet werden
+ * nur Feld und Grund, nie der Wert.
+ */
+export function mailadresseFunde(email: unknown): Fund[] {
+  const ort = 'Einstellungen › Firma › E-Mail';
+  const wert = typeof email === 'string' ? email.trim() : '';
+  if (!wert) return [{ ort, hinweis: 'Keine Firmen-E-Mail hinterlegt.' }];
+  if (enthaeltPlatzhalter(wert)) return [];
+  if (!liegtAufEigenerDomain(wert)) {
+    return [{ ort, hinweis: `Die Firmen-E-Mail liegt nicht auf der eigenen Domain ${EIGENE_MAILDOMAIN}.` }];
+  }
+  return [];
+}
+
+/**
+ * Mailadressen aus der Umgebung (Vercel): Absender (`MAIL_FROM_ADDRESS`),
+ * Antwortadresse (`MAIL_REPLY_TO`) und Betriebsempfänger (`MAIL_TEAM_ADDRESS`,
+ * kommagetrennt). Sie gelten für Kundenmails und Systemmails wie die Firmen-E-Mail,
+ * deshalb gilt für sie dieselbe Domainregel. Gemeldet wird nur der Variablenname, nie der Wert.
+ */
+export function umgebungsMailFunde(env: Record<string, string | undefined> = process.env): Fund[] {
+  const funde: Fund[] = [];
+  for (const name of ['MAIL_FROM_ADDRESS', 'MAIL_REPLY_TO']) {
+    const wert = env[name]?.trim();
+    if (wert && !liegtAufEigenerDomain(wert)) {
+      funde.push({ ort: `Umgebung › ${name}`, hinweis: `${name} liegt nicht auf der eigenen Domain ${EIGENE_MAILDOMAIN}.` });
+    }
+  }
+  const team = (env.MAIL_TEAM_ADDRESS ?? '').split(',').map((eintrag) => eintrag.trim()).filter(Boolean);
+  if (team.some((adresse) => !liegtAufEigenerDomain(adresse))) {
+    funde.push({
+      ort: 'Umgebung › MAIL_TEAM_ADDRESS',
+      hinweis: `MAIL_TEAM_ADDRESS enthält mindestens eine Adresse außerhalb der eigenen Domain ${EIGENE_MAILDOMAIN}.`,
+    });
+  }
   return funde;
 }
 
