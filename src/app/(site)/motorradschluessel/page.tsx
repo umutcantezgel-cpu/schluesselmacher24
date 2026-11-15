@@ -46,7 +46,7 @@ export default async function MotorradschluesselPage() {
         title={page?.headline ?? 'Motorradschlüssel nachmachen lassen'}
         lead={
           page?.subline
-          ?? 'Anfrage mit Fahrzeugschein und Foto Ihres Schlüssels. Wir prüfen Ihre Angaben und melden uns mit Preis und Termin.'
+          ?? 'Anfrage mit Fahrzeugschein und drei Fotos Ihres Schlüssels. Wir prüfen Ihre Angaben und melden uns mit Preis und Termin.'
         }
         crumbs={CRUMBS}
         bereich="autoschluessel"

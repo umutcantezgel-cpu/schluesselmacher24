@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.seo.title ?? 'Autoschlüssel-Gehäuse erneuern: Anfrage mit Fotos',
     description:
       page?.seo.description
-      ?? 'Gehäuse für Ihren Autoschlüssel anfragen: Fahrzeug, Foto Ihres Schlüssels und Fahrzeugschein. Wir melden uns mit Preis und Ablauf.',
+      ?? 'Gehäuse für Ihren Autoschlüssel anfragen: Fahrzeug, drei Fotos Ihres Schlüssels und Fahrzeugschein. Wir melden uns mit Preis und Ablauf.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }
@@ -47,7 +47,7 @@ export default async function AutoschluesselGehaeusePage() {
         title={page?.headline ?? 'Autoschlüssel-Gehäuse erneuern'}
         lead={
           page?.subline
-          ?? 'Anfrage mit Fahrzeug, Foto Ihres Schlüssels und Fahrzeugschein. Wir prüfen Ihre Angaben und melden uns mit Preis und Ablauf.'
+          ?? 'Anfrage mit Fahrzeug, drei Fotos Ihres Schlüssels und Fahrzeugschein. Wir prüfen Ihre Angaben und melden uns mit Preis und Ablauf.'
         }
         crumbs={CRUMBS}
         bereich="autoschluessel"

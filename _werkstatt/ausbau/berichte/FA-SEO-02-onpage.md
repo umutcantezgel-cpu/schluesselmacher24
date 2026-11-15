@@ -1,6 +1,6 @@
 # FA-SEO-02 · Onpage-Prüfung über alle Seiten des Builds
 
-Stand: 2026-11-15_12-58-45 · Basis: http://localhost:3000 · Grenze: 95
+Stand: 2026-11-15_18-23-57 · Basis: http://localhost:3000 · Grenze: 95
 
 Der Wert (0 bis 100) ist eine eigene Ableitung aus den Prüfungen dieses Werkzeugs (Stufe C). Er ist nicht der Seobility-Score und nicht mit ihm vergleichbar. Gewichte und Teilwertung sind Festlegungen; die Gewichtung von Seobility ist nicht bekannt (FA-RECHERCHE-05, OFFENE FRAGE 1). Ein gelber Befund zählt halb, ein roter gar nicht.
 
@@ -8,59 +8,58 @@ Der Wert (0 bis 100) ist eine eigene Ableitung aus den Prüfungen dieses Werkzeu
 
 - Seiten: 130
 - Median des Werts: 98,2
-- Seiten unter 95: 4
-- Rote Befunde: 4 · gelbe Befunde: 143
+- Seiten unter 95: 0
+- Rote Befunde: 0 · gelbe Befunde: 98
 
 Zehn häufigste Befunde (Zahl der Seiten):
 
-- titel_laenge (gelb): 96 Seiten
-- beschreibung_laenge (gelb): 47 Seiten
-- status (rot): 4 Seiten
+- titel_laenge (gelb): 74 Seiten
+- beschreibung_laenge (gelb): 24 Seiten
 
 ## Seiten
 
 | Adresse | Wert | Rot | Gelb | Befunde |
 |---|---|---|---|---|
-| / | 98,1 | 0 | 1 | titel_laenge (gelb: 753 px, Schwelle 580 px) |
-| /autoschluessel | 98,2 | 0 | 1 | titel_laenge (gelb: 762 px, Schwelle 580 px) |
-| /autoschluessel/nachmachen | 98,1 | 0 | 1 | titel_laenge (gelb: 582 px, Schwelle 580 px) |
-| /autoschluessel/programmieren | 98,1 | 0 | 1 | titel_laenge (gelb: 725 px, Schwelle 580 px) |
-| /autoschluessel/kopieren | 98,1 | 0 | 1 | titel_laenge (gelb: 767 px, Schwelle 580 px) |
-| /autoschluessel/funkschluessel | 98,1 | 0 | 1 | titel_laenge (gelb: 682 px, Schwelle 580 px) |
-| /autoschluessel/smart-key | 98,1 | 0 | 1 | titel_laenge (gelb: 827 px, Schwelle 580 px) |
-| /autoschluessel/schluesselbart-fraesen | 98,1 | 0 | 1 | titel_laenge (gelb: 804 px, Schwelle 580 px) |
-| /autoschluessel/fahrzeugoeffnung | 98,1 | 0 | 1 | beschreibung_laenge (gelb: 110 Zeichen, Schwelle 120 bis 160) |
-| /autoschluessel/marken | 98,1 | 0 | 1 | titel_laenge (gelb: 665 px, Schwelle 580 px) |
-| /autoschluessel/anfrage | 98,1 | 0 | 1 | titel_laenge (gelb: 681 px, Schwelle 580 px) |
-| /schluessel-nach-vorlage | 98,2 | 0 | 1 | titel_laenge (gelb: 636 px, Schwelle 580 px) |
-| /schluessel-nach-vorlage/anfrage | 98,1 | 0 | 1 | beschreibung_laenge (gelb: 109 Zeichen, Schwelle 120 bis 160) |
-| /schluessel-einschicken/anmelden | 98,1 | 0 | 1 | titel_laenge (gelb: 650 px, Schwelle 580 px) |
+| / | 100,0 | 0 | 0 | – |
+| /autoschluessel | 100,0 | 0 | 0 | – |
+| /autoschluessel/nachmachen | 100,0 | 0 | 0 | – |
+| /autoschluessel/programmieren | 100,0 | 0 | 0 | – |
+| /autoschluessel/kopieren | 100,0 | 0 | 0 | – |
+| /autoschluessel/funkschluessel | 100,0 | 0 | 0 | – |
+| /autoschluessel/smart-key | 100,0 | 0 | 0 | – |
+| /autoschluessel/schluesselbart-fraesen | 100,0 | 0 | 0 | – |
+| /autoschluessel/fahrzeugoeffnung | 100,0 | 0 | 0 | – |
+| /autoschluessel/marken | 100,0 | 0 | 0 | – |
+| /autoschluessel/anfrage | 100,0 | 0 | 0 | – |
+| /schluessel-nach-vorlage | 100,0 | 0 | 0 | – |
+| /schluessel-nach-vorlage/anfrage | 100,0 | 0 | 0 | – |
+| /schluessel-einschicken/anmelden | 100,0 | 0 | 0 | – |
 | /motorradschluessel | 98,2 | 0 | 1 | titel_laenge (gelb: 759 px, Schwelle 580 px) |
 | /motorradschluessel/anfrage | 96,2 | 0 | 2 | titel_laenge (gelb: 752 px, Schwelle 580 px); beschreibung_laenge (gelb: 119 Zeichen, Schwelle 120 bis 160) |
 | /autoschluessel/gehaeuse | 98,2 | 0 | 1 | titel_laenge (gelb: 710 px, Schwelle 580 px) |
 | /autoschluessel/gehaeuse/anfrage | 96,2 | 0 | 2 | titel_laenge (gelb: 875 px, Schwelle 580 px); beschreibung_laenge (gelb: 119 Zeichen, Schwelle 120 bis 160) |
 | /beratung | 98,1 | 0 | 1 | beschreibung_laenge (gelb: 104 Zeichen, Schwelle 120 bis 160) |
-| /schluessel-einschicken | 96,4 | 0 | 2 | titel_laenge (gelb: 731 px, Schwelle 580 px); beschreibung_laenge (gelb: 165 Zeichen, Schwelle 120 bis 160) |
-| /schluessel-nach-code | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 119 Zeichen, Schwelle 120 bis 160) |
-| /gleichschliessende-zylinder | 98,2 | 0 | 1 | titel_laenge (gelb: 723 px, Schwelle 580 px) |
-| /gleichschliessende-zylinder/konfigurator | 98,1 | 0 | 1 | titel_laenge (gelb: 607 px, Schwelle 580 px) |
-| /schliessanlagen | 98,2 | 0 | 1 | titel_laenge (gelb: 618 px, Schwelle 580 px) |
-| /schliessanlagen/konfigurator | 98,1 | 0 | 1 | titel_laenge (gelb: 635 px, Schwelle 580 px) |
+| /schluessel-einschicken | 100,0 | 0 | 0 | – |
+| /schluessel-nach-code | 100,0 | 0 | 0 | – |
+| /gleichschliessende-zylinder | 100,0 | 0 | 0 | – |
+| /gleichschliessende-zylinder/konfigurator | 100,0 | 0 | 0 | – |
+| /schliessanlagen | 100,0 | 0 | 0 | – |
+| /schliessanlagen/konfigurator | 100,0 | 0 | 0 | – |
 | /schliessanlagen/konfigurator/schliessplan | 98,1 | 0 | 1 | beschreibung_laenge (gelb: 226 Zeichen, Schwelle 120 bis 160) |
-| /elektronische-zutrittsloesungen | 98,2 | 0 | 1 | titel_laenge (gelb: 681 px, Schwelle 580 px) |
-| /elektronische-zutrittsloesungen/konfigurator | 98,1 | 0 | 1 | titel_laenge (gelb: 611 px, Schwelle 580 px) |
-| /tuer-und-schliesstechnik | 98,2 | 0 | 1 | titel_laenge (gelb: 759 px, Schwelle 580 px) |
-| /sicherheitstechnik | 98,2 | 0 | 1 | titel_laenge (gelb: 719 px, Schwelle 580 px) |
+| /elektronische-zutrittsloesungen | 100,0 | 0 | 0 | – |
+| /elektronische-zutrittsloesungen/konfigurator | 100,0 | 0 | 0 | – |
+| /tuer-und-schliesstechnik | 100,0 | 0 | 0 | – |
+| /sicherheitstechnik | 100,0 | 0 | 0 | – |
 | /sicherheitstechnik/sicherheitscheck | 100,0 | 0 | 0 | – |
-| /service-und-termin | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 99 Zeichen, Schwelle 120 bis 160) |
+| /service-und-termin | 100,0 | 0 | 0 | – |
 | /service-und-termin/anfrage | 98,1 | 0 | 1 | beschreibung_laenge (gelb: 116 Zeichen, Schwelle 120 bis 160) |
 | /service-und-termin/kontakt | 98,1 | 0 | 1 | beschreibung_laenge (gelb: 59 Zeichen, Schwelle 120 bis 160) |
 | /service-und-termin/vor-ort | 98,1 | 0 | 1 | beschreibung_laenge (gelb: 110 Zeichen, Schwelle 120 bis 160) |
-| /partner-werden | 96,4 | 0 | 2 | titel_laenge (gelb: 727 px, Schwelle 580 px); beschreibung_laenge (gelb: 166 Zeichen, Schwelle 120 bis 160) |
-| /partner-werden/auftraege-erhalten | 0,0 | 1 | 0 | status (rot: HTTP 404) |
-| /partner-werden/netzwerk-deutschland | 0,0 | 1 | 0 | status (rot: HTTP 404) |
-| /partner-werden/kfz-betriebe | 0,0 | 1 | 0 | status (rot: HTTP 404) |
-| /partner-werden/kooperation | 0,0 | 1 | 0 | status (rot: HTTP 404) |
+| /partner-werden | 100,0 | 0 | 0 | – |
+| /partner-werden/auftraege-erhalten | 100,0 | 0 | 0 | – |
+| /partner-werden/netzwerk-deutschland | 98,2 | 0 | 1 | titel_laenge (gelb: 618 px, Schwelle 580 px) |
+| /partner-werden/kfz-betriebe | 100,0 | 0 | 0 | – |
+| /partner-werden/kooperation | 98,2 | 0 | 1 | titel_laenge (gelb: 591 px, Schwelle 580 px) |
 | /ratgeber | 100,0 | 0 | 0 | – |
 | /rechtliches/versand-und-zahlung | 98,1 | 0 | 1 | beschreibung_laenge (gelb: 75 Zeichen, Schwelle 120 bis 160) |
 | /autoschluessel/marken/volkswagen | 98,2 | 0 | 1 | titel_laenge (gelb: 750 px, Schwelle 580 px) |
@@ -124,23 +123,23 @@ Zehn häufigste Befunde (Zahl der Seiten):
 | /autoschluessel/marken/hyundai/i20 | 98,2 | 0 | 1 | titel_laenge (gelb: 742 px, Schwelle 580 px) |
 | /autoschluessel/marken/hyundai/i30 | 98,2 | 0 | 1 | titel_laenge (gelb: 742 px, Schwelle 580 px) |
 | /autoschluessel/marken/hyundai/tucson | 98,2 | 0 | 1 | titel_laenge (gelb: 780 px, Schwelle 580 px) |
-| /tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 118 Zeichen, Schwelle 120 bis 160) |
-| /tuer-und-schliesstechnik/einsteckschloesser | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 84 Zeichen, Schwelle 120 bis 160) |
-| /tuer-und-schliesstechnik/mehrfachverriegelungen | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 69 Zeichen, Schwelle 120 bis 160) |
-| /tuer-und-schliesstechnik/schutzbeschlaege | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 72 Zeichen, Schwelle 120 bis 160) |
-| /tuer-und-schliesstechnik/tuerzusatzschloesser | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 78 Zeichen, Schwelle 120 bis 160) |
-| /tuer-und-schliesstechnik/tuerschliesser | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 58 Zeichen, Schwelle 120 bis 160) |
-| /tuer-und-schliesstechnik/panik-und-fluchttuertechnik | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 76 Zeichen, Schwelle 120 bis 160) |
-| /tuer-und-schliesstechnik/reparatur-und-austausch | 96,4 | 0 | 2 | titel_laenge (gelb: 702 px, Schwelle 580 px); beschreibung_laenge (gelb: 72 Zeichen, Schwelle 120 bis 160) |
-| /tuer-und-schliesstechnik/technische-beratung | 96,4 | 0 | 2 | titel_laenge (gelb: 637 px, Schwelle 580 px); beschreibung_laenge (gelb: 65 Zeichen, Schwelle 120 bis 160) |
-| /tuer-und-schliesstechnik/montage-und-anpassung | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 74 Zeichen, Schwelle 120 bis 160) |
-| /sicherheitstechnik/videoueberwachung | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 80 Zeichen, Schwelle 120 bis 160) |
-| /sicherheitstechnik/alarmtechnik | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 82 Zeichen, Schwelle 120 bis 160) |
-| /sicherheitstechnik/aussenhautsicherung | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 73 Zeichen, Schwelle 120 bis 160) |
-| /sicherheitstechnik/mechanischer-schutz | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 72 Zeichen, Schwelle 120 bis 160) |
-| /sicherheitstechnik/smarte-funktionen | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 74 Zeichen, Schwelle 120 bis 160) |
-| /sicherheitstechnik/panik-und-alarmtaster | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 83 Zeichen, Schwelle 120 bis 160) |
-| /sicherheitstechnik/kombinierte-konzepte | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 75 Zeichen, Schwelle 120 bis 160) |
+| /tuer-und-schliesstechnik/profilzylinder-und-spezialzylinder | 100,0 | 0 | 0 | – |
+| /tuer-und-schliesstechnik/einsteckschloesser | 100,0 | 0 | 0 | – |
+| /tuer-und-schliesstechnik/mehrfachverriegelungen | 100,0 | 0 | 0 | – |
+| /tuer-und-schliesstechnik/schutzbeschlaege | 100,0 | 0 | 0 | – |
+| /tuer-und-schliesstechnik/tuerzusatzschloesser | 100,0 | 0 | 0 | – |
+| /tuer-und-schliesstechnik/tuerschliesser | 100,0 | 0 | 0 | – |
+| /tuer-und-schliesstechnik/panik-und-fluchttuertechnik | 100,0 | 0 | 0 | – |
+| /tuer-und-schliesstechnik/reparatur-und-austausch | 100,0 | 0 | 0 | – |
+| /tuer-und-schliesstechnik/technische-beratung | 100,0 | 0 | 0 | – |
+| /tuer-und-schliesstechnik/montage-und-anpassung | 100,0 | 0 | 0 | – |
+| /sicherheitstechnik/videoueberwachung | 100,0 | 0 | 0 | – |
+| /sicherheitstechnik/alarmtechnik | 100,0 | 0 | 0 | – |
+| /sicherheitstechnik/aussenhautsicherung | 100,0 | 0 | 0 | – |
+| /sicherheitstechnik/mechanischer-schutz | 100,0 | 0 | 0 | – |
+| /sicherheitstechnik/smarte-funktionen | 100,0 | 0 | 0 | – |
+| /sicherheitstechnik/panik-und-alarmtaster | 100,0 | 0 | 0 | – |
+| /sicherheitstechnik/kombinierte-konzepte | 100,0 | 0 | 0 | – |
 | /ratgeber/autoschluessel-verloren-was-tun | 96,4 | 0 | 2 | titel_laenge (gelb: 640 px, Schwelle 580 px); beschreibung_laenge (gelb: 88 Zeichen, Schwelle 120 bis 160) |
 | /ratgeber/unterschied-kopie-und-programmierung | 96,4 | 0 | 2 | titel_laenge (gelb: 735 px, Schwelle 580 px); beschreibung_laenge (gelb: 76 Zeichen, Schwelle 120 bis 160) |
 | /ratgeber/zylinder-richtig-ausmessen | 98,2 | 0 | 1 | beschreibung_laenge (gelb: 58 Zeichen, Schwelle 120 bis 160) |
@@ -154,7 +153,7 @@ Zehn häufigste Befunde (Zahl der Seiten):
 
 ## Seitenübergreifend
 
-- sitemap_fehleradressen (rot): 4: http://localhost:3000/partner-werden/auftraege-erhalten (404), http://localhost:3000/partner-werden/netzwerk-deutschland (404), http://localhost:3000/partner-werden/kfz-betriebe (404), http://localhost:3000/partner-werden/kooperation (404)
+keine Befunde
 
 Rückgabewert: 1, wenn eine Seite unter der Grenze liegt oder ein seitenübergreifender Befund rot ist; sonst 0.
 
