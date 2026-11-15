@@ -224,3 +224,22 @@ export function produktJsonLd(
 
   return { '@context': 'https://schema.org', '@graph': [produkt] };
 }
+
+/* ---------- Anfrage zu einem Artikel oder einer Kategorie (FA-SHOP-01B) ----- */
+
+/** Adresse der Anfrage zu einer Leistung. */
+export const LEISTUNGS_ANFRAGE_PFAD = '/service-und-termin/anfrage';
+
+/** Höchstlänge des Artikel- oder Kategorienamens in der Adresse (wie die Vorbelegung des Felds). */
+export const ARTIKEL_ANFRAGE_LAENGE = 80;
+
+/**
+ * Anfrage mit dem Namen eines Artikels oder einer Kategorie als Vorbelegung (`artikel=`), damit der Kunde
+ * ihn nicht selbst nennen muss. Eine gegebene Anfrage-Adresse (etwa mit `thema` und `anliegen`) bleibt,
+ * der Name kommt dazu. Die Anfrage bereinigt ihn wie bei „Code anfragen“ (`vorbelegungAusAdresse`).
+ */
+export function artikelAnfragePfad(name: string, basis: string = LEISTUNGS_ANFRAGE_PFAD): string {
+  const wert = name.replace(/\s+/g, ' ').trim().slice(0, ARTIKEL_ANFRAGE_LAENGE);
+  if (!wert) return basis;
+  return `${basis}${basis.includes('?') ? '&' : '?'}artikel=${encodeURIComponent(wert)}`;
+}

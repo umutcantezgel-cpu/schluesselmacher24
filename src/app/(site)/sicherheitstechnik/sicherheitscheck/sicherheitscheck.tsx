@@ -429,6 +429,8 @@ const GESPERRT: Record<string, string> = {
 export interface SicherheitscheckProps {
   /** Aufbewahrungsfristen aus den Einstellungen, in Tagen. */
   retention: { floorPlans: number; objectPhotos: number };
+  /** Telefon und Erreichbarkeit aus den Einstellungen, für die Hilfe an kritischen Stellen (FA-QA-02). */
+  hilfe?: HilfeKontakt;
 }
 
 export function Sicherheitscheck({ retention, hilfe }: SicherheitscheckProps) {

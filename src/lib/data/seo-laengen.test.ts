@@ -20,7 +20,7 @@ import type {
   Settings,
   VehicleMake,
 } from '@/lib/types';
-import { codeFamilien, codeHersteller } from '@/lib/codelinie';
+import { codelinienFamilie, herstellerMitSeite } from '@/lib/codelinie';
 import { codelinienTexte, herstellerTexte, kategorieTexte } from '@/lib/codelinie-texte';
 import { ERREICHBARKEIT_STANDARD, erreichbarkeit, erreichbarkeitSatz } from '@/lib/erreichbarkeit';
 import { KONTAKT_TITEL, kontaktBeschreibung } from '@/app/(site)/service-und-termin/kontakt/suchtexte';
@@ -333,10 +333,17 @@ describe('Marken- und Modellseiten über den Generator (FA-SEO-01B)', () => {
 
 describe('Codelinien-, Kategorie- und Herstellerseiten (Vorlagen, FA-SEO-01B)', () => {
   const linien = LINIEN.map((line) => ({ wo: line.id, ...codelinienTexte(line, KONTEXT_CODE) }));
-  const kategorien = codeFamilien(LINIEN).map((f) => ({ wo: f.adresse, ...kategorieTexte(f.name, f.lines, KONTEXT_CODE.ratgeber) }));
-  const hersteller = codeHersteller(LINIEN).map((h) => ({ wo: h.adresse, ...herstellerTexte(h.name, h.lines) }));
+  // Gruppen wie auf den Seiten: Familien aus den Musterdaten als Kategorien, Hersteller mit System aus der Stammliste.
+  const familien = [...new Set(LINIEN.map(codelinienFamilie))].map((name) => ({ name, lines: LINIEN.filter((l) => codelinienFamilie(l) === name) }));
+  const kategorien = familien.map((f) => ({ wo: f.name, ...kategorieTexte(f.name, f.lines, KONTEXT_CODE.ratgeber) }));
+  const mitHersteller = LINIEN.map((line, i) => ({ ...line, manufacturer: ['BKS', 'ABUS', 'BURG-WÄCHTER'][i % 3], system: `System ${i % 4}` }));
+  const hersteller = herstellerMitSeite(mitHersteller).map((h) => ({ wo: h.adresse, ...herstellerTexte(h.name, h.lines) }));
+  // Texte nach Verfügbarkeit (FA-SHOP-01B): „auf Anfrage“ und „nicht lieferbar“ bleiben in denselben Grenzen.
+  const varianten = (['auf-anfrage', 'nicht-lieferbar'] as const).flatMap((availability) =>
+    LINIEN.map((line) => ({ wo: `${line.id} ${availability}`, ...codelinienTexte({ ...line, availability }, KONTEXT_CODE) })),
+  );
 
-  it.each([...linien, ...kategorien, ...hersteller])('$wo: Titel und Beschreibung in den Grenzen, ohne Beträge', ({ wo, metaTitel, metaBeschreibung }) => {
+  it.each([...linien, ...kategorien, ...hersteller, ...varianten])('$wo: Titel und Beschreibung in den Grenzen, ohne Beträge', ({ wo, metaTitel, metaBeschreibung }) => {
     pruefeSuchtexte(wo, metaTitel, metaBeschreibung);
   });
 

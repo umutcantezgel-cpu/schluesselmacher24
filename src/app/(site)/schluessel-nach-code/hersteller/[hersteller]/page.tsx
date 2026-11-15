@@ -2,16 +2,18 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { getCodeLines } from '@/lib/data';
-import { codeFamilien, codeHersteller, codelinieIndexierbar, herstellerPfad, kategoriePfad } from '@/lib/codelinie';
+import { getCodeLines, getHersteller } from '@/lib/data';
+import { codelinieIndexierbar, gepflegt, herstellerMitSeite, herstellerPfad } from '@/lib/codelinie';
 import { herstellerTexte } from '@/lib/codelinie-texte';
 import { PROCESS_LABELS } from '@/lib/navigation';
+import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { PreisHinweis } from '@/components/recht/preis-hinweis';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
+import { HerstellerMarke } from '../../hersteller-marke';
 import { LinienListe } from '../../linien-liste';
 import { shopDaten } from '../../shop-daten';
 
@@ -20,12 +22,13 @@ interface HerstellerPageProps {
 }
 
 /**
- * Herstellerebene (Erg. Leitfaden §3): Es gibt eine Seite je Hersteller,
- * sobald mindestens eine Linie einen gepflegten Hersteller trägt. Solange
- * überall der Platzhalter steht, ist die Liste leer und jede Adresse 404.
+ * Herstellerebene (FA-11-05, FA-11-06): eine Seite je Hersteller, der
+ * mindestens eine Linie hat; unter ihm stehen nur seine Linien, nach System
+ * gruppiert. Ein Hersteller der Stammliste ohne Linien hat keine Seite.
  */
 export async function generateStaticParams() {
-  return codeHersteller(await getCodeLines()).map((h) => ({ hersteller: h.adresse }));
+  const [lines, stamm] = await Promise.all([getCodeLines(), getHersteller()]);
+  return herstellerMitSeite(lines, stamm).map((h) => ({ hersteller: h.adresse }));
 }
 
 /** Im Backend neu eingetragene Hersteller erscheinen ohne neuen Build. */
@@ -46,7 +49,7 @@ export async function generateMetadata(props: HerstellerPageProps): Promise<Meta
   return {
     title: texte.metaTitel,
     description: texte.metaBeschreibung,
-    alternates: { canonical: herstellerPfad(eintrag.name) },
+    alternates: { canonical: herstellerPfad(eintrag.adresse) },
     ...(eintrag.lines.some(codelinieIndexierbar) ? {} : { robots: { index: false, follow: true } }),
   };
 }
@@ -57,14 +60,13 @@ export default async function HerstellerPage(props: HerstellerPageProps) {
   if (!geladen) notFound();
   const { eintrag, hersteller, texte } = geladen;
 
-  const pfad = herstellerPfad(eintrag.name);
+  const pfad = herstellerPfad(eintrag.adresse);
   const crumbs = [
     { href: '/schluessel-nach-code', label: 'Schlüssel nach Code' },
     { href: pfad, label: eintrag.name },
   ];
-  // Die Linien des Herstellers nach Anwendungsfamilie, jede Familie mit Link auf ihre Kategorie.
-  const gruppen = codeFamilien(eintrag.lines);
   const andere = hersteller.filter((h) => h.adresse !== eintrag.adresse);
+  const einsatz = gepflegt(eintrag.stamm?.einsatz);
 
   return (
     <>
@@ -76,51 +78,66 @@ export default async function HerstellerPage(props: HerstellerPageProps) {
         lead={texte.einleitung}
         crumbs={crumbs}
         bereich="schluessel-nach-code"
-      />
+      >
+        {/* Logo nur mit Freigabe des Herstellers (R12), sonst der Name als Text. */}
+        <HerstellerMarke name={eintrag.name} logo={eintrag.stamm?.logo} />
+      </PageHeader>
 
       <Section tight labelledBy="hersteller-linien">
         <SectionHeading id="hersteller-linien" nummer="01" eyebrow="Codelinien" title={`Codelinien von ${eintrag.name}`} />
         <div className="prose-sm24 mt-4">
+          {einsatz && <p>{einsatz}</p>}
           {texte.absaetze.map((absatz) => (
             <p key={absatz}>{absatz}</p>
           ))}
         </div>
         <PreisHinweis alle className="mt-4" />
+        {/* Nach System gruppiert (FA-11-04); nur die Linien dieses Herstellers (FA-11-06). */}
         <div className="mt-8 grid gap-10">
-          {gruppen.map((gruppe) => (
-            <section key={gruppe.adresse} aria-label={gruppe.name}>
-              <h2 className="eyebrow">
-                <Link href={kategoriePfad(gruppe.name)} prefetch={false} className="hover:text-primary">
-                  {gruppe.name}
-                </Link>
-              </h2>
-              <LinienListe lines={gruppe.lines} className="mt-4" />
+          {eintrag.systeme.map((system) => (
+            <section key={system.name ?? 'ohne-system'} aria-label={system.name ? `System ${system.name}` : 'Weitere Codelinien'}>
+              {system.name && <h2 className="eyebrow">System {system.name}</h2>}
+              <LinienListe lines={system.lines} className={system.name ? 'mt-4' : undefined} />
             </section>
           ))}
         </div>
+        {/* Code passt zu keiner Linie (FA-11-17): die Anfrage steht auf jeder Liste. */}
+        <p className="mt-6 text-small text-foreground-muted">
+          Ihr Code passt zu keiner Linie?{' '}
+          <Link
+            href={codeAnfragePfad({ schloss: eintrag.name })}
+            prefetch={false}
+            className="font-semibold text-primary hover:underline"
+          >
+            Code anfragen
+          </Link>
+        </p>
       </Section>
 
-      {andere.length > 0 && (
-        <Section tone="muted" tight>
-          <nav aria-label="Weitere Hersteller">
-            <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Weitere Hersteller</p>
-            <ul className="mt-3 border-t border-border">
-              {andere.map((h) => (
-                <li key={h.adresse} className="border-b border-border">
-                  <Link
-                    href={herstellerPfad(h.name)}
-                    prefetch={false}
-                    className="group flex min-h-touch items-center justify-between gap-4 py-3 text-body font-semibold text-foreground hover:text-primary"
-                  >
-                    {h.name}
-                    <GlyphPfeilRechts size={16} className="shrink-0 text-foreground-muted" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </Section>
-      )}
+      <Section tone="muted" tight>
+        <nav aria-label="Weitere Hersteller">
+          <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+            {andere.length > 0 ? 'Weitere Hersteller' : 'Weiter im Shop'}
+          </p>
+          <ul className="mt-3 border-t border-border">
+            {[
+              ...andere.map((h) => ({ href: herstellerPfad(h.adresse), label: h.name })),
+              { href: '/schluessel-nach-code', label: 'Alle Codelinien mit Suche und Filter' },
+            ].map((link) => (
+              <li key={link.href} className="border-b border-border">
+                <Link
+                  href={link.href}
+                  prefetch={false}
+                  className="group flex min-h-touch items-center justify-between gap-4 py-3 text-body font-semibold text-foreground hover:text-primary"
+                >
+                  {link.label}
+                  <GlyphPfeilRechts size={16} className="shrink-0 text-foreground-muted" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </Section>
     </>
   );
 }

@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": "bks",
+    "slug": "bks",
+    "name": "BKS",
+    "einsatz": "Schließzylinder für Gleichschließungen und Schließanlagen sowie elektronische Schließsysteme.",
+    "angeboten": true,
+    "reihenfolge": 10
+  },
+  {
+    "id": "abus",
+    "slug": "abus",
+    "name": "ABUS",
+    "einsatz": "Schließzylinder für Gleichschließungen und Schließanlagen sowie Zutrittssysteme mit Wandlesern.",
+    "angeboten": true,
+    "reihenfolge": 20
+  },
+  {
+    "id": "burg-waechter",
+    "slug": "burg-waechter",
+    "name": "BURG-WÄCHTER",
+    "einsatz": "Elektronische Zylinder für Unternehmen, Behörden und Privatnutzer.",
+    "angeboten": true,
+    "reihenfolge": 30
+  }
+]

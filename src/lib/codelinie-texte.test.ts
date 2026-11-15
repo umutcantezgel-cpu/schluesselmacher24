@@ -16,7 +16,7 @@ import {
   istGeneratorText,
   kategorieTexte,
 } from './codelinie-texte';
-import { codeFamilien } from './codelinie';
+import { codelinienFamilie } from './codelinie';
 
 const LINIEN = codeLinesJson as CodeLine[];
 const ALT = startwerteCodeLines as CodeLine[];
@@ -155,7 +155,9 @@ describe('codelinienTexte', () => {
 
 describe('kategorieTexte', () => {
   it('setzt Titel und Text aus den Linien der Familie zusammen', () => {
-    const [moebel, spind] = codeFamilien(LINIEN);
+    // Familien wie in den Musterdaten (letztes Schlagwort), in der Reihenfolge der Daten.
+    const familien = [...new Set(LINIEN.map(codelinienFamilie))].map((name) => ({ name, lines: LINIEN.filter((l) => codelinienFamilie(l) === name) }));
+    const [moebel, spind] = familien;
     const a = kategorieTexte(moebel.name, moebel.lines, RATGEBER);
     const b = kategorieTexte(spind.name, spind.lines, RATGEBER);
     expect(a.metaTitel).not.toBe(b.metaTitel);

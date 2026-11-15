@@ -5,6 +5,8 @@ import { useMemo, useState } from 'react';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { Field } from '@/components/forms/field';
+import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
@@ -64,7 +66,7 @@ function kontaktAus(d: EinsatzDaten): ContactDetails {
 }
 
 /** Anfrage „Einsatz vor Ort“ (G-40): drei Schritte, danach die gemeinsame Bestätigung. */
-export function EinsatzFormular() {
+export function EinsatzFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
   const [fotos, setFotos] = useState<PickedFile[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<SubmitResult | null>(null);
@@ -150,12 +152,10 @@ export function EinsatzFormular() {
       onSubmit={absenden}
       submitting={submitting}
       blockedHint={gesperrt[flow.step?.id ?? ''] ?? 'Bitte füllen Sie die Pflichtangaben dieses Schrittes aus.'}
+      ungesichert={fotos.length > 0}
+      mitDateien
     >
-      {fehler && (
-        <Alert tone="warning" title="Das hat nicht geklappt" className="mb-6" role="alert">
-          {fehler}
-        </Alert>
-      )}
+      {fehler && <AbsendeFehler fehler={fehler} hilfe={hilfe} titel="Das hat nicht geklappt" />}
 
       {flow.step?.id === 'anliegen' && (
         <div className="max-w-3xl space-y-6">
@@ -250,6 +250,9 @@ export function EinsatzFormular() {
               </Field>
             </div>
           </div>
+
+          {/* Unsicher, was vor Ort zu tun ist: Telefon und Rückruf (FA-QA-02). */}
+          <HilfeBlock hilfe={hilfe} stelle="anliegen" satz="Sie wissen nicht genau, was kaputt ist? Beschreiben Sie, was Sie sehen, oder rufen Sie uns an." />
         </div>
       )}
 

@@ -20,6 +20,7 @@ import { GlyphTelefon } from '@/components/visual/glyphen/telefon';
 import { KontaktFormular } from './kontakt-formular';
 import { KONTAKT_TITEL, kontaktBeschreibung } from './suchtexte';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
 
 export async function generateMetadata(): Promise<Metadata> {
   // Erreichbarkeit aus denselben Einstellungen wie der Abschnitt „Erreichbarkeit“ (FA-23, R1, R9).
@@ -208,7 +209,7 @@ export default async function KontaktPage() {
           .
         </p>
         <div className="mt-8 max-w-3xl">
-          <KontaktFormular />
+          <KontaktFormular hilfe={hilfeAus(settings)} />
         </div>
       </Section>
     </>

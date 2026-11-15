@@ -150,46 +150,83 @@ export function localBusinessSchema(settings: Settings): Graph {
   } satisfies Graph;
 }
 
+/** Eingaben für den Graphen einer Codelinien-Seite: nur, was auf der Seite sichtbar steht (R8). */
+export interface CodelinienSeite {
+  line: Pick<CodeLine, 'slug' | 'name' | 'application' | 'manufacturer' | 'priceCents' | 'productImage'>;
+  /** Der Text, der auf der Seite steht (gepflegt oder aus den Daten der Linie zusammengesetzt). */
+  beschreibung: string;
+  /** Sichtbare Brotkrumen der Seite. */
+  crumbs?: Array<{ href: string; label: string }>;
+  /** Sichtbare und vollständige Fragen und Antworten; ohne sie keine FAQPage. */
+  faq?: Array<{ question: string; answer: string }>;
+  /** Hersteller laut Stammliste oder gepflegtem Freitext; ohne ihn keine Marke. */
+  hersteller?: string;
+  /**
+   * Ein Angebot nur, wenn die Seite den Direktkauf mit echtem Preis zeigt (lieferbar, kein Beispiel).
+   * Ohne Angebot entfällt auch das Produkt: „auf Anfrage“ und „nicht lieferbar“ tragen nur die Webseite.
+   */
+  angebot: boolean;
+}
+
 /**
- * Eine Codelinie im Shop. `beschreibung` ist der Text, der auf der Seite
- * steht (gepflegt oder aus den Daten der Linie zusammengesetzt).
+ * Eine Codelinie im Shop als ein Graph (FA-SHOP-01B, Punkt 4a, nach dem Muster von `articleSchema`):
+ * eine Webseite, die Brotkrumen, die sichtbaren Fragen und, nur bei echtem Preis und echter Verfügbarkeit,
+ * das Produkt mit Angebot (R8). Organisation und Website stehen im Root-Layout (`localBusinessSchema`);
+ * hier nur Verweise darauf (keine doppelten Kennungen).
  */
-export function productSchema(line: CodeLine, beschreibung: string = line.description): Graph {
-  const productUrl = `${siteUrl}/schluessel-nach-code/${line.slug}`;
-  // Organisation und Website stehen im Root-Layout (localBusinessSchema); hier nur Verweise (keine doppelten Kennungen).
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebPage',
-        '@id': `${productUrl}/#webpage`,
-        url: productUrl,
-        name: line.name,
-        isPartOf: { '@id': KENNUNG.website },
-        about: { '@id': KENNUNG.organisation },
+export function codelinieSchema(input: CodelinienSeite): Graph {
+  const { line } = input;
+  const pageUrl = `${siteUrl}/schluessel-nach-code/${line.slug}`;
+  const krumen = krumenTeil(pageUrl, input.crumbs);
+  const mitAngebot = input.angebot && line.priceCents > 0;
+  const marke = input.hersteller?.trim() || (istPlatzhalter(line.manufacturer) ? undefined : line.manufacturer.trim());
+  const bild = line.productImage?.bild?.url;
+  const graph: Thing[] = [
+    {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}/#webpage`,
+      url: pageUrl,
+      name: line.name,
+      inLanguage: 'de-DE',
+      isPartOf: { '@id': KENNUNG.website },
+      about: { '@id': KENNUNG.organisation },
+      ...(mitAngebot ? { mainEntity: { '@id': `${pageUrl}/#product` } } : {}),
+      ...krumen.verweis,
+    },
+  ];
+  if (mitAngebot) {
+    graph.push({
+      '@type': 'Product',
+      '@id': `${pageUrl}/#product`,
+      name: line.name,
+      description: input.beschreibung,
+      category: line.application,
+      ...(marke ? { brand: { '@type': 'Brand', name: marke } } : {}),
+      ...(bild ? { image: bild.startsWith('http') ? bild : `${siteUrl}${bild}` } : {}),
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'EUR',
+        price: (line.priceCents / 100).toFixed(2),
+        availability: 'https://schema.org/InStock',
+        url: pageUrl,
+        seller: { '@id': KENNUNG.organisation },
       },
-      {
-        '@type': 'Product',
-        '@id': `${productUrl}/#product`,
-        name: line.name,
-        description: beschreibung,
-        category: line.application,
-        // Hersteller nur, wenn gepflegt — Platzhalter und leere Werte nie.
-        ...(istPlatzhalter(line.manufacturer)
-          ? {}
-          : { brand: { '@type': 'Brand', name: line.manufacturer.trim() } }),
-        offers: {
-          '@type': 'Offer',
-          priceCurrency: 'EUR',
-          price: (line.priceCents / 100).toFixed(2),
-          availability: line.active
-            ? 'https://schema.org/InStock'
-            : 'https://schema.org/OutOfStock',
-          url: productUrl,
-        },
-      }
-    ]
-  } satisfies Graph;
+    });
+  }
+  if (input.faq?.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${pageUrl}/#faq`,
+      isPartOf: { '@id': `${pageUrl}/#webpage` },
+      mainEntity: input.faq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    });
+  }
+  graph.push(...krumen.knoten);
+  return { '@context': 'https://schema.org', '@graph': graph };
 }
 
 /** Brotkrumen als Teil eines Seiten-Graphen: Verweis an der Webseite und die Liste selbst. */
@@ -239,7 +276,7 @@ export function articleSchema(guide: Guide, crumbs?: Array<{ href: string; label
 /**
  * Häufige Fragen einer Seite. Nur mit Fragen und Antworten aufrufen, die auf der Seite sichtbar
  * und vollständig stehen (R8); sonst keine FAQPage. Die Webseite (`…/#webpage`) definiert der
- * Hauptgraph der Seite (etwa `productSchema`); hier steht nur der Verweis darauf.
+ * Hauptgraph der Seite; hier steht nur der Verweis darauf.
  */
 export function faqSchema(items: Array<{ question: string; answer: string }>, pageUrl: string = siteUrl): Graph {
   return {

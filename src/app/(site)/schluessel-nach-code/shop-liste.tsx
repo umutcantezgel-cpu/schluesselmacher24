@@ -3,132 +3,78 @@
 import { useId, useMemo, useState } from 'react';
 import Link from 'next/link';
 
-import type { CodeLine } from '@/lib/types';
-import { formatCents } from '@/lib/format';
+import type { CodeLine, ShopHersteller } from '@/lib/types';
 import { cn } from '@/lib/cn';
-import { istPlatzhalter } from '@/lib/platzhalter';
 import {
+  bestellWeg,
   codelinienFamilie,
-  codelinienKennung,
+  codelinienPfad,
   codelinienTitel,
-  kategoriePfad,
+  gepflegt,
+  herstellerDerLinie,
+  herstellerPfad,
   linienZumCode,
+  nachHerstellerUndSystem,
 } from '@/lib/codelinie';
+import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 import { Badge } from '@/components/ui/badge';
 import { Button, ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { Field } from '@/components/forms/field';
 import { Select, TextInput } from '@/components/forms/controls';
 import { GlyphFilter } from '@/components/visual/glyphen/filter';
-import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
 import { GlyphZuruecksetzen } from '@/components/visual/glyphen/zuruecksetzen';
 import { motionStyle } from '@/components/visual/motion/motion-style';
 import { useAbsichtVorladen } from '@/lib/absicht-vorladen';
 import { nachCodeHref } from './[slug]/code-uebernahme';
+import { LINIEN_ZEILE_KLASSE, LinienZeileInhalt } from './linien-zeile';
 
 /** Sammelwert „keine Einschränkung“ in den Auswahlfeldern. */
 const ALL = 'alle';
 
-/** Mobil zeigt jede Anwendungsgruppe zunächst so viele Zeilen; der Rest liegt hinter „Alle n anzeigen“. */
+/** Mobil zeigt jede Gruppe zunächst so viele Zeilen; der Rest liegt hinter „Alle n anzeigen“. */
 const VORSCHAU = 4;
 
 /** Anwendungsfamilie: letzter Eintrag in `tags`, sonst die Anwendung (`codelinienFamilie`). */
 const familyOf = codelinienFamilie;
 
 /** Alle durchsuchbaren Felder einer Codelinie in einem Text. */
-function haystackOf(line: CodeLine): string {
-  return [line.name, line.application, line.keyType, line.manufacturer, ...line.tags]
+function haystackOf(line: CodeLine, hersteller?: string): string {
+  return [line.name, line.application, line.keyType, line.manufacturer, hersteller, line.system, line.codeRange, ...line.tags]
+    .filter(Boolean)
     .join(' ')
     .toLowerCase();
 }
 
-function sortedUnique(values: string[]): string[] {
-  return [...new Set(values)].sort((a, b) => a.localeCompare(b, 'de'));
-}
-
-/** Titel ohne die angehängte Serienkennung („— Serie MS-01“). Nur Anzeige. */
-const titelOf = codelinienTitel;
-
-interface Gruppe {
-  /** Schlüssel der Anwendungsfamilie (wie beim Filter). */
-  schluessel: string;
-  /** Augenbraue, etwa „MS · Möbel- und Büroschloss“. */
-  kopf: string;
-  /** Kürzel der Familie (Präfix der Kennung), für die Sprungleiste und die Anker. */
-  kuerzel: string;
-  /** Eigene Seite der Anwendungsfamilie. */
-  href: string;
-  /** Anwendung ohne Zusatz, nur als Lesetext der Sprungleiste. */
-  anwendung: string;
-  /** Schlüsseltyp der Gruppe, nur wenn alle Zeilen denselben haben. */
-  schluesseltyp?: string;
-  /** Staffelmenge der Gruppe, nur wenn jede Zeile dieselbe hat. Reine Anzeige. */
-  staffelAb?: number;
-  lines: CodeLine[];
-}
-
-/** Die Staffelmenge, wenn jede Zeile dieselbe `minQty` hat; sonst `undefined`. */
-function einheitlicheStaffel(lines: CodeLine[]): number | undefined {
-  const mengen = new Set(lines.map((line) => line.bulkPrices?.[0]?.minQty));
-  return mengen.size === 1 ? [...mengen][0] : undefined;
-}
-
-/** Gruppiert die Treffer nach Anwendungsfamilie; die Reihenfolge bleibt die der Daten. */
-function gruppenVon(lines: CodeLine[]): Gruppe[] {
-  const gruppen = new Map<
-    string,
-    { kopf: string; kuerzel: string; anwendung: string; typen: Set<string>; lines: CodeLine[] }
-  >();
-  for (const line of lines) {
-    const schluessel = familyOf(line);
-    let gruppe = gruppen.get(schluessel);
-    if (!gruppe) {
-      const praefix = codelinienKennung(line).split('-')[0];
-      const anwendung = line.application.split(':')[0].trim();
-      gruppe = {
-        kopf: `${praefix} · ${anwendung}`,
-        kuerzel: praefix,
-        anwendung,
-        typen: new Set<string>(),
-        lines: [],
-      };
-      gruppen.set(schluessel, gruppe);
-    }
-    gruppe.typen.add(line.keyType);
-    gruppe.lines.push(line);
-  }
-  return [...gruppen].map(([schluessel, gruppe]) => ({
-    schluessel,
-    kopf: gruppe.kopf,
-    kuerzel: gruppe.kuerzel,
-    href: kategoriePfad(schluessel),
-    anwendung: gruppe.anwendung,
-    schluesseltyp: gruppe.typen.size === 1 ? [...gruppe.typen][0] : undefined,
-    staffelAb: einheitlicheStaffel(gruppe.lines),
-    lines: gruppe.lines,
-  }));
+function sortedUnique(values: Array<string | undefined>): string[] {
+  return [...new Set(values.filter((value): value is string => Boolean(value)))].sort((a, b) => a.localeCompare(b, 'de'));
 }
 
 export interface ShopListeProps {
   lines: CodeLine[];
+  /** Hersteller-Stammliste: Reihenfolge und Adressen der Herstellerseiten. */
+  hersteller?: ShopHersteller[];
   className?: string;
 }
 
 /**
  * Suche und Filter über alle Codelinien.
  *
- * Vier Dimensionen: Freitext, Hersteller, Schlüsseltyp und Anwendungsfamilie.
- * Sieht die Eingabe wie ein Schlüsselcode aus (ein Wort mit Ziffer), erscheinen
- * zusätzlich alle Linien, zu deren Codeformat sie passt (`codePasst`).
- * Die Kategorien sind zugleich als eigene Seiten verlinkt, damit keine Linie
- * nur über Suche oder Filter erreichbar ist (Erg. Leitfaden §3).
- * Die Treffer stehen als dichte Zeilen je Anwendungsfamilie. Am Smartphone sind
- * die Auswahlfelder eingeklappt und je Gruppe nur die ersten Zeilen sichtbar.
+ * Dimensionen: Freitext, Hersteller, System, Schlüsseltyp und Anwendungsfamilie;
+ * Auswahlfelder erscheinen nur, wenn es gepflegte Werte gibt. Sieht die Eingabe
+ * wie ein Schlüsselcode aus (ein Wort mit Ziffer), erscheinen zusätzlich alle
+ * Linien, zu deren Codeformat sie passt (`codePasst`).
+ * Die Treffer stehen nach Hersteller gruppiert, darunter nach System (FA-11-04);
+ * unter einem Hersteller nur seine Linien (FA-11-06). Jeder Hersteller mit
+ * Namen hat eine eigene Seite, damit keine Linie nur über Suche oder Filter
+ * erreichbar ist (Erg. Leitfaden §3). Am Smartphone sind die Auswahlfelder
+ * eingeklappt und je System nur die ersten Zeilen sichtbar.
  */
-export function ShopListe({ lines, className }: ShopListeProps) {
+export function ShopListe({ lines, hersteller = [], className }: ShopListeProps) {
   const [query, setQuery] = useState('');
   const [manufacturer, setManufacturer] = useState(ALL);
+  const [system, setSystem] = useState(ALL);
   const [keyType, setKeyType] = useState(ALL);
   const [family, setFamily] = useState(ALL);
   const [filterOpen, setFilterOpen] = useState(false);
@@ -139,17 +85,29 @@ export function ShopListe({ lines, className }: ShopListeProps) {
   const id = useId();
   const panelId = `${id}-filter`;
 
-  const options = useMemo(
-    () => ({
-      manufacturers: sortedUnique(lines.map((l) => l.manufacturer)),
-      keyTypes: sortedUnique(lines.map((l) => l.keyType)),
-      families: sortedUnique(lines.map(familyOf)),
-    }),
-    [lines],
+  // Hersteller je Linie (Stammliste vor Freitext); Platzhalter zählen nicht.
+  const herstellerVon = useMemo(
+    () => new Map(lines.map((line) => [line.id, herstellerDerLinie(line, hersteller).name])),
+    [lines, hersteller],
   );
 
-  // Das Auswahlfeld „Hersteller“ erscheint nur, wenn ein echter Hersteller vorliegt.
-  const herstellerOptionen = options.manufacturers.filter((value) => !istPlatzhalter(value));
+  // Auswahlfelder nur mit gepflegten Werten; Anwendungsfamilien erst ab zwei.
+  const options = useMemo(
+    () => ({
+      manufacturers: sortedUnique(lines.map((l) => herstellerVon.get(l.id))),
+      systems: sortedUnique(lines.map((l) => gepflegt(l.system))),
+      keyTypes: sortedUnique(lines.map((l) => gepflegt(l.keyType))),
+      families: sortedUnique(lines.map(familyOf)),
+    }),
+    [lines, herstellerVon],
+  );
+  const herstellerOptionen = options.manufacturers;
+  const familienZeigen = options.families.length > 1;
+  const felderZahl =
+    (herstellerOptionen.length > 0 ? 1 : 0)
+    + (options.systems.length > 0 ? 1 : 0)
+    + (options.keyTypes.length > 0 ? 1 : 0)
+    + (familienZeigen ? 1 : 0);
 
   // Linien, zu deren Codeformat die Eingabe passt — nur, wenn sie wie ein Code aussieht.
   const codeTreffer = useMemo(
@@ -162,28 +120,33 @@ export function ShopListe({ lines, className }: ShopListeProps) {
     const terms = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
 
     return lines.filter((line) => {
-      if (manufacturer !== ALL && line.manufacturer !== manufacturer) return false;
+      if (manufacturer !== ALL && herstellerVon.get(line.id) !== manufacturer) return false;
+      if (system !== ALL && gepflegt(line.system) !== system) return false;
       if (keyType !== ALL && line.keyType !== keyType) return false;
       if (family !== ALL && familyOf(line) !== family) return false;
       if (terms.length === 0 || codeTreffer.has(line.id)) return true;
-      const haystack = haystackOf(line);
+      const haystack = haystackOf(line, herstellerVon.get(line.id));
       return terms.every((term) => haystack.includes(term));
     });
-  }, [lines, query, manufacturer, keyType, family, codeTreffer]);
+  }, [lines, query, manufacturer, system, keyType, family, codeTreffer, herstellerVon]);
 
   const codeTrefferSichtbar = results.filter((line) => codeTreffer.has(line.id)).length;
 
-  const gruppen = useMemo(() => gruppenVon(results), [results]);
+  const gruppen = useMemo(() => nachHerstellerUndSystem(results, hersteller), [results, hersteller]);
+  // Überschriften nur, wenn es mehr als eine Gruppe oder einen Herstellernamen gibt.
+  const mitKoepfen = gruppen.length > 1 || Boolean(gruppen[0]?.name);
 
   const activeCount =
     (query.trim() ? 1 : 0)
     + (manufacturer !== ALL ? 1 : 0)
+    + (system !== ALL ? 1 : 0)
     + (keyType !== ALL ? 1 : 0)
     + (family !== ALL ? 1 : 0);
 
   function resetAll() {
     setQuery('');
     setManufacturer(ALL);
+    setSystem(ALL);
     setKeyType(ALL);
     setFamily(ALL);
   }
@@ -208,7 +171,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
       >
         <Field
           label="Suche"
-          hint="Zum Beispiel Briefkasten, Spind, eine Serienkennung oder der Code von Ihrem Schloss. Bei einem Code sehen Sie die Linien, deren Codeformat dazu passt."
+          hint="Zum Beispiel ein Hersteller, ein System, Briefkasten oder der Code von Ihrem Schloss. Bei einem Code sehen Sie die Linien, deren Codeformat dazu passt."
         >
           {({ id: fieldId, describedBy }) => (
             <TextInput
@@ -218,7 +181,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
               inputMode="search"
               autoComplete="off"
               value={query}
-              placeholder="Anwendung, Typ, Hersteller oder Schlüsselcode"
+              placeholder="Hersteller, System, Anwendung oder Schlüsselcode"
               onChange={(event) => setQuery(event.target.value)}
             />
           )}
@@ -258,7 +221,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
           id={panelId}
           className={cn(
             'mt-4 gap-4 md:grid',
-            herstellerOptionen.length > 0 ? 'md:grid-cols-3' : 'md:grid-cols-2',
+            felderZahl >= 4 ? 'md:grid-cols-4' : felderZahl === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2',
             filterOpen ? 'grid' : 'hidden md:grid',
           )}
         >
@@ -277,6 +240,22 @@ export function ShopListe({ lines, className }: ShopListeProps) {
             </Field>
           )}
 
+          {options.systems.length > 0 && (
+            <Field label="System" hint="So, wie der Hersteller das Schließsystem nennt.">
+              {({ id: fieldId, describedBy }) => (
+                <Select id={fieldId} aria-describedby={describedBy} value={system} onChange={(e) => setSystem(e.target.value)}>
+                  <option value={ALL}>Alle Systeme</option>
+                  {options.systems.map((value) => (
+                    <option key={value} value={value}>
+                      {value}
+                    </option>
+                  ))}
+                </Select>
+              )}
+            </Field>
+          )}
+
+          {options.keyTypes.length > 0 && (
           <Field
             label="Schlüsseltyp"
             info={{
@@ -298,7 +277,9 @@ export function ShopListe({ lines, className }: ShopListeProps) {
               </Select>
             )}
           </Field>
+          )}
 
+          {familienZeigen && (
           <Field
             label="Anwendungsfamilie"
             info={{
@@ -320,6 +301,7 @@ export function ShopListe({ lines, className }: ShopListeProps) {
               </Select>
             )}
           </Field>
+          )}
         </div>
 
         {/* Codesuche: Hinweis, dass das Format passt — welche Linie zum Schloss gehört, entscheidet die Anwendung */}
@@ -327,7 +309,11 @@ export function ShopListe({ lines, className }: ShopListeProps) {
           <p className="mt-4 max-w-measure text-small text-foreground-muted">
             Ihr Code <span className="font-mono font-semibold text-foreground">{query.trim()}</span> passt zum
             Codeformat von {codeTrefferSichtbar} {codeTrefferSichtbar === 1 ? 'Codelinie' : 'Codelinien'}. Welche
-            davon zu Ihrem Schloss gehört, erkennen Sie an der Anwendung.
+            davon zu Ihrem Schloss gehört, erkennen Sie an Hersteller und System. Passt keine sicher,{' '}
+            <Link href={codeAnfragePfad({ code: query })} prefetch={false} className="font-semibold text-primary hover:underline">
+              fragen Sie den Code an
+            </Link>
+            .
           </p>
         )}
 
@@ -342,25 +328,23 @@ export function ShopListe({ lines, className }: ShopListeProps) {
         )}
       </form>
 
-      {/* Trefferliste: Sprungleiste der Familien, darunter dichte Zeilen je Anwendungsfamilie */}
+      {/* Trefferliste: Sprungleiste der Hersteller, darunter je Hersteller die Systeme mit dichten Zeilen */}
       {results.length > 0 ? (
         // min-w-0: Rasterzelle darf schmaler werden als die Sprungleiste; die Leiste scrollt in sich.
-        // `relative` an der Liste hält die unsichtbaren Namen (sr-only, absolut) im Scrollbereich.
         <div className="min-w-0">
           {gruppen.length > 1 && (
             <nav
-              aria-label="Anwendungsfamilien"
+              aria-label="Hersteller"
               className="sticky top-header z-sticky -mx-5 mb-8 border-b border-border bg-background sm:-mx-6 md:mx-0"
             >
               <ul className="relative flex snap-x gap-1 overflow-x-auto px-5 py-1 scroll-px-5 sm:px-6 sm:scroll-px-6 md:flex-wrap md:overflow-visible md:px-0 md:scroll-px-0">
                 {gruppen.map((gruppe) => (
-                  <li key={gruppe.schluessel} className="shrink-0 snap-start">
+                  <li key={gruppe.adresse ?? 'ohne'} className="shrink-0 snap-start">
                     <a
-                      href={`#familie-${gruppe.kuerzel.toLowerCase()}`}
-                      className="inline-flex min-h-touch min-w-touch items-center justify-center px-2 font-mono text-small font-semibold text-foreground-muted transition-colors duration-quick ease-standard hover:text-primary"
+                      href={`#hersteller-${gruppe.adresse ?? 'ohne'}`}
+                      className="inline-flex min-h-touch min-w-touch items-center justify-center whitespace-nowrap px-2 text-small font-semibold text-foreground-muted transition-colors duration-quick ease-standard hover:text-primary"
                     >
-                      {gruppe.kuerzel}
-                      <span className="sr-only"> · {gruppe.anwendung}</span>
+                      {gruppe.name ?? 'Ohne Hersteller'}
                     </a>
                   </li>
                 ))}
@@ -370,127 +354,125 @@ export function ShopListe({ lines, className }: ShopListeProps) {
 
           <div className="grid gap-12">
             {gruppen.map((gruppe, gruppenIndex) => {
-              const offen = aufgeklappt.has(gruppe.schluessel);
-              const listenId = `${id}-gruppe-${gruppenIndex}`;
+              const titelId = `${id}-hersteller-${gruppenIndex}`;
               return (
                 <section
-                  key={gruppe.schluessel}
-                  id={`familie-${gruppe.kuerzel.toLowerCase()}`}
+                  key={gruppe.adresse ?? 'ohne'}
+                  id={`hersteller-${gruppe.adresse ?? 'ohne'}`}
                   className="scroll-mt-14"
-                  aria-labelledby={`${listenId}-titel`}
+                  aria-labelledby={mitKoepfen ? titelId : undefined}
+                  aria-label={mitKoepfen ? undefined : 'Codelinien'}
                 >
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                    <h3 id={`${listenId}-titel`} className="eyebrow">
-                      <Link href={gruppe.href} prefetch={false} className="hover:text-primary hover:underline">
-                        {gruppe.kopf}
-                      </Link>
-                    </h3>
-                    <p className="font-mono text-caption text-foreground-muted">
-                      {gruppe.schluesseltyp && <>{gruppe.schluesseltyp} · </>}
-                      <span className="whitespace-nowrap">Preis je Stück</span>
-                      {gruppe.staffelAb !== undefined && (
-                        <>
-                          {' · '}
-                          <span className="whitespace-nowrap">Staffelpreis ab {gruppe.staffelAb}{'\u00a0'}Stück</span>
-                        </>
-                      )}
-                    </p>
-                  </div>
-
-                  <ul id={listenId} className="mt-4 border-t border-border">
-                    {gruppe.lines.map((line, zeile) => {
-                      const staffel = line.bulkPrices?.[0];
-                      const aufgeklappteZeile = zeile >= VORSCHAU && offen;
-                      const ziel = `/schluessel-nach-code/${line.slug}`;
-                      // Nur Treffer der Codesuche bekommen den Knopf; die Adresse trägt den Code.
-                      const bestellLink = codeTreffer.has(line.id) ? nachCodeHref(line.slug, query) : null;
-                      return (
-                        <li
-                          key={line.id}
-                          className={cn(
-                            'border-b border-border',
-                            zeile >= VORSCHAU && !offen && 'hidden md:block',
-                            aufgeklappteZeile && 'sm24-fade',
-                          )}
-                          style={aufgeklappteZeile ? motionStyle(0, 0.18) : undefined}
-                        >
-                          <Link
-                            href={ziel}
-                            prefetch={false}
-                            onPointerEnter={() => vorladen(ziel)}
-                            onFocus={() => vorladen(ziel)}
-                            onTouchStart={() => vorladen(ziel)}
-                            className="group grid min-h-touch-lg grid-cols-12 items-center gap-x-3 gap-y-1 py-4 transition-colors duration-quick ease-standard md:gap-x-6"
-                          >
-                            <span className="col-span-2 whitespace-nowrap font-mono text-small font-semibold tabular-nums text-foreground lg:col-span-1">
-                              {codelinienKennung(line)}
-                            </span>
-                            <span className="col-span-9 text-balance text-body font-semibold leading-snug text-foreground transition-colors duration-quick ease-standard group-hover:text-primary md:col-span-4">
-                              {titelOf(line)}
-                            </span>
-                            <GlyphPfeilRechts
-                              size={16}
-                              className="col-span-1 row-span-2 justify-self-end text-foreground-muted transition-transform duration-quick ease-standard zeiger:group-hover:translate-x-1 group-hover:text-primary group-focus-visible:text-primary md:order-last md:row-span-1"
-                            />
-                            <span className="col-span-9 col-start-3 font-mono text-small text-foreground-muted md:col-span-3 md:col-start-auto lg:col-span-4">
-                              {line.codeFormatLabel}
-                              {codeTreffer.has(line.id) && (
-                                <Badge tone="primary" className="ml-2 align-middle font-sans">
-                                  passt zum Codeformat
-                                </Badge>
-                              )}
-                            </span>
-                            <span className="col-span-9 col-start-3 md:col-span-2 md:col-start-auto md:text-right">
-                              <span className="whitespace-nowrap font-mono text-body font-semibold tabular-nums text-foreground">
-                                {formatCents(line.priceCents)}
-                              </span>
-                              {gruppe.staffelAb === undefined && staffel && (
-                                <span className="block whitespace-nowrap text-caption text-foreground-muted">
-                                  Staffelpreis ab {staffel.minQty}{'\u00a0'}Stück
-                                </span>
-                              )}
-                            </span>
+                  {mitKoepfen && (
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                      <h3 id={titelId} className="text-title-sm font-semibold text-foreground">
+                        {gruppe.name && gruppe.adresse ? (
+                          <Link href={herstellerPfad(gruppe.adresse)} prefetch={false} className="hover:text-primary hover:underline">
+                            {gruppe.name}
                           </Link>
-                          {bestellLink && (
-                            <div className="flex justify-end pb-4">
-                              <ButtonLink href={bestellLink} size="sm" prefetch={false}>
-                                Nach Code bestellen
-                                {/* Je Treffer ein eigener Name für Screenreader (WCAG 2.4.4); sichtbar bleibt der Knopftext. */}
-                                <span className="sr-only">: {titelOf(line)}</span>
-                              </ButtonLink>
-                            </div>
-                          )}
-                        </li>
-                      );
-                    })}
-                  </ul>
-
-                  {gruppe.lines.length > VORSCHAU && (
-                    <button
-                      type="button"
-                      aria-expanded={offen}
-                      aria-controls={listenId}
-                      onClick={() => alleZeigen(gruppe.schluessel)}
-                      className="flex min-h-touch w-full items-center justify-between gap-3 border-b border-border text-small font-semibold text-primary md:hidden"
-                    >
-                      <span className="min-w-0">
-                        {offen ? (
-                          'Weniger anzeigen'
                         ) : (
-                          <>
-                            Alle <span className="font-mono tabular-nums">{gruppe.lines.length}</span> anzeigen
-                          </>
+                          'Ohne Herstellerangabe'
                         )}
-                      </span>
-                      <GlyphWinkelUnten
-                        size={16}
-                        className={cn(
-                          'shrink-0 transition-transform duration-base ease-standard',
-                          offen && 'rotate-180',
-                        )}
-                      />
-                    </button>
+                      </h3>
+                      <p className="font-mono text-caption tabular-nums text-foreground-muted">
+                        {gruppe.lines.length} {gruppe.lines.length === 1 ? 'Codelinie' : 'Codelinien'} · Preis je Stück
+                      </p>
+                    </div>
                   )}
+
+                  {gruppe.systeme.map((systemGruppe, systemIndex) => {
+                    const schluessel = `${gruppenIndex}-${systemIndex}`;
+                    const offen = aufgeklappt.has(schluessel);
+                    const listenId = `${id}-gruppe-${schluessel}`;
+                    return (
+                      <div key={systemGruppe.name ?? 'ohne-system'} className={cn(mitKoepfen && 'mt-6')}>
+                        {systemGruppe.name && <h4 className="eyebrow">System {systemGruppe.name}</h4>}
+                        <ul id={listenId} className={cn('border-t border-border', systemGruppe.name && 'mt-3')}>
+                          {systemGruppe.lines.map((line, zeile) => {
+                            const aufgeklappteZeile = zeile >= VORSCHAU && offen;
+                            const ziel = codelinienPfad(line);
+                            const weg = bestellWeg(line);
+                            // Nur Treffer der Codesuche bekommen einen Knopf; die Adresse trägt den Code.
+                            const treffer = codeTreffer.has(line.id);
+                            return (
+                              <li
+                                key={line.id}
+                                className={cn(
+                                  'border-b border-border',
+                                  zeile >= VORSCHAU && !offen && 'hidden md:block',
+                                  aufgeklappteZeile && 'sm24-fade',
+                                )}
+                                style={aufgeklappteZeile ? motionStyle(0, 0.18) : undefined}
+                              >
+                                <Link
+                                  href={ziel}
+                                  prefetch={false}
+                                  onPointerEnter={() => vorladen(ziel)}
+                                  onFocus={() => vorladen(ziel)}
+                                  onTouchStart={() => vorladen(ziel)}
+                                  className={LINIEN_ZEILE_KLASSE}
+                                >
+                                  <LinienZeileInhalt
+                                    line={line}
+                                    zusatz={
+                                      treffer && (
+                                        <Badge tone="primary" className="ml-2 align-middle font-sans">
+                                          passt zum Codeformat
+                                        </Badge>
+                                      )
+                                    }
+                                  />
+                                </Link>
+                                {/* „Nicht lieferbar“: kein Knopf; „auf Anfrage“: Code anfragen statt Warenkorb (FA-22-10). */}
+                                {treffer && weg !== 'keiner' && (
+                                  <div className="flex justify-end pb-4">
+                                    <ButtonLink
+                                      href={
+                                        weg === 'warenkorb'
+                                          ? (nachCodeHref(line.slug, query) ?? ziel)
+                                          : codeAnfragePfad({ code: query, schloss: line.name })
+                                      }
+                                      size="sm"
+                                      variant={weg === 'warenkorb' ? 'primary' : 'outline'}
+                                      prefetch={false}
+                                    >
+                                      {weg === 'warenkorb' ? 'Nach Code bestellen' : 'Code anfragen'}
+                                      {/* Je Treffer ein eigener Name für Screenreader (WCAG 2.4.4); sichtbar bleibt der Knopftext. */}
+                                      <span className="sr-only">: {codelinienTitel(line)}</span>
+                                    </ButtonLink>
+                                  </div>
+                                )}
+                              </li>
+                            );
+                          })}
+                        </ul>
+
+                        {systemGruppe.lines.length > VORSCHAU && (
+                          <button
+                            type="button"
+                            aria-expanded={offen}
+                            aria-controls={listenId}
+                            onClick={() => alleZeigen(schluessel)}
+                            className="flex min-h-touch w-full items-center justify-between gap-3 border-b border-border text-small font-semibold text-primary md:hidden"
+                          >
+                            <span className="min-w-0">
+                              {offen ? (
+                                'Weniger anzeigen'
+                              ) : (
+                                <>
+                                  Alle <span className="font-mono tabular-nums">{systemGruppe.lines.length}</span> anzeigen
+                                </>
+                              )}
+                            </span>
+                            <GlyphWinkelUnten
+                              size={16}
+                              className={cn('shrink-0 transition-transform duration-base ease-standard', offen && 'rotate-180')}
+                            />
+                          </button>
+                        )}
+                      </div>
+                    );
+                  })}
                 </section>
               );
             })}

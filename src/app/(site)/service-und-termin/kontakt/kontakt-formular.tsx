@@ -5,6 +5,8 @@ import { useMemo, useState } from 'react';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { Field } from '@/components/forms/field';
+import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
@@ -62,7 +64,7 @@ function kontaktAus(d: KontaktDaten): ContactDetails {
 }
 
 /** Kontaktformular „Nachricht schreiben“ (G-36): drei Schritte, danach die gemeinsame Bestätigung. */
-export function KontaktFormular() {
+export function KontaktFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
   const [fotos, setFotos] = useState<PickedFile[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<SubmitResult | null>(null);
@@ -149,12 +151,10 @@ export function KontaktFormular() {
       onSubmit={absenden}
       submitting={submitting}
       blockedHint={gesperrt[flow.step?.id ?? ''] ?? 'Bitte füllen Sie die Pflichtangaben dieses Schrittes aus.'}
+      ungesichert={fotos.length > 0}
+      mitDateien
     >
-      {fehler && (
-        <Alert tone="warning" title="Das hat nicht geklappt" className="mb-6" role="alert">
-          {fehler}
-        </Alert>
-      )}
+      {fehler && <AbsendeFehler fehler={fehler} hilfe={hilfe} titel="Das hat nicht geklappt" />}
 
       {flow.step?.id === 'nachricht' && (
         <div className="max-w-3xl space-y-6">
@@ -220,6 +220,9 @@ export function KontaktFormular() {
             maxFiles={3}
             allowDocuments
           />
+
+          {/* Wer nicht schreiben mag, ruft an oder bittet um Rückruf (FA-QA-02). */}
+          <HilfeBlock hilfe={hilfe} stelle="nachricht" titel="Lieber gleich anrufen?" satz="Sie müssen nicht alles aufschreiben. Rufen Sie uns an." />
         </div>
       )}
 

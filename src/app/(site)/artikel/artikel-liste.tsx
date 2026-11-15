@@ -4,6 +4,7 @@ import { useId, useMemo, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 
 import { artikelPfad, filterArtikel, preisAb, preisAbText, schlagworte } from '@/lib/artikel';
+import { VERFUEGBARKEIT_LABEL, verfuegbarkeitVon } from '@/lib/data/shop';
 import { formatCents, formatNumber } from '@/lib/format';
 import { cn } from '@/lib/cn';
 import type { StandardArticle } from '@/lib/types';
@@ -32,7 +33,8 @@ export type ListenArtikel = Pick<
   | 'image'
   | 'tags'
   | 'example'
->;
+> &
+  Partial<Pick<StandardArticle, 'availability' | 'deliveryTime'>>;
 
 export interface ArtikelListeProps {
   articles: ListenArtikel[];
@@ -203,6 +205,10 @@ export function ArtikelListe({ articles, hinweis, className }: ArtikelListeProps
 function ArtikelKarte({ article }: { article: ListenArtikel }) {
   // Beim Preis „ab“ steht dabei, ab welcher Menge er gilt und was ein Stück kostet.
   const preis = preisAb(article);
+  // Verfügbarkeit (FA-22-10): Nur lieferbare Artikel zeigen Preis und Lieferzeit zum Bestellen.
+  const verfuegbarkeit = verfuegbarkeitVon(article);
+  const lieferbar = verfuegbarkeit === 'lieferbar';
+  const lieferzeit = lieferbar ? article.deliveryTime?.trim() : undefined;
 
   // Eine Zeile der Liste (Stückliste): Fach-Icon ohne Kachel, Name und Kurzangabe, Preis rechts mit „je Stück“, Pfeil als Hinweis.
   return (
@@ -224,20 +230,25 @@ function ArtikelKarte({ article }: { article: ListenArtikel }) {
           {article.description}
         </p>
         {/* Staffel nur bei Mengenpreisen; „je Stück“ steht bereits unter dem Preis. */}
-        {preis.ab && (
+        {lieferbar && preis.ab && (
           <p className="mt-1 text-caption text-foreground-muted">
             ab {formatNumber(preis.abMenge)}{'\u00a0'}Stück · einzeln {formatCents(preis.einzelCents)}
           </p>
         )}
+        {lieferzeit && <p className="mt-1 text-caption text-foreground-muted">Lieferzeit {lieferzeit}</p>}
       </div>
 
-      {/* Preis rechts in Mono, darunter die Einheit (Muster Code-Shop) */}
-      <p className="shrink-0 text-right">
-        <span className="block whitespace-nowrap font-mono text-body font-semibold tabular-nums text-foreground">
-          {preisAbText(article)}
-        </span>
-        <span className="block text-caption text-foreground-muted">je Stück</span>
-      </p>
+      {/* Preis rechts in Mono, darunter die Einheit (Muster Code-Shop); ohne Lieferbarkeit die Verfügbarkeit */}
+      {lieferbar ? (
+        <p className="shrink-0 text-right">
+          <span className="block whitespace-nowrap font-mono text-body font-semibold tabular-nums text-foreground">
+            {preisAbText(article)}
+          </span>
+          <span className="block text-caption text-foreground-muted">je Stück</span>
+        </p>
+      ) : (
+        <p className="shrink-0 text-right text-small font-semibold text-foreground-muted">{VERFUEGBARKEIT_LABEL[verfuegbarkeit]}</p>
+      )}
 
       <GlyphPfeilRechts
         size={16}

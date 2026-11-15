@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getCodeLines, getGuides, getHubRubriken, getPageContent, getSettings } from '@/lib/data';
+import { getCodeLines, getGuides, getHersteller, getHubRubriken, getPageContent, getSettings } from '@/lib/data';
 import { NAV_AREAS } from '@/lib/navigation';
 import { kontakt } from '@/lib/rechtliches/firma';
 import { telefonLink } from '@/lib/telefon';
+import { HerstellerBereich } from '@/components/hersteller/hersteller-bereich';
 import { IntentHub } from '@/components/hub/intent-hub';
 import { PartnerSektion } from '@/components/partner/partner-sektion';
 import { Eingangsinszenierung } from '@/components/visual/inszenierung/eingangsinszenierung';
@@ -101,12 +102,13 @@ function heroZiele(codeProdukte: boolean): string[] {
 }
 
 export default async function HomePage() {
-  const [page, settings, guides, hubRubriken, codeLines] = await Promise.all([
+  const [page, settings, guides, hubRubriken, codeLines, hersteller] = await Promise.all([
     getPageContent(''),
     getSettings(),
     getGuides(),
     getHubRubriken(),
     getCodeLines(),
+    getHersteller(),
   ]);
   // „Bestellen ohne Termin“: Solange es keine echten Codeprodukte gibt, verspricht die Karte keine Bestellung (A-046).
   const codeProdukte = codeLines.length > 0;
@@ -366,6 +368,9 @@ export default async function HomePage() {
           ))}
         </div>
       </Section>
+
+      {/* Hersteller und Systeme früh sichtbar (FA-19, FA-INHALT-02): Namen als Schriftzug, Logos erst nach Freigabe (R12) */}
+      <HerstellerBereich hersteller={hersteller} tone="sunken" />
 
       {/* Projekte: ein Plan, drei Wege */}
       <Section labelledBy="projekte-titel">

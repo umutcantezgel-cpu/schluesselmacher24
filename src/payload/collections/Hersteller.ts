@@ -24,7 +24,8 @@ export const Hersteller: CollectionConfig = {
     description:
       'Liste der Hersteller. Bitte jeden Hersteller nur einmal anlegen, in seiner eigenen Schreibweise. '
       + 'Artikel wählen ihren Hersteller aus dieser Liste. '
-      + 'Hersteller, Logo und der Haken „angeboten“ erscheinen mit dem nächsten Ausbau der Shopseiten auf der Seite.',
+      + 'Mit dem Haken „angeboten“ erscheint der Hersteller sofort auf der Startseite und, wenn ihm ein Bereich zugeordnet ist, '
+      + 'auf den Seiten Sperrschließungen und elektronischer Zutritt. Ein Logo erscheint nur mit Datei und Haken „Freigabe liegt vor“.',
     pagination: { defaultLimit: 50 },
   },
   access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber, readVersions: istTeam },
@@ -47,7 +48,11 @@ export const Hersteller: CollectionConfig = {
       type: 'textarea',
       label: 'Wofür die Systeme eingesetzt werden',
       maxLength: 300,
-      admin: { description: 'Ein kurzer Satz, etwa an welchen Schlössern die Systeme sitzen. Nur, was Sie belegen können.' },
+      admin: {
+        description:
+          'Ein kurzer Satz, etwa an welchen Schlössern die Systeme sitzen. Nur, was Sie belegen können. '
+          + 'Für BKS, ABUS und BURG-WÄCHTER zeigt die Seite zurzeit feste Texte je Bereich; dieses Feld erscheint bei allen anderen Herstellern.',
+      },
     },
     {
       name: 'angeboten',

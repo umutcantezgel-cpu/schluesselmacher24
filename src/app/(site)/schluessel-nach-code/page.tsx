@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getCodeLines, getPageContent, getRubrik } from '@/lib/data';
-import { codeFamilien, codeHersteller, herstellerPfad, kategoriePfad } from '@/lib/codelinie';
+import { herstellerPfad, kategoriePfad, verfuegbarkeitVon } from '@/lib/codelinie';
 import { formatCents, formatNumber } from '@/lib/format';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import type { NavLink } from '@/lib/navigation';
@@ -24,7 +24,9 @@ import {
 } from '@/components/visual/generators/code-fundstelle';
 import { PreisHinweis } from '@/components/recht/preis-hinweis';
 
+import { HerstellerMarke } from './hersteller-marke';
 import { ShopListe } from './shop-liste';
+import { shopDaten } from './shop-daten';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { SpaetVorladen } from '@/lib/spaet-vorladen';
 import { CODE_ANFRAGE_PFAD } from '@/lib/wege/code-anfrage';
@@ -52,6 +54,11 @@ const BASE_LINKS: NavLink[] = [
     href: '/rechtliches/versand-und-zahlung',
     label: 'Zahlung und Versand',
     description: 'Welche Versandarten und Zahlungswege zur Verfügung stehen.',
+  },
+  {
+    href: '/shop',
+    label: 'Alle Shop-Kategorien',
+    description: 'Was Sie bei uns direkt bestellen oder anfragen können.',
   },
 ];
 
@@ -97,16 +104,20 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function SchluesselNachCodePage() {
   // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
   const rubrik = await getRubrik('schluessel-nach-code');
-  const [page, lines] = await Promise.all([getPageContent(ROUTE), getCodeLines()]);
+  const [page, { lines, stamm, hersteller, kategorien }] = await Promise.all([getPageContent(ROUTE), shopDaten()]);
 
   // Gepflegte interne Links ergänzen die festen Ziele, ohne sie zu doppeln.
   const extraLinks: NavLink[] = (page?.seo.internalLinks ?? []).filter(
     (link) => !BASE_LINKS.some((base) => base.href === link.href),
   );
   const links = [...BASE_LINKS, ...extraLinks];
-  // Kategorien als feste Links (Erg. Leitfaden §3): jede Linie ist auch ohne Suche und Filter erreichbar.
-  const familien = codeFamilien(lines);
-  const hersteller = codeHersteller(lines);
+  // Hersteller und Kategorien als feste Links (Erg. Leitfaden §3): jede Linie mit Hersteller ist auch ohne Suche erreichbar.
+  const kategorienMitLinien = kategorien.filter((k) => k.lines.length > 0);
+  const mitUebersicht = hersteller.length > 0 || kategorienMitLinien.length > 0;
+  const ab = (linien: typeof lines) => {
+    const preise = linien.filter((line) => verfuegbarkeitVon(line) === 'lieferbar').map((line) => line.priceCents);
+    return preise.length ? ` · ab ${formatCents(Math.min(...preise))}` : '';
+  };
   // Ohne echte Codeprodukte (A-046): ehrlicher Leerzustand mit Code-Anfrage statt Produktliste.
   const ohneProdukte = lines.length === 0;
 
@@ -227,7 +238,7 @@ export default async function SchluesselNachCodePage() {
         />
 
         <PreisHinweis alle className="mt-4" />
-        <ShopListe lines={lines} className="mt-6" />
+        <ShopListe lines={lines} hersteller={stamm} className="mt-6" />
         {/* Code passt zu keiner Linie (FA-11-17): die Anfrage steht dauerhaft neben den Produkten. */}
         <p className="mt-6 text-small text-foreground-muted">
           Ihr Code passt zu keiner Linie?{' '}
@@ -237,61 +248,61 @@ export default async function SchluesselNachCodePage() {
         </p>
       </Section>
 
-      {/* Kategorien und Hersteller als Stückliste: Startseite → Schlüssel nach Code → Kategorie → Produkt */}
+      {/* Hersteller und Kategorien als Stückliste: Startseite › Schlüssel nach Code › Hersteller › Produkt */}
+      {mitUebersicht && (
       <Section tone="muted" tight labelledBy="kategorien-titel">
         <SectionHeading
           id="kategorien-titel"
           nummer="02"
-          eyebrow="Kategorien"
-          title="Codelinien nach Anwendung"
-          lead="Für jede Anwendung gibt es eine eigene Seite mit allen Linien, Codeformaten und Preisen."
+          eyebrow="Hersteller"
+          title="Codelinien nach Hersteller"
+          lead="Für jeden Hersteller gibt es eine eigene Seite mit seinen Systemen, Codeformaten und Preisen."
         />
         <ul className="mt-8 border-t border-border md:grid md:grid-cols-2 md:gap-x-gutter">
-          {familien.map((familie) => {
-            const preise = familie.lines.map((line) => line.priceCents);
-            return (
-              <li key={familie.adresse} className="border-b border-border">
-                <Link
-                  href={kategoriePfad(familie.name)}
-                  prefetch={false}
-                  className="group flex min-h-touch-lg items-center gap-4 py-4 transition-colors duration-quick"
-                >
-                  {familie.kuerzel && (
-                    <span className="w-8 shrink-0 font-mono text-small font-semibold text-foreground-muted">
-                      {familie.kuerzel}
-                    </span>
-                  )}
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-body font-semibold text-foreground group-hover:text-area-strong">
-                      {familie.name}
-                    </span>
-                    <span className="mt-0.5 block font-mono text-caption tabular-nums text-foreground-muted">
-                      {formatNumber(familie.lines.length)} {familie.lines.length === 1 ? 'Linie' : 'Linien'} · ab{' '}
-                      {formatCents(Math.min(...preise))}
-                    </span>
+          {hersteller.map((eintrag) => (
+            <li key={eintrag.adresse} className="border-b border-border">
+              <Link
+                href={herstellerPfad(eintrag.adresse)}
+                prefetch={false}
+                className="group flex min-h-touch-lg items-center gap-4 py-4 transition-colors duration-quick"
+              >
+                <span className="min-w-0 flex-1">
+                  <span className="block text-body font-semibold text-foreground group-hover:text-area-strong">
+                    {eintrag.name}
                   </span>
-                  <GlyphPfeilRechts
-                    size={16}
-                    className="shrink-0 text-foreground-subtle transition-transform duration-base ease-standard group-hover:translate-x-1 group-hover:text-area-strong"
-                  />
-                </Link>
-              </li>
-            );
-          })}
+                  <span className="mt-0.5 block font-mono text-caption tabular-nums text-foreground-muted">
+                    {formatNumber(eintrag.lines.length)} {eintrag.lines.length === 1 ? 'Linie' : 'Linien'}
+                    {eintrag.systeme.some((sys) => sys.name) &&
+                      ` · ${eintrag.systeme.filter((sys) => sys.name).length} ${eintrag.systeme.filter((sys) => sys.name).length === 1 ? 'System' : 'Systeme'}`}
+                    {ab(eintrag.lines)}
+                  </span>
+                </span>
+                {eintrag.stamm?.logo && (
+                  <span aria-hidden className="shrink-0">
+                    <HerstellerMarke name={eintrag.name} logo={eintrag.stamm.logo} />
+                  </span>
+                )}
+                <GlyphPfeilRechts
+                  size={16}
+                  className="shrink-0 text-foreground-subtle transition-transform duration-base ease-standard group-hover:translate-x-1 group-hover:text-area-strong"
+                />
+              </Link>
+            </li>
+          ))}
         </ul>
 
-        {hersteller.length > 0 && (
+        {kategorienMitLinien.length > 0 && (
           <>
-            <p className="mt-10 font-mono text-caption uppercase tracking-label text-foreground-muted">Nach Hersteller</p>
+            <p className="mt-10 font-mono text-caption uppercase tracking-label text-foreground-muted">Nach Kategorie</p>
             <ul className="mt-3 flex flex-wrap gap-x-6 border-t border-border pt-2">
-              {hersteller.map((eintrag) => (
-                <li key={eintrag.adresse}>
+              {kategorienMitLinien.map(({ kategorie }) => (
+                <li key={kategorie.id}>
                   <Link
-                    href={herstellerPfad(eintrag.name)}
+                    href={kategoriePfad(kategorie.slug)}
                     prefetch={false}
                     className="inline-flex min-h-touch items-center text-body font-semibold text-primary hover:underline"
                   >
-                    {eintrag.name}
+                    {kategorie.name}
                   </Link>
                 </li>
               ))}
@@ -299,6 +310,7 @@ export default async function SchluesselNachCodePage() {
           </>
         )}
       </Section>
+      )}
 
         </>
       )}
@@ -306,7 +318,7 @@ export default async function SchluesselNachCodePage() {
       {/* Ablauf aus den Rubrikdaten (G-10, G-11) */}
       <RubrikAblaufAbschnitt
         rubrik={rubrik}
-        nummer={ohneProdukte ? '02' : '03'}
+        nummer={ohneProdukte || !mitUebersicht ? '02' : '03'}
         titel="Vom Code zum fertigen Schlüssel"
         lead={
           ohneProdukte
@@ -330,7 +342,7 @@ export default async function SchluesselNachCodePage() {
       <Section tone="muted" tight labelledBy="weiter-titel">
         <SectionHeading
           id="weiter-titel"
-          nummer={ohneProdukte ? '03' : '04'}
+          nummer={ohneProdukte || !mitUebersicht ? '03' : '04'}
           eyebrow="Weiterlesen"
           title="Passende Bereiche und Erklärungen"
           lead="Hier geht es weiter, wenn der Code fehlt oder mehrere Türen zusammengehören."

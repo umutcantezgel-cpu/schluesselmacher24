@@ -2,7 +2,7 @@ import type { ComponentType } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getPageContent } from '@/lib/data';
+import { getPageContent, getSettings } from '@/lib/data';
 import type { IconProps } from '@/components/visual/icons/icon-base';
 import { IconNachweis } from '@/components/visual/icons/nachweis';
 import { IconPruefung } from '@/components/visual/icons/pruefung';
@@ -24,6 +24,7 @@ import {
 } from '@/lib/partner/gewinnung';
 
 import { PartnerFormular } from './partner-formular';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
 
 const ROUTE = 'partner-werden';
 
@@ -227,7 +228,7 @@ export default async function PartnerWerdenPage() {
           und den Anfragen in Ihrer Region ab.
         </Alert>
         <div className="mt-8">
-          <PartnerFormular />
+          <PartnerFormular hilfe={hilfeAus(await getSettings())} />
         </div>
 
         {links.length > 0 && (

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getCodeLines, getCollection, getPageContent, getRubrik } from '@/lib/data';
+import { getCodeLines, getCollection, getHersteller, getPageContent, getRubrik } from '@/lib/data';
+import { HerstellerBereich } from '@/components/hersteller/hersteller-bereich';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { formatCents, formatMillimeter } from '@/lib/format';
 import { PreisHinweis } from '@/components/recht/preis-hinweis';
@@ -103,10 +104,11 @@ const BAUFORM_ICONS: Partial<Record<string, typeof IconProfilzylinder>> = {
 export default async function CylinderOverviewPage() {
   // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
   const rubrik = await getRubrik('sperrschliessung');
-  const [page, catalog, codeLines] = await Promise.all([
+  const [page, catalog, codeLines, hersteller] = await Promise.all([
     getPageContent(ROUTE),
     getCollection('cylinderCatalog'),
     getCodeLines(),
+    getHersteller(),
   ]);
 
   const forms = catalog.forms.filter((form) => form.active);
@@ -284,6 +286,9 @@ export default async function CylinderOverviewPage() {
           </div>
         )}
       </Section>
+
+      {/* Hersteller früh auf der Seite (FA-INHALT-02): BKS und ABUS bei Sperrschließungen */}
+      <HerstellerBereich hersteller={hersteller} bereich="sperrschliessung" tone="sunken" />
 
       {/* 02 Bauformen: Stückliste mit Fach-Icons */}
       <Section id="bauformen" tone="muted">

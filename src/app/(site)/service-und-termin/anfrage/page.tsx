@@ -10,6 +10,9 @@ import {
 import { PageHeader } from '@/components/layout/page-header';
 import { AllgemeineAnfrage } from './anfrage-formular';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
+import { getSettings } from '@/lib/data';
+import { ARTIKEL_ANFRAGE_LAENGE } from '@/lib/artikel';
 
 export const metadata: Metadata = {
   title: 'Anfrage zu einer Leistung',
@@ -20,11 +23,13 @@ export const metadata: Metadata = {
 };
 
 export default async function AnfragePage(props: {
-  searchParams: Promise<{ thema?: string; fahrzeug?: string; code?: string; schloss?: string; anliegen?: string }>;
+  searchParams: Promise<{ thema?: string; fahrzeug?: string; code?: string; schloss?: string; anliegen?: string; artikel?: string }>;
 }) {
-  const { thema, fahrzeug, code, schloss, anliegen } = await props.searchParams;
+  const { thema, fahrzeug, code, schloss, anliegen, artikel } = await props.searchParams;
   // Fahrzeug aus der Suche im Autoschlüssel-Weg (G-15): nur als kurzer Text in die Beschreibung.
   const fahrzeugText = typeof fahrzeug === 'string' ? fahrzeug.replace(/[^\p{L}\p{N} .\-/]/gu, '').trim().slice(0, 80) : '';
+  // Artikel oder Shop-Kategorie aus „Artikel anfragen“ (FA-SHOP-01B): nur Vorbelegung, bereinigt wie bei „Code anfragen“.
+  const artikelText = vorbelegungAusAdresse(artikel, ARTIKEL_ANFRAGE_LAENGE);
 
   // Code anfragen (FA-11-17): Code und Schloss nur als Vorbelegung, etwa von einer Produktseite.
   const codeAnfrage = thema === CODE_ANFRAGE_THEMA;
@@ -59,16 +64,19 @@ export default async function AnfragePage(props: {
         lead={
           codeAnfrage
             ? 'Nennen Sie Hersteller oder Schloss, den Code wie aufgedruckt und die Stückzahl. Wir prüfen den Code und melden uns mit einem Angebot oder einer Rückfrage.'
-            : 'Wählen Sie den Fachbereich und beschreiben Sie kurz, worum es geht. Wir melden uns mit einer Einschätzung.'
+            : artikelText && !fahrzeugText
+              ? `Ihre Anfrage zu „${artikelText}“. Wählen Sie den Fachbereich und beschreiben Sie kurz, worum es geht. Wir melden uns mit einer Einschätzung.`
+              : 'Wählen Sie den Fachbereich und beschreiben Sie kurz, worum es geht. Wir melden uns mit einer Einschätzung.'
         }
         crumbs={crumbs}
       />
 
       <div className="shell py-8 md:py-12">
         <AllgemeineAnfrage
+          hilfe={hilfeAus(await getSettings())}
           themen={themen}
           vorauswahl={thema}
-          fahrzeug={fahrzeugText || undefined}
+          fahrzeug={fahrzeugText || artikelText || undefined}
           codeVorbelegung={codeVorbelegung}
           themaFest={codeAnfrage}
           anliegenVorauswahl={anliegen === 'frage' ? 'frage' : undefined}

@@ -8,15 +8,17 @@ import {
   getCodeLines,
   getCollection,
   getGuides,
+  getHersteller,
+  getKategorien,
   getRubriken,
   getServicePages,
   getVehicleMakes,
 } from '@/lib/data';
 import {
-  codeFamilien,
-  codeHersteller,
+  codeKategorien,
   codelinieIndexierbar,
   codelinienPfad,
+  herstellerMitSeite,
   herstellerPfad,
   kategoriePfad,
 } from '@/lib/codelinie';
@@ -77,6 +79,8 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
   ...GEWINNUNG_SEITEN.map((seite) => ({ path: seite.pfad, priority: 0.4 })),
   { path: '/ratgeber', priority: 0.6 },
   { path: '/rechtliches/versand-und-zahlung', priority: 0.3 },
+  // Übersicht der Shop-Kategorien (FA-SHOP-01B).
+  { path: '/shop', priority: 0.7 },
 ];
 
 /**
@@ -121,7 +125,7 @@ function geaendert(...werte: Array<string | undefined>): { lastModified: Date } 
 const zuletzt = (lines: CodeLine[]) => geaendert(...lines.map((line) => line.updatedAt));
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [makes, codeLines, articles, servicePages, guides, cities, pages, rubriken] = await Promise.all([
+  const [makes, codeLines, articles, servicePages, guides, cities, pages, rubriken, kategorien, stamm] = await Promise.all([
     getVehicleMakes(),
     getCodeLines(),
     getCollection('standardArticles'),
@@ -130,6 +134,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getCities(),
     getCollection('pages'),
     getRubriken(),
+    getKategorien(),
+    getHersteller(),
   ]);
 
   // Klassen, deren Rubrik nicht live ist (FA-KERN-05). „Nicht gefunden“ gehört zu den Autoschlüsseln.
@@ -184,18 +190,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // Kategorien (Anwendungsfamilien) und Hersteller — Hersteller erst, wenn einer gepflegt ist.
-  for (const familie of codeFamilien(indexierbareLinien)) {
+  // Unterkategorien aus den Daten und Hersteller: nur sichtbare mit mindestens einer indexierbaren Linie
+  // (keine leeren Seiten, keine Beispiele); eigenes noindex der Kategorie gilt auch hier.
+  for (const { kategorie, lines } of codeKategorien(kategorien, indexierbareLinien)) {
+    if (lines.length === 0 || kategorie.seo?.noindex) continue;
     entries.push({
-      url: `${siteUrl}${kategoriePfad(familie.name)}`,
-      ...zuletzt(familie.lines),
+      url: `${siteUrl}${kategoriePfad(kategorie.slug)}`,
+      ...zuletzt(lines),
       changeFrequency: 'monthly',
       priority: 0.7,
     });
   }
-  for (const hersteller of codeHersteller(indexierbareLinien)) {
+  for (const hersteller of herstellerMitSeite(indexierbareLinien, stamm)) {
     entries.push({
-      url: `${siteUrl}${herstellerPfad(hersteller.name)}`,
+      url: `${siteUrl}${herstellerPfad(hersteller.adresse)}`,
       ...zuletzt(hersteller.lines),
       changeFrequency: 'monthly',
       priority: 0.6,

@@ -14,6 +14,7 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 import { EinsatzFormular } from './einsatz-formular';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
 
 export const metadata: Metadata = {
   title: 'Service vor Ort nach Termin',
@@ -225,7 +226,7 @@ export default async function VorOrtPage() {
           lead="Sagen Sie uns, wo und was zu tun ist. Wir klären, ob die Werkstatt oder ein Partner zu Ihnen kommen kann."
         />
         <div className="mt-8 max-w-3xl">
-          <EinsatzFormular />
+          <EinsatzFormular hilfe={hilfeAus(settings)} />
         </div>
       </Section>
 

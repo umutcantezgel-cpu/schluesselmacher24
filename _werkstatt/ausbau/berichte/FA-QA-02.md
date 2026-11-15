@@ -1,0 +1,98 @@
+# FA-QA-02 · Bedienbarkeit auch für ältere Kunden: mehrstufige Formulare gegen Abschnitt 26
+
+Prüfer und Baumeister, 15.11.2026. Kein git, kein Server, kein Build, kein `--pg`. Pflichtangaben, Prüfregeln, Nachweise (R13), Preise, Rechtstexte und Zustimmungen unverändert; `src/lib/server/**`, `src/lib/actions/**`, `src/payload/**`, Shopseiten, Navigation und Hub nicht angefasst. Das Muster `src/components/fahrzeug-anfrage/formular.tsx` nur gelesen.
+
+## GEÄNDERTE DATEIEN
+
+Neu (gemeinsame Bausteine und Tests)
+- `src/components/forms/hilfe.tsx`: `HilfeBlock` („Unsicher bei einer Angabe?“ mit Telefon als Verweis, Erreichbarkeit im Wortlaut der Einstellungen, „Rückruf erbitten“, wahlweise „Später weitermachen“), `TelefonHilfe`, `AbsendeFehler` (Grund, „Ihre Angaben bleiben erhalten. Versuchen Sie es noch einmal oder rufen Sie uns an“, ohne Nummer Rückruf), `OffenerSchritt` (sagt, was fehlt, Knopf „Zum Schritt …“).
+- `src/components/forms/hilfe-daten.ts`: `HilfeKontakt`, `hilfeAus(settings)` = `kontakt(settings.company).telefon` und `erreichbarkeit(settings)`.
+- `src/lib/flow/verlassen-warnung.ts`: `useVerlassenWarnung`, `wacheEinrichten` (Rückfrage bei Neuladen und Schließen, Wacheintrag in der Historie gegen Browser- und Android-Zurück).
+- Tests: `src/components/forms/hilfe.test.tsx`, `src/components/forms/formulare-bedienbarkeit.test.ts` (Sammeltest), `src/lib/flow/verlassen-warnung.test.ts`.
+
+Geändert (gemeinsamer Ablauf und Upload)
+- `src/components/flow/flow-shell.tsx`: Fortschrittszeile in `text-small` mit `aria-live="polite"`, `aria-valuetext` „Schritt x von y: Name, n Prozent“ (`fortschrittText`); Hinweis am gesperrten Knopf mit `id` und `aria-describedby` an „Weiter“ und am Absendeknopf, ohne Hinweis des Formulars `GESPERRT_STANDARD`; neue Eigenschaften `ungesichert` (Warnung vor dem Verlassen, auch bei `!flow.saved`) und `mitDateien` (Satz im Hinweis auf den geladenen Zwischenstand); Knöpfe „Weitermachen“, „Neu beginnen“ von 40 auf 44 px; Schrittliste ab Tablet 15 statt 12 px.
+- `src/components/forms/photo-upload.tsx`: Zeile über dem Beispiel 15 px statt 12 px Großbuchstaben; zeigt das Beispiel nur ein Fach-Symbol (kein Foto, keine Zeichnung), heißt sie „Darauf muss zu sehen sein“ und darunter steht der Satz aus dem Motiv (`beispielZeigtBild`, `beispielSatz`); Grenzen- und Statuszeile 15 px.
+- Tests: `src/components/flow/flow-shell.test.tsx`, `src/components/forms/photo-upload.test.tsx`.
+
+Geändert (Formulare und ihre Seiten, nur Übergabe `hilfe`)
+- `src/app/(site)/autoschluessel/anfrage/assistent.tsx`
+- `src/app/(site)/autoschluessel/gehaeuse/anfrage/anfrage-formular.tsx`, `…/gehaeuse/anfrage/page.tsx`
+- `src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx`, `…/anfrage/page.tsx`
+- `src/app/(site)/schluessel-einschicken/anmelden/einsende-formular.tsx`, `…/anmelden/page.tsx`
+- `src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx`, `…/konfigurator/page.tsx`
+- `src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx`, `…/konfigurator/page.tsx`, `…/konfigurator/schliessplan/page.tsx`
+- `src/components/konfigurator/schliessplan-planer.tsx`
+- `src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx`, `…/konfigurator/page.tsx`
+- `src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx`, `…/sicherheitscheck/page.tsx`
+- `src/app/(site)/beratung/beratung-formular.tsx`, `src/app/(site)/beratung/page.tsx`
+- `src/app/(site)/service-und-termin/anfrage/anfrage-formular.tsx`, `…/anfrage/page.tsx`
+- `src/app/(site)/service-und-termin/kontakt/kontakt-formular.tsx`, `…/kontakt/page.tsx`
+- `src/app/(site)/service-und-termin/vor-ort/einsatz-formular.tsx`, `…/vor-ort/page.tsx`
+- `src/app/(site)/partner-werden/partner-formular.tsx`, `src/app/(site)/partner-werden/page.tsx`
+- dieser Bericht
+
+## TABELLE (Formular × Forderung, vorher → nachher)
+
+Spalten: a Fortschritt · b Zurück ohne Datenverlust · c Fehlermeldungen · d Foto mit Beispiel · e Telefon und Hilfe · f keine Sackgasse · g Knöpfe und Schrift.
+Für alle gilt aus dem gemeinsamen Ablauf (flow-shell.tsx): a vorher sichtbar „Schritt x von y · Name“ in 12 px, Fortschrittsbalken nur mit Prozent für Vorleseprogramme → nachher 15 px, `aria-live`, `aria-valuetext` mit Schritt und Name. b vorher Angaben im Browser (use-flow), Dateien nie, Browser-Zurück verlässt den Ablauf ohne Frage → nachher Warnung vor Verlassen, Neuladen und Browser-Zurück, solange Dateien gewählt sind oder der Zwischenstand nicht gespeichert werden konnte; der Hinweis „Zwischenstand geladen“ sagt, dass Dateien neu zu wählen sind. c vorher Hinweis am gesperrten Knopf nur, wenn das Formular einen gab, nicht verknüpft → nachher immer einer, per `aria-describedby` verknüpft. g Hauptknöpfe vorher schon 52 px hoch und am Telefon volle Breite (Button `lg`, `fullWidth`).
+
+| Formular | a | b | c | d | e | f | g |
+|---|---|---|---|---|---|---|---|
+| 1 Termin-Assistent (assistent.tsx) | erfüllt (Etappen) | Dateien: vorher Verlust ohne Frage → `ungesichert` (Z. 1171); Neuladen: Absenden führt zum unvollständigen Schritt (Bestand, `firstIncompleteStep`) | Hinweise je Schritt (Bestand); Absendefehler vorher ohne `role=alert`, ohne Anrufen → `AbsendeFehler` (Z. 1191) | Beispiele an Fotos und Schein; Schein-Beispiel nur Symbol → Zeile „Darauf muss zu sehen sein“ mit Satz | Unterlagen: Bestand (`HilfeBeiUnterlagen`); Preis und Anzahlung vorher ohne → `HilfeBlock stelle="preis"` (Z. 2082) | Fahrzeug nicht gefunden, Schlüsselart „Unsicher?“, leere Zustände nennen den Weg (Bestand) | „Ändern“ vorher Textgröße ohne Trefferfläche → `min-h-touch` |
+| 2 Gehäuse (gehaeuse/anfrage-formular.tsx) | erfüllt | Neuladen: vorher nur Satz am gesperrten Knopf → `OffenerSchritt` zum Schritt Fotos (Z. 343); `ungesichert` | Hinweise je Schritt (Bestand); `AbsendeFehler` | Schlüsselfotos mit Zeichnung; Fahrzeugschein nur Symbol → Satz | vorher keine Hilfe → `HilfeBlock` im Fahrzeugschritt und bei den Unterlagen mit „Später weitermachen“ (Z. 222, 271) | Tasten „Weiß ich nicht“ (Bestand); Baujahr Pflicht ohne „unbekannt“ → OFFENE FRAGE, Hilfeblock nennt Fahrzeugschein und Telefon | erfüllt |
+| 3 Muster Fahrzeugschlüssel (fahrzeug-anfrage/formular.tsx), nur geprüft | erfüllt | Zurück behält Dateien, Neuladen führt zum offenen Schritt; keine Warnung vor dem Verlassen (kein `ungesichert`) → OFFENE FRAGE | Hinweise je Schritt; Absendefehler ohne Anrufen → OFFENE FRAGE | Beispiele je Steckplatz; Ersatznachweis, Typenschild, Fahrzeugschein nur Symbol → jetzt automatisch Satz (PhotoUpload) | erfüllt (Fahrzeugschritt, Unterlagen) | erfüllt | erfüllt |
+| 4 Vorlage (schluessel-nach-vorlage/anfrage-formular.tsx) | erfüllt | Fotos fehlen: Bestand mit Knopf; Karte fehlt nach Neuladen: vorher falscher Satz „Es fehlen Fotos“ → eigener Satz und `OffenerSchritt` zu „Nummern“ (Z. 902); `ungesichert` | Hinweise je Schritt; `AbsendeFehler` | Beispiele mit Zeichnung; Spitze nur Symbol → Satz | vorher keine Hilfe → Fotoschritte, Hersteller, Nummern (Z. 541, 577, 670) | Hersteller unbekannt, nichts erkennbar, Karte „Weiß ich nicht“ (Bestand) | Knopf „Zu den Fotoschritten“ 40 → 44 px |
+| 5 Einsendung (einsende-formular.tsx) | erfüllt | Karte nach Neuladen weg: vorher Absenden trotzdem frei (Server lehnt ab) → Absenden gesperrt wie der Schritt Nachweis, Hinweis und Knopf „Zum Nachweis“; `ungesichert` | `AbsendeFehler` | Karte mit Zeichnung | vorher keine → Nachweis und Versand (Z. 370, 392) | Karte „Weiß ich nicht“ (Bestand) | Knopf „Zum Nachweis“ 40 → 44 px |
+| 6 Zylinder (konfigurator.tsx) | erfüllt (Seite) | Text im Browser, keine Dateien; Warnung greift nur, wenn Speichern scheitert | Hinweise je Schritt (Bestand); kein Server-Absenden (Warenkorb) | kein Foto | vorher kein Telefon → Maße (Z. 794), Zusammenfassung mit Preis (Z. 1066) | Maß unbekannt vorher ohne Ausweg im Schritt → Hilfeblock mit Messanleitung, Telefon, Anfrage mit Foto; Hersteller „auf Anfrage“ (Bestand) | 7 Knöpfe `sm` (40 px) → `md` (44 px); Satz unter der Summe 12 → 15 px |
+| 7a Schließanlagen (projekt-konfigurator.tsx) | erfüllt | `ungesichert` | vorher nur „mit Stern gekennzeichneten Angaben“ → `gesperrtHinweis` je Schritt; `AbsendeFehler` | Grundriss mit Zeichnung | vorher keine → Türen (Maß, Typ) und Unterlagen (Z. 1529, 1877) | „Nicht bekannt“, Maß und Typ dürfen offen bleiben (Bestand) | erfüllt |
+| 7b Schließplan (schliessplan-planer.tsx) | erfüllt (Seite) | keine Dateien; Warnung nur bei Speicherfehler | Hinweise je Schritt (Bestand); `AbsendeFehler` | kein Foto | vorher kein Telefon → Türen und Abschluss mit Preis (Z. 438, 523) | Maß unbekannt → Hilfeblock mit Weg „Projekt beschreiben“ (Maße dürfen dort offen bleiben) | 7 Knöpfe `sm` → `md`; Editor siehe OFFENE FRAGEN |
+| 8 Zutritt (zutritt-konfigurator.tsx) | erfüllt | keine Dateien | Hinweise je Schritt (Bestand); vorher kein `catch`: bei Verbindungsfehler drehte der Knopf ewig → `try/catch`, `AbsendeFehler` | kein Foto | vorher keine → Medien, Verwaltung, Integration (Z. 943) | „Noch offen“, „Noch unklar“, „Noch nicht bekannt“ (Bestand) | erfüllt |
+| 9 Sicherheitscheck (sicherheitscheck.tsx) | erfüllt | `ungesichert` | vorher nur „Pflichtangaben dieses Schrittes“ → `GESPERRT` je Schritt; `AbsendeFehler` | Objektfoto und Grundriss mit Zeichnung | vorher keine → Netz und App, Unterlagen (Z. 945, 986) | „Weiß ich nicht“, „Unbekannt“, „Nichts vorhanden“ (Bestand) | erfüllt |
+| 10a Rückruf (beratung-formular.tsx) | erfüllt | `ungesichert` | Hinweise je Schritt (Bestand); `AbsendeFehler` | Foto freiwillig, Beispiel mit Zeichnung | vorher kein Telefon → „Lieber gleich anrufen?“ ohne Rückruf-Verweis (Z. 211) | Thema „Etwas anderes“ (Bestand) | erfüllt |
+| 10b Anfrage zu einer Leistung (service-und-termin/anfrage) | erfüllt | `ungesichert` | vorher allgemeiner Hinweis → je Schritt (`GESPERRT`, Code-Anfrage eigener Satz); vorher kein `catch` → `try/catch`, `AbsendeFehler` | Beispiel mit Zeichnung | vorher keine → Code (Z. 477), Unterlagen (Z. 570) | geführte Wege für Schlüssel, Frage bleibt möglich (Bestand) | erfüllt |
+| 10c Kontakt (kontakt-formular.tsx) | erfüllt | `ungesichert` | Hinweise je Schritt (Bestand); `AbsendeFehler` | Beispiel mit Zeichnung | vorher kein Telefon im Formular → „Lieber gleich anrufen?“ (Z. 225) | freie Nachricht | erfüllt |
+| 10d Einsatz vor Ort (einsatz-formular.tsx) | erfüllt | `ungesichert` | Hinweise je Schritt (Bestand); `AbsendeFehler` | Beispiel mit Zeichnung | vorher keine → Anliegen (Z. 255) | freie Beschreibung | erfüllt |
+| 11 Partner (partner-formular.tsx) | erfüllt | `ungesichert` | Hinweise je Schritt (Bestand); `AbsendeFehler` | Nachweis-Beispiel nur Symbol → Satz | vorher keine → Leistungen, Nachweise (Z. 423, 447) | Leistung fehlt: vorher kein Ausweg → „Ihre Leistung ist nicht dabei?“ | erfüllt |
+
+## WAS UND WARUM
+
+1. Ein Baustein statt vierzehn Kästen. Vorher hatten nur der Termin-Assistent und das Muster eine Hilfe mit Telefon. `HilfeBlock` folgt dem Muster (Telefon, Erreichbarkeit, Rückruf, „Später weitermachen“) und steht jetzt an den kritischen Stellen jedes Formulars: Unterlagen, Preis und Zahlung, Maße, Code, technische Fragen. Telefon und Erreichbarkeit kommen aus den Einstellungen (`hilfeAus`), die Seite gibt sie mit; ohne veröffentlichte Nummer entfällt die Zeile, der Rückruf bleibt. Kein eigener Satz zu Zeiten (R9).
+2. Fehler beim Absenden. `AbsendeFehler` wird sofort angesagt, sagt, dass die Angaben bleiben, und bietet Anrufen oder Rückruf. Zwei Formulare (Zutritt, Anfrage zu einer Leistung) hatten kein `catch`: Bei einem Verbindungsfehler blieb der Knopf im Ladezustand. Jetzt Meldung und Knopf wieder frei.
+3. Gesperrter Knopf. Der Rahmen verknüpft den Hinweis mit „Weiter“ und „Absenden“ und setzt einen allgemeinen, wenn das Formular keinen gibt. Schließanlagen, Sicherheitscheck und Anfrage zu einer Leistung nennen jetzt je Schritt, was fehlt, aus denselben Bedingungen wie ihre Prüfung (keine Prüfregel geändert).
+4. Zurück ohne Datenverlust. Angaben liegen schon im Browser. Was verloren gehen kann, sind gewählte Dateien und ein Zwischenstand, der sich nicht speichern ließ. Dann fragt die Seite vor Neuladen, Schließen und Browser-Zurück. Browser-Zurück: ein Wacheintrag mit derselben Adresse in der Historie (Next.js übernimmt eigenes `pushState`, gelesen: `node_modules/next/dist/docs/01-app/01-getting-started/04-linking-and-navigating.md`, Abschnitt `window.history.pushState`). Ohne Grund zur Warnung bleibt die Historie unberührt. Schritte selbst stehen weiter nicht in der Historie (größerer Umbau, siehe OFFENE FRAGEN).
+5. Nach dem Neuladen zum unvollständigen Schritt. Gehäuse und Vorlage (Karte) zeigen im letzten Schritt, was fehlt, mit Knopf zum Schritt. Einsendung sperrte vorher das Absenden ohne Kartenfoto nicht (der Server hätte abgelehnt); jetzt gilt im letzten Schritt dieselbe Sperre wie im Schritt Nachweis. Das ist keine neue Pflicht, nur der Spiegel der bestehenden (R13).
+6. Foto mit Beispiel. Wo das Beispiel nur ein Fach-Symbol ist (Fahrzeugschein, Zulassungsbescheinigung, Typenschild, Ersatznachweis, Gewerbeanmeldung, Spitze in der Vorlage), sagt die Zeile jetzt „Darauf muss zu sehen sein“ und darunter der Satz aus dem Motiv, etwa „Fahrzeugschein flach aufgelegt, alle vier Ecken im Bild.“ Mit Foto oder Zeichnung bleibt „So sollte das Foto aussehen“.
+7. Keine Sackgassen. Neu: Maß unbekannt im Zylinder-Konfigurator (Anleitung, Telefon, Anfrage mit Foto) und im Schließplan (Weg „Projekt beschreiben“, dort dürfen Maße offen bleiben); Partner „Leistung nicht dabei“. Alle übrigen Auswahlen hatten schon „Weiß ich nicht“, „Nicht bekannt“, „Noch offen“ oder Freitext.
+8. Größen. Hilfetexte und Zeilen, die 12 px hatten (Fortschritt, Schrittliste, Beispielzeile, Grenzen und Status am Upload, Satz unter der Zylindersumme), stehen auf 15 px. Knöpfe mit 40 px in Zylinder, Schließplan, Vorlage, Einsendung und Zwischenstand-Hinweis sind auf 44 px. Fließtext im Formular ist `text-body` (17 bis 18 px), Hilfetexte `text-small` (15 px).
+
+Wortlaut nur, wo eine Lücke es verlangte; kurze Sätze ohne Gedankenstriche.
+
+## PRÜFUNG UND ERGEBNIS
+
+Alles über `_werkstatt/ausbau/werkzeuge/sicher.sh --json -- …`.
+- Erster Gesamtlauf nach dem Umbau, vor den neuen Tests: `npx vitest run` 210 Dateien, 3175 Tests bestanden; `npm run typecheck` ohne Fehler; `npm run lint` ohne Befund.
+- Neue und geänderte Tests: `src/components/forms` (3 Dateien, 27 Tests, mit `hilfe.test.tsx` 10), `formulare-bedienbarkeit.test.ts` (57 Tests: je Formular Fortschritt, Hilfeblock, Hinweis am Knopf; Absendefehler mit `catch`; Warnung bei Dateien; Seite gibt `hilfe` mit; Muster; Weg zum offenen Schritt; Maß unbekannt; Preis und Zahlung; Hinweise des Schließanlagen-Konfigurators), `flow-shell.test.tsx` (11, davon 6 neu), `verlassen-warnung.test.ts` (5). Alle grün.
+- Lauf über alle betroffenen Bereiche (Formulare, Seiten, Flow, Konfigurator, Fahrzeug-Anfrage, Autoschlüssel, Aktionen): 34 Dateien, 456 Tests bestanden.
+- Letzter Gesamtlauf: 214 Dateien, 207 bestanden, 7 rot mit 17 Tests, alle im gleichzeitig laufenden Shop-Paket (FA-SHOP-01B): `src/app/sitemap.test.ts`, `src/lib/codelinie.test.ts`, `src/lib/codelinie-texte.test.ts`, `src/components/seo/json-ld.test.ts`, `src/components/seo/waisen.test.ts`, `src/lib/data/beispiele-oeffentlich.test.ts`, `src/lib/data/seo-laengen.test.ts` (Ursache: `codeFamilien`, `codeHersteller`, `productSchema` fehlen in `src/lib/codelinie.ts` und `json-ld.tsx`, die gerade umgebaut werden). Typprüfung: Fehler nur in denselben Shop-Dateien und in `.next/types/validator.ts` (neue Shop-Route `schluessel-nach-code/kategorie/[familie]`). Lint ohne Befund. Keine dieser Dateien gehört zu diesem Paket.
+- Wiederholter Gesamtlauf am Ende (Shop-Paket weiter): 214 Dateien, 213 bestanden, 3380 von 3381 Tests grün. Rot nur `src/payload/hooks/seiten-adresse.test.ts` („kennt jede Route der Website“: neuer Routenordner `shop` des Shop-Pakets fehlt in der Liste). Typprüfung: Fehler nur noch in `.next/types/validator.ts` (Shop-Route) und `src/components/seo/json-ld.test.ts` (Shop). Lint ohne Befund.
+
+## OFFENE FRAGEN
+
+- Muster (nur Leserecht): Die gemeinsame Fahrzeugschlüssel-Anfrage gibt der FlowShell kein `ungesichert` (keine Warnung vor dem Verlassen mit gewählten Dateien) und meldet Absendefehler ohne Anrufen. Vorschlag: `ungesichert` aus `dateien` und `AbsendeFehler` übernehmen (zwei Zeilen, eigenes Paket oder Freigabe).
+- Gehäuse: Das Baujahr ist Pflicht (Prüfregel, kern.ts) und hat kein „Baujahr unbekannt“. Der Hilfeblock nennt Fahrzeugschein und Telefon. Soll ein „unbekannt“ möglich sein? Entscheidung des Inhabers (Pflichtangabe).
+- Schritte in der Browser-Historie: Browser-Zurück springt nicht einen Schritt zurück, sondern fragt vor dem Verlassen (nur wenn etwas verloren ginge). Ein Schritt je Historieneintrag änderte Scrollen und Wiederherstellen aller Abläufe (FA-ABGLEICH, Hinweis zu FA-26-04); nicht ohne Umbau.
+- Schrittliste ab Tablet: Die Knöpfe sind 32 px hoch (wie die Etappenliste des Bestands), am Telefon ist die Liste ausgeblendet. Reicht das, oder 44 px auch auf dem Tablet?
+- Kleine Großbuchstaben-Zeilen (`font-mono text-caption uppercase`, 12 px) stehen als Überschriften über Feldern (etwa „Gewünschte Stückzahl“, „Schlüssel im Umschlag“). Sie sind Beschriftungen des Gestaltungssystems, keine Hilfetexte; nicht geändert. Anheben im Gestaltungssystem?
+- `src/components/konfigurator/schliessplan-editor.tsx` (außerhalb der Schreibrechte) hat drei Knöpfe `size="sm"` (40 px).
+- Die Warnung vor dem Verlassen nutzt den Bestätigungsdialog des Browsers. Ein eigener Dialog wäre freundlicher, ist aber ein größerer Baustein.
+- Assistent: Die leeren Zustände „keine Schlüsselart hinterlegt“ und „keine Leistung hinterlegt“ nennen die allgemeine Anfrage als nächsten Schritt, ohne Verweis. Verweis auf „Fahrzeug nicht gefunden“ ergänzen?
+
+## FÜR MENSCHEN
+
+- Orchestrator: Sichtprobe am Telefon (390 × 844): je Formular der Hilfeblock an den genannten Stellen, gesperrter Knopf mit Hinweis, Upload-Zeile „Darauf muss zu sehen sein“ beim Fahrzeugschein, Browser-Zurück mit gewähltem Foto (Rückfrage, Abbrechen bleibt im Formular), Neuladen mit gewähltem Foto (Rückfrage des Browsers). Vorleseprogramm: Ansage „Schritt x von y“ beim Schrittwechsel.
+- Inhaber: Wortlaut der neuen Hilfesätze freigeben (Titel „Unsicher bei einer Angabe?“, „Maß unbekannt oder unsicher?“, „Fragen zu Preis oder Zahlung?“, „Lieber gleich anrufen?“, „Ihre Leistung ist nicht dabei?“ und der Satz in der Absendefehlermeldung) und die Frage zum Baujahr im Gehäuseweg.
+- Inhaber: Echte Beispielfotos für Fahrzeugschein, Typenschild, Ersatznachweis und Gewerbeanmeldung (MA-05); bis dahin steht dort der beschreibende Satz.
+- FA-26-09 (mobile Bedienung intensiv testen) bleibt Sache der Geräteprobe mit echten iPhone- und Android-Geräten.
+
+=== ENDE FA-QA-02 · BEREIT ZUR RÜCKGABE ===

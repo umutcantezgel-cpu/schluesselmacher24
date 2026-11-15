@@ -582,7 +582,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
               Schließanlage im Schließplan-Planer
             </Link>
           </div>
-          <Button variant="outline" size="sm" onClick={linkKopieren}>
+          <Button variant="outline" size="md" onClick={linkKopieren}>
             Zusammenstellung als Link speichern
           </Button>
           <div role="status" className="text-small text-foreground-muted">
@@ -637,7 +637,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
             )}
             <div className="mt-3 flex flex-wrap gap-2">
               <Button
-                size="sm"
+                size="md"
                 onClick={() => {
                   flow.update(ausLink(linkInhalt, initial));
                   adresseBereinigen();
@@ -645,7 +645,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
               >
                 Übernehmen
               </Button>
-              <Button size="sm" variant="outline" onClick={adresseBereinigen}>
+              <Button size="md" variant="outline" onClick={adresseBereinigen}>
                 Meine behalten
               </Button>
             </div>
@@ -692,7 +692,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
             </div>
           </dl>
           <PreisHinweis className="mt-2" />
-          <p className="mt-1 text-caption leading-snug text-foreground-muted">
+          <p className="mt-1 text-small leading-snug text-foreground-muted">
             Die Versandart wählen Sie im Warenkorb. Bis dahin ändert sich die Summe mit jeder
             Anpassung.
           </p>

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { istIndexierbar, sortiereArtikel } from '@/lib/artikel';
+import { artikelAnfragePfad, istIndexierbar, sortiereArtikel } from '@/lib/artikel';
 import { getCollection, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import type { NavLink } from '@/lib/navigation';
@@ -97,6 +97,8 @@ export default async function ArtikelPage() {
     image: a.image,
     tags: a.tags,
     example: a.example,
+    ...(a.availability ? { availability: a.availability } : {}),
+    deliveryTime: a.deliveryTime,
   }));
 
   const extraLinks: NavLink[] = (page?.seo.internalLinks ?? []).filter(
@@ -176,8 +178,8 @@ export default async function ArtikelPage() {
                 <ButtonLink href="/beratung" pfeil>
                   Zur Beratung
                 </ButtonLink>
-                <ButtonLink href="/service-und-termin/anfrage" variant="outline">
-                  Anfrage stellen
+                <ButtonLink href={artikelAnfragePfad('Schließtechnik und Zubehör')} variant="outline">
+                  Artikel anfragen
                 </ButtonLink>
               </div>
             </CardBody>

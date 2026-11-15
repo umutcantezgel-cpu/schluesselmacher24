@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import {
+  artikelAnfragePfad,
   artikelPfad,
   istIndexierbar,
   kurztext,
@@ -220,7 +221,7 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
               <VerfuegbarkeitHinweis
                 verfuegbarkeit={verfuegbarkeit}
                 was="Diesen Artikel"
-                anfrage={{ href: '/service-und-termin/anfrage', label: 'Artikel anfragen' }}
+                anfrage={{ href: artikelAnfragePfad(article.name), label: 'Artikel anfragen' }}
                 uebersicht={{ href: '/artikel', label: 'Alle Artikel' }}
               />
             )}

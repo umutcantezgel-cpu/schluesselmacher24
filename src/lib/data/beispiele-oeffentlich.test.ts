@@ -92,7 +92,7 @@ describe('Beispiel-Einträge ohne SM24_BEISPIELE', () => {
 
   it('haben keine Detailseiten: 404 und keine vorab erzeugten Adressen', async () => {
     const codeSeite = await import('@/app/(site)/schluessel-nach-code/[slug]/page');
-    const kategorieSeite = await import('@/app/(site)/schluessel-nach-code/kategorie/[familie]/page');
+    const kategorieSeite = await import('@/app/(site)/schluessel-nach-code/kategorie/[kategorie]/page');
     const artikelSeite = await import('@/app/(site)/artikel/[slug]/page');
     const artikel = (await import('@/lib/data/defaults')).defaults.standardArticles()[0];
 
@@ -103,7 +103,7 @@ describe('Beispiel-Einträge ohne SM24_BEISPIELE', () => {
     const nichtGefunden = { digest: expect.stringContaining('404') };
     await expect(codeSeite.default({ params: Promise.resolve({ slug: 'ms-01' }) })).rejects.toMatchObject(nichtGefunden);
     await expect(
-      kategorieSeite.default({ params: Promise.resolve({ familie: 'moebel-und-bueroschloesser' }) }),
+      kategorieSeite.default({ params: Promise.resolve({ kategorie: 'moebel-und-bueroschloesser' }) }),
     ).rejects.toMatchObject(nichtGefunden);
     await expect(artikelSeite.default({ params: Promise.resolve({ slug: artikel.slug }) })).rejects.toMatchObject(nichtGefunden);
   });

@@ -9,6 +9,8 @@ import {
   MELDUNG_UPLOAD_ZU_GROSS,
   PhotoUpload,
   auswahlGrenze,
+  beispielSatz,
+  beispielZeigtBild,
   dateityp,
   kodiereUnterGrenze,
   uploadFehler,
@@ -117,5 +119,38 @@ describe('PhotoUpload · Größengrenzen (Vercel: 4,5 MB je Anfrage)', () => {
     );
     expect(html).toContain('Fotos bis 12 MB');
     expect(html).toContain('PDF bis 4 MB');
+  });
+
+  /* FA-QA-02: Foto-Upload mit konkreten Beispielen */
+
+  it('zeigt das Beispiel ein Bild oder eine Zeichnung, heißt die Zeile „So sollte das Foto aussehen“', () => {
+    const mitZeichnung: ImageSlot = { motif: 'Beispielfoto: Sicherungskarte, ganz im Bild', ratio: '3/2' };
+    expect(beispielZeigtBild(mitZeichnung)).toBe(true);
+    const html = renderToStaticMarkup(
+      <PhotoUpload id="karte" label="Karte" description="" example={mitZeichnung} files={[]} onChange={() => {}} />,
+    );
+    expect(html).toContain('So sollte das Foto aussehen');
+    expect(html).not.toContain('data-beispiel-satz');
+  });
+
+  it('steht dort nur ein Symbol, sagt die Zeile, was zu sehen sein muss, mit einem Satz darunter', () => {
+    const nurSymbol: ImageSlot = { motif: 'Beispielfoto: Fahrzeugschein flach aufgelegt, alle vier Ecken im Bild', ratio: '3/2' };
+    expect(beispielZeigtBild(nurSymbol)).toBe(false);
+    expect(beispielSatz(nurSymbol)).toBe('Fahrzeugschein flach aufgelegt, alle vier Ecken im Bild.');
+    const html = renderToStaticMarkup(
+      <PhotoUpload id="schein" label="Fahrzeugschein" description="" example={nurSymbol} files={[]} onChange={() => {}} />,
+    );
+    expect(html).not.toContain('So sollte das Foto aussehen');
+    expect(html).toContain('Darauf muss zu sehen sein');
+    expect(html).toContain('Fahrzeugschein flach aufgelegt, alle vier Ecken im Bild.');
+  });
+
+  it('nimmt ohne Motivtext den Hinweis und hängt keinen doppelten Punkt an', () => {
+    expect(beispielSatz({ motif: 'Beispiel:', ratio: '4/3', note: 'Alle Ecken im Bild.' })).toBe('Alle Ecken im Bild.');
+    expect(beispielSatz({ motif: '', ratio: '4/3' })).toBe('');
+  });
+
+  it('Hilfetexte am Feld sind nicht kleiner als 15 px', () => {
+    expect(vorlage()).not.toContain('text-caption');
   });
 });

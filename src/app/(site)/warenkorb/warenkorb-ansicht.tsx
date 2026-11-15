@@ -10,6 +10,9 @@ import { formatCents } from '@/lib/format';
 import { PreisHinweis } from '@/components/recht/preis-hinweis';
 import { zylinderZeilen } from '@/lib/cylinder-summary';
 import { istPlatzhalter } from '@/lib/platzhalter';
+import { VERFUEGBARKEIT_LABEL, verfuegbarkeitVon } from '@/lib/data/shop';
+import { artikelAnfragePfad } from '@/lib/artikel';
+import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 import type {
   Cart,
   CartItem,
@@ -57,6 +60,39 @@ type Position =
 function passendeVersandarten(items: CartItem[], shipping: ShippingOption[]): ShippingOption[] {
   if (items.length === 0) return shipping;
   return availableShipping(items, shipping);
+}
+
+/**
+ * Ruhiger Hinweis an einer Position, die inzwischen nicht mehr lieferbar ist (FA-22-10): die Verfügbarkeit
+ * und was zu tun ist. Der Server lehnt die Bestellung ohnehin ab; hier sieht der Kunde es schon vorher.
+ */
+function VerfuegbarkeitZeile({
+  availability,
+  anfrage,
+}: {
+  availability?: Parameters<typeof verfuegbarkeitVon>[0]['availability'];
+  anfrage: { href: string; label: string };
+}) {
+  const verfuegbarkeit = verfuegbarkeitVon({ availability });
+  if (verfuegbarkeit === 'lieferbar') return null;
+  return (
+    <p className="mt-3 flex items-start gap-2 text-small text-foreground-muted" role="note">
+      <GlyphInfo size={16} className="mt-0.5 shrink-0" />
+      <span>
+        <span className="font-semibold text-foreground">{VERFUEGBARKEIT_LABEL[verfuegbarkeit]}.</span>{' '}
+        {verfuegbarkeit === 'auf-anfrage' ? (
+          <>
+            Bitte entfernen Sie die Position.{' '}
+            <Link href={anfrage.href} prefetch={false} className="font-semibold text-primary hover:underline">
+              {anfrage.label}
+            </Link>
+          </>
+        ) : (
+          'Zurzeit nicht bestellbar. Bitte entfernen Sie die Position.'
+        )}
+      </span>
+    </p>
+  );
 }
 
 /** Erklärung der Staffelpreise einer Codelinie — nur aus den Stammdaten. */
@@ -129,8 +165,8 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
   const gewaehlteVersandart = shipping.find((option) => option.id === shippingOptionId) ?? null;
   const nichtVerfuegbar = positionen.some(
     (position) =>
-      (position.art === 'code' && (!position.line || !position.line.active))
-      || (position.art === 'standard' && (!position.article || position.article.example)),
+      (position.art === 'code' && (!position.line || !position.line.active || verfuegbarkeitVon(position.line) !== 'lieferbar'))
+      || (position.art === 'standard' && (!position.article || position.article.example || verfuegbarkeitVon(position.article) !== 'lieferbar')),
   );
 
   if (!geladen) {
@@ -258,6 +294,12 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                         <p className="mt-3 text-small font-semibold text-danger">
                           Dieser Schlüssel ist derzeit nicht bestellbar. Bitte entfernen Sie die Position.
                         </p>
+                      )}
+                      {position.line?.active && (
+                        <VerfuegbarkeitZeile
+                          availability={position.line.availability}
+                          anfrage={{ href: codeAnfragePfad({ code: position.item.code, schloss: position.line.name }), label: 'Code anfragen' }}
+                        />
                       )}
                       {!position.line && (
                         <p className="mt-3 text-small font-semibold text-danger">
@@ -639,6 +681,12 @@ function StandardPositionKarte({
             <p className="mt-3 text-small font-semibold text-danger">
               Beispielartikel können nicht bestellt werden. Bitte entfernen Sie die Position.
             </p>
+          )}
+          {article && !article.example && (
+            <VerfuegbarkeitZeile
+              availability={article.availability}
+              anfrage={{ href: artikelAnfragePfad(article.name), label: 'Artikel anfragen' }}
+            />
           )}
         </div>
       </div>

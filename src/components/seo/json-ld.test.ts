@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 
 import { echteEinstellungen, einstellungenMitWerkstatt, platzhalterEinstellungen } from '@/lib/rechtliches/test-hilfen';
 
-import { KENNUNG, articleSchema, breadcrumbSchema, faqSchema, localBusinessSchema, pageGraphSchema, productSchema, serviceAreaSchema } from './json-ld';
+import { KENNUNG, articleSchema, breadcrumbSchema, codelinieSchema, localBusinessSchema, pageGraphSchema, serviceAreaSchema } from './json-ld';
 
 type Knoten = Record<string, unknown> & { '@type': string };
 
@@ -151,18 +151,37 @@ describe('Betrieb als feste Kennung (FA-25-08)', () => {
     einmalig(definitionen(graph(localBusinessSchema(echteEinstellungen())), seite));
   });
 
-  it('Codelinie: Produkt, Brotkrumen und Fragen ohne zweite Organisation, Website oder Webseite', () => {
-    const linie = { slug: 'ab-12', name: 'AB 12', description: 'D', application: 'Haus', manufacturer: '[Platzhalter]', priceCents: 1290, active: true } as Parameters<typeof productSchema>[0];
-    const url = `${KENNUNG.website.replace('/#website', '')}/schluessel-nach-code/ab-12`;
-    const graphen = [
-      graph(localBusinessSchema(echteEinstellungen())),
-      graph(productSchema(linie)),
-      graph(breadcrumbSchema([{ href: '/schluessel-nach-code', label: 'Shop' }], url)),
-      graph(faqSchema([{ question: 'F?', answer: 'A.' }], url)),
-    ];
-    einmalig(definitionen(...graphen));
-    expect(graphen.flat().filter((k) => k['@type'] === 'WebPage')).toHaveLength(1);
-    expect(graphen.flat().filter((k) => k['@type'] === 'Organization' || k['@type'] === 'WebSite')).toHaveLength(2);
+  it('Codelinie: Produkt, Brotkrumen und Fragen in einem Graphen, ohne zweite Organisation, Website oder Webseite', () => {
+    const linie = { slug: 'ab-12', name: 'AB 12', application: 'Haus', manufacturer: '[Platzhalter]', priceCents: 1290, productImage: { motif: 'x', ratio: '1/1' } } as Parameters<typeof codelinieSchema>[0]['line'];
+    const seite = graph(
+      codelinieSchema({
+        line: linie,
+        beschreibung: 'D',
+        crumbs: [{ href: '/schluessel-nach-code', label: 'Shop' }, { href: '/schluessel-nach-code/ab-12', label: 'AB 12' }],
+        faq: [{ question: 'F?', answer: 'A.' }],
+        hersteller: 'Testmarke',
+        angebot: true,
+      }),
+    );
+    einmalig(definitionen(graph(localBusinessSchema(echteEinstellungen())), seite));
+    expect(seite.map((k) => k['@type'])).toEqual(['WebPage', 'Product', 'FAQPage', 'BreadcrumbList']);
+    const webseite = seite[0];
+    expect(webseite.breadcrumb).toEqual({ '@id': seite[3]['@id'] });
+    expect(webseite.mainEntity).toEqual({ '@id': seite[1]['@id'] });
+    expect(seite[2].isPartOf).toEqual({ '@id': webseite['@id'] });
+    const produkt = seite[1] as { brand?: { name: string }; offers: { price: string; availability: string } };
+    expect(produkt.brand?.name).toBe('Testmarke');
+    expect(produkt.offers).toMatchObject({ price: '12.90', availability: 'https://schema.org/InStock' });
+  });
+
+  it('Codelinie: kein Offer ohne echten Preis und kein Angebot bei „auf Anfrage“ oder „nicht lieferbar“ (R8)', () => {
+    const linie = { slug: 'ab-12', name: 'AB 12', application: 'Haus', manufacturer: 'X', priceCents: 0, productImage: { motif: 'x', ratio: '1/1' } } as Parameters<typeof codelinieSchema>[0]['line'];
+    const ohnePreis = graph(codelinieSchema({ line: linie, beschreibung: 'D', angebot: true }));
+    expect(JSON.stringify(ohnePreis)).not.toContain('Offer');
+    expect(ohnePreis.map((k) => k['@type'])).toEqual(['WebPage']);
+    const aufAnfrage = graph(codelinieSchema({ line: { ...linie, priceCents: 1290 }, beschreibung: 'D', angebot: false, faq: [{ question: 'F?', answer: 'A.' }] }));
+    expect(JSON.stringify(aufAnfrage)).not.toMatch(/Offer|Product/);
+    expect(aufAnfrage.map((k) => k['@type'])).toEqual(['WebPage', 'FAQPage']);
   });
 
   it('ohne sichtbaren Kurztext hat die Leistung keine Beschreibung', () => {

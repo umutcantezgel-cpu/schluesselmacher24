@@ -1,5 +1,6 @@
-import type { CodeLine } from '@/lib/types';
+import type { CodeLine, ShopHersteller, ShopKategorie, Verfuegbarkeit } from '@/lib/types';
 import { codePasst } from '@/lib/code-pattern';
+import { herstellerSortiert, kategorieAufloesen, kategorieKette, sichtbareKategorien, verfuegbarkeitVon } from '@/lib/data/shop';
 import { istPlatzhalter } from '@/lib/platzhalter';
 import { slugify } from '@/lib/slug';
 
@@ -53,12 +54,14 @@ export function codelinienPfad(line: Pick<CodeLine, 'slug'>): string {
   return `${SHOP_PFAD}/${line.slug}`;
 }
 
-export function kategoriePfad(familie: string): string {
-  return `${KATEGORIE_PFAD}/${slugify(familie)}`;
+/** Seite einer Unterkategorie der Codeprodukte; nimmt die Adresse der Kategorie (ein Name wird zur Adresse). */
+export function kategoriePfad(adresse: string): string {
+  return `${KATEGORIE_PFAD}/${slugify(adresse)}`;
 }
 
-export function herstellerPfad(hersteller: string): string {
-  return `${HERSTELLER_PFAD}/${slugify(hersteller)}`;
+/** Herstellerseite; nimmt die Adresse aus der Stammliste oder den Namen (er wird zur Adresse). */
+export function herstellerPfad(adresse: string): string {
+  return `${HERSTELLER_PFAD}/${slugify(adresse)}`;
 }
 
 /** Darf die Produktseite in Suchmaschinen und in die Sitemap? */
@@ -71,57 +74,142 @@ export function codelinieIndexierbar(line: Pick<CodeLine, 'example' | 'seo'>): b
 // Gemeinsame Regel für Seite, Kasse und Backend; ohne Abhängigkeiten in src/lib/data/shop.ts.
 export { VERFUEGBARKEITEN, VERFUEGBARKEIT_LABEL, istBestellbar, verfuegbarkeitVon } from '@/lib/data/shop';
 
-/* ---------- Kategorien und Hersteller ------------------------------------ */
+/* ---------- Nach Hersteller und System (FA-11-04 bis FA-11-09) ----------- */
 
-export interface CodeFamilie {
-  name: string;
-  /** Adressteil, z. B. „moebel-und-bueroschloesser“. */
-  adresse: string;
-  /** Präfix der Kennungen, z. B. „MS“ (nur wenn alle Linien dasselbe haben). */
-  kuerzel?: string;
+export interface SystemGruppe {
+  /** System laut Hersteller; fehlt, wenn die Linien keins tragen. */
+  name?: string;
   lines: CodeLine[];
 }
 
-/** Anwendungsfamilien in der Reihenfolge der Daten. */
-export function codeFamilien(lines: CodeLine[]): CodeFamilie[] {
-  const familien = new Map<string, CodeFamilie>();
-  for (const line of lines) {
-    const name = codelinienFamilie(line);
-    const adresse = slugify(name);
-    if (!adresse) continue;
-    const familie = familien.get(adresse) ?? { name, adresse, lines: [] };
-    familie.lines.push(line);
-    familien.set(adresse, familie);
-  }
-  return [...familien.values()].map((familie) => {
-    const praefixe = new Set(familie.lines.map((line) => codelinienKennung(line).split('-')[0]));
-    return praefixe.size === 1 ? { ...familie, kuerzel: [...praefixe][0] } : familie;
-  });
-}
-
-export interface CodeHersteller {
-  name: string;
-  adresse: string;
+export interface HerstellerGruppe {
+  /** Name in der Schreibweise des Herstellers; fehlt bei Linien ohne gepflegten Hersteller. */
+  name?: string;
+  /** Adressteil der Herstellerseite; fehlt ohne Hersteller. */
+  adresse?: string;
+  /** Eintrag der Stammliste, wenn die Linien ihm zugeordnet sind. */
+  stamm?: ShopHersteller;
+  systeme: SystemGruppe[];
   lines: CodeLine[];
 }
 
 /**
- * Hersteller mit mindestens einer Linie, bei der er gepflegt ist. Solange
- * überall der Platzhalter steht, ist die Liste leer — dann gibt es keine
- * Herstellerseiten, keine Links und keine Sitemap-Einträge.
+ * Hersteller einer Linie: der zugeordnete Eintrag der Stammliste, sonst ein
+ * gepflegter Freitext (Platzhalter zählen nicht). Freitext gehört nur dann
+ * zum Stammeintrag, wenn er dessen Namen genau gleicht (wie `produkteDesHerstellers`).
  */
-export function codeHersteller(lines: CodeLine[]): CodeHersteller[] {
-  const hersteller = new Map<string, CodeHersteller>();
+export function herstellerDerLinie(
+  line: Pick<CodeLine, 'manufacturer' | 'manufacturerId'>,
+  stamm: ShopHersteller[] = [],
+): { name?: string; stamm?: ShopHersteller } {
+  const zugeordnet = line.manufacturerId ? stamm.find((h) => h.id === line.manufacturerId) : undefined;
+  if (zugeordnet) return { name: zugeordnet.name, stamm: zugeordnet };
+  const text = gepflegt(line.manufacturer);
+  if (!text) return {};
+  const gleich = stamm.find((h) => h.name.trim() === text);
+  return gleich ? { name: gleich.name, stamm: gleich } : { name: text };
+}
+
+const nachName = (a: string, b: string) => a.localeCompare(b, 'de', { numeric: true });
+
+/**
+ * Linien gruppiert nach Hersteller, darunter nach System (FA-11-04). Unter
+ * einem Hersteller stehen nur die Linien, die ihm wirklich zugeordnet sind
+ * (FA-11-06). Reihenfolge: Hersteller der Stammliste nach ihrer Reihenfolge,
+ * dann weitere Hersteller nach Namen, zuletzt Linien ohne Hersteller. Systeme
+ * nach Namen, Linien ohne System zuletzt; Linien in der Reihenfolge der Daten.
+ * Hersteller ohne Linien erscheinen nicht.
+ */
+export function nachHerstellerUndSystem(lines: CodeLine[], stamm: ShopHersteller[] = []): HerstellerGruppe[] {
+  const gruppen = new Map<string, HerstellerGruppe>();
   for (const line of lines) {
-    const name = gepflegt(line.manufacturer);
-    if (!name) continue;
-    const adresse = slugify(name);
-    if (!adresse) continue;
-    const eintrag = hersteller.get(adresse) ?? { name, adresse, lines: [] };
-    eintrag.lines.push(line);
-    hersteller.set(adresse, eintrag);
+    const { name, stamm: eintrag } = herstellerDerLinie(line, stamm);
+    const adresse = eintrag?.slug || (name ? slugify(name) : '');
+    const gruppe = gruppen.get(adresse) ?? {
+      ...(name ? { name } : {}),
+      ...(adresse ? { adresse } : {}),
+      ...(eintrag ? { stamm: eintrag } : {}),
+      systeme: [],
+      lines: [],
+    };
+    gruppe.lines.push(line);
+    const system = gepflegt(line.system);
+    const systemGruppe = gruppe.systeme.find((s) => s.name === system);
+    if (systemGruppe) systemGruppe.lines.push(line);
+    else gruppe.systeme.push({ ...(system ? { name: system } : {}), lines: [line] });
+    gruppen.set(adresse, gruppe);
   }
-  return [...hersteller.values()].sort((a, b) => a.name.localeCompare(b.name, 'de'));
+  const rang = new Map(herstellerSortiert(stamm).map((h, index) => [h.id, index]));
+  const sortiert = [...gruppen.values()].sort((a, b) => {
+    if (!a.name || !b.name) return a.name ? -1 : b.name ? 1 : 0;
+    const ra = a.stamm ? rang.get(a.stamm.id) ?? Number.MAX_SAFE_INTEGER : Number.MAX_SAFE_INTEGER;
+    const rb = b.stamm ? rang.get(b.stamm.id) ?? Number.MAX_SAFE_INTEGER : Number.MAX_SAFE_INTEGER;
+    return ra - rb || nachName(a.name, b.name);
+  });
+  for (const gruppe of sortiert) {
+    gruppe.systeme.sort((a, b) => (!a.name || !b.name ? (a.name ? -1 : b.name ? 1 : 0) : nachName(a.name, b.name)));
+  }
+  return sortiert;
+}
+
+/** Hersteller mit eigener Seite: nur mit Namen und mindestens einer Linie (keine leeren Herstellerseiten). */
+export function herstellerMitSeite(lines: CodeLine[], stamm: ShopHersteller[] = []): Array<HerstellerGruppe & { name: string; adresse: string }> {
+  return nachHerstellerUndSystem(lines, stamm).filter(
+    (gruppe): gruppe is HerstellerGruppe & { name: string; adresse: string } => Boolean(gruppe.name && gruppe.adresse),
+  );
+}
+
+/* ---------- Kategorien aus den Daten (FA-10, FA-22-04) -------------------- */
+
+export interface CodeKategorie {
+  kategorie: ShopKategorie;
+  /** Linien dieser Kategorie und ihrer Unterkategorien. */
+  lines: CodeLine[];
+}
+
+/** Liegt die Kategorie unter einer Hauptkategorie mit Codeprodukten (Unterkategorie von „Schlüssel nach Code“)? */
+function istCodeUnterkategorie(kategorien: ShopKategorie[], kategorie: ShopKategorie): boolean {
+  const kette = kategorieKette(kategorien, kategorie.id);
+  return kette.length > 1 && !kette[0].eltern && kette[0].art === 'codeprodukte';
+}
+
+/**
+ * Sichtbare Unterkategorien der Codeprodukte mit ihren Linien (auch aus
+ * tieferen Ebenen), in der Reihenfolge der Daten. Ihre Seiten liegen unter
+ * `/schluessel-nach-code/kategorie/…`.
+ */
+export function codeKategorien(kategorien: ShopKategorie[], lines: CodeLine[]): CodeKategorie[] {
+  return sichtbareKategorien(kategorien)
+    .filter((kategorie) => istCodeUnterkategorie(kategorien, kategorie))
+    .map((kategorie) => {
+      const ids = new Set(
+        kategorien.filter((k) => kategorieKette(kategorien, k.id).some((glied) => glied.id === kategorie.id)).map((k) => k.id),
+      );
+      return { kategorie, lines: lines.filter((line) => line.categoryId !== undefined && ids.has(line.categoryId)) };
+    });
+}
+
+/** Unterkategorie der Codeprodukte zu einer Adresse; eine frühere Adresse kommt als Weiterleitung zurück. */
+export function codeKategorieAufloesen(
+  kategorien: ShopKategorie[],
+  slug: string,
+): { kategorie: ShopKategorie; weiterleitung?: undefined } | { kategorie?: undefined; weiterleitung: string } | null {
+  const treffer = kategorieAufloesen(kategorien, slug);
+  const kategorie = treffer?.kategorie ?? treffer?.weiterleitung;
+  if (!kategorie || !istCodeUnterkategorie(kategorien, kategorie)) return null;
+  return treffer?.weiterleitung ? { weiterleitung: kategoriePfad(kategorie.slug) } : { kategorie };
+}
+
+/* ---------- Bestellweg nach Verfügbarkeit (FA-22-10) ---------------------- */
+
+/**
+ * Was Liste und Seite einer Linie anbieten: `warenkorb` nur bei lieferbaren
+ * Linien, `anfrage` („Code anfragen“) bei „auf Anfrage“, sonst `keiner`
+ * (nicht lieferbar: kein Warenkorb, keine Bestellung).
+ */
+export function bestellWeg(line: { availability?: Verfuegbarkeit | null }): 'warenkorb' | 'anfrage' | 'keiner' {
+  const verfuegbarkeit = verfuegbarkeitVon(line);
+  return verfuegbarkeit === 'lieferbar' ? 'warenkorb' : verfuegbarkeit === 'auf-anfrage' ? 'anfrage' : 'keiner';
 }
 
 /* ---------- Adresse auflösen --------------------------------------------- */

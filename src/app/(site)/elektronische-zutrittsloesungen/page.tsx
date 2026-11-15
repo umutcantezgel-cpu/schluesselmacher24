@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ComponentType } from 'react';
 
-import { getPageContent, getRubrik } from '@/lib/data';
+import { getHersteller, getPageContent, getRubrik } from '@/lib/data';
+import { HerstellerBereich } from '@/components/hersteller/hersteller-bereich';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { cn } from '@/lib/cn';
 import { ButtonLink } from '@/components/ui/button';
@@ -380,6 +381,7 @@ export default async function ElektronischeZutrittsloesungenPage() {
   // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
   const rubrik = await getRubrik('elektronische-schliesssysteme');
   const page = await getPageContent(ROUTE);
+  const hersteller = await getHersteller();
   // Gegenrichtung der Verweisliste (FA-SEO-01C): Ratgeber und veröffentlichte Ortsseiten, die hierher verweisen.
   const passendeBereiche: Array<{ href: string; label: string; description?: string }> = [
     ...RELATED_LINKS,
@@ -465,6 +467,9 @@ export default async function ElektronischeZutrittsloesungenPage() {
           </div>
         </div>
       </Section>
+
+      {/* Hersteller früh auf der Seite (FA-INHALT-02): BKS, ABUS und BURG-WÄCHTER beim elektronischen Zutritt */}
+      <HerstellerBereich hersteller={hersteller} bereich="zutritt" tone="sunken" />
 
       {/* Die elf Bausteine */}
       <Section tone="muted" id="bausteine">

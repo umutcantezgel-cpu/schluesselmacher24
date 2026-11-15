@@ -312,11 +312,11 @@ export function SchliessplanPlaner({ katalog, hilfe }: { katalog: CylinderCatalo
           <div className="space-y-3">
             <PlanSumme plan={d.plan} katalog={katalog} extraIds={d.extraIds} />
             <div className="flex flex-wrap gap-2">
-              <Button variant="outline" size="sm" onClick={linkKopieren}>
+              <Button variant="outline" size="md" onClick={linkKopieren}>
                 Plan als Link speichern
               </Button>
               {pdfHref && (
-                <ButtonLink href={pdfHref} download={SCHLIESSPLAN_DATEINAME} prefetch={false} variant="outline" size="sm">
+                <ButtonLink href={pdfHref} download={SCHLIESSPLAN_DATEINAME} prefetch={false} variant="outline" size="md">
                   Schließplan als PDF
                 </ButtonLink>
               )}
@@ -349,7 +349,7 @@ export function SchliessplanPlaner({ katalog, hilfe }: { katalog: CylinderCatalo
       {linkFehler && (
         <Alert tone="warning" title="Link nicht lesbar" className="mb-5" role="alert">
           <p>Dieser Link ließ sich nicht öffnen. Bitte lassen Sie ihn sich noch einmal schicken oder legen Sie den Plan neu an.</p>
-          <Button size="sm" variant="outline" className="mt-3" onClick={adresseBereinigen}>
+          <Button size="md" variant="outline" className="mt-3" onClick={adresseBereinigen}>
             Hinweis schließen
           </Button>
         </Alert>
@@ -360,7 +360,7 @@ export function SchliessplanPlaner({ katalog, hilfe }: { katalog: CylinderCatalo
           <p>In diesem Browser liegt schon ein Plan. Der Plan aus dem Link würde ihn ersetzen.</p>
           <div className="mt-3 flex flex-wrap gap-2">
             <Button
-              size="sm"
+              size="md"
               onClick={() => {
                 flow.updateAndGoTo({ start: 'link', plan: linkPlan }, 'tueren');
                 adresseBereinigen();
@@ -368,7 +368,7 @@ export function SchliessplanPlaner({ katalog, hilfe }: { katalog: CylinderCatalo
             >
               Plan aus dem Link öffnen
             </Button>
-            <Button size="sm" variant="outline" onClick={adresseBereinigen}>
+            <Button size="md" variant="outline" onClick={adresseBereinigen}>
               Meinen Plan behalten
             </Button>
           </div>
@@ -386,10 +386,10 @@ export function SchliessplanPlaner({ katalog, hilfe }: { katalog: CylinderCatalo
             <Alert tone="warning" title="Vorhandenen Plan ersetzen?" role="alert">
               <p>Ihr Plan mit {d.plan.tueren.length} Türen geht dabei verloren.</p>
               <div className="mt-3 flex flex-wrap gap-2">
-                <Button size="sm" onClick={() => startSetzen(ersetzenDurch)}>
+                <Button size="md" onClick={() => startSetzen(ersetzenDurch)}>
                   Plan ersetzen
                 </Button>
-                <Button size="sm" variant="outline" onClick={() => setErsetzenDurch(null)}>
+                <Button size="md" variant="outline" onClick={() => setErsetzenDurch(null)}>
                   Meinen Plan behalten
                 </Button>
               </div>

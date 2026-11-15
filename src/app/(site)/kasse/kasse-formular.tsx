@@ -206,7 +206,8 @@ export function KasseFormular({
           value: `${breakdown.cylinderCount} Zylinder · ${formatCents(breakdown.totalCents)}`,
         });
         for (const zeile of zylinderZeilen(item.draft, catalog)) {
-          artikel.push({ label: `— ${zeile.label}`, value: zeile.value });
+          // Unterzeilen der Zusammenstellung ohne vorangestellten Gedankenstrich (FA-SHOP-01B, Punkt 5).
+          artikel.push({ label: zeile.label, value: zeile.value });
         }
       }
     }

@@ -11,6 +11,8 @@ import { FlowShell } from '@/components/flow/flow-shell';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { Field } from '@/components/forms/field';
+import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
@@ -27,6 +29,14 @@ import {
   codeAnfrageUploadKategorie,
   ohneCodeFelder,
 } from '@/lib/wege/code-anfrage';
+
+/** Was im Schritt noch fehlt, in einem Satz (FA-QA-02); die Angaben, die die Prüfung verlangt. */
+const GESPERRT: Record<string, string> = {
+  thema: 'Bitte wählen Sie ein Thema.',
+  anliegen: 'Bitte beschreiben Sie Ihr Anliegen mit mindestens 20 Zeichen.',
+  'anliegen-code': 'Bitte tragen Sie Hersteller oder Schloss und den Code ein, wählen Sie die Stückzahl und bestätigen Sie Ihre Berechtigung.',
+  kontakt: 'Bitte füllen Sie Vorname, Nachname, E-Mail und Telefon aus.',
+};
 
 const STEPS: FlowStep[] = [
   { id: 'thema', short: 'Thema', title: 'Worum geht es?', hint: 'So landet Ihre Anfrage gleich bei der richtigen Person.' },
@@ -114,7 +124,10 @@ export function AllgemeineAnfrage({
   codeVorbelegung,
   themaFest = false,
   anliegenVorauswahl,
+  hilfe,
 }: {
+  /** Telefon und Erreichbarkeit aus den Einstellungen, für die Hilfe an kritischen Stellen (FA-QA-02). */
+  hilfe?: HilfeKontakt;
   themen: Array<{ key: AreaKey; label: string; summary: string }>;
   vorauswahl?: string;
   /**
@@ -225,32 +238,40 @@ export function AllgemeineAnfrage({
     await uploadsAbwarten();
 
     const area = (data.thema || 'service-und-termin') as AreaKey;
-    const ergebnis = await submitRecord({
-      schutz: await schutz.daten(),
-      kind: 'anfrage',
-      area,
-      process: 'gefuehrte-anfrage',
-      contact: {
-        salutation: data.anrede || undefined,
-        firstName: data.vorname,
-        lastName: data.nachname,
-        company: data.firma || undefined,
-        email: data.email,
-        phone: data.telefon,
-        postalCode: data.plz || undefined,
-        city: data.ort || undefined,
-        country: 'Deutschland',
-      },
-      // Andere Themen senden die Felder der Code-Anfrage nicht mit; danach wurde nicht gefragt.
-      payload: codeAnfrage
-        ? { ...data, quelle: CODE_ANFRAGE_QUELLE, dateien: [...dateien, ...karteMit].map((f) => f.name) }
-        : { ...ohneCodeFelder({ ...data }), anliegenArt: schluesselThema ? 'frage' : undefined, dateien: dateien.map((f) => f.name) },
-      summary: zusammenfassung,
-      uploads: [
-        ...dateien.map((f) => alsUpload(f, uploadKategorie)),
-        ...karteMit.map((f) => alsUpload(f, 'sicherungskarte')),
-      ],
-    });
+    // Ohne Verbindung bleibt es nicht beim drehenden Knopf: Meldung, Angaben bleiben (FA-QA-02).
+    let ergebnis: Awaited<ReturnType<typeof submitRecord>>;
+    try {
+      ergebnis = await submitRecord({
+        schutz: await schutz.daten(),
+        kind: 'anfrage',
+        area,
+        process: 'gefuehrte-anfrage',
+        contact: {
+          salutation: data.anrede || undefined,
+          firstName: data.vorname,
+          lastName: data.nachname,
+          company: data.firma || undefined,
+          email: data.email,
+          phone: data.telefon,
+          postalCode: data.plz || undefined,
+          city: data.ort || undefined,
+          country: 'Deutschland',
+        },
+        // Andere Themen senden die Felder der Code-Anfrage nicht mit; danach wurde nicht gefragt.
+        payload: codeAnfrage
+          ? { ...data, quelle: CODE_ANFRAGE_QUELLE, dateien: [...dateien, ...karteMit].map((f) => f.name) }
+          : { ...ohneCodeFelder({ ...data }), anliegenArt: schluesselThema ? 'frage' : undefined, dateien: dateien.map((f) => f.name) },
+        summary: zusammenfassung,
+        uploads: [
+          ...dateien.map((f) => alsUpload(f, uploadKategorie)),
+          ...karteMit.map((f) => alsUpload(f, 'sicherungskarte')),
+        ],
+      });
+    } catch {
+      setSenden(false);
+      setFehler('Die Verbindung wurde unterbrochen. Bitte versuchen Sie es noch einmal.');
+      return;
+    }
     schutz.antwortBeachten(ergebnis);
 
     setSenden(false);
@@ -298,8 +319,10 @@ export function AllgemeineAnfrage({
         blockedHint={
           flow.step?.id === 'thema' && schluesselThema && data.anliegenArt !== 'frage'
             ? 'Für einen Schlüssel nutzen Sie bitte einen der geführten Wege oben. Hier geht es mit einer Frage weiter.'
-            : 'Bitte füllen Sie die Pflichtangaben dieses Schrittes aus.'
+            : GESPERRT[flow.step?.id === 'anliegen' && codeAnfrage ? 'anliegen-code' : (flow.step?.id ?? '')]
         }
+        ungesichert={dateien.length > 0 || karte.length > 0}
+        mitDateien
       >
         {flow.step?.id === 'thema' && (
           <div className="space-y-3">
@@ -449,6 +472,11 @@ export function AllgemeineAnfrage({
           </div>
         )}
 
+        {/* Code nicht lesbar oder Schloss unbekannt: Telefon und Rückruf (FA-QA-02). */}
+        {flow.step?.id === 'anliegen' && codeAnfrage && (
+          <HilfeBlock hilfe={hilfe} stelle="code" titel="Code nicht lesbar oder unsicher?" satz="Rufen Sie uns an. Wir sagen Ihnen, wo der Code meist steht." className="mt-8" />
+        )}
+
         {flow.step?.id === 'anliegen' && !codeAnfrage && (
           <div className="space-y-6">
             <Field
@@ -539,6 +567,7 @@ export function AllgemeineAnfrage({
                 maxFiles={2}
               />
             )}
+            <HilfeBlock hilfe={hilfe} stelle="unterlagen" titel="Unsicher, was Sie hochladen sollen?" spaeter mitDateien />
           </div>
         )}
 
@@ -662,11 +691,7 @@ export function AllgemeineAnfrage({
               mit einer Einschätzung und gegebenenfalls einem Preis.
             </Alert>
 
-            {fehler && (
-              <Alert tone="warning" title="Das hat nicht geklappt" className="mt-4" role="alert">
-                {fehler}
-              </Alert>
-            )}
+            {fehler && <AbsendeFehler fehler={fehler} hilfe={hilfe} titel="Das hat nicht geklappt" className="mt-4" />}
           </div>
         )}
       </FlowShell>

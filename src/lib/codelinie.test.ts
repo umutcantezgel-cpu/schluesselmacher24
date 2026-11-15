@@ -1,20 +1,23 @@
 import { describe, expect, it } from 'vitest';
 
 import codeLinesJson from '../../content/code-lines.json';
-import type { CodeLine } from '@/lib/types';
+import type { CodeLine, ShopHersteller, ShopKategorie } from '@/lib/types';
 
 import {
   anwendungKurz,
-  codeFamilien,
-  codeHersteller,
+  bestellWeg,
+  codeKategorieAufloesen,
+  codeKategorien,
   codelinieAufloesen,
   codelinieIndexierbar,
   codelinienFamilie,
   codelinienKennung,
   codelinienTitel,
+  herstellerMitSeite,
   herstellerPfad,
   kategoriePfad,
   linienZumCode,
+  nachHerstellerUndSystem,
   siehtNachCodeAus,
 } from './codelinie';
 
@@ -37,31 +40,107 @@ describe('codelinienKennung und Titel', () => {
   });
 });
 
-describe('Kategorien und Hersteller', () => {
-  it('bildet je Anwendungsfamilie eine Kategorie mit sprechender Adresse', () => {
-    const familien = codeFamilien(LINIEN);
-    expect(familien).toHaveLength(10);
-    expect(familien[0]).toMatchObject({ name: 'Möbel- und Büroschlösser', adresse: 'moebel-und-bueroschloesser', kuerzel: 'MS' });
-    expect(familien.reduce((summe, f) => summe + f.lines.length, 0)).toBe(LINIEN.length);
-    expect(kategoriePfad('Möbel- und Büroschlösser')).toBe('/schluessel-nach-code/kategorie/moebel-und-bueroschloesser');
+/* Erfundene Testdaten (G4): Hersteller „Alpha Schloss“ und „Beta“, Systeme und Kategorien nur zur Mechanik. */
+const STAMM: ShopHersteller[] = [
+  { id: 'beta', slug: 'beta', name: 'Beta', einsatz: '', angeboten: true, reihenfolge: 10 },
+  { id: 'alpha', slug: 'alpha-schloss', name: 'Alpha Schloss', einsatz: '', angeboten: true, reihenfolge: 20 },
+  { id: 'gamma', slug: 'gamma', name: 'Gamma', einsatz: '', angeboten: true, reihenfolge: 30 },
+];
+const mit = (id: string, felder: Partial<CodeLine>): CodeLine => ({ ...linie(id), example: false, ...felder });
+
+describe('Liste nach Hersteller und System (FA-11-04 bis FA-11-06)', () => {
+  const linien = [
+    mit('ms-01', { manufacturerId: 'alpha', system: 'Z 200' }),
+    mit('ms-02', { manufacturerId: 'beta', system: 'Q' }),
+    mit('ms-03', { manufacturerId: 'alpha', system: 'A 100' }),
+    mit('ms-04', { manufacturer: 'Alpha Schloss', system: 'Z 200' }),
+    mit('ms-05', { manufacturer: 'Delta' }),
+    mit('ms-06', {}),
+  ];
+
+  it('gruppiert nach Hersteller, darunter nach System', () => {
+    const gruppen = nachHerstellerUndSystem(linien, STAMM);
+    expect(gruppen.map((g) => g.name)).toEqual(['Beta', 'Alpha Schloss', 'Delta', undefined]);
+    const alpha = gruppen[1];
+    expect(alpha.adresse).toBe('alpha-schloss');
+    expect(alpha.systeme.map((s) => [s.name, s.lines.map((l) => l.id)])).toEqual([
+      ['A 100', ['ms-03']],
+      ['Z 200', ['ms-01', 'ms-04']],
+    ]);
+    expect(gruppen[2]).toMatchObject({ name: 'Delta', adresse: 'delta' });
+    expect(gruppen[3].systeme[0].name).toBeUndefined();
   });
 
-  it('zeigt keine Herstellerebene, solange nur Platzhalter gepflegt sind', () => {
+  it('zeigt unter einem Hersteller nur seine wirklich angebotenen Produkte', () => {
+    const beta = nachHerstellerUndSystem(linien, STAMM).find((g) => g.name === 'Beta')!;
+    expect(beta.lines.map((l) => l.id)).toEqual(['ms-02']);
+    // Freitext zählt nur bei genau gleichem Namen; eine andere Kennung schlägt den Freitext.
+    const fremd = nachHerstellerUndSystem([mit('ms-01', { manufacturerId: 'beta', manufacturer: 'Alpha Schloss' })], STAMM);
+    expect(fremd.map((g) => g.name)).toEqual(['Beta']);
+  });
+
+  it('ein Hersteller ohne Produkte hat keine Seite', () => {
+    const seiten = herstellerMitSeite(linien, STAMM);
+    expect(seiten.map((h) => h.adresse)).toEqual(['beta', 'alpha-schloss', 'delta']);
+    expect(seiten.some((h) => h.name === 'Gamma')).toBe(false);
+    // Nur Platzhalter: keine Herstellerebene.
     expect(LINIEN.every((line) => line.manufacturer === '[Hersteller eintragen]')).toBe(true);
-    expect(codeHersteller(LINIEN)).toEqual([]);
-  });
-
-  it('zeigt einen Hersteller, sobald eine Linie ihn gepflegt hat', () => {
-    const gepflegt = LINIEN.map((line) =>
-      line.id === 'ms-01' || line.id === 'zy-01' ? { ...line, manufacturer: 'ABUS' } : line,
-    );
-    const hersteller = codeHersteller(gepflegt);
-    expect(hersteller).toHaveLength(1);
-    expect(hersteller[0]).toMatchObject({ name: 'ABUS', adresse: 'abus' });
-    expect(hersteller[0].lines.map((line) => line.id)).toEqual(['ms-01', 'zy-01']);
+    expect(herstellerMitSeite(LINIEN, STAMM)).toEqual([]);
+    expect(herstellerPfad('alpha-schloss')).toBe('/schluessel-nach-code/hersteller/alpha-schloss');
     expect(herstellerPfad('ABUS')).toBe('/schluessel-nach-code/hersteller/abus');
   });
+});
 
+describe('Unterkategorien aus den Daten (FA-10, FA-22-04)', () => {
+  const k = (felder: Partial<ShopKategorie> & Pick<ShopKategorie, 'id'>): ShopKategorie => ({
+    slug: felder.id,
+    name: felder.id,
+    beschreibung: 'Test',
+    reihenfolge: 10,
+    art: 'codeprodukte',
+    ziel: '/schluessel-nach-code',
+    sichtbar: true,
+    fruehereAdressen: [],
+    ...felder,
+  });
+  const KATEGORIEN = [
+    k({ id: 'schluessel-nach-code' }),
+    k({ id: 'briefkasten', eltern: 'schluessel-nach-code', fruehereAdressen: ['post'] }),
+    k({ id: 'briefkasten-gross', eltern: 'briefkasten', reihenfolge: 20 }),
+    k({ id: 'verborgen', eltern: 'schluessel-nach-code', sichtbar: false }),
+    k({ id: 'artikel', art: 'artikel', ziel: '/artikel' }),
+    k({ id: 'zubehoer', eltern: 'artikel' }),
+  ];
+  const linien = [mit('ms-01', { categoryId: 'briefkasten' }), mit('ms-02', { categoryId: 'briefkasten-gross' }), mit('ms-03', { categoryId: 'verborgen' })];
+
+  it('nimmt nur sichtbare Unterkategorien der Codeprodukte, mit den Linien tieferer Ebenen', () => {
+    const liste = codeKategorien(KATEGORIEN, linien);
+    expect(liste.map((e) => [e.kategorie.id, e.lines.map((l) => l.id)])).toEqual([
+      ['briefkasten', ['ms-01', 'ms-02']],
+      ['briefkasten-gross', ['ms-02']],
+    ]);
+    expect(kategoriePfad('briefkasten')).toBe('/schluessel-nach-code/kategorie/briefkasten');
+  });
+
+  it('leitet eine frühere Adresse weiter und kennt keine fremden Kategorien', () => {
+    expect(codeKategorieAufloesen(KATEGORIEN, 'briefkasten')?.kategorie?.id).toBe('briefkasten');
+    expect(codeKategorieAufloesen(KATEGORIEN, 'post')).toEqual({ weiterleitung: '/schluessel-nach-code/kategorie/briefkasten' });
+    expect(codeKategorieAufloesen(KATEGORIEN, 'verborgen')).toBeNull();
+    expect(codeKategorieAufloesen(KATEGORIEN, 'zubehoer')).toBeNull();
+    expect(codeKategorieAufloesen(KATEGORIEN, 'schluessel-nach-code')).toBeNull();
+  });
+});
+
+describe('Bestellweg nach Verfügbarkeit (FA-22-10)', () => {
+  it('„nicht lieferbar“ hat keinen Warenkorb, „auf Anfrage“ führt in die Code-Anfrage', () => {
+    expect(bestellWeg({})).toBe('warenkorb');
+    expect(bestellWeg({ availability: 'lieferbar' })).toBe('warenkorb');
+    expect(bestellWeg({ availability: 'auf-anfrage' })).toBe('anfrage');
+    expect(bestellWeg({ availability: 'nicht-lieferbar' })).toBe('keiner');
+  });
+});
+
+describe('Indexierbarkeit', () => {
   it('nimmt Beispiele und noindex-Linien nicht als indexierbar', () => {
     // Die Muster-Linien sind Beispiele (A-046); als echte Linie wäre ms-01 indexierbar.
     expect(codelinieIndexierbar(linie('ms-01'))).toBe(false);

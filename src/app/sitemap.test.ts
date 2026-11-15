@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { defaults } from '@/lib/data/defaults';
 import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
-import type { CityPage, CodeLine, StandardArticle, VehicleMake } from '@/lib/types';
+import type { CityPage, CodeLine, ShopHersteller, ShopKategorie, StandardArticle, VehicleMake } from '@/lib/types';
 import codeLinesJson from '../../content/code-lines.json';
 import vehiclesJson from '../../content/vehicles.json';
 
@@ -11,7 +11,14 @@ import vehiclesJson from '../../content/vehicles.json';
 
 const gebiete: { liste: CityPage[] } = { liste: [] };
 const rubrikAus = new Set<string>();
-const daten: { linien: CodeLine[]; marken: VehicleMake[]; artikel: StandardArticle[]; seiten: Array<{ route: string; updatedAt?: string; seo: { noindex?: boolean } }> } = { linien: [], marken: [], artikel: [], seiten: [] };
+const daten: {
+  linien: CodeLine[];
+  marken: VehicleMake[];
+  artikel: StandardArticle[];
+  seiten: Array<{ route: string; updatedAt?: string; seo: { noindex?: boolean } }>;
+  kategorien: ShopKategorie[];
+  hersteller: ShopHersteller[];
+} = { linien: [], marken: [], artikel: [], seiten: [], kategorien: defaults.kategorien(), hersteller: [] };
 
 vi.mock('@/lib/data', () => ({
   getVehicleMakes: async () => daten.marken,
@@ -22,6 +29,8 @@ vi.mock('@/lib/data', () => ({
     { ...defaults.servicePages()[0], slug: 'versteckt', seo: { ...defaults.servicePages()[0].seo, noindex: true } },
   ],
   getGuides: async () => [],
+  getKategorien: async () => daten.kategorien,
+  getHersteller: async () => daten.hersteller,
   getCities: async () => gebiete.liste,
   // Rubriken (FA-KERN-05): alle live, außer ein Test schaltet eine ab.
   getRubriken: async () => defaults.rubriken().map((r) => ({ ...r, status: rubrikAus.has(r.id) ? 'spaeter' : 'live' })),
@@ -77,7 +86,7 @@ describe('Sitemap', () => {
     expect(ohne).not.toContain('/standorte');
   });
 
-  it('meldet Codelinien, Kategorien und Hersteller — ohne noindex, Hersteller erst wenn gepflegt', async () => {
+  it('meldet Codelinien, Kategorien und Hersteller: ohne noindex, ohne Beispiele, ohne leere Seiten', async () => {
     // Die Musterdaten sind Beispiele (A-046); hier stehen sie für echte Linien. ms-03 bleibt Beispiel.
     const linien = (codeLinesJson as CodeLine[]).map((line) => ({
       ...line,
@@ -89,14 +98,34 @@ describe('Sitemap', () => {
     expect(urls).toContain('/schluessel-nach-code/ms-01');
     expect(urls).not.toContain('/schluessel-nach-code/ms-02');
     expect(urls).not.toContain('/schluessel-nach-code/ms-03');
-    expect(urls).toContain('/schluessel-nach-code/kategorie/moebel-und-bueroschloesser');
-    expect(urls.filter((url) => url.startsWith('/schluessel-nach-code/kategorie/'))).toHaveLength(10);
+    expect(urls).toContain('/shop');
+    // Ohne Unterkategorien und ohne gepflegte Hersteller keine Kategorie- und keine Herstellerseiten.
+    expect(urls.some((url) => url.startsWith('/schluessel-nach-code/kategorie/'))).toBe(false);
     expect(urls.some((url) => url.startsWith('/schluessel-nach-code/hersteller/'))).toBe(false);
 
-    daten.linien = linien.map((line) => (line.id === 'zy-01' ? { ...line, manufacturer: 'BKS' } : line));
-    const mitHersteller = (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
-    expect(mitHersteller).toContain('/schluessel-nach-code/hersteller/bks');
+    // Erfundene Testdaten (G4): eine Unterkategorie mit Linie, eine leere, ein Hersteller mit und einer ohne Linie.
+    const basis = defaults.kategorien();
+    daten.kategorien = [
+      ...basis,
+      { ...basis[0], id: 'briefkasten', slug: 'briefkasten', name: 'Briefkasten', eltern: 'schluessel-nach-code', reihenfolge: 11 },
+      { ...basis[0], id: 'leer', slug: 'leer', name: 'Leer', eltern: 'schluessel-nach-code', reihenfolge: 12 },
+    ];
+    daten.hersteller = [
+      { id: 'testa', slug: 'testa', name: 'Testa', einsatz: '', angeboten: true, reihenfolge: 1 },
+      { id: 'testb', slug: 'testb', name: 'Testb', einsatz: '', angeboten: true, reihenfolge: 2 },
+    ];
+    daten.linien = linien.map((line) =>
+      line.id === 'zy-01' ? { ...line, manufacturerId: 'testa', categoryId: 'briefkasten' } : line.id === 'ms-03' ? { ...line, manufacturerId: 'testb' } : line,
+    );
+    const mitDaten = (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
+    expect(mitDaten).toContain('/schluessel-nach-code/hersteller/testa');
+    expect(mitDaten).toContain('/schluessel-nach-code/kategorie/briefkasten');
+    // Leere Kategorie und Hersteller, dessen einzige Linie ein Beispiel ist: keine Seite in der Sitemap.
+    expect(mitDaten).not.toContain('/schluessel-nach-code/kategorie/leer');
+    expect(mitDaten).not.toContain('/schluessel-nach-code/hersteller/testb');
     daten.linien = [];
+    daten.kategorien = defaults.kategorien();
+    daten.hersteller = [];
   });
 
   it('beachtet noindex der Modelle und nimmt lastModified aus updatedAt', async () => {

@@ -11,7 +11,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
-import { JsonLd, KENNUNG, productSchema, breadcrumbSchema, faqSchema } from '@/components/seo/json-ld';
+import { JsonLd, codelinieSchema } from '@/components/seo/json-ld';
 import { GpsrAngaben } from '@/components/recht/gpsr-angaben';
 import { werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { PageHeader } from '@/components/layout/page-header';
@@ -26,7 +26,6 @@ import { BestellFormular } from './bestell-formular';
 import { CodeAusAdresse } from './code-aus-adresse';
 import { LinienListe } from '../linien-liste';
 import { RATGEBER_FUNDSTELLE, shopDaten } from '../shop-daten';
-import { getSiteUrl } from '@/lib/site-url';
 import {
   codelinieAufloesen,
   codelinieIndexierbar,
@@ -35,11 +34,12 @@ import {
   codelinienPfad,
   codelinienTitel,
   gepflegt,
+  herstellerDerLinie,
   herstellerPfad,
   kategoriePfad,
 } from '@/lib/codelinie';
 import { codelinienTexte, staffelStufen } from '@/lib/codelinie-texte';
-import { VERFUEGBARKEIT_LABEL, verfuegbarkeitVon } from '@/lib/data/shop';
+import { VERFUEGBARKEIT_LABEL, istBestellbar, verfuegbarkeitVon } from '@/lib/data/shop';
 import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 import { VerfuegbarkeitHinweis } from '../verfuegbarkeit-hinweis';
 
@@ -83,7 +83,11 @@ async function laden(slug: string) {
     versand: daten.settings.shipping,
     ratgeber: daten.ratgeber,
   });
-  return { ...daten, line, texte };
+  // Hersteller laut Stammliste (Seite nur, wenn er Linien hat) und die Unterkategorie aus den Daten, falls zugeordnet.
+  const herstellerAngabe = herstellerDerLinie(line, daten.stamm);
+  const herstellerSeite = daten.hersteller.find((h) => h.name === herstellerAngabe.name);
+  const kategorie = daten.kategorien.find((k) => k.kategorie.id === line.categoryId)?.kategorie;
+  return { ...daten, line, texte, herstellerName: herstellerAngabe.name, herstellerSeite, kategorie };
 }
 
 export async function generateMetadata(props: CodeLinePageProps): Promise<Metadata> {
@@ -108,11 +112,12 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
   const geladen = await laden(slug);
 
   if (!geladen) notFound();
-  const { line, texte, settings, ratgeber } = geladen;
+  const { line, texte, settings, ratgeber, herstellerName, herstellerSeite, kategorie } = geladen;
 
   const kennung = codelinienKennung(line);
   const familie = codelinienFamilie(line);
-  const hersteller = gepflegt(line.manufacturer);
+  const hersteller = herstellerName;
+  const system = gepflegt(line.system);
   const stufen = staffelStufen(line);
   // Verfügbarkeit (FA-22-10): Nur lieferbare Linien zeigen den Kaufbereich, Bestellangaben und ein Angebot in den Strukturdaten (R8).
   const verfuegbarkeit = verfuegbarkeitVon(line);
@@ -121,6 +126,9 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
   // Nur gepflegte Angaben: Platzhalter (etwa „[Hersteller eintragen]“) und leere Felder entfallen.
   const facts: Array<{ label: string; value: string | undefined; mono?: boolean }> = [
     { label: 'Hersteller', value: hersteller },
+    { label: 'System', value: system },
+    { label: 'Codebereich', value: gepflegt(line.codeRange), mono: true },
+    { label: 'Lieferzeit', value: bestellbar ? gepflegt(line.deliveryTime) : undefined },
     { label: 'Profil', value: gepflegt(line.profile) },
     { label: 'Codeserie', value: gepflegt(line.codeSeries) },
     { label: 'Anwendung', value: gepflegt(line.application) },
@@ -153,9 +161,10 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
 
   // Pflichtlinks laut Leitfaden, ergänzt um Kategorie, Hersteller und die gepflegten Ziele der Codelinie.
   const baseLinks = [
-    { href: kategoriePfad(familie), label: `Alle Codelinien: ${familie}` },
-    ...(hersteller ? [{ href: herstellerPfad(hersteller), label: `Codelinien von ${hersteller}` }] : []),
+    ...(herstellerSeite ? [{ href: herstellerPfad(herstellerSeite.adresse), label: `Codelinien von ${herstellerSeite.name}` }] : []),
+    ...(kategorie ? [{ href: kategoriePfad(kategorie.slug), label: `Alle Codelinien: ${kategorie.name}` }] : []),
     { href: '/schluessel-nach-code', label: 'Alle Codelinien' },
+    { href: codeAnfragePfad({ schloss: line.name }), label: 'Code passt nicht? Code anfragen' },
     { href: '/schluessel-nach-vorlage', label: 'Kein Code? Schlüssel nach Vorlage' },
     { href: `/ratgeber/${RATGEBER_FUNDSTELLE}`, label: 'Ratgeber: Wo finde ich den Code?' },
   ];
@@ -164,45 +173,46 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
     ...baseLinks,
     ...line.seo.internalLinks.filter((link) => !baseLinks.some((b) => b.href === link.href)),
   ];
+  // Brotkrumen: Schlüssel nach Code › Hersteller (oder Kategorie) › Produkt; nur Stufen mit eigener Seite.
   const crumbs = [
     { href: '/schluessel-nach-code', label: 'Schlüssel nach Code' },
-    { href: kategoriePfad(familie), label: familie },
+    ...(herstellerSeite
+      ? [{ href: herstellerPfad(herstellerSeite.adresse), label: herstellerSeite.name }]
+      : kategorie
+        ? [{ href: kategoriePfad(kategorie.slug), label: kategorie.name }]
+        : []),
     { href: codelinienPfad(line), label: codelinienTitel(line) },
   ];
-  const seitenUrl = `${getSiteUrl()}${codelinienPfad(line)}`;
   const titel = codelinienTitel(line);
+  const produktbild = line.productImage.bild ? line.productImage : undefined;
+  const verwandtTitel = system && hersteller ? `${hersteller} ${system}` : familie;
   const ratgeberVorhanden = Boolean(ratgeber);
 
   return (
     <>
-      {bestellbar ? (
-        <JsonLd data={productSchema(line, texte.beschreibung)} />
-      ) : (
-        /* Ohne Angebot: nur die Webseite, auf die FAQ und Brotkrumen verweisen (kein Verweis ins Leere). */
-        <JsonLd
-          data={{
-            '@context': 'https://schema.org',
-            '@graph': [
-              {
-                '@type': 'WebPage',
-                '@id': `${seitenUrl}/#webpage`,
-                url: seitenUrl,
-                name: line.name,
-                isPartOf: { '@id': KENNUNG.website },
-                about: { '@id': KENNUNG.organisation },
-              },
-            ],
-          }}
-        />
-      )}
-      <JsonLd data={breadcrumbSchema(crumbs, seitenUrl)} />
-      {texte.faq.length > 0 && <JsonLd data={faqSchema(texte.faq, seitenUrl)} />}
+      {/* Ein Graph je Seite (FA-SHOP-01B, 4a): Webseite, Brotkrumen, Fragen; Produkt mit Angebot nur bei echtem Preis (R8). */}
+      <JsonLd
+        data={codelinieSchema({
+          line,
+          beschreibung: texte.beschreibung,
+          crumbs,
+          faq: texte.faq,
+          hersteller,
+          angebot: istBestellbar(line),
+        })}
+      />
       <PageHeader
         eyebrow={`${kennung} · ${bestellbar ? PROCESS_LABELS.direktkauf.label : VERFUEGBARKEIT_LABEL[verfuegbarkeit]}`}
         title={titel}
         lead={texte.einleitung}
         crumbs={crumbs}
         visual={
+          produktbild ? (
+            /* Produktbild im Kopf (FA-11-11), wenn ein eigenes Foto hinterlegt ist */
+            <figure className="m-0">
+              <ImagePlaceholder slot={produktbild} sizes="(min-width: 1024px) 40vw, 100vw" />
+            </figure>
+          ) : (
           /* Blickfang im Kopf (K-006): die Fräsbahn zum Beispielcode der Codelinie, ohne Kartenrahmen */
           <figure className="m-0">
             <ImagePlaceholder
@@ -221,6 +231,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
               <span className="whitespace-nowrap">keine echte Schließung</span>
             </figcaption>
           </figure>
+          )
         }
       >
         <div className="flex flex-wrap items-center gap-2">
@@ -228,7 +239,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
             <GlyphHaken size={14} className="shrink-0" />
             Ohne Einsendung des Originalschlüssels
           </Badge>
-          <Badge tone="outline">{line.keyType}</Badge>
+          {gepflegt(line.keyType) && <Badge tone="outline">{line.keyType}</Badge>}
           <Badge tone="outline">
             Codeformat: <span className="font-mono font-medium tabular-nums text-foreground">{line.codeFormatLabel}</span>
           </Badge>
@@ -241,9 +252,22 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:col-start-8 lg:row-start-1">
             {bestellbar ? (
               /* Code aus der Adresse (?code=) liest eine Client-Komponente; die Grenze hält die Seite statisch. */
-              <Suspense fallback={<BestellFormular line={line} werkstatt={werkstattAngaben(settings.company)} />}>
-                <CodeAusAdresse line={line} werkstatt={werkstattAngaben(settings.company)} />
-              </Suspense>
+              <>
+                <Suspense fallback={<BestellFormular line={line} werkstatt={werkstattAngaben(settings.company)} />}>
+                  <CodeAusAdresse line={line} werkstatt={werkstattAngaben(settings.company)} />
+                </Suspense>
+                {/* Code passt nicht eindeutig (FA-11-17): die Anfrage steht neben dem Bestellformular. */}
+                <p className="mt-4 text-small text-foreground-muted">
+                  Ihr Code passt nicht sicher zu dieser Linie?{' '}
+                  <Link
+                    href={codeAnfragePfad({ schloss: line.name })}
+                    prefetch={false}
+                    className="inline py-1 -my-1 font-semibold text-primary hover:underline"
+                  >
+                    Code anfragen
+                  </Link>
+                </p>
+              </>
             ) : (
               <VerfuegbarkeitHinweis
                 verfuegbarkeit={verfuegbarkeit}
@@ -354,8 +378,8 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
               <div className="mt-12">
                 <SectionHeading
                   nummer="04"
-                  eyebrow="Gleiche Familie"
-                  title={`Weitere Codelinien: ${familie}`}
+                  eyebrow={system ? 'Gleiches System' : 'Gleiche Familie'}
+                  title={`Weitere Codelinien: ${verwandtTitel}`}
                 />
                 <LinienListe lines={texte.verwandte} className="mt-6" />
               </div>

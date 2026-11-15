@@ -9,6 +9,7 @@ import {
   codelinienKennung,
   codelinienTitel,
   gepflegt,
+  verfuegbarkeitVon,
 } from '@/lib/codelinie';
 
 /* ==========================================================================
@@ -165,16 +166,31 @@ export function fundstelleAusRatgeber(
   return undefined;
 }
 
-/** Andere aktive Linien derselben Anwendungsfamilie, in der Reihenfolge der Daten. */
-export function verwandteLinien(line: CodeLine, alle: CodeLine[]): CodeLine[] {
-  const familie = codelinienFamilie(line);
-  return alle.filter((l) => l.active && l.id !== line.id && codelinienFamilie(l) === familie);
+/** Hersteller und System als Vergleichswert; ohne System zählt die Anwendungsfamilie. */
+function gruppeVon(line: CodeLine): string {
+  const system = gepflegt(line.system);
+  if (!system) return `familie:${codelinienFamilie(line)}`;
+  return `system:${line.manufacturerId ?? gepflegt(line.manufacturer) ?? ''}|${system}`;
 }
 
-/** „Hersteller ABUS, Profil X, Codeserie Y“ — nur gepflegte Angaben. */
-export function zuordnungText(line: Pick<CodeLine, 'manufacturer' | 'profile' | 'codeSeries'>): string | undefined {
+/**
+ * Andere aktive Linien derselben Gruppe, in der Reihenfolge der Daten: bei
+ * gepflegtem System dieselbe Kombination aus Hersteller und System (FA-11-04),
+ * sonst dieselbe Anwendungsfamilie.
+ */
+export function verwandteLinien(line: CodeLine, alle: CodeLine[]): CodeLine[] {
+  const gruppe = gruppeVon(line);
+  return alle.filter((l) => l.active && l.id !== line.id && gruppeVon(l) === gruppe);
+}
+
+/** „Hersteller ABUS, System X, Codebereich 1 bis 500, Profil Y, Codeserie Z“: nur gepflegte Angaben. */
+export function zuordnungText(
+  line: Pick<CodeLine, 'manufacturer' | 'profile' | 'codeSeries'> & Partial<Pick<CodeLine, 'system' | 'codeRange'>>,
+): string | undefined {
   const teile = [
     gepflegt(line.manufacturer) && `Hersteller ${gepflegt(line.manufacturer)}`,
+    gepflegt(line.system) && `System ${gepflegt(line.system)}`,
+    gepflegt(line.codeRange) && `Codebereich ${gepflegt(line.codeRange)}`,
     gepflegt(line.profile) && `Profil ${gepflegt(line.profile)}`,
     gepflegt(line.codeSeries) && `Codeserie ${gepflegt(line.codeSeries)}`,
   ].filter(Boolean);
@@ -229,6 +245,10 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
   const fundstelle = fundstelleAusRatgeber(kontext.ratgeber, line);
   const verwandte = verwandteLinien(line, kontext.alle);
   const hinweisFoto = gepflegt(line.photoUploadHint);
+  // Texte nach Verfügbarkeit (FA-22-10): Die Seite beschreibt keinen Direktkauf, den der Server ablehnt (R4).
+  const verfuegbarkeit = verfuegbarkeitVon(line);
+  const lieferbar = verfuegbarkeit === 'lieferbar';
+  const aufAnfrage = verfuegbarkeit === 'auf-anfrage';
 
   /* Titel: der erste Vorschlag, der samt Markenzusatz in 580 px und 60 Zeichen passt; ohne Gedankenstrich. */
   const titelVorschlaege = [
@@ -252,19 +272,32 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
   const metaBeschreibung =
     eigen.metaBeschreibung
     ?? imRahmen(
-      `${art} für ${kurz} nach Code bestellen: Codelinie ${kennung}${marke ? `, ${marke}` : ''}.`,
+      lieferbar
+        ? `${art} für ${kurz} nach Code bestellen: Codelinie ${kennung}${marke ? `, ${marke}` : ''}.`
+        : aufAnfrage
+          ? `${art} für ${kurz} nach Code anfragen: Codelinie ${kennung}${marke ? `, ${marke}` : ''}.`
+          : `${art} für ${kurz} nach Code: Codelinie ${kennung}${marke ? `, ${marke}` : ''}, derzeit nicht lieferbar.`,
       [
         format ? `Codeformat: ${format}${beispiel ? `, z. B. ${beispiel}` : ''}.` : undefined,
         // Wie in der Einleitung und im Bestellformular; ein Satz, nicht zwei gleichbedeutende.
         'Ihr Originalschlüssel bleibt bei Ihnen.',
-        stufen[0] ? `Staffelpreis ab ${formatNumber(stufen[0].minQty)} Stück.` : undefined,
-        'Sie geben den Code ein, wir fertigen danach.',
+        lieferbar && stufen[0] ? `Staffelpreis ab ${formatNumber(stufen[0].minQty)} Stück.` : undefined,
+        lieferbar
+          ? 'Sie geben den Code ein, wir fertigen danach.'
+          : aufAnfrage
+            ? 'Sie nennen den Code, wir prüfen ihn und melden uns.'
+            : 'Fragen Sie gern nach einer anderen Codelinie.',
       ],
     );
 
-  const einleitung =
-    `${art} für ${kurz}, gefertigt nach dem Code, den Sie eingeben${format ? ` (${format})` : ''}. `
-    + `${preis} je Stück – Ihr Originalschlüssel bleibt bei Ihnen.`;
+  const einleitung = lieferbar
+    ? `${art} für ${kurz}, gefertigt nach dem Code, den Sie eingeben${format ? ` (${format})` : ''}. `
+      + `${preis} je Stück. Ihr Originalschlüssel bleibt bei Ihnen.`
+    : aufAnfrage
+      ? `${art} für ${kurz}, gefertigt nach dem Code Ihres Schlosses${format ? ` (${format})` : ''}. `
+        + 'Diesen Schlüssel fragen Sie bei uns an. Ihr Originalschlüssel bleibt bei Ihnen.'
+      : `${art} für ${kurz}, gefertigt nach dem Code Ihres Schlosses${format ? ` (${format})` : ''}. `
+        + 'Diesen Schlüssel können Sie zurzeit nicht bestellen.';
 
   const fotoSatz =
     line.photoUpload === 'pflicht'
@@ -280,8 +313,12 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
       zuordnung && `Hinterlegt sind: ${zuordnung}.`,
       `Wir fertigen den ${art} allein nach Ihrer Codeangabe; den Originalschlüssel müssen Sie nicht einsenden.`,
       format && `Das Codeformat lautet „${format}“${beispiel ? `, zum Beispiel ${beispiel}` : ''}.`,
-      `Ein Schlüssel kostet ${preis}${staffel ? `, ${staffel}` : ''}; je Bestellung sind bis zu ${formatNumber(line.maxQty)} Stück möglich.`,
-      fotoSatz,
+      lieferbar
+        ? `Ein Schlüssel kostet ${preis}${staffel ? `, ${staffel}` : ''}; je Bestellung sind bis zu ${formatNumber(line.maxQty)} Stück möglich.`
+        : aufAnfrage
+          ? 'Diesen Schlüssel bestellen Sie nicht direkt. Sie fragen ihn an, und wir melden uns mit einem Angebot.'
+          : 'Diesen Schlüssel können Sie zurzeit nicht bestellen.',
+      lieferbar ? fotoSatz : undefined,
     ]
       .filter(Boolean)
       .join(' ');
@@ -290,36 +327,46 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
   if (format) {
     faq.push({
       question: `Wie sieht ein gültiger Code für ${kennung} aus?`,
-      answer:
-        `Für ${kennung} erwartet das Bestellformular: ${format}${beispiel ? `, zum Beispiel ${beispiel}` : ''}. `
-        + 'Eine Eingabe in einem anderen Format nimmt es nicht an.',
+      answer: lieferbar
+        ? `Für ${kennung} erwartet das Bestellformular: ${format}${beispiel ? `, zum Beispiel ${beispiel}` : ''}. `
+          + 'Eine Eingabe in einem anderen Format nimmt es nicht an.'
+        : `Für ${kennung} gilt das Codeformat: ${format}${beispiel ? `, zum Beispiel ${beispiel}` : ''}.`
+          + (aufAnfrage ? ' Nennen Sie den Code in Ihrer Anfrage genau so, wie er aufgedruckt ist.' : ''),
     });
   }
   const fundstellenAntwort = [fundstelle, gepflegt(line.codeHint)].filter(Boolean).join(' ');
   if (fundstellenAntwort) {
     faq.push({ question: `Wo steht der Code bei ${kurz}?`, answer: fundstellenAntwort });
   }
-  faq.push({
-    question: `Was kostet ein ${art} der Codelinie ${kennung}?`,
-    answer: [
-      `${preis} je Stück einschließlich 19 % Umsatzsteuer${staffel ? `, ${staffel}` : ''};`,
-      `bis zu ${formatNumber(line.maxQty)} Stück je Bestellung.`,
-      versandListe && `Versand: ${versandListe}.`,
-    ]
-      .filter(Boolean)
-      .join(' '),
-  });
-  faq.push({
-    question: `Brauche ich für ${kennung} ein Foto meines Schlüssels?`,
-    answer:
-      line.photoUpload === 'pflicht'
-        ? hinweisFoto ?? 'Ja, für diese Linie ist ein Foto Pflicht.'
-        : line.photoUpload === 'optional'
-          ? [`Nein, für ${kennung} ist ein Foto freiwillig.`, hinweisFoto?.replace(/^Ein Foto ist freiwillig\.\s*/i, '')]
-              .filter(Boolean)
-              .join(' ')
-          : 'Nein, für diese Linie ist kein Foto nötig. Wir fertigen allein nach dem Code.',
-  });
+  // Preis, Stückzahl und Foto nur, wenn direkt bestellt werden kann; bei „auf Anfrage“ nennt das Angebot den Preis.
+  if (lieferbar) {
+    faq.push({
+      question: `Was kostet ein ${art} der Codelinie ${kennung}?`,
+      answer: [
+        `${preis} je Stück einschließlich 19 % Umsatzsteuer${staffel ? `, ${staffel}` : ''};`,
+        `bis zu ${formatNumber(line.maxQty)} Stück je Bestellung.`,
+        versandListe && `Versand: ${versandListe}.`,
+      ]
+        .filter(Boolean)
+        .join(' '),
+    });
+    faq.push({
+      question: `Brauche ich für ${kennung} ein Foto meines Schlüssels?`,
+      answer:
+        line.photoUpload === 'pflicht'
+          ? hinweisFoto ?? 'Ja, für diese Linie ist ein Foto Pflicht.'
+          : line.photoUpload === 'optional'
+            ? [`Nein, für ${kennung} ist ein Foto freiwillig.`, hinweisFoto?.replace(/^Ein Foto ist freiwillig\.\s*/i, '')]
+                .filter(Boolean)
+                .join(' ')
+            : 'Nein, für diese Linie ist kein Foto nötig. Wir fertigen allein nach dem Code.',
+    });
+  } else if (aufAnfrage) {
+    faq.push({
+      question: `Was kostet ein ${art} der Codelinie ${kennung}?`,
+      answer: 'Den Preis nennen wir Ihnen mit unserem Angebot, nachdem wir Ihren Code geprüft haben.',
+    });
+  }
   if (zuordnung) {
     faq.push({
       question: `Für welche Schlösser ist ${kennung} hinterlegt?`,
@@ -356,8 +403,10 @@ function eindeutig(werte: Array<string | undefined>): string[] {
   return [...new Set(werte.filter((wert): wert is string => Boolean(wert)))];
 }
 
-function preisSpanne(lines: CodeLine[]): string {
-  const preise = lines.map((line) => line.priceCents);
+/** Preisspanne der lieferbaren Linien; ohne lieferbare Linie keine (auf Anfrage nennt das Angebot den Preis). */
+function preisSpanne(lines: CodeLine[]): string | undefined {
+  const preise = lines.filter((line) => verfuegbarkeitVon(line) === 'lieferbar').map((line) => line.priceCents);
+  if (!preise.length) return undefined;
   const von = Math.min(...preise);
   const bis = Math.max(...preise);
   return von === bis ? formatCents(von) : `${formatCents(von)} bis ${formatCents(bis)}`;
@@ -408,7 +457,7 @@ export function kategorieTexte(
 
   const einleitung =
     `${formatNumber(zahl)} ${nomen} für ${aufzaehlung(anwendungen)}. `
-    + 'Sie geben den Code ein, wir fertigen danach — Ihr Originalschlüssel bleibt bei Ihnen.';
+    + 'Sie geben den Code ein, wir fertigen danach. Ihr Originalschlüssel bleibt bei Ihnen.';
 
   const absaetze = [
     [
@@ -416,9 +465,9 @@ export function kategorieTexte(
       formate.length === 1
         ? `Alle Linien erwarten das Codeformat „${formate[0]}“.`
         : formate.length > 1
-          ? `Die Codeformate reichen von „${formate[0]}“ bis „${formate[formate.length - 1]}“ — welches zu Ihrem Schloss gehört, steht bei jeder Linie mit Beispiel.`
+          ? `Die Codeformate reichen von „${formate[0]}“ bis „${formate[formate.length - 1]}“. Welches zu Ihrem Schloss gehört, steht bei jeder Linie mit Beispiel.`
           : undefined,
-      `Preise je Stück: ${spanne}.`,
+      spanne ? `Preise je Stück: ${spanne}.` : undefined,
       staffelAb.length === 1 ? `Staffelpreise gelten ab ${staffelAb[0]} Stück.` : undefined,
     ]
       .filter(Boolean)
@@ -440,6 +489,7 @@ export function herstellerTexte(name: string, lines: CodeLine[]): GruppenTexte {
   const typen = eindeutig(lines.map((line) => gepflegt(line.keyType)));
   const profile = eindeutig(lines.map((line) => gepflegt(line.profile)));
   const serien = eindeutig(lines.map((line) => gepflegt(line.codeSeries)));
+  const systeme = eindeutig(lines.map((line) => gepflegt(line.system)));
   const spanne = preisSpanne(lines);
 
   const titelVorschlaege = [`${name}: Schlüssel nach Code bestellen`, `${name}: Schlüssel nach Code`, name];
@@ -455,14 +505,18 @@ export function herstellerTexte(name: string, lines: CodeLine[]): GruppenTexte {
     ],
   );
   const einleitung =
-    `${formatNumber(zahl)} ${nomen} für Schlösser von ${name}${familien.length ? ` aus ${aufzaehlung(familien)}` : ''}. `
-    + 'Bestellt wird nach dem Code — ohne Einsendung des Originalschlüssels.';
+    `${formatNumber(zahl)} ${nomen} für Schlösser von ${name}`
+    + (systeme.length
+      ? `${systeme.length === 1 ? ' im System' : ' in den Systemen'} ${aufzaehlung(systeme)}. `
+      : `${familien.length ? ` aus ${aufzaehlung(familien)}` : ''}. `)
+    + 'Bestellt wird nach dem Code, ohne Einsendung des Originalschlüssels.';
   const absaetze = [
     [
+      systeme.length ? `${systeme.length === 1 ? 'System' : 'Systeme'}: ${aufzaehlung(systeme)}.` : undefined,
       typen.length ? `Schlüsseltyp: ${aufzaehlung(typen)}.` : undefined,
       profile.length ? `Profile: ${aufzaehlung(profile)}.` : undefined,
       serien.length ? `Codeserien: ${aufzaehlung(serien)}.` : undefined,
-      `Preise je Stück: ${spanne}.`,
+      spanne ? `Preise je Stück: ${spanne}.` : undefined,
     ]
       .filter(Boolean)
       .join(' '),

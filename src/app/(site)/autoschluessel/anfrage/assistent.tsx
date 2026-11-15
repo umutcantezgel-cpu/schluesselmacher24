@@ -1277,7 +1277,7 @@ export function Assistent({
               <span>
                 Ihr Fahrzeug: <strong className="font-semibold">{make.name} {isOtherModel ? data.modelOther : (model?.name ?? '')}</strong>
               </span>
-              <button type="button" onClick={() => flow.goTo('marke')} className="text-small font-semibold text-primary hover:underline">
+              <button type="button" onClick={() => flow.goTo('marke')} className="inline-flex min-h-touch items-center text-small font-semibold text-primary hover:underline">
                 Ändern
               </button>
             </p>

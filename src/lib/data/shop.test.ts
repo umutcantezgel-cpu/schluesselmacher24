@@ -157,9 +157,10 @@ describe('Startbestand (FA-SHOP-01)', () => {
   it('stimmt mit content/kategorien.json und content/hersteller.json überein (JSON-Rückfall, G6)', () => {
     const datei = (name: string) => JSON.parse(readFileSync(path.join(process.cwd(), 'content', name), 'utf8')) as unknown;
     expect(datei('kategorien.json')).toEqual(defaults.kategorien());
-    // Keine erfundenen Hersteller (R4): Der Bestand belegt keinen.
-    expect(datei('hersteller.json')).toEqual([]);
-    expect(defaults.hersteller()).toEqual([]);
+    // Keine erfundenen Hersteller (R4): nur die drei, die der Inhaber selbst nennt (FA-INHALT-02), ohne Logo.
+    expect(datei('hersteller.json')).toEqual(defaults.hersteller());
+    expect(defaults.hersteller().map((h) => h.name)).toEqual(['BKS', 'ABUS', 'BURG-WÄCHTER']);
+    expect(defaults.hersteller().every((h) => h.logo === undefined)).toBe(true);
   });
 
   it('Texte ohne Gedankenstriche', () => {

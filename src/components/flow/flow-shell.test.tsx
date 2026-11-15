@@ -2,7 +2,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { FlowState, FlowStep } from '@/lib/flow/use-flow';
-import { FlowShell, type FlowShellProps } from './flow-shell';
+import { FlowShell, GESPERRT_STANDARD, fortschrittText, type FlowShellProps } from './flow-shell';
 
 const SCHRITTE: FlowStep[] = [
   { id: 'a', title: 'Erster Schritt', short: 'Marke' },
@@ -35,9 +35,9 @@ function ablauf(stepIndex = 1): FlowState<object> {
   };
 }
 
-function rahmen(props: Partial<FlowShellProps<object>> = {}, stepIndex = 1): string {
+function rahmen(props: Partial<FlowShellProps<object>> = {}, stepIndex = 1, aenderung: Partial<FlowState<object>> = {}): string {
   return renderToStaticMarkup(
-    <FlowShell flow={ablauf(stepIndex)} title="Anfrage" {...props}>
+    <FlowShell flow={{ ...ablauf(stepIndex), ...aenderung }} title="Anfrage" {...props}>
       <p data-test="inhalt">Inhalt</p>
     </FlowShell>,
   );
@@ -85,5 +85,50 @@ describe('FlowShell', () => {
     const html = rahmen();
     expect(html.match(/data-schritt-titel/g)).toHaveLength(1);
     expect(html).toMatch(/<h2 data-schritt-titel="true"[^>]*>Zweiter Schritt<\/h2>/);
+  });
+
+  /* FA-QA-02: Bedienbarkeit auch für ältere Kunden (Abschnitt 26) */
+
+  it('sagt Schritt und Namen lesbar groß und für Vorleseprogramme', () => {
+    const html = rahmen();
+    expect(html).toMatch(/<p aria-live="polite" class="[^"]*\btext-small\b[^"]*">Schritt 2 von 3/);
+    expect(html).toContain('aria-valuetext="Schritt 2 von 3: Modell, 67 Prozent"');
+    expect(fortschrittText(ablauf(0))).toBe('Schritt 1 von 3: Marke');
+  });
+
+  it('zählt mit Etappen die Etappen, auch für Vorleseprogramme', () => {
+    const steps: FlowStep[] = [
+      { id: 'a', title: 'A', short: 'A', etappe: 'Fahrzeug' },
+      { id: 'b', title: 'B', short: 'B', etappe: 'Fahrzeug' },
+      { id: 'c', title: 'C', short: 'C', etappe: 'Fotos' },
+    ];
+    expect(fortschrittText({ steps, stepIndex: 2, stepCount: 3, step: steps[2] })).toBe('Schritt 2 von 2: Fotos');
+  });
+
+  it('der gesperrte Knopf nennt den Hinweis des Formulars und ist mit ihm verknüpft', () => {
+    const html = rahmen({ blockedHint: 'Bitte tragen Sie die Marke ein.' }, 1, { canContinue: false });
+    const id = html.match(/<p id="([^"]+)" data-gesperrt-hinweis="true"[^>]*>Bitte tragen Sie die Marke ein\.<\/p>/)?.[1];
+    expect(id).toBeTruthy();
+    expect(html).toMatch(new RegExp(`<button[^>]*disabled=""[^>]*aria-describedby="${id}"`));
+  });
+
+  it('ohne Hinweis des Formulars steht ein allgemeiner am gesperrten Knopf; frei steht keiner', () => {
+    expect(rahmen({}, 1, { canContinue: false })).toContain(GESPERRT_STANDARD);
+    expect(rahmen({}, 1)).not.toContain('data-gesperrt-hinweis');
+    expect(rahmen({ blockedHint: 'X' }, 1)).not.toContain('aria-describedby=');
+  });
+
+  it('sagt nach dem Laden eines Zwischenstands, dass Dateien neu zu wählen sind; Knöpfe 44 px hoch', () => {
+    const mit = rahmen({ mitDateien: true }, 1, { restored: true });
+    expect(mit).toContain('Ausgewählte Dateien und Fotos sind dabei nicht gespeichert');
+    expect(mit).not.toContain('min-h-touch-sm');
+    const ohne = rahmen({}, 1, { restored: true });
+    expect(ohne).toContain('Ihr Zwischenstand von zuletzt wurde geladen.');
+    expect(ohne).not.toContain('Ausgewählte Dateien');
+  });
+
+  it('die Schrittliste ab Tablet ist nicht kleiner als 15 px', () => {
+    const html = rahmen();
+    expect(html).not.toMatch(/<button[^>]*class="[^"]*text-caption[^"]*"[^>]*>(?:<span|<svg)/);
   });
 });

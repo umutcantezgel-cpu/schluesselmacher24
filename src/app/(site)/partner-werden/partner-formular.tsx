@@ -10,6 +10,8 @@ import { Alert } from '@/components/ui/alert';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { Field } from '@/components/forms/field';
+import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
@@ -78,7 +80,7 @@ function radiusKm(wert: string): number | null {
   return Number.isInteger(zahl) && zahl >= 1 && zahl <= MAX_RADIUS_KM ? zahl : null;
 }
 
-export function PartnerFormular() {
+export function PartnerFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
   const [nachweise, setNachweise] = useState<PickedFile[]>([]);
   const [einwilligung, setEinwilligung] = useState(false);
   const [senden, setSenden] = useState(false);
@@ -245,6 +247,8 @@ export function PartnerFormular() {
         onSubmit={absenden}
         submitting={senden}
         blockedHint={gesperrt[flow.step?.id ?? '']}
+        ungesichert={nachweise.length > 0}
+        mitDateien
       >
         {flow.step?.id === 'betrieb' && (
           <div className="grid gap-5 sm:grid-cols-2">
@@ -414,23 +418,34 @@ export function PartnerFormular() {
                 />
               )}
             </Field>
+
+            {/* Keine Sackgasse, wenn die eigene Leistung fehlt (FA-QA-02). */}
+            <HilfeBlock
+              hilfe={hilfe}
+              stelle="leistungen"
+              titel="Ihre Leistung ist nicht dabei?"
+              satz="Wählen Sie die nächstliegende und beschreiben Sie den Rest unter „Qualifikationen“. Oder rufen Sie uns an."
+            />
           </div>
         )}
 
         {flow.step?.id === 'nachweise' && (
-          <PhotoUpload
-            category="dokument"
-            id="partner-nachweise"
-            label="Nachweise (freiwillig)"
-            description="Zum Beispiel Gewerbeanmeldung, Handwerkskarte oder Zertifikate. Als Foto oder PDF, höchstens fünf Dateien."
-            example={{ motif: 'Beispiel: Gewerbeanmeldung oder Zertifikat, vollständig und gut lesbar', ratio: '4/3' }}
-            files={nachweise}
-            onChange={setNachweise}
-            multiple
-            maxFiles={5}
-            allowDocuments
-            kamera="ruhig"
-          />
+          <div className="space-y-8">
+            <PhotoUpload
+              category="dokument"
+              id="partner-nachweise"
+              label="Nachweise (freiwillig)"
+              description="Zum Beispiel Gewerbeanmeldung, Handwerkskarte oder Zertifikate. Als Foto oder PDF, höchstens fünf Dateien."
+              example={{ motif: 'Beispiel: Gewerbeanmeldung oder Zertifikat, vollständig und gut lesbar', ratio: '4/3' }}
+              files={nachweise}
+              onChange={setNachweise}
+              multiple
+              maxFiles={5}
+              allowDocuments
+              kamera="ruhig"
+            />
+            <HilfeBlock hilfe={hilfe} stelle="nachweise" titel="Unsicher, welche Nachweise passen?" spaeter mitDateien />
+          </div>
         )}
 
         {flow.step?.id === 'pruefen' && (
@@ -461,11 +476,7 @@ export function PartnerFormular() {
               </span>
             </label>
 
-            {fehler && (
-              <Alert tone="warning" title="Das hat nicht geklappt" role="alert">
-                {fehler}
-              </Alert>
-            )}
+            {fehler && <AbsendeFehler fehler={fehler} hilfe={hilfe} titel="Das hat nicht geklappt" className="" />}
           </div>
         )}
       </FlowShell>
