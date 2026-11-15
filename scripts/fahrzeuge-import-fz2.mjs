@@ -18,8 +18,13 @@
 // Der Anzeigename einer Marke entsteht nach einer festen Regel aus dem KBA-Namen (`herstellerAnzeige`).
 // Ein Name, den die Regel nicht sicher bilden kann, bricht den Lauf ab, statt zu raten (R4).
 // Zeilen aus FZ 2 sind auffindbar, aber nicht buchbar: leistungen [], klonbar und gehaeuse „unbekannt“.
-// Der Lauf ist wiederholbar: Zeilen einer früheren FZ-2-Übernahme werden ersetzt, die FZ-12-Zeilen und alles
-// Gepflegte (Generationen, Verweise) bleiben, wie sie sind.
+// Der Lauf ist wiederholbar: Zeilen einer früheren FZ-2-Übernahme werden neu gebildet, die FZ-12-Zeilen bleiben,
+// wie sie sind. Gepflegte Felder einer FZ-2-Zeile (GEPFLEGTE_FELDER: Generationen, Verweise, Transponder,
+// Sichtbarkeit) gehen je Kennung auf die neue Zeile über. Fiele eine Zeile mit gepflegten Feldern weg, weil
+// ihre Kennung nicht mehr entsteht, bricht der Lauf ab und nennt sie, statt sie still zu verlieren.
+//
+// Reihenfolge der Importe: scripts/fahrzeuge-import.mjs (FZ 12) behält Zeilen aus FZ 2 und Generationen; nach
+// einem FZ-12-Lauf diesen Lauf wiederholen, damit der Abgleich mit dem neuen FZ-12-Stand stimmt.
 
 import { readFileSync, renameSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -285,9 +290,23 @@ export function herstellerAnzeige(kbaName) {
 }
 
 /**
+ * Wörter, die das KBA ohne Umlaut schreibt (Großschreibung, „AE“ für „Ä“), in der Schreibweise des Handels.
+ * Nur ganze Wörter dieser Liste, keine allgemeine Regel: „BLUETEC“, „PHAETON“ oder „ZOE“ bleiben, wie sie sind.
+ * Der Wortlaut des KBA steht weiter im Feld kbaName.
+ */
+export const UMLAUT_WOERTER = {
+  KAEFER: 'Käfer',
+  KAPITAEN: 'Kapitän',
+  MILITAER: 'Militär',
+  BEHOERDE: 'Behörde',
+  GELAENDE: 'Gelände',
+  GELAENDEWAGEN: 'Geländewagen',
+};
+
+/**
  * Schreibweise eines Handelsnamens: Teile durch „, “ getrennt; Wörter mit Ziffern und Kurzwörter bis drei
- * Buchstaben bleiben, wie das KBA sie schreibt; Wörter in Großbuchstaben ab vier Buchstaben in Titelschreibung.
- * Gemischte Schreibweise des KBA („Mojito 125“) bleibt unverändert.
+ * Buchstaben bleiben, wie das KBA sie schreibt; Wörter in Großbuchstaben ab vier Buchstaben in Titelschreibung,
+ * Wörter aus UMLAUT_WOERTER mit Umlaut. Gemischte Schreibweise des KBA („Mojito 125“) bleibt unverändert.
  */
 export function handelsnameAnzeige(text) {
   return text
@@ -298,6 +317,7 @@ export function handelsnameAnzeige(text) {
         .replace(/\s+/g, ' ')
         .trim()
         .replace(/\p{L}[\p{L}\p{N}'´]*/gu, (wort) => {
+          if (Object.hasOwn(UMLAUT_WOERTER, wort.toUpperCase())) return UMLAUT_WOERTER[wort.toUpperCase()];
           if (/\p{N}/u.test(wort) || wort.length <= 3) return wort;
           if (wort !== wort.toUpperCase()) return wort;
           return wort.charAt(0) + wort.slice(1).toLowerCase();
@@ -603,10 +623,14 @@ function markeAusRest(teil, erster) {
   return kompakt(m.rest) === kompakt(erster) ? m : null;
 }
 
-/** Teile eines Handelsnamens (Komma oder Semikolon), ohne Leeres. */
+/**
+ * Teile eines Handelsnamens (Komma, Semikolon oder „oder“), ohne Leeres. „oder“ und „or“ trennen nur als
+ * eigenes Wort („Carens or Rondo“), nicht als Wortanfang („Chevrolet Orlando“, „BRUTALE ORO“); die
+ * Abkürzungen „od.“ und „o.“ trennen auch ohne folgendes Leerzeichen („JB od.RIO“, „PARTNER OD.RANCH“).
+ */
 export function teile(handelsname) {
   return handelsname
-    .split(/\s*[,;]\s*|\s+(?:od\.|oder|or|o\.)\s*/i)
+    .split(/\s*[,;]\s*|\s+(?:od\.|o\.|(?:oder|or)(?=\s|$))\s*/i)
     .map((t) => t.replace(/^[^\p{L}\p{N}]+|[()]+$/gu, '')).map((t) => t.replace(/\s+/g, ' ').trim()).filter(Boolean);
 }
 
