@@ -178,3 +178,11 @@ Prüfung nach der Nachbesserung (Datenweiche):
 - `sicher.sh --json -- npm run build`: erfolgreich.
 
 Geänderter bestehender Test (G8, nichts gelockert): `hooks/druckansichten.test.ts` erwartet die erweiterte Abfrage; `hooks/vermittlung.test.ts` erwartet den neuen Betreff.
+
+## ABNAHME (Orchestrator, 15.11.2026)
+
+- **Prüfkette grün** (`werkzeuge/abnahme.sh FA-KERN-04`): Typprüfung, Lint, Unit 2.875 Tests in 201 Dateien, Datenbanktests 113 in 20 Dateien (mit der Migration `20261115_200046_vermittlung_auszahlung`, rein additiv), Build ohne Datenbank 177 von 177 Seiten mit der neuen Route `/auftrag-bestaetigen/[id]`.
+- **Sichtprobe:** `/auftrag-bestaetigen/…` mit ungültigem Schlüssel zeigt bei 390 × 844 ruhig „Keine Bestätigung möglich. Dieser Link ist ungültig oder wurde schon benutzt.“ und das Telefon; keine Fehler in der Konsole. Die Stände im Admin sind durch die Tests der Hooks und die Datenbanktests belegt, nicht durch eine Sichtprobe im Backend.
+- **Freigegeben:** die sechs Änderungen außerhalb der Schreibrechte (je eine Bedingung für den neuen Zahlungsstand oder die Übergabe von Auftragsweg und Rest) und die angepassten Tests; keiner davon lockert eine Prüfung, die geänderte Erwartung folgt jeweils der Regel des Inhabers (Vermitteln nur nach Zahlung an einen freigeschalteten Partner; Teilerstattung als eigener Stand).
+- **Schalter bleiben aus:** `PARTNERMODELL_B` (Partnerweg für Kunden) und `PARTNER_AUSZAHLUNG` (Zahlungsdienst) sind nirgends gesetzt. Vor dem Einschalten von `PARTNERMODELL_B` fehlen noch: die Begrenzung offener, unbezahlter Partnertermine je E-Mail (Auftrag in FA-KERN-05) und die Freigabe der AGB-Kurzfassung für den Partnerweg durch den Anwalt (MA-36).
+- **Fragen an den Inhaber** (MA-36): Sperrt schon eine kleine Teilerstattung die Partnerauszahlung auf Dauer? Darf das Team den Plattformanteil sehen? Soll der Partner bei der Vermittlung automatisch eine Mail bekommen?
