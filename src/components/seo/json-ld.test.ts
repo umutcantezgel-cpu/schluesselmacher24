@@ -1,8 +1,10 @@
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { echteEinstellungen, einstellungenMitWerkstatt, platzhalterEinstellungen } from '@/lib/rechtliches/test-hilfen';
 
-import { localBusinessSchema } from './json-ld';
+import { KENNUNG, articleSchema, breadcrumbSchema, localBusinessSchema, pageGraphSchema, serviceAreaSchema } from './json-ld';
 
 type Knoten = Record<string, unknown> & { '@type': string };
 
@@ -67,5 +69,84 @@ describe('localBusinessSchema', () => {
     expect(text).not.toContain('[PLZ]');
     expect(text).not.toContain('telephone');
     expect(text).not.toContain('address');
+  });
+});
+
+/* ---------- FA-SEO-01C: feste Kennung, Leistungen, keine doppelten Kennungen ---------- */
+
+describe('Betrieb als feste Kennung (FA-25-08)', () => {
+  const graph = (daten: unknown) => (daten as { '@graph': Knoten[] })['@graph'];
+
+  it('der Betriebs-Graph definiert Organisation, Website und Locksmith, aber keine Webseite der Startseite', () => {
+    const typen = graph(localBusinessSchema(echteEinstellungen())).map((k) => k['@type']);
+    expect(typen).toEqual(['Organization', 'WebSite', 'Locksmith']);
+    expect(knoten(echteEinstellungen(), 'Locksmith')['@id']).toBe(KENNUNG.betrieb);
+  });
+
+  it('Seiten-Graphen verweisen nur per @id auf den Betrieb und definieren ihn nicht erneut', () => {
+    const seite = graph(pageGraphSchema({
+      path: '/schliessanlagen',
+      name: 'Schließanlagen',
+      crumbs: [{ href: '/schliessanlagen', label: 'Schließanlagen' }],
+      service: { name: 'Schließanlagen', description: 'Wir planen Ihre Schließanlage.' },
+    }));
+    expect(seite.map((k) => k['@type'])).toEqual(['WebPage', 'Service', 'BreadcrumbList']);
+    const service = seite.find((k) => k['@type'] === 'Service')!;
+    expect(service).toMatchObject({
+      name: 'Schließanlagen',
+      description: 'Wir planen Ihre Schließanlage.',
+      provider: { '@id': KENNUNG.betrieb },
+      areaServed: { '@type': 'Country', name: 'Deutschland' },
+    });
+    expect(Object.keys(service.provider as object)).toEqual(['@id']);
+  });
+
+  it('auf einer Seite kommt jede Kennung nur einmal als Definition vor (Layout + Seite)', () => {
+    const settings = echteEinstellungen();
+    const knotenDerSeite = [
+      ...graph(localBusinessSchema(settings)),
+      ...graph(pageGraphSchema({
+        path: '/autoschluessel/nachmachen',
+        name: 'Autoschlüssel nachmachen',
+        crumbs: [{ href: '/autoschluessel', label: 'Autoschlüssel' }, { href: '/autoschluessel/nachmachen', label: 'Nachmachen' }],
+        service: { name: 'Autoschlüssel nachmachen' },
+        faq: [{ question: 'Frage?', answer: 'Antwort.' }],
+      })),
+    ];
+    const kennungen = knotenDerSeite.map((k) => k['@id']);
+    expect(new Set(kennungen).size).toBe(kennungen.length);
+  });
+
+  it('ohne sichtbaren Kurztext hat die Leistung keine Beschreibung', () => {
+    const service = graph(pageGraphSchema({ path: '/x', name: 'X', service: { name: 'X' } })).find((k) => k['@type'] === 'Service')!;
+    expect(service).not.toHaveProperty('description');
+  });
+
+  it('Brotkrumen beginnen mit der Startseite und doppeln sie nicht; die Startseite hat keine', () => {
+    const krumen = graph(breadcrumbSchema([{ href: '/', label: 'Start' }, { href: '/ratgeber', label: 'Ratgeber' }], 'https://x.test/ratgeber'))
+      .find((k) => k['@type'] === 'BreadcrumbList')!.itemListElement as Array<{ name: string; position: number }>;
+    expect(krumen.map((k) => k.name)).toEqual(['Startseite', 'Ratgeber']);
+    expect(krumen.map((k) => k.position)).toEqual([1, 2]);
+    const start = graph(pageGraphSchema({ path: '/', name: 'Start', crumbs: [{ href: '/', label: 'Start' }] }));
+    expect(start.map((k) => k['@type'])).toEqual(['WebPage']);
+    expect(start[0]['@id']).toMatch(/\/#webpage$/);
+  });
+
+  it('Artikel und Einsatzgebiet nennen keinen Firmennamen fest, sondern verweisen per @id', () => {
+    const artikel = JSON.stringify(articleSchema({ slug: 's', title: 'T', excerpt: 'E', updatedAt: '2026-11-01' } as Parameters<typeof articleSchema>[0]));
+    expect(artikel).not.toContain('SCHLÜSSELMACHER24');
+    expect(artikel).toContain(KENNUNG.organisation);
+    const ort = JSON.stringify(serviceAreaSchema({ slug: 'w', city: 'Wetzlar', state: 'Hessen' } as Parameters<typeof serviceAreaSchema>[0]));
+    expect(ort).toContain(`"provider":{"@id":"${KENNUNG.betrieb}"}`);
+    expect(ort).not.toMatch(/openingHours/);
+  });
+});
+
+describe('Einbindung', () => {
+  const quelle = (datei: string) => readFileSync(path.join(__dirname, '../../app/(site)', datei), 'utf8');
+
+  it('das Root-Layout bindet den Betrieb auf jeder Seite ein, die Startseite nicht noch einmal', () => {
+    expect(quelle('layout.tsx')).toContain('<JsonLd data={localBusinessSchema(settings)} />');
+    expect(quelle('page.tsx')).not.toContain('localBusinessSchema');
   });
 });

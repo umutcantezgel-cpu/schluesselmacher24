@@ -11,12 +11,12 @@ import vehiclesJson from '../../content/vehicles.json';
 
 const gebiete: { liste: CityPage[] } = { liste: [] };
 const rubrikAus = new Set<string>();
-const daten: { linien: CodeLine[]; marken: VehicleMake[]; artikel: StandardArticle[] } = { linien: [], marken: [], artikel: [] };
+const daten: { linien: CodeLine[]; marken: VehicleMake[]; artikel: StandardArticle[]; seiten: Array<{ route: string; updatedAt?: string; seo: { noindex?: boolean } }> } = { linien: [], marken: [], artikel: [], seiten: [] };
 
 vi.mock('@/lib/data', () => ({
   getVehicleMakes: async () => daten.marken,
   getCodeLines: async () => daten.linien,
-  getCollection: async (name: string) => (name === 'standardArticles' ? daten.artikel : []),
+  getCollection: async (name: string) => (name === 'standardArticles' ? daten.artikel : name === 'pages' ? daten.seiten : []),
   getServicePages: async () => [
     { ...defaults.servicePages()[0], slug: 'sichtbar', seo: { ...defaults.servicePages()[0].seo, noindex: false } },
     { ...defaults.servicePages()[0], slug: 'versteckt', seo: { ...defaults.servicePages()[0].seo, noindex: true } },
@@ -176,6 +176,24 @@ describe('Sitemap', () => {
       expect(urls).not.toContain('/motorradschluessel/anfrage');
     } finally {
       motorrad.indexierbar = true;
+    }
+  });
+
+  it('führt eigene Inhaltsseiten des Betreibers nur ohne noindex (FA-KERN-05)', async () => {
+    // Erfundene Adressen (G4): eine freigegebene, eine auf noindex, eine vorhandene Route, die keine eigene Seite ist.
+    daten.seiten = [
+      { route: 'werkstatt-rundgang', updatedAt: '2026-11-01T10:00:00.000Z', seo: { noindex: false } },
+      { route: 'entwurf-seite', seo: { noindex: true } },
+      { route: 'schliessanlagen', seo: { noindex: false } },
+    ];
+    try {
+      const pfade = (await sitemap()).map((e) => new URL(e.url).pathname);
+      expect(pfade).toContain('/werkstatt-rundgang');
+      expect(pfade).not.toContain('/entwurf-seite');
+      // Die eingebaute Seite steht genau einmal da, nicht zusätzlich als eigene Seite.
+      expect(pfade.filter((pfad) => pfad === '/schliessanlagen')).toHaveLength(1);
+    } finally {
+      daten.seiten = [];
     }
   });
 

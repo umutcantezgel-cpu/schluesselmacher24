@@ -107,3 +107,13 @@ Prüfung nach der Nachbesserung (Datenweiche):
 - `npm run typecheck`: ohne Fehler. `npm run lint`: ohne Fehler.
 - `--pg … vitest.db.config.ts`: 21 Dateien, 118 Tests grün.
 - `npm run build`: erfolgreich.
+
+
+## ABNAHME (Orchestrator, 15.11.2026)
+
+- **Prüfkette** (`werkzeuge/abnahme.sh FA-KERN-05`): Typprüfung und Lint grün, Datenbanktests 118 in 21 Dateien grün (mit der Migration `20261115_210337_admin_alltag`), Build ohne Datenbank 177 von 177 Seiten. Unit 3.117 von 3.118: Der eine rote Test (`seiten.test.tsx`, Seitenkopf der Motorradanfrage) suchte den Kopf als erstes Kind der Seite und stolperte über die Seitenauszeichnung, die das gleichzeitig laufende Paket FA-SEO-01C davor gesetzt hat. Der Test findet den Kopf jetzt über sein Merkmal; danach waren die betroffenen Dateien grün (76 Tests). Der volle Lauf folgt mit der Abnahme von FA-SEO-01C.
+- **Roter Test aus FA-INHALT-03F** (`etappen.test.ts`): Die Etappe des Termin-Assistenten heißt jetzt „Unterlagen hochladen“ wie der Ablaufschritt der Rubrik Autoschlüssel.
+- **Nachgezogen:** Eigene Inhaltsseiten des Betreibers stehen in der Sitemap, sobald „Nicht in Suchmaschinen aufnehmen“ aus ist (`src/app/sitemap.ts`, mit Test). Der Schalter `ZAHLUNG_ERSTATTUNG` steht leer in `.env.example`.
+- **Freigegeben:** die neu erzeugte `src/app/(payload)/admin/importMap.js` (ohne sie fehlen die drei neuen Knöpfe im Backend).
+- **Sichtprobe:** nicht im Backend durchgeklickt; die Regeln sind durch Unit- und Datenbanktests belegt. Die Anleitung `docs/betrieb/admin-alltag.md` soll das Team einmal im Backend nachklicken (MA-46).
+- **Fragen an den Inhaber** (MA-46): Aufbewahrung der Mailtexte, Rückkanal für Antworten der Kunden, Berichtigung von Erstattungen nur durch den Inhaber.

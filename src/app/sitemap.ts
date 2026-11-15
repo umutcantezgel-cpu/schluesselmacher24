@@ -1,5 +1,7 @@
 import type { MetadataRoute } from 'next';
 
+import { eigeneSeiteAdresse } from '@/payload/hooks/seiten-adresse-pruefung';
+
 import { artikelPfad, istIndexierbar } from '@/lib/artikel';
 import {
   getCities,
@@ -143,6 +145,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'weekly',
     priority: route.priority,
   }));
+
+  // Eigene Inhaltsseiten des Betreibers (FA-KERN-05): nur, wenn „Nicht in Suchmaschinen aufnehmen“ aus ist.
+  for (const page of pages) {
+    if (eigeneSeiteAdresse([page.route]) && !page.seo?.noindex) {
+      entries.push({ url: `${siteUrl}/${page.route}`, ...geaendert(page.updatedAt), changeFrequency: 'monthly', priority: 0.4 });
+    }
+  }
 
   for (const make of makes) {
     if (markeIndexierbar(make)) {
