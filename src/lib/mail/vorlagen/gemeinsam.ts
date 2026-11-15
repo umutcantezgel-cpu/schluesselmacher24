@@ -39,6 +39,7 @@ export const ZAHLUNG_LABEL: Record<PaymentInfo['status'], string> = {
   bezahlt: 'bezahlt',
   fehlgeschlagen: 'nicht abgeschlossen',
   erstattet: 'erstattet',
+  'teilweise-erstattet': 'teilweise erstattet',
 };
 
 export const UMFANG_LABEL: Record<PaymentInfo['scope'], string> = {

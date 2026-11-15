@@ -52,6 +52,7 @@ const ZAHLUNGSSTAND: Record<string, string> = {
   bezahlt: 'Bezahlt',
   fehlgeschlagen: 'Fehlgeschlagen',
   erstattet: 'Erstattet',
+  'teilweise-erstattet': 'Teilweise erstattet',
 };
 
 const veraltet = (grund: string) => `Der Vorgang wurde inzwischen geändert (${grund}). Bitte die Seite neu laden.`;
@@ -126,7 +127,7 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
   const gespeichert = originalDoc.zahlung;
   const formularZahlung = data.zahlung?.status;
   if (
-    gespeichert?.status === 'bezahlt'
+    (gespeichert?.status === 'bezahlt' || gespeichert?.status === 'teilweise-erstattet')
     && gespeichert.anbieterRef
     && (formularZahlung === 'offen' || formularZahlung === 'fehlgeschlagen')
   ) {
@@ -209,7 +210,7 @@ export const vorgangVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({ dat
   // oder wenn der Preis danach eingetragen bzw. geändert wird.
   if (mitFreigabeZahlung && (data.status ?? originalDoc.status) === 'freigegeben' && mitPreis) {
     const alt = originalDoc.zahlung;
-    const erledigt = alt?.status === 'bezahlt' || alt?.status === 'erstattet';
+    const erledigt = alt?.status === 'bezahlt' || alt?.status === 'erstattet' || alt?.status === 'teilweise-erstattet';
     const betragAlt = alt?.umfang ? (alt.betragCent ?? null) : null;
     if (!erledigt && (statusWechsel || betragAlt !== preis)) {
       if (alt?.status === 'offen' && alt.checkoutSitzung) vorhaben.sitzungBeenden = alt.checkoutSitzung;

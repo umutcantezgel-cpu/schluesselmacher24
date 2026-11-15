@@ -114,7 +114,8 @@ export async function produktionslisteHandler(req: PayloadRequest): Promise<Resp
     where: {
       and: [
         { art: { equals: 'bestellung' } },
-        { 'zahlung.status': { equals: 'bezahlt' } },
+        // Wie `inProduktion()`: auch nach einer Teilerstattung (etwa eine Position storniert) wird gefertigt.
+        { 'zahlung.status': { in: ['bezahlt', 'teilweise-erstattet'] } },
         { status: { not_in: ['versendet', 'abgeschlossen', 'storniert'] } },
       ],
     },

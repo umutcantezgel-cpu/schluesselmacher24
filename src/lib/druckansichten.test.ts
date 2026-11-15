@@ -130,6 +130,10 @@ describe('Produktionsliste', () => {
 
   it('nur bezahlt und nicht versendet, nur Code- und Zylinderpositionen, älteste Zahlung zuerst', () => {
     expect(vorgaenge.filter(inProduktion).map((v) => v.id)).toEqual(['2', '1']);
+    // Teilerstattung (etwa eine Position storniert): Der Rest wird weiter gefertigt.
+    const teilweise = bestellung({ id: '6', payment: { scope: 'gesamt', amountCents: 3075, status: 'teilweise-erstattet', refundedCents: 300 } });
+    expect(inProduktion(teilweise)).toBe(true);
+    expect(inProduktion(bestellung({ id: '7', payment: { scope: 'gesamt', amountCents: 3075, status: 'erstattet' } }))).toBe(false);
     const positionen = produktionsPositionen(vorgaenge);
     expect(positionen.map((p) => [p.nummer, p.art, p.stueck])).toEqual([
       ['SM24-B-2026-0001', 'code-schluessel', 2],

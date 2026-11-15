@@ -12,6 +12,7 @@ import { fahrzeugklasseText } from '../fahrzeuge/anfrage-klassen';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '../format';
 import { ART_LABEL, BEREICH_LABEL, UMFANG_LABEL, ZAHLUNG_LABEL } from '../mail/vorlagen/gemeinsam';
 import { DIENSTLEISTER } from '../mail/vorlagen/status';
+import { vermittlungZeilen } from '../partner/vermittlung';
 import { vorgangOrtText } from '../terminort';
 import type { BusinessRecord, CompanyProfile, PriceQuote, RecordConsents, RecordStatus, UploadRef } from '../types';
 import { STATUS_LABEL } from '../vorgang-status';
@@ -228,6 +229,10 @@ export function vorgangsblattInhalt({ vorgang, firma, bilder = [], jetzt = new D
   // Auftragsweg, Gesamtpreis und Rest (FA-KERN-03).
   const weg = auftragswegZeilen(vorgang);
   if (weg.length) abschnitte.push({ titel: 'Auftragsweg und Rest', zeilen: weg.map(([name, wert]) => ({ name, wert })) });
+
+  // Vermittlung, Partnerauszahlung und Erstattung (FA-KERN-04).
+  const vermittlung = vermittlungZeilen(vorgang);
+  if (vermittlung.length) abschnitte.push({ titel: 'Vermittlung und Auszahlung', zeilen: vermittlung.map(([name, wert]) => ({ name, wert })) });
 
   if (vorgang.approval && Object.keys(vorgang.approval).length) {
     const freigabe = vorgang.approval;

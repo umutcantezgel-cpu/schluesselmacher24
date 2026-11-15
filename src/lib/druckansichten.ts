@@ -17,6 +17,7 @@ import { formatCents, formatDate, formatDateTime, formatDuration } from './forma
 import { fahrzeugklasseText } from './fahrzeuge/anfrage-klassen';
 import { escapeHtml } from './mail/html';
 import { ART_LABEL, BEREICH_LABEL, UMFANG_LABEL, ZAHLUNG_LABEL } from './mail/vorlagen/gemeinsam';
+import { vermittlungZeilen } from './partner/vermittlung';
 import { vorgangOrtText } from './terminort';
 import type { BusinessRecord, CompanyProfile, OrderLine, UploadRef } from './types';
 import { STATUS_LABEL } from './vorgang-status';
@@ -207,6 +208,12 @@ export function vorgangsblattHtml({ vorgang, firma, nonce, jetzt = new Date() }:
     teile.push('<section><h2>Auftragsweg und Rest</h2>', tabelle(wegZeilen.map(([name, wert]) => [name, t(wert)])), '</section>');
   }
 
+  // Vermittlung, Partnerauszahlung und Erstattung (FA-KERN-04).
+  const vermittlung = vermittlungZeilen(vorgang);
+  if (vermittlung.length) {
+    teile.push('<section><h2>Vermittlung und Auszahlung</h2>', tabelle(vermittlung.map(([name, wert]) => [name, t(wert)])), '</section>');
+  }
+
   if (vorgang.approval && Object.keys(vorgang.approval).length) {
     const freigabe = vorgang.approval;
     teile.push(
@@ -271,7 +278,7 @@ export interface Produktionsposition {
 export function inProduktion(vorgang: BusinessRecord): boolean {
   return (
     vorgang.kind === 'bestellung'
-    && vorgang.payment?.status === 'bezahlt'
+    && (vorgang.payment?.status === 'bezahlt' || vorgang.payment?.status === 'teilweise-erstattet')
     && !['versendet', 'abgeschlossen', 'storniert'].includes(vorgang.status)
   );
 }

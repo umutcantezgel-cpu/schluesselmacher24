@@ -7,7 +7,9 @@
    erst beim Versand geladen. Wer versendet, schreibt das Protokoll selbst.
    ========================================================================== */
 
+import { istPartnerAnfrage } from '../auftragsweg';
 import { istFotoanfrage } from '../foto-freigabe';
+import { zahlungEingegangen } from '../partner/vermittlung';
 import type { BusinessRecord, MailLogEntry, RecordStatus, Settings } from '../types';
 import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from './versand';
 
@@ -26,9 +28,11 @@ export function vertragsbestaetigungOffen(vorgang: BusinessRecord): boolean {
   // Fotoanfrage: nur, wenn die Zahlung zu einer Freigabe gehört (Status danach „In Fertigung“ o. ä.),
   // nicht bei einer Zahlung, die etwa gleichzeitig zur Rückfrage oder Absage einging.
   const fotoauftrag = istFotoanfrage(vorgang)
-    && vorgang.payment?.status === 'bezahlt'
+    && zahlungEingegangen(vorgang.payment?.status)
     && (['in-fertigung', 'versendet', 'abgeschlossen'] as RecordStatus[]).includes(vorgang.status);
-  if (vorgang.kind !== 'bestellung' && vorgang.kind !== 'termin' && !fotoauftrag) return false;
+  // Bezahlte Partner-Anfrage (FA-KERN-04): Mit der Zahlung des Gesamtbetrags ist der Auftrag verbindlich.
+  const partnerauftrag = istPartnerAnfrage(vorgang) && vorgang.payment?.scope === 'gesamt' && zahlungEingegangen(vorgang.payment.status);
+  if (vorgang.kind !== 'bestellung' && vorgang.kind !== 'termin' && !fotoauftrag && !partnerauftrag) return false;
   if (vorgang.status === 'storniert' || vorgang.status === 'nicht-moeglich') return false;
   return !(vorgang.mailLog ?? []).some((eintrag) => eintrag.kind === 'vertrag' && eintrag.result === 'gesendet');
 }

@@ -8,6 +8,7 @@
 import { istPartnerAnfrage } from '../../auftragsweg';
 import { istEinsendung } from '../../einsenden/vorgang';
 import { istFotoanfrage } from '../../foto-freigabe';
+import { zahlungEingegangen } from '../../partner/vermittlung';
 import type { BusinessRecord, ShipmentCarrier } from '../../types';
 import { anrede, baueMail, type Baustein, type MailInhalt } from '../html';
 import { freigabeMail } from './freigabe';
@@ -129,7 +130,7 @@ export function statusMail({ vorgang, status, nachricht, kontext, zahlungsLink, 
         art: 'absatz',
         text:
           'Ihr Vorgang wurde storniert.'
-          + (vorgang.payment?.status === 'bezahlt' ? ' Zu einer bereits geleisteten Zahlung melden wir uns gesondert.' : ''),
+          + (zahlungEingegangen(vorgang.payment?.status) ? ' Zu einer bereits geleisteten Zahlung melden wir uns gesondert.' : ''),
       });
       break;
   }

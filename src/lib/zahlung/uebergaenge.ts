@@ -137,7 +137,7 @@ function bezahlt(
 ): Uebergang | null {
   const notizen: TimelineEntry[] = [];
 
-  if (zahlung.status === 'bezahlt' || zahlung.status === 'erstattet') {
+  if (zahlung.status === 'bezahlt' || zahlung.status === 'erstattet' || zahlung.status === 'teilweise-erstattet') {
     // Dieselbe Sitzung noch einmal (Rückkehr und Webhook): nichts zu tun.
     if (zahlung.checkoutSessionId === sitzung.id || (sitzung.paymentIntent && zahlung.providerRef === sitzung.paymentIntent)) {
       return null;
@@ -354,7 +354,9 @@ export function zahlungsUebergang(
       const bisher = zahlung.refundedCents ?? 0;
       if (erstattetCent <= bisher && (!vollstaendig || zahlung.status === 'erstattet')) return null;
       const neu = Math.max(erstattetCent - bisher, 0);
-      const erstattet: PaymentInfo = { ...zahlung, refundedCents: erstattetCent, status: vollstaendig ? 'erstattet' : zahlung.status };
+      // Teilerstattung: Zahlungsstand „teilweise erstattet“ (FA-KERN-04), damit er eindeutig ist und die Partnerauszahlung sperrt.
+      const teil = zahlung.status === 'bezahlt' || zahlung.status === 'teilweise-erstattet' ? 'teilweise-erstattet' : zahlung.status;
+      const erstattet: PaymentInfo = { ...zahlung, refundedCents: erstattetCent, status: vollstaendig ? 'erstattet' : teil };
       return {
         aenderung: {
           payment: erstattet,

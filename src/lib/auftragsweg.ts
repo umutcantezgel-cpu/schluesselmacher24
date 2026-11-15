@@ -269,14 +269,15 @@ export function faelligZeilen(weg: Auftragsweg, quote: PriceQuote): Array<{ labe
  * Rest nach Anrechnung der Online-Zahlung: Gesamtpreis minus Betrag der Zahlung (Anzahlung oder
  * Gesamtbetrag). Angerechnet wird nur eine eingegangene Zahlung (`bezahlt`); offen, fehlgeschlagen oder
  * erstattet zählt nichts. Ohne Gesamtpreis gibt es keinen Rest (`undefined`).
- * Den Zahlungsstand „teilweise erstattet“ ergänzt FA-KERN-04.
+ * „Teilweise erstattet“ (FA-KERN-04) zählt wie „bezahlt“.
  */
 export function restbetragCents(
   gesamtpreisCents: number | null | undefined,
   zahlung: Pick<PaymentInfo, 'amountCents' | 'status'> | null | undefined,
 ): number | undefined {
   if (typeof gesamtpreisCents !== 'number' || !Number.isFinite(gesamtpreisCents) || gesamtpreisCents < 0) return undefined;
-  const angerechnet = zahlung?.status === 'bezahlt' ? Math.max(0, zahlung.amountCents || 0) : 0;
+  // „Teilweise erstattet“ (FA-KERN-04) bleibt eingegangen; die Erstattung ändert den Rest nicht (wie bisher die Teilerstattung).
+  const angerechnet = zahlung?.status === 'bezahlt' || zahlung?.status === 'teilweise-erstattet' ? Math.max(0, zahlung.amountCents || 0) : 0;
   return Math.max(0, Math.round(gesamtpreisCents) - angerechnet);
 }
 

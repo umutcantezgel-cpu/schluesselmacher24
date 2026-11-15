@@ -50,7 +50,7 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
   const partnerAnfrage = istPartnerAnfrage(vorgang);
   const gesamtTermin = termin && zahlung.scope === 'gesamt';
   // „Nicht möglich“ beendet den Vorgang wie eine Stornierung: keine offene Zahlung mehr anzeigen.
-  if (vorgang.status === 'nicht-moeglich' && zahlung.status !== 'bezahlt' && zahlung.status !== 'erstattet') return null;
+  if (vorgang.status === 'nicht-moeglich' && zahlung.status !== 'bezahlt' && zahlung.status !== 'erstattet' && zahlung.status !== 'teilweise-erstattet') return null;
   const storniert = vorgang.status === 'storniert';
 
   if (zahlung.status === 'bezahlt') {
@@ -64,7 +64,8 @@ export function zahlungsAnsicht(vorgang: BusinessRecord, umfeld: AnsichtsUmfeld)
         : 'Ihre Zahlung ist eingegangen.';
     return { ton: 'success', titel: 'Vielen Dank', text };
   }
-  if (zahlung.status === 'erstattet') return null;
+  // Erstattet, ganz oder teilweise (FA-KERN-04): Den Stand nennt die Vorgangsseite in einem eigenen Satz.
+  if (zahlung.status === 'erstattet' || zahlung.status === 'teilweise-erstattet') return null;
 
   if (!umfeld.online) {
     if (zahlung.status !== 'offen') return null;

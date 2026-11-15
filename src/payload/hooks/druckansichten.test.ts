@@ -60,7 +60,7 @@ describe('Druckansichten', () => {
     expect(html).toContain('<th>Kameras</th><td>4</td>');
   });
 
-  it('lehnt ungültige Kennungen ab und fragt nur offene, bezahlte Bestellungen ab', async () => {
+  it('lehnt ungültige Kennungen ab und fragt nur offene, bezahlte (auch teilweise erstattete) Bestellungen ab', async () => {
     expect((await vorgangsblattHandler(req(MITARBEITER, { id: '4x' }))).status).toBe(404);
     const liste = await produktionslisteHandler(req(MITARBEITER));
     expect(liste.status).toBe(200);
@@ -70,7 +70,7 @@ describe('Druckansichten', () => {
         where: {
           and: [
             { art: { equals: 'bestellung' } },
-            { 'zahlung.status': { equals: 'bezahlt' } },
+            { 'zahlung.status': { in: ['bezahlt', 'teilweise-erstattet'] } },
             { status: { not_in: ['versendet', 'abgeschlossen', 'storniert'] } },
           ],
         },

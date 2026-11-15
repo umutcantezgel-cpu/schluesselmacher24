@@ -45,7 +45,8 @@ export async function zahlungFortsetzen(eingabe: { recordId: string; token: stri
 
   const zahlung = vorgang.payment;
   if (!zahlung) return { ok: false, meldung: 'Für diesen Vorgang ist keine Online-Zahlung vorgesehen.' };
-  if (zahlung.status === 'bezahlt' || zahlung.status === 'erstattet') {
+  // „Teilweise erstattet“ (FA-KERN-04) ist ebenfalls schon bezahlt.
+  if (zahlung.status === 'bezahlt' || zahlung.status === 'erstattet' || zahlung.status === 'teilweise-erstattet') {
     return { ok: false, meldung: 'Dieser Vorgang ist bereits bezahlt.' };
   }
   const termin = vorgang.kind === 'termin';
@@ -122,7 +123,7 @@ export async function zahlungFortsetzen(eingabe: { recordId: string; token: stri
 
     const at = new Date().toISOString();
     await vorgangAendern(vorgang.id, (v) => {
-      if (!v.payment || v.payment.status === 'bezahlt' || v.payment.status === 'erstattet') return null;
+      if (!v.payment || v.payment.status === 'bezahlt' || v.payment.status === 'erstattet' || v.payment.status === 'teilweise-erstattet') return null;
       return {
         payment: {
           ...v.payment,

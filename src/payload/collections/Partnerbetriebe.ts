@@ -141,6 +141,30 @@ export const Partnerbetriebe: CollectionConfig = {
         ] },
       ],
     },
+    {
+      // Konto beim Zahlungsdienst (FA-KERN-04): nur für die vorbereitete Auszahlung über Stripe Connect.
+      name: 'kontoKennung',
+      type: 'text',
+      label: 'Konto-Kennung beim Zahlungsdienst',
+      admin: {
+        description: 'Freiwillig. Kennung des verbundenen Kontos bei Stripe Connect (acct_…). Ohne sie zahlt das Team von Hand aus.',
+      },
+      validate: (wert: unknown) =>
+        wert === null || wert === undefined || wert === '' || /^acct_[A-Za-z0-9]{6,64}$/.test(String(wert))
+          ? true
+          : 'Bitte eine Kennung im Format acct_… eintragen.',
+    },
+    {
+      // Vorgänge dieses Partners mit offener, freigegebener oder gesperrter Auszahlung (FA-KERN-04). Nur Anzeige.
+      name: 'offeneAuszahlungen',
+      type: 'join',
+      collection: 'vorgaenge',
+      on: 'vermittlung.partnerbetrieb',
+      label: 'Vorgänge mit offener Auszahlung',
+      where: { 'auszahlung.stand': { in: ['offen', 'freigegeben', 'gesperrt'] } },
+      defaultLimit: 50,
+      admin: { allowCreate: false, defaultColumns: ['nummer', 'vermittlung.status', 'auszahlung.stand', 'vermittlung.partnerbetragCent'] },
+    },
     { name: 'bewerbung', type: 'relationship', relationTo: 'vorgaenge', label: 'Bewerbung (Vorgang)', filterOptions: { art: { equals: 'partner' } } },
     { name: 'notiz', type: 'textarea', label: 'Interne Notiz' },
     kennungFeld(),

@@ -13,6 +13,7 @@
 import { EINSENDE_STATUS, istEinsendung } from './einsenden/vorgang';
 import { fotoanfrageVerlauf, istFotoanfrage } from './foto-freigabe';
 import { DIENSTLEISTER, verfolgungsLink } from './mail/vorlagen/status';
+import { formatCents } from './format';
 import type { BusinessRecord, RecordKind, RecordStatus } from './types';
 import { ERLEDIGTE_STATUS } from './vorgang-status';
 
@@ -180,6 +181,23 @@ export interface KundenSendung {
   dienstleister?: string;
   nummer?: string;
   link?: string;
+}
+
+/**
+ * Erstattung in einem ruhigen Satz (FA-KERN-04): ganz oder teilweise, mit Betrag. Ohne Erstattung `null`.
+ */
+export function kundenErstattung(vorgang: Pick<BusinessRecord, 'payment'>): string | null {
+  const zahlung = vorgang.payment;
+  if (!zahlung || (zahlung.status !== 'erstattet' && zahlung.status !== 'teilweise-erstattet')) return null;
+  const betrag = zahlung.refundedCents ?? (zahlung.status === 'erstattet' ? zahlung.amountCents : undefined);
+  if (zahlung.status === 'erstattet') {
+    return typeof betrag === 'number'
+      ? `Wir haben Ihnen den Betrag von ${formatCents(betrag)} erstattet. Je nach Zahlart dauert es einige Tage, bis er auf Ihrem Konto ist.`
+      : 'Wir haben Ihnen den Betrag erstattet. Je nach Zahlart dauert es einige Tage, bis er auf Ihrem Konto ist.';
+  }
+  return typeof betrag === 'number'
+    ? `Wir haben Ihnen ${formatCents(betrag)} erstattet. Je nach Zahlart dauert es einige Tage, bis der Betrag auf Ihrem Konto ist.`
+    : 'Wir haben Ihnen einen Teil des Betrags erstattet. Je nach Zahlart dauert es einige Tage, bis er auf Ihrem Konto ist.';
 }
 
 export function kundenSendung(vorgang: Pick<BusinessRecord, 'status' | 'shipment'>): KundenSendung | undefined {

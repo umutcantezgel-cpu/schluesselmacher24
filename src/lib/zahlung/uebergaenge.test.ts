@@ -230,14 +230,19 @@ describe('zahlungsUebergang: Erstattung und Streitfall', () => {
     erstattung: { betragCent: 6990, erstattetCent, vollstaendig, waehrung: 'eur' },
   });
 
-  it('vermerkt Teilerstattungen und setzt bei voller Erstattung „erstattet“', () => {
+  it('vermerkt Teilerstattungen als „teilweise erstattet“ und setzt bei voller Erstattung „erstattet“', () => {
     const teil = zahlungsUebergang(bezahlt(), erstattung(2000, false), KONTEXT);
     expect(teil?.ergebnis).toBe('teilerstattet');
-    expect(teil?.aenderung?.payment).toMatchObject({ status: 'bezahlt', refundedCents: 2000 });
+    // FA-KERN-04: eindeutiger Zahlungsstand statt „bezahlt“ mit erstattetem Betrag.
+    expect(teil?.aenderung?.payment).toMatchObject({ status: 'teilweise-erstattet', refundedCents: 2000 });
     expect(teil?.mail).toEqual({ art: 'erstattet', betragCent: 2000 });
 
     const nachTeil = vorgang({}, { status: 'bezahlt', providerRef: 'pi_1', refundedCents: 2000 });
     expect(zahlungsUebergang(nachTeil, erstattung(2000, false), KONTEXT)).toBeNull();
+
+    const nachTeilNeu = vorgang({}, { status: 'teilweise-erstattet', providerRef: 'pi_1', refundedCents: 2000 });
+    expect(zahlungsUebergang(nachTeilNeu, erstattung(2000, false), KONTEXT)).toBeNull();
+    expect(zahlungsUebergang(nachTeilNeu, erstattung(3000, false), KONTEXT)?.aenderung?.payment).toMatchObject({ status: 'teilweise-erstattet', refundedCents: 3000 });
 
     const voll = zahlungsUebergang(nachTeil, erstattung(6990, true), KONTEXT);
     expect(voll?.ergebnis).toBe('erstattet');

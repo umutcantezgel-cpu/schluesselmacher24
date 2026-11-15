@@ -55,6 +55,8 @@ import type {
   PricingRule,
   ReferralInfo,
   RemainderInfo,
+  PayoutInfo,
+  RefundInfo,
   FahrzeugReihe,
   Rubrik,
   SeoFields,
@@ -1172,6 +1174,8 @@ export type VorgangsAenderung = Partial<
     | 'referral'
     | 'auftragsweg'
     | 'remainder'
+    | 'payout'
+    | 'refund'
   >
 >;
 
@@ -1281,6 +1285,17 @@ function vermittlungZuSeite(v: Vorgaenge['vermittlung']): ReferralInfo | undefin
   if (betrieb !== null && betrieb !== undefined) referral.partnerBetriebId = String(betrieb);
   if (v.provisionCent !== null && v.provisionCent !== undefined) referral.commissionCents = Number(v.provisionCent);
   if (v.notiz) referral.note = v.notiz;
+  // Vermittlung und Auszahlung (FA-KERN-04).
+  if (v.auftragsart) referral.orderType = v.auftragsart;
+  if (typeof v.gesamtCent === 'number') referral.totalCents = v.gesamtCent;
+  if (typeof v.plattformanteilCent === 'number') referral.platformCents = v.plattformanteilCent;
+  if (typeof v.partnerbetragCent === 'number') referral.partnerCents = v.partnerbetragCent;
+  if (v.anteilHinweis) referral.platformHint = v.anteilHinweis;
+  if (v.festgeschriebenAm) referral.fixedAt = v.festgeschriebenAm;
+  if (v.kundeBestaetigtAm) referral.customerConfirmedAt = v.kundeBestaetigtAm;
+  if (v.teamBestaetigungGrund) referral.teamConfirmReason = v.teamBestaetigungGrund;
+  if (v.bestaetigungGesendetAm) referral.confirmSentAt = v.bestaetigungGesendetAm;
+  if (v.bestaetigungHash) referral.confirmTokenHash = v.bestaetigungHash;
   return Object.keys(referral).length ? referral : undefined;
 }
 
@@ -1296,7 +1311,59 @@ function vermittlungZuPayload(referral: ReferralInfo): NonNullable<VorgangDaten[
     partnerbetrieb: referral.partnerBetriebId ? Number(referral.partnerBetriebId) : null,
     provisionCent: referral.commissionCents ?? null,
     notiz: referral.note ?? null,
+    auftragsart: (referral.orderType ?? null) as NonNullable<VorgangDaten['vermittlung']>['auftragsart'],
+    gesamtCent: referral.totalCents ?? null,
+    plattformanteilCent: referral.platformCents ?? null,
+    partnerbetragCent: referral.partnerCents ?? null,
+    anteilHinweis: referral.platformHint ?? null,
+    festgeschriebenAm: referral.fixedAt ?? null,
+    kundeBestaetigtAm: referral.customerConfirmedAt ?? null,
+    teamBestaetigungGrund: referral.teamConfirmReason ?? null,
+    bestaetigungGesendetAm: referral.confirmSentAt ?? null,
+    bestaetigungHash: referral.confirmTokenHash ?? null,
   };
+}
+
+/** Partnerauszahlung (FA-KERN-04); ohne Angaben `undefined`. */
+function auszahlungZuSeite(a: Vorgaenge['auszahlung']): PayoutInfo | undefined {
+  if (!a) return undefined;
+  const payout: PayoutInfo = {};
+  if (a.stand) payout.status = a.stand;
+  if (a.freigegebenAm) payout.releasedAt = a.freigegebenAm;
+  if (a.freigegebenVon) payout.releasedBy = a.freigegebenVon;
+  if (a.ausgezahltAm) payout.paidAt = a.ausgezahltAm;
+  if (a.weg) payout.method = a.weg;
+  if (a.referenz) payout.reference = a.referenz;
+  if (a.notiz) payout.note = a.notiz;
+  return Object.keys(payout).length ? payout : undefined;
+}
+
+/** Immer die ganze Gruppe, so wie sie danach gelten soll. */
+function auszahlungZuPayload(payout: PayoutInfo): NonNullable<VorgangDaten['auszahlung']> {
+  return {
+    stand: payout.status ?? null,
+    freigegebenAm: payout.releasedAt ?? null,
+    freigegebenVon: payout.releasedBy ?? null,
+    ausgezahltAm: payout.paidAt ?? null,
+    weg: payout.method ?? null,
+    referenz: payout.reference ?? null,
+    notiz: payout.note ?? null,
+  };
+}
+
+/** Vom Team dokumentierte Erstattung (FA-KERN-04); ohne Angaben `undefined`. */
+function erstattungZuSeite(e: Vorgaenge['erstattung']): RefundInfo | undefined {
+  if (!e) return undefined;
+  const refund: RefundInfo = {};
+  if (e.art) refund.kind = e.art;
+  if (typeof e.betragCent === 'number') refund.amountCents = e.betragCent;
+  if (e.am) refund.at = e.am;
+  if (e.grund) refund.reason = e.grund;
+  return Object.keys(refund).length ? refund : undefined;
+}
+
+function erstattungZuPayload(refund: RefundInfo): NonNullable<VorgangDaten['erstattung']> {
+  return { art: refund.kind ?? null, betragCent: refund.amountCents ?? null, am: refund.at ?? null, grund: refund.reason ?? null };
 }
 
 /** Gesamtpreis und Rest (FA-KERN-03); ohne Angaben `undefined`. */
@@ -1434,6 +1501,10 @@ export function vorgangZuSeite(doc: Vorgaenge): BusinessRecord {
   if (istAuftragsweg(doc.auftragsweg)) record.auftragsweg = doc.auftragsweg;
   const remainder = restzahlungZuSeite(doc.restzahlung);
   if (remainder) record.remainder = remainder;
+  const payout = auszahlungZuSeite(doc.auszahlung);
+  if (payout) record.payout = payout;
+  const refund = erstattungZuSeite(doc.erstattung);
+  if (refund) record.refund = refund;
   return record;
 }
 
@@ -1507,6 +1578,8 @@ export function vorgangZuPayload(record: BusinessRecord): VorgangDaten {
     vermittlung: record.referral ? vermittlungZuPayload(record.referral) : undefined,
     auftragsweg: record.auftragsweg,
     restzahlung: record.remainder ? restzahlungZuPayload(record.remainder, record.payment) : undefined,
+    auszahlung: record.payout ? auszahlungZuPayload(record.payout) : undefined,
+    erstattung: record.refund ? erstattungZuPayload(record.refund) : undefined,
   };
 }
 
@@ -1537,5 +1610,7 @@ export function vorgangAenderungZuPayload(aenderung: VorgangsAenderung): Partial
   if (aenderung.referral !== undefined) daten.vermittlung = vermittlungZuPayload(aenderung.referral);
   if (aenderung.auftragsweg !== undefined) daten.auftragsweg = aenderung.auftragsweg;
   if (aenderung.remainder !== undefined) daten.restzahlung = restzahlungZuPayload(aenderung.remainder, aenderung.payment);
+  if (aenderung.payout !== undefined) daten.auszahlung = auszahlungZuPayload(aenderung.payout);
+  if (aenderung.refund !== undefined) daten.erstattung = erstattungZuPayload(aenderung.refund);
   return daten;
 }

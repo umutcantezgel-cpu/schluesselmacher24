@@ -4,12 +4,16 @@ import { istInhaber, istTeam } from '../access/rollen';
 import { BEREICHE, PROZESSE } from '../fields/gemeinsam';
 import { VORGANG_STATUS } from '../fields/vorgang-status';
 import { auftragswegVorAenderung, partnerVorschlaege } from '../hooks/auftragsweg';
+import { vermittlungNachAenderung, vermittlungVorAenderung } from '../hooks/vermittlung';
 import { bestaetigungSenden } from '../hooks/bestaetigung-senden';
 import { druckansichten } from '../hooks/druckansichten';
 import { terminAktionen } from '../hooks/termin-aktionen';
 import { vorgangNachAenderung, vorgangVorAenderung } from '../hooks/vorgang-benachrichtigen';
 import { AUFTRAGSWEGE, AUFTRAGSWEG_LABEL } from '../../lib/auftragsweg';
 import { KATEGORIE_LABEL } from '../../lib/druckansichten';
+import { AUSZAHLUNG_LABEL, VERMITTLUNG_LABEL, VERMITTLUNG_STAENDE } from '../../lib/partner/vermittlung';
+import { aktiverAuszahlungswegText } from '../../lib/zahlung/auszahlung';
+import { AUFTRAGSARTEN } from './Partnerbetriebe';
 import { fahrzeugklasseText } from '../../lib/fahrzeuge/anfrage-klassen';
 import { unterlagenHinweis } from '../../lib/server/unterlagen-pflicht';
 import type { UploadRef } from '../../lib/types';
@@ -69,21 +73,21 @@ export const MAIL_ARTEN = [
   { label: 'Termin-Erinnerung', value: 'erinnerung' },
   { label: 'Ergebnis der Foto-Prüfung', value: 'freigabe' },
   { label: 'Hinweis an das Team', value: 'team-hinweis' },
+  { label: 'Bitte um Bestätigung der Ausführung', value: 'ausfuehrung' },
   { label: 'Sonstige', value: 'sonstige' },
 ];
 
 /**
- * Stand einer Auftragsvermittlung an einen Partnerbetrieb (Erg. Leitfaden §7).
- * Leer = der Vorgang wird nicht vermittelt.
+ * Stand einer Auftragsvermittlung an einen Partnerbetrieb (Erg. Leitfaden §7, FA-KERN-04): Reihenfolge
+ * und Anzeige nach der Arbeitsanweisung des Inhabers. Leer = der Vorgang wird nicht vermittelt.
  */
-export const VERMITTLUNG_STATUS = [
-  { label: 'neu', value: 'neu' },
-  { label: 'geprüft', value: 'geprueft' },
-  { label: 'Partner angefragt', value: 'partner-angefragt' },
-  { label: 'angenommen', value: 'angenommen' },
-  { label: 'erledigt', value: 'erledigt' },
-  { label: 'Provision abgerechnet', value: 'provision-abgerechnet' },
-];
+export const VERMITTLUNG_STATUS = VERMITTLUNG_STAENDE.map((value) => ({ label: VERMITTLUNG_LABEL[value], value }));
+
+/** Auszahlungsstand (FA-KERN-04), vom Server aus Vermittlung und Zahlungsstand abgeleitet. */
+export const AUSZAHLUNG_STAND = (Object.keys(AUSZAHLUNG_LABEL) as Array<keyof typeof AUSZAHLUNG_LABEL>).map((value) => ({
+  label: AUSZAHLUNG_LABEL[value],
+  value,
+}));
 
 export const VERSANDDIENSTLEISTER = [
   { label: 'DHL', value: 'dhl' },
@@ -136,7 +140,19 @@ export const Vorgaenge: CollectionConfig = {
     useAsTitle: 'nummer',
     // Stand der Vermittlung als Spalte (Erg. Leitfaden §7); filterbar über „Filter“ → „Vermittlung“.
     // Auftragsweg, Zahlungsstand und Rest offen als Spalten und Filter (FA-KERN-03).
-    defaultColumns: ['nummer', 'art', 'bereich', 'status', 'auftragsweg', 'zahlung.status', 'restzahlung.restCent', 'vermittlung.status', 'createdAt'],
+    // Stand der Vermittlung und Auszahlungsstand als Spalten und Filter (FA-KERN-04).
+    defaultColumns: [
+      'nummer',
+      'art',
+      'bereich',
+      'status',
+      'auftragsweg',
+      'zahlung.status',
+      'restzahlung.restCent',
+      'vermittlung.status',
+      'auszahlung.stand',
+      'createdAt',
+    ],
     listSearchableFields: ['nummer', 'kontakt.email', 'kontakt.nachname', 'kontakt.firma', 'vermittlung.notiz'],
     pagination: { defaultLimit: 50 },
     description:
@@ -159,8 +175,10 @@ export const Vorgaenge: CollectionConfig = {
   hooks: {
     // Statusmails, Zahlung von Hand, offene Zahlungsseite beim Stornieren beenden; danach Auftragsweg
     // (Begründung Pflicht) und Restbetrag (FA-KERN-03).
-    beforeChange: [vorgangVorAenderung, auftragswegVorAenderung],
-    afterChange: [vorgangNachAenderung],
+    // Vermittlung, Auszahlung und Erstattung (FA-KERN-04) vor dem Restbetrag, weil eine Erstattung den
+    // Zahlungsstand ändert.
+    beforeChange: [vorgangVorAenderung, vermittlungVorAenderung, auftragswegVorAenderung],
+    afterChange: [vorgangNachAenderung, vermittlungNachAenderung],
   },
   endpoints: [bestaetigungSenden, ...terminAktionen, ...druckansichten],
   fields: [
@@ -493,8 +511,14 @@ export const Vorgaenge: CollectionConfig = {
                   type: 'relationship',
                   relationTo: 'partnerbetriebe',
                   label: 'Partnerbetrieb (Sammlung Partnerbetriebe)',
-                  filterOptions: { status: { equals: 'freigeschaltet' } },
-                  admin: { description: 'Nur freigeschaltete Partnerbetriebe. Bei mehreren passenden entscheidet das Team.' },
+                  // Pausierte und beendete Betriebe bleiben gültig, damit ein laufender Auftrag gespeichert und
+                  // ausgezahlt werden kann. Vermitteln geht nur an freigeschaltete (Hook `vermittlungVorAenderung`).
+                  filterOptions: { status: { in: ['freigeschaltet', 'pausiert', 'beendet'] } },
+                  admin: {
+                    description:
+                      'Vermitteln geht nur an freigeschaltete Partnerbetriebe. Bei mehreren passenden entscheidet das Team. '
+                      + 'Pausierte und beendete erscheinen nur, damit laufende Aufträge abgerechnet werden können.',
+                  },
                 },
                 {
                   // Nur Anzeige, nicht gespeichert (virtuell, keine Migration).
@@ -505,7 +529,110 @@ export const Vorgaenge: CollectionConfig = {
                   admin: { readOnly: true, condition: (_data, siblingData) => Boolean(siblingData?.partnerVorschlaege) },
                   hooks: { afterRead: [partnerVorschlaege] },
                 },
+                {
+                  // Auftragsart der Vermittlung (FA-KERN-04): Der Partner muss sie übernehmen. Bei Autoschlüsseln
+                  // setzt der Server „Autoschlüssel vor Ort“, wenn nichts gewählt ist.
+                  name: 'auftragsart',
+                  type: 'select',
+                  label: 'Auftragsart',
+                  options: AUFTRAGSARTEN,
+                  admin: { description: 'Nur Partnerbetriebe mit dieser Auftragsart können den Auftrag bekommen.' },
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'gesamtCent',
+                      type: 'number',
+                      label: 'Gesamtbetrag (Cent)',
+                      min: 0,
+                      admin: { width: '34%', step: 1, description: 'Vorschlag aus der Zahlung. Mit „ausgeführt“ festgeschrieben.' },
+                    },
+                    {
+                      name: 'plattformanteilCent',
+                      type: 'number',
+                      label: 'Plattformanteil (Cent)',
+                      min: 0,
+                      admin: {
+                        width: '33%',
+                        step: 1,
+                        description: 'Vorschlag aus der Provision des Partnerbetriebs, von Hand änderbar. Mit „ausgeführt“ festgeschrieben.',
+                      },
+                    },
+                    { name: 'partnerbetragCent', type: 'number', label: 'Partnerbetrag (Cent, berechnet)', admin: { width: '33%', ...nurLesen } },
+                  ],
+                },
+                { name: 'anteilHinweis', type: 'text', label: 'Hinweis zum Plattformanteil', admin: { ...nurLesen, condition: (_d, sib) => Boolean(sib?.anteilHinweis) } },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'festgeschriebenAm', type: 'date', label: 'Beträge festgeschrieben am', admin: { width: '34%', ...nurLesen, ...zeitpunkt }, ...systemFeld },
+                    { name: 'bestaetigungGesendetAm', type: 'date', label: 'Bitte um Bestätigung gesendet am', admin: { width: '33%', ...nurLesen, ...zeitpunkt }, ...systemFeld },
+                    { name: 'kundeBestaetigtAm', type: 'date', label: 'Kunde bestätigt am', admin: { width: '33%', ...nurLesen, ...zeitpunkt }, ...systemFeld },
+                  ],
+                },
+                {
+                  name: 'teamBestaetigungGrund',
+                  type: 'textarea',
+                  label: 'Bestätigung durch das Team',
+                  admin: {
+                    description:
+                      'Nur ausfüllen, wenn der Kunde nicht bestätigt und das Team die Ausführung anders belegt hat (etwa Anruf, Foto). '
+                      + 'Pflicht, um ohne Kundenbestätigung zur Auszahlung freizugeben.',
+                  },
+                },
                 { name: 'notiz', type: 'textarea', label: 'Notiz zur Vermittlung', admin: { description: 'Nur für das Team sichtbar.' } },
+                // Einmal-Schlüssel der Kundenbestätigung: nur der Hash, nie lesbar oder im Backend änderbar.
+                { name: 'bestaetigungHash', type: 'text', admin: { hidden: true }, access: { read: () => false, update: () => false } },
+              ],
+            },
+            {
+              // Partnerauszahlung (FA-KERN-04). Der Stand folgt der Vermittlung; eine Erstattung sperrt ihn.
+              name: 'auszahlung',
+              type: 'group',
+              label: 'Auszahlung an den Partner',
+              admin: { condition: (data) => Boolean((data?.vermittlung as { status?: string } | undefined)?.status) },
+              fields: [
+                {
+                  // Nur Anzeige, nicht gespeichert (virtuell, keine Migration).
+                  name: 'aktiverWeg',
+                  type: 'text',
+                  label: 'Weg der Auszahlung',
+                  virtual: true,
+                  admin: { readOnly: true },
+                  hooks: { afterRead: [() => aktiverAuszahlungswegText()] },
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'stand', type: 'select', label: 'Auszahlungsstand', index: true, options: AUSZAHLUNG_STAND, admin: { width: '25%', ...nurLesen } },
+                    { name: 'freigegebenAm', type: 'date', label: 'Freigegeben am', admin: { width: '25%', ...nurLesen, ...zeitpunkt }, ...systemFeld },
+                    { name: 'freigegebenVon', type: 'text', label: 'Freigegeben von', admin: { width: '25%', ...nurLesen }, ...systemFeld },
+                    { name: 'ausgezahltAm', type: 'date', label: 'Ausgezahlt am', admin: { width: '25%', ...zeitpunkt } },
+                  ],
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'weg',
+                      type: 'select',
+                      label: 'Weg',
+                      options: [
+                        { label: 'Überweisung', value: 'ueberweisung' },
+                        { label: 'Zahlungsdienst', value: 'zahlungsdienst' },
+                      ],
+                      admin: { width: '34%' },
+                    },
+                    {
+                      name: 'referenz',
+                      type: 'text',
+                      label: 'Beleg oder Referenz',
+                      admin: { width: '66%', description: 'Bei Überweisung Pflicht für „ausgezahlt“ (etwa Buchungstext oder Belegnummer).' },
+                    },
+                  ],
+                },
+                { name: 'notiz', type: 'textarea', label: 'Notiz zur Auszahlung' },
               ],
             },
           ],
@@ -664,6 +791,7 @@ export const Vorgaenge: CollectionConfig = {
                         { label: 'Bezahlt', value: 'bezahlt' },
                         { label: 'Fehlgeschlagen', value: 'fehlgeschlagen' },
                         { label: 'Erstattet', value: 'erstattet' },
+                        { label: 'Teilweise erstattet', value: 'teilweise-erstattet' },
                       ],
                       admin: {
                         width: '25%',
@@ -688,6 +816,38 @@ export const Vorgaenge: CollectionConfig = {
                   fields: [
                     { name: 'erstattetCent', type: 'number', label: 'Erstattet (Cent)', admin: { width: '50%', ...nurLesen }, ...systemFeld },
                     { name: 'ablaufAm', type: 'date', label: 'Zahlung möglich bis', admin: { width: '50%', ...nurLesen, ...zeitpunkt }, ...systemFeld },
+                  ],
+                },
+              ],
+            },
+            {
+              // Storno und Rückzahlung (FA-KERN-04): Das Team dokumentiert die Erstattung; der Code bewegt kein Geld.
+              name: 'erstattung',
+              type: 'group',
+              label: 'Erstattung',
+              admin: {
+                description:
+                  'Für bezahlte Vorgänge: Art, Betrag (Summe aller Erstattungen), Datum und Grund eintragen. Der Zahlungsstand '
+                  + 'wird „erstattet“ oder „teilweise erstattet“, bei Partneraufträgen ist die Auszahlung danach gesperrt. '
+                  + 'Das Geld selbst erstatten Sie im Stripe-Dashboard oder per Überweisung.',
+              },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'art',
+                      type: 'select',
+                      label: 'Art',
+                      options: [
+                        { label: 'Ganz', value: 'ganz' },
+                        { label: 'Teilweise', value: 'teilweise' },
+                      ],
+                      admin: { width: '25%' },
+                    },
+                    { name: 'betragCent', type: 'number', label: 'Betrag (Cent)', min: 0, admin: { width: '25%', step: 1 } },
+                    { name: 'am', type: 'date', label: 'Erstattet am', admin: { width: '25%', ...zeitpunkt } },
+                    { name: 'grund', type: 'text', label: 'Grund', admin: { width: '25%' } },
                   ],
                 },
               ],

@@ -1,5 +1,6 @@
 /** Mails rund um die Online-Zahlung. Reine Funktionen. */
 
+import { PARTNER_NACH_ZAHLUNG, PARTNER_NICHT_ZUSTANDE, istPartnerAnfrage } from '../../auftragsweg';
 import { formatCents, formatDate } from '../../format';
 import { istFotoanfrage } from '../../foto-freigabe';
 import type { BusinessRecord } from '../../types';
@@ -27,7 +28,11 @@ export function kundeBezahlt({ vorgang, kontext }: ZahlungsDaten): MailInhalt {
   // Auftrag erteilt nur bei einer freigegebenen Fotoanfrage (Status danach „In Fertigung“);
   // kam die Zahlung etwa gleichzeitig zur Rückfrage oder Absage, entscheidet das Team.
   const foto = istFotoanfrage(vorgang) && vorgang.status === 'in-fertigung';
-  const einleitung = termin
+  // Partnerweg (FA-KERN-04): Gesamtbetrag, kein reserviertes Zeitfenster.
+  const partner = vorgang.payment?.scope === 'gesamt' && (vorgang.kind === 'termin' || istPartnerAnfrage(vorgang));
+  const einleitung = partner
+    ? `Ihre Zahlung über den Gesamtbetrag ist bei uns eingegangen, vielen Dank. ${PARTNER_NACH_ZAHLUNG}`
+    : termin
     ? `Ihre Anzahlung ist bei uns eingegangen, vielen Dank. Ihr Termin am ${formatDate(vorgang.appointment!.date)} `
       + `um ${vorgang.appointment!.time} Uhr bleibt für Sie reserviert.`
     : foto
@@ -98,7 +103,32 @@ export function kundeNichtAbgeschlossen({
   terminFreigegeben,
 }: ZahlungsDaten & { terminFreigegeben: boolean }): MailInhalt {
   const bausteine: Baustein[] = [];
-  if (vorgang.kind === 'termin') {
+  // Partnerweg (FA-KERN-04): Gesamtbetrag statt Anzahlung, kein reserviertes Zeitfenster der Werkstatt.
+  const partnerTermin = vorgang.kind === 'termin' && vorgang.payment?.scope === 'gesamt';
+  if (partnerTermin) {
+    bausteine.push(
+      {
+        art: 'absatz',
+        text: terminFreigegeben
+          ? `zu Ihrem Auftrag über einen Partnerbetrieb gilt: ${PARTNER_NICHT_ZUSTANDE}`
+          : 'die Zahlung des Gesamtbetrags zu Ihrem Auftrag ist nicht bei uns eingegangen. Wir melden uns bei Ihnen.',
+      },
+      nummerBaustein(vorgang),
+    );
+    if (terminFreigegeben) {
+      bausteine.push({ art: 'knopf', href: `${ohneSchraegstrich(kontext.site)}${neuBuchenHref(vorgang)}`, label: 'Neu buchen' });
+    }
+  } else if (istPartnerAnfrage(vorgang)) {
+    bausteine.push(
+      {
+        art: 'absatz',
+        text:
+          'die Zahlung zu Ihrem freigegebenen Auftrag wurde nicht abgeschlossen. Sie können sie über den persönlichen '
+          + 'Link aus unserer E-Mail zur Freigabe fortsetzen. Verbindlich wird der Auftrag erst mit Ihrer Zahlung.',
+      },
+      nummerBaustein(vorgang),
+    );
+  } else if (vorgang.kind === 'termin') {
     bausteine.push({
       art: 'absatz',
       text: terminFreigegeben

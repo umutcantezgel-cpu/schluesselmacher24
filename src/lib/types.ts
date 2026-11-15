@@ -699,7 +699,8 @@ export interface PaymentInfo {
   /** Was bezahlt wurde: Anzahlung oder Gesamtbetrag. */
   scope: 'anzahlung' | 'gesamt';
   amountCents: number;
-  status: 'offen' | 'bezahlt' | 'fehlgeschlagen' | 'erstattet';
+  /** `teilweise-erstattet` (FA-KERN-04): Ein Teil ist erstattet, der Rest bleibt bezahlt. */
+  status: 'offen' | 'bezahlt' | 'fehlgeschlagen' | 'erstattet' | 'teilweise-erstattet';
   /** Kennung des Zahlungsdienstleisters (Stripe: PaymentIntent). */
   providerRef?: string;
   /** Stripe-Checkout-Sitzung. */
@@ -723,6 +724,8 @@ export type MailKind =
   | 'erinnerung'
   | 'freigabe'
   | 'team-hinweis'
+  /** Bitte an den Kunden, die Ausführung eines vermittelten Auftrags zu bestätigen (FA-KERN-04). */
+  | 'ausfuehrung'
   | 'sonstige';
 
 /** Eintrag im Mailprotokoll eines Vorgangs. */
@@ -775,13 +778,20 @@ export interface ApprovalInfo {
   approvedAt?: string;
 }
 
-/** Stand einer Auftragsvermittlung an einen Partnerbetrieb (Erg. Leitfaden §7). */
+/**
+ * Stand einer Auftragsvermittlung an einen Partnerbetrieb (Erg. Leitfaden §7, FA-KERN-04): in der
+ * Reihenfolge des Inhabers bis „ausgezahlt“. `provision-abgerechnet` bleibt für Modell A.
+ */
 export type ReferralStatus =
   | 'neu'
   | 'geprueft'
   | 'partner-angefragt'
   | 'angenommen'
+  | 'termin-bestaetigt'
   | 'erledigt'
+  | 'kunde-bestaetigt'
+  | 'auszahlung-freigegeben'
+  | 'ausgezahlt'
   | 'provision-abgerechnet';
 
 /** Vermittlung an einen Partnerbetrieb (Backend: Gruppe `vermittlung`). */
@@ -796,6 +806,53 @@ export interface ReferralInfo {
   commissionCents?: number;
   /** Interne Notiz. */
   note?: string;
+  /** Auftragsart der Vermittlung (Auftragsarten der Partnerbetriebe, FA-KERN-04). */
+  orderType?: string;
+  /** Gesamtbetrag des Auftrags in Cent (FA-KERN-04). */
+  totalCents?: number;
+  /** Plattformanteil (Provision bzw. Vermittlungsanteil) in Cent. */
+  platformCents?: number;
+  /** Partnerbetrag in Cent: Gesamtbetrag minus Plattformanteil. */
+  partnerCents?: number;
+  /** Hinweis, wenn der Plattformanteil nicht berechnet werden konnte (etwa ohne hinterlegte Provision). */
+  platformHint?: string;
+  /** Plattformanteil festgeschrieben am (ISO), mit dem Stand „ausgeführt“. */
+  fixedAt?: string;
+  /** Kunde hat die Ausführung bestätigt am (ISO). */
+  customerConfirmedAt?: string;
+  /** Bestätigung durch das Team statt durch den Kunden: Grund (Pflicht für die Freigabe ohne Kunde). */
+  teamConfirmReason?: string;
+  /** Mail mit dem Bestätigungslink gesendet am (ISO). */
+  confirmSentAt?: string;
+  /** SHA-256 des Einmal-Schlüssels für die Kundenbestätigung; der Schlüssel selbst wird nie gespeichert. */
+  confirmTokenHash?: string;
+}
+
+/** Auszahlungsstand eines vermittelten Auftrags (FA-KERN-04). */
+export type PayoutStatus = 'offen' | 'freigegeben' | 'ausgezahlt' | 'gesperrt';
+
+/** Weg der Partnerauszahlung. */
+export type PayoutMethod = 'ueberweisung' | 'zahlungsdienst';
+
+/** Partnerauszahlung (Backend: Gruppe `auszahlung`). */
+export interface PayoutInfo {
+  status?: PayoutStatus;
+  releasedAt?: string;
+  releasedBy?: string;
+  paidAt?: string;
+  method?: PayoutMethod;
+  /** Beleg der Überweisung oder Kennung beim Zahlungsdienst. */
+  reference?: string;
+  note?: string;
+}
+
+/** Erstattung an den Kunden, vom Team dokumentiert (Backend: Gruppe `erstattung`, FA-KERN-04). */
+export interface RefundInfo {
+  kind?: 'ganz' | 'teilweise';
+  /** Summe aller erstatteten Beträge in Cent. */
+  amountCents?: number;
+  at?: string;
+  reason?: string;
 }
 
 export interface TimelineEntry {
@@ -879,6 +936,10 @@ export interface BusinessRecord {
   auftragsweg?: Auftragsweg;
   /** Gesamtpreis und Rest beim Termin (FA-KERN-03); fehlt, solange nichts feststeht. */
   remainder?: RemainderInfo;
+  /** Partnerauszahlung (FA-KERN-04); nur bei vermittelten Aufträgen. */
+  payout?: PayoutInfo;
+  /** Vom Team dokumentierte Erstattung (FA-KERN-04). */
+  refund?: RefundInfo;
 }
 
 /** Auftragsweg eines Autoschlüssel-Auftrags (FA-KERN-03). */

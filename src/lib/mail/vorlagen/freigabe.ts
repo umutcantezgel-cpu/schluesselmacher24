@@ -14,6 +14,7 @@
 import { istEinsendung } from '../../einsenden/vorgang';
 import { formatCents } from '../../format';
 import { gewuenschteStueckzahl } from '../../foto-freigabe';
+import { zahlungEingegangen } from '../../partner/vermittlung';
 import type { BusinessRecord } from '../../types';
 import { anrede, baueMail, type Baustein, type MailInhalt } from '../html';
 import { ANTWORT_HINWEIS, nummerBaustein, ohneSchraegstrich, statusLink, type VorlagenKontext } from './gemeinsam';
@@ -174,7 +175,7 @@ function nichtMoeglich({ vorgang, nachricht, kontext }: FreigabeMailDaten): Mail
           ? 'Ein Auftrag ist damit nicht zustande gekommen; Sie müssen nichts weiter tun. Ihr Original schicken wir Ihnen zurück.'
           : 'Ein Auftrag ist damit nicht zustande gekommen; Sie müssen nichts weiter tun. Bitte senden Sie uns Ihren '
             + 'Originalschlüssel nicht zu.')
-        + (zahlung?.status === 'bezahlt'
+        + (zahlungEingegangen(zahlung?.status)
           ? ' Zu Ihrer bereits geleisteten Zahlung melden wir uns gesondert.'
           : zahlung?.status === 'offen'
             ? ' Eine Zahlung ist nicht nötig.'

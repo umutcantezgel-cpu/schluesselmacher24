@@ -33,6 +33,7 @@ const ZAHLUNG_TEXT: Record<PaymentInfo['status'], string> = {
   bezahlt: 'bezahlt',
   fehlgeschlagen: 'nicht abgeschlossen',
   erstattet: 'erstattet',
+  'teilweise-erstattet': 'teilweise erstattet',
 };
 
 interface Ergebnis {

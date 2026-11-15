@@ -133,19 +133,21 @@ describe('Partner werden', () => {
       summary: [],
       uploads: [],
     });
+    // Seit FA-KERN-04 beginnt eine Vermittlung mit „neu“; „an Partner vermittelt“ verlangt Zahlung und einen
+    // freigeschalteten Partnerbetrieb (src/lib/partner/vermittlung.db.test.ts). Der Verweis auf die Bewerbung bleibt.
     await imBackendSpeichern(auftrag.recordId!, {
-      vermittlung: { status: 'partner-angefragt', partner: Number(partner.id), provisionCent: null, notiz: 'Hamburg' },
+      vermittlung: { status: 'neu', partner: Number(partner.id), provisionCent: null, notiz: 'Hamburg' },
     });
 
     const { docs } = await payload.find({
       collection: 'vorgaenge',
-      where: { and: [{ 'vermittlung.partner': { equals: Number(partner.id) } }, { 'vermittlung.status': { equals: 'partner-angefragt' } }] },
+      where: { and: [{ 'vermittlung.partner': { equals: Number(partner.id) } }, { 'vermittlung.status': { equals: 'neu' } }] },
       depth: 0,
       overrideAccess: false,
       user,
     });
     expect(docs.map((d) => String(d.id))).toEqual([auftrag.recordId]);
-    expect((await getRecord(auftrag.recordId!))?.referral).toMatchObject({ status: 'partner-angefragt', partnerId: partner.id });
+    expect((await getRecord(auftrag.recordId!))?.referral).toMatchObject({ status: 'neu', partnerId: partner.id });
 
     const partnerListe = await payload.find({ collection: 'vorgaenge', where: { art: { equals: 'partner' } }, depth: 0 });
     expect(partnerListe.docs.every((d) => d.nummer.startsWith('SM24-N-'))).toBe(true);

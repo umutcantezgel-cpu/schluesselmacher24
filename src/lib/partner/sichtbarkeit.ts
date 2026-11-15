@@ -6,7 +6,7 @@
 
 import type { BusinessRecord } from '../types';
 
-export const PARTNER_SICHTBARE_STATUS = ['partner-angefragt', 'angenommen', 'erledigt'] as const;
+export const PARTNER_SICHTBARE_STATUS = ['partner-angefragt', 'angenommen', 'termin-bestaetigt', 'erledigt'] as const;
 
 export function partnerSiehtVorgang(partnerId: string, vorgang: Pick<BusinessRecord, 'referral'>): boolean {
   const r = vorgang.referral;
@@ -24,7 +24,8 @@ export interface PartnerAuftrag {
 /** Auszug für den Partner: Kontaktdaten erst ab „angenommen“ (vorher nur Ort und Leistung). */
 export function partnerAuszug(vorgang: BusinessRecord): PartnerAuftrag {
   const k = vorgang.contact;
-  const angenommen = vorgang.referral?.status === 'angenommen' || vorgang.referral?.status === 'erledigt';
+  const stand = vorgang.referral?.status;
+  const angenommen = stand === 'angenommen' || stand === 'termin-bestaetigt' || stand === 'erledigt';
   const ort = [k.postalCode, k.city].filter(Boolean).join(' ');
   return {
     nummer: vorgang.reference,

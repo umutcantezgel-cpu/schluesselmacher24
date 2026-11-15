@@ -16,7 +16,7 @@ import { auftragswegVon, auftragswegZeilen, istPartnerAnfrage, terminortZeile } 
 import type { OrderLine, OrderTotals, PaymentInfo, RecordStatus, SummarySection } from '@/lib/types';
 import { naechsteSchritte } from '@/lib/wege/naechste-schritte';
 import { begleitscheinAnzeigen } from '@/lib/einsenden/schein';
-import { ART_FUER_KUNDEN, kundenSendung, kundenStatus } from '@/lib/kundenstatus';
+import { ART_FUER_KUNDEN, kundenErstattung, kundenSendung, kundenStatus } from '@/lib/kundenstatus';
 import { zahlungsAnsicht } from '@/lib/zahlung/ansicht';
 import { neuBuchenHref } from '@/lib/zahlung/neu-buchen';
 import { Alert } from '@/components/ui/alert';
@@ -58,6 +58,7 @@ const PAYMENT_LABELS: Record<PaymentInfo['status'], string> = {
   bezahlt: 'Bezahlt',
   fehlgeschlagen: 'Nicht abgeschlossen',
   erstattet: 'Erstattet',
+  'teilweise-erstattet': 'Teilweise erstattet',
 };
 
 const PAYMENT_TONE: Record<PaymentInfo['status'], Tonfall> = {
@@ -65,6 +66,7 @@ const PAYMENT_TONE: Record<PaymentInfo['status'], Tonfall> = {
   bezahlt: 'success',
   fehlgeschlagen: 'danger',
   erstattet: 'neutral',
+  'teilweise-erstattet': 'neutral',
 };
 
 const PAYMENT_SCOPE_LABELS: Record<PaymentInfo['scope'], string> = {
@@ -243,7 +245,7 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
   if (weg) {
     // Den Rest erst nach dem Zahlungseingang zeigen: Vorher ist nichts angerechnet, und ein Rest neben dem
     // offenen Betrag wäre missverständlich.
-    const zahlungOffen = Boolean(record.payment && record.payment.status !== 'bezahlt');
+    const zahlungOffen = Boolean(record.payment && record.payment.status !== 'bezahlt' && record.payment.status !== 'teilweise-erstattet');
     const betraege = auftragswegZeilen(record).filter(([name]) => name !== 'Auftragsweg' && !(zahlungOffen && name.startsWith('Rest')));
     if (betraege.length) abschnitte.push({ title: 'Gesamtpreis und Rest', rows: betraege.map(([label, value]) => ({ label, value })) });
   }
@@ -372,6 +374,10 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                     </div>
                   )}
                 </dl>
+
+                {kundenErstattung(record) && (
+                  <p className="mt-6 text-body leading-relaxed text-foreground">{kundenErstattung(record)}</p>
+                )}
 
                 {zahlung && (
                   <div className="mt-6 space-y-4">

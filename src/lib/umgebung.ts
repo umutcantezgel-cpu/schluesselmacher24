@@ -218,6 +218,16 @@ export function zahlungKonfiguration(): ZahlungKonfiguration | null {
   };
 }
 
+/**
+ * Partnerauszahlung über den Zahlungsdienst (FA-KERN-04, A-049 Nr. 5). Nur mit ausdrücklichem Schalter
+ * `PARTNER_AUSZAHLUNG=stripe-connect` und vollständiger Stripe-Anbindung; sonst `manuell` (das Team
+ * überweist und vermerkt Datum und Beleg). Der Schalter bleibt aus, bis Anwalt, Steuerberatung und das
+ * Konto beim Zahlungsdienst geklärt sind (MA-36).
+ */
+export function auszahlungsWeg(): 'manuell' | 'stripe-connect' {
+  return process.env.PARTNER_AUSZAHLUNG?.trim() === 'stripe-connect' && zahlungKonfiguration() ? 'stripe-connect' : 'manuell';
+}
+
 /** Kommagetrennte Liste ohne leere Einträge. */
 function liste(value: string | undefined): string[] {
   return (value ?? '')

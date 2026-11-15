@@ -94,7 +94,11 @@ export interface Config {
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    partnerbetriebe: {
+      offeneAuszahlungen: 'vorgaenge';
+    };
+  };
   collectionsSelect: {
     vorgaenge: VorgaengeSelect<false> | VorgaengeSelect<true>;
     partnerbetriebe: PartnerbetriebeSelect<false> | PartnerbetriebeSelect<true>;
@@ -272,20 +276,77 @@ export interface Vorgaenge {
     /**
      * Leer = keine Vermittlung.
      */
-    status?: ('neu' | 'geprueft' | 'partner-angefragt' | 'angenommen' | 'erledigt' | 'provision-abgerechnet') | null;
+    status?:
+      | (
+          | 'neu'
+          | 'geprueft'
+          | 'partner-angefragt'
+          | 'angenommen'
+          | 'termin-bestaetigt'
+          | 'erledigt'
+          | 'kunde-bestaetigt'
+          | 'auszahlung-freigegeben'
+          | 'ausgezahlt'
+          | 'provision-abgerechnet'
+        )
+      | null;
     /**
      * Bewerbung des Partners (Vorgang der Art „Partner-Bewerbung“).
      */
     partner?: (number | null) | Vorgaenge;
     provisionCent?: number | null;
     /**
-     * Nur freigeschaltete Partnerbetriebe. Bei mehreren passenden entscheidet das Team.
+     * Vermitteln geht nur an freigeschaltete Partnerbetriebe. Bei mehreren passenden entscheidet das Team. Pausierte und beendete erscheinen nur, damit laufende Aufträge abgerechnet werden können.
      */
     partnerbetrieb?: (number | null) | Partnerbetriebe;
     partnerVorschlaege?: string | null;
     /**
+     * Nur Partnerbetriebe mit dieser Auftragsart können den Auftrag bekommen.
+     */
+    auftragsart?:
+      | (
+          | 'autoschluessel-vor-ort'
+          | 'schluesseldienst-vor-ort'
+          | 'montage-zylinder'
+          | 'montage-schliessanlage'
+          | 'beratung-vor-ort'
+          | 'einbau-elektronik'
+        )
+      | null;
+    /**
+     * Vorschlag aus der Zahlung. Mit „ausgeführt“ festgeschrieben.
+     */
+    gesamtCent?: number | null;
+    /**
+     * Vorschlag aus der Provision des Partnerbetriebs, von Hand änderbar. Mit „ausgeführt“ festgeschrieben.
+     */
+    plattformanteilCent?: number | null;
+    partnerbetragCent?: number | null;
+    anteilHinweis?: string | null;
+    festgeschriebenAm?: string | null;
+    bestaetigungGesendetAm?: string | null;
+    kundeBestaetigtAm?: string | null;
+    /**
+     * Nur ausfüllen, wenn der Kunde nicht bestätigt und das Team die Ausführung anders belegt hat (etwa Anruf, Foto). Pflicht, um ohne Kundenbestätigung zur Auszahlung freizugeben.
+     */
+    teamBestaetigungGrund?: string | null;
+    /**
      * Nur für das Team sichtbar.
      */
+    notiz?: string | null;
+    bestaetigungHash?: string | null;
+  };
+  auszahlung?: {
+    aktiverWeg?: string | null;
+    stand?: ('offen' | 'freigegeben' | 'ausgezahlt' | 'gesperrt') | null;
+    freigegebenAm?: string | null;
+    freigegebenVon?: string | null;
+    ausgezahltAm?: string | null;
+    weg?: ('ueberweisung' | 'zahlungsdienst') | null;
+    /**
+     * Bei Überweisung Pflicht für „ausgezahlt“ (etwa Buchungstext oder Belegnummer).
+     */
+    referenz?: string | null;
     notiz?: string | null;
   };
   positionen?:
@@ -333,7 +394,7 @@ export interface Vorgaenge {
     /**
      * Von Hand auf „Bezahlt“: Datum und Notiz setzen sich, der Kunde erhält eine Mail.
      */
-    status?: ('offen' | 'bezahlt' | 'fehlgeschlagen' | 'erstattet') | null;
+    status?: ('offen' | 'bezahlt' | 'fehlgeschlagen' | 'erstattet' | 'teilweise-erstattet') | null;
     bezahltAm?: string | null;
     /**
      * Kennung der Zahlung (pi_…), gesetzt beim Zahlungseingang.
@@ -342,6 +403,15 @@ export interface Vorgaenge {
     checkoutSitzung?: string | null;
     erstattetCent?: number | null;
     ablaufAm?: string | null;
+  };
+  /**
+   * Für bezahlte Vorgänge: Art, Betrag (Summe aller Erstattungen), Datum und Grund eintragen. Der Zahlungsstand wird „erstattet“ oder „teilweise erstattet“, bei Partneraufträgen ist die Auszahlung danach gesperrt. Das Geld selbst erstatten Sie im Stripe-Dashboard oder per Überweisung.
+   */
+  erstattung?: {
+    art?: ('ganz' | 'teilweise') | null;
+    betragCent?: number | null;
+    am?: string | null;
+    grund?: string | null;
   };
   /**
    * Gesamtpreis eintragen, sobald er feststeht; der Rest ist Gesamtpreis minus Online-Zahlung. Bei einer Partner-Anfrage ohne Festpreis: Gesamtpreis eintragen und Status „Freigegeben“ setzen, dann erhält der Kunde den persönlichen Zahlungslink über den Gesamtbetrag.
@@ -369,6 +439,7 @@ export interface Vorgaenge {
           | 'erinnerung'
           | 'freigabe'
           | 'team-hinweis'
+          | 'ausfuehrung'
           | 'sonstige';
         an: string;
         am: string;
@@ -542,6 +613,15 @@ export interface Partnerbetriebe {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Freiwillig. Kennung des verbundenen Kontos bei Stripe Connect (acct_…). Ohne sie zahlt das Team von Hand aus.
+   */
+  kontoKennung?: string | null;
+  offeneAuszahlungen?: {
+    docs?: (number | Vorgaenge)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
   bewerbung?: (number | null) | Vorgaenge;
   notiz?: string | null;
   /**
@@ -1981,6 +2061,28 @@ export interface VorgaengeSelect<T extends boolean = true> {
         provisionCent?: T;
         partnerbetrieb?: T;
         partnerVorschlaege?: T;
+        auftragsart?: T;
+        gesamtCent?: T;
+        plattformanteilCent?: T;
+        partnerbetragCent?: T;
+        anteilHinweis?: T;
+        festgeschriebenAm?: T;
+        bestaetigungGesendetAm?: T;
+        kundeBestaetigtAm?: T;
+        teamBestaetigungGrund?: T;
+        notiz?: T;
+        bestaetigungHash?: T;
+      };
+  auszahlung?:
+    | T
+    | {
+        aktiverWeg?: T;
+        stand?: T;
+        freigegebenAm?: T;
+        freigegebenVon?: T;
+        ausgezahltAm?: T;
+        weg?: T;
+        referenz?: T;
         notiz?: T;
       };
   positionen?:
@@ -2036,6 +2138,14 @@ export interface VorgaengeSelect<T extends boolean = true> {
         checkoutSitzung?: T;
         erstattetCent?: T;
         ablaufAm?: T;
+      };
+  erstattung?:
+    | T
+    | {
+        art?: T;
+        betragCent?: T;
+        am?: T;
+        grund?: T;
       };
   restzahlung?:
     | T
@@ -2121,6 +2231,8 @@ export interface PartnerbetriebeSelect<T extends boolean = true> {
         festbetrag?: T;
         id?: T;
       };
+  kontoKennung?: T;
+  offeneAuszahlungen?: T;
   bewerbung?: T;
   notiz?: T;
   kennung?: T;

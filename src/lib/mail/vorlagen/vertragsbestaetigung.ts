@@ -11,6 +11,7 @@
  * laden diese Vorlage deshalb erst bei Bedarf (src/lib/mail/vertrag.ts).
  */
 
+import { auftragswegVon, istPartnerAnfrage, terminortZeile } from '../../auftragsweg';
 import { istEinsendung } from '../../einsenden/vorgang';
 import { formatCents, formatDateTime } from '../../format';
 import { gewuenschteStueckzahl, istFotoanfrage } from '../../foto-freigabe';
@@ -99,6 +100,14 @@ function zeileAus(vorgang: BusinessRecord, label: string): string | undefined {
   return undefined;
 }
 
+/**
+ * Auftrag im Partnerweg mit Zahlung des Gesamtbetrags (FA-KERN-03/04): kein Anzahlung, kein Rest, kein
+ * Zeitfenster der Werkstatt. Gilt für den Partnertermin mit Festpreis und die bezahlte Partner-Anfrage.
+ */
+export function partnerGesamtbetrag(vorgang: BusinessRecord): boolean {
+  return vorgang.payment?.scope === 'gesamt' && (istPartnerAnfrage(vorgang) || (vorgang.kind === 'termin' && auftragswegVon(vorgang) === 'partner'));
+}
+
 /** Vertragsinhalt eines Termins: Leistung, Termin, Preis und Anzahlung. */
 function terminInhalt(vorgang: BusinessRecord, firma: CompanyProfile | undefined): Array<[string, string]> {
   const zeilen: Array<[string, string]> = [];
@@ -106,6 +115,13 @@ function terminInhalt(vorgang: BusinessRecord, firma: CompanyProfile | undefined
   zeilen.push(['Leistung', leistung]);
   const fahrzeug = [zeileAus(vorgang, 'Marke'), zeileAus(vorgang, 'Modell')].filter(Boolean).join(' ');
   if (fahrzeug) zeilen.push(['Fahrzeug', fahrzeug]);
+  if (partnerGesamtbetrag(vorgang)) {
+    // Partnerweg: Gesamtbetrag statt Anzahlung und Rest; den Termin stimmt der Partnerbetrieb ab.
+    const termin = terminortZeile('partner').replace(/^Ihr Termin: /, '');
+    zeilen.push(['Termin', `${termin.charAt(0).toUpperCase()}${termin.slice(1)}; den genauen Termin stimmt der Partnerbetrieb mit Ihnen ab`]);
+    zeilen.push(['Gesamtpreis', `${formatCents(vorgang.payment!.amountCents)} (inkl. 19 % USt.), mit Ihrer Zahlung vollständig beglichen`]);
+    return zeilen;
+  }
   zeilen.push(...terminZeilen(vorgang, firma));
   const quote = vorgang.quote;
   if (quote) {
@@ -174,6 +190,14 @@ function agbKurzfassung(vorgang: BusinessRecord, settings: VertragsbestaetigungD
       'Schlüssel nach Code und gleichschließende Zylinder fertigen wir nach Ihren Angaben; für deren Richtigkeit sind Sie verantwortlich. Für solche Anfertigungen besteht kein Widerrufsrecht.',
       'Die Ware bleibt bis zur vollständigen Bezahlung unser Eigentum.',
     );
+  } else if (partnerGesamtbetrag(vorgang)) {
+    // Partnerweg (FA-KERN-04): ENTWURF zur Prüfung durch den Anwalt (R10). Dieser Wortlaut geht erst mit
+    // PARTNERMODELL_B=aktiv hinaus; den Schalter erst einschalten, wenn der Anwalt diesen Text und die
+    // Stelle zur Anzahlung in § 8 der AGB für den Partnerweg freigegeben hat (Bericht FA-KERN-04, FÜR MENSCHEN).
+    punkte.push(
+      'Den Gesamtpreis haben Sie vorab bezahlt; einen Restbetrag gibt es nicht.',
+      'Wir arbeiten nur für Berechtigte. Bitte halten Sie die Zulassungsbescheinigung Teil I bereit.',
+    );
   } else {
     punkte.push(
       'Die Anzahlung wird vollständig mit dem Endpreis verrechnet; der Restbetrag ist mit Abschluss der Leistung fällig.',
@@ -206,6 +230,10 @@ export function vertragsbestaetigung({ vorgang, kontext, settings, zahlarten }: 
         ? 'vielen Dank für Ihren Auftrag. Mit Ihrer Zahlung haben Sie unser Angebot aus der Freigabe angenommen; '
           + 'hiermit bestätigen wir Ihnen den Vertrag. Bitte bewahren Sie diese E-Mail auf: Sie enthält die '
           + 'Vertragsdaten, unsere AGB, die Widerrufsbelehrung und das Muster-Widerrufsformular.'
+        : partnerGesamtbetrag(vorgang)
+          ? 'vielen Dank für Ihren Auftrag. Mit Ihrer Zahlung ist er verbindlich; hiermit bestätigen wir Ihnen den Vertrag. '
+            + 'Bitte bewahren Sie diese E-Mail auf: Sie enthält die Vertragsdaten, unsere AGB, die '
+            + 'Widerrufsbelehrung und das Muster-Widerrufsformular.'
         : bestellung
           ? 'vielen Dank für Ihre Bestellung. Hiermit nehmen wir sie an und bestätigen Ihnen den Vertrag. '
             + 'Bitte bewahren Sie diese E-Mail auf: Sie enthält die Vertragsdaten, unsere AGB, die '

@@ -105,7 +105,8 @@ export function kennzahlenBerechnen(vorgaenge: KennzahlVorgang[], jetzt: Date, a
     }
 
     const zahlung = vorgang.zahlung;
-    if (zahlung?.status === 'bezahlt' && typeof zahlung.betragCent === 'number') {
+    // „Teilweise erstattet“ (FA-KERN-04): bezahlt, abzüglich der Erstattung.
+    if ((zahlung?.status === 'bezahlt' || zahlung?.status === 'teilweise-erstattet') && typeof zahlung.betragCent === 'number') {
       const bezahlt = spalte.get(monatInBerlin(zahlung.bezahltAm || vorgang.createdAt));
       if (bezahlt !== undefined) umsatzCent[bezahlt] += zahlung.betragCent - (zahlung.erstattetCent ?? 0);
     }

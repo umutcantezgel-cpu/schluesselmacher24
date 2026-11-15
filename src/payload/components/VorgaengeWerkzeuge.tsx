@@ -182,6 +182,39 @@ function NachAuftragsweg() {
   );
 }
 
+/**
+ * Fertige Filter für Vermittlung und Partnerauszahlung (FA-KERN-04). Die Spalten „Stand der Vermittlung“ und
+ * „Auszahlungsstand“ stehen in der Übersicht; dieselben Filter gehen auch über „Filter“ in der Liste.
+ */
+export const AUSZAHLUNG_FILTER: ReadonlyArray<{ label: string; suche: string }> = [
+  { label: 'An Partner vermittelt', suche: '?where[vermittlung.status][equals]=partner-angefragt' },
+  { label: 'Ausgeführt, Bestätigung offen', suche: '?where[vermittlung.status][equals]=erledigt' },
+  { label: 'Kunde bestätigt', suche: '?where[vermittlung.status][equals]=kunde-bestaetigt' },
+  { label: 'Auszahlung freigegeben', suche: '?where[auszahlung.stand][equals]=freigegeben' },
+  { label: 'Auszahlung gesperrt', suche: '?where[auszahlung.stand][equals]=gesperrt' },
+  { label: 'Ausgezahlt', suche: '?where[auszahlung.stand][equals]=ausgezahlt' },
+];
+
+function NachAuszahlung() {
+  return (
+    <div className="sm24-werkzeug__formular">
+      <div className="sm24-aktion__zeile">
+        {AUSZAHLUNG_FILTER.map((filter) => (
+          <a key={filter.label} className="btn btn--style-secondary btn--size-small" href={filter.suche}>
+            {filter.label}
+          </a>
+        ))}
+        <a className="btn btn--style-secondary btn--size-small" href="?">
+          Alle Vorgänge
+        </a>
+      </div>
+      <p className="field-description">
+        Auszahlung gesperrt: Zum Auftrag ist eine Erstattung erfasst. Schritt für Schritt: docs/betrieb/partnerauftrag-abrechnen.md.
+      </p>
+    </div>
+  );
+}
+
 export function VorgaengeWerkzeuge() {
   const { config } = useConfig();
   const { user } = useAuth();
@@ -208,6 +241,10 @@ export function VorgaengeWerkzeuge() {
       <details>
         <summary>Nach Auftragsweg, Zahlung und Rest</summary>
         <NachAuftragsweg />
+      </details>
+      <details>
+        <summary>Vermittlung und Partnerauszahlung</summary>
+        <NachAuszahlung />
       </details>
       <details>
         <summary>Anfragen nach Fahrzeugklasse</summary>

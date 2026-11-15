@@ -133,6 +133,15 @@ describe('checkoutParameter', () => {
     expect(p.shipping_options).toBeUndefined();
   });
 
+  it('nennt beim Termin mit Gesamtbetrag (Partnerweg) keine Anzahlung (FA-KERN-04, R9)', () => {
+    const p = checkoutParameter(termin({ scope: 'gesamt', amountCents: 31_900, appointment: undefined, description: 'Autoschlüssel-Auftrag über Partnerbetrieb (Gesamtbetrag)' }), UMFELD);
+    expect(p.line_items).toEqual([
+      { quantity: 1, price_data: { currency: 'eur', unit_amount: 31_900, product_data: { name: 'Autoschlüssel-Auftrag, Gesamtbetrag' } } },
+    ]);
+    expect(p.payment_intent_data?.description).toBe('SM24-T-2026-0003 – Autoschlüssel-Auftrag, Gesamtbetrag');
+    expect(JSON.stringify(p)).not.toContain('Anzahlung');
+  });
+
   it('bezahlt eine freigegebene Fotoanfrage als eine Position ohne Angaben zum Schlüssel, 23 Stunden offen', () => {
     const p = checkoutParameter(
       bestellung({

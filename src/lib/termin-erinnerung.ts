@@ -37,7 +37,7 @@ export function erinnerungMoeglich(vorgang: BusinessRecord): boolean {
   if (vorgang.kind !== 'termin' || !vorgang.appointment) return false;
   if (vorgang.status === 'storniert' || vorgang.status === 'abgeschlossen') return false;
   if (!vorgang.contact.email?.trim()) return false;
-  return vorgang.payment?.status === 'bezahlt' || vorgang.status === 'terminiert';
+  return vorgang.payment?.status === 'bezahlt' || vorgang.payment?.status === 'teilweise-erstattet' || vorgang.status === 'terminiert';
 }
 
 /** Gesendete Erinnerung zum aktuellen Termindatum (siehe Kopf). */

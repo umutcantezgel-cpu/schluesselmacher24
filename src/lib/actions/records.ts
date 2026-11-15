@@ -522,21 +522,11 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     appointment,
     payment,
     consents,
+    // Auftragsweg und Gesamtpreis gleich beim Anlegen (FA-KERN-03, nachgezogen in FA-KERN-04). Der Weg steht
+    // zusätzlich in den Daten des Vorgangs (`auftragswegVon`).
+    auftragsweg,
+    remainder,
   });
-
-  // Auftragsweg und Gesamtpreis als eigene Felder am Vorgang (FA-KERN-03). Ein Fehler hier kostet nur die
-  // Felder: Der Weg steht auch in den Daten des Vorgangs und wird daraus gelesen (`auftragswegVon`).
-  if (auftragsweg && result.ok && result.recordId) {
-    const weg = auftragsweg;
-    try {
-      await vorgangAendern(result.recordId, (v) => ({
-        auftragsweg: weg,
-        ...(remainder ? { remainder: { ...remainder, remainderCents: restbetragCents(remainder.totalCents, v.payment) ?? remainder.remainderCents } } : {}),
-      }));
-    } catch (fehler) {
-      console.error('[termin] Auftragsweg nicht gespeichert', fehler);
-    }
-  }
 
   if (vorherigerTermin && result.ok && result.reference && result.recordId) {
     const jetzt = new Date().toISOString();

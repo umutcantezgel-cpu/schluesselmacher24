@@ -83,9 +83,20 @@ const BESCHREIBUNG: Partial<Record<RecordKind, string>> = {
   bestellung: 'Bestellung',
 };
 
+/** Termin mit Gesamtbetrag (Partnerweg, FA-KERN-04): keine Anzahlung, sondern der ganze Auftrag (R9). */
+export const TERMIN_GESAMTBETRAG = 'Autoschlüssel-Auftrag, Gesamtbetrag';
+
+/** Bezeichnung der Zahlung je Art und Umfang. */
+function bezeichnung(intent: Pick<PaymentIntent, 'recordKind' | 'description'> & { scope?: PaymentIntent['scope'] }): string {
+  if (intent.recordKind === 'termin' && intent.scope === 'gesamt') return TERMIN_GESAMTBETRAG;
+  return BESCHREIBUNG[intent.recordKind] ?? intent.description;
+}
+
 /** Text für Kontoauszug und Dashboard, vom Server gebildet. */
-export function zahlungsBeschreibung(intent: Pick<PaymentIntent, 'reference' | 'recordKind' | 'description'>): string {
-  return `${intent.reference} – ${BESCHREIBUNG[intent.recordKind] ?? intent.description}`;
+export function zahlungsBeschreibung(
+  intent: Pick<PaymentIntent, 'reference' | 'recordKind' | 'description'> & { scope?: PaymentIntent['scope'] },
+): string {
+  return `${intent.reference} – ${bezeichnung(intent)}`;
 }
 
 type Position = Stripe.Checkout.SessionCreateParams.LineItem;
@@ -108,7 +119,7 @@ function positionen(intent: PaymentIntent): {
 } {
   if (intent.recordKind === 'termin') {
     const termin = intent.appointment ? ` ${formatDateShort(intent.appointment.date)} ${intent.appointment.time} Uhr` : '';
-    return { line_items: [position(`${BESCHREIBUNG.termin}${termin}`, intent.amountCents)] };
+    return { line_items: [position(`${bezeichnung(intent)}${termin}`, intent.amountCents)] };
   }
 
   const sammel = { line_items: [position(`${BESCHREIBUNG[intent.recordKind] ?? intent.description} ${intent.reference}`, intent.amountCents)] };

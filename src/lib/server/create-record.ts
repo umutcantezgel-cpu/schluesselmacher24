@@ -23,6 +23,7 @@ import { speichernMoeglich } from '@/lib/umgebung';
 import type {
   AppointmentInfo,
   AreaKey,
+  Auftragsweg,
   BlockedDay,
   BusinessRecord,
   ContactDetails,
@@ -33,6 +34,7 @@ import type {
   ProcessKind,
   RecordConsents,
   RecordKind,
+  RemainderInfo,
   Settings,
   SummarySection,
   TimeSlot,
@@ -66,6 +68,10 @@ export interface TrustedRecordInput {
   totals?: OrderTotals;
   /** Zustimmungen beim Absenden, mit Zeitpunkt und Fassung der Rechtstexte. */
   consents?: RecordConsents;
+  /** Auftragsweg, vom Server ermittelt (FA-KERN-03); wird gleich beim Anlegen gespeichert (FA-KERN-04). */
+  auftragsweg?: Auftragsweg;
+  /** Gesamtpreis und Rest, vom Server ermittelt (FA-KERN-03). */
+  remainder?: RemainderInfo;
 }
 
 export interface CreateRecordResult {
@@ -160,6 +166,8 @@ export async function createRecord(input: TrustedRecordInput): Promise<CreateRec
         lines: input.lines,
         totals: input.totals,
         consents: input.consents,
+        ...(input.auftragsweg ? { auftragsweg: input.auftragsweg } : {}),
+        ...(input.remainder ? { remainder: input.remainder } : {}),
       }),
     });
   } catch (error) {

@@ -50,20 +50,27 @@ export interface RueckrufDaten {
   kontext: VorlagenKontext;
 }
 
+/** Partnerweg (FA-KERN-04): Der Kunde zahlt den Gesamtbetrag, es gibt weder Anzahlung noch Zeitfenster. */
+const gesamtbetrag = (vorgang: BusinessRecord) => vorgang.payment?.scope === 'gesamt';
+
 export function betriebRueckrufEmpfohlen({ vorgang, adminUrl, kontext }: RueckrufDaten): MailInhalt {
   const name = [vorgang.contact.firstName, vorgang.contact.lastName].filter(Boolean).join(' ');
   const fahrzeug = fahrzeugText(vorgang);
+  const gesamt = gesamtbetrag(vorgang);
   return baueMail({
-    betreff: `Rückruf empfohlen: Anzahlung nicht eingegangen – ${vorgang.reference}`,
-    vorschau: `${name} hat die Anzahlung nicht abgeschlossen.`,
+    betreff: `Rückruf empfohlen: ${gesamt ? 'Zahlung' : 'Anzahlung'} nicht eingegangen – ${vorgang.reference}`,
+    vorschau: `${name} hat die ${gesamt ? 'Zahlung' : 'Anzahlung'} nicht abgeschlossen.`,
     anrede: 'Hallo Team,',
     bausteine: [
       {
         art: 'absatz',
-        text:
-          'die Anzahlung zu diesem Termin ist nicht eingegangen (abgebrochen, abgelehnt oder abgelaufen). Das '
-          + 'Zeitfenster ist wieder frei. An den Kunden ging eine Mail mit dem Link zur neuen Buchung; ob sie '
-          + 'zugestellt wurde, steht im Backend unter „E-Mails“. Ein kurzer Rückruf wird empfohlen.',
+        text: gesamt
+          ? 'die Zahlung des Gesamtbetrags zu diesem Partnerauftrag ist nicht eingegangen (abgebrochen, abgelehnt oder '
+            + 'abgelaufen). Der Auftrag ist nicht zustande gekommen. An den Kunden ging eine Mail mit dem Link zur neuen '
+            + 'Buchung; ob sie zugestellt wurde, steht im Backend unter „E-Mails“. Ein kurzer Rückruf wird empfohlen.'
+          : 'die Anzahlung zu diesem Termin ist nicht eingegangen (abgebrochen, abgelehnt oder abgelaufen). Das '
+            + 'Zeitfenster ist wieder frei. An den Kunden ging eine Mail mit dem Link zur neuen Buchung; ob sie '
+            + 'zugestellt wurde, steht im Backend unter „E-Mails“. Ein kurzer Rückruf wird empfohlen.',
       },
       {
         art: 'felder',
@@ -91,17 +98,20 @@ export function betriebRueckrufEmpfohlen({ vorgang, adminUrl, kontext }: Rueckru
 export function betriebAnzahlungOffen({ vorgang, adminUrl, kontext }: RueckrufDaten): MailInhalt {
   const name = [vorgang.contact.firstName, vorgang.contact.lastName].filter(Boolean).join(' ');
   const fahrzeug = fahrzeugText(vorgang);
+  const gesamt = gesamtbetrag(vorgang);
+  const was = gesamt ? 'Zahlung des Gesamtbetrags' : 'Anzahlung';
   return baueMail({
-    betreff: `Anzahlung nicht eingegangen, Termin bleibt: ${vorgang.reference}`,
-    vorschau: `${name}: Die Anzahlung ist nicht eingegangen. Der Termin wurde nicht storniert.`,
+    betreff: `${gesamt ? 'Zahlung' : 'Anzahlung'} nicht eingegangen, ${gesamt ? 'Auftrag' : 'Termin'} bleibt: ${vorgang.reference}`,
+    vorschau: `${name}: Die ${was} ist nicht eingegangen. ${gesamt ? 'Der Auftrag' : 'Der Termin'} wurde nicht storniert.`,
     anrede: 'Hallo Team,',
     bausteine: [
       {
         art: 'absatz',
         text:
-          'die Anzahlung zu diesem Termin ist nicht eingegangen (abgebrochen, abgelehnt oder abgelaufen). Der Termin '
-          + 'wurde nicht automatisch storniert, weil er schon bearbeitet wird. Der Kunde hat dazu keine automatische '
-          + 'Mail bekommen. Bitte klären Sie mit ihm, wie es weitergeht.',
+          `die ${was} zu diesem ${gesamt ? 'Partnerauftrag' : 'Termin'} ist nicht eingegangen (abgebrochen, abgelehnt oder abgelaufen). `
+          + `${gesamt ? 'Der Auftrag' : 'Der Termin'} wurde nicht automatisch storniert, weil er schon bearbeitet wird. `
+          + 'Der Kunde hat dazu keine automatische Mail bekommen. Bitte klären Sie mit ihm, wie es weitergeht.'
+          + (gesamt ? ' An den Partner vermitteln geht erst nach der Zahlung.' : ''),
       },
       {
         art: 'felder',
