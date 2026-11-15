@@ -227,6 +227,7 @@ export interface Vorgaenge {
       }[]
     | null;
   dateien?: (number | Kundendateien)[] | null;
+  unterlagenSteckplaetze?: string | null;
   termin?: {
     datum?: string | null;
     uhrzeit?: string | null;
@@ -417,6 +418,18 @@ export interface Kundendateien {
   id: number;
   kategorie:
     'schluesselfoto' | 'fahrzeugschein' | 'grundriss' | 'dokument' | 'objektfoto' | 'sicherungskarte' | 'vollmacht';
+  steckplatz?:
+    | (
+        | 'fahrzeugschein'
+        | 'schluessel-vorderseite'
+        | 'schluessel-rueckseite'
+        | 'schluessel-spitze'
+        | 'ersatznachweis'
+        | 'typenschild'
+        | 'sicherungskarte'
+        | 'sonstiges'
+      )
+    | null;
   vorgang?: (number | null) | Vorgaenge;
   aufbewahrenBis?: string | null;
   uploadSchluesselHash?: string | null;
@@ -683,7 +696,13 @@ export interface Produkte {
    * Titel und Beschreibung, wie sie bei Google erscheinen.
    */
   seo?: {
+    /**
+     * Am besten höchstens 40 Zeichen, das wichtigste Wort vorn. Den Zusatz „| SCHLÜSSELMACHER24“ hängt die Seite selbst an; nur bei der Startseite steht er im Titel.
+     */
     titel?: string | null;
+    /**
+     * Ein bis zwei ganze Sätze mit 120 bis 160 Zeichen. Schreiben Sie nur, was auch auf der Seite steht: keine Preise, keine Zeiten, keine Versprechen.
+     */
     beschreibung?: string | null;
     interneLinks?:
       | {
@@ -823,7 +842,13 @@ export interface Fahrzeugmarken {
    * Titel und Beschreibung, wie sie bei Google erscheinen.
    */
   seo?: {
+    /**
+     * Am besten höchstens 40 Zeichen, das wichtigste Wort vorn. Den Zusatz „| SCHLÜSSELMACHER24“ hängt die Seite selbst an; nur bei der Startseite steht er im Titel.
+     */
     titel?: string | null;
+    /**
+     * Ein bis zwei ganze Sätze mit 120 bis 160 Zeichen. Schreiben Sie nur, was auch auf der Seite steht: keine Preise, keine Zeiten, keine Versprechen.
+     */
     beschreibung?: string | null;
     interneLinks?:
       | {
@@ -1253,7 +1278,13 @@ export interface Seiten {
    * Titel und Beschreibung, wie sie bei Google erscheinen.
    */
   seo?: {
+    /**
+     * Am besten höchstens 40 Zeichen, das wichtigste Wort vorn. Den Zusatz „| SCHLÜSSELMACHER24“ hängt die Seite selbst an; nur bei der Startseite steht er im Titel.
+     */
     titel?: string | null;
+    /**
+     * Ein bis zwei ganze Sätze mit 120 bis 160 Zeichen. Schreiben Sie nur, was auch auf der Seite steht: keine Preise, keine Zeiten, keine Versprechen.
+     */
     beschreibung?: string | null;
     interneLinks?:
       | {
@@ -1323,7 +1354,13 @@ export interface Leistungsseiten {
    * Titel und Beschreibung, wie sie bei Google erscheinen.
    */
   seo?: {
+    /**
+     * Am besten höchstens 40 Zeichen, das wichtigste Wort vorn. Den Zusatz „| SCHLÜSSELMACHER24“ hängt die Seite selbst an; nur bei der Startseite steht er im Titel.
+     */
     titel?: string | null;
+    /**
+     * Ein bis zwei ganze Sätze mit 120 bis 160 Zeichen. Schreiben Sie nur, was auch auf der Seite steht: keine Preise, keine Zeiten, keine Versprechen.
+     */
     beschreibung?: string | null;
     interneLinks?:
       | {
@@ -1404,7 +1441,13 @@ export interface Ratgeber {
    * Titel und Beschreibung, wie sie bei Google erscheinen.
    */
   seo?: {
+    /**
+     * Am besten höchstens 40 Zeichen, das wichtigste Wort vorn. Den Zusatz „| SCHLÜSSELMACHER24“ hängt die Seite selbst an; nur bei der Startseite steht er im Titel.
+     */
     titel?: string | null;
+    /**
+     * Ein bis zwei ganze Sätze mit 120 bis 160 Zeichen. Schreiben Sie nur, was auch auf der Seite steht: keine Preise, keine Zeiten, keine Versprechen.
+     */
     beschreibung?: string | null;
     interneLinks?:
       | {
@@ -1474,7 +1517,13 @@ export interface Einsatzgebiete {
    * Titel und Beschreibung, wie sie bei Google erscheinen.
    */
   seo?: {
+    /**
+     * Am besten höchstens 40 Zeichen, das wichtigste Wort vorn. Den Zusatz „| SCHLÜSSELMACHER24“ hängt die Seite selbst an; nur bei der Startseite steht er im Titel.
+     */
     titel?: string | null;
+    /**
+     * Ein bis zwei ganze Sätze mit 120 bis 160 Zeichen. Schreiben Sie nur, was auch auf der Seite steht: keine Preise, keine Zeiten, keine Versprechen.
+     */
     beschreibung?: string | null;
     interneLinks?:
       | {
@@ -1855,6 +1904,7 @@ export interface VorgaengeSelect<T extends boolean = true> {
         id?: T;
       };
   dateien?: T;
+  unterlagenSteckplaetze?: T;
   termin?:
     | T
     | {
@@ -2034,6 +2084,7 @@ export interface PartnerbetriebeSelect<T extends boolean = true> {
  */
 export interface KundendateienSelect<T extends boolean = true> {
   kategorie?: T;
+  steckplatz?: T;
   vorgang?: T;
   aufbewahrenBis?: T;
   uploadSchluesselHash?: T;

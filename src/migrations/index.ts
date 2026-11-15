@@ -14,6 +14,7 @@ import * as migration_20261115_111543_erreichbarkeit from './20261115_111543_err
 import * as migration_20261115_120000_rubrik_nach_vorlage from './20261115_120000_rubrik_nach_vorlage';
 import * as migration_20261115_130000_musterdaten_beispiel from './20261115_130000_musterdaten_beispiel';
 import * as migration_20261115_140000_fahrzeugklasse from './20261115_140000_fahrzeugklasse';
+import * as migration_20261115_165108_steckplaetze from './20261115_165108_steckplaetze';
 
 export const migrations = [
   {
@@ -95,5 +96,10 @@ export const migrations = [
     up: migration_20261115_140000_fahrzeugklasse.up,
     down: migration_20261115_140000_fahrzeugklasse.down,
     name: '20261115_140000_fahrzeugklasse',
+  },
+  {
+    up: migration_20261115_165108_steckplaetze.up,
+    down: migration_20261115_165108_steckplaetze.down,
+    name: '20261115_165108_steckplaetze'
   },
 ];
