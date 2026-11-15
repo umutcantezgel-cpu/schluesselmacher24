@@ -203,7 +203,7 @@ export default async function SchluesselNachVorlagePage() {
     { label: 'Ablauf', wert: process.label },
     { label: 'Aufnahmen', wert: String(PHOTOS.length) },
     { label: 'Original', wert: 'Bleibt zunächst bei Ihnen' },
-    { label: 'Einsendung', wert: 'Wenn die Fertigung das Original braucht' },
+    { label: 'Einsendung', wert: 'Nur wenn nötig' },
   ];
 
   return (
@@ -422,7 +422,7 @@ export default async function SchluesselNachVorlagePage() {
             <SectionHeading
               nummer="04"
               eyebrow="Original einsenden"
-              title="Wenn die Fertigung das Original braucht"
+              title="Nur wenn nötig"
               lead="Bei ungewöhnlichen Profilen oder unleserlichen Prägungen ist eine sichere Fertigung nur am Original möglich. Dann senden Sie den Schlüssel ein."
             />
 
