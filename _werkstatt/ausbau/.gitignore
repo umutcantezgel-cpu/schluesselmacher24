@@ -16,3 +16,5 @@
 /protokolle/**/*.png
 /protokolle/**/*.jpg
 /protokolle/**/*.webp
+# Laufprotokoll der Datenweiche: wächst mit jedem Projektbefehl, bleibt lokal (Zusammenfassungen stehen in den Berichten)
+/protokolle/datenweiche.log
