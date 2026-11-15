@@ -937,6 +937,17 @@ export function ZutrittKonfigurator({ hilfe }: { hilfe?: HilfeKontakt }) {
         </fieldset>
       )}
 
+      {/* Technische Fragen ohne Fachwissen: Telefon und Rückruf (FA-QA-02). Für „weiß nicht“ steht je Frage
+          „offen“ oder „noch nicht bekannt“ bereit. */}
+      {(flow.step?.id === 'medien' || flow.step?.id === 'verwaltung' || flow.step?.id === 'integration') && (
+        <HilfeBlock
+          hilfe={hilfe}
+          stelle="technik"
+          satz="Wählen Sie „Noch offen“ oder „Noch unklar“, wenn Sie es nicht wissen. Wir beraten Sie gern am Telefon."
+          className="mt-8"
+        />
+      )}
+
       {/* 5 Berechtigungen */}
       {flow.step?.id === 'berechtigungen' && (
         <fieldset>

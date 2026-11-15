@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getPageContent } from '@/lib/data';
+import { getPageContent, getSettings } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { Alert } from '@/components/ui/alert';
 import { PageHeader } from '@/components/layout/page-header';
@@ -10,6 +10,7 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 import { ZutrittKonfigurator } from './zutritt-konfigurator';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
 
 const ROUTE = 'elektronische-zutrittsloesungen/konfigurator';
 
@@ -96,7 +97,7 @@ export default async function ZutrittKonfiguratorPage() {
             </p>
           </Alert>
 
-          <ZutrittKonfigurator />
+          <ZutrittKonfigurator hilfe={hilfeAus(await getSettings())} />
         </div>
       </Section>
 
