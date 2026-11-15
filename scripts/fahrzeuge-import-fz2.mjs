@@ -584,6 +584,67 @@ export const MARKENWORTE = [
   ['BMW', 'BMW'],
 ].sort((a, b) => b[0].length - a[0].length);
 
+/**
+ * Handelsnamen ohne Markenwort, die ein Hersteller mehrerer Marken für eine bestimmte Marke führt, mit dem
+ * Reihennamen in der Schreibweise des Handels. BMW führt in FZ 2.2 die MINI-Modelle ohne Markenwort
+ * („Countryman Cooper“, „Clubman One“, „Aceman SE“, „JCW“). Belegt durch Handelsnamen derselben Datei mit
+ * Markenwort: „One,One Countryman,MINI“, „Cooper Clubman,MINI“, „John Cooper Works,MINI“, „JohnCooperWorks
+ * Coupé,MIN…“, „JCW Aceman E“ und „JCW Countryman ALL4“ (JCW ist die Abkürzung von John Cooper Works).
+ * Verglichen wird das erste Wort oder die ersten Wörter des ersten Teils, längere zuerst.
+ */
+export const HANDELSNAMEN_MARKE = {
+  BMW: {
+    marke: 'MINI',
+    reihen: [
+      ['JOHN COOPER WORKS', 'John Cooper Works'],
+      ['JOHNCOOPERWORKS', 'John Cooper Works'],
+      ['JCW', 'John Cooper Works'],
+      ['COUNTRYMAN', 'Countryman'],
+      ['CLUBMAN', 'Clubman'],
+      ['ACEMAN', 'Aceman'],
+      ['COOPER', 'Cooper'],
+      ['ONE', 'One'],
+    ],
+  },
+};
+
+/** Reihe nach HANDELSNAMEN_MARKE: `{ marke, reihe }` oder null. Mit `marke` nur Einträge dieser Marke. */
+export function reiheAusHandelsnamen(teil, hersteller, marke) {
+  const eintraege = Object.entries(HANDELSNAMEN_MARKE).filter(([h, e]) => (hersteller ? h === hersteller : true) && (marke ? e.marke === marke : true));
+  const gross = teil.replace(/\s+/g, ' ').trim().toUpperCase();
+  for (const [, e] of eintraege) {
+    const fund = e.reihen.find(([wort]) => gross === wort || gross.startsWith(`${wort} `));
+    if (fund) return { marke: e.marke, reihe: fund[1] };
+  }
+  return null;
+}
+
+/**
+ * Schreibfehler des KBA in Handelsnamen, je Marke auf den Reihennamen abgebildet, den die Datei sonst führt.
+ * „SKODA SUBERB“ (SKODA (CZ), 293 Fahrzeuge) steht neben „SUPERB“ in derselben Datei und in FZ 12.
+ * Nur Wörter dieser Liste; Prüfhinweise auf weitere Fälle gibt der Lauf aus (Tippfehlerabstand 1).
+ */
+export const KBA_SCHREIBVARIANTEN = {
+  Škoda: { SUBERB: 'SUPERB' },
+};
+
+/** Teil mit berichtigten Schreibfehlern nach KBA_SCHREIBVARIANTEN. */
+export function ohneSchreibfehler(teil, marke) {
+  const liste = KBA_SCHREIBVARIANTEN[marke];
+  if (!liste) return teil;
+  return teil.replace(/[\p{L}\p{N}]+/gu, (wort) => liste[wort.toUpperCase()] ?? wort);
+}
+
+/** Levenshtein-Abstand, abgebrochen über 1 (genügt für den Prüfhinweis). */
+export function abstandHoechstensEins(a, b) {
+  if (a === b) return true;
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0;
+  while (i < a.length && i < b.length && a[i] === b[i]) i += 1;
+  if (a.length === b.length) return a.slice(i + 1) === b.slice(i + 1);
+  return a.length > b.length ? a.slice(i + 1) === b.slice(i) : a.slice(i) === b.slice(i + 1);
+}
+
 /** Markenworte, die Teil des Modellnamens bleiben: „RANGE ROVER EVOQUE“ ist bei Land Rover die Reihe „Range Rover Evoque“. */
 const MARKENWORT_BLEIBT = new Set(['RANGE ROVER']);
 
@@ -636,11 +697,23 @@ export function teile(handelsname) {
 
 const kompakt = (text) => schluessel(text);
 
+/**
+ * Vorsilben, unter denen FZ 12 Reihen führt, die FZ 2 ohne sie nennt: FZ 12 „MG ROEWE ZS“, „MG ROEWE MARVEL“,
+ * „MG ROEWE RX6“; FZ 2.2 unter SAIC (RC) „MG ZS“, „MG Marvel R Electric“, „MG RX6“. Der Rest ohne Vorsilbe ist
+ * ein weiterer Schlüssel derselben Reihe.
+ */
+export const REIHEN_VORSILBEN = new Set(['roewe']);
+
 /** Schlüssel der vorhandenen Reihen einer Marke: Reihenname, Teile und Aliase. */
 export function reihenSchluessel(reihen) {
   const schluesselListe = [];
   for (const r of reihen) {
-    for (const q of [r.reihe, ...(r.alias ?? [])]) {
+    const namen = [r.reihe, ...(r.alias ?? [])];
+    for (const n of [...namen]) {
+      const [vorsilbe, ...rest] = n.split(' ');
+      if (rest.length && REIHEN_VORSILBEN.has(kompakt(vorsilbe))) namen.push(rest.join(' '));
+    }
+    for (const q of namen) {
       for (const t of q.split(/\s*(?:,|\/)\s*/)) {
         const k = kompakt(t);
         if (k) schluesselListe.push({ k, reihe: r, klasse: /^([a-z]{1,3})klasse$/.exec(k)?.[1], er: /^(\d)er$/.exec(k)?.[1] });
@@ -699,12 +772,12 @@ export function nurAusstattung(teil) {
 }
 
 /** Wörter, die allein kein Modellname sind und das folgende Wort mitnehmen („NEW BEETLE“, „STREET KA“). */
-const NAMENSANFANG = new Set(['new', 'grand', 'street', 'flying', 'marco', 'john', 'range', 'space', 'karmann', 'cont', 'sport', 'super']);
+const NAMENSANFANG = new Set(['new', 'grand', 'street', 'flying', 'marco', 'john', 'range', 'space', 'karmann', 'cont', 'sport', 'super', 'amg']);
 
 /**
  * Reihenname einer neuen Zeile aus dem ersten Teil: das erste Wort; ein kurzes Buchstabenwort mit der
- * Zahl danach („P 601“, „F 355“); eine Zahl mit kurzem Buchstabenwort danach („2 CV“, „17 M“); ein
- * Namensanfang mit dem folgenden Wort („Street Ka“).
+ * Zahl danach („P 601“, „F 355“); eine Zahl bis vier Stellen mit kurzem Buchstabenwort danach („2 CV“,
+ * „17 M“, „200 SX“, ab drei Stellen ohne Ausstattungswort); ein Namensanfang mit dem folgenden Wort, auch mit Ziffern („Street Ka“, „Super V8“).
  */
 export function neueReihe(teil) {
   const woerter = teil.replace(/\s+/g, ' ').trim().split(' ');
@@ -712,9 +785,25 @@ export function neueReihe(teil) {
   if (b !== undefined) {
     if (/^[A-Za-z]{1,2}$/.test(a) && /^\d/.test(b)) return `${a} ${b}`;
     if (/^\d{1,2}$/.test(a) && /^[A-Za-z]{1,3}$/.test(b)) return `${a} ${b}`;
-    if (NAMENSANFANG.has(a.toLowerCase().replace(/\.$/, '')) && /^[\p{L}]+$/u.test(b)) return `${a} ${b}`;
+    // Drei- und vierstellige Zahlen: nur mit einem Kurzwort, das keine Ausstattung ist („200 SX“, „300 ZX“,
+    // aber „240 GL“ bleibt „240“). Mehrere solcher Namen zur selben Zahl führt pkwErgaenzung zusammen.
+    if (/^\d{3,4}$/.test(a) && /^[A-Za-z]{1,3}$/.test(b) && !AUSSTATTUNG.has(b.toLowerCase())) return `${a} ${b}`;
+    if (NAMENSANFANG.has(a.toLowerCase().replace(/\.$/, '')) && /^[\p{L}\p{N}]+$/u.test(b)) return `${a} ${b}`;
   }
   return a;
+}
+
+/**
+ * Vorsätze, die vor einem vorhandenen Reihennamen stehen können: „AMG A 35“ ist eine A-Klasse, „AMG GLC 43“
+ * ein GLC. Für den Abgleich wird der Teil auch ohne Vorsatz geprüft.
+ */
+export const VORSAETZE = ['AMG'];
+
+/** Varianten eines Teils für den Abgleich: der Teil selbst und, wo ein Vorsatz vorn steht, der Rest. */
+function abgleichVarianten(teil) {
+  const gross = teil.toUpperCase();
+  const v = VORSAETZE.find((w) => gross.startsWith(`${w} `));
+  return v ? [teil, teil.slice(v.length + 1).trim()] : [teil];
 }
 
 /**
@@ -763,7 +852,12 @@ export function pkwErgaenzung(blatt, katalog, quelle = FZ2_QUELLE) {
       zaehler.wohnmobilBestand += t.anzahl;
       continue;
     }
-    const alle = teile(t.handelsname);
+    // Schrägstrich vor einem weiteren Namen mit Markenwort trennt wie ein Komma („Kia LD/Kia Cerato“);
+    // sonst bleibt er Teil des Namens („318I/CABRIO“, „200 D/8“).
+    const alle = teile(t.handelsname).flatMap((teil) => {
+      const stuecke = teil.split(/\s*\/\s*/);
+      return stuecke.length > 1 && stuecke.slice(1).every((x) => markeAusName(x)) ? stuecke.filter(Boolean) : [teil];
+    });
     const ersterTreffer = markeAusName(alle[0]);
     const weitererTreffer = alle.slice(1).map((teil) => markeAusRest(teil, alle[0])).find(Boolean);
     const erstesWort = kompakt((ersterTreffer ? ersterTreffer.rest : alle[0]).split(' ')[0] ?? '');
@@ -783,20 +877,32 @@ export function pkwErgaenzung(blatt, katalog, quelle = FZ2_QUELLE) {
   const gruppen = new Map();
   for (const { t, alle, ersterTreffer, weitererTreffer, erstesWort } of zeilen) {
     const beleg = belege.get(`${t.hersteller}|${erstesWort}`);
+    const ausListe = ersterTreffer ? null : reiheAusHandelsnamen(alle[0], t.hersteller);
     const marke =
-      ersterTreffer?.marke ?? weitererTreffer?.marke ?? (beleg?.size === 1 ? [...beleg][0] : undefined) ?? PKW_HERSTELLER[t.hersteller];
+      ersterTreffer?.marke
+      ?? ausListe?.marke
+      ?? weitererTreffer?.marke
+      ?? (beleg?.size === 1 ? [...beleg][0] : undefined)
+      ?? PKW_HERSTELLER[t.hersteller];
     if (!marke) {
       zaehler.ohneMarke.push(`${t.hersteller}: ${t.handelsname}`);
       continue;
     }
-    // Teile ohne Markenwort derselben Marke; Teile einer anderen Marke fallen weg.
-    const namensTeile = alle
-      .map((teil) => {
-        const m = markeAusName(teil);
-        if (!m) return teil;
-        return m.marke === marke ? m.rest : '';
-      })
-      .filter(Boolean);
+    // Teile ohne Markenwort derselben Marke; Teile einer anderen Marke fallen weg. `mitWort` behält das
+    // Markenwort für den Abgleich mit Reihen, deren Name es trägt (FZ 12 „WEY 05“, „Rover MGF, MG TF“); dort
+    // zählt nur der genaue Schlüssel, sonst passte „MINI COOPER“ über die Präfixregel auf die Reihe „Mini“.
+    const namensTeile = [];
+    const mitWort = [];
+    for (const teil of alle) {
+      const m = markeAusName(teil);
+      if (!m) namensTeile.push(ohneSchreibfehler(teil, marke));
+      else if (m.marke === marke) {
+        if (m.rest) {
+          namensTeile.push(ohneSchreibfehler(m.rest, marke));
+          mitWort.push(kompakt(teil));
+        }
+      }
+    }
     if (!namensTeile.length) {
       zaehler.nurMarke += 1;
       continue;
@@ -807,11 +913,15 @@ export function pkwErgaenzung(blatt, katalog, quelle = FZ2_QUELLE) {
       continue;
     }
     const liste = schluesselJeMarke.get(marke);
-    if (liste && namensTeile.some((teil) => entsprichtReihe(teil, liste))) {
+    if (
+      liste
+      && (namensTeile.flatMap(abgleichVarianten).some((teil) => entsprichtReihe(teil, liste))
+        || mitWort.some((k) => liste.some((s) => !s.genau && s.k === k)))
+    ) {
       zaehler.entspricht += 1;
       continue;
     }
-    const reihe = handelsnameAnzeige(neueReihe(namensTeile[0]));
+    const reihe = reiheAusHandelsnamen(namensTeile[0], undefined, marke)?.reihe ?? handelsnameAnzeige(neueReihe(namensTeile[0]));
     // Gleicher Name wie eine vorhandene Reihe derselben Marke: keine Dublette.
     if (vorhandeneIds.has(kennung(marke, reihe))) {
       zaehler.entspricht += 1;
@@ -837,6 +947,35 @@ export function pkwErgaenzung(blatt, katalog, quelle = FZ2_QUELLE) {
     g.namen.add(t.handelsname);
     g.hersteller.add(t.hersteller);
     g.bestand += t.anzahl;
+  }
+  // Zahl mit Kurzwort („230 CE“, „230 SL“, „296 GTB“) nur, wenn es zu dieser Zahl bei der Marke nichts anderes
+  // gibt; sonst ist die Zahl die Reihe („230“), wie vor der Regel. Führt der Katalog die Zahl schon, entspricht
+  // die Zeile ihr.
+  const jeZahl = new Map();
+  for (const [k, g] of gruppen) {
+    const zahl = /^(\d{3,4})(?: |$)/.exec(g.reihe)?.[1];
+    if (!zahl) continue;
+    const z = `${g.marke}|${zahl}`;
+    jeZahl.set(z, [...(jeZahl.get(z) ?? []), k]);
+  }
+  for (const [z, schluesselListe] of jeZahl) {
+    const [marke, zahl] = z.split('|');
+    const vorhanden = vorhandeneIds.has(kennung(marke, zahl));
+    if (schluesselListe.length < 2 && !vorhanden) continue;
+    const ziel = `${marke}|${kompakt(zahl)}`;
+    for (const k of schluesselListe) {
+      const g = gruppen.get(k);
+      gruppen.delete(k);
+      if (vorhanden) {
+        zaehler.entspricht += g.namen.size;
+        continue;
+      }
+      if (!gruppen.has(ziel)) gruppen.set(ziel, { marke, reihe: zahl, namen: new Set(), hersteller: new Set(), bestand: 0 });
+      const t = gruppen.get(ziel);
+      for (const n of g.namen) t.namen.add(n);
+      for (const h of g.hersteller) t.hersteller.add(h);
+      t.bestand += g.bestand;
+    }
   }
   const reihen = [...gruppen.values()].map((g) => ({
     id: kennung(g.marke, g.reihe),
@@ -866,26 +1005,59 @@ const klassenRang = (klasse) => {
   return rang < 0 ? KLASSEN_FOLGE.length : rang;
 };
 
+/** Zeile einer FZ-2-Übernahme? */
+export const istFz2Zeile = (r) => typeof r.quelle === 'string' && r.quelle.startsWith(FZ2_PRAEFIX);
+
+/**
+ * Felder, die nach dem Import gepflegt werden (scripts/fahrzeuge-generationen-import.mjs, Bestand, Prüfung)
+ * und die das Importskript selbst nicht bildet. Sie gehen beim erneuten Lauf je Kennung auf die neue Zeile
+ * über. Aliase bildet das Skript selbst; sie werden neu gebildet.
+ */
+export const GEPFLEGTE_FELDER = ['generationen', 'bestandsModell', 'transponder', 'sichtbar'];
+
+/** Hat eine Zeile gepflegte Angaben, die ein Neuaufbau verlieren würde? */
+const hatGepflegtes = (r) =>
+  (Array.isArray(r.generationen) && r.generationen.length > 0) || r.bestandsModell !== undefined || r.transponder !== undefined || r.sichtbar === false;
+
 /**
  * Neuer Katalog: vorhandene Zeilen (ohne frühere FZ-2-Zeilen, mit Klasse „pkw“, wo sie fehlt) und die
- * Zeilen aus FZ 2. Kennungen müssen eindeutig sein, sonst bricht der Lauf ab.
+ * Zeilen aus FZ 2. Gepflegte Felder früherer FZ-2-Zeilen gehen je Kennung über (GEPFLEGTE_FELDER).
+ * Kennungen müssen eindeutig sein, sonst bricht der Lauf ab. `verloren` nennt frühere FZ-2-Zeilen mit
+ * gepflegten Angaben, deren Kennung nicht mehr entsteht.
  */
-export function fuehreZusammen(katalog, neue) {
-  const bleibende = katalog
-    .filter((r) => !(typeof r.quelle === 'string' && r.quelle.startsWith(FZ2_PRAEFIX)))
-    .map((r) => (r.klasse ? r : { id: r.id, klasse: 'pkw', ...r }));
+export function fuehreZusammenMitBericht(katalog, neue) {
+  const alteFz2 = new Map(katalog.filter(istFz2Zeile).map((r) => [r.id, r]));
+  const bleibende = katalog.filter((r) => !istFz2Zeile(r)).map((r) => (r.klasse ? r : { id: r.id, klasse: 'pkw', ...r }));
   const ids = new Set(bleibende.map((r) => r.id));
-  for (const r of neue) {
+  const uebernommen = neue.map((r) => {
     if (ids.has(r.id)) throw new Error(`Kennung doppelt vergeben: ${r.id}`);
     ids.add(r.id);
-  }
-  return [...bleibende, ...neue].sort(
+    const alt = alteFz2.get(r.id);
+    if (!alt) return r;
+    const gepflegt = Object.fromEntries(GEPFLEGTE_FELDER.filter((f) => alt[f] !== undefined).map((f) => [f, alt[f]]));
+    return { ...r, ...gepflegt };
+  });
+  const verloren = [...alteFz2.values()].filter((r) => !ids.has(r.id) && hatGepflegtes(r));
+  const zeilen = [...bleibende, ...uebernommen].sort(
     (a, b) =>
       klassenRang(a.klasse) - klassenRang(b.klasse)
       || sortierer.compare(a.marke, b.marke)
       || sortierer.compare(a.reihe, b.reihe)
       || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0),
   );
+  return { zeilen, verloren };
+}
+
+/** Wie fuehreZusammenMitBericht, nur die Zeilen; bricht ab, wenn gepflegte Angaben verloren gingen. */
+export function fuehreZusammen(katalog, neue) {
+  const { zeilen, verloren } = fuehreZusammenMitBericht(katalog, neue);
+  if (verloren.length) {
+    throw new Error(
+      `Zeilen mit gepflegten Angaben fielen weg: ${verloren.map((r) => r.id).join(', ')}. `
+        + 'Gepflegtes zuerst auf die neue Kennung übertragen oder entfernen, dann erneut laufen lassen.',
+    );
+  }
+  return zeilen;
 }
 
 function schreibeAtomar(datei, inhalt) {
@@ -909,7 +1081,7 @@ function main(argumente) {
   if (!impressum.includes('1. Januar 2026')) throw new Error('Impressum nennt nicht den Stand 1. Januar 2026');
 
   const katalog = JSON.parse(readFileSync(ZIEL_DATEI, 'utf8'));
-  const basis = katalog.filter((r) => !(typeof r.quelle === 'string' && r.quelle.startsWith(FZ2_PRAEFIX)));
+  const basis = katalog.filter((r) => !istFz2Zeile(r));
   const krad = kraftraeder(blaetter['FZ 2.6']);
   const pkw = pkwErgaenzung(blaetter['FZ 2.2'], basis);
   const neu = fuehreZusammen(katalog, [...pkw.reihen, ...krad.reihen]);
@@ -942,6 +1114,19 @@ function main(argumente) {
     for (const n of p.ausstattung) console.log(`  ${n}`);
     console.log('\nNeue Pkw-Reihen:');
     for (const r of pkw.reihen) console.log(`  ${r.marke} | ${r.reihe} | ${r.bestand} | ${r.kbaName}`);
+  }
+  // Prüfhinweis: neue Pkw-Reihen, die sich von einer vorhandenen Reihe derselben Marke nur in einem Zeichen
+  // unterscheiden, können Schreibfehler des KBA sein (KBA_SCHREIBVARIANTEN).
+  const hinweise = [];
+  for (const r of pkw.reihen) {
+    const k = kompakt(r.reihe);
+    if (k.length < 5) continue;
+    const nah = basis.filter((b) => b.marke === r.marke && abstandHoechstensEins(k, kompakt(b.reihe)));
+    for (const b of nah) hinweise.push(`${r.marke}: „${r.reihe}“ (neu) und „${b.reihe}“ (vorhanden)`);
+  }
+  if (hinweise.length) {
+    console.log(`Prüfhinweis, mögliche Schreibfehler (${hinweise.length}):`);
+    for (const h of hinweise) console.log(`  ${h}`);
   }
   const inhalt = `${JSON.stringify(neu, null, 2)}\n`;
   console.log(`Katalogzeilen: ${neu.length}, Größe: ${(Buffer.byteLength(inhalt) / 1024).toFixed(1).replace('.', ',')} KB`);
