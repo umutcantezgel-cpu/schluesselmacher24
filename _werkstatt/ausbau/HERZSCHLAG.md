@@ -1,7 +1,7 @@
 # HERZSCHLAG
-Zeit: 2026-11-15 22:47 MEZ
+Zeit: 2026-11-15 23:26 MEZ
 Sitzung: 8e76b2e3
 Zustand: AKTIV (Fortsetzung auf Anweisung des Nutzers vom 15.11.2026 mit der Finalen Arbeitsanweisung des Inhabers, A-043)
-Etappe und Welle: FA Priorität 2 vollständig (KERN-01 bis -06); Priorität 3: SHOP-01 (Shop-Grundlage Teil 1) läuft; daneben SEO-01C (Strukturdaten, Indexierbarkeit) und INHALT-03G (Kasse, Vorgangsseite, Mails); danach SHOP-01B
-Letzter grüner Commit: 90633dd voll geprüft (Typprüfung, Lint, Unit 2875, DB 113, Build 177/177); cd6ba83 mit Typprüfung, Lint, DB 118 und Build 177/177 grün, Unit bis auf einen behobenen Test
+Etappe und Welle: FA Priorität 3: SHOP-01 committet, SHOP-01B (Seiten und Import) läuft; daneben QA-02 (Bedienbarkeit der Formulare) und INHALT-02 (Hersteller sichtbar); danach SHOP-02, SHOP-03, PLATTFORM-01, PLATTFORM-03
+Letzter grüner Commit: 2e1a3ea voll geprüft (Typprüfung, Lint, Unit 3175, DB 128, Build 177/177; Onpage 134 Seiten, Median 100, kein Befund)
 ARBEITSBRANCH: claude/new-session-li9jsf
