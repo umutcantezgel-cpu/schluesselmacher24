@@ -184,7 +184,7 @@ export function pages(): PageContent[] {
         'Schlüssel nach Vorlage: drei Fotos hochladen, Machbarkeit und Preis erhalten. '
         + 'Einsendung des Originals nur, wenn es nötig ist.',
       links: [
-        ['/schluessel-nach-code', 'Code vorhanden? Direkt bestellen'],
+        ['/schluessel-nach-code', 'Code vorhanden? Schlüssel nach Code'],
         ['/autoschluessel/kopieren', 'Mechanische Autoschlüssel'],
       ],
     },
@@ -338,7 +338,7 @@ export function pages(): PageContent[] {
         + 'Stückzahl und Kontaktdaten.',
       links: [
         ['/schluessel-nach-vorlage', 'So funktioniert es'],
-        ['/schluessel-nach-code', 'Code vorhanden? Direkt bestellen'],
+        ['/schluessel-nach-code', 'Code vorhanden? Schlüssel nach Code'],
       ],
     },
     {

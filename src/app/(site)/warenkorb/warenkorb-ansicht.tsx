@@ -157,8 +157,8 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
           <div className="min-w-0 flex-1">
             <h2 className="text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
             <p className="mt-2 text-small text-foreground-muted">
-              Sie können Schlüssel über den Schlüsselcode bestellen oder eine Gleichschließung
-              selbst zusammenstellen.
+              Hier sammeln Sie, was Sie direkt bestellen möchten. Beginnen Sie mit Schlüssel nach
+              Code oder mit gleichschließenden Zylindern.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <ButtonLink href="/schluessel-nach-code">Schlüssel nach Code</ButtonLink>
@@ -256,12 +256,12 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
 
                       {position.line && !position.line.active && (
                         <p className="mt-3 text-small font-semibold text-danger">
-                          Diese Codelinie ist derzeit nicht bestellbar.
+                          Dieser Schlüssel ist derzeit nicht bestellbar. Bitte entfernen Sie die Position.
                         </p>
                       )}
                       {!position.line && (
                         <p className="mt-3 text-small font-semibold text-danger">
-                          Diese Codelinie gibt es nicht mehr. Bitte entfernen Sie die Position.
+                          Diesen Schlüssel gibt es nicht mehr im Angebot. Bitte entfernen Sie die Position.
                         </p>
                       )}
                     </div>
@@ -382,8 +382,8 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                     )}
 
                     <p className="mt-3 text-small text-foreground-muted">
-                      Stückzahl 1 — eine Zusammenstellung. Weitere Zylinder ändern Sie im
-                      Konfigurator.
+                      Stückzahl 1 für die ganze Zusammenstellung. Zylinder ändern oder ergänzen Sie
+                      im Konfigurator.
                     </p>
 
                     <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1">
@@ -432,8 +432,8 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
           <div className="mt-6 border-t border-border pt-6">
             {versandarten.length === 0 ? (
               <Alert tone="warning" title="Keine passende Versandart">
-                Für diese Kombination aus Artikeln ist keine gemeinsame Versandart hinterlegt.
-                Bitte bestellen Sie die Positionen getrennt oder sprechen Sie uns an.
+                Für diese Artikel gibt es keine gemeinsame Versandart. Bitte bestellen Sie die
+                Positionen getrennt oder sprechen Sie uns an.
               </Alert>
             ) : (
               <div className="space-y-2">

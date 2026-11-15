@@ -88,7 +88,7 @@ export function ArtikelKauf({ article }: ArtikelKaufProps) {
     <Card>
       <CardHeader>
         <h2 className="text-title-sm font-semibold text-foreground">
-          {beispiel ? 'Beispielartikel — nicht bestellbar' : 'Stückzahl wählen'}
+          {beispiel ? 'Beispielartikel, nicht bestellbar' : 'Stückzahl wählen'}
         </h2>
         <p className="mt-2 flex flex-wrap items-baseline gap-x-2">
           <span className="font-mono text-title font-semibold tabular-nums text-foreground">
@@ -171,7 +171,7 @@ export function ArtikelKauf({ article }: ArtikelKaufProps) {
                         )}
                       >
                         {formatNumber(stufe.minQty)} Stück
-                        {index === aktiv && <span className="sr-only"> — gilt für Ihre Auswahl</span>}
+                        {index === aktiv && <span className="sr-only">, gilt für Ihre Auswahl</span>}
                       </th>
                       <td
                         className={cn(

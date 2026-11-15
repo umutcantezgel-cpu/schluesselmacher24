@@ -141,4 +141,37 @@ Gegenlesen: Diese Teilaufgabe hat kein Werkzeug, um unabhängige Agenten zu star
 - `npm run lint`: ohne Fehler.
 - Kein Build, kein Server, kein git (außer `status`, `diff`, `log` lesend), keine `--pg`-Befehle.
 
+## Nachbesserung
+Nach zwei Gegenprüfungen (15 Befunde, alle gelb). Prüfung danach über die Datenweiche (`sicher.sh --json`): `npx vitest run` 187 Testdateien, 2427 Tests, alle bestanden (ein erster Lauf zeigte einen Fehler in `src/lib/rubriken.test.ts`, Datei eines fremden Pakets, nicht berührt; einzeln und im Wiederholungslauf grün); `npm run typecheck` ohne Fehler; `npm run lint` ohne Fehler. Kein git.
+
+1. Zutritt, digitaler Zylinder: **behoben.** Zurück zur Aussage des Bestands: „Erst wenn er ein berechtigtes Medium erkennt, etwa eine Karte oder einen Transponder, können Sie mit dem Knauf schließen.“ Die Frage 2 der Schlussredaktion (Zutritt) ist damit erledigt.
+2. Schließanlagen, Gewerbe-Karte: **behoben.** „… öffnet jeder Schlüssel nur die Türen, die sein Besitzer braucht. Der Hauptschlüssel öffnet alle Türen.“
+3. Schließanlagen, Karte „Mehrere Liegenschaften“: **behoben.** „Der Generalhauptschlüssel öffnet alle Türen.“
+4. Systemerklärung Z und Unterzeile: **behoben.** Die Z-Erklärung beginnt jetzt „Bei einer Zentralschlossanlage, auch Zentralschließung genannt, öffnen mehrere verschiedene Einzelschlüssel dieselben gemeinsamen Türen.“ Die Unterzeile lautet in `content/seo.json`, `content.ts` und im Rückfall der Seite gleich „… von der Gleichschließung bis zur Generalhauptschlüsselanlage.“ (wie Navigation und Startwerte). Test in `rubrikseiten-texte.test.ts` auf den neuen Satzanfang geschärft.
+5. Systemerklärung HS: **behoben.** Wortlaut des Inhabers übernommen: „Ein Hauptschlüssel öffnet alle ihm zugeordneten Türen, meist alle Türen der Anlage.“ Der Test prüft jetzt /Hauptschlüssel öffnet alle ihm zugeordneten Türen/ (genauer, nicht lockerer). `opensWhat` („öffnet alle Türen der Anlage“) bleibt als typischer Fall, siehe Schlussredaktion.
+6. Zylinderseite, Sicherungskarte: **behoben.** Lead von Abschnitt 06 „Schutz und Optionen“: „Dazu gehört die Sicherungskarte, also ein Nachweis, ohne den niemand Nachschlüssel bestellen kann.“ Beleg im Bestand: `content/cylinder-catalog.json` („Nachschlüssel werden nur gegen Vorlage der Sicherungskarte gefertigt.“).
+7. Kontakt, Kopf: **behoben.** „Für einen Auftrag nutzen Sie am besten den passenden Ablauf, dort fragen wir gleich alles Nötige ab.“
+8. Vor Ort, Terminvorlauf: **behoben.** „Termine für Autoschlüssel gibt es in der Regel ab etwa {leadTimeDays} Tagen.“ Wert weiter aus `settings.booking.leadTimeDays`, zweiter Satz unverändert.
+9. Vor Ort, Überschrift: **behoben.** „Arbeiten vor Ort und in unserer Werkstatt“; die Autoschlüssel-Zeile bleibt.
+10. Ratgeber `content/guides.json`: **behoben als OFFENE FRAGE** (Datei außerhalb der Schreibrechte), siehe unten.
+11. Kontakt, Kopf: **behoben** wie Befund 7 (doppelt gemeldet).
+12. Vor Ort, Terminvorlauf: **behoben** wie Befund 8 (doppelt gemeldet).
+13. Systemerklärung HS: **behoben** wie Befund 5 (doppelt gemeldet); der Test wurde nicht gelockert, sondern auf den Wortlaut des Inhabers gesetzt.
+14. M-20 in `docs/gestaltung/MENSCHEN.md`: **zutreffend, nicht in diesem Paket behebbar** (außerhalb der Schreibrechte). Hinweis für den Orchestrator: bei M-20 vermerken, dass die Angaben „AES-128 oder höher“, „MIFARE DESFire EV2/EV3“ und „Bluetooth Low Energy mit AES-128“ mit FA-INHALT-03C gestrichen wurden; über die Wiederaufnahme mit Quelle in `FACHWISSEN.md` entscheidet der Inhaber.
+15. Schließanlagen-FAQ „Flucht- und Rettungswege“: **behoben.** Verkettung auf unter 100 Zeichen je Zeile umbrochen.
+
+Weitere offene Fragen aus der Nachbesserung:
+- OFFENE FRAGE (Ratgeber-Paket): `content/guides.json`, Ratgeber „Welche Schließanlage passt“, erklärt Z, HS und GHS anders als `system-erklaerung.tsx` (etwa HS „Ein Hauptschlüssel öffnet alle oder eine größere Gruppe davon“), und der Auszug trägt einen Gedankenstrich („Gleichschließung, Z, HS oder GHS — in einfacher Sprache erklärt.“). FA-16 verlangt eine einheitliche Laienerklärung: Texte an die Tabelle des Inhabers und an die Systemerklärung angleichen, Gedankenstrich entfernen.
+- OFFENE FRAGE (Orchestrator): M-20 in `docs/gestaltung/MENSCHEN.md` nachtragen (Befund 14).
+- Schlussredaktion, Ergänzung Schließanlagen: HS-Karte `opensWhat` sagt weiter „Der Hauptschlüssel öffnet alle Türen der Anlage.“ (Bestand, typischer Fall). Soll dort ebenfalls „alle zugeordneten Türen“ stehen?
+- Schlussredaktion, Ergänzung Zylinder: „die Sicherungskarte, also ein Nachweis, ohne den niemand Nachschlüssel bestellen kann“: so allgemein richtig, oder nur „bei geschützten Systemen“?
+
 === ENDE FA-INHALT-03C · BERICHT ===
+
+## ABNAHME (Orchestrator, 15.11.2026)
+
+- **Verweistext „Code vorhanden? Direkt bestellen“** auf drei Routen (`content/seo.json`, Rückfall `content.ts`) heißt jetzt „Code vorhanden? Schlüssel nach Code“. Solange es keine Codeprodukte gibt, darf dort kein Direktkauf stehen (R4); der neue Text stimmt mit und ohne Produkte.
+- **M-20** in `docs/gestaltung/MENSCHEN.md` trägt den Vermerk zu den gestrichenen Verschlüsselungsangaben.
+- **Ratgeber „Welche Schließanlage passt“** (`content/guides.json`): Die Angleichung von Z, HS und GHS an die neue Systemerklärung geschieht mit der Abnahme von FA-INHALT-03E, das den Ratgeber gerade überarbeitet.
+- **Fragen an den Inhaber** (HS-Karte „alle Türen der Anlage“, Sicherungskarte allgemein, Verschlüsselungsangaben, Wartungsangebot, Bestandsaufnahme vor Ort) stehen in MA-41.
+- Commit 292c5a6 enthielt einen Zwischenstand dieses Pakets; der Stand nach der Nachbesserung ist mit diesem Commit vollständig.

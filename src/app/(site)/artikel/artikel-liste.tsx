@@ -116,7 +116,7 @@ export function ArtikelListe({ articles, hinweis, className }: ArtikelListeProps
               <fieldset id={panelId} className={cn('mt-4 md:block', filterOffen ? 'block' : 'hidden')}>
                 <legend className="text-small font-semibold text-foreground">Schlagworte</legend>
                 <p className="mt-1 text-small leading-snug text-foreground-muted">
-                  Mehrere Schlagworte erweitern die Auswahl.
+                  Jedes weitere Schlagwort zeigt zusätzliche Artikel.
                 </p>
                 <ul className="mt-3 flex flex-wrap gap-2">
                   {alleSchlagworte.map((tag) => {
@@ -183,7 +183,7 @@ export function ArtikelListe({ articles, hinweis, className }: ArtikelListeProps
           <CardBody className="flex flex-col items-start gap-4 py-8 text-left sm:items-center sm:text-center">
             <div>
               <p className="text-body font-bold text-foreground">
-                Zu dieser Auswahl gibt es keinen Artikel.
+                Zu Ihrer Auswahl passt kein Artikel.
               </p>
               <p className="mt-2 max-w-md text-small leading-relaxed text-foreground-muted">
                 Setzen Sie die Filter zurück oder suchen Sie mit einem anderen Begriff.

@@ -153,10 +153,10 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
         {(article.example || article.tags.length > 0) && (
           <div className="grid gap-4">
             {article.example && (
-              <Alert tone="info" title="Beispielartikel — nicht bestellbar">
+              <Alert tone="info" title="Beispielartikel, nicht bestellbar">
                 <p>
-                  Dieser Artikel zeigt, wie Artikel im Shop dargestellt werden. Preis und Angaben
-                  sind Beispielwerte; der Artikel kann nicht bestellt werden.
+                  Dieser Artikel zeigt nur, wie Artikel im Shop dargestellt werden. Preis und
+                  Angaben sind Beispielwerte. Sie können diesen Artikel nicht bestellen.
                 </p>
               </Alert>
             )}

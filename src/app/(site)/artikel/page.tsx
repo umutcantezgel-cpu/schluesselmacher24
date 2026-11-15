@@ -23,8 +23,8 @@ import { ArtikelListe, type ListenArtikel } from './artikel-liste';
 const ROUTE = 'artikel';
 const TITEL = 'Artikel';
 const LEAD =
-  'Standardartikel rund um Schlüssel, Schloss und Tür — Stückzahl wählen und direkt in den '
-  + 'Warenkorb legen.';
+  'Artikel rund um Schlüssel, Schloss und Tür zum direkten Bestellen. Wählen Sie die Stückzahl '
+  + 'und legen Sie den Artikel in den Warenkorb.';
 const BESCHREIBUNG =
   'Standardartikel rund um Schlüssel, Schloss und Tür direkt bestellen: Eigenschaften, '
   + 'Lieferumfang und Staffelpreise auf einen Blick.';
@@ -34,17 +34,17 @@ const BASE_LINKS: NavLink[] = [
   {
     href: '/schluessel-nach-code',
     label: 'Schlüssel nach Code',
-    description: 'Nachschlüssel allein anhand des Codes, ohne Einsendung des Originals.',
+    description: 'Nachschlüssel nach dem Code, ohne dass Sie das Original einschicken.',
   },
   {
     href: '/gleichschliessende-zylinder',
     label: 'Mehrere Türen mit einem Schlüssel',
-    description: 'Gleichschließende Zylinder selbst zusammenstellen.',
+    description: 'Gleichschließende Zylinder selbst zusammenstellen. Ein Schlüssel öffnet alle Türen.',
   },
   {
     href: '/rechtliches/versand-und-zahlung',
     label: 'Zahlung und Versand',
-    description: 'Welche Versandarten und Zahlungswege zur Verfügung stehen.',
+    description: 'Welche Versandarten und Zahlungswege es gibt.',
   },
 ];
 
@@ -117,8 +117,8 @@ export default async function ArtikelPage() {
           {nurBeispiele ? 'Derzeit nur Beispielartikel' : 'Beispielartikel sind gekennzeichnet'}
         </p>
         <p className="text-foreground-muted">
-          Artikel mit dem Hinweis „Beispiel“ zeigen, wie Artikel hier dargestellt werden. Preise
-          und Angaben sind Beispielwerte; diese Artikel können nicht bestellt werden.
+          Artikel mit dem Hinweis „Beispiel“ zeigen nur, wie Artikel hier dargestellt werden.
+          Preise und Angaben sind Beispielwerte. Diese Artikel können Sie nicht bestellen.
         </p>
       </div>
     </div>
@@ -154,8 +154,8 @@ export default async function ArtikelPage() {
                 title="Artikel auswählen"
                 lead={
                   page?.intro
-                  || 'Öffnen Sie einen Artikel, um Eigenschaften, Lieferumfang und Staffelpreise zu '
-                    + 'sehen und die Stückzahl zu wählen.'
+                  || 'Öffnen Sie einen Artikel. Dort finden Sie Eigenschaften, Lieferumfang und '
+                    + 'Staffelpreise und wählen die Stückzahl.'
                 }
               />
             </div>
@@ -167,11 +167,11 @@ export default async function ArtikelPage() {
             <CardBody className="flex flex-col items-start gap-4 py-8 text-left sm:items-center sm:text-center">
               <div>
                 <h2 className="text-body font-bold text-foreground">
-                  Derzeit sind hier keine Artikel eingestellt.
+                  Hier gibt es gerade keine Artikel.
                 </h2>
                 <p className="mt-2 max-w-md text-small leading-relaxed text-foreground-muted">
-                  Sie suchen ein Ersatzteil oder Zubehör rund um Schlüssel, Schloss und Tür? Wir
-                  beraten Sie gern und sagen Ihnen, was passt.
+                  Suchen Sie Zubehör oder ein Ersatzteil für Schlüssel, Schloss oder Tür, fragen Sie
+                  uns. Wir beraten Sie und sagen Ihnen, was passt.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 sm:justify-center">
@@ -193,7 +193,7 @@ export default async function ArtikelPage() {
           nummer="02"
           eyebrow="Weiterlesen"
           title="Passende Bereiche und Hinweise"
-          lead="Schlüssel nach Code, gleichschließende Zylinder und alles zu Zahlung und Versand."
+          lead="Hier geht es weiter zu Schlüssel nach Code, zu gleichschließenden Zylindern und zu Zahlung und Versand."
         />
 
         {/* Stückliste mit Fach-Icons: die ganze Zeile ist der Link */}

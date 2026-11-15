@@ -139,7 +139,8 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
     title: 'Mehrere Liegenschaften',
     body:
       'Mehrere Standorte oder eine größere Liegenschaft. Bei einer Generalhauptschlüsselanlage '
-      + '(GHS) hat jedes Gebäude einen eigenen Hauptschlüssel. Der Generalhauptschlüssel öffnet alle Türen.',
+      + '(GHS) hat jedes Gebäude einen eigenen Hauptschlüssel. Der Generalhauptschlüssel öffnet '
+      + 'alle Türen.',
     href: '/schliessanlagen/konfigurator',
     linkLabel: 'Schließanlage konfigurieren',
   },
