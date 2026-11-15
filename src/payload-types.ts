@@ -226,6 +226,15 @@ export interface Vorgaenge {
    * Optional. Wird in die E-Mail zur nächsten Statusänderung übernommen und danach geleert.
    */
   nachrichtAnKunde?: string | null;
+  /**
+   * Vor dem Stornieren einer bezahlten Zahlung wählen. Bei „ganz“ oder „teilweise“ die Erstattung im Reiter „Zahlung“ eintragen, bei „keine“ den Grund.
+   */
+  storno?: {
+    entscheidung?: ('ganz' | 'teilweise' | 'keine') | null;
+    grund?: string | null;
+    entschiedenAm?: string | null;
+    entschiedenVon?: string | null;
+  };
   zusammenfassung?:
     | {
         titel?: string | null;
@@ -370,6 +379,19 @@ export interface Vorgaenge {
     versandart?: string | null;
   };
   /**
+   * Für eine Änderung nach der Bestellung, etwa Nachlass oder Zusatzleistung. Betrag in Cent, plus oder minus (5,00 € Nachlass = -500). Eine gespeicherte Korrektur bleibt stehen; berichtigt wird mit einer weiteren Korrektur.
+   */
+  korrekturen?:
+    | {
+        betragCent: number;
+        grund: string;
+        am?: string | null;
+        von?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  summeNachKorrektur?: string | null;
+  /**
    * Nach dem Versand eintragen — die Sendungsnummer erscheint in der Mail an den Kunden.
    */
   versand?: {
@@ -396,6 +418,7 @@ export interface Vorgaenge {
      */
     status?: ('offen' | 'bezahlt' | 'fehlgeschlagen' | 'erstattet' | 'teilweise-erstattet') | null;
     bezahltAm?: string | null;
+    standText?: string | null;
     /**
      * Kennung der Zahlung (pi_…), gesetzt beim Zahlungseingang.
      */
@@ -405,13 +428,22 @@ export interface Vorgaenge {
     ablaufAm?: string | null;
   };
   /**
-   * Für bezahlte Vorgänge: Art, Betrag (Summe aller Erstattungen), Datum und Grund eintragen. Der Zahlungsstand wird „erstattet“ oder „teilweise erstattet“, bei Partneraufträgen ist die Auszahlung danach gesperrt. Das Geld selbst erstatten Sie im Stripe-Dashboard oder per Überweisung.
+   * Für bezahlte Vorgänge: Art, Betrag (Summe aller Erstattungen), Datum, Grund, Weg und Beleg eintragen. Der Zahlungsstand wird „erstattet“ oder „teilweise erstattet“, bei Partneraufträgen ist die Auszahlung danach gesperrt. Das Geld selbst erstatten Sie im Stripe-Dashboard, per Überweisung oder bar.
    */
   erstattung?: {
     art?: ('ganz' | 'teilweise') | null;
     betragCent?: number | null;
     am?: string | null;
     grund?: string | null;
+    weg?: ('zahlungsdienst' | 'ueberweisung' | 'bar' | 'sonstige') | null;
+    /**
+     * Bei Überweisung, bar oder sonstigem Weg Pflicht (Buchungstext, Quittungsnummer).
+     */
+    beleg?: string | null;
+    /**
+     * Nur bei einem Irrtum: Grund eintragen und Betrag kleiner setzen (oder Art leeren). Geht nur bei Erstattungen außerhalb des Zahlungsdienstes und ohne Vermittlung. Steht danach in den Notizen und wird geleert.
+     */
+    berichtigungGrund?: string | null;
   };
   /**
    * Gesamtpreis eintragen, sobald er feststeht; der Rest ist Gesamtpreis minus Online-Zahlung. Bei einer Partner-Anfrage ohne Festpreis: Gesamtpreis eintragen und Status „Freigegeben“ setzen, dann erhält der Kunde den persönlichen Zahlungslink über den Gesamtbetrag.
@@ -423,7 +455,7 @@ export interface Vorgaenge {
     restZahlart?: ('bar' | 'karte' | 'ueberweisung') | null;
   };
   /**
-   * Automatisch versendete E-Mails zu diesem Vorgang.
+   * Alle E-Mails zu diesem Vorgang, automatisch oder von Hand, mit Betreff und vollständigem Text. Antworten des Kunden kommen in Ihr Postfach, nicht hierher.
    */
   mails?:
     | {
@@ -440,12 +472,15 @@ export interface Vorgaenge {
           | 'freigabe'
           | 'team-hinweis'
           | 'ausfuehrung'
+          | 'nachricht'
           | 'sonstige';
         an: string;
         am: string;
         ergebnis: 'gesendet' | 'fehlgeschlagen' | 'nicht-eingerichtet';
         anbieterId?: string | null;
         fehler?: string | null;
+        betreff?: string | null;
+        text?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -1356,7 +1391,7 @@ export interface Rubriken {
 export interface Seiten {
   id: number;
   /**
-   * Adresse ohne führenden Schrägstrich; leer = Startseite.
+   * Adresse ohne führenden Schrägstrich; leer = Startseite. Neue Seite: ein freier Name aus Kleinbuchstaben, Ziffern und Bindestrichen, etwa „schluessel-fuer-vereine“. Danach nicht mehr änderbar. Neue Seiten stehen zunächst auf „Nicht in Suchmaschinen aufnehmen“.
    */
   route?: string | null;
   headline: string;
@@ -2010,6 +2045,14 @@ export interface VorgaengeSelect<T extends boolean = true> {
   auftragswegGrund?: T;
   kundeInformieren?: T;
   nachrichtAnKunde?: T;
+  storno?:
+    | T
+    | {
+        entscheidung?: T;
+        grund?: T;
+        entschiedenAm?: T;
+        entschiedenVon?: T;
+      };
   zusammenfassung?:
     | T
     | {
@@ -2107,6 +2150,16 @@ export interface VorgaengeSelect<T extends boolean = true> {
         steuerCent?: T;
         versandart?: T;
       };
+  korrekturen?:
+    | T
+    | {
+        betragCent?: T;
+        grund?: T;
+        am?: T;
+        von?: T;
+        id?: T;
+      };
+  summeNachKorrektur?: T;
   versand?:
     | T
     | {
@@ -2134,6 +2187,7 @@ export interface VorgaengeSelect<T extends boolean = true> {
         betragCent?: T;
         status?: T;
         bezahltAm?: T;
+        standText?: T;
         anbieterRef?: T;
         checkoutSitzung?: T;
         erstattetCent?: T;
@@ -2146,6 +2200,9 @@ export interface VorgaengeSelect<T extends boolean = true> {
         betragCent?: T;
         am?: T;
         grund?: T;
+        weg?: T;
+        beleg?: T;
+        berichtigungGrund?: T;
       };
   restzahlung?:
     | T
@@ -2164,6 +2221,8 @@ export interface VorgaengeSelect<T extends boolean = true> {
         ergebnis?: T;
         anbieterId?: T;
         fehler?: T;
+        betreff?: T;
+        text?: T;
         id?: T;
       };
   notizen?:

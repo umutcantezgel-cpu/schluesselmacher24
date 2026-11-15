@@ -18,6 +18,7 @@ import * as migration_20261115_165108_steckplaetze from './20261115_165108_steck
 import * as migration_20261115_182441_rubrik_symbole_fahrzeugklassen from './20261115_182441_rubrik_symbole_fahrzeugklassen';
 import * as migration_20261115_191734_auftragsweg from './20261115_191734_auftragsweg';
 import * as migration_20261115_200046_vermittlung_auszahlung from './20261115_200046_vermittlung_auszahlung';
+import * as migration_20261115_210337_admin_alltag from './20261115_210337_admin_alltag';
 
 export const migrations = [
   {
@@ -118,6 +119,11 @@ export const migrations = [
   {
     up: migration_20261115_200046_vermittlung_auszahlung.up,
     down: migration_20261115_200046_vermittlung_auszahlung.down,
-    name: '20261115_200046_vermittlung_auszahlung'
+    name: '20261115_200046_vermittlung_auszahlung',
+  },
+  {
+    up: migration_20261115_210337_admin_alltag.up,
+    down: migration_20261115_210337_admin_alltag.down,
+    name: '20261115_210337_admin_alltag'
   },
 ];

@@ -1,7 +1,10 @@
+import { KundenNachricht as KundenNachricht_e13aa97cb1b4a2e9a3aeee0732a76ad5 } from '../../../payload/components/KundenNachricht'
 import { BestaetigungSenden as BestaetigungSenden_2b67584cce3b124551b67f336a0a494b } from '../../../payload/components/BestaetigungSenden'
 import { VorgangsblattKnopf as VorgangsblattKnopf_1582ece8fd27138b4964598e268494e3 } from '../../../payload/components/VorgangsblattKnopf'
 import { TerminVerschieben as TerminVerschieben_bd501514f0546f17ffc3ae7327e14806 } from '../../../payload/components/TerminVerschieben'
+import { KontaktVerweise as KontaktVerweise_3db858ceada88de35b936077a2e1e15d } from '../../../payload/components/KontaktVerweise'
 import { StripeLink as StripeLink_93f7020958f194c58a5525561020cceb } from '../../../payload/components/StripeLink'
+import { ErstattungZahlungsdienst as ErstattungZahlungsdienst_439907bf26087298fa9516bb208a10a9 } from '../../../payload/components/ErstattungZahlungsdienst'
 import { VorgaengeWerkzeuge as VorgaengeWerkzeuge_a6117e4679cb3b948f245e05432911e8 } from '../../../payload/components/VorgaengeWerkzeuge'
 import { PartnervertragKnopf as PartnervertragKnopf_4650257e05d8e8591d9ea1bdf9fbb0ba } from '../../../payload/components/PartnervertragKnopf'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -36,10 +39,13 @@ import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc056
 
 /** @type import('payload').ImportMap */
 export const importMap = {
+  "/payload/components/KundenNachricht#KundenNachricht": KundenNachricht_e13aa97cb1b4a2e9a3aeee0732a76ad5,
   "/payload/components/BestaetigungSenden#BestaetigungSenden": BestaetigungSenden_2b67584cce3b124551b67f336a0a494b,
   "/payload/components/VorgangsblattKnopf#VorgangsblattKnopf": VorgangsblattKnopf_1582ece8fd27138b4964598e268494e3,
   "/payload/components/TerminVerschieben#TerminVerschieben": TerminVerschieben_bd501514f0546f17ffc3ae7327e14806,
+  "/payload/components/KontaktVerweise#KontaktVerweise": KontaktVerweise_3db858ceada88de35b936077a2e1e15d,
   "/payload/components/StripeLink#StripeLink": StripeLink_93f7020958f194c58a5525561020cceb,
+  "/payload/components/ErstattungZahlungsdienst#ErstattungZahlungsdienst": ErstattungZahlungsdienst_439907bf26087298fa9516bb208a10a9,
   "/payload/components/VorgaengeWerkzeuge#VorgaengeWerkzeuge": VorgaengeWerkzeuge_a6117e4679cb3b948f245e05432911e8,
   "/payload/components/PartnervertragKnopf#PartnervertragKnopf": PartnervertragKnopf_4650257e05d8e8591d9ea1bdf9fbb0ba,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
