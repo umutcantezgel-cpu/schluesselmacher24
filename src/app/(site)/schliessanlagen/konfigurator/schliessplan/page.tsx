@@ -4,6 +4,7 @@ import { SchliessplanPlaner } from '@/components/konfigurator/schliessplan-plane
 import { PageHeader } from '@/components/layout/page-header';
 import { Section } from '@/components/layout/section';
 import { getCollection } from '@/lib/data';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 /*
  * Schließplan selbst anlegen (E5-OPUS-01, G-27): Türen, Schlüssel und Matrix auf dem Konfigurator-Kern.
@@ -20,8 +21,15 @@ export const metadata: Metadata = {
 
 export default async function SchliessplanSeite() {
   const katalog = await getCollection('cylinderCatalog');
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/schliessanlagen', label: 'Schließanlagen' },
+    { href: '/schliessanlagen/konfigurator/schliessplan', label: 'Schließplan' },
+  ];
+
   return (
     <>
+      <SeitenDaten pfad="/schliessanlagen/konfigurator/schliessplan" name="Schließplan selbst anlegen" crumbs={crumbs} />
       <PageHeader
         eyebrow="Schließplan"
         bereich="schliessanlagen"
@@ -29,10 +37,7 @@ export default async function SchliessplanSeite() {
         title="Schließplan selbst anlegen"
         lead="Türen und Schlüssel anlegen, dann ankreuzen, wer welche Tür schließt. Ihr Plan bleibt in diesem Browser gespeichert und lässt sich als Link weitergeben."
         leadClassName="max-sm:hidden"
-        crumbs={[
-          { href: '/schliessanlagen', label: 'Schließanlagen' },
-          { href: '/schliessanlagen/konfigurator/schliessplan', label: 'Schließplan' },
-        ]}
+        crumbs={crumbs}
       />
       <Section tight>
         <SchliessplanPlaner katalog={katalog} />

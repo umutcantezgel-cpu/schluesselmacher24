@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { getPageContent, getSettings } from '@/lib/data';
 import { formatCents } from '@/lib/format';
-import { ServiceArticle } from '@/components/autoschluessel/service-article';
+import { LeistungsArtikel } from '@/components/seo/seiten-daten';
 import { ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
 
 const ROUTE = 'autoschluessel/nachmachen';
@@ -25,7 +25,8 @@ export default async function NachmachenPage() {
   const leadDays = settings.booking.leadTimeDays;
 
   return (
-    <ServiceArticle
+    <LeistungsArtikel
+      pfad={`/${ROUTE}`}
       content={page}
       fallback={{
         headline: 'Autoschlüssel nachmachen',

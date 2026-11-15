@@ -98,7 +98,12 @@ Wurde eine Erstattung aus Versehen oder mit falschem Betrag eingetragen:
 2. Den **Betrag** kleiner setzen, oder **Art** leeren, wenn gar nichts erstattet wurde.
 3. Speichern.
 
-Das geht nur bei Erstattungen per Überweisung, bar oder sonstigem Weg und nicht bei vermittelten Partneraufträgen. Eine Erstattung über Stripe berichtigen Sie im Stripe-Dashboard. Die Berichtigung steht mit Grund und Namen in den Notizen.
+Bei Erstattungen per Überweisung, bar oder sonstigem Weg kann das jedes Teammitglied. Zwei Fälle berichtigt nur der Inhaber, ebenfalls mit Grund:
+
+- **Weg „Zahlungsdienst (Stripe)“**, etwa wenn die Erstattung zu früh oder beim falschen Vorgang eingetragen wurde. Vorher im Stripe-Dashboard nachsehen, was dort wirklich erstattet ist, und den Betrag auf diesen Stand setzen. Erstattet Stripe später doch mehr, hebt die Seite den Stand von selbst wieder an.
+- **Vermittelte Partneraufträge.** Dort sperrt eine Erstattung die Auszahlung an den Partner. Die Berichtigung gibt sie wieder frei, deshalb entscheidet der Inhaber.
+
+Die Berichtigung steht mit Grund und Namen in den Notizen.
 
 ## 4. Korrekturposition
 
@@ -136,6 +141,8 @@ Korrekturpositionen gibt es nur bei Bestellungen. Geld bewegt eine Korrektur nic
 3. Ein neues Bild hochladen oder ein vorhandenes aus den Medien auswählen.
 4. Speichern beziehungsweise veröffentlichen.
 
+Bei Seiten gilt: Neue Seiten (Abschnitt 8) zeigen das Foto eines Abschnitts unter dessen Text. Die fest eingebauten Seiten zeigen ihre eigenen Bilder; ein Bild im Abschnitt der Seitentexte erscheint dort nicht.
+
 Alle Bilder liegen unter **Inhalte** → **Medien**. Bitte immer einen kurzen Alternativtext eintragen: Was ist auf dem Bild zu sehen?
 
 ## 7. Text einer Seite ändern
@@ -147,14 +154,16 @@ Alle Bilder liegen unter **Inhalte** → **Medien**. Bitte immer einen kurzen Al
 
 ## 8. Neue Seite anlegen
 
+Neue Seiten kann nur der Inhaber anlegen. Mitarbeiter sehen den Knopf **Neu erstellen** hier nicht und können bestehende Seiten bearbeiten.
+
 1. Unter **Inhalte** → **Seitentexte** oben auf **Neu erstellen** klicken.
 2. In der Seitenleiste unter **Seite (Adresse)** eine freie Adresse eintragen: nur Kleinbuchstaben, Ziffern und einzelne Bindestriche, 3 bis 60 Zeichen, ohne Schrägstrich. Beispiel: `schluessel-fuer-vereine`. Umlaute schreiben Sie aus (ue, oe, ae, ss).
-3. Überschrift, Einleitung, Abschnitte und Fragen ausfüllen, dazu die Felder für Suchmaschinen.
-4. **Veröffentlichen**. Die Seite steht danach unter `https://www.schluesselmacher24.de/<adresse>`.
+3. Überschrift, Einleitung, Abschnitte und Fragen ausfüllen, dazu die Felder für Suchmaschinen. Ein Foto im Abschnitt erscheint unter dessen Text; bitte mit Alternativtext. Ohne eigene Fragen zeigt eine neue Seite keine Fragen.
+4. **Veröffentlichen**. Die Seite steht danach unter Ihrer Domain mit der gewählten Adresse, also `/<adresse>`.
 
 Die Adresse lässt sich nach dem Anlegen nicht mehr ändern. Adressen, die die Seite schon nutzt (etwa `kasse` oder `ratgeber`), und reservierte Namen (etwa `impressum`, `datenschutz`, `agb`, `login`) lehnt die Seite ab.
 
-Eine neue Seite steht zunächst auf **Nicht in Suchmaschinen aufnehmen**. Erst wenn Text und Bilder fertig sind, nehmen Sie den Haken im Bereich für Suchmaschinen heraus. Eine neue Seite erscheint nicht von selbst im Menü.
+Eine neue Seite steht zunächst auf **Nicht in Suchmaschinen aufnehmen**. Erst wenn Text und Bilder fertig sind, nehmen Sie den Haken im Bereich für Suchmaschinen heraus. Eine neue Seite erscheint nicht von selbst im Menü. Sie steht auch noch nicht in der Sitemap, selbst ohne den Haken. Suchmaschinen finden sie dann erst über Verweise, etwa von einer anderen Seite oder einem Ratgeber.
 
 ## 9. Ratgeber schreiben
 
@@ -183,4 +192,10 @@ An diesem Tag bietet die Terminbuchung keine Zeiten mehr an. Schon gebuchte Term
 
 ## 12. Eine Rubrik pausieren
 
-Unter **Rubriken** lässt sich der Stand einer Rubrik ändern, etwa für Motorradschlüssel. Steht sie nicht auf „live“, zeigen ihre Seiten statt des Formulars einen ruhigen Hinweis mit Telefonnummer. Die Seiten verschwinden dann aus Suchmaschinen und Sitemap. Auf „live“ zurück, und alles ist wieder da.
+Unter **Rubriken** lässt sich der Stand einer Rubrik ändern. Steht sie nicht auf „live“, verschwindet sie aus der Startseite („Wobei können wir Ihnen helfen?“) und aus der Fußzeile. Was mit ihren Seiten passiert, hängt von der Rubrik ab:
+
+- **Motorradschlüssel, Roller und Kleinstfahrzeuge, E-Scooter, Seniorenmobile und Fahrradschlüssel:** Einstiegs- und Anfrageseite zeigen statt des Formulars einen ruhigen Hinweis mit Telefonnummer. Die Seiten stehen auf „nicht in Suchmaschinen“ und fallen aus der Sitemap. Anfragen nimmt die Seite nicht an.
+- **Autoschlüssel:** Nur die Anfrage „Fahrzeug nicht gefunden“ zeigt dann den Hinweis statt des Formulars und fällt aus der Sitemap. Die übrigen Autoschlüssel-Seiten bleiben online.
+- **Alle anderen Rubriken** (etwa Schlüssel nach Vorlage, Schließanlage, Sicherheitstechnik): Ihre Seiten bleiben mit Formular erreichbar, in Suchmaschinen und in der Sitemap. Wer eine solche Rubrik wirklich pausieren will, braucht dafür noch eine Änderung am Code.
+
+Auf „live“ zurück, und alles ist wieder da.

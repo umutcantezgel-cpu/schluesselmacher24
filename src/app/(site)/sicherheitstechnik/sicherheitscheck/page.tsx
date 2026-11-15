@@ -8,6 +8,7 @@ import { PageHeader } from '@/components/layout/page-header';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { IconSicherheitscheck } from '@/components/visual/icons/sicherheitscheck';
 import { Sicherheitscheck } from './sicherheitscheck';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'sicherheitstechnik/sicherheitscheck';
 
@@ -36,10 +37,17 @@ export default async function SicherheitscheckPage() {
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/sicherheitstechnik', label: 'Sicherheitstechnik' },
+    { href: `/${ROUTE}`, label: 'Sicherheitscheck' },
+  ];
+
   return (
     <>
       {/* Arbeitskopf (Muster Assistent und Kasse): Fach-Icon als Anker, Ablauf als Schriftfeld.
           PageHeader zeigt das Bereichs-Icon nur in der Erzählansicht; deshalb steht das Fach-Icon hier. */}
+      <SeitenDaten pfad={`/${ROUTE}`} name={page?.headline ?? 'Sicherheitscheck'} crumbs={crumbs} />
       <PageHeader
         art="arbeit"
         eyebrow="Sicherheitstechnik"
@@ -49,10 +57,7 @@ export default async function SicherheitscheckPage() {
           ?? 'Zehn Schritte zu Ihrem Objekt: Wir erfassen, was vorhanden ist und worauf es Ihnen '
             + 'ankommt. Am Ende steht eine Zusammenfassung, aus der wir eine Einschätzung machen.'
         }
-        crumbs={[
-          { href: '/sicherheitstechnik', label: 'Sicherheitstechnik' },
-          { href: `/${ROUTE}`, label: 'Sicherheitscheck' },
-        ]}
+        crumbs={crumbs}
       >
         <div className="flex items-start gap-4 border-y border-border py-6">
           <IconSicherheitscheck size={40} className="mt-0.5 shrink-0 text-area-strong" />

@@ -8,6 +8,7 @@ import { einsendeAngebotFuerWeg } from '@/lib/einsenden/schein';
 import { PROCESS_LABELS } from '@/lib/navigation';
 
 import { EinsendeFormular } from './einsende-formular';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'schluessel-einschicken/anmelden';
 
@@ -27,8 +28,15 @@ export default async function EinsendungAnmeldenPage() {
   const [page, settings] = await Promise.all([getPageContent(ROUTE), getSettings()]);
   const angebot = einsendeAngebotFuerWeg(settings.sendIn ?? defaults.settings().sendIn!);
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/schluessel-einschicken', label: 'Schlüssel einschicken' },
+    { href: `/${ROUTE}`, label: 'Anmelden' },
+  ];
+
   return (
     <>
+      <SeitenDaten pfad={`/${ROUTE}`} name={page?.headline ?? 'Einsendung anmelden'} crumbs={crumbs} />
       <PageHeader
         bereich="schluessel-nach-vorlage"
         art="arbeit"
@@ -38,10 +46,7 @@ export default async function EinsendungAnmeldenPage() {
           page?.subline
           ?? 'Fünf Schritte: Schlüssel, Nachweis, Versand und Rücksendeanschrift. Danach drucken Sie den Begleitschein aus und schicken den Schlüssel ein.'
         }
-        crumbs={[
-          { href: '/schluessel-einschicken', label: 'Schlüssel einschicken' },
-          { href: `/${ROUTE}`, label: 'Anmelden' },
-        ]}
+        crumbs={crumbs}
       />
 
       <div className="shell py-8 md:py-12">

@@ -25,6 +25,20 @@ export function JsonLd({ data }: { data: Graph }) {
 
 const siteUrl = getSiteUrl();
 
+/**
+ * Feste Kennungen des Betriebs (FA-25-08). Der Graph mit diesen Knoten steht einmal je Seite im
+ * Root-Layout (`localBusinessSchema`); alle Seiten-Graphen verweisen nur per `@id` darauf und
+ * definieren sie nicht erneut (keine doppelten Kennungen).
+ */
+export const KENNUNG = {
+  organisation: `${siteUrl}/#organization`,
+  website: `${siteUrl}/#website`,
+  betrieb: `${siteUrl}/#localbusiness`,
+} as const;
+
+/** Leistungsgebiet einer Leistungsseite: bundesweit wie der Kontaktpunkt des Betriebs (areaServed DE). */
+const GEBIET_DEUTSCHLAND = { '@type': 'Country' as const, name: 'Deutschland' };
+
 const WEEKDAYS = [
   'https://schema.org/Monday',
   'https://schema.org/Tuesday',
@@ -46,7 +60,9 @@ function postanschrift(street: string, postalCode: string, city: string) {
 }
 
 /**
- * Der Betrieb selbst. Wird auf der Startseite eingebunden.
+ * Der Betrieb selbst: Organisation, Website und Locksmith mit festen Kennungen. Steht einmal je Seite im
+ * Root-Layout, gedeckt durch den Fuß jeder Seite (Anschrift, Telefon, Erreichbarkeit; R8). Die Webseite
+ * der Startseite liefert die Startseite selbst (`pageGraphSchema({ path: '/' … })`).
  *
  * Firmendaten erscheinen nur, wenn sie nicht als Platzhalter markiert sind;
  * Telefon, E-Mail und USt-IdNr. nur, wenn sie gepflegt sind. Die Organisation
@@ -99,7 +115,7 @@ export function localBusinessSchema(settings: Settings): Graph {
     '@graph': [
       {
         '@type': 'Organization',
-        '@id': `${siteUrl}/#organization`,
+        '@id': KENNUNG.organisation,
         name: company.brandName,
         url: siteUrl,
         ...kontaktAngaben,
@@ -107,25 +123,18 @@ export function localBusinessSchema(settings: Settings): Graph {
       },
       {
         '@type': 'WebSite',
-        '@id': `${siteUrl}/#website`,
+        '@id': KENNUNG.website,
         url: siteUrl,
         name: company.brandName,
-        publisher: { '@id': `${siteUrl}/#organization` },
-      },
-      {
-        '@type': 'WebPage',
-        '@id': `${siteUrl}/#webpage`,
-        url: siteUrl,
-        name: company.brandName,
-        isPartOf: { '@id': `${siteUrl}/#website` },
-        about: { '@id': `${siteUrl}/#organization` },
+        inLanguage: 'de-DE',
+        publisher: { '@id': KENNUNG.organisation },
       },
       {
         '@type': 'Locksmith',
-        '@id': `${siteUrl}/#localbusiness`,
+        '@id': KENNUNG.betrieb,
         name: company.brandName,
         url: siteUrl,
-        parentOrganization: { '@id': `${siteUrl}/#organization` },
+        parentOrganization: { '@id': KENNUNG.organisation },
         description:
           'Fachbetrieb für Autoschlüssel, Schlüssel- und Schließtechnik, elektronische '
           + 'Zutrittslösungen und Sicherheitstechnik.',
@@ -187,28 +196,20 @@ export function productSchema(line: CodeLine, beschreibung: string = line.descri
   } satisfies Graph;
 }
 
-/** Ein Ratgeberbeitrag. */
+/** Ein Ratgeberbeitrag. Organisation und Website stehen im Root-Layout; hier nur Verweise darauf. */
 export function articleSchema(guide: Guide): Graph {
   const articleUrl = `${siteUrl}/ratgeber/${guide.slug}`;
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Organization',
-        '@id': `${siteUrl}/#organization`,
-      },
-      {
-        '@type': 'WebSite',
-        '@id': `${siteUrl}/#website`,
-        publisher: { '@id': `${siteUrl}/#organization` },
-      },
-      {
         '@type': 'WebPage',
         '@id': `${articleUrl}/#webpage`,
         url: articleUrl,
         name: guide.title,
-        isPartOf: { '@id': `${siteUrl}/#website` },
-        about: { '@id': `${siteUrl}/#organization` },
+        inLanguage: 'de-DE',
+        isPartOf: { '@id': KENNUNG.website },
+        about: { '@id': KENNUNG.organisation },
       },
       {
         '@type': 'Article',
@@ -218,36 +219,31 @@ export function articleSchema(guide: Guide): Graph {
         inLanguage: 'de-DE',
         dateModified: guide.updatedAt,
         mainEntityOfPage: { '@id': `${articleUrl}/#webpage` },
-        publisher: { '@type': 'Organization', name: 'SCHLÜSSELMACHER24', '@id': `${siteUrl}/#organization` },
+        publisher: { '@id': KENNUNG.organisation },
       }
     ]
   } satisfies Graph;
 }
 
-/** Häufige Fragen einer Seite. */
+/**
+ * Häufige Fragen einer Seite. Nur mit Fragen und Antworten aufrufen, die auf der Seite sichtbar
+ * und vollständig stehen (R8); sonst keine FAQPage.
+ */
 export function faqSchema(items: Array<{ question: string; answer: string }>, pageUrl: string = siteUrl): Graph {
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Organization',
-        '@id': `${siteUrl}/#organization`,
-      },
-      {
-        '@type': 'WebSite',
-        '@id': `${siteUrl}/#website`,
-        publisher: { '@id': `${siteUrl}/#organization` },
-      },
-      {
         '@type': 'WebPage',
         '@id': `${pageUrl}/#webpage`,
         url: pageUrl,
-        isPartOf: { '@id': `${siteUrl}/#website` },
-        about: { '@id': `${siteUrl}/#organization` },
+        isPartOf: { '@id': KENNUNG.website },
+        about: { '@id': KENNUNG.organisation },
       },
       {
         '@type': 'FAQPage',
         '@id': `${pageUrl}/#faq`,
+        isPartOf: { '@id': `${pageUrl}/#webpage` },
         mainEntity: items.map((item) => ({
           '@type': 'Question',
           name: item.question,
@@ -258,28 +254,21 @@ export function faqSchema(items: Array<{ question: string; answer: string }>, pa
   } satisfies Graph;
 }
 
-/** Ein Einsatzgebiet. */
+/** Ein Einsatzgebiet: Leistung des Betriebs in einer Stadt. */
 export function serviceAreaSchema(city: CityPage): Graph {
   const pageUrl = `${siteUrl}/standorte/${city.slug}`;
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Organization',
-        '@id': `${siteUrl}/#organization`,
-      },
-      {
-        '@type': 'WebSite',
-        '@id': `${siteUrl}/#website`,
-        publisher: { '@id': `${siteUrl}/#organization` },
-      },
-      {
         '@type': 'WebPage',
         '@id': `${pageUrl}/#webpage`,
         url: pageUrl,
         name: `Schlüssel- und Schließtechnik in ${city.city}`,
-        isPartOf: { '@id': `${siteUrl}/#website` },
-        about: { '@id': `${siteUrl}/#organization` },
+        inLanguage: 'de-DE',
+        isPartOf: { '@id': KENNUNG.website },
+        about: { '@id': KENNUNG.organisation },
+        mainEntity: { '@id': `${pageUrl}/#service` },
       },
       {
         '@type': 'Service',
@@ -291,70 +280,73 @@ export function serviceAreaSchema(city: CityPage): Graph {
           name: city.city,
           containedInPlace: { '@type': 'AdministrativeArea', name: city.state },
         },
-        provider: { '@type': 'Organization', name: 'SCHLÜSSELMACHER24', '@id': `${siteUrl}/#organization` },
+        provider: { '@id': KENNUNG.betrieb },
       }
     ]
   } satisfies Graph;
 }
 
-/** Brotkrumenpfad — hilft bei der Einordnung tiefer Seiten. */
+/** Brotkrumenpfad — hilft bei der Einordnung tiefer Seiten. Nur zusammen mit sichtbaren Brotkrumen. */
 export function breadcrumbSchema(crumbs: Array<{ href: string; label: string }>, pageUrl: string = siteUrl): Graph {
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Organization',
-        '@id': `${siteUrl}/#organization`,
-      },
-      {
-        '@type': 'WebSite',
-        '@id': `${siteUrl}/#website`,
-        publisher: { '@id': `${siteUrl}/#organization` },
-      },
-      {
         '@type': 'WebPage',
         '@id': `${pageUrl}/#webpage`,
         url: pageUrl,
-        isPartOf: { '@id': `${siteUrl}/#website` },
-        about: { '@id': `${siteUrl}/#organization` },
+        isPartOf: { '@id': KENNUNG.website },
+        about: { '@id': KENNUNG.organisation },
+        breadcrumb: { '@id': `${pageUrl}/#breadcrumb` },
       },
       {
         '@type': 'BreadcrumbList',
         '@id': `${pageUrl}/#breadcrumb`,
-        itemListElement: [{ href: '/', label: 'Startseite' }, ...crumbs].map((crumb, index) => ({
-          '@type': 'ListItem',
-          position: index + 1,
-          name: crumb.label,
-          item: `${siteUrl}${crumb.href}`,
-        })),
+        itemListElement: brotkrumen(crumbs),
       }
     ]
   } satisfies Graph;
 }
 
+/** Startseite vorn, dann die sichtbaren Brotkrumen; ein doppelter Startseiten-Eintrag entfällt. */
+function brotkrumen(crumbs: Array<{ href: string; label: string }>) {
+  return [{ href: '/', label: 'Startseite' }, ...crumbs.filter((crumb) => crumb.href !== '/')].map((crumb, index) => ({
+    '@type': 'ListItem' as const,
+    position: index + 1,
+    name: crumb.label,
+    item: crumb.href === '/' ? `${siteUrl}/` : `${siteUrl}${crumb.href}`,
+  }));
+}
+
+/** Eine Leistung auf ihrer Leistungsseite (FA-25-10). Bezeichnung und Beschreibung stehen sichtbar im Kopf. */
+export interface LeistungsAngabe {
+  /** Bezeichnung der Leistung, wie die Überschrift sie nennt. */
+  name: string;
+  /** Der sichtbare Kurztext (Einleitung im Seitenkopf); ohne sichtbaren Kurztext entfällt er. */
+  description?: string;
+}
+
 /**
- * Graph für eine Inhaltsseite: Webseite, optional sichtbare FAQ und
+ * Graph für eine Inhaltsseite: Webseite, optional Leistung, sichtbare FAQ und
  * Brotkrumen — jeweils mit eigener `@id` je Seite, damit sich Seiten nicht
- * gegenseitig überschreiben.
+ * gegenseitig überschreiben. Organisation, Website und Betrieb kommen aus dem
+ * Root-Layout und werden hier nur per `@id` angesprochen.
  *
  * Nur Inhalte übergeben, die auf der Seite auch sichtbar sind.
  */
 export function pageGraphSchema(input: {
-  /** Pfad ab Wurzel, z. B. "/schliessanlagen". */
+  /** Pfad ab Wurzel, z. B. "/schliessanlagen"; "/" für die Startseite. */
   path: string;
   name: string;
   description?: string;
   faq?: Array<{ question: string; answer: string }>;
   crumbs?: Array<{ href: string; label: string }>;
+  /** Leistungsseite: `Service` mit dem Betrieb als Anbieter. */
+  service?: LeistungsAngabe;
 }): Graph {
-  const pageUrl = `${siteUrl}${input.path}`;
+  const pageUrl = input.path === '/' ? `${siteUrl}/` : `${siteUrl}${input.path}`;
+  const mitKrumen = Boolean(input.crumbs?.length) && input.path !== '/';
   const graph: Thing[] = [
-    { '@type': 'Organization', '@id': `${siteUrl}/#organization` },
-    {
-      '@type': 'WebSite',
-      '@id': `${siteUrl}/#website`,
-      publisher: { '@id': `${siteUrl}/#organization` },
-    },
     {
       '@type': 'WebPage',
       '@id': `${pageUrl}#webpage`,
@@ -362,11 +354,24 @@ export function pageGraphSchema(input: {
       name: input.name,
       ...(input.description ? { description: input.description } : {}),
       inLanguage: 'de-DE',
-      isPartOf: { '@id': `${siteUrl}/#website` },
-      about: { '@id': `${siteUrl}/#organization` },
-      ...(input.crumbs?.length ? { breadcrumb: { '@id': `${pageUrl}#breadcrumb` } } : {}),
+      isPartOf: { '@id': KENNUNG.website },
+      about: { '@id': KENNUNG.organisation },
+      ...(input.service ? { mainEntity: { '@id': `${pageUrl}#service` } } : {}),
+      ...(mitKrumen ? { breadcrumb: { '@id': `${pageUrl}#breadcrumb` } } : {}),
     },
   ];
+
+  if (input.service) {
+    graph.push({
+      '@type': 'Service',
+      '@id': `${pageUrl}#service`,
+      name: input.service.name,
+      ...(input.service.description ? { description: input.service.description } : {}),
+      provider: { '@id': KENNUNG.betrieb },
+      areaServed: GEBIET_DEUTSCHLAND,
+      url: pageUrl,
+    });
+  }
 
   if (input.faq?.length) {
     graph.push({
@@ -381,16 +386,11 @@ export function pageGraphSchema(input: {
     });
   }
 
-  if (input.crumbs?.length) {
+  if (mitKrumen) {
     graph.push({
       '@type': 'BreadcrumbList',
       '@id': `${pageUrl}#breadcrumb`,
-      itemListElement: [{ href: '/', label: 'Startseite' }, ...input.crumbs].map((crumb, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        name: crumb.label,
-        item: `${siteUrl}${crumb.href}`,
-      })),
+      itemListElement: brotkrumen(input.crumbs!),
     });
   }
 

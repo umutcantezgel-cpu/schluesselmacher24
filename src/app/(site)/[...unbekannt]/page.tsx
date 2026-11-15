@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { FotoFlaeche } from '@/components/ui/bild-flaeche';
 import { getPageContent } from '@/lib/data';
 import type { PageContent } from '@/lib/types';
 import { eigeneSeiteAdresse } from '@/payload/hooks/seiten-adresse-pruefung';
@@ -18,7 +19,8 @@ import { eigeneSeiteAdresse } from '@/payload/hooks/seiten-adresse-pruefung';
  * Eigene Inhaltsseiten (FA-KERN-05): Hat der Betreiber unter „Seitentexte“ eine
  * veröffentlichte Seite mit freier Adresse angelegt (ein Abschnitt, keine vorhandene
  * Route, kein reservierter Name, geprüft in `seiten-adresse.ts`), zeigt diese Route
- * sie mit Überschrift, Einleitung, Abschnitten und Fragen. Alles andere bleibt 404.
+ * sie mit Überschrift, Einleitung, Abschnitten (mit Foto, wenn eines gewählt ist) und
+ * Fragen. Alles andere bleibt 404.
  */
 
 type Parameter = { params: Promise<{ unbekannt?: string[] }> };
@@ -74,6 +76,10 @@ export default async function UnbekannteSeite({ params }: Parameter) {
                     <p key={absatz}>{absatz}</p>
                   ))}
               </div>
+              {/* Nur ein echtes Foto aus den Medien, mit Alternativtext (sonst das Motiv). */}
+              {abschnitt.image?.bild?.url && (
+                <FotoFlaeche slot={abschnitt.image} className="mt-6" sizes="(min-width: 1024px) 42rem, 100vw" />
+              )}
             </div>
           ))}
           {seite.faq.length > 0 && (

@@ -27,6 +27,7 @@ import { mailKonfiguration } from '../../lib/umgebung';
 import { auszahlungswegFuer, type Ueberweisen } from '../../lib/zahlung/auszahlung';
 import { ERSTATTUNG_MELDUNG_WEG, ERSTATTUNGS_WEGE, belegPflicht } from '../../lib/zahlung/erstattung';
 import type { Partnerbetriebe, Vorgaenge } from '../../payload-types';
+import { hatRolle } from '../access/rollen';
 
 import { SYSTEM_AENDERUNG, benutzerName, einstellungenLaden, vorgangVermerken } from './vorgang-benachrichtigen';
 
@@ -193,7 +194,8 @@ async function teamAenderung(data: Partial<Vorgaenge>, originalDoc: Vorgaenge, r
   /* ---- Erstattung (vor der Vermittlung: sie sperrt die Auszahlung) ---- */
   const zahlungVorher = originalDoc.zahlung?.status ?? null;
   const zahlungFormular = data.zahlung?.status ?? zahlungVorher;
-  const erstattungErfasst = erstattungPruefen(data, originalDoc, { jetzt, bearbeiter, notiz, verlauf });
+  const inhaber = hatRolle(req.user, 'inhaber');
+  const erstattungErfasst = erstattungPruefen(data, originalDoc, { jetzt, bearbeiter, inhaber, notiz, verlauf });
   // Den Zahlungsstand einer Erstattung setzt nur die Gruppe Erstattung; zurück geht er nicht.
   if (!erstattungErfasst && zahlungFormular !== zahlungVorher) {
     const erstattet = erstattungsStand(zahlungVorher) || (zahl(originalDoc.zahlung?.erstattetCent) ?? 0) > 0;
@@ -372,7 +374,7 @@ async function auszahlen(k: {
 function erstattungPruefen(
   data: Partial<Vorgaenge>,
   originalDoc: Vorgaenge,
-  k: { jetzt: string; bearbeiter: string; notiz: (t: string) => void; verlauf: (t: string) => void },
+  k: { jetzt: string; bearbeiter: string; inhaber: boolean; notiz: (t: string) => void; verlauf: (t: string) => void },
 ): boolean {
   if (!data.erstattung) return false;
   const alt = originalDoc.erstattung ?? {};
@@ -429,13 +431,17 @@ function erstattungPruefen(
  * lässt sich nicht von Hand zurücksetzen (FA-KERN-04); dieser Weg ist die dokumentierte Ausnahme:
  * - nur mit Grund (Feld „Berichtigung: Grund“), der in die Notizen kommt und danach geleert wird,
  * - nur kleiner (Betrag oder ganz leeren), nie größer,
- * - nur für Erstattungen außerhalb des Zahlungsdienstes (den Stand dort belegt der Webhook),
- * - nicht bei einem vermittelten Auftrag (dort sperrt die Erstattung die Partnerauszahlung).
+ * - außerhalb des Zahlungsdienstes durch das Team,
+ * - über den Zahlungsdienst oder bei einem vermittelten Auftrag nur durch den Inhaber: Ob beim Zahlungsdienst
+ *   wirklich erstattet wurde, sieht nur das Stripe-Dashboard; der Code kann das nicht unterscheiden, weil eine
+ *   von Hand erfasste Erstattung denselben Stand setzt wie der Webhook. Bei einem vermittelten Auftrag sperrt
+ *   die Erstattung die Partnerauszahlung; die Berichtigung entscheidet deshalb der Inhaber.
+ *   Erstattet der Zahlungsdienst später doch mehr, hebt der Webhook den Stand wieder an.
  */
 function erstattungBerichtigen(
   data: Partial<Vorgaenge>,
   originalDoc: Vorgaenge,
-  k: { jetzt: string; bearbeiter: string; notiz: (t: string) => void; verlauf: (t: string) => void },
+  k: { jetzt: string; bearbeiter: string; inhaber: boolean; notiz: (t: string) => void; verlauf: (t: string) => void },
 ): boolean {
   const alt = originalDoc.erstattung ?? {};
   const neu = { ...alt, ...data.erstattung };
@@ -443,8 +449,10 @@ function erstattungBerichtigen(
   const bisher = zahl(alt.betragCent) ?? 0;
   if (!alt.art || bisher <= 0) throw new APIError(ERSTATTUNG_MELDUNG_WEG.berichtigungOhne, 400);
   const ausserhalb = belegPflicht(alt.weg) || (!alt.weg && !originalDoc.zahlung?.anbieterRef);
-  if (!ausserhalb) throw new APIError(ERSTATTUNG_MELDUNG_WEG.berichtigungZahlungsdienst, 400);
-  if (istVermittlungsStand(originalDoc.vermittlung?.status)) throw new APIError(ERSTATTUNG_MELDUNG_WEG.berichtigungVermittlung, 400);
+  if (!ausserhalb && !k.inhaber) throw new APIError(ERSTATTUNG_MELDUNG_WEG.berichtigungZahlungsdienst, 403);
+  if (istVermittlungsStand(originalDoc.vermittlung?.status) && !k.inhaber) {
+    throw new APIError(ERSTATTUNG_MELDUNG_WEG.berichtigungVermittlung, 403);
+  }
   const betrag = neu.art ? (zahl(neu.betragCent) ?? 0) : 0;
   if (betrag < 0 || betrag > bisher) throw new APIError(ERSTATTUNG_MELDUNG_WEG.berichtigungHoeher, 400);
   const gezahlt = zahl(originalDoc.zahlung?.betragCent) ?? 0;
@@ -463,7 +471,8 @@ function erstattungBerichtigen(
     };
   }
   k.notiz(
-    `Erstattung berichtigt: von ${formatCents(bisher)} auf ${formatCents(betrag)}. Grund: ${grund.slice(0, 300)} (${k.bearbeiter}). `
+    `Erstattung berichtigt: von ${formatCents(bisher)} auf ${formatCents(betrag)}`
+      + `${ausserhalb ? '' : ' (Weg Zahlungsdienst, vom Inhaber nach Abgleich mit dem Stripe-Dashboard)'}. Grund: ${grund.slice(0, 300)} (${k.bearbeiter}). `
       + `Zahlungsstand jetzt „${betrag === 0 ? 'Bezahlt' : data.zahlung.status === 'erstattet' ? 'Erstattet' : 'Teilweise erstattet'}“.`,
   );
   k.verlauf(betrag === 0 ? 'Berichtigung: Es wurde nichts erstattet.' : `Berichtigung: Erstattet sind insgesamt ${formatCents(betrag)}.`);

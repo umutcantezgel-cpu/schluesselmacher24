@@ -4,6 +4,7 @@ import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import { EinstiegSeite, seitenMetadata, type EinstiegAbschnitt } from '@/components/fahrzeug-anfrage/seiten';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { getRubrik } from '@/lib/data';
+import { KlassenSeitenDaten } from '@/components/seo/seiten-daten';
 
 /*
  * Eigener Inhalt dieser Seite (R3): Beim Fahrrad zählt das Schloss; Hersteller, Schlüsselnummer und
@@ -45,5 +46,10 @@ export default async function FahrradschluesselPage() {
       titel="So läuft Ihre Anfrage ab"
     />
   );
-  return <EinstiegSeite klasse="fahrrad" abschnitte={ABSCHNITTE} ablauf={ablauf} />;
+  return (
+    <>
+      <KlassenSeitenDaten klasse="fahrrad" art="einstieg" />
+      <EinstiegSeite klasse="fahrrad" abschnitte={ABSCHNITTE} ablauf={ablauf} />
+    </>
+  );
 }

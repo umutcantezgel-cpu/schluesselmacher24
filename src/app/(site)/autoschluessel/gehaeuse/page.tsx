@@ -30,12 +30,18 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AutoschluesselGehaeusePage() {
   const [rubrik, page] = await Promise.all([getRubrik('autoschluessel-gehaeuse'), getPageContent(ROUTE)]);
 
+  // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
+  const kurztext =
+    page?.subline
+    ?? 'Anfrage mit Fahrzeug, drei Fotos Ihres Schlüssels und Fahrzeugschein. Wir prüfen Ihre Angaben und melden uns mit Preis und Ablauf.';
+
   return (
     <>
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
           name: page?.headline ?? 'Autoschlüssel-Gehäuse erneuern',
+          service: { name: page?.headline ?? 'Autoschlüssel-Gehäuse erneuern', description: kurztext },
           description: page?.seo.description,
           crumbs: CRUMBS,
         })}
@@ -45,10 +51,7 @@ export default async function AutoschluesselGehaeusePage() {
         rubrik={rubrik}
         eyebrow="Autoschlüssel"
         title={page?.headline ?? 'Autoschlüssel-Gehäuse erneuern'}
-        lead={
-          page?.subline
-          ?? 'Anfrage mit Fahrzeug, drei Fotos Ihres Schlüssels und Fahrzeugschein. Wir prüfen Ihre Angaben und melden uns mit Preis und Ablauf.'
-        }
+        lead={kurztext}
         crumbs={CRUMBS}
         bereich="autoschluessel"
         actions={

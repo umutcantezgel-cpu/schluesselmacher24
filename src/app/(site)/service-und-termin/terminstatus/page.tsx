@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { PageHeader } from '@/components/layout/page-header';
 import { TerminStatusFormular } from './status-formular';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 export const metadata: Metadata = {
   title: 'Terminstatus',
@@ -12,18 +13,22 @@ export const metadata: Metadata = {
 };
 
 export default function TerminStatusPage() {
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/service-und-termin', label: 'Service und Termin' },
+    { href: '/service-und-termin/terminstatus', label: 'Terminstatus' },
+  ];
+
   return (
     <>
+      <SeitenDaten pfad="/service-und-termin/terminstatus" name="Stand Ihres Vorgangs" crumbs={crumbs} />
       <PageHeader
         eyebrow="Terminstatus"
         bereich="service-und-termin"
         art="arbeit"
         title="Stand Ihres Vorgangs"
         lead="Geben Sie Ihre Vorgangsnummer und die E-Mail-Adresse ein, mit der Sie den Vorgang angelegt haben."
-        crumbs={[
-          { href: '/service-und-termin', label: 'Service und Termin' },
-          { href: '/service-und-termin/terminstatus', label: 'Terminstatus' },
-        ]}
+        crumbs={crumbs}
       />
 
       <div className="shell py-8 md:py-12">

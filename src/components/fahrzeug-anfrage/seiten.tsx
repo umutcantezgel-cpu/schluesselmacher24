@@ -55,6 +55,12 @@ export async function robotsNachStand(klasse: FormularKlasse): Promise<Pick<Meta
   return (await rubrikLive(klasse)) ? robotsFuer(klasse) : { robots: { index: false, follow: true } };
 }
 
+/**
+ * Einleitung im Seitenkopf, solange die Rubrik nicht live ist: statt der Schritte des Formulars, das es dann
+ * nicht gibt, ein neutraler Satz.
+ */
+export const RUBRIK_PAUSIERT_LEAD = 'Diese Anfrage nehmen wir gerade nicht online an. Wir helfen Ihnen gern auf anderem Weg.';
+
 /** Ruhiger Hinweis statt des Formulars, solange die Rubrik nicht live ist; mit Telefon, wenn gepflegt. */
 export async function RubrikPausiertHinweis({ className }: { className?: string }) {
   const { telefon, erreichbarkeit: angabe } = await hilfeAngaben();
@@ -152,7 +158,7 @@ export async function FahrzeugAnfrageInhalt({ klasse, suchparameter }: { klasse:
 /** Ganze Anfrageseite einer neuen Klasse: Kopf als Arbeitsansicht und das Formular. */
 export async function FahrzeugAnfrageSeite({ klasse, suchparameter }: { klasse: Exclude<FormularKlasse, 'motorrad'>; suchparameter?: Suchparameter }) {
   const formular = ANFRAGE_FORMULAR[klasse];
-  const kopf = await kopfMit(KLASSEN_SEITEN[klasse].anfrage);
+  const [kopf, live] = await Promise.all([kopfMit(KLASSEN_SEITEN[klasse].anfrage), rubrikLive(klasse)]);
   const crumbs = formular.einstieg
     ? [
         { href: formular.einstieg, label: KLASSEN_SEITEN[klasse].einstieg?.headline ?? formular.titel },
@@ -164,7 +170,7 @@ export async function FahrzeugAnfrageSeite({ klasse, suchparameter }: { klasse: 
       ];
   return (
     <>
-      <PageHeader bereich="autoschluessel" art="arbeit" eyebrow={PROCESS_LABELS['gefuehrte-anfrage'].label} title={kopf.headline} lead={kopf.subline} crumbs={crumbs} />
+      <PageHeader bereich="autoschluessel" art="arbeit" eyebrow={PROCESS_LABELS['gefuehrte-anfrage'].label} title={kopf.headline} lead={live ? kopf.subline : RUBRIK_PAUSIERT_LEAD} crumbs={crumbs} />
       <div className="shell py-8 md:py-12">
         <FahrzeugAnfrageInhalt klasse={klasse} suchparameter={suchparameter} />
       </div>

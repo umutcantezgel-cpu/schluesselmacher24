@@ -5,6 +5,7 @@ import { getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 
 import { AnfrageFormular } from './anfrage-formular';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'autoschluessel/gehaeuse/anfrage';
 
@@ -23,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function GehaeuseAnfragePage() {
   const page = await getPageContent(ROUTE);
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/autoschluessel', label: 'Autoschlüssel' },
+    { href: '/autoschluessel/gehaeuse', label: 'Gehäuse' },
+    { href: `/${ROUTE}`, label: 'Anfrage' },
+  ];
+
   return (
     <>
+      <SeitenDaten pfad={`/${ROUTE}`} name={page?.headline ?? 'Gehäuse-Anfrage'} crumbs={crumbs} />
       <PageHeader
         bereich="autoschluessel"
         art="arbeit"
@@ -34,11 +43,7 @@ export default async function GehaeuseAnfragePage() {
           page?.subline
           ?? 'Fünf Schritte: Fahrzeug, Tasten, Fotos, Kontakt und Absenden. Mit der Anfrage entsteht noch kein Vertrag.'
         }
-        crumbs={[
-          { href: '/autoschluessel', label: 'Autoschlüssel' },
-          { href: '/autoschluessel/gehaeuse', label: 'Gehäuse' },
-          { href: `/${ROUTE}`, label: 'Anfrage' },
-        ]}
+        crumbs={crumbs}
       />
 
       <div className="shell py-8 md:py-12">

@@ -116,6 +116,7 @@ export default async function SicherheitstechnikPage() {
         data={pageGraphSchema({
           path: `/${ROUTE}`,
           name: page?.headline ?? 'Sicherheitstechnik',
+          service: { name: page?.headline ?? 'Sicherheitstechnik', description: page?.subline },
           description: page?.seo.description,
           crumbs: [{ href: `/${ROUTE}`, label: 'Sicherheitstechnik' }],
         })}

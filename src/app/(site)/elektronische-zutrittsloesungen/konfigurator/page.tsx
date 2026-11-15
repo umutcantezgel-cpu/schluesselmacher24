@@ -9,6 +9,7 @@ import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 import { ZutrittKonfigurator } from './zutritt-konfigurator';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'elektronische-zutrittsloesungen/konfigurator';
 
@@ -48,8 +49,15 @@ export default async function ZutrittKonfiguratorPage() {
   const page = await getPageContent(ROUTE);
   const process = PROCESS_LABELS.projektkonfigurator;
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/elektronische-zutrittsloesungen', label: 'Elektronische Zutrittslösungen' },
+    { href: `/${ROUTE}`, label: 'Konfigurator' },
+  ];
+
   return (
     <>
+      <SeitenDaten pfad={`/${ROUTE}`} name={page?.headline ?? 'Zutrittskonfigurator'} crumbs={crumbs} />
       <PageHeader
         art="arbeit"
         bereich="elektronische-zutrittsloesungen"
@@ -60,10 +68,7 @@ export default async function ZutrittKonfiguratorPage() {
           ?? 'Acht Fragen zu Ihrem Objekt. Am Ende sehen Sie alle Angaben noch einmal, bevor Sie '
             + 'absenden.'
         }
-        crumbs={[
-          { href: '/elektronische-zutrittsloesungen', label: 'Elektronische Zutrittslösungen' },
-          { href: `/${ROUTE}`, label: 'Konfigurator' },
-        ]}
+        crumbs={crumbs}
       >
         {/* Die acht Abfragen als Stückliste: Mono-Nummer und Name, Haarlinien statt Kreise */}
         <ol className="grid gap-x-8 border-b border-border sm:grid-cols-2">

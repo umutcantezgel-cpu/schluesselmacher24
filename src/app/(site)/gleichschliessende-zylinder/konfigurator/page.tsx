@@ -10,6 +10,7 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { GpsrAngaben } from '@/components/recht/gpsr-angaben';
 
 import { Konfigurator } from './konfigurator';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'gleichschliessende-zylinder/konfigurator';
 
@@ -41,8 +42,15 @@ export default async function CylinderConfiguratorPage() {
     getCollection('cylinderCatalog'),
   ]);
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/gleichschliessende-zylinder', label: 'Gleichschließende Zylinder' },
+    { href: `/${ROUTE}`, label: 'Konfigurator' },
+  ];
+
   return (
     <>
+      <SeitenDaten pfad={`/${ROUTE}`} name={page?.headline ?? 'Gleichschließende Zylinder zusammenstellen'} crumbs={crumbs} />
       <PageHeader
         art="arbeit"
         eyebrow={PROCESS_LABELS.direktkauf.label}
@@ -52,10 +60,7 @@ export default async function CylinderConfiguratorPage() {
           ?? 'Legen Sie für jede Tür eine Position an. Am Ende sehen Sie die vollständige '
             + 'Preisaufstellung und legen die Zusammenstellung in den Warenkorb.'
         }
-        crumbs={[
-          { href: '/gleichschliessende-zylinder', label: 'Gleichschließende Zylinder' },
-          { href: `/${ROUTE}`, label: 'Konfigurator' },
-        ]}
+        crumbs={crumbs}
       />
 
       <Section tight>

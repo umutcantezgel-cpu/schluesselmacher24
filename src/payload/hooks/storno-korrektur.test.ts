@@ -4,7 +4,7 @@ import { ERSTATTUNG_MELDUNG_WEG, STORNO_MELDUNG, zahlungsstandText } from '../..
 import type { Vorgaenge } from '../../payload-types';
 
 import { auftragswegVorAenderung } from './auftragsweg';
-import { KORREKTUR_MELDUNG, korrekturText, stornoKorrekturVorAenderung, summeNachKorrektur } from './storno-korrektur';
+import { KORREKTUR_MELDUNG, STORNO_FEST_MELDUNG, korrekturText, stornoKorrekturVorAenderung, summeNachKorrektur } from './storno-korrektur';
 import { ERSTATTUNG_MELDUNG, vermittlungVorAenderung } from './vermittlung';
 import { vorgangVorAenderung } from './vorgang-benachrichtigen';
 
@@ -14,6 +14,7 @@ import { vorgangVorAenderung } from './vorgang-benachrichtigen';
 vi.mock('../../lib/integrations/stripe', () => ({ stripeClient: () => ({}) }));
 
 const TEAM = { id: 1, email: 'team@example.org', name: 'Mina Saad', rollen: ['team'] };
+const INHABER = { id: 2, email: 'inhaber@example.org', name: 'Inge Haber', rollen: ['inhaber'] };
 
 function bestellung(teil: Partial<Vorgaenge> = {}): Vorgaenge {
   return {
@@ -114,6 +115,17 @@ describe('Storno einer bezahlten Bestellung', () => {
     expect(texte(data)).toContain('Weg: Überweisung, Beleg: Buchung 2026-11-15 SM24-B-2026-0051');
   });
 
+  it('schreibt Entscheidung und Grund nach dem Storno fest', async () => {
+    const original = bestellung();
+    const storniert = await speichern(original, { status: 'storniert', storno: { entscheidung: 'keine', grund: 'Schlüssel schon gefertigt' } });
+    const doc = { ...original, ...storniert } as Vorgaenge;
+    await expect(speichern(doc, { storno: { ...doc.storno, entscheidung: 'ganz' } })).rejects.toThrow(STORNO_FEST_MELDUNG);
+    await expect(speichern(doc, { storno: { ...doc.storno, grund: 'Anderer Grund' } })).rejects.toThrow(STORNO_FEST_MELDUNG);
+    // Unverändert mitgesendet (wie das Formular im Backend) geht es; Zeit und Bearbeiter bleiben.
+    const gleich = await speichern(doc, { storno: { ...doc.storno, entschiedenVon: 'Jemand anderes' } });
+    expect(gleich.storno).toMatchObject({ entscheidung: 'keine', entschiedenVon: 'Mina Saad', entschiedenAm: doc.storno?.entschiedenAm });
+  });
+
   it('lässt ein Storno ohne eingegangene Zahlung wie bisher zu', async () => {
     const offen = bestellung({ status: 'neu', zahlung: { umfang: 'gesamt', betragCent: 4_000, status: 'offen' } });
     const data = await speichern(offen, { status: 'storniert' });
@@ -176,11 +188,40 @@ describe('Berichtigung einer irrtümlichen Erstattung', () => {
     expect(kleiner.zahlung).toMatchObject({ status: 'teilweise-erstattet', erstattetCent: 500 });
   });
 
-  it('geht nicht für Erstattungen über den Zahlungsdienst', async () => {
+  it('geht über den Zahlungsdienst nicht für Mitarbeiter, aber für den Inhaber mit Grund', async () => {
     const doc = await erstattet('zahlungsdienst');
     await expect(
       speichern(doc, { erstattung: { ...doc.erstattung, art: null, betragCent: null, berichtigungGrund: 'Irrtum' } }),
     ).rejects.toThrow(ERSTATTUNG_MELDUNG_WEG.berichtigungZahlungsdienst);
+    await expect(
+      speichern(
+        doc,
+        { erstattung: { ...doc.erstattung, art: null, betragCent: null, berichtigungGrund: 'Irrtum' } },
+        req({ ...TEAM, rollen: ['mitarbeiter'] }),
+      ),
+    ).rejects.toThrow(ERSTATTUNG_MELDUNG_WEG.berichtigungZahlungsdienst);
+    // Beim Zahlungsdienst wurde nichts erstattet (zu früh eingetragen): Der Inhaber berichtigt mit Grund.
+    const data = await speichern(
+      doc,
+      { erstattung: { ...doc.erstattung, art: null, betragCent: null, berichtigungGrund: 'Zu früh eingetragen, in Stripe nichts erstattet' } },
+      req(INHABER),
+    );
+    expect(data.zahlung).toMatchObject({ status: 'bezahlt', erstattetCent: null });
+    expect(texte(data)).toContain('Weg Zahlungsdienst, vom Inhaber nach Abgleich mit dem Stripe-Dashboard');
+    expect(texte(data)).toContain('Grund: Zu früh eingetragen, in Stripe nichts erstattet (Inge Haber).');
+  });
+
+  it('bei einem vermittelten Auftrag nur durch den Inhaber', async () => {
+    const original = bestellung({ vermittlung: { status: 'kunde-bestaetigt' } } as Partial<Vorgaenge>);
+    const erfasst = await speichern(original, {
+      erstattung: { art: 'teilweise', betragCent: 1_000, grund: 'Kulanz', weg: 'bar', beleg: 'Quittung 4' },
+    });
+    const doc = { ...original, ...erfasst } as Vorgaenge;
+    const berichtigung = { erstattung: { ...doc.erstattung, art: null, betragCent: null, berichtigungGrund: 'Falscher Vorgang' } };
+    await expect(speichern(doc, berichtigung)).rejects.toThrow(ERSTATTUNG_MELDUNG_WEG.berichtigungVermittlung);
+    const data = await speichern(doc, berichtigung, req(INHABER));
+    expect(data.zahlung).toMatchObject({ status: 'bezahlt', erstattetCent: null });
+    expect(texte(data)).toContain('Erstattung berichtigt: von 10,00');
   });
 });
 

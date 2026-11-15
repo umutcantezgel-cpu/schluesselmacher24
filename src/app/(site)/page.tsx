@@ -13,7 +13,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { SpaetVorladen } from '@/lib/spaet-vorladen';
 import { ImagePlaceholder, ausschnittStil, type GrafikAusschnitt } from '@/components/ui/image-placeholder';
 import { Section, SectionHeading } from '@/components/layout/section';
-import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
+import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { WerkstattZeile, werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { erreichbarkeit } from '@/lib/erreichbarkeit';
 import { CODE_ANFRAGE_PFAD } from '@/lib/wege/code-anfrage';
@@ -136,7 +136,8 @@ export default async function HomePage() {
 
   return (
     <>
-      <JsonLd data={localBusinessSchema(settings)} />
+      {/* Der Betrieb (Organisation, Website, Locksmith) steht im Root-Layout auf jeder Seite (FA-SEO-01C). */}
+      <JsonLd data={pageGraphSchema({ path: '/', name: settings.company.brandName })} />
 
       {/* Erster Bildschirm: Frage, Satz, Kacheln aus den Rubriken, Anrufen (G-01 bis G-05, K-013) */}
       <IntentHub

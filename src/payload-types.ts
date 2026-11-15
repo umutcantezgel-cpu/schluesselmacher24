@@ -227,7 +227,7 @@ export interface Vorgaenge {
    */
   nachrichtAnKunde?: string | null;
   /**
-   * Vor dem Stornieren einer bezahlten Zahlung wählen. Bei „ganz“ oder „teilweise“ die Erstattung im Reiter „Zahlung“ eintragen, bei „keine“ den Grund.
+   * Vor dem Stornieren einer bezahlten Zahlung wählen. Bei „ganz“ oder „teilweise“ die Erstattung im Reiter „Zahlung“ eintragen, bei „keine“ den Grund. Nach dem Storno sind Entscheidung und Grund fest.
    */
   storno?: {
     entscheidung?: ('ganz' | 'teilweise' | 'keine') | null;
@@ -1417,7 +1417,7 @@ export interface Seiten {
       }[]
     | null;
   /**
-   * Leer lassen = die Seite zeigt ihre eingebauten Fragen.
+   * Leer lassen = eine eingebaute Seite zeigt ihre eingebauten Fragen. Eine neu angelegte Seite zeigt dann keine Fragen.
    */
   faq?:
     | {

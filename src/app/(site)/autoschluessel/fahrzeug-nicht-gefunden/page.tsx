@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import { FahrzeugAnfrageSeite, seitenMetadata } from '@/components/fahrzeug-anfrage/seiten';
+import { KlassenSeitenDaten } from '@/components/seo/seiten-daten';
 
 export async function generateMetadata(): Promise<Metadata> {
   // Eigene kanonische Adresse dieser Seite; noindex nach dem Schalter der Klasse (seitenMetadata).
@@ -15,5 +16,10 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function FahrzeugNichtGefundenPage(props: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const suchparameter = await props.searchParams;
-  return <FahrzeugAnfrageSeite klasse="nicht-gefunden" suchparameter={suchparameter} />;
+  return (
+    <>
+      <KlassenSeitenDaten klasse="nicht-gefunden" art="anfrage" />
+      <FahrzeugAnfrageSeite klasse="nicht-gefunden" suchparameter={suchparameter} />
+    </>
+  );
 }

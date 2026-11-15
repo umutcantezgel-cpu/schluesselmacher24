@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { getPageContent } from '@/lib/data';
 import type { InfoHint } from '@/lib/types';
-import { ServiceArticle } from '@/components/autoschluessel/service-article';
+import { LeistungsArtikel } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'autoschluessel/schluesselbart-fraesen';
 
@@ -43,7 +43,8 @@ export default async function SchluesselbartFraesenPage() {
   const page = await getPageContent(ROUTE);
 
   return (
-    <ServiceArticle
+    <LeistungsArtikel
+      pfad={`/${ROUTE}`}
       content={page}
       fallback={{
         headline: 'Schlüsselbart fräsen',

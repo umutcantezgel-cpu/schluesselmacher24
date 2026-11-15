@@ -139,6 +139,19 @@ describe('benachrichtigeNeuerVorgang', () => {
     expect(gespeichert.timeline.at(-1)?.message).toBe('Eingangsbestätigung per E-Mail versendet.');
   });
 
+  it('speichert die Eingangsbestätigung im Verlauf ohne den persönlichen Link (FA-KERN-05)', async () => {
+    mailEinrichten();
+    await benachrichtigeNeuerVorgang({ saved: vorgang(), token: 'geheimes-token-123', settings: ECHTE_FIRMA });
+    const kunde = aufrufe.find((a) => a.an.includes('erika@example.org'));
+    // Hinaus geht der Link mit Token.
+    expect(kunde?.text).toContain('?t=geheimes-token-123');
+    const eintrag = gespeichert.mailLog?.find((m) => m.kind === 'eingang-kunde');
+    expect(eintrag?.body).toBeTruthy();
+    expect(eintrag?.body).not.toContain('geheimes-token-123');
+    expect(eintrag?.body).not.toMatch(/[?&]t=/);
+    expect(eintrag?.body).toContain('[persönlicher Link, nicht gespeichert]');
+  });
+
   it('meldet eine gescheiterte Kundenmail als Hinweis — die Betriebsmail geht trotzdem', async () => {
     mailEinrichten();
     // Kunde zuerst gesendet: 422; Betrieb: 200

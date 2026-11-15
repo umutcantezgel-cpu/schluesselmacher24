@@ -9,6 +9,7 @@ import { MobileActionBar } from '@/components/layout/mobile-action-bar';
 import { EinwilligungHinweis } from '@/components/statistik/einwilligung-hinweis';
 import { GoogleAnalytics } from '@/components/statistik/google-analytics';
 import { FachIcon } from '@/components/visual/fach-icon';
+import { JsonLd, localBusinessSchema } from '@/components/seo/json-ld';
 import { getRubriken, getSettings } from '@/lib/data';
 import { defaults } from '@/lib/data/defaults';
 import { navigationsGruppen } from '@/lib/navigation';
@@ -91,6 +92,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <script dangerouslySetInnerHTML={{ __html: STARTSKRIPT }} />
       </head>
       <body className="flex min-h-full flex-col">
+        {/* Der Betrieb als feste Kennung auf jeder Seite (FA-25-08); Seiten verweisen per @id darauf.
+            Gedeckt durch den Fuß jeder Seite: Anschrift, Telefon, Erreichbarkeit (R8). */}
+        <JsonLd data={localBusinessSchema(settings)} />
         <a
           href="#inhalt"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:rounded-md focus:bg-primary focus:px-4 focus:py-3 focus:text-small focus:font-semibold focus:text-primary-foreground"

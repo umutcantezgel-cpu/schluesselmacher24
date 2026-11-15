@@ -5,7 +5,7 @@
  */
 export const ETAPPEN = {
   fahrzeug: 'Fahrzeug wählen',
-  fotos: 'Fotos hochladen',
+  fotos: 'Unterlagen hochladen',
   preis: 'Preis oder Prüfung',
   anzahlung: 'Anzahlung',
   termin: 'Termin buchen',

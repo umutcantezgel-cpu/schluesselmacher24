@@ -361,6 +361,11 @@ describe('Bitte um Bestätigung an den Kunden', () => {
     expect(geschrieben.vermittlung?.bestaetigungHash).toMatch(/^[0-9a-f]{64}$/);
     expect(geschrieben.vermittlung?.bestaetigungHash).not.toContain(link![1]);
     expect(geschrieben.mails?.at(-1)).toMatchObject({ art: 'ausfuehrung', ergebnis: 'gesendet' });
+    // Der Einmal-Link steht nicht im gespeicherten Mailtext (FA-KERN-05).
+    expect(geschrieben.mails?.at(-1)?.text).toBeTruthy();
+    expect(geschrieben.mails?.at(-1)?.text).not.toContain(link![1]);
+    expect(geschrieben.mails?.at(-1)?.text).not.toContain('/auftrag-bestaetigen/');
+    expect(geschrieben.mails?.at(-1)?.text).toContain('[persönlicher Link, nicht gespeichert]');
     // Erst nach dem Versand steht der Satz zur Mail im Verlauf des Kunden.
     expect(geschrieben.verlauf?.at(-1)?.text).toBe('Wir haben Sie per E-Mail gebeten, das kurz zu bestätigen.');
   });

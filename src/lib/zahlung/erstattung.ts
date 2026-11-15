@@ -33,9 +33,9 @@ export const ERSTATTUNG_MELDUNG_WEG = {
   weg: 'Bitte den Weg der Erstattung wählen (Zahlungsdienst, Überweisung, bar oder sonstiger Weg).',
   beleg: 'Bitte einen Beleg eintragen, etwa Buchungstext, Quittungsnummer oder Referenz.',
   berichtigungZahlungsdienst:
-    'Eine Erstattung über den Zahlungsdienst berichtigen Sie dort. Hier lässt sich nur eine Erstattung außerhalb berichtigen.',
+    'Eine Erstattung über den Zahlungsdienst berichtigt nur der Inhaber. Er prüft vorher im Stripe-Dashboard, was dort wirklich erstattet wurde.',
   berichtigungVermittlung:
-    'Bei einem vermittelten Auftrag lässt sich die Erstattung hier nicht berichtigen. Bitte den Inhaber fragen.',
+    'Bei einem vermittelten Auftrag sperrt die Erstattung die Partnerauszahlung. Berichtigen kann sie nur der Inhaber, mit Grund.',
   berichtigungHoeher: 'Eine Berichtigung macht den erstatteten Betrag nur kleiner. Für mehr bitte die Erstattung erfassen.',
   berichtigungOhne: 'Zu diesem Vorgang ist keine Erstattung erfasst, die sich berichtigen ließe.',
 } as const;
@@ -124,7 +124,8 @@ export type Erstatten = (auftrag: { zahlungsKennung: string; betragCents: number
 export type ErstattungsAusloesung = { ok: true; referenz: string } | { ok: false; meldung: string };
 
 export const ERSTATTUNG_AUSLOESEN_AUS =
-  'Abgeschaltet: Erstattungen lösen Sie im Stripe-Dashboard aus. Der Stand hier folgt automatisch.';
+  'Abgeschaltet: Erstattungen lösen Sie im Stripe-Dashboard aus. Der Zahlungsstand folgt automatisch. '
+  + 'Tragen Sie die Erstattung danach unten mit Weg „Zahlungsdienst“ ein.';
 
 /** Schalter für die vorbereitete Erstattung; nur `stripe` schaltet sie ein (nirgends gesetzt). */
 export function erstattungAusloesenAktiv(schalter: string | undefined = process.env.ZAHLUNG_ERSTATTUNG): boolean {

@@ -203,6 +203,25 @@ describe('Rubrik nicht live (FA-KERN-05)', () => {
     }
   });
 
+  it('Anfrageseite verspricht im Kopf keine Schritte, solange die Rubrik nicht live ist', async () => {
+    const { FahrzeugAnfrageSeite, RUBRIK_PAUSIERT_LEAD } = await import('./seiten');
+    const motorrad = await import('@/app/(site)/motorradschluessel/anfrage/page');
+    // Der Seitenkopf ist das erste Kind; das Formular darunter lädt asynchron und wird hier nicht gerendert.
+    const lead = (seite: unknown) =>
+      ((seite as { props: { children: Array<{ props: { lead?: string } }> } }).props.children[0].props.lead ?? '');
+    expect(lead(await FahrzeugAnfrageSeite({ klasse: 'fahrrad' }))).not.toBe(RUBRIK_PAUSIERT_LEAD);
+    expect(lead(await motorrad.default())).toContain('Sechs Schritte');
+    nichtLive.add('fahrradschluessel');
+    nichtLive.add('motorradschluessel');
+    try {
+      expect(lead(await FahrzeugAnfrageSeite({ klasse: 'fahrrad' }))).toBe(RUBRIK_PAUSIERT_LEAD);
+      expect(lead(await motorrad.default())).toBe(RUBRIK_PAUSIERT_LEAD);
+      expect(RUBRIK_PAUSIERT_LEAD).not.toMatch(/Schritte|Vertrag/);
+    } finally {
+      nichtLive.clear();
+    }
+  });
+
   it('Motorradseiten: Rubrik nicht live heißt noindex und kein Knopf zur Anfrage', async () => {
     const einstieg = await import('@/app/(site)/motorradschluessel/page');
     const anfrage = await import('@/app/(site)/motorradschluessel/anfrage/page');

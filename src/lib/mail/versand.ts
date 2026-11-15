@@ -71,13 +71,37 @@ export interface VorlageSenden {
 /** Obergrenze für den gespeicherten Text einer Mail (Zeichen); längere Texte werden gekürzt und markiert. */
 export const MAILTEXT_HOECHSTENS = 60_000;
 
+/** Platzhalter für einen persönlichen Link im gespeicherten Verlauf. */
+export const GEHEIMER_LINK = '[persönlicher Link, nicht gespeichert]';
+
+/** Parameter, die ein Geheimnis tragen: Zugriffstoken (`?t=`) und Einmal-Schlüssel der Kundenbestätigung (`?k=`). */
+const GEHEIME_PARAMETER = ['t', 'k'];
+
+/**
+ * Ersetzt Links mit Geheimnis durch einen Platzhalter: den persönlichen Link zum Vorgang
+ * (`/bestellung/<id>?t=…`, vom Token speichert der Bestand nur den Hash) und den Einmal-Link der
+ * Kundenbestätigung (`/auftrag-bestaetigen/<id>?k=…`). Alle übrigen Links bleiben lesbar.
+ */
+export function geheimeLinksSchwaerzen(text: string): string {
+  return text.replace(/https?:\/\/[^\s<>"]+/g, (url) => {
+    try {
+      const u = new URL(url);
+      const geheim = GEHEIME_PARAMETER.some((p) => u.searchParams.has(p)) || u.pathname.startsWith('/auftrag-bestaetigen/');
+      return geheim ? GEHEIMER_LINK : url;
+    } catch {
+      return /[?&](?:t|k)=/.test(url) ? GEHEIMER_LINK : url;
+    }
+  });
+}
+
 /**
  * Betreff und Text einer Mail für den Verlauf am Vorgang (FA-KERN-05): die Textfassung, die auch
- * hinausgeht, ohne HTML. Sehr lange Texte (etwa Rechtstexte in der Vertragsbestätigung) werden gekürzt.
+ * hinausgeht, ohne HTML und ohne Links mit Geheimnis. Sehr lange Texte (etwa Rechtstexte in der
+ * Vertragsbestätigung) werden gekürzt.
  */
 export function mailVerlaufText(inhalt: Pick<MailInhalt, 'betreff' | 'text'> | undefined): Pick<MailLogEntry, 'subject' | 'body'> {
   if (!inhalt) return {};
-  const text = typeof inhalt.text === 'string' ? inhalt.text : '';
+  const text = typeof inhalt.text === 'string' ? geheimeLinksSchwaerzen(inhalt.text) : '';
   const body = text.length > MAILTEXT_HOECHSTENS ? `${text.slice(0, MAILTEXT_HOECHSTENS)}\n\n[Text gekürzt]` : text;
   return { ...(inhalt.betreff ? { subject: inhalt.betreff } : {}), ...(body ? { body } : {}) };
 }

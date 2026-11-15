@@ -4,6 +4,7 @@ import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import { EinstiegSeite, seitenMetadata, type EinstiegAbschnitt } from '@/components/fahrzeug-anfrage/seiten';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { getRubrik } from '@/lib/data';
+import { KlassenSeitenDaten } from '@/components/seo/seiten-daten';
 
 /*
  * Eigener Inhalt dieser Seite (R3): Seniorenmobile haben meist keinen Fahrzeugschein, und das Fahrzeug
@@ -44,5 +45,10 @@ export default async function SeniorenmobilePage() {
       titel="So läuft Ihre Anfrage ab"
     />
   );
-  return <EinstiegSeite klasse="seniorenmobil" abschnitte={ABSCHNITTE} ablauf={ablauf} />;
+  return (
+    <>
+      <KlassenSeitenDaten klasse="seniorenmobil" art="einstieg" />
+      <EinstiegSeite klasse="seniorenmobil" abschnitte={ABSCHNITTE} ablauf={ablauf} />
+    </>
+  );
 }

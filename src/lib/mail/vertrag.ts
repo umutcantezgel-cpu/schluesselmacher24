@@ -63,6 +63,13 @@ export async function sendeVertragsbestaetigung({ vorgang, settings, zahlarten }
     });
   } catch (error) {
     console.error('[mail] Vertragsbestätigung nicht erstellt', error instanceof Error ? error.message : error);
-    return { kind: 'vertrag', to: vorgang.contact.email, at: new Date().toISOString(), result: 'fehlgeschlagen', error: 'Interner Fehler' };
+    // `sendeVorlage` wirft nie: Hier scheiterte schon das Erstellen der Mail, es gibt also keinen Text für den Verlauf.
+    return {
+      kind: 'vertrag',
+      to: vorgang.contact.email,
+      at: new Date().toISOString(),
+      result: 'fehlgeschlagen',
+      error: 'Mail nicht erstellt (interner Fehler), daher kein Text im Verlauf',
+    };
   }
 }

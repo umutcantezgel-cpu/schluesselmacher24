@@ -5,6 +5,7 @@ import { getPageContent, getSettings } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
 import { AnfrageFormular } from './anfrage-formular';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'schluessel-nach-vorlage/anfrage';
 
@@ -23,8 +24,15 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function SchluesselNachVorlageAnfragePage() {
   const [page, settings] = await Promise.all([getPageContent(ROUTE), getSettings()]);
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' },
+    { href: '/schluessel-nach-vorlage/anfrage', label: 'Anfrage' },
+  ];
+
   return (
     <>
+      <SeitenDaten pfad="/schluessel-nach-vorlage/anfrage" name={page?.headline ?? 'Schlüssel nach Vorlage anfragen'} crumbs={crumbs} />
       <PageHeader
         bereich="schluessel-nach-vorlage"
         art="arbeit"
@@ -35,10 +43,7 @@ export default async function SchluesselNachVorlageAnfragePage() {
           ?? 'Acht Schritte: drei Fotos, Angaben zum Schlüssel, Stückzahl und Kontakt. '
             + 'Ihren Originalschlüssel senden Sie zunächst nicht ein.'
         }
-        crumbs={[
-          { href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' },
-          { href: '/schluessel-nach-vorlage/anfrage', label: 'Anfrage' },
-        ]}
+        crumbs={crumbs}
       />
 
       <div className="shell py-8 md:py-12">

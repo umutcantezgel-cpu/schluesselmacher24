@@ -4,6 +4,7 @@ import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import { EinstiegSeite, seitenMetadata, type EinstiegAbschnitt } from '@/components/fahrzeug-anfrage/seiten';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { getRubrik } from '@/lib/data';
+import { KlassenSeitenDaten } from '@/components/seo/seiten-daten';
 
 /*
  * Eigener Inhalt dieser Seite (R3): Roller, Mofa und Moped gibt es mit Fahrzeugschein und mit
@@ -45,5 +46,10 @@ export default async function RollerPage() {
       titel="So läuft Ihre Anfrage ab"
     />
   );
-  return <EinstiegSeite klasse="roller" abschnitte={ABSCHNITTE} ablauf={ablauf} />;
+  return (
+    <>
+      <KlassenSeitenDaten klasse="roller" art="einstieg" />
+      <EinstiegSeite klasse="roller" abschnitte={ABSCHNITTE} ablauf={ablauf} />
+    </>
+  );
 }

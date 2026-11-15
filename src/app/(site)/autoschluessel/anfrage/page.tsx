@@ -13,6 +13,7 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { KATALOG_ADRESSE } from '@/components/autoschluessel/fahrzeug-ziel';
 import { Assistent } from './assistent';
 import { vorherAusAdresse } from '@/lib/zahlung/neu-buchen';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'autoschluessel/anfrage';
 
@@ -93,8 +94,15 @@ export default async function AutoschluesselAnfragePage(props: {
 
   const payment = paymentStatus();
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/autoschluessel', label: 'Autoschlüssel' },
+    { href: '/autoschluessel/anfrage', label: 'Anfrage mit Termin' },
+  ];
+
   return (
     <>
+      <SeitenDaten pfad="/autoschluessel/anfrage" name={page?.headline ?? FALLBACK_TITLE} crumbs={crumbs} />
       <PageHeader
         eyebrow={PROCESS_LABELS['termin-mit-anzahlung'].label}
         art="arbeit"
@@ -106,10 +114,7 @@ export default async function AutoschluesselAnfragePage(props: {
             + 'Am Ende sehen Sie den Preis oder den Preisrahmen, leisten eine Anzahlung und buchen '
             + 'einen festen Termin. Ihre Eingaben werden im Browser zwischengespeichert.'
         }
-        crumbs={[
-          { href: '/autoschluessel', label: 'Autoschlüssel' },
-          { href: '/autoschluessel/anfrage', label: 'Anfrage mit Termin' },
-        ]}
+        crumbs={crumbs}
       />
 
       <div className="shell py-8 md:py-12">

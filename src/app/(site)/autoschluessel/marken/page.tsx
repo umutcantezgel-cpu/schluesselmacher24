@@ -16,6 +16,7 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { KeyKindBadges, KEY_KIND_HINT } from '@/components/autoschluessel/key-kinds';
 import { anfrageHref, KATALOG_QUELLE, katalogIndex, markenAZ, markenZuordnung } from '@/components/autoschluessel/fahrzeug-ziel';
 import { FahrzeugNichtGefunden } from '@/components/fahrzeug-anfrage/nicht-gefunden';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'autoschluessel/marken';
 
@@ -63,8 +64,15 @@ export default async function MarkenPage() {
   const sorted = [...makes].sort((a, b) => a.name.localeCompare(b.name, 'de'));
   const modelCount = makes.reduce((sum, make) => sum + make.models.length, 0);
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/autoschluessel', label: 'Autoschlüssel' },
+    { href: '/autoschluessel/marken', label: 'Marken' },
+  ];
+
   return (
     <>
+      <SeitenDaten pfad="/autoschluessel/marken" name={page?.headline ?? 'Marken und Modelle'} crumbs={crumbs} />
       <PageHeader
         eyebrow="Fahrzeuge"
         title={page?.headline ?? 'Marken und Modelle'}
@@ -73,10 +81,7 @@ export default async function MarkenPage() {
           ?? 'Sehen Sie nach, welche Schlüsselarten es für Ihr Fahrzeug gibt und ob es zum Anlernen '
             + 'zu uns muss.'
         }
-        crumbs={[
-          { href: '/autoschluessel', label: 'Autoschlüssel' },
-          { href: '/autoschluessel/marken', label: 'Marken' },
-        ]}
+        crumbs={crumbs}
         actions={
           /* Ein Knopftext je Ziel (A-031) */
           <ButtonLink href="/autoschluessel/anfrage" pfeil>

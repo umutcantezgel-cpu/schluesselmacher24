@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { getPageContent, getSettings } from '@/lib/data';
 import type { InfoHint } from '@/lib/types';
 import { formatCents } from '@/lib/format';
-import { ServiceArticle } from '@/components/autoschluessel/service-article';
+import { LeistungsArtikel } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'autoschluessel/funkschluessel';
 
@@ -37,7 +37,8 @@ export default async function FunkschluesselPage() {
   const deposit = formatCents(settings.booking.depositCents);
 
   return (
-    <ServiceArticle
+    <LeistungsArtikel
+      pfad={`/${ROUTE}`}
       content={page}
       fallback={{
         headline: 'Funkschlüssel und Funkfernbedienung',

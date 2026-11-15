@@ -87,6 +87,7 @@ export default async function SecurityDetailPage(props: PageProps) {
         data={pageGraphSchema({
           path: `/${AREA}/${page.slug}`,
           name: page.title,
+          service: { name: page.title, description: page.summary },
           // Strukturdaten beschreiben, was sichtbar auf der Seite steht (R8): den Kurztext im Kopf.
           description: page.summary,
           crumbs,

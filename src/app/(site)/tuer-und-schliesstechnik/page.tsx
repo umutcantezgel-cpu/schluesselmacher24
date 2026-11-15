@@ -141,6 +141,10 @@ export default async function TuerUndSchliesstechnikPage() {
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
+  // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
+  const kurztext =
+    page?.subline ?? 'Zylinder, Schlösser, Beschläge und Türtechnik.';
+
   return (
     <>
 
@@ -148,6 +152,7 @@ export default async function TuerUndSchliesstechnikPage() {
         data={pageGraphSchema({
           path: `/${ROUTE}`,
           name: page?.headline ?? 'Tür- und Schließtechnik',
+          service: { name: page?.headline ?? 'Tür- und Schließtechnik', description: kurztext },
           description: page?.seo.description,
           crumbs: [{ href: `/${ROUTE}`, label: 'Tür- und Schließtechnik' }],
           faq: EXPERT_FAQ,
@@ -157,7 +162,7 @@ export default async function TuerUndSchliesstechnikPage() {
       <PageHeader
         eyebrow="Leistungsbereich"
         title={page?.headline ?? 'Tür- und Schließtechnik'}
-        lead={page?.subline ?? 'Zylinder, Schlösser, Beschläge und Türtechnik.'}
+        lead={kurztext}
         crumbs={[{ href: `/${ROUTE}`, label: 'Tür- und Schließtechnik' }]}
         bereich={ROUTE}
         /* Blickfang im Kopf (E4-L-23): die nummerierte Tür, auf Papier ohne Rahmen. */

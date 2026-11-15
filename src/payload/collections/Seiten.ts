@@ -57,7 +57,7 @@ export const Seiten: CollectionConfig = {
       type: 'array',
       label: 'Häufige Fragen',
       labels: { singular: 'Frage', plural: 'Fragen' },
-      admin: { description: 'Leer lassen = die Seite zeigt ihre eingebauten Fragen.' },
+      admin: { description: 'Leer lassen = eine eingebaute Seite zeigt ihre eingebauten Fragen. Eine neu angelegte Seite zeigt dann keine Fragen.' },
       fields: [
         { name: 'frage', type: 'text', label: 'Frage', required: true },
         { name: 'antwort', type: 'textarea', label: 'Antwort', required: true },

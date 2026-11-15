@@ -382,12 +382,17 @@ export default async function ElektronischeZutrittsloesungenPage() {
   const faq = page?.faq.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
 
+  // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
+  const kurztext =
+    page?.subline ?? 'Zutritt mit Karte, Transponder, PIN, App oder digitalem Zylinder. Wir planen die Lösung für Ihr Objekt und richten sie ein.';
+
   return (
     <>
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
           name: page?.headline ?? 'Elektronische Zutrittslösungen',
+          service: { name: page?.headline ?? 'Elektronische Zutrittslösungen', description: kurztext },
           description: page?.seo.description,
           crumbs: [{ href: `/${ROUTE}`, label: 'Elektronische Zutrittslösungen' }],
           faq: faq,
@@ -399,7 +404,7 @@ export default async function ElektronischeZutrittsloesungenPage() {
         rubrik={rubrik}
         eyebrow={process.label}
         title={page?.headline ?? 'Elektronische Zutrittslösungen'}
-        lead={page?.subline ?? 'Zutritt mit Karte, Transponder, PIN, App oder digitalem Zylinder. Wir planen die Lösung für Ihr Objekt und richten sie ein.'}
+        lead={kurztext}
         crumbs={[{ href: `/${ROUTE}`, label: 'Elektronische Zutrittslösungen' }]}
         bereich="elektronische-zutrittsloesungen"
         visual={

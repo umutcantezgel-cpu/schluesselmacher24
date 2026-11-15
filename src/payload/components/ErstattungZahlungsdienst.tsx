@@ -11,7 +11,10 @@ import { ERSTATTUNG_AUSLOESEN_AUS, stripeZahlungsLink } from '@/lib/zahlung/erst
  */
 export function ErstattungZahlungsdienst() {
   const kennung = useFormFields(([felder]) => felder['zahlung.anbieterRef']?.value);
-  const link = stripeZahlungsLink(typeof kennung === 'string' ? kennung : null);
+  const ref = typeof kennung === 'string' ? kennung : null;
+  const link = stripeZahlungsLink(ref);
+  // Wie `StripeLink`: Der Modus der Zahlung ist im Backend nicht bekannt, daher beide Wege.
+  const testLink = stripeZahlungsLink(ref, true);
   return (
     <div className="field-type" style={{ marginBottom: 'var(--base)' }}>
       <Button buttonStyle="secondary" size="small" disabled>
@@ -24,8 +27,17 @@ export function ErstattungZahlungsdienst() {
             Zahlung im Stripe-Dashboard öffnen
           </a>
         ) : (
-          'Für Zahlungen außerhalb des Zahlungsdienstes tragen Sie Weg und Beleg ein.'
+          'Für Erstattungen außerhalb des Zahlungsdienstes tragen Sie Weg und Beleg ein.'
         )}
+        {link && testLink ? (
+          <>
+            {' '}(Testmodus:{' '}
+            <a href={testLink} target="_blank" rel="noopener noreferrer">
+              Testzahlung öffnen
+            </a>
+            )
+          </>
+        ) : null}
       </div>
     </div>
   );

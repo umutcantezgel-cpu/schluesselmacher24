@@ -4,7 +4,7 @@ import { getPageContent } from '@/lib/data';
 import type { InfoHint } from '@/lib/types';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { Alert } from '@/components/ui/alert';
-import { ServiceArticle } from '@/components/autoschluessel/service-article';
+import { LeistungsArtikel } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'autoschluessel/fahrzeugoeffnung';
 
@@ -32,7 +32,8 @@ export default async function FahrzeugoeffnungPage() {
   const page = await getPageContent(ROUTE);
 
   return (
-    <ServiceArticle
+    <LeistungsArtikel
+      pfad={`/${ROUTE}`}
       content={page}
       fallback={{
         headline: 'Fahrzeugöffnung',
@@ -218,6 +219,6 @@ export default async function FahrzeugoeffnungPage() {
           Bestätigung des Halters. Diese Prüfung findet vor Beginn der Arbeit statt.
         </Alert>
       </Section>
-    </ServiceArticle>
+    </LeistungsArtikel>
   );
 }

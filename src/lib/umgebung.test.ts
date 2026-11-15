@@ -12,8 +12,10 @@ import {
   mailKonfiguration,
   mitDatenbank,
   pruefhinweiseZeigen,
+  PRODUKTIONS_HOST_MUSTER,
   serverUrl,
   speichernMoeglich,
+  suchmaschinenKopfzeilen,
   zahlungKonfiguration,
 } from './umgebung';
 
@@ -25,7 +27,7 @@ const VARIABLEN = [
   'SM24_STORAGE', 'STORAGE_ENDPOINT', 'STORAGE_REGION', 'STORAGE_BUCKET', 'STORAGE_ACCESS_KEY', 'STORAGE_SECRET_KEY',
   'MAIL_PROVIDER', 'MAIL_API_KEY', 'MAIL_FROM_ADDRESS', 'MAIL_FROM_NAME', 'MAIL_REPLY_TO', 'MAIL_TEAM_ADDRESS',
   'MAIL_REDIRECT_TO', 'PAYMENT_PROVIDER', 'PAYMENT_API_KEY', 'PAYMENT_WEBHOOK_SECRET', 'PAYMENT_METHODS',
-  'PAYMENT_INVOICES', 'GOOGLE_SITE_VERIFICATION',
+  'PAYMENT_INVOICES', 'GOOGLE_SITE_VERIFICATION', 'SM24_INDEXIERUNG',
 ];
 
 beforeEach(() => {
@@ -140,7 +142,8 @@ describe('Suchmaschinen', () => {
     vi.stubEnv('NODE_ENV', 'development');
     expect(indexierungErlaubt()).toBe(false);
     vi.stubEnv('NODE_ENV', 'production');
-    expect(indexierungErlaubt()).toBe(true);
+    // Außerhalb von Vercel nur mit ausdrücklichem Schalter (FA-25-20).
+    expect(indexierungErlaubt()).toBe(false);
     vi.stubEnv('VERCEL', '1');
     vi.stubEnv('VERCEL_ENV', 'preview');
     expect(indexierungErlaubt()).toBe(false);
@@ -156,6 +159,45 @@ describe('Suchmaschinen', () => {
     expect(indexierungErlaubt()).toBe(false);
     vi.stubEnv('POSTGRES_URL', 'postgres://vercel/db');
     expect(indexierungErlaubt()).toBe(true);
+  });
+
+  /* Jede Kombination der Umgebung (FA-SEO-01C): Ort × Umgebung × Datenbank × Schalter. */
+  const FAELLE: Array<{ fall: string; env: Record<string, string>; erwartet: boolean }> = [
+    { fall: 'lokal, Entwicklung', env: { NODE_ENV: 'development' }, erwartet: false },
+    { fall: 'lokal, Entwicklung, Schalter an', env: { NODE_ENV: 'development', SM24_INDEXIERUNG: 'an' }, erwartet: false },
+    { fall: 'eigener Server, Produktionsbuild ohne Schalter', env: { NODE_ENV: 'production' }, erwartet: false },
+    { fall: 'eigener Server, Produktionsbuild mit Datenbank ohne Schalter', env: { NODE_ENV: 'production', DATABASE_URL: 'postgres://x/db' }, erwartet: false },
+    { fall: 'eigener Server, Schalter an', env: { NODE_ENV: 'production', SM24_INDEXIERUNG: 'an' }, erwartet: true },
+    { fall: 'eigener Server, Schalter AN mit Leerzeichen', env: { NODE_ENV: 'production', SM24_INDEXIERUNG: ' AN ' }, erwartet: true },
+    { fall: 'eigener Server, Schalter mit anderem Wert', env: { NODE_ENV: 'production', SM24_INDEXIERUNG: 'ja' }, erwartet: false },
+    { fall: 'eigener Server, Schalter aus', env: { NODE_ENV: 'production', SM24_INDEXIERUNG: 'aus' }, erwartet: false },
+    { fall: 'Vercel-Vorschau', env: { VERCEL: '1', VERCEL_ENV: 'preview', DATABASE_URL: 'postgres://x/db' }, erwartet: false },
+    { fall: 'Vercel-Vorschau, Schalter an', env: { VERCEL: '1', VERCEL_ENV: 'preview', DATABASE_URL: 'postgres://x/db', SM24_INDEXIERUNG: 'an' }, erwartet: false },
+    { fall: 'Vercel-Entwicklung', env: { VERCEL: '1', VERCEL_ENV: 'development', DATABASE_URL: 'postgres://x/db' }, erwartet: false },
+    { fall: 'Vercel-Produktion ohne Datenbank (Schaufenster, A-042)', env: { VERCEL: '1', VERCEL_ENV: 'production' }, erwartet: false },
+    { fall: 'Schaufenster, Schalter an', env: { VERCEL: '1', VERCEL_ENV: 'production', SM24_INDEXIERUNG: 'an' }, erwartet: false },
+    { fall: 'Vercel-Produktion mit Datenbank, aber SM24_DATA=json', env: { VERCEL: '1', VERCEL_ENV: 'production', DATABASE_URL: 'postgres://x/db', SM24_DATA: 'json' }, erwartet: false },
+    { fall: 'Vercel-Produktion mit Datenbank', env: { VERCEL: '1', VERCEL_ENV: 'production', DATABASE_URL: 'postgres://x/db' }, erwartet: true },
+    { fall: 'Vercel-Produktion mit Datenbank, Schalter aus', env: { VERCEL: '1', VERCEL_ENV: 'production', DATABASE_URL: 'postgres://x/db', SM24_INDEXIERUNG: 'aus' }, erwartet: false },
+  ];
+
+  it.each(FAELLE)('$fall → indexierbar: $erwartet', ({ env, erwartet }) => {
+    for (const [name, wert] of Object.entries(env)) vi.stubEnv(name, wert);
+    expect(indexierungErlaubt()).toBe(erwartet);
+    const regeln = suchmaschinenKopfzeilen();
+    expect(regeln).toHaveLength(1);
+    expect(regeln[0].headers).toEqual([{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]);
+    // Nicht indexierbar: noindex für jede Adresse; indexierbar: für jede außer der Produktionsdomain.
+    expect(regeln[0].missing).toEqual(erwartet ? [{ type: 'host', value: PRODUKTIONS_HOST_MUSTER }] : undefined);
+  });
+
+  it('nimmt nur die Produktionsdomain mit oder ohne www von der Kopfzeile aus', () => {
+    const muster = new RegExp(`^${PRODUKTIONS_HOST_MUSTER}$`);
+    expect(muster.test('schluesselmacher24.de')).toBe(true);
+    expect(muster.test('www.schluesselmacher24.de')).toBe(true);
+    for (const fremd of ['schluesselmacher24.vercel.app', 'sm24-git-main.vercel.app', 'localhost', 'schluesselmacher24xde', 'staging.schluesselmacher24.de']) {
+      expect(muster.test(fremd)).toBe(false);
+    }
   });
 
   it('liest die Google-Bestätigung, leer ist keine', () => {

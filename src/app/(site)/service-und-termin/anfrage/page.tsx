@@ -9,6 +9,7 @@ import {
 } from '@/lib/wege/code-anfrage';
 import { PageHeader } from '@/components/layout/page-header';
 import { AllgemeineAnfrage } from './anfrage-formular';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 export const metadata: Metadata = {
   title: 'Anfrage zu einer Leistung',
@@ -41,8 +42,15 @@ export default async function AnfragePage(props: {
     summary: area.key === CODE_ANFRAGE_THEMA ? CODE_ANFRAGE_THEMENTEXT : area.summary,
   }));
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/service-und-termin', label: 'Service und Termin' },
+    { href: '/service-und-termin/anfrage', label: 'Anfrage' },
+  ];
+
   return (
     <>
+      <SeitenDaten pfad="/service-und-termin/anfrage" name={codeAnfrage ? 'Code anfragen' : 'Anfrage zu einer Leistung'} crumbs={crumbs} />
       <PageHeader
         eyebrow="Geführte Anfrage"
         bereich="service-und-termin"
@@ -53,10 +61,7 @@ export default async function AnfragePage(props: {
             ? 'Nennen Sie Hersteller oder Schloss, den Code wie aufgedruckt und die Stückzahl. Wir prüfen den Code und melden uns mit einem Angebot oder einer Rückfrage.'
             : 'Wählen Sie den Fachbereich und beschreiben Sie kurz, worum es geht. Wir melden uns mit einer Einschätzung.'
         }
-        crumbs={[
-          { href: '/service-und-termin', label: 'Service und Termin' },
-          { href: '/service-und-termin/anfrage', label: 'Anfrage' },
-        ]}
+        crumbs={crumbs}
       />
 
       <div className="shell py-8 md:py-12">

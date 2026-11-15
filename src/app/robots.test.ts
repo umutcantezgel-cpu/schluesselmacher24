@@ -11,11 +11,15 @@ afterEach(() => {
 });
 
 describe('robots.txt', () => {
-  it('sperrt außerhalb der Produktion alles und nennt keine Sitemap', () => {
+  /* FA-SEO-01C: Keine Umgebung sperrt alles — sonst sähe die Suchmaschine das noindex nicht
+   * (FA-RECHERCHE-05, Abschnitt 4). Die Sitemap nennt robots.txt nur, wo indexiert werden darf. */
+  const NIE = ['/admin', '/api/', '/kasse', '/warenkorb', '/bestellung'];
+
+  it('lässt in der Vorschau crawlen, sperrt nur Vorgänge und nennt keine Sitemap', () => {
     vi.stubEnv('VERCEL', '1');
     vi.stubEnv('VERCEL_ENV', 'preview');
     const regeln = robots();
-    expect(regeln.rules).toEqual([{ userAgent: '*', disallow: '/' }]);
+    expect(regeln.rules).toEqual([{ userAgent: '*', allow: '/', disallow: NIE }]);
     expect(regeln.sitemap).toBeUndefined();
   });
 
@@ -23,21 +27,39 @@ describe('robots.txt', () => {
     vi.stubEnv('VERCEL', '1');
     vi.stubEnv('VERCEL_ENV', 'production');
     vi.stubEnv('DATABASE_URL', 'postgres://pooler/db');
-    // Die eigene Shell darf den JSON-Modus nicht erzwingen (dann wäre es das Schaufenster).
+    // Die eigene Shell darf den JSON-Modus oder die Notbremse nicht erzwingen.
     vi.stubEnv('SM24_DATA', '');
+    vi.stubEnv('SM24_INDEXIERUNG', '');
     const regeln = robots();
-    expect(regeln.rules).toEqual([expect.objectContaining({ userAgent: '*', allow: '/' })]);
+    expect(regeln.rules).toEqual([{ userAgent: '*', allow: '/', disallow: NIE }]);
     expect(regeln.sitemap).toMatch(/\/sitemap\.xml$/);
   });
 
-  it('sperrt im Schaufenster (Produktion ohne Datenbank) alles wie in einer Vorschau', () => {
+  it('nennt im Schaufenster (Produktion ohne Datenbank) keine Sitemap und sperrt nicht alles', () => {
     vi.stubEnv('VERCEL', '1');
     vi.stubEnv('VERCEL_ENV', 'production');
     vi.stubEnv('DATABASE_URL', '');
     vi.stubEnv('POSTGRES_URL', '');
     const regeln = robots();
-    expect(regeln.rules).toEqual([{ userAgent: '*', disallow: '/' }]);
+    expect(regeln.rules).toEqual([{ userAgent: '*', allow: '/', disallow: NIE }]);
     expect(regeln.sitemap).toBeUndefined();
+  });
+
+  it('nennt auf einem eigenen Server ohne SM24_INDEXIERUNG=an keine Sitemap', () => {
+    vi.stubEnv('VERCEL', '');
+    vi.stubEnv('NODE_ENV', 'production');
+    vi.stubEnv('SM24_INDEXIERUNG', '');
+    expect(robots().sitemap).toBeUndefined();
+    vi.stubEnv('SM24_INDEXIERUNG', 'an');
+    expect(robots().sitemap).toMatch(/\/sitemap\.xml$/);
+  });
+
+  it('sperrt in keiner Umgebung die ganze Seite', () => {
+    for (const env of [{ VERCEL: '1', VERCEL_ENV: 'preview' }, { VERCEL: '', NODE_ENV: 'development' }, { VERCEL: '1', VERCEL_ENV: 'production', DATABASE_URL: '', POSTGRES_URL: '' }]) {
+      for (const [name, wert] of Object.entries(env)) vi.stubEnv(name, wert);
+      const regeln = [robots().rules].flat();
+      expect(regeln.every((regel) => ![regel.disallow].flat().includes('/'))).toBe(true);
+    }
   });
 });
 

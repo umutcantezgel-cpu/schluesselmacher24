@@ -10,6 +10,7 @@ import { Alert } from '@/components/ui/alert';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { GlyphOrt } from '@/components/visual/glyphen/ort';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 /** Nur Einsatzgebiete ohne Platzhalter erscheinen — sonst versprächen sie Leistungen, die nicht belegt sind. */
 async function sichtbareGebiete() {
@@ -33,8 +34,12 @@ export default async function StandortePage() {
   const [cities, settings] = await Promise.all([sichtbareGebiete(), getSettings()]);
   const werkstatt = standort(settings.company);
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [{ href: '/standorte', label: 'Einsatzgebiete' }];
+
   return (
     <>
+      <SeitenDaten pfad="/standorte" name={cities.length > 0 ? 'Vor Ort und deutschlandweit' : 'Werkstatt und Versand'} crumbs={crumbs} />
       <PageHeader
         eyebrow="Einsatzgebiete"
         title={cities.length > 0 ? 'Vor Ort und deutschlandweit' : 'Werkstatt und Versand'}
@@ -43,7 +48,7 @@ export default async function StandortePage() {
             ? 'Schlüssel nach Code und gleichschließende Zylinder versenden wir innerhalb Deutschlands. Was wir in den aufgeführten Orten anbieten, steht auf der jeweiligen Seite.'
             : 'Schlüssel nach Code und gleichschließende Zylinder versenden wir innerhalb Deutschlands. Vor-Ort-Leistungen stimmen wir im Einzelfall mit Ihnen ab.'
         }
-        crumbs={[{ href: '/standorte', label: 'Einsatzgebiete' }]}
+        crumbs={crumbs}
         visual={
           <ImagePlaceholder
             slot={{

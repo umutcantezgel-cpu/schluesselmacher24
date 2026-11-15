@@ -261,12 +261,17 @@ export default async function SchliessanlagenPage() {
   const faq = page?.faq?.length ? page.faq : FALLBACK_FAQ;
   const process = PROCESS_LABELS.projektkonfigurator;
 
+  // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
+  const kurztext =
+    page?.subline ?? 'Wir planen Ihre Schließanlage mit Ihnen, von der Gleichschließung bis zur Generalhauptschlüsselanlage.';
+
   return (
     <>
       <JsonLd
         data={pageGraphSchema({
           path: '/schliessanlagen',
           name: page?.headline ?? 'Schließanlagen',
+          service: { name: page?.headline ?? 'Schließanlagen', description: kurztext },
           description: page?.seo.description,
           crumbs: [{ href: '/schliessanlagen', label: 'Schließanlagen' }],
           faq: faq,
@@ -278,7 +283,7 @@ export default async function SchliessanlagenPage() {
         eyebrow="Leistungsbereich"
         bereich={ROUTE}
         title={page?.headline ?? 'Mechanische Schließanlagen'}
-        lead={page?.subline ?? 'Wir planen Ihre Schließanlage mit Ihnen, von der Gleichschließung bis zur Generalhauptschlüsselanlage.'}
+        lead={kurztext}
         crumbs={[{ href: '/schliessanlagen', label: 'Schließanlagen' }]}
         /* Blickfang im Kopf: der Schließplan in Stufe HS, ohne Auswahlknöpfe. */
         visual={

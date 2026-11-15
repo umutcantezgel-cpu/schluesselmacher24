@@ -4,7 +4,7 @@ import { getPageContent } from '@/lib/data';
 import type { InfoHint } from '@/lib/types';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { Alert } from '@/components/ui/alert';
-import { ServiceArticle } from '@/components/autoschluessel/service-article';
+import { LeistungsArtikel } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'autoschluessel/kopieren';
 
@@ -36,7 +36,8 @@ export default async function KopierenPage() {
   const page = await getPageContent(ROUTE);
 
   return (
-    <ServiceArticle
+    <LeistungsArtikel
+      pfad={`/${ROUTE}`}
       content={page}
       fallback={{
         headline: 'Autoschlüssel kopieren',
@@ -215,6 +216,6 @@ export default async function KopierenPage() {
           Fahrzeug braucht, sagen wir Ihnen vor der Beauftragung.
         </Alert>
       </Section>
-    </ServiceArticle>
+    </LeistungsArtikel>
   );
 }

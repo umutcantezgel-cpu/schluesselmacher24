@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { getPageContent, getSettings } from '@/lib/data';
 import type { InfoHint } from '@/lib/types';
 import { formatDuration } from '@/lib/format';
-import { ServiceArticle } from '@/components/autoschluessel/service-article';
+import { LeistungsArtikel } from '@/components/seo/seiten-daten';
 import { ON_SITE_HINT } from '@/components/autoschluessel/key-kinds';
 
 const ROUTE = 'autoschluessel/programmieren';
@@ -45,7 +45,8 @@ export default async function ProgrammierenPage() {
   const slot = formatDuration(settings.booking.slotMinutes);
 
   return (
-    <ServiceArticle
+    <LeistungsArtikel
+      pfad={`/${ROUTE}`}
       content={page}
       fallback={{
         headline: 'Autoschlüssel programmieren und anlernen',

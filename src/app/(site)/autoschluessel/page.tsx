@@ -299,12 +299,18 @@ export default async function AutoschluesselHubPage() {
     </>
   );
 
+  // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
+  const kurztext =
+    page?.subline
+    ?? 'Wir machen Autoschlüssel nach, programmieren und reparieren sie. Sie kommen mit festem Termin in unsere Werkstatt in Wetzlar, gern auch von weiter her.';
+
   return (
     <>
       <JsonLd
         data={pageGraphSchema({
           path: '/autoschluessel',
           name: page?.headline ?? 'Autoschlüssel',
+          service: { name: page?.headline ?? 'Autoschlüssel', description: kurztext },
           description: page?.seo.description,
           crumbs: [{ href: '/autoschluessel', label: 'Autoschlüssel' }],
           faq: page?.faq?.length ? page.faq : FAQ,
@@ -317,10 +323,7 @@ export default async function AutoschluesselHubPage() {
         bereich="autoschluessel"
         eyebrow="Themenwelt Autoschlüssel"
         title={page?.headline ?? 'Autoschlüssel'}
-        lead={
-          page?.subline
-          ?? 'Wir machen Autoschlüssel nach, programmieren und reparieren sie. Sie kommen mit festem Termin in unsere Werkstatt in Wetzlar, gern auch von weiter her.'
-        }
+        lead={kurztext}
         crumbs={[{ href: '/autoschluessel', label: 'Autoschlüssel' }]}
         visual={<SchluesselartenReihe variante="kopf" />}
         handlungZuerst

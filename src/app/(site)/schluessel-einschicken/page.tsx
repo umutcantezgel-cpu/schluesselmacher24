@@ -108,12 +108,18 @@ export default async function SchluesselEinschickenPage() {
     ? page.faq
     : fragen({ versichert: formatCents(einstellungen.portoVersichertCents), haftung: einstellungen.haftungVersichertEuro });
 
+  // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
+  const kurztext =
+    page?.subline
+    ?? 'Schlüsseldienst online, ohne Anfahrt. Sie melden die Einsendung an und schicken den Schlüssel mit Begleitschein. Original und Kopien kommen zu Ihnen zurück.';
+
   return (
     <>
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
           name: page?.headline ?? 'Schlüssel einschicken',
+          service: { name: page?.headline ?? 'Schlüssel einschicken', description: kurztext },
           description: page?.seo.description,
           crumbs: CRUMBS,
           faq,
@@ -124,10 +130,7 @@ export default async function SchluesselEinschickenPage() {
         rubrik={rubrik}
         eyebrow="Schlüssel nach Vorlage"
         title={page?.headline ?? 'Schlüssel einschicken'}
-        lead={
-          page?.subline
-          ?? 'Schlüsseldienst online, ohne Anfahrt. Sie melden die Einsendung an und schicken den Schlüssel mit Begleitschein. Original und Kopien kommen zu Ihnen zurück.'
-        }
+        lead={kurztext}
         crumbs={CRUMBS}
         bereich="schluessel-nach-vorlage"
         actions={

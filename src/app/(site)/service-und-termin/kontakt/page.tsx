@@ -19,6 +19,7 @@ import { GlyphTelefon } from '@/components/visual/glyphen/telefon';
 
 import { KontaktFormular } from './kontakt-formular';
 import { KONTAKT_TITEL, kontaktBeschreibung } from './suchtexte';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 export async function generateMetadata(): Promise<Metadata> {
   // Erreichbarkeit aus denselben Einstellungen wie der Abschnitt „Erreichbarkeit“ (FA-23, R1, R9).
@@ -41,18 +42,22 @@ export default async function KontaktPage() {
   const telefonHref = telefonLink(company.phone);
   const werkstatt = standort(company);
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/service-und-termin', label: 'Service und Termin' },
+    { href: '/service-und-termin/kontakt', label: 'Kontakt' },
+  ];
+
   return (
     <>
       {/* Kopf: Fach-Icon als Anker und Ziel des Seitenwechsels (B-13) */}
+      <SeitenDaten pfad="/service-und-termin/kontakt" name="So erreichen Sie uns" crumbs={crumbs} />
       <PageHeader
         bereich="service-und-termin"
         eyebrow="Kontakt"
         title="So erreichen Sie uns"
         lead="Hier finden Sie Anschrift, Telefon und E-Mail. Für einen Auftrag nutzen Sie am besten den passenden Ablauf, dort fragen wir gleich alles Nötige ab."
-        crumbs={[
-          { href: '/service-und-termin', label: 'Service und Termin' },
-          { href: '/service-und-termin/kontakt', label: 'Kontakt' },
-        ]}
+        crumbs={crumbs}
         actions={<ButtonLink href="/service-und-termin/anfrage">Anfrage stellen</ButtonLink>}
       />
 

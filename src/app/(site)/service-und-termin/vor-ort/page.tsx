@@ -13,6 +13,7 @@ import { TUER_SCHUTZ_AUSSCHNITT } from '@/components/visual/generators/tuer-schu
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
 import { EinsatzFormular } from './einsatz-formular';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 export const metadata: Metadata = {
   title: 'Service vor Ort nach Termin',
@@ -89,19 +90,23 @@ export default async function VorOrtPage() {
   // Wie /standorte: Gebiete mit Platzhaltern versprächen Leistungen, die nicht belegt sind (Erg. Leitfaden §5).
   const cities = alleGebiete.filter(stadtIndexierbar);
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/service-und-termin', label: 'Service und Termin' },
+    { href: '/service-und-termin/vor-ort', label: 'Service vor Ort nach Termin' },
+  ];
+
   return (
     <>
       {/* Kopf: Fach-Icon als Anker und Ziel des Seitenwechsels (B-13) */}
+      <SeitenDaten pfad="/service-und-termin/vor-ort" name="Arbeiten vor Ort und in unserer Werkstatt" crumbs={crumbs} />
       <PageHeader
         rubrik={rubrik}
         bereich="service-und-termin"
         eyebrow="Vor Ort"
         title="Arbeiten vor Ort und in unserer Werkstatt"
         lead="Nicht jede Arbeit geht per Versand. Hier lesen Sie, was vor Ort passiert und was Sie dafür vorbereiten sollten."
-        crumbs={[
-          { href: '/service-und-termin', label: 'Service und Termin' },
-          { href: '/service-und-termin/vor-ort', label: 'Service vor Ort nach Termin' },
-        ]}
+        crumbs={crumbs}
         actions={<ButtonLink href="#einsatz">Einsatz anfragen</ButtonLink>}
       />
 

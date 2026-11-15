@@ -4,7 +4,8 @@ import { PageHeader } from '@/components/layout/page-header';
 import { getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 
-import { FahrzeugAnfrageInhalt, robotsNachStand } from '@/components/fahrzeug-anfrage/seiten';
+import { FahrzeugAnfrageInhalt, RUBRIK_PAUSIERT_LEAD, robotsNachStand, rubrikLive } from '@/components/fahrzeug-anfrage/seiten';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'motorradschluessel/anfrage';
 
@@ -26,23 +27,30 @@ export async function generateMetadata(): Promise<Metadata> {
  * mit der Klasse „motorrad“, Katalogsuche der Krafträder und Pflichtfrage Transponder.
  */
 export default async function MotorradAnfragePage() {
-  const page = await getPageContent(ROUTE);
+  const [page, live] = await Promise.all([getPageContent(ROUTE), rubrikLive('motorrad')]);
+
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/motorradschluessel', label: 'Motorradschlüssel' },
+    { href: `/${ROUTE}`, label: 'Anfrage' },
+  ];
 
   return (
     <>
+      <SeitenDaten pfad={`/${ROUTE}`} name={page?.headline ?? 'Motorradschlüssel anfragen'} crumbs={crumbs} />
       <PageHeader
         bereich="autoschluessel"
         art="arbeit"
         eyebrow={PROCESS_LABELS['gefuehrte-anfrage'].label}
         title={page?.headline ?? 'Motorradschlüssel anfragen'}
         lead={
-          page?.subline
-          ?? 'Sechs Schritte: Motorrad, Schlüssel, Unterlagen, Beschreibung, Kontakt und Absenden. Mit der Anfrage entsteht noch kein Vertrag.'
+          // Rubrik nicht live (FA-KERN-05): kein Versprechen von Schritten, die es gerade nicht gibt.
+          !live
+            ? RUBRIK_PAUSIERT_LEAD
+            : (page?.subline
+              ?? 'Sechs Schritte: Motorrad, Schlüssel, Unterlagen, Beschreibung, Kontakt und Absenden. Mit der Anfrage entsteht noch kein Vertrag.')
         }
-        crumbs={[
-          { href: '/motorradschluessel', label: 'Motorradschlüssel' },
-          { href: `/${ROUTE}`, label: 'Anfrage' },
-        ]}
+        crumbs={crumbs}
       />
 
       <div className="shell py-8 md:py-12">

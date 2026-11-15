@@ -9,6 +9,7 @@ import { Section } from '@/components/layout/section';
 import { AreaScope } from '@/components/visual/area-scope';
 import { BereichIcon } from '@/components/visual/bereich-icon';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 export const metadata: Metadata = {
   title: 'Ratgeber',
@@ -27,13 +28,17 @@ export default async function RatgeberPage() {
     guides: guides.filter((g) => g.topic === area.key),
   })).filter((group) => group.guides.length > 0);
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [{ href: '/ratgeber', label: 'Ratgeber' }];
+
   return (
     <>
+      <SeitenDaten pfad="/ratgeber" name="Antworten auf die häufigsten Fragen" crumbs={crumbs} />
       <PageHeader
         eyebrow="Ratgeber"
         title="Antworten auf die häufigsten Fragen"
         lead="Jeder Beitrag beantwortet eine konkrete Frage und sagt Ihnen, was Sie danach tun können."
-        crumbs={[{ href: '/ratgeber', label: 'Ratgeber' }]}
+        crumbs={crumbs}
       />
 
       {/* Register: je Bereich eine Zeile – links Nummer, Fach-Icon und Bereich, rechts seine Beiträge.

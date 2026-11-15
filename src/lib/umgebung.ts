@@ -85,13 +85,54 @@ export function speichernMoeglich(): boolean {
 /* ---------- Suchmaschinen ------------------------------------------------ */
 
 /**
- * Dürfen Suchmaschinen die Seiten aufnehmen? Nur in der Produktion — Vorschau-
- * Deployments und lokale Entwicklung stehen auf noindex (Erg. Leitfaden §4).
- * Das Schaufenster zählt wie eine Vorschau: Eine Seite, die keine Bestellung
- * annimmt, gehört nicht in den Index.
+ * Die echte Produktionsdomain. Nur unter ihr (mit oder ohne `www.`) darf eine
+ * Seite in den Index; jede andere Adresse desselben Builds (etwa die
+ * `*.vercel.app`-Adressen) liefert `X-Robots-Tag: noindex` (FA-25-20).
+ */
+export const PRODUKTIONSDOMAIN = 'schluesselmacher24.de';
+
+/**
+ * Dürfen Suchmaschinen die Seiten aufnehmen? Die eine Stelle, an der das
+ * entschieden wird (FA-25-20, FA-SEO-01C): Root-Layout (Meta-Angabe), robots.txt
+ * (Sitemap-Hinweis) und `suchmaschinenKopfzeilen()` (Kopfzeile) fragen hier.
+ *
+ * - Nur in der Produktion — Vorschau-Deployments und lokale Entwicklung stehen
+ *   auf noindex (Erg. Leitfaden §4).
+ * - Das Schaufenster zählt wie eine Vorschau: Eine Seite, die keine Bestellung
+ *   annimmt, gehört nicht in den Index (A-042).
+ * - Außerhalb von Vercel genügt `NODE_ENV=production` nicht: Ein Produktions-
+ *   build auf einem eigenen Server (Prüfserver, Staging) bleibt auf noindex,
+ *   bis `SM24_INDEXIERUNG=an` ausdrücklich gesetzt ist.
+ * - `SM24_INDEXIERUNG=aus` sperrt überall, auch auf Vercel (Notbremse).
  */
 export function indexierungErlaubt(): boolean {
-  return istProduktion() && !istSchaufenster();
+  const schalter = process.env.SM24_INDEXIERUNG?.trim().toLowerCase();
+  if (schalter === 'aus') return false;
+  if (!istProduktion() || istSchaufenster()) return false;
+  if (process.env.VERCEL) return true;
+  return schalter === 'an';
+}
+
+/** Eine Kopfzeilen-Regel im Format von `headers()` in `next.config.ts`. */
+export interface KopfzeilenRegel {
+  source: string;
+  missing?: Array<{ type: 'host'; value: string }>;
+  headers: Array<{ key: string; value: string }>;
+}
+
+/** Hostname der Produktion als Muster für `missing`/`has` (Next.js verankert es mit ^…$). */
+export const PRODUKTIONS_HOST_MUSTER = `(?:www\\.)?${PRODUKTIONSDOMAIN.replace(/\./g, '\\.')}`;
+
+/**
+ * `X-Robots-Tag: noindex` als Kopfzeile für `next.config.ts` (`headers()`).
+ * Ist die Indexierung nicht erlaubt, gilt sie für jede Adresse; sonst für jede
+ * Adresse außer der Produktionsdomain. robots.txt sperrt dabei nichts, damit
+ * Suchmaschinen das noindex überhaupt lesen (FA-RECHERCHE-05, Abschnitt 4).
+ */
+export function suchmaschinenKopfzeilen(): KopfzeilenRegel[] {
+  const headers = [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }];
+  if (!indexierungErlaubt()) return [{ source: '/:path*', headers }];
+  return [{ source: '/:path*', missing: [{ type: 'host', value: PRODUKTIONS_HOST_MUSTER }], headers }];
 }
 
 /** Bestätigung für die Google Search Console (`GOOGLE_SITE_VERIFICATION`), falls gesetzt. */

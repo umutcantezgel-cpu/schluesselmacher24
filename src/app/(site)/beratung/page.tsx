@@ -8,6 +8,7 @@ import { ButtonLink } from '@/components/ui/button';
 import { getRubrik } from '@/lib/data';
 
 import { BeratungFormular } from './beratung-formular';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 export const metadata: Metadata = {
   title: 'Allgemeine Anfrage und Beratung',
@@ -42,18 +43,22 @@ const THEMEN_MIT_EIGENEM_WEG = [
 
 /** Rubrikseite „Beratung“ (G-34): Wegweiser zu den Themen und Rückruf-Anfrage in drei Schritten. */
 export default async function BeratungPage() {
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/service-und-termin', label: 'Service und Termin' },
+    { href: '/beratung', label: 'Allgemeine Anfrage' },
+  ];
+
   return (
     <>
+      <SeitenDaten pfad="/beratung" name="Allgemeine Anfrage" crumbs={crumbs} />
       <PageHeader
         rubrik={await getRubrik('beratung')}
         bereich="service-und-termin"
         eyebrow="Beratung mit Rückruf"
         title="Allgemeine Anfrage"
         lead="Passt Ihr Anliegen zu keinem der anderen Wege, sind Sie hier richtig. Schildern Sie es kurz, wir rufen Sie zurück."
-        crumbs={[
-          { href: '/service-und-termin', label: 'Service und Termin' },
-          { href: '/beratung', label: 'Allgemeine Anfrage' },
-        ]}
+        crumbs={crumbs}
         actions={<ButtonLink href="#rueckruf">Rückruf anfragen</ButtonLink>}
       />
 

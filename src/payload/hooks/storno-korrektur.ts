@@ -13,7 +13,8 @@ import { SYSTEM_AENDERUNG, benutzerName } from './vorgang-benachrichtigen';
      „ganz“, „teilweise“ oder „keine“ Erstattung (bei „keine“ mit Grund). Bei
      „ganz“ und „teilweise“ muss die Erstattung im selben Speichern in der
      Gruppe Erstattung stehen (oder schon erfasst sein). Die Entscheidung
-     steht mit Zeit und Bearbeiter am Vorgang und in den Notizen.
+     steht mit Zeit und Bearbeiter am Vorgang und in den Notizen. Danach
+     lassen sich Entscheidung und Grund nicht mehr ändern.
    - Korrekturpositionen bei Bestellungen: Positionen und Summen bleiben
      festgeschrieben (Beleg). Eine Korrektur ist ein eigener Eintrag mit
      Betrag (plus oder minus), Grund, Datum und Bearbeiter. Einträge lassen
@@ -32,6 +33,24 @@ export const KORREKTUR_MELDUNG = {
   grund: 'Bitte bei jeder Korrektur einen Grund eintragen.',
   negativ: 'Nach der Korrektur wäre die Summe kleiner als 0. Bitte den Betrag prüfen.',
 } as const;
+
+export const STORNO_FEST_MELDUNG =
+  'Die Entscheidung zur Erstattung ist festgeschrieben und lässt sich nicht ändern. '
+  + 'Eine spätere Erstattung tragen Sie in der Gruppe „Erstattung“ ein, eine Anmerkung als Notiz.';
+
+/**
+ * Nach dem Festschreiben (Entschieden am gesetzt) bleiben Entscheidung und Grund unverändert, damit das Feld
+ * am Vorgang immer zu Zeit, Bearbeiter und Notiz passt. Eine spätere Erstattung läuft über die Gruppe Erstattung.
+ */
+function stornoGesperrt(data: Partial<Vorgaenge>, originalDoc: Vorgaenge): void {
+  const alt = originalDoc.storno;
+  if (!alt?.entschiedenAm || !data.storno) return;
+  const neu = { ...alt, ...data.storno };
+  const gleich = (neu.entscheidung ?? null) === (alt.entscheidung ?? null) && (neu.grund ?? '').trim() === (alt.grund ?? '').trim();
+  if (!gleich) throw new APIError(STORNO_FEST_MELDUNG, 400);
+  // Zeit und Bearbeiter setzt nur der Server.
+  data.storno = { ...neu, entschiedenAm: alt.entschiedenAm, entschiedenVon: alt.entschiedenVon };
+}
 
 type Korrektur = NonNullable<Vorgaenge['korrekturen']>[number];
 /** Nur der Betrag; im Formular kann er noch fehlen. */
@@ -122,6 +141,7 @@ export const stornoKorrekturVorAenderung: CollectionBeforeChangeHook<Vorgaenge> 
     data.notizen = [...(data.notizen ?? originalDoc.notizen ?? []), { am: jetzt, von: 'team', text }];
   };
   korrekturenPruefen(data, originalDoc, jetzt, bearbeiter, notiz);
+  stornoGesperrt(data, originalDoc);
   stornoFestschreiben(data, originalDoc, jetzt, bearbeiter, notiz);
   return data;
 };

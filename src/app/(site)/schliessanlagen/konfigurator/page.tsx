@@ -7,6 +7,7 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { ProjektKonfigurator, type DoorTypeOption } from './projekt-konfigurator';
+import { SeitenDaten } from '@/components/seo/seiten-daten';
 
 const ROUTE = 'schliessanlagen/konfigurator';
 
@@ -41,8 +42,15 @@ export default async function SchliessanlagenKonfiguratorPage() {
 
   const process = PROCESS_LABELS.projektkonfigurator;
 
+  // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
+  const crumbs = [
+    { href: '/schliessanlagen', label: 'Schließanlagen' },
+    { href: '/schliessanlagen/konfigurator', label: 'Projektkonfigurator' },
+  ];
+
   return (
     <>
+      <SeitenDaten pfad="/schliessanlagen/konfigurator" name={page?.headline ?? 'Projektkonfigurator Schließanlage'} crumbs={crumbs} />
       <PageHeader
         eyebrow={process.label}
         bereich="schliessanlagen"
@@ -53,10 +61,7 @@ export default async function SchliessanlagenKonfiguratorPage() {
           ?? 'Zehn Blöcke, mobil bedienbar. Sie können jederzeit unterbrechen — Ihr Zwischenstand '
             + 'bleibt in diesem Browser erhalten.'
         }
-        crumbs={[
-          { href: '/schliessanlagen', label: 'Schließanlagen' },
-          { href: '/schliessanlagen/konfigurator', label: 'Projektkonfigurator' },
-        ]}
+        crumbs={crumbs}
       />
 
       <Section tight>

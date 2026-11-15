@@ -34,12 +34,18 @@ export default async function MotorradschluesselPage() {
   // Rubrik nicht live (FA-KERN-05): Hinweis mit Telefon statt der Knöpfe zur Anfrage.
   const live = rubrik?.status === 'live';
 
+  // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
+  const kurztext =
+    page?.subline
+    ?? 'Anfrage mit Fahrzeugschein und drei Fotos Ihres Schlüssels. Wir prüfen Ihre Angaben und melden uns mit Preis und Termin.';
+
   return (
     <>
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
           name: page?.headline ?? 'Motorradschlüssel nachmachen lassen',
+          service: { name: page?.headline ?? 'Motorradschlüssel nachmachen lassen', description: kurztext },
           description: page?.seo.description,
           crumbs: CRUMBS,
         })}
@@ -49,10 +55,7 @@ export default async function MotorradschluesselPage() {
         rubrik={rubrik}
         eyebrow="Autoschlüssel"
         title={page?.headline ?? 'Motorradschlüssel nachmachen lassen'}
-        lead={
-          page?.subline
-          ?? 'Anfrage mit Fahrzeugschein und drei Fotos Ihres Schlüssels. Wir prüfen Ihre Angaben und melden uns mit Preis und Termin.'
-        }
+        lead={kurztext}
         crumbs={CRUMBS}
         bereich="autoschluessel"
         actions={

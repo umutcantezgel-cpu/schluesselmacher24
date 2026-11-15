@@ -133,12 +133,17 @@ export default async function CylinderOverviewPage() {
     { label: 'Im Grundpreis enthalten', value: `${catalog.includedKeys} Schlüssel` },
   ];
 
+  // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
+  const kurztext =
+    page?.subline ?? 'Ein Schlüssel für mehrere Türen. Sie stellen die Zylinder selbst zusammen und bestellen direkt.';
+
   return (
     <>
       <JsonLd
         data={pageGraphSchema({
           path: `/${ROUTE}`,
           name: page?.headline ?? 'Gleichschließende Zylinder (Sperrschließung)',
+          service: { name: page?.headline ?? 'Gleichschließende Zylinder (Sperrschließung)', description: kurztext },
           description: page?.seo.description,
           crumbs: [{ href: `/${ROUTE}`, label: 'Gleichschließende Zylinder (Sperrschließung)' }],
           faq: faq,
@@ -149,7 +154,7 @@ export default async function CylinderOverviewPage() {
         rubrik={rubrik}
         eyebrow={PROCESS_LABELS.direktkauf.label}
         title={page?.headline ?? 'Gleichschließende Zylinder (Sperrschließung)'}
-        lead={page?.subline ?? 'Ein Schlüssel für mehrere Türen. Sie stellen die Zylinder selbst zusammen und bestellen direkt.'}
+        lead={kurztext}
         crumbs={[{ href: `/${ROUTE}`, label: 'Gleichschließende Zylinder (Sperrschließung)' }]}
         bereich={ROUTE}
         /* Blickfang im Kopf (E4-L-23): die bemaßte Zeichnung des Profilzylinders, auf Papier ohne Rahmen. */

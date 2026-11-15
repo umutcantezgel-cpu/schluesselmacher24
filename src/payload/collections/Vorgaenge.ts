@@ -330,7 +330,7 @@ export const Vorgaenge: CollectionConfig = {
         },
         description:
           'Vor dem Stornieren einer bezahlten Zahlung wählen. Bei „ganz“ oder „teilweise“ die Erstattung im Reiter „Zahlung“ '
-          + 'eintragen, bei „keine“ den Grund.',
+          + 'eintragen, bei „keine“ den Grund. Nach dem Storno sind Entscheidung und Grund fest.',
       },
       fields: [
         { name: 'entscheidung', type: 'select', label: 'Erstattung beim Storno', options: [...STORNO_ENTSCHEIDUNGEN] },

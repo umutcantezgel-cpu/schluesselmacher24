@@ -208,12 +208,18 @@ export default async function SchluesselNachVorlagePage() {
     { label: 'Einsendung', wert: 'Nur wenn nötig' },
   ];
 
+  // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
+  const kurztext =
+    page?.subline
+    ?? 'Sie haben den Schlüssel. Anhand Ihrer Fotos bestimmen wir ihn und prüfen, ob wir ihn nachfertigen können.';
+
   return (
     <>
       <JsonLd
         data={pageGraphSchema({
           path: '/schluessel-nach-vorlage',
           name: page?.headline ?? 'Schlüssel nach Vorlage',
+          service: { name: page?.headline ?? 'Schlüssel nach Vorlage', description: kurztext },
           description: page?.seo.description,
           crumbs: [{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' }],
           faq: faq,
@@ -225,10 +231,7 @@ export default async function SchluesselNachVorlagePage() {
         rubrik={rubrik}
         eyebrow={process.label}
         title={page?.headline ?? 'Schlüssel nach Vorlage'}
-        lead={
-          page?.subline
-          ?? 'Sie haben den Schlüssel. Anhand Ihrer Fotos bestimmen wir ihn und prüfen, ob wir ihn nachfertigen können.'
-        }
+        lead={kurztext}
         crumbs={[{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' }]}
         bereich="schluessel-nach-vorlage"
         visual={
