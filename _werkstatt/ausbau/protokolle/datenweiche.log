@@ -1402,3 +1402,136 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-15T11:24:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
 2026-11-15T11:24:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
 2026-11-15T11:25:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:33:04+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:33:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:33:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:34:13+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:35:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:36:02+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:36:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:37:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/rubriken.test.ts src/lib/navigation.test.ts src/lib/wege src/lib/mail src/lib/kundenstatus.test.ts
+2026-11-15T11:38:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:38:54+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:39:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:40:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:46:58+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:47:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:48:40+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/schliessanlagen/konfigurator/zielgruppen.test.ts src/app/(site)/elektronische-zutrittsloesungen/konfigurator/erweiterung.test.ts src/app/(site)/sicherheitstechnik/rechtshinweis-ton.test.ts
+2026-11-15T11:48:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:48:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/partner src/components/partner src/app/sitemap.test.ts src/app/(site)/canonical.test.ts
+2026-11-15T11:49:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/partner
+2026-11-15T11:49:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:49:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:49:27+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:49:53+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:50:07+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/onpage.mjs
+2026-11-15T11:50:08+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:50:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/data/beispiele-oeffentlich.test.ts src/lib/beispiele.test.ts src/lib/wege/code-anfrage.test.ts src/lib/livegang-pruefung.test.ts --reporter=verbose
+2026-11-15T11:50:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:50:40+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:50:47+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --test _werkstatt/ausbau/werkzeuge/onpage.test.mjs
+2026-11-15T11:50:49+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/onpage.mjs --nur /autoschluessel --grenze 99
+2026-11-15T11:50:50+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/onpage.mjs --aus favicon --grenze 200
+2026-11-15T11:50:51+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/onpage.mjs
+2026-11-15T11:51:06+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:51:33+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run -c vitest.db.config.ts
+2026-11-15T11:52:05+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:52:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:52:22+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/sicherheitstechnik/rechtshinweis-ton.test.ts src/app/(site)/schliessanlagen/konfigurator/zielgruppen.test.ts src/app/(site)/elektronische-zutrittsloesungen/konfigurator/erweiterung.test.ts src/lib/visual/motiv.test.ts
+2026-11-15T11:52:26+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --test werkzeuge/onpage.test.mjs
+2026-11-15T11:52:30+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --test _werkstatt/ausbau/werkzeuge/onpage.test.mjs
+2026-11-15T11:52:36+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:52:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:53:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/partner/gewinnung.test.ts src/components/partner/partner.test.tsx src/app/sitemap.test.ts
+2026-11-15T11:53:44+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:53:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:54:02+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:54:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:54:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:54:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-15T11:55:49+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-15T11:56:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:56:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-15T11:56:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:57:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run pruefen:livegang
+2026-11-15T11:57:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run pruefen:livegang
+2026-11-15T11:57:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:57:39+00:00	json	als=root	hosts=localhost	env-dateien= keine	node --test _werkstatt/ausbau/werkzeuge/onpage.test.mjs
+2026-11-15T11:57:43+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/onpage.mjs
+2026-11-15T11:58:30+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/onpage.mjs --nur /kasse
+2026-11-15T11:58:31+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/onpage.mjs --grenze 200
+2026-11-15T11:58:35+00:00	json	als=root	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/werkzeuge/onpage.mjs
+2026-11-15T11:58:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:59:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/partner src/components/partner src/app/sitemap.test.ts
+2026-11-15T11:59:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:59:21+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:59:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:59:51+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:59:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T12:00:30+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T12:00:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T12:02:53+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T12:03:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T12:04:16+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T12:05:35+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run generate:types
+2026-11-15T12:05:40+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/wege/code-anfrage.test.ts src/lib/actions/security.test.ts src/lib/data/beispiele-oeffentlich.test.ts
+2026-11-15T12:05:46+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T12:06:03+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T12:06:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T12:06:56+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run -c vitest.db.config.ts
+2026-11-15T12:07:07+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/visual
+2026-11-15T12:07:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/bilder/arbeit/foto.cjs
+2026-11-15T12:07:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/bilder/arbeit/foto.cjs
+2026-11-15T12:07:39+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/bilder/arbeit/foto.cjs
+2026-11-15T12:07:45+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/bilder/arbeit/foto.cjs
+2026-11-15T12:08:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/bilder/arbeit/foto.cjs
+2026-11-15T12:08:01+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T12:08:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T12:08:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-15T12:09:02+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/visual src/components/hub/hub.test.tsx
+2026-11-15T12:09:51+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T12:10:20+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T12:10:39+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T12:12:29+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T12:12:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T12:13:10+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T12:13:34+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx --no-install tsx _werkstatt/ausbau/bilder/arbeit/sichtpruefung.tsx
+2026-11-15T12:13:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node /tmp/claude-0/-home-user-schluesselmacher24/50ccec0a-b61b-52e7-997c-918359eccaec/scratchpad/sicht.cjs
+2026-11-15T12:13:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/bilder/arbeit/sicht.cjs
+2026-11-15T12:13:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/bilder/arbeit/foto.cjs
+2026-11-15T12:13:42+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run -c vitest.db.config.ts
+2026-11-15T12:13:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/bilder/arbeit/sicht.cjs
+2026-11-15T12:13:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	node _werkstatt/ausbau/bilder/arbeit/foto.cjs
+2026-11-15T12:13:52+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/visual
+2026-11-15T12:13:59+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T12:14:18+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T12:14:42+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-15T12:15:12+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-15T12:15:38+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsx -e 
+import seo from "./content/seo.json";
+import svc from "./content/car-key-services.json";
+import { pages } from "./src/lib/data/defaults/content";
+import { carKeyServices } from "./src/lib/data/defaults/pricing";
+const P=pages();
+for (const r of ["nachmachen","programmieren","kopieren","funkschluessel","smart-key","schluesselbart-fraesen","fahrzeugoeffnung"].map(x=>"autoschluessel/"+x)) {
+  const a=(seo as any[]).find(x=>x.route===r), b=P.find(x=>x.route===r)!;
+  for (const f of ["headline","subline","intro"]) if (a[f]!==(b as any)[f]) console.log("ABWEICHUNG",r,f);
+}
+for (const s of carKeyServices()) { const j=(svc as any[]).find(x=>x.id===s.id); if (j.description!==s.description) console.log("ABW svc", s.id); }
+console.log("fertig");
+
+2026-11-15T12:16:08+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/app/(site)/schluessel-nach-code src/components/schliessung src/lib/navigation.test.ts src/app/llms.txt
+2026-11-15T12:16:53+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx tsx -e 
+import seo from "./content/seo.json";
+import { pages } from "./src/lib/data/defaults/content";
+const P=pages(); let n=0;
+for (const r of ["nachmachen","programmieren","kopieren","funkschluessel","smart-key","schluesselbart-fraesen","fahrzeugoeffnung"].map(x=>"autoschluessel/"+x)) {
+  const a=(seo as any[]).find(x=>x.route===r), b=P.find(x=>x.route===r)!;
+  for (const f of ["headline","subline","intro"]) if (a[f]!==(b as any)[f]) {n++;console.log("ABWEICHUNG",r,f);}
+}
+console.log("Abweichungen:",n);
+2026-11-15T12:16:57+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T12:17:03+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T12:17:24+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T12:17:28+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T12:17:47+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
