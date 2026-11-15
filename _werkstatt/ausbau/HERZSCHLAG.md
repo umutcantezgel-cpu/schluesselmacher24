@@ -1,7 +1,7 @@
 # HERZSCHLAG
-Zeit: 2026-11-15 17:05 MEZ
+Zeit: 2026-11-15 18:48 MEZ
 Sitzung: 8e76b2e3
 Zustand: AKTIV (Fortsetzung auf Anweisung des Nutzers vom 15.11.2026 mit der Finalen Arbeitsanweisung des Inhabers, A-043)
-Etappe und Welle: FA Priorität 2 und 5; committet seit dem letzten Herzschlag: KERN-06 (Mailadressen), INHALT-03A und -03B (Texte); Pause 13:40 bis 17:00 wegen Nutzungslimit, vier Pakete mitten in der Umsetzung unterbrochen (KERN-01 Fahrzeugdatenbank, INHALT-03C, -03D, -03E), Zwischenstand gesichert, Fortsetzung läuft; danach KERN-02 (Pflichtuploads), SOFORT-05 (Hub mit 14 Zugängen)
-Letzter grüner Commit: 97087fe voll geprüft (Typprüfung, Lint, Unit 2365, DB 99, Build 166/166); 0927630 und fbcc918 mit Typprüfung, Lint und Unit ihrer Dateien grün, Build und DB folgen mit der Welle
+Etappe und Welle: FA Priorität 2; committet seit dem letzten Herzschlag: INHALT-03C bis -03E, KERN-01 (Fahrzeugdatenbank), SEO-01A (Titel und Beschreibungen), KERN-02 (Pflichtuploads Teil 1); KERN-02B (gemeinsame Anfrage für alle Fahrzeugklassen) läuft allein; danach SOFORT-05 (Hub mit 14 Zugängen), KERN-03 (Auftragsweg und Zahlung)
+Letzter grüner Commit: ea1cee2 voll geprüft (Typprüfung, Lint, Unit 2664, DB 101, Build 168/168; Sichtprobe Unterlagenschritte auf dem Telefon; Onpage 130 Seiten, keine unter 95)
 ARBEITSBRANCH: claude/new-session-li9jsf
