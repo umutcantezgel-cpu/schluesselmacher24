@@ -1,0 +1,49 @@
+# FA-KERN-04 · Vermittlung und Partnerauszahlung im Admin: Stände bis „ausgezahlt“, Kundenbestätigung, Plattformanteil und Partnerbetrag, Storno und Rückzahlung, Zahlungsdienst vorbereitet
+
+Kopf: Etappe FA Priorität 2 und 4 · Rolle Baumeister · Modell Opus · Stufe 3 (Abrechnungslogik, Datenmodell) · Kostenklasse L · ändert das Datenschema und nutzt `sicher.sh --pg` (in dieser Zeit kein anderes Paket) · Anforderungen FA-05-17 bis FA-05-19, FA-22-20 bis FA-22-24, FA-22-27, FA-07-13 bis -16 (soweit Zuordnung), FA-22-39 (Pausieren wirkt) · Recherche: `erhebung/FA-RECHERCHE-04.md` · Entscheidung A-049 · Voraussetzung: FA-KERN-03 ist abgenommen (Auftragsweg, Zahlungsumfang je Weg, Verweis Vorgang zu Partnerbetrieb, Restbetrag). Lies zuerst `berichte/FA-KERN-03.md`.
+
+## Aufgabe in einem Satz
+Führe einen vermittelten Partnerauftrag im Admin mit eindeutigen Ständen von „bezahlt“ bis „ausgezahlt“, mit Plattformanteil und Partnerbetrag, einer Bestätigung durch den Kunden und einem klaren Ablauf für Storno und Rückzahlung, und bereite den Zahlungsdienst mit Marktplatzfunktion abgeschaltet vor.
+
+## Vorgabe des Inhabers (wörtlich, Arbeitsanweisung vom 11.11.2026, Abschnitt 05 und 22)
+- „Bei Partneraufträgen wird der Gesamtbetrag zentral über Schluesselmacher24 vereinnahmt. Erst nach erfolgter Zahlung darf der Auftrag verbindlich an den Partner freigegeben werden.“
+- „Nach Durchführung des Auftrags muss im Adminbereich eine saubere Partnerauszahlung möglich sein. Der Auftrag erhält dafür einen eindeutigen Status, zum Beispiel bezahlt, an Partner vermittelt, Termin bestätigt, ausgeführt, Kunde bestätigt und zur Auszahlung freigegeben.“
+- „Die Auszahlung an den Partner erfolgt erst nach der vereinbarten Bestätigung des erledigten Auftrags. Die Plattform muss Provision beziehungsweise Vermittlungsanteil, Partnerbetrag, Zahlungsstatus und Auszahlungsstatus nachvollziehbar dokumentieren.“
+- „Zahlungsabwicklung, Rechnungsstellung, Stornierung, Rückzahlung und Partnerauszahlung müssen technisch sauber umgesetzt und rechtlich sowie steuerlich korrekt abgebildet werden. Dafür ist eine geeignete Zahlungs beziehungsweise Marketplace Lösung zu verwenden und nicht nur eine manuelle Notlösung.“
+- Abschnitt 22: Partnerbetrag, Plattformanteil und Auszahlungsstatus sehen · Partnerauszahlung nach erfolgreicher Auftragsbestätigung freigeben und dokumentieren · Rückzahlungen und Stornierungen mit eindeutigem Zahlungsstatus verwalten · Partner pausieren oder sperren.
+
+## Lage
+- `src/lib/partner/vermittlung.ts` (Übergänge, `darfVermitteln`) und `abrechnung.ts` (Modell A aktiv, Modell B gebaut und per `PARTNERMODELL_B` geschaltet) wurden bisher nur in Tests benutzt. Die Gruppe `vermittlung` am Vorgang trägt `provisionCent` von Hand. Seit FA-KERN-03 verweist der Vorgang auf den Partnerbetrieb und kennt Auftragsweg, Zahlungsumfang, Gesamtpreis und Restbetrag.
+- Zahlung: Stripe Checkout mit signiertem Webhook; `zahlung.status` (offen, bezahlt, fehlgeschlagen, erstattet).
+- Rechtliche und steuerliche Klärung und das Konto beim Zahlungsdienst sind Sache von Menschen (MA-36). Bis dahin bewegt der Code kein Geld an Partner.
+
+## Entscheidung (A-049), so bauen
+1. Stände der Vermittlung in der Reihenfolge des Inhabers: `geprueft` → `partner-angefragt` (Anzeige „an Partner vermittelt“) → `angenommen` → neu `termin-bestaetigt` → `erledigt` (Anzeige „ausgeführt“) → neu `kunde-bestaetigt` → neu `auszahlung-freigegeben` → neu `ausgezahlt`. Der bisherige Stand `provision-abgerechnet` bleibt für Modell A gültig. Die erlaubten Wechsel stehen in `vermittlung.ts` und werden von einem Hook am Vorgang auf dem Server erzwungen: „an Partner vermittelt“ nur bei Zahlungsstand bezahlt und Umfang gesamt; nur an freigeschaltete, nicht pausierte Partner mit passender Auftragsart (`darfVermitteln`, Pausieren wirkt damit wirklich); „zur Auszahlung freigegeben“ nur nach „Kunde bestätigt“ oder nach einer dokumentierten Bestätigung durch das Team mit Grund; „ausgezahlt“ nur nach Freigabe.
+2. Beträge: Gesamtbetrag, Plattformanteil, Partnerbetrag. Der Plattformanteil wird aus der Provision des Partnerbetriebs vorgeschlagen (`abrechnen()`), bleibt von Hand änderbar und wird mit dem Übergang auf „erledigt“ festgeschrieben. Provisionssätze stehen nur in der Datenbank, nie im Repository (G13). Ohne hinterlegte Provision keine Berechnung, sondern ein Hinweis.
+3. Auszahlung: Stand, freigegeben am und von, ausgezahlt am, Weg (Überweisung oder Zahlungsdienst), Beleg oder Referenz, Notiz. Jede Änderung schreibt einen Eintrag in den Verlauf des Vorgangs.
+4. Kundenbestätigung: Mit dem Stand „ausgeführt“ erhält der Kunde eine Mail mit einem persönlichen, signierten Einmal-Link „Auftrag wurde ausgeführt: bestätigen“ (Muster: Signaturprüfung der Kunden-Uploads oder der Terminstatus-Seite). Der Klick setzt „Kunde bestätigt“ mit Zeitstempel. Die Seite sagt in einem Satz, was die Bestätigung bedeutet, und nennt das Telefon für den Fall, dass etwas nicht stimmt. Mails gehen in Tests nur an Attrappen (G5).
+5. Zahlungsdienst mit Marktplatzfunktion, vorbereitet und abgeschaltet: `src/lib/zahlung/auszahlung.ts` mit einer Schnittstelle „Partnerbetrag auszahlen“ und zwei Umsetzungen: `manuell` (das Team überweist und vermerkt Datum und Beleg; das ist der aktive Weg) und `stripe-connect` (Überweisung an das verbundene Konto des Partners nach dem Muster „separate charges and transfers“, siehe Recherche 04; nur aktiv mit einem ausdrücklichen Schalter in den Umgebungsvariablen und einer Konto-Kennung am Partnerbetrieb, in Tests ausschließlich gegen eine Attrappe; kein echter Aufruf, G3 und G5). Im Admin steht, welcher Weg aktiv ist.
+6. Storno und Rückzahlung: Für bezahlte Vorgänge ein klarer Ablauf im Admin (ganz oder teilweise erstattet, Betrag, Datum, Grund; bei Partneraufträgen Sperre der Auszahlung), ohne dass der Code selbst Geld bewegt, solange der Schalter aus ist. Zahlungsstand um „teilweise erstattet“ ergänzen (additiv). Der Kunde sieht den Stand auf seiner Vorgangsseite in einem ruhigen Satz.
+7. Admin-Übersicht: In der Liste der Vorgänge Spalten und Filter für Stand der Vermittlung und Auszahlungsstand (Auftragsweg, Zahlungsstand und Rest offen stehen seit FA-KERN-03). Am Partnerbetrieb: Konto-Kennung für den Zahlungsdienst (freiwillig), Liste der Vorgänge dieses Partners mit offenen Auszahlungen.
+8. Betreiberanleitung `docs/betrieb/partnerauftrag-abrechnen.md`: Schritt für Schritt vom Zahlungseingang bis zur Auszahlung, Storno und Rückzahlung, in Alltagssprache.
+
+## Schreibrechte
+- src/payload/collections/Vorgaenge.ts (Gruppe Vermittlung und Auszahlung, Erstattung), Partnerbetriebe.ts (nur Konto-Kennung und Liste der Vorgänge), src/payload/hooks/** (Vermittlung, Auszahlung, Erstattung), src/payload/components/** (Anzeige am Vorgang), neue Migration (`sicher.sh --pg -- npx payload migrate:create vermittlung_auszahlung`), src/migrations/index.ts, src/payload-types.ts, src/lib/data/payload-mapping.ts (nur die neuen Felder), src/lib/types.ts
+- neu: src/lib/zahlung/auszahlung.ts, Seite und Aktion für die Kundenbestätigung, docs/betrieb/partnerauftrag-abrechnen.md; ändern: src/lib/partner/**, src/lib/zahlung/** (nur Erstattungsstand und Auszahlung), src/lib/mail/vorlagen/** (nur die neue Mail zur Bestätigung), src/lib/kundenstatus.ts (nur die neuen Stände), src/lib/pdf und druckansichten (nur die neuen Zeilen), src/app/(site)/bestellung/[id]/** (nur Anzeige der Erstattung), src/lib/umgebung.ts (nur der Schalter des Zahlungsdienstes), .env.example (Schalter, leer)
+- zugehörige Tests; _werkstatt/ausbau/berichte/FA-KERN-04.md
+Nicht anfassen: Preise und Preisregeln, Rechtstexte, Auftragsweg und Zahlungsumfang aus FA-KERN-03 (nur nutzen), Termin-Assistent, Navigation, Startseite.
+
+## Prüfen
+- `_werkstatt/ausbau/werkzeuge/sicher.sh --json -- npx vitest run`, `… -- npm run typecheck`, `… -- npm run lint`
+- `_werkstatt/ausbau/werkzeuge/sicher.sh --pg -- npx vitest run -c vitest.db.config.ts`
+- `_werkstatt/ausbau/werkzeuge/sicher.sh --json -- npm run build`
+- Tests, die nicht fehlen dürfen: „an Partner vermittelt“ ohne Zahlung des Gesamtbetrags abgelehnt; an pausierten oder gesperrten Partner abgelehnt; Auszahlung vor Kundenbestätigung abgelehnt; Freigabe durch das Team nur mit Grund; Kundenbestätigung mit gefälschtem oder schon benutztem Link abgelehnt; Rückzahlung sperrt die Auszahlung; Plattformanteil wird mit „ausgeführt“ festgeschrieben; ohne Schalter ruft nichts den Zahlungsdienst auf; jeder Wechsel steht im Verlauf.
+- Lies vor Änderungen an Next-Schnittstellen die Anleitungen in `node_modules/next/dist/docs` (G12). Kein Server, kein git.
+
+## Grenzen
+G3 und G5 (keine echten Zahlungen, Überweisungen oder Mails; Zahlungsdienste nur als Attrappe), G4, G6 (additive Migration, bestehende Werte bleiben gültig), G8, G9, G13 (keine Provisionssätze im Repository), R9, R10 (rechtliche Texte nur als Entwurf im Bericht). Texte kurz, verständlich, ohne Gedankenstriche. Prettier nicht auf Bestand anwenden.
+
+## Ausgabeformular
+GEÄNDERTE DATEIEN · WAS UND WARUM · PRÜFUNG UND ERGEBNIS (Zahlen) · BELEGE · OFFENE FRAGEN · FÜR MENSCHEN (Fragen an Inhaber, Anwalt, Steuerberatung; Schritte für das Konto beim Zahlungsdienst).
+Markiere Unsicheres als OFFENE FRAGE statt zu raten, und erfülle nur deinen Auftrag.
+=== ENDE FA-KERN-04 · BEREIT ZUR RÜCKGABE ===
