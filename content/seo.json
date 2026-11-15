@@ -64,8 +64,8 @@
   {
     "route": "autoschluessel/nachmachen",
     "headline": "Autoschlüssel nachmachen",
-    "subline": "Zweitschlüssel und Ersatzschlüssel für Ihr Fahrzeug.",
-    "intro": "Ein zweiter Schlüssel ist dann am günstigsten, wenn noch ein funktionierender vorhanden ist. Ist kein Schlüssel mehr da, prüfen wir den Einzelfall gesondert. Umfang und Aufwand unterscheiden sich deutlich.",
+    "subline": "Wir fertigen einen Zweitschlüssel oder Ersatzschlüssel für Ihr Fahrzeug.",
+    "intro": "Am günstigsten ist ein neuer Schlüssel, solange noch einer funktioniert. Ist keiner mehr da, prüfen wir Ihren Fall zuerst einzeln. Der Aufwand ist dann deutlich höher.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -91,8 +91,8 @@
   {
     "route": "autoschluessel/programmieren",
     "headline": "Autoschlüssel programmieren und anlernen",
-    "subline": "Transponder (Funkchip im Schlüssel), Funk und Smart Key am Fahrzeug anlernen.",
-    "intro": "Ein neuer oder vorhandener Schlüssel muss dem Fahrzeug bekannt gemacht werden. Dafür ist in aller Regel Zugriff auf das Fahrzeug nötig. Das lässt sich nicht per Versand lösen.",
+    "subline": "Wir machen einen neuen oder vorhandenen Schlüssel Ihrem Fahrzeug bekannt.",
+    "intro": "Zum Anlernen brauchen wir in aller Regel Ihr Fahrzeug. Per Versand lässt sich das nicht lösen.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -118,8 +118,8 @@
   {
     "route": "autoschluessel/kopieren",
     "headline": "Autoschlüssel kopieren",
-    "subline": "Mechanische Kopie nach Vorlage: was sie leistet und wann sie reicht.",
-    "intro": "Eine mechanische Kopie bildet den Bart des Originals ab, also den mechanischen Teil des Schlüssels. Bei vielen Fahrzeugen öffnet sie die Tür, startet den Motor aber nicht. Der Grund ist der fehlende Transponder, der kleine Funkchip im Schlüssel, ohne den die Wegfahrsperre den Motor nicht startet. Was in Ihrem Fall möglich ist, klären wir vorab.",
+    "subline": "Wir kopieren den mechanischen Teil Ihres Autoschlüssels nach Vorlage.",
+    "intro": "Die Kopie passt ins Schloss und öffnet bei vielen Fahrzeugen die Tür. Den Motor startet sie dort aber nicht. Der Kopie fehlt der Transponder, ein kleiner Chip im Schlüssel. Ohne ihn gibt die Wegfahrsperre den Motor nicht frei. Was in Ihrem Fall reicht, klären wir vorab.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -145,8 +145,8 @@
   {
     "route": "autoschluessel/funkschluessel",
     "headline": "Funkschlüssel und Funkfernbedienung",
-    "subline": "Tasten, Funkfunktion, Gehäuse und Ersatz.",
-    "intro": "Wenn das Fahrzeug auf Knopfdruck nicht mehr reagiert, liegt das nicht immer am Schlüssel. Wir grenzen ein, ob Batterie, Taster, Platine oder das Anlernen des Schlüssels im Auto die Ursache ist.",
+    "subline": "Wir reparieren Tasten, Gehäuse und Funk oder fertigen einen neuen Schlüssel.",
+    "intro": "Reagiert das Fahrzeug nicht mehr auf Knopfdruck, liegt das nicht immer am Schlüssel. Wir prüfen, ob Batterie, Tasten, Elektronik oder das Anlernen am Fahrzeug die Ursache ist.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -172,8 +172,8 @@
   {
     "route": "autoschluessel/smart-key",
     "headline": "Smart Key und Keyless",
-    "subline": "Schlüsselloser Zugang und Start, je nach Fahrzeug.",
-    "intro": "Smart-Key-Systeme erkennen den Schlüssel in der Nähe des Fahrzeugs. Beschaffung und Anlernen sind aufwendiger als bei einfachen Funkschlüsseln. Planen Sie dafür mehr Vorlauf und mehr Zeit am Fahrzeug ein.",
+    "subline": "Wir beschaffen Ersatz für Ihren Smart Key und lernen ihn an Ihrem Fahrzeug an.",
+    "intro": "Ein Smart Key ist ein Schlüssel, den das Fahrzeug in der Nähe erkennt. Keyless heißt, Sie öffnen und starten, ohne ihn in die Hand zu nehmen. Beschaffung und Anlernen sind aufwendiger als bei einem einfachen Funkschlüssel.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -199,8 +199,8 @@
   {
     "route": "autoschluessel/schluesselbart-fraesen",
     "headline": "Schlüsselbart fräsen",
-    "subline": "Mechanische Fertigung nach Vorlage oder geeigneten Fahrzeugdaten.",
-    "intro": "Der Bart ist der mechanische Teil des Schlüssels. Wir fräsen ihn nach einem vorhandenen Schlüssel oder anhand geeigneter Fahrzeugdaten. Die Elektronik ist davon unabhängig.",
+    "subline": "Wir fräsen den Bart Ihres Autoschlüssels nach Vorlage oder nach Fahrzeugdaten.",
+    "intro": "Der Bart ist der metallene Teil mit den Einschnitten, der ins Schloss passt. Als Vorlage dient ein vorhandener Schlüssel oder geeignete Fahrzeugdaten. Die Elektronik ist davon unabhängig.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -226,8 +226,8 @@
   {
     "route": "autoschluessel/fahrzeugoeffnung",
     "headline": "Fahrzeugöffnung",
-    "subline": "Wenn der Schlüssel im Fahrzeug liegt.",
-    "intro": "Wir öffnen Fahrzeuge zerstörungsfrei. Vor Ort weisen Sie bitte nach, dass Sie über das Fahrzeug verfügen dürfen. Die Öffnung ist eine eigene Leistung und ersetzt keinen Ersatzschlüssel.",
+    "subline": "Wir öffnen Ihr Fahrzeug, wenn Sie ausgesperrt sind.",
+    "intro": "Wir arbeiten zerstörungsfrei. Vor Ort weisen Sie bitte nach, dass Sie über das Fahrzeug verfügen dürfen. Die Öffnung ist eine eigene Leistung und ersetzt keinen Ersatzschlüssel.",
     "sections": [],
     "faq": [],
     "seo": {

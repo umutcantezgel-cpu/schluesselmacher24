@@ -57,11 +57,10 @@ export function pages(): PageContent[] {
     {
       route: 'autoschluessel/nachmachen',
       headline: 'Autoschlüssel nachmachen',
-      subline: 'Zweitschlüssel und Ersatzschlüssel für Ihr Fahrzeug.',
+      subline: 'Wir fertigen einen Zweitschlüssel oder Ersatzschlüssel für Ihr Fahrzeug.',
       intro:
-        'Ein zweiter Schlüssel ist dann am günstigsten, wenn noch ein funktionierender vorhanden '
-        + 'ist. Ist kein Schlüssel mehr da, prüfen wir den Einzelfall gesondert — Umfang und '
-        + 'Aufwand unterscheiden sich deutlich.',
+        'Am günstigsten ist ein neuer Schlüssel, solange noch einer funktioniert. Ist keiner mehr '
+        + 'da, prüfen wir Ihren Fall zuerst einzeln. Der Aufwand ist dann deutlich höher.',
       title: 'Autoschlüssel nachmachen — Zweit- und Ersatzschlüssel',
       description:
         'Zweitschlüssel und Ersatzschlüssel für Ihr Fahrzeug anfertigen lassen. Mit Schlüsselfotos, '
@@ -74,10 +73,9 @@ export function pages(): PageContent[] {
     {
       route: 'autoschluessel/programmieren',
       headline: 'Autoschlüssel programmieren und anlernen',
-      subline: 'Transponder, Funk und Smart Key elektronisch am Fahrzeug anlernen.',
+      subline: 'Wir machen einen neuen oder vorhandenen Schlüssel Ihrem Fahrzeug bekannt.',
       intro:
-        'Ein neuer oder vorhandener Schlüssel muss dem Fahrzeug bekannt gemacht werden. Dafür ist '
-        + 'in aller Regel Zugriff auf das Fahrzeug nötig — das lässt sich nicht per Versand lösen.',
+        'Zum Anlernen brauchen wir in aller Regel Ihr Fahrzeug. Per Versand lässt sich das nicht lösen.',
       title: 'Autoschlüssel programmieren und anlernen',
       description:
         'Transponder, Wegfahrsperre, Funkfernbedienung und Smart Key anlernen lassen. '
@@ -90,11 +88,11 @@ export function pages(): PageContent[] {
     {
       route: 'autoschluessel/kopieren',
       headline: 'Autoschlüssel kopieren',
-      subline: 'Mechanische Kopie nach Vorlage — und was sie leistet.',
+      subline: 'Wir kopieren den mechanischen Teil Ihres Autoschlüssels nach Vorlage.',
       intro:
-        'Eine mechanische Kopie bildet den Bart des Originals ab. Bei vielen Fahrzeugen öffnet sie '
-        + 'die Tür, startet den Motor aber nicht, weil Transponder und Wegfahrsperre fehlen. Was in '
-        + 'Ihrem Fall möglich ist, klären wir vorab.',
+        'Die Kopie passt ins Schloss und öffnet bei vielen Fahrzeugen die Tür. Den Motor startet '
+        + 'sie dort aber nicht. Der Kopie fehlt der Transponder, ein kleiner Chip im Schlüssel. Ohne ihn '
+        + 'gibt die Wegfahrsperre den Motor nicht frei. Was in Ihrem Fall reicht, klären wir vorab.',
       title: 'Autoschlüssel kopieren — was mechanisch möglich ist',
       description:
         'Mechanische Kopie von Autoschlüsseln nach Vorlage. Wir erklären, wann eine Kopie reicht '
@@ -107,10 +105,10 @@ export function pages(): PageContent[] {
     {
       route: 'autoschluessel/funkschluessel',
       headline: 'Funkschlüssel und Funkfernbedienung',
-      subline: 'Tasten, Funkfunktion, Gehäuse und Ersatz.',
+      subline: 'Wir reparieren Tasten, Gehäuse und Funk oder fertigen einen neuen Schlüssel.',
       intro:
-        'Wenn das Fahrzeug auf Knopfdruck nicht mehr reagiert, liegt das nicht immer am Schlüssel. '
-        + 'Wir grenzen ein, ob Batterie, Taster, Platine oder das Anlernen die Ursache ist.',
+        'Reagiert das Fahrzeug nicht mehr auf Knopfdruck, liegt das nicht immer am Schlüssel. Wir '
+        + 'prüfen, ob Batterie, Tasten, Elektronik oder das Anlernen am Fahrzeug die Ursache ist.',
       title: 'Funkschlüssel und Funkfernbedienung',
       description:
         'Funkschlüssel reparieren, Gehäuse und Tasten tauschen, Funkfunktion prüfen und Ersatz '
@@ -123,11 +121,11 @@ export function pages(): PageContent[] {
     {
       route: 'autoschluessel/smart-key',
       headline: 'Smart Key und Keyless',
-      subline: 'Schlüsselloser Zugang und Start — je nach Fahrzeug.',
+      subline: 'Wir beschaffen Ersatz für Ihren Smart Key und lernen ihn an Ihrem Fahrzeug an.',
       intro:
-        'Smart-Key-Systeme erkennen den Schlüssel in der Nähe des Fahrzeugs. Beschaffung und '
-        + 'Anlernen sind aufwendiger als bei einfachen Funkschlüsseln. Planen Sie dafür mehr '
-        + 'Vorlauf und mehr Zeit am Fahrzeug ein.',
+        'Ein Smart Key ist ein Schlüssel, den das Fahrzeug in der Nähe erkennt. Keyless heißt, '
+        + 'Sie öffnen und starten, ohne ihn in die Hand zu nehmen. Beschaffung und Anlernen sind '
+        + 'aufwendiger als bei einem einfachen Funkschlüssel.',
       title: 'Smart Key und Keyless — Ersatz und Programmierung',
       description:
         'Smart Key und schlüssellose Systeme: Ersatz, Programmierung und Prüfung. '
@@ -140,10 +138,11 @@ export function pages(): PageContent[] {
     {
       route: 'autoschluessel/schluesselbart-fraesen',
       headline: 'Schlüsselbart fräsen',
-      subline: 'Mechanische Fertigung nach Vorlage oder geeigneten Fahrzeugdaten.',
+      subline: 'Wir fräsen den Bart Ihres Autoschlüssels nach Vorlage oder nach Fahrzeugdaten.',
       intro:
-        'Der Bart ist der mechanische Teil des Schlüssels. Wir fräsen ihn nach einem vorhandenen '
-        + 'Schlüssel oder anhand geeigneter Fahrzeugdaten. Die Elektronik ist davon unabhängig.',
+        'Der Bart ist der metallene Teil mit den Einschnitten, der ins Schloss passt. Als Vorlage '
+        + 'dient ein vorhandener Schlüssel oder geeignete Fahrzeugdaten. Die Elektronik ist davon '
+        + 'unabhängig.',
       title: 'Schlüsselbart fräsen nach Vorlage oder Fahrzeugdaten',
       description:
         'Schlüsselbart für Autoschlüssel fräsen lassen — nach Original oder geeigneten '
@@ -156,10 +155,10 @@ export function pages(): PageContent[] {
     {
       route: 'autoschluessel/fahrzeugoeffnung',
       headline: 'Fahrzeugöffnung',
-      subline: 'Wenn der Schlüssel im Fahrzeug liegt.',
+      subline: 'Wir öffnen Ihr Fahrzeug, wenn Sie ausgesperrt sind.',
       intro:
-        'Wir öffnen Fahrzeuge zerstörungsfrei. Vor Ort weisen Sie bitte nach, dass Sie über das '
-        + 'Fahrzeug verfügen dürfen. Die Öffnung ist eine eigene Leistung und ersetzt keinen '
+        'Wir arbeiten zerstörungsfrei. Vor Ort weisen Sie bitte nach, dass Sie über das Fahrzeug '
+        + 'verfügen dürfen. Die Öffnung ist eine eigene Leistung und ersetzt keinen '
         + 'Ersatzschlüssel.',
       title: 'Fahrzeugöffnung — zerstörungsfrei',
       description:

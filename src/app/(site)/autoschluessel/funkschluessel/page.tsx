@@ -22,10 +22,9 @@ export async function generateMetadata(): Promise<Metadata> {
 const AUFBAU_HINT: InfoHint = {
   title: 'Woraus ein Funkschlüssel besteht',
   body:
-    'Ein Funkschlüssel vereint mehrere Bauteile: Gehäuse und Tasten außen, darunter eine Platine '
-    + 'mit Sender, eine Batterie, der Transponder für die Wegfahrsperre und der mechanische Bart. '
-    + 'Jedes dieser Teile kann einzeln ausfallen — deshalb grenzen wir die Ursache ein, bevor wir '
-    + 'etwas tauschen.',
+    'Außen sitzen Gehäuse und Tasten. Innen liegen eine Platine mit Sender, eine Batterie und der '
+    + 'Transponder für die Wegfahrsperre. Dazu kommt der mechanische Bart. Jedes dieser Teile kann '
+    + 'einzeln ausfallen. Deshalb suchen wir erst die Ursache und tauschen dann.',
   figure: {
     motif: 'Explosionsdarstellung: geöffneter Funkschlüssel mit Gehäuse, Platine, Batterie und Bart',
     ratio: '3/2',
@@ -42,10 +41,10 @@ export default async function FunkschluesselPage() {
       content={page}
       fallback={{
         headline: 'Funkschlüssel und Funkfernbedienung',
-        subline: 'Tasten, Funkfunktion, Gehäuse und Ersatz.',
+        subline: 'Wir reparieren Tasten, Gehäuse und Funk oder fertigen einen neuen Schlüssel.',
         intro:
-          'Wenn das Fahrzeug auf Knopfdruck nicht mehr reagiert, liegt das nicht immer am Schlüssel. '
-          + 'Wir grenzen die Ursache ein, bevor etwas getauscht wird.',
+          'Reagiert das Fahrzeug nicht mehr auf Knopfdruck, liegt das nicht immer am Schlüssel. Wir '
+          + 'prüfen, ob Batterie, Tasten, Elektronik oder das Anlernen am Fahrzeug die Ursache ist.',
       }}
       eyebrow="Schlüsselart"
       crumbs={[
@@ -58,120 +57,93 @@ export default async function FunkschluesselPage() {
         note: 'Eigene Aufnahme, Bauteile deutlich erkennbar.',
       }}
       what={{
-        title: 'Was ein Funkschlüssel ist — und was daran kaputtgehen kann',
+        title: 'Was wir machen',
         paragraphs: [
-          'Ein Funkschlüssel ist ein Schlüssel mit Tasten zum Ver- und Entriegeln. Die Funkfunktion '
-          + 'arbeitet über einen kleinen Sender im Gehäuse. Der mechanische Bart und der Transponder '
-          + 'für die Wegfahrsperre sind davon unabhängig.',
-          'Genau diese Trennung erklärt die meisten Fehlerbilder: Wenn die Tasten nichts mehr '
-          + 'bewirken, der Motor aber startet, ist die Funkfunktion betroffen und nicht die '
-          + 'Wegfahrsperre. Umgekehrt kann die Fernbedienung arbeiten, während der Motor nicht '
-          + 'anspringt.',
-          'Wir prüfen deshalb zuerst, welches Bauteil ausgefallen ist. Oft genügt ein Tausch von '
-          + 'Gehäuse, Tasten oder Batterie, und die vorhandene Elektronik bleibt erhalten. Das ist '
-          + 'der günstigere Weg als ein kompletter neuer Schlüssel.',
+          'Ein Funkschlüssel hat Tasten zum Ver- und Entriegeln. Dafür sitzt ein kleiner Sender auf '
+          + 'der Platine, der Elektronik im Gehäuse. Getrennt davon arbeiten der Bart und der '
+          + 'Transponder. Das ist ein Chip, ohne den die Wegfahrsperre den Motor nicht freigibt.',
+          'Das erklärt die meisten Fehler. Gehen die Tasten nicht, startet der Motor aber, liegt es '
+          + 'am Funk. Umgekehrt können die Tasten gehen, während der Motor nicht anspringt.',
+          'Wir prüfen zuerst, welches Teil ausgefallen ist. Oft reicht ein neues Gehäuse, neue Tasten '
+          + 'oder eine neue Batterie. Die Elektronik bleibt dann erhalten. Das ist günstiger als ein '
+          + 'ganz neuer Schlüssel.',
         ],
       }}
       when={{
         title: 'Typische Fälle',
         items: [
           {
-            title: 'Die Tasten reagieren nicht mehr',
+            title: 'Die Tasten reagieren schlecht oder gar nicht',
             body:
-              'Häufig ist die Batterie schwach oder ein Taster ausgeschlagen. Beides lässt sich in '
-              + 'vielen Fällen ohne neuen Schlüssel beheben.',
+              'Oft ist die Batterie schwach oder eine Taste ausgeschlagen. Lässt nur die Reichweite '
+              + 'nach, kann auch eine gelöste Lötstelle die Ursache sein. Das lässt sich in vielen '
+              + 'Fällen ohne neuen Schlüssel beheben.',
             hint: AUFBAU_HINT,
           },
           {
             title: 'Das Gehäuse ist gebrochen',
-            body:
-              'Ein Sturz oder jahrelange Nutzung hat das Gehäuse beschädigt. Die Platine wird in ein '
-              + 'neues Gehäuse übernommen.',
-          },
-          {
-            title: 'Die Reichweite hat nachgelassen',
-            body:
-              'Sie müssen näher ans Fahrzeug als früher. Ursache ist oft die Batterie, manchmal eine '
-              + 'gelöste Lötstelle auf der Platine.',
+            body: 'Wir setzen die Platine in ein neues Gehäuse um.',
           },
           {
             title: 'Der Schlüssel war nass',
             body:
-              'Feuchtigkeit greift die Platine an. Je früher wir ihn sehen, desto eher lässt sich '
-              + 'die Elektronik retten.',
-          },
-          {
-            title: 'Der Bart ist abgebrochen',
-            body:
-              'Das Funkteil ist in Ordnung, nur der mechanische Teil fehlt. Dann wird nur der Bart '
-              + 'neu gefertigt.',
+              'Feuchtigkeit greift die Platine an. Je früher wir den Schlüssel sehen, desto eher lässt '
+              + 'sich die Elektronik retten.',
           },
           {
             title: 'Sie brauchen einen zweiten Funkschlüssel',
-            body:
-              'Ein zusätzlicher Schlüssel wird gefertigt und anschließend am Fahrzeug angelernt.',
+            body: 'Wir fertigen ihn und lernen ihn danach am Fahrzeug an.',
           },
         ],
       }}
       need={{
         title: 'Was wir von Ihnen brauchen',
-        lead: 'Für eine belastbare Einschätzung genügen in den meisten Fällen Fotos und ein paar Angaben.',
+        lead: 'Für eine erste Einschätzung reichen meist Fotos und ein paar Angaben.',
         items: [
           {
             title: 'Fotos des Schlüssels',
             body:
-              'Vorderseite, Rückseite und der Bart von der Seite. Bei gebrochenem Gehäuse '
-              + 'zusätzlich eine Aufnahme der Bruchstelle.',
+              'Vorderseite, Rückseite und den Bart von der Seite. Ist das Gehäuse gebrochen, bitte '
+              + 'auch die Bruchstelle.',
           },
           {
             title: 'Fahrzeugdaten',
-            body: 'Marke, Modell und Baujahr — daraus ergibt sich das verbaute System.',
+            body: 'Marke, Modell und Baujahr. Daraus ergibt sich das verbaute System.',
           },
           {
-            title: 'Beschreibung des Fehlerbilds',
+            title: 'Was nicht mehr funktioniert',
             body:
-              'Was funktioniert noch, was nicht? Öffnen die Türen? Startet der Motor? Leuchtet eine '
-              + 'Kontrollleuchte im Fahrzeug?',
+              'Schreiben Sie kurz, was noch geht und was nicht. Zum Beispiel Türen, Motorstart oder '
+              + 'eine Kontrollleuchte. Sagen Sie uns auch, ob Sie die Batterie schon getauscht haben.',
           },
           {
-            title: 'Angabe zur Batterie',
+            title: 'Ihr Nachweis beim Termin',
             body:
-              'Wurde die Batterie schon getauscht? Wenn ja, wann und hat sich das Verhalten dadurch '
-              + 'geändert?',
-          },
-          {
-            title: 'Nachweis der Verfügungsberechtigung',
-            body: 'Ausweisdokument und Fahrzeugschein beim Termin.',
+              'Sie zeigen uns Ihren Ausweis und den Fahrzeugschein. Steht das Fahrzeug nicht auf '
+              + 'Ihren Namen, brauchen wir zusätzlich eine Vollmacht des Halters.',
           },
         ],
       }}
       boundary={{
-        title: 'Abgrenzung — was dabei nicht passiert',
+        title: 'Was nicht dazugehört',
         items: [
           {
             title: 'Ein neues Gehäuse ist kein neuer Schlüssel',
             body:
-              'Beim Gehäusetausch wird die vorhandene Elektronik übernommen. Es entsteht dadurch '
-              + 'kein zusätzlicher Schlüssel.',
+              'Beim Gehäusetausch übernehmen wir Ihre Elektronik. Ein zusätzlicher Schlüssel entsteht '
+              + 'dabei nicht.',
           },
           {
-            title: 'Funk ist nicht die Wegfahrsperre',
+            title: 'Keine pauschale Zusage beim Batteriewechsel',
             body:
-              'Eine wiederhergestellte Funkfunktion sagt nichts darüber aus, ob der Motor startet. '
-              + 'Das ist ein getrennter Teil der Elektronik.',
+              'Bei den meisten Fahrzeugen bleibt die Programmierung beim Batteriewechsel erhalten. Ob '
+              + 'das bei Ihrem Fahrzeug gilt, prüfen wir vorher. Pauschal versprechen wir es nicht.',
           },
           {
-            title: 'Batteriewechsel ohne Zusage zur Programmierung',
+            title: 'Keine Reparatur bei zerstörter Platine',
             body:
-              'Bei den meisten Fahrzeugen bleibt die Programmierung beim Batteriewechsel erhalten. '
-              + 'Ob das bei Ihrem Fahrzeug gilt, prüfen wir vorher — versprechen tun wir es nicht '
-              + 'pauschal.',
-          },
-          {
-            title: 'Keine Reparatur bei Totalschaden der Platine',
-            body:
-              'Ist die Platine durchkorrodiert oder mechanisch zerstört, ist ein neuer Schlüssel der '
-              + 'ehrlichere Weg. Wir sagen Ihnen das nach der Prüfung.',
+              'Ist die Platine durchkorrodiert oder zerbrochen, ist ein neuer Schlüssel der ehrlichere '
+              + 'Weg. Das sagen wir Ihnen nach der Prüfung.',
           },
         ],
       }}
@@ -179,36 +151,36 @@ export default async function FunkschluesselPage() {
         {
           question: 'Lohnt sich eine Reparatur überhaupt?',
           answer:
-            'In vielen Fällen ja — vor allem, wenn nur Gehäuse, Tasten oder Batterie betroffen sind. '
-            + 'Ist die Platine beschädigt, kann ein neuer Schlüssel sinnvoller sein. Wir nennen '
-            + 'Ihnen beide Wege, bevor Sie entscheiden.',
+            'In vielen Fällen ja, vor allem bei Gehäuse, Tasten oder Batterie. Ist die Platine '
+            + 'beschädigt, kann ein neuer Schlüssel sinnvoller sein. Wir nennen Ihnen beide Wege, '
+            + 'bevor Sie entscheiden.',
         },
         {
           question: 'Kann ich meinen Funkschlüssel einschicken?',
           answer:
-            'Für reine Gehäuse- und Tastenarbeiten ist das in vielen Fällen möglich. Muss der '
-            + 'Schlüssel danach am Fahrzeug angelernt werden, ist ein Termin mit Fahrzeug nötig.',
+            'Für Arbeiten an Gehäuse und Tasten geht das in vielen Fällen. Muss der Schlüssel danach '
+            + 'am Fahrzeug angelernt werden, brauchen Sie einen Termin mit Fahrzeug.',
         },
         {
           question: 'Fällt auch bei einer Reparatur eine Anzahlung an?',
           answer:
-            `Für Termine im Autoschlüssel-Bereich gilt standardmäßig eine Anzahlung von ${deposit}, `
-            + 'die vollständig auf den Gesamtpreis angerechnet wird. Was für Ihren Fall gilt, sehen '
-            + 'Sie im geführten Ablauf, bevor Sie buchen.',
+            `Für Termine im Autoschlüssel-Bereich gilt standardmäßig eine Anzahlung von ${deposit}. `
+            + 'Wir rechnen sie vollständig auf den Gesamtpreis an. Was für Ihren Fall gilt, sehen Sie '
+            + 'in der Anfrage, bevor Sie buchen.',
         },
         {
           question: 'Wechseln Sie auch nur die Batterie?',
           answer:
-            'Ja. Sagen Sie uns vorher, um welches Fahrzeug und welche Schlüsselart es geht, damit wir '
-            + 'die passende Batterie vorrätig haben.',
+            'Ja. Nennen Sie uns vorher Fahrzeug und Schlüsselart. Dann haben wir die passende Batterie '
+            + 'vorrätig.',
         },
       ]}
       next={{
         title: 'Der nächste Schritt',
         lead:
-          'Laden Sie Fotos Ihres Schlüssels hoch und beschreiben Sie kurz das Fehlerbild. Wir sagen '
-          + 'Ihnen, ob eine Reparatur genügt.',
-        primary: { href: '/autoschluessel/anfrage', label: 'Fahrzeug auswählen' },
+          'Laden Sie Fotos Ihres Schlüssels hoch und beschreiben Sie kurz den Fehler. Wir sagen Ihnen, '
+          + 'ob eine Reparatur reicht.',
+        primary: { href: '/autoschluessel/anfrage', label: 'Termin anfragen' },
         secondary: { href: '/autoschluessel/smart-key', label: 'Ich habe einen Smart Key' },
       }}
       related={[

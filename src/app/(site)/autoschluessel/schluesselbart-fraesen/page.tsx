@@ -21,9 +21,9 @@ export async function generateMetadata(): Promise<Metadata> {
 const BART_HINT: InfoHint = {
   title: 'Was genau ist der Bart?',
   body:
-    'Der Bart ist der metallene Teil des Schlüssels mit den Einschnitten. Er allein entscheidet, ob '
-    + 'der Schlüssel mechanisch ins Schloss passt und sich drehen lässt. Die Elektronik im Griff hat '
-    + 'damit nichts zu tun.',
+    'Der Bart ist der metallene Teil des Schlüssels mit den Einschnitten. Nur er entscheidet, ob '
+    + 'der Schlüssel ins Schloss passt und sich drehen lässt. Mit der Elektronik im Griff hat er '
+    + 'nichts zu tun.',
   figure: {
     motif: 'Messzeichnung: Schlüsselbart mit Einschnittpositionen und Tiefenangaben',
     ratio: '3/2',
@@ -34,9 +34,9 @@ const BART_HINT: InfoHint = {
 const VORLAGE_HINT: InfoHint = {
   title: 'Nach Vorlage oder nach Daten?',
   body:
-    'Nach Vorlage heißt: Wir übertragen die Einschnitte eines vorhandenen Schlüssels. Nach Daten '
-    + 'heißt: Wir fertigen anhand geeigneter Fahrzeugunterlagen, wenn kein Schlüssel mehr da ist. '
-    + 'Welcher Weg in Ihrem Fall gangbar ist, prüfen wir vorab.',
+    'Nach Vorlage heißt, wir übertragen die Einschnitte eines vorhandenen Schlüssels. Nach Daten '
+    + 'heißt, wir fertigen nach geeigneten Fahrzeugunterlagen, wenn kein Schlüssel mehr da ist. '
+    + 'Welcher Weg in Ihrem Fall möglich ist, prüfen wir vorab.',
 };
 
 export default async function SchluesselbartFraesenPage() {
@@ -47,10 +47,11 @@ export default async function SchluesselbartFraesenPage() {
       content={page}
       fallback={{
         headline: 'Schlüsselbart fräsen',
-        subline: 'Mechanische Fertigung nach Vorlage oder geeigneten Fahrzeugdaten.',
+        subline: 'Wir fräsen den Bart Ihres Autoschlüssels nach Vorlage oder nach Fahrzeugdaten.',
         intro:
-          'Der Bart ist der mechanische Teil des Schlüssels. Wir fräsen ihn nach einem vorhandenen '
-          + 'Schlüssel oder anhand geeigneter Fahrzeugdaten.',
+          'Der Bart ist der metallene Teil mit den Einschnitten, der ins Schloss passt. Als Vorlage '
+          + 'dient ein vorhandener Schlüssel oder geeignete Fahrzeugdaten. Die Elektronik ist davon '
+          + 'unabhängig.',
       }}
       eyebrow="Leistung"
       crumbs={[
@@ -63,17 +64,16 @@ export default async function SchluesselbartFraesenPage() {
         note: 'Eigene Aufnahme aus der Werkstatt. Kein Stockfoto.',
       }}
       what={{
-        title: 'Wie das Fräsen abläuft',
+        title: 'So läuft es ab',
         paragraphs: [
-          'Beim Fräsen wird ein passender Rohling eingespannt und die Einschnitte werden maßgenau '
-          + 'eingearbeitet. Entscheidend sind zwei Dinge: der richtige Rohling für Ihr Fahrzeug und '
-          + 'eine brauchbare Grundlage für die Einschnitte.',
-          'Diese Grundlage kann ein vorhandener Schlüssel sein oder — wenn keiner mehr da ist — '
-          + 'geeignete Fahrzeugunterlagen. Der zweite Weg ist aufwendiger, weil zuerst geprüft '
-          + 'werden muss, ob und woher die nötigen Angaben zu bekommen sind.',
-          'Das Fräsen betrifft ausschließlich die Mechanik. Ob der fertige Schlüssel den Motor '
-          + 'startet, entscheidet die Elektronik — und damit die Frage, ob zusätzlich programmiert '
-          + 'werden muss.',
+          'Wir spannen einen passenden Rohling ein, also einen noch ungefrästen Schlüssel. Dann '
+          + 'fräsen wir die Einschnitte maßgenau ein. Wichtig sind der richtige Rohling und eine '
+          + 'brauchbare Vorlage.',
+          'Die Vorlage ist meist ein vorhandener Schlüssel. Ist keiner mehr da, nutzen wir geeignete '
+          + 'Fahrzeugunterlagen. Das ist aufwendiger, weil wir erst klären, ob und woher wir die '
+          + 'Angaben bekommen.',
+          'Fräsen betrifft nur die Mechanik. Ob der Schlüssel den Motor startet, hängt von der '
+          + 'Elektronik ab. Je nach Fahrzeug muss er dafür zusätzlich programmiert werden.',
         ],
       }}
       when={{
@@ -81,99 +81,91 @@ export default async function SchluesselbartFraesenPage() {
         items: [
           {
             title: 'Der Bart ist abgebrochen',
-            body:
-              'Das Funkteil ist in Ordnung, nur der mechanische Teil fehlt. Dann wird allein der '
-              + 'Bart ersetzt.',
+            body: 'Das Funkteil ist in Ordnung, nur der Bart fehlt. Dann ersetzen wir nur ihn.',
             hint: BART_HINT,
           },
           {
             title: 'Der Schlüssel ist abgenutzt',
             body:
-              'Ein Schlüssel, der schwergängig geworden ist, kann im Schloss abbrechen. Ein sauber '
-              + 'gefräster Bart beugt dem vor.',
+              'Ein schwergängiger Schlüssel kann im Schloss abbrechen. Ein sauber gefräster Bart '
+              + 'beugt dem vor.',
           },
           {
-            title: 'Ein Rohling soll zum vorhandenen Funkteil passen',
+            title: 'Ein Funkteil ohne passenden Bart',
             body:
-              'Sie haben ein Gehäuse mit Elektronik, aber keinen passend gefrästen Bart. Den '
-              + 'arbeiten wir ein.',
+              'Sie haben ein Gehäuse mit Elektronik, aber der Bart ist nicht passend gefräst. Den '
+              + 'fräsen wir ein.',
           },
           {
-            title: 'Es ist kein Schlüssel mehr vorhanden',
+            title: 'Es ist kein Schlüssel mehr da',
             body:
-              'Dann fertigen wir nach geeigneten Fahrzeugunterlagen — sofern diese beschaffbar sind.',
+              'Dann fertigen wir nach geeigneten Fahrzeugunterlagen, sofern sie sich beschaffen '
+              + 'lassen.',
             hint: VORLAGE_HINT,
           },
           {
-            title: 'Sie brauchen einen rein mechanischen Reserveschlüssel',
+            title: 'Ein Schlüssel nur zum Öffnen',
             body:
-              'Ein Schlüssel, der nur die Tür öffnen soll, kommt ohne Elektronik aus.',
-          },
-          {
-            title: 'Zubehör mit eigener Schließung',
-            body:
-              'Dachbox, Anhängerkupplung oder Werkzeugkasten haben oft eigene Schlösser ohne '
-              + 'Fahrzeugelektronik.',
+              'Etwa ein Reserveschlüssel für die Tür. Auch Dachbox, Anhängerkupplung oder '
+              + 'Werkzeugkasten haben oft eigene Schlösser ohne Elektronik.',
           },
         ],
       }}
       need={{
         title: 'Was wir von Ihnen brauchen',
-        lead: 'Ohne eine brauchbare Grundlage lässt sich kein maßhaltiger Bart fertigen.',
+        lead: 'Für einen passgenauen Bart brauchen wir eine brauchbare Grundlage.',
         items: [
           {
             title: 'Fotos des vorhandenen Schlüssels',
             body:
-              'Besonders wichtig: der Bart von der Seite, scharf und formatfüllend. Daran erkennen '
-              + 'wir Profil und Rohling.',
+              'Vor allem den Bart von der Seite, scharf und bildfüllend. Daran erkennen wir Profil '
+              + 'und Rohling.',
           },
           {
             title: 'Fahrzeugdaten',
             body: 'Marke, Modell und Baujahr.',
           },
           {
-            title: 'Schlüssel- oder Schlüsselnummer, falls vorhanden',
+            title: 'Schlüsselnummer, falls vorhanden',
             body:
-              'Manche Schlüssel und Schlösser tragen eine eingeprägte Nummer. Sie erleichtert die '
-              + 'Zuordnung des Rohlings.',
+              'Manche Schlüssel und Schlösser tragen eine eingeprägte Nummer. Sie hilft uns, den '
+              + 'Rohling zuzuordnen.',
           },
           {
-            title: 'Angabe, ob der Schlüssel starten soll',
+            title: 'Ob der Schlüssel starten soll',
             body:
-              'Nur öffnen oder auch fahren? Davon hängt ab, ob zusätzlich angelernt werden muss.',
+              'Sagen Sie uns, ob er nur öffnen oder auch starten soll. Davon hängt ab, ob zusätzlich '
+              + 'angelernt werden muss.',
           },
           {
-            title: 'Nachweis der Verfügungsberechtigung',
-            body: 'Ausweisdokument und Fahrzeugschein beim Termin oder bei der Abholung.',
+            title: 'Ihr Nachweis beim Termin oder bei der Abholung',
+            body:
+              'Sie zeigen uns Ihren Ausweis und den Fahrzeugschein. Steht das Fahrzeug nicht auf '
+              + 'Ihren Namen, brauchen wir zusätzlich eine Vollmacht des Halters.',
           },
         ],
       }}
       boundary={{
-        title: 'Abgrenzung — was Fräsen nicht einschließt',
+        title: 'Was nicht dazugehört',
         items: [
           {
             title: 'Fräsen ist nicht Programmieren',
             body:
-              'Ein gefräster Bart ohne passende Elektronik startet bei Fahrzeugen mit Wegfahrsperre '
-              + 'den Motor nicht.',
+              'Viele Fahrzeuge haben eine Wegfahrsperre, die den Motor nur mit einem angemeldeten '
+              + 'Schlüssel freigibt. Dort startet ein neuer Bart ohne passende Elektronik den Motor '
+              + 'nicht. Auch Funktasten entstehen beim Fräsen nicht.',
           },
           {
-            title: 'Keine Funkfunktion',
+            title: 'Kein Nachbau einer unbrauchbaren Vorlage',
             body:
-              'Ver- und Entriegeln per Knopfdruck entsteht beim Fräsen nicht. Das ist ein '
-              + 'elektronischer Teil.',
+              'Ist der vorhandene Bart verbogen oder stark abgenutzt, würde der neue Bart den Fehler '
+              + 'übernehmen. Wir sagen es Ihnen vorher, wenn die Vorlage nicht taugt.',
           },
           {
-            title: 'Kein Nachbau bei unbrauchbarer Vorlage',
-            body:
-              'Ist der vorhandene Bart verbogen oder stark abgenutzt, übernähme die Anfertigung den '
-              + 'Fehler. Wir sagen Ihnen vorher, wenn die Vorlage nicht taugt.',
-          },
-          {
-            title: 'Keine Zusage bei fehlenden Daten',
+            title: 'Keine Zusage ohne Daten',
             body:
               'Ohne Schlüssel und ohne beschaffbare Fahrzeugdaten lässt sich kein Bart fertigen. '
-              + 'Solche Fälle prüfen wir und melden uns mit einer klaren Aussage.',
+              + 'Solche Fälle prüfen wir und geben Ihnen eine klare Antwort.',
           },
         ],
       }}
@@ -181,34 +173,34 @@ export default async function SchluesselbartFraesenPage() {
         {
           question: 'Brauchen Sie meinen Originalschlüssel dafür?',
           answer:
-            'Für die Einschätzung reichen in vielen Fällen Fotos. Ob wir für die Anfertigung das '
-            + 'Original benötigen, sagen wir Ihnen nach der Prüfung.',
+            'Für die Einschätzung reichen in vielen Fällen Fotos. Ob wir das Original für die '
+            + 'Anfertigung brauchen, sagen wir Ihnen nach der Prüfung.',
         },
         {
           question: 'Kann ein Bart auch ohne vorhandenen Schlüssel gefertigt werden?',
           answer:
-            'Das kommt darauf an, ob sich geeignete Fahrzeugunterlagen beschaffen lassen. Wir prüfen '
-            + 'das im Einzelfall und sagen Ihnen ehrlich, ob der Weg gangbar ist.',
+            'Das hängt davon ab, ob sich geeignete Fahrzeugunterlagen beschaffen lassen. Wir prüfen '
+            + 'den Einzelfall und sagen Ihnen ehrlich, ob der Weg möglich ist.',
         },
         {
           question: 'Startet der Motor mit dem neuen Bart?',
           answer:
-            'Nur, wenn die Elektronik stimmt. Bei Fahrzeugen mit Wegfahrsperre ist zusätzlich das '
-            + 'Anlernen nötig. Wir sagen Ihnen vorher, was in Ihrem Fall dazugehört.',
+            'Nur wenn die Elektronik stimmt. Bei Fahrzeugen mit Wegfahrsperre muss der Schlüssel '
+            + 'zusätzlich angelernt werden. Was in Ihrem Fall dazugehört, sagen wir Ihnen vorher.',
         },
         {
           question: 'Kann ich meinen Schlüssel einschicken?',
           answer:
-            'Für reine Fräsarbeiten ist das in vielen Fällen möglich. Muss anschließend am Fahrzeug '
-            + 'angelernt werden, ist ein Termin mit Fahrzeug der richtige Weg.',
+            'Für reine Fräsarbeiten geht das in vielen Fällen. Muss danach am Fahrzeug angelernt '
+            + 'werden, brauchen Sie einen Termin mit Fahrzeug.',
         },
       ]}
       next={{
         title: 'Der nächste Schritt',
         lead:
-          'Für Fahrzeugschlüssel führt der Weg über den geführten Ablauf. Für Schlüssel ohne '
-          + 'Fahrzeugbezug nutzen Sie die Anfrage nach Vorlage.',
-        primary: { href: '/autoschluessel/anfrage', label: 'Fahrzeug auswählen' },
+          'Für Fahrzeugschlüssel nutzen Sie die geführte Anfrage. Für Schlüssel ohne Fahrzeugbezug '
+          + 'ist die Anfrage nach Vorlage der richtige Weg.',
+        primary: { href: '/autoschluessel/anfrage', label: 'Termin anfragen' },
         secondary: { href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' },
       }}
       related={[

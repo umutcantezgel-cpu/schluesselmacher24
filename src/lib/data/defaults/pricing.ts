@@ -41,7 +41,7 @@ export function carKeyServices(): CarKeyService[] {
       slug: 'zweitschluessel',
       label: 'Zweitschlüssel anfertigen',
       description:
-        'Ein zusätzlicher Schlüssel, während mindestens ein funktionierender Schlüssel vorhanden ist.',
+        'Ein weiterer Schlüssel, solange noch mindestens einer funktioniert.',
       requiresVehicleOnSite: true,
       keyKinds: ['mechanisch', 'funk', 'klappschluessel', 'smart-key', 'keyless'],
       active: true,
@@ -51,7 +51,7 @@ export function carKeyServices(): CarKeyService[] {
       slug: 'ersatz-bei-verlust',
       label: 'Ersatzschlüssel bei Verlust',
       description:
-        'Alle Schlüssel verloren oder beschädigt. Umfang und Machbarkeit werden vorab geprüft.',
+        'Alle Schlüssel sind verloren oder beschädigt. Wir prüfen vorab Umfang und Machbarkeit.',
       requiresVehicleOnSite: true,
       keyKinds: ['mechanisch', 'funk', 'klappschluessel', 'smart-key', 'keyless'],
       active: true,
@@ -61,7 +61,7 @@ export function carKeyServices(): CarKeyService[] {
       slug: 'programmierung',
       label: 'Schlüssel programmieren und anlernen',
       description:
-        'Vorhandener oder neuer Schlüssel wird elektronisch am Fahrzeug angelernt.',
+        'Wir lernen einen neuen oder vorhandenen Schlüssel elektronisch am Fahrzeug an.',
       requiresVehicleOnSite: true,
       keyKinds: ['funk', 'klappschluessel', 'smart-key', 'keyless'],
       active: true,
@@ -71,7 +71,7 @@ export function carKeyServices(): CarKeyService[] {
       slug: 'bart-fraesen',
       label: 'Schlüsselbart fräsen',
       description:
-        'Mechanische Fertigung des Bartes nach Vorlage oder geeigneten Fahrzeugdaten.',
+        'Wir fräsen den Bart nach Vorlage oder nach geeigneten Fahrzeugdaten.',
       requiresVehicleOnSite: false,
       keyKinds: ['mechanisch', 'funk', 'klappschluessel'],
       active: true,
@@ -81,7 +81,7 @@ export function carKeyServices(): CarKeyService[] {
       slug: 'gehaeuse-reparatur',
       label: 'Gehäuse, Tasten und Batterie',
       description:
-        'Austausch von Gehäuse, Tasten oder Batterie. Die Elektronik bleibt erhalten.',
+        'Wir tauschen Gehäuse, Tasten oder Batterie. Die Elektronik bleibt erhalten.',
       requiresVehicleOnSite: false,
       keyKinds: ['funk', 'klappschluessel', 'smart-key'],
       active: true,
@@ -91,7 +91,7 @@ export function carKeyServices(): CarKeyService[] {
       slug: 'fahrzeugoeffnung',
       label: 'Fahrzeugöffnung',
       description:
-        'Zerstörungsfreie Öffnung des Fahrzeugs bei ausgesperrtem Schlüssel.',
+        'Wir öffnen Ihr Fahrzeug zerstörungsfrei, wenn Sie ausgesperrt sind.',
       requiresVehicleOnSite: true,
       keyKinds: ['mechanisch', 'funk', 'klappschluessel', 'smart-key', 'keyless'],
       active: true,

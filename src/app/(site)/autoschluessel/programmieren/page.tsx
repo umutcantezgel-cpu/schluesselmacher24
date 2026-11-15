@@ -24,8 +24,8 @@ const TRANSPONDER_HINT: InfoHint = {
   title: 'Transponder und Wegfahrsperre',
   body:
     'Der Transponder ist ein kleiner Chip im Schlüssel. Beim Starten fragt das Fahrzeug ihn ab. '
-    + 'Antwortet er nicht richtig, bleibt die Wegfahrsperre aktiv und der Motor springt nicht an — '
-    + 'selbst dann, wenn der Bart passt und die Tür aufgeht.',
+    + 'Antwortet er nicht richtig, bleibt die Wegfahrsperre aktiv. Dann springt der Motor nicht an, '
+    + 'auch wenn der Bart passt und die Tür aufgeht.',
   figure: {
     motif: 'Makroaufnahme: geöffnetes Schlüsselgehäuse mit sichtbarem Transponder',
     ratio: '3/2',
@@ -35,9 +35,9 @@ const TRANSPONDER_HINT: InfoHint = {
 const FUNK_HINT: InfoHint = {
   title: 'Funk und Wegfahrsperre sind zwei Dinge',
   body:
-    'Die Funkfernbedienung ver- und entriegelt die Türen. Die Wegfahrsperre entscheidet, ob der '
-    + 'Motor startet. Beide Funktionen werden getrennt angelernt — es kann also sein, dass die Tasten '
-    + 'arbeiten, der Motor aber nicht anspringt, oder umgekehrt.',
+    'Die Funktasten ver- und entriegeln die Türen. Die Wegfahrsperre entscheidet, ob der Motor '
+    + 'startet. Beides wird getrennt angelernt. Es kann also sein, dass die Tasten gehen und der '
+    + 'Motor nicht anspringt. Auch das Umgekehrte kommt vor.',
 };
 
 export default async function ProgrammierenPage() {
@@ -49,10 +49,9 @@ export default async function ProgrammierenPage() {
       content={page}
       fallback={{
         headline: 'Autoschlüssel programmieren und anlernen',
-        subline: 'Transponder, Funk und Smart Key elektronisch am Fahrzeug anlernen.',
+        subline: 'Wir machen einen neuen oder vorhandenen Schlüssel Ihrem Fahrzeug bekannt.',
         intro:
-          'Beim Programmieren wird ein Schlüssel dem Fahrzeug bekannt gemacht. Dafür ist in aller '
-          + 'Regel Zugriff auf das Fahrzeug nötig.',
+          'Zum Anlernen brauchen wir in aller Regel Ihr Fahrzeug. Per Versand lässt sich das nicht lösen.',
       }}
       eyebrow="Leistung"
       crumbs={[
@@ -65,126 +64,115 @@ export default async function ProgrammierenPage() {
         note: 'Eigene Aufnahme. Kennzeichen und Fahrgestellnummer unkenntlich machen.',
       }}
       what={{
-        title: 'Was beim Programmieren passiert',
+        title: 'Was wir machen',
         paragraphs: [
-          'Ein Autoschlüssel wird vom Fahrzeug nicht automatisch akzeptiert. Er muss im Steuergerät '
-          + 'hinterlegt werden. Dieser Vorgang heißt Anlernen oder Programmieren und läuft über die '
-          + 'Diagnoseschnittstelle des Fahrzeugs.',
-          'Dabei werden zwei Funktionen getrennt behandelt: die Funkfernbedienung für das Ver- und '
-          + 'Entriegeln und die Wegfahrsperre für den Start. Beide können unabhängig voneinander in '
-          + 'Ordnung oder gestört sein.',
-          'Weil das Fahrzeug dafür angeschlossen werden muss, ist ein Termin mit Fahrzeug bei uns '
-          + `erforderlich. Planen Sie dafür Zeit ein — die Standard-Terminlänge liegt bei ${slot}, `
-          + 'bei aufwendigeren Systemen wird sie im Ablauf entsprechend länger angesetzt.',
+          'Ein Fahrzeug nimmt nicht jeden Schlüssel an. Wir tragen den Schlüssel im Steuergerät ein, '
+          + 'also im Rechner des Fahrzeugs. Das geht über die Diagnoseschnittstelle, einen Anschluss '
+          + 'im Fahrzeug. Diesen Vorgang nennt man Anlernen oder Programmieren.',
+          'Dabei geht es um zwei getrennte Dinge. Die Funktasten öffnen und schließen die Türen. Der '
+          + 'Transponder ist ein kleiner Chip im Schlüssel. Nur wenn das Fahrzeug ihn erkennt, gibt '
+          + 'die Wegfahrsperre den Motor frei.',
+          `Planen Sie für den Termin Zeit ein. Ein Standardtermin dauert ${slot}. Bei aufwendigeren `
+          + 'Systemen planen wir in der Anfrage mehr Zeit ein.',
         ],
       }}
       when={{
-        title: 'Wann ist ein Anlernen nötig?',
+        title: 'Wann ein Anlernen nötig ist',
         items: [
           {
             title: 'Ein neuer Schlüssel kommt dazu',
-            body:
-              'Jeder zusätzliche Schlüssel muss dem Fahrzeug bekannt gemacht werden, bevor er den '
-              + 'Motor startet.',
+            body: 'Jeder weitere Schlüssel muss angelernt werden, bevor er den Motor startet.',
             hint: TRANSPONDER_HINT,
           },
           {
-            title: 'Ein gebrauchter Schlüssel soll übernommen werden',
+            title: 'Die Funktasten reagieren nicht mehr',
             body:
-              'Ein Schlüssel aus einer anderen Quelle trägt noch die Daten seines früheren '
-              + 'Fahrzeugs. Ob er sich übernehmen lässt, prüfen wir am Fahrzeug.',
-          },
-          {
-            title: 'Die Fernbedienung reagiert nicht mehr',
-            body:
-              'Wenn Batterie und Taster in Ordnung sind, kann die Funkverbindung neu angelernt '
-              + 'werden müssen.',
+              'Sind Batterie und Tasten in Ordnung, muss die Funkverbindung vielleicht neu angelernt '
+              + 'werden.',
             hint: FUNK_HINT,
           },
           {
             title: 'Ein Schlüssel ist verloren gegangen',
             body:
-              'Auf Wunsch entfernen wir den verlorenen Schlüssel aus dem Fahrzeug, damit er nicht '
-              + 'mehr angenommen wird. Ob das bei Ihrem Fahrzeug möglich ist, prüfen wir vorab.',
+              'Auf Wunsch entfernen wir ihn aus dem Fahrzeug. Dann wird er nicht mehr angenommen. Ob '
+              + 'das bei Ihrem Fahrzeug geht, prüfen wir vorab.',
           },
           {
-            title: 'Nach einem Steuergerätetausch',
+            title: 'Die Tür geht auf, aber der Motor startet nicht',
             body:
-              'Wurde am Fahrzeug ein Steuergerät getauscht, müssen die vorhandenen Schlüssel oft '
-              + 'erneut zugeordnet werden.',
+              'Das deutet oft auf eine fehlende oder gestörte Kennung für die Wegfahrsperre hin. Die '
+              + 'Ursache suchen wir am Fahrzeug.',
           },
           {
-            title: 'Der Motor startet nicht, die Tür geht auf',
-            body:
-              'Ein typisches Bild bei fehlender oder gestörter Wegfahrsperren-Kennung. Die Ursache '
-              + 'grenzen wir am Fahrzeug ein.',
+            title: 'Ein Steuergerät wurde getauscht',
+            body: 'Dann müssen die vorhandenen Schlüssel oft neu angelernt werden.',
           },
         ],
       }}
       need={{
         title: 'Was wir von Ihnen brauchen',
-        lead: 'Ohne Fahrzeug lässt sich das Anlernen nicht durchführen. Bitte bringen Sie alles mit.',
+        lead: 'Ohne Fahrzeug geht es nicht. Bitte bringen Sie zum Termin alles mit.',
         items: [
           {
-            title: 'Das Fahrzeug selbst',
+            title: 'Ihr Fahrzeug',
             body:
-              'Es muss fahrbereit oder zumindest bei uns abstellbar sein und über eine nutzbare '
-              + 'Bordspannung verfügen.',
+              'Es muss fahrbereit sein oder bei uns abgestellt werden können. Die Fahrzeugbatterie '
+              + 'muss genug Spannung haben.',
             hint: ON_SITE_HINT,
           },
           {
             title: 'Alle vorhandenen Schlüssel',
             body:
-              'Bei manchen Fahrzeugen werden beim Anlernen sämtliche Schlüssel neu erfasst. Fehlt '
-              + 'einer, wird er danach unter Umständen nicht mehr angenommen.',
+              'Manche Fahrzeuge erfassen beim Anlernen alle Schlüssel neu. Ein fehlender Schlüssel '
+              + 'wird danach unter Umständen nicht mehr angenommen.',
           },
           {
-            title: 'Fahrzeugschein und Ausweisdokument',
+            title: 'Ihr Nachweis beim Termin',
             body:
-              'Wir arbeiten nur an Fahrzeugen, über die Sie nachweislich verfügen dürfen. Der '
-              + 'Nachweis erfolgt beim Termin.',
+              'Wir arbeiten nur an Fahrzeugen, über die Sie nachweislich verfügen dürfen. Sie zeigen '
+              + 'uns Ihren Ausweis und den Fahrzeugschein. Steht das Fahrzeug nicht auf Ihren Namen, '
+              + 'brauchen wir zusätzlich eine Vollmacht des Halters.',
           },
           {
-            title: 'Angaben zum Fehlerbild',
+            title: 'Was genau nicht funktioniert',
             body:
-              'Beschreiben Sie möglichst genau, was funktioniert und was nicht: Türen, Tasten, '
-              + 'Startvorgang, Kontrollleuchten. Das verkürzt die Eingrenzung.',
+              'Beschreiben Sie, was noch geht und was nicht. Zum Beispiel Türen, Tasten, Motorstart '
+              + 'oder Kontrollleuchten. So finden wir die Ursache schneller.',
           },
           {
-            title: 'Fotos Ihres Schlüssels',
+            title: 'Drei Fotos Ihres Schlüssels',
             body:
-              'Drei Aufnahmen aus unterschiedlichen Richtungen. So wissen wir vorher, welches System '
-              + 'vorliegt und was wir vorbereiten müssen.',
+              'Aus verschiedenen Richtungen aufgenommen. So wissen wir vorher, welches System Sie '
+              + 'haben, und können uns vorbereiten.',
           },
         ],
       }}
       boundary={{
-        title: 'Abgrenzung — was Programmieren nicht leistet',
+        title: 'Was nicht dazugehört',
         items: [
           {
-            title: 'Kein Ersatz für den mechanischen Bart',
+            title: 'Kein neuer Bart',
             body:
-              'Programmieren betrifft nur die Elektronik. Passt der Bart nicht ins Schloss, muss er '
+              'Anlernen betrifft nur die Elektronik. Passt der Bart nicht ins Schloss, muss er '
               + 'zusätzlich gefräst werden.',
           },
           {
-            title: 'Nicht per Versand möglich',
+            title: 'Nicht per Versand',
             body:
-              'Das Anlernen erfolgt am Fahrzeug. Ein eingeschickter Schlüssel lässt sich damit nicht '
-              + 'fahrbereit machen.',
+              'Das Anlernen geht nur am Fahrzeug. Ein eingeschickter Schlüssel wird dadurch nicht '
+              + 'fahrbereit.',
           },
           {
             title: 'Keine Zusage ohne Prüfung',
             body:
-              'Bei einzelnen Fahrzeugen ist der Zugang zum Steuergerät an den Hersteller gebunden. '
-              + 'Solche Fälle prüfen wir vorab und sagen Ihnen ehrlich, ob wir sie übernehmen können.',
+              'Bei einzelnen Fahrzeugen gibt nur der Hersteller den Zugang zum Steuergerät frei. '
+              + 'Solche Fälle prüfen wir vorab. Wir sagen Ihnen ehrlich, ob wir sie übernehmen können.',
           },
           {
-            title: 'Keine Reparatur der Fahrzeugelektronik',
+            title: 'Keine Reparatur am Fahrzeug',
             body:
-              'Liegt die Ursache nicht am Schlüssel, sondern am Fahrzeug, grenzen wir das ein und '
-              + 'sagen es Ihnen. Die Instandsetzung am Fahrzeug selbst gehört nicht zu dieser '
-              + 'Leistung.',
+              'Liegt der Fehler am Fahrzeug und nicht am Schlüssel, finden wir das heraus und sagen es '
+              + 'Ihnen. Die Reparatur am Fahrzeug gehört nicht zu dieser Leistung.',
           },
         ],
       }}
@@ -192,44 +180,35 @@ export default async function ProgrammierenPage() {
         {
           question: 'Kann ich den Schlüssel nicht selbst anlernen?',
           answer:
-            'Bei einigen älteren Fahrzeugen gibt es Anlernvorgänge, die ohne Gerät auskommen. Bei den '
-            + 'meisten Fahrzeugen ist der Zugriff über die Diagnoseschnittstelle nötig. Was für Ihr '
-            + 'Fahrzeug gilt, sagen wir Ihnen vorab.',
+            'Bei einigen älteren Fahrzeugen geht das ohne Gerät. Bei den meisten Fahrzeugen braucht '
+            + 'man die Diagnoseschnittstelle. Was für Ihr Fahrzeug gilt, sagen wir Ihnen vorab.',
         },
         {
           question: 'Wie lange dauert das Anlernen?',
           answer:
-            `Die Standard-Terminlänge liegt bei ${slot}. Bei aufwendigeren Systemen planen wir mehr `
-            + 'Zeit ein. Die für Ihren Fall vorgesehene Dauer sehen Sie im geführten Ablauf, bevor '
-            + 'Sie den Termin bestätigen.',
+            `Ein Standardtermin dauert ${slot}. Bei aufwendigeren Systemen planen wir mehr Zeit ein. `
+            + 'Die Dauer für Ihren Fall sehen Sie in der Anfrage, bevor Sie den Termin bestätigen.',
         },
         {
           question: 'Verliert mein alter Schlüssel dabei seine Funktion?',
           answer:
-            'Das hängt vom Fahrzeug ab. Bei manchen Systemen werden beim Anlernen alle Schlüssel neu '
-            + 'erfasst — deshalb bitten wir darum, sämtliche vorhandenen Schlüssel mitzubringen.',
-        },
-        {
-          question: 'Kann ein verlorener Schlüssel gesperrt werden?',
-          answer:
-            'Bei vielen Fahrzeugen lässt sich ein Schlüssel aus dem Steuergerät entfernen, sodass er '
-            + 'nicht mehr angenommen wird. Ob das bei Ihrem Fahrzeug möglich ist, prüfen wir vor dem '
-            + 'Termin.',
+            'Das hängt vom Fahrzeug ab. Manche Systeme erfassen beim Anlernen alle Schlüssel neu. '
+            + 'Bringen Sie deshalb bitte alle vorhandenen Schlüssel mit.',
         },
         {
           question: 'Ich habe einen Schlüssel online gekauft. Können Sie ihn anlernen?',
           answer:
-            'Bringen Sie ihn gern mit. Ob er zum Fahrzeug passt und sich anlernen lässt, zeigt sich '
-            + 'erst am Fahrzeug. Sagen Sie uns bitte vorher Bescheid, damit wir den Fall richtig '
-            + 'einplanen.',
+            'Bringen Sie ihn gern mit. Ein gebrauchter Schlüssel trägt oft noch die Daten seines '
+            + 'früheren Fahrzeugs. Ob er passt und sich anlernen lässt, zeigt sich erst am Fahrzeug. '
+            + 'Sagen Sie uns bitte vorher Bescheid, damit wir das einplanen.',
         },
       ]}
       next={{
         title: 'Der nächste Schritt',
         lead:
-          'Buchen Sie einen Termin mit Fahrzeug. Vorher sehen Sie, welche Angaben nötig sind und '
+          'Fragen Sie einen Termin mit Fahrzeug an. Vorher sehen Sie, welche Angaben nötig sind und '
           + 'welcher Preis oder Preisrahmen gilt.',
-        primary: { href: '/autoschluessel/anfrage', label: 'Termin mit Fahrzeug starten' },
+        primary: { href: '/autoschluessel/anfrage', label: 'Termin anfragen' },
         secondary: { href: '/autoschluessel/marken', label: 'Fahrzeug nachschlagen' },
       }}
       related={[

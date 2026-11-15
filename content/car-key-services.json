@@ -3,7 +3,7 @@
     "id": "zweitschluessel",
     "slug": "zweitschluessel",
     "label": "Zweitschlüssel anfertigen",
-    "description": "Ein zusätzlicher Schlüssel, während mindestens ein funktionierender Schlüssel vorhanden ist.",
+    "description": "Ein weiterer Schlüssel, solange noch mindestens einer funktioniert.",
     "requiresVehicleOnSite": true,
     "keyKinds": [
       "mechanisch",
@@ -18,7 +18,7 @@
     "id": "ersatz-bei-verlust",
     "slug": "ersatz-bei-verlust",
     "label": "Ersatzschlüssel bei Verlust",
-    "description": "Alle Schlüssel verloren oder beschädigt. Umfang und Machbarkeit werden vorab geprüft.",
+    "description": "Alle Schlüssel sind verloren oder beschädigt. Wir prüfen vorab Umfang und Machbarkeit.",
     "requiresVehicleOnSite": true,
     "keyKinds": [
       "mechanisch",
@@ -33,7 +33,7 @@
     "id": "programmierung",
     "slug": "programmierung",
     "label": "Schlüssel programmieren und anlernen",
-    "description": "Vorhandener oder neuer Schlüssel wird elektronisch am Fahrzeug angelernt.",
+    "description": "Wir lernen einen neuen oder vorhandenen Schlüssel elektronisch am Fahrzeug an.",
     "requiresVehicleOnSite": true,
     "keyKinds": [
       "funk",
@@ -47,7 +47,7 @@
     "id": "bart-fraesen",
     "slug": "bart-fraesen",
     "label": "Schlüsselbart fräsen",
-    "description": "Mechanische Fertigung des Bartes nach Vorlage oder geeigneten Fahrzeugdaten.",
+    "description": "Wir fräsen den Bart nach Vorlage oder nach geeigneten Fahrzeugdaten.",
     "requiresVehicleOnSite": false,
     "keyKinds": [
       "mechanisch",
@@ -60,7 +60,7 @@
     "id": "gehaeuse-reparatur",
     "slug": "gehaeuse-reparatur",
     "label": "Gehäuse, Tasten und Batterie",
-    "description": "Austausch von Gehäuse, Tasten oder Batterie. Die Elektronik bleibt erhalten.",
+    "description": "Wir tauschen Gehäuse, Tasten oder Batterie. Die Elektronik bleibt erhalten.",
     "requiresVehicleOnSite": false,
     "keyKinds": [
       "funk",
@@ -73,7 +73,7 @@
     "id": "fahrzeugoeffnung",
     "slug": "fahrzeugoeffnung",
     "label": "Fahrzeugöffnung",
-    "description": "Zerstörungsfreie Öffnung des Fahrzeugs bei ausgesperrtem Schlüssel.",
+    "description": "Wir öffnen Ihr Fahrzeug zerstörungsfrei, wenn Sie ausgesperrt sind.",
     "requiresVehicleOnSite": true,
     "keyKinds": [
       "mechanisch",

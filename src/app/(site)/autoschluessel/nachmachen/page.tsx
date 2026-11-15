@@ -29,10 +29,10 @@ export default async function NachmachenPage() {
       content={page}
       fallback={{
         headline: 'Autoschlüssel nachmachen',
-        subline: 'Zweitschlüssel und Ersatzschlüssel für Ihr Fahrzeug.',
+        subline: 'Wir fertigen einen Zweitschlüssel oder Ersatzschlüssel für Ihr Fahrzeug.',
         intro:
-          'Ein nachgemachter Autoschlüssel ist ein vollwertiger weiterer Schlüssel: mechanisch '
-          + 'gefertigt und elektronisch am Fahrzeug angelernt.',
+          'Am günstigsten ist ein neuer Schlüssel, solange noch einer funktioniert. Ist keiner mehr '
+          + 'da, prüfen wir Ihren Fall zuerst einzeln. Der Aufwand ist dann deutlich höher.',
       }}
       eyebrow="Leistung"
       crumbs={[
@@ -45,96 +45,82 @@ export default async function NachmachenPage() {
         note: 'Eigene Aufnahme. Kennzeichnungen und Schlüsselnummern unkenntlich machen.',
       }}
       what={{
-        title: 'Was heißt „Autoschlüssel nachmachen“?',
+        title: 'Was wir machen',
         paragraphs: [
-          'Nachmachen umfasst beide Teile eines Autoschlüssels: den mechanischen Bart, der in Tür '
-          + 'und Zündschloss passt, und die Elektronik, die das Fahrzeug erkennt. Erst wenn beide '
-          + 'Teile stimmen, öffnet der Schlüssel das Fahrzeug und startet den Motor.',
-          'Wie aufwendig das ist, hängt vor allem von einer Frage ab: Ist noch ein funktionierender '
-          + 'Schlüssel vorhanden? Wenn ja, lässt sich der neue Schlüssel in aller Regel zügig '
-          + 'anlegen. Wenn nicht, ist der Weg länger, weil zuerst die Berechtigung und die '
-          + 'Fahrzeugdaten geklärt werden müssen.',
-          'Wir sagen Ihnen vor der Terminbestätigung, was in Ihrem Fall möglich ist und was es '
-          + 'kostet. Das kann ein fester Preis sein, ein Preisrahmen oder der Hinweis, dass wir '
-          + 'Ihre Unterlagen zuerst manuell prüfen.',
+          'Ein Autoschlüssel hat zwei Teile. Der Bart ist das Metallteil mit den Einschnitten, es '
+          + 'passt ins Schloss. Die Elektronik sorgt dafür, dass das Fahrzeug den Schlüssel erkennt. '
+          + 'Erst wenn beides stimmt, öffnet der Schlüssel das Fahrzeug und startet den Motor.',
+          'Wir fräsen den Bart und machen den Schlüssel dem Fahrzeug bekannt. Das nennt man '
+          + 'Anlernen.',
+          'Vor der Terminbestätigung sagen wir Ihnen, was möglich ist und was es kostet. Das ist ein '
+          + 'fester Preis, ein Preisrahmen oder der Hinweis, dass wir Ihre Unterlagen zuerst von Hand '
+          + 'prüfen.',
         ],
       }}
       when={{
-        title: 'Wann brauchen Sie einen nachgemachten Schlüssel?',
-        lead: 'Die folgenden Fälle kommen am häufigsten vor.',
+        title: 'Wann Sie einen weiteren Schlüssel brauchen',
         items: [
           {
             title: 'Sie haben nur noch einen Schlüssel',
             body:
-              'Der klassische Zweitschlüssel. Solange ein funktionierender Schlüssel vorhanden ist, '
-              + 'ist dieser Weg der einfachste und planbarste.',
+              'Etwa nach dem Kauf eines Gebrauchtwagens oder wenn mehrere Personen das Fahrzeug '
+              + 'nutzen. Solange ein Schlüssel funktioniert, ist das der einfachste Fall.',
           },
           {
             title: 'Ein Schlüssel ist verloren gegangen',
             body:
-              'Dann geht es nicht nur um einen neuen Schlüssel, sondern auch um die Frage, ob der '
-              + 'verlorene aus dem Fahrzeug entfernt werden soll. Beides klären wir gemeinsam.',
+              'Wir fertigen einen neuen Schlüssel. Dabei klären wir mit Ihnen, ob der verlorene aus '
+              + 'dem Fahrzeug entfernt werden soll.',
           },
           {
             title: 'Es ist kein Schlüssel mehr da',
             body:
-              'Ein Sonderfall mit deutlich höherem Aufwand. Wir prüfen Ihre Unterlagen und die '
-              + 'Machbarkeit, bevor ein Termin bestätigt wird.',
+              'Das ist deutlich aufwendiger. Wir prüfen Ihre Unterlagen und ob es machbar ist, bevor '
+              + 'wir einen Termin bestätigen.',
             hint: ON_SITE_HINT,
           },
           {
-            title: 'Der vorhandene Schlüssel ist beschädigt',
+            title: 'Der Schlüssel ist beschädigt',
             body:
-              'Gebrochener Bart, defekte Elektronik oder Wasserschaden. Je nach Befund reicht eine '
-              + 'Reparatur, sonst wird ein neuer Schlüssel angelegt.',
-          },
-          {
-            title: 'Mehrere Personen nutzen das Fahrzeug',
-            body:
-              'Familie, Betrieb oder Fahrgemeinschaft — ein weiterer Schlüssel macht den Alltag '
-              + 'einfacher und verhindert Übergabeprobleme.',
-          },
-          {
-            title: 'Gebrauchtwagen mit nur einem Schlüssel',
-            body:
-              'Bei einem Fahrzeugkauf fehlt oft der zweite Schlüssel. Ein Nachbau lohnt sich, bevor '
-              + 'der letzte Schlüssel verloren geht.',
+              'Zum Beispiel ein gebrochener Bart, defekte Elektronik oder ein Wasserschaden. '
+              + 'Manchmal reicht eine Reparatur. Sonst fertigen wir einen neuen Schlüssel.',
           },
         ],
       }}
       need={{
         title: 'Was wir von Ihnen brauchen',
         lead:
-          'Je vollständiger Ihre Angaben sind, desto genauer können wir Preis und Termin nennen. '
-          + 'Alles wird im geführten Ablauf abgefragt.',
+          'Alles fragen wir Schritt für Schritt in der Anfrage ab. Je genauer Ihre Angaben sind, desto '
+          + 'genauer nennen wir Preis und Termin.',
         items: [
           {
             title: 'Fahrzeugdaten',
-            body: 'Marke, Modell, Baujahr und — soweit bekannt — die Schlüsselart.',
+            body: 'Marke, Modell und Baujahr. Wenn Sie es wissen, auch die Art des Schlüssels.',
           },
           {
-            title: 'Fotos Ihres Schlüssels',
+            title: 'Drei Fotos Ihres Schlüssels',
             body:
-              'Drei Aufnahmen aus unterschiedlichen Richtungen: Vorderseite, Rückseite und der Bart '
-              + 'von der Seite. Daran erkennen wir Gehäuse, Rohling und Elektronik.',
+              'Vorderseite, Rückseite und den Bart von der Seite. Daran erkennen wir Gehäuse, '
+              + 'Elektronik und den passenden Rohling, also den noch ungefrästen Schlüssel.',
           },
           {
-            title: 'Fahrzeugschein',
+            title: 'Ein Foto des Fahrzeugscheins',
             body:
-              'Eine lesbare Aufnahme der Zulassungsbescheinigung Teil I. Sie ordnet das Fahrzeug '
-              + 'eindeutig zu.',
+              'Eine gut lesbare Aufnahme der Zulassungsbescheinigung Teil I. Damit ordnen wir das '
+              + 'Fahrzeug eindeutig zu.',
           },
           {
-            title: 'Anzahl der funktionierenden Schlüssel',
+            title: 'Wie viele Schlüssel noch funktionieren',
             body:
-              'Diese Angabe entscheidet über Aufwand und Ablauf. Bitte geben Sie sie ehrlich an — '
-              + 'sie ändert nichts an der Bearbeitung, aber viel an der Planung.',
+              'Diese Zahl bestimmt Aufwand und Ablauf. Bitte geben Sie sie genau an. An der '
+              + 'Bearbeitung ändert sie nichts, an der Planung viel.',
           },
           {
-            title: 'Nachweis der Verfügungsberechtigung beim Termin',
+            title: 'Ihr Nachweis beim Termin',
             body:
-              'Ausweisdokument und Fahrzeugschein. Ohne diesen Nachweis fertigen wir keinen '
-              + 'Fahrzeugschlüssel an.',
+              'Sie zeigen uns Ihren Ausweis und den Fahrzeugschein. Steht das Fahrzeug nicht auf '
+              + 'Ihren Namen, brauchen wir zusätzlich eine Vollmacht des Halters. Ohne diesen '
+              + 'Nachweis fertigen wir keinen Fahrzeugschlüssel an.',
           },
         ],
         note:
@@ -143,32 +129,25 @@ export default async function NachmachenPage() {
           + `${settings.retentionDays.vehicleRegistration} Tage. Danach werden sie gelöscht.`,
       }}
       boundary={{
-        title: 'Abgrenzung — was hier nicht gemeint ist',
-        lead: 'Die Begriffe werden im Alltag oft vermischt. Diese Leistungen sind etwas anderes.',
+        title: 'Was nicht dazugehört',
         items: [
           {
-            title: 'Kopieren ist nicht dasselbe',
+            title: 'Eine Kopie ist kein vollwertiger Schlüssel',
             body:
-              'Eine Kopie bildet nur den mechanischen Bart ab. Bei Fahrzeugen mit Wegfahrsperre '
-              + 'öffnet sie höchstens die Tür, startet aber den Motor nicht.',
-          },
-          {
-            title: 'Programmieren allein reicht nicht',
-            body:
-              'Ist noch gar kein passender Rohling vorhanden, muss zuerst der Bart gefertigt werden. '
-              + 'Programmieren ist der zweite Schritt, nicht der erste.',
+              'Eine Kopie hat nur den Bart. Viele Fahrzeuge haben eine Wegfahrsperre, die den Motor '
+              + 'nur mit einem angemeldeten Schlüssel freigibt. Dort öffnet eine Kopie höchstens die '
+              + 'Tür.',
           },
           {
             title: 'Fahrzeugöffnung ist eine eigene Leistung',
             body:
-              'Wenn der Schlüssel im Fahrzeug liegt, hilft zunächst die Öffnung. Ein Ersatzschlüssel '
+              'Liegt der Schlüssel im Fahrzeug, hilft zuerst eine Öffnung. Ein Ersatzschlüssel '
               + 'entsteht dabei nicht.',
           },
           {
-            title: 'Kein Versandschlüssel bei Anlernpflicht',
+            title: 'Kein Versand, wenn angelernt werden muss',
             body:
-              'Muss der Schlüssel am Fahrzeug angelernt werden, lässt sich das nicht per Post lösen. '
-              + 'Dann ist ein Termin mit Fahrzeug der richtige Weg.',
+              'Das Anlernen geht nur am Fahrzeug. Dann brauchen Sie einen Termin mit Fahrzeug.',
           },
         ],
       }}
@@ -176,50 +155,49 @@ export default async function NachmachenPage() {
         {
           question: 'Wie lange dauert es, bis ich den neuen Schlüssel habe?',
           answer:
-            `Der früheste Termin liegt etwa ${leadDays} Tage in der Zukunft. Diese Zeit brauchen wir, `
-            + 'um den passenden Schlüssel zu beschaffen. Bei Fahrzeugen mit aufwendigeren Systemen '
-            + 'kann der Vorlauf länger sein — den genauen Wert sehen Sie im geführten Ablauf, bevor '
-            + 'Sie buchen.',
+            `Der früheste Termin liegt etwa ${leadDays} Tage in der Zukunft. So lange brauchen wir, `
+            + 'um den passenden Schlüssel zu beschaffen. Bei aufwendigeren Systemen kann es länger '
+            + 'dauern. Den genauen Wert sehen Sie in der Anfrage, bevor Sie buchen.',
         },
         {
           question: 'Warum ist eine Anzahlung nötig?',
           answer:
-            `Die Anzahlung von standardmäßig ${deposit} sichert Ihren Termin und die Beschaffung des `
-            + 'Schlüssels. Sie wird vollständig auf den Gesamtpreis angerechnet.',
+            `Die Anzahlung beträgt standardmäßig ${deposit}. Sie sichert Ihren Termin und die `
+            + 'Beschaffung des Schlüssels. Wir rechnen sie vollständig auf den Gesamtpreis an.',
         },
         {
           question: 'Kann ich einen Schlüssel aus dem Internet mitbringen?',
           answer:
-            'Bringen Sie ihn gern zum Termin mit. Ob er zu Ihrem Fahrzeug passt und sich anlernen '
-            + 'lässt, prüfen wir vor Ort. Passt er nicht, entfällt dadurch nicht der Aufwand für die '
-            + 'Prüfung — deshalb sagen Sie uns bitte vorher Bescheid, damit wir das einplanen.',
+            'Ja, bringen Sie ihn gern zum Termin mit. Ob er passt und sich anlernen lässt, prüfen wir '
+            + 'vor Ort. Passt er nicht, bleibt der Aufwand für die Prüfung trotzdem. Sagen Sie uns '
+            + 'deshalb bitte vorher Bescheid.',
         },
         {
           question: 'Muss ich alle vorhandenen Schlüssel mitbringen?',
           answer:
-            'Ja, bitte bringen Sie alle Schlüssel mit, die zum Fahrzeug gehören. Bei manchen '
-            + 'Fahrzeugen werden beim Anlernen alle Schlüssel neu erfasst. Fehlt einer, funktioniert '
-            + 'er danach unter Umständen nicht mehr.',
+            'Ja, bitte bringen Sie alle Schlüssel des Fahrzeugs mit. Bei manchen Fahrzeugen werden '
+            + 'beim Anlernen alle Schlüssel neu erfasst. Ein fehlender Schlüssel funktioniert danach '
+            + 'unter Umständen nicht mehr.',
         },
         {
           question: 'Was ist, wenn ich den verlorenen Schlüssel wiederfinde?',
           answer:
-            'Sagen Sie uns bitte Bescheid, bevor der Termin stattfindet. Je nach Fahrzeug und '
-            + 'gewähltem Umfang ändert das den Ablauf und teilweise auch den Preis.',
+            'Sagen Sie uns bitte vor dem Termin Bescheid. Je nach Fahrzeug und Umfang ändern sich '
+            + 'dann der Ablauf und teilweise auch der Preis.',
         },
       ]}
       next={{
         title: 'Der nächste Schritt',
         lead:
-          'Wählen Sie Ihr Fahrzeug aus und laden Sie Ihre Fotos hoch. Sie sehen Preis oder '
-          + 'Preisrahmen, bevor Sie etwas verbindlich buchen.',
-        primary: { href: '/autoschluessel/anfrage', label: 'Fahrzeug auswählen' },
-        secondary: { href: '/autoschluessel/marken', label: 'Erst Fahrzeug nachschlagen' },
+          'Wählen Sie Ihr Fahrzeug aus und laden Sie die Fotos hoch. Preis oder Preisrahmen sehen '
+          + 'Sie, bevor Sie verbindlich buchen.',
+        primary: { href: '/autoschluessel/anfrage', label: 'Termin anfragen' },
+        secondary: { href: '/autoschluessel/marken', label: 'Fahrzeug nachschlagen' },
       }}
       related={[
         { href: '/autoschluessel/kopieren', label: 'Autoschlüssel kopieren', description: 'Was eine mechanische Kopie leistet' },
         { href: '/autoschluessel/schluesselbart-fraesen', label: 'Schlüsselbart fräsen', description: 'Der mechanische Teil im Detail' },
-        { href: '/ratgeber/autoschluessel-verloren-was-tun', label: 'Autoschlüssel verloren — was tun?', description: 'Die richtige Reihenfolge' },
+        { href: '/ratgeber/autoschluessel-verloren-was-tun', label: 'Autoschlüssel verloren', description: 'Was Sie jetzt in welcher Reihenfolge tun' },
         { href: '/autoschluessel', label: 'Alle Autoschlüssel-Leistungen', description: 'Zurück zur Übersicht' },
       ]}
     />

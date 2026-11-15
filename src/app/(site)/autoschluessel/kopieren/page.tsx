@@ -23,9 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
 const KOPIE_HINT: InfoHint = {
   title: 'Kopie oder vollwertiger Schlüssel?',
   body:
-    'Eine Kopie bildet allein den mechanischen Bart ab. Ein vollwertiger Schlüssel enthält '
-    + 'zusätzlich die Elektronik, die das Fahrzeug erkennt. Welche Variante Sie brauchen, hängt '
-    + 'davon ab, ob Ihr Fahrzeug eine Wegfahrsperre hat.',
+    'Eine Kopie hat nur den mechanischen Bart. Ein vollwertiger Schlüssel hat zusätzlich die '
+    + 'Elektronik, die das Fahrzeug erkennt. Was Sie brauchen, hängt davon ab, ob Ihr Fahrzeug eine '
+    + 'Wegfahrsperre hat.',
   figure: {
     motif: 'Vergleichsfoto: reiner Bartschlüssel neben vollständigem Funkschlüssel',
     ratio: '3/2',
@@ -40,10 +40,11 @@ export default async function KopierenPage() {
       content={page}
       fallback={{
         headline: 'Autoschlüssel kopieren',
-        subline: 'Mechanische Kopie nach Vorlage — und was sie leistet.',
+        subline: 'Wir kopieren den mechanischen Teil Ihres Autoschlüssels nach Vorlage.',
         intro:
-          'Eine mechanische Kopie bildet den Bart des Originals ab. Ob sie in Ihrem Fall ausreicht, '
-          + 'hängt vom Fahrzeug ab.',
+          'Die Kopie passt ins Schloss und öffnet bei vielen Fahrzeugen die Tür. Den Motor startet '
+          + 'sie dort aber nicht. Der Kopie fehlt der Transponder, ein kleiner Chip im Schlüssel. Ohne ihn '
+          + 'gibt die Wegfahrsperre den Motor nicht frei. Was in Ihrem Fall reicht, klären wir vorab.',
       }}
       eyebrow="Leistung"
       crumbs={[
@@ -56,74 +57,59 @@ export default async function KopierenPage() {
         note: 'Eigene Aufnahme, Original und Rohling nebeneinander im Spannfutter.',
       }}
       what={{
-        title: 'Was eine Kopie genau ist',
+        title: 'Was wir machen',
         paragraphs: [
-          'Beim Kopieren übertragen wir die Einschnitte eines vorhandenen Schlüssels auf einen '
-          + 'passenden Rohling. Das Ergebnis ist ein Schlüssel, der mechanisch genauso arbeitet wie '
-          + 'das Original: Er passt in dasselbe Schloss.',
-          'Die Elektronik wird dabei nicht übertragen. Hat Ihr Fahrzeug eine Wegfahrsperre, öffnet '
-          + 'die Kopie in vielen Fällen zwar die Tür, startet aber den Motor nicht. Das ist kein '
-          + 'Fehler der Kopie, sondern die beabsichtigte Wirkung der Wegfahrsperre.',
-          'Deshalb klären wir vorab, welches System Ihr Fahrzeug hat. Auf dieser Grundlage sagen wir '
-          + 'Ihnen, ob eine Kopie für Ihren Zweck genügt oder ob zusätzlich programmiert werden muss.',
+          'Wir übertragen die Einschnitte Ihres Schlüssels auf einen passenden Rohling, also einen '
+          + 'noch ungefrästen Schlüssel. Die Kopie arbeitet mechanisch genauso wie das Original.',
+          'Die Elektronik wird nicht mitkopiert. Deshalb startet die Kopie den Motor oft nicht. Das '
+          + 'ist kein Fehler, so soll die Wegfahrsperre wirken.',
+          'Wir klären vorab, welches System Ihr Fahrzeug hat. Dann sagen wir Ihnen, ob eine Kopie '
+          + 'reicht oder ob zusätzlich programmiert werden muss.',
         ],
       }}
       when={{
-        title: 'Wann reicht eine Kopie aus?',
-        lead: 'In diesen Fällen ist die rein mechanische Anfertigung der richtige Weg.',
+        title: 'Wann eine Kopie reicht',
         items: [
           {
-            title: 'Fahrzeuge ohne Wegfahrsperre',
+            title: 'Ihr Fahrzeug hat keine Wegfahrsperre',
             body:
               'Bei älteren Fahrzeugen ohne elektronische Wegfahrsperre ist die Kopie ein vollwertiger '
               + 'Schlüssel.',
             hint: KOPIE_HINT,
           },
           {
-            title: 'Zweitschlüssel nur zum Aufschließen',
+            title: 'Der Schlüssel soll nur aufschließen',
             body:
-              'Wenn der Schlüssel ausschließlich Türen, Heckklappe oder Handschuhfach öffnen soll '
-              + 'und nicht zum Starten gedacht ist.',
+              'Etwa für Türen, Heckklappe oder Handschuhfach oder als Reserve für den Notfall. Zubehör '
+              + 'wie Dachbox oder Anhängerkupplung hat oft eigene Schlösser. Auch diese Schlüssel '
+              + 'kopieren wir.',
           },
           {
-            title: 'Reserveschlüssel für den Notfall',
+            title: 'Der Originalbart ist abgenutzt',
             body:
-              'Ein mechanischer Schlüssel, der zu Hause liegt und im Ernstfall wenigstens den Zugang '
-              + 'zum Fahrzeug sichert.',
+              'Ein schwergängiger Schlüssel kann im Schloss abbrechen. Ein sauber gefräster Bart '
+              + 'beugt dem vor.',
           },
           {
-            title: 'Abgenutzter Originalbart',
+            title: 'Als erster Schritt zum vollwertigen Schlüssel',
             body:
-              'Wenn der vorhandene Schlüssel schwergängig geworden ist, hilft ein sauber gefräster '
-              + 'Bart — bevor er im Schloss abbricht.',
-          },
-          {
-            title: 'Zusatzschlüssel für Anhängerkupplung oder Dachbox',
-            body:
-              'Zubehör am Fahrzeug hat häufig eigene Schließungen ohne jede Elektronik.',
-          },
-          {
-            title: 'Als Vorstufe zum vollwertigen Schlüssel',
-            body:
-              'Der Bart wird gefräst, die Elektronik kommt in einem zweiten Schritt dazu. Das ist bei '
-              + 'vielen Aufträgen der übliche Ablauf.',
+              'Zuerst fräsen wir den Bart, danach kommt die Elektronik dazu. So laufen viele Aufträge '
+              + 'ab.',
           },
         ],
       }}
       need={{
         title: 'Was wir von Ihnen brauchen',
-        lead: 'Für eine Kopie ist eine brauchbare Vorlage entscheidend.',
+        lead: 'Für eine Kopie brauchen wir eine gute Vorlage.',
         items: [
           {
-            title: 'Fotos des vorhandenen Schlüssels',
+            title: 'Drei Fotos des Schlüssels',
             body:
-              'Drei Aufnahmen: Vorderseite, Rückseite und der Bart von der Seite, möglichst scharf '
-              + 'und gut ausgeleuchtet.',
+              'Vorderseite, Rückseite und den Bart von der Seite. Bitte scharf und gut ausgeleuchtet.',
           },
           {
             title: 'Fahrzeugdaten',
-            body:
-              'Marke, Modell und Baujahr. Daraus ergibt sich, ob und welche Elektronik im Spiel ist.',
+            body: 'Marke, Modell und Baujahr. Daran sehen wir, ob Elektronik im Spiel ist.',
           },
           {
             title: 'Schlüsselnummer, falls vorhanden',
@@ -132,45 +118,45 @@ export default async function KopierenPage() {
               + 'Anfertigung erleichtern.',
           },
           {
-            title: 'Angabe, wofür der Schlüssel gedacht ist',
+            title: 'Wofür der Schlüssel gedacht ist',
             body:
-              'Nur öffnen oder auch starten? Diese Angabe entscheidet darüber, ob eine Kopie '
-              + 'ausreicht.',
+              'Sagen Sie uns, ob er nur öffnen oder auch starten soll. Davon hängt ab, ob eine Kopie '
+              + 'reicht.',
           },
           {
-            title: 'Nachweis der Verfügungsberechtigung',
+            title: 'Ihr Nachweis beim Termin oder bei der Abholung',
             body:
-              'Ausweisdokument und Fahrzeugschein beim Termin oder bei der Abholung.',
+              'Sie zeigen uns Ihren Ausweis und den Fahrzeugschein. Steht das Fahrzeug nicht auf '
+              + 'Ihren Namen, brauchen wir zusätzlich eine Vollmacht des Halters.',
           },
         ],
       }}
       boundary={{
-        title: 'Abgrenzung — was eine Kopie nicht kann',
-        lead: 'Diese Punkte sind der häufigste Grund für Missverständnisse. Bitte lesen Sie sie.',
+        title: 'Was eine Kopie nicht kann',
         items: [
           {
-            title: 'Eine Kopie ersetzt keinen Transponder',
+            title: 'Kein Transponder',
             body:
-              'Der Chip im Original wird nicht mitkopiert. Bei Fahrzeugen mit Wegfahrsperre '
-              + 'startet der Motor deshalb nicht.',
+              'Der Chip des Originals wird nicht mitkopiert. Bei Fahrzeugen mit Wegfahrsperre startet '
+              + 'der Motor deshalb nicht.',
           },
           {
-            title: 'Keine Funkfunktion',
+            title: 'Keine Funktasten',
             body:
               'Ver- und Entriegeln per Knopfdruck ist eine elektronische Funktion. Sie entsteht beim '
               + 'Kopieren nicht.',
           },
           {
-            title: 'Kein Ersatz bei Totalverlust',
+            title: 'Keine Kopie ohne Vorlage',
             body:
-              'Ohne vorhandenen Schlüssel gibt es keine Vorlage. Dann ist der Weg über Ersatz und '
-              + 'Programmierung der richtige.',
+              'Ist kein Schlüssel mehr da, gibt es nichts zu kopieren. Dann führt der Weg über Ersatz '
+              + 'und Programmierung.',
           },
           {
-            title: 'Kein Nachbau bei beschädigter Vorlage',
+            title: 'Keine Kopie einer beschädigten Vorlage',
             body:
-              'Ist der Bart verbogen oder stark abgenutzt, würde die Kopie den Fehler übernehmen. '
-              + 'Wir sagen Ihnen vorher, wenn die Vorlage nicht taugt.',
+              'Ist der Bart verbogen oder stark abgenutzt, würde die Kopie den Fehler übernehmen. Wir '
+              + 'sagen es Ihnen vorher, wenn die Vorlage nicht taugt.',
           },
         ],
       }}
@@ -178,37 +164,35 @@ export default async function KopierenPage() {
         {
           question: 'Woran erkenne ich, ob mein Fahrzeug eine Wegfahrsperre hat?',
           answer:
-            'Ein Anhaltspunkt ist das Baujahr: Bei neueren Fahrzeugen ist eine elektronische '
-            + 'Wegfahrsperre die Regel. Sicher sagen können wir es anhand von Marke, Modell, Baujahr '
-            + 'und Ihren Schlüsselfotos.',
+            'Ein Hinweis ist das Baujahr. Bei neueren Fahrzeugen ist eine elektronische Wegfahrsperre '
+            + 'die Regel. Sicher sagen wir es anhand von Marke, Modell, Baujahr und Ihren '
+            + 'Schlüsselfotos.',
         },
         {
           question: 'Kann ich später noch programmieren lassen?',
           answer:
-            'Ja. Wenn der Rohling passt und die nötige Elektronik aufgenommen werden kann, ist die '
-            + 'Programmierung als zweiter Schritt möglich. Dafür ist dann ein Termin mit Fahrzeug '
-            + 'erforderlich.',
+            'Ja, wenn der Rohling passt und die nötige Elektronik aufnehmen kann. Dafür brauchen Sie '
+            + 'dann einen Termin mit Fahrzeug.',
         },
         {
           question: 'Muss ich meinen Originalschlüssel einschicken?',
           answer:
-            'In vielen Fällen nicht. Für die erste Einschätzung reichen Fotos. Ob wir für die '
-            + 'Anfertigung das Original benötigen, sagen wir Ihnen nach der Prüfung.',
+            'In vielen Fällen nicht. Für die erste Einschätzung reichen Fotos. Ob wir das Original '
+            + 'brauchen, sagen wir Ihnen nach der Prüfung.',
         },
         {
           question: 'Kopieren Sie jeden Autoschlüssel?',
           answer:
-            'Wir prüfen jeden Fall einzeln. Maßgeblich sind die Bauform, die Verfügbarkeit eines '
-            + 'passenden Rohlings und Ihr Nachweis der Verfügungsberechtigung. Wenn wir etwas nicht '
-            + 'anfertigen können, sagen wir das vor der Beauftragung.',
+            'Wir prüfen jeden Fall einzeln. Es kommt auf die Bauform, einen passenden Rohling und '
+            + 'Ihren Nachweis an. Können wir etwas nicht anfertigen, sagen wir es vor der Beauftragung.',
         },
       ]}
       next={{
         title: 'Der nächste Schritt',
         lead:
-          'Für Fahrzeugschlüssel nutzen Sie den geführten Ablauf. Für Schlüssel ohne Fahrzeugbezug '
-          + 'ist die Anfrage nach Vorlage der passende Weg.',
-        primary: { href: '/autoschluessel/anfrage', label: 'Fahrzeug auswählen' },
+          'Für Fahrzeugschlüssel nutzen Sie die geführte Anfrage. Für Schlüssel ohne Fahrzeugbezug '
+          + 'ist die Anfrage nach Vorlage der richtige Weg.',
+        primary: { href: '/autoschluessel/anfrage', label: 'Termin anfragen' },
         secondary: { href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' },
       }}
       related={[
@@ -226,10 +210,9 @@ export default async function KopierenPage() {
           className="max-w-2xl"
         />
         <Alert tone="warning" title="Bitte vor der Beauftragung lesen" className="mt-6">
-          Eine mechanische Kopie öffnet bei vielen Fahrzeugen die Tür, startet aber den Motor nicht.
-          Wenn Sie einen Schlüssel brauchen, mit dem Sie auch fahren können, ist zusätzlich das
-          Anlernen der Elektronik nötig. Was Ihr Fahrzeug benötigt, sagen wir Ihnen, bevor Sie
-          beauftragen.
+          Eine Kopie öffnet bei vielen Fahrzeugen die Tür, startet aber den Motor nicht. Wollen Sie
+          mit dem Schlüssel auch fahren, muss zusätzlich die Elektronik angelernt werden. Was Ihr
+          Fahrzeug braucht, sagen wir Ihnen vor der Beauftragung.
         </Alert>
       </Section>
     </ServiceArticle>
