@@ -101,3 +101,13 @@ Prüfung nach der Nachbesserung:
 
 Zählung neu: pkw 72 Marken, 1.004 Reihen (380 neu aus FZ 2.2, vorher 390); kraftrad 57 Marken, 1.910 Reihen (Brutale ORO kommt hinzu); insgesamt 2.914 Zeilen. FZ 2.2: 13.161 Typzeilen entsprechen einer Reihe, 227 nur Ausstattungswörter, 803 ohne sichere Marke, 92 Name einer anderen Marke. Ausgelieferte Katalogdaten (gzip): pkw 89.417 Byte (14.548), kraftrad 252.847 Byte (33.180).
 
+
+## ABNAHME (Orchestrator, 15.11.2026)
+
+- **Prüfkette grün** (`werkzeuge/abnahme.sh FA-KERN-01`): Typprüfung, Lint, Unit 2.602 Tests in 188 Dateien (enthält Tests gleichzeitig laufender Pakete), Datenbanktests 99 in 16 Dateien, Build ohne Datenbank 168 von 168 Seiten.
+- **Sichtprobe im Browser** (Attrappen, kein Abruf nach außen): Autoschlüssel-Assistent 1440 × 900 „vw golf“ → Volkswagen Golf als Vorschlag; 390 × 844 „mini countryman“ → MINI Countryman mit „Anfrage mit Fahrzeugschein und Schlüsselfoto“; Motorradweg 1440 × 900 „kawasaki z900“ → Kawasaki Z900 an erster Stelle. Keine Fehler in der Konsole.
+- **Zwei Mängel aus der Sichtprobe behoben:**
+  1. Motorradsuche auf dem Telefon: Die Treffer lagen unter der festen Leiste des Ablaufs. `motorrad-suche.tsx` holt neue Treffer jetzt wie die Autosuche ins Bild; „Kein Treffer“ nennt den Ausweg (Hersteller und Typ selbst eintragen).
+  2. Reihenfolge der Treffer: „Vespa GTS“ zeigte die Vespa GTV zuerst, weil sie „GTS“ als weiteren Namen führt und häufiger ist. `sucheFahrzeuge` gibt einem Treffer im Namen der Reihe jetzt einen Aufschlag vor einem Treffer, der nur über Alias oder Generation zustande kommt (`NAMENS_BONUS`, mit Test). Das gilt für alle Wege; die bestehenden Tests zur Reihenfolge bleiben grün.
+- **Offene Fragen entschieden:** Cupra-Modelle, die das KBA unter SEAT führt, bleiben SEAT (kein amtlicher Beleg für eine andere Zuordnung; „Cupra Born“ findet sie). Die 803 Handelsnamen ohne sichere Marke bleiben draußen (R4). Die Liste der Krafträder wird erst beim ersten Gebrauch geladen (33 KB gepackt); sie bleibt vollständig.
+- **Für Menschen:** MA-37 (Generationen), MA-43 (Fahrzeugdatenbank bestätigen: belegte Listen im Import, neue Marken, Quellenvermerk).

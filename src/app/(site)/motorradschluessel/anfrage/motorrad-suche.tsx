@@ -1,11 +1,12 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { useKatalog } from '@/components/autoschluessel/fahrzeug-suche';
 import { KATALOG_ADRESSE, type KatalogEintrag } from '@/components/autoschluessel/fahrzeug-ziel';
 import { TextInput } from '@/components/forms/controls';
 import { Field } from '@/components/forms/field';
+import { scrollVerhalten } from '@/lib/bewegung';
 import { sucheFahrzeuge } from '@/lib/fahrzeuge/suche';
 
 /**
@@ -14,12 +15,19 @@ import { sucheFahrzeuge } from '@/lib/fahrzeuge/suche';
  */
 export function MotorradSuche({ onWahl }: { onWahl: (eintrag: KatalogEintrag) => void }) {
   const [text, setText] = useState('');
+  const liste = useRef<HTMLUListElement>(null);
   const { status, katalog, laden } = useKatalog(KATALOG_ADRESSE.kraftrad);
   const suche = text.trim();
   const treffer = useMemo(
     () => (suche.length >= 2 ? sucheFahrzeuge(suche, katalog, { hoechstens: 6, klasse: 'kraftrad' }).map((t) => t.reihe) : []),
     [suche, katalog],
   );
+
+  // Neue Treffer ins Bild holen: Auf dem Telefon läge die Liste sonst unter der festen Leiste des Ablaufs.
+  const anzahl = treffer.length;
+  useEffect(() => {
+    if (anzahl > 0) liste.current?.scrollIntoView?.({ block: 'nearest', behavior: scrollVerhalten() });
+  }, [anzahl]);
 
   return (
     <div className="space-y-3">
@@ -55,7 +63,7 @@ export function MotorradSuche({ onWahl }: { onWahl: (eintrag: KatalogEintrag) =>
       )}
 
       {treffer.length > 0 && (
-        <ul className="divide-y divide-border rounded-lg border border-border bg-surface" aria-label="Treffer">
+        <ul ref={liste} className="scroll-mb-48 divide-y divide-border rounded-lg border border-border bg-surface" aria-label="Treffer">
           {treffer.map((eintrag) => (
             <li key={eintrag.id}>
               <button
@@ -73,7 +81,7 @@ export function MotorradSuche({ onWahl }: { onWahl: (eintrag: KatalogEintrag) =>
         </ul>
       )}
       {suche.length >= 2 && status === 'bereit' && treffer.length === 0 && (
-        <p className="text-small text-foreground-muted">Kein Treffer für „{suche}“.</p>
+        <p className="text-small text-foreground-muted">Kein Treffer für „{suche}“. Tragen Sie Hersteller und Typ bitte unten selbst ein.</p>
       )}
     </div>
   );

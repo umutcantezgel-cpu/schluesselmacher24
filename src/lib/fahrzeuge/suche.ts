@@ -77,6 +77,9 @@ function wortPunkte(wort: string, woerter: string[]): number {
   return beste;
 }
 
+/** Aufschlag je Suchwort, das im Namen der Reihe selbst trifft; größer als der Unterschied durch den Bestand. */
+const NAMENS_BONUS = 0.75;
+
 /** Felder, die die Suche liest; ein schlanker Index für den Browser genügt (E4-OPUS-05). */
 export type SuchReihe = Pick<FahrzeugReihe, 'marke' | 'reihe' | 'alias' | 'bestand' | 'sichtbar' | 'klasse'> & {
   /** Bezeichnungen der Generationen („Golf 7“, „W205“) als weitere Treffertexte. */
@@ -111,6 +114,8 @@ export function sucheFahrzeuge<T extends SuchReihe = FahrzeugReihe>(
   for (const reihe of katalog) {
     if (!reihe.sichtbar) continue;
     if (klasse && (reihe.klasse ?? 'pkw') !== klasse) continue;
+    const name = normalisiere([reihe.marke, reihe.reihe].join(' '));
+    const namensWoerter = name.split(' ').concat(name.replace(/ /g, ''));
     const text = normalisiere([reihe.marke, reihe.reihe, ...(reihe.alias ?? []), ...(reihe.generationen ?? []).map((g) => g.bezeichnung)].join(' '));
     const eigene = text.split(' ').concat(text.replace(/ /g, ''));
     let summe = 0;
@@ -124,7 +129,9 @@ export function sucheFahrzeuge<T extends SuchReihe = FahrzeugReihe>(
         alle = false;
         break;
       }
-      summe += p;
+      // Ein Treffer im Namen der Reihe zählt etwas mehr als einer, der nur über einen weiteren Namen (Alias,
+      // Generation) zustande kommt: „Vespa GTS“ zeigt die GTS vor der GTV, die „GTS“ nur als Alias führt.
+      summe += p + (wortPunkte(wort, namensWoerter) >= p ? NAMENS_BONUS : 0);
     }
     if (!alle || summe === 0) continue;
     const gewicht = reihe.bestand ? Math.log10(reihe.bestand + 1) / 10 : 0;

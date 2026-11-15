@@ -335,3 +335,24 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Zwei Ebenen: Der Ortsstamm (alle Gemeinden) ist reine Stammdaten ohne Seiten. Ortsseiten bleiben redaktionelle Einträge, verweisen auf den Stamm und werden nur indexiert, wenn sie eigenen Text und einen Leistungsweg haben (Werkstatt, freigeschalteter Partner oder eingetragene Verfügbarkeit). So ist die Forderung „alle Gemeinden technisch verfügbar“ erfüllt, ohne eine einzige Brückenseite zu erzeugen (R2, R3; der Inhaber verlangt dasselbe).
 - Anhang A wird als Prioritätsliste mit Gemeindeschlüsseln geführt; aus ihr entsteht keine Seite automatisch. Suchvolumen und Fahrzeit bleiben leere, pflegbare Felder (R4).
 - Umkehrprobe: Der Stamm ist additiv; ohne ihn arbeiten die Ortsseiten wie bisher.
+
+## A-052 · Hub mit genau den 14 Hauptzugängen des Inhabers (2026-11-15 17:20, FA-SOFORT-05, FA-03)
+- Der Inhaber nennt 14 Hauptzugänge in fester Reihenfolge. Der Bestand zeigt elf Kacheln, darunter „Autoschlüsselgehäuse“ und „Beratung“, die in seiner Liste nicht stehen.
+- Entscheidung: Der Hub zeigt genau seine 14 Zugänge in seiner Reihenfolge. „Schlüssel einschicken beziehungsweise Schlüssel nach Vorlage“ ist eine Kachel („Schlüssel nach Vorlage oder einschicken“) zur Vorlage-Seite, die in beide Wege führt. „Autoschlüsselgehäuse“ verliert die Kachel und wird Shop-Kategorie (FA-SHOP-02). „Beratung“ wird zur Kachel „Allgemeine Anfrage“ für Sonderfälle; die Beratungsseite bleibt in der Navigation. Namen folgen dem Inhaber („Elektronische Zutrittslösungen“, „Service vor Ort nach Termin“), Kennungen und Adressen bleiben. Auf dem Telefon stehen alle Kacheln und die Zeile „Anrufen“ ohne Scrollen im Bild; dafür werden die Kacheln flacher, nicht kleiner in der Schrift als 13 Pixel.
+- Umkehrprobe: Hub-Haken und Reihenfolge sind Daten im Admin; jede Kachel lässt sich dort wieder ein- oder ausblenden.
+
+## A-053 · Mailwerte der Umgebung: Hinweis statt Abbruch (2026-11-15 13:35, FA-KERN-06, FA-24)
+- Die Gegenprüfung verlangte, dass die Livegang-Prüfung auch Absender, Antwortadresse und Betriebsempfänger aus der Umgebung auf die eigene Domain prüft. Als harter Fund hielte das jede Veröffentlichung an, solange das Postfach `info@schluesselmacher24.de` nicht eingerichtet ist (MA-32), und ein erzwungener Wechsel vorher ließe Antworten von Kunden ins Leere laufen.
+- Entscheidung: Die Firmen-E-Mail in den Einstellungen bleibt ein harter Fund. Die drei Mailwerte der Umgebung werden geprüft und als Hinweis ausgegeben, ohne den Build abzubrechen. Die Anleitung `docs/betrieb/mail-einrichten.md` nennt die Reihenfolge: erst Postfach und DNS, dann die Werte umstellen.
+- Umkehrprobe: Sobald MA-32 erledigt ist, genügt eine Zeile im Runner, um die Hinweise zu Funden zu machen.
+
+## A-054 · Normen und Zusagen ohne Beleg gestrichen; Strukturdaten der Leistungsseiten aus dem sichtbaren Kurztext (2026-11-15 13:40, FA-INHALT-03B, -03C)
+- Bei der Überarbeitung der Texte standen Aussagen ohne Beleg im Bestand: Empfehlung RC2 und RC3 nach DIN EN 1627, T30, „zertifiziert“ für Flucht- und Rettungswegtechnik, Verschlüsselungsangaben (AES-128, MIFARE DESFire, Bluetooth Low Energy), „häufigste Einbruchmethode“.
+- Entscheidung: Was weder in den Daten noch im Fachwissen belegt ist, steht nicht mehr auf der Seite (R4). DIN EN 179 und DIN EN 1125 bleiben, weil der Nachweis dafür angelegt ist, aber ohne „zertifiziert“, bis das Dokument vorliegt (MA-42). Die Seitenauszeichnung der Leistungsseiten nennt den sichtbaren Kurztext statt der Meta-Beschreibung (R8).
+- Umkehrprobe: Jede gestrichene Angabe steht in den Berichten und in MA-41 und MA-42; mit Quelle kommt sie zurück.
+
+## A-055 · Upload-Paket in zwei Teilen; Treffer im Namen vor Treffern über Alias (2026-11-15 17:40, FA-KERN-01, FA-KERN-02, FA-KERN-02B)
+- FA-KERN-02 war für einen Lauf zu groß (Schema, Serverregel, drei bestehende Wege, Admin, dazu ein neuer gemeinsamer Ablauf für sechs Klassen mit vier neuen Seiten). Nach der Unterbrechung am Nutzungslimit zählt, dass jeder Teil für sich geprüft und abgenommen werden kann.
+- Entscheidung: FA-KERN-02 baut Steckplätze und die eine Pflichtregel in die bestehenden Wege ein und legt die Klassen als Daten an. FA-KERN-02B baut darauf die gemeinsame Anfrage, die Einstiegsseiten und „Fahrzeug nicht gefunden?“. FA-SOFORT-05 folgt nach Teil B.
+- Suche: Ein Suchwort, das im Namen der Reihe trifft, zählt mehr als eines, das nur über einen weiteren Namen (Alias, Generation) trifft. Sonst stünde bei „Vespa GTS“ die häufigere Vespa GTV vorn, die „GTS“ nur als weiteren Namen führt.
+- Umkehrprobe: Der Aufschlag ist eine Konstante in `src/lib/fahrzeuge/suche.ts`; die Teilung der Pakete ändert nichts am Ergebnis.

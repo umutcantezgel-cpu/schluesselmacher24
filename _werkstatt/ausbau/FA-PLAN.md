@@ -17,13 +17,13 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 | FA-SOFORT-03 | Leistung „Schlüssel nach Foto“ entfernen, Rubrik „Schlüssel nach Vorlage“ | FA-03, FA-12 | nein (Datenmigration Kennung) | committet 9c61bca, Migration berichtigt 01fb7cc |
 | FA-SOFORT-04 | Demo-Daten raus: Beispiel-Codelinien und Beispielartikel nie live, „Code anfragen“ | FA-10-02, FA-11-02, FA-11-17 | nein | committet 97087fe |
 | FA-SOFORT-05A | Vier Fach-Icons: Roller, E-Scooter, Seniorenmobil, Fahrradschlüssel | FA-03 | nein | committet 93273e0 |
-| FA-SOFORT-05 | Hauptzugänge im Hub nach FA-03 (14 Einträge), Rubriken und Navigation; die Anfragewege baut FA-KERN-02 | FA-03, FA-06-05/06/14 | ja (Rubrik-Werte) | Paketdatei liegt vor (A-052 folgt mit der Umsetzung); startet nach FA-KERN-02 |
+| FA-SOFORT-05 | Hauptzugänge im Hub nach FA-03 (14 Einträge), Rubriken und Navigation; die Anfragewege baut FA-KERN-02 | FA-03, FA-06-05/06/14 | ja (Rubrik-Werte) | Paketdatei liegt vor (A-052); startet nach FA-KERN-02B |
 
 ## Priorität 2 · Kern
 | Paket | Inhalt | Anforderungen | Schema | Status |
 |---|---|---|---|---|
-| FA-KERN-01 | Fahrzeugdatenbank: Fahrzeugklasse, Generationen mit Bauzeitraum, Quelle je Zeile, Importweg aus amtlicher und offener Quelle, Suche über alle Klassen, Marken A bis Z mit Untermarken | FA-06-01 bis -08, -U3 | ja | läuft |
-| FA-KERN-02 | Pflichtuploads serverseitig (Fahrzeugschein, drei Schlüsselfotos, Beschreibung) in allen Fahrzeugschlüssel-Wegen; „Fahrzeug nicht gefunden?“ überall mit Telefon und direkter Hilfe; Ersatzunterlage bei Kleinstfahrzeugen | FA-06-09 bis -17, -U1, -U2, FA-05-10, FA-05-11, FA-12-01, FA-12-03 | nein | offen |
+| FA-KERN-01 | Fahrzeugdatenbank: Fahrzeugklasse, Generationen mit Bauzeitraum, Quelle je Zeile, Importweg aus amtlicher und offener Quelle, Suche über alle Klassen, Marken A bis Z mit Untermarken | FA-06-01 bis -08, -U3 | ja | committet (Unit 2.603, DB 99, Build 168/168, Sichtprobe der Suche auf Telefon und Desktop) |
+| FA-KERN-02 | Pflichtuploads serverseitig (Fahrzeugschein, drei Schlüsselfotos, Beschreibung) in allen Fahrzeugschlüssel-Wegen; „Fahrzeug nicht gefunden?“ überall mit Telefon und direkter Hilfe; Ersatzunterlage bei Kleinstfahrzeugen | FA-06-09 bis -17, -U1, -U2, FA-05-10, FA-05-11, FA-12-01, FA-12-03 | nein | geteilt (A-055): Teil 1 FA-KERN-02 (Steckplätze, Pflichtregel, bestehende Wege, Admin) als Nächstes; Teil 2 FA-KERN-02B (gemeinsame Anfrage für alle Klassen, Einstiegsseiten, „Fahrzeug nicht gefunden?“) danach |
 | FA-KERN-03 | Auftragsweg und Zahlung: Hauptzentrale, Eigenbereich, Partner aus Postleitzahl und Terminort; Anzahlung 69,90 nur im Direktweg; Partnerauftrag erst nach Vollzahlung; Anzeige vor der Zahlung; Restbetrag | FA-05-12 bis -16, -20, FA-22-17 bis -19 | ja | offen |
 | FA-KERN-04 | Partnerauszahlung im Admin: Partnerbetrag, Plattformanteil, Status bis „zur Auszahlung freigegeben“, Freigabe nach Bestätigung, Storno und Rückzahlung mit eindeutigem Stand | FA-05-17 bis -19, FA-22-20 bis -24, -27 | ja | offen, nach FA-KERN-03 und Recherche 04 |
 | FA-KERN-05 | Admin Alltag: Kundenkontakt aus dem Auftrag mit Verlauf, Verfügbarkeit, Lieferzeit, Bestellung bearbeiten, Duplizieren geprüft | FA-22-02, -09, -10, -12, -13, -15, -16 | ja | offen |

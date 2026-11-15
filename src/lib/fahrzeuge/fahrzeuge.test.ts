@@ -78,6 +78,19 @@ describe('sucheFahrzeuge', () => {
     expect(sucheFahrzeuge('zeta neu', KATALOG)).toEqual([]);
   });
 
+  it('stellt einen Treffer im Namen der Reihe vor einen, der nur über einen Alias trifft', () => {
+    // Erfundene Bestandszahlen (G4): Die Reihe mit dem Alias ist viel häufiger und stünde ohne die Regel vorn.
+    const roller = [
+      reihe('Piaggio', 'Vespa GTV', 900_000, { klasse: 'kraftrad', alias: ['Vespa GTS'] }),
+      reihe('Piaggio', 'Vespa GTS', 40, { klasse: 'kraftrad' }),
+      reihe('Piaggio', 'Vespa GTS 125', 30, { klasse: 'kraftrad' }),
+    ];
+    const namen = sucheFahrzeuge('Vespa GTS', roller, { klasse: 'kraftrad' }).map((t) => t.reihe.reihe);
+    expect(namen).toEqual(['Vespa GTS', 'Vespa GTS 125', 'Vespa GTV']);
+    // Der Alias findet weiter: Wer nur den Alias kennt, kommt ans Ziel.
+    expect(sucheFahrzeuge('gts', [roller[0]], { klasse: 'kraftrad' })[0]?.reihe.reihe).toBe('Vespa GTV');
+  });
+
   it('findet zu einer Untermarke auch Reihen der Stammmarke, eigene zuerst (FA-06-U3)', () => {
     const mitUntermarke = [...KATALOG, reihe('SEAT', 'Leon', 400_000), reihe('SEAT', 'Born', 5_000), reihe('Cupra', 'Formentor', 50_000)];
     expect(sucheFahrzeuge('cupra formentor', mitUntermarke)[0]?.reihe.marke).toBe('Cupra');
