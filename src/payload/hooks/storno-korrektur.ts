@@ -34,18 +34,20 @@ export const KORREKTUR_MELDUNG = {
 } as const;
 
 type Korrektur = NonNullable<Vorgaenge['korrekturen']>[number];
+/** Nur der Betrag; im Formular kann er noch fehlen. */
+type KorrekturBetrag = { betragCent?: number | null };
 
 const ganzeZahl = (wert: unknown): number | undefined =>
   wert === null || wert === undefined || wert === '' || !Number.isFinite(Number(wert)) ? undefined : Math.round(Number(wert));
 
 /** Summe nach Korrektur: festgeschriebene Gesamtsumme plus alle Korrekturen. `null` ohne Summe. */
-export function summeNachKorrektur(gesamtCent: number | null | undefined, korrekturen: ReadonlyArray<Pick<Korrektur, 'betragCent'>> | null | undefined): number | null {
+export function summeNachKorrektur(gesamtCent: number | null | undefined, korrekturen: ReadonlyArray<KorrekturBetrag> | null | undefined): number | null {
   if (typeof gesamtCent !== 'number' || !Number.isFinite(gesamtCent)) return null;
   return (korrekturen ?? []).reduce((summe, k) => summe + (ganzeZahl(k.betragCent) ?? 0), gesamtCent);
 }
 
 /** Anzeige neben den Summen: ursprüngliche Summe, Korrekturen, Summe nach Korrektur. `null` ohne Korrektur. */
-export function korrekturText(gesamtCent: number | null | undefined, korrekturen: ReadonlyArray<Pick<Korrektur, 'betragCent'>> | null | undefined): string | null {
+export function korrekturText(gesamtCent: number | null | undefined, korrekturen: ReadonlyArray<KorrekturBetrag> | null | undefined): string | null {
   if (!korrekturen?.length) return null;
   const nach = summeNachKorrektur(gesamtCent, korrekturen);
   if (nach === null) return null;
