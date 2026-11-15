@@ -7,6 +7,7 @@ import { scrollVerhalten } from '@/lib/bewegung';
 
 import { Field } from '@/components/forms/field';
 import { TextInput } from '@/components/forms/controls';
+import { FahrzeugNichtGefunden } from '@/components/fahrzeug-anfrage/nicht-gefunden';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { sucheFahrzeuge } from '@/lib/fahrzeuge/suche';
 import type { VehicleMake } from '@/lib/types';
@@ -64,7 +65,7 @@ export interface FahrzeugWahl {
 const HINWEIS: Record<FahrzeugZiel['art'], string> = {
   gepflegt: 'Preis und Termin online',
   marke: 'Termin nach Prüfung Ihrer Angaben',
-  anfrage: 'Anfrage mit Fahrzeugschein und Schlüsselfoto',
+  anfrage: 'Anfrage mit Fahrzeugschein und drei Schlüsselfotos',
 };
 
 /**
@@ -74,6 +75,8 @@ const HINWEIS: Record<FahrzeugZiel['art'], string> = {
  * in die Anfrage (G-15). „Nicht dabei“ führt immer in die Anfrage. Mit `onVorschlag` meldet die Suche den
  * ersten wählbaren Treffer, damit „Weiter“ ihn übernehmen kann (A-025); er trägt dann die Marke
  * „Vorschlag“. Ohne `mitQuelle` steht die Quelle des Katalogs nicht hier, sondern beim Aufrufer.
+ * Unter der Suche steht fest der Block „Fahrzeug nicht gefunden?“ mit Telefon (FA-KERN-02B); ein Aufrufer,
+ * der ihn selbst am Ende seines Schritts zeigt, schaltet ihn mit `nichtGefunden={false}` hier ab.
  */
 export function FahrzeugSuche({
   katalogAdresse,
@@ -81,12 +84,18 @@ export function FahrzeugSuche({
   onWahl,
   onVorschlag,
   mitQuelle = true,
+  nichtGefunden = true,
+  telefon,
 }: {
   katalogAdresse: string;
   makes: VehicleMake[];
   onWahl: (wahl: FahrzeugWahl) => void;
   onVorschlag?: (wahl: FahrzeugWahl | null) => void;
   mitQuelle?: boolean;
+  /** Block „Fahrzeug nicht gefunden?“ unter der Suche (Standard: an). */
+  nichtGefunden?: boolean;
+  /** Telefonnummer aus den Einstellungen für den Block. */
+  telefon?: string;
 }) {
   const [text, setText] = useState('');
   const liste = useRef<HTMLUListElement>(null);
@@ -178,7 +187,7 @@ export function FahrzeugSuche({
             return (
               <li key={eintrag.id}>
                 {ziel.art === 'anfrage' ? (
-                  <Link href={anfrageHref(ziel.name)} className={klasse}>
+                  <Link href={anfrageHref({ marke: eintrag.marke, reihe: eintrag.reihe })} className={klasse}>
                     {inhalt}
                   </Link>
                 ) : (
@@ -200,6 +209,8 @@ export function FahrzeugSuche({
           </Link>
         </p>
       )}
+
+      {nichtGefunden && <FahrzeugNichtGefunden telefon={telefon} href={anfrageHref(suche.length >= 2 ? suche : undefined)} />}
 
       {mitQuelle && <p className="text-caption text-foreground-muted">{KATALOG_QUELLE}</p>}
     </div>

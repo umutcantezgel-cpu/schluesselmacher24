@@ -3,6 +3,8 @@
 import { Button, toast, useAuth, useConfig } from '@payloadcms/ui';
 import { useState, type FormEvent } from 'react';
 
+import { ANFRAGE_KLASSEN_DATEN, FORMULAR_KLASSEN, klassenFilter } from '../../lib/fahrzeuge/anfrage-klassen';
+
 /* Über der Liste der Vorgänge: Telefontermin eintragen und Produktionsliste
    (Team), CSV-Export für die Buchhaltung (nur Inhaber). */
 
@@ -119,6 +121,28 @@ function CsvExport({ api }: { api: string }) {
   );
 }
 
+/** Fertige Filter je Fahrzeugklasse der gemeinsamen Anfrage (FA-KERN-02B): die Liste zeigt nur diese Klasse. */
+function NachFahrzeugklasse() {
+  return (
+    <div className="sm24-werkzeug__formular">
+      <div className="sm24-aktion__zeile">
+        {FORMULAR_KLASSEN.map((klasse) => (
+          <a key={klasse} className="btn btn--style-secondary btn--size-small" href={klassenFilter(klasse).suche}>
+            {ANFRAGE_KLASSEN_DATEN[klasse].bezeichnung}
+          </a>
+        ))}
+        <a className="btn btn--style-secondary btn--size-small" href="?">
+          Alle Vorgänge
+        </a>
+      </div>
+      <p className="field-description">
+        Zeigt nur die Fahrzeugschlüssel-Anfragen dieser Klasse (Feld „Fahrzeugklasse“ im Vorgang). Ältere
+        Motorradanfragen vor dem 15.11.2026 tragen keine Klasse und erscheinen hier nicht.
+      </p>
+    </div>
+  );
+}
+
 export function VorgaengeWerkzeuge() {
   const { config } = useConfig();
   const { user } = useAuth();
@@ -141,6 +165,10 @@ export function VorgaengeWerkzeuge() {
             Hinweisen — zum Drucken oder als PDF speichern.
           </p>
         </div>
+      </details>
+      <details>
+        <summary>Anfragen nach Fahrzeugklasse</summary>
+        <NachFahrzeugklasse />
       </details>
       {rollen.includes('inhaber') && (
         <details>

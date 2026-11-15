@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
+import { UnterlagenAusRegel, robotsFuer } from '@/components/fahrzeug-anfrage/seiten';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { ButtonLink } from '@/components/ui/button';
 import { getPageContent, getRubrik } from '@/lib/data';
@@ -20,8 +21,10 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.seo.title ?? 'Motorradschlüssel nachmachen lassen: Anfrage mit Fotos',
     description:
       page?.seo.description
-      ?? 'Motorradschlüssel anfragen: Typ, Baujahr, Angabe zum Chip, Fotos von Schlüssel und Fahrzeugschein. Wir melden uns mit Preis und Termin.',
+      ?? 'Motorradschlüssel anfragen mit Fahrzeugschein, drei Fotos des Schlüssels und einer kurzen Beschreibung. Wir melden uns mit Preis und Termin.',
     alternates: { canonical: `/${ROUTE}` },
+    // Schalter `indexierbar` der Klasse (ANFRAGE_FORMULAR.motorrad), wie bei den anderen Klassen.
+    ...robotsFuer('motorrad'),
   };
 }
 
@@ -74,8 +77,21 @@ export default async function MotorradschluesselPage() {
         <SectionHeading id="chip-titel" nummer="02" eyebrow="Wegfahrsperre" title="Chip im Schlüssel" />
         <p className="mt-6 max-w-measure text-body leading-relaxed text-foreground-muted">
           Ein Motorrad mit Wegfahrsperre springt ohne den passenden Chip im Schlüssel nicht an. Deshalb fragen wir, ob Ihr
-          Schlüssel einen Chip hat. Wenn Sie es nicht wissen, wählen Sie „weiß nicht“; wir klären es anhand Ihrer Fotos.
+          Schlüssel einen Chip hat. Wenn Sie es nicht wissen, wählen Sie „Weiß ich nicht“; wir klären es anhand Ihrer Fotos.
         </p>
+      </Section>
+
+      {/* 03 Unterlagen aus der Pflichtregel, nicht von Hand abgeschrieben (FA-KERN-02B) */}
+      <Section labelledBy="unterlagen-titel">
+        <SectionHeading id="unterlagen-titel" nummer="03" eyebrow="Für die Anfrage" title="Das brauchen wir von Ihnen" />
+        <div className="mt-6 max-w-3xl">
+          <UnterlagenAusRegel klasse="motorrad" />
+        </div>
+        <div className="mt-8">
+          <ButtonLink href={ANFRAGE} pfeil>
+            Anfrage stellen
+          </ButtonLink>
+        </div>
       </Section>
     </>
   );

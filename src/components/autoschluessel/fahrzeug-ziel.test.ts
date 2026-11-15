@@ -50,10 +50,14 @@ describe('Fahrzeugwahl aus dem Katalog (G-14, G-15)', () => {
     }
   });
 
-  it('baut die Anfrage mit vorbelegtem Fahrzeug, gekürzt und kodiert', () => {
-    expect(anfrageHref()).toBe('/service-und-termin/anfrage?thema=autoschluessel');
-    expect(anfrageHref('Dacia Sandero')).toBe('/service-und-termin/anfrage?thema=autoschluessel&fahrzeug=Dacia%20Sandero');
+  it('führt „Fahrzeug nicht gefunden“ in die Anfrage mit Unterlagen, nicht in die allgemeine Anfrage (FA-KERN-02B)', () => {
+    expect(anfrageHref()).toBe('/autoschluessel/fahrzeug-nicht-gefunden');
+    expect(anfrageHref('Dacia Sandero')).toBe('/autoschluessel/fahrzeug-nicht-gefunden?fahrzeug=Dacia%20Sandero');
     expect(decodeURIComponent(anfrageHref('x'.repeat(200)).split('fahrzeug=')[1])).toHaveLength(80);
+    // Treffer des Katalogs: Marke und Reihe getrennt, damit mehrteilige Marken stimmen.
+    expect(anfrageHref({ marke: 'Alfa Romeo', reihe: 'Giulia' })).toBe('/autoschluessel/fahrzeug-nicht-gefunden?marke=Alfa%20Romeo&modell=Giulia');
+    expect(anfrageHref({ marke: 'Lada' })).toBe('/autoschluessel/fahrzeug-nicht-gefunden?marke=Lada');
+    expect(anfrageHref()).not.toContain('service-und-termin');
   });
 
   it('nennt die Quelle des Katalogs nach Datenlizenz (MA-17)', () => {

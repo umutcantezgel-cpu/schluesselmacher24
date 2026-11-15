@@ -88,6 +88,16 @@ describe('vorgangsblattInhalt', () => {
     expect(zahlung?.zeilen?.find((z) => z.name === 'Zahlungsbeleg')?.wert).toBe('Stripe pi_TEST123');
   });
 
+  it('nennt die Fahrzeugklasse der gemeinsamen Anfrage im Kopf, sonst nicht (FA-KERN-02B)', () => {
+    const anfrage = vorgang({ kind: 'anfrage', area: 'autoschluessel', payload: { quelle: 'fahrzeug-anfrage', klasse: 'roller', roller: 'versicherungskennzeichen' } });
+    const kopf = vorgangsblattInhalt({ vorgang: anfrage, firma: echteEinstellungen().company, jetzt: JETZT }).kopf;
+    expect(kopf.find((z) => z.name === 'Fahrzeugklasse')?.wert).toBe('Roller, Mofa oder Moped, mit Versicherungskennzeichen');
+    expect(blatt.kopf.some((z) => z.name === 'Fahrzeugklasse')).toBe(false);
+    const html = vorgangsblattHtml({ vorgang: anfrage, firma: echteEinstellungen().company, nonce: 'n', jetzt: JETZT });
+    expect(html).toContain('Fahrzeugklasse');
+    expect(html).toContain('Roller, Mofa oder Moped, mit Versicherungskennzeichen');
+  });
+
   it('hat für jeden Status einen nächsten Schritt', () => {
     for (const status of STATUS_REIHENFOLGE) expect(NAECHSTER_SCHRITT[status].length, status).toBeGreaterThan(5);
   });

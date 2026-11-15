@@ -172,7 +172,7 @@ export interface BenutzerAuthOperations {
   };
 }
 /**
- * Alle Bestellungen, Anfragen, Termine, Projekte und Partner-Bewerbungen. Neueste oben. Partner-Bewerbungen haben die Art „Partner-Bewerbung“ und Nummern mit „N“ (z. B. SM24-N-2026-0001); die Firma steht unter „Kontakt“. Vermittelte Aufträge: Spalte „Stand der Vermittlung“ oder Filter.
+ * Alle Bestellungen, Anfragen, Termine, Projekte und Partner-Bewerbungen. Neueste oben. Partner-Bewerbungen haben die Art „Partner-Bewerbung“ und Nummern mit „N“ (z. B. SM24-N-2026-0001); die Firma steht unter „Kontakt“. Vermittelte Aufträge: Spalte „Stand der Vermittlung“ oder Filter. Fahrzeugschlüssel-Anfragen einer Klasse: oben „Anfragen nach Fahrzeugklasse“.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "vorgaenge".
@@ -193,6 +193,7 @@ export interface Vorgaenge {
     | 'service-und-termin';
   prozess: 'direktkauf' | 'gefuehrte-anfrage' | 'projektkonfigurator' | 'termin-mit-anzahlung';
   telefonterminHinweis?: string | null;
+  fahrzeugklasse?: string | null;
   status:
     | 'neu'
     | 'in-pruefung'
@@ -1887,6 +1888,7 @@ export interface VorgaengeSelect<T extends boolean = true> {
   bereich?: T;
   prozess?: T;
   telefonterminHinweis?: T;
+  fahrzeugklasse?: T;
   status?: T;
   kundeInformieren?: T;
   nachrichtAnKunde?: T;

@@ -40,6 +40,7 @@ import {
 } from '@/components/autoschluessel/optionen';
 import { FahrzeugSuche, type FahrzeugWahl } from '@/components/autoschluessel/fahrzeug-suche';
 import { anfrageHref, KATALOG_QUELLE, type KatalogEintrag } from '@/components/autoschluessel/fahrzeug-ziel';
+import { FahrzeugNichtGefunden } from '@/components/fahrzeug-anfrage/nicht-gefunden';
 import { ETAPPEN } from '@/components/autoschluessel/etappen';
 import { PreisAnzeige } from '@/components/autoschluessel/preis-anzeige';
 import { TerminAuswahl } from '@/components/autoschluessel/termin-auswahl';
@@ -73,7 +74,7 @@ const FLOW_VERSION = 2;
 /** Kennung für „Modell nicht in der Liste“. */
 const OTHER_MODEL = '__nicht-aufgefuehrt';
 
-/** Allgemeine Anfrage mit vorgewähltem Bereich, wenn die Marke fehlt. */
+/** „Fahrzeug nicht gefunden?“: Anfrage mit Fahrzeugschein, drei Schlüsselfotos und Beschreibung (FA-KERN-02B). */
 const ANFRAGE_OHNE_MARKE = anfrageHref();
 
 const VIN_PATTERN = /^[A-HJ-NPR-Z0-9]{17}$/i;
@@ -1062,7 +1063,7 @@ export function Assistent({
         <div className="space-y-4">
           {katalogAdresse && (
             <>
-              <FahrzeugSuche katalogAdresse={katalogAdresse} makes={makes} onWahl={fahrzeugGewaehlt} onVorschlag={setVorschlag} mitQuelle={false} />
+              <FahrzeugSuche katalogAdresse={katalogAdresse} makes={makes} onWahl={fahrzeugGewaehlt} onVorschlag={setVorschlag} mitQuelle={false} nichtGefunden={false} />
               <p className="pt-2 font-mono text-caption uppercase tracking-label text-foreground-muted">Oder Marke wählen</p>
             </>
           )}
@@ -1079,13 +1080,8 @@ export function Assistent({
               />
             ))}
           </div>
-          {/* Fehlt die Marke, führt der Weg über die allgemeine Anfrage mit vorgewähltem Bereich. */}
-          <p className="text-small leading-relaxed text-foreground-muted">
-            Mein Fahrzeug ist nicht dabei:{' '}
-            <Link href={ANFRAGE_OHNE_MARKE} className="font-semibold text-primary hover:underline">
-              Anfrage mit Fahrzeugschein und Schlüsselfoto
-            </Link>
-          </p>
+          {/* Fester Block am Ende des Fahrzeugschritts (FA-KERN-02B): Fahrzeug nicht gefunden, mit Telefon. */}
+          <FahrzeugNichtGefunden href={ANFRAGE_OHNE_MARKE} telefon={werkstatt?.telefon} erreichbarkeit={erreichbarkeit} />
           {/* Quelle des Katalogs am Ende des Schritts statt im Arbeitsfluss (A-025, MA-17) */}
           {katalogAdresse && <p className="text-caption text-foreground-muted">{KATALOG_QUELLE}</p>}
         </div>

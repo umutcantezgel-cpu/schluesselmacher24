@@ -716,5 +716,212 @@
       }
     },
     "updatedAt": "2026-10-25T00:00:00.000Z"
+  },
+  {
+    "route": "roller-und-kleinstfahrzeuge",
+    "headline": "Schlüssel für Roller, Mofa und Moped",
+    "subline": "Anfrage mit Fahrzeugschein oder einem anderen Nachweis und drei Fotos Ihres Schlüssels. Wir prüfen Ihre Angaben und melden uns.",
+    "intro": "Ob mit Fahrzeugschein oder mit Versicherungskennzeichen: Sie senden uns Ihre Angaben, Fotos und einen Nachweis. Wir prüfen, was möglich ist.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Rollerschlüssel und Mopedschlüssel",
+      "description": "Schlüssel für Roller, Mofa oder Moped anfragen: mit Fahrzeugschein oder Versicherungskennzeichen, drei Fotos des Schlüssels und kurzer Beschreibung.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Autoschlüssel"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel für Roller, Mofa und Moped",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-15T00:00:00.000Z"
+  },
+  {
+    "route": "roller-und-kleinstfahrzeuge/anfrage",
+    "headline": "Schlüssel für Roller, Mofa oder Moped anfragen",
+    "subline": "Sechs Schritte: Fahrzeug, Schlüssel, Unterlagen, Beschreibung, Kontakt und Absenden. Mit der Anfrage entsteht noch kein Vertrag.",
+    "intro": "",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Roller, Mofa oder Moped: Anfrage",
+      "description": "Anfrage für einen Rollerschlüssel: Hersteller und Typ, Fahrzeugschein oder Nachweis zum Versicherungskennzeichen, drei Fotos des Schlüssels.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Autoschlüssel"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel für Roller, Mofa oder Moped anfragen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-15T00:00:00.000Z"
+  },
+  {
+    "route": "e-scooter",
+    "headline": "Schlüssel für E-Scooter und ähnliche Elektrofahrzeuge",
+    "subline": "Anfrage mit einem Nachweis zum Fahrzeug und drei Fotos Ihres Schlüssels. Wir prüfen Ihre Angaben und melden uns.",
+    "intro": "E-Scooter haben keinen Fahrzeugschein. Sie senden uns deshalb einen anderen Nachweis, dazu Typenschild oder Fahrzeug-Identifizierungsnummer.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Schlüssel für E-Scooter anfragen",
+      "description": "Schlüssel für E-Scooter und ähnliche Elektrofahrzeuge anfragen: Nachweis statt Fahrzeugschein, Typenschild, drei Fotos des Schlüssels.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Autoschlüssel"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel für E-Scooter und ähnliche Elektrofahrzeuge",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-15T00:00:00.000Z"
+  },
+  {
+    "route": "e-scooter/anfrage",
+    "headline": "Schlüssel für E-Scooter anfragen",
+    "subline": "Sechs Schritte: Fahrzeug, Schlüssel, Unterlagen, Beschreibung, Kontakt und Absenden. Mit der Anfrage entsteht noch kein Vertrag.",
+    "intro": "",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "E-Scooter: Anfrage mit Nachweis",
+      "description": "Anfrage für den Schlüssel eines E-Scooters: Hersteller und Typ, ein Nachweis wie Kaufbeleg oder Datenbestätigung, Typenschild und drei Fotos.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Autoschlüssel"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel für E-Scooter anfragen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-15T00:00:00.000Z"
+  },
+  {
+    "route": "seniorenmobile",
+    "headline": "Schlüssel für Seniorenmobile und vergleichbare Fahrzeuge",
+    "subline": "Anfrage mit einem Nachweis zum Fahrzeug und drei Fotos Ihres Schlüssels. Wir prüfen Ihre Angaben und melden uns.",
+    "intro": "Seniorenmobile haben meist keinen Fahrzeugschein. Sie senden uns deshalb einen anderen Nachweis, dazu Typenschild oder Fahrzeug-Identifizierungsnummer.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Schlüssel für Seniorenmobile",
+      "description": "Schlüssel für Seniorenmobil, Elektromobil oder Krankenfahrstuhl anfragen: Nachweis zum Fahrzeug, Typenschild und drei Fotos des Schlüssels.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Autoschlüssel"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel für Seniorenmobile und vergleichbare Fahrzeuge",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-15T00:00:00.000Z"
+  },
+  {
+    "route": "seniorenmobile/anfrage",
+    "headline": "Schlüssel für ein Seniorenmobil anfragen",
+    "subline": "Sechs Schritte: Fahrzeug, Schlüssel, Unterlagen, Beschreibung, Kontakt und Absenden. Mit der Anfrage entsteht noch kein Vertrag.",
+    "intro": "",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Seniorenmobil: Anfrage mit Nachweis",
+      "description": "Anfrage für den Schlüssel eines Seniorenmobils: Hersteller und Typ, Betriebserlaubnis, Versicherungsbescheinigung oder Kaufbeleg und drei Fotos.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Autoschlüssel"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel für ein Seniorenmobil anfragen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-15T00:00:00.000Z"
+  },
+  {
+    "route": "fahrradschluessel",
+    "headline": "Schlüssel für Fahrradschlösser",
+    "subline": "Anfrage mit Hersteller und Schlüsselnummer des Schlosses, einem Nachweis und drei Fotos Ihres Schlüssels.",
+    "intro": "Beim Fahrradschlüssel zählt das Schloss, nicht das Fahrrad. Hersteller und Schlüsselnummer helfen uns, den passenden Schlüssel zu finden.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Fahrradschlüssel nachmachen lassen",
+      "description": "Schlüssel für Ihr Fahrradschloss anfragen: Hersteller und Schlüsselnummer, Kaufbeleg oder Codekarte und drei Fotos des Schlüssels genügen uns.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Autoschlüssel"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel für Fahrradschlösser",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-15T00:00:00.000Z"
+  },
+  {
+    "route": "fahrradschluessel/anfrage",
+    "headline": "Fahrradschlüssel anfragen",
+    "subline": "Sechs Schritte: Schloss, Schlüssel, Unterlagen, Beschreibung, Kontakt und Absenden. Mit der Anfrage entsteht noch kein Vertrag.",
+    "intro": "",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Fahrradschlüssel: Anfrage",
+      "description": "Anfrage für einen Fahrradschlüssel: Hersteller und Schlüsselnummer des Schlosses, Kaufbeleg oder Codekarte und drei Fotos Ihres Schlüssels.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Autoschlüssel"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Fahrradschlüssel anfragen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-15T00:00:00.000Z"
+  },
+  {
+    "route": "autoschluessel/fahrzeug-nicht-gefunden",
+    "headline": "Fahrzeug nicht gefunden? Anfrage stellen",
+    "subline": "Ihr Fahrzeug ist in unserer Suche nicht dabei? Senden Sie uns Fahrzeugdaten, Fahrzeugschein, drei Fotos des Schlüssels und eine kurze Beschreibung.",
+    "intro": "",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Fahrzeug nicht gefunden: Anfrage",
+      "description": "Ihr Fahrzeug ist nicht in unserer Suche? Senden Sie Marke, Modell, Baujahr, Fahrzeugschein, drei Fotos des Schlüssels und eine kurze Beschreibung.",
+      "internalLinks": [
+        {
+          "href": "/autoschluessel",
+          "label": "Autoschlüssel"
+        }
+      ],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Fahrzeug nicht gefunden? Anfrage stellen",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-15T00:00:00.000Z"
   }
 ]

@@ -8,6 +8,7 @@ import { druckansichten } from '../hooks/druckansichten';
 import { terminAktionen } from '../hooks/termin-aktionen';
 import { vorgangNachAenderung, vorgangVorAenderung } from '../hooks/vorgang-benachrichtigen';
 import { KATEGORIE_LABEL } from '../../lib/druckansichten';
+import { fahrzeugklasseText } from '../../lib/fahrzeuge/anfrage-klassen';
 import { unterlagenHinweis } from '../../lib/server/unterlagen-pflicht';
 import type { UploadRef } from '../../lib/types';
 import { dateiBezeichnung } from '../../lib/wege/nachweis';
@@ -128,7 +129,8 @@ export const Vorgaenge: CollectionConfig = {
     description:
       'Alle Bestellungen, Anfragen, Termine, Projekte und Partner-Bewerbungen. Neueste oben. '
       + 'Partner-Bewerbungen haben die Art „Partner-Bewerbung“ und Nummern mit „N“ (z. B. SM24-N-2026-0001); '
-      + 'die Firma steht unter „Kontakt“. Vermittelte Aufträge: Spalte „Stand der Vermittlung“ oder Filter.',
+      + 'die Firma steht unter „Kontakt“. Vermittelte Aufträge: Spalte „Stand der Vermittlung“ oder Filter. '
+      + 'Fahrzeugschlüssel-Anfragen einer Klasse: oben „Anfragen nach Fahrzeugklasse“.',
     components: {
       // Telefontermin eintragen (Team) und CSV-Export für die Buchhaltung (Inhaber).
       beforeListTable: ['/payload/components/VorgaengeWerkzeuge#VorgaengeWerkzeuge'],
@@ -188,6 +190,22 @@ export const Vorgaenge: CollectionConfig = {
               ? 'Telefonisch vereinbart: ohne Online-Anzahlung und ohne Zustimmungen aus dem Assistenten.'
               : null,
         ],
+      },
+    },
+    {
+      // Fahrzeugklasse der gemeinsamen Fahrzeugschlüssel-Anfrage (FA-KERN-02B), aus daten.klasse. Nur Anzeige,
+      // nicht gespeichert (virtuell, keine Migration). Gespeichert und filterbar ist daten.klasse: Über der Liste
+      // stehen fertige Filter je Klasse (VorgaengeWerkzeuge, „Anfragen nach Fahrzeugklasse“, klassenFilter).
+      name: 'fahrzeugklasse',
+      type: 'text',
+      label: 'Fahrzeugklasse',
+      virtual: true,
+      admin: {
+        readOnly: true,
+        condition: (data) => fahrzeugklasseText(data?.daten as Record<string, unknown> | null | undefined) !== null,
+      },
+      hooks: {
+        afterRead: [({ siblingData }) => fahrzeugklasseText(siblingData?.daten as Record<string, unknown> | null | undefined)],
       },
     },
     {

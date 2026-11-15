@@ -1,4 +1,5 @@
 import type { FahrzeugKlasse, FahrzeugReihe, VehicleMake } from '@/lib/types';
+import { NICHT_GEFUNDEN_ADRESSE } from '@/lib/fahrzeuge/anfrage-klassen';
 import type { SuchReihe } from '@/lib/fahrzeuge/suche';
 
 /** Schlanker Eintrag des Fahrzeugkatalogs für die Suche im Browser (G-14). */
@@ -71,7 +72,7 @@ export type FahrzeugZiel =
   | { art: 'gepflegt'; makeSlug: string; modelSlug: string; name: string }
   /** Marke gepflegt, Reihe nicht: Weg „Modell nicht aufgeführt“ des Bestands. */
   | { art: 'marke'; makeSlug: string; modelOther: string; name: string }
-  /** Marke nicht gepflegt: Anfrage mit Fahrzeugschein und Schlüsselfoto (G-15). */
+  /** Marke nicht gepflegt: Anfrage „Fahrzeug nicht gefunden“ mit Fahrzeugschein und drei Schlüsselfotos (G-15, FA-KERN-02B). */
   | { art: 'anfrage'; name: string };
 
 /**
@@ -99,9 +100,19 @@ export function fahrzeugZiel(e: KatalogEintrag, makes: readonly VehicleMake[], m
   return { art: 'anfrage', name };
 }
 
-/** Anfrage für ein Fahrzeug außerhalb der gepflegten Marken (G-15), mit Vorbelegung. */
-export function anfrageHref(fahrzeug?: string): string {
-  const basis = '/service-und-termin/anfrage?thema=autoschluessel';
+/**
+ * „Fahrzeug nicht gefunden?“ (FA-KERN-02B): Anfrage mit Fahrzeugschein, drei Schlüsselfotos und Beschreibung
+ * für ein Fahrzeug außerhalb der gepflegten Marken (G-15), mit Vorbelegung. Ein Treffer des Katalogs geht
+ * mit Marke und Reihe getrennt mit; ein freier Suchtext als `fahrzeug`.
+ */
+export function anfrageHref(fahrzeug?: string | { marke: string; reihe?: string }): string {
+  const basis = NICHT_GEFUNDEN_ADRESSE;
+  if (fahrzeug && typeof fahrzeug === 'object') {
+    const marke = fahrzeug.marke.trim().slice(0, 60);
+    const reihe = fahrzeug.reihe?.trim().slice(0, 80) ?? '';
+    const teile = [marke && `marke=${encodeURIComponent(marke)}`, reihe && `modell=${encodeURIComponent(reihe)}`].filter(Boolean);
+    return teile.length ? `${basis}?${teile.join('&')}` : basis;
+  }
   const text = fahrzeug?.trim().slice(0, 80);
-  return text ? `${basis}&fahrzeug=${encodeURIComponent(text)}` : basis;
+  return text ? `${basis}?fahrzeug=${encodeURIComponent(text)}` : basis;
 }

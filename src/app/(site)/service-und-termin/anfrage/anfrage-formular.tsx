@@ -36,8 +36,33 @@ const STEPS: FlowStep[] = [
   { id: 'pruefen', short: 'Prüfen', title: 'Angaben prüfen und absenden', hint: 'Bitte kontrollieren Sie Ihre Angaben vor dem Absenden.' },
 ];
 
+/**
+ * Themen, bei denen ein Schlüssel nur über einen geführten Weg mit Unterlagen entsteht (FA-KERN-02B): Hier
+ * bleibt nur die reine Frage; wer einen Schlüssel möchte, kommt in den passenden Weg.
+ */
+const SCHLUESSEL_THEMEN = new Set(['autoschluessel', 'schluessel-nach-vorlage']);
+
+/** Geführte Wege mit Unterlagen je Thema, statt einer Schlüsselanfrage ohne Unterlagen. */
+const GEFUEHRTE_WEGE: Record<string, Array<{ href: string; titel: string; satz: string }>> = {
+  autoschluessel: [
+    { href: '/autoschluessel/anfrage', titel: 'Autoschlüssel', satz: 'Fahrzeug wählen, Termin anfragen. Für viele Modelle sehen Sie den Preis sofort.' },
+    { href: '/autoschluessel/fahrzeug-nicht-gefunden', titel: 'Auto nicht in der Liste', satz: 'Anfrage mit Fahrzeugschein und drei Fotos des Schlüssels.' },
+    { href: '/motorradschluessel/anfrage', titel: 'Motorrad', satz: 'Anfrage mit Fahrzeugschein und drei Fotos des Schlüssels.' },
+    { href: '/roller-und-kleinstfahrzeuge/anfrage', titel: 'Roller, Mofa oder Moped', satz: 'Mit Fahrzeugschein oder Versicherungskennzeichen.' },
+    { href: '/e-scooter/anfrage', titel: 'E-Scooter', satz: 'Anfrage mit Nachweis und drei Fotos des Schlüssels.' },
+    { href: '/seniorenmobile/anfrage', titel: 'Seniorenmobil', satz: 'Anfrage mit Nachweis und drei Fotos des Schlüssels.' },
+    { href: '/fahrradschluessel/anfrage', titel: 'Fahrradschloss', satz: 'Mit Hersteller und Schlüsselnummer des Schlosses.' },
+  ],
+  'schluessel-nach-vorlage': [
+    { href: '/schluessel-nach-vorlage/anfrage', titel: 'Schlüssel nach Vorlage', satz: 'Anfrage mit drei Fotos Ihres Schlüssels.' },
+    { href: '/schluessel-einschicken', titel: 'Schlüssel einschicken', satz: 'Sie schicken uns den Schlüssel, wir fertigen die Kopie.' },
+  ],
+};
+
 interface FormData {
   thema: string;
+  /** Bei Autoschlüssel und Schlüssel nach Vorlage: reine Frage oder Wunsch nach einem Schlüssel. */
+  anliegenArt: '' | 'frage' | 'schluessel';
   dringlichkeit: string;
   beschreibung: string;
   objekt: string;
@@ -58,6 +83,7 @@ interface FormData {
 
 const LEER: FormData = {
   thema: '',
+  anliegenArt: '',
   dringlichkeit: 'normal',
   beschreibung: '',
   objekt: '',
@@ -122,7 +148,8 @@ export function AllgemeineAnfrage({
       schloss: codeVorbelegung?.schloss ?? '',
     },
     validate: (data, stepId) => {
-      if (stepId === 'thema') return data.thema !== '';
+      // Autoschlüssel und Vorlage: Hier geht es nur mit einer Frage weiter; Schlüssel über den geführten Weg.
+      if (stepId === 'thema') return data.thema !== '' && (!SCHLUESSEL_THEMEN.has(data.thema) || data.anliegenArt === 'frage');
       // Code anfragen: dieselbe Prüfung wie auf dem Server; die Beschreibung ist hier freiwillig.
       if (stepId === 'anliegen' && data.thema === CODE_ANFRAGE_THEMA) return codeAnfragePruefen({ ...data }) !== null;
       if (stepId === 'anliegen') return data.beschreibung.trim().length >= 20;
@@ -145,6 +172,7 @@ export function AllgemeineAnfrage({
     if (themaFest && data.thema !== CODE_ANFRAGE_THEMA) flow.set('thema', CODE_ANFRAGE_THEMA);
   }, [themaFest, data.thema, flow]);
   const thema = themen.find((t) => t.key === data.thema);
+  const schluesselThema = SCHLUESSEL_THEMEN.has(data.thema);
   const codeAnfrage = data.thema === CODE_ANFRAGE_THEMA;
   // Dieselbe Kategorie am Upload-Feld und im Vorgang (Frist der gespeicherten Datei).
   const uploadKategorie = codeAnfrageUploadKategorie(data.thema);
@@ -163,6 +191,7 @@ export function AllgemeineAnfrage({
           value: DRINGLICHKEIT.find((d) => d.id === data.dringlichkeit)?.label ?? '—',
         },
         { label: 'Beschreibung', value: data.beschreibung || (codeAnfrage ? 'keine Angabe' : '—') },
+        ...(schluesselThema ? [{ label: 'Art des Anliegens', value: 'Frage' }] : []),
         ...(codeAnfrage ? [] : [{ label: 'Objekt oder Fahrzeug', value: data.objekt || 'keine Angabe' }]),
         { label: 'Unterlagen', value: anzahlUnterlagen > 0 ? `${anzahlUnterlagen} Datei(en)` : 'keine' },
       ],
@@ -208,7 +237,7 @@ export function AllgemeineAnfrage({
       // Andere Themen senden die Felder der Code-Anfrage nicht mit; danach wurde nicht gefragt.
       payload: codeAnfrage
         ? { ...data, quelle: CODE_ANFRAGE_QUELLE, dateien: [...dateien, ...karteMit].map((f) => f.name) }
-        : { ...ohneCodeFelder({ ...data }), dateien: dateien.map((f) => f.name) },
+        : { ...ohneCodeFelder({ ...data }), anliegenArt: schluesselThema ? 'frage' : undefined, dateien: dateien.map((f) => f.name) },
       summary: zusammenfassung,
       uploads: [
         ...dateien.map((f) => alsUpload(f, uploadKategorie)),
@@ -225,8 +254,11 @@ export function AllgemeineAnfrage({
     }
 
     clearFlow('allgemeine-anfrage');
-    // Dieselben Schritte, die die Statusseite für diesen Vorgang zeigt (Thema gleich Bereich).
-    const schritte = naechsteSchritte({ kind: 'anfrage', area, process: 'gefuehrte-anfrage', payload: { thema: data.thema } });
+    // Dieselben Schritte, die die Statusseite für diesen Vorgang zeigt (Thema gleich Bereich). Eine allgemeine
+    // Anfrage zum Thema „Schlüssel nach Vorlage“ legt der Server unter „Service und Termin“ ab (FA-KERN-02):
+    // Sie ist keine Foto-Anfrage, darum gelten die Schritte einer allgemeinen Anfrage.
+    const ablage = area === 'schluessel-nach-vorlage' ? 'service-und-termin' : area;
+    const schritte = naechsteSchritte({ kind: 'anfrage', area: ablage, process: 'gefuehrte-anfrage', payload: { thema: data.thema } });
     setErfolg({ reference: ergebnis.reference ?? '', notices: ergebnis.notices, summary: zusammenfassung, schritte });
   }
 
@@ -256,7 +288,11 @@ export function AllgemeineAnfrage({
         submitLabel="Anfrage absenden"
         onSubmit={absenden}
         submitting={senden}
-        blockedHint="Bitte füllen Sie die Pflichtangaben dieses Schrittes aus."
+        blockedHint={
+          flow.step?.id === 'thema' && schluesselThema && data.anliegenArt !== 'frage'
+            ? 'Für einen Schlüssel nutzen Sie bitte einen der geführten Wege oben. Hier geht es mit einer Frage weiter.'
+            : 'Bitte füllen Sie die Pflichtangaben dieses Schrittes aus.'
+        }
       >
         {flow.step?.id === 'thema' && (
           <div className="space-y-3">
@@ -266,11 +302,52 @@ export function AllgemeineAnfrage({
                 name="thema"
                 value={t.key}
                 checked={data.thema === t.key}
-                onSelect={(value) => flow.set('thema', value)}
+                onSelect={(value) => flow.update({ thema: value, anliegenArt: '' })}
                 title={t.label}
                 description={t.summary}
               />
             ))}
+
+            {/* Schlüssel nur über einen geführten Weg mit Unterlagen (FA-KERN-02B, R13); eine Frage bleibt möglich. */}
+            {schluesselThema && !themaFest && (
+              <fieldset className="mt-6 space-y-3">
+                <legend className="mb-1 text-body font-semibold text-foreground">Was möchten Sie?</legend>
+                <OptionCard
+                  name="anliegen-art"
+                  value="schluessel"
+                  checked={data.anliegenArt === 'schluessel'}
+                  onSelect={() => flow.set('anliegenArt', 'schluessel')}
+                  title="Ich möchte einen Schlüssel anfertigen lassen"
+                  description="Dafür gibt es einen geführten Weg mit den nötigen Unterlagen."
+                />
+                <OptionCard
+                  name="anliegen-art"
+                  value="frage"
+                  checked={data.anliegenArt === 'frage'}
+                  onSelect={() => flow.set('anliegenArt', 'frage')}
+                  title="Ich habe eine Frage oder ein anderes Anliegen"
+                  description="Zum Beispiel eine Frage zu Ihrem Schlüssel oder eine Zusammenarbeit als Betrieb. Sie beschreiben es, wir melden uns."
+                />
+                {data.anliegenArt === 'schluessel' && (
+                  <div className="rounded-lg border border-border bg-surface p-4" role="status">
+                    <p className="text-body font-semibold text-foreground">Bitte wählen Sie den passenden Weg</p>
+                    <p className="mt-1 text-small text-foreground-muted">
+                      Einen Schlüssel fertigen wir nur mit Unterlagen. Die geführten Wege sagen Ihnen genau, was wir brauchen.
+                    </p>
+                    <ul className="mt-3 divide-y divide-border border-y border-border">
+                      {(GEFUEHRTE_WEGE[data.thema] ?? []).map((weg) => (
+                        <li key={weg.href}>
+                          <Link href={weg.href} className="flex min-h-touch flex-col justify-center py-2 hover:text-primary">
+                            <span className="text-body font-semibold text-primary">{weg.titel}</span>
+                            <span className="text-small text-foreground-muted">{weg.satz}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </fieldset>
+            )}
 
             {themaFest ? (
               <p className="mt-6 text-small text-foreground-muted">
@@ -428,8 +505,8 @@ export function AllgemeineAnfrage({
               description={
                 codeAnfrage
                   ? 'Freiwillig. Ein Foto von Schlüssel oder Schloss, auf dem der Code lesbar ist, hilft uns beim Abgleich.'
-                  : data.thema === 'autoschluessel'
-                  ? 'Für die Anfrage freiwillig. Fertigen können wir den Schlüssel nur mit Fahrzeugschein (Zulassungsbescheinigung Teil I); legen Sie ihn gern schon hier bei, dazu ein Foto Ihres Schlüssels von beiden Seiten.'
+                  : schluesselThema
+                  ? 'Freiwillig. Für eine Frage brauchen wir keine Unterlagen. Hilft ein Foto, Ihre Frage zu verstehen, legen Sie es gern bei.'
                   : 'Freiwillig. Fotos der betroffenen Tür, des Schlüssels oder vorhandene Unterlagen helfen uns sehr.'
               }
               example={{

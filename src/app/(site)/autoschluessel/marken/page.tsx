@@ -1,19 +1,21 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getFahrzeugkatalog, getPageContent, getRubrik, getVehicleMakes } from '@/lib/data';
+import { getFahrzeugkatalog, getPageContent, getRubrik, getSettings, getVehicleMakes } from '@/lib/data';
+import { erreichbarkeit } from '@/lib/erreichbarkeit';
+import { kontakt } from '@/lib/rechtliches/firma';
 import type { KeyKind, VehicleMake } from '@/lib/types';
 import { formatNumber } from '@/lib/format';
 import { PageHeader } from '@/components/layout/page-header';
 import { RubrikAblauf } from '@/components/rubrik/rubrik-ablauf';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { ButtonLink } from '@/components/ui/button';
-import { Alert } from '@/components/ui/alert';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { KeyKindBadges, KEY_KIND_HINT } from '@/components/autoschluessel/key-kinds';
 import { anfrageHref, KATALOG_QUELLE, katalogIndex, markenAZ, markenZuordnung } from '@/components/autoschluessel/fahrzeug-ziel';
+import { FahrzeugNichtGefunden } from '@/components/fahrzeug-anfrage/nicht-gefunden';
 
 const ROUTE = 'autoschluessel/marken';
 
@@ -47,11 +49,12 @@ function keyKindsOfMake(make: VehicleMake): KeyKind[] {
 }
 
 export default async function MarkenPage() {
-  const [page, makes, rubrik, katalog] = await Promise.all([
+  const [page, makes, rubrik, katalog, settings] = await Promise.all([
     getPageContent(ROUTE),
     getVehicleMakes(),
     getRubrik('schluesselfinder'),
     getFahrzeugkatalog(),
+    getSettings(),
   ]);
   // Alle Automarken des Katalogs von A bis Z (A-047): mit Markenseite dorthin, sonst in die Anfrage.
   // Es entstehen keine neuen Seiten (R2).
@@ -165,16 +168,8 @@ export default async function MarkenPage() {
           })}
         </ul>
 
-        <Alert tone="info" title="Marke nicht dabei?" className="mt-8">
-          Die Liste wächst laufend. Fehlt Ihre Marke, schildern Sie Ihren Fall bitte über die{' '}
-          <Link
-            href="/service-und-termin/anfrage?thema=autoschluessel"
-            className="font-semibold text-primary hover:underline"
-          >
-            Anfrage
-          </Link>{' '}
-          — wir prüfen ihn einzeln.
-        </Alert>
+        {/* Fester Block „Fahrzeug nicht gefunden?“ mit Telefon (FA-KERN-02B) */}
+        <FahrzeugNichtGefunden telefon={kontakt(settings.company).telefon} erreichbarkeit={erreichbarkeit(settings)} className="mt-8" />
       </Section>
 
       {azMarken.length > 0 && (
@@ -190,7 +185,7 @@ export default async function MarkenPage() {
               return (
                 <li key={marke} className="border-b border-border">
                   <Link
-                    href={slug ? `/autoschluessel/marken/${slug}` : anfrageHref(marke)}
+                    href={slug ? `/autoschluessel/marken/${slug}` : anfrageHref({ marke })}
                     className="group flex min-h-touch items-center justify-between gap-3 py-3"
                   >
                     <span className="min-w-0">
@@ -206,14 +201,8 @@ export default async function MarkenPage() {
               );
             })}
           </ul>
-          <p className="mt-6 text-small text-foreground-muted">
-            Fahrzeug nicht gefunden?{' '}
-            <Link href={anfrageHref()} className="font-semibold text-primary hover:underline">
-              Anfrage mit Fahrzeugschein und Schlüsselfoto
-            </Link>
-          </p>
-          {/* Quellenvermerk am Ende des Abschnitts (Datenlizenz, MA-17) */}
-          <p className="mt-4 text-caption text-foreground-muted">{KATALOG_QUELLE}</p>
+          {/* Quellenvermerk am Ende des Abschnitts (Datenlizenz, MA-17); der Ausweg steht im Block oben. */}
+          <p className="mt-6 text-caption text-foreground-muted">{KATALOG_QUELLE}</p>
         </Section>
       )}
 

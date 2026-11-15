@@ -1,3 +1,4 @@
+import { KLASSEN_SEITEN, type SeitenKopf } from '@/lib/fahrzeuge/anfrage-klassen';
 import type { CityPage, Guide, PageContent } from '@/lib/types';
 
 /**
@@ -443,6 +444,15 @@ export function pages(): PageContent[] {
       ],
     },
   ];
+
+  // Seiten der gemeinsamen Fahrzeugschlüssel-Anfrage (FA-KERN-02B): Kopftexte aus den Klassendaten,
+  // gleichlautend in content/seo.json. Verweise führen in die Anfrage und auf die Einstiegsseite.
+  const klassenSeiten = Object.values(KLASSEN_SEITEN).flatMap(({ einstieg, anfrage }) =>
+    [einstieg, anfrage].filter((kopf): kopf is SeitenKopf => kopf !== null),
+  );
+  for (const kopf of klassenSeiten) {
+    raw.push({ ...kopf, links: [['/autoschluessel', 'Autoschlüssel']] });
+  }
 
   return raw.map((entry) => ({
     route: entry.route,

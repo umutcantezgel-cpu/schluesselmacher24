@@ -7,6 +7,7 @@
 
 import { istEinsendung } from '../einsenden/vorgang';
 import { KATEGORIE_LABEL, POSITION_LABEL } from '../druckansichten';
+import { fahrzeugklasseText } from '../fahrzeuge/anfrage-klassen';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '../format';
 import { ART_LABEL, BEREICH_LABEL, UMFANG_LABEL, ZAHLUNG_LABEL } from '../mail/vorlagen/gemeinsam';
 import { DIENSTLEISTER } from '../mail/vorlagen/status';
@@ -144,6 +145,8 @@ export function vorgangsblattInhalt({ vorgang, firma, bilder = [], jetzt = new D
     { name: 'Nächster Schritt', wert: NAECHSTER_SCHRITT[vorgang.status] ?? '' },
     { name: 'Art', wert: ART_LABEL[vorgang.kind] ?? vorgang.kind },
     { name: 'Bereich', wert: BEREICH_LABEL[vorgang.area] ?? vorgang.area },
+    // Fahrzeugklasse der gemeinsamen Anfrage (FA-KERN-02B), nur wenn der Vorgang eine trägt.
+    ...(fahrzeugklasseText(vorgang.payload) ? [{ name: 'Fahrzeugklasse', wert: fahrzeugklasseText(vorgang.payload)! }] : []),
     { name: 'Eingegangen', wert: uhr(vorgang.createdAt) },
   ];
 

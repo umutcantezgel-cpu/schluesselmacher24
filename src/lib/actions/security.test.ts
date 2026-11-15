@@ -5,7 +5,7 @@ import { defaults } from '@/lib/data/defaults';
 import { zylinderDetails } from '@/lib/cylinder-summary';
 import { priceCylinderOrder } from '@/lib/pricing';
 import { buildReference } from '@/lib/reference';
-import type { BusinessRecord, CylinderOrderDraft } from '@/lib/types';
+import type { BusinessRecord, CylinderOrderDraft, UploadRef } from '@/lib/types';
 
 /* Eingaben aus dem Browser dürfen keine Beträge, Termine oder Bestellungen
  * setzen. Diese Tests rufen die öffentlichen Aktionen so auf, wie es ein
@@ -909,6 +909,131 @@ describe('submitRecord: Pflichtunterlagen je Weg (FA-KERN-02, A-048)', () => {
     expect(stored).toHaveLength(1);
     // Unbekannte Klasse in der Fahrzeug-Anfrage: abgelehnt.
     expect((await submitRecord({ ...fahrzeug('lkw'), uploads: [fahrzeugschein, ...dreiFotos] })).ok).toBe(false);
+  });
+});
+
+describe('submitRecord: gemeinsame Fahrzeugschlüssel-Anfrage aus dem Formular (FA-KERN-02B, FA-27)', async () => {
+  const { INITIAL, kontaktAus, leereUnterlagen, payloadAus, pflichtFuer, uploadsAus, zusammenfassung } = await import('@/components/fahrzeug-anfrage/kern');
+  const { pflichtTabelle } = await import('@/components/fahrzeug-anfrage/pflicht');
+  type Daten = typeof INITIAL;
+  type Klasse = Parameters<typeof payloadAus>[0];
+
+  /** Erfundene Testdateien (G5): nur Name und Kennung, wie sie das Upload-Feld meldet. */
+  const datei = (name: string) => ({ id: name, name });
+  const alleDateien = () => ({
+    ...leereUnterlagen<{ id: string; name: string }>(),
+    fahrzeugschein: [datei('fahrzeugschein.jpg')],
+    ersatznachweis: [datei('nachweis.pdf')],
+    typenschild: [datei('typenschild.jpg')],
+    fotos: {
+      'schluessel-vorderseite': [datei('vorne.jpg')],
+      'schluessel-rueckseite': [datei('hinten.jpg')],
+      'schluessel-spitze': [datei('spitze.jpg')],
+    },
+  });
+  const alsTestUpload = (d: { name: string }, category: UploadRef['category'], steckplatz: UploadRef['steckplatz']) => ({
+    fileName: d.name,
+    sizeBytes: 50_000,
+    mimeType: d.name.endsWith('.pdf') ? 'application/pdf' : 'image/jpeg',
+    category,
+    ...(steckplatz ? { steckplatz } : {}),
+  });
+  const kontaktDaten = { vorname: 'Erika', nachname: 'Muster', email: 'erika@example.org', telefon: '0301234567' };
+
+  /** Vollständige Angaben je Klasse, so wie das Formular sie sammelt (erfundene Testdaten). */
+  const FAELLE: Record<string, { klasse: Klasse; daten: Partial<Daten> }> = {
+    motorrad: { klasse: 'motorrad', daten: { hersteller: 'Testwerk', modell: 'TX 700', baujahr: '2019', transponder: 'ja' } },
+    'roller mit Fahrzeugschein': { klasse: 'roller', daten: { hersteller: 'Testwerk', modell: 'R 125', roller: 'zulassung', transponder: 'nein' } },
+    'roller mit Versicherungskennzeichen': {
+      klasse: 'roller',
+      daten: { hersteller: 'Testwerk', modell: 'R 50', roller: 'versicherungskennzeichen', transponder: 'unklar', ersatznachweis: 'versicherungsbescheinigung', fin: 'WVWZZZ1JZXW000001' },
+    },
+    'e-scooter': { klasse: 'e-scooter', daten: { hersteller: 'Testwerk', modell: 'E 20', ersatznachweis: 'kaufbeleg' } },
+    seniorenmobil: { klasse: 'seniorenmobil', daten: { hersteller: 'Testwerk', modell: 'S 6', ersatznachweis: 'betriebserlaubnis', keinTypenschild: true } },
+    fahrrad: { klasse: 'fahrrad', daten: { schlossHersteller: 'Testschloss', schluesselnummer: 'K 4711', ersatznachweis: 'codekarte' } },
+    'nicht-gefunden': { klasse: 'nicht-gefunden', daten: { hersteller: 'Testmarke', modell: 'Testmodell', baujahr: '2012', transponder: 'ja' } },
+  };
+
+  function ausFormular(name: string, aendern: (dateien: ReturnType<typeof alleDateien>) => void = () => {}) {
+    const { klasse, daten: teil } = FAELLE[name];
+    const daten: Daten = { ...INITIAL, ...kontaktDaten, schluessel: 'vorhanden', beschreibung: BESCHREIBUNG, ...teil };
+    const pflicht = pflichtFuer(pflichtTabelle(klasse), daten);
+    const dateien = alleDateien();
+    aendern(dateien);
+    return {
+      pflicht,
+      eingabe: {
+        kind: 'anfrage' as const,
+        area: 'autoschluessel' as const,
+        process: 'gefuehrte-anfrage' as const,
+        contact: kontaktAus(daten),
+        payload: payloadAus(klasse, daten),
+        summary: zusammenfassung(klasse, daten),
+        uploads: uploadsAus(pflicht, dateien, alsTestUpload),
+      },
+    };
+  }
+
+  it.each(Object.keys(FAELLE))('%s: vollständig angenommen, mit Klasse und Steckplätzen im Vorgang', async (name) => {
+    const { eingabe } = ausFormular(name);
+    const result = await submitRecord(eingabe);
+    expect(result.ok, result.error).toBe(true);
+    expect(stored[0].area).toBe('autoschluessel');
+    expect(stored[0].payload).toMatchObject({ quelle: 'fahrzeug-anfrage', klasse: FAELLE[name].klasse });
+    expect(stored[0].summary[0].rows[0].label).toBe('Fahrzeugklasse');
+    expect(stored[0].uploads.every((u) => u.steckplatz)).toBe(true);
+  });
+
+  it.each(Object.keys(FAELLE))('%s: ohne Pflichtunterlage abgelehnt, je Unterlage', async (name) => {
+    const { pflicht } = ausFormular(name);
+    const dateiPlaetze = pflicht.filter((p) => p === 'fahrzeugschein' || p === 'ersatznachweis' || p.startsWith('schluessel-'));
+    expect(dateiPlaetze.length).toBeGreaterThanOrEqual(4);
+    for (const platz of dateiPlaetze) {
+      const { eingabe } = ausFormular(name, (d) => {
+        if (platz === 'fahrzeugschein' || platz === 'ersatznachweis') d[platz] = [];
+        else d.fotos[platz as keyof typeof d.fotos] = [];
+      });
+      resetRateLimits();
+      const result = await submitRecord(eingabe);
+      expect(result.ok, `${name} ohne ${platz}`).toBe(false);
+      expect(result.error).toContain('Bitte ergänzen Sie');
+    }
+    expect(stored).toHaveLength(0);
+  });
+
+  it('Roller mit Versicherungskennzeichen nimmt den Ersatznachweis, ein zugelassener Roller nicht', async () => {
+    const mitVk = ausFormular('roller mit Versicherungskennzeichen');
+    expect(mitVk.pflicht).toContain('ersatznachweis');
+    expect(mitVk.pflicht).not.toContain('fahrzeugschein');
+    expect((await submitRecord(mitVk.eingabe)).ok).toBe(true);
+
+    // Zugelassener Roller mit Ersatznachweis statt Fahrzeugschein, wie ein manipulierter Browser ihn schickt.
+    const zugelassen = ausFormular('roller mit Fahrzeugschein');
+    expect(zugelassen.pflicht).toContain('fahrzeugschein');
+    const ohneSchein = {
+      ...zugelassen.eingabe,
+      payload: { ...zugelassen.eingabe.payload, ersatznachweis: 'versicherungsbescheinigung', fin: 'WVWZZZ1JZXW000001' },
+      uploads: [ersatznachweis, typenschild, ...dreiFotos],
+    };
+    const result = await submitRecord(ohneSchein);
+    expect(result.ok).toBe(false);
+    expect(result.error).toContain('Fahrzeugschein');
+    expect(stored).toHaveLength(1);
+  });
+
+  it('„Fahrzeug nicht gefunden“ verlangt Fahrzeugschein und drei Fotos', async () => {
+    const { pflicht } = ausFormular('nicht-gefunden');
+    expect(pflicht).toEqual(['fahrzeugschein', 'schluessel-vorderseite', 'schluessel-rueckseite', 'schluessel-spitze', 'beschreibung']);
+    const ohneSchein = await submitRecord(ausFormular('nicht-gefunden', (d) => (d.fahrzeugschein = [])).eingabe);
+    expect(ohneSchein.error).toContain('Fahrzeugschein');
+    const zweiFotos = await submitRecord(ausFormular('nicht-gefunden', (d) => (d.fotos['schluessel-spitze'] = [])).eingabe);
+    expect(zweiFotos.error).toContain('Profils von vorne');
+    // Ein Ersatznachweis ersetzt den Fahrzeugschein auch hier nicht (R13).
+    const mitErsatz = ausFormular('nicht-gefunden', (d) => (d.fahrzeugschein = []));
+    const ersatz = await submitRecord({ ...mitErsatz.eingabe, uploads: [...mitErsatz.eingabe.uploads, ersatznachweis] });
+    expect(ersatz.ok).toBe(false);
+    expect(stored).toHaveLength(0);
+    expect((await submitRecord(ausFormular('nicht-gefunden').eingabe)).ok).toBe(true);
   });
 });
 

@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { defaults } from '@/lib/data/defaults';
+import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import type { CityPage, CodeLine, StandardArticle, VehicleMake } from '@/lib/types';
 import codeLinesJson from '../../content/code-lines.json';
 import vehiclesJson from '../../content/vehicles.json';
@@ -132,6 +133,48 @@ describe('Sitemap', () => {
       '/partner-werden/kooperation',
     ]) {
       expect(urls).toContain(pfad);
+    }
+  });
+
+  it('führt die Seiten der neuen Fahrzeugklassen erst, wenn ihr Schalter an ist (FA-KERN-02B)', async () => {
+    const neu = [
+      '/roller-und-kleinstfahrzeuge',
+      '/roller-und-kleinstfahrzeuge/anfrage',
+      '/e-scooter',
+      '/e-scooter/anfrage',
+      '/seniorenmobile',
+      '/seniorenmobile/anfrage',
+      '/fahrradschluessel',
+      '/fahrradschluessel/anfrage',
+      '/autoschluessel/fahrzeug-nicht-gefunden',
+    ];
+    const pfade = async () => (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
+    let urls = await pfade();
+    for (const pfad of neu) expect(urls, pfad).not.toContain(pfad);
+    // Das Motorrad ist freigegeben und steht genau einmal da.
+    expect(urls.filter((u) => u === '/motorradschluessel')).toHaveLength(1);
+    expect(urls.filter((u) => u === '/motorradschluessel/anfrage')).toHaveLength(1);
+
+    const roller = ANFRAGE_FORMULAR.roller as { indexierbar: boolean };
+    roller.indexierbar = true;
+    try {
+      urls = await pfade();
+      expect(urls).toContain('/roller-und-kleinstfahrzeuge');
+      expect(urls).toContain('/roller-und-kleinstfahrzeuge/anfrage');
+      expect(urls).not.toContain('/e-scooter');
+    } finally {
+      roller.indexierbar = false;
+    }
+
+    // Auch das Motorrad folgt seinem Schalter: aus, dann fehlen beide festen Seiten.
+    const motorrad = ANFRAGE_FORMULAR.motorrad as { indexierbar: boolean };
+    motorrad.indexierbar = false;
+    try {
+      urls = await pfade();
+      expect(urls).not.toContain('/motorradschluessel');
+      expect(urls).not.toContain('/motorradschluessel/anfrage');
+    } finally {
+      motorrad.indexierbar = true;
     }
   });
 });

@@ -4,16 +4,36 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { useKatalog } from '@/components/autoschluessel/fahrzeug-suche';
 import { KATALOG_ADRESSE, type KatalogEintrag } from '@/components/autoschluessel/fahrzeug-ziel';
+import { FahrzeugNichtGefunden } from '@/components/fahrzeug-anfrage/nicht-gefunden';
 import { TextInput } from '@/components/forms/controls';
 import { Field } from '@/components/forms/field';
 import { scrollVerhalten } from '@/lib/bewegung';
 import { sucheFahrzeuge } from '@/lib/fahrzeuge/suche';
+import type { Erreichbarkeit } from '@/lib/types';
+
+/** Satz des Blocks „Fahrzeug nicht gefunden?“ in der Kraftradsuche: Die freie Eingabe ist der erste Ausweg. */
+export const KRAFTRAD_NICHT_GEFUNDEN = 'Ihr Fahrzeug ist nicht in der Liste? Tragen Sie Hersteller und Typ unten selbst ein. Oder rufen Sie uns an.';
 
 /**
- * Suche über die Krafträder aus KBA FZ 2 (A-047): eine Erleichterung im Motorradweg. Ein Treffer füllt
- * Hersteller und Typ vor; beide Felder bleiben frei änderbar. Der Katalog kommt erst beim ersten Gebrauch.
+ * Suche über die Krafträder aus KBA FZ 2 (A-047): eine Erleichterung für Motorrad und Roller in der
+ * gemeinsamen Anfrage (FA-KERN-02B). Ein Treffer füllt Hersteller und Typ vor; beide Felder bleiben frei
+ * änderbar. Der Katalog kommt erst beim ersten Gebrauch. Darunter steht fest „Fahrzeug nicht gefunden?“.
+ * `nichtGefundenHref` ist `null`, wo die Anfrage „nicht gefunden“ nicht passt (Roller: Sie verlangt immer
+ * einen Fahrzeugschein); dann bleiben freie Eingabe und Telefon.
  */
-export function MotorradSuche({ onWahl }: { onWahl: (eintrag: KatalogEintrag) => void }) {
+export function KraftradSuche({
+  onWahl,
+  telefon,
+  erreichbarkeit,
+  nichtGefundenHref,
+  label = 'Motorrad suchen (freiwillig)',
+}: {
+  onWahl: (eintrag: KatalogEintrag) => void;
+  telefon?: string;
+  erreichbarkeit?: Erreichbarkeit;
+  nichtGefundenHref?: string | null;
+  label?: string;
+}) {
   const [text, setText] = useState('');
   const liste = useRef<HTMLUListElement>(null);
   const { status, katalog, laden } = useKatalog(KATALOG_ADRESSE.kraftrad);
@@ -31,7 +51,7 @@ export function MotorradSuche({ onWahl }: { onWahl: (eintrag: KatalogEintrag) =>
 
   return (
     <div className="space-y-3">
-      <Field label="Motorrad suchen (freiwillig)" hint="Zum Beispiel „BMW R 1250 GS“ oder „Vespa GTS 125“. Ein Treffer füllt die Felder darunter aus.">
+      <Field label={label} hint="Zum Beispiel „BMW R 1250 GS“ oder „Vespa GTS 125“. Ein Treffer füllt die Felder darunter aus.">
         {({ id, describedBy }) => (
           <TextInput
             id={id}
@@ -83,6 +103,7 @@ export function MotorradSuche({ onWahl }: { onWahl: (eintrag: KatalogEintrag) =>
       {suche.length >= 2 && status === 'bereit' && treffer.length === 0 && (
         <p className="text-small text-foreground-muted">Kein Treffer für „{suche}“. Tragen Sie Hersteller und Typ bitte unten selbst ein.</p>
       )}
+      <FahrzeugNichtGefunden telefon={telefon} erreichbarkeit={erreichbarkeit} href={nichtGefundenHref} satz={KRAFTRAD_NICHT_GEFUNDEN} />
     </div>
   );
 }

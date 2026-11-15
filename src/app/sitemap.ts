@@ -18,6 +18,7 @@ import {
   kategoriePfad,
 } from '@/lib/codelinie';
 import { markeIndexierbar, modellIndexierbar } from '@/lib/fahrzeug-texte';
+import { ANFRAGE_FORMULAR, FORMULAR_KLASSEN } from '@/lib/fahrzeuge/anfrage-klassen';
 import { GEWINNUNG_SEITEN } from '@/lib/partner/gewinnung';
 import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
 import { getSiteUrl } from '@/lib/site-url';
@@ -75,6 +76,34 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
 ];
 
 /**
+ * Seiten einer Klasse mit ausgeschaltetem Schalter `indexierbar` (noindex): Sie fehlen in der Sitemap, auch
+ * wenn sie unter den festen Seiten stehen (Motorrad).
+ */
+function gesperrteKlassenSeiten(): Set<string> {
+  return new Set(
+    FORMULAR_KLASSEN.filter((klasse) => !ANFRAGE_FORMULAR[klasse].indexierbar).flatMap((klasse) => {
+      const { einstieg, anfrage } = ANFRAGE_FORMULAR[klasse];
+      return [...(einstieg ? [einstieg] : []), anfrage];
+    }),
+  );
+}
+
+/**
+ * Seiten der gemeinsamen Fahrzeugschlüssel-Anfrage (FA-KERN-02B): Einstiegsseite und Anfrage je Klasse, nur
+ * wenn ihr Schalter `indexierbar` an ist (sonst noindex). Was schon unter den festen Seiten steht (Motorrad),
+ * kommt nicht doppelt.
+ */
+function klassenSeiten(): Array<{ path: string; priority: number }> {
+  const fest = new Set(STATIC_ROUTES.map((route) => route.path));
+  return FORMULAR_KLASSEN.filter((klasse) => ANFRAGE_FORMULAR[klasse].indexierbar)
+    .flatMap((klasse) => {
+      const { einstieg, anfrage } = ANFRAGE_FORMULAR[klasse];
+      return [...(einstieg ? [{ path: einstieg, priority: 0.7 }] : []), { path: anfrage, priority: 0.6 }];
+    })
+    .filter((route) => !fest.has(route.path));
+}
+
+/**
  * Letzte Änderung aus `updatedAt`, wo die Daten sie kennen; sonst keine
  * Angabe (ein erfundenes „heute“ hilft Suchmaschinen nicht).
  */
@@ -100,7 +129,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const seitenStand = new Map(pages.map((page) => [page.route, page.updatedAt]));
 
-  const entries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
+  const gesperrt = gesperrteKlassenSeiten();
+  const entries: MetadataRoute.Sitemap = [...STATIC_ROUTES.filter((route) => !gesperrt.has(route.path)), ...klassenSeiten()].map((route) => ({
     url: `${siteUrl}${route.path}`,
     ...geaendert(seitenStand.get(route.path.replace(/^\//, ''))),
     changeFrequency: 'weekly',

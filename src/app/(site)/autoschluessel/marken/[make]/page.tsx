@@ -10,8 +10,11 @@ import { eckdaten, leistungsPreise, markeIndexierbar, markenTexte, preisAb } fro
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { FahrzeugNichtGefunden } from '@/components/fahrzeug-anfrage/nicht-gefunden';
+import { anfrageHref } from '@/components/autoschluessel/fahrzeug-ziel';
+import { erreichbarkeit } from '@/lib/erreichbarkeit';
+import { kontakt } from '@/lib/rechtliches/firma';
 import { ButtonLink } from '@/components/ui/button';
-import { Alert } from '@/components/ui/alert';
 import { InfoTip } from '@/components/ui/info-tip';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
@@ -334,11 +337,15 @@ export default async function MakePage(props: PageProps) {
           ))}
         </ul>
 
-        <Alert tone="info" title="Modell nicht dabei?" className="mt-6">
-          Die Liste bildet nicht jede Baureihe und jede Ausstattung ab. Ist Ihr Modell nicht
-          aufgeführt, starten Sie bitte den geführten Ablauf — anhand Ihrer Schlüsselfotos und der
-          Fahrzeugdaten klären wir Ihren Fall einzeln.
-        </Alert>
+        {/* Fester Block „Fahrzeug nicht gefunden?“ mit Telefon (FA-KERN-02B); ersetzt die frühere Box
+            „Modell nicht dabei?“, damit hier nur ein Ausweg steht. Die Marke geht mit. */}
+        <FahrzeugNichtGefunden
+          telefon={kontakt(settings.company).telefon}
+          erreichbarkeit={erreichbarkeit(settings)}
+          href={anfrageHref({ marke: make.name })}
+          satz={`Die Liste zeigt nicht jede Baureihe und Ausstattung. Ist Ihr ${make.name} nicht dabei, senden Sie uns trotzdem Ihre Anfrage: Fahrzeugdaten, Fahrzeugschein, drei Fotos Ihres Schlüssels und eine kurze Beschreibung.`}
+          className="mt-6"
+        />
       </Section>
 
       {/* Nächster Schritt */}

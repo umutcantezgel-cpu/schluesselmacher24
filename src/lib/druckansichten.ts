@@ -13,6 +13,7 @@
    ========================================================================== */
 
 import { formatCents, formatDate, formatDateTime, formatDuration } from './format';
+import { fahrzeugklasseText } from './fahrzeuge/anfrage-klassen';
 import { escapeHtml } from './mail/html';
 import { ART_LABEL, BEREICH_LABEL, UMFANG_LABEL, ZAHLUNG_LABEL } from './mail/vorlagen/gemeinsam';
 import { vorgangOrtText } from './terminort';
@@ -125,6 +126,8 @@ export function vorgangsblattHtml({ vorgang, firma, nonce, jetzt = new Date() }:
     tabelle([
       ['Art', t(ART_LABEL[vorgang.kind] ?? vorgang.kind)],
       ['Bereich', t(BEREICH_LABEL[vorgang.area] ?? vorgang.area)],
+      // Fahrzeugklasse der gemeinsamen Anfrage (FA-KERN-02B), nur wenn der Vorgang eine trägt.
+      ...(fahrzeugklasseText(vorgang.payload) ? [['Fahrzeugklasse', t(fahrzeugklasseText(vorgang.payload))] as [string, string]] : []),
       ['Status', t(STATUS_LABEL[vorgang.status] ?? vorgang.status)],
       ['Eingegangen', t(`${formatDateTime(vorgang.createdAt)} Uhr`)],
       ['Kunde', t([name(vorgang), vorgang.contact.company].filter(Boolean).join(' · '))],
