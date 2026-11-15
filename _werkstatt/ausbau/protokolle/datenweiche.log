@@ -1374,3 +1374,31 @@ console.log('size bytes', readFileSync('/home/user/schluesselmacher24/content/fa
 2026-11-10T22:02:41+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
 2026-11-10T22:03:08+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env -u SM24_DATA -u SM24_STORAGE -u SEED_ADMIN_EMAIL -u SEED_ADMIN_PASSWORD VERCEL=1 VERCEL_ENV=production VERCEL_URL=schluesselmacher24-abc123xyz-team-1d0c.vercel.app VERCEL_BRANCH_URL=schluesselmacher24-git-main-team-1d0c.vercel.app VERCEL_PROJECT_PRODUCTION_URL=schluesselmacher24.vercel.app VERCEL_GIT_COMMIT_REF=main PAYLOAD_SECRET= NEXT_PUBLIC_SITE_URL= node scripts/build.mjs
 2026-11-10T22:04:00+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	env -u SM24_DATA -u SM24_STORAGE -u SEED_ADMIN_EMAIL -u SEED_ADMIN_PASSWORD VERCEL=1 VERCEL_ENV=production VERCEL_URL=schluesselmacher24-abc123xyz-team-1d0c.vercel.app VERCEL_BRANCH_URL=schluesselmacher24-git-main-team-1d0c.vercel.app VERCEL_PROJECT_PRODUCTION_URL=schluesselmacher24.vercel.app VERCEL_GIT_COMMIT_REF=main PAYLOAD_SECRET= NEXT_PUBLIC_SITE_URL= npx next start -p 3000
+2026-11-15T11:03:34+00:00	ABBRUCH	json	FREMD_DB zeigt auf Datenbank-Host db.gefaelscht-produktion.supabase.co
+2026-11-15T11:03:34+00:00	ABBRUCH	json	ALT_URL zeigt auf Datenbank-Host prod.beispiel-firma.de
+2026-11-15T11:03:34+00:00	ABBRUCH	json	MEIN_BUCKET enthält die Adresse eines Fremddienstes (r2.cloudflarestorage.com)
+2026-11-15T11:03:34+00:00	ABBRUCH	json	IRGENDWAS enthält einen Zahlungs- oder Mailschlüssel
+2026-11-15T11:03:34+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "[$DATABASE_URL$STORAGE_BUCKET$PAYMENT_API_KEY]"
+2026-11-15T11:03:34+00:00	json	als=root	hosts=localhost	env-dateien= DATABASE_URL GEHEIM_NEU NOCH_EINS	sh -c echo "[$DATABASE_URL|$GEHEIM_NEU|$NOCH_EINS|]"
+2026-11-15T11:03:34+00:00	json	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$SM24_DATA $SM24_STORAGE $NEXT_PUBLIC_SITE_URL"
+2026-11-15T11:03:34+00:00	pg	als=root	hosts=localhost	env-dateien= keine	sh -c echo "$DATABASE_URL"
+2026-11-15T11:03:43+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm ci --no-audit --no-fund
+2026-11-15T11:07:06+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-15T11:12:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/visual src/lib/og src/app/global-error.test.ts src/lib/pdf src/app/(site)/layout.test.ts src/app/manifest
+2026-11-15T11:12:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/lib/visual/area-theme.test.ts
+2026-11-15T11:15:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run generate:types
+2026-11-15T11:15:40+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx payload migrate:create erreichbarkeit
+2026-11-15T11:15:48+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:16:17+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:18:16+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:19:08+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run src/components/seo src/components/layout src/lib/erreichbarkeit.test.ts src/payload/globals
+2026-11-15T11:20:09+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:20:27+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
+2026-11-15T11:20:51+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:21:38+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run -c vitest.db.config.ts
+2026-11-15T11:22:23+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run build
+2026-11-15T11:23:12+00:00	pg	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run -c vitest.db.config.ts src/lib/server/termin-erinnerungen.db.test.ts src/payload/seed.db.test.ts
+2026-11-15T11:23:37+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx next start -p 3000
+2026-11-15T11:24:33+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npx vitest run
+2026-11-15T11:24:56+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run typecheck
+2026-11-15T11:25:14+00:00	json	als=ubuntu	hosts=localhost	env-dateien= keine	npm run lint
