@@ -35,8 +35,9 @@ describe('Inhalte aus der Datenbank', () => {
       adapter.read('cylinderCatalog'),
       adapter.read('vehicleMakes'),
     ]);
-    expect(lines.length).toBe(52);
-    expect(lines[0].id).toBe('ms-01');
+    // Die 52 Muster-Codelinien sind Beispiele und kommen nicht in die Datenbank (A-046).
+    expect(lines.some((l) => l.example)).toBe(false);
+    expect(lines.some((l) => l.id === 'ms-01')).toBe(false);
     expect(settings.company.brandName).toBe('SCHLÜSSELMACHER24');
     expect(catalog.forms.length).toBeGreaterThan(0);
     expect(makes.find((m) => m.slug === 'volkswagen')?.pricingGroupId).toBe('gruppe-b');
@@ -118,10 +119,10 @@ describe('Übernahme der Inhalte (Seed)', () => {
     expect((await payload.count({ collection: 'sperrtage' })).totalDocs).toBe(0);
   });
 
-  it('enthält die Beispielartikel — sichtbar, aber als Beispiel gekennzeichnet', async () => {
+  it('legt die Beispielartikel nicht an (A-046)', async () => {
     const articles = await adapter.read('standardArticles');
-    expect(articles.length).toBe(8);
-    expect(articles.every((a) => a.example && a.seo.noindex)).toBe(true);
+    expect(articles.some((a) => a.example)).toBe(false);
+    expect(await payload.count({ collection: 'produkte', where: { beispiel: { equals: true } }, trash: true })).toMatchObject({ totalDocs: 0 });
   });
 });
 

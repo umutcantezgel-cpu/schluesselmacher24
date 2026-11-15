@@ -27,6 +27,7 @@ import { PreisHinweis } from '@/components/recht/preis-hinweis';
 import { ShopListe } from './shop-liste';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { SpaetVorladen } from '@/lib/spaet-vorladen';
+import { CODE_ANFRAGE_PFAD } from '@/lib/wege/code-anfrage';
 
 const ROUTE = 'schluessel-nach-code';
 
@@ -70,8 +71,18 @@ function WeiterIcon({ href }: { href: string }) {
   }
 }
 
+/** Titel und Beschreibung ohne echte Codeprodukte (A-046): nichts ist bestellbar, kein Sortiment. */
+const OHNE_PRODUKTE_SEO = {
+  title: 'Schlüssel nach Code anfragen',
+  description: 'Nennen Sie uns Ihren Schlüsselcode. Wir prüfen ihn und melden uns. Ohne Einsendung des Originals.',
+} as const;
+
 export async function generateMetadata(): Promise<Metadata> {
-  const page = await getPageContent(ROUTE);
+  const [page, lines] = await Promise.all([getPageContent(ROUTE), getCodeLines()]);
+  // Ohne Produkte versprechen Suchergebnis und Strukturdaten weder Bestellung noch Sortiment (R4, R8).
+  if (lines.length === 0) {
+    return { ...OHNE_PRODUKTE_SEO, alternates: { canonical: `/${ROUTE}` } };
+  }
   return {
     title: page?.seo.title ?? 'Schlüssel nach Code bestellen',
     description:
@@ -94,6 +105,8 @@ export default async function SchluesselNachCodePage() {
   // Kategorien als feste Links (Erg. Leitfaden §3): jede Linie ist auch ohne Suche und Filter erreichbar.
   const familien = codeFamilien(lines);
   const hersteller = codeHersteller(lines);
+  // Ohne echte Codeprodukte (A-046): ehrlicher Leerzustand mit Code-Anfrage statt Produktliste.
+  const ohneProdukte = lines.length === 0;
 
   return (
     <>
@@ -101,7 +114,7 @@ export default async function SchluesselNachCodePage() {
         data={pageGraphSchema({
           path: '/schluessel-nach-code',
           name: page?.headline ?? 'Schlüssel nach Code',
-          description: page?.seo.description,
+          description: ohneProdukte ? OHNE_PRODUKTE_SEO.description : page?.seo.description,
           crumbs: [{ href: '/schluessel-nach-code', label: 'Schlüssel nach Code' }],
         })}
       />
@@ -111,15 +124,25 @@ export default async function SchluesselNachCodePage() {
 
       <PageHeader
         rubrik={rubrik}
-        eyebrow={PROCESS_LABELS.direktkauf.label}
+        eyebrow={ohneProdukte ? 'Auf Anfrage' : PROCESS_LABELS.direktkauf.label}
         title={page?.headline ?? 'Schlüssel nach Code'}
-        lead={page?.subline ?? 'Code eingeben, Stückzahl wählen, bestellen.'}
+        lead={
+          ohneProdukte
+            ? 'Code nennen, wir prüfen ihn und melden uns. Ihr Originalschlüssel bleibt bei Ihnen.'
+            : (page?.subline ?? 'Code eingeben, Stückzahl wählen, bestellen.')
+        }
         crumbs={[{ href: '/schluessel-nach-code', label: 'Schlüssel nach Code' }]}
         bereich="schluessel-nach-code"
         actions={
-          <ButtonLink href="#codelinien" size="lg" pfeil>
-            Nach Code bestellen
-          </ButtonLink>
+          ohneProdukte ? (
+            <ButtonLink href={CODE_ANFRAGE_PFAD} size="lg" pfeil>
+              Code anfragen
+            </ButtonLink>
+          ) : (
+            <ButtonLink href="#codelinien" size="lg" pfeil>
+              Nach Code bestellen
+            </ButtonLink>
+          )
         }
         visual={
           /* Blickfang im Kopf (E4-L-23): die Fundstelle allein auf Papier, ohne zweite Kopfzeile;
@@ -138,10 +161,9 @@ export default async function SchluesselNachCodePage() {
           <div className="min-w-0">
             <p className="text-foreground">Ihr Originalschlüssel bleibt bei Ihnen</p>
             <p className="mt-2">
-              Bei allen Artikeln in diesem Bereich ist keine Einsendung des
-              Originalschlüssels nötig. Wir fertigen den Schlüssel allein anhand des Codes,
-              den Sie bei der Bestellung angeben. Sie können Ihr Schloss also weiter benutzen,
-              während der Nachschlüssel entsteht.
+              In diesem Bereich ist keine Einsendung des Originalschlüssels nötig. Wir fertigen
+              den Schlüssel allein anhand des Codes, den Sie uns nennen. Sie können Ihr Schloss
+              also weiter benutzen, während der Nachschlüssel entsteht.
             </p>
             <p className="mt-2">
               Kein Code vorhanden?{' '}
@@ -157,6 +179,38 @@ export default async function SchluesselNachCodePage() {
         </div>
       </PageHeader>
 
+      {ohneProdukte ? (
+        /* Leerzustand (A-046): Die Codeprodukte werden eingepflegt; bis dahin prüfen wir den Code auf Anfrage. */
+        <Section id="codelinien" tight labelledBy="trefferliste-titel">
+          <SectionHeading
+            id="trefferliste-titel"
+            nummer="01"
+            eyebrow="Anfrage"
+            title="Code anfragen"
+            lead={
+              page?.intro
+              ?? 'Viele Schlösser tragen einen aufgedruckten oder eingeprägten Code. Mit diesem Code fertigen wir den passenden Schlüssel an.'
+            }
+          />
+          <div role="note" className="mt-8 flex max-w-measure items-start gap-3 border-t border-border pt-6">
+            <GlyphInfo size={18} className="mt-1 shrink-0 text-foreground-muted" />
+            <div className="min-w-0">
+              <p className="text-body font-semibold text-foreground">Die Codeprodukte werden gerade eingepflegt.</p>
+              <p className="mt-2 text-body text-foreground-muted">
+                Bis dahin prüfen wir Ihren Code auf Anfrage. Nennen Sie uns Hersteller oder Schloss, den
+                Code wie aufgedruckt und die Stückzahl. Ein Foto von Schlüssel oder Schloss hilft, ist aber
+                freiwillig. Wir melden uns mit einem Angebot oder einer Rückfrage.
+              </p>
+              <div className="mt-6">
+                <ButtonLink href={CODE_ANFRAGE_PFAD} pfeil>
+                  Code anfragen
+                </ButtonLink>
+              </div>
+            </div>
+          </div>
+        </Section>
+      ) : (
+        <>
       <Section id="codelinien" tight labelledBy="trefferliste-titel">
         <SectionHeading
           id="trefferliste-titel"
@@ -172,6 +226,13 @@ export default async function SchluesselNachCodePage() {
 
         <PreisHinweis alle className="mt-4" />
         <ShopListe lines={lines} className="mt-6" />
+        {/* Code passt zu keiner Linie (FA-11-17): die Anfrage steht dauerhaft neben den Produkten. */}
+        <p className="mt-6 text-small text-foreground-muted">
+          Ihr Code passt zu keiner Linie?{' '}
+          <Link href={CODE_ANFRAGE_PFAD} prefetch={false} className="font-semibold text-primary hover:underline">
+            Code anfragen
+          </Link>
+        </p>
       </Section>
 
       {/* Kategorien und Hersteller als Stückliste: Startseite → Schlüssel nach Code → Kategorie → Produkt */}
@@ -237,15 +298,29 @@ export default async function SchluesselNachCodePage() {
         )}
       </Section>
 
+        </>
+      )}
+
       {/* Ablauf aus den Rubrikdaten (G-10, G-11) */}
       <RubrikAblaufAbschnitt
         rubrik={rubrik}
-        nummer="03"
+        nummer={ohneProdukte ? '02' : '03'}
         titel="Vom Code zum fertigen Schlüssel"
+        lead={
+          ohneProdukte
+            ? 'Sobald die Codeprodukte eingepflegt sind, läuft die Bestellung so. Bis dahin beginnt alles mit Ihrer Anfrage.'
+            : undefined
+        }
         aktion={
-          <ButtonLink href="#codelinien" variant="outline">
-            Codelinie finden
-          </ButtonLink>
+          ohneProdukte ? (
+            <ButtonLink href={CODE_ANFRAGE_PFAD} variant="outline">
+              Code anfragen
+            </ButtonLink>
+          ) : (
+            <ButtonLink href="#codelinien" variant="outline">
+              Codelinie finden
+            </ButtonLink>
+          )
         }
       />
 
@@ -253,7 +328,7 @@ export default async function SchluesselNachCodePage() {
       <Section tone="muted" tight labelledBy="weiter-titel">
         <SectionHeading
           id="weiter-titel"
-          nummer="04"
+          nummer={ohneProdukte ? '03' : '04'}
           eyebrow="Weiterlesen"
           title="Passende Bereiche und Erklärungen"
           lead="Wenn der Code fehlt oder mehrere Türen zusammengehören, führen diese Wege weiter."

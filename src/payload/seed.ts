@@ -5,7 +5,9 @@
  * Eintrag für Eintrag nach seinem natürlichen Schlüssel (Route, Kennung,
  * Adresse, Datum, Titel — siehe `seed()` unten):
  *
- * - Neue Einträge aus `content/*.json` werden angelegt.
+ * - Neue Einträge aus `content/*.json` werden angelegt. Ausgenommen sind
+ *   Beispiel-Einträge (Codelinien und Standardartikel mit `example: true`):
+ *   Musterdaten kommen nie in eine Datenbank (A-046, src/lib/beispiele.ts).
  * - Vorhandene werden nie überschrieben — außer beim Startwert-Abgleich.
  * - Gelöschte kommen nicht wieder: Je Sammlung führt der Vermerk
  *   `sm24:seed-schluessel:<name>` alle Schlüssel, die schon einmal angelegt
@@ -32,6 +34,7 @@ import path from 'node:path';
 import type { CollectionSlug, Payload, Where } from 'payload';
 
 import type { CollectionName, Collections } from '../lib/data/adapter';
+import { ohneBeispiele } from '../lib/beispiele';
 import { JsonFileAdapter } from '../lib/data/json-adapter';
 import * as m from '../lib/data/payload-mapping';
 
@@ -470,7 +473,9 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
     await eintraegeUebernehmen({
       name: 'codelinien',
       collection: 'produkte',
-      inhalt: await quelle.read('codeLines'),
+      // Beispiel-Linien (Musterdaten) kommen nie in eine Datenbank, auch nicht mit SM24_BEISPIELE (A-046).
+      // Schon angelegte bleiben unberührt: kein Löschen, kein Abgleich.
+      inhalt: ohneBeispiele(await quelle.read('codeLines')),
       startwert: 'codeLines',
       schluessel: (l) => l.id,
       dbSchluessel: kennung,
@@ -494,7 +499,8 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
     await eintraegeUebernehmen({
       name: 'beispielartikel',
       collection: 'produkte',
-      inhalt: await quelle.read('standardArticles'),
+      // Beispielartikel ebenso (A-046): nur echte Artikel werden angelegt.
+      inhalt: ohneBeispiele(await quelle.read('standardArticles')),
       startwert: 'standardArticles',
       schluessel: (a) => a.id,
       dbSchluessel: kennung,
@@ -510,6 +516,8 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
       schluessel: (r) => r.id,
       dbSchluessel: kennung,
       zuDaten: m.rubrikZuPayload,
+      // Datenmigration 20261115 „rubrik_nach_vorlage“ (FA-03): Die Leistung „Schlüssel nach Foto“ gibt es nicht mehr.
+      umbenannt: { 'schluessel-nach-foto': 'schluessel-nach-vorlage' },
       abgleich: [
         { pfad: 'name' },
         { pfad: 'laienname' },

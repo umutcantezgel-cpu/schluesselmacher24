@@ -17,6 +17,7 @@ import { Field } from '@/components/forms/field';
 import { QuantityInput, TextInput } from '@/components/forms/controls';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { codeFotoKategorie } from '@/lib/wege/nachweis';
+import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 import { GlyphHaken } from '@/components/visual/glyphen/haken';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphWarenkorb } from '@/components/visual/glyphen/warenkorb';
@@ -73,7 +74,9 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
     : trimmed === ''
       ? 'Bitte geben Sie den Schlüsselcode ein.'
       : `Der Code passt nicht zum erwarteten Format. Erwartet wird: ${line.codeFormatLabel}. `
-        + `Beispiel: ${line.codeExample}.`;
+        + `Beispiel: ${line.codeExample}. Passt Ihr Code zu keiner Linie, fragen Sie ihn bei uns an.`;
+  // Unpassender Code: Weg in die Code-Anfrage (FA-11-17), mit Code und Linie vorbelegt.
+  const anfrageZeigen = touched && trimmed !== '' && !codeValid;
 
   const showPhotoUpload = line.photoUpload !== 'nein';
   const photoRequired = line.photoUpload === 'pflicht';
@@ -197,6 +200,17 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
                   </p>
                 )}
               </div>
+              {anfrageZeigen && (
+                <p className="text-small text-foreground-muted">
+                  <Link
+                    href={codeAnfragePfad({ code: trimmed, schloss: line.name })}
+                    prefetch={false}
+                    className="inline-flex min-h-touch items-center font-semibold text-primary hover:underline"
+                  >
+                    Code anfragen
+                  </Link>
+                </p>
+              )}
             </>
           )}
         </Field>

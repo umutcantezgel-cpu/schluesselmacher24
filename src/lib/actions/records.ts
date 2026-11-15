@@ -15,6 +15,7 @@ import { publicRecordSchema, terminZustimmungenSchema, type TerminZustimmungen }
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import { fahrzeugscheinPruefen, nachweisPruefen, rubrikUnterlagenPruefen } from '@/lib/server/unterlagen-pflicht';
 import { QUELLE_RUBRIK, fotoAnfrageVerlangtKarte, vorOrtOhneBerechtigung } from '@/lib/wege/nachweis';
+import { CODE_ANFRAGE_QUELLE, codeAnfragePruefen, mitGeprueftemCode } from '@/lib/wege/code-anfrage';
 import type {
   AppointmentInfo,
   AreaKey,
@@ -272,6 +273,17 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
     if (fehlt) {
       return { ok: false, notices: [], error: fehlt };
     }
+  }
+
+  // Code-Anfrage (FA-11-17, A-046): Hersteller oder Schloss, Code, Stückzahl und Berechtigung (R13) sind Pflicht.
+  // Die geprüften Werte ersetzen die aus dem Browser, im Vorgang und im Abschnitt „Code“ der Zusammenfassung.
+  if (data.kind === 'anfrage' && data.area === 'schluessel-nach-code') {
+    const angaben = codeAnfragePruefen(payload);
+    if (!angaben) {
+      return { ok: false, notices: [], error: INVALID_INPUT };
+    }
+    payload = { ...payload, ...angaben, quelle: CODE_ANFRAGE_QUELLE, berechtigt: true };
+    summary = mitGeprueftemCode(summary, angaben);
   }
 
   // Einsatz vor Ort (E6-BAUMEISTER-05): nur mit bestätigter Berechtigung (R13).

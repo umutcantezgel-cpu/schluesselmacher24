@@ -3,8 +3,10 @@ import { beforeAll, describe, expect, it } from 'vitest';
 
 import config from '@payload-config';
 import { getRecord, vorgangAendern, vorgangAnlegen, type NeuerVorgang } from '@/lib/data';
+import { JsonFileAdapter } from '@/lib/data/json-adapter';
+import { codeLineZuPayload } from '@/lib/data/payload-mapping';
 import { up as datenMigrieren } from '@/migrations/20261025_132935_leitfaden_daten';
-import type { Vorgaenge } from '@/payload-types';
+import type { Produkte, Vorgaenge } from '@/payload-types';
 
 /* Gegen die Testdatenbank (siehe src/test/db-global-setup.ts): Datenmigration
  * „leitfaden_daten“ und die neuen Felder der Vorgänge. */
@@ -79,23 +81,35 @@ describe('Datenmigration leitfaden_daten', () => {
   });
 
   it('macht das Foto bei ZY-02 zur Pflicht — außer der Betrieb hat es anders eingestellt', async () => {
-    const [zy02] = (await payload.find({ collection: 'produkte', where: { kennung: { equals: 'zy-02' } }, depth: 0 })).docs;
-    const alterHinweis = 'Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.';
-    await payload.update({ collection: 'produkte', id: zy02.id, data: { fotoUpload: 'optional', fotoHinweis: alterHinweis }, context });
-
-    await migrieren();
-    const nachher = await payload.findByID({ collection: 'produkte', id: zy02.id, depth: 0 });
-    expect(nachher.fotoUpload).toBe('pflicht');
-    expect(nachher.fotoHinweis).toContain('Sicherungskarte');
-
-    await payload.update({ collection: 'produkte', id: zy02.id, data: { fotoUpload: 'nein', fotoHinweis: alterHinweis }, context });
-    await migrieren();
-    const betrieb = await payload.findByID({ collection: 'produkte', id: zy02.id, depth: 0 });
-    expect(betrieb.fotoUpload).toBe('nein');
-    expect(betrieb.fotoHinweis).toBe(alterHinweis);
-    await payload.update({ collection: 'produkte', id: zy02.id, data: { fotoUpload: 'pflicht', fotoHinweis: nachher.fotoHinweis }, context });
+    // Der Seed legt die Muster-Codelinien nicht mehr an (A-046): ZY-02 aus den Musterdaten selbst anlegen,
+    // wie eine bestehende Datenbank sie aus der Zeit vor A-046 noch enthält.
+    const muster = (await new JsonFileAdapter().read('codeLines')).find((l) => l.id === 'zy-02')!;
+    const zy02 = await payload.create({ collection: 'produkte', data: codeLineZuPayload(muster), context });
+    try {
+      await zy02Pruefen(zy02);
+    } finally {
+      await payload.delete({ collection: 'produkte', id: zy02.id, trash: true, context });
+    }
   });
 });
+
+/** Datenmigration an ZY-02: Pflichtfoto setzen, eine Einstellung des Betriebs aber stehen lassen. */
+async function zy02Pruefen(zy02: Produkte) {
+  const alterHinweis = 'Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.';
+  await payload.update({ collection: 'produkte', id: zy02.id, data: { fotoUpload: 'optional', fotoHinweis: alterHinweis }, context });
+
+  await migrieren();
+  const nachher = await payload.findByID({ collection: 'produkte', id: zy02.id, depth: 0 });
+  expect(nachher.fotoUpload).toBe('pflicht');
+  expect(nachher.fotoHinweis).toContain('Sicherungskarte');
+
+  await payload.update({ collection: 'produkte', id: zy02.id, data: { fotoUpload: 'nein', fotoHinweis: alterHinweis }, context });
+  await migrieren();
+  const betrieb = await payload.findByID({ collection: 'produkte', id: zy02.id, depth: 0 });
+  expect(betrieb.fotoUpload).toBe('nein');
+  expect(betrieb.fotoHinweis).toBe(alterHinweis);
+  await payload.update({ collection: 'produkte', id: zy02.id, data: { fotoUpload: 'pflicht', fotoHinweis: nachher.fotoHinweis }, context });
+}
 
 describe('Vorgänge: Partner, Freigabe und Vermittlung', () => {
   const vorgang = (overrides: Partial<NeuerVorgang> = {}) => (): NeuerVorgang => {

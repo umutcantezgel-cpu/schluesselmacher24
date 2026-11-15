@@ -12,6 +12,7 @@ import * as migration_20261103_032353_nachweise from './20261103_032353_nachweis
 import * as migration_20261103_033531_partnerbetriebe from './20261103_033531_partnerbetriebe';
 import * as migration_20261115_111543_erreichbarkeit from './20261115_111543_erreichbarkeit';
 import * as migration_20261115_120000_rubrik_nach_vorlage from './20261115_120000_rubrik_nach_vorlage';
+import * as migration_20261115_130000_musterdaten_beispiel from './20261115_130000_musterdaten_beispiel';
 
 export const migrations = [
   {
@@ -83,5 +84,10 @@ export const migrations = [
     up: migration_20261115_120000_rubrik_nach_vorlage.up,
     down: migration_20261115_120000_rubrik_nach_vorlage.down,
     name: '20261115_120000_rubrik_nach_vorlage',
+  },
+  {
+    up: migration_20261115_130000_musterdaten_beispiel.up,
+    down: migration_20261115_130000_musterdaten_beispiel.down,
+    name: '20261115_130000_musterdaten_beispiel',
   },
 ];

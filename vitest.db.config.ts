@@ -12,6 +12,8 @@ export default defineConfig({
     exclude: ['node_modules/**', '.claude/**'],
     globalSetup: ['src/test/db-global-setup.ts'],
     setupFiles: ['src/test/setup-umgebung.ts'],
+    // Musterdaten sind nur in Tests sichtbar (A-046, src/lib/beispiele.ts); der Seed legt sie trotzdem nie an.
+    env: { SM24_BEISPIELE: '1' },
     testTimeout: 30_000,
     hookTimeout: 120_000,
     fileParallelism: false,

@@ -6,10 +6,11 @@ import { afterAll, describe, expect, it } from 'vitest';
 
 import { einstellungenZuPayload } from './data/payload-mapping';
 import { defaults } from './data/defaults';
-import { firmendatenFunde, platzhalterImText, rechtsseitenFunde } from './livegang-pruefung';
+import { beispielFunde, firmendatenFunde, musterKennungen, platzhalterImText, rechtsseitenFunde } from './livegang-pruefung';
 import type { Settings } from './types';
 
 const settingsJson = (await import('../../content/settings.json')).default as unknown as Settings;
+const codeLinesJson = (await import('../../content/code-lines.json')).default as Array<{ id: string; name: string; example?: boolean }>;
 
 describe('firmendatenFunde', () => {
   it('lässt die echten Firmendaten aus content/settings.json durch', async () => {
@@ -79,5 +80,38 @@ describe('rechtsseitenFunde', () => {
     expect(rechtsseitenFunde(ordner, ordner)).toEqual([
       { ort: `${path.join('agb', 'page.tsx')}:2`, hinweis: '[Platzhalter: Eigentumsvorbehalt]' },
     ]);
+  });
+});
+
+describe('beispielFunde (A-046)', () => {
+  const muster = musterKennungen();
+
+  it('kennt die 52 Muster-Codelinien und die Beispielartikel', () => {
+    expect(muster.has('ms-01')).toBe(true);
+    expect(muster.has('zy-02')).toBe(true);
+    expect(muster.has(defaults.standardArticles()[0].id)).toBe(true);
+    expect(muster.size).toBe(52 + defaults.standardArticles().length);
+  });
+
+  it('lässt markierte Beispiele und echte Produkte durch', () => {
+    expect(beispielFunde([{ kennung: 'ms-01', name: 'Muster', beispiel: true }, { kennung: 'abus-1', name: 'Echt', beispiel: false }], {})).toEqual([]);
+  });
+
+  it('meldet Musterdaten ohne Beispiel-Haken, ohne den Rest', () => {
+    const funde = beispielFunde([{ kennung: 'zy-02', name: 'Profilzylinder', beispiel: false }, { kennung: 'abus-1', name: 'Echt', beispiel: false }], {});
+    expect(funde).toHaveLength(1);
+    expect(funde[0].ort).toBe('Produkte › zy-02');
+  });
+
+  it('meldet SM24_BEISPIELE=1', () => {
+    const funde = beispielFunde([], { SM24_BEISPIELE: '1' });
+    expect(funde).toHaveLength(1);
+    expect(funde[0].hinweis).toContain('SM24_BEISPIELE=1');
+    expect(beispielFunde([], { SM24_BEISPIELE: '0' })).toEqual([]);
+  });
+
+  it('meldet für den heutigen Inhalt ohne Datenbank nichts: alle Musterdaten sind markiert', () => {
+    const eintraege = [...codeLinesJson, ...defaults.standardArticles()].map((e) => ({ kennung: e.id, name: e.name, beispiel: e.example === true }));
+    expect(beispielFunde(eintraege, {})).toEqual([]);
   });
 });

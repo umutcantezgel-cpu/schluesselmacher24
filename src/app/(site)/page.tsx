@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getGuides, getHubRubriken, getPageContent, getSettings } from '@/lib/data';
+import { getCodeLines, getGuides, getHubRubriken, getPageContent, getSettings } from '@/lib/data';
 import { NAV_AREAS } from '@/lib/navigation';
 import { kontakt } from '@/lib/rechtliches/firma';
 import { telefonLink } from '@/lib/telefon';
 import { IntentHub } from '@/components/hub/intent-hub';
+import { PartnerSektion } from '@/components/partner/partner-sektion';
 import { Eingangsinszenierung } from '@/components/visual/inszenierung/eingangsinszenierung';
 import { formatCents } from '@/lib/format';
 import { ButtonLink } from '@/components/ui/button';
@@ -94,12 +95,15 @@ function Weiter({ className }: { className?: string }) {
 const HERO_ZIELE = ['/autoschluessel/anfrage', '/schluessel-nach-code'] as const;
 
 export default async function HomePage() {
-  const [page, settings, guides, hubRubriken] = await Promise.all([
+  const [page, settings, guides, hubRubriken, codeLines] = await Promise.all([
     getPageContent(''),
     getSettings(),
     getGuides(),
     getHubRubriken(),
+    getCodeLines(),
   ]);
+  // „Bestellen ohne Termin“: Solange es keine echten Codeprodukte gibt, verspricht die Karte keine Bestellung (A-046).
+  const codeProdukte = codeLines.length > 0;
 
   const nummer = kontakt(settings.company).telefon;
   const telefon = nummer ? { anzeige: nummer, href: telefonLink(nummer) } : null;
@@ -189,7 +193,7 @@ export default async function HomePage() {
                 prefetch={false}
                 className="group inline-flex min-h-touch items-center gap-1.5 text-body font-semibold text-primary"
               >
-                Schlüssel nach Code bestellen
+                {codeProdukte ? 'Schlüssel nach Code bestellen' : 'Schlüssel nach Code anfragen'}
                 <Weiter />
               </Link>
             </div>
@@ -304,13 +308,17 @@ export default async function HomePage() {
               area: 'schluessel-nach-code' as const,
               href: '/schluessel-nach-code',
               titel: 'Schlüssel nach Code',
-              text: 'Code eingeben, Stückzahl wählen, bestellen. Ihr Originalschlüssel bleibt bei Ihnen.',
+              marke: codeProdukte ? 'Direkt kaufen' : 'Auf Anfrage',
+              text: codeProdukte
+                ? 'Code eingeben, Stückzahl wählen, bestellen. Ihr Originalschlüssel bleibt bei Ihnen.'
+                : 'Code nennen, wir prüfen ihn und melden uns. Ihr Originalschlüssel bleibt bei Ihnen.',
               grafik: <SchluesselGrafik params={{ typ: 'zylinder', code: 'SM24' }} title="Schlüssel mit Profil nach Code" />,
             },
             {
               area: 'gleichschliessende-zylinder' as const,
               href: '/gleichschliessende-zylinder/konfigurator',
               titel: 'Sperrschließung',
+              marke: 'Direkt kaufen',
               text: 'Mehrere Türen mit einem Schlüssel. Bauform, Maße und Schlüsselanzahl selbst zusammenstellen.',
               /* Bis lg ist die Kartenfläche schmal (230–300 px): dort das schmale Format mit größerer Schrift. */
               grafik: (
@@ -328,7 +336,7 @@ export default async function HomePage() {
               >
                 <div className="border-b border-border bg-area-soft/40 px-6 pt-6">{angebot.grafik}</div>
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Direkt kaufen</p>
+                  <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">{angebot.marke}</p>
                   <p className="mt-2 flex items-start justify-between gap-3">
                     <span className="text-title font-bold text-foreground">{angebot.titel}</span>
                     <Weiter className="mt-1 text-foreground-muted group-hover:text-area-strong group-focus-visible:text-area-strong" />
@@ -393,6 +401,9 @@ export default async function HomePage() {
       </Section>
 
       {/* Ratgeber: Kopf oben, drei Spalten wie eine Zeitungsseite */}
+      {/* Partnergewinnung (FA-08): sichtbare Sektion für Autoschlüssel-Fachbetriebe */}
+      <PartnerSektion />
+
       <Section tone="muted" tight labelledBy="ratgeber-titel">
         <div className="flex flex-wrap items-end justify-between gap-x-gutter gap-y-4">
           <SectionHeading id="ratgeber-titel" eyebrow="Ratgeber" title="Antworten auf die häufigsten Fragen" />

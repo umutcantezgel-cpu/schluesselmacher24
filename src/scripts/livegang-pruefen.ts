@@ -2,7 +2,13 @@
  * Prüft vor dem Livegang, ob noch Redaktions-Platzhalter sichtbar wären:
  * - Firmendaten (Global „Einstellungen“, Tab „Firma“; ohne Datenbank
  *   content/settings.json),
- * - Quelltext der Rechtsseiten unter src/app/(site)/rechtliches/.
+ * - Quelltext der Rechtsseiten unter src/app/(site)/rechtliches/,
+ * - Beispiel-Einträge (A-046): SM24_BEISPIELE=1 oder ein veröffentlichtes
+ *   Produkt aus den Musterdaten ohne Beispiel-Haken (ohne Datenbank
+ *   content/code-lines.json und die Standardartikel).
+ *
+ * Seitenzahlen oder eine Mindestzahl an Codelinien erwartet die Prüfung nicht:
+ * Ohne echte Produkte hat der Shop keine Produktseiten.
  *
  *   npm run pruefen:livegang
  *
@@ -16,8 +22,9 @@ import path from 'node:path';
 import config from '@payload-config';
 import { createLocalReq, getPayload } from 'payload';
 
+import { JsonFileAdapter } from '../lib/data/json-adapter';
 import { einstellungenZuPayload } from '../lib/data/payload-mapping';
-import { firmendatenFunde, rechtsseitenFunde, type Fund } from '../lib/livegang-pruefung';
+import { beispielFunde, firmendatenFunde, rechtsseitenFunde, type Fund, type ProduktEintrag } from '../lib/livegang-pruefung';
 import type { Settings } from '../lib/types';
 import { mitDatenbank } from '../lib/umgebung';
 
@@ -32,17 +39,36 @@ async function firmendaten(): Promise<Fund[]> {
   return firmendatenFunde(einstellungen.firma as Record<string, unknown>, await createLocalReq({}, payload));
 }
 
+async function produkte(): Promise<ProduktEintrag[]> {
+  if (!mitDatenbank()) {
+    const dateien = new JsonFileAdapter();
+    const [linien, artikel] = await Promise.all([dateien.read('codeLines'), dateien.read('standardArticles')]);
+    return [...linien.filter((l) => l.active), ...artikel].map((e) => ({ kennung: e.id, name: e.name, beispiel: e.example === true }));
+  }
+  const payload = await getPayload({ config });
+  // Nur Veröffentlichtes: ohne Entwürfe und ohne Papierkorb.
+  const { docs } = await payload.find({
+    collection: 'produkte',
+    where: { _status: { equals: 'published' } },
+    pagination: false,
+    depth: 0,
+    overrideAccess: true,
+  });
+  return docs.map((doc) => ({ kennung: doc.kennung ?? '', name: doc.name, beispiel: doc.beispiel === true }));
+}
+
 try {
   const funde = [
     ...(await firmendaten()),
+    ...beispielFunde(await produkte()),
     ...rechtsseitenFunde(path.resolve(process.cwd(), 'src/app/(site)/rechtliches')),
   ];
 
   if (funde.length === 0) {
-    console.log('Livegang-Prüfung: keine Platzhalter gefunden.');
+    console.log('Livegang-Prüfung: keine Platzhalter und keine veröffentlichten Beispiele gefunden.');
     process.exit(0);
   }
-  console.error(`Livegang-Prüfung: ${funde.length} Platzhalter gefunden.`);
+  console.error(`Livegang-Prüfung: ${funde.length} Funde (Platzhalter oder veröffentlichte Beispiele).`);
   for (const fund of funde) console.error(`  ${fund.ort}  ${fund.hinweis}`);
   process.exit(1);
 } catch (error) {

@@ -3,6 +3,7 @@ import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { IconSicherungskarte } from '@/components/visual/icons/sicherungskarte';
 import type { CodeLine } from '@/lib/types';
+import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 
 /** Codelinie für Nachschlüssel mit Sicherungskarte. */
 const SICHERUNGSKARTEN_LINIE = 'zy-02';
@@ -33,7 +34,7 @@ export function NachbestellenAbschnitt({ linie, nummer, tone = 'default' }: Nach
   const punkte = [
     linie
       ? `Code der Schließung eingeben (${linie.codeFormatLabel}).`
-      : 'Code der Schließung eingeben — er steht auf der Sicherungskarte.',
+      : 'Code der Schließung nennen. Er steht auf der Sicherungskarte.',
     linie?.photoUploadHint ?? 'Foto Ihrer Sicherungskarte hochladen.',
     'Nachschlüssel werden nur gegen Vorlage der Sicherungskarte gefertigt.',
   ];
@@ -47,7 +48,11 @@ export function NachbestellenAbschnitt({ linie, nummer, tone = 'default' }: Nach
             nummer={nummer}
             eyebrow="Nachbestellen"
             title="Schlüssel nachbestellen (mit Sicherungskarte)"
-            lead="Gehört zu Ihrer Schließung eine Sicherungskarte, bestellen Sie weitere Schlüssel direkt nach Code."
+            lead={
+              linie
+                ? 'Gehört zu Ihrer Schließung eine Sicherungskarte, bestellen Sie weitere Schlüssel direkt nach Code.'
+                : 'Gehört zu Ihrer Schließung eine Sicherungskarte, fragen Sie weitere Schlüssel mit dem Code der Karte an.'
+            }
           />
         </div>
         <div className="lg:col-span-7">
@@ -64,11 +69,11 @@ export function NachbestellenAbschnitt({ linie, nummer, tone = 'default' }: Nach
           </div>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <ButtonLink
-              href={linie ? `/schluessel-nach-code/${linie.slug}` : '/schluessel-nach-code#codelinien'}
+              href={linie ? `/schluessel-nach-code/${linie.slug}` : codeAnfragePfad({ schloss: 'Schließung mit Sicherungskarte' })}
               pfeil
               className="w-full justify-between text-left sm:w-auto"
             >
-              Schlüssel nachbestellen (mit Sicherungskarte)
+              {linie ? 'Schlüssel nachbestellen (mit Sicherungskarte)' : 'Nachschlüssel anfragen (mit Sicherungskarte)'}
             </ButtonLink>
             <ButtonLink href="/service-und-termin/anfrage" variant="outline" className="w-full sm:w-auto">
               Karte nicht zur Hand? Anfrage stellen

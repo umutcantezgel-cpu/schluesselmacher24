@@ -1,6 +1,12 @@
 import type { Metadata } from 'next';
 
 import { NAV_AREAS } from '@/lib/navigation';
+import {
+  CODE_ANFRAGE_LAENGE,
+  CODE_ANFRAGE_THEMA,
+  CODE_ANFRAGE_THEMENTEXT,
+  vorbelegungAusAdresse,
+} from '@/lib/wege/code-anfrage';
 import { PageHeader } from '@/components/layout/page-header';
 import { AllgemeineAnfrage } from './anfrage-formular';
 
@@ -13,16 +19,26 @@ export const metadata: Metadata = {
 };
 
 export default async function AnfragePage(props: {
-  searchParams: Promise<{ thema?: string; fahrzeug?: string }>;
+  searchParams: Promise<{ thema?: string; fahrzeug?: string; code?: string; schloss?: string }>;
 }) {
-  const { thema, fahrzeug } = await props.searchParams;
+  const { thema, fahrzeug, code, schloss } = await props.searchParams;
   // Fahrzeug aus der Suche im Autoschlüssel-Weg (G-15): nur als kurzer Text in die Beschreibung.
   const fahrzeugText = typeof fahrzeug === 'string' ? fahrzeug.replace(/[^\p{L}\p{N} .\-/]/gu, '').trim().slice(0, 80) : '';
 
+  // Code anfragen (FA-11-17): Code und Schloss nur als Vorbelegung, etwa von einer Produktseite.
+  const codeAnfrage = thema === CODE_ANFRAGE_THEMA;
+  const codeVorbelegung = codeAnfrage
+    ? {
+        code: vorbelegungAusAdresse(code, CODE_ANFRAGE_LAENGE.code) || undefined,
+        schloss: vorbelegungAusAdresse(schloss, CODE_ANFRAGE_LAENGE.schloss) || undefined,
+      }
+    : undefined;
+
+  // In der Themenwahl beschreibt „Schlüssel nach Code“ die Anfrage, nicht die Direktbestellung der Navigation.
   const themen = NAV_AREAS.map((area) => ({
     key: area.key,
     label: area.label,
-    summary: area.summary,
+    summary: area.key === CODE_ANFRAGE_THEMA ? CODE_ANFRAGE_THEMENTEXT : area.summary,
   }));
 
   return (
@@ -31,8 +47,12 @@ export default async function AnfragePage(props: {
         eyebrow="Geführte Anfrage"
         bereich="service-und-termin"
         art="arbeit"
-        title="Allgemeine Anfrage"
-        lead="Wenn Ihr Anliegen in keinen der Fachbereiche passt: Beschreiben Sie kurz, worum es geht. Wir melden uns mit einer Einschätzung."
+        title={codeAnfrage ? 'Code anfragen' : 'Allgemeine Anfrage'}
+        lead={
+          codeAnfrage
+            ? 'Nennen Sie Hersteller oder Schloss, den Code wie aufgedruckt und die Stückzahl. Wir prüfen den Code und melden uns mit einem Angebot oder einer Rückfrage.'
+            : 'Wenn Ihr Anliegen in keinen der Fachbereiche passt: Beschreiben Sie kurz, worum es geht. Wir melden uns mit einer Einschätzung.'
+        }
         crumbs={[
           { href: '/service-und-termin', label: 'Service und Termin' },
           { href: '/service-und-termin/anfrage', label: 'Anfrage' },
@@ -40,7 +60,13 @@ export default async function AnfragePage(props: {
       />
 
       <div className="shell py-8 md:py-12">
-        <AllgemeineAnfrage themen={themen} vorauswahl={thema} fahrzeug={fahrzeugText || undefined} />
+        <AllgemeineAnfrage
+          themen={themen}
+          vorauswahl={thema}
+          fahrzeug={fahrzeugText || undefined}
+          codeVorbelegung={codeVorbelegung}
+          themaFest={codeAnfrage}
+        />
       </div>
     </>
   );

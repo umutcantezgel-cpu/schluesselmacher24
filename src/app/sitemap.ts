@@ -18,6 +18,7 @@ import {
   kategoriePfad,
 } from '@/lib/codelinie';
 import { markeIndexierbar, modellIndexierbar } from '@/lib/fahrzeug-texte';
+import { GEWINNUNG_SEITEN } from '@/lib/partner/gewinnung';
 import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
 import { getSiteUrl } from '@/lib/site-url';
 import type { CodeLine } from '@/lib/types';
@@ -67,6 +68,8 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '/service-und-termin/kontakt', priority: 0.6 },
   { path: '/service-und-termin/vor-ort', priority: 0.6 },
   { path: '/partner-werden', priority: 0.4 },
+  // Partnergewinnung (FA-08-05 bis FA-08-08): Pfade aus den Seitendaten.
+  ...GEWINNUNG_SEITEN.map((seite) => ({ path: seite.pfad, priority: 0.4 })),
   { path: '/ratgeber', priority: 0.6 },
   { path: '/rechtliches/versand-und-zahlung', priority: 0.3 },
 ];

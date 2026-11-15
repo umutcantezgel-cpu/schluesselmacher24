@@ -74,13 +74,17 @@ describe('Sitemap', () => {
   });
 
   it('meldet Codelinien, Kategorien und Hersteller — ohne noindex, Hersteller erst wenn gepflegt', async () => {
-    const linien = (codeLinesJson as CodeLine[]).map((line) =>
-      line.id === 'ms-02' ? { ...line, seo: { ...line.seo, noindex: true } } : line,
-    );
+    // Die Musterdaten sind Beispiele (A-046); hier stehen sie für echte Linien. ms-03 bleibt Beispiel.
+    const linien = (codeLinesJson as CodeLine[]).map((line) => ({
+      ...line,
+      example: line.id === 'ms-03',
+      ...(line.id === 'ms-02' ? { seo: { ...line.seo, noindex: true } } : {}),
+    }));
     daten.linien = linien;
     const urls = (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
     expect(urls).toContain('/schluessel-nach-code/ms-01');
     expect(urls).not.toContain('/schluessel-nach-code/ms-02');
+    expect(urls).not.toContain('/schluessel-nach-code/ms-03');
     expect(urls).toContain('/schluessel-nach-code/kategorie/moebel-und-bueroschloesser');
     expect(urls.filter((url) => url.startsWith('/schluessel-nach-code/kategorie/'))).toHaveLength(10);
     expect(urls.some((url) => url.startsWith('/schluessel-nach-code/hersteller/'))).toBe(false);
@@ -116,5 +120,18 @@ describe('Sitemap', () => {
     daten.artikel = [{ ...daten.artikel[0], example: false, seo: { ...daten.artikel[0].seo, noindex: false } }];
     expect((await sitemap()).some((e) => e.url.endsWith('/artikel'))).toBe(true);
     daten.artikel = [];
+  });
+
+  it('meldet die Hauptseite und die vier Seiten zur Partnergewinnung', async () => {
+    const urls = (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
+    for (const pfad of [
+      '/partner-werden',
+      '/partner-werden/auftraege-erhalten',
+      '/partner-werden/netzwerk-deutschland',
+      '/partner-werden/kfz-betriebe',
+      '/partner-werden/kooperation',
+    ]) {
+      expect(urls).toContain(pfad);
+    }
   });
 });

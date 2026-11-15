@@ -100,18 +100,18 @@ export const NAV_AREAS: NavArea[] = [
     label: 'Schlüssel nach Code',
     navLabel: 'Nach Code',
     href: '/schluessel-nach-code',
-    summary: 'Code eingeben und direkt bestellen. Ohne Einsendung.',
+    summary: 'Schlüssel nach dem aufgedruckten Code. Ohne Einsendung des Originals.',
     process: 'direktkauf',
     highlight: {
       href: '/schluessel-nach-code#codelinien',
-      label: 'Nach Code bestellen',
-      description: 'Codelinie suchen, Code eingeben, bestellen',
+      label: 'Schlüssel nach Code',
+      description: 'Code nennen, wir fertigen danach',
     },
     columns: [
       {
         title: 'Shop',
         links: [
-          { href: '/schluessel-nach-code', label: 'Codelinien durchsuchen', description: 'Nach Anwendung und Schlüsseltyp' },
+          { href: '/schluessel-nach-code', label: 'Schlüssel nach Code', description: 'Übersicht und Code-Anfrage' },
           { href: '/ratgeber/schluesselcode-finden', label: 'Wo finde ich den Code?', description: 'Typische Fundstellen' },
           { href: '/rechtliches/versand-und-zahlung', label: 'Versand und Zahlung', description: 'Versandarten und Fristen' },
         ],

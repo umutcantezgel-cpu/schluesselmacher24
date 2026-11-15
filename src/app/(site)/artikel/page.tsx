@@ -33,7 +33,7 @@ const BESCHREIBUNG =
 const BASE_LINKS: NavLink[] = [
   {
     href: '/schluessel-nach-code',
-    label: 'Schlüssel nach Code bestellen',
+    label: 'Schlüssel nach Code',
     description: 'Nachschlüssel allein anhand des Codes, ohne Einsendung des Originals.',
   },
   {
@@ -81,6 +81,7 @@ export default async function ArtikelPage() {
     getCollection('standardArticles'),
   ]);
 
+  // Beispielartikel kennt die Datenschicht hier nicht (A-046); ohne echte Artikel bleibt der Leerzustand.
   const articles = sortiereArtikel(alle);
   const beispiele = articles.filter((a) => a.example).length;
   const nurBeispiele = articles.length > 0 && beispiele === articles.length;
@@ -169,13 +170,13 @@ export default async function ArtikelPage() {
                   Derzeit sind hier keine Artikel eingestellt.
                 </h2>
                 <p className="mt-2 max-w-md text-small leading-relaxed text-foreground-muted">
-                  Schauen Sie gern später wieder vorbei. Nachschlüssel nach Code bestellen Sie
-                  weiterhin direkt; für alle anderen Anliegen erreichen Sie uns über die Anfrage.
+                  Sie suchen ein Ersatzteil oder Zubehör rund um Schlüssel, Schloss und Tür? Wir
+                  beraten Sie gern und sagen Ihnen, was passt.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 sm:justify-center">
-                <ButtonLink href="/schluessel-nach-code" pfeil>
-                  Schlüssel nach Code
+                <ButtonLink href="/beratung" pfeil>
+                  Zur Beratung
                 </ButtonLink>
                 <ButtonLink href="/service-und-termin/anfrage" variant="outline">
                   Anfrage stellen

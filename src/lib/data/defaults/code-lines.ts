@@ -1,7 +1,13 @@
 import type { CodeLine } from '@/lib/types';
 
 /**
- * Schlüssel nach Code — 52 Codelinien als vollständig pflegbare Produkte.
+ * Schlüssel nach Code — 52 Codelinien als Musterdaten (A-046).
+ *
+ * Alle Linien sind Beispiele (`example: true`): erfundene Namen, Codes und
+ * Preise, kein reales Angebot. Sie bleiben für Tests und lokale Entwicklung im
+ * Repository, erscheinen aber nie auf der öffentlichen Seite und kommen nie in
+ * eine Datenbank (src/lib/beispiele.ts, src/payload/seed.ts). Die echten
+ * Produkte folgen in einem eigenen Paket.
  *
  * Bei diesen Artikeln muss der Originalschlüssel nicht eingesendet werden.
  * Der Kunde gibt den auf Schloss oder Schlüssel aufgedruckten Code ein.
@@ -264,6 +270,7 @@ export function codeLines(): CodeLine[] {
           ?? 'Ein Foto ist freiwillig. Es hilft uns, Profil und Beschriftung vor der Fertigung abzugleichen.',
         shippingClass: 'code-schluessel',
         active: true,
+        example: true,
         tags: [...line.tags, family.family],
         seo: {
           title: generatorSeoTitel(line.name),

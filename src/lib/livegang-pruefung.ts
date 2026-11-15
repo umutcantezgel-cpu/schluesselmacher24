@@ -4,12 +4,15 @@ import path from 'node:path';
 import { ValidationError, type PayloadRequest } from 'payload';
 
 import { firmendatenPruefen } from '../payload/globals/Einstellungen';
+import { beispieleSichtbar } from './beispiele';
+import { defaults } from './data/defaults';
 import { enthaeltPlatzhalter } from './platzhalter';
 
 /*
  * Prüfungen vor dem Livegang (src/scripts/livegang-pruefen.ts, im
  * Produktions-Build Pflicht): Firmendaten und Rechtsseiten dürfen keine
- * Redaktions-Platzhalter mehr enthalten. Ausgegeben werden nur Feldnamen und
+ * Redaktions-Platzhalter mehr enthalten, und kein Beispiel-Eintrag darf
+ * veröffentlicht sein (A-046). Ausgegeben werden nur Feldnamen und
  * Fundstellen, nie Werte (die Steuernummer bleibt intern).
  */
 
@@ -88,4 +91,47 @@ export function rechtsseitenFunde(ordner: string, basis = process.cwd()): Fund[]
       hinweis: auszug,
     })),
   );
+}
+
+/* ---------- Beispiel-Einträge (A-046) ------------------------------------ */
+
+/** Ein Produkt (Codelinie oder Standardartikel), wie die Prüfung es braucht. */
+export interface ProduktEintrag {
+  kennung: string;
+  name: string;
+  beispiel: boolean;
+}
+
+/** Kennungen der Musterdaten: die 52 Muster-Codelinien und die Beispielartikel aus den Standardwerten. */
+export function musterKennungen(): Set<string> {
+  return new Set([...defaults.codeLines(), ...defaults.standardArticles()].map((eintrag) => eintrag.id));
+}
+
+/**
+ * Meldet, wenn ein Beispiel-Eintrag auf der Seite erschiene:
+ * - `SM24_BEISPIELE=1` ist gesetzt (macht alle Beispiele sichtbar, nur für Tests gedacht),
+ * - ein veröffentlichtes Produkt stammt aus den Musterdaten, ist aber nicht als Beispiel markiert
+ *   (etwa aus einer Datenbank aus der Zeit vor A-046 oder mit entferntem Haken).
+ * `eintraege` sind die veröffentlichten Produkte (ohne Entwürfe und Papierkorb).
+ */
+export function beispielFunde(
+  eintraege: readonly ProduktEintrag[],
+  env: Record<string, string | undefined> = process.env,
+  muster: ReadonlySet<string> = musterKennungen(),
+): Fund[] {
+  const funde: Fund[] = [];
+  if (beispieleSichtbar(env)) {
+    funde.push({
+      ort: 'Umgebung › SM24_BEISPIELE',
+      hinweis: 'SM24_BEISPIELE=1 ist gesetzt. Dann wären alle Beispiel-Codelinien und -Artikel auf der Seite sichtbar und bestellbar.',
+    });
+  }
+  for (const eintrag of eintraege) {
+    if (eintrag.beispiel || !muster.has(eintrag.kennung)) continue;
+    funde.push({
+      ort: `Produkte › ${eintrag.kennung}`,
+      hinweis: `„${eintrag.name}“ stammt aus den Musterdaten, ist aber nicht als Beispiel markiert und wäre veröffentlicht.`,
+    });
+  }
+  return funde;
 }

@@ -15,6 +15,12 @@ const stored: BusinessRecord[] = [];
 /** Simuliert eine veraltete Vorabprüfung: Termine sind zwischenzeitlich vergeben worden. */
 const vorab = { veraltet: false };
 
+/** Codelinien für die Kassentests: die Musterdaten als echte Linien, dazu eine Beispiel-Linie. */
+function testLinien() {
+  const linien = defaults.codeLines().map((l) => ({ ...l, example: false }));
+  return [...linien, { ...linien[0], id: 'test-beispiel-linie', slug: 'test-beispiel-linie', example: true }];
+}
+
 vi.mock('next/headers', () => ({
   headers: async () => new Headers({ 'x-forwarded-for': '203.0.113.7' }),
 }));
@@ -40,7 +46,9 @@ vi.mock('@/lib/data', () => {
     TerminVergebenFehler,
     ZuVieleOffeneTermineFehler,
     getSettings: async () => defaults.settings(),
-    getCollection: async (name: keyof typeof defaults) => defaults[name](),
+    // Die Muster-Codelinien sind Beispiele (A-046); für die Bestelllogik gelten sie hier als echte Linien,
+    // dazu eine Beispiel-Linie, die die Kasse ablehnen muss.
+    getCollection: async (name: keyof typeof defaults) => (name === 'codeLines' ? testLinien() : defaults[name]()),
     getRubrik: async (id: string) => defaults.rubriken().find((r) => r.id === id) ?? null,
     getAppointments: async (von: string, bis: string) => (vorab.veraltet ? [] : termine(von, bis)),
     getRecordByReference: async (nummer: string) => stored.find((r) => r.reference === nummer) ?? null,
@@ -570,8 +578,67 @@ describe('submitRecord', () => {
   });
 });
 
+describe('submitRecord: Code anfragen (FA-11-17, A-046)', () => {
+  const basis: RecordEingabe = {
+    kind: 'anfrage',
+    area: 'schluessel-nach-code',
+    process: 'gefuehrte-anfrage',
+    contact,
+    summary: [],
+    uploads: [],
+    payload: {},
+  };
+  const gueltig = { thema: 'schluessel-nach-code', schloss: 'Briefkastenanlage', code: ' B1042 ', stueckzahl: 2, berechtigt: true };
+
+  it('nimmt eine vollständige Code-Anfrage an und speichert die geprüften Angaben', async () => {
+    const ergebnis = await submitRecord({ ...basis, payload: gueltig });
+    expect(ergebnis.ok).toBe(true);
+    expect(stored[0].payload).toMatchObject({ quelle: 'code-anfrage', schloss: 'Briefkastenanlage', code: 'B1042', stueckzahl: 2, berechtigt: true });
+  });
+
+  it('baut den Abschnitt „Code“ der Zusammenfassung aus den geprüften Angaben', async () => {
+    const summary = [
+      {
+        title: 'Code',
+        rows: [
+          { label: 'Hersteller oder Schloss', value: 'Tresor' },
+          { label: 'Code wie aufgedruckt', value: 'ANDERS' },
+          { label: 'Stückzahl', value: '50' },
+          { label: 'Berechtigung', value: 'bestätigt' },
+          { label: 'Hinweis', value: 'aus dem Browser' },
+        ],
+      },
+      { title: 'Kontakt', rows: [{ label: 'Name', value: 'Erika Muster' }] },
+    ];
+    expect((await submitRecord({ ...basis, payload: gueltig, summary })).ok).toBe(true);
+    const code = stored[0].summary.filter((abschnitt) => abschnitt.title === 'Code');
+    expect(code).toEqual([
+      {
+        title: 'Code',
+        rows: [
+          { label: 'Hersteller oder Schloss', value: 'Briefkastenanlage' },
+          { label: 'Code wie aufgedruckt', value: 'B1042' },
+          { label: 'Stückzahl', value: '2' },
+          { label: 'Berechtigung', value: 'bestätigt' },
+        ],
+      },
+    ]);
+    // Die übrigen Abschnitte bleiben.
+    expect(stored[0].summary.find((abschnitt) => abschnitt.title === 'Kontakt')).toEqual(summary[1]);
+  });
+
+  it('lehnt ab ohne Schloss, Code, Stückzahl oder Berechtigung (R13)', async () => {
+    for (const falsch of [{ schloss: '' }, { code: '' }, { stueckzahl: 0 }, { berechtigt: false }, { berechtigt: undefined }]) {
+      expect((await submitRecord({ ...basis, payload: { ...gueltig, ...falsch } })).ok, JSON.stringify(falsch)).toBe(false);
+    }
+    // Auch eine allgemeine Anfrage zum Thema Code braucht die Angaben.
+    expect((await submitRecord({ ...basis, payload: { thema: 'schluessel-nach-code', beschreibung: 'Ich brauche einen Schlüssel für meinen Briefkasten.' } })).ok).toBe(false);
+    expect(stored).toHaveLength(0);
+  });
+});
+
 describe('submitOrder', () => {
-  const line = defaults.codeLines()[0];
+  const line = testLinien()[0];
   const shipping = defaults.settings().shipping.find((s) => s.productClasses.includes('code-schluessel'))!;
 
   function order(expectedTotalCents: number, shippingOptionId = shipping.id) {
@@ -596,7 +663,7 @@ describe('submitOrder', () => {
   }
 
   it('verlangt bei geschützten Codelinien die Sicherungskarte auch auf dem Server (R13, E6-OPUS-01)', async () => {
-    const geschuetzt = defaults.codeLines().find((l) => l.photoUpload === 'pflicht' && l.active && !l.example)!;
+    const geschuetzt = testLinien().find((l) => l.photoUpload === 'pflicht' && l.active && !l.example)!;
     const foto = (category: 'schluesselfoto' | 'sicherungskarte') => ({
       id: `datei-${category}`,
       fileName: `${category}.jpg`,
@@ -626,6 +693,21 @@ describe('submitOrder', () => {
     const result = await order(1);
     expect(result.ok).toBe(false);
     expect(result.priceChanged?.expectedCents).toBe(1);
+    expect(stored).toHaveLength(0);
+  });
+
+  it('lehnt Beispiel-Codelinien ab, auch wenn der Browser sie in den Warenkorb legt (A-046)', async () => {
+    const beispiel = testLinien().find((l) => l.example)!;
+    const result = await submitOrder({
+      items: [{ kind: 'code-schluessel', uid: 'b', codeLineId: beispiel.id, code: beispiel.codeExample, qty: 1, unitPriceCents: 1, photoRefs: [] }],
+      shippingOptionId: shipping.id,
+      contact,
+      acceptedTerms: true,
+      acceptedCustomMade: true,
+      expectedTotalCents: beispiel.priceCents + shipping.priceCents,
+    });
+    expect(result.ok).toBe(false);
+    expect(result.error).toContain('nicht mehr verfügbar');
     expect(stored).toHaveLength(0);
   });
 

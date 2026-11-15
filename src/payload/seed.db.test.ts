@@ -5,7 +5,9 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import config from '@payload-config';
 import type { CollectionName, Collections } from '@/lib/data/adapter';
 import { JsonFileAdapter } from '@/lib/data/json-adapter';
-import type { PageContent } from '@/lib/types';
+import { defaults } from '@/lib/data/defaults';
+import type { CodeLine, PageContent, StandardArticle } from '@/lib/types';
+import * as m from '@/lib/data/payload-mapping';
 import { inhalteUebernehmen, type InhaltsQuelle, type Startwerte } from './seed';
 
 /* Gegen die Testdatenbank (siehe src/test/db-global-setup.ts): Der Seed legt
@@ -142,5 +144,71 @@ describe('Startwert-Abgleich', () => {
     await inhalteUebernehmen(payload, { startwerte: [] });
     expect((await payload.findGlobal({ slug: 'einstellungen', depth: 0 })).buchung.erinnerungTageVorher).toBe(2);
     await db.execute(sql`UPDATE einstellungen SET buchung_erinnerung_tage_vorher = 1`);
+  });
+});
+
+describe('Beispiel-Einträge (A-046)', () => {
+  async function kennungen(): Promise<string[]> {
+    const { docs } = await payload.find({ collection: 'produkte', pagination: false, trash: true, draft: true, depth: 0 });
+    return docs.map((d) => d.kennung ?? '');
+  }
+
+  it('legt Beispiel-Codelinien und -Artikel nie an, auch mit SM24_BEISPIELE=1; echte schon', async () => {
+    // Die Testkonfiguration macht Beispiele sichtbar; der Seed darf sich davon nicht leiten lassen.
+    expect(process.env.SM24_BEISPIELE).toBe('1');
+    const muster = (await dateien.read('codeLines'))[0];
+    const artikel = defaults.standardArticles()[0];
+    const linie = (id: string, example: boolean): CodeLine => ({ ...muster, id, slug: id, name: `Testlinie ${id}`, example });
+    const ware = (id: string, example: boolean): StandardArticle => ({ ...artikel, id, slug: id, name: `Testartikel ${id}`, example });
+    const quelle: InhaltsQuelle = {
+      async read<K extends CollectionName>(name: K): Promise<Collections[K]> {
+        const inhalt = await dateien.read(name);
+        if (name === 'codeLines') return [...(inhalt as CodeLine[]), linie('test-seed-beispiellinie', true), linie('test-seed-echte-linie', false)] as Collections[K];
+        if (name === 'standardArticles') return [ware('test-seed-beispielartikel', true), ware('test-seed-echter-artikel', false)] as Collections[K];
+        return inhalt;
+      },
+    };
+
+    await inhalteUebernehmen(payload, { quelle, startwerte: [] });
+
+    const vorhanden = await kennungen();
+    expect(vorhanden).toContain('test-seed-echte-linie');
+    expect(vorhanden).toContain('test-seed-echter-artikel');
+    expect(vorhanden).not.toContain('test-seed-beispiellinie');
+    expect(vorhanden).not.toContain('test-seed-beispielartikel');
+    // Keine der 52 Muster-Codelinien und keiner der Beispielartikel aus content/ bzw. den Standardwerten.
+    for (const beispiel of [...(await dateien.read('codeLines')), ...defaults.standardArticles()]) {
+      expect(beispiel.example).toBe(true);
+      expect(vorhanden).not.toContain(beispiel.id);
+    }
+    expect((await payload.count({ collection: 'produkte', where: { beispiel: { equals: true } }, trash: true })).totalDocs).toBe(0);
+
+    await payload.delete({ collection: 'produkte', where: { kennung: { in: ['test-seed-echte-linie', 'test-seed-echter-artikel'] } }, trash: true, context });
+  });
+
+  it('lässt einen Beispiel-Eintrag einer bestehenden Datenbank unberührt (kein Löschen, kein Abgleich)', async () => {
+    const muster = (await dateien.read('codeLines'))[1];
+    const bestand = await payload.create({
+      collection: 'produkte',
+      data: { ...m.codeLineZuPayload(muster), kennung: 'test-seed-bestand', slug: 'test-seed-bestand', name: 'Bestand vor A-046' },
+      context,
+    });
+    const quelle: InhaltsQuelle = {
+      async read<K extends CollectionName>(name: K): Promise<Collections[K]> {
+        const inhalt = await dateien.read(name);
+        return (name === 'codeLines'
+          ? [...(inhalt as CodeLine[]), { ...muster, id: 'test-seed-bestand', slug: 'test-seed-bestand', name: 'Neuer Name' }]
+          : inhalt) as Collections[K];
+      },
+    };
+    try {
+      await inhalteUebernehmen(payload, { quelle, startwerte: [] });
+      const nachher = await payload.findByID({ collection: 'produkte', id: bestand.id, depth: 0 });
+      expect(nachher.name).toBe('Bestand vor A-046');
+      expect(nachher.beispiel).toBe(true);
+      expect(nachher.deletedAt ?? null).toBeNull();
+    } finally {
+      await payload.delete({ collection: 'produkte', id: bestand.id, trash: true, context });
+    }
   });
 });

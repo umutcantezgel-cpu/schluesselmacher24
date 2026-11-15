@@ -583,7 +583,7 @@ export interface Produkte {
    */
   kennung?: string | null;
   /**
-   * Beispielartikel sind sichtbar und als „Beispiel“ gekennzeichnet, aber nicht bestellbar und nicht in Suchmaschinen.
+   * Beispiel: erscheint nicht auf der Seite. Nicht in Listen, Suche und Sitemap, nicht bestellbar. Für echte Artikel den Haken entfernen.
    */
   beispiel?: boolean | null;
   name: string;

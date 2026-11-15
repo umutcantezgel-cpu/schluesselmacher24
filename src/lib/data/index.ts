@@ -13,6 +13,7 @@ import {
   vorgangZuSeite,
   type VorgangsAenderung,
 } from './payload-mapping';
+import { oeffentlicheEintraege } from '@/lib/beispiele';
 import { buildRecordId, buildReference, counterKey, nextSequenceFromExisting } from '@/lib/reference';
 import type { AppointmentInfo, FahrzeugReihe, RecordKind, Rubrik } from '@/lib/types';
 import { mitDatenbank } from '@/lib/umgebung';
@@ -31,8 +32,18 @@ const adapter: DataAdapter = useJson ? new JsonFileAdapter() : new PayloadAdapte
 /** Je Anfrage wird jede Sammlung höchstens einmal gelesen. */
 const readCached = cache((name: CollectionName) => adapter.read(name));
 
-export function getCollection<K extends CollectionName>(name: K): Promise<Collections[K]> {
-  return readCached(name) as Promise<Collections[K]>;
+/**
+ * Sammlung, wie die öffentliche Seite sie sieht. Codelinien und Standardartikel
+ * kommen ohne Beispiel-Einträge (A-046, src/lib/beispiele.ts): Listen, Detailseiten,
+ * Sitemap, Strukturdaten, Warenkorb und Bestellung lesen alle hierüber und kennen
+ * Beispiele deshalb nicht. Nur mit `SM24_BEISPIELE=1` (Tests) bleiben sie drin.
+ */
+export async function getCollection<K extends CollectionName>(name: K): Promise<Collections[K]> {
+  const inhalt = await readCached(name);
+  if (name === 'codeLines' || name === 'standardArticles') {
+    return oeffentlicheEintraege(inhalt as Array<{ example?: boolean }>) as Collections[K];
+  }
+  return inhalt as Collections[K];
 }
 
 /* ---------- Häufige Abfragen ------------------------------------------- */

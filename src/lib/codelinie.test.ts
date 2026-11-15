@@ -63,9 +63,11 @@ describe('Kategorien und Hersteller', () => {
   });
 
   it('nimmt Beispiele und noindex-Linien nicht als indexierbar', () => {
-    expect(codelinieIndexierbar(linie('ms-01'))).toBe(true);
+    // Die Muster-Linien sind Beispiele (A-046); als echte Linie wäre ms-01 indexierbar.
+    expect(codelinieIndexierbar(linie('ms-01'))).toBe(false);
+    expect(codelinieIndexierbar({ ...linie('ms-01'), example: false })).toBe(true);
     expect(codelinieIndexierbar({ ...linie('ms-01'), example: true })).toBe(false);
-    expect(codelinieIndexierbar({ ...linie('ms-01'), seo: { ...linie('ms-01').seo, noindex: true } })).toBe(false);
+    expect(codelinieIndexierbar({ ...linie('ms-01'), example: false, seo: { ...linie('ms-01').seo, noindex: true } })).toBe(false);
   });
 });
 

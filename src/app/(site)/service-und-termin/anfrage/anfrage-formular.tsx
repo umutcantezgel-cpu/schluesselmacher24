@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
@@ -13,10 +13,20 @@ import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { Field } from '@/components/forms/field';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
-import { Select, TextArea, TextInput } from '@/components/forms/controls';
+import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
 import { SummaryList } from '@/components/layout/summary-list';
 import { WegBestaetigung } from '@/components/weg/bestaetigung';
 import { naechsteSchritte, type NaechsterSchritt } from '@/lib/wege/naechste-schritte';
+import {
+  CODE_ANFRAGE_HOECHSTENS,
+  CODE_ANFRAGE_LAENGE,
+  CODE_ANFRAGE_QUELLE,
+  CODE_ANFRAGE_THEMA,
+  codeAnfrageAbschnitt,
+  codeAnfragePruefen,
+  codeAnfrageUploadKategorie,
+  ohneCodeFelder,
+} from '@/lib/wege/code-anfrage';
 
 const STEPS: FlowStep[] = [
   { id: 'thema', short: 'Thema', title: 'Worum geht es?', hint: 'So landet Ihre Anfrage gleich bei der richtigen Person.' },
@@ -39,6 +49,11 @@ interface FormData {
   telefon: string;
   plz: string;
   ort: string;
+  /** Code anfragen (Thema „schluessel-nach-code“): Hersteller oder Schloss, Code, Stückzahl, Berechtigung. */
+  schloss: string;
+  code: string;
+  stueckzahl: number;
+  berechtigt: boolean;
 }
 
 const LEER: FormData = {
@@ -54,6 +69,10 @@ const LEER: FormData = {
   telefon: '',
   plz: '',
   ort: '',
+  schloss: '',
+  code: '',
+  stueckzahl: 1,
+  berechtigt: false,
 };
 
 const DRINGLICHKEIT = [
@@ -66,13 +85,25 @@ export function AllgemeineAnfrage({
   themen,
   vorauswahl,
   fahrzeug,
+  codeVorbelegung,
+  themaFest = false,
 }: {
   themen: Array<{ key: AreaKey; label: string; summary: string }>;
   vorauswahl?: string;
   /** Fahrzeug aus der Suche im Autoschlüssel-Weg, das dort nicht gepflegt ist (G-15). */
   fahrzeug?: string;
+  /** Code und Schloss aus der Adresse, etwa von einer Produktseite (nur Vorbelegung). */
+  codeVorbelegung?: { code?: string; schloss?: string };
+  /**
+   * Die Seite wurde für die Code-Anfrage aufgerufen (`?thema=schluessel-nach-code`): Das Thema steht
+   * fest, damit Seitenkopf und Formular dasselbe sagen. Wer etwas anderes möchte, wechselt zur
+   * allgemeinen Anfrage.
+   */
+  themaFest?: boolean;
 }) {
   const [dateien, setDateien] = useState<PickedFile[]>([]);
+  // Code-Anfrage: freiwillig ein Foto der Sicherungskarte, als Nachweis bei geschützten Profilen (R13).
+  const [karte, setKarte] = useState<PickedFile[]>([]);
   const [senden, setSenden] = useState(false);
   const [fehler, setFehler] = useState<string | null>(null);
   const [erfolg, setErfolg] = useState<{ reference: string; notices: string[]; summary: SummarySection[]; schritte: NaechsterSchritt[] } | null>(null);
@@ -87,9 +118,13 @@ export function AllgemeineAnfrage({
       ...LEER,
       thema: vorauswahl && themen.some((t) => t.key === vorauswahl) ? vorauswahl : '',
       objekt: fahrzeug ?? '',
+      code: codeVorbelegung?.code ?? '',
+      schloss: codeVorbelegung?.schloss ?? '',
     },
     validate: (data, stepId) => {
       if (stepId === 'thema') return data.thema !== '';
+      // Code anfragen: dieselbe Prüfung wie auf dem Server; die Beschreibung ist hier freiwillig.
+      if (stepId === 'anliegen' && data.thema === CODE_ANFRAGE_THEMA) return codeAnfragePruefen({ ...data }) !== null;
       if (stepId === 'anliegen') return data.beschreibung.trim().length >= 20;
       if (stepId === 'kontakt') {
         return (
@@ -104,9 +139,21 @@ export function AllgemeineAnfrage({
   });
 
   const { data } = flow;
+
+  // Ein gespeicherter Stand aus der allgemeinen Anfrage darf das feste Thema nicht überschreiben.
+  useEffect(() => {
+    if (themaFest && data.thema !== CODE_ANFRAGE_THEMA) flow.set('thema', CODE_ANFRAGE_THEMA);
+  }, [themaFest, data.thema, flow]);
   const thema = themen.find((t) => t.key === data.thema);
+  const codeAnfrage = data.thema === CODE_ANFRAGE_THEMA;
+  // Dieselbe Kategorie am Upload-Feld und im Vorgang (Frist der gespeicherten Datei).
+  const uploadKategorie = codeAnfrageUploadKategorie(data.thema);
+  const karteMit = codeAnfrage ? karte : [];
+  const anzahlUnterlagen = dateien.length + karteMit.length;
 
   const zusammenfassung: SummarySection[] = [
+    // Der Server baut diesen Abschnitt nach seiner Prüfung neu (records.ts).
+    ...(codeAnfrage ? [codeAnfrageAbschnitt(data)] : []),
     {
       title: 'Anliegen',
       rows: [
@@ -115,9 +162,9 @@ export function AllgemeineAnfrage({
           label: 'Zeitlicher Rahmen',
           value: DRINGLICHKEIT.find((d) => d.id === data.dringlichkeit)?.label ?? '—',
         },
-        { label: 'Beschreibung', value: data.beschreibung || '—' },
-        { label: 'Objekt oder Fahrzeug', value: data.objekt || 'keine Angabe' },
-        { label: 'Unterlagen', value: dateien.length > 0 ? `${dateien.length} Datei(en)` : 'keine' },
+        { label: 'Beschreibung', value: data.beschreibung || (codeAnfrage ? 'keine Angabe' : '—') },
+        ...(codeAnfrage ? [] : [{ label: 'Objekt oder Fahrzeug', value: data.objekt || 'keine Angabe' }]),
+        { label: 'Unterlagen', value: anzahlUnterlagen > 0 ? `${anzahlUnterlagen} Datei(en)` : 'keine' },
       ],
     },
     {
@@ -158,9 +205,15 @@ export function AllgemeineAnfrage({
         city: data.ort || undefined,
         country: 'Deutschland',
       },
-      payload: { ...data, dateien: dateien.map((f) => f.name) },
+      // Andere Themen senden die Felder der Code-Anfrage nicht mit; danach wurde nicht gefragt.
+      payload: codeAnfrage
+        ? { ...data, quelle: CODE_ANFRAGE_QUELLE, dateien: [...dateien, ...karteMit].map((f) => f.name) }
+        : { ...ohneCodeFelder({ ...data }), dateien: dateien.map((f) => f.name) },
       summary: zusammenfassung,
-      uploads: dateien.map((f) => alsUpload(f, 'dokument')),
+      uploads: [
+        ...dateien.map((f) => alsUpload(f, uploadKategorie)),
+        ...karteMit.map((f) => alsUpload(f, 'sicherungskarte')),
+      ],
     });
     schutz.antwortBeachten(ergebnis);
 
@@ -199,7 +252,7 @@ export function AllgemeineAnfrage({
         schutz={schutz}
         abschlussHinweis={<AnfrageHinweis />}
         flow={flow}
-        title="Allgemeine Anfrage"
+        title={themaFest ? 'Code anfragen' : 'Allgemeine Anfrage'}
         submitLabel="Anfrage absenden"
         onSubmit={absenden}
         submitting={senden}
@@ -207,7 +260,7 @@ export function AllgemeineAnfrage({
       >
         {flow.step?.id === 'thema' && (
           <div className="space-y-3">
-            {themen.map((t) => (
+            {themen.filter((t) => !themaFest || t.key === CODE_ANFRAGE_THEMA).map((t) => (
               <OptionCard
                 key={t.key}
                 name="thema"
@@ -219,14 +272,100 @@ export function AllgemeineAnfrage({
               />
             ))}
 
-            <Alert tone="info" className="mt-6">
-              Für Autoschlüssel, Schlüssel nach Code und Schließanlagen gibt es eigene, deutlich
-              schnellere Abläufe. Diese Anfrage ist für alles gedacht, was dort nicht hineinpasst.
-            </Alert>
+            {themaFest ? (
+              <p className="mt-6 text-small text-foreground-muted">
+                Geht es um etwas anderes?{' '}
+                <Link href="/service-und-termin/anfrage" className="font-semibold text-primary hover:underline">
+                  Zur allgemeinen Anfrage
+                </Link>
+              </p>
+            ) : (
+              <Alert tone="info" className="mt-6">
+                Für Autoschlüssel und Schließanlagen gibt es eigene, deutlich schnellere Abläufe.
+                Diese Anfrage ist für alles gedacht, was dort nicht hineinpasst. Einen Schlüsselcode
+                fragen Sie hier unter „Schlüssel nach Code“ an.
+              </Alert>
+            )}
           </div>
         )}
 
-        {flow.step?.id === 'anliegen' && (
+        {flow.step?.id === 'anliegen' && codeAnfrage && (
+          <div className="space-y-6">
+            <Field
+              label="Hersteller oder Schloss"
+              required
+              hint="Was auf dem Schloss oder Schlüssel steht, etwa Hersteller, Schlossart oder Möbelstück."
+            >
+              {({ id, describedBy }) => (
+                <TextInput
+                  id={id}
+                  aria-describedby={describedBy}
+                  maxLength={CODE_ANFRAGE_LAENGE.schloss}
+                  value={data.schloss}
+                  onChange={(e) => flow.set('schloss', e.target.value)}
+                />
+              )}
+            </Field>
+
+            <Field
+              label="Code wie aufgedruckt"
+              required
+              hint="Genau so, wie er auf Schloss, Schlüssel oder Karte steht, mit Buchstaben, Ziffern und Zeichen."
+            >
+              {({ id, describedBy }) => (
+                <TextInput
+                  id={id}
+                  aria-describedby={describedBy}
+                  maxLength={CODE_ANFRAGE_LAENGE.code}
+                  autoComplete="off"
+                  autoCapitalize="characters"
+                  spellCheck={false}
+                  className="font-mono tracking-wide"
+                  value={data.code}
+                  onChange={(e) => flow.set('code', e.target.value)}
+                />
+              )}
+            </Field>
+
+            <Field label="Stückzahl" required hint="Wie viele Schlüssel Sie brauchen.">
+              {({ id }) => (
+                <QuantityInput
+                  id={id}
+                  label="Stückzahl"
+                  min={1}
+                  max={CODE_ANFRAGE_HOECHSTENS}
+                  value={data.stueckzahl}
+                  onChange={(wert) => flow.set('stueckzahl', wert)}
+                />
+              )}
+            </Field>
+
+            <Field label="Was sollten wir noch wissen?" hint="Freiwillig. Zum Beispiel, wo der Code steht.">
+              {({ id, describedBy }) => (
+                <TextArea
+                  id={id}
+                  aria-describedby={describedBy}
+                  rows={4}
+                  value={data.beschreibung}
+                  onChange={(e) => flow.set('beschreibung', e.target.value)}
+                />
+              )}
+            </Field>
+
+            {/* Berechtigung in jedem Schlüsselweg (R13); ohne Haken nimmt der Server die Anfrage nicht an. */}
+            <OptionCard
+              name="berechtigung"
+              value="bestaetigt"
+              multiple
+              checked={data.berechtigt}
+              onSelect={() => flow.set('berechtigt', !data.berechtigt)}
+              title="Ich bin berechtigt, für dieses Schloss Schlüssel anfertigen zu lassen."
+              description="Etwa als Eigentümer, als Mieter mit Erlaubnis oder im Auftrag. Bei geschützten Profilen fragen wir nach einem Nachweis, etwa der Sicherungskarte."
+            />
+          </div>
+        )}
+
+        {flow.step?.id === 'anliegen' && !codeAnfrage && (
           <div className="space-y-6">
             <Field
               label="Was sollen wir für Sie tun?"
@@ -281,25 +420,42 @@ export function AllgemeineAnfrage({
         )}
 
         {flow.step?.id === 'unterlagen' && (
-          <PhotoUpload
-            category="dokument"
-            id="anfrage-dateien"
-            label="Fotos oder Unterlagen"
-            description={
-              data.thema === 'autoschluessel'
-                ? 'Für die Anfrage freiwillig. Fertigen können wir den Schlüssel nur mit Fahrzeugschein (Zulassungsbescheinigung Teil I); legen Sie ihn gern schon hier bei, dazu ein Foto Ihres Schlüssels von beiden Seiten.'
-                : 'Freiwillig. Fotos der betroffenen Tür, des Schlüssels oder vorhandene Unterlagen helfen uns sehr.'
-            }
-            example={{
-              motif: 'Beispielfoto: betroffene Tür mit Schloss, gut ausgeleuchtet',
-              ratio: '4/3',
-            }}
-            files={dateien}
-            onChange={setDateien}
-            multiple
-            maxFiles={5}
-            allowDocuments
-          />
+          <div className="space-y-8">
+            <PhotoUpload
+              category={uploadKategorie}
+              id="anfrage-dateien"
+              label="Fotos oder Unterlagen"
+              description={
+                codeAnfrage
+                  ? 'Freiwillig. Ein Foto von Schlüssel oder Schloss, auf dem der Code lesbar ist, hilft uns beim Abgleich.'
+                  : data.thema === 'autoschluessel'
+                  ? 'Für die Anfrage freiwillig. Fertigen können wir den Schlüssel nur mit Fahrzeugschein (Zulassungsbescheinigung Teil I); legen Sie ihn gern schon hier bei, dazu ein Foto Ihres Schlüssels von beiden Seiten.'
+                  : 'Freiwillig. Fotos der betroffenen Tür, des Schlüssels oder vorhandene Unterlagen helfen uns sehr.'
+              }
+              example={{
+                motif: 'Beispielfoto: betroffene Tür mit Schloss, gut ausgeleuchtet',
+                ratio: '4/3',
+              }}
+              files={dateien}
+              onChange={setDateien}
+              multiple
+              maxFiles={5}
+              allowDocuments
+            />
+            {codeAnfrage && (
+              <PhotoUpload
+                category="sicherungskarte"
+                id="anfrage-sicherungskarte"
+                label="Foto Ihrer Sicherungskarte"
+                description="Freiwillig. Gehört zu Ihrem Schloss eine Sicherungskarte, etwa bei einer Schließanlage, legen Sie hier ein Foto der ganzen Karte bei. Schlüssel mit geschütztem Profil fertigen wir nur gegen die Karte."
+                example={{ motif: 'Beispielfoto: Sicherungskarte, ganz im Bild und gut lesbar', ratio: '3/2' }}
+                files={karte}
+                onChange={setKarte}
+                multiple
+                maxFiles={2}
+              />
+            )}
+          </div>
         )}
 
         {flow.step?.id === 'kontakt' && (

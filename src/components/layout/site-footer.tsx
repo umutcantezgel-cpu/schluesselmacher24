@@ -17,7 +17,11 @@ import { erreichbarkeit } from '@/lib/erreichbarkeit';
 const FOOTER_SHOP: NavLink[] = [];
 
 /** Für Fachbetriebe (Erg. Leitfaden §7) — im Anschluss an die Service-Links. */
-const FOOTER_PARTNER: NavLink[] = [{ href: '/partner-werden', label: 'Partner werden' }];
+const FOOTER_PARTNER: NavLink[] = [
+  { href: '/partner-werden', label: 'Partner werden' },
+  { href: '/partner-werden/auftraege-erhalten', label: 'Aufträge für Partner' },
+  { href: '/partner-werden/kooperation', label: 'Kooperation für Betriebe' },
+];
 
 /** Feldbeschriftung im Schriftfeld (Mono, Großbuchstaben). */
 function Feldtitel({ children }: { children: string }) {

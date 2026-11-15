@@ -11,6 +11,8 @@ export default defineConfig({
     exclude: [...configDefaults.exclude, '.claude/**', '_werkstatt/**', 'src/**/*.db.test.ts'],
     // Keine echten Mails, Zahlungen oder Bucket-Zugriffe aus Tests.
     setupFiles: ['src/test/setup-umgebung.ts'],
+    // Musterdaten (Beispiel-Codelinien und -Artikel) sind nur in Tests sichtbar (A-046, src/lib/beispiele.ts).
+    env: { SM24_BEISPIELE: '1' },
   },
   resolve: {
     alias: {
