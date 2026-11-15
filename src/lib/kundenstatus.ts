@@ -86,7 +86,7 @@ const FOTO: Partial<Record<RecordStatus, Eintrag>> = {
   },
   'nicht-moeglich': {
     label: 'Nicht möglich',
-    text: 'Nach unserer Prüfung können wir diesen Schlüssel leider nicht nach Ihren Fotos anfertigen. Einzelheiten stehen in unserer E-Mail.',
+    text: 'Nach unserer Prüfung können wir diesen Schlüssel leider nicht nach Ihrer Vorlage anfertigen. Einzelheiten stehen in unserer E-Mail.',
   },
   'wartet-auf-kunde': {
     label: 'Rückfrage an Sie',

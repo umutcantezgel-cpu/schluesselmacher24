@@ -3,21 +3,23 @@ import path from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
+import seiten from '../../content/seo.json';
+
 import { rubriken } from './data/defaults/rubriken';
+import { NAV_AREAS } from './navigation';
 import { hubKacheln, RUBRIK_ICONS, RUBRIK_UPLOADS, rubrikenNachGruppe, sortiereRubriken } from './rubriken';
 import type { Rubrik } from './types';
 
 const ALLE = rubriken();
 const JSON_INHALT = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'content', 'rubriken.json'), 'utf8')) as Rubrik[];
 
-/** Reihenfolge der Hub-Kacheln nach G-03. */
+/** Reihenfolge der Hub-Kacheln nach G-03; „Schlüssel einschicken“ ist seit FA-03 kein eigener Hauptzugang mehr. */
 const G03 = [
   'autoschluessel',
   'motorradschluessel',
   'autoschluessel-gehaeuse',
   'schluessel-nach-code',
-  'schluessel-nach-foto',
-  'schluessel-einschicken',
+  'schluessel-nach-vorlage',
   'sperrschliessung',
   'schliessanlage',
   'elektronische-schliesssysteme',
@@ -35,7 +37,7 @@ describe('Rubriken-Modell (G-03, G-11, KERN K-014)', () => {
     expect(JSON_INHALT).toEqual(ALLE);
   });
 
-  it('der Hub führt die zwölf Rubriken aus G-03 in dieser Reihenfolge', () => {
+  it('der Hub führt die elf Rubriken aus G-03 in dieser Reihenfolge', () => {
     const hub = sortiereRubriken(ALLE).filter((r) => r.imHub).map((r) => r.id);
     expect(hub).toEqual(G03);
   });
@@ -94,7 +96,7 @@ describe('Rubriken-Modell (G-03, G-11, KERN K-014)', () => {
       expect(r?.nachweis, id).toBe('fahrzeugschein');
       expect(r?.pflichtUploads, id).toContain('fahrzeugschein');
     }
-    for (const id of ['schluessel-nach-code', 'schluessel-nach-foto', 'schluessel-einschicken']) {
+    for (const id of ['schluessel-nach-code', 'schluessel-nach-vorlage', 'schluessel-einschicken']) {
       expect(ALLE.find((x) => x.id === id)?.nachweis, id).toBe('sicherungskarte');
     }
   });
@@ -110,5 +112,25 @@ describe('Rubriken-Modell (G-03, G-11, KERN K-014)', () => {
     expect(gruppen.map((g) => g.label)).toEqual(['Autoschlüssel', 'Schlüssel nach Code', 'Sperrschließungen', 'Schließanlagen', 'Mehr']);
     expect(gruppen[0].rubriken.map((r) => r.id)).toContain('autoschluessel');
     expect(gruppen.flatMap((g) => g.rubriken).every((r) => r.status === 'live')).toBe(true);
+  });
+
+  it('die Leistung „Schlüssel nach Foto“ gibt es nicht mehr, der Weg heißt „Schlüssel nach Vorlage“ (FA-03, A-046)', () => {
+    const nachFoto = /nach[- ]foto|Foto prüfen lassen/i;
+    for (const quelle of [ALLE, JSON_INHALT]) {
+      for (const r of quelle) for (const t of texte(r)) expect(t, `${r.id}: ${t}`).not.toMatch(nachFoto);
+    }
+    expect(JSON.stringify(NAV_AREAS)).not.toMatch(nachFoto);
+    expect(JSON.stringify(seiten)).not.toMatch(nachFoto);
+
+    const vorlage = ALLE.find((r) => r.id === 'schluessel-nach-vorlage')!;
+    expect(vorlage.name).toBe('Schlüssel nach Vorlage');
+    expect(vorlage.laienname).toBe('Schlüssel nach Vorlage');
+    expect(NAV_AREAS.find((a) => a.key === 'schluessel-nach-vorlage')?.label).toBe('Schlüssel nach Vorlage');
+  });
+
+  it('im Hub steht genau eine Kachel für den Weg nach Vorlage (FA-03)', () => {
+    const kacheln = hubKacheln(ALLE).filter((r) => r.bereich === 'schluessel-nach-vorlage');
+    expect(kacheln.map((r) => r.id)).toEqual(['schluessel-nach-vorlage']);
+    expect(hubKacheln(JSON_INHALT).filter((r) => r.bereich === 'schluessel-nach-vorlage')).toHaveLength(1);
   });
 });

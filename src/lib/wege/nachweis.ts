@@ -5,7 +5,7 @@
  * - Schlüssel nach Code: Ein Pflichtfoto der Codelinie ist der Nachweis der Rubrik, die
  *   Sicherungskarte eines geschützten Profils (heute ZY-02). Codelinien mit freiwilligem Foto
  *   bleiben, wie sie sind; die Kasse prüft das Pflichtfoto jetzt auch auf dem Server.
- * - Schlüssel nach Foto: Gehört der Schlüssel zu einer Anlage mit Sicherungskarte („ja“), ist ein
+ * - Schlüssel nach Vorlage (Anfrage mit Fotos): Gehört der Schlüssel zu einer Anlage mit Sicherungskarte („ja“), ist ein
  *   Foto der Karte Pflicht. „Nein“ und „weiß ich nicht“ halten die Anfrage nicht auf; die Werkstatt
  *   prüft vor der Fertigung (die Antwort steht im Vorgang).
  *

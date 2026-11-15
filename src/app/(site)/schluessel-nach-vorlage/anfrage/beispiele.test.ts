@@ -33,7 +33,7 @@ describe('Beispielbilder im Anfrageformular', () => {
   });
 });
 
-describe('Seite Schlüssel nach Foto', () => {
+describe('Seite Schlüssel nach Vorlage', () => {
   it('enthält den Hinweissatz zur Ablesbarkeit unter den drei Aufnahmen', () => {
     expect(seite).toContain(HINWEIS);
   });

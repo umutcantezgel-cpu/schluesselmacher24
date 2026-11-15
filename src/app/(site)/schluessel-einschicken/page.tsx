@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const CRUMBS = [
-  { href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Foto oder Vorlage' },
+  { href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' },
   { href: `/${ROUTE}`, label: 'Schlüssel einschicken' },
 ];
 
@@ -57,9 +57,9 @@ function fragen(porto: { versichert: string; haftung: number }) {
     {
       question: 'Muss ich meinen Schlüssel einschicken?',
       answer:
-        'Nein. Oft genügen Fotos: Mit der Fotoanfrage bleibt Ihr Schlüssel bei Ihnen, und wir bitten nur um das Original, '
-        + 'wenn die Bilder für eine sichere Bestimmung nicht ausreichen. Wer den Schlüssel lieber gleich einschickt, meldet '
-        + 'die Einsendung an und bekommt einen Begleitschein.',
+        'Nicht unbedingt. Sie können ihn zuerst anhand von drei Fotos prüfen lassen, dann bleibt er vorerst bei Ihnen. '
+        + 'Oder Sie schicken ihn gleich ein: Dafür melden Sie die Einsendung an und bekommen einen Begleitschein. '
+        + 'Ist eine sichere Fertigung nur am Original möglich, bitten wir Sie danach um die Einsendung.',
     },
     {
       question: 'Kann ich den Schlüssel ohne Anmeldung einschicken?',
@@ -121,7 +121,7 @@ export default async function SchluesselEinschickenPage() {
 
       <PageHeader
         rubrik={rubrik}
-        eyebrow="Schlüssel nach Foto oder Vorlage"
+        eyebrow="Schlüssel nach Vorlage"
         title={page?.headline ?? 'Schlüssel einschicken'}
         lead={
           page?.subline
@@ -135,7 +135,7 @@ export default async function SchluesselEinschickenPage() {
               Einsendung anmelden
             </ButtonLink>
             <ButtonLink href="/schluessel-nach-vorlage/anfrage" size="lg" variant="outline">
-              Erst Foto prüfen lassen
+              Schlüssel prüfen lassen
             </ButtonLink>
           </>
         }
@@ -143,7 +143,7 @@ export default async function SchluesselEinschickenPage() {
         {page?.intro && <p className="max-w-measure text-body text-foreground-muted">{page.intro}</p>}
       </PageHeader>
 
-      {/* 01 Ablauf aus den Rubrikdaten (G-10, G-11); Fotos zuerst bleibt als Weg ohne Versand */}
+      {/* 01 Ablauf aus den Rubrikdaten (G-10, G-11); die Anfrage mit Fotos steht gleichberechtigt daneben (FA-12) */}
       <Section labelledBy="ablauf-titel">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-gutter">
           <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
@@ -154,11 +154,12 @@ export default async function SchluesselEinschickenPage() {
               title="Vom Umschlag zurück zu Ihnen"
               lead="Ohne Anfahrt, aus ganz Deutschland. Die Rücksendung geht an eine Anschrift in Deutschland."
             />
-            <Alert tone="info" title="Oft genügen Fotos" className="mt-7">
-              Lassen Sie Ihren Schlüssel zuerst nach Fotos prüfen, dann bleibt er bei Ihnen. Reichen die Bilder nicht, bitten wir
-              Sie um das Original.{' '}
+            <Alert tone="info" title="Zwei Wege zum Schlüssel nach Vorlage" className="mt-7">
+              Sie schicken das Original gleich ein. Oder Sie lassen den Schlüssel zuerst anhand von drei Fotos prüfen, dann bleibt
+              er vorerst bei Ihnen. Die Fotos dienen nur der Identifikation und Prüfung. Ist eine sichere Fertigung nur am Original
+              möglich, bitten wir Sie danach um die Einsendung.{' '}
               <Link href="/schluessel-nach-vorlage/anfrage" className="font-semibold underline">
-                Foto prüfen lassen
+                Schlüssel prüfen lassen
               </Link>
             </Alert>
             <Alert tone="warning" title="Bitte nur mit Begleitschein einschicken" className="mt-4">

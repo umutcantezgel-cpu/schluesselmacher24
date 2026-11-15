@@ -59,7 +59,7 @@ describe('Hauptnavigation nach G-08', () => {
   it('ordnet Autoschlüssel, Code und Mehr wie in G-08 (soweit live)', () => {
     const von = (key: string) => gruppen.find((g) => g.key === key)!.rubriken.map((r) => r.id);
     expect(von('autoschluessel')).toEqual(expect.arrayContaining(['autoschluessel', 'schluesselfinder']));
-    expect(von('code')).toEqual(['schluessel-nach-code', 'schluessel-nach-foto', 'schluessel-einschicken']);
+    expect(von('code')).toEqual(['schluessel-nach-code', 'schluessel-nach-vorlage', 'schluessel-einschicken']);
     expect(von('mehr')).toEqual(expect.arrayContaining(['elektronische-schliesssysteme', 'sicherheitstechnik', 'tuer-und-schliesstechnik']));
   });
 

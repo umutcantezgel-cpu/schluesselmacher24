@@ -25,7 +25,7 @@ const ICONS_GESEEDET: Record<string, string[]> = {
   'motorradschluessel': ['fahrzeugmarke', 'foto-hochladen', 'transponder', 'beratung-telefon'],
   'autoschluessel-gehaeuse': ['foto-hochladen', 'zahlung', 'versand-paket', 'lieferung'],
   'schluessel-nach-code': ['schluessel-nach-code', 'warenkorb', 'werkstatt', 'lieferung'],
-  'schluessel-nach-foto': ['foto-hochladen', 'pruefung', 'zahlung', 'lieferung'],
+  'schluessel-nach-vorlage': ['foto-hochladen', 'pruefung', 'zahlung', 'lieferung'],
   'schluessel-einschicken': ['dokument', 'versand-paket', 'werkstatt', 'lieferung'],
   'sperrschliessung': ['profilzylinder', 'zylinder-mass', 'warenkorb', 'werkstatt'],
   'schliessanlage': ['schliessanlagen', 'pruefung', 'warenkorb', 'werkstatt'],
@@ -71,7 +71,7 @@ describe('Ablauf je Rubrik aus den Daten (G-10, G-11, E6-OPUS-01)', () => {
   });
 
   it('setzt die Liste mit Nummer, Icon und Zwischenüberschrift je Schritt', () => {
-    const foto = rubrik('schluessel-nach-foto');
+    const foto = rubrik('schluessel-nach-vorlage');
     const html = renderToStaticMarkup(<RubrikAblauf rubrik={foto} variante="liste" />);
     expect(html.match(/<li /g)).toHaveLength(foto.ablauf.length);
     expect(html).toContain('<span class="sr-only">Schritt 1: </span>');
@@ -92,7 +92,7 @@ describe('Ablauf je Rubrik aus den Daten (G-10, G-11, E6-OPUS-01)', () => {
   });
 
   it('nennt im Ablauf der Schlüsselwege den Nachweis, wo die Rubrik ihn verlangt (R13)', () => {
-    for (const id of ['schluessel-nach-code', 'schluessel-nach-foto']) {
+    for (const id of ['schluessel-nach-code', 'schluessel-nach-vorlage']) {
       expect(rubrik(id).ablauf.map((s) => s.text).join(' '), id).toContain('Sicherungskarte');
     }
   });

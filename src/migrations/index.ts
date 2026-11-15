@@ -11,6 +11,7 @@ import * as migration_20261103_031720_fahrzeugreihen from './20261103_031720_fah
 import * as migration_20261103_032353_nachweise from './20261103_032353_nachweise';
 import * as migration_20261103_033531_partnerbetriebe from './20261103_033531_partnerbetriebe';
 import * as migration_20261115_111543_erreichbarkeit from './20261115_111543_erreichbarkeit';
+import * as migration_20261115_120000_rubrik_nach_vorlage from './20261115_120000_rubrik_nach_vorlage';
 
 export const migrations = [
   {
@@ -76,6 +77,11 @@ export const migrations = [
   {
     up: migration_20261115_111543_erreichbarkeit.up,
     down: migration_20261115_111543_erreichbarkeit.down,
-    name: '20261115_111543_erreichbarkeit'
+    name: '20261115_111543_erreichbarkeit',
+  },
+  {
+    up: migration_20261115_120000_rubrik_nach_vorlage.up,
+    down: migration_20261115_120000_rubrik_nach_vorlage.down,
+    name: '20261115_120000_rubrik_nach_vorlage',
   },
 ];

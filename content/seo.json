@@ -252,14 +252,14 @@
   },
   {
     "route": "schluessel-nach-vorlage",
-    "headline": "Schlüssel nach Foto oder Vorlage",
-    "subline": "Sie haben den Schlüssel — wir prüfen anhand Ihrer Fotos, ob wir ihn nachfertigen können.",
+    "headline": "Schlüssel nach Vorlage",
+    "subline": "Sie haben den Schlüssel. Anhand Ihrer Fotos bestimmen wir ihn und prüfen, ob wir ihn nachfertigen können.",
     "intro": "Sie fotografieren Ihren Schlüssel aus drei Richtungen und schicken uns die Bilder. Wir sagen Ihnen, ob eine Anfertigung möglich ist und was sie kostet. Einsenden müssen Sie Ihren Schlüssel zunächst nicht.",
     "sections": [],
     "faq": [],
     "seo": {
-      "title": "Schlüssel nach Foto oder Vorlage nachmachen lassen",
-      "description": "Schlüssel nach Foto: drei Fotos hochladen, Machbarkeit und Preis erhalten. Einsendung des Originals nur, wenn es nötig ist.",
+      "title": "Schlüssel nach Vorlage nachmachen lassen",
+      "description": "Schlüssel nach Vorlage: drei Fotos hochladen, wir prüfen die Machbarkeit und nennen den Preis. Braucht die Fertigung das Original, senden Sie es ein.",
       "internalLinks": [
         {
           "href": "/schluessel-nach-code",
@@ -271,11 +271,11 @@
         },
         {
           "href": "/schluessel-einschicken",
-          "label": "Schlüssel einschicken – nur nach Freigabe"
+          "label": "Original einschicken"
         }
       ],
       "socialImage": {
-        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel nach Foto oder Vorlage",
+        "motif": "Vorschaubild für soziale Netzwerke: Schlüssel nach Vorlage",
         "ratio": "16/9"
       }
     },
@@ -285,7 +285,7 @@
     "route": "schluessel-einschicken",
     "headline": "Schlüssel einschicken",
     "subline": "Schlüsseldienst online, ohne Anfahrt: Einsendung anmelden, Begleitschein ausdrucken, Schlüssel einschicken. Original und Kopien kommen zu Ihnen zurück.",
-    "intro": "Kein Schlüsseldienst in der Nähe oder keine Zeit für den Weg? Schicken Sie Ihren Schlüssel aus ganz Deutschland an unsere Werkstatt. Oft genügen auch Fotos: Dann lassen Sie ihn zuerst prüfen und behalten ihn so lange.",
+    "intro": "Kein Schlüsseldienst in der Nähe oder keine Zeit für den Weg? Schicken Sie Ihren Schlüssel aus ganz Deutschland an unsere Werkstatt. Sie können ihn auch zuerst anhand von drei Fotos prüfen lassen. Dann bleibt er vorerst bei Ihnen.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -294,7 +294,7 @@
       "internalLinks": [
         {
           "href": "/schluessel-nach-vorlage",
-          "label": "Schlüssel nach Foto oder Vorlage"
+          "label": "Schlüssel nach Vorlage"
         },
         {
           "href": "/schluessel-nach-code",
@@ -371,7 +371,7 @@
     "faq": [],
     "seo": {
       "title": "Schließanlagen planen — Z, HS und GHS",
-      "description": "Mechanische Schließanlagen für Privat, Unternehmen und Hausverwaltungen. Gleichschließung, Zentralschloss, Hauptschlüssel und Generalhauptschlüssel.",
+      "description": "Mechanische Schließanlagen für Privat, Gewerbe und Hausverwaltungen. Gleichschließung, Zentralschloss, Hauptschlüssel und Generalhauptschlüssel.",
       "internalLinks": [
         {
           "href": "/schliessanlagen/konfigurator",
@@ -689,14 +689,18 @@
   {
     "route": "partner-werden",
     "headline": "Partner werden",
-    "subline": "Wir vermitteln Kundenanfragen aus ganz Deutschland an geprüfte, unabhängige Fachbetriebe vor Ort — vor allem für Autoschlüssel.",
+    "subline": "Wir geben geprüfte Anfragen zu Autoschlüsseln und Fahrzeugschlüsseln an Fachbetriebe vor Ort weiter.",
     "intro": "Bei uns gehen auch Anfragen aus Regionen ein, in denen wir selbst nicht tätig sind. Diese Aufträge vermitteln wir an zuverlässige Fachbetriebe vor Ort. Sie bewerben sich mit wenigen Angaben; wir prüfen Ihre Bewerbung und melden uns bei Ihnen.",
     "sections": [],
     "faq": [],
     "seo": {
-      "title": "Partner werden – Auftragsvermittlung für Fachbetriebe",
-      "description": "Für Schlüsseldienste und Fachbetriebe: Als Partner von SCHLÜSSELMACHER24 übernehmen Sie geprüfte Kundenanfragen aus Ihrer Region und rechnen direkt mit dem Kunden ab.",
+      "title": "Autoschlüssel-Partner werden",
+      "description": "Für Fachbetriebe für Autoschlüssel und Fahrzeugschlüssel: Werden Sie Partner von SCHLÜSSELMACHER24. Wir geben geprüfte Anfragen aus Ihrer Region weiter.",
       "internalLinks": [
+        {
+          "href": "/partner-werden/netzwerk-deutschland",
+          "label": "Das Partnernetz für Fahrzeugschlüssel"
+        },
         {
           "href": "/autoschluessel",
           "label": "Autoschlüssel"

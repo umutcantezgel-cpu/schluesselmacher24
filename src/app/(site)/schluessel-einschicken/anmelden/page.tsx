@@ -48,9 +48,9 @@ export default async function EinsendungAnmeldenPage() {
         <EinsendeFormular angebot={angebot} />
 
         <p className="mt-10 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-6 text-small">
-          <span className="font-semibold text-foreground-muted">Lieber erst prüfen lassen?</span>
+          <span className="font-semibold text-foreground-muted">Lieber erst prüfen lassen? Ihr Schlüssel bleibt dabei zunächst bei Ihnen.</span>
           <Link href="/schluessel-nach-vorlage/anfrage" className="flex min-h-touch items-center font-semibold text-primary hover:underline">
-            Foto prüfen lassen, ohne den Schlüssel aus der Hand zu geben
+            Schlüssel prüfen lassen
           </Link>
         </p>
       </div>

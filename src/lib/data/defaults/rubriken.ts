@@ -170,11 +170,12 @@ export function rubriken(): Rubrik[] {
       bereich: "schluessel-nach-code",
     },
     {
-      id: "schluessel-nach-foto",
-      name: "Schlüssel nach Foto",
-      laienname: "Schlüssel nach Foto",
+      id: "schluessel-nach-vorlage",
+      name: "Schlüssel nach Vorlage",
+      laienname: "Schlüssel nach Vorlage",
+      zusatz: "per Foto anfragen oder einschicken",
       erklaerung:
-        "Sie laden Fotos hoch und wir prüfen sie; passt alles, erhalten Sie Preis und Zahlungslink.",
+        "Sie laden drei Fotos hoch, wir prüfen Schlüsselart und Machbarkeit und nennen Ihnen Preis und Weg.",
       icon: "schluessel-nach-vorlage",
       ziel: "/schluessel-nach-vorlage",
       ablauf: [
@@ -185,7 +186,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Prüfung und Ergebnis",
-          text: "Wir bestimmen Profil und Rohling, lesen Beschriftungen aus und klären, ob eine Nachfertigung nach Ihren Bildern möglich ist. Sie erhalten per E-Mail die Freigabe mit Preis, eine Rückfrage oder, wenn es nicht geht, eine Absage. Die Prüfung ist noch keine Fertigungszusage.",
+          text: "Wir bestimmen Schlüsselart, Profil und Beschriftung und prüfen die Machbarkeit. Schließwerte lesen wir nicht aus Fotos ab. Sie erhalten per E-Mail die Freigabe mit Preis und Weg. Gefertigt wird nach den Angaben auf dem Schlüssel oder am eingesendeten Original. Geht es nicht, erhalten Sie eine Rückfrage oder eine Absage. Die Prüfung ist noch keine Fertigungszusage.",
           icon: "pruefung",
         },
         {
@@ -195,7 +196,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Fertigung und Versand",
-          text: "Danach fertigen wir und schicken den Schlüssel zu Ihnen. Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und Vorgangsnummer in der Freigabe; vorher senden Sie bitte nichts ein.",
+          text: "Danach fertigen wir und schicken den Schlüssel zu Ihnen. Brauchen wir das Original, steht die Einsendeanweisung mit Anschrift und Vorgangsnummer in der Freigabe. Während der Fotoanfrage senden Sie bitte nichts unaufgefordert ein.",
           icon: "lieferung",
         },
       ],
@@ -213,7 +214,7 @@ export function rubriken(): Rubrik[] {
       name: "Schlüssel einschicken",
       laienname: "Schlüssel einschicken",
       erklaerung:
-        "Per Post aus ganz Deutschland an die Werkstatt, ohne Anfahrt, nur nach Freigabe der Fotoanfrage; Sie erhalten ein Angebot mit Zahlungslink.",
+        "Per Post aus ganz Deutschland an die Werkstatt, ohne Anfahrt: Einsendung anmelden, Begleitschein beilegen, Angebot mit Zahlungslink.",
       icon: "versand-paket",
       ziel: "/schluessel-einschicken",
       ablauf: [
@@ -244,7 +245,7 @@ export function rubriken(): Rubrik[] {
       status: "live",
       reihenfolge: 60,
       navigation: "code",
-      imHub: true,
+      imHub: false,
       bereich: "schluessel-nach-vorlage",
     },
     {

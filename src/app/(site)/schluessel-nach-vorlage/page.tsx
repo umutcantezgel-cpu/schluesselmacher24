@@ -26,11 +26,11 @@ const ROUTE = 'schluessel-nach-vorlage';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Schlüssel nach Foto oder Vorlage nachmachen lassen',
+    title: page?.seo.title ?? 'Schlüssel nach Vorlage nachmachen lassen',
     description:
       page?.seo.description
-      ?? 'Schlüssel nach Vorlage: Fotos hochladen, Machbarkeit und Preis erhalten. '
-        + 'Das Original muss zunächst nicht eingesendet werden.',
+      ?? 'Schlüssel nach Vorlage: drei Fotos hochladen, wir prüfen die Machbarkeit und nennen den Preis. '
+        + 'Braucht die Fertigung das Original, senden Sie es ein.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }
@@ -83,7 +83,7 @@ const WEITER: Array<{ href: string; label: string; body: string }> = [
   {
     href: '/schluessel-nach-code',
     label: 'Schlüssel nach Code',
-    body: 'Trägt Ihr Schloss einen Code, geht die Bestellung direkt — ohne Prüfung der Fotos.',
+    body: 'Trägt Ihr Schloss einen Code, bestellen Sie direkt, ohne Prüfung der Fotos.',
   },
   {
     href: '/autoschluessel/kopieren',
@@ -103,7 +103,7 @@ const WEITER: Array<{ href: string; label: string; body: string }> = [
   {
     href: '/gleichschliessende-zylinder',
     label: 'Gleichschließende Zylinder',
-    body: 'Mehrere Türen mit einem Schlüssel — direkt zusammenstellbar.',
+    body: 'Mehrere Türen mit einem Schlüssel, direkt zusammenstellbar.',
   },
   {
     href: '/service-und-termin/kontakt',
@@ -123,7 +123,7 @@ function istPlatzhalterAntwort(text: string): boolean {
 
 export default async function SchluesselNachVorlagePage() {
   // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
-  const rubrik = await getRubrik('schluessel-nach-foto');
+  const rubrik = await getRubrik('schluessel-nach-vorlage');
   const [page, settings] = await Promise.all([getPageContent(ROUTE), getSettings()]);
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
@@ -137,16 +137,18 @@ export default async function SchluesselNachVorlagePage() {
           {
             question: 'Muss ich meinen Schlüssel einschicken?',
             answer:
-              'Zunächst nicht. Für die Anfrage genügen Fotos. Ihr Schlüssel bleibt bei Ihnen. '
-              + 'Nur wenn die Bilder für eine sichere Bestimmung nicht ausreichen, bitten wir Sie '
-              + 'um die Einsendung des Originals — mit einer eigenen Anweisung dazu.',
+              'Zunächst nicht. Für die Anfrage genügen drei Fotos, Ihr Schlüssel bleibt bei Ihnen. '
+              + 'Ist eine sichere Fertigung nur am Original möglich, bitten wir Sie um die Einsendung, '
+              + 'mit einer eigenen Anweisung dazu. Sie können den Schlüssel auch gleich einschicken, '
+              + 'ohne vorher Fotos zu senden.',
           },
           {
             question: 'Woran erkennen Sie, ob eine Nachfertigung möglich ist?',
             answer:
               'Entscheidend sind der Profilquerschnitt, die Form des Rohlings und die '
-              + 'Beschriftung auf Kopf oder Bart. Sind diese drei Angaben eindeutig, lässt sich '
-              + 'meist bereits nach den Fotos bestimmen, welcher Rohling passt.',
+              + 'Beschriftung auf Kopf oder Bart. Daran bestimmen wir Schlüsselart und Rohling. '
+              + 'Schließwerte lesen wir nicht aus Fotos ab. Gefertigt wird nach den Angaben auf dem '
+              + 'Schlüssel oder am eingesendeten Original.',
           },
           {
             question: 'Was kostet die Anfrage?',
@@ -173,6 +175,7 @@ export default async function SchluesselNachVorlagePage() {
             question: 'Gilt das auch für Autoschlüssel?',
             answer:
               'Für den mechanischen Teil ja. Der Bart lässt sich nach Vorlage anfertigen. '
+              + 'Mechanische Autoschlüssel und reine Schlüsselbärte können Sie je nach Fall auch einsenden. '
               + 'Transponder, Funk und Wegfahrsperre sind davon getrennt zu betrachten und in '
               + 'aller Regel nur am Fahrzeug anzulernen.',
           },
@@ -199,8 +202,8 @@ export default async function SchluesselNachVorlagePage() {
   const felder = [
     { label: 'Ablauf', wert: process.label },
     { label: 'Aufnahmen', wert: String(PHOTOS.length) },
-    { label: 'Original', wert: 'Bleibt bei Ihnen' },
-    { label: 'Einsendung', wert: 'Nur auf Aufforderung' },
+    { label: 'Original', wert: 'Bleibt zunächst bei Ihnen' },
+    { label: 'Einsendung', wert: 'Wenn die Fertigung das Original braucht' },
   ];
 
   return (
@@ -208,9 +211,9 @@ export default async function SchluesselNachVorlagePage() {
       <JsonLd
         data={pageGraphSchema({
           path: '/schluessel-nach-vorlage',
-          name: page?.headline ?? 'Schlüssel nach Foto oder Vorlage',
+          name: page?.headline ?? 'Schlüssel nach Vorlage',
           description: page?.seo.description,
-          crumbs: [{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Foto oder Vorlage' }],
+          crumbs: [{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' }],
           faq: faq,
         })}
       />
@@ -219,9 +222,12 @@ export default async function SchluesselNachVorlagePage() {
       <PageHeader
         rubrik={rubrik}
         eyebrow={process.label}
-        title={page?.headline ?? 'Schlüssel nach Foto oder Vorlage'}
-        lead={page?.subline ?? 'Sie haben den Schlüssel — wir prüfen, ob wir ihn nachfertigen können.'}
-        crumbs={[{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Foto oder Vorlage' }]}
+        title={page?.headline ?? 'Schlüssel nach Vorlage'}
+        lead={
+          page?.subline
+          ?? 'Sie haben den Schlüssel. Anhand Ihrer Fotos bestimmen wir ihn und prüfen, ob wir ihn nachfertigen können.'
+        }
+        crumbs={[{ href: '/schluessel-nach-vorlage', label: 'Schlüssel nach Vorlage' }]}
         bereich="schluessel-nach-vorlage"
         visual={
           <div className="rounded-lg border border-border bg-surface p-4 sm:p-6">
@@ -234,11 +240,17 @@ export default async function SchluesselNachVorlagePage() {
         }
         actions={
           <ButtonLink href="/schluessel-nach-vorlage/anfrage" size="lg" pfeil>
-            Foto prüfen lassen
+            Schlüssel prüfen lassen
           </ButtonLink>
         }
       >
         <p className="max-w-measure text-body text-foreground-muted">{page?.intro}</p>
+
+        {/* Vorgabe des Inhabers (FA-03, A-046): Fotos dienen nur der Bestimmung, gefertigt wird nie nach einem Foto. */}
+        <p className="mt-4 max-w-measure text-body font-semibold text-foreground">
+          Ihre Fotos dienen nur der Identifikation und Prüfung. Schließwerte lesen wir nicht aus Fotos ab. Braucht die
+          Fertigung das Original, senden Sie es ein.
+        </p>
 
         <dl className="mt-8 grid grid-cols-2 border-y border-border sm:grid-cols-4">
           {felder.map((feld, index) => (
@@ -273,10 +285,10 @@ export default async function SchluesselNachVorlagePage() {
               lead={process.hint}
             />
 
-            <Alert tone="info" title="Ihr Original bleibt bei Ihnen" className="mt-7">
+            <Alert tone="info" title="Ihr Original bleibt zunächst bei Ihnen" className="mt-7">
               Für die Anfrage müssen Sie den Originalschlüssel <strong>nicht</strong> einsenden.
-              Wir arbeiten zuerst mit Ihren Fotos und bitten nur um das Original, wenn die Bilder
-              für eine sichere Bestimmung nicht ausreichen. Wer den Schlüssel lieber gleich
+              Wir bestimmen den Schlüssel anhand Ihrer Fotos und bitten nur um das Original, wenn
+              eine sichere Fertigung nur am Original möglich ist. Wer den Schlüssel lieber gleich
               einschickt,{' '}
               <Link href="/schluessel-einschicken" className="font-semibold underline">
                 meldet die Einsendung an
@@ -286,7 +298,7 @@ export default async function SchluesselNachVorlagePage() {
 
             <div className="mt-7">
               <ButtonLink href="/schluessel-nach-vorlage/anfrage" pfeil>
-                Foto prüfen lassen
+                Schlüssel prüfen lassen
               </ButtonLink>
             </div>
           </div>
@@ -302,7 +314,7 @@ export default async function SchluesselNachVorlagePage() {
           nummer="02"
           eyebrow="Vorbereitung"
           title="Diese drei Aufnahmen brauchen wir"
-          lead="Scharf, gut ausgeleuchtet, formatfüllend und ohne Blitzreflexe. Prägungen müssen lesbar sein."
+          lead="Scharf, gut ausgeleuchtet, formatfüllend und ohne Blitzreflexe. Beschriftungen und Prägungen müssen lesbar sein."
         />
 
         {/* Ab md teilen sich die Blätter die Zeilen (Subgrid): Die Titel stehen auf
@@ -340,7 +352,7 @@ export default async function SchluesselNachVorlagePage() {
             <p className="mt-2 max-w-measure text-small text-foreground-muted">
               Zahlen und Buchstaben auf Kopf, Bart oder Schaft sind für die Bestimmung besonders
               wertvoll. Tragen Sie sie im Formular als Text ein und fotografieren Sie sie
-              zusätzlich deutlich — bei kleinen Prägungen als Nahaufnahme.
+              zusätzlich deutlich, bei kleinen Prägungen als Nahaufnahme.
             </p>
           </CardBody>
         </Card>
@@ -364,10 +376,14 @@ export default async function SchluesselNachVorlagePage() {
                 den mechanischen Teil.
               </p>
               <p>
-                Ein nach Foto gefräster Bart öffnet bei vielen Fahrzeugen die Tür, startet den
+                Ein nachgefertigter Bart öffnet bei vielen Fahrzeugen die Tür, startet den
                 Motor aber nicht. Denn Transponder, Funkfernbedienung und Wegfahrsperre müssen
-                dem Fahrzeug erst bekannt gemacht werden — dafür ist in aller Regel Zugriff auf
+                dem Fahrzeug erst bekannt gemacht werden. Dafür ist in aller Regel Zugriff auf
                 das Fahrzeug nötig.
+              </p>
+              <p>
+                Mechanische Autoschlüssel und reine Schlüsselbärte können Sie je nach Fall auch
+                einsenden.
               </p>
             </div>
 
@@ -399,15 +415,15 @@ export default async function SchluesselNachVorlagePage() {
         </div>
       </Section>
 
-      {/* Einsendung: nur auf Aufforderung */}
+      {/* Einsendung: wenn die Fertigung das Original braucht, oder direkt über die Einsendung */}
       <Section tone="sunken" id="einsendung">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-gutter">
           <div className="lg:col-span-5">
             <SectionHeading
               nummer="04"
-              eyebrow="Nur auf Aufforderung"
-              title="Wenn wir das Original doch brauchen"
-              lead="Bei ungewöhnlichen Profilen oder unleserlichen Prägungen bitten wir Sie um die Einsendung. Vorher nicht."
+              eyebrow="Original einsenden"
+              title="Wenn die Fertigung das Original braucht"
+              lead="Bei ungewöhnlichen Profilen oder unleserlichen Prägungen ist eine sichere Fertigung nur am Original möglich. Dann senden Sie den Schlüssel ein."
             />
 
             <div className="prose-sm24 mt-6 max-w-none">
@@ -416,6 +432,10 @@ export default async function SchluesselNachVorlagePage() {
                 und den genauen Umfang nennen wir Ihnen mit der Freigabe, zusammen mit Ihrer
                 Vorgangsnummer; den Begleitschein finden Sie dann auf Ihrer Vorgangsseite. Senden Sie
                 das Original erst, nachdem Sie den Auftrag mit der Zahlung erteilt haben.
+              </p>
+              <p>
+                Ohne Fotoanfrage können Sie den Schlüssel auch direkt einschicken. Dafür melden Sie
+                die Einsendung an und legen den Begleitschein bei.
               </p>
             </div>
 
@@ -442,9 +462,9 @@ export default async function SchluesselNachVorlagePage() {
               <h3 className="text-title-sm font-semibold text-foreground">Was der Sendung beiliegen soll</h3>
               <ul className="mt-4 space-y-3">
                 {[
-                  'Ein Zettel mit Ihrer Vorgangsnummer, Ihrem Namen und Ihrer Telefonnummer.',
+                  'Der Begleitschein von Ihrer Vorgangsseite, alternativ ein Zettel mit Ihrer Vorgangsnummer, Ihrem Namen und Ihrer Telefonnummer.',
                   'Die vollständige Rücksendeadresse.',
-                  'Nur den betreffenden Schlüssel — ohne Schlüsselring, Anhänger und weitere Schlüssel.',
+                  'Nur den betreffenden Schlüssel, ohne Schlüsselring, Anhänger und weitere Schlüssel.',
                   'Falls vorhanden: eine Kopie der Sicherungskarte oder des Berechtigungsnachweises.',
                 ].map((item) => (
                   <li key={item} className="flex gap-3">

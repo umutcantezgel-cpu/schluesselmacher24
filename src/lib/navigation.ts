@@ -73,23 +73,23 @@ export const NAV_AREAS: NavArea[] = [
   },
   {
     key: 'schluessel-nach-vorlage',
-    label: 'Schlüssel nach Foto oder Vorlage',
-    navLabel: 'Nach Foto',
+    label: 'Schlüssel nach Vorlage',
+    navLabel: 'Nach Vorlage',
     href: '/schluessel-nach-vorlage',
-    summary: 'Drei Fotos hochladen, wir prüfen Machbarkeit und Preis.',
+    summary: 'Per Foto anfragen oder einschicken. Wir prüfen Machbarkeit und Preis.',
     process: 'gefuehrte-anfrage',
     highlight: {
       href: '/schluessel-nach-vorlage/anfrage',
-      label: 'Foto prüfen lassen',
-      description: 'Ohne Einsendung des Originals',
+      label: 'Schlüssel prüfen lassen',
+      description: 'Drei Fotos hochladen, das Original bleibt zunächst bei Ihnen',
     },
     columns: [
       {
         title: 'Ablauf',
         links: [
           { href: '/schluessel-nach-vorlage', label: 'So funktioniert es', description: 'Von der Anfrage bis zum Schlüssel' },
-          { href: '/schluessel-nach-vorlage/anfrage', label: 'Foto prüfen lassen', description: 'Acht Schritte, mobil bedienbar' },
-          { href: '/schluessel-einschicken', label: 'Schlüssel einschicken', description: 'Nur nach Freigabe oder auf Aufforderung' },
+          { href: '/schluessel-nach-vorlage/anfrage', label: 'Schlüssel prüfen lassen', description: 'Acht Schritte, mobil bedienbar' },
+          { href: '/schluessel-einschicken', label: 'Schlüssel einschicken', description: 'Original einsenden, mit Begleitschein' },
           { href: '/ratgeber/schluesselcode-finden', label: 'Code statt Foto?', description: 'Wann der Code schneller ist' },
         ],
       },
@@ -241,7 +241,7 @@ export const NAV_AREAS: NavArea[] = [
       {
         title: 'Weiteres',
         links: [
-          { href: '/sicherheitstechnik/smarte-funktionen', label: 'Smarte Funktionen' },
+          { href: '/sicherheitstechnik/smarte-funktionen', label: 'Smart-Home-Sicherheitsfunktionen' },
           { href: '/sicherheitstechnik/panik-und-alarmtaster', label: 'Panik- und Alarmtaster' },
           { href: '/sicherheitstechnik/kombinierte-konzepte', label: 'Kombinierte Konzepte' },
           { href: '/ratgeber/einbruchschutz-wo-anfangen', label: 'Wo sinnvoll anfangen?' },
@@ -310,7 +310,7 @@ export interface NavGruppe {
 
 /** Weitere Seiten unter „Mehr“ (G-08). „Über uns“ folgt mit seiner Seite (E8-AUTOR-02). */
 export const MEHR_LINKS: NavLink[] = [
-  { href: '/partner-werden', label: 'Partner werden', description: 'Für Schlüsseldienste und Betriebe aus ganz Deutschland' },
+  { href: '/partner-werden', label: 'Partner werden', description: 'Für Autoschlüssel-Fachbetriebe aus ganz Deutschland' },
   { href: '/ratgeber', label: 'Ratgeber und Anleitungen' },
   { href: '/service-und-termin', label: 'Service und Termin', description: 'Terminstatus, Vor-Ort-Einsatz und Ablauf' },
   { href: '/service-und-termin/kontakt', label: 'Kontakt' },

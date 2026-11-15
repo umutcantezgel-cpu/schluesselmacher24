@@ -33,7 +33,7 @@ export function FotoErgebnis({ record, einsendeAnschrift }: { record: BusinessRe
     return (
       <Alert tone="warning" title="Rückfrage zu Ihrer Anfrage">
         Für die Prüfung brauchen wir noch {einsendung ? 'eine Angabe' : 'eine Angabe oder ein weiteres Foto'} von Ihnen. Einzelheiten stehen in
-        unserer E-Mail — antworten Sie einfach darauf.
+        unserer E-Mail. Antworten Sie einfach darauf.
       </Alert>
     );
   }
@@ -49,7 +49,7 @@ export function FotoErgebnis({ record, einsendeAnschrift }: { record: BusinessRe
   zeilen.push(['Preis', preis ? `${formatCents(preis)} inkl. USt.` : 'nennen wir Ihnen gesondert']);
   zeilen.push([
     'Originalschlüssel',
-    einsendung ? 'liegt bei uns und kommt mit den Kopien zurück' : freigabe.sendInRequired ? 'bitte einsenden' : 'nicht nötig, wir fertigen nach Ihren Fotos',
+    einsendung ? 'liegt bei uns und kommt mit den Kopien zurück' : freigabe.sendInRequired ? 'bitte einsenden' : 'nicht nötig',
   ]);
 
   return (
@@ -76,7 +76,7 @@ export function FotoErgebnis({ record, einsendeAnschrift }: { record: BusinessRe
       {zahlbar && (
         <Alert tone="legal" title="So erteilen Sie den Auftrag" className="mt-6">
           Die Freigabe ist noch keine Fertigungszusage. Den Auftrag erteilen Sie mit der Zahlung unten; erst danach
-          fertigen wir. Den Schlüssel fertigen wir eigens nach Ihrer Vorlage — dafür besteht kein Widerrufsrecht
+          fertigen wir. Den Schlüssel fertigen wir eigens nach Ihrer Vorlage. Dafür besteht kein Widerrufsrecht
           (§ 312g Abs. 2 Nr. 1 BGB). Es gelten unsere{' '}
           <Link href="/rechtliches/agb" className="font-semibold text-primary hover:underline">
             AGB

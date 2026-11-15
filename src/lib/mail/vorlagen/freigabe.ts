@@ -51,7 +51,7 @@ function einsendeBausteine(vorgang: BusinessRecord, mitPreis: boolean, anschrift
         ? 'Für die Anfertigung brauchen wir Ihren Originalschlüssel. Bitte senden Sie ihn erst, nachdem Sie den '
           + 'Auftrag mit der Zahlung erteilt haben.'
         : 'Für die Anfertigung brauchen wir Ihren Originalschlüssel. Bitte senden Sie ihn erst, wenn Sie den '
-          + 'Auftrag erteilt haben — den Preis nennen wir Ihnen vorher.',
+          + 'Auftrag erteilt haben. Den Preis nennen wir Ihnen vorher.',
     },
     anschrift?.length
       ? { art: 'felder', zeilen: [['Anschrift für die Einsendung', anschrift.join('\n')]] }
@@ -82,7 +82,7 @@ function freigegeben({ vorgang, nachricht, kontext, zahlungsLink, einsendeAnschr
   felder.push(['Preis', preis ? `${formatCents(preis)} inkl. Umsatzsteuer` : 'nennen wir Ihnen gesondert']);
   felder.push([
     'Originalschlüssel',
-    einsendung ? 'liegt bei uns und kommt mit den Kopien zurück' : einsenden ? 'bitte einsenden (Anleitung unten)' : 'nicht nötig, wir fertigen nach Ihren Fotos',
+    einsendung ? 'liegt bei uns und kommt mit den Kopien zurück' : einsenden ? 'bitte einsenden (Anleitung unten)' : 'nicht nötig',
   ]);
 
   const bausteine: Baustein[] = [
@@ -116,7 +116,7 @@ function freigegeben({ vorgang, nachricht, kontext, zahlungsLink, einsendeAnschr
           art: 'absatz',
           text:
             'Über diesen persönlichen Link sehen Sie die Freigabe und bezahlen über unseren Zahlungsdienstleister. '
-            + 'Links aus früheren E-Mails zu diesem Vorgang gelten nicht mehr – bitte nutzen Sie diesen. '
+            + 'Links aus früheren E-Mails zu diesem Vorgang gelten nicht mehr. Bitte nutzen Sie diesen. '
             + 'Bitte geben Sie den Link nicht weiter.',
         },
       );
@@ -200,7 +200,7 @@ function rueckfrage({ vorgang, nachricht, kontext }: FreigabeMailDaten): MailInh
       art: 'absatz',
       text: einsendung
         ? 'für die Prüfung Ihres Schlüssels brauchen wir noch eine Angabe von Ihnen.'
-        : 'für die Prüfung Ihres Schlüssels brauchen wir noch etwas von Ihnen — etwa ein weiteres Foto oder eine Angabe.',
+        : 'für die Prüfung Ihres Schlüssels brauchen wir noch etwas von Ihnen, etwa ein weiteres Foto oder eine Angabe.',
     },
     nummerBaustein(vorgang),
     text
