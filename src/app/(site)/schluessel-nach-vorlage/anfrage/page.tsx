@@ -6,6 +6,7 @@ import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
 import { AnfrageFormular } from './anfrage-formular';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
 
 const ROUTE = 'schluessel-nach-vorlage/anfrage';
 
@@ -47,7 +48,7 @@ export default async function SchluesselNachVorlageAnfragePage() {
       />
 
       <div className="shell py-8 md:py-12">
-        <AnfrageFormular photoRetentionDays={settings.retentionDays.keyPhotos} />
+        <AnfrageFormular hilfe={hilfeAus(settings)} photoRetentionDays={settings.retentionDays.keyPhotos} />
 
         <p className="mt-10 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-6 text-small">
           <span className="font-semibold text-foreground-muted">Verwandte Bereiche:</span>

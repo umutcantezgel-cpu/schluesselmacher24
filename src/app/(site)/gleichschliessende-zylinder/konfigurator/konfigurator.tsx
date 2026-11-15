@@ -29,6 +29,8 @@ import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { useCartStore } from '@/lib/store/cart';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { Field } from '@/components/forms/field';
+import { HilfeBlock } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { QuantityInput, Select } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
 import { Alert } from '@/components/ui/alert';
@@ -261,7 +263,7 @@ function positionTotalCents(catalog: CylinderCatalog, item: CylinderLineItem, ma
 
 /* ---------- Konfigurator -------------------------------------------------- */
 
-export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
+export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hilfe?: HilfeKontakt }) {
   const router = useRouter();
   const addCylinderOrder = useCartStore((state) => state.addCylinderOrder);
   const [submitting, setSubmitting] = useState(false);
@@ -788,6 +790,26 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
               </Alert>
             )}
 
+            {/* Maß unbekannt: kein Ende des Wegs (FA-QA-02), sondern Anleitung, Telefon oder Anfrage mit Foto. */}
+            <HilfeBlock
+              hilfe={hilfe}
+              stelle="masse"
+              titel="Maß unbekannt oder unsicher?"
+              satz={
+                <>
+                  Die Anleitung{' '}
+                  <a href="#weiterfuehrend" className="font-semibold text-primary underline">
+                    Zylinder richtig ausmessen
+                  </a>{' '}
+                  zeigt, wo Sie messen. Oder rufen Sie uns an. Sie können uns auch eine{' '}
+                  <Link href="/service-und-termin/anfrage" className="font-semibold text-primary underline">
+                    Anfrage mit Foto Ihres Zylinders
+                  </Link>{' '}
+                  schicken.
+                </>
+              }
+            />
+
             {/* Rückfragen der Maßprüfung des Kerns (E5-OPUS-02): halten nichts auf */}
             {rueckfragen.length > 0 && (
               <Alert tone="info" title="Bitte prüfen Sie die Maße">
@@ -1040,6 +1062,8 @@ export function Konfigurator({ catalog }: { catalog: CylinderCatalog }) {
                 Zusammenstellung verwerfen
               </Button>
             </div>
+
+            <HilfeBlock hilfe={hilfe} stelle="preis" titel="Fragen zu Preis oder Bestellung?" satz="Wir prüfen Ihre Zusammenstellung gern mit Ihnen, bevor Sie bestellen." />
           </div>
         )}
       </div>

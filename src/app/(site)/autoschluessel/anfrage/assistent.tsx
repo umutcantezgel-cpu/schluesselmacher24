@@ -42,6 +42,7 @@ import { Field } from '@/components/forms/field';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
+import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
 import {
   KEY_KIND_OPTIONS,
   KEY_KIND_ORDER,
@@ -1160,9 +1161,15 @@ export function Assistent({
           ? { ...flow, step: { ...flow.step, title: 'Termin beim Partnerbetrieb', hint: 'Den genauen Termin stimmt der Partnerbetrieb mit Ihnen ab.' } }
           : flow;
 
+  // Telefon und Erreichbarkeit für Hilfe und Fehlermeldung (FA-QA-02).
+  const hilfe = { telefon: werkstatt?.telefon, erreichbarkeit };
+  const dateienGewaehlt = Object.values(files).some((liste) => liste.length > 0);
+
   return (
     <FlowShell
       flow={anzeigeFlow}
+      ungesichert={dateienGewaehlt}
+      mitDateien
       title="Autoschlüssel: Anfrage mit Termin"
       submitLabel={partnerweg && plan?.art === 'anfrage' ? 'Anfrage senden' : 'Zahlungspflichtig buchen'}
       onSubmit={handleSubmit}
@@ -1181,11 +1188,7 @@ export function Assistent({
         )
       }
     >
-      {submitError && (
-        <Alert tone="warning" title="Absenden nicht möglich" className="mb-5">
-          {submitError}
-        </Alert>
-      )}
+      {submitError && <AbsendeFehler fehler={submitError} hilfe={hilfe} className="mb-5" />}
 
       {/* 1 – Marke */}
       {flow.step.id === 'marke' && (
@@ -2072,6 +2075,17 @@ export function Assistent({
             Im nächsten Schritt wählen Sie Ihren Termin. Erst danach senden Sie die Anfrage ab.
           </p>
         </div>
+      )}
+
+      {/* Preis und Zahlung sind kritische Stellen: Telefon und Rückruf (FA Abschnitt 26, FA-QA-02). */}
+      {(flow.step.id === 'preis' || flow.step.id === 'anzahlung') && (
+        <HilfeBlock
+          hilfe={hilfe}
+          stelle="preis"
+          titel="Fragen zu Preis oder Zahlung?"
+          satz="Wir erklären Ihnen Preis und Ablauf gern am Telefon, bevor Sie buchen."
+          className="mt-8"
+        />
       )}
 
       {/* 13 – Termin im Partnerweg: kein Zeitfenster der Werkstatt (FA-KERN-03) */}

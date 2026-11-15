@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, type ReactNode } from 'react';
+import { useId, useState, type ReactNode } from 'react';
 import type { FlowState, FlowStep } from '@/lib/flow/use-flow';
+import { useVerlassenWarnung } from '@/lib/flow/verlassen-warnung';
 import { cn } from '@/lib/cn';
 import { Button } from '@/components/ui/button';
 import { SchutzFelder, type FormularSchutzHandle } from '@/components/forms/formular-schutz';
@@ -45,7 +46,26 @@ export interface FlowShellProps<T extends object> {
    * erste Treffer der Fahrzeugsuche: Der Hinweis ersetzt `blockedHint`, „Weiter“ ruft `onWeiter`.
    */
   vorschlag?: { hinweis: string; onWeiter: () => void } | null;
+  /**
+   * Es sind Dateien ausgewählt, die nicht im Browser gespeichert werden (FA-QA-02): Verlassen, Neuladen
+   * und Browser-Zurück fragen dann nach. Gilt auch ohne Angabe, wenn sich der Zwischenstand nicht
+   * speichern ließ (`flow.saved`).
+   */
+  ungesichert?: boolean;
+  /** Der Ablauf kennt Dateien: Der Hinweis auf den geladenen Zwischenstand sagt, dass sie neu zu wählen sind. */
+  mitDateien?: boolean;
   children: ReactNode;
+}
+
+/** Hinweis am gesperrten Knopf, wenn das Formular keinen eigenen nennt. */
+export const GESPERRT_STANDARD = 'Bitte vervollständigen Sie die Angaben in diesem Schritt. Pflichtangaben sind mit * markiert.';
+
+/** „Schritt n von m · Name“ für Band und Vorleseprogramme; mit Etappen zählt es die Etappen. */
+export function fortschrittText(flow: Pick<FlowState<object>, 'steps' | 'stepIndex' | 'stepCount' | 'step'>): string {
+  const etappen = etappenAus(flow.steps);
+  const n = etappen.findIndex((e) => flow.stepIndex >= e.von && flow.stepIndex <= e.bis);
+  if (n >= 0) return `Schritt ${n + 1} von ${etappen.length}: ${etappen[n].name}`;
+  return `Schritt ${flow.stepIndex + 1} von ${flow.stepCount}${flow.step?.short ? `: ${flow.step.short}` : ''}`;
 }
 
 export interface Etappe {
@@ -87,12 +107,18 @@ export function FlowShell<T extends object>({
   abschlussHinweis,
   vorschlag = null,
   eingebettet = false,
+  ungesichert = false,
+  mitDateien = false,
   children,
 }: FlowShellProps<T>) {
+  const hinweisId = useId();
+  // Browser-Zurück, Neuladen und Schließen fragen nach, solange dabei etwas verloren ginge (FA-QA-02).
+  useVerlassenWarnung(!submitting && (ungesichert || !flow.saved));
   const etappen = etappenAus(flow.steps);
   const etappeJetzt = etappen.findIndex((e) => flow.stepIndex >= e.von && flow.stepIndex <= e.bis);
   const etappe = etappeJetzt >= 0 ? etappen[etappeJetzt] : null;
   const weiterFrei = flow.canContinue || Boolean(vorschlag);
+  const gesperrtHinweis = flow.canContinue ? '' : (vorschlag?.hinweis || blockedHint || GESPERRT_STANDARD);
   const percent = Math.round(flow.progress * 100);
   const mitSeite = raster === 'seite';
 
@@ -129,7 +155,7 @@ export function FlowShell<T extends object>({
       disabled={i > flow.stepIndex}
       aria-current={i === flow.stepIndex ? 'step' : undefined}
       className={cn(
-        'inline-flex min-h-6 items-center gap-1.5 text-caption font-semibold transition-colors duration-quick ease-standard',
+        'inline-flex min-h-8 items-center gap-1.5 text-small font-semibold transition-colors duration-quick ease-standard',
         i === flow.stepIndex && 'text-primary',
         i < flow.stepIndex && 'text-foreground-muted hover:text-primary',
         i > flow.stepIndex && 'cursor-default text-foreground-subtle',
@@ -203,7 +229,7 @@ export function FlowShell<T extends object>({
             disabled={i > flow.stepIndex}
             aria-current={i === flow.stepIndex ? 'step' : undefined}
             className={cn(
-              'inline-flex min-h-6 items-center gap-1.5 text-caption font-semibold transition-colors duration-quick ease-standard',
+              'inline-flex min-h-8 items-center gap-1.5 text-small font-semibold transition-colors duration-quick ease-standard',
               i === flow.stepIndex && 'text-primary',
               i < flow.stepIndex && 'text-foreground-muted hover:text-primary',
               i > flow.stepIndex && 'cursor-default text-foreground-subtle',
@@ -231,7 +257,8 @@ export function FlowShell<T extends object>({
           das Band nur die Etappen; die Teilschritte zeigt die Liste daneben (E5-OPUS-05, ein Zähler). */}
       <div className="sticky top-header z-sticky -mx-5 border-b border-border bg-background px-5 py-3 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div className="flex items-baseline justify-between gap-3">
-          <p className="min-w-0 truncate whitespace-nowrap text-caption font-mono tabular-nums text-foreground-muted">
+          {/* Lesbar groß (FA-QA-02: Hilfetexte nicht unter 14 px); Vorleseprogramme hören den Wechsel. */}
+          <p aria-live="polite" className="min-w-0 truncate whitespace-nowrap text-small font-mono tabular-nums text-foreground-muted">
             {etappe ? (
               <>
                 Schritt {etappeJetzt + 1} von {etappen.length} · {etappe.name}
@@ -263,6 +290,7 @@ export function FlowShell<T extends object>({
           aria-valuemin={0}
           aria-valuemax={100}
           aria-label={`Fortschritt ${title}: ${percent} Prozent`}
+          aria-valuetext={`${fortschrittText(flow)}, ${percent} Prozent`}
         >
           <div
             className="h-full origin-left rounded-full bg-primary transition-transform duration-slow ease-standard"
@@ -282,12 +310,13 @@ export function FlowShell<T extends object>({
               <p className="flex items-center gap-2 text-small text-foreground-muted">
                 <GlyphSpeichern size={16} />
                 Ihr Zwischenstand von zuletzt wurde geladen.
+                {mitDateien && ' Ausgewählte Dateien und Fotos sind dabei nicht gespeichert; bitte wählen Sie sie erneut aus.'}
               </p>
               <div className="flex gap-2">
-                <Button variant="ghost" size="sm" onClick={flow.dismissRestored}>
+                <Button variant="ghost" size="md" onClick={flow.dismissRestored}>
                   Weitermachen
                 </Button>
-                <Button variant="outline" size="sm" onClick={flow.reset}>
+                <Button variant="outline" size="md" onClick={flow.reset}>
                   <GlyphZuruecksetzen size={14} />
                   Neu beginnen
                 </Button>
@@ -334,8 +363,11 @@ export function FlowShell<T extends object>({
               'md:static md:mt-8 md:border-0 md:bg-transparent md:p-0 md:pb-4',
             )}
           >
-            {!flow.canContinue && (vorschlag?.hinweis ?? blockedHint) && (
-              <p className="mb-2 text-center text-small text-foreground-muted md:text-right">{vorschlag?.hinweis ?? blockedHint}</p>
+            {/* Der gesperrte Knopf sagt, was fehlt (FA-QA-02): Hinweis des Formulars oder ein allgemeiner, mit dem Knopf verknüpft. */}
+            {gesperrtHinweis && (
+              <p id={hinweisId} data-gesperrt-hinweis className="mb-2 text-center text-small text-foreground-muted md:text-right">
+                {gesperrtHinweis}
+              </p>
             )}
             <div className="mx-auto flex max-w-shell items-center gap-3 md:mx-0">
               {/* Mobil steht die laufende Summe links, wie in der Leiste des Warenkorbs. */}
@@ -368,6 +400,7 @@ export function FlowShell<T extends object>({
                   className="md:ml-auto md:w-auto"
                   onClick={onSubmit}
                   disabled={!flow.canContinue}
+                  aria-describedby={gesperrtHinweis ? hinweisId : undefined}
                   loading={submitting}
                 >
                   {submitLabel}
@@ -379,6 +412,7 @@ export function FlowShell<T extends object>({
                   className="md:ml-auto md:w-auto"
                   onClick={weiter}
                   disabled={!weiterFrei}
+                  aria-describedby={gesperrtHinweis ? hinweisId : undefined}
                 >
                   Weiter
                   <GlyphPfeilRechts size={18} />

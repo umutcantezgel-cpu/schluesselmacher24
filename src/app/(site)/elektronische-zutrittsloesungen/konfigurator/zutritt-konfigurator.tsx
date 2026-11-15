@@ -13,6 +13,8 @@ import { FlowShell } from '@/components/flow/flow-shell';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { Field } from '@/components/forms/field';
+import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
 import { SummaryList } from '@/components/layout/summary-list';
@@ -659,7 +661,7 @@ interface SubmitState {
   notices: string[];
 }
 
-export function ZutrittKonfigurator() {
+export function ZutrittKonfigurator({ hilfe }: { hilfe?: HilfeKontakt }) {
   const schutz = useFormularSchutz();
 
   const flow = useFlow<ZutrittData>({
@@ -690,26 +692,34 @@ export function ZutrittKonfigurator() {
     setSubmitting(true);
     setError(null);
 
-    const response = await submitRecord({
-      schutz: await schutz.daten(),
-      kind: 'projekt',
-      area: 'elektronische-zutrittsloesungen',
-      process: 'projektkonfigurator',
-      contact: {
-        salutation: data.anrede || undefined,
-        firstName: data.vorname.trim(),
-        lastName: data.nachname.trim(),
-        company: data.firma.trim() || undefined,
-        email: data.email.trim(),
-        phone: data.telefon.trim(),
-        postalCode: data.plz.trim() || undefined,
-        city: data.ort.trim() || undefined,
-        country: 'Deutschland',
-      },
-      payload: { ...buildPayload(data) },
-      summary: [...answerSummary, buildContactSummary(data)],
-      uploads: [],
-    });
+    // Ohne Verbindung bleibt es nicht beim drehenden Knopf: Meldung, Angaben bleiben (FA-QA-02).
+    let response: Awaited<ReturnType<typeof submitRecord>>;
+    try {
+      response = await submitRecord({
+        schutz: await schutz.daten(),
+        kind: 'projekt',
+        area: 'elektronische-zutrittsloesungen',
+        process: 'projektkonfigurator',
+        contact: {
+          salutation: data.anrede || undefined,
+          firstName: data.vorname.trim(),
+          lastName: data.nachname.trim(),
+          company: data.firma.trim() || undefined,
+          email: data.email.trim(),
+          phone: data.telefon.trim(),
+          postalCode: data.plz.trim() || undefined,
+          city: data.ort.trim() || undefined,
+          country: 'Deutschland',
+        },
+        payload: { ...buildPayload(data) },
+        summary: [...answerSummary, buildContactSummary(data)],
+        uploads: [],
+      });
+    } catch {
+      setSubmitting(false);
+      setError('Die Verbindung wurde unterbrochen. Bitte versuchen Sie es noch einmal.');
+      return;
+    }
     schutz.antwortBeachten(response);
 
     setSubmitting(false);
@@ -760,11 +770,7 @@ export function ZutrittKonfigurator() {
       submitting={submitting}
       blockedHint={BLOCKED_HINTS[flow.step?.id ?? '']}
     >
-      {error && (
-        <Alert tone="warning" title="Übermittlung nicht möglich" className="mb-6" role="alert">
-          {error}
-        </Alert>
-      )}
+      {error && <AbsendeFehler fehler={error} hilfe={hilfe} titel="Übermittlung nicht möglich" />}
 
       {/* 1 Objekt */}
       {flow.step?.id === 'objekt' && (

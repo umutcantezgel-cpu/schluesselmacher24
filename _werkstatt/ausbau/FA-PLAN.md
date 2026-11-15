@@ -26,13 +26,13 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 | FA-KERN-02 | Pflichtuploads serverseitig (Fahrzeugschein, drei Schlüsselfotos, Beschreibung) in allen Fahrzeugschlüssel-Wegen; „Fahrzeug nicht gefunden?“ überall mit Telefon und direkter Hilfe; Ersatzunterlage bei Kleinstfahrzeugen | FA-06-09 bis -17, -U1, -U2, FA-05-10, FA-05-11, FA-12-01, FA-12-03 | nein | Teil 1 (Steckplätze, Pflichtregel, bestehende Wege, Admin) committet ea1cee2 · Teil 2 FA-KERN-02B (gemeinsame Anfrage für alle Klassen, vier Einstiegsseiten, „Fahrzeug nicht gefunden?“, Verweis aus der allgemeinen Anfrage) committet, voll geprüft (Unit 2.760, DB 103, Build 177/177, Sichtprobe) |
 | FA-KERN-03 | Auftragsweg und Zahlung: Hauptzentrale, Eigenbereich, Partner aus Postleitzahl und Terminort; Anzahlung 69,90 nur im Direktweg; Partnerauftrag erst nach Vollzahlung; Anzeige vor der Zahlung; Restbetrag | FA-05-12 bis -16, -20, FA-22-17 bis -19 | ja | committet, voll geprüft (Unit 2.830, DB 110, Build 177/177): Auftragsweg, Zahlung je Weg, Anzeige vor der Zahlung, Restbetrag; Partnerweg hinter dem Schalter |
 | FA-KERN-04 | Partnerauszahlung im Admin: Partnerbetrag, Plattformanteil, Status bis „zur Auszahlung freigegeben“, Freigabe nach Bestätigung, Storno und Rückzahlung mit eindeutigem Stand | FA-05-17 bis -19, FA-22-20 bis -24, -27 | ja | committet, voll geprüft (Unit 2.875, DB 113, Build 177/177): Stände bis „ausgezahlt“, Kundenbestätigung, Plattformanteil und Partnerbetrag, Storno und Rückzahlung, Zahlungsdienst vorbereitet und aus |
-| FA-KERN-05 | Admin Alltag: Kundenkontakt aus dem Auftrag mit Verlauf, Verfügbarkeit, Lieferzeit, Bestellung bearbeiten, Duplizieren geprüft | FA-22-02, -09, -10, -12, -13, -15, -16 | ja | committet (Typprüfung, Lint, DB 118, Build 177/177; Unit bis auf einen Test, der am gleichzeitig laufenden FA-SEO-01C hing und behoben ist): Mailverlauf, Korrektur, Storno mit Erstattung, Duplizieren, neue Seiten, Anleitung |
+| FA-KERN-05 | Admin Alltag: Kundenkontakt aus dem Auftrag mit Verlauf, Verfügbarkeit, Lieferzeit, Bestellung bearbeiten, Duplizieren geprüft | FA-22-02, -09, -10, -12, -13, -15, -16 | ja | committet cd6ba83, voll geprüft mit der Welle (Unit 3.175, DB 128, Build 177/177) |
 | FA-KERN-06 | Mail: alle Systemmails mit der Domainadresse, Prüfung in der Livegang-Prüfung; Anleitung Zoho, SPF, DKIM, DMARC | FA-24 | nein | committet 0927630 |
 
 ## Priorität 3 · Shop
 | Paket | Inhalt | Anforderungen | Schema | Status |
 |---|---|---|---|---|
-| FA-SHOP-01 | Kategorien und Unterkategorien als Daten; Codeprodukt mit Hersteller (Stammliste), System, Codebereich, Bild in Liste und Detail; Gruppierung nach Hersteller und System; Import der echten Angebote | FA-10-01, -03, FA-11-01 bis -19, FA-22-04, -05, -07 | ja | geteilt: Teil 1 FA-SHOP-01 (Datenmodell und Admin) läuft; Teil 2 FA-SHOP-01B (Seiten und Import) danach; echte Angebote fehlen (MA-34) |
+| FA-SHOP-01 | Kategorien und Unterkategorien als Daten; Codeprodukt mit Hersteller (Stammliste), System, Codebereich, Bild in Liste und Detail; Gruppierung nach Hersteller und System; Import der echten Angebote | FA-10-01, -03, FA-11-01 bis -19, FA-22-04, -05, -07 | ja | Teil 1 (Datenmodell und Admin) committet, voll geprüft (Unit 3.175, DB 128, Build 177/177) · Teil 2 FA-SHOP-01B (Seiten und Import) läuft · echte Angebote fehlen (MA-34, MA-47) |
 | FA-SHOP-02 | Gehäuse, Reparatur, Customizing: Shopprodukte nach Hersteller, Modell, Tasten, Schlüsseltyp; Einsendeservice; Rubrik Customizing mit Vorher-Nachher und Kompatibilität | FA-14, FA-10-05 bis -08, FA-22-29, -30 | ja | offen |
 | FA-SHOP-03 | Versand eingesendeter Schlüssel: DHL Paket, Einschreiben Einwurf, Einschreiben Wert mit Kosten und ehrlicher Haftung; Empfehlung für Originalschlüssel; Verpackungshinweis; Sendungsnummer; Label über Schnittstelle vorbereitet | FA-13, FA-AB-01 bis -03, FA-22-25 | ja | offen, wartet auf Recherche 03 |
 | FA-SHOP-04 | Sperrschließungen: BKS und ABUS als Hersteller sichtbar, Zylindertypen, mehrere Maße in einer Bestellung geprüft, keine Demo-Preise | FA-15, FA-19-02 | ja (Logo-Feld) | offen |
@@ -57,12 +57,12 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 ## Priorität 6 · SEO
 | Paket | Inhalt | Anforderungen | Schema | Status |
 |---|---|---|---|---|
-| FA-SEO-01 | Titel und Beschreibungen in den Längen, Strukturdaten für Betrieb, Leistungen, Produkte, Brotkrumen überall, FAQ-Auszeichnung nach R8, Canonical und Indexstatus im Admin | FA-25, FA-22-44, -45 | ja (klein) | Teil A (5674196), Teil B (05ca154) und Teil C (c8f1913: Strukturdaten, Indexierbarkeit mit Kopfzeile, Verweise, Waisen-Test) committet; Build und Onpage-Messung für B und C folgen mit FA-SHOP-01 · offen: Canonical-Feld im Admin (Schema) |
+| FA-SEO-01 | Titel und Beschreibungen in den Längen, Strukturdaten für Betrieb, Leistungen, Produkte, Brotkrumen überall, FAQ-Auszeichnung nach R8, Canonical und Indexstatus im Admin | FA-25, FA-22-44, -45 | ja (klein) | Teile A, B und C committet und voll geprüft; Onpage 134 Seiten, Median 100, kein Befund · offen: Canonical-Feld im Admin (Schema) |
 | FA-SEO-02 | Eigene Onpage-Prüfung nach den Kriterien von Seobility über den Build (Schutz jeder Staging-Adresse liegt bei FA-SEO-01) | FA-25-21, -22, FA-AB-04 | nein | committet 1436cf3 |
 
 ## Priorität 7 · QA
 | Paket | Inhalt | Anforderungen | Schema | Status |
 |---|---|---|---|---|
 | FA-QA-01 | Pflichttests je Hauptprozess als Browserläufe bis in den Admin (13 Zeilen aus FA-27), Geräteprofile iPhone, iPad, Android, Desktop | FA-27 | nein | offen |
-| FA-QA-02 | Bedienbarkeit: Zurück ohne Datenverlust auch mit Dateien, Hilfe an kritischen Stellen, keine Sackgassen | FA-26 | nein | offen |
+| FA-QA-02 | Bedienbarkeit: Zurück ohne Datenverlust auch mit Dateien, Hilfe an kritischen Stellen, keine Sackgassen | FA-26 | nein | läuft (alle mehrstufigen Formulare gegen Abschnitt 26) |
 | FA-QA-03 | Abnahmebogen mit Testprotokollen und Bildern je Hauptprozess; Prüfung „keine Demo-Daten, keine Platzhalter, keine falschen Kontaktdaten“ | FA-27-15 bis -17 | nein | offen |

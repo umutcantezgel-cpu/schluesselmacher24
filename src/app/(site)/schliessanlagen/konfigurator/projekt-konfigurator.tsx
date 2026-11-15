@@ -12,6 +12,8 @@ import { FlowShell } from '@/components/flow/flow-shell';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { Field } from '@/components/forms/field';
+import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
@@ -43,6 +45,8 @@ export interface DoorTypeOption {
 export interface ProjektKonfiguratorProps {
   doorTypes: DoorTypeOption[];
   measuringInfo: InfoHint;
+  /** Telefon und Erreichbarkeit aus den Einstellungen, für die Hilfe an kritischen Stellen (FA-QA-02). */
+  hilfe?: HilfeKontakt;
 }
 
 interface DoorEntry {
@@ -492,6 +496,41 @@ export function validateStep(d: ProjectData, stepId: string): boolean {
 }
 
 /**
+ * Was im Schritt noch fehlt, in einem Satz (FA-QA-02): Der gesperrte Knopf „Weiter“ nennt die Angaben,
+ * die `validateStep` verlangt, statt nur auf die Sterne zu verweisen.
+ */
+export function gesperrtHinweis(d: ProjectData, stepId: string): string {
+  switch (stepId) {
+    case 'kundentyp':
+      return 'Bitte wählen Sie, für wen wir die Anlage planen.';
+    case 'objekt':
+      return d.customerType === 'mehrere-liegenschaften'
+        ? 'Bitte geben Sie mindestens zwei Liegenschaften an und beantworten Sie, ob Schlüssel mehrere Liegenschaften öffnen sollen.'
+        : 'Bitte geben Sie Gebäude, Bereiche und Schließstellen an, jeweils mindestens 1.';
+    case 'nutzer':
+      return 'Bitte geben Sie Nutzer und Schlüsselinhaber an (mindestens 1) und beantworten Sie, ob unterschiedliche Personen unterschiedliche Türen öffnen sollen.';
+    case 'bestand':
+      return d.hasExisting === 'ja'
+        ? 'Bitte beantworten Sie die Frage nach der Sicherungskarte und wählen Sie ein System für die neue Anlage.'
+        : 'Bitte beantworten Sie, ob es schon eine Schließanlage gibt, und wählen Sie ein System für die neue Anlage.';
+    case 'erweiterung':
+      return 'Bitte wählen Sie, wie sicher die Erweiterung ist.';
+    case 'tueren':
+      return 'Bitte geben Sie jeder Tür eine Bezeichnung und eine Anzahl. Zylindertyp und Maß dürfen offen bleiben.';
+    case 'berechtigungen':
+      return 'Bitte beantworten Sie die Frage nach dem Hauptschlüssel und geben Sie jeder Gruppe einen Namen und ihre Türen.';
+    case 'schluessel':
+      return 'Bitte tragen Sie bei jedem Eintrag Person, Rolle oder Gruppe und die Anzahl Schlüssel ein.';
+    case 'service':
+      return 'Bitte beantworten Sie die Fragen nach Montage, Beratung und Zeitraum.';
+    case 'abschluss':
+      return 'Bitte füllen Sie Vorname, Nachname, E-Mail und Telefon aus und stimmen Sie der Datenschutzerklärung zu.';
+    default:
+      return '';
+  }
+}
+
+/**
  * Blendet den Berechtigungsblock aus, wenn ohnehin jeder Schlüssel jede Tür
  * öffnen soll. Pflichtangaben werden dadurch nicht versteckt: Die Frage nach
  * unterschiedlichen Rechten steht einen Schritt vorher.
@@ -896,7 +935,7 @@ const HINT_BUDGET: InfoHint = {
    Konfigurator
    ========================================================================== */
 
-export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfiguratorProps) {
+export function ProjektKonfigurator({ doorTypes, measuringInfo, hilfe }: ProjektKonfiguratorProps) {
   const schutz = useFormularSchutz();
 
   const flow = useFlow<ProjectData>({
@@ -1048,13 +1087,11 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
       submitLabel="Projekt absenden"
       onSubmit={handleSubmit}
       submitting={submitting}
-      blockedHint="Bitte füllen Sie die mit Stern gekennzeichneten Angaben aus."
+      blockedHint={gesperrtHinweis(d, stepId)}
+      ungesichert={planFiles.length > 0 || docFiles.length > 0}
+      mitDateien
     >
-      {error && (
-        <Alert tone="warning" title="Das Absenden hat nicht geklappt" className="mb-6" role="alert">
-          {error}
-        </Alert>
-      )}
+      {error && <AbsendeFehler fehler={error} hilfe={hilfe} titel="Das Absenden hat nicht geklappt" />}
 
       {/* 1 Kundentyp */}
       {stepId === 'kundentyp' && (
@@ -1489,6 +1526,8 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
             wenn Sie noch nicht gemessen haben.
           </Alert>
 
+          <HilfeBlock hilfe={hilfe} stelle="masse" titel="Maß oder Zylindertyp unbekannt?" satz="Lassen Sie die Felder offen. Wir klären Maße und Typ dann mit Ihnen." />
+
           <ul className="grid gap-4">
             {d.doors.map((door, index) => (
               <ListRow
@@ -1834,6 +1873,8 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo }: ProjektKonfigu
             Wir verwenden hochgeladene Unterlagen ausschließlich zur Bearbeitung Ihres Vorgangs.
             Wie lange sie aufbewahrt werden, steht in unserer Datenschutzerklärung.
           </Alert>
+
+          <HilfeBlock hilfe={hilfe} stelle="unterlagen" titel="Unsicher, was Sie hochladen sollen?" spaeter mitDateien />
         </div>
       )}
 

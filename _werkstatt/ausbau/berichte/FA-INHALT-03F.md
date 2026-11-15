@@ -122,3 +122,4 @@ Hinweis zum Vorgehen: Die Änderungen der Startseite (Befunde 2 und 3) habe ich 
 - **Skript statt Bearbeitungswerkzeug an der Startseite:** geprüft; der Unterschied zum Startcommit enthält nur Änderungen dieses Pakets.
 - Typprüfung, Lint und Unit-Tests des Pakets waren grün (3.095 Tests, mit den Tests gleichzeitig laufender Pakete); Build und Sichtprobe folgen mit der Abnahme von FA-KERN-05.
 - Fragen an den Inhaber (Einsätze beim Kunden vor Ort, „vielleicht trotzdem helfen“, Nachweis bei der Fahrzeugöffnung, wenn der Fahrzeugschein im Fahrzeug liegt) stehen in MA-41.
+- **Nachtrag 15.11.2026 23:24:** Volle Prüfkette über den gemeinsamen Stand grün (Unit 3.175, DB 128, Build 177/177), Onpage-Messung 134 Seiten ohne Befund; Einzelheiten in `berichte/FA-SHOP-01.md`, Abschnitt ABNAHME.

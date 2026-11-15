@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 
 import { PageHeader } from '@/components/layout/page-header';
-import { getPageContent } from '@/lib/data';
+import { getPageContent, getSettings } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 
 import { AnfrageFormular } from './anfrage-formular';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
 
 const ROUTE = 'autoschluessel/gehaeuse/anfrage';
 
@@ -47,7 +48,7 @@ export default async function GehaeuseAnfragePage() {
       />
 
       <div className="shell py-8 md:py-12">
-        <AnfrageFormular />
+        <AnfrageFormular hilfe={hilfeAus(await getSettings())} />
       </div>
     </>
   );

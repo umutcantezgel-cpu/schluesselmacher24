@@ -374,7 +374,7 @@ export function KasseFormular({
           <div className="min-w-0 max-w-xl">
             <h2 className="text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
             <p className="mt-2 text-small text-foreground-muted">
-              Legen Sie zuerst etwas in den Warenkorb. Diese Angebote können Sie direkt bestellen:
+              Legen Sie zuerst etwas in den Warenkorb. Hier geht es weiter:
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/schluessel-nach-code">Schlüssel nach Code</ButtonLink>

@@ -117,3 +117,4 @@ Prüfung nach der Nachbesserung (Datenweiche):
 - **Freigegeben:** die neu erzeugte `src/app/(payload)/admin/importMap.js` (ohne sie fehlen die drei neuen Knöpfe im Backend).
 - **Sichtprobe:** nicht im Backend durchgeklickt; die Regeln sind durch Unit- und Datenbanktests belegt. Die Anleitung `docs/betrieb/admin-alltag.md` soll das Team einmal im Backend nachklicken (MA-46).
 - **Fragen an den Inhaber** (MA-46): Aufbewahrung der Mailtexte, Rückkanal für Antworten der Kunden, Berichtigung von Erstattungen nur durch den Inhaber.
+- **Nachtrag 15.11.2026 23:24:** Volle Prüfkette über den gemeinsamen Stand grün (Unit 3.175, DB 128, Build 177/177), Onpage-Messung 134 Seiten ohne Befund; Einzelheiten in `berichte/FA-SHOP-01.md`, Abschnitt ABNAHME.

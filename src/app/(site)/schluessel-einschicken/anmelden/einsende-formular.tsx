@@ -5,6 +5,8 @@ import { useMemo, useState } from 'react';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
 import { Field } from '@/components/forms/field';
+import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
@@ -133,7 +135,7 @@ function speichern(schein: { dateiname: string; pdfBase64: string }) {
  * als PDF. Der Server prüft alle Angaben und baut die Zusammenfassung selbst; die Vorschau hier nutzt
  * dieselbe Funktion.
  */
-export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
+export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot; hilfe?: HilfeKontakt }) {
   const [fotoKarte, setFotoKarte] = useState<PickedFile[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<SubmitResult | null>(null);
@@ -177,7 +179,11 @@ export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
   const { data } = flow;
   // Bei „Sicherungskarte ja“ gehört ein Foto der Karte dazu (R13); der Server prüft es noch einmal.
   const karteFehlt = data.sicherungskarte === 'ja' && fotoKarte.length === 0;
-  const shellFlow = { ...flow, canContinue: flow.canContinue && !(flow.step?.id === 'nachweis' && karteFehlt) };
+  // Auch beim Absenden: Nach einem Neuladen fehlt das Foto der Karte (FA-QA-02); der Server prüft es ohnehin.
+  const shellFlow = {
+    ...flow,
+    canContinue: flow.canContinue && !((flow.step?.id === 'nachweis' || flow.step?.id === 'absenden') && karteFehlt),
+  };
   // Vorschau erst mit gewählter Versandart (keine Vorbelegung, auch nicht hier).
   const summary = useMemo(() => {
     const versand = data.versand;
@@ -253,6 +259,7 @@ export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
     nachweis: karteFehlt ? 'Bitte fügen Sie ein Foto Ihrer Sicherungskarte hinzu.' : 'Bitte beantworten Sie die Frage nach der Sicherungskarte.',
     versand: 'Bitte wählen Sie, wie Sie den Schlüssel schicken.',
     kontakt: 'Bitte füllen Sie Name, E-Mail, Telefon und die vollständige Rücksendeanschrift aus.',
+    absenden: 'Es fehlt das Foto Ihrer Sicherungskarte. Das passiert, wenn die Seite neu geladen wurde. Bitte gehen Sie zum Schritt Nachweis zurück.',
   };
 
   return (
@@ -265,12 +272,10 @@ export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
       onSubmit={absenden}
       submitting={submitting}
       blockedHint={gesperrt[flow.step?.id ?? '']}
+      ungesichert={fotoKarte.length > 0}
+      mitDateien
     >
-      {fehler && (
-        <Alert tone="warning" title="Das hat nicht geklappt" className="mb-6" role="alert">
-          {fehler}
-        </Alert>
-      )}
+      {fehler && <AbsendeFehler fehler={fehler} hilfe={hilfe} titel="Das hat nicht geklappt" />}
 
       {flow.step?.id === 'schluessel' && (
         <div className="max-w-3xl space-y-6">
@@ -361,6 +366,9 @@ export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
               multiple
             />
           )}
+          <div className="pt-5">
+            <HilfeBlock hilfe={hilfe} stelle="nachweis" satz="Sie wissen nicht, ob es eine Sicherungskarte gibt? Wählen Sie „Weiß ich nicht“ oder rufen Sie uns an." spaeter mitDateien />
+          </div>
         </fieldset>
       )}
 
@@ -380,6 +388,9 @@ export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
             />
           ))}
           {angebot.stand && <p className="text-small text-foreground-subtle">Portopreise: {angebot.stand}</p>}
+          <div className="pt-5">
+            <HilfeBlock hilfe={hilfe} stelle="versand" titel="Fragen zum Versand?" satz="Wir sagen Ihnen gern, welcher Versand für Ihren Schlüssel passt." />
+          </div>
         </fieldset>
       )}
 
@@ -459,7 +470,7 @@ export function EinsendeFormular({ angebot }: { angebot: EinsendeAngebot }) {
             <Alert tone="warning" title="Foto der Sicherungskarte fehlt">
               Fotos werden aus Datenschutzgründen nicht zwischengespeichert. Bitte fügen Sie das Foto noch einmal hinzu.
               <span className="mt-3 block">
-                <Button variant="outline" size="sm" onClick={() => flow.goTo('nachweis')}>
+                <Button variant="outline" size="md" onClick={() => flow.goTo('nachweis')}>
                   Zum Nachweis
                 </Button>
               </span>

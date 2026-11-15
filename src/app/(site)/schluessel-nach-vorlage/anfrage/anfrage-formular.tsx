@@ -12,6 +12,8 @@ import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { InfoTip } from '@/components/ui/info-tip';
 import { Field } from '@/components/forms/field';
+import { AbsendeFehler, HilfeBlock, OffenerSchritt } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
@@ -230,9 +232,11 @@ const EMAIL_MUSTER = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 export interface AnfrageFormularProps {
   /** Aufbewahrungsfrist für Schlüsselfotos in Tagen — aus den Einstellungen. */
   photoRetentionDays: number;
+  /** Telefon und Erreichbarkeit aus den Einstellungen, für die Hilfe an kritischen Stellen (FA-QA-02). */
+  hilfe?: HilfeKontakt;
 }
 
-export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
+export function AnfrageFormular({ photoRetentionDays, hilfe }: AnfrageFormularProps) {
   // Dateien bewusst außerhalb des Ablaufzustands: der Zwischenstand wird im
   // Browser gespeichert, Fotos werden dort nicht abgelegt.
   const [fotoVorderseite, setFotoVorderseite] = useState<PickedFile[]>([]);
@@ -296,6 +300,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
   // Fotos zählen nicht zum gespeicherten Zustand, deshalb wird die
   // Weiter-Sperre hier ergänzt.
   const shellFlow = { ...flow, canContinue: flow.canContinue && aktuelleFotosOk };
+  const dateienGewaehlt = [fotoVorderseite, fotoRueckseite, fotoSpitze, fotoBeschriftung, fotoKarte].some((liste) => liste.length > 0);
 
   // Lieferung nur innerhalb Deutschlands, wie Kasse und AGB (LIEFERLAND).
   const landLabel = LIEFERLAND;
@@ -468,7 +473,9 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       : 'Bitte übertragen Sie die Beschriftung oder wählen Sie „Auf dem Schlüssel ist nichts erkennbar“. Beantworten Sie außerdem die Frage nach der Sicherungskarte.',
     stueckzahl: `Bitte wählen Sie eine Stückzahl von 1 bis ${MAX_STUECK} und beschreiben Sie Ihr Anliegen kurz (mindestens ${BESCHREIBUNG_MIN} Zeichen).`,
     kontakt: 'Bitte füllen Sie Vorname, Nachname, E-Mail und Telefon aus. Wenn Sie eine Postleitzahl angeben, muss sie fünfstellig sein.',
-    absenden: 'Es fehlen Fotos. Das passiert, wenn die Seite neu geladen wurde. Bitte gehen Sie zu den Fotoschritten zurück.',
+    absenden: dreiFotos && karteFehlt
+      ? 'Es fehlt das Foto Ihrer Sicherungskarte. Das passiert, wenn die Seite neu geladen wurde. Bitte gehen Sie zum Schritt Nummern zurück.'
+      : 'Es fehlen Fotos. Das passiert, wenn die Seite neu geladen wurde. Bitte gehen Sie zu den Fotoschritten zurück.',
   };
 
   return (
@@ -481,12 +488,10 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       onSubmit={handleSubmit}
       submitting={submitting}
       blockedHint={blockedHints[flow.step?.id ?? '']}
+      ungesichert={dateienGewaehlt}
+      mitDateien
     >
-      {fehler && (
-        <Alert tone="warning" title="Absenden nicht möglich" className="mb-6" role="alert">
-          {fehler}
-        </Alert>
-      )}
+      {fehler && <AbsendeFehler fehler={fehler} hilfe={hilfe} />}
 
       {flow.step?.id === 'foto-vorderseite' && (
         <FotoSchritt
@@ -531,6 +536,11 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
         />
       )}
 
+      {/* Hilfe bei den Fotos: Telefon, Rückruf, später weitermachen (FA-QA-02). */}
+      {(flow.step?.id === 'foto-vorderseite' || flow.step?.id === 'foto-rueckseite' || flow.step?.id === 'foto-spitze') && (
+        <HilfeBlock hilfe={hilfe} stelle="fotos" titel="Unsicher bei den Fotos?" className="mt-8 max-w-3xl" spaeter mitDateien />
+      )}
+
       {flow.step?.id === 'hersteller' && (
         <div className="max-w-3xl space-y-5">
           <Field
@@ -564,6 +574,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
             title="Hersteller ist nicht bekannt oder nicht lesbar"
             description="Kein Hindernis. Wir bestimmen den Schlüssel dann über Profil, Form und Beschriftung."
           />
+          <HilfeBlock hilfe={hilfe} stelle="hersteller" />
         </div>
       )}
 
@@ -656,6 +667,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
               />
             )}
           </fieldset>
+          <HilfeBlock hilfe={hilfe} stelle="nummern" satz="Wir helfen beim Ablesen der Nummer und bei der Frage nach der Sicherungskarte." spaeter mitDateien />
         </div>
       )}
 
@@ -880,11 +892,14 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
               die Seite zwischendurch neu geladen wurde. Fotos werden aus Datenschutzgründen
               nicht zwischengespeichert.
               <span className="mt-3 block">
-                <Button variant="outline" size="sm" onClick={() => flow.goTo('foto-vorderseite')}>
+                <Button variant="outline" size="md" onClick={() => flow.goTo('foto-vorderseite')}>
                   Zu den Fotoschritten
                 </Button>
               </span>
             </Alert>
+          )}
+          {dreiFotos && karteFehlt && (
+            <OffenerSchritt text={blockedHints.absenden} schritt="Nummern" onGehe={() => flow.goTo('nummern')} />
           )}
 
           <p className="text-small leading-relaxed text-foreground-subtle">

@@ -5,6 +5,8 @@ import { useMemo, useState } from 'react';
 import { FlowShell } from '@/components/flow/flow-shell';
 import { TextArea, TextInput } from '@/components/forms/controls';
 import { Field } from '@/components/forms/field';
+import { AbsendeFehler, HilfeBlock, OffenerSchritt } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
@@ -66,7 +68,7 @@ const SCHRITTE = naechsteSchritte({
  * und eine kurze Beschreibung sind Pflicht (R13, FA-KERN-02); der Server prüft sie nach der Pflichtregel und
  * die Tastenzahl noch einmal. Die Zusammenfassung baut hier dieselbe Funktion wie die Vorschau.
  */
-export function AnfrageFormular() {
+export function AnfrageFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
   const [fotos, setFotos] = useState<SchluesselFotos>(LEERE_SCHLUESSELFOTOS);
   const [fotoSchein, setFotoSchein] = useState<PickedFile[]>([]);
   const [submitting, setSubmitting] = useState(false);
@@ -89,6 +91,7 @@ export function AnfrageFormular() {
   const unterlagenFehlen = fotoSchein.length === 0 || !schluesselfotosVollstaendig(fotos);
   const fotosFehlen = (flow.step?.id === 'unterlagen' || flow.step?.id === 'absenden') && unterlagenFehlen;
   const shellFlow = { ...flow, canContinue: flow.canContinue && !fotosFehlen };
+  const dateienGewaehlt = fotoSchein.length > 0 || Object.values(fotos).some((liste) => liste.length > 0);
 
   const summary = useMemo(() => gehaeuseZusammenfassung(data), [data]);
 
@@ -164,12 +167,10 @@ export function AnfrageFormular() {
       onSubmit={absenden}
       submitting={submitting}
       blockedHint={blockedHints[flow.step?.id ?? '']}
+      ungesichert={dateienGewaehlt}
+      mitDateien
     >
-      {fehler && (
-        <Alert tone="warning" title="Absenden nicht möglich" className="mb-6" role="alert">
-          {fehler}
-        </Alert>
-      )}
+      {fehler && <AbsendeFehler fehler={fehler} hilfe={hilfe} />}
 
       {flow.step?.id === 'fahrzeug' && (
         <div className="grid max-w-3xl gap-5 sm:grid-cols-2">
@@ -217,6 +218,9 @@ export function AnfrageFormular() {
               />
             )}
           </Field>
+          <div className="sm:col-span-2">
+            <HilfeBlock hilfe={hilfe} stelle="fahrzeug" satz="Marke, Modell und Baujahr stehen im Fahrzeugschein. Wir helfen Ihnen beim Suchen." />
+          </div>
         </div>
       )}
 
@@ -264,6 +268,7 @@ export function AnfrageFormular() {
           <p className="text-small leading-relaxed text-foreground-subtle">
             Fotos werden nicht im Browser zwischengespeichert. Nach einem Neuladen der Seite wählen Sie sie bitte erneut aus.
           </p>
+          <HilfeBlock hilfe={hilfe} stelle="unterlagen" titel="Unsicher, was Sie hochladen sollen?" satz="Die Unterlagen schützen Sie vor Missbrauch: Wir fertigen Schlüssel nur für Berechtigte." spaeter mitDateien />
         </div>
       )}
 
@@ -334,6 +339,9 @@ export function AnfrageFormular() {
 
       {flow.step?.id === 'absenden' && (
         <div className="max-w-3xl space-y-6">
+          {unterlagenFehlen && (
+            <OffenerSchritt text={blockedHints.absenden} schritt="Fotos" onGehe={() => flow.goTo('unterlagen')} />
+          )}
           <Alert tone="legal" title="Noch kein Vertrag">
             Mit dem Absenden stellen Sie eine Anfrage. Preis und Ablauf nennen wir Ihnen nach der Prüfung.
           </Alert>

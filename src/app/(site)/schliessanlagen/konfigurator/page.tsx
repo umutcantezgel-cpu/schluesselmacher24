@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getCollection, getPageContent } from '@/lib/data';
+import { getCollection, getPageContent, getSettings } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { ProjektKonfigurator, type DoorTypeOption } from './projekt-konfigurator';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
 
 const ROUTE = 'schliessanlagen/konfigurator';
 
@@ -66,6 +67,7 @@ export default async function SchliessanlagenKonfiguratorPage() {
 
       <Section tight>
         <ProjektKonfigurator
+          hilfe={hilfeAus(await getSettings())}
           doorTypes={doorTypes}
           measuringInfo={catalog.measuringInfo}
         />

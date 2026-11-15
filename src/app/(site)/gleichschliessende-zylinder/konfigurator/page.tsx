@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getCollection, getPageContent } from '@/lib/data';
+import { getCollection, getPageContent, getSettings } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -11,6 +11,7 @@ import { GpsrAngaben } from '@/components/recht/gpsr-angaben';
 
 import { Konfigurator } from './konfigurator';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
 
 const ROUTE = 'gleichschliessende-zylinder/konfigurator';
 
@@ -64,7 +65,7 @@ export default async function CylinderConfiguratorPage() {
       />
 
       <Section tight>
-        <Konfigurator catalog={catalog} />
+        <Konfigurator hilfe={hilfeAus(await getSettings())} catalog={catalog} />
         <GpsrAngaben info={catalog.gpsr} className="mt-12 max-w-3xl" />
       </Section>
 

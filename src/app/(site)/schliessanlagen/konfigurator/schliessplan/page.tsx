@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import { SchliessplanPlaner } from '@/components/konfigurator/schliessplan-planer';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section } from '@/components/layout/section';
-import { getCollection } from '@/lib/data';
+import { getCollection, getSettings } from '@/lib/data';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
 
 /*
  * Schließplan selbst anlegen (E5-OPUS-01, G-27): Türen, Schlüssel und Matrix auf dem Konfigurator-Kern.
@@ -40,7 +41,7 @@ export default async function SchliessplanSeite() {
         crumbs={crumbs}
       />
       <Section tight>
-        <SchliessplanPlaner katalog={katalog} />
+        <SchliessplanPlaner hilfe={hilfeAus(await getSettings())} katalog={katalog} />
       </Section>
     </>
   );

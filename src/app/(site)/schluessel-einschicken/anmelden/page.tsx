@@ -9,6 +9,7 @@ import { PROCESS_LABELS } from '@/lib/navigation';
 
 import { EinsendeFormular } from './einsende-formular';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { hilfeAus } from '@/components/forms/hilfe-daten';
 
 const ROUTE = 'schluessel-einschicken/anmelden';
 
@@ -50,7 +51,7 @@ export default async function EinsendungAnmeldenPage() {
       />
 
       <div className="shell py-8 md:py-12">
-        <EinsendeFormular angebot={angebot} />
+        <EinsendeFormular hilfe={hilfeAus(settings)} angebot={angebot} />
 
         <p className="mt-10 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-6 text-small">
           <span className="font-semibold text-foreground-muted">Lieber erst prüfen lassen? Ihr Schlüssel bleibt dabei zunächst bei Ihnen.</span>

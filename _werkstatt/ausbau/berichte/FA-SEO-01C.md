@@ -195,3 +195,4 @@ Prüfung nach der Nachbesserung, über die Datenweiche:
 - **Typfehler im Schlusslauf:** drei Fehler in `src/payload/shop-grundlage.db.test.ts` gehören zum gleichzeitig laufenden FA-SHOP-01, nicht zu diesem Paket.
 - Build, Onpage-Messung und Sichtprobe folgen mit der Abnahme von FA-SHOP-01, weil ein Build während dessen Umbau scheitern kann.
 - **Offen:** Die Codelinien-Seite trägt weiter drei Skripte für Strukturdaten (Auftrag an FA-SHOP-01B). Rechtsseiten, Kasse, Warenkorb und Vorgangsseite haben keine sichtbaren Brotkrumen und deshalb keine `BreadcrumbList`; das bleibt so (R8).
+- **Nachtrag 15.11.2026 23:24:** Volle Prüfkette über den gemeinsamen Stand grün (Unit 3.175, DB 128, Build 177/177), Onpage-Messung 134 Seiten ohne Befund; Einzelheiten in `berichte/FA-SHOP-01.md`, Abschnitt ABNAHME.

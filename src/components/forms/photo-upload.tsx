@@ -13,6 +13,7 @@ import { cn } from '@/lib/cn';
 import Image from 'next/image';
 import { formatFileSize } from '@/lib/format';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { visualFuerMotiv } from '@/lib/visual/motiv';
 
 export interface PickedFile {
   id: string;
@@ -228,6 +229,23 @@ export interface PhotoUploadProps {
 }
 
 /**
+ * Zeigt das Beispiel ein echtes Bild oder eine Zeichnung? Sonst steht dort nur ein Fach-Symbol, und die
+ * Zeile darüber sagt, was auf dem Foto zu sehen sein muss, statt „So sollte das Foto aussehen“ (FA-QA-02).
+ */
+export function beispielZeigtBild(slot: ImageSlot): boolean {
+  return Boolean(slot.bild?.url || slot.visual || visualFuerMotiv(slot.motif));
+}
+
+/** Satz zum Beispiel ohne Bild: das Motiv ohne Vorsilbe „Beispielfoto:“, sonst der Hinweis. */
+export function beispielSatz(slot: ImageSlot): string {
+  const motiv = slot.motif.replace(/^\s*Beispiel(?:foto|bild)?\s*:\s*/i, '').trim();
+  const satz = motiv || slot.note || '';
+  if (!satz) return '';
+  const gross = satz.charAt(0).toUpperCase() + satz.slice(1);
+  return /[.!?]$/.test(gross) ? gross : `${gross}.`;
+}
+
+/**
  * Foto-Upload mit direkter Kameraaufnahme am Smartphone und
  * Auswahl aus der Galerie als Alternative.
  */
@@ -360,6 +378,7 @@ export function PhotoUpload({
   }
 
   const shownError = error ?? localError;
+  const zeigtBild = beispielZeigtBild(example);
 
   return (
     <div className="flex flex-col gap-3">
@@ -379,11 +398,17 @@ export function PhotoUpload({
       <div className="grid grid-cols-kacheln gap-3">
         {/* Beispielbild direkt am Uploadfeld */}
         <div>
-          <p className="mb-1.5 font-mono text-caption font-semibold uppercase tracking-label text-foreground-muted">
-            So sollte das Foto aussehen
+          {/* Lesbar groß (FA-QA-02). Ohne Bild oder Zeichnung sagt die Zeile, was zu sehen sein muss. */}
+          <p className="mb-1.5 text-small font-semibold text-foreground-muted">
+            {zeigtBild ? 'So sollte das Foto aussehen' : 'Darauf muss zu sehen sein'}
           </p>
           {/* Fachgrafik zum Beispiel statt eines kleinen Symbols in leerer Fläche (Sichtabnahme E4-L-23) */}
           <ImagePlaceholder slot={example} />
+          {!zeigtBild && beispielSatz(example) && (
+            <p data-beispiel-satz className="mt-1.5 text-small leading-snug text-foreground">
+              {beispielSatz(example)}
+            </p>
+          )}
         </div>
 
         <div
@@ -409,7 +434,7 @@ export function PhotoUpload({
             <GlyphBildHochladen size={18} aria-hidden />
             {allowDocuments ? 'Datei auswählen' : 'Aus Galerie wählen'}
           </button>
-          <p className="text-center font-mono tabular-nums text-caption text-foreground-muted">
+          <p className="text-center font-mono tabular-nums text-small text-foreground-muted">
             Fotos bis {formatFileSize(MAX_AUSWAHL_FOTO_BYTES)}
             {allowDocuments ? ` · PDF bis ${formatFileSize(MAX_UPLOAD_BYTES)}` : ''}
             {multiple ? ` · bis zu ${maxFiles} Dateien` : ''}
@@ -469,7 +494,7 @@ export function PhotoUpload({
               {file.status && (
                 <div
                   className={cn(
-                    'flex items-center gap-1.5 border-t border-border px-2 py-1.5 text-caption font-semibold',
+                    'flex items-center gap-1.5 border-t border-border px-2 py-1.5 text-small font-semibold',
                     file.status === 'fertig' && 'text-success',
                     file.status === 'laedt' && 'text-foreground-muted',
                     file.status === 'fehler' && 'text-danger',

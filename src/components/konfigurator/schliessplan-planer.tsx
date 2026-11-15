@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 
 import { FlowShell } from '@/components/flow/flow-shell';
 import { Field } from '@/components/forms/field';
+import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
+import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { TextArea, TextInput } from '@/components/forms/controls';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { OptionCard } from '@/components/forms/option-card';
@@ -129,7 +131,7 @@ function leererStart(katalog: CylinderCatalog): Schliessplan {
   return schluesselHinzufuegen(mitTuer, { bezeichnung: 'Familie', anzahl: 3 }, true);
 }
 
-export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
+export function SchliessplanPlaner({ katalog, hilfe }: { katalog: CylinderCatalog; hilfe?: HilfeKontakt }) {
   const router = useRouter();
   const addCylinderOrder = useCartStore((state) => state.addCylinderOrder);
   const schutz = useFormularSchutz();
@@ -342,11 +344,7 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
         )
       }
     >
-      {fehler && (
-        <Alert tone="warning" title="Absenden nicht möglich" className="mb-5" role="alert">
-          {fehler}
-        </Alert>
-      )}
+      {fehler && <AbsendeFehler fehler={fehler} hilfe={hilfe} className="mb-5" />}
 
       {linkFehler && (
         <Alert tone="warning" title="Link nicht lesbar" className="mb-5" role="alert">
@@ -433,7 +431,26 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
         </div>
       )}
 
-      {flow.step.id === 'tueren' && <TuerenListe plan={d.plan} katalog={katalog} onChange={setPlan} />}
+      {flow.step.id === 'tueren' && (
+        <div className="space-y-6">
+          <TuerenListe plan={d.plan} katalog={katalog} onChange={setPlan} />
+          {/* Maß unbekannt: kein Ende des Wegs (FA-QA-02). */}
+          <HilfeBlock
+            hilfe={hilfe}
+            stelle="masse"
+            titel="Maß unbekannt oder unsicher?"
+            satz={
+              <>
+                Rufen Sie uns an, oder{' '}
+                <Link href="/schliessanlagen/konfigurator" className="font-semibold text-primary underline">
+                  beschreiben Sie Ihr Projekt
+                </Link>
+                : Dort dürfen Maße offen bleiben, wir klären sie mit Ihnen.
+              </>
+            }
+          />
+        </div>
+      )}
 
       {flow.step.id === 'schluessel' && (
         <div className="space-y-6">
@@ -502,6 +519,8 @@ export function SchliessplanPlaner({ katalog }: { katalog: CylinderCatalog }) {
       {flow.step.id === 'abschluss' && (
         <div className="space-y-6">
           <PlanSumme plan={d.plan} katalog={katalog} extraIds={d.extraIds} />
+          {/* Preis und Bestellung: Telefon und Rückruf an der kritischen Stelle (FA-QA-02). */}
+          <HilfeBlock hilfe={hilfe} stelle="preis" titel="Fragen zu Preis oder Plan?" satz="Wir prüfen Ihren Plan gern mit Ihnen, bevor Sie bestellen oder anfragen." />
           {preis.art === 'preis' ? (
             <p className="max-w-measure text-small text-foreground-muted">
               Im Warenkorb sehen Sie alle Positionen. In der Kasse prüfen und rechnen wir die Zusammenstellung noch einmal; die Werkstatt prüft die Maße vor der Fertigung.
