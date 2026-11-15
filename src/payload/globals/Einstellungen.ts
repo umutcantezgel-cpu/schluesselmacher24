@@ -200,7 +200,10 @@ export const Einstellungen: GlobalConfig = {
                 type: 'text',
                 label: 'E-Mail',
                 required: true,
-                admin: { width: '50%' },
+                admin: {
+                  width: '50%',
+                  description: 'Die Adresse für Kunden. Sie muss auf schluesselmacher24.de liegen, sonst hält die Livegang-Prüfung die Veröffentlichung an.',
+                },
                 // Solange Platzhalter hinterlegt sind, darf hier noch Platzhaltertext stehen.
                 validate: (value: unknown, { siblingData }: { siblingData: Record<string, unknown> }) =>
                   siblingData?.platzhalter || (typeof value === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))

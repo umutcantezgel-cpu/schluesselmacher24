@@ -1,8 +1,9 @@
 /**
  * Prüft vor dem Livegang, ob noch Redaktions-Platzhalter sichtbar wären:
  * - Firmendaten (Global „Einstellungen“, Tab „Firma“; ohne Datenbank
- *   content/settings.json) und die Mailadressen der Umgebung (Absender,
- *   Antwortadresse, Betriebsempfänger: nur auf der eigenen Domain),
+ *   content/settings.json),
+ * - Mailadressen der Umgebung (Absender, Antwortadresse, Betriebsempfänger):
+ *   nur als Hinweis, wenn sie nicht auf der eigenen Domain liegen,
  * - Quelltext der Rechtsseiten unter src/app/(site)/rechtliches/,
  * - Beispiel-Einträge (A-046): SM24_BEISPIELE=1 oder ein veröffentlichtes
  *   Produkt aus den Musterdaten ohne Beispiel-Haken (ohne Datenbank
@@ -61,10 +62,18 @@ async function produkte(): Promise<ProduktEintrag[]> {
 try {
   const funde = [
     ...(await firmendaten()),
-    ...umgebungsMailFunde(),
     ...beispielFunde(await produkte()),
     ...rechtsseitenFunde(path.resolve(process.cwd(), 'src/app/(site)/rechtliches')),
   ];
+
+  // Mailadressen der Umgebung: Hinweis, kein Abbruch. Absender und Antwortadresse dürfen erst
+  // auf die eigene Domain zeigen, wenn das Postfach dort steht (docs/betrieb/mail-einrichten.md);
+  // ein erzwungener Wechsel vorher ließe Antworten von Kunden ins Leere laufen.
+  const hinweise = umgebungsMailFunde();
+  if (hinweise.length > 0) {
+    console.warn(`Livegang-Prüfung: ${hinweise.length} Hinweise zu den Mailadressen der Umgebung (blockieren nicht).`);
+    for (const hinweis of hinweise) console.warn(`  ${hinweis.ort}  ${hinweis.hinweis}`);
+  }
 
   if (funde.length === 0) {
     console.log('Livegang-Prüfung: keine Platzhalter und keine veröffentlichten Beispiele gefunden.');

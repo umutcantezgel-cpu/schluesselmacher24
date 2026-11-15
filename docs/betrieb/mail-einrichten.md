@@ -96,7 +96,7 @@ Die Testmail geht an die Adresse, die im Backend angemeldet ist.
 
 Im Quelltext ist keine andere Adresse fest eingetragen. Der Test `src/lib/mail/adressen.test.ts` prüft Quelltext, Inhalte und die Wurzeldateien (README, UMSETZUNG, vercel.json, next.config.ts, package.json). Außerhalb der Tests sind nur Adressen auf `schluesselmacher24.de` erlaubt.
 
-Die Livegang-Prüfung (`npm run pruefen:livegang`) meldet die Firmen-E-Mail, wenn sie fehlt, ein Platzhalter ist oder nicht auf `schluesselmacher24.de` liegt. Ebenso meldet sie `MAIL_FROM_ADDRESS`, `MAIL_REPLY_TO` und `MAIL_TEAM_ADDRESS`, wenn dort eine Adresse nicht auf der eigenen Domain liegt. Gemeldet wird nur der Name der Variable, nie der Wert.
+Die Livegang-Prüfung (`npm run pruefen:livegang`) meldet die Firmen-E-Mail, wenn sie fehlt, ein Platzhalter ist oder nicht auf `schluesselmacher24.de` liegt. Dann bricht der Produktions-Build ab. Für `MAIL_FROM_ADDRESS`, `MAIL_REPLY_TO` und `MAIL_TEAM_ADDRESS` gibt sie nur einen Hinweis aus, wenn dort eine Adresse nicht auf der eigenen Domain liegt. Der Build läuft weiter, denn diese Werte dürfen erst umgestellt werden, wenn das Postfach steht (Schritt 1 und 2). Sonst gingen Antworten von Kunden verloren. Gemeldet wird nur der Name der Variable, nie der Wert.
 
 ## Häufige Fehler
 
@@ -108,5 +108,4 @@ Die Livegang-Prüfung (`npm run pruefen:livegang`) meldet die Firmen-E-Mail, wen
 ## Offene Fragen
 
 - Die Vorgabe sieht einen SPF-Eintrag am Hauptnamen vor, der Zoho und Resend nennt. Resend legt seinen eigenen SPF-Eintrag laut `docs/LIVEGANG.md` auf der Unterdomain `send` an. Diese Abweichung von der Vorgabe liegt offen beim Inhaber (MA-32). Vor dem Setzen mit der Resend-Anzeige abgleichen.
-- Das Feld E-Mail im Backend (Einstellungen → Firma) hat noch keinen Hinweis, dass nur eine Adresse auf `schluesselmacher24.de` passt. Gemeldet wird eine fremde Domain erst in der Livegang-Prüfung. Ein Hinweis am Feld wäre sinnvoll, ist aber außerhalb dieses Pakets (Schreibrecht offen).
 - Die Region des Zoho-Kontos (EU oder andere) bestimmt die Werte für MX und SPF. Welche Region gilt, legt das Konto fest.

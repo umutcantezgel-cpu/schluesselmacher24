@@ -73,7 +73,7 @@ Reihenfolge: **1 Postfach → 2 Supabase → 3 Resend → 4 Stripe (Testmodus) �
 ## 4. Stripe: Online-Zahlung (zuerst im Testmodus)
 
 1. Konto anlegen und aktivieren:
-   - Einzelunternehmen, Inhaber Mina Saad, Gloelstraße 11, 35576 Wetzlar
+   - Einzelunternehmen, Inhaber Mina Saad, Langgasse 61, 35576 Wetzlar
    - USt-IdNr. DE 282140471, Bankkonto für Auszahlungen
 2. **Settings → Business → Public details**:
    - Öffentlicher Name `SCHLÜSSELMACHER24`
@@ -130,8 +130,8 @@ Das Projekt `schluesselmacher24` ist bereits mit dem GitHub-Repo verbunden (Team
    - `next build`
 2. `https://schluesselmacher24.de/admin` mit `SEED_ADMIN_EMAIL` und `SEED_ADMIN_PASSWORD` anmelden und **sofort das Passwort ändern**.
 3. **Verwaltung → Einstellungen**:
-   - **Firma**: Daten prüfen (Inhaber, Anschrift Gloelstraße 11, Werkstatt Langgasse 70, Telefon, E-Mail, Kammer).
-   - **Öffnungszeiten** und **Termine**: echte Zeiten eintragen; unter Termine das Bundesland für die gesetzlichen Feiertage (Standard Hessen).
+   - **Firma**: Daten prüfen (Inhaber, Anschrift Langgasse 61, Telefon, E-Mail, Kammer).
+   - **Erreichbarkeit** und **Termine**: Aussage zur Erreichbarkeit prüfen, darunter die Terminzeiten der Werkstatt eintragen (sie steuern nur die buchbaren Termine); unter Termine das Bundesland für die gesetzlichen Feiertage (Standard Hessen).
    - **Versand**: Lieferzeiten je Versandart eintragen.
    - **Anbindungen**: Zahlung, E-Mail und Dateiablage müssen „eingerichtet“ zeigen. **Testmail an mich** senden.
 
@@ -164,7 +164,7 @@ Das Projekt `schluesselmacher24` ist bereits mit dem GitHub-Repo verbunden (Team
 - **Verpackungsgesetz**: vor dem ersten Versand Registrierung im Register LUCID und Systembeteiligung für Versandverpackungen.
 - **Freigeben bzw. pflegen**:
   - Preise, Terminlängen, Anzahlung und Fahrzeug-Preisgruppen
-  - Öffnungszeiten
+  - Aussage zur Erreichbarkeit und Terminzeiten der Werkstatt
   - Hersteller der 52 Codelinien inkl. GPSR-Herstellerangaben (Produkte → GPSR)
   - Lieferzeiten
 - **Standortseiten** (`/standorte/*`): Wetzlar ist mit belegten Angaben online. Weitere Orte nur mit echten örtlichen Texten; Seiten mit Platzhaltern bleiben automatisch auf noindex (Erg. Leitfaden §5).
