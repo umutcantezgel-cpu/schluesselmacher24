@@ -11,8 +11,13 @@
 // Gegenstück bleibt die Bestandszeile erhalten. Nicht benannte Zeilen (SONSTIGE und die
 // Gesamtzeile) sind keine Reihen und fehlen. Danach gibt das Skript die Abdeckung aus.
 // Die Rohdaten bleiben außerhalb des Repositorys (G13). Ohne neue Bibliothek: das CSV-Lesen steht hier.
+//
+// Wiederholbar neben FZ 2 (G6): Zeilen, die nicht aus FZ 12 stammen (Quelle FZ 2, andere Klassen als pkw),
+// übernimmt der Lauf unverändert, ebenso die Generationen je Kennung (`behalteBestand`). Fiele eine Zeile
+// mit Generationen weg, bricht er ab. Danach scripts/fahrzeuge-import-fz2.mjs erneut laufen lassen, damit der
+// Abgleich der FZ-2-Zeilen mit dem neuen FZ-12-Stand stimmt.
 
-import { readFileSync, renameSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -412,6 +417,47 @@ export function baueKatalog({ csv, bestand, quelle = KBA_QUELLE }) {
   return { reihen, kennzahlen };
 }
 
+/** Erkennt Zeilen einer FZ-2-Übernahme (wie FZ2_PRAEFIX in scripts/fahrzeuge-import-fz2.mjs, Test hält beide gleich). */
+export const FZ2_PRAEFIX_FREMD = 'Quelle: Kraftfahrt-Bundesamt (KBA), FZ 2,';
+/** Reihenfolge der Klassen wie KLASSEN_FOLGE in scripts/fahrzeuge-import-fz2.mjs. */
+const KLASSEN = ['pkw', 'kraftrad'];
+
+/** Zeile, die nicht aus diesem Lauf stammt und bleiben muss: aus FZ 2 oder einer anderen Klasse als pkw. */
+export function istFremdeZeile(r) {
+  return (r.klasse ?? 'pkw') !== 'pkw' || (typeof r.quelle === 'string' && r.quelle.startsWith(FZ2_PRAEFIX_FREMD));
+}
+
+/**
+ * Neuer Katalog aus den Zeilen dieses Laufs und dem vorhandenen Katalog: fremde Zeilen (istFremdeZeile)
+ * bleiben unverändert, Generationen gehen je Kennung auf die neue Zeile über, jede Zeile trägt die Klasse.
+ * Führt FZ 12 jetzt eine Kennung, die bisher aus FZ 2 kam, gilt die FZ-12-Zeile (mit deren Generationen).
+ * `verloren` nennt Zeilen mit Generationen, deren Kennung nicht mehr entsteht.
+ */
+export function behalteBestand(reihen, alterKatalog) {
+  const generationen = new Map(
+    alterKatalog.filter((r) => Array.isArray(r.generationen) && r.generationen.length > 0).map((r) => [r.id, r.generationen]),
+  );
+  const ids = new Set(reihen.map((r) => r.id));
+  const fremde = alterKatalog.filter((r) => istFremdeZeile(r) && !ids.has(r.id));
+  const eigene = reihen.map((r) => ({ id: r.id, klasse: 'pkw', ...r, ...(generationen.has(r.id) ? { generationen: generationen.get(r.id) } : {}) }));
+  const alle = [...eigene, ...fremde];
+  const bleibendeIds = new Set(alle.map((r) => r.id));
+  const verloren = [...generationen.keys()].filter((id) => !bleibendeIds.has(id));
+  const rang = (k) => {
+    const i = KLASSEN.indexOf(k ?? 'pkw');
+    return i < 0 ? KLASSEN.length : i;
+  };
+  const sortierer = new Intl.Collator('de', { numeric: true, sensitivity: 'base' });
+  alle.sort(
+    (a, b) =>
+      rang(a.klasse) - rang(b.klasse)
+      || sortierer.compare(a.marke, b.marke)
+      || sortierer.compare(a.reihe, b.reihe)
+      || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0),
+  );
+  return { katalog: alle, behalten: fremde.length, verloren };
+}
+
 function schreibeAtomar(datei, inhalt) {
   const tmp = `${datei}.tmp-${process.pid}`;
   writeFileSync(tmp, inhalt, 'utf8');
@@ -432,14 +478,20 @@ function main(argumente) {
   const ab = abdeckung(reihen);
   if (ab.anteil < ZIEL_ABDECKUNG) throw new Error(`Abdeckung ${prozent(ab.anteil)} liegt unter dem Ziel ${prozent(ZIEL_ABDECKUNG)}`);
 
-  const inhalt = `${JSON.stringify(reihen, null, 2)}\n`;
+  const alt = existsSync(ZIEL_DATEI) ? JSON.parse(readFileSync(ZIEL_DATEI, 'utf8')) : [];
+  const { katalog, behalten, verloren } = behalteBestand(reihen, alt);
+  if (verloren.length) {
+    throw new Error(`Zeilen mit Generationen fielen weg: ${verloren.join(', ')}. Generationen zuerst übertragen, dann erneut laufen lassen.`);
+  }
+  const inhalt = `${JSON.stringify(katalog, null, 2)}\n`;
   schreibeAtomar(ZIEL_DATEI, inhalt);
 
   console.log(`KBA-Zeilen: ${k.zeilen}, benannt: ${k.benannt}, nicht benannt (SONSTIGE und Gesamtzeile): ${k.nichtBenannt}`);
   console.log(`Summe aller Zeilen: ${zahl.format(k.summeAlle)}, davon benannt: ${zahl.format(k.summeBenannt)}`);
   console.log(`Reihen aus KBA: ${k.reihenAusKba}, davon ${k.zusammengefuehrt} KBA-Zeilen zusammengeführt`);
   console.log(`Bestandsmodelle verknüpft: ${k.verknuepft} von ${k.bestandsmodelle}, ohne KBA-Gegenstück: ${k.ohneKba}`);
-  console.log(`Katalogzeilen: ${reihen.length}, Größe: ${(Buffer.byteLength(inhalt) / 1024).toFixed(1).replace('.', ',')} KB`);
+  console.log(`Behalten aus FZ 2 und anderen Klassen: ${behalten}. Danach scripts/fahrzeuge-import-fz2.mjs erneut laufen lassen.`);
+  console.log(`Katalogzeilen: ${katalog.length}, Größe: ${(Buffer.byteLength(inhalt) / 1024).toFixed(1).replace('.', ',')} KB`);
   console.log(`Abdeckung: ${prozent(ab.anteil)} (${zahl.format(ab.summe)} von ${zahl.format(GESAMTBESTAND)} Pkw), Ziel ${prozent(ZIEL_ABDECKUNG)}`);
   console.log('20 größte Reihen nach Bestand:');
   [...reihen]

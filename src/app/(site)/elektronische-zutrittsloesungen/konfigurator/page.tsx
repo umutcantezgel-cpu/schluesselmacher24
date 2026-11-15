@@ -15,12 +15,11 @@ const ROUTE = 'elektronische-zutrittsloesungen/konfigurator';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Zutrittskonfigurator — Bedarf erfassen',
+    title: page?.seo.title ?? 'Zutrittslösung: Bedarf erfassen',
     description:
       page?.seo.description
-      ?? 'Acht Fragen zu Objekt, Umfang, Identmedien, Verwaltung, Berechtigungen, Standorten, '
-        + 'Integration und Service. Daraus erstellen wir Ihr Angebot für die elektronische '
-        + 'Zutrittslösung.',
+      ?? 'Acht Fragen zu Objekt, Umfang, Medien und Berechtigungen: Wir klären, wie viele Türen und Nutzer '
+        + 'es gibt und womit geöffnet werden soll.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

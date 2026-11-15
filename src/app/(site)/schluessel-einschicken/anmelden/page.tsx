@@ -14,7 +14,7 @@ const ROUTE = 'schluessel-einschicken/anmelden';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Schlüssel einschicken: Einsendung anmelden',
+    title: page?.seo.title ?? 'Schlüssel-Einsendung anmelden',
     description:
       page?.seo.description
       ?? 'Einsendung in fünf Schritten anmelden und den Begleitschein als PDF erhalten: Schlüssel, Nachweis, Versand und Rücksendeanschrift.',

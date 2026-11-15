@@ -34,8 +34,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.seo.title ?? 'Mechanische Schließanlagen planen',
     description:
       page?.seo.description
-      ?? 'Gleichschließung, Zentralschlossanlage, Hauptschlüsselanlage und '
-        + 'Generalhauptschlüsselanlage — in einfacher Sprache erklärt und im Konfigurator erfassbar.',
+      ?? 'Wir planen Ihre mechanische Schließanlage mit Ihnen, von der Gleichschließung bis zur '
+        + 'Generalhauptschlüsselanlage. Die Anlage bleibt später erweiterbar.',
     alternates: { canonical: '/schliessanlagen' },
   };
 }

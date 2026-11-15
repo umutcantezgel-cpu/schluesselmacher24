@@ -20,7 +20,7 @@
       },
       {
         "heading": "Was wir von Ihnen brauchen",
-        "text": "Wir brauchen Marke, Modell und Baujahr des Fahrzeugs und den Fahrzeugschein. Der Fahrzeugschein ist auch Ihr Nachweis, dass Sie den Schlüssel bekommen dürfen. Gibt es noch einen Schlüssel, schicken Sie uns Fotos davon. Damit können wir Machbarkeit und Preis einordnen."
+        "text": "Wir brauchen Marke, Modell und Baujahr des Fahrzeugs. Als Nachweis, dass Sie den Schlüssel bekommen dürfen, zeigen Sie uns Ihren Ausweis und den Fahrzeugschein. Steht das Fahrzeug nicht auf Ihren Namen, brauchen wir zusätzlich eine Vollmacht des Halters. Gibt es noch einen Schlüssel, schicken Sie uns Fotos davon. Damit können wir Machbarkeit und Preis einordnen."
       }
     ],
     "image": {
@@ -51,7 +51,7 @@
     "id": "unterschied-kopie-und-programmierung",
     "slug": "unterschied-kopie-und-programmierung",
     "title": "Kopie oder Programmierung — wo ist der Unterschied?",
-    "excerpt": "Eine reine Kopie öffnet Türen und Klappen. Soll der Schlüssel auch den Motor starten, muss er meist zusätzlich programmiert werden.",
+    "excerpt": "Eine reine Kopie kann Türen und Klappen öffnen. Soll der Schlüssel auch den Motor starten, muss er meist zusätzlich programmiert werden.",
     "topic": "autoschluessel",
     "body": [
       {
@@ -104,11 +104,11 @@
       },
       {
         "heading": "So gehen Sie vor",
-        "text": "Öffnen Sie die Tür. Messen Sie mit Lineal oder Zollstock von der Schraubenmitte bis zum Ende des Zylinders, einmal außen und einmal innen. Runden Sie auf volle 5 Millimeter."
+        "text": "Öffnen Sie die Tür. Messen Sie mit Lineal oder Zollstock von der Schraubenmitte bis zum Ende des Zylinders, einmal außen und einmal innen. Runden Sie auf die nächsten vollen 5 Millimeter auf."
       },
       {
         "heading": "Typische Fehler",
-        "text": "Ein zu kurzer Zylinder lässt sich nicht sicher bedienen. Ein zu langer steht über und bietet unnötig Angriffsfläche. Steht er mehr als etwa 3 Millimeter vor, sollte ein passender Schutzbeschlag ihn abdecken. Das ist ein verstärkter Beschlag außen an der Tür."
+        "text": "Ein zu kurzer Zylinder lässt sich nicht sicher bedienen. Ein zu langer steht über und bietet unnötig Angriffsfläche. Der Zylinder sollte höchstens 3 Millimeter über den Beschlag außen vorstehen. Sonst braucht es einen Schutzbeschlag. Das ist ein verstärkter Beschlag außen an der Tür."
       }
     ],
     "image": {
@@ -148,11 +148,11 @@
       },
       {
         "heading": "Zentralschlossanlage (Z)",
-        "text": "Jeder hat einen eigenen Schlüssel für die eigene Tür. Zusätzlich öffnet jeder Schlüssel eine gemeinsame Tür, meist den Hauseingang. Das ist typisch für Mehrfamilienhäuser."
+        "text": "Jeder hat einen eigenen Schlüssel für die eigene Tür. Zusätzlich öffnet jeder dieser Schlüssel die gemeinsamen Türen, meist den Hauseingang. Das ist typisch für Mehrfamilienhäuser."
       },
       {
         "heading": "Hauptschlüsselanlage (HS)",
-        "text": "Einzelschlüssel öffnen bestimmte Türen. Ein Hauptschlüssel öffnet alle Türen oder eine größere Gruppe davon. Das ist typisch für Betriebe und Verwaltungen."
+        "text": "Jeder Einzelschlüssel öffnet nur die Türen, die ihm zugeordnet sind. Ein Hauptschlüssel öffnet alle ihm zugeordneten Türen, meist alle Türen der Anlage. Das ist typisch für Betriebe und Verwaltungen."
       },
       {
         "heading": "Generalhauptschlüsselanlage (GHS)",
@@ -217,7 +217,7 @@
     },
     "nextStep": {
       "href": "/schluessel-nach-code",
-      "label": "Codelinien ansehen"
+      "label": "Schlüssel nach Code"
     },
     "seo": {
       "title": "Wo finde ich den Schlüsselcode?",
@@ -340,7 +340,7 @@
       },
       {
         "heading": "Wenn sich häufig etwas ändert",
-        "text": "Wechseln Nutzer regelmäßig, etwa Personal, Reinigung, Handwerker oder Mieter, spielt Elektronik ihre Stärke aus. Geht ein elektronischer Schlüssel oder eine Karte verloren, lässt er sich sperren. Zylinder müssen Sie dafür nicht tauschen."
+        "text": "Wechseln Nutzer regelmäßig, etwa Personal, Reinigung, Handwerker oder Mieter, spielt Elektronik ihre Stärke aus. Geht ein elektronischer Schlüssel oder eine Karte verloren, lässt sich beides sperren. Zylinder müssen Sie dafür nicht tauschen."
       },
       {
         "heading": "Die Kombination",

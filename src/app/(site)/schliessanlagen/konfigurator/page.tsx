@@ -13,11 +13,11 @@ const ROUTE = 'schliessanlagen/konfigurator';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Projektkonfigurator Schließanlage',
+    title: page?.seo.title ?? 'Schließanlage: Projekt erfassen',
     description:
       page?.seo.description
-      ?? 'Erfassen Sie Ihr Schließanlagen-Projekt in zehn Blöcken: Objekt, Nutzer, Bestand, '
-        + 'Türen, Berechtigungen, Schlüssel, Unterlagen und Service. Zwischenstand wird gespeichert.',
+      ?? 'Sie beschreiben Ihr Objekt, Ihre Nutzer und Ihre Türen in zehn Frageblöcken. Am Ende sehen Sie '
+        + 'eine Zusammenfassung, die wir als Projektbericht übernehmen.',
     alternates: { canonical: '/schliessanlagen/konfigurator' },
   };
 }

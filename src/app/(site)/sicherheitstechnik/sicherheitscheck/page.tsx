@@ -14,11 +14,11 @@ const ROUTE = 'sicherheitstechnik/sicherheitscheck';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Sicherheitscheck — Bestandsaufnahme Ihres Objekts',
+    title: page?.seo.title ?? 'Sicherheitscheck für Ihr Objekt',
     description:
       page?.seo.description
-      ?? 'Geführte Bestandsaufnahme in zehn Schritten: Objekt, Zugänge, Außenbereiche, vorhandene '
-        + 'Technik, Schwerpunkte, Netz, Unterlagen, Rahmen und Kontakt.',
+      ?? 'Bestandsaufnahme Ihres Objekts in wenigen Schritten: Zugänge, erreichbare Fenster, Nebengebäude '
+        + 'und vorhandene Technik. Daraus entsteht ein passender Vorschlag.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

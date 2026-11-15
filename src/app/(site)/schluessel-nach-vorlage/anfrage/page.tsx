@@ -11,11 +11,11 @@ const ROUTE = 'schluessel-nach-vorlage/anfrage';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Schlüssel nach Vorlage anfragen — acht Schritte',
+    title: page?.seo.title ?? 'Schlüssel nach Vorlage anfragen',
     description:
       page?.seo.description
-      ?? 'Anfrage für einen Schlüssel nach Vorlage: drei Fotos, Angaben zum Schlüssel, '
-        + 'Stückzahl und Kontakt. Das Original bleibt zunächst bei Ihnen.',
+      ?? 'Für die Prüfung genügen drei Fotos Ihres Schlüssels und Ihre Angaben dazu. Wir sagen Ihnen, ob '
+        + 'wir ihn nachfertigen können. Den Schlüssel behalten Sie zunächst.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

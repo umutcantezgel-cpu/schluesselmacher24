@@ -157,8 +157,8 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
           <div className="min-w-0 flex-1">
             <h2 className="text-title-sm font-semibold text-foreground">Ihr Warenkorb ist leer</h2>
             <p className="mt-2 text-small text-foreground-muted">
-              Hier sammeln Sie, was Sie direkt bestellen möchten. Beginnen Sie mit Schlüssel nach
-              Code oder mit gleichschließenden Zylindern.
+              Hier sammeln Sie, was Sie direkt bestellen möchten. Gleichschließende Zylinder stellen
+              Sie selbst zusammen. Einen Schlüssel nach Code fragen Sie bei uns an.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <ButtonLink href="/schluessel-nach-code">Schlüssel nach Code</ButtonLink>

@@ -34,11 +34,11 @@ const ROUTE = 'gleichschliessende-zylinder';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Sperrschließung: gleichschließende Zylinder bestellen',
+    title: page?.seo.title ?? 'Gleichschließende Zylinder bestellen',
     description:
       page?.seo.description
-      ?? 'Mehrere Türen mit einem Schlüssel: Bauform, Maße, Funktion und Anzahl der gemeinsamen '
-        + 'Schlüssel selbst zusammenstellen.',
+      ?? 'Ein Schlüssel für mehrere Türen: Sie wählen für jede Tür den passenden Zylinder und seine Maße. '
+        + 'Alle Zylinder bekommen dieselbe Schließung.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

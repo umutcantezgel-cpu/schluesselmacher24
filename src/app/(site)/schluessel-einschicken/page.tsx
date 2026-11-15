@@ -30,11 +30,11 @@ const ANMELDEN = '/schluessel-einschicken/anmelden';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Schlüssel einschicken: Begleitschein und Rückversand',
+    title: page?.seo.title ?? 'Schlüssel einschicken',
     description:
       page?.seo.description
-      ?? 'Schlüssel aus ganz Deutschland einschicken: Einsendung anmelden, Begleitschein ausdrucken, versichert oder '
-        + 'unversichert versenden. Original und Kopien kommen zurück.',
+      ?? 'Schicken Sie Ihren Schlüssel aus ganz Deutschland an unsere Werkstatt: Einsendung anmelden, '
+        + 'Begleitschein beilegen. Original und Kopien kommen zu Ihnen zurück.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

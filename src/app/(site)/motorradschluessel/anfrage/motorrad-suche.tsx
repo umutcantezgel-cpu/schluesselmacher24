@@ -23,7 +23,7 @@ export function MotorradSuche({ onWahl }: { onWahl: (eintrag: KatalogEintrag) =>
 
   return (
     <div className="space-y-3">
-      <Field label="Motorrad suchen (freiwillig)" hint="Zum Beispiel „BMW R 1250 GS“ oder „Vespa GTS“. Ein Treffer füllt die Felder darunter aus.">
+      <Field label="Motorrad suchen (freiwillig)" hint="Zum Beispiel „BMW R 1250 GS“ oder „Vespa GTS 125“. Ein Treffer füllt die Felder darunter aus.">
         {({ id, describedBy }) => (
           <TextInput
             id={id}

@@ -121,3 +121,34 @@ Warenkorb
 4. „Zentralschlossanlage“ oder „Zentralschließanlage“ (FACHWISSEN 1).
 5. Bindestrich-Kandidat „Zylinder-Konfigurator“ im Warenkorb („Weiter einkaufen“): gleiche Bezeichnung wie anderswo im Shop? Nicht geändert, um Linktexte einheitlich zu lassen.
 6. Titel der Beiträge tragen Gedankenstriche, sind aber nach Paket gesperrt (Titel und SEO). Entscheidung nach FA-SEO-01.
+
+## Nachbesserung
+Stand 15.11.2026, nach zwei Gegenprüfungen. Prüfungen über die Datenweiche: vitest 187 Dateien / 2439 Tests grün, typecheck grün, lint grün. Kein git.
+
+1. [rot] guides.json:23, Nachweis Autoschlüssel: behoben. Der Satz lautet jetzt wie auf den Autoschlüssel-Seiten (programmieren/page.tsx:133): „Als Nachweis, dass Sie den Schlüssel bekommen dürfen, zeigen Sie uns Ihren Ausweis und den Fahrzeugschein. Steht das Fahrzeug nicht auf Ihren Namen, brauchen wir zusätzlich eine Vollmacht des Halters.“ Der doppelte „Fahrzeugschein“ im ersten Satz ist entfallen. Schlussredaktion Autoschlüssel 3 ist damit erledigt.
+2. [rot] guides.json:107, Rundung: behoben. Jetzt steht „Runden Sie auf die nächsten vollen 5 Millimeter auf.“ (FACHWISSEN 7, Konfigurator „je angefangene 5 mm“). Offen bleibt für den Inhaber der Zusatz „wenn der Beschlag es erlaubt“ (FACHWISSEN 7). Er wurde nicht eingefügt.
+3. [rot] warenkorb-ansicht.tsx:160, Leertext: behoben. Neuer Text: „Hier sammeln Sie, was Sie direkt bestellen möchten. Gleichschließende Zylinder stellen Sie selbst zusammen. Einen Schlüssel nach Code fragen Sie bei uns an.“ Der Knopf heißt weiter „Schlüssel nach Code“. Das ist der Name der Leistung und das Etikett, mit dem Artikel- und Ratgeberseiten auf dieses Ziel verweisen. Es ist keine Kaufzusage. Die Startseite schreibt „Schlüssel nach Code anfragen“, solange keine Codeprodukte da sind. Ob ein Knopftext je Ziel (A-031) hier „Schlüssel nach Code anfragen“ heißen soll, ist eine OFFENE FRAGE (siehe 6).
+4. [gelb] content.ts:484, Rückfall guides(): nicht behoben, weil die Datei für dieses Paket gesperrt ist. Der Befund stimmt (siehe OFFENE FRAGEN 1). Benötigt wird ein Folgepaket mit Schreibrecht auf `guides()` in src/lib/data/defaults/content.ts. Es übernimmt excerpt, heading, text und nextStep.label aus content/guides.json, einschließlich der Korrekturen dieser Nachbesserung. Dazu gehört ein Gleichlauf-Test für JSON und Rückfall.
+5. [gelb] guides.json:36, seo.description gegenläufig: als OFFENE FRAGE für FA-SEO-01 aufgenommen. Das Feld ist gesperrt. Die Seite sagt „Erst prüfen, dann sichern, dann anfragen“, seo.description sagt „erst sichern, dann prüfen, dann bestellen“. Das widerspricht R1, deshalb sollte die Beschreibung angeglichen werden.
+6. [gelb] guides.json:220, nextStep „Codelinien ansehen“: behoben. Das Label heißt jetzt „Schlüssel nach Code“, wie die anderen Verweise auf /schluessel-nach-code. nextStep ist laut Paket nicht gesperrt. Das gleichlautende Etikett unter seo.internalLinks (Zeile 232) ist gesperrt und für FA-SEO-01 vorgemerkt. Ebenfalls vorgemerkt ist die Frage, ob alle Knöpfe zu /schluessel-nach-code einheitlich „Schlüssel nach Code anfragen“ heißen sollen, solange es keine aktiven Codelinien gibt (A-031).
+7. [gelb] guides.json:54, Unterzeile Kopie: behoben. Neu: „Eine reine Kopie kann Türen und Klappen öffnen.“ Der zweite Satz bleibt. Damit entspricht die Unterzeile Abschnitt 3 („kann … reichen“). Schlussredaktion Kopie 1 ist erledigt.
+8. [gelb] guides.json:111, Überstand: behoben. Der Text folgt jetzt der Messhilfe und FACHWISSEN 7 (Stufe B): „Der Zylinder sollte höchstens 3 Millimeter über den Beschlag außen vorstehen. Sonst braucht es einen Schutzbeschlag.“ Eine neue Zahl gibt es nicht. Die belegte Aussage ersetzt die ungenauere „mehr als etwa 3 Millimeter“. Ob der Inhaber eine engere Zahl will (ein Baumarkt nennt 1 bis 2 mm), bleibt eine OFFENE FRAGE.
+9. [gelb] guides.json:343, Bezug „er“: behoben. Neu: „Geht ein elektronischer Schlüssel oder eine Karte verloren, lässt sich beides sperren.“
+10. [gelb] artikel/page.tsx:26, Lead mit Handlungsanweisung: behoben. Der Lead ist jetzt nur „Artikel rund um Schlüssel, Schloss und Tür zum direkten Bestellen.“ Die Anweisung zur Stückzahl steht schon im Abschnitt „Artikel auswählen“. Dieser Abschnitt erscheint nur bei articles.length > 0.
+11. [rot] guides.json:23, gleicher Befund wie 1: behoben (siehe 1). Gewählt wurde der Wortlaut der Autoschlüssel-Seiten („nicht auf Ihren Namen“). Er deckt auch Firmenfahrzeuge ab.
+12. [gelb] content.ts:469, Rückfall: gleicher Befund wie 4. Nicht behoben, weil die Datei gesperrt ist. Folgepaket wie unter 4.
+13. [gelb] artikel/page.tsx:42, „alle Türen“: behoben. Neu: „Gleichschließende Zylinder selbst zusammenstellen. Ein Schlüssel öffnet alle diese Türen.“
+
+Zusätzliche OFFENE FRAGEN aus der Nachbesserung
+7. FA-SEO-01: seo.description „Autoschlüssel verloren“ an die Reihenfolge „prüfen, sichern, anfragen“ angleichen. Außerdem das Etikett „Codelinien ansehen“ unter seo.internalLinks in „Schlüssel nach Code“ ändern.
+8. Folgepaket Rückfall: `guides()` in content.ts mit guides.json in Gleichlauf bringen und einen Test dafür anlegen (Befunde 4 und 12).
+9. Inhaber: Zylinderlänge „wenn der Beschlag es erlaubt“ ergänzen? Und Überstand „höchstens 3 mm“ oder eine engere Zahl?
+10. A-031: Ein Knopftext für /schluessel-nach-code festlegen („Schlüssel nach Code“ oder „Schlüssel nach Code anfragen“), solange keine Codelinie aktiv ist.
+
+## ABNAHME (Orchestrator, 15.11.2026)
+
+- **Ratgeber „Welche Schließanlage passt“** an die neue Systemerklärung aus FA-INHALT-03C angeglichen: Bei der Hauptschlüsselanlage steht jetzt „Ein Hauptschlüssel öffnet alle ihm zugeordneten Türen, meist alle Türen der Anlage“ (Tabelle des Inhabers, Abschnitt 16); bei der Zentralschlossanlage „die gemeinsamen Türen“.
+- **Rückfall `guides()` in `content.ts`**: bleibt bis FA-SEO-01 Teil B auf dem alten Wortlaut, weil FA-SEO-01A die Datei gerade bearbeitet. Der Rückfall greift nur, wenn `content/guides.json` fehlt; Seite und Seed lesen die JSON-Datei. Der Gleichlauf mit Test steht als Pflichtpunkt in `pakete/FA-SEO-01.md`.
+- **SEO-Felder der Ratgeber** (Reihenfolge „prüfen, sichern, anfragen“, Verweistext „Codelinien ansehen“, Gedankenstriche in fünf Titeln): Pflichtpunkte für FA-SEO-01 Teil B.
+- **Knopftext für `/schluessel-nach-code`** (A-031): Solange keine Codelinie aktiv ist, heißt der Verweis „Schlüssel nach Code“; der Knopf auf der Seite selbst „Code anfragen“.
+- Fragen an den Inhaber (Zusatz „wenn der Beschlag es erlaubt“, Überstand höchstens 3 Millimeter, Nachweis Ausweis, Fahrzeugschein, Vollmacht) gehen in MA-41.

@@ -38,8 +38,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.seo.title ?? 'Elektronische Zutrittslösungen',
     description:
       page?.seo.description
-      ?? 'Elektronische Zutrittskontrolle mit Karte, Transponder, PIN, Smartphone und digitalen '
-        + 'Zylindern. Benutzerverwaltung, zeitliche Berechtigungen und Kombination mit Mechanik.',
+      ?? 'Zutritt mit Karte, Transponder, PIN, App oder digitalem Zylinder. Geht ein Medium verloren, '
+        + 'sperren Sie es selbst. Wir planen die Lösung für Ihr Objekt.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

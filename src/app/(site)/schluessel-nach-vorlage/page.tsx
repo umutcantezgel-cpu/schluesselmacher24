@@ -26,11 +26,11 @@ const ROUTE = 'schluessel-nach-vorlage';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Schlüssel nach Vorlage nachmachen lassen',
+    title: page?.seo.title ?? 'Schlüssel nach Vorlage nachmachen',
     description:
       page?.seo.description
-      ?? 'Schlüssel nach Vorlage: drei Fotos hochladen, wir prüfen die Machbarkeit und nennen den Preis. '
-        + 'Braucht die Fertigung das Original, senden Sie es ein.',
+      ?? 'Sie schicken uns drei Fotos Ihres Schlüssels. Wir sagen Ihnen, ob eine Anfertigung möglich ist '
+        + 'und was sie kostet. Einsenden müssen Sie ihn zunächst nicht.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

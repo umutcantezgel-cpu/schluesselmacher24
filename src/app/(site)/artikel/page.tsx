@@ -22,9 +22,7 @@ import { ArtikelListe, type ListenArtikel } from './artikel-liste';
 
 const ROUTE = 'artikel';
 const TITEL = 'Artikel';
-const LEAD =
-  'Artikel rund um Schlüssel, Schloss und Tür zum direkten Bestellen. Wählen Sie die Stückzahl '
-  + 'und legen Sie den Artikel in den Warenkorb.';
+const LEAD = 'Artikel rund um Schlüssel, Schloss und Tür zum direkten Bestellen.';
 const BESCHREIBUNG =
   'Standardartikel rund um Schlüssel, Schloss und Tür direkt bestellen: Eigenschaften, '
   + 'Lieferumfang und Staffelpreise auf einen Blick.';
@@ -39,7 +37,7 @@ const BASE_LINKS: NavLink[] = [
   {
     href: '/gleichschliessende-zylinder',
     label: 'Mehrere Türen mit einem Schlüssel',
-    description: 'Gleichschließende Zylinder selbst zusammenstellen. Ein Schlüssel öffnet alle Türen.',
+    description: 'Gleichschließende Zylinder selbst zusammenstellen. Ein Schlüssel öffnet alle diese Türen.',
   },
   {
     href: '/rechtliches/versand-und-zahlung',

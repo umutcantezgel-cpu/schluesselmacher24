@@ -27,7 +27,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent('service-und-termin');
   return {
     title: page?.seo.title ?? 'Service und Termin',
-    description: page?.seo.description,
+    description:
+      page?.seo.description
+      ?? 'Hier stellen Sie eine allgemeine Anfrage, sehen den Stand Ihres Vorgangs oder nehmen Kontakt mit '
+        + 'uns auf. Wählen Sie den Weg, der zu Ihrem Anliegen passt.',
     alternates: { canonical: '/service-und-termin' },
   };
 }

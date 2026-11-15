@@ -13,10 +13,10 @@ import { Konfigurator } from './konfigurator';
 
 const ROUTE = 'gleichschliessende-zylinder/konfigurator';
 
-const FALLBACK_TITLE = 'Gleichschließende Zylinder konfigurieren';
+const FALLBACK_TITLE = 'Gleichschließung zusammenstellen';
 const FALLBACK_DESCRIPTION =
-  'Zylinder für mehrere Türen mit einer gemeinsamen Schließung zusammenstellen: Bauform, '
-  + 'Maß A und Maß B, Funktion, Stückzahl und Anzahl der gemeinsamen Schlüssel.';
+  'Legen Sie für jede Tür eine Position an: Bauform, Maße, Funktion und Anzahl gemeinsamer Schlüssel. Am '
+  + 'Ende legen Sie die Zusammenstellung in den Warenkorb.';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);

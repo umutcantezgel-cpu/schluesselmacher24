@@ -87,7 +87,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.seo.title ?? 'Schlüssel nach Code bestellen',
     description:
       page?.seo.description
-      ?? 'Nachschlüssel nach Code bestellen — ohne Einsendung des Originalschlüssels.',
+      ?? 'Code eingeben, Stückzahl wählen, bestellen: Nach dem Code auf Ihrem Schloss fertigen wir den '
+        + 'passenden Schlüssel. Ihr Originalschlüssel bleibt bei Ihnen.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

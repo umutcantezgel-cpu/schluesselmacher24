@@ -196,8 +196,9 @@ export default async function MarkenPage() {
                     <span className="min-w-0">
                       <span className="block text-body font-semibold text-foreground group-hover:text-primary">{marke}</span>
                       <span className="block font-mono text-caption tabular-nums text-foreground-muted">
-                        {`${formatNumber(reihen)} ${nomen(reihen, 'Modellreihe', 'Modellreihen')}${slug ? '' : ', Anfrage'}`}
+                        {`${formatNumber(reihen)} ${nomen(reihen, 'Modellreihe', 'Modellreihen')}`}
                       </span>
+                      {!slug && <span className="block text-caption text-foreground-muted">Wir prüfen Ihr Fahrzeug auf Anfrage.</span>}
                     </span>
                     <GlyphPfeilRechts size={16} className="shrink-0 text-foreground-subtle" />
                   </Link>

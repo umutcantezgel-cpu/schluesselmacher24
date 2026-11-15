@@ -39,10 +39,11 @@ const ROUTE = 'tuer-und-schliesstechnik';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Tür- und Schließtechnik: Sicherheit vom Zylinder bis zum Mehrfachschloss',
+    title: page?.seo.title ?? 'Tür- und Schließtechnik',
     description:
       page?.seo.description
-      ?? 'Ganzheitliche Tür- und Schließtechnik. Beratung, Montage und Reparatur von Zylindern, Einsteckschlössern, Mehrfachverriegelungen und Beschlägen. Erhöhen Sie Ihre Sicherheit durch fachgerechte Türtechnik.',
+      ?? 'Zylinder, Einsteckschlösser, Mehrfachverriegelungen, Beschläge und Türschließer: Wir kümmern uns '
+        + 'um die Technik, die dafür sorgt, dass Ihre Tür sauber schließt.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

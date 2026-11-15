@@ -4,8 +4,19 @@ import type { ServicePage } from '@/lib/types';
  * Leistungsseiten für Tür-/Schließtechnik und Sicherheitstechnik.
  * Über das Backend pflegbar und erweiterbar.
  * Gleichlautend mit content/service-pages.json. Die SEO-Beschreibung steht getrennt vom
- * sichtbaren Kurztext, weil sie zu einem eigenen Paket gehört (FA-INHALT-03B).
+ * sichtbaren Kurztext, weil sie zu einem eigenen Paket gehört (FA-INHALT-03B). Sie ist aus dem
+ * Kurztext und den Punkten der Seite gefasst, 120 bis 160 Zeichen (FA-SEO-01A).
  */
+
+/**
+ * Suchergebnis-Titel, wo der sichtbare Titel mit der Marke aus der Titelvorlage zu breit wäre
+ * (höchstens 60 Zeichen und 580 px samt „ | SCHLÜSSELMACHER24“, FA-SEO-01A). Sonst gilt der sichtbare Titel.
+ */
+const SEO_TITEL: Record<string, string> = {
+  'reparatur-und-austausch': 'Reparatur an Schloss und Zylinder',
+  'technische-beratung': 'Technische Beratung zu Türen',
+};
+
 export function servicePages(): ServicePage[] {
   const tuer: Array<[slug: string, title: string, summary: string, bullets: string[], seoDescription: string]> = [
     [
@@ -18,7 +29,7 @@ export function servicePages(): ServicePage[] {
         'Sonderbauformen für Möbel, Technik und Außenanlagen',
         'Auf Wunsch schließen mehrere Türen mit demselben Schlüssel',
       ],
-      'Wir tauschen, passen an und beraten zu Zylindern für Haus-, Wohnungs- und Nebentüren — einschließlich Sonderbauformen.',
+      'Wir tauschen Zylinder an Haus-, Wohnungs- und Nebentüren und passen sie an. Wir beraten auch zu Sonderbauformen für Möbel, Technik und Außenanlagen.',
     ],
     [
       'einsteckschloesser',
@@ -30,7 +41,7 @@ export function servicePages(): ServicePage[] {
         'Reparatur, wenn das Schloss klemmt oder defekt ist',
         'Einbau und Nacharbeit an der Tür',
       ],
-      'Austausch und Anpassung von Einsteckschlössern für Zimmer-, Wohnungs- und Haustüren.',
+      'Wir tauschen Einsteckschlösser an Zimmer-, Wohnungs- und Haustüren aus und passen sie an. Das Schloss wählen wir nach Dornmaß, Entfernung und Stulpmaß.',
     ],
     [
       'mehrfachverriegelungen',
@@ -42,7 +53,7 @@ export function servicePages(): ServicePage[] {
         'Einstellen von Falle, Riegeln und Bolzen',
         'Abgestimmt auf Beschlag und Zylinder',
       ],
-      'Verriegelung an mehreren Punkten für Haus- und Wohnungseingangstüren.',
+      'Eine Mehrfachverriegelung schließt die Tür an mehreren Punkten. Wir tauschen sie an Haus- und Wohnungseingangstüren aus, stellen sie ein und rüsten sie nach.',
     ],
     [
       'schutzbeschlaege',
@@ -54,7 +65,7 @@ export function servicePages(): ServicePage[] {
         'Passend zum Türblatt und dazu, wie weit der Zylinder außen vorsteht',
         'Montage und Anpassung vor Ort',
       ],
-      'Beschläge, die Zylinder und Schloss vor mechanischen Angriffen schützen.',
+      'Ein Schutzbeschlag schützt Zylinder und Schloss vor Angriffen von außen. Wir wählen den passenden Beschlag und montieren ihn bei Ihnen.',
     ],
     [
       'tuerzusatzschloesser',
@@ -66,7 +77,7 @@ export function servicePages(): ServicePage[] {
         'Geeignet für Wohnungstüren und Nebentüren',
         'Lässt sich mit weiterem mechanischem Schutz kombinieren',
       ],
-      'Zusätzliche Verriegelung, wenn die vorhandene Tür nicht getauscht werden soll.',
+      'Ein Zusatzschloss verriegelt Ihre Tür ein zweites Mal, ohne dass die Tür getauscht werden muss. Geeignet für Wohnungstüren und Nebentüren.',
     ],
     [
       'tuerschliesser',
@@ -78,7 +89,7 @@ export function servicePages(): ServicePage[] {
         'Schließer für Flucht- und Rauchschutztüren im Rahmen unserer Leistungen',
         'Wartung und Austausch',
       ],
-      'Kontrolliertes Schließen von Haus-, Flur- und Objekttüren.',
+      'Ein Türschließer schließt die Tür kontrolliert von selbst. Wir stellen Schließer an Haus-, Flur- und Objekttüren ein, warten sie und tauschen sie aus.',
     ],
     [
       'panik-und-fluchttuertechnik',
@@ -90,7 +101,7 @@ export function servicePages(): ServicePage[] {
         'Wir prüfen die Tür vor Ort',
         'Die Anforderungen hängen vom Gebäude ab und müssen vorab geklärt werden',
       ],
-      'Türtechnik, die im Notfall aus dem Gebäude heraus jederzeit begehbar bleibt.',
+      'Eine Fluchttür muss sich im Notfall von innen jederzeit öffnen lassen. Wir prüfen Ihre Tür vor Ort und stimmen die Technik darauf ab.',
     ],
     [
       'reparatur-und-austausch',
@@ -102,7 +113,7 @@ export function servicePages(): ServicePage[] {
         'Nacharbeit an Schließblech und Türfalz',
         'Ersatzteile passend zur vorhandenen Technik',
       ],
-      'Wenn ein Schlüssel klemmt, ein Riegel hakt oder ein Beschlag ausschlägt.',
+      'Klemmt der Schlüssel, hakt der Riegel oder wackelt der Beschlag, suchen wir den Fehler. Dann tauschen wir das Teil, das nicht mehr richtig arbeitet.',
     ],
     [
       'technische-beratung',
@@ -114,7 +125,7 @@ export function servicePages(): ServicePage[] {
         'Vorschlag mit mechanischen und elektronischen Möglichkeiten',
         'Grundlage für ein genaues Angebot',
       ],
-      'Wir schauen uns an, was verbaut ist, und sagen, was sinnvoll ist.',
+      'Wir schauen uns an, was an Ihrer Tür verbaut ist, und zeigen Ihnen die Schwachstellen. Unser Vorschlag ist die Grundlage für ein genaues Angebot.',
     ],
     [
       'montage-und-anpassung',
@@ -126,7 +137,7 @@ export function servicePages(): ServicePage[] {
         'Funktionsprüfung nach dem Einbau',
         'Übergabe mit Einweisung',
       ],
-      'Einbau, Justage und Nacharbeit — damit die Technik dauerhaft funktioniert.',
+      'Wir bauen die gelieferten Teile ein und stellen Tür und Schloss genau ein. Nach dem Einbau prüfen wir die Funktion und weisen Sie bei der Übergabe ein.',
     ],
   ];
 
@@ -141,7 +152,7 @@ export function servicePages(): ServicePage[] {
         'Zugriff per App im eigenen Netz oder über eine gesicherte Verbindung',
         'Bei der Planung der Blickfelder beachten wir die rechtlichen Vorgaben',
       ],
-      'Kameras für Innen- und Außenbereich mit geeigneter Aufzeichnung und App-Zugriff.',
+      'Wir planen Ihre Videoüberwachung mit Kameras für innen und außen und montieren sie. Sie sehen die Bilder per App und können sie aufzeichnen.',
     ],
     [
       'alarmtechnik',
@@ -153,7 +164,7 @@ export function servicePages(): ServicePage[] {
         'Glasbruchsensoren an gefährdeten Scheiben',
         'Kontakte an Türen und Fenstern, die von außen erreichbar sind',
       ],
-      'Alarmanlagen, Melder und Kontakte, die auffällige Ereignisse zuverlässig erkennen.',
+      'Wir planen Alarmanlagen mit Meldern und Kontakten an Türen und Fenstern. Die Anlage erkennt, wenn an Tür, Fenster oder im Raum etwas geschieht.',
     ],
     [
       'aussenhautsicherung',
@@ -165,7 +176,7 @@ export function servicePages(): ServicePage[] {
         'Lichtschächte und Kellerfenster',
         'Mechanik und Meldetechnik aufeinander abgestimmt',
       ],
-      'Absicherung aller Stellen, an denen ein Gebäude von außen erreichbar ist.',
+      'Zur Außenhaut gehören alle Stellen, an denen man von außen ins Gebäude kommt. Wir sichern sie ab, von der Haustür bis zum Kellerfenster.',
     ],
     [
       'mechanischer-schutz',
@@ -177,7 +188,7 @@ export function servicePages(): ServicePage[] {
         'Sicherung der Bandseite, also der Seite mit den Türbändern',
         'Gitter und Rollladensicherungen im Rahmen unserer Leistungen',
       ],
-      'Mechanik hält auf, Elektronik meldet. Beides zusammen ergibt den Schutz.',
+      'Wir sichern Türen und Fenster mechanisch ab. Mechanik hält auf, Elektronik meldet, und erst beides zusammen ergibt den Schutz.',
     ],
     [
       'smarte-funktionen',
@@ -189,7 +200,7 @@ export function servicePages(): ServicePage[] {
         'Passende Schaltmodule',
         'Fernsteuerung über gesicherte Zugänge',
       ],
-      'Anwesenheitssimulation, Beleuchtung und Schaltmodule, sinnvoll eingesetzt.',
+      'Wir richten Smart-Home-Funktionen ein, die beim Schutz helfen. Licht und Schaltmodule lassen das Gebäude bewohnt wirken, auch wenn niemand da ist.',
     ],
     [
       'panik-und-alarmtaster',
@@ -201,7 +212,7 @@ export function servicePages(): ServicePage[] {
         'Einsatz nur für zulässige Zwecke',
         'Abgestimmt auf Ihre vorhandene Alarmtechnik',
       ],
-      'Auslöser und Benachrichtigungswege für Situationen, in denen es schnell gehen muss.',
+      'Mit einem Panik- oder Alarmtaster lösen Sie im Notfall eine Benachrichtigung aus. Wir richten die Taster ein und legen mit Ihnen fest, wer sie erhält.',
     ],
     [
       'kombinierte-konzepte',
@@ -213,7 +224,7 @@ export function servicePages(): ServicePage[] {
         'Ausbau in Schritten möglich',
         'Übergabe mit Dokumentation',
       ],
-      'Mechanik, Elektronik, Zutrittskontrolle, Kamera und Alarm in einem Konzept.',
+      'Wir planen Mechanik, Elektronik, Zutrittskontrolle, Kamera und Alarm gemeinsam in einem Konzept. Der Ausbau ist in Schritten möglich.',
     ],
   ];
 
@@ -233,7 +244,7 @@ export function servicePages(): ServicePage[] {
       ctaLabel: 'Anfrage starten',
       active: true,
       seo: {
-        title: `${title}`,
+        title: SEO_TITEL[slug] ?? title,
         description: seoDescription,
         internalLinks: [
           { href: '/tuer-und-schliesstechnik', label: 'Alle Leistungen der Tür- und Schließtechnik' },
@@ -257,7 +268,7 @@ export function servicePages(): ServicePage[] {
       ctaLabel: 'Sicherheitscheck starten',
       active: true,
       seo: {
-        title: `${title}`,
+        title: SEO_TITEL[slug] ?? title,
         description: seoDescription,
         internalLinks: [
           { href: '/sicherheitstechnik', label: 'Alle Bereiche der Sicherheitstechnik' },

@@ -9,6 +9,12 @@
 // Kleinschreibung, Akzente und Zeichen). Alles andere wird gelistet, nicht geraten (R4). Jede Zeile braucht
 // eine Quelle. Eine Generation mit gleicher Bezeichnung wird ersetzt, andere bleiben. Generationen werden
 // hier nie erfunden: Ohne Datei ändert das Skript nichts.
+//
+// Wirkung: Das Skript füllt nur content/fahrzeugkatalog.json, also den JSON-Stand ohne Datenbank und den Startwert
+// des Seeds. Im Betrieb mit Datenbank kommen die Generationen so nicht an: Der Seed-Plan „fahrzeugreihen“
+// legt nur fehlende Zeilen an und gleicht vorhandene nicht ab. Dort werden Generationen im Admin gepflegt
+// (Sammlung Fahrzeugreihen, Feldgruppe „Generationen“), oder es braucht einen eigenen Abgleich nur für dieses Feld.
+// Die Importe scripts/fahrzeuge-import.mjs und scripts/fahrzeuge-import-fz2.mjs behalten eingetragene Generationen.
 
 import { existsSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import path from 'node:path';

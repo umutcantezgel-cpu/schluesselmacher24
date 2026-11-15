@@ -901,6 +901,7 @@ export function Assistent({
           modelNotListed: isOtherModel,
           year: data.year,
           registrationMonth: data.registrationMonth || null,
+          generation: data.generation || null,
           engine: data.engine.trim() || null,
           vin: data.vin.trim().toUpperCase() || null,
           keyKind: data.keyKind,

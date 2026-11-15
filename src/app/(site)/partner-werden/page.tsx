@@ -33,8 +33,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.seo.title ?? 'Autoschlüssel-Partner werden',
     description:
       page?.seo.description
-      ?? 'Für Fachbetriebe für Autoschlüssel und Fahrzeugschlüssel: Werden Sie Partner von '
-        + 'SCHLÜSSELMACHER24. Wir geben geprüfte Anfragen aus Ihrer Region weiter.',
+      ?? 'Wir geben geprüfte Anfragen zu Autoschlüsseln und Fahrzeugschlüsseln an Fachbetriebe vor Ort '
+        + 'weiter. Bewerben Sie sich mit wenigen Angaben als Partner.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

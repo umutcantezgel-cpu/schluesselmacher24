@@ -25,11 +25,10 @@ export function pages(): PageContent[] {
         + 'Autoschlüsseln: nachmachen, programmieren, reparieren. Daneben bearbeiten wir Schlüssel '
         + 'nach Vorlage und nach Code, planen Schließanlagen, richten elektronische Zutrittslösungen '
         + 'ein und sichern Gebäude ab.',
-      title: 'SCHLÜSSELMACHER24 — Autoschlüssel, Schließtechnik und Sicherheitstechnik',
+      title: 'Schlüsselwerkstatt in Wetzlar | SCHLÜSSELMACHER24',
       description:
-        'Autoschlüssel nachmachen und programmieren, Schlüssel nach Code und Vorlage, '
-        + 'gleichschließende Zylinder, Schließanlagen, elektronische Zutrittslösungen und '
-        + 'Sicherheitstechnik — aus einer Hand.',
+        'Wir fertigen Autoschlüssel in unserer Werkstatt in Wetzlar und liefern Schlüssel nach '
+        + 'Code in ganz Deutschland. Wir planen auch Schließanlagen.',
       links: [
         ['/autoschluessel', 'Autoschlüssel'],
         ['/schluessel-nach-code', 'Schlüssel nach Code'],
@@ -44,12 +43,12 @@ export function pages(): PageContent[] {
         'Ob Zweitschlüssel, Ersatz nach Verlust, Programmierung oder Reparatur: Wir klären zuerst, '
         + 'was Ihr Fahrzeug braucht, und nennen Ihnen danach Preis oder Preisrahmen. Erst dann '
         + 'buchen Sie einen Termin.',
-      title: 'Autoschlüssel nachmachen und programmieren',
+      title: 'Autoschlüssel-Werkstatt in Wetzlar',
       description:
-        'Autoschlüssel nachmachen, kopieren, programmieren und reparieren. Geführte Anfrage mit '
-        + 'Schlüsselfotos, Preisangabe, Anzahlung und fester Terminbuchung.',
+        'Autoschlüssel nachmachen, programmieren und reparieren in Wetzlar. Wir klären zuerst, '
+        + 'was Ihr Fahrzeug braucht. Danach buchen Sie einen festen Termin.',
       links: [
-        ['/autoschluessel/anfrage', 'Fahrzeug auswählen und Termin starten'],
+        ['/autoschluessel/anfrage', 'Termin anfragen'],
         ['/autoschluessel/programmieren', 'Autoschlüssel programmieren'],
         ['/autoschluessel/marken', 'Fahrzeugmarken und Modelle'],
       ],
@@ -61,12 +60,12 @@ export function pages(): PageContent[] {
       intro:
         'Am günstigsten ist ein neuer Schlüssel, solange noch einer funktioniert. Ist keiner mehr '
         + 'da, prüfen wir Ihren Fall zuerst einzeln. Der Aufwand ist dann deutlich höher.',
-      title: 'Autoschlüssel nachmachen — Zweit- und Ersatzschlüssel',
+      title: 'Zweitschlüssel fürs Auto in Wetzlar',
       description:
-        'Zweitschlüssel und Ersatzschlüssel für Ihr Fahrzeug anfertigen lassen. Mit Schlüsselfotos, '
-        + 'Preisangabe und fester Terminbuchung.',
+        'Wir fertigen einen Zweitschlüssel oder Ersatzschlüssel für Ihr Fahrzeug in Wetzlar. Ist '
+        + 'kein Schlüssel mehr da, prüfen wir Ihren Fall zuerst einzeln.',
       links: [
-        ['/autoschluessel/anfrage', 'Anfrage starten'],
+        ['/autoschluessel/anfrage', 'Termin anfragen'],
         ['/autoschluessel/programmieren', 'Programmierung und Anlernen'],
       ],
     },
@@ -76,12 +75,12 @@ export function pages(): PageContent[] {
       subline: 'Wir machen einen neuen oder vorhandenen Schlüssel Ihrem Fahrzeug bekannt.',
       intro:
         'Zum Anlernen brauchen wir in aller Regel Ihr Fahrzeug. Per Versand lässt sich das nicht lösen.',
-      title: 'Autoschlüssel programmieren und anlernen',
+      title: 'Autoschlüssel anlernen in Wetzlar',
       description:
-        'Transponder, Wegfahrsperre, Funkfernbedienung und Smart Key anlernen lassen. '
-        + 'Termin mit Fahrzeug vor Ort.',
+        'Wir machen einen neuen oder vorhandenen Schlüssel Ihrem Fahrzeug bekannt. Zum Anlernen '
+        + 'in Wetzlar brauchen wir in aller Regel Ihr Fahrzeug.',
       links: [
-        ['/autoschluessel/anfrage', 'Termin mit Fahrzeug buchen'],
+        ['/autoschluessel/anfrage', 'Termin anfragen'],
         ['/autoschluessel/smart-key', 'Smart Key und Keyless'],
       ],
     },
@@ -93,10 +92,10 @@ export function pages(): PageContent[] {
         'Die Kopie passt ins Schloss und öffnet bei vielen Fahrzeugen die Tür. Den Motor startet '
         + 'sie dort aber nicht. Der Kopie fehlt der Transponder, ein kleiner Chip im Schlüssel. Ohne ihn '
         + 'gibt die Wegfahrsperre den Motor nicht frei. Was in Ihrem Fall reicht, klären wir vorab.',
-      title: 'Autoschlüssel kopieren — was mechanisch möglich ist',
+      title: 'Autoschlüssel kopieren in Wetzlar',
       description:
-        'Mechanische Kopie von Autoschlüsseln nach Vorlage. Wir erklären, wann eine Kopie reicht '
-        + 'und wann zusätzlich programmiert werden muss.',
+        'Wir kopieren den mechanischen Teil Ihres Autoschlüssels nach Vorlage. Der Kopie fehlt '
+        + 'der Transponder, darum klären wir vorab, was in Ihrem Fall reicht.',
       links: [
         ['/schluessel-nach-vorlage', 'Schlüssel nach Vorlage anfragen'],
         ['/autoschluessel/programmieren', 'Programmierung ergänzen'],
@@ -109,12 +108,12 @@ export function pages(): PageContent[] {
       intro:
         'Reagiert das Fahrzeug nicht mehr auf Knopfdruck, liegt das nicht immer am Schlüssel. Wir '
         + 'prüfen, ob Batterie, Tasten, Elektronik oder das Anlernen am Fahrzeug die Ursache ist.',
-      title: 'Funkschlüssel und Funkfernbedienung',
+      title: 'Funkschlüssel reparieren in Wetzlar',
       description:
-        'Funkschlüssel reparieren, Gehäuse und Tasten tauschen, Funkfunktion prüfen und Ersatz '
-        + 'anfertigen lassen.',
+        'Reagiert das Fahrzeug nicht mehr auf Knopfdruck? Wir prüfen Batterie, Tasten und '
+        + 'Elektronik, reparieren Gehäuse und Funk oder fertigen einen neuen Schlüssel.',
       links: [
-        ['/autoschluessel/anfrage', 'Anfrage starten'],
+        ['/autoschluessel/anfrage', 'Termin anfragen'],
         ['/autoschluessel/nachmachen', 'Ersatzschlüssel anfertigen'],
       ],
     },
@@ -126,12 +125,12 @@ export function pages(): PageContent[] {
         'Ein Smart Key ist ein Schlüssel, den das Fahrzeug in der Nähe erkennt. Keyless heißt, '
         + 'Sie öffnen und starten, ohne ihn in die Hand zu nehmen. Beschaffung und Anlernen sind '
         + 'aufwendiger als bei einem einfachen Funkschlüssel.',
-      title: 'Smart Key und Keyless — Ersatz und Programmierung',
+      title: 'Smart Key und Keyless in Wetzlar',
       description:
-        'Smart Key und schlüssellose Systeme: Ersatz, Programmierung und Prüfung. '
-        + 'Mit Vorlaufzeit und festem Termin.',
+        'Ein Smart Key ist ein Schlüssel, den das Fahrzeug in der Nähe erkennt. Wir beschaffen '
+        + 'Ersatz für Ihren Smart Key und lernen ihn an Ihrem Fahrzeug an.',
       links: [
-        ['/autoschluessel/anfrage', 'Anfrage starten'],
+        ['/autoschluessel/anfrage', 'Termin anfragen'],
         ['/autoschluessel/programmieren', 'Programmierung und Anlernen'],
       ],
     },
@@ -143,10 +142,10 @@ export function pages(): PageContent[] {
         'Der Bart ist der metallene Teil mit den Einschnitten, der ins Schloss passt. Als Vorlage '
         + 'dient ein vorhandener Schlüssel oder geeignete Fahrzeugdaten. Die Elektronik ist davon '
         + 'unabhängig.',
-      title: 'Schlüsselbart fräsen nach Vorlage oder Fahrzeugdaten',
+      title: 'Schlüsselbart fräsen in Wetzlar',
       description:
-        'Schlüsselbart für Autoschlüssel fräsen lassen — nach Original oder geeigneten '
-        + 'Fahrzeugdaten.',
+        'Wir fräsen den Bart Ihres Autoschlüssels nach Vorlage oder nach Fahrzeugdaten. Der Bart '
+        + 'ist der metallene Teil mit den Einschnitten, der ins Schloss passt.',
       links: [
         ['/schluessel-nach-vorlage', 'Nach Vorlage anfragen'],
         ['/autoschluessel/kopieren', 'Was eine Kopie leistet'],
@@ -160,10 +159,10 @@ export function pages(): PageContent[] {
         'Wir arbeiten zerstörungsfrei. Vor Ort weisen Sie bitte nach, dass Sie über das Fahrzeug '
         + 'verfügen dürfen. Die Öffnung ist eine eigene Leistung und ersetzt keinen '
         + 'Ersatzschlüssel.',
-      title: 'Fahrzeugöffnung — zerstörungsfrei',
+      title: 'Zerstörungsfreie Fahrzeugöffnung',
       description:
-        'Zerstörungsfreie Fahrzeugöffnung als eigene Serviceleistung. Nachweis der '
-        + 'Verfügungsberechtigung erforderlich.',
+        'Wir öffnen Ihr Fahrzeug zerstörungsfrei, wenn Sie ausgesperrt sind. Vor Ort weisen Sie '
+        + 'bitte nach, dass Sie über das Fahrzeug verfügen dürfen.',
       links: [
         ['/service-und-termin/anfrage?thema=fahrzeugoeffnung', 'Fahrzeugöffnung anfragen'],
         ['/autoschluessel/nachmachen', 'Ersatzschlüssel anfertigen'],
@@ -179,10 +178,10 @@ export function pages(): PageContent[] {
         'Sie fotografieren Ihren Schlüssel aus drei Richtungen und schicken uns die Bilder. Wir '
         + 'sagen Ihnen, ob eine Anfertigung möglich ist und was sie kostet. Einsenden müssen Sie '
         + 'Ihren Schlüssel zunächst nicht.',
-      title: 'Schlüssel nach Vorlage nachmachen lassen',
+      title: 'Schlüssel nach Vorlage nachmachen',
       description:
-        'Schlüssel nach Vorlage: drei Fotos hochladen, Machbarkeit und Preis erhalten. '
-        + 'Einsendung des Originals nur, wenn es nötig ist.',
+        'Sie schicken uns drei Fotos Ihres Schlüssels. Wir sagen Ihnen, ob eine Anfertigung '
+        + 'möglich ist und was sie kostet. Einsenden müssen Sie ihn zunächst nicht.',
       links: [
         ['/schluessel-nach-code', 'Code vorhanden? Schlüssel nach Code'],
         ['/autoschluessel/kopieren', 'Mechanische Autoschlüssel'],
@@ -197,8 +196,8 @@ export function pages(): PageContent[] {
         + 'fertigen wir den passenden Schlüssel. Ihr Originalschlüssel bleibt bei Ihnen.',
       title: 'Schlüssel nach Code bestellen',
       description:
-        'Nachschlüssel nach Code für Möbel, Briefkasten, Spind, Technikschrank und mehr. '
-        + 'Ohne Einsendung des Originalschlüssels.',
+        'Code eingeben, Stückzahl wählen, bestellen: Nach dem Code auf Ihrem Schloss fertigen wir '
+        + 'den passenden Schlüssel. Ihr Originalschlüssel bleibt bei Ihnen.',
       links: [
         ['/schluessel-nach-vorlage', 'Kein Code? Schlüssel nach Vorlage'],
         ['/gleichschliessende-zylinder', 'Mehrere Türen mit einem Schlüssel'],
@@ -212,10 +211,10 @@ export function pages(): PageContent[] {
       intro:
         'Sie wählen für jede Tür den passenden Zylinder und seine Maße. Alle Zylinder bekommen '
         + 'dieselbe Schließung. Jeder gemeinsame Schlüssel sperrt dann jede dieser Türen.',
-      title: 'Gleichschließende Zylinder konfigurieren und bestellen',
+      title: 'Gleichschließende Zylinder bestellen',
       description:
-        'Gleichschließende Zylinder online zusammenstellen: Bauform, Maße, Funktion, Stückzahl '
-        + 'und Anzahl gemeinsamer Schlüssel.',
+        'Ein Schlüssel für mehrere Türen: Sie wählen für jede Tür den passenden Zylinder und '
+        + 'seine Maße. Alle Zylinder bekommen dieselbe Schließung.',
       links: [
         ['/schliessanlagen', 'Größere Anlage? Zur Projektplanung'],
         ['/tuer-und-schliesstechnik', 'Tür- und Schließtechnik'],
@@ -230,10 +229,10 @@ export function pages(): PageContent[] {
       intro:
         'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Arten in '
         + 'einfacher Sprache. Ihre Anlage planen wir so, dass sie später erweitert werden kann.',
-      title: 'Schließanlagen planen — Z, HS und GHS',
+      title: 'Mechanische Schließanlagen planen',
       description:
-        'Mechanische Schließanlagen für Privat, Gewerbe und Hausverwaltungen. '
-        + 'Gleichschließung, Zentralschloss, Hauptschlüssel und Generalhauptschlüssel.',
+        'Wir planen Ihre mechanische Schließanlage mit Ihnen, von der Gleichschließung bis zur '
+        + 'Generalhauptschlüsselanlage. Die Anlage bleibt später erweiterbar.',
       links: [
         ['/schliessanlagen/konfigurator', 'Projekt erfassen'],
         ['/elektronische-zutrittsloesungen', 'Elektronische Zutrittslösungen'],
@@ -249,10 +248,10 @@ export function pages(): PageContent[] {
         'Eine elektronische Zutrittslösung ersetzt den mechanischen Schlüssel oder ergänzt ihn. '
         + 'Geht eine Karte oder ein Transponder verloren, sperren Sie das Medium selbst. Die '
         + 'Zylinder müssen Sie dafür nicht tauschen.',
-      title: 'Elektronische Zutrittslösungen — RFID, PIN, App',
+      title: 'Elektronische Zutrittslösungen',
       description:
-        'Elektronische Zutrittskontrolle mit Karte, Transponder, PIN, Smartphone und digitalen '
-        + 'Zylindern. Benutzerverwaltung und zeitliche Berechtigungen.',
+        'Zutritt mit Karte, Transponder, PIN, App oder digitalem Zylinder. Geht ein Medium '
+        + 'verloren, sperren Sie es selbst. Wir planen die Lösung für Ihr Objekt.',
       links: [
         ['/elektronische-zutrittsloesungen/konfigurator', 'Bedarf erfassen'],
         ['/schliessanlagen', 'Mechanische Schließanlagen'],
@@ -265,10 +264,10 @@ export function pages(): PageContent[] {
       intro:
         'Alles rund um die Tür selbst: Zylinder, Einsteckschlösser, Mehrfachverriegelungen, '
         + 'Beschläge, Türschließer und die Technik, die dafür sorgt, dass eine Tür sauber schließt.',
-      title: 'Tür- und Schließtechnik — Zylinder, Schlösser, Beschläge',
+      title: 'Tür- und Schließtechnik',
       description:
-        'Profilzylinder, Einsteckschlösser, Mehrfachverriegelungen, Schutzbeschläge, '
-        + 'Türzusatzschlösser und Türschließer — Beratung, Montage und Reparatur.',
+        'Zylinder, Einsteckschlösser, Mehrfachverriegelungen, Beschläge und Türschließer: Wir '
+        + 'kümmern uns um die Technik, die dafür sorgt, dass Ihre Tür sauber schließt.',
       links: [
         ['/gleichschliessende-zylinder', 'Gleichschließende Zylinder'],
         ['/sicherheitstechnik', 'Sicherheitstechnik'],
@@ -281,10 +280,10 @@ export function pages(): PageContent[] {
       intro:
         'Sicherheit entsteht aus dem Zusammenspiel: Mechanik hält auf, Meldetechnik erkennt, '
         + 'Alarmierung informiert. Wir planen die Bereiche gemeinsam statt einzeln.',
-      title: 'Sicherheitstechnik — Kamera, Alarm, Einbruchschutz',
+      title: 'Sicherheitstechnik: Einbruchschutz',
       description:
-        'Videoüberwachung, Alarmanlagen, Glasbruch- und Bewegungsmelder, Tür- und '
-        + 'Fenstersicherung sowie kombinierte Einbruchschutzkonzepte.',
+        'Einbruchschutz, Überwachung und Alarmierung: Mechanik hält auf, Meldetechnik erkennt, '
+        + 'Alarmierung informiert. Wir planen die Bereiche gemeinsam statt einzeln.',
       links: [
         ['/sicherheitstechnik/sicherheitscheck', 'Sicherheitscheck starten'],
         ['/tuer-und-schliesstechnik', 'Mechanischer Grundschutz'],
@@ -298,12 +297,12 @@ export function pages(): PageContent[] {
         'Welche Schlüsselart Ihr Fahrzeug hat und ob es zum Anlernen vor Ort sein muss, hängt '
         + 'von Marke, Modell und Baujahr ab. Hier finden Sie, was wir zu den gängigen Fahrzeugen '
         + 'hinterlegt haben.',
-      title: 'Autoschlüssel nach Fahrzeugmarke und Modell',
+      title: 'Autoschlüssel je Marke und Modell',
       description:
-        'Übersicht der Fahrzeugmarken und Modelle: mögliche Schlüsselarten, Baujahre und ob das '
-        + 'Fahrzeug zum Anlernen vor Ort sein muss.',
+        'Welche Schlüsselart hat Ihr Fahrzeug, und muss es zum Anlernen vor Ort sein? Das hängt '
+        + 'von Marke, Modell und Baujahr ab. Hier finden Sie die gängigen Fahrzeuge.',
       links: [
-        ['/autoschluessel/anfrage', 'Anfrage für Ihr Fahrzeug starten'],
+        ['/autoschluessel/anfrage', 'Termin anfragen'],
         ['/autoschluessel', 'Alle Autoschlüssel-Leistungen'],
       ],
     },
@@ -315,10 +314,10 @@ export function pages(): PageContent[] {
         'Sie geben Schritt für Schritt an, welches Fahrzeug und welchen Schlüssel Sie haben. Am '
         + 'Ende sehen Sie den Preis oder den Preisrahmen, leisten eine Anzahlung und buchen einen '
         + 'festen Termin. Ihre Eingaben werden im Browser zwischengespeichert.',
-      title: 'Autoschlüssel-Anfrage mit Termin und Anzahlung',
+      title: 'Autoschlüssel-Anfrage mit Termin',
       description:
-        'Geführte Autoschlüssel-Anfrage: Fahrzeugdaten, Schlüsselfotos, Fahrzeugschein, '
-        + 'Preisangabe, Anzahlung und feste Terminbuchung.',
+        'Sie geben Schritt für Schritt Fahrzeug und Schlüssel an und laden Fotos hoch. Am Ende '
+        + 'leisten Sie eine Anzahlung und buchen einen festen Termin.',
       links: [
         ['/autoschluessel', 'Alle Autoschlüssel-Leistungen'],
         ['/service-und-termin/terminstatus', 'Terminstatus abrufen'],
@@ -334,8 +333,8 @@ export function pages(): PageContent[] {
         + 'Einsenden müssen Sie Ihren Schlüssel zunächst nicht.',
       title: 'Schlüssel nach Vorlage anfragen',
       description:
-        'Anfrage für einen Schlüssel nach Vorlage: drei Fotos, Nummern und Beschriftungen, '
-        + 'Stückzahl und Kontaktdaten.',
+        'Für die Prüfung genügen drei Fotos Ihres Schlüssels und Ihre Angaben dazu. Wir sagen '
+        + 'Ihnen, ob wir ihn nachfertigen können. Den Schlüssel behalten Sie zunächst.',
       links: [
         ['/schluessel-nach-vorlage', 'So funktioniert es'],
         ['/schluessel-nach-code', 'Code vorhanden? Schlüssel nach Code'],
@@ -348,10 +347,10 @@ export function pages(): PageContent[] {
       intro:
         'Legen Sie für jede Tür eine Position an. Am Ende sehen Sie die vollständige '
         + 'Preisaufstellung und legen die Zusammenstellung in den Warenkorb.',
-      title: 'Gleichschließende Zylinder konfigurieren',
+      title: 'Gleichschließung zusammenstellen',
       description:
-        'Zylinder zusammenstellen: Bauform, Maß A und Maß B, Funktion, Stückzahl, Anzahl '
-        + 'gemeinsamer Schlüssel und Zusatzoptionen.',
+        'Legen Sie für jede Tür eine Position an: Bauform, Maße, Funktion und Anzahl gemeinsamer '
+        + 'Schlüssel. Am Ende legen Sie die Zusammenstellung in den Warenkorb.',
       links: [
         ['/gleichschliessende-zylinder', 'Was ist eine Gleichschließung?'],
         ['/ratgeber/zylinder-richtig-ausmessen', 'Zylinder richtig messen'],
@@ -365,10 +364,10 @@ export function pages(): PageContent[] {
         'Sie beschreiben Ihr Objekt, Ihre Nutzer und Ihre Türen. Am Ende sehen Sie eine '
         + 'Zusammenfassung, die wir als Projektbericht übernehmen. Ihre Eingaben werden im '
         + 'Browser zwischengespeichert.',
-      title: 'Schließanlage planen — Projektkonfigurator',
+      title: 'Schließanlage: Projekt erfassen',
       description:
-        'Projektkonfigurator für mechanische Schließanlagen: Kundentyp, Objekt, Nutzer, '
-        + 'bestehende Anlage, Türen, Berechtigungen, Schlüssel, Unterlagen und Service.',
+        'Sie beschreiben Ihr Objekt, Ihre Nutzer und Ihre Türen in zehn Frageblöcken. Am Ende '
+        + 'sehen Sie eine Zusammenfassung, die wir als Projektbericht übernehmen.',
       links: [
         ['/schliessanlagen', 'Systeme im Vergleich'],
         ['/ratgeber/welche-schliessanlage-passt', 'Welche Anlage passt?'],
@@ -381,10 +380,10 @@ export function pages(): PageContent[] {
       intro:
         'Wir klären, wie viele Türen und Nutzer es gibt, womit geöffnet werden soll und wie die '
         + 'Berechtigungen aussehen. Daraus entsteht ein passender Vorschlag.',
-      title: 'Elektronische Zutrittslösung konfigurieren',
+      title: 'Zutrittslösung: Bedarf erfassen',
       description:
-        'Bedarf für eine elektronische Zutrittslösung erfassen: Objekt, Türen, Nutzer, '
-        + 'Identmedium, Verwaltung, Berechtigungen, Standorte und Service.',
+        'Acht Fragen zu Objekt, Umfang, Medien und Berechtigungen: Wir klären, wie viele Türen '
+        + 'und Nutzer es gibt und womit geöffnet werden soll.',
       links: [
         ['/elektronische-zutrittsloesungen', 'Überblick über die Lösungen'],
         ['/ratgeber/mechanisch-oder-elektronisch', 'Mechanisch oder elektronisch?'],
@@ -399,8 +398,8 @@ export function pages(): PageContent[] {
         + 'vorhandene Technik. Daraus entsteht ein Vorschlag, der zu Ihrer Situation passt.',
       title: 'Sicherheitscheck für Ihr Objekt',
       description:
-        'Geführter Sicherheitscheck: Objektart, Zugänge, erreichbare Fenster, vorhandene Technik, '
-        + 'Schwerpunkte und Vor-Ort-Termin.',
+        'Bestandsaufnahme Ihres Objekts in wenigen Schritten: Zugänge, erreichbare Fenster, '
+        + 'Nebengebäude und vorhandene Technik. Daraus entsteht ein passender Vorschlag.',
       links: [
         ['/sicherheitstechnik', 'Alle Bereiche der Sicherheitstechnik'],
         ['/ratgeber/einbruchschutz-wo-anfangen', 'Wo sinnvoll anfangen?'],
@@ -417,8 +416,8 @@ export function pages(): PageContent[] {
         + 'stellen Sie eine allgemeine Anfrage.',
       title: 'Service und Termin',
       description:
-        'Allgemeine Anfrage stellen, Terminstatus abrufen, Kontakt aufnehmen und '
-        + 'Vor-Ort-Leistungen ansehen.',
+        'Hier stellen Sie eine allgemeine Anfrage, sehen den Stand Ihres Vorgangs oder nehmen '
+        + 'Kontakt mit uns auf. Wählen Sie den Weg, der zu Ihrem Anliegen passt.',
       links: [
         ['/service-und-termin/anfrage', 'Allgemeine Anfrage'],
         ['/service-und-termin/terminstatus', 'Terminstatus prüfen'],
@@ -435,8 +434,8 @@ export function pages(): PageContent[] {
         + 'Ihre Bewerbung und melden uns bei Ihnen.',
       title: 'Autoschlüssel-Partner werden',
       description:
-        'Für Fachbetriebe für Autoschlüssel und Fahrzeugschlüssel: Werden Sie Partner von SCHLÜSSELMACHER24. '
-        + 'Wir geben geprüfte Anfragen aus Ihrer Region weiter.',
+        'Wir geben geprüfte Anfragen zu Autoschlüsseln und Fahrzeugschlüsseln an Fachbetriebe vor '
+        + 'Ort weiter. Bewerben Sie sich mit wenigen Angaben als Partner.',
       links: [
         ['/partner-werden/netzwerk-deutschland', 'Das Partnernetz für Fahrzeugschlüssel'],
         ['/autoschluessel', 'Autoschlüssel'],

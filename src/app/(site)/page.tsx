@@ -31,8 +31,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     // Der Titel der Startseite trägt den Markennamen bereits selbst,
     // deshalb greift die Vorlage aus dem Wurzel-Layout hier nicht.
-    title: { absolute: page?.seo.title ?? 'SCHLÜSSELMACHER24' },
-    description: page?.seo.description,
+    title: { absolute: page?.seo.title ?? 'Schlüsselwerkstatt in Wetzlar | SCHLÜSSELMACHER24' },
+    description:
+      page?.seo.description
+      ?? 'Wir fertigen Autoschlüssel in unserer Werkstatt in Wetzlar und liefern Schlüssel nach Code in '
+        + 'ganz Deutschland. Wir planen auch Schließanlagen.',
     alternates: { canonical: '/' },
   };
 }
