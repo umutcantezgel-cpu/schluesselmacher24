@@ -172,7 +172,9 @@ export function pages(): PageContent[] {
     {
       route: 'schluessel-nach-vorlage',
       headline: 'Schlüssel nach Vorlage',
-      subline: 'Sie haben den Schlüssel — wir prüfen, ob wir ihn nachfertigen können.',
+      subline:
+        'Sie haben einen Schlüssel und brauchen einen weiteren. Anhand Ihrer Fotos prüfen wir, '
+        + 'ob wir ihn nachfertigen können.',
       intro:
         'Sie fotografieren Ihren Schlüssel aus drei Richtungen und schicken uns die Bilder. Wir '
         + 'sagen Ihnen, ob eine Anfertigung möglich ist und was sie kostet. Einsenden müssen Sie '
@@ -189,10 +191,10 @@ export function pages(): PageContent[] {
     {
       route: 'schluessel-nach-code',
       headline: 'Schlüssel nach Code',
-      subline: 'Code eingeben, bestellen, fertig. Ohne Einsendung des Originals.',
+      subline: 'Code eingeben, Stückzahl wählen, bestellen. Ihr Originalschlüssel bleibt bei Ihnen.',
       intro:
-        'Viele Schlösser tragen einen aufgedruckten oder eingeprägten Code. Mit diesem Code '
-        + 'fertigen wir den passenden Schlüssel an — Sie behalten Ihren Originalschlüssel.',
+        'Viele Schlösser tragen einen aufgedruckten oder eingeprägten Code. Nach diesem Code '
+        + 'fertigen wir den passenden Schlüssel. Ihr Originalschlüssel bleibt bei Ihnen.',
       title: 'Schlüssel nach Code bestellen',
       description:
         'Nachschlüssel nach Code für Möbel, Briefkasten, Spind, Technikschrank und mehr. '
@@ -324,12 +326,12 @@ export function pages(): PageContent[] {
     },
     {
       route: 'schluessel-nach-vorlage/anfrage',
-      headline: 'Anfrage: Schlüssel nach Vorlage',
-      subline: 'Drei Fotos genügen für die Prüfung.',
+      headline: 'Schlüssel nach Vorlage anfragen',
+      subline: 'Für die Prüfung genügen drei Fotos. Ihren Schlüssel behalten Sie zunächst.',
       intro:
         'Fotografieren Sie Ihren Schlüssel aus drei Richtungen und ergänzen Sie, was Sie über ihn '
-        + 'wissen. Wir melden uns mit Machbarkeit und Preis. Einsenden müssen Sie Ihren Schlüssel '
-        + 'zunächst nicht.',
+        + 'wissen. Wir sagen Ihnen dann, ob wir ihn nachfertigen können und was es kostet. '
+        + 'Einsenden müssen Sie Ihren Schlüssel zunächst nicht.',
       title: 'Schlüssel nach Vorlage anfragen',
       description:
         'Anfrage für einen Schlüssel nach Vorlage: drei Fotos, Nummern und Beschriftungen, '

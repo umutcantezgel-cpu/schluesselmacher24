@@ -253,7 +253,7 @@
   {
     "route": "schluessel-nach-vorlage",
     "headline": "Schlüssel nach Vorlage",
-    "subline": "Sie haben den Schlüssel. Anhand Ihrer Fotos bestimmen wir ihn und prüfen, ob wir ihn nachfertigen können.",
+    "subline": "Sie haben einen Schlüssel und brauchen einen weiteren. Anhand Ihrer Fotos prüfen wir, ob wir ihn nachfertigen können.",
     "intro": "Sie fotografieren Ihren Schlüssel aus drei Richtungen und schicken uns die Bilder. Wir sagen Ihnen, ob eine Anfertigung möglich ist und was sie kostet. Einsenden müssen Sie Ihren Schlüssel zunächst nicht.",
     "sections": [],
     "faq": [],
@@ -284,8 +284,8 @@
   {
     "route": "schluessel-einschicken",
     "headline": "Schlüssel einschicken",
-    "subline": "Schlüsseldienst online, ohne Anfahrt: Einsendung anmelden, Begleitschein ausdrucken, Schlüssel einschicken. Original und Kopien kommen zu Ihnen zurück.",
-    "intro": "Kein Schlüsseldienst in der Nähe oder keine Zeit für den Weg? Schicken Sie Ihren Schlüssel aus ganz Deutschland an unsere Werkstatt. Sie können ihn auch zuerst anhand von drei Fotos prüfen lassen. Dann bleibt er vorerst bei Ihnen.",
+    "subline": "Melden Sie die Einsendung an, drucken Sie den Begleitschein aus und schicken Sie uns den Schlüssel. Original und Kopien kommen zu Ihnen zurück.",
+    "intro": "Sie müssen nicht zu uns kommen. Schicken Sie Ihren Schlüssel aus ganz Deutschland an unsere Werkstatt. Sie können ihn auch zuerst anhand von drei Fotos prüfen lassen. Dann bleibt er vorerst bei Ihnen.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -311,8 +311,8 @@
   {
     "route": "schluessel-nach-code",
     "headline": "Schlüssel nach Code",
-    "subline": "Code eingeben, bestellen, fertig. Ohne Einsendung des Originals.",
-    "intro": "Viele Schlösser tragen einen aufgedruckten oder eingeprägten Code. Mit diesem Code fertigen wir den passenden Schlüssel an — Sie behalten Ihren Originalschlüssel.",
+    "subline": "Code eingeben, Stückzahl wählen, bestellen. Ihr Originalschlüssel bleibt bei Ihnen.",
+    "intro": "Viele Schlösser tragen einen aufgedruckten oder eingeprägten Code. Nach diesem Code fertigen wir den passenden Schlüssel. Ihr Originalschlüssel bleibt bei Ihnen.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -526,9 +526,9 @@
   },
   {
     "route": "schluessel-nach-vorlage/anfrage",
-    "headline": "Anfrage: Schlüssel nach Vorlage",
-    "subline": "Drei Fotos genügen für die Prüfung.",
-    "intro": "Fotografieren Sie Ihren Schlüssel aus drei Richtungen und ergänzen Sie, was Sie über ihn wissen. Wir melden uns mit Machbarkeit und Preis. Einsenden müssen Sie Ihren Schlüssel zunächst nicht.",
+    "headline": "Schlüssel nach Vorlage anfragen",
+    "subline": "Für die Prüfung genügen drei Fotos. Ihren Schlüssel behalten Sie zunächst.",
+    "intro": "Fotografieren Sie Ihren Schlüssel aus drei Richtungen und ergänzen Sie, was Sie über ihn wissen. Wir sagen Ihnen dann, ob wir ihn nachfertigen können und was es kostet. Einsenden müssen Sie Ihren Schlüssel zunächst nicht.",
     "sections": [],
     "faq": [],
     "seo": {
