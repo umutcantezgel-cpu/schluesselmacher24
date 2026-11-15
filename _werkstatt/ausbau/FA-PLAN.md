@@ -1,6 +1,6 @@
 # FA-PLAN · Umsetzung der Finalen Arbeitsanweisung vom 11.11.2026
 
-Quelle der Lücken: `berichte/FA-ABGLEICH.md` (352 Anforderungen aus 29 Abschnitten und zwei Anhängen: 90 erfüllt, 186 teilweise, 65 fehlen, 11 widersprechen). Reihenfolge nach FA-28. Dieser Plan führt die FA-Pakete; `PLAN.json` bleibt der Plan des alten Laufs und wird am nächsten Tor zusammengeführt (A-046).
+Quelle der Lücken: `berichte/FA-ABGLEICH.md` (352 Anforderungen aus 29 Abschnitten und zwei Anhängen: 90 erfüllt, 184 teilweise, 68 fehlen, 10 widersprechen). Reihenfolge nach FA-28. Dieser Plan führt die FA-Pakete; `PLAN.json` bleibt der Plan des alten Laufs und wird am nächsten Tor zusammengeführt (A-046).
 
 Regeln für die Wellen
 - Höchstens ein Paket zur Zeit ändert das Datenschema (Payload-Sammlungen, Migration, `payload-types.ts`) und nutzt `sicher.sh --pg`. Pakete ohne Schema laufen daneben, mit getrennten Dateien.
