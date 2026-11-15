@@ -338,8 +338,8 @@
   {
     "route": "gleichschliessende-zylinder",
     "headline": "Gleichschließende Zylinder (Sperrschließung)",
-    "subline": "Mehrere Türen, ein Schlüssel. Als Sperrschließung direkt konfigurierbar.",
-    "intro": "Sie stellen sich Ihre Zylinder mit den passenden Maßen zusammen. Alle erhalten dieselbe Schließung und werden mit derselben Anzahl gemeinsamer Schlüssel geliefert.",
+    "subline": "Ein Schlüssel für mehrere Türen. Sie stellen die Zylinder selbst zusammen und bestellen direkt.",
+    "intro": "Sie wählen für jede Tür den passenden Zylinder und seine Maße. Alle Zylinder bekommen dieselbe Schließung. Jeder gemeinsame Schlüssel sperrt dann jede dieser Türen.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -365,8 +365,8 @@
   {
     "route": "schliessanlagen",
     "headline": "Mechanische Schließanlagen",
-    "subline": "Von der Hauptschlüsselanlage bis zur Generalhauptschlüsselanlage.",
-    "intro": "Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme in einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert werden kann.",
+    "subline": "Wir planen Ihre Schließanlage mit Ihnen, von der Zentralschließung bis zur Generalhauptschlüsselanlage.",
+    "intro": "Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Arten in einfacher Sprache. Ihre Anlage planen wir so, dass sie später erweitert werden kann.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -392,8 +392,8 @@
   {
     "route": "elektronische-zutrittsloesungen",
     "headline": "Elektronische Zutrittslösungen",
-    "subline": "Karte, Transponder, PIN, App und digitale Zylinder.",
-    "intro": "Elektronische Zutrittslösungen ersetzen den mechanischen Schlüssel oder ergänzen ihn. Verlorene Medien sperren Sie selbst — ohne die Zylinder zu tauschen.",
+    "subline": "Zutritt mit Karte, Transponder, PIN, App oder digitalem Zylinder. Wir planen die Lösung für Ihr Objekt und richten sie ein.",
+    "intro": "Eine elektronische Zutrittslösung ersetzt den mechanischen Schlüssel oder ergänzt ihn. Geht eine Karte oder ein Transponder verloren, sperren Sie das Medium selbst. Die Zylinder müssen Sie dafür nicht tauschen.",
     "sections": [],
     "faq": [],
     "seo": {
@@ -662,8 +662,8 @@
   {
     "route": "service-und-termin",
     "headline": "Service und Termin",
-    "subline": "Anfrage stellen, Terminstatus prüfen, Kontakt aufnehmen.",
-    "intro": "Hier finden Sie alles, was nicht in einen der Fachbereiche gehört: die allgemeine Anfrage, den Stand Ihres Vorgangs, unsere Erreichbarkeit und unsere Vor-Ort-Leistungen.",
+    "subline": "Hier stellen Sie eine Anfrage, sehen den Stand Ihres Vorgangs oder nehmen Kontakt mit uns auf.",
+    "intro": "Wählen Sie den Weg, der zu Ihrem Anliegen passt. Gehört es in keinen der Fachbereiche, stellen Sie eine allgemeine Anfrage.",
     "sections": [],
     "faq": [],
     "seo": {

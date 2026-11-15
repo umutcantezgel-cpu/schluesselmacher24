@@ -110,7 +110,7 @@ const AUDIENCES: { icon: ComponentType<IconProps>; title: string; body: string; 
     title: 'Gewerbe',
     body:
       'Büro, Werkstatt, Lager oder Serverraum. Nicht jede Person braucht jede Tür. Bei einer '
-      + 'Hauptschlüsselanlage (HS) öffnet jeder Schlüssel nur die Türen, für die jemand zuständig ist.',
+      + 'Hauptschlüsselanlage (HS) öffnet jeder Schlüssel nur die Türen, für die sein Nutzer zuständig ist.',
     href: '/schliessanlagen/konfigurator',
     linkLabel: 'Schließanlage konfigurieren',
   },
@@ -240,8 +240,8 @@ const FALLBACK_FAQ = [
     question: 'Was gilt an Flucht- und Rettungswegen?',
     answer:
       'Türen in Flucht- und Rettungswegen müssen sich in Fluchtrichtung jederzeit ohne Schlüssel '
-      + 'öffnen lassen. Dafür gibt es eigene Verschlüsse für Notausgänge und Paniktüren und '
-      + 'passende Zylinder. Kennzeichnen Sie solche Türen im Konfigurator. Dann berücksichtigen wir '
+      + 'öffnen lassen. Für Notausgänge gilt DIN EN 179, für Paniktüren DIN EN 1125. Dafür gibt es '
+      + 'eigene Verschlüsse und passende Zylinder. Kennzeichnen Sie solche Türen im Konfigurator. Dann berücksichtigen wir '
       + 'sie im Schließplan.',
   },
   {

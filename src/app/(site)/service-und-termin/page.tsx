@@ -363,7 +363,7 @@ export default async function ServiceUndTerminPage() {
                       Neben Privatkunden betreuen wir Gewerbe, Hausverwaltungen und öffentliche Einrichtungen. Dort gelten oft zusätzliche Vorgaben und feste Abläufe. Diese klären wir vor der Planung mit Ihnen.
                     </p>
                     <p>
-                      Dort geht es oft auch um Fluchtwege, Brandschutz und die Anbindung der Zutrittskontrolle an die Gebäudetechnik. Für Betriebe planen wir so, dass weitere Türen, Nutzer und Standorte dazukommen können.
+                      Häufig geht es auch um Fluchtwege nach DIN EN 179 und DIN EN 1125, um Brandschutz und um die Anbindung der Zutrittskontrolle an die Gebäudetechnik. Für Betriebe planen wir so, dass weitere Türen, Nutzer und Standorte dazukommen können.
                     </p>
                   </div>
                 </div>

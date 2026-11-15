@@ -149,7 +149,7 @@ export default async function CylinderOverviewPage() {
         rubrik={rubrik}
         eyebrow={PROCESS_LABELS.direktkauf.label}
         title={page?.headline ?? 'Gleichschließende Zylinder (Sperrschließung)'}
-        lead={page?.subline ?? 'Mehrere Türen, ein Schlüssel. Als Sperrschließung direkt konfigurierbar.'}
+        lead={page?.subline ?? 'Ein Schlüssel für mehrere Türen. Sie stellen die Zylinder selbst zusammen und bestellen direkt.'}
         crumbs={[{ href: `/${ROUTE}`, label: 'Gleichschließende Zylinder (Sperrschließung)' }]}
         bereich={ROUTE}
         /* Blickfang im Kopf (E4-L-23): die bemaßte Zeichnung des Profilzylinders, auf Papier ohne Rahmen. */

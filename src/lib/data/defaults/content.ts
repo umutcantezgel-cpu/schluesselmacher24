@@ -204,11 +204,12 @@ export function pages(): PageContent[] {
     },
     {
       route: 'gleichschliessende-zylinder',
-      headline: 'Gleichschließende Zylinder',
-      subline: 'Mehrere Türen, ein Schlüssel. Direkt konfigurierbar.',
+      headline: 'Gleichschließende Zylinder (Sperrschließung)',
+      subline:
+        'Ein Schlüssel für mehrere Türen. Sie stellen die Zylinder selbst zusammen und bestellen direkt.',
       intro:
-        'Sie stellen sich Ihre Zylinder mit den passenden Maßen zusammen. Alle erhalten dieselbe '
-        + 'Schließung und werden mit derselben Anzahl gemeinsamer Schlüssel geliefert.',
+        'Sie wählen für jede Tür den passenden Zylinder und seine Maße. Alle Zylinder bekommen '
+        + 'dieselbe Schließung. Jeder gemeinsame Schlüssel sperrt dann jede dieser Türen.',
       title: 'Gleichschließende Zylinder konfigurieren und bestellen',
       description:
         'Gleichschließende Zylinder online zusammenstellen: Bauform, Maße, Funktion, Stückzahl '
@@ -221,10 +222,12 @@ export function pages(): PageContent[] {
     {
       route: 'schliessanlagen',
       headline: 'Mechanische Schließanlagen',
-      subline: 'Von der Hauptschlüsselanlage bis zur Generalhauptschlüsselanlage.',
+      subline:
+        'Wir planen Ihre Schließanlage mit Ihnen, von der Zentralschließung bis zur '
+        + 'Generalhauptschlüsselanlage.',
       intro:
-        'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Systeme in '
-        + 'einfacher Sprache und planen Ihre Anlage so, dass sie später erweitert werden kann.',
+        'Eine Schließanlage regelt, wer welche Tür öffnen darf. Wir erklären die Arten in '
+        + 'einfacher Sprache. Ihre Anlage planen wir so, dass sie später erweitert werden kann.',
       title: 'Schließanlagen planen — Z, HS und GHS',
       description:
         'Mechanische Schließanlagen für Privat, Gewerbe und Hausverwaltungen. '
@@ -237,10 +240,13 @@ export function pages(): PageContent[] {
     {
       route: 'elektronische-zutrittsloesungen',
       headline: 'Elektronische Zutrittslösungen',
-      subline: 'Karte, Transponder, PIN, App und digitale Zylinder.',
+      subline:
+        'Zutritt mit Karte, Transponder, PIN, App oder digitalem Zylinder. Wir planen die Lösung '
+        + 'für Ihr Objekt und richten sie ein.',
       intro:
-        'Elektronische Zutrittslösungen ersetzen den mechanischen Schlüssel oder ergänzen ihn. '
-        + 'Verlorene Medien sperren Sie selbst — ohne die Zylinder zu tauschen.',
+        'Eine elektronische Zutrittslösung ersetzt den mechanischen Schlüssel oder ergänzt ihn. '
+        + 'Geht eine Karte oder ein Transponder verloren, sperren Sie das Medium selbst. Die '
+        + 'Zylinder müssen Sie dafür nicht tauschen.',
       title: 'Elektronische Zutrittslösungen — RFID, PIN, App',
       description:
         'Elektronische Zutrittskontrolle mit Karte, Transponder, PIN, Smartphone und digitalen '
@@ -401,10 +407,12 @@ export function pages(): PageContent[] {
     {
       route: 'service-und-termin',
       headline: 'Service und Termin',
-      subline: 'Anfrage stellen, Terminstatus prüfen, Kontakt aufnehmen.',
+      subline:
+        'Hier stellen Sie eine Anfrage, sehen den Stand Ihres Vorgangs oder nehmen Kontakt mit '
+        + 'uns auf.',
       intro:
-        'Hier finden Sie alles, was nicht in einen der Fachbereiche gehört: die allgemeine '
-        + 'Anfrage, den Stand Ihres Vorgangs, unsere Erreichbarkeit und unsere Vor-Ort-Leistungen.',
+        'Wählen Sie den Weg, der zu Ihrem Anliegen passt. Gehört es in keinen der Fachbereiche, '
+        + 'stellen Sie eine allgemeine Anfrage.',
       title: 'Service und Termin',
       description:
         'Allgemeine Anfrage stellen, Terminstatus abrufen, Kontakt aufnehmen und '
