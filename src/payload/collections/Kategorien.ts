@@ -106,7 +106,7 @@ export const Kategorien: CollectionConfig = {
       'Kategorien und Unterkategorien des Shops. Reihenfolge: kleinere Zahl zuerst. '
       + 'Eine Unterkategorie entsteht, wenn Sie oben eine übergeordnete Kategorie wählen. '
       + 'Hauptkategorien mit Haken „Im Shop zeigen“ stehen in dieser Reihenfolge auf der Seite /shop. '
-      + 'Unterkategorien von „Schlüssel nach Code“ bekommen eine eigene Seite, sobald ihnen ein Artikel zugeordnet ist.',
+      + 'Jede sichtbare Unterkategorie von „Schlüssel nach Code“ hat eine eigene Seite. Ohne Artikel zeigt sie den Hinweis und „Code anfragen“ und erscheint nicht in Suchmaschinen.',
     pagination: { defaultLimit: 50 },
   },
   access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber, readVersions: istTeam },

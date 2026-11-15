@@ -11,7 +11,7 @@ import {
   kategoriePfad,
   nachHerstellerUndSystem,
 } from '@/lib/codelinie';
-import { kategorieTexte } from '@/lib/codelinie-texte';
+import { gruppeLieferbar, kategorieTexte } from '@/lib/codelinie-texte';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 import { PageHeader } from '@/components/layout/page-header';
@@ -90,7 +90,7 @@ export default async function KategoriePage(props: KategoriePageProps) {
       />
 
       <PageHeader
-        eyebrow={lines.length > 0 ? `Kategorie · ${PROCESS_LABELS.direktkauf.label}` : 'Kategorie · Auf Anfrage'}
+        eyebrow={gruppeLieferbar(lines) ? `Kategorie · ${PROCESS_LABELS.direktkauf.label}` : 'Kategorie · Auf Anfrage'}
         title={kategorie.name}
         lead={texte?.einleitung ?? kategorie.beschreibung}
         crumbs={crumbs}

@@ -764,11 +764,11 @@ export interface Produkte {
    */
   hersteller?: string | null;
   /**
-   * So, wie der Hersteller das Schließsystem nennt. Pflicht bei neuen Codeprodukten. Erscheint mit dem nächsten Ausbau der Shopseiten.
+   * So, wie der Hersteller das Schließsystem nennt. Pflicht bei neuen Codeprodukten. Erscheint in der Liste und auf der Seite des Produkts.
    */
   system?: string | null;
   /**
-   * Von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“. Erscheint mit dem nächsten Ausbau der Shopseiten.
+   * Von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“. Erscheint in der Liste und auf der Seite des Produkts.
    */
   codebereich?: string | null;
   /**
@@ -792,7 +792,7 @@ export interface Produkte {
       }[]
     | null;
   /**
-   * Etwa „2 bis 4 Werktage“. Leer lassen, wenn die Lieferzeit der Versandart gilt. Lieferzeit, System und Codebereich erscheinen bei Schlüsseln nach Code mit dem nächsten Ausbau der Shopseiten.
+   * Etwa „2 bis 4 Werktage“. Leer lassen, wenn die Lieferzeit der Versandart gilt. Erscheint in der Liste und auf der Seite des Produkts.
    */
   lieferzeit?: string | null;
   schlagworte?: string[] | null;
@@ -902,7 +902,7 @@ export interface Produkte {
   _status?: ('draft' | 'published') | null;
 }
 /**
- * Kategorien und Unterkategorien des Shops. Reihenfolge: kleinere Zahl zuerst. Eine Unterkategorie entsteht, wenn Sie oben eine übergeordnete Kategorie wählen. Hauptkategorien mit Haken „Im Shop zeigen“ stehen in dieser Reihenfolge auf der Seite /shop. Unterkategorien von „Schlüssel nach Code“ bekommen eine eigene Seite, sobald ihnen ein Artikel zugeordnet ist.
+ * Kategorien und Unterkategorien des Shops. Reihenfolge: kleinere Zahl zuerst. Eine Unterkategorie entsteht, wenn Sie oben eine übergeordnete Kategorie wählen. Hauptkategorien mit Haken „Im Shop zeigen“ stehen in dieser Reihenfolge auf der Seite /shop. Jede sichtbare Unterkategorie von „Schlüssel nach Code“ hat eine eigene Seite. Ohne Artikel zeigt sie den Hinweis und „Code anfragen“ und erscheint nicht in Suchmaschinen.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "kategorien".

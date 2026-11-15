@@ -444,6 +444,21 @@ describe('Shop-Grundlage (FA-SHOP-01)', () => {
     expect(m.codeLineZuSeite(gespeichert(schlicht, 1) as never).availability).toBeUndefined();
   });
 
+  it('weitere Fotos eines Codeprodukts kommen auf die Seite, ohne Fotos fehlt das Feld', async () => {
+    const [line] = await read('codeLines');
+    const daten = m.codeLineZuPayload(line);
+    expect(m.codeLineZuSeite(gespeichert(daten, 1) as never).gallery).toBeUndefined();
+    const doc = gespeichert({
+      ...daten,
+      // Ein hochgeladenes Bild und eine bloße Kennung (nicht aufgelöst): nur das Bild erscheint.
+      weitereBilder: [{ id: 7, url: '/api/medien/file/seite.webp', alt: 'Schlüssel von der Seite', width: 800, height: 800 }, 8],
+    }, 1);
+    const gallery = m.codeLineZuSeite(doc as never).gallery;
+    expect(gallery).toHaveLength(1);
+    expect(gallery?.[0]).toMatchObject({ alt: 'Schlüssel von der Seite', width: 800, height: 800 });
+    expect(gallery?.[0].url).toContain('seite.webp');
+  });
+
   it('Hersteller aus der Stammliste geht vor dem alten Freitext', async () => {
     const [article] = await read('standardArticles');
     const daten = { ...m.standardartikelZuPayload(article), hersteller: 'Alter Freitext' };

@@ -122,3 +122,11 @@ Offene Fragen aus der Nachbesserung:
 - **Noch nicht im Browser geprüft:** die Rückfrage vor dem Verlassen (Datei wählen, Browser-Zurück; Datei wieder entfernen, Browser-Zurück muss sofort zurückführen; Formular ohne Datei darf niemanden festhalten). Das geschieht mit dem nächsten Build nach FA-SHOP-01B; bis dahin gilt dieser Teil als gebaut und getestet, nicht als abgenommen.
 - **Entschieden:** „Rückruf erbitten“ bleibt ein gewöhnlicher Verweis mit Neuladen, damit der Browser vorher nachfragt. Die Schrittliste ab Tablet und die kleinen Großbuchstaben-Zeilen über Feldern gehören zum Gestaltungssystem und bleiben. Drei Knöpfe mit 40 px in `schliessplan-editor.tsx` hebe ich mit der Sichtprobe an.
 - **Fragen an den Inhaber:** Baujahr im Gehäuseweg („Baujahr unbekannt“ erlauben?) in MA-38; Wortlaut der neuen Hilfesätze und der Rückfragen in MA-41; echte Beispielfotos (MA-05).
+
+## ABNAHME, Nachtrag (Orchestrator, 16.11.2026)
+
+- **Rückfrage vor dem Verlassen im Browser geprüft** (Chromium 390 × 844 gegen den Build der Abnahme von FA-SHOP-01B, Formular `/beratung`, Upload als Attrappe abgefangen, nichts gesendet): 15 von 15 Prüfungen bestanden. Ohne Datei führt Zurück sofort hinaus, ohne Rückfrage. Mit gewählter Datei fragt Zurück („Wenn Sie die Seite jetzt verlassen, gehen Ihre ausgewählten Dateien verloren …“); „Abbrechen“ hält Seite und Datei, ein zweites Zurück fragt wieder; „OK“ verlässt die Seite mit genau einer Rückfrage. Nach dem Entfernen der Datei führt Zurück ohne Rückfrage hinaus. Neuladen mit Datei löst die Rückfrage des Browsers aus. Damit ist dieser Teil abgenommen. Echte Geräte (Safari, Android-Zurück-Geste) bleiben Menschensache (M-07).
+- **Dabei gefunden und behoben:** Nach dem Entfernen einer Datei stand für Vorleseprogramme weiter „… ist hochgeladen.“ Die Ansage lautet jetzt „… wurde entfernt.“ (`src/components/forms/photo-upload.tsx`).
+- **Drei Knöpfe mit 40 px** in `schliessplan-editor.tsx` (Tür kopieren, Tür entfernen, Schlüssel entfernen) stehen auf 44 px.
+- Volle Prüfkette mit Build: siehe Abnahme von FA-SHOP-01B (Unit 3.441, DB 128, Build 178/178).
+

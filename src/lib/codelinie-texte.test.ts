@@ -196,3 +196,29 @@ describe('codelinienTexte nach Verfügbarkeit (FA-SHOP-01B)', () => {
     expect(t.faq.find((f) => f.question.startsWith('Wie sieht'))?.answer).toContain('Bestellformular');
   });
 });
+
+describe('Linien aus dem Import (Hersteller und System, ohne Schlagwort-Familie)', () => {
+  // Erfundene Testdaten (G4): Hersteller „Testwerk“, System „TX 100“, so wie scripts/sortiment-import.mjs sie schreibt.
+  const importiert: CodeLine = {
+    ...linie('ms-01'),
+    example: false,
+    id: 'testwerk-tx-100-1-bis-500',
+    slug: 'testwerk-tx-100-1-bis-500',
+    name: 'Testwerk TX 100, Codebereich 1 bis 500',
+    manufacturer: 'Testwerk',
+    manufacturerId: 'testwerk',
+    system: 'TX 100',
+    codeRange: '1 bis 500',
+    application: 'Testwerk TX 100',
+    tags: [],
+    description: '',
+  };
+
+  it('nennt die Linie „Hersteller System“ und keine Familie, die nur das System wiederholt', () => {
+    const t = texte(importiert);
+    expect(t.beschreibung).not.toContain('Anwendungsfamilie');
+    expect(t.beschreibung).not.toContain('TESTWERK-TX-100');
+    expect(t.beschreibung).not.toMatch(/Die Codelinie Testwerk TX 100 ist für Testwerk TX 100/);
+    expect(t.faq.map((f) => f.question).join(' ')).toContain('Testwerk TX 100');
+  });
+});

@@ -1,9 +1,12 @@
-# FA-SHOP-04 · Sperrschließungen und gleichschließende Zylinder als echter Konfigurator und Shop
+# FA-SHOP-04 · Sperrschließungen, Teil A: Datengrundlage (Hersteller-Bereiche, Zylinderkatalog am Hersteller-Stamm, Sperre für unbestätigte Preise)
 
 Kopf: Etappe FA Priorität 3 · Rolle Prüfer und Baumeister · Modell Opus · Stufe 3 (Preisberechnung) · Kostenklasse L · ändert das Datenschema (Hersteller-Bereiche, Zylinderkatalog) und nutzt `sicher.sh --pg` (in dieser Zeit kein anderes Paket mit Schema) · Anforderungen FA-15-01 bis FA-15-12, FA-10-09, FA-19-02 · Befunde: `berichte/FA-ABGLEICH.md` Block 07, `berichte/FA-KUNDSCHAFTER-07.md`, `berichte/FA-BLINDPRUEFUNG-07.md` · Voraussetzung: FA-SHOP-01 (Hersteller-Stamm) ist abgenommen.
 
 ## Aufgabe in einem Satz
-Prüfe den vorhandenen Konfigurator für gleichschließende Zylinder gegen jeden Punkt des Abschnitts 15 und schließe die Lücken, ohne Preise zu ändern oder zu erfinden.
+Lege die Datengrundlage für Abschnitt 15: Hersteller-Bereiche im Admin pflegbar, der Zylinderkatalog wählt den Hersteller aus dem Stamm, und ein Katalogeintrag mit unbestätigtem Preis ist nicht bestellbar. Du änderst keinen Preis und erfindest keinen.
+
+## Zuschnitt (vom Orchestrator, 16.11.2026)
+Das Paket ist geteilt. Du baust Teil A (dieser Auftrag): nur die Punkte unter „Stand des Bestands“ (1) und (2), dazu aus „So bauen“ den Punkt 3 (Preisliste zur Bestätigung und Sperre „Preis nicht bestätigt“) und die Betreiberanleitung, soweit sie Daten betrifft. Die sichtbare Wahl des Herstellers im Konfigurator, Erweiterbarkeit, Sicherungskarte, weitere Bauformen und der Test mit drei Maßen (Punkte 1, 2 und der Rest von 4) gehören zu Teil B (`pakete/FA-SHOP-04B.md`) und bleiben unberührt. Schreibe am Ende des Berichts einen Abschnitt „Stand für Teil B“: welche Funktionen und Felder Teil B benutzen kann (Namen, Dateien), und was dort noch fehlt.
 
 ## Vorgabe des Inhabers (wörtlich, Abschnitt 15)
 „Dieser Bereich soll als echter Konfigurator und Shop funktionieren. BKS und ABUS als Hauptpartner beziehungsweise angebotene Systeme sichtbar darstellen. Herstellerlogos sauber nach den jeweiligen Markenvorgaben einbinden. Zylindertypen: Doppelzylinder, Knaufzylinder, Halbzylinder und weitere passende Varianten. Maße A und B, Anzahl, Not und Gefahrenfunktion, Schlüsselanzahl, Sicherungskarte und Erweiterbarkeit abfragen. Mehrere unterschiedliche Zylindermaße in einer gleichschließenden Bestellung ermöglichen. Preis wird aus den tatsächlich hinterlegten Produkten und Optionen berechnet, keine Demo Preise.“

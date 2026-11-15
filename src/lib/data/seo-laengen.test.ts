@@ -343,7 +343,20 @@ describe('Codelinien-, Kategorie- und Herstellerseiten (Vorlagen, FA-SEO-01B)', 
     LINIEN.map((line) => ({ wo: `${line.id} ${availability}`, ...codelinienTexte({ ...line, availability }, KONTEXT_CODE) })),
   );
 
-  it.each([...linien, ...kategorien, ...hersteller, ...varianten])('$wo: Titel und Beschreibung in den Grenzen, ohne Beträge', ({ wo, metaTitel, metaBeschreibung }) => {
+  // Gruppen ohne lieferbare Linie: Anfrage-Fassung ohne „bestellen“, in denselben Grenzen.
+  const aufAnfrage = (lines: CodeLine[]) => lines.map((line) => ({ ...line, availability: 'auf-anfrage' as const }));
+  const gruppenAnfrage = [
+    ...familien.map((f) => ({ wo: `${f.name} auf-anfrage`, ...kategorieTexte(f.name, aufAnfrage(f.lines), KONTEXT_CODE.ratgeber) })),
+    ...herstellerMitSeite(mitHersteller).map((h) => ({ wo: `${h.adresse} auf-anfrage`, ...herstellerTexte(h.name, aufAnfrage(h.lines)) })),
+  ];
+
+  it('Gruppen ohne lieferbare Linie beschreiben keinen Direktkauf', () => {
+    for (const { wo, metaTitel, metaBeschreibung, einleitung } of gruppenAnfrage) {
+      expect(`${metaTitel} ${metaBeschreibung} ${einleitung}`, wo).not.toMatch(/bestellen|Bestellt wird|wir fertigen danach|Preis je Stück/);
+    }
+  });
+
+  it.each([...linien, ...kategorien, ...hersteller, ...varianten, ...gruppenAnfrage])('$wo: Titel und Beschreibung in den Grenzen, ohne Beträge', ({ wo, metaTitel, metaBeschreibung }) => {
     pruefeSuchtexte(wo, metaTitel, metaBeschreibung);
   });
 

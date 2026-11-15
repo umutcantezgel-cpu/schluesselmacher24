@@ -18,8 +18,9 @@
 //
 // Wirkung: Das Skript schreibt nur content/code-lines.json (ohne `example`), also den Stand ohne Datenbank
 // und den Startwert des Seeds. Vorhandene Einträge bleiben; ein Eintrag mit derselben Kennung wird ersetzt.
-// In die Datenbank kommen die Linien mit dem Seed (`npm run seed`, Payload Local API): Er legt jede echte
-// Linie an, die dort noch fehlt, und lässt vorhandene unberührt. Bilder (Spalte bild_datei) werden im
+// Jede übernommene Linie steht auf `active: false`: Sie ist noch nicht öffentlich. In die Datenbank kommen
+// die Linien mit dem Seed (`npm run seed`, Payload Local API): Er legt jede echte Linie, die dort noch
+// fehlt, als Entwurf an und lässt vorhandene unberührt. Veröffentlicht wird erst nach der Prüfung im Backend. Bilder (Spalte bild_datei) werden im
 // Backend hochgeladen; das Skript vermerkt den Dateinamen nur am Produktbild.
 
 import { existsSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
@@ -138,12 +139,18 @@ export function pruefeCodeMuster(muster) {
   return true;
 }
 
-/** Wie im Bestellformular: ohne Leerraum am Rand, Kleinbuchstaben gelten, wenn die Großschreibung passt. */
+/**
+ * Genau wie die Feldprüfung `codeBeispiel` im Backend (`src/lib/code-pattern.ts`): ohne Leerraum am Rand,
+ * sonst unverändert. Kleinbuchstaben gelten nur, wenn das Prüfmuster sie erlaubt; sonst lehnte die
+ * Datenbank den Beispielcode beim Seed ab.
+ */
 export function codePasst(muster, code) {
   if (pruefeCodeMuster(muster) !== true) return false;
-  const wert = String(code ?? '').trim();
-  const re = new RegExp(muster);
-  return re.test(wert) || re.test(wert.toUpperCase());
+  try {
+    return new RegExp(muster).test(String(code ?? '').trim());
+  } catch {
+    return false;
+  }
 }
 
 const ZEICHENKLASSEN = new Map([
@@ -381,10 +388,13 @@ export function pruefeSortiment(zeilen, { hersteller = [], kategorien = [] } = {
       maxQty: max,
       photoUpload: 'optional',
       shippingClass: 'code-schluessel',
-      active: true,
+      // Erst ein Mensch gibt frei: Ohne Datenbank bleibt die Linie unsichtbar, der Seed legt sie als Entwurf
+      // an. Veröffentlicht wird nach der Prüfung (Foto, Texte), siehe docs/betrieb/shop-pflegen.md, Abschnitt 8.
+      active: false,
       availability: 'lieferbar',
       categoryId: kategorie.id,
-      tags: [stamm.name, z.system],
+      // Keine Schlagwort-Familie aus dem System bilden: Hersteller und System stehen schon in eigenen Feldern.
+      tags: [],
       seo: { title: '', description: '', internalLinks: [] },
     });
   }

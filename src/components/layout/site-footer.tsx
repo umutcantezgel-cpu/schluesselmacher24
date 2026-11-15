@@ -11,10 +11,11 @@ import { Erreichbarkeit } from '@/components/vertrauen/erreichbarkeit';
 import { erreichbarkeit } from '@/lib/erreichbarkeit';
 
 /**
- * Shop-Seiten ohne eigenen Leistungsbereich — stehen im Anschluss an die Bereiche.
- * „Artikel“ fehlt, solange es dort nur Beispielartikel gibt (noindex, Erg. Leitfaden §4).
+ * Shop-Seiten ohne eigenen Leistungsbereich: stehen im Anschluss an die Bereiche. Die Übersicht
+ * `/shop` zeigt alle Kategorien (FA-10). „Artikel“ fehlt, solange es dort nur Beispielartikel
+ * gibt (noindex, Erg. Leitfaden §4).
  */
-const FOOTER_SHOP: NavLink[] = [];
+const FOOTER_SHOP: NavLink[] = [{ href: '/shop', label: 'Alle Shop-Kategorien' }];
 
 /** Für Fachbetriebe (Erg. Leitfaden §7) — im Anschluss an die Service-Links. */
 const FOOTER_PARTNER: NavLink[] = [

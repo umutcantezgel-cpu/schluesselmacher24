@@ -88,7 +88,7 @@ export function HerstellerBereich({ hersteller, bereich, nummer, tone = 'default
             ) : (
               <ul className="mt-4 flex flex-1 flex-col border-t border-border">
                 {eintrag.bereiche.map(({ art, einsatz }) => (
-                  <li key={art} className="flex flex-1 flex-col border-b border-border py-4">
+                  <li key={art} className="flex flex-1 flex-col border-b border-border py-4 last:border-b-0 last:pb-0">
                     <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">{BEREICHE[art].titel}</p>
                     <p className="mt-1.5 flex-1 text-small text-foreground-muted">{einsatz}</p>
                     <Link

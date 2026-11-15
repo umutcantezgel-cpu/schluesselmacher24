@@ -117,6 +117,7 @@ export const NAV_AREAS: NavArea[] = [
         title: 'Shop',
         links: [
           { href: '/schluessel-nach-code', label: 'Schlüssel nach Code', description: 'Übersicht und Code-Anfrage' },
+          { href: '/shop', label: 'Alle Shop-Kategorien', description: 'Was Sie bestellen und was Sie anfragen können' },
           { href: '/ratgeber/schluesselcode-finden', label: 'Wo finde ich den Code?', description: 'Typische Fundstellen' },
           { href: '/rechtliches/versand-und-zahlung', label: 'Versand und Zahlung', description: 'Versandarten und Fristen' },
         ],
@@ -317,6 +318,7 @@ export interface NavGruppe {
 
 /** Weitere Seiten unter „Mehr“ (G-08). „Über uns“ folgt mit seiner Seite (E8-AUTOR-02). */
 export const MEHR_LINKS: NavLink[] = [
+  { href: '/shop', label: 'Shop', description: 'Alle Kategorien im Überblick' },
   { href: '/partner-werden', label: 'Partner werden', description: 'Für Autoschlüssel-Fachbetriebe aus ganz Deutschland' },
   { href: '/ratgeber', label: 'Ratgeber und Anleitungen' },
   { href: '/service-und-termin', label: 'Service und Termin', description: 'Terminstatus, Vor-Ort-Einsatz und Ablauf' },

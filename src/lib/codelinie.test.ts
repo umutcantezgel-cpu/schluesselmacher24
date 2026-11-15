@@ -79,6 +79,17 @@ describe('Liste nach Hersteller und System (FA-11-04 bis FA-11-06)', () => {
     expect(fremd.map((g) => g.name)).toEqual(['Beta']);
   });
 
+  it('bei gleicher Adresse trägt die Gruppe immer den Stammeintrag, gleich in welcher Reihenfolge', () => {
+    for (const daten of [
+      [mit('ms-05', { manufacturer: 'alpha schloss' }), mit('ms-01', { manufacturerId: 'alpha', system: 'Z 200' })],
+      [mit('ms-01', { manufacturerId: 'alpha', system: 'Z 200' }), mit('ms-05', { manufacturer: 'alpha schloss' })],
+    ]) {
+      const gruppen = nachHerstellerUndSystem(daten, STAMM);
+      expect(gruppen).toHaveLength(1);
+      expect(gruppen[0]).toMatchObject({ name: 'Alpha Schloss', adresse: 'alpha-schloss', stamm: { id: 'alpha' } });
+    }
+  });
+
   it('ein Hersteller ohne Produkte hat keine Seite', () => {
     const seiten = herstellerMitSeite(linien, STAMM);
     expect(seiten.map((h) => h.adresse)).toEqual(['beta', 'alpha-schloss', 'delta']);

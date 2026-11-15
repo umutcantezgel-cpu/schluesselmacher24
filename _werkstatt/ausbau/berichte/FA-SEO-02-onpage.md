@@ -1,12 +1,12 @@
 # FA-SEO-02 · Onpage-Prüfung über alle Seiten des Builds
 
-Stand: 2026-11-15_23-24-26 · Basis: http://localhost:3000 · Grenze: 95
+Stand: 2026-11-16_00-19-10 · Basis: http://localhost:3000 · Grenze: 95
 
 Der Wert (0 bis 100) ist eine eigene Ableitung aus den Prüfungen dieses Werkzeugs (Stufe C). Er ist nicht der Seobility-Score und nicht mit ihm vergleichbar. Gewichte und Teilwertung sind Festlegungen; die Gewichtung von Seobility ist nicht bekannt (FA-RECHERCHE-05, OFFENE FRAGE 1). Ein gelber Befund zählt halb, ein roter gar nicht.
 
 ## Zusammenfassung
 
-- Seiten: 134
+- Seiten: 135
 - Median des Werts: 100,0
 - Seiten unter 95: 0
 - Rote Befunde: 0 · gelbe Befunde: 0
@@ -61,6 +61,7 @@ keine
 | /partner-werden/kooperation | 100,0 | 0 | 0 | – |
 | /ratgeber | 100,0 | 0 | 0 | – |
 | /rechtliches/versand-und-zahlung | 100,0 | 0 | 0 | – |
+| /shop | 100,0 | 0 | 0 | – |
 | /roller-und-kleinstfahrzeuge | 100,0 | 0 | 0 | – |
 | /roller-und-kleinstfahrzeuge/anfrage | 100,0 | 0 | 0 | – |
 | /fahrradschluessel | 100,0 | 0 | 0 | – |

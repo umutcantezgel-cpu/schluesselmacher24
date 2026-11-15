@@ -124,6 +124,7 @@ export function TuerenListe({ plan, katalog, onChange }: EditorProps) {
                     <Button
                       variant="ghost"
                       size="sm"
+                      className="min-h-touch"
                       onClick={() => onChange({ ...tuerHinzufuegen(plan, { ...tuer, bezeichnung: `${tuer.bezeichnung} (Kopie)`.slice(0, 60) }), masseGeprueft: false })}
                       aria-label={`Tür „${tuer.bezeichnung || index + 1}“ kopieren`}
                     >
@@ -132,6 +133,7 @@ export function TuerenListe({ plan, katalog, onChange }: EditorProps) {
                     <Button
                       variant="ghost"
                       size="sm"
+                      className="min-h-touch"
                       onClick={() => {
                         onChange({ ...tuerEntfernen(plan, tuer.id), masseGeprueft: false });
                         fokusNach(neuId);
@@ -299,6 +301,7 @@ export function SchluesselMatrix({ plan, onChange }: Omit<EditorProps, 'katalog'
                   <Button
                     variant="ghost"
                     size="sm"
+                    className="min-h-touch"
                     onClick={() => {
                       onChange(schluesselEntfernen(plan, s.id));
                       fokusNach(neuId);

@@ -315,11 +315,18 @@ export default async function HomePage() {
       {/* Direkt kaufen: zwei Zeichnungsblätter */}
       <Section tone="muted" labelledBy="direktkauf-titel">
         {/* Ohne veröffentlichte Codeprodukte ist nur die Sperrschließung bestellbar (A-046): Kopf sagt das. */}
-        <SectionHeading
-          id="direktkauf-titel"
-          eyebrow={codeProdukte ? 'Direkt kaufen' : 'Ohne Termin'}
-          title={codeProdukte ? 'Bestellen ohne Termin' : 'Ohne Termin bestellen oder anfragen'}
-        />
+        <div className="flex flex-wrap items-end justify-between gap-x-gutter gap-y-4">
+          <SectionHeading
+            id="direktkauf-titel"
+            eyebrow={codeProdukte ? 'Direkt kaufen' : 'Ohne Termin'}
+            title={codeProdukte ? 'Bestellen ohne Termin' : 'Ohne Termin bestellen oder anfragen'}
+          />
+          {/* Übersicht aller Shop-Kategorien (FA-10): was direkt bestellbar ist und was angefragt wird */}
+          <Link href="/shop" className="group inline-flex min-h-touch items-center gap-1.5 text-body font-semibold text-primary">
+            Alle Kategorien im Shop
+            <Weiter />
+          </Link>
+        </div>
         {/* Mobil eine Leiste mit sichtbarem Anschnitt, ab 768 px zwei Spalten */}
         <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-gutter md:overflow-visible md:px-0 md:pb-0 scroll-px-5 sm:scroll-px-6 md:scroll-px-0">
           {[

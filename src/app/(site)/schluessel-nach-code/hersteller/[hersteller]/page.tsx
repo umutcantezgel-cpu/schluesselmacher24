@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { getCodeLines, getHersteller } from '@/lib/data';
 import { codelinieIndexierbar, gepflegt, herstellerMitSeite, herstellerPfad } from '@/lib/codelinie';
-import { herstellerTexte } from '@/lib/codelinie-texte';
+import { gruppeLieferbar, herstellerTexte } from '@/lib/codelinie-texte';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 import { PageHeader } from '@/components/layout/page-header';
@@ -73,7 +73,7 @@ export default async function HerstellerPage(props: HerstellerPageProps) {
       <JsonLd data={pageGraphSchema({ path: pfad, name: eintrag.name, description: texte.metaBeschreibung, crumbs })} />
 
       <PageHeader
-        eyebrow={`Hersteller · ${PROCESS_LABELS.direktkauf.label}`}
+        eyebrow={gruppeLieferbar(eintrag.lines) ? `Hersteller · ${PROCESS_LABELS.direktkauf.label}` : 'Hersteller · Auf Anfrage'}
         title={`Schlüssel nach Code für ${eintrag.name}`}
         lead={texte.einleitung}
         crumbs={crumbs}

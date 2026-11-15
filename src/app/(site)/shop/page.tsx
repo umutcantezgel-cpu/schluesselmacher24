@@ -10,7 +10,7 @@ import { SeitenDaten } from '@/components/seo/seiten-daten';
 import { ButtonLink } from '@/components/ui/button';
 import { GlyphInfo } from '@/components/visual/glyphen/info';
 
-import { SHOP_SEO, kategorieWeg } from './kategorie-weg';
+import { SHOP_SEO, anzahlJeKategorie, kategorieWeg } from './kategorie-weg';
 
 export const metadata: Metadata = {
   title: SHOP_SEO.title,
@@ -37,7 +37,8 @@ export default async function ShopSeite() {
   const haupt = sichtbar.filter((k) => !k.eltern);
   // Unterkategorien der Codeprodukte mit Linien; ohne Linien hätten sie nichts zu zeigen.
   const unterCode = codeKategorien(alle, lines).filter((k) => k.lines.length > 0);
-  const anzahl = (art: string) => (art === 'codeprodukte' ? lines.length : art === 'artikel' ? artikel.length : 0);
+  // Je Kategorie nur ihre eigenen Produkte, Unterkategorien eingeschlossen.
+  const anzahlen = anzahlJeKategorie(alle, haupt, { codeprodukte: lines, artikel });
 
   return (
     <>
@@ -55,7 +56,7 @@ export default async function ShopSeite() {
         <SectionHeading id="kategorien-titel" nummer="01" eyebrow="Kategorien" title="Alle Kategorien" />
         <ol className="mt-8 border-t border-border">
           {haupt.map((kategorie, index) => {
-            const zahl = anzahl(kategorie.art);
+            const zahl = anzahlen.get(kategorie.id) ?? 0;
             const weg = kategorieWeg(kategorie, zahl);
             const unter = kategorie.art === 'codeprodukte' ? unterCode.filter((k) => k.kategorie.eltern === kategorie.id) : [];
             return (
@@ -65,7 +66,7 @@ export default async function ShopSeite() {
                     {String(index + 1).padStart(2, '0')}
                   </span>
                   <div className="min-w-0 md:col-span-7">
-                    <h2 className="text-title-sm font-semibold text-foreground">{kategorie.name}</h2>
+                    <h3 className="text-title-sm font-semibold text-foreground">{kategorie.name}</h3>
                     <p className="mt-1 max-w-measure text-body text-foreground-muted">{kategorie.beschreibung}</p>
                     {zahl > 0 && (
                       <p className="mt-2 font-mono text-caption tabular-nums text-foreground-muted">

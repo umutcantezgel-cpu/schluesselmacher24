@@ -328,6 +328,10 @@ export function codeLineZuSeite(doc: Produkte): CodeLine {
   if (codeRange) line.codeRange = codeRange;
   const deliveryTime = optText(doc.lieferzeit);
   if (deliveryTime) line.deliveryTime = deliveryTime;
+  const gallery = (doc.weitereBilder ?? [])
+    .map((bild) => medienBild(bild, doc.name))
+    .filter((bild): bild is MediaImage => Boolean(bild));
+  if (gallery.length) line.gallery = gallery;
   Object.assign(line, shop.extra);
   if (doc.fotoHinweis) line.photoUploadHint = doc.fotoHinweis;
   if (doc.beispiel) line.example = true;

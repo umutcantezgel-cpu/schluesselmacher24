@@ -483,6 +483,8 @@ export interface CodeLine {
   /** Wo der Code typischerweise zu finden ist. */
   codeLocationImage: ImageSlot;
   productImage: ImageSlot;
+  /** Weitere Fotos aus dem Backend (FA-11-11), nur wenn hinterlegt. */
+  gallery?: MediaImage[];
   priceCents: number;
   /** Staffelpreis ab Stückzahl. */
   bulkPrices?: { minQty: number; priceCents: number }[];

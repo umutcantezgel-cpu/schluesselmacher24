@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { ImageSlot } from '@/lib/types';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { notFound, permanentRedirect } from 'next/navigation';
@@ -31,6 +32,8 @@ import {
   codelinieIndexierbar,
   codelinienFamilie,
   codelinienKennung,
+  eigeneAnwendung,
+  eigeneFamilie,
   codelinienPfad,
   codelinienTitel,
   gepflegt,
@@ -128,11 +131,14 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
     { label: 'Hersteller', value: hersteller },
     { label: 'System', value: system },
     { label: 'Codebereich', value: gepflegt(line.codeRange), mono: true },
+    // Verfügbarkeit ausdrücklich, bei lieferbaren Linien gleich mit der Lieferzeit dahinter (FA-22-10).
+    { label: 'Verfügbarkeit', value: VERFUEGBARKEIT_LABEL[verfuegbarkeit] },
     { label: 'Lieferzeit', value: bestellbar ? gepflegt(line.deliveryTime) : undefined },
     { label: 'Profil', value: gepflegt(line.profile) },
     { label: 'Codeserie', value: gepflegt(line.codeSeries) },
-    { label: 'Anwendung', value: gepflegt(line.application) },
-    { label: 'Anwendungsfamilie', value: gepflegt(familie) },
+    // Anwendung und Familie nur, wenn sie nicht Hersteller und System wiederholen (Linien aus dem Import).
+    { label: 'Anwendung', value: eigeneAnwendung(line) },
+    { label: 'Anwendungsfamilie', value: eigeneFamilie(line) },
     { label: 'Schlüsseltyp', value: gepflegt(line.keyType) },
     {
       label: 'Codeformat',
@@ -185,6 +191,17 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
   ];
   const titel = codelinienTitel(line);
   const produktbild = line.productImage.bild ? line.productImage : undefined;
+  // Weitere Fotos aus dem Backend (FA-11-11): kleine Reihe unter dem Bild im Kopf, nur wenn hinterlegt.
+  const galerie: ImageSlot[] = (line.gallery ?? []).map((bild) => ({ motif: bild.alt || titel, ratio: '1/1', bild }));
+  const weitereFotos = galerie.length > 0 && (
+    <ul className="mt-3 grid grid-cols-3 gap-3 sm:grid-cols-4" aria-label="Weitere Fotos">
+      {galerie.map((slot, index) => (
+        <li key={`${index}-${slot.bild?.url}`}>
+          <ImagePlaceholder slot={slot} compact sizes="(min-width: 640px) 12rem, 33vw" />
+        </li>
+      ))}
+    </ul>
+  );
   const verwandtTitel = system && hersteller ? `${hersteller} ${system}` : familie;
   const ratgeberVorhanden = Boolean(ratgeber);
 
@@ -209,11 +226,15 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
         visual={
           produktbild ? (
             /* Produktbild im Kopf (FA-11-11), wenn ein eigenes Foto hinterlegt ist */
-            <figure className="m-0">
-              <ImagePlaceholder slot={produktbild} sizes="(min-width: 1024px) 40vw, 100vw" />
-            </figure>
+            <div>
+              <figure className="m-0">
+                <ImagePlaceholder slot={produktbild} sizes="(min-width: 1024px) 40vw, 100vw" />
+              </figure>
+              {weitereFotos}
+            </div>
           ) : (
           /* Blickfang im Kopf (K-006): die Fräsbahn zum Beispielcode der Codelinie, ohne Kartenrahmen */
+          <div>
           <figure className="m-0">
             <ImagePlaceholder
               frei
@@ -231,6 +252,8 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
               <span className="whitespace-nowrap">keine echte Schließung</span>
             </figcaption>
           </figure>
+          {weitereFotos}
+          </div>
           )
         }
       >

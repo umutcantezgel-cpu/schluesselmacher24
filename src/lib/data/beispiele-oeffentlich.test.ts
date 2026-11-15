@@ -102,6 +102,9 @@ describe('Beispiel-Einträge ohne SM24_BEISPIELE', () => {
 
     const nichtGefunden = { digest: expect.stringContaining('404') };
     await expect(codeSeite.default({ params: Promise.resolve({ slug: 'ms-01' }) })).rejects.toMatchObject(nichtGefunden);
+    // Frühere Familienadresse der Musterdaten: Seit FA-SHOP-01B kommen Kategorieseiten nur aus den
+    // Shop-Kategorien, diese Adresse ist also unbekannt und führt auf 404. Dass Beispiellinien auf keiner
+    // Kategorieseite erscheinen, belegen getCodeLines (oben: leer, auch inaktive) und die Sitemap.
     await expect(
       kategorieSeite.default({ params: Promise.resolve({ kategorie: 'moebel-und-bueroschloesser' }) }),
     ).rejects.toMatchObject(nichtGefunden);

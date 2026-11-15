@@ -44,6 +44,11 @@ const BASE_LINKS: NavLink[] = [
     label: 'Zahlung und Versand',
     description: 'Welche Versandarten und Zahlungswege es gibt.',
   },
+  {
+    href: '/shop',
+    label: 'Alle Shop-Kategorien',
+    description: 'Was Sie bei uns direkt bestellen oder anfragen können.',
+  },
 ];
 
 /** Fach-Icon je Ziel der Weiterlesen-Liste; ohne eigenes Motiv der Warenkorb. */

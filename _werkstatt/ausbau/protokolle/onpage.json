@@ -1,6 +1,6 @@
 {
   "skript": "onpage",
-  "zeit": "2026-11-15T22:24:12.723Z",
+  "zeit": "2026-11-15T23:18:56.589Z",
   "argumente": {
     "nur": null,
     "grenze": 95,
@@ -158,7 +158,7 @@
     }
   ],
   "zusammenfassung": {
-    "seiten": 134,
+    "seiten": 135,
     "median": 100,
     "unterGrenze": 0,
     "rot": 0,
@@ -175,9 +175,9 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 532,
-      "html_bytes": 494711,
-      "interne_ziele": 44,
+      "woerter": 643,
+      "html_bytes": 511201,
+      "interne_ziele": 45,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -262,14 +262,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "44 Ziele geprüft"
+          "detail": "45 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "69 Verweise"
+          "detail": "76 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -297,7 +297,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "532 Wörter, keine belegte Schwelle"
+          "detail": "643 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -325,7 +325,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "494711 Byte, keine belegte Schwelle"
+          "detail": "511201 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -337,8 +337,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 1123,
-      "html_bytes": 478094,
-      "interne_ziele": 56,
+      "html_bytes": 478926,
+      "interne_ziele": 57,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -423,14 +423,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "56 Ziele geprüft"
+          "detail": "57 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "85 Verweise"
+          "detail": "86 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -486,7 +486,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "478094 Byte, keine belegte Schwelle"
+          "detail": "478926 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -498,8 +498,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 675,
-      "html_bytes": 327219,
-      "interne_ziele": 42,
+      "html_bytes": 328008,
+      "interne_ziele": 43,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -584,14 +584,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "42 Ziele geprüft"
+          "detail": "43 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "52 Verweise"
+          "detail": "53 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -647,7 +647,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "327219 Byte, keine belegte Schwelle"
+          "detail": "328008 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -659,8 +659,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 627,
-      "html_bytes": 326112,
-      "interne_ziele": 41,
+      "html_bytes": 326901,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -745,14 +745,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "51 Verweise"
+          "detail": "52 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -808,7 +808,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "326112 Byte, keine belegte Schwelle"
+          "detail": "326901 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -820,8 +820,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 594,
-      "html_bytes": 321154,
-      "interne_ziele": 39,
+      "html_bytes": 321943,
+      "interne_ziele": 40,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -906,14 +906,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "39 Ziele geprüft"
+          "detail": "40 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -969,7 +969,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "321154 Byte, keine belegte Schwelle"
+          "detail": "321943 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -981,8 +981,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 547,
-      "html_bytes": 320529,
-      "interne_ziele": 40,
+      "html_bytes": 321318,
+      "interne_ziele": 41,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -1067,14 +1067,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "40 Ziele geprüft"
+          "detail": "41 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -1130,7 +1130,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "320529 Byte, keine belegte Schwelle"
+          "detail": "321318 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -1142,8 +1142,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 625,
-      "html_bytes": 319720,
-      "interne_ziele": 39,
+      "html_bytes": 320638,
+      "interne_ziele": 40,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -1228,14 +1228,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "39 Ziele geprüft"
+          "detail": "40 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -1291,7 +1291,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "319720 Byte, keine belegte Schwelle"
+          "detail": "320638 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -1303,8 +1303,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 562,
-      "html_bytes": 319749,
-      "interne_ziele": 39,
+      "html_bytes": 320538,
+      "interne_ziele": 40,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -1389,14 +1389,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "39 Ziele geprüft"
+          "detail": "40 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -1452,7 +1452,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "319749 Byte, keine belegte Schwelle"
+          "detail": "320538 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -1464,8 +1464,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 620,
-      "html_bytes": 323560,
-      "interne_ziele": 39,
+      "html_bytes": 324349,
+      "interne_ziele": 40,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -1550,14 +1550,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "39 Ziele geprüft"
+          "detail": "40 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -1613,7 +1613,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "323560 Byte, keine belegte Schwelle"
+          "detail": "324349 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -1625,8 +1625,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 760,
-      "html_bytes": 494129,
-      "interne_ziele": 113,
+      "html_bytes": 494918,
+      "interne_ziele": 114,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -1711,14 +1711,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "113 Ziele geprüft"
+          "detail": "114 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "133 Verweise"
+          "detail": "134 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -1774,7 +1774,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "494129 Byte, keine belegte Schwelle"
+          "detail": "494918 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -1786,8 +1786,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 217,
-      "html_bytes": 302329,
-      "interne_ziele": 38,
+      "html_bytes": 303118,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -1872,14 +1872,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "44 Verweise"
+          "detail": "45 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -1935,7 +1935,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "302329 Byte, keine belegte Schwelle"
+          "detail": "303118 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -1947,8 +1947,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 1075,
-      "html_bytes": 384921,
-      "interne_ziele": 40,
+      "html_bytes": 385710,
+      "interne_ziele": 41,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -2033,14 +2033,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "40 Ziele geprüft"
+          "detail": "41 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -2096,7 +2096,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "384921 Byte, keine belegte Schwelle"
+          "detail": "385710 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -2107,9 +2107,9 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 161,
-      "html_bytes": 269307,
-      "interne_ziele": 38,
+      "woerter": 213,
+      "html_bytes": 271624,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -2194,14 +2194,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "42 Verweise"
+          "detail": "44 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -2229,7 +2229,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "161 Wörter, keine belegte Schwelle"
+          "detail": "213 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -2257,7 +2257,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "269307 Byte, keine belegte Schwelle"
+          "detail": "271624 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -2269,8 +2269,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 95,
-      "html_bytes": 267747,
-      "interne_ziele": 37,
+      "html_bytes": 268770,
+      "interne_ziele": 38,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -2355,14 +2355,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "38 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "42 Verweise"
+          "detail": "43 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -2418,7 +2418,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "267747 Byte, keine belegte Schwelle"
+          "detail": "268770 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -2430,8 +2430,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 143,
-      "html_bytes": 282625,
-      "interne_ziele": 37,
+      "html_bytes": 283414,
+      "interne_ziele": 38,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -2516,14 +2516,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "38 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "44 Verweise"
+          "detail": "45 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -2579,7 +2579,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "282625 Byte, keine belegte Schwelle"
+          "detail": "283414 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -2591,8 +2591,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 176,
-      "html_bytes": 264053,
-      "interne_ziele": 37,
+      "html_bytes": 264842,
+      "interne_ziele": 38,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -2677,14 +2677,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "38 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "39 Verweise"
+          "detail": "40 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -2740,7 +2740,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "264053 Byte, keine belegte Schwelle"
+          "detail": "264842 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -2752,8 +2752,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 96,
-      "html_bytes": 277403,
-      "interne_ziele": 38,
+      "html_bytes": 278192,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -2838,14 +2838,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "44 Verweise"
+          "detail": "45 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -2901,7 +2901,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "277403 Byte, keine belegte Schwelle"
+          "detail": "278192 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -2912,9 +2912,9 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 109,
-      "html_bytes": 264081,
-      "interne_ziele": 36,
+      "woerter": 117,
+      "html_bytes": 264917,
+      "interne_ziele": 37,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -2999,14 +2999,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "36 Ziele geprüft"
+          "detail": "37 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "40 Verweise"
+          "detail": "41 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -3034,7 +3034,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "109 Wörter, keine belegte Schwelle"
+          "detail": "117 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -3062,7 +3062,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "264081 Byte, keine belegte Schwelle"
+          "detail": "264917 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -3073,9 +3073,9 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 221,
-      "html_bytes": 287760,
-      "interne_ziele": 36,
+      "woerter": 249,
+      "html_bytes": 289672,
+      "interne_ziele": 37,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -3160,14 +3160,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "36 Ziele geprüft"
+          "detail": "37 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "45 Verweise"
+          "detail": "46 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -3195,7 +3195,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "221 Wörter, keine belegte Schwelle"
+          "detail": "249 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -3223,7 +3223,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "287760 Byte, keine belegte Schwelle"
+          "detail": "289672 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -3235,8 +3235,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 564,
-      "html_bytes": 312762,
-      "interne_ziele": 38,
+      "html_bytes": 313551,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -3321,14 +3321,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "48 Verweise"
+          "detail": "49 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -3384,7 +3384,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "312762 Byte, keine belegte Schwelle"
+          "detail": "313551 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -3395,9 +3395,9 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 223,
-      "html_bytes": 308648,
-      "interne_ziele": 38,
+      "woerter": 233,
+      "html_bytes": 313615,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -3482,14 +3482,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "48 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -3517,7 +3517,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "223 Wörter, keine belegte Schwelle"
+          "detail": "233 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -3545,7 +3545,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "308648 Byte, keine belegte Schwelle"
+          "detail": "313615 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -3556,9 +3556,9 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 1253,
-      "html_bytes": 462515,
-      "interne_ziele": 40,
+      "woerter": 1302,
+      "html_bytes": 466612,
+      "interne_ziele": 41,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -3643,14 +3643,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "40 Ziele geprüft"
+          "detail": "41 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "54 Verweise"
+          "detail": "55 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -3678,7 +3678,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "1253 Wörter, keine belegte Schwelle"
+          "detail": "1302 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -3706,7 +3706,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "462515 Byte, keine belegte Schwelle"
+          "detail": "466612 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -3717,9 +3717,9 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 341,
-      "html_bytes": 307016,
-      "interne_ziele": 37,
+      "woerter": 396,
+      "html_bytes": 309503,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -3804,14 +3804,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "46 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -3839,7 +3839,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "341 Wörter, keine belegte Schwelle"
+          "detail": "396 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -3867,7 +3867,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "307016 Byte, keine belegte Schwelle"
+          "detail": "309503 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -3879,8 +3879,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 1390,
-      "html_bytes": 505666,
-      "interne_ziele": 42,
+      "html_bytes": 506455,
+      "interne_ziele": 43,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -3965,14 +3965,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "42 Ziele geprüft"
+          "detail": "43 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "58 Verweise"
+          "detail": "59 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -4028,7 +4028,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "505666 Byte, keine belegte Schwelle"
+          "detail": "506455 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -4040,8 +4040,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 176,
-      "html_bytes": 287764,
-      "interne_ziele": 38,
+      "html_bytes": 288776,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -4126,14 +4126,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "45 Verweise"
+          "detail": "46 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -4189,7 +4189,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "287764 Byte, keine belegte Schwelle"
+          "detail": "288776 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -4201,8 +4201,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 155,
-      "html_bytes": 271312,
-      "interne_ziele": 37,
+      "html_bytes": 272335,
+      "interne_ziele": 38,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -4287,14 +4287,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "38 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "40 Verweise"
+          "detail": "41 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -4350,7 +4350,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "271312 Byte, keine belegte Schwelle"
+          "detail": "272335 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -4361,9 +4361,9 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 1324,
-      "html_bytes": 432239,
-      "interne_ziele": 42,
+      "woerter": 1394,
+      "html_bytes": 437372,
+      "interne_ziele": 43,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -4448,14 +4448,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "42 Ziele geprüft"
+          "detail": "43 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -4483,7 +4483,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "1324 Wörter, keine belegte Schwelle"
+          "detail": "1394 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -4511,7 +4511,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "432239 Byte, keine belegte Schwelle"
+          "detail": "437372 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -4523,8 +4523,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 151,
-      "html_bytes": 283116,
-      "interne_ziele": 38,
+      "html_bytes": 284138,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -4609,14 +4609,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "43 Verweise"
+          "detail": "44 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -4672,7 +4672,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "283116 Byte, keine belegte Schwelle"
+          "detail": "284138 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -4684,8 +4684,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 1116,
-      "html_bytes": 401609,
-      "interne_ziele": 48,
+      "html_bytes": 402398,
+      "interne_ziele": 49,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -4770,14 +4770,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "48 Ziele geprüft"
+          "detail": "49 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "60 Verweise"
+          "detail": "61 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -4833,7 +4833,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "401609 Byte, keine belegte Schwelle"
+          "detail": "402398 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -4845,8 +4845,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 559,
-      "html_bytes": 342389,
-      "interne_ziele": 45,
+      "html_bytes": 343178,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -4931,14 +4931,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -4994,7 +4994,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "342389 Byte, keine belegte Schwelle"
+          "detail": "343178 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -5005,9 +5005,9 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 102,
-      "html_bytes": 276667,
-      "interne_ziele": 36,
+      "woerter": 99,
+      "html_bytes": 277664,
+      "interne_ziele": 37,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -5092,14 +5092,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "36 Ziele geprüft"
+          "detail": "37 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "42 Verweise"
+          "detail": "43 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -5127,7 +5127,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "102 Wörter, keine belegte Schwelle"
+          "detail": "99 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -5155,7 +5155,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "276667 Byte, keine belegte Schwelle"
+          "detail": "277664 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -5167,8 +5167,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 1020,
-      "html_bytes": 372992,
-      "interne_ziele": 38,
+      "html_bytes": 373781,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -5253,14 +5253,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -5316,7 +5316,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "372992 Byte, keine belegte Schwelle"
+          "detail": "373781 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -5327,9 +5327,9 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 137,
-      "html_bytes": 268111,
-      "interne_ziele": 36,
+      "woerter": 134,
+      "html_bytes": 269104,
+      "interne_ziele": 37,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -5414,14 +5414,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "36 Ziele geprüft"
+          "detail": "37 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "38 Verweise"
+          "detail": "39 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -5449,7 +5449,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "137 Wörter, keine belegte Schwelle"
+          "detail": "134 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -5477,7 +5477,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "268111 Byte, keine belegte Schwelle"
+          "detail": "269104 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -5488,9 +5488,9 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 174,
-      "html_bytes": 287493,
-      "interne_ziele": 37,
+      "woerter": 212,
+      "html_bytes": 289669,
+      "interne_ziele": 38,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -5575,14 +5575,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "38 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "45 Verweise"
+          "detail": "47 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -5610,7 +5610,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "174 Wörter, keine belegte Schwelle"
+          "detail": "212 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -5638,7 +5638,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "287493 Byte, keine belegte Schwelle"
+          "detail": "289669 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -5649,9 +5649,9 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 492,
-      "html_bytes": 333793,
-      "interne_ziele": 41,
+      "woerter": 539,
+      "html_bytes": 336011,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -5736,14 +5736,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "51 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -5771,7 +5771,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "492 Wörter, keine belegte Schwelle"
+          "detail": "539 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -5799,7 +5799,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "333793 Byte, keine belegte Schwelle"
+          "detail": "336011 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -5811,8 +5811,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 403,
-      "html_bytes": 324302,
-      "interne_ziele": 38,
+      "html_bytes": 325350,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -5897,14 +5897,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "48 Verweise"
+          "detail": "49 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -5960,7 +5960,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "324302 Byte, keine belegte Schwelle"
+          "detail": "325350 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -5972,8 +5972,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 349,
-      "html_bytes": 335107,
-      "interne_ziele": 38,
+      "html_bytes": 335896,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -6058,14 +6058,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "48 Verweise"
+          "detail": "49 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -6121,7 +6121,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "335107 Byte, keine belegte Schwelle"
+          "detail": "335896 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -6133,8 +6133,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 340,
-      "html_bytes": 333176,
-      "interne_ziele": 37,
+      "html_bytes": 333965,
+      "interne_ziele": 38,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -6219,14 +6219,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "38 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "48 Verweise"
+          "detail": "49 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -6282,7 +6282,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "333176 Byte, keine belegte Schwelle"
+          "detail": "333965 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -6294,8 +6294,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 257,
-      "html_bytes": 308986,
-      "interne_ziele": 37,
+      "html_bytes": 309775,
+      "interne_ziele": 38,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -6380,14 +6380,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "38 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -6443,7 +6443,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "308986 Byte, keine belegte Schwelle"
+          "detail": "309775 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -6455,8 +6455,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 173,
-      "html_bytes": 303145,
-      "interne_ziele": 39,
+      "html_bytes": 303934,
+      "interne_ziele": 40,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -6541,14 +6541,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "39 Ziele geprüft"
+          "detail": "40 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -6604,7 +6604,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "303145 Byte, keine belegte Schwelle"
+          "detail": "303934 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -6616,8 +6616,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 249,
-      "html_bytes": 292859,
-      "interne_ziele": 44,
+      "html_bytes": 293648,
+      "interne_ziele": 45,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -6702,14 +6702,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "44 Ziele geprüft"
+          "detail": "45 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "48 Verweise"
+          "detail": "49 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -6765,7 +6765,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "292859 Byte, keine belegte Schwelle"
+          "detail": "293648 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -6777,8 +6777,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 251,
-      "html_bytes": 267242,
-      "interne_ziele": 36,
+      "html_bytes": 267816,
+      "interne_ziele": 37,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -6863,14 +6863,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "36 Ziele geprüft"
+          "detail": "37 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "48 Verweise"
+          "detail": "49 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -6926,7 +6926,168 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "267242 Byte, keine belegte Schwelle"
+          "detail": "267816 Byte, keine belegte Schwelle"
+        }
+      ]
+    },
+    {
+      "adresse": "http://localhost:3000/shop",
+      "status": 200,
+      "wert": 100,
+      "rot": 0,
+      "gelb": 0,
+      "befunde": [],
+      "woerter": 220,
+      "html_bytes": 291238,
+      "interne_ziele": 43,
+      "eingehend": true,
+      "ergebnisse": [
+        {
+          "id": "status",
+          "titel": "Statuscode 200 und HTML",
+          "gewicht": 3,
+          "status": "ok",
+          "detail": "HTTP 200, HTML"
+        },
+        {
+          "id": "titel_einzeln",
+          "titel": "Genau ein Titel",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "1 Titel"
+        },
+        {
+          "id": "titel_laenge",
+          "titel": "Titellänge",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "551 px, 54 Zeichen"
+        },
+        {
+          "id": "beschreibung_vorhanden",
+          "titel": "Beschreibung vorhanden",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "vorhanden"
+        },
+        {
+          "id": "beschreibung_laenge",
+          "titel": "Beschreibungslänge",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "144 Zeichen"
+        },
+        {
+          "id": "h1",
+          "titel": "Genau eine h1",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "1 h1"
+        },
+        {
+          "id": "ueberschriften",
+          "titel": "Überschriften ohne Sprung",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "keine Sprünge"
+        },
+        {
+          "id": "lang",
+          "titel": "Sprachangabe de",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "lang=\"de\""
+        },
+        {
+          "id": "canonical",
+          "titel": "Canonical auf die eigene Adresse",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "auf die eigene Adresse"
+        },
+        {
+          "id": "noindex",
+          "titel": "Kein noindex in der Sitemap",
+          "gewicht": 3,
+          "status": "ok",
+          "detail": "indexierbar"
+        },
+        {
+          "id": "alt",
+          "titel": "Bilder mit Alt-Attribut",
+          "gewicht": 1,
+          "status": "nicht_zutreffend",
+          "detail": "keine Bilder"
+        },
+        {
+          "id": "interne_links",
+          "titel": "Interne Verweise ohne Fehlerziel",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "43 Ziele geprüft"
+        },
+        {
+          "id": "ankertext",
+          "titel": "Sprechende Ankertexte",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "50 Verweise"
+        },
+        {
+          "id": "titel_eindeutig",
+          "titel": "Titel über alle Seiten eindeutig",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "eindeutig"
+        },
+        {
+          "id": "beschreibung_eindeutig",
+          "titel": "Beschreibung über alle Seiten eindeutig",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "eindeutig"
+        },
+        {
+          "id": "eingehend",
+          "titel": "Interner Verweis von einer anderen Seite",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "verlinkt"
+        },
+        {
+          "id": "textmenge",
+          "titel": "Textmenge im Hauptinhalt",
+          "gewicht": 0,
+          "status": "nicht_bewertet",
+          "detail": "220 Wörter, keine belegte Schwelle"
+        },
+        {
+          "id": "strukturdaten",
+          "titel": "Strukturierte Daten als gültiges JSON",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "2 JSON-LD-Blöcke gültig"
+        },
+        {
+          "id": "viewport",
+          "titel": "Viewport-Angabe",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "device-width"
+        },
+        {
+          "id": "favicon",
+          "titel": "Favicon angegeben",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "vorhanden"
+        },
+        {
+          "id": "html_groesse",
+          "titel": "Größe des HTML-Dokuments",
+          "gewicht": 0,
+          "status": "nicht_bewertet",
+          "detail": "291238 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -6938,8 +7099,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 356,
-      "html_bytes": 294168,
-      "interne_ziele": 37,
+      "html_bytes": 294957,
+      "interne_ziele": 38,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -7024,14 +7185,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "38 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "44 Verweise"
+          "detail": "45 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -7087,7 +7248,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "294168 Byte, keine belegte Schwelle"
+          "detail": "294957 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -7099,8 +7260,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 247,
-      "html_bytes": 266860,
-      "interne_ziele": 36,
+      "html_bytes": 267649,
+      "interne_ziele": 37,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -7185,14 +7346,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "36 Ziele geprüft"
+          "detail": "37 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "38 Verweise"
+          "detail": "39 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -7248,7 +7409,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "266860 Byte, keine belegte Schwelle"
+          "detail": "267649 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -7260,8 +7421,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 266,
-      "html_bytes": 288531,
-      "interne_ziele": 37,
+      "html_bytes": 289320,
+      "interne_ziele": 38,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -7346,14 +7507,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "38 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "43 Verweise"
+          "detail": "44 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -7409,7 +7570,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "288531 Byte, keine belegte Schwelle"
+          "detail": "289320 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -7421,8 +7582,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 136,
-      "html_bytes": 263411,
-      "interne_ziele": 36,
+      "html_bytes": 264200,
+      "interne_ziele": 37,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -7507,14 +7668,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "36 Ziele geprüft"
+          "detail": "37 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "39 Verweise"
+          "detail": "40 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -7570,7 +7731,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "263411 Byte, keine belegte Schwelle"
+          "detail": "264200 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -7582,8 +7743,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 390,
-      "html_bytes": 363479,
-      "interne_ziele": 48,
+      "html_bytes": 364268,
+      "interne_ziele": 49,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -7668,14 +7829,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "48 Ziele geprüft"
+          "detail": "49 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "63 Verweise"
+          "detail": "64 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -7731,7 +7892,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "363479 Byte, keine belegte Schwelle"
+          "detail": "364268 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -7743,8 +7904,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 787,
-      "html_bytes": 392149,
-      "interne_ziele": 48,
+      "html_bytes": 392938,
+      "interne_ziele": 49,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -7829,14 +7990,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "48 Ziele geprüft"
+          "detail": "49 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "58 Verweise"
+          "detail": "59 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -7892,7 +8053,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "392149 Byte, keine belegte Schwelle"
+          "detail": "392938 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -7904,8 +8065,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 769,
-      "html_bytes": 388191,
-      "interne_ziele": 47,
+      "html_bytes": 388980,
+      "interne_ziele": 48,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -7990,14 +8151,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "47 Ziele geprüft"
+          "detail": "48 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "57 Verweise"
+          "detail": "58 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -8053,7 +8214,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "388191 Byte, keine belegte Schwelle"
+          "detail": "388980 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -8065,8 +8226,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 770,
-      "html_bytes": 374767,
-      "interne_ziele": 47,
+      "html_bytes": 375556,
+      "interne_ziele": 48,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -8151,14 +8312,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "47 Ziele geprüft"
+          "detail": "48 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "57 Verweise"
+          "detail": "58 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -8214,7 +8375,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "374767 Byte, keine belegte Schwelle"
+          "detail": "375556 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -8226,8 +8387,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 770,
-      "html_bytes": 374763,
-      "interne_ziele": 47,
+      "html_bytes": 375552,
+      "interne_ziele": 48,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -8312,14 +8473,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "47 Ziele geprüft"
+          "detail": "48 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "57 Verweise"
+          "detail": "58 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -8375,7 +8536,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "374763 Byte, keine belegte Schwelle"
+          "detail": "375552 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -8387,8 +8548,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 770,
-      "html_bytes": 374688,
-      "interne_ziele": 47,
+      "html_bytes": 375477,
+      "interne_ziele": 48,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -8473,14 +8634,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "47 Ziele geprüft"
+          "detail": "48 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "57 Verweise"
+          "detail": "58 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -8536,7 +8697,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "374688 Byte, keine belegte Schwelle"
+          "detail": "375477 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -8548,8 +8709,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 769,
-      "html_bytes": 388691,
-      "interne_ziele": 47,
+      "html_bytes": 389480,
+      "interne_ziele": 48,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -8634,14 +8795,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "47 Ziele geprüft"
+          "detail": "48 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "57 Verweise"
+          "detail": "58 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -8697,7 +8858,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "388691 Byte, keine belegte Schwelle"
+          "detail": "389480 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -8709,8 +8870,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 371,
-      "html_bytes": 349810,
-      "interne_ziele": 47,
+      "html_bytes": 350599,
+      "interne_ziele": 48,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -8795,14 +8956,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "47 Ziele geprüft"
+          "detail": "48 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "61 Verweise"
+          "detail": "62 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -8858,7 +9019,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "349810 Byte, keine belegte Schwelle"
+          "detail": "350599 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -8870,8 +9031,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 777,
-      "html_bytes": 373829,
-      "interne_ziele": 46,
+      "html_bytes": 374618,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -8956,14 +9117,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -9019,7 +9180,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "373829 Byte, keine belegte Schwelle"
+          "detail": "374618 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -9031,8 +9192,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 777,
-      "html_bytes": 373825,
-      "interne_ziele": 46,
+      "html_bytes": 374614,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -9117,14 +9278,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -9180,7 +9341,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "373825 Byte, keine belegte Schwelle"
+          "detail": "374614 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -9192,8 +9353,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 777,
-      "html_bytes": 373700,
-      "interne_ziele": 46,
+      "html_bytes": 374489,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -9278,14 +9439,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -9341,7 +9502,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "373700 Byte, keine belegte Schwelle"
+          "detail": "374489 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -9353,8 +9514,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 777,
-      "html_bytes": 373631,
-      "interne_ziele": 46,
+      "html_bytes": 374420,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -9439,14 +9600,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -9502,7 +9663,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "373631 Byte, keine belegte Schwelle"
+          "detail": "374420 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -9514,8 +9675,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 777,
-      "html_bytes": 373631,
-      "interne_ziele": 46,
+      "html_bytes": 374420,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -9600,14 +9761,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -9663,7 +9824,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "373631 Byte, keine belegte Schwelle"
+          "detail": "374420 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -9675,8 +9836,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 345,
-      "html_bytes": 351474,
-      "interne_ziele": 47,
+      "html_bytes": 352435,
+      "interne_ziele": 48,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -9761,14 +9922,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "47 Ziele geprüft"
+          "detail": "48 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "61 Verweise"
+          "detail": "62 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -9824,7 +9985,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "351474 Byte, keine belegte Schwelle"
+          "detail": "352435 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -9836,8 +9997,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 753,
-      "html_bytes": 373850,
-      "interne_ziele": 46,
+      "html_bytes": 374639,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -9922,14 +10083,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -9985,7 +10146,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "373850 Byte, keine belegte Schwelle"
+          "detail": "374639 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -9997,8 +10158,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 753,
-      "html_bytes": 373858,
-      "interne_ziele": 46,
+      "html_bytes": 374647,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -10083,14 +10244,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -10146,7 +10307,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "373858 Byte, keine belegte Schwelle"
+          "detail": "374647 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -10158,8 +10319,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 753,
-      "html_bytes": 373858,
-      "interne_ziele": 46,
+      "html_bytes": 374647,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -10244,14 +10405,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -10307,7 +10468,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "373858 Byte, keine belegte Schwelle"
+          "detail": "374647 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -10319,8 +10480,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 748,
-      "html_bytes": 377401,
-      "interne_ziele": 47,
+      "html_bytes": 378190,
+      "interne_ziele": 48,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -10405,14 +10566,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "47 Ziele geprüft"
+          "detail": "48 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "57 Verweise"
+          "detail": "58 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -10468,7 +10629,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "377401 Byte, keine belegte Schwelle"
+          "detail": "378190 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -10480,8 +10641,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 748,
-      "html_bytes": 377105,
-      "interne_ziele": 47,
+      "html_bytes": 377894,
+      "interne_ziele": 48,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -10566,14 +10727,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "47 Ziele geprüft"
+          "detail": "48 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "57 Verweise"
+          "detail": "58 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -10629,7 +10790,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "377105 Byte, keine belegte Schwelle"
+          "detail": "377894 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -10641,8 +10802,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 364,
-      "html_bytes": 352589,
-      "interne_ziele": 47,
+      "html_bytes": 353378,
+      "interne_ziele": 48,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -10727,14 +10888,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "47 Ziele geprüft"
+          "detail": "48 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "61 Verweise"
+          "detail": "62 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -10790,7 +10951,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "352589 Byte, keine belegte Schwelle"
+          "detail": "353378 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -10802,8 +10963,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 770,
-      "html_bytes": 371788,
-      "interne_ziele": 46,
+      "html_bytes": 372577,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -10888,14 +11049,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -10951,7 +11112,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "371788 Byte, keine belegte Schwelle"
+          "detail": "372577 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -10963,8 +11124,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 788,
-      "html_bytes": 389088,
-      "interne_ziele": 47,
+      "html_bytes": 389877,
+      "interne_ziele": 48,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -11049,14 +11210,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "47 Ziele geprüft"
+          "detail": "48 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "57 Verweise"
+          "detail": "58 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -11112,7 +11273,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "389088 Byte, keine belegte Schwelle"
+          "detail": "389877 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -11124,8 +11285,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 770,
-      "html_bytes": 371796,
-      "interne_ziele": 46,
+      "html_bytes": 372585,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -11210,14 +11371,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -11273,7 +11434,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "371796 Byte, keine belegte Schwelle"
+          "detail": "372585 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -11285,8 +11446,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 793,
-      "html_bytes": 381260,
-      "interne_ziele": 46,
+      "html_bytes": 382049,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -11371,14 +11532,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -11434,7 +11595,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "381260 Byte, keine belegte Schwelle"
+          "detail": "382049 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -11446,8 +11607,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 770,
-      "html_bytes": 371796,
-      "interne_ziele": 46,
+      "html_bytes": 372585,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -11532,14 +11693,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -11595,7 +11756,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "371796 Byte, keine belegte Schwelle"
+          "detail": "372585 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -11607,8 +11768,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 327,
-      "html_bytes": 339751,
-      "interne_ziele": 46,
+      "html_bytes": 340540,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -11693,14 +11854,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "59 Verweise"
+          "detail": "60 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -11756,7 +11917,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "339751 Byte, keine belegte Schwelle"
+          "detail": "340540 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -11768,8 +11929,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 769,
-      "html_bytes": 383876,
-      "interne_ziele": 45,
+      "html_bytes": 384665,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -11854,14 +12015,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -11917,7 +12078,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "383876 Byte, keine belegte Schwelle"
+          "detail": "384665 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -11929,8 +12090,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 769,
-      "html_bytes": 383880,
-      "interne_ziele": 45,
+      "html_bytes": 384669,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -12015,14 +12176,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -12078,7 +12239,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "383880 Byte, keine belegte Schwelle"
+          "detail": "384669 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -12090,8 +12251,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 770,
-      "html_bytes": 370516,
-      "interne_ziele": 45,
+      "html_bytes": 371305,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -12176,14 +12337,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -12239,7 +12400,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "370516 Byte, keine belegte Schwelle"
+          "detail": "371305 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -12251,8 +12412,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 770,
-      "html_bytes": 370289,
-      "interne_ziele": 45,
+      "html_bytes": 371078,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -12337,14 +12498,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -12400,7 +12561,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "370289 Byte, keine belegte Schwelle"
+          "detail": "371078 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -12412,8 +12573,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 324,
-      "html_bytes": 340577,
-      "interne_ziele": 46,
+      "html_bytes": 341366,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -12498,14 +12659,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "59 Verweise"
+          "detail": "60 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -12561,7 +12722,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "340577 Byte, keine belegte Schwelle"
+          "detail": "341366 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -12573,8 +12734,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 769,
-      "html_bytes": 383970,
-      "interne_ziele": 45,
+      "html_bytes": 384759,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -12659,14 +12820,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -12722,7 +12883,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "383970 Byte, keine belegte Schwelle"
+          "detail": "384759 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -12734,8 +12895,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 787,
-      "html_bytes": 387826,
-      "interne_ziele": 46,
+      "html_bytes": 388615,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -12820,14 +12981,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -12883,7 +13044,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "387826 Byte, keine belegte Schwelle"
+          "detail": "388615 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -12895,8 +13056,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 770,
-      "html_bytes": 370243,
-      "interne_ziele": 45,
+      "html_bytes": 371032,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -12981,14 +13142,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -13044,7 +13205,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "370243 Byte, keine belegte Schwelle"
+          "detail": "371032 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -13056,8 +13217,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 769,
-      "html_bytes": 384045,
-      "interne_ziele": 45,
+      "html_bytes": 384834,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -13142,14 +13303,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -13205,7 +13366,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "384045 Byte, keine belegte Schwelle"
+          "detail": "384834 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -13217,8 +13378,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 328,
-      "html_bytes": 340804,
-      "interne_ziele": 46,
+      "html_bytes": 341593,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -13303,14 +13464,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "59 Verweise"
+          "detail": "60 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -13366,7 +13527,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "340804 Byte, keine belegte Schwelle"
+          "detail": "341593 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -13378,8 +13539,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 769,
-      "html_bytes": 384065,
-      "interne_ziele": 45,
+      "html_bytes": 384854,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -13464,14 +13625,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -13527,7 +13688,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "384065 Byte, keine belegte Schwelle"
+          "detail": "384854 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -13539,8 +13700,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 787,
-      "html_bytes": 388138,
-      "interne_ziele": 46,
+      "html_bytes": 388927,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -13625,14 +13786,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -13688,7 +13849,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "388138 Byte, keine belegte Schwelle"
+          "detail": "388927 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -13700,8 +13861,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 770,
-      "html_bytes": 370562,
-      "interne_ziele": 45,
+      "html_bytes": 371351,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -13786,14 +13947,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -13849,7 +14010,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "370562 Byte, keine belegte Schwelle"
+          "detail": "371351 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -13861,8 +14022,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 770,
-      "html_bytes": 370556,
-      "interne_ziele": 45,
+      "html_bytes": 371345,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -13947,14 +14108,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -14010,7 +14171,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "370556 Byte, keine belegte Schwelle"
+          "detail": "371345 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -14022,8 +14183,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 303,
-      "html_bytes": 329545,
-      "interne_ziele": 45,
+      "html_bytes": 330334,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -14108,14 +14269,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "57 Verweise"
+          "detail": "58 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -14171,7 +14332,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "329545 Byte, keine belegte Schwelle"
+          "detail": "330334 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -14183,8 +14344,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 769,
-      "html_bytes": 382096,
-      "interne_ziele": 44,
+      "html_bytes": 382885,
+      "interne_ziele": 45,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -14269,14 +14430,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "44 Ziele geprüft"
+          "detail": "45 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "54 Verweise"
+          "detail": "55 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -14332,7 +14493,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "382096 Byte, keine belegte Schwelle"
+          "detail": "382885 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -14344,8 +14505,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 787,
-      "html_bytes": 385956,
-      "interne_ziele": 45,
+      "html_bytes": 386745,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -14430,14 +14591,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -14493,7 +14654,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "385956 Byte, keine belegte Schwelle"
+          "detail": "386745 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -14505,8 +14666,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 770,
-      "html_bytes": 368525,
-      "interne_ziele": 44,
+      "html_bytes": 369314,
+      "interne_ziele": 45,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -14591,14 +14752,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "44 Ziele geprüft"
+          "detail": "45 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "54 Verweise"
+          "detail": "55 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -14654,7 +14815,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "368525 Byte, keine belegte Schwelle"
+          "detail": "369314 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -14666,8 +14827,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 337,
-      "html_bytes": 339850,
-      "interne_ziele": 46,
+      "html_bytes": 340639,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -14752,14 +14913,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "59 Verweise"
+          "detail": "60 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -14815,7 +14976,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "339850 Byte, keine belegte Schwelle"
+          "detail": "340639 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -14827,8 +14988,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 795,
-      "html_bytes": 385592,
-      "interne_ziele": 46,
+      "html_bytes": 386381,
+      "interne_ziele": 47,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -14913,14 +15074,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "46 Ziele geprüft"
+          "detail": "47 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "56 Verweise"
+          "detail": "57 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -14976,7 +15137,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "385592 Byte, keine belegte Schwelle"
+          "detail": "386381 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -14988,8 +15149,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 777,
-      "html_bytes": 372653,
-      "interne_ziele": 45,
+      "html_bytes": 373442,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -15074,14 +15235,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -15137,7 +15298,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "372653 Byte, keine belegte Schwelle"
+          "detail": "373442 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -15149,8 +15310,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 777,
-      "html_bytes": 372718,
-      "interne_ziele": 45,
+      "html_bytes": 373507,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -15235,14 +15396,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -15298,7 +15459,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "372718 Byte, keine belegte Schwelle"
+          "detail": "373507 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -15310,8 +15471,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 753,
-      "html_bytes": 372536,
-      "interne_ziele": 45,
+      "html_bytes": 373325,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -15396,14 +15557,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "55 Verweise"
+          "detail": "56 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -15459,7 +15620,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "372536 Byte, keine belegte Schwelle"
+          "detail": "373325 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -15471,8 +15632,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 310,
-      "html_bytes": 331069,
-      "interne_ziele": 45,
+      "html_bytes": 331858,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -15557,14 +15718,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "57 Verweise"
+          "detail": "58 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -15620,7 +15781,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "331069 Byte, keine belegte Schwelle"
+          "detail": "331858 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -15632,8 +15793,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 793,
-      "html_bytes": 391978,
-      "interne_ziele": 45,
+      "html_bytes": 392767,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -15670,6 +15831,328 @@
           "gewicht": 1,
           "status": "ok",
           "detail": "157 Zeichen"
+        },
+        {
+          "id": "h1",
+          "titel": "Genau eine h1",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "1 h1"
+        },
+        {
+          "id": "ueberschriften",
+          "titel": "Überschriften ohne Sprung",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "keine Sprünge"
+        },
+        {
+          "id": "lang",
+          "titel": "Sprachangabe de",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "lang=\"de\""
+        },
+        {
+          "id": "canonical",
+          "titel": "Canonical auf die eigene Adresse",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "auf die eigene Adresse"
+        },
+        {
+          "id": "noindex",
+          "titel": "Kein noindex in der Sitemap",
+          "gewicht": 3,
+          "status": "ok",
+          "detail": "indexierbar"
+        },
+        {
+          "id": "alt",
+          "titel": "Bilder mit Alt-Attribut",
+          "gewicht": 1,
+          "status": "nicht_zutreffend",
+          "detail": "keine Bilder"
+        },
+        {
+          "id": "interne_links",
+          "titel": "Interne Verweise ohne Fehlerziel",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "46 Ziele geprüft"
+        },
+        {
+          "id": "ankertext",
+          "titel": "Sprechende Ankertexte",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "56 Verweise"
+        },
+        {
+          "id": "titel_eindeutig",
+          "titel": "Titel über alle Seiten eindeutig",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "eindeutig"
+        },
+        {
+          "id": "beschreibung_eindeutig",
+          "titel": "Beschreibung über alle Seiten eindeutig",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "eindeutig"
+        },
+        {
+          "id": "eingehend",
+          "titel": "Interner Verweis von einer anderen Seite",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "verlinkt"
+        },
+        {
+          "id": "textmenge",
+          "titel": "Textmenge im Hauptinhalt",
+          "gewicht": 0,
+          "status": "nicht_bewertet",
+          "detail": "793 Wörter, keine belegte Schwelle"
+        },
+        {
+          "id": "strukturdaten",
+          "titel": "Strukturierte Daten als gültiges JSON",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "2 JSON-LD-Blöcke gültig"
+        },
+        {
+          "id": "viewport",
+          "titel": "Viewport-Angabe",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "device-width"
+        },
+        {
+          "id": "favicon",
+          "titel": "Favicon angegeben",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "vorhanden"
+        },
+        {
+          "id": "html_groesse",
+          "titel": "Größe des HTML-Dokuments",
+          "gewicht": 0,
+          "status": "nicht_bewertet",
+          "detail": "392767 Byte, keine belegte Schwelle"
+        }
+      ]
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/toyota/corolla",
+      "status": 200,
+      "wert": 100,
+      "rot": 0,
+      "gelb": 0,
+      "befunde": [],
+      "woerter": 775,
+      "html_bytes": 376811,
+      "interne_ziele": 45,
+      "eingehend": true,
+      "ergebnisse": [
+        {
+          "id": "status",
+          "titel": "Statuscode 200 und HTML",
+          "gewicht": 3,
+          "status": "ok",
+          "detail": "HTTP 200, HTML"
+        },
+        {
+          "id": "titel_einzeln",
+          "titel": "Genau ein Titel",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "1 Titel"
+        },
+        {
+          "id": "titel_laenge",
+          "titel": "Titellänge",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "501 px, 48 Zeichen"
+        },
+        {
+          "id": "beschreibung_vorhanden",
+          "titel": "Beschreibung vorhanden",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "vorhanden"
+        },
+        {
+          "id": "beschreibung_laenge",
+          "titel": "Beschreibungslänge",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "147 Zeichen"
+        },
+        {
+          "id": "h1",
+          "titel": "Genau eine h1",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "1 h1"
+        },
+        {
+          "id": "ueberschriften",
+          "titel": "Überschriften ohne Sprung",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "keine Sprünge"
+        },
+        {
+          "id": "lang",
+          "titel": "Sprachangabe de",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "lang=\"de\""
+        },
+        {
+          "id": "canonical",
+          "titel": "Canonical auf die eigene Adresse",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "auf die eigene Adresse"
+        },
+        {
+          "id": "noindex",
+          "titel": "Kein noindex in der Sitemap",
+          "gewicht": 3,
+          "status": "ok",
+          "detail": "indexierbar"
+        },
+        {
+          "id": "alt",
+          "titel": "Bilder mit Alt-Attribut",
+          "gewicht": 1,
+          "status": "nicht_zutreffend",
+          "detail": "keine Bilder"
+        },
+        {
+          "id": "interne_links",
+          "titel": "Interne Verweise ohne Fehlerziel",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "45 Ziele geprüft"
+        },
+        {
+          "id": "ankertext",
+          "titel": "Sprechende Ankertexte",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "55 Verweise"
+        },
+        {
+          "id": "titel_eindeutig",
+          "titel": "Titel über alle Seiten eindeutig",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "eindeutig"
+        },
+        {
+          "id": "beschreibung_eindeutig",
+          "titel": "Beschreibung über alle Seiten eindeutig",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "eindeutig"
+        },
+        {
+          "id": "eingehend",
+          "titel": "Interner Verweis von einer anderen Seite",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "verlinkt"
+        },
+        {
+          "id": "textmenge",
+          "titel": "Textmenge im Hauptinhalt",
+          "gewicht": 0,
+          "status": "nicht_bewertet",
+          "detail": "775 Wörter, keine belegte Schwelle"
+        },
+        {
+          "id": "strukturdaten",
+          "titel": "Strukturierte Daten als gültiges JSON",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "2 JSON-LD-Blöcke gültig"
+        },
+        {
+          "id": "viewport",
+          "titel": "Viewport-Angabe",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "device-width"
+        },
+        {
+          "id": "favicon",
+          "titel": "Favicon angegeben",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "vorhanden"
+        },
+        {
+          "id": "html_groesse",
+          "titel": "Größe des HTML-Dokuments",
+          "gewicht": 0,
+          "status": "nicht_bewertet",
+          "detail": "376811 Byte, keine belegte Schwelle"
+        }
+      ]
+    },
+    {
+      "adresse": "http://localhost:3000/autoschluessel/marken/toyota/rav4",
+      "status": 200,
+      "wert": 100,
+      "rot": 0,
+      "gelb": 0,
+      "befunde": [],
+      "woerter": 793,
+      "html_bytes": 378930,
+      "interne_ziele": 45,
+      "eingehend": true,
+      "ergebnisse": [
+        {
+          "id": "status",
+          "titel": "Statuscode 200 und HTML",
+          "gewicht": 3,
+          "status": "ok",
+          "detail": "HTTP 200, HTML"
+        },
+        {
+          "id": "titel_einzeln",
+          "titel": "Genau ein Titel",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "1 Titel"
+        },
+        {
+          "id": "titel_laenge",
+          "titel": "Titellänge",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "488 px, 45 Zeichen"
+        },
+        {
+          "id": "beschreibung_vorhanden",
+          "titel": "Beschreibung vorhanden",
+          "gewicht": 2,
+          "status": "ok",
+          "detail": "vorhanden"
+        },
+        {
+          "id": "beschreibung_laenge",
+          "titel": "Beschreibungslänge",
+          "gewicht": 1,
+          "status": "ok",
+          "detail": "153 Zeichen"
         },
         {
           "id": "h1",
@@ -15781,329 +16264,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "391978 Byte, keine belegte Schwelle"
-        }
-      ]
-    },
-    {
-      "adresse": "http://localhost:3000/autoschluessel/marken/toyota/corolla",
-      "status": 200,
-      "wert": 100,
-      "rot": 0,
-      "gelb": 0,
-      "befunde": [],
-      "woerter": 775,
-      "html_bytes": 376022,
-      "interne_ziele": 44,
-      "eingehend": true,
-      "ergebnisse": [
-        {
-          "id": "status",
-          "titel": "Statuscode 200 und HTML",
-          "gewicht": 3,
-          "status": "ok",
-          "detail": "HTTP 200, HTML"
-        },
-        {
-          "id": "titel_einzeln",
-          "titel": "Genau ein Titel",
-          "gewicht": 2,
-          "status": "ok",
-          "detail": "1 Titel"
-        },
-        {
-          "id": "titel_laenge",
-          "titel": "Titellänge",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "501 px, 48 Zeichen"
-        },
-        {
-          "id": "beschreibung_vorhanden",
-          "titel": "Beschreibung vorhanden",
-          "gewicht": 2,
-          "status": "ok",
-          "detail": "vorhanden"
-        },
-        {
-          "id": "beschreibung_laenge",
-          "titel": "Beschreibungslänge",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "147 Zeichen"
-        },
-        {
-          "id": "h1",
-          "titel": "Genau eine h1",
-          "gewicht": 2,
-          "status": "ok",
-          "detail": "1 h1"
-        },
-        {
-          "id": "ueberschriften",
-          "titel": "Überschriften ohne Sprung",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "keine Sprünge"
-        },
-        {
-          "id": "lang",
-          "titel": "Sprachangabe de",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "lang=\"de\""
-        },
-        {
-          "id": "canonical",
-          "titel": "Canonical auf die eigene Adresse",
-          "gewicht": 2,
-          "status": "ok",
-          "detail": "auf die eigene Adresse"
-        },
-        {
-          "id": "noindex",
-          "titel": "Kein noindex in der Sitemap",
-          "gewicht": 3,
-          "status": "ok",
-          "detail": "indexierbar"
-        },
-        {
-          "id": "alt",
-          "titel": "Bilder mit Alt-Attribut",
-          "gewicht": 1,
-          "status": "nicht_zutreffend",
-          "detail": "keine Bilder"
-        },
-        {
-          "id": "interne_links",
-          "titel": "Interne Verweise ohne Fehlerziel",
-          "gewicht": 2,
-          "status": "ok",
-          "detail": "44 Ziele geprüft"
-        },
-        {
-          "id": "ankertext",
-          "titel": "Sprechende Ankertexte",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "54 Verweise"
-        },
-        {
-          "id": "titel_eindeutig",
-          "titel": "Titel über alle Seiten eindeutig",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "eindeutig"
-        },
-        {
-          "id": "beschreibung_eindeutig",
-          "titel": "Beschreibung über alle Seiten eindeutig",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "eindeutig"
-        },
-        {
-          "id": "eingehend",
-          "titel": "Interner Verweis von einer anderen Seite",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "verlinkt"
-        },
-        {
-          "id": "textmenge",
-          "titel": "Textmenge im Hauptinhalt",
-          "gewicht": 0,
-          "status": "nicht_bewertet",
-          "detail": "775 Wörter, keine belegte Schwelle"
-        },
-        {
-          "id": "strukturdaten",
-          "titel": "Strukturierte Daten als gültiges JSON",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "2 JSON-LD-Blöcke gültig"
-        },
-        {
-          "id": "viewport",
-          "titel": "Viewport-Angabe",
-          "gewicht": 2,
-          "status": "ok",
-          "detail": "device-width"
-        },
-        {
-          "id": "favicon",
-          "titel": "Favicon angegeben",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "vorhanden"
-        },
-        {
-          "id": "html_groesse",
-          "titel": "Größe des HTML-Dokuments",
-          "gewicht": 0,
-          "status": "nicht_bewertet",
-          "detail": "376022 Byte, keine belegte Schwelle"
-        }
-      ]
-    },
-    {
-      "adresse": "http://localhost:3000/autoschluessel/marken/toyota/rav4",
-      "status": 200,
-      "wert": 100,
-      "rot": 0,
-      "gelb": 0,
-      "befunde": [],
-      "woerter": 793,
-      "html_bytes": 378141,
-      "interne_ziele": 44,
-      "eingehend": true,
-      "ergebnisse": [
-        {
-          "id": "status",
-          "titel": "Statuscode 200 und HTML",
-          "gewicht": 3,
-          "status": "ok",
-          "detail": "HTTP 200, HTML"
-        },
-        {
-          "id": "titel_einzeln",
-          "titel": "Genau ein Titel",
-          "gewicht": 2,
-          "status": "ok",
-          "detail": "1 Titel"
-        },
-        {
-          "id": "titel_laenge",
-          "titel": "Titellänge",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "488 px, 45 Zeichen"
-        },
-        {
-          "id": "beschreibung_vorhanden",
-          "titel": "Beschreibung vorhanden",
-          "gewicht": 2,
-          "status": "ok",
-          "detail": "vorhanden"
-        },
-        {
-          "id": "beschreibung_laenge",
-          "titel": "Beschreibungslänge",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "153 Zeichen"
-        },
-        {
-          "id": "h1",
-          "titel": "Genau eine h1",
-          "gewicht": 2,
-          "status": "ok",
-          "detail": "1 h1"
-        },
-        {
-          "id": "ueberschriften",
-          "titel": "Überschriften ohne Sprung",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "keine Sprünge"
-        },
-        {
-          "id": "lang",
-          "titel": "Sprachangabe de",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "lang=\"de\""
-        },
-        {
-          "id": "canonical",
-          "titel": "Canonical auf die eigene Adresse",
-          "gewicht": 2,
-          "status": "ok",
-          "detail": "auf die eigene Adresse"
-        },
-        {
-          "id": "noindex",
-          "titel": "Kein noindex in der Sitemap",
-          "gewicht": 3,
-          "status": "ok",
-          "detail": "indexierbar"
-        },
-        {
-          "id": "alt",
-          "titel": "Bilder mit Alt-Attribut",
-          "gewicht": 1,
-          "status": "nicht_zutreffend",
-          "detail": "keine Bilder"
-        },
-        {
-          "id": "interne_links",
-          "titel": "Interne Verweise ohne Fehlerziel",
-          "gewicht": 2,
-          "status": "ok",
-          "detail": "44 Ziele geprüft"
-        },
-        {
-          "id": "ankertext",
-          "titel": "Sprechende Ankertexte",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "54 Verweise"
-        },
-        {
-          "id": "titel_eindeutig",
-          "titel": "Titel über alle Seiten eindeutig",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "eindeutig"
-        },
-        {
-          "id": "beschreibung_eindeutig",
-          "titel": "Beschreibung über alle Seiten eindeutig",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "eindeutig"
-        },
-        {
-          "id": "eingehend",
-          "titel": "Interner Verweis von einer anderen Seite",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "verlinkt"
-        },
-        {
-          "id": "textmenge",
-          "titel": "Textmenge im Hauptinhalt",
-          "gewicht": 0,
-          "status": "nicht_bewertet",
-          "detail": "793 Wörter, keine belegte Schwelle"
-        },
-        {
-          "id": "strukturdaten",
-          "titel": "Strukturierte Daten als gültiges JSON",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "2 JSON-LD-Blöcke gültig"
-        },
-        {
-          "id": "viewport",
-          "titel": "Viewport-Angabe",
-          "gewicht": 2,
-          "status": "ok",
-          "detail": "device-width"
-        },
-        {
-          "id": "favicon",
-          "titel": "Favicon angegeben",
-          "gewicht": 1,
-          "status": "ok",
-          "detail": "vorhanden"
-        },
-        {
-          "id": "html_groesse",
-          "titel": "Größe des HTML-Dokuments",
-          "gewicht": 0,
-          "status": "nicht_bewertet",
-          "detail": "378141 Byte, keine belegte Schwelle"
+          "detail": "378930 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -16115,8 +16276,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 298,
-      "html_bytes": 328142,
-      "interne_ziele": 45,
+      "html_bytes": 328931,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -16201,14 +16362,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "57 Verweise"
+          "detail": "58 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -16264,7 +16425,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "328142 Byte, keine belegte Schwelle"
+          "detail": "328931 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -16276,8 +16437,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 769,
-      "html_bytes": 382116,
-      "interne_ziele": 44,
+      "html_bytes": 382733,
+      "interne_ziele": 45,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -16362,14 +16523,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "44 Ziele geprüft"
+          "detail": "45 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "54 Verweise"
+          "detail": "55 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -16425,7 +16586,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "382116 Byte, keine belegte Schwelle"
+          "detail": "382733 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -16437,8 +16598,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 769,
-      "html_bytes": 382217,
-      "interne_ziele": 44,
+      "html_bytes": 383049,
+      "interne_ziele": 45,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -16523,14 +16684,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "44 Ziele geprüft"
+          "detail": "45 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "54 Verweise"
+          "detail": "55 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -16586,7 +16747,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "382217 Byte, keine belegte Schwelle"
+          "detail": "383049 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -16598,8 +16759,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 769,
-      "html_bytes": 382288,
-      "interne_ziele": 44,
+      "html_bytes": 382948,
+      "interne_ziele": 45,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -16684,14 +16845,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "44 Ziele geprüft"
+          "detail": "45 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "54 Verweise"
+          "detail": "55 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -16747,7 +16908,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "382288 Byte, keine belegte Schwelle"
+          "detail": "382948 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -16759,8 +16920,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 307,
-      "html_bytes": 329599,
-      "interne_ziele": 45,
+      "html_bytes": 330388,
+      "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -16845,14 +17006,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "45 Ziele geprüft"
+          "detail": "46 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "57 Verweise"
+          "detail": "58 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -16908,7 +17069,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "329599 Byte, keine belegte Schwelle"
+          "detail": "330388 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -16920,8 +17081,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 775,
-      "html_bytes": 375945,
-      "interne_ziele": 44,
+      "html_bytes": 376734,
+      "interne_ziele": 45,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -17006,14 +17167,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "44 Ziele geprüft"
+          "detail": "45 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "54 Verweise"
+          "detail": "55 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -17069,7 +17230,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "375945 Byte, keine belegte Schwelle"
+          "detail": "376734 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -17081,8 +17242,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 793,
-      "html_bytes": 378224,
-      "interne_ziele": 44,
+      "html_bytes": 378884,
+      "interne_ziele": 45,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -17167,14 +17328,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "44 Ziele geprüft"
+          "detail": "45 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "54 Verweise"
+          "detail": "55 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -17230,7 +17391,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "378224 Byte, keine belegte Schwelle"
+          "detail": "378884 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -17242,8 +17403,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 777,
-      "html_bytes": 370995,
-      "interne_ziele": 44,
+      "html_bytes": 371698,
+      "interne_ziele": 45,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -17328,14 +17489,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "44 Ziele geprüft"
+          "detail": "45 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "54 Verweise"
+          "detail": "55 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -17391,7 +17552,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "370995 Byte, keine belegte Schwelle"
+          "detail": "371698 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -17403,8 +17564,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 140,
-      "html_bytes": 303006,
-      "interne_ziele": 41,
+      "html_bytes": 303795,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -17489,14 +17650,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -17552,7 +17713,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "303006 Byte, keine belegte Schwelle"
+          "detail": "303795 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -17564,8 +17725,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 142,
-      "html_bytes": 291260,
-      "interne_ziele": 41,
+      "html_bytes": 292049,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -17650,14 +17811,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -17713,7 +17874,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "291260 Byte, keine belegte Schwelle"
+          "detail": "292049 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -17725,8 +17886,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 132,
-      "html_bytes": 289263,
-      "interne_ziele": 41,
+      "html_bytes": 290052,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -17811,14 +17972,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -17874,7 +18035,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "289263 Byte, keine belegte Schwelle"
+          "detail": "290052 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -17886,8 +18047,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 144,
-      "html_bytes": 291003,
-      "interne_ziele": 41,
+      "html_bytes": 291792,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -17972,14 +18133,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -18035,7 +18196,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "291003 Byte, keine belegte Schwelle"
+          "detail": "291792 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -18047,8 +18208,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 139,
-      "html_bytes": 288991,
-      "interne_ziele": 41,
+      "html_bytes": 289780,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -18133,14 +18294,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -18196,7 +18357,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "288991 Byte, keine belegte Schwelle"
+          "detail": "289780 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -18208,8 +18369,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 142,
-      "html_bytes": 289222,
-      "interne_ziele": 41,
+      "html_bytes": 290011,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -18294,14 +18455,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -18357,7 +18518,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "289222 Byte, keine belegte Schwelle"
+          "detail": "290011 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -18369,8 +18530,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 145,
-      "html_bytes": 289452,
-      "interne_ziele": 41,
+      "html_bytes": 290241,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -18455,14 +18616,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -18518,7 +18679,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "289452 Byte, keine belegte Schwelle"
+          "detail": "290241 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -18530,8 +18691,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 138,
-      "html_bytes": 291556,
-      "interne_ziele": 41,
+      "html_bytes": 292345,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -18616,14 +18777,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -18679,7 +18840,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "291556 Byte, keine belegte Schwelle"
+          "detail": "292345 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -18691,8 +18852,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 137,
-      "html_bytes": 289071,
-      "interne_ziele": 41,
+      "html_bytes": 289860,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -18777,14 +18938,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -18840,7 +19001,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "289071 Byte, keine belegte Schwelle"
+          "detail": "289860 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -18852,8 +19013,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 132,
-      "html_bytes": 291110,
-      "interne_ziele": 41,
+      "html_bytes": 291899,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -18938,14 +19099,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "49 Verweise"
+          "detail": "50 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -19001,7 +19162,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "291110 Byte, keine belegte Schwelle"
+          "detail": "291899 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -19013,8 +19174,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 226,
-      "html_bytes": 290402,
-      "interne_ziele": 41,
+      "html_bytes": 291191,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -19099,14 +19260,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "52 Verweise"
+          "detail": "53 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -19162,7 +19323,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "290402 Byte, keine belegte Schwelle"
+          "detail": "291191 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -19174,8 +19335,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 215,
-      "html_bytes": 290010,
-      "interne_ziele": 41,
+      "html_bytes": 290799,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -19260,14 +19421,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "52 Verweise"
+          "detail": "53 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -19323,7 +19484,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "290010 Byte, keine belegte Schwelle"
+          "detail": "290799 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -19335,8 +19496,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 125,
-      "html_bytes": 286017,
-      "interne_ziele": 41,
+      "html_bytes": 286806,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -19421,14 +19582,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "50 Verweise"
+          "detail": "51 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -19484,7 +19645,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "286017 Byte, keine belegte Schwelle"
+          "detail": "286806 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -19496,8 +19657,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 136,
-      "html_bytes": 286114,
-      "interne_ziele": 41,
+      "html_bytes": 286903,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -19582,14 +19743,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "50 Verweise"
+          "detail": "51 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -19645,7 +19806,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "286114 Byte, keine belegte Schwelle"
+          "detail": "286903 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -19657,8 +19818,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 207,
-      "html_bytes": 290421,
-      "interne_ziele": 41,
+      "html_bytes": 291210,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -19743,14 +19904,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "52 Verweise"
+          "detail": "53 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -19806,7 +19967,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "290421 Byte, keine belegte Schwelle"
+          "detail": "291210 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -19818,8 +19979,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 211,
-      "html_bytes": 290280,
-      "interne_ziele": 41,
+      "html_bytes": 291069,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -19904,14 +20065,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "52 Verweise"
+          "detail": "53 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -19967,7 +20128,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "290280 Byte, keine belegte Schwelle"
+          "detail": "291069 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -19979,8 +20140,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 211,
-      "html_bytes": 290227,
-      "interne_ziele": 41,
+      "html_bytes": 291016,
+      "interne_ziele": 42,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -20065,14 +20226,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "41 Ziele geprüft"
+          "detail": "42 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "52 Verweise"
+          "detail": "53 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -20128,7 +20289,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "290227 Byte, keine belegte Schwelle"
+          "detail": "291016 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -20140,8 +20301,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 172,
-      "html_bytes": 299207,
-      "interne_ziele": 38,
+      "html_bytes": 299996,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -20226,14 +20387,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "44 Verweise"
+          "detail": "45 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -20289,7 +20450,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "299207 Byte, keine belegte Schwelle"
+          "detail": "299996 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -20301,8 +20462,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 99,
-      "html_bytes": 286967,
-      "interne_ziele": 38,
+      "html_bytes": 287756,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -20387,14 +20548,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "44 Verweise"
+          "detail": "45 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -20450,7 +20611,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "286967 Byte, keine belegte Schwelle"
+          "detail": "287756 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -20462,8 +20623,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 114,
-      "html_bytes": 295143,
-      "interne_ziele": 36,
+      "html_bytes": 295932,
+      "interne_ziele": 37,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -20548,14 +20709,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "36 Ziele geprüft"
+          "detail": "37 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "43 Verweise"
+          "detail": "44 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -20611,7 +20772,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "295143 Byte, keine belegte Schwelle"
+          "detail": "295932 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -20623,8 +20784,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 139,
-      "html_bytes": 309102,
-      "interne_ziele": 37,
+      "html_bytes": 309891,
+      "interne_ziele": 38,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -20709,14 +20870,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "38 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "43 Verweise"
+          "detail": "44 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -20772,7 +20933,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "309102 Byte, keine belegte Schwelle"
+          "detail": "309891 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -20784,8 +20945,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 117,
-      "html_bytes": 289254,
-      "interne_ziele": 36,
+      "html_bytes": 290043,
+      "interne_ziele": 37,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -20870,14 +21031,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "36 Ziele geprüft"
+          "detail": "37 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "43 Verweise"
+          "detail": "44 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -20933,7 +21094,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "289254 Byte, keine belegte Schwelle"
+          "detail": "290043 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -20945,8 +21106,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 100,
-      "html_bytes": 282603,
-      "interne_ziele": 37,
+      "html_bytes": 283392,
+      "interne_ziele": 38,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -21031,14 +21192,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "38 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "43 Verweise"
+          "detail": "44 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -21094,7 +21255,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "282603 Byte, keine belegte Schwelle"
+          "detail": "283392 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -21106,8 +21267,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 99,
-      "html_bytes": 282405,
-      "interne_ziele": 36,
+      "html_bytes": 283194,
+      "interne_ziele": 37,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -21192,14 +21353,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "36 Ziele geprüft"
+          "detail": "37 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "43 Verweise"
+          "detail": "44 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -21255,7 +21416,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "282405 Byte, keine belegte Schwelle"
+          "detail": "283194 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -21267,8 +21428,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 90,
-      "html_bytes": 278670,
-      "interne_ziele": 37,
+      "html_bytes": 279459,
+      "interne_ziele": 38,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -21353,14 +21514,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "37 Ziele geprüft"
+          "detail": "38 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "43 Verweise"
+          "detail": "44 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -21416,7 +21577,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "278670 Byte, keine belegte Schwelle"
+          "detail": "279459 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -21428,8 +21589,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 47,
-      "html_bytes": 269252,
-      "interne_ziele": 38,
+      "html_bytes": 270041,
+      "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -21514,14 +21675,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "38 Ziele geprüft"
+          "detail": "39 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "42 Verweise"
+          "detail": "43 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -21577,7 +21738,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "269252 Byte, keine belegte Schwelle"
+          "detail": "270041 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -21589,8 +21750,8 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 39,
-      "html_bytes": 291675,
-      "interne_ziele": 36,
+      "html_bytes": 292464,
+      "interne_ziele": 37,
       "eingehend": true,
       "ergebnisse": [
         {
@@ -21675,14 +21836,14 @@
           "titel": "Interne Verweise ohne Fehlerziel",
           "gewicht": 2,
           "status": "ok",
-          "detail": "36 Ziele geprüft"
+          "detail": "37 Ziele geprüft"
         },
         {
           "id": "ankertext",
           "titel": "Sprechende Ankertexte",
           "gewicht": 1,
           "status": "ok",
-          "detail": "50 Verweise"
+          "detail": "51 Verweise"
         },
         {
           "id": "titel_eindeutig",
@@ -21738,7 +21899,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "291675 Byte, keine belegte Schwelle"
+          "detail": "292464 Byte, keine belegte Schwelle"
         }
       ]
     }

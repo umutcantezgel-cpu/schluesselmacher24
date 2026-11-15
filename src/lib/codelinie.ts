@@ -15,9 +15,41 @@ export const KATEGORIE_PFAD = `${SHOP_PFAD}/kategorie`;
 export const HERSTELLER_PFAD = `${SHOP_PFAD}/hersteller`;
 
 /** Kennung einer Codelinie aus dem Namen („… — Serie MS-01“ → „MS-01“), sonst aus dem Slug. Nur Anzeige. */
-export function codelinienKennung(line: Pick<CodeLine, 'name' | 'slug'>): string {
+export function codelinienKennung(
+  line: Pick<CodeLine, 'name' | 'slug'> & Partial<Pick<CodeLine, 'manufacturer' | 'system'>>,
+): string {
   const treffer = /Serie\s+([A-Za-z0-9-]+)\s*$/.exec(line.name);
-  return (treffer ? treffer[1] : line.slug).toUpperCase();
+  if (treffer) return treffer[1].toUpperCase();
+  // Ohne Serie, aber mit Hersteller und System (etwa aus dem Import): „BKS System“ statt der Adresse in Großbuchstaben.
+  const herstellerSystem = herstellerUndSystem(line);
+  return herstellerSystem ?? line.slug.toUpperCase();
+}
+
+/** „Hersteller System“, wenn beides gepflegt ist. */
+function herstellerUndSystem(line: Partial<Pick<CodeLine, 'manufacturer' | 'system'>>): string | undefined {
+  const hersteller = gepflegt(line.manufacturer);
+  const system = gepflegt(line.system);
+  return hersteller && system ? `${hersteller} ${system}` : undefined;
+}
+
+/**
+ * Anwendungsfamilie nur, wenn sie etwas Eigenes sagt: nicht, wenn sie bloß System, Anwendung
+ * oder „Hersteller System“ wiederholt (so bei Linien aus dem Import).
+ */
+export function eigeneFamilie(
+  line: Pick<CodeLine, 'tags' | 'application'> & Partial<Pick<CodeLine, 'manufacturer' | 'system'>>,
+): string | undefined {
+  const familie = gepflegt(codelinienFamilie(line));
+  if (!familie) return undefined;
+  const gleich = [gepflegt(line.system), gepflegt(line.application), herstellerUndSystem(line)];
+  return gleich.some((wert) => wert && wert.toLowerCase() === familie.toLowerCase()) ? undefined : familie;
+}
+
+/** Anwendung nur, wenn sie mehr sagt als „Hersteller System“. */
+export function eigeneAnwendung(line: Pick<CodeLine, 'application'> & Partial<Pick<CodeLine, 'manufacturer' | 'system'>>): string | undefined {
+  const anwendung = gepflegt(line.application);
+  const doppelt = herstellerUndSystem(line);
+  return anwendung && doppelt && anwendung.toLowerCase() === doppelt.toLowerCase() ? undefined : anwendung;
 }
 
 /** Titel ohne die angehängte Serienkennung („— Serie MS-01“). Nur Anzeige. */
@@ -118,7 +150,8 @@ const nachName = (a: string, b: string) => a.localeCompare(b, 'de', { numeric: t
  * (FA-11-06). Reihenfolge: Hersteller der Stammliste nach ihrer Reihenfolge,
  * dann weitere Hersteller nach Namen, zuletzt Linien ohne Hersteller. Systeme
  * nach Namen, Linien ohne System zuletzt; Linien in der Reihenfolge der Daten.
- * Hersteller ohne Linien erscheinen nicht.
+ * Hersteller ohne Linien erscheinen nicht. Ergibt ein Freitext dieselbe Adresse
+ * wie ein Stammeintrag, gilt die Gruppe als dieser Stammeintrag.
  */
 export function nachHerstellerUndSystem(lines: CodeLine[], stamm: ShopHersteller[] = []): HerstellerGruppe[] {
   const gruppen = new Map<string, HerstellerGruppe>();
@@ -132,6 +165,13 @@ export function nachHerstellerUndSystem(lines: CodeLine[], stamm: ShopHersteller
       systeme: [],
       lines: [],
     };
+    // Gleiche Adresse heißt gleiche Herstellerseite. Ein Freitext wie „Bks“ neben dem Stammeintrag „BKS“
+    // landet deshalb in derselben Gruppe; Name und Stamm kommen dann immer vom Stammeintrag, gleich in
+    // welcher Reihenfolge die Daten stehen (Logo, Einsatztext).
+    if (eintrag && !gruppe.stamm) {
+      gruppe.stamm = eintrag;
+      gruppe.name = eintrag.name;
+    }
     gruppe.lines.push(line);
     const system = gepflegt(line.system);
     const systemGruppe = gruppe.systeme.find((s) => s.name === system);

@@ -101,4 +101,56 @@ Zwischendurch fielen Build und Lint einmal an fremden Dateien im gemeinsamen Arb
 - Team: nach dem Import `npm run seed`, dann jedes neue Produkt im Backend prüfen, Foto hochladen, veröffentlichen (Anleitung Abschnitt 8).
 - Orchestrator: Einträge in Navigation und Startseite (Liste oben), Hilfetexte in `Produkte.ts`, Galerie-Feld (Offene Frage 3).
 
+## Nachbesserung (Gegenprüfung, 15.11.2026)
+
+Je Befund am Code geprüft. Kein git, kein Server.
+
+1. **[rot] Import mit `active: true`:** behoben. `scripts/sortiment-import.mjs` schreibt jede Linie mit `active: false`. Ohne Datenbank bleibt sie unsichtbar, der Seed legt sie als Entwurf an (`_status: 'draft'`). Test „übernimmt Linien nur als Entwurf“ prüft `active: false` und `codeLineZuPayload(...)._status === 'draft'`. Kopfkommentar und Anleitung Abschnitt 8 (Schritte 4 bis 6) sagen jetzt: unsichtbar, Entwurf, erst nach Prüfung im Backend veröffentlichen.
+2. **[rot] Hilfetexte in `Produkte.ts` und `payload-types.ts`:** trifft zu, nicht behoben. Die Sammlungen liegen außerhalb der Schreibrechte; der Befund weist die Änderung selbst dem Orchestrator zu. Neuer Text: „Erscheint in der Liste und auf der Seite des Produkts.“ (System, Codebereich, Lieferzeit), danach `payload generate:types`.
+3. **[gelb] Galerie auf der Codeseite:** trifft zu, nicht behoben. Braucht `gallery?: MediaImage[]` in `src/lib/types.ts` und eine Zeile in `codeLineZuSeite`, beides außerhalb der Schreibrechte. Als Nachpaket vormerken (siehe Offene Frage 3).
+4. **[gelb] Hilfetext Kategorien „sobald ein Artikel zugeordnet ist“:** behoben. `Kategorien.ts` und `docs/betrieb/shop-pflegen.md` sagen jetzt: Jede sichtbare Unterkategorie hat eine eigene Seite; ohne Artikel Hinweis, „Code anfragen“, nicht in Suchmaschinen.
+5. **[gelb] Automatik-Texte importierter Linien:** behoben. Der Import setzt `tags: []`. Neu in `src/lib/codelinie.ts`: `codelinienKennung` nimmt ohne Serie „Hersteller System“ statt des großgeschriebenen Slugs; `eigeneFamilie` und `eigeneAnwendung` lassen Familie und Anwendung weg, wenn sie nur System oder „Hersteller System“ wiederholen. `codelinienTexte` lässt den Familiensatz dann weg, ebenso den Satz „Die Codelinie X ist für X vorgesehen“. Die Angabenliste der Detailseite zeigt Anwendung und Anwendungsfamilie nur noch mit eigenem Inhalt. Musterlinien bleiben unverändert (Platzhalter beim Hersteller). Test in `codelinie-texte.test.ts`.
+6. **[gelb] Autoschlüsselgehäuse „Ansehen“ mit Anfrage-Hinweis:** behoben. `kategorieWeg` beschriftet den Knopf mit gesetztem Hinweis „Anfragen“ (Test). Die Anleitung sagt jetzt, dass nur die Anfrage zu einer Leistung und die Artikel-Anfrage den Namen übernehmen.
+7. **[gelb] Kopfzeile „Direktkauf“ auf Hersteller- und Kategorieseite:** behoben. Beide zeigen „Direktkauf“ nur mit mindestens einer lieferbaren Linie (`gruppeLieferbar`), sonst „Auf Anfrage“.
+8. **[gelb] Doppelter Satz im Warenkorb:** behoben. „Derzeit nicht lieferbar. Bitte entfernen Sie die Position.“
+9. **[gelb] Verfügbarkeit auf der Detailseite:** behoben. Die Angabenliste hat die Zeile „Verfügbarkeit“ (`VERFUEGBARKEIT_LABEL`), direkt danach die Lieferzeit, wenn sie gepflegt ist.
+10. **[gelb] Zahl je Kategorie in `/shop`:** behoben. Siehe 18.
+11. **[gelb] `/shop` ohne Verweis:** teilweise behoben. `/schluessel-nach-code` verweist schon auf `/shop`; `/artikel` hat jetzt den Verweis „Alle Shop-Kategorien“. Der Navigationseintrag „Shop“ → `/shop` bleibt beim Orchestrator (gemeinsame Datei, Liste oben).
+12. **[gelb] M-37 verweist auf `codeHersteller`:** trifft zu, nicht behoben. `docs/gestaltung/MENSCHEN.md` liegt außerhalb der Schreibrechte. Vorschlag für den Orchestrator: in der Spalte „Wo“ `codeHersteller` durch `herstellerMitSeite`, `herstellerDerLinie` ersetzen und im Text sagen, dass der Hersteller aus der Stammliste (Shop › Hersteller) gewählt wird.
+13. **[gelb] Gedankenstrich im Widerrufshinweis des Bestellformulars:** trifft zu, nicht geändert. Der Befund knüpft die Änderung an eine Rücksprache wegen der Rechtsnähe (G9); vorgeschlagen ist nur die Teilung „… eingeschränkt sein. Einzelheiten stehen unter …“ ohne Änderung des Wortlauts. Entscheidung beim Orchestrator oder Inhaber.
+14. **[rot] Beispielcode nicht wie im Backend geprüft:** behoben. `codePasst` im Import prüft genau wie `src/lib/code-pattern.ts` (`new RegExp(muster).test(code.trim())`, ohne Großschreibungs-Ausweich). Test auf `A123` umgestellt, Ablehnungsfall `a123` mit `^[A-Z][0-9]{3}$` ergänzt, Gegenprobe mit `^[A-Za-z][0-9]{3}$`.
+15. **[rot] Import umgeht die Prüfung durch Menschen:** behoben wie 1 (gleicher Befund).
+16. **[gelb] Hilfetext Kategorien:** behoben wie 4 (gleicher Befund).
+17. **[gelb] Gruppentexte beschreiben immer den Direktkauf:** behoben. `herstellerTexte` und `kategorieTexte` haben ohne lieferbare Linie eine Anfrage-Fassung (Titel ohne „bestellen“, kein „Preis je Stück“, kein „wir fertigen danach“). Längentest und Inhaltstest für diese Fassung in `seo-laengen.test.ts`; Kopfzeilen wie 7.
+18. **[gelb] `anzahl` zählt alle Produkte der Art:** behoben. `anzahlJeKategorie` in `shop/kategorie-weg.ts` zählt je Hauptkategorie ihre Produkte samt Unterkategorien; Produkte ohne Kategorie zählen zur ersten Hauptkategorie ihrer Art. Test mit zwei Artikel-Kategorien, leere zweite führt zu „Artikel anfragen“.
+19. **[gelb] Kategorie-Überschriften `h2` unter `h2`:** behoben, jetzt `h3` mit gleichen Klassen.
+20. **[gelb] Gruppe trägt je nach Reihenfolge den Freitext-Namen:** behoben. Bei gleicher Adresse übernimmt die Gruppe immer Stamm und Namen des Stammeintrags. Getrennte Schlüssel hätten zwei Gruppen mit derselben Herstellerseite ergeben. Kommentar angepasst, Test in beiden Reihenfolgen.
+21. **[gelb] `'shop'` in `seiten-adresse-pruefung.ts`:** trifft zu, keine Änderung. Bestätigung durch den Orchestrator nötig (Offene Frage 2).
+22. **[gelb] 404-Fall `moebel-und-bueroschloesser` belegt nichts:** behoben durch Benennung. Der Fall ist jetzt ausdrücklich als Prüfung einer unbekannten früheren Adresse kommentiert. Dass Beispiellinien auf keiner Kategorieseite erscheinen, belegen `getCodeLines` (leer, auch inaktive) und der Sitemap-Fall in derselben Datei. Eine Unterkategorie mit Beispiellinien lässt sich im Dateimodus nicht anlegen, ohne `content/` zu ändern.
+
+Geändert in der Nachbesserung: `scripts/sortiment-import.mjs`, `scripts/sortiment-import.test.ts`, `src/lib/codelinie.ts`, `src/lib/codelinie.test.ts`, `src/lib/codelinie-texte.ts`, `src/lib/codelinie-texte.test.ts`, `src/lib/data/seo-laengen.test.ts`, `src/lib/data/beispiele-oeffentlich.test.ts`, `src/app/(site)/shop/page.tsx`, `src/app/(site)/shop/kategorie-weg.ts`, `src/app/(site)/shop/kategorie-weg.test.ts`, `src/app/(site)/schluessel-nach-code/[slug]/page.tsx`, `src/app/(site)/schluessel-nach-code/hersteller/[hersteller]/page.tsx`, `src/app/(site)/schluessel-nach-code/kategorie/[kategorie]/page.tsx`, `src/app/(site)/warenkorb/warenkorb-ansicht.tsx`, `src/app/(site)/artikel/page.tsx`, `src/payload/collections/Kategorien.ts` (nur Hilfetext), `docs/betrieb/shop-pflegen.md`.
+
+Prüfung nach der Nachbesserung, alles über die Datenweiche:
+- `sicher.sh --json -- npx vitest run`: 217 Dateien, 3440 Tests, alle grün.
+- `sicher.sh --json -- npm run typecheck`: ohne Fehler.
+- `sicher.sh --json -- npm run lint`: ohne Fehler und Warnungen.
+- `sicher.sh --pg -- npx vitest run -c vitest.db.config.ts`: 22 Dateien, 128 Tests, alle grün.
+- `sicher.sh --json -- npm run build`: grün, 178 statische Seiten.
+
 === ENDE FA-SHOP-01B · BEREIT ZUR RÜCKGABE ===
+
+## ABNAHME (Orchestrator, 16.11.2026)
+
+- **Prüfkette grün** (`werkzeuge/abnahme.sh FA-SHOP-01B`, Build mit `SM24_INDEXIERUNG=an`): Typprüfung, Lint, Unit 3.441 Tests in 217 Dateien, Datenbanktests 128 in 22 Dateien, Build ohne Datenbank 178 von 178 Seiten (neu: `/shop`). Der Lauf gilt zugleich als volle Prüfung für FA-INHALT-02 und FA-QA-02, die bis dahin nur mit Unit, Typprüfung und Lint geprüft waren.
+- **Onpage-Messung** (`werkzeuge/onpage.mjs`, 00:21): 135 Seiten, Median 100,0, keine Seite unter 95, kein roter und kein gelber Befund.
+- **Vom Orchestrator nachgezogen** (Punkte aus dem Bericht, außerhalb der Schreibrechte des Pakets):
+  - Hilfetexte zu System, Codebereich und Lieferzeit in `Produkte.ts`: „Erscheint in der Liste und auf der Seite des Produkts.“; Typen neu erzeugt.
+  - Weitere Fotos eines Codeprodukts: `gallery` an `CodeLine`, Abbildung aus `weitereBilder` (Feld bestand), kleine Reihe unter dem Bild im Kopf der Produktseite; Test in `payload-mapping.test.ts`.
+  - Verweise auf `/shop`: unter „Mehr“ an erster Stelle, in der Gruppe „Nach Code“ („Alle Shop-Kategorien“), im Fuß, auf der Startseite neben „Ohne Termin bestellen oder anfragen“ („Alle Kategorien im Shop“). Keine sechste Gruppe in der Hauptleiste, die zwei Zeichnungskarten der Startseite bleiben (A-057).
+  - `docs/gestaltung/MENSCHEN.md` M-37: Hersteller aus der Stammliste, neue Funktionsnamen.
+  - `'shop'` in `VORHANDENE_ROUTEN` bestätigt.
+- **Sichtprobe** (Build der Abnahme, Konsole ohne Fehler): `/shop` bei 390 und 1280 px (acht Kategorien in der Reihenfolge des Inhabers, ehrlicher Hinweis ohne Produkte, „Zum Konfigurator“ als einziger betonter Knopf, Satz zum getrennten Autoschlüssel-Termin), `/schluessel-nach-code`, `/artikel`, Startseite: Abschnitt „Ohne Termin“ mit dem neuen Verweis bei 390 und 1280 px, Herstellerbereich (BKS, ABUS, BURG-WÄCHTER als Schriftzug). Im Herstellerbereich stand unter dem letzten Einsatz jeder Karte eine überzählige Trennlinie: entfernt.
+- **Entschieden zu den offenen Fragen:** Ohne Produktfoto bleibt im Kopf der Produktseite die Zeichnung zum Beispielcode (sie erklärt mehr als ein Fach-Icon). Ein Hersteller mit veröffentlichten Linien bekommt seine Seite auch ohne Haken „angeboten“ (die Linien sind sichtbar, die Seite wäre sonst eine Lücke). Die Stammliste liest der Import aus `content/hersteller.json`; das steht in der Anleitung. Die Quelle je Zeile bleibt Pflicht in der Tabelle und wird nicht gespeichert (G13: die ausgefüllte Tabelle gehört nach `_werkstatt/ausbau/daten`, nicht ins Repository).
+- **Nicht geändert (G9):** Gedankenstrich im Widerrufshinweis des Bestellformulars; Vorschlag steht in MA-40.
+- **Für Menschen:** MA-34 und MA-47 (echte Angebote in die Vorlage; Musterlinien beim Import; Spalte für den Kundentext zum Codeaufbau; „Shop“ als eigener Punkt der Hauptleiste; Ziel von „Customizing und Modifikation“).
+

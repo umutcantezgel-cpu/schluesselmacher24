@@ -7,6 +7,7 @@ import { afterAll, describe, expect, it } from 'vitest';
 
 import { pruefeCodeMuster as pruefeImBackend } from '@/lib/code-pattern';
 import { defaults } from '@/lib/data/defaults';
+import { codeLineZuPayload } from '@/lib/data/payload-mapping';
 import type { CodeLine, ShopHersteller } from '@/lib/types';
 
 import {
@@ -51,7 +52,7 @@ const lauf = (text: string, bestand: CodeLine[] = []) => importiere({ text, best
 
 describe('Sortiment einlesen und prüfen', () => {
   it('übernimmt eine vollständige Zeile mit Hersteller, System, Codebereich, Staffel und Kategorie, ohne example', () => {
-    const ergebnis = lauf(tabelle(zeile(), zeile({ system: 'TX 200', codebereich: 'A001 bis A500', beispielcode: 'a123', codeformat: '^[A-Z][0-9]{3}$', staffel: '', kategorie: 'Briefkasten' })));
+    const ergebnis = lauf(tabelle(zeile(), zeile({ system: 'TX 200', codebereich: 'A001 bis A500', beispielcode: 'A123', codeformat: '^[A-Z][0-9]{3}$', staffel: '', kategorie: 'Briefkasten' })));
     expect(ergebnis.ok).toBe(true);
     expect(ergebnis.fehler).toEqual([]);
     const [a, b] = ergebnis.liste as CodeLine[];
@@ -73,7 +74,8 @@ describe('Sortiment einlesen und prüfen', () => {
       maxQty: 20,
       availability: 'lieferbar',
       categoryId: 'schluessel-nach-code',
-      active: true,
+      active: false,
+      tags: [],
     });
     expect(a).not.toHaveProperty('example');
     expect(a.productImage.note).toContain('tx100.jpg');
@@ -97,6 +99,21 @@ describe('Sortiment einlesen und prüfen', () => {
     expect(preisInCent('12,50')).toBe(1250);
     expect(preisInCent('12.50')).toBe(1250);
     expect(preisInCent('12')).toBe(1200);
+  });
+
+  it('übernimmt Linien nur als Entwurf: unsichtbar ohne Datenbank, der Seed legt sie nicht veröffentlicht an', () => {
+    const ergebnis = lauf(tabelle(zeile()));
+    expect(ergebnis.ok).toBe(true);
+    const [linie] = ergebnis.liste as CodeLine[];
+    expect(linie.active).toBe(false);
+    expect(codeLineZuPayload(linie)._status).toBe('draft');
+  });
+
+  it('prüft den Beispielcode genau wie das Backend (Kleinbuchstaben nur, wenn das Muster sie erlaubt)', () => {
+    expect(lauf(tabelle(zeile({ beispielcode: 'a123', codeformat: '^[A-Z][0-9]{3}$' }))).fehler).toEqual([
+      'Zeile 2: Beispielcode „a123“ passt nicht zum Prüfmuster ^[A-Z][0-9]{3}$',
+    ]);
+    expect(lauf(tabelle(zeile({ beispielcode: 'a123', codeformat: '^[A-Za-z][0-9]{3}$' }))).ok).toBe(true);
   });
 
   it('lehnt ein Prüfmuster ab, das nicht zum Beispielcode passt oder fehlerhaft ist', () => {

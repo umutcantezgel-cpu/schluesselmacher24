@@ -362,3 +362,11 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Entscheidung: `/beratung` trägt den Namen „Allgemeine Anfrage“ (mit Rückruf). `/service-und-termin/anfrage` heißt „Anfrage zu einer Leistung“: Fachbereich wählen, Frage stellen; wer dort einen Schlüssel will, wird in den geführten Weg verwiesen (FA-KERN-02B). Kennungen, Adressen und gespeicherte Vorgänge bleiben.
 - Kachelname auf dem Telefon für den siebten Zugang: „Vorlage oder einschicken“.
 - Umkehrprobe: reine Beschriftungen; die Namen der Rubriken sind Daten im Admin.
+
+## A-057 · Shop-Übersicht ohne sechste Gruppe in der Hauptleiste; Import legt Entwürfe an (2026-11-16 00:20, FA-SHOP-01B, FA-10, FA-11)
+- Die neue Übersicht `/shop` zeigt die Hauptkategorien des Inhabers. Die Hauptleiste hat fünf Gruppen aus den Rubriken (G-08); eine sechste Gruppe „Shop“ bräuchte einen neuen Wert im Rubrikfeld (Schema) und Platz in der Leiste. Entscheidung: `/shop` steht unter „Mehr“ an erster Stelle, in der Gruppe „Nach Code“ („Alle Shop-Kategorien“), im Fuß und auf der Startseite neben „Bestellen ohne Termin“ („Alle Kategorien im Shop“). Die zwei Zeichnungskarten der Startseite bleiben; die Kacheln je Kategorie stehen auf `/shop`. Ob „Shop“ ein eigener Punkt der Leiste wird, fragt MA-47.
+- Der Import (`scripts/sortiment-import.mjs`) schreibt neue Angebote mit `active: false`: Der Seed legt sie als Entwurf an, ohne Datenbank bleiben sie unsichtbar. Ein Mensch prüft, lädt das Foto hoch und veröffentlicht. Der Beispielcode wird genau wie im Backend geprüft (ohne Ausweichen auf Großschreibung).
+- `'shop'` in `VORHANDENE_ROUTEN` (`src/payload/hooks/seiten-adresse-pruefung.ts`) ist bestätigt: Eine eigene Seite aus dem Admin darf `/shop` nicht überdecken.
+- Weitere Fotos eines Codeprodukts (`weitereBilder`, Feld bestand schon) erscheinen jetzt unter dem Bild im Kopf der Produktseite.
+- Offen gelassen (G9): Gedankenstrich im Widerrufshinweis des Bestellformulars, siehe MA-40.
+- Umkehrprobe: Verweise und ein Feld im Lesemodell; kein Schema, keine Adresse geändert außer der Umbenennung `kategorie/[familie]` in `kategorie/[kategorie]` mit dauerhafter Weiterleitung der früheren Adressen.

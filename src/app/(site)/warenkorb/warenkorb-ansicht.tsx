@@ -88,7 +88,7 @@ function VerfuegbarkeitZeile({
             </Link>
           </>
         ) : (
-          'Zurzeit nicht bestellbar. Bitte entfernen Sie die Position.'
+          'Bitte entfernen Sie die Position.'
         )}
       </span>
     </p>

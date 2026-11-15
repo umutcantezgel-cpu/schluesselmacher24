@@ -64,8 +64,8 @@ Umbenennen: Den **Namen** einfach ändern, die Adresse bleibt dabei gleich. Änd
 
 So erscheinen die Kategorien auf der Seite:
 
-- Die Hauptkategorien mit Haken **Im Shop zeigen** stehen in ihrer Reihenfolge auf der Seite `/shop`. Jede führt auf ihr **Ziel**. Gibt es noch keine Produkte, steht dort der **Hinweis** und der Weg führt in die passende Anfrage. Die Anfrage übernimmt dabei den Namen der Kategorie.
-- Eine Unterkategorie von **Schlüssel nach Code** bekommt eine eigene Seite unter `/schluessel-nach-code/kategorie/…`, sobald ihr ein Artikel zugeordnet ist. Ändern Sie dort die Adresse, leitet die frühere Adresse dauerhaft auf die neue weiter.
+- Die Hauptkategorien mit Haken **Im Shop zeigen** stehen in ihrer Reihenfolge auf der Seite `/shop`. Jede führt auf ihr **Ziel**. Gibt es noch keine Produkte, steht dort der **Hinweis**, und der Knopf heißt **Anfragen**. Den Namen der Kategorie übernimmt nur die Anfrage zu einer Leistung (`/service-und-termin/anfrage`) und die Anfrage nach einem Artikel. Ein eigenes Ziel wie die Gehäuse-Anfrage öffnet sich ohne diese Vorbelegung.
+- Jede sichtbare Unterkategorie von **Schlüssel nach Code** hat eine eigene Seite unter `/schluessel-nach-code/kategorie/…`. Ohne Artikel zeigt sie den Hinweis und **Code anfragen** und erscheint nicht in Suchmaschinen. Ändern Sie die Adresse, leitet die frühere Adresse dauerhaft auf die neue weiter.
 - Ohne Haken bleibt die Kategorie samt Unterkategorien verborgen.
 
 Ein Artikel kommt in eine Kategorie über das Feld **Kategorie** rechts im Artikel.
@@ -130,8 +130,8 @@ Viele Codeprodukte auf einmal, etwa die bestehenden Angebote, kommen über eine 
    - **kategorie**: leer für „Schlüssel nach Code“ oder der Name einer ihrer Unterkategorien.
    - **quelle**: woher die Angaben stammen, etwa die Nummer Ihres eigenen Angebots. Pflicht.
 3. Als CSV (UTF-8, Semikolon) unter `_werkstatt/ausbau/eingang/sortiment.csv` speichern.
-4. Ein Entwickler oder der Betrieb ruft `node scripts/sortiment-import.mjs --trocken` auf. Das prüft nur. Ohne Meldung folgt `node scripts/sortiment-import.mjs`. Es schreibt die Angebote in `content/code-lines.json`.
-5. `npm run seed` legt die neuen Angebote in der Datenbank an. Vorhandene Einträge bleiben unberührt.
-6. Danach jedes neue Produkt im Backend öffnen: Produktbild hochladen, Texte prüfen, **Veröffentlichen**.
+4. Ein Entwickler oder der Betrieb ruft `node scripts/sortiment-import.mjs --trocken` auf. Das prüft nur. Ohne Meldung folgt `node scripts/sortiment-import.mjs`. Es schreibt die Angebote in `content/code-lines.json`. Dort stehen sie zunächst unsichtbar (`"active": false`): Kunden sehen noch nichts.
+5. `npm run seed` legt die neuen Angebote in der Datenbank als **Entwurf** an. Vorhandene Einträge bleiben unberührt.
+6. Danach jedes neue Produkt im Backend öffnen: Produktbild hochladen, Texte prüfen, **Veröffentlichen**. Erst dann steht es im Shop.
 
 Nur eigene Angaben und Fotos verwenden. Keine Texte oder Bilder aus Angeboten anderer übernehmen.

@@ -367,6 +367,8 @@ export function PhotoUpload({
     originale.delete(fileId);
     ergebnisse.delete(fileId);
     setzen(stand.current.filter((f) => f.id !== fileId));
+    // Vorleseprogramme hören das Entfernen; die Ansage „ist hochgeladen“ bliebe sonst stehen (FA-QA-02).
+    if (target) setMeldung(`${target.name} wurde entfernt.`);
   }
 
   function erneut(fileId: string) {

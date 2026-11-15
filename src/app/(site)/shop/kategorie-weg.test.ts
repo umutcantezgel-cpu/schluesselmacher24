@@ -7,7 +7,7 @@ import { titelPasst } from '@/lib/titelbreite';
 import { BESCHREIBUNG_MAX, BESCHREIBUNG_MIN } from '@/lib/codelinie-texte';
 import { vorbelegungAusAdresse } from '@/lib/wege/code-anfrage';
 
-import { AUTOSCHLUESSEL_FRAGE_PFAD, SHOP_SEO, kategorieWeg } from './kategorie-weg';
+import { AUTOSCHLUESSEL_FRAGE_PFAD, SHOP_SEO, anzahlJeKategorie, kategorieWeg } from './kategorie-weg';
 
 /* Shop-Einstieg nach Kategorien (FA-SHOP-01B, Punkt 1 und 4), mit dem Startbestand der Kategorien. */
 
@@ -64,6 +64,32 @@ describe('Weg einer Shop-Kategorie', () => {
     // Die Anfrage übernimmt den Namen bereinigt, so wie er in der Adresse steht.
     const name = new URL(auto.href, 'https://x.test').searchParams.get('artikel');
     expect(vorbelegungAusAdresse(name, 80)).toBe('Autoschlüssel als Produkte');
+  });
+
+  it('mit Hinweis heißt der Knopf „Anfragen“, auch wenn das Ziel keine Anfrageseite ist', () => {
+    expect(kategorieWeg(kategorie('autoschluesselgehaeuse'), 0)).toMatchObject({ href: '/autoschluessel/gehaeuse', label: 'Anfragen' });
+    expect(kategorieWeg({ ...kategorie('autoschluesselgehaeuse'), hinweis: '' }, 0).label).toBe('Ansehen');
+  });
+
+  it('zählt je Kategorie nur ihre eigenen Produkte, Unterkategorien eingeschlossen', () => {
+    // Erfundene Testdaten (G4): eine zweite Artikel-Kategorie mit Unterkategorie.
+    const zweite = { ...kategorie('schliesstechnik-und-zubehoer'), id: 'test-zweite', slug: 'test-zweite', name: 'Test Zweite', reihenfolge: 999 };
+    const unter = { ...zweite, id: 'test-unter', slug: 'test-unter', name: 'Test Unter', eltern: 'test-zweite' };
+    const alle = [...KATEGORIEN, zweite, unter];
+    const haupt = sichtbareKategorien(alle).filter((k) => !k.eltern);
+    const anzahlen = anzahlJeKategorie(alle, haupt, {
+      codeprodukte: [{}, { categoryId: 'schluessel-nach-code' }],
+      artikel: [{}, { categoryId: 'schliesstechnik-und-zubehoer' }, { categoryId: 'test-unter' }, { categoryId: 'test-unter' }],
+    });
+    expect(anzahlen.get('schluessel-nach-code')).toBe(2);
+    // Ohne Kategorie zählt ein Artikel zur ersten Artikel-Kategorie.
+    expect(anzahlen.get('schliesstechnik-und-zubehoer')).toBe(2);
+    expect(anzahlen.get('test-zweite')).toBe(2);
+    expect(anzahlen.get('autoschluesselgehaeuse')).toBe(0);
+    // Leere zweite Kategorie: ehrlicher Zustand mit Anfrage statt „Zu den Artikeln“.
+    const leer = anzahlJeKategorie(alle, haupt, { codeprodukte: [], artikel: [{ categoryId: 'schliesstechnik-und-zubehoer' }] });
+    expect(leer.get('test-zweite')).toBe(0);
+    expect(kategorieWeg(zweite, leer.get('test-zweite')!).label).toBe('Artikel anfragen');
   });
 
   it('Titel und Beschreibung der Übersicht in den Längen', () => {
