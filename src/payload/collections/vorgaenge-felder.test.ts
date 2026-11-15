@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import type { Field } from 'payload';
 
-import { Vorgaenge } from './Vorgaenge';
+import { Vorgaenge, steckplatzUebersicht } from './Vorgaenge';
 
 type MitName = Field & { name?: string; label?: string; fields?: Field[]; tabs?: Array<{ label?: string; fields: Field[]; admin?: { condition?: (data: Record<string, unknown>) => boolean } }> };
 
@@ -48,5 +48,37 @@ describe('Backend-Felder der Vorgänge (E6-OPUS-04)', () => {
     const lesen = feld?.hooks?.afterRead?.[0];
     expect(lesen?.({ siblingData: { daten: { telefonisch: true } } })).toContain('ohne Online-Anzahlung');
     expect(lesen?.({ siblingData: { daten: { quelle: 'kontakt' } } })).toBeNull();
+  });
+
+  it('zeigt die Dateien mit Steckplatz und den Hinweis auf fehlende Pflicht-Steckplätze, ohne Datenbankspalte (FA-KERN-02)', () => {
+    const feld = finde(Vorgaenge.fields, 'unterlagenSteckplaetze') as MitName & { virtual?: boolean };
+    expect(feld?.virtual).toBe(true);
+    const datei = { sizeBytes: 1, mimeType: 'image/jpeg', uploadedAt: '2026-11-02T08:15:00.000Z' };
+    const alt = steckplatzUebersicht({
+      art: 'anfrage',
+      bereich: 'autoschluessel',
+      daten: { quelle: 'gehaeuse', tasten: '1-2' },
+      uploads: [
+        { ...datei, id: 'u1', fileName: 'schein.jpg', category: 'fahrzeugschein', storageKey: '3' },
+        { ...datei, id: 'u2', fileName: 'foto.jpg', category: 'schluesselfoto', storageKey: '4' },
+        { ...datei, id: 'u3', fileName: 'weg.jpg', category: 'schluesselfoto' },
+      ],
+    });
+    expect(alt).toContain('Fahrzeugschein: schein.jpg');
+    expect(alt).toContain('Schlüsselfoto: weg.jpg (nicht gespeichert)');
+    expect(alt).toContain('Hinweis: Pflicht-Steckplatz fehlt: Schlüssel Vorderseite');
+    const neu = steckplatzUebersicht({
+      art: 'termin',
+      bereich: 'autoschluessel',
+      daten: { note: 'Zweitschlüssel gewünscht, Testangabe.', workingKeys: 1 },
+      uploads: [
+        { ...datei, id: 'u1', fileName: 'schein.jpg', category: 'fahrzeugschein', steckplatz: 'fahrzeugschein', storageKey: '3' },
+        { ...datei, id: 'u2', fileName: 'a.jpg', category: 'schluesselfoto', steckplatz: 'schluessel-vorderseite', storageKey: '4' },
+        { ...datei, id: 'u3', fileName: 'b.jpg', category: 'schluesselfoto', steckplatz: 'schluessel-rueckseite', storageKey: '5' },
+        { ...datei, id: 'u4', fileName: 'c.jpg', category: 'schluesselfoto', steckplatz: 'schluessel-spitze', storageKey: '6' },
+      ],
+    });
+    expect(neu).toBe('Fahrzeugschein: schein.jpg\nSchlüssel Vorderseite: a.jpg\nSchlüssel Rückseite: b.jpg\nSchlüssel Spitze und Profil von vorne: c.jpg');
+    expect(steckplatzUebersicht({ art: 'anfrage', bereich: 'service-und-termin', daten: {}, uploads: [] })).toBeNull();
   });
 });

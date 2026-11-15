@@ -7,7 +7,7 @@ import { scrollVerhalten } from '@/lib/bewegung';
 import { LIEFERLAND } from '@/lib/kasse';
 import { submitRecord, type SubmitResult } from '@/lib/actions/records';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
-import type { ImageSlot, InfoHint, SummarySection } from '@/lib/types';
+import type { ImageSlot, InfoHint, SummarySection, UploadSteckplatz } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { InfoTip } from '@/components/ui/info-tip';
@@ -22,7 +22,15 @@ import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { WegBestaetigung } from '@/components/weg/bestaetigung';
 import { SCHRITTE_FOTOANFRAGE } from '@/lib/wege/naechste-schritte';
-import { KARTEN_ANTWORTEN, KARTEN_LABEL, kartenAntwort, type KartenAntwort } from '@/lib/wege/nachweis';
+import {
+  BESCHREIBUNG_MIN,
+  FOTO_ANFRAGE_QUELLE,
+  KARTEN_ANTWORTEN,
+  KARTEN_LABEL,
+  beschreibungGueltig,
+  kartenAntwort,
+  type KartenAntwort,
+} from '@/lib/wege/nachweis';
 
 const FLOW_ID = 'schluessel-nach-vorlage-anfrage';
 const MAX_STUECK = 20;
@@ -43,7 +51,7 @@ const STEPS: FlowStep[] = [
   },
   {
     id: 'foto-spitze',
-    title: 'Foto von vorne auf Spitze und Profil',
+    title: 'Foto der Spitze beziehungsweise des Profils von vorne',
     hint: 'Daran erkennen wir das Profil und damit den passenden Rohling, also den ungefrästen Schlüssel.',
     short: 'Spitze',
   },
@@ -87,6 +95,7 @@ interface AnfrageData {
   /** Berechtigungsnachweis (R13): Gibt es eine Sicherungskarte? */
   sicherungskarte: KartenAntwort;
   stueckzahl: number;
+  /** Kurze Beschreibung des Anliegens, Pflicht (FA-12-03, FA-KERN-02). Der Name bleibt für gespeicherte Zwischenstände. */
   anmerkung: string;
   anrede: string;
   vorname: string;
@@ -212,7 +221,7 @@ const EXAMPLE_KARTE: ImageSlot = {
 const AUFNAHME_HINWEISE = [
   'Scharf stellen und erst danach auslösen.',
   'Helles, gleichmäßiges Licht, ohne direkten Blitz und ohne Spiegelungen.',
-  'Prägungen und Beschriftungen müssen lesbar sein.',
+  'Beschriftungen und Prägungen müssen lesbar sein.',
   'Schlüssel formatfüllend aufnehmen, Rand nur knapp mitnehmen.',
 ];
 
@@ -251,7 +260,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
         case 'nummern':
           return (data.keineBeschriftung || data.nummern.trim().length > 0) && kartenAntwort(data.sicherungskarte) !== '';
         case 'stueckzahl':
-          return data.stueckzahl >= 1 && data.stueckzahl <= MAX_STUECK;
+          return data.stueckzahl >= 1 && data.stueckzahl <= MAX_STUECK && beschreibungGueltig(data.anmerkung);
         case 'kontakt':
           return (
             data.vorname.trim().length > 1
@@ -277,7 +286,12 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
 
   // Bei „Sicherungskarte ja“ gehört ein Foto der Karte dazu (R13); der Server prüft es noch einmal.
   const karteFehlt = data.sicherungskarte === 'ja' && fotoKarte.length === 0;
-  const aktuelleFotosOk = (fotoStatus[flow.step?.id ?? '']?.length ?? 1) > 0 && !(flow.step?.id === 'nummern' && karteFehlt);
+  // Beim Absenden müssen alle drei Steckplätze wirklich belegt sein, auch nach einem Neuladen (FA-12-01).
+  const dreiFotos = fotoVorderseite.length > 0 && fotoRueckseite.length > 0 && fotoSpitze.length > 0;
+  const aktuelleFotosOk =
+    (fotoStatus[flow.step?.id ?? '']?.length ?? 1) > 0
+    && !(flow.step?.id === 'nummern' && karteFehlt)
+    && !(flow.step?.id === 'absenden' && (!dreiFotos || karteFehlt));
 
   // Fotos zählen nicht zum gespeicherten Zustand, deshalb wird die
   // Weiter-Sperre hier ergänzt.
@@ -315,7 +329,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
             value: data.keineBeschriftung ? 'keine erkennbar' : data.nummern.trim(),
           },
           { label: 'Gewünschte Stückzahl', value: `${data.stueckzahl}` },
-          { label: 'Anmerkung', value: data.anmerkung.trim() || 'keine' },
+          { label: 'Ihr Anliegen', value: data.anmerkung.trim() || 'fehlt noch' },
         ],
       },
       {
@@ -355,6 +369,9 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       ...fotoSpitze,
       ...fotoBeschriftung,
     ];
+    // Jede Datei mit ihrem Steckplatz (FA-KERN-02); der Server prüft die drei Pflichtaufnahmen daran.
+    const mitSteckplatz = (dateien: PickedFile[], steckplatz: UploadSteckplatz) =>
+      dateien.map((file) => alsUpload(file, 'schluesselfoto', steckplatz));
 
     try {
       const antwort = await submitRecord({
@@ -375,20 +392,24 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
           country: landLabel,
         },
         payload: {
+          quelle: FOTO_ANFRAGE_QUELLE,
           hersteller: data.herstellerUnbekannt ? null : data.hersteller.trim(),
           herstellerUnbekannt: data.herstellerUnbekannt,
           beschriftungen: data.keineBeschriftung ? null : data.nummern.trim(),
           keineBeschriftung: data.keineBeschriftung,
           stueckzahl: data.stueckzahl,
-          anmerkung: data.anmerkung.trim() || null,
+          beschreibung: data.anmerkung.trim(),
           fotoAnzahl: alleFotos.length,
           sicherungskarte: kartenAntwort(data.sicherungskarte) || null,
           originalEingesendet: false,
         },
         summary,
         uploads: [
-          ...alleFotos.map((file) => alsUpload(file, 'schluesselfoto')),
-          ...(data.sicherungskarte === 'ja' ? fotoKarte.map((file) => alsUpload(file, 'sicherungskarte')) : []),
+          ...mitSteckplatz(fotoVorderseite, 'schluessel-vorderseite'),
+          ...mitSteckplatz(fotoRueckseite, 'schluessel-rueckseite'),
+          ...mitSteckplatz(fotoSpitze, 'schluessel-spitze'),
+          ...mitSteckplatz(fotoBeschriftung, 'sonstiges'),
+          ...(data.sicherungskarte === 'ja' ? fotoKarte.map((file) => alsUpload(file, 'sicherungskarte', 'sicherungskarte')) : []),
         ],
       });
       schutz.antwortBeachten(antwort);
@@ -440,12 +461,14 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
   const blockedHints: Record<string, string> = {
     'foto-vorderseite': 'Bitte fügen Sie ein Foto der Vorderseite hinzu.',
     'foto-rueckseite': 'Bitte fügen Sie ein Foto der Rückseite hinzu.',
-    'foto-spitze': 'Bitte fügen Sie ein Foto von vorne auf die Spitze hinzu.',
+    'foto-spitze': 'Bitte fügen Sie ein Foto der Spitze beziehungsweise des Profils von vorne hinzu.',
     hersteller: 'Bitte tragen Sie den Hersteller ein oder wählen Sie „Hersteller ist nicht bekannt oder nicht lesbar“.',
     nummern: karteFehlt
       ? 'Bitte laden Sie ein Foto Ihrer Sicherungskarte hoch.'
       : 'Bitte übertragen Sie die Beschriftung oder wählen Sie „Auf dem Schlüssel ist nichts erkennbar“. Beantworten Sie außerdem die Frage nach der Sicherungskarte.',
+    stueckzahl: `Bitte wählen Sie eine Stückzahl von 1 bis ${MAX_STUECK} und beschreiben Sie Ihr Anliegen kurz (mindestens ${BESCHREIBUNG_MIN} Zeichen).`,
     kontakt: 'Bitte füllen Sie Vorname, Nachname, E-Mail und Telefon aus. Wenn Sie eine Postleitzahl angeben, muss sie fünfstellig sein.',
+    absenden: 'Es fehlen Fotos. Das passiert, wenn die Seite neu geladen wurde. Bitte gehen Sie zu den Fotoschritten zurück.',
   };
 
   return (
@@ -471,6 +494,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
           label="Vorderseite des Schlüssels"
           description="Legen Sie den Schlüssel flach auf einen hellen, einfarbigen Untergrund und fotografieren Sie von oben."
           example={EXAMPLE_FRONT}
+          steckplatz="schluessel-vorderseite"
           files={fotoVorderseite}
           onChange={setFotoVorderseite}
           hint={HINT_FOTO}
@@ -485,6 +509,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
           label="Rückseite des Schlüssels"
           description="Wenden Sie den Schlüssel und fotografieren Sie ihn erneut von oben, mit gleichem Abstand und gleichem Untergrund."
           example={EXAMPLE_BACK}
+          steckplatz="schluessel-rueckseite"
           files={fotoRueckseite}
           onChange={setFotoRueckseite}
           hint={HINT_FOTO}
@@ -495,9 +520,10 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
       {flow.step?.id === 'foto-spitze' && (
         <FotoSchritt
           id="foto-spitze"
-          label="Blick von vorne auf Spitze und Profil"
+          label="Spitze beziehungsweise Profil von vorne"
           description="Stellen Sie den Schlüssel auf oder lehnen Sie ihn an, sodass die Spitze zur Kamera zeigt. Der Querschnitt muss erkennbar sein."
           example={EXAMPLE_TIP}
+          steckplatz="schluessel-spitze"
           files={fotoSpitze}
           onChange={setFotoSpitze}
           hint={HINT_FOTO}
@@ -585,6 +611,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
           <div className="border-t border-border pt-5">
             <PhotoUpload
               category="schluesselfoto"
+              steckplatz="sonstiges"
               id="foto-beschriftung"
               label="Nahaufnahmen der Beschriftung (freiwillig)"
               description="Bis zu drei Nahaufnahmen der Stellen mit Zahlen oder Buchstaben. Scharf, gut ausgeleuchtet, formatfüllend."
@@ -617,6 +644,7 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
             {data.sicherungskarte === 'ja' && (
               <PhotoUpload
                 category="sicherungskarte"
+                steckplatz="sicherungskarte"
                 id="foto-sicherungskarte"
                 label="Foto Ihrer Sicherungskarte"
                 description="Die ganze Karte, scharf und gut lesbar. Wir nutzen das Foto nur für diesen Auftrag."
@@ -648,20 +676,22 @@ export function AnfrageFormular({ photoRetentionDays }: AnfrageFormularProps) {
               />
             </div>
             <p className="mt-2 text-small leading-snug text-foreground-subtle">
-              Größere Stückzahlen tragen Sie bitte unten als Anmerkung ein. Die Angabe ist
+              Größere Stückzahlen tragen Sie bitte unten in der Beschreibung ein. Die Angabe ist
               unverbindlich und lässt sich nach unserer Rückmeldung noch ändern.
             </p>
           </div>
 
           <div className="border-t border-border pt-6">
             <Field
-              label="Anmerkung (freiwillig)"
-              hint="Zum Beispiel, wofür der Schlüssel gebraucht wird oder ob das Schloss schwergängig ist."
+              label="Kurze Beschreibung Ihres Anliegens"
+              required
+              hint={`Ein Satz genügt, zum Beispiel wofür der Schlüssel gebraucht wird oder ob das Schloss schwergängig ist. Mindestens ${BESCHREIBUNG_MIN} Zeichen.`}
             >
-              {({ id, describedBy }) => (
+              {({ id, describedBy, invalid }) => (
                 <TextArea
                   id={id}
                   aria-describedby={describedBy}
+                  invalid={invalid}
                   rows={4}
                   value={flow.data.anmerkung}
                   onChange={(e) => flow.set('anmerkung', e.target.value)}
@@ -879,8 +909,10 @@ function FotoSchritt({
   hint,
   retentionDays,
   vorab,
+  steckplatz,
 }: {
   id: string;
+  steckplatz: UploadSteckplatz;
   label: string;
   description: string;
   example: ImageSlot;
@@ -910,6 +942,7 @@ function FotoSchritt({
       <div className="border-t border-border pt-5">
         <PhotoUpload
           category="schluesselfoto"
+          steckplatz={steckplatz}
           id={id}
           label={label}
           description={description}

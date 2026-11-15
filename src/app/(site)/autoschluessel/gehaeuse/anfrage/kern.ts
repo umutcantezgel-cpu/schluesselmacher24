@@ -1,11 +1,14 @@
 /*
  * Autoschlüssel-Gehäuse-Anfrage (G-20, E6-BAUMEISTER-02): reine Funktionen ohne React. Marke und Modell sind
- * freie Eingaben. Es gibt keine Fahrzeugdatenbank und keine Modellliste. Fahrzeugschein und Schlüsselfoto
- * prüft das Formular selbst (R13).
+ * freie Eingaben. Es gibt keine Fahrzeugdatenbank und keine Modellliste. Fahrzeugschein, die drei Schlüsselfotos und
+ * die Beschreibung prüft das Formular selbst und der Server nach der Pflichtregel (R13, FA-KERN-02).
  */
 
 import { LIEFERLAND } from '@/lib/kasse';
+import { beschreibungGueltig, BESCHREIBUNG_MAX, BESCHREIBUNG_MIN } from '@/lib/wege/nachweis';
 import type { ContactDetails, SummarySection } from '@/lib/types';
+
+export { BESCHREIBUNG_MAX, BESCHREIBUNG_MIN };
 
 export type TastenAntwort = '1-2' | '3-4' | 'unklar';
 export type GehaeuseSchritt = 'fahrzeug' | 'tasten' | 'unterlagen' | 'kontakt' | 'absenden';
@@ -15,6 +18,8 @@ export interface GehaeuseDaten {
   modell: string;
   baujahr: string;
   tasten: TastenAntwort | '';
+  /** Kurze Beschreibung des Anliegens, Pflicht (FA-KERN-02). */
+  beschreibung: string;
   anrede: string;
   vorname: string;
   nachname: string;
@@ -29,6 +34,7 @@ export const INITIAL: GehaeuseDaten = {
   modell: '',
   baujahr: '',
   tasten: '',
+  beschreibung: '',
   anrede: '',
   vorname: '',
   nachname: '',
@@ -66,7 +72,10 @@ export function baujahrGueltig(text: string, jahr: number = new Date().getFullYe
   return wert >= BAUJAHR_ERSTES && wert <= jahr + 1;
 }
 
-/** Prüft je Schritt die Angaben. Fotos stehen nicht hier: das Formular verlangt sie selbst. */
+/**
+ * Prüft je Schritt die Angaben. Fotos stehen nicht hier: das Formular verlangt sie selbst, der Server
+ * prüft sie nach der Pflichtregel (FA-KERN-02). Die kurze Beschreibung gehört zum Schritt Kontakt.
+ */
 export function schrittGueltig(daten: GehaeuseDaten, schritt: GehaeuseSchritt, jahr: number = new Date().getFullYear()): boolean {
   switch (schritt) {
     case 'fahrzeug':
@@ -81,7 +90,8 @@ export function schrittGueltig(daten: GehaeuseDaten, schritt: GehaeuseSchritt, j
       return daten.tasten === '1-2' || daten.tasten === '3-4' || daten.tasten === 'unklar';
     case 'kontakt':
       return (
-        daten.vorname.trim().length > 1
+        beschreibungGueltig(daten.beschreibung)
+        && daten.vorname.trim().length > 1
         && daten.nachname.trim().length > 1
         && EMAIL_MUSTER.test(daten.email.trim())
         && daten.telefon.replace(/\D/g, '').length >= 6
@@ -103,6 +113,7 @@ export function gehaeuseZusammenfassung(daten: GehaeuseDaten): SummarySection[] 
         { label: 'Modell', value: daten.modell.trim() || 'fehlt noch' },
         { label: 'Baujahr', value: daten.baujahr.trim() || 'fehlt noch' },
         { label: 'Tasten am Schlüssel', value: daten.tasten ? TASTEN_TEXT[daten.tasten] : 'noch offen' },
+        { label: 'Ihr Anliegen', value: daten.beschreibung.trim() || 'fehlt noch' },
       ],
     },
     {
@@ -143,6 +154,6 @@ export function payloadAus(daten: GehaeuseDaten) {
     modell: daten.modell.trim(),
     baujahr: Number(daten.baujahr.trim()),
     tasten: daten.tasten || 'unklar',
-    anmerkung: null,
+    beschreibung: daten.beschreibung.trim(),
   };
 }

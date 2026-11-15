@@ -10,7 +10,14 @@ import {
   type AnfrageKlasse,
   type RollerNachweis,
 } from '../fahrzeuge/anfrage-klassen';
-import { FOTO_ANFRAGE_QUELLE, SCHLUESSEL_STECKPLAETZE, steckplatzPasst } from '../wege/nachweis';
+import {
+  BESCHREIBUNG_MAX,
+  BESCHREIBUNG_MIN,
+  FOTO_ANFRAGE_QUELLE,
+  SCHLUESSEL_STECKPLAETZE,
+  beschreibungGueltig,
+  steckplatzPasst,
+} from '../wege/nachweis';
 
 /* ==========================================================================
    Pflichtunterlagen beim Autoschlüssel-Termin (Leitfaden Kap. 05, Schritt 9)
@@ -112,9 +119,9 @@ export function rubrikUnterlagenPruefen(
    Steckplatz und Kategorie setzt der Server dann aus der gespeicherten Kundendatei.
    ========================================================================== */
 
-/** Grenze des Bestands für Pflichttexte (Anfrage-Formular, Feld Beschreibung). */
-export const BESCHREIBUNG_MIN = 20;
-export const BESCHREIBUNG_MAX = 2000;
+// Die Grenzen der Beschreibung liegen in wege/nachweis.ts (ohne Server-Bezug), damit die Formulare im
+// Browser sie laden, ohne dieses Modul unter lib/server zu bündeln. Hier nur weitergereicht.
+export { BESCHREIBUNG_MAX, BESCHREIBUNG_MIN, beschreibungGueltig };
 
 export type SteckplatzAngabe = Pick<UploadRef, 'category' | 'steckplatz' | 'storageKey' | 'uploadToken'>;
 
@@ -167,12 +174,6 @@ export function fehlendeSchluesselfotos(uploads: readonly SteckplatzAngabe[], ab
   return SCHLUESSEL_STECKPLAETZE.filter((platz) => !steckplatzBelegt(uploads, platz, ablageEingerichtet));
 }
 
-export function beschreibungGueltig(text: unknown): boolean {
-  if (typeof text !== 'string') return false;
-  const laenge = text.trim().length;
-  return laenge >= BESCHREIBUNG_MIN && laenge <= BESCHREIBUNG_MAX;
-}
-
 /** Angaben des Falls für die Pflichtregel. Unbekanntes aus dem Browser zählt als nicht angegeben. */
 export interface FahrzeugFall {
   klasse: AnfrageKlasse;
@@ -191,7 +192,11 @@ export interface FahrzeugFall {
   schluesselnummer?: unknown;
 }
 
-const FIN_MUSTER = /^[A-Z0-9]{5,30}$/i;
+/**
+ * Fahrzeug-Identifizierungsnummer nach ISO 3779: 17 Zeichen, Buchstaben ohne I, O und Q. Kürzere
+ * Rahmennummern älterer Fahrzeuge gelten nicht als Angabe; dann bleibt das Foto des Typenschilds.
+ */
+const FIN_MUSTER = /^[A-HJ-NPR-Z0-9]{17}$/i;
 
 function text(wert: unknown, max: number): string | null {
   if (typeof wert !== 'string') return null;
@@ -236,19 +241,53 @@ export function fehlendeVorlageUnterlagen(beschreibung: unknown, uploads: readon
 /** Wege mit Pflichtunterlagen. `fahrzeug-anfrage` ist die gemeinsame Anfrage aus FA-KERN-02B. */
 export type UnterlagenWeg = 'termin' | 'motorrad' | 'gehaeuse' | 'vorlage' | 'fahrzeug-anfrage';
 
-/** Ordnet einen Vorgang seinem Weg zu; `null`, wenn der Weg keine Pflichtunterlagen dieser Regel hat. */
+/**
+ * Bekannte Quellen der Anfrage-Wege je Bereich. Eine Anfrage in einem dieser Bereiche mit einer anderen
+ * Quelle lehnt der Server ab (nie dem Browser glauben). `undefined` ist die allgemeine Anfrage mit Thema
+ * (Bereich gleich Thema) und, bei „Schlüssel nach Vorlage“, ältere Foto-Anfragen ohne Quelle.
+ */
+export const ANFRAGE_QUELLEN: Readonly<Partial<Record<string, readonly (string | undefined)[]>>> = {
+  autoschluessel: ['motorrad', 'gehaeuse', FAHRZEUG_ANFRAGE_QUELLE, undefined],
+  'schluessel-nach-vorlage': [FOTO_ANFRAGE_QUELLE, EINSENDE_QUELLE, undefined],
+};
+
+/** Nennt die Anfrage eine Quelle, die der Bereich nicht kennt? Dann lehnt der Server ab. */
+export function anfrageQuelleUnbekannt(vorgang: { kind: string; area: string; payload: Record<string, unknown> }): boolean {
+  if (vorgang.kind !== 'anfrage') return false;
+  const bekannt = ANFRAGE_QUELLEN[vorgang.area];
+  if (!bekannt) return false;
+  const quelle = vorgang.payload?.quelle;
+  return !(quelle === undefined || (typeof quelle === 'string' && bekannt.includes(quelle)));
+}
+
+/**
+ * Allgemeine Anfrage (service-und-termin/anfrage) mit dem Thema „Schlüssel nach Vorlage“: keine Quelle, aber
+ * ein Thema. Sie trägt keine Steckplätze und ist keine Foto-Anfrage; der Server legt sie im Bereich
+ * „Service und Termin“ ab, damit sie im Backend nie zur Freigabe mit Zahlung führt (records.ts).
+ */
+export function allgemeineVorlageAnfrage(vorgang: { kind: string; area: string; payload: Record<string, unknown> }): boolean {
+  return (
+    vorgang.kind === 'anfrage'
+    && vorgang.area === 'schluessel-nach-vorlage'
+    && vorgang.payload?.quelle === undefined
+    && 'thema' in (vorgang.payload ?? {})
+  );
+}
+
+/**
+ * Ordnet einen Vorgang seinem Weg zu; `null`, wenn der Weg keine Pflichtunterlagen dieser Regel hat.
+ * Jeder Termin ist ein Autoschlüssel-Termin (andere Bereiche lehnt records.ts ab). Jede Anfrage im Bereich
+ * „Schlüssel nach Vorlage“ außer der reinen Einsendung ist eine Foto-Anfrage, gleich welche Quelle oder
+ * welches Thema der Browser nennt: Im Backend wird sie als Foto-Anfrage mit Freigabe geführt.
+ */
 export function unterlagenWeg(vorgang: { kind: string; area: string; payload: Record<string, unknown> }): UnterlagenWeg | null {
   const quelle = vorgang.payload?.quelle;
-  if (vorgang.kind === 'termin') return vorgang.area === 'autoschluessel' ? 'termin' : null;
+  if (vorgang.kind === 'termin') return 'termin';
   if (vorgang.kind !== 'anfrage') return null;
   if (quelle === FAHRZEUG_ANFRAGE_QUELLE) return 'fahrzeug-anfrage';
   if (vorgang.area === 'autoschluessel' && quelle === 'motorrad') return 'motorrad';
   if (vorgang.area === 'autoschluessel' && quelle === 'gehaeuse') return 'gehaeuse';
-  // Foto-Anfrage: eigene Quelle; ältere Vorgänge ohne Quelle zählen dazu. Die allgemeine Anfrage mit dem
-  // Thema „Schlüssel nach Vorlage“ trägt `thema` und ist kein Weg dieser Regel (offene Frage im Bericht).
-  if (vorgang.area === 'schluessel-nach-vorlage' && quelle !== EINSENDE_QUELLE) {
-    if (quelle === FOTO_ANFRAGE_QUELLE || (quelle === undefined && !('thema' in (vorgang.payload ?? {})))) return 'vorlage';
-  }
+  if (vorgang.area === 'schluessel-nach-vorlage' && quelle !== EINSENDE_QUELLE) return 'vorlage';
   return null;
 }
 

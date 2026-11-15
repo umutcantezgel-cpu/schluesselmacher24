@@ -17,8 +17,11 @@ import { vorgangZuPayload } from '@/lib/data/payload-mapping';
 
 import { createAccessToken, hashToken } from './access-token';
 import { erkenneDateityp, type UploadKategorie } from './datei-pruefung';
+import type { UploadSteckplatz } from '@/lib/types';
+
 import {
   bereinigeKundendateien,
+  kundendateienPruefen,
   loescheKundendateien,
   speichereKundendatei,
   verknuepfeKundendateien,
@@ -333,5 +336,51 @@ describe('Aufbewahrung', () => {
 
     // Der nächste Lauf räumt sie ab.
     expect((await loescheKundendateien({ payload, auswahl })).geloescht).toHaveLength(1);
+  });
+});
+
+describe('Steckplätze (FA-KERN-02, A-048)', () => {
+  async function mitSteckplatz(kategorie: UploadKategorie, steckplatz?: UploadSteckplatz) {
+    const { token, hash } = createAccessToken();
+    const datei = await speichereKundendatei({
+      payload,
+      daten: png,
+      typ: erkenneDateityp(png)!,
+      dateiname: 'image.png',
+      kategorie,
+      steckplatz,
+      aufbewahrenBis: new Date(Date.now() + 30 * TAG),
+      uploadSchluesselHash: hash,
+    });
+    return { ...datei, token };
+  }
+
+  it('speichert den Steckplatz an der Kundendatei; ältere Dateien bleiben ohne', async () => {
+    const spitze = await mitSteckplatz('schluesselfoto', 'schluessel-spitze');
+    expect(spitze.steckplatz).toBe('schluessel-spitze');
+    expect((await lies(spitze.id)).steckplatz).toBe('schluessel-spitze');
+    const ohne = await mitSteckplatz('dokument');
+    expect(ohne.steckplatz).toBeUndefined();
+    expect((await lies(ohne.id)).steckplatz ?? null).toBeNull();
+  });
+
+  it('bestätigt Kategorie und Steckplatz nur mit passendem Schlüssel und nur vor der Zuordnung', async () => {
+    const vorn = await mitSteckplatz('schluesselfoto', 'schluessel-vorderseite');
+    const schein = await mitSteckplatz('fahrzeugschein', 'fahrzeugschein');
+    const ergebnis = await kundendateienPruefen({
+      payload,
+      uploads: [
+        { id: vorn.id, uploadToken: vorn.token },
+        { id: schein.id, uploadToken: createAccessToken().token },
+        { id: '999999999', uploadToken: vorn.token },
+        { id: 'abc', uploadToken: vorn.token },
+      ],
+    });
+    expect(ergebnis).toEqual([{ kategorie: 'schluesselfoto', steckplatz: 'schluessel-vorderseite' }, null, null, null]);
+    // Nur lesen: Der Schlüssel bleibt gültig, die Zuordnung danach gelingt.
+    const vorgang = await neuerVorgang();
+    expect(await verknuepfeKundendateien({ payload, vorgangId: vorgang, uploads: [{ id: vorn.id, uploadToken: vorn.token }] })).toEqual([Number(vorn.id)]);
+    // Nach der Zuordnung zählt die Datei nicht mehr für einen zweiten Vorgang.
+    expect(await kundendateienPruefen({ payload, uploads: [{ id: vorn.id, uploadToken: vorn.token }] })).toEqual([null]);
   });
 });

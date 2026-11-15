@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 
 import { FlowShell } from '@/components/flow/flow-shell';
-import { TextInput } from '@/components/forms/controls';
+import { TextArea, TextInput } from '@/components/forms/controls';
 import { Field } from '@/components/forms/field';
 import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { OptionCard } from '@/components/forms/option-card';
@@ -16,8 +16,16 @@ import { submitRecord, type SubmitResult } from '@/lib/actions/records';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import type { ImageSlot } from '@/lib/types';
 import { naechsteSchritte } from '@/lib/wege/naechste-schritte';
+import {
+  LEERE_SCHLUESSELFOTOS,
+  SchluesselFotoFelder,
+  schluesselfotosAlsUploads,
+  schluesselfotosVollstaendig,
+  type SchluesselFotos,
+} from '@/components/autoschluessel/schluessel-fotos';
 
 import {
+  BESCHREIBUNG_MIN,
   INITIAL,
   MAX_MARKE,
   MAX_MODELL,
@@ -35,16 +43,10 @@ const FLOW_ID = 'autoschluessel-gehaeuse-anfrage';
 const STEPS: FlowStep[] = [
   { id: 'fahrzeug', title: 'Welches Fahrzeug gehört zum Schlüssel?', hint: 'Marke und Modell tragen Sie frei ein, so wie sie im Fahrzeugschein stehen.', short: 'Fahrzeug' },
   { id: 'tasten', title: 'Wie viele Tasten hat der Schlüssel?', hint: 'Die Anzahl hilft uns bei der Prüfung. Wenn Sie es nicht wissen, wählen Sie „Weiß ich nicht“.', short: 'Tasten' },
-  { id: 'unterlagen', title: 'Fotos von Schlüssel und Fahrzeugschein', hint: 'Beide Fotos brauchen wir. Den Fahrzeugschein können Sie auch als PDF hochladen.', short: 'Fotos' },
+  { id: 'unterlagen', title: 'Fotos von Schlüssel und Fahrzeugschein', hint: 'Wir brauchen drei Fotos Ihres Schlüssels und den Fahrzeugschein. Den Fahrzeugschein können Sie auch als PDF hochladen.', short: 'Fotos' },
   { id: 'kontakt', title: 'Kontakt', hint: 'Hierhin schicken wir Ihre Rückmeldung.', short: 'Kontakt' },
   { id: 'absenden', title: 'Angaben prüfen und Anfrage absenden', hint: 'Nach dem Absenden erhalten Sie eine Bestätigung mit Ihrer Nummer.', short: 'Absenden' },
 ];
-
-const EXAMPLE_SCHLUESSEL: ImageSlot = {
-  motif: 'Beispielfoto: Autoschlüssel flach von oben, Vorder- und Rückseite im Bild',
-  ratio: '4/3',
-  note: 'Heller, neutraler Untergrund. Kein direkter Blitz.',
-};
 
 const EXAMPLE_SCHEIN: ImageSlot = {
   motif: 'Beispielfoto: Fahrzeugschein flach aufgelegt, alle vier Ecken im Bild',
@@ -60,12 +62,12 @@ const SCHRITTE = naechsteSchritte({
 });
 
 /**
- * Autoschlüssel-Gehäuse-Anfrage (G-20, E6-BAUMEISTER-02): fünf Schritte. Fahrzeugschein und Schlüsselfoto sind
- * Pflicht (R13); der Server prüft sie noch einmal. Die Zusammenfassung baut hier dieselbe Funktion wie
- * die Vorschau.
+ * Autoschlüssel-Gehäuse-Anfrage (G-20, E6-BAUMEISTER-02): fünf Schritte. Fahrzeugschein, die drei Schlüsselfotos
+ * und eine kurze Beschreibung sind Pflicht (R13, FA-KERN-02); der Server prüft sie nach der Pflichtregel und
+ * die Tastenzahl noch einmal. Die Zusammenfassung baut hier dieselbe Funktion wie die Vorschau.
  */
 export function AnfrageFormular() {
-  const [fotoSchluessel, setFotoSchluessel] = useState<PickedFile[]>([]);
+  const [fotos, setFotos] = useState<SchluesselFotos>(LEERE_SCHLUESSELFOTOS);
   const [fotoSchein, setFotoSchein] = useState<PickedFile[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<SubmitResult | null>(null);
@@ -82,9 +84,10 @@ export function AnfrageFormular() {
 
   const { data } = flow;
 
-  // Fotos zählen nicht zum gespeicherten Zustand, deshalb wird die Weiter-Sperre hier ergänzt.
-  const fotosFehlen =
-    flow.step?.id === 'unterlagen' && (fotoSchluessel.length === 0 || fotoSchein.length === 0);
+  // Fotos zählen nicht zum gespeicherten Zustand, deshalb wird die Weiter-Sperre hier ergänzt, auch
+  // beim Absenden: Nach einem Neuladen fehlen sie (FA-KERN-02).
+  const unterlagenFehlen = fotoSchein.length === 0 || !schluesselfotosVollstaendig(fotos);
+  const fotosFehlen = (flow.step?.id === 'unterlagen' || flow.step?.id === 'absenden') && unterlagenFehlen;
   const shellFlow = { ...flow, canContinue: flow.canContinue && !fotosFehlen };
 
   const summary = useMemo(() => gehaeuseZusammenfassung(data), [data]);
@@ -105,8 +108,8 @@ export function AnfrageFormular() {
         payload: payloadAus(data),
         summary,
         uploads: [
-          ...fotoSchluessel.map((file) => alsUpload(file, 'schluesselfoto')),
-          ...fotoSchein.map((file) => alsUpload(file, 'fahrzeugschein')),
+          ...schluesselfotosAlsUploads(fotos),
+          ...fotoSchein.map((file) => alsUpload(file, 'fahrzeugschein', 'fahrzeugschein')),
         ],
       });
       schutz.antwortBeachten(antwort);
@@ -146,8 +149,9 @@ export function AnfrageFormular() {
   const blockedHints: Record<string, string> = {
     fahrzeug: `Bitte tragen Sie Marke (höchstens ${MAX_MARKE} Zeichen), Modell (höchstens ${MAX_MODELL} Zeichen) und ein Baujahr mit vier Ziffern ein.`,
     tasten: 'Bitte wählen Sie, wie viele Tasten der Schlüssel hat.',
-    unterlagen: 'Bitte fügen Sie ein Foto Ihres Schlüssels und ein Foto oder PDF Ihres Fahrzeugscheins hinzu.',
-    kontakt: 'Bitte füllen Sie Vorname, Nachname, E-Mail und Telefon aus. Die Postleitzahl hat fünf Ziffern, wenn Sie sie angeben.',
+    unterlagen: 'Bitte fügen Sie Vorderseite, Rückseite und Spitze Ihres Schlüssels und ein Foto oder PDF Ihres Fahrzeugscheins hinzu.',
+    kontakt: `Bitte beschreiben Sie Ihr Anliegen kurz (mindestens ${BESCHREIBUNG_MIN} Zeichen) und füllen Sie Vorname, Nachname, E-Mail und Telefon aus. Die Postleitzahl hat fünf Ziffern, wenn Sie sie angeben.`,
+    absenden: 'Es fehlen Fotos oder der Fahrzeugschein. Das passiert, wenn die Seite neu geladen wurde. Bitte gehen Sie zum Schritt Fotos zurück.',
   };
 
   return (
@@ -239,20 +243,13 @@ export function AnfrageFormular() {
 
       {flow.step?.id === 'unterlagen' && (
         <div className="max-w-3xl space-y-8">
-          <PhotoUpload
-            category="schluesselfoto"
-            id="foto-schluessel"
-            label="Foto Ihres Schlüssels"
-            description="Vorder- und Rückseite, gern auch das gebrochene Teil. Scharf und gut ausgeleuchtet."
-            example={EXAMPLE_SCHLUESSEL}
-            files={fotoSchluessel}
-            onChange={setFotoSchluessel}
-            required
-            multiple
-            maxFiles={3}
-          />
+          <p className="text-small leading-relaxed text-foreground-muted">
+            Fotografieren Sie den Schlüssel so, wie er jetzt ist, gern auch das gebrochene Teil.
+          </p>
+          <SchluesselFotoFelder fotos={fotos} onChange={(platz, dateien) => setFotos((alt) => ({ ...alt, [platz]: dateien }))} idVorsilbe="gehaeuse" />
           <PhotoUpload
             category="fahrzeugschein"
+            steckplatz="fahrzeugschein"
             id="foto-fahrzeugschein"
             label="Fahrzeugschein (Zulassungsbescheinigung Teil I)"
             description="Als Foto oder als PDF. Bitte vollständig und lesbar, alle vier Ecken im Bild."
@@ -272,6 +269,15 @@ export function AnfrageFormular() {
 
       {flow.step?.id === 'kontakt' && (
         <div className="max-w-3xl space-y-5">
+          <Field
+            label="Kurze Beschreibung Ihres Anliegens"
+            required
+            hint={`Ein Satz genügt, zum Beispiel: Gehäuse gebrochen, die Elektronik funktioniert noch. Mindestens ${BESCHREIBUNG_MIN} Zeichen.`}
+          >
+            {({ id, describedBy, invalid }) => (
+              <TextArea id={id} aria-describedby={describedBy} invalid={invalid} rows={3} value={data.beschreibung} onChange={(e) => flow.set('beschreibung', e.target.value)} />
+            )}
+          </Field>
           <div className="grid gap-5 sm:grid-cols-2">
             <div className="sm:col-span-2">
               <Field label="Anrede (freiwillig)">

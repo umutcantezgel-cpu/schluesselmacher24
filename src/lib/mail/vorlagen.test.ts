@@ -172,6 +172,25 @@ describe('Mail an den Betrieb', () => {
     expect(ohneAngabe.text).not.toContain('Vorgangsblatt');
   });
 
+  it('nennt die Unterlagen mit ihren Steckplätzen, ohne Dateinamen (FA-KERN-02)', () => {
+    const datei = { sizeBytes: 1, mimeType: 'image/jpeg', uploadedAt: '2026-11-02T08:15:00.000Z', storageKey: '9' };
+    const uploads: BusinessRecord['uploads'] = [
+      { ...datei, id: 'u1', fileName: 'schein-erika.jpg', category: 'fahrzeugschein', steckplatz: 'fahrzeugschein' },
+      { ...datei, id: 'u2', fileName: 'a.jpg', category: 'schluesselfoto', steckplatz: 'schluessel-vorderseite' },
+      { ...datei, id: 'u3', fileName: 'b.jpg', category: 'schluesselfoto', steckplatz: 'schluessel-rueckseite' },
+      { ...datei, id: 'u4', fileName: 'c.jpg', category: 'schluesselfoto', steckplatz: 'schluessel-spitze' },
+      { ...datei, id: 'u5', fileName: 'd.jpg', category: 'schluesselfoto', steckplatz: 'sonstiges' },
+      { ...datei, id: 'u6', fileName: 'e.jpg', category: 'schluesselfoto', steckplatz: 'sonstiges' },
+    ];
+    const mail = betriebNeuerVorgang({ vorgang: vorgang({ uploads }), adminUrl: `${SITE}/admin/collections/vorgaenge/42`, kontext: { site: SITE } });
+    expect(mail.text).toContain(
+      'Fahrzeugschein, Schlüssel Vorderseite, Schlüssel Rückseite, Schlüssel Spitze und Profil von vorne, Schlüsselfoto (Sonstiges) (2)',
+    );
+    expect(mail.text).not.toContain('schein-erika.jpg');
+    // Ohne Dateien keine Zeile.
+    expect(betriebNeuerVorgang({ vorgang: vorgang({ uploads: [] }), adminUrl: SITE, kontext: { site: SITE } }).text).not.toContain('Unterlagen:');
+  });
+
   it('enthält nur Eckdaten und den Backend-Link — nie Link-Schlüssel, Zusammenfassung oder Lieferhinweis', () => {
     const mail = betriebNeuerVorgang({
       vorgang: vorgang(),

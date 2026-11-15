@@ -1,5 +1,5 @@
 import { fahrzeugVorOrtNoetig } from '@/lib/pricing';
-import type { CarKeyService, ImageSlot, InfoHint, KeyKind, VehicleModel } from '@/lib/types';
+import type { CarKeyService, ImageSlot, InfoHint, KeyKind, UploadSteckplatz, VehicleModel } from '@/lib/types';
 
 /* ==========================================================================
    Beschriftungen für den Autoschlüssel-Assistenten
@@ -142,6 +142,8 @@ export const VIN_INFO: InfoHint = {
 
 export interface PhotoSlotDef {
   id: 'vorderseite' | 'rueckseite' | 'bart' | 'detail';
+  /** Steckplatz der Datei (FA-KERN-02); der Server prüft die drei Pflichtaufnahmen daran. */
+  steckplatz: UploadSteckplatz;
   label: string;
   description: string;
   example: ImageSlot;
@@ -151,6 +153,7 @@ export interface PhotoSlotDef {
 export const KEY_PHOTO_SLOTS: PhotoSlotDef[] = [
   {
     id: 'vorderseite',
+    steckplatz: 'schluessel-vorderseite',
     label: 'Vorderseite des Schlüssels',
     description:
       // Untergrund und Blitz stehen einmal in den Fototipps über den Feldern (E4-JURY-02).
@@ -165,6 +168,7 @@ export const KEY_PHOTO_SLOTS: PhotoSlotDef[] = [
   },
   {
     id: 'rueckseite',
+    steckplatz: 'schluessel-rueckseite',
     label: 'Rückseite des Schlüssels',
     description:
       'Rückseite mit allen Aufdrucken. Häufig stehen dort Hersteller- und Teilenummern, die wir '
@@ -179,20 +183,24 @@ export const KEY_PHOTO_SLOTS: PhotoSlotDef[] = [
   },
   {
     id: 'bart',
-    label: 'Schlüsselbart oder Spitze',
+    steckplatz: 'schluessel-spitze',
+    // Wortlaut des Inhabers (FA-06-10, A-048): Spitze beziehungsweise Profil von vorne.
+    label: 'Spitze beziehungsweise Profil von vorne',
     description:
-      'Bart von der Seite aufnehmen, sodass das Profil und die Fräsungen erkennbar sind. Bei einem '
-      + 'Klappschlüssel bitte ausgeklappt fotografieren.',
+      'Den Schlüssel so halten, dass die Spitze zur Kamera zeigt. Profil und Fräsungen müssen erkennbar '
+      + 'sein. Bei einem Klappschlüssel bitte ausgeklappt fotografieren.',
     example: {
-      motif: 'Beispielfoto: Schlüsselbart seitlich, Fräsprofil deutlich erkennbar',
+      motif: 'Beispielfoto: Blick von vorne auf die Spitze, Profil deutlich erkennbar',
       ratio: '4/3',
       note: 'Eigene Aufnahme aus der Werkstatt, kein Herstellerbild.',
-      visual: { generator: 'schluessel', params: { typ: 'funk', ansicht: 'bart' } },
+      // Dieselbe Zeichnung wie bei der Vorlage-Anfrage: das Profil von vorne, bis echte Fotos vorliegen (MA-05).
+      visual: { generator: 'profilschnitt', params: { beschriftung: false } },
     },
     required: true,
   },
   {
     id: 'detail',
+    steckplatz: 'sonstiges',
     label: 'Nahaufnahme von Nummern oder Logos (freiwillig)',
     description:
       'Wenn auf dem Schlüssel Nummern, Buchstabenfolgen oder ein Logo stehen, hilft uns eine '

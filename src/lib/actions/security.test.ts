@@ -81,6 +81,29 @@ vi.mock('@/lib/data', () => {
   };
 });
 
+/*
+ * Dateiablage (FA-KERN-02): standardmäßig aus wie bisher. Mit `ablage.an` gilt die Ablage als
+ * eingerichtet; die gespeicherten Kundendateien liefert `ablage.dateien` je Kennung (Steckplatz und
+ * Kategorie so, wie sie der Upload-Weg gespeichert hätte).
+ */
+const ablage = {
+  an: false,
+  dateien: new Map<string, { kategorie: string; steckplatz: string | null }>(),
+};
+
+vi.mock('@/lib/integrations', async (importOriginal) => {
+  const original = await importOriginal<typeof import('@/lib/integrations')>();
+  return { ...original, storageStatus: () => ({ ...original.storageStatus(), configured: ablage.an }) };
+});
+
+vi.mock('@/lib/server/kundendateien', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@/lib/server/kundendateien')>()),
+  kundendateienPruefen: async ({ uploads }: { uploads: Array<{ id: string | number; uploadToken: string }> }) =>
+    uploads.map((u) => ablage.dateien.get(String(u.id)) ?? null),
+  verknuepfeKundendateien: async ({ uploads }: { uploads: Array<{ id: string | number }> }) =>
+    uploads.filter((u) => ablage.dateien.has(String(u.id))).map((u) => Number(u.id)),
+}));
+
 const aktionen = { ...(await import('./records')), ...(await import('./orders')) };
 const { resetRateLimits } = await import('@/lib/server/rate-limit');
 const { createAccessToken, verifyAccessToken } = await import('@/lib/server/access-token');
@@ -110,11 +133,25 @@ const contact = {
 const zustimmungen = { terms: true, deposit: true, authorization: true, earlyStart: true };
 
 /** Ohne Dateiablage (Tests) genügt die Angabe der ausgewählten Datei. */
-const fahrzeugschein = { fileName: 'fahrzeugschein.jpg', sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'fahrzeugschein' as const };
+const fahrzeugschein = { fileName: 'fahrzeugschein.jpg', sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'fahrzeugschein' as const, steckplatz: 'fahrzeugschein' as const };
+
+/** Die drei Schlüsselfotos mit Steckplatz (FA-KERN-02): Vorderseite, Rückseite, Spitze beziehungsweise Profil von vorne. */
+const schluesselfoto = (steckplatz: 'schluessel-vorderseite' | 'schluessel-rueckseite' | 'schluessel-spitze' | 'sonstiges') => ({
+  fileName: `${steckplatz}.jpg`, sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'schluesselfoto' as const, steckplatz,
+});
+const dreiFotos = [schluesselfoto('schluessel-vorderseite'), schluesselfoto('schluessel-rueckseite'), schluesselfoto('schluessel-spitze')];
+const zweiFotos = dreiFotos.slice(0, 2);
+/** Ersatznachweis für Kleinstfahrzeuge: kommt als Dokument mit eigenem Steckplatz. */
+const ersatznachweis = { fileName: 'kaufbeleg.pdf', sizeBytes: 90_000, mimeType: 'application/pdf', category: 'dokument' as const, steckplatz: 'ersatznachweis' as const };
+const typenschild = { fileName: 'typenschild.jpg', sizeBytes: 90_000, mimeType: 'image/jpeg', category: 'dokument' as const, steckplatz: 'typenschild' as const };
+/** Kurze Beschreibung des Anliegens (mindestens 20 Zeichen). */
+const BESCHREIBUNG = 'Zweitschlüssel gewünscht, bitte Rückmeldung.';
 
 beforeEach(() => {
   stored.length = 0;
   vorab.veraltet = false;
+  ablage.an = false;
+  ablage.dateien.clear();
   resetRateLimits();
 });
 
@@ -196,14 +233,15 @@ describe('submitRecord', () => {
 
   it('verlangt bei der Foto-Anfrage mit Sicherungskarte ein Foto der Karte (R13, E6-OPUS-01)', async () => {
     const basis = { kind: 'anfrage' as const, area: 'schluessel-nach-vorlage' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [] };
-    const foto = { fileName: 'schluessel.jpg', sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'schluesselfoto' as const };
-    const karte = { ...foto, fileName: 'karte.jpg', category: 'sicherungskarte' as const };
-    const ohneKarte = await submitRecord({ ...basis, payload: { sicherungskarte: 'ja' }, uploads: [foto] });
+    // Die drei Fotos, Stückzahl und Beschreibung verlangt die Pflichtregel (FA-KERN-02); hier geht es um die Karte.
+    const angaben = { quelle: 'foto-anfrage', stueckzahl: 1, beschreibung: BESCHREIBUNG };
+    const karte = { ...schluesselfoto('sonstiges'), fileName: 'karte.jpg', category: 'sicherungskarte' as const, steckplatz: 'sicherungskarte' as const };
+    const ohneKarte = await submitRecord({ ...basis, payload: { ...angaben, sicherungskarte: 'ja' }, uploads: dreiFotos });
     expect(ohneKarte.ok).toBe(false);
     expect(ohneKarte.error).toContain('Sicherungskarte');
-    expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'ja' }, uploads: [foto, karte] })).ok).toBe(true);
-    expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'nein' }, uploads: [foto] })).ok).toBe(true);
-    expect((await submitRecord({ ...basis, payload: { sicherungskarte: 'unklar' }, uploads: [foto] })).ok).toBe(true);
+    expect((await submitRecord({ ...basis, payload: { ...angaben, sicherungskarte: 'ja' }, uploads: [...dreiFotos, karte] })).ok).toBe(true);
+    expect((await submitRecord({ ...basis, payload: { ...angaben, sicherungskarte: 'nein' }, uploads: dreiFotos })).ok).toBe(true);
+    expect((await submitRecord({ ...basis, payload: { ...angaben, sicherungskarte: 'unklar' }, uploads: dreiFotos })).ok).toBe(true);
   });
 
   it('lehnt einen Vorgang ohne Telefonnummer ab, wie das Backend (E6-BAUMEISTER-03)', async () => {
@@ -224,15 +262,15 @@ describe('submitRecord', () => {
 
   it('verlangt bei Motorrad und Gehäuse die Unterlagen der Rubrik (R13, E6)', async () => {
     const basis = { kind: 'anfrage' as const, area: 'autoschluessel' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [] };
-    const foto = { fileName: 'schluessel.jpg', sizeBytes: 120_000, mimeType: 'image/jpeg', category: 'schluesselfoto' as const };
     for (const quelle of ['motorrad', 'gehaeuse']) {
-      const ohne = await submitRecord({ ...basis, payload: { quelle }, uploads: [foto] });
+      const payload = { quelle, tasten: '3-4', beschreibung: BESCHREIBUNG };
+      const ohne = await submitRecord({ ...basis, payload, uploads: dreiFotos });
       expect(ohne.ok, quelle).toBe(false);
       expect(ohne.error, quelle).toContain('Fahrzeugschein');
-      const ohneFoto = await submitRecord({ ...basis, payload: { quelle }, uploads: [fahrzeugschein] });
+      const ohneFoto = await submitRecord({ ...basis, payload, uploads: [fahrzeugschein] });
       expect(ohneFoto.ok, quelle).toBe(false);
-      expect((await submitRecord({ ...basis, payload: { quelle }, uploads: [fahrzeugschein, foto] })).ok, quelle).toBe(true);
-      expect((await submitRecord({ ...basis, area: 'schluessel-nach-vorlage', payload: { quelle }, uploads: [fahrzeugschein, foto] })).ok, quelle).toBe(false);
+      expect((await submitRecord({ ...basis, payload, uploads: [fahrzeugschein, ...dreiFotos] })).ok, quelle).toBe(true);
+      expect((await submitRecord({ ...basis, area: 'schluessel-nach-vorlage', payload, uploads: [fahrzeugschein, ...dreiFotos] })).ok, quelle).toBe(false);
     }
   });
 
@@ -303,9 +341,9 @@ describe('submitRecord', () => {
       area: 'autoschluessel',
       process: 'termin-mit-anzahlung',
       contact,
-      payload: {},
+      payload: { note: BESCHREIBUNG },
       summary: [],
-      uploads: [fahrzeugschein],
+      uploads: [fahrzeugschein, ...dreiFotos],
       payment: { scope: 'anzahlung', amountCents: 1, description: 'Anzahlung' },
       verify: {
         kind: 'autoschluessel',
@@ -321,6 +359,49 @@ describe('submitRecord', () => {
     const amount = stored[0].payment?.amountCents ?? 0;
     expect(amount).toBeGreaterThanOrEqual(settings.booking.depositMinCents);
     expect(amount).not.toBe(1);
+  });
+
+  it('lehnt einen Termin außerhalb des Autoschlüssel-Bereichs ab, auch ohne Unterlagen (R13, FA-KERN-02)', async () => {
+    const result = await submitRecord({
+      kind: 'termin',
+      area: 'service-und-termin',
+      process: 'termin-mit-anzahlung',
+      contact,
+      payload: {},
+      summary: [],
+      uploads: [],
+      verify: {
+        kind: 'autoschluessel',
+        makeSlug: 'volkswagen',
+        modelSlug: 'golf',
+        serviceId: 'zweitschluessel',
+        keyKind: 'klappschluessel',
+        workingKeys: 1,
+      },
+      consents: zustimmungen,
+    });
+    expect(result.ok).toBe(false);
+    // Auch mit allen Unterlagen bleibt ein Termin an den Autoschlüssel-Bereich gebunden.
+    const mitUnterlagen = await submitRecord({
+      kind: 'termin',
+      area: 'service-und-termin',
+      process: 'termin-mit-anzahlung',
+      contact,
+      payload: { note: BESCHREIBUNG },
+      summary: [],
+      uploads: [fahrzeugschein, ...dreiFotos],
+      verify: {
+        kind: 'autoschluessel',
+        makeSlug: 'volkswagen',
+        modelSlug: 'golf',
+        serviceId: 'zweitschluessel',
+        keyKind: 'klappschluessel',
+        workingKeys: 1,
+      },
+      consents: zustimmungen,
+    });
+    expect(mitUnterlagen.ok).toBe(false);
+    expect(stored).toHaveLength(0);
   });
 
   describe('Terminvergabe', () => {
@@ -342,18 +423,20 @@ describe('submitRecord', () => {
     }
 
     function buchen(appointment: { date: string; time: string }, anpassen: Partial<RecordEingabe> = {}) {
+      // Pflichtunterlagen (FA-KERN-02): Fahrzeugschein, drei Schlüsselfotos, kurze Beschreibung.
+      const { payload, ...rest } = anpassen;
       return submitRecord({
         kind: 'termin',
         area: 'autoschluessel',
         process: 'termin-mit-anzahlung',
         contact,
-        payload: {},
+        payload: { note: BESCHREIBUNG, ...payload },
         summary: [],
-        uploads: [fahrzeugschein],
+        uploads: [fahrzeugschein, ...dreiFotos],
         appointment: { ...appointment, durationMinutes: 1, location: 'werkstatt' },
         verify,
         consents: zustimmungen,
-        ...anpassen,
+        ...rest,
       });
     }
 
@@ -491,17 +574,87 @@ describe('submitRecord', () => {
     });
 
     it('lehnt Termine ohne Fahrzeugschein ab — auch mit Schlüsselfotos', async () => {
-      const schluesselfoto = { ...fahrzeugschein, fileName: 'schluessel.jpg', category: 'schluesselfoto' as const };
-      const ohne = await buchen(await freiesFenster(), { uploads: [schluesselfoto] });
+      const ohne = await buchen(await freiesFenster(), { uploads: dreiFotos });
       expect(ohne.ok).toBe(false);
       expect(ohne.error).toContain('Zulassungsbescheinigung Teil I');
       expect(stored).toHaveLength(0);
     });
 
-    it('bucht bei Totalverlust ohne Schlüsselfotos, nur mit Fahrzeugschein', async () => {
-      const result = await buchen(await freiesFenster(), { verify: { ...verify, workingKeys: 0 }, uploads: [fahrzeugschein] });
-      expect(result.ok).toBe(true);
+    it('bucht bei bestätigtem Totalverlust ohne Schlüsselfotos, nur mit Fahrzeugschein (FA-KERN-02)', async () => {
+      const result = await buchen(await freiesFenster(), {
+        verify: { ...verify, workingKeys: 0 },
+        payload: { keinSchluesselMehr: true },
+        uploads: [fahrzeugschein],
+      });
+      expect(result.ok, result.error).toBe(true);
       expect(stored[0].uploads.map((u) => u.category)).toEqual(['fahrzeugschein']);
+    });
+
+    it('verlangt bei 0 funktionierenden Schlüsseln ohne Bestätigung die drei Fotos (defekter Schlüssel, FA-KERN-02)', async () => {
+      const ohne = await buchen(await freiesFenster(), { verify: { ...verify, workingKeys: 0 }, uploads: [fahrzeugschein] });
+      expect(ohne.ok).toBe(false);
+      expect(ohne.error).toContain('Vorderseite');
+      // Die Bestätigung zählt nur bei 0 funktionierenden Schlüsseln.
+      const widerspruch = await buchen(await freiesFenster(), { payload: { keinSchluesselMehr: true }, uploads: [fahrzeugschein] });
+      expect(widerspruch.ok).toBe(false);
+      expect(stored).toHaveLength(0);
+    });
+
+    it('lehnt Termine mit zwei statt drei Schlüsselfotos ab (FA-KERN-02)', async () => {
+      const result = await buchen(await freiesFenster(), { uploads: [fahrzeugschein, ...zweiFotos] });
+      expect(result.ok).toBe(false);
+      expect(result.error).toContain('Spitze beziehungsweise des Profils von vorne');
+      expect(result.error).not.toContain('Vorderseite');
+      // Eine Nahaufnahme unter „Sonstiges“ ersetzt keine Pflichtansicht.
+      expect((await buchen(await freiesFenster(), { uploads: [fahrzeugschein, ...zweiFotos, schluesselfoto('sonstiges')] })).ok).toBe(false);
+      expect(stored).toHaveLength(0);
+    });
+
+    it('lehnt Termine mit Ersatznachweis statt Fahrzeugschein ab, der Ersatzweg gilt nie für Autos (R13)', async () => {
+      const result = await buchen(await freiesFenster(), {
+        uploads: [ersatznachweis, typenschild, ...dreiFotos],
+        payload: { klasse: 'e-scooter', ersatznachweis: 'kaufbeleg', roller: 'versicherungskennzeichen' },
+      });
+      expect(result.ok).toBe(false);
+      expect(result.error).toContain('Fahrzeugschein');
+      expect(stored).toHaveLength(0);
+    });
+
+    it('verlangt im Termin eine kurze Beschreibung des Anliegens (FA-KERN-02)', async () => {
+      const ohne = await buchen(await freiesFenster(), { payload: { note: 'kurz' } });
+      expect(ohne.ok).toBe(false);
+      expect(ohne.error).toContain('Beschreibung');
+    });
+
+    it('lehnt einen vom Browser gefälschten Steckplatz ab (FA-KERN-02)', async () => {
+      // Ohne Ablage: Steckplatz und Kategorie müssen zusammenpassen.
+      const falsch = { ...schluesselfoto('schluessel-vorderseite'), steckplatz: 'fahrzeugschein' as const };
+      expect((await buchen(await freiesFenster(), { uploads: [falsch, ...dreiFotos] })).ok).toBe(false);
+      // Mit Ablage: Es zählt nur der gespeicherte Steckplatz der Kundendatei.
+      ablage.an = true;
+      const token = 'a'.repeat(43);
+      ablage.dateien.set('11', { kategorie: 'fahrzeugschein', steckplatz: 'fahrzeugschein' });
+      ablage.dateien.set('12', { kategorie: 'schluesselfoto', steckplatz: 'schluessel-vorderseite' });
+      ablage.dateien.set('13', { kategorie: 'schluesselfoto', steckplatz: 'schluessel-rueckseite' });
+      ablage.dateien.set('14', { kategorie: 'schluesselfoto', steckplatz: 'schluessel-vorderseite' });
+      const mitKennung = <T extends object>(upload: T, id: string) => ({ ...upload, storageKey: id, uploadToken: token });
+      const echt = [mitKennung(fahrzeugschein, '11'), mitKennung(dreiFotos[0], '12'), mitKennung(dreiFotos[1], '13')];
+      // Datei 14 ist als Vorderseite gespeichert, der Browser gibt sie als Spitze aus.
+      const gefaelscht = await buchen(await freiesFenster(), { uploads: [...echt, mitKennung(dreiFotos[2], '14')] });
+      expect(gefaelscht.ok).toBe(false);
+      expect(gefaelscht.error).toContain('Zuordnung');
+      // Dieselbe Datei zweimal nennen gilt ebenso als gefälscht.
+      expect((await buchen(await freiesFenster(), { uploads: [...echt, mitKennung(dreiFotos[2], '12')] })).ok).toBe(false);
+      // Eine Kennung ohne gespeicherte Datei zählt nicht als hochgeladen.
+      const unbekannt = await buchen(await freiesFenster(), { uploads: [...echt, mitKennung(dreiFotos[2], '99')] });
+      expect(unbekannt.ok).toBe(false);
+      expect(unbekannt.error).toContain('Spitze');
+      expect(stored).toHaveLength(0);
+      // Richtig gespeichert: angenommen, der Steckplatz steht im Vorgang.
+      ablage.dateien.set('15', { kategorie: 'schluesselfoto', steckplatz: 'schluessel-spitze' });
+      const richtig = await buchen(await freiesFenster(), { uploads: [...echt, mitKennung(dreiFotos[2], '15')] });
+      expect(richtig.ok, richtig.error).toBe(true);
+      expect(stored[0].uploads.map((u) => u.steckplatz)).toEqual(['fahrzeugschein', 'schluessel-vorderseite', 'schluessel-rueckseite', 'schluessel-spitze']);
     });
 
     it('legt online gebuchte Termine in der Werkstatt an — auch mit Fahrzeug', async () => {
@@ -575,6 +728,187 @@ describe('submitRecord', () => {
       expect((await submitRecord(input)).ok).toBe(true);
     }
     expect((await submitRecord(input)).ok).toBe(false);
+  });
+});
+
+describe('submitRecord: Pflichtunterlagen je Weg (FA-KERN-02, A-048)', () => {
+  const anfrage = { kind: 'anfrage' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [] };
+  const motorrad = { ...anfrage, area: 'autoschluessel' as const, payload: { quelle: 'motorrad', beschreibung: BESCHREIBUNG } };
+  const gehaeuse = { ...anfrage, area: 'autoschluessel' as const, payload: { quelle: 'gehaeuse', tasten: '1-2', beschreibung: BESCHREIBUNG } };
+  const vorlage = { ...anfrage, area: 'schluessel-nach-vorlage' as const, payload: { quelle: 'foto-anfrage', stueckzahl: 2, sicherungskarte: 'nein', beschreibung: BESCHREIBUNG } };
+  const fahrzeug = (klasse: string, mehr: Record<string, unknown> = {}) => ({
+    ...anfrage,
+    area: 'autoschluessel' as const,
+    payload: { quelle: 'fahrzeug-anfrage', klasse, beschreibung: BESCHREIBUNG, ...mehr },
+  });
+
+  it('nimmt jeden Weg mit vollständigen Unterlagen an', async () => {
+    expect((await submitRecord({ ...motorrad, uploads: [fahrzeugschein, ...dreiFotos] })).ok).toBe(true);
+    expect((await submitRecord({ ...gehaeuse, uploads: [fahrzeugschein, ...dreiFotos] })).ok).toBe(true);
+    expect((await submitRecord({ ...vorlage, uploads: dreiFotos })).ok).toBe(true);
+    for (const klasse of ['auto', 'motorrad', 'nicht-gefunden', 'roller']) {
+      expect((await submitRecord({ ...fahrzeug(klasse), uploads: [fahrzeugschein, ...dreiFotos] })).ok, klasse).toBe(true);
+    }
+  });
+
+  it('lehnt ohne Fahrzeugschein ab (Motorrad, Gehäuse, Auto, Motorrad, zugelassener Roller, Fahrzeug nicht gefunden)', async () => {
+    for (const [name, weg] of [['motorrad', motorrad], ['gehaeuse', gehaeuse], ['auto', fahrzeug('auto')], ['motorrad-klasse', fahrzeug('motorrad')], ['roller', fahrzeug('roller', { roller: 'zulassung' })], ['nicht-gefunden', fahrzeug('nicht-gefunden')]] as const) {
+      const result = await submitRecord({ ...weg, uploads: dreiFotos });
+      expect(result.ok, name).toBe(false);
+      expect(result.error, name).toContain('Fahrzeugschein');
+    }
+    expect(stored).toHaveLength(0);
+  });
+
+  it('lehnt mit zwei statt drei Schlüsselfotos ab, in jedem Weg', async () => {
+    for (const [name, weg, nachweis] of [
+      ['motorrad', motorrad, [fahrzeugschein]],
+      ['gehaeuse', gehaeuse, [fahrzeugschein]],
+      ['vorlage', vorlage, []],
+      ['auto', fahrzeug('auto'), [fahrzeugschein]],
+      ['e-scooter', fahrzeug('e-scooter', { ersatznachweis: 'kaufbeleg', fin: 'WVWZZZ1JZXW000001' }), [ersatznachweis]],
+    ] as const) {
+      const result = await submitRecord({ ...weg, uploads: [...nachweis, ...zweiFotos] });
+      expect(result.ok, name).toBe(false);
+      expect(result.error, name).toContain('Profils von vorne');
+    }
+    expect(stored).toHaveLength(0);
+  });
+
+  it('nimmt bestätigten Totalverlust ohne Fotos an (Motorrad, Fahrzeug-Anfrage), nicht beim Gehäuse und nicht nach Vorlage', async () => {
+    expect((await submitRecord({ ...motorrad, payload: { ...motorrad.payload, keinSchluesselMehr: true }, uploads: [fahrzeugschein] })).ok).toBe(true);
+    expect((await submitRecord({ ...fahrzeug('auto', { keinSchluesselMehr: true }), uploads: [fahrzeugschein] })).ok).toBe(true);
+    expect((await submitRecord({ ...fahrzeug('seniorenmobil', { keinSchluesselMehr: true, ersatznachweis: 'versicherungsbescheinigung', keinTypenschild: true }), uploads: [ersatznachweis] })).ok).toBe(true);
+    const anzahl = stored.length;
+    // Ohne ausdrückliche Bestätigung (nur „true“ zählt) bleiben die Fotos Pflicht.
+    expect((await submitRecord({ ...motorrad, payload: { ...motorrad.payload, keinSchluesselMehr: 'ja' }, uploads: [fahrzeugschein] })).ok).toBe(false);
+    // Gehäuse und Vorlage brauchen den Schlüssel immer.
+    expect((await submitRecord({ ...gehaeuse, payload: { ...gehaeuse.payload, keinSchluesselMehr: true }, uploads: [fahrzeugschein] })).ok).toBe(false);
+    expect((await submitRecord({ ...vorlage, payload: { ...vorlage.payload, keinSchluesselMehr: true }, uploads: [] })).ok).toBe(false);
+    expect(stored).toHaveLength(anzahl);
+  });
+
+  it('nimmt Kleinstfahrzeuge mit Ersatznachweis an', async () => {
+    const faelle: Array<[string, ReturnType<typeof fahrzeug>, object[]]> = [
+      ['e-scooter mit FIN', fahrzeug('e-scooter', { ersatznachweis: 'betriebserlaubnis', fin: 'WVWZZZ1JZXW000001' }), [ersatznachweis]],
+      ['seniorenmobil mit Typenschild', fahrzeug('seniorenmobil', { ersatznachweis: 'kaufbeleg' }), [ersatznachweis, typenschild]],
+      ['roller mit Versicherungskennzeichen', fahrzeug('roller', { roller: 'versicherungskennzeichen', ersatznachweis: 'versicherungsbescheinigung', keinTypenschild: true }), [ersatznachweis]],
+      ['fahrrad mit Codekarte', fahrzeug('fahrrad', { ersatznachweis: 'codekarte', schlossHersteller: 'Testschloss', schluesselnummer: 'K 123' }), [ersatznachweis]],
+    ];
+    for (const [name, weg, nachweis] of faelle) {
+      const result = await submitRecord({ ...weg, uploads: [...nachweis, ...dreiFotos] } as RecordEingabe);
+      expect(result.ok, `${name}: ${result.error}`).toBe(true);
+    }
+    expect(stored[0].uploads.map((u) => u.steckplatz)).toContain('ersatznachweis');
+  });
+
+  it('verlangt beim Ersatzweg Art, Typenschild oder FIN und beim Fahrrad die Angaben zum Schloss', async () => {
+    const ohneArt = await submitRecord({ ...fahrzeug('e-scooter', { fin: 'WVWZZZ1JZXW000001' }), uploads: [ersatznachweis, ...dreiFotos] });
+    expect(ohneArt.error).toContain('welchen Nachweis');
+    // Eine Codekarte gilt nur beim Fahrrad.
+    expect((await submitRecord({ ...fahrzeug('e-scooter', { ersatznachweis: 'codekarte', fin: 'WVWZZZ1JZXW000001' }), uploads: [ersatznachweis, ...dreiFotos] })).ok).toBe(false);
+    const ohneTypenschild = await submitRecord({ ...fahrzeug('e-scooter', { ersatznachweis: 'kaufbeleg' }), uploads: [ersatznachweis, ...dreiFotos] });
+    expect(ohneTypenschild.error).toContain('Typenschilds');
+    const ohneSchloss = await submitRecord({ ...fahrzeug('fahrrad', { ersatznachweis: 'kaufbeleg' }), uploads: [ersatznachweis, ...dreiFotos] });
+    expect(ohneSchloss.error).toContain('Schlüsselnummer');
+    const ohneNachweis = await submitRecord({ ...fahrzeug('e-scooter', { ersatznachweis: 'kaufbeleg', fin: 'WVWZZZ1JZXW000001' }), uploads: dreiFotos });
+    expect(ohneNachweis.error).toContain('Nachweises');
+    expect(stored).toHaveLength(0);
+  });
+
+  it('lehnt Auto und Motorrad mit Ersatznachweis statt Fahrzeugschein ab (R13)', async () => {
+    const ersatz = { ersatznachweis: 'kaufbeleg', fin: 'WVWZZZ1JZXW000001', roller: 'versicherungskennzeichen' };
+    for (const [name, weg] of [['auto', fahrzeug('auto', ersatz)], ['motorrad', fahrzeug('motorrad', ersatz)], ['nicht-gefunden', fahrzeug('nicht-gefunden', ersatz)], ['motorrad-weg', { ...motorrad, payload: { ...motorrad.payload, ...ersatz } }], ['gehaeuse', { ...gehaeuse, payload: { ...gehaeuse.payload, ...ersatz } }]] as const) {
+      const result = await submitRecord({ ...weg, uploads: [ersatznachweis, typenschild, ...dreiFotos] });
+      expect(result.ok, name).toBe(false);
+      expect(result.error, name).toContain('Fahrzeugschein');
+    }
+    // Roller ohne Wahl gilt als zugelassen.
+    expect((await submitRecord({ ...fahrzeug('roller', { ersatznachweis: 'kaufbeleg', fin: 'WVWZZZ1JZXW000001' }), uploads: [ersatznachweis, ...dreiFotos] })).ok).toBe(false);
+    expect(stored).toHaveLength(0);
+  });
+
+  it('lehnt einen vom Browser gefälschten Steckplatz ab, in jedem Weg', async () => {
+    // Ersatznachweis als „Fahrzeugschein“ ausgegeben, Foto als Fahrzeugschein: passt nicht zur Kategorie.
+    const scheinGefaelscht = { ...ersatznachweis, steckplatz: 'fahrzeugschein' as const };
+    const fotoAlsSchein = { ...schluesselfoto('schluessel-vorderseite'), steckplatz: 'fahrzeugschein' as const };
+    const scheinAlsFoto = { ...fahrzeugschein, steckplatz: 'schluessel-spitze' as const };
+    for (const [name, weg] of [['motorrad', motorrad], ['gehaeuse', gehaeuse], ['vorlage', vorlage], ['auto', fahrzeug('auto')]] as const) {
+      expect((await submitRecord({ ...weg, uploads: [scheinGefaelscht, ...dreiFotos] })).ok, name).toBe(false);
+      expect((await submitRecord({ ...weg, uploads: [fotoAlsSchein, ...dreiFotos] })).ok, name).toBe(false);
+      expect((await submitRecord({ ...weg, uploads: [fahrzeugschein, ...zweiFotos, scheinAlsFoto] })).ok, name).toBe(false);
+    }
+    // Mit Ablage: gespeichert als Rückseite, ausgegeben als Spitze. (Zählung zurücksetzen: viele Versuche oben.)
+    resetRateLimits();
+    ablage.an = true;
+    const token = 'b'.repeat(43);
+    ablage.dateien.set('21', { kategorie: 'schluesselfoto', steckplatz: 'schluessel-vorderseite' });
+    ablage.dateien.set('22', { kategorie: 'schluesselfoto', steckplatz: 'schluessel-rueckseite' });
+    ablage.dateien.set('23', { kategorie: 'schluesselfoto', steckplatz: 'schluessel-rueckseite' });
+    const fotos = dreiFotos.map((foto, i) => ({ ...foto, storageKey: String(21 + i), uploadToken: token }));
+    const result = await submitRecord({ ...vorlage, uploads: fotos });
+    expect(result.ok).toBe(false);
+    expect(result.error).toContain('Zuordnung');
+    // Ohne gespeicherte Datei zählt eine Angabe mit Ablage nicht.
+    expect((await submitRecord({ ...vorlage, uploads: dreiFotos })).ok).toBe(false);
+    expect(stored).toHaveLength(0);
+  });
+
+  it('prüft beim Gehäuse die Tastenzahl und nach Vorlage die Stückzahl auf dem Server', async () => {
+    for (const tasten of [undefined, '', '5-6', 3]) {
+      const result = await submitRecord({ ...gehaeuse, payload: { ...gehaeuse.payload, tasten }, uploads: [fahrzeugschein, ...dreiFotos] });
+      expect(result.ok, String(tasten)).toBe(false);
+      expect(result.error).toContain('Tasten');
+    }
+    for (const stueckzahl of [0, 21, 2.5, '3', undefined]) {
+      const result = await submitRecord({ ...vorlage, payload: { ...vorlage.payload, stueckzahl }, uploads: dreiFotos });
+      expect(result.ok, String(stueckzahl)).toBe(false);
+      expect(result.error).toContain('Stückzahl');
+    }
+    expect((await submitRecord({ ...gehaeuse, uploads: [fahrzeugschein, ...dreiFotos] })).ok).toBe(true);
+    expect(stored[0].payload.tasten).toBe('1-2');
+  });
+
+  it('verlangt in jedem Weg eine kurze Beschreibung des Anliegens', async () => {
+    for (const [name, weg, unterlagen] of [['motorrad', motorrad, [fahrzeugschein, ...dreiFotos]], ['gehaeuse', gehaeuse, [fahrzeugschein, ...dreiFotos]], ['vorlage', vorlage, dreiFotos], ['auto', fahrzeug('auto'), [fahrzeugschein, ...dreiFotos]]] as const) {
+      const result = await submitRecord({ ...weg, payload: { ...weg.payload, beschreibung: 'zu kurz' }, uploads: [...unterlagen] });
+      expect(result.ok, name).toBe(false);
+      expect(result.error, name).toContain('kurze Beschreibung');
+    }
+    expect(stored).toHaveLength(0);
+  });
+
+  it('nennt in der Meldung alles, was fehlt, und warum', async () => {
+    const result = await submitRecord({ ...motorrad, payload: { quelle: 'motorrad' }, uploads: [] });
+    expect(result.error).toBe(
+      'Bitte ergänzen Sie noch den Fahrzeugschein (Zulassungsbescheinigung Teil I), das Foto der Vorderseite Ihres Schlüssels, '
+      + 'das Foto der Rückseite Ihres Schlüssels, das Foto der Spitze beziehungsweise des Profils von vorne und eine kurze '
+      + 'Beschreibung Ihres Anliegens (mindestens 20 Zeichen). Die Unterlagen schützen Sie vor Missbrauch: Wir fertigen '
+      + 'Schlüssel nur für Berechtigte.',
+    );
+  });
+
+  it('lässt die allgemeine Anfrage, unbekannte Quellen und unbekannte Klassen nicht durch die Regel fallen', async () => {
+    // Die allgemeine Anfrage mit Thema „Schlüssel nach Vorlage“ trägt keine Steckplätze. Der Server legt sie unter
+    // „Service und Termin“ ab: keine Foto-Anfrage, also nie Freigabe mit Zahlung ohne die drei Fotos.
+    expect((await submitRecord({ ...anfrage, area: 'schluessel-nach-vorlage', payload: { thema: 'schluessel-nach-vorlage', beschreibung: BESCHREIBUNG }, uploads: [] })).ok).toBe(true);
+    expect(stored[0]).toMatchObject({ area: 'service-und-termin', payload: { thema: 'schluessel-nach-vorlage' } });
+    // Erfundene Quelle: Nach Vorlage und bei Autoschlüsseln abgelehnt, auch mit allen Unterlagen.
+    for (const [area, unterlagen] of [['schluessel-nach-vorlage', dreiFotos], ['autoschluessel', [fahrzeugschein, ...dreiFotos]]] as const) {
+      const ohne = await submitRecord({ ...anfrage, area, payload: { quelle: 'x', stueckzahl: 2, beschreibung: BESCHREIBUNG }, uploads: [] });
+      expect(ohne.ok, area).toBe(false);
+      const mit = await submitRecord({ ...anfrage, area, payload: { quelle: 'x', stueckzahl: 2, beschreibung: BESCHREIBUNG }, uploads: [...unterlagen] });
+      expect(mit.ok, area).toBe(false);
+    }
+    // Foto-Anfrage mit zusätzlichem Feld `thema`: Die Pflichtregel greift trotzdem.
+    const mitThema = await submitRecord({ ...vorlage, payload: { ...vorlage.payload, thema: 'schluessel-nach-vorlage' }, uploads: [] });
+    expect(mitThema.ok).toBe(false);
+    expect(mitThema.error).toContain('Vorderseite');
+    // Ohne Quelle und ohne Thema: Foto-Anfrage, ohne Fotos abgelehnt.
+    expect((await submitRecord({ ...anfrage, area: 'schluessel-nach-vorlage', payload: { stueckzahl: 2, beschreibung: BESCHREIBUNG }, uploads: [] })).ok).toBe(false);
+    expect(stored).toHaveLength(1);
+    // Unbekannte Klasse in der Fahrzeug-Anfrage: abgelehnt.
+    expect((await submitRecord({ ...fahrzeug('lkw'), uploads: [fahrzeugschein, ...dreiFotos] })).ok).toBe(false);
   });
 });
 

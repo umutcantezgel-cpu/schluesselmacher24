@@ -93,6 +93,36 @@ describe('POST /api/kunden-upload', () => {
     expect(tage).toBeLessThanOrEqual(180);
   });
 
+  it('speichert den Steckplatz nur, wenn er zur Kategorie passt (FA-KERN-02)', async () => {
+    const vorn = await route.POST(anfrage(formular({ kategorie: 'schluesselfoto', steckplatz: 'schluessel-vorderseite', datei: [JPEG, 'vorn.jpg'] })));
+    expect(vorn.status).toBe(201);
+    expect(speichere.mock.calls[0][0].steckplatz).toBe('schluessel-vorderseite');
+
+    // Gefälscht: Foto als Fahrzeugschein, Dokument als Fahrzeugschein, unbekannter Steckplatz.
+    for (const [kategorie, steckplatz] of [['schluesselfoto', 'fahrzeugschein'], ['dokument', 'fahrzeugschein'], ['fahrzeugschein', 'ersatznachweis'], ['schluesselfoto', 'kofferraum']]) {
+      const response = await route.POST(anfrage(formular({ kategorie, steckplatz, datei: [JPEG, 'foto.jpg'] })));
+      expect(response.status, `${kategorie}/${steckplatz}`).toBe(400);
+      expect(await fehlerVon(response)).toContain('passt nicht zu diesem Feld');
+    }
+    expect(speichere).toHaveBeenCalledTimes(1);
+
+    // Ohne Steckplatz wie bisher (Formulare ohne Steckplätze).
+    expect((await route.POST(anfrage(formular({ kategorie: 'objektfoto', datei: [JPEG, 'tuer.jpg'] })))).status).toBe(201);
+    expect(speichere.mock.calls[1][0].steckplatz).toBeUndefined();
+  });
+
+  it('bewahrt Ersatznachweis und Typenschild so lange auf wie den Fahrzeugschein (FA-KERN-02)', async () => {
+    const fristen = defaults.settings().retentionDays;
+    const tageVon = (neu: { aufbewahrenBis: Date }) => Math.round((neu.aufbewahrenBis.getTime() - Date.now()) / (24 * 60 * 60 * 1000));
+    await route.POST(anfrage(formular({ kategorie: 'dokument', steckplatz: 'ersatznachweis', datei: [PDF, 'kaufbeleg.pdf'] })));
+    await route.POST(anfrage(formular({ kategorie: 'dokument', steckplatz: 'typenschild', datei: [JPEG, 'schild.jpg'] })));
+    await route.POST(anfrage(formular({ kategorie: 'dokument', datei: [PDF, 'plan.pdf'] })));
+    expect(tageVon(speichere.mock.calls[0][0])).toBe(fristen.vehicleRegistration);
+    expect(tageVon(speichere.mock.calls[1][0])).toBe(fristen.vehicleRegistration);
+    expect(tageVon(speichere.mock.calls[2][0])).toBe(fristen.projectDocuments);
+    expect(fristen.vehicleRegistration).not.toBe(fristen.projectDocuments);
+  });
+
   it('nimmt PDF für den Fahrzeugschein an, aber nicht als Schlüsselfoto', async () => {
     const ok = await route.POST(anfrage(formular({ kategorie: 'fahrzeugschein', datei: [PDF, 'schein.pdf'] })));
     expect(ok.status).toBe(201);

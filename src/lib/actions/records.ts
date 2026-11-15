@@ -14,6 +14,8 @@ import { botVerdachtMelden, formularSchutzPruefen, scheinNummer } from '@/lib/se
 import { publicRecordSchema, terminZustimmungenSchema, type TerminZustimmungen } from '@/lib/server/record-schema';
 import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limit';
 import {
+  allgemeineVorlageAnfrage,
+  anfrageQuelleUnbekannt,
   fahrzeugFall,
   fehlendePflichtunterlagen,
   nachweisPruefen,
@@ -211,7 +213,19 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   if (!parsed.success) {
     return { ok: false, notices: [], error: INVALID_INPUT };
   }
-  const data = parsed.data;
+  // Allgemeine Anfrage mit dem Thema „Schlüssel nach Vorlage“ (FA-KERN-02): keine Foto-Anfrage, sie trägt
+  // keine Steckplätze. Der Server legt sie unter „Service und Termin“ ab, damit sie im Backend nie zur
+  // Freigabe mit Zahlung führt; das Thema bleibt im Vorgang stehen.
+  const data = allgemeineVorlageAnfrage(parsed.data) ? { ...parsed.data, area: 'service-und-termin' as const } : parsed.data;
+
+  // Bekannte Quellen je Bereich (FA-KERN-02): Eine erfundene Quelle darf die Pflichtregel nicht umgehen.
+  if (anfrageQuelleUnbekannt(data)) {
+    return { ok: false, notices: [], error: INVALID_INPUT };
+  }
+  // Ein Termin ist immer ein Autoschlüssel-Termin; die Pflichtregel gilt für jeden (R13).
+  if (data.kind === 'termin' && data.area !== 'autoschluessel') {
+    return { ok: false, notices: [], error: INVALID_INPUT };
+  }
 
   // Wege mit Pflichtunterlagen (FA-KERN-02): Steckplätze aus der Ablage bestätigen, bevor geprüft wird.
   const weg: UnterlagenWeg | null = unterlagenWeg(data);

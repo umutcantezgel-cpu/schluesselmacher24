@@ -19,6 +19,7 @@ const GUELTIG: MotorradDaten = {
   telefon: '06441 123456',
   plz: '35576',
   ort: 'Wetzlar',
+  beschreibung: 'Zweitschlüssel gewünscht, Testangabe.',
 };
 
 describe('schrittGueltig', () => {
@@ -61,6 +62,13 @@ describe('schrittGueltig', () => {
     expect(schrittGueltig({ ...GUELTIG, plz: '3557' }, 'kontakt', JAHR)).toBe(false);
     expect(schrittGueltig({ ...GUELTIG, plz: '', ort: '' }, 'kontakt', JAHR)).toBe(true);
   });
+
+  it('verlangt im Schritt Kontakt eine kurze Beschreibung des Anliegens (FA-KERN-02)', () => {
+    expect(schrittGueltig({ ...GUELTIG, beschreibung: '' }, 'kontakt', JAHR)).toBe(false);
+    expect(schrittGueltig({ ...GUELTIG, beschreibung: 'Zu kurz' }, 'kontakt', JAHR)).toBe(false);
+    expect(schrittGueltig({ ...GUELTIG, beschreibung: ' '.repeat(30) }, 'kontakt', JAHR)).toBe(false);
+    expect(schrittGueltig({ ...GUELTIG, beschreibung: 'x'.repeat(20) }, 'kontakt', JAHR)).toBe(true);
+  });
 });
 
 describe('motorradZusammenfassung', () => {
@@ -90,7 +98,8 @@ describe('Nutzlast des Vorgangs', () => {
       modell: 'MT-07',
       baujahr: 2019,
       transponder: 'ja',
-      anmerkung: null,
+      beschreibung: 'Zweitschlüssel gewünscht, Testangabe.',
+      keinSchluesselMehr: false,
     });
     expect(kontaktAus(GUELTIG).country).toBe(LIEFERLAND);
     expect(kontaktAus(GUELTIG).firstName).toBe('Anna');

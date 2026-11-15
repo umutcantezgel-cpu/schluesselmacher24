@@ -18,20 +18,23 @@ function dateien(belegt: Partial<Record<keyof DateienJeFeld, number>> = {}): Dat
 const ALLE_FOTOS = { vorderseite: 1, rueckseite: 1, bart: 1 };
 
 describe('Unterlagen im Autoschlüssel-Assistenten', () => {
-  it('macht Schlüsselfotos nur ohne funktionierenden Schlüssel freiwillig', () => {
-    expect(schluesselfotosFreiwillig(0)).toBe(true);
-    expect(schluesselfotosFreiwillig(1)).toBe(false);
-    expect(schluesselfotosFreiwillig(2)).toBe(false);
-    expect(schluesselfotosFreiwillig(null)).toBe(false);
+  // Regel des Inhabers (FA-KERN-02, A-048): Ausnahme nur bei ausdrücklich bestätigtem Totalverlust.
+  it('macht Schlüsselfotos nur bei bestätigtem Totalverlust freiwillig', () => {
+    expect(schluesselfotosFreiwillig(0, true)).toBe(true);
+    // 0 funktionierende Schlüssel, aber ein defekter ist noch da: Fotos bleiben Pflicht.
+    expect(schluesselfotosFreiwillig(0, false)).toBe(false);
+    expect(schluesselfotosFreiwillig(1, true)).toBe(false);
+    expect(schluesselfotosFreiwillig(2, false)).toBe(false);
+    expect(schluesselfotosFreiwillig(null, true)).toBe(false);
   });
 
-  it('lässt den Fotoschritt bei Totalverlust auch ohne Fotos zu', () => {
-    const angaben = { workingKeys: 0, entitlementConfirmed: false };
-    expect(unterlagenSchrittErfuellt('schluesselfotos', angaben, dateien())).toBe(true);
+  it('lässt den Fotoschritt nur bei bestätigtem Totalverlust ohne Fotos zu', () => {
+    expect(unterlagenSchrittErfuellt('schluesselfotos', { workingKeys: 0, keinSchluesselMehr: true, entitlementConfirmed: false }, dateien())).toBe(true);
+    expect(unterlagenSchrittErfuellt('schluesselfotos', { workingKeys: 0, keinSchluesselMehr: false, entitlementConfirmed: false }, dateien())).toBe(false);
   });
 
-  it('verlangt Vorderseite, Rückseite und Bart, solange ein Schlüssel funktioniert', () => {
-    const angaben = { workingKeys: 1, entitlementConfirmed: true };
+  it('verlangt Vorderseite, Rückseite und Spitze, solange ein Schlüssel da ist', () => {
+    const angaben = { workingKeys: 1, keinSchluesselMehr: false, entitlementConfirmed: true };
     expect(unterlagenSchrittErfuellt('schluesselfotos', angaben, dateien())).toBe(false);
     expect(unterlagenSchrittErfuellt('schluesselfotos', angaben, dateien({ vorderseite: 1, rueckseite: 1 }))).toBe(false);
     expect(unterlagenSchrittErfuellt('schluesselfotos', angaben, dateien(ALLE_FOTOS))).toBe(true);
@@ -40,13 +43,13 @@ describe('Unterlagen im Autoschlüssel-Assistenten', () => {
   });
 
   it('verlangt den Fahrzeugschein auch bei Totalverlust', () => {
-    const angaben = { workingKeys: 0, entitlementConfirmed: true };
+    const angaben = { workingKeys: 0, keinSchluesselMehr: true, entitlementConfirmed: true };
     expect(unterlagenSchrittErfuellt('fahrzeugschein', angaben, dateien())).toBe(false);
     expect(unterlagenSchrittErfuellt('fahrzeugschein', angaben, dateien({ fahrzeugschein: 1 }))).toBe(true);
   });
 
   it('verlangt die Bestätigung der Berechtigung zum Fahrzeugschein', () => {
-    const angaben = { workingKeys: 0, entitlementConfirmed: false };
+    const angaben = { workingKeys: 0, keinSchluesselMehr: true, entitlementConfirmed: false };
     expect(unterlagenSchrittErfuellt('fahrzeugschein', angaben, dateien({ fahrzeugschein: 1 }))).toBe(false);
   });
 });

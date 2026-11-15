@@ -8,9 +8,13 @@ import { fetchQuote, fetchSlots } from '@/lib/actions/booking';
 import { submitRecord } from '@/lib/actions/records';
 import { buildReference } from '@/lib/reference';
 import { createRecord, type TrustedRecordInput } from '@/lib/server/create-record';
+import { createAccessToken } from '@/lib/server/access-token';
+import { erkenneDateityp } from '@/lib/server/datei-pruefung';
+import { speichereKundendatei } from '@/lib/server/kundendateien';
+import sharp from 'sharp';
 import { startSignieren } from '@/lib/server/formular-schutz';
 import { resetRateLimits } from '@/lib/server/rate-limit';
-import type { PriceQuote } from '@/lib/types';
+import type { PriceQuote, UploadRef, UploadSteckplatz } from '@/lib/types';
 import {
   TerminVergebenFehler,
   ZuVieleOffeneTermineFehler,
@@ -82,9 +86,43 @@ async function nummernMitPraefix(praefix: string): Promise<string[]> {
   return docs.map((d) => d.nummer).filter((n) => n.startsWith(praefix)).sort();
 }
 
+let png: Uint8Array;
+
 beforeAll(async () => {
   payload = await getPayload({ config });
+  png = new Uint8Array(
+    await sharp({ create: { width: 12, height: 8, channels: 3, background: { r: 90, g: 90, b: 90 } } }).png().toBuffer(),
+  );
 });
+
+/**
+ * Pflichtunterlagen eines Termins (FA-KERN-02) als echte Kundendateien mit Steckplatz: Fahrzeugschein und die
+ * drei Schlüsselfotos. Mit eingerichteter Ablage zählt nur, was der Server gespeichert hat.
+ */
+async function terminUnterlagen(): Promise<Array<Omit<UploadRef, 'id' | 'uploadedAt'>>> {
+  const plaetze: Array<[UploadSteckplatz, UploadRef['category']]> = [
+    ['fahrzeugschein', 'fahrzeugschein'],
+    ['schluessel-vorderseite', 'schluesselfoto'],
+    ['schluessel-rueckseite', 'schluesselfoto'],
+    ['schluessel-spitze', 'schluesselfoto'],
+  ];
+  return Promise.all(
+    plaetze.map(async ([steckplatz, kategorie]) => {
+      const { token, hash } = createAccessToken();
+      const datei = await speichereKundendatei({
+        payload,
+        daten: png,
+        typ: erkenneDateityp(png)!,
+        dateiname: `${steckplatz}.png`,
+        kategorie,
+        steckplatz,
+        aufbewahrenBis: new Date(Date.now() + 86_400_000),
+        uploadSchluesselHash: hash,
+      });
+      return { fileName: datei.fileName, sizeBytes: datei.sizeBytes, mimeType: datei.mimeType, category: kategorie, steckplatz, storageKey: datei.id, uploadToken: token };
+    }),
+  );
+}
 
 beforeEach(() => {
   resetRateLimits();
@@ -199,16 +237,16 @@ describe('Termine', () => {
     return { date: slot!.date, time: slot!.time };
   }
 
-  function buchen(wunsch: { date: string; time: string }) {
+  async function buchen(wunsch: { date: string; time: string }) {
     return submitRecord({
       kind: 'termin',
       area: 'autoschluessel',
       process: 'termin-mit-anzahlung',
       contact,
-      payload: {},
+      payload: { note: 'Zweitschlüssel gewünscht, Testangabe.' },
       summary: [],
-      // Fahrzeugschein ist Pflicht; die Zuordnung der (hier nicht vorhandenen) Datei scheitert nur als Hinweis.
-      uploads: [{ fileName: 'fahrzeugschein.jpg', sizeBytes: 1000, mimeType: 'image/jpeg', category: 'fahrzeugschein', storageKey: '999999999', uploadToken: 'x'.repeat(43) }],
+      // Pflichtunterlagen (FA-KERN-02): echte Kundendateien mit Steckplatz, je Buchung neu.
+      uploads: await terminUnterlagen(),
       appointment: { ...wunsch, durationMinutes: 45, location: 'werkstatt' },
       verify,
       consents: { terms: true, deposit: true, authorization: true, earlyStart: true },
@@ -223,6 +261,10 @@ describe('Termine', () => {
     expect([a.ok, b.ok].filter(Boolean)).toHaveLength(1);
     const abgelehnt = a.ok ? b : a;
     expect(abgelehnt.error).toContain('nicht mehr frei');
+    // Steckplätze aus der Ablage stehen am Vorgang (FA-KERN-02).
+    const gebucht = await getRecordByReference((a.ok ? a : b).reference!);
+    expect(gebucht?.uploads.map((u) => u.steckplatz)).toEqual(['fahrzeugschein', 'schluessel-vorderseite', 'schluessel-rueckseite', 'schluessel-spitze']);
+    expect(gebucht?.uploads.every((u) => u.storageKey)).toBe(true);
 
     const belegt = (await getAppointments(wunsch.date, wunsch.date)).filter(
       (r) => r.appointment?.time === wunsch.time,

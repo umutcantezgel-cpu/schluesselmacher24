@@ -6,6 +6,7 @@ import { paymentStatus } from '@/lib/integrations';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { WORKING_KEYS_OPTIONS } from '@/components/autoschluessel/optionen';
 import { werkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
+import { erreichbarkeit } from '@/lib/erreichbarkeit';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
@@ -123,6 +124,7 @@ export default async function AutoschluesselAnfragePage(props: {
           currentYear={jahrInBerlin()}
           preselect={{ makeSlug: make?.slug ?? '', modelSlug: model?.slug ?? '', workingKeys }}
           werkstatt={werkstattAngaben(settings.company)}
+          erreichbarkeit={erreichbarkeit(settings)}
           vorherigerVorgang={vorherigerVorgang}
         />
       </div>

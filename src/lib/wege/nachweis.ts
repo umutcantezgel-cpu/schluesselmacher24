@@ -120,6 +120,21 @@ export const STECKPLATZ_KATEGORIEN: Record<UploadSteckplatz, readonly UploadRef[
   sonstiges: 'alle',
 };
 
+/* ---------- Beschreibung des Anliegens (FA-KERN-02, A-048) ----------------
+   Reine Regel ohne Server-Bezug: Die Formulare im Browser laden sie von hier, nicht aus
+   lib/server/unterlagen-pflicht.ts (das sie weiterreicht), damit ein späterer 'server-only'-Schutz
+   unter lib/server den Build der Formulare nicht bricht. */
+
+/** Grenze des Bestands für Pflichttexte (Anfrage-Formular, Feld Beschreibung). */
+export const BESCHREIBUNG_MIN = 20;
+export const BESCHREIBUNG_MAX = 2000;
+
+export function beschreibungGueltig(text: unknown): boolean {
+  if (typeof text !== 'string') return false;
+  const laenge = text.trim().length;
+  return laenge >= BESCHREIBUNG_MIN && laenge <= BESCHREIBUNG_MAX;
+}
+
 /** Passt der Steckplatz zur Kategorie? Ohne Steckplatz (ältere Formulare) immer ja. */
 export function steckplatzPasst(kategorie: UploadRef['category'], steckplatz: UploadSteckplatz | undefined | null): boolean {
   if (!steckplatz) return true;

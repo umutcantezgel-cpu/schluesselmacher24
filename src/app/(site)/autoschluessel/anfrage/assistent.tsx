@@ -6,6 +6,7 @@ import Link from 'next/link';
 import type {
   AppointmentInfo,
   CarKeyService,
+  Erreichbarkeit,
   KeyKind,
   PriceQuote,
   SummarySection,
@@ -15,6 +16,7 @@ import type {
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { fetchQuote, fetchSlots, type SlotsResponse } from '@/lib/actions/booking';
 import { submitRecord } from '@/lib/actions/records';
+import { erreichbarkeitSatz } from '@/lib/erreichbarkeit';
 import { formatCents, formatDuration } from '@/lib/format';
 import { aktionMelden } from '@/lib/statistik';
 import { Alert } from '@/components/ui/alert';
@@ -38,7 +40,6 @@ import {
 } from '@/components/autoschluessel/optionen';
 import { FahrzeugSuche, type FahrzeugWahl } from '@/components/autoschluessel/fahrzeug-suche';
 import { anfrageHref, KATALOG_QUELLE, type KatalogEintrag } from '@/components/autoschluessel/fahrzeug-ziel';
-import { ButtonLink } from '@/components/ui/button';
 import { ETAPPEN } from '@/components/autoschluessel/etappen';
 import { PreisAnzeige } from '@/components/autoschluessel/preis-anzeige';
 import { TerminAuswahl } from '@/components/autoschluessel/termin-auswahl';
@@ -50,6 +51,7 @@ import { GlyphWaage } from '@/components/visual/glyphen/waage';
 import { SchluesselartZeichnung } from '@/components/visual/schluesselart-zeichnung';
 import { WerkstattZeile, type WerkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
 import { telefonLink } from '@/lib/telefon';
+import { BESCHREIBUNG_MIN, beschreibungGueltig } from '@/lib/wege/nachweis';
 import { ausserhalbDerRegion, ausserhalbHinweis, buchungsOrt, terminBeimKunden } from '@/lib/terminort';
 import {
   schluesselfotosFreiwillig,
@@ -175,29 +177,55 @@ const STEPS: FlowStep[] = [
 ];
 
 /**
- * Weg ohne eigene Fotos (A-025, MA-20): Die Fotos bleiben vor der Anzahlung Pflicht (G-16, G9). Wer
- * keine machen kann, ruft an oder schickt die vorhandene Anfrage ohne Fotos; das Fahrzeug ist dort
- * schon eingetragen.
+ * Hilfe statt Ausstieg (FA-KERN-02, A-048): Fotos und Fahrzeugschein bleiben Pflicht, ein Weg ohne
+ * Unterlagen entfällt. Wer nicht weiterkommt, ruft an, macht später weiter (die Angaben bleiben auf diesem
+ * Gerät gespeichert) oder erbittet einen Rückruf. Der Rückruf ist nur eine Kontaktbitte über die
+ * bestehende Beratung, kein Auftrag und kein Weg zu einem Schlüssel.
  */
-function OhneFotos({ fahrzeug }: { fahrzeug?: string }) {
+function HilfeBeiUnterlagen({ telefon, erreichbarkeit }: { telefon?: string; erreichbarkeit?: Erreichbarkeit }) {
+  const telefonHref = telefonLink(telefon);
   return (
     <div className="rounded-lg border border-border bg-surface-muted p-4">
-      <p className="text-body font-semibold text-foreground">Keine Fotos zur Hand?</p>
-      <p className="mt-1 max-w-measure text-small text-foreground-muted">
-        Schicken Sie uns eine Anfrage ohne Fotos. Wir melden uns und sagen Ihnen, welche Unterlagen
-        wir brauchen.
+      <p className="text-body font-semibold text-foreground">Sie kommen hier nicht weiter?</p>
+      <ul className="mt-2 max-w-measure space-y-2 text-small text-foreground-muted">
+        {telefon && (
+          <li>
+            Rufen Sie uns an:{' '}
+            {telefonHref ? (
+              <a href={telefonHref} className="font-mono font-semibold tabular-nums text-primary">
+                {telefon}
+              </a>
+            ) : (
+              <span className="font-mono tabular-nums">{telefon}</span>
+            )}
+            {erreichbarkeit && <span className="block">{erreichbarkeitSatz(erreichbarkeit)}</span>}
+          </li>
+        )}
+        <li>
+          Später weitermachen: Ihre Angaben bleiben auf diesem Gerät gespeichert. Die Fotos wählen Sie dann bitte erneut aus.
+        </li>
+        <li>
+          <Link href="/beratung#rueckruf" className="font-semibold text-primary underline">
+            Rückruf erbitten
+          </Link>
+          : Wir rufen Sie an und klären Ihre Fragen.
+        </li>
+      </ul>
+      <p className="mt-3 max-w-measure text-small text-foreground-muted">
+        Die Unterlagen schützen Sie vor Missbrauch: Wir fertigen Fahrzeugschlüssel nur für Berechtigte.
       </p>
-      <ButtonLink href={anfrageHref(fahrzeug)} variant="outline" size="sm" className="mt-3">
-        Anfrage ohne Fotos senden
-      </ButtonLink>
     </div>
   );
 }
 
-/** Hinweis im Fotoschritt, wenn kein funktionierender Schlüssel mehr da ist. */
+/** Hinweis im Fotoschritt, wenn kein funktionierender Schlüssel mehr da ist (noch nicht bestätigt). */
 const HINWEIS_OHNE_SCHLUESSEL =
-  'Ist noch ein (defekter) Schlüssel da, fotografieren Sie ihn bitte. Ist keiner mehr da, '
-  + 'überspringen Sie diesen Schritt.';
+  'Ist noch ein Schlüssel da, auch ein defekter, fotografieren Sie ihn bitte. Ist keiner mehr da, '
+  + 'bestätigen Sie das unten.';
+
+/** Hinweis im Fotoschritt nach der Bestätigung „Ich habe keinen Schlüssel mehr“. */
+const HINWEIS_KEIN_SCHLUESSEL_BESTAETIGT =
+  'Sie haben bestätigt, dass kein Schlüssel mehr da ist. Die Fotos sind dann freiwillig.';
 
 interface AssistentData {
   makeSlug: string;
@@ -215,6 +243,8 @@ interface AssistentData {
   vin: string;
   keyKind: KeyKind | '';
   workingKeys: number | null;
+  /** Ausdrücklich bestätigt: kein Schlüssel mehr vorhanden (nur bei 0 funktionierenden Schlüsseln). */
+  keinSchluesselMehr: boolean;
   serviceId: string;
   entitlementConfirmed: boolean;
   salutation: string;
@@ -269,6 +299,8 @@ export interface AssistentProps {
   vorherigerVorgang?: string;
   /** Werkstatt und Telefon über dem Buchungsknopf – fehlt der Standort, entfällt die Zeile. */
   werkstatt?: WerkstattAngaben;
+  /** Erreichbarkeit aus den Einstellungen, neben der Telefonnummer in der Hilfe bei den Unterlagen. */
+  erreichbarkeit?: Erreichbarkeit;
 }
 
 export function Assistent({
@@ -280,6 +312,7 @@ export function Assistent({
   currentYear,
   preselect,
   werkstatt,
+  erreichbarkeit,
   vorherigerVorgang,
 }: AssistentProps) {
   const initial = useMemo<AssistentData>(
@@ -295,6 +328,7 @@ export function Assistent({
       vin: '',
       keyKind: '',
       workingKeys: preselect.workingKeys,
+      keinSchluesselMehr: false,
       serviceId: '',
       entitlementConfirmed: false,
       salutation: '',
@@ -411,9 +445,6 @@ export function Assistent({
     () => (make && !isOtherModel ? make.models.find((m) => m.slug === data.modelSlug) ?? null : null),
     [make, isOtherModel, data.modelSlug],
   );
-  // Fahrzeug als Text für die Anfrage ohne Fotos
-  const fahrzeugText = make ? `${make.name} ${isOtherModel ? data.modelOther : (model?.name ?? '')}`.trim() : undefined;
-
   const keyKinds = useMemo<KeyKind[]>(() => {
     if (model) return KEY_KIND_ORDER.filter((kind) => model.keyKinds.includes(kind));
     if (!make) return [];
@@ -465,7 +496,7 @@ export function Assistent({
   }, []);
 
   const modelName = isOtherModel ? data.modelOther.trim() : model?.name ?? '';
-  const fotosFreiwillig = schluesselfotosFreiwillig(data.workingKeys);
+  const fotosFreiwillig = schluesselfotosFreiwillig(data.workingKeys, data.keinSchluesselMehr);
 
   /* ---------- Schrittprüfung -------------------------------------------- */
 
@@ -527,11 +558,13 @@ export function Assistent({
       case 'leistung':
         return 'Bitte wählen Sie die gewünschte Leistung aus.';
       case 'schluesselfotos':
-        return 'Bitte laden Sie Vorderseite, Rückseite und Bart Ihres Schlüssels hoch.';
+        return data.workingKeys === 0
+          ? 'Bitte laden Sie Vorderseite, Rückseite und Spitze Ihres Schlüssels hoch oder bestätigen Sie, dass Sie keinen Schlüssel mehr haben.'
+          : 'Bitte laden Sie Vorderseite, Rückseite und Spitze Ihres Schlüssels hoch.';
       case 'fahrzeugschein':
         return 'Bitte laden Sie die Zulassungsbescheinigung hoch und bestätigen Sie Ihre Berechtigung.';
       case 'kontakt':
-        return 'Bitte füllen Sie Name, E-Mail-Adresse, Telefonnummer, Postleitzahl und Ort aus.';
+        return `Bitte füllen Sie Name, E-Mail-Adresse, Telefonnummer, Postleitzahl und Ort aus und beschreiben Sie Ihr Anliegen kurz (mindestens ${BESCHREIBUNG_MIN} Zeichen).`;
       case 'preis':
         return 'Der Preis wird noch ermittelt.';
       case 'anzahlung':
@@ -612,7 +645,8 @@ export function Assistent({
   }
 
   function selectWorkingKeys(value: number) {
-    flow.update({ workingKeys: value, slotDate: '', slotTime: '', depositAccepted: false });
+    // Totalverlust gilt nur bei 0 funktionierenden Schlüsseln (FA-KERN-02).
+    flow.update({ workingKeys: value, keinSchluesselMehr: value === 0 && data.keinSchluesselMehr, slotDate: '', slotTime: '', depositAccepted: false });
   }
 
   function setSlotFiles(slot: UploadSlotId, next: PickedFile[]) {
@@ -700,13 +734,14 @@ export function Assistent({
 
   function buildUploads(): Array<Omit<UploadRef, 'id' | 'uploadedAt'>> {
     const result: Array<Omit<UploadRef, 'id' | 'uploadedAt'>> = [];
+    // Jede Datei mit ihrem Steckplatz (FA-KERN-02); der Server prüft die drei Pflichtaufnahmen daran.
     for (const slot of KEY_PHOTO_SLOTS) {
       for (const file of files[slot.id]) {
-        result.push(alsUpload(file, 'schluesselfoto'));
+        result.push(alsUpload(file, 'schluesselfoto', slot.steckplatz));
       }
     }
     for (const file of files.fahrzeugschein) {
-      result.push(alsUpload(file, 'fahrzeugschein'));
+      result.push(alsUpload(file, 'fahrzeugschein', 'fahrzeugschein'));
     }
     return result;
   }
@@ -820,7 +855,7 @@ export function Assistent({
               .filter(Boolean)
               .join(', '),
           },
-          ...(data.note.trim() ? [{ label: 'Ihre Nachricht', value: data.note.trim() }] : []),
+          { label: 'Ihr Anliegen', value: data.note.trim() },
         ],
       },
       {
@@ -906,9 +941,10 @@ export function Assistent({
           vin: data.vin.trim().toUpperCase() || null,
           keyKind: data.keyKind,
           workingKeys: data.workingKeys,
+          keinSchluesselMehr: data.workingKeys === 0 && data.keinSchluesselMehr,
           serviceId: data.serviceId,
           serviceLabel: service?.label,
-          note: data.note.trim() || null,
+          note: data.note.trim(),
           entitlementConfirmed: data.entitlementConfirmed,
           depositAccepted: data.depositAccepted,
         },
@@ -987,11 +1023,11 @@ export function Assistent({
 
   /* ---------- Darstellung der einzelnen Schritte ------------------------ */
 
-  /* Bei Totalverlust ersetzt ein eigener Hinweis den des Fotoschritts –
-     der Rahmen zeigt den Hinweis aus dem aktuellen Schritt. */
+  /* Ohne funktionierenden Schlüssel ersetzt ein eigener Hinweis den des Fotoschritts: vor der Bestätigung
+     der Weg dorthin, danach die Bestätigung selbst. Der Rahmen zeigt den Hinweis aus dem aktuellen Schritt. */
   const anzeigeFlow =
-    flow.step.id === 'schluesselfotos' && fotosFreiwillig
-      ? { ...flow, step: { ...flow.step, hint: HINWEIS_OHNE_SCHLUESSEL } }
+    flow.step.id === 'schluesselfotos' && data.workingKeys === 0
+      ? { ...flow, step: { ...flow.step, hint: fotosFreiwillig ? HINWEIS_KEIN_SCHLUESSEL_BESTAETIGT : HINWEIS_OHNE_SCHLUESSEL } }
       : flow;
 
   return (
@@ -1339,21 +1375,23 @@ export function Assistent({
       {/* 8 – Schlüsselfotos */}
       {flow.step.id === 'schluesselfotos' && (
         <div className="space-y-7">
-          {werkstatt?.telefon && (
-            <p className="text-small text-foreground-muted">
-              Hilfe bei den Fotos? Rufen Sie uns an:{' '}
-              {telefonLink(werkstatt.telefon) ? (
-                <a href={telefonLink(werkstatt.telefon)!} className="font-mono font-semibold tabular-nums text-primary">
-                  {werkstatt.telefon}
-                </a>
-              ) : (
-                <span className="font-mono tabular-nums">{werkstatt.telefon}</span>
-              )}
-            </p>
+          <HilfeBeiUnterlagen telefon={werkstatt?.telefon} erreichbarkeit={erreichbarkeit} />
+          {/* Totalverlust nur ausdrücklich bestätigt (FA-KERN-02): Ein defekter Schlüssel zählt als vorhanden. */}
+          {data.workingKeys === 0 && (
+            <OptionCard
+              name="kein-schluessel"
+              value="kein-schluessel"
+              multiple
+              checked={data.keinSchluesselMehr}
+              onSelect={() => flow.set('keinSchluesselMehr', !data.keinSchluesselMehr)}
+              title="Ich habe keinen Schlüssel mehr"
+              description="Auch keinen defekten. Dann entfallen die Schlüsselfotos; der Fahrzeugschein bleibt Pflicht."
+            />
           )}
-          <OhneFotos fahrzeug={fahrzeugText} />
           <Alert tone="info" title="So werden die Fotos brauchbar">
             <ul className="space-y-1">
+              <li>Drei Aufnahmen: Vorderseite, Rückseite, Spitze beziehungsweise Profil von vorne.</li>
+              <li>Beschriftungen und Prägungen müssen lesbar sein.</li>
               <li>Legen Sie den Schlüssel auf einen einfarbigen, hellen Untergrund.</li>
               <li>Fotografieren Sie senkrecht von oben, ohne Blitz und ohne Schatten.</li>
               <li>Der Schlüssel sollte das Bild möglichst ausfüllen und scharf sein.</li>
@@ -1363,6 +1401,7 @@ export function Assistent({
           {KEY_PHOTO_SLOTS.map((slot) => (
             <PhotoUpload
               category="schluesselfoto"
+              steckplatz={slot.steckplatz}
               key={slot.id}
               id={`schluessel-${slot.id}`}
               label={fotosFreiwillig && slot.required ? `${slot.label} (freiwillig)` : slot.label}
@@ -1390,21 +1429,10 @@ export function Assistent({
       {/* 9 – Fahrzeugschein */}
       {flow.step.id === 'fahrzeugschein' && (
         <div className="space-y-6">
-          {werkstatt?.telefon && (
-            <p className="text-small text-foreground-muted">
-              Fragen zum Fahrzeugschein? Rufen Sie uns an:{' '}
-              {telefonLink(werkstatt.telefon) ? (
-                <a href={telefonLink(werkstatt.telefon)!} className="font-mono font-semibold tabular-nums text-primary">
-                  {werkstatt.telefon}
-                </a>
-              ) : (
-                <span className="font-mono tabular-nums">{werkstatt.telefon}</span>
-              )}
-            </p>
-          )}
-          <OhneFotos fahrzeug={fahrzeugText} />
+          <HilfeBeiUnterlagen telefon={werkstatt?.telefon} erreichbarkeit={erreichbarkeit} />
           <PhotoUpload
             category="fahrzeugschein"
+            steckplatz="fahrzeugschein"
             id="fahrzeugschein"
             label="Zulassungsbescheinigung Teil I (Fahrzeugschein)"
             description="Als Foto oder als PDF. Bitte vollständig und lesbar, alle vier Ecken im Bild."
@@ -1623,13 +1651,15 @@ export function Assistent({
           </div>
 
           <Field
-            label="Ihre Nachricht an uns (freiwillig)"
-            hint="Zum Beispiel Besonderheiten am Schlüssel oder Wunschzeiten."
+            label="Kurze Beschreibung Ihres Anliegens"
+            required
+            hint={`Ein Satz genügt, zum Beispiel: Zweitschlüssel gewünscht, der Funkschlüssel klemmt. Mindestens ${BESCHREIBUNG_MIN} Zeichen.`}
           >
-            {({ id, describedBy }) => (
+            {({ id, describedBy, invalid }) => (
               <TextArea
                 id={id}
                 aria-describedby={describedBy}
+                invalid={invalid}
                 value={data.note}
                 onChange={(event) => flow.set('note', event.target.value)}
               />
@@ -1832,6 +1862,7 @@ function isContactComplete(data: AssistentData): boolean {
     data.phone.trim().length >= 6 &&
     POSTAL_PATTERN.test(data.postalCode.trim()) &&
     data.city.trim().length >= 2 &&
-    data.country.trim().length > 0
+    data.country.trim().length > 0 &&
+    beschreibungGueltig(data.note)
   );
 }

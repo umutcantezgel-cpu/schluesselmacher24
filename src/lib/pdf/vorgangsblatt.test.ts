@@ -104,6 +104,26 @@ describe('vorgangsblattInhalt', () => {
     expect(unterlagen?.bilder?.map((b) => b.name)).toEqual(['schluessel.jpg']);
   });
 
+  it('beschriftet die Dateien mit ihrem Steckplatz, ältere mit ihrer Art (FA-KERN-02)', () => {
+    const basis = vorgang();
+    const uploads = [
+      { ...basis.uploads[1], steckplatz: 'fahrzeugschein' as const },
+      { ...basis.uploads[0], fileName: 'spitze.jpg', steckplatz: 'schluessel-spitze' as const },
+      { ...basis.uploads[0], fileName: 'nah.jpg', steckplatz: 'sonstiges' as const },
+      basis.uploads[0],
+    ];
+    const blatt = vorgangsblattInhalt({ vorgang: vorgang({ uploads }), jetzt: JETZT });
+    const unterlagen = blatt.abschnitte.find((a) => a.titel === 'Unterlagen');
+    expect(unterlagen?.tabelle?.zeilen.map((z) => z[0])).toEqual([
+      'Fahrzeugschein',
+      'Schlüssel Spitze und Profil von vorne',
+      'Schlüsselfoto (Sonstiges)',
+      'Schlüsselfoto',
+    ]);
+    const html = vorgangsblattHtml({ vorgang: vorgang({ uploads }), firma: echteEinstellungen().company, nonce: 'n', jetzt: JETZT });
+    expect(html).toContain('Schlüssel Spitze und Profil von vorne');
+  });
+
   it('enthält jede Angabe des Druckblatts', () => {
     const html = vorgangsblattHtml({ vorgang: vorgang(), firma: echteEinstellungen().company, nonce: 'n', jetzt: JETZT });
     const werte = blatt.abschnitte.flatMap((a) => [...(a.zeilen ?? []).map((z) => z.wert), ...(a.tabelle?.zeilen.flat() ?? [])]);

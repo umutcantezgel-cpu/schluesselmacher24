@@ -1,12 +1,16 @@
 /*
  * Motorradschlüssel-Anfrage (G-19, E6-BAUMEISTER-01, A-047): reine Funktionen ohne React. Hersteller und Typ
  * sind freie Eingaben; die Suche über die Krafträder aus KBA FZ 2 füllt sie nur vor (Erleichterung, kein
- * Pflichtweg), die freie Eingabe bleibt der Ausweg für jedes Fahrzeug. Fahrzeugschein und
- * Schlüsselfoto prüft das Formular selbst (R13).
+ * Pflichtweg), die freie Eingabe bleibt der Ausweg für jedes Fahrzeug. Fahrzeugschein,
+ * die drei Schlüsselfotos und die Beschreibung prüft das Formular selbst und der Server nach der Pflichtregel
+ * (R13, FA-KERN-02).
  */
 
 import { LIEFERLAND } from '@/lib/kasse';
+import { beschreibungGueltig, BESCHREIBUNG_MAX, BESCHREIBUNG_MIN } from '@/lib/wege/nachweis';
 import type { ContactDetails, SummarySection } from '@/lib/types';
+
+export { BESCHREIBUNG_MAX, BESCHREIBUNG_MIN };
 
 export type TransponderAntwort = 'ja' | 'nein' | 'unklar';
 export type MotorradSchritt = 'motorrad' | 'transponder' | 'unterlagen' | 'kontakt' | 'absenden';
@@ -16,6 +20,10 @@ export interface MotorradDaten {
   modell: string;
   baujahr: string;
   transponder: TransponderAntwort | '';
+  /** Kurze Beschreibung des Anliegens, Pflicht (FA-KERN-02). */
+  beschreibung: string;
+  /** Ausdrücklich bestätigt: kein Schlüssel mehr vorhanden; dann entfallen die Schlüsselfotos. */
+  keinSchluesselMehr: boolean;
   anrede: string;
   vorname: string;
   nachname: string;
@@ -30,6 +38,8 @@ export const INITIAL: MotorradDaten = {
   modell: '',
   baujahr: '',
   transponder: '',
+  beschreibung: '',
+  keinSchluesselMehr: false,
   anrede: '',
   vorname: '',
   nachname: '',
@@ -67,7 +77,10 @@ export function baujahrGueltig(text: string, jahr: number = new Date().getFullYe
   return wert >= BAUJAHR_ERSTES && wert <= jahr + 1;
 }
 
-/** Prüft je Schritt die Angaben. Fotos stehen nicht hier: das Formular verlangt sie selbst. */
+/**
+ * Prüft je Schritt die Angaben. Fotos stehen nicht hier: das Formular verlangt sie selbst, der Server
+ * prüft sie nach der Pflichtregel (FA-KERN-02). Die kurze Beschreibung gehört zum Schritt Kontakt.
+ */
 export function schrittGueltig(daten: MotorradDaten, schritt: MotorradSchritt, jahr: number = new Date().getFullYear()): boolean {
   switch (schritt) {
     case 'motorrad':
@@ -82,7 +95,8 @@ export function schrittGueltig(daten: MotorradDaten, schritt: MotorradSchritt, j
       return daten.transponder === 'ja' || daten.transponder === 'nein' || daten.transponder === 'unklar';
     case 'kontakt':
       return (
-        daten.vorname.trim().length > 1
+        beschreibungGueltig(daten.beschreibung)
+        && daten.vorname.trim().length > 1
         && daten.nachname.trim().length > 1
         && EMAIL_MUSTER.test(daten.email.trim())
         && daten.telefon.replace(/\D/g, '').length >= 6
@@ -104,6 +118,8 @@ export function motorradZusammenfassung(daten: MotorradDaten): SummarySection[] 
         { label: 'Modell oder Typ', value: daten.modell.trim() || 'fehlt noch' },
         { label: 'Baujahr', value: daten.baujahr.trim() || 'fehlt noch' },
         { label: 'Chip im Schlüssel', value: daten.transponder ? TRANSPONDER_TEXT[daten.transponder] : 'noch offen' },
+        { label: 'Schlüssel', value: daten.keinSchluesselMehr ? 'kein Schlüssel mehr vorhanden' : 'vorhanden, drei Fotos' },
+        { label: 'Ihr Anliegen', value: daten.beschreibung.trim() || 'fehlt noch' },
       ],
     },
     {
@@ -144,6 +160,7 @@ export function payloadAus(daten: MotorradDaten) {
     modell: daten.modell.trim(),
     baujahr: Number(daten.baujahr.trim()),
     transponder: daten.transponder || 'unklar',
-    anmerkung: null,
+    beschreibung: daten.beschreibung.trim(),
+    keinSchluesselMehr: daten.keinSchluesselMehr,
   };
 }
