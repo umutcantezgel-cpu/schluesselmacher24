@@ -17,7 +17,7 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 | FA-SOFORT-03 | Leistung „Schlüssel nach Foto“ entfernen, Rubrik „Schlüssel nach Vorlage“ | FA-03, FA-12 | nein (Datenmigration Kennung) | committet 9c61bca, Migration berichtigt 01fb7cc |
 | FA-SOFORT-04 | Demo-Daten raus: Beispiel-Codelinien und Beispielartikel nie live, „Code anfragen“ | FA-10-02, FA-11-02, FA-11-17 | nein | committet 97087fe |
 | FA-SOFORT-05A | Vier Fach-Icons: Roller, E-Scooter, Seniorenmobil, Fahrradschlüssel | FA-03 | nein | committet 93273e0 |
-| FA-SOFORT-05 | Hauptzugänge im Hub nach FA-03 (14 Einträge), Rubriken und Navigation; die Anfragewege baut FA-KERN-02 | FA-03, FA-06-05/06/14 | ja (Rubrik-Werte) | offen, nach FA-KERN-02 |
+| FA-SOFORT-05 | Hauptzugänge im Hub nach FA-03 (14 Einträge), Rubriken und Navigation; die Anfragewege baut FA-KERN-02 | FA-03, FA-06-05/06/14 | ja (Rubrik-Werte) | Paketdatei liegt vor (A-052 folgt mit der Umsetzung); startet nach FA-KERN-02 |
 
 ## Priorität 2 · Kern
 | Paket | Inhalt | Anforderungen | Schema | Status |
@@ -50,14 +50,14 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 |---|---|---|---|---|
 | FA-INHALT-01 | Tutorials: Rubrik, zehn Themen als Struktur, YouTube-Einbettung mit Einwilligung, im Admin ohne Entwickler pflegbar, Videos auf Leistungsseiten | FA-21, FA-22-32 | ja | offen |
 | FA-INHALT-02 | Hersteller und Systeme früh sichtbar: Bereich auf der Startseite, BKS, ABUS, BURG-WÄCHTER sachlich; Logos erst nach Freigabe | FA-17-02, -03, -20, FA-19 | ja (Logo-Feld) | offen, wartet auf Recherche 06 |
-| FA-INHALT-03 | Texte menschlicher: kurze, klare Sätze auf Leistungsseiten, Gegenprüfung durch zwei unabhängige Leser, ohne Gedankenstriche | FA-02 | nein | Gruppe A (Autoschlüssel-Leistungsseiten) committet 9788b33 · Gruppe B (Tür- und Sicherheitstechnik) committet fbcc918 · Gruppen C (Rubrikseiten Zylinder, Schließanlagen, Zutritt, Service), D (Schlüsselwege im Shop) und E (Ratgeber, Artikel, Warenkorb) laufen · offen: Startseite und Fahrzeugseiten (nach FA-KERN-02 und FA-SOFORT-05), Kasse und Bestellung (nach FA-KERN-03), Mails und PDF |
+| FA-INHALT-03 | Texte menschlicher: kurze, klare Sätze auf Leistungsseiten, Gegenprüfung durch zwei unabhängige Leser, ohne Gedankenstriche | FA-02 | nein | Gruppe A (Autoschlüssel-Leistungsseiten) committet 9788b33 · B (Tür- und Sicherheitstechnik) fbcc918 · C (Rubrikseiten Zylinder, Schließanlagen, Zutritt, Service) 24e22aa · D (Schlüsselwege im Shop) 292c5a6 · E (Ratgeber, Artikel, Warenkorb) läuft · offen: Startseite und Fahrzeugseiten (nach FA-KERN-02 und FA-SOFORT-05), Kasse und Bestellung (nach FA-KERN-03), Mails und PDF |
 | FA-INHALT-04 | Bilder: Vorher-Nachher-Baustein, Logo unten rechts für eigene Fotos, Alt-Text-Pflicht, Hinweise zu Kennzeichen und Personen | FA-20 | ja | offen; Fotos fehlen (MA-05) |
 | FA-INHALT-05 | Schließanlagen, Zutritt, Sicherheitstechnik: Zielgruppen, Erweiterbarkeit, Hinweis zu Ton und Aufzeichnung (FA-16-21 Erklärtexte pflegbar bleibt offen) | FA-16-06, -09, FA-17-18, FA-18-09, -13, -14 | nein | committet f54ce64 |
 
 ## Priorität 6 · SEO
 | Paket | Inhalt | Anforderungen | Schema | Status |
 |---|---|---|---|---|
-| FA-SEO-01 | Titel und Beschreibungen in den Längen, Strukturdaten für Betrieb, Leistungen, Produkte, Brotkrumen überall, FAQ-Auszeichnung nach R8, Canonical und Indexstatus im Admin | FA-25, FA-22-44, -45 | ja (klein) | offen |
+| FA-SEO-01 | Titel und Beschreibungen in den Längen, Strukturdaten für Betrieb, Leistungen, Produkte, Brotkrumen überall, FAQ-Auszeichnung nach R8, Canonical und Indexstatus im Admin | FA-25, FA-22-44, -45 | ja (klein) | Teil A (Titel und Beschreibungen in den Längen, ohne Schema) läuft; Teil B (Strukturdaten, Canonical-Feld, Indexierbarkeit, Verweislisten) offen |
 | FA-SEO-02 | Eigene Onpage-Prüfung nach den Kriterien von Seobility über den Build (Schutz jeder Staging-Adresse liegt bei FA-SEO-01) | FA-25-21, -22, FA-AB-04 | nein | committet 1436cf3 |
 
 ## Priorität 7 · QA
