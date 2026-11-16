@@ -17,6 +17,10 @@ Hänge die Ortsseiten an den amtlichen Stamm, zeige dem Betreiber die Priorität
 6. Der Build erzeugt Seiten nur für veröffentlichte Ortsseiten, nie für alle Gemeinden: Miss Seitenzahl und Build-Zeit vorher und nachher.
 7. Betreiberanleitung `docs/betrieb/orte-pflegen.md`: neue Ortsseite aus dem Stamm anlegen, wann sie veröffentlicht wird, Partnerregion zuordnen, Stamm aktualisieren.
 
+## Zusatz aus der Bestandsaufnahme (vom Orchestrator, 16.11.2026)
+- FA-09-04: Die öffentliche Übersicht `/standorte` und die Vor-Ort-Seite ordnen Ortsseiten nach der Priorität des Inhabers (aufsteigend, dann Name). Test dazu.
+- FA-AA-05: Die Admin-Ansicht der Prioritätsorte zeigt je Ort die Zahl der Vorgänge der letzten zwölf Monate (Zählung über die Postleitzahl des Vorgangs und die Postleitzahl-Abfrage aus dem Ortsstamm). Nur Anzeige, keine automatische Priorität. Schreibrechte dafür: die Admin-Ansicht und eine reine Zählfunktion mit Test.
+
 ## Schreibrechte
 - src/payload/collections/Einsatzgebiete.ts, neue Migration (`sicher.sh --pg -- npx payload migrate:create ortsseiten_stamm`), src/migrations/index.ts, src/payload-types.ts, src/payload/seed.ts (nur Einsatzgebiete), src/lib/data/** (Adapter und Mapping für Einsatzgebiete), src/lib/types.ts (CityPage), src/lib/orte/** (nur ergänzen), src/lib/rechtliches/indexierung.ts, src/app/(site)/standorte/**, src/app/sitemap.ts (nur Ortsseiten), src/components/seo/json-ld.tsx (nur serviceAreaSchema), content/cities.json (nur der Verweis auf den Gemeindeschlüssel für Wetzlar), Admin-Ansicht unter src/payload/components (neu), docs/betrieb/orte-pflegen.md
 - zugehörige Tests; _werkstatt/ausbau/berichte/FA-PLATTFORM-03B.md

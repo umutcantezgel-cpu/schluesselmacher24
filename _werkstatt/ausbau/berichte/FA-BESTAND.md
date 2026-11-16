@@ -45,6 +45,34 @@ Ergebnis: 352 Anforderungen beurteilt · erfüllt 224 · teilweise 112 · fehlt 
 | FA-25-00 (nachgetragen) | Längen- und Breitenanzeige mit Warnung in den SEO-Feldern des Admins; der Hinweis zum Titel nennt 40 statt 60 Zeichen bzw. 580 px | Eigene Admin-Feldkomponente für seo.titel und seo.beschreibung, die src/lib/titelbreite.ts nutzt: Anzeige der Pixelbreite beziehungsweise Zeichenzahl, gelb über 580 px oder außerhalb von 120 bis 160 Zeichen. Nur Warnung, kein Speicherverbot. Hinweistext an die Projektregel angleichen. | S |
 | FA-27-17 (nachgetragen) | Prüfung auf Test- und Altkontakte in den Inhalten der Datenbank zum Livegang; reste.mjs ist nicht in pruefen:livegang eingebunden | In src/lib/livegang-pruefung.ts eine Funktion kontaktFunde ergänzen, die die Texte aus Payload (Seiten, Rubriken, Leistungsseiten, Ratgeber, Einstellungen) mit den Mustern aus reste.mjs (example.org, Muster, Gloelstraße, Langgasse 70, fremde Mailadressen, Telefon ungleich Einstellungen) durchsucht. Aufruf in src/scripts/livegang-pruefen.ts, mit Unit-Test. | S |
 
+## Zuschnitt der Lücken ohne Paket (Orchestrator, 16.11.2026, A-065)
+
+| Lücke | Paket oder Entscheidung |
+|---|---|
+| FA-05-07, FA-05-09, FA-05-04, FA-06-U2, FA-14-11 (und damit FA-05-01) | FA-KERN-07 |
+| FA-05-19 | FA-KERN-08 |
+| FA-06-01, FA-06-06, FA-06-02 | FA-KERN-09 (Quelle der Daten: MA-55) |
+| FA-10-10, FA-10-01, FA-10-11, FA-11-07, FA-11-09, FA-11-18 | FA-SHOP-05 |
+| FA-10-05, FA-22-29, FA-22-25 | FA-SHOP-06 (Kaufweg: MA-55) |
+| FA-13-01, FA-13-05, FA-AB-03 | FA-SHOP-07, zurückgestellt bis zum Vertrag mit dem Versanddienst (MA-50, A-061) |
+| FA-10-12 | Entscheidung A-065: Die Anmeldung der Einsendung gilt als Buchung, weil es keinen festen Preis gibt |
+| FA-15-03 | Entscheidung A-065: weitere Bauformen erst mit Maßregeln und Preisen des Inhabers (MA-49) |
+| FA-07-03, FA-07-01 | Zusätze 8 und 9 in FA-PLATTFORM-01B |
+| FA-09-04, FA-AA-05 | Zusatz in FA-PLATTFORM-03B |
+| FA-22-36 | FA-PLATTFORM-02B |
+| FA-16-21 | FA-INHALT-06 |
+| FA-17-01 | Entscheidung A-065: eigener Hauptzugang im Hub, eigene Rubrik und Seite; keine sechste Gruppe in der Kopfzeile (Frage in MA-55) |
+| FA-25-13, FA-25-15 | FA-SEO-03 |
+| FA-25-00 | Zusatz in FA-SEO-01D |
+| FA-26-01, FA-26-02 | FA-QA-04A |
+| FA-26-04 | FA-QA-04B |
+| FA-26-06, FA-27-10 | FA-QA-04C |
+| FA-22-00, FA-22-46 | Zusatz in FA-QA-01 |
+| FA-27-17 | Zusatz für den Abnahmebogen FA-QA-03 |
+| FA-22-16 | wartet auf MA-46 und die Einrichtung beim Mail-Dienst (G3) |
+
+Hinweis: Die Bestandsaufnahme prüfte den Stand df6a22b. FA-PLATTFORM-01 (Teil A) und FA-SHOP-02C sind seitdem abgenommen; die ihnen zugeordneten Zeilen sind damit erledigt, soweit Teil A sie abdeckt (Rest in FA-PLATTFORM-01B).
+
 ## Offen am Code, gedeckt durch ein offenes Paket
 
 ### FA-INHALT-01 (13)

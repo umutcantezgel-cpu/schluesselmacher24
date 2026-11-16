@@ -21,6 +21,9 @@ Der Betreiber kann bei Bedarf für eine Seite eine abweichende Canonical-Adresse
 5. Prüfe bei der Gelegenheit, dass der Schalter „Nicht in Suchmaschinen aufnehmen“ in jeder der sieben Sammlungen wirkt (Meta-Angabe und Sitemap); je Sammlung ein Test. Wirkt er irgendwo nicht, behebe es an der Quelle und nenne es im Bericht.
 6. Tests: Feldprüfung (gültig, fremd, verbotene Wege, volle eigene Adresse wird gekürzt), Abbildung hin und zurück, Funktion der Entscheidung, Sitemap ohne Zweitfassungen, je Seitentyp ein Fall mit gesetztem Canonical.
 
+## Zusatz aus der Bestandsaufnahme (vom Orchestrator, 16.11.2026)
+- FA-25-00: Die SEO-Felder im Admin (Titel und Beschreibung) zeigen Länge und Breite mit Warnung: Titel gelb über 580 px (Messung aus `src/lib/titelbreite.ts`), Beschreibung gelb außerhalb von 120 bis 160 Zeichen. Nur Warnung, kein Speicherverbot. Der Hinweistext zum Titel nennt heute 40 statt 60 Zeichen beziehungsweise 580 px; an die Projektregel angleichen. Eigene Admin-Feldkomponente unter `src/payload/components/**`, Test der Rechenfunktion.
+
 ## Schreibrechte
 src/payload/fields/gemeinsam.ts (nur `seoFeld`), neue Migration, src/migrations/index.ts, src/payload-types.ts, src/lib/types.ts (nur `SeoFields`), src/lib/data/payload-mapping.ts (nur SEO-Abbildung), die neue Funktion mit Test, `generateMetadata` der betroffenen Seitenvorlagen unter src/app/(site) (nur die Zeile der Canonical-Adresse, mit dem Edit-Werkzeug), src/app/sitemap.ts, zugehörige Tests, ein kurzer Absatz in der passenden Betreiberanleitung unter docs/betrieb (wo SEO-Felder erklärt sind; sonst `docs/betrieb/admin-alltag.md`), _werkstatt/ausbau/berichte/FA-SEO-01D.md.
 Nicht anfassen: Titel, Beschreibungen und sichtbare Texte, Strukturdaten außer dem Genannten, `robots`, Kopfzeilen der Umgebung, Navigation.

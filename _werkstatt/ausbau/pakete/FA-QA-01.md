@@ -16,6 +16,10 @@ Erweitere die Funktionsliste um die dreizehn Pflichttests des Inhabers, jeder al
 5. Prüfung „nichts Falsches bleibt übrig“ (`werkzeuge/reste.mjs`): durchsucht den Build und die Inhalte nach Demo-Daten (Beispiel-Einträge), Platzhaltern in eckigen Klammern, alten Adressen und Zeiten (Gloelstraße, Langgasse 70, 09:00 bis 13:00, 14:00 bis 17:00 als Öffnungszeit), fremden Mailadressen, „nach Foto“ als Leistung, Lorem ipsum; Ergebnis als Liste mit Fundstelle. Rückgabewert 1 bei Funden.
 6. Ein Lauf, der am Produkt scheitert, ist ein Befund, kein Grund, den Test zu lockern (G8): Beschreibe den Fehler mit Schritt, Erwartung, Ergebnis, Bild.
 
+## Zusatz aus der Bestandsaufnahme (vom Orchestrator, 16.11.2026)
+- FA-22-00: Der Browserlauf im Admin läuft mit zwei Testkonten (Mitarbeiter und Inhaber) über Produkte, Kategorien, Bestellung, Storno, Kundennachricht, Vermittlung und Auszahlung und hält je Rolle fest, was erlaubt und was gesperrt ist (etwa endgültiges Löschen nur für den Inhaber). Ergebnis als Protokoll mit Bildern.
+- FA-22-46: Pflegeprobe ohne Entwickler als Liste von Aufgaben, die das Team nach der Anleitung selbst erledigen kann (Produkt anlegen, Kategorie ändern, Ortsseite pflegen, Partner prüfen); was dabei nur der Inhaber darf, steht dabei.
+
 ## Schreibrechte
 Nur unter _werkstatt/ausbau/werkzeuge (neue Dateien und die Funktionsliste), _werkstatt/ausbau/protokolle, _werkstatt/ausbau/bilder, _werkstatt/ausbau/testdaten, _werkstatt/ausbau/berichte/FA-QA-01*.md. Keine Datei unter src, content oder scripts.
 
