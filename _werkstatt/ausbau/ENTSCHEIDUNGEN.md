@@ -385,7 +385,7 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Verfahren: Der Autor des Textpakets konnte keine unabhängigen Leser einsetzen; drei Leser (ältere Kundin, Tatsachenprüfer, Schlussredakteur) haben die erzeugten Texte in allen drei Verfügbarkeiten nachträglich gelesen (`berichte/FA-INHALT-03H-leser.md`, 35 Befunde). Die Behebung läuft als FA-INHALT-03I.
 - Umkehrprobe: reine Beschriftungen und Anzeigebedingungen; Bestellprüfung, Preise und Daten unberührt.
 
-## A-060 · Einsendung: Nachweise gelten nur mit bestätigter Datei, Einstellungen des Betriebs gelten auf dem Server (2026-11-16 04:35, FA-SHOP-03, FA-13, R13)
+## A-060 · Einsendung: Nachweise gelten nur mit bestätigter Datei, Einstellungen des Betriebs gelten auf dem Server (2026-11-16 04:20, FA-SHOP-03, FA-13, R13)
 - Der Inhaber will, dass auch mechanische Autoschlüssel und reine Bärte eingesendet werden können. Der Berechtigungsnachweis bleibt (R13): Der Server nimmt sie nur mit Fahrzeugschein an. Das Paket durfte `src/lib/actions/records.ts` nicht ändern; ich habe den Einsendezweig selbst angeschlossen.
 - Zwei unabhängige Prüfer fanden danach, dass der Server bei eingerichteter Dateiablage dem Verweis des Browsers glaubte. Entscheidung: Für die Einsendung gilt dieselbe Bestätigung wie für alle Wege mit Pflichtunterlagen (`unterlagenAusAblage`); das schließt auch die ältere Schwäche bei der Sicherungskarte der Einsendung.
 - Was der Betrieb im Admin einstellt („aktiv“, „nur Sonderfall“), gilt auf dem Server und für den Begleitschein. Ohne gültige Wahl nennt der Begleitschein die Empfehlung, nie eine abgeschaltete Variante.
