@@ -15,6 +15,7 @@ import { einsendeAngebot, erstelleVersandschein, type Anschrift, type Sendung, t
 import type { AngebotFall, EinsendeAngebot } from '@/lib/versand/angebot';
 import { empfehlungFuer, istVariantenKennung } from '@/lib/versand/varianten';
 
+import { sendungErwartet } from './sendung';
 import { inhaltText, istEinsendung, type EinsendePayload } from './vorgang';
 
 type Umgebung = Record<string, string | undefined>;
@@ -30,7 +31,7 @@ export function werkstattAnschrift(company: CompanyProfile | undefined): Anschri
   return { name: firmenname(company), strasse, plz, ort: stadt, land: angabe(company.country) };
 }
 
-type Vorgang = Pick<BusinessRecord, 'reference' | 'kind' | 'area' | 'contact' | 'approval'> & { payload?: Record<string, unknown> };
+type Vorgang = Pick<BusinessRecord, 'reference' | 'kind' | 'area' | 'contact' | 'approval' | 'einsendeSendung'> & { payload?: Record<string, unknown> };
 
 /** Braucht der Vorgang einen Begleitschein? Einsendung oder Freigabe mit Einsendung des Originals. */
 export function brauchtBegleitschein(vorgang: Vorgang): boolean {
@@ -42,8 +43,8 @@ export function brauchtBegleitschein(vorgang: Vorgang): boolean {
  * (Status „neu“), bei einer Foto-Anfrage, wenn die Freigabe das Original verlangt.
  */
 export function begleitscheinAnzeigen(vorgang: Vorgang & Pick<BusinessRecord, 'status'>): boolean {
-  if (istEinsendung(vorgang)) return vorgang.status === 'neu';
-  return vorgang.approval?.sendInRequired === true && (vorgang.status === 'freigegeben' || vorgang.status === 'in-fertigung');
+  // Dieselbe Regel wie für die Sendungsnummer des Kunden (FA-SHOP-03B).
+  return sendungErwartet(vorgang);
 }
 
 /**
@@ -110,7 +111,8 @@ export async function begleitscheinZumVorgang(
   if (!brauchtBegleitschein(vorgang)) return null;
   // Freigabe mit Einsendung: nur eine Variante, die die Vorgangsseite anbietet (Sonderfall nur mit Freigabe).
   const angebot = einsendeAngebotFuerVorgang(vorgang, einstellungen);
-  const wahl = versandWahl(angebot, versand);
+  // Ohne Wahl in der Adresse gilt die Variante, die der Kunde mit der Sendungsnummer gespeichert hat.
+  const wahl = versandWahl(angebot, versand ?? vorgang.einsendeSendung?.variant);
   // Bietet der Betrieb bei einer Freigabe gar keine Variante an, entsteht kein Begleitschein.
   if (!istEinsendung(vorgang) && !wahl) return null;
   const sendung = sendungAusVorgang(vorgang, company, wahl);

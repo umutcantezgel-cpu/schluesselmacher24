@@ -906,6 +906,22 @@ export interface ShipmentInfo {
   trackingNumber?: string;
 }
 
+/**
+ * Sendung des Kunden zur Werkstatt (FA-SHOP-03B, A-050 Punkt 6), getrennt von der Rücksendung an den
+ * Kunden (`shipment`). Backend: Gruppe `einsendeSendung`. Nur gefüllte Angaben sind gesetzt.
+ */
+export interface EinsendeSendung {
+  /** Einlieferungs- oder Sendungsnummer, bereinigt (Großbuchstaben und Ziffern). */
+  trackingNumber?: string;
+  carrier?: ShipmentCarrier;
+  /** Gewählte Variante; bei der Einsendung steht sie schon im Formular, bei der Freigabe kommt sie hierher. */
+  variant?: EinsendeVarianteKennung;
+  /** Zuletzt eingetragen am (ISO). */
+  enteredAt?: string;
+  /** Wer die Nummer eingetragen hat. */
+  enteredBy?: 'kunde' | 'team';
+}
+
 /** Was der Kunde beim Absenden bestätigt hat. Nur gesetzte Angaben sind enthalten. */
 export interface RecordConsents {
   terms?: boolean;
@@ -1089,6 +1105,8 @@ export interface BusinessRecord {
    */
   mailLog?: MailLogEntry[];
   shipment?: ShipmentInfo;
+  /** Sendung des Kunden zur Werkstatt (Einsendung oder Freigabe mit Einsendung, FA-SHOP-03B). */
+  einsendeSendung?: EinsendeSendung;
   consents?: RecordConsents;
   /** Nur bei Fotoanfragen (Bereich `schluessel-nach-vorlage`). */
   approval?: ApprovalInfo;

@@ -21,6 +21,7 @@ import { fahrzeugklasseText } from '../../lib/fahrzeuge/anfrage-klassen';
 import { unterlagenHinweis } from '../../lib/server/unterlagen-pflicht';
 import type { UploadRef } from '../../lib/types';
 import { dateiBezeichnung } from '../../lib/wege/nachweis';
+import { SENDUNGSNUMMER_MAX, bereinigeSendungsnummer } from '../../lib/einsenden/sendung';
 
 /**
  * Übersicht der Unterlagen im Vorgang (FA-KERN-02): je Datei der Steckplatz, dazu der Hinweis, wenn ein
@@ -101,6 +102,13 @@ export const VERSANDDIENSTLEISTER = [
   { label: 'GLS', value: 'gls' },
   { label: 'UPS', value: 'ups' },
   { label: 'Sonstige', value: 'sonstige' },
+];
+
+/** Versandvarianten der Einsendung (A-050), wie in den Einstellungen. */
+const EINSENDE_VARIANTEN_OPTIONEN = [
+  { label: 'DHL Paket', value: 'dhl-paket' },
+  { label: 'Einschreiben Einwurf', value: 'einschreiben-einwurf' },
+  { label: 'Einschreiben Wert', value: 'einschreiben-wert' },
 ];
 
 /** Zahlart des Restbetrags beim Termin (FA-KERN-03). */
@@ -806,6 +814,52 @@ export const Vorgaenge: CollectionConfig = {
                   fields: [
                     { name: 'dienstleister', type: 'select', label: 'Versanddienstleister', options: VERSANDDIENSTLEISTER, admin: { width: '40%' } },
                     { name: 'sendungsnummer', type: 'text', label: 'Sendungsnummer', admin: { width: '60%' } },
+                  ],
+                },
+              ],
+            },
+            {
+              // Sendung des Kunden zur Werkstatt (FA-SHOP-03B), getrennt von der Rücksendung oben.
+              name: 'einsendeSendung',
+              type: 'group',
+              label: 'Sendung des Kunden zur Werkstatt',
+              admin: {
+                condition: (data) => data?.art === 'anfrage' && data?.bereich === 'schluessel-nach-vorlage',
+                description:
+                  'Die Nummer trägt der Kunde auf seiner Vorgangsseite ein; das Team kann sie hier nachtragen oder berichtigen. '
+                  + 'Sie erscheint auf der Vorgangsseite, im Vorgangsblatt und in der Statusmail. Die Rücksendung an den Kunden steht oben unter „Sendung“.',
+              },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'sendungsnummer',
+                      type: 'text',
+                      label: 'Sendungsnummer zur Werkstatt',
+                      maxLength: SENDUNGSNUMMER_MAX * 2,
+                      admin: { width: '40%' },
+                      validate: (wert: string | null | undefined) =>
+                        !wert || bereinigeSendungsnummer(wert) !== null || 'Nur Buchstaben und Ziffern, 8 bis 40 Zeichen.',
+                      // Gespeichert wie vom Kunden: ohne Leerzeichen und Bindestriche, Buchstaben groß.
+                      hooks: { beforeChange: [({ value }) => (typeof value === 'string' && value ? (bereinigeSendungsnummer(value) ?? value) : value)] },
+                    },
+                    { name: 'dienstleister', type: 'select', label: 'Versanddienstleister', options: VERSANDDIENSTLEISTER, admin: { width: '30%' } },
+                    { name: 'variante', type: 'select', label: 'Versandvariante', options: EINSENDE_VARIANTEN_OPTIONEN, admin: { width: '30%' } },
+                  ],
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'eingetragenAm', type: 'date', label: 'Eingetragen am', admin: { width: '30%', ...nurLesen, ...zeitpunkt } },
+                    { name: 'eingetragenVon', type: 'select', label: 'Eingetragen von', options: AKTEURE.filter((a) => a.value !== 'system'), admin: { width: '20%', ...nurLesen } },
+                    {
+                      name: 'labelDatei',
+                      type: 'relationship',
+                      relationTo: 'interne-dateien',
+                      label: 'Labeldatei',
+                      admin: { width: '50%', description: 'Versandlabel oder Einlieferungsbeleg als Datei (nur für das Team).' },
+                    },
                   ],
                 },
               ],

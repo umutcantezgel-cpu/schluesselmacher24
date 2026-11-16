@@ -1,0 +1,901 @@
+{
+  "werkzeug": "reste.mjs",
+  "fassung": 1,
+  "zeitpunkt": "2026-11-16T03:48:15.084Z",
+  "exit": 1,
+  "pruefungen": [
+    "demo",
+    "platzhalter",
+    "alt",
+    "kontakt",
+    "erreichbarkeit"
+  ],
+  "quellen": {
+    "ausgeliefert": {
+      "status": "ok",
+      "dateien": 148,
+      "texte": 4743
+    },
+    "inhalt": {
+      "status": "ok",
+      "dateien": 18,
+      "texte": 30770,
+      "beispiele": 156
+    },
+    "code": {
+      "status": "ok",
+      "dateien": 37,
+      "texte": 3497
+    }
+  },
+  "bedienfehler": [],
+  "funde": [
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/pdf/partnervertrag.ts",
+      "seite": null,
+      "ort": "Zeile 52",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: Text des Anwalts zum Gegenst",
+      "vorschlag": "Den Wortlaut des Inhabers einsetzen oder die Stelle streichen; Herkunft im Quelltext suchen."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/pdf/partnervertrag.ts",
+      "seite": null,
+      "ort": "Zeile 56",
+      "fundstueck": "Platzhalter",
+      "umgebung": "ragsarten: {{auftragsarten}} [Platzhalter: Text des Anwalts zu Einsatzg",
+      "vorschlag": "Den Wortlaut des Inhabers einsetzen oder die Stelle streichen; Herkunft im Quelltext suchen."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/pdf/partnervertrag.ts",
+      "seite": null,
+      "ort": "Zeile 60",
+      "fundstueck": "Platzhalter",
+      "umgebung": "odell: {{abrechnungsmodell}} [Platzhalter: Text des Anwalts zur Abrechn",
+      "vorschlag": "Den Wortlaut des Inhabers einsetzen oder die Stelle streichen; Herkunft im Quelltext suchen."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/pdf/partnervertrag.ts",
+      "seite": null,
+      "ort": "Zeile 64",
+      "fundstueck": "[Platzhalter: Text des Anwalts.]",
+      "umgebung": "[Platzhalter: Text des Anwalts.]",
+      "vorschlag": "Den Wortlaut des Inhabers einsetzen oder die Stelle streichen; Herkunft im Quelltext suchen."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/pdf/partnervertrag.ts",
+      "seite": null,
+      "ort": "Zeile 64",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: Text des Anwalts.]",
+      "vorschlag": "Den Wortlaut des Inhabers einsetzen oder die Stelle streichen; Herkunft im Quelltext suchen."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/pdf/partnervertrag.ts",
+      "seite": null,
+      "ort": "Zeile 68",
+      "fundstueck": "[Platzhalter: Text des Anwalts.]",
+      "umgebung": "[Platzhalter: Text des Anwalts.]",
+      "vorschlag": "Den Wortlaut des Inhabers einsetzen oder die Stelle streichen; Herkunft im Quelltext suchen."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/pdf/partnervertrag.ts",
+      "seite": null,
+      "ort": "Zeile 68",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: Text des Anwalts.]",
+      "vorschlag": "Den Wortlaut des Inhabers einsetzen oder die Stelle streichen; Herkunft im Quelltext suchen."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/pdf/partnervertrag.ts",
+      "seite": null,
+      "ort": "Zeile 72",
+      "fundstueck": "Platzhalter",
+      "umgebung": "artner-AGB von {{anbieter}}. [Platzhalter: Die Partner-AGB liegen noch",
+      "vorschlag": "Den Wortlaut des Inhabers einsetzen oder die Stelle streichen; Herkunft im Quelltext suchen."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/pdf/partnervertrag.ts",
+      "seite": null,
+      "ort": "Zeile 119",
+      "fundstueck": "[fehlt]",
+      "umgebung": "[fehlt]",
+      "vorschlag": "Den Wortlaut des Inhabers einsetzen oder die Stelle streichen; Herkunft im Quelltext suchen."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/pdf/partnervertrag.ts",
+      "seite": null,
+      "ort": "Zeile 256",
+      "fundstueck": "Platzhalter",
+      "umgebung": "Unbekannte Platzhalter",
+      "vorschlag": "Den Wortlaut des Inhabers einsetzen oder die Stelle streichen; Herkunft im Quelltext suchen."
+    }
+  ],
+  "ausgenommen": [
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[0].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[1].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[2].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[3].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[4].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[5].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[6].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[7].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[8].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[9].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[10].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[11].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[12].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[13].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[14].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[15].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[16].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[17].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[18].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[19].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[20].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[21].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[22].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[23].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[24].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[25].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[26].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[27].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[28].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[29].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[30].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[31].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[32].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[33].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[34].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[35].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[36].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[37].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[38].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[39].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[40].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[41].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[42].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[43].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[44].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[45].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[46].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[47].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[48].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[49].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[50].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "inhalt",
+      "datei": "content/code-lines.json",
+      "seite": null,
+      "ort": "[51].manufacturer",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/code-lines.ts",
+      "seite": null,
+      "ort": "Zeile 242",
+      "fundstueck": "[Hersteller eintragen]",
+      "umgebung": "[Hersteller eintragen]",
+      "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 18",
+      "fundstueck": "[Platzhalter: vollständige Firmierung]",
+      "umgebung": "[Platzhalter: vollständige Firmierung]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 18",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: vollständige Firmierung]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 21",
+      "fundstueck": "[Platzhalter: Inhaberin oder Inhaber]",
+      "umgebung": "[Platzhalter: Inhaberin oder Inhaber]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 21",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: Inhaberin oder Inhaber]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 22",
+      "fundstueck": "[Platzhalter: Straße und Hausnummer]",
+      "umgebung": "[Platzhalter: Straße und Hausnummer]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 22",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: Straße und Hausnummer]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 23",
+      "fundstueck": "[PLZ]",
+      "umgebung": "[PLZ]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 24",
+      "fundstueck": "[Ort]",
+      "umgebung": "[Ort]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 26",
+      "fundstueck": "[Platzhalter: Telefonnummer]",
+      "umgebung": "[Platzhalter: Telefonnummer]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 26",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: Telefonnummer]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 27",
+      "fundstueck": "[Platzhalter: E-Mail-Adresse]",
+      "umgebung": "[Platzhalter: E-Mail-Adresse]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 27",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: E-Mail-Adresse]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 28",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: Umsatzsteuer-Identifikations",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 29",
+      "fundstueck": "[Platzhalter: Registergericht]",
+      "umgebung": "[Platzhalter: Registergericht]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 29",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: Registergericht]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 30",
+      "fundstueck": "[Platzhalter: Registernummer]",
+      "umgebung": "[Platzhalter: Registernummer]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 30",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: Registernummer]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 31",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: vertretungsberechtigte Perso",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 32",
+      "fundstueck": "[Platzhalter: Berufsbezeichnung]",
+      "umgebung": "[Platzhalter: Berufsbezeichnung]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 32",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: Berufsbezeichnung]",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/data/defaults/settings.ts",
+      "seite": null,
+      "ort": "Zeile 33",
+      "fundstueck": "Platzhalter",
+      "umgebung": "[Platzhalter: zuständige Kammer mit Anschr",
+      "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false)."
+    },
+    {
+      "pruefung": "platzhalter",
+      "quelle": "code",
+      "datei": "src/lib/pdf/vorschaubilder.ts",
+      "seite": null,
+      "ort": "Zeile 78",
+      "fundstueck": "[vorgangsblatt]",
+      "umgebung": "[vorgangsblatt] Vorschau ausgelassen:",
+      "grund": "Präfix einer Protokollzeile auf dem Server (console), erreicht keinen Kunden und steht in keinem PDF."
+    },
+    {
+      "pruefung": "kontakt",
+      "quelle": "ausgeliefert",
+      "datei": ".next/server/app/rechtliches/datenschutz.html",
+      "seite": "/rechtliches/datenschutz",
+      "ort": "sichtbarer Text",
+      "fundstueck": "Gustav-Stresemann-Ring 1 65189 Wiesbaden",
+      "umgebung": "hutz und Informationsfreiheit Gustav-Stresemann-Ring 1 65189 Wiesbaden datenschutz.hessen.de 9. Sich",
+      "grund": "Anschrift der zuständigen Datenschutz-Aufsichtsbehörde (Der Hessische Beauftragte für Datenschutz und Informationsfreiheit) in der Datenschutzerklärung; Pflichtangabe, keine Kontaktangabe des Betriebs."
+    }
+  ],
+  "veraltet": [],
+  "warnungen": [
+    "Ausnahme 1 (platzhalter, content/code-lines.json, „[Hersteller eintragen]“) traf 52 Stellen; ein Feld ort begrenzt sie auf eine Stelle",
+    "Ausnahme 3 (platzhalter, src/lib/data/defaults/settings.ts, „Platzhalter“) traf 11 Stellen; ein Feld ort begrenzt sie auf eine Stelle"
+  ]
+}

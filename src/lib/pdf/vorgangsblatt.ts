@@ -127,7 +127,13 @@ function lieferungAbschnitt(vorgang: BusinessRecord): BlattAbschnitt | undefined
   const carrier = vorgang.shipment?.carrier;
   if (carrier) zeilen.push({ name: 'Versanddienst', wert: DIENSTLEISTER[carrier] });
   const sendungsnummer = vorgang.shipment?.trackingNumber;
-  if (sendungsnummer) zeilen.push({ name: 'Sendungsnummer', wert: sendungsnummer, mono: true });
+  // Sendung des Kunden zur Werkstatt (FA-SHOP-03B): getrennt von der Rücksendung.
+  const zuUns = vorgang.einsendeSendung;
+  if (sendungsnummer) zeilen.push({ name: zuUns?.trackingNumber ? 'Sendungsnummer Rücksendung' : 'Sendungsnummer', wert: sendungsnummer, mono: true });
+  if (zuUns?.trackingNumber) {
+    const dienst = zuUns.carrier ? ` (${DIENSTLEISTER[zuUns.carrier]})` : '';
+    zeilen.push({ name: `Sendung zur Werkstatt${dienst}`, wert: zuUns.trackingNumber, mono: true });
+  }
   return zeilen.length ? { titel: 'Lieferung und Versand', zeilen } : undefined;
 }
 

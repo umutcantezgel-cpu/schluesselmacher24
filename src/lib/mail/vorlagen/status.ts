@@ -143,6 +143,9 @@ export function statusMail({ vorgang, status, nachricht, kontext, zahlungsLink, 
     if (carrier) zeilen.push(['Versand mit', DIENSTLEISTER[carrier]]);
     if (trackingNumber) zeilen.push(['Sendungsnummer', trackingNumber]);
   }
+  // Sendung des Kunden zu uns (FA-SHOP-03B), getrennt von der Rücksendung genannt.
+  const zuUns = vorgang.einsendeSendung?.trackingNumber?.trim();
+  if (zuUns && istFotoanfrage(vorgang)) zeilen.push(['Ihre Sendung an uns', zuUns]);
   if (zeilen.length) bausteine.push({ art: 'felder', zeilen });
 
   const verfolgung = status === 'versendet' ? verfolgungsLink(vorgang.shipment?.carrier, vorgang.shipment?.trackingNumber) : null;

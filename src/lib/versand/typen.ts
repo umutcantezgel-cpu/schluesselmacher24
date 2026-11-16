@@ -29,7 +29,8 @@ export interface Sendung {
   inhalt: string;
 }
 
-export type AnbieterName = 'begleitschein' | 'attrappe' | 'dhl-retoure';
+/** `dhl-paket`: Paket-Label über die Versenden-API für Geschäftskunden (FA-SHOP-03B), abgeschaltet. */
+export type AnbieterName = 'begleitschein' | 'attrappe' | 'dhl-retoure' | 'dhl-paket';
 
 export interface Versandschein {
   anbieter: AnbieterName;

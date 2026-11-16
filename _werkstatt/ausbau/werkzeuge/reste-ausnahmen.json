@@ -1,0 +1,122 @@
+[
+  {
+    "pruefung": "platzhalter",
+    "quelle": "inhalt",
+    "datei": "content/code-lines.json",
+    "fundstueck": "[Hersteller eintragen]",
+    "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/data/defaults/code-lines.ts",
+    "fundstueck": "[Hersteller eintragen]",
+    "grund": "Musterdaten (example: true): die Seite zeigt sie nicht (src/lib/beispiele.ts, Test beispiele-oeffentlich.test.ts); sie entfallen oder werden ersetzt, sobald die echten Angebote importiert sind (MA-34, MA-47). Ein echter Herstellername wäre erfunden (R4, R12).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/data/defaults/settings.ts",
+    "fundstueck": "Platzhalter",
+    "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/data/defaults/settings.ts",
+    "fundstueck": "[Platzhalter: vollständige Firmierung]",
+    "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/data/defaults/settings.ts",
+    "fundstueck": "[Platzhalter: Inhaberin oder Inhaber]",
+    "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/data/defaults/settings.ts",
+    "fundstueck": "[Platzhalter: Straße und Hausnummer]",
+    "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/data/defaults/settings.ts",
+    "fundstueck": "[PLZ]",
+    "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/data/defaults/settings.ts",
+    "fundstueck": "[Ort]",
+    "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/data/defaults/settings.ts",
+    "fundstueck": "[Platzhalter: Telefonnummer]",
+    "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/data/defaults/settings.ts",
+    "fundstueck": "[Platzhalter: E-Mail-Adresse]",
+    "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/data/defaults/settings.ts",
+    "fundstueck": "[Platzhalter: Registergericht]",
+    "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/data/defaults/settings.ts",
+    "fundstueck": "[Platzhalter: Registernummer]",
+    "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/data/defaults/settings.ts",
+    "fundstueck": "[Platzhalter: Berufsbezeichnung]",
+    "grund": "Rückfall der Firmendaten ohne gepflegte Inhalte, mit isPlaceholder gekennzeichnet: Die Seite zeigt dann keine Anschrift (D-016), und die Livegang-Prüfung meldet Platzhalter. content/settings.json trägt die echten Firmendaten (isPlaceholder false).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "code",
+    "datei": "src/lib/pdf/vorschaubilder.ts",
+    "fundstueck": "[vorgangsblatt]",
+    "grund": "Präfix einer Protokollzeile auf dem Server (console), erreicht keinen Kunden und steht in keinem PDF.",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "kontakt",
+    "quelle": "ausgeliefert",
+    "datei": ".next/server/app/rechtliches/datenschutz.html",
+    "fundstueck": "Gustav-Stresemann-Ring 1 65189 Wiesbaden",
+    "grund": "Anschrift der zuständigen Datenschutz-Aufsichtsbehörde (Der Hessische Beauftragte für Datenschutz und Informationsfreiheit) in der Datenschutzerklärung; Pflichtangabe, keine Kontaktangabe des Betriebs.",
+    "datum": "2026-11-16"
+  }
+]

@@ -5,6 +5,7 @@ import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } f
 import { testmail } from '../../lib/mail/vorlagen/testmail';
 import { enthaeltPlatzhalter, istPlatzhalter } from '../../lib/platzhalter';
 import { mailKonfiguration } from '../../lib/umgebung';
+import { labelWegStand } from '../../lib/versand/label-weg';
 import type { Einstellungen as EinstellungenDoc } from '../../payload-types';
 import { hatRolle, istInhaber, istTeam } from '../access/rollen';
 import { VERSANDKLASSEN, euroFeld, zeitfensterFeld } from '../fields/gemeinsam';
@@ -410,7 +411,22 @@ export const Einstellungen: GlobalConfig = {
                   'Ohne Retourenlabel bekommt der Kunde einen Begleitschein und frankiert selbst; die Seite nennt das Porto unten als Empfehlung und schreibt nie „kostenlos“. Das Retourenlabel braucht einen Vertrag mit dem Versanddienstleister und dessen Zugangsdaten (Variablen in Vercel).',
               },
               fields: [
-                { name: 'labelAktiv', type: 'checkbox', label: 'Retourenlabel aktiv (Kosten trägt der Betrieb)', defaultValue: false },
+                {
+                  name: 'labelAktiv',
+                  type: 'checkbox',
+                  label: 'Versandlabel aktiv (nur mit Vertrag und Zugang)',
+                  defaultValue: false,
+                  admin: { description: 'Die Kosten für das Label werden mit dem Auftrag berechnet. Was noch fehlt, steht im Feld darunter.' },
+                },
+                {
+                  // Welcher Weg aktiv ist und was für das DHL-Paket-Label fehlt (FA-SHOP-03B). Nur Anzeige, nicht gespeichert.
+                  name: 'labelWeg',
+                  type: 'textarea',
+                  label: 'Aktiver Versandweg',
+                  virtual: true,
+                  admin: { readOnly: true },
+                  hooks: { afterRead: [({ siblingData }) => labelWegStand({ einstellungen: { labelAktiv: siblingData?.labelAktiv === true } }).zeilen.join('\n')] },
+                },
                 { type: 'row', fields: [
                   euroFeld('aufpreisVersichert', 'Aufpreis versichert', { defaultValue: 0, admin: { width: '50%', step: 0.01 } }),
                   euroFeld('aufpreisUnversichert', 'Aufpreis unversichert', { defaultValue: 0, admin: { width: '50%', step: 0.01 } }),

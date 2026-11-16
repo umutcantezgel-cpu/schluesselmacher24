@@ -16,10 +16,11 @@ import { auftragswegVon, auftragswegZeilen, istPartnerAnfrage, terminortZeile } 
 import type { OrderLine, OrderTotals, PaymentInfo, RecordStatus, SummarySection } from '@/lib/types';
 import { naechsteSchritte } from '@/lib/wege/naechste-schritte';
 import { begleitscheinAnzeigen, einsendeAngebotFuerVorgang } from '@/lib/einsenden/schein';
+import { einsendeKundenStatus, einsendeStand, kundenEinsendeSendung, sendungErwartet } from '@/lib/einsenden/sendung';
 import { istEinsendung, type EinsendePayload } from '@/lib/einsenden/vorgang';
 import { defaults } from '@/lib/data/defaults';
 import { VERPACKUNG_HINWEIS } from '@/lib/versand/varianten';
-import { ART_FUER_KUNDEN, kundenErstattung, kundenSendung, kundenStatus } from '@/lib/kundenstatus';
+import { ART_FUER_KUNDEN, kundenErstattung, kundenSendung } from '@/lib/kundenstatus';
 import { zahlungsAnsicht } from '@/lib/zahlung/ansicht';
 import { neuBuchenHref } from '@/lib/zahlung/neu-buchen';
 import { Alert } from '@/components/ui/alert';
@@ -31,6 +32,7 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { VarianteBeschreibung } from '../../schluessel-einschicken/versand-variante';
 import { FotoErgebnis } from './foto-ergebnis';
 import { JetztBezahlen } from './jetzt-bezahlen';
+import { SendungsnummerFormular } from './sendungsnummer-formular';
 
 interface BestellungSeiteProps {
   params: Promise<{ id: string }>;
@@ -165,8 +167,9 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
     : [];
 
   const kindLabel = ART_FUER_KUNDEN[record.kind];
-  // Kundenstatus aus einer Quelle (E6-OPUS-04): dieselben Wörter wie im Terminstatus.
-  const stand = kundenStatus(record);
+  // Kundenstatus aus einer Quelle (E6-OPUS-04): dieselben Wörter wie im Terminstatus; bei der Einsendung
+  // mit Sendungsnummer zusätzlich der Stand „unterwegs zu uns“ (FA-SHOP-03B).
+  const stand = einsendeKundenStatus(record);
   const sendung = kundenSendung(record);
   // Dieselben Schritte wie in der Bestätigung am Ende des Weges (G-38, R4).
   const schritte = naechsteSchritte(record);
@@ -177,9 +180,12 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
     : null;
   // Versandvarianten mit Kosten vor dem Begleitschein (A-050, Punkt 4): bei der Einsendung die gewählte,
   // bei der Freigabe mit Einsendung die Wahl zwischen den Varianten, je mit eigenem Begleitschein.
-  const versandAngebot = begleitscheinHref
-    ? einsendeAngebotFuerVorgang(record, (await getSettings().catch(() => null))?.sendIn ?? defaults.settings().sendIn!)
-    : null;
+  const sendIn = (await getSettings().catch(() => null))?.sendIn ?? defaults.settings().sendIn!;
+  const versandAngebot = begleitscheinHref ? einsendeAngebotFuerVorgang(record, sendIn) : null;
+  // Sendung des Kunden zu uns (FA-SHOP-03B): Nummer nachtragen, solange wir die Sendung erwarten.
+  const zuUns = kundenEinsendeSendung(record, sendIn);
+  const nummerEintragbar = sendungErwartet(record);
+  const einsendeSchritte = einsendeStand(record);
   const einsendung = istEinsendung(record);
   const gewaehlteVariante = einsendung && versandAngebot
     ? [...versandAngebot.optionen, ...versandAngebot.sonderfaelle].find((o) => o.art === (record.payload as unknown as EinsendePayload).versand)
@@ -389,6 +395,70 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                     </ul>
                   </>
                 )}
+              </section>
+            )}
+
+            {(zuUns || nummerEintragbar) && (
+              <section className="border-t border-border pt-8">
+                <h2 className="text-title-sm font-semibold text-foreground">Ihre Sendung an uns</h2>
+                {zuUns ? (
+                  <p className="mt-2 max-w-measure text-small leading-relaxed text-foreground">
+                    {[zuUns.variante, zuUns.dienstleister].filter(Boolean).join(', ')}
+                    {(zuUns.variante || zuUns.dienstleister) && ': '}
+                    Sendungsnummer <span className="select-all break-all font-mono tabular-nums">{zuUns.nummer}</span>
+                    {zuUns.link && (
+                      <a
+                        href={zuUns.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-2 inline-flex min-h-touch items-center gap-1.5 font-semibold text-primary hover:underline"
+                      >
+                        Sendung verfolgen
+                        <GlyphPfeilRechts size={18} />
+                      </a>
+                    )}
+                  </p>
+                ) : (
+                  <p className="mt-2 max-w-measure text-small leading-relaxed text-foreground-muted">
+                    Haben Sie den Schlüssel abgeschickt? Tragen Sie die Sendungsnummer vom Einlieferungsbeleg ein. Dann sehen Sie und wir, wo die Sendung ist.
+                  </p>
+                )}
+                {nummerEintragbar && (
+                  <SendungsnummerFormular
+                    recordId={record.id}
+                    token={token}
+                    gespeichert={zuUns?.nummer}
+                    {...(!einsendung && versandAngebot
+                      ? {
+                          varianten: versandAngebot.optionen.map((o) => ({ art: o.art, titel: o.titel })),
+                          vorauswahl: record.einsendeSendung?.variant ?? (versandAngebot.vorauswahl || undefined),
+                        }
+                      : {})}
+                  />
+                )}
+              </section>
+            )}
+
+            {einsendeSchritte && (
+              <section className="border-t border-border pt-8">
+                <h2 className="text-title-sm font-semibold text-foreground">Stand Ihrer Einsendung</h2>
+                <ol className="mt-4 max-w-measure divide-y divide-border border-y border-border">
+                  {einsendeSchritte.map((schritt) => (
+                    <li
+                      key={schritt.kennung}
+                      className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-3 text-small"
+                      aria-current={schritt.stand === 'aktuell' ? 'step' : undefined}
+                    >
+                      <span className={schritt.stand === 'offen' ? 'text-foreground-muted' : 'font-semibold text-foreground'}>
+                        {schritt.titel}
+                        {schritt.zusatz && <span className="ml-2 break-all font-mono font-normal tabular-nums">{schritt.zusatz}</span>}
+                      </span>
+                      <span className="text-foreground-muted">
+                        {schritt.stand === 'erledigt' ? 'erledigt' : schritt.stand === 'aktuell' ? 'jetzt' : 'folgt'}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
               </section>
             )}
 

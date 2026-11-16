@@ -406,6 +406,20 @@ export interface Vorgaenge {
     dienstleister?: ('dhl' | 'dpd' | 'deutsche-post' | 'hermes' | 'gls' | 'ups' | 'sonstige') | null;
     sendungsnummer?: string | null;
   };
+  /**
+   * Die Nummer trägt der Kunde auf seiner Vorgangsseite ein; das Team kann sie hier nachtragen oder berichtigen. Sie erscheint auf der Vorgangsseite, im Vorgangsblatt und in der Statusmail. Die Rücksendung an den Kunden steht oben unter „Sendung“.
+   */
+  einsendeSendung?: {
+    sendungsnummer?: string | null;
+    dienstleister?: ('dhl' | 'dpd' | 'deutsche-post' | 'hermes' | 'gls' | 'ups' | 'sonstige') | null;
+    variante?: ('dhl-paket' | 'einschreiben-einwurf' | 'einschreiben-wert') | null;
+    eingetragenAm?: string | null;
+    eingetragenVon?: ('kunde' | 'team') | null;
+    /**
+     * Versandlabel oder Einlieferungsbeleg als Datei (nur für das Team).
+     */
+    labelDatei?: (number | null) | InterneDateien;
+  };
   kontakt: {
     anrede?: string | null;
     vorname: string;
@@ -2372,6 +2386,16 @@ export interface VorgaengeSelect<T extends boolean = true> {
         dienstleister?: T;
         sendungsnummer?: T;
       };
+  einsendeSendung?:
+    | T
+    | {
+        sendungsnummer?: T;
+        dienstleister?: T;
+        variante?: T;
+        eingetragenAm?: T;
+        eingetragenVon?: T;
+        labelDatei?: T;
+      };
   kontakt?:
     | T
     | {
@@ -3779,7 +3803,11 @@ export interface Einstellungen {
    * Ohne Retourenlabel bekommt der Kunde einen Begleitschein und frankiert selbst; die Seite nennt das Porto unten als Empfehlung und schreibt nie „kostenlos“. Das Retourenlabel braucht einen Vertrag mit dem Versanddienstleister und dessen Zugangsdaten (Variablen in Vercel).
    */
   einsenden?: {
+    /**
+     * Die Kosten für das Label werden mit dem Auftrag berechnet. Was noch fehlt, steht im Feld darunter.
+     */
     labelAktiv?: boolean | null;
+    labelWeg?: string | null;
     aufpreisVersichert?: number | null;
     aufpreisUnversichert?: number | null;
     portoVersichert?: number | null;
@@ -4213,6 +4241,7 @@ export interface EinstellungenSelect<T extends boolean = true> {
     | T
     | {
         labelAktiv?: T;
+        labelWeg?: T;
         aufpreisVersichert?: T;
         aufpreisUnversichert?: T;
         portoVersichert?: T;

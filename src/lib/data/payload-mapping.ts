@@ -55,6 +55,7 @@ import type {
   RecordConsents,
   RichTextDocument,
   ShipmentInfo,
+  EinsendeSendung,
   PricingGroup,
   PricingRule,
   ReferralInfo,
@@ -1390,6 +1391,7 @@ export type VorgangsAenderung = Partial<
     | 'internalNotes'
     | 'mailLog'
     | 'shipment'
+    | 'einsendeSendung'
     | 'consents'
     | 'accessTokenHash'
     | 'approval'
@@ -1475,6 +1477,27 @@ function versandZuSeite(versand: Vorgaenge['versand']): ShipmentInfo | undefined
 const versandZuPayload = (shipment: ShipmentInfo) => ({
   dienstleister: shipment.carrier,
   sendungsnummer: shipment.trackingNumber,
+});
+
+/** Sendung des Kunden zur Werkstatt (FA-SHOP-03B); die Labeldatei pflegt nur das Team im Admin. */
+function einsendeSendungZuSeite(s: Vorgaenge['einsendeSendung']): EinsendeSendung | undefined {
+  if (!s) return undefined;
+  const sendung: EinsendeSendung = {};
+  if (s.sendungsnummer) sendung.trackingNumber = s.sendungsnummer;
+  if (s.dienstleister) sendung.carrier = s.dienstleister;
+  if (s.variante) sendung.variant = s.variante;
+  if (s.eingetragenAm) sendung.enteredAt = s.eingetragenAm;
+  if (s.eingetragenVon) sendung.enteredBy = s.eingetragenVon;
+  return Object.keys(sendung).length ? sendung : undefined;
+}
+
+/** Nur die Angaben dieser Gruppe; die Labeldatei fehlt in den Daten und bleibt, wie sie ist. */
+const einsendeSendungZuPayload = (s: EinsendeSendung) => ({
+  sendungsnummer: s.trackingNumber ?? null,
+  dienstleister: s.carrier ?? null,
+  variante: s.variant ?? null,
+  eingetragenAm: s.enteredAt ?? null,
+  eingetragenVon: s.enteredBy ?? null,
 });
 
 function freigabeZuSeite(f: Vorgaenge['freigabe'], einsendung = false): ApprovalInfo | undefined {
@@ -1731,6 +1754,8 @@ export function vorgangZuSeite(doc: Vorgaenge): BusinessRecord {
   if (mailLog) record.mailLog = mailLog;
   const shipment = versandZuSeite(doc.versand);
   if (shipment) record.shipment = shipment;
+  const einsendeSendung = einsendeSendungZuSeite(doc.einsendeSendung);
+  if (einsendeSendung) record.einsendeSendung = einsendeSendung;
   const consents = zustimmungenZuSeite(doc.zustimmungen);
   if (consents) record.consents = consents;
   const approval = freigabeZuSeite(doc.freigabe, istEinsendung(record));
@@ -1812,6 +1837,7 @@ export function vorgangZuPayload(record: BusinessRecord): VorgangDaten {
       : undefined,
     mails: record.mailLog?.map(mailZuPayload),
     versand: record.shipment ? versandZuPayload(record.shipment) : undefined,
+    einsendeSendung: record.einsendeSendung ? einsendeSendungZuPayload(record.einsendeSendung) : undefined,
     zustimmungen: record.consents ? zustimmungenZuPayload(record.consents) : undefined,
     freigabe: record.approval ? freigabeZuPayload(record.approval) : undefined,
     vermittlung: record.referral ? vermittlungZuPayload(record.referral) : undefined,
@@ -1843,6 +1869,7 @@ export function vorgangAenderungZuPayload(aenderung: VorgangsAenderung): Partial
   if (aenderung.internalNotes !== undefined) daten.notizen = aenderung.internalNotes.map(eintragZuPayload);
   if (aenderung.mailLog !== undefined) daten.mails = aenderung.mailLog.map(mailZuPayload);
   if (aenderung.shipment !== undefined) daten.versand = versandZuPayload(aenderung.shipment);
+  if (aenderung.einsendeSendung !== undefined) daten.einsendeSendung = einsendeSendungZuPayload(aenderung.einsendeSendung);
   if (aenderung.consents !== undefined) daten.zustimmungen = zustimmungenZuPayload(aenderung.consents);
   if (aenderung.accessTokenHash !== undefined) daten.zugriffsHash = aenderung.accessTokenHash;
   if (aenderung.approval !== undefined) daten.freigabe = freigabeZuPayload(aenderung.approval);

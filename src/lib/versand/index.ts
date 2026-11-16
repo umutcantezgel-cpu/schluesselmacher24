@@ -1,17 +1,19 @@
 /*
  * Versand-Adapter (G-24, G-25, A-010): wählt den Anbieter nach Umgebung und Einstellungen.
- * VERSAND_PROVIDER=attrappe für Tests und Probeläufe (G5), =dhl-retoure nur mit Vertrag,
- * Zugangsdaten und Schalter „Retourenlabel aktiv“; sonst der Begleitschein. Fällt DHL aus,
+ * VERSAND_PROVIDER=attrappe für Tests und Probeläufe (G5), =dhl-retoure oder =dhl-paket (FA-SHOP-03B)
+ * nur mit Vertrag, Zugangsdaten und Schalter „Label aktiv“; sonst der Begleitschein. Fällt DHL aus,
  * bekommt der Kunde den Begleitschein (nie eine leere Seite).
  */
 
 import type { EinsendeEinstellungen } from '../types';
 
 import { begleitschein } from './begleitschein';
+import { dhlPaket, dhlPaketZugang } from './dhl-paket';
 import { dhlRetoure, dhlZugang } from './dhl-retoure';
 import type { Sendung, VersandAnbieter, Versandschein } from './typen';
 
 export { einsendeAngebot, varianteWaehlbar } from './angebot';
+export { labelWegStand, type LabelWegStand } from './label-weg';
 export { STANDARD_VARIANTEN, VERPACKUNG_HINWEIS, empfehlungFuer, variantenAus, versandBezeichnung } from './varianten';
 export type { Anschrift, Sendung, VersandArt, Versandschein } from './typen';
 
@@ -27,7 +29,9 @@ export interface AnbieterWahl {
 export function labelEingerichtet({ einstellungen, env = process.env }: AnbieterWahl): boolean {
   const wahl = env.VERSAND_PROVIDER?.trim();
   if (wahl === 'attrappe') return true;
-  return wahl === 'dhl-retoure' && einstellungen.labelAktiv && dhlZugang(env) !== null;
+  if (!einstellungen.labelAktiv) return false;
+  if (wahl === 'dhl-paket') return dhlPaketZugang(env) !== null;
+  return wahl === 'dhl-retoure' && dhlZugang(env) !== null;
 }
 
 export function versandAnbieter({ einstellungen, env = process.env, fetchImpl }: AnbieterWahl): VersandAnbieter {
@@ -36,6 +40,10 @@ export function versandAnbieter({ einstellungen, env = process.env, fetchImpl }:
   if (wahl === 'dhl-retoure' && einstellungen.labelAktiv) {
     const zugang = dhlZugang(env);
     if (zugang) return dhlRetoure(zugang, fetchImpl);
+  }
+  if (wahl === 'dhl-paket' && einstellungen.labelAktiv) {
+    const zugang = dhlPaketZugang(env);
+    if (zugang) return dhlPaket(zugang, fetchImpl);
   }
   return begleitschein(einstellungen);
 }

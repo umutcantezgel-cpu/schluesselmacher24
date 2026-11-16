@@ -1085,7 +1085,7 @@ export function ZutrittKonfigurator({ hilfe }: { hilfe?: HilfeKontakt }) {
 
           <Field
             label="Wünsche zur Terminlage oder zum Ablauf"
-            hint="Freiwillig. Zum Beispiel: Montage außerhalb der Öffnungszeiten, Ansprechperson vor Ort."
+            hint="Freiwillig. Zum Beispiel: Montage außerhalb Ihrer Geschäftszeiten, Ansprechperson vor Ort."
           >
             {({ id, describedBy }) => (
               <TextArea
