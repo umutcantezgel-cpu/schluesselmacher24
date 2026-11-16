@@ -32,3 +32,18 @@ export async function ortsstammLesen(ordner = ORTSSTAMM_ORDNER): Promise<Ortssta
   ]);
   return { gemeinden, kreise, postleitzahlen, prioritaet };
 }
+
+let prioritaetZwischenspeicher: Promise<PrioritaetDatei> | null = null;
+
+/**
+ * Nur die Prioritätsliste (Anhang A), einmal je Prozess. Für den Hook der Ortsseiten (Stufe aus Anhang A), der auch
+ * unter `payload run` läuft und deshalb nicht über stamm.ts liest.
+ */
+export function prioritaetLesen(ordner = ORTSSTAMM_ORDNER): Promise<PrioritaetDatei> {
+  if (ordner !== ORTSSTAMM_ORDNER) return lies<PrioritaetDatei>(ordner, ORTSSTAMM_DATEIEN.prioritaet);
+  prioritaetZwischenspeicher ??= lies<PrioritaetDatei>(ordner, ORTSSTAMM_DATEIEN.prioritaet).catch((fehler) => {
+    prioritaetZwischenspeicher = null;
+    throw fehler;
+  });
+  return prioritaetZwischenspeicher;
+}

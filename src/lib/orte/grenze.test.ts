@@ -45,7 +45,7 @@ describe('Ortsstamm nur auf dem Server', () => {
   });
 
   it('die reinen Module lesen keine Dateien', () => {
-    for (const name of ['typen.ts', 'index-stamm.ts', 'entfernung.ts', 'abfrage.ts']) {
+    for (const name of ['typen.ts', 'index-stamm.ts', 'entfernung.ts', 'abfrage.ts', 'ortsseiten.ts']) {
       const text = readFileSync(path.join(__dirname, name), 'utf8');
       expect(text).not.toMatch(/node:fs|from '\.\/dateien'|from '\.\/stamm'/);
     }

@@ -170,8 +170,18 @@ export async function getGuide(slug: string) {
   return items.find((g) => g.slug === slug) ?? null;
 }
 
+/**
+ * Veröffentlichte Ortsseiten mit Lage am Ortsstamm, geordnet nach der Priorität des Inhabers (FA-PLATTFORM-03B,
+ * FA-09-04). Die Lage entscheidet über Indexierung und Sitemap (`stadtIndexierbar`). Der Stamm wird erst hier
+ * geladen (dynamischer Import: stamm.ts liest selbst aus dieser Datenschicht).
+ */
+const ortsseitenCached = cache(async () => {
+  const { ortsseitenAnreichern } = await import('@/lib/orte/stamm');
+  return ortsseitenAnreichern(await getCollection('cities'));
+});
+
 export async function getCities() {
-  return getCollection('cities');
+  return ortsseitenCached();
 }
 
 export async function getCity(slug: string) {

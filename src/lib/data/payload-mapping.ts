@@ -1025,6 +1025,17 @@ export function einsatzgebietZuSeite(doc: Einsatzgebiete): CityPage {
     onSiteRadiusKm: doc.radiusKm ?? 0,
     seo: seoZuSeite(doc.seo, doc.stadt),
     updatedAt: doc.updatedAt,
+    // Ortsstamm und Veröffentlichung (FA-PLATTFORM-03B): nur gesetzte Werte, damit leere Felder nichts behaupten.
+    ...(doc.gemeindeschluessel ? { gemeindeschluessel: doc.gemeindeschluessel } : {}),
+    ...(typeof doc.prioritaet === 'number' ? { prioritaet: doc.prioritaet } : {}),
+    ...(doc.stufeAnhangA ? { stufeAnhangA: true } : {}),
+    ...(typeof doc.suchvolumen === 'number' ? { suchvolumen: doc.suchvolumen } : {}),
+    ...(typeof doc.fahrzeitMinuten === 'number' ? { fahrzeitMinuten: doc.fahrzeitMinuten } : {}),
+    // Nur Kennungen: Name und Kontakt eines Partners gehören nie auf die öffentliche Seite.
+    ...(doc.partnerregion?.length
+      ? { partnerregion: doc.partnerregion.map((p) => String(typeof p === 'object' && p !== null ? p.id : p)) }
+      : {}),
+    ...(doc.verfuegbarkeit ? { verfuegbarkeit: doc.verfuegbarkeit } : {}),
   };
 }
 
@@ -1039,6 +1050,10 @@ export function einsatzgebietZuPayload(city: CityPage): RequiredDataFromCollecti
     leistungen: city.servicesOffered,
     radiusKm: city.onSiteRadiusKm,
     seo: seoZuPayload(city.seo),
+    // Verweis auf den Ortsstamm; Priorität, Suchvolumen, Fahrzeit, Partnerregion und Verfügbarkeit pflegt der Betrieb.
+    ...(city.gemeindeschluessel ? { gemeindeschluessel: city.gemeindeschluessel } : {}),
+    ...(typeof city.prioritaet === 'number' ? { prioritaet: city.prioritaet } : {}),
+    ...(city.verfuegbarkeit ? { verfuegbarkeit: city.verfuegbarkeit } : {}),
     _status: 'published',
   };
 }

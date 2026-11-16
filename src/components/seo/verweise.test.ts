@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
+import { ortsseiteGruende } from '@/lib/rechtliches/indexierung';
 import type { CityPage } from '@/lib/types';
 
 import { eingehendeVerweise, passtDazu, quellenAusOrten, zielPfad, type VerweisQuelle } from './verweise';
@@ -61,7 +62,15 @@ describe('Verweisliste „Passt dazu“', () => {
       seo: { title: `Ort ${slug}`, description: 'Beschreibung', internalLinks: [{ href: '/standorte', label: 'Alle' }], noindex },
       updatedAt: '2026-11-01',
     });
-    const quellen = quellenAusOrten([ort('wetzlar', 'Echter Text.'), ort('giessen', '[Platzhalter: Einleitung]'), ort('marburg', 'Text.', true)]);
+    // Lage wie aus getCities (FA-PLATTFORM-03B): Werkstatt im Ort; die Gründe rechnet die echte Regel.
+    const echt = 'Echter Text über die Werkstatt in der Altstadt, Schlüssel nach Muster, Autoschlüssel nach Termin und die Abholung von Bestellungen. Anreise aus dem Umland, vor Ort nach Prüfung.';
+    const roh = [ort('wetzlar', echt), ort('giessen', '[Platzhalter: Einleitung]'), ort('marburg', `${echt} Marburg.`, true)];
+    const weg = { gemeinde: { schluessel: '06532023', name: 'Wetzlar' }, werkstatt: 'ort' as const, partnerDeckt: false, verfuegbarkeit: false };
+    const mitLage = roh.map((o) => ({
+      ...o,
+      lage: { kreis: null, land: null, postleitzahlen: [], koordinaten: null, prioritaet: null, ...weg, gruende: ortsseiteGruende(o, roh, weg) },
+    }));
+    const quellen = quellenAusOrten(mitLage);
     expect(quellen.map((q) => q.pfad)).toEqual(['/standorte/wetzlar']);
     expect(quellen[0].titel).toBe('Schlüssel- und Schließtechnik in wetzlar');
     expect(quellen[0].links.map((l) => l.href)).toEqual(['/standorte', '/autoschluessel', '/schliessanlagen']);

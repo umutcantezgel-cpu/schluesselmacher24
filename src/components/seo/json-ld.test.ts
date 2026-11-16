@@ -207,6 +207,18 @@ describe('Betrieb als feste Kennung (FA-25-08)', () => {
     expect(ort).toContain(`"provider":{"@id":"${KENNUNG.betrieb}"}`);
     expect(ort).not.toMatch(/openingHours/);
   });
+
+  it('Einsatzgebiet nennt den Kreis nur, wenn die Ortsseite ihn aus dem Stamm zeigt (R8, FA-PLATTFORM-03B)', () => {
+    const basis = { slug: 'w', city: 'Wetzlar', state: 'Hessen' } as Parameters<typeof serviceAreaSchema>[0];
+    expect(JSON.stringify(serviceAreaSchema(basis))).not.toContain('Lahn-Dill-Kreis');
+    const mitKreis = { ...basis, lage: { kreis: { schluessel: '06532', name: 'Lahn-Dill-Kreis', art: 'landkreis' } } } as Parameters<typeof serviceAreaSchema>[0];
+    const ort = JSON.parse(JSON.stringify(serviceAreaSchema(mitKreis))) as { '@graph': Array<{ '@type': string; areaServed?: unknown }> };
+    expect(ort['@graph'].find((k) => k['@type'] === 'Service')?.areaServed).toEqual({
+      '@type': 'City',
+      name: 'Wetzlar',
+      containedInPlace: { '@type': 'AdministrativeArea', name: 'Lahn-Dill-Kreis', containedInPlace: { '@type': 'AdministrativeArea', name: 'Hessen' } },
+    });
+  });
 });
 
 describe('Einbindung', () => {

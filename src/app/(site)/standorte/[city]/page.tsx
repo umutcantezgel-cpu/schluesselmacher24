@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import { partnerwegAktiv } from '@/lib/auftragsweg';
 import { getCities, getCity, getSettings } from '@/lib/data';
-import { standort } from '@/lib/rechtliches/firma';
+import { kontaktweg, kreisAnzeige, partnerbezug, werkstattAnschrift } from '@/lib/orte/ortsseiten';
 import { areaByKey } from '@/lib/navigation';
 import { enthaeltPlatzhalter, istPlatzhalter } from '@/lib/platzhalter';
 import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
@@ -19,6 +20,9 @@ import { EinsatzradiusZeichnung } from '@/components/visual/einsatzradius';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { JsonLd, serviceAreaSchema } from '@/components/seo/json-ld';
 
+import { Quellenvermerk } from '../quellenvermerk';
+
+/** Nur gepflegte, veröffentlichte Ortsseiten bekommen eine Seite, nie die Gemeinden des Stamms (FA-09-08). */
 export async function generateStaticParams() {
   const cities = await getCities();
   return cities.map((city) => ({ city: city.slug }));
@@ -35,7 +39,7 @@ export async function generateMetadata(props: {
     title: city.seo.title,
     description: city.seo.description,
     alternates: { canonical: `/standorte/${city.slug}` },
-    // Solange Platzhalter drinstehen, verspricht die Seite Unbelegtes: nicht in Suchmaschinen.
+    // Ohne eigenen Text oder ohne Leistungsweg verspricht die Seite Unbelegtes: nicht in Suchmaschinen (FA-09-05).
     ...(stadtIndexierbar(city) ? {} : { robots: { index: false, follow: true } }),
   };
 }
@@ -49,12 +53,25 @@ export default async function CityPage(props: { params: Promise<{ city: string }
 
   if (!city) notFound();
 
-  // Die Werkstatt steht in den Einstellungen; liegt sie in dieser Stadt, zeigt die Seite Anschrift und Erreichbarkeit.
-  const werkstatt = standort(settings.company);
-  const werkstattHier = werkstatt && werkstatt.city === city.city ? werkstatt : undefined;
+  // Die Werkstatt steht in den Einstellungen (Werkstattadresse, sonst Firmensitz). Liegt sie in dieser Gemeinde, zeigt die
+  // Seite Anschrift und Erreichbarkeit; liegt sie im Landkreis, nennt der Kopf ihre Anschrift, damit der Knopf
+  // „Termin in unserer Werkstatt“ einen Ort hat.
+  const werkstatt = werkstattAnschrift(settings.company);
+  const werkstattHier = werkstatt && (city.lage?.werkstatt === 'ort' || werkstatt.city === city.city) ? werkstatt : undefined;
+  const werkstattImKreis = !werkstattHier && city.lage?.werkstatt === 'kreis' ? werkstatt : undefined;
+  // Ort am Stamm (FA-PLATTFORM-03B): Kreis und Postleitzahlen; ohne Postleitzahl im Stamm kein Abschnitt dazu.
+  const kreis = kreisAnzeige(city.lage?.kreis ?? null);
+  const postleitzahlen = city.lage?.postleitzahlen ?? [];
+  const partnerSatz = partnerbezug(city);
+  const verfuegbarkeit = city.lage?.verfuegbarkeit && city.verfuegbarkeit ? city.verfuegbarkeit.trim() : null;
+  const mitOrtAbschnitt = Boolean(kreis || postleitzahlen.length > 0 || partnerSatz || verfuegbarkeit);
+  const weg = kontaktweg(city, partnerwegAktiv(), werkstatt?.city);
+  let laufend = 0;
+  const nummer = () => String(++laufend).padStart(2, '0');
   const mitRadius = city.onSiteRadiusKm > 0;
-  const lead = werkstattHier
-    ? `Unsere Werkstatt: ${werkstattHier.street}, ${werkstattHier.postalCode} ${werkstattHier.city}. Einsätze vor Ort nur nach Prüfung; Bestellungen aus dem Shop liefern wir innerhalb Deutschlands.`
+  const werkstattImKopf = werkstattHier ?? werkstattImKreis;
+  const lead = werkstattImKopf
+    ? `Unsere Werkstatt: ${werkstattImKopf.street}, ${werkstattImKopf.postalCode} ${werkstattImKopf.city}. Einsätze vor Ort nur nach Prüfung; Bestellungen aus dem Shop liefern wir innerhalb Deutschlands.`
     : mitRadius
       ? `Vor-Ort-Leistungen im Umkreis von etwa ${city.onSiteRadiusKm}\u00a0km. Bestellungen aus dem Shop liefern wir innerhalb Deutschlands.`
       : 'Einsätze vor Ort nur nach Prüfung. Bestellungen aus dem Shop liefern wir innerhalb Deutschlands.';
@@ -116,8 +133,8 @@ export default async function CityPage(props: { params: Promise<{ city: string }
         lead={lead}
         crumbs={crumbs}
         actions={
-          <ButtonLink href="/autoschluessel/anfrage" pfeil>
-            Autoschlüssel-Termin
+          <ButtonLink href={weg.href} pfeil>
+            {weg.label}
           </ButtonLink>
         }
         visual={<EinsatzradiusZeichnung ort={city.city} radiusKm={city.onSiteRadiusKm} />}
@@ -131,7 +148,7 @@ export default async function CityPage(props: { params: Promise<{ city: string }
             <SectionHeading
               id="werkstatt-titel"
               className="lg:col-span-4"
-              nummer="01"
+              nummer={nummer()}
               eyebrow={werkstattHier.label}
               title={`Werkstatt in ${werkstattHier.city}`}
             />
@@ -148,11 +165,44 @@ export default async function CityPage(props: { params: Promise<{ city: string }
         </Section>
       )}
 
+      {mitOrtAbschnitt && (
+        <Section tight labelledBy="ort-titel">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
+            <SectionHeading id="ort-titel" className="lg:col-span-4" nummer={nummer()} eyebrow="Region" title={`${city.city} und Umgebung`} />
+            <div className="lg:col-span-8">
+              {(kreis || postleitzahlen.length > 0) && (
+                <dl className="grid gap-6 border-y border-border py-4 sm:grid-cols-2">
+                  {kreis && (
+                    <div>
+                      <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">{kreis.bezeichnung}</dt>
+                      <dd className="mt-1 text-body font-semibold text-foreground">{kreis.name}</dd>
+                    </div>
+                  )}
+                  {postleitzahlen.length > 0 && (
+                    <div>
+                      <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">Postleitzahlen</dt>
+                      <dd className="mt-1 font-mono text-body tabular-nums text-foreground">{postleitzahlen.join(', ')}</dd>
+                    </div>
+                  )}
+                </dl>
+              )}
+              {verfuegbarkeit && (
+                <>
+                  <p className="mt-6 font-mono text-caption uppercase tracking-label text-foreground-muted">Verfügbarkeit vor Ort</p>
+                  <p className="mt-2 max-w-measure whitespace-pre-line text-body text-foreground">{verfuegbarkeit}</p>
+                </>
+              )}
+              {partnerSatz && <p className="mt-6 max-w-measure text-body text-foreground">{partnerSatz}</p>}
+            </div>
+          </div>
+        </Section>
+      )}
+
       <Section tone="muted">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
           <SectionHeading
             className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start"
-            nummer={werkstattHier ? '02' : '01'}
+            nummer={nummer()}
             eyebrow="Leistungen"
             title="Bereiche in dieser Region"
           />
@@ -207,6 +257,13 @@ export default async function CityPage(props: { params: Promise<{ city: string }
           </div>
         </div>
       </Section>
+
+      {/* Quellenvermerk der Ortsdaten (A-051 Nr. 8), nur wenn die Seite Daten aus dem Stamm zeigt. */}
+      {city.lage?.gemeinde && (
+        <Section tight>
+          <Quellenvermerk mitPostleitzahlen={postleitzahlen.length > 0} />
+        </Section>
+      )}
     </>
   );
 }

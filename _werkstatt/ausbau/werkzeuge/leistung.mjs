@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // leistung.mjs – Mobile Leistung mit festem Maßstab über die wichtigen Ansichten (Paket FA-SEO-03, FA-25-13, FA-25-15).
 // Aufruf: node leistung.mjs [--basis http://localhost:3200] [--ansichten start,shop|/pfad] [--laeufe 3]
-//                           [--marke vorher|nachher|…] [--vorher <json>] [--ziel <ordner>] [--roh <ordner>]
+//                           [--methode simulate|devtools] [--marke vorher|nachher|…] [--vorher <json>]
+//                           [--ziel <ordner>] [--roh <ordner>]
 // Basis: --basis, sonst Umgebungsvariable BASIS, sonst http://localhost:3000. Nur localhost (G1).
 //
 // Maßstab (fest, im Bericht FA-SEO-03 genannt):
@@ -10,6 +11,9 @@
 //   Je Lauf ein frischer Chrome (/opt/pw-browsers, --headless=new --no-sandbox --disable-gpu) mit Attrappen nach G5
 //   (attrappenSetzen aus lib.mjs, auf die Basis dieses Laufs gestellt). Drei Läufe je Ansicht, Median je Kennwert;
 //   der Medianlauf (mittlere Leistung, bei Gleichstand niedrigerer LCP) liefert die Ursachen.
+//   Zweiter Maßstab (--methode devtools): dieselben Drosselwerte, aber im Browser angewandt statt simuliert
+//   (Latenz 562,5 ms je Anfrage, 1.474,6 kbit/s, CPU 4-fach). Er zeigt, wann Text und Bild wirklich erscheinen;
+//   der Standard bleibt simulate, damit Zahlen mit PageSpeed Insights vergleichbar bleiben.
 // Kennwerte: Leistung, FCP, LCP, Speed Index, TBT, CLS; dazu Gewicht und Zahl der Dateien, JavaScript-Gewicht,
 //   HTML-Gewicht, LCP-Element mit Phasen, blockierende Dateien, Skripte mit Ausführungszeit, lange Aufgaben.
 // Ausgabe: <ziel>/leistung-<marke>-<zeit>.json und .md (Standard protokolle/FA-SEO-03/), volle LHR nach <roh>
@@ -48,7 +52,15 @@ export const KENNWERTE = [
   { k: 'htmlKB', name: 'HTML', stellen: 0, einheit: ' KB' },
 ];
 
+export const METHODEN = ['simulate', 'devtools'];
+
 export class Bedienfehler extends Error {}
+
+export function methodeWaehlen(text) {
+  const m = text === undefined ? 'simulate' : String(text);
+  if (!METHODEN.includes(m)) throw new Bedienfehler(`--methode „${m}“ ist nicht erlaubt (simulate oder devtools)`);
+  return m;
+}
 
 /** Basis aus Argument, Umgebung (BASIS) oder Standard; nur localhost. Ohne Schrägstrich am Ende. */
 export function basisWaehlen(arg, umgebung = process.env.BASIS) {
@@ -198,7 +210,9 @@ export function markdown(kopf, ansichten, vergleich) {
   z.push(`# Leistung mobil · ${kopf.marke}`, '');
   z.push(`Stand ${kopf.zeit} · Basis ${kopf.basis} · Lighthouse ${kopf.lighthouse} · Chrome ${kopf.chrome} · ${kopf.laeufe} Läufe je Ansicht, Median`, '');
   const d = kopf.drosselung;
-  z.push(`Maßstab: Lighthouse-Standardprofil mobil (${kopf.geraet}), simulierte Drosselung: Rundlaufzeit ${fmt(d?.rttMs)} ms, ${fmt(d?.throughputKbps, 1)} kbit/s, CPU ${fmt(d?.cpuSlowdownMultiplier)}-fach. Gewicht und Dateien gemessen (Übertragung), Zeiten simuliert.`, '');
+  z.push(kopf.methode === 'devtools'
+    ? `Maßstab: Lighthouse-Standardprofil mobil (${kopf.geraet}), angewandte Drosselung (devtools): Latenz ${fmt(d?.requestLatencyMs, 1)} ms je Anfrage, ${fmt(d?.downloadThroughputKbps, 1)} kbit/s, CPU ${fmt(d?.cpuSlowdownMultiplier)}-fach. Zeiten und Gewichte gemessen.`
+    : `Maßstab: Lighthouse-Standardprofil mobil (${kopf.geraet}), simulierte Drosselung: Rundlaufzeit ${fmt(d?.rttMs)} ms, ${fmt(d?.throughputKbps, 1)} kbit/s, CPU ${fmt(d?.cpuSlowdownMultiplier)}-fach. Gewicht und Dateien gemessen (Übertragung), Zeiten simuliert.`, '');
   z.push('## Übersicht (Median, Spanne)', '');
   z.push(tabelle(['Ansicht', 'Läufe', ...KENNWERTE.map((w) => w.name)], ansichten.map((a) => [
     `${a.name} (${a.pfad})`, `${a.gueltig}/${kopf.laeufe}`, ...KENNWERTE.map((w) => spanne(a.statistik[w.k], w)),
@@ -252,7 +266,7 @@ export function argumente(argv) {
 // ---------------------------------------------------------------------------
 async function main() {
   const args = argumente(process.argv.slice(2));
-  for (const k of ['basis', 'ansichten', 'laeufe', 'marke', 'vorher', 'ziel', 'roh']) {
+  for (const k of ['basis', 'ansichten', 'laeufe', 'methode', 'marke', 'vorher', 'ziel', 'roh']) {
     if (args[k] === true) throw new Bedienfehler(`--${k} braucht einen Wert`);
   }
   const basis = basisWaehlen(args.basis);
@@ -264,6 +278,7 @@ async function main() {
 
   const laeufe = args.laeufe === undefined ? 3 : Number(args.laeufe);
   if (!Number.isInteger(laeufe) || laeufe < 1 || laeufe > 10) throw new Bedienfehler('--laeufe braucht eine ganze Zahl von 1 bis 10');
+  const methode = methodeWaehlen(args.methode);
   const marke = String(args.marke ?? 'messung').replace(/[^a-zA-Z0-9-]+/g, '-');
   const ansichten = ansichtenWaehlen(args.ansichten);
   const vorher = args.vorher ? JSON.parse(readFileSync(path.resolve(args.vorher), 'utf8')).ansichten : null;
@@ -278,7 +293,7 @@ async function main() {
     try {
       verbindung = await lib.chromium.connectOverCDP(`http://127.0.0.1:${chrome.port}`);
       await lib.attrappenSetzen(verbindung.contexts()[0]);
-      const e = await lighthouse(url, { port: chrome.port, output: 'json', logLevel: 'error', onlyCategories: ['performance'] });
+      const e = await lighthouse(url, { port: chrome.port, output: 'json', logLevel: 'error', onlyCategories: ['performance'], throttlingMethod: methode });
       return e.lhr;
     } finally {
       await verbindung?.close().catch(() => {});
@@ -313,7 +328,7 @@ async function main() {
   }
 
   const kopf = {
-    skript: 'leistung', marke, zeit: new Date().toISOString(), basis, laeufe,
+    skript: 'leistung', marke, methode, zeit: new Date().toISOString(), basis, laeufe,
     lighthouse: info?.lighthouse ?? 'n. g.', chrome: info?.chrome ?? 'n. g.', drosselung: info?.drosselung ?? null, geraet: info?.geraet ?? 'n. g.',
   };
   const vergleich = vorher ? vergleiche(vorher, ergebnisse) : null;

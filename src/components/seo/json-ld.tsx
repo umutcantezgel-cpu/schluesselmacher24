@@ -1,3 +1,4 @@
+import { kreisAnzeige } from '@/lib/orte/ortsseiten';
 import type { CityPage, CodeLine, Guide, Settings } from '@/lib/types';
 import { getSiteUrl } from '@/lib/site-url';
 import { angabe, firmaVeroeffentlichbar, kontakt, standort, ustId } from '@/lib/rechtliches/firma';
@@ -296,10 +297,16 @@ export function faqSchema(items: Array<{ question: string; answer: string }>, pa
   } satisfies Graph;
 }
 
-/** Ein Einsatzgebiet: Leistung des Betriebs in einer Stadt, mit den sichtbaren Brotkrumen in einem Graphen. */
+/**
+ * Ein Einsatzgebiet: Leistung des Betriebs in einer Stadt, mit den sichtbaren Brotkrumen in einem Graphen. Nur
+ * Sichtbares (R8): Stadt und Bundesland stehen im Kopf, der Kreis aus dem Ortsstamm steht im Abschnitt „Region“ der
+ * Ortsseite (dieselbe Anzeige `kreisAnzeige`).
+ */
 export function serviceAreaSchema(city: CityPage, crumbs?: Array<{ href: string; label: string }>): Graph {
+  const kreis = kreisAnzeige(city.lage?.kreis ?? null)?.name;
   const pageUrl = `${siteUrl}/standorte/${city.slug}`;
   const krumen = krumenTeil(pageUrl, crumbs);
+  const land = { '@type': 'AdministrativeArea' as const, name: city.state };
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -322,7 +329,7 @@ export function serviceAreaSchema(city: CityPage, crumbs?: Array<{ href: string;
         areaServed: {
           '@type': 'City',
           name: city.city,
-          containedInPlace: { '@type': 'AdministrativeArea', name: city.state },
+          containedInPlace: kreis ? { '@type': 'AdministrativeArea', name: kreis, containedInPlace: land } : land,
         },
         provider: { '@id': KENNUNG.betrieb },
       },

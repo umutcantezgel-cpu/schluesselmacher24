@@ -2216,6 +2216,34 @@ export interface Einsatzgebiete {
     | null;
   radiusKm?: number | null;
   /**
+   * Amtlicher Gemeindeschlüssel, acht Ziffern, siehe Sammlung „Orte (Stamm)“. Daraus kommen Landkreis und Postleitzahlen.
+   */
+  gemeindeschluessel?: string | null;
+  /**
+   * Kleiner zuerst. Leer: Platz in Anhang A, sonst hinten.
+   */
+  prioritaet?: number | null;
+  /**
+   * Wird aus der Prioritätsliste gesetzt.
+   */
+  stufeAnhangA?: boolean | null;
+  /**
+   * Leer lassen, bis eine belegte Zahl mit Quelle vorliegt.
+   */
+  suchvolumen?: number | null;
+  /**
+   * Leer lassen, bis sie gemessen ist.
+   */
+  fahrzeitMinuten?: number | null;
+  /**
+   * Partnerbetriebe für diesen Ort. Darf leer sein. Auf der Seite steht nie ein Name.
+   */
+  partnerregion?: (number | Partnerbetriebe)[] | null;
+  /**
+   * Eigener Text, etwa feste Tage vor Ort. Zählt als Leistungsweg. Nur Belegtes eintragen.
+   */
+  verfuegbarkeit?: string | null;
+  /**
    * Titel und Beschreibung, wie sie bei Google erscheinen.
    */
   seo?: {
@@ -3725,6 +3753,13 @@ export interface EinsatzgebieteSelect<T extends boolean = true> {
       };
   leistungen?: T;
   radiusKm?: T;
+  gemeindeschluessel?: T;
+  prioritaet?: T;
+  stufeAnhangA?: T;
+  suchvolumen?: T;
+  fahrzeitMinuten?: T;
+  partnerregion?: T;
+  verfuegbarkeit?: T;
   seo?:
     | T
     | {

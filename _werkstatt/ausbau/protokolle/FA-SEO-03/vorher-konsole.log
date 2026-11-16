@@ -9,3 +9,34 @@
 [assistent] Lauf 3: Leistung 88, LCP 3468 ms, TBT 176 ms (7 s)
 [code] Lauf 1: Leistung 92, LCP 3372 ms, TBT 60 ms (7 s)
 [code] Lauf 2: Leistung 95, LCP 2763 ms, TBT 71 ms (8 s)
+[code] Lauf 3: Leistung 94, LCP 3046 ms, TBT 55 ms (7 s)
+[konfigurator] Lauf 1: Leistung 91, LCP 3341 ms, TBT 100 ms (7 s)
+[konfigurator] Lauf 2: Leistung 90, LCP 3328 ms, TBT 154 ms (7 s)
+[konfigurator] Lauf 3: Leistung 90, LCP 3510 ms, TBT 74 ms (7 s)
+[shop] Lauf 1: Leistung 94, LCP 2930 ms, TBT 135 ms (7 s)
+[shop] Lauf 2: Leistung 91, LCP 3469 ms, TBT 70 ms (7 s)
+[shop] Lauf 3: Leistung 90, LCP 3609 ms, TBT 44 ms (7 s)
+[ort] Lauf 1: Leistung 92, LCP 3216 ms, TBT 112 ms (7 s)
+[ort] Lauf 2: Leistung 93, LCP 3226 ms, TBT 61 ms (7 s)
+[ort] Lauf 3: Leistung 96, LCP 2761 ms, TBT 68 ms (7 s)
+[ratgeber] Lauf 1: Leistung 95, LCP 2602 ms, TBT 136 ms (7 s)
+[ratgeber] Lauf 2: Leistung 87, LCP 3468 ms, TBT 212 ms (7 s)
+[ratgeber] Lauf 3: Leistung 90, LCP 3390 ms, TBT 144 ms (7 s)
+[kontakt] Lauf 1: Leistung 88, LCP 3792 ms, TBT 80 ms (7 s)
+[kontakt] Lauf 2: Leistung 88, LCP 3792 ms, TBT 85 ms (7 s)
+[kontakt] Lauf 3: Leistung 87, LCP 3827 ms, TBT 115 ms (7 s)
+| Ansicht | Läufe | Leistung | LCP ms | TBT ms | CLS |
+|---|---|---|---|---|---|
+| / | 3/3 | 87 | 2.786 | 215 | 0,000 |
+| /autoschluessel | 3/3 | 87 | 3.019 | 296 | 0,000 |
+| /autoschluessel/anfrage | 3/3 | 85 | 3.809 | 176 | 0,000 |
+| /schluessel-nach-code | 3/3 | 94 | 3.046 | 60 | 0,000 |
+| /gleichschliessende-zylinder/konfigurator | 3/3 | 90 | 3.341 | 100 | 0,000 |
+| /shop | 3/3 | 91 | 3.469 | 70 | 0,000 |
+| /standorte/wetzlar | 3/3 | 93 | 3.216 | 68 | 0,000 |
+| /ratgeber/zylinder-richtig-ausmessen | 3/3 | 90 | 3.390 | 144 | 0,000 |
+| /service-und-termin/kontakt | 3/3 | 88 | 3.792 | 85 | 0,000 |
+
+JSON: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/FA-SEO-03/leistung-vorher-2026-11-16_14-43-27.json
+Markdown: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/FA-SEO-03/leistung-vorher-2026-11-16_14-43-27.md
+Rohdaten: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/roh/FA-SEO-03

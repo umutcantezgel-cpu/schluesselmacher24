@@ -1304,6 +1304,43 @@ export interface CityPage {
   onSiteRadiusKm: number;
   seo: SeoFields;
   updatedAt: string;
+  /** Amtlicher Gemeindeschlüssel (acht Ziffern), Verweis auf den Ortsstamm (FA-PLATTFORM-03B). */
+  gemeindeschluessel?: string | null;
+  /** Priorität des Inhabers, kleiner zuerst; leer: Platz in Anhang A, sonst hinten. */
+  prioritaet?: number | null;
+  /** Stufe: Ort steht in Anhang A (aus content/orte/prioritaet.json). */
+  stufeAnhangA?: boolean;
+  /** Suchvolumen, vom Betreiber gepflegt; leer, solange keine belegte Zahl vorliegt. */
+  suchvolumen?: number | null;
+  /** Fahrzeit zur Werkstatt in Minuten, vom Betreiber gepflegt; leer, solange nicht gemessen. */
+  fahrzeitMinuten?: number | null;
+  /** Zugeordnete Partnerbetriebe (nur Kennungen, nie Namen). */
+  partnerregion?: string[];
+  /** Konkrete Verfügbarkeit, eigener Text des Betreibers. */
+  verfuegbarkeit?: string | null;
+  /** Aus Ortsstamm, Werkstatt und Partnern berechnet (src/lib/orte/ortsseiten.ts), nie gespeichert. */
+  lage?: OrtsseitenLage;
+}
+
+/** Wie eine Ortsseite an Ortsstamm, Werkstatt und Partner hängt und ob sie in Suchmaschinen darf (FA-09, FA-AA). */
+export interface OrtsseitenLage {
+  gemeinde: { schluessel: string; name: string } | null;
+  /** Kreis aus dem Stamm; `art` wie im Gemeindeverzeichnis (landkreis, kreisfreie-stadt …). */
+  kreis: { schluessel: string; name: string; art: string } | null;
+  land: string | null;
+  /** Postleitzahlen der Gemeinde aus dem Stamm, aufsteigend; leer, wenn der Stamm keine führt. */
+  postleitzahlen: string[];
+  koordinaten: { breite: number; laenge: number } | null;
+  /** Die Werkstatt liegt im Ort oder im selben Kreis. */
+  werkstatt: 'ort' | 'kreis' | null;
+  /** Ein freigeschalteter Partner deckt eine Postleitzahl des Orts für Autoschlüssel ab. */
+  partnerDeckt: boolean;
+  /** Eine konkrete Verfügbarkeit ist eingetragen (eigener Text, kein Platzhalter). */
+  verfuegbarkeit: boolean;
+  /** Wirksame Priorität: gepflegte Zahl, sonst Platz in Anhang A, sonst null. */
+  prioritaet: number | null;
+  /** Gründe, warum die Seite nicht in Suchmaschinen und Sitemap steht; leer heißt indexierbar. */
+  gruende: string[];
 }
 
 /* ---------- Leistungsseiten (Tür-/Schließtechnik, Sicherheitstechnik) --- */

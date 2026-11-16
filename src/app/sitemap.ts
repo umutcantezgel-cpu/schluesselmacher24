@@ -256,7 +256,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // Einsatzgebiete nur ohne Platzhalter; die Übersicht nur, wenn es mindestens eins gibt.
+  // Ortsseiten nur mit Substanz (eigener Text und Leistungsweg, FA-09-05, `stadtIndexierbar` über die Lage aus
+  // getCities); die Übersicht nur, wenn es mindestens eine gibt. Nie Gemeinden des Ortsstamms ohne Ortsseite.
   const gebiete = cities.filter(stadtIndexierbar);
   if (gebiete.length > 0) {
     entries.push({

@@ -12,7 +12,12 @@ import { GlyphOrt } from '@/components/visual/glyphen/ort';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
 
-/** Nur Einsatzgebiete ohne Platzhalter erscheinen — sonst versprächen sie Leistungen, die nicht belegt sind. */
+import { Quellenvermerk } from './quellenvermerk';
+
+/**
+ * Nur indexierbare Einsatzgebiete erscheinen (eigener Text und Leistungsweg, FA-09-05), sonst versprächen sie
+ * Leistungen, die nicht belegt sind. Reihenfolge nach der Priorität des Inhabers, dann Name (getCities, FA-09-04).
+ */
 async function sichtbareGebiete() {
   return (await getCities()).filter(stadtIndexierbar);
 }
@@ -128,6 +133,10 @@ export default async function StandortePage() {
           </Link>{' '}
           — wir sagen Ihnen, was möglich ist.
         </Alert>
+
+        <div className="mt-10">
+          <Quellenvermerk />
+        </div>
       </Section>
     </>
   );

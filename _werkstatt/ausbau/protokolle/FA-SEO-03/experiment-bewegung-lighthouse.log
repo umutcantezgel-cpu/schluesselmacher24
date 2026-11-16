@@ -1,0 +1,24 @@
+an 0 89 3519 114 1938
+ohne-eingang 0 89 3273 202 1934
+spaeter 0 82 2789 508 2425
+ruhig 0 88 3077 276 1785
+an 1 91 3228 136 2481
+ohne-eingang 1 91 3093 170 1913
+spaeter 1 91 2779 255 2551
+ruhig 1 89 2620 345 2144
+an 2 94 2720 167 2868
+ohne-eingang 2 81 3574 371 2169
+spaeter 2 88 3558 167 2483
+ruhig 2 89 2790 287 2007
+an 3 86 2673 437 3223
+ohne-eingang 3 86 3558 217 1910
+spaeter 3 82 2650 559 2284
+ruhig 3 90 2810 263 1801
+an 4 84 2620 491 3773
+ohne-eingang 4 94 2799 113 2002
+spaeter 4 91 3225 141 3259
+ruhig 4 93 2779 189 1908
+/ an leistung 89 · fcp 1508 · lcp 2720 · tbt 167 · si 1508 · mt 2868
+/ ohne-eingang leistung 89 · fcp 1514 · lcp 3273 · tbt 202 · si 1514 · mt 1934
+/ spaeter leistung 88 · fcp 1508 · lcp 2789 · tbt 255 · si 1508 · mt 2483
+/ ruhig leistung 89 · fcp 1507 · lcp 2790 · tbt 276 · si 1507 · mt 1908

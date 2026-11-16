@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { defaults } from '@/lib/data/defaults';
 import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
+import { ortsseiteGruende, type Leistungsweg } from '@/lib/rechtliches/indexierung';
 import type { CityPage, CodeLine, ShopHersteller, ShopKategorie, StandardArticle, VehicleMake } from '@/lib/types';
 import codeLinesJson from '../../content/code-lines.json';
 import vehiclesJson from '../../content/vehicles.json';
@@ -37,6 +38,28 @@ vi.mock('@/lib/data', () => ({
 }));
 
 const { default: sitemap } = await import('./sitemap');
+
+/** Gemeinde aus dem Stamm (erfunden, G4). */
+const AM_STAMM = { schluessel: '06999001', name: 'Musterstadt' };
+
+/** Lage wie getCities sie liefert, mit Werkstatt im Ort (FA-PLATTFORM-03B); die Gründe rechnet die echte Regel. */
+function mitLage(orte: CityPage[], weg: Leistungsweg = { gemeinde: AM_STAMM, werkstatt: 'ort', partnerDeckt: false, verfuegbarkeit: false }): CityPage[] {
+  return orte.map((ort) => ({
+    ...ort,
+    lage: {
+      kreis: null,
+      land: null,
+      postleitzahlen: [],
+      koordinaten: null,
+      prioritaet: null,
+      ...weg,
+      gruende: ortsseiteGruende(ort, orte, weg),
+    },
+  }));
+}
+
+const EIGEN = (ort: string) =>
+  `Werkstatt in der Altstadt von ${ort}: Schlüssel nach Muster, Autoschlüssel nach Termin, Abholung von Bestellungen. Anreise aus dem Umland, Einsätze vor Ort nur nach Prüfung.`;
 
 function stadt(slug: string, intro: string): CityPage {
   return {
@@ -75,15 +98,37 @@ describe('Sitemap', () => {
   });
 
   it('nimmt Einsatzgebiete nur ohne Platzhalter auf, die Übersicht nur mit mindestens einem', async () => {
-    gebiete.liste = [stadt('wetzlar', 'Werkstatt in der Altstadt.'), stadt('berlin', '[Platzhalter — örtlicher Text]')];
+    gebiete.liste = mitLage([stadt('wetzlar', EIGEN('wetzlar')), stadt('berlin', '[Platzhalter — örtlicher Text]')]);
     const urls = (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
     expect(urls).toContain('/standorte');
     expect(urls).toContain('/standorte/wetzlar');
     expect(urls).not.toContain('/standorte/berlin');
 
-    gebiete.liste = [stadt('berlin', '[Platzhalter — örtlicher Text]')];
+    gebiete.liste = mitLage([stadt('berlin', '[Platzhalter — örtlicher Text]')]);
     const ohne = (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
     expect(ohne).not.toContain('/standorte');
+  });
+
+  it('nimmt Ortsseiten nur mit Substanz auf: kein wortgleicher Text, kein Ort ohne Leistungsweg, nie ohne Lage (FA-PLATTFORM-03B)', async () => {
+    // Zwei Seiten mit demselben Text, nur der Ortsname getauscht: beide fehlen.
+    gebiete.liste = mitLage([stadt('giessen', EIGEN('giessen')), stadt('marburg', EIGEN('marburg'))]);
+    let urls = (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
+    expect(urls.filter((url) => url.startsWith('/standorte'))).toEqual([]);
+
+    // Eigener Text, aber kein Leistungsweg.
+    gebiete.liste = mitLage([stadt('kassel', EIGEN('kassel'))], { gemeinde: AM_STAMM, werkstatt: null, partnerDeckt: false, verfuegbarkeit: false });
+    urls = (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
+    expect(urls.filter((url) => url.startsWith('/standorte'))).toEqual([]);
+
+    // Ein Partner deckt ab: Leistungsweg vorhanden.
+    gebiete.liste = mitLage([stadt('kassel', EIGEN('kassel'))], { gemeinde: AM_STAMM, werkstatt: null, partnerDeckt: true, verfuegbarkeit: false });
+    urls = (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
+    expect(urls).toContain('/standorte/kassel');
+
+    // Ohne berechnete Lage (etwa unbekannte Herkunft): nie.
+    gebiete.liste = [stadt('fulda', EIGEN('fulda'))];
+    urls = (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
+    expect(urls).not.toContain('/standorte/fulda');
   });
 
   it('meldet Codelinien, Kategorien und Hersteller: ohne noindex, ohne Beispiele, ohne leere Seiten', async () => {

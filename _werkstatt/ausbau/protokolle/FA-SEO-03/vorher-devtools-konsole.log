@@ -1,0 +1,42 @@
+[start] Lauf 1: Leistung 96, LCP 1207 ms, TBT 226 ms (27 s)
+[start] Lauf 2: Leistung 98, LCP 1134 ms, TBT 147 ms (27 s)
+[start] Lauf 3: Leistung 88, LCP 1356 ms, TBT 475 ms (28 s)
+[autoschluessel] Lauf 1: Leistung 89, LCP 1294 ms, TBT 432 ms (27 s)
+[autoschluessel] Lauf 2: Leistung 86, LCP 1227 ms, TBT 548 ms (27 s)
+[autoschluessel] Lauf 3: Leistung 99, LCP 1092 ms, TBT 126 ms (27 s)
+[assistent] Lauf 1: Leistung 93, LCP 1094 ms, TBT 305 ms (26 s)
+[assistent] Lauf 2: Leistung 93, LCP 1062 ms, TBT 305 ms (26 s)
+[assistent] Lauf 3: Leistung 96, LCP 1037 ms, TBT 216 ms (26 s)
+[code] Lauf 1: Leistung 98, LCP 1029 ms, TBT 163 ms (26 s)
+[code] Lauf 2: Leistung 99, LCP 1057 ms, TBT 142 ms (26 s)
+[code] Lauf 3: Leistung 99, LCP 1037 ms, TBT 147 ms (26 s)
+[konfigurator] Lauf 1: Leistung 98, LCP 969 ms, TBT 160 ms (26 s)
+[konfigurator] Lauf 2: Leistung 98, LCP 1004 ms, TBT 166 ms (26 s)
+[konfigurator] Lauf 3: Leistung 98, LCP 1012 ms, TBT 161 ms (27 s)
+[shop] Lauf 1: Leistung 99, LCP 988 ms, TBT 139 ms (25 s)
+[shop] Lauf 2: Leistung 99, LCP 1024 ms, TBT 119 ms (26 s)
+[shop] Lauf 3: Leistung 97, LCP 1129 ms, TBT 209 ms (26 s)
+[ort] Lauf 1: Leistung 98, LCP 1081 ms, TBT 145 ms (26 s)
+[ort] Lauf 2: Leistung 98, LCP 1169 ms, TBT 179 ms (26 s)
+[ort] Lauf 3: Leistung 99, LCP 1024 ms, TBT 116 ms (26 s)
+[ratgeber] Lauf 1: Leistung 98, LCP 1093 ms, TBT 165 ms (28 s)
+[ratgeber] Lauf 2: Leistung 97, LCP 1075 ms, TBT 205 ms (26 s)
+[ratgeber] Lauf 3: Leistung 99, LCP 1131 ms, TBT 95 ms (27 s)
+[kontakt] Lauf 1: Leistung 97, LCP 1146 ms, TBT 208 ms (27 s)
+[kontakt] Lauf 2: Leistung 99, LCP 1071 ms, TBT 124 ms (26 s)
+[kontakt] Lauf 3: Leistung 96, LCP 1037 ms, TBT 246 ms (26 s)
+| Ansicht | Läufe | Leistung | LCP ms | TBT ms | CLS |
+|---|---|---|---|---|---|
+| / | 3/3 | 96 | 1.207 | 226 | 0,000 |
+| /autoschluessel | 3/3 | 89 | 1.227 | 432 | 0,000 |
+| /autoschluessel/anfrage | 3/3 | 93 | 1.062 | 305 | 0,000 |
+| /schluessel-nach-code | 3/3 | 99 | 1.037 | 147 | 0,000 |
+| /gleichschliessende-zylinder/konfigurator | 3/3 | 98 | 1.004 | 161 | 0,000 |
+| /shop | 3/3 | 99 | 1.024 | 139 | 0,000 |
+| /standorte/wetzlar | 3/3 | 98 | 1.081 | 145 | 0,000 |
+| /ratgeber/zylinder-richtig-ausmessen | 3/3 | 98 | 1.093 | 165 | 0,000 |
+| /service-und-termin/kontakt | 3/3 | 97 | 1.071 | 208 | 0,000 |
+
+JSON: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/FA-SEO-03/leistung-vorher-devtools-2026-11-16_15-05-28.json
+Markdown: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/FA-SEO-03/leistung-vorher-devtools-2026-11-16_15-05-28.md
+Rohdaten: /home/user/schluesselmacher24/_werkstatt/ausbau/protokolle/roh/FA-SEO-03

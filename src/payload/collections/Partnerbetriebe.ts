@@ -9,6 +9,7 @@ import { euroFeld, kennungFeld } from '../fields/gemeinsam';
 import { bewerbungUebernehmen } from '../hooks/partner-bewerbung';
 import { leadUebersichtFeld, partnerbetriebNachAenderung, partnerbetriebVorAenderung, prueflisteStandFeld } from '../hooks/partner-pruefung';
 import { partnervertragEndpunkte } from '../hooks/partnervertrag-pdf';
+import { nachAenderung, nachLoeschen } from '../hooks/revalidate';
 
 /**
  * Auftragsarten der Vermittlung (Bogen PARTNER, G-40; FA-PLATTFORM-01): die neun Leistungen des Inhabers,
@@ -71,8 +72,12 @@ export const Partnerbetriebe: CollectionConfig = {
     beforeValidate: [bewerbungUebernehmen],
     // Auftragsarten, Prüfliste, Statusautomat mit Sperrgrund, Modell B (FA-PLATTFORM-01B).
     beforeChange: [partnerbetriebVorAenderung],
-    // Pausiert, gesperrt oder beendet: laufende Leads zur Klärung markieren.
-    afterChange: [partnerbetriebNachAenderung],
+    // Pausiert, gesperrt oder beendet: laufende Leads zur Klärung markieren. Danach die Seiten erneuern:
+    // Ortsseiten und Sitemap hängen am Stand der Partner (Partnerbezug, Leistungsweg und damit
+    // Indexierbarkeit, FA-PLATTFORM-03B). Ohne das stünde „In Ihrer Region arbeitet ein geprüfter
+    // Autoschlüssel-Partner.“ weiter auf der Seite, nachdem der einzige Partner pausiert oder gesperrt ist.
+    afterChange: [partnerbetriebNachAenderung, nachAenderung],
+    afterDelete: [nachLoeschen],
   },
   fields: [
     {

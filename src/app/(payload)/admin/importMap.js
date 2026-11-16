@@ -8,6 +8,7 @@ import { ErstattungZahlungsdienst as ErstattungZahlungsdienst_439907bf26087298fa
 import { VorgaengeWerkzeuge as VorgaengeWerkzeuge_a6117e4679cb3b948f245e05432911e8 } from '../../../payload/components/VorgaengeWerkzeuge'
 import { ZuordnungFilter as ZuordnungFilter_4992f9119727e0c729e4898fc3182de9 } from '../../../payload/components/ZuordnungFilter'
 import { PartnervertragKnopf as PartnervertragKnopf_4650257e05d8e8591d9ea1bdf9fbb0ba } from '../../../payload/components/PartnervertragKnopf'
+import { Ortsseiten as Ortsseiten_50abd77c172ea84e60adc9f26faeedef } from '../../../payload/components/Ortsseiten'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -50,6 +51,7 @@ export const importMap = {
   "/payload/components/VorgaengeWerkzeuge#VorgaengeWerkzeuge": VorgaengeWerkzeuge_a6117e4679cb3b948f245e05432911e8,
   "/payload/components/ZuordnungFilter#ZuordnungFilter": ZuordnungFilter_4992f9119727e0c729e4898fc3182de9,
   "/payload/components/PartnervertragKnopf#PartnervertragKnopf": PartnervertragKnopf_4650257e05d8e8591d9ea1bdf9fbb0ba,
+  "/payload/components/Ortsseiten#Ortsseiten": Ortsseiten_50abd77c172ea84e60adc9f26faeedef,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,

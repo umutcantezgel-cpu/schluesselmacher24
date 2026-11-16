@@ -4,7 +4,7 @@ import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   ANSICHTEN, KENNWERTE, Bedienfehler, STANDARD_BASIS, ansichtenWaehlen, argumente, basisWaehlen, fasseZusammen,
-  markdown, median, medianLauf, statistik, ursachenAus, vergleiche, werteAus,
+  markdown, median, medianLauf, methodeWaehlen, statistik, ursachenAus, vergleiche, werteAus,
 } from './leistung.mjs';
 
 const BASIS = 'http://localhost:3200';
@@ -62,6 +62,11 @@ describe('Basis und Argumente', () => {
     assert.throws(() => basisWaehlen('https://schluesselmacher24.de'), Bedienfehler);
     assert.throws(() => basisWaehlen('http://localhost:3200/shop'), Bedienfehler);
     assert.throws(() => basisWaehlen('kein url'), Bedienfehler);
+  });
+  test('Methode: simulate als Standard, devtools erlaubt, sonst Bedienfehler', () => {
+    assert.equal(methodeWaehlen(undefined), 'simulate');
+    assert.equal(methodeWaehlen('devtools'), 'devtools');
+    assert.throws(() => methodeWaehlen('provided'), Bedienfehler);
   });
   test('argumente liest Schalter mit und ohne Wert', () => {
     assert.deepEqual(argumente(['--basis', BASIS, '--laeufe', '3', '--x']), { _: [], basis: BASIS, laeufe: '3', x: true });
@@ -155,5 +160,10 @@ describe('Zusammenfassung, Vergleich, Bericht', () => {
     assert.match(md, /\| Startseite \(\/\) \| 3\/3 \| 80 /);
     assert.match(md, /LCP-Element: h1#hub-frage/);
     assert.match(md, /Vergleich mit der Vorher-Messung/);
+    const md2 = markdown({
+      marke: 'x', methode: 'devtools', zeit: 'x', basis: BASIS, lighthouse: '12.6.1', chrome: '1', laeufe: 1,
+      drosselung: { requestLatencyMs: 562.5, downloadThroughputKbps: 1474.56, cpuSlowdownMultiplier: 4 }, geraet: '412 × 823',
+    }, [z], null);
+    assert.match(md2, /angewandte Drosselung \(devtools\): Latenz 562,5 ms je Anfrage, 1\.474,6 kbit\/s, CPU 4-fach/);
   });
 });

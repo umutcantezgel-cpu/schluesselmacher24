@@ -709,7 +709,8 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
       dbSchluessel: kennung,
       zuDaten: m.einsatzgebietZuPayload,
       // Titel, Beschreibung und Verweise der Ortsseiten folgen den Startwerten, solange der Betrieb sie nicht geändert hat (FA-SEO-01B).
-      abgleich: [...SEO_ABGLEICH],
+      // Der Gemeindeschlüssel (FA-PLATTFORM-03B) wird nur ergänzt, wo er noch leer ist.
+      abgleich: [...SEO_ABGLEICH, { pfad: 'gemeindeschluessel', leerErgaenzen: true }],
     });
     await eintraegeUebernehmen({
       name: 'sperrtage',
