@@ -9,7 +9,7 @@ import {
 import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
 import { SCHLUESSELARTEN } from '../fields/gemeinsam';
 import { erneuernHooks } from '../hooks/revalidate';
-import { markeImKatalog, reihenDerMarke, reihenZurMarke } from './Produkte';
+import { MARKE_MAX, markeImKatalog, reihenDerMarke, reihenZurMarke } from './Produkte';
 
 const vergleichsbild = (name: 'vorher' | 'nachher', label: string): Field => ({
   name,
@@ -25,7 +25,12 @@ const vergleichsbild = (name: 'vorher' | 'nachher', label: string): Field => ({
           relationTo: 'medien',
           label: 'Foto',
           required: true,
-          admin: { width: '50%', description: 'Nur echte Fotos dieses Umbaus.' },
+          admin: {
+            width: '50%',
+            description:
+              'Nur echte Fotos dieses Umbaus. Vor dem Hochladen Kennzeichen, Fahrzeugschein und Schlüsselnummern unkenntlich machen: '
+              + 'Jedes hochgeladene Foto ist sofort öffentlich abrufbar.',
+          },
         },
         {
           name: 'beschriftung',
@@ -55,8 +60,8 @@ export const UmbauBeispiele: CollectionConfig = {
     defaultColumns: ['titel', 'marke', 'freigabe', 'reihenfolge', '_status'],
     listSearchableFields: ['titel', 'marke'],
     description:
-      'Echte Umbauten mit Foto vorher und nachher. Bitte Kennzeichen, Fahrzeugschein und Schlüsselnummern auf den Fotos unkenntlich machen. '
-      + 'Ein Beispiel erscheint erst veröffentlicht und mit dem Haken „Fotos freigegeben“.',
+      'Echte Umbauten mit Foto vorher und nachher. Fotos vor dem Hochladen bearbeiten: Kennzeichen, Fahrzeugschein und Schlüsselnummern unkenntlich machen. '
+      + 'Jedes hochgeladene Foto ist sofort öffentlich abrufbar. Ein Beispiel erscheint auf der Seite erst veröffentlicht und mit dem Haken „Fotos freigegeben“.',
     pagination: { defaultLimit: 50 },
   },
   access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber, readVersions: istTeam },
@@ -75,7 +80,7 @@ export const UmbauBeispiele: CollectionConfig = {
           name: 'marke',
           type: 'text',
           label: 'Fahrzeugmarke',
-          maxLength: 60,
+          maxLength: MARKE_MAX,
           admin: { width: '40%', description: 'Genau wie im Fahrzeugkatalog. Optional.' },
           validate: markeImKatalog as never,
         },

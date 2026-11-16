@@ -20,6 +20,7 @@ import {
   TEILEART_LABEL,
   baujahrePruefen,
   fahrzeugteilLuecken,
+  type TeilFeld,
 } from '../../lib/data/fahrzeugteile';
 import { VERFUEGBARKEITEN, VERFUEGBARKEIT_LABEL } from '../../lib/data/shop';
 import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
@@ -116,14 +117,24 @@ const verweisId = (wert: unknown): number | string | undefined => {
   return typeof wert === 'number' || typeof wert === 'string' ? wert : undefined;
 };
 
+/** Höchstlängen der Textfelder; eigene Prüfungen ersetzen in Payload die Längenprüfung des Feldtyps. */
+export const MARKE_MAX = 60;
+export const KOMPATIBILITAET_MAX = 600;
+
+const zuLang = (wert: unknown, max: number): string | undefined =>
+  typeof wert === 'string' && wert.length > max ? `Höchstens ${max} Zeichen.` : undefined;
+
 /**
  * Marke wie im Fahrzeugkatalog (Autoschlüssel › Fahrzeugkatalog), keine zweite
- * Fahrzeugliste. Leer ist erlaubt. Ist der Katalog noch leer (frische Datenbank),
- * wird nichts abgelehnt.
+ * Fahrzeugliste. Leer ist hier erlaubt (Pflicht je nach Art des Teils prüft
+ * `fahrzeugteilLuecken`). Ist der Katalog noch leer (frische Datenbank), wird
+ * keine Marke abgelehnt; die Länge gilt immer.
  */
 export async function markeImKatalog(wert: unknown, { req }: { req: PayloadRequest }): Promise<true | string> {
   if (wert === undefined || wert === null || wert === '') return true;
   if (typeof wert !== 'string' || !wert.trim()) return 'Bitte die Marke eintragen oder das Feld leer lassen.';
+  const laenge = zuLang(wert, MARKE_MAX);
+  if (laenge) return laenge;
   const treffer = await req.payload.count({
     collection: 'fahrzeugreihen',
     where: { marke: { equals: wert.trim() } },
@@ -163,12 +174,24 @@ export const reihenDerMarke = ({ siblingData }: { siblingData?: unknown }) => {
 
 const teilAktiv: Condition = (_daten, geschwister) => Boolean((geschwister as Geschwister)?.aktiv);
 
-/** Pflichtangaben eines Teils, nur wenn der Haken „Gehäuse oder Ersatzteil“ gesetzt ist. */
-function teilPflicht(feld: keyof ReturnType<typeof fahrzeugteilLuecken>) {
-  return (_wert: unknown, { siblingData }: { siblingData?: Geschwister }) => {
+/**
+ * Pflichtangaben eines Teils, nur wenn der Haken „Gehäuse oder Ersatzteil“ gesetzt ist.
+ * Mit `max` prüft sie vorher die Länge, die sonst wegfiele.
+ */
+function teilPflicht(feld: TeilFeld, max?: number) {
+  return (wert: unknown, { siblingData }: { siblingData?: Geschwister }) => {
+    const laenge = max === undefined ? undefined : zuLang(wert, max);
+    if (laenge) return laenge;
     if (!siblingData?.aktiv) return true;
     return fahrzeugteilLuecken(siblingData)[feld] ?? true;
   };
+}
+
+/** Marke am Teil: Pflicht bei Teilen mit Passform, dann wie im Fahrzeugkatalog. */
+async function teilMarke(wert: unknown, optionen: PruefOptionen): Promise<true | string> {
+  const pflicht = teilPflicht('marke', MARKE_MAX)(wert, optionen);
+  if (pflicht !== true) return pflicht;
+  return markeImKatalog(wert, optionen);
 }
 
 const baujahrFeld = (name: 'baujahrVon' | 'baujahrBis', label: string): Field => ({
@@ -236,14 +259,14 @@ export const fahrzeugteilFeld: Field = {
       name: 'kompatibilitaet',
       type: 'textarea',
       label: 'Kompatibilitätshinweis',
-      maxLength: 600,
+      maxLength: KOMPATIBILITAET_MAX,
       admin: {
         condition: teilAktiv,
         description:
           'Pflicht. Was vom alten Schlüssel übernommen wird (Elektronik, Transponder, Tasten, Bart) und was nicht passt. '
-          + 'Erscheint auf der Seite des Artikels.',
+          + 'Erscheint später auf der Seite des Artikels.',
       },
-      validate: teilPflicht('kompatibilitaet') as never,
+      validate: teilPflicht('kompatibilitaet', KOMPATIBILITAET_MAX) as never,
     },
     {
       name: 'bauformen',
@@ -265,12 +288,14 @@ export const fahrzeugteilFeld: Field = {
           name: 'marke',
           type: 'text',
           label: 'Fahrzeugmarke',
-          maxLength: 60,
+          maxLength: MARKE_MAX,
           admin: {
             width: '40%',
-            description: 'Genau wie im Fahrzeugkatalog (Autoschlüssel › Fahrzeugkatalog). Leer: passt markenübergreifend.',
+            description:
+              'Genau wie im Fahrzeugkatalog (Autoschlüssel › Fahrzeugkatalog). Bei Gehäuse, Tasten und Gummimatte Pflicht. '
+              + 'Leer nur bei Teilen, die zu jeder Marke passen, etwa Batterien.',
           },
-          validate: markeImKatalog as never,
+          validate: teilMarke as never,
         },
         {
           name: 'reihen',
@@ -615,7 +640,7 @@ export const Produkte: CollectionConfig = {
         {
           label: 'Gehäuse und Ersatzteile',
           admin: { condition: istStandardartikel },
-          description: 'Nur für Gehäuse und Ersatzteile für Autoschlüssel (FA-SHOP-02).',
+          description: 'Nur für Gehäuse und Ersatzteile für Autoschlüssel.',
           fields: [fahrzeugteilFeld],
         },
         { label: 'Produktsicherheit', fields: [gpsrFeld()] },

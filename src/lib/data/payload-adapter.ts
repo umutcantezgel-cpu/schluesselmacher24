@@ -134,10 +134,14 @@ export class PayloadAdapter implements DataAdapter {
         const docs = await alle<Hersteller>('hersteller', undefined, 'reihenfolge');
         return docs.length ? docs.map(m.herstellerZuSeite) : defaults.hersteller();
       }
-      // Gehäuse und Ersatzteile (FA-SHOP-02): leere Liste der Bauformen = Startbestand.
+      // Gehäuse und Ersatzteile (FA-SHOP-02): Startbestand nur, solange nie Bauformen angelegt wurden.
+      // Liegen alle im Papierkorb, bleibt die Liste leer: Gelöschtes kommt nicht wieder.
       case 'bauformen': {
         const docs = await alle<Bauformen>('bauformen', undefined, 'reihenfolge');
-        return docs.length ? docs.map(m.bauformZuSeite) : defaults.bauformen();
+        if (docs.length) return docs.map(m.bauformZuSeite);
+        const payload = await payloadInstanz();
+        const { totalDocs } = await payload.count({ collection: 'bauformen', trash: true, overrideAccess: true });
+        return totalDocs ? [] : defaults.bauformen();
       }
       // Umbau-Beispiele nur veröffentlicht, mit Freigabe und beiden Fotos; kein Startbestand (R4).
       case 'umbauBeispiele':
