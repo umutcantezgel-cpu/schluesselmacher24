@@ -3,7 +3,7 @@
 import { auftragswegVon, faelligZeilen, istPartnerAnfrage, terminortZeile } from '../../auftragsweg';
 import { formatCents, formatDate, formatDateTime, formatDuration } from '../../format';
 import { vorgangOrtText, werkstattAnschrift } from '../../terminort';
-import type { AreaKey, BusinessRecord, CompanyProfile, PaymentInfo, RecordKind } from '../../types';
+import type { AreaKey, BusinessRecord, CompanyProfile, EinsendeEinstellungen, PaymentInfo, RecordKind } from '../../types';
 import type { Baustein } from '../html';
 
 /** Was jede Vorlage über die Umgebung wissen muss. */
@@ -12,6 +12,11 @@ export interface VorlagenKontext {
   site: string;
   /** Für den Fuß — nur echte Firmendaten erscheinen. */
   firma?: CompanyProfile;
+  /**
+   * Einsende-Varianten aus den Einstellungen (FA-SHOP-03). Fehlen sie, nennen die Mails keine Haftungsbeträge
+   * und die Varianten mit ihrem Standardnamen.
+   */
+  sendIn?: Pick<EinsendeEinstellungen, 'varianten'>;
 }
 
 export const ART_LABEL: Record<RecordKind, string> = {

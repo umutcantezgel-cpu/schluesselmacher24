@@ -12,7 +12,7 @@
  */
 
 import { istEinsendung } from '../../einsenden/vorgang';
-import { VERPACKUNG_HINWEIS } from '../../versand/varianten';
+import { VERPACKUNG_HINWEIS, haftungSatz, haftungWarnung, variantenAus } from '../../versand/varianten';
 import { formatCents } from '../../format';
 import { gewuenschteStueckzahl } from '../../foto-freigabe';
 import { zahlungEingegangen } from '../../partner/vermittlung';
@@ -44,7 +44,29 @@ function nachrichten(hinweis: string | undefined, nachricht: string | undefined,
   return bausteine;
 }
 
-function einsendeBausteine(vorgang: BusinessRecord, mitPreis: boolean, anschrift: string[] | undefined): Baustein[] {
+/**
+ * Versand und Haftung in einem Absatz (A-050). Haftungsbeträge nur aus den Einstellungen im Kontext,
+ * damit die Mail nach einer Änderung im Admin nichts Falsches behauptet; ohne sie keine Beträge.
+ */
+function versandZeile(sendIn: VorlagenKontext['sendIn']): string {
+  const mitBetrag = Boolean(sendIn?.varianten?.length);
+  const varianten = variantenAus(sendIn).filter((v) => v.aktiv && !v.nurSonderfall);
+  const empfohlen = varianten.find((v) => v.empfohlenFuer.includes('originalschluessel'));
+  const teile = ['• Versenden Sie mit Sendungsverfolgung und einer Haftung, die zum Wert Ihres Schlüssels passt.'];
+  if (empfohlen) {
+    teile.push(`Für wertvolle Originalschlüssel empfehlen wir ${empfohlen.bezeichnung}${mitBetrag ? ` (${haftungSatz(empfohlen)})` : ''}.`);
+  }
+  if (mitBetrag) {
+    for (const v of varianten) {
+      if (v !== empfohlen && haftungWarnung(v)) teile.push(`${v.bezeichnung}: ${haftungSatz(v)}.`);
+    }
+  } else {
+    teile.push('Die Haftung jeder Variante steht auf Ihrer Vorgangsseite.');
+  }
+  return teile.join(' ');
+}
+
+function einsendeBausteine(vorgang: BusinessRecord, mitPreis: boolean, anschrift: string[] | undefined, kontext: VorlagenKontext): Baustein[] {
   return [
     { art: 'ueberschrift', text: 'Originalschlüssel einsenden' },
     {
@@ -65,8 +87,7 @@ function einsendeBausteine(vorgang: BusinessRecord, mitPreis: boolean, anschrift
         '• Senden Sie nur diesen Schlüssel, ohne Schlüsselring und Anhänger.',
         '• Legen Sie, falls vorhanden, eine Kopie der Sicherungskarte oder des Berechtigungsnachweises bei.',
         `• ${VERPACKUNG_HINWEIS}`,
-        '• Versenden Sie mit Sendungsverfolgung. Für wertvolle Originalschlüssel empfehlen wir DHL Paket (Haftung bis 500 €). '
-          + 'Ein Einschreiben Einwurf haftet nur bis 20 €.',
+        versandZeile(kontext.sendIn),
         '• Varianten, Kosten und den Begleitschein finden Sie auf Ihrer Vorgangsseite.',
       ].join('\n'),
     },
@@ -144,7 +165,7 @@ function freigegeben({ vorgang, nachricht, kontext, zahlungsLink, einsendeAnschr
     });
   }
 
-  if (einsenden && !bezahlt) bausteine.push(...einsendeBausteine(vorgang, Boolean(preis), einsendeAnschrift));
+  if (einsenden && !bezahlt) bausteine.push(...einsendeBausteine(vorgang, Boolean(preis), einsendeAnschrift, kontext));
   if (!zahlungsLink) bausteine.push({ art: 'knopf', href: statusLink(kontext.site), label: 'Stand abrufen' });
   bausteine.push(ANTWORT_HINWEIS);
 
