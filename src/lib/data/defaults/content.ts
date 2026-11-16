@@ -673,8 +673,8 @@ export function guides(): Guide[] {
       body: [
         [
           'Am Schloss selbst',
-          'Bei Möbel-, Spind- und Briefkastenschlössern steht der Code häufig auf der Stirnseite '
-            + 'des Schlosses oder auf dem Schließzylinder. Sie sehen ihn, sobald die Tür offen ist.',
+          'Bei Möbel-, Spind- und Briefkastenschlössern steht der Code häufig auf der Vorderseite '
+            + 'des Schlosses oder rund um das Schlüsselloch. Sie sehen ihn, sobald die Tür offen ist.',
         ],
         [
           'Auf dem Schlüssel',
