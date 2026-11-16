@@ -24,7 +24,7 @@ export const HAFTUNG_HINWEIS =
 
 /** Hinweis, den der Kunde vor der Wahl eines Sonderfalls bestätigt. */
 export const SONDERFALL_HINWEIS =
-  'Einschreiben Wert ist nur für geeignete Sonderfälle gedacht. Sie geben den Brief in einer Filiale der Post ab und bewahren '
+  'Diese Versandart ist nur für geeignete Sonderfälle gedacht. Sie geben den Brief in einer Filiale der Post ab und bewahren '
   + 'den Einlieferungsbeleg auf. Ob ein Schlüssel als Wertgegenstand gilt, klären Sie bitte vorher mit der Post.';
 
 const PREISLISTE_POST = 'Deutsche Post, Leistungen und Preise (Stand 1.1.2026), geprüft am 15.11.2026';

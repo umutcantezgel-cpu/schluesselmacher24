@@ -12,6 +12,7 @@ import { STANDARD_VARIANTEN } from '../versand/varianten';
 import {
   begleitscheinAnzeigen,
   begleitscheinZumVorgang,
+  versandWahl,
   brauchtBegleitschein,
   einsendeAngebotFuerVorgang,
   einsendeAngebotFuerWeg,
@@ -86,7 +87,7 @@ describe('Einsendung prüfen (G-24, E6-OPUS-02)', () => {
       versand: 'einschreiben-einwurf', originalEingesendet: true,
     });
     const zeilen = Object.fromEntries(geprueft.summary[0].rows.map((z) => [z.label, z.value]));
-    expect(zeilen).toMatchObject({ 'Im Umschlag': '1 Schlüssel zum Nachmachen', 'Gewünschte Kopien': '2', Versand: 'Einschreiben Einwurf', Sicherungskarte: 'unklar, bitte prüfen' });
+    expect(zeilen).toMatchObject({ 'In der Sendung': '1 Schlüssel zum Nachmachen', 'Gewünschte Kopien': '2', Versand: 'Einschreiben Einwurf', Sicherungskarte: 'unklar, bitte prüfen' });
     expect(geprueft.summary[1].rows.at(-1)).toEqual({ label: 'Rücksendung an', value: 'Prüfweg 1, 35576 Wetzlar' });
   });
 
@@ -221,6 +222,30 @@ describe('Begleitschein (G-24, R9, A-035)', () => {
     expect(versandDesVorgangs(vorgang({ payload: { ...vorgang().payload, versand: 'unversichert' } }))).toBe('unversichert');
   });
 
+  it('nimmt für den Begleitschein ohne gültige Wahl die Empfehlung des Angebots, nie eine abgeschaltete Variante (FA-SHOP-03)', async () => {
+    const foto = vorgang({ payload: { sicherungskarte: 'nein' }, status: 'freigegeben', approval: { sendInRequired: true } });
+    const ohne = (...kennungen: string[]) => ({
+      ...EINSTELLUNGEN,
+      varianten: STANDARD_VARIANTEN.map((v) => ({ ...v, einlieferung: [...v.einlieferung], empfohlenFuer: [...v.empfohlenFuer], aktiv: !kennungen.includes(v.kennung) })),
+    });
+    // Startwerte: gültige Wahl zählt; ohne Wahl oder mit einem Sonderfall ohne Freigabe gilt die Empfehlung.
+    const start = einsendeAngebotFuerVorgang(foto, EINSTELLUNGEN);
+    expect(versandWahl(start, 'einschreiben-einwurf')).toBe('einschreiben-einwurf');
+    expect(versandWahl(start, undefined)).toBe('dhl-paket');
+    expect(versandWahl(start, 'einschreiben-wert')).toBe('dhl-paket');
+    expect(versandWahl(start, 'versichert')).toBe('dhl-paket');
+    // Der Betrieb schaltet DHL Paket ab: Der Begleitschein nennt es nie, auch nicht auf ausdrücklichen Wunsch.
+    const ohneDhl = einsendeAngebotFuerVorgang(foto, ohne('dhl-paket'));
+    expect(ohneDhl.optionen.map((o) => o.art)).toEqual(['einschreiben-einwurf']);
+    expect(versandWahl(ohneDhl, undefined)).toBe('einschreiben-einwurf');
+    expect(versandWahl(ohneDhl, 'dhl-paket')).toBe('einschreiben-einwurf');
+    // Keine Variante angeboten: keine Wahl und kein Begleitschein.
+    const nichts = ohne('dhl-paket', 'einschreiben-einwurf', 'einschreiben-wert');
+    expect(versandWahl(einsendeAngebotFuerVorgang(foto, nichts), 'dhl-paket')).toBeUndefined();
+    expect(await begleitscheinZumVorgang(foto, { company: FIRMA, einstellungen: nichts, env: {}, versand: 'dhl-paket' })).toBeNull();
+    expect(await begleitscheinZumVorgang(foto, { company: FIRMA, einstellungen: ohne('dhl-paket'), env: {} })).not.toBeNull();
+  });
+
   it('zeigt den Begleitschein bis zum Eingang, bei Freigaben nur mit verlangter Einsendung', () => {
     expect(begleitscheinAnzeigen(vorgang())).toBe(true);
     expect(begleitscheinAnzeigen(vorgang({ status: 'in-pruefung' }))).toBe(false);
@@ -281,7 +306,7 @@ describe('Adressfeld des Begleitscheins (Sichtprüfung E6-OPUS-02)', () => {
   /** Höhe des gestrichelten Rahmens (Breite 260) im unkomprimierten PDF. */
   async function rahmenhoehe(name: string): Promise<number> {
     const pdf = await erzeugePdf(
-      { titel: 'Begleitschein', nummer: 'SM24-A-2026-0007', stand: new Date('2026-11-04T05:00:00.000Z'), kopf: [], abschnitte: [{ titel: 'Anschrift für den Umschlag', adressfeld: [name, 'Werkstattgasse 7', '35578 Wetzlar'] }], fuss: 'Probe' },
+      { titel: 'Begleitschein', nummer: 'SM24-A-2026-0007', stand: new Date('2026-11-04T05:00:00.000Z'), kopf: [], abschnitte: [{ titel: 'Anschrift für die Sendung', adressfeld: [name, 'Werkstattgasse 7', '35578 Wetzlar'] }], fuss: 'Probe' },
       { komprimieren: false },
     );
     const treffer = pdf.toString('latin1').match(/[\d.]+ [\d.]+ 260 ([\d.]+) re/);

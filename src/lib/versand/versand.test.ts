@@ -224,7 +224,7 @@ describe('Begleitschein', () => {
   it('enthält Anschrift zum Ausschneiden, Absender, Schritte und das Porto, nie „kostenlos“', () => {
     const blatt = begleitscheinInhalt(SENDUNG, E, { jetzt: new Date('2026-11-03T09:00:00Z') });
     expect(blatt.titel).toBe('Begleitschein SM24-E-2026-0001');
-    expect(blatt.abschnitte[0]).toEqual({ titel: 'Anschrift für den Umschlag', adressfeld: ['SCHLÜSSELMACHER24', 'Teststraße 1', '35576 Wetzlar'] });
+    expect(blatt.abschnitte[0]).toEqual({ titel: 'Anschrift für die Sendung', adressfeld: ['SCHLÜSSELMACHER24', 'Teststraße 1', '35576 Wetzlar'] });
     const text = JSON.stringify(blatt);
     // Ältere Vorgänge (vor den Varianten) behalten ihre Angabe (G6).
     expect(text).toContain('als Einschreiben aufgeben (4,45');

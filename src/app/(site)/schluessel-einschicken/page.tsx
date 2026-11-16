@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { getPageContent, getRubrik, getSettings } from '@/lib/data';
 import { defaults } from '@/lib/data/defaults';
 import { einsendeAngebotFuerWeg } from '@/lib/einsenden/schein';
-import { formatCents } from '@/lib/format';
 import { firmenname, sitzZeilen, standort } from '@/lib/rechtliches/firma';
 import type { CompanyProfile } from '@/lib/types';
 import { Accordion } from '@/components/ui/accordion';
@@ -21,7 +20,7 @@ import { GlyphOrt } from '@/components/visual/glyphen/ort';
 import { PasstDazu } from '@/components/seo/passt-dazu';
 import { VERPACKUNG_HINWEIS } from '@/lib/versand/varianten';
 
-import { VarianteBeschreibung } from './versand-variante';
+import { VarianteBeschreibung, kostenAntwort } from './versand-variante';
 
 const ROUTE = 'schluessel-einschicken';
 const ANMELDEN = '/schluessel-einschicken/anmelden';
@@ -58,7 +57,7 @@ const BEILAGE = [
 ];
 
 /** Grundbestand der Fragen, solange in der Datenschicht keine gepflegt sind. */
-function fragen(porto: { paket: string; einwurf: string; einwurfHaftung: string }) {
+function fragen(kosten: string) {
   return [
     {
       question: 'Muss ich meinen Schlüssel einschicken?',
@@ -76,8 +75,7 @@ function fragen(porto: { paket: string; einwurf: string; einwurfHaftung: string 
     {
       question: 'Was kostet das Einschicken?',
       answer:
-        `Das Porto für den Weg zu uns zahlen Sie bei der Post. Für wertvolle Originalschlüssel empfehlen wir DHL Paket (${porto.paket}). `
-        + `Günstiger ist das Einschreiben Einwurf (${porto.einwurf}), mit ${porto.einwurfHaftung}. Den Preis für die Kopien nennen wir Ihnen `
+        `Das Porto für den Weg zu uns zahlen Sie bei der Post. ${kosten}Den Preis für die Kopien nennen wir Ihnen `
         + 'nach der Prüfung mit der Freigabe, bevor Sie etwas bezahlen. Erst mit Ihrer Zahlung erteilen Sie den Auftrag.',
     },
     {
@@ -112,16 +110,10 @@ export default async function SchluesselEinschickenPage() {
   // Die Seite zeigt alle Varianten; den Sonderfall nur als solchen gekennzeichnet (A-050).
   const angebot = einsendeAngebotFuerWeg(einstellungen, { empfehlung: 'originalschluessel' });
   const varianten = [...angebot.optionen, ...angebot.sonderfaelle];
-  const porto = (art: string) => {
-    const o = varianten.find((v) => v.art === art);
-    return o?.portoCents !== undefined ? `${formatCents(o.portoCents)} laut Post` : 'Porto laut Post, bitte dort prüfen';
-  };
-  // Haftung aus den Einstellungen, damit die Antwort nach einer Änderung im Admin stimmt (A-050).
-  const einwurf = varianten.find((v) => v.art === 'einschreiben-einwurf');
-  const einwurfHaftung = einwurf?.haftung.startsWith('Haftung bis')
-    ? einwurf.haftung.replace('Haftung bis', 'Haftung nur bis')
-    : 'einer Haftung, die Sie bitte bei der Post prüfen';
-  const faq = page?.faq?.length ? page.faq : fragen({ paket: porto('dhl-paket'), einwurf: porto('einschreiben-einwurf'), einwurfHaftung });
+  // Kostenantwort aus den Varianten der Einstellungen (A-050): Name, Porto, Aufpreis des Betriebs und Haftung
+  // je wählbarer Variante, damit die Antwort nach einer Änderung im Admin stimmt. Abgeschaltete fehlen.
+  const kosten = kostenAntwort(angebot.optionen);
+  const faq = page?.faq?.length ? page.faq : fragen(kosten);
 
   // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
   const kurztext =
@@ -171,7 +163,7 @@ export default async function SchluesselEinschickenPage() {
               id="ablauf-titel"
               nummer="01"
               eyebrow="So läuft Ihr Auftrag ab"
-              title="Vom Umschlag zurück zu Ihnen"
+              title="Von Ihrer Sendung zurück zu Ihnen"
               lead="Sie schicken aus ganz Deutschland und müssen nicht zu uns kommen. Die Rücksendung geht an eine Anschrift in Deutschland."
             />
             <Alert tone="info" title="Zwei Wege zum Schlüssel nach Vorlage" className="mt-7">
@@ -256,7 +248,7 @@ export default async function SchluesselEinschickenPage() {
 
           <Card className="lg:col-span-7">
             <CardBody>
-              <h3 className="text-title-sm font-semibold text-foreground">Was in den Umschlag gehört</h3>
+              <h3 className="text-title-sm font-semibold text-foreground">Was in die Sendung gehört</h3>
               <ul className="mt-4 space-y-3">
                 {BEILAGE.map((eintrag) => (
                   <li key={eintrag} className="flex gap-3">

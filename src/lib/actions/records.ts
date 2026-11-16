@@ -270,9 +270,12 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   }
 
   // Wege mit Pflichtunterlagen (FA-KERN-02): Steckplätze aus der Ablage bestätigen, bevor geprüft wird.
+  // Die Einsendung hat keinen eigenen Unterlagen-Weg, verlangt aber Nachweise (Fahrzeugschein,
+  // Sicherungskarte; R13): Auch dort zählt mit Dateiablage nur eine Datei, die der Server nachlesen kann.
   const weg: UnterlagenWeg | null = unterlagenWeg(data);
+  const einsendeEingabe = data.kind === 'anfrage' && data.payload.quelle === EINSENDE_QUELLE;
   let uploads = data.uploads;
-  if (weg) {
+  if (weg || einsendeEingabe) {
     const bestaetigt = await unterlagenAusAblage(uploads);
     if (!bestaetigt.ok) {
       return { ok: false, notices: [], error: bestaetigt.error };

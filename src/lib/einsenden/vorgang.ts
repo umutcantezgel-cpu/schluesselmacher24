@@ -102,7 +102,7 @@ export function einsendeZusammenfassung(p: EinsendePayload, contact: ContactDeta
     {
       title: 'Einsendung',
       rows: [
-        { label: 'Im Umschlag', value: inhaltText(p) },
+        { label: 'In der Sendung', value: inhaltText(p) },
         { label: 'Gewünschte Kopien', value: String(p.stueckzahl) },
         { label: 'Beschriftung', value: p.beschriftung ?? 'keine Angabe' },
         ...(p.schluesselart ? [{ label: 'Schlüsselart', value: ARTEN_TITEL[p.schluesselart] }] : []),

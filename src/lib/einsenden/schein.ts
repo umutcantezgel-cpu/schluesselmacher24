@@ -10,7 +10,7 @@
  */
 
 import { angabe, firmaVeroeffentlichbar, firmenname, standort } from '@/lib/rechtliches/firma';
-import type { BusinessRecord, CompanyProfile, EinsendeEinstellungen } from '@/lib/types';
+import type { BusinessRecord, CompanyProfile, EinsendeEinstellungen, EinsendeVarianteKennung } from '@/lib/types';
 import { einsendeAngebot, erstelleVersandschein, type Anschrift, type Sendung, type VersandArt, type Versandschein } from '@/lib/versand';
 import type { AngebotFall, EinsendeAngebot } from '@/lib/versand/angebot';
 import { empfehlungFuer, istVariantenKennung } from '@/lib/versand/varianten';
@@ -87,6 +87,17 @@ function ohneLabel(env: Umgebung): Umgebung {
 }
 
 /** Begleitschein als PDF; null, wenn der Vorgang keinen braucht oder Anschriften fehlen. */
+/**
+ * Variante für den Begleitschein einer Freigabe mit Einsendung: die Wahl des Kunden, wenn die Vorgangsseite
+ * sie anbietet; sonst die Empfehlung des Angebots, sonst seine erste Variante. Nie eine, die der Betrieb
+ * abgeschaltet hat; `undefined`, wenn er keine anbietet.
+ */
+export function versandWahl(angebot: Pick<EinsendeAngebot, 'optionen' | 'vorauswahl'>, versand: unknown): EinsendeVarianteKennung | undefined {
+  const angeboten = (art: unknown): art is EinsendeVarianteKennung => istVariantenKennung(art) && angebot.optionen.some((o) => o.art === art);
+  if (angeboten(versand)) return versand;
+  return angeboten(angebot.vorauswahl) ? angebot.vorauswahl : angebot.optionen[0]?.art;
+}
+
 export async function begleitscheinZumVorgang(
   vorgang: Vorgang,
   {
@@ -99,8 +110,10 @@ export async function begleitscheinZumVorgang(
   if (!brauchtBegleitschein(vorgang)) return null;
   // Freigabe mit Einsendung: nur eine Variante, die die Vorgangsseite anbietet (Sonderfall nur mit Freigabe).
   const angebot = einsendeAngebotFuerVorgang(vorgang, einstellungen);
-  const gewaehlt = istVariantenKennung(versand) && angebot.optionen.some((o) => o.art === versand) ? versand : undefined;
-  const sendung = sendungAusVorgang(vorgang, company, gewaehlt);
+  const wahl = versandWahl(angebot, versand);
+  // Bietet der Betrieb bei einer Freigabe gar keine Variante an, entsteht kein Begleitschein.
+  if (!istEinsendung(vorgang) && !wahl) return null;
+  const sendung = sendungAusVorgang(vorgang, company, wahl);
   if (!sendung) return null;
   return erstelleVersandschein(sendung, { einstellungen, env: ohneLabel(env) });
 }

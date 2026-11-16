@@ -53,7 +53,7 @@ export function begleitscheinInhalt(sendung: Sendung, e: EinsendeEinstellungen, 
       { name: 'Inhalt', wert: sendung.inhalt },
     ],
     abschnitte: [
-      { titel: 'Anschrift für den Umschlag', adressfeld: zeilen(sendung.empfaenger) },
+      { titel: 'Anschrift für die Sendung', adressfeld: zeilen(sendung.empfaenger) },
       { titel: 'Absender', zeilen: zeilen(sendung.absender).map((wert, i) => ({ name: i === 0 ? 'Name' : '', wert })) },
       {
         titel: 'So schicken Sie Ihren Schlüssel',

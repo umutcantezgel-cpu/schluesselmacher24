@@ -47,7 +47,7 @@ const FLOW_ID = 'schluessel-einschicken';
 const EMAIL_MUSTER = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const STEPS: FlowStep[] = [
-  { id: 'schluessel', title: 'Was schicken Sie ein?', hint: 'Wie viele Schlüssel im Umschlag liegen und wie viele Kopien Sie brauchen.', short: 'Schlüssel' },
+  { id: 'schluessel', title: 'Was schicken Sie ein?', hint: 'Wie viele Schlüssel Sie einschicken und wie viele Kopien Sie brauchen.', short: 'Schlüssel' },
   { id: 'nachweis', title: 'Ihr Nachweis', hint: 'Schlüssel mit geschütztem Profil fertigen wir nur gegen die Karte, Autoschlüssel nur gegen den Fahrzeugschein.', short: 'Nachweis' },
   { id: 'versand', title: 'Wie schicken Sie den Schlüssel?', hint: 'Sie sehen die Kosten vorher. Ihre Wahl steht auf dem Begleitschein.', short: 'Versand' },
   { id: 'kontakt', title: 'Kontakt und Rücksendeanschrift', hint: 'An diese Anschrift schicken wir Original und Kopien zurück.', short: 'Kontakt' },
@@ -397,10 +397,10 @@ export function EinsendeFormular({ einstellungen, hilfe }: { einstellungen: Eins
           </fieldset>
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
-              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Schlüssel im Umschlag</p>
+              <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Schlüssel in der Sendung</p>
               <div className="mt-2">
                 <QuantityInput
-                  label="Schlüssel im Umschlag"
+                  label="Schlüssel in der Sendung"
                   value={data.originale}
                   min={1}
                   max={MAX_ORIGINALE}
@@ -457,6 +457,7 @@ export function EinsendeFormular({ einstellungen, hilfe }: { einstellungen: Eins
           </p>
           <PhotoUpload
             category="fahrzeugschein"
+            steckplatz="fahrzeugschein"
             id="foto-fahrzeugschein"
             label="Foto Ihres Fahrzeugscheins"
             description="Die ganze Seite, scharf und gut lesbar. Den Fahrzeugschein selbst schicken Sie bitte nicht mit."

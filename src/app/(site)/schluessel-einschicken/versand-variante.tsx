@@ -15,6 +15,19 @@ export function kostenSatz(o: EinsendeOption): string {
   return teile.join(' · ');
 }
 
+/**
+ * Satz zu den Versandkosten je wählbarer Variante: empfohlene zuerst genannt, jede mit Kosten
+ * (Porto, Aufpreis, Summe) und Haftung. Leer, wenn keine Variante wählbar ist.
+ */
+export function kostenAntwort(optionen: readonly EinsendeOption[]): string {
+  const saetze = optionen.map((o) =>
+    o.empfohlen
+      ? `Für wertvolle Originalschlüssel empfehlen wir ${o.titel}: ${kostenSatz(o)}, ${o.haftung}.`
+      : `${o.titel}: ${kostenSatz(o)}, ${o.haftung}.`,
+  );
+  return saetze.length ? `${saetze.join(' ')} ` : '';
+}
+
 export function VarianteBeschreibung({ option, mitStand = false }: { option: EinsendeOption; mitStand?: boolean }) {
   return (
     <span className="block space-y-1">

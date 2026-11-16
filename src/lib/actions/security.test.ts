@@ -158,7 +158,7 @@ vi.mock('@/lib/server/kundendateien', async (importOriginal) => ({
 }));
 
 const aktionen = { ...(await import('./records')), ...(await import('./orders')) };
-const { resetRateLimits } = await import('@/lib/server/rate-limit');
+const { resetRateLimits, RATE_LIMIT_MESSAGE } = await import('@/lib/server/rate-limit');
 const { createAccessToken, verifyAccessToken } = await import('@/lib/server/access-token');
 const { startSignieren } = await import('@/lib/server/formular-schutz');
 const { SCHUTZ_ERNEUERT } = await import('@/lib/formular-schutz');
@@ -354,9 +354,12 @@ describe('submitRecord', () => {
       { stueckzahl: 99 }, { originale: 0 }, { versand: 'express' }, { versand: 'versichert' }, { versand: 'unversichert' }, { versand: 'einschreiben-wert' },
       { sicherungskarte: '' }, { beschriftung: 'x'.repeat(81) }, { schluesselart: 'transponder' }, { schluesselart: undefined },
     ]) {
-      expect((await submitRecord({ ...basis, summary: [], payload: { ...gueltig, ...falsch } })).ok, JSON.stringify(falsch)).toBe(false);
+      // Mehr Prüffälle als das Anfragelimit erlaubt: Zähler je Fall zurücksetzen, damit die Prüfung ablehnt und nicht das Limit.
+      resetRateLimits();
+      const abgelehnt = await submitRecord({ ...basis, summary: [], payload: { ...gueltig, ...falsch } });
+      expect(abgelehnt.ok, JSON.stringify(falsch)).toBe(false);
+      expect(abgelehnt.error, JSON.stringify(falsch)).not.toBe(RATE_LIMIT_MESSAGE);
     }
-    // Mehr Prüffälle als das Anfragelimit erlaubt: Zähler zurücksetzen, damit die Prüfungen unten greifen.
     resetRateLimits();
     expect((await submitRecord({ ...basis, contact: { ...contact, postalCode: '' }, summary: [], payload: gueltig })).ok).toBe(false);
     expect((await submitRecord({ ...basis, area: 'schliessanlagen', summary: [], payload: gueltig })).ok).toBe(false);
@@ -375,6 +378,46 @@ describe('submitRecord', () => {
     expect(mitSchein.ok).toBe(true);
     expect(stored).toHaveLength(anzahl + 1);
     expect(stored.some((r) => r.payload?.schluesselart === 'auto-mechanisch' && r.payload?.versand === 'dhl-paket')).toBe(true);
+  });
+
+  it('glaubt bei eingerichteter Dateiablage keinem erfundenen Nachweis einer Einsendung (R13, FA-SHOP-03)', async () => {
+    const basis = { kind: 'anfrage' as const, area: 'schluessel-nach-vorlage' as const, process: 'gefuehrte-anfrage' as const, contact, summary: [] };
+    const angaben = { quelle: 'einsenden', originale: 1, stueckzahl: 1, beschriftung: '', hinweis: '', sicherungskarte: 'nein', versand: 'dhl-paket' };
+    const auto = { ...angaben, schluesselart: 'auto-mechanisch' };
+    const token = 'a'.repeat(43);
+    const mitKennung = <T extends object>(upload: T, id: string) => ({ ...upload, storageKey: id, uploadToken: token });
+    ablage.an = true;
+
+    // Kennung und Schlüssel erfunden: Es gibt keine gespeicherte Datei, also keinen Fahrzeugschein.
+    const erfunden = await submitRecord({ ...basis, payload: auto, uploads: [mitKennung(fahrzeugschein, '999')] });
+    expect(erfunden.ok).toBe(false);
+    expect(erfunden.error).toContain('Fahrzeugschein');
+    // Nur die Angabe des Browsers, ohne Kennung: zählt mit Ablage ebenfalls nicht.
+    expect((await submitRecord({ ...basis, payload: auto, uploads: [fahrzeugschein] })).ok).toBe(false);
+    // Eine echte Datei anderer Art als Fahrzeugschein ausgegeben: gefälschte Zuordnung.
+    ablage.dateien.set('31', { kategorie: 'schluesselfoto', steckplatz: 'schluessel-vorderseite' });
+    const falscheArt = await submitRecord({ ...basis, payload: auto, uploads: [mitKennung(fahrzeugschein, '31')] });
+    expect(falscheArt.ok).toBe(false);
+    expect(falscheArt.error).toContain('Zuordnung');
+    expect(stored).toHaveLength(0);
+    // Der gespeicherte Fahrzeugschein: angenommen.
+    ablage.dateien.set('32', { kategorie: 'fahrzeugschein', steckplatz: 'fahrzeugschein' });
+    const echt = await submitRecord({ ...basis, payload: auto, uploads: [mitKennung(fahrzeugschein, '32')] });
+    expect(echt.ok, echt.error).toBe(true);
+    expect(stored).toHaveLength(1);
+
+    // Dasselbe für die Sicherungskarte einer Einsendung: erfundene Kennung abgelehnt, gespeicherte Karte angenommen.
+    resetRateLimits();
+    const karte = { fileName: 'karte.jpg', sizeBytes: 90_000, mimeType: 'image/jpeg', category: 'sicherungskarte' as const };
+    const mitKarte = { ...angaben, schluesselart: 'haus', sicherungskarte: 'ja' };
+    const karteErfunden = await submitRecord({ ...basis, payload: mitKarte, uploads: [mitKennung(karte, '998')] });
+    expect(karteErfunden.ok).toBe(false);
+    expect(karteErfunden.error).toContain('Sicherungskarte');
+    expect(stored).toHaveLength(1);
+    ablage.dateien.set('33', { kategorie: 'sicherungskarte', steckplatz: null });
+    const karteEcht = await submitRecord({ ...basis, payload: mitKarte, uploads: [mitKennung(karte, '33')] });
+    expect(karteEcht.ok, karteEcht.error).toBe(true);
+    expect(stored).toHaveLength(2);
   });
 
   it('setzt die Einstellungen der Einsende-Varianten aus dem Admin auch auf dem Server durch (FA-SHOP-03, A-050)', async () => {
