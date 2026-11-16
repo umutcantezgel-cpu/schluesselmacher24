@@ -80,6 +80,19 @@ describe('Bauformen', () => {
     }
   });
 
+  it('liegen alle Bauformen im Papierkorb, kommt der Startbestand nicht wieder', async () => {
+    const { docs } = await payload.find({ collection: 'bauformen', limit: 0, pagination: false, depth: 0 });
+    const ids = docs.map((d) => d.id);
+    const jetzt = new Date().toISOString();
+    try {
+      for (const id of ids) await payload.update({ collection: 'bauformen', id, data: { deletedAt: jetzt }, trash: true, context });
+      expect(await adapter.read('bauformen')).toEqual([]);
+    } finally {
+      for (const id of ids) await payload.update({ collection: 'bauformen', id, data: { deletedAt: null }, trash: true, context });
+    }
+    expect((await adapter.read('bauformen')).length).toBe(ids.length);
+  });
+
   it('eine neue Bauform bekommt ihre Adresse aus dem Namen; jeder Name nur einmal', async () => {
     const neu = await payload.create({ collection: 'bauformen', data: { name: `Testform ${lauf}`, reihenfolge: 90 }, user: INHABER as never, overrideAccess: false, context });
     aufraeumen.push({ collection: 'bauformen', id: neu.id });
@@ -139,7 +152,7 @@ describe('Gehäuse mit Fahrzeugbezug', () => {
     expect(treffer(eigene[1].kennung!)).not.toContain(doc.kennung);
   });
 
-  it('verlangt beim Veröffentlichen Kompatibilitätshinweis, Elektronik, Bauform und Tastenzahl', async () => {
+  it('verlangt beim Veröffentlichen Kompatibilitätshinweis, Elektronik, Bauform, Tastenzahl und Marke', async () => {
     const text = await meldungen(
       payload.create({
         collection: 'produkte',
@@ -149,7 +162,7 @@ describe('Gehäuse mit Fahrzeugbezug', () => {
         context,
       }),
     );
-    for (const erwartet of [/Kompatibilitätshinweis/, /Elektronik und Transponder/, /Bauform/, /Tastenzahl/]) {
+    for (const erwartet of [/Kompatibilitätshinweis/, /Elektronik und Transponder/, /Bauform/, /Tastenzahl/, /Fahrzeugmarke/]) {
       expect(text).toMatch(erwartet);
     }
 
@@ -185,6 +198,9 @@ describe('Gehäuse mit Fahrzeugbezug', () => {
     expect(await meldungen(anlegen('testteil-marke', { marke: `Erfundene Marke ${lauf}` }))).toMatch(/nicht im Fahrzeugkatalog/);
     expect(await meldungen(anlegen('testteil-reihe', { marke, reihen: [eigene[0].id, fremd.id] }))).toMatch(/gehört nicht zur Marke/);
     expect(await meldungen(anlegen('testteil-ohne-marke', { reihen: [eigene[0].id] }))).toMatch(/zuerst die Marke/);
+    // Eigene Prüfungen ersetzen die Längenprüfung des Feldtyps; die Länge gilt trotzdem.
+    expect(await meldungen(anlegen('testteil-lange-marke', { marke: 'M'.repeat(61) }))).toMatch(/Höchstens 60 Zeichen/);
+    expect(await meldungen(anlegen('testteil-langer-hinweis', { kompatibilitaet: 'x'.repeat(601) }))).toMatch(/Höchstens 600 Zeichen/);
     const allgemein = await anlegen('testteil-allgemein', {});
     aufraeumen.push({ collection: 'produkte', id: allgemein.id });
     const artikel = (await adapter.read('standardArticles')).find((a) => a.id === allgemein.kennung);

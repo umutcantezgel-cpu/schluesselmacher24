@@ -79,6 +79,13 @@ describe('Passung zum Fahrzeug', () => {
     expect(fahrzeugPassung(golfTeil, { marke: 'Testmarke', reihe: 'testmarke-gamma' })).toBe('keine');
   });
 
+  it('ein Gehäuse ohne Marke passt zu keinem Fahrzeug, eine Batterie ohne Marke zu jedem', () => {
+    const f = { marke: 'Testmarke' };
+    expect(fahrzeugPassung(teil(), f)).toBe('keine');
+    expect(fahrzeugPassung(teil({ teileart: 'tasten' }), f)).toBe('keine');
+    expect(fahrzeugPassung(allgemein, f)).toBe('allgemein');
+  });
+
   it('prüft das Baujahr nur, wo das Teil Baujahre trägt', () => {
     expect(fahrzeugPassung(golfTeil, { marke: 'Testmarke', baujahr: 2007 })).toBe('keine');
     expect(fahrzeugPassung(golfTeil, { marke: 'Testmarke', baujahr: 2017 })).toBe('keine');
@@ -173,9 +180,17 @@ describe('Pflichtangaben im Backend', () => {
       'kompatibilitaet',
       'tastenzahl',
       'bauformen',
+      'marke',
     ]);
-    expect(fahrzeugteilLuecken({ teileart: 'gehaeuse', kompatibilitaet: 'x', elektronik: 'ja', tastenzahl: 0, bauformen: [1] })).toEqual({});
+    expect(fahrzeugteilLuecken({ teileart: 'gehaeuse', kompatibilitaet: 'x', elektronik: 'ja', tastenzahl: 0, bauformen: [1], marke: 'Testmarke' })).toEqual({});
+    expect(fahrzeugteilLuecken({ teileart: 'gummimatte', kompatibilitaet: 'x', elektronik: 'ja', tastenzahl: 2, marke: ' ' }).marke).toMatch(/Fahrzeugmarke/);
     expect(fahrzeugteilLuecken({ teileart: 'batterie', kompatibilitaet: 'x', elektronik: 'nein' })).toEqual({});
+    // Auch Klappmechanismus und Schlüsselbart passen nie zu allen Marken; „Weitere“ darf ohne Marke stehen.
+    for (const teileart of ['klappmechanismus', 'schluesselbart'] as const) {
+      expect(fahrzeugteilLuecken({ teileart, kompatibilitaet: 'x', elektronik: 'nein' }).marke, teileart).toMatch(/Fahrzeugmarke/);
+      expect(fahrzeugteilLuecken({ teileart, kompatibilitaet: 'x', elektronik: 'nein', marke: 'Testmarke' }), teileart).toEqual({});
+    }
+    expect(fahrzeugteilLuecken({ teileart: 'weitere', kompatibilitaet: 'x', elektronik: 'nein' })).toEqual({});
   });
 
   it('Baujahr bis nicht vor von', () => {

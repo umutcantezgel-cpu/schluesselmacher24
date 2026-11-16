@@ -292,7 +292,7 @@ export const fahrzeugteilFeld: Field = {
           admin: {
             width: '40%',
             description:
-              'Genau wie im Fahrzeugkatalog (Autoschlüssel › Fahrzeugkatalog). Bei Gehäuse, Tasten und Gummimatte Pflicht. '
+              'Genau wie im Fahrzeugkatalog (Autoschlüssel › Fahrzeugkatalog). Bei Gehäuse, Tasten, Gummimatte, Klappmechanismus und Schlüsselbart Pflicht. '
               + 'Leer nur bei Teilen, die zu jeder Marke passen, etwa Batterien.',
           },
           validate: teilMarke as never,

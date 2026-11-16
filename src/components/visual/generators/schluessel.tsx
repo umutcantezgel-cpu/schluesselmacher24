@@ -462,7 +462,7 @@ const TITEL: Record<Typ, string> = {
   buntbart: 'Buntbartschlüssel, Seitenansicht',
   klapp: 'Klappschlüssel mit Funktasten',
   funk: 'Funkschlüssel mit festem Bart',
-  'smart-key': 'Smart-Key',
+  'smart-key': 'Smart Key',
   transponder: 'Schlüssel mit Transponder im Kopf',
 };
 

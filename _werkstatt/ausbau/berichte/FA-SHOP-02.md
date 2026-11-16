@@ -69,8 +69,10 @@ Alle Befehle über die Datenweiche.
 
 1. Gehäuse als Standardartikel mit Haken statt eigener Artikelart: bewusst, damit Kasse, Seed und Widerruf unberührt bleiben. Bestellbar wird ein Gehäuse erst mit Preis des Inhabers, wie jeder Artikel. Ob Gehäuse als Anfertigung nach Kundenvorgabe gelten (§ 312g BGB, Widerruf), ist nicht entschieden und nicht umgesetzt.
 2. Bauform „weitere“: nicht als Eintrag angelegt, weil die Liste pflegbar ist und der Betrieb jede weitere Bauform selbst anlegt. Passt das?
-3. Schlüsseltyp nutzt die fünf Werte des Bestands (mechanisch, Funk, Klappschlüssel, Smart-Key, Keyless). „Karte“ ist eine Bauform, kein Schlüsseltyp. Gewünscht, oder soll der Schlüsseltyp eine eigene Liste werden?
-4. Teile ohne Marke gelten als markenübergreifend und erscheinen bei jedem Fahrzeug (abschaltbar über `allgemeineTeile: false`). Für Batterien sinnvoll, bei Gehäusen ohne Marke fraglich. Entscheidet Teil B oder der Inhaber.
+3. Schlüsseltyp nutzt die fünf Werte des Bestands (mechanisch, Funk, Klappschlüssel, Smart Key, Keyless). „Karte“ ist eine Bauform, kein Schlüsseltyp. Gewünscht, oder soll der Schlüsseltyp eine eigene Liste werden?
+4. Teile ohne Marke gelten als markenübergreifend und erscheinen bei jedem Fahrzeug (abschaltbar über `allgemeineTeile: false`). Seit der Nachbesserung ist die Marke bei Gehäuse, Tasten und Gummimatte Pflicht; ohne Marke passen sie zu keinem Fahrzeug. Ob auch Klappmechanismus und Schlüsselbart eine Marke brauchen, entscheidet der Inhaber oder die Werkstatt.
+7. Umbau-Fotos liegen in der öffentlich lesbaren Sammlung `medien`: Jedes hochgeladene Foto ist sofort abrufbar, der Haken „Fotos freigegeben“ steuert nur die Anzeige. Admin und Anleitung verlangen jetzt das Unkenntlichmachen vor dem Hochladen. Brauchen Umbau-Fotos eine nicht öffentliche Ablage, bis sie freigegeben sind? Entscheidet der Inhaber (Datenschutz).
+8. Schreibweise „Smart Key“: Bauform und die neue Liste `SCHLUESSELTYP_LABEL` schreiben jetzt „Smart Key“ wie der Inhaber und die meisten Seiten. Die Auswahl `SCHLUESSELARTEN` in `src/payload/fields/gemeinsam.ts` (Bestand, außerhalb der Schreibrechte) und die Zeichnung in `src/components/visual/generators/schluessel.tsx` schreiben noch „Smart-Key“; im Backend steht der Schlüsseltyp daher noch mit Bindestrich. Angleichen in einem Paket mit Schreibrecht auf den Bestand?
 5. Freigabe der Umbau-Fotos: Der Haken „Fotos freigegeben“ und der Anleitungssatz „Der Kunde ist einverstanden“ sind meine Formulierung. Wie die Einwilligung des Kunden zu Fotos eingeholt und belegt wird (G9, Datenschutz), legt der Inhaber fest.
 6. Seed-Reihenfolge: Der Fahrzeugkatalog wird nach den Artikeln übernommen. Für den heutigen Bestand ohne Folgen; sollte der Inhalt einmal Gehäuse mit Reihen tragen, wäre der Katalog vorzuziehen (Änderung an der Reihenfolge im Seed).
 
@@ -96,7 +98,8 @@ Reine Funktionen (`src/lib/data/fahrzeugteile.ts`, auch im Browser):
 - Texte: `TEILEART_LABEL`, `ELEKTRONIK_LABEL`, `ELEKTRONIK_SATZ` (ganzer Satz für die Detailseite), `SCHLUESSELTYP_LABEL`, `UMBAU_TEIL_LABEL`, `UMBAU_EINSATZ_LABEL`.
 - Bauformen: `bauformenSortiert`, `bauformNamen(kennungen, bauformen)`.
 - Umbau-Beispiele: `umbauBeispieleFuer`, `umbauBeispielZeigbar`.
-- Backend: `fahrzeugteilLuecken`, `baujahrePruefen`, `TEILEARTEN_MIT_TASTEN`, `TEILEARTEN_MIT_BAUFORM`.
+- Backend: `fahrzeugteilLuecken`, `baujahrePruefen`, `TEILEARTEN_MIT_TASTEN`, `TEILEARTEN_MIT_BAUFORM`, `TEILEARTEN_MIT_MARKE`, Typ `TeilFeld`.
+- `ELEKTRONIK_SATZ` beschreibt das Teil, keinen Umbau. Der Satz zu „pruefung“ verspricht eine Klärung vor dem Kauf: Teil B zeigt ihn nur zusammen mit einem Verweis auf die Anfrage (der Kassenweg hat keinen Prüfschritt).
 
 Typen (`src/lib/types.ts`): `FahrzeugTeil` (`teileart`, `bauformen[]` Kennungen, `marke?`, `reihen[]` Kennungen des Fahrzeugkatalogs, `baujahrVon?`, `baujahrBis?`, `tastenzahl?`, `schluesselarten[]`, `kompatibilitaet`, `elektronik`), `StandardArticle.fahrzeugteil?`, `GehaeuseBauform`, `UmbauBeispiel` (`vorher`, `nachher` als `VergleichsBild` mit `url`, `alt`, `beschriftung`, `width?`, `height?`), `Teileart`, `ElektronikUebernahme`, `UmbauTeil`, `UmbauEinsatz`.
 
@@ -110,5 +113,24 @@ Noch offen für Teil B:
 - Namen der Reihen für die Anzeige: `fahrzeugteil.reihen` sind Kennungen, die Namen kommen aus `getFahrzeugkatalog()`.
 - Dienstleistungen mit Einsendung, Rubrik Customizing, Ziele der drei Kategorien in `content/kategorien.json` und Rückfall.
 - Gewünschte Einträge außerhalb der Schreibrechte (nicht umgesetzt): Rubrik „Customizing“ in `content/rubriken.json` und `src/lib/data/defaults/rubriken.ts` mit Ziel `/autoschluessel/customizing`; Navigation unter Autoschlüssel mit „Gehäuse und Ersatzteile“ und „Customizing“, sobald die Seiten stehen.
+
+## Nachbesserung (16.11.2026, Befunde der Gegenprüfer)
+
+1. [rot] Fotos vor dem Unkenntlichmachen öffentlich: behoben. `medien` ist öffentlich lesbar (`Medien.ts`, `read: oeffentlich`), der Befund stimmt. Die Anleitung (Abschnitt 3) setzt das Bearbeiten jetzt als Schritt 1 vor das Hochladen und sagt, dass jedes hochgeladene Foto sofort öffentlich abrufbar ist; derselbe Satz steht im Feld `bild` und in der Beschreibung der Sammlung (`UmbauBeispiele.ts`). Nicht öffentliche Ablage: OFFENE FRAGE 7.
+2. [rot] Gehäuse ohne Marke passt scheinbar zu jedem Auto: behoben. Neu `TEILEARTEN_MIT_MARKE` (Gehäuse, Tasten, Gummimatte); `fahrzeugteilLuecken` meldet „Bitte die Fahrzeugmarke eintragen. Ein Gehäuse passt nie zu allen Marken.“, das Feld `marke` prüft das beim Veröffentlichen (`teilMarke`). Zusätzlich gibt `fahrzeugPassung` für solche Teile ohne Marke `keine` statt `allgemein` zurück, und `fahrzeugteilZuSeite` liest sie nicht als Fahrzeugteil (falls Altdaten vor der Regel gespeichert wurden). Admin-Text und Anleitung: „Leer nur bei Teilen, die zu jeder Marke passen, etwa Batterien.“ Tests: `fahrzeugteile.test.ts`, `fahrzeugteil-felder.test.ts`, `payload-mapping.test.ts`, `gehaeuse.db.test.ts`.
+3. [gelb] „Erscheint auf der Seite des Artikels“: behoben, jetzt „Erscheint später auf der Seite des Artikels.“
+4. [gelb] `ELEKTRONIK_SATZ` verspricht Umbau und Fotoprüfung: behoben. Die Sätze beziehen sich auf das Teil („lassen sich mit diesem Teil weiter verwenden“), „pruefung“ sagt „klären wir vor dem Kauf. Schreiben Sie uns dazu.“; für Teil B festgehalten, dass dieser Satz nur mit Verweis auf die Anfrage erscheint.
+5. [gelb] „Smart Key“ und „Smart-Key“: teilweise behoben. `SCHLUESSELTYP_LABEL` schreibt jetzt „Smart Key“ wie die Bauform und der Inhaber. `SCHLUESSELARTEN` in `gemeinsam.ts` gehört zum Bestand ohne Schreibrecht: OFFENE FRAGE 8.
+6. [gelb] Paketkennung im Admin: behoben, Klammer gestrichen.
+7. [gelb] Längenprüfung am Produkt fällt weg: behoben. Der Befund stimmt (eigene `validate` ersetzt die Standardprüfung). `teilPflicht` prüft mit `max` zuerst die Länge (Kompatibilitätshinweis 600, auch ohne Haken), `markeImKatalog` prüft 60 Zeichen auch bei leerem Katalog. Konstanten `KOMPATIBILITAET_MAX`, `MARKE_MAX`. Tests mit 601 und 61 Zeichen in `fahrzeugteil-felder.test.ts` und `gehaeuse.db.test.ts`.
+8. [gelb] Länge der Marke am Umbau-Beispiel: behoben über dieselbe Prüfung in `markeImKatalog`; Test über das Feld der Sammlung in `fahrzeugteil-felder.test.ts`.
+9. [gelb] Doppelt zu 3: behoben mit 3.
+10. [gelb] „lehnt das Speichern ab“: behoben, jetzt „lehnt das Veröffentlichen ab. Diese Prüfung greift erst, wenn der Fahrzeugkatalog Einträge hat.“
+11. [gelb] Ausnahmen der Filter: behoben. Kopfkommentar in `fahrzeugteile.ts` und Anleitung nennen die drei Fälle (ohne Marke jede Marke, ohne Reihen alle Reihen der Marke, ohne Baujahre jedes Baujahr) und dass leere Felder eine breite Passung zusagen.
+12. [gelb] Leere Bauformen-Tabelle bringt Startbestand zurück: behoben. Der Adapter nimmt den Startbestand nur, wenn auch mit `trash: true` keine Bauform existiert; liegen alle im Papierkorb, bleibt die Liste leer. Test in `gehaeuse.db.test.ts` (alle in den Papierkorb, Liste leer, danach zurückgeholt).
+
+Geänderte Dateien der Nachbesserung: `src/lib/data/fahrzeugteile.ts`, `src/lib/data/payload-mapping.ts`, `src/lib/data/payload-adapter.ts`, `src/payload/collections/Produkte.ts`, `src/payload/collections/UmbauBeispiele.ts`, `docs/betrieb/gehaeuse-pflegen.md`, Tests `src/lib/data/fahrzeugteile.test.ts`, `src/lib/data/payload-mapping.test.ts`, `src/payload/collections/fahrzeugteil-felder.test.ts`, `src/payload/gehaeuse.db.test.ts`. Keine Schemaänderung (nur Admin-Texte und Prüfungen), keine neue Migration.
+
+Prüfung nach der Nachbesserung (über `sicher.sh`): vitest 233 Dateien, 3627 Tests grün; typecheck ohne Fehler; lint ohne Befund; DB-Tests 26 Dateien, 152 Tests grün (davon `gehaeuse.db.test.ts` 7); build erfolgreich.
 
 === ENDE FA-SHOP-02 · BEREIT ZUR RÜCKGABE ===

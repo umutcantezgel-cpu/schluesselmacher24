@@ -29,9 +29,9 @@ Vorher: Gibt es die Bauform unter **Shop › Bauformen**? Wenn nicht, zuerst Abs
    - Haken **Dieser Artikel ist ein Gehäuse oder Ersatzteil für Autoschlüssel** setzen. Erst dann erscheinen die Felder.
    - **Art des Teils**: Gehäuse, Tasten, Gummimatte, Batterie, Klappmechanismus, Schlüsselbart oder weiteres Ersatzteil.
    - **Elektronik und Transponder werden übernommen**: Ja, Nein oder Nur nach Prüfung. Im Zweifel „Nur nach Prüfung“.
-   - **Kompatibilitätshinweis** (Pflicht): was vom alten Schlüssel übernommen wird und was nicht passt. Kurz und sachlich.
+   - **Kompatibilitätshinweis** (Pflicht, höchstens 600 Zeichen): was vom alten Schlüssel übernommen wird und was nicht passt. Kurz und sachlich.
    - **Bauform**: eine oder mehrere aus der Liste. Bei Gehäusen Pflicht.
-   - **Fahrzeugmarke**: genau so geschrieben wie im Fahrzeugkatalog (Autoschlüssel › Fahrzeugkatalog, Spalte Marke). Leer lassen heißt: passt markenübergreifend, etwa bei einer Batterie.
+   - **Fahrzeugmarke**: genau so geschrieben wie im Fahrzeugkatalog (Autoschlüssel › Fahrzeugkatalog, Spalte Marke). Bei Gehäuse, Tasten, Gummimatte, Klappmechanismus und Schlüsselbart Pflicht, denn sie passen nie zu allen Marken. Leer nur bei Teilen, die zu jeder Marke passen, etwa Batterien.
    - **Modelle oder Reihen**: erst die Marke eintragen, dann die Reihen wählen. Die Auswahl zeigt nur Reihen dieser Marke. Leer lassen heißt: passt zu allen Reihen der Marke.
    - **Baujahr von** und **Baujahr bis**: nur, wenn Sie sie wissen. „Bis“ darf nicht vor „von“ liegen.
    - **Tastenzahl**: bei Gehäuse, Tasten und Gummimatte Pflicht. 0 bei Schlüsseln ohne Tasten.
@@ -41,8 +41,9 @@ Vorher: Gibt es die Bauform unter **Shop › Bauformen**? Wenn nicht, zuerst Abs
 Gut zu wissen:
 
 - Ohne Haken oder ohne Pflichtangaben gilt der Artikel nicht als Gehäuse oder Ersatzteil. Er bleibt ein normaler Artikel ohne Fahrzeugbezug.
-- Filter für Kunden zeigen ein Teil nur bei Merkmalen, die Sie eingetragen haben. Ein Gehäuse ohne Tastenzahl erscheint also nicht, wenn jemand nach „3 Tasten“ filtert.
-- Eine Marke, die nicht im Fahrzeugkatalog steht, lehnt das Speichern ab. Fehlt eine Marke dort, bitte im Fahrzeugkatalog nachsehen, wie sie geschrieben ist.
+- Filter für Kunden zeigen ein Teil bei Bauform, Tastenzahl, Art des Teils und Schlüsseltyp nur, wenn Sie das Merkmal eingetragen haben. Ein Gehäuse ohne Tastenzahl erscheint also nicht, wenn jemand nach „3 Tasten“ filtert.
+- Beim Fahrzeug ist es umgekehrt, ein leeres Feld sagt eine breite Passung zu: Ohne Marke passt ein Teil zu jeder Marke, ohne Reihen zu allen Reihen der Marke, ohne Baujahre zu jedem Baujahr. Lassen Sie diese Felder deshalb nur leer, wenn das Teil wirklich so breit passt.
+- Eine Marke, die nicht im Fahrzeugkatalog steht, lehnt das Veröffentlichen ab. Diese Prüfung greift erst, wenn der Fahrzeugkatalog Einträge hat. Fehlt eine Marke dort, bitte im Fahrzeugkatalog nachsehen, wie sie geschrieben ist.
 
 ## 2. Bauform anlegen oder ändern
 
@@ -52,21 +53,24 @@ Gut zu wissen:
 4. **Reihenfolge**: kleinere Zahl steht weiter vorn.
 5. **Adresse** leer lassen, sie wird aus dem Namen gebildet. Die **Kennung** bleibt danach fest.
 
-Startbestand: Klappschlüssel, Smart Key, Karte, Fernbedienung, Schlüsselkopf. Eine Bauform, die Sie in den Papierkorb legen, kommt beim nächsten Einspielen nicht wieder.
+Startbestand: Klappschlüssel, Smart Key, Karte, Fernbedienung, Schlüsselkopf. Eine Bauform, die Sie in den Papierkorb legen, kommt beim nächsten Einspielen nicht wieder. Das gilt auch, wenn alle Bauformen im Papierkorb liegen.
 
 ## 3. Umbau-Beispiel mit Vorher und Nachher
 
 Ein Beispiel erscheint auf der Seite nur, wenn alles vorliegt: veröffentlicht, Foto vorher und nachher mit Beschriftung und der Haken **Fotos freigegeben**. Ohne Beispiele zeigt die Seite keinen Vergleich und keine Platzhalter.
 
-1. Unter **Autoschlüssel** auf **Umbau-Beispiele**, dann **Neu erstellen**.
-2. **Titel**: kurz, was umgebaut wurde.
-3. **Vorher** und **Nachher**: je ein Foto hochladen und eine **Beschriftung** schreiben. Die Beschriftung steht unter dem Bild und beschreibt es für Menschen, die das Bild nicht sehen.
-4. **Fahrzeugmarke** und **Modell oder Reihe**: optional, wie beim Gehäuse aus dem Fahrzeugkatalog.
-5. **Schlüsseltyp** und **Was übernommen wurde** (Elektronik, Transponder, Tasten, Schlüsselbart, weitere Teile).
-6. **Hinweis** (Pflicht): unter welchen Bedingungen sich der Umbau auf andere Schlüssel übertragen lässt und was nicht geht.
-7. **Wo das Beispiel erscheint**: Customizing, Gehäuse, Reparatur.
-8. Fotos prüfen: Kennzeichen, Fahrzeugschein und Schlüsselnummern unkenntlich. Der Kunde ist einverstanden. Dann Haken **Fotos freigegeben**.
-9. **Veröffentlichen**.
+Wichtig: Jedes hochgeladene Foto ist sofort öffentlich abrufbar, auch ohne Haken und ohne Veröffentlichen. Der Haken steuert nur, ob die Seite das Foto zeigt.
+
+1. Fotos vor dem Hochladen bearbeiten: Kennzeichen, Fahrzeugschein und Schlüsselnummern unkenntlich machen. Der Kunde ist einverstanden. Erst dann hochladen.
+2. Unter **Autoschlüssel** auf **Umbau-Beispiele**, dann **Neu erstellen**.
+3. **Titel**: kurz, was umgebaut wurde.
+4. **Vorher** und **Nachher**: je ein bearbeitetes Foto hochladen und eine **Beschriftung** schreiben. Die Beschriftung steht unter dem Bild und beschreibt es für Menschen, die das Bild nicht sehen.
+5. **Fahrzeugmarke** und **Modell oder Reihe**: optional, wie beim Gehäuse aus dem Fahrzeugkatalog.
+6. **Schlüsseltyp** und **Was übernommen wurde** (Elektronik, Transponder, Tasten, Schlüsselbart, weitere Teile).
+7. **Hinweis** (Pflicht): unter welchen Bedingungen sich der Umbau auf andere Schlüssel übertragen lässt und was nicht geht.
+8. **Wo das Beispiel erscheint**: Customizing, Gehäuse, Reparatur.
+9. Fotos noch einmal ansehen: nichts Persönliches erkennbar. Dann Haken **Fotos freigegeben**.
+10. **Veröffentlichen**.
 
 Ohne Fotos lässt sich ein Beispiel nur als Entwurf speichern.
 

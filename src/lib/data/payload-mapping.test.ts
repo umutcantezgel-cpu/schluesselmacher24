@@ -567,6 +567,9 @@ describe('Gehäuse, Ersatzteile und Umbau-Beispiele (FA-SHOP-02)', () => {
     expect(m.fahrzeugteilZuSeite({ ...daten, aktiv: false })).toBeUndefined();
     expect(m.fahrzeugteilZuSeite({ ...daten, kompatibilitaet: '  ' })).toBeUndefined();
     expect(m.fahrzeugteilZuSeite({ ...daten, elektronik: null })).toBeUndefined();
+    // Gehäuse ohne Marke (vor der Pflichtregel gespeichert): kein Fahrzeugteil.
+    expect(m.fahrzeugteilZuSeite({ ...daten, marke: null })).toBeUndefined();
+    expect(m.fahrzeugteilZuSeite({ ...daten, teileart: 'batterie', marke: null })).toBeDefined();
     // Nicht aufgelöste Verweise (bloße IDs) entfallen, statt Zahlen als Kennung auszugeben.
     expect(m.fahrzeugteilZuSeite(daten)).toMatchObject({ bauformen: [], reihen: [] });
     // Ohne bekannte ID entfällt der Verweis auch beim Import.

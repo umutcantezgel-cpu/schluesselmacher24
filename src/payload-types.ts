@@ -883,7 +883,7 @@ export interface Produkte {
      */
     elektronik?: ('ja' | 'nein' | 'pruefung') | null;
     /**
-     * Pflicht. Was vom alten Schlüssel übernommen wird (Elektronik, Transponder, Tasten, Bart) und was nicht passt. Erscheint auf der Seite des Artikels.
+     * Pflicht. Was vom alten Schlüssel übernommen wird (Elektronik, Transponder, Tasten, Bart) und was nicht passt. Erscheint später auf der Seite des Artikels.
      */
     kompatibilitaet?: string | null;
     /**
@@ -891,7 +891,7 @@ export interface Produkte {
      */
     bauformen?: (number | Bauformen)[] | null;
     /**
-     * Genau wie im Fahrzeugkatalog (Autoschlüssel › Fahrzeugkatalog). Leer: passt markenübergreifend.
+     * Genau wie im Fahrzeugkatalog (Autoschlüssel › Fahrzeugkatalog). Bei Gehäuse, Tasten, Gummimatte, Klappmechanismus und Schlüsselbart Pflicht. Leer nur bei Teilen, die zu jeder Marke passen, etwa Batterien.
      */
     marke?: string | null;
     /**
@@ -1399,7 +1399,7 @@ export interface Preisgruppen {
   createdAt: string;
 }
 /**
- * Echte Umbauten mit Foto vorher und nachher. Bitte Kennzeichen, Fahrzeugschein und Schlüsselnummern auf den Fotos unkenntlich machen. Ein Beispiel erscheint erst veröffentlicht und mit dem Haken „Fotos freigegeben“.
+ * Echte Umbauten mit Foto vorher und nachher. Fotos vor dem Hochladen bearbeiten: Kennzeichen, Fahrzeugschein und Schlüsselnummern unkenntlich machen. Jedes hochgeladene Foto ist sofort öffentlich abrufbar. Ein Beispiel erscheint auf der Seite erst veröffentlicht und mit dem Haken „Fotos freigegeben“.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "umbau-beispiele".
@@ -1412,7 +1412,7 @@ export interface UmbauBeispiele {
   titel: string;
   vorher: {
     /**
-     * Nur echte Fotos dieses Umbaus.
+     * Nur echte Fotos dieses Umbaus. Vor dem Hochladen Kennzeichen, Fahrzeugschein und Schlüsselnummern unkenntlich machen: Jedes hochgeladene Foto ist sofort öffentlich abrufbar.
      */
     bild: number | Medien;
     /**
@@ -1422,7 +1422,7 @@ export interface UmbauBeispiele {
   };
   nachher: {
     /**
-     * Nur echte Fotos dieses Umbaus.
+     * Nur echte Fotos dieses Umbaus. Vor dem Hochladen Kennzeichen, Fahrzeugschein und Schlüsselnummern unkenntlich machen: Jedes hochgeladene Foto ist sofort öffentlich abrufbar.
      */
     bild: number | Medien;
     /**

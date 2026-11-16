@@ -52,10 +52,11 @@ export const TEILEART_LABEL: Record<Teileart, string> = {
 export const TEILEARTEN_MIT_TASTEN: readonly Teileart[] = ['gehaeuse', 'tasten', 'gummimatte'];
 
 /**
- * Bei diesen Teilen ist die Fahrzeugmarke Pflicht: Ein Gehäuse, Tasten oder eine
- * Gummimatte passen nie zu allen Marken.
+ * Bei diesen Teilen ist die Fahrzeugmarke Pflicht: Gehäuse, Tasten, Gummimatte,
+ * Klappmechanismus und Schlüsselbart passen nie zu allen Marken. Batterien und
+ * „Weitere“ dürfen ohne Marke stehen.
  */
-export const TEILEARTEN_MIT_MARKE: readonly Teileart[] = ['gehaeuse', 'tasten', 'gummimatte'];
+export const TEILEARTEN_MIT_MARKE: readonly Teileart[] = ['gehaeuse', 'tasten', 'gummimatte', 'klappmechanismus', 'schluesselbart'];
 
 /** Bei diesen Teilen ist mindestens eine Bauform Pflicht. */
 export const TEILEARTEN_MIT_BAUFORM: readonly Teileart[] = ['gehaeuse'];

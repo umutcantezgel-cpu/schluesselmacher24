@@ -28,7 +28,7 @@ export const SCHLUESSELARTEN = [
   { label: 'Mechanisch', value: 'mechanisch' },
   { label: 'Funk', value: 'funk' },
   { label: 'Klappschlüssel', value: 'klappschluessel' },
-  { label: 'Smart-Key', value: 'smart-key' },
+  { label: 'Smart Key', value: 'smart-key' },
   { label: 'Keyless', value: 'keyless' },
 ];
 

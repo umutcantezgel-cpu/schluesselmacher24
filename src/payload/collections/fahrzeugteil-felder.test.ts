@@ -65,6 +65,9 @@ describe('Fahrzeugteil am Artikel', () => {
     const ohne = { aktiv: false };
     expect(await teil.kompatibilitaet.validate!('', { siblingData: ohne })).toBe(true);
     const gehaeuse = { aktiv: true, teileart: 'gehaeuse', elektronik: 'ja', kompatibilitaet: '' };
+    expect(await teil.marke.validate!(undefined, { siblingData: gehaeuse, req: katalog })).toMatch(/Fahrzeugmarke.*nie zu allen Marken/);
+    expect(await teil.marke.validate!('Testmarke', { siblingData: { ...gehaeuse, marke: 'Testmarke' }, req: katalog })).toBe(true);
+    expect(await teil.marke.validate!('Erfunden', { siblingData: { ...gehaeuse, marke: 'Erfunden' }, req: katalog })).toMatch(/nicht im Fahrzeugkatalog/);
     expect(await teil.kompatibilitaet.validate!('', { siblingData: gehaeuse })).toMatch(/Kompatibilitätshinweis/);
     expect(await teil.tastenzahl.validate!(undefined, { siblingData: gehaeuse })).toMatch(/Tastenzahl/);
     expect(await teil.tastenzahl.validate!(2.5, { siblingData: { ...gehaeuse, tastenzahl: 2.5 } })).toMatch(/ganze Zahl/);
@@ -74,6 +77,20 @@ describe('Fahrzeugteil am Artikel', () => {
     const batterie = { aktiv: true, teileart: 'batterie', elektronik: 'nein', kompatibilitaet: 'Passt in Gehäuse mit Knopfzelle.' };
     expect(await teil.tastenzahl.validate!(undefined, { siblingData: batterie })).toBe(true);
     expect(await teil.bauformen.validate!([], { siblingData: batterie })).toBe(true);
+    expect(await teil.marke.validate!(undefined, { siblingData: batterie, req: katalog })).toBe(true);
+  });
+
+  it('prüft die Höchstlängen trotz eigener Prüfung (Payload ersetzt sonst die Standardprüfung)', async () => {
+    const lang = 'x'.repeat(601);
+    expect(await teil.kompatibilitaet.validate!(lang, { siblingData: { aktiv: true, kompatibilitaet: lang } })).toBe('Höchstens 600 Zeichen.');
+    expect(await teil.kompatibilitaet.validate!(lang, { siblingData: { aktiv: false } })).toBe('Höchstens 600 Zeichen.');
+    expect(await teil.kompatibilitaet.validate!('x'.repeat(600), { siblingData: { aktiv: false } })).toBe(true);
+    const marke = 'M'.repeat(61);
+    // Auch bei leerem Fahrzeugkatalog.
+    expect(await markeImKatalog(marke, { req: anfrage([]) })).toBe('Höchstens 60 Zeichen.');
+    expect(await teil.marke.validate!(marke, { siblingData: { aktiv: false, marke }, req: anfrage([]) })).toBe('Höchstens 60 Zeichen.');
+    const umbauMarke = felder(UmbauBeispiele.fields).marke;
+    expect(await umbauMarke.validate!(marke, { req: anfrage([]) })).toBe('Höchstens 60 Zeichen.');
   });
 
   it('Baujahr bis nicht vor von', async () => {
@@ -84,7 +101,7 @@ describe('Fahrzeugteil am Artikel', () => {
 });
 
 describe('Fahrzeug aus dem Fahrzeugkatalog', () => {
-  it('nimmt nur Marken aus dem Katalog; leer heißt markenübergreifend', async () => {
+  it('nimmt nur Marken aus dem Katalog; leer nur, wo die Art des Teils es erlaubt', async () => {
     expect(await markeImKatalog('Testmarke', { req: katalog })).toBe(true);
     expect(await markeImKatalog('', { req: katalog })).toBe(true);
     expect(await markeImKatalog(null, { req: katalog })).toBe(true);
