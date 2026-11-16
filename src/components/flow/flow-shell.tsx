@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState, type ReactNode } from 'react';
+import { useEffect, useId, useState, useSyncExternalStore, type ReactNode } from 'react';
 import type { FlowState, FlowStep } from '@/lib/flow/use-flow';
 import { useVerlassenWarnung, type VerlassenGrund } from '@/lib/flow/verlassen-warnung';
 import { cn } from '@/lib/cn';
@@ -102,6 +102,9 @@ export function verlassenGrundAus({
   return { dateien: ungesichert, ungespeichert: !saved };
 }
 
+const ohneAbo = () => () => {};
+const amAnfangOhneHistorie = () => true;
+
 /**
  * Gemeinsamer Rahmen für alle mehrstufigen Abläufe:
  * Fortschrittsanzeige, Schrittüberschrift, Navigation und der Hinweis
@@ -128,7 +131,23 @@ export function FlowShell<T extends object>({
   const hinweisId = useId();
   // Browser-Zurück, Neuladen und Schließen fragen nach, solange dabei etwas verloren ginge (FA-QA-02).
   // Die Frage nennt den Grund: gewählte Dateien oder ein Zwischenstand, der sich nicht speichern ließ.
-  useVerlassenWarnung(verlassenGrundAus({ submitting, ungesichert, saved: flow.saved }));
+  // Mit Schritten in der Historie (FA-QA-04B) braucht die Rückfrage ihren Wacheintrag nur am Anfang des
+  // Ablaufs; weiter oben führt Zurück auf den vorigen Schritt. Vorwärts auf einen späteren Schritt fragt nicht.
+  const historie = flow.historie;
+  const amAnfang = useSyncExternalStore(
+    historie?.abonnieren ?? ohneAbo,
+    historie?.amAnfang ?? amAnfangOhneHistorie,
+    amAnfangOhneHistorie,
+  );
+  useVerlassenWarnung(verlassenGrundAus({ submitting, ungesichert, saved: flow.saved }), {
+    wache: !historie || amAnfang,
+    imAblauf: historie?.istFolgeEintrag,
+  });
+  // Browser-Vorwärts gilt nur, solange „Weiter“ frei wäre (`canContinue`, auch mit Dateien und Nachweisen).
+  const weiterFreiFuerHistorie = flow.canContinue;
+  useEffect(() => {
+    historie?.setzeFreigabe(weiterFreiFuerHistorie);
+  }, [historie, weiterFreiFuerHistorie]);
   const etappen = etappenAus(flow.steps);
   const etappeJetzt = etappen.findIndex((e) => flow.stepIndex >= e.von && flow.stepIndex <= e.bis);
   const etappe = etappeJetzt >= 0 ? etappen[etappeJetzt] : null;

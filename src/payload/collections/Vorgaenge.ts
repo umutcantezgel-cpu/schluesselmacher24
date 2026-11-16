@@ -5,6 +5,7 @@ import { BEREICHE, PROZESSE } from '../fields/gemeinsam';
 import { VORGANG_STATUS } from '../fields/vorgang-status';
 import { auftragswegVorAenderung, partnerVorschlaege } from '../hooks/auftragsweg';
 import { vermittlungNachAenderung, vermittlungVorAenderung } from '../hooks/vermittlung';
+import { betriebHinweisFeld, leadVerlaufVorAenderung, partnerWarnungFeld, partnerbetriebAuswahl } from '../hooks/lead-verlauf';
 import { bestaetigungSenden } from '../hooks/bestaetigung-senden';
 import { kundenNachrichtSenden } from '../hooks/kunden-nachricht';
 import { korrekturText, stornoKorrekturVorAenderung } from '../hooks/storno-korrektur';
@@ -14,9 +15,10 @@ import { vorgangNachAenderung, vorgangVorAenderung } from '../hooks/vorgang-bena
 import { AUFTRAGSWEGE, AUFTRAGSWEG_LABEL } from '../../lib/auftragsweg';
 import { KATEGORIE_LABEL } from '../../lib/druckansichten';
 import { AUSZAHLUNG_LABEL, VERMITTLUNG_LABEL, VERMITTLUNG_STAENDE } from '../../lib/partner/vermittlung';
+import { LEAD_ERGEBNISSE, LEAD_RUECKGABEN } from '../../lib/partner/lead-verlauf';
 import { aktiverAuszahlungswegText } from '../../lib/zahlung/auszahlung';
 import { ERSTATTUNGS_WEGE, STORNO_ENTSCHEIDUNGEN, zahlungsstandText } from '../../lib/zahlung/erstattung';
-import { AUFTRAGSARTEN } from './Partnerbetriebe';
+import { AUFTRAGSARTEN, feldNurTeam } from './Partnerbetriebe';
 import { fahrzeugklasseText } from '../../lib/fahrzeuge/anfrage-klassen';
 import { unterlagenHinweis } from '../../lib/server/unterlagen-pflicht';
 import type { UploadRef } from '../../lib/types';
@@ -175,7 +177,8 @@ export const Vorgaenge: CollectionConfig = {
       + 'Fahrzeugschlüssel-Anfragen einer Klasse: oben „Anfragen nach Fahrzeugklasse“.',
     components: {
       // Telefontermin eintragen (Team) und CSV-Export für die Buchhaltung (Inhaber).
-      beforeListTable: ['/payload/components/VorgaengeWerkzeuge#VorgaengeWerkzeuge'],
+      // Filter „wartet auf Zuordnung“ für Leads ohne angebotenen Partner (FA-PLATTFORM-01B, FA-22-41).
+      beforeListTable: ['/payload/components/VorgaengeWerkzeuge#VorgaengeWerkzeuge', '/payload/components/ZuordnungFilter#ZuordnungFilter'],
     },
   },
   defaultSort: '-createdAt',
@@ -191,7 +194,8 @@ export const Vorgaenge: CollectionConfig = {
     // Vermittlung, Auszahlung und Erstattung (FA-KERN-04) vor dem Restbetrag, weil eine Erstattung den
     // Zahlungsstand ändert.
     // Storno mit Entscheidung zur Erstattung und Korrekturpositionen (FA-KERN-05) nach der Erstattung.
-    beforeChange: [vorgangVorAenderung, vermittlungVorAenderung, stornoKorrekturVorAenderung, auftragswegVorAenderung],
+    // Lead-Verlauf (FA-PLATTFORM-01B) nach der Prüfung der Vermittlung: nur Wechsel, die gelten, kommen hinein.
+    beforeChange: [vorgangVorAenderung, vermittlungVorAenderung, leadVerlaufVorAenderung, stornoKorrekturVorAenderung, auftragswegVorAenderung],
     afterChange: [vorgangNachAenderung, vermittlungNachAenderung],
   },
   endpoints: [bestaetigungSenden, kundenNachrichtSenden, ...terminAktionen, ...druckansichten],
@@ -535,6 +539,28 @@ export const Vorgaenge: CollectionConfig = {
           description: 'Nur ausfüllen, wenn der Auftrag an einen Partnerbetrieb vermittelt wird.',
           fields: [
             {
+              // Warnung, wenn der zugeordnete Partnerbetrieb pausiert, gesperrt oder beendet ist (FA-07-19).
+              // Nur Anzeige, nicht gespeichert (virtuell, keine Migration).
+              name: 'partnerWarnung',
+              type: 'textarea',
+              label: 'Partnerbetrieb nicht verfügbar',
+              virtual: true,
+              access: { read: feldNurTeam, create: () => false, update: () => false },
+              admin: { readOnly: true, condition: (data) => Boolean(data?.partnerWarnung) },
+              hooks: { afterRead: [partnerWarnungFeld] },
+            },
+            {
+              // Hinweis bis zur Nachricht „Ihr ausführender Betrieb“ (FA-07-03, Zusatz 8). Kein automatischer Versand.
+              // Nur Anzeige, nicht gespeichert (virtuell, keine Migration).
+              name: 'betriebHinweis',
+              type: 'textarea',
+              label: 'Ausführenden Betrieb mitteilen',
+              virtual: true,
+              access: { read: feldNurTeam, create: () => false, update: () => false },
+              admin: { readOnly: true, condition: (data) => Boolean(data?.betriebHinweis) },
+              hooks: { afterRead: [betriebHinweisFeld] },
+            },
+            {
               name: 'vermittlung',
               type: 'group',
               label: 'Vermittlung',
@@ -551,12 +577,19 @@ export const Vorgaenge: CollectionConfig = {
                       admin: { width: '40%', description: 'Leer = keine Vermittlung.' },
                     },
                     {
+                      // Altfeld (FA-07-01, Zusatz 9): Verweis auf den Bewerbungs-Vorgang aus der Zeit vor der Sammlung
+                      // Partnerbetriebe. Nur lesbar, ausgeblendet, sobald ein Partnerbetrieb gesetzt ist; Daten bleiben.
                       name: 'partner',
                       type: 'relationship',
                       relationTo: 'vorgaenge',
-                      label: 'Partnerbetrieb',
+                      label: 'Bewerbung (alt)',
                       filterOptions: { art: { equals: 'partner' } },
-                      admin: { width: '40%', description: 'Bewerbung des Partners (Vorgang der Art „Partner-Bewerbung“).' },
+                      admin: {
+                        width: '40%',
+                        readOnly: true,
+                        condition: (_data, siblingData) => !siblingData?.partnerbetrieb,
+                        description: 'Früherer Verweis auf die Bewerbung des Partners. Bitte den Partnerbetrieb darunter wählen.',
+                      },
                     },
                     { name: 'provisionCent', type: 'number', label: 'Provision (Cent)', min: 0, admin: { width: '20%', step: 1 } },
                   ],
@@ -568,13 +601,14 @@ export const Vorgaenge: CollectionConfig = {
                   type: 'relationship',
                   relationTo: 'partnerbetriebe',
                   label: 'Partnerbetrieb (Sammlung Partnerbetriebe)',
-                  // Pausierte und beendete Betriebe bleiben gültig, damit ein laufender Auftrag gespeichert und
+                  // Wählbar sind nur freigeschaltete Betriebe (FA-07-19). Der gespeicherte bleibt gültig, auch wenn er
+                  // inzwischen pausiert, gesperrt oder beendet ist, damit ein laufender Auftrag gespeichert und
                   // ausgezahlt werden kann. Vermitteln geht nur an freigeschaltete (Hook `vermittlungVorAenderung`).
-                  filterOptions: { status: { in: ['freigeschaltet', 'pausiert', 'beendet'] } },
+                  filterOptions: partnerbetriebAuswahl,
                   admin: {
                     description:
-                      'Vermitteln geht nur an freigeschaltete Partnerbetriebe. Bei mehreren passenden entscheidet das Team. '
-                      + 'Pausierte und beendete erscheinen nur, damit laufende Aufträge abgerechnet werden können.',
+                      'Wählbar sind nur freigeschaltete Partnerbetriebe. Bei mehreren passenden entscheidet das Team. '
+                      + 'Ein inzwischen pausierter oder gesperrter Betrieb bleibt nur stehen, damit der laufende Auftrag geklärt und abgerechnet werden kann.',
                   },
                 },
                 {
@@ -641,6 +675,50 @@ export const Vorgaenge: CollectionConfig = {
                 { name: 'notiz', type: 'textarea', label: 'Notiz zur Vermittlung', admin: { description: 'Nur für das Team sichtbar.' } },
                 // Einmal-Schlüssel der Kundenbestätigung: nur der Hash, nie lesbar oder im Backend änderbar.
                 { name: 'bestaetigungHash', type: 'text', admin: { hidden: true }, access: { read: () => false, update: () => false } },
+              ],
+            },
+            {
+              // Angaben des Teams zum nächsten Wechsel der Zuordnung (FA-PLATTFORM-01B). Gelten nur für dieses eine
+              // Speichern und kommen in den Lead-Verlauf; danach leert der Server die Gruppe.
+              name: 'zuordnung',
+              type: 'group',
+              label: 'Angaben zum Wechsel der Zuordnung',
+              access: { read: feldNurTeam, create: feldNurTeam, update: feldNurTeam },
+              admin: {
+                condition: (data) => Boolean((data?.vermittlung as { partnerbetrieb?: unknown } | undefined)?.partnerbetrieb),
+                description: 'Nur beim Schritt zurück oder beim Wechsel des Partnerbetriebs ausfüllen. Ohne Angabe gilt „zurückgezogen“.',
+              },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    { name: 'rueckgabe', type: 'select', label: 'Warum', options: [...LEAD_RUECKGABEN], admin: { width: '40%' } },
+                    { name: 'notiz', type: 'text', label: 'Notiz für den Lead-Verlauf', admin: { width: '60%' } },
+                  ],
+                },
+              ],
+            },
+            {
+              // Lead-Verlauf (FA-22-41): welcher Lead welchem Partner angeboten oder zugeteilt wurde. Schreibt nur der
+              // Server bei jedem Wechsel der Zuordnung; von Hand nicht änderbar.
+              name: 'leadVerlauf',
+              type: 'array',
+              label: 'Lead-Verlauf (angeboten an)',
+              labels: { singular: 'Eintrag', plural: 'Einträge' },
+              access: { read: feldNurTeam, create: () => false, update: () => false },
+              admin: { ...nurLesen, description: 'Jeder Wechsel der Zuordnung mit Partner, Zeitpunkt, wer, Ergebnis und Notiz.' },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    // Nicht Pflicht in der Datenbank: Löscht der Inhaber einen Betrieb endgültig, bleibt der Eintrag ohne Verweis stehen.
+                    { name: 'partnerbetrieb', type: 'relationship', relationTo: 'partnerbetriebe', label: 'Partnerbetrieb', admin: { width: '30%' } },
+                    { name: 'am', type: 'date', label: 'Zeitpunkt', required: true, admin: { width: '25%', ...zeitpunkt } },
+                    { name: 'von', type: 'text', label: 'Wer', admin: { width: '20%' } },
+                    { name: 'ergebnis', type: 'select', label: 'Ergebnis', required: true, options: [...LEAD_ERGEBNISSE], admin: { width: '25%' } },
+                  ],
+                },
+                { name: 'notiz', type: 'text', label: 'Notiz' },
               ],
             },
             {

@@ -101,6 +101,7 @@ export interface Config {
   collectionsJoins: {
     partnerbetriebe: {
       offeneAuszahlungen: 'vorgaenge';
+      leads: 'vorgaenge';
     };
   };
   collectionsSelect: {
@@ -293,6 +294,8 @@ export interface Vorgaenge {
      */
     hinweis?: string | null;
   };
+  partnerWarnung?: string | null;
+  betriebHinweis?: string | null;
   vermittlung?: {
     /**
      * Leer = keine Vermittlung.
@@ -312,12 +315,12 @@ export interface Vorgaenge {
         )
       | null;
     /**
-     * Bewerbung des Partners (Vorgang der Art „Partner-Bewerbung“).
+     * Früherer Verweis auf die Bewerbung des Partners. Bitte den Partnerbetrieb darunter wählen.
      */
     partner?: (number | null) | Vorgaenge;
     provisionCent?: number | null;
     /**
-     * Vermitteln geht nur an freigeschaltete Partnerbetriebe. Bei mehreren passenden entscheidet das Team. Pausierte und beendete erscheinen nur, damit laufende Aufträge abgerechnet werden können.
+     * Wählbar sind nur freigeschaltete Partnerbetriebe. Bei mehreren passenden entscheidet das Team. Ein inzwischen pausierter oder gesperrter Betrieb bleibt nur stehen, damit der laufende Auftrag geklärt und abgerechnet werden kann.
      */
     partnerbetrieb?: (number | null) | Partnerbetriebe;
     partnerVorschlaege?: string | null;
@@ -366,6 +369,26 @@ export interface Vorgaenge {
     notiz?: string | null;
     bestaetigungHash?: string | null;
   };
+  /**
+   * Nur beim Schritt zurück oder beim Wechsel des Partnerbetriebs ausfüllen. Ohne Angabe gilt „zurückgezogen“.
+   */
+  zuordnung?: {
+    rueckgabe?: ('abgelehnt' | 'zurueckgezogen') | null;
+    notiz?: string | null;
+  };
+  /**
+   * Jeder Wechsel der Zuordnung mit Partner, Zeitpunkt, wer, Ergebnis und Notiz.
+   */
+  leadVerlauf?:
+    | {
+        partnerbetrieb?: (number | null) | Partnerbetriebe;
+        am: string;
+        von?: string | null;
+        ergebnis: 'zugeteilt' | 'angeboten' | 'angenommen' | 'abgelehnt' | 'zurueckgezogen' | 'zur-klaerung';
+        notiz?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   auszahlung?: {
     aktiverWeg?: string | null;
     stand?: ('offen' | 'freigegeben' | 'ausgezahlt' | 'gesperrt') | null;
@@ -612,7 +635,7 @@ export interface Kundendateien {
   focalY?: number | null;
 }
 /**
- * Freischalten erst nach Prüfung von Gewerbe, Identität und Eignung und mit unterschriebenem Vertrag.
+ * Freischalten erst nach Prüfung von Gewerbe, Identität und Eignung, mit unterschriebenem Vertrag und vollständiger Prüfliste samt Besuch vor Ort. Pausieren und Sperren nur mit Grund. Anleitung: docs/betrieb/partner-pruefen.md.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "partnerbetriebe".
@@ -625,6 +648,9 @@ export interface Partnerbetriebe {
   telefon?: string | null;
   plz?: string | null;
   ort: string;
+  /**
+   * Pausiert und gesperrt: keine neue Zuordnung, laufende Leads werden zur Klärung markiert. Grund unten eintragen.
+   */
   status:
     | 'eingegangen'
     | 'in-pruefung'
@@ -633,6 +659,7 @@ export interface Partnerbetriebe {
     | 'vertrag-unterschrieben'
     | 'freigeschaltet'
     | 'pausiert'
+    | 'gesperrt'
     | 'abgelehnt'
     | 'beendet';
   /**
@@ -645,6 +672,20 @@ export interface Partnerbetriebe {
      */
     postleitzahlen?: string | null;
     radiusKm?: number | null;
+    /**
+     * Freiwillig. Wird noch nicht ausgewertet; die Zuordnung rechnet mit den Postleitzahlen oben.
+     */
+    regionen?:
+      | {
+          art: 'ort' | 'landkreis';
+          name: string;
+          /**
+           * Freiwillig: Gemeindeschlüssel (8 Ziffern) oder Kreisschlüssel (5 Ziffern).
+           */
+          schluessel?: string | null;
+          id?: string | null;
+        }[]
+      | null;
   };
   /**
    * Nur Autoschlüssel und Fahrzeugschlüssel. Wählbar sind die neun Leistungen; Werte mit „früher“ bleiben lesbar, lassen sich aber nicht neu setzen.
@@ -695,6 +736,104 @@ export interface Partnerbetriebe {
     eignungGeprueft?: boolean | null;
     notiz?: string | null;
   };
+  /**
+   * Freischalten geht erst, wenn alle Punkte erledigt sind. Der Besuch vor Ort ist Pflicht, außer „Besuch nicht möglich“ mit Grund.
+   */
+  pruefliste?: {
+    stand?: string | null;
+    /**
+     * Setzt nur die Migration. Der Betrieb bleibt freigeschaltet; nach einer Sperre gilt die volle Prüfliste.
+     */
+    vorEinfuehrung?: boolean | null;
+    identitaet?: {
+      erledigt?: boolean | null;
+      /**
+       * Beim Abhaken heute, wenn leer.
+       */
+      am?: string | null;
+      /**
+       * Beim Abhaken Ihr Name, wenn leer.
+       */
+      pruefer?: string | null;
+      notiz?: string | null;
+    };
+    leistungsumfang?: {
+      erledigt?: boolean | null;
+      /**
+       * Beim Abhaken heute, wenn leer.
+       */
+      am?: string | null;
+      /**
+       * Beim Abhaken Ihr Name, wenn leer.
+       */
+      pruefer?: string | null;
+      notiz?: string | null;
+    };
+    ausstattung?: {
+      erledigt?: boolean | null;
+      /**
+       * Beim Abhaken heute, wenn leer.
+       */
+      am?: string | null;
+      /**
+       * Beim Abhaken Ihr Name, wenn leer.
+       */
+      pruefer?: string | null;
+      notiz?: string | null;
+    };
+    region?: {
+      erledigt?: boolean | null;
+      /**
+       * Beim Abhaken heute, wenn leer.
+       */
+      am?: string | null;
+      /**
+       * Beim Abhaken Ihr Name, wenn leer.
+       */
+      pruefer?: string | null;
+      notiz?: string | null;
+    };
+    /**
+     * Vor der endgültigen Freischaltung nach Möglichkeit persönlich besuchen und vor Ort ansehen.
+     */
+    besuch?: {
+      am?: string | null;
+      pruefer?: string | null;
+      ergebnis?: ('geeignet' | 'auflagen' | 'nicht-geeignet') | null;
+      notiz?: string | null;
+      /**
+       * Als interne Dateien, nur für das Team sichtbar.
+       */
+      fotos?: (number | InterneDateien)[] | null;
+      nichtMoeglich?: boolean | null;
+      nichtMoeglichGrund?: string | null;
+    };
+    standard?: {
+      erledigt?: boolean | null;
+      /**
+       * Beim Abhaken heute, wenn leer.
+       */
+      am?: string | null;
+      /**
+       * Beim Abhaken Ihr Name, wenn leer.
+       */
+      pruefer?: string | null;
+      notiz?: string | null;
+      datei?: (number | null) | InterneDateien;
+      /**
+       * Etwa „Partnervertrag, Anlage Qualität“.
+       */
+      vertragsverweis?: string | null;
+    };
+  };
+  /**
+   * Grund eintragen und zugleich den Stand auf „Pausiert“ oder „Gesperrt“ setzen. Beim Aufheben kommt der Eintrag in die interne Notiz.
+   */
+  sperre?: {
+    grund?: string | null;
+    seit?: string | null;
+    von?: string | null;
+  };
   vertrag?: {
     versendetAm?: string | null;
     unterschriebenAm?: string | null;
@@ -731,6 +870,15 @@ export interface Partnerbetriebe {
    */
   kontoKennung?: string | null;
   offeneAuszahlungen?: {
+    docs?: (number | Vorgaenge)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  /**
+   * Vorgangsnummer, Stand der Vermittlung und letzter Eintrag im Lead-Verlauf.
+   */
+  leadUebersicht?: string | null;
+  leads?: {
     docs?: (number | Vorgaenge)[];
     hasNextPage?: boolean;
     totalDocs?: number;
@@ -2513,6 +2661,8 @@ export interface VorgaengeSelect<T extends boolean = true> {
         sonderfallVersand?: T;
         hinweis?: T;
       };
+  partnerWarnung?: T;
+  betriebHinweis?: T;
   vermittlung?:
     | T
     | {
@@ -2532,6 +2682,22 @@ export interface VorgaengeSelect<T extends boolean = true> {
         teamBestaetigungGrund?: T;
         notiz?: T;
         bestaetigungHash?: T;
+      };
+  zuordnung?:
+    | T
+    | {
+        rueckgabe?: T;
+        notiz?: T;
+      };
+  leadVerlauf?:
+    | T
+    | {
+        partnerbetrieb?: T;
+        am?: T;
+        von?: T;
+        ergebnis?: T;
+        notiz?: T;
+        id?: T;
       };
   auszahlung?:
     | T
@@ -2693,6 +2859,14 @@ export interface PartnerbetriebeSelect<T extends boolean = true> {
     | {
         postleitzahlen?: T;
         radiusKm?: T;
+        regionen?:
+          | T
+          | {
+              art?: T;
+              name?: T;
+              schluessel?: T;
+              id?: T;
+            };
       };
   auftragsarten?: T;
   werkstatt?:
@@ -2725,6 +2899,72 @@ export interface PartnerbetriebeSelect<T extends boolean = true> {
         eignungGeprueft?: T;
         notiz?: T;
       };
+  pruefliste?:
+    | T
+    | {
+        stand?: T;
+        vorEinfuehrung?: T;
+        identitaet?:
+          | T
+          | {
+              erledigt?: T;
+              am?: T;
+              pruefer?: T;
+              notiz?: T;
+            };
+        leistungsumfang?:
+          | T
+          | {
+              erledigt?: T;
+              am?: T;
+              pruefer?: T;
+              notiz?: T;
+            };
+        ausstattung?:
+          | T
+          | {
+              erledigt?: T;
+              am?: T;
+              pruefer?: T;
+              notiz?: T;
+            };
+        region?:
+          | T
+          | {
+              erledigt?: T;
+              am?: T;
+              pruefer?: T;
+              notiz?: T;
+            };
+        besuch?:
+          | T
+          | {
+              am?: T;
+              pruefer?: T;
+              ergebnis?: T;
+              notiz?: T;
+              fotos?: T;
+              nichtMoeglich?: T;
+              nichtMoeglichGrund?: T;
+            };
+        standard?:
+          | T
+          | {
+              erledigt?: T;
+              am?: T;
+              pruefer?: T;
+              notiz?: T;
+              datei?: T;
+              vertragsverweis?: T;
+            };
+      };
+  sperre?:
+    | T
+    | {
+        grund?: T;
+        seit?: T;
+        von?: T;
+      };
   vertrag?:
     | T
     | {
@@ -2742,6 +2982,8 @@ export interface PartnerbetriebeSelect<T extends boolean = true> {
       };
   kontoKennung?: T;
   offeneAuszahlungen?: T;
+  leadUebersicht?: T;
+  leads?: T;
   bewerbung?: T;
   notiz?: T;
   kennung?: T;

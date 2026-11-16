@@ -6,7 +6,7 @@ import { kundenNachricht } from '../../lib/mail/vorlagen/nachricht';
 import { vorgangZuSeite } from '../../lib/data/payload-mapping';
 import type { Vorgaenge } from '../../payload-types';
 
-import { kundenNachrichtHandler } from './kunden-nachricht';
+import { MELDUNG_OHNE_BETRIEB, kundenNachrichtHandler } from './kunden-nachricht';
 
 /* FA-KERN-05: Nachricht an den Kunden aus dem Vorgang mit Mailverlauf. Resend nur als Attrappe über einen
  * nachgebildeten `fetch` (G5), erfundene Testdaten (G4). */
@@ -106,6 +106,29 @@ describe('Nachricht an den Kunden', () => {
     expect(mail?.text).toContain('leider müssen wir verschieben.');
   });
 
+  it('setzt bei der Vorlage „Ihr ausführender Betrieb“ Firma und Ort des Partnerbetriebs ein (FA-07-03)', async () => {
+    const vorlage = vorlageFuer('ausfuehrender-betrieb', 'SM24-B-2026-0061')!;
+    const mitBetrieb = vorgang({ vermittlung: { status: 'angenommen', partnerbetrieb: 7 } });
+    const r = req(vorlage, MITARBEITER, mitBetrieb) as unknown as { payload: { findByID: ReturnType<typeof vi.fn> } };
+    r.payload.findByID = vi.fn(async ({ collection }: { collection: string }) =>
+      collection === 'partnerbetriebe' ? { id: 7, firma: 'Testbetrieb Mitte GmbH', ort: 'Gießen' } : mitBetrieb,
+    );
+    const antwort = await kundenNachrichtHandler(r as never);
+    expect(antwort.status).toBe(200);
+    expect(gesendet[0].subject).toBe('Ihr ausführender Betrieb (SM24-B-2026-0061)');
+    expect(gesendet[0].text).toContain('Testbetrieb Mitte GmbH, Gießen');
+    expect(gesendet[0].text).not.toContain('{firma}');
+    const mail = (update.mock.calls[0][0].data as Partial<Vorgaenge>).mails?.at(-1);
+    expect(mail?.text).toContain('Testbetrieb Mitte GmbH, Gießen');
+
+    // Ohne Partnerbetrieb am Vorgang geht die Vorlage nicht hinaus.
+    gesendet.length = 0;
+    const ohne = await kundenNachrichtHandler(req(vorlage));
+    expect(ohne.status).toBe(400);
+    expect(((await ohne.json()) as { error: string }).error).toBe(MELDUNG_OHNE_BETRIEB);
+    expect(gesendet).toHaveLength(0);
+  });
+
   it('prüft Anmeldung, Rolle, Eingabe und Mailanbindung, bevor etwas hinausgeht', async () => {
     expect((await kundenNachrichtHandler(req({ betreff: 'a', text: 'b' }, null))).status).toBe(401);
     expect((await kundenNachrichtHandler(req({ betreff: 'a', text: 'b' }, { id: 9, rollen: ['partner'] }))).status).toBe(403);
@@ -121,8 +144,8 @@ describe('Nachricht an den Kunden', () => {
 });
 
 describe('Vorlagen und Prüfung', () => {
-  it('hat die vier Vorlagen, kurz und ohne Gedankenstriche, mit Vorgangsnummer', () => {
-    expect(NACHRICHT_VORLAGEN.map((v) => v.id)).toEqual(['rueckfrage', 'unterlagen-fehlen', 'termin-verschieben', 'abholung-bereit']);
+  it('hat die fünf Vorlagen, kurz und ohne Gedankenstriche, mit Vorgangsnummer', () => {
+    expect(NACHRICHT_VORLAGEN.map((v) => v.id)).toEqual(['rueckfrage', 'unterlagen-fehlen', 'termin-verschieben', 'abholung-bereit', 'ausfuehrender-betrieb']);
     for (const v of NACHRICHT_VORLAGEN) {
       expect(`${v.betreff} ${v.text}`, v.id).not.toMatch(/[–—]| - /);
       expect(nachrichtPruefen(v.betreff, v.text), v.id).toBeNull();

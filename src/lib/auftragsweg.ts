@@ -18,6 +18,7 @@
    ========================================================================== */
 
 import { formatCents, formatDateTime } from './format';
+import { auftragsartFuerLeistung } from './partner/leistungen';
 import { darfVermitteln } from './partner/vermittlung';
 import type { BewerbungStatus } from './partner/bewerbung';
 import type { AppointmentInfo, Auftragsweg, BusinessRecord, OwnArea, PaymentInfo, PriceQuote } from './types';
@@ -91,8 +92,8 @@ export interface PartnerFuerWeg {
 }
 
 /**
- * Partner, die diesen Auftrag bekommen dürfen: freigeschaltet (also nicht pausiert, beendet oder in
- * Prüfung), Abrechnungsmodell B, passende Auftragsart, Postleitzahl im Einsatzgebiet. Bei mehreren
+ * Partner, die diesen Auftrag bekommen dürfen: freigeschaltet (also nicht pausiert, gesperrt, beendet oder
+ * in Prüfung), Abrechnungsmodell B, passende Auftragsart, Postleitzahl im Einsatzgebiet. Bei mehreren
  * entscheidet das Team im Admin (A-049); hier gibt es keine Rangfolge.
  */
 export function passendePartner(
@@ -137,7 +138,10 @@ export interface StandortErmittlung {
 export interface StandortEingabe {
   postleitzahl: string;
   land?: string;
-  /** Leistung (Kennung aus `carKeyServices`). Heute gilt für jede Leistung dieselbe Auftragsart. */
+  /**
+   * Leistung (Kennung aus `carKeyServices`). Sie bestimmt die Auftragsart (`auftragsartFuerLeistung`,
+   * FA-PLATTFORM-01B): eine der neun Leistungen, wenn eindeutig, sonst der Sammelwert.
+   */
   leistung?: string;
   eigenbereich?: OwnArea;
   partner: readonly PartnerFuerWeg[];
@@ -162,7 +166,7 @@ export function terminstandorte(eingabe: StandortEingabe): StandortErmittlung {
   if (!eingabe.partnerwegAktiv || !deutschland || eigen || !/^\d{5}$/.test(plz)) {
     return { standorte, werkstattWeg, ohnePartner: false, passendePartnerIds: [] };
   }
-  const passend = passendePartner(plz, eingabe.partner);
+  const passend = passendePartner(plz, eingabe.partner, auftragsartFuerLeistung(eingabe.leistung));
   if (passend.length) standorte.push({ standort: 'partner', weg: 'partner' });
   return { standorte, werkstattWeg, ohnePartner: passend.length === 0, passendePartnerIds: passend.map((p) => p.id) };
 }

@@ -1,6 +1,5 @@
 import { APIError, type CollectionAfterChangeHook, type CollectionBeforeChangeHook, type PayloadRequest } from 'payload';
 
-import { AUFTRAGSART_AUTOSCHLUESSEL } from '../../lib/auftragsweg';
 import { vorgangZuSeite } from '../../lib/data/payload-mapping';
 import { formatCents, formatDateTime } from '../../lib/format';
 import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from '../../lib/mail/versand';
@@ -8,7 +7,7 @@ import { ohneSchraegstrich } from '../../lib/mail/vorlagen/gemeinsam';
 import type { Provision } from '../../lib/partner/abrechnung';
 import type { BewerbungStatus } from '../../lib/partner/bewerbung';
 import { KUNDE_VERLAUF, bestaetigungsPfad } from '../../lib/partner/kundenbestaetigung';
-import { AUFTRAGSART_SAMMELWERT_NAME, provisionsEintragWaehlen } from '../../lib/partner/leistungen';
+import { AUFTRAGSART_SAMMELWERT_NAME, auftragsartFuerVorgang, provisionsEintragWaehlen } from '../../lib/partner/leistungen';
 import {
   AUSZAHLUNG_LABEL,
   MELDUNG,
@@ -228,7 +227,9 @@ async function teamAenderung(data: Partial<Vorgaenge>, originalDoc: Vorgaenge, r
   const weg = data.auftragsweg === undefined ? originalDoc.auftragsweg : data.auftragsweg;
   const zentral = zentraleZahlung(weg, zahlung.umfang, partner?.abrechnungsmodell);
 
-  if (!v.auftragsart && originalDoc.bereich === 'autoschluessel' && nach) v.auftragsart = AUFTRAGSART_AUTOSCHLUESSEL as Vermittlung['auftragsart'];
+  // Auftragsart aus der gebuchten Leistung (FA-PLATTFORM-01B, Zusatz 7): eine der neun, wenn eindeutig, sonst
+  // der Sammelwert. Nur wenn noch keine gesetzt ist; gespeicherte Vorgänge bleiben, wie sie sind.
+  if (!v.auftragsart && originalDoc.bereich === 'autoschluessel' && nach) v.auftragsart = auftragsartFuerVorgang(originalDoc.daten) as Vermittlung['auftragsart'];
 
   /* ---- Wechsel des Partnerbetriebs oder der Auftragsart (bei jedem Stand) ---- */
   const partnerAlt = relationsId(altV.partnerbetrieb);

@@ -143,6 +143,27 @@ describe('Warnung vor dem Verlassen (FA-QA-02)', () => {
     expect(VERLASSEN_FRAGE_UNGESPEICHERT).not.toMatch(/[–—]/);
   });
 
+  it('ohne Wache (Schritte in der Historie, nicht am Anfang): nur die Rückfrage beim Neuladen, kein Eintrag (FA-QA-04B)', () => {
+    const t = fenster(false, true);
+    const ende = wacheEinrichten(t.f, undefined, { wache: false });
+    expect(t.eintraege).toHaveLength(1);
+    expect(t.hoerer.beforeunload).toHaveLength(1);
+    expect(t.hoerer.popstate).toHaveLength(0);
+    ende();
+    expect(t.zurueck()).toBe(0);
+    expect(t.hoerer.beforeunload).toHaveLength(0);
+  });
+
+  it('ein späterer Schritt des Ablaufs (Vorwärts) gilt nicht als Verlassen (FA-QA-04B)', () => {
+    const t = fenster(false);
+    wacheEinrichten(t.f, undefined, { imAblauf: (state) => (state as { schritt?: number } | null)?.schritt === 2 });
+    // Vorwärts auf einen Schritteintrag: keine Frage.
+    for (const h of [...t.hoerer.popstate]) (h as (e: { state: unknown }) => void)({ state: { schritt: 2 } });
+    expect(t.fragen).toEqual([]);
+    t.browserZurueck();
+    expect(t.fragen).toEqual([VERLASSEN_FRAGE]);
+  });
+
   it('die Frage sagt, was verloren geht und was bleibt, ohne Gedankenstrich', () => {
     expect(VERLASSEN_FRAGE).toContain('Dateien verloren');
     expect(VERLASSEN_FRAGE).toContain('übrigen Angaben bleiben');

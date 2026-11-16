@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { scrollVerhalten } from '@/lib/bewegung';
 import {
@@ -8,6 +8,8 @@ import {
   useStoredValue,
   writeStoredValue,
 } from '@/lib/client-state';
+
+import { SchrittHistorie, browserFenster } from './schritt-historie';
 
 export interface FlowStep {
   /** Stabile Kennung des Schrittes. */
@@ -67,6 +69,11 @@ export interface FlowState<T> {
   dismissRestored: () => void;
   /** Ob der Zwischenstand gespeichert werden konnte. */
   saved: boolean;
+  /**
+   * Schritte in der Browser-Historie (FA-QA-04B). Die FlowShell meldet darüber ihre Freigabe für „Weiter“
+   * und richtet die Rückfrage vor dem Verlassen nur am Anfang des Ablaufs mit Wacheintrag ein.
+   */
+  historie?: SchrittHistorie;
 }
 
 const STORAGE_PREFIX = 'sm24:flow:';
@@ -134,6 +141,8 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
   const [local, setLocal] = useState<Snapshot<T> | null>(null);
   const [dismissed, setDismissed] = useState(false);
   const [saved, setSaved] = useState(true);
+  // Ein Exemplar je Ablauf; ohne Fenster (Vorabrendern) tut es nichts.
+  const historie = useMemo(() => new SchrittHistorie(id, browserFenster), [id]);
 
   // Gespeicherter Stand, sofern er zur aktuellen Datenstruktur passt.
   const stored = useMemo<Snapshot<T> | null>(() => {
@@ -191,24 +200,43 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
   );
   const step = relevantSteps[stepIndex] ?? relevantSteps[0] ?? steps[0];
 
-  const goTo = useCallback(
-    (target: string) => {
+  // Stand für den popstate-Hörer; nach jedem Rendern aktuell (siehe unten).
+  const lage = useRef({ current, step, relevantSteps, validate, persist });
+
+  /**
+   * Schrittwechsel mit der Browser-Historie (FA-QA-04B): Nach vorn legt einen Eintrag an. Zurück geht über
+   * die Historie auf den nächsten Eintrag mit dem Zielschritt; der Wechsel folgt dann mit dem popstate,
+   * damit der eigene Zurück-Knopf, die Schrittlinks und Browser-Zurück dieselben Einträge nutzen. Gibt es
+   * keinen solchen Eintrag (etwa nach einem Neuladen), wechselt der Ablauf direkt.
+   */
+  const wechseln = useCallback(
+    (target: string, patch?: Partial<T>) => {
       if (!steps.some((s) => s.id === target)) return;
-      persist({ ...current, stepId: target });
+      // Ein Sprung läuft noch: kein zweiter (doppelter Klick, kein Sprung um zwei Schritte).
+      if (historie.unterwegs()) return;
+      const von = step?.id ?? current.stepId;
+      const richtung = steps.findIndex((s) => s.id === target) - steps.findIndex((s) => s.id === von);
+      const data = patch ? { ...current.data, ...patch } : current.data;
+      if (richtung < 0 && historie.zurueck(target)) {
+        if (patch) {
+          // Die Änderung gilt sofort, auch wenn das popstate vor dem nächsten Rendern ankommt.
+          const geaendert = { ...current, data };
+          persist(geaendert);
+          lage.current = { ...lage.current, current: geaendert };
+        }
+        return;
+      }
+      persist({ ...current, data, stepId: target });
+      if (richtung > 0) historie.vor(von, target);
       zumSchrittScrollen();
     },
-    [steps, current, persist],
+    [steps, step, current, persist, historie],
   );
 
+  const goTo = useCallback((target: string) => wechseln(target), [wechseln]);
+
   /** Daten ändern und in einem Zug zu einem Schritt springen (sonst überschriebe der Sprung die Änderung). */
-  const updateAndGoTo = useCallback(
-    (patch: Partial<T>, target: string) => {
-      if (!steps.some((s) => s.id === target)) return;
-      persist({ ...current, data: { ...current.data, ...patch }, stepId: target });
-      zumSchrittScrollen();
-    },
-    [steps, current, persist],
-  );
+  const updateAndGoTo = useCallback((patch: Partial<T>, target: string) => wechseln(target, patch), [wechseln]);
 
   const next = useCallback(() => {
     const at = relevantSteps.findIndex((s) => s.id === step?.id);
@@ -221,6 +249,40 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
     const target = relevantSteps[at - 1];
     if (target) goTo(target.id);
   }, [relevantSteps, step, goTo]);
+
+  // Der aktuelle Eintrag der Historie zeigt den angezeigten Schritt (nach Laden, Neuladen, Wiederherstellen,
+  // „Neu beginnen“). Schreibt nur bei Abweichung, nie einen neuen Eintrag.
+  const gezeigt = step?.id ?? '';
+  useEffect(() => {
+    historie.abgleichen(gezeigt);
+  });
+
+  // Browser- und Android-Zurück und -Vorwärts: auf den Schritt des Eintrags, vorwärts nie an einem
+  // gesperrten Schritt vorbei (`validate` und die Freigabe der FlowShell).
+  useEffect(() => {
+    lage.current = { current, step, relevantSteps, validate, persist };
+  });
+  useEffect(() => {
+    const fenster = browserFenster();
+    if (!fenster) return;
+    const alle = steps.map((s) => s.id);
+    const beiPopstate = (event: { state: unknown }) => {
+      const l = lage.current;
+      const aktuell = l.step?.id ?? '';
+      const schritt = historie.beiPopstate(event.state, {
+        aktuell,
+        alle,
+        relevant: l.relevantSteps.map((s) => s.id),
+        gueltig: l.validate ? l.validate(l.current.data, aktuell) : true,
+      });
+      if (schritt && schritt !== aktuell) {
+        l.persist({ ...l.current, stepId: schritt });
+        zumSchrittScrollen();
+      }
+    };
+    fenster.addEventListener('popstate', beiPopstate);
+    return () => fenster.removeEventListener('popstate', beiPopstate);
+  }, [historie, steps]);
 
   const reset = useCallback(() => {
     removeStoredValue(storageKey);
@@ -249,6 +311,7 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
     restored: zeigtGeladenenStand(Boolean(stored), local !== null, dismissed),
     dismissRestored: () => setDismissed(true),
     saved,
+    historie,
   };
 }
 

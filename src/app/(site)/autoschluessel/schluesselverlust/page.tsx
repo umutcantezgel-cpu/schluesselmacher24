@@ -57,8 +57,6 @@ export default async function SchluesselverlustPage() {
         paragraphs: [
           'Ist ein Autoschlüssel verloren, fertigen wir einen Ersatzschlüssel. Wir fräsen den Bart und '
           + 'machen den Schlüssel dem Fahrzeug bekannt. Das nennt man Anlernen.',
-          'Dabei klären wir mit Ihnen, ob der verlorene Schlüssel aus dem Fahrzeug entfernt werden '
-          + 'soll.',
           'Vor der Terminbestätigung sagen wir Ihnen, was möglich ist und was es kostet. Das ist ein '
           + 'fester Preis, ein Preisrahmen oder der Hinweis, dass wir Ihre Unterlagen zuerst von Hand '
           + 'prüfen.',
@@ -71,8 +69,8 @@ export default async function SchluesselverlustPage() {
           {
             title: 'Es funktioniert noch ein Schlüssel',
             body:
-              'Dann ist der Aufwand für den Ersatz deutlich geringer. Ihr vorhandener Schlüssel dient '
-              + 'uns als Vorlage.',
+              'Dann ist der Aufwand für den Ersatz deutlich geringer. Schicken Sie uns Fotos davon. '
+              + 'Damit können wir Machbarkeit und Preis einordnen.',
           },
           {
             title: 'Es ist kein Schlüssel mehr da',

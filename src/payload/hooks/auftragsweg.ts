@@ -2,6 +2,7 @@ import { APIError, type CollectionBeforeChangeHook, type FieldHook } from 'paylo
 
 import { AUFTRAGSWEG_LABEL, istAuftragsweg, passendePartner, plzMusterAusText, restbetragCents, type PartnerFuerWeg } from '../../lib/auftragsweg';
 import type { BewerbungStatus } from '../../lib/partner/bewerbung';
+import { auftragsartFuerVorgang } from '../../lib/partner/leistungen';
 import type { PaymentInfo } from '../../lib/types';
 import type { Partnerbetriebe, Vorgaenge } from '../../payload-types';
 
@@ -86,7 +87,7 @@ export function partnerFuerWeg(
 }
 
 /**
- * Vorschlagsliste am Vorgang (FA-KERN-03): freigeschaltete Partnerbetriebe mit Modell B und passender Auftragsart, deren
+ * Vorschlagsliste am Vorgang (FA-KERN-03): freigeschaltete (nicht pausierte, nicht gesperrte) Partnerbetriebe mit Modell B und passender Auftragsart, deren
  * Einsatzgebiet die Postleitzahl des Kunden abdeckt. Nur bei Vorgängen im Partnerweg; die Zuordnung trifft
  * das Team (A-049), eine Rangfolge gibt es nicht.
  */
@@ -105,7 +106,9 @@ export const partnerVorschlaege: FieldHook<Vorgaenge> = async ({ data, req }) =>
       req,
     });
     const betriebe = gefunden.docs as Partnerbetriebe[];
-    const passend = new Set(passendePartner(plz, betriebe.map(partnerFuerWeg)).map((p) => p.id));
+    // Auftragsart der Vermittlung, sonst aus der gebuchten Leistung (FA-PLATTFORM-01B, Zusatz 7).
+    const art = doc.vermittlung?.auftragsart || auftragsartFuerVorgang(doc.daten);
+    const passend = new Set(passendePartner(plz, betriebe.map(partnerFuerWeg), art).map((p) => p.id));
     const zeilen = betriebe.filter((b) => passend.has(String(b.id))).map((b) => `${b.firma} (${b.ort})`);
     return zeilen.length ? zeilen.join('\n') : `Kein freigeschalteter Partnerbetrieb deckt ${plz} ab.`;
   } catch (error) {

@@ -697,7 +697,8 @@ export function Assistent({
 
   function selectWorkingKeys(value: number) {
     // Totalverlust gilt nur bei 0 funktionierenden Schlüsseln (FA-KERN-02).
-    // Eine vorgewählte Leistung, die zur neuen Zahl nicht mehr passt (Zweitschlüssel ohne Vorlage), entfällt.
+    // Eine vorgewählte Leistung, die zur neuen Zahl nicht mehr passt (Zweitschlüssel ohne Vorlage, Ersatz bei Verlust trotz
+    // funktionierendem Schlüssel), entfällt.
     const serviceId = vorgewaehlteLeistung(data.serviceId, services, data.keyKind, value) || (data.keyKind ? '' : data.serviceId);
     flow.update({ workingKeys: value, keinSchluesselMehr: value === 0 && data.keinSchluesselMehr, serviceId, slotDate: '', slotTime: '', depositAccepted: false });
   }

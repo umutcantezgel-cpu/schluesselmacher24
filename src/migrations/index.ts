@@ -25,6 +25,7 @@ import * as migration_20261116_023442_einsende_varianten from './20261116_023442
 import * as migration_20261116_033126_einsende_sendung from './20261116_033126_einsende_sendung';
 import * as migration_20261116_042326_gehaeuse from './20261116_042326_gehaeuse';
 import * as migration_20261116_072304_partner_qualitaet from './20261116_072304_partner_qualitaet';
+import * as migration_20261116_081528_partner_pruefung from './20261116_081528_partner_pruefung';
 
 export const migrations = [
   {
@@ -161,5 +162,10 @@ export const migrations = [
     up: migration_20261116_072304_partner_qualitaet.up,
     down: migration_20261116_072304_partner_qualitaet.down,
     name: '20261116_072304_partner_qualitaet',
+  },
+  {
+    up: migration_20261116_081528_partner_pruefung.up,
+    down: migration_20261116_081528_partner_pruefung.down,
+    name: '20261116_081528_partner_pruefung',
   },
 ];

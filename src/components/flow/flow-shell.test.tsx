@@ -2,6 +2,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { FlowState, FlowStep } from '@/lib/flow/use-flow';
+import { SchrittHistorie } from '@/lib/flow/schritt-historie';
 import { FlowShell, GESPERRT_STANDARD, fortschrittText, verlassenGrundAus, type FlowShellProps } from './flow-shell';
 
 const SCHRITTE: FlowStep[] = [
@@ -145,5 +146,14 @@ describe('FlowShell: Grund der Warnung vor dem Verlassen (FA-QA-02)', () => {
   it('beim Absenden und ohne Grund keine Warnung', () => {
     expect(verlassenGrundAus({ submitting: true, ungesichert: true, saved: false })).toEqual({ dateien: false, ungespeichert: false });
     expect(verlassenGrundAus({ submitting: false, ungesichert: false, saved: true })).toEqual({ dateien: false, ungespeichert: false });
+  });
+});
+
+describe('FlowShell: Schritte in der Browser-Historie (FA-QA-04B)', () => {
+  it('rendert mit Schritt-Historie ohne Fenster (Vorabrendern) wie ohne', () => {
+    const historie = new SchrittHistorie('test', () => null);
+    const mit = rahmen({ ungesichert: true }, 1, { historie });
+    expect(mit).toContain('Schritt 2 von 3');
+    expect(mit).toBe(rahmen({ ungesichert: true }, 1));
   });
 });

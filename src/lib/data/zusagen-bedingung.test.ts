@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 
 import { describe, expect, it } from 'vitest';
@@ -53,5 +53,26 @@ describe('Zusagen mit Bedingung im Autoschlüsselbereich (FA-14-11)', () => {
       ...[...(rubrikenJson as unknown as Rubrik[]), ...rubriken()].flatMap((r) => [r.erklaerung, ...(r.ablauf ?? []).map((s) => s.text)]),
     ];
     for (const text of texte) expect(text ?? '').not.toMatch(UNBEDINGT);
+  });
+
+  // Nachtrag der Abnahme (Befund der Gegenprüfung): auch die Leistungsseiten selbst, etwa Funkschlüssel.
+  it('Leistungsseiten im Autoschlüsselbereich sagen die Elektronik nicht ohne Bedingung zu', () => {
+    const wurzel = path.join(process.cwd(), 'src', 'app', '(site)', 'autoschluessel');
+    const dateien: string[] = [];
+    const sammeln = (ordner: string) => {
+      for (const name of readdirSync(ordner)) {
+        const pfad = path.join(ordner, name);
+        if (statSync(pfad).isDirectory()) sammeln(pfad);
+        else if (/\.tsx?$/.test(name) && !/\.test\./.test(name)) dateien.push(pfad);
+      }
+    };
+    sammeln(wurzel);
+    expect(dateien.length).toBeGreaterThan(10);
+    for (const datei of dateien) {
+      const text = readFileSync(datei, 'utf8');
+      expect(text, path.relative(process.cwd(), datei)).not.toMatch(/Elektronik bleibt (dann )?erhalten/);
+    }
+    const funk = readFileSync(path.join(wurzel, 'funkschluessel', 'page.tsx'), 'utf8');
+    expect(funk).toContain('wenn sie in das neue Gehäuse passt');
   });
 });

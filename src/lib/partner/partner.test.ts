@@ -15,7 +15,17 @@ import {
   vermittlungWechselErlaubt,
 } from './index';
 
-const GEPRUEFT = { gewerbeGeprueft: true, identitaetGeprueft: true, eignungGeprueft: true, vertragUnterschrieben: true };
+const PUNKT = { erledigt: true, am: '2026-11-10T00:00:00.000Z', pruefer: 'Prüferin Test' };
+/** Vollständige Prüfliste (FA-PLATTFORM-01B), erfundene Angaben. */
+const PRUEFLISTE = {
+  identitaet: PUNKT,
+  leistungsumfang: PUNKT,
+  ausstattung: PUNKT,
+  region: PUNKT,
+  besuch: { am: '2026-11-11T00:00:00.000Z', pruefer: 'Prüferin Test', ergebnis: 'geeignet' as const },
+  standard: { ...PUNKT, vertragsverweis: 'Partnervertrag, Anlage Qualität' },
+};
+const GEPRUEFT = { gewerbeGeprueft: true, identitaetGeprueft: true, eignungGeprueft: true, vertragUnterschrieben: true, pruefliste: PRUEFLISTE };
 
 describe('Bewerbung (G-39, MA-16)', () => {
   it('erlaubt nur vorgesehene Übergänge und endet bei abgelehnt und beendet', () => {
@@ -23,11 +33,15 @@ describe('Bewerbung (G-39, MA-16)', () => {
     expect(uebergangErlaubt('eingegangen', 'freigeschaltet')).toBe(false);
     expect(uebergangErlaubt('abgelehnt', 'in-pruefung')).toBe(false);
     expect(uebergangErlaubt('freigeschaltet', 'pausiert')).toBe(true);
-    expect(BEWERBUNG_STATUS).toHaveLength(9);
+    expect(uebergangErlaubt('freigeschaltet', 'gesperrt')).toBe(true);
+    expect(uebergangErlaubt('gesperrt', 'pausiert')).toBe(false);
+    expect(BEWERBUNG_STATUS).toHaveLength(10);
   });
 
   it('schaltet nur mit allen Prüfungen und unterschriebenem Vertrag frei', () => {
-    expect(fehltFuerFreischaltung({})).toEqual(['Gewerbenachweis prüfen', 'Identität prüfen', 'fachliche Eignung prüfen', 'unterschriebenen Vertrag hinterlegen']);
+    expect(fehltFuerFreischaltung({}).slice(0, 4)).toEqual(['Gewerbenachweis prüfen', 'Identität prüfen', 'fachliche Eignung prüfen', 'unterschriebenen Vertrag hinterlegen']);
+    // Ohne Prüfliste fehlen dazu ihre sechs Punkte (FA-PLATTFORM-01B).
+    expect(fehltFuerFreischaltung({})).toHaveLength(10);
     expect(statuswechselPruefen('vertrag-unterschrieben', 'freigeschaltet', { ...GEPRUEFT, identitaetGeprueft: false })).toContain('Identität prüfen');
     expect(statuswechselPruefen('vertrag-unterschrieben', 'freigeschaltet', GEPRUEFT)).toBeNull();
     expect(statuswechselPruefen('in-pruefung', 'freigeschaltet', GEPRUEFT)).toMatch(/geht es nicht direkt/);

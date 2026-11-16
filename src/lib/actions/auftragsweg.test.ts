@@ -121,7 +121,8 @@ async function buchen(plz: string, anpassen: Partial<Eingabe> = {}) {
 beforeEach(() => {
   stored.length = 0;
   partner.aktiv = false;
-  partner.liste = [{ id: '7', status: 'freigeschaltet', postleitzahlen: ['60*'], auftragsarten: ['autoschluessel-vor-ort'], abrechnungsmodell: 'B' }];
+  // Zweitschlüssel gehört zur Leistung „Autoschlüssel nachmachen“ (FA-PLATTFORM-01B, Zusatz 7).
+  partner.liste = [{ id: '7', status: 'freigeschaltet', postleitzahlen: ['60*'], auftragsarten: ['schluessel-nachmachen'], abrechnungsmodell: 'B' }];
   resetRateLimits();
 });
 

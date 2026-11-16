@@ -66,7 +66,7 @@ export default async function FunkschluesselPage() {
           'Das erklärt die meisten Fehler. Gehen die Tasten nicht, startet der Motor aber, liegt es '
           + 'am Funk. Umgekehrt können die Tasten gehen, während der Motor nicht anspringt.',
           'Wir prüfen zuerst, welches Teil ausgefallen ist. Oft reicht ein neues Gehäuse, neue Tasten '
-          + 'oder eine neue Batterie. Die Elektronik bleibt dann erhalten. Das ist günstiger als ein '
+          + 'oder eine neue Batterie. Die vorhandene Elektronik verwenden wir weiter, wenn sie in das neue Gehäuse passt. Das ist günstiger als ein '
           + 'ganz neuer Schlüssel.',
         ],
       }}

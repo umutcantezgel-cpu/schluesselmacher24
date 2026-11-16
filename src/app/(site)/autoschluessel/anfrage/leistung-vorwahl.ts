@@ -28,7 +28,9 @@ export function leistungPasst(service: CarKeyService, keyKind: KeyKind | '', wor
 
 /**
  * Leistung nach der Wahl der Schlüsselart: die gewünschte aus der Adresse, wenn sie zur Art passt; sonst
- * keine (der Kunde wählt im Schritt „Leistung“ selbst).
+ * keine (der Kunde wählt im Schritt „Leistung“ selbst). „Ersatzschlüssel bei Verlust“ gilt laut Daten, wenn
+ * alle Schlüssel verloren oder beschädigt sind. Funktioniert noch einer, wählen wir sie nicht vor; der Kunde
+ * kann sie im Schritt „Leistung“ weiter selbst wählen.
  */
 export function vorgewaehlteLeistung(
   wunsch: string,
@@ -38,5 +40,7 @@ export function vorgewaehlteLeistung(
 ): string {
   if (!wunsch) return '';
   const service = services.find((s) => s.id === wunsch);
-  return service && leistungPasst(service, keyKind, workingKeys) ? wunsch : '';
+  if (!service || !leistungPasst(service, keyKind, workingKeys)) return '';
+  if (service.id === 'ersatz-bei-verlust' && workingKeys !== null && workingKeys > 0) return '';
+  return wunsch;
 }

@@ -43,7 +43,34 @@ export const NACHRICHT_VORLAGEN: readonly NachrichtVorlage[] = [
       'Ihr Auftrag ist fertig und liegt zur Abholung bereit.\n\n'
       + 'Bitte bringen Sie Ihre Vorgangsnummer und einen Ausweis mit. Wir freuen uns auf Sie.',
   },
+  {
+    // FA-07-03 (FA-PLATTFORM-01B, Zusatz 8): Der Kunde erfährt vor dem Einsatz, welcher Betrieb ausführt.
+    // `{firma}` und `{ort}` setzt der Server beim Senden aus dem Partnerbetrieb des Vorgangs ein.
+    id: 'ausfuehrender-betrieb',
+    name: 'Ihr ausführender Betrieb',
+    betreff: 'Ihr ausführender Betrieb ({nummer})',
+    text:
+      'Ihren Auftrag führt ein Partnerbetrieb aus unserem Netz aus. Ihr ausführender Betrieb und Vertragspartner '
+      + 'für die Ausführung ist:\n\n{firma}, {ort}\n\n'
+      + 'Der Betrieb stimmt den genauen Termin mit Ihnen ab. Bei Fragen antworten Sie einfach auf diese E-Mail.',
+  },
 ];
+
+/** Anfang des Betreffs der Vorlage „Ihr ausführender Betrieb“; daran erkennt der Vorgang den Versand. */
+export const BETRIEB_BETREFF_ANFANG = 'Ihr ausführender Betrieb';
+
+/** Platzhalter der Vorlage „Ihr ausführender Betrieb“, die der Server beim Senden füllt. */
+export const BETRIEB_PLATZHALTER = /\{(firma|ort)\}/;
+
+/** Setzt Firma und Ort des Partnerbetriebs in Betreff oder Text ein. */
+export function betriebEinsetzen(text: string, betrieb: { firma: string; ort: string }): string {
+  return text.replaceAll('{firma}', () => betrieb.firma.trim()).replaceAll('{ort}', () => betrieb.ort.trim());
+}
+
+/** Wurde die Nachricht „Ihr ausführender Betrieb“ schon erfolgreich gesendet? */
+export function betriebMitgeteilt(mails: ReadonlyArray<{ art?: string | null; ergebnis?: string | null; betreff?: string | null }> | null | undefined): boolean {
+  return (mails ?? []).some((m) => m.art === 'nachricht' && m.ergebnis === 'gesendet' && (m.betreff ?? '').startsWith(BETRIEB_BETREFF_ANFANG));
+}
 
 /** Vorlage mit eingesetzter Vorgangsnummer; `undefined` für eine unbekannte Kennung. */
 export function vorlageFuer(id: string, nummer: string): { betreff: string; text: string } | undefined {

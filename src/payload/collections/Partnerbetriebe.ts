@@ -1,11 +1,13 @@
-import type { CollectionConfig } from 'payload';
+import type { CollectionConfig, Field, FieldAccess } from 'payload';
 
-import { BEWERBUNG_STATUS, statuswechselPruefen, type BewerbungStatus } from '../../lib/partner/bewerbung';
+import { BEWERBUNG_STATUS } from '../../lib/partner/bewerbung';
 import { GERAETE_ARTEN, MAX_ERFAHRUNG_JAHRE, MAX_GERAETE, MAX_RADIUS_KM } from '../../lib/partner/bewerbungsformular';
 import { AUFTRAGSART_OPTIONEN } from '../../lib/partner/leistungen';
-import { feldNurInhaber, istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
+import { BESUCH_ERGEBNISSE, PRUEFLISTE_MELDUNG, PRUEFLISTE_PUNKTE, VOR_EINFUEHRUNG_TEXT } from '../../lib/partner/pruefliste';
+import { feldNurInhaber, hatRolle, istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
 import { euroFeld, kennungFeld } from '../fields/gemeinsam';
-import { auftragsartenPruefen, bewerbungUebernehmen, provisionenPruefen } from '../hooks/partner-bewerbung';
+import { bewerbungUebernehmen } from '../hooks/partner-bewerbung';
+import { leadUebersichtFeld, partnerbetriebNachAenderung, partnerbetriebVorAenderung, prueflisteStandFeld } from '../hooks/partner-pruefung';
 import { partnervertragEndpunkte } from '../hooks/partnervertrag-pdf';
 
 /**
@@ -16,10 +18,39 @@ import { partnervertragEndpunkte } from '../hooks/partnervertrag-pdf';
  */
 export const AUFTRAGSARTEN = AUFTRAGSART_OPTIONEN;
 
+/** Neue Felder der Prüfung (FA-PLATTFORM-01B): lesen und ändern nur das Team. */
+export const feldNurTeam: FieldAccess = ({ req: { user } }) => hatRolle(user, 'inhaber', 'mitarbeiter');
+const nurTeam = { read: feldNurTeam, create: feldNurTeam, update: feldNurTeam };
+/** Schreibt nur der Server (Hook); das Team liest. */
+const nurServer = { read: feldNurTeam, create: () => false, update: () => false };
+const datumTag = { date: { pickerAppearance: 'dayOnly' as const, displayFormat: 'dd.MM.yyyy' } };
+
+/** Ein Punkt der Prüfliste: erledigt, Datum, Prüfer, Notiz (FA-07-13 bis FA-07-16). */
+function prueflistePunkt(name: string, label: string, zusatz: Field[] = []): Field {
+  return {
+    name,
+    type: 'group',
+    label,
+    fields: [
+      {
+        type: 'row',
+        fields: [
+          { name: 'erledigt', type: 'checkbox', label: 'Erledigt', admin: { width: '20%' } },
+          { name: 'am', type: 'date', label: 'Datum', admin: { width: '30%', ...datumTag, description: 'Beim Abhaken heute, wenn leer.' } },
+          { name: 'pruefer', type: 'text', label: 'Prüfer', admin: { width: '50%', description: 'Beim Abhaken Ihr Name, wenn leer.' } },
+        ],
+      },
+      { name: 'notiz', type: 'textarea', label: 'Notiz' },
+      ...zusatz,
+    ],
+  };
+}
+
 /**
- * Partnerbetriebe (G-39, G-40, MA-16): Bewerbungsstand mit Prüfpflichten vor der Freischaltung,
- * Einsatzgebiet und Auftragsarten, Vertrag, Abrechnungsmodell (A aktiv, B erst nach
- * PARTNERMODELL: B). Provisionen sieht und ändert nur der Inhaber (G13).
+ * Partnerbetriebe (G-39, G-40, MA-16, FA-PLATTFORM-01B): Bewerbungsstand mit Prüfpflichten und Prüfliste vor
+ * der Freischaltung, Pausieren und Sperren mit Grund, Einsatzgebiet und Auftragsarten, Vertrag,
+ * Abrechnungsmodell (A aktiv, B erst nach PARTNERMODELL: B), Leads des Betriebs. Provisionen sieht und ändert
+ * nur der Inhaber (G13).
  */
 export const Partnerbetriebe: CollectionConfig = {
   slug: 'partnerbetriebe',
@@ -28,7 +59,9 @@ export const Partnerbetriebe: CollectionConfig = {
     group: 'Aufträge',
     useAsTitle: 'firma',
     defaultColumns: ['firma', 'ort', 'status', 'abrechnungsmodell'],
-    description: 'Freischalten erst nach Prüfung von Gewerbe, Identität und Eignung und mit unterschriebenem Vertrag.',
+    description:
+      'Freischalten erst nach Prüfung von Gewerbe, Identität und Eignung, mit unterschriebenem Vertrag und vollständiger Prüfliste '
+      + 'samt Besuch vor Ort. Pausieren und Sperren nur mit Grund. Anleitung: docs/betrieb/partner-pruefen.md.',
   },
   access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber },
   trash: true,
@@ -36,25 +69,10 @@ export const Partnerbetriebe: CollectionConfig = {
   hooks: {
     // Bewerbung verknüpft: leere Felder aus dem Formular übernehmen (FA-PLATTFORM-01).
     beforeValidate: [bewerbungUebernehmen],
-    beforeChange: [
-      ({ data, originalDoc }) => {
-        // Nur Autoschlüssel und Fahrzeugschlüssel (FA-07-02): frühere Auftragsarten nicht neu setzen.
-        const artFehler = auftragsartenPruefen(data?.auftragsarten, originalDoc?.auftragsarten);
-        if (artFehler) throw new Error(artFehler);
-        const provisionFehler = provisionenPruefen(data?.provisionen, originalDoc?.provisionen);
-        if (provisionFehler) throw new Error(provisionFehler);
-        const von = (originalDoc?.status ?? 'eingegangen') as BewerbungStatus;
-        const nach = (data?.status ?? von) as BewerbungStatus;
-        const p = { ...(originalDoc?.pruefung ?? {}), ...(data?.pruefung ?? {}) };
-        const vertrag = { ...(originalDoc?.vertrag ?? {}), ...(data?.vertrag ?? {}) };
-        const fehler = statuswechselPruefen(von, nach, { ...p, vertragUnterschrieben: Boolean(vertrag.unterschriebenAm) });
-        if (fehler) throw new Error(fehler);
-        if (data?.abrechnungsmodell === 'B' && process.env.PARTNERMODELL_B !== 'aktiv') {
-          throw new Error('Modell B ist ausgeschaltet, bis Anwalt und Steuerberatung es freigeben (PARTNERMODELL: B).');
-        }
-        return data;
-      },
-    ],
+    // Auftragsarten, Prüfliste, Statusautomat mit Sperrgrund, Modell B (FA-PLATTFORM-01B).
+    beforeChange: [partnerbetriebVorAenderung],
+    // Pausiert, gesperrt oder beendet: laufende Leads zur Klärung markieren.
+    afterChange: [partnerbetriebNachAenderung],
   },
   fields: [
     {
@@ -88,7 +106,19 @@ export const Partnerbetriebe: CollectionConfig = {
     {
       type: 'row',
       fields: [
-        { name: 'status', type: 'select', label: 'Stand', required: true, defaultValue: 'eingegangen', options: [...BEWERBUNG_STATUS], index: true, admin: { width: '50%' } },
+        {
+          name: 'status',
+          type: 'select',
+          label: 'Stand',
+          required: true,
+          defaultValue: 'eingegangen',
+          options: [...BEWERBUNG_STATUS],
+          index: true,
+          admin: {
+            width: '50%',
+            description: 'Pausiert und gesperrt: keine neue Zuordnung, laufende Leads werden zur Klärung markiert. Grund unten eintragen.',
+          },
+        },
         {
           name: 'abrechnungsmodell',
           type: 'select',
@@ -122,6 +152,45 @@ export const Partnerbetriebe: CollectionConfig = {
           },
         },
         { name: 'radiusKm', type: 'number', label: 'Umkreis (km)', min: 0, max: MAX_RADIUS_KM },
+        {
+          // Zuordnung zu Orten und Landkreisen (FA-22-40). Darf leer sein, bis die Ortsdatenbasis steht
+          // (FA-PLATTFORM-03); bis dahin nur Dokumentation, die Zuordnung rechnet mit den Postleitzahlen.
+          name: 'regionen',
+          type: 'array',
+          label: 'Orte und Landkreise',
+          labels: { singular: 'Ort oder Landkreis', plural: 'Orte und Landkreise' },
+          access: nurTeam,
+          admin: {
+            description: 'Freiwillig. Wird noch nicht ausgewertet; die Zuordnung rechnet mit den Postleitzahlen oben.',
+          },
+          fields: [
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'art',
+                  type: 'select',
+                  label: 'Art',
+                  required: true,
+                  options: [
+                    { label: 'Ort', value: 'ort' },
+                    { label: 'Landkreis', value: 'landkreis' },
+                  ],
+                  admin: { width: '25%' },
+                },
+                { name: 'name', type: 'text', label: 'Name', required: true, admin: { width: '45%' } },
+                {
+                  name: 'schluessel',
+                  type: 'text',
+                  label: 'Amtlicher Schlüssel',
+                  admin: { width: '30%', description: 'Freiwillig: Gemeindeschlüssel (8 Ziffern) oder Kreisschlüssel (5 Ziffern).' },
+                  validate: (wert: unknown) =>
+                    wert === null || wert === undefined || wert === '' || /^(\d{5}|\d{8})$/.test(String(wert)) ? true : 'Bitte 5 oder 8 Ziffern.',
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
     {
@@ -197,6 +266,114 @@ export const Partnerbetriebe: CollectionConfig = {
       ],
     },
     {
+      // Prüfliste vor der Freischaltung (FA-PLATTFORM-01B, FA-07-13 bis FA-07-18): je Punkt Datum, Prüfer, Notiz.
+      name: 'pruefliste',
+      type: 'group',
+      label: 'Prüfliste vor der Freischaltung',
+      access: nurTeam,
+      admin: {
+        description:
+          'Freischalten geht erst, wenn alle Punkte erledigt sind. Der Besuch vor Ort ist Pflicht, außer „Besuch nicht möglich“ mit Grund.',
+      },
+      fields: [
+        {
+          // Nur Anzeige, nicht gespeichert (virtuell, keine Migration).
+          name: 'stand',
+          type: 'text',
+          label: 'Stand der Prüfliste',
+          virtual: true,
+          admin: { readOnly: true },
+          hooks: { afterRead: [prueflisteStandFeld] },
+        },
+        {
+          name: 'vorEinfuehrung',
+          type: 'checkbox',
+          label: VOR_EINFUEHRUNG_TEXT[0].toUpperCase() + VOR_EINFUEHRUNG_TEXT.slice(1),
+          access: nurServer,
+          admin: {
+            readOnly: true,
+            condition: (_data, sib) => Boolean(sib?.vorEinfuehrung),
+            description: 'Setzt nur die Migration. Der Betrieb bleibt freigeschaltet; nach einer Sperre gilt die volle Prüfliste.',
+          },
+        },
+        ...PRUEFLISTE_PUNKTE.map((punkt) => prueflistePunkt(punkt.name, punkt.label)),
+        {
+          name: 'besuch',
+          type: 'group',
+          label: 'Besuch vor Ort',
+          admin: { description: 'Vor der endgültigen Freischaltung nach Möglichkeit persönlich besuchen und vor Ort ansehen.' },
+          fields: [
+            {
+              type: 'row',
+              fields: [
+                { name: 'am', type: 'date', label: 'Besucht am', admin: { width: '30%', ...datumTag } },
+                { name: 'pruefer', type: 'text', label: 'Besucht von', admin: { width: '40%' } },
+                { name: 'ergebnis', type: 'select', label: 'Ergebnis', options: [...BESUCH_ERGEBNISSE], admin: { width: '30%' } },
+              ],
+            },
+            { name: 'notiz', type: 'textarea', label: 'Notiz zum Besuch' },
+            {
+              name: 'fotos',
+              type: 'relationship',
+              relationTo: 'interne-dateien',
+              hasMany: true,
+              label: 'Fotos vom Besuch',
+              admin: { description: 'Als interne Dateien, nur für das Team sichtbar.' },
+            },
+            {
+              type: 'row',
+              fields: [
+                { name: 'nichtMoeglich', type: 'checkbox', label: 'Besuch nicht möglich', admin: { width: '30%' } },
+                {
+                  name: 'nichtMoeglichGrund',
+                  type: 'textarea',
+                  label: 'Grund',
+                  admin: { width: '70%', condition: (_data, sib) => Boolean(sib?.nichtMoeglich) },
+                  validate: (wert: unknown, { siblingData }: { siblingData: Record<string, unknown> }) =>
+                    siblingData?.nichtMoeglich && !(typeof wert === 'string' && wert.trim()) ? PRUEFLISTE_MELDUNG.besuchOhneGrund : true,
+                },
+              ],
+            },
+          ],
+        },
+        prueflistePunkt('standard', 'Qualitätsstandard schriftlich', [
+          {
+            type: 'row',
+            fields: [
+              { name: 'datei', type: 'relationship', relationTo: 'interne-dateien', label: 'Datei', admin: { width: '50%' } },
+              {
+                name: 'vertragsverweis',
+                type: 'text',
+                label: 'oder Verweis auf den Vertrag',
+                admin: { width: '50%', description: 'Etwa „Partnervertrag, Anlage Qualität“.' },
+              },
+            ],
+          },
+        ]),
+      ],
+    },
+    {
+      // Pausieren und Sperren (FA-07-19): Grund Pflicht, Datum und Bearbeiter setzt der Server.
+      name: 'sperre',
+      type: 'group',
+      label: 'Pausieren oder sperren',
+      access: nurTeam,
+      admin: {
+        description:
+          'Grund eintragen und zugleich den Stand auf „Pausiert“ oder „Gesperrt“ setzen. Beim Aufheben kommt der Eintrag in die interne Notiz.',
+      },
+      fields: [
+        { name: 'grund', type: 'textarea', label: 'Grund' },
+        {
+          type: 'row',
+          fields: [
+            { name: 'seit', type: 'date', label: 'Seit', access: nurServer, admin: { width: '50%', readOnly: true, ...datumTag } },
+            { name: 'von', type: 'text', label: 'Von', access: nurServer, admin: { width: '50%', readOnly: true } },
+          ],
+        },
+      ],
+    },
+    {
       name: 'vertrag',
       type: 'group',
       label: 'Vertrag',
@@ -251,6 +428,27 @@ export const Partnerbetriebe: CollectionConfig = {
       where: { 'auszahlung.stand': { in: ['offen', 'freigegeben', 'gesperrt'] } },
       defaultLimit: 50,
       admin: { allowCreate: false, defaultColumns: ['nummer', 'vermittlung.status', 'auszahlung.stand', 'vermittlung.partnerbetragCent'] },
+    },
+    {
+      // Gegenansicht zum Lead-Verlauf (FA-22-41): alle Leads, die diesem Betrieb angeboten oder zugeteilt wurden.
+      // Nur Anzeige, nicht gespeichert (virtuell, keine Migration).
+      name: 'leadUebersicht',
+      type: 'textarea',
+      label: 'Leads dieses Betriebs (Verlauf)',
+      virtual: true,
+      access: { read: feldNurTeam, create: () => false, update: () => false },
+      admin: { readOnly: true, description: 'Vorgangsnummer, Stand der Vermittlung und letzter Eintrag im Lead-Verlauf.' },
+      hooks: { afterRead: [leadUebersichtFeld] },
+    },
+    {
+      // Aktuell zugeordnete Leads mit Stand (Tabelle mit Verweis auf den Vorgang). Nur Anzeige.
+      name: 'leads',
+      type: 'join',
+      collection: 'vorgaenge',
+      on: 'vermittlung.partnerbetrieb',
+      label: 'Aktuell zugeordnete Leads',
+      defaultLimit: 50,
+      admin: { allowCreate: false, defaultColumns: ['nummer', 'status', 'vermittlung.status', 'auftragsweg'] },
     },
     {
       name: 'bewerbung',

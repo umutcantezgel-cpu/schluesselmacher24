@@ -50,7 +50,20 @@ beforeAll(async () => {
   await payload.update({
     collection: 'partnerbetriebe',
     id: neu.id,
-    data: { pruefung: { gewerbeGeprueft: true, identitaetGeprueft: true, eignungGeprueft: true }, vertrag: { unterschriebenAm: '2026-11-03T00:00:00.000Z' }, status: 'freigeschaltet' },
+    data: {
+      pruefung: { gewerbeGeprueft: true, identitaetGeprueft: true, eignungGeprueft: true },
+      vertrag: { unterschriebenAm: '2026-11-03T00:00:00.000Z' },
+      // Prüfliste mit Besuch vor Ort (FA-PLATTFORM-01B); erfundene Angaben.
+      pruefliste: {
+        identitaet: { erledigt: true },
+        leistungsumfang: { erledigt: true },
+        ausstattung: { erledigt: true },
+        region: { erledigt: true },
+        besuch: { nichtMoeglich: true, nichtMoeglichGrund: 'Testbetrieb, Besuch im Test nicht möglich' },
+        standard: { erledigt: true, vertragsverweis: 'Partnervertrag, Anlage Qualität' },
+      },
+      status: 'freigeschaltet',
+    },
     overrideAccess: true,
   });
   partnerId = neu.id;

@@ -8,6 +8,17 @@ import { createRecord } from '@/lib/server/create-record';
 /* Gegen die Testdatenbank: Freischaltung nur nach Prüfung und Vertrag (MA-16), Modell B gesperrt,
  * Provisionen nur für den Inhaber sichtbar (G13). Erfundene Testdaten (G4). */
 
+/** Vollständige Prüfliste (FA-PLATTFORM-01B), erfundene Angaben. */
+const PUNKT = { erledigt: true, am: '2026-11-10T00:00:00.000Z', pruefer: 'Prüferin Test' };
+const PRUEFLISTE = {
+  identitaet: PUNKT,
+  leistungsumfang: PUNKT,
+  ausstattung: PUNKT,
+  region: PUNKT,
+  besuch: { am: '2026-11-11T00:00:00.000Z', pruefer: 'Prüferin Test', ergebnis: 'geeignet' as const },
+  standard: { ...PUNKT, vertragsverweis: 'Partnervertrag, Anlage Qualität' },
+};
+
 let payload: Payload;
 let team: Record<string, unknown> & { collection: 'benutzer' };
 let inhaber: Record<string, unknown> & { collection: 'benutzer' };
@@ -42,6 +53,9 @@ describe('Partnerbetriebe', () => {
       overrideAccess: false,
       user: team,
     });
+    // Ohne Prüfliste mit Besuch vor Ort keine Freischaltung (FA-PLATTFORM-01B).
+    await expect(payload.update({ collection: 'partnerbetriebe', id: neu.id, data: { status: 'freigeschaltet' }, overrideAccess: false, user: team })).rejects.toThrow(/Prüfliste/);
+    await payload.update({ collection: 'partnerbetriebe', id: neu.id, data: { pruefliste: PRUEFLISTE }, overrideAccess: false, user: team });
     const frei = await payload.update({ collection: 'partnerbetriebe', id: neu.id, data: { status: 'freigeschaltet' }, overrideAccess: false, user: team });
     expect(frei.status).toBe('freigeschaltet');
   });

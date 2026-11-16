@@ -33,7 +33,7 @@ const ROUTE = 'autoschluessel';
 const AUF_DER_SEITE = [
   '/autoschluessel/anfrage', '/autoschluessel/nachmachen', '/autoschluessel/programmieren', '/autoschluessel/kopieren',
   '/autoschluessel/schluesselbart-fraesen', '/autoschluessel/funkschluessel', '/autoschluessel/smart-key',
-  '/autoschluessel/fahrzeugoeffnung', '/autoschluessel/marken', '/motorradschluessel', '/roller-und-kleinstfahrzeuge',
+  '/autoschluessel/fahrzeugoeffnung', '/autoschluessel/schluesselverlust', '/autoschluessel/marken', '/motorradschluessel', '/roller-und-kleinstfahrzeuge',
   '/e-scooter', '/seniorenmobile', '/fahrradschluessel', '/ratgeber/autoschluessel-verloren-was-tun',
   '/ratgeber/unterschied-kopie-und-programmierung', '/schluessel-nach-vorlage', '/service-und-termin/terminstatus',
 ];

@@ -77,6 +77,39 @@ describe('Bedienbarkeit aller mehrstufigen Formulare (FA-QA-02, FA Abschnitt 26)
     },
   );
 
+  /* FA-QA-04B: Schritte in der Browser-Historie. Der gemeinsame Ablauf (useFlow und FlowShell) legt je Schritt
+     nach vorn einen Eintrag an; kein Formular darf daran vorbei eigene Schritte in die Historie schreiben oder
+     sie zurücksetzen. Die Konfiguratoren bereinigen nur ihre Adresse (Link mit Zwischenstand, KE5); den
+     Schritteintrag stellt der Abgleich danach wieder her. */
+  const MIT_MUSTER = [...FORMULARE, { name: 'Muster Fahrzeugschlüssel', datei: 'src/components/fahrzeug-anfrage/formular.tsx' }];
+
+  it.each(MIT_MUSTER)('$name: Schritte über den gemeinsamen Ablauf, keine eigenen Historieneinträge', ({ datei }) => {
+    const quelle = lies(datei);
+    expect(quelle).toMatch(/<FlowShell\b[\s\S]{0,200}flow=\{\w+\}/);
+    expect(quelle).toMatch(/\buseFlow\b|\buseFahrzeugAnfrage\(/);
+    expect(quelle).not.toMatch(/history\.(?:pushState|go|back|forward)\(/);
+    // Nur die Bereinigung der Adresse ersetzt einen Eintrag (Konfiguratoren).
+    for (const treffer of quelle.match(/history\.replaceState\([^)]*\)/g) ?? []) {
+      expect(treffer).toBe("history.replaceState(null, '', window.location.pathname)");
+    }
+  });
+
+  it('der gemeinsame Ablauf legt Schritte in die Historie und die FlowShell stimmt die Rückfrage darauf ab', () => {
+    const flow = lies('src/lib/flow/use-flow.ts');
+    expect(flow).toMatch(/historie\.vor\(von, target\)/);
+    expect(flow).toMatch(/historie\.zurueck\(target\)/);
+    expect(flow).toMatch(/addEventListener\('popstate'/);
+    const shell = lies('src/components/flow/flow-shell.tsx');
+    expect(shell).toMatch(/wache: !historie \|\| amAnfang/);
+    expect(shell).toMatch(/historie\?\.setzeFreigabe\(/);
+  });
+
+  it('das Muster Fahrzeugschlüssel fragt vor dem Verlassen wie die anderen (ungesichert, mitDateien)', () => {
+    const quelle = lies('src/components/fahrzeug-anfrage/formular.tsx');
+    expect(quelle).toMatch(/ungesichert=\{/);
+    expect(quelle).toMatch(/\bmitDateien\b/);
+  });
+
   it('Zylinder: „Maß unbekannt“ führt direkt zur Anleitung', () => {
     expect(lies('src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx')).toContain('href="/gleichschliessende-zylinder#messen"');
   });

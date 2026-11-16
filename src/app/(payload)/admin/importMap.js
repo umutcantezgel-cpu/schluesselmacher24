@@ -6,6 +6,7 @@ import { KontaktVerweise as KontaktVerweise_3db858ceada88de35b936077a2e1e15d } f
 import { StripeLink as StripeLink_93f7020958f194c58a5525561020cceb } from '../../../payload/components/StripeLink'
 import { ErstattungZahlungsdienst as ErstattungZahlungsdienst_439907bf26087298fa9516bb208a10a9 } from '../../../payload/components/ErstattungZahlungsdienst'
 import { VorgaengeWerkzeuge as VorgaengeWerkzeuge_a6117e4679cb3b948f245e05432911e8 } from '../../../payload/components/VorgaengeWerkzeuge'
+import { ZuordnungFilter as ZuordnungFilter_4992f9119727e0c729e4898fc3182de9 } from '../../../payload/components/ZuordnungFilter'
 import { PartnervertragKnopf as PartnervertragKnopf_4650257e05d8e8591d9ea1bdf9fbb0ba } from '../../../payload/components/PartnervertragKnopf'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -47,6 +48,7 @@ export const importMap = {
   "/payload/components/StripeLink#StripeLink": StripeLink_93f7020958f194c58a5525561020cceb,
   "/payload/components/ErstattungZahlungsdienst#ErstattungZahlungsdienst": ErstattungZahlungsdienst_439907bf26087298fa9516bb208a10a9,
   "/payload/components/VorgaengeWerkzeuge#VorgaengeWerkzeuge": VorgaengeWerkzeuge_a6117e4679cb3b948f245e05432911e8,
+  "/payload/components/ZuordnungFilter#ZuordnungFilter": ZuordnungFilter_4992f9119727e0c729e4898fc3182de9,
   "/payload/components/PartnervertragKnopf#PartnervertragKnopf": PartnervertragKnopf_4650257e05d8e8591d9ea1bdf9fbb0ba,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,

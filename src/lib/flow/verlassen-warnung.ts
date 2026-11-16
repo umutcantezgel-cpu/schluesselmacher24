@@ -40,6 +40,18 @@ export interface WachFenster {
   confirm: (frage: string) => boolean;
 }
 
+/** Wie die Warnung mit den Schritten in der Historie zusammenarbeitet (FA-QA-04B). */
+export interface WachOptionen {
+  /**
+   * Wacheintrag gegen Browser- und Android-Zurück anlegen (Standard `true`). Mit Schritten in der Historie
+   * nur am Anfang des Ablaufs: Weiter oben führt Zurück auf den vorigen Schritt, nicht hinaus. Die Rückfrage
+   * beim Neuladen und Schließen gilt immer.
+   */
+  wache?: boolean;
+  /** Ein Eintrag mit einem späteren Schritt des Ablaufs (etwa nach Vorwärts): kein Verlassen, keine Frage. */
+  imAblauf?: (state: unknown) => boolean;
+}
+
 /**
  * Laufende Rücknahmen einer Wache je Fenster: `history.back()` wirkt erst mit dem nächsten
  * `popstate`. Richtet sich die Warnung vorher neu ein (etwa beim zweiten Durchlauf eines Effekts),
@@ -70,8 +82,14 @@ function ruecknahmeVon(fenster: WachFenster) {
  *   die Wache wieder aus der Historie, damit das nächste Zurück sichtbar zurückführt.
  *
  * `frage` wird bei jedem Zurück neu gelesen, damit ein Wechsel des Grundes keine neue Wache braucht.
+ * Mit `optionen.wache = false` gilt nur die Rückfrage beim Neuladen und Schließen (FA-QA-04B).
  */
-export function wacheEinrichten(fenster: WachFenster, frage: () => string = () => VERLASSEN_FRAGE): () => void {
+export function wacheEinrichten(
+  fenster: WachFenster,
+  frage: () => string = () => VERLASSEN_FRAGE,
+  optionen: WachOptionen = {},
+): () => void {
+  const mitWache = optionen.wache ?? true;
   const r = ruecknahmeVon(fenster);
   let verlassen = false;
 
@@ -88,6 +106,8 @@ export function wacheEinrichten(fenster: WachFenster, frage: () => string = () =
       return;
     }
     if (istWache(event.state)) return;
+    // Vorwärts auf einen späteren Schritt des Ablaufs: kein Verlassen (FA-QA-04B).
+    if (optionen.imAblauf?.(event.state)) return;
     if (fenster.confirm(frage())) {
       verlassen = true;
       entfernen();
@@ -98,23 +118,25 @@ export function wacheEinrichten(fenster: WachFenster, frage: () => string = () =
   };
   function entfernen() {
     fenster.removeEventListener('beforeunload', vorUnload as (event: never) => void);
-    fenster.removeEventListener('popstate', zurueck as (event: never) => void);
+    if (mitWache) fenster.removeEventListener('popstate', zurueck as (event: never) => void);
   }
 
-  // Eine noch laufende Rücknahme übernimmt ab jetzt `zurueck`.
-  if (r.hoerer) {
-    fenster.removeEventListener('popstate', r.hoerer);
-    r.hoerer = null;
-  }
   fenster.addEventListener('beforeunload', vorUnload as (event: never) => void);
-  if (!istWache(fenster.history.state)) {
-    fenster.history.pushState({ [WACHE]: true }, '', fenster.location.href);
+  if (mitWache) {
+    // Eine noch laufende Rücknahme übernimmt ab jetzt `zurueck`.
+    if (r.hoerer) {
+      fenster.removeEventListener('popstate', r.hoerer);
+      r.hoerer = null;
+    }
+    if (!istWache(fenster.history.state)) {
+      fenster.history.pushState({ [WACHE]: true }, '', fenster.location.href);
+    }
+    fenster.addEventListener('popstate', zurueck as (event: never) => void);
   }
-  fenster.addEventListener('popstate', zurueck as (event: never) => void);
 
   return () => {
     entfernen();
-    if (verlassen || !istWache(fenster.history.state)) return;
+    if (!mitWache || verlassen || !istWache(fenster.history.state)) return;
     // Wache wegnehmen; das folgende popstate fängt ein kurzer Hörer ab (oder `zurueck` einer neuen Wache).
     r.offen += 1;
     const einmal = () => {
@@ -135,15 +157,24 @@ export function wacheEinrichten(fenster: WachFenster, frage: () => string = () =
  * nennt den Grund. Ohne Grund zur Warnung legt der Hook keine Wache an; endet die Warnung, nimmt er
  * die Wache wieder weg.
  */
-export function useVerlassenWarnung(grund: VerlassenGrund): void {
+export function useVerlassenWarnung(grund: VerlassenGrund, optionen: WachOptionen = {}): void {
   const frage = verlassenFrage(grund);
   const frageRef = useRef(frage);
   useEffect(() => {
     frageRef.current = frage;
   }, [frage]);
+  const { imAblauf } = optionen;
+  const imAblaufRef = useRef(imAblauf);
+  useEffect(() => {
+    imAblaufRef.current = imAblauf;
+  }, [imAblauf]);
   const warnen = frage !== null;
+  const mitWache = optionen.wache ?? true;
   useEffect(() => {
     if (!warnen || typeof window === 'undefined') return;
-    return wacheEinrichten(window as unknown as WachFenster, () => frageRef.current ?? VERLASSEN_FRAGE);
-  }, [warnen]);
+    return wacheEinrichten(window as unknown as WachFenster, () => frageRef.current ?? VERLASSEN_FRAGE, {
+      wache: mitWache,
+      imAblauf: (state) => imAblaufRef.current?.(state) ?? false,
+    });
+  }, [warnen, mitWache]);
 }

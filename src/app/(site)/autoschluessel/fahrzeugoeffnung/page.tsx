@@ -184,18 +184,23 @@ export default async function FahrzeugoeffnungPage() {
         {
           question: 'Wie erreiche ich Sie für eine Öffnung?',
           answer:
-            'Über die Anfrage zur Fahrzeugöffnung oder über unsere Kontaktseite. Dort finden Sie '
-            + 'unsere Erreichbarkeit.',
+            'Über den Knopf „Termin anfragen“ weiter unten oder über unsere Kontaktseite. Dort finden '
+            + 'Sie unsere Erreichbarkeit.',
         },
       ]}
       next={{
         title: 'Der nächste Schritt',
         lead:
-          'Geben Sie Ihr Fahrzeug an. Die Fahrzeugöffnung ist dabei schon ausgewählt. Preis oder '
-          + 'Preisrahmen sehen Sie, bevor Sie verbindlich buchen. Den Nachweis prüfen wir vor Ort.',
-        // In den Termin-Assistenten mit vorgewählter Leistung (FA-05-09); dort sind Fahrzeug und Nachweis Pflicht.
+          'Im nächsten Schritt geben Sie Ihr Fahrzeug an. Die Fahrzeugöffnung ist dabei schon '
+          + 'ausgewählt. Sie laden ein Foto Ihres Fahrzeugscheins hoch und, wenn noch einer da ist, '
+          + 'Fotos Ihres Schlüssels. Den Nachweis prüfen wir zusätzlich vor Ort. Preis oder '
+          + 'Preisrahmen sehen Sie, bevor Sie verbindlich buchen. Sind Sie gerade ausgesperrt und '
+          + 'haben Fahrzeugschein oder Schlüssel nicht zur Hand, nutzen Sie bitte unseren Kontakt.',
+        // In den Termin-Assistenten mit vorgewählter Leistung (FA-05-09); dort sind Fahrzeug, Foto des
+        // Fahrzeugscheins und Schlüsselfotos Pflicht (unterlagen-pruefung.ts). Wer akut ausgesperrt ist, geht
+        // über den Kontakt, bis der Inhaber eine eigene Regel für die Öffnung entscheidet (OFFENE FRAGE 1).
         primary: { href: '/autoschluessel/anfrage?leistung=fahrzeugoeffnung', label: 'Termin anfragen' },
-        secondary: { href: '/service-und-termin/kontakt', label: 'Kontakt und Erreichbarkeit' },
+        secondary: { href: '/service-und-termin/kontakt', label: 'Ausgesperrt? Kontakt und Erreichbarkeit' },
       }}
       related={[
         { href: '/autoschluessel/nachmachen', label: 'Ersatzschlüssel anfertigen', description: 'Der Schritt nach der Öffnung' },

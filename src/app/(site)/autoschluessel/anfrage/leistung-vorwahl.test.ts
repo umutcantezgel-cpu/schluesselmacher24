@@ -61,6 +61,18 @@ describe('Leistung aus der Adresse (FA-05-09)', () => {
   });
 });
 
+describe('Ersatzschlüssel bei Verlust nur ohne funktionierenden Schlüssel vorwählen', () => {
+  it('fällt bei einem oder mehr funktionierenden Schlüsseln weg, bleibt bei keinem oder unbekannter Zahl', () => {
+    expect(vorgewaehlteLeistung('ersatz-bei-verlust', LEISTUNGEN, 'funk', 1)).toBe('');
+    expect(vorgewaehlteLeistung('ersatz-bei-verlust', LEISTUNGEN, 'funk', 2)).toBe('');
+    expect(vorgewaehlteLeistung('ersatz-bei-verlust', LEISTUNGEN, 'funk', 0)).toBe('ersatz-bei-verlust');
+    expect(vorgewaehlteLeistung('ersatz-bei-verlust', LEISTUNGEN, 'funk', null)).toBe('ersatz-bei-verlust');
+    // Selbst wählen bleibt möglich: die Leistung steht im Schritt „Leistung“ weiter zur Auswahl.
+    const ersatz = LEISTUNGEN.find((s) => s.id === 'ersatz-bei-verlust')!;
+    expect(leistungPasst(ersatz, 'funk', 1)).toBe(true);
+  });
+});
+
 describe('Die Leistungsseiten wählen ihre Leistung im Assistenten vor (FA-05-07, FA-05-09)', () => {
   it.each([
     ['autoschluessel/fahrzeugoeffnung', 'fahrzeugoeffnung'],
