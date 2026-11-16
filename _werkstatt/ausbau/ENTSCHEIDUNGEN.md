@@ -370,3 +370,18 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Weitere Fotos eines Codeprodukts (`weitereBilder`, Feld bestand schon) erscheinen jetzt unter dem Bild im Kopf der Produktseite.
 - Offen gelassen (G9): Gedankenstrich im Widerrufshinweis des Bestellformulars, siehe MA-40.
 - Umkehrprobe: Verweise und ein Feld im Lesemodell; kein Schema, keine Adresse geändert außer der Umbenennung `kategorie/[familie]` in `kategorie/[kategorie]` mit dauerhafter Weiterleitung der früheren Adressen.
+
+## A-058 · Sperrschließungen: Sperre für unbestätigte Preise, Migration streng additiv (2026-11-16 03:25, FA-SHOP-04, FA-15)
+- Der Inhaber verlangt „keine Demo Preise“. Für die Zylinderpreise im Bestand ist keine Bestätigung belegt; ändern darf ich sie nicht (G9). Entscheidung: An jeder Preiszeile des Zylinderkatalogs gibt es den Haken „Preis nicht bestätigt“ (Standard aus, am Bestand ändert sich nichts). Mit Haken zeigen Rubrikseite und Konfigurator „auf Anfrage“, die gemeinsame Prüfung `validateCylinderDraft` lehnt die Bestellung auch in der Kasse ab, und der Kunde wird in die Anfrage mit Angebot geführt. Die Liste zur Bestätigung steht in MA-49.
+- Die dafür nötige Zeile in `src/lib/cylinder-rules.ts` und die optionalen Felder in `src/lib/types.ts` lagen außerhalb der Schreibrechte des Pakets und sind freigegeben: Ohne sie wirkte die Sperre nur im Browser.
+- G6 eng ausgelegt: Der erste Entwurf der Migration lockerte `name` und `kennung` am Hersteller des Zylinderkatalogs (DROP NOT NULL). Das ist kein Datenverlust, aber nicht additiv. Die Felder bleiben Pflicht und sind im Admin nur lesbar; den Hersteller wählt der Betrieb aus dem Stamm, der Hook füllt Name und Kennung. Die Migration `20261116_021014_zylinder_bestaetigt` enthält in `up` nur CREATE und ADD.
+- Ein Hersteller ohne hinterlegten Aufpreis bekommt keinen automatischen Haken; das entscheidet der Inhaber (MA-49).
+- Umkehrprobe: Haken aus heißt Verhalten wie vorher; die neuen Spalten und Tabellen bleiben leer.
+
+## A-059 · Wörter und Wahrheit auf den Shopseiten (2026-11-16 03:25, FA-INHALT-03H, FA-INHALT-03I, FA-02, FA-10, FA-11)
+- Der Hinweis ohne Produkte lautet überall „Direkt bestellen können Sie hier derzeit nicht. Bitte fragen Sie bei uns an.“ Wörter wie „bald“, „sobald“, „bis dahin“, „noch nicht“ sind Zusagen, die niemand halten muss, und entfallen (R4).
+- Sichtbar heißt ein Schlüssel nach Code „Produkt“ oder „Schlüssel“, nie „Codelinie“ oder „Linie“; das gilt auch für Suchbeschreibungen. „Anwendungsfamilie“ wird „Einsatzbereich“. „System“ und „Codebereich“ sind Wörter des Inhabers und bleiben, mit einer Erklärung im Halbsatz beim ersten Vorkommen.
+- Preisangaben („Preis je Stück“, „Staffelpreise“) und die Direktkauf-Fassung erscheinen nur, wenn mindestens ein Produkt der Gruppe lieferbar ist. Gruppen kennen drei Zustände: lieferbar, auf Anfrage, nicht lieferbar (R9).
+- Verfahren: Der Autor des Textpakets konnte keine unabhängigen Leser einsetzen; drei Leser (ältere Kundin, Tatsachenprüfer, Schlussredakteur) haben die erzeugten Texte in allen drei Verfügbarkeiten nachträglich gelesen (`berichte/FA-INHALT-03H-leser.md`, 35 Befunde). Die Behebung läuft als FA-INHALT-03I.
+- Umkehrprobe: reine Beschriftungen und Anzeigebedingungen; Bestellprüfung, Preise und Daten unberührt.
+
