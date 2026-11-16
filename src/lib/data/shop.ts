@@ -162,8 +162,32 @@ export function artikelDerKategorie<T extends { categoryId?: string; fahrzeugtei
   return artikel.filter((a) => {
     if (a.fahrzeugteil) return false;
     if (!a.categoryId) return ohneKategorie;
-    return kategorieKette(kategorien, a.categoryId).some((glied) => glied.id === kategorieId);
+    // Verweis auf eine gelöschte Kategorie (im JSON-Fallback bleibt er stehen): wie ohne Kategorie.
+    const kette = kategorieKette(kategorien, a.categoryId);
+    if (kette.length === 0) return ohneKategorie;
+    return kette.some((glied) => glied.id === kategorieId);
   });
+}
+
+/**
+ * Übersicht für die Seite eines Artikels: die Liste, in der er steht. Fahrzeugteile führen in ihre eigene
+ * Liste (`teilePfad`), Artikel einer Artikel-Kategorie in die Liste dieser Kategorie, Artikel ohne Kategorie
+ * auf `/artikel`. Steht der Artikel in keiner Artikelliste, führt der Weg in den Shop.
+ */
+export function artikelUebersicht(
+  kategorien: ShopKategorie[],
+  artikel: { categoryId?: string; fahrzeugteil?: unknown },
+  teilePfad: string,
+): { href: string; label: string } {
+  if (artikel.fahrzeugteil) return { href: teilePfad, label: 'Alle Gehäuse und Ersatzteile' };
+  const ersteId = ersteArtikelKategorie(kategorien)?.id;
+  const kette = artikelKategorieKette(kategorien, artikel.categoryId);
+  const letzte = kette[kette.length - 1];
+  if (letzte) return { href: artikelListePfad(letzte, ersteId), label: `Mehr aus ${letzte.name}` };
+  if (artikelDerKategorie(kategorien, [artikel], ersteId ?? '', true).length > 0) {
+    return { href: ARTIKEL_PFAD, label: 'Zur Artikelliste' };
+  }
+  return { href: '/shop', label: 'Alle Shop-Kategorien' };
 }
 
 /**

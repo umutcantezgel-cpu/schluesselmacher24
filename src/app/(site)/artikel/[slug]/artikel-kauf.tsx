@@ -25,6 +25,8 @@ export type KaufArtikel = Pick<
 
 export interface ArtikelKaufProps {
   article: KaufArtikel;
+  /** Liste, in der der Artikel steht (Knopf „Weitere Artikel“ nach dem Hinzufügen); ohne Angabe /artikel. */
+  weiterePfad?: string;
 }
 
 /**
@@ -35,7 +37,7 @@ export interface ArtikelKaufProps {
  * Preise und Staffeln, lassen sich aber nicht in den Warenkorb legen — der
  * Server lehnt sie beim Absenden ohnehin ab.
  */
-export function ArtikelKauf({ article }: ArtikelKaufProps) {
+export function ArtikelKauf({ article, weiterePfad = '/artikel' }: ArtikelKaufProps) {
   const [wunsch, setWunsch] = useState(1);
   const [hinzugefuegt, setHinzugefuegt] = useState<number | null>(null);
   const hinweisId = useId();
@@ -252,7 +254,7 @@ export function ArtikelKauf({ article }: ArtikelKaufProps) {
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 <ButtonLink href="/warenkorb">Zum Warenkorb</ButtonLink>
-                <ButtonLink href="/artikel" variant="outline">
+                <ButtonLink href={weiterePfad} variant="outline">
                   Weitere Artikel
                 </ButtonLink>
               </div>

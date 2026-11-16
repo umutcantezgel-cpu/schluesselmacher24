@@ -1,6 +1,6 @@
 {
   "skript": "onpage",
-  "zeit": "2026-11-16T09:10:25.838Z",
+  "zeit": "2026-11-16T09:46:57.953Z",
   "argumente": {
     "nur": null,
     "grenze": 95,
@@ -4683,8 +4683,8 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 1394,
-      "html_bytes": 441338,
+      "woerter": 1401,
+      "html_bytes": 441410,
       "interne_ziele": 44,
       "eingehend": true,
       "ergebnisse": [
@@ -4805,7 +4805,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "1394 Wörter, keine belegte Schwelle"
+          "detail": "1401 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -4833,7 +4833,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "441338 Byte, keine belegte Schwelle"
+          "detail": "441410 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -4844,8 +4844,8 @@
       "rot": 0,
       "gelb": 0,
       "befunde": [],
-      "woerter": 151,
-      "html_bytes": 288061,
+      "woerter": 167,
+      "html_bytes": 288949,
       "interne_ziele": 40,
       "eingehend": true,
       "ergebnisse": [
@@ -4966,7 +4966,7 @@
           "titel": "Textmenge im Hauptinhalt",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "151 Wörter, keine belegte Schwelle"
+          "detail": "167 Wörter, keine belegte Schwelle"
         },
         {
           "id": "strukturdaten",
@@ -4994,7 +4994,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "288061 Byte, keine belegte Schwelle"
+          "detail": "288949 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -7260,7 +7260,7 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 257,
-      "html_bytes": 295551,
+      "html_bytes": 295465,
       "interne_ziele": 43,
       "eingehend": true,
       "ergebnisse": [
@@ -7409,7 +7409,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "295551 Byte, keine belegte Schwelle"
+          "detail": "295465 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -7421,7 +7421,7 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 356,
-      "html_bytes": 298923,
+      "html_bytes": 298880,
       "interne_ziele": 39,
       "eingehend": true,
       "ergebnisse": [
@@ -7570,7 +7570,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "298923 Byte, keine belegte Schwelle"
+          "detail": "298880 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -16920,7 +16920,7 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 775,
-      "html_bytes": 387028,
+      "html_bytes": 386985,
       "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
@@ -17069,7 +17069,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "387028 Byte, keine belegte Schwelle"
+          "detail": "386985 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -17081,7 +17081,7 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 775,
-      "html_bytes": 387099,
+      "html_bytes": 387056,
       "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
@@ -17230,7 +17230,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "387099 Byte, keine belegte Schwelle"
+          "detail": "387056 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -17564,7 +17564,7 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 799,
-      "html_bytes": 383035,
+      "html_bytes": 382992,
       "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
@@ -17713,7 +17713,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "383035 Byte, keine belegte Schwelle"
+          "detail": "382992 Byte, keine belegte Schwelle"
         }
       ]
     },
@@ -17725,7 +17725,7 @@
       "gelb": 0,
       "befunde": [],
       "woerter": 783,
-      "html_bytes": 375849,
+      "html_bytes": 375763,
       "interne_ziele": 46,
       "eingehend": true,
       "ergebnisse": [
@@ -17874,7 +17874,7 @@
           "titel": "Größe des HTML-Dokuments",
           "gewicht": 0,
           "status": "nicht_bewertet",
-          "detail": "375849 Byte, keine belegte Schwelle"
+          "detail": "375763 Byte, keine belegte Schwelle"
         }
       ]
     },

@@ -155,6 +155,36 @@ describe('Sitemap', () => {
     daten.artikel = [];
   });
 
+  it('Artikellisten je Kategorie wie die Seiten: Fahrzeugteile zählen nicht, Unterkategorie nur mit echtem Artikel ohne noindex (FA-10-10)', async () => {
+    const pfade = async () => (await sitemap()).map((e) => new URL(e.url).pathname);
+    // Erfundene Testdaten (G4): eine Unterkategorie unter „Schließtechnik und Zubehör“.
+    const start = defaults.kategorien();
+    const zubehoer = start.find((k) => k.id === 'schliesstechnik-und-zubehoer')!;
+    const unter: ShopKategorie = { ...zubehoer, id: 'test-beschlaege', slug: 'test-beschlaege', name: 'Test Beschläge', eltern: zubehoer.id, ziel: '' };
+    const basis = defaults.standardArticles()[0];
+    const echt = { ...basis, example: false, seo: { ...basis.seo, noindex: false } };
+
+    // (a) nur ein echtes Fahrzeugteil: keine Adresse /artikel.
+    daten.artikel = [{ ...echt, fahrzeugteil: { teileart: 'batterie' as const, bauformen: [], reihen: [], schluesselarten: [], kompatibilitaet: 'Test', elektronik: 'ja' as const } }];
+    expect(await pfade()).not.toContain('/artikel');
+
+    // (b) echter Artikel in der Unterkategorie: eigene Liste und /artikel.
+    daten.kategorien = [...start, unter];
+    daten.artikel = [{ ...echt, categoryId: unter.id }];
+    expect(await pfade()).toContain('/artikel/kategorie/test-beschlaege');
+    expect(await pfade()).toContain('/artikel');
+
+    // (c) dieselbe Unterkategorie nur mit Beispielen oder mit noindex der Kategorie: nicht in der Sitemap.
+    daten.artikel = [{ ...basis, example: true, categoryId: unter.id }];
+    expect(await pfade()).not.toContain('/artikel/kategorie/test-beschlaege');
+    daten.artikel = [{ ...echt, categoryId: unter.id }];
+    daten.kategorien = [...start, { ...unter, seo: { title: '', description: '', internalLinks: [], noindex: true } }];
+    expect(await pfade()).not.toContain('/artikel/kategorie/test-beschlaege');
+
+    daten.kategorien = start;
+    daten.artikel = [];
+  });
+
   it('führt Customizing immer und die Liste der Gehäuse und Ersatzteile nur mit echten Teilen (FA-SHOP-02B)', async () => {
     const pfade = async () => (await sitemap()).map((e) => new URL(e.url).pathname);
     daten.artikel = [];

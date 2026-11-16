@@ -262,6 +262,18 @@ describe('Codeprodukt mit den neuen Feldern', () => {
     });
     aufraeumen.push({ collection: 'produkte', id: alt.id });
     expect(alt._status).toBe('published');
+
+    // Beispiel ohne Hersteller (Auswahl und Freitext) und ohne Codebereich: veröffentlichen geht.
+    const beispiel = await payload.create({
+      collection: 'produkte',
+      data: { ...basis, slug: `${slug}-beispiel`, beispiel: true, _status: 'published' },
+      context,
+    });
+    aufraeumen.push({ collection: 'produkte', id: beispiel.id });
+    expect(beispiel._status).toBe('published');
+    expect(beispiel.herstellerAuswahl ?? null).toBeNull();
+    expect(beispiel.hersteller ?? '').toBe('');
+    expect(beispiel.codebereich ?? '').toBe('');
   });
 
   it('ein schon veröffentlichtes Produkt ohne Codebereich bleibt lesbar, speichern geht erst mit der Angabe', async () => {

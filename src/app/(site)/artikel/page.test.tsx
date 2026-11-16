@@ -128,6 +128,12 @@ describe('Artikelübersicht', () => {
     expect(html).not.toContain('Testartikel fremd');
   });
 
+  it('Überschrift und Brotkrume nennen die Kategorie, wie Artikel- und Unterkategorie-Seiten', async () => {
+    const html = await seite();
+    expect(html).toMatch(/<h1[^>]*>[^<]*Schließtechnik und Zubehör/);
+    expect(html).toContain('"name":"Schließtechnik und Zubehör"');
+  });
+
   it('nur Gehäuseteile: Leerzustand mit Anfrage, keine Suchmaschinen', async () => {
     const { generateMetadata } = await import('./page');
     zustand.artikel = [artikel('teil', { fahrzeugteil: { teileart: 'gehaeuse' } })];

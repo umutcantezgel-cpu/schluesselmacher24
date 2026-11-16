@@ -34,6 +34,7 @@ import {
   VERFUEGBARKEIT_LABEL,
   artikelKategorieKette,
   artikelListePfad,
+  artikelUebersicht,
   ersteArtikelKategorie,
   verfuegbarkeitVon,
 } from '@/lib/data/shop';
@@ -108,11 +109,20 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
   const teilAngaben = teil ? fahrzeugteilAngaben(teil, { bauformen, katalog }) : [];
   const teilHinweise = teil ? fahrzeugteilHinweise(teil) : null;
   // Andere Artikel (FA-10-10): die Kategorie des Artikels über den Shop, ohne sichtbare Artikel-Kategorie wie bisher.
-  const ersteId = ersteArtikelKategorie(kategorien)?.id;
+  const erste = ersteArtikelKategorie(kategorien);
+  const ersteId = erste?.id;
   const kette = teil ? [] : artikelKategorieKette(kategorien, article.categoryId);
-  const kategorieCrumbs = kette.length
-    ? [{ href: '/shop', label: 'Shop' }, ...kette.map((glied) => ({ href: artikelListePfad(glied, ersteId), label: glied.name }))]
-    : [{ href: '/artikel', label: 'Artikel' }];
+  // Die Liste, in der der Artikel steht: Ziel der Weiterlesen-Liste, des Hinweises ohne Kauf und des Knopfs nach dem Hinzufügen.
+  const uebersicht = artikelUebersicht(kategorien, article, TEILE_PFAD);
+  // Ohne Kette: über /artikel (gleicher Name wie dort), wenn der Artikel dort steht, sonst nur über den Shop.
+  const kategorieCrumbs = [
+    { href: '/shop', label: 'Shop' },
+    ...(kette.length
+      ? kette.map((glied) => ({ href: artikelListePfad(glied, ersteId), label: glied.name }))
+      : uebersicht.href === '/artikel'
+        ? [{ href: '/artikel', label: erste?.name ?? 'Artikel' }]
+        : []),
+  ];
   const crumbs = [
     ...(teil ? [{ href: TEILE_PFAD, label: 'Gehäuse und Ersatzteile' }] : kategorieCrumbs),
     { href: pfad, label: article.name },
@@ -140,8 +150,7 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
   }));
 
   const baseLinks = [
-    ...(teil ? [{ href: TEILE_PFAD, label: 'Alle Gehäuse und Ersatzteile' }] : []),
-    { href: '/artikel', label: 'Alle Artikel' },
+    uebersicht,
     { href: '/warenkorb', label: 'Zum Warenkorb' },
     { href: '/rechtliches/versand-und-zahlung', label: 'Zahlung und Versand' },
     { href: '/rechtliches/widerruf', label: 'Widerruf und Rückgabe' },
@@ -239,13 +248,14 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
                   shippingClass: article.shippingClass,
                   example: article.example,
                 }}
+                weiterePfad={uebersicht.href}
               />
             ) : (
               <VerfuegbarkeitHinweis
                 verfuegbarkeit={verfuegbarkeit}
                 was="Diesen Artikel"
                 anfrage={{ href: artikelAnfragePfad(article.name), label: 'Artikel anfragen' }}
-                uebersicht={{ href: '/artikel', label: 'Alle Artikel' }}
+                uebersicht={uebersicht}
               />
             )}
           </div>

@@ -43,7 +43,7 @@ Vorher: Gibt es den Hersteller schon unter **Shop › Hersteller**? Wenn nicht, 
 7. Reiter **Suchmaschinen**: Titel und Beschreibung, wenn Sie eigene Texte möchten.
 8. Unten **Entwurf speichern**. Wenn alles stimmt: **Veröffentlichen**.
 
-Pflichtangaben beim Veröffentlichen: Ein Codeprodukt lässt sich nur mit **Hersteller**, **System** und **Codebereich** veröffentlichen. Fehlt eine Angabe, ist das Feld rot markiert und darunter steht, was fehlt. Als Entwurf dürfen die Felder noch leer sein. Beispielartikel sind ausgenommen. Bei älteren Einträgen genügt als Hersteller auch der alte Freitext (Feld **Hersteller (alter Freitext)**). Platzhalter in eckigen Klammern wie „[Hersteller eintragen]“ zählen nicht.
+Pflichtangaben beim Veröffentlichen: Ein Codeprodukt lässt sich nur mit **Hersteller**, **System** und **Codebereich** veröffentlichen. Fehlt eine Angabe, ist das Feld rot markiert und darunter steht, was fehlt. Als Entwurf dürfen die Felder noch leer sein. Beispielartikel sind ausgenommen. Bei älteren Einträgen genügt als Hersteller auch der alte Freitext (Feld **Hersteller (alter Freitext)**). Bei Hersteller und Codebereich zählen Platzhalter in eckigen Klammern wie „[Hersteller eintragen]“ nicht. Beim System prüft die Seite nur, ob etwas eingetragen ist: Ersetzen Sie einen Platzhalter dort selbst durch die richtige Angabe.
 
 Ältere Codeprodukte, die schon veröffentlicht sind und eine dieser Angaben nicht haben, bleiben auf der Seite sichtbar. Speichern lassen sie sich aber erst wieder, wenn die fehlende Angabe eingetragen ist. Das gilt auch für kleine Änderungen wie den Preis: zuerst Hersteller oder Codebereich ergänzen, dann speichern.
 
@@ -74,7 +74,7 @@ So erscheinen die Kategorien auf der Seite:
 
 So erscheinen die Kategorien für Standardartikel (Art „Artikel“):
 
-- Die Liste `/artikel` zeigt die Artikel der ersten Kategorie mit der Art „Artikel“ (heute „Schließtechnik und Zubehör“) und ihrer Unterkategorien, dazu alle Artikel ohne Kategorie. Die Zahl auf der Seite `/shop` zählt genau diese Artikel.
+- Die Liste `/artikel` zeigt die Artikel der ersten Kategorie mit der Art „Artikel“ (heute „Schließtechnik und Zubehör“) und ihrer Unterkategorien, dazu alle Artikel ohne Kategorie. Dazu zählen auch Artikel, deren Kategorie gelöscht wurde. Die Zahl auf der Seite `/shop` zählt genau diese Artikel.
 - Gehäuse und Ersatzteile für Autoschlüssel (Artikel mit Angaben zum Fahrzeug) stehen nicht in dieser Liste, sondern nur in der Liste `/autoschluessel/gehaeuse/teile`.
 - Ein Artikel in einer Kategorie einer anderen Art (etwa „Autoschlüsselgehäuse“) erscheint in keiner Artikelliste. Wählen Sie für Standardartikel eine Kategorie mit der Art „Artikel“ oder lassen Sie das Feld leer.
 - Jede weitere sichtbare Kategorie mit der Art „Artikel“ und jede Unterkategorie davon hat eine eigene Liste unter `/artikel/kategorie/…` mit Name und Beschreibung der Kategorie. Ist dort als **Ziel** `/artikel` eingetragen oder nichts, führt der Knopf im Shop trotzdem auf diese eigene Liste. Ein anderes Ziel bleibt.

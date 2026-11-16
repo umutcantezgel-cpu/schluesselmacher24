@@ -71,4 +71,22 @@ Prüfung nach der Nachbesserung (über `sicher.sh`): `--json -- npx vitest run` 
 
 Geänderte Dateien der Nachbesserung: `src/components/visual/generators/foto-beispiel.tsx`, `foto-beispiel.test.tsx`, `src/components/forms/photo-upload.tsx`, `photo-upload.test.tsx`, `src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx`, `unterlagen.test.ts`, dieser Bericht.
 
+## Abnahme durch den Orchestrator (16.11.2026)
+
+Prüfkette (`bash _werkstatt/ausbau/werkzeuge/abnahme.sh FA-SHOP-05`, beide Pakete der Welle gemeinsam im Arbeitsbaum, nach allen Eingriffen): Typprüfung grün, Lint grün, Unit 3909 von 3909, Datenbanktests 167 von 167, Build 181 von 181 Seiten. Onpage-Messung am neu gestarteten Prüfserver: 137 Seiten, Median 100, kein roter und kein gelber Befund. `reste.mjs` über alle vier Quellen: nur die zehn bekannten Platzhalter in `src/lib/pdf/partnervertrag.ts` (MA-29).
+
+Erledigt außerhalb der Schreibrechte des Pakets:
+- `elektronische-zutrittsloesungen/konfigurator/page.tsx`: Unter der Liste der acht Fragen steht „Zum Schluss können Sie freiwillig einen Grundriss und Fotos Ihrer Türen hochladen.“; der Hinweis zum Speichern sagt jetzt, dass der Browser hochgeladene Dateien nicht speichert. Ein Gedankenstrich im Titel des Hinweises ist entfernt. `elektronische-zutrittsloesungen/page.tsx`: derselbe Zusatz in der Einleitung zum Konfigurator.
+- Die Einträge in der Registry der Zeichnungen (`registry.tsx` und ihr Test) sind bestätigt: Ohne sie zeichnet die Seite den neuen Generator nicht.
+
+Sichtprobe am Prüfserver (Produktions-Build, Attrappen, nichts abgesendet): 8 von 9; die neunte Prüfung erwartete in der Zusammenfassung den Dateinamen, dort steht bewusst „1 Datei“ (kein Fehler der Seite).
+- Alle fünf Zeichnungen einzeln gerendert und angesehen (Fahrzeugschein mit vier Ecken, Halter, Feld B und Feld E; Typenschild mit Hersteller und Nummer; Schlüsselspitze mit Seitenansicht und Profil von vorne; Nachweis mit Name und Fahrzeug; Gewerbeanmeldung oder Zertifikat mit Angaben): sauber, keine Überlappung, keine Marken, keine echten Daten.
+- Gehäuse-Anfrage, Fotoschritt: Zeichnungen für Schlüsselspitze und Fahrzeugschein erscheinen; der Alternativtext des Fahrzeugscheins nennt Halter, Feld B und Feld E.
+- Einsendeformular: Unter der Fahrzeugschein-Zeichnung steht wieder „Halter und Fahrzeugdaten lesbar“.
+- Partnerformular: Zeichnung „Gewerbeanmeldung oder Zertifikat“ mit dem Satz darunter.
+- Zutritt-Konfigurator: Schritt 9 von 10 „Unterlagen“ erreicht; „Weiter“ geht ohne Datei; eine gewählte Datei (Upload abgefangen) erscheint; die Zusammenfassung führt „9. Unterlagen“ mit „1 Datei“ und „Nicht hochgeladen“.
+- Nicht im Formular gesehen: Typenschild und Ersatznachweis an den Wegen für Kleinstfahrzeuge (der Probelauf kam dort nicht bis zum Upload-Schritt); die Zeichnungen selbst sind gerendert und angesehen, die Zuordnung decken die Tests.
+
+Für Menschen (MA-05, MA-41): fachliche Durchsicht der Zeichnungen, besonders der Lage der Felder im Fahrzeugschein (die Zeichnung ist ein Schema, kein Abbild des Formulars); echte Beispielfotos ersetzen sie später ohne Codeänderung.
+
 === ENDE FA-QA-04C · BEREIT ZUR RÜCKGABE ===

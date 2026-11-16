@@ -123,8 +123,10 @@ export default async function ArtikelPage() {
     (link) => link.href !== `/${ROUTE}` && !BASE_LINKS.some((base) => base.href === link.href),
   );
   const links = [...BASE_LINKS, ...extraLinks];
-  const titel = page?.headline || TITEL;
-  const crumbs = [{ href: '/shop', label: 'Shop' }, { href: `/${ROUTE}`, label: TITEL }];
+  // Die Seite zeigt die erste Artikel-Kategorie: ihr Name auch hier, wie auf Artikel- und Unterkategorie-Seiten.
+  const name = erste?.name || TITEL;
+  const titel = page?.headline || name;
+  const crumbs = [{ href: '/shop', label: 'Shop' }, { href: `/${ROUTE}`, label: name }];
 
   const beispielHinweis = beispiele > 0 ? <BeispielHinweis beispiele={beispiele} gesamt={articles.length} /> : null;
 

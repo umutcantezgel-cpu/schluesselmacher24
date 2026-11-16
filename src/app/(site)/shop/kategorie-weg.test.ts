@@ -7,6 +7,7 @@ import {
   artikelKategorieKette,
   artikelListePfad,
   artikelListenKategorien,
+  artikelUebersicht,
   artikelUnterkategorien,
   ersteArtikelKategorie,
   sichtbareKategorien,
@@ -190,6 +191,31 @@ describe('Artikel je Kategorie (FA-10-10, FA-10-11, FA-10-01)', () => {
       { kategorie: unter, href: '/artikel/kategorie/test-beschlaege', anzahl: 1 },
     ]);
     expect(artikelUnterkategorien(alle, zubehoer.id, [{ categoryId: 'test-beschlaege', fahrzeugteil: {} }])).toEqual([]);
+  });
+
+  it('ein Artikel mit Verweis auf eine gelöschte Kategorie zählt wie ohne Kategorie, in Liste und Zahl', () => {
+    const verwaist = [...artikel, { id: 'h', categoryId: 'test-geloescht' }];
+    const liste = artikelDerKategorie(alle, verwaist, 'schliesstechnik-und-zubehoer', true);
+    expect(liste.map((a) => a.id)).toEqual(['a', 'b', 'c', 'h']);
+    expect(artikelDerKategorie(alle, verwaist, 'test-technik', false).map((a) => a.id)).toEqual(['d']);
+    expect(anzahlJeKategorie(alle, haupt, { codeprodukte: [], artikel: verwaist }).get('schliesstechnik-und-zubehoer')).toBe(liste.length);
+  });
+
+  it('Übersicht auf der Seite eines Artikels: die Liste, in der er steht', () => {
+    expect(artikelUebersicht(alle, { categoryId: 'test-beschlaege' }, '/teile')).toEqual({
+      href: '/artikel/kategorie/test-beschlaege',
+      label: 'Mehr aus Test Beschläge',
+    });
+    expect(artikelUebersicht(alle, { categoryId: 'schliesstechnik-und-zubehoer' }, '/teile')).toEqual({
+      href: '/artikel',
+      label: `Mehr aus ${zubehoer.name}`,
+    });
+    expect(artikelUebersicht(alle, { categoryId: 'test-technik' }, '/teile').href).toBe('/artikel/kategorie/test-technik');
+    expect(artikelUebersicht(alle, { fahrzeugteil: {} }, '/teile')).toEqual({ href: '/teile', label: 'Alle Gehäuse und Ersatzteile' });
+    expect(artikelUebersicht(alle, {}, '/teile')).toEqual({ href: '/artikel', label: 'Zur Artikelliste' });
+    expect(artikelUebersicht(alle, { categoryId: 'test-geloescht' }, '/teile').href).toBe('/artikel');
+    // In keiner Artikelliste (fremde Kategorie): kein Fehlweg nach /artikel, sondern der Shop.
+    expect(artikelUebersicht(alle, { categoryId: 'autoschluesselgehaeuse' }, '/teile')).toEqual({ href: '/shop', label: 'Alle Shop-Kategorien' });
   });
 
   it('Brotkrumen eines Artikels: Kette der sichtbaren Artikel-Kategorien, sonst leer', () => {

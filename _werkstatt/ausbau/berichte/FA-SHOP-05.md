@@ -85,4 +85,48 @@ Kein Server gestartet, kein git.
 - Inhaber: Bei Bedarf Schlüsseltyp und Einsatzbereich in der Sortimentstabelle angeben. Die Spalten sind freiwillig.
 - Inhaber: Entscheidung zu den offenen Fragen oben (Kategorie für Standardartikel, Verhalten ohne sichtbare Artikel-Kategorie).
 
+## NACHBESSERUNG
+
+Neun Befunde zweier Gegenprüfer, jeder am Code geprüft. Alle treffen zu.
+
+1. **[rot] „Alle Artikel“ auf der Seite eines Artikels: behoben.** Neue Hilfe `artikelUebersicht(kategorien, artikel, teilePfad)` in `src/lib/data/shop.ts` bestimmt die Liste, in der der Artikel steht: Fahrzeugteil → `TEILE_PFAD` „Alle Gehäuse und Ersatzteile“ (kein zweiter Link auf `/artikel` mehr); Artikel in einer Artikel-Kategorie → Liste der Kategorie des Artikels, „Mehr aus <Name>“; ohne Kategorie → `/artikel` „Zur Artikelliste“; in keiner Artikelliste (fremde Kategorie) → `/shop` „Alle Shop-Kategorien“, damit kein Fehlweg bleibt. Die Brotkrumen ohne Kategorie-Kette gehen jetzt ebenfalls über den Shop und heißen wie `/artikel` selbst (Befund 4); ein Artikel in fremder Kategorie bekommt keine Brotkrume `/artikel` mehr.
+2. **[rot] Übersicht im Hinweis ohne Kauf: behoben.** `VerfuegbarkeitHinweis` bekommt dieselbe `uebersicht` wie Befund 1.
+3. **[gelb] Knopf „Weitere Artikel“: behoben.** `ArtikelKauf` hat die Prop `weiterePfad` (Vorgabe `/artikel`); `page.tsx` übergibt `uebersicht.href`.
+4. **[gelb] Name von `/artikel`: behoben.** Brotkrume, BreadcrumbList und Standardüberschrift nehmen `erste?.name`, `TITEL` nur als Rückfall; eine gepflegte `headline` bleibt vorrangig. Der Seitentitel (`seo.title || TITEL`) bleibt unverändert, weil der Befund ihn nicht nennt und die Suchtextlängen geprüft sind. Test in `artikel/page.test.tsx`.
+5. **[gelb] Platzhalter beim System: behoben in der Anleitung.** `systemPruefen` nimmt „[System]“ tatsächlich an. Die Anleitung sagt jetzt, dass Platzhalter nur bei Hersteller und Codebereich nicht zählen und der Betreiber einen Platzhalter beim System selbst ersetzt. `systemPruefen` umzustellen liegt außerhalb der Schreibrechte (Produkte.ts nur Prüfung aus Punkt 2); siehe OFFENE FRAGE unten.
+6. **[gelb] Sitemap-Tests: behoben.** Neuer Fall in `src/app/sitemap.test.ts`: (a) nur echtes Fahrzeugteil → kein `/artikel`; (b) echter Artikel in einer Unterkategorie von „Schließtechnik und Zubehör“ → `/artikel/kategorie/test-beschlaege` und `/artikel`; (c) nur Beispiel oder `seo.noindex` der Kategorie → nicht in der Sitemap.
+7. **[gelb] Datenbanktest „nicht beim Beispiel“: behoben.** `shop-grundlage.db.test.ts` legt jetzt ein veröffentlichtes Codeprodukt mit `beispiel: true` ohne `herstellerAuswahl`, `hersteller` und `codebereich` an und erwartet `_status: 'published'`.
+8. **[gelb] Verweis auf gelöschte Kategorie: behoben.** `artikelDerKategorie` behandelt eine leere Kette wie keine Kategorie; der Artikel steht wieder unter `/artikel` und zählt dort im Shop. Test in `kategorie-weg.test.ts` (Liste und Zahl gleich), dazu Tests für `artikelUebersicht`. Anleitung Abschnitt 2 nennt das.
+9. **[gelb] `src/payload-types.ts`: zutreffend, im Bericht nachgetragen.** Erzeugt aus den neuen Feldbeschreibungen in `Produkte.ts`, nur zwei Beschreibungen, kein Schema. Die Datei liegt inzwischen im Zwischenstand-Commit 52e07c4 mit der Kennung FA-SHOP-05 und ist im Arbeitsbaum unverändert.
+
+Geändert in der Nachbesserung: `src/lib/data/shop.ts`, `src/app/(site)/artikel/[slug]/page.tsx`, `src/app/(site)/artikel/[slug]/artikel-kauf.tsx`, `src/app/(site)/artikel/page.tsx`, `src/app/(site)/artikel/page.test.tsx`, `src/app/(site)/shop/kategorie-weg.test.ts`, `src/app/sitemap.test.ts`, `src/payload/shop-grundlage.db.test.ts`, `docs/betrieb/shop-pflegen.md`, dieser Bericht.
+
+Gemeinsame Datei (Nachtrag): `src/payload-types.ts`, erzeugt, nur Beschreibungen, kein Schema.
+
+Prüfung nach der Nachbesserung, alle über die Datenweiche:
+- `sicher.sh --json -- npx vitest run`: 249 Dateien, **3909 Tests bestanden** (vorher 3902, dazu 7 neue), 0 Fehler
+- `sicher.sh --json -- npm run typecheck`: **0 Fehler**
+- `sicher.sh --json -- npm run lint`: **0 Fehler**
+- `sicher.sh --pg -- npx vitest run -c vitest.db.config.ts`: 27 Dateien, **167 Tests bestanden** (Beispielfall im bestehenden Test ergänzt)
+- `sicher.sh --json -- npm run build`: **erfolgreich**, Routen `/artikel`, `/artikel/[slug]`, `/artikel/kategorie/[slug]` gebaut
+
+Neue OFFENE FRAGE: Soll `systemPruefen` wie Hersteller und Codebereich Platzhalter in eckigen Klammern ablehnen (Freigabe außerhalb dieses Pakets)?
+
+
+## Abnahme durch den Orchestrator (16.11.2026)
+
+Prüfkette (`bash _werkstatt/ausbau/werkzeuge/abnahme.sh FA-SHOP-05`, beide Pakete der Welle gemeinsam im Arbeitsbaum, nach allen Eingriffen): Typprüfung grün, Lint grün, Unit 3909 von 3909, Datenbanktests 167 von 167, Build 181 von 181 Seiten. Onpage-Messung am neu gestarteten Prüfserver: 137 Seiten, Median 100, kein roter und kein gelber Befund. `reste.mjs` über alle vier Quellen: nur die zehn bekannten Platzhalter in `src/lib/pdf/partnervertrag.ts` (MA-29).
+
+Sichtprobe mit drei erfundenen Testartikeln (G4; nur lokal in einer Entwicklungsinstanz auf eigenem Port, Datei danach gelöscht, nichts davon im Repo): 11 von 11.
+- `/artikel` zeigt den Artikel der Kategorie „Schließtechnik und Zubehör“ und den Artikel ohne Kategorie, das Fahrzeugteil nicht mehr; Überschrift und Brotkrume nennen die Kategorie.
+- `/shop`: „Schließtechnik und Zubehör“ zählt zwei Artikel und führt zur Liste; „Autoschlüsselgehäuse“ zählt das eine Teil. Zahl und Liste stimmen überein.
+- Artikelseite: Brotkrume mit Kategorie, Verweis „Mehr aus Schließtechnik und Zubehör“, kein „Alle Artikel“ mehr. Fahrzeugteil: nur der Verweis auf die Liste der Gehäuse. Artikel ohne Kategorie: „Zur Artikelliste“.
+- Die Adresse der ersten Kategorie leitet auf `/artikel`; eine unbekannte Kategorie gibt 404.
+- Nicht im Browser geprüft: die Liste einer weiteren Artikel-Kategorie oder Unterkategorie (es gibt in den Daten keine); das deckt `artikel/kategorie/[slug]/page.test.tsx`. Die Pflichtangaben im Admin decken die Datenbanktests.
+
+Entschieden bei der Abnahme:
+- Gehäuse und Ersatzteile stehen nicht mehr in der allgemeinen Artikelliste, sondern nur in ihrer eigenen Liste. Die Arbeitsanweisung führt „Autoschlüsselgehäuse“ und „Schließtechnik und Zubehör“ als getrennte Hauptkategorien; die Frage 10 in MA-53 ist damit beantwortet (A-067).
+- Platzhalter in eckigen Klammern beim Feld System bleiben, wie sie sind (offene Frage des Pakets); die Pflicht für System stammt aus FA-SHOP-01.
+- Der Seitentitel von `/artikel` bleibt, bis die Schlussredaktion die Titel bestätigt (MA-44).
+
 === ENDE FA-SHOP-05 · BEREIT ZUR RÜCKGABE ===
