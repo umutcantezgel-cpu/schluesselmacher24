@@ -30,7 +30,7 @@ export function VerfuegbarkeitHinweis({ verfuegbarkeit, was, anfrage, uebersicht
       <CardBody className="flex flex-col gap-4">
         <p className="text-small leading-relaxed text-foreground-muted">
           {aufAnfrage
-            ? `${was} bestellen Sie nicht direkt. Fragen Sie ihn bei uns an. Wir prüfen Ihre Angaben und melden uns.`
+            ? `${was} bestellen Sie nicht direkt. Bitte fragen Sie bei uns an. Wir prüfen Ihre Angaben und melden uns.`
             : `${was} können Sie zurzeit nicht bestellen.`}
         </p>
         {aufAnfrage ? (

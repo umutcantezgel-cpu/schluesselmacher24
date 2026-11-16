@@ -5,6 +5,7 @@ import type {
   CylinderManufacturer,
   CylinderOrderDraft,
 } from '@/lib/types';
+import { preisSperre } from '@/lib/konfigurator/preisbestaetigung';
 
 /**
  * Regeln für gleichschließende Zylinder — gemeinsam für Konfigurator (Browser)
@@ -102,7 +103,8 @@ export function validateCylinderDraft(draft: CylinderOrderDraft, catalog: Cylind
       return 'Eine gewählte Zusatzoption wird derzeit nicht angeboten.';
     }
   }
-  return herstellerProblem(draft, catalog);
+  // Zuletzt die Sperre für unbestätigte Preise (FA-SHOP-04): Solche Einträge gibt es nur als Angebot.
+  return herstellerProblem(draft, catalog) ?? preisSperre(draft, catalog, wirksameZusatzIds(draft, catalog));
 }
 
 /**

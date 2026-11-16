@@ -268,8 +268,8 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
                 {bestellbar
                   ? 'Die Versandart wählen Sie im Warenkorb.'
                   : verfuegbarkeit === 'auf-anfrage'
-                    ? 'Diesen Artikel bestellen Sie nicht über den Warenkorb, sondern fragen ihn an.'
-                    : 'Ist der Artikel wieder lieferbar, wählen Sie die Versandart im Warenkorb.'}
+                    ? 'Diesen Artikel legen Sie nicht in den Warenkorb. Sie fragen ihn bei uns an.'
+                    : 'Diesen Artikel können Sie zurzeit nicht bestellen. Ist er lieferbar, wählen Sie die Versandart im Warenkorb.'}
                 {versandarten.length > 0 && ' Für diesen Artikel kommen folgende Versandarten in Frage:'}
               </p>
               {versandarten.length > 0 && (

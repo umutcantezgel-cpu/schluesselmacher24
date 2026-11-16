@@ -52,7 +52,7 @@ export function kategorieWeg(kategorie: Pick<ShopKategorie, 'id' | 'name' | 'art
   switch (kategorie.art) {
     case 'codeprodukte':
       return anzahl > 0
-        ? { href: kategorie.ziel, label: 'Zu den Codeprodukten' }
+        ? { href: kategorie.ziel, label: 'Zu den Produkten' }
         : { href: CODE_ANFRAGE_PFAD, label: 'Code anfragen', hinweis };
     case 'artikel':
       return anzahl > 0
@@ -62,7 +62,7 @@ export function kategorieWeg(kategorie: Pick<ShopKategorie, 'id' | 'name' | 'art
       return { href: kategorie.ziel, label: 'Zum Konfigurator' };
     default: {
       if (!istLeistungsAnfrage(kategorie.ziel)) {
-        // Mit Hinweis („Bis dahin fragen Sie bitte bei uns an.“) heißt der Knopf wie der Weg, den der Satz nennt.
+        // Mit Hinweis („Bitte fragen Sie bei uns an.“) heißt der Knopf wie der Weg, den der Satz nennt.
         const label = kategorie.hinweis || kategorie.ziel.endsWith('/anfrage') ? 'Anfragen' : 'Ansehen';
         return { href: kategorie.ziel, label, ...(kategorie.hinweis ? { hinweis: kategorie.hinweis } : {}) };
       }

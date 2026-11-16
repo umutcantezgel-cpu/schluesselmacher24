@@ -15,6 +15,7 @@ import type { CylinderCatalog, CylinderLineItem, CylinderOrderDraft } from '../t
 import { aktiveHersteller, ERWEITERBAR_OPTION_ID, validateCylinderDraft } from '../cylinder-rules';
 
 import { pruefeMasse } from './masse';
+import { ohneSperreWeg } from './preisbestaetigung';
 import { istGleichschliessung, pruefePlan, type Schliessplan } from './schliessplan';
 
 /** Katalog-Option „Aufbohr- und Ziehschutz“ (Einheit je Zylinder); im Plan eine Option der Tür. */
@@ -79,6 +80,6 @@ export function preisFuerPlan(plan: Schliessplan, katalog: CylinderCatalog, extr
     return { art: 'angebot', grund: 'Schlüssel für später vormerken bieten wir derzeit im Angebot an.' };
   }
   const problem = validateCylinderDraft(entwurf, katalog);
-  if (problem) return { art: 'angebot', grund: `${problem} Diese Schließung planen wir mit Ihnen und schicken Ihnen ein Angebot.` };
+  if (problem) return { art: 'angebot', grund: `${ohneSperreWeg(problem)} Diese Schließung planen wir mit Ihnen und schicken Ihnen ein Angebot.` };
   return { art: 'preis', aufstellung: priceCylinderOrder(entwurf, katalog), entwurf };
 }

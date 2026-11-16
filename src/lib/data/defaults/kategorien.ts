@@ -1,7 +1,7 @@
 import type { ShopKategorie } from '@/lib/types';
 
 /** Hinweis für Kategorien, zu denen es noch keine Produkte gibt (FA-SHOP-01). */
-export const HINWEIS_PRODUKTE_FOLGEN = 'Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.';
+export const HINWEIS_PRODUKTE_FOLGEN = 'Direkt bestellen können Sie hier derzeit nicht. Bitte fragen Sie bei uns an.';
 
 /**
  * Startbestand der Shop-Kategorien: die neun Hauptkategorien aus Abschnitt 10
@@ -21,7 +21,7 @@ export function kategorien(): ShopKategorie[] {
       id: 'schluessel-nach-code',
       slug: 'schluessel-nach-code',
       name: 'Schlüssel nach Code',
-      beschreibung: 'Schlüssel nach dem Code auf Schloss, Schlüssel oder Sicherungskarte. Ohne Einsendung des Originals.',
+      beschreibung: 'Ein neuer Schlüssel nach dem Code auf Schloss, Schlüssel oder Sicherungskarte. Ihr Original müssen Sie nicht einschicken.',
       reihenfolge: 10,
       art: 'codeprodukte',
       ziel: '/schluessel-nach-code',
@@ -32,7 +32,7 @@ export function kategorien(): ShopKategorie[] {
       id: 'schluessel-nach-vorlage',
       slug: 'schluessel-nach-vorlage',
       name: 'Schlüssel nach Vorlage',
-      beschreibung: 'Schlüssel nach Ihrem vorhandenen Schlüssel. Sie schicken uns Fotos, wir prüfen die Nachfertigung.',
+      beschreibung: 'Ein weiterer Schlüssel nach Ihrem vorhandenen Schlüssel. Sie schicken uns Fotos, und wir prüfen, ob wir ihn nachmachen können.',
       reihenfolge: 20,
       art: 'anfrage',
       ziel: '/schluessel-nach-vorlage',
@@ -43,7 +43,7 @@ export function kategorien(): ShopKategorie[] {
       id: 'autoschluessel-produkte',
       slug: 'autoschluessel-produkte',
       name: 'Autoschlüssel als Produkte',
-      beschreibung: 'Autoschlüssel als Produkt im Shop. Bis es so weit ist, fragen Sie bitte an. Der Termin in der Werkstatt bleibt ein eigener Weg.',
+      beschreibung: 'Autoschlüssel als Produkt, ohne Termin in der Werkstatt. Einen Termin in der Werkstatt fragen Sie getrennt an.',
       reihenfolge: 30,
       art: 'anfrage',
       ziel: '/service-und-termin/anfrage?thema=autoschluessel&anliegen=frage',
@@ -79,7 +79,7 @@ export function kategorien(): ShopKategorie[] {
       id: 'customizing-und-modifikation',
       slug: 'customizing-und-modifikation',
       name: 'Customizing und Modifikation',
-      beschreibung: 'Schlüssel nach Ihren Wünschen anpassen.',
+      beschreibung: 'Ihr Autoschlüssel in neuer Optik, etwa in einem moderneren Gehäuse. Das geht nur, wenn die Technik hineinpasst.',
       reihenfolge: 60,
       art: 'anfrage',
       ziel: '/service-und-termin/anfrage',
@@ -91,7 +91,7 @@ export function kategorien(): ShopKategorie[] {
       id: 'gleichschliessende-zylinder',
       slug: 'gleichschliessende-zylinder',
       name: 'Gleichschließende Zylinder und Sperrschließungen',
-      beschreibung: 'Mehrere Zylinder, ein Schlüssel für alle. Im Konfigurator zusammenstellen.',
+      beschreibung: 'Mehrere Zylinder, die alle mit demselben Schlüssel schließen. Sie stellen sie im Konfigurator zusammen.',
       reihenfolge: 70,
       art: 'konfigurator',
       ziel: '/gleichschliessende-zylinder/konfigurator',

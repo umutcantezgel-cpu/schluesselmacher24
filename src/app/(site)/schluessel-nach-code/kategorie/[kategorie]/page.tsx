@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
 
 import { getCodeLines, getKategorien } from '@/lib/data';
+import { HINWEIS_PRODUKTE_FOLGEN } from '@/lib/data/defaults/kategorien';
 import {
   codeKategorieAufloesen,
   codeKategorien,
@@ -103,9 +104,9 @@ export default async function KategoriePage(props: KategoriePageProps) {
             <SectionHeading
               id="linien-titel"
               nummer="01"
-              eyebrow="Codelinien"
-              title={`Alle Codelinien: ${kategorie.name}`}
-              lead="Nach Hersteller und System geordnet. Jede Linie hat eine eigene Seite mit Codeformat, Beispiel und Bestellung."
+              eyebrow="Produkte"
+              title="Alle Produkte dieser Kategorie"
+              lead="Geordnet nach Hersteller und System. Jedes Produkt hat eine eigene Seite mit Codeformat und Beispielcode."
             />
             <PreisHinweis alle className="mt-4" />
             <div className="mt-8 grid gap-10">
@@ -128,7 +129,7 @@ export default async function KategoriePage(props: KategoriePageProps) {
               ))}
             </div>
             <p className="mt-6 text-small text-foreground-muted">
-              Ihr Code passt zu keiner Linie?{' '}
+              Passt Ihr Code zu keinem Produkt, prüfen wir ihn gern.{' '}
               <Link
                 href={codeAnfragePfad({ schloss: kategorie.name })}
                 prefetch={false}
@@ -144,7 +145,7 @@ export default async function KategoriePage(props: KategoriePageProps) {
             <GlyphInfo size={18} className="mt-1 shrink-0 text-foreground-muted" />
             <div className="min-w-0">
               <h2 id="linien-titel" className="text-body font-semibold text-foreground">
-                {kategorie.hinweis || 'Hier gibt es noch keine Produkte. Bis dahin prüfen wir Ihren Code auf Anfrage.'}
+                {kategorie.hinweis || HINWEIS_PRODUKTE_FOLGEN}
               </h2>
               <div className="mt-6">
                 <ButtonLink href={codeAnfragePfad({ schloss: kategorie.name })} pfeil>
@@ -161,7 +162,7 @@ export default async function KategoriePage(props: KategoriePageProps) {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-gutter">
             {texte && (
               <div className="lg:col-span-7">
-                <SectionHeading id="angaben-titel" nummer="02" eyebrow="Angaben" title="Was diese Kategorie ausmacht" />
+                <SectionHeading id="angaben-titel" nummer="02" eyebrow="Angaben" title="Angaben zu dieser Kategorie" />
                 <div className="prose-sm24 mt-5">
                   {texte.absaetze.map((absatz) => (
                     <p key={absatz}>{absatz}</p>
@@ -191,7 +192,7 @@ export default async function KategoriePage(props: KategoriePageProps) {
                 {[
                   ...andere.map((k) => ({ href: kategoriePfad(k.kategorie.slug), label: k.kategorie.name })),
                   ...herstellerHier.map((h) => ({ href: herstellerPfad(h.adresse!), label: `Hersteller: ${h.name}` })),
-                  { href: '/schluessel-nach-code', label: 'Alle Codelinien mit Suche und Filter' },
+                  { href: '/schluessel-nach-code', label: 'Alle Schlüssel nach Code, mit Suche und Filter' },
                 ].map((link) => (
                   <li key={link.href} className="border-b border-border">
                     <Link

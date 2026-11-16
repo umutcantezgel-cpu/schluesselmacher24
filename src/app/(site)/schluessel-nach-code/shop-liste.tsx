@@ -15,6 +15,7 @@ import {
   herstellerPfad,
   linienZumCode,
   nachHerstellerUndSystem,
+  verfuegbarkeitVon,
 } from '@/lib/codelinie';
 import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 import { Badge } from '@/components/ui/badge';
@@ -167,13 +168,13 @@ export function ShopListe({ lines, hersteller = [], startSuche = '', className }
       {/* Suche und Filter: eine ruhige Zeile mit Haarlinie */}
       <form
         role="search"
-        aria-label="Codelinien durchsuchen und filtern"
+        aria-label="Schlüssel nach Code durchsuchen und filtern"
         onSubmit={(event) => event.preventDefault()}
         className="border-b border-border pb-6"
       >
         <Field
           label="Suche"
-          hint="Zum Beispiel ein Hersteller, ein System, Briefkasten oder der Code von Ihrem Schloss. Bei einem Code sehen Sie die Linien, deren Codeformat dazu passt."
+          hint="Zum Beispiel ein Hersteller, ein System, Briefkasten oder der Code von Ihrem Schloss. Bei einem Code sehen Sie alle Produkte, zu deren Codeformat er passt."
         >
           {({ id: fieldId, describedBy }) => (
             <TextInput
@@ -192,7 +193,7 @@ export function ShopListe({ lines, hersteller = [], startSuche = '', className }
         {/* Zähler und Filter-Knopf in einer Zeile; der Knopf nur am Smartphone (unter 360 px darf er umbrechen) */}
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
           <p className="whitespace-nowrap font-mono text-small tabular-nums text-foreground-muted" aria-live="polite">
-            <strong className="font-bold text-foreground">{results.length}</strong> von {lines.length} {lines.length === 1 ? 'Codelinie' : 'Codelinien'}
+            <strong className="font-bold text-foreground">{results.length}</strong> von {lines.length} {lines.length === 1 ? 'Produkt' : 'Produkten'}
             {codeTrefferSichtbar > 0 && (
               <span className="sr-only">
                 , davon {codeTrefferSichtbar} passend zum Codeformat
@@ -306,12 +307,12 @@ export function ShopListe({ lines, hersteller = [], startSuche = '', className }
           )}
         </div>
 
-        {/* Codesuche: Hinweis, dass das Format passt — welche Linie zum Schloss gehört, entscheidet die Anwendung */}
+        {/* Codesuche: Hinweis, dass das Format passt; welches Produkt zum Schloss gehört, zeigen Hersteller und System */}
         {codeTrefferSichtbar > 0 && (
           <p className="mt-4 max-w-measure text-small text-foreground-muted">
             Ihr Code <span className="font-mono font-semibold text-foreground">{query.trim()}</span> passt zum
-            Codeformat von {codeTrefferSichtbar} {codeTrefferSichtbar === 1 ? 'Codelinie' : 'Codelinien'}. Welche
-            davon zu Ihrem Schloss gehört, erkennen Sie an Hersteller und System. Passt keine sicher,{' '}
+            Codeformat von {codeTrefferSichtbar} {codeTrefferSichtbar === 1 ? 'Produkt' : 'Produkten'}. Welches
+            davon zu Ihrem Schloss gehört, erkennen Sie an Hersteller und System. Passt keines sicher,{' '}
             <Link href={codeAnfragePfad({ code: query })} prefetch={false} className="font-semibold text-primary hover:underline">
               fragen Sie den Code an
             </Link>
@@ -363,7 +364,7 @@ export function ShopListe({ lines, hersteller = [], startSuche = '', className }
                   id={`hersteller-${gruppe.adresse ?? 'ohne'}`}
                   className="scroll-mt-14"
                   aria-labelledby={mitKoepfen ? titelId : undefined}
-                  aria-label={mitKoepfen ? undefined : 'Codelinien'}
+                  aria-label={mitKoepfen ? undefined : 'Produkte'}
                 >
                   {mitKoepfen && (
                     <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -377,7 +378,9 @@ export function ShopListe({ lines, hersteller = [], startSuche = '', className }
                         )}
                       </h3>
                       <p className="font-mono text-caption tabular-nums text-foreground-muted">
-                        {gruppe.lines.length} {gruppe.lines.length === 1 ? 'Codelinie' : 'Codelinien'} · Preis je Stück
+                        {gruppe.lines.length} {gruppe.lines.length === 1 ? 'Produkt' : 'Produkte'}
+                        {/* „Preis je Stück“ nur, wenn mindestens ein Produkt der Gruppe einen Preis zeigt (R9) */}
+                        {gruppe.lines.some((line) => verfuegbarkeitVon(line) === 'lieferbar') && ' · Preis je Stück'}
                       </p>
                     </div>
                   )}
@@ -485,7 +488,7 @@ export function ShopListe({ lines, hersteller = [], startSuche = '', className }
           <CardBody className="flex flex-col items-start gap-4 py-8 text-left sm:items-center sm:text-center">
             <div>
               <p className="text-body font-bold text-foreground">
-                Zu dieser Auswahl gibt es keine Codelinie.
+                Zu Ihrer Auswahl passt kein Produkt.
               </p>
               <p className="mt-2 max-w-md text-small leading-relaxed text-foreground-muted">
                 Setzen Sie die Filter zurück oder suchen Sie mit einem anderen Begriff. Trägt Ihr

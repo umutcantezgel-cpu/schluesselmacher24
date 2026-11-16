@@ -3,4 +3,5 @@ export * from './schliessplan';
 export * from './vorlagen';
 export * from './masse';
 export * from './preis';
+export * from './preisbestaetigung';
 export * from './zwischenstand';

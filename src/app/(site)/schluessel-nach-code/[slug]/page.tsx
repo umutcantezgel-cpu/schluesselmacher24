@@ -167,11 +167,11 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
 
   // Pflichtlinks laut Leitfaden, ergänzt um Kategorie, Hersteller und die gepflegten Ziele der Codelinie.
   const baseLinks = [
-    ...(herstellerSeite ? [{ href: herstellerPfad(herstellerSeite.adresse), label: `Codelinien von ${herstellerSeite.name}` }] : []),
-    ...(kategorie ? [{ href: kategoriePfad(kategorie.slug), label: `Alle Codelinien: ${kategorie.name}` }] : []),
-    { href: '/schluessel-nach-code', label: 'Alle Codelinien' },
-    { href: codeAnfragePfad({ schloss: line.name }), label: 'Code passt nicht? Code anfragen' },
-    { href: '/schluessel-nach-vorlage', label: 'Kein Code? Schlüssel nach Vorlage' },
+    ...(herstellerSeite ? [{ href: herstellerPfad(herstellerSeite.adresse), label: `Alle Produkte für ${herstellerSeite.name}` }] : []),
+    ...(kategorie ? [{ href: kategoriePfad(kategorie.slug), label: `Alle Produkte der Kategorie ${kategorie.name}` }] : []),
+    { href: '/schluessel-nach-code', label: 'Alle Schlüssel nach Code' },
+    { href: codeAnfragePfad({ schloss: line.name }), label: 'Code anfragen, wenn er nicht sicher passt' },
+    { href: '/schluessel-nach-vorlage', label: 'Ohne Code zum Schlüssel nach Vorlage' },
     { href: `/ratgeber/${RATGEBER_FUNDSTELLE}`, label: 'Ratgeber: Wo finde ich den Code?' },
   ];
   // Die Startwerte führen die Übersicht ein zweites Mal; doppelte Ziele entfallen.
@@ -281,7 +281,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
                 </Suspense>
                 {/* Code passt nicht eindeutig (FA-11-17): die Anfrage steht neben dem Bestellformular. */}
                 <p className="mt-4 text-small text-foreground-muted">
-                  Ihr Code passt nicht sicher zu dieser Linie?{' '}
+                  Passt Ihr Code nicht sicher zu diesem Schlüssel, prüfen wir ihn gern.{' '}
                   <Link
                     href={codeAnfragePfad({ schloss: line.name })}
                     prefetch={false}
@@ -296,7 +296,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
                 verfuegbarkeit={verfuegbarkeit}
                 was="Diesen Schlüssel"
                 anfrage={{ href: codeAnfragePfad({ schloss: line.name }), label: 'Code anfragen' }}
-                uebersicht={{ href: '/schluessel-nach-code', label: 'Alle Codelinien' }}
+                uebersicht={{ href: '/schluessel-nach-code', label: 'Alle Schlüssel nach Code' }}
               />
             )}
           </div>
@@ -402,7 +402,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
                 <SectionHeading
                   nummer="04"
                   eyebrow={system ? 'Gleiches System' : 'Gleiche Familie'}
-                  title={`Weitere Codelinien: ${verwandtTitel}`}
+                  title={`Weitere Schlüssel für ${verwandtTitel}`}
                 />
                 <LinienListe lines={texte.verwandte} className="mt-6" />
               </div>
@@ -413,7 +413,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
               <SectionHeading
                 nummer="05"
                 eyebrow="Weiter im Bereich"
-                title="Passende Seiten zu dieser Codelinie"
+                title="Weitere passende Seiten"
               />
 
               <ol className="mt-6 border-t border-border">

@@ -52,7 +52,8 @@ export const Hersteller: CollectionConfig = {
       admin: {
         description:
           'Ein kurzer Satz, etwa an welchen Schlössern die Systeme sitzen. Nur, was Sie belegen können. '
-          + 'Erscheint auf der Startseite nur bei Herstellern ohne Bereich; mit Bereich zeigt die Seite den Text des Bereichs.',
+          + 'Erscheint auf der Herstellerseite bei Schlüssel nach Code und auf der Startseite bei Herstellern ohne Bereich; '
+          + 'mit Bereich zeigt die Startseite den Text des Bereichs.',
       },
     },
     {
@@ -66,7 +67,10 @@ export const Hersteller: CollectionConfig = {
           + 'Ohne Bereich erscheint er nur auf der Startseite. Jeden Bereich nur einmal anlegen. Nur, was Sie belegen können, ohne Preise.',
       },
       validate: (wert: unknown) => {
-        const arten = (Array.isArray(wert) ? wert : []).map((zeile) => (zeile as { art?: string })?.art);
+        // Zeilen ohne gewählten Bereich meldet das Pflichtfeld „Bereich“ selbst, nicht als Doppel.
+        const arten = (Array.isArray(wert) ? wert : [])
+          .map((zeile) => (zeile as { art?: string })?.art)
+          .filter(Boolean);
         return new Set(arten).size === arten.length || 'Jeder Bereich darf nur einmal vorkommen.';
       },
       fields: [

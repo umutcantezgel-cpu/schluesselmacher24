@@ -163,7 +163,7 @@ describe('kategorieTexte', () => {
     expect(a.metaTitel).not.toBe(b.metaTitel);
     expect(a.metaTitel.length).toBeLessThanOrEqual(TITEL_MAX);
     expect(a.metaBeschreibung.length).toBeLessThanOrEqual(BESCHREIBUNG_MAX);
-    expect(a.einleitung).toContain('6 Codelinien');
+    expect(a.einleitung).toContain('6 Produkte');
     expect(a.absaetze.join(' ')).toContain('Möbelschlüssel');
     expect(a.fundstelle).toContain('Möbel-');
   });
@@ -218,7 +218,7 @@ describe('Linien aus dem Import (Hersteller und System, ohne Schlagwort-Familie)
     const t = texte(importiert);
     expect(t.beschreibung).not.toContain('Anwendungsfamilie');
     expect(t.beschreibung).not.toContain('TESTWERK-TX-100');
-    expect(t.beschreibung).not.toMatch(/Die Codelinie Testwerk TX 100 ist für Testwerk TX 100/);
+    expect(t.beschreibung).not.toMatch(/Testwerk TX 100 ist für Testwerk TX 100/);
     expect(t.faq.map((f) => f.question).join(' ')).toContain('Testwerk TX 100');
   });
 });

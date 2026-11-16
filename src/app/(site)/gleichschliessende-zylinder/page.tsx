@@ -32,6 +32,9 @@ const STIFTZUHALTUNG_AUSSCHNITT = { x: 58, y: 30, breite: 370, hoehe: 200, vollB
 
 const ROUTE = 'gleichschliessende-zylinder';
 
+/** Anzeige statt eines Betrags bei gesetztem Haken „Preis nicht bestätigt“ (FA-SHOP-04, R9). */
+const PREIS_AUF_ANFRAGE = 'Preis auf Anfrage';
+
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
@@ -135,9 +138,15 @@ export default async function CylinderOverviewPage() {
     { label: 'Im Grundpreis enthalten', value: `${catalog.includedKeys} Schlüssel` },
   ];
 
+  // Haken „Preis nicht bestätigt“ (FA-SHOP-04): Solche Einträge nennen keinen Betrag, sie gehen in die Anfrage.
+  const formOffen = forms.some((form) => form.priceUnconfirmed);
+  const keineBestellbar = forms.length > 0 && forms.every((form) => form.priceUnconfirmed);
+
   // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
-  const kurztext =
-    page?.subline ?? 'Ein Schlüssel für mehrere Türen. Sie stellen die Zylinder selbst zusammen und bestellen direkt.';
+  // Ist keine Bauform bestellbar, verspricht der Kopf keinen Direktkauf.
+  const kurztext = keineBestellbar
+    ? 'Ein Schlüssel für mehrere Türen. Sie stellen die Zylinder selbst zusammen und bekommen ein Angebot.'
+    : page?.subline ?? 'Ein Schlüssel für mehrere Türen. Sie stellen die Zylinder selbst zusammen und bestellen direkt.';
 
   return (
     <>
@@ -343,21 +352,33 @@ export default async function CylinderOverviewPage() {
                     <div className="flex flex-wrap justify-between gap-x-4 gap-y-1">
                       <dt className="font-semibold text-foreground-muted">Grundpreis</dt>
                       <dd className="text-right font-mono tabular-nums text-foreground">
-                        {formatCents(form.basePriceCents)}
+                        {form.priceUnconfirmed ? PREIS_AUF_ANFRAGE : formatCents(form.basePriceCents)}
                       </dd>
                     </div>
                   </dl>
 
-                  <p className="mt-4 max-w-measure text-caption text-foreground-muted">
-                    Der Grundpreis gilt bis {formatMillimeter(form.baseLengthMm)} Gesamtlänge.
-                    Darüber kommen {formatCents(form.lengthSurchargeCents)} je angefangene 5 mm
-                    hinzu.
-                  </p>
+                  {form.priceUnconfirmed ? (
+                    <p className="mt-4 max-w-measure text-caption text-foreground-muted">
+                      Diese Bauform schicken Sie uns als Anfrage. Den Preis nennen wir Ihnen im Angebot.
+                    </p>
+                  ) : (
+                    <p className="mt-4 max-w-measure text-caption text-foreground-muted">
+                      Der Grundpreis gilt bis {formatMillimeter(form.baseLengthMm)} Gesamtlänge.
+                      Darüber kommen {formatCents(form.lengthSurchargeCents)} je angefangene 5 mm
+                      hinzu.
+                    </p>
+                  )}
                 </div>
               </li>
             );
           })}
         </ul>
+        {formOffen && (
+          <p className="mt-4 max-w-measure text-small text-foreground-muted">
+            Bei „{PREIS_AUF_ANFRAGE}“ ist der Preis noch nicht bestätigt. Solche Zylinder lassen sich nicht online
+            bestellen; der Konfigurator führt Sie in die Anfrage.
+          </p>
+        )}
         <PreisHinweis alle className="mt-4" />
       </Section>
 
@@ -396,7 +417,11 @@ export default async function CylinderOverviewPage() {
                   ) : null;
                 })}
               </p>
-              {fn.surchargeCents > 0 && (
+              {fn.priceUnconfirmed ? (
+                <p className="mt-3 text-small text-foreground-muted">
+                  Aufpreis je Zylinder: <span className="text-foreground">{PREIS_AUF_ANFRAGE}</span>
+                </p>
+              ) : fn.surchargeCents > 0 && (
                 <p className="mt-3 text-small text-foreground-muted">
                   Aufpreis je Zylinder:{' '}
                   <span className="font-mono tabular-nums text-foreground">
@@ -559,7 +584,10 @@ export default async function CylinderOverviewPage() {
         <p className="mt-5 max-w-measure text-small text-foreground-muted">
           Alle drei Zylinder bekommen dieselbe Schließung. Dazu kommen so viele gemeinsame
           Schlüssel, wie Sie wählen. {catalog.includedKeys} Schlüssel sind im Grundpreis enthalten,
-          jeder weitere kostet {formatCents(catalog.keyPriceCents)}. Je Bestellung sind bis zu{' '}
+          {catalog.keyPriceUnconfirmed
+            ? ' den Preis für jeden weiteren nennen wir auf Anfrage.'
+            : ` jeder weitere kostet ${formatCents(catalog.keyPriceCents)}.`}{' '}
+          Je Bestellung sind bis zu{' '}
           {catalog.maxKeys} gemeinsame Schlüssel und {catalog.maxCylinders} Zylinder möglich.
         </p>
 
@@ -598,10 +626,16 @@ export default async function CylinderOverviewPage() {
                 {extra.description}
               </p>
               <p className="text-small font-semibold text-foreground-muted md:col-span-3 md:text-right">
-                <span className="font-mono tabular-nums text-foreground">
-                  {formatCents(extra.priceCents)}
-                </span>{' '}
-                {extra.unit === 'stueck' ? 'je Zylinder' : 'einmalig je Bestellung'}
+                {extra.priceUnconfirmed ? (
+                  <span className="text-foreground">{PREIS_AUF_ANFRAGE}</span>
+                ) : (
+                  <>
+                    <span className="font-mono tabular-nums text-foreground">
+                      {formatCents(extra.priceCents)}
+                    </span>{' '}
+                    {extra.unit === 'stueck' ? 'je Zylinder' : 'einmalig je Bestellung'}
+                  </>
+                )}
               </p>
             </li>
           ))}

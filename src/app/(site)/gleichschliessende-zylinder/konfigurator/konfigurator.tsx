@@ -21,7 +21,7 @@ import {
   measureOptions,
   wirksameZusatzIds,
 } from '@/lib/cylinder-rules';
-import { dekodiere, kodiere, passtInLink } from '@/lib/konfigurator';
+import { dekodiere, kodiere, passtInLink, preisSperreText, unbestaetigteInPosition, unbestaetigtePreise } from '@/lib/konfigurator';
 import { priceCylinderOrder } from '@/lib/pricing';
 import { formatCents, formatMillimeter } from '@/lib/format';
 import { PreisHinweis } from '@/components/recht/preis-hinweis';
@@ -49,6 +49,9 @@ import { ZylinderMassLive } from '@/components/visual/interaktiv/zylinder-mass-l
 import { SET_UEBLICH, ausLink, istStartzustand, masseRueckfragen, planZuPositionen, positionenZuPlan } from './kern';
 
 const FLOW_ID = 'zylinder-konfigurator';
+
+/** Anzeige statt eines Betrags bei gesetztem Haken „Preis nicht bestätigt“ (FA-SHOP-04, R9). */
+const PREIS_AUF_ANFRAGE = 'Preis auf Anfrage';
 
 const STEPS: FlowStep[] = [
   {
@@ -284,6 +287,22 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
     };
   }, [catalog]);
 
+  /** Angaben der Schritte, ohne die Preisprüfung; gemeinsam für Schrittprüfung und Sperrhinweis. */
+  function angabenPruefen(data: ConfigState) {
+    const hersteller = herstellerAusState(catalog, data.manufacturerId);
+    const count = cylinderCount(data.items);
+    return {
+      herstellerOk: herstellerListe.length === 0 || hersteller !== undefined,
+      cylindersOk:
+        data.items.length > 0
+        && count >= 1
+        && count <= catalog.maxCylinders
+        && data.items.every((item) => isItemValid(catalog, item, hersteller)),
+      keysOk: data.keyCount >= 1 && data.keyCount <= catalog.maxKeys,
+      erweiterungOk: data.expandable !== null,
+    };
+  }
+
   const flow = useFlow<ConfigState>({
     id: FLOW_ID,
     steps: STEPS,
@@ -292,28 +311,23 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
     // Den Herstellerschritt gibt es nur, wenn der Katalog Hersteller anbietet.
     isStepRelevant: (_data, stepId) => stepId !== 'hersteller' || herstellerListe.length > 0,
     validate: (data, stepId) => {
-      const hersteller = herstellerAusState(catalog, data.manufacturerId);
-      const herstellerOk = herstellerListe.length === 0 || hersteller !== undefined;
-      const count = cylinderCount(data.items);
-      const cylindersOk =
-        data.items.length > 0
-        && count >= 1
-        && count <= catalog.maxCylinders
-        && data.items.every((item) => isItemValid(catalog, item, hersteller));
-      const keysOk = data.keyCount >= 1 && data.keyCount <= catalog.maxKeys;
+      const { herstellerOk, cylindersOk, keysOk, erweiterungOk } = angabenPruefen(data);
 
       if (stepId === 'hersteller') return herstellerOk;
       if (stepId === 'zylinder') return cylindersOk;
       if (stepId === 'schluessel') return keysOk;
-      if (stepId === 'erweiterung') return data.expandable !== null;
+      if (stepId === 'erweiterung') return erweiterungOk;
       if (stepId === 'zusammenfassung') {
-        return herstellerOk && cylindersOk && keysOk && data.expandable !== null;
+        // Unbestätigte Preise (FA-SHOP-04): nicht bestellbar, der Weg führt in die Anfrage.
+        const preiseOk = unbestaetigtePreise(toDraft(data, catalog), catalog).length === 0;
+        return herstellerOk && cylindersOk && keysOk && erweiterungOk && preiseOk;
       }
       return true;
     },
   });
 
   const { data } = flow;
+  const angabenVollstaendig = Object.values(angabenPruefen(data)).every(Boolean);
 
   // Zusammenstellung als Link (KE5) in derselben Form wie im Schließplan-Planer (E5-OPUS-02): Ein
   // unveränderter Start wird sofort ersetzt, eine eigene Zusammenstellung erst nach Rückfrage.
@@ -352,6 +366,17 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
   const hersteller = useMemo(() => herstellerAusState(catalog, data.manufacturerId), [catalog, data.manufacturerId]);
   const draft = useMemo(() => toDraft(data, catalog), [data, catalog]);
   const breakdown = useMemo(() => priceCylinderOrder(draft, catalog), [draft, catalog]);
+  // Sperre für unbestätigte Preise (FA-SHOP-04): Solche Einträge zeigen keinen Betrag und gehen nicht in den Warenkorb.
+  const unbestaetigt = useMemo(() => unbestaetigtePreise(draft, catalog), [draft, catalog]);
+  const preisOffen = unbestaetigt.length > 0;
+  const summeText = preisOffen ? 'auf Anfrage' : formatCents(breakdown.totalCents);
+  // Weg in die Anfrage: mit Link in den Schließplan-Planer, sonst die allgemeine Anfrage ohne Übergabe.
+  const anfrage = useMemo(() => {
+    const plan = positionenZuPlan(data.items, data.keyCount, { extraIds: data.extraIds, expandable: data.expandable });
+    return passtInLink(plan)
+      ? { href: `/schliessanlagen/konfigurator/schliessplan?plan=${kodiere(plan)}`, mitPlan: true }
+      : { href: '/service-und-termin/anfrage?thema=tuer-und-schliesstechnik', mitPlan: false };
+  }, [data.items, data.keyCount, data.extraIds, data.expandable]);
   const count = cylinderCount(data.items);
   const canAddPosition = count < catalog.maxCylinders && data.items.length < catalog.maxCylinders;
   const extraKeys = Math.max(0, data.keyCount - catalog.includedKeys);
@@ -366,7 +391,10 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
           : 'Bitte prüfen Sie bei jeder Position Bauform, Maße, Funktion und Stückzahl.',
     schluessel: `Bitte wählen Sie zwischen 1 und ${catalog.maxKeys} gemeinsamen Schlüsseln.`,
     erweiterung: 'Bitte wählen Sie aus, ob Ihre Schließung später erweiterbar sein soll.',
-    zusammenfassung: 'Bitte vervollständigen Sie die vorherigen Schritte.',
+    // Der Preishinweis erst, wenn alle Angaben stehen; sonst fehlt dem Kunden der Hinweis auf die Lücke.
+    zusammenfassung: preisOffen && angabenVollstaendig
+      ? 'Ein Preis dieser Zusammenstellung ist noch nicht bestätigt. Bitte schicken Sie sie uns als Anfrage.'
+      : 'Bitte vervollständigen Sie die vorherigen Schritte.',
   };
 
   function updateItem(uid: string, patch: Partial<CylinderLineItem>) {
@@ -454,6 +482,8 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
 
   const summary = useMemo<SummarySection[]>(() => {
     const selectedExtras = extras.filter((extra) => draft.extraIds.includes(extra.id));
+    // Ist ein Preis nicht bestätigt, nennt die Zusammenfassung Mengen, aber keine Beträge (R9).
+    const betrag = (text: string) => (preisOffen ? 'mit dem Angebot' : text);
     const herstellerAbschnitt: SummarySection[] = hersteller
       ? [
           {
@@ -464,12 +494,12 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
                 label: 'Aufpreis je Zylinder',
                 value:
                   hersteller.surchargeCentsPerCylinder > 0
-                    ? `${formatCents(hersteller.surchargeCentsPerCylinder)} (im Zylinderpreis enthalten)`
+                    ? betrag(`${formatCents(hersteller.surchargeCentsPerCylinder)} (im Zylinderpreis enthalten)`)
                     : 'keiner',
               },
               ...breakdown.componentLines.map((line) => ({
                 label: line.label,
-                value: `${line.qty} × ${formatCents(line.unitCents)} = ${formatCents(line.totalCents)}`,
+                value: preisOffen ? `${line.qty} Stück` : `${line.qty} × ${formatCents(line.unitCents)} = ${formatCents(line.totalCents)}`,
               })),
             ],
           },
@@ -482,7 +512,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
         title: 'Zylinder',
         rows: breakdown.lines.map((line) => ({
           label: line.label,
-          value: `${line.qty} × ${formatCents(line.unitCents)} = ${formatCents(line.totalCents)}`,
+          value: preisOffen ? `${line.qty} Stück` : `${line.qty} × ${formatCents(line.unitCents)} = ${formatCents(line.totalCents)}`,
         })),
       },
       {
@@ -494,7 +524,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
             label: 'Zusätzlich berechnet',
             value:
               extraKeys > 0
-                ? `${extraKeys} × ${formatCents(catalog.keyPriceCents)} = ${formatCents(breakdown.keysCents)}`
+                ? (preisOffen ? `${extraKeys} Stück` : `${extraKeys} × ${formatCents(catalog.keyPriceCents)} = ${formatCents(breakdown.keysCents)}`)
                 : 'keine',
           },
         ],
@@ -505,9 +535,9 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
           selectedExtras.length > 0
             ? selectedExtras.map((extra) => ({
                 label: extra.label,
-                value: `${formatCents(extra.priceCents)} ${
+                value: betrag(`${formatCents(extra.priceCents)} ${
                   extra.unit === 'stueck' ? `je Zylinder · ${breakdown.cylinderCount} Zylinder` : 'einmalig'
-                }`,
+                }`),
               }))
             : [{ label: 'Gewählte Optionen', value: 'keine' }],
       },
@@ -522,7 +552,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
       },
       {
         title: 'Preis',
-        rows: [
+        rows: preisOffen ? [{ label: 'Gesamt', value: 'auf Anfrage, Sie bekommen ein Angebot' }] : [
           { label: 'Zylinder', value: formatCents(breakdown.cylindersCents) },
           { label: 'Zusätzliche Schlüssel', value: formatCents(breakdown.keysCents) },
           { label: 'Optionen', value: formatCents(breakdown.extrasCents) },
@@ -533,7 +563,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
         ],
       },
     ];
-  }, [breakdown, catalog, data.expandable, data.keyCount, draft.extraIds, extraKeys, extras, hersteller]);
+  }, [breakdown, catalog, data.expandable, data.keyCount, draft.extraIds, extraKeys, extras, hersteller, preisOffen]);
 
   // Ohne gepflegte Bauformen ist keine Zusammenstellung möglich.
   if (catalog.forms.filter((form) => form.active).length === 0) {
@@ -553,7 +583,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
       onSubmit={handleSubmit}
       submitting={submitting}
       blockedHint={blockedHints[flow.step?.id ?? '']}
-      summe={{ label: 'Summe', wert: formatCents(breakdown.totalCents) }}
+      summe={{ label: 'Summe', wert: summeText }}
       raster="seite"
       seite={
         <div className="space-y-4">
@@ -684,18 +714,25 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
                 Laufende Summe
               </dt>
               <dd
-                key={breakdown.totalCents}
+                key={summeText}
                 className="mt-1 font-mono text-title font-semibold tabular-nums text-foreground animate-schleier-ein"
               >
-                {formatCents(breakdown.totalCents)}
+                {summeText}
               </dd>
             </div>
           </dl>
           <PreisHinweis className="mt-2" />
-          <p className="mt-1 text-small leading-snug text-foreground-muted">
-            Die Versandart wählen Sie im Warenkorb. Bis dahin ändert sich die Summe mit jeder
-            Anpassung.
-          </p>
+          {preisOffen ? (
+            <p className="mt-1 text-small leading-snug text-foreground-muted">
+              {preisSperreText(unbestaetigt)} Diese Zusammenstellung schicken Sie uns am Ende als Anfrage und
+              bekommen ein Angebot.
+            </p>
+          ) : (
+            <p className="mt-1 text-small leading-snug text-foreground-muted">
+              Die Versandart wählen Sie im Warenkorb. Bis dahin ändert sich die Summe mit jeder
+              Anpassung.
+            </p>
+          )}
         </div>
 
         {/* Hersteller — nur, wenn der Katalog Hersteller anbietet */}
@@ -716,9 +753,11 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
                     title={eintrag.name}
                     description={eintrag.description || undefined}
                     meta={
-                      eintrag.surchargeCentsPerCylinder > 0
-                        ? `+ ${formatCents(eintrag.surchargeCentsPerCylinder)} je Zylinder`
-                        : 'ohne Aufpreis'
+                      eintrag.priceUnconfirmed
+                        ? PREIS_AUF_ANFRAGE
+                        : eintrag.surchargeCentsPerCylinder > 0
+                          ? `+ ${formatCents(eintrag.surchargeCentsPerCylinder)} je Zylinder`
+                          : 'ohne Aufpreis'
                     }
                   />
                 ))}
@@ -857,7 +896,9 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
                   </div>
                   <div className="flex flex-wrap items-baseline justify-between gap-2 px-4 py-3">
                     <dt className="text-small text-foreground-muted">
-                      Zusätzliche Schlüssel je {formatCents(catalog.keyPriceCents)}
+                      {catalog.keyPriceUnconfirmed
+                        ? `Zusätzliche Schlüssel, ${PREIS_AUF_ANFRAGE}`
+                        : `Zusätzliche Schlüssel je ${formatCents(catalog.keyPriceCents)}`}
                     </dt>
                     <dd className="font-mono text-body font-semibold tabular-nums text-foreground">
                       {extraKeys} Stück
@@ -866,7 +907,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
                   <div className="flex flex-wrap items-baseline justify-between gap-2 bg-surface-muted px-4 py-3">
                     <dt className="text-small font-semibold text-foreground">Summe Schlüssel</dt>
                     <dd className="font-mono text-body font-bold tabular-nums text-foreground">
-                      {formatCents(breakdown.keysCents)}
+                      {preisOffen ? 'auf Anfrage' : formatCents(breakdown.keysCents)}
                     </dd>
                   </div>
                 </dl>
@@ -897,9 +938,11 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
                     title={extra.label}
                     description={extra.description}
                     info={extra.info}
-                    meta={`${formatCents(extra.priceCents)} ${
-                      extra.unit === 'stueck' ? 'je Zylinder' : 'einmalig'
-                    }`}
+                    meta={
+                      extra.priceUnconfirmed
+                        ? PREIS_AUF_ANFRAGE
+                        : `${formatCents(extra.priceCents)} ${extra.unit === 'stueck' ? 'je Zylinder' : 'einmalig'}`
+                    }
                   />
                 ))}
               </div>
@@ -908,7 +951,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
             <div className="flex flex-wrap items-baseline justify-between gap-2 rounded-lg border border-border bg-surface-muted px-4 py-3">
               <p className="text-small font-semibold text-foreground">Summe Optionen</p>
               <p className="font-mono text-body font-bold tabular-nums text-foreground">
-                {formatCents(breakdown.extrasCents)}
+                {preisOffen ? 'auf Anfrage' : formatCents(breakdown.extrasCents)}
               </p>
             </div>
 
@@ -932,7 +975,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
                             <p className="mt-0.5 text-small text-foreground-muted">{komponente.description}</p>
                           )}
                           <p className="mt-1 font-mono text-small tabular-nums text-foreground-muted">
-                            {formatCents(komponente.priceCents)} je Stück
+                            {hersteller.priceUnconfirmed ? PREIS_AUF_ANFRAGE : `${formatCents(komponente.priceCents)} je Stück`}
                           </p>
                         </div>
                         <QuantityInput
@@ -950,7 +993,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
                 <div className="mt-3 flex flex-wrap items-baseline justify-between gap-2 rounded-lg border border-border bg-surface-muted px-4 py-3">
                   <p className="text-small font-semibold text-foreground">Summe Zusatzkomponenten</p>
                   <p className="font-mono text-body font-bold tabular-nums text-foreground">
-                    {formatCents(breakdown.componentsCents)}
+                    {preisOffen ? 'auf Anfrage' : formatCents(breakdown.componentsCents)}
                   </p>
                 </div>
               </fieldset>
@@ -981,9 +1024,11 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
                   info={EXPANDABLE_HINTS.ja}
                   meta={
                     erweiterbarOption
-                      ? `+ ${formatCents(erweiterbarOption.priceCents)} ${
-                          erweiterbarOption.unit === 'stueck' ? 'je Zylinder' : 'einmalig'
-                        }`
+                      ? erweiterbarOption.priceUnconfirmed
+                        ? PREIS_AUF_ANFRAGE
+                        : `+ ${formatCents(erweiterbarOption.priceCents)} ${
+                            erweiterbarOption.unit === 'stueck' ? 'je Zylinder' : 'einmalig'
+                          }`
                       : undefined
                   }
                 />
@@ -1001,12 +1046,21 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
 
             {erweiterbarOption && (
               <Alert tone="info" title="Hinterlegung als Option">
-                Mit „Ja“ ist die Option „{erweiterbarOption.label}“ für{' '}
-                <span className="whitespace-nowrap font-mono tabular-nums">
-                  {formatCents(erweiterbarOption.priceCents)}
-                </span>{' '}
-                {erweiterbarOption.unit === 'stueck' ? 'je Zylinder' : 'einmalig'} gewählt und in der
-                Summe enthalten. Sie steht auch im Schritt „Schutz und Optionen“.
+                {erweiterbarOption.priceUnconfirmed || preisOffen ? (
+                  <>
+                    Mit „Ja“ ist die Option „{erweiterbarOption.label}“ gewählt. Ihren Preis nennen wir Ihnen im
+                    Angebot. Sie steht auch im Schritt „Schutz und Optionen“.
+                  </>
+                ) : (
+                  <>
+                    Mit „Ja“ ist die Option „{erweiterbarOption.label}“ für{' '}
+                    <span className="whitespace-nowrap font-mono tabular-nums">
+                      {formatCents(erweiterbarOption.priceCents)}
+                    </span>{' '}
+                    {erweiterbarOption.unit === 'stueck' ? 'je Zylinder' : 'einmalig'} gewählt und in der
+                    Summe enthalten. Sie steht auch im Schritt „Schutz und Optionen“.
+                  </>
+                )}
                 <span className="mt-3 block">
                   <Button variant="outline" size="md" onClick={() => flow.goTo('optionen')}>
                     Optionen noch einmal ansehen
@@ -1020,6 +1074,23 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
         {/* Schritt 5 — Zusammenfassung */}
         {flow.step?.id === 'zusammenfassung' && (
           <div className="space-y-6">
+            {preisOffen && (
+              <Alert tone="warning" title="Preis noch nicht bestätigt">
+                <p>
+                  {preisSperreText(unbestaetigt)} Online bestellen lässt sich diese Zusammenstellung deshalb nicht.
+                  Schicken Sie sie uns als Anfrage; Sie bekommen ein Angebot mit Preis.{' '}
+                  {anfrage.mitPlan
+                    ? 'Zylinder, Maße und Schlüssel gehen mit; weitere Optionen wählen Sie dort noch einmal.'
+                    : 'Bitte nennen Sie uns in der Anfrage Bauform, Maße und Anzahl je Tür, die Zahl der Schlüssel und Ihre Optionen.'}
+                  {hersteller ? ` Den Hersteller ${hersteller.name} nennen Sie uns dort bitte noch einmal.` : ''}
+                </p>
+                <p className="mt-3">
+                  <Link href={anfrage.href} prefetch={false} className="font-semibold text-primary underline">
+                    Zusammenstellung als Anfrage schicken
+                  </Link>
+                </p>
+              </Alert>
+            )}
             {/* Je Position die Maßzeichnung, damit die Maße vor dem Bestellen sichtbar geprüft werden;
                 die Zahlen stehen vollständig im Schriftfeld darunter. */}
             <div>
@@ -1106,6 +1177,7 @@ function PositionCard({
   const values = measureOptions(form);
   const measureFigure = catalog.measuringInfo.figure ?? catalog.measuringFigure;
   const positionTotal = positionTotalCents(catalog, item, hersteller?.id ?? '');
+  const positionPreisOffen = Boolean(hersteller?.priceUnconfirmed) || unbestaetigteInPosition(item, catalog).length > 0;
   // Nach einem Bauformwechsel oder aus einem alten Zwischenstand kann ein Maß
   // außerhalb des erlaubten Bereichs liegen — dann bleibt die Auswahl leer.
   const hasA = values.includes(item.measureAMm);
@@ -1153,7 +1225,11 @@ function PositionCard({
                 title={option.label}
                 description={option.description}
                 info={option.info}
-                meta={`ab ${formatCents(option.basePriceCents + (hersteller?.surchargeCentsPerCylinder ?? 0))}`}
+                meta={
+                  option.priceUnconfirmed || hersteller?.priceUnconfirmed
+                    ? PREIS_AUF_ANFRAGE
+                    : `ab ${formatCents(option.basePriceCents + (hersteller?.surchargeCentsPerCylinder ?? 0))}`
+                }
               />
             ))}
           </div>
@@ -1237,9 +1313,16 @@ function PositionCard({
             <p className="text-small leading-relaxed text-foreground-muted lg:col-span-5">
             Gemessen wird ab der Mitte der Stulpschraube, der langen Schraube in der Türkante. Maß A messen Sie
             nach außen{form.measures === 'beide' ? ', Maß B nach innen' : ''}. Gesamtlänge dieser Position:{' '}
-            <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatMillimeter(item.measureAMm + (item.measureBMm ?? 0))}</span>. Bis{' '}
-            <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatMillimeter(form.baseLengthMm)}</span> gilt der Grundpreis, darüber kommen{' '}
-            <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatCents(form.lengthSurchargeCents)}</span> je angefangene <span className="whitespace-nowrap font-mono tabular-nums text-foreground">5 mm</span> hinzu.
+            <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatMillimeter(item.measureAMm + (item.measureBMm ?? 0))}</span>.{' '}
+            {form.priceUnconfirmed ? (
+              <>Den Preis dieser Bauform nennen wir Ihnen im Angebot.</>
+            ) : (
+              <>
+                Bis{' '}
+                <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatMillimeter(form.baseLengthMm)}</span> gilt der Grundpreis, darüber kommen{' '}
+                <span className="whitespace-nowrap font-mono tabular-nums text-foreground">{formatCents(form.lengthSurchargeCents)}</span> je angefangene <span className="whitespace-nowrap font-mono tabular-nums text-foreground">5 mm</span> hinzu.
+              </>
+            )}
             </p>
           </div>
         </div>
@@ -1266,9 +1349,11 @@ function PositionCard({
                     info={fn.info}
                     meta={
                       allowed
-                        ? fn.surchargeCents > 0
-                          ? `+ ${formatCents(fn.surchargeCents)} je Zylinder`
-                          : 'ohne Aufpreis'
+                        ? fn.priceUnconfirmed
+                          ? PREIS_AUF_ANFRAGE
+                          : fn.surchargeCents > 0
+                            ? `+ ${formatCents(fn.surchargeCents)} je Zylinder`
+                            : 'ohne Aufpreis'
                         : `nicht für ${form.label}`
                     }
                   />
@@ -1304,7 +1389,7 @@ function PositionCard({
               Zwischensumme
             </span>
             <span className="mt-1 block font-mono text-title-sm font-semibold tabular-nums text-foreground">
-              {formatCents(positionTotal)}
+              {positionPreisOffen ? 'auf Anfrage' : formatCents(positionTotal)}
             </span>
           </p>
         </div>

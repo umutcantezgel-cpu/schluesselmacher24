@@ -18,6 +18,14 @@ const vorab = { veraltet: false };
 const abgeschaltet = new Set<string>();
 /** Rubriken mit Status „später“: getRubrik liefert sie, aber nicht live. */
 const spaeterGeschaltet = new Set<string>();
+/** Bauformen des Zylinderkatalogs mit dem Haken „Preis nicht bestätigt“ (FA-SHOP-04). */
+const unbestaetigteBauformen = new Set<string>();
+
+/** Zylinderkatalog für die Kassentests: der Bestand, Haken „Preis nicht bestätigt“ nach Wahl. */
+function testKatalog() {
+  const katalog = defaults.cylinderCatalog();
+  return { ...katalog, forms: katalog.forms.map((f) => (unbestaetigteBauformen.has(f.id) ? { ...f, priceUnconfirmed: true } : f)) };
+}
 
 /**
  * Codelinien für die Kassentests: die Musterdaten als echte Linien, dazu eine Beispiel-Linie und je eine
@@ -71,7 +79,13 @@ vi.mock('@/lib/data', () => {
     // Die Muster-Codelinien sind Beispiele (A-046); für die Bestelllogik gelten sie hier als echte Linien,
     // dazu eine Beispiel-Linie, die die Kasse ablehnen muss.
     getCollection: async (name: keyof typeof defaults) =>
-      name === 'codeLines' ? testLinien() : name === 'standardArticles' ? testArtikel() : defaults[name](),
+      name === 'codeLines'
+        ? testLinien()
+        : name === 'standardArticles'
+          ? testArtikel()
+          : name === 'cylinderCatalog'
+            ? testKatalog()
+            : defaults[name](),
     getRubrik: async (id: string) => {
       if (abgeschaltet.has(id)) return null;
       const r = defaults.rubriken().find((x) => x.id === id) ?? null;
@@ -179,6 +193,7 @@ beforeEach(() => {
   vorab.veraltet = false;
   abgeschaltet.clear();
   spaeterGeschaltet.clear();
+  unbestaetigteBauformen.clear();
   ablage.an = false;
   ablage.dateien.clear();
   resetRateLimits();
@@ -1421,6 +1436,44 @@ describe('submitOrder', () => {
   it('lehnt unbekannte Versandarten ab statt kostenlos zu versenden', async () => {
     const result = await order(line.priceCents, 'gibt-es-nicht');
     expect(result.ok).toBe(false);
+  });
+
+  it('lehnt eine Zusammenstellung mit unbestätigtem Preis ab, bestätigte bleiben bestellbar (FA-SHOP-04)', async () => {
+    const versand = defaults.settings().shipping.find((s) => s.id === 'paket-versichert')!;
+    // Drei verschiedene Maße in einem gleichschließenden Satz, wie im Konfigurator.
+    const mitHalb: CylinderOrderDraft = {
+      items: [
+        { uid: 'a', form: 'doppelzylinder', measureAMm: 30, measureBMm: 30, qty: 2 },
+        { uid: 'b', form: 'doppelzylinder', measureAMm: 35, measureBMm: 45, qty: 1 },
+        { uid: 'c', form: 'halbzylinder', measureAMm: 40, qty: 1 },
+      ],
+      keyCount: 3,
+      extraIds: [],
+      expandable: false,
+    };
+    const bestellen = (draft: CylinderOrderDraft) =>
+      submitOrder({
+        items: [{ kind: 'zylinder-schliessung', uid: 'z', qty: 1, unitPriceCents: 1, draft }],
+        shippingOptionId: versand.id,
+        contact,
+        acceptedTerms: true,
+        acceptedCustomMade: true,
+        expectedTotalCents: priceCylinderOrder(draft, testKatalog()).totalCents + versand.priceCents,
+      });
+
+    unbestaetigteBauformen.add('halbzylinder');
+    const gesperrt = await bestellen(mitHalb);
+    expect(gesperrt.ok).toBe(false);
+    expect(gesperrt.error).toContain('Der Preis für „Halbzylinder“ ist noch nicht bestätigt.');
+    // Kein Ende ohne Ausweg: Die Meldung nennt den Weg in die Anfrage.
+    expect(gesperrt.error).toContain('im Konfigurator für gleichschließende Zylinder');
+    expect(stored).toHaveLength(0);
+
+    // Ohne Halbzylinder: bestellbar, zum unveränderten Preis aus dem Katalog.
+    const ohneHalb = { ...mitHalb, items: mitHalb.items.slice(0, 2) };
+    const ok = await bestellen(ohneHalb);
+    expect(ok.ok).toBe(true);
+    expect(stored[0].lines?.[0].totalCents).toBe(priceCylinderOrder(ohneHalb, defaults.cylinderCatalog()).totalCents);
   });
 
   it('lehnt nicht wählbare Zylindermaße ab', async () => {

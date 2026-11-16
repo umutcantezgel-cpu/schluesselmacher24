@@ -82,7 +82,7 @@ function VerfuegbarkeitZeile({
         <span className="font-semibold text-foreground">{VERFUEGBARKEIT_LABEL[verfuegbarkeit]}.</span>{' '}
         {verfuegbarkeit === 'auf-anfrage' ? (
           <>
-            Bitte entfernen Sie die Position.{' '}
+            Diese Position können Sie nicht über den Warenkorb bestellen. Bitte entfernen Sie sie.{' '}
             <Link href={anfrage.href} prefetch={false} className="font-semibold text-primary hover:underline">
               {anfrage.label}
             </Link>
@@ -217,8 +217,12 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
 
         {nichtVerfuegbar && (
           <Alert tone="warning" title="Eine Position ist derzeit nicht bestellbar">
-            Bitte entfernen Sie die betroffene Position. Wenn Sie den Artikel trotzdem benötigen,
-            schreiben Sie uns über das Kontaktformular.
+            Bitte entfernen Sie die betroffene Position. Brauchen Sie das Produkt trotzdem, fragen Sie es bei uns an.
+            Nutzen Sie dazu den Link an der Position oder unser{' '}
+            <Link href="/service-und-termin/kontakt" prefetch={false} className="font-semibold text-primary hover:underline">
+              Kontaktformular
+            </Link>
+            .
           </Alert>
         )}
 

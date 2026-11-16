@@ -47,7 +47,7 @@ export default async function ShopSeite() {
       <PageHeader
         eyebrow="Shop"
         title="Was möchten Sie bestellen?"
-        lead="Hier finden Sie alles, was Sie bei uns direkt bestellen oder anfragen können, nach Kategorie geordnet."
+        lead="Hier sehen Sie alle Kategorien. Manches bestellen Sie direkt, anderes fragen Sie bei uns an."
         crumbs={CRUMBS}
         bereich="schluessel-nach-code"
       />
@@ -70,7 +70,7 @@ export default async function ShopSeite() {
                     <p className="mt-1 max-w-measure text-body text-foreground-muted">{kategorie.beschreibung}</p>
                     {zahl > 0 && (
                       <p className="mt-2 font-mono text-caption tabular-nums text-foreground-muted">
-                        {formatNumber(zahl)} {kategorie.art === 'codeprodukte' ? (zahl === 1 ? 'Codelinie' : 'Codelinien') : 'Artikel'}
+                        {formatNumber(zahl)} {kategorie.art === 'codeprodukte' ? (zahl === 1 ? 'Produkt' : 'Produkte') : 'Artikel'}
                       </p>
                     )}
                     {weg.hinweis && (
@@ -111,7 +111,8 @@ export default async function ShopSeite() {
         <p className="mt-8 flex max-w-measure items-start gap-2 text-small text-foreground-muted">
           <GlyphInfo size={16} className="mt-0.5 shrink-0" />
           <span>
-            Einen Termin für Ihren Autoschlüssel in unserer Werkstatt fragen Sie im eigenen Bereich an:{' '}
+            Einen Termin für Ihren Autoschlüssel in unserer Werkstatt fragen Sie getrennt vom Shop an, im
+            Bereich{' '}
             <Link href="/autoschluessel" className="font-semibold text-primary hover:underline">
               Autoschlüssel
             </Link>

@@ -468,3 +468,57 @@ describe('Shop-Grundlage (FA-SHOP-01)', () => {
     expect(seite).toMatchObject({ manufacturer: 'Neuer Name', manufacturerId: 'neu', availability: 'nicht-lieferbar' });
   });
 });
+
+describe('Zylinderkatalog: Preis nicht bestätigt und Hersteller aus dem Stamm (FA-SHOP-04)', () => {
+  it('der Bestand trägt keinen Haken; ohne Haken bleibt der Katalog unverändert', async () => {
+    const catalog = await read('cylinderCatalog');
+    const payload = m.zylinderkatalogZuPayload(catalog);
+    expect(payload.schluesselPreisNichtBestaetigt).toBe(false);
+    expect(payload.bauformen?.every((b) => b.preisNichtBestaetigt === false)).toBe(true);
+    expect(payload.funktionen?.every((f) => f.preisNichtBestaetigt === false)).toBe(true);
+    expect(payload.extras?.every((e) => e.preisNichtBestaetigt === false)).toBe(true);
+    const zurueck = m.zylinderkatalogZuSeite(gespeichert(payload, 1) as never);
+    expect(zurueck).toEqual(catalog);
+    expect(JSON.stringify(zurueck)).not.toContain('Unconfirmed');
+  });
+
+  it('Haken an Bauform, Funktion, Option, Hersteller und Schlüsselpreis gehen verlustfrei hin und zurück, Preise bleiben', async () => {
+    const catalog = await read('cylinderCatalog');
+    const mitHaken = {
+      ...catalog,
+      keyPriceUnconfirmed: true,
+      forms: catalog.forms.map((f, i) => (i === 0 ? { ...f, priceUnconfirmed: true } : f)),
+      functions: catalog.functions.map((f, i) => (i === 1 ? { ...f, priceUnconfirmed: true } : f)),
+      extras: catalog.extras.map((e, i) => (i === 0 ? { ...e, priceUnconfirmed: true } : e)),
+      manufacturers: [
+        { id: 'test-hersteller', name: 'Testhersteller', active: true, description: '', surchargeCentsPerCylinder: 100, forms: [], components: [], priceUnconfirmed: true },
+      ],
+    };
+    const zurueck = m.zylinderkatalogZuSeite(gespeichert(m.zylinderkatalogZuPayload(mitHaken), 1) as never);
+    expect(zurueck).toEqual(mitHaken);
+    expect(zurueck.forms.map((f) => f.basePriceCents)).toEqual(catalog.forms.map((f) => f.basePriceCents));
+  });
+
+  it('ein Eintrag mit Auswahl aus der Hersteller-Liste nimmt Name und Kennung aus dem Stamm', () => {
+    const katalog = m.zylinderkatalogZuPayload(defaults.cylinderCatalog());
+    const stamm = { ...m.herstellerZuPayload(defaults.hersteller()[0]), id: 4, createdAt: STAND, updatedAt: STAND };
+    const doc = gespeichert({
+      ...katalog,
+      hersteller: [
+        // Verweis geladen (depth 1): Name und Kennung aus dem Stamm, auch wenn der Eintrag alte Werte trägt.
+        { stamm, name: 'alter Name', kennung: 'alt', aktiv: true, aufpreisJeZylinder: 0, bauformen: [], zusatzkomponenten: [] },
+        // Älterer Eintrag ohne Auswahl: bleibt lesbar mit eigenem Namen.
+        { stamm: null, name: 'Älterer Hersteller', kennung: 'aelter', aktiv: false, aufpreisJeZylinder: 2, bauformen: [], zusatzkomponenten: [] },
+      ],
+    }, 1);
+    const c = m.zylinderkatalogZuSeite(doc as never);
+    expect(c.manufacturers.map((h) => [h.id, h.name, h.stammId])).toEqual([
+      ['bks', 'BKS', 'bks'],
+      ['aelter', 'Älterer Hersteller', undefined],
+    ]);
+    expect(c.manufacturers[1].surchargeCentsPerCylinder).toBe(200);
+    // Rückweg: mit Kennung → ID der Liste wieder verknüpft, ohne Karte ein älterer Eintrag.
+    expect(m.zylinderkatalogZuPayload(c, { hersteller: new Map([['bks', 4]]) }).hersteller?.map((h) => h.stamm)).toEqual([4, null]);
+    expect(m.zylinderkatalogZuPayload(c).hersteller?.map((h) => h.stamm)).toEqual([null, null]);
+  });
+});

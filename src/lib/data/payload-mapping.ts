@@ -772,8 +772,9 @@ export function herstellerZuSeite(doc: Hersteller): ShopHersteller {
     einsatz: doc.einsatz ?? '',
     angeboten: Boolean(doc.angeboten),
     reihenfolge: doc.reihenfolge,
-    bereiche: (doc.bereiche ?? []).map((b) => ({ art: b.art, einsatz: b.einsatz })),
   };
+  // Bereiche (FA-SHOP-04) nur, wenn welche gepflegt sind; ohne Bereich erscheint der Hersteller nur auf der Startseite.
+  if (doc.bereiche?.length) hersteller.bereiche = doc.bereiche.map((b) => ({ art: b.art, einsatz: b.einsatz }));
   if (doc.logo?.freigabe) {
     const bild = medienBild(doc.logo.bild, `Logo ${doc.name}`);
     if (bild) hersteller.logo = { motif: `Logo ${doc.name}`, ratio: '1/1', bild };

@@ -84,7 +84,7 @@ export default async function HerstellerPage(props: HerstellerPageProps) {
       </PageHeader>
 
       <Section tight labelledBy="hersteller-linien">
-        <SectionHeading id="hersteller-linien" nummer="01" eyebrow="Codelinien" title={`Codelinien von ${eintrag.name}`} />
+        <SectionHeading id="hersteller-linien" nummer="01" eyebrow="Produkte" title={`Schlüssel für Schlösser von ${eintrag.name}`} />
         <div className="prose-sm24 mt-4">
           {einsatz && <p>{einsatz}</p>}
           {texte.absaetze.map((absatz) => (
@@ -95,7 +95,7 @@ export default async function HerstellerPage(props: HerstellerPageProps) {
         {/* Nach System gruppiert (FA-11-04); nur die Linien dieses Herstellers (FA-11-06). */}
         <div className="mt-8 grid gap-10">
           {eintrag.systeme.map((system) => (
-            <section key={system.name ?? 'ohne-system'} aria-label={system.name ? `System ${system.name}` : 'Weitere Codelinien'}>
+            <section key={system.name ?? 'ohne-system'} aria-label={system.name ? `System ${system.name}` : 'Weitere Produkte'}>
               {system.name && <h2 className="eyebrow">System {system.name}</h2>}
               <LinienListe lines={system.lines} className={system.name ? 'mt-4' : undefined} />
             </section>
@@ -103,7 +103,7 @@ export default async function HerstellerPage(props: HerstellerPageProps) {
         </div>
         {/* Code passt zu keiner Linie (FA-11-17): die Anfrage steht auf jeder Liste. */}
         <p className="mt-6 text-small text-foreground-muted">
-          Ihr Code passt zu keiner Linie?{' '}
+          Passt Ihr Code zu keinem Produkt, prüfen wir ihn gern.{' '}
           <Link
             href={codeAnfragePfad({ schloss: eintrag.name })}
             prefetch={false}
@@ -122,7 +122,7 @@ export default async function HerstellerPage(props: HerstellerPageProps) {
           <ul className="mt-3 border-t border-border">
             {[
               ...andere.map((h) => ({ href: herstellerPfad(h.adresse), label: h.name })),
-              { href: '/schluessel-nach-code', label: 'Alle Codelinien mit Suche und Filter' },
+              { href: '/schluessel-nach-code', label: 'Alle Schlüssel nach Code, mit Suche und Filter' },
             ].map((link) => (
               <li key={link.href} className="border-b border-border">
                 <Link

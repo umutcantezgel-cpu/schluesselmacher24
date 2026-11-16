@@ -42,7 +42,7 @@ describe('Weg einer Shop-Kategorie', () => {
   });
 
   it('mit Produkten: die Produktliste, ohne Hinweis', () => {
-    expect(kategorieWeg(kategorie('schluessel-nach-code'), 3)).toEqual({ href: '/schluessel-nach-code', label: 'Zu den Codeprodukten' });
+    expect(kategorieWeg(kategorie('schluessel-nach-code'), 3)).toEqual({ href: '/schluessel-nach-code', label: 'Zu den Produkten' });
     expect(kategorieWeg(kategorie('schliesstechnik-und-zubehoer'), 2)).toEqual({ href: '/artikel', label: 'Zu den Artikeln' });
     expect(kategorieWeg(kategorie('gleichschliessende-zylinder'), 0)).toEqual({
       href: '/gleichschliessende-zylinder/konfigurator',
