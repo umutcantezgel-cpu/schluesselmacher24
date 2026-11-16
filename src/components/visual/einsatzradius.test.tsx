@@ -1,7 +1,7 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
-import { EinsatzradiusZeichnung } from './einsatzradius';
+import { EINSATZRADIUS_BREITE, EINSATZRADIUS_SCHRIFT, EinsatzradiusZeichnung } from './einsatzradius';
 
 const zeichne = (ort: string, radiusKm: number) => renderToStaticMarkup(<EinsatzradiusZeichnung ort={ort} radiusKm={radiusKm} />);
 
@@ -70,5 +70,28 @@ describe('EinsatzradiusZeichnung', () => {
     const ort = html.match(/<text x="180"[^>]*>([^<]*)<\/text>/);
     expect(ort).not.toBeNull();
     expect(ort?.[1].length).toBeLessThanOrEqual(20);
+  });
+
+  it('beschriftet auf dem Telefon mit mindestens 14 px, innerhalb der Fläche und ohne Überlappung (FA-QA-04D)', () => {
+    // Darstellung bei 360 px Fensterbreite: volle Inhaltsbreite 320 px.
+    expect((EINSATZRADIUS_SCHRIFT * 320) / EINSATZRADIUS_BREITE).toBeGreaterThanOrEqual(14);
+    const html = zeichne('Ein sehr langer Ortsname über zwanzig Zeichen', 12.5);
+    const texte = [...html.matchAll(/<text x="([0-9.]+)" y="([0-9.]+)" text-anchor="(start|middle)"[^>]*font-size="([0-9.]+)"[^>]*>([^<]*)<\/text>/g)].map(
+      (m) => {
+        const x = Number(m[1]);
+        const breite = [...m[5]].length * Number(m[4]) * 0.6;
+        const links = m[3] === 'middle' ? x - breite / 2 : x;
+        return { links, rechts: links + breite, oben: Number(m[2]) - Number(m[4]), unten: Number(m[2]) + 4, groesse: Number(m[4]) };
+      },
+    );
+    expect(texte).toHaveLength(2);
+    for (const t of texte) {
+      expect(t.groesse).toBe(EINSATZRADIUS_SCHRIFT);
+      expect(t.links).toBeGreaterThanOrEqual(0);
+      expect(t.rechts).toBeLessThanOrEqual(EINSATZRADIUS_BREITE);
+    }
+    const [a, b] = texte;
+    const getrennt = a.rechts <= b.links || b.rechts <= a.links || a.unten <= b.oben || b.unten <= a.oben;
+    expect(getrennt).toBe(true);
   });
 });

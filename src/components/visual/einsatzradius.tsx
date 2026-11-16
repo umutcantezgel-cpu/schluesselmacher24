@@ -7,7 +7,6 @@ import {
   LINIE,
   MITTELLINIE,
   Raster,
-  SCHRIFT,
   kurztext,
   pfeilspitze,
   r,
@@ -40,6 +39,14 @@ const MASS_DAUER = 0.28; // --dauer-base
 const MITTE = { x: 180, y: 135 };
 const RADIUS = 105;
 const WINKEL = 40;
+/**
+ * Schrift in viewBox-Einheiten (FA-26-01, FA-QA-04D): Die Zeichnung steht bei 360 px Fensterbreite
+ * über die volle Inhaltsbreite (320 px), 16 × 320 / 360 ≈ 14,2 px; bei 1280 px (5 von 12 Spalten,
+ * etwa 472 px) rund 21 px.
+ */
+export const EINSATZRADIUS_SCHRIFT = 16;
+/** Breite der Zeichenfläche (viewBox). */
+export const EINSATZRADIUS_BREITE = 360;
 
 export function EinsatzradiusZeichnung({ ort, radiusKm, className }: EinsatzradiusZeichnungProps) {
   const ortName = kurztext(ort, 20);
@@ -55,8 +62,8 @@ export function EinsatzradiusZeichnung({ ort, radiusKm, className }: Einsatzradi
   const spitzeY = r(MITTE.y - RADIUS * Math.sin(rad));
 
   return (
-    <GrafikRahmen breite={360} hoehe={270} title={titel} className={cn('w-full max-w-lg lg:max-w-none', className)}>
-      <Raster breite={360} hoehe={270} />
+    <GrafikRahmen breite={EINSATZRADIUS_BREITE} hoehe={270} title={titel} className={cn('w-full max-w-lg lg:max-w-none', className)}>
+      <Raster breite={EINSATZRADIUS_BREITE} hoehe={270} />
       <path d="M60 135H300" className="stroke-border-strong" strokeWidth={HILFSLINIE} strokeDasharray={MITTELLINIE} />
       <path
         d="M75 135A105 105 0 1 1 285 135A105 105 0 1 1 75 135"
@@ -87,7 +94,7 @@ export function EinsatzradiusZeichnung({ ort, radiusKm, className }: Einsatzradi
           y={160}
           textAnchor="middle"
           className="sm24-fade fill-foreground-muted font-mono"
-          fontSize={SCHRIFT}
+          fontSize={EINSATZRADIUS_SCHRIFT}
           style={motionStyle(0.2)}
         >
           {ortName}
@@ -100,7 +107,7 @@ export function EinsatzradiusZeichnung({ ort, radiusKm, className }: Einsatzradi
           y={60}
           textAnchor="start"
           className="sm24-pop fill-foreground-muted font-mono"
-          fontSize={SCHRIFT}
+          fontSize={EINSATZRADIUS_SCHRIFT}
           fontWeight={600}
           style={motionStyle(0.95)}
         >

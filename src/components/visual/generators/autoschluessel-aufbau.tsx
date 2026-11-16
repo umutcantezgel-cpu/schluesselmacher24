@@ -1,6 +1,6 @@
 import { cn } from '@/lib/cn';
 
-import { GrafikRahmen, HILFSLINIE, KONTUR, LINIE, Raster, SCHRIFT_KLEIN, titel } from './grafik-basis';
+import { GrafikRahmen, HILFSLINIE, KONTUR, LINIE, Raster, r, titel } from './grafik-basis';
 
 /**
  * Aufbauzeichnung eines Funk-Klappschlüssels (A-025, E4-OPUS-07): Gehäuse und Tasten oben, darunter
@@ -28,14 +28,31 @@ export const AUFBAU_TEILE: readonly AufbauTeil[] = [
 /** Bart: 290 lang und 22 hoch, mit Spurfräsung als Wellenlinie und abgeschrägter Spitze. */
 export const BART = { x: 214, y: 249, laenge: 290, hoehe: 22 } as const;
 
+/**
+ * Positionsnummern (FA-26-01, FA-QA-04D): Die Zeichnung steht auf `/autoschluessel` bei 360 px
+ * Fensterbreite in einem Kasten mit `p-3` und Rahmen, also etwa 294 px breit. 28 × 294 / 560 ≈
+ * 14,7 px; bei 1280 px (7 von 12 Spalten, etwa 639 px) rund 32 px. Der Kreis wächst mit.
+ */
+export const POSITION_SCHRIFT = 28;
+export const POSITION_RADIUS = 18;
+
+/** Lage der Positionskreise und Ansatzpunkte ihrer Hinweislinien am Teil. */
+export const POSITIONEN = [
+  { nr: 1, x: 474, y: 222, zuX: 452, zuY: 252 },
+  { nr: 2, x: 166, y: 188, zuX: 136, zuY: 196 },
+  { nr: 3, x: 224, y: 110, zuX: 194, zuY: 126 },
+  { nr: 4, x: 340, y: 112, zuX: 316, zuY: 128 },
+  { nr: 5, x: 236, y: 26, zuX: 206, zuY: 40 },
+] as const;
+
 /** Positionsnummer mit Hinweislinie: Punkt am Teil, Linie, Kreis mit Ziffer. */
 function Position({ nr, x, y, zuX, zuY }: { nr: number; x: number; y: number; zuX: number; zuY: number }) {
   return (
     <g data-position={nr}>
       <line x1={zuX} y1={zuY} x2={x} y2={y} stroke="currentColor" strokeWidth={HILFSLINIE} />
       <circle cx={zuX} cy={zuY} r={2.5} className="fill-current" />
-      <circle cx={x} cy={y} r={11} className="fill-area" />
-      <text x={x} y={y + 4} textAnchor="middle" fontSize={SCHRIFT_KLEIN} className="fill-area-foreground font-mono font-semibold">
+      <circle cx={x} cy={y} r={POSITION_RADIUS} className="fill-area" />
+      <text x={x} y={r(y + POSITION_SCHRIFT * 0.35)} textAnchor="middle" fontSize={POSITION_SCHRIFT} className="fill-area-foreground font-mono font-semibold">
         {nr}
       </text>
     </g>
@@ -102,11 +119,9 @@ export function AutoschluesselAufbau({ className, title }: { className?: string;
       <path d={bartPfad} className="fill-surface" stroke="currentColor" strokeWidth={KONTUR} strokeLinejoin="round" />
       <Spurfraesung />
 
-      <Position nr={1} x={470} y={226} zuX={452} zuY={252} />
-      <Position nr={2} x={162} y={182} zuX={136} zuY={196} />
-      <Position nr={3} x={224} y={110} zuX={194} zuY={126} />
-      <Position nr={4} x={340} y={112} zuX={316} zuY={128} />
-      <Position nr={5} x={236} y={26} zuX={206} zuY={40} />
+      {POSITIONEN.map((pos) => (
+        <Position key={pos.nr} {...pos} />
+      ))}
     </GrafikRahmen>
   );
 }

@@ -329,9 +329,9 @@ export const ORGANISATION = new RegExp(
     String.raw`\b(?:GmbH|mbH|AG|KG|KGaA|SE|eG|e\.\s?G\.|OHG|oHG|GbR|e\.\s?K\.|Ltd|LLP|Inc|S\.\s?A\.|B\.\s?V\.|AöR)(?![\wäöüß])`,
     String.raw`e\.\s?V\.?(?![\wäöüß])`,
     // Auch als Wortende („Volksbank“, „Kreissparkasse“).
-    String.raw`(?:[Bb]ank|Banque|[Kk]asse|[Vv]ersicherung|Ämter|[Nn]iederlassung|[Pp]ostfach|[Aa]gentur|[Bb]ehörde|[Mm]inisterium|[Ss]tiftung|[Vv]erein|[Vv]erband|[Ss]taatsanwaltschaft|[Ll]otterie|[Bb]erufsgenossenschaft|[Gg]eschäftsstelle|[Dd]irektion)(?![\wäöüß])`,
+    String.raw`(?:[Bb]ank|Banque|[Kk]asse|[Vv]ersicherung|Ämter|[Nn]iederlassung|[Pp]ostfach|[Aa]gentur|[Bb]ehörde|[Mm]inisterium|[Ss]tiftung|[Vv]erein|[Vv]erband|[Ss]taatsanwaltschaft|[Ll]otterie|[Bb]erufsgenossenschaft|[Gg]eschäftsstelle|[Dd]irektion|[Rr]eferat)(?![\wäöüß])`,
     // Nur als ganzes Wort (Gemeinden wie Freiamt oder Linsengericht bleiben).
-    String.raw`(?<![\wäöüß])(?:Amt|Ämter|Gericht|Finanzamt|Arbeitsamt|Jobcenter|Job-Center|Regierung|Justiz|Justizbehörden|Ordinariat|Rundfunk|Gesundheit|Firma|Firmengruppe|Konzern|Filiale|Zentrale|Hochschule|Universität|Institut|Klinik|Verlag|Zeitung|Tagblatt|Anzeiger|Kurier|Brauerei|Med|Dent|Werke|Stadtverwaltung|Kreisverwaltung)(?![\wäöüß])`,
+    String.raw`(?<![\wäöüß])(?:Amt|Ämter|Gericht|Finanzamt|Arbeitsamt|Jobcenter|Job-Center|Regierung|Justiz|Justizbehörden|Ordinariat|Rundfunk|Gesundheit|Firma|Firmengruppe|Konzern|Filiale|Zentrale|Hochschule|Universität|Institut|Klinik|Verlag|Zeitung|Tagblatt|Anzeiger|Kurier|Brauerei|Med|Dent|Werke|Stadtverwaltung|Kreisverwaltung|Magistrat|Abteilung|Oberbürgermeister|Bürgermeister)(?![\wäöüß])`,
     String.raw`(?:^|[\s(])(?:AOK|BKK|IKK|DAK|BARMER|HUK|ADAC|BMW|GEMA|DeTeCSM)(?![\wäöüß])`,
     String.raw`&`,
     String.raw`\d{3,}`,
@@ -358,7 +358,7 @@ const ABKUERZUNGEN = {
   sankt: 'st',
 };
 /** Füllwörter, die das Gemeindeverzeichnis abkürzt („a.d.“, „i.“, „b.“) und GeoNames ausschreibt oder weglässt. */
-const FUELLWOERTER = new Set(['a', 'am', 'an', 'd', 'der', 'den', 'dem', 'i', 'im', 'in', 'b', 'bei', 'v', 'vor', 'zu', 'z']);
+const FUELLWOERTER = new Set(['a', 'am', 'an', 'auf', 'd', 'der', 'den', 'dem', 'i', 'im', 'in', 'b', 'bei', 'v', 'vor', 'zu', 'z']);
 
 /** Vergleichsform für die Wahl der Zeilen: abgekürzte Zusätze ausgeschrieben, Füllwörter weg („Gars a.Inn“ = „Gars am Inn“). */
 export function kurzname(text) {
@@ -370,30 +370,64 @@ export function kurzname(text) {
 }
 
 /**
+ * Namensformen einer Gemeinde als `kurzname`: `formen` sind amtlicher Name und jeder Teil eines zweisprachigen
+ * Namens („Cottbus/Chóśebuz“), jeweils auch ohne Klammerzusatz; `mitBezeichnung` dieselben mit vorangestellter
+ * Bezeichnung („Wittenberg, Lutherstadt“ → „Lutherstadt Wittenberg“). Diese gelten nur bei Gleichheit, nie als
+ * Anfang eines längeren Namens („Landeshauptstadt München Baureferat“ ist eine Behörde). Landeshauptstadt,
+ * Hansestadt und Universitätsstadt bleiben weg: unter diesen Namen führt GeoNames die Stadtverwaltungen.
+ */
+export function gemeindeNamen(g) {
+  const formen = new Set();
+  for (const teil of [g.name, ...g.name.split('/')]) {
+    for (const form of [kurzname(teil), kurzname(teil.replace(/\([^)]*\)/g, ' '))]) if (form) formen.add(form);
+  }
+  const mitBezeichnung = new Set();
+  const zusatz = (g.bezeichnung ?? '').split(',')[0].trim();
+  if (zusatz && !/\s/.test(zusatz) && !/^(stadt|gemeinde|markt|kreisstadt|flecken)$|hauptstadt$|^hansestadt$|^universitätsstadt$/i.test(zusatz)) {
+    for (const form of formen) mitBezeichnung.add(kurzname(`${zusatz} ${form}`));
+  }
+  return { formen, mitBezeichnung };
+}
+
+/**
  * Wählt die Zeilen von GeoNames, die zu Orten gehören (A-051, Abnahme FA-PLATTFORM-03):
  *   1. Zeilen mit Genauigkeit bleiben (Zustell-Postleitzahlen; keine trägt einen Firmennamen).
  *   2. Eine Zeile ohne Genauigkeit bleibt nur, wenn ihr Name keine Organisation kennzeichnet (`ORGANISATION`) und
  *      in der Vergleichsform `kurzname` gleich dem Namen einer Gemeinde ihres Kreises ist oder mit ihm und einem
- *      Leerzeichen beginnt (Ortsteil), auch in der Form „Ortsteil, Gemeinde Name“. Als Name gilt auch jeder Teil
- *      eines zweisprachigen Namens („Cottbus/Chóśebuz“) und jeder Ortsname, den GeoNames im selben Kreis mit
- *      Genauigkeit führt (Ortsteile wie „Töplitz“).
+ *      Leerzeichen beginnt (Ortsteil), auch in der Form „Ortsteil, Gemeinde Name“. Als Name gilt jede Form aus
+ *      `gemeindeNamen` und jeder Ortsname, den GeoNames im selben Kreis mit
+ *      Genauigkeit führt (Ortsteile wie „Töplitz“), bei „Bad …“ auch der Name ohne „Bad“. Nennt GeoNames einen
+ *      anderen Kreis, genügt der genaue Name einer Gemeinde desselben Landes (67661 Kaiserslautern). An der
+ *      Postleitzahl des Verwaltungssitzes genügt das erste Wort des Gemeindenamens (02730 „Ebersbach/Sachsen“ für
+ *      Ebersbach-Neugersdorf).
  *   3. Alle anderen Zeilen ohne Genauigkeit entfallen (Großempfänger, Behörden, Firmen, Zeilen ohne Kreis).
  * Eine Postleitzahl ohne verbleibende Zeile entfällt damit ganz.
  */
 export function zustellzeilenWaehlen(geo, gemeinden) {
   const namenJeKreis = new Map();
+  const gemeindenJeLand = new Map();
+  const genauJeKreis = new Map();
   const merke = (kreis, name) => {
     const k = kurzname(name);
     if (!k) return;
     const s = namenJeKreis.get(kreis) ?? new Set();
     s.add(k);
+    // „Bad Lobenstein“ führt GeoNames auch als „Lobenstein“.
+    if (k.startsWith('bad ')) s.add(k.slice(4));
     namenJeKreis.set(kreis, s);
   };
+  // Erstes Wort der Gemeinde an der Postleitzahl ihres Verwaltungssitzes („Ebersbach/Sachsen“ an 02730).
+  const sitz = new Set();
   for (const g of gemeinden) {
-    for (const teil of [g.name, ...g.name.split('/')]) {
-      merke(g.kreis, teil);
-      merke(g.kreis, teil.replace(/\([^)]*\)/g, ' '));
-    }
+    const imLand = gemeindenJeLand.get(g.land) ?? new Set();
+    imLand.add(kurzname(g.name));
+    gemeindenJeLand.set(g.land, imLand);
+    const { formen, mitBezeichnung } = gemeindeNamen(g);
+    for (const form of formen) merke(g.kreis, form);
+    const genau = genauJeKreis.get(g.kreis) ?? new Set();
+    for (const form of mitBezeichnung) genau.add(form);
+    genauJeKreis.set(g.kreis, genau);
+    sitz.add(`${g.plz}|${g.kreis}|${kurzname(g.name).split(' ')[0]}`);
   }
   for (const z of geo) if (z.genau && z.kreis) merke(z.kreis, z.ort);
 
@@ -403,7 +437,9 @@ export function zustellzeilenWaehlen(geo, gemeinden) {
     const k = kurzname(name);
     if (!k) return false;
     for (const n of namen) if (k === n || k.startsWith(`${n} `)) return true;
-    return false;
+    if (genauJeKreis.get(kreis)?.has(k)) return true;
+    // GeoNames nennt selten einen Nachbarkreis (67661 Kaiserslautern im Landkreis): gleicher Name einer Gemeinde im Land.
+    return gemeindenJeLand.get(kreis.slice(0, 2))?.has(k) ?? false;
   };
   const behalten = [];
   const entfallen = [];
@@ -417,7 +453,9 @@ export function zustellzeilenWaehlen(geo, gemeinden) {
     else if (istOrganisation(z.ort)) grund = 'Organisation';
     else {
       const gemeindeTeil = /,\s*Gemeinde\s+(.+)$/.exec(z.ort)?.[1];
-      const ok = gemeindeTeil ? passt(gemeindeTeil, z.kreis) : passt(z.ort, z.kreis);
+      const ok = gemeindeTeil
+        ? passt(gemeindeTeil, z.kreis)
+        : passt(z.ort, z.kreis) || sitz.has(`${z.plz}|${z.kreis}|${kurzname(z.ort).split(' ')[0]}`);
       if (!ok) grund = 'kein Ort im Kreis';
     }
     if (grund) entfallen.push({ ...z, grund });
@@ -429,7 +467,8 @@ export function zustellzeilenWaehlen(geo, gemeinden) {
 /**
  * Postleitzahlen mit Ortsnamen, Kreisen, Gemeinden und Mittelpunkt. Die Gemeinde einer Zeile steht fest, wenn
  *   - ihr Kreis nur eine Gemeinde hat (kreisfreie Städte, Berlin, Hamburg) oder
- *   - der Ortsname in ihrem Kreis genau einer Gemeinde gleicht (Vergleichsform, auch ohne Klammerzusatz).
+ *   - der Ortsname in ihrem Kreis genau einer Gemeinde gleicht (Vergleichsform, auch ohne Klammerzusatz; ohne
+ *     Treffer die Kurzform aus `gemeindeNamen`, etwa „Bad Homburg vor der Höhe“ für „Bad Homburg v. d. Höhe“).
  * Dazu kommt die Postleitzahl des Verwaltungssitzes aus dem Gemeindeverzeichnis. Ortsnamen ohne Treffer sind
  * Ortsteile oder abweichende Schreibweisen; sie bleiben als Name stehen, ohne Gemeindeschlüssel (nicht geraten).
  * Der Mittelpunkt ist das Mittel der Koordinaten aller Zeilen der Postleitzahl.
@@ -442,6 +481,8 @@ export function postleitzahlenBilden(geo, gemeinden) {
     const index = new Map();
     for (const g of liste) {
       for (const n of new Set([vergleichsname(g.name), vergleichsnameOhneKlammer(g.name)])) index.set(n, [...(index.get(n) ?? []), g.schluessel]);
+      const { formen, mitBezeichnung } = gemeindeNamen(g);
+      for (const n of [...formen, ...mitBezeichnung]) index.set(`k:${n}`, [...new Set([...(index.get(`k:${n}`) ?? []), g.schluessel])]);
     }
     namensIndex.set(kreis, index);
   }
@@ -461,7 +502,9 @@ export function postleitzahlenBilden(geo, gemeinden) {
     if (imKreis?.length === 1) ags = imKreis[0].schluessel;
     else if (z.kreis) {
       const index = namensIndex.get(z.kreis);
-      const treffer = new Set([...(index?.get(vergleichsname(z.ort)) ?? []), ...(index?.get(vergleichsnameOhneKlammer(z.ort)) ?? [])]);
+      let treffer = new Set([...(index?.get(vergleichsname(z.ort)) ?? []), ...(index?.get(vergleichsnameOhneKlammer(z.ort)) ?? [])]);
+      // Sonst die Kurzform („Bad Homburg vor der Höhe“ = „Bad Homburg v. d. Höhe“, „Lutherstadt Wittenberg“).
+      if (treffer.size === 0) treffer = new Set(index?.get(`k:${kurzname(z.ort)}`) ?? []);
       if (treffer.size === 1) ags = [...treffer][0];
     }
     if (ags) {
@@ -715,7 +758,20 @@ export function main(argumente) {
 
   const geoPuffer = readFileSync(geoDatei);
   const geo = leseGeonames(geoPuffer.toString('utf8'));
-  const plz = postleitzahlenBilden(geo, gv.gemeinden);
+  const wahl = zustellzeilenWaehlen(geo, gv.gemeinden);
+  const plz = postleitzahlenBilden(wahl.behalten, gv.gemeinden);
+  const plzVorher = new Set(geo.map((z) => z.plz));
+  const plzNachher = new Set(wahl.behalten.map((z) => z.plz));
+  const nachGrund = {};
+  for (const z of wahl.entfallen) nachGrund[z.grund] = (nachGrund[z.grund] ?? 0) + 1;
+  const entfallen = {
+    zeilen: wahl.entfallen.length,
+    postleitzahlen: plzVorher.size - plzNachher.size,
+    nachGrund,
+    warum:
+      'Zeilen ohne Genauigkeit (zwölfte Spalte leer) sind Großempfänger und Postfächer. Sie bleiben nur, wenn ihr Name der einer Gemeinde oder eines Ortsteils im Kreis ist '
+      + 'und keine Organisation kennzeichnet; Firmen, Behörden und Zeilen ohne Kreis entfallen, Postleitzahlen ohne verbleibende Zeile ganz (scripts/orte-import.mjs, zustellzeilenWaehlen).',
+  };
 
   const kreisNamen = new Map(gv.kreise.map((k) => [k.schluessel, k.name]));
   const altDatei = path.join(ziel, 'gemeinden.json');
@@ -748,6 +804,7 @@ export function main(argumente) {
         herkunft: herkunftGeo,
         hinweis: 'orte und kreise aus GeoNames; gemeinden (Gemeindeschlüssel) nur, wo eindeutig: Kreis mit einer Gemeinde, gleicher Name im Kreis oder Postleitzahl des Verwaltungssitzes laut Gemeindeverzeichnis. Mittelpunkt = Mittel der GeoNames-Koordinaten. Erzeugt mit scripts/orte-import.mjs.',
         anzahl: plz.liste.length,
+        entfallen,
       },
       'postleitzahlen',
       plz.liste,
@@ -778,6 +835,10 @@ export function main(argumente) {
   }
 
   console.log(`Gebietsstand ${stand}: ${zahlText.format(gemeinden.length)} Gemeinden (${gv.gemeindefrei} gemeindefreie Gebiete nicht übernommen), ${gv.kreise.length} Kreise, ${Object.keys(gv.laender).length} Länder`);
+  console.log(
+    `GeoNames, Großempfänger und Postfächer: ${zahlText.format(entfallen.zeilen)} Zeilen entfallen (${Object.entries(nachGrund).map(([k, v]) => `${k} ${zahlText.format(v)}`).join(', ')}), `
+      + `${zahlText.format(entfallen.postleitzahlen)} Postleitzahlen ganz; ${zahlText.format(wahl.behalten.filter((z) => !z.genau).length)} Zeilen ohne Genauigkeit behalten`,
+  );
   console.log(
     `GeoNames: ${zahlText.format(geo.length)} Zeilen, ${zahlText.format(plz.liste.length)} Postleitzahlen; Gemeinde eindeutig in ${zahlText.format(plz.zaehler.zugeordnet)} Zeilen, `
       + `${plz.zaehler.ausVerwaltungssitz} weitere über den Verwaltungssitz, ${plz.zaehler.ohneGeonames} Verwaltungssitz-Postleitzahlen fehlen in GeoNames`,
