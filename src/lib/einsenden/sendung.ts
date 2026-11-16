@@ -113,19 +113,24 @@ export function sendungsnummerAnwenden(
   const nummer = bereinigeSendungsnummer(eingabe.nummer);
   if (!nummer) return { ok: false, grund: 'nummer' };
 
+  const vorher = vorgang.einsendeSendung;
   let variante: EinsendeVarianteKennung | undefined;
   if (istEinsendung(vorgang)) {
+    // Die Wahl aus dem Formular; bei älteren Vorgängen ohne Variante bleibt, was das Team eingetragen hat.
     const art = varianteDerSendung(vorgang);
-    variante = istVariantenKennung(art) ? art : undefined;
+    variante = istVariantenKennung(art) ? art : vorher?.variant;
   } else {
     if (!istVariantenKennung(eingabe.variante) || !(eingabe.angeboten ?? []).includes(eingabe.variante)) return { ok: false, grund: 'variante' };
     variante = eingabe.variante;
   }
 
-  const vorher = vorgang.einsendeSendung;
   if (vorher?.trackingNumber === nummer && vorher.variant === variante) return { ok: true, aenderung: null, nummer };
 
-  const carrier = dienstleisterFuerVariante(istEinsendung(vorgang) ? varianteDerSendung(vorgang) : variante);
+  // Der Dienstleister folgt aus der Variante. Berichtigt der Kunde nur seine Nummer (Variante unverändert),
+  // bleibt ein Dienstleister stehen, den das Team gesetzt hat: Der Kunde ändert keine Angabe des Betriebs,
+  // und der Verfolgungslink führt weiter zum richtigen Dienst.
+  const ausVariante = dienstleisterFuerVariante(variante ?? (istEinsendung(vorgang) ? varianteDerSendung(vorgang) : undefined));
+  const carrier = (vorher?.carrier && vorher.variant === variante ? vorher.carrier : undefined) ?? ausVariante;
   const einsendeSendung: EinsendeSendung = {
     trackingNumber: nummer,
     ...(carrier ? { carrier } : {}),
@@ -155,14 +160,21 @@ export interface EinsendeSendungGruppe {
 
 export interface TeamSendungAenderung {
   gruppe: EinsendeSendungGruppe;
-  /** Eintrag für den Verlauf, wenn eine Nummer eingetragen oder geändert wurde. */
+  /** Eintrag für den Verlauf, wenn eine Nummer eingetragen, geändert oder entfernt wurde. */
   verlauf?: string;
+}
+
+/** Derselbe Zeitpunkt, gleich in welcher Schreibweise; zwei fehlende Angaben gelten als gleich. */
+function gleicherZeitpunkt(a: unknown, b: unknown): boolean {
+  const wert = (x: unknown) => (typeof x === 'string' && x ? Date.parse(x) : x instanceof Date ? x.getTime() : null);
+  return wert(a) === wert(b);
 }
 
 /**
  * Das Team trägt die Sendungsnummer im Backend nach oder berichtigt sie: Zeitpunkt und „Team“ werden
  * gesetzt, der Dienstleister folgt aus der Variante, wenn er leer ist. Gelöschte Nummer: Zeitpunkt und
- * Herkunft werden geleert. `null`, wenn sich die Nummer nicht geändert hat.
+ * Herkunft werden geleert, mit Eintrag im Verlauf; eine Löschung gilt nur, wenn das Formular den gespeicherten
+ * Eintrag kannte. Bei einem ungültigen Wert oder unveränderter Nummer `null` (keine Änderung durch den Hook).
  * `varianteDesVorgangs` ist bei der Einsendung die Wahl aus dem Formular.
  */
 export function teamSendungAenderung(
@@ -173,10 +185,33 @@ export function teamSendungAenderung(
 ): TeamSendungAenderung | null {
   if (!neu || typeof neu !== 'object') return null;
   const roh = typeof neu.sendungsnummer === 'string' ? neu.sendungsnummer.trim() : '';
-  const neueNummer = roh ? (bereinigeSendungsnummer(roh) ?? roh) : '';
   const alteNummer = typeof alt?.sendungsnummer === 'string' ? alt.sendungsnummer.trim() : '';
+  // Gespeicherter Eintrag bleibt, die übrigen Angaben des Formulars (etwa die Labeldatei) gelten.
+  const gespeichertBleibt = (): TeamSendungAenderung => ({
+    gruppe: {
+      ...neu,
+      sendungsnummer: alteNummer || null,
+      dienstleister: alt?.dienstleister ?? null,
+      variante: alt?.variante ?? null,
+      eingetragenAm: alt?.eingetragenAm ?? null,
+      eingetragenVon: alt?.eingetragenVon ?? null,
+    },
+  });
+  // Ein ungültiger Wert ändert hier nichts: Die Feldprüfung der Sammlung lehnt ihn danach mit Meldung ab.
+  // (An Vorgängen ohne Einsendung, wo diese Prüfung nicht läuft, ruft der Hook diese Funktion gar nicht auf.)
+  const bereinigt = roh ? bereinigeSendungsnummer(roh) : '';
+  if (bereinigt === null) return null;
+  const neueNummer = bereinigt;
   if (neueNummer === alteNummer) return null;
-  if (!neueNummer) return { gruppe: { ...neu, eingetragenAm: null, eingetragenVon: null } };
+  if (!neueNummer) {
+    // Leeres Feld: nur eine Löschung, wenn das Formular den gespeicherten Eintrag kannte. Ein Formular, das
+    // schon offen war, bevor der Kunde seine Nummer eintrug, kennt ihn nicht und darf ihn nicht löschen.
+    if (!gleicherZeitpunkt(neu.eingetragenAm, alt?.eingetragenAm)) return gespeichertBleibt();
+    return {
+      gruppe: { ...neu, eingetragenAm: null, eingetragenVon: null },
+      verlauf: 'Sendungsnummer Ihrer Sendung an uns entfernt.',
+    };
+  }
   const dienstleister = neu.dienstleister || dienstleisterFuerVariante(neu.variante || varianteDesVorgangs) || null;
   return {
     gruppe: { ...neu, dienstleister, eingetragenAm: jetzt, eingetragenVon: 'team' },

@@ -97,4 +97,69 @@ describe('Sendung des Kunden zur Werkstatt', () => {
     const danach = (await payload.findByID({ collection: 'vorgaenge', id: Number(id), depth: 0, overrideAccess: true })) as Vorgaenge;
     expect(danach.einsendeSendung).toMatchObject({ eingetragenVon: 'team', eingetragenAm });
   });
+  it('ein Backend-Formular, das vor dem Eintrag des Kunden geöffnet wurde, löscht seine Nummer beim Speichern nicht', async () => {
+    const id = await neueEinsendung();
+    // Das Team öffnet den Vorgang: Dieser Stand kennt noch keine Sendungsnummer.
+    const offenesFormular = (await payload.findByID({ collection: 'vorgaenge', id: Number(id), depth: 0, overrideAccess: false, user })) as Vorgaenge;
+    // Danach trägt der Kunde seine Nummer ein.
+    await vorgangAendern(id, (v) => {
+      const ergebnis = sendungsnummerAnwenden(v, { zugangGueltig: true, nummer: '003404341234567890', jetzt: '2026-11-16T09:00:00.000Z' });
+      return ergebnis.ok ? ergebnis.aenderung : null;
+    });
+    // Das Team speichert sein altes Formular, etwa mit einer internen Notiz zum Status.
+    const daten: Record<string, unknown> = { ...offenesFormular, status: 'neu' };
+    for (const feld of ['id', 'createdAt', 'updatedAt']) delete daten[feld];
+    await payload.update({ collection: 'vorgaenge', id: Number(id), data: daten as never, depth: 0, overrideAccess: false, user });
+    const doc = (await payload.findByID({ collection: 'vorgaenge', id: Number(id), depth: 0, overrideAccess: true })) as Vorgaenge;
+    expect(doc.einsendeSendung).toMatchObject({ sendungsnummer: '003404341234567890', eingetragenVon: 'kunde', dienstleister: 'dhl' });
+
+    // Mit einem frischen Formular ist das Löschen eine bewusste Handlung: Nummer weg, Eintrag im Verlauf.
+    await imBackendSpeichern(id, (f) => ({ einsendeSendung: { ...f.einsendeSendung, sendungsnummer: '' } }));
+    const danach = (await payload.findByID({ collection: 'vorgaenge', id: Number(id), depth: 0, overrideAccess: true })) as Vorgaenge;
+    expect(danach.einsendeSendung?.sendungsnummer || null).toBeNull();
+    expect(danach.einsendeSendung).toMatchObject({ eingetragenAm: null, eingetragenVon: null });
+    expect(danach.verlauf?.at(-1)).toMatchObject({ von: 'team', text: 'Sendungsnummer Ihrer Sendung an uns entfernt.' });
+  });
+
+  it('setzt das Team einen anderen Dienstleister und der Kunde berichtigt danach seine Nummer, bleibt der Dienstleister', async () => {
+    const id = await neueEinsendung();
+    await vorgangAendern(id, (v) => {
+      const ergebnis = sendungsnummerAnwenden(v, { zugangGueltig: true, nummer: '01234567890123', jetzt: '2026-11-16T09:00:00.000Z' });
+      return ergebnis.ok ? ergebnis.aenderung : null;
+    });
+    await imBackendSpeichern(id, (f) => ({ einsendeSendung: { ...f.einsendeSendung, dienstleister: 'dpd' } }));
+    await vorgangAendern(id, (v) => {
+      const ergebnis = sendungsnummerAnwenden(v, { zugangGueltig: true, nummer: '01234567890124', jetzt: '2026-11-16T10:00:00.000Z' });
+      return ergebnis.ok ? ergebnis.aenderung : null;
+    });
+    const doc = (await payload.findByID({ collection: 'vorgaenge', id: Number(id), depth: 0, overrideAccess: true })) as Vorgaenge;
+    expect(doc.einsendeSendung).toMatchObject({ sendungsnummer: '01234567890124', dienstleister: 'dpd', eingetragenVon: 'kunde' });
+    const seite = await getRecord(id);
+    expect(seite?.einsendeSendung).toMatchObject({ trackingNumber: '01234567890124', carrier: 'dpd' });
+  });
+  it('an einem Vorgang ohne Einsendung speichert auch ein Aufruf mit Team-Rechten keine Sendungsnummer und keinen Verlauf dazu', async () => {
+    const angelegt = await createRecord({
+      kind: 'anfrage',
+      area: 'service-und-termin',
+      process: 'gefuehrte-anfrage',
+      contact: kontakt,
+      payload: { quelle: 'kontakt' },
+      summary: [],
+      uploads: [],
+    });
+    expect(angelegt.ok).toBe(true);
+    const id = Number(angelegt.recordId);
+    const vorher = (await payload.findByID({ collection: 'vorgaenge', id, depth: 0, overrideAccess: true })) as Vorgaenge;
+    await payload.update({
+      collection: 'vorgaenge',
+      id,
+      data: { einsendeSendung: { sendungsnummer: 'Zeile 1;<b>fremd</b>' + 'x'.repeat(200) } } as never,
+      depth: 0,
+      overrideAccess: false,
+      user,
+    });
+    const doc = (await payload.findByID({ collection: 'vorgaenge', id, depth: 0, overrideAccess: true })) as Vorgaenge;
+    expect(doc.einsendeSendung?.sendungsnummer || null).toBeNull();
+    expect(doc.verlauf?.length ?? 0).toBe(vorher.verlauf?.length ?? 0);
+  });
 });

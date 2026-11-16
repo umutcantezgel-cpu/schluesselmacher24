@@ -135,6 +135,22 @@ describe('Sendungsnummer eintragen (Zugang, Zeitpunkt, Wahl)', () => {
     expect(neu.ok && neu.aenderung?.timeline.at(-1)?.message).toBe('Sendungsnummer Ihrer Sendung an uns geändert: 003404341234567891.');
   });
 
+  it('berichtigt der Kunde nur seine Nummer, bleibt der Dienstleister stehen, den das Team gesetzt hat', () => {
+    // Der Kunde wählte DHL Paket, schickte aber mit DPD; das Team hat das eingetragen.
+    const vomTeam = { trackingNumber: '01234567890123', carrier: 'dpd' as const, variant: 'dhl-paket' as const, enteredAt: JETZT, enteredBy: 'team' as const };
+    const v = einsendung({ einsendeSendung: vomTeam });
+    const ergebnis = sendungsnummerAnwenden(v, { zugangGueltig: true, nummer: '01234567890124', jetzt: '2026-11-16T11:00:00.000Z' });
+    expect(ergebnis.ok && ergebnis.aenderung?.einsendeSendung).toMatchObject({ trackingNumber: '01234567890124', carrier: 'dpd', variant: 'dhl-paket', enteredBy: 'kunde' });
+    // Bei der Freigabe mit Einsendung: wählt der Kunde eine andere Variante, folgt der Dienstleister der neuen Wahl.
+    const f = freigabe({ einsendeSendung: { ...vomTeam, variant: 'dhl-paket' } });
+    const andere = sendungsnummerAnwenden(f, { zugangGueltig: true, nummer: 'RR123456789DE', variante: 'einschreiben-einwurf', angeboten: angeboten(f), jetzt: '2026-11-16T11:00:00.000Z' });
+    expect(andere.ok && andere.aenderung?.einsendeSendung).toMatchObject({ carrier: 'deutsche-post', variant: 'einschreiben-einwurf' });
+    // Ältere Einsendung ohne Variante im Formular: Die Variante, die das Team eingetragen hat, bleibt.
+    const alt = einsendung({ payload: { ...einsendung().payload, versand: 'versichert' }, einsendeSendung: { ...vomTeam, carrier: 'deutsche-post', variant: 'einschreiben-einwurf' } });
+    const altErgebnis = sendungsnummerAnwenden(alt, { zugangGueltig: true, nummer: 'RR123456780DE', jetzt: '2026-11-16T11:00:00.000Z' });
+    expect(altErgebnis.ok && altErgebnis.aenderung?.einsendeSendung).toMatchObject({ carrier: 'deutsche-post', variant: 'einschreiben-einwurf' });
+  });
+
   it('bei der Freigabe mit Einsendung nur eine angebotene Variante; Sonderfall nur mit Freigabe des Teams', () => {
     const v = freigabe();
     expect(angeboten(v)).not.toContain('einschreiben-wert');
@@ -188,7 +204,29 @@ describe('Sendungsnummer durch das Team im Admin', () => {
     expect(teamSendungAenderung({ ...vomKunden, labelDatei: 3 }, vomKunden, SPAETER)).toBeNull();
     const geloescht = teamSendungAenderung({ ...vomKunden, sendungsnummer: '' }, vomKunden, SPAETER);
     expect(geloescht?.gruppe).toMatchObject({ eingetragenAm: null, eingetragenVon: null });
-    expect(geloescht?.verlauf).toBeUndefined();
+    // Die Löschung steht im Verlauf, damit sie nicht spurlos bleibt.
+    expect(geloescht?.verlauf).toBe('Sendungsnummer Ihrer Sendung an uns entfernt.');
+  });
+
+  it('ein Formular, das vor dem Eintrag des Kunden offen war, löscht seine Nummer nicht', () => {
+    // Das Formular kennt den Eintrag nicht: alle Felder leer, dazu eine Labeldatei, die das Team gerade ablegt.
+    const veraltet = { sendungsnummer: null, dienstleister: null, variante: null, eingetragenAm: null, eingetragenVon: null, labelDatei: 5 };
+    const ergebnis = teamSendungAenderung(veraltet, vomKunden, SPAETER);
+    expect(ergebnis?.gruppe).toMatchObject({ ...vomKunden, labelDatei: 5 });
+    expect(ergebnis?.verlauf).toBeUndefined();
+    // Derselbe Zeitpunkt in anderer Schreibweise gilt als bekannt: dann ist es eine Löschung.
+    const bekannt = teamSendungAenderung({ ...vomKunden, sendungsnummer: '', eingetragenAm: '2026-11-16T10:00:00.000+01:00' }, vomKunden, SPAETER);
+    expect(bekannt?.gruppe).toMatchObject({ eingetragenAm: null, eingetragenVon: null });
+  });
+
+  it('ein ungültiger Wert ändert nichts: kein Zeitpunkt, kein Verlauf (die Feldprüfung lehnt ihn ab)', () => {
+    for (const falsch of ['<b>x</b>', 'A1', 'Zeile1;Zeile2 12345678', 'x'.repeat(120)]) {
+      expect(teamSendungAenderung({ ...vomKunden, sendungsnummer: falsch }, vomKunden, SPAETER), falsch).toBeNull();
+    }
+    // Leerzeichen, Bindestriche und Zeilenumbrüche entfernt die Bereinigung; übrig bleiben nur Buchstaben und Ziffern.
+    expect(teamSendungAenderung({ ...vomKunden, sendungsnummer: 'ab 12\n34-5678' }, vomKunden, SPAETER)?.verlauf).toBe('Sendungsnummer Ihrer Sendung an uns geändert: AB12345678.');
+    const leer = { sendungsnummer: null, dienstleister: null, variante: null, eingetragenAm: null, eingetragenVon: null };
+    expect(teamSendungAenderung({ ...leer, sendungsnummer: '<script>' }, leer, SPAETER)).toBeNull();
   });
 });
 

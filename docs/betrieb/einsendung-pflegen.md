@@ -11,7 +11,9 @@ Jeder Vorgang hat zwei Sendungen, getrennt geführt. Beide stehen in **Aufträge
 - **Sendung des Kunden zur Werkstatt**: die Nummer, mit der der Kunde den Schlüssel an uns schickt. Der Kunde trägt sie selbst auf seiner Vorgangsseite ein. Daneben stehen Versanddienstleister, Versandvariante, wann und von wem sie eingetragen wurde.
 - **Sendung** (oben): die Rücksendung an den Kunden. Die tragen Sie nach dem Versand ein.
 
-Beide Nummern erscheinen auf der Vorgangsseite des Kunden, im Vorgangsblatt (Abschnitt „Lieferung und Versand“) und in der Statusmail.
+Beide Nummern erscheinen auf der Vorgangsseite des Kunden und im Vorgangsblatt (Abschnitt „Lieferung und Versand“). In den Statusmails zu Termin, Versand und Storno stehen sie ebenfalls; die Mail mit dem Angebot nach der Prüfung nennt die Sendung zu uns nicht, weil der Schlüssel dann schon da ist.
+
+So schützt die Seite die Angabe des Kunden: Löschen Sie die Nummer im Admin, steht das im Verlauf. War Ihr Formular schon offen, bevor der Kunde seine Nummer eingetragen hat, bleibt seine Nummer beim Speichern erhalten. Haben Sie einen anderen Versanddienstleister eingetragen und der Kunde berichtigt danach nur seine Nummer, bleibt Ihr Dienstleister stehen.
 
 ## 2. Was Sie bei einer Einsendung eintragen
 

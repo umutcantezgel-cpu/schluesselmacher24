@@ -407,7 +407,7 @@ export interface Vorgaenge {
     sendungsnummer?: string | null;
   };
   /**
-   * Die Nummer trägt der Kunde auf seiner Vorgangsseite ein; das Team kann sie hier nachtragen oder berichtigen. Sie erscheint auf der Vorgangsseite, im Vorgangsblatt und in der Statusmail. Die Rücksendung an den Kunden steht oben unter „Sendung“.
+   * Die Nummer trägt der Kunde auf seiner Vorgangsseite ein; das Team kann sie hier nachtragen oder berichtigen. Sie erscheint auf der Vorgangsseite, im Vorgangsblatt und in den Statusmails zu Termin, Versand und Storno. Die Rücksendung an den Kunden steht oben unter „Sendung“.
    */
   einsendeSendung?: {
     sendungsnummer?: string | null;

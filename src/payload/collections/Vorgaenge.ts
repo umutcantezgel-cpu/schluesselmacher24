@@ -827,7 +827,8 @@ export const Vorgaenge: CollectionConfig = {
                 condition: (data) => data?.art === 'anfrage' && data?.bereich === 'schluessel-nach-vorlage',
                 description:
                   'Die Nummer trägt der Kunde auf seiner Vorgangsseite ein; das Team kann sie hier nachtragen oder berichtigen. '
-                  + 'Sie erscheint auf der Vorgangsseite, im Vorgangsblatt und in der Statusmail. Die Rücksendung an den Kunden steht oben unter „Sendung“.',
+                  + 'Sie erscheint auf der Vorgangsseite, im Vorgangsblatt und in den Statusmails zu Termin, Versand und Storno. '
+                  + 'Die Rücksendung an den Kunden steht oben unter „Sendung“.',
               },
               hooks: {
                 // Nachtragen oder Berichtigen im Backend (`req.user`): Zeitpunkt und „Team“ setzen, Eintrag im Verlauf.
@@ -835,6 +836,11 @@ export const Vorgaenge: CollectionConfig = {
                 beforeChange: [
                   ({ value, previousValue, req, data, originalDoc, operation }) => {
                     if (operation !== 'update' || !req.user || req.context?.sm24System) return value;
+                    // Nur an Vorgängen, die eine Einsendung haben können (dieselbe Bedingung wie die Anzeige der Gruppe):
+                    // Anderswo läuft die Feldprüfung nicht, dort bleibt der gespeicherte Stand.
+                    const art = data?.art ?? originalDoc?.art;
+                    const bereich = data?.bereich ?? originalDoc?.bereich;
+                    if (art !== 'anfrage' || bereich !== 'schluessel-nach-vorlage') return previousValue ?? {};
                     const daten = (data?.daten ?? originalDoc?.daten) as Record<string, unknown> | null | undefined;
                     const jetzt = new Date().toISOString();
                     const aenderung = teamSendungAenderung(value, previousValue, jetzt, daten?.versand);
@@ -859,6 +865,7 @@ export const Vorgaenge: CollectionConfig = {
                       validate: (wert: string | null | undefined) =>
                         !wert || bereinigeSendungsnummer(wert) !== null || 'Nur Buchstaben und Ziffern, 8 bis 40 Zeichen.',
                       // Gespeichert wie vom Kunden: ohne Leerzeichen und Bindestriche, Buchstaben groß.
+                      // Ein ungültiger Wert bleibt stehen, damit die Prüfung oben ihn mit Meldung ablehnt.
                       hooks: { beforeChange: [({ value }) => (typeof value === 'string' && value ? (bereinigeSendungsnummer(value) ?? value) : value)] },
                     },
                     { name: 'dienstleister', type: 'select', label: 'Versanddienstleister', options: VERSANDDIENSTLEISTER, admin: { width: '30%' } },
