@@ -120,16 +120,31 @@ describe('Einsendung prüfen (G-24, E6-OPUS-02)', () => {
     expect(ohne.ok && 'sonderfallBestaetigt' in ohne.payload).toBe(false);
   });
 
-  it('nimmt mechanische Autoschlüssel und reine Bärte nur mit Fahrzeugschein (R13)', () => {
-    const auto = einsendeVorgang({ ...ROH, schluesselart: 'auto-mechanisch', sicherungskarte: 'nein', versand: 'dhl-paket' }, KONTAKT);
-    expect(auto.ok).toBe(true);
-    if (!auto.ok) return;
-    expect(auto.payload.schluesselart).toBe('auto-mechanisch');
-    expect(einsendeNachweisPruefen(auto.payload, [], true)).toBe(EINSENDUNG_FAHRZEUGSCHEIN_FEHLT);
-    expect(einsendeNachweisPruefen(auto.payload, [{ category: 'fahrzeugschein' }], true)).toBe(EINSENDUNG_FAHRZEUGSCHEIN_FEHLT);
-    expect(einsendeNachweisPruefen(auto.payload, [{ category: 'fahrzeugschein', storageKey: 'k', uploadToken: 't' }], true)).toBeNull();
-    expect(einsendeNachweisPruefen(auto.payload, [{ category: 'fahrzeugschein' }], false)).toBeNull();
+  it('einsendeNachweisPruefen verlangt bei mechanischen Autoschlüsseln den Fahrzeugschein (R13)', () => {
+    const auto = { schluesselart: 'auto-mechanisch' as const };
+    expect(einsendeNachweisPruefen(auto, [], true)).toBe(EINSENDUNG_FAHRZEUGSCHEIN_FEHLT);
+    expect(einsendeNachweisPruefen(auto, [{ category: 'fahrzeugschein' }], true)).toBe(EINSENDUNG_FAHRZEUGSCHEIN_FEHLT);
+    expect(einsendeNachweisPruefen(auto, [{ category: 'fahrzeugschein', storageKey: 'k', uploadToken: 't' }], true)).toBeNull();
+    expect(einsendeNachweisPruefen(auto, [{ category: 'fahrzeugschein' }], false)).toBeNull();
     expect(einsendeNachweisPruefen({ schluesselart: 'haus' }, [], true)).toBeNull();
+  });
+
+  it('einsendeVorgang nimmt einen mechanischen Autoschlüssel nur mit geprüftem Fahrzeugschein, ohne Nachweis nie (R13)', () => {
+    const auto = { ...ROH, schluesselart: 'auto-mechanisch', sicherungskarte: 'nein', versand: 'dhl-paket' };
+    // Ohne übergebenen Nachweis: sicher abgelehnt.
+    expect(einsendeVorgang(auto, KONTAKT)).toEqual({ ok: false, fehler: EINSENDUNG_FAHRZEUGSCHEIN_FEHLT });
+    expect(einsendeVorgang(auto, KONTAKT, STANDARD_VARIANTEN, { uploads: [], ablageEingerichtet: true })).toEqual({ ok: false, fehler: EINSENDUNG_FAHRZEUGSCHEIN_FEHLT });
+    expect(einsendeVorgang(auto, KONTAKT, STANDARD_VARIANTEN, { uploads: [{ category: 'sicherungskarte', storageKey: 'k', uploadToken: 't' }], ablageEingerichtet: true }).ok).toBe(false);
+    const mit = einsendeVorgang(auto, KONTAKT, STANDARD_VARIANTEN, { uploads: [{ category: 'fahrzeugschein', storageKey: 'k', uploadToken: 't' }], ablageEingerichtet: true });
+    expect(mit.ok && mit.payload.schluesselart).toBe('auto-mechanisch');
+    // Haus- und Elektronikschlüssel brauchen keinen Fahrzeugschein.
+    expect(einsendeVorgang(ROH, KONTAKT, STANDARD_VARIANTEN, { uploads: [], ablageEingerichtet: true }).ok).toBe(true);
+  });
+
+  it('nennt in der Zusammenfassung den Variantennamen aus den Einstellungen', () => {
+    const umbenannt = STANDARD_VARIANTEN.map((v) => (v.kennung === 'einschreiben-einwurf' ? { ...v, bezeichnung: 'Einwurf-Einschreiben' } : v));
+    const geprueft = einsendeVorgang(ROH, KONTAKT, umbenannt);
+    expect(geprueft.ok && JSON.stringify(geprueft.summary)).toContain('Einwurf-Einschreiben');
   });
 
   it('erkennt Einsendungen nur als Foto-Anfrage mit Quelle und nennt ihre eigenen Status und Schritte', () => {

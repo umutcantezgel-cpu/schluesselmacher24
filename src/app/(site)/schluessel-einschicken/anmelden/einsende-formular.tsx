@@ -34,6 +34,7 @@ import {
   SCHLUESSELARTEN_IM_FORMULAR,
   SONDERFALL_HINWEIS,
   brauchtFahrzeugschein,
+  variantenAus,
   empfehlungFuer,
   type Schluesselart,
 } from '@/lib/versand/varianten';
@@ -246,8 +247,8 @@ export function EinsendeFormular({ einstellungen, hilfe }: { einstellungen: Eins
   // Vorschau erst mit gewählter Versandart.
   const summary = useMemo(() => {
     const { versand, schluesselart } = data;
-    return versand && schluesselart ? einsendeZusammenfassung(payloadAus({ ...data, versand, schluesselart }, sonderfall), kontaktAus(data)) : [];
-  }, [data, sonderfall]);
+    return versand && schluesselart ? einsendeZusammenfassung(payloadAus({ ...data, versand, schluesselart }, sonderfall), kontaktAus(data), variantenAus(einstellungen)) : [];
+  }, [data, sonderfall, einstellungen]);
 
   async function absenden() {
     const { versand, schluesselart } = data;

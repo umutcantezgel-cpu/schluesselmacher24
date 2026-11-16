@@ -123,6 +123,15 @@ describe('einsendeAngebot (A-050)', () => {
     expect(varianteWaehlbar(ohne, 'unversichert', true)).toBe(false);
   });
 
+  it('übernimmt ohne gepflegte Liste den bisherigen Aufpreis, statt ihn still auf 0 zu setzen (G9)', () => {
+    const alt = variantenAus({ varianten: [], aufpreisVersichertCents: 300, aufpreisUnversichertCents: 100 });
+    expect(alt.map((v) => [v.kennung, v.aufpreisCents])).toEqual([['dhl-paket', 300], ['einschreiben-einwurf', 100], ['einschreiben-wert', 300]]);
+    // Eine gepflegte Liste bleibt, wie sie ist.
+    const gepflegt = variantenAus(E);
+    expect(variantenAus({ ...E, varianten: gepflegt, aufpreisVersichertCents: 300 })).toBe(gepflegt);
+    expect(variantenAus(undefined).every((v) => v.aufpreisCents === 0)).toBe(true);
+  });
+
   it('nennt den Verpackungshinweis im Wortlaut des Inhabers', () => {
     expect(einsendeAngebot(E, false).verpackung).toBe(VERPACKUNG_HINWEIS);
     expect(VERPACKUNG_HINWEIS).toContain('nicht lose in einen einfachen Papierumschlag');

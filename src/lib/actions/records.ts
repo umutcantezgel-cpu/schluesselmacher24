@@ -15,6 +15,7 @@ import { folgeterminErlaubt, vorherAusAdresse } from '@/lib/zahlung/neu-buchen';
 import { defaults } from '@/lib/data/defaults';
 import { begleitscheinZumVorgang } from '@/lib/einsenden/schein';
 import { EINSENDE_QUELLE, einsendeVorgang } from '@/lib/einsenden/vorgang';
+import { variantenAus } from '@/lib/versand/varianten';
 import { SCHUTZ_ERNEUERT, type FormularSchutz, type SchutzAntwort } from '@/lib/formular-schutz';
 import { storageStatus } from '@/lib/integrations';
 import { PLANER_QUELLE, SCHNAPPSCHUSS_FELD, planerVorgang } from '@/lib/konfigurator/vorgang';
@@ -405,9 +406,14 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   // neu; die Zusammenfassung aus dem Browser fällt weg. Eine Einsendung ist immer „Schlüssel nach Vorlage“.
   const einsendung = data.kind === 'anfrage' && payload.quelle === EINSENDE_QUELLE;
   if (einsendung) {
-    const vorgang = data.area === 'schluessel-nach-vorlage' ? einsendeVorgang(payload, data.contact) : null;
+    // Varianten aus den Einstellungen (A-050): „aktiv“ und „nur Sonderfall“ aus dem Admin gelten auch auf dem
+    // Server. Der Nachweis geht mit, damit Fahrzeugschlüssel nur mit Fahrzeugschein angenommen werden (R13).
+    const varianten = variantenAus((await getSettings()).sendIn);
+    const vorgang = data.area === 'schluessel-nach-vorlage'
+      ? einsendeVorgang(payload, data.contact, varianten, { uploads, ablageEingerichtet: storageStatus().configured })
+      : null;
     if (!vorgang?.ok) {
-      return { ok: false, notices: [], error: INVALID_INPUT };
+      return { ok: false, notices: [], error: (vorgang && !vorgang.ok && vorgang.fehler) || INVALID_INPUT };
     }
     payload = { ...vorgang.payload };
     summary = vorgang.summary;

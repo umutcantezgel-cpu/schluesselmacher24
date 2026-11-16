@@ -73,7 +73,7 @@ export const SCHRITTE_FOTOANFRAGE: NaechsterSchritt[] = [
 export const SCHRITTE_EINSENDUNG: NaechsterSchritt[] = [
   {
     titel: 'Einschicken',
-    text: 'Drucken Sie den Begleitschein aus. Legen Sie ihn mit dem Schlüssel in einen gepolsterten Umschlag und geben Sie ihn bei der Post auf.',
+    text: 'Drucken Sie den Begleitschein aus und legen Sie ihn dem Schlüssel bei. Verpacken Sie alles gepolstert und stabil und geben Sie es wie gewählt bei der Post oder DHL ab.',
   },
   {
     titel: 'Eingang und Prüfung',

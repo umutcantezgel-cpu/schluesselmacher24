@@ -16,6 +16,11 @@ const stored: BusinessRecord[] = [];
 const vorab = { veraltet: false };
 /** Im Backend abgeschaltete Rubriken (Status „aus“): getRubrik liefert sie nicht. */
 const abgeschaltet = new Set<string>();
+/**
+ * Varianten der Einsendung, wie der Betrieb sie im Admin ändert (FA-SHOP-03): je Kennung die Felder, die
+ * vom Startwert abweichen. Leer heißt Startwerte.
+ */
+const einsendeImAdmin = new Map<string, { aktiv?: boolean; nurSonderfall?: boolean }>();
 /** Rubriken mit Status „später“: getRubrik liefert sie, aber nicht live. */
 const spaeterGeschaltet = new Set<string>();
 /** Bauformen des Zylinderkatalogs mit dem Haken „Preis nicht bestätigt“ (FA-SHOP-04). */
@@ -75,7 +80,14 @@ vi.mock('@/lib/data', () => {
   return {
     TerminVergebenFehler,
     ZuVieleOffeneTermineFehler,
-    getSettings: async () => defaults.settings(),
+    getSettings: async () => {
+      const settings = defaults.settings();
+      if (einsendeImAdmin.size === 0) return settings;
+      const sendIn = settings.sendIn;
+      if (!sendIn) return settings;
+      const varianten = (sendIn.varianten ?? []).map((v) => ({ ...v, ...(einsendeImAdmin.get(v.kennung) ?? {}) }));
+      return { ...settings, sendIn: { ...sendIn, varianten } };
+    },
     // Die Muster-Codelinien sind Beispiele (A-046); für die Bestelllogik gelten sie hier als echte Linien,
     // dazu eine Beispiel-Linie, die die Kasse ablehnen muss.
     getCollection: async (name: keyof typeof defaults) =>
@@ -192,6 +204,7 @@ beforeEach(() => {
   stored.length = 0;
   vorab.veraltet = false;
   abgeschaltet.clear();
+  einsendeImAdmin.clear();
   spaeterGeschaltet.clear();
   unbestaetigteBauformen.clear();
   ablage.an = false;
@@ -351,7 +364,39 @@ describe('submitRecord', () => {
     const ohneKarte = await submitRecord({ ...basis, summary: [], payload: { ...gueltig, sicherungskarte: 'ja' } });
     expect(ohneKarte.ok).toBe(false);
     expect(ohneKarte.error).toContain('Sicherungskarte');
+    // Mechanischer Autoschlüssel ohne Fahrzeugschein: auch bei einem direkten Aufruf abgelehnt (R13, FA-SHOP-03).
+    const auto = { ...gueltig, schluesselart: 'auto-mechanisch', versand: 'dhl-paket' };
+    const ohneSchein = await submitRecord({ ...basis, summary: [], payload: auto });
+    expect(ohneSchein.ok).toBe(false);
+    expect(ohneSchein.error).toContain('Fahrzeugschein');
     expect(stored).toHaveLength(anzahl);
+    // Mit Fahrzeugschein nimmt der Server ihn an und speichert die Schlüsselart.
+    const mitSchein = await submitRecord({ ...basis, summary: [], payload: auto, uploads: [fahrzeugschein] });
+    expect(mitSchein.ok).toBe(true);
+    expect(stored).toHaveLength(anzahl + 1);
+    expect(stored.some((r) => r.payload?.schluesselart === 'auto-mechanisch' && r.payload?.versand === 'dhl-paket')).toBe(true);
+  });
+
+  it('setzt die Einstellungen der Einsende-Varianten aus dem Admin auch auf dem Server durch (FA-SHOP-03, A-050)', async () => {
+    const basis = { kind: 'anfrage' as const, area: 'schluessel-nach-vorlage' as const, process: 'gefuehrte-anfrage' as const, contact, uploads: [], summary: [] };
+    const angaben = { quelle: 'einsenden', originale: 1, stueckzahl: 1, beschriftung: '', hinweis: '', schluesselart: 'haus', sicherungskarte: 'nein' };
+    // Startwerte: Einwurf und DHL Paket sind wählbar, Einschreiben Wert nur mit bestätigtem Hinweis.
+    expect((await submitRecord({ ...basis, payload: { ...angaben, versand: 'einschreiben-einwurf' } })).ok).toBe(true);
+    expect((await submitRecord({ ...basis, payload: { ...angaben, versand: 'einschreiben-wert' } })).ok).toBe(false);
+    expect((await submitRecord({ ...basis, payload: { ...angaben, versand: 'einschreiben-wert', sonderfallBestaetigt: true } })).ok).toBe(true);
+    const anzahl = stored.length;
+
+    // Der Betrieb schaltet Einschreiben Wert ab: auch mit Bestätigung nicht mehr wählbar.
+    einsendeImAdmin.set('einschreiben-wert', { aktiv: false });
+    expect((await submitRecord({ ...basis, payload: { ...angaben, versand: 'einschreiben-wert', sonderfallBestaetigt: true } })).ok).toBe(false);
+    // Der Betrieb erklärt den Einwurf zum Sonderfall: ohne Bestätigung abgelehnt, mit Bestätigung angenommen.
+    einsendeImAdmin.set('einschreiben-einwurf', { nurSonderfall: true });
+    expect((await submitRecord({ ...basis, payload: { ...angaben, versand: 'einschreiben-einwurf' } })).ok).toBe(false);
+    expect(stored).toHaveLength(anzahl);
+    expect((await submitRecord({ ...basis, payload: { ...angaben, versand: 'einschreiben-einwurf', sonderfallBestaetigt: true } })).ok).toBe(true);
+    // DHL Paket bleibt unberührt.
+    expect((await submitRecord({ ...basis, payload: { ...angaben, versand: 'dhl-paket' } })).ok).toBe(true);
+    expect(stored).toHaveLength(anzahl + 2);
   });
 
   it('lehnt Bestellungen außerhalb der Kasse ab', async () => {

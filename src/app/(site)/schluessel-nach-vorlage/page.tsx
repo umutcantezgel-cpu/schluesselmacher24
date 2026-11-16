@@ -445,9 +445,13 @@ export default async function SchluesselNachVorlagePage() {
             </div>
 
             <Alert tone="legal" title="Versandweg" className="mt-6">
-              Wählen Sie einen versicherten oder mindestens nachverfolgbaren Versand. Ein
-              Schlüssel im unverfolgten Brief ist bei Verlust nicht auffindbar und nicht
-              ersetzbar.
+              Wählen Sie einen Versand mit Sendungsverfolgung und einer Haftung, die zum Wert Ihres
+              Schlüssels passt. Ein Schlüssel im unverfolgten Brief ist bei Verlust nicht auffindbar
+              und nicht ersetzbar. Die Varianten mit Haftung und Kosten finden Sie unter{' '}
+              <Link href="/schluessel-einschicken" className="font-semibold text-primary underline-offset-4 hover:underline">
+                Schlüssel einschicken
+              </Link>
+              .
             </Alert>
 
             <Link

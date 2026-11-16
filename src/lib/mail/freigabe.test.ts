@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { einstellungenMitWerkstatt, platzhalterEinstellungen } from '@/lib/rechtliches/test-hilfen';
 import type { BusinessRecord } from '@/lib/types';
+import { variantenAus } from '@/lib/versand/varianten';
 
 import { einsendeAnschrift } from './einsendung';
 import { vertragsbestaetigungOffen } from './vertrag';
@@ -146,6 +147,22 @@ describe('Freigabe-Mail', () => {
     expect(statusMail({ vorgang: anfrage, status: 'wartet-auf-kunde', kontext }).betreff).toBe(
       'Wir brauchen noch etwas von Ihnen (SM24-A-2026-0011)',
     );
+  });
+});
+
+describe('Einsendung nach der Freigabe (FA-SHOP-03)', () => {
+  it('nennt Haftungsbeträge nur aus den Einstellungen, nie als festen Text', () => {
+    const ohne = statusMail({ vorgang: fotoanfrage(), status: 'freigegeben', kontext });
+    expect(ohne.text).toContain('Für wertvolle Originalschlüssel empfehlen wir DHL Paket.');
+    expect(ohne.text).toContain('Die Haftung jeder Variante steht auf Ihrer Vorgangsseite.');
+    expect(ohne.text).not.toMatch(/Haftung bis \d+ €|nur bis 20 €/);
+    const varianten = variantenAus(undefined).map((v) =>
+      v.kennung === 'einschreiben-einwurf' ? { ...v, haftungEuro: 25, bezeichnung: 'Einwurf-Brief' } : v,
+    );
+    const mit = statusMail({ vorgang: fotoanfrage(), status: 'freigegeben', kontext: { ...kontext, sendIn: { varianten } } });
+    expect(mit.text).toContain('empfehlen wir DHL Paket (Haftung bis 500 € je Sendung).');
+    expect(mit.text).toContain('Einwurf-Brief: Haftung bis 25 € je Sendung.');
+    expect(mit.text).not.toContain('Einschreiben Wert');
   });
 });
 

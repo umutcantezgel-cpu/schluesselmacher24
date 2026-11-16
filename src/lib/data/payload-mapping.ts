@@ -984,7 +984,10 @@ function einsendenZuSeite(e: Partial<Record<string, unknown>> | null | undefined
     portoUnversichertCents: zuCent(zahl(e?.portoUnversichert, 1.8)),
     haftungVersichertEuro: zahl(e?.haftungVersichert, 25),
     portoStand: typeof e?.portoStand === 'string' && e.portoStand ? e.portoStand : 'Deutsche Post, Preise ab 1.1.2026: Einschreiben 4,45 €, Großbrief 1,80 €',
-    varianten: variantenZuSeite(e?.varianten),
+    varianten: variantenZuSeite(e?.varianten, {
+      aufpreisVersichertCents: zuCent(zahl(e?.aufpreisVersichert, 0)),
+      aufpreisUnversichertCents: zuCent(zahl(e?.aufpreisUnversichert, 0)),
+    }),
   };
 }
 
@@ -992,7 +995,7 @@ function einsendenZuSeite(e: Partial<Record<string, unknown>> | null | undefined
  * Einsende-Varianten aus dem Global (A-050). Leer oder ohne gültige Zeile (ältere Datenbankstände):
  * die Startwerte. Unbekannte Kennungen fallen weg; leeres Porto oder leere Haftung bleibt „nicht belegt“.
  */
-function variantenZuSeite(roh: unknown): EinsendeVariante[] {
+function variantenZuSeite(roh: unknown, alt: { aufpreisVersichertCents: number; aufpreisUnversichertCents: number }): EinsendeVariante[] {
   const zeilen = Array.isArray(roh) ? (roh as Array<Record<string, unknown>>) : [];
   const liste = (wert: unknown, erlaubt: readonly string[]) => (Array.isArray(wert) ? wert.filter((x): x is string => erlaubt.includes(x as string)) : []);
   const zahlOderNull = (wert: unknown) => (typeof wert === 'number' && Number.isFinite(wert) ? wert : null);
@@ -1015,7 +1018,8 @@ function variantenZuSeite(roh: unknown): EinsendeVariante[] {
       aktiv: z.aktiv !== false,
     }];
   });
-  return varianten.length ? varianten : variantenAus(undefined);
+  // Ohne gepflegte Liste: Startwerte mit dem bisherigen Aufpreis (G9).
+  return varianten.length ? varianten : variantenAus({ varianten: [], ...alt });
 }
 
 const variantenZuPayload = (varianten: EinsendeVariante[] | undefined) =>

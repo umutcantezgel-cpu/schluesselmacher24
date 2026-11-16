@@ -37,6 +37,7 @@ import type { CollectionName, Collections } from '../lib/data/adapter';
 import { ohneBeispiele } from '../lib/beispiele';
 import { JsonFileAdapter } from '../lib/data/json-adapter';
 import * as m from '../lib/data/payload-mapping';
+import { altAufpreis, istVariantenKennung } from '../lib/versand/varianten';
 
 const context = { disableRevalidate: true };
 
@@ -128,6 +129,20 @@ const SEO_ABGLEICH: AbgleichFeld[] = [
   { pfad: 'seo.beschreibung' },
   { pfad: 'seo.interneLinks', spalten: ['href', 'label'] },
 ];
+
+/**
+ * Varianten beim ersten Füllen: Aufpreis aus den bisherigen Feldern „versichert“ und „unversichert“
+ * (Euro), wenn dort einer gepflegt ist. Andere Werte der Startliste bleiben.
+ */
+export function mitAltAufpreis(varianten: unknown, einsenden: unknown): unknown {
+  if (!Array.isArray(varianten)) return varianten;
+  const e = (einsenden && typeof einsenden === 'object' ? einsenden : {}) as Daten;
+  const alt = { versichert: e.aufpreisVersichert, unversichert: e.aufpreisUnversichert };
+  return varianten.map((zeile: Daten) => {
+    const aufpreis = istVariantenKennung(zeile.kennung) ? altAufpreis(zeile.kennung, alt) : undefined;
+    return typeof aufpreis === 'number' && Number.isFinite(aufpreis) && aufpreis > 0 ? { ...zeile, aufpreis } : zeile;
+  });
+}
 
 function lesen(daten: unknown, pfad: string): unknown {
   return pfad.split('.').reduce<unknown>((wert, teil) => (wert && typeof wert === 'object' ? (wert as Daten)[teil] : undefined), daten);
@@ -412,7 +427,9 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
     const neu = await daten();
     const aenderung: Daten = {};
     for (const pfad of offen) {
-      const wert = lesen(neu, pfad);
+      let wert = lesen(neu, pfad);
+      // Einsende-Varianten (FA-SHOP-03): bisher gepflegte Aufpreise übernehmen, nicht still auf 0 setzen (G9).
+      if (pfad === 'einsenden.varianten') wert = mitAltAufpreis(wert, lesen(doc, 'einsenden'));
       if (!leerOderLeereListe(wert)) setzen(aenderung, pfad, wert);
     }
     if (!Object.keys(aenderung).length) return;

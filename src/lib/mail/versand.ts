@@ -16,8 +16,9 @@ import { ohneSchraegstrich, type VorlagenKontext } from './vorlagen/gemeinsam';
 const EMAIL = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/;
 
 /** Seite und Firmendaten für die Vorlagen. */
-export function vorlagenKontext(settings?: Pick<Settings, 'company'>): VorlagenKontext {
-  return { site: ohneSchraegstrich(getSiteUrl()), firma: settings?.company };
+export function vorlagenKontext(settings?: Pick<Settings, 'company'> & Partial<Pick<Settings, 'sendIn'>>): VorlagenKontext {
+  // `sendIn` (FA-SHOP-03): Die Mails nennen Varianten und Haftung so, wie sie im Admin gepflegt sind.
+  return { site: ohneSchraegstrich(getSiteUrl()), firma: settings?.company, ...(settings?.sendIn ? { sendIn: settings.sendIn } : {}) };
 }
 
 /** Link auf einen Eintrag im Backend (feste Backend-Adresse, sonst die Seite); Standard: Vorgänge. */

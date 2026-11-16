@@ -58,7 +58,7 @@ const BEILAGE = [
 ];
 
 /** Grundbestand der Fragen, solange in der Datenschicht keine gepflegt sind. */
-function fragen(porto: { paket: string; einwurf: string }) {
+function fragen(porto: { paket: string; einwurf: string; einwurfHaftung: string }) {
   return [
     {
       question: 'Muss ich meinen Schlüssel einschicken?',
@@ -77,7 +77,7 @@ function fragen(porto: { paket: string; einwurf: string }) {
       question: 'Was kostet das Einschicken?',
       answer:
         `Das Porto für den Weg zu uns zahlen Sie bei der Post. Für wertvolle Originalschlüssel empfehlen wir DHL Paket (${porto.paket}). `
-        + `Günstiger ist das Einschreiben Einwurf (${porto.einwurf}), mit Haftung nur bis 20 €. Den Preis für die Kopien nennen wir Ihnen `
+        + `Günstiger ist das Einschreiben Einwurf (${porto.einwurf}), mit ${porto.einwurfHaftung}. Den Preis für die Kopien nennen wir Ihnen `
         + 'nach der Prüfung mit der Freigabe, bevor Sie etwas bezahlen. Erst mit Ihrer Zahlung erteilen Sie den Auftrag.',
     },
     {
@@ -116,7 +116,12 @@ export default async function SchluesselEinschickenPage() {
     const o = varianten.find((v) => v.art === art);
     return o?.portoCents !== undefined ? `${formatCents(o.portoCents)} laut Post` : 'Porto laut Post, bitte dort prüfen';
   };
-  const faq = page?.faq?.length ? page.faq : fragen({ paket: porto('dhl-paket'), einwurf: porto('einschreiben-einwurf') });
+  // Haftung aus den Einstellungen, damit die Antwort nach einer Änderung im Admin stimmt (A-050).
+  const einwurf = varianten.find((v) => v.art === 'einschreiben-einwurf');
+  const einwurfHaftung = einwurf?.haftung.startsWith('Haftung bis')
+    ? einwurf.haftung.replace('Haftung bis', 'Haftung nur bis')
+    : 'einer Haftung, die Sie bitte bei der Post prüfen';
+  const faq = page?.faq?.length ? page.faq : fragen({ paket: porto('dhl-paket'), einwurf: porto('einschreiben-einwurf'), einwurfHaftung });
 
   // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
   const kurztext =

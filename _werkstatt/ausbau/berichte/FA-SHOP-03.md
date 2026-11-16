@@ -72,8 +72,8 @@ Alle aus `erhebung/FA-RECHERCHE-03.md` (abgerufen 15.11.2026) und `erhebung/E1-v
 
 ## FÜR MENSCHEN
 
-- Inhaber: Startwerte freigeben oder im Admin ändern (Einstellungen → Versand → Schlüssel einschicken → Versandvarianten): Porto 7,69 €, 4,15 €, 6,25 €, Haftung 500 €, 20 €, 500 €, Aufpreise je Variante (Start 0 €, wie bisher). Eigene Preise wurden nicht geändert (G9).
-- Inhaber: Entscheidung, ob Einschreiben Wert überhaupt angeboten wird; sonst Variante auf „aktiv“ aus.
+- Inhaber: Startwerte freigeben oder im Admin ändern (Einstellungen → Versand → Schlüssel einschicken → Versandvarianten): Porto 7,69 €, 4,15 €, 6,25 €, Haftung 500 €, 20 €, 500 €, Aufpreise je Variante (Start: der bisher gepflegte Aufpreis, siehe Nachbesserung Befund 3). Eigene Preise wurden nicht geändert (G9).
+- Inhaber: Entscheidung, ob Einschreiben Wert überhaupt angeboten wird; sonst Variante auf „aktiv“ aus. Auf dem Server wirkt das erst mit dem Eingriff in `records.ts` (Nachbesserung, Befunde 2 und 10).
 - Inhaber oder Anwalt: Haftungssatz und Warnhinweis prüfen (R10); Hinweis in der Datenschutzerklärung erst mit echtem Label (Teil B).
 - Orchestrator: Offene Frage 1 (Serverprüfung Fahrzeugschein in `records.ts`) vor dem Commit entscheiden.
 - Vertragsschritte für das Label (DHL Geschäftskundenvertrag, EKP, Abrechnungsnummer, Sandbox, Produktionsfreigabe) gehören in den Bericht von Teil B.
@@ -95,3 +95,62 @@ Fehlt noch (Teil B):
 - Zweiter, abgeschalteter Anschluss DHL-Paket-Label für Geschäftskunden in `src/lib/versand` mit Sandbox-Adresse und Attrappe; Anzeige im Admin, welcher Weg aktiv ist und was fehlt; Test „ohne Vertrag kein Label-Aufruf“.
 - Status der Einsendung „unterwegs zu uns“ (mit Sendungsnummer) in `EINSENDE_STATUS` und Kundenstatus.
 - Serverprüfung Fahrzeugschein in `records.ts` (offene Frage 1), falls nicht vorher erledigt.
+
+## Nachbesserung (16.11.2026, nach zwei Gegenprüfungen)
+
+Alle 14 Befunde am Code geprüft; alle treffen zu. Behoben im Rahmen der Schreibrechte, was dort geht; der Rest steht unten als fertiger Eingriff für den Orchestrator (`src/lib/actions/records.ts`, `src/lib/mail/versand.ts`, `src/lib/wege/naechste-schritte.ts`, `src/app/(site)/schluessel-nach-vorlage/page.tsx`, `content/rubriken.json`, `src/lib/data/defaults/rubriken.ts` liegen außerhalb).
+
+Je Befund:
+1. [rot] Fahrzeugschein ohne Serverprüfung: **behoben (sicher voreingestellt), Aufruf in `records.ts` offen.** `einsendeVorgang` hat einen vierten Parameter `nachweis` (`EinsendeNachweis`: Uploads, Ablage-Stand) und ruft `einsendeNachweisPruefen` selbst auf; ohne Nachweis lehnt sie einen mechanischen Autoschlüssel immer ab (`{ ok: false, fehler }`). Damit nimmt der Server heute keinen Autoschlüssel ohne Fahrzeugschein an, auch nicht bei direktem Aufruf (neuer Fall in `security.test.ts` über `submitRecord`). Damit das Formular keine Wahl anbietet, die der Server ablehnt, zeigt es bis zum Eingriff nur `SCHLUESSELARTEN_IM_FORMULAR` (ohne „mechanischer Autoschlüssel“; Schrittprüfung ebenso). Zum Einschalten: Eingriff A unten.
+2. [gelb] Varianten der Einstellungen nicht auf dem Server: **trifft zu, Eingriff A** (nur in `records.ts` möglich, weil die Einstellungen dort asynchron geladen werden; `einsendeVorgang` bleibt rein). Der Standardwert bleibt, damit `records.ts` bis dahin übersetzt; der Kommentar nennt ihn nur noch Vorgabe für Tests und ältere Aufrufer.
+3. [gelb] Aufpreis startet still bei 0 €: **behoben.** `variantenAus` übernimmt ohne gepflegte Liste den bisherigen Aufpreis (`altAufpreis`: DHL Paket und Einschreiben Wert aus „versichert“, Einwurf aus „unversichert“); ebenso die Datenabbildung (`variantenZuSeite`) und der Seed beim ersten Füllen (`mitAltAufpreis` in `seed.ts`). Tests in `versand.test.ts` und `einsende-varianten.db.test.ts` (Aufpreis 2 € und 1 € werden 200, 100, 200 Cent).
+4. [gelb] Haftungsbeträge als fester Text: **behoben in Formular, FAQ und Freigabe-Mail.** Formular: Empfehlung bei „wertvoll“ aus dem Angebot der Einstellungen (Name und Haftungssatz). FAQ: Haftung des Einwurfs aus den Varianten. Freigabe-Mail: neue Funktion `versandZeile`; Beträge nur, wenn der Kontext die Einstellungen trägt (`VorlagenKontext.sendIn`, additiv), sonst ohne Betrag mit Verweis auf die Vorgangsseite. Test in `src/lib/mail/freigabe.test.ts`. Damit die Mail Beträge nennt, Eingriff B.
+5. [gelb] „gepolsterter Umschlag … bei der Post“: **Status behoben, Schritte über den Orchestrator.** `EINSENDE_STATUS.neu`: „Bitte legen Sie den Begleitschein Ihrer Sendung bei.“ `SCHRITTE_EINSENDUNG` liegt außerhalb: Eingriff C.
+6. [gelb] „versicherten … Versand“ auf „Schlüssel nach Vorlage“: **trifft zu, außerhalb der Schreibrechte**, Eingriff D.
+7. [gelb] Hub-Ablauf „in einen Umschlag“: **trifft zu, außerhalb der Schreibrechte**, Eingriff E.
+8. [gelb] Mit Label „das Porto zahlt SCHLÜSSELMACHER24“: **behoben.** Mit Label nennt die Seite Porto plus Aufpreis als Betrag, der „mit dem Auftrag berechnet“ wird (`summeCents = portoCents + aufpreisCents`); ohne belegtes Porto „die Versandkosten werden mit dem Auftrag berechnet“. Der Satz zur Kostenübernahme ist entfernt; die Seite sagt „die Versandkosten werden mit dem Auftrag berechnet“. Test in `versand.test.ts`. Pflichtpunkt für Teil B: Eine Übernahme des Portos nur mit ausdrücklicher Freigabe des Inhabers.
+9. [rot] R13 auf dem Server, falscher Kommentar: **behoben wie 1.** Kommentar an `einsendeNachweisPruefen` berichtigt; der eigene Test, der `ok: true` ohne Upload bestätigte, prüft jetzt das Gegenteil.
+10. [rot] Varianten nur gegen Startwerte: **trifft zu, Eingriff A** (wie 2). Die Anleitung unter FÜR MENSCHEN ist ergänzt: „aktiv aus“ wirkt auf dem Server erst nach Eingriff A.
+11. [gelb] Testtitel verspricht zu viel: **behoben.** Titel „einsendeNachweisPruefen verlangt …“; eigener Test für `einsendeVorgang` mit und ohne Nachweis; der Absendeweg ist in `security.test.ts` geprüft.
+12. [gelb] `sonderfallBestaetigt` ohne Häkchen: **behoben.** `payloadAus` setzt die Bestätigung nur mit `sonderfall && d.sonderfallBestaetigt`.
+13. [gelb] Eingangsmail mit Standardnamen: **behoben, wirksam mit Eingriff B.** `kundeEingang` ruft `versandBezeichnung(…, kontext.sendIn)`; die vom Server gebaute Zusammenfassung nennt den Namen aus den übergebenen Varianten (`einsendeZusammenfassung(…, varianten)`), die Vorschau im Formular ebenso. Test in `einsenden.test.ts`.
+14. [gelb] Haftungsbeträge in Mail und FAQ: **behoben wie 4.**
+
+Zusätzlich geändert: `src/lib/mail/vorlagen/gemeinsam.ts` (nur das optionale Feld `sendIn` im Kontext), `src/lib/mail/freigabe.test.ts` (zugehöriger Test).
+
+### Eingriffe für den Orchestrator (außerhalb der Schreibrechte)
+
+A (rot, vor dem Commit; Befunde 1, 2, 9, 10) · `src/lib/actions/records.ts`, Einsendezweig:
+```ts
+import { variantenAus } from '@/lib/versand/varianten';
+// …
+  if (einsendung) {
+    const varianten = variantenAus((await getSettings()).sendIn);
+    const vorgang = data.area === 'schluessel-nach-vorlage'
+      ? einsendeVorgang(payload, data.contact, varianten, { uploads, ablageEingerichtet: storageStatus().configured })
+      : null;
+    if (!vorgang?.ok) {
+      return { ok: false, notices: [], error: (vorgang && !vorgang.ok && vorgang.fehler) || INVALID_INPUT };
+    }
+```
+Danach in `src/lib/versand/varianten.ts` den Filter von `SCHLUESSELARTEN_IM_FORMULAR` aufheben (`= SCHLUESSELARTEN`), damit der Kunde mechanische Autoschlüssel wieder wählen kann (A-050 Punkt 3). Tests in `security.test.ts` ergänzen: auto-mechanisch mit Upload `fahrzeugschein` ergibt `ok: true`; eine in den Einstellungen deaktivierte Variante (`aktiv: false`) und eine zum Sonderfall erklärte Variante ohne Bestätigung ergeben `ok: false`.
+
+B (gelb; Befunde 4, 13, 14) · `src/lib/mail/versand.ts`:
+```ts
+export function vorlagenKontext(settings?: Pick<Settings, 'company' | 'sendIn'>): VorlagenKontext {
+  return { site: ohneSchraegstrich(getSiteUrl()), firma: settings?.company, sendIn: settings?.sendIn };
+}
+```
+
+C (gelb; Befund 5) · `src/lib/wege/naechste-schritte.ts`, `SCHRITTE_EINSENDUNG[0].text`: „Drucken Sie den Begleitschein aus und legen Sie ihn dem Schlüssel bei. Verpacken Sie alles gepolstert und stabil und geben Sie es wie gewählt bei der Post oder DHL ab.“
+
+D (gelb; Befund 6) · `src/app/(site)/schluessel-nach-vorlage/page.tsx` (Alert „Versandweg“): „Wählen Sie einen Versand mit Sendungsverfolgung und einer Haftung, die zum Wert Ihres Schlüssels passt. Die Varianten mit Haftung und Kosten finden Sie unter Schlüssel einschicken.“ mit Link auf `/schluessel-einschicken`.
+
+E (gelb; Befund 7) · `content/rubriken.json` und `src/lib/data/defaults/rubriken.ts`, Ablauf „Einschicken“, gleichlautend: „Schlüssel gepolstert und stabil verpacken, Begleitschein beilegen, abschicken.“
+
+### Prüfung nach der Nachbesserung (über die Datenweiche)
+- `sicher.sh --json -- npx vitest run`: 226 Dateien, 3546 Tests bestanden, 0 Fehler.
+- `sicher.sh --json -- npm run typecheck`: ohne Fehler.
+- `sicher.sh --json -- npm run lint`: ohne Fehler und Warnungen.
+- `sicher.sh --pg -- npx vitest run -c vitest.db.config.ts`: 24 Dateien, 139 Tests bestanden (neu: Seed übernimmt den bisherigen Aufpreis).
+- `sicher.sh --json -- npm run build`: erfolgreich (Exit 0).

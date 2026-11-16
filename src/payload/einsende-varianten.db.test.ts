@@ -56,4 +56,24 @@ describe('Einsende-Varianten', () => {
       ['einschreiben-wert', 500, 6.25, true],
     ]);
   });
+
+  it('der Seed übernimmt beim ersten Füllen den bisher gepflegten Aufpreis (G9)', async () => {
+    const vorher = await payload.findGlobal({ slug: 'einstellungen', depth: 0 });
+    const db = payload.db.drizzle as unknown as { execute: (q: ReturnType<typeof sql>) => Promise<unknown> };
+    try {
+      await payload.updateGlobal({
+        slug: 'einstellungen',
+        data: { einsenden: { ...vorher.einsenden, aufpreisVersichert: 2, aufpreisUnversichert: 1 } },
+        context,
+      });
+      await db.execute(sql`DELETE FROM einstellungen_einsenden_varianten`);
+      // Ohne Zeilen zeigt die Seite schon die Startwerte mit dem bisherigen Aufpreis.
+      expect((await adapter.read('settings')).sendIn?.varianten?.map((v) => v.aufpreisCents)).toEqual([200, 100, 200]);
+      await inhalteUebernehmen(payload, { startwerte: [] });
+      const gespeichert = (await payload.findGlobal({ slug: 'einstellungen', depth: 0 })).einsenden?.varianten ?? [];
+      expect(gespeichert.map((v) => [v.kennung, v.aufpreis])).toEqual([['dhl-paket', 2], ['einschreiben-einwurf', 1], ['einschreiben-wert', 2]]);
+    } finally {
+      await payload.updateGlobal({ slug: 'einstellungen', data: { einsenden: vorher.einsenden }, context });
+    }
+  });
 });

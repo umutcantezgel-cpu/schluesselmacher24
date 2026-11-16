@@ -599,7 +599,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Einschicken",
-          text: "Schlüssel mit Begleitschein in einen Umschlag.",
+          text: "Schlüssel gepolstert und stabil verpacken, Begleitschein beilegen, abschicken.",
           icon: "versand-paket",
         },
         {

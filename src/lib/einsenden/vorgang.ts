@@ -96,7 +96,7 @@ export function inhaltText(p: Pick<EinsendePayload, 'originale'>): string {
 }
 
 /** Zusammenfassung für Vorgang, Bestätigung und Vorgangsblatt; gebaut aus geprüften Angaben. */
-export function einsendeZusammenfassung(p: EinsendePayload, contact: ContactDetails): SummarySection[] {
+export function einsendeZusammenfassung(p: EinsendePayload, contact: ContactDetails, varianten?: readonly EinsendeVariante[]): SummarySection[] {
   const anschrift = [contact.street, [contact.postalCode, contact.city].filter(Boolean).join(' ')].filter(Boolean).join(', ');
   return [
     {
@@ -108,7 +108,8 @@ export function einsendeZusammenfassung(p: EinsendePayload, contact: ContactDeta
         ...(p.schluesselart ? [{ label: 'Schlüsselart', value: ARTEN_TITEL[p.schluesselart] }] : []),
         ...(p.wertvoll ? [{ label: 'Wertvoll', value: 'ja, laut Kunde' }] : []),
         { label: brauchtFahrzeugschein(p.schluesselart) ? 'Nachweis' : 'Sicherungskarte', value: brauchtFahrzeugschein(p.schluesselart) ? 'Fahrzeugschein (Pflicht)' : KARTEN_LABEL[p.sicherungskarte] },
-        { label: 'Versand', value: VERSAND_LABEL[p.versand] ?? 'keine Angabe' },
+        // Name der Variante aus den Einstellungen, wenn übergeben (wie Formular und Begleitschein).
+        { label: 'Versand', value: varianten ? versandBezeichnung(p.versand, { varianten: [...varianten] }) : (VERSAND_LABEL[p.versand] ?? 'keine Angabe') },
         ...(p.sonderfallBestaetigt ? [{ label: 'Sonderfall', value: 'Hinweis bestätigt' }] : []),
         ...(p.hinweis ? [{ label: 'Hinweis', value: p.hinweis }] : []),
       ],
@@ -179,7 +180,7 @@ export function einsendeVorgang(
     ...(variante.nurSonderfall ? { sonderfallBestaetigt: true } : {}),
     originalEingesendet: true,
   };
-  return { ok: true, payload, summary: einsendeZusammenfassung(payload, contact) };
+  return { ok: true, payload, summary: einsendeZusammenfassung(payload, contact, varianten) };
 }
 
 /** Meldung, wenn der Fahrzeugschein fehlt (R13). */

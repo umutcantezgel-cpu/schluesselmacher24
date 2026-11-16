@@ -79,9 +79,30 @@ export function istVariantenKennung(wert: unknown): wert is EinsendeVarianteKenn
   return typeof wert === 'string' && (VARIANTEN_KENNUNGEN as readonly string[]).includes(wert);
 }
 
-/** Varianten aus den Einstellungen; ältere Stände ohne Varianten nehmen die Startwerte. */
-export function variantenAus(e: Pick<EinsendeEinstellungen, 'varianten'> | undefined): EinsendeVariante[] {
-  return e?.varianten?.length ? e.varianten : STANDARD_VARIANTEN.map((v) => ({ ...v, einlieferung: [...v.einlieferung], empfohlenFuer: [...v.empfohlenFuer] }));
+/**
+ * Bisheriger Aufpreis des Betriebs für eine Variante, solange die Liste noch nicht gepflegt ist (G9):
+ * DHL Paket und Einschreiben Wert aus „versichert“, Einschreiben Einwurf aus „unversichert“. So fällt
+ * ein im Admin eingetragener Aufpreis beim Wechsel auf die Varianten nicht still weg.
+ */
+export function altAufpreis<T>(kennung: EinsendeVarianteKennung, alt: { versichert?: T; unversichert?: T }): T | undefined {
+  return kennung === 'einschreiben-einwurf' ? alt.unversichert : alt.versichert;
+}
+
+type VariantenQuelle = Pick<EinsendeEinstellungen, 'varianten'> & Partial<Pick<EinsendeEinstellungen, 'aufpreisVersichertCents' | 'aufpreisUnversichertCents'>>;
+
+/** Varianten aus den Einstellungen; ältere Stände ohne Varianten nehmen die Startwerte mit dem bisherigen Aufpreis. */
+export function variantenAus(e: VariantenQuelle | undefined): EinsendeVariante[] {
+  if (e?.varianten?.length) return e.varianten;
+  const alt = { versichert: e?.aufpreisVersichertCents, unversichert: e?.aufpreisUnversichertCents };
+  return STANDARD_VARIANTEN.map((v) => {
+    const aufpreis = altAufpreis(v.kennung, alt);
+    return {
+      ...v,
+      einlieferung: [...v.einlieferung],
+      empfohlenFuer: [...v.empfohlenFuer],
+      aufpreisCents: typeof aufpreis === 'number' && Number.isFinite(aufpreis) && aufpreis > 0 ? aufpreis : v.aufpreisCents,
+    };
+  });
 }
 
 export function varianteZu(e: Pick<EinsendeEinstellungen, 'varianten'> | undefined, kennung: unknown): EinsendeVariante | undefined {
@@ -98,13 +119,10 @@ export const SCHLUESSELARTEN: readonly { wert: Schluesselart; titel: string; sat
 ];
 
 /**
- * Was das Einsendeformular anbietet. Mechanische Autoschlüssel erst, wenn der Server beim Absenden den
- * Fahrzeugschein prüft (R13): `src/lib/actions/records.ts` muss dazu `einsendeVorgang` den Nachweis
- * übergeben (Bericht FA-SHOP-03, Nachbesserung). Bis dahin lehnt der Server sie ohnehin ab.
+ * Was das Einsendeformular anbietet: alle Schlüsselarten. Mechanische Autoschlüssel nimmt der Server nur
+ * mit Fahrzeugschein an (R13): `src/lib/actions/records.ts` übergibt `einsendeVorgang` den Nachweis.
  */
-export const SCHLUESSELARTEN_IM_FORMULAR: readonly (typeof SCHLUESSELARTEN)[number][] = SCHLUESSELARTEN.filter(
-  (art) => art.wert !== 'auto-mechanisch',
-);
+export const SCHLUESSELARTEN_IM_FORMULAR: readonly (typeof SCHLUESSELARTEN)[number][] = SCHLUESSELARTEN;
 
 export function istSchluesselart(wert: unknown): wert is Schluesselart {
   return SCHLUESSELARTEN.some((art) => art.wert === wert);
