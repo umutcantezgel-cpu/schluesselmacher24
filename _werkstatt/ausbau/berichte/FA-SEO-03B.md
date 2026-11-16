@@ -183,10 +183,33 @@ Lighthouse Maßstab A (Übertragung laut Lighthouse; Leistung und LCP als Median
 - Der Leistungswert streut wegen des TBT unter Last. Die Endmessung lief gleichzeitig mit dem vollen Testlauf. Aussagekräftig ist das erst auf ruhiger Maschine (siehe Nachmessung).
 - Die Zwischenmessungen v4a und v4b stehen in `leistung-v4a-rubrik-…md` und `leistung-v4b-kompaktbild-…md`.
 
+Maßstab B, gedrosselter Browser, je 3 Läufe; Stand `leistung-stand-devtools-2026-11-16_17-08-41.md`, Endstand `leistung-nachher-devtools-2026-11-16_17-20-31.md`. Werte als Median, Stand → Endstand:
+
+| Ansicht | FCP = LCP ms | Übertragung KB / Dateien | JS KB |
+|---|---|---|---|
+| Assistent | 1.010 → 1.002 | 603 / 46 → 594 / 46 | 327 → 318 |
+| Konfigurator | 1.002 → 971 | 589 / 48 → 568 / 47 | 322 → 302 |
+| Shop | 986 → 999 | 532 / 43 → 493 / 41 | 305 → 266 |
+| Kontakt | 1.086 → 1.015 | 560 / 49 → 546 / 49 | 309 → 297 |
+| Ortsseite | 1.056 → 996 | 559 / 47 → 522 / 45 | 306 → 268 |
+| Ratgeber | 1.054 → 1.025 | 567 / 47 → 528 / 45 | 312 → 273 |
+| Startseite | 1.181 → 1.282 | 518 / 42 → 519 / 43 | 264 → 266 |
+| Autoschlüssel | 1.146 → 1.152 | 543 / 40 → 545 / 41 | 264 → 266 |
+| Schlüssel nach Code | 1.028 → 1.028 | 528 / 45 → 530 / 46 | 271 → 274 |
+
+- In B kein Rückschritt über die Streuung hinaus. CLS ist 0 in jedem Lauf.
+- Maßstab B erfasst auch das späte Vorladen der Navigation. Deshalb sinkt dort die Übertragung auch auf Ortsseite und Ratgeber: Die vorgeladenen Ziele haben jetzt kleinere Bündel.
+- Startseite, Autoschlüssel und Code laden vor dem ersten Zeichnen byte-gleich wie vorher. Ihre +2 bis +3 KB entstehen erst beim späten Vorladen, weil Turbopack die gemeinsamen Teile neu geschnitten hat. Der FCP der Startseite (1.181 → 1.282 ms, Spannen in den Protokollen) liegt bei gleichen Bytes in der Streuung.
+
 **Nicht übernommen, als OFFENE FRAGE 3:**
 - **Nachladen des Foto-Uploads im Assistenten:** Er erscheint erst in Schritt 8 und 9. `assistent.tsx` importiert aber zugleich `alsUpload` und `uploadsAbwarten` aus derselben Datei, und Turbopack teilt Module nicht nach Exporten. Ein `next/dynamic` allein spart deshalb nichts. Nötig wäre, die Upload-Hilfen aus `forms/photo-upload.tsx` in ein eigenes Modul zu ziehen. Dieser gemeinsame Baustein liegt außerhalb meiner Schreibrechte.
 - **Kontakt:** Der Foto-Upload steht im ersten Schritt, also sichtbar. Nachladen ist dort nach den Bedingungen des Pakets ausgeschlossen.
 - **Ungenutztes JavaScript (25 bis 28 KB):** Es steckt laut Lighthouse ganz in `17_pbdm6y2ffj.js`, dem Bündel aus React DOM und dem Next-Client. Daran ändert sich ohne andere Bibliotheken nichts.
+
+**Übersehen und nachgetragen (Nachbesserung), als OFFENE FRAGE 6:**
+- **Einstiegsseiten der Fahrzeugklassen:** `e-scooter`, `seniorenmobile`, `fahrradschluessel` und `roller-und-kleinstfahrzeuge` importieren in `page.tsx` Zeile 4 `EinstiegSeite` und `seitenMetadata` aus `fahrzeug-anfrage/seiten.tsx`; `motorradschluessel/page.tsx` Zeile 6 importiert dort `RubrikPausiertHinweis`, `UnterlagenAusRegel` und `robotsNachStand`. `seiten.tsx` bindet in Zeile 18 `FahrzeugAnfrageFormular` aus `./formular` ein. `EinstiegSeite` (ab Zeile 207) zeigt aber kein Formular, nur Links auf `formular.anfrage`.
+- Folge nach demselben Muster wie bei `SeitenDaten`: Diese Seiten ziehen Formular, Foto-Upload und Generatoren in ihr Client-Bündel, ohne sie zu zeigen. Gemessen ist das für diese Seiten nicht; sie gehören nicht zu den neun Ansichten (im Stand auf Port 3200 laden `/e-scooter` und `/e-scooter/anfrage` je 20 Skripte, das trennt die beiden Ursachen aber nicht).
+- Nicht gebaut: Die Seiten und die Einstiegsbausteine liegen außerhalb meiner Schreibrechte.
 
 ### Hebel 5 · Späte lange Aufgaben: `useSpaetVorladen` ist nicht die Ursache, keine Änderung
 
@@ -212,6 +235,7 @@ Spur (2 Läufe, `spur-aufgaben.log`):
 - `src/components/seo/seiten-daten.tsx` und `src/components/fahrzeug-anfrage/seiten.tsx` werden von vielen Seiten genutzt.
   - Die Änderung verschiebt nur vier Werte und Funktionen in `rubrik.ts`. Alle bisherigen Importe aus `…/seiten` funktionieren weiter. Das prüft der Test: dieselben Objekte.
   - Zu den Schreibrechten: Das Paket nennt „die Stellen in den Bausteinen der schweren Ansichten, an denen ein Modul nachgeladen wird“. Die Trennung ist kein Nachladen. Sie entfernt ein Modul, das die Ansichten gar nicht brauchen, und ist der größte belegte Hebel. Ich habe sie deshalb gebaut und lege sie dem Orchestrator ausdrücklich zur Abnahme vor (OFFENE FRAGE 5).
+- Hinweis (Nachbesserung): `src/app/sitemap.ts` Zeile 28 liest `KLASSE_RUBRIK` weiter aus `@/components/fahrzeug-anfrage/seiten`. Das funktioniert, weil `./seiten` den Wert unverändert weitergibt. Für Client-Bündel ist es ohne Folge, weil die Sitemap eine Serverroute ist; sie zieht aber Formular und Bausteine unnötig in ihren Modulgraphen und widerspricht dem Kommentar in `rubrik.ts`. Die Sitemap liegt außerhalb meiner Schreibrechte. Vorschlag an den Orchestrator: Import auf `@/components/fahrzeug-anfrage/rubrik` umstellen und in `rubrik.test.ts` die Sitemap so mitprüfen wie `seiten-daten.tsx`.
 - `src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx` ist nur von dieser Ansicht genutzt.
 - `next.config.ts`, `package.json`, `src/fonts/schriften.ts`, `globals.css` und `spaet-vorladen.ts` sind unverändert.
 - Keine Datei von FA-PLATTFORM-01C ist berührt. Die geänderten Dateien unter `src/lib/orte`, `src/lib/partner`, `auftragsweg.ts` und `src/payload` im Arbeitsbaum stammen von dort.
@@ -237,11 +261,11 @@ Build im Versuchsordner mit allen übernommenen Änderungen (Endstand v4b, `inli
 - **Lastunabhängige Werte:** `protokolle/FA-SEO-03B/gewicht-stand.json`, `gewicht-v4a-rubrik.json`, `gewicht-v1-ohne-inlinecss.json` und `gewicht-nachher.json`. Werkzeug: `experimente/gewicht.mjs`.
 - **Lighthouse A:**
   - `leistung-stand-2026-11-16_16-22-43.md` (5 Läufe, 9 Ansichten, Port 3200)
-  - `leistung-v4a-rubrik-…md`, `leistung-v1-ohne-inlinecss-…md`, `leistung-v4b-kompaktbild-…md`
+  - `leistung-v4a-rubrik-2026-11-16_16-29-36.md`, `leistung-v1-ohne-inlinecss-2026-11-16_16-45-00.md`, `leistung-v4b-kompaktbild-2026-11-16_16-58-05.md`
   - `leistung-nachher-2026-11-16_17-02-12.md` (Endstand, 5 Läufe, 9 Ansichten, mit Vergleich zum Stand)
 - **Lighthouse B:**
-  - `leistung-v4a-devtools-…md` und `leistung-v1-ohne-inlinecss-devtools-…md` (Hebel 1, je 5 Läufe)
-  - `leistung-stand-devtools-…md` und `leistung-nachher-devtools-…md` (9 Ansichten, je 3 Läufe)
+  - `leistung-v4a-devtools-2026-11-16_16-33-47.md` und `leistung-v1-ohne-inlinecss-devtools-2026-11-16_16-47-44.md` (Hebel 1, je 5 Läufe)
+  - `leistung-stand-devtools-2026-11-16_17-08-41.md` und `leistung-nachher-devtools-2026-11-16_17-20-31.md` (9 Ansichten, je 3 Läufe)
 - **Bündelanalyse:**
   - `next analyze --output --snapshot stand` im Versuchsordner, dann `next analyze export --snapshot stand --route <Ansicht>`.
   - Die Kette oben stammt aus `experimente/analyse-kette.mjs`, die Größen aus `analyse-teile.mjs`.
@@ -272,9 +296,11 @@ Nach dem Build im Arbeitsbaum, Server auf Port 3000:
 
 ```
 _werkstatt/ausbau/werkzeuge/sicher.sh --json --als-root -- node _werkstatt/ausbau/werkzeuge/leistung.mjs --ziel _werkstatt/ausbau/protokolle/FA-SEO-03B --roh _werkstatt/ausbau/protokolle/roh/FA-SEO-03B --marke abnahme --laeufe 5 --vorher _werkstatt/ausbau/protokolle/FA-SEO-03B/leistung-stand-2026-11-16_16-22-43.json
-_werkstatt/ausbau/werkzeuge/sicher.sh --json --als-root -- node _werkstatt/ausbau/werkzeuge/leistung.mjs --methode devtools --ziel _werkstatt/ausbau/protokolle/FA-SEO-03B --roh _werkstatt/ausbau/protokolle/roh/FA-SEO-03B --marke abnahme-devtools --laeufe 3 --vorher _werkstatt/ausbau/protokolle/FA-SEO-03B/<leistung-stand-devtools-….json>
-node _werkstatt/ausbau/protokolle/FA-SEO-03B/experimente/gewicht.mjs http://localhost:3000
+_werkstatt/ausbau/werkzeuge/sicher.sh --json --als-root -- node _werkstatt/ausbau/werkzeuge/leistung.mjs --methode devtools --ziel _werkstatt/ausbau/protokolle/FA-SEO-03B --roh _werkstatt/ausbau/protokolle/roh/FA-SEO-03B --marke abnahme-devtools --laeufe 3 --vorher _werkstatt/ausbau/protokolle/FA-SEO-03B/leistung-stand-devtools-2026-11-16_17-08-41.json
+_werkstatt/ausbau/werkzeuge/sicher.sh --json -- node _werkstatt/ausbau/protokolle/FA-SEO-03B/experimente/gewicht.mjs http://localhost:3000 _werkstatt/ausbau/protokolle/FA-SEO-03B/gewicht-abnahme.json
 ```
+
+`gewicht-abnahme.json` lässt sich danach mit `gewicht-stand.json` und `gewicht-nachher.json` vergleichen.
 
 Erwartung für `gewicht.mjs`:
 - Shop 15 Skripte und rund 221 KB JS gz.
@@ -311,10 +337,49 @@ Die Stand-Messung (Port 3200) lief unter Last. Für einen sauberen Vergleich sol
 5. **OFFENE FRAGE (Orchestrator): Abnahme der Trennung `rubrik.ts`.**
    - Das ist kein „Nachladen“ im Wortlaut der Schreibrechte, sondern das Entfernen eines unnötigen Imports. Berührt sind `seiten-daten.tsx` und `fahrzeug-anfrage/seiten.tsx`.
    - Wenn das nicht abgedeckt ist: Die Änderung lässt sich mit den drei Dateien und dem Test vollständig zurücknehmen, ohne dass die Konfigurator-Änderung daran hängt.
+   - Bitte ausdrücklich entscheiden und in ENTSCHEIDUNGEN festhalten: Freigabe nachträglich erteilen, oder `rubrik.ts`, `rubrik.test.ts` und die Importzeilen in `seiten-daten.tsx` (Zeile 2) und `seiten.tsx` (Zeilen 19 und 22 bis 25) zurücknehmen.
+6. **OFFENE FRAGE (Technik, gemeinsamer Baustein): Einstiegsseiten ohne Formular-Bündel.**
+   - Befund siehe Hebel 4, „Übersehen und nachgetragen“.
+   - Vorschlag: `EinstiegSeite`, `EinstiegAbschnitt`, `RubrikPausiertHinweis`, `UnterlagenAusRegel`, `seitenMetadata`, `robotsNachStand` und `robotsFuer` in ein Servermodul ohne `./formular` verschieben, zum Beispiel `fahrzeug-anfrage/einstieg.tsx`. `seiten.tsx` gibt sie wie bei `rubrik.ts` unverändert weiter, sodass alle Importe weiter gehen; die fünf Einstiegsseiten importieren dann aus `./einstieg`. Test nach dem Muster von `rubrik.test.ts`: `einstieg.tsx` importiert `./formular` nicht, `./seiten` gibt dieselben Objekte weiter.
+   - Danach messen: `gewicht.mjs` um `/e-scooter` und `/motorradschluessel` ergänzen (oder dieselbe Zählung von Skripten und JS gz) und gegen den Stand vergleichen.
+   - Voraussetzung: Schreibrecht für `fahrzeug-anfrage/seiten.tsx` und die fünf Seiten, also nach derselben Entscheidung wie OFFENE FRAGE 5 oder als eigenes Paket.
 
 ## FÜR MENSCHEN
 
 - **Gestaltung:** Sollen Plex Mono 500 und 600 auf einen Schnitt zusammengelegt werden? Das spart rund 15 KB je Seite, ändert aber das Schriftbild (OFFENE FRAGE 1). Vorschlag: nein.
 - **Inhaber oder Technik:** Welche Browser die Seite mindestens tragen muss. Vorschlag: die Vorgabe von Next, also Geräte etwa ab 2023 (OFFENE FRAGE 2).
+
+## Nachbesserung
+
+Fünf Befunde aus der Gegenprüfung, je am Code geprüft. Am Quelltext ist nichts geändert; geändert ist nur dieser Bericht.
+
+1. **Einstiegsseiten laden das Formular mit (e-scooter, seniorenmobile, fahrradschluessel, roller-und-kleinstfahrzeuge je `page.tsx` Z. 4, motorradschluessel Z. 6): zutreffend, im Bericht behoben.** Die Importe und `import { FahrzeugAnfrageFormular } from './formular'` in `seiten.tsx` Z. 18 sind so vorhanden, `EinstiegSeite` (ab Z. 207) zeigt nur Links. Nachgetragen in Hebel 4 und als OFFENE FRAGE 6 mit Vorschlag `fahrzeug-anfrage/einstieg.tsx` und Messauftrag; nicht gebaut, weil Seiten und Einstiegsbausteine außerhalb der Schreibrechte liegen.
+2. **`src/app/sitemap.ts` Z. 28 liest `KLASSE_RUBRIK` aus `./seiten`: zutreffend, als Hinweis vermerkt.** Die Sitemap liegt außerhalb meiner Schreibrechte; der Hinweis mit Vorschlag (Import auf `@/components/fahrzeug-anfrage/rubrik`, Prüfung in `rubrik.test.ts` ergänzen) steht unter GEMEINSAME DATEIEN. Einen Test, der die Sitemap schon jetzt prüft, habe ich nicht ergänzt, weil er ohne die Umstellung rot wäre.
+3. **Nachmessbefehl für `gewicht.mjs` ohne Datenweiche: zutreffend, behoben.** Der Befehl läuft jetzt über `sicher.sh --json --`.
+4. **`seiten-daten.tsx`, `seiten.tsx` und `rubrik.ts` außerhalb des Wortlauts der Schreibrechte: zutreffend, war offengelegt; Bitte um Entscheidung ergänzt.** OFFENE FRAGE 5 nennt jetzt ausdrücklich beide Wege (nachträgliche Freigabe oder Rücknahme von `rubrik.ts`, `rubrik.test.ts` und den Importzeilen) und bittet um einen Eintrag in ENTSCHEIDUNGEN. Die Entscheidung selbst liegt beim Orchestrator.
+5. **Nachmessbefehl ohne Datenweiche und ohne Ausgabedatei: zutreffend, behoben.** Zusammen mit Befund 3: Der Befehl schreibt jetzt `protokolle/FA-SEO-03B/gewicht-abnahme.json`, vergleichbar mit `gewicht-stand.json` und `gewicht-nachher.json`.
+
+Prüfungen nach der Nachbesserung im Arbeitsbaum über die Datenweiche:
+- `sicher.sh --json -- npx vitest run`: 265 Testdateien, 4.131 Tests, alle bestanden (Exit 0; die Zahl ist gegenüber dem ersten Lauf durch Tests anderer Pakete gestiegen).
+- `sicher.sh --json -- npm run typecheck`: Exit 0.
+- `sicher.sh --json -- npm run lint`: Exit 0.
+
+## Abnahme durch den Orchestrator (16.11.2026)
+
+Prüfkette (`bash _werkstatt/ausbau/werkzeuge/abnahme.sh FA-PLATTFORM-01C`, beide Pakete der Welle gemeinsam im Arbeitsbaum, nach allen Eingriffen des Orchestrators): Typprüfung grün, Lint grün, Unit 4145 von 4145, Datenbanktests 183 von 183, Build 181 von 181 Seiten. Onpage-Messung am neu gestarteten Prüfserver: 137 Seiten, Median 100, kein roter und kein gelber Befund. `reste.mjs` über alle vier Quellen: nur die zehn bekannten Platzhalter in `src/lib/pdf/partnervertrag.ts` (MA-29). Sichtproben: Ortsseiten 24 von 24, Menü und Schrift 19 von 19; Schrift der Zeichnungen und Suchlauf nach überlaufendem Text über alle Seiten bei vier Breiten ohne neuen Fund.
+
+Entschieden (A-071): Die Trennung über `rubrik.ts` ist freigegeben (OFFENE FRAGE 5); sie entfernt nur einen unnötigen Import und ist der größte belegte Hebel. OFFENE FRAGE 6 (Einstiegsseiten) und der Hinweis zur Sitemap sind vom Orchestrator gebaut:
+- Neu `src/components/fahrzeug-anfrage/einstieg.tsx`: Einstiegsseite, Hinweise, Unterlagenliste und Metadaten ohne das Formular (Wort für Wort aus `seiten.tsx` verschoben). `seiten.tsx` gibt alles unverändert weiter und behält nur die Bausteine mit Formular. Die Seiten `/e-scooter`, `/seniorenmobile`, `/fahrradschluessel`, `/roller-und-kleinstfahrzeuge` und `/motorradschluessel` lesen aus `./einstieg`, die Sitemap aus `./rubrik`. Test `einstieg.test.ts` (10 Fälle): kein Client-Baustein in `einstieg.tsx` und `rubrik.ts`, die fünf Seiten und die Sitemap lesen aus den richtigen Modulen, `seiten.tsx` gibt dieselben Objekte weiter.
+- Die Messung fand außerdem eine Verschlechterung durch das gleichzeitige Paket FA-PLATTFORM-01C (Partnerlogik im Bündel des Assistenten); behoben mit `src/lib/auftragsweg-partner.ts`, siehe dort.
+
+Nachmessung des Orchestrators auf ruhiger Maschine, Stand davor (Messstand Port 3200, Commit 8939397) gegen den Build dieser Abnahme (Port 3000):
+- Lastunabhängig (`experimente/gewicht.mjs`, Skripte im HTML und JavaScript komprimiert; Protokolle `gewicht-abnahme-stand.json` und `gewicht-abnahme.json`): Shop 20 auf 15 Skripte und 281,0 auf 220,7 KB; Konfigurator 21 auf 17 und 296,2 auf 252,9 KB; Assistent 21 auf 18 und 300,8 auf 277,2 KB; Kontakt 20 auf 19 und 284,0 auf 267,2 KB. Startseite, Autoschlüssel, Schlüssel nach Code, Ortsseite und Ratgeber unverändert. Dazu die Seiten, die nicht in den neun Ansichten stehen: `/e-scooter`, `/seniorenmobile`, `/fahrradschluessel`, `/roller-und-kleinstfahrzeuge`, `/autoschluessel/marken` und `/ratgeber` je 20 auf 15 Skripte und 281,0 auf 220,7 KB; `/motorradschluessel` 19 auf 14 und 280,2 auf 211,2 KB.
+- Lighthouse Maßstab A, Median aus drei Läufen (Protokolle `leistung-abnahme-stand-…` und `leistung-abnahme-…`): Shop 90 auf 97 (LCP 3,6 auf 2,6 s), Konfigurator 87 auf 90 (LCP 3,8 auf 3,5 s), Kontakt 88 und 88, Assistent 88 und 85; die unveränderten Seiten schwanken um bis zu drei Punkte (Startseite 95 und 92, Ortsseite 96 und 93), das ist die Streuung der Messung. Assistent mit je zweimal fünf Läufen im Wechsel nachgemessen: 84 und 84 vorher, 85 und 86 nachher, also kein Rückschritt. CLS überall 0. Attrappen (G5): nur der Formularschutz beim Laden auf Assistent und Kontakt.
+- Bildvergleich (`experimente/bildvergleich.mjs`): alle 18 Bilder der neun Ansichten bei 412 und 1280 px ohne ein abweichendes Pixel, gleicher Text, gleiche Zahl der Elemente. Eigener Vergleich für zehn weitere Seiten (die fünf Einstiegsseiten, zwei Anfrageseiten, Marken, Shop, Ortsseite) bei 412 und 1280 px: 20 von 20 Bildern bytegleich.
+- Formulare nach der Trennung (Produktions-Build, nichts abgesendet): Anfrage E-Scooter, Motorrad, Roller, „Fahrzeug nicht gefunden“, Autoschlüssel-Assistent, Zylinder-Konfigurator und Kontakt laden, wechseln mit erfundenen Angaben den Schritt und melden keine Konsolenfehler, bei 390 und 1280 px.
+
+Stand von FA-25-13 und FA-25-15 nach diesem Paket: Leistung mobil 85 bis 97; unter 90 liegen noch Autoschlüssel (89), Assistent (85) und Kontakt (88). Die verbleibenden belegten Hebel stehen als Folgepaket FA-SEO-03C im Plan (Foto-Upload im Assistenten nachladen; Abschnitte der langen Autoschlüssel-Seite unterhalb des ersten Bildschirms später zeichnen lassen). Das Einbetten des CSS bleibt (ohne wäre der Text im gedrosselten Browser 0,6 bis 0,7 s später da), die Schriften bleiben (jede Änderung wäre sichtbar), der Altbrowser-Code kommt aus Next selbst.
+
+Für Menschen (MA-59): Welche Browser muss die Seite mindestens tragen? Vorschlag: die Vorgabe von Next (Geräte etwa ab 2023).
 
 === ENDE FA-SEO-03B · BEREIT ZUR RÜCKGABE ===

@@ -1,27 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import {
-  EIGENBEREICH_STANDARD,
-  auftragswegVon,
-  auftragswegZeilen,
-  faelligZeilen,
-  imEigenbereich,
-  istPartnerAnfrage,
-  partnerFreigabeZahlbar,
-  partnerwegAktiv,
-  plzMusterAusText,
-  plzPasst,
-  restbetragCents,
-  restOffen,
-  standortText,
-  terminortZeile,
-  terminstandorte,
-  wegFuerStandort,
-  zahlungsPlan,
-  zustimmungNeuNoetig,
-  zustimmungsSchluessel,
-  type PartnerFuerWeg,
-} from './auftragsweg';
+import { EIGENBEREICH_STANDARD, auftragswegVon, auftragswegZeilen, faelligZeilen, imEigenbereich, istPartnerAnfrage, partnerFreigabeZahlbar, partnerwegAktiv, plzMusterAusText, plzPasst, restbetragCents, restOffen, standortText, terminortZeile, wegFuerStandort, zahlungsPlan, zustimmungNeuNoetig, zustimmungsSchluessel } from './auftragsweg';
+import { terminstandorte, type PartnerFuerWeg } from './auftragsweg-partner';
 import { ausserhalbDerRegion, beimKundenHinweis, buchungsOrt } from './terminort';
 import type { BusinessRecord, PriceQuote } from './types';
 

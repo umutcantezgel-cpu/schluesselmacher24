@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { terminstandorte } from '../auftragsweg';
+import { terminstandorte } from '../auftragsweg-partner';
 
 import { AUFTRAGSART_SAMMELWERT, auftragsartFuerLeistung, auftragsartFuerVorgang } from './leistungen';
 import {

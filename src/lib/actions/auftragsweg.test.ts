@@ -49,9 +49,9 @@ vi.mock('@/lib/data', () => {
   };
 });
 
-// Partnerbetriebe und Schalter aus dem Test; die Ermittlung selbst ist die echte (src/lib/auftragsweg.ts).
+// Partnerbetriebe und Schalter aus dem Test; die Ermittlung selbst ist die echte (src/lib/auftragsweg-partner.ts).
 vi.mock('@/lib/partner/partnerweg-daten', async () => {
-  const { terminstandorte } = await import('@/lib/auftragsweg');
+  const { terminstandorte } = await import('@/lib/auftragsweg-partner');
   return {
     partnerFuerAuftragsweg: async () => (partner.aktiv ? partner.liste : []),
     standorteErmitteln: async (eingabe: { postleitzahl: string; land?: string; leistung?: string }) =>

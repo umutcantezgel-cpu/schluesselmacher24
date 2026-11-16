@@ -1,13 +1,7 @@
 import { APIError, type CollectionBeforeChangeHook, type FieldHook } from 'payload';
 
-import {
-  AUFTRAGSWEG_LABEL,
-  istAuftragsweg,
-  partnerFuerWegAusBetrieb,
-  passendePartner,
-  restbetragCents,
-  type PartnerFuerWeg,
-} from '../../lib/auftragsweg';
+import { AUFTRAGSWEG_LABEL, istAuftragsweg, restbetragCents } from '../../lib/auftragsweg';
+import { partnerFuerWegAusBetrieb, passendePartner, type PartnerFuerWeg } from '../../lib/auftragsweg-partner';
 import { abdeckungsAuskunft } from '../../lib/orte/abdeckung';
 import { ortsstammIndexLesen } from '../../lib/orte/dateien';
 import { auftragsartFuerVorgang } from '../../lib/partner/leistungen';

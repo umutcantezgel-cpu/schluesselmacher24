@@ -3,7 +3,7 @@ import path from 'node:path';
 
 import { beforeAll, describe, expect, it } from 'vitest';
 
-import { passendePartner, terminstandorte, type PartnerFuerWeg } from '../auftragsweg';
+import { passendePartner, terminstandorte, type PartnerFuerWeg } from '../auftragsweg-partner';
 import { AUFTRAGSART_SAMMELWERT } from '../partner/leistungen';
 import { deckendePartnerMitGrund, type PartnerFuerRegion } from '../partner/region';
 import type { CityPage } from '../types';

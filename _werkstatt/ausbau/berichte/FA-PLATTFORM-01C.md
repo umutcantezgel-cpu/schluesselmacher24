@@ -198,4 +198,18 @@ Prüfungen danach, alle über die Datenweiche:
 - Datenbanktests (`--pg`): 30 Dateien, 183 von 183 grün
 - Kein Build (baut der Orchestrator bei der Abnahme).
 
+## Abnahme durch den Orchestrator (16.11.2026)
+
+Prüfkette (`bash _werkstatt/ausbau/werkzeuge/abnahme.sh FA-PLATTFORM-01C`, beide Pakete der Welle gemeinsam im Arbeitsbaum, nach allen Eingriffen des Orchestrators): Typprüfung grün, Lint grün, Unit 4145 von 4145, Datenbanktests 183 von 183, Build 181 von 181 Seiten. Onpage-Messung am neu gestarteten Prüfserver: 137 Seiten, Median 100, kein roter und kein gelber Befund. `reste.mjs` über alle vier Quellen: nur die zehn bekannten Platzhalter in `src/lib/pdf/partnervertrag.ts` (MA-29). Sichtproben: Ortsseiten 24 von 24, Menü und Schrift 19 von 19; Schrift der Zeichnungen und Suchlauf nach überlaufendem Text über alle Seiten bei vier Breiten ohne neuen Fund.
+
+Verlauf: Umsetzung, zwei Gegenprüfer, erste Nachbesserung. Die Gegenprüfung fand rot, dass der selbst angegebene Umkreis aus der Bewerbung (bis 300 km) ohne Bestätigung des Teams als Abdeckung gegolten hätte, auch für Ortsseiten und den öffentlichen Partnersatz. Entscheidung A-070, zweite Nachbesserung: Umkreis und Region zählen erst mit erledigtem Punkt „Region und Radius“ der Prüfliste; der Partnerweg für Kunden rechnet mit derselben Definition. Eine eigene Gegenprüfung der zweiten Nachbesserung mit zwei Prüfern (Workflow `fa-nachpruefung`) fand keinen roten und sieben gelbe Befunde (Lücken in Tests); die dritte Nachbesserung hat sie geschlossen, mit Gegenproben (ohne `plz` oder `pruefliste.region` im `select` werden die Tests rot).
+
+Vom Orchestrator in der Abnahme gefunden und behoben:
+- Die Nachmessung des Skript-Gewichts (für FA-SEO-03B) zeigte, dass dieses Paket rund 20 KB Partnerlogik in das Skript-Bündel des Assistenten gezogen hatte: `src/lib/auftragsweg.ts` laden auch Bausteine im Browser (Assistent, Preisanzeige, Bestätigung), und seit diesem Paket importierte die Datei die Abdeckungsregel samt Vermittlung. Die Partnerlogik liegt jetzt in `src/lib/auftragsweg-partner.ts` (`PartnerFuerWeg`, `PartnerbetriebFuerWeg`, `partnerFuerWegAusBetrieb`, `passendePartner`, `StandortEingabe`, `terminstandorte`, Wort für Wort verschoben), das nur der Server lädt; `auftragsweg.ts` importiert weder dieses Modul noch `partner/region`, `partner/vermittlung` oder `partner/leistungen`. Alle Aufrufer sind umgestellt (`partnerweg-daten.ts`, Hook der Vorschlagsliste, `orte/stamm.ts`, Tests). Neuer Test `src/lib/auftragsweg-grenze.test.ts` (4 Tests): keine verbotenen Importe, die verschobenen Namen werden nicht weitergegeben, kein Baustein mit „use client“ importiert das Server-Modul. Nachgemessen am Build: Im Bündel des Assistenten steht keine Partnerlogik mehr (auch die Namen der neun Partnerleistungen nicht, die dort schon vor diesem Paket lagen); der Assistent lädt 18 statt 21 Skripte.
+- MA-54 an die neue Regel angepasst (Punkt 12).
+
+Nicht im Browser gesehen: die Vorschlagsliste am Vorgang mit Gründen und die Hinweistexte am Partnerbetrieb (ohne Datenbank kein Admin am Prüfserver; belegt über Unit- und Datenbanktests mit erfundenen Betrieben), der Partnerweg für Kunden (Schalter aus). Die Formulare der Kundenwege laden und wechseln den Schritt ohne Konsolenfehler (Probe mit 14 Fällen, siehe FA-SEO-03B).
+
+Offen bleibt: Vertragsentwurf nennt das Einsatzgebiet nur mit Postleitzahlen und Umkreis (wartet auf den Anwalt, MA-29); Hinweis am einzelnen Betrieb, wenn seine Postleitzahl nicht im Stamm steht; Region für Gemeinden ohne Postleitzahl (Wesertal, Oberzent); Vorbelegung des Umkreises aus der Bewerbung (MA-54 Punkt 12); Partner mit Modell A als Leistungsweg (MA-58).
+
 === ENDE FA-PLATTFORM-01C · BEREIT ZUR RÜCKGABE ===

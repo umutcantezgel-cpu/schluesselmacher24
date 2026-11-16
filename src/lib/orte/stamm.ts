@@ -2,7 +2,7 @@ import 'server-only';
 
 import { getSettings } from '@/lib/data';
 import { payloadInstanz } from '@/lib/data/payload-adapter';
-import { partnerFuerWegAusBetrieb } from '@/lib/auftragsweg';
+import { partnerFuerWegAusBetrieb } from '@/lib/auftragsweg-partner';
 import type { PartnerFuerRegion } from '@/lib/partner/region';
 import type { CityPage } from '@/lib/types';
 import { mitDatenbank } from '@/lib/umgebung';

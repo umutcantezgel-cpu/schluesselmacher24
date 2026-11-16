@@ -21,7 +21,7 @@
  * Postfach), trifft weder Umkreis noch Region; ein Muster trifft weiter.
  *
  * Aufrufer: `deckendePartner` (Abdeckung für das Team, Ortsseiten, Postleitzahl-Abfrage; Abrechnungsmodell egal)
- * und `passendePartner` in src/lib/auftragsweg.ts (Partnerweg für Kunden, zusätzlich nur Modell B). Beide
+ * und `passendePartner` in src/lib/auftragsweg-partner.ts (Partnerweg für Kunden, zusätzlich nur Modell B). Beide
  * rechnen über `abdeckungsGruende`.
  *
  * Reine Funktionen, nur relative Importe. Die Postleitzahlen-Muster kommen aus ./postleitzahl-muster.ts; einen

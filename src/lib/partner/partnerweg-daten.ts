@@ -1,6 +1,7 @@
 import 'server-only';
 
-import { partnerFuerWegAusBetrieb, partnerwegAktiv, terminstandorte, type PartnerFuerWeg, type StandortErmittlung } from '@/lib/auftragsweg';
+import { partnerwegAktiv, type StandortErmittlung } from '@/lib/auftragsweg';
+import { partnerFuerWegAusBetrieb, terminstandorte, type PartnerFuerWeg } from '@/lib/auftragsweg-partner';
 import { getSettings } from '@/lib/data';
 import { payloadInstanz } from '@/lib/data/payload-adapter';
 import { abdeckungsAuskunft } from '@/lib/orte/abdeckung';

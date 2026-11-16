@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
-import { RubrikPausiertHinweis, UnterlagenAusRegel, robotsNachStand } from '@/components/fahrzeug-anfrage/seiten';
+import { RubrikPausiertHinweis, UnterlagenAusRegel, robotsNachStand } from '@/components/fahrzeug-anfrage/einstieg';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { ButtonLink } from '@/components/ui/button';
 import { getPageContent, getRubrik } from '@/lib/data';

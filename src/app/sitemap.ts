@@ -25,7 +25,7 @@ import {
 import { fahrzeugteile } from '@/lib/data/fahrzeugteile';
 import { artikelDerKategorie, artikelListePfad, artikelListenKategorien, ersteArtikelKategorie } from '@/lib/data/shop';
 import { markeIndexierbar, modellIndexierbar } from '@/lib/fahrzeug-texte';
-import { KLASSE_RUBRIK } from '@/components/fahrzeug-anfrage/seiten';
+import { KLASSE_RUBRIK } from '@/components/fahrzeug-anfrage/rubrik';
 import { ANFRAGE_FORMULAR, FORMULAR_KLASSEN, type FormularKlasse } from '@/lib/fahrzeuge/anfrage-klassen';
 import { GEWINNUNG_SEITEN } from '@/lib/partner/gewinnung';
 import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
