@@ -47,7 +47,7 @@ export function ZylinderMassLive({ form, aussen, innen, name, schmal = false, cl
         {!schmal && <ZylinderMassGrafik params={params} title={titel} className="hidden sm:block" />}
       </div>
       <figcaption className="mt-2 text-balance font-mono text-caption uppercase tracking-label text-foreground-muted">
-        Schematisch – maßgeblich sind die gewählten Maße
+        Schematisch. Maßgeblich sind die gewählten Maße
       </figcaption>
     </figure>
   );
