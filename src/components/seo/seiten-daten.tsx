@@ -1,5 +1,5 @@
 import { ServiceArticle, type ServiceArticleProps } from '@/components/autoschluessel/service-article';
-import { RUBRIK_PAUSIERT_LEAD, bereichsKrume, rubrikLive } from '@/components/fahrzeug-anfrage/seiten';
+import { RUBRIK_PAUSIERT_LEAD, bereichsKrume, rubrikLive } from '@/components/fahrzeug-anfrage/rubrik';
 import { getPageContent } from '@/lib/data';
 import { ANFRAGE_FORMULAR, KLASSEN_SEITEN, type FormularKlasse } from '@/lib/fahrzeuge/anfrage-klassen';
 

@@ -11,6 +11,10 @@
  *   (c) Region: ein eingetragener Ort (Gemeindeschlüssel, acht Ziffern) oder Landkreis (Kreisschlüssel, fünf
  *       Ziffern) ist eine Gemeinde oder ein Kreis der gesuchten Postleitzahl. Ohne passenden Schlüssel kein
  *       Treffer; Namen werden nicht verglichen (R4).
+ * Regel „Region geprüft“ (A-070): (b) und (c) zählen nur, wenn am Betrieb der Punkt „Region und Radius“ der
+ * Prüfliste erledigt ist (`regionGeprueft`, Haken, Datum und Prüfer). Vorgabe des Inhabers: „Nach Prüfung und
+ * Vor Ort Qualitätskontrolle kann der Partner einer Region zugeordnet werden.“ Der Umkreis ist aus der Bewerbung
+ * vorbelegt (Selbstangabe) und wirkt erst mit der Bestätigung des Teams. Die Muster (a) zählen immer.
  * Umkreis und Region brauchen Daten aus dem Ortsstamm. Sie kommen als Auskunft (`AbdeckungsAuskunft`) herein,
  * auf dem Server aus `abdeckungsAuskunft` (src/lib/orte/abdeckung.ts). Ohne Auskunft zählen nur die
  * Postleitzahlen-Muster, wie vor FA-PLATTFORM-01C. Eine Postleitzahl, die der Stamm nicht kennt (Großempfänger,
@@ -20,14 +24,15 @@
  * und `passendePartner` in src/lib/auftragsweg.ts (Partnerweg für Kunden, zusätzlich nur Modell B). Beide
  * rechnen über `abdeckungsGruende`.
  *
- * Reine Funktionen, nur relative Importe. Mit src/lib/auftragsweg.ts besteht ein gegenseitiger Import; keine der
- * beiden Dateien benutzt die andere beim Laden, nur beim Aufruf.
+ * Reine Funktionen, nur relative Importe. Die Postleitzahlen-Muster kommen aus ./postleitzahl-muster.ts; einen
+ * gegenseitigen Import mit src/lib/auftragsweg.ts gibt es nicht mehr.
  */
 
-import { plzMusterAusText, plzPasst } from '../auftragsweg';
+import { plzMusterAusText, plzPasst } from './postleitzahl-muster';
 
 import type { BewerbungStatus } from './bewerbung';
 import { AUFTRAGSART_OPTIONEN, auftragsartFuerLeistung } from './leistungen';
+import { punktErledigt, type PrueflistePunkt } from './pruefliste';
 import { darfVermitteln } from './vermittlung';
 
 const AUFTRAGSARTEN = new Set(AUFTRAGSART_OPTIONEN.map((o) => o.value));
@@ -52,6 +57,16 @@ export interface PartnerFuerRegion {
   radiusKm?: number | null;
   /** Orte und Landkreise des Einsatzgebiets. */
   regionen?: readonly RegionEintrag[] | null;
+  /**
+   * Punkt „Region und Radius“ der Prüfliste erledigt (Haken, Datum, Prüfer; `regionGeprueftAus`). Nur dann zählen
+   * Umkreis und Orte oder Landkreise; fehlt der Wert oder ist er nicht `true`, zählen nur die Postleitzahlen.
+   */
+  regionGeprueft?: boolean | null;
+}
+
+/** Ist der Punkt „Region und Radius“ der Prüfliste eines gespeicherten Betriebs erledigt? */
+export function regionGeprueftAus(pruefliste: { region?: PrueflistePunkt | null } | null | undefined): boolean {
+  return punktErledigt(pruefliste?.region);
 }
 
 /** Gemeinden und Kreise einer Postleitzahl laut Ortsstamm. */
@@ -114,7 +129,8 @@ export function abdeckungsGruende(
   // (a) Postleitzahlen-Muster (Bestand).
   const treffer = musterVon(p).find((m) => plzPasst(plz, [m]));
   if (treffer) gruende.push({ art: 'postleitzahl', muster: treffer });
-  if (!auskunft) return gruende;
+  // Umkreis und Region erst nach Prüfung durch das Team (Regel „Region geprüft“, A-070).
+  if (!auskunft || p.regionGeprueft !== true) return gruende;
 
   // (b) Umkreis um die Postleitzahl des Betriebs.
   const radius = typeof p.radiusKm === 'number' && Number.isFinite(p.radiusKm) ? p.radiusKm : 0;
@@ -177,11 +193,11 @@ export function deckendePartner<T extends PartnerFuerRegion>(
   return deckendePartnerMitGrund(postleitzahl, leistung, partner, auskunft).map((eintrag) => eintrag.partner);
 }
 
-/** Braucht die Abdeckung dieser Betriebe überhaupt den Ortsstamm (Umkreis oder Region mit Schlüssel)? */
+/** Braucht die Abdeckung dieser Betriebe überhaupt den Ortsstamm (geprüfter Umkreis oder geprüfte Region mit Schlüssel)? */
 export function brauchtOrtsstamm(partner: readonly PartnerFuerRegion[]): boolean {
   return partner.some(
     (p) =>
-      (typeof p.radiusKm === 'number' && p.radiusKm > 0 && Boolean(p.plz))
-      || (p.regionen ?? []).some((r) => typeof r?.schluessel === 'string' && r.schluessel.trim() !== ''),
+      p.regionGeprueft === true && ((typeof p.radiusKm === 'number' && p.radiusKm > 0 && Boolean(p.plz))
+      || (p.regionen ?? []).some((r) => typeof r?.schluessel === 'string' && r.schluessel.trim() !== '')),
   );
 }

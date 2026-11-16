@@ -8,7 +8,7 @@ import { Alert } from '@/components/ui/alert';
 import { ButtonLink } from '@/components/ui/button';
 import { Erreichbarkeit as ErreichbarkeitAnzeige } from '@/components/vertrauen/erreichbarkeit';
 import { jahrInBerlin } from '@/lib/berliner-zeit';
-import { getPageContent, getRubrik, getSettings } from '@/lib/data';
+import { getPageContent, getSettings } from '@/lib/data';
 import { erreichbarkeit } from '@/lib/erreichbarkeit';
 import { ANFRAGE_FORMULAR, KLASSEN_SEITEN, type FormularKlasse, type SeitenKopf } from '@/lib/fahrzeuge/anfrage-klassen';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -16,8 +16,13 @@ import { kontakt } from '@/lib/rechtliches/firma';
 import { telefonLink } from '@/lib/telefon';
 
 import { FahrzeugAnfrageFormular } from './formular';
+import { KLASSE_RUBRIK, RUBRIK_PAUSIERT_LEAD, bereichsKrume, rubrikLive } from './rubrik';
 import { vorbelegungAus } from './kern';
 import { pflichtListe, pflichtPunkte, pflichtTabelle } from './pflicht';
+
+/* Rubrik-Stand und Brotkrume liegen in ./rubrik (ohne Client-Baustein), damit Serverbausteine wie
+   `SeitenDaten` sie lesen können, ohne das Anfrageformular in das Bündel jeder Seite zu ziehen (FA-SEO-03B). */
+export { KLASSE_RUBRIK, RUBRIK_PAUSIERT_LEAD, bereichsKrume, rubrikLive };
 
 /* ==========================================================================
    Seiten der gemeinsamen Fahrzeugschlüssel-Anfrage (FA-KERN-02B)
@@ -31,35 +36,10 @@ export function robotsFuer(klasse: FormularKlasse): Pick<Metadata, 'robots'> {
   return ANFRAGE_FORMULAR[klasse].indexierbar ? {} : { robots: { index: false, follow: true } };
 }
 
-/**
- * Rubrik je Klasse (FA-SOFORT-05, wie in `src/lib/actions/records.ts`): Steht sie im Backend nicht auf „live“,
- * lehnt der Server die Anfrage ab. Die Seiten zeigen dann einen ruhigen Hinweis mit Telefon statt des
- * Formulars, stehen auf noindex und fehlen in der Sitemap (FA-KERN-05).
- */
-export const KLASSE_RUBRIK: Readonly<Record<FormularKlasse, string>> = {
-  motorrad: 'motorradschluessel',
-  roller: 'roller-und-kleinstfahrzeuge',
-  'e-scooter': 'e-scooter',
-  seniorenmobil: 'seniorenmobile',
-  fahrrad: 'fahrradschluessel',
-  'nicht-gefunden': 'autoschluessel',
-};
-
-/** Ist die Rubrik der Klasse live? Abgeschaltet, „später“ oder gelöscht heißt: nein. */
-export async function rubrikLive(klasse: FormularKlasse): Promise<boolean> {
-  return (await getRubrik(KLASSE_RUBRIK[klasse]))?.status === 'live';
-}
-
 /** Robots-Angabe nach Schalter und Rubrik: Ist die Rubrik nicht live, steht die Seite auf noindex. */
 export async function robotsNachStand(klasse: FormularKlasse): Promise<Pick<Metadata, 'robots'>> {
   return (await rubrikLive(klasse)) ? robotsFuer(klasse) : { robots: { index: false, follow: true } };
 }
-
-/**
- * Einleitung im Seitenkopf, solange die Rubrik nicht live ist: statt der Schritte des Formulars, das es dann
- * nicht gibt, ein neutraler Satz.
- */
-export const RUBRIK_PAUSIERT_LEAD = 'Diese Anfrage nehmen wir gerade nicht online an. Wir helfen Ihnen gern auf anderem Weg.';
 
 /** Ruhiger Hinweis statt des Formulars, solange die Rubrik nicht live ist; mit Telefon, wenn gepflegt. */
 export async function RubrikPausiertHinweis({ className }: { className?: string }) {
@@ -208,14 +188,6 @@ export function UnterlagenAusRegel({ klasse }: { klasse: FormularKlasse }) {
       </p>
     </div>
   );
-}
-
-/**
- * Erste Brotkrume nach der Startseite: Krafträder gehören wie das Motorrad zu „Autoschlüssel“. E-Scooter,
- * Seniorenmobil und Fahrradschloss stehen direkt unter der Startseite; „Autoschlüssel“ verwirrte dort.
- */
-export function bereichsKrume(klasse: FormularKlasse): Array<{ href: string; label: string }> {
-  return klasse === 'motorrad' || klasse === 'roller' || klasse === 'nicht-gefunden' ? [{ href: '/autoschluessel', label: 'Autoschlüssel' }] : [];
 }
 
 export interface EinstiegAbschnitt {

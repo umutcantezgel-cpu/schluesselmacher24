@@ -18,6 +18,7 @@ Stand 16.11.2026. Rolle Baumeister, Stufe 3. Kein Datenschema, keine Migration, 
 - `src/payload/hooks/auftragsweg.test.ts`: zwei erwartete Zeilen um den Grund ergänzt, ein neuer Test (Umkreis, Landkreis, unbekannte Postleitzahl, Partnerweg)
 - `src/payload/collections/Partnerbetriebe.ts` (nur Hinweistexte und ein Kommentar): Postleitzahlen, Umkreis (neue Beschreibung), Orte und Landkreise, Amtlicher Schlüssel
 - `src/lib/partner/abdeckung.db.test.ts` (neu): Datenbanktest der Vorschlagsliste mit einem Betrieb, der nur einen Umkreis hat
+- `src/payload-types.ts`: nur erzeugte Beschreibungen aus Partnerbetriebe.ts (`payload generate:types`), kein Schema. Liegt nicht in den Schreibrechten; der Orchestrator checkt die Datei bewusst mit diesem Paket ein.
 - `docs/betrieb/partner-pruefen.md`: Abschnitt 6 „Region zuordnen“ neu gefasst, Abschnitt 7 Punkt 1 nennt die Gründe
 - `_werkstatt/ausbau/berichte/FA-PLATTFORM-01C.md` (dieser Bericht)
 
@@ -97,11 +98,36 @@ Tests je Anforderung des Pakets:
 4. Gegenseitiger Import `auftragsweg.ts` ↔ `partner/region.ts` (siehe GEMEINSAME DATEIEN): Sollen `plzMusterAusText` und `plzPasst` in ein eigenes Modul, etwa `src/lib/postleitzahl.ts`, wandern? Ein späteres Paket mit Schreibrecht dafür könnte das tun. Heute funktioniert es, ist aber zerbrechlich, falls jemand beim Laden einer der beiden Dateien die andere benutzt.
 5. Ortsseiten von Gemeinden ohne Postleitzahl (Wesertal, Oberzent): Teil B rechnet „Partner deckt ab“ über die Postleitzahlen der Gemeinde. Ein Partner mit genau dieser Gemeinde oder ihrem Landkreis als Region deckt sie deshalb nicht ab. Ich habe das nicht geändert, weil das Paket die Abdeckung je Postleitzahl festlegt. Soll eine Region auch ohne Postleitzahl für die Ortsseite zählen?
 6. Aus Teil B (MA-58, weiter offen): Zählt ein Partner mit Abrechnungsmodell A als Leistungsweg einer Ortsseite? An der Abdeckung habe ich dafür nichts geändert.
+7. Vertragsentwurf (`src/lib/pdf/partnervertrag.ts`, `einsatzgebietText`, Platzhalter „Postleitzahlen und Umkreis“): Er nennt nur Postleitzahlen und „Umkreis N km“. Eingetragene Orte und Landkreise fehlen, obwohl sie jetzt zur Zuordnung führen; der Mittelpunkt (Postleitzahl des Betriebs, Luftlinie) fehlt; bei 0 steht „Umkreis 0 km“, obwohl 0 „kein Umkreis“ heißt. Vorschlag: Regionen ergänzen („Landkreis Lahn-Dill-Kreis“), den Umkreis als „Umkreis 20 km um 35576“ ausgeben und bei 0 weglassen. Rechtsentwurf (G9, R10): nur über ein Paket mit Freigabe des Inhabers bzw. Anwalts.
+8. Umkreis aus der Bewerbung: Der Einsatzradius der Bewerbung (Selbstangabe bis 300 km) wird über `partnerbetriebAusBewerbung` und `bewerbungEinsetzen` in `einsatzgebiet.radiusKm` übernommen und wirkt seit diesem Paket mit dem Freischalten. Soll er weiter vorbelegt werden, oder soll das Team den Umkreis selbst eintragen? (Änderung am Bewerbungsweg liegt außerhalb dieses Pakets.)
 
 ## FÜR MENSCHEN
 
 - Inhaber: Mit Umkreis und Landkreis kann ein Betrieb jetzt viel mehr Orte abdecken als mit wenigen Postleitzahlen. Ein Betrieb mit „Lahn-Dill-Kreis“ deckt jede Postleitzahl des Kreises ab, ein Umkreis von 100 km einen großen Teil Hessens. Das wirkt auf die Vorschlagsliste, auf „Partner deckt ab“ an Ortsseiten und damit auf deren Indexierbarkeit und den Satz „In Ihrer Region arbeitet ein geprüfter Autoschlüssel-Partner.“. Bitte bestätigen, dass Umkreis und Landkreis so weit gelten sollen. Der Umkreis ist Luftlinie, keine Fahrstrecke.
 - Orchestrator: OFFENE FRAGE 1 (Partnerweg-Daten, mit fertigem Vorschlag), 2 (`orte-pflegen.md`) und 4 (Modul für Postleitzahlen) einem Paket zuweisen.
+- Inhaber: Soll der Einsatzradius aus der Bewerbung weiter als Umkreis vorbelegt werden (OFFENE FRAGE 8)?
+- Team/Inhaber vor dem Einspielen: Die Umkreise der schon freigeschalteten Betriebe prüfen. Sie stammen meist aus der Bewerbung (Selbstangabe bis 300 km) und gelten nach diesem Paket sofort für Vorschlagsliste, Postleitzahl-Abfrage und Ortsseiten.
+- Orchestrator: MA-54 anpassen. Punkt (4) „Postleitzahlen, Umkreis oder Orte/Landkreise mit Schlüssel pflegen“; Folgensatz „Ohne Postleitzahl, Umkreis oder Region bekommt ein Partner keine Anfragen vorgeschlagen.“; neuer Punkt: Reichweite von Umkreis und Landkreis bestätigen (Luftlinie, keine Fahrstrecke), Umkreis aus der Bewerbung weiter vorbelegen?
+- Orchestrator: `docs/betrieb/orte-pflegen.md` Abschnitt 3 Punkt 1 vor dem Abschluss mit dem Vorschlag aus OFFENE FRAGE 2 ersetzen.
 - Team: Am Partnerbetrieb die Postleitzahl des Betriebs pflegen, wenn ein Umkreis gelten soll. Bei Orten und Landkreisen den amtlichen Schlüssel eintragen; ein Name allein wirkt nicht.
+
+## Nachbesserung
+
+Stand 16.11.2026, nach zwei Gegenprüfungen. Jeder Befund am Code geprüft.
+
+1. [rot] partner-pruefen.md:73, Partnerweg in „dieselbe Regel“: **behoben.** Zutreffend: `partnerweg-daten.ts:26–34` liest kein `plz`, bildet nur Muster ab, `standorteErmitteln` gibt keine `abdeckung` mit. Der Satz nennt jetzt nur Vorschlagsliste, Postleitzahl-Abfrage und Ortsseiten und sagt, dass der Partnerweg für Kunden bis auf Weiteres nur mit den eingetragenen Postleitzahlen rechnet und die Vorschlagsliste im Partnerweg deshalb mehr Betriebe zeigen kann. Umstellung von `partnerweg-daten.ts` bleibt OFFENE FRAGE 1 (eigenes Paket).
+2. [rot] Umkreis aus der Bewerbung: **behoben, soweit in den Schreibrechten.** Zutreffend (`bewerbungsformular.ts:301–302`, `partner-bewerbung.ts` übernimmt in leere Felder). partner-pruefen.md Abschnitt 6 und der Hinweis an `radiusKm` (Partnerbetriebe.ts) sagen jetzt: „Der Umkreis kommt aus der Bewerbung. Prüfen Sie ihn vor dem Freischalten; er gilt ab dann.“, die Anleitung zusätzlich, dass das für schon freigeschaltete Betriebe gilt. Neu: OFFENE FRAGE 8 und zwei Punkte unter FÜR MENSCHEN (Bestandsumkreise vor dem Einspielen prüfen; Inhaber: weiter vorbelegen?). `src/payload-types.ts` neu erzeugt.
+3. [rot] orte-pflegen.md:40 veraltet: **zutreffend, in diesem Paket nicht behebbar.** Die Datei liegt außerhalb der Schreibrechte (die Nachbesserung hat dieselben). Der fertige Wortlaut steht in OFFENE FRAGE 2; unter FÜR MENSCHEN ist der Orchestrator gebeten, ihn vor dem Abschluss einzusetzen.
+4. [rot] MENSCHEN.md MA-54: **zutreffend, Sache des Orchestrators.** Steuerdatei außerhalb der Schreibrechte; der Wortlaut für Punkt (4), den Folgensatz und den neuen Punkt steht unter FÜR MENSCHEN.
+5. [gelb] partnervertrag.ts, Einsatzgebiet im Vertragsentwurf: **zutreffend, als OFFENE FRAGE 7 aufgenommen** (Rechtsentwurf, G9/R10, außerhalb der Schreibrechte; `einsatzgebietText` Zeile 123 gibt bei 0 „Umkreis 0 km“ aus).
+6. [gelb] Beispiel 12,4 km erfunden: **behoben.** Jetzt das gemessene „Umkreis: 10,8 km von 35576 (bis 20 km)“ (35576 nach 35390, wie im Datenbanktest).
+7. [gelb] „Es reicht, wenn eines davon passt“ mehrdeutig: **behoben.** Jetzt: „Für die Postleitzahl reicht eines: eine seiner Postleitzahlen, sein Umkreis oder ein eingetragener Ort oder Landkreis, zu dem sie gehört.“ Leistung und Freischaltung bleiben Pflicht.
+8. [gelb] payload-types.ts fehlt im Bericht: **behoben.** Unter GEÄNDERTE DATEIEN mit Vermerk „nur erzeugte Beschreibungen, kein Schema“; Hinweis an den Orchestrator für den Commit.
+9. [rot] wie Befund 1 (zweiter Prüfer): **behoben** mit derselben Änderung.
+10. [gelb] wie Befund 8 (zweiter Prüfer): **behoben** mit derselben Änderung.
+
+Geändert in der Nachbesserung: `docs/betrieb/partner-pruefen.md`, `src/payload/collections/Partnerbetriebe.ts` (Hinweis an `radiusKm`), `src/payload-types.ts` (neu erzeugt mit `payload generate:types` über die Datenweiche, nur Kommentar), dieser Bericht.
+
+Prüfungen danach, alle über die Datenweiche: vitest 261 Dateien, 4102 von 4102 grün · typecheck grün · lint grün · Datenbanktests (`--pg`) 30 Dateien, 179 von 179 grün · build grün, 181 von 181 Seiten.
 
 === ENDE FA-PLATTFORM-01C · BEREIT ZUR RÜCKGABE ===
