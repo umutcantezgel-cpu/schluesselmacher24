@@ -97,6 +97,15 @@ export const SCHLUESSELARTEN: readonly { wert: Schluesselart; titel: string; sat
   { wert: 'elektronik', titel: 'Schlüssel mit Elektronik', satz: 'Zum Beispiel mit Transponder oder Funk, nicht für Fahrzeuge.' },
 ];
 
+/**
+ * Was das Einsendeformular anbietet. Mechanische Autoschlüssel erst, wenn der Server beim Absenden den
+ * Fahrzeugschein prüft (R13): `src/lib/actions/records.ts` muss dazu `einsendeVorgang` den Nachweis
+ * übergeben (Bericht FA-SHOP-03, Nachbesserung). Bis dahin lehnt der Server sie ohnehin ab.
+ */
+export const SCHLUESSELARTEN_IM_FORMULAR: readonly (typeof SCHLUESSELARTEN)[number][] = SCHLUESSELARTEN.filter(
+  (art) => art.wert !== 'auto-mechanisch',
+);
+
 export function istSchluesselart(wert: unknown): wert is Schluesselart {
   return SCHLUESSELARTEN.some((art) => art.wert === wert);
 }

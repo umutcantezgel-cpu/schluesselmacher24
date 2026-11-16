@@ -65,7 +65,14 @@ export interface EinsendePayload {
   originalEingesendet: true;
 }
 
-type Ergebnis = { ok: true; payload: EinsendePayload; summary: SummarySection[] } | { ok: false };
+/** `fehler`: Meldung für den Kunden, wenn er sie beheben kann (zum Beispiel der fehlende Fahrzeugschein). */
+type Ergebnis = { ok: true; payload: EinsendePayload; summary: SummarySection[] } | { ok: false; fehler?: string };
+
+/** Was der Server zum Berechtigungsnachweis einer Einsendung übergibt (R13). */
+export interface EinsendeNachweis {
+  uploads: readonly Pick<UploadRef, 'category' | 'storageKey' | 'uploadToken'>[];
+  ablageEingerichtet: boolean;
+}
 
 const ganz = (wert: unknown, von: number, bis: number): number | null =>
   typeof wert === 'number' && Number.isInteger(wert) && wert >= von && wert <= bis ? wert : null;
@@ -122,11 +129,19 @@ export function einsendeZusammenfassung(p: EinsendePayload, contact: ContactDeta
 /**
  * Prüft die Angaben aus dem Browser und baut daraus Payload und Zusammenfassung neu; nichts davon
  * wird ungeprüft übernommen. Ohne vollständige Rücksendeanschrift keine Einsendung.
+ *
+ * `varianten`: die Varianten aus den Einstellungen (`variantenAus(settings.sendIn)`); nur dann gelten
+ * „aktiv“ und „nur Sonderfall“ aus dem Admin auch auf dem Server. Die Startwerte sind nur die Vorgabe
+ * für Tests und ältere Aufrufer.
+ *
+ * `nachweis`: Uploads und Ablage-Stand. Ein Fahrzeugschlüssel wird nur mit Fahrzeugschein angenommen
+ * (R13); fehlt die Angabe, lehnt die Funktion ihn ab (sicher voreingestellt).
  */
 export function einsendeVorgang(
   roh: Record<string, unknown>,
   contact: ContactDetails,
   varianten: readonly EinsendeVariante[] = STANDARD_VARIANTEN,
+  nachweis?: EinsendeNachweis,
 ): Ergebnis {
   if (roh.quelle !== EINSENDE_QUELLE) return { ok: false };
   const originale = ganz(roh.originale, 1, MAX_ORIGINALE);
@@ -146,6 +161,11 @@ export function einsendeVorgang(
   // Sonderfall nur mit ausdrücklicher Bestätigung des Hinweises (A-050, Punkt 1).
   if (variante.nurSonderfall && !sonderfallBestaetigt) return { ok: false };
   if (!ruecksendeanschriftVollstaendig(contact)) return { ok: false };
+  // Berechtigungsnachweis für Fahrzeugschlüssel (R13, A-050 Punkt 3): ohne geprüften Fahrzeugschein keine Einsendung.
+  if (brauchtFahrzeugschein(schluesselart)) {
+    const fehlt = nachweis ? einsendeNachweisPruefen({ schluesselart }, nachweis.uploads, nachweis.ablageEingerichtet) : EINSENDUNG_FAHRZEUGSCHEIN_FEHLT;
+    if (fehlt) return { ok: false, fehler: fehlt };
+  }
   const payload: EinsendePayload = {
     quelle: EINSENDE_QUELLE,
     originale,
@@ -169,7 +189,8 @@ export const EINSENDUNG_FAHRZEUGSCHEIN_FEHLT =
 /**
  * Berechtigungsnachweis einer Einsendung (R13): Bei Fahrzeugschlüsseln gehört der Fahrzeugschein dazu.
  * Mit eingerichteter Dateiablage zählt nur eine hochgeladene Datei. Meldung oder `null`.
- * Der Server ruft diese Prüfung beim Absenden auf (records.ts, siehe Bericht FA-SHOP-03).
+ * `einsendeVorgang` ruft diese Prüfung auf, wenn der Aufrufer den Nachweis übergibt; ohne Nachweis lehnt
+ * sie Fahrzeugschlüssel ab.
  */
 export function einsendeNachweisPruefen(
   payload: Pick<EinsendePayload, 'schluesselart'> | Record<string, unknown>,
@@ -191,7 +212,7 @@ export function istEinsendung(vorgang: Pick<BusinessRecord, 'kind' | 'area'> & {
 export const EINSENDE_STATUS: Partial<Record<RecordStatus, { label: string; text: string }>> = {
   neu: {
     label: 'Angemeldet',
-    text: 'Wir erwarten Ihren Schlüssel. Bitte legen Sie den Begleitschein in den Umschlag.',
+    text: 'Wir erwarten Ihren Schlüssel. Bitte legen Sie den Begleitschein Ihrer Sendung bei.',
   },
   'in-pruefung': {
     label: 'Schlüssel eingegangen',

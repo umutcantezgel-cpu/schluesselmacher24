@@ -64,4 +64,12 @@ describe('Produktseite: Original höchstens zweimal (L-10)', () => {
     expect(text).toContain('Schlüssel nach Code bestellen');
     expect(text).toContain('Wir fertigen nur nach dem Code, den Sie hier eintragen.');
   });
+
+  // Das Info-Feld des Bestellformulars öffnet erst beim Klick und steht nicht im statischen Markup; es bekommt
+  // denselben Text über die Eigenschaft `fundstelle` (siehe page.tsx).
+  it('kein Satzrest „Erwartetes Format“ im sichtbaren Text der Seite (L-09)', async () => {
+    for (const stand of ['lieferbar', 'auf-anfrage', 'nicht-lieferbar'] as const) {
+      expect(await sichtbarerText(stand), stand).not.toContain('Erwartetes Format');
+    }
+  });
 });

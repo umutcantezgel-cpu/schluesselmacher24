@@ -135,14 +135,20 @@ describe('einsendeAngebot (A-050)', () => {
     const mit = einsendeAngebot({ ...E, labelAktiv: true }, true);
     expect(mit.kostenlos).toBe(true);
     const paket = mit.optionen.find((o) => o.art === 'dhl-paket')!;
-    expect(paket).toMatchObject({ label: true, summeCents: 0, portoText: 'Versandlabel von uns, das Porto zahlt SCHLÜSSELMACHER24' });
-    expect(paket.portoCents).toBeUndefined();
+    // Mit Label trägt der Kunde Porto und Aufpreis weiter; beides wird mit dem Auftrag berechnet (A-050 Punkt 4).
+    // Eine Übernahme des Portos durch den Betrieb behauptet die Seite nie (G9, R9).
+    expect(paket).toMatchObject({ label: true, portoCents: 769, summeCents: 769, portoText: `Versandlabel von uns, ${formatCents(769)} werden mit dem Auftrag berechnet` });
+    expect(paket.portoText).not.toMatch(/zahlt SCHLÜSSELMACHER24|kostenlos/);
     expect(mit.optionen.find((o) => o.art === 'einschreiben-einwurf')).toMatchObject({ label: false, portoCents: 415 });
-    // Mit Aufpreis wird er im Auftrag berechnet, nie „kostenlos“ genannt.
     const varianten = variantenAus(E).map((v) => (v.kennung === 'dhl-paket' ? { ...v, aufpreisCents: 500 } : v));
     const berechnet = einsendeAngebot({ ...E, labelAktiv: true, varianten }, true).optionen.find((o) => o.art === 'dhl-paket')!;
-    expect(berechnet.portoText).toBe(`Versandlabel von uns, ${formatCents(500)} werden mit dem Auftrag berechnet`);
-    expect(berechnet.summeCents).toBe(500);
+    expect(berechnet.portoText).toBe(`Versandlabel von uns, ${formatCents(1269)} werden mit dem Auftrag berechnet`);
+    expect(berechnet.summeCents).toBe(1269);
+    // Ohne belegtes Porto nennt das Label keinen Betrag, die Kosten bleiben beim Kunden.
+    const ohnePorto = variantenAus(E).map((v) => (v.kennung === 'dhl-paket' ? { ...v, portoCents: null } : v));
+    const offen = einsendeAngebot({ ...E, labelAktiv: true, varianten: ohnePorto }, true).optionen.find((o) => o.art === 'dhl-paket')!;
+    expect(offen.portoText).toBe('Versandlabel von uns, die Versandkosten werden mit dem Auftrag berechnet');
+    expect(offen.summeCents).toBeUndefined();
   });
 });
 

@@ -1080,8 +1080,8 @@ async function f17({ page }) {
   const treffer = page.locator('main').getByRole('link', { name: titel });
   pruefe(`Serie „${linie.slug}“ zeigt die Linie in der Trefferliste`, await warteBis(() => treffer.first().isVisible(), 8000), titel);
   await suche.fill(String(linie.codeExample));
-  const passt = page.locator('main').getByRole('link', { name: titel }).filter({ hasText: 'passt zum Codeformat' });
-  pruefe(`Code „${linie.codeExample}“ markiert die Linie als „passt zum Codeformat“`,
+  const passt = page.locator('main').getByRole('link', { name: titel }).filter({ hasText: 'Code hat die richtige Form' });
+  pruefe(`Code „${linie.codeExample}“ markiert die Linie als „Code hat die richtige Form“`,
     await warteBis(async () => (await passt.count()) > 0, 8000, 200),
     linie.codeFormatLabel);
   await laden(page, '/schluessel-nach-code/kategorie/briefkasten-und-postanlagen');

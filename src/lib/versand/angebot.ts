@@ -2,8 +2,8 @@
  * Was die Seiten zum Einschicken über Versand und Kosten sagen (G-24, R9, MA-08, MA-18, A-050).
  * Je Variante: Haftung als Zahl, Porto laut Post mit Stand, ein etwaiger Aufpreis des Betriebs und die
  * Summe, bevor der Kunde absendet. Ohne Label kauft der Kunde das Porto selbst; mit aktivem und
- * eingerichtetem Label (Geschäftskundenvertrag) bekommt er für DHL Paket das Label von uns, und ein
- * Aufpreis wird mit dem Auftrag berechnet. „kostenlos“ steht nirgends, solange der Kunde etwas zahlt.
+ * eingerichtetem Label (Geschäftskundenvertrag) bekommt er für DHL Paket das Label von uns, und Porto
+ * und Aufpreis werden mit dem Auftrag berechnet. „kostenlos“ steht nirgends, solange der Kunde etwas zahlt.
  * Reine Funktion.
  */
 
@@ -40,7 +40,7 @@ export interface EinsendeOption {
   nurSonderfall: boolean;
   /** Aufpreis des Betriebs (Cent), 0 = keiner. */
   aufpreisCents: number;
-  /** Porto bei der Post (Cent); fehlt mit Label oder wenn nicht belegt. */
+  /** Porto (Cent); fehlt, wenn nicht belegt. Mit Label wird es mit dem Auftrag berechnet. */
   portoCents?: number;
   /** Porto in Worten: Betrag, „Porto laut Post, bitte dort prüfen“ oder Label. */
   portoText: string;
@@ -83,15 +83,17 @@ export function einsendeAngebot(e: EinsendeEinstellungen, labelEingerichtet: boo
     .filter((v) => v.aktiv)
     .map((v): EinsendeOption => {
       const label = mitLabel && v.kennung === LABEL_VARIANTE;
-      const porto = label || v.portoCents === null ? undefined : v.portoCents;
+      const porto = v.portoCents === null ? undefined : v.portoCents;
+      const summeCents = porto === undefined ? undefined : porto + v.aufpreisCents;
+      // Mit Label trägt der Kunde die Versandkosten weiter, sie werden mit dem Auftrag berechnet (FA Anhang B,
+      // A-050 Punkt 4). Eine Übernahme des Portos durch den Betrieb hat der Inhaber nicht freigegeben (G9, R9).
       const portoText = label
-        ? v.aufpreisCents > 0
-          ? `Versandlabel von uns, ${formatCents(v.aufpreisCents)} werden mit dem Auftrag berechnet`
-          : 'Versandlabel von uns, das Porto zahlt SCHLÜSSELMACHER24'
+        ? summeCents === undefined
+          ? 'Versandlabel von uns, die Versandkosten werden mit dem Auftrag berechnet'
+          : `Versandlabel von uns, ${formatCents(summeCents)} werden mit dem Auftrag berechnet`
         : porto === undefined
           ? PORTO_UNBELEGT
           : `${formatCents(porto)} Porto laut Post`;
-      const summeCents = label ? v.aufpreisCents : porto === undefined ? undefined : porto + v.aufpreisCents;
       const haftung = haftungSatz(v);
       const warnung = haftungWarnung(v);
       const aufpreis = v.aufpreisCents > 0 && !label ? ` Aufpreis ${formatCents(v.aufpreisCents)}.` : '';
@@ -109,7 +111,7 @@ export function einsendeAngebot(e: EinsendeEinstellungen, labelEingerichtet: boo
         ...(porto !== undefined ? { portoCents: porto } : {}),
         portoText,
         ...(summeCents !== undefined ? { summeCents } : {}),
-        ...(label ? {} : { stand: v.portoStand }),
+        ...(v.portoStand ? { stand: v.portoStand } : {}),
         label,
         hinweis: `${haftung}. ${portoText}.${aufpreis}${warnung ? ` ${warnung}` : ''}`,
       };
@@ -119,7 +121,7 @@ export function einsendeAngebot(e: EinsendeEinstellungen, labelEingerichtet: boo
   return {
     kostenlos: mitLabel,
     satz: mitLabel
-      ? 'Für DHL Paket bekommen Sie das Versandlabel von uns. Einen Brief frankieren Sie selbst.'
+      ? 'Für DHL Paket bekommen Sie das Versandlabel von uns; die Versandkosten werden mit dem Auftrag berechnet. Einen Brief frankieren Sie selbst.'
       : 'Sie drucken den Begleitschein aus und frankieren selbst; das Porto zahlen Sie bei der Post.',
     optionen,
     sonderfaelle,

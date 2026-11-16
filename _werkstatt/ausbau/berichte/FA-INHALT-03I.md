@@ -104,4 +104,28 @@ Alles über `_werkstatt/ausbau/werkzeuge/sicher.sh --json`, nach der letzten Än
 - Schlussredaktion (Mensch mit Fachwissen): die erklärenden Halbsätze „(so nennt der Hersteller sein Schließsystem)“ und „Der Codebereich ist …, in diesem Bereich liegt Ihr Code.“; die Kategorienbeschreibungen „Hier geht es um den Autoschlüssel selbst, ohne Termin in der Werkstatt.“ und „Ein neues Gehäuse für Ihren Funkschlüssel. Die Elektronik bleibt.“; die Plakette „Code hat die richtige Form“ im Shop und im Bestellformular.
 - Orchestrator: `werkzeuge/funktionsliste.mjs` an die neue Plakette anpassen (OFFENE FRAGE 3); Ratgebersatz (OFFENE FRAGE 2) in ein Paket mit Schreibrecht auf `content/guides.json`.
 
+## Nachbesserung (Gegenprüfung, 13 Befunde)
+Geänderte Dateien zusätzlich: `src/app/(site)/schluessel-nach-code/page.tsx`, `page.test.tsx`, neu `[slug]/page.test.tsx`, `[slug]/bestell-formular.tsx` (nur Wortlaut), `src/app/(site)/artikel/page.tsx`, `artikel/page.test.tsx`, `src/lib/codelinie-texte.ts`, `content/kategorien.json`, `src/lib/data/defaults/kategorien.ts`.
+
+| Nr. | Ergebnis | Begründung und neuer Wortlaut |
+|---|---|---|
+| 1 | behoben | Ablauf, Unterzeile und Aktion hängen an `direktkauf`, nicht an `ohneProdukte`. Ohne lieferbares Produkt (leer oder Mischzustand) zeigt der Abschnitt „Vom Code zur Anfrage“ mit der Unterzeile aus Entscheidung 3, Knopf „Code anfragen“ und eigenen Schritten: „Code finden“ (aus den Rubrikdaten), „Code anfragen: Sie nennen uns Hersteller oder Schloss, den Code und die Stückzahl. Sie bestätigen, dass Sie den Schlüssel nachmachen lassen dürfen.“ (R13, wie der Leerzustand), „Angebot oder Rückfrage: Wir prüfen Ihren Code. Mit unserem Angebot entscheiden Sie, ob Sie bestellen.“ Die Kaufschritte aus `content/rubriken.json` erscheinen nur beim Direktkauf. Tests: kein „Stückzahl wählen, bezahlen“ in drei Zuständen ohne Direktkauf; Kaufablauf mit lieferbarem Produkt. |
+| 2 | behoben | Formularkopf nur noch „Wir fertigen nur nach dem Code, den Sie hier eintragen.“ Neuer Test `[slug]/page.test.tsx` rendert die ganze Produktseite samt Formular in allen drei Verfügbarkeiten und zählt „Originalschlüssel“ im sichtbaren Text (≤ 2); mit dem alten Satz schlägt er fehl (gegengeprüft). |
+| 3 | nicht behoben (außerhalb der Schreibrechte) | Trifft zu. `werkzeuge/funktionsliste.mjs` liegt nicht in den Schreibrechten; der Orchestrator ändert Z. 1083 auf `hasText: 'Code hat die richtige Form'` und den Prüftext in Z. 1084, im selben Commit wie die Plakette. |
+| 4 | behoben | Ohne bestellbaren Artikel steht unter der Abschnittsunterzeile der Knopf „Artikel anfragen“ auf `artikelAnfragePfad('Schließtechnik und Zubehör')`. Test: bei nur Beispielen, nur „auf Anfrage“/„nicht lieferbar“ und gemischt ist der Link da; mit bestellbarem Artikel nicht. |
+| 5 | behoben (Freigabe Orchestrator) | `generateMetadata` und Strukturdaten nehmen `OHNE_PRODUKTE_SEO` (Titel „Schlüssel nach Code anfragen“, Beschreibung 156 Zeichen) immer, wenn kein Produkt lieferbar ist, auch im Mischzustand. Achtung: Damit ändert sich im Mischzustand auch der Suchtitel; das Paket sagt „Suchtitel bleiben“. Bitte bestätigen oder auf „nur Beschreibung“ zurückstellen (OFFENE FRAGE 8). Test prüft Titel, Inhalt und Länge 120 bis 160. |
+| 6 | behoben | Ohne bestellbaren Artikel: „Artikel rund um Schlüssel, Schloss und Tür. Zurzeit fragen Sie Artikel bei uns an. Wir beraten Sie und sagen Ihnen, was zu Ihrem Schloss passt.“ (143 Zeichen) in Metadaten und Strukturdaten; eine gepflegte Beschreibung gilt nur beim Direktkauf. Test mit Länge. |
+| 7 | behoben | „Dieser Code hat nicht die richtige Form. So sieht der Code aus: … (zum Beispiel …). Bitte prüfen Sie Ihre Eingabe. …“ Keine Testerwartung band den alten Satz. |
+| 8 | behoben | Autoschlüsselgehäuse: „Nur das Gehäuse für Ihren Funkschlüssel, ohne Elektronik. Den Preis nennen wir Ihnen nach Ihrer Anfrage.“ (belegt durch die Rubrik-Erklärung). Gehäuseumbau: „Die Arbeit übernehmen wir: Wir setzen die Elektronik Ihres Autoschlüssels in ein neues Gehäuse oder reparieren den Schlüssel.“ JSON und Rückfall wortgleich (Test `shop.test.ts` grün). |
+| 9 | behoben | Suchbeschreibungen der Produktseite in allen drei Verfügbarkeiten „Aufbau des Codes: …, z. B. ….“; `seo-laengen.test.ts` grün (505 Tests), im Auszug kein „Codeformat“ mehr. |
+| 10 | nicht behoben (außerhalb der Schreibrechte) | Gleicher Befund wie 3; Anpassung durch den Orchestrator. |
+| 11 | nicht behoben (offene Stelle) | Trifft zu: Das Info-Feld zeigt `line.codeHint` mit „Erwartetes Format: …“. Den bereinigten Hinweis als Prop zu übergeben ist Logik in `bestell-formular.tsx` und `page.tsx`; dieses Paket darf im Formular nur sichtbaren Wortlaut ändern. Gehört in ein Paket mit Logikrecht (`codeHinweis` aus `codelinienTexte` als Prop). |
+| 12 | behoben | Gleicher Befund wie 5, dort umgesetzt. |
+| 13 | behoben | `faq: { question: string; answer: string }[];` |
+
+Prüfung nach der Nachbesserung, alles über `sicher.sh --json`: `npx vitest run` 226 Testdateien, 3541 Tests bestanden; `npm run typecheck` ohne Fehler; `npm run lint` ohne Fehler; Auszug neu erzeugt (1 Test bestanden). Keine Prüfung gelockert.
+
+OFFENE FRAGE 8 (neu): Suchtitel der Übersicht im Mischzustand „Schlüssel nach Code anfragen“ statt des gepflegten Titels (Befund 5/12). Freigabe oder Rückstellung durch den Orchestrator.
+OFFENE FRAGE 3 und 4 sind mit der Nachbesserung erledigt bzw. an den Orchestrator übergeben (3: funktionsliste.mjs; 4: Suchbeschreibung und Ablauf umgesetzt).
+
 === ENDE FA-INHALT-03I · BEREIT ZUR RÜCKGABE ===

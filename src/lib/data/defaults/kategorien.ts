@@ -55,7 +55,7 @@ export function kategorien(): ShopKategorie[] {
       id: 'autoschluesselgehaeuse',
       slug: 'autoschluesselgehaeuse',
       name: 'Autoschlüsselgehäuse',
-      beschreibung: 'Nur das Gehäuse für Ihren Funkschlüssel, ohne Elektronik. Den Preis nennen wir Ihnen nach Ihrer Anfrage.',
+      beschreibung: 'Nur das Gehäuse für Ihren Funkschlüssel, ohne Elektronik.',
       reihenfolge: 40,
       art: 'anfrage',
       ziel: '/autoschluessel/gehaeuse',

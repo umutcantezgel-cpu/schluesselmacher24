@@ -192,6 +192,8 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
   ];
   const titel = codelinienTitel(line);
   const produktbild = line.productImage.bild ? line.productImage : undefined;
+  // Derselbe Text zur Fundstelle wie im Abschnitt „Wo steht der Code?“, für das Info-Feld im Bestellformular.
+  const fundstellenText = [texte.fundstelle, texte.codeHinweis].filter(Boolean).join(' ') || undefined;
   // Weitere Fotos aus dem Backend (FA-11-11): kleine Reihe unter dem Bild im Kopf, nur wenn hinterlegt.
   const galerie: ImageSlot[] = (line.gallery ?? []).map((bild) => ({ motif: bild.alt || titel, ratio: '1/1', bild }));
   const weitereFotos = galerie.length > 0 && (
@@ -277,8 +279,8 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
             {bestellbar ? (
               /* Code aus der Adresse (?code=) liest eine Client-Komponente; die Grenze hält die Seite statisch. */
               <>
-                <Suspense fallback={<BestellFormular line={line} werkstatt={werkstattAngaben(settings.company)} />}>
-                  <CodeAusAdresse line={line} werkstatt={werkstattAngaben(settings.company)} />
+                <Suspense fallback={<BestellFormular line={line} werkstatt={werkstattAngaben(settings.company)} fundstelle={fundstellenText} />}>
+                  <CodeAusAdresse line={line} werkstatt={werkstattAngaben(settings.company)} fundstelle={fundstellenText} />
                 </Suspense>
                 {/* Code passt nicht eindeutig (FA-11-17): die Anfrage steht neben dem Bestellformular. */}
                 <p className="mt-4 text-small text-foreground-muted">

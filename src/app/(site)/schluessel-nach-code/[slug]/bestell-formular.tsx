@@ -29,6 +29,11 @@ export interface BestellFormularProps {
   werkstatt?: WerkstattAngaben;
   /** Code aus der Adresse (`?code=`), nur als Vorbelegung; schon gegen das Format geprüft. */
   anfangsCode?: string | null;
+  /**
+   * Text zur Fundstelle des Codes, wie ihn die Seite zeigt (Ratgebersatz und bereinigter Hinweis der
+   * Linie aus `codelinienTexte`). Fehlt er, gilt der Hinweis der Linie.
+   */
+  fundstelle?: string;
 }
 
 /**
@@ -38,7 +43,7 @@ export interface BestellFormularProps {
  * erst, wenn das Feld verlassen wurde — sonst wird schon während der ersten
  * Zeichen bemängelt.
  */
-export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormularProps) {
+export function BestellFormular({ line, werkstatt, anfangsCode, fundstelle }: BestellFormularProps) {
   const [code, setCode] = useState(anfangsCode ?? '');
   const [touched, setTouched] = useState(false);
   const [qty, setQty] = useState(1);
@@ -155,7 +160,7 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
           hint={`So sieht der Code aus: ${line.codeFormatLabel}, zum Beispiel ${line.codeExample}.`}
           info={{
             title: 'Wo steht der Code?',
-            body: line.codeHint,
+            body: fundstelle || line.codeHint,
             figure: line.codeLocationImage,
           }}
         >

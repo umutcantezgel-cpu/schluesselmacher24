@@ -31,7 +31,7 @@ import { LIEFERLAND } from '@/lib/kasse';
 import type { ContactDetails, EinsendeEinstellungen, EinsendeVarianteKennung, ImageSlot } from '@/lib/types';
 import { einsendeAngebot, varianteWaehlbar } from '@/lib/versand/angebot';
 import {
-  SCHLUESSELARTEN,
+  SCHLUESSELARTEN_IM_FORMULAR,
   SONDERFALL_HINWEIS,
   brauchtFahrzeugschein,
   empfehlungFuer,
@@ -127,6 +127,7 @@ const EXAMPLE_FAHRZEUGSCHEIN: ImageSlot = {
   note: 'Die ganze Seite, scharf und ohne Spiegelung.',
 };
 
+/** `sonderfall`: Die gewählte Variante ist ein Sonderfall. Bestätigt ist er nur mit dem Häkchen des Kunden. */
 function payloadAus(d: EinsendeDaten & { versand: EinsendeVarianteKennung; schluesselart: Schluesselart }, sonderfall: boolean): EinsendePayload {
   return {
     quelle: EINSENDE_QUELLE,
@@ -138,7 +139,7 @@ function payloadAus(d: EinsendeDaten & { versand: EinsendeVarianteKennung; schlu
     schluesselart: d.schluesselart,
     wertvoll: d.wertvoll,
     versand: d.versand,
-    ...(sonderfall ? { sonderfallBestaetigt: true } : {}),
+    ...(sonderfall && d.sonderfallBestaetigt ? { sonderfallBestaetigt: true } : {}),
     originalEingesendet: true,
   };
 }
@@ -184,7 +185,7 @@ export function EinsendeFormular({ einstellungen, hilfe }: { einstellungen: Eins
       switch (stepId) {
         case 'schluessel':
           return (
-            d.schluesselart !== ''
+            SCHLUESSELARTEN_IM_FORMULAR.some((art) => art.wert === d.schluesselart)
             && d.originale >= 1 && d.originale <= MAX_ORIGINALE
             && d.stueckzahl >= 1 && d.stueckzahl <= MAX_KOPIEN
             && d.beschriftung.trim().length <= BESCHRIFTUNG_HOECHSTENS
@@ -226,6 +227,11 @@ export function EinsendeFormular({ einstellungen, hilfe }: { einstellungen: Eins
       && !((flow.step?.id === 'nachweis' || flow.step?.id === 'absenden') && scheinFehlt),
   };
   const angebot = useMemo(() => angebotZu(einstellungen, data), [einstellungen, data]);
+  // Empfehlung für wertvolle Schlüssel aus den Einstellungen, damit Name und Haftung zum Admin passen.
+  const wertvollEmpfehlung = useMemo(
+    () => angebotZu(einstellungen, { schluesselart: 'haus', wertvoll: true }).optionen.find((o) => o.empfohlen),
+    [einstellungen],
+  );
   const gewaehlt = [...angebot.optionen, ...angebot.sonderfaelle].find((o) => o.art === data.versand);
   const sonderfall = gewaehlt?.nurSonderfall === true && angebot.sonderfaelle.some((o) => o.art === gewaehlt.art);
 
@@ -350,7 +356,7 @@ export function EinsendeFormular({ einstellungen, hilfe }: { einstellungen: Eins
         <div className="max-w-3xl space-y-6">
           <fieldset className="space-y-3">
             <legend className="text-body font-semibold text-foreground">Was schicken Sie ein?</legend>
-            {SCHLUESSELARTEN.map((art) => (
+            {SCHLUESSELARTEN_IM_FORMULAR.map((art) => (
               <OptionCard
                 key={art.wert}
                 name="schluesselart"
@@ -381,7 +387,11 @@ export function EinsendeFormular({ einstellungen, hilfe }: { einstellungen: Eins
               checked={data.wertvoll}
               onSelect={() => set('wertvoll', !data.wertvoll)}
               title="Der Schlüssel ist wertvoll oder schwer zu ersetzen"
-              description="Dann empfehlen wir DHL Paket mit Haftung bis 500 €."
+              description={
+                wertvollEmpfehlung
+                  ? `Dann empfehlen wir ${wertvollEmpfehlung.titel}, ${wertvollEmpfehlung.haftung}.`
+                  : 'Dann empfehlen wir einen Versand mit Sendungsverfolgung und ausreichender Haftung.'
+              }
             />
           </fieldset>
           <div className="grid gap-6 sm:grid-cols-2">
