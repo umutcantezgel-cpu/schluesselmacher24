@@ -50,6 +50,12 @@ export interface WachOptionen {
   wache?: boolean;
   /** Ein Eintrag mit einem späteren Schritt des Ablaufs (etwa nach Vorwärts): kein Verlassen, keine Frage. */
   imAblauf?: (state: unknown) => boolean;
+  /**
+   * Ohne Wacheintrag (`wache: false`): fremde Vorwärts-Einträge abschneiden, sobald die Warnung gilt, damit
+   * Browser-Vorwärts nicht ohne Rückfrage aus dem Formular hinausführt (FA-QA-04B). Der Wacheintrag tut das
+   * mit seinem `pushState` von selbst.
+   */
+  vorwaertsKappen?: () => void;
 }
 
 /**
@@ -132,6 +138,8 @@ export function wacheEinrichten(
       fenster.history.pushState({ [WACHE]: true }, '', fenster.location.href);
     }
     fenster.addEventListener('popstate', zurueck as (event: never) => void);
+  } else {
+    optionen.vorwaertsKappen?.();
   }
 
   return () => {
@@ -168,6 +176,11 @@ export function useVerlassenWarnung(grund: VerlassenGrund, optionen: WachOptione
   useEffect(() => {
     imAblaufRef.current = imAblauf;
   }, [imAblauf]);
+  const { vorwaertsKappen } = optionen;
+  const kappenRef = useRef(vorwaertsKappen);
+  useEffect(() => {
+    kappenRef.current = vorwaertsKappen;
+  }, [vorwaertsKappen]);
   const warnen = frage !== null;
   const mitWache = optionen.wache ?? true;
   useEffect(() => {
@@ -175,6 +188,7 @@ export function useVerlassenWarnung(grund: VerlassenGrund, optionen: WachOptione
     return wacheEinrichten(window as unknown as WachFenster, () => frageRef.current ?? VERLASSEN_FRAGE, {
       wache: mitWache,
       imAblauf: (state) => imAblaufRef.current?.(state) ?? false,
+      vorwaertsKappen: () => kappenRef.current?.(),
     });
   }, [warnen, mitWache]);
 }

@@ -46,13 +46,16 @@ export const NACHRICHT_VORLAGEN: readonly NachrichtVorlage[] = [
   {
     // FA-07-03 (FA-PLATTFORM-01B, Zusatz 8): Der Kunde erfährt vor dem Einsatz, welcher Betrieb ausführt.
     // `{firma}` und `{ort}` setzt der Server beim Senden aus dem Partnerbetrieb des Vorgangs ein.
+    // ENTWURF ZUR PRÜFUNG (R10): „Vertragspartner für die Ausführung“ gilt nur bei Abrechnung A (Zusage der
+    // Partnerseiten, src/lib/partner/gewinnung.ts). Der Server lehnt die Vorlage bei Abrechnung B und im
+    // Partnerweg mit zentraler Zahlung ab (src/payload/hooks/kunden-nachricht.ts), bis der Anwalt entschieden hat.
     id: 'ausfuehrender-betrieb',
     name: 'Ihr ausführender Betrieb',
     betreff: 'Ihr ausführender Betrieb ({nummer})',
     text:
       'Ihren Auftrag führt ein Partnerbetrieb aus unserem Netz aus. Ihr ausführender Betrieb und Vertragspartner '
       + 'für die Ausführung ist:\n\n{firma}, {ort}\n\n'
-      + 'Der Betrieb stimmt den genauen Termin mit Ihnen ab. Bei Fragen antworten Sie einfach auf diese E-Mail.',
+      + 'Bei Fragen zum Termin helfen Ihnen der Betrieb oder wir. Antworten Sie dazu einfach auf diese E-Mail.',
   },
 ];
 

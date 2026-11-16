@@ -73,3 +73,20 @@ Prüfung über die Datenweiche:
 - `typecheck`: 2 Fehler, nur in `src/lib/flow/schritt-historie.test.ts` (fremdes, ungetracktes Paket).
 - `lint`: 0 Fehler, 1 Warnung in `src/lib/flow/schritt-historie.test.ts` (fremd).
 - `build`: kompiliert, scheitert an der Typprüfung in `src/lib/flow/use-flow.test.ts` (fremd, `FlowShell` verlangt `children`). Nach Abschluss des Flow-Pakets wiederholen.
+
+## Abnahme durch den Orchestrator (16.11.2026)
+
+Prüfkette (`bash _werkstatt/ausbau/werkzeuge/abnahme.sh FA-PLATTFORM-01B`, alle drei Pakete der Welle gemeinsam im Arbeitsbaum, nach allen Eingriffen): Typprüfung grün, Lint grün, Unit 3834 von 3834, Datenbanktests 165 von 165 (beide Partner-Migrationen laufen auf einer frischen Datenbank), Build 181 von 181 Seiten. Onpage-Messung am neu gestarteten Prüfserver: 137 Seiten, Median 100, kein roter und kein gelber Befund. `reste.mjs` über alle vier Quellen: nur die zehn bekannten Platzhalter in `src/lib/pdf/partnervertrag.ts` (MA-29).
+
+Erledigt außerhalb der Schreibrechte des Pakets:
+- `autoschluessel/funkschluessel/page.tsx`: „Die Elektronik bleibt dann erhalten.“ trägt jetzt die Bedingung („Die vorhandene Elektronik verwenden wir weiter, wenn sie in das neue Gehäuse passt.“). `zusagen-bedingung.test.ts` prüft zusätzlich alle Seiten unter `autoschluessel` auf die unbedingte Zusage.
+- `autoschluessel/page.tsx`: Die neue Seite steht in `AUF_DER_SEITE`, damit „Passt dazu“ sie nicht doppelt zeigt.
+- Titel der neuen Seite: „Autoschlüssel verloren: Ersatz“ statt „… Ersatzschlüssel“. Die Onpage-Messung meldete den Titel mit Markenzusatz als zu breit (595 px, Schwelle 580 px).
+
+Browserprobe am Prüfserver (Produktions-Build, Attrappen, nichts abgesendet): 10 von 10.
+- Seite Schlüsselverlust bei 390 und 1280 px: Überschrift, Unterlagen, Hinweis zur Versicherung nur als Verweis auf den eigenen Vertrag; kein Preis, keine Frist, kein „sofort“; Hauptknopf in den Assistenten mit `?leistung=ersatz-bei-verlust`; kein waagerechtes Rollen.
+- Fahrzeugöffnung: Knopf „Termin anfragen“ führt in den Assistenten mit `?leistung=fahrzeugoeffnung`; der Text nennt das Foto des Fahrzeugscheins und den Weg für Ausgesperrte; kein Verweis mehr auf `thema=fahrzeugoeffnung`. Der Assistent lädt mit der Vorwahl ohne Fehler, `canonical` ohne Parameter.
+- Nicht im Browser durchgespielt: die Vorwahl im Schritt „Leistung“ nach der Wahl der Schlüsselart (13 Schritte mit Fahrzeugsuche); das decken die Tests in `leistung-vorwahl.test.ts`.
+
+Für den Inhaber (MA-56): Die Fahrzeugöffnung läuft im Assistenten mit dem Standardvorlauf und verlangt Fotos von Fahrzeugschein und Schlüssel. Wer ausgesperrt ist, hat beides oft im Fahrzeug. Die Seite sagt das jetzt und schickt Ausgesperrte zum Kontakt; eine eigene Regel für Unterlagen und Vorlauf entscheidet der Inhaber (G9).
+

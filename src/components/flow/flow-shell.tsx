@@ -142,6 +142,9 @@ export function FlowShell<T extends object>({
   useVerlassenWarnung(verlassenGrundAus({ submitting, ungesichert, saved: flow.saved }), {
     wache: !historie || amAnfang,
     imAblauf: historie?.istFolgeEintrag,
+    // Ohne Wacheintrag weiter oben im Ablauf: fremde Vorwärts-Einträge abschneiden (sonst ginge Vorwärts
+    // ohne Rückfrage hinaus).
+    vorwaertsKappen: historie?.vorwaertsKappen,
   });
   // Browser-Vorwärts gilt nur, solange „Weiter“ frei wäre (`canContinue`, auch mit Dateien und Nachweisen).
   const weiterFreiFuerHistorie = flow.canContinue;

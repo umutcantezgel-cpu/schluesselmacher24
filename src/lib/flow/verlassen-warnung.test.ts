@@ -154,6 +154,17 @@ describe('Warnung vor dem Verlassen (FA-QA-02)', () => {
     expect(t.hoerer.beforeunload).toHaveLength(0);
   });
 
+  it('ohne Wache schneidet die Warnung fremde Vorwärts-Einträge ab, mit Wache tut es der Wacheintrag (FA-QA-04B)', () => {
+    let gekappt = 0;
+    const vorwaertsKappen = () => {
+      gekappt += 1;
+    };
+    wacheEinrichten(fenster(false).f, undefined, { wache: false, vorwaertsKappen });
+    expect(gekappt).toBe(1);
+    wacheEinrichten(fenster(false).f, undefined, { wache: true, vorwaertsKappen });
+    expect(gekappt).toBe(1);
+  });
+
   it('ein späterer Schritt des Ablaufs (Vorwärts) gilt nicht als Verlassen (FA-QA-04B)', () => {
     const t = fenster(false);
     wacheEinrichten(t.f, undefined, { imAblauf: (state) => (state as { schritt?: number } | null)?.schritt === 2 });

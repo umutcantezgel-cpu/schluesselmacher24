@@ -1,5 +1,7 @@
 import type { CollectionBeforeChangeHook, FieldHook, FilterOptions } from 'payload';
 
+import { AUFTRAGSWEG_DATEN, auftragswegVon } from '../../lib/auftragsweg';
+import { vorgangZuSeite } from '../../lib/data/payload-mapping';
 import { betriebMitgeteilt } from '../../lib/mail/nachricht-vorlagen';
 import { betriebHinweis, leadEintraege, zuordnungWarnung, type LeadEintrag, type LeadRueckgabe } from '../../lib/partner/lead-verlauf';
 import { istVermittlungsStand } from '../../lib/partner/vermittlung';
@@ -62,10 +64,16 @@ export const leadVerlaufVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({
   // Die Angaben gelten nur für dieses eine Speichern.
   if (data.zuordnung || originalDoc.zuordnung?.rueckgabe || originalDoc.zuordnung?.notiz) data.zuordnung = { rueckgabe: null, notiz: null };
   if (!eintraege.length) return data;
-  const bisher: Verlauf = (originalDoc.leadVerlauf ?? []).map((e) => ({ ...e, partnerbetrieb: Number(relationsId(e.partnerbetrieb)) }));
+  // Leere Verweise bleiben leer (Betrieb endgültig gelöscht, ON DELETE SET NULL); `Number(null)` wäre 0 und
+  // verletzte den Fremdschlüssel, dann ließe sich der Vorgang nicht mehr umordnen.
+  const verweis = (wert: unknown): number | null => {
+    const id = relationsId(wert);
+    return id === null ? null : Number(id);
+  };
+  const bisher: Verlauf = (originalDoc.leadVerlauf ?? []).map((e) => ({ ...e, partnerbetrieb: verweis(e.partnerbetrieb) }));
   data.leadVerlauf = [
     ...bisher,
-    ...eintraege.map((e) => ({ partnerbetrieb: Number(e.partnerbetrieb), am: e.am, von: e.von, ergebnis: e.ergebnis, notiz: e.notiz ?? null })),
+    ...eintraege.map((e) => ({ partnerbetrieb: verweis(e.partnerbetrieb), am: e.am, von: e.von, ergebnis: e.ergebnis, notiz: e.notiz ?? null })),
   ];
   return data;
 };
@@ -117,10 +125,27 @@ export const partnerWarnungFeld: FieldHook<Vorgaenge> = async ({ data, req }) =>
   }
 };
 
+/**
+ * Liegt der Vorgang im Partnerweg (zentrale Zahlung)? Dieselbe Regel wie am Endpunkt der Nachricht
+ * (`auftragswegVon`); ein unvollständiges Dokument darf die Anzeige nicht brechen.
+ */
+function imPartnerweg(doc: Partial<Vorgaenge>): boolean {
+  const daten = doc.daten && typeof doc.daten === 'object' && !Array.isArray(doc.daten) ? (doc.daten as Record<string, unknown>) : {};
+  if (daten[AUFTRAGSWEG_DATEN] === 'partner') return true;
+  try {
+    return auftragswegVon(vorgangZuSeite(doc as Vorgaenge)) === 'partner';
+  } catch {
+    return false;
+  }
+}
+
 /** Hinweis, solange die Nachricht „Ihr ausführender Betrieb“ beim Stand „angenommen“ fehlt (FA-07-03). Nur Anzeige. */
 export const betriebHinweisFeld: FieldHook<Vorgaenge> = ({ data }) => {
   const doc = data as Partial<Vorgaenge> | undefined;
   const status = doc?.vermittlung?.status;
+  // Im Partnerweg (zentrale Zahlung) lehnt der Server die Nachricht ab, bis der Text rechtlich geprüft ist
+  // (R10, MA-29): dort kein Hinweis, der in eine Sackgasse führt.
+  if (doc && imPartnerweg(doc)) return null;
   return betriebHinweis(
     istVermittlungsStand(status) ? status : null,
     Boolean(relationsId(doc?.vermittlung?.partnerbetrieb)),

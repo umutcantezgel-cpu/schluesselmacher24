@@ -61,7 +61,7 @@ export const Partnerbetriebe: CollectionConfig = {
     defaultColumns: ['firma', 'ort', 'status', 'abrechnungsmodell'],
     description:
       'Freischalten erst nach Prüfung von Gewerbe, Identität und Eignung, mit unterschriebenem Vertrag und vollständiger Prüfliste '
-      + 'samt Besuch vor Ort. Pausieren und Sperren nur mit Grund. Anleitung: docs/betrieb/partner-pruefen.md.',
+      + 'samt Besuch vor Ort. Pausieren und Sperren nur mit Grund. Die Schritt-für-Schritt-Anleitung hat der Inhaber.',
   },
   access: { read: istTeam, create: istTeam, update: istTeam, delete: papierkorbTeamLoeschenInhaber },
   trash: true,

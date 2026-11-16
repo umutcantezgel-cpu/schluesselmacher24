@@ -62,6 +62,17 @@ describe('Prüfliste vor der Freischaltung', () => {
     expect(prueflisteFehlt({ ...VOLL, besuch: { ...VOLL.besuch, ergebnis: 'auflagen' } })).toEqual([]);
   });
 
+  it('schaltet „nicht geeignet“ auch mit „Besuch nicht möglich“ und Grund nicht frei', () => {
+    const besuch = { ...VOLL.besuch, ergebnis: 'nicht-geeignet' as const, nichtMoeglich: true, nichtMoeglichGrund: 'Betrieb war geschlossen.' };
+    const liste: Pruefliste = { ...VOLL, besuch };
+    expect(besuchErledigt(besuch)).toBe(false);
+    expect(prueflisteFehlt(liste)).toEqual(['Prüfliste: Besuch vor Ort mit Ergebnis „geeignet“']);
+    expect(statuswechselPruefen('vertrag-unterschrieben', 'freigeschaltet', { ...GEPRUEFT, pruefliste: liste })).toContain('Vor der Freischaltung fehlt');
+    // Speichern lehnt „Besuch nicht möglich“ neben einem erfassten Ergebnis ab.
+    expect(prueflisteSpeichernPruefen(liste)).toBe(PRUEFLISTE_MELDUNG.besuchMitErgebnis);
+    expect(prueflisteSpeichernPruefen({ ...VOLL, besuch: { ...VOLL.besuch, nichtMoeglich: true, nichtMoeglichGrund: 'x' } })).toBe(PRUEFLISTE_MELDUNG.besuchMitErgebnis);
+  });
+
   it('lässt Betriebe aus der Zeit davor freigeschaltet, nach einer Sperre gilt die volle Prüfliste', () => {
     const alt: Pruefliste = { vorEinfuehrung: true };
     expect(fehltFuerFreischaltung({ ...GEPRUEFT, pruefliste: alt })).toEqual([]);
@@ -90,6 +101,14 @@ describe('Pausieren und Sperren (FA-07-19)', () => {
     expect(statuswechselPruefen('freigeschaltet', 'gesperrt', { sperrGrund: ' ' })).toBe(MELDUNG_OHNE_SPERRGRUND);
     expect(statuswechselPruefen('freigeschaltet', 'gesperrt', { sperrGrund: 'Beschwerde wegen beschädigtem Schloss' })).toBeNull();
     expect(statuswechselPruefen('freigeschaltet', 'beendet', {})).toBeNull();
+  });
+
+  it('lässt den Grund bei einem schon gesperrten oder pausierten Betrieb nicht leeren', () => {
+    expect(statuswechselPruefen('gesperrt', 'gesperrt', { sperrGrund: '', sperrGrundVorher: 'Qualitätsproblem' })).toBe(MELDUNG_OHNE_SPERRGRUND);
+    expect(statuswechselPruefen('pausiert', 'pausiert', { sperrGrund: ' ', sperrGrundVorher: 'Urlaub' })).toBe(MELDUNG_OHNE_SPERRGRUND);
+    expect(statuswechselPruefen('gesperrt', 'gesperrt', { sperrGrund: 'Qualitätsproblem, Gespräch am Freitag', sperrGrundVorher: 'Qualitätsproblem' })).toBeNull();
+    // Ältere pausierte Betriebe ohne gespeicherten Grund bleiben bearbeitbar.
+    expect(statuswechselPruefen('pausiert', 'pausiert', { sperrGrund: null, sperrGrundVorher: null })).toBeNull();
   });
 
   it('hält Datum und Bearbeiter fest und schreibt die Sperre beim Aufheben in die Notiz', () => {

@@ -60,6 +60,8 @@ export interface Pruefung {
   pruefliste?: Pruefliste | null;
   /** Grund für Pausieren oder Sperren (Gruppe `sperre`). */
   sperrGrund?: string | null;
+  /** Gespeicherter Grund vor dieser Änderung; ein vorhandener Grund darf ohne Wechsel nicht geleert werden. */
+  sperrGrundVorher?: string | null;
 }
 
 /**
@@ -88,7 +90,11 @@ export function statuswechselPruefen(von: BewerbungStatus, nach: BewerbungStatus
     const fehlt = fehltFuerFreischaltung(pruefung, { ohneAltbestand: von === 'gesperrt' });
     if (fehlt.length) return `Vor der Freischaltung fehlt: ${fehlt.join(', ')}.`;
   }
-  if (von !== nach && STAENDE_MIT_GRUND.includes(nach) && !(pruefung.sperrGrund ?? '').trim()) return MELDUNG_OHNE_SPERRGRUND;
+  // Beim Wechsel nach „pausiert“ oder „gesperrt“ Pflicht; ohne Wechsel darf ein vorhandener Grund nicht
+  // geleert werden. Ältere pausierte Betriebe ohne Grund bleiben so weiter bearbeitbar.
+  const ohneGrund = !(pruefung.sperrGrund ?? '').trim();
+  const grundGeleert = von === nach && Boolean((pruefung.sperrGrundVorher ?? '').trim());
+  if (STAENDE_MIT_GRUND.includes(nach) && ohneGrund && (von !== nach || grundGeleert)) return MELDUNG_OHNE_SPERRGRUND;
   return null;
 }
 

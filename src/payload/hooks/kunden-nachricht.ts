@@ -1,5 +1,6 @@
 import type { Endpoint, PayloadRequest } from 'payload';
 
+import { auftragswegVon } from '../../lib/auftragsweg';
 import { vorgangZuSeite } from '../../lib/data/payload-mapping';
 import { antwortAdresse, idempotenzSchluessel, sendeVorlage, vorlagenKontext } from '../../lib/mail/versand';
 import { BETRIEB_PLATZHALTER, betriebEinsetzen, nachrichtPruefen } from '../../lib/mail/nachricht-vorlagen';
@@ -20,10 +21,39 @@ import { benutzerName, einstellungenLaden, vorgangVermerken } from './vorgang-be
 export const MELDUNG_OHNE_BETRIEB =
   'Die Vorlage „Ihr ausführender Betrieb“ braucht einen Partnerbetrieb am Vorgang (Reiter „Vermittlung“). Bitte zuerst wählen.';
 
+/** Stand des Betriebs ist nicht „freigeschaltet“ (pausiert, gesperrt, beendet, in Prüfung). */
+export const MELDUNG_BETRIEB_NICHT_FREI = (stand: string) =>
+  `Der Partnerbetrieb ist ${stand}. Bitte zuerst einen anderen Betrieb zuordnen.`;
+
+/** Die Vermittlung steht noch nicht bei „angenommen“ oder „Termin bestätigt“. */
+export const MELDUNG_NICHT_ANGENOMMEN =
+  'Der Partnerbetrieb hat den Auftrag noch nicht angenommen. Die Vorlage „Ihr ausführender Betrieb“ geht erst danach hinaus.';
+
+/** Modell B oder Partnerweg mit zentraler Zahlung: Wer Vertragspartner ist, klärt erst der Anwalt (R10). */
+export const MELDUNG_NUR_MODELL_A =
+  'Die Vorlage „Ihr ausführender Betrieb“ gilt nur für Betriebe mit Abrechnung A außerhalb des Partnerwegs. '
+  + 'Bei Abrechnung B oder zentraler Zahlung ist der Text noch nicht rechtlich geprüft.';
+
+const STAND_TEXT: Readonly<Record<string, string>> = {
+  pausiert: 'pausiert',
+  gesperrt: 'gesperrt',
+  beendet: 'beendet',
+  neu: 'noch nicht freigeschaltet',
+  'in-pruefung': 'noch nicht freigeschaltet',
+  abgelehnt: 'abgelehnt',
+};
+
+/** Stände der Vermittlung, in denen der Betrieb zugesagt hat. */
+const ZUGESAGT = ['angenommen', 'termin-bestaetigt'];
+
 /**
  * Vorlage „Ihr ausführender Betrieb“ (FA-07-03): `{firma}` und `{ort}` füllt der Server aus dem
  * Partnerbetrieb des Vorgangs, damit der Kunde genau den Betrieb erfährt, der am Vorgang steht.
- * Ohne Platzhalter bleibt der Text unverändert; ohne Partnerbetrieb eine Meldung.
+ * Ohne Platzhalter bleibt der Text unverändert. Mit Platzhaltern nur, wenn der Betrieb freigeschaltet ist,
+ * die Vermittlung bei „angenommen“ oder „Termin bestätigt“ steht, der Betrieb mit Abrechnung A arbeitet und
+ * der Vorgang nicht im Partnerweg (zentrale Zahlung) liegt; sonst eine Meldung (400).
+ * ENTWURF ZUR PRÜFUNG (R10): Die Aussage „Vertragspartner für die Ausführung“ stützt sich auf die Zusage
+ * der Partnerseiten zu Modell A (src/lib/partner/gewinnung.ts) und ist anwaltlich noch nicht geprüft.
  */
 async function betriebFuellen(
   req: PayloadRequest,
@@ -44,6 +74,11 @@ async function betriebFuellen(
     req,
   })) as Partnerbetriebe | null;
   if (!betrieb?.firma || !betrieb.ort) return { fehler: MELDUNG_OHNE_BETRIEB };
+  if (betrieb.status !== 'freigeschaltet') {
+    return { fehler: MELDUNG_BETRIEB_NICHT_FREI(STAND_TEXT[betrieb.status ?? ''] ?? 'nicht freigeschaltet') };
+  }
+  if (!ZUGESAGT.includes(doc.vermittlung?.status ?? '')) return { fehler: MELDUNG_NICHT_ANGENOMMEN };
+  if (betrieb.abrechnungsmodell !== 'A' || auftragswegVon(vorgangZuSeite(doc)) === 'partner') return { fehler: MELDUNG_NUR_MODELL_A };
   const angaben = { firma: betrieb.firma, ort: betrieb.ort };
   return { betreff: betriebEinsetzen(betreff, angaben), text: betriebEinsetzen(text, angaben) };
 }

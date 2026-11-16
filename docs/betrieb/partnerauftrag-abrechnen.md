@@ -9,8 +9,8 @@ Diese Anleitung ist für das Team im Adminbereich. Sie zeigt Schritt für Schrit
 Im Vorgang, Reiter **Vermittlung**:
 
 - **Stand der Vermittlung**: wo der Auftrag gerade steht
-- **Partnerbetrieb**: Vermitteln geht nur an freigeschaltete Betriebe. Pausierte und beendete stehen nur in der Auswahl, damit laufende Aufträge abgerechnet werden können
-- **Auftragsart**: bei Autoschlüsseln setzt die Seite „Autoschlüssel vor Ort“ selbst
+- **Partnerbetrieb**: Wählbar sind nur freigeschaltete Betriebe. Ein Betrieb, der inzwischen pausiert, gesperrt oder beendet ist, bleibt am Vorgang stehen, damit laufende Aufträge geklärt und abgerechnet werden können; am Vorgang steht dann eine Warnung
+- **Auftragsart**: bei Autoschlüsseln kommt sie aus der gebuchten Leistung (eine der neun Leistungen des Partnernetzes), sonst „Autoschlüssel allgemein“
 - **Gesamtbetrag, Plattformanteil, Partnerbetrag**: der Partnerbetrag wird berechnet
 - **Bestätigung durch das Team**: nur wenn der Kunde nicht bestätigt
 - **Auszahlung an den Partner**: Auszahlungsstand, freigegeben am und von, ausgezahlt am, Weg, Beleg, Notiz. Oben steht, welcher Weg gerade gilt.

@@ -19,7 +19,7 @@ const ANFRAGE = '/autoschluessel/anfrage?leistung=ersatz-bei-verlust';
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageContent(ROUTE);
   return {
-    title: page?.seo.title ?? 'Autoschlüssel verloren: Ersatzschlüssel',
+    title: page?.seo.title ?? 'Autoschlüssel verloren: Ersatz',
     description:
       page?.seo.description
       ?? 'Ihr Autoschlüssel ist verloren? Wir fertigen einen Ersatzschlüssel. Ist keiner mehr da, '

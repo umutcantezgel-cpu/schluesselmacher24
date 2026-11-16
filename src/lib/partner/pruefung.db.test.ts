@@ -236,9 +236,11 @@ describe('Lead-Verlauf und Gegenansicht', () => {
     await vorgangAendern(auftrag.id, (v) => ({ referral: { ...v.referral, note: 'über die Datenschicht' } }));
     expect(await verlaufVon(auftrag.id)).toHaveLength(6);
 
-    // Hinweis auf die Nachricht „Ihr ausführender Betrieb“ nach der Annahme.
+    // Dieser Auftrag liegt im Partnerweg (zentrale Zahlung): Dort lehnt der Server die Nachricht „Ihr ausführender
+    // Betrieb“ ab, bis der Text rechtlich geprüft ist (R10). Der Hinweis darauf erscheint deshalb nicht (Abnahme);
+    // den Hinweis außerhalb des Partnerwegs prüft `src/payload/hooks/lead-verlauf.test.ts`.
     const gelesen = await payload.findByID({ collection: 'vorgaenge', id: Number(auftrag.id), overrideAccess: false, user: team });
-    expect(gelesen.betriebHinweis).toContain('Ihr ausführender Betrieb');
+    expect(gelesen.betriebHinweis ?? null).toBeNull();
 
     // Gegenansicht: beide Betriebe sehen den Lead mit Stand.
     const eins = await payload.findByID({ collection: 'partnerbetriebe', id: erster, overrideAccess: false, user: team });

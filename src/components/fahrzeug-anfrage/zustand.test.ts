@@ -44,6 +44,9 @@ vi.mock('react', () => ({
   useMemo: hooks.useMemo,
   useCallback: <T,>(fn: T, abh?: unknown[]) => hooks.useMemo(() => fn, abh),
   useSyncExternalStore: (_abo: unknown, schnappschuss: () => unknown) => schnappschuss(),
+  // Ohne Browser laufen keine Effekte (wie beim Vorabrendern); die Schritt-Historie (FA-QA-04B) bleibt stumm.
+  useRef: <T,>(start: T) => hooks.useState(() => ({ current: start }))[0],
+  useEffect: () => {},
 }));
 
 // Außerhalb einer Komponente aufgerufen: Der Ersatz oben spielt die Rolle von React.

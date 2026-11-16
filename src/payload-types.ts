@@ -635,7 +635,7 @@ export interface Kundendateien {
   focalY?: number | null;
 }
 /**
- * Freischalten erst nach Prüfung von Gewerbe, Identität und Eignung, mit unterschriebenem Vertrag und vollständiger Prüfliste samt Besuch vor Ort. Pausieren und Sperren nur mit Grund. Anleitung: docs/betrieb/partner-pruefen.md.
+ * Freischalten erst nach Prüfung von Gewerbe, Identität und Eignung, mit unterschriebenem Vertrag und vollständiger Prüfliste samt Besuch vor Ort. Pausieren und Sperren nur mit Grund. Die Schritt-für-Schritt-Anleitung hat der Inhaber.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "partnerbetriebe".

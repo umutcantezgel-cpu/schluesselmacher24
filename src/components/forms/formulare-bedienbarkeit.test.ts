@@ -102,6 +102,17 @@ describe('Bedienbarkeit aller mehrstufigen Formulare (FA-QA-02, FA Abschnitt 26)
     const shell = lies('src/components/flow/flow-shell.tsx');
     expect(shell).toMatch(/wache: !historie \|\| amAnfang/);
     expect(shell).toMatch(/historie\?\.setzeFreigabe\(/);
+    // „Neu beginnen“ und „Zusammenstellung verwerfen“ gehen über reset auf den ersten eigenen Eintrag zurück;
+    // ohne Wacheintrag schneidet die Rückfrage fremde Vorwärts-Einträge ab (Nachbesserung FA-QA-04B).
+    expect(flow).toMatch(/const reset = useCallback\(\(\) => \{[\s\S]{0,800}historie\.neuBeginnen\(\)/);
+    expect(shell).toMatch(/vorwaertsKappen: historie\?\.vorwaertsKappen/);
+    // Ein stabiles Exemplar je Ablauf, kein Memo-Cache, den React verwerfen darf.
+    expect(flow).toMatch(/useState\(\(\) => new SchrittHistorie\(/);
+    expect(flow).not.toMatch(/useMemo\(\(\) => new SchrittHistorie/);
+  });
+
+  it('Zylinder: „Zusammenstellung verwerfen“ ruft den gemeinsamen Neubeginn (Historie inklusive)', () => {
+    expect(lies('src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx')).toMatch(/onClick=\{flow\.reset\}/);
   });
 
   it('das Muster Fahrzeugschlüssel fragt vor dem Verlassen wie die anderen (ungesichert, mitDateien)', () => {

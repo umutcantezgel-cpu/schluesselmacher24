@@ -6,7 +6,7 @@ import { kundenNachricht } from '../../lib/mail/vorlagen/nachricht';
 import { vorgangZuSeite } from '../../lib/data/payload-mapping';
 import type { Vorgaenge } from '../../payload-types';
 
-import { MELDUNG_OHNE_BETRIEB, kundenNachrichtHandler } from './kunden-nachricht';
+import { MELDUNG_BETRIEB_NICHT_FREI, MELDUNG_NICHT_ANGENOMMEN, MELDUNG_NUR_MODELL_A, MELDUNG_OHNE_BETRIEB, kundenNachrichtHandler } from './kunden-nachricht';
 
 /* FA-KERN-05: Nachricht an den Kunden aus dem Vorgang mit Mailverlauf. Resend nur als Attrappe über einen
  * nachgebildeten `fetch` (G5), erfundene Testdaten (G4). */
@@ -111,7 +111,7 @@ describe('Nachricht an den Kunden', () => {
     const mitBetrieb = vorgang({ vermittlung: { status: 'angenommen', partnerbetrieb: 7 } });
     const r = req(vorlage, MITARBEITER, mitBetrieb) as unknown as { payload: { findByID: ReturnType<typeof vi.fn> } };
     r.payload.findByID = vi.fn(async ({ collection }: { collection: string }) =>
-      collection === 'partnerbetriebe' ? { id: 7, firma: 'Testbetrieb Mitte GmbH', ort: 'Gießen' } : mitBetrieb,
+      collection === 'partnerbetriebe' ? { id: 7, firma: 'Testbetrieb Mitte GmbH', ort: 'Gießen', status: 'freigeschaltet', abrechnungsmodell: 'A' } : mitBetrieb,
     );
     const antwort = await kundenNachrichtHandler(r as never);
     expect(antwort.status).toBe(200);
@@ -127,6 +127,27 @@ describe('Nachricht an den Kunden', () => {
     expect(ohne.status).toBe(400);
     expect(((await ohne.json()) as { error: string }).error).toBe(MELDUNG_OHNE_BETRIEB);
     expect(gesendet).toHaveLength(0);
+  });
+
+  it('nennt dem Kunden keinen gesperrten, nicht zusagenden oder Modell-B-Betrieb (FA-07-03, R10)', async () => {
+    const vorlage = vorlageFuer('ausfuehrender-betrieb', 'SM24-B-2026-0061')!;
+    const FREI = { id: 7, firma: 'Testbetrieb Mitte GmbH', ort: 'Gießen', status: 'freigeschaltet', abrechnungsmodell: 'A' };
+    const versuch = async (betrieb: Record<string, unknown>, vermittlung: Record<string, unknown>, teil: Partial<Vorgaenge> = {}) => {
+      const v = vorgang({ vermittlung: { partnerbetrieb: 7, ...vermittlung }, ...teil } as Partial<Vorgaenge>);
+      const r = req(vorlage, MITARBEITER, v) as unknown as { payload: { findByID: ReturnType<typeof vi.fn> } };
+      r.payload.findByID = vi.fn(async ({ collection }: { collection: string }) => (collection === 'partnerbetriebe' ? betrieb : v));
+      const antwort = await kundenNachrichtHandler(r as never);
+      return { status: antwort.status, error: ((await antwort.json()) as { error?: string }).error };
+    };
+    expect(await versuch({ ...FREI, status: 'gesperrt' }, { status: 'angenommen' })).toEqual({ status: 400, error: MELDUNG_BETRIEB_NICHT_FREI('gesperrt') });
+    expect(await versuch({ ...FREI, status: 'pausiert' }, { status: 'termin-bestaetigt' })).toEqual({ status: 400, error: MELDUNG_BETRIEB_NICHT_FREI('pausiert') });
+    expect(await versuch(FREI, { status: 'neu' })).toEqual({ status: 400, error: MELDUNG_NICHT_ANGENOMMEN });
+    expect(await versuch(FREI, { status: 'partner-angefragt' })).toEqual({ status: 400, error: MELDUNG_NICHT_ANGENOMMEN });
+    expect(await versuch({ ...FREI, abrechnungsmodell: 'B' }, { status: 'angenommen' })).toEqual({ status: 400, error: MELDUNG_NUR_MODELL_A });
+    expect(await versuch(FREI, { status: 'angenommen' }, { auftragsweg: 'partner' } as Partial<Vorgaenge>)).toEqual({ status: 400, error: MELDUNG_NUR_MODELL_A });
+    expect(gesendet).toHaveLength(0);
+    expect(update).not.toHaveBeenCalled();
+    expect((await versuch(FREI, { status: 'termin-bestaetigt' })).status).toBe(200);
   });
 
   it('prüft Anmeldung, Rolle, Eingabe und Mailanbindung, bevor etwas hinausgeht', async () => {

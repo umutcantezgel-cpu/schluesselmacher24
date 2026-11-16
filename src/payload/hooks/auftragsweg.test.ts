@@ -202,5 +202,17 @@ describe('Vorschlagsliste der passenden Partner', () => {
     const vorschlag = await partnerVorschlaege({ data: doc({ auftragsweg: 'partner' }), req: r } as never);
     expect(vorschlag).toBe('Schlüssel Main GmbH (Frankfurt)');
     expect(await partnerVorschlaege({ data: doc(), req: r } as never)).toBeNull();
+
+    // Vermittlung außerhalb des Partnerwegs (FA-22-40): Abdeckung nach Postleitzahl und Leistung, Modell egal.
+    const vermittelt = await partnerVorschlaege({
+      data: doc({ vermittlung: { status: 'neu', auftragsart: 'autoschluessel-vor-ort' } } as Partial<Vorgaenge>),
+      req: r,
+    } as never);
+    expect(vermittelt).toBe('Schlüssel Main GmbH (Frankfurt)\nMain Schlüssel A (Offenbach)');
+    const fern = await partnerVorschlaege({
+      data: doc({ kontakt: { ...doc().kontakt, plz: '01067' }, vermittlung: { status: 'neu', auftragsart: 'autoschluessel-vor-ort' } } as Partial<Vorgaenge>),
+      req: r,
+    } as never);
+    expect(fern).toBe('Kein freigeschalteter Partnerbetrieb deckt 01067 ab.');
   });
 });

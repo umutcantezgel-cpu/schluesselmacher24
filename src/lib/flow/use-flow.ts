@@ -141,8 +141,15 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
   const [local, setLocal] = useState<Snapshot<T> | null>(null);
   const [dismissed, setDismissed] = useState(false);
   const [saved, setSaved] = useState(true);
-  // Ein Exemplar je Ablauf; ohne Fenster (Vorabrendern) tut es nichts.
-  const historie = useMemo(() => new SchrittHistorie(id, browserFenster), [id]);
+  // Ein Exemplar je Ablauf, über alle Renderdurchläufe stabil (useState statt useMemo: einen Memo-Cache darf
+  // React verwerfen, dann gingen Pfad und laufender Sprung verloren). Neue Kennung, neues Exemplar.
+  // Ohne Fenster (Vorabrendern) tut es nichts.
+  const [historieZelle, setHistorieZelle] = useState(() => new SchrittHistorie(id, browserFenster));
+  let historie = historieZelle;
+  if (historie.id !== id) {
+    historie = new SchrittHistorie(id, browserFenster);
+    setHistorieZelle(historie);
+  }
 
   // Gespeicherter Stand, sofern er zur aktuellen Datenstruktur passt.
   const stored = useMemo<Snapshot<T> | null>(() => {
@@ -286,10 +293,17 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
 
   const reset = useCallback(() => {
     removeStoredValue(storageKey);
-    setLocal({ version, data: initial, stepId: steps[0]?.id ?? '' });
+    const leer: Snapshot<T> = { version, data: initial, stepId: steps[0]?.id ?? '' };
+    setLocal(leer);
+    // Der Stand für den popstate-Hörer gilt sofort: Der Sprung unten darf den alten Stand nicht zurückholen.
+    lage.current = { ...lage.current, current: leer, step: steps[0] ?? lage.current.step };
     setDismissed(true);
+    // Die Historie geht auf den ersten eigenen Eintrag zurück, statt den aktuellen umzuschreiben: Danach
+    // verlässt Zurück das Formular wie im ersten Schritt (auch bei „Zusammenstellung verwerfen“ mitten im
+    // Ablauf, FA-QA-04B).
+    historie.neuBeginnen();
     onReset?.();
-  }, [initial, steps, storageKey, version, onReset]);
+  }, [initial, steps, storageKey, version, onReset, historie]);
 
   return {
     data: current.data,

@@ -579,11 +579,14 @@ export const Vorgaenge: CollectionConfig = {
                     {
                       // Altfeld (FA-07-01, Zusatz 9): Verweis auf den Bewerbungs-Vorgang aus der Zeit vor der Sammlung
                       // Partnerbetriebe. Nur lesbar, ausgeblendet, sobald ein Partnerbetrieb gesetzt ist; Daten bleiben.
+                      // Auch über REST und Local API nicht beschreibbar (Feldrecht); Server-Code mit overrideAccess
+                      // behält den gespeicherten Wert.
                       name: 'partner',
                       type: 'relationship',
                       relationTo: 'vorgaenge',
                       label: 'Bewerbung (alt)',
                       filterOptions: { art: { equals: 'partner' } },
+                      access: { create: () => false, update: () => false },
                       admin: {
                         width: '40%',
                         readOnly: true,
@@ -622,7 +625,8 @@ export const Vorgaenge: CollectionConfig = {
                 },
                 {
                   // Auftragsart der Vermittlung (FA-KERN-04): Der Partner muss sie übernehmen. Bei Autoschlüsseln
-                  // setzt der Server „Autoschlüssel vor Ort“, wenn nichts gewählt ist.
+                  // setzt der Server die Auftragsart aus der gebuchten Leistung, sonst „Autoschlüssel allgemein“,
+                  // wenn nichts gewählt ist (FA-PLATTFORM-01B, Zusatz 7).
                   name: 'auftragsart',
                   type: 'select',
                   label: 'Auftragsart',

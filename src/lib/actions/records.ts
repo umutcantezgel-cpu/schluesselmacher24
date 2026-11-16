@@ -418,6 +418,10 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
       { title: 'Datenschutz', rows: [{ label: 'Datenschutzhinweise', value: 'zur Kenntnis genommen, Einwilligung erteilt' }] },
     ];
   }
+  // Die gebuchte Leistung in den Daten schreibt nur der Server (FA-PLATTFORM-01B, Zusatz 7): Aus `serviceId`
+  // leitet der Admin die Auftragsart, die Partnervorschläge und den Provisionsvorschlag ab. Mit geprüfter
+  // Buchung gilt deshalb die geprüfte Leistung; eine abweichende Angabe aus dem Browser geht nirgends hin.
+  if (data.verify) payload = { ...payload, serviceId: data.verify.serviceId };
   // Den Auftragsweg in den Daten schreibt nur der Server (FA-KERN-03).
   if (AUFTRAGSWEG_DATEN in payload) {
     payload = { ...payload };

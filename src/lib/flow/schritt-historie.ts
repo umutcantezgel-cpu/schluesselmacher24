@@ -38,6 +38,14 @@ export interface HistorienFenster {
     replaceState: (data: unknown, unused: string) => void;
     go: (delta: number) => void;
   };
+  /**
+   * Navigation API, wo vorhanden: Position des aktuellen Eintrags. Damit lässt sich bei einem Eintrag ohne
+   * Kennung die Richtung erkennen, statt sie zu raten.
+   */
+  navigation?: { readonly currentEntry?: { readonly index: number } | null };
+  /** Scrollposition; beim Abschneiden der Vorwärts-Einträge bleibt die Seite stehen. */
+  readonly scrollY?: number;
+  scrollTo?: (x: number, y: number) => void;
   addEventListener: (typ: 'popstate', fn: (event: { state: unknown }) => void) => void;
   removeEventListener: (typ: 'popstate', fn: (event: { state: unknown }) => void) => void;
 }
@@ -51,6 +59,12 @@ function objekt(state: unknown): Record<string, unknown> {
 
 function letzter(pfad: string[]): string {
   return pfad[pfad.length - 1];
+}
+
+/** Position des aktuellen Eintrags über die Navigation API, sonst `null`. */
+function position(f: HistorienFenster | null): number | null {
+  const index = f?.navigation?.currentEntry?.index;
+  return typeof index === 'number' && index >= 0 ? index : null;
 }
 
 /** Der Schritteintrag dieses Formulars im Zustand, sonst `null`. */
@@ -100,6 +114,8 @@ export type PopstateEntscheidung =
  * Entscheidet nach Zurück oder Vorwärts im Browser, welcher Schritt gilt.
  *
  * - Zurück (früherer Schritt): immer, ohne Prüfung.
+ * - Zurück in der Historie auf einen Eintrag mit einem späteren Schritt (alte Einträge, etwa nach „Neu
+ *   beginnen“): der Schritt bleibt, kein Sprung nach vorn; das nächste Zurück geht weiter hinaus.
  * - Vorwärts: nur, solange der aktuelle Schritt erfüllt ist (`weiterFrei` = `canContinue`), und nur einen
  *   Schritt weit. Ein gesperrter Schritt führt zurück auf den Eintrag, von dem der Sprung kam; ein Sprung
  *   über mehrere Einträge geht bis auf den nächsten. So wird kein Schritt übersprungen, auch keiner mit
@@ -127,10 +143,17 @@ export function popstateEntscheiden({
   const ia = Math.max(0, relevant.indexOf(aktuell));
   const iz = relevant.indexOf(z);
   if (iz <= ia) return { art: 'zeigen', schritt: z };
+  // Die Historie ging zurück: nie vorwärts springen und nie einen späteren Schritt zeigen (FA-QA-04B).
+  if (tiefe < 0) return { art: 'zeigen', schritt: relevant[ia] };
   if (!weiterFrei) return tiefe !== 0 ? { art: 'springen', delta: -tiefe } : { art: 'zeigen', schritt: relevant[ia] };
   if (iz === ia + 1) return { art: 'zeigen', schritt: z };
   if (tiefe > 1) return { art: 'springen', delta: -(tiefe - 1) };
   return { art: 'zeigen', schritt: relevant[ia + 1] };
+}
+
+/** Zwei Pfade mit denselben Schritten in derselben Folge. */
+function gleicherPfad(a: readonly string[], b: readonly string[]): boolean {
+  return a.length === b.length && a.every((schritt, i) => schritt === b[i]);
 }
 
 /** Lage beim popstate, aus dem Zustand des Ablaufs. */
@@ -148,7 +171,13 @@ export interface PopstateLage {
 export class SchrittHistorie {
   /** Pfad des aktuellen Eintrags, wie zuletzt gelesen oder geschrieben. */
   private pfad: string[] | null = null;
+  /** Position des aktuellen Eintrags (Navigation API), sonst `null`. */
+  private pos: number | null = null;
   private sprung: { delta: number; seit: number } | null = null;
+  /** Laufendes Abschneiden der Vorwärts-Einträge: der Eintrag, der danach wieder oben liegt. */
+  private kappe: { state: unknown; pfad: string[]; scrollY: number | null } | null = null;
+  /** Über dem aktuellen Eintrag liegen nur eigene Einträge (nach `vor` oder dem Abschneiden). */
+  private gekappt = false;
   private freigabe: boolean | null = null;
   private readonly abonnenten = new Set<() => void>();
 
@@ -196,6 +225,7 @@ export class SchrittHistorie {
   private setzePfad(pfad: string[] | null): void {
     const vorher = this.amAnfang();
     this.pfad = pfad;
+    this.pos = position(this.fenster());
     if (vorher !== this.amAnfang()) for (const melden of this.abonnenten) melden();
   }
 
@@ -208,8 +238,15 @@ export class SchrittHistorie {
   abgleichen(schritt: string): void {
     const f = this.fenster();
     if (!f || !schritt) return;
+    // Ein Sprung läuft: Der aktuelle Eintrag ist gleich nicht mehr der aktuelle; das popstate gleicht ab.
+    if (this.unterwegs()) return;
     const state = f.history.state;
     const e = eintragAus(state, this.id);
+    // Der Browser steht schon auf einem anderen eigenen Eintrag, das popstate ist aber noch nicht ausgewertet:
+    // Next.js hört zuerst und lässt React im selben Ereignis neu rendern, dieser Abgleich läuft dann mit dem
+    // noch alten Schritt. Den erreichten Eintrag nicht umbeschriften und den bekannten Pfad nicht ersetzen;
+    // sonst misst `beiPopstate` die Richtung falsch und springt bei gesperrtem Vorwärts nicht zurück.
+    if (e && this.pfad && !gleicherPfad(e.pfad, this.pfad)) return;
     let pfad: string[];
     if (e) pfad = letzter(e.pfad) === schritt ? e.pfad : [...e.pfad.slice(0, -1), schritt];
     else if (!istWache(state) && this.pfad && letzter(this.pfad) === schritt) pfad = this.pfad;
@@ -226,8 +263,58 @@ export class SchrittHistorie {
     const pfad = [...(this.pfad ?? [von]), ziel];
     f.history.pushState({ [ABLAUF]: { id: this.id, pfad } }, '');
     this.sprung = null;
+    this.kappe = null;
+    this.gekappt = true;
     this.setzePfad(pfad);
   }
+
+  /** Pfad des aktuellen Eintrags: aus der Kennung, sonst (von Next.js ersetzt) der bekannte. */
+  private pfadJetzt(f: HistorienFenster): string[] | null {
+    const state = f.history.state;
+    return eintragAus(state, this.id)?.pfad ?? (istWache(state) ? null : this.pfad);
+  }
+
+  /**
+   * „Neu beginnen“ (auch „Zusammenstellung verwerfen“ mitten im Ablauf): zurück auf den ersten eigenen
+   * Eintrag statt den aktuellen umzuschreiben. Danach verlässt Zurück das Formular wie im ersten Schritt;
+   * die alten Einträge darüber sind Vorwärts-Einträge, die `canContinue` sperrt oder ein neues „Weiter“
+   * abschneidet.
+   */
+  neuBeginnen(): void {
+    const f = this.fenster();
+    if (!f) return;
+    this.kappe = null;
+    const pfad = this.pfadJetzt(f);
+    if (!pfad || pfad.length <= 1) {
+      this.sprung = null;
+      return;
+    }
+    const delta = -(pfad.length - 1);
+    this.sprung = { delta, seit: this.jetzt() };
+    f.history.go(delta);
+  }
+
+  /**
+   * Schneidet fremde Vorwärts-Einträge ab (eine andere Seite, auf die man aus diesem Schritt gegangen und
+   * zurückgekommen ist), sobald die Rückfrage gilt, aber ohne Wacheintrag (FA-QA-02, FA-QA-04B). Sonst
+   * verließe Browser-Vorwärts das Formular ohne Rückfrage, und die Dateien wären weg. Wie das Abschneiden
+   * durch `pushState`, aber ohne zusätzlichen Eintrag: einen Eintrag zurück (ein eigener Schritt) und den
+   * aktuellen Eintrag wieder darüberlegen. Der Schritt ändert sich dabei nicht.
+   */
+  vorwaertsKappen = (): void => {
+    const f = this.fenster();
+    if (!f || this.gekappt || this.unterwegs()) return;
+    const pfad = this.pfadJetzt(f);
+    // Im ersten Schritt schneidet der Wacheintrag ab; ohne eigenen Eintrag darunter ist nichts zu tun.
+    if (!pfad || pfad.length <= 1) return;
+    this.kappe = {
+      state: { ...objekt(f.history.state), [ABLAUF]: { id: this.id, pfad } },
+      pfad,
+      scrollY: typeof f.scrollY === 'number' ? f.scrollY : null,
+    };
+    this.sprung = { delta: -1, seit: this.jetzt() };
+    f.history.go(-1);
+  };
 
   /**
    * Zurück auf `ziel` über die Historie, wenn ein Eintrag darunter ihn zeigt. `true`: Der Wechsel folgt mit
@@ -237,6 +324,11 @@ export class SchrittHistorie {
   zurueck(ziel: string): boolean {
     const f = this.fenster();
     if (!f) return false;
+    if (this.sprung !== null) {
+      // Der letzte Sprung kam nie an (kein popstate): diesmal direkt wechseln, statt wieder zu warten.
+      this.sprung = null;
+      return false;
+    }
     const delta = rueckwegDelta(eintragAus(f.history.state, this.id)?.pfad ?? null, ziel);
     if (delta === 0) return false;
     this.sprung = { delta, seit: this.jetzt() };
@@ -248,14 +340,29 @@ export class SchrittHistorie {
   beiPopstate(state: unknown, lage: PopstateLage): string | null {
     const f = this.fenster();
     const vorher = this.pfad;
-    const erwartet = this.sprung?.delta ?? -1;
+    const vorherPos = this.pos;
+    const sprung = this.sprung;
     this.sprung = null;
+    const kappe = this.kappe;
+    this.kappe = null;
+    if (kappe && f) {
+      // Abschneiden: der eigene Eintrag darunter ist erreicht; den aktuellen wieder darüberlegen.
+      f.history.pushState(kappe.state, '');
+      if (kappe.scrollY !== null) f.scrollTo?.(0, kappe.scrollY);
+      this.gekappt = true;
+      this.setzePfad(kappe.pfad);
+      return null;
+    }
     let e = eintragAus(state, this.id);
     if (!e) {
-      // Eintrag ohne Kennung (von Next.js ersetzt, Wache ohne Kennung): nur rückwärts ableitbar, aus dem
-      // bekannten Pfad. Sonst ist es ein Eintrag außerhalb des Formulars (Verlassen); das regelt die Wache.
-      if (!vorher || vorher.length + erwartet < 1 || erwartet >= 0) return null;
-      e = { id: this.id, pfad: vorher.slice(0, vorher.length + erwartet) };
+      // Eintrag ohne Kennung (von Next.js ersetzt, Wache ohne Kennung): nur aus dem bekannten Pfad ableitbar
+      // und nur, wenn die Richtung feststeht: ein eigener Sprung oder die Position (Navigation API). Sonst
+      // nicht raten: Es kann eine andere Seite sein (Vorwärts aus dem Formular hinaus); nichts ändern,
+      // nichts schreiben.
+      const jetztPos = position(f);
+      const schritte = sprung ? sprung.delta : jetztPos !== null && vorherPos !== null ? jetztPos - vorherPos : null;
+      if (!vorher || schritte === null || schritte >= 0 || vorher.length + schritte < 1) return null;
+      e = { id: this.id, pfad: vorher.slice(0, vorher.length + schritte) };
       f?.history.replaceState({ ...objekt(state), [ABLAUF]: e }, '');
     }
     const entscheidung = popstateEntscheiden({
@@ -266,18 +373,32 @@ export class SchrittHistorie {
       tiefe: vorher ? e.pfad.length - vorher.length : 0,
       weiterFrei: lage.gueltig && (this.freigabe ?? true),
     });
-    this.setzePfad(e.pfad);
     if (entscheidung.art === 'springen') {
+      // Der bekannte Pfad bleibt der vom Ausgangseintrag: Der Rücksprung wird daran gemessen (vorwärts um
+      // einen Schritt oder zurück auf den Ausgang), nicht am übersprungenen Eintrag.
       this.sprung = { delta: entscheidung.delta, seit: this.jetzt() };
       f?.history.go(entscheidung.delta);
       return null;
     }
-    if (entscheidung.art === 'ignorieren') return null;
+    if (entscheidung.art === 'ignorieren') {
+      this.setzePfad(e.pfad);
+      return null;
+    }
+    // Zeigt der Ablauf einen anderen Schritt als der Eintrag (alter Eintrag, ausgeblendeter Schritt), wird
+    // der Eintrag umbeschriftet; so gilt der Pfad für den eigenen Zurück-Knopf weiter.
+    if (entscheidung.schritt !== letzter(e.pfad)) {
+      e = { id: this.id, pfad: [...e.pfad.slice(0, -1), entscheidung.schritt] };
+      f?.history.replaceState({ ...objekt(state), [ABLAUF]: e }, '');
+    }
+    this.setzePfad(e.pfad);
     return entscheidung.schritt;
   }
 }
 
-/** Das Fenster des Browsers, auf dem Server `null`. */
+/** Das Fenster des Browsers; auf dem Server und ohne Historie (Nachbau im Test) `null`. */
 export function browserFenster(): HistorienFenster | null {
-  return typeof window === 'undefined' ? null : (window as unknown as HistorienFenster);
+  if (typeof window === 'undefined') return null;
+  const fenster = window as unknown as Partial<HistorienFenster>;
+  if (typeof fenster.history?.pushState !== 'function' || typeof fenster.addEventListener !== 'function') return null;
+  return fenster as HistorienFenster;
 }

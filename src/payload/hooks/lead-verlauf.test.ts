@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import type { Vorgaenge } from '../../payload-types';
 
-import { leadVerlaufVorAenderung, partnerbetriebAuswahl } from './lead-verlauf';
+import { betriebHinweisFeld, leadVerlaufVorAenderung, partnerbetriebAuswahl } from './lead-verlauf';
 import { SYSTEM_AENDERUNG } from './vorgang-benachrichtigen';
 
 /* FA-PLATTFORM-01B: Hook des Lead-Verlaufs und Auswahl des Partnerbetriebs am Vorgang. Nachgebildetes `req`,
@@ -44,6 +44,19 @@ describe('Hook Lead-Verlauf', () => {
     const data = lauf({ vermittlung: { status: 'partner-angefragt', partnerbetrieb: 7 }, leadVerlauf: [] }, doc());
     expect(data.leadVerlauf?.map((e) => e.ergebnis)).toEqual(['zugeteilt', 'angeboten']);
   });
+
+  it('lässt einen Eintrag ohne Verweis (Betrieb endgültig gelöscht) leer und schreibt keine 0', () => {
+    const original = doc({
+      leadVerlauf: [
+        { partnerbetrieb: null, am: '2026-11-14T10:00:00.000Z', von: 'Inhaber', ergebnis: 'zugeteilt', id: 'g' },
+        { partnerbetrieb: 7, am: '2026-11-15T10:00:00.000Z', von: 'Mina Saad', ergebnis: 'zugeteilt', id: 'a' },
+      ],
+    });
+    const data = lauf({ vermittlung: { status: 'geprueft', partnerbetrieb: 8 } }, original);
+    expect(data.leadVerlauf?.[0].partnerbetrieb).toBeNull();
+    expect(data.leadVerlauf?.map((e) => e.partnerbetrieb)).not.toContain(0);
+    expect(data.leadVerlauf?.at(-1)?.partnerbetrieb).toBe(8);
+  });
 });
 
 describe('Auswahl des Partnerbetriebs', () => {
@@ -54,5 +67,21 @@ describe('Auswahl des Partnerbetriebs', () => {
     expect(await (partnerbetriebAuswahl as (a: unknown) => unknown)({ id: 42, req })).toEqual({
       or: [{ status: { equals: 'freigeschaltet' } }, { id: { equals: 9 } }],
     });
+  });
+});
+
+describe('Hinweis „Ihr ausführender Betrieb“ am Vorgang (FA-07-03)', () => {
+  const hinweis = (data: Partial<Vorgaenge>) => betriebHinweisFeld({ data } as never) as string | null;
+
+  it('erscheint nach der Annahme, solange die Nachricht nicht gesendet ist', () => {
+    const angenommen = doc({ vermittlung: { status: 'angenommen', partnerbetrieb: 7 } as never });
+    expect(hinweis(angenommen)).toContain('Ihr ausführender Betrieb');
+    expect(hinweis(doc({ vermittlung: { status: 'partner-angefragt', partnerbetrieb: 7 } as never }))).toBeNull();
+    expect(hinweis(doc({ vermittlung: { status: 'angenommen' } as never }))).toBeNull();
+  });
+
+  it('erscheint im Partnerweg nicht, weil der Server die Nachricht dort ablehnt (R10)', () => {
+    const imPartnerweg = doc({ vermittlung: { status: 'angenommen', partnerbetrieb: 7 } as never, daten: { auftragsweg: 'partner' } as never });
+    expect(hinweis(imPartnerweg)).toBeNull();
   });
 });

@@ -63,6 +63,7 @@ export const partnerbetriebVorAenderung: CollectionBeforeChangeHook = ({ data, o
     vertragUnterschrieben: Boolean(vertrag.unterschriebenAm),
     pruefliste,
     sperrGrund: sperre.grund,
+    sperrGrundVorher: (originalDoc?.sperre as Sperre | undefined)?.grund ?? null,
   });
   if (fehler) throw new Error(fehler);
 
@@ -103,7 +104,8 @@ export const partnerbetriebNachAenderung: CollectionAfterChangeHook = async ({ d
       collection: 'vorgaenge',
       where: { and: [{ 'vermittlung.partnerbetrieb': { equals: doc.id } }, { 'vermittlung.status': { in: LAUFEND } }] },
       depth: 0,
-      limit: 500,
+      // Alle laufenden Leads, ohne Seitengrenze: Keiner darf ohne Eintrag „zur Klärung“ bleiben.
+      pagination: false,
       overrideAccess: true,
       req,
     });

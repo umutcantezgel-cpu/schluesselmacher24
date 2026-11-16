@@ -74,6 +74,8 @@ export const VOR_EINFUEHRUNG_TEXT = 'vor Einführung der Prüfliste freigeschalt
 
 export const PRUEFLISTE_MELDUNG = {
   besuchOhneGrund: 'Bei „Besuch nicht möglich“ bitte den Grund eintragen.',
+  besuchMitErgebnis:
+    'Der Besuch ist mit einem Ergebnis erfasst. „Besuch nicht möglich“ passt dazu nicht; bitte eines von beiden entfernen.',
 } as const;
 
 const text = (wert: unknown): string => (typeof wert === 'string' ? wert.trim() : '');
@@ -84,9 +86,14 @@ export function punktErledigt(p: PrueflistePunkt | null | undefined): boolean {
   return Boolean(p?.erledigt && gesetzt(p.am) && text(p.pruefer));
 }
 
-/** Besuch erledigt: Datum, wer und ein geeignetes Ergebnis; oder ausdrücklich nicht möglich mit Grund. */
+/**
+ * Besuch erledigt: Datum, wer und ein geeignetes Ergebnis; oder ausdrücklich nicht möglich mit Grund.
+ * Ein Besuch mit Ergebnis „nicht geeignet“ sperrt die Freischaltung immer, auch mit „Besuch nicht möglich“
+ * (nur geeignete Betriebe werden als aktive Partner geführt).
+ */
 export function besuchErledigt(b: Besuch | null | undefined): boolean {
   if (!b) return false;
+  if (b.ergebnis === 'nicht-geeignet') return false;
   if (b.nichtMoeglich) return Boolean(text(b.nichtMoeglichGrund));
   return gesetzt(b.am) && Boolean(text(b.pruefer)) && (b.ergebnis === 'geeignet' || b.ergebnis === 'auflagen');
 }
@@ -109,7 +116,7 @@ export function prueflisteFehlt(liste: Pruefliste | null | undefined, optionen: 
   }
   if (!besuchErledigt(l.besuch)) {
     fehlt.push(
-      l.besuch?.ergebnis === 'nicht-geeignet' && !l.besuch?.nichtMoeglich
+      l.besuch?.ergebnis === 'nicht-geeignet'
         ? 'Prüfliste: Besuch vor Ort mit Ergebnis „geeignet“'
         : 'Prüfliste: Besuch vor Ort (oder „Besuch nicht möglich“ mit Grund)',
     );
@@ -118,10 +125,14 @@ export function prueflisteFehlt(liste: Pruefliste | null | undefined, optionen: 
   return fehlt;
 }
 
-/** Prüfung beim Speichern, unabhängig vom Stand: „Besuch nicht möglich“ nur mit Grund. */
+/**
+ * Prüfung beim Speichern, unabhängig vom Stand: „Besuch nicht möglich“ nur mit Grund und nicht zusammen mit
+ * einem erfassten Besuchsergebnis.
+ */
 export function prueflisteSpeichernPruefen(liste: Pruefliste | null | undefined): string | null {
   const b = liste?.besuch;
   if (b?.nichtMoeglich && !text(b.nichtMoeglichGrund)) return PRUEFLISTE_MELDUNG.besuchOhneGrund;
+  if (b?.nichtMoeglich && gesetzt(b.ergebnis)) return PRUEFLISTE_MELDUNG.besuchMitErgebnis;
   return null;
 }
 

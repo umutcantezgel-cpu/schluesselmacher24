@@ -3,6 +3,7 @@ import { APIError, type CollectionBeforeChangeHook, type FieldHook } from 'paylo
 import { AUFTRAGSWEG_LABEL, istAuftragsweg, passendePartner, plzMusterAusText, restbetragCents, type PartnerFuerWeg } from '../../lib/auftragsweg';
 import type { BewerbungStatus } from '../../lib/partner/bewerbung';
 import { auftragsartFuerVorgang } from '../../lib/partner/leistungen';
+import { deckendePartner } from '../../lib/partner/region';
 import type { PaymentInfo } from '../../lib/types';
 import type { Partnerbetriebe, Vorgaenge } from '../../payload-types';
 
@@ -87,13 +88,16 @@ export function partnerFuerWeg(
 }
 
 /**
- * Vorschlagsliste am Vorgang (FA-KERN-03): freigeschaltete (nicht pausierte, nicht gesperrte) Partnerbetriebe mit Modell B und passender Auftragsart, deren
- * Einsatzgebiet die Postleitzahl des Kunden abdeckt. Nur bei Vorgängen im Partnerweg; die Zuordnung trifft
- * das Team (A-049), eine Rangfolge gibt es nicht.
+ * Vorschlagsliste am Vorgang (FA-KERN-03, FA-22-40): freigeschaltete (nicht pausierte, nicht gesperrte)
+ * Partnerbetriebe mit passender Auftragsart, deren Einsatzgebiet die Postleitzahl des Kunden abdeckt. Im
+ * Partnerweg zählen nur Betriebe mit Modell B (`passendePartner`, A-049 Nr. 8); bei jedem anderen Vorgang mit
+ * Vermittlung zählt das Modell nicht (`deckendePartner`, src/lib/partner/region.ts). Die Zuordnung trifft das
+ * Team (A-049), eine Rangfolge gibt es nicht. Ohne Partnerweg und ohne Vermittlung keine Liste.
  */
 export const partnerVorschlaege: FieldHook<Vorgaenge> = async ({ data, req }) => {
   const doc = data as Partial<Vorgaenge> | undefined;
-  if (doc?.auftragsweg !== 'partner') return null;
+  const partnerweg = doc?.auftragsweg === 'partner';
+  if (!doc || (!partnerweg && !doc.vermittlung?.status)) return null;
   const plz = doc.kontakt?.plz?.trim() ?? '';
   if (!/^\d{5}$/.test(plz)) return 'Ohne vollständige Postleitzahl gibt es keinen Vorschlag.';
   try {
@@ -108,7 +112,11 @@ export const partnerVorschlaege: FieldHook<Vorgaenge> = async ({ data, req }) =>
     const betriebe = gefunden.docs as Partnerbetriebe[];
     // Auftragsart der Vermittlung, sonst aus der gebuchten Leistung (FA-PLATTFORM-01B, Zusatz 7).
     const art = doc.vermittlung?.auftragsart || auftragsartFuerVorgang(doc.daten);
-    const passend = new Set(passendePartner(plz, betriebe.map(partnerFuerWeg), art).map((p) => p.id));
+    const kandidaten = betriebe.map(partnerFuerWeg);
+    const treffer = partnerweg
+      ? passendePartner(plz, kandidaten, art)
+      : deckendePartner(plz, art, kandidaten);
+    const passend = new Set(treffer.map((p) => p.id));
     const zeilen = betriebe.filter((b) => passend.has(String(b.id))).map((b) => `${b.firma} (${b.ort})`);
     return zeilen.length ? zeilen.join('\n') : `Kein freigeschalteter Partnerbetrieb deckt ${plz} ab.`;
   } catch (error) {

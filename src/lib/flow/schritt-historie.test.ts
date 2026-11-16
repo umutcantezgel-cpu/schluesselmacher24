@@ -19,7 +19,7 @@ import { VERLASSEN_FRAGE, istWache, wacheEinrichten, type WachFenster } from './
 
 type Hoerer = (event: never) => void;
 
-function browser(antwort = false) {
+function browser(antwort = false, { mitNavigation = true }: { mitNavigation?: boolean } = {}) {
   // Vorige Seite und die Seite mit dem Formular.
   let eintraege: unknown[] = [{ __NA: true, seite: 'vorher' }, { __NA: true, seite: 'formular' }];
   let index = 1;
@@ -28,7 +28,25 @@ function browser(antwort = false) {
   const fragen: string[] = [];
   const pushAufrufe: unknown[][] = [];
   const zeit = { jetzt: 0 };
+  const scroll = { y: 0, gesetzt: [] as number[] };
   const f = {
+    // Navigation API (Position des aktuellen Eintrags), in älteren Browsern nicht vorhanden.
+    ...(mitNavigation
+      ? {
+          navigation: {
+            get currentEntry() {
+              return { index };
+            },
+          },
+        }
+      : {}),
+    get scrollY() {
+      return scroll.y;
+    },
+    scrollTo: (_x: number, y: number) => {
+      scroll.y = y;
+      scroll.gesetzt.push(y);
+    },
     history: {
       get state() {
         return eintraege[index];
@@ -77,7 +95,14 @@ function browser(antwort = false) {
     fragen,
     pushAufrufe,
     zeit,
+    scroll,
     hoerer,
+    /** Ein Wechsel innerhalb der App auf eine andere Seite (Next.js, `pushState` mit Adresse). */
+    andereSeite: () => {
+      eintraege = [...eintraege.slice(0, index + 1), { __NA: true, seite: 'andere' }];
+      index += 1;
+    },
+    eintrag: (i: number) => eintraege[i],
     fliessen,
     /** Browser- oder Android-Zurück. */
     zurueck: () => {
@@ -87,6 +112,10 @@ function browser(antwort = false) {
     vorwaerts: (n = 1) => {
       f.history.go(n);
       fliessen();
+    },
+    /** Der Browser verwirft anstehende Sprünge. */
+    verwerfen: () => {
+      warteschlange.length = 0;
     },
     index: () => index,
     anzahl: () => eintraege.length,
@@ -106,7 +135,8 @@ function ablauf(
     start = SCHRITTE[0],
     gueltig = () => true,
     relevant = () => SCHRITTE,
-  }: { start?: string; gueltig?: (schritt: string) => boolean; relevant?: () => string[] } = {},
+    abgleichVorPopstate = false,
+  }: { start?: string; gueltig?: (schritt: string) => boolean; relevant?: () => string[]; abgleichVorPopstate?: boolean } = {},
 ) {
   let schritt = start;
   let warnen = false;
@@ -121,12 +151,21 @@ function ablauf(
       ende?.();
       ende = null;
       wacheJetzt = soll;
-      if (soll !== null) ende = wacheEinrichten(b.wachFenster, () => VERLASSEN_FRAGE, { wache: soll, imAblauf: h.istFolgeEintrag });
+      if (soll !== null) {
+        ende = wacheEinrichten(b.wachFenster, () => VERLASSEN_FRAGE, {
+          wache: soll,
+          imAblauf: h.istFolgeEintrag,
+          vorwaertsKappen: h.vorwaertsKappen,
+        });
+      }
     }
     h.abgleichen(schritt);
   };
 
   b.f.addEventListener('popstate', ((event: { state: unknown }) => {
+    // Im Browser läuft der Hörer von Next.js zuerst und lässt React im selben Ereignis neu rendern: Der
+    // Abgleich mit dem noch alten Schritt kommt dann vor unserem Hörer (Befund der Browserprobe, Abnahme).
+    if (abgleichVorPopstate) h.abgleichen(schritt);
     const neu = h.beiPopstate(event.state, { aktuell: schritt, alle: SCHRITTE, relevant: relevant(), gueltig: gueltig(schritt) });
     if (neu && neu !== schritt) {
       schritt = neu;
@@ -153,8 +192,10 @@ function ablauf(
     zurueckKnopf: () => wechseln(relevant()[relevant().indexOf(schritt) - 1]),
     /** Schrittlink in der Liste. */
     schrittlink: (ziel: string) => wechseln(ziel),
+    /** „Neu beginnen“ oder „Zusammenstellung verwerfen“: wie `reset` in useFlow. */
     neuBeginnen: () => {
       schritt = SCHRITTE[0];
+      h.neuBeginnen();
       rendern();
     },
     dateienWaehlen: (ja: boolean) => {
@@ -197,6 +238,12 @@ describe('Schritt-Historie: reine Entscheidungen (FA-QA-04B)', () => {
     expect(popstateEntscheiden({ ...basis, ziel: 'kontakt', tiefe: 1, weiterFrei: true })).toEqual({ art: 'zeigen', schritt: 'kontakt' });
     expect(popstateEntscheiden({ ...basis, ziel: 'kontakt', tiefe: 1, weiterFrei: false })).toEqual({ art: 'springen', delta: -1 });
     expect(popstateEntscheiden({ ...basis, ziel: 'absenden', tiefe: 2, weiterFrei: false })).toEqual({ art: 'springen', delta: -2 });
+  });
+
+  it('zurück in der Historie auf einen späteren Schritt (alter Eintrag): Schritt bleibt, kein Sprung nach vorn', () => {
+    const erster = { ...basis, aktuell: 'fahrzeug' };
+    expect(popstateEntscheiden({ ...erster, ziel: 'schluessel', tiefe: -1, weiterFrei: false })).toEqual({ art: 'zeigen', schritt: 'fahrzeug' });
+    expect(popstateEntscheiden({ ...erster, ziel: 'unterlagen', tiefe: -2, weiterFrei: true })).toEqual({ art: 'zeigen', schritt: 'fahrzeug' });
   });
 
   it('vorwärts über mehrere Einträge nur bis zum nächsten Schritt (R13: nichts wird übersprungen)', () => {
@@ -276,6 +323,18 @@ describe('Schritt-Historie im Ablauf (FA-QA-04B)', () => {
     expect(a.schritt()).toBe('fahrzeug');
   });
 
+  it('kommt ein Sprung nie an, wechselt der nächste Klick direkt (kein Hängenbleiben)', () => {
+    const b = browser();
+    const a = ablauf(b);
+    a.weiter();
+    a.weiter();
+    a.zurueckKnopf();
+    // Der Browser führt den Sprung nicht aus; eine Sekunde später ein neuer Klick.
+    b.zeit.jetzt += 1500;
+    a.zurueckKnopf();
+    expect(a.schritt()).toBe('schluessel');
+  });
+
   it('ein Schrittlink geht auf den Eintrag des Ziels; Zurück danach verlässt im ersten Schritt', () => {
     const b = browser();
     const a = ablauf(b);
@@ -308,6 +367,53 @@ describe('Schritt-Historie im Ablauf (FA-QA-04B)', () => {
     erfuellt = true;
     b.vorwaerts();
     expect(a.schritt()).toBe('unterlagen');
+  });
+
+  it('Abgleich vor dem popstate (Next.js rendert im selben Ereignis): der erreichte Eintrag wird nicht umbeschriftet', () => {
+    const b = browser();
+    const a = ablauf(b, { abgleichVorPopstate: true });
+    a.weiter();
+    a.weiter();
+    b.zurueck();
+    expect(a.schritt()).toBe('schluessel');
+    expect(eintragAus(b.eintrag(2), 'test')?.pfad).toEqual(['fahrzeug', 'schluessel']);
+    expect(eintragAus(b.eintrag(3), 'test')?.pfad).toEqual(['fahrzeug', 'schluessel', 'unterlagen']);
+    b.zurueck();
+    expect(a.schritt()).toBe('fahrzeug');
+    expect(eintragAus(b.eintrag(1), 'test')?.pfad).toEqual(['fahrzeug']);
+    b.vorwaerts();
+    b.vorwaerts();
+    expect(a.schritt()).toBe('unterlagen');
+    expect(b.index()).toBe(3);
+  });
+
+  it('gesperrtes Vorwärts mit Abgleich vor dem popstate: zurück auf den Eintrag des Schritts, kein doppelter Eintrag', () => {
+    const b = browser();
+    let erfuellt = true;
+    const a = ablauf(b, { gueltig: (s) => s !== 'fahrzeug' || erfuellt, abgleichVorPopstate: true });
+    a.weiter();
+    a.weiter();
+    b.zurueck();
+    b.zurueck();
+    expect(a.schritt()).toBe('fahrzeug');
+    erfuellt = false;
+    b.vorwaerts();
+    // Der Schritt bleibt, der Browser steht wieder auf seinem Eintrag, und die Einträge darüber sind unverändert.
+    expect(a.schritt()).toBe('fahrzeug');
+    expect(b.index()).toBe(1);
+    expect(eintragAus(b.eintrag(2), 'test')?.pfad).toEqual(['fahrzeug', 'schluessel']);
+    expect(eintragAus(b.eintrag(3), 'test')?.pfad).toEqual(['fahrzeug', 'schluessel', 'unterlagen']);
+    erfuellt = true;
+    b.vorwaerts();
+    expect(a.schritt()).toBe('schluessel');
+    b.vorwaerts();
+    expect(a.schritt()).toBe('unterlagen');
+    // Zurück braucht genau so viele Schritte wie Einträge: kein Tastendruck ohne Wirkung.
+    b.zurueck();
+    b.zurueck();
+    expect(a.schritt()).toBe('fahrzeug');
+    b.zurueck();
+    expect(b.verlassen()).toBe(true);
   });
 
   it('die Freigabe des Rahmens (fehlende Unterlagen) sperrt Vorwärts ebenso (R13)', () => {
@@ -366,13 +472,67 @@ describe('Schritt-Historie im Ablauf (FA-QA-04B)', () => {
     expect(neu.schritt()).toBe('schluessel');
   });
 
-  it('„Neu beginnen“ beschriftet den Eintrag um, legt aber keinen an', () => {
+  it('„Neu beginnen“ geht auf den ersten eigenen Eintrag zurück und legt keinen an', () => {
     const b = browser();
     const a = ablauf(b);
     a.weiter();
     a.neuBeginnen();
+    b.fliessen();
     expect(b.anzahl()).toBe(3);
-    expect(eintragAus(b.f.history.state, 'test')?.pfad).toEqual(['fahrzeug', 'fahrzeug']);
+    expect(b.index()).toBe(1);
+    expect(eintragAus(b.f.history.state, 'test')?.pfad).toEqual(['fahrzeug']);
+    expect(a.h.amAnfang()).toBe(true);
+  });
+
+  it('„Neu beginnen“ ab Schritt 3 mit leerem ersten Schritt: Zurück verlässt das Formular (keine Sackgasse)', () => {
+    const b = browser();
+    let leer = false;
+    const a = ablauf(b, { gueltig: (s) => s !== 'fahrzeug' || !leer });
+    a.weiter();
+    a.weiter();
+    leer = true;
+    a.neuBeginnen();
+    b.fliessen();
+    expect(a.schritt()).toBe('fahrzeug');
+    b.zurueck();
+    expect(b.verlassen()).toBe(true);
+    expect(a.schritt()).toBe('fahrzeug');
+  });
+
+  it('„Neu beginnen“ mit gültigem ersten Schritt: Zurück zeigt keinen späteren Schritt', () => {
+    const b = browser();
+    const a = ablauf(b);
+    a.weiter();
+    a.weiter();
+    a.neuBeginnen();
+    b.fliessen();
+    b.zurueck();
+    expect(b.verlassen()).toBe(true);
+    expect(a.schritt()).toBe('fahrzeug');
+  });
+
+  it('„Neu beginnen“, dessen Sprung nicht ankommt: Zurück kommt trotzdem nach höchstens zwei Schritten hinaus', () => {
+    const b = browser();
+    let leer = false;
+    const a = ablauf(b, { gueltig: (s) => s !== 'fahrzeug' || !leer });
+    a.weiter();
+    a.weiter();
+    leer = true;
+    a.neuBeginnen();
+    // Der Browser verwirft den Sprung; eine Sekunde später gleicht der Ablauf den Eintrag ab.
+    b.verwerfen();
+    b.zeit.jetzt += 1500;
+    a.dateienWaehlen(false); // irgendein Rendern
+    expect(eintragAus(b.f.history.state, 'test')?.pfad).toEqual(['fahrzeug', 'schluessel', 'fahrzeug']);
+    let zurueck = 0;
+    while (!b.verlassen() && zurueck < 5) {
+      b.zurueck();
+      zurueck += 1;
+      expect(a.schritt()).toBe('fahrzeug');
+    }
+    expect(b.verlassen()).toBe(true);
+    // Drei Einträge darunter: zwei alte Schritteinträge und der Eintrag der Seite; nie ein Sprung nach vorn.
+    expect(zurueck).toBeLessThanOrEqual(3);
   });
 
   it('ersetzt Next.js den Zustand eines Eintrags, gilt der bekannte Pfad weiter', () => {
@@ -389,6 +549,40 @@ describe('Schritt-Historie im Ablauf (FA-QA-04B)', () => {
     b.vorwaerts();
     b.zurueck();
     expect(a.schritt()).toBe('schluessel');
+  });
+
+  it('ohne Navigation API wird ein Eintrag ohne Kennung nicht geraten: nichts ändern, nichts schreiben', () => {
+    const b = browser(false, { mitNavigation: false });
+    const a = ablauf(b);
+    a.weiter();
+    a.weiter();
+    b.zurueck();
+    b.f.history.replaceState({ __NA: true }, '');
+    b.vorwaerts();
+    b.zurueck();
+    // Der Schritt bleibt, der Eintrag ohne Kennung bleibt unbeschriftet.
+    expect(a.schritt()).toBe('unterlagen');
+    expect(b.f.history.state).toEqual({ __NA: true });
+    // Das nächste Zurück trifft einen eigenen Eintrag: Schritt 1, ohne Sprung nach vorn.
+    b.zurueck();
+    expect(a.schritt()).toBe('fahrzeug');
+  });
+
+  it('Vorwärts aus dem Formular auf eine andere Seite: kein Umschreiben ihres Eintrags, kein Schrittwechsel', () => {
+    const b = browser();
+    const a = ablauf(b);
+    a.weiter();
+    // Ein Link im Formular auf eine andere Seite, dann Browser-Zurück ins Formular (neu eingehängt).
+    b.andereSeite();
+    const fremd = b.f.history.state;
+    b.zurueck();
+    const neu = ablauf(b, { start: 'schluessel' });
+    expect(neu.h.aktuellerPfad()).toEqual(['fahrzeug', 'schluessel']);
+    b.vorwaerts();
+    expect(b.f.history.state).toBe(fremd);
+    expect(eintragAus(b.f.history.state, 'test')).toBeNull();
+    expect(neu.schritt()).toBe('schluessel');
+    void a;
   });
 
   it('ein Ablauf mit ausgeblendetem Schritt geht beim Zurück auf den letzten nötigen', () => {
@@ -466,6 +660,47 @@ describe('Schritt-Historie und Rückfrage vor dem Verlassen (FA-QA-02, FA-QA-04B
     b.zurueck();
     expect(b.fragen).toEqual([VERLASSEN_FRAGE]);
     expect(b.verlassen()).toBe(false);
+  });
+
+  it('Dateien in Schritt 2 nach Rückkehr von einer anderen Seite: Vorwärts führt nicht ohne Frage hinaus', () => {
+    const b = browser(false);
+    ablauf(b).weiter();
+    b.andereSeite();
+    const fremd = b.f.history.state;
+    b.zurueck();
+    const a = ablauf(b, { start: 'schluessel' });
+    b.scroll.y = 640;
+    a.dateienWaehlen(true);
+    b.fliessen();
+    // Die fremden Vorwärts-Einträge sind abgeschnitten, ohne neuen Eintrag; der Schritt bleibt, die Seite steht.
+    expect(b.anzahl()).toBe(3);
+    expect(b.index()).toBe(2);
+    expect(eintragAus(b.f.history.state, 'test')?.pfad).toEqual(['fahrzeug', 'schluessel']);
+    expect(a.schritt()).toBe('schluessel');
+    expect(b.scroll.y).toBe(640);
+    b.vorwaerts();
+    expect(b.index()).toBe(2);
+    expect(a.schritt()).toBe('schluessel');
+    expect(b.eintrag(3)).toBeUndefined();
+    expect(fremd).toEqual({ __NA: true, seite: 'andere' });
+    // Zurück geht weiter einen Schritt zurück, im ersten Schritt fragt das Verlassen.
+    b.zurueck();
+    expect(a.schritt()).toBe('fahrzeug');
+    b.zurueck();
+    expect(b.fragen).toEqual([VERLASSEN_FRAGE]);
+    expect(b.verlassen()).toBe(false);
+  });
+
+  it('nach „Weiter“ wird nicht noch einmal abgeschnitten (kein unnötiger Sprung)', () => {
+    const b = browser(false);
+    const a = ablauf(b);
+    a.weiter();
+    a.weiter();
+    const vorher = b.index();
+    a.dateienWaehlen(true);
+    b.fliessen();
+    expect(b.index()).toBe(vorher);
+    expect(b.pushAufrufe).toHaveLength(2);
   });
 
   it('Formular ohne Dateien hält niemanden fest und legt keine Wache an', () => {

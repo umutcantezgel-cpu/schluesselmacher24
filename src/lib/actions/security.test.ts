@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { VorgangsAnlage } from '@/lib/data';
 import { defaults } from '@/lib/data/defaults';
+import { auftragsartFuerVorgang } from '@/lib/partner/leistungen';
 import { zylinderDetails } from '@/lib/cylinder-summary';
 import { priceCylinderOrder } from '@/lib/pricing';
 import { buildReference } from '@/lib/reference';
@@ -550,6 +551,32 @@ describe('submitRecord', () => {
     const amount = stored[0].payment?.amountCents ?? 0;
     expect(amount).toBeGreaterThanOrEqual(settings.booking.depositMinCents);
     expect(amount).not.toBe(1);
+  });
+
+  it('speichert die geprüfte Leistung, nicht die aus dem Browser (FA-PLATTFORM-01B, Auftragsart und Partnervorschlag)', async () => {
+    const result = await submitRecord({
+      kind: 'termin',
+      area: 'autoschluessel',
+      process: 'termin-mit-anzahlung',
+      contact,
+      // Gefälscht: Die Daten nennen eine andere Leistung als die geprüfte Buchung.
+      payload: { note: BESCHREIBUNG, serviceId: 'fahrzeugoeffnung' },
+      summary: [],
+      uploads: [fahrzeugschein, ...dreiFotos],
+      payment: { scope: 'anzahlung', amountCents: 1, description: 'Anzahlung' },
+      verify: {
+        kind: 'autoschluessel',
+        makeSlug: 'volkswagen',
+        modelSlug: 'golf',
+        serviceId: 'zweitschluessel',
+        keyKind: 'klappschluessel',
+        workingKeys: 1,
+      },
+      consents: zustimmungen,
+    });
+    expect(result.ok).toBe(true);
+    expect(stored[0].payload.serviceId).toBe('zweitschluessel');
+    expect(auftragsartFuerVorgang(stored[0].payload)).toBe('schluessel-nachmachen');
   });
 
   it('lehnt einen Termin außerhalb des Autoschlüssel-Bereichs ab, auch ohne Unterlagen (R13, FA-KERN-02)', async () => {

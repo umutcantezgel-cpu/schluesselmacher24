@@ -135,9 +135,22 @@ describe('Partner werden', () => {
     });
     // Seit FA-KERN-04 beginnt eine Vermittlung mit „neu“; „an Partner vermittelt“ verlangt Zahlung und einen
     // freigeschalteten Partnerbetrieb (src/lib/partner/vermittlung.db.test.ts). Der Verweis auf die Bewerbung bleibt.
-    await imBackendSpeichern(auftrag.recordId!, {
-      vermittlung: { status: 'neu', partner: Number(partner.id), provisionCent: null, notiz: 'Hamburg' },
+    // Seit FA-PLATTFORM-01B (Zusatz 9) ist das Altfeld „Bewerbung (alt)“ nur lesbar: Das Backend setzt es nicht
+    // mehr, ein vorhandener Wert (hier wie aus der Zeit davor, über die Datenschicht) bleibt erhalten.
+    await imBackendSpeichern(auftrag.recordId!, { vermittlung: { status: 'neu', provisionCent: null, notiz: 'Hamburg' } });
+    await payload.update({
+      collection: 'vorgaenge',
+      id: Number(auftrag.recordId),
+      data: { vermittlung: { status: 'neu', partner: Number(partner.id), provisionCent: null, notiz: 'Hamburg' } } as never,
+      depth: 0,
+      overrideAccess: true,
     });
+    const anderer = await createRecord({ kind: 'anfrage', area: 'autoschluessel', process: 'gefuehrte-anfrage', contact: kontakt, payload: {}, summary: [], uploads: [] });
+    await imBackendSpeichern(anderer.recordId!, { vermittlung: { status: 'neu', partner: Number(partner.id) } });
+    const vomBackend = (await payload.findByID({ collection: 'vorgaenge', id: Number(anderer.recordId), depth: 0, overrideAccess: true })) as Vorgaenge;
+    expect(vomBackend.vermittlung?.partner ?? null).toBeNull();
+    // Ein weiteres Speichern im Backend lässt den vorhandenen Verweis stehen.
+    await imBackendSpeichern(auftrag.recordId!, {});
 
     const { docs } = await payload.find({
       collection: 'vorgaenge',
