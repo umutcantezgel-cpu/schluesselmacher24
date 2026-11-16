@@ -670,19 +670,22 @@ export interface Partnerbetriebe {
   abrechnungsmodell: 'A' | 'B';
   einsatzgebiet?: {
     /**
-     * Kommagetrennt, auch Bereiche wie 355*. Ohne Postleitzahlen keine Zuordnung: Der Umkreis wird noch nicht ausgewertet. Bitte Postleitzahlen eintragen.
+     * Kommagetrennt, auch Bereiche wie 355*. Zugeordnet wird über diese Postleitzahlen, den Umkreis und die Orte und Landkreise unten; es reicht, wenn eines passt. Der Umkreis wirkt nur mit der Postleitzahl des Betriebs oben und nur, wenn sie im Ortsstamm steht (Postleitzahlen von Großempfängern und Postfächern fehlen dort). Ohne Postleitzahl des Betriebs zählen nur diese Postleitzahlen und die Orte und Landkreise.
      */
     postleitzahlen?: string | null;
+    /**
+     * Luftlinie um die Postleitzahl des Betriebs (oben). Fehlt diese Postleitzahl oder steht sie nicht im Ortsstamm (etwa eine Großempfänger- oder Postfach-Postleitzahl), wirkt der Umkreis nicht. 0 oder leer: kein Umkreis. Der Umkreis kommt aus der Bewerbung. Prüfen Sie ihn vor dem Freischalten; er gilt ab dann.
+     */
     radiusKm?: number | null;
     /**
-     * Freiwillig. Wird noch nicht ausgewertet; die Zuordnung rechnet mit den Postleitzahlen oben.
+     * Freiwillig. Zählt nur mit amtlichem Schlüssel: Ort mit Gemeindeschlüssel (8 Ziffern), Landkreis mit Kreisschlüssel (5 Ziffern). Ohne Schlüssel oder mit einem Schlüssel der anderen Länge ist der Eintrag nur Dokumentation; der Name wird nicht verglichen.
      */
     regionen?:
       | {
           art: 'ort' | 'landkreis';
           name: string;
           /**
-           * Freiwillig: Gemeindeschlüssel (8 Ziffern) oder Kreisschlüssel (5 Ziffern).
+           * Ort: Gemeindeschlüssel (8 Ziffern). Landkreis: Kreisschlüssel (5 Ziffern). Ohne Schlüssel keine Zuordnung.
            */
           schluessel?: string | null;
           id?: string | null;

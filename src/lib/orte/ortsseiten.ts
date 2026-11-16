@@ -8,18 +8,19 @@
  */
 
 import { AUFTRAGSART_SAMMELWERT } from '../partner/leistungen';
-import { deckendePartner, type PartnerFuerRegion } from '../partner/region';
+import { deckendePartner, type AbdeckungsAuskunft, type PartnerFuerRegion } from '../partner/region';
 import { angabe, firmaVeroeffentlichbar, standort } from '../rechtliches/firma';
 import { ortsseiteGruende, verfuegbarkeitEingetragen } from '../rechtliches/indexierung';
 import type { CityPage, CompanyLocation, CompanyProfile, OrtsseitenLage } from '../types';
 
+import { abdeckungsAuskunft } from './abdeckung';
 import { landName, normalisierePostleitzahl, type OrtsstammIndex } from './index-stamm';
 
 export interface LageKontext {
   stamm: OrtsstammIndex;
   /** Postleitzahl der Werkstatt (Einstellungen: Werkstattadresse, sonst Firmensitz). */
   werkstattPlz: string | null | undefined;
-  /** Freigeschaltete Partnerbetriebe mit Postleitzahlen-Mustern (nie Namen). */
+  /** Freigeschaltete Partnerbetriebe mit Einsatzgebiet (Muster, Umkreis, Orte und Landkreise), nie Namen. */
   partner: readonly PartnerFuerRegion[];
 }
 
@@ -59,7 +60,10 @@ function lageOhneGruende(city: CityPage, kontext: LageKontext): Omit<OrtsseitenL
         ? 'kreis'
         : null;
 
-  const partnerDeckt = postleitzahlen.some((plz) => deckendePartner(plz, AUFTRAGSART_SAMMELWERT, kontext.partner).length > 0);
+  // Eine Definition der Abdeckung (src/lib/partner/region.ts), mit Umkreis und Region aus dem Stamm (FA-PLATTFORM-01C).
+  const auskunft = abdeckungsAuskunft(stamm);
+  const partnerDeckt =
+    kontext.partner.length > 0 && postleitzahlen.some((plz) => deckendePartner(plz, AUFTRAGSART_SAMMELWERT, kontext.partner, auskunft).length > 0);
   const gepflegt = typeof city.prioritaet === 'number' && Number.isFinite(city.prioritaet) ? city.prioritaet : null;
 
   return {
@@ -284,16 +288,20 @@ export function prioritaetsorteZeilen(
   });
 }
 
-/** Gemeinden, deren Postleitzahlen ein freigeschalteter Partner für Autoschlüssel abdeckt. */
+/**
+ * Gemeinden, deren Postleitzahlen ein freigeschalteter Partner für Autoschlüssel abdeckt. Mit `auskunft` (auf dem
+ * Server aus dem Stamm) zählen auch Umkreis und eingetragene Orte und Landkreise (FA-PLATTFORM-01C).
+ */
 export function gemeindenMitPartner(
   stamm: Pick<OrtsstammIndex, 'postleitzahlenDerGemeinde'>,
   schluessel: readonly string[],
   partner: readonly PartnerFuerRegion[],
+  auskunft?: AbdeckungsAuskunft,
 ): Set<string> {
   const ergebnis = new Set<string>();
   if (partner.length === 0) return ergebnis;
   for (const ags of schluessel) {
-    if (stamm.postleitzahlenDerGemeinde(ags).some((plz) => deckendePartner(plz, AUFTRAGSART_SAMMELWERT, partner).length > 0)) ergebnis.add(ags);
+    if (stamm.postleitzahlenDerGemeinde(ags).some((plz) => deckendePartner(plz, AUFTRAGSART_SAMMELWERT, partner, auskunft).length > 0)) ergebnis.add(ags);
   }
   return ergebnis;
 }

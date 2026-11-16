@@ -200,7 +200,7 @@ describe('Vorschlagsliste der passenden Partner', () => {
       ],
     }));
     const vorschlag = await partnerVorschlaege({ data: doc({ auftragsweg: 'partner' }), req: r } as never);
-    expect(vorschlag).toBe('Schlüssel Main GmbH (Frankfurt)');
+    expect(vorschlag).toBe('Schlüssel Main GmbH (Frankfurt): Postleitzahl 603*');
     expect(await partnerVorschlaege({ data: doc(), req: r } as never)).toBeNull();
 
     // Vermittlung außerhalb des Partnerwegs (FA-22-40): Abdeckung nach Postleitzahl und Leistung, Modell egal.
@@ -208,11 +208,34 @@ describe('Vorschlagsliste der passenden Partner', () => {
       data: doc({ vermittlung: { status: 'neu', auftragsart: 'autoschluessel-vor-ort' } } as Partial<Vorgaenge>),
       req: r,
     } as never);
-    expect(vermittelt).toBe('Schlüssel Main GmbH (Frankfurt)\nMain Schlüssel A (Offenbach)');
+    expect(vermittelt).toBe('Schlüssel Main GmbH (Frankfurt): Postleitzahl 603*\nMain Schlüssel A (Offenbach): Postleitzahl 60*');
     const fern = await partnerVorschlaege({
       data: doc({ kontakt: { ...doc().kontakt, plz: '01067' }, vermittlung: { status: 'neu', auftragsart: 'autoschluessel-vor-ort' } } as Partial<Vorgaenge>),
       req: r,
     } as never);
     expect(fern).toBe('Kein freigeschalteter Partnerbetrieb deckt 01067 ab.');
+  });
+
+  it('nennt Betriebe über Umkreis und Landkreis mit Grund (FA-PLATTFORM-01C, erfundene Betriebe)', async () => {
+    const r = req();
+    r.payload.find = vi.fn(async () => ({
+      docs: [
+        { id: 11, firma: 'Umkreis Wetzlar', ort: 'Wetzlar', plz: '35576', status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { postleitzahlen: '', radiusKm: 20 }, auftragsarten: ['schluessel-nachmachen'] },
+        { id: 12, firma: 'Kreisbetrieb', ort: 'Herborn', status: 'freigeschaltet', abrechnungsmodell: 'A', einsatzgebiet: { regionen: [{ art: 'landkreis', name: 'Lahn-Dill-Kreis', schluessel: '06532' }] }, auftragsarten: ['schluessel-nachmachen'] },
+        { id: 13, firma: 'Umkreis ohne Sitz', ort: 'Wetzlar', plz: null, status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { radiusKm: 300 }, auftragsarten: ['schluessel-nachmachen'] },
+      ],
+    }));
+    const vermittlung = { status: 'neu', auftragsart: 'autoschluessel-vor-ort' };
+    const mitPlz = (plz: string, extra: Partial<Vorgaenge> = {}) =>
+      partnerVorschlaege({ data: doc({ kontakt: { ...doc().kontakt, plz }, vermittlung, ...extra } as Partial<Vorgaenge>), req: r } as never);
+    // Gießen: 10,8 km von Wetzlar, anderer Kreis.
+    expect(await mitPlz('35390')).toBe('Umkreis Wetzlar (Wetzlar): Umkreis: 10,8 km von 35576 (bis 20 km)');
+    // Dillenburg: im Lahn-Dill-Kreis, 25,3 km von Wetzlar.
+    expect(await mitPlz('35683')).toBe('Kreisbetrieb (Herborn): Landkreis Lahn-Dill-Kreis (06532)');
+    // Unbekannte Postleitzahl (Großempfänger): kein Treffer, kein Fehler.
+    expect(await mitPlz('45117')).toBe('Kein freigeschalteter Partnerbetrieb deckt 45117 ab.');
+    // Partnerweg: nur Modell B, gleiche Abdeckung.
+    expect(await mitPlz('35683', { auftragsweg: 'partner', vermittlung: undefined } as Partial<Vorgaenge>)).toBe('Kein freigeschalteter Partnerbetrieb deckt 35683 ab.');
+    expect(await mitPlz('35390', { auftragsweg: 'partner', vermittlung: undefined } as Partial<Vorgaenge>)).toBe('Umkreis Wetzlar (Wetzlar): Umkreis: 10,8 km von 35576 (bis 20 km)');
   });
 });

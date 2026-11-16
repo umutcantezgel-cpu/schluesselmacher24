@@ -7,6 +7,7 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
+import { ortsstammIndex, type OrtsstammIndex } from './index-stamm';
 import type { GemeindenDatei, KreiseDatei, OrtsstammDaten, PostleitzahlenDatei, PrioritaetDatei } from './typen';
 
 export const ORTSSTAMM_ORDNER = path.join(process.cwd(), 'content', 'orte');
@@ -31,6 +32,23 @@ export async function ortsstammLesen(ordner = ORTSSTAMM_ORDNER): Promise<Ortssta
     lies<PrioritaetDatei>(ordner, ORTSSTAMM_DATEIEN.prioritaet),
   ]);
   return { gemeinden, kreise, postleitzahlen, prioritaet };
+}
+
+let indexZwischenspeicher: Promise<OrtsstammIndex> | null = null;
+
+/**
+ * Index über den ganzen Stamm, einmal je Prozess (FA-PLATTFORM-01C). In der Anwendung über `ortsstamm()` aus
+ * stamm.ts; die Hooks der Sammlungen (Vorschlagsliste am Vorgang) lesen hier, weil sie auch unter `payload run`
+ * laufen. Schlägt das Lesen fehl, wird beim nächsten Aufruf neu gelesen.
+ */
+export function ortsstammIndexLesen(): Promise<OrtsstammIndex> {
+  indexZwischenspeicher ??= ortsstammLesen()
+    .then(ortsstammIndex)
+    .catch((fehler) => {
+      indexZwischenspeicher = null;
+      throw fehler;
+    });
+  return indexZwischenspeicher;
 }
 
 let prioritaetZwischenspeicher: Promise<PrioritaetDatei> | null = null;

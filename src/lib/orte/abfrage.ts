@@ -4,7 +4,8 @@
  * einer abdeckt (Partnernamen erfährt der Kunde vor der Buchung nicht).
  *
  * Reiner Kern: Stamm, Eigenbereich und Partnerliste kommen von außen (auf dem Server: stamm.ts). Die Abdeckung
- * prüft `deckendePartner` aus src/lib/partner/region.ts (freigeschaltet, Leistung, Postleitzahlen-Muster).
+ * prüft `deckendePartner` aus src/lib/partner/region.ts (freigeschaltet, Leistung; Postleitzahlen-Muster, Umkreis
+ * oder eingetragener Ort und Landkreis, mit der Auskunft aus diesem Stamm, FA-PLATTFORM-01C).
  */
 
 import { imEigenbereich } from '../auftragsweg';
@@ -12,6 +13,7 @@ import { AUFTRAGSART_SAMMELWERT } from '../partner/leistungen';
 import { deckendePartner, type PartnerFuerRegion } from '../partner/region';
 import type { OwnArea } from '../types';
 
+import { abdeckungsAuskunft } from './abdeckung';
 import { landName, normalisierePostleitzahl, type OrtsstammIndex } from './index-stamm';
 
 export interface PostleitzahlAuskunft {
@@ -62,6 +64,6 @@ export function postleitzahlAuskunft(eingabe: string, stamm: OrtsstammIndex, kon
     kreise,
     land: (landSchluessel && landName(landSchluessel)) || null,
     eigenbereich: imEigenbereich(plz, 'Deutschland', kontext.eigenbereich),
-    partnerVorhanden: deckendePartner(plz, leistung, kontext.partner ?? []).length > 0,
+    partnerVorhanden: deckendePartner(plz, leistung, kontext.partner ?? [], abdeckungsAuskunft(stamm)).length > 0,
   };
 }

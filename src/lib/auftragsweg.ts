@@ -19,8 +19,9 @@
 
 import { formatCents, formatDateTime } from './format';
 import { auftragsartFuerLeistung } from './partner/leistungen';
-import { darfVermitteln } from './partner/vermittlung';
 import type { BewerbungStatus } from './partner/bewerbung';
+// Gegenseitiger Import mit region.ts (die eine Definition der Abdeckung, FA-PLATTFORM-01C); nur beim Aufruf benutzt.
+import { abdeckungsGruende, type AbdeckungsAuskunft, type RegionEintrag } from './partner/region';
 import type { AppointmentInfo, Auftragsweg, BusinessRecord, OwnArea, PaymentInfo, PriceQuote } from './types';
 
 export type { Auftragsweg };
@@ -89,21 +90,59 @@ export interface PartnerFuerWeg {
    * deshalb zählen nur Betriebe mit Modell `B`; Modell `A` (Kunde zahlt an den Partner) passt nicht dazu.
    */
   abrechnungsmodell: 'A' | 'B';
+  /** Postleitzahl des Betriebssitzes, Mittelpunkt des Umkreises (FA-PLATTFORM-01C). */
+  plz?: string | null;
+  /** Umkreis in km; zählt nur mit Auskunft aus dem Ortsstamm. */
+  radiusKm?: number | null;
+  /** Orte und Landkreise mit amtlichem Schlüssel; zählen nur mit Auskunft aus dem Ortsstamm. */
+  regionen?: readonly RegionEintrag[] | null;
+}
+
+/** Was aus einem gespeicherten Partnerbetrieb für Weg und Abdeckung zählt. Name und Kontakt bleiben außen vor. */
+export interface PartnerbetriebFuerWeg {
+  id: number | string;
+  status: string;
+  plz?: string | null;
+  einsatzgebiet?: {
+    postleitzahlen?: string | null;
+    radiusKm?: number | null;
+    regionen?: ReadonlyArray<{ art?: string | null; name?: string | null; schluessel?: string | null }> | null;
+  } | null;
+  auftragsarten?: readonly string[] | null;
+  abrechnungsmodell?: string | null;
 }
 
 /**
- * Partner, die diesen Auftrag bekommen dürfen: freigeschaltet (also nicht pausiert, gesperrt, beendet oder
- * in Prüfung), Abrechnungsmodell B, passende Auftragsart, Postleitzahl im Einsatzgebiet. Bei mehreren
- * entscheidet das Team im Admin (A-049); hier gibt es keine Rangfolge.
+ * Gespeicherter Partnerbetrieb → `PartnerFuerWeg`. Ohne Angabe gilt Abrechnungsmodell A wie im Standard der
+ * Sammlung; im Partnerweg zählt nur Modell B (A-049 Nr. 8).
+ */
+export function partnerFuerWegAusBetrieb(doc: PartnerbetriebFuerWeg): PartnerFuerWeg {
+  return {
+    id: String(doc.id),
+    status: doc.status as BewerbungStatus,
+    postleitzahlen: plzMusterAusText(doc.einsatzgebiet?.postleitzahlen),
+    auftragsarten: [...(doc.auftragsarten ?? [])],
+    abrechnungsmodell: doc.abrechnungsmodell === 'B' ? 'B' : 'A',
+    plz: doc.plz ?? null,
+    radiusKm: typeof doc.einsatzgebiet?.radiusKm === 'number' ? doc.einsatzgebiet.radiusKm : null,
+    regionen: (doc.einsatzgebiet?.regionen ?? []).map((r) => ({ art: r.art ?? null, name: r.name ?? null, schluessel: r.schluessel ?? null })),
+  };
+}
+
+/**
+ * Partner, die diesen Auftrag bekommen dürfen: Abrechnungsmodell B und Abdeckung nach der einen Definition
+ * (`abdeckungsGruende`, src/lib/partner/region.ts): freigeschaltet (also nicht pausiert, gesperrt, beendet oder
+ * in Prüfung), passende Auftragsart, Postleitzahl im Einsatzgebiet, mit Auskunft aus dem Ortsstamm auch im
+ * Umkreis oder in einer eingetragenen Region. Bei mehreren entscheidet das Team im Admin (A-049); hier gibt es
+ * keine Rangfolge. Am Zahlweg ändert die Abdeckung nichts (`zahlungsPlan`).
  */
 export function passendePartner(
   postleitzahl: string,
   partner: readonly PartnerFuerWeg[],
   auftragsart: string = AUFTRAGSART_AUTOSCHLUESSEL,
+  auskunft?: AbdeckungsAuskunft,
 ): PartnerFuerWeg[] {
-  return partner.filter(
-    (p) => p.abrechnungsmodell === 'B' && darfVermitteln(p, auftragsart) && plzPasst(postleitzahl, p.postleitzahlen),
-  );
+  return partner.filter((p) => p.abrechnungsmodell === 'B' && abdeckungsGruende(postleitzahl, auftragsart, p, auskunft).length > 0);
 }
 
 /** Ist der Partnerweg für Kunden eingeschaltet? Nur mit `PARTNERMODELL_B=aktiv` (A-049). */
@@ -147,6 +186,8 @@ export interface StandortEingabe {
   partner: readonly PartnerFuerWeg[];
   /** Schalter `PARTNERMODELL_B` (siehe `partnerwegAktiv`). */
   partnerwegAktiv: boolean;
+  /** Auskunft aus dem Ortsstamm für Umkreis und Region (nur auf dem Server); ohne sie zählen nur die Postleitzahlen. */
+  abdeckung?: AbdeckungsAuskunft;
 }
 
 /**
@@ -166,7 +207,7 @@ export function terminstandorte(eingabe: StandortEingabe): StandortErmittlung {
   if (!eingabe.partnerwegAktiv || !deutschland || eigen || !/^\d{5}$/.test(plz)) {
     return { standorte, werkstattWeg, ohnePartner: false, passendePartnerIds: [] };
   }
-  const passend = passendePartner(plz, eingabe.partner, auftragsartFuerLeistung(eingabe.leistung));
+  const passend = passendePartner(plz, eingabe.partner, auftragsartFuerLeistung(eingabe.leistung), eingabe.abdeckung);
   if (passend.length) standorte.push({ standort: 'partner', weg: 'partner' });
   return { standorte, werkstattWeg, ohnePartner: passend.length === 0, passendePartnerIds: passend.map((p) => p.id) };
 }

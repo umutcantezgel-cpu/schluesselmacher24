@@ -153,20 +153,36 @@ export const Partnerbetriebe: CollectionConfig = {
           label: 'Postleitzahlen',
           admin: {
             description:
-              'Kommagetrennt, auch Bereiche wie 355*. Ohne Postleitzahlen keine Zuordnung: Der Umkreis wird noch nicht ausgewertet. Bitte Postleitzahlen eintragen.',
+              'Kommagetrennt, auch Bereiche wie 355*. Zugeordnet wird über diese Postleitzahlen, den Umkreis und die Orte und Landkreise unten; '
+              + 'es reicht, wenn eines passt. Der Umkreis wirkt nur mit der Postleitzahl des Betriebs oben und nur, wenn sie im Ortsstamm steht '
+              + '(Postleitzahlen von Großempfängern und Postfächern fehlen dort). Ohne Postleitzahl des Betriebs zählen nur diese Postleitzahlen und die Orte und Landkreise.',
           },
         },
-        { name: 'radiusKm', type: 'number', label: 'Umkreis (km)', min: 0, max: MAX_RADIUS_KM },
         {
-          // Zuordnung zu Orten und Landkreisen (FA-22-40). Darf leer sein, bis die Ortsdatenbasis steht
-          // (FA-PLATTFORM-03); bis dahin nur Dokumentation, die Zuordnung rechnet mit den Postleitzahlen.
+          name: 'radiusKm',
+          type: 'number',
+          label: 'Umkreis (km)',
+          min: 0,
+          max: MAX_RADIUS_KM,
+          admin: {
+            description:
+              'Luftlinie um die Postleitzahl des Betriebs (oben). Fehlt diese Postleitzahl oder steht sie nicht im Ortsstamm '
+              + '(etwa eine Großempfänger- oder Postfach-Postleitzahl), wirkt der Umkreis nicht. 0 oder leer: kein Umkreis. '
+              + 'Der Umkreis kommt aus der Bewerbung. Prüfen Sie ihn vor dem Freischalten; er gilt ab dann.',
+          },
+        },
+        {
+          // Zuordnung zu Orten und Landkreisen (FA-22-40). Ausgewertet seit FA-PLATTFORM-01C, nur über den
+          // amtlichen Schlüssel (src/lib/partner/region.ts); Namen werden nicht verglichen.
           name: 'regionen',
           type: 'array',
           label: 'Orte und Landkreise',
           labels: { singular: 'Ort oder Landkreis', plural: 'Orte und Landkreise' },
           access: nurTeam,
           admin: {
-            description: 'Freiwillig. Wird noch nicht ausgewertet; die Zuordnung rechnet mit den Postleitzahlen oben.',
+            description:
+              'Freiwillig. Zählt nur mit amtlichem Schlüssel: Ort mit Gemeindeschlüssel (8 Ziffern), Landkreis mit Kreisschlüssel (5 Ziffern). '
+              + 'Ohne Schlüssel oder mit einem Schlüssel der anderen Länge ist der Eintrag nur Dokumentation; der Name wird nicht verglichen.',
           },
           fields: [
             {
@@ -188,7 +204,7 @@ export const Partnerbetriebe: CollectionConfig = {
                   name: 'schluessel',
                   type: 'text',
                   label: 'Amtlicher Schlüssel',
-                  admin: { width: '30%', description: 'Freiwillig: Gemeindeschlüssel (8 Ziffern) oder Kreisschlüssel (5 Ziffern).' },
+                  admin: { width: '30%', description: 'Ort: Gemeindeschlüssel (8 Ziffern). Landkreis: Kreisschlüssel (5 Ziffern). Ohne Schlüssel keine Zuordnung.' },
                   validate: (wert: unknown) =>
                     wert === null || wert === undefined || wert === '' || /^(\d{5}|\d{8})$/.test(String(wert)) ? true : 'Bitte 5 oder 8 Ziffern.',
                 },

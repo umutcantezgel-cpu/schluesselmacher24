@@ -1,9 +1,24 @@
 import { APIError, type CollectionBeforeChangeHook, type FieldHook } from 'payload';
 
-import { AUFTRAGSWEG_LABEL, istAuftragsweg, passendePartner, plzMusterAusText, restbetragCents, type PartnerFuerWeg } from '../../lib/auftragsweg';
-import type { BewerbungStatus } from '../../lib/partner/bewerbung';
+import {
+  AUFTRAGSWEG_LABEL,
+  istAuftragsweg,
+  partnerFuerWegAusBetrieb,
+  passendePartner,
+  restbetragCents,
+  type PartnerFuerWeg,
+} from '../../lib/auftragsweg';
+import { abdeckungsAuskunft } from '../../lib/orte/abdeckung';
+import { ortsstammIndexLesen } from '../../lib/orte/dateien';
 import { auftragsartFuerVorgang } from '../../lib/partner/leistungen';
-import { deckendePartner } from '../../lib/partner/region';
+import {
+  abdeckungsGrundText,
+  abdeckungsGruende,
+  brauchtOrtsstamm,
+  deckendePartnerMitGrund,
+  type AbdeckungsAuskunft,
+  type AbdeckungsGrund,
+} from '../../lib/partner/region';
 import type { PaymentInfo } from '../../lib/types';
 import type { Partnerbetriebe, Vorgaenge } from '../../payload-types';
 
@@ -73,26 +88,48 @@ export const auftragswegVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({
   return data;
 };
 
-/** Partnerbetrieb für die Vorschlagsliste: nur Stand, Einsatzgebiet, Auftragsarten und Abrechnungsmodell zählen. */
+/**
+ * Partnerbetrieb für die Vorschlagsliste: nur Stand, Postleitzahl des Betriebs, Einsatzgebiet (Muster, Umkreis,
+ * Orte und Landkreise), Auftragsarten und Abrechnungsmodell zählen. Ohne Angabe gilt Modell A wie im Standard der
+ * Sammlung; im Partnerweg zählt nur Modell B (A-049 Nr. 8).
+ */
 export function partnerFuerWeg(
-  doc: Pick<Partnerbetriebe, 'id' | 'status' | 'einsatzgebiet' | 'auftragsarten'> & { abrechnungsmodell?: Partnerbetriebe['abrechnungsmodell'] | null },
+  doc: Pick<Partnerbetriebe, 'id' | 'status' | 'einsatzgebiet' | 'auftragsarten'> & {
+    plz?: Partnerbetriebe['plz'];
+    abrechnungsmodell?: Partnerbetriebe['abrechnungsmodell'] | null;
+  },
 ): PartnerFuerWeg {
-  return {
-    id: String(doc.id),
-    status: doc.status as BewerbungStatus,
-    postleitzahlen: plzMusterAusText(doc.einsatzgebiet?.postleitzahlen),
-    auftragsarten: [...(doc.auftragsarten ?? [])],
-    // Ohne Angabe gilt Modell A wie im Standard der Sammlung; im Partnerweg zählt nur Modell B (A-049 Nr. 8).
-    abrechnungsmodell: doc.abrechnungsmodell === 'B' ? 'B' : 'A',
-  };
+  return partnerFuerWegAusBetrieb(doc);
 }
 
 /**
- * Vorschlagsliste am Vorgang (FA-KERN-03, FA-22-40): freigeschaltete (nicht pausierte, nicht gesperrte)
- * Partnerbetriebe mit passender Auftragsart, deren Einsatzgebiet die Postleitzahl des Kunden abdeckt. Im
- * Partnerweg zählen nur Betriebe mit Modell B (`passendePartner`, A-049 Nr. 8); bei jedem anderen Vorgang mit
- * Vermittlung zählt das Modell nicht (`deckendePartner`, src/lib/partner/region.ts). Die Zuordnung trifft das
- * Team (A-049), eine Rangfolge gibt es nicht. Ohne Partnerweg und ohne Vermittlung keine Liste.
+ * Auskunft aus dem Ortsstamm für Umkreis und Region, nur wenn ein Betrieb sie braucht. Ist der Stamm nicht lesbar,
+ * zählen nur die Postleitzahlen (wie vor FA-PLATTFORM-01C), und das Log nennt den Grund.
+ */
+async function auskunftFuer(kandidaten: readonly PartnerFuerWeg[], warnen: (fehler: unknown) => void): Promise<AbdeckungsAuskunft | undefined> {
+  if (!brauchtOrtsstamm(kandidaten)) return undefined;
+  try {
+    return abdeckungsAuskunft(await ortsstammIndexLesen());
+  } catch (fehler) {
+    warnen(fehler);
+    return undefined;
+  }
+}
+
+/** Zeile der Vorschlagsliste: „Firma (Ort): Grund; Grund“. */
+function vorschlagsZeile(betrieb: Pick<Partnerbetriebe, 'firma' | 'ort'>, gruende: readonly AbdeckungsGrund[]): string {
+  const name = `${betrieb.firma} (${betrieb.ort})`;
+  return gruende.length ? `${name}: ${gruende.map(abdeckungsGrundText).join('; ')}` : name;
+}
+
+/**
+ * Vorschlagsliste am Vorgang (FA-KERN-03, FA-22-40, FA-PLATTFORM-01C): freigeschaltete (nicht pausierte, nicht
+ * gesperrte) Partnerbetriebe mit passender Auftragsart, die die Postleitzahl des Kunden abdecken: über ihre
+ * Postleitzahlen, ihren Umkreis oder einen eingetragenen Ort oder Landkreis (eine Definition,
+ * src/lib/partner/region.ts). Jede Zeile nennt den Grund. Im Partnerweg zählen nur Betriebe mit Modell B
+ * (`passendePartner`, A-049 Nr. 8); bei jedem anderen Vorgang mit Vermittlung zählt das Modell nicht
+ * (`deckendePartnerMitGrund`). Die Zuordnung trifft das Team (A-049), eine Rangfolge gibt es nicht. Ohne
+ * Partnerweg und ohne Vermittlung keine Liste.
  */
 export const partnerVorschlaege: FieldHook<Vorgaenge> = async ({ data, req }) => {
   const doc = data as Partial<Vorgaenge> | undefined;
@@ -113,11 +150,12 @@ export const partnerVorschlaege: FieldHook<Vorgaenge> = async ({ data, req }) =>
     // Auftragsart der Vermittlung, sonst aus der gebuchten Leistung (FA-PLATTFORM-01B, Zusatz 7).
     const art = doc.vermittlung?.auftragsart || auftragsartFuerVorgang(doc.daten);
     const kandidaten = betriebe.map(partnerFuerWeg);
+    const auskunft = await auskunftFuer(kandidaten, (err) => req.payload.logger.warn({ msg: 'Ortsstamm für die Partnervorschläge nicht lesbar', err }));
     const treffer = partnerweg
-      ? passendePartner(plz, kandidaten, art)
-      : deckendePartner(plz, art, kandidaten);
-    const passend = new Set(treffer.map((p) => p.id));
-    const zeilen = betriebe.filter((b) => passend.has(String(b.id))).map((b) => `${b.firma} (${b.ort})`);
+      ? passendePartner(plz, kandidaten, art, auskunft).map((p) => ({ partner: p, gruende: abdeckungsGruende(plz, art, p, auskunft) }))
+      : deckendePartnerMitGrund(plz, art, kandidaten, auskunft);
+    const gruende = new Map(treffer.map((t) => [t.partner.id, t.gruende]));
+    const zeilen = betriebe.filter((b) => gruende.has(String(b.id))).map((b) => vorschlagsZeile(b, gruende.get(String(b.id)) ?? []));
     return zeilen.length ? zeilen.join('\n') : `Kein freigeschalteter Partnerbetrieb deckt ${plz} ab.`;
   } catch (error) {
     req.payload.logger.warn({ msg: 'Partnervorschläge nicht geladen', err: error });
