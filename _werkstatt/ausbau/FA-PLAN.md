@@ -65,4 +65,4 @@ Status: offen · läuft · abgenommen · committet (mit Commit) · wartet (mit G
 |---|---|---|---|---|
 | FA-QA-01 | Pflichttests je Hauptprozess als Browserläufe bis in den Admin (13 Zeilen aus FA-27), Geräteprofile iPhone, iPad, Android, Desktop | FA-27 | nein | offen |
 | FA-QA-02 | Bedienbarkeit: Zurück ohne Datenverlust auch mit Dateien, Hilfe an kritischen Stellen, keine Sackgassen | FA-26 | nein | committet und voll geprüft (Unit 3.441, Build 178/178): Hilfeblock, Fehlermeldung beim Absenden, Fortschritt für Vorleseprogramme, Auswege; Rückfrage vor dem Verlassen im Browser geprüft (15 von 15) · echte Geräte: M-07 |
-| FA-QA-03 | Abnahmebogen mit Testprotokollen und Bildern je Hauptprozess; Prüfung „keine Demo-Daten, keine Platzhalter, keine falschen Kontaktdaten“ | FA-27-15 bis -17 | nein | offen |
+| FA-QA-03 | Abnahmebogen mit Testprotokollen und Bildern je Hauptprozess; Prüfung „keine Demo-Daten, keine Platzhalter, keine falschen Kontaktdaten“ | FA-27-15 bis -17 | nein | offen · Prüfwerkzeug `reste.mjs` (keine Demo-Daten, Platzhalter, falschen Kontaktdaten) als FA-QA-03A läuft (`pakete/FA-QA-03A.md`) |
