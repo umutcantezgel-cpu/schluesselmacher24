@@ -129,3 +129,12 @@ OFFENE FRAGE 8 (neu): Suchtitel der Übersicht im Mischzustand „Schlüssel nac
 OFFENE FRAGE 3 und 4 sind mit der Nachbesserung erledigt bzw. an den Orchestrator übergeben (3: funktionsliste.mjs; 4: Suchbeschreibung und Ablauf umgesetzt).
 
 === ENDE FA-INHALT-03I · BEREIT ZUR RÜCKGABE ===
+
+## ABNAHME (Orchestrator, 16.11.2026)
+
+- **Prüfkette grün** mit der Abnahme von FA-SHOP-03: Typprüfung, Lint, Unit 3.552, Datenbanktests 139, Build 178 von 178; Onpage 135 Seiten ohne Befund.
+- **Sichtprobe** bei 390 px (Build der Abnahme): `/schluessel-nach-code` zeigt ohne Produkte die Kopfzeile „Auf Anfrage“, den Hinweis „Direkt bestellen können Sie hier derzeit nicht.“ und unter „Vom Code zur Anfrage“ drei Anfrageschritte statt der Kaufschritte; `/artikel` ohne Artikel mit „Artikel anfragen“. Produkt-, Hersteller- und Kategorieseiten lassen sich heute nicht im Browser prüfen (keine veröffentlichten Produkte); sie sind über die gerenderten Seitentests und den Auszug `protokolle/roh/texte-auszug.txt` in allen drei Verfügbarkeiten geprüft.
+- **Vom Orchestrator nachgezogen:** Das Info-Feld „Wo steht der Code?“ im Bestellformular bekommt denselben bereinigten Text wie die Seite (Eigenschaft `fundstelle`); die Browserprüfung `werkzeuge/funktionsliste.mjs` sucht die neue Plakette „Code hat die richtige Form“; aus der Beschreibung „Autoschlüsselgehäuse“ ist der Satz zum Preis nach Anfrage gestrichen (er stimmt mit echten Produkten nicht mehr).
+- **Freigegeben:** Ohne lieferbares Produkt wechselt auch der Suchtitel der Übersicht auf „Schlüssel nach Code anfragen“, damit Suchergebnis und Seite dasselbe sagen. Die drei Anfrageschritte stehen im Seitencode und bleiben dort.
+- **Nicht geändert (G9):** der Kasten „Anfertigung nach Ihrer Codeangabe“ auf Seiten ohne Bestellmöglichkeit (MA-40).
+- **Für Menschen:** MA-41 (Schlussredaktion der neuen Sätze), MA-40.

@@ -108,3 +108,11 @@ Kein Server, kein Browser. Die Oberfläche ist über die herausgelösten Baustei
 Geänderte Dateien der Nachbesserung: `src/app/(site)/gleichschliessende-zylinder/konfigurator/{konfigurator.tsx,kern.ts,kern.test.ts,teile.tsx,teile.test.tsx}`, `src/lib/konfigurator/{hersteller-angabe.ts,hersteller-angabe.test.ts,schliessplan.ts}`, dieser Bericht. Keine gemeinsame Datei berührt; `security.test.ts` prüft weiter auf „im Konfigurator neu“ und bleibt grün.
 
 Prüfung über die Datenweiche, 16.11.2026: `--json -- npx vitest run` 225 von 225 Dateien, 3532 von 3532 Tests grün · `npm run typecheck` ohne Fehler · `npm run lint` ohne Fehler · `--json -- npm run build` grün.
+
+## ABNAHME (Orchestrator, 16.11.2026)
+
+- **Prüfkette grün** mit der Abnahme von FA-SHOP-03: Typprüfung, Lint, Unit 3.552, Datenbanktests 139, Build 178 von 178; Onpage 135 Seiten ohne Befund.
+- **Browserprobe** (Chromium 390 × 844, sechs Schritte bis zur Zusammenfassung, keine Fehler in der Konsole): Schritt 1 „Hersteller wählen“ zeigt BKS, ABUS und „Keine Vorgabe“ mit dem Satz „Ihre Wahl geben wir an die Werkstatt weiter. Sie ändert die Summe nicht.“; die Zusammenfassung zeigt „Hersteller: BKS“ mit demselben Hinweis, die Summe ist dieselbe wie ohne Wahl (39,00 € Zylinder, 15,00 € Option, zusammen 54,00 €). Der Zustand mit dem Haken „Preis nicht bestätigt“ ist im Browser nicht geprüft (braucht Daten mit Haken); er ist durch die Tests zu `abschlussAktion`, `zusammenfassungBereit`, `AnfrageWeg` und die Serverprüfung belegt. Probe im Backend: MA-46.
+- **Vom Orchestrator nachgezogen:** Das Schließplan-PDF beschriftet die Herstellerwahl mit „Hersteller (Wahl des Kunden)“ statt „System“.
+- **Entschieden zu den offenen Fragen:** `herstellerAngabe` ist ein Feld im gespeicherten Entwurf, kein Datenschema: in Ordnung. Die Anforderung FA-15-12 gibt es nicht (Abschnitt 15 hat FA-15-00 bis FA-15-11; Tippfehler in der Paketdatei). Keine DOM-Testumgebung (G7); die Oberfläche wird im Browser geprüft. Die Planer-Seite lädt die Stammliste nicht; die Kasse lehnt einen nicht mehr angebotenen Hersteller ab und nennt den Ausweg.
+- **Für Menschen:** MA-49 (Preise je Hersteller, Sicherungskarte Pflicht oder Option, weitere Bauformen, Herstellerwahl ohne Preiswirkung), MA-48 (Logos).
