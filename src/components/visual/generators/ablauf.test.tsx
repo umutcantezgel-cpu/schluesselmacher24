@@ -6,6 +6,7 @@ import {
   ABLAUF_FLAECHE,
   AblaufGrafik,
   ablaufHoehe,
+  ablaufReihen,
   ablaufSchritte,
   tiefeFuehrung,
 } from './ablauf';
@@ -241,9 +242,9 @@ describe('AblaufGrafik', () => {
   it('zeichnet das schmale Format senkrecht mit eigener Höhe', () => {
     const html = zeichne({ schritte: 'sichern|prüfen|bestellen', format: 'schmal' });
     pruefeVertrag(html, 300, ablaufHoehe(3));
-    expect(ablaufHoehe(3)).toBe(224);
-    expect(ablaufHoehe(4)).toBe(292);
-    expect(ablaufHoehe(2)).toBe(156);
+    expect(ablaufHoehe(3)).toBe(196);
+    expect(ablaufHoehe(4)).toBe(256);
+    expect(ablaufHoehe(2)).toBe(136);
     // Beschriftung rechts neben dem Kreis, Stationen untereinander.
     const labels = beschriftungen(html);
     expect(labels.every((t) => t.anker === 'start')).toBe(true);
@@ -273,17 +274,41 @@ describe('AblaufGrafik', () => {
         expect((t.groesse * 358) / breite).toBeGreaterThanOrEqual(11.5);
       }
     }
-    expect(breit).toContain('font-size="16"');
+    expect(breit).toContain('font-size="20.5"');
     expect(schmal).toContain('font-size="16"');
   });
+
+  /** Darstellungsmaßstab einer Zeichnung in einer Fläche (preserveAspectRatio meet). */
+  const massstab = (flaecheB: number, flaecheH: number, b: number, h: number) => Math.min(flaecheB / b, flaecheH / h);
 
   it('setzt jede Schrift auf dem Bildschirm mit mindestens 14 px (FA-QA-04D)', () => {
     // Schmal: bei 360 px Fensterbreite im Kasten mit p-4, 288 px breit.
     const schmal = zeichne({ schritte: 'sichern|prüfen|bestellen', format: 'schmal' });
     for (const t of texte(schmal)) expect((t.groesse * 288) / 300).toBeGreaterThanOrEqual(14);
-    // Breit: bei 1280 px in 5 von 12 Spalten mit p-6, etwa 424 px breit.
-    const breit = zeichne({ schritte: 'sichern|prüfen|bestellen' });
-    for (const t of texte(breit)) expect((t.groesse * 424) / 480).toBeGreaterThanOrEqual(14);
+    // Breit: schmalste Stelle bei 1024 px Fensterbreite. Seitenkopf und Partnerseiten: 5 von 12
+    // Spalten (Inhalt 960, Spaltenabstand 28) mit p-6 = 383,7 − 48 ≈ 335 px; bei 1280 px etwa 424 px.
+    const spalten5 = (5 * (960 - 11 * 28)) / 12 + 4 * 28;
+    for (const schritte of ['sichern|prüfen|bestellen', SEITE_SCHRITTE, FUENF_MIT_VIERZEHN]) {
+      const breit = zeichne({ schritte });
+      for (const t of texte(breit)) {
+        expect((t.groesse * (spalten5 - 48)) / 480).toBeGreaterThanOrEqual(14);
+        expect((t.groesse * 424) / 480).toBeGreaterThanOrEqual(14);
+      }
+    }
+  });
+
+  it('bleibt auf ratgeber/[slug] in der 4:3-Fläche bei 320 px auch mit vier Stationen bei 14 px (FA-QA-04D)', () => {
+    // ablaufAusText erlaubt bis zu vier Schritte; die schmale Fassung steht frei in 320 × 240 px.
+    for (const anzahl of [2, 3, 4]) {
+      const schritte = Array.from({ length: anzahl }, (_, i) => `schritt${i + 1}`).join('|');
+      const html = zeichne({ schritte, format: 'schmal' });
+      const skala = massstab(320, 240, 300, ablaufHoehe(anzahl));
+      for (const t of texte(html)) expect(t.groesse * skala).toBeGreaterThanOrEqual(14);
+    }
+    expect(ablaufHoehe(4)).toBeLessThanOrEqual(256);
+    // Ab 1024 px die breite Fassung frei in 5 von 12 Spalten (etwa 383 px, 16:9 wie die Zeichnung).
+    const breit = zeichne({ schritte: 'sichern|prüfen|bestellen|liefern' });
+    for (const t of texte(breit)) expect(t.groesse * massstab(383, (383 * 9) / 16, 480, 270)).toBeGreaterThanOrEqual(14);
   });
 
   it('hält alle gezeichneten Elemente innerhalb der Fläche', () => {
@@ -321,8 +346,8 @@ describe('AblaufGrafik', () => {
         }
       }
     }
-    // Die Zeilen sind bei dieser Länge versetzt: zwei Reihen mit je zwei Beschriftungen.
-    expect(new Set(labels.map((t) => t.y)).size).toBe(2);
+    // Die Zeilen sind bei dieser Länge versetzt: drei Reihen (Station 1 und 4, 2, 3).
+    expect(new Set(labels.map((t) => t.y)).size).toBe(3);
   });
 
   it('stellt kurze Beschriftungen nebeneinander in eine Zeile', () => {
@@ -392,7 +417,7 @@ describe('AblaufGrafik', () => {
     ];
     for (const params of faelle) {
       const html = zeichne(params);
-      expect(html).toContain('font-size="18"');
+      expect(html).toContain('font-size="22"');
       for (const k of kreise(html)) {
         expect(k.r).toBe(30);
         expect(k.cx - k.r).toBeGreaterThanOrEqual(30 - 1e-9);
@@ -480,10 +505,10 @@ describe('AblaufGrafik', () => {
     expect(nummern(breit)).toEqual(['01', '02', '03', '04', '05']);
     const labels = beschriftungen(breit);
     expect(labels).toHaveLength(5);
-    expect(new Set(labels.map((t) => t.y)).size).toBe(2);
+    expect(new Set(labels.map((t) => t.y)).size).toBe(3);
     for (let a = 0; a < labels.length; a += 1) {
       for (let b = a + 1; b < labels.length; b += 1) {
-        if (Math.abs(labels[a].y - labels[b].y) < 16) {
+        if (Math.abs(labels[a].y - labels[b].y) < labels[a].groesse) {
           expect(Math.abs(labels[a].x - labels[b].x)).toBeGreaterThanOrEqual(
             (breiteSchaetzung(labels[a]) + breiteSchaetzung(labels[b])) / 2 + 8,
           );
@@ -494,7 +519,7 @@ describe('AblaufGrafik', () => {
 
     const schmal = zeichne({ schritte: fuenf, format: 'schmal' });
     pruefeVertrag(schmal, 300, ablaufHoehe(5));
-    expect(ablaufHoehe(5)).toBe(360);
+    expect(ablaufHoehe(5)).toBe(316);
     expect(nummern(schmal)).toEqual(['01', '02', '03', '04', '05']);
 
     for (const html of [breit, schmal]) {
@@ -575,41 +600,80 @@ function gestrichelt(html: string): { x: number; von: number; bis: number }[] {
 describe('AblaufGrafik · Führungslinie (Z-09)', () => {
   it('kürzt die tiefe Führungslinie über der ersten Reihe, wenn eine Beschriftung ihr zu nahe kommt', () => {
     // Halbe Breite 62 + Luft 10 > Abstand 60: die Beschriftung reicht bis an die Linie.
-    expect(tiefeFuehrung(100, 150, 178, 16, [{ x: 40, breite: 124 }])).toEqual(['M100 154V160']);
+    expect(tiefeFuehrung(100, 150, 202, 16, [{ x: 40, breite: 124, grundlinie: 178 }])).toEqual(['M100 154V160']);
     // Auch ohne Berührung: Abstand 66 < 62 + 10 – die Linie liefe zu knapp an der Schrift vorbei.
-    expect(tiefeFuehrung(100, 150, 178, 16, [{ x: 34, breite: 124 }])).toEqual(['M100 154V160']);
+    expect(tiefeFuehrung(100, 150, 202, 16, [{ x: 34, breite: 124, grundlinie: 178 }])).toEqual(['M100 154V160']);
     // Schon eine von zwei Nachbarbeschriftungen genügt.
     expect(
-      tiefeFuehrung(100, 150, 178, 16, [
-        { x: 40, breite: 20 },
-        { x: 160, breite: 124 },
+      tiefeFuehrung(100, 150, 202, 16, [
+        { x: 40, breite: 20, grundlinie: 178 },
+        { x: 160, breite: 124, grundlinie: 178 },
       ]),
     ).toEqual(['M100 154V160']);
   });
 
-  it('lässt die Führungslinie durchgehend, wenn keine Beschriftung sie erreicht', () => {
-    // Halbe Breite 62 + Luft 10 = 72 < Abstand 80: die Beschriftung bleibt frei.
-    expect(tiefeFuehrung(100, 150, 178, 16, [{ x: 20, breite: 124 }])).toEqual(['M100 154V189']);
-    expect(tiefeFuehrung(100, 150, 178, 16, [])).toEqual(['M100 154V189']);
+  it('endet über der obersten Beschriftung, die ihr zu nahe kommt, auch in der zweiten Reihe', () => {
+    // Reihe 2 frei, Reihe 1 (Grundlinie 202) zu nah: Ende 202 − 16 − 2.
+    expect(
+      tiefeFuehrung(100, 150, 226, 16, [
+        { x: 20, breite: 124, grundlinie: 178 },
+        { x: 60, breite: 124, grundlinie: 202 },
+      ]),
+    ).toEqual(['M100 154V184']);
   });
 
-  it('lässt auf der Seite Service und Termin jeder Beschriftung der ersten Reihe seitlich Luft', () => {
+  it('lässt die Führungslinie durchgehend, wenn keine Beschriftung sie erreicht', () => {
+    // Halbe Breite 62 + Luft 10 = 72 < Abstand 80: die Beschriftung bleibt frei.
+    // Ende knapp über der eigenen Schrift: 202 − 0,75 · 16 − 2.
+    expect(tiefeFuehrung(100, 150, 202, 16, [{ x: 20, breite: 124, grundlinie: 178 }])).toEqual(['M100 154V188']);
+    expect(tiefeFuehrung(100, 150, 202, 16, [])).toEqual(['M100 154V188']);
+  });
+
+  it('wählt so wenige Reihen wie möglich', () => {
+    expect(ablaufReihen([50, 50, 50], 100)).toBe(1);
+    expect(ablaufReihen([120, 120, 120], 80)).toBe(2);
+    expect(ablaufReihen([172, 172, 172, 172, 172], 62)).toBe(3);
+  });
+
+  it('lässt auf der Seite Service und Termin jeder Beschriftung seitlich Luft', () => {
     const html = zeichne({ schritte: SEITE_SCHRITTE });
-    const beschriftungsZeilen = beschriftungen(html);
-    const ersteReihe = Math.min(...beschriftungsZeilen.map((t) => t.y));
-    const erste = beschriftungsZeilen.filter((t) => t.y === ersteReihe);
-    expect(erste.map((t) => t.inhalt)).toEqual(['Bedarfsanalyse', 'Fertigung', 'Dokumentation']);
+    const alle = beschriftungen(html);
+    const ersteReihe = Math.min(...alle.map((t) => t.y));
+    const erste = alle.filter((t) => t.y === ersteReihe);
+    // Drei Reihen: 01 und 04 oben, 02 und 05 darunter, 03 unten.
+    expect(erste.map((t) => t.inhalt)).toEqual(['Bedarfsanalyse', 'Montage']);
+    expect(new Set(alle.map((t) => t.y)).size).toBe(3);
     const strecken = gestrichelt(html);
-    // Fünf Stationslinien, die beiden tiefen Führungslinien (02, 04) enden über der ersten Reihe.
-    expect(strecken).toHaveLength(7);
-    for (const t of erste) {
+    // Fünf Stationslinien und die drei tiefen Führungslinien (02, 03, 05).
+    expect(strecken).toHaveLength(8);
+    for (const t of alle) {
       const halb = breiteSchaetzung(t) / 2;
-      const oberkante = t.y - t.groesse;
-      const unterkante = t.y + 4;
+      const oberkante = t.y - t.groesse * 0.75;
+      const unterkante = t.y + t.groesse * 0.25;
       for (const s of strecken) {
         // In der Höhe der Beschriftung hält jede Linie mindestens 10 Einheiten seitlich Abstand.
-        const zuNah = s.von <= unterkante && s.bis >= oberkante && Math.abs(s.x - t.x) < halb + 10;
-        expect(zuNah).toBe(false);
+        const zuNah = s.von < unterkante && s.bis > oberkante && Math.abs(s.x - t.x) < halb + 10;
+        expect(zuNah, `${t.inhalt} ↔ Linie bei x ${s.x}`).toBe(false);
+      }
+    }
+  });
+
+  it('lässt auch in den Grenzfällen und auf den Partnerseiten jeder Beschriftung seitlich Luft', () => {
+    for (const schritte of [
+      FUENF_MIT_VIERZEHN,
+      'abcdefghijklmn|abcdefghijklmn|abcdefghijklmn|abcdefghijklmn',
+      'Anfrage|Zuordnung|Annahme|Einsatz|Provision',
+      'Anfrage|Zuordnung|Zahlung|Freigabe|Auszahlung',
+    ]) {
+      const html = zeichne({ schritte });
+      const strecken = gestrichelt(html);
+      for (const t of beschriftungen(html)) {
+        const halb = breiteSchaetzung(t) / 2;
+        for (const s of strecken) {
+          const zuNah =
+            s.von < t.y + t.groesse * 0.25 && s.bis > t.y - t.groesse * 0.75 && Math.abs(s.x - t.x) < halb + 10;
+          expect(zuNah, `${schritte}: ${t.inhalt} ↔ Linie bei x ${s.x}`).toBe(false);
+        }
       }
     }
   });

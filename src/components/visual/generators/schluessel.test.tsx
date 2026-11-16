@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
 import { AKZENT, DETAIL, HILFSLINIE, KONTUR, LINIE, LINIE_STARK, MARKE } from './grafik-basis';
-import { ausserhalb, bildschirmPx, textKaesten, ueberlappungen } from './beschriftung-test-hilfe';
+import { ausserhalb, bildschirmPx, textKaesten, ueberlappungen } from '../beschriftung-test-hilfe';
 import { LINEAL_SCHRIFT, SchluesselGrafik } from './schluessel';
 
 function zeichne(params: unknown, title: unknown = 'Schlüssel'): string {
@@ -318,5 +318,23 @@ describe('SchluesselGrafik – Ziffern am Lineal (FA-QA-04D)', () => {
     expect(ziffernAufFlaeche(zeichne({ typ: 'zylinder', einschnitte: '35274' }))).toHaveLength(5);
     // Buntbart (13 Einheiten je Stufe): Ziffern abwechselnd in zwei Zeilen.
     expect(new Set(ziffernAufFlaeche(zeichne({ typ: 'buntbart', einschnitte: '35274' })).map((z) => z.unten)).size).toBe(2);
+  });
+
+  it('reserviert den Platz der Ziffern auch bei kleinem Maßstab, ohne den Rand der Fläche zu brauchen', () => {
+    // Einpassung lässt oben und unten je 20 Einheiten Rand: Die Ziffern enden spätestens bei 270 − 20.
+    for (const params of [
+      { typ: 'funk', einschnitte: '35274163', anzahl: 3 },
+      { typ: 'funk', einschnitte: '35274163', anzahl: 2 },
+      { typ: 'funk', ansicht: 'bart', einschnitte: '35274163' },
+      { typ: 'buntbart', einschnitte: '35274163', anzahl: 3 },
+    ]) {
+      const html = zeichne(params);
+      const skala = Number(/scale\(([\d.]+)\)/.exec(html)?.[1]);
+      const ziffern = ziffernAufFlaeche(html);
+      expect(ziffern.length, JSON.stringify(params)).toBeGreaterThan(0);
+      for (const z of ziffern) expect(z.unten, `${JSON.stringify(params)} Maßstab ${skala}`).toBeLessThanOrEqual(250 + 0.5);
+    }
+    // Mindestens ein Fall liegt unter Maßstab 1, sonst prüfte der Test nichts.
+    expect(Number(/scale\(([\d.]+)\)/.exec(zeichne({ typ: 'funk', einschnitte: '35274163', anzahl: 3 }))?.[1])).toBeLessThan(1);
   });
 });

@@ -79,17 +79,15 @@ describe('Schriftstufen der Website (FA-26-01)', () => {
 });
 
 /* ==========================================================================
-   Schrift der SVG-Grafiken (Nachbesserung FA-QA-04A). Die Grafiken setzen ihre
-   Beschriftung als JSX-Attribut `fontSize={…}` in viewBox-Einheiten, meist über
-   Konstanten (`SCHRIFT`, `SCHRIFT_KLEIN` aus grafik-basis.tsx) oder über die
-   `schrift` einer Fläche. Die Darstellungsgröße ist Wert × Darstellungsbreite /
-   viewBox-Breite und hängt damit von der Breite ab; der schmale Schließplan
-   (360 Einheiten, Schrift 12) erscheint bei 358 px mit rund 11,9 px.
-   Diese Stellen liegen unter 14 Einheiten und sind OFFEN (Bericht FA-QA-04A,
-   OFFENE FRAGEN): Die Grafiken stehen nicht in den Schreibrechten des Pakets und
-   brauchen eine Sichtprobe der Anordnung. Der Test hält den Stand genau fest:
-   Jede neue Stelle unter 14 Einheiten lässt ihn rot werden, ebenso jede behobene
-   (dann ist die Liste zu kürzen). Er ist keine Freigabe der Werte.
+   Schrift der SVG-Grafiken (Nachbesserung FA-QA-04A, behoben mit FA-QA-04D). Die
+   Grafiken setzen ihre Beschriftung als JSX-Attribut `fontSize={…}` in viewBox-
+   Einheiten, über eigene Konstanten der Zeichnung oder über die `schrift` einer
+   Fläche. Die Darstellungsgröße ist Wert × Darstellungsbreite / viewBox-Breite.
+   Dieser Test lässt keine Grafikschrift unter 14 Einheiten zu (notwendige
+   Bedingung, weil keine Zeichnung größer als 1:1 sicher ist); die Bildschirmgröße
+   an der schmalsten Stelle jeder Zeichnung (mindestens 14 px bei 360 px
+   Fensterbreite) prüft der Test der Zeichnung selbst, mit der Darstellungsbreite
+   aus der Seite. Die Liste der bekannten offenen Stellen ist leer.
    ========================================================================== */
 
 const GRAFIK_BASIS = readFileSync(path.join(WURZEL, 'src/components/visual/generators/grafik-basis.tsx'), 'utf8');
@@ -127,23 +125,8 @@ function grafikWerte(text: string, ausdruck: string): { wert: number; quelle: st
   return werte.length > 0 ? werte : undefined;
 }
 
-/** Bekannte Grafikschrift unter 14 viewBox-Einheiten (OFFEN, siehe oben). */
-const BEKANNTE_GRAFIKSCHRIFT = [
-  'src/components/visual/einsatzradius.tsx · SCHRIFT = 13',
-  'src/components/visual/generators/ablauf.tsx · schrift: 12 = 12',
-  'src/components/visual/generators/autoschluessel-aufbau.tsx · SCHRIFT_KLEIN = 12',
-  'src/components/visual/generators/code-fundstelle.tsx · SCHRIFT = 13',
-  'src/components/visual/generators/foto-beispiel.tsx · SCHRIFT = 13',
-  'src/components/visual/generators/profilschnitt.tsx · SCHRIFT_KLEIN = 12',
-  'src/components/visual/generators/schliessplan.tsx · schrift: 12 = 12',
-  'src/components/visual/generators/schliessplan.tsx · schrift: SCHRIFT = 13',
-  'src/components/visual/generators/schluessel.tsx · schrift = SCHRIFT_KLEIN (skaliert) = 12',
-  'src/components/visual/generators/stiftzuhaltung.tsx · SCHRIFT = 13',
-  'src/components/visual/generators/stiftzuhaltung.tsx · SCHRIFT_KLEIN = 12',
-  'src/components/visual/generators/tuer-schutz.tsx · SCHRIFT = 13',
-  'src/components/visual/generators/zylinder-mass.tsx · klein: SCHRIFT_KLEIN = 12',
-  'src/components/visual/generators/zylinder-mass.tsx · schrift: SCHRIFT = 13',
-];
+/** Bekannte Grafikschrift unter 14 viewBox-Einheiten: keine mehr (FA-QA-04D). */
+const BEKANNTE_GRAFIKSCHRIFT: string[] = [];
 
 describe('Schrift der SVG-Grafiken (FA-26-01, Nachbesserung FA-QA-04A)', () => {
   const attribute = QUELLEN.flatMap((datei) => {
@@ -152,10 +135,19 @@ describe('Schrift der SVG-Grafiken (FA-26-01, Nachbesserung FA-QA-04A)', () => {
     return [...text.matchAll(/fontSize=(?:\{([^}]+)\}|["']([0-9.]+)["'])/g)].map((m) => ({ name, text, ausdruck: m[1] ?? m[2] }));
   });
 
-  it('findet die Beschriftung der Grafiken (Grundwerte aus grafik-basis.tsx)', () => {
+  it('findet die Beschriftung der Grafiken (eigene Konstanten und Felder der Fläche)', () => {
     expect(attribute.length).toBeGreaterThan(20);
-    expect(konstante('', 'SCHRIFT')).toBeTypeOf('number');
-    expect(konstante('', 'SCHRIFT_KLEIN')).toBeTypeOf('number');
+    // Jede Grafik mit Beschriftung ist erfasst, auch die Zeichnung im Standortkopf.
+    const grafiken = new Set(attribute.map((a) => a.name));
+    for (const name of ['ablauf', 'autoschluessel-aufbau', 'code-fundstelle', 'foto-beispiel', 'profilschnitt', 'schliessplan', 'schluessel', 'stiftzuhaltung', 'tuer-schutz', 'zylinder-mass']) {
+      expect(grafiken).toContain(`src/components/visual/generators/${name}.tsx`);
+    }
+    expect(grafiken).toContain('src/components/visual/einsatzradius.tsx');
+    // Gemeinsame Schriftkonstanten gibt es nicht mehr; der Leser findet die eigenen der Datei.
+    expect(konstante('', 'SCHRIFT')).toBeUndefined();
+    expect(konstante('', 'SCHRIFT_KLEIN')).toBeUndefined();
+    const profil = attribute.find((a) => a.name.endsWith('profilschnitt.tsx'))!;
+    expect(konstante(profil.text, 'PROFIL_SCHRIFT')).toBe(18);
   });
 
   it('jede Schriftgröße einer Grafik ist lesbar (Konstante, Zahl oder Feld der Fläche)', () => {

@@ -57,7 +57,7 @@ export default function GlobalError({ error, retry }: { error: Error & { digest?
               Fehler bestehen, rufen Sie uns an oder schreiben Sie uns eine E-Mail.
             </p>
             {error.digest && (
-              <p style={{ margin: '1rem 0 0', fontSize: '0.8125rem', color: FARBE.leise, fontFamily: 'ui-monospace, Menlo, Consolas, monospace' }}>
+              <p style={{ margin: '1rem 0 0', fontSize: '0.875rem', color: FARBE.leise, fontFamily: 'ui-monospace, Menlo, Consolas, monospace' }}>
                 Fehlerkennung {error.digest}
               </p>
             )}

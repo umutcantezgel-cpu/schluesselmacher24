@@ -676,10 +676,29 @@ function ziffernVersetzt(teilung: number[], schrift: number): boolean {
  */
 function einpassungMitLineal(x1: number, y1: number, x2: number, y2: number, linealY: number | undefined, teilung: number[]) {
   if (linealY === undefined) return { ...einpassung(x1, y1, x2, y2), versetzt: false };
-  const eine = einpassung(x1, y1, x2, Math.max(y2, linealY + LINEAL_UNTEN));
+  const eine = einpassungUnterLineal(x1, y1, x2, y2, linealY, LINEAL_UNTEN);
   if (!ziffernVersetzt(teilung, LINEAL_SCHRIFT / eine.skala)) return { ...eine, versetzt: false };
-  const zeile = (LINEAL_SCHRIFT + 2) / eine.skala;
-  return { ...einpassung(x1, y1, x2, Math.max(y2, linealY + LINEAL_UNTEN / eine.skala + zeile)), versetzt: true };
+  return { ...einpassungUnterLineal(x1, y1, x2, y2, linealY, LINEAL_UNTEN + LINEAL_SCHRIFT + 2), versetzt: true };
+}
+
+/**
+ * Einpassung mit `unten` Flächeneinheiten unter dem Lineal. Die Ziffern stehen in Flächeneinheiten
+ * fest (innen durch den Maßstab geteilt); der Platz wird deshalb beim endgültigen Maßstab gerechnet:
+ * skala · (linealY − y1) + unten ≤ Höhe − 40.
+ */
+function einpassungUnterLineal(x1: number, y1: number, x2: number, y2: number, linealY: number, unten: number) {
+  const skala = Math.min(
+    1,
+    (BREITE - 56) / (x2 - x1),
+    (HOEHE - 40) / (y2 - y1),
+    (HOEHE - 40 - unten) / (linealY - y1),
+  );
+  const y2Lineal = Math.max(y2, linealY + unten / skala);
+  return {
+    skala,
+    tx: r(BREITE / 2 - (skala * (x1 + x2)) / 2),
+    ty: r(HOEHE / 2 - (skala * (y1 + y2Lineal)) / 2),
+  };
 }
 
 /** Einschnittprofil(e): zeichnen sich nacheinander, ab `beginn`. */

@@ -1,8 +1,10 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { ausserhalb, bildschirmPx, textKaesten, ueberlappungen, type TextKasten } from './beschriftung-test-hilfe';
+import { ausschnittAusQuelle, ausserhalb, bildschirmPx, textKaesten, ueberlappungen, type TextKasten } from '../beschriftung-test-hilfe';
 import { FRAESER_ABHEBEN, MASSLINIE_Y, PROFIL_SCHRIFT, PROFILSCHNITT_AUSSCHNITT, PROFILSCHNITT_GROESSE, ProfilschnittGrafik } from './profilschnitt';
 
 function zeichne(params: unknown, title: unknown = ''): string {
@@ -142,9 +144,26 @@ describe('Schrift des Profilschnitts (FA-QA-04D)', () => {
         : k,
     );
   }
-  /* Telefon-Ausschnitte der Seiten (src/app/(site)/page.tsx, schluessel-nach-code/[slug]/page.tsx). */
-  const STARTSEITE = { x: 62, y: 98, breite: 350, hoehe: 190 };
-  const CODELINIE = { x: 128, y: 98, breite: 334, hoehe: 190 };
+  /*
+   * Telefon-Ausschnitte der Seiten, aus ihrem Quelltext gelesen (Seiten dürfen in Next.js keine
+   * Werte exportieren): Ändert eine Seite ihren Ausschnitt, prüft dieser Test den neuen Wert.
+   */
+  function seitenAusschnitt(datei: string, name: string) {
+    const quelle = readFileSync(join(process.cwd(), 'src/app/(site)', datei), 'utf8');
+    const gelesen = ausschnittAusQuelle(quelle, name);
+    const basis = gelesen.uebernimmt.includes('PROFILSCHNITT_AUSSCHNITT') ? PROFILSCHNITT_AUSSCHNITT : undefined;
+    const wert = (k: 'x' | 'y' | 'breite' | 'hoehe') => gelesen[k] ?? basis?.[k];
+    const ausschnitt = { x: wert('x'), y: wert('y'), breite: wert('breite'), hoehe: wert('hoehe') };
+    for (const zahl of Object.values(ausschnitt)) expect(typeof zahl).toBe('number');
+    return ausschnitt as { x: number; y: number; breite: number; hoehe: number };
+  }
+  const STARTSEITE = seitenAusschnitt('page.tsx', 'KOPF_AUSSCHNITT_MOBIL');
+  const CODELINIE = seitenAusschnitt('schluessel-nach-code/[slug]/page.tsx', 'PROFILSCHNITT_HALM');
+
+  it('liest die Ausschnitte der Seiten aus ihrem Quelltext', () => {
+    expect(STARTSEITE).toEqual({ x: 62, y: 98, breite: 350, hoehe: 190 });
+    expect(CODELINIE).toEqual({ x: 128, y: 98, breite: 334, hoehe: 190 });
+  });
 
   it('ist bei 360 px im Ausschnitt (320 px) und bei 1024 px im Seitenkopf (383 px) mindestens 14 px groß', () => {
     expect(bildschirmPx(PROFIL_SCHRIFT, 320, STARTSEITE.breite)).toBeGreaterThanOrEqual(14);

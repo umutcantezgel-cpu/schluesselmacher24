@@ -2,7 +2,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { ausserhalb, bildschirmPx, textKaesten, ueberlappungen } from './beschriftung-test-hilfe';
+import { ausserhalb, bildschirmPx, textKaesten, ueberlappungen } from '../beschriftung-test-hilfe';
 import { FOTO_BEISPIELE, FOTO_BEISPIEL_TITEL, FOTO_SCHRIFT, FotoBeispielGrafik } from './foto-beispiel';
 
 function zeichne(params: unknown, title: unknown = ''): string {

@@ -29,11 +29,15 @@ type Format = (typeof FORMATE)[number];
  * Schrift auf dem Bildschirm (FA-26-01, FA-QA-04D) = Schrift × Darstellungsbreite / Flächenbreite.
  * Schmal steht bei 360 px Fensterbreite mindestens 318 px breit (Bildfläche mit Rahmen in der
  * Inhaltsbreite), oft bis an den Rand (344 bis 360 px): 16 × 318 / 360 ≈ 14,1 px. Breit steht auf
- * der Startseite bei 360 px als Ausschnitt (`schliessplanAusschnitt`, rund 335 Einheiten) in einem
- * Kasten mit `p-4` (286 px): 17 × 286 / 335 ≈ 14,5 px; bei 1280 px im Konfigurator in 5 von 12
- * Spalten mit `p-5` (etwa 430 px): 17 × 430 / 480 ≈ 15,2 px.
+ * der Startseite bei 360 px als Ausschnitt (`schliessplanAusschnitt`) in einem Kasten mit `p-4`
+ * (286 px). Die schmalste Stelle der breiten Fassung liegt bei 1024 px Fensterbreite im
+ * Projekt-Konfigurator (Karte, darin 5 von 12 Spalten, Kasten mit `p-5`, etwa 318 px):
+ * 21,5 × 318 / 480 ≈ 14,3 px; im Kopf von `/schliessanlagen` (5 von 12 Spalten, Fläche 3:2,
+ * etwa 384 px) 21,5 × 0,8 ≈ 17,2 px. Die Tests rechnen beide Stellen nach.
  */
-export const SCHLIESSPLAN_SCHRIFT = { breit: 17, schmal: 16 } as const;
+const SCHRIFT_BREIT = 21.5;
+const SCHRIFT_SCHMAL = 16;
+export const SCHLIESSPLAN_SCHRIFT = { breit: SCHRIFT_BREIT, schmal: SCHRIFT_SCHMAL } as const;
 
 interface Flaeche {
   breite: number;
@@ -54,8 +58,8 @@ const FLAECHE: Record<Format, Flaeche> = {
   breit: {
     breite: 480,
     rand: 20,
-    schrift: SCHLIESSPLAN_SCHRIFT.breit,
-    zeichen: SCHLIESSPLAN_SCHRIFT.breit * 0.6,
+    schrift: SCHRIFT_BREIT,
+    zeichen: SCHRIFT_BREIT * 0.6,
     schluesselHoehe: 26,
     tuerBreite: 22,
     tuerHoehe: 32,
@@ -66,8 +70,8 @@ const FLAECHE: Record<Format, Flaeche> = {
   schmal: {
     breite: 360,
     rand: 12,
-    schrift: SCHLIESSPLAN_SCHRIFT.schmal,
-    zeichen: SCHLIESSPLAN_SCHRIFT.schmal * 0.6,
+    schrift: SCHRIFT_SCHMAL,
+    zeichen: SCHRIFT_SCHMAL * 0.6,
     schluesselHoehe: 24,
     tuerBreite: 22,
     tuerHoehe: 30,

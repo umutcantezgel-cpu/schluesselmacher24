@@ -877,11 +877,6 @@ header a[aria-label$='Startseite'] > span {
   .sm24-ausschnitt:not(.sm24-ausschnitt-bemasst) [data-bemassung] {
     display: none;
   }
-
-  /* Legenden, deren Generator den Ausschnitt dafür bemisst (tuer-schutz). */
-  .sm24-ausschnitt [data-legende] {
-    font-size: 16px;
-  }
 }
 
 /* ==========================================================================

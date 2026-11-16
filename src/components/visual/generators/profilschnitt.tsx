@@ -8,7 +8,7 @@ import {
   LINIE,
   LINIE_STARK,
   Raster,
-    hash,
+  hash,
   kerben,
   kurztext,
   parameter,

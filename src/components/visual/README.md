@@ -101,7 +101,14 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) { �
   `viewBox` fest: `0 0 480 270` (16:9), `0 0 480 300` (Schließplan, Tür), `0 0 480 360` (Profilschnitt, **Ausnahme zu K-008**, siehe `profilschnitt`).
 - Keine `id`s (mehrfach auf einer Seite), Pfeilspitzen als eigene Pfade statt `<marker>` (`pfeilspitze`).
 - Beschriftungen als `<text>` mit `className="fill-foreground-muted font-mono"` und fester `fontSize`
-  in viewBox-Einheiten (`SCHRIFT` 13, `SCHRIFT_KLEIN` 12); nur sachliche Angaben aus `params`.
+  in viewBox-Einheiten, je Zeichnung eine eigene Konstante; nur sachliche Angaben aus `params`.
+  Auf dem Bildschirm mindestens 14 px an der schmalsten Stelle, an der die Zeichnung steht
+  (Einheiten × Darstellungsbreite / viewBox-Breite ≥ 14, FA-26-01). Die Rechnung steht an der
+  Konstanten und im Test der Zeichnung; `src/app/(site)/schriftstufen.test.ts` lässt keine
+  Grafikschrift unter 14 Einheiten zu. Das frühere Attribut `data-legende` gibt es nicht mehr
+  (die Regel in `globals.css` setzte Text im Telefon-Ausschnitt auf 16 Einheiten und ist entfernt).
+  Steht eine Zeichnung in einer schmalen Spalte, bekommt sie dort die schmale Fassung
+  (Beispiel: `ZylinderMassLive` mit `schmal` in der Prüfliste des Zylinder-Konfigurators).
 - Einstiegsbewegung optional über die CSS-Klassen unten; die Grafik muss auch ohne Bewegung vollständig sein.
 - Jeder Generator hat einen Test (`*.test.tsx`, `renderToStaticMarkup`): Standardwerte, Unsinnswerte werfen
   nicht, `<title>` vorhanden, gleiche Eingabe → gleiche Ausgabe.
@@ -172,7 +179,7 @@ Gemessen wird von der Mitte der Stulpschraube bis zum Zylinderende, maßstäblic
 | `markiert` | Kennung eines Schlüssels: `wurzel` · `g1`…`g4` (HGS) · `g1.1`… (GS) · `e1`…`e8` (ES); Groß-/Kleinschreibung egal | ohne Markierung |
 | `tuer` | Kennung einer Tür: `t1`…`t8`, Zentraltüren `z1` · `z2` | ohne Markierung |
 | `reserve` | 0–2 freie Plätze (gestrichelter ES mit Tür, Beschriftung „frei“; nur `haupt` und `generalhaupt`, an der letzten Gruppe); nicht wählbar | `0` |
-| `format` | `breit` · `schmal` (360 Einheiten breit, Schrift 12, Kürzel ohne Symbol; nie verkleinert) | `breit` |
+| `format` | `breit` (Schrift 21,5) · `schmal` (360 Einheiten breit, Schrift 16, Kürzel ohne Symbol; nie verkleinert) | `breit` |
 | `nummern` | `true` · `false` (auch `'true'`, `'ja'`): Türnummer 1–8 in Mono unter jeder Tür, nicht an Zentral- und Reservetüren | `false` |
 
 - `markiert` hat Vorrang vor `tuer`. Unbekannte Kennungen bleiben ohne Wirkung. `nummern` steht hier für Türnummern; bei `tuer-schutz` bedeutet derselbe Name Marken und Legende.
@@ -266,12 +273,15 @@ der vorhandene Text eine Reihenfolge nennt (`ablaufAusText` in `src/lib/visual/m
 |---|---|---|
 | `schritte` | Text, durch `\|` getrennt; 2–5 Einträge, je höchstens 14 Zeichen; leere Einträge entfallen; sonst gilt der Standard | drei Stationen nur mit Nummern |
 | `aktiv` | 0 (keine) oder 1–5: diese Station hinterlegt (`fill-area-soft`, `stroke-area-strong`) | `0` |
-| `format` | `breit` (Schrift 16) · `schmal` (300 breit, senkrecht, Schrift 12) | `breit` |
+| `format` | `breit` (Schrift 20,5) · `schmal` (300 breit, senkrecht, Schrift 16) | `breit` |
 
-- Stationen in der Bereichsfarbe (`stroke-area`), im breiten Format Kreis 30 mit Nummer 18, im schmalen
+- Stationen in der Bereichsfarbe (`stroke-area`), im breiten Format Kreis 30 mit Nummer 22, im schmalen
   Kreis 22. Bemaßungslinie und Pfeile `foreground-muted`.
 - Breit: Polster ein Rasterfeld (30) neben Kreis und Beschriftung. Passen lange Beschriftungen nicht
-  nebeneinander, stehen die geraden Stationen eine Zeile tiefer.
+  nebeneinander, stehen sie reihum in zwei oder drei Reihen (`ablaufReihen`); tiefe Führungslinien
+  enden über einer Beschriftung, der sie zu nahe kämen.
+- Schmal: Zeilenabstand 60, Höhe `76 + (Anzahl − 1) · 60`; vier Stationen (256) bleiben in einer
+  4:3-Fläche von 320 px bei 15 px Schrift.
 - Schmal: Der Inhalt steht waagerecht mittig in der Breite.
 - Bewegung (B-23): die Linie zeichnet (0,6 s), dann die Stationen nacheinander (`sm24-pop`, Staffel
   0,12 s), Beschriftung und Pfeil mit ihrer Station; gesamt 1,36 s bei vier Stationen, 1,48 s bei fünf.
@@ -359,8 +369,8 @@ Hauptschlüssel, Zentralschloss → `schliessplan`; Sicherungskarte, Zylindersti
 `code-fundstelle`; Zutritt, Leser, Karte → `zutritt-signal`; Zylinder, Messen → `zylinder-mass`;
 Tür, Beschlag, Schloss → `tuer-schutz` (`nummern: false`); Schlüsselbegriffe → `schluessel`.
 
-- Nie Platzhaltertext, nie „Bild folgt“, nie erzeugte Fotos. `ausschnitt` (unter 640 px nur ein Teil der Zeichnung; Legenden mit `data-legende` werden darin größer) gilt für Fachgrafiken; `frei` lässt Fläche und Rahmen weg.
-- Generatoren mit schmalem Format (`SCHMALES_FORMAT`) zeigt die Fläche unter 640 px in dieser Fassung, sofern kein `ausschnitt` gesetzt ist. Beschriftungen sollen auf Telefonen mindestens etwa 11,5 px groß sein (KERN K-008).
+- Nie Platzhaltertext, nie „Bild folgt“, nie erzeugte Fotos. `ausschnitt` (unter 640 px nur ein Teil der Zeichnung) gilt für Fachgrafiken; `frei` lässt Fläche und Rahmen weg.
+- Generatoren mit schmalem Format (`SCHMALES_FORMAT`) zeigt die Fläche unter 640 px in dieser Fassung, sofern kein `ausschnitt` gesetzt ist. Beschriftungen sind auf dem Bildschirm mindestens 14 px groß (FA-26-01), auch auf Telefonen.
 
 ## Bewegung
 

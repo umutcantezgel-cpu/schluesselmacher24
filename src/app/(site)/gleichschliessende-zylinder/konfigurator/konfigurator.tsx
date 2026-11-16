@@ -1119,10 +1119,13 @@ export function Konfigurator({
               />
             )}
             {/* Je Position die Maßzeichnung, damit die Maße vor dem Bestellen sichtbar geprüft werden;
-                die Zahlen stehen vollständig im Schriftfeld darunter. */}
+                die Zahlen stehen vollständig im Schriftfeld darunter. Die Spalten sind schmal, deshalb
+                steht hier immer die schmale Fassung, und drei Spalten gibt es erst ab xl: So bleibt die
+                Schrift in der Zeichnung bei jeder Fensterbreite über 14 px (FA-26-01; im Browser
+                gemessen: 1024 px zwei Spalten, 1280 px drei Spalten mit etwa 237 px je Zeichnung). */}
             <div>
               <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Ihre Zylinder</p>
-              <ul className="mt-2 grid gap-x-gutter border-t border-border sm:grid-cols-2 lg:grid-cols-3">
+              <ul className="mt-2 grid gap-x-gutter border-t border-border sm:grid-cols-2 xl:grid-cols-3">
                 {data.items.map((item, index) => (
                   <li key={item.uid} className="border-b border-border py-4">
                     <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">
@@ -1133,6 +1136,7 @@ export function Konfigurator({
                       aussen={item.measureAMm}
                       innen={item.measureBMm}
                       name={catalog.forms.find((f) => f.id === item.form)?.label ?? ''}
+                      schmal
                       className="mt-2"
                     />
                   </li>

@@ -157,3 +157,18 @@ Für Teil B (zu „Stand für Teil B“):
 - `postleitzahlen.json` führt nur noch Zustell-Postleitzahlen und Postfach-Postleitzahlen mit Ortsnamen. Eine Großempfänger-Postleitzahl liefert `bekannt: false`; Assistent und Partnerzuordnung sollen dann nach dem Ort fragen statt einen Fehler zu zeigen.
 - Kopf `entfallen` (Typ `PostleitzahlenDatei.entfallen`) für eine Anzeige im Admin oder in der Betreiberanleitung.
 - `istOrganisation` und `kurzname` liegen nur im Import (`.mjs`); braucht Teil B sie in der Anwendung, gehört eine Fassung nach `src/lib/orte/` mit einem Gleichheitstest wie bei `LAENDER`.
+
+## Abnahme durch den Orchestrator (16.11.2026)
+
+Prüfkette (`bash _werkstatt/ausbau/werkzeuge/abnahme.sh`, alle vier Pakete der Welle gemeinsam im Arbeitsbaum, nach allen Eingriffen des Orchestrators): Typprüfung grün, Lint grün, Unit 4047 von 4047, Datenbanktests 171 von 171, Build 181 von 181 Seiten. Onpage-Messung am neu gestarteten Prüfserver: 137 Seiten, Median 100, kein roter und kein gelber Befund. `reste.mjs` über alle vier Quellen: nur die zehn bekannten Platzhalter in `src/lib/pdf/partnervertrag.ts` (MA-29).
+
+Roter Befund der ersten Abnahme, behoben (Nachbesserung 2): `content/orte/postleitzahlen.json` führte rund 3.400 Firmen und Behörden als Ortsnamen. Gefunden hat es das Prüfwerkzeug `reste.mjs` über die Inhalte, nicht die Gegenprüfung. Nachgeprüft an der Datei selbst: 8.282 Postleitzahlen; 45117, 01053 und 11501 fehlen; 35576 Wetzlar, 14461 Potsdam, 57629, 03130 und 01968 stehen; kein Ortsname mit Rechtsform oder Behördenwort. `gemeinden.json`, `kreise.json` und `prioritaet.json` sind bytegleich geblieben.
+
+Weitere Prüfungen des Orchestrators:
+- Nach dem Build steht kein Wert des Stamms im Browser-Bündel (`.next/static`, Suche nach dem Regionalschlüssel von Wetzlar: kein Treffer).
+- `reste.mjs` hielt die zwölfstelligen Regionalschlüssel zunächst für Telefonnummern (8.320 falsche Funde). Das Werkzeug kennt jetzt amtliche Schlüssel in `content/orte/` (Regel `amtlicherSchluessel`, Selbsttest 63 von 63).
+- Teil A hat noch keine sichtbare Seite; eine Browserprobe entfällt deshalb. Die Abfrage und die Entfernung sind über Tests belegt (`src/lib/orte/**`, `scripts/orte-import.test.ts`).
+
+Entschieden (A-068): Großempfänger-Postleitzahlen entfallen; `prioritaet.json` bleibt im Repository (A-051, G13 geprüft: nur Ortsnamen, Reihenfolge, amtliche Schlüssel); `src/test/db-global-setup.ts` durfte für die Stichprobe geändert werden. Offen für Menschen (MA-57): Amberg, Neunkirchen und Lutherstadt Wittenberg bestätigen; Quellenvermerke rechtlich prüfen. Für Teil B steht der Stand in `pakete/FA-PLATTFORM-03B.md`.
+
+=== ENDE FA-PLATTFORM-03 · BEREIT ZUR RÜCKGABE ===

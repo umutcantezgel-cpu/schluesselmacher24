@@ -6,8 +6,8 @@ import {
   KONTUR,
   LINIE,
   Raster,
-  SCHRIFT,
   auswahl,
+  r,
   parameter,
   titel,
   wert,
@@ -26,7 +26,7 @@ const BAUTEILE = [
   { key: 'zusatzschloss', name: 'Zusatzschloss', mx: 189, my: 62, row: 62 },
   { key: 'beschlag', name: 'Schutzbeschlag', mx: 201, my: 112, row: 106 },
   { key: 'zylinder', name: 'Schließzylinder', mx: 217, my: 150, row: 150 },
-  { key: 'schliessblech', name: 'Schließblech', mx: 226, my: 178, row: 194 },
+  { key: 'schliessblech', name: 'Schließblech', mx: 226, my: 180, row: 194 },
   { key: 'bandseite', name: 'Bandseite', mx: 55, my: 210, row: 238 },
 ] as const;
 
@@ -64,19 +64,22 @@ const ZYLINDER = { x: 199, y: 150, r: 6 };
 /* Schließblech auf dem Zargenrand, auf Höhe der Falle. */
 const SCHLIESSBLECH = { x: 221, y: 154, w: 10, h: 28 };
 
-/* Marken und Legende. Die Ziffer in der Marke ist 15 Einheiten groß, damit sie im
-   Telefon-Ausschnitt (Maßstab rund 0,79) mindestens 11,5 px erreicht (K-008). */
-const MARKE_R = 9;
-const MARKE_SCHRIFT = 15;
-const KNICK_X = 280;
-const LINIE_ENDE = 296;
-const LEGENDE_X = 300;
-const NAME_X = 320;
+/* Marken und Legende (FA-26-01, FA-QA-04D). Unter 640 px zeigen die Seiten den Ausschnitt
+   (444 Einheiten) in der Inhaltsbreite, bei 360 px Fensterbreite 318 px (Bildfläche mit Rahmen):
+   20 × 318 / 444 ≈ 14,3 px. Ab 1024 px die ganze Zeichnung in 5 von 12 Spalten (etwa 383 px):
+   20 × 383 / 480 ≈ 16 px. Ohne `data-legende`: Die frühere Regel in globals.css setzte die Legende
+   im Ausschnitt auf 16 Einheiten zurück; sie ist entfernt. */
+export const LEGENDE_SCHRIFT = 20;
+export const MARKE_SCHRIFT = 20;
+const MARKE_R = 13;
+const KNICK_X = 248;
+const LINIE_ENDE = 264;
+const LEGENDE_X = 268;
+const NAME_X = 286;
 
 /**
  * Ausschnitt für Telefonbreiten (`ImagePlaceholder`, Prop `ausschnitt`): Tür und
- * Legende ohne Rand. Im Ausschnitt setzt globals.css die Legende auf 16 Einheiten
- * (`data-legende`); der Ausschnitt ist dafür bemessen, sie wird so rund 12 px groß.
+ * Legende ohne Rand; der längste Name („Schließzylinder“) endet bei x 466.
  * Die Höhe reicht bis y 300, damit die Zeile der Bandseite unter der Tür im Bild liegt.
  */
 export const TUER_SCHUTZ_AUSSCHNITT = {
@@ -114,8 +117,9 @@ function fuehrung(b: (typeof BAUTEILE)[number]): string {
 
 /** Lage der Legendenzeile: Ziffer, Name und Zeilenlage. Die Bandseite steht links unter der Tür. */
 function legende(b: (typeof BAUTEILE)[number]): { zahl: number; name: number; y: number } {
-  if (b.key === 'bandseite') return { zahl: UNTEN_X, name: UNTEN_NAME_X, y: UNTEN_ZEILE + 4.5 };
-  return { zahl: LEGENDE_X, name: NAME_X, y: b.row + 4.5 };
+  const grundlinie = r(LEGENDE_SCHRIFT * 0.35);
+  if (b.key === 'bandseite') return { zahl: UNTEN_X, name: UNTEN_NAME_X, y: UNTEN_ZEILE + grundlinie };
+  return { zahl: LEGENDE_X, name: NAME_X, y: b.row + grundlinie };
 }
 
 const HERVOR = 'fill-area-soft stroke-area-strong';
@@ -304,8 +308,8 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
                   Fläche aus breitem Strich, daher Zahl statt Strichstufe (D-010). */}
               <text
                 className={`${gedimmt(b.key) ? 'fill-foreground-subtle' : 'fill-area-strong'} stroke-surface font-mono`}
-                data-legende
-                fontSize={SCHRIFT}
+                data-zeile
+                fontSize={LEGENDE_SCHRIFT}
                 fontWeight={600}
                 paintOrder="stroke"
                 strokeLinejoin="round"
@@ -317,8 +321,8 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
               </text>
               <text
                 className={`${gedimmt(b.key) ? 'fill-foreground-subtle' : 'fill-foreground-muted'} stroke-surface font-mono`}
-                data-legende
-                fontSize={SCHRIFT}
+                data-zeile
+                fontSize={LEGENDE_SCHRIFT}
                 paintOrder="stroke"
                 strokeLinejoin="round"
                 strokeWidth={4}
@@ -348,7 +352,7 @@ export function TuerSchutzGrafik({ params, title, className }: VisualProps) {
                   fontWeight={600}
                   textAnchor="middle"
                   x={b.mx}
-                  y={b.my + 5}
+                  y={r(b.my + MARKE_SCHRIFT * 0.35)}
                 >
                   {i + 1}
                 </text>

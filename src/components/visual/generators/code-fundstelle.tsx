@@ -28,8 +28,8 @@ const HOEHE = 270;
  * Schrift der Beschriftung „Am Schlüsselkopf“ (FA-26-01, FA-QA-04D). Sie steht im Seitenkopf von
  * `/schluessel-nach-code`; unter 640 px zeigt die Seite nur den Ausschnitt (440 Einheiten breit) über
  * die volle Inhaltsbreite, bei 360 px Fensterbreite 320 px: 20 × 320 / 440 ≈ 14,5 px. Bei 1280 px
- * (5 von 12 Spalten, etwa 472 px für 480 Einheiten) rund 19,7 px. Ohne `data-legende`: Die Regel in
- * globals.css setzte die Schrift im Ausschnitt sonst auf 16 Einheiten zurück.
+ * (5 von 12 Spalten, etwa 472 px für 480 Einheiten) rund 19,7 px. Ohne `data-legende`: Die frühere
+ * Regel in globals.css setzte die Schrift im Ausschnitt auf 16 Einheiten zurück; sie ist entfernt.
  */
 export const HINWEIS_SCHRIFT = 20;
 

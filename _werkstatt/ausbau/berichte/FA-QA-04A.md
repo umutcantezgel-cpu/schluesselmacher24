@@ -102,4 +102,19 @@ Geänderte Dateien der Nachbesserung: `src/lib/navigation.ts`, `src/lib/navigati
 
 Prüfung nach der Nachbesserung (alles über `sicher.sh`): `--json -- npx vitest run` 255 Dateien, 4006 Tests bestanden, 0 rot · `-- npm run typecheck` ohne Fehler · `-- npm run lint` ohne Befund · `--json -- npm run build` Exit 0.
 
+## Abnahme durch den Orchestrator (16.11.2026)
+
+Prüfkette (`bash _werkstatt/ausbau/werkzeuge/abnahme.sh`, alle vier Pakete der Welle gemeinsam im Arbeitsbaum, nach allen Eingriffen des Orchestrators): Typprüfung grün, Lint grün, Unit 4047 von 4047, Datenbanktests 171 von 171, Build 181 von 181 Seiten. Onpage-Messung am neu gestarteten Prüfserver: 137 Seiten, Median 100, kein roter und kein gelber Befund. `reste.mjs` über alle vier Quellen: nur die zehn bekannten Platzhalter in `src/lib/pdf/partnervertrag.ts` (MA-29).
+
+Sichtprobe am Prüfserver (`menue.cjs`, Produktions-Build, 360, 390, 768 und 1280 px): 19 von 19. Geprüft sind: keine Textschrift unter 14 px auf der Startseite; kein waagerechtes Rollen auf der Startseite und auf „Schlüssel nach Code“; in der Schublade des Telefonmenüs ist „Schlüssel verloren?“ unter Autoschlüssel erreichbar; Menü Autoschlüssel mit den Spalten „Leistungen“ und „Schlüsselarten und Hilfe“ und höchstens zwei Spalten mit je vier Verweisen neben den Rubriken; Schrittknöpfe der Formulare 44 px hoch bei 768 und 1280 px.
+
+Zu den offenen Fragen:
+- Schrift der Zeichnungen: erledigt mit FA-QA-04D (siehe dort; Liste `BEKANNTE_GRAFIKSCHRIFT` ist leer).
+- `src/app/global-error.tsx`: Fehlerkennung jetzt 14 statt 13 px (Orchestrator).
+- Mails mit 12 px: nicht Teil der Website, vorgemerkt für die Schlussprüfung (FA-QA-01).
+- Nicht gerenderte Menüspalten in `NAV_AREAS`, die der Waisen-Melder mitzählt: nicht gebaut, vorgemerkt (A-068).
+- Aktionsleiste unter 370 px: Der Umbruch von „Termin anfragen“ bleibt („Ein Knopftext je Ziel“).
+
+Für Menschen (MA-57): gekürztes Menü und neuer Spaltentitel bestätigen; Probe mit älteren Testpersonen.
+
 === ENDE FA-QA-04A · BEREIT ZUR RÜCKGABE ===

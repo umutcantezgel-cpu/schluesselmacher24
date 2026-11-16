@@ -50,9 +50,10 @@ const PLAN_AUSSCHNITT_MOBIL: GrafikAusschnitt = schliessplanAusschnitt(PLAN_MOBI
  * Telefon-Ausschnitt der Kopfgrafik (Profilschnitt, unter 640 px): Fenster x 62 bis 412 und y 98 bis 288
  * in der viewBox 480 × 360. Seit G-07 ist der Schlüssel kurz genug, dass das Fenster ihn ganz fasst:
  * Reide ab x 72, Spitze bei 382, gehobener Fräser bis etwa 381, Einschnitt-Nummern (y 122) und
- * Halm-Bemaßung (Text y 266, Linie 274, Hilfslinien bis 282). Breite 350 ergibt Maßstab 1 bei 390 px,
- * also 12 px Schrift (K-008). Die Bezugswerte hängen an Interna von `generators/profilschnitt.tsx`
- * (REIDE, masslinieY), die nicht exportiert sind: Ändert sich der Generator, hier nachmessen.
+ * Halm-Bemaßung (Maßlinie und Maßzahl darunter). Breite 350 ergibt bei 360 px Fensterbreite
+ * 18 Einheiten × 320 / 350 ≈ 16,5 px Schrift (FA-26-01, mindestens 14 px). Titel und Legende der
+ * Zeichnung liegen auf dem Telefon außerhalb des Fensters. `profilschnitt.test.tsx` liest diesen
+ * Ausschnitt aus dieser Datei und prüft Lage und Schriftgröße der Beschriftung darin.
  */
 const KOPF_AUSSCHNITT_MOBIL: GrafikAusschnitt = {
   ...PROFILSCHNITT_AUSSCHNITT,

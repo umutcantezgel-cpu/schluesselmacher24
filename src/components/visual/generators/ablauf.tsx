@@ -28,6 +28,8 @@ const STANDARD_ANZAHL = 3;
 const ZEICHEN_EM = 0.6;
 /** Mindestabstand zwischen zwei Beschriftungen in einer Zeile. */
 const LUECKE = 8;
+/** Breit: höchstens drei Reihen Beschriftung (Station 1 und 4 oben, 2 und 5 darunter, 3 unten). */
+const MAX_REIHEN = 3;
 /** Radius des Nummernkreises: breit zwei Rasterfelder Durchmesser, schmal 22. */
 const KREIS_BREIT = 30;
 const KREIS_SCHMAL = 22;
@@ -41,26 +43,30 @@ const PFEIL_BREITE = 9;
 /** Strichmuster der Hilfslinien. */
 const GESTRICHELT = '4 3';
 /**
- * Seitliche Luft zwischen einer tiefen Führungslinie und einer Beschriftung der ersten Reihe:
+ * Seitliche Luft zwischen einer tiefen Führungslinie und einer Beschriftung einer höheren Reihe:
  * Wie in einer technischen Zeichnung berührt die Linie die Schrift nicht, sie lässt sichtbar
- * Platz (etwa ¾ der Schrifthöhe 16). Liegt sie näher, wird sie dort unterbrochen (Z-09).
+ * Platz. Liegt sie näher, endet sie über dieser Beschriftung (Z-09).
  */
 const LUFT = 10;
 /** Lücke zwischen dem Ende einer gekürzten Führungslinie und der Schrift. */
 const SCHRIFT_LUECKE = 2;
 
 /**
- * Maße je Format. Breit: `nummer` ist die Nummernschrift im Kreis, `schrift` die Beschriftung.
+ * Maße je Format. Breit: `nummer` ist die Nummernschrift im Kreis, `schrift` die Beschriftung,
+ * `erste` die Grundlinie der ersten Reihe unter der Bemaßungslinie, `reihe` der Abstand der Reihen.
  * „schmal“ steht senkrecht; seine Höhe folgt der Anzahl der Stationen (`ablaufHoehe`).
  *
- * Schrift auf dem Bildschirm (FA-26-01, FA-QA-04D) = Schrift × Darstellungsbreite / Flächenbreite:
+ * Schrift auf dem Bildschirm (FA-26-01, FA-QA-04D) = Schrift × Darstellungsbreite / Flächenbreite.
  * Schmal steht unter 640 px in einem Kasten mit `p-4` (Seitenkopf `/service-und-termin`,
- * Partnerseiten), bei 360 px Fensterbreite also 288 px breit: 16 × 288 / 300 ≈ 15,4 px.
- * Breit bei 1280 px in 5 von 12 Spalten mit `p-6` (etwa 424 px): 16 × 424 / 480 ≈ 14,1 px.
+ * Partnerseiten), bei 360 px Fensterbreite also 288 px breit: 16 × 288 / 300 ≈ 15,4 px. Auf
+ * `ratgeber/[slug]` steht es frei in einer 4:3-Fläche (320 × 240 px); bei vier Stationen begrenzt
+ * die Höhe: 16 × 240 / ablaufHoehe(4) = 16 × 240 / 256 = 15 px.
+ * Breit steht ab 1024 px in 5 von 12 Spalten, schmalste Stelle bei 1024 px mit `p-6` (etwa
+ * 335 px): 20,5 × 335 / 480 ≈ 14,3 px; die Nummern 22 × 335 / 480 ≈ 15,4 px.
  */
 export const ABLAUF_FLAECHE = {
-  breit: { breite: 480, hoehe: 270, schrift: 16, nummer: 18 },
-  schmal: { breite: 300, schrift: 16, rand: 20, kopf: 88, zeile: 68 },
+  breit: { breite: 480, hoehe: 270, schrift: 20.5, nummer: 22, erste: 31, reihe: 26 },
+  schmal: { breite: 300, schrift: 16, rand: 20, kopf: 76, zeile: 60 },
 } as const;
 
 /* Bewegung (B-23): erst die Bemaßungslinie, dann Station für Station; Gesamtdauer unter 1,6 s. */
@@ -100,22 +106,38 @@ function textBreite(text: string, schrift: number): number {
 }
 
 /**
- * Pfade einer tiefen Führungslinie bei `x`. Kommt eine Beschriftung der ersten Reihe
- * (`nachbarn`: Mitte und geschätzte Breite) der Linie näher als `LUFT`, endet die Linie über
- * dieser Zeile; sonst führt sie durchgehend bis zur zweiten Reihe (`LY + 39`).
+ * Pfade einer tiefen Führungslinie bei `x` zur eigenen Beschriftung mit der Grundlinie `ziel`.
+ * Kommt eine Beschriftung einer höheren Reihe (`hindernisse`: Mitte, geschätzte Breite,
+ * Grundlinie) der Linie näher als `LUFT`, endet die Linie über der obersten solchen Beschriftung;
+ * sonst führt sie durchgehend bis knapp über die eigene Beschriftung.
  */
 export function tiefeFuehrung(
   x: number,
   LY: number,
-  grundlinie: number,
+  ziel: number,
   schrift: number,
-  nachbarn: { x: number; breite: number }[],
+  hindernisse: { x: number; breite: number; grundlinie: number }[],
 ): string[] {
-  const erreicht = nachbarn.some((n) => n.breite / 2 + LUFT > Math.abs(n.x - x));
-  if (!erreicht) return [`M${x} ${LY + 4}V${LY + 39}`];
+  const nah = hindernisse
+    .filter((n) => n.breite / 2 + LUFT > Math.abs(n.x - x))
+    .sort((a, b) => a.grundlinie - b.grundlinie);
+  if (nah.length === 0) return [`M${x} ${LY + 4}V${r(ziel - schrift * 0.75 - SCHRIFT_LUECKE)}`];
   // Unter der Zeile bliebe nur ein Reststück von wenigen Einheiten – es wirkte wie ein verirrter
-  // Strich. Die zweite Reihe steht ohnehin mittig unter ihrer Station.
-  return [`M${x} ${LY + 4}V${grundlinie - schrift - SCHRIFT_LUECKE}`];
+  // Strich. Die tiefe Reihe steht ohnehin mittig unter ihrer Station.
+  return [`M${x} ${LY + 4}V${r(nah[0].grundlinie - schrift - SCHRIFT_LUECKE)}`];
+}
+
+/**
+ * Zahl der Reihen für die Beschriftung im breiten Format: so wenige wie möglich. In `k` Reihen
+ * stehen Station i und i + k nebeneinander; sie brauchen den Mindestabstand `LUECKE`.
+ */
+export function ablaufReihen(breiten: number[], abstand: number): number {
+  for (let k = 1; k < MAX_REIHEN; k += 1) {
+    if (breiten.every((b, i) => i + k >= breiten.length || k * abstand >= (b + breiten[i + k]) / 2 + LUECKE)) {
+      return k;
+    }
+  }
+  return MAX_REIHEN;
 }
 
 function nummer(index: number): string {
@@ -168,7 +190,7 @@ interface ZeichnungProps {
 /**
  * Breit (480 × 270): Bemaßungslinie waagerecht von der ersten bis zur letzten Station,
  * Stationen darüber mit gestrichelter Hilfslinie, Beschriftung darunter. Passen die
- * Beschriftungen nicht nebeneinander, stehen die geraden Stationen tiefer in einer zweiten Reihe.
+ * Beschriftungen nicht nebeneinander, stehen sie reihum in zwei oder drei Reihen (`ablaufReihen`).
  */
 function BreitGrafik({ anzahl, beschriftungen, aktiv, title, className }: ZeichnungProps) {
   const f = ABLAUF_FLAECHE.breit;
@@ -179,12 +201,14 @@ function BreitGrafik({ anzahl, beschriftungen, aktiv, title, className }: Zeichn
   const rand = Math.max(KREIS_BREIT + RASTERFELD, wMax / 2 + RASTERFELD);
   const abstand = (f.breite - 2 * rand) / (anzahl - 1);
   const xs = Array.from({ length: anzahl }, (_, i) => r(rand + i * abstand));
-  const versetzt = breiten.some((b, i) => i > 0 && abstand < (breiten[i - 1] + b) / 2 + LUECKE);
-  /* Vertikal: oben Kreis (zwei Rasterfelder) und Hilfslinie, unten eine oder zwei Zeilen Beschriftung. */
+  const reihen = mitBeschriftung ? ablaufReihen(breiten, abstand) : 1;
+  /* Vertikal: oben Kreis (zwei Rasterfelder) und Hilfslinie, unten eine bis drei Reihen Beschriftung. */
   const oben = HILFSSTRECKE + 2 * RASTERFELD;
-  const unten = !mitBeschriftung ? 8 : versetzt ? 56 : 32;
+  const unten = !mitBeschriftung ? 8 : f.erste + (reihen - 1) * f.reihe + 6;
   const LY = r((f.hoehe - (oben + unten)) / 2 + oben);
   const cy = LY - HILFSSTRECKE - KREIS_BREIT;
+  const reiheVon = (i: number) => i % reihen;
+  const grundlinie = (i: number) => LY + f.erste + reiheVon(i) * f.reihe;
 
   return (
     <GrafikRahmen breite={f.breite} hoehe={f.hoehe} title={title} className={className}>
@@ -208,12 +232,13 @@ function BreitGrafik({ anzahl, beschriftungen, aktiv, title, className }: Zeichn
       ))}
 
       {xs.map((x, i) => {
-        const tief = versetzt && i % 2 === 1;
-        const beschriftungY = LY + 28 + (tief ? 24 : 0);
-        const nachbarn = [i - 1, i + 1]
-          .filter((j) => j >= 0 && j < beschriftungen.length)
-          .map((j) => ({ x: xs[j], breite: breiten[j] }));
-        const fuehrung = tief ? tiefeFuehrung(x, LY, LY + 28, f.schrift, nachbarn) : [];
+        const tief = i < beschriftungen.length && reiheVon(i) > 0;
+        const beschriftungY = grundlinie(i);
+        const hindernisse = beschriftungen
+          .map((_, j) => j)
+          .filter((j) => reiheVon(j) < reiheVon(i))
+          .map((j) => ({ x: xs[j], breite: breiten[j], grundlinie: grundlinie(j) }));
+        const fuehrung = tief ? tiefeFuehrung(x, LY, beschriftungY, f.schrift, hindernisse) : [];
         return (
           <g key={`station-${i}`}>
             <path

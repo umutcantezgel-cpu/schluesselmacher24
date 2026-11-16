@@ -62,3 +62,30 @@ export function ueberlappungen(kaesten: TextKasten[]): string[] {
 export function bildschirmPx(einheiten: number, darstellungPx: number, viewBoxBreite: number): number {
   return (einheiten * darstellungPx) / viewBoxBreite;
 }
+
+export interface QuellAusschnitt {
+  x?: number;
+  y?: number;
+  breite?: number;
+  hoehe?: number;
+  /** Namen, die der Ausschnitt mit `...NAME` übernimmt. */
+  uebernimmt: string[];
+}
+
+/**
+ * Liest einen Ausschnitt `const NAME … = { x: …, breite: … }` aus dem Quelltext einer Seite.
+ * Seiten dürfen in Next.js keine eigenen Werte exportieren; die Tests vergleichen deshalb ihre
+ * Annahme mit dem Quelltext der Seite. Ändert die Seite ihren Ausschnitt, schlägt der Test an.
+ */
+export function ausschnittAusQuelle(quelle: string, name: string): QuellAusschnitt {
+  const start = quelle.search(new RegExp(`\\bconst ${name}\\b`));
+  if (start < 0) throw new Error(`Ausschnitt ${name} nicht gefunden`);
+  const auf = quelle.indexOf('{', start);
+  const zu = quelle.indexOf('}', auf);
+  const block = quelle.slice(auf + 1, zu);
+  const ausgabe: QuellAusschnitt = { uebernimmt: [...block.matchAll(/\.\.\.([A-Z_]+)/g)].map((t) => t[1]) };
+  for (const [, schluessel, zahl] of block.matchAll(/\b(x|y|breite|hoehe):\s*(-?\d+(?:\.\d+)?)/g)) {
+    ausgabe[schluessel as 'x' | 'y' | 'breite' | 'hoehe'] = Number(zahl);
+  }
+  return ausgabe;
+}

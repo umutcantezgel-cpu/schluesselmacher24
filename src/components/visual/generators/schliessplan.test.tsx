@@ -1,8 +1,9 @@
+import { readFileSync } from 'node:fs';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { ausserhalb, bildschirmPx, textKaesten, ueberlappungen } from './beschriftung-test-hilfe';
+import { ausserhalb, bildschirmPx, textKaesten, ueberlappungen } from '../beschriftung-test-hilfe';
 import { SCHLIESSPLAN_SCHRIFT, SchliessplanGrafik, schliessplanAusschnitt, schliessplanSchluessel } from './schliessplan';
 
 function zeichne(params: unknown, title: unknown = 'Schließplan'): string {
@@ -576,6 +577,12 @@ describe('SchliessplanGrafik – Schrift auf dem Bildschirm (FA-QA-04D)', () => 
   it('erreicht bei 360 px Fensterbreite mindestens 14 px', () => {
     // Schmal: Bildfläche mit Rahmen in der Inhaltsbreite, 318 px.
     expect(bildschirmPx(SCHLIESSPLAN_SCHRIFT.schmal, 318, 360)).toBeGreaterThanOrEqual(14);
+    // Projekt-Konfigurator auf dem Telefon: Der Kasten reicht bis an den Kartenrand (318 px) und hat links und
+    // rechts keinen eigenen Innenabstand. Die Abnahme hat mit `px-2` 302 px und 13,4 px Schrift gemessen.
+    const konfigurator = readFileSync('src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx', 'utf8');
+    const kasten = /className="(-mx-5 border-y[^"]*lg:col-span-5)"/.exec(konfigurator)?.[1] ?? '';
+    expect(kasten).toContain('sm:p-5');
+    expect(kasten.split(' ').filter((klasse) => /^p[xlr]?-/.test(klasse))).toEqual([]);
     // Startseite: breiter Plan „haupt, 4 Türen“ als Ausschnitt im Kasten mit p-4 (286 px).
     const a = schliessplanAusschnitt({ system: 'haupt', tueren: 4 });
     expect(bildschirmPx(SCHLIESSPLAN_SCHRIFT.breit, 286, a.breite)).toBeGreaterThanOrEqual(14);
@@ -583,18 +590,42 @@ describe('SchliessplanGrafik – Schrift auf dem Bildschirm (FA-QA-04D)', () => 
     expect(bildschirmPx(SCHLIESSPLAN_SCHRIFT.breit, 430, 480)).toBeGreaterThanOrEqual(14);
   });
 
+  it('erreicht ab 1024 px Fensterbreite mindestens 14 px, auch an der schmalsten Stelle', () => {
+    // Raster bei 1024 px: Inhalt 960 px, Spaltenabstand (gutter) 28 px; Konfigurator-Raster gap-8.
+    const kopf5 = (5 * (960 - 11 * 28)) / 12 + 4 * 28;
+    // Kopf /schliessanlagen: frei in 5 von 12 Spalten, Fläche 3:2 – Breite und Höhe begrenzen.
+    const kopfMassstab = Math.min(kopf5 / 480, (kopf5 * 2) / 3 / 300);
+    expect(SCHLIESSPLAN_SCHRIFT.breit * kopfMassstab).toBeGreaterThanOrEqual(14);
+    // Projekt-Konfigurator: Karte (Rand 1, px-6) in 960 px, darin 5 von 12 Spalten (gap-8), Kasten mit Rand 1 und p-5.
+    const karte = 960 - 2 - 48;
+    const konfigurator = (5 * (karte - 11 * 32)) / 12 + 4 * 32 - 2 - 40;
+    expect(konfigurator).toBeGreaterThan(318);
+    expect(bildschirmPx(SCHLIESSPLAN_SCHRIFT.breit, konfigurator, 480)).toBeGreaterThanOrEqual(14);
+  });
+
   it.each(['breit', 'schmal'] as const)('%s: jede Beschriftung in der Fläche, frei von anderen und von fremden Kästen', (format) => {
     for (const params of FAELLE) {
       const html = zeichne({ ...params, format });
       // Acht Blätter im breiten Format: das Sicherheitsnetz verkleinert um höchstens 2 % (Bestand).
-      const skala = Number(/scale\(([\d.]+)\)/.exec(html)?.[1] ?? 1);
+      const verschiebung = /translate\(([-\d.]+) ([-\d.]+)\) scale\(([\d.]+)\)/.exec(html);
+      const skala = Number(verschiebung?.[3] ?? 1);
       expect(skala).toBeGreaterThanOrEqual(format === 'schmal' ? 1 : 0.98);
-      if (skala < 1) continue;
       const breite = format === 'schmal' ? 360 : 480;
       const hoehe = Number(new RegExp(`viewBox="0 0 ${breite} (\\d+)"`).exec(html)?.[1]);
       const kaesten = textKaesten(html);
       for (const k of kaesten) expect(k.groesse).toBe(SCHLIESSPLAN_SCHRIFT[format]);
-      expect(ausserhalb(kaesten, breite, hoehe)).toEqual([]);
+      // Verkleinerte Pläne: Lage auf der Fläche mit Verschiebung und Maßstab; Abstände untereinander
+      // und Kästen bleiben im eigenen Raster vergleichbar.
+      const tx = Number(verschiebung?.[1] ?? 0);
+      const ty = Number(verschiebung?.[2] ?? 0);
+      const aufFlaeche = kaesten.map((k) => ({
+        ...k,
+        links: tx + k.links * skala,
+        rechts: tx + k.rechts * skala,
+        oben: ty + k.oben * skala,
+        unten: ty + k.unten * skala,
+      }));
+      expect(ausserhalb(aufFlaeche, breite, hoehe), `${format} ${JSON.stringify(params)}`).toEqual([]);
       expect(ueberlappungen(kaesten)).toEqual([]);
       // Ein Kürzel steht ganz in seinem Kasten; Z, „frei“ und Nummern berühren keinen Kasten.
       const kasten = rechtecke(html);

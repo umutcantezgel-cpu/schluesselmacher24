@@ -24,9 +24,12 @@ export const LINIE_STARK = 2;
 export const AKZENT = 3;
 /** Sehr kräftige Marke (ersetzt `4`). */
 export const MARKE = 4;
-/** Beschriftung in viewBox-Einheiten. */
-export const SCHRIFT = 13;
-export const SCHRIFT_KLEIN = 12;
+/*
+ * Beschriftung: Es gibt keine gemeinsame Schriftgröße mehr (FA-26-01, FA-QA-04D). Jede Zeichnung
+ * setzt ihre eigene Größe in viewBox-Einheiten so, dass sie an ihrer schmalsten Stelle auf den
+ * Seiten mindestens 14 px ergibt: Einheiten × Darstellungsbreite / viewBox-Breite ≥ 14.
+ * Die Rechnung steht jeweils an der Konstanten und im Test der Zeichnung.
+ */
 /** Strichmuster einer Mittellinie (Strich-Punkt). */
 export const MITTELLINIE = '10 3 2 3';
 

@@ -9,8 +9,6 @@ import {
   KONTUR,
   LINIE,
   Raster,
-  SCHRIFT,
-  SCHRIFT_KLEIN,
   auswahl,
   kerben,
   parameter,
@@ -23,6 +21,24 @@ import {
 
 const BREITE = 480;
 const HOEHE = 270;
+
+/**
+ * Schrift in viewBox-Einheiten (FA-26-01, FA-QA-04D). Die ganze Zeichnung steht auf den
+ * Fehlerseiten bei 360 px Fensterbreite über die Inhaltsbreite (318 px im Rahmen):
+ * 22 × 318 / 480 ≈ 14,6 px; bei 1280 px (6 von 12 Spalten, etwa 572 px) rund 26 px.
+ * Die Szene (`szene: scroll`) zeigt `/gleichschliessende-zylinder` unter 640 px als Ausschnitt
+ * x 58 bis 428 bis an den Rand (360 px): Links neben dem Gehäuse bleiben 92 Einheiten für
+ * „Trennlinie“, also 14,5 × 360 / 370 ≈ 14,1 px; ab 640 px ganz, bei 1024 px (7 von 12 Spalten,
+ * etwa 548 px) rund 16,6 px.
+ */
+export const STIFT_SCHRIFT = 22;
+export const SZENE_SCHRIFT = 14.5;
+const BESCHRIFTUNG = {
+  standard: { schrift: STIFT_SCHRIFT },
+  szene: { schrift: SZENE_SCHRIFT },
+} as const;
+/** Rechtes Ende der Beschriftung „Trennlinie“: knapp vor dem Gehäuse (x 150), über der Trennlinie. */
+export const TRENNLINIE_TEXT = { x: 146, abstand: 7 } as const;
 
 const ZUSTAENDE = ['passt', 'passt-nicht', 'abgebrochen'] as const;
 type Zustand = (typeof ZUSTAENDE)[number];
@@ -194,6 +210,8 @@ export function StiftzuhaltungGrafik({ params, title, className }: VisualProps) 
   const szeneAktiv =
     zustand === 'passt' && typeof szeneWunsch === 'string' && szeneWunsch.trim().toLowerCase() === 'scroll';
 
+  const beschriftung = szeneAktiv ? BESCHRIFTUNG.szene : BESCHRIFTUNG.standard;
+
   /* Tiefen, die im Schlüssel stecken: bei `passt-nicht` deterministisch verschoben. */
   const schluessel = falsch ? stufen.map((s, i) => (s + (VERSATZ_STUFEN[i] ?? 0)) % 10) : stufen;
   const tragend = abgebrochen ? TRAGENDE_BOHRUNGEN_ABGEBROCHEN : BOHRUNGEN.length;
@@ -252,7 +270,7 @@ export function StiftzuhaltungGrafik({ params, title, className }: VisualProps) 
       {code && (
         <text
           className="fill-foreground-muted font-mono"
-          fontSize={SCHRIFT}
+          fontSize={STIFT_SCHRIFT}
           fontWeight={600}
           textAnchor="middle"
           x={r(reideX + REIDE.b / 2)}
@@ -382,10 +400,10 @@ export function StiftzuhaltungGrafik({ params, title, className }: VisualProps) 
       ))}
       <text
         className="fill-foreground-muted font-mono"
-        fontSize={SCHRIFT_KLEIN}
+        fontSize={beschriftung.schrift}
         textAnchor="end"
-        x={TRENNLINIE.von - 6}
-        y={KERN_OBEN - 6}
+        x={TRENNLINIE_TEXT.x}
+        y={KERN_OBEN - TRENNLINIE_TEXT.abstand}
       >
         Trennlinie
       </text>

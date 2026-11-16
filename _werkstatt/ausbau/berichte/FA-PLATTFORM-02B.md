@@ -60,3 +60,17 @@ Prüfung nach der Nachbesserung: `sicher.sh --json -- npx vitest run` 249 Dateie
 - Inhaber: Die Texte der vier Partnerseiten sind jetzt im Admin pflegbar. Ihre Freigabe der Texte (offen aus FA-PLATTFORM-02, OFFENE FRAGE 2) gilt weiter. Neue Texte bitte ohne Provisionssätze, Fristen oder Zusagen über den Partnervertrag hinaus (R4, R10).
 - Betrieb: Nach dem nächsten Seed erscheinen die vier Einträge unter Inhalte, Seitentexte. Die Anleitung steht in `docs/betrieb/admin-alltag.md` unter „Partner und Partnerseiten“.
 - Öffentliche Partnerprofile erst nach Entscheidung und Zustimmung der Partner (MA-54).
+
+## Abnahme durch den Orchestrator (16.11.2026)
+
+Prüfkette (`bash _werkstatt/ausbau/werkzeuge/abnahme.sh`, alle vier Pakete der Welle gemeinsam im Arbeitsbaum, nach allen Eingriffen des Orchestrators): Typprüfung grün, Lint grün, Unit 4047 von 4047, Datenbanktests 171 von 171, Build 181 von 181 Seiten. Onpage-Messung am neu gestarteten Prüfserver: 137 Seiten, Median 100, kein roter und kein gelber Befund. `reste.mjs` über alle vier Quellen: nur die zehn bekannten Platzhalter in `src/lib/pdf/partnervertrag.ts` (MA-29).
+
+Erledigt außerhalb der Schreibrechte des Pakets (zu OFFENE FRAGE 1, „Kurztext ohne Wirkung“):
+- Neu `src/components/partner/gewinnung-daten.ts` mit `gepflegteGewinnungSeiten`: lädt die vier Seiten über `getPageContent` und legt die gepflegten Werte über den Rückfall. Die vier Unterseiten (Verweisliste „Weitere Seiten“), `/partner-werden` und `/llms.txt` nutzen sie. Ein im Admin geänderter Kurztext wirkt damit an allen drei Stellen zugleich (R1). Test `gewinnung-daten.test.ts`.
+- Satz „mit wenigen Angaben“ ersetzt („Bewerben Sie sich online als Partner.“ und „online mit Angaben zu Betrieb, Leistungen und Ausstattung“), weil das Formular sieben Schritte hat (R4); wortgleich in `content/seo.json` und den Startwerten.
+
+Probe am Prüfserver (Produktions-Build): Die Hauptseite und die vier Unterseiten antworten mit 200; `/llms.txt` führt die vier Unterseiten mit ihren Kurztexten unter „Partner werden“.
+
+Nicht im Browser gesehen: die Pflege im Admin selbst (ohne Datenbank kein Admin am Prüfserver); belegt über die Tests „gepflegter Wert ersetzt den Rückfall, leerer Wert löscht ihn nicht“. Offene Fragen 2 und 3 bleiben beim Inhaber (kein eigener Absatz verlangt; Zahlwegtexte folgen einem Modellwechsel nicht von selbst, steht in der Betreiberanleitung).
+
+=== ENDE FA-PLATTFORM-02B · BEREIT ZUR RÜCKGABE ===

@@ -1992,8 +1992,8 @@ export function ProjektKonfigurator({ doorTypes, measuringInfo, hilfe }: Projekt
                     <GlyphPfeilRechts size={15} />
                   </Link>
                 </div>
-                <div className="-mx-5 border-y border-border bg-surface px-2 py-4 sm:mx-0 sm:rounded-lg sm:border sm:p-5 lg:col-span-5">
-                  {/* Unter 640 px die schmale Fassung (Schrift 12) bis an den Kartenrand, darüber die breite */}
+                <div className="-mx-5 border-y border-border bg-surface py-4 sm:mx-0 sm:rounded-lg sm:border sm:p-5 lg:col-span-5">
+                  {/* Unter 640 px die schmale Fassung bis an den Kartenrand, ohne Innenabstand links und rechts: Bei 360 px Fensterbreite sind das 318 px und 14,1 px Schrift; mit 8 px Innenabstand waren es 302 px und 13,4 px (im Browser gemessen). Darüber die breite Fassung (FA-26-01, Rechnung in schliessplan.test.tsx) */}
                   <div className="sm:hidden">
                     <SchliessplanGrafik
                       params={{ system: ({ [SYSTEM_NAMES.gleichschliessung]: 'gleichschliessung', [SYSTEM_NAMES.z]: 'zentral', [SYSTEM_NAMES.hs]: 'haupt', [SYSTEM_NAMES.ghs]: 'generalhaupt' } as Record<string, string>)[recommendation.system], format: 'schmal' }}

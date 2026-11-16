@@ -75,7 +75,7 @@ describe('CodeFundstelleGrafik', () => {
     pruefeVertrag(html);
     const texte = html.match(/<text[^>]*>[^<]*<\/text>/g) ?? [];
     expect(texte).toHaveLength(1);
-    // Ohne data-legende: globals.css setzte die Schrift im Ausschnitt sonst auf 16 Einheiten.
+    // Ohne data-legende: Das Attribut gibt es nicht mehr (frühere Regel in globals.css: 16 Einheiten im Ausschnitt).
     expect(texte[0]).not.toContain('data-legende');
     expect(texte[0]).toContain(`font-size="${HINWEIS_SCHRIFT}"`);
     expect(texte[0]).toContain('>Am Schlüsselkopf</text>');
@@ -176,7 +176,11 @@ describe('CodeFundstelleGrafik', () => {
     expect(x + halbe).toBeLessThanOrEqual(480);
     expect(y + HINWEIS_SCHRIFT * 0.25).toBeLessThanOrEqual(270);
     // Die Hinweislinie endet über der Schrift (Oberlänge rund 0,75 em), der Bart (bis y 188) liegt darüber.
-    expect(234).toBeLessThanOrEqual(y - HINWEIS_SCHRIFT * 0.75);
+    // Linienende aus dem Markup: die senkrechte Hinweislinie über der Schrift (gleiches x).
+    const linie = [...html.matchAll(/d="M([0-9.]+) ([0-9.]+)V([0-9.]+)"/g)].find((t) => Number(t[1]) === x);
+    expect(linie).toBeDefined();
+    const ende = Math.max(Number(linie![2]), Number(linie![3]));
+    expect(ende).toBeLessThanOrEqual(y - HINWEIS_SCHRIFT * 0.75);
     expect(188).toBeLessThan(y - HINWEIS_SCHRIFT);
   });
 });

@@ -2,7 +2,8 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { TUER_SCHUTZ_AUSSCHNITT, TuerSchutzGrafik } from './tuer-schutz';
+import { ausserhalb, bildschirmPx, textKaesten, ueberlappungen } from '../beschriftung-test-hilfe';
+import { LEGENDE_SCHRIFT, MARKE_SCHRIFT, TUER_SCHUTZ_AUSSCHNITT, TuerSchutzGrafik } from './tuer-schutz';
 
 function zeichne(params: unknown, title: unknown = 'Tür mit Schutzpunkten'): string {
   return renderToStaticMarkup(
@@ -93,7 +94,7 @@ describe('TuerSchutzGrafik', () => {
     for (const fokus of FOKUS) {
       const html = zeichne({ fokus });
       /* Jede Legendengruppe: Öffnungs-Tag ohne opacity-Klasse, direkt darin nur die Legendentexte */
-      const gruppen = [...html.matchAll(/<g([^>]*)>((?:<text[^>]*data-legende[^>]*>[^<]*<\/text>)+)<\/g>/g)];
+      const gruppen = [...html.matchAll(/<g([^>]*)>((?:<text[^>]*data-zeile[^>]*>[^<]*<\/text>)+)<\/g>/g)];
       expect(gruppen).toHaveLength(NAMEN.length);
       for (const [, attribute] of gruppen) {
         expect(attribute).not.toMatch(/opacity-/);
@@ -174,7 +175,9 @@ describe('TuerSchutzGrafik', () => {
   it('bemisst den Telefon-Ausschnitt für Tür und die vergrößerte Legende', () => {
     const a = TUER_SCHUTZ_AUSSCHNITT;
     const html = zeichne({});
-    expect(html.match(/data-legende="true"/g)).toHaveLength(10);
+    expect(html.match(/data-zeile="true"/g)).toHaveLength(10);
+    // Ohne data-legende: Das Attribut gibt es nicht mehr (frühere Regel in globals.css: 16 Einheiten im Ausschnitt).
+    expect(html).not.toContain('data-legende');
     expect([a.vollBreite, a.vollHoehe]).toEqual([480, 300]);
     expect(a.x).toBeGreaterThanOrEqual(0);
     expect(a.y).toBeGreaterThanOrEqual(0);
@@ -183,15 +186,15 @@ describe('TuerSchutzGrafik', () => {
     // Zarge links (x 48, Bolzen ab 40) und Boden (y 272) liegen im Ausschnitt.
     expect(a.x).toBeLessThanOrEqual(30);
     expect(a.y + a.hoehe).toBeGreaterThanOrEqual(276);
-    // Längster Name „Schließzylinder“ ab x 320 in 16 Einheiten Mono (≈ 0,6 em je Zeichen).
-    expect(a.x + a.breite).toBeGreaterThanOrEqual(320 + 15 * 16 * 0.6 + 2);
-    // Gewinn gegenüber der vollen Breite: Faktor ≥ 1,08 bei 16/13 größerer Legende.
+    // Längster Name „Schließzylinder“ ab x 286 in 20 Einheiten Mono (≈ 0,6 em je Zeichen).
+    expect(a.x + a.breite).toBeGreaterThanOrEqual(286 + 15 * LEGENDE_SCHRIFT * 0.6);
+    // Gewinn gegenüber der vollen Breite: Faktor ≥ 1,08.
     expect(a.vollBreite / a.breite).toBeGreaterThanOrEqual(1.08);
   });
 
   it('führt die Bandseite außen an der Zarge vorbei unter die Tür, ohne den Boden zu queren', () => {
     const html = zeichne({});
-    expect(html).toContain('d="M46 210H34V288"');
+    expect(html).toContain('d="M42 210H34V288"');
     // Keine Führungslinie reicht unter die Zeile 288 (Legende unter der Tür)
     const fuehrungen = [...html.matchAll(/<path class="sm24-draw[^"]*"[^>]* d="([^"]+)"/g)].map((t) => t[1]);
     expect(fuehrungen).toHaveLength(5);
@@ -206,14 +209,55 @@ describe('TuerSchutzGrafik', () => {
     }
   });
 
-  it('setzt die Bandseite links unter der Tür: Ziffer und Name auf der Zeile 292,5', () => {
+  it('setzt die Bandseite links unter der Tür: Ziffer und Name auf der Zeile 295', () => {
     const html = zeichne({});
-    expect(html).toMatch(/ x="60" y="292.5"[^>]*>Bandseite<\/text>/);
-    expect(html).toMatch(/ x="40" y="292.5"[^>]*>5<\/text>/);
+    expect(html).toMatch(/ x="58" y="295"[^>]*>Bandseite<\/text>/);
+    expect(html).toMatch(/ x="40" y="295"[^>]*>5<\/text>/);
   });
 
   it('gibt dem Telefon-Ausschnitt Höhe bis y 300, damit die Zeile unter der Tür im Bild liegt', () => {
     const a = TUER_SCHUTZ_AUSSCHNITT;
     expect(a.y + a.hoehe).toBeGreaterThanOrEqual(296);
+  });
+
+  it('setzt Legende und Marken bei 360 px mindestens 14 px groß, in Fläche und Ausschnitt, ohne Überlappung (FA-QA-04D)', () => {
+    const a = TUER_SCHUTZ_AUSSCHNITT;
+    // Unter 640 px: Ausschnitt in der Bildfläche mit Rahmen, 318 px. Ab 1024 px: ganze Zeichnung, 383 px.
+    expect(bildschirmPx(LEGENDE_SCHRIFT, 318, a.breite)).toBeGreaterThanOrEqual(14);
+    expect(bildschirmPx(MARKE_SCHRIFT, 318, a.breite)).toBeGreaterThanOrEqual(14);
+    expect(bildschirmPx(LEGENDE_SCHRIFT, 383, 480)).toBeGreaterThanOrEqual(14);
+    for (const fokus of FOKUS) {
+      const alle = textKaesten(zeichne({ fokus }));
+      expect(alle).toHaveLength(15);
+      // Legende: Text ab x (start); Marken: Ziffer mittig im Kreis.
+      const legende = alle.filter((k) => k.links === k.x);
+      expect(legende).toHaveLength(10);
+      expect(ausserhalb(alle, 480, 300)).toEqual([]);
+      // Legende: Zeilen getrennt und ganz im Ausschnitt.
+      expect(ueberlappungen(legende)).toEqual([]);
+      for (const k of legende) {
+        expect(k.links).toBeGreaterThanOrEqual(a.x);
+        expect(k.rechts).toBeLessThanOrEqual(a.x + a.breite);
+        expect(k.unten).toBeLessThanOrEqual(a.y + a.hoehe);
+      }
+    }
+  });
+
+  it('lässt die Marken frei voneinander und die Führungslinie vor dem Knick waagerecht laufen', () => {
+    const html = zeichne({});
+    const marken = [...html.matchAll(/<circle class="fill-area stroke-surface"[^>]* cx="([\d.]+)" cy="([\d.]+)" r="([\d.]+)"/g)].map((t) => ({
+      x: Number(t[1]),
+      y: Number(t[2]),
+      r: Number(t[3]),
+    }));
+    expect(marken).toHaveLength(5);
+    for (const m of marken) expect(MARKE_SCHRIFT * 0.6).toBeLessThan(2 * m.r - 6);
+    for (let i = 0; i < marken.length; i += 1) {
+      for (let j = i + 1; j < marken.length; j += 1) {
+        expect(Math.hypot(marken[i].x - marken[j].x, marken[i].y - marken[j].y)).toBeGreaterThan(marken[i].r + marken[j].r + 2);
+      }
+      // Rechter Rand jeder Marke vor dem Knick (x 248).
+      if (marken[i].x > 100) expect(marken[i].x + marken[i].r).toBeLessThan(248);
+    }
   });
 });

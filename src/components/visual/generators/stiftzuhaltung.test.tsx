@@ -1,8 +1,11 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { StiftzuhaltungGrafik } from './stiftzuhaltung';
+import { ausschnittAusQuelle, ausserhalb, bildschirmPx, textKaesten, ueberlappungen } from '../beschriftung-test-hilfe';
+import { STIFT_SCHRIFT, SZENE_SCHRIFT, StiftzuhaltungGrafik } from './stiftzuhaltung';
 import { hash } from './grafik-basis';
 
 function zeichne(params: unknown, title: unknown = ''): string {
@@ -109,18 +112,20 @@ describe('StiftzuhaltungGrafik', () => {
     );
   });
 
+  // Fingerabdrücke neu genommen mit FA-QA-04D (Schrift 22, „Trennlinie“ bei x 146); geändert sind nur
+  // Schriftgröße und Lage der zwei Beschriftungen, die Länge jeder Ausgabe ist gleich geblieben.
   it('ohne szene bleibt die Ausgabe unverändert (Fingerabdruck vor E6-GRAFIKER-11)', () => {
     const fingerabdruecke: [unknown, number, number][] = [
-      [{}, 1176611037, 7362],
-      [{ zustand: 'passt-nicht' }, 3985722158, 8132],
-      [{ zustand: 'abgebrochen', code: '500' }, 401139204, 8179],
-      [{ zustand: 'passt-nicht', einschnitte: '37264', code: '4711' }, 2567637817, 8258],
-      [{ zustand: 'passt', einschnitte: '37264' }, 1703972281, 7362],
-      [{ zustand: 'passt', code: '404' }, 2720279030, 7487],
-      [{ zustand: 'passt', einschnitte: [9, 0, 9, 0, 9], code: '9' }, 641981156, 7485],
-      [{ zustand: 'abgebrochen' }, 1300335833, 8054],
-      [{ einschnitte: [1, 2, 3, 4, 5], code: 12 }, 2353545066, 7474],
-      [{ code: 7 }, 3177861991, 7485],
+      [{}, 2348589670, 7362],
+      [{ zustand: 'passt-nicht' }, 458589357, 8132],
+      [{ zustand: 'abgebrochen', code: '500' }, 580167323, 8179],
+      [{ zustand: 'passt-nicht', einschnitte: '37264', code: '4711' }, 3072678790, 8258],
+      [{ zustand: 'passt', einschnitte: '37264' }, 3539121810, 7362],
+      [{ zustand: 'passt', code: '404' }, 100318785, 7487],
+      [{ zustand: 'passt', einschnitte: [9, 0, 9, 0, 9], code: '9' }, 4180095455, 7485],
+      [{ zustand: 'abgebrochen' }, 3564876458, 8054],
+      [{ einschnitte: [1, 2, 3, 4, 5], code: 12 }, 2403287969, 7474],
+      [{ code: 7 }, 4014084124, 7485],
     ];
     for (const [params, fingerabdruck, laenge] of fingerabdruecke) {
       const html = zeichne(params);
@@ -189,5 +194,50 @@ describe('StiftzuhaltungGrafik', () => {
       <StiftzuhaltungGrafik params={{} as VisualProps['params']} title="" className="mt-4" />,
     );
     expect(ohne).toMatch(/^<svg[^>]*class="block h-auto w-full mt-4"/);
+  });
+});
+
+describe('StiftzuhaltungGrafik – Schrift auf dem Bildschirm (FA-QA-04D)', () => {
+  /*
+   * Ausschnitt der Szene auf /gleichschliessende-zylinder, aus dem Quelltext der Seite gelesen
+   * (Seiten dürfen in Next.js keine Werte exportieren). Ändert die Seite ihn, prüft der Test den neuen Wert.
+   */
+  const SZENE_AUSSCHNITT = ausschnittAusQuelle(
+    readFileSync(join(process.cwd(), 'src/app/(site)/gleichschliessende-zylinder/page.tsx'), 'utf8'),
+    'STIFTZUHALTUNG_AUSSCHNITT',
+  ) as { x: number; y: number; breite: number; hoehe: number };
+
+  it('liest den Ausschnitt der Seite aus ihrem Quelltext', () => {
+    expect(SZENE_AUSSCHNITT).toMatchObject({ x: 58, y: 30, breite: 370, hoehe: 200 });
+  });
+
+  it('erreicht bei 360 px Fensterbreite mindestens 14 px', () => {
+    // Fehlerseiten: ganze Zeichnung über 318 px; Szene: Ausschnitt bis an den Rand (360 px).
+    expect(bildschirmPx(STIFT_SCHRIFT, 318, 480)).toBeGreaterThanOrEqual(14);
+    expect(bildschirmPx(SZENE_SCHRIFT, 360, SZENE_AUSSCHNITT.breite)).toBeGreaterThanOrEqual(14);
+  });
+
+  it('hält Code und „Trennlinie“ in der Fläche, getrennt und links vor dem Gehäuse', () => {
+    for (const params of [{ code: '4711' }, { zustand: 'passt-nicht', code: '4711' }, { zustand: 'abgebrochen', code: '500' }]) {
+      const kaesten = textKaesten(zeichne(params));
+      expect(kaesten.map((k) => k.inhalt).sort()).toEqual([String(params.code), 'Trennlinie'].sort());
+      for (const k of kaesten) expect(k.groesse).toBe(STIFT_SCHRIFT);
+      expect(ausserhalb(kaesten, 480, 270)).toEqual([]);
+      expect(ueberlappungen(kaesten)).toEqual([]);
+      const trenn = kaesten.find((k) => k.inhalt === 'Trennlinie')!;
+      // Vor dem Gehäuse (x 150), über der Trennlinie (y 118)
+      expect(trenn.rechts).toBeLessThanOrEqual(150);
+      expect(trenn.unten).toBeLessThanOrEqual(118);
+    }
+  });
+
+  it('zeigt „Trennlinie“ in der Szene ganz im Ausschnitt der Seite', () => {
+    const [trenn] = textKaesten(zeichne({ szene: 'scroll' }));
+    expect(trenn.inhalt).toBe('Trennlinie');
+    expect(trenn.groesse).toBe(SZENE_SCHRIFT);
+    expect(trenn.links).toBeGreaterThanOrEqual(SZENE_AUSSCHNITT.x);
+    expect(trenn.oben).toBeGreaterThanOrEqual(SZENE_AUSSCHNITT.y);
+    expect(trenn.rechts).toBeLessThanOrEqual(Math.min(150, SZENE_AUSSCHNITT.x + SZENE_AUSSCHNITT.breite));
+    expect(trenn.unten).toBeLessThanOrEqual(SZENE_AUSSCHNITT.y + SZENE_AUSSCHNITT.hoehe);
   });
 });

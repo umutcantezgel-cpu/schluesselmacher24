@@ -46,7 +46,7 @@ import { VERFUEGBARKEIT_LABEL, istBestellbar, verfuegbarkeitVon } from '@/lib/da
 import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 import { VerfuegbarkeitHinweis } from '../verfuegbarkeit-hinweis';
 
-/** Telefon-Ausschnitt des Profilschnitts (viewBox 480 × 360): Halm ab der Schulter, die Reide samt Kontur (bis x 125,1) ganz außerhalb; Nummern, Spitze, Fräser und Bemaßung (bis y 282) innen; rechter Rand wie PROFILSCHNITT_AUSSCHNITT (462). Schrift 11,5 px bei 320 px Zeichnungsbreite (360 px Viewport), etwa 10 px bei 280 px (320 px Viewport), darunter die Kern-Mindestgröße (K-008). */
+/** Telefon-Ausschnitt des Profilschnitts (viewBox 480 × 360): Halm ab der Schulter, die Reide samt Kontur (bis x 125,1) ganz außerhalb; Nummern, Spitze, Fräser und Bemaßung (bis y 282) innen; rechter Rand wie PROFILSCHNITT_AUSSCHNITT (462). Schrift 18 Einheiten × 320 / 334 ≈ 17,2 px bei 360 px Fensterbreite (FA-26-01, mindestens 14 px); `profilschnitt.test.tsx` liest diesen Ausschnitt aus dieser Datei und prüft Lage und Schriftgröße. */
 const PROFILSCHNITT_HALM = {
   x: 128,
   y: 98,

@@ -7,8 +7,6 @@ import {
   LINIE,
   MITTELLINIE,
   Raster,
-  SCHRIFT,
-  SCHRIFT_KLEIN,
   auswahl,
   parameter,
   pfeilspitze,
@@ -21,14 +19,33 @@ import {
 const FORMATE = ['breit', 'schmal'] as const;
 
 /**
- * Zeichenfläche je Format. „schmal“ ist für Telefonbreiten (unter 640 px): kleinere
- * Fläche, größere Schrift; bei 250 px Breite wird die Beschriftung rund 13 px groß.
+ * Zeichenfläche je Format. „schmal“ ist für Telefonbreiten (unter 640 px): kleinere Fläche.
+ *
+ * Schrift auf dem Bildschirm (FA-26-01, FA-QA-04D) = Schrift × Darstellungsbreite / Flächenbreite.
+ * Schmal ist bei 360 px Fensterbreite am schmalsten in der Karte der Startseite (Leiste mit 4/5
+ * Kartenbreite und `px-6`, etwa 206 px): 21 × 206 / 300 ≈ 14,4 px; im Seitenkopf
+ * `/gleichschliessende-zylinder` (16/9, durch die Höhe begrenzt, etwa 245 px) ≈ 17 px. Breit steht
+ * auch auf dem Telefon, im Konfigurator für Schließanlagen (Kasten mit `p-3`, etwa 294 px):
+ * 23 × 294 / 480 ≈ 14,1 px; bei 1280 px in der Karte der Startseite (etwa 522 px) ≈ 25 px.
+ *
+ * „außen“, „innen“, „Mitte Stulpschraube“ und „Überstand“ stehen in Zeilen unter dem Zylinder;
+ * `rand` ist nur noch der Abstand des Zylinders zum Rand.
  */
 const FLAECHE = {
-  /* `rand`: Platz links und rechts für „außen“/„innen“. */
-  breit: { breite: 480, hoehe: 270, rand: 66, schrift: SCHRIFT, klein: SCHRIFT_KLEIN },
-  schmal: { breite: 300, hoehe: 220, rand: 62, schrift: 16, klein: 15 },
+  breit: { breite: 480, hoehe: 270, rand: 24, schrift: 23, klein: 23 },
+  schmal: { breite: 300, hoehe: 220, rand: 14, schrift: 21, klein: 21 },
 } as const;
+export const ZYLINDER_SCHRIFT = { breit: FLAECHE.breit.schrift, schmal: FLAECHE.schmal.schrift } as const;
+/** Zeilenabstand der Beschriftung unter dem Zylinder, je Schriftgröße. */
+const ZEILE = 1.3;
+/** Abstand der ersten Zeile unter dem Zylinder (Raum für Bezugslinie und Türblatt). */
+const UNTER_ZYLINDER = 14;
+/** Zusätzlicher Abstand unter der Strecke „Überstand“. */
+const UNTER_STRECKE = 10;
+/** Abstand der Seitenbeschriftung zur Bezugslinie der Stulpschraube. */
+const SEITE_ABSTAND = 8;
+/** Kleinster Abstand einer Beschriftung zum Rand der Fläche. */
+const TEXT_RAND = 4;
 
 const BAUFORMEN = ['profil-doppel', 'profil-halb', 'knauf'] as const;
 const KNAUFSEITEN = ['innen', 'aussen'] as const;
@@ -59,9 +76,6 @@ const BESCHLAG_DICKE = 6;
 const BESCHLAG_UEBERHANG = 8;
 const TUER_UEBERHANG = 14;
 const UEBERSTAND_LAENGE = 18;
-/* Mit Strecke Überstand: Platz über dem Profil für die Maßkette, darunter für die Strecke und ihre Beschriftungen. */
-const OBEN_MIT_UEBERSTAND = 44;
-const UNTEN_MIT_UEBERSTAND = 50;
 
 /** 30 → „30“, 32.5 → „32,5“. */
 function mass(wert: number): string {
@@ -103,12 +117,26 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
   const minMm = links - (knaufseite === 'aussen' ? knaufMass : 0);
   const maxMm = rechts + (knaufseite === 'innen' ? knaufMass : 0);
 
-  const s = Math.min((f.breite - 2 * f.rand) / (maxMm - minMm), MAX_SKALA);
+  /*
+   * Senkrecht, von oben: Maßzahl (Oberlänge 0,75 em), Maßlinie 8 darunter, 24 bis zum Zylinder,
+   * der Zylinder, darunter die Zeilen „Überstand“ (mit Strecke), „außen | innen“ und
+   * „Mitte Stulpschraube“. Der Maßstab folgt der Breite und der Höhe; der Block steht mittig.
+   * Für den Maßstab zählt immer der Platz aller drei Zeilen (mit Strecke „Überstand“): So bleibt
+   * der Maßstab mit und ohne Schutzbeschlag gleich, und Maß A und B stehen an denselben Stellen
+   * (E5-GRAFIKER-01).
+   */
+  const zeile = r(f.schrift * ZEILE);
+  const zeilen = ueberstand ? 3 : 2;
+  const massRel = f.schrift * 0.75 + 8;
+  const obenRel = massRel + 24;
+  const ersteRel = UNTER_ZYLINDER + f.schrift * 0.75 + (ueberstand ? UNTER_STRECKE : 0);
+  const untenText = ersteRel + (zeilen - 1) * zeile + f.schrift * 0.25;
+  const untenPlatz = UNTER_ZYLINDER + f.schrift * 0.75 + UNTER_STRECKE + 2 * zeile + f.schrift * 0.25;
+  const sHoehe = (f.hoehe - 2 * TEXT_RAND - obenRel - untenPlatz) / PROFIL_HOEHE;
+  const s = Math.min((f.breite - 2 * f.rand) / (maxMm - minMm), MAX_SKALA, sHoehe);
   const nullX = f.breite / 2 - ((minMm + maxMm) / 2) * s;
-  const oben = ueberstand
-    ? OBEN_MIT_UEBERSTAND +
-      (f.hoehe - OBEN_MIT_UEBERSTAND - UNTEN_MIT_UEBERSTAND - PROFIL_HOEHE * s) / 2
-    : (f.hoehe - (PROFIL_HOEHE * s + 70)) / 2 + 42;
+  const blockHoehe = obenRel + PROFIL_HOEHE * s + untenText;
+  const oben = (f.hoehe - blockHoehe) / 2 + obenRel;
   const X = (mm: number) => r(nullX + mm * s);
   const Y = (mm: number) => r(oben + mm * s);
 
@@ -119,8 +147,11 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
   const beschlagX = r(X(links) + UEBERSTAND_LAENGE);
   const tuerX = r(beschlagX + BESCHLAG_DICKE);
   const ueberY = r(unten + TUER_UEBERHANG);
-  /* Unter der Strecke Überstand rücken die Beschriftungen weiter nach unten. */
-  const mitteY = r(unten + (ueberstand ? 47 : 28));
+  /* Grundlinien der Zeilen unter dem Zylinder. */
+  const ersteY = r(unten + ersteRel);
+  const ueberTextY = ersteY;
+  const seitenY = r(ersteY + (ueberstand ? zeile : 0));
+  const mitteY = r(seitenY + zeile);
 
   const koerper = [
     `M${r(X(links) + ecke)} ${Y(0)}`,
@@ -185,11 +216,18 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
   ];
   if (!halb) masse.push({ von: 0, bis: rechts, text: `B ${mass(innen)}` });
 
-  const beschriftungY = r(oben + (PROFIL_HOEHE * s) / 2 + 4.5);
   const mitteText = 'Mitte Stulpschraube';
   const mitteBreite = mitteText.length * f.klein * 0.6;
   const mitteX = r(
-    Math.min(f.breite - 12 - mitteBreite / 2, Math.max(12 + mitteBreite / 2, X(0))),
+    Math.min(f.breite - TEXT_RAND - mitteBreite / 2, Math.max(TEXT_RAND + mitteBreite / 2, X(0))),
+  );
+  /* „außen“ links, „innen“ rechts der Bezugslinie; am Rand rückt das Paar nach innen. */
+  const seiteBreite = 5 * f.schrift * 0.6;
+  const seitenX = r(
+    Math.min(
+      f.breite - TEXT_RAND - SEITE_ABSTAND - seiteBreite,
+      Math.max(TEXT_RAND + SEITE_ABSTAND + seiteBreite, X(0)),
+    ),
   );
 
   return (
@@ -302,6 +340,16 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
         const x1 = X(m.von);
         const x2 = X(m.bis);
         const start = 0.35 + i * 0.2;
+        /* Maßzahl mittig über der Maßlinie; ist die Linie kürzer als die Zahl, rückt sie von der
+           Stulpschraube nach außen (A links, B rechts), ohne die Fläche zu verlassen. */
+        const zahlBreite = [...m.text].length * f.schrift * 0.6;
+        const zahlMitte =
+          Math.abs(x2 - x1) >= zahlBreite + 6
+            ? (x1 + x2) / 2
+            : m.von === 0
+              ? X(0) + 4 + zahlBreite / 2
+              : X(0) - 4 - zahlBreite / 2;
+        const zahlX = Math.min(f.breite - TEXT_RAND - zahlBreite / 2, Math.max(TEXT_RAND + zahlBreite / 2, zahlMitte));
         return (
           <g key={m.text}>
             <path
@@ -334,7 +382,7 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
               fontSize={f.schrift}
               fontWeight={600}
               textAnchor="middle"
-              x={r((x1 + x2) / 2)}
+              x={r(zahlX)}
               y={r(massY - 8)}
             >
               {m.text}
@@ -349,8 +397,8 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
           className="fill-foreground-muted font-mono"
           fontSize={f.schrift}
           textAnchor="end"
-          x={r(X(minMm) - 12)}
-          y={beschriftungY}
+          x={r(seitenX - SEITE_ABSTAND)}
+          y={seitenY}
         >
           außen
         </text>
@@ -358,8 +406,8 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
           className="fill-foreground-muted font-mono"
           fontSize={f.schrift}
           textAnchor="start"
-          x={r(X(maxMm) + 12)}
-          y={beschriftungY}
+          x={r(seitenX + SEITE_ABSTAND)}
+          y={seitenY}
         >
           innen
         </text>
@@ -393,9 +441,9 @@ export function ZylinderMassGrafik({ params, title, className }: VisualProps) {
             className="fill-foreground-muted font-mono"
             fontSize={f.schrift}
             fontWeight={600}
-            textAnchor="middle"
-            x={r((X(links) + beschlagX) / 2)}
-            y={r(unten + 31)}
+            textAnchor="start"
+            x={r(Math.max(TEXT_RAND, Math.min(X(links), f.breite - TEXT_RAND - 9 * f.schrift * 0.6)))}
+            y={ueberTextY}
           >
             Überstand
           </text>
