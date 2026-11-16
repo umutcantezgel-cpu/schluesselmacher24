@@ -26,6 +26,7 @@ import * as migration_20261116_033126_einsende_sendung from './20261116_033126_e
 import * as migration_20261116_042326_gehaeuse from './20261116_042326_gehaeuse';
 import * as migration_20261116_072304_partner_qualitaet from './20261116_072304_partner_qualitaet';
 import * as migration_20261116_081528_partner_pruefung from './20261116_081528_partner_pruefung';
+import * as migration_20261116_100017_orte_stamm from './20261116_100017_orte_stamm';
 
 export const migrations = [
   {
@@ -167,5 +168,10 @@ export const migrations = [
     up: migration_20261116_081528_partner_pruefung.up,
     down: migration_20261116_081528_partner_pruefung.down,
     name: '20261116_081528_partner_pruefung',
+  },
+  {
+    up: migration_20261116_100017_orte_stamm.up,
+    down: migration_20261116_100017_orte_stamm.down,
+    name: '20261116_100017_orte_stamm',
   },
 ];

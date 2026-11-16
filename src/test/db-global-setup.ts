@@ -30,6 +30,8 @@ export default function setup() {
     NEXT_PUBLIC_SERVER_URL: 'http://localhost:3000',
     // Dateien immer lokal — auch wenn in der Shell Zugangsdaten für den Bucket stehen.
     SM24_STORAGE: 'lokal',
+    // Ortsstamm nur als Stichprobe (Lahn-Dill-Kreis und Prioritätsliste), damit der Seed die Tests nicht bremst.
+    SM24_ORTSSTAMM: 'stichprobe',
   };
   run(['node', 'scripts/db.mjs', 'start'], env);
   run(['npx', 'payload', 'migrate'], env);

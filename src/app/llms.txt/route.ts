@@ -2,7 +2,7 @@ import { getCodeLines, getSettings } from '@/lib/data';
 import { ANFRAGE_FORMULAR, KLASSEN_SEITEN } from '@/lib/fahrzeuge/anfrage-klassen';
 import { getSiteUrl } from '@/lib/site-url';
 import { NAV_AREAS } from '@/lib/navigation';
-import { GEWINNUNG_SEITEN } from '@/lib/partner/gewinnung';
+import { gepflegteGewinnungSeiten } from '@/components/partner/gewinnung-daten';
 import { angabe, firmaVeroeffentlichbar, standort } from '@/lib/rechtliches/firma';
 
 export const dynamic = 'force-static';
@@ -15,7 +15,7 @@ export const dynamic = 'force-static';
  */
 export async function GET() {
   const site = getSiteUrl();
-  const [{ company }, codeLines] = await Promise.all([getSettings(), getCodeLines()]);
+  const [{ company }, codeLines, partnerSeiten] = await Promise.all([getSettings(), getCodeLines(), gepflegteGewinnungSeiten()]);
   const ort = firmaVeroeffentlichbar(company) ? angabe(company.city) : undefined;
   const werkstatt = standort(company);
 
@@ -55,7 +55,7 @@ export async function GET() {
     `- [Kontakt](${site}/service-und-termin/kontakt): Anschrift und Erreichbarkeit`,
     `- [Zahlung und Versand](${site}/rechtliches/versand-und-zahlung): Versandarten, Kosten und Anzahlung`,
     `- [Partner werden](${site}/partner-werden): Bewerbung für Fachbetriebe für Autoschlüssel und Fahrzeugschlüssel`,
-    ...GEWINNUNG_SEITEN.map((seite) => `  - [${seite.kurzname}](${site}${seite.pfad}): ${seite.kurztext}`),
+    ...partnerSeiten.map((seite) => `  - [${seite.kurzname}](${site}${seite.pfad}): ${seite.kurztext}`),
     '',
   ].join('\n');
 

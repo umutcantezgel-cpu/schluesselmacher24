@@ -95,13 +95,22 @@ function AbschnittInhalt({ abschnitt }: { abschnitt: GewinnungAbschnitt }) {
  * Verweise auf die übrigen Partnerseiten und ein nächster Schritt mit Telefon. Inhalte aus
  * `src/lib/partner/gewinnung.ts`.
  */
-export function GewinnungSeite({ seite, telefon }: { seite: GewinnungSeiteDaten; telefon?: string }) {
+export function GewinnungSeite({
+  seite,
+  telefon,
+  weitere: weitereGepflegt,
+}: {
+  seite: GewinnungSeiteDaten;
+  telefon?: string;
+  /** Die übrigen Partnerseiten mit gepflegten Texten; ohne Angabe die Texte aus dem Code. */
+  weitere?: GewinnungSeiteDaten[];
+}) {
   const crumbs = [
     { href: PARTNER_HAUPTSEITE, label: 'Partner werden' },
     { href: seite.pfad, label: seite.kurzname },
   ];
   const telefonHref = telefonLink(telefon);
-  const weitere = weitereGewinnungSeiten(seite.slug);
+  const weitere = weitereGepflegt ?? weitereGewinnungSeiten(seite.slug);
   const versatz = seite.ablauf ? 1 : 0;
   const ablaufTitel = seite.ablauf ? `Ablauf eines Partnerauftrags: ${seite.ablauf.stationen.join(', ')}` : '';
 

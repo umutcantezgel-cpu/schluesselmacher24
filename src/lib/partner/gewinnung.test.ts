@@ -14,7 +14,9 @@ import {
   PARTNER_SEKTION,
   ZAHLWEG,
   aktiverZahlweg,
+  gewinnungRoute,
   gewinnungSeite,
+  gewinnungSeiteMitPflege,
   gewinnungSeitenFuer,
   partnerSektionFuer,
   weitereGewinnungSeiten,
@@ -253,5 +255,65 @@ describe('Partnergewinnung: Inhalt nach den Vorgaben des Inhabers', () => {
     }
     expect(PARTNER_SEKTION.knopf).toEqual({ href: '/partner-werden', label: 'Partner werden' });
     expect(PARTNER_SEKTION.verweis).toEqual({ href: '/partner-werden/auftraege-erhalten', label: 'So erhalten Sie Aufträge' });
+  });
+});
+
+describe('Partnergewinnung: Pflege im Admin (FA-22-36, FA-PLATTFORM-02B)', () => {
+  const KFZ = gewinnungSeite('kfz-betriebe');
+
+  it('liest jede Seite unter ihrer Route aus der Sammlung Seiten, mit gewinnung.ts als Rückfall', () => {
+    for (const seite of GEWINNUNG_SEITEN) {
+      expect(gewinnungRoute(seite)).toBe(`partner-werden/${seite.slug}`);
+      const quelle = readFileSync(path.join(SITE, 'partner-werden', seite.slug, 'page.tsx'), 'utf8');
+      expect(quelle, seite.slug).toContain('getPageContent(ROUTE)');
+      expect(quelle, seite.slug).toContain('gewinnungSeiteMitPflege(SEITE');
+      expect(quelle, seite.slug).toMatch(/export async function generateMetadata/);
+      expect(quelle, seite.slug).not.toMatch(/export const metadata/);
+    }
+  });
+
+  it('ein gepflegter Wert ersetzt den Rückfall', () => {
+    const gepflegt = gewinnungSeiteMitPflege(KFZ, {
+      headline: 'Gepflegte Überschrift',
+      subline: 'Gepflegter Kurztext',
+      intro: 'Gepflegte Einleitung',
+      seo: { title: 'Gepflegter Titel', description: 'Gepflegte Beschreibung' },
+    });
+    expect(gepflegt.ueberschrift).toBe('Gepflegte Überschrift');
+    expect(gepflegt.kurztext).toBe('Gepflegter Kurztext');
+    expect(gepflegt.einleitung).toBe('Gepflegte Einleitung');
+    expect(gepflegt.titel).toBe('Gepflegter Titel');
+    expect(gepflegt.beschreibung).toBe('Gepflegte Beschreibung');
+    // Gegliederte Inhalte, Pfad und Kennung bleiben aus dem Code.
+    expect(gepflegt.abschnitte).toBe(KFZ.abschnitte);
+    expect(gepflegt.naechsterSchritt).toBe(KFZ.naechsterSchritt);
+    expect(gepflegt.pfad).toBe(KFZ.pfad);
+    expect(gepflegt.slug).toBe(KFZ.slug);
+    expect(gepflegt.augenbraue).toBe(KFZ.augenbraue);
+  });
+
+  it('ein leerer oder fehlender Wert löscht den Rückfall nicht', () => {
+    expect(gewinnungSeiteMitPflege(KFZ, null)).toBe(KFZ);
+    expect(gewinnungSeiteMitPflege(KFZ, undefined)).toBe(KFZ);
+    for (const leer of ['', '   ', null, undefined]) {
+      const seite = gewinnungSeiteMitPflege(KFZ, { headline: leer, subline: leer, intro: leer, seo: { title: leer, description: leer } });
+      expect(seite).toEqual(KFZ);
+    }
+    expect(gewinnungSeiteMitPflege(KFZ, { seo: null })).toEqual(KFZ);
+    expect(gewinnungSeiteMitPflege(KFZ, { headline: '  Mit Leerraum  ' }).ueberschrift).toBe('Mit Leerraum');
+  });
+
+  it('der unveränderte Text eines Zahlwegs folgt dem aktiven Zahlweg (G9)', () => {
+    const auftraege = gewinnungSeite('auftraege-erhalten');
+    for (const modell of MODELLE) {
+      const seite = gewinnungSeiteMitPflege(auftraege, {
+        subline: ZAHLWEG[modell].kurztext,
+        seo: { description: ZAHLWEG[modell].beschreibung },
+      });
+      expect(seite.kurztext, modell).toBe(auftraege.kurztext);
+      expect(seite.beschreibung, modell).toBe(auftraege.beschreibung);
+    }
+    // Selbst gepflegt bleibt selbst gepflegt.
+    expect(gewinnungSeiteMitPflege(auftraege, { seo: { description: 'Eigener Text' } }).beschreibung).toBe('Eigener Text');
   });
 });

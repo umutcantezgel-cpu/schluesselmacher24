@@ -445,6 +445,62 @@ export function pages(): PageContent[] {
         ['/service-und-termin/kontakt', 'Kontakt'],
       ],
     },
+    // Partnerseiten (FA-22-36, FA-PLATTFORM-02B): Überschrift, Kurztext (subline), Einleitung (intro) und
+    // Suchtexte wortgleich mit dem Rückfall in src/lib/partner/gewinnung.ts (Zahlweg Modell A) und mit
+    // content/seo.json. Gegliederte Inhalte bleiben im Code. Keine eigenen Verweise: Die Seiten verlinken
+    // sich gegenseitig über gewinnung.ts.
+    {
+      route: 'partner-werden/auftraege-erhalten',
+      headline: 'So erhalten Sie Autoschlüssel-Aufträge',
+      subline: 'Von der geprüften Anfrage bis zur Abrechnung: der Weg eines Auftrags.',
+      intro:
+        'Kundinnen und Kunden kommen über SCHLÜSSELMACHER24. Wir prüfen jede Anfrage und geben passende '
+        + 'Aufträge an Partnerbetriebe in der Region weiter.',
+      title: 'Autoschlüssel-Aufträge erhalten',
+      description:
+        'So kommen Autoschlüssel-Aufträge zu Ihrem Betrieb: geprüfte Anfrage, Zuordnung nach Region und '
+        + 'Leistung, Annahme, Einsatz und Abrechnung mit dem Kunden.',
+      links: [],
+    },
+    {
+      route: 'partner-werden/netzwerk-deutschland',
+      headline: 'Ein Netzwerk für Fahrzeugschlüssel in ganz Deutschland',
+      subline: 'Leistungen, Qualitätsstandard und die Länder, in denen wir Partner suchen.',
+      intro:
+        'Das Netzwerk verbindet Kundenanfragen mit geprüften Fachbetrieben vor Ort. Es betrifft ausschließlich '
+        + 'Autoschlüssel und Fahrzeugschlüssel.',
+      title: 'Netzwerk für Fahrzeugschlüssel',
+      description:
+        'Das Partnernetz von SCHLÜSSELMACHER24 für Autoschlüssel und Fahrzeugschlüssel: Leistungen, '
+        + 'Qualitätsstandard und die Bundesländer, in denen wir Partner suchen.',
+      links: [],
+    },
+    {
+      route: 'partner-werden/kfz-betriebe',
+      headline: 'Kfz-Schlüssel-Partner werden: für Werkstätten und Autohäuser',
+      subline: 'Für Werkstätten und Autohäuser, die Schlüsselarbeiten anbieten oder ausbauen.',
+      intro:
+        'Sie bieten Schlüsselarbeiten schon an oder wollen sie ausbauen? Als Partner erhalten Sie geprüfte '
+        + 'Anfragen zu Autoschlüsseln aus Ihrer Region.',
+      title: 'Kfz-Schlüssel-Partner für Werkstätten',
+      description:
+        'Für Kfz-Werkstätten und Autohäuser mit Schlüsselarbeiten: welche Ausstattung zählt, welche Fälle Sie '
+        + 'lösen und wie Anfragen aus Ihrer Region kommen.',
+      links: [],
+    },
+    {
+      route: 'partner-werden/kooperation',
+      headline: 'Kooperation: Autoschlüssel-Fälle weitergeben',
+      subline: 'Für Betriebe, die selbst keine Schlüssel fertigen und Fälle weitergeben wollen.',
+      intro:
+        'Sie fertigen selbst keine Schlüssel, haben aber Kunden oder Fahrzeuge mit Schlüsselproblemen? Dann '
+        + 'passt eine Kooperation besser als eine Partnerschaft.',
+      title: 'Kooperation für Autoschlüssel-Fälle',
+      description:
+        'Für Autohäuser, Fuhrparks, Pannenhilfe und Verwaltungen mit Fahrzeugen: Autoschlüssel-Fälle an '
+        + 'SCHLÜSSELMACHER24 weitergeben, ohne selbst zu fertigen.',
+      links: [],
+    },
   ];
 
   // Seiten der gemeinsamen Fahrzeugschlüssel-Anfrage (FA-KERN-02B): Kopftexte aus den Klassendaten,

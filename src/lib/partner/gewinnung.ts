@@ -615,6 +615,60 @@ export function gewinnungSeite(slug: GewinnungSlug): GewinnungSeite {
   return seite;
 }
 
+/*
+ * Pflege im Admin (FA-22-36, FA-PLATTFORM-02B): Die vier Seiten lesen Suchtitel, Suchbeschreibung,
+ * Überschrift, Kurztext und Einleitung aus der Sammlung Seiten (Route ohne führenden Schrägstrich,
+ * z. B. `partner-werden/kfz-betriebe`), wie die Hauptseite /partner-werden. Die Texte oben sind
+ * der Rückfall, wortgleich mit `content/seo.json` und `src/lib/data/defaults/content.ts` (G6).
+ * Feldzuordnung: `headline` = Überschrift, `subline` = Kurztext, `intro` = Einleitung,
+ * `seo.title` und `seo.description` = Suchtexte. Gegliederte Inhalte (Abschnitte, Ablauf, Klarstellung,
+ * Leistungen, Qualitätsstandard, nächster Schritt) bleiben hier, weil sie an der Partnerlogik hängen.
+ */
+
+/** Was die Sammlung Seiten für eine Partnerseite liefern kann (Ausschnitt aus `PageContent`). */
+export interface GewinnungPflege {
+  headline?: string | null;
+  subline?: string | null;
+  intro?: string | null;
+  seo?: { title?: string | null; description?: string | null } | null;
+}
+
+/** Route der Partnerseite in der Sammlung Seiten: der Pfad ohne führenden Schrägstrich. */
+export function gewinnungRoute(seite: Pick<GewinnungSeite, 'pfad'>): string {
+  return seite.pfad.replace(/^\/+/, '');
+}
+
+/*
+ * Texte, die vom Zahlweg abhängen (Kurztext und Beschreibung von „Aufträge erhalten“). Steht in der
+ * Sammlung noch der unveränderte Text eines Modells, gilt der Rückfall des aktiven Modells, damit nach
+ * einem Wechsel des Schalters nie zwei Zahlwege zugleich stehen (G9). Selbst gepflegte Texte bleiben.
+ */
+const ZAHLWEG_KURZTEXTE: readonly string[] = Object.values(ZAHLWEG).map((z) => z.kurztext);
+const ZAHLWEG_BESCHREIBUNGEN: readonly string[] = Object.values(ZAHLWEG).map((z) => z.beschreibung);
+
+/** Gepflegter Wert, wenn er nicht leer ist und nicht nur der Rückfall eines Zahlwegs; sonst der Rückfall. */
+function gepflegterText(wert: string | null | undefined, rueckfall: string, zahlwegTexte: readonly string[] = []): string {
+  const text = typeof wert === 'string' ? wert.trim() : '';
+  if (!text || zahlwegTexte.includes(text)) return rueckfall;
+  return text;
+}
+
+/**
+ * Die Partnerseite mit den gepflegten Texten aus der Sammlung Seiten. Ein leerer oder fehlender Wert
+ * löscht den Rückfall nicht; ohne Eintrag bleibt die Seite unverändert.
+ */
+export function gewinnungSeiteMitPflege(seite: GewinnungSeite, pflege: GewinnungPflege | null | undefined): GewinnungSeite {
+  if (!pflege) return seite;
+  return {
+    ...seite,
+    titel: gepflegterText(pflege.seo?.title, seite.titel),
+    beschreibung: gepflegterText(pflege.seo?.description, seite.beschreibung, ZAHLWEG_BESCHREIBUNGEN),
+    ueberschrift: gepflegterText(pflege.headline, seite.ueberschrift),
+    kurztext: gepflegterText(pflege.subline, seite.kurztext, ZAHLWEG_KURZTEXTE),
+    einleitung: gepflegterText(pflege.intro, seite.einleitung),
+  };
+}
+
 /** Die übrigen Partnerseiten als Verweise (gegenseitige Verlinkung, keine Sackgasse). */
 export function weitereGewinnungSeiten(slug?: GewinnungSlug): GewinnungSeite[] {
   return GEWINNUNG_SEITEN.filter((s) => s.slug !== slug);

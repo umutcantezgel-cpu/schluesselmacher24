@@ -26,7 +26,7 @@ import { codelinienTexte, herstellerTexte, kategorieTexte } from '@/lib/codelini
 import { ERREICHBARKEIT_STANDARD, erreichbarkeit, erreichbarkeitSatz } from '@/lib/erreichbarkeit';
 import { KONTAKT_TITEL, kontaktBeschreibung } from '@/app/(site)/service-und-termin/kontakt/suchtexte';
 import { leistungsPreise, markenTexte, modellTexte } from '@/lib/fahrzeug-texte';
-import { GEWINNUNG_SEITEN } from '@/lib/partner/gewinnung';
+import { GEWINNUNG_SEITEN, gewinnungRoute, gewinnungSeiteMitPflege, gewinnungSeitenFuer } from '@/lib/partner/gewinnung';
 import { TITEL_MAX_PX, titelBreitePx } from '@/lib/titelbreite';
 import { guides, pages } from './defaults/content';
 import { servicePages } from './defaults/service-pages';
@@ -422,6 +422,40 @@ describe('Orte und Partnerseiten (FA-SEO-01B)', () => {
     pruefeSuchtexte(slug, s.titel, s.beschreibung);
   });
 
+  /*
+   * Pflege im Admin (FA-22-36, FA-PLATTFORM-02B): Jede Partnerseite hat einen Eintrag in content/seo.json
+   * und im Rückfall pages(), wortgleich mit gewinnung.ts (G6). Sonst liefen Admin, Seed und Seite auseinander.
+   * Seed und Rückfall tragen bewusst den Wortlaut von Modell A, unabhängig vom Schalter PARTNERMODELL_B.
+   */
+  const rueckfallSeiten = pages();
+  it.each(gewinnungSeitenFuer('A').map((s) => [s.slug, s] as const))(
+    'Partnerseite %s: content/seo.json und pages() tragen Suchtexte, Überschrift, Kurztext und Einleitung aus gewinnung.ts (Modell A)',
+    (slug, s) => {
+      const route = gewinnungRoute(s);
+      const erwartet = [s.titel, s.beschreibung, s.ueberschrift, s.kurztext, s.einleitung];
+      for (const quelle of [seiten, rueckfallSeiten]) {
+        const eintrag = quelle.find((e) => e.route === route);
+        expect(eintrag, `${slug}: Eintrag ${route}`).toBeDefined();
+        expect([eintrag!.seo.title, eintrag!.seo.description, eintrag!.headline, eintrag!.subline, eintrag!.intro], slug).toEqual(erwartet);
+        expect(eintrag!.seo.noindex, slug).not.toBe(true);
+      }
+    },
+  );
+
+  it.each((['A', 'B'] as const).flatMap((modell) => gewinnungSeitenFuer(modell).map((s) => [modell, s.slug, s] as const)))(
+    'Modell %s, Partnerseite %s: der Eintrag aus content/seo.json und pages() ergibt genau die Texte des aktiven Modells',
+    (_modell, slug, s) => {
+      const route = gewinnungRoute(s);
+      const erwartet = [s.titel, s.beschreibung, s.ueberschrift, s.kurztext, s.einleitung];
+      for (const quelle of [seiten, rueckfallSeiten]) {
+        const eintrag = quelle.find((e) => e.route === route);
+        expect(eintrag, `${slug}: Eintrag ${route}`).toBeDefined();
+        const mit = gewinnungSeiteMitPflege(s, eintrag);
+        expect([mit.titel, mit.beschreibung, mit.ueberschrift, mit.kurztext, mit.einleitung], slug).toEqual(erwartet);
+      }
+    },
+  );
+
   it('der Verweis der Orte auf die Autoschlüssel-Anfrage heißt „Termin anfragen“ (A-031)', () => {
     const anfrage = ORTE.flatMap((c) => c.seo.internalLinks).filter((l) => l.href === '/autoschluessel/anfrage');
     for (const l of anfrage) expect(l.label).toBe('Termin anfragen');
@@ -524,7 +558,8 @@ describe('Feste Metadaten und Rückfälle der übrigen Seiten (FA-SEO-01B)', () 
       ...rueckfaelle.filter((r) => !seiten.some((s) => s.route === r.route)).map((r) => `${r.titel}${VORLAGE}`),
       ...RATGEBER_JSON.map((g) => `${g.seo.title}${VORLAGE}`),
       ...ORTE.map((c) => `${c.seo.title}${VORLAGE}`),
-      ...GEWINNUNG_SEITEN.map((s) => `${s.titel}${VORLAGE}`),
+      // Partnerseiten mit Eintrag in content/seo.json stehen schon unter `eintraege` (FA-PLATTFORM-02B).
+      ...GEWINNUNG_SEITEN.filter((s) => !seiten.some((d) => `/${d.route}` === s.pfad)).map((s) => `${s.titel}${VORLAGE}`),
     ];
     const beschreibungen = [
       ...eintraege.map((e) => e.beschreibung),
@@ -533,7 +568,7 @@ describe('Feste Metadaten und Rückfälle der übrigen Seiten (FA-SEO-01B)', () 
       ...rueckfaelle.filter((r) => !seiten.some((s) => s.route === r.route)).map((r) => r.beschreibung),
       ...RATGEBER_JSON.map((g) => g.seo.description),
       ...ORTE.map((c) => c.seo.description),
-      ...GEWINNUNG_SEITEN.map((s) => s.beschreibung),
+      ...GEWINNUNG_SEITEN.filter((s) => !seiten.some((d) => `/${d.route}` === s.pfad)).map((s) => s.beschreibung),
     ];
     expect(doppelte(titel)).toEqual([]);
     expect(doppelte(beschreibungen)).toEqual([]);

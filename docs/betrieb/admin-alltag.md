@@ -152,6 +152,30 @@ Alle Bilder liegen unter **Inhalte** → **Medien**. Bitte immer einen kurzen Al
 3. Überschrift, Einleitung, Abschnitte oder Fragen ändern.
 4. **Veröffentlichen**. Die Seite zeigt den neuen Text nach kurzer Zeit.
 
+### Partner und Partnerseiten
+
+Die Hauptseite `partner-werden` und die vier Partnerseiten stehen unter **Seitentexte** mit diesen Adressen:
+
+| Adresse | Seite |
+| --- | --- |
+| `partner-werden/auftraege-erhalten` | Aufträge erhalten |
+| `partner-werden/netzwerk-deutschland` | Netzwerk Deutschland |
+| `partner-werden/kfz-betriebe` | Kfz-Betriebe |
+| `partner-werden/kooperation` | Kooperation |
+
+**Pflegbar** sind auf den vier Partnerseiten:
+
+- **Überschrift**: die große Überschrift oben auf der Seite.
+- **Einleitung**: der Text direkt unter der Überschrift.
+- **Unterzeile**: der Kurztext der Seite. Er steht in den Verweislisten auf der Hauptseite „Partner werden“ und auf den übrigen Partnerseiten und in der Übersicht für KI-Suchdienste (`/llms.txt`). Lassen Sie das Feld leer, gilt der Text aus dem Startinhalt.
+- **Seitentitel** und **Beschreibung** im Bereich **Suchmaschinen**.
+
+Ein leeres Feld löscht nichts: Dann steht wieder der eingebaute Text. **Nicht pflegbar** sind die Abschnitte, der Ablauf eines Auftrags, der Hinweis „Nur Autoschlüssel und Fahrzeugschlüssel“, die neun Partnerleistungen, der Qualitätsstandard, die Bundesländer und der nächste Schritt mit dem Knopf. Sie hängen an der Partnerlogik (Bewerbung, Vermittlung, Abrechnung) und müssen dazu passen; Änderungen daran macht die Entwicklung. Abschnitte und Fragen, die Sie bei diesen vier Seiten in den Seitentexten eintragen, erscheinen nicht, ein Vorschaubild ebenso wenig. Lassen Sie **Verwandte Seiten** bitte leer: Ein Eintrag dort erscheint nicht auf der Partnerseite, sondern als Verweis zurück auf die Partnerseite im Block „Passt dazu“ der verlinkten Seite. Den Haken **Nicht in Suchmaschinen aufnehmen** setzen Sie hier bitte nicht: Er nimmt die Partnerseite selbst nicht aus den Suchmaschinen, sondern nur aus diesen Rückverweisen.
+
+Zahlweg: Kurztext und Beschreibung von „Aufträge erhalten“ nennen den Zahlweg, der gerade gilt (heute: der Betrieb rechnet direkt mit dem Kunden ab). Solange Sie diese beiden Felder nicht ändern, folgen sie einem späteren Wechsel des Zahlwegs von selbst. Haben Sie sie geändert, prüfen Sie sie bei einem Wechsel bitte von Hand. Schreiben Sie keine Provisionssätze, Fristen oder Zusagen hinein, die nicht im Partnervertrag stehen.
+
+Öffentliche Profile einzelner Partnerbetriebe gibt es nicht; dafür fehlt die Zustimmung der Partner.
+
 ## 8. Neue Seite anlegen
 
 Neue Seiten kann nur der Inhaber anlegen. Mitarbeiter sehen den Knopf **Neu erstellen** hier nicht und können bestehende Seiten bearbeiten.

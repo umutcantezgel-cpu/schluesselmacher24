@@ -23,6 +23,7 @@ import { Kundendateien } from './payload/collections/Kundendateien';
 import { Leistungsseiten } from './payload/collections/Leistungsseiten';
 import { Medien } from './payload/collections/Medien';
 import { Nachweise } from './payload/collections/Nachweise';
+import { Orte } from './payload/collections/Orte';
 import { Preisgruppen } from './payload/collections/Preisgruppen';
 import { Preisregeln } from './payload/collections/Preisregeln';
 import { Produkte } from './payload/collections/Produkte';
@@ -99,6 +100,8 @@ export default buildConfig({
     Leistungsseiten,
     Ratgeber,
     Einsatzgebiete,
+    // Ortsstamm (FA-PLATTFORM-03): alle Gemeinden, nur lesbar, keine Seiten.
+    Orte,
     Nachweise,
     Medien,
     // Verwaltung

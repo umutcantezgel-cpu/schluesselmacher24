@@ -46,6 +46,24 @@ Für jede Quelle: Zweck · Inhalt · Lizenz und Nutzung · Stand · Abruf · Abl
 - Alternativen: HVBG-Verwaltungsgrenzen (Lizenz-ID nicht belegt), opendata.hessen.de (robots.txt HTTP 403), OpenStreetMap (ODbL: Namensnennung; eigene abgeleitete Grenzdateien lösen die Weitergabepflicht aus). Entscheidung: BKG.
 - Lücken: Veränderungshinweis, OSM-Namensnennung im Wortlaut, ältere Gemeindezahlen 422 und 426 aus Suchtreffern (gültig ist 421).
 
+## Orte (FA-PLATTFORM-03, A-051) · erhebung/FA-RECHERCHE-02.md · content/orte/LIZENZ.md
+
+### Destatis · Gemeindeverzeichnis GV-ISys, Jahresausgabe 31.12.2025
+- Zweck: Ortsstamm (alle Gemeinden mit Schlüssel, Kreis, Land, Postleitzahl des Verwaltungssitzes, Mittelpunkt, Einwohner).
+- Inhalt: Blatt „Onlineprodukt_Gemeinden31122025“, 16.018 Zeilen; Satzart 10 Land (16), 20 Regierungsbezirk (29), 30 Region (12), 40 Kreis (400), 50 Gemeindeverband (4.590), 60 Gemeinde (10.953, davon 202 gemeindefreie Gebiete). Übernommen: 10.751 Gemeinden, 400 Kreise.
+- Lizenz: Vermerk im Blatt „Inhalt“: „© Daten (im Auftrag der Herausgebergemeinschaft Statistische Ämter des Bundes und der Länder) Statistisches Bundesamt (Destatis), 2026. Vervielfältigung und Verbreitung, auch auszugsweise, mit Quellenangabe gestattet.“ Quellenangabe auf Seiten: „Statistisches Bundesamt (Destatis), Gemeindeverzeichnis, Gebietsstand 31.12.2025“.
+- Abruf: https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/Archiv/GVAuszugJ/31122025_Auszug_GV.html (2026-11-15), 1.867.597 Byte, SHA-256 5bfb8b7a5ce0dc65988ff30b28146ec2f08dd0b29756c9c8c427cbd7baa00e79.
+- Ablage: `_werkstatt/ausbau/daten/orte/31122025_Auszug_GV.xlsx` (nicht committet); abgeleitet `content/orte/gemeinden.json`, `kreise.json` mit `node scripts/orte-import.mjs`.
+- Lücken: nur die Postleitzahl des Verwaltungssitzes; keine Ortsteile; Koordinaten nach BKG (Zuordnungsstand 31.12.2024), ob dafür ein eigener BKG-Vermerk nötig ist, ist offen.
+
+### GeoNames · Postal Codes DE
+- Zweck: Zuordnung aller Postleitzahlen zu Ortsnamen, Kreisen und Koordinaten (Postleitzahl-Abfrage, Entfernungen).
+- Inhalt: `DE.txt`, 23.296 Zeilen, 10.815 Postleitzahlen, Kreisschlüssel im Feld admin code3 (alle 400 Kreise des Gemeindeverzeichnisses vorhanden), eine Zeile ohne Kreis (87491 Jungholz).
+- Lizenz: laut `readme.txt` Creative Commons Attribution 4.0, Namensnennung mit Link auf www.geonames.org genügt; ohne Gewähr.
+- Abruf: Datei DE.zip aus https://download.geonames.org/export/zip/ (2026-11-15), 388.077 Byte, SHA-256 1951e1fd5f577a5d315fbddd490c6b0bec032225eadee86191ed85a9fdfdfc28; `DE.txt` SHA-256 c5fa1e0905bedc2d67724cf142ac7ce8159b69658e419b912088068ff8128ea7.
+- Ablage: `_werkstatt/ausbau/daten/orte/geonames/` (nicht committet); abgeleitet `content/orte/postleitzahlen.json`.
+- Lücken: kein Gemeindeschlüssel in der Quelle (Zuordnung abgeleitet, 1.101 Postleitzahlen ohne eindeutige Gemeinde); Aktualisierungstakt von GeoNames nicht belegt.
+
 ## Video (G-44) · erhebung/E1-karte-video.md
 - Zweck: Anleitungen hinter einer Datenschutz-Fassade (E8-OPUS-03).
 - Quellen: Google-Hilfe zum erweiterten Datenschutzmodus (youtube-nocookie.com, B); Google-Dokumentation VideoObject (Pflicht name, thumbnailUrl, uploadDate; empfohlen contentUrl oder embedUrl; seit 24.09.2026 Feld creator, B); § 25 TDDDG nur als Suchtreffer (C).

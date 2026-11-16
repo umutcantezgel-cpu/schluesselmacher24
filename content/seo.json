@@ -718,6 +718,78 @@
     "updatedAt": "2026-10-25T00:00:00.000Z"
   },
   {
+    "route": "partner-werden/auftraege-erhalten",
+    "headline": "So erhalten Sie Autoschlüssel-Aufträge",
+    "subline": "Von der geprüften Anfrage bis zur Abrechnung: der Weg eines Auftrags.",
+    "intro": "Kundinnen und Kunden kommen über SCHLÜSSELMACHER24. Wir prüfen jede Anfrage und geben passende Aufträge an Partnerbetriebe in der Region weiter.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Autoschlüssel-Aufträge erhalten",
+      "description": "So kommen Autoschlüssel-Aufträge zu Ihrem Betrieb: geprüfte Anfrage, Zuordnung nach Region und Leistung, Annahme, Einsatz und Abrechnung mit dem Kunden.",
+      "internalLinks": [],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: So erhalten Sie Autoschlüssel-Aufträge",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-16T00:00:00.000Z"
+  },
+  {
+    "route": "partner-werden/netzwerk-deutschland",
+    "headline": "Ein Netzwerk für Fahrzeugschlüssel in ganz Deutschland",
+    "subline": "Leistungen, Qualitätsstandard und die Länder, in denen wir Partner suchen.",
+    "intro": "Das Netzwerk verbindet Kundenanfragen mit geprüften Fachbetrieben vor Ort. Es betrifft ausschließlich Autoschlüssel und Fahrzeugschlüssel.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Netzwerk für Fahrzeugschlüssel",
+      "description": "Das Partnernetz von SCHLÜSSELMACHER24 für Autoschlüssel und Fahrzeugschlüssel: Leistungen, Qualitätsstandard und die Bundesländer, in denen wir Partner suchen.",
+      "internalLinks": [],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Ein Netzwerk für Fahrzeugschlüssel in ganz Deutschland",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-16T00:00:00.000Z"
+  },
+  {
+    "route": "partner-werden/kfz-betriebe",
+    "headline": "Kfz-Schlüssel-Partner werden: für Werkstätten und Autohäuser",
+    "subline": "Für Werkstätten und Autohäuser, die Schlüsselarbeiten anbieten oder ausbauen.",
+    "intro": "Sie bieten Schlüsselarbeiten schon an oder wollen sie ausbauen? Als Partner erhalten Sie geprüfte Anfragen zu Autoschlüsseln aus Ihrer Region.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Kfz-Schlüssel-Partner für Werkstätten",
+      "description": "Für Kfz-Werkstätten und Autohäuser mit Schlüsselarbeiten: welche Ausstattung zählt, welche Fälle Sie lösen und wie Anfragen aus Ihrer Region kommen.",
+      "internalLinks": [],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Kfz-Schlüssel-Partner werden: für Werkstätten und Autohäuser",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-16T00:00:00.000Z"
+  },
+  {
+    "route": "partner-werden/kooperation",
+    "headline": "Kooperation: Autoschlüssel-Fälle weitergeben",
+    "subline": "Für Betriebe, die selbst keine Schlüssel fertigen und Fälle weitergeben wollen.",
+    "intro": "Sie fertigen selbst keine Schlüssel, haben aber Kunden oder Fahrzeuge mit Schlüsselproblemen? Dann passt eine Kooperation besser als eine Partnerschaft.",
+    "sections": [],
+    "faq": [],
+    "seo": {
+      "title": "Kooperation für Autoschlüssel-Fälle",
+      "description": "Für Autohäuser, Fuhrparks, Pannenhilfe und Verwaltungen mit Fahrzeugen: Autoschlüssel-Fälle an SCHLÜSSELMACHER24 weitergeben, ohne selbst zu fertigen.",
+      "internalLinks": [],
+      "socialImage": {
+        "motif": "Vorschaubild für soziale Netzwerke: Kooperation: Autoschlüssel-Fälle weitergeben",
+        "ratio": "16/9"
+      }
+    },
+    "updatedAt": "2026-11-16T00:00:00.000Z"
+  },
+  {
     "route": "roller-und-kleinstfahrzeuge",
     "headline": "Schlüssel für Roller, Mofa und Moped",
     "subline": "Anfrage mit Fahrzeugschein oder einem anderen Nachweis und drei Fotos Ihres Schlüssels. Wir prüfen Ihre Angaben und melden uns.",

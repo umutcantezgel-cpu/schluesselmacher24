@@ -37,6 +37,7 @@ import type { CollectionName, Collections } from '../lib/data/adapter';
 import { ohneBeispiele } from '../lib/beispiele';
 import { JsonFileAdapter } from '../lib/data/json-adapter';
 import * as m from '../lib/data/payload-mapping';
+import { ortsstammUebernehmen, umfangAusUmgebung, type OrtsstammUmfang } from '../lib/orte/uebernahme';
 import { altAufpreis, istVariantenKennung } from '../lib/versand/varianten';
 
 const context = { disableRevalidate: true };
@@ -76,6 +77,11 @@ export interface SeedOptionen {
   quelle?: InhaltsQuelle;
   /** Frühere Stände; Standard: alle Ordner unter `content/startwerte/`. */
   startwerte?: Startwerte[];
+  /**
+   * Ortsstamm (FA-PLATTFORM-03): „voll“, „stichprobe“ (Datenbanktests) oder „aus“. Standard: `SM24_ORTSSTAMM`,
+   * sonst „voll“. Geschrieben wird nur, wenn sich der Stamm seit dem letzten Lauf geändert hat.
+   */
+  ortsstamm?: OrtsstammUmfang;
 }
 
 /** Liest alle Schnappschüsse unter `content/startwerte/`, ältester zuerst. */
@@ -723,6 +729,8 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
       dbSchluessel: (doc) => (typeof doc.titel === 'string' ? doc.titel : undefined),
       zuDaten: (n) => n,
     });
+    // Ortsstamm (FA-PLATTFORM-03): alle Gemeinden als Stammdaten, in Stapeln, ohne eine Seite anzulegen.
+    await ortsstammUebernehmen(payload, { umfang: optionen.ortsstamm ?? umfangAusUmgebung() });
     await globalUebernehmen(
       'richtwerte',
       (d) => Boolean((d.tuerAbsicherung as { tuerarten?: unknown[] } | undefined)?.tuerarten?.length),

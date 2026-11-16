@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getPageContent, getSettings } from '@/lib/data';
+import { gepflegteGewinnungSeiten } from '@/components/partner/gewinnung-daten';
 import type { IconProps } from '@/components/visual/icons/icon-base';
 import { IconNachweis } from '@/components/visual/icons/nachweis';
 import { IconPruefung } from '@/components/visual/icons/pruefung';
@@ -17,7 +18,6 @@ import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { GewinnungLink, PunktListe } from '@/components/partner/gewinnung-seite';
 import {
-  GEWINNUNG_SEITEN,
   HAUPTSEITE_ZAHLWEG,
   NUR_FAHRZEUGSCHLUESSEL,
   PARTNER_LEISTUNGEN,
@@ -74,7 +74,7 @@ const PRUEFUNG = [
 ];
 
 export default async function PartnerWerdenPage() {
-  const page = await getPageContent(ROUTE);
+  const [page, partnerSeiten] = await Promise.all([getPageContent(ROUTE), gepflegteGewinnungSeiten()]);
   const links = page?.seo.internalLinks ?? [];
 
   return (
@@ -206,7 +206,7 @@ export default async function PartnerWerdenPage() {
             />
           </div>
           <ul className="border-t border-border lg:col-span-7">
-            {GEWINNUNG_SEITEN.map((seite) => (
+            {partnerSeiten.map((seite) => (
               <li key={seite.slug} className="border-b border-border">
                 <GewinnungLink href={seite.pfad} label={seite.kurzname} text={seite.kurztext} />
               </li>

@@ -1,18 +1,28 @@
 import type { Metadata } from 'next';
 
-import { getSettings } from '@/lib/data';
-import { gewinnungSeite } from '@/lib/partner/gewinnung';
+import { getPageContent, getSettings } from '@/lib/data';
+import { gewinnungRoute, gewinnungSeite, gewinnungSeiteMitPflege } from '@/lib/partner/gewinnung';
+import { gepflegteGewinnungSeiten } from '@/components/partner/gewinnung-daten';
 import { GewinnungSeite } from '@/components/partner/gewinnung-seite';
 
+/* Rückfall aus gewinnung.ts; Suchtexte, Überschrift, Kurztext und Einleitung im Admin pflegbar (FA-22-36). */
 const SEITE = gewinnungSeite('kfz-betriebe');
+const ROUTE = gewinnungRoute(SEITE);
 
-export const metadata: Metadata = {
-  title: SEITE.titel,
-  description: SEITE.beschreibung,
-  alternates: { canonical: SEITE.pfad },
-};
+async function seiteMitPflege() {
+  return gewinnungSeiteMitPflege(SEITE, await getPageContent(ROUTE));
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seite = await seiteMitPflege();
+  return {
+    title: seite.titel,
+    description: seite.beschreibung,
+    alternates: { canonical: SEITE.pfad },
+  };
+}
 
 export default async function PartnerKfzBetriebePage() {
-  const settings = await getSettings();
-  return <GewinnungSeite seite={SEITE} telefon={settings.company.phone} />;
+  const [seite, settings, weitere] = await Promise.all([seiteMitPflege(), getSettings(), gepflegteGewinnungSeiten(SEITE.slug)]);
+  return <GewinnungSeite seite={seite} telefon={settings.company.phone} weitere={weitere} />;
 }

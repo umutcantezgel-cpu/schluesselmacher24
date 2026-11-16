@@ -87,6 +87,7 @@ export interface Config {
     leistungsseiten: Leistungsseiten;
     ratgeber: Ratgeber;
     einsatzgebiete: Einsatzgebiete;
+    orte: Orte;
     nachweise: Nachweise;
     medien: Medien;
     benutzer: Benutzer;
@@ -125,6 +126,7 @@ export interface Config {
     leistungsseiten: LeistungsseitenSelect<false> | LeistungsseitenSelect<true>;
     ratgeber: RatgeberSelect<false> | RatgeberSelect<true>;
     einsatzgebiete: EinsatzgebieteSelect<false> | EinsatzgebieteSelect<true>;
+    orte: OrteSelect<false> | OrteSelect<true>;
     nachweise: NachweiseSelect<false> | NachweiseSelect<true>;
     medien: MedienSelect<false> | MedienSelect<true>;
     benutzer: BenutzerSelect<false> | BenutzerSelect<true>;
@@ -2260,6 +2262,43 @@ export interface Einsatzgebiete {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Alle Gemeinden laut Gemeindeverzeichnis (Statistisches Bundesamt) mit Postleitzahlen von GeoNames. Nur lesbar; aktualisiert wird über den Import (content/orte/LIZENZ.md, Abschnitt Aktualisierung). Aus einem Eintrag entsteht keine Seite.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orte".
+ */
+export interface Orte {
+  id: number;
+  name: string;
+  /**
+   * Wie im Gemeindeverzeichnis, etwa „Stadt“.
+   */
+  bezeichnung?: string | null;
+  art: 'markt' | 'kreisfreie-stadt' | 'stadtkreis' | 'stadt' | 'gemeinde' | 'grosse-kreisstadt';
+  gemeindeschluessel: string;
+  regionalschluessel?: string | null;
+  /**
+   * Eindeutig; bei gleichnamigen Gemeinden mit Kreis oder Land als Zusatz.
+   */
+  slug?: string | null;
+  kreisSchluessel?: string | null;
+  kreisName?: string | null;
+  landSchluessel?: string | null;
+  land?: string | null;
+  plzVerwaltungssitz?: string | null;
+  einwohner?: number | null;
+  aktiv?: boolean | null;
+  /**
+   * Postleitzahlen mit eindeutiger Zuordnung zu dieser Gemeinde (GeoNames). Ortsteile führt das Gemeindeverzeichnis nicht.
+   */
+  postleitzahlen?: string | null;
+  breite?: number | null;
+  laenge?: number | null;
+  stand?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * Jede Aussage wie „zertifiziert“ auf der Seite braucht hier einen Nachweis.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2530,6 +2569,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'einsatzgebiete';
         value: number | Einsatzgebiete;
+      } | null)
+    | ({
+        relationTo: 'orte';
+        value: number | Orte;
       } | null)
     | ({
         relationTo: 'nachweise';
@@ -3710,6 +3753,31 @@ export interface EinsatzgebieteSelect<T extends boolean = true> {
   createdAt?: T;
   deletedAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orte_select".
+ */
+export interface OrteSelect<T extends boolean = true> {
+  name?: T;
+  bezeichnung?: T;
+  art?: T;
+  gemeindeschluessel?: T;
+  regionalschluessel?: T;
+  slug?: T;
+  kreisSchluessel?: T;
+  kreisName?: T;
+  landSchluessel?: T;
+  land?: T;
+  plzVerwaltungssitz?: T;
+  einwohner?: T;
+  aktiv?: T;
+  postleitzahlen?: T;
+  breite?: T;
+  laenge?: T;
+  stand?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
