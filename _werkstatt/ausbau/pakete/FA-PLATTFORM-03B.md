@@ -17,6 +17,15 @@ Hänge die Ortsseiten an den amtlichen Stamm, zeige dem Betreiber die Priorität
 6. Der Build erzeugt Seiten nur für veröffentlichte Ortsseiten, nie für alle Gemeinden: Miss Seitenzahl und Build-Zeit vorher und nachher.
 7. Betreiberanleitung `docs/betrieb/orte-pflegen.md`: neue Ortsseite aus dem Stamm anlegen, wann sie veröffentlicht wird, Partnerregion zuordnen, Stamm aktualisieren.
 
+## Stand nach Teil A (vom Orchestrator, 16.11.2026)
+- Teil A (Ortsstamm) ist umgesetzt, gegengeprüft und nachgebessert; die Abnahme durch den Orchestrator läuft parallel. Lies zuerst `berichte/FA-PLATTFORM-03.md`, Abschnitte „Stand für Teil B“ und „Nachbesserung“. Nutzbar sind unter anderem `ortsstamm()`, `postleitzahlAbfragen` und `entfernungKm` (`src/lib/orte/stamm.ts`, nur auf dem Server), die reinen Funktionen in `index-stamm.ts`, `entfernung.ts` und `abfrage.ts`, die Sammlung `orte` und die Dateien unter `content/orte/`. Wetzlar hat den Gemeindeschlüssel 06532023.
+- `ORTSSTAMM_QUELLEN` (`src/lib/orte/typen.ts`) liefert je Quelle `{ text, url, lizenzUrl? }`. Der Quellenvermerk aus Punkt 5 nutzt genau diese Angaben, mit Verweis auf die Quelle und bei GeoNames auf die Lizenz.
+- `content/orte/prioritaet.json` enthält einen Eintrag mit `zuordnung: "offen"` ohne Schlüssel (Amberg in Bayern, zwei Gemeinden dieses Namens; der Inhaber bestätigt). Die Ansicht „Prioritätsorte“ zeigt ihn als „offen, bitte bestätigen“ mit den Kandidaten; geraten wird nichts.
+- Die Datenbanktests laufen mit einer Stichprobe des Stamms (`SM24_ORTSSTAMM=stichprobe`, gesetzt in `src/test/db-global-setup.ts`); sie enthält alle Prioritätsorte und den Lahn-Dill-Kreis.
+- Der Umkreis der Partner (`einsatzgebiet.radiusKm`) wird in diesem Paket nicht ausgewertet; „Partner deckt den Ort ab“ heißt hier: `deckendePartner` aus `src/lib/partner/region.ts` über die Postleitzahlen der Gemeinde. `src/lib/partner/**` und `src/lib/auftragsweg.ts` änderst du nicht.
+- Deine Migration heißt `ortsseiten_stamm`; lies das erzeugte `up` und nimm heraus, was nicht zu diesem Paket gehört (nur additiv, G6). Für `down` gilt die Reihenfolge aus Teil A: zuerst Fremdschlüssel und Spalten mit `IF EXISTS`, dann Tabellen.
+- Gleichzeitig kann noch FA-QA-04A laufen (Menü und Schrift: `src/lib/navigation.ts`, `src/app/(site)/globals.css`, `src/components/flow/flow-shell.tsx`, `src/components/layout/**`, `content/seo.json`, `src/lib/data/defaults/content.ts`). Diese Dateien fasst du nicht an.
+
 ## Zusatz aus der Bestandsaufnahme (vom Orchestrator, 16.11.2026)
 - FA-09-04: Die öffentliche Übersicht `/standorte` und die Vor-Ort-Seite ordnen Ortsseiten nach der Priorität des Inhabers (aufsteigend, dann Name). Test dazu.
 - FA-AA-05: Die Admin-Ansicht der Prioritätsorte zeigt je Ort die Zahl der Vorgänge der letzten zwölf Monate (Zählung über die Postleitzahl des Vorgangs und die Postleitzahl-Abfrage aus dem Ortsstamm). Nur Anzeige, keine automatische Priorität. Schreibrechte dafür: die Admin-Ansicht und eine reine Zählfunktion mit Test.
