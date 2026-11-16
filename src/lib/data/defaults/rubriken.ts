@@ -480,7 +480,7 @@ export function rubriken(): Rubrik[] {
       name: "Service vor Ort nach Termin",
       laienname: "Vor Ort",
       erklaerung:
-        "Einsatz an Ihrer Tür im Einsatzgebiet der Werkstatt, anderswo über Partner; vor der Terminbestätigung erfahren Sie, was er kostet.",
+        "Einsatz an Ihrer Tür im Einsatzgebiet der Werkstatt. Vor der Terminbestätigung erfahren Sie, was er kostet.",
       icon: "vor-ort",
       ziel: "/service-und-termin/vor-ort",
       ablauf: [
@@ -491,7 +491,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Wir klären den Einsatz",
-          text: "Ob die Werkstatt oder ein Partner kommen kann.",
+          text: "Ob die Werkstatt zu Ihnen kommen kann.",
           icon: "beratung-telefon",
         },
         {

@@ -433,12 +433,12 @@ export function pages(): PageContent[] {
         'Wir geben geprüfte Anfragen zu Autoschlüsseln und Fahrzeugschlüsseln an Fachbetriebe vor Ort weiter.',
       intro:
         'Bei uns gehen auch Anfragen aus Regionen ein, in denen wir selbst nicht tätig sind. Diese Aufträge '
-        + 'vermitteln wir an zuverlässige Fachbetriebe vor Ort. Sie bewerben sich mit wenigen Angaben; wir prüfen '
+        + 'vermitteln wir an zuverlässige Fachbetriebe vor Ort. Sie bewerben sich online mit Angaben zu Betrieb, Leistungen und Ausstattung; wir prüfen '
         + 'Ihre Bewerbung und melden uns bei Ihnen.',
       title: 'Autoschlüssel-Partner werden',
       description:
         'Wir geben geprüfte Anfragen zu Autoschlüsseln und Fahrzeugschlüsseln an Fachbetriebe vor '
-        + 'Ort weiter. Bewerben Sie sich mit wenigen Angaben als Partner.',
+        + 'Ort weiter. Bewerben Sie sich online als Partner.',
       links: [
         ['/partner-werden/netzwerk-deutschland', 'Das Partnernetz für Fahrzeugschlüssel'],
         ['/autoschluessel', 'Autoschlüssel'],

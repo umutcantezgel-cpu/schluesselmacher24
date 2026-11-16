@@ -126,7 +126,7 @@ export function EinsatzFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
       <WegBestaetigung
         marke="Anfrage eingegangen"
         titel="Ihre Einsatz-Anfrage ist bei uns"
-        text="Wir klären, ob die Werkstatt oder ein Partner zu Ihnen kommen kann. Vor der Terminbestätigung erfahren Sie, was der Einsatz kostet."
+        text="Wir klären, ob die Werkstatt zu Ihnen kommen kann. Vor der Terminbestätigung erfahren Sie, was der Einsatz kostet."
         reference={result.reference ?? ''}
         notices={result.notices}
         schritte={SCHRITTE_NACH_ART.anfrage}
@@ -361,7 +361,7 @@ export function EinsatzFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
         <div className="max-w-3xl space-y-6">
           <SummaryList sections={summary} />
           <Alert tone="info">
-            Mit dem Absenden entsteht noch kein Vertrag. Wir klären, ob die Werkstatt oder ein Partner zu Ihnen kommen kann. Vor der Terminbestätigung erfahren Sie, was der Einsatz kostet.
+            Mit dem Absenden entsteht noch kein Vertrag. Wir klären, ob die Werkstatt zu Ihnen kommen kann. Vor der Terminbestätigung erfahren Sie, was der Einsatz kostet.
           </Alert>
         </div>
       )}

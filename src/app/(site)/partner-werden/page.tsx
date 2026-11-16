@@ -35,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       page?.seo.description
       ?? 'Wir geben geprüfte Anfragen zu Autoschlüsseln und Fahrzeugschlüsseln an Fachbetriebe vor Ort '
-        + 'weiter. Bewerben Sie sich mit wenigen Angaben als Partner.',
+        + 'weiter. Bewerben Sie sich online als Partner.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }

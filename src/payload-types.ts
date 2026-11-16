@@ -641,7 +641,7 @@ export interface Partnerbetriebe {
   abrechnungsmodell: 'A' | 'B';
   einsatzgebiet?: {
     /**
-     * Kommagetrennt, auch Bereiche wie 355*.
+     * Kommagetrennt, auch Bereiche wie 355*. Ohne Postleitzahlen keine Zuordnung: Der Umkreis wird noch nicht ausgewertet. Bitte Postleitzahlen eintragen.
      */
     postleitzahlen?: string | null;
     radiusKm?: number | null;

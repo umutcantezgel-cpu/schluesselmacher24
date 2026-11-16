@@ -84,4 +84,19 @@ Prüfung nach der Nachbesserung, alle über die Datenweiche:
 - `sicher.sh --json -- npm run build`: erfolgreich, 180 von 180 Seiten; `/autoschluessel/gehaeuse/anfrage` und `/autoschluessel/customizing` weiter statisch (○).
 Kein Server, kein git, keine Formularsendung (G5).
 
+## Abnahme durch den Orchestrator (16.11.2026)
+
+Prüfkette (`bash _werkstatt/ausbau/werkzeuge/abnahme.sh FA-PLATTFORM-01`, beide Pakete gemeinsam im Arbeitsbaum, nach allen Eingriffen): Typprüfung grün, Lint grün, Unit 3723 von 3723, Datenbanktests 157 von 157 (die neue Migration läuft dabei auf einer frischen Datenbank), Build 180 von 180 Seiten. Onpage-Messung am neu gestarteten Prüfserver: 136 Seiten, Median 100, kein roter und kein gelber Befund. `reste.mjs` über alle vier Quellen: nur die zehn bekannten Platzhalter in `src/lib/pdf/partnervertrag.ts` (MA-29).
+
+Browserprobe (Attrappen, nichts abgesendet, G5; lokale Entwicklungsinstanz auf eigenem Port): 19 von 19 Prüfungen bestanden.
+- `?leistung=umbau` wählt den Umbau vor; die Vorwahl ist änderbar; die eigene Wahl bleibt nach dem Neuladen und geht der Adresse vor; `canonical` ohne Parameter.
+- Unbekannter Wert: keine Vorwahl; ohne Antwort ist „Weiter“ gesperrt, auch wenn das Fahrzeug ausgefüllt ist; mit der Tastatur bedienbar (Leertaste wählt, Pfeil wechselt); Antwortkarten 89 px hoch.
+- Alter Zwischenstand ohne Leistung im Schritt Absenden: Hinweis „Bitte wählen Sie, was wir für Sie tun sollen.“, Absenden gesperrt, der Hinweis führt zum Schritt mit der Frage.
+- Verweise: Gehäuse-Seite je Leistung mit Kennung, „Anfrage stellen“ ohne Parameter; Customizing immer `?leistung=umbau`; der Behelfssatz steht auf keiner der beiden Seiten mehr.
+
+Entschieden bei der Abnahme:
+- Die Antworten heißen wie in der Arbeitsanweisung („Gehäusetausch im Einsendeservice“, „Reparatur (Tasten, Mechanik)“, „Umbau auf anderes Gehäuse (Customizing)“), weil jede Antwort einen Satz für Laien trägt und Zusammenfassung, Vorgang und Vorgangsblatt dann dieselben Worte zeigen. Kürzere Titel ohne Fremdwort sind eine Frage an den Inhaber (MA-53, Punkt 11).
+- Die Eingangsmail an den Kunden nennt die Leistung nicht, weil sie keine Zusammenfassung enthält (Bestand). Keine Änderung; die Betriebsmail und das Vorgangsblatt tragen die Angabe.
+- `records.ts` importiert die Werteliste aus dem Ordner der Seite. Das bleibt so; ein Umzug nach `src/lib` ist eine Aufräumarbeit ohne Wirkung für Kunden.
+
 === ENDE FA-SHOP-02C · BEREIT ZUR RÜCKGABE ===

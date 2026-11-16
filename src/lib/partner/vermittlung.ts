@@ -60,7 +60,7 @@ export interface PartnerKurz {
 
 /**
  * Ob ein Partner diesen Auftrag bekommen darf (MA-16: nur freigeschaltet, nicht pausiert, nur passende Art).
- * Den Sammelwert „Autoschlüssel vor Ort“ deckt jede der neun Leistungen ab (FA-PLATTFORM-01).
+ * Den Sammelwert „Autoschlüssel allgemein“ (`autoschluessel-vor-ort`) deckt jede der neun Leistungen ab (FA-PLATTFORM-01).
  */
 export function darfVermitteln(partner: PartnerKurz, auftragsart: string): boolean {
   return partner.status === 'freigeschaltet' && decktAuftragsart(partner.auftragsarten, auftragsart);

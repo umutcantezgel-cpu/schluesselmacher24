@@ -223,7 +223,7 @@ export default async function VorOrtPage() {
           nummer="02"
           eyebrow="Anfrage"
           title="Einsatz anfragen"
-          lead="Sagen Sie uns, wo und was zu tun ist. Wir klären, ob die Werkstatt oder ein Partner zu Ihnen kommen kann."
+          lead="Sagen Sie uns, wo und was zu tun ist. Wir klären, ob die Werkstatt zu Ihnen kommen kann."
         />
         <div className="mt-8 max-w-3xl">
           <EinsatzFormular hilfe={hilfeAus(settings)} />

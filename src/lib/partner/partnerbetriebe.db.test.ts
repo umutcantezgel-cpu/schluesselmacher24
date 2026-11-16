@@ -55,7 +55,7 @@ describe('Partnerbetriebe', () => {
   it('zeigt Provisionen nur dem Inhaber', async () => {
     const doc = await payload.create({
       collection: 'partnerbetriebe',
-      data: { firma: 'Testbetrieb West', ort: 'Köln', status: 'eingegangen', abrechnungsmodell: 'A', provisionen: [{ auftragsart: 'montage-zylinder', prozent: 10 }] },
+      data: { firma: 'Testbetrieb West', ort: 'Köln', status: 'eingegangen', abrechnungsmodell: 'A', provisionen: [{ auftragsart: 'funk', prozent: 10 }] },
       overrideAccess: false,
       user: inhaber,
     });

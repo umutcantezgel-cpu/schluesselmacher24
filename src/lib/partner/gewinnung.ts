@@ -361,7 +361,7 @@ const auftraegeErhalten = (z: ZahlwegTexte): GewinnungSeite => ({
   ],
   naechsterSchritt: {
     ueberschrift: 'Bereit für Aufträge aus Ihrer Region?',
-    text: 'Bewerben Sie sich mit wenigen Angaben. Wir prüfen Ihre Bewerbung und melden uns bei Ihnen.',
+    text: 'Bewerben Sie sich mit Angaben zu Betrieb, Leistungen und Ausstattung. Wir prüfen Ihre Bewerbung und melden uns bei Ihnen.',
     primaer: { href: PARTNER_BEWERBUNG, label: 'Jetzt als Partner bewerben' },
   },
 });

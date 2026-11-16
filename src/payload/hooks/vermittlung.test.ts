@@ -218,7 +218,7 @@ describe('Wechsel des Partnerbetriebs', () => {
     betrieb = partner({ id: 8, firma: 'Neu GmbH' });
     const original = laufend('angenommen');
     await expect(speichern(original, vermittlung(original, { partnerbetrieb: 8 }))).rejects.toThrow(MELDUNG_PARTNER_WECHSEL);
-    await expect(speichern(original, vermittlung(original, { auftragsart: 'montage-zylinder' as never }))).rejects.toThrow(MELDUNG_PARTNER_WECHSEL);
+    await expect(speichern(original, vermittlung(original, { auftragsart: 'transponder' as never }))).rejects.toThrow(MELDUNG_PARTNER_WECHSEL);
   });
 
   it('lehnt jeden Wechsel seit „ausgeführt“ ab, auch nach der Freigabe', async () => {
