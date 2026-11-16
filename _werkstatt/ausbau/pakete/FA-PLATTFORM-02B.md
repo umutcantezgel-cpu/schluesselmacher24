@@ -14,6 +14,9 @@ Im Adminbereich pflegbar: „Partner und Partnerseiten“.
 3. Titel und Beschreibungen in `src/lib/data/seo-laengen.test.ts`; Test, dass ein gepflegter Wert den Rückfall ersetzt und ein leerer Wert ihn nicht löscht; Betreiberanleitung `docs/betrieb/` (Abschnitt Partnerseiten).
 4. Öffentliche Partnerprofile baust du nicht (Zustimmung der Partner fehlt, MA-54).
 
+## Hinweis (vom Orchestrator, 16.11.2026)
+Gleichzeitig läuft FA-PLATTFORM-03 (Ortsstamm, mit Schema: `src/payload/**`, `src/migrations/**`, `src/payload-types.ts`, `content/orte/**`, `src/lib/orte/**`, `scripts/**`). Diese Dateien fasst du nicht an. Schlägt die Typprüfung oder der Build nur in Dateien dieses Pakets fehl, wiederhole sie später und nenne das im Bericht.
+
 ## Schreibrechte
 `src/app/(site)/partner-werden/**` (nur die vier Unterseiten), `src/lib/partner/gewinnung.ts` (nur, um den Rückfall bereitzustellen), `content/seo.json` und `src/lib/data/defaults/content.ts` (nur die vier neuen Einträge), `src/lib/data/seo-laengen.test.ts`, `docs/betrieb/**` (ein Abschnitt), zugehörige Tests, `_werkstatt/ausbau/berichte/FA-PLATTFORM-02B.md`.
 Nicht anfassen: das Partnerformular, Partnerlogik (`src/payload/**`, `src/lib/partner/leistungen.ts`, Vermittlung), Datenschema, Navigation.

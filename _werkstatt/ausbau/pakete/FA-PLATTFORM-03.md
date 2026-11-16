@@ -16,6 +16,12 @@ Das Paket ist geteilt. Du baust Teil A (dieser Auftrag): den Ortsstamm. Das sind
 
 Zusätze: (1) Der Seed des Stamms darf die Datenbanktests nicht spürbar verlangsamen: Im Test läuft er mit einer Stichprobe; der Volllauf ist ein eigener, dokumentierter Befehl, der wiederholbar ist und in Stapeln schreibt. (2) Die JSON-Dateien des Stamms werden nur auf dem Server gelesen und nie in ein Client-Bündel importiert; ein Test oder eine Lint-Regel sichert das (etwa `import 'server-only'` im Lesemodul). Nenne die Dateigrößen im Bericht. (3) Die Rohdateien unter `_werkstatt/ausbau/daten/orte/` bleiben uncommittet; committet werden nur die abgeleiteten Dateien mit Quellenangabe.
 
+## Stand nach FA-PLATTFORM-01B (vom Orchestrator, 16.11.2026)
+- Partnerbetriebe tragen seit FA-PLATTFORM-01B Regionen (`einsatzgebiet.regionen` mit Art „ort“ oder „landkreis“ und Name, als Freitext) und es gibt die reine Funktion `deckendePartner(plz, auftragsart, betriebe)` in `src/lib/partner/region.ts`. Sie wertet nur Postleitzahlen-Muster aus. Deine Postleitzahl-Abfrage (Punkt 7) nutzt für „Partner vorhanden“ diese Funktion; du änderst `src/lib/partner/**` nicht.
+- Der Umkreis eines Partners (`einsatzgebiet.radiusKm`, Postleitzahl des Betriebs) wird noch nicht ausgewertet, weil Geodaten fehlten. Dein Stamm bringt Koordinaten je Postleitzahl: Stelle in `src/lib/orte/**` eine reine Funktion bereit, die die Entfernung zwischen zwei Postleitzahlen in Kilometern liefert (Großkreis, mit Tests an drei Stichproben), und nenne sie im Abschnitt „Stand für Teil B“ deines Berichts. Die Auswertung des Umkreises selbst baut ein späteres Paket.
+- Die Sammlung `Partnerbetriebe`, ihre Migrationen (`partner_qualitaet`, `partner_pruefung`) und `src/payload/hooks/**` fasst du nicht an. Deine Migration heißt `orte_stamm`; lies das erzeugte `up` und nimm heraus, was nicht zu diesem Paket gehört (nur additiv, G6).
+- Gleichzeitig läuft FA-PLATTFORM-02B (die vier Unterseiten unter `src/app/(site)/partner-werden/**`, Einträge in `content/seo.json` und `src/lib/data/defaults/content.ts`). Diese Dateien fasst du nicht an.
+
 ## Lage (geprüft am 15.11.2026)
 - Bestand: `content/cities.json` mit einem Eintrag (Wetzlar), Sammlung `Einsatzgebiete` für Ortsseiten, Seiten `/standorte` und `/standorte/[city]`, Indexregel `stadtIndexierbar` (prüft nur Platzhalter). `content/karte` enthält Hessen aus BKG VG250 (Geometrie), von der Anwendung nicht gelesen.
 - Beschafft und nicht committet (`_werkstatt/ausbau/daten/orte/`):
