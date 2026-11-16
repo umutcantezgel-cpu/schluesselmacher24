@@ -8,7 +8,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {
   pruefeAlles, pruefeText, seitenSegmente, zeichenketten, telefonKuerzen, telefonZiffern,
-  exitCodeFuer, ladeAusnahmen, istSprache, quelltextSegmente, zaehltAlsText,
+  exitCodeFuer, ladeAusnahmen, istSprache, quelltextSegmente, zaehltAlsText, amtlicherSchluessel,
 } from './reste.mjs';
 
 const angelegt = [];
@@ -544,5 +544,32 @@ describe('Quelltext: Feldnamen und nicht gewählte Quellen (FA-QA-03B, Nachbesse
     assert.equal(e.hinweise.length, 1);
     assert.equal(e.quellen.inhalt.dateien, 0);
     assert.notEqual(exitCodeFuer(e), 2);
+  });
+});
+
+describe('Ortsstamm: amtliche Schlüssel sind keine Telefonnummern (FA-PLATTFORM-03)', () => {
+  test('die Regel gilt nur für Ziffernfelder mit „schluessel“ unter content/orte', () => {
+    assert.equal(amtlicherSchluessel('content/orte/gemeinden.json', '.gemeinden[0].regionalschluessel', '010010000000'), true);
+    assert.equal(amtlicherSchluessel('content/orte/gemeinden.json', '.gemeinden[0].gemeindeschluessel', '06532023'), true);
+    assert.equal(amtlicherSchluessel('content/orte/gemeinden.json', '.gemeinden[0].name', '010010000000'), false);
+    assert.equal(amtlicherSchluessel('content/orte/gemeinden.json', '.gemeinden[0].regionalschluessel', '06441 8056270'), false);
+    assert.equal(amtlicherSchluessel('content/seiten.json', '.x.regionalschluessel', '010010000000'), false);
+  });
+
+  test('ein Regionalschlüssel im Ortsstamm ist kein Fund, eine Telefonnummer dort und ein solcher Wert anderswo schon', () => {
+    const wurzel = werkstatt({
+      inhalt: {
+        'orte/gemeinden.json': JSON.stringify({ gemeinden: [
+          { gemeindeschluessel: '06532023', regionalschluessel: '065320023023', name: 'Testgemeinde' },
+          { gemeindeschluessel: '06532099', regionalschluessel: '065320099099', name: 'Rufen Sie an: 06441 1234567' },
+        ] }),
+        'anderes.json': JSON.stringify({ eintrag: { regionalschluessel: '065320023023' } }),
+      },
+    });
+    const funde = pruefeAlles({ wurzel, nur: ['kontakt'] }).funde.filter((f) => f.quelle === 'inhalt');
+    const orte = funde.filter((f) => f.datei === 'content/orte/gemeinden.json');
+    assert.equal(orte.length, 1, JSON.stringify(orte));
+    assert.match(orte[0].ort, /name$/);
+    assert.equal(funde.filter((f) => f.datei === 'content/anderes.json').length, 1);
   });
 });

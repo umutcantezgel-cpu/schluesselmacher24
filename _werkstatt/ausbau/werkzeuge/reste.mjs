@@ -625,6 +625,16 @@ export function buildFehler(wurzel) {
  * Führt alle Prüfungen aus.
  * Rückgabe: { quellen, funde, ausgenommen, veraltet, bedienfehler, nur }.
  */
+/**
+ * Amtlicher Schlüssel im Ortsstamm (FA-PLATTFORM-03): Unter content/orte/ steht in Feldern, deren Name auf
+ * „schluessel“ endet, eine reine Ziffernfolge aus dem Gemeindeverzeichnis (Regionalschlüssel mit zwölf,
+ * Gemeindeschlüssel mit acht, Kreisschlüssel mit fünf Stellen). Sie sähe sonst wie eine Telefonnummer aus.
+ * Eng gefasst: nur dieser Ordner, nur solche Felder, nur Ziffern. Alles andere dort wird weiter geprüft.
+ */
+export function amtlicherSchluessel(datei, pfad, wert) {
+  return datei.startsWith('content/orte/') && /schluessel$/i.test(pfad) && /^\d{5,12}$/.test(wert);
+}
+
 export function pruefeAlles({ wurzel = REPO, nur = KENNUNGEN, ausnahmen = [], waehle = QUELLEN } = {}) {
   const bedienfehler = [];
   const hinweise = []; // Meldungen zu nicht gewählten Quellen: stören den Exit-Code nicht
@@ -676,6 +686,8 @@ export function pruefeAlles({ wurzel = REPO, nur = KENNUNGEN, ausnahmen = [], wa
     besuche(obj, '', {
       zeichenkette: ({ pfad, wert }) => {
         if (!waehle.includes('inhalt')) return;
+        // Amtliche Schlüssel des Ortsstamms sind Kennungen, keine Kundentexte und keine Telefonnummern.
+        if (amtlicherSchluessel(rel, pfad, wert)) return;
         quellen.inhalt.texte += 1;
         for (const f of pruefeText(wert, kontext(false))) {
           funde.push({ pruefung: f.pruefung, quelle: 'inhalt', datei: rel, seite: null, ort: pfad,
