@@ -1,0 +1,8 @@
+[start] Lauf 1: Leistung 87, LCP 2786 ms, TBT 364 ms (10 s)
+[start] Lauf 2: Leistung 92, LCP 2767 ms, TBT 207 ms (9 s)
+[start] Lauf 3: Leistung 86, LCP 3602 ms, TBT 215 ms (8 s)
+[autoschluessel] Lauf 1: Leistung 87, LCP 3014 ms, TBT 296 ms (9 s)
+[autoschluessel] Lauf 2: Leistung 74, LCP 3537 ms, TBT 666 ms (9 s)
+[autoschluessel] Lauf 3: Leistung 92, LCP 3019 ms, TBT 148 ms (8 s)
+[assistent] Lauf 1: Leistung 82, LCP 3809 ms, TBT 315 ms (8 s)
+[assistent] Lauf 2: Leistung 85, LCP 4093 ms, TBT 130 ms (7 s)
