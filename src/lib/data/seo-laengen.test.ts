@@ -489,6 +489,9 @@ const RUECKFAELLE_B = [
   'autoschluessel/anfrage',
   'autoschluessel/gehaeuse',
   'autoschluessel/gehaeuse/anfrage',
+  // Gehäuse und Ersatzteile, Customizing (FA-SHOP-02B)
+  'autoschluessel/gehaeuse/teile',
+  'autoschluessel/customizing',
   'motorradschluessel',
   'motorradschluessel/anfrage',
 ];

@@ -4,7 +4,13 @@ import { istBestellbar } from '@/lib/data/shop';
 import { formatCents, formatNumber } from '@/lib/format';
 import { unitPriceForCodeLine } from '@/lib/pricing';
 import { getSiteUrl } from '@/lib/site-url';
-import type { ShippingOption, StandardArticle } from '@/lib/types';
+import {
+  ELEKTRONIK_SATZ,
+  SCHLUESSELTYP_LABEL,
+  TEILEART_LABEL,
+  bauformNamen,
+} from '@/lib/data/fahrzeugteile';
+import type { FahrzeugReihe, FahrzeugTeil, GehaeuseBauform, ShippingOption, StandardArticle } from '@/lib/types';
 
 /* ==========================================================================
    Standardartikel — reine Hilfsfunktionen für Übersicht, Detailseite,
@@ -242,4 +248,63 @@ export function artikelAnfragePfad(name: string, basis: string = LEISTUNGS_ANFRA
   const wert = name.replace(/\s+/g, ' ').trim().slice(0, ARTIKEL_ANFRAGE_LAENGE);
   if (!wert) return basis;
   return `${basis}${basis.includes('?') ? '&' : '?'}artikel=${encodeURIComponent(wert)}`;
+}
+
+/* ---------- Gehäuse und Ersatzteile (FA-SHOP-02B) ------------------------ */
+
+/** Name einer Reihe aus dem Fahrzeugkatalog; unbekannte Kennungen entfallen. */
+export function reiheName(id: string, katalog: ReadonlyArray<Pick<FahrzeugReihe, 'id' | 'reihe'>>): string | undefined {
+  return katalog.find((r) => r.id === id)?.reihe;
+}
+
+/** „Baujahr 2005 bis 2012“, „ab Baujahr 2005“, „bis Baujahr 2012“ oder nichts. */
+export function baujahrText(teil: Pick<FahrzeugTeil, 'baujahrVon' | 'baujahrBis'>): string | undefined {
+  const { baujahrVon: von, baujahrBis: bis } = teil;
+  if (von && bis) return von === bis ? `Baujahr ${von}` : `Baujahr ${von} bis ${bis}`;
+  if (von) return `ab Baujahr ${von}`;
+  if (bis) return `bis Baujahr ${bis}`;
+  return undefined;
+}
+
+/**
+ * Fahrzeug eines Teils als Text, so wie gepflegt: Marke mit Reihen und Baujahren. Ohne Marke steht
+ * „Passt zu jedem Fahrzeug“ (ohne Marke kommen nur markenübergreifende Teile durch die Pflichtprüfung).
+ */
+export function fahrzeugText(teil: FahrzeugTeil, katalog: ReadonlyArray<Pick<FahrzeugReihe, 'id' | 'reihe'>>): string {
+  if (!teil.marke) return 'Passt zu jedem Fahrzeug';
+  const reihen = teil.reihen.map((id) => reiheName(id, katalog)).filter((n): n is string => Boolean(n));
+  const basis = reihen.length ? `${teil.marke} ${reihen.join(', ')}` : `${teil.marke}, alle Modelle`;
+  const jahre = baujahrText(teil);
+  return jahre ? `${basis}, ${jahre}` : basis;
+}
+
+/**
+ * Angaben eines Fahrzeugteils für die Seite des Artikels, nur was gepflegt ist (R4, R8). Der
+ * Kompatibilitätshinweis und der Satz zur Elektronik stehen eigens (`fahrzeugteilHinweise`).
+ */
+export function fahrzeugteilAngaben(
+  teil: FahrzeugTeil,
+  quellen: { bauformen: GehaeuseBauform[]; katalog: ReadonlyArray<Pick<FahrzeugReihe, 'id' | 'reihe'>> },
+): Array<{ name: string; value: string }> {
+  const bauformen = bauformNamen(teil.bauformen, quellen.bauformen);
+  return [
+    { name: 'Art des Teils', value: TEILEART_LABEL[teil.teileart] },
+    { name: 'Fahrzeug', value: fahrzeugText(teil, quellen.katalog) },
+    ...(bauformen.length ? [{ name: 'Bauform', value: bauformen.join(', ') }] : []),
+    ...(typeof teil.tastenzahl === 'number' ? [{ name: 'Tasten', value: String(teil.tastenzahl) }] : []),
+    ...(teil.schluesselarten.length ? [{ name: 'Schlüsseltyp', value: teil.schluesselarten.map((s) => SCHLUESSELTYP_LABEL[s]).join(', ') }] : []),
+  ];
+}
+
+/**
+ * Pflichtsätze eines Fahrzeugteils: Kompatibilitätshinweis und Elektronik. Bei „nur nach Prüfung“
+ * verspricht der Satz eine Klärung vor dem Kauf; die Seite zeigt ihn darum nur mit dem Verweis in die
+ * Gehäuse-Anfrage (`anfrage: true`), denn der Kassenweg hat keinen Prüfschritt.
+ */
+export function fahrzeugteilHinweise(teil: Pick<FahrzeugTeil, 'kompatibilitaet' | 'elektronik'>): {
+  kompatibilitaet: string;
+  elektronik: string;
+  anfrage: boolean;
+} {
+  return { kompatibilitaet: teil.kompatibilitaet.trim(), elektronik: ELEKTRONIK_SATZ[teil.elektronik], anfrage: teil.elektronik === 'pruefung' };
 }

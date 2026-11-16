@@ -17,15 +17,12 @@ export const SHOP_SEO = {
     'Schlüssel nach Code, Schlüssel nach Vorlage, Zylinder und Zubehör: Hier sehen Sie, was Sie direkt bestellen und was Sie bei uns anfragen können.',
 } as const;
 
-/** Anfrage zu einer Leistung, Thema Autoschlüssel, Anliegen „Frage“. */
-export const AUTOSCHLUESSEL_FRAGE_PFAD = `${LEISTUNGS_ANFRAGE_PFAD}?thema=autoschluessel&anliegen=frage`;
-
 /**
- * Kategorien, deren gepflegtes Ziel die allgemeine Anfrage ohne Thema ist, die aber zum Anliegen
- * Autoschlüssel gehören (Vorgabe des Orchestrators zu FA-SHOP-01B, Punkt 4). Steht im Backend ein
- * Ziel mit Thema, gilt dieses.
+ * Anfrage zu einer Leistung, Thema Autoschlüssel, Anliegen „Frage“. Steht als Ziel in den Daten
+ * („Autoschlüssel als Produkte“); die frühere Sonderregel für Autoschlüssel-Kategorien ohne Thema
+ * entfällt, seit Gehäuse, Reparatur und Customizing eigene Seiten haben (FA-SHOP-02B, Punkt 5).
  */
-const AUTOSCHLUESSEL_KATEGORIEN = new Set(['autoschluessel-produkte', 'customizing-und-modifikation']);
+export const AUTOSCHLUESSEL_FRAGE_PFAD = `${LEISTUNGS_ANFRAGE_PFAD}?thema=autoschluessel&anliegen=frage`;
 
 export interface KategorieWeg {
   href: string;
@@ -45,7 +42,7 @@ function istLeistungsAnfrage(ziel: string): boolean {
  * - Artikel: mit Produkten die Artikelliste, sonst „Artikel anfragen“ mit dem Kategorienamen.
  * - Konfigurator: immer der Konfigurator.
  * - Anfrage: das gepflegte Ziel; führt es in die Anfrage zu einer Leistung, übernimmt sie den
- *   Kategorienamen, und ohne Thema gilt bei Autoschlüssel-Kategorien das Thema Autoschlüssel.
+ *   Kategorienamen.
  */
 export function kategorieWeg(kategorie: Pick<ShopKategorie, 'id' | 'name' | 'art' | 'ziel' | 'hinweis'>, anzahl: number): KategorieWeg {
   const hinweis = anzahl > 0 ? undefined : kategorie.hinweis?.trim() || HINWEIS_PRODUKTE_FOLGEN;
@@ -66,8 +63,7 @@ export function kategorieWeg(kategorie: Pick<ShopKategorie, 'id' | 'name' | 'art
         const label = kategorie.hinweis || kategorie.ziel.endsWith('/anfrage') ? 'Anfragen' : 'Ansehen';
         return { href: kategorie.ziel, label, ...(kategorie.hinweis ? { hinweis: kategorie.hinweis } : {}) };
       }
-      const basis = kategorie.ziel === LEISTUNGS_ANFRAGE_PFAD && AUTOSCHLUESSEL_KATEGORIEN.has(kategorie.id) ? AUTOSCHLUESSEL_FRAGE_PFAD : kategorie.ziel;
-      return { href: artikelAnfragePfad(kategorie.name, basis), label: 'Anfragen', ...(kategorie.hinweis ? { hinweis: kategorie.hinweis } : {}) };
+      return { href: artikelAnfragePfad(kategorie.name, kategorie.ziel), label: 'Anfragen', ...(kategorie.hinweis ? { hinweis: kategorie.hinweis } : {}) };
     }
   }
 }

@@ -5,12 +5,14 @@ import { notFound } from 'next/navigation';
 import {
   artikelAnfragePfad,
   artikelPfad,
+  fahrzeugteilAngaben,
+  fahrzeugteilHinweise,
   istIndexierbar,
   kurztext,
   produktJsonLd,
   versandartenFuer,
 } from '@/lib/artikel';
-import { getCollection, getSettings } from '@/lib/data';
+import { getBauformen, getCollection, getFahrzeugkatalog, getSettings } from '@/lib/data';
 import { formatCents } from '@/lib/format';
 import { GpsrAngaben } from '@/components/recht/gpsr-angaben';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -30,6 +32,7 @@ import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
 
 import { VERFUEGBARKEIT_LABEL, verfuegbarkeitVon } from '@/lib/data/shop';
 import { VerfuegbarkeitHinweis } from '../../schluessel-nach-code/verfuegbarkeit-hinweis';
+import { GEHAEUSE_ANFRAGE_PFAD, TEILE_PFAD } from '../../autoschluessel/gehaeuse/teile/ansicht';
 
 import { ArtikelKauf } from './artikel-kauf';
 
@@ -93,8 +96,13 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
   if (!article) notFound();
 
   const pfad = artikelPfad(article.slug);
+  // Gehäuse und Ersatzteile (FA-SHOP-02B): Brotkrume über die Liste, Merkmale und Pflichtsätze sichtbar.
+  const teil = article.fahrzeugteil;
+  const [bauformen, katalog] = teil ? await Promise.all([getBauformen(), getFahrzeugkatalog()]) : [[], []];
+  const teilAngaben = teil ? fahrzeugteilAngaben(teil, { bauformen, katalog }) : [];
+  const teilHinweise = teil ? fahrzeugteilHinweise(teil) : null;
   const crumbs = [
-    { href: '/artikel', label: 'Artikel' },
+    teil ? { href: TEILE_PFAD, label: 'Gehäuse und Ersatzteile' } : { href: '/artikel', label: 'Artikel' },
     { href: pfad, label: article.name },
   ];
   const produkt = produktJsonLd(article);
@@ -106,6 +114,7 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
 
   // Nur gepflegte Angaben — fehlende Werte werden nicht ergänzt.
   const eigenschaften = [
+    ...teilAngaben,
     ...(hersteller ? [{ name: 'Hersteller', value: hersteller }] : []),
     ...article.properties.filter((p) => p.name.trim() && p.value.trim()),
     // Lieferzeit nur, solange der Artikel bestellbar ist.
@@ -119,6 +128,7 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
   }));
 
   const baseLinks = [
+    ...(teil ? [{ href: TEILE_PFAD, label: 'Alle Gehäuse und Ersatzteile' }] : []),
     { href: '/artikel', label: 'Alle Artikel' },
     { href: '/warenkorb', label: 'Zum Warenkorb' },
     { href: '/rechtliches/versand-und-zahlung', label: 'Zahlung und Versand' },
@@ -134,6 +144,7 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
   // Laufende Nummern der Abschnitte; fehlt ein Abschnitt, rücken die folgenden nach.
   const reihe = [
     'beschreibung',
+    ...(teilHinweise ? ['passung'] : []),
     ...(eigenschaften.length > 0 ? ['eigenschaften'] : []),
     ...(article.scope.trim() ? ['lieferumfang'] : []),
     'versand',
@@ -232,6 +243,22 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
               <SectionHeading nummer={nr('beschreibung')} eyebrow="Artikel" title="Beschreibung" />
             </div>
             <p className="prose-sm24 mt-4">{article.description}</p>
+
+            {teilHinweise && (
+              <div className="mt-12 border-t border-border pt-8">
+                <SectionHeading nummer={nr('passung')} eyebrow="Kompatibilität" title="Passt das Teil zu Ihrem Schlüssel?" />
+                <p className="prose-sm24 mt-4">{teilHinweise.kompatibilitaet}</p>
+                <p className="prose-sm24 mt-4 font-semibold text-foreground">{teilHinweise.elektronik}</p>
+                {/* Die Klärung vor dem Kauf läuft über die Anfrage; der Kassenweg hat keinen Prüfschritt. */}
+                {teilHinweise.anfrage && (
+                  <p className="prose-sm24 mt-4">
+                    <Link href={GEHAEUSE_ANFRAGE_PFAD} className="font-semibold text-primary hover:underline">
+                      Zur Gehäuse-Anfrage mit Fahrzeug und Fotos
+                    </Link>
+                  </p>
+                )}
+              </div>
+            )}
 
             {eigenschaften.length > 0 && (
               <div className="mt-12 border-t border-border pt-8">

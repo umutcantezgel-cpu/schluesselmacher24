@@ -883,7 +883,7 @@ export interface Produkte {
      */
     elektronik?: ('ja' | 'nein' | 'pruefung') | null;
     /**
-     * Pflicht. Was vom alten Schlüssel übernommen wird (Elektronik, Transponder, Tasten, Bart) und was nicht passt. Erscheint später auf der Seite des Artikels.
+     * Pflicht. Was vom alten Schlüssel übernommen wird (Elektronik, Transponder, Tasten, Bart) und was nicht passt. Erscheint auf der Seite des Artikels.
      */
     kompatibilitaet?: string | null;
     /**

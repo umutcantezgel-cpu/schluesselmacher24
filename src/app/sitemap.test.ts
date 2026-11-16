@@ -155,6 +155,24 @@ describe('Sitemap', () => {
     daten.artikel = [];
   });
 
+  it('führt Customizing immer und die Liste der Gehäuse und Ersatzteile nur mit echten Teilen (FA-SHOP-02B)', async () => {
+    const pfade = async () => (await sitemap()).map((e) => new URL(e.url).pathname);
+    daten.artikel = [];
+    expect(await pfade()).toContain('/autoschluessel/customizing');
+    expect(await pfade()).not.toContain('/autoschluessel/gehaeuse/teile');
+    // Erfundene Testdaten (G4): ein Beispielartikel mit Fahrzeugbezug zählt nicht, ein echtes Teil schon.
+    const basis = defaults.standardArticles()[0];
+    const teil = {
+      ...basis,
+      fahrzeugteil: { teileart: 'batterie' as const, bauformen: [], reihen: [], schluesselarten: [], kompatibilitaet: 'Test', elektronik: 'ja' as const },
+    };
+    daten.artikel = [{ ...teil, example: true }];
+    expect(await pfade()).not.toContain('/autoschluessel/gehaeuse/teile');
+    daten.artikel = [{ ...teil, example: false, seo: { ...basis.seo, noindex: false } }];
+    expect(await pfade()).toContain('/autoschluessel/gehaeuse/teile');
+    daten.artikel = [];
+  });
+
   it('meldet die Hauptseite und die vier Seiten zur Partnergewinnung', async () => {
     const urls = (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname);
     for (const pfad of [

@@ -264,7 +264,7 @@ export const fahrzeugteilFeld: Field = {
         condition: teilAktiv,
         description:
           'Pflicht. Was vom alten Schlüssel übernommen wird (Elektronik, Transponder, Tasten, Bart) und was nicht passt. '
-          + 'Erscheint später auf der Seite des Artikels.',
+          + 'Erscheint auf der Seite des Artikels.',
       },
       validate: teilPflicht('kompatibilitaet', KOMPATIBILITAET_MAX) as never,
     },

@@ -22,6 +22,7 @@ import {
   herstellerPfad,
   kategoriePfad,
 } from '@/lib/codelinie';
+import { fahrzeugteile } from '@/lib/data/fahrzeugteile';
 import { markeIndexierbar, modellIndexierbar } from '@/lib/fahrzeug-texte';
 import { KLASSE_RUBRIK } from '@/components/fahrzeug-anfrage/seiten';
 import { ANFRAGE_FORMULAR, FORMULAR_KLASSEN, type FormularKlasse } from '@/lib/fahrzeuge/anfrage-klassen';
@@ -57,6 +58,8 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '/motorradschluessel/anfrage', priority: 0.6 },
   { path: '/autoschluessel/gehaeuse', priority: 0.7 },
   { path: '/autoschluessel/gehaeuse/anfrage', priority: 0.6 },
+  // Rubrik Customizing (FA-SHOP-02B); die Liste der Gehäuse und Ersatzteile nur mit echten Teilen, siehe unten.
+  { path: '/autoschluessel/customizing', priority: 0.6 },
   { path: '/beratung', priority: 0.6 },
   { path: '/schluessel-einschicken', priority: 0.7 },
   { path: '/schluessel-nach-code', priority: 0.8 },
@@ -214,6 +217,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const artikelSeite = pages.find((page) => page.route === 'artikel');
   if (echteArtikel.length > 0 && !artikelSeite?.seo.noindex) {
     entries.push({ url: `${siteUrl}/artikel`, changeFrequency: 'weekly', priority: 0.7 });
+  }
+  // Liste der Gehäuse und Ersatzteile (FA-SHOP-02B): nur mit mindestens einem indexierbaren Teil, wie die Seite.
+  const teileSeite = pages.find((page) => page.route === 'autoschluessel/gehaeuse/teile');
+  if (fahrzeugteile(echteArtikel).length > 0 && !teileSeite?.seo.noindex) {
+    entries.push({ url: `${siteUrl}/autoschluessel/gehaeuse/teile`, changeFrequency: 'weekly', priority: 0.6 });
   }
   for (const article of echteArtikel) {
     entries.push({

@@ -54,20 +54,27 @@ describe('Weg einer Shop-Kategorie', () => {
     const auto = kategorieWeg(kategorie('autoschluessel-produkte'), 0);
     expect(auto.href).toBe(`${AUTOSCHLUESSEL_FRAGE_PFAD}&artikel=Autoschl%C3%BCssel%20als%20Produkte`);
     expect(auto.hinweis).toBe(HINWEIS_PRODUKTE_FOLGEN);
-    expect(kategorieWeg(kategorie('customizing-und-modifikation'), 0).href).toBe(
-      `${AUTOSCHLUESSEL_FRAGE_PFAD}&artikel=Customizing%20und%20Modifikation`,
-    );
+    // Ziele aus den Daten (FA-SHOP-02B, Punkt 5): die Seiten und die Liste des Bereichs.
+    expect(kategorieWeg(kategorie('customizing-und-modifikation'), 0)).toMatchObject({
+      href: '/autoschluessel/customizing',
+      label: 'Anfragen',
+      hinweis: HINWEIS_PRODUKTE_FOLGEN,
+    });
     expect(kategorieWeg(kategorie('gehaeuseumbau-und-reparaturservice'), 0)).toMatchObject({
-      href: '/autoschluessel/gehaeuse/anfrage',
+      href: '/autoschluessel/gehaeuse',
       label: 'Anfragen',
     });
+    // Ohne Sonderregel: Ein im Backend gepflegtes Ziel ohne Thema bleibt die allgemeine Anfrage mit dem Namen.
+    expect(kategorieWeg({ ...kategorie('customizing-und-modifikation'), ziel: '/service-und-termin/anfrage' }, 0).href).toBe(
+      '/service-und-termin/anfrage?artikel=Customizing%20und%20Modifikation',
+    );
     // Die Anfrage übernimmt den Namen bereinigt, so wie er in der Adresse steht.
     const name = new URL(auto.href, 'https://x.test').searchParams.get('artikel');
     expect(vorbelegungAusAdresse(name, 80)).toBe('Autoschlüssel als Produkte');
   });
 
   it('mit Hinweis heißt der Knopf „Anfragen“, auch wenn das Ziel keine Anfrageseite ist', () => {
-    expect(kategorieWeg(kategorie('autoschluesselgehaeuse'), 0)).toMatchObject({ href: '/autoschluessel/gehaeuse', label: 'Anfragen' });
+    expect(kategorieWeg(kategorie('autoschluesselgehaeuse'), 0)).toMatchObject({ href: '/autoschluessel/gehaeuse/teile', label: 'Anfragen' });
     expect(kategorieWeg({ ...kategorie('autoschluesselgehaeuse'), hinweis: '' }, 0).label).toBe('Ansehen');
   });
 

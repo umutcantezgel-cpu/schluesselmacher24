@@ -40,7 +40,7 @@
     "beschreibung": "Nur das Gehäuse für Ihren Funkschlüssel, ohne Elektronik.",
     "reihenfolge": 40,
     "art": "anfrage",
-    "ziel": "/autoschluessel/gehaeuse",
+    "ziel": "/autoschluessel/gehaeuse/teile",
     "hinweis": "Direkt bestellen können Sie hier derzeit nicht. Bitte fragen Sie bei uns an.",
     "sichtbar": true,
     "fruehereAdressen": []
@@ -52,7 +52,7 @@
     "beschreibung": "Die Arbeit übernehmen wir: Wir setzen die Elektronik Ihres Autoschlüssels in ein neues Gehäuse oder reparieren den Schlüssel.",
     "reihenfolge": 50,
     "art": "anfrage",
-    "ziel": "/autoschluessel/gehaeuse/anfrage",
+    "ziel": "/autoschluessel/gehaeuse",
     "hinweis": "Direkt bestellen können Sie hier derzeit nicht. Bitte fragen Sie bei uns an.",
     "sichtbar": true,
     "fruehereAdressen": []
@@ -64,7 +64,7 @@
     "beschreibung": "Ihr Autoschlüssel in neuer Optik, etwa in einem moderneren Gehäuse. Das geht nur, wenn die Technik hineinpasst.",
     "reihenfolge": 60,
     "art": "anfrage",
-    "ziel": "/service-und-termin/anfrage",
+    "ziel": "/autoschluessel/customizing",
     "hinweis": "Direkt bestellen können Sie hier derzeit nicht. Bitte fragen Sie bei uns an.",
     "sichtbar": true,
     "fruehereAdressen": []

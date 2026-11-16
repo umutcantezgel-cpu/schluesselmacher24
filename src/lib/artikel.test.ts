@@ -3,6 +3,9 @@ import { describe, expect, it } from 'vitest';
 import {
   aktiveStufe,
   artikelPfad,
+  fahrzeugText,
+  fahrzeugteilAngaben,
+  fahrzeugteilHinweise,
   filterArtikel,
   istIndexierbar,
   kurztext,
@@ -17,7 +20,7 @@ import {
 } from './artikel';
 import { standardArticles } from './data/defaults/standard-articles';
 import { unitPriceForCodeLine } from './pricing';
-import type { ShippingOption, StandardArticle } from './types';
+import type { GehaeuseBauform, ShippingOption, StandardArticle } from './types';
 
 const SITE = 'https://beispiel.test';
 
@@ -255,5 +258,55 @@ describe('Suchmaschinen', () => {
 
   it('bildet den Pfad der Detailseite', () => {
     expect(artikelPfad('schluesselkasten')).toBe('/artikel/schluesselkasten');
+  });
+});
+
+describe('Gehäuse und Ersatzteile auf der Seite des Artikels (FA-SHOP-02B)', () => {
+  /* Erfundene Testdaten (G4). */
+  const teil = {
+    teileart: 'gehaeuse' as const,
+    bauformen: ['klappschluessel', 'unbekannt'],
+    reihen: ['testmarke-alpha', 'unbekannt'],
+    schluesselarten: ['klappschluessel' as const],
+    kompatibilitaet: '  Elektronik und Bart werden übernommen. ',
+    elektronik: 'pruefung' as const,
+    marke: 'Testmarke',
+    baujahrVon: 2008,
+    baujahrBis: 2016,
+    tastenzahl: 3,
+  };
+  const quellen = {
+    bauformen: [{ id: 'klappschluessel', name: 'Klappschlüssel', reihenfolge: 10 } as GehaeuseBauform],
+    katalog: [{ id: 'testmarke-alpha', reihe: 'Alpha' }],
+  };
+
+  it('zeigt nur gepflegte Angaben, unbekannte Verweise entfallen', () => {
+    expect(fahrzeugteilAngaben(teil, quellen)).toEqual([
+      { name: 'Art des Teils', value: 'Gehäuse' },
+      { name: 'Fahrzeug', value: 'Testmarke Alpha, Baujahr 2008 bis 2016' },
+      { name: 'Bauform', value: 'Klappschlüssel' },
+      { name: 'Tasten', value: '3' },
+      { name: 'Schlüsseltyp', value: 'Klappschlüssel' },
+    ]);
+    const batterie = { ...teil, teileart: 'batterie' as const, marke: undefined, bauformen: [], reihen: [], schluesselarten: [], tastenzahl: undefined };
+    expect(fahrzeugteilAngaben(batterie, quellen)).toEqual([
+      { name: 'Art des Teils', value: 'Batterie' },
+      { name: 'Fahrzeug', value: 'Passt zu jedem Fahrzeug' },
+    ]);
+  });
+
+  it('Baujahre als Text, auch einseitig', () => {
+    expect(fahrzeugText({ ...teil, reihen: [], baujahrBis: undefined }, quellen.katalog)).toBe('Testmarke, alle Modelle, ab Baujahr 2008');
+    expect(fahrzeugText({ ...teil, reihen: [], baujahrVon: undefined }, quellen.katalog)).toBe('Testmarke, alle Modelle, bis Baujahr 2016');
+  });
+
+  it('der Satz „nur nach Prüfung“ kommt nur mit dem Verweis in die Anfrage (Gegenprüfung Teil A, Punkt 1)', () => {
+    expect(fahrzeugteilHinweise(teil)).toEqual({
+      kompatibilitaet: 'Elektronik und Bart werden übernommen.',
+      elektronik: 'Ob sich Elektronik und Transponder Ihres Schlüssels weiter verwenden lassen, klären wir vor dem Kauf. Schreiben Sie uns dazu.',
+      anfrage: true,
+    });
+    expect(fahrzeugteilHinweise({ ...teil, elektronik: 'ja' }).anfrage).toBe(false);
+    expect(fahrzeugteilHinweise({ ...teil, elektronik: 'nein' }).anfrage).toBe(false);
   });
 });
