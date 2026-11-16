@@ -146,3 +146,33 @@ export function provisionsEintragWaehlen<T extends ProvisionsEintrag>(
   const schluessel = (e: T) => `${e.prozent ?? ''}|${e.festbetrag ?? ''}`;
   return new Set(neun.map(schluessel)).size === 1 ? { eintrag: neun[0] } : { mehrdeutig: true };
 }
+
+/**
+ * Leistungen des Autoschlüssel-Assistenten (`content/car-key-services.json`, Kennung `serviceId`) und die
+ * Leistung des Partnernetzes, die sie abdeckt (FA-PLATTFORM-01B, Zusatz 7). Nur eindeutige Zuordnungen;
+ * was hier fehlt, behält den Sammelwert „Autoschlüssel allgemein“. „Schlüsselbart fräsen“ fehlt bewusst:
+ * Es gehört zum Nachmachen ebenso wie zum Ersatz bei Verlust (offene Frage im Bericht).
+ */
+export const AUFTRAGSLEISTUNG_ZU_PARTNERLEISTUNG: Readonly<Record<string, PartnerLeistung>> = {
+  zweitschluessel: 'schluessel-nachmachen',
+  'ersatz-bei-verlust': 'schluesselverlust',
+  programmierung: 'programmierung-anlernen',
+  'gehaeuse-reparatur': 'reparatur-gehaeuse',
+  fahrzeugoeffnung: 'fahrzeugoeffnung',
+};
+
+/**
+ * Auftragsart eines Autoschlüssel-Auftrags aus der gebuchten Leistung: eine der neun, wenn die Zuordnung
+ * eindeutig ist, sonst der Sammelwert. Gilt für neue Zuordnungen; gespeicherte Vorgänge bleiben, wie sie sind.
+ */
+export function auftragsartFuerLeistung(leistung: unknown): string {
+  return typeof leistung === 'string' && Object.hasOwn(AUFTRAGSLEISTUNG_ZU_PARTNERLEISTUNG, leistung)
+    ? AUFTRAGSLEISTUNG_ZU_PARTNERLEISTUNG[leistung]
+    : AUFTRAGSART_SAMMELWERT;
+}
+
+/** Auftragsart aus den Daten eines Vorgangs (`daten.serviceId` des Assistenten). */
+export function auftragsartFuerVorgang(daten: unknown): string {
+  const d = daten && typeof daten === 'object' && !Array.isArray(daten) ? (daten as Record<string, unknown>) : {};
+  return auftragsartFuerLeistung(d.serviceId);
+}

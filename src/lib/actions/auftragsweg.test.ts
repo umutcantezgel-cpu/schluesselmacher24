@@ -207,7 +207,8 @@ describe('Auftragsweg bei der Buchung (FA-KERN-03)', () => {
       area: 'autoschluessel',
       process: 'gefuehrte-anfrage',
       contact: kontakt('60311'),
-      payload: { auftragsweg: 'partner' },
+      // Die allgemeine Anfrage im Bereich Autoschlüssel ist nur als Frage zulässig (FA-06-U2).
+      payload: { anliegenArt: 'frage', auftragsweg: 'partner' },
       summary: [],
       uploads: [],
     });
