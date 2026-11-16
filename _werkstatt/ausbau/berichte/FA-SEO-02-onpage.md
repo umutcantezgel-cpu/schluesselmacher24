@@ -1,6 +1,6 @@
 # FA-SEO-02 · Onpage-Prüfung über alle Seiten des Builds
 
-Stand: 2026-11-16_04-21-46 · Basis: http://localhost:3000 · Grenze: 95
+Stand: 2026-11-16_05-16-14 · Basis: http://localhost:3000 · Grenze: 95
 
 Der Wert (0 bis 100) ist eine eigene Ableitung aus den Prüfungen dieses Werkzeugs (Stufe C). Er ist nicht der Seobility-Score und nicht mit ihm vergleichbar. Gewichte und Teilwertung sind Festlegungen; die Gewichtung von Seobility ist nicht bekannt (FA-RECHERCHE-05, OFFENE FRAGE 1). Ein gelber Befund zählt halb, ein roter gar nicht.
 

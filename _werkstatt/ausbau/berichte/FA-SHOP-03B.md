@@ -103,3 +103,19 @@ Prüfung nach der Nachbesserung (alle über die Datenweiche):
 - `sicher.sh --json -- npm run build`: erfolgreich (Exit 0).
 
 === ENDE FA-SHOP-03B · BEREIT ZUR RÜCKGABE ===
+
+## ABNAHME (Orchestrator, 16.11.2026)
+
+- **Prüfkette grün** (`werkzeuge/abnahme.sh FA-SHOP-03B`, zweiter Lauf nach den Korrekturen, Build mit `SM24_INDEXIERUNG=an`): Typprüfung, Lint, Unit 3.592 Tests in 230 Dateien, Datenbanktests 145 in 25 Dateien (mit der Migration `20261116_033126_einsende_sendung`), Build ohne Datenbank 178 von 178 Seiten. Onpage-Messung: 135 Seiten, Median 100,0, kein Befund. Prüfung „nichts Falsches bleibt übrig“ (`reste.mjs`): im ausgelieferten Stand kein Fund; offen bleibt nur der Vertragstext des Anwalts (MA-29).
+- **Migration geprüft:** `up` enthält nur CREATE TYPE, ADD COLUMN, einen Fremdschlüssel und einen Index.
+- **Gegenprüfung durch zwei unabhängige Prüfer** (einer als Angreifer): kein Weg für Fremde. Der Zugangsschlüssel wird vor allem anderen und unter der Sperre des Vorgangs noch einmal geprüft; unbekannter Vorgang und falscher Schlüssel ergeben dieselbe Meldung; die Nummer wird nur als Buchstaben und Ziffern gespeichert; der Verfolgungslink hat feste Ziele; der Statusabruf gibt nichts heraus, was der Berechtigte nicht kennt; ein echter Aufruf der DHL-Schnittstelle lässt sich nicht auslösen. Vier Schwächen im Zusammenspiel von Kunde und Team habe ich behoben (A-061):
+  1. Berichtigt der Kunde nur seine Nummer, bleibt ein Dienstleister stehen, den das Team gesetzt hat (vorher wurde er aus der Variante überschrieben, der Verfolgungslink zeigte dann zum falschen Dienst).
+  2. Ein Admin-Formular, das vor dem Eintrag des Kunden offen war, löscht seine Nummer beim Speichern nicht (Datenbanktest: Formular laden, Kunde trägt ein, altes Formular speichern, Nummer bleibt).
+  3. Löscht das Team die Nummer bewusst, steht „Sendungsnummer Ihrer Sendung an uns entfernt.“ im Verlauf.
+  4. An Vorgängen ohne Einsendung speichert auch ein Aufruf mit Team-Rechten keine Sendungsnummer (Datenbanktest). Ein ungültiger Wert wird im Admin weiter mit Meldung abgelehnt.
+  Dazu der Wortlaut: Admin-Beschreibung und Anleitung sagen jetzt, in welchen Statusmails die Nummer steht (Termin, Versand, Storno; nicht in der Mail mit dem Angebot).
+- **Freigegeben:** die Änderungen in `src/lib/actions/booking.ts` und im Statusformular (Eingriff F, außerhalb der Schreibrechte des Pakets): Statusabruf und Vorgangsseite zeigen denselben Stand.
+- **Browserprobe:** Einsendeformular erneut 15 von 15; Statusabruf lädt ohne Fehler. Die Vorgangsseite mit Sendungsnummer ist im Browser nicht geprüft, weil dafür ein Vorgang angelegt werden müsste; sie ist durch die Unit- und Datenbanktests belegt und gehört zu den Browserläufen mit lokaler Datenbank (FA-QA-01).
+- **Entschieden zu den offenen Fragen:** keine eigene Ratenregel für die Sendungsnummer (20 Versuche in 10 Minuten genügen); der Zugangsschlüssel bekommt kein Ablaufdatum (beträfe alle Kundenaktionen); das Label wird erst nach Vertrag und Prüfung in der Testumgebung gebaut.
+- **Für Menschen:** MA-50 (Vertrag mit DHL, Zugang zur Schnittstelle, Portoübernahme).
+

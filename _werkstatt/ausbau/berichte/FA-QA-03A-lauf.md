@@ -1,6 +1,6 @@
 # Prüfung „nichts Falsches bleibt übrig“ (reste.mjs)
 
-Stand: 2026-11-16T03:48:15.084Z · Prüfungen: demo, platzhalter, alt, kontakt, erreichbarkeit · Exit 1
+Stand: 2026-11-16T04:16:15.759Z · Prüfungen: demo, platzhalter, alt, kontakt, erreichbarkeit · Exit 1
 
 ## Quellen
 

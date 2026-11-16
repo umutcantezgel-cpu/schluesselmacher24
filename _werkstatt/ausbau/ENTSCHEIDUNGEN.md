@@ -392,3 +392,10 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Wortwahl: „Sendung“ statt „Umschlag“, weil DHL Paket die Empfehlung ist. Die Haftung steht überall als Zahl aus den Einstellungen.
 - Umkehrprobe: Die Startwerte entsprechen der Tabelle des Inhabers; ältere Vorgänge mit „versichert“ und „unversichert“ bleiben lesbar.
 
+## A-061 · Sendungsnummer des Kunden: wer was ändern darf (2026-11-16 05:10, FA-SHOP-03B, FA-13)
+- Der Kunde trägt die Nummer seiner Sendung an uns selbst ein, mit seinem signierten Zugang, solange die Sendung erwartet wird. Zwei unabhängige Prüfer fanden keinen Weg für Fremde, wohl aber vier Schwächen im Zusammenspiel von Kunde und Team.
+- Entschieden: (1) Berichtigt der Kunde nur seine Nummer, bleibt ein Versanddienstleister stehen, den das Team gesetzt hat; der Verfolgungslink führt sonst zum falschen Dienst. (2) Ein Admin-Formular, das vor dem Eintrag des Kunden offen war, löscht seine Nummer beim Speichern nicht; erkannt wird das am Zeitpunkt des Eintrags. (3) Löscht das Team die Nummer bewusst, steht das im Verlauf. (4) An Vorgängen ohne Einsendung speichert auch ein Aufruf mit Team-Rechten keine Sendungsnummer; ein ungültiger Wert wird im Admin weiter mit Meldung abgelehnt und nie still übergangen.
+- Der Verlaufseintrag bei Änderungen durch das Team ist für den Kunden sichtbar („Sendungsnummer Ihrer Sendung an uns eingetragen“ und so weiter). Das ist gewollt: Er sieht, dass die Werkstatt seine Angabe ergänzt hat.
+- Label: Der Anschluss DHL Paket bleibt abgeschaltet (kein Vertrag, G3, G5). Eingeschaltet wird er erst nach Vertrag, Prüfung in der Testumgebung und einem eigenen Ausbau, der das Label einmal erzeugt und am Vorgang ablegt (MA-50).
+- Umkehrprobe: neue, leere Felder am Vorgang; ohne Sendungsnummer verhält sich alles wie vorher.
+
