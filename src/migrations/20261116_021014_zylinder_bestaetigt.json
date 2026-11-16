@@ -18264,13 +18264,13 @@
           "name": "name",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "kennung": {
           "name": "kennung",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "beschreibung": {
           "name": "beschreibung",
@@ -21513,6 +21513,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "23095a25-dd64-4a98-9cf7-adde6691272a",
+  "id": "3b67aba0-011d-4312-8d96-bd22f4ce835f",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }

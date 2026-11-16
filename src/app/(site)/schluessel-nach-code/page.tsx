@@ -228,8 +228,8 @@ export default async function SchluesselNachCodePage() {
         <SectionHeading
           id="trefferliste-titel"
           nummer="01"
-          eyebrow="Codelinien"
-          title="Passende Codelinie finden"
+          eyebrow="Produkte"
+          title="Passenden Schlüssel finden"
           lead={
             page?.intro
             ?? 'Suchen Sie nach Anwendung, Schlüsseltyp, Hersteller oder Ihrem Code. Mit den Filtern grenzen Sie '
@@ -241,7 +241,7 @@ export default async function SchluesselNachCodePage() {
         <ShopListe lines={lines} hersteller={stamm} className="mt-6" />
         {/* Code passt zu keiner Linie (FA-11-17): die Anfrage steht dauerhaft neben den Produkten. */}
         <p className="mt-6 text-small text-foreground-muted">
-          Ihr Code passt zu keiner Linie?{' '}
+          Passt Ihr Code zu keinem Produkt, prüfen wir ihn auf Anfrage:{' '}
           <Link href={CODE_ANFRAGE_PFAD} prefetch={false} className="font-semibold text-primary hover:underline">
             Code anfragen
           </Link>
@@ -255,7 +255,7 @@ export default async function SchluesselNachCodePage() {
           id="kategorien-titel"
           nummer="02"
           eyebrow="Hersteller"
-          title="Codelinien nach Hersteller"
+          title="Schlüssel nach Hersteller"
           lead="Für jeden Hersteller gibt es eine eigene Seite mit seinen Systemen, Codeformaten und Preisen."
         />
         <ul className="mt-8 border-t border-border md:grid md:grid-cols-2 md:gap-x-gutter">
@@ -332,7 +332,7 @@ export default async function SchluesselNachCodePage() {
             </ButtonLink>
           ) : (
             <ButtonLink href="#codelinien" variant="outline">
-              Codelinie finden
+              Schlüssel finden
             </ButtonLink>
           )
         }

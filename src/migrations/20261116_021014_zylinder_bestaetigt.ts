@@ -21,8 +21,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_uuid" varchar
   );
   
-  ALTER TABLE "zylinderkatalog_hersteller" ALTER COLUMN "name" DROP NOT NULL;
-  ALTER TABLE "zylinderkatalog_hersteller" ALTER COLUMN "kennung" DROP NOT NULL;
   ALTER TABLE "zylinderkatalog_bauformen" ADD COLUMN "preis_nicht_bestaetigt" boolean DEFAULT false;
   ALTER TABLE "zylinderkatalog_funktionen" ADD COLUMN "preis_nicht_bestaetigt" boolean DEFAULT false;
   ALTER TABLE "zylinderkatalog_extras" ADD COLUMN "preis_nicht_bestaetigt" boolean DEFAULT false;
@@ -48,8 +46,6 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   ALTER TABLE "zylinderkatalog_hersteller" DROP CONSTRAINT "zylinderkatalog_hersteller_stamm_id_hersteller_id_fk";
   
   DROP INDEX "zylinderkatalog_hersteller_stamm_idx";
-  ALTER TABLE "zylinderkatalog_hersteller" ALTER COLUMN "name" SET NOT NULL;
-  ALTER TABLE "zylinderkatalog_hersteller" ALTER COLUMN "kennung" SET NOT NULL;
   ALTER TABLE "zylinderkatalog_bauformen" DROP COLUMN "preis_nicht_bestaetigt";
   ALTER TABLE "zylinderkatalog_funktionen" DROP COLUMN "preis_nicht_bestaetigt";
   ALTER TABLE "zylinderkatalog_extras" DROP COLUMN "preis_nicht_bestaetigt";

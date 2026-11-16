@@ -98,7 +98,7 @@ export async function generateMetadata(props: CodeLinePageProps): Promise<Metada
   const geladen = await laden(slug);
 
   if (!geladen) {
-    return { title: 'Codelinie nicht gefunden', robots: { index: false, follow: true } };
+    return { title: 'Schlüssel nicht gefunden', robots: { index: false, follow: true } };
   }
   const { line, texte } = geladen;
 

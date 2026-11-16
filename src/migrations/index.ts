@@ -20,7 +20,7 @@ import * as migration_20261115_191734_auftragsweg from './20261115_191734_auftra
 import * as migration_20261115_200046_vermittlung_auszahlung from './20261115_200046_vermittlung_auszahlung';
 import * as migration_20261115_210337_admin_alltag from './20261115_210337_admin_alltag';
 import * as migration_20261115_215557_shop_grundlage from './20261115_215557_shop_grundlage';
-import * as migration_20261115_233016_zylinder_bestaetigt from './20261115_233016_zylinder_bestaetigt';
+import * as migration_20261116_021014_zylinder_bestaetigt from './20261116_021014_zylinder_bestaetigt';
 
 export const migrations = [
   {
@@ -134,8 +134,8 @@ export const migrations = [
     name: '20261115_215557_shop_grundlage',
   },
   {
-    up: migration_20261115_233016_zylinder_bestaetigt.up,
-    down: migration_20261115_233016_zylinder_bestaetigt.down,
-    name: '20261115_233016_zylinder_bestaetigt'
+    up: migration_20261116_021014_zylinder_bestaetigt.up,
+    down: migration_20261116_021014_zylinder_bestaetigt.down,
+    name: '20261116_021014_zylinder_bestaetigt'
   },
 ];

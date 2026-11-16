@@ -927,7 +927,7 @@ export interface Kategorien {
    */
   ziel: string;
   /**
-   * Etwa „Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.“ Leer lassen, wenn es Produkte gibt.
+   * Etwa „Direkt bestellen können Sie hier derzeit nicht. Bitte fragen Sie bei uns an.“ Leer lassen, wenn es Produkte gibt.
    */
   hinweis?: string | null;
   bild?: {
@@ -1069,11 +1069,11 @@ export interface Hersteller {
    */
   name: string;
   /**
-   * Ein kurzer Satz, etwa an welchen Schlössern die Systeme sitzen. Nur, was Sie belegen können. Erscheint auf der Startseite nur bei Herstellern ohne Bereich; mit Bereich zeigt die Seite den Text des Bereichs.
+   * Ein kurzer Satz, etwa an welchen Schlössern die Systeme sitzen. Nur, was Sie belegen können. Erscheint auf der Herstellerseite bei Schlüssel nach Code und auf der Startseite bei Herstellern ohne Bereich; mit Bereich zeigt die Startseite den Text des Bereichs.
    */
   einsatz?: string | null;
   /**
-   * In welchen Bereichen der Hersteller erscheint, mit einem Satz je Bereich, wofür seine Systeme dort eingesetzt werden. Ohne Bereich erscheint er nur auf der Startseite. Jeden Bereich nur einmal anlegen. Nur, was Sie belegen können, ohne Preise.
+   * In welchen Bereichen der Hersteller erscheint, mit einem Satz je Bereich, wofür seine Systeme dort eingesetzt werden. Ohne Bereich erscheint er auf keiner dieser beiden Seiten. Jeden Bereich nur einmal anlegen. Nur, was Sie belegen können, ohne Preise.
    */
   bereiche?:
     | {
@@ -3529,13 +3529,13 @@ export interface Zylinderkatalog {
         stamm?: (number | null) | Hersteller;
         aktiv?: boolean | null;
         /**
-         * Nur für ältere Einträge ohne Auswahl aus der Liste. Besser: oben den Hersteller wählen.
+         * Kommt beim Speichern aus dem gewählten Hersteller. Bei älteren Einträgen der bisherige Name.
          */
-        name?: string | null;
+        name: string;
         /**
-         * z. B. „abus“.
+         * Kommt beim Speichern aus dem gewählten Hersteller, z. B. „abus“.
          */
-        kennung?: string | null;
+        kennung: string;
         beschreibung?: string | null;
         aufpreisJeZylinder?: number | null;
         /**

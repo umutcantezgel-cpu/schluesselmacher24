@@ -322,7 +322,7 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
             required={photoRequired}
             error={
               photoTouched && photoMissing
-                ? 'Für diese Codelinie brauchen wir ein Foto Ihrer Sicherungskarte. Die Karte zeigt, dass Sie diesen Schlüssel bestellen dürfen. Bitte fügen Sie das Foto hinzu.'
+                ? 'Für diesen Schlüssel brauchen wir ein Foto Ihrer Sicherungskarte. Die Karte zeigt, dass Sie diesen Schlüssel bestellen dürfen. Bitte fügen Sie das Foto hinzu.'
                 : undefined
             }
           />

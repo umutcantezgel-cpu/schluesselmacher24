@@ -161,7 +161,7 @@ export const Kategorien: CollectionConfig = {
           type: 'text',
           label: 'Hinweis, solange Produkte fehlen',
           maxLength: 80,
-          admin: { width: '33%', description: 'Etwa „Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.“ Leer lassen, wenn es Produkte gibt.' },
+          admin: { width: '33%', description: 'Etwa „Direkt bestellen können Sie hier derzeit nicht. Bitte fragen Sie bei uns an.“ Leer lassen, wenn es Produkte gibt.' },
         },
       ],
     },

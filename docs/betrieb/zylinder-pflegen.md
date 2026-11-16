@@ -21,7 +21,7 @@ Ein Hersteller steht nur einmal in **Shop › Hersteller**, in seiner eigenen Sc
    - **Bereich**: „Sperrschließungen“ (Seite `/gleichschliessende-zylinder`) oder „Elektronischer Zutritt“ (Seite `/elektronische-zutrittsloesungen`).
    - **Wofür die Systeme in diesem Bereich eingesetzt werden**: ein sachlicher Satz, höchstens 300 Zeichen. Nur, was Sie belegen können. Keine Preise und keine Produktreihen, die wir nicht verbauen.
    - Jeden Bereich nur einmal. Doppelte lehnt das Speichern ab.
-4. Ohne Bereich erscheint der Hersteller nur auf der Startseite, dann mit dem Text aus **Wofür die Systeme eingesetzt werden**.
+4. Ohne Bereich erscheint der Hersteller auf keiner der beiden Seiten. Die Startseite zeigt dann den Text aus **Wofür die Systeme eingesetzt werden**. Auf seiner Herstellerseite bei Schlüssel nach Code steht dieser Text immer, mit oder ohne Bereich.
 5. **Logo** nur mit Datei und dem Haken **Freigabe liegt vor**. Ohne Freigabe zeigt die Seite den Namen als Schrift.
 
 Die Texte für BKS, ABUS und BURG-WÄCHTER sind Startwerte aus Herstellerquellen. Vor dem Livegang gibt der Inhaber sie frei. Ändern Sie einen Text im Admin, bleibt Ihre Fassung; ein späteres Update überschreibt sie nicht. Leeren Sie die Bereiche bewusst, bleiben sie leer.
@@ -35,7 +35,7 @@ Reiter **Hersteller** im **Zylinderkatalog**:
 3. **Angeboten**: Erst mit diesem Haken fragt der Konfigurator nach dem Hersteller. Solange kein Eintrag angeboten wird, gibt es diesen Schritt nicht.
 4. **Aufpreis je Zylinder**, **Für Bauformen** (leer heißt alle) und **Zusatzkomponenten** mit Preis je Stück: nur mit bestätigten Preisen.
 
-Ältere Einträge ohne Auswahl aus der Liste zeigen noch die Felder **Name (älterer Eintrag)** und **Kennung (älterer Eintrag)**. Sie bleiben gültig. Wählen Sie bei Gelegenheit oben den Hersteller aus der Liste; die beiden Felder verschwinden dann.
+Die Felder **Name** und **Kennung** sind nur lesbar. Sie kommen beim Speichern aus dem gewählten Hersteller. Ältere Einträge ohne Auswahl aus der Liste behalten dort ihre bisherigen Werte und bleiben gültig. Wählen Sie bei Gelegenheit oben den Hersteller aus der Liste; beim Speichern übernimmt der Eintrag dann Name und Kennung von dort.
 
 Hinweis: Der Konfigurator zeigt die Herstellerwahl, sobald ein Eintrag angeboten wird. Ohne hinterlegte Herstellerpreise rechnet er mit Aufpreis 0. Ob Sie das so wollen, entscheidet der Inhaber, bevor Sie den Haken **Angeboten** setzen.
 

@@ -64,7 +64,7 @@ export const Hersteller: CollectionConfig = {
       admin: {
         description:
           'In welchen Bereichen der Hersteller erscheint, mit einem Satz je Bereich, wofür seine Systeme dort eingesetzt werden. '
-          + 'Ohne Bereich erscheint er nur auf der Startseite. Jeden Bereich nur einmal anlegen. Nur, was Sie belegen können, ohne Preise.',
+          + 'Ohne Bereich erscheint er auf keiner dieser beiden Seiten. Jeden Bereich nur einmal anlegen. Nur, was Sie belegen können, ohne Preise.',
       },
       validate: (wert: unknown) => {
         // Zeilen ohne gewählten Bereich meldet das Pflichtfeld „Bereich“ selbst, nicht als Doppel.

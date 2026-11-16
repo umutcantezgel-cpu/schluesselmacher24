@@ -23,6 +23,8 @@ import { ArtikelListe, type ListenArtikel } from './artikel-liste';
 const ROUTE = 'artikel';
 const TITEL = 'Artikel';
 const LEAD = 'Artikel rund um Schlüssel, Schloss und Tür zum direkten Bestellen.';
+/** Ohne Artikel verspricht der Kopf keine Bestellung (R4, R9): Die Seite führt in die Anfrage. */
+const LEAD_OHNE_ARTIKEL = 'Artikel rund um Schlüssel, Schloss und Tür. Zurzeit fragen Sie Artikel bei uns an.';
 const BESCHREIBUNG =
   'Standardartikel rund um Schlüssel, Schloss und Tür direkt bestellen: Eigenschaften, '
   + 'Lieferumfang und Staffelpreise auf einen Blick.';
@@ -141,9 +143,9 @@ export default async function ArtikelPage() {
       />
 
       <PageHeader
-        eyebrow={PROCESS_LABELS.direktkauf.label}
+        eyebrow={articles.length > 0 ? PROCESS_LABELS.direktkauf.label : 'Auf Anfrage'}
         title={titel}
-        lead={page?.subline || LEAD}
+        lead={articles.length > 0 ? page?.subline || LEAD : LEAD_OHNE_ARTIKEL}
         crumbs={crumbs}
       />
 

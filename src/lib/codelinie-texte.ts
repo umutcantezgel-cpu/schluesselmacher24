@@ -275,10 +275,10 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
     eigen.metaBeschreibung
     ?? imRahmen(
       lieferbar
-        ? `${art} für ${kurz} nach Code bestellen: Codelinie ${kennung}${marke ? `, ${marke}` : ''}.`
+        ? `${art} für ${kurz} nach Code bestellen: Schlüssel ${kennung}${marke ? `, ${marke}` : ''}.`
         : aufAnfrage
-          ? `${art} für ${kurz} nach Code anfragen: Codelinie ${kennung}${marke ? `, ${marke}` : ''}.`
-          : `${art} für ${kurz} nach Code: Codelinie ${kennung}${marke ? `, ${marke}` : ''}, derzeit nicht lieferbar.`,
+          ? `${art} für ${kurz} nach Code anfragen: Schlüssel ${kennung}${marke ? `, ${marke}` : ''}.`
+          : `${art} für ${kurz} nach Code: Schlüssel ${kennung}${marke ? `, ${marke}` : ''}, derzeit nicht lieferbar.`,
       [
         format ? `Codeformat: ${format}${beispiel ? `, z. B. ${beispiel}` : ''}.` : undefined,
         // Wie in der Einleitung und im Bestellformular; ein Satz, nicht zwei gleichbedeutende.
@@ -288,7 +288,7 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
           ? 'Sie geben den Code ein, wir fertigen danach.'
           : aufAnfrage
             ? 'Sie nennen den Code, wir prüfen ihn und melden uns.'
-            : 'Fragen Sie gern nach einer anderen Codelinie.',
+            : 'Fragen Sie gern nach einem anderen Schlüssel.',
       ],
     );
 
@@ -444,8 +444,7 @@ export function kategorieTexte(
   ratgeber?: Pick<Guide, 'body'> | null,
 ): GruppenTexte {
   const zahl = lines.length;
-  const nomen = zahl === 1 ? 'Codelinie' : 'Codelinien';
-  // Sichtbarer Text sagt „Produkt“; „Codelinie“ bleibt der Name im Code und in den Suchtexten.
+  // Sichtbarer Text und Suchtexte sagen „Produkt“; „Codelinie“ bleibt nur der Name im Code.
   const produkte = zahl === 1 ? 'Produkt' : 'Produkte';
   const typen = eindeutig(lines.map((line) => gepflegt(line.keyType)));
   const typText = typen.length ? aufzaehlung(typen) : 'Schlüssel';
@@ -466,11 +465,11 @@ export function kategorieTexte(
   const metaTitel = ersterPassender(titelVorschlaege);
 
   // Ohne Beträge (FA-SEO-01B); die Preisspanne steht auf der Seite.
-  const metaBeschreibung = imRahmen(`${typText} nach Code für ${name}: ${formatNumber(zahl)} ${nomen}.`, [
+  const metaBeschreibung = imRahmen(`${typText} nach Code für ${name}: ${formatNumber(zahl)} ${produkte}.`, [
     `Für ${aufzaehlung(anwendungen)}.`,
     'Ohne Einsendung des Originalschlüssels.',
     ...(lieferbar
-      ? ['Den Preis je Stück sehen Sie bei jeder Linie.', 'Sie geben den Code ein, wir fertigen danach.']
+      ? ['Den Preis je Stück sehen Sie bei jedem Produkt.', 'Sie geben den Code ein, wir fertigen danach.']
       : ['Sie nennen den Code in einer Anfrage, wir prüfen ihn und melden uns.']),
   ]);
 
@@ -505,7 +504,6 @@ export function kategorieTexte(
 /** Texte einer Herstellerseite — aus den Linien, bei denen dieser Hersteller gepflegt ist. */
 export function herstellerTexte(name: string, lines: CodeLine[]): GruppenTexte {
   const zahl = lines.length;
-  const nomen = zahl === 1 ? 'Codelinie' : 'Codelinien';
   const produkte = zahl === 1 ? 'Produkt' : 'Produkte';
   const familien = eindeutig(lines.map((line) => codelinienFamilie(line)));
   const typen = eindeutig(lines.map((line) => gepflegt(line.keyType)));
@@ -522,12 +520,12 @@ export function herstellerTexte(name: string, lines: CodeLine[]): GruppenTexte {
   const metaTitel = ersterPassender(titelVorschlaege);
   // Ohne Beträge (FA-SEO-01B); die Preisspanne steht auf der Seite.
   const metaBeschreibung = imRahmen(
-    `Schlüssel nach Code für Schlösser von ${name}: ${formatNumber(zahl)} ${nomen}.`,
+    `Schlüssel nach Code für Schlösser von ${name}: ${formatNumber(zahl)} ${produkte}.`,
     [
       typen.length ? `${aufzaehlung(typen)}.` : undefined,
       'Ohne Einsendung des Originalschlüssels.',
       ...(lieferbar
-        ? ['Den Preis je Stück sehen Sie bei jeder Linie.', 'Sie geben den Code ein, wir fertigen danach.']
+        ? ['Den Preis je Stück sehen Sie bei jedem Produkt.', 'Sie geben den Code ein, wir fertigen danach.']
         : ['Sie nennen den Code in einer Anfrage, wir prüfen ihn und melden uns.']),
     ],
   );

@@ -167,6 +167,23 @@ describe('kategorieTexte', () => {
     expect(a.absaetze.join(' ')).toContain('Möbelschlüssel');
     expect(a.fundstelle).toContain('Möbel-');
   });
+
+  it('nennt ohne lieferbares Produkt weder Preise noch Staffelpreise (R9)', () => {
+    const familie = codelinienFamilie(LINIEN[0]);
+    const lines = LINIEN.filter((l) => codelinienFamilie(l) === familie);
+    // Gegenprobe: Lieferbar nennt die Seite Preise, und die Musterdaten haben eine Staffel.
+    const lieferbar = kategorieTexte(familie, lines, RATGEBER).absaetze.join(' ');
+    expect(lieferbar).toContain('Preise je Stück');
+    expect(lieferbar).toContain('Staffelpreise gelten ab');
+    for (const availability of ['auf-anfrage', 'nicht-lieferbar'] as const) {
+      const t = kategorieTexte(familie, lines.map((l) => ({ ...l, availability })), RATGEBER);
+      const text = [t.einleitung, ...t.absaetze, t.metaBeschreibung].join(' ');
+      expect(text).not.toContain('Staffelpreis');
+      expect(text).not.toContain('Preise je Stück');
+      expect(text).not.toContain('Preis je Stück');
+      expect(text).not.toMatch(/Codelinie/);
+    }
+  });
 });
 
 describe('codelinienTexte nach Verfügbarkeit (FA-SHOP-01B)', () => {

@@ -56,7 +56,7 @@ Die Liste **Artikel** zeigt die Spalten Hersteller, System, Preis, Verfügbarkei
 3. **Übergeordnete Kategorie**: leer für eine Hauptkategorie. Für eine Unterkategorie hier die Hauptkategorie wählen.
 4. **Beschreibung**: ein bis zwei kurze Sätze für Kunden.
 5. **Wohin führt die Kategorie?** und **Ziel (Adresse)**: etwa „Schlüssel nach Code (Produktliste)“ mit `/schluessel-nach-code`. Gibt es noch keine Produkte, „Anfrage“ wählen und die Adresse der passenden Anfrage eintragen.
-6. **Hinweis, solange Produkte fehlen**: etwa „Hier gibt es bald Produkte. Bis dahin fragen Sie bitte bei uns an.“ Leer lassen, sobald es Produkte gibt.
+6. **Hinweis, solange Produkte fehlen**: etwa „Direkt bestellen können Sie hier derzeit nicht. Bitte fragen Sie bei uns an.“ Leer lassen, sobald es Produkte gibt.
 7. **Reihenfolge**: kleinere Zahl steht weiter vorn. **Im Shop zeigen**: Haken setzen, wenn Kunden die Kategorie sehen sollen.
 8. **Speichern**.
 

@@ -65,6 +65,18 @@ describe('Shop-Liste nach Hersteller und System', () => {
     expect(html).toContain('Lieferzeit 2 bis 4 Werktage');
   });
 
+  it('nennt „Preis je Stück“ im Gruppenkopf nur, wenn ein Produkt der Gruppe einen Preis zeigt (R9)', () => {
+    // Testwerk hat ein lieferbares Produkt, Musterbau hier nur eines auf Anfrage.
+    const gemischt = [linien[1], linien[2], { ...linien[0], availability: 'auf-anfrage' as const }];
+    const html = renderToStaticMarkup(<ShopListe lines={gemischt} hersteller={STAMM} />);
+    const testwerk = html.indexOf('id="hersteller-testwerk"');
+    const musterbau = html.indexOf('id="hersteller-musterbau"');
+    expect(testwerk).toBeGreaterThan(-1);
+    expect(musterbau).toBeGreaterThan(testwerk);
+    expect(html.slice(testwerk, musterbau)).toContain('Preis je Stück');
+    expect(html.slice(musterbau)).not.toContain('Preis je Stück');
+  });
+
   it('zeigt bei „nicht lieferbar“ und „auf Anfrage“ die Verfügbarkeit statt eines Preises', () => {
     const html = renderToStaticMarkup(<LinienListe lines={[linien[2], linien[3]]} />);
     expect(html).toContain('Derzeit nicht lieferbar');

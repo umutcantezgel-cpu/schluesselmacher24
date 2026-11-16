@@ -201,23 +201,33 @@ export const Zylinderkatalog: GlobalConfig = {
                   {
                     name: 'name',
                     type: 'text',
-                    label: 'Name (älterer Eintrag)',
+                    label: 'Name',
                     required: true,
+                    // Ohne admin.condition, damit die Spalte NOT NULL bleibt (G6); der Hook füllt den Wert aus dem Stamm.
+                    validate: (wert: unknown, { siblingData }: { siblingData?: { stamm?: unknown } }) =>
+                      (typeof wert === 'string' && wert.trim() !== '') || verweisId(siblingData?.stamm) !== undefined
+                        ? true
+                        : 'Bitte oben den Hersteller aus der Liste wählen.',
                     admin: {
                       width: '50%',
-                      condition: (_daten: unknown, zeile: { stamm?: unknown } | undefined) => verweisId(zeile?.stamm) === undefined,
-                      description: 'Nur für ältere Einträge ohne Auswahl aus der Liste. Besser: oben den Hersteller wählen.',
+                      readOnly: true,
+                      description: 'Kommt beim Speichern aus dem gewählten Hersteller. Bei älteren Einträgen der bisherige Name.',
                     },
                   },
                   slugFeld({
                     name: 'kennung',
-                    label: 'Kennung (älterer Eintrag)',
+                    label: 'Kennung',
                     unique: false,
                     index: false,
+                    validate: (wert: unknown, { siblingData }: { siblingData?: { stamm?: unknown } }) =>
+                      verweisId(siblingData?.stamm) !== undefined
+                      || (typeof wert === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(wert))
+                        ? true
+                        : 'Bitte oben den Hersteller aus der Liste wählen.',
                     admin: {
                       width: '50%',
-                      description: 'z. B. „abus“.',
-                      condition: (_daten: unknown, zeile: { stamm?: unknown } | undefined) => verweisId(zeile?.stamm) === undefined,
+                      readOnly: true,
+                      description: 'Kommt beim Speichern aus dem gewählten Hersteller, z. B. „abus“.',
                     },
                   }),
                 ] },
