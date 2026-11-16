@@ -1,6 +1,7 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { Suspense, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 import { FlowShell } from '@/components/flow/flow-shell';
 import { TextArea, TextInput } from '@/components/forms/controls';
@@ -34,16 +35,18 @@ import {
   TASTEN_OPTIONEN,
   gehaeuseZusammenfassung,
   kontaktAus,
+  mitVorbelegung,
   payloadAus,
   schrittGueltig,
   type GehaeuseDaten,
   type GehaeuseSchritt,
 } from './kern';
+import { LEISTUNG_OPTIONEN, LEISTUNG_PARAMETER, istLeistungWunsch, leistungAusAdresse, type GehaeuseLeistungKennung } from './leistung';
 
 const FLOW_ID = 'autoschluessel-gehaeuse-anfrage';
 
 const STEPS: FlowStep[] = [
-  { id: 'fahrzeug', title: 'Welches Fahrzeug gehört zum Schlüssel?', hint: 'Marke und Modell tragen Sie frei ein, so wie sie im Fahrzeugschein stehen.', short: 'Fahrzeug' },
+  { id: 'fahrzeug', title: 'Ihr Wunsch und Ihr Fahrzeug', hint: 'Wählen Sie zuerst, was wir für Sie tun sollen. Marke und Modell tragen Sie frei ein, so wie sie im Fahrzeugschein stehen.', short: 'Fahrzeug' },
   { id: 'tasten', title: 'Wie viele Tasten hat der Schlüssel?', hint: 'Die Anzahl hilft uns bei der Prüfung. Wenn Sie es nicht wissen, wählen Sie „Weiß ich nicht“.', short: 'Tasten' },
   { id: 'unterlagen', title: 'Fotos von Schlüssel und Fahrzeugschein', hint: 'Wir brauchen drei Fotos Ihres Schlüssels und den Fahrzeugschein. Den Fahrzeugschein können Sie auch als PDF hochladen.', short: 'Fotos' },
   { id: 'kontakt', title: 'Kontakt', hint: 'Hierhin schicken wir Ihre Rückmeldung.', short: 'Kontakt' },
@@ -56,6 +59,9 @@ const EXAMPLE_SCHEIN: ImageSlot = {
   note: 'Scharf und ohne Spiegelung. Die Angaben müssen lesbar sein.',
 };
 
+/** Hinweis, wenn beim Absenden die gewünschte Leistung fehlt (alter Zwischenstand, FA-SHOP-02C). */
+const LEISTUNG_OFFEN = 'Bitte wählen Sie, was wir für Sie tun sollen.';
+
 const SCHRITTE = naechsteSchritte({
   kind: 'anfrage',
   area: 'autoschluessel',
@@ -64,11 +70,30 @@ const SCHRITTE = naechsteSchritte({
 });
 
 /**
+ * Rahmen mit Vorbelegung aus der Adresse (FA-SHOP-02C): `?leistung=gehaeusetausch|reparatur|umbau` wählt die
+ * Leistung vor. Gelesen wird mit `useSearchParams` unter einer Suspense-Grenze, damit die Seite statisch bleibt;
+ * beim Vorrendern steht dasselbe Formular ohne Vorbelegung im HTML (Rückfall), im Browser übernimmt das Formular
+ * mit dem Wert aus der Adresse. Ein unbekannter Wert wird übergangen.
+ */
+export function AnfrageFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
+  return (
+    <Suspense fallback={<GehaeuseFormular hilfe={hilfe} vorbelegung="" />}>
+      <FormularMitAdresse hilfe={hilfe} />
+    </Suspense>
+  );
+}
+
+function FormularMitAdresse({ hilfe }: { hilfe?: HilfeKontakt }) {
+  const vorbelegung = leistungAusAdresse(useSearchParams().get(LEISTUNG_PARAMETER));
+  return <GehaeuseFormular hilfe={hilfe} vorbelegung={vorbelegung} />;
+}
+
+/**
  * Autoschlüssel-Gehäuse-Anfrage (G-20, E6-BAUMEISTER-02): fünf Schritte. Fahrzeugschein, die drei Schlüsselfotos
  * und eine kurze Beschreibung sind Pflicht (R13, FA-KERN-02); der Server prüft sie nach der Pflichtregel und
  * die Tastenzahl noch einmal. Die Zusammenfassung baut hier dieselbe Funktion wie die Vorschau.
  */
-export function AnfrageFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
+function GehaeuseFormular({ hilfe, vorbelegung }: { hilfe?: HilfeKontakt; vorbelegung: GehaeuseLeistungKennung | '' }) {
   const [fotos, setFotos] = useState<SchluesselFotos>(LEERE_SCHLUESSELFOTOS);
   const [fotoSchein, setFotoSchein] = useState<PickedFile[]>([]);
   const [submitting, setSubmitting] = useState(false);
@@ -81,16 +106,19 @@ export function AnfrageFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
     steps: STEPS,
     initial: INITIAL,
     version: 1,
-    validate: (daten, stepId) => schrittGueltig(daten, stepId as GehaeuseSchritt),
+    // Die Vorbelegung aus der Adresse zählt wie eine Antwort, bis der Kunde selbst wählt (FA-SHOP-02C).
+    validate: (daten, stepId) => schrittGueltig(mitVorbelegung(daten, vorbelegung), stepId as GehaeuseSchritt),
   });
 
-  const { data } = flow;
+  const data = useMemo(() => mitVorbelegung(flow.data, vorbelegung), [flow.data, vorbelegung]);
 
   // Fotos zählen nicht zum gespeicherten Zustand, deshalb wird die Weiter-Sperre hier ergänzt, auch
   // beim Absenden: Nach einem Neuladen fehlen sie (FA-KERN-02).
   const unterlagenFehlen = fotoSchein.length === 0 || !schluesselfotosVollstaendig(fotos);
   const fotosFehlen = (flow.step?.id === 'unterlagen' || flow.step?.id === 'absenden') && unterlagenFehlen;
   const shellFlow = { ...flow, canContinue: flow.canContinue && !fotosFehlen };
+  // Ein Zwischenstand von vor FA-SHOP-02C kann hinter dem ersten Schritt fortsetzen, ohne die Frage gesehen zu haben.
+  const leistungFehlt = !istLeistungWunsch(data.leistung);
   const dateienGewaehlt = fotoSchein.length > 0 || Object.values(fotos).some((liste) => liste.length > 0);
 
   const summary = useMemo(() => gehaeuseZusammenfassung(data), [data]);
@@ -150,7 +178,7 @@ export function AnfrageFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
   /* ---------- Ablauf ----------------------------------------------------- */
 
   const blockedHints: Record<string, string> = {
-    fahrzeug: `Bitte tragen Sie Marke (höchstens ${MAX_MARKE} Zeichen), Modell (höchstens ${MAX_MODELL} Zeichen) und ein Baujahr mit vier Ziffern ein.`,
+    fahrzeug: `Bitte wählen Sie, was wir für Sie tun sollen, und tragen Sie Marke (höchstens ${MAX_MARKE} Zeichen), Modell (höchstens ${MAX_MODELL} Zeichen) und ein Baujahr mit vier Ziffern ein.`,
     tasten: 'Bitte wählen Sie, wie viele Tasten der Schlüssel hat.',
     unterlagen: 'Bitte fügen Sie Vorderseite, Rückseite und Spitze Ihres Schlüssels und ein Foto oder PDF Ihres Fahrzeugscheins hinzu.',
     kontakt: `Bitte beschreiben Sie Ihr Anliegen kurz (mindestens ${BESCHREIBUNG_MIN} Zeichen) und füllen Sie Vorname, Nachname, E-Mail und Telefon aus. Die Postleitzahl hat fünf Ziffern, wenn Sie sie angeben.`,
@@ -166,7 +194,7 @@ export function AnfrageFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
       submitLabel="Anfrage absenden"
       onSubmit={absenden}
       submitting={submitting}
-      blockedHint={blockedHints[flow.step?.id ?? '']}
+      blockedHint={flow.step?.id === 'absenden' && leistungFehlt ? LEISTUNG_OFFEN : blockedHints[flow.step?.id ?? '']}
       ungesichert={dateienGewaehlt}
       mitDateien
     >
@@ -174,6 +202,21 @@ export function AnfrageFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
 
       {flow.step?.id === 'fahrzeug' && (
         <div className="grid max-w-3xl gap-5 sm:grid-cols-2">
+          {/* Gewünschte Leistung (FA-SHOP-02C): Pflicht, mit „Weiß ich noch nicht“ als ehrlichem Ausweg. */}
+          <fieldset className="space-y-3 sm:col-span-2">
+            <legend className="text-body font-semibold text-foreground">Was sollen wir für Sie tun?</legend>
+            {LEISTUNG_OPTIONEN.map((option) => (
+              <OptionCard
+                key={option.wert}
+                name="leistung"
+                value={option.wert}
+                checked={data.leistung === option.wert}
+                onSelect={() => flow.set('leistung', option.wert)}
+                title={option.titel}
+                description={option.satz}
+              />
+            ))}
+          </fieldset>
           <div className="sm:col-span-2">
             <Field label="Marke" required hint={`Höchstens ${MAX_MARKE} Zeichen.`}>
               {({ id, describedBy, invalid }) => (
@@ -339,6 +382,9 @@ export function AnfrageFormular({ hilfe }: { hilfe?: HilfeKontakt }) {
 
       {flow.step?.id === 'absenden' && (
         <div className="max-w-3xl space-y-6">
+          {leistungFehlt && (
+            <OffenerSchritt text={LEISTUNG_OFFEN} schritt="Fahrzeug" onGehe={() => flow.goTo('fahrzeug')} />
+          )}
           {unterlagenFehlen && (
             <OffenerSchritt text={blockedHints.absenden} schritt="Fotos" onGehe={() => flow.goTo('unterlagen')} />
           )}

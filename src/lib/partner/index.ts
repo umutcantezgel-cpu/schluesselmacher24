@@ -3,3 +3,4 @@ export * from './bewerbung';
 export * from './vermittlung';
 export * from './abrechnung';
 export * from './sichtbarkeit';
+export * from './leistungen';

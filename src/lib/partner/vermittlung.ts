@@ -10,6 +10,7 @@ import type { BusinessRecord, PaymentInfo, PayoutStatus, ReferralStatus } from '
 
 import { abrechnen, type Abrechnungsmodell, type Provision } from './abrechnung';
 import type { BewerbungStatus } from './bewerbung';
+import { decktAuftragsart } from './leistungen';
 
 /** Erlaubte Wechsel. Ein Schritt zurück auf „geprüft“ geht bis zur Ausführung (anderer Partner). */
 export const VERMITTLUNG_UEBERGAENGE: Readonly<Record<ReferralStatus, readonly ReferralStatus[]>> = {
@@ -57,9 +58,12 @@ export interface PartnerKurz {
   auftragsarten: string[];
 }
 
-/** Ob ein Partner diesen Auftrag bekommen darf (MA-16: nur freigeschaltet, nicht pausiert, nur passende Art). */
+/**
+ * Ob ein Partner diesen Auftrag bekommen darf (MA-16: nur freigeschaltet, nicht pausiert, nur passende Art).
+ * Den Sammelwert „Autoschlüssel vor Ort“ deckt jede der neun Leistungen ab (FA-PLATTFORM-01).
+ */
 export function darfVermitteln(partner: PartnerKurz, auftragsart: string): boolean {
-  return partner.status === 'freigeschaltet' && partner.auftragsarten.includes(auftragsart);
+  return partner.status === 'freigeschaltet' && decktAuftragsart(partner.auftragsarten, auftragsart);
 }
 
 /** Zahlung eingegangen, auch wenn danach ein Teil erstattet wurde. */

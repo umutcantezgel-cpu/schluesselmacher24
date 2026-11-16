@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest';
 import { STANDARD_VARIANTEN, empfehlungFuer } from '@/lib/versand/varianten';
 import type { EinsendeEinstellungen } from '@/lib/types';
 
+import { ANFRAGE_PFAD, anfrageAdresse } from './anfrage/leistung';
 import { GEHAEUSE_LEISTUNGEN, LEISTUNGEN_ABLAUF_VERWEIS, versandFuerElektronik } from './leistungen';
 
 /* Dienstleistungen mit Einsendung (FA-SHOP-02B, Punkt 2; FA-14-04). */
@@ -22,7 +23,7 @@ describe('Gehäuse-Leistungen', () => {
   });
 
   it('jede Leistung nennt ihre Bedingung; keine Zusage von Preis, Zahlungslink oder Frist (G9, A-036, R9)', () => {
-    const texte = [...GEHAEUSE_LEISTUNGEN.flatMap((l) => [l.titel, l.satz, l.bedingung]), LEISTUNGEN_ABLAUF_VERWEIS];
+    const texte = [...GEHAEUSE_LEISTUNGEN.flatMap((l) => [l.titel, l.satz, l.bedingung, l.verweis]), LEISTUNGEN_ABLAUF_VERWEIS];
     for (const l of GEHAEUSE_LEISTUNGEN) expect(l.bedingung.trim().length, l.titel).toBeGreaterThan(0);
     for (const text of texte) {
       expect(text).not.toMatch(/€|\d+\s?(tage|werktage|stunden)|zahlungslink|kostenlos|versichert|garantiert|immer/i);
@@ -38,6 +39,25 @@ describe('Gehäuse-Leistungen', () => {
     expect(seite).not.toContain('GEHAEUSE_ABLAUF');
     // Der Vorspann nennt den Preis nach den Fotos, nicht erst nach dem Einschicken.
     expect(seite).toContain('wenn wir die Fotos Ihres Schlüssels gesehen haben');
+  });
+
+  it('jede Leistung hat einen eigenen Verweis in die Anfrage mit ihrer Kennung; der Behelfssatz ist entfallen (FA-SHOP-02C)', () => {
+    expect(GEHAEUSE_LEISTUNGEN.map((l) => [l.kennung, l.verweis, anfrageAdresse(l.kennung)])).toEqual([
+      ['gehaeusetausch', 'Gehäusetausch anfragen', '/autoschluessel/gehaeuse/anfrage?leistung=gehaeusetausch'],
+      ['reparatur', 'Reparatur anfragen', '/autoschluessel/gehaeuse/anfrage?leistung=reparatur'],
+      ['umbau', 'Umbau anfragen', '/autoschluessel/gehaeuse/anfrage?leistung=umbau'],
+    ]);
+    const seite = readFileSync(path.join(__dirname, 'page.tsx'), 'utf8');
+    // Innerhalb der Liste der Leistungen: Verweis mit der Kennung der jeweiligen Leistung.
+    const liste = seite.slice(seite.indexOf('GEHAEUSE_LEISTUNGEN.map'), seite.indexOf('LEISTUNGEN_ABLAUF_VERWEIS}'));
+    expect(liste).toContain('href={anfrageAdresse(leistung.kennung)}');
+    expect(liste).toContain('{leistung.verweis}');
+    // Der allgemeine Knopf „Anfrage stellen“ bleibt ohne Parameter.
+    // Die ausgeschriebene Adresse der Seite ist dieselbe wie an der einen Stelle `ANFRAGE_PFAD`.
+    expect(seite.match(/const ANFRAGE = '([^']+)';/)?.[1]).toBe(ANFRAGE_PFAD);
+    expect(anfrageAdresse()).toBe(ANFRAGE_PFAD);
+    expect(seite.match(/<ButtonLink href=\{ANFRAGE\}[^>]*>\s*Anfrage stellen/g)?.length).toBeGreaterThanOrEqual(2);
+    expect(LEISTUNGEN_ABLAUF_VERWEIS).not.toMatch(/Schreiben Sie in der Anfrage/);
   });
 });
 

@@ -11,9 +11,12 @@ import { PasstDazu } from '@/components/seo/passt-dazu';
 import { HAFTUNG_HINWEIS, VERPACKUNG_HINWEIS, haftungSatz } from '@/lib/versand/varianten';
 
 import { UmbauBeispiele } from '../customizing/umbau-beispiele';
+import { anfrageAdresse } from './anfrage/leistung';
 import { GEHAEUSE_LEISTUNGEN, LEISTUNGEN_ABLAUF_VERWEIS, versandFuerElektronik } from './leistungen';
 
 const ROUTE = 'autoschluessel/gehaeuse';
+// Allgemeiner Knopf „Anfrage stellen“, ohne Vorbelegung. Als Text ausgeschrieben, weil die Prüfung auf Waisen
+// (`waisen.test.ts`) Verweise im Quelltext liest; `leistungen.test.ts` hält ihn gleich `ANFRAGE_PFAD`.
 const ANFRAGE = '/autoschluessel/gehaeuse/anfrage';
 const CRUMBS = [
   { href: '/autoschluessel', label: 'Autoschlüssel' },
@@ -117,6 +120,12 @@ export default async function AutoschluesselGehaeusePage() {
               <h3 className="text-title-sm font-semibold text-foreground">{leistung.titel}</h3>
               <p className="text-body leading-relaxed text-foreground-muted">{leistung.satz}</p>
               <p className="text-small leading-relaxed text-foreground">{leistung.bedingung}</p>
+              {/* Eigener Verweis mit Vorbelegung (FA-SHOP-02C): Die Anfrage nimmt die Leistung als Angabe mit. */}
+              <p className="mt-auto pt-2">
+                <ButtonLink href={anfrageAdresse(leistung.kennung)} variant="outline" pfeil>
+                  {leistung.verweis}
+                </ButtonLink>
+              </p>
             </li>
           ))}
         </ul>

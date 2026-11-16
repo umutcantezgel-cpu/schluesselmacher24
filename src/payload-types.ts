@@ -326,6 +326,15 @@ export interface Vorgaenge {
      */
     auftragsart?:
       | (
+          | 'schluessel-nachmachen'
+          | 'programmierung-anlernen'
+          | 'schluesselverlust'
+          | 'keyless-smart-key'
+          | 'transponder'
+          | 'funk'
+          | 'fahrzeugoeffnung'
+          | 'reparatur-gehaeuse'
+          | 'motorrad-weitere'
           | 'autoschluessel-vor-ort'
           | 'schluesseldienst-vor-ort'
           | 'montage-zylinder'
@@ -614,6 +623,7 @@ export interface Partnerbetriebe {
   ansprechpartner?: string | null;
   email?: string | null;
   telefon?: string | null;
+  plz?: string | null;
   ort: string;
   status:
     | 'eingegangen'
@@ -636,8 +646,20 @@ export interface Partnerbetriebe {
     postleitzahlen?: string | null;
     radiusKm?: number | null;
   };
+  /**
+   * Nur Autoschlüssel und Fahrzeugschlüssel. Wählbar sind die neun Leistungen; Werte mit „früher“ bleiben lesbar, lassen sich aber nicht neu setzen.
+   */
   auftragsarten?:
     | (
+        | 'schluessel-nachmachen'
+        | 'programmierung-anlernen'
+        | 'schluesselverlust'
+        | 'keyless-smart-key'
+        | 'transponder'
+        | 'funk'
+        | 'fahrzeugoeffnung'
+        | 'reparatur-gehaeuse'
+        | 'motorrad-weitere'
         | 'autoschluessel-vor-ort'
         | 'schluesseldienst-vor-ort'
         | 'montage-zylinder'
@@ -646,6 +668,27 @@ export interface Partnerbetriebe {
         | 'einbau-elektronik'
       )[]
     | null;
+  werkstatt?: {
+    vorhanden?: ('ja' | 'nein') | null;
+    mobil?: boolean | null;
+    anschrift?: string | null;
+  };
+  geraete?:
+    | {
+        art: 'fraesmaschine' | 'programmiergeraet' | 'diagnose';
+        hersteller?: string | null;
+        typ?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  erfahrung?: {
+    jahre?: number | null;
+    schwerpunkte?: string | null;
+    /**
+     * Marken und Baujahre laut Betrieb, freie Angabe.
+     */
+    fahrzeugabdeckung?: string | null;
+  };
   pruefung?: {
     gewerbeGeprueft?: boolean | null;
     identitaetGeprueft?: boolean | null;
@@ -663,6 +706,15 @@ export interface Partnerbetriebe {
   provisionen?:
     | {
         auftragsart:
+          | 'schluessel-nachmachen'
+          | 'programmierung-anlernen'
+          | 'schluesselverlust'
+          | 'keyless-smart-key'
+          | 'transponder'
+          | 'funk'
+          | 'fahrzeugoeffnung'
+          | 'reparatur-gehaeuse'
+          | 'motorrad-weitere'
           | 'autoschluessel-vor-ort'
           | 'schluesseldienst-vor-ort'
           | 'montage-zylinder'
@@ -683,6 +735,9 @@ export interface Partnerbetriebe {
     hasNextPage?: boolean;
     totalDocs?: number;
   };
+  /**
+   * Beim Verknüpfen füllt der Server leere Felder aus der Bewerbung.
+   */
   bewerbung?: (number | null) | Vorgaenge;
   notiz?: string | null;
   /**
@@ -2629,6 +2684,7 @@ export interface PartnerbetriebeSelect<T extends boolean = true> {
   ansprechpartner?: T;
   email?: T;
   telefon?: T;
+  plz?: T;
   ort?: T;
   status?: T;
   abrechnungsmodell?: T;
@@ -2639,6 +2695,28 @@ export interface PartnerbetriebeSelect<T extends boolean = true> {
         radiusKm?: T;
       };
   auftragsarten?: T;
+  werkstatt?:
+    | T
+    | {
+        vorhanden?: T;
+        mobil?: T;
+        anschrift?: T;
+      };
+  geraete?:
+    | T
+    | {
+        art?: T;
+        hersteller?: T;
+        typ?: T;
+        id?: T;
+      };
+  erfahrung?:
+    | T
+    | {
+        jahre?: T;
+        schwerpunkte?: T;
+        fahrzeugabdeckung?: T;
+      };
   pruefung?:
     | T
     | {

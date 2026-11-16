@@ -8,12 +8,16 @@ import { LIEFERLAND } from '@/lib/kasse';
 import { beschreibungGueltig, BESCHREIBUNG_MAX, BESCHREIBUNG_MIN } from '@/lib/wege/nachweis';
 import type { ContactDetails, SummarySection } from '@/lib/types';
 
+import { LEISTUNG_LABEL, LEISTUNG_TEXT, istLeistungWunsch, type GehaeuseLeistungKennung, type LeistungWunsch } from './leistung';
+
 export { BESCHREIBUNG_MAX, BESCHREIBUNG_MIN };
 
 export type TastenAntwort = '1-2' | '3-4' | 'unklar';
 export type GehaeuseSchritt = 'fahrzeug' | 'tasten' | 'unterlagen' | 'kontakt' | 'absenden';
 
 export interface GehaeuseDaten {
+  /** Gewünschte Leistung (FA-SHOP-02C), Pflicht im Schritt Fahrzeug; „unklar“ ist der ehrliche Ausweg. */
+  leistung: LeistungWunsch | '';
   marke: string;
   modell: string;
   baujahr: string;
@@ -30,6 +34,7 @@ export interface GehaeuseDaten {
 }
 
 export const INITIAL: GehaeuseDaten = {
+  leistung: '',
   marke: '',
   modell: '',
   baujahr: '',
@@ -75,12 +80,15 @@ export function baujahrGueltig(text: string, jahr: number = new Date().getFullYe
 /**
  * Prüft je Schritt die Angaben. Fotos stehen nicht hier: das Formular verlangt sie selbst, der Server
  * prüft sie nach der Pflichtregel (FA-KERN-02). Die kurze Beschreibung gehört zum Schritt Kontakt.
+ * Beim Absenden muss die gewünschte Leistung beantwortet sein: Ein Zwischenstand von vor FA-SHOP-02C setzt
+ * am gespeicherten Schritt fort und hat den ersten Schritt mit der Frage nie gesehen.
  */
 export function schrittGueltig(daten: GehaeuseDaten, schritt: GehaeuseSchritt, jahr: number = new Date().getFullYear()): boolean {
   switch (schritt) {
     case 'fahrzeug':
       return (
-        daten.marke.trim().length >= 1
+        istLeistungWunsch(daten.leistung)
+        && daten.marke.trim().length >= 1
         && daten.marke.trim().length <= MAX_MARKE
         && daten.modell.trim().length >= 1
         && daten.modell.trim().length <= MAX_MODELL
@@ -97,6 +105,8 @@ export function schrittGueltig(daten: GehaeuseDaten, schritt: GehaeuseSchritt, j
         && daten.telefon.replace(/\D/g, '').length >= 6
         && (!daten.plz.trim() || /^\d{5}$/.test(daten.plz.trim()))
       );
+    case 'absenden':
+      return istLeistungWunsch(daten.leistung);
     default:
       return true;
   }
@@ -113,6 +123,7 @@ export function gehaeuseZusammenfassung(daten: GehaeuseDaten): SummarySection[] 
         { label: 'Modell', value: daten.modell.trim() || 'fehlt noch' },
         { label: 'Baujahr', value: daten.baujahr.trim() || 'fehlt noch' },
         { label: 'Tasten am Schlüssel', value: daten.tasten ? TASTEN_TEXT[daten.tasten] : 'noch offen' },
+        { label: LEISTUNG_LABEL, value: istLeistungWunsch(daten.leistung) ? LEISTUNG_TEXT[daten.leistung] : 'noch offen' },
         { label: 'Ihr Anliegen', value: daten.beschreibung.trim() || 'fehlt noch' },
       ],
     },
@@ -132,6 +143,14 @@ export function gehaeuseZusammenfassung(daten: GehaeuseDaten): SummarySection[] 
   ];
 }
 
+/**
+ * Vorbelegung aus der Adresse (`?leistung=`): gilt nur, solange der Kunde selbst noch nichts gewählt hat. Sie wird
+ * nicht gespeichert; erst die eigene Wahl steht im Zwischenstand.
+ */
+export function mitVorbelegung(daten: GehaeuseDaten, vorbelegung: GehaeuseLeistungKennung | ''): GehaeuseDaten {
+  return daten.leistung || !vorbelegung ? daten : { ...daten, leistung: vorbelegung };
+}
+
 /** Kontakt für den Vorgang; das Land ist immer das Lieferland. */
 export function kontaktAus(daten: GehaeuseDaten): ContactDetails {
   return {
@@ -146,7 +165,11 @@ export function kontaktAus(daten: GehaeuseDaten): ContactDetails {
   };
 }
 
-/** Nutzlast des Vorgangs. Die Pflichtfrage ist beim Absenden beantwortet; „unklar“ ist nur der Rückfall. */
+/**
+ * Nutzlast des Vorgangs. Die Pflichtfrage ist beim Absenden beantwortet (`schrittGueltig`, Schritt absenden). Ohne
+ * gültige Antwort geht die Leistung leer mit; erst der Server setzt dann „unklar“. Der Browser macht aus einer nicht
+ * gestellten Frage keine Antwort.
+ */
 export function payloadAus(daten: GehaeuseDaten) {
   return {
     quelle: 'gehaeuse',
@@ -154,6 +177,7 @@ export function payloadAus(daten: GehaeuseDaten) {
     modell: daten.modell.trim(),
     baujahr: Number(daten.baujahr.trim()),
     tasten: daten.tasten || 'unklar',
+    leistung: istLeistungWunsch(daten.leistung) ? daten.leistung : '',
     beschreibung: daten.beschreibung.trim(),
   };
 }

@@ -33,7 +33,8 @@ export { reiheName };
 
 export const TEILE_PFAD = '/autoschluessel/gehaeuse/teile';
 export const GEHAEUSE_PFAD = '/autoschluessel/gehaeuse';
-export const GEHAEUSE_ANFRAGE_PFAD = '/autoschluessel/gehaeuse/anfrage';
+/** Adresse der Gehäuse-Anfrage: an einer Stelle in `anfrage/leistung.ts` (FA-SHOP-02C). */
+export { ANFRAGE_PFAD as GEHAEUSE_ANFRAGE_PFAD } from '../anfrage/leistung';
 
 /** Anker der Liste: Filterverweise springen zurück zur Liste. */
 export const LISTE_ANKER = 'teile-liste';

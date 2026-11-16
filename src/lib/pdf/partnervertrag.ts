@@ -5,6 +5,8 @@
  * eingebaute Gliederung ohne Rechtstext, und jedes Blatt trägt „Entwurf, nicht unterschreiben“ (R10).
  */
 
+import { auftragsartName } from '../partner/leistungen';
+
 import type { Blatt, BlattAbschnitt, BlattZeile } from './blatt';
 
 /** Platzhalter, die eine Vorlage verwenden darf, mit Bedeutung (für die Anleitung an den Anwalt). */
@@ -76,15 +78,6 @@ export const PARTNERVERTRAG_VORLAGE_PLATZHALTER: PartnervertragVorlage = {
 
 export const PARTNERVERTRAG_ENTWURF_HINWEIS = 'Entwurf zur anwaltlichen Prüfung, nicht unterschreiben.';
 
-const AUFTRAGSART_NAMEN: Record<string, string> = {
-  'autoschluessel-vor-ort': 'Autoschlüssel vor Ort',
-  'schluesseldienst-vor-ort': 'Schlüsseldienst vor Ort (Tür, Schloss, Zylinder)',
-  'montage-zylinder': 'Montage Zylinder',
-  'montage-schliessanlage': 'Montage Schließanlage',
-  'beratung-vor-ort': 'Beratung vor Ort',
-  'einbau-elektronik': 'Einbau elektronischer Systeme',
-};
-
 const MODELL_NAMEN: Record<string, string> = {
   A: 'A: Der Partner rechnet mit dem Kunden ab, SCHLÜSSELMACHER24 stellt die Provision in Rechnung',
   B: 'B: Der Kunde zahlt an SCHLÜSSELMACHER24, der Partner erhält den Betrag abzüglich Provision',
@@ -145,7 +138,7 @@ export function partnervertragWerte(partner: PartnervertragPartner, anbieter: Pa
     telefon: partner.telefon?.trim() ?? '',
     kennung: partner.kennung?.trim() || String(partner.id),
     einsatzgebiet: einsatzgebietText(partner.einsatzgebiet),
-    auftragsarten: (partner.auftragsarten ?? []).map((a) => AUFTRAGSART_NAMEN[a] ?? a).join(', '),
+    auftragsarten: (partner.auftragsarten ?? []).map((a) => auftragsartName(a)).join(', '),
     abrechnungsmodell: MODELL_NAMEN[partner.abrechnungsmodell ?? 'A'] ?? '',
     anbieter: anbieter.legalName?.trim() ?? '',
     anbieter_anschrift: [anbieter.street, [anbieter.postalCode, anbieter.city].filter(Boolean).join(' ')].filter((t) => t?.trim()).join(', '),
@@ -222,7 +215,7 @@ export function partnervertragBlatt({
             kopf: ['Auftragsart', 'Provision'],
             breiten: [0.7, 0.3],
             rechts: [1],
-            zeilen: provisionen.map((p) => [AUFTRAGSART_NAMEN[p.auftragsart] ?? p.auftragsart, `${String(p.prozent).replace('.', ',')} %`]),
+            zeilen: provisionen.map((p) => [auftragsartName(p.auftragsart), `${String(p.prozent).replace('.', ',')} %`]),
           },
         }
       : {

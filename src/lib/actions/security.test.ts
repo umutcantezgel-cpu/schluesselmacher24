@@ -182,6 +182,24 @@ const contact = {
   country: 'Deutschland',
 };
 
+/** Vollständige Partner-Bewerbung eines erfundenen Betriebs (FA-PLATTFORM-01). */
+const PARTNER_BEWERBUNG = {
+  firma: 'Testbetrieb Fahrzeugschlüssel GmbH',
+  plz: '35576',
+  ort: 'Wetzlar',
+  einsatzPostleitzahlen: '',
+  einsatzradiusKm: 40,
+  mobileEinsaetze: true,
+  werkstatt: { vorhanden: true, anschrift: 'Teststraße 1' },
+  leistungen: ['transponder', 'schluessel-nachmachen'],
+  geraete: [{ art: 'programmiergeraet', hersteller: 'Testhersteller', typ: 'T1' }],
+  erfahrung: { jahre: 5, schwerpunkte: '', fahrzeugabdeckung: '' },
+  qualifikationen: '',
+  nachweisAnzahl: 0,
+  datenschutz: true,
+  datenschutzAm: '2026-11-16T10:00:00.000Z',
+};
+
 /** Pflicht-Zustimmungen des Termin-Assistenten. */
 const zustimmungen = { terms: true, deposit: true, authorization: true, earlyStart: true };
 
@@ -233,10 +251,45 @@ describe('submitRecord', () => {
     const bewerbung = (area: 'service-und-termin' | 'autoschluessel', payload: Record<string, unknown>) =>
       submitRecord({ kind: 'partner', area, process: 'gefuehrte-anfrage', contact, payload, summary: [], uploads: [] });
     expect((await bewerbung('service-und-termin', {})).ok).toBe(false);
-    expect((await bewerbung('autoschluessel', { datenschutz: true })).ok).toBe(false);
+    expect((await bewerbung('autoschluessel', { ...PARTNER_BEWERBUNG, datenschutz: true })).ok).toBe(false);
+    expect((await bewerbung('service-und-termin', { ...PARTNER_BEWERBUNG, datenschutz: false })).ok).toBe(false);
     expect(stored).toHaveLength(0);
-    expect((await bewerbung('service-und-termin', { datenschutz: true })).ok).toBe(true);
+    expect((await bewerbung('service-und-termin', PARTNER_BEWERBUNG)).ok).toBe(true);
     expect(stored[0]).toMatchObject({ kind: 'partner', area: 'service-und-termin' });
+  });
+
+  it('lehnt eine Partner-Bewerbung mit Türöffnung als Leistung ab (FA-PLATTFORM-01, FA-07-02)', async () => {
+    const ergebnis = await submitRecord({
+      kind: 'partner',
+      area: 'service-und-termin',
+      process: 'gefuehrte-anfrage',
+      contact: { ...contact, company: 'Testbetrieb Tür GmbH' },
+      payload: { ...PARTNER_BEWERBUNG, leistungen: ['schluessel-nachmachen', 'tueroeffnung'] },
+      summary: [],
+      uploads: [],
+    });
+    expect(ergebnis.ok).toBe(false);
+    expect(ergebnis.error).toContain('nur Autoschlüssel und Fahrzeugschlüssel');
+    expect(stored).toHaveLength(0);
+  });
+
+  it('prüft die Pflichtfelder der Partner-Bewerbung auf dem Server und baut die Daten neu', async () => {
+    const ohneRegion = await submitRecord({
+      kind: 'partner', area: 'service-und-termin', process: 'gefuehrte-anfrage', contact,
+      payload: { ...PARTNER_BEWERBUNG, plz: '355', ort: '' }, summary: [], uploads: [],
+    });
+    expect(ohneRegion.ok).toBe(false);
+    expect(ohneRegion.error).toContain('Postleitzahl des Betriebs');
+    const ok = await submitRecord({
+      kind: 'partner', area: 'service-und-termin', process: 'gefuehrte-anfrage', contact,
+      payload: { ...PARTNER_BEWERBUNG, fremd: 'wird verworfen' },
+      summary: [{ title: 'Gefälscht', rows: [{ label: 'Leistungen', value: 'Türöffnung' }] }],
+      uploads: [],
+    });
+    expect(ok.ok).toBe(true);
+    expect(stored[0].payload).not.toHaveProperty('fremd');
+    expect(stored[0].payload).toMatchObject({ leistungen: ['schluessel-nachmachen', 'transponder'], einsatzradiusKm: 40 });
+    expect(JSON.stringify(stored[0].summary)).not.toContain('Türöffnung');
   });
 
   it('baut Anfragen aus dem Schließplan-Planer auf dem Server neu (E5-OPUS-03)', async () => {
@@ -1005,6 +1058,45 @@ describe('submitRecord: Pflichtunterlagen je Weg (FA-KERN-02, A-048)', () => {
     }
     expect((await submitRecord({ ...gehaeuse, uploads: [fahrzeugschein, ...dreiFotos] })).ok).toBe(true);
     expect(stored[0].payload.tasten).toBe('1-2');
+  });
+
+  it('nimmt beim Gehäuse nur die vier Leistungen an; ein erfundener Wert wird „unklar“, auch in der Zusammenfassung (FA-SHOP-02C)', async () => {
+    const summary = [
+      {
+        title: 'Fahrzeug und Schlüssel',
+        rows: [
+          { label: 'Marke', value: 'Testmarke' },
+          { label: 'Gewünschte Leistung', value: 'Testwunsch aus dem Browser' },
+          { label: 'Ihr Anliegen', value: BESCHREIBUNG },
+        ],
+      },
+    ];
+    const faelle: Array<[unknown, string, string]> = [
+      ['gehaeusetausch', 'gehaeusetausch', 'Gehäusetausch im Einsendeservice'],
+      ['reparatur', 'reparatur', 'Reparatur (Tasten, Mechanik)'],
+      ['umbau', 'umbau', 'Umbau auf anderes Gehäuse (Customizing)'],
+      ['unklar', 'unklar', 'Noch offen, bitte beraten'],
+      ['testwert-erfunden', 'unklar', 'Noch offen, bitte beraten'],
+      [undefined, 'unklar', 'Noch offen, bitte beraten'],
+      [3, 'unklar', 'Noch offen, bitte beraten'],
+    ];
+    for (const [leistung, gespeichert, text] of faelle) {
+      stored.length = 0;
+      const result = await submitRecord({ ...gehaeuse, summary, payload: { ...gehaeuse.payload, leistung }, uploads: [fahrzeugschein, ...dreiFotos] });
+      expect(result.ok, String(leistung)).toBe(true);
+      expect(stored[0].payload.leistung, String(leistung)).toBe(gespeichert);
+      const zeilen = stored[0].summary[0].rows;
+      expect(zeilen.filter((z) => z.label === 'Gewünschte Leistung'), String(leistung)).toEqual([{ label: 'Gewünschte Leistung', value: text }]);
+      // Die Zeile steht vor „Ihr Anliegen“.
+      expect(zeilen.map((z) => z.label)).toEqual(['Marke', 'Gewünschte Leistung', 'Ihr Anliegen']);
+    }
+  });
+
+  it('die Pflichtregel für Unterlagen gilt beim Gehäuse für jede Leistung gleich (R13, FA-SHOP-02C)', async () => {
+    // Die Pflichtregel für Unterlagen gilt für jede Leistung gleich (R13): ohne Fahrzeugschein kein Vorgang.
+    for (const leistung of ['gehaeusetausch', 'reparatur', 'umbau', 'unklar']) {
+      expect((await submitRecord({ ...gehaeuse, payload: { ...gehaeuse.payload, leistung }, uploads: [...dreiFotos] })).ok, leistung).toBe(false);
+    }
   });
 
   it('verlangt in jedem Weg eine kurze Beschreibung des Anliegens', async () => {

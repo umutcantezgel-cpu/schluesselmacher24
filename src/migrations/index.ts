@@ -24,6 +24,7 @@ import * as migration_20261116_021014_zylinder_bestaetigt from './20261116_02101
 import * as migration_20261116_023442_einsende_varianten from './20261116_023442_einsende_varianten';
 import * as migration_20261116_033126_einsende_sendung from './20261116_033126_einsende_sendung';
 import * as migration_20261116_042326_gehaeuse from './20261116_042326_gehaeuse';
+import * as migration_20261116_072304_partner_qualitaet from './20261116_072304_partner_qualitaet';
 
 export const migrations = [
   {
@@ -155,5 +156,10 @@ export const migrations = [
     up: migration_20261116_042326_gehaeuse.up,
     down: migration_20261116_042326_gehaeuse.down,
     name: '20261116_042326_gehaeuse',
+  },
+  {
+    up: migration_20261116_072304_partner_qualitaet.up,
+    down: migration_20261116_072304_partner_qualitaet.down,
+    name: '20261116_072304_partner_qualitaet',
   },
 ];

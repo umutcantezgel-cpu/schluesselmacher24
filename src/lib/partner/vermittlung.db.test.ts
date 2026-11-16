@@ -36,7 +36,8 @@ beforeAll(async () => {
       ort: 'Frankfurt',
       status: 'eingegangen',
       abrechnungsmodell: 'B',
-      auftragsarten: ['autoschluessel-vor-ort'],
+      // Eine der neun Leistungen (FA-PLATTFORM-01) deckt den Sammelwert der Autoschlüssel-Aufträge ab.
+      auftragsarten: ['schluessel-nachmachen'],
       einsatzgebiet: { postleitzahlen: '603*' },
       provisionen: [{ auftragsart: 'autoschluessel-vor-ort', prozent: 10 }],
       kontoKennung: 'acct_TEST1234',
@@ -134,7 +135,7 @@ describe('Vermittlung und Auszahlung in der Datenbank', () => {
   it('vermittelt nicht an einen Partner, der nach der Auswahl pausiert wurde', async () => {
     const zweiter = await payload.create({
       collection: 'partnerbetriebe',
-      data: { firma: 'Testbetrieb Pause', ort: 'Kassel', status: 'eingegangen', abrechnungsmodell: 'B', auftragsarten: ['autoschluessel-vor-ort'] },
+      data: { firma: 'Testbetrieb Pause', ort: 'Kassel', status: 'eingegangen', abrechnungsmodell: 'B', auftragsarten: ['schluessel-nachmachen'] },
       overrideAccess: true,
     });
     // Direkt in der Datenbank: Die Wege zu „freigeschaltet“ und „pausiert“ sind im Partnertest belegt.
@@ -147,6 +148,36 @@ describe('Vermittlung und Auszahlung in der Datenbank', () => {
     await expect(alsTeam(auftrag.id, { vermittlung: { status: 'partner-angefragt', partnerbetrieb: zweiter.id } })).rejects.toThrow(MELDUNG.partnerGesperrt);
     const stand = await roh(auftrag.id);
     expect(stand.vermittlung?.status).toBe('geprueft');
+  });
+
+  it('schlägt den Plattformanteil aus der Provision einer der neun Leistungen vor, wenn der Vorgang den Sammelwert trägt', async () => {
+    const dritter = await payload.create({
+      collection: 'partnerbetriebe',
+      data: {
+        firma: 'Testbetrieb Nachmachen',
+        ort: 'Offenbach',
+        status: 'eingegangen',
+        abrechnungsmodell: 'B',
+        auftragsarten: ['schluessel-nachmachen'],
+        provisionen: [{ auftragsart: 'schluessel-nachmachen', prozent: 12 }],
+      },
+      overrideAccess: true,
+    });
+    await payload.db.updateOne({ collection: 'partnerbetriebe', id: dritter.id, data: { status: 'freigeschaltet' } });
+    const auftrag = await partnerauftrag();
+    await alsTeam(auftrag.id, { vermittlung: { status: 'neu', partnerbetrieb: dritter.id } });
+    await alsTeam(auftrag.id, { vermittlung: { status: 'geprueft', partnerbetrieb: dritter.id } });
+    const vermittelt = await alsTeam(auftrag.id, { vermittlung: { status: 'partner-angefragt', partnerbetrieb: dritter.id } });
+    expect(vermittelt.vermittlung).toMatchObject({ auftragsart: 'autoschluessel-vor-ort', gesamtCent: 30_000, plattformanteilCent: 3_600 });
+    expect(vermittelt.vermittlung?.anteilHinweis ?? null).toBeNull();
+  });
+
+  it('lässt eine frühere Auftragsart am Vorgang nicht neu setzen', async () => {
+    const auftrag = await partnerauftrag();
+    await expect(
+      alsTeam(auftrag.id, { vermittlung: { status: 'neu', partnerbetrieb: partnerId, auftragsart: 'schluesseldienst-vor-ort' } }),
+    ).rejects.toThrow(/nur Autoschlüssel und Fahrzeugschlüssel/);
+    expect((await roh(auftrag.id)).vermittlung?.auftragsart ?? null).toBeNull();
   });
 
   it('sperrt die Auszahlung nach einer Erstattung und speichert „teilweise erstattet“', async () => {

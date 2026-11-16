@@ -11,10 +11,10 @@ import { getFahrzeugkatalog, getFahrzeugteile, getPageContent, getRubrik, getUmb
 import { rubriken as startRubriken } from '@/lib/data/defaults/rubriken';
 import { SCHLUESSELTYP_LABEL, filterAuswahl } from '@/lib/data/fahrzeugteile';
 
-import { GEHAEUSE_ANFRAGE_PFAD, GEHAEUSE_PFAD, teileAdresse } from '../gehaeuse/teile/ansicht';
+import { anfrageAdresse } from '../gehaeuse/anfrage/leistung';
+import { GEHAEUSE_PFAD, teileAdresse } from '../gehaeuse/teile/ansicht';
 import { MeinFahrzeug } from '../gehaeuse/teile/mein-fahrzeug';
 import {
-  ANFRAGE_LEISTUNG_NENNEN,
   BEDINGUNGEN,
   CUSTOMIZING_KURZTEXT,
   CUSTOMIZING_PFAD,
@@ -25,6 +25,8 @@ import {
 import { UmbauBeispiele } from './umbau-beispiele';
 
 const ROUTE = 'autoschluessel/customizing';
+/** „Umbau anfragen“ wählt in der Gehäuse-Anfrage die Leistung Umbau vor (FA-SHOP-02C). */
+const UMBAU_ANFRAGE = anfrageAdresse('umbau');
 const CRUMBS = [
   { href: '/autoschluessel', label: 'Autoschlüssel' },
   { href: CUSTOMIZING_PFAD, label: 'Customizing' },
@@ -76,7 +78,7 @@ export default async function CustomizingPage() {
         lead={kurztext}
         crumbs={CRUMBS}
         actions={
-          <ButtonLink href={GEHAEUSE_ANFRAGE_PFAD} size="lg" pfeil>
+          <ButtonLink href={UMBAU_ANFRAGE} size="lg" pfeil>
             Umbau anfragen
           </ButtonLink>
         }
@@ -125,12 +127,9 @@ export default async function CustomizingPage() {
         nummer={nr('pruefung')}
         titel="So prüfen wir, ob es geht"
         aktion={
-          <div className="flex flex-col items-start gap-3">
-            <ButtonLink href={GEHAEUSE_ANFRAGE_PFAD} pfeil>
-              Umbau anfragen
-            </ButtonLink>
-            <p className="max-w-measure text-small text-foreground-muted">{ANFRAGE_LEISTUNG_NENNEN}</p>
-          </div>
+          <ButtonLink href={UMBAU_ANFRAGE} pfeil>
+            Umbau anfragen
+          </ButtonLink>
         }
       />
 
@@ -177,7 +176,7 @@ export default async function CustomizingPage() {
           </div>
         ) : (
           <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href={GEHAEUSE_ANFRAGE_PFAD} pfeil>
+            <ButtonLink href={UMBAU_ANFRAGE} pfeil>
               Umbau anfragen
             </ButtonLink>
             <ButtonLink href={GEHAEUSE_PFAD} variant="outline">

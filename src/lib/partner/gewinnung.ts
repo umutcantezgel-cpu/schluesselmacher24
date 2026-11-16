@@ -10,6 +10,7 @@
 import type { RubrikSchritt } from '../types';
 
 import type { Abrechnungsmodell } from './abrechnung';
+import { PARTNER_LEISTUNGEN_LISTE } from './leistungen';
 
 export interface GewinnungVerweis {
   href: string;
@@ -83,18 +84,8 @@ export const NUR_FAHRZEUGSCHLUESSEL = {
     + 'Schlüsseldienstes an Wohnungen, Häusern oder Geschäftsräumen gehören nicht dazu.',
 };
 
-/** Partnerleistungen nach der Liste des Inhabers (Abschnitt 07, FA-07-04 bis FA-07-12). */
-export const PARTNER_LEISTUNGEN: GewinnungPunkt[] = [
-  { titel: 'Autoschlüssel nachmachen', text: 'Zweitschlüssel und Ersatzschlüssel nach Fahrzeug oder Vorlage.' },
-  { titel: 'Programmierung und Anlernen', text: 'Schlüssel am Fahrzeug anlernen, auch nach einem Steuergerätetausch.' },
-  { titel: 'Schlüsselverlust', text: 'Neuer Schlüssel, wenn keiner mehr da ist.' },
-  { titel: 'Keyless und Smart Key', text: 'Schlüssellose Zugangs- und Startsysteme.' },
-  { titel: 'Transponder', text: 'Der Chip für die Wegfahrsperre.' },
-  { titel: 'Funk', text: 'Fernbedienung zum Ver- und Entriegeln.' },
-  { titel: 'Fahrzeugöffnung', text: 'Nur im Zusammenhang mit Autoschlüsseln, etwa wenn der Schlüssel im Fahrzeug liegt.' },
-  { titel: 'Reparaturen und Gehäuse', text: 'Defekte Tasten, gebrochene Gehäuse, Gehäusetausch.' },
-  { titel: 'Motorrad und weitere Fahrzeugschlüssel', text: 'Sofern der Partner dies anbietet.' },
-];
+/** Partnerleistungen nach der Liste des Inhabers (Abschnitt 07, FA-07-04 bis FA-07-12); Quelle ist `leistungen.ts`. */
+export const PARTNER_LEISTUNGEN: GewinnungPunkt[] = PARTNER_LEISTUNGEN_LISTE.map((l) => ({ titel: l.label, text: l.beschreibung }));
 
 /** Qualitätsstandard vor der Freischaltung (Abschnitt 07, FA-07-13 bis FA-07-19). */
 export const PARTNER_QUALITAET: GewinnungPunkt[] = [

@@ -19,6 +19,7 @@ import { variantenAus } from '@/lib/versand/varianten';
 import { SCHUTZ_ERNEUERT, type FormularSchutz, type SchutzAntwort } from '@/lib/formular-schutz';
 import { storageStatus } from '@/lib/integrations';
 import { PLANER_QUELLE, SCHNAPPSCHUSS_FELD, planerVorgang } from '@/lib/konfigurator/vorgang';
+import { bewerbungPruefen, bewerbungZusammenfassung, type PartnerBewerbung } from '@/lib/partner/bewerbungsformular';
 import { standorteErmitteln } from '@/lib/partner/partnerweg-daten';
 import { RECHTSTEXTE_FASSUNG } from '@/lib/rechtliches/texte';
 import { buchungsOrt } from '@/lib/terminort';
@@ -41,6 +42,7 @@ import { QUELLE_RUBRIK, fotoAnfrageVerlangtKarte, vorOrtOhneBerechtigung } from 
 import { FAHRZEUG_ANFRAGE_QUELLE, type AnfrageKlasse } from '@/lib/fahrzeuge/anfrage-klassen';
 import { istPlatzhalter } from '@/lib/platzhalter';
 import { CODE_ANFRAGE_QUELLE, codeAnfragePruefen, mitGeprueftemCode } from '@/lib/wege/code-anfrage';
+import { gehaeuseLeistungSichern } from '@/app/(site)/autoschluessel/gehaeuse/anfrage/leistung';
 import type {
   AppointmentInfo,
   AreaKey,
@@ -290,6 +292,16 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   if (data.kind === 'partner' && (data.area !== 'service-und-termin' || data.payload.datenschutz !== true)) {
     return { ok: false, notices: [], error: INVALID_INPUT };
   }
+  // Serverprüfung aller Pflichtfelder der Bewerbung (FA-PLATTFORM-01): nur die neun Leistungen des
+  // Partnernetzes, Region, Werkstatt, Radius und Erfahrung. Daten und Zusammenfassung baut der Server neu.
+  let partnerBewerbung: PartnerBewerbung | undefined;
+  if (data.kind === 'partner') {
+    const geprueft = bewerbungPruefen(data.payload, data.contact);
+    if (!geprueft.ok) {
+      return { ok: false, notices: [], error: `Bitte prüfen Sie Ihre Angaben. ${geprueft.fehler.join(' ')}` };
+    }
+    partnerBewerbung = geprueft.bewerbung;
+  }
 
   let quote: PriceQuote | undefined;
   let appointment: AppointmentInfo | undefined;
@@ -387,6 +399,13 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   // Auch die Zusammenfassung baut der Server aus dem Plan; die aus dem Browser fällt weg. Andere
   // Anfragen dürfen keinen Schnappschuss mitbringen.
   let payload = data.payload;
+  if (partnerBewerbung) {
+    payload = { ...partnerBewerbung };
+    summary = [
+      ...bewerbungZusammenfassung(partnerBewerbung, data.contact, uploads.map((u) => u.fileName)),
+      { title: 'Datenschutz', rows: [{ label: 'Datenschutzhinweise', value: 'zur Kenntnis genommen, Einwilligung erteilt' }] },
+    ];
+  }
   // Den Auftragsweg in den Daten schreibt nur der Server (FA-KERN-03).
   if (AUFTRAGSWEG_DATEN in payload) {
     payload = { ...payload };
@@ -425,6 +444,11 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   // Gehäuse (FA-05-10): Die Tastenzahl ist Pflicht und wird hier geprüft, nicht nur im Browser.
   if (weg === 'gehaeuse' && !TASTEN_ANTWORTEN.has(String(payload.tasten))) {
     return { ok: false, notices: [], error: TASTEN_FEHLT };
+  }
+  // Gehäuse (FA-SHOP-02C): gewünschte Leistung nur aus der Werteliste, sonst „unklar“; die Zeile der
+  // Zusammenfassung baut der Server aus dem geprüften Wert.
+  if (weg === 'gehaeuse') {
+    ({ payload, summary } = gehaeuseLeistungSichern(payload, summary));
   }
   // Schlüssel nach Vorlage (FA-12-03): Stückzahl 1 bis 20 wie bei der Einsendung.
   if (weg === 'vorlage') {

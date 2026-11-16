@@ -19,6 +19,8 @@ export interface GehaeuseLeistung {
   satz: string;
   /** Bedingung, ohne die es nicht geht (keine falschen Versprechen). */
   bedingung: string;
+  /** Text des eigenen Verweises in die Gehäuse-Anfrage mit Vorbelegung (FA-SHOP-02C). */
+  verweis: string;
 }
 
 /** Die drei Leistungen in der Benennung der Paketvorgabe. */
@@ -28,28 +30,31 @@ export const GEHAEUSE_LEISTUNGEN: readonly GehaeuseLeistung[] = [
     titel: 'Gehäusetausch im Einsendeservice',
     satz: 'Sie schicken uns Ihren Schlüssel, wir setzen Elektronik und Transponder in ein neues Gehäuse.',
     bedingung: 'Das geht nur, wenn Elektronik, Transponder, Tasten und Bart in das neue Gehäuse passen.',
+    verweis: 'Gehäusetausch anfragen',
   },
   {
     kennung: 'reparatur',
     titel: 'Reparatur (Tasten, Mechanik)',
     satz: 'Wir tauschen klemmende Tasten, Gummimatte oder einen ausgeschlagenen Klappmechanismus.',
     bedingung: 'Ob sich ein Teil tauschen lässt, sehen wir an Ihren Fotos und am Schlüssel.',
+    verweis: 'Reparatur anfragen',
   },
   {
     kennung: 'umbau',
     titel: 'Umbau auf anderes Gehäuse (Customizing)',
     satz: 'Ihr Schlüssel bekommt eine andere, etwa neuere Gehäuseform.',
     bedingung: 'Nur, wenn die Technik Ihres Schlüssels passend übernommen werden kann.',
+    verweis: 'Umbau anfragen',
   },
 ];
 
 /**
- * Der Ablauf steht einmal auf der Seite, in Abschnitt 01 aus den Rubrikdaten. Die Leistungen verweisen
- * darauf und sagen, was der Kunde in der Anfrage nennt (die Anfrage nimmt die Leistung noch nicht als
- * Angabe mit, offene Frage).
+ * Der Ablauf steht einmal auf der Seite, in Abschnitt 01 aus den Rubrikdaten. Die Leistungen verweisen darauf.
+ * Welche Leistung der Kunde wünscht, nimmt die Anfrage seit FA-SHOP-02C als Angabe mit (eigener Verweis je
+ * Leistung mit `?leistung=`); der frühere Behelfssatz „Schreiben Sie in der Anfrage, …“ ist entfallen.
  */
 export const LEISTUNGEN_ABLAUF_VERWEIS =
-  'Wie es abläuft, steht oben unter 01. Schreiben Sie in der Anfrage, welche der drei Leistungen Sie wünschen. Ihren Schlüssel schicken Sie erst nach unserer Rückmeldung.';
+  'Wie es abläuft, steht oben unter 01. Ihren Schlüssel schicken Sie erst nach unserer Rückmeldung.';
 
 /**
  * Empfohlene Versandart für einen Schlüssel mit Elektronik: die erste aktive Variante, die der Betrieb für

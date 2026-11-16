@@ -21,11 +21,9 @@ export const KEINE_FALSCHEN_VERSPRECHEN =
  */
 export const GRUNDSATZ_EINLEITUNG = 'Unser Grundsatz:';
 
-/**
- * Die Gehäuse-Anfrage nimmt die Leistung noch nicht als Angabe mit (offene Frage: Adressparameter
- * `leistung`). Bis dahin nennt der Kunde sie in der Beschreibung.
- */
-export const ANFRAGE_LEISTUNG_NENNEN = 'Schreiben Sie in der Anfrage, dass Sie einen Umbau wünschen.';
+/* Der frühere Behelfssatz „Schreiben Sie in der Anfrage, dass Sie einen Umbau wünschen.“ ist entfallen: „Umbau
+   anfragen“ führt nach `/autoschluessel/gehaeuse/anfrage?leistung=umbau`, die Anfrage nimmt die Leistung als
+   Angabe mit (FA-SHOP-02C). */
 
 /** Was möglich ist; die Beispielidee des Inhabers als allgemeine Erklärung. */
 export const MOEGLICH: ReadonlyArray<{ titel: string; satz: string }> = [

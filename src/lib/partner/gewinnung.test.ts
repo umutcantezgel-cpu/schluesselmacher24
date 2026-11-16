@@ -192,7 +192,7 @@ describe('Partnergewinnung: Inhalt nach den Vorgaben des Inhabers', () => {
     for (const leistung of PARTNER_LEISTUNGEN) {
       expect(`${leistung.titel} ${leistung.text}`).not.toMatch(/türöffnung|schließanlage|zutritt|montage/i);
     }
-    expect(PARTNER_LEISTUNGEN.find((l) => l.titel === 'Fahrzeugöffnung')?.text).toMatch(/Autoschlüssel/);
+    expect(PARTNER_LEISTUNGEN.find((l) => l.titel.startsWith('Fahrzeugöffnung'))?.titel).toMatch(/im Zusammenhang mit Autoschlüsseln/);
   });
 
   it('nennt die Qualitätskontrolle mit Besuch vor Ort und Pausieren oder Sperren', () => {

@@ -9,6 +9,7 @@ import type { UmbauBeispiel, VehicleMake } from '@/lib/types';
 
 import { BEDINGUNGEN, CUSTOMIZING_KURZTEXT, CUSTOMIZING_PFAD, KEINE_FALSCHEN_VERSPRECHEN, MOEGLICH } from './texte';
 import { umbauAngaben } from './umbau-beispiele';
+import { anfrageAdresse } from '../gehaeuse/anfrage/leistung';
 
 /* Rubrik Customizing (FA-SHOP-02B, Punkt 3; FA-14-05 bis FA-14-11). */
 
@@ -64,6 +65,21 @@ describe('Customizing: Texte', () => {
       expect(text).not.toMatch(/€|\d+\s?(tage|werktage|stunden)|garantiert|kostenlos/i);
       expect(text).not.toMatch(/[–—]| - /);
     }
+  });
+
+  it('„Umbau anfragen“ wählt die Leistung Umbau vor; der Behelfssatz ist entfallen (FA-SHOP-02C)', () => {
+    const seite = readFileSync(path.join(__dirname, 'page.tsx'), 'utf8');
+    expect(seite).toContain("const UMBAU_ANFRAGE = anfrageAdresse('umbau');");
+    expect(anfrageAdresse('umbau')).toBe('/autoschluessel/gehaeuse/anfrage?leistung=umbau');
+    // Jeder Knopf „Umbau anfragen“, auch der im Ablauf, führt mit der Kennung in die Anfrage.
+    const knoepfe = seite.match(/<ButtonLink href=\{(\w+)\}[^>]*>\s*Umbau anfragen/g) ?? [];
+    expect(knoepfe.length).toBeGreaterThanOrEqual(2);
+    for (const knopf of knoepfe) expect(knopf).toContain('href={UMBAU_ANFRAGE}');
+    const ablauf = seite.slice(seite.indexOf('<RubrikAblaufAbschnitt'), seite.indexOf('cust-auswahl'));
+    expect(ablauf).toContain('href={UMBAU_ANFRAGE}');
+    expect(seite).not.toContain('GEHAEUSE_ANFRAGE_PFAD');
+    expect(seite).not.toContain('ANFRAGE_LEISTUNG_NENNEN');
+    expect(readFileSync(path.join(__dirname, 'texte.ts'), 'utf8')).not.toMatch(/export const ANFRAGE_LEISTUNG_NENNEN\b/);
   });
 
   it('der Vergleich erscheint nur mit Beispielen aus den Daten, nicht als fester Baustein (R4)', () => {

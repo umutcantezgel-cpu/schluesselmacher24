@@ -8,6 +8,7 @@ import { ohneSchraegstrich } from '../../lib/mail/vorlagen/gemeinsam';
 import type { Provision } from '../../lib/partner/abrechnung';
 import type { BewerbungStatus } from '../../lib/partner/bewerbung';
 import { KUNDE_VERLAUF, bestaetigungsPfad } from '../../lib/partner/kundenbestaetigung';
+import { AUFTRAGSART_SAMMELWERT_NAME, provisionsEintragWaehlen } from '../../lib/partner/leistungen';
 import {
   AUSZAHLUNG_LABEL,
   MELDUNG,
@@ -29,6 +30,7 @@ import { ERSTATTUNG_MELDUNG_WEG, ERSTATTUNGS_WEGE, belegPflicht } from '../../li
 import type { Partnerbetriebe, Vorgaenge } from '../../payload-types';
 import { hatRolle } from '../access/rollen';
 
+import { auftragsartAmVorgangPruefen } from './partner-bewerbung';
 import { SYSTEM_AENDERUNG, benutzerName, einstellungenLaden, vorgangVermerken } from './vorgang-benachrichtigen';
 
 /* ==========================================================================
@@ -122,10 +124,16 @@ async function partnerLaden(req: PayloadRequest, id: number | string | null): Pr
   }
 }
 
-/** Provision des Partnerbetriebs für eine Auftragsart; der feste Betrag steht dort in Euro. */
+export const HINWEIS_PROVISION_MEHRDEUTIG =
+  `Für „${AUFTRAGSART_SAMMELWERT_NAME}“ ist keine Provision eingetragen, und die Provisionen der einzelnen Leistungen weichen voneinander ab.`;
+
+/**
+ * Provision des Partnerbetriebs für eine Auftragsart; der feste Betrag steht dort in Euro. Regel für den
+ * Sammelwert in `provisionsEintragWaehlen`: eigener Eintrag zuerst, sonst die Einträge der neun Leistungen,
+ * wenn sie alle gleich sind.
+ */
 export function provisionFuer(partner: Pick<Partnerbetriebe, 'provisionen'>, auftragsart: string | null | undefined): Provision | undefined {
-  if (!auftragsart) return undefined;
-  const eintrag = partner.provisionen?.find((p) => p.auftragsart === auftragsart);
+  const { eintrag } = provisionsEintragWaehlen(partner.provisionen, auftragsart);
   if (!eintrag) return undefined;
   const provision: Provision = {};
   if (typeof eintrag.prozent === 'number') provision.prozent = eintrag.prozent;
@@ -150,6 +158,9 @@ type Vermittlung = NonNullable<Vorgaenge['vermittlung']>;
 type Auszahlung = NonNullable<Vorgaenge['auszahlung']>;
 
 export const vermittlungVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = async ({ data, originalDoc, operation, req }) => {
+  // Nur Autoschlüssel und Fahrzeugschlüssel (FA-PLATTFORM-01): frühere Auftragsarten nicht neu setzen.
+  const artFehler = auftragsartAmVorgangPruefen(data.vermittlung?.auftragsart, originalDoc?.vermittlung?.auftragsart);
+  if (artFehler) throw new APIError(artFehler, 400);
   const team = operation === 'update' && Boolean(req.user) && !req.context?.[SYSTEM_AENDERUNG] && Boolean(originalDoc);
   const ergebnis = team && originalDoc ? await teamAenderung(data, originalDoc, req) : undefined;
 
@@ -262,7 +273,8 @@ async function teamAenderung(data: Partial<Vorgaenge>, originalDoc: Vorgaenge, r
         v.anteilHinweis = null;
         notiz(`Plattformanteil ${formatCents(vorschlag.cents)} aus der Provision des Partnerbetriebs vorgeschlagen (${bearbeiter}).`);
       } else {
-        v.anteilHinweis = `${vorschlag.hinweis} Bitte den Plattformanteil von Hand eintragen.`;
+        const mehrdeutig = provisionsEintragWaehlen(partner.provisionen, v.auftragsart).mehrdeutig;
+        v.anteilHinweis = `${mehrdeutig ? HINWEIS_PROVISION_MEHRDEUTIG : vorschlag.hinweis} Bitte den Plattformanteil von Hand eintragen.`;
       }
     } else if (zahl(v.plattformanteilCent) !== undefined) {
       v.anteilHinweis = null;
