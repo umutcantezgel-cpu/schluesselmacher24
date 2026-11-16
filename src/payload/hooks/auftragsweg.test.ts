@@ -5,6 +5,19 @@ import type { Vorgaenge } from '../../payload-types';
 import { BEGRUENDUNG_FEHLT, auftragswegVorAenderung, partnerVorschlaege } from './auftragsweg';
 import { vorgangNachAenderung, vorgangVorAenderung } from './vorgang-benachrichtigen';
 
+// Echter Ortsstamm; auf Wunsch nicht lesbar (Fehlerfall der Vorschlagsliste, FA-PLATTFORM-01C Nachbesserung 3).
+const stamm = vi.hoisted(() => ({ wirft: false }));
+vi.mock('../../lib/orte/dateien', async (original) => {
+  const echt = await original<typeof import('../../lib/orte/dateien')>();
+  return {
+    ...echt,
+    ortsstammIndexLesen: async () => {
+      if (stamm.wirft) throw new Error('Ortsstamm im Test nicht lesbar');
+      return echt.ortsstammIndexLesen();
+    },
+  };
+});
+
 /* FA-KERN-03: Auftragsweg mit Begründung, Restbetrag, Freigabe der Partner-Anfrage mit Zahlungslink
  * über den Gesamtbetrag. Nachgebildetes `req`, Resend über fetch ersetzt. */
 
@@ -60,6 +73,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  stamm.wirft = false;
   vi.unstubAllEnvs();
   vi.unstubAllGlobals();
 });
@@ -241,5 +255,29 @@ describe('Vorschlagsliste der passenden Partner', () => {
     // Partnerweg: nur Modell B, gleiche Abdeckung.
     expect(await mitPlz('35683', { auftragsweg: 'partner', vermittlung: undefined } as Partial<Vorgaenge>)).toBe('Kein freigeschalteter Partnerbetrieb deckt 35683 ab.');
     expect(await mitPlz('35390', { auftragsweg: 'partner', vermittlung: undefined } as Partial<Vorgaenge>)).toBe('Umkreis Wetzlar (Wetzlar): Umkreis: 10,8 km von 35576 (bis 20 km)');
+  });
+
+  it('Ortsstamm nicht lesbar: nur Betriebe mit Muster, kein Fehler am Vorgang, Warnung im Log (erfundene Betriebe)', async () => {
+    stamm.wirft = true;
+    const REGION_ERLEDIGT = { erledigt: true, am: '2026-11-16', pruefer: 'Testprüferin' };
+    const r = req();
+    r.payload.find = vi.fn(async () => ({
+      docs: [
+        { id: 21, firma: 'Muster Gießen', ort: 'Gießen', status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { postleitzahlen: '353*' }, auftragsarten: ['schluessel-nachmachen'] },
+        { id: 22, firma: 'Umkreis Wetzlar', ort: 'Wetzlar', plz: '35576', status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { radiusKm: 20 }, auftragsarten: ['schluessel-nachmachen'], pruefliste: { region: REGION_ERLEDIGT } },
+        { id: 23, firma: 'Kreisbetrieb', ort: 'Herborn', status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { regionen: [{ art: 'landkreis', name: 'Landkreis Gießen', schluessel: '06531' }] }, auftragsarten: ['schluessel-nachmachen'], pruefliste: { region: REGION_ERLEDIGT } },
+      ],
+    }));
+    const vermittlung = { status: 'neu', auftragsart: 'autoschluessel-vor-ort' };
+    for (const extra of [{ vermittlung }, { auftragsweg: 'partner' }]) {
+      const vorschlag = await partnerVorschlaege({ data: doc({ kontakt: { ...doc().kontakt, plz: '35390' }, ...extra } as Partial<Vorgaenge>), req: r } as never);
+      expect(vorschlag).toBe('Muster Gießen (Gießen): Postleitzahl 353*');
+    }
+    expect(r.payload.logger.warn).toHaveBeenCalledWith(expect.objectContaining({ msg: 'Ortsstamm für die Partnervorschläge nicht lesbar', err: expect.any(Error) }));
+    expect(r.payload.logger.warn).not.toHaveBeenCalledWith(expect.objectContaining({ msg: 'Partnervorschläge nicht geladen' }));
+    // Gegenprobe mit lesbarem Stamm: alle drei.
+    stamm.wirft = false;
+    const mitStamm = await partnerVorschlaege({ data: doc({ kontakt: { ...doc().kontakt, plz: '35390' }, vermittlung } as Partial<Vorgaenge>), req: r } as never);
+    expect(mitStamm).toBe('Muster Gießen (Gießen): Postleitzahl 353*\nUmkreis Wetzlar (Wetzlar): Umkreis: 10,8 km von 35576 (bis 20 km)\nKreisbetrieb (Herborn): Landkreis Landkreis Gießen (06531)');
   });
 });

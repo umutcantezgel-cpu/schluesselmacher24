@@ -21,7 +21,7 @@ const REGION_ERLEDIGT = { erledigt: true, am: '2026-11-16T09:00:00.000Z', pruefe
 let idGeprueft: number | string;
 let idUngeprueft: number | string;
 
-async function umkreisBetrieb(firma: string, pruefliste: Record<string, unknown>) {
+async function umkreisBetrieb(firma: string, pruefliste: Record<string, unknown>, auftragsarten: string[] = ['schluessel-nachmachen']) {
   const neu = await payload.create({
     collection: 'partnerbetriebe',
     data: {
@@ -30,7 +30,7 @@ async function umkreisBetrieb(firma: string, pruefliste: Record<string, unknown>
       ort: 'Wetzlar',
       status: 'eingegangen',
       abrechnungsmodell: 'B',
-      auftragsarten: ['schluessel-nachmachen'],
+      auftragsarten: auftragsarten as never,
       einsatzgebiet: { postleitzahlen: '', radiusKm: 20 },
     },
     overrideAccess: true,
@@ -123,5 +123,26 @@ describe('Partnerweg für Kunden liest dieselben Angaben (Datenbank, A-070)', ()
     const partner = await partnerFuerAuftragsweg();
     expect(partner.find((p) => p.id === String(idGeprueft))).toMatchObject({ plz: '35576', radiusKm: 20, regionGeprueft: true, abrechnungsmodell: 'B' });
     expect(partner.find((p) => p.id === String(idUngeprueft))).toMatchObject({ plz: '35576', radiusKm: 20, regionGeprueft: false });
+  });
+});
+
+describe('Postleitzahl-Abfrage liest dieselben Angaben (Datenbank, Nachbesserung 3)', () => {
+  /*
+   * Zwei Betriebe nur mit Umkreis (20 km um 35576), je mit einer eigenen Leistung, die kein anderer Datenbanktest
+   * vergibt: „Motorrad“ mit erledigtem Punkt „Region und Radius“, „Reparatur“ mit dem Vermerk „vor Einführung“.
+   * Für 35390 (10,8 km) zählt nur der geprüfte. Liest `partnerFuerAbdeckung` (stamm.ts) `plz` oder
+   * `pruefliste.region` nicht mehr aus, wird der erste Fall rot.
+   */
+  beforeAll(async () => {
+    await umkreisBetrieb('Testbetrieb Abfrage geprüft', { region: REGION_ERLEDIGT }, ['motorrad-weitere']);
+    await umkreisBetrieb('Testbetrieb Abfrage ungeprüft', { vorEinfuehrung: true }, ['reparatur-gehaeuse']);
+  });
+
+  it('postleitzahlAbfragen: der geprüfte Umkreis zählt, der ungeprüfte nicht', async () => {
+    const { postleitzahlAbfragen } = await import('@/lib/orte/stamm');
+    expect(await postleitzahlAbfragen('35390', 'motorrad-weitere')).toMatchObject({ bekannt: true, partnerVorhanden: true });
+    expect(await postleitzahlAbfragen('35390', 'reparatur-gehaeuse')).toMatchObject({ bekannt: true, partnerVorhanden: false });
+    // Außerhalb des Umkreises (25,3 km) auch der geprüfte nicht.
+    expect(await postleitzahlAbfragen('35683', 'motorrad-weitere')).toMatchObject({ partnerVorhanden: false });
   });
 });
