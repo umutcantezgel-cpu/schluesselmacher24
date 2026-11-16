@@ -1,9 +1,22 @@
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+
 import { describe, expect, it } from 'vitest';
 
-import type { Fahrzeugartikel } from '@/lib/data/fahrzeugteile';
+import { filterAuswahl, type Fahrzeugartikel, type FahrzeugteilFilter } from '@/lib/data/fahrzeugteile';
 import type { FahrzeugReihe, FahrzeugTeil, GehaeuseBauform } from '@/lib/types';
 
-import { filterZeilen, ohneMerkmal, passungEtikett, teileAdresse, teileFilter, teileGruppieren, teilKarte } from './ansicht';
+import {
+  MODELL_VORHER,
+  filterFormular,
+  filterZeilen,
+  ohneMerkmal,
+  passungEtikett,
+  teileAdresse,
+  teileFilter,
+  teileGruppieren,
+  teilKarte,
+} from './ansicht';
 
 /* Erfundene Testdaten (G4): Marken, Reihen und Preise stehen nur für die Logik. */
 
@@ -78,6 +91,68 @@ describe('Filter aus der Adresse (FA-SHOP-02B)', () => {
   });
 });
 
+describe('„Alle Marken“ im Formular (Gegenprüfung FA-SHOP-02B, Befund 6)', () => {
+  it('Marke leer übergeben und Modell unverändert: Die Fahrzeugwahl entfällt ganz', () => {
+    expect(teileFilter({ marke: '', reihe: 'testmarke-alpha', [MODELL_VORHER]: 'testmarke-alpha', tasten: '3' }, KATALOG)).toEqual({ tastenzahl: 3 });
+    // Ohne Formular (Adresse von Hand): leere Marke hebt die Reihe ebenfalls auf.
+    expect(teileFilter({ marke: '', reihe: 'testmarke-alpha' }, KATALOG)).toEqual({});
+  });
+
+  it('neues Modell bei „Alle Marken“: Die Marke folgt dem Modell', () => {
+    expect(teileFilter({ marke: '', reihe: 'testmarke-beta', [MODELL_VORHER]: 'testmarke-alpha' }, KATALOG)).toEqual({
+      marke: 'Testmarke',
+      reihe: 'testmarke-beta',
+    });
+    expect(teileFilter({ marke: '', reihe: 'testmarke-alpha', [MODELL_VORHER]: '' }, KATALOG)).toEqual({ marke: 'Testmarke', reihe: 'testmarke-alpha' });
+  });
+
+  it('ohne Parameter marke bringt die Reihe ihre Marke weiter mit', () => {
+    expect(teileFilter({ reihe: 'testmarke-alpha', [MODELL_VORHER]: 'testmarke-alpha' }, KATALOG)).toEqual({ marke: 'Testmarke', reihe: 'testmarke-alpha' });
+  });
+});
+
+describe('Filterformular: gesetzte Werte überstehen das erneute Absenden (Gegenprüfung FA-SHOP-02B, Befund 9)', () => {
+  /** Was der Browser beim Absenden schickt: jeder Feldwert und die verborgenen Felder, wie im Formular vorbelegt. */
+  function absenden(filter: FahrzeugteilFilter, teile: Fahrzeugartikel[]) {
+    const formular = filterFormular(filter, filterAuswahl(teile), QUELLEN);
+    for (const feld of formular.felder) {
+      expect(feld.wert === '' || feld.optionen.some((o) => o.wert === feld.wert), feld.name).toBe(true);
+    }
+    const params: Record<string, string> = Object.fromEntries([
+      ...formular.felder.map((f) => [f.name, f.wert]),
+      ...formular.verborgen.map((v) => [v.name, v.wert]),
+      ...(formular.baujahr ? [['baujahr', filter.baujahr === undefined ? '' : String(filter.baujahr)]] : []),
+    ]);
+    return { formular, filter: teileFilter(params, KATALOG) };
+  }
+
+  it('ein Fahrzeug ohne Teile aus „Mein Fahrzeug“ bleibt gewählt, als Option „(gewählt)“', () => {
+    // Nur Teile der Anderemarke: Testmarke Beta hat keine Option in der Auswahl.
+    const filter = teileFilter(Object.fromEntries(new URL(teileAdresse({ marke: 'Testmarke', reihe: 'testmarke-beta' }), 'https://x.test').searchParams), KATALOG);
+    const { formular, filter: neu } = absenden(filter, [fremdGehaeuse, batterie]);
+    expect(neu).toEqual({ marke: 'Testmarke', reihe: 'testmarke-beta' });
+    expect(formular.felder.find((f) => f.name === 'reihe')?.optionen.at(-1)).toEqual({ wert: 'testmarke-beta', text: 'Testmarke Beta (gewählt)' });
+    expect(formular.modellFeld).toBe(true);
+  });
+
+  it('eine gesetzte Teileart bleibt, auch wenn es nur eine Teileart gibt (Einstieg vom Customizing)', () => {
+    const filter: FahrzeugteilFilter = { teileart: 'gehaeuse', schluesselart: 'klappschluessel' };
+    expect(absenden(filter, [alphaGehaeuse, markenGehaeuse]).filter).toEqual(filter);
+  });
+
+  it('alle Merkmale zusammen überstehen das Absenden, auch ohne passende Teile', () => {
+    const filter: FahrzeugteilFilter = { marke: 'Testmarke', reihe: 'testmarke-alpha', baujahr: 2010, bauform: 'klappschluessel', tastenzahl: 4, teileart: 'tasten', schluesselart: 'funk' };
+    expect(absenden(filter, ALLE).filter).toEqual(filter);
+    expect(absenden({}, ALLE).filter).toEqual({});
+  });
+
+  it('ohne Modelle in der Auswahl gibt es kein Feld „Modell“: Der Hinweis nennt die Marke', () => {
+    const formular = filterFormular({}, filterAuswahl([markenGehaeuse]), QUELLEN);
+    expect(formular.modellFeld).toBe(false);
+    expect(formular.verborgen).toEqual([]);
+  });
+});
+
 describe('Etikett zum Fahrzeug: keine falschen Versprechen (Gegenprüfung Teil A, Punkt 3)', () => {
   it('„passt zu Ihrem Modell“ nur bei gewähltem Modell und ausdrücklich genannter Reihe', () => {
     const modell = { marke: 'Testmarke', reihe: 'testmarke-alpha' };
@@ -129,5 +204,24 @@ describe('Karte eines Teils', () => {
     expect(teilKarte(alphaGehaeuse, {}, QUELLEN).preis).toMatch(/19,90/);
     expect(teilKarte({ ...alphaGehaeuse, example: true }, {}, QUELLEN).preis).toBe('Beispiel, nicht bestellbar');
     expect(teilKarte({ ...alphaGehaeuse, availability: 'auf-anfrage' }, {}, QUELLEN).preis).not.toMatch(/€/);
+  });
+});
+
+/* Befund der Sichtprobe (Abnahme FA-SHOP-02B): Nach einem Wechsel ohne Neuladen, etwa über einen Treffer aus
+ * „Mein Fahrzeug“, blieben die Auswahlfelder auf dem alten Stand, und „Filter anwenden“ verlor das Fahrzeug.
+ * Das Verhalten selbst prüft die Browserprobe; dieser Test hält nur fest, dass das Formular seinen Schlüssel
+ * aus dem Filter bekommt und deshalb neu aufgebaut wird. */
+describe('Filterformular nach einem Wechsel ohne Neuladen', () => {
+  it('das Formular der Liste trägt den Filter als Schlüssel', () => {
+    const seite = readFileSync(path.join(__dirname, 'page.tsx'), 'utf8');
+    expect(seite).toMatch(/<form\s+key=\{teileAdresse\(filter\)\}/);
+  });
+
+  it('der Schlüssel ändert sich mit jedem Merkmal und ist ohne Filter die Liste selbst', () => {
+    const ohne = teileAdresse({});
+    const marke = teileAdresse({ marke: 'Testmarke' });
+    const reihe = teileAdresse({ marke: 'Testmarke', reihe: 'testmarke-alpha' });
+    expect(new Set([ohne, marke, reihe, teileAdresse({ teileart: 'gehaeuse' })]).size).toBe(4);
+    expect(ohne).toBe('/autoschluessel/gehaeuse/teile');
   });
 });

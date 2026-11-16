@@ -407,3 +407,10 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Schreibweise „Smart Key“ wie beim Inhaber, auch in der Auswahl der Schlüsseltypen.
 - Umkehrprobe: neue Tabellen und Spalten, leer; ohne Haken „Gehäuse oder Ersatzteil“ verhält sich ein Artikel wie vorher.
 
+## A-063 · Customizing ist eine eigene Rubrik in den Daten; Gehäuse-Leistungen bleiben Anfragen (2026-11-16 08:13, FA-SHOP-02B, FA-14)
+- Der Inhaber verlangt eine „eigene Rubrik für Customizing, Modifikation und optische Erneuerung“. Entscheidung: Sie entsteht als Datensatz der Rubriken (Kennung `customizing`), wie das Modell es vorsieht, und steht damit in der Navigation unter Autoschlüssel und im Fuß. Im Hub steht sie nicht: Dort gelten die 14 Hauptzugänge des Inhabers (A-052).
+- Der Weg bleibt die Gehäuse-Anfrage mit Fahrzeugschein und drei Fotos (R13). Gehäusetausch, Reparatur und Umbau haben keinen Preis des Inhabers und keinen Zahlungslink (A-036, MA-27, G9); die Seiten sagen nur „Rückmeldung mit Preis und Ablauf“ zu. Ein zweiter Einsendeweg ist nicht gebaut: Der Schlüssel wird erst nach der Rückmeldung geschickt, die Seite nennt die empfohlene Versandart aus den Einstellungen mit Haftung als Zahl.
+- Der Satz des Inhabers „Keine falschen Versprechen: Optischer Umbau nur dort anbieten, wo …“ steht im Wortlaut als Zitat mit der Einleitung „Unser Grundsatz:“. Er ist an den Betrieb gerichtet; ob er für Kunden umformuliert wird, entscheidet der Inhaber (MA-53).
+- „Die Elektronik bleibt“ steht bei Gehäuse und Customizing nur noch mit Bedingung. Beim Tausch in ein gleiches Gehäuse im Assistenten bleibt der Satz, weil er dort die Leistung beschreibt.
+- Befund der Sichtprobe: Das Filterformular folgte einem Wechsel ohne Neuladen nicht; behoben über den Schlüssel aus dem Filter. Lehre für weitere Listen mit Formular und Adresse: Formulare mit Vorgabewerten brauchen einen Schlüssel aus dem Zustand der Adresse.
+- Umkehrprobe: Rubrik auf „Aus“ nimmt den Eintrag aus Navigation und Fuß; die Seite bleibt erreichbar und zeigt den Ablauf aus dem Startinhalt.

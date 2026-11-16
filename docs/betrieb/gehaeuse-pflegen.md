@@ -1,6 +1,6 @@
 # Gehäuse, Ersatzteile und Umbau-Beispiele pflegen
 
-Diese Anleitung ist für das Team im Adminbereich unter `/admin`. Sie beschreibt die Pflege der Daten. Wie die Seiten für Kunden aussehen (Liste mit Filter, Customizing), ergänzt der nächste Ausbau.
+Diese Anleitung ist für das Team im Adminbereich unter `/admin`. Sie beschreibt die Pflege der Daten und was Kunden davon auf der Seite sehen (Abschnitt 4).
 
 Es gibt drei Stellen:
 
@@ -74,6 +74,32 @@ Wichtig: Jedes hochgeladene Foto ist sofort öffentlich abrufbar, auch ohne Hake
 
 Ohne Fotos lässt sich ein Beispiel nur als Entwurf speichern.
 
-## 4. Vorschau
+## 4. Was Kunden sehen
 
-Die Seiten mit Liste, Filter und Vergleich baut der nächste Ausbau. Bis dahin sehen Sie Gehäuse auf der Seite des Artikels unter `/artikel/…` wie jeden Standardartikel.
+Vier Seiten zeigen, was Sie pflegen:
+
+- **Gehäuse und Ersatzteile** unter `/autoschluessel/gehaeuse/teile`: alle veröffentlichten Gehäuse und Ersatzteile mit Filter nach Marke, Modell, Baujahr, Bauform, Tastenzahl, Art des Teils und Schlüsseltyp. Der Filter zeigt nur Werte, die es bei Ihren Teilen gibt.
+- **Seite des Artikels** unter `/artikel/…`: zusätzlich der Abschnitt „Passt das Teil zu Ihrem Schlüssel?“ mit Ihrem Kompatibilitätshinweis und dem Satz zur Elektronik, dazu die Angaben Art des Teils, Fahrzeug, Bauform, Tasten und Schlüsseltyp.
+- **Gehäuse** unter `/autoschluessel/gehaeuse`: die drei Leistungen Gehäusetausch im Einsendeservice, Reparatur (Tasten, Mechanik) und Umbau auf anderes Gehäuse (Customizing), der Ablauf über die Gehäuse-Anfrage, der Versandhinweis und Ihre Umbau-Beispiele für Gehäuse und Reparatur.
+- **Customizing** unter `/autoschluessel/customizing`: was möglich ist, die Bedingungen, wie Sie prüfen, die Auswahl nach Fahrzeug oder Schlüsseltyp und Ihre Umbau-Beispiele für Customizing. Die Schritte „So prüfen wir, ob es geht“ pflegen Sie im Admin unter **Rubriken**, Eintrag „Customizing und Modifikation“ (Ablauf). Dieselbe Rubrik stellt die Seite in die Navigation unter „Autoschlüssel“; mit dem Status „Aus“ verschwindet der Eintrag dort.
+
+So prüfen Sie ein neues Teil:
+
+1. Teil veröffentlichen (Abschnitt 1).
+2. `/autoschluessel/gehaeuse/teile` öffnen. Das Teil steht in der Liste.
+3. Unter „Mein Fahrzeug“ Marke und Modell eintippen und einen Treffer wählen. Oder im Filter Marke und Modell wählen und **Filter anwenden**.
+4. Am Teil steht, wie es passt:
+   - „Passt zu Ihrem Modell“: Sie haben genau diese Reihe beim Teil eingetragen.
+   - „Passt zu Ihrer Marke, bitte Modell prüfen“: Sie haben keine Reihe eingetragen.
+   - „Für einzelne Modelle dieser Marke, bitte Modell prüfen“: Der Kunde hat nur die Marke gewählt, das Teil passt zu einzelnen Reihen.
+   - Teile ohne Marke, etwa Batterien, stehen bei gewähltem Fahrzeug getrennt unter „Passt zu jedem Fahrzeug“.
+   - Steht am Teil „Fahrzeug nicht angegeben, bitte anfragen“, fehlt bei Gehäuse, Tasten, Gummimatte, Klappmechanismus oder Schlüsselbart die Marke. Tragen Sie sie nach.
+5. Teil öffnen und den Kompatibilitätshinweis lesen. Steht bei Elektronik „Nur nach Prüfung“, sieht der Kunde dazu den Verweis in die Gehäuse-Anfrage.
+
+Gut zu wissen:
+
+- Den Preis sieht der Kunde nur, wenn der Artikel bestellbar ist. Sonst steht dort „Auf Anfrage“ oder „Derzeit nicht lieferbar“.
+- Ohne veröffentlichte Teile sagt die Liste ehrlich, dass es gerade keine gibt, und führt in die Gehäuse-Anfrage. Suchmaschinen nehmen die Liste erst auf, wenn es mindestens ein echtes Teil gibt. Eine gefilterte Ansicht nehmen sie nie auf.
+- Die Gehäuse-Anfrage nimmt noch nicht mit, welche der drei Leistungen der Kunde wünscht. Die Seiten bitten ihn, das in der Anfrage zu schreiben. Lesen Sie es in der Beschreibung des Vorgangs nach.
+- Die drei Leistungen haben keinen Preis auf der Seite. Sie laufen als Gehäuse-Anfrage: Fahrzeug, drei Fotos und Fahrzeugschein, dann melden Sie sich mit Preis und Ablauf. Der Kunde schickt den Schlüssel erst danach. Für Schlüssel mit Elektronik nennt die Seite die Versandart, die unter **Einstellungen › Versand › Schlüssel einschicken** für Originalschlüssel empfohlen ist (Start: DHL Paket), mit der Haftung von dort.
+- Die Shop-Kategorien führen jetzt hierher: „Autoschlüsselgehäuse“ zur Liste, „Gehäuseumbau und Reparaturservice“ zur Seite Gehäuse, „Customizing und Modifikation“ zur Seite Customizing. Bei „Autoschlüsselgehäuse“ verschwindet der Hinweis „Bitte fragen Sie bei uns an.“ von selbst, sobald es ein bestellbares Teil gibt (veröffentlicht, lieferbar, kein Beispiel). Der Knopf heißt dann „Ansehen“ und die Kategorie nennt die Zahl der Teile. Sie müssen das Feld **Hinweis, solange Produkte fehlen** dafür nicht leeren.

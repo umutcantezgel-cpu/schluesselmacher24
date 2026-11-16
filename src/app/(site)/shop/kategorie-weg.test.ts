@@ -78,6 +78,21 @@ describe('Weg einer Shop-Kategorie', () => {
     expect(kategorieWeg({ ...kategorie('autoschluesselgehaeuse'), hinweis: '' }, 0).label).toBe('Ansehen');
   });
 
+  it('Autoschlüsselgehäuse: mit bestellbaren Teilen kein Anfrage-Hinweis, der Knopf heißt „Ansehen“', () => {
+    expect(kategorieWeg(kategorie('autoschluesselgehaeuse'), 2)).toEqual({ href: '/autoschluessel/gehaeuse/teile', label: 'Ansehen' });
+    // Erfundene Testdaten (G4): bestellbare Teile zählen, Beispiele, nicht lieferbare und andere Artikel nicht.
+    const alle = KATEGORIEN;
+    const haupt = sichtbareKategorien(alle).filter((k) => !k.eltern);
+    const zahl = (artikel: Parameters<typeof anzahlJeKategorie>[2]['artikel']) =>
+      anzahlJeKategorie(alle, haupt, { codeprodukte: [], artikel }).get('autoschluesselgehaeuse');
+    expect(zahl([{ fahrzeugteil: {} }, { fahrzeugteil: {}, example: true }, { fahrzeugteil: {}, availability: 'auf-anfrage' }, {}])).toBe(1);
+    expect(zahl([{ fahrzeugteil: {}, example: true }])).toBe(0);
+    expect(kategorieWeg(kategorie('autoschluesselgehaeuse'), zahl([{ fahrzeugteil: {}, example: true }])!)).toMatchObject({
+      label: 'Anfragen',
+      hinweis: HINWEIS_PRODUKTE_FOLGEN,
+    });
+  });
+
   it('zählt je Kategorie nur ihre eigenen Produkte, Unterkategorien eingeschlossen', () => {
     // Erfundene Testdaten (G4): eine zweite Artikel-Kategorie mit Unterkategorie.
     const zweite = { ...kategorie('schliesstechnik-und-zubehoer'), id: 'test-zweite', slug: 'test-zweite', name: 'Test Zweite', reihenfolge: 999 };

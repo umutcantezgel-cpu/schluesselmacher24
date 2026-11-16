@@ -295,6 +295,12 @@ describe('Gehäuse und Ersatzteile auf der Seite des Artikels (FA-SHOP-02B)', ()
     ]);
   });
 
+  it('ein Teil mit Passform ohne Marke verspricht kein Fahrzeug (Gegenprüfung Teil A, Punkt 2)', () => {
+    const ohneMarke = { ...teil, marke: undefined, reihen: [] };
+    expect(fahrzeugText(ohneMarke, quellen.katalog)).toBe('Fahrzeug nicht angegeben, bitte anfragen');
+    expect(fahrzeugText({ ...ohneMarke, teileart: 'batterie' as const }, quellen.katalog)).toBe('Passt zu jedem Fahrzeug');
+  });
+
   it('Baujahre als Text, auch einseitig', () => {
     expect(fahrzeugText({ ...teil, reihen: [], baujahrBis: undefined }, quellen.katalog)).toBe('Testmarke, alle Modelle, ab Baujahr 2008');
     expect(fahrzeugText({ ...teil, reihen: [], baujahrVon: undefined }, quellen.katalog)).toBe('Testmarke, alle Modelle, bis Baujahr 2016');

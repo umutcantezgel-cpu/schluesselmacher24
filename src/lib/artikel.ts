@@ -7,6 +7,7 @@ import { getSiteUrl } from '@/lib/site-url';
 import {
   ELEKTRONIK_SATZ,
   SCHLUESSELTYP_LABEL,
+  TEILEARTEN_MIT_MARKE,
   TEILEART_LABEL,
   bauformNamen,
 } from '@/lib/data/fahrzeugteile';
@@ -252,6 +253,9 @@ export function artikelAnfragePfad(name: string, basis: string = LEISTUNGS_ANFRA
 
 /* ---------- Gehäuse und Ersatzteile (FA-SHOP-02B) ------------------------ */
 
+/** Text für ein Teil mit Passform ohne gepflegte Marke. */
+export const FAHRZEUG_FEHLT = 'Fahrzeug nicht angegeben, bitte anfragen';
+
 /** Name einer Reihe aus dem Fahrzeugkatalog; unbekannte Kennungen entfallen. */
 export function reiheName(id: string, katalog: ReadonlyArray<Pick<FahrzeugReihe, 'id' | 'reihe'>>): string | undefined {
   return katalog.find((r) => r.id === id)?.reihe;
@@ -267,11 +271,13 @@ export function baujahrText(teil: Pick<FahrzeugTeil, 'baujahrVon' | 'baujahrBis'
 }
 
 /**
- * Fahrzeug eines Teils als Text, so wie gepflegt: Marke mit Reihen und Baujahren. Ohne Marke steht
- * „Passt zu jedem Fahrzeug“ (ohne Marke kommen nur markenübergreifende Teile durch die Pflichtprüfung).
+ * Fahrzeug eines Teils als Text, so wie gepflegt: Marke mit Reihen und Baujahren. Ohne Marke steht bei
+ * markenübergreifenden Teilen „Passt zu jedem Fahrzeug“. Ein Teil mit Passform ohne Marke (unvollständig
+ * gepflegt, etwa aus dem JSON-Rückfall) passt laut `fahrzeugPassung` zu keinem Fahrzeug und verspricht
+ * darum nichts.
  */
 export function fahrzeugText(teil: FahrzeugTeil, katalog: ReadonlyArray<Pick<FahrzeugReihe, 'id' | 'reihe'>>): string {
-  if (!teil.marke) return 'Passt zu jedem Fahrzeug';
+  if (!teil.marke) return TEILEARTEN_MIT_MARKE.includes(teil.teileart) ? FAHRZEUG_FEHLT : 'Passt zu jedem Fahrzeug';
   const reihen = teil.reihen.map((id) => reiheName(id, katalog)).filter((n): n is string => Boolean(n));
   const basis = reihen.length ? `${teil.marke} ${reihen.join(', ')}` : `${teil.marke}, alle Modelle`;
   const jahre = baujahrText(teil);

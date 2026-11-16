@@ -24,6 +24,7 @@ const ICONS_GESEEDET: Record<string, string[]> = {
   'autoschluessel': ['fahrzeugmarke', 'foto-hochladen', 'pruefung', 'anzahlung', 'termin'],
   'motorradschluessel': ['fahrzeugmarke', 'foto-hochladen', 'transponder', 'beratung-telefon'],
   'autoschluessel-gehaeuse': ['foto-hochladen', 'zahlung', 'versand-paket', 'lieferung'],
+  'customizing': ['foto-hochladen', 'pruefung', 'dokument'],
   'schluessel-nach-code': ['schluessel-nach-code', 'warenkorb', 'werkstatt', 'lieferung'],
   'schluessel-nach-vorlage': ['foto-hochladen', 'pruefung', 'zahlung', 'lieferung'],
   'schluessel-einschicken': ['dokument', 'versand-paket', 'werkstatt', 'lieferung'],

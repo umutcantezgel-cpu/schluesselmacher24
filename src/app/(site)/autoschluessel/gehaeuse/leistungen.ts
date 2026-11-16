@@ -1,4 +1,4 @@
-import { variantenAus } from '@/lib/versand/varianten';
+import { empfehlungFuer, variantenAus } from '@/lib/versand/varianten';
 import type { EinsendeEinstellungen, EinsendeVariante } from '@/lib/types';
 
 /* ==========================================================================
@@ -43,19 +43,20 @@ export const GEHAEUSE_LEISTUNGEN: readonly GehaeuseLeistung[] = [
   },
 ];
 
-/** Ablauf aller drei Leistungen, so wie der Weg heute läuft (R4: nichts zusagen, was der Weg nicht tut). */
-export const GEHAEUSE_ABLAUF: readonly string[] = [
-  'Gehäuse-Anfrage mit Fahrzeug, drei Fotos des Schlüssels und Fahrzeugschein.',
-  'Wir prüfen, ob es bei Ihrem Schlüssel geht, und melden uns mit Preis und Ablauf.',
-  'Erst dann schicken Sie den Schlüssel ein. Wie, steht in unserer Rückmeldung.',
-];
+/**
+ * Der Ablauf steht einmal auf der Seite, in Abschnitt 01 aus den Rubrikdaten. Die Leistungen verweisen
+ * darauf und sagen, was der Kunde in der Anfrage nennt (die Anfrage nimmt die Leistung noch nicht als
+ * Angabe mit, offene Frage).
+ */
+export const LEISTUNGEN_ABLAUF_VERWEIS =
+  'Wie es abläuft, steht oben unter 01. Schreiben Sie in der Anfrage, welche der drei Leistungen Sie wünschen. Ihren Schlüssel schicken Sie erst nach unserer Rückmeldung.';
 
 /**
- * Empfohlene Versandart für einen Schlüssel mit Elektronik: die erste aktive Variante, die der Betrieb
- * für Originalschlüssel empfiehlt (Startwert DHL Paket), nie ein Sonderfall. Ohne solche Variante keine.
+ * Empfohlene Versandart für einen Schlüssel mit Elektronik: die erste aktive Variante, die der Betrieb für
+ * den Fall empfiehlt, den die Regel `empfehlungFuer` nennt (Startwert DHL Paket), nie ein Sonderfall.
+ * Ohne solche Variante keine.
  */
 export function versandFuerElektronik(e: EinsendeEinstellungen | undefined): EinsendeVariante | null {
-  return (
-    variantenAus(e).find((v) => v.aktiv && !v.nurSonderfall && v.empfohlenFuer.includes('originalschluessel')) ?? null
-  );
+  const fall = empfehlungFuer({ schluesselart: 'elektronik' });
+  return fall ? variantenAus(e).find((v) => v.aktiv && !v.nurSonderfall && v.empfohlenFuer.includes(fall)) ?? null : null;
 }

@@ -3,15 +3,25 @@ import Link from 'next/link';
 
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
+import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
 import { PasstDazu } from '@/components/seo/passt-dazu';
 import { ButtonLink } from '@/components/ui/button';
-import { getFahrzeugkatalog, getFahrzeugteile, getPageContent, getUmbauBeispiele } from '@/lib/data';
+import { getFahrzeugkatalog, getFahrzeugteile, getPageContent, getRubrik, getUmbauBeispiele } from '@/lib/data';
+import { rubriken as startRubriken } from '@/lib/data/defaults/rubriken';
 import { SCHLUESSELTYP_LABEL, filterAuswahl } from '@/lib/data/fahrzeugteile';
 
 import { GEHAEUSE_ANFRAGE_PFAD, GEHAEUSE_PFAD, teileAdresse } from '../gehaeuse/teile/ansicht';
 import { MeinFahrzeug } from '../gehaeuse/teile/mein-fahrzeug';
-import { BEDINGUNGEN, CUSTOMIZING_KURZTEXT, CUSTOMIZING_PFAD, KEINE_FALSCHEN_VERSPRECHEN, MOEGLICH, PRUEFUNG } from './texte';
+import {
+  ANFRAGE_LEISTUNG_NENNEN,
+  BEDINGUNGEN,
+  CUSTOMIZING_KURZTEXT,
+  CUSTOMIZING_PFAD,
+  GRUNDSATZ_EINLEITUNG,
+  KEINE_FALSCHEN_VERSPRECHEN,
+  MOEGLICH,
+} from './texte';
 import { UmbauBeispiele } from './umbau-beispiele';
 
 const ROUTE = 'autoschluessel/customizing';
@@ -37,24 +47,29 @@ export async function generateMetadata(): Promise<Metadata> {
  * und echte Umbau-Beispiele, sobald welche freigegeben sind.
  */
 export default async function CustomizingPage() {
-  const [page, teile, beispiele, katalog] = await Promise.all([
+  const [rubrik, page, teile, beispiele, katalog] = await Promise.all([
+    getRubrik('customizing'),
     getPageContent(ROUTE),
     getFahrzeugteile(),
     getUmbauBeispiele('customizing'),
     getFahrzeugkatalog(),
   ]);
+  // Die Prüfung ist Kern der Seite: Fehlt die Rubrik in einer Datenbank noch (vor dem Seed), gilt der Startinhalt.
+  const ablaufRubrik = rubrik ?? startRubriken().find((r) => r.id === 'customizing') ?? null;
   const titel = page?.headline ?? 'Customizing für Autoschlüssel';
   const kurztext = page?.subline ?? CUSTOMIZING_KURZTEXT;
   // Auswahl nur mit Gehäusen, die es gibt: kein Filter führt in eine leere Liste.
   const gehaeuse = teile.filter((a) => a.fahrzeugteil.teileart === 'gehaeuse');
   const auswahl = filterAuswahl(gehaeuse);
   const nummern = ['moeglich', 'bedingungen', 'pruefung', 'auswahl', ...(beispiele.length ? ['beispiele'] : [])];
+  const alleGehaeuse = teileAdresse({ teileart: 'gehaeuse' });
   const nr = (abschnitt: string) => String(nummern.indexOf(abschnitt) + 1).padStart(2, '0');
 
   return (
     <>
       <SeitenDaten pfad={CUSTOMIZING_PFAD} name={titel} crumbs={CRUMBS} leistung={{ name: titel, description: kurztext }} />
       <PageHeader
+        rubrik={rubrik}
         bereich="autoschluessel"
         eyebrow="Autoschlüssel"
         title={titel}
@@ -95,28 +110,29 @@ export default async function CustomizingPage() {
             </div>
           ))}
         </dl>
-        {/* Satz gegen falsche Erwartungen im Wortlaut des Inhabers (FA-14-11). */}
-        <p className="mt-8 max-w-measure border-l-4 border-primary pl-4 text-body font-semibold leading-relaxed text-foreground">
-          {KEINE_FALSCHEN_VERSPRECHEN}
-        </p>
+        {/* Satz gegen falsche Erwartungen im Wortlaut des Inhabers (FA-14-11), für Kunden als Grundsatz eingeleitet. */}
+        <figure className="mt-8 max-w-measure border-l-4 border-primary pl-4">
+          <figcaption className="text-small font-semibold text-foreground-muted">{GRUNDSATZ_EINLEITUNG}</figcaption>
+          <blockquote className="mt-1 text-body font-semibold leading-relaxed text-foreground">
+            <p>{KEINE_FALSCHEN_VERSPRECHEN}</p>
+          </blockquote>
+        </figure>
       </Section>
 
-      <Section labelledBy="cust-pruefung">
-        <SectionHeading id="cust-pruefung" nummer={nr('pruefung')} eyebrow="Prüfung" title="So prüfen wir, ob es geht" />
-        <ol className="mt-8 grid gap-4">
-          {PRUEFUNG.map((schritt, index) => (
-            <li key={schritt} className="flex gap-4 border-t border-border pt-4">
-              <span className="w-8 shrink-0 font-mono text-caption tabular-nums text-foreground-muted">{String(index + 1).padStart(2, '0')}</span>
-              <span className="max-w-measure text-body leading-relaxed text-foreground">{schritt}</span>
-            </li>
-          ))}
-        </ol>
-        <div className="mt-8">
-          <ButtonLink href={GEHAEUSE_ANFRAGE_PFAD} pfeil>
-            Umbau anfragen
-          </ButtonLink>
-        </div>
-      </Section>
+      {/* Ablauf der Prüfung aus den Rubrikdaten (G-10, G-11): im Admin pflegbar, ohne zweite Liste im Code. */}
+      <RubrikAblaufAbschnitt
+        rubrik={ablaufRubrik}
+        nummer={nr('pruefung')}
+        titel="So prüfen wir, ob es geht"
+        aktion={
+          <div className="flex flex-col items-start gap-3">
+            <ButtonLink href={GEHAEUSE_ANFRAGE_PFAD} pfeil>
+              Umbau anfragen
+            </ButtonLink>
+            <p className="max-w-measure text-small text-foreground-muted">{ANFRAGE_LEISTUNG_NENNEN}</p>
+          </div>
+        }
+      />
 
       <Section tone="muted" labelledBy="cust-auswahl">
         <SectionHeading
@@ -132,7 +148,9 @@ export default async function CustomizingPage() {
         />
         {gehaeuse.length > 0 ? (
           <div className="mt-8 grid gap-8 lg:grid-cols-2">
-            {auswahl.marken.length > 0 && <MeinFahrzeug filter={{ teileart: 'gehaeuse' }} />}
+            {auswahl.marken.length > 0 && (
+              <MeinFahrzeug filter={{ teileart: 'gehaeuse' }} rueckfall={{ art: 'verweis', href: alleGehaeuse, label: 'Zur Liste der Gehäuse' }} />
+            )}
             {auswahl.schluesselarten.length > 0 && (
               <div>
                 <h3 className="text-small font-semibold text-foreground">Schlüsseltyp</h3>
@@ -150,6 +168,12 @@ export default async function CustomizingPage() {
                 </ul>
               </div>
             )}
+            {/* Gewöhnlicher Verweis: Der Weg in die Liste geht auch ohne JavaScript. */}
+            <p className="lg:col-span-2">
+              <Link href={alleGehaeuse} className="font-semibold text-primary underline-offset-2 hover:underline">
+                Alle Gehäuse ansehen
+              </Link>
+            </p>
           </div>
         ) : (
           <div className="mt-8 flex flex-wrap gap-3">

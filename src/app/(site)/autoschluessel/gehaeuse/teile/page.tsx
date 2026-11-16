@@ -3,14 +3,7 @@ import Link from 'next/link';
 
 import { artikelPfad, istIndexierbar } from '@/lib/artikel';
 import { getBauformen, getFahrzeugkatalog, getFahrzeugteile, getPageContent } from '@/lib/data';
-import {
-  SCHLUESSELTYP_LABEL,
-  TEILEART_LABEL,
-  bauformNamen,
-  filterAuswahl,
-  filterGesetzt,
-  type FahrzeugteilFilter,
-} from '@/lib/data/fahrzeugteile';
+import { FILTER_PARAMETER, filterAuswahl, filterGesetzt, type FahrzeugteilFilter } from '@/lib/data/fahrzeugteile';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
@@ -25,11 +18,13 @@ import {
   GEHAEUSE_PFAD,
   LISTE_ANKER,
   TEILE_PFAD,
+  filterFormular,
   filterZeilen,
-  reiheName,
+  teileAdresse,
   teileFilter,
   teileGruppieren,
   teilKarte,
+  type FilterFeld,
   type TeilKarte,
 } from './ansicht';
 import { MeinFahrzeug } from './mein-fahrzeug';
@@ -67,7 +62,8 @@ export async function generateMetadata(props: SeiteProps): Promise<Metadata> {
   const indexierbar = !page?.seo.noindex && !filterGesetzt(filter) && teile.some(istIndexierbar);
   return {
     title: page?.seo.title ?? TITEL,
-    description: teile.length ? page?.seo.description ?? BESCHREIBUNG : BESCHREIBUNG_LEER,
+    // Nur Beispielartikel: kein Versprechen einer Auswahl (R4).
+    description: teile.some((t) => !t.example) ? page?.seo.description ?? BESCHREIBUNG : BESCHREIBUNG_LEER,
     alternates: { canonical: TEILE_PFAD },
     ...(indexierbar ? {} : { robots: { index: false, follow: true } }),
   };
@@ -88,7 +84,7 @@ export default async function GehaeuseTeilePage(props: SeiteProps) {
         title={titel}
         lead={
           page?.subline
-          ?? (teile.length
+          ?? (teile.some((t) => !t.example)
             ? 'Wählen Sie Ihr Fahrzeug. Jedes Teil sagt, wozu es passt und was von Ihrem alten Schlüssel bleibt.'
             : 'Gehäuse und Ersatzteile fragen Sie zurzeit bei uns an. Wir prüfen, was zu Ihrem Schlüssel passt.')
         }
@@ -99,7 +95,7 @@ export default async function GehaeuseTeilePage(props: SeiteProps) {
       <Section tone="muted" tight labelledBy="teile-weiter">
         <SectionHeading
           id="teile-weiter"
-          nummer={teile.length ? '03' : '02'}
+          nummer={teile.length ? '03' : '01'}
           eyebrow="Weiter"
           title="Lieber tauschen lassen?"
           lead="Wir setzen die Technik Ihres Schlüssels in ein neues Gehäuse oder reparieren Tasten und Mechanik, wenn das bei Ihrem Schlüssel geht."
@@ -154,6 +150,11 @@ function OhneTeile() {
 
 type Quellen = Parameters<typeof teilKarte>[2];
 
+const feld = 'flex flex-col gap-1.5';
+const beschriftung = 'text-small font-semibold text-foreground';
+/** Felder zum Fahrzeug stehen vor dem Baujahr, die Merkmale des Schlüssels danach. */
+const FAHRZEUG_FELDER = new Set<string>([FILTER_PARAMETER.marke, FILTER_PARAMETER.reihe]);
+
 function MitTeilen({ filter, teile, quellen }: { filter: FahrzeugteilFilter; teile: Parameters<typeof teileGruppieren>[0]; quellen: Quellen }) {
   const auswahl = filterAuswahl(teile);
   const gruppen = teileGruppieren(teile, filter);
@@ -161,13 +162,19 @@ function MitTeilen({ filter, teile, quellen }: { filter: FahrzeugteilFilter; tei
   const zeilen = filterZeilen(filter, quellen);
   const mitFahrzeug = Boolean(filter.marke);
   const treffer = gruppen.passend.length + gruppen.allgemein.length;
-  const reihenOptionen = auswahl.marken.flatMap((marke) =>
-    (auswahl.reihen[marke] ?? [])
-      .map((id) => ({ id, marke, name: reiheName(id, quellen.katalog) }))
-      .filter((r): r is { id: string; marke: string; name: string } => Boolean(r.name)),
+  // Gesetzte Werte ohne eigene Option gehen beim erneuten Absenden nicht verloren.
+  const formular = filterFormular(filter, auswahl, quellen);
+  const auswahlFeld = (f: FilterFeld) => (
+    <div key={f.name} className={feld}>
+      <label htmlFor={f.id} className={beschriftung}>{f.label}</label>
+      <Select id={f.id} name={f.name} defaultValue={f.wert}>
+        <option value="">{f.leer}</option>
+        {f.optionen.map((o) => (
+          <option key={o.wert} value={o.wert}>{o.text}</option>
+        ))}
+      </Select>
+    </div>
   );
-  const feld = 'flex flex-col gap-1.5';
-  const beschriftung = 'text-small font-semibold text-foreground';
 
   return (
     <>
@@ -182,81 +189,30 @@ function MitTeilen({ filter, teile, quellen }: { filter: FahrzeugteilFilter; tei
           />
         </div>
         <div className="mt-6 grid gap-8 lg:grid-cols-2">
-          {auswahl.marken.length > 0 && <MeinFahrzeug filter={filter} />}
-          {/* Ohne JavaScript: Formular mit Adresse (GET); die gefilterte Ansicht steht auf noindex. */}
-          <form method="get" action={`${TEILE_PFAD}#${LISTE_ANKER}`} className="grid gap-4 sm:grid-cols-2" aria-label="Teile filtern">
-            {auswahl.marken.length > 0 && (
-              <div className={feld}>
-                <label htmlFor="filter-marke" className={beschriftung}>Marke</label>
-                <Select id="filter-marke" name="marke" defaultValue={filter.marke ?? ''}>
-                  <option value="">Alle Marken</option>
-                  {auswahl.marken.map((m) => (
-                    <option key={m} value={m}>{m}</option>
-                  ))}
-                </Select>
-              </div>
-            )}
-            {reihenOptionen.length > 0 && (
-              <div className={feld}>
-                <label htmlFor="filter-reihe" className={beschriftung}>Modell</label>
-                <Select id="filter-reihe" name="reihe" defaultValue={filter.reihe ?? ''}>
-                  <option value="">Alle Modelle</option>
-                  {reihenOptionen.map((r) => (
-                    <option key={r.id} value={r.id}>{`${r.marke} ${r.name}`}</option>
-                  ))}
-                </Select>
-              </div>
-            )}
-            {auswahl.marken.length > 0 && (
+          {auswahl.marken.length > 0 && (
+            <MeinFahrzeug filter={filter} rueckfall={{ art: 'filter', feld: formular.modellFeld ? 'modell' : 'marke' }} />
+          )}
+          {/* Ohne JavaScript: Formular mit Adresse (GET); die gefilterte Ansicht steht auf noindex. Der Schlüssel aus
+              dem Filter baut das Formular nach einem Wechsel ohne Neuladen neu auf (Treffer aus „Mein Fahrzeug“,
+              „entfernen“): Sonst blieben die Auswahlfelder auf dem alten Stand und „Filter anwenden“ verlöre das Fahrzeug. */}
+          <form
+            key={teileAdresse(filter)}
+            method="get"
+            action={`${TEILE_PFAD}#${LISTE_ANKER}`}
+            className="grid gap-4 sm:grid-cols-2"
+            aria-label="Teile filtern"
+          >
+            {formular.felder.filter((f) => FAHRZEUG_FELDER.has(f.name)).map(auswahlFeld)}
+            {formular.baujahr && (
               <div className={feld}>
                 <label htmlFor="filter-baujahr" className={beschriftung}>Baujahr</label>
                 <TextInput id="filter-baujahr" name="baujahr" inputMode="numeric" pattern="[0-9]{4}" maxLength={4} defaultValue={filter.baujahr ?? ''} />
               </div>
             )}
-            {auswahl.bauformen.length > 0 && (
-              <div className={feld}>
-                <label htmlFor="filter-bauform" className={beschriftung}>Bauform</label>
-                <Select id="filter-bauform" name="bauform" defaultValue={filter.bauform ?? ''}>
-                  <option value="">Alle Bauformen</option>
-                  {auswahl.bauformen.map((b) => (
-                    <option key={b} value={b}>{bauformNamen([b], quellen.bauformen)[0] ?? b}</option>
-                  ))}
-                </Select>
-              </div>
-            )}
-            {auswahl.tastenzahlen.length > 0 && (
-              <div className={feld}>
-                <label htmlFor="filter-tasten" className={beschriftung}>Tasten</label>
-                <Select id="filter-tasten" name="tasten" defaultValue={filter.tastenzahl ?? ''}>
-                  <option value="">Jede Tastenzahl</option>
-                  {auswahl.tastenzahlen.map((t) => (
-                    <option key={t} value={t}>{t}</option>
-                  ))}
-                </Select>
-              </div>
-            )}
-            {auswahl.teilearten.length > 1 && (
-              <div className={feld}>
-                <label htmlFor="filter-teil" className={beschriftung}>Teil</label>
-                <Select id="filter-teil" name="teil" defaultValue={filter.teileart ?? ''}>
-                  <option value="">Alle Teile</option>
-                  {auswahl.teilearten.map((t) => (
-                    <option key={t} value={t}>{TEILEART_LABEL[t]}</option>
-                  ))}
-                </Select>
-              </div>
-            )}
-            {auswahl.schluesselarten.length > 0 && (
-              <div className={feld}>
-                <label htmlFor="filter-typ" className={beschriftung}>Schlüsseltyp</label>
-                <Select id="filter-typ" name="typ" defaultValue={filter.schluesselart ?? ''}>
-                  <option value="">Alle Schlüsseltypen</option>
-                  {auswahl.schluesselarten.map((s) => (
-                    <option key={s} value={s}>{SCHLUESSELTYP_LABEL[s]}</option>
-                  ))}
-                </Select>
-              </div>
-            )}
+            {formular.felder.filter((f) => !FAHRZEUG_FELDER.has(f.name)).map(auswahlFeld)}
+            {formular.verborgen.map((v) => (
+              <input key={v.name} type="hidden" name={v.name} value={v.wert} />
+            ))}
             <div className="flex flex-wrap items-end gap-3 sm:col-span-2">
               <Button type="submit">Filter anwenden</Button>
               {zeilen.length > 0 && (

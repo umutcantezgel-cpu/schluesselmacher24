@@ -11,7 +11,7 @@ import { PasstDazu } from '@/components/seo/passt-dazu';
 import { HAFTUNG_HINWEIS, VERPACKUNG_HINWEIS, haftungSatz } from '@/lib/versand/varianten';
 
 import { UmbauBeispiele } from '../customizing/umbau-beispiele';
-import { GEHAEUSE_ABLAUF, GEHAEUSE_LEISTUNGEN, versandFuerElektronik } from './leistungen';
+import { GEHAEUSE_LEISTUNGEN, LEISTUNGEN_ABLAUF_VERWEIS, versandFuerElektronik } from './leistungen';
 
 const ROUTE = 'autoschluessel/gehaeuse';
 const ANFRAGE = '/autoschluessel/gehaeuse/anfrage';
@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.seo.title ?? 'Autoschlüssel-Gehäuse erneuern',
     description:
       page?.seo.description
-      ?? 'Ein neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt. Senden Sie Fahrzeug, drei Fotos des Schlüssels und den Fahrzeugschein, wir nennen den Preis.',
+      ?? 'Neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt, wenn sie hineinpasst. Senden Sie Fahrzeug, drei Fotos und Fahrzeugschein, wir nennen den Preis.',
     alternates: { canonical: `/${ROUTE}` },
   };
 }
@@ -109,7 +109,7 @@ export default async function AutoschluesselGehaeusePage() {
           nummer="03"
           eyebrow="Leistungen"
           title="Tausch, Reparatur und Umbau"
-          lead="Alle drei Leistungen beginnen mit der Gehäuse-Anfrage. Den Preis nennen wir Ihnen, wenn wir Ihren Schlüssel gesehen haben."
+          lead="Alle drei Leistungen beginnen mit der Gehäuse-Anfrage. Den Preis nennen wir Ihnen, wenn wir die Fotos Ihres Schlüssels gesehen haben."
         />
         <ul className="mt-8 grid gap-6 md:grid-cols-3">
           {GEHAEUSE_LEISTUNGEN.map((leistung) => (
@@ -120,14 +120,8 @@ export default async function AutoschluesselGehaeusePage() {
             </li>
           ))}
         </ul>
-        <ol className="mt-10 grid gap-3">
-          {GEHAEUSE_ABLAUF.map((schritt, index) => (
-            <li key={schritt} className="flex gap-4">
-              <span className="w-8 shrink-0 font-mono text-caption tabular-nums text-foreground-muted">{String(index + 1).padStart(2, '0')}</span>
-              <span className="max-w-measure text-body text-foreground">{schritt}</span>
-            </li>
-          ))}
-        </ol>
+        {/* Ein Ablauf auf der Seite: Er steht in Abschnitt 01 (Rubrikdaten), hier nur der Verweis. */}
+        <p className="mt-8 max-w-measure text-body leading-relaxed text-foreground-muted">{LEISTUNGEN_ABLAUF_VERWEIS}</p>
         <div className="mt-8 flex flex-wrap gap-3">
           <ButtonLink href={ANFRAGE} pfeil>
             Anfrage stellen

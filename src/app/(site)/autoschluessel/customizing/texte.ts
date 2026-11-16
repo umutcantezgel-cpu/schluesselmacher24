@@ -15,11 +15,23 @@ export const CUSTOMIZING_KURZTEXT =
 export const KEINE_FALSCHEN_VERSPRECHEN =
   'Keine falschen Versprechen: Optischer Umbau nur dort anbieten, wo Elektronik, Transponder, Tasten und Bart technisch passend übernommen werden können.';
 
+/**
+ * Einleitung des Satzes für Kunden: Der Wortlaut ist eine Anweisung an den Betrieb und steht darum als
+ * Grundsatz da. Ob der Satz für Kunden umformuliert wird, entscheidet der Inhaber (offene Frage).
+ */
+export const GRUNDSATZ_EINLEITUNG = 'Unser Grundsatz:';
+
+/**
+ * Die Gehäuse-Anfrage nimmt die Leistung noch nicht als Angabe mit (offene Frage: Adressparameter
+ * `leistung`). Bis dahin nennt der Kunde sie in der Beschreibung.
+ */
+export const ANFRAGE_LEISTUNG_NENNEN = 'Schreiben Sie in der Anfrage, dass Sie einen Umbau wünschen.';
+
 /** Was möglich ist; die Beispielidee des Inhabers als allgemeine Erklärung. */
 export const MOEGLICH: ReadonlyArray<{ titel: string; satz: string }> = [
   {
     titel: 'Optische Erneuerung',
-    satz: 'Ein abgenutztes oder beschädigtes Gehäuse wird durch ein neues ersetzt. Die Technik Ihres Schlüssels bleibt.',
+    satz: 'Ein abgenutztes oder beschädigtes Gehäuse wird durch ein neues ersetzt. Die Technik Ihres Schlüssels bleibt, wenn sie in das neue Gehäuse passt.',
   },
   {
     titel: 'Umbau in eine neuere Gehäuseform',
@@ -35,9 +47,5 @@ export const BEDINGUNGEN: ReadonlyArray<{ titel: string; satz: string }> = [
   { titel: 'Bart', satz: 'Der Schlüsselbart muss in das neue Gehäuse passen oder neu gefräst werden können.' },
 ];
 
-/** Wie die Prüfung läuft: Fotos, Fahrzeug, Schlüsseltyp, dann Rückmeldung. */
-export const PRUEFUNG: readonly string[] = [
-  'Sie schicken uns in der Gehäuse-Anfrage drei Fotos Ihres Schlüssels und den Fahrzeugschein.',
-  'Wir sehen uns Fahrzeug und Schlüsseltyp an und prüfen, ob Elektronik, Transponder, Tasten und Bart übernommen werden können.',
-  'Sie bekommen eine Rückmeldung, ob der Umbau geht, mit Preis und Ablauf. Geht er nicht, sagen wir Ihnen das ehrlich.',
-];
+/* Wie die Prüfung läuft (Fotos, Fahrzeug, Schlüsseltyp, Rückmeldung), steht als Ablauf in den Rubrikdaten
+   (Rubrik „customizing“, content/rubriken.json), damit der Betrieb ihn im Admin pflegen kann. */

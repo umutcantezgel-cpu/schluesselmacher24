@@ -549,7 +549,7 @@ export function rubriken(): Rubrik[] {
       name: "Autoschlüsselgehäuse",
       laienname: "Schlüsselgehäuse",
       erklaerung:
-        "Ein neues Gehäuse für Ihren Funkschlüssel, die Elektronik bleibt. Nach Ihrer Anfrage nennen wir Ihnen den Preis.",
+        "Ein neues Gehäuse für Ihren Funkschlüssel. Die Elektronik bleibt, wenn sie hineinpasst. Den Preis nennen wir nach Ihrer Anfrage.",
       icon: "schluesselgehaeuse",
       ziel: "/autoschluessel/gehaeuse",
       ablauf: [
@@ -560,7 +560,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Preis erhalten",
-          text: "Wir prüfen Ihre Angaben und melden uns mit dem Preis und dem weiteren Ablauf.",
+          text: "Wir prüfen Ihre Angaben und melden uns mit Preis und Ablauf. Geht es bei Ihrem Schlüssel nicht, sagen wir Ihnen das.",
           icon: "zahlung",
         },
         {
@@ -579,6 +579,42 @@ export function rubriken(): Rubrik[] {
       nachweis: "fahrzeugschein",
       status: "live",
       reihenfolge: 150,
+      navigation: "autoschluessel",
+      imHub: false,
+      bereich: "autoschluessel",
+    },
+    {
+      // Eigene Rubrik des Inhabers (Arbeitsanweisung, Abschnitt 14; FA-SHOP-02B): Einstieg in der Navigation
+      // unter Autoschlüssel, der Weg selbst ist die Gehäuse-Anfrage mit Fahrzeugschein (R13).
+      id: "customizing",
+      name: "Customizing und Modifikation",
+      laienname: "Schlüssel umbauen",
+      erklaerung:
+        "Ihr Autoschlüssel in neuer Optik oder neuerer Gehäuseform. Ob das bei Ihrem Schlüssel geht, prüfen wir vorher an Ihren Fotos.",
+      icon: "schluesselgehaeuse",
+      ziel: "/autoschluessel/customizing",
+      ablauf: [
+        {
+          titel: "Fotos und Fahrzeugschein senden",
+          text: "In der Gehäuse-Anfrage: drei Fotos Ihres Schlüssels und der Fahrzeugschein.",
+          icon: "foto-hochladen",
+        },
+        {
+          titel: "Wir prüfen",
+          text: "Wir sehen uns Fahrzeug und Schlüsseltyp an und prüfen, ob Elektronik, Transponder, Tasten und Bart übernommen werden können.",
+          icon: "pruefung",
+        },
+        {
+          titel: "Rückmeldung",
+          text: "Sie bekommen eine Rückmeldung, ob der Umbau geht, mit Preis und Ablauf. Geht er nicht, sagen wir Ihnen das ehrlich.",
+          icon: "dokument",
+        },
+      ],
+      abschluss: "anfrage",
+      pflichtUploads: ["fahrzeugschein", "schluesselfoto"],
+      nachweis: "fahrzeugschein",
+      status: "live",
+      reihenfolge: 155,
       navigation: "autoschluessel",
       imHub: false,
       bereich: "autoschluessel",
