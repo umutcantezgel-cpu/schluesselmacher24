@@ -1,7 +1,7 @@
 {
   "werkzeug": "reste.mjs",
   "fassung": 1,
-  "zeitpunkt": "2026-11-16T04:40:49.152Z",
+  "zeitpunkt": "2026-11-16T04:55:01.041Z",
   "exit": 1,
   "pruefungen": [
     "demo",
@@ -36,7 +36,7 @@
     "quelltext": {
       "status": "ok",
       "dateien": 537,
-      "texte": 9022
+      "texte": 9025
     }
   },
   "bedienfehler": [],

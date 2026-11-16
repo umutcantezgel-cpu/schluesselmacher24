@@ -134,3 +134,13 @@ Geänderte Dateien der Nachbesserung: `src/lib/data/fahrzeugteile.ts`, `src/lib/
 Prüfung nach der Nachbesserung (über `sicher.sh`): vitest 233 Dateien, 3627 Tests grün; typecheck ohne Fehler; lint ohne Befund; DB-Tests 26 Dateien, 152 Tests grün (davon `gehaeuse.db.test.ts` 7); build erfolgreich.
 
 === ENDE FA-SHOP-02 · BEREIT ZUR RÜCKGABE ===
+
+## ABNAHME (Orchestrator, 16.11.2026)
+
+- **Prüfkette grün** (`werkzeuge/abnahme.sh FA-SHOP-02`, Build mit `SM24_INDEXIERUNG=an`): Typprüfung, Lint, Unit 3.627 Tests in 233 Dateien, Datenbanktests 152 in 26 Dateien (mit der Migration `20261116_042326_gehaeuse`), Build ohne Datenbank 178 von 178 Seiten (keine neuen Seiten; die folgen mit Teil B). Onpage-Messung: 135 Seiten, Median 100,0, kein Befund. `reste.mjs` über alle vier Quellen: kein neuer Fund.
+- **Migration geprüft:** `up` enthält nur CREATE und ADD; kein DROP, kein ALTER COLUMN.
+- **Vom Orchestrator nachgezogen:** Die Fahrzeugmarke ist auch bei Klappmechanismus und Schlüsselbart Pflicht (offene Frage 3 der Nachbesserung), mit Test; Admin-Hilfetext und Anleitung nennen die fünf Teilearten. Die Auswahl der Schlüsseltypen schreibt „Smart Key“ wie der Inhaber (nur die Beschriftung, der gespeicherte Wert bleibt).
+- **Freigegeben:** die Einträge in `src/payload.config.ts` und die zweite neue Sammlung `Bauformen` (A-062).
+- **Sichtprobe:** nicht möglich und nicht nötig; das Paket baut Datenmodell, Admin und einen Baustein, der erst mit echten, freigegebenen Fotos erscheint. Die Probe im Backend steht in MA-46 und MA-53.
+- **Offen für Menschen:** MA-53 (Liste der Teile mit Preisen, Kompatibilitätssätze, Bauformen, echte Vorher-Nachher-Fotos mit Einverständnis; Ablage der Fotos vor der Freigabe; Widerruf bei Gehäusen).
+

@@ -1,6 +1,6 @@
 # Prüfung „nichts Falsches bleibt übrig“ (reste.mjs)
 
-Stand: 2026-11-16T04:40:49.152Z · Prüfungen: demo, platzhalter, alt, kontakt, erreichbarkeit · Quellen: ausgeliefert, inhalt, code, quelltext · Exit 1
+Stand: 2026-11-16T04:55:01.041Z · Prüfungen: demo, platzhalter, alt, kontakt, erreichbarkeit · Quellen: ausgeliefert, inhalt, code, quelltext · Exit 1
 
 ## Quellen
 
@@ -9,7 +9,7 @@ Stand: 2026-11-16T04:40:49.152Z · Prüfungen: demo, platzhalter, alt, kontakt, 
 | ausgeliefert | ok | 148 | 4743 |
 | inhalt | ok | 18 | 30770 |
 | code | ok | 38 | 3514 |
-| quelltext | ok | 537 | 9022 |
+| quelltext | ok | 537 | 9025 |
 
 Beispieleinträge mit example: true (Namen, Kennungen, Slugs): 156
 

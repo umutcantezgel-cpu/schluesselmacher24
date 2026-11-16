@@ -399,3 +399,11 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Label: Der Anschluss DHL Paket bleibt abgeschaltet (kein Vertrag, G3, G5). Eingeschaltet wird er erst nach Vertrag, Prüfung in der Testumgebung und einem eigenen Ausbau, der das Label einmal erzeugt und am Vorgang ablegt (MA-50).
 - Umkehrprobe: neue, leere Felder am Vorgang; ohne Sendungsnummer verhält sich alles wie vorher.
 
+## A-062 · Gehäuse und Ersatzteile sind Standardartikel mit Fahrzeugbezug (2026-11-16 05:55, FA-SHOP-02, FA-14)
+- Ein neuer Wert im Feld `typ` des Produkts hätte Kasse und Widerruf berührt, weil dort jeder Typ außer „standard“ als Schlüssel nach Code gilt. Entscheidung: Gehäuse und Ersatzteile bleiben Standardartikel und tragen eine eigene Feldgruppe `fahrzeugteil`; Kauf, Versand und Widerruf verhalten sich wie bei jedem Artikel (G9 unberührt). Ob für Gehäuse etwas anderes gelten soll, fragt MA-53.
+- Keine falschen Versprechen (Wortlaut des Inhabers): Der Kompatibilitätshinweis ist Pflicht. Bei Gehäuse, Tasten, Gummimatte, Klappmechanismus und Schlüsselbart ist die Fahrzeugmarke Pflicht; ohne Marke passt ein solches Teil zu keinem Fahrzeug. Nur Batterien und „Weitere“ dürfen markenübergreifend stehen.
+- Bauformen sind eine pflegbare Liste (neue Sammlung, im Paket nicht ausdrücklich genannt, durch „als pflegbare Liste“ gedeckt und freigegeben); `payload.config.ts` trägt beide neuen Sammlungen.
+- Umbau-Beispiele erscheinen nur veröffentlicht, mit Haken „Fotos freigegeben“ und beiden Fotos samt Beschriftung. Die Fotos liegen in der öffentlichen Medienablage; die Anleitung verlangt das Unkenntlichmachen vor dem Hochladen. Eine nicht öffentliche Ablage bis zur Freigabe ist eine Entscheidung des Inhabers (MA-53).
+- Schreibweise „Smart Key“ wie beim Inhaber, auch in der Auswahl der Schlüsseltypen.
+- Umkehrprobe: neue Tabellen und Spalten, leer; ohne Haken „Gehäuse oder Ersatzteil“ verhält sich ein Artikel wie vorher.
+
