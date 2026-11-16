@@ -45,6 +45,8 @@ interface Ergebnis {
   statusHinweis?: string;
   /** Nach dem Versand: Dienstleister, Sendungsnummer, Verfolgungslink. */
   sendung?: { dienstleister?: string; nummer?: string; link?: string };
+  /** Sendung des Kunden zur Werkstatt (Einsendung). */
+  sendungZuUns?: { nummer: string; dienstleister?: string; link?: string; variante?: string };
   createdAt: string;
   updatedAt: string;
   appointment?: AppointmentInfo;
@@ -194,6 +196,26 @@ export function TerminStatusFormular() {
                     {ergebnis.sendung.link && (
                       <a
                         href={ergebnis.sendung.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 inline-flex min-h-touch items-center font-semibold text-primary underline"
+                      >
+                        Sendung verfolgen
+                      </a>
+                    )}
+                  </dd>
+                </div>
+              )}
+
+              {ergebnis.sendungZuUns && (
+                <div className="grid gap-1 border-b border-border py-3 sm:grid-cols-12 sm:gap-4">
+                  <dt className="text-small font-semibold text-foreground-muted sm:col-span-5">Ihre Sendung an uns</dt>
+                  <dd className="text-body text-foreground sm:col-span-7 sm:text-right">
+                    {ergebnis.sendungZuUns.variante ?? ergebnis.sendungZuUns.dienstleister}
+                    <span className="block font-mono tabular-nums">{ergebnis.sendungZuUns.nummer}</span>
+                    {ergebnis.sendungZuUns.link && (
+                      <a
+                        href={ergebnis.sendungZuUns.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mt-1 inline-flex min-h-touch items-center font-semibold text-primary underline"

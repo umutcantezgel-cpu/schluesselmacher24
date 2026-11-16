@@ -52,6 +52,17 @@ export function sendungErwartet(vorgang: Vorgang): boolean {
   return vorgang.approval?.sendInRequired === true && (vorgang.status === 'freigegeben' || vorgang.status === 'in-fertigung');
 }
 
+/**
+ * Was die Vorgangsseite zum Eintragen der Nummer zeigt: das Formular, solange wir die Sendung erwarten;
+ * bei der Freigabe mit Einsendung ohne angebotene Variante gibt es nichts zu wählen, die Aktion lehnte
+ * jede Eingabe ab, also nur der Weg zur Kontaktseite. `null`: nichts eintragbar.
+ */
+export function nummerEintragWeg(vorgang: Vorgang, angeboten: readonly unknown[]): 'formular' | 'kontakt' | null {
+  if (!sendungErwartet(vorgang)) return null;
+  if (!istEinsendung(vorgang) && angeboten.length === 0) return 'kontakt';
+  return 'formular';
+}
+
 /** Variante der Sendung zur Werkstatt: bei der Einsendung aus dem Formular, sonst die am Vorgang gespeicherte. */
 export function varianteDerSendung(vorgang: Vorgang): EinsendePayload['versand'] | undefined {
   if (istEinsendung(vorgang)) {
@@ -129,6 +140,49 @@ export function sendungsnummerAnwenden(
     ok: true,
     nummer,
     aenderung: { einsendeSendung, timeline: [...vorgang.timeline, { at: eingabe.jetzt, actor: 'kunde', message: text }] },
+  };
+}
+
+/** Gruppe `einsendeSendung` im Backend (Feldnamen wie in der Sammlung Vorgänge). */
+export interface EinsendeSendungGruppe {
+  sendungsnummer?: string | null;
+  dienstleister?: ShipmentCarrier | null;
+  variante?: EinsendeVarianteKennung | null;
+  eingetragenAm?: string | null;
+  eingetragenVon?: 'kunde' | 'team' | null;
+  [weitere: string]: unknown;
+}
+
+export interface TeamSendungAenderung {
+  gruppe: EinsendeSendungGruppe;
+  /** Eintrag für den Verlauf, wenn eine Nummer eingetragen oder geändert wurde. */
+  verlauf?: string;
+}
+
+/**
+ * Das Team trägt die Sendungsnummer im Backend nach oder berichtigt sie: Zeitpunkt und „Team“ werden
+ * gesetzt, der Dienstleister folgt aus der Variante, wenn er leer ist. Gelöschte Nummer: Zeitpunkt und
+ * Herkunft werden geleert. `null`, wenn sich die Nummer nicht geändert hat.
+ * `varianteDesVorgangs` ist bei der Einsendung die Wahl aus dem Formular.
+ */
+export function teamSendungAenderung(
+  neu: EinsendeSendungGruppe | null | undefined,
+  alt: EinsendeSendungGruppe | null | undefined,
+  jetzt: string,
+  varianteDesVorgangs?: unknown,
+): TeamSendungAenderung | null {
+  if (!neu || typeof neu !== 'object') return null;
+  const roh = typeof neu.sendungsnummer === 'string' ? neu.sendungsnummer.trim() : '';
+  const neueNummer = roh ? (bereinigeSendungsnummer(roh) ?? roh) : '';
+  const alteNummer = typeof alt?.sendungsnummer === 'string' ? alt.sendungsnummer.trim() : '';
+  if (neueNummer === alteNummer) return null;
+  if (!neueNummer) return { gruppe: { ...neu, eingetragenAm: null, eingetragenVon: null } };
+  const dienstleister = neu.dienstleister || dienstleisterFuerVariante(neu.variante || varianteDesVorgangs) || null;
+  return {
+    gruppe: { ...neu, dienstleister, eingetragenAm: jetzt, eingetragenVon: 'team' },
+    verlauf: alteNummer
+      ? `Sendungsnummer Ihrer Sendung an uns geändert: ${neueNummer}.`
+      : `Sendungsnummer Ihrer Sendung an uns eingetragen: ${neueNummer}.`,
   };
 }
 

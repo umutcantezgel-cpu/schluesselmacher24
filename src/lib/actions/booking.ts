@@ -4,8 +4,9 @@ import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limi
 
 import { getAppointments, getCollection, getRecordByReference, getSettings } from '@/lib/data';
 import { heuteInBerlin } from '@/lib/berliner-zeit';
+import { einsendeKundenStatus, kundenEinsendeSendung } from '@/lib/einsenden/sendung';
 import { istEinsendung } from '@/lib/einsenden/vorgang';
-import { kundenSendung, kundenStatus } from '@/lib/kundenstatus';
+import { kundenSendung } from '@/lib/kundenstatus';
 import { addDays, availableSlots, bookableDays, earliestBookableDate, minutenInBerlin } from '@/lib/scheduling';
 import { quoteCarKeyService } from '@/lib/pricing';
 import { vorgangOrtText } from '@/lib/terminort';
@@ -155,8 +156,11 @@ export async function fetchRecordStatus(reference: string, email: string) {
   }
 
   // Kundenstatus aus einer Quelle (E6-OPUS-04): dieselben Wörter wie auf der Vorgangsseite, mit den
-  // eigenen Namen der Foto-Anfrage und der Einsendung (E6-OPUS-02).
-  const anzeige = kundenStatus(record);
+  // eigenen Namen der Foto-Anfrage und der Einsendung (E6-OPUS-02), mit „Unterwegs zu uns“ (FA-SHOP-03B).
+  const anzeige = einsendeKundenStatus(record);
+  const sendungZuUns = record.einsendeSendung?.trackingNumber
+    ? kundenEinsendeSendung(record, (await getSettings().catch(() => null))?.sendIn)
+    : undefined;
   return {
     ok: true as const,
     record: {
@@ -172,6 +176,8 @@ export async function fetchRecordStatus(reference: string, email: string) {
           : undefined,
       // Nach dem Versand: Dienstleister, Sendungsnummer und öffentlicher Verfolgungslink (G-25).
       sendung: kundenSendung(record),
+      // Sendung des Kunden zur Werkstatt (FA-SHOP-03B): wie auf der Vorgangsseite.
+      sendungZuUns,
       createdAt: record.createdAt,
       updatedAt: record.updatedAt,
       appointment: record.appointment,

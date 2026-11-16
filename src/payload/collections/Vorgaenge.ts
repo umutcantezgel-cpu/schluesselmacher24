@@ -21,7 +21,7 @@ import { fahrzeugklasseText } from '../../lib/fahrzeuge/anfrage-klassen';
 import { unterlagenHinweis } from '../../lib/server/unterlagen-pflicht';
 import type { UploadRef } from '../../lib/types';
 import { dateiBezeichnung } from '../../lib/wege/nachweis';
-import { SENDUNGSNUMMER_MAX, bereinigeSendungsnummer } from '../../lib/einsenden/sendung';
+import { SENDUNGSNUMMER_MAX, bereinigeSendungsnummer, teamSendungAenderung } from '../../lib/einsenden/sendung';
 
 /**
  * Übersicht der Unterlagen im Vorgang (FA-KERN-02): je Datei der Steckplatz, dazu der Hinweis, wenn ein
@@ -828,6 +828,23 @@ export const Vorgaenge: CollectionConfig = {
                 description:
                   'Die Nummer trägt der Kunde auf seiner Vorgangsseite ein; das Team kann sie hier nachtragen oder berichtigen. '
                   + 'Sie erscheint auf der Vorgangsseite, im Vorgangsblatt und in der Statusmail. Die Rücksendung an den Kunden steht oben unter „Sendung“.',
+              },
+              hooks: {
+                // Nachtragen oder Berichtigen im Backend (`req.user`): Zeitpunkt und „Team“ setzen, Eintrag im Verlauf.
+                // Die Kundenaktion schreibt über die Local API ohne Benutzer und setzt beides selbst.
+                beforeChange: [
+                  ({ value, previousValue, req, data, originalDoc, operation }) => {
+                    if (operation !== 'update' || !req.user || req.context?.sm24System) return value;
+                    const daten = (data?.daten ?? originalDoc?.daten) as Record<string, unknown> | null | undefined;
+                    const jetzt = new Date().toISOString();
+                    const aenderung = teamSendungAenderung(value, previousValue, jetzt, daten?.versand);
+                    if (!aenderung) return value;
+                    if (aenderung.verlauf && data) {
+                      data.verlauf = [...(data.verlauf ?? originalDoc?.verlauf ?? []), { am: jetzt, von: 'team', text: aenderung.verlauf }];
+                    }
+                    return aenderung.gruppe;
+                  },
+                ],
               },
               fields: [
                 {

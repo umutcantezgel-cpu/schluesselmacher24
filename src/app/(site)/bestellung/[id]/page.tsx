@@ -16,7 +16,7 @@ import { auftragswegVon, auftragswegZeilen, istPartnerAnfrage, terminortZeile } 
 import type { OrderLine, OrderTotals, PaymentInfo, RecordStatus, SummarySection } from '@/lib/types';
 import { naechsteSchritte } from '@/lib/wege/naechste-schritte';
 import { begleitscheinAnzeigen, einsendeAngebotFuerVorgang } from '@/lib/einsenden/schein';
-import { einsendeKundenStatus, einsendeStand, kundenEinsendeSendung, sendungErwartet } from '@/lib/einsenden/sendung';
+import { einsendeKundenStatus, einsendeStand, kundenEinsendeSendung, nummerEintragWeg } from '@/lib/einsenden/sendung';
 import { istEinsendung, type EinsendePayload } from '@/lib/einsenden/vorgang';
 import { defaults } from '@/lib/data/defaults';
 import { VERPACKUNG_HINWEIS } from '@/lib/versand/varianten';
@@ -184,9 +184,12 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
   const versandAngebot = begleitscheinHref ? einsendeAngebotFuerVorgang(record, sendIn) : null;
   // Sendung des Kunden zu uns (FA-SHOP-03B): Nummer nachtragen, solange wir die Sendung erwarten.
   const zuUns = kundenEinsendeSendung(record, sendIn);
-  const nummerEintragbar = sendungErwartet(record);
   const einsendeSchritte = einsendeStand(record);
   const einsendung = istEinsendung(record);
+  // Freigabe mit Einsendung ohne angebotene Variante: nichts zu wählen, also kein Formular, sondern der Weg zur Kontaktseite.
+  const eintragWeg = nummerEintragWeg(record, versandAngebot?.optionen ?? []);
+  const nummerEintragbar = eintragWeg !== null;
+  const ohneVariante = eintragWeg === 'kontakt';
   const gewaehlteVariante = einsendung && versandAngebot
     ? [...versandAngebot.optionen, ...versandAngebot.sonderfaelle].find((o) => o.art === (record.payload as unknown as EinsendePayload).versand)
     : undefined;
@@ -418,12 +421,21 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                       </a>
                     )}
                   </p>
-                ) : (
+                ) : ohneVariante ? null : (
                   <p className="mt-2 max-w-measure text-small leading-relaxed text-foreground-muted">
                     Haben Sie den Schlüssel abgeschickt? Tragen Sie die Sendungsnummer vom Einlieferungsbeleg ein. Dann sehen Sie und wir, wo die Sendung ist.
                   </p>
                 )}
-                {nummerEintragbar && (
+                {nummerEintragbar && ohneVariante && (
+                  <p className="mt-2 max-w-measure text-small leading-relaxed text-foreground-muted">
+                    Haben Sie den Schlüssel abgeschickt? Nennen Sie uns die Sendungsnummer bitte über die{' '}
+                    <Link href="/service-und-termin/kontakt" className="font-semibold text-primary hover:underline">
+                      Kontaktseite
+                    </Link>
+                    .
+                  </p>
+                )}
+                {nummerEintragbar && !ohneVariante && (
                   <SendungsnummerFormular
                     recordId={record.id}
                     token={token}
@@ -431,7 +443,8 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
                     {...(!einsendung && versandAngebot
                       ? {
                           varianten: versandAngebot.optionen.map((o) => ({ art: o.art, titel: o.titel })),
-                          vorauswahl: record.einsendeSendung?.variant ?? (versandAngebot.vorauswahl || undefined),
+                          // Ohne gespeicherte Wahl keine Vorauswahl: Der Kunde wählt die Art von seinem Begleitschein.
+                          vorauswahl: record.einsendeSendung?.variant,
                         }
                       : {})}
                   />

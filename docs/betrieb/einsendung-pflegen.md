@@ -16,7 +16,7 @@ Beide Nummern erscheinen auf der Vorgangsseite des Kunden, im Vorgangsblatt (Abs
 ## 2. Was Sie bei einer Einsendung eintragen
 
 1. **Nichts, solange der Kunde die Nummer selbst einträgt.** Seine Vorgangsseite zeigt dann „Unterwegs zu uns“.
-2. **Nummer fehlt oder ist falsch** (etwa nach einem Anruf): unter **Sendung des Kunden zur Werkstatt** eintragen oder berichtigen. Leerzeichen und Bindestriche fallen beim Speichern weg. Erlaubt sind Buchstaben und Ziffern, 8 bis 40 Zeichen.
+2. **Nummer fehlt oder ist falsch** (etwa nach einem Anruf): unter **Sendung des Kunden zur Werkstatt** eintragen oder berichtigen. Leerzeichen und Bindestriche fallen beim Speichern weg. Erlaubt sind Buchstaben und Ziffern, 8 bis 40 Zeichen. Beim Speichern stehen dann „Team“ und der Zeitpunkt unter „Eingetragen von“ und „Eingetragen am“, und der Verlauf des Kunden vermerkt die Nummer. Ist kein Versanddienstleister gewählt, folgt er aus der Versandvariante.
 3. **Labeldatei**: Ein Versandlabel oder einen Einlieferungsbeleg als Datei können Sie unter **Labeldatei** ablegen (PDF oder Foto). Die Datei sieht nur das Team.
 4. **Schlüssel angekommen**: Status auf **In Prüfung** setzen. Der Kunde sieht „Eingegangen“. Ab dann kann er keine Nummer mehr eintragen.
 5. **Geprüft**: Preis eintragen und **Freigegeben** setzen wie bei der Foto-Anfrage. Der Kunde sieht „Geprüft, Angebot“.

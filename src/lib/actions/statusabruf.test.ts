@@ -52,6 +52,7 @@ describe('Statusabruf in einfacher Sprache (E6-OPUS-04)', () => {
     expect(antwort.record).toMatchObject({ statusLabel: 'Angemeldet', statusText: expect.stringContaining('Begleitschein') });
     expect(antwort.record.statusHinweis).toContain('Stand und Begleitschein ansehen');
     expect(antwort.record.sendung).toBeUndefined();
+    expect(antwort.record.sendungZuUns).toBeUndefined();
   });
 
   it('zeigt die Sendung erst nach dem Versand und ohne weitere Angaben', async () => {
@@ -63,6 +64,15 @@ describe('Statusabruf in einfacher Sprache (E6-OPUS-04)', () => {
     expect(antwort.record.statusHinweis).toBeUndefined();
     expect(Object.keys(antwort.record.sendung ?? {}).sort()).toEqual(['dienstleister', 'link', 'nummer']);
     expect(antwort.record.sendung).toMatchObject({ dienstleister: 'DHL', nummer: '00340434161094042557' });
+  });
+
+  it('nennt mit Sendungsnummer zur Werkstatt „Unterwegs zu uns“ und die Nummer wie die Vorgangsseite (FA-SHOP-03B)', async () => {
+    gespeichert = [vorgang({ payload: { quelle: 'einsenden', versand: 'dhl-paket' }, einsendeSendung: { trackingNumber: '003404341234567890', carrier: 'dhl', enteredBy: 'kunde' } })];
+    const antwort = await fetchRecordStatus('SM24-A-2026-0001', 'pruefung@example.invalid');
+    if (!antwort.ok) throw new Error('nicht gefunden');
+    expect(antwort.record.statusLabel).toBe('Unterwegs zu uns');
+    expect(antwort.record.sendungZuUns).toMatchObject({ nummer: '003404341234567890', dienstleister: 'DHL' });
+    expect(antwort.record.sendung).toBeUndefined();
   });
 
   it('gibt bei falscher E-Mail-Adresse nichts heraus', async () => {

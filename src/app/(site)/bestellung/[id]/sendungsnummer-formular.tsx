@@ -17,7 +17,7 @@ interface SendungsnummerFormularProps {
   gespeichert?: string;
   /** Nur bei der Freigabe mit Einsendung: die Varianten, die die Seite anbietet. */
   varianten?: Array<{ art: string; titel: string }>;
-  /** Vorauswahl: gespeicherte Wahl, sonst die Empfehlung. */
+  /** Vorauswahl: nur die gespeicherte Wahl; sonst wählt der Kunde selbst. */
   vorauswahl?: string;
 }
 
@@ -25,7 +25,8 @@ interface SendungsnummerFormularProps {
 export function SendungsnummerFormular({ recordId, token, gespeichert, varianten, vorauswahl }: SendungsnummerFormularProps) {
   const router = useRouter();
   const [nummer, setNummer] = useState(gespeichert ?? '');
-  const [variante, setVariante] = useState(vorauswahl ?? varianten?.[0]?.art ?? '');
+  const [variante, setVariante] = useState(vorauswahl ?? '');
+  const mitWahl = Boolean(varianten && varianten.length > 0);
   const [laeuft, setLaeuft] = useState(false);
   const [meldung, setMeldung] = useState<{ ok: boolean; text: string } | null>(null);
 
@@ -49,10 +50,13 @@ export function SendungsnummerFormular({ recordId, token, gespeichert, varianten
 
   return (
     <form onSubmit={absenden} className="mt-4 max-w-measure space-y-4" noValidate>
-      {varianten && varianten.length > 0 && (
-        <Field label="So schicken Sie den Schlüssel" required>
+      {varianten && mitWahl && (
+        <Field label="So schicken Sie den Schlüssel" hint="Wählen Sie dieselbe Art wie auf Ihrem Begleitschein." required>
           {({ id, describedBy, invalid }) => (
             <Select id={id} aria-describedby={describedBy} invalid={invalid} value={variante} onChange={(e) => setVariante(e.target.value)}>
+              <option value="" disabled>
+                Bitte wählen
+              </option>
               {varianten.map((v) => (
                 <option key={v.art} value={v.art}>
                   {v.titel}
@@ -81,7 +85,7 @@ export function SendungsnummerFormular({ recordId, token, gespeichert, varianten
           />
         )}
       </Field>
-      <Button type="submit" loading={laeuft} disabled={laeuft || nummer.trim() === ''}>
+      <Button type="submit" loading={laeuft} disabled={laeuft || nummer.trim() === '' || (mitWahl && !variante)}>
         Sendungsnummer speichern
       </Button>
       {meldung && (

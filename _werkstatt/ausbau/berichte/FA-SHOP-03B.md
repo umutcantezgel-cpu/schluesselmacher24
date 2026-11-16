@@ -81,4 +81,25 @@ Weiter:
 - Eingriff F (Statusabruf) einbauen oder bewusst lassen.
 - Die neue Anleitung `docs/betrieb/einsendung-pflegen.md` dem Team geben.
 
+## Nachbesserung
+
+Stand 16.11.2026, nach zwei Gegenprüfungen (7 Befunde, 1 und 6 sowie 3 und 7 betreffen dieselbe Sache).
+
+1. **[rot] Eingetragen am/von bei Eintrag durch das Team: behoben.** Die Gruppe `einsendeSendung` in `Vorgaenge.ts` hat einen `beforeChange`-Hook. Ändert ein Benutzer im Admin (`req.user`, nicht `sm24System`) die Nummer, setzt er `eingetragenAm` auf jetzt und `eingetragenVon` auf „team“, füllt einen leeren Dienstleister aus der Variante (bei der Einsendung aus der Wahl im Formular) und schreibt einen Eintrag in den Verlauf („Sendungsnummer Ihrer Sendung an uns eingetragen/geändert: …“). Gelöschte Nummer leert Zeitpunkt und Herkunft. Speichern ohne Änderung der Nummer lässt beides stehen. Die Logik liegt als reine Funktion `teamSendungAenderung` in `src/lib/einsenden/sendung.ts`. Tests: drei Fälle in `sendung.test.ts`, dazu in `einsende-sendung.db.test.ts` „berichtigt das Team die Nummer des Kunden …“ (Team, neuer Zeitpunkt, Dienstleister aus der Variante, Verlaufseintrag; Speichern ohne Änderung behält die Angaben). Die Anleitung `docs/betrieb/einsendung-pflegen.md` nennt das jetzt.
+2. **[gelb] Statusabruf zeigt „Angemeldet“ statt „Unterwegs zu uns“: behoben (Eingriff F übernommen).** `src/lib/actions/booking.ts` nutzt `einsendeKundenStatus` und gibt `sendungZuUns` (aus `kundenEinsendeSendung`, mit Variante aus den Einstellungen) zurück; `src/app/(site)/service-und-termin/terminstatus/status-formular.tsx` zeigt die Zeile „Ihre Sendung an uns“ mit Nummer und Verfolgungslink. Beide Dateien liegen außerhalb der ursprünglichen Schreibrechte; der Eingriff war im Bericht vorgeschlagen und ist im Nachbesserungsauftrag verlangt. Test: `statusabruf.test.ts` („nennt mit Sendungsnummer zur Werkstatt „Unterwegs zu uns“ …“; ohne Nummer kein `sendungZuUns`).
+3. **[gelb] Leeres Variantenangebot sperrt das Formular: behoben** (zusammen mit 7). Neue Regel `nummerEintragWeg` in `sendung.ts`: bei der Freigabe mit Einsendung ohne angebotene Variante zeigt die Vorgangsseite kein Formular, sondern den Satz mit Link zur Kontaktseite. Die Serverprüfung bleibt unverändert streng.
+4. **[gelb] Vorauswahl der Variante unabhängig vom Begleitschein: behoben.** Ohne gespeicherte Wahl gibt es keine Vorauswahl mehr; die Auswahl beginnt mit „Bitte wählen“, der Knopf bleibt bis zur Wahl gesperrt, und der Hinweis lautet „Wählen Sie dieselbe Art wie auf Ihrem Begleitschein.“ Eine schon gespeicherte Wahl bleibt vorausgewählt.
+5. **[gelb] „Retourenlabel“ neben „Versandlabel aktiv“: behoben.** Gruppenbeschreibung in `Einstellungen.ts` (und der erzeugte Kommentar in `payload-types.ts`) sagt „Versandlabel“; der Kommentar in `schein.ts` nennt den Schalter „Versandlabel aktiv“ und dass das Label erst nach Vertrag und Sandbox-Prüfung folgt. Stellen, die ausdrücklich die DHL-Retoure meinen (`versand/index.ts`, `typen.ts`, `types.ts`), bleiben.
+6. **[gelb] wie 1: behoben** (derselbe Hook; der Wert „team“ im Typ wird jetzt gesetzt).
+7. **[gelb] wie 3: behoben;** Test in `sendung.test.ts` („Freigabe mit Einsendung ohne angebotene Variante: kein Formular, sondern der Weg zur Kontaktseite“).
+
+Geänderte Dateien der Nachbesserung: `src/lib/einsenden/sendung.ts`, `src/lib/einsenden/sendung.test.ts`, `src/lib/einsenden/schein.ts`, `src/payload/collections/Vorgaenge.ts`, `src/payload/einsende-sendung.db.test.ts`, `src/payload/globals/Einstellungen.ts`, `src/payload-types.ts` (nur Beschreibungstext), `src/app/(site)/bestellung/[id]/page.tsx`, `src/app/(site)/bestellung/[id]/sendungsnummer-formular.tsx`, `src/lib/actions/booking.ts`, `src/lib/actions/statusabruf.test.ts`, `src/app/(site)/service-und-termin/terminstatus/status-formular.tsx`, `docs/betrieb/einsendung-pflegen.md`. Keine neue Migration (nur Hook und Texte, kein Schemawechsel).
+
+Prüfung nach der Nachbesserung (alle über die Datenweiche):
+- `sicher.sh --json -- npx vitest run`: 230 Dateien, 3589 Tests bestanden (vorher 3584; neu 5).
+- `sicher.sh --json -- npm run typecheck`: ohne Fehler.
+- `sicher.sh --json -- npm run lint`: ohne Fehler und Warnungen.
+- `sicher.sh --pg -- npx vitest run -c vitest.db.config.ts`: 25 Dateien, 142 Tests bestanden (neu 1).
+- `sicher.sh --json -- npm run build`: erfolgreich (Exit 0).
+
 === ENDE FA-SHOP-03B · BEREIT ZUR RÜCKGABE ===

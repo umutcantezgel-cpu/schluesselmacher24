@@ -78,4 +78,23 @@ describe('Sendung des Kunden zur Werkstatt', () => {
     expect(record?.shipment).toEqual({ carrier: 'dhl', trackingNumber: '00340434999888' });
     expect(record?.einsendeSendung?.trackingNumber).toBe('RR123456789DE');
   });
+
+  it('berichtigt das Team die Nummer des Kunden, stehen „Team“, der neue Zeitpunkt und ein Verlaufseintrag am Vorgang', async () => {
+    const id = await neueEinsendung();
+    await vorgangAendern(id, (v) => {
+      const ergebnis = sendungsnummerAnwenden(v, { zugangGueltig: true, nummer: '003404341234567890', jetzt: '2026-11-16T09:00:00.000Z' });
+      return ergebnis.ok ? ergebnis.aenderung : null;
+    });
+    const vorher = Date.now();
+    await imBackendSpeichern(id, (f) => ({ einsendeSendung: { ...f.einsendeSendung, sendungsnummer: '0034 0434 9999 8888 77', dienstleister: null } }));
+    const doc = (await payload.findByID({ collection: 'vorgaenge', id: Number(id), depth: 0, overrideAccess: true })) as Vorgaenge;
+    expect(doc.einsendeSendung).toMatchObject({ sendungsnummer: '003404349999888877', eingetragenVon: 'team', dienstleister: 'dhl' });
+    expect(Date.parse(doc.einsendeSendung?.eingetragenAm ?? '')).toBeGreaterThanOrEqual(vorher - 1000);
+    expect(doc.verlauf?.at(-1)).toMatchObject({ von: 'team', text: 'Sendungsnummer Ihrer Sendung an uns geändert: 003404349999888877.' });
+    // Speichern ohne Änderung der Nummer lässt Herkunft und Zeitpunkt stehen.
+    const eingetragenAm = doc.einsendeSendung?.eingetragenAm;
+    await imBackendSpeichern(id, () => ({ versand: { dienstleister: 'dhl', sendungsnummer: '00340434555666' } }));
+    const danach = (await payload.findByID({ collection: 'vorgaenge', id: Number(id), depth: 0, overrideAccess: true })) as Vorgaenge;
+    expect(danach.einsendeSendung).toMatchObject({ eingetragenVon: 'team', eingetragenAm });
+  });
 });

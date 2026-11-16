@@ -123,7 +123,8 @@ export async function begleitscheinZumVorgang(
 /**
  * Was die Seiten zum Einschicken über Versand und Porto sagen. Solange dieser Weg kein echtes Label
  * erzeugt (A-035), gilt immer der Begleitschein: Der Kunde frankiert selbst, „kostenlos“ steht nirgends
- * (R9), auch wenn der Schalter „Retourenlabel aktiv“ schon an ist. Das Label folgt in FA-SHOP-03B.
+ * (R9), auch wenn der Schalter „Versandlabel aktiv“ schon an ist. Das Label folgt erst nach Vertrag und
+ * Sandbox-Prüfung (FA-SHOP-03B, Offene Frage 5).
  */
 export function einsendeAngebotFuerWeg(einstellungen: EinsendeEinstellungen, fall: AngebotFall = {}): EinsendeAngebot {
   return einsendeAngebot(einstellungen, false, fall);

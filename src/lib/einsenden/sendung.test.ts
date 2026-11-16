@@ -19,8 +19,10 @@ import {
   einsendeKundenStatus,
   einsendeStand,
   kundenEinsendeSendung,
+  nummerEintragWeg,
   sendungErwartet,
   sendungsnummerAnwenden,
+  teamSendungAenderung,
 } from './sendung';
 import { EINSENDE_QUELLE, einsendeVorgang } from './vorgang';
 
@@ -144,8 +146,49 @@ describe('Sendungsnummer eintragen (Zugang, Zeitpunkt, Wahl)', () => {
     expect(sendungsnummerAnwenden(frei, { zugangGueltig: true, nummer: 'RR123456789DE', variante: 'einschreiben-wert', angeboten: angeboten(frei), jetzt: JETZT }).ok).toBe(true);
   });
 
+  it('Freigabe mit Einsendung ohne angebotene Variante: kein Formular, sondern der Weg zur Kontaktseite', () => {
+    const v = freigabe();
+    expect(nummerEintragWeg(v, angeboten(v))).toBe('formular');
+    expect(nummerEintragWeg(v, [])).toBe('kontakt');
+    // Die Einsendung braucht keine Wahl; nach dem Eingang ist nichts eintragbar.
+    expect(nummerEintragWeg(einsendung(), [])).toBe('formular');
+    expect(nummerEintragWeg(einsendung({ status: 'in-pruefung' }), [])).toBeNull();
+    expect(nummerEintragWeg(freigabe({ status: 'geprueft' }), angeboten(v))).toBeNull();
+  });
+
   it('Meldungen verraten nicht, ob es den Vorgang gibt, und sind ohne Gedankenstriche', () => {
     for (const text of Object.values(SENDUNGSNUMMER_MELDUNG)) expect(text).not.toMatch(/ – | — /);
+  });
+});
+
+describe('Sendungsnummer durch das Team im Admin', () => {
+  const SPAETER = '2026-11-17T10:30:00.000Z';
+  const vomKunden = { sendungsnummer: '003404341234567890', dienstleister: 'dhl' as const, variante: 'dhl-paket' as const, eingetragenAm: JETZT, eingetragenVon: 'kunde' as const };
+
+  it('eine Berichtigung durch das Team speichert „Team“ und den neuen Zeitpunkt, mit Verlauf', () => {
+    const ergebnis = teamSendungAenderung({ ...vomKunden, sendungsnummer: '0034 0434 9999 8888 77' }, vomKunden, SPAETER);
+    expect(ergebnis?.gruppe).toMatchObject({ sendungsnummer: '0034 0434 9999 8888 77', eingetragenAm: SPAETER, eingetragenVon: 'team', dienstleister: 'dhl' });
+    expect(ergebnis?.verlauf).toBe('Sendungsnummer Ihrer Sendung an uns geändert: 003404349999888877.');
+  });
+
+  it('neue Nummer vom Team: Dienstleister folgt aus der Variante, sonst aus der Wahl im Formular', () => {
+    const leer = { sendungsnummer: null, dienstleister: null, variante: null, eingetragenAm: null, eingetragenVon: null };
+    expect(teamSendungAenderung({ ...leer, sendungsnummer: 'RR123456789DE', variante: 'einschreiben-einwurf' }, leer, SPAETER)?.gruppe).toMatchObject({
+      dienstleister: 'deutsche-post', eingetragenVon: 'team', eingetragenAm: SPAETER,
+    });
+    const ausFormular = teamSendungAenderung({ ...leer, sendungsnummer: '003404341234567890' }, leer, SPAETER, 'dhl-paket');
+    expect(ausFormular?.gruppe.dienstleister).toBe('dhl');
+    expect(ausFormular?.verlauf).toBe('Sendungsnummer Ihrer Sendung an uns eingetragen: 003404341234567890.');
+    // Ein gewählter Dienstleister bleibt.
+    expect(teamSendungAenderung({ ...leer, sendungsnummer: 'RR123456789DE', dienstleister: 'hermes', variante: 'dhl-paket' }, leer, SPAETER)?.gruppe.dienstleister).toBe('hermes');
+  });
+
+  it('unveränderte Nummer ändert nichts; gelöschte Nummer leert Zeitpunkt und Herkunft', () => {
+    expect(teamSendungAenderung({ ...vomKunden, sendungsnummer: '0034 0434 1234 5678 90' }, vomKunden, SPAETER)).toBeNull();
+    expect(teamSendungAenderung({ ...vomKunden, labelDatei: 3 }, vomKunden, SPAETER)).toBeNull();
+    const geloescht = teamSendungAenderung({ ...vomKunden, sendungsnummer: '' }, vomKunden, SPAETER);
+    expect(geloescht?.gruppe).toMatchObject({ eingetragenAm: null, eingetragenVon: null });
+    expect(geloescht?.verlauf).toBeUndefined();
   });
 });
 
