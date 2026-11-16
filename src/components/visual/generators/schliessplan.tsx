@@ -7,7 +7,6 @@ import {
   LINIE,
   LINIE_STARK,
   Raster,
-  SCHRIFT,
   auswahl,
   parameter,
   type Parameter,
@@ -24,10 +23,18 @@ const FORMATE = ['breit', 'schmal'] as const;
 type Format = (typeof FORMATE)[number];
 
 /**
- * Maße je Format. „schmal“ ist für Telefonbreiten (unter 640 px): 360 Einheiten breit und
- * Schrift 12, bei 358 px Darstellungsbreite also rund 11,9 px. Die Höhe folgt der Tiefe der
- * Anlage (`hoeheFuer`). Der Plan wird im schmalen Format nie verkleinert.
+ * Maße je Format. „schmal“ ist für Telefonbreiten (unter 640 px): 360 Einheiten breit. Die Höhe
+ * folgt der Tiefe der Anlage (`hoeheFuer`). Der Plan wird im schmalen Format nie verkleinert.
+ *
+ * Schrift auf dem Bildschirm (FA-26-01, FA-QA-04D) = Schrift × Darstellungsbreite / Flächenbreite.
+ * Schmal steht bei 360 px Fensterbreite mindestens 318 px breit (Bildfläche mit Rahmen in der
+ * Inhaltsbreite), oft bis an den Rand (344 bis 360 px): 16 × 318 / 360 ≈ 14,1 px. Breit steht auf
+ * der Startseite bei 360 px als Ausschnitt (`schliessplanAusschnitt`, rund 335 Einheiten) in einem
+ * Kasten mit `p-4` (286 px): 17 × 286 / 335 ≈ 14,5 px; bei 1280 px im Konfigurator in 5 von 12
+ * Spalten mit `p-5` (etwa 430 px): 17 × 430 / 480 ≈ 15,2 px.
  */
+export const SCHLIESSPLAN_SCHRIFT = { breit: 17, schmal: 16 } as const;
+
 interface Flaeche {
   breite: number;
   rand: number;
@@ -47,8 +54,8 @@ const FLAECHE: Record<Format, Flaeche> = {
   breit: {
     breite: 480,
     rand: 20,
-    schrift: SCHRIFT,
-    zeichen: SCHRIFT * 0.6,
+    schrift: SCHLIESSPLAN_SCHRIFT.breit,
+    zeichen: SCHLIESSPLAN_SCHRIFT.breit * 0.6,
     schluesselHoehe: 26,
     tuerBreite: 22,
     tuerHoehe: 32,
@@ -59,9 +66,9 @@ const FLAECHE: Record<Format, Flaeche> = {
   schmal: {
     breite: 360,
     rand: 12,
-    schrift: 12,
-    zeichen: 12 * 0.6,
-    schluesselHoehe: 22,
+    schrift: SCHLIESSPLAN_SCHRIFT.schmal,
+    zeichen: SCHLIESSPLAN_SCHRIFT.schmal * 0.6,
+    schluesselHoehe: 24,
     tuerBreite: 22,
     tuerHoehe: 30,
     minRaster: 0,
@@ -81,6 +88,17 @@ const GESTRICHELT = '4 3';
 const TAKT = 0.32;
 /** Abstand der Z-Türen von der Mitte (breites und schmales Format). */
 const Z_VERSATZ = 42;
+/** Breites Format: Rand links, Schlüsselsymbol (16), Abstand vor dem Kürzel, Rand rechts. */
+const SYMBOL_RAND = 6;
+const KUERZEL_X = 25;
+const KASTEN_RAND = 6;
+/** Mindestabstand zweier „frei“ unter benachbarten schmalen Reservetüren. */
+const FREI_LUECKE = 6;
+
+/** Grundlinie einer Zeile, die mittig auf `y` steht. */
+function mittig(y: number, f: Pick<Flaeche, 'schrift'>): number {
+  return r(y + f.schrift * 0.35);
+}
 
 interface Baum {
   art: 'schluessel' | 'tuer';
@@ -190,7 +208,7 @@ function tuerenUnter(b: Baum): string[] {
 
 function schluesselBreite(label: string | undefined, f: Flaeche): number {
   if (f.schmal) return label ? 8 + label.length * f.zeichen : 30;
-  return label ? 34 + label.length * f.zeichen : 36;
+  return label ? KUERZEL_X + label.length * f.zeichen + KASTEN_RAND : 36;
 }
 
 /** Breite eines Knotens; ein Reserveplatz ist so breit wie ein ES-Schlüssel. */
@@ -246,14 +264,17 @@ function blattRaster(anzahl: number, f: Flaeche): number {
   return Math.max(f.minRaster, Math.min(f.maxRaster, (f.breite - 2 * f.rand) / Math.max(1, anzahl)));
 }
 
-/** Zeilenmitten für `anzahl` Ebenen: breit senkrecht zentriert, schmal von oben nach unten. */
-function zeilenLage(anzahl: number, f: Flaeche): (ebene: number) => number {
+/**
+ * Zeilenmitten für `anzahl` Ebenen: breit senkrecht zentriert, schmal von oben nach unten.
+ * `unten`: Platz unter der letzten Zeile (breit), etwa für Türnummern.
+ */
+function zeilenLage(anzahl: number, f: Flaeche, unten = 0): (ebene: number) => number {
   if (f.schmal) {
     return (ebene: number) => f.rand + f.tuerHoehe / 2 + ebene * SCHMAL_EBENE;
   }
-  const schritt = Math.min(MAX_ZEILE, (BREIT_HOEHE - 2 * f.rand - f.tuerHoehe) / Math.max(1, anzahl - 1));
+  const schritt = Math.min(MAX_ZEILE, (BREIT_HOEHE - 2 * f.rand - f.tuerHoehe - unten) / Math.max(1, anzahl - 1));
   const hoehe = (anzahl - 1) * schritt;
-  const start = (BREIT_HOEHE - hoehe) / 2;
+  const start = (BREIT_HOEHE - unten - hoehe) / 2;
   return (ebene: number) => start + ebene * schritt;
 }
 
@@ -267,8 +288,8 @@ function halbeHoehe(k: Knoten, f: Flaeche): number {
 }
 
 /** Plan der Zentralschlossanlage: Z-Türen oben, Wohnungsschlüssel, eigene Türen. */
-function zentralPlan(tueren: number, f: Flaeche) {
-  const zeilen = zeilenLage(3, f);
+function zentralPlan(tueren: number, f: Flaeche, unten: number) {
+  const zeilen = zeilenLage(3, f, unten);
   const raster = blattRaster(tueren, f);
   const zentralTueren: Knoten[] = [-1, 1].map((seite, i) => ({
     art: 'tuer',
@@ -301,8 +322,8 @@ function zentralPlan(tueren: number, f: Flaeche) {
   return { knoten, kanten, hoehe: hoeheFuer(3, f) };
 }
 
-function plan(system: System, gruppen: number, tueren: number, reserve: number, f: Flaeche) {
-  if (system === 'zentral') return zentralPlan(tueren, f);
+function plan(system: System, gruppen: number, tueren: number, reserve: number, f: Flaeche, unten: number) {
+  if (system === 'zentral') return zentralPlan(tueren, f, unten);
   const wurzel =
     system === 'gleichschliessung'
       ? schluessel(
@@ -314,7 +335,24 @@ function plan(system: System, gruppen: number, tueren: number, reserve: number, 
         ? generalhaupt(gruppen, tueren, reserve)
         : schluessel('wurzel', 'HS', [...einzel(tueren, 1), ...freieBaume(reserve)]);
   const ebenen = tiefe(wurzel);
-  return { ...auslegen(wurzel, zeilenLage(ebenen, f), f), hoehe: hoeheFuer(ebenen, f) };
+  return { ...auslegen(wurzel, zeilenLage(ebenen, f, unten), f), hoehe: hoeheFuer(ebenen, f) };
+}
+
+/**
+ * Schmal: Versatz der Beschriftung „frei“ unter Reservetüren. Stehen zwei Reservetüren enger als
+ * „frei“ breit ist, rückt die rechte eine Zeile tiefer (die Fläche wächst um diese Zeile).
+ */
+function freiVersatz(knoten: Knoten[], f: Flaeche): Map<string, number> {
+  const versatz = new Map<string, number>();
+  if (!f.schmal) return versatz;
+  const breite = 4 * f.zeichen + FREI_LUECKE;
+  const freie = knoten.filter((k) => k.art === 'tuer' && k.frei).sort((a, b) => a.x - b.x);
+  freie.forEach((k, i) => {
+    const vorher = freie[i - 1];
+    const eng = vorher !== undefined && k.x - vorher.x < breite && (versatz.get(vorher.kennung) ?? 0) === 0;
+    versatz.set(k.kennung, eng ? f.schrift + 2 : 0);
+  });
+  return versatz;
 }
 
 /** Liest die Parameter und legt den Plan aus — gemeinsame Grundlage von Grafik und Schlüsselliste. */
@@ -328,7 +366,12 @@ function lesePlan(p: Parameter) {
   const f = FLAECHE[auswahl(wert(p, 'format'), FORMATE, 'breit')];
   const nummernWert = wert(p, 'nummern');
   const nummern = nummernWert === true || nummernWert === 'true' || nummernWert === 'ja';
-  return { system, f, nummern, ...plan(system, gruppen, tueren, reserve, f) };
+  /* Breit: Platz für die Türnummern unter der untersten Zeile. */
+  const unten = nummern && !f.schmal ? f.schrift + 2 : 0;
+  const gelegt = plan(system, gruppen, tueren, reserve, f, unten);
+  const frei = freiVersatz(gelegt.knoten, f);
+  const extra = Math.max(0, ...frei.values());
+  return { system, f, nummern, frei, ...gelegt, hoehe: gelegt.hoehe + extra };
 }
 
 /** Türnummer (1–8) unter einer echten Tür; Zentral- und Reservetüren haben keine. */
@@ -491,7 +534,7 @@ function SchluesselKnoten({ k, oben, stand, f }: KnotenProps & { oben: boolean }
   if (f.schmal) return <SchluesselKnotenSchmal k={k} oben={oben} stand={stand} f={f} />;
   const breite = schluesselBreite(k.label, f);
   const x0 = k.x - breite / 2;
-  const symbolX = k.label ? x0 + 7.5 : k.x - 8;
+  const symbolX = k.label ? x0 + SYMBOL_RAND : k.x - 8;
   const cy = k.y;
   return (
     <g className={gruppenKlasse(stand)} style={motionStyle(0.05 + k.ebene * TAKT)}>
@@ -515,8 +558,8 @@ function SchluesselKnoten({ k, oben, stand, f }: KnotenProps & { oben: boolean }
           className="fill-foreground-muted font-mono"
           fontSize={f.schrift}
           fontWeight={500}
-          x={r(x0 + 27)}
-          y={r(cy + 4.5)}
+          x={r(x0 + KUERZEL_X)}
+          y={mittig(cy, f)}
         >
           {k.label}
         </text>
@@ -547,7 +590,7 @@ function SchluesselKnotenSchmal({ k, oben, stand, f }: KnotenProps & { oben: boo
           fontWeight={500}
           textAnchor="middle"
           x={r(k.x)}
-          y={r(cy + 4.2)}
+          y={mittig(cy, f)}
         >
           {k.label}
         </text>
@@ -585,7 +628,7 @@ function FreierKnoten({ k, stand, f }: KnotenProps) {
           fontWeight={500}
           textAnchor="middle"
           x={r(k.x)}
-          y={r(k.y + 4.5)}
+          y={mittig(k.y, f)}
         >
           frei
         </text>
@@ -594,8 +637,8 @@ function FreierKnoten({ k, stand, f }: KnotenProps) {
   );
 }
 
-function TuerKnoten({ k, stand, f, nummer }: KnotenProps & { nummer?: string }) {
-  if (k.frei) return <FreierTuer k={k} stand={stand} f={f} />;
+function TuerKnoten({ k, stand, f, nummer, versatz }: KnotenProps & { nummer?: string; versatz?: number }) {
+  if (k.frei) return <FreierTuer k={k} stand={stand} f={f} versatz={versatz} />;
   const zentral = k.label === 'Z';
   const links = k.x - f.tuerBreite / 2;
   const oben = k.y - f.tuerHoehe / 2;
@@ -630,7 +673,7 @@ function TuerKnoten({ k, stand, f, nummer }: KnotenProps & { nummer?: string }) 
           fontWeight={500}
           textAnchor={k.x < f.breite / 2 ? 'end' : 'start'}
           x={r(k.x < f.breite / 2 ? links - 7 : links + f.tuerBreite + 7)}
-          y={r(k.y + 4.5)}
+          y={mittig(k.y, f)}
         >
           Z
         </text>
@@ -639,8 +682,8 @@ function TuerKnoten({ k, stand, f, nummer }: KnotenProps & { nummer?: string }) 
   );
 }
 
-/** Reservetür: gestrichelt, ohne Füllung. Schmal steht „frei“ unter ihr. */
-function FreierTuer({ k, stand, f }: KnotenProps) {
+/** Reservetür: gestrichelt, ohne Füllung. Schmal steht „frei“ unter ihr (`versatz`: eine Zeile tiefer). */
+function FreierTuer({ k, stand, f, versatz = 0 }: KnotenProps & { versatz?: number }) {
   const links = k.x - f.tuerBreite / 2;
   const oben = k.y - f.tuerHoehe / 2;
   return (
@@ -662,7 +705,7 @@ function FreierTuer({ k, stand, f }: KnotenProps) {
           fontSize={f.schrift}
           textAnchor="middle"
           x={r(k.x)}
-          y={r(k.y + f.tuerHoehe / 2 + 13)}
+          y={r(k.y + f.tuerHoehe / 2 + f.schrift + versatz)}
         >
           frei
         </text>
@@ -681,7 +724,7 @@ function FreierTuer({ k, stand, f }: KnotenProps) {
  * - `tueren`: 2–8 Türen (bei `zentral`: Wohnungstüren), Standard 4
  * - `reserve`: 0–2 freie Plätze (ES mit Tür, gestrichelt, nicht wählbar), Standard 0 —
  *   nur bei `haupt` und `generalhaupt`; bei `generalhaupt` an der letzten Gruppe
- * - `format`: `breit` (Standard, 480 Einheiten) | `schmal` (360 Einheiten, Schrift 12 für Telefone)
+ * - `format`: `breit` (Standard, 480 Einheiten) | `schmal` (360 Einheiten, größere Schrift für Telefone)
  * - `nummern`: `true` | `false` (Standard; auch `'true'`, `'ja'`). Türnummer 1–8 in Mono unter jeder
  *   Tür, nicht an Zentral- und Reservetüren. Ohne den Parameter bleibt die Ausgabe unverändert.
  * - `markiert`: Kennung eines Schlüssels (`wurzel`, `g1`, `g1.1`, `e3` …). Hervorgehoben
@@ -696,7 +739,7 @@ function FreierTuer({ k, stand, f }: KnotenProps) {
  */
 export function SchliessplanGrafik({ params, title, className }: VisualProps) {
   const p = parameter(params);
-  const { system, f, knoten, kanten, hoehe, nummern } = lesePlan(p);
+  const { system, f, knoten, kanten, hoehe, nummern, frei } = lesePlan(p);
   const markierung = markieren(knoten, kanten, wert(p, 'markiert'), wert(p, 'tuer'));
   const standardTitel = markierung
     ? `${TITEL[system]} – markiert: ${markierung.text}`
@@ -764,6 +807,7 @@ export function SchliessplanGrafik({ params, title, className }: VisualProps) {
               f={f}
               stand={zustand(markierung?.knoten.has(k))}
               nummer={tuerNummer(k, nummern)}
+              versatz={frei.get(k.kennung)}
             />
           ) : (
             <SchluesselKnoten
@@ -790,7 +834,7 @@ export function schliessplanAusschnitt(
   params: unknown,
   rand = 12,
 ): { x: number; y: number; breite: number; hoehe: number; vollBreite: number; vollHoehe: number } {
-  const { knoten, f, hoehe, nummern } = lesePlan(parameter(params));
+  const { knoten, f, hoehe, nummern, frei } = lesePlan(parameter(params));
   const halbeBreite = (k: Knoten) => knotenBreite(k, f) / 2;
   const zText = (k: Knoten) => (k.label === 'Z' ? 7 + f.zeichen + 2 : 0);
   const links = Math.min(
@@ -800,14 +844,14 @@ export function schliessplanAusschnitt(
     ...knoten.map((k) => k.x + halbeBreite(k) + (k.x >= f.breite / 2 ? zText(k) : 0)),
   );
   const oben = Math.min(...knoten.map((k) => k.y - halbeHoehe(k, f)));
-  /* Unter einer schmalen Reservetür steht „frei“ (Grundlinie 13 unter der Türkante), unter einer
-     nummerierten Tür die Türnummer (Grundlinie schrift + 1 unter der Türkante). */
+  /* Unter einer schmalen Reservetür steht „frei“ (Grundlinie eine Schriftgröße unter der Türkante,
+     ggf. eine Zeile tiefer), unter einer nummerierten Tür die Türnummer (Grundlinie schrift + 1). */
   const unten = Math.max(
     ...knoten.map(
       (k) =>
         k.y
         + halbeHoehe(k, f)
-        + (k.art === 'tuer' && k.frei && f.schmal ? 13 : 0)
+        + (k.art === 'tuer' && k.frei && f.schmal ? f.schrift + (frei.get(k.kennung) ?? 0) : 0)
         + (tuerNummer(k, nummern) !== undefined ? f.schrift + 1 : 0),
     ),
   );

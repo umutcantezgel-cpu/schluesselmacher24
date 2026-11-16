@@ -62,7 +62,7 @@ Für jede Quelle: Zweck · Inhalt · Lizenz und Nutzung · Stand · Abruf · Abl
 - Lizenz: laut `readme.txt` Creative Commons Attribution 4.0, Namensnennung mit Link auf www.geonames.org genügt; ohne Gewähr.
 - Abruf: Datei DE.zip aus https://download.geonames.org/export/zip/ (2026-11-15), 388.077 Byte, SHA-256 1951e1fd5f577a5d315fbddd490c6b0bec032225eadee86191ed85a9fdfdfc28; `DE.txt` SHA-256 c5fa1e0905bedc2d67724cf142ac7ce8159b69658e419b912088068ff8128ea7.
 - Ablage: `_werkstatt/ausbau/daten/orte/geonames/` (nicht committet); abgeleitet `content/orte/postleitzahlen.json`.
-- Lücken: kein Gemeindeschlüssel in der Quelle (Zuordnung abgeleitet, 1.101 Postleitzahlen ohne eindeutige Gemeinde); Aktualisierungstakt von GeoNames nicht belegt.
+- Lücken: kein Gemeindeschlüssel in der Quelle (Zuordnung abgeleitet, 180 Postleitzahlen ohne eindeutige Gemeinde); Großempfänger und Postfächer mit Firmen- und Behördennamen (Zeilen ohne Genauigkeit) entfallen beim Import, übernommen 8.282 Postleitzahlen (Regel in `content/orte/LIZENZ.md`); Aktualisierungstakt von GeoNames nicht belegt.
 
 ## Video (G-44) · erhebung/E1-karte-video.md
 - Zweck: Anleitungen hinter einer Datenschutz-Fassade (E8-OPUS-03).

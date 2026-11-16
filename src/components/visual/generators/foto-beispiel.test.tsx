@@ -2,7 +2,8 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { FOTO_BEISPIELE, FOTO_BEISPIEL_TITEL, FotoBeispielGrafik } from './foto-beispiel';
+import { ausserhalb, bildschirmPx, textKaesten, ueberlappungen } from './beschriftung-test-hilfe';
+import { FOTO_BEISPIELE, FOTO_BEISPIEL_TITEL, FOTO_SCHRIFT, FotoBeispielGrafik } from './foto-beispiel';
 
 function zeichne(params: unknown, title: unknown = ''): string {
   return renderToStaticMarkup(
@@ -104,5 +105,17 @@ describe('FotoBeispielGrafik (FA-26-06)', () => {
         expect(['0.75', '1', '1.5', '2', '2.25', '3', '4']).toContain(breite);
       }
     }
+  });
+
+  it.each(FOTO_BEISPIELE)('%s: Beschriftung auf dem Telefon mindestens 14 px, in der Fläche, ohne Überlappung (FA-QA-04D)', (motiv) => {
+    // Am Upload-Feld bei 360 px Fensterbreite: Formularspalte 320 px, im Kasten mit p-4 288 px.
+    expect(bildschirmPx(FOTO_SCHRIFT, 288, 480)).toBeGreaterThanOrEqual(14);
+    const kaesten = textKaesten(zeichne({ motiv }));
+    expect(kaesten.length).toBeGreaterThan(0);
+    for (const k of kaesten) expect(k.groesse).toBe(FOTO_SCHRIFT);
+    expect(ausserhalb(kaesten, 480, 300)).toEqual([]);
+    expect(ueberlappungen(kaesten)).toEqual([]);
+    // Keine Regel aus globals.css darf die Schrift im Ausschnitt verkleinern.
+    expect(zeichne({ motiv })).not.toContain('data-legende');
   });
 });

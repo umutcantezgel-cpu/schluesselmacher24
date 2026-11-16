@@ -6,6 +6,9 @@ import { describe, expect, it } from 'vitest';
 import {
   anhangALesen,
   anhangAZuordnen,
+  gemeindeNamen,
+  istOrganisation,
+  kurzname,
   leseGemeindeverzeichnis,
   leseGeonames,
   postleitzahlenBilden,
@@ -17,6 +20,7 @@ import {
   teileName,
   vergleichsname,
   zeilenJson,
+  zustellzeilenWaehlen,
   ZUORDNUNG_ANHANG_A,
 } from './orte-import.mjs';
 import { leseXlsx } from './fahrzeuge-import-fz2.mjs';
@@ -134,6 +138,74 @@ describe('Postleitzahlen', () => {
     expect(p['87491']).toMatchObject({ kreise: [], gemeinden: [] });
     // „Musterstadt Nord“ ist ein Ortsteil: nicht geraten. Der Verwaltungssitz 35997 fehlt in GeoNames.
     expect(zaehler).toMatchObject({ zeilen: 4, zugeordnet: 2, ohneGeonames: 1 });
+  });
+});
+
+describe('Großempfänger und Postfächer (Abnahme FA-PLATTFORM-03)', () => {
+  // Erfundene Zeilen (G4) im Aufbau von DE.txt; die zwölfte Spalte ist die Genauigkeit.
+  const zeile = (plz: string, ort: string, kreis: string, genauigkeit: string) =>
+    ['DE', plz, ort, 'Hessen', 'HE', '', '', 'Testkreis', kreis, '50.5', '8.5', genauigkeit].join('\t');
+  const geo = leseGeonames(
+    [
+      zeile('35999', 'Musterstadt', '06999', '4'),
+      zeile('35998', 'Oberdorf', '06999', '4'),
+      zeile('35990', 'Musterstadt', '06999', ''),
+      zeile('35991', 'Musterstadt Nord', '06999', ''),
+      zeile('35992', 'Oberdorf', '06999', ''),
+      zeile('35993', 'Musterstadt Stadtwerke AG', '06999', ''),
+      zeile('35993', 'Sonnenhof Reisen', '06999', ''),
+      zeile('35994', 'Probe Versand GmbH', '06999', ''),
+      zeile('35995', 'Musterstadt 12345', '06999', ''),
+      zeile('35996', 'Beispieldorf a.d. Lahn', '06999', ''),
+      zeile('35997', 'Hinterhof, Gemeinde Musterstadt', '06999', ''),
+      ['DE', '35989', 'Grenzort', '', '', '', '', '', '', '47.5', '10.4', ''].join('\t'),
+    ].join('\n'),
+  );
+  const gem = [
+    { schluessel: '06999001', name: 'Musterstadt', bezeichnung: 'Stadt', kreis: '06999', land: '06', plz: '35999' },
+    { schluessel: '06999002', name: 'Beispieldorf an der Lahn', bezeichnung: null, kreis: '06999', land: '06', plz: '35996' },
+  ];
+
+  it('behält Zeilen mit Genauigkeit und ohne nur Orte ohne Organisationskennzeichen', () => {
+    const { behalten, entfallen } = zustellzeilenWaehlen(geo, gem);
+    expect(behalten.map((z: { plz: string; ort: string }) => `${z.plz} ${z.ort}`)).toEqual([
+      '35999 Musterstadt',
+      '35998 Oberdorf',
+      '35990 Musterstadt',
+      '35991 Musterstadt Nord',
+      // „Oberdorf“ führt GeoNames im Kreis mit Genauigkeit: ein Ortsteil.
+      '35992 Oberdorf',
+      // „a.d.“ und „an der“ gelten gleich.
+      '35996 Beispieldorf a.d. Lahn',
+      '35997 Hinterhof, Gemeinde Musterstadt',
+    ]);
+    expect(entfallen.map((z: { plz: string; grund: string }) => `${z.plz} ${z.grund}`)).toEqual([
+      '35993 Organisation',
+      '35993 kein Ort im Kreis',
+      '35994 Organisation',
+      '35995 Organisation',
+      '35989 ohne Kreis',
+    ]);
+  });
+
+  it('erkennt Organisationen, nicht aber Gemeinden mit ähnlichem Wortende', () => {
+    for (const name of ['Stadtwerke Essen AG', 'E.ON Ruhrgas AG', 'Galeria Kaufhof GmbH AWIN001006700000', 'Commerzbank AG', 'Zalando SE', 'Kreissparkasse Wetzlar', 'Volksbank Mittelhessen eG', 'Förderverein e.V.', 'Finanzamt Wetzlar', 'Agentur für Arbeit Gießen', 'Landeshauptstadt München Baureferat', 'Postfach 1234']) {
+      expect(istOrganisation(name), name).toBe(true);
+    }
+    for (const name of ['Wetzlar', 'Freiamt', 'Linsengericht', 'Freigericht', 'Bad Homburg vor der Höhe', 'Sankt Augustin', 'Neustadt an der Weinstraße', 'Hagen', 'Seelbach']) {
+      expect(istOrganisation(name), name).toBe(false);
+    }
+  });
+
+  it('Kurzform und Namensformen gleichen Abkürzungen des Gemeindeverzeichnisses an', () => {
+    expect(kurzname('Gars a.Inn')).toBe(kurzname('Gars am Inn'));
+    expect(kurzname('Seubersdorf i.d.OPf.')).toBe(kurzname('Seubersdorf in der Oberpfalz'));
+    expect(kurzname('Bad Homburg v. d. Höhe')).toBe(kurzname('Bad Homburg vor der Höhe'));
+    expect(kurzname('St. Johann')).toBe(kurzname('Sankt Johann'));
+    const wittenberg = gemeindeNamen({ name: 'Wittenberg', bezeichnung: 'Lutherstadt' });
+    expect([...wittenberg.mitBezeichnung]).toEqual([kurzname('Lutherstadt Wittenberg')]);
+    expect([...gemeindeNamen({ name: 'Cottbus/Chóśebuz', bezeichnung: 'Stadt' }).formen]).toContain('cottbus');
+    expect(gemeindeNamen({ name: 'Kiel', bezeichnung: 'Landeshauptstadt' }).mitBezeichnung.size).toBe(0);
   });
 });
 
@@ -285,7 +357,9 @@ describe('Dateien des Stamms', () => {
     expect(gemeindenDatei.anzahl).toBe(10751);
     expect(gemeinden).toHaveLength(10751);
     expect(kreiseDatei.kreise).toHaveLength(400);
-    expect(plzDatei.postleitzahlen).toHaveLength(10815);
+    expect(plzDatei.postleitzahlen).toHaveLength(8282);
+    expect(plzDatei.anzahl).toBe(8282);
+    expect(plzDatei.entfallen).toMatchObject({ zeilen: 7028, postleitzahlen: 2533 });
     expect(gemeindenDatei.herkunft.gebietsstand).toBe('31.12.2025');
     expect(gemeindenDatei.quelle).toContain('Statistisches Bundesamt (Destatis)');
     expect(plzDatei.quelle).toContain('CC BY 4.0');
@@ -348,6 +422,34 @@ describe('Dateien des Stamms', () => {
     expect(ORTSSTAMM_QUELLEN.postleitzahlen.text).toContain('CC BY 4.0');
   });
 
+  it('kein Ortsname in postleitzahlen.json trägt ein Organisationskennzeichen', () => {
+    const treffer = plzDatei.postleitzahlen.flatMap((p) => p.orte.filter((o) => istOrganisation(o)).map((o) => `${p.plz} ${o}`));
+    expect(treffer).toEqual([]);
+  });
+
+  it('Großempfänger fallen weg, Orte bleiben (45117, 01053, 11501; 35576, 14461, 57629)', () => {
+    const plz = (z: string) => plzDatei.postleitzahlen.find((p) => p.plz === z);
+    for (const z of ['45117', '01053', '11501']) {
+      const e = plz(z);
+      // Entfällt ganz oder führt nur Orte.
+      expect(e === undefined || e.orte.every((o) => !istOrganisation(o) && !/Stadtwerke|Ruhrgas|Galeria|Commerzbank|Zalando/.test(o)), z).toBe(true);
+    }
+    expect(plz('45117')).toBeUndefined();
+    expect(plz('35576')?.gemeinden).toEqual(['06532023']);
+    // 14461 Potsdam steht nur ohne Genauigkeit in GeoNames und bleibt als Name der Gemeinde.
+    expect(plz('14461')).toMatchObject({ orte: ['Potsdam'], gemeinden: ['12054000'] });
+    expect(plz('57629')?.gemeinden).toContain('07132066');
+    // Bad Homburg (Anhang A) behält Postleitzahlen, obwohl die des Verwaltungssitzes (61343) ein Großempfänger ist.
+    expect(plzDatei.postleitzahlen.filter((p) => p.gemeinden.includes('06434001')).length).toBeGreaterThan(0);
+    expect(plz('61343')).toBeUndefined();
+  });
+
+  it('jede Gemeinde der Prioritätsliste hat mindestens eine Postleitzahl', () => {
+    const mitPlz = new Set(plzDatei.postleitzahlen.flatMap((p) => p.gemeinden));
+    const ohne = prioritaetDatei.eintraege.filter((e) => e.schluessel && !mitPlz.has(e.schluessel)).map((e) => e.name);
+    expect(ohne).toEqual([]);
+  });
+
   it('die Ländertabelle des Imports gleicht der der Anwendung', () => {
     expect({ ...LAENDER_IMPORT }).toEqual({ ...LAENDER });
   });
@@ -374,6 +476,11 @@ describe.skipIf(!existsSync(STANDARD_GV) || !existsSync(STANDARD_GEONAMES))('Roh
     expect(gv.kreise).toEqual(kreiseDatei.kreise);
     const geo = leseGeonames(readFileSync(STANDARD_GEONAMES, 'utf8'));
     expect(geo).toHaveLength(23296);
-    expect(postleitzahlenBilden(geo, gv.gemeinden).liste).toEqual(plzDatei.postleitzahlen);
+    const { behalten, entfallen } = zustellzeilenWaehlen(geo, gv.gemeinden);
+    expect(postleitzahlenBilden(behalten, gv.gemeinden).liste).toEqual(plzDatei.postleitzahlen);
+    // Keine Zeile mit Genauigkeit entfällt, und keine trägt ein Organisationskennzeichen.
+    expect(entfallen.every((z: { genau: boolean }) => !z.genau)).toBe(true);
+    expect(geo.filter((z: { genau: boolean; ort: string }) => z.genau && istOrganisation(z.ort))).toEqual([]);
+    expect(entfallen).toHaveLength(plzDatei.entfallen!.zeilen);
   }, 60_000);
 });

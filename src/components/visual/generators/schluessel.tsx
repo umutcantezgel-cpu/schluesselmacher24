@@ -9,7 +9,6 @@ import {
   LINIE,
   MITTELLINIE,
   Raster,
-  SCHRIFT_KLEIN,
   aussenTangenten,
   auswahl,
   hash,
@@ -27,6 +26,15 @@ import {
 
 const BREITE = 480;
 const HOEHE = 270;
+
+/**
+ * Ziffern unter dem Lineal (nur mit `einschnitte`), in Einheiten der Fläche (FA-26-01, FA-QA-04D).
+ * Die Zeichnung steht in Bildflächen und Kacheln; bei 360 px Fensterbreite mindestens 280 px breit
+ * (Kasten mit Rand in der Inhaltsbreite): 24 × 280 / 480 = 14 px. Innen gilt `24 / skala`.
+ */
+export const LINEAL_SCHRIFT = 24;
+/** Platz unter dem Lineal für die Ziffern: Abstand, Oberlänge, Schrift und Unterlänge. */
+export const LINEAL_UNTEN = 8 + LINEAL_SCHRIFT + 2;
 
 const TYPEN = ['zylinder', 'buntbart', 'klapp', 'funk', 'smart-key', 'transponder'] as const;
 type Typ = (typeof TYPEN)[number];
@@ -654,6 +662,26 @@ function einpassung(x1: number, y1: number, x2: number, y2: number) {
   };
 }
 
+/** Stehen die Ziffern (Schrift `schrift`, innen) enger als ihre Breite, rücken sie in zwei Zeilen. */
+function ziffernVersetzt(teilung: number[], schrift: number): boolean {
+  if (teilung.length < 2) return false;
+  const abstand = Math.min(...teilung.slice(1).map((x, i) => x - teilung[i]));
+  return abstand < schrift * 0.6 + 4 * (schrift / LINEAL_SCHRIFT);
+}
+
+/**
+ * Einpassung mit Platz für die Ziffern unter dem Lineal. Liegen die Einschnitte zu eng für die
+ * Ziffern (Buntbart, 13 Einheiten), stehen sie abwechselnd in zwei Zeilen; die zweite Zeile
+ * bekommt ihren Platz in der Einpassung.
+ */
+function einpassungMitLineal(x1: number, y1: number, x2: number, y2: number, linealY: number | undefined, teilung: number[]) {
+  if (linealY === undefined) return { ...einpassung(x1, y1, x2, y2), versetzt: false };
+  const eine = einpassung(x1, y1, x2, Math.max(y2, linealY + LINEAL_UNTEN));
+  if (!ziffernVersetzt(teilung, LINEAL_SCHRIFT / eine.skala)) return { ...eine, versetzt: false };
+  const zeile = (LINEAL_SCHRIFT + 2) / eine.skala;
+  return { ...einpassung(x1, y1, x2, Math.max(y2, linealY + LINEAL_UNTEN / eine.skala + zeile)), versetzt: true };
+}
+
 /** Einschnittprofil(e): zeichnen sich nacheinander, ab `beginn`. */
 function Profil({ pfade, beginn }: { pfade: string[]; beginn: number }) {
   return (
@@ -687,10 +715,12 @@ interface MarkierungenProps {
   tiefen: number[];
   beginn: number;
   schrift: number;
+  /** Ziffern abwechselnd in zwei Zeilen (enge Einschnitte). */
+  versetzt?: boolean;
 }
 
 /** Marken der Einschnitte, darunter das Lineal mit den Ziffern. */
-function Markierungen({ marken, linealY, tiefen, beginn, schrift }: MarkierungenProps) {
+function Markierungen({ marken, linealY, tiefen, beginn, schrift, versetzt = false }: MarkierungenProps) {
   const teilung = [...new Set(marken.map((m) => r(m.x)))];
   /* Das Lineal steht nur mit Ziffern: unbeschriftete Teilstriche behaupten ein Maß, das man
      nicht lesen kann (K-003 „Bemaßt statt behauptet“, E6-L-31). */
@@ -723,7 +753,7 @@ function Markierungen({ marken, linealY, tiefen, beginn, schrift }: Markierungen
             fontSize={schrift}
             textAnchor="middle"
             x={x}
-            y={r(lage + 20)}
+            y={r(lage + (8 + LINEAL_SCHRIFT * 0.75 + (versetzt && i % 2 === 1 ? LINEAL_SCHRIFT + 2 : 0)) * (schrift / LINEAL_SCHRIFT))}
           >
             {tiefen[i]}
           </text>
@@ -745,8 +775,8 @@ interface FunkAnsichtProps {
 function FunkAnsicht({ ansicht, tiefen, beschriften, title, className }: FunkAnsichtProps) {
   const bild = ansichtBild(ansicht, tiefen);
   const linealY = beschriften ? bild.linealY : undefined;
-  const unten = linealY !== undefined ? Math.max(bild.box.y2, linealY + 24) : bild.box.y2;
-  const { skala, tx, ty } = einpassung(bild.box.x1, bild.box.y1, bild.box.x2, unten);
+  const teilung = [...new Set(bild.marken.map((m) => r(m.x)))];
+  const { skala, tx, ty, versetzt } = einpassungMitLineal(bild.box.x1, bild.box.y1, bild.box.x2, bild.box.y2, linealY, teilung);
   return (
     <GrafikRahmen breite={BREITE} hoehe={HOEHE} title={titel(title, TITEL_ANSICHT[ansicht])} className={className}>
       <Raster breite={BREITE} hoehe={HOEHE} />
@@ -761,7 +791,8 @@ function FunkAnsicht({ ansicht, tiefen, beschriften, title, className }: FunkAns
           linealY={linealY}
           tiefen={tiefen}
           beginn={ZEIT.koerperDauer}
-          schrift={r(SCHRIFT_KLEIN / skala)}
+          schrift={r(LINEAL_SCHRIFT / skala)}
+          versetzt={versetzt}
         />
       </g>
     </GrafikRahmen>
@@ -819,9 +850,8 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
   const x1 = vorn.box.x1;
   const x2 = vorn.box.x2 + (anzahl - 1) * KOPIE_DX;
   const y1 = vorn.box.y1 + (anzahl - 1) * KOPIE_DY;
-  const y2 = beschriften && linealY !== undefined ? Math.max(vorn.box.y2, linealY + 24) : vorn.box.y2;
-  const { skala, tx, ty } = einpassung(x1, y1, x2, y2);
-  const schrift = r(SCHRIFT_KLEIN / skala);
+  const { skala, tx, ty, versetzt } = einpassungMitLineal(x1, y1, x2, vorn.box.y2, beschriften ? linealY : undefined, teilung);
+  const schrift = r(LINEAL_SCHRIFT / skala);
 
   return (
     <GrafikRahmen
@@ -861,6 +891,7 @@ export function SchluesselGrafik({ params, title, className }: VisualProps) {
           tiefen={tiefen}
           beginn={beginn}
           schrift={schrift}
+          versetzt={versetzt}
         />
       </g>
     </GrafikRahmen>

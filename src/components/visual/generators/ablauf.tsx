@@ -50,13 +50,17 @@ const LUFT = 10;
 const SCHRIFT_LUECKE = 2;
 
 /**
- * Maße je Format. Telefonbreite: Schriftgröße × 358 / Flächenbreite ≥ 11,5.
- * Breit: `nummer` ist die Nummernschrift im Kreis, `schrift` die Beschriftung.
+ * Maße je Format. Breit: `nummer` ist die Nummernschrift im Kreis, `schrift` die Beschriftung.
  * „schmal“ steht senkrecht; seine Höhe folgt der Anzahl der Stationen (`ablaufHoehe`).
+ *
+ * Schrift auf dem Bildschirm (FA-26-01, FA-QA-04D) = Schrift × Darstellungsbreite / Flächenbreite:
+ * Schmal steht unter 640 px in einem Kasten mit `p-4` (Seitenkopf `/service-und-termin`,
+ * Partnerseiten), bei 360 px Fensterbreite also 288 px breit: 16 × 288 / 300 ≈ 15,4 px.
+ * Breit bei 1280 px in 5 von 12 Spalten mit `p-6` (etwa 424 px): 16 × 424 / 480 ≈ 14,1 px.
  */
 export const ABLAUF_FLAECHE = {
   breit: { breite: 480, hoehe: 270, schrift: 16, nummer: 18 },
-  schmal: { breite: 300, schrift: 12, rand: 20, kopf: 88, zeile: 68 },
+  schmal: { breite: 300, schrift: 16, rand: 20, kopf: 88, zeile: 68 },
 } as const;
 
 /* Bewegung (B-23): erst die Bemaßungslinie, dann Station für Station; Gesamtdauer unter 1,6 s. */

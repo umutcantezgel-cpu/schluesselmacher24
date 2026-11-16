@@ -274,7 +274,16 @@ describe('AblaufGrafik', () => {
       }
     }
     expect(breit).toContain('font-size="16"');
-    expect(schmal).toContain('font-size="12"');
+    expect(schmal).toContain('font-size="16"');
+  });
+
+  it('setzt jede Schrift auf dem Bildschirm mit mindestens 14 px (FA-QA-04D)', () => {
+    // Schmal: bei 360 px Fensterbreite im Kasten mit p-4, 288 px breit.
+    const schmal = zeichne({ schritte: 'sichern|prüfen|bestellen', format: 'schmal' });
+    for (const t of texte(schmal)) expect((t.groesse * 288) / 300).toBeGreaterThanOrEqual(14);
+    // Breit: bei 1280 px in 5 von 12 Spalten mit p-6, etwa 424 px breit.
+    const breit = zeichne({ schritte: 'sichern|prüfen|bestellen' });
+    for (const t of texte(breit)) expect((t.groesse * 424) / 480).toBeGreaterThanOrEqual(14);
   });
 
   it('hält alle gezeichneten Elemente innerhalb der Fläche', () => {

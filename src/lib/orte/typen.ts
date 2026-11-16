@@ -102,6 +102,8 @@ export interface PostleitzahlenDatei {
   herkunft: StammHerkunft;
   hinweis: string;
   anzahl: number;
+  /** Großempfänger und Postfächer, die der Import weglässt (scripts/orte-import.mjs, zustellzeilenWaehlen). */
+  entfallen?: { zeilen: number; postleitzahlen: number; nachGrund: Record<string, number>; warum: string };
   postleitzahlen: PostleitzahlEintrag[];
 }
 

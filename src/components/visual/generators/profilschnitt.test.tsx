@@ -2,7 +2,8 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { FRAESER_ABHEBEN, PROFILSCHNITT_AUSSCHNITT, PROFILSCHNITT_GROESSE, ProfilschnittGrafik } from './profilschnitt';
+import { ausserhalb, bildschirmPx, textKaesten, ueberlappungen, type TextKasten } from './beschriftung-test-hilfe';
+import { FRAESER_ABHEBEN, MASSLINIE_Y, PROFIL_SCHRIFT, PROFILSCHNITT_AUSSCHNITT, PROFILSCHNITT_GROESSE, ProfilschnittGrafik } from './profilschnitt';
 
 function zeichne(params: unknown, title: unknown = ''): string {
   return renderToStaticMarkup(
@@ -129,5 +130,58 @@ describe('ProfilschnittGrafik', () => {
       expect(html.match(/data-bemassung=""/g)).toHaveLength(1);
       expect(html).toMatch(/data-bemassung="">[\s\S]*Halm · 6 Einschnitte/);
     });
+  });
+});
+
+describe('Schrift des Profilschnitts (FA-QA-04D)', () => {
+  /** Legende steht in `translate(24 318)`: auf die Fläche umgerechnet. */
+  function kaesten(html: string): TextKasten[] {
+    return textKaesten(html).map((k) =>
+      k.inhalt === 'Rohling' || k.inhalt === 'gefrästes Profil'
+        ? { ...k, links: k.links + 24, rechts: k.rechts + 24, oben: k.oben + 318, unten: k.unten + 318 }
+        : k,
+    );
+  }
+  /* Telefon-Ausschnitte der Seiten (src/app/(site)/page.tsx, schluessel-nach-code/[slug]/page.tsx). */
+  const STARTSEITE = { x: 62, y: 98, breite: 350, hoehe: 190 };
+  const CODELINIE = { x: 128, y: 98, breite: 334, hoehe: 190 };
+
+  it('ist bei 360 px im Ausschnitt (320 px) und bei 1024 px im Seitenkopf (383 px) mindestens 14 px groß', () => {
+    expect(bildschirmPx(PROFIL_SCHRIFT, 320, STARTSEITE.breite)).toBeGreaterThanOrEqual(14);
+    expect(bildschirmPx(PROFIL_SCHRIFT, 320, CODELINIE.breite)).toBeGreaterThanOrEqual(14);
+    expect(bildschirmPx(PROFIL_SCHRIFT, 383, 480)).toBeGreaterThanOrEqual(14);
+    for (const k of kaesten(zeichne({ einschnitte: '35274163' }))) expect(k.groesse).toBe(PROFIL_SCHRIFT);
+  });
+
+  it('hält alle Beschriftungen in der Fläche und frei voneinander, auch bei acht Einschnitten', () => {
+    for (const params of [{}, { einschnitte: '35274163' }, { einschnitte: '3527' }, { code: 'AB 123' }]) {
+      const alle = kaesten(zeichne(params));
+      expect(alle.length).toBeGreaterThan(5);
+      expect(ausserhalb(alle, 480, 360)).toEqual([]);
+      expect(ueberlappungen(alle)).toEqual([]);
+    }
+  });
+
+  it('zeigt Nummern und Maßzahl ganz in den Telefon-Ausschnitten der Seiten', () => {
+    const alle = kaesten(zeichne({ einschnitte: '35274163' }));
+    const sichtbar = alle.filter((k) => /^\d$/.test(k.inhalt) || k.inhalt.startsWith('Halm'));
+    expect(sichtbar).toHaveLength(9);
+    for (const a of [STARTSEITE, CODELINIE]) {
+      for (const k of sichtbar) {
+        expect(k.links).toBeGreaterThanOrEqual(a.x);
+        expect(k.rechts).toBeLessThanOrEqual(a.x + a.breite);
+        expect(k.oben).toBeGreaterThanOrEqual(a.y);
+        expect(k.unten).toBeLessThanOrEqual(a.y + a.hoehe);
+      }
+    }
+  });
+
+  it('setzt die Maßzahl unter die Maßlinie, unter die Enden der Maßhilfslinien', () => {
+    const html = zeichne({});
+    const mass = kaesten(html).find((k) => k.inhalt.startsWith('Halm'))!;
+    expect(html).toContain(`V${MASSLINIE_Y + 6}`);
+    expect(mass.oben).toBeGreaterThanOrEqual(MASSLINIE_Y + 6);
+    // Unter dem Halm (Unterkante der Schulter bei y 222).
+    expect(MASSLINIE_Y).toBeGreaterThan(222 + 12);
   });
 });

@@ -8,8 +8,7 @@ import {
   LINIE,
   LINIE_STARK,
   Raster,
-  SCHRIFT_KLEIN,
-  hash,
+    hash,
   kerben,
   kurztext,
   parameter,
@@ -24,6 +23,17 @@ import {
 
 const BREITE = 480;
 const HOEHE = 360;
+
+/**
+ * Schrift in viewBox-Einheiten (FA-26-01, FA-QA-04D). Unter 640 px zeigen die Seiten nur einen
+ * Ausschnitt über die volle Inhaltsbreite (bei 360 px Fensterbreite 320 px): Startseite 350
+ * Einheiten breit, 18 × 320 / 350 ≈ 16,5 px; Codelinie 334 Einheiten, ≈ 17,2 px. Die ganze
+ * Zeichnung steht ab 1024 px im Seitenkopf in 5 von 12 Spalten (bei 1024 px etwa 383 px):
+ * 18 × 383 / 480 ≈ 14,4 px; bei 1280 px (etwa 472 px) ≈ 17,7 px.
+ */
+export const PROFIL_SCHRIFT = 18;
+/** Lage der Maßlinie unter dem Halm; die Maßzahl steht darunter, frei von den Maßhilfslinien. */
+export const MASSLINIE_Y = 244;
 
 /* Schlüssel in Seitenansicht: Reide links, Halm nach rechts. Proportionen nach G-07: Der Halm ist gut
    viermal so lang wie hoch (194 × 46, wie ein Autoschlüssel mit etwa 40 × 9 mm), der Schlüssel steht
@@ -62,7 +72,7 @@ export const FRAESER_ABHEBEN = { x: 12, y: -16 } as const;
 
 /** Volle Zeichenfläche und schmaler Ausschnitt (Halm mit Einschnitten) für kleine Breiten. */
 export const PROFILSCHNITT_GROESSE = { breite: BREITE, hoehe: HOEHE } as const;
-/** Ganzer Schlüssel mit Einschnitten, Spitze und Fräser; bei 350 px Breite genau Maßstab 1 (Schrift 12 px). */
+/** Ganzer Schlüssel mit Einschnitten, Spitze und Fräser; bei 350 px Breite genau Maßstab 1. */
 export const PROFILSCHNITT_AUSSCHNITT = { x: 62, y: 98, breite: 350, hoehe: 140 } as const;
 
 function profilAusText(text: string): number[] {
@@ -126,7 +136,7 @@ export function ProfilschnittGrafik({ params, title, className }: VisualProps) {
   const koerper =
     `${pfad(punkte)}L${SPITZE.x} ${SPITZE.y}L${HALM_ENDE} ${UNTEN}H${SCHULTER.x}V${SCHULTER.unten}` +
     `H${REIDE.x + REIDE.w}V${SCHULTER.oben}H${SCHULTER.x}V${OBEN}Z`;
-  const masslinieY = 274;
+  const masslinieY = MASSLINIE_Y;
 
   return (
     <GrafikRahmen
@@ -138,7 +148,7 @@ export function ProfilschnittGrafik({ params, title, className }: VisualProps) {
       <Raster breite={BREITE} hoehe={HOEHE} />
 
       {beschriftung && (
-        <text className="fill-foreground-muted font-mono" fontSize={SCHRIFT_KLEIN} letterSpacing={1.5} x={24} y={44}>
+        <text className="fill-foreground-muted font-mono" fontSize={PROFIL_SCHRIFT} letterSpacing={1.5} x={24} y={44}>
           PROFILSCHNITT
         </text>
       )}
@@ -223,7 +233,7 @@ export function ProfilschnittGrafik({ params, title, className }: VisualProps) {
             <g key={x}>
               <text
                 className="fill-foreground-muted font-mono"
-                fontSize={SCHRIFT_KLEIN}
+                fontSize={PROFIL_SCHRIFT}
                 textAnchor="middle"
                 x={r(x)}
                 y={122}
@@ -237,17 +247,17 @@ export function ProfilschnittGrafik({ params, title, className }: VisualProps) {
           {/* Bemaßung des Halms (im schmalen Ausschnitt ausgeblendet) */}
           <g data-bemassung="">
             <g className="stroke-foreground-muted" strokeWidth={HILFSLINIE}>
-              <path d={`M${HALM_START} ${SCHULTER.unten + 6}V${masslinieY + 8}M${SPITZE.x} ${SPITZE.y + 10}V${masslinieY + 8}`} />
+              <path d={`M${HALM_START} ${SCHULTER.unten + 6}V${masslinieY + 6}M${SPITZE.x} ${SPITZE.y + 10}V${masslinieY + 6}`} />
             </g>
             <path className="stroke-foreground-muted" strokeWidth={LINIE} d={`M${HALM_START + 8} ${masslinieY}H${SPITZE.x - 8}`} />
             <path className="fill-foreground-muted" stroke="none" d={pfeilspitze(HALM_START, masslinieY, 180)} />
             <path className="fill-foreground-muted" stroke="none" d={pfeilspitze(SPITZE.x, masslinieY, 0)} />
             <text
               className="fill-foreground-muted font-mono"
-              fontSize={SCHRIFT_KLEIN}
+              fontSize={PROFIL_SCHRIFT}
               textAnchor="middle"
               x={(HALM_START + SPITZE.x) / 2}
-              y={masslinieY - 8}
+              y={r(masslinieY + 8 + PROFIL_SCHRIFT * 0.75)}
             >
               {`Halm · ${stufen.length} Einschnitte`}
             </text>
@@ -256,11 +266,11 @@ export function ProfilschnittGrafik({ params, title, className }: VisualProps) {
           {/* Legende */}
           <g transform="translate(24 318)">
             <path className="stroke-foreground-muted" strokeWidth={LINIE} strokeDasharray="5 5" d="M0 0H28" />
-            <text className="fill-foreground-muted font-mono" fontSize={SCHRIFT_KLEIN} x={38} y={4}>
+            <text className="fill-foreground-muted font-mono" fontSize={PROFIL_SCHRIFT} x={38} y={r(PROFIL_SCHRIFT * 0.35)}>
               Rohling
             </text>
-            <path className="stroke-area-strong" strokeWidth={AKZENT} d="M120 0H148" />
-            <text className="fill-foreground-muted font-mono" fontSize={SCHRIFT_KLEIN} x={158} y={4}>
+            <path className="stroke-area-strong" strokeWidth={AKZENT} d="M132 0H160" />
+            <text className="fill-foreground-muted font-mono" fontSize={PROFIL_SCHRIFT} x={170} y={r(PROFIL_SCHRIFT * 0.35)}>
               gefrästes Profil
             </text>
           </g>

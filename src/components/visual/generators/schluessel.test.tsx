@@ -3,7 +3,8 @@ import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
 import { AKZENT, DETAIL, HILFSLINIE, KONTUR, LINIE, LINIE_STARK, MARKE } from './grafik-basis';
-import { SchluesselGrafik } from './schluessel';
+import { ausserhalb, bildschirmPx, textKaesten, ueberlappungen } from './beschriftung-test-hilfe';
+import { LINEAL_SCHRIFT, SchluesselGrafik } from './schluessel';
 
 function zeichne(params: unknown, title: unknown = 'Schlüssel'): string {
   return renderToStaticMarkup(
@@ -275,5 +276,47 @@ describe('Ansichten des Funkschlüssels', () => {
     // Der geschlossene Bügel endet im Körper, der geöffnete Bügel endet frei darüber.
     const schenkelEnde = (d: string) => Number(/V(-?[\d.]+)$/.exec(d)?.[1]);
     expect(schenkelEnde(auf[3])).toBeLessThan(schenkelEnde(zu[3]));
+  });
+});
+
+describe('SchluesselGrafik – Ziffern am Lineal (FA-QA-04D)', () => {
+  /** Ziffern in Einheiten der Fläche: Gruppe `translate(tx ty) scale(s)` eingerechnet. */
+  function ziffernAufFlaeche(html: string) {
+    const [, tx, ty, s] = /<g transform="translate\(([-\d.]+) ([-\d.]+)\) scale\(([\d.]+)\)">/.exec(html) ?? [];
+    const skala = Number(s);
+    return textKaesten(html).map((k) => ({
+      ...k,
+      groesse: k.groesse * skala,
+      links: Number(tx) + k.links * skala,
+      rechts: Number(tx) + k.rechts * skala,
+      oben: Number(ty) + k.oben * skala,
+      unten: Number(ty) + k.unten * skala,
+    }));
+  }
+
+  it('setzt die Ziffern bei 280 px Darstellungsbreite mindestens 14 px groß, in der Fläche und getrennt', () => {
+    expect(bildschirmPx(LINEAL_SCHRIFT, 280, 480)).toBeGreaterThanOrEqual(14);
+    const faelle = [
+      { typ: 'zylinder', einschnitte: '35274' },
+      { typ: 'zylinder', einschnitte: '35274163' },
+      { typ: 'zylinder', einschnitte: '3527', anzahl: 3 },
+      { typ: 'buntbart', einschnitte: '35274' },
+      { typ: 'buntbart', einschnitte: '35274163' },
+      { typ: 'klapp', einschnitte: '352741' },
+      { typ: 'smart-key', einschnitte: '352741' },
+      { typ: 'transponder', einschnitte: '35274163' },
+      { typ: 'funk', einschnitte: '352741' },
+      { typ: 'funk', ansicht: 'bart', einschnitte: '35274163' },
+    ];
+    for (const params of faelle) {
+      const ziffern = ziffernAufFlaeche(zeichne(params));
+      if (ziffern.length === 0) continue;
+      for (const z of ziffern) expect(z.groesse).toBeGreaterThanOrEqual(LINEAL_SCHRIFT - 0.1);
+      expect(ausserhalb(ziffern, 480, 270), JSON.stringify(params)).toEqual([]);
+      expect(ueberlappungen(ziffern), JSON.stringify(params)).toEqual([]);
+    }
+    expect(ziffernAufFlaeche(zeichne({ typ: 'zylinder', einschnitte: '35274' }))).toHaveLength(5);
+    // Buntbart (13 Einheiten je Stufe): Ziffern abwechselnd in zwei Zeilen.
+    expect(new Set(ziffernAufFlaeche(zeichne({ typ: 'buntbart', einschnitte: '35274' })).map((z) => z.unten)).size).toBe(2);
   });
 });

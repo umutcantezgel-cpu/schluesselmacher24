@@ -11,7 +11,6 @@ import {
   LINIE_STARK,
   MARKE,
   Raster,
-  SCHRIFT,
   auswahl,
   parameter,
   pfeilspitze,
@@ -22,6 +21,18 @@ import {
 
 const BREITE = 480;
 const HOEHE = 300;
+
+/**
+ * Schrift in viewBox-Einheiten (FA-26-01, FA-QA-04D). Die Zeichnung steht am Upload-Feld über die
+ * Breite der Formularspalte; bei 360 px Fensterbreite sind das 320 px, in einem Kasten mit `p-4`
+ * 288 px: 24 × 288 / 480 = 14,4 px. Bei 1280 px (zwei Kacheln in `max-w-3xl`, je etwa 378 px)
+ * rund 19 px. Ziffern und Wörter tragen dieselbe Größe.
+ */
+export const FOTO_SCHRIFT = 24;
+/** Grundlinie einer Zeile, die mittig auf `y` stehen soll. */
+const MITTE_GRUNDLINIE = r(FOTO_SCHRIFT * 0.35);
+/** Seitenlänge des Kästchens um eine Feldkennung. */
+const KENNUNG = 30;
 
 /**
  * Beispielzeichnungen an den Upload-Feldern (FA-26-06): was auf dem Foto zu sehen sein muss.
@@ -94,11 +105,11 @@ function ecken(k: Kasten, abstand = 9, laenge = 20) {
 }
 
 /** Markierte Stelle: getönte Fläche mit gestricheltem Rand, darin Platzhalter-Striche. */
-function markierung(k: Kasten, verzoegerung: number, strichLaenge?: number) {
+function markierung(k: Kasten, verzoegerung: number, strichLaenge?: number, einzug = 30) {
   return (
     <g className="sm24-pop" style={motionStyle(verzoegerung, 0.4)}>
       <rect className="fill-area-soft stroke-area-strong" strokeWidth={LINIE_STARK} strokeDasharray="5 5" x={k.x} y={k.y} width={k.w} height={k.h} rx={5} />
-      {strichLaenge !== undefined && zeilen(k.x + 30, k.y + k.h / 2, [strichLaenge], 0, 'stroke-foreground-muted')}
+      {strichLaenge !== undefined && zeilen(k.x + einzug, k.y + k.h / 2, [strichLaenge], 0, 'stroke-foreground-muted')}
     </g>
   );
 }
@@ -107,8 +118,8 @@ function markierung(k: Kasten, verzoegerung: number, strichLaenge?: number) {
 function kennung(x: number, y: number, zeichen: string) {
   return (
     <>
-      <rect className="fill-surface stroke-area-strong" strokeWidth={LINIE} x={x - 9} y={y - 9} width={18} height={18} rx={3} />
-      <text className="fill-foreground font-mono font-semibold" fontSize={SCHRIFT} textAnchor="middle" x={x} y={y + 4.5}>
+      <rect className="fill-surface stroke-area-strong" strokeWidth={LINIE} x={x - KENNUNG / 2} y={y - KENNUNG / 2} width={KENNUNG} height={KENNUNG} rx={3} />
+      <text className="fill-foreground font-mono font-semibold" fontSize={FOTO_SCHRIFT} textAnchor="middle" x={x} y={r(y + MITTE_GRUNDLINIE)}>
         {zeichen}
       </text>
     </>
@@ -120,7 +131,7 @@ function hinweis(x1: number, y: number, x2: number, text: string) {
   return (
     <>
       <path className="stroke-foreground-muted" strokeWidth={HILFSLINIE} d={`M${x1} ${y}H${x2}`} />
-      <text className="fill-foreground-muted font-mono" data-legende fontSize={SCHRIFT} x={x2 + 6} y={y + 4.5}>
+      <text className="fill-foreground-muted font-mono" fontSize={FOTO_SCHRIFT} x={x2 + 6} y={r(y + MITTE_GRUNDLINIE)}>
         {text}
       </text>
     </>
@@ -130,34 +141,36 @@ function hinweis(x1: number, y: number, x2: number, text: string) {
 /* ---------- Szenen ------------------------------------------------------- */
 
 function fahrzeugschein(): ReactNode {
-  const k = { x: 70, y: 30, w: 340, h: 200 };
-  const feldB = { x: 88, y: 76, w: 130, h: 28 };
-  const feldE = { x: 88, y: 152, w: 220, h: 28 };
+  const k = { x: 28, y: 22, w: 296, h: 178 };
+  const feldB = { x: 42, y: 64, w: 132, h: 34 };
+  const feldE = { x: 42, y: 140, w: 210, h: 34 };
   /* Halter: Die Seiten nennen ihn ohne Feldkennung („Halter und Fahrzeugdaten lesbar“), daher nur beschriftet (R4). */
-  const halter = { x: 230, y: 76, w: 164, h: 72 };
+  const halter = { x: 190, y: 62, w: 120, h: 70 };
+  /* Platzhalter-Strich in B und E rechts neben dem Kästchen der Kennung. */
+  const einzug = KENNUNG + 12;
   return (
     <>
       {blatt(k, 28)}
       {markierung(halter, 0.3)}
       {/* Zwei Spalten mit Platzhalter-Zeilen; rechts oben die Angaben zum Halter. */}
-      {zeilen(240, 90, [130, 96, 120], 22)}
-      {zeilen(88, 128, [96], 0)}
-      {zeilen(88, 206, [180, 120], 0)}
-      {zeilen(330, 166, [60], 0)}
-      {markierung(feldB, 0.4, 70)}
-      {markierung(feldE, 0.5, 150)}
-      {kennung(feldB.x + 15, feldB.y + feldB.h / 2, 'B')}
-      {kennung(feldE.x + 15, feldE.y + feldE.h / 2, 'E')}
-      {hinweis(halter.x + halter.w, halter.y + halter.h / 2, 414, 'Halter')}
+      {zeilen(200, 78, [96, 72, 90], 19)}
+      {zeilen(42, 119, [100], 0)}
+      {zeilen(42, 189, [160, 120], 0)}
+      {zeilen(264, 157, [44], 0)}
+      {markierung(feldB, 0.4, 70, einzug)}
+      {markierung(feldE, 0.5, 150, einzug)}
+      {kennung(feldB.x + 2 + KENNUNG / 2, feldB.y + feldB.h / 2, 'B')}
+      {kennung(feldE.x + 2 + KENNUNG / 2, feldE.y + feldE.h / 2, 'E')}
+      {hinweis(halter.x + halter.w, halter.y + halter.h / 2, 340, 'Halter')}
       {ecken(k)}
-      {/* Legende unter dem Blatt: nur die Felder, die die Seiten selbst nennen. */}
-      <g data-legende>
-        {kennung(79, 266, 'B')}
-        <text className="fill-foreground-muted font-mono" fontSize={SCHRIFT} x={96} y={270.5}>
+      {/* Legende unter dem Blatt, eine Zeile je Feld: nur die Felder, die die Seiten selbst nennen. */}
+      <g>
+        {kennung(43, 238, 'B')}
+        <text className="fill-foreground-muted font-mono" fontSize={FOTO_SCHRIFT} x={66} y={r(238 + MITTE_GRUNDLINIE)}>
           Erstzulassung
         </text>
-        {kennung(249, 266, 'E')}
-        <text className="fill-foreground-muted font-mono" fontSize={SCHRIFT} x={266} y={270.5}>
+        {kennung(43, 276, 'E')}
+        <text className="fill-foreground-muted font-mono" fontSize={FOTO_SCHRIFT} x={66} y={r(276 + MITTE_GRUNDLINIE)}>
           Fahrgestellnummer
         </text>
       </g>
@@ -166,7 +179,7 @@ function fahrzeugschein(): ReactNode {
 }
 
 function typenschild(): ReactNode {
-  const k = { x: 96, y: 62, w: 250, h: 160 };
+  const k = { x: 40, y: 50, w: 250, h: 160 };
   const nieten = [
     [k.x + 16, k.y + 16],
     [k.x + k.w - 16, k.y + 16],
@@ -178,7 +191,7 @@ function typenschild(): ReactNode {
   return (
     <>
       {/* Bauteil, an dem das Schild sitzt: nur als ruhige Fläche angedeutet. */}
-      <rect className="fill-surface-muted stroke-border-strong" strokeWidth={LINIE} x={60} y={36} width={322} height={212} rx={14} />
+      <rect className="fill-surface-muted stroke-border-strong" strokeWidth={LINIE} x={14} y={24} width={296} height={212} rx={14} />
       <rect className="fill-surface stroke-foreground" strokeWidth={KONTUR} x={k.x} y={k.y} width={k.w} height={k.h} rx={10} />
       <rect className="stroke-foreground-muted" strokeWidth={HILFSLINIE} x={k.x + 7} y={k.y + 7} width={k.w - 14} height={k.h - 14} rx={6} />
       {nieten.map(([x, y], i) => (
@@ -187,8 +200,8 @@ function typenschild(): ReactNode {
       {zeilen(k.x + 26, k.y + 76, [170, 120], 16)}
       {markierung(hersteller, 0.3, 90)}
       {markierung(nummer, 0.45, 150)}
-      {hinweis(hersteller.x + hersteller.w, hersteller.y + hersteller.h / 2, 362, 'Hersteller')}
-      {hinweis(nummer.x + nummer.w, nummer.y + nummer.h / 2, 362, 'Nummer')}
+      {hinweis(hersteller.x + hersteller.w, hersteller.y + hersteller.h / 2, 320, 'Hersteller')}
+      {hinweis(nummer.x + nummer.w, nummer.y + nummer.h / 2, 320, 'Nummer')}
       {ecken(k, 7, 18)}
     </>
   );
@@ -225,25 +238,25 @@ const PROFIL: [number, number][] = [
 ];
 
 function schluesselspitze(): ReactNode {
-  const mitte = { x: 380, y: 140 };
+  const mitte = { x: 356, y: 130 };
   /* Quer etwas breiter als hoch gestaucht: Die Nuten bleiben auch klein am Telefon erkennbar. */
   const quer = 1.1;
   const hoch = 0.78;
   const profil = PROFIL.map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${r(mitte.x + x * quer)} ${r(mitte.y + y * hoch)}`).join('') + 'Z';
-  const kopf = { x: 78, y: 140, r: 38 };
-  const halm = 'M112 128H222L238 140L222 152H112Z';
+  const kopf = { x: 70, y: 130, r: 38 };
+  const halm = 'M104 118H214L230 130L214 142H104Z';
   return (
     <>
       {/* Links der Schlüssel von der Seite, die Spitze zeigt nach rechts zur Kamera. */}
       <path className="fill-surface stroke-foreground" strokeWidth={KONTUR} d={halm} />
-      <path className="stroke-foreground-muted" strokeWidth={HILFSLINIE} d="M126 140H222" />
+      <path className="stroke-foreground-muted" strokeWidth={HILFSLINIE} d="M118 130H214" />
       <circle className="fill-surface stroke-foreground" strokeWidth={KONTUR} cx={kopf.x} cy={kopf.y} r={kopf.r} />
       <circle className="fill-surface-muted stroke-foreground" strokeWidth={LINIE} cx={kopf.x - 14} cy={kopf.y} r={9} />
 
       {/* Blickrichtung: von vorne auf die Spitze */}
       <g className="sm24-pop" style={motionStyle(0.2, 0.4)}>
-        <path className="stroke-area-strong" strokeWidth={LINIE_STARK} strokeDasharray="5 5" d="M304 140H250" />
-        <path className="fill-area-strong" d={pfeilspitze(244, 140, 180, 10, 8)} />
+        <path className="stroke-area-strong" strokeWidth={LINIE_STARK} strokeDasharray="5 5" d="M284 130H246" />
+        <path className="fill-area-strong" d={pfeilspitze(240, 130, 180, 10, 8)} />
       </g>
 
       {/* Rechts das Profil im Querschnitt, eingekreist */}
@@ -251,11 +264,12 @@ function schluesselspitze(): ReactNode {
       <path className="fill-area-muted stroke-foreground" strokeWidth={KONTUR} d={profil} />
       <circle className="sm24-pop stroke-area-strong" style={motionStyle(0.45, 0.4)} strokeWidth={LINIE_STARK} strokeDasharray="5 5" cx={mitte.x} cy={mitte.y} r={64} />
 
-      <g data-legende>
-        <text className="fill-foreground-muted font-mono" fontSize={SCHRIFT} textAnchor="middle" x={150} y={248}>
+      {/* Unter den beiden Ansichten; „Seitenansicht“ unter dem Schlüssel (Mitte von Kopf und Halm). */}
+      <g>
+        <text className="fill-foreground-muted font-mono" fontSize={FOTO_SCHRIFT} textAnchor="middle" x={124} y={244}>
           Seitenansicht
         </text>
-        <text className="fill-foreground-muted font-mono" fontSize={SCHRIFT} textAnchor="middle" x={mitte.x} y={248}>
+        <text className="fill-foreground-muted font-mono" fontSize={FOTO_SCHRIFT} textAnchor="middle" x={mitte.x} y={244}>
           Profil von vorne
         </text>
       </g>

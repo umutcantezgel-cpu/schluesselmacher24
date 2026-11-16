@@ -11,7 +11,6 @@ import {
   LINIE_STARK,
   MARKE,
   Raster,
-  SCHRIFT,
   aussenTangenten,
   auswahl,
   kerben,
@@ -24,6 +23,15 @@ import {
 
 const BREITE = 480;
 const HOEHE = 270;
+
+/**
+ * Schrift der Beschriftung „Am Schlüsselkopf“ (FA-26-01, FA-QA-04D). Sie steht im Seitenkopf von
+ * `/schluessel-nach-code`; unter 640 px zeigt die Seite nur den Ausschnitt (440 Einheiten breit) über
+ * die volle Inhaltsbreite, bei 360 px Fensterbreite 320 px: 20 × 320 / 440 ≈ 14,5 px. Bei 1280 px
+ * (5 von 12 Spalten, etwa 472 px für 480 Einheiten) rund 19,7 px. Ohne `data-legende`: Die Regel in
+ * globals.css setzte die Schrift im Ausschnitt sonst auf 16 Einheiten zurück.
+ */
+export const HINWEIS_SCHRIFT = 20;
 
 const ORTE = ['schluesselkopf', 'sicherungskarte', 'zylinderstirn'] as const;
 type Ort = (typeof ORTE)[number];
@@ -117,7 +125,7 @@ function schluesselkopf(): Fundstelle {
     lupe: { x: 372, y: 102, r: 64 },
     lupenGrund: 'fill-area-soft',
     lupenInhalt: (v) => striche(0, 0, 5, 16, 6, 6, 'stroke-foreground-muted', v),
-    hinweis: { pfad: 'M128 190V238', x: 128, y: 256 },
+    hinweis: { pfad: 'M128 190V234', x: 128, y: 254 },
   };
 }
 
@@ -272,8 +280,7 @@ const TITEL: Record<Ort, string> = {
 
 /**
  * Ausschnitt für Telefonbreiten (`ImagePlaceholder` bzw. `.sm24-ausschnitt`): Kopf,
- * Lupe mit Ring, Griffende und die Beschriftung „Am Schlüsselkopf“ bleiben im Fenster.
- * Im Ausschnitt setzt globals.css die Beschriftung auf 16 Einheiten (`data-legende`).
+ * Lupe mit Ring, Griffende und die Beschriftung „Am Schlüsselkopf“ (`HINWEIS_SCHRIFT`) bleiben im Fenster.
  */
 export const CODE_FUNDSTELLE_AUSSCHNITT = {
   x: 20,
@@ -361,8 +368,7 @@ export function CodeFundstelleGrafik({ params, title, className }: VisualProps) 
           <path className="stroke-foreground-muted" strokeWidth={HILFSLINIE} d={f.hinweis.pfad} />
           <text
             className="fill-foreground-muted font-mono"
-            data-legende
-            fontSize={SCHRIFT}
+            fontSize={HINWEIS_SCHRIFT}
             textAnchor="middle"
             x={f.hinweis.x}
             y={f.hinweis.y}

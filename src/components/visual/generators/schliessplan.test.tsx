@@ -2,7 +2,8 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import type { VisualProps } from '../registry';
-import { SchliessplanGrafik, schliessplanAusschnitt, schliessplanSchluessel } from './schliessplan';
+import { ausserhalb, bildschirmPx, textKaesten, ueberlappungen } from './beschriftung-test-hilfe';
+import { SCHLIESSPLAN_SCHRIFT, SchliessplanGrafik, schliessplanAusschnitt, schliessplanSchluessel } from './schliessplan';
 
 function zeichne(params: unknown, title: unknown = 'Schließplan'): string {
   return renderToStaticMarkup(
@@ -380,7 +381,8 @@ describe('SchliessplanGrafik – schmales Format', () => {
     pruefeVertrag(zeichne({ system: 'haupt', format: 'schmal' }), 360, 162);
     pruefeVertrag(zeichne({ system: 'gleichschliessung', tueren: 4, format: 'schmal' }), 360, 116);
     pruefeVertrag(zeichne({ system: 'zentral', tueren: 3, format: 'schmal' }), 360, 162);
-    pruefeVertrag(zeichne({ system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2, format: 'schmal' }), 360, 254);
+    // Zwei Reservetüren enger als „frei“ breit: die rechte Beschriftung eine Zeile tiefer (+18).
+    pruefeVertrag(zeichne({ system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2, format: 'schmal' }), 360, 272);
   });
 
   it('zeigt alle Beschriftungen mindestens 11,5 px groß bei 358 px Darstellungsbreite', () => {
@@ -450,12 +452,13 @@ describe('SchliessplanGrafik – schmales Format', () => {
   it('lässt den Ausschnitt auch im schmalen Format die Reserve mit einschließen', () => {
     const a = schliessplanAusschnitt({ system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2, format: 'schmal' });
     expect(a.vollBreite).toBe(360);
-    expect(a.vollHoehe).toBe(254);
+    expect(a.vollHoehe).toBe(272);
     expect(a.x).toBeGreaterThanOrEqual(0);
     expect(a.x + a.breite).toBeLessThanOrEqual(360);
-    expect(a.y + a.hoehe).toBeLessThanOrEqual(254);
-    // unterste Tür liegt bei 27 + 4 · 46 = 211; „frei“ reicht bis 239
-    expect(a.y + a.hoehe).toBeGreaterThanOrEqual(239);
+    expect(a.y + a.hoehe).toBeLessThanOrEqual(272);
+    // unterste Tür reicht bis 12 + 30 + 4 · 46 = 226; das tiefere „frei“ hat die Grundlinie
+    // 226 + 16 + 18 = 260, die Unterlänge reicht bis rund 264
+    expect(a.y + a.hoehe).toBeGreaterThanOrEqual(264);
   });
 
   it('fällt bei unbekanntem Format auf breit zurück und ist deterministisch', () => {
@@ -527,14 +530,14 @@ describe('SchliessplanGrafik – Türnummern (nummern)', () => {
   it('hält die Nummern in der Fläche und mobil bei mindestens 11,5 px', () => {
     const schmal = zeichne({ system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2, format: 'schmal', nummern: true });
     const breit = zeichne({ system: 'generalhaupt', gruppen: 4, tueren: 8, reserve: 2, nummern: true });
-    pruefeVertrag(schmal, 360, 254);
+    pruefeVertrag(schmal, 360, 272);
     pruefeVertrag(breit);
     expect(nummernTexte(schmal)).toHaveLength(6);
     expect(nummernTexte(breit)).toHaveLength(8);
     for (const n of nummernTexte(schmal)) {
       expect(n.x).toBeGreaterThanOrEqual(0);
       expect(n.x).toBeLessThanOrEqual(360);
-      expect(n.y).toBeLessThanOrEqual(254);
+      expect(n.y).toBeLessThanOrEqual(272);
     }
     /* Die breite Fassung wird bei zehn Blättern verkleinert: gemessen wird die gezeichnete Position. */
     expect(breit).toMatch(/<g transform="translate\(/);
@@ -553,5 +556,53 @@ describe('SchliessplanGrafik – Türnummern (nummern)', () => {
     const unterste = Math.max(...nummernTexte(zeichne({ system: 'haupt', tueren: 4, nummern: true })).map((n) => n.y));
     expect(mit.y + mit.hoehe).toBeGreaterThan(ohne.y + ohne.hoehe);
     expect(mit.y + mit.hoehe).toBeGreaterThanOrEqual(unterste);
+  });
+});
+
+describe('SchliessplanGrafik – Schrift auf dem Bildschirm (FA-QA-04D)', () => {
+  const FAELLE = [
+    { system: 'gleichschliessung', tueren: 3 },
+    { system: 'gleichschliessung', tueren: 8 },
+    { system: 'zentral', tueren: 4 },
+    { system: 'zentral', tueren: 8, nummern: true },
+    { system: 'haupt', tueren: 4 },
+    { system: 'haupt', tueren: 4, reserve: 2, nummern: true },
+    { system: 'haupt', tueren: 6, reserve: 2 },
+    { system: 'generalhaupt', gruppen: 2, tueren: 4, nummern: true },
+    { system: 'generalhaupt', gruppen: 2, tueren: 6 },
+    { system: 'generalhaupt', gruppen: 2, tueren: 6, reserve: 2 },
+  ];
+
+  it('erreicht bei 360 px Fensterbreite mindestens 14 px', () => {
+    // Schmal: Bildfläche mit Rahmen in der Inhaltsbreite, 318 px.
+    expect(bildschirmPx(SCHLIESSPLAN_SCHRIFT.schmal, 318, 360)).toBeGreaterThanOrEqual(14);
+    // Startseite: breiter Plan „haupt, 4 Türen“ als Ausschnitt im Kasten mit p-4 (286 px).
+    const a = schliessplanAusschnitt({ system: 'haupt', tueren: 4 });
+    expect(bildschirmPx(SCHLIESSPLAN_SCHRIFT.breit, 286, a.breite)).toBeGreaterThanOrEqual(14);
+    // Konfigurator bei 1280 px: 5 von 12 Spalten mit p-5, etwa 430 px.
+    expect(bildschirmPx(SCHLIESSPLAN_SCHRIFT.breit, 430, 480)).toBeGreaterThanOrEqual(14);
+  });
+
+  it.each(['breit', 'schmal'] as const)('%s: jede Beschriftung in der Fläche, frei von anderen und von fremden Kästen', (format) => {
+    for (const params of FAELLE) {
+      const html = zeichne({ ...params, format });
+      // Acht Blätter im breiten Format: das Sicherheitsnetz verkleinert um höchstens 2 % (Bestand).
+      const skala = Number(/scale\(([\d.]+)\)/.exec(html)?.[1] ?? 1);
+      expect(skala).toBeGreaterThanOrEqual(format === 'schmal' ? 1 : 0.98);
+      if (skala < 1) continue;
+      const breite = format === 'schmal' ? 360 : 480;
+      const hoehe = Number(new RegExp(`viewBox="0 0 ${breite} (\\d+)"`).exec(html)?.[1]);
+      const kaesten = textKaesten(html);
+      for (const k of kaesten) expect(k.groesse).toBe(SCHLIESSPLAN_SCHRIFT[format]);
+      expect(ausserhalb(kaesten, breite, hoehe)).toEqual([]);
+      expect(ueberlappungen(kaesten)).toEqual([]);
+      // Ein Kürzel steht ganz in seinem Kasten; Z, „frei“ und Nummern berühren keinen Kasten.
+      const kasten = rechtecke(html);
+      for (const k of kaesten) {
+        const innen = kasten.filter((q) => k.links >= q.x && k.rechts <= q.x + q.breite && k.oben >= q.y - 2 && k.unten <= q.y + q.hoehe + 2);
+        const beruehrt = kasten.filter((q) => !(k.rechts <= q.x || q.x + q.breite <= k.links || k.unten <= q.y || q.y + q.hoehe <= k.oben));
+        expect(innen.length > 0 || beruehrt.length === 0, `${format} ${JSON.stringify(params)}: ${k.inhalt}`).toBe(true);
+      }
+    }
   });
 });
