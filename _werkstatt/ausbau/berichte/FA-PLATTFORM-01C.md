@@ -159,4 +159,43 @@ Offen bleiben aus der Liste oben: 3 (Hinweis am einzelnen Datensatz), 5 (Gemeind
 
 Prüfungen danach, alle über die Datenweiche: vitest 264 Dateien, 4122 von 4122 grün (die Zahl der Dateien enthält auch eine neue Testdatei des parallelen Pakets FA-SEO-03B) · typecheck grün, 0 Fehler · lint grün, keine Befunde · Datenbanktests (`--pg`) 30 Dateien, 182 von 182 grün · build grün, 181 von 181 Seiten.
 
+## Nachbesserung 3
+
+Stand 16.11.2026, auf Anweisung des Orchestrators: nur Tests gehärtet, kein neues Verhalten. Nachbesserung 1 und 2 sind unverändert. Kein Test hat einen Fehler im Produktcode gezeigt, also gibt es **keinen Fund** und keine Änderung am Produktcode.
+
+1. **Postleitzahl-Abfrage gegen die Testdatenbank** (`src/lib/partner/abdeckung.db.test.ts`, neuer Block). Zwei Betriebe haben nur einen Umkreis (20 km um 35576). Der eine hat die Leistung `motorrad-weitere` und den erledigten Punkt „Region und Radius“, der andere `reparatur-gehaeuse` und den Vermerk „vor Einführung“. Kein anderer Datenbanktest vergibt diese Leistungen. Ergebnis von `postleitzahlAbfragen('35390', …)`: Der geprüfte Betrieb zählt (`partnerVorhanden: true`), der ungeprüfte nicht. Für 35683 (25,3 km) zählt auch der geprüfte nicht. Gegenprobe: Ich habe in `partnerFuerAbdeckung` (stamm.ts, Zeile 48) einmal `plz` und einmal `pruefliste: { region: true }` aus dem `select` gestrichen. Beide Male wurde der Test rot. Danach habe ich die Datei aus einer Sicherung zurückgelegt; `cmp` bestätigt, dass sie gleich ist.
+2. **Mock beachtet `select`** (`partnerweg-daten.test.ts`). Das Mock von `payloadInstanz().find` liefert nur die ausgewählten Felder und immer `id`, wie Payload. Das gilt auch geschachtelt (`zuschneiden`, z. B. `pruefliste: { region: true }`). Gegenprobe wie oben in `partnerweg-daten.ts`: Ohne `plz` werden 4 Tests rot, ohne `pruefliste.region` 6 Tests. Danach ist die Datei zurückgelegt; laut `git status` ist sie unverändert. Ein neuer Test prüft außerdem das `select` selbst. Es muss `plz`, `einsatzgebiet` und `pruefliste.region` enthalten und darf `firma`, `ansprechpartner`, `email` und `telefon` nicht enthalten.
+3. **Ortsstamm nicht lesbar**:
+   - `partnerweg-daten.test.ts`: `ortsstamm` wirft (Mock um den echten Stamm). Für 35390 bleibt nur Betrieb 1 (Muster). Betrieb 2 mit geprüftem Umkreis fällt weg. `standorteErmitteln` wirft nicht, und `console.error` wird mit „[auftragsweg] Ortsstamm für den Partnerweg nicht lesbar“ aufgerufen.
+   - `src/payload/hooks/auftragsweg.test.ts`: `ortsstammIndexLesen` wirft (Mock um `../../lib/orte/dateien`; alle anderen Tests der Datei lesen weiter den echten Stamm). Bei einer Vermittlung und im Partnerweg nennt die Vorschlagsliste nur den Betrieb mit Muster. Sie gibt einen Text zurück, nicht `null`, und es kommt kein „Partnervorschläge nicht geladen“. `logger.warn` meldet „Ortsstamm für die Partnervorschläge nicht lesbar“. Gegenprobe mit lesbarem Stamm: Alle drei Betriebe erscheinen mit ihrem Grund.
+4. **Grenzprüfung** (neu: `src/lib/partner/grenze.test.ts`). Stand am Code: Nur `partnerweg-daten.ts` hat `server-only`, Importe mit `@/` und einen Import von `orte/stamm`. Alle anderen Dateien unter `src/lib/partner` importieren nur relativ (`../types`, `../format`, `./…`). Daraus folgt die Regel: Keine Datei unter `src/lib/partner` außer Tests und `partnerweg-daten.ts` enthält `server-only`, einen Import mit `@/` oder einen Import von `orte/stamm` bzw. `orte/dateien`. Geprüft werden statische Importe, `export … from`, dynamisches `import()` und `require()`.
+   - Die Ausnahme ist im Test begründet: Sie ist der Server-Aufrufer des Partnerwegs und wird nur von `src/lib/actions` geladen. Ein Test prüft auch, dass die Ausnahme selbst mit `import 'server-only'` beginnt.
+   - Zweite Regel: Keine Datei unter `src/payload/collections` und `src/payload/hooks` importiert `partnerweg-daten`.
+   - `src/payload/components` ist ausdrücklich ausgenommen (`Ortsseiten.tsx` nutzt `stamm.ts` als Serverbaustein).
+   - Eine Gegenprobe zeigt, dass die Regel alle vier Arten von Verstößen erkennt.
+5. **Drei Grenzfälle im Gleichstandstest**, alle mit erledigtem Punkt „Region und Radius“:
+   - Betrieb 8: Landkreis mit achtstelligem Schlüssel `06532006`.
+   - Betrieb 9: `radiusKm: 0` mit Sitz 35576.
+   - Betrieb 10: `radiusKm: 300` ohne Postleitzahl des Betriebs.
+   Keiner von ihnen erscheint im Partnerweg oder in der Vorschlagsliste (35390, 35683, 45117, 01067). Neu ist der Fall 35576 Wetzlar, der Sitz selbst. Dort erscheinen die Betriebe 2 (Umkreis) und 3 (Landkreis), in der Vermittlung dazu 7 (Modell A). Betrieb 9 erscheint nicht, damit ist belegt, dass 0 km „kein Umkreis“ heißt.
+6. **Ohne Schalter `PARTNERMODELL_B`**: Spione auf `payloadInstanz().find` und `ortsstamm` belegen, dass keiner von beiden aufgerufen wird. Für Kunden bleibt nur die Werkstatt.
+7. **Ortsstamm wird auch bei frühem Ende geladen (vermerkt, keine Codeänderung).** Mit Schalter lädt `standorteErmitteln` den Ortsstamm, sobald ein Betrieb einen geprüften Umkreis oder eine geprüfte Region hat. Das passiert auch dann, wenn `terminstandorte` danach früh endet: im Eigenbereich, im Ausland oder bei einer ungültigen Postleitzahl. Das ist bewusst hingenommen, weil der Stamm je Prozess nur einmal gelesen wird (`ortsstammIndexLesen`, Zwischenspeicher). Messung über die Datenweiche, je ein neuer Prozess (`npx tsx`, `ortsstammIndexLesen()` zweimal), 4 Kerne, `content/orte` 3,7 MB:
+   - erstes Lesen mit Index: 70, 72 und 71 ms in drei Läufen
+   - zweiter Aufruf: unter 0,01 ms
+   Die Kosten fallen also einmal je Prozess an, mit etwa 70 ms.
+
+Geändert in Nachbesserung 3:
+- `src/lib/partner/abdeckung.db.test.ts`: `umkreisBetrieb` mit optionalen Auftragsarten, neuer Block
+- `src/lib/partner/partnerweg-daten.test.ts`: `select`-treues Mock, Spione, Stamm-Fehlerfall, Betriebe 8 bis 10, Fall 35576, Test des `select`
+- `src/payload/hooks/auftragsweg.test.ts`: Mock um `orte/dateien`, ein neuer Test
+- `src/lib/partner/grenze.test.ts` (neu)
+- dieser Bericht
+
+Prüfungen danach, alle über die Datenweiche:
+- vitest: 265 Dateien, 4131 von 4131 grün
+- typecheck: grün
+- lint: grün, keine Befunde
+- Datenbanktests (`--pg`): 30 Dateien, 183 von 183 grün
+- Kein Build (baut der Orchestrator bei der Abnahme).
+
 === ENDE FA-PLATTFORM-01C · BEREIT ZUR RÜCKGABE ===
