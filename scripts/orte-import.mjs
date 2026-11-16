@@ -331,7 +331,7 @@ export const ORGANISATION = new RegExp(
     // Auch als Wortende („Volksbank“, „Kreissparkasse“).
     String.raw`(?:[Bb]ank|Banque|[Kk]asse|[Vv]ersicherung|Ämter|[Nn]iederlassung|[Pp]ostfach|[Aa]gentur|[Bb]ehörde|[Mm]inisterium|[Ss]tiftung|[Vv]erein|[Vv]erband|[Ss]taatsanwaltschaft|[Ll]otterie|[Bb]erufsgenossenschaft|[Gg]eschäftsstelle|[Dd]irektion)(?![\wäöüß])`,
     // Nur als ganzes Wort (Gemeinden wie Freiamt oder Linsengericht bleiben).
-    String.raw`(?<![\wäöüß])(?:Amt|Ämter|Gericht|Finanzamt|Arbeitsamt|Jobcenter|Job-Center|Regierung|Justiz|Justizbehörden|Ordinariat|Rundfunk|Gesundheit|Firma|Firmengruppe|Konzern|Filiale|Zentrale|Hochschule|Universität|Institut|Klinik|Verlag|Zeitung|Werke|Stadtverwaltung|Kreisverwaltung)(?![\wäöüß])`,
+    String.raw`(?<![\wäöüß])(?:Amt|Ämter|Gericht|Finanzamt|Arbeitsamt|Jobcenter|Job-Center|Regierung|Justiz|Justizbehörden|Ordinariat|Rundfunk|Gesundheit|Firma|Firmengruppe|Konzern|Filiale|Zentrale|Hochschule|Universität|Institut|Klinik|Verlag|Zeitung|Tagblatt|Anzeiger|Kurier|Brauerei|Med|Dent|Werke|Stadtverwaltung|Kreisverwaltung)(?![\wäöüß])`,
     String.raw`(?:^|[\s(])(?:AOK|BKK|IKK|DAK|BARMER|HUK|ADAC|BMW|GEMA|DeTeCSM)(?![\wäöüß])`,
     String.raw`&`,
     String.raw`\d{3,}`,
