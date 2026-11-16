@@ -45,7 +45,9 @@ import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
-import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+/* KompaktBild statt ImagePlaceholder compact: gleiche Ausgabe (Foto oder Fach-Icon), aber ohne das Register
+   aller Zeichnungs-Generatoren im Bündel des Konfigurators (FA-SEO-03B). */
+import { KompaktBild } from '@/components/ui/bild-flaeche';
 import { InfoTip } from '@/components/ui/info-tip';
 import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphLineal } from '@/components/visual/glyphen/lineal';
@@ -1330,7 +1332,7 @@ function PositionCard({
                 Neben den Feldern erst ab lg; darunter in voller Breite, sonst wird die Schrift zu klein. */}
             <div className="lg:col-span-7 lg:row-span-2">
               {measureFigure.bild ? (
-                <ImagePlaceholder slot={measureFigure} compact />
+                <KompaktBild slot={measureFigure} />
               ) : (
                 <ZylinderMassLive
                   form={item.form}

@@ -45,7 +45,7 @@ async function partnerFuerAbdeckung(): Promise<PartnerFuerRegion[]> {
       limit: 0,
       pagination: false,
       overrideAccess: true,
-      select: { status: true, plz: true, einsatzgebiet: true, auftragsarten: true, pruefliste: true },
+      select: { status: true, plz: true, einsatzgebiet: true, auftragsarten: true, pruefliste: { region: true } },
     });
     // Dieselbe Abbildung wie im Partnerweg; das Abrechnungsmodell zählt für die Abdeckung nicht.
     return gefunden.docs.map((doc) => {

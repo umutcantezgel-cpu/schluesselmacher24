@@ -37,7 +37,7 @@ Auf der Seite stehen Landkreis und Postleitzahlen aus dem Stamm, die angebotenen
 
 ## 3. Partnerregion zuordnen
 
-1. Am Partnerbetrieb (**Aufträge > Partnerbetriebe**) die Postleitzahlen des Einsatzgebiets pflegen, etwa `35*, 36043`. Nur diese zählen für „Partner deckt ab“. Der Umkreis in Kilometern wird noch nicht ausgewertet.
+1. Am Partnerbetrieb (**Aufträge > Partnerbetriebe**) das Einsatzgebiet pflegen: Postleitzahlen (etwa `35*, 36043`), einen Umkreis (mit der Postleitzahl des Betriebs) oder Orte und Landkreise mit amtlichem Schlüssel. Für „Partner deckt ab“ reicht eines davon. Umkreis und Orte und Landkreise wirken erst, wenn in der Prüfliste des Betriebs der Punkt „Region und Radius“ abgehakt ist; die Postleitzahlen wirken immer. Die Regel steht in `docs/betrieb/partner-pruefen.md`, Abschnitt 6.
 2. An der Ortsseite im Feld **Partnerregion** den Betrieb wählen. Das Feld dokumentiert die Zuordnung für das Team. Auf der Seite erscheint nie ein Name.
 3. Ob ein Partner den Ort abdeckt, zeigt die Spalte „Partner deckt ab“ der Tabelle über der Liste und die Spalte „Partner vorhanden“ der Prioritätsorte.
 

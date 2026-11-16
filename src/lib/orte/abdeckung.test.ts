@@ -48,9 +48,10 @@ describe('Auskunft aus dem Ortsstamm', () => {
 });
 
 describe('Eine Definition mit dem Stamm (FA-PLATTFORM-01C)', () => {
-  const umkreis = betrieb({ id: 'umkreis-wetzlar', plz: '35576', radiusKm: 20 });
-  const landkreis = betrieb({ id: 'lahn-dill', regionen: [{ art: 'landkreis', name: 'Lahn-Dill-Kreis', schluessel: '06532' }] });
-  const ort = betrieb({ id: 'dillenburg', regionen: [{ art: 'ort', name: 'Dillenburg', schluessel: '06532006' }] });
+  // Punkt „Region und Radius“ der Prüfliste erledigt (A-070).
+  const umkreis = betrieb({ id: 'umkreis-wetzlar', plz: '35576', radiusKm: 20, regionGeprueft: true });
+  const landkreis = betrieb({ id: 'lahn-dill', regionen: [{ art: 'landkreis', name: 'Lahn-Dill-Kreis', schluessel: '06532' }], regionGeprueft: true });
+  const ort = betrieb({ id: 'dillenburg', regionen: [{ art: 'ort', name: 'Dillenburg', schluessel: '06532006' }], regionGeprueft: true });
 
   it('Umkreis: Gießen ja, Dillenburg nein; Region: Dillenburg ja, Gießen nein', () => {
     const auskunft = abdeckungsAuskunft(stamm);
@@ -74,6 +75,9 @@ describe('Eine Definition mit dem Stamm (FA-PLATTFORM-01C)', () => {
     expect(postleitzahlAuskunft('35683', stamm, { partner: [umkreis] })?.partnerVorhanden).toBe(false);
     expect(postleitzahlAuskunft('35683', stamm, { partner: [landkreis] })?.partnerVorhanden).toBe(true);
     expect(postleitzahlAuskunft('35683', stamm, { partner: [{ ...landkreis, status: 'pausiert' }] })?.partnerVorhanden).toBe(false);
+    // Ohne erledigten Punkt „Region und Radius“ zählen Umkreis und Landkreis nicht (A-070).
+    expect(postleitzahlAuskunft('35390', stamm, { partner: [{ ...umkreis, regionGeprueft: false }] })?.partnerVorhanden).toBe(false);
+    expect(postleitzahlAuskunft('35683', stamm, { partner: [{ ...landkreis, regionGeprueft: null }] })?.partnerVorhanden).toBe(false);
   });
 
   it('Ortsseiten und Prioritätsorte: „Partner deckt ab“ auch über Umkreis und Landkreis', () => {
@@ -84,6 +88,8 @@ describe('Eine Definition mit dem Stamm (FA-PLATTFORM-01C)', () => {
     expect(ohne.lage?.partnerDeckt).toBe(false);
     expect(mitUmkreis.lage?.partnerDeckt).toBe(true);
     expect(gesperrt.lage?.partnerDeckt).toBe(false);
+    const [ungeprueft] = ortsseitenMitLage(cities, { stamm, werkstattPlz: '35576', partner: [{ ...umkreis, regionGeprueft: false }] });
+    expect(ungeprueft.lage?.partnerDeckt).toBe(false);
     const auskunft = abdeckungsAuskunft(stamm);
     // Dillenburg (06532006) liegt im Kreis, aber außerhalb von 20 km um Wetzlar.
     expect([...gemeindenMitPartner(stamm, ['06532023', '06532006'], [umkreis], auskunft)]).toEqual(['06532023']);
@@ -94,11 +100,12 @@ describe('Eine Definition mit dem Stamm (FA-PLATTFORM-01C)', () => {
 
   it('Partnerweg (Schalter): dieselbe Abdeckung, nur Modell B, Zahlweg unverändert', () => {
     const auskunft = abdeckungsAuskunft(stamm);
-    const weg: PartnerFuerWeg = { id: 'b', status: 'freigeschaltet', postleitzahlen: [], auftragsarten: ['funk'], abrechnungsmodell: 'B', plz: '35576', radiusKm: 20 };
+    const weg: PartnerFuerWeg = { id: 'b', status: 'freigeschaltet', postleitzahlen: [], auftragsarten: ['funk'], abrechnungsmodell: 'B', plz: '35576', radiusKm: 20, regionGeprueft: true };
     expect(passendePartner('35390', [weg], 'funk', auskunft).map((p) => p.id)).toEqual(['b']);
     expect(passendePartner('35390', [weg], 'funk')).toEqual([]);
     expect(passendePartner('35390', [{ ...weg, abrechnungsmodell: 'A' }], 'funk', auskunft)).toEqual([]);
     expect(passendePartner('35390', [{ ...weg, status: 'pausiert' }], 'funk', auskunft)).toEqual([]);
+    expect(passendePartner('35390', [{ ...weg, regionGeprueft: false }], 'funk', auskunft)).toEqual([]);
     expect(passendePartner('35683', [weg], 'funk', auskunft)).toEqual([]);
     expect(passendePartner('35390', [weg], AUFTRAGSART_SAMMELWERT, auskunft).map((p) => p.id)).toEqual(['b']);
 

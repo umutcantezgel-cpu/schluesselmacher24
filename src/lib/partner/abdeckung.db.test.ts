@@ -7,19 +7,25 @@ import { vorgangAnlegen, type NeuerVorgang } from '@/lib/data';
 /* Vorschlagsliste am Vorgang gegen die Testdatenbank (FA-PLATTFORM-01C): Ein freigeschalteter Betrieb, der nur
  * einen Umkreis hat (keine Postleitzahlen, keine Regionen), erscheint für eine Postleitzahl im Umkreis mit Grund
  * und Kilometern, für eine außerhalb nicht. Stichprobe Lahn-Dill-Kreis: Sitz 35576 Wetzlar, 20 km; 35390 Gießen
- * liegt 10,8 km entfernt, 35683 Dillenburg 25,3 km. Erfundene Betriebe und Kunden (G4, G13). */
+ * liegt 10,8 km entfernt, 35683 Dillenburg 25,3 km. Erfundene Betriebe und Kunden (G4, G13).
+ * Regel „Region geprüft“ (A-070): Der Umkreis zählt nur mit erledigtem Punkt „Region und Radius“ der Prüfliste.
+ * Ein zweiter Betrieb mit demselben Umkreis, aber dem Vermerk „vor Einführung der Prüfliste“ und ohne den Punkt,
+ * erscheint nie. */
 
 let payload: Payload;
 const STAND = '2026-11-16T10:00:00.000Z';
 const FIRMA = 'Testbetrieb nur Umkreis';
+const FIRMA_UNGEPRUEFT = 'Testbetrieb Umkreis ungeprüft';
+const REGION_ERLEDIGT = { erledigt: true, am: '2026-11-16T09:00:00.000Z', pruefer: 'Testprüferin' };
 
-beforeAll(async () => {
-  vi.stubEnv('PARTNERMODELL_B', 'aktiv');
-  payload = await getPayload({ config });
+let idGeprueft: number | string;
+let idUngeprueft: number | string;
+
+async function umkreisBetrieb(firma: string, pruefliste: Record<string, unknown>) {
   const neu = await payload.create({
     collection: 'partnerbetriebe',
     data: {
-      firma: FIRMA,
+      firma,
       plz: '35576',
       ort: 'Wetzlar',
       status: 'eingegangen',
@@ -29,8 +35,16 @@ beforeAll(async () => {
     },
     overrideAccess: true,
   });
-  // Freischalten ohne Prüfliste: Hier geht es nur um die Abdeckung, nicht um den Weg dorthin.
-  await payload.db.updateOne({ collection: 'partnerbetriebe', id: neu.id, data: { status: 'freigeschaltet' } });
+  // Freischalten ohne die übrige Prüfliste: Hier geht es nur um die Abdeckung, nicht um den Weg dorthin.
+  await payload.db.updateOne({ collection: 'partnerbetriebe', id: neu.id, data: { status: 'freigeschaltet', pruefliste } });
+  return neu.id;
+}
+
+beforeAll(async () => {
+  vi.stubEnv('PARTNERMODELL_B', 'aktiv');
+  payload = await getPayload({ config });
+  idGeprueft = await umkreisBetrieb(FIRMA, { region: REGION_ERLEDIGT });
+  idUngeprueft = await umkreisBetrieb(FIRMA_UNGEPRUEFT, { vorEinfuehrung: true });
 });
 
 afterAll(() => {
@@ -68,6 +82,23 @@ describe('Vorschlagsliste mit Umkreis (Datenbank)', () => {
     expect(await vorschlaege(giessen.id)).toContain(`${FIRMA} (Wetzlar): Umkreis: 10,8 km von 35576 (bis 20 km)`);
   });
 
+  it('nennt einen Betrieb ohne erledigten Punkt „Region und Radius“ nicht (A-070)', async () => {
+    const giessen = await partnerauftrag('35390');
+    expect(await vorschlaege(giessen.id)).not.toContain(FIRMA_UNGEPRUEFT);
+  });
+
+  it('nennt ihn nicht mehr, wenn beim Punkt „Region und Radius“ der Prüfer fehlt', async () => {
+    const gefunden = await payload.find({ collection: 'partnerbetriebe', where: { firma: { equals: FIRMA } }, depth: 0, overrideAccess: true });
+    const id = gefunden.docs[0].id;
+    await payload.db.updateOne({ collection: 'partnerbetriebe', id, data: { pruefliste: { region: { ...REGION_ERLEDIGT, pruefer: '' } } } });
+    try {
+      const giessen = await partnerauftrag('35390');
+      expect(await vorschlaege(giessen.id)).not.toContain(FIRMA);
+    } finally {
+      await payload.db.updateOne({ collection: 'partnerbetriebe', id, data: { pruefliste: { region: REGION_ERLEDIGT } } });
+    }
+  });
+
   it('nennt ihn außerhalb des Umkreises nicht, auch nicht im selben Landkreis', async () => {
     const dillenburg = await partnerauftrag('35683');
     expect(await vorschlaege(dillenburg.id)).not.toContain(FIRMA);
@@ -83,5 +114,14 @@ describe('Vorschlagsliste mit Umkreis (Datenbank)', () => {
     } finally {
       await payload.db.updateOne({ collection: 'partnerbetriebe', id, data: { status: 'freigeschaltet' } });
     }
+  });
+});
+
+describe('Partnerweg für Kunden liest dieselben Angaben (Datenbank, A-070)', () => {
+  it('partnerFuerAuftragsweg liefert Postleitzahl, Umkreis und den Punkt „Region und Radius“', async () => {
+    const { partnerFuerAuftragsweg } = await import('./partnerweg-daten');
+    const partner = await partnerFuerAuftragsweg();
+    expect(partner.find((p) => p.id === String(idGeprueft))).toMatchObject({ plz: '35576', radiusKm: 20, regionGeprueft: true, abrechnungsmodell: 'B' });
+    expect(partner.find((p) => p.id === String(idUngeprueft))).toMatchObject({ plz: '35576', radiusKm: 20, regionGeprueft: false });
   });
 });

@@ -217,12 +217,16 @@ describe('Vorschlagsliste der passenden Partner', () => {
   });
 
   it('nennt Betriebe über Umkreis und Landkreis mit Grund (FA-PLATTFORM-01C, erfundene Betriebe)', async () => {
+    const REGION_ERLEDIGT = { erledigt: true, am: '2026-11-16', pruefer: 'Testprüferin' };
     const r = req();
     r.payload.find = vi.fn(async () => ({
       docs: [
-        { id: 11, firma: 'Umkreis Wetzlar', ort: 'Wetzlar', plz: '35576', status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { postleitzahlen: '', radiusKm: 20 }, auftragsarten: ['schluessel-nachmachen'] },
-        { id: 12, firma: 'Kreisbetrieb', ort: 'Herborn', status: 'freigeschaltet', abrechnungsmodell: 'A', einsatzgebiet: { regionen: [{ art: 'landkreis', name: 'Lahn-Dill-Kreis', schluessel: '06532' }] }, auftragsarten: ['schluessel-nachmachen'] },
-        { id: 13, firma: 'Umkreis ohne Sitz', ort: 'Wetzlar', plz: null, status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { radiusKm: 300 }, auftragsarten: ['schluessel-nachmachen'] },
+        { id: 11, firma: 'Umkreis Wetzlar', ort: 'Wetzlar', plz: '35576', status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { postleitzahlen: '', radiusKm: 20 }, auftragsarten: ['schluessel-nachmachen'], pruefliste: { region: REGION_ERLEDIGT } },
+        { id: 12, firma: 'Kreisbetrieb', ort: 'Herborn', status: 'freigeschaltet', abrechnungsmodell: 'A', einsatzgebiet: { regionen: [{ art: 'landkreis', name: 'Lahn-Dill-Kreis', schluessel: '06532' }] }, auftragsarten: ['schluessel-nachmachen'], pruefliste: { region: REGION_ERLEDIGT } },
+        { id: 13, firma: 'Umkreis ohne Sitz', ort: 'Wetzlar', plz: null, status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { radiusKm: 300 }, auftragsarten: ['schluessel-nachmachen'], pruefliste: { region: REGION_ERLEDIGT } },
+        // Punkt „Region und Radius“ nicht erledigt (A-070): Umkreis und Landkreis zählen nicht.
+        { id: 14, firma: 'Umkreis ungeprüft', ort: 'Wetzlar', plz: '35576', status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { radiusKm: 300, regionen: [{ art: 'landkreis', name: 'Lahn-Dill-Kreis', schluessel: '06532' }] }, auftragsarten: ['schluessel-nachmachen'], pruefliste: { region: { ...REGION_ERLEDIGT, pruefer: '' } } },
+        { id: 15, firma: 'Altbestand', ort: 'Wetzlar', plz: '35576', status: 'freigeschaltet', abrechnungsmodell: 'B', einsatzgebiet: { radiusKm: 300 }, auftragsarten: ['schluessel-nachmachen'], pruefliste: { vorEinfuehrung: true } },
       ],
     }));
     const vermittlung = { status: 'neu', auftragsart: 'autoschluessel-vor-ort' };

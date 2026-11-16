@@ -38,7 +38,7 @@ describe('Rubrik-Stand ohne Client-Baustein (FA-SEO-03B)', () => {
     expect(seiten.RUBRIK_PAUSIERT_LEAD).toBe(rubrik.RUBRIK_PAUSIERT_LEAD);
     expect(seiten.bereichsKrume).toBe(rubrik.bereichsKrume);
     expect(seiten.rubrikLive).toBe(rubrik.rubrikLive);
-  });
+  }, 30_000); // ./seiten lädt das Formular samt Bausteinen; im vollen Lauf dauert der Import länger als 5 s.
 
   it('Rubrik live nur bei Status „live“; Brotkrume nur für Krafträder und „nicht gefunden“', async () => {
     expect(await rubrik.rubrikLive('motorrad')).toBe(true);

@@ -2,16 +2,17 @@
 // Bildvergleich der neun Ansichten bei 412 und 1280 px zwischen zwei Ständen (A = Messstand, B = Versuch):
 // ganze Seite, Bewegung „ruhig“ (reduced motion), nach dem Laden der Schriften. Zählt abweichende Pixel im Browser
 // (Canvas), dazu den sichtbaren Text und die Zahl der Elemente ohne Skripte.
-// Aufruf: A=http://localhost:3200 B=http://localhost:3300 node bildvergleich.mjs <ausgabeordner>
-import { mkdirSync, writeFileSync } from 'node:fs';
-const A = process.env.A ?? 'http://localhost:3200';
-const B = process.env.B ?? 'http://localhost:3300';
-for (const u of [A, B]) if (!['localhost', '127.0.0.1', '[::1]'].includes(new URL(u).hostname)) throw new Error('nur localhost (G1)');
-process.env.SM24_BASIS_URL = B;
+// Aufruf in zwei Schritten (die Attrappen gelten je Lauf für genau eine Basis):
+//   BASIS=http://localhost:3200 node bildvergleich.mjs aufnehmen <ordner>/A
+//   BASIS=http://localhost:3300 node bildvergleich.mjs aufnehmen <ordner>/B
+//   node bildvergleich.mjs vergleichen <ordner>
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+const [modus, ziel] = process.argv.slice(2);
+const BASIS = process.env.BASIS ?? 'http://localhost:3300';
+if (!['localhost', '127.0.0.1', '[::1]'].includes(new URL(BASIS).hostname)) throw new Error('nur localhost (G1)');
+process.env.SM24_BASIS_URL = BASIS;
 const lib = await import(new URL('../../../werkzeuge/lib.mjs', import.meta.url).href);
 const { ANSICHTEN } = await import(new URL('../../../werkzeuge/leistung.mjs', import.meta.url).href);
-const ziel = process.argv[2] ?? '.';
-mkdirSync(ziel, { recursive: true });
 const browser = await lib.chromium.launch({ executablePath: lib.CHROMIUM, headless: true, args: ['--no-sandbox', '--font-render-hinting=none'] });
 async function aufnahme(basis, pfad, breite) {
   const ctx = await browser.newContext({ viewport: { width: breite, height: breite === 412 ? 823 : 800 }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
@@ -26,12 +27,20 @@ async function aufnahme(basis, pfad, breite) {
   await ctx.close();
   return { png, ...info };
 }
-const vergleich = await browser.newPage();
-const zeilen = [];
-for (const breite of [412, 1280]) {
-  for (const a of ANSICHTEN) {
-    const x = await aufnahme(A, a.pfad, breite);
-    const y = await aufnahme(B, a.pfad, breite);
+if (modus === 'aufnehmen') {
+  mkdirSync(ziel, { recursive: true });
+  for (const breite of [412, 1280]) for (const a of ANSICHTEN) {
+    const x = await aufnahme(BASIS, a.pfad, breite);
+    writeFileSync(`${ziel}/${a.id}-${breite}.png`, x.png);
+    writeFileSync(`${ziel}/${a.id}-${breite}.json`, JSON.stringify({ text: x.text, elemente: x.elemente, mono: x.mono }));
+    console.log(`aufgenommen ${a.id} ${breite}`);
+  }
+} else {
+  const vergleich = await browser.newPage();
+  const zeilen = [];
+  for (const breite of [412, 1280]) for (const a of ANSICHTEN) {
+    const lies = (s) => ({ png: readFileSync(`${ziel}/${s}/${a.id}-${breite}.png`), ...JSON.parse(readFileSync(`${ziel}/${s}/${a.id}-${breite}.json`, 'utf8')) });
+    const x = lies('A'); const y = lies('B');
     const diff = await vergleich.evaluate(async ([p, q]) => {
       const lade = (b64) => new Promise((ok) => { const i = new Image(); i.onload = () => ok(i); i.src = 'data:image/png;base64,' + b64; });
       const [i1, i2] = await Promise.all([lade(p), lade(q)]);
@@ -43,10 +52,9 @@ for (const breite of [412, 1280]) {
       return { groesse: `${i1.width}×${i1.height}`, pixel: n };
     }, [x.png.toString('base64'), y.png.toString('base64')]);
     const zeile = { breite, ansicht: a.id, ...diff, textGleich: x.text === y.text, elemente: `${x.elemente}/${y.elemente}`, schriftenGleich: JSON.stringify(x.mono) === JSON.stringify(y.mono) };
-    if (diff.pixel !== 0) { writeFileSync(`${ziel}/${a.id}-${breite}-A.png`, x.png); writeFileSync(`${ziel}/${a.id}-${breite}-B.png`, y.png); }
     zeilen.push(zeile);
     console.log(JSON.stringify(zeile));
   }
+  writeFileSync(`${ziel}/bildvergleich.json`, JSON.stringify(zeilen, null, 1));
 }
 await browser.close();
-writeFileSync(`${ziel}/bildvergleich.json`, JSON.stringify(zeilen, null, 1));

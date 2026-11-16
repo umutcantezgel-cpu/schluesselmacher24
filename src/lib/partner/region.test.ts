@@ -9,6 +9,7 @@ import {
   brauchtOrtsstamm,
   deckendePartner,
   deckendePartnerMitGrund,
+  regionGeprueftAus,
   type AbdeckungsAuskunft,
   type PartnerFuerRegion,
 } from './region';
@@ -81,9 +82,10 @@ const AUSKUNFT: AbdeckungsAuskunft = {
 };
 
 describe('Abdeckung über Umkreis und Region (FA-PLATTFORM-01C)', () => {
-  const umkreis = P({ id: 'umkreis-10', postleitzahlen: '', plz: '10001', radiusKm: 10 });
-  const ort = P({ id: 'ort', postleitzahlen: '', regionen: [{ art: 'ort', name: 'Gemeinde B', schluessel: '01001002' }] });
-  const kreis = P({ id: 'kreis', postleitzahlen: '', regionen: [{ art: 'landkreis', name: 'Kreis C', schluessel: '01002' }] });
+  // Punkt „Region und Radius“ erledigt (A-070); ohne ihn zählen nur die Muster (eigener Block unten).
+  const umkreis = P({ id: 'umkreis-10', postleitzahlen: '', plz: '10001', radiusKm: 10, regionGeprueft: true });
+  const ort = P({ id: 'ort', postleitzahlen: '', regionen: [{ art: 'ort', name: 'Gemeinde B', schluessel: '01001002' }], regionGeprueft: true });
+  const kreis = P({ id: 'kreis', postleitzahlen: '', regionen: [{ art: 'landkreis', name: 'Kreis C', schluessel: '01002' }], regionGeprueft: true });
 
   it('Umkreis: trifft bis zum Umkreis, nicht darüber, und nennt die Kilometer', () => {
     expect(deckendePartnerMitGrund('10002', 'funk', [umkreis], AUSKUNFT)).toEqual([
@@ -113,8 +115,8 @@ describe('Abdeckung über Umkreis und Region (FA-PLATTFORM-01C)', () => {
   });
 
   it('Region ohne Schlüssel oder mit Schlüssel der anderen Länge trifft nicht; Namen werden nicht verglichen', () => {
-    const nurName = P({ id: 'nur-name', postleitzahlen: '', regionen: [{ art: 'landkreis', name: 'Kreis C', schluessel: null }] });
-    const falscheLaenge = P({ id: 'ort-mit-kreis', postleitzahlen: '', regionen: [{ art: 'ort', name: 'Kreis C', schluessel: '01002' }] });
+    const nurName = P({ id: 'nur-name', postleitzahlen: '', regionen: [{ art: 'landkreis', name: 'Kreis C', schluessel: null }], regionGeprueft: true });
+    const falscheLaenge = P({ id: 'ort-mit-kreis', postleitzahlen: '', regionen: [{ art: 'ort', name: 'Kreis C', schluessel: '01002' }], regionGeprueft: true });
     expect(deckendePartner('10003', 'funk', [nurName, falscheLaenge], AUSKUNFT)).toEqual([]);
   });
 
@@ -126,7 +128,7 @@ describe('Abdeckung über Umkreis und Region (FA-PLATTFORM-01C)', () => {
   });
 
   it('nennt alle zutreffenden Gründe eines Betriebs', () => {
-    const alles = P({ id: 'alles', postleitzahlen: '100*', plz: '10001', radiusKm: 10, regionen: [{ art: 'landkreis', name: 'Kreis A', schluessel: '01001' }] });
+    const alles = P({ id: 'alles', postleitzahlen: '100*', plz: '10001', radiusKm: 10, regionen: [{ art: 'landkreis', name: 'Kreis A', schluessel: '01001' }], regionGeprueft: true });
     expect(abdeckungsGruende('10002', 'funk', alles, AUSKUNFT).map((g) => g.art)).toEqual(['postleitzahl', 'umkreis', 'region']);
   });
 
@@ -158,7 +160,57 @@ describe('Abdeckung über Umkreis und Region (FA-PLATTFORM-01C)', () => {
     expect(brauchtOrtsstamm([umkreis])).toBe(true);
     expect(brauchtOrtsstamm([{ ...umkreis, plz: null }])).toBe(false);
     expect(brauchtOrtsstamm([kreis])).toBe(true);
-    expect(brauchtOrtsstamm([P({ id: 'x', regionen: [{ art: 'ort', name: 'Nur Name', schluessel: '' }] })])).toBe(false);
+    expect(brauchtOrtsstamm([P({ id: 'x', regionen: [{ art: 'ort', name: 'Nur Name', schluessel: '' }], regionGeprueft: true })])).toBe(false);
+    // Ohne erledigten Punkt „Region und Radius“ zählen nur die Muster; der Stamm wird nicht gebraucht.
+    expect(brauchtOrtsstamm([{ ...umkreis, regionGeprueft: false }, { ...kreis, regionGeprueft: null }])).toBe(false);
+  });
+});
+
+describe('Regel „Region geprüft“ (A-070): Umkreis und Region erst mit erledigtem Punkt „Region und Radius“', () => {
+  const ERLEDIGT = { erledigt: true, am: '2026-11-16', pruefer: 'Testprüferin' };
+  const umkreis = P({ id: 'umkreis', postleitzahlen: '', plz: '10001', radiusKm: 10 });
+  const ort = P({ id: 'ort', postleitzahlen: '', regionen: [{ art: 'ort', name: 'Gemeinde B', schluessel: '01001002' }] });
+  const kreis = P({ id: 'kreis', postleitzahlen: '', regionen: [{ art: 'landkreis', name: 'Kreis A', schluessel: '01001' }] });
+  const muster = P({ id: 'muster', postleitzahlen: '10002', plz: '10001', radiusKm: 10, regionen: [{ art: 'landkreis', name: 'Kreis A', schluessel: '01001' }] });
+
+  it('Punkt erledigt heißt Haken, Datum und Prüfer', () => {
+    expect(regionGeprueftAus({ region: ERLEDIGT })).toBe(true);
+    expect(regionGeprueftAus({ region: { ...ERLEDIGT, am: null } })).toBe(false);
+    expect(regionGeprueftAus({ region: { ...ERLEDIGT, pruefer: '  ' } })).toBe(false);
+    expect(regionGeprueftAus({ region: { ...ERLEDIGT, erledigt: false } })).toBe(false);
+    expect(regionGeprueftAus({ region: null })).toBe(false);
+    expect(regionGeprueftAus(null)).toBe(false);
+    expect(regionGeprueftAus(undefined)).toBe(false);
+  });
+
+  it('Umkreis trifft nur mit erledigtem Punkt', () => {
+    expect(ids(deckendePartner('10002', 'funk', [{ ...umkreis, regionGeprueft: true }], AUSKUNFT))).toEqual(['umkreis']);
+    expect(ids(deckendePartner('10002', 'funk', [umkreis], AUSKUNFT))).toEqual([]);
+    expect(ids(deckendePartner('10002', 'funk', [{ ...umkreis, regionGeprueft: false }], AUSKUNFT))).toEqual([]);
+    expect(ids(deckendePartner('10002', 'funk', [{ ...umkreis, regionGeprueft: regionGeprueftAus({ region: { ...ERLEDIGT, am: '' } }) }], AUSKUNFT))).toEqual([]);
+    expect(ids(deckendePartner('10002', 'funk', [{ ...umkreis, regionGeprueft: regionGeprueftAus({ region: { ...ERLEDIGT, pruefer: null } }) }], AUSKUNFT))).toEqual([]);
+  });
+
+  it('Ort und Landkreis treffen nur mit erledigtem Punkt', () => {
+    expect(ids(deckendePartner('10002', 'funk', [{ ...ort, regionGeprueft: true }, { ...kreis, regionGeprueft: true }], AUSKUNFT))).toEqual(['ort', 'kreis']);
+    expect(ids(deckendePartner('10002', 'funk', [ort, kreis], AUSKUNFT))).toEqual([]);
+    for (const region of [{ ...ERLEDIGT, am: null }, { ...ERLEDIGT, pruefer: '' }, { ...ERLEDIGT, erledigt: false }]) {
+      const geprueft = regionGeprueftAus({ region });
+      expect(ids(deckendePartner('10002', 'funk', [{ ...ort, regionGeprueft: geprueft }, { ...kreis, regionGeprueft: geprueft }], AUSKUNFT))).toEqual([]);
+    }
+  });
+
+  it('ohne erledigten Punkt zählt nur das Muster', () => {
+    expect(abdeckungsGruende('10002', 'funk', muster, AUSKUNFT)).toEqual([{ art: 'postleitzahl', muster: '10002' }]);
+    expect(abdeckungsGruende('10002', 'funk', { ...muster, regionGeprueft: true }, AUSKUNFT).map((g) => g.art)).toEqual(['postleitzahl', 'umkreis', 'region']);
+  });
+
+  it('Betrieb „vor Einführung der Prüfliste“ mit Umkreis deckt nur über sein Muster ab', () => {
+    const altbestand = { pruefliste: { vorEinfuehrung: true, region: null } };
+    const betrieb = { ...muster, id: 'altbestand', postleitzahlen: '355*', regionGeprueft: regionGeprueftAus(altbestand.pruefliste) };
+    expect(betrieb.regionGeprueft).toBe(false);
+    expect(ids(deckendePartner('10002', 'funk', [betrieb], AUSKUNFT))).toEqual([]);
+    expect(deckendePartnerMitGrund('35576', 'funk', [betrieb], AUSKUNFT)).toEqual([{ partner: betrieb, gruende: [{ art: 'postleitzahl', muster: '355*' }] }]);
   });
 });
 

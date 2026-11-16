@@ -1,0 +1,42 @@
+# FA-SEO-03B · Ausgabe von experimente/spur-aufgaben.mjs gegen http://localhost:3300 (Versuchsstand v4a: Rubrik getrennt, sonst wie 8939397)
+# 412 × 823, CPU 4-fach, Netz ungedrosselt, Spur bis 6 s nach „load“. Lange Aufgaben = RunTask ≥ 50 ms auf dem Hauptthread.
+# „ohne-vorladen“: Anfragen mit Header next-router-prefetch werden mit 204 beantwortet (Ursachenprobe für useSpaetVorladen).
+
+/shop wie ausgeliefert · Vorlade-Anfragen: 13 · lange Aufgaben: 5 · Summe über 50 ms: 293 ms
+  bei 57 ms: 85 ms · HTMLDocumentParser::MaybeFetchQueuedPreloads 11; Layout 1; UpdateLayoutTree 0; CommitLoad shop 0; V8.StackGuard 0
+  bei 219 ms: 146 ms · UpdateLayoutTree 125; ParseHTML 3; EventDispatch DOMContentLoaded 0; EventDispatch readystatechange 0
+  bei 416 ms: 78 ms · Layout 54; Paint 7; UpdateLayoutTree 5; PrePaint 4; Layerize 1
+  bei 506 ms: 183 ms · EvaluateScript 17_pbdm6y2ffj.js 179; EventDispatch load 4
+  bei 869 ms: 51 ms · FunctionCall 17_pbdm6y2ffj.js z 50; RunMicrotasks 0
+/shop ohne-vorladen · Vorlade-Anfragen: 6 · lange Aufgaben: 3 · Summe über 50 ms: 258 ms
+  bei 43 ms: 75 ms · HTMLDocumentParser::MaybeFetchQueuedPreloads 13; UpdateLayoutTree 1; Layout 0; CommitLoad shop 0; EventDispatch unload 0
+  bei 183 ms: 143 ms · Layout 90; UpdateLayoutTree 33; Paint 10; PrePaint 3; Layerize 0
+  bei 447 ms: 189 ms · EvaluateScript 17_pbdm6y2ffj.js 185; EventDispatch load 4
+/shop wie ausgeliefert · Vorlade-Anfragen: 13 · lange Aufgaben: 3 · Summe über 50 ms: 263 ms
+  bei 97 ms: 109 ms · HTMLDocumentParser::MaybeFetchQueuedPreloads 6; Layout 0; UpdateLayoutTree 0; CommitLoad shop 0; V8.StackGuard 0
+  bei 283 ms: 134 ms · UpdateLayoutTree 59; Layout 57; Paint 8; PrePaint 3; Layerize 1
+  bei 449 ms: 170 ms · EvaluateScript 17_pbdm6y2ffj.js 170; EventDispatch load 0
+/shop ohne-vorladen · Vorlade-Anfragen: 6 · lange Aufgaben: 3 · Summe über 50 ms: 342 ms
+  bei 120 ms: 213 ms · UpdateLayoutTree 203; ParseHTML 7; EventDispatch DOMContentLoaded 0; EventDispatch readystatechange 0
+  bei 431 ms: 85 ms · Layout 66; UpdateLayoutTree 5; Layerize 3; Paint 2; Commit 2
+  bei 532 ms: 194 ms · EvaluateScript 17_pbdm6y2ffj.js 194; EventDispatch load 0
+
+/autoschluessel wie ausgeliefert · Vorlade-Anfragen: 11 · lange Aufgaben: 6 · Summe über 50 ms: 438 ms
+  bei 55 ms: 59 ms · HTMLDocumentParser::MaybeFetchQueuedPreloads 8; Layout 0; CommitLoad autoschluessel 0; UpdateLayoutTree 0; V8.StackGuard 0
+  bei 204 ms: 162 ms · UpdateLayoutTree 73; Layout 71; Paint 3; PrePaint 2; Layerize 1
+  bei 429 ms: 176 ms · Layout 76; UpdateLayoutTree 70; Paint 12; PrePaint 9; Layerize 3
+  bei 639 ms: 73 ms · Layout 51; Paint 7; PrePaint 6; UpdateLayoutTree 6; Layerize 1
+  bei 714 ms: 204 ms · EvaluateScript 2ksv7p9obax5c.js 202; EventDispatch load 1
+  bei 1086 ms: 63 ms · FunctionCall 17_pbdm6y2ffj.js z 61; RunMicrotasks 1
+/autoschluessel wie ausgeliefert · Vorlade-Anfragen: 11 · lange Aufgaben: 6 · Summe über 50 ms: 363 ms
+  bei 59 ms: 100 ms · HTMLDocumentParser::MaybeFetchQueuedPreloads 16; V8.StackGuard 3; Layout 2; UpdateLayoutTree 0; CommitLoad autoschluessel 0
+  bei 330 ms: 97 ms · Layout 40; UpdateLayoutTree 34; Paint 14; Layerize 3; Commit 1
+  bei 481 ms: 157 ms · Layout 76; UpdateLayoutTree 55; Paint 12; PrePaint 4; Layerize 3
+  bei 655 ms: 50 ms · UpdateLayoutTree 24; Layout 14; Paint 4; PrePaint 3; Layerize 2
+  bei 723 ms: 154 ms · EvaluateScript 2ksv7p9obax5c.js 154; EventDispatch load 0
+  bei 877 ms: 105 ms · Layout 67; Paint 15; PrePaint 14; UpdateLayoutTree 2; Commit 1
+/shop wie ausgeliefert (Gegenprobe zur Autoschlüssel-Seite) · Vorlade-Anfragen: 13 · lange Aufgaben: 4 · Summe über 50 ms: 235 ms
+  bei 32 ms: 67 ms · HTMLDocumentParser::MaybeFetchQueuedPreloads 8; Layout 0; UpdateLayoutTree 0; CommitLoad shop 0; V8.StackGuard 0
+  bei 226 ms: 118 ms · Layout 52; UpdateLayoutTree 44; Paint 5; PrePaint 3; Layerize 0
+  bei 417 ms: 67 ms · Layout 30; UpdateLayoutTree 15; Paint 6; Commit 4; PrePaint 3
+  bei 497 ms: 184 ms · EvaluateScript 17_pbdm6y2ffj.js 183; EventDispatch load 1

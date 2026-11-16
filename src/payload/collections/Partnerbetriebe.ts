@@ -155,7 +155,8 @@ export const Partnerbetriebe: CollectionConfig = {
             description:
               'Kommagetrennt, auch Bereiche wie 355*. Zugeordnet wird über diese Postleitzahlen, den Umkreis und die Orte und Landkreise unten; '
               + 'es reicht, wenn eines passt. Der Umkreis wirkt nur mit der Postleitzahl des Betriebs oben und nur, wenn sie im Ortsstamm steht '
-              + '(Postleitzahlen von Großempfängern und Postfächern fehlen dort). Ohne Postleitzahl des Betriebs zählen nur diese Postleitzahlen und die Orte und Landkreise.',
+              + '(Postleitzahlen von Großempfängern und Postfächern fehlen dort). Ohne Postleitzahl des Betriebs zählen nur diese Postleitzahlen und die Orte und Landkreise. '
+              + 'Umkreis und Orte und Landkreise wirken erst, wenn in der Prüfliste „Region und Radius“ abgehakt ist (mit Datum und Prüfer); diese Postleitzahlen wirken immer.',
           },
         },
         {
@@ -168,12 +169,13 @@ export const Partnerbetriebe: CollectionConfig = {
             description:
               'Luftlinie um die Postleitzahl des Betriebs (oben). Fehlt diese Postleitzahl oder steht sie nicht im Ortsstamm '
               + '(etwa eine Großempfänger- oder Postfach-Postleitzahl), wirkt der Umkreis nicht. 0 oder leer: kein Umkreis. '
-              + 'Der Umkreis kommt aus der Bewerbung. Prüfen Sie ihn vor dem Freischalten; er gilt ab dann.',
+              + 'Der Umkreis kommt aus der Bewerbung. Er wirkt erst, wenn in der Prüfliste „Region und Radius“ abgehakt ist (mit Datum und Prüfer). '
+              + 'Prüfen Sie ihn vorher.',
           },
         },
         {
           // Zuordnung zu Orten und Landkreisen (FA-22-40). Ausgewertet seit FA-PLATTFORM-01C, nur über den
-          // amtlichen Schlüssel (src/lib/partner/region.ts); Namen werden nicht verglichen.
+          // amtlichen Schlüssel (src/lib/partner/region.ts) und nur mit erledigtem Punkt „Region und Radius“ (A-070).
           name: 'regionen',
           type: 'array',
           label: 'Orte und Landkreise',
@@ -182,7 +184,8 @@ export const Partnerbetriebe: CollectionConfig = {
           admin: {
             description:
               'Freiwillig. Zählt nur mit amtlichem Schlüssel: Ort mit Gemeindeschlüssel (8 Ziffern), Landkreis mit Kreisschlüssel (5 Ziffern). '
-              + 'Ohne Schlüssel oder mit einem Schlüssel der anderen Länge ist der Eintrag nur Dokumentation; der Name wird nicht verglichen.',
+              + 'Ohne Schlüssel oder mit einem Schlüssel der anderen Länge ist der Eintrag nur Dokumentation; der Name wird nicht verglichen. '
+              + 'Wirkt erst, wenn in der Prüfliste „Region und Radius“ abgehakt ist (mit Datum und Prüfer).',
           },
           fields: [
             {
