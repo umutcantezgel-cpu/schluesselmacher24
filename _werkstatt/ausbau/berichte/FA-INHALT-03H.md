@@ -110,3 +110,15 @@ Nach der letzten Änderung, alles über `_werkstatt/ausbau/werkzeuge/sicher.sh -
 - Zusätzlich `npx tsx` über ein Messskript in einem vorübergehenden Ordner `.tmp-03h` im Repository, danach gelöscht.
 
 === ENDE FA-INHALT-03H · BEREIT ZUR RÜCKGABE ===
+
+## ABNAHME (Orchestrator, 16.11.2026)
+
+- **Prüfkette grün** mit der Abnahme von FA-SHOP-04: Typprüfung, Lint, Unit 3.472, Datenbanktests 135, Build 178 von 178; Onpage 135 Seiten ohne Befund. Sichtprobe `/schluessel-nach-code`, `/artikel` und `/warenkorb` bei 390 px ohne Fehler in der Konsole.
+- **Vom Orchestrator nachgezogen** (Punkte außerhalb der Schreibrechte des Pakets):
+  - „Preis je Stück“ im Gruppenkopf der Liste und „Staffelpreise gelten ab …“ auf der Kategorieseite erscheinen nur, wenn mindestens ein Produkt der Gruppe lieferbar ist (Tests in `shop-seiten.test.tsx` und `codelinie-texte.test.ts`).
+  - „Codelinie“ und „Linie“ sind aus Überschriften, Knöpfen, der Fehlermeldung zur Sicherungskarte und den Suchbeschreibungen entfernt.
+  - Der alte Hinweis mit „bald“ steht nicht mehr als Beispiel im Admin (`Kategorien.ts`), im Typkommentar und in `docs/betrieb/shop-pflegen.md`.
+  - Artikelübersicht ohne Artikel: Kopfzeile „Auf Anfrage“ statt „Direkt kaufen“. Leerer Warenkorb: der Satz zu Schlüsseln nach Code stimmt mit und ohne Produkte.
+- **Unabhängige Leser nachgeholt:** Der Autor konnte keine Unteragenten einsetzen. Drei Leser haben die erzeugten Texte in allen drei Verfügbarkeiten gelesen: 35 Befunde in `berichte/FA-INHALT-03H-leser.md`, darunter Widersprüche bei „nicht lieferbar“ (Kategorie- und Herstellerseite versprechen eine Prüfung, die Produktseite bietet keine an) und unerklärte Wörter („Anwendungsfamilie“, „Codeformat“). Die Behebung ist das Paket FA-INHALT-03I mit den Entscheidungen aus A-059. Bis dahin gilt 03H als gebaut und geprüft, die Texte aber nicht als fertig. Heute sind diese Sätze nicht sichtbar, weil es keine veröffentlichten Produkte gibt.
+- **Nicht übernommen:** Befund 6 der Gegenprüfung (Beschreibung der Kategorie „Gleichschließende Zylinder und Sperrschließungen“). Auf der Seite heißt Sperrschließung überall „ein Schlüssel für alle Türen“; ob das fachlich so gemeint ist, fragt MA-49.
+

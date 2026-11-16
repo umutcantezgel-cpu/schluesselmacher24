@@ -1078,9 +1078,9 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
               <Alert tone="warning" title="Preis noch nicht bestätigt">
                 <p>
                   {preisSperreText(unbestaetigt)} Online bestellen lässt sich diese Zusammenstellung deshalb nicht.
-                  Schicken Sie sie uns als Anfrage; Sie bekommen ein Angebot mit Preis.{' '}
+                  Schicken Sie sie uns als Anfrage. Sie bekommen ein Angebot mit Preis.{' '}
                   {anfrage.mitPlan
-                    ? 'Zylinder, Maße und Schlüssel gehen mit; weitere Optionen wählen Sie dort noch einmal.'
+                    ? 'Zylinder, Maße und Schlüssel gehen mit. Weitere Optionen wählen Sie dort noch einmal.'
                     : 'Bitte nennen Sie uns in der Anfrage Bauform, Maße und Anzahl je Tür, die Zahl der Schlüssel und Ihre Optionen.'}
                   {hersteller ? ` Den Hersteller ${hersteller.name} nennen Sie uns dort bitte noch einmal.` : ''}
                 </p>

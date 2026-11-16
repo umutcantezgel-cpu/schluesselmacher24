@@ -149,3 +149,15 @@ Prüfungen nach der Nachbesserung, alle über die Datenweiche:
 - `sicher.sh --json -- npm run lint`: ohne Fehler.
 - `sicher.sh --pg -- npx vitest run -c vitest.db.config.ts`: 23 Dateien, 135 Tests, alle grün (mit der neu erzeugten Migration).
 - `sicher.sh --json -- npm run build`: grün.
+
+## ABNAHME (Orchestrator, 16.11.2026)
+
+- **Prüfkette grün** (`werkzeuge/abnahme.sh FA-SHOP-04`, Build mit `SM24_INDEXIERUNG=an`): Typprüfung, Lint, Unit 3.472 Tests in 221 Dateien, Datenbanktests 135 in 23 Dateien (mit der Migration `20261116_021014_zylinder_bestaetigt`), Build ohne Datenbank 178 von 178 Seiten. Der Lauf deckt auch FA-INHALT-03H und die Nachzüge des Orchestrators an den Shoptexten ab.
+- **Migration geprüft:** `up` enthält nur CREATE TYPE, CREATE TABLE, ADD COLUMN (mit DEFAULT false), ADD CONSTRAINT und CREATE INDEX; kein DROP, kein ALTER COLUMN. Die Lockerung von `name` und `kennung` aus dem ersten Entwurf ist entfallen (A-058).
+- **Preislogik gelesen:** `preisbestaetigung.ts` und die eine Zeile in `validateCylinderDraft`. Die Sperre greift zuletzt, nach allen bisherigen Prüfungen; ohne Haken ist der Rückgabewert derselbe wie vorher. Preise und Maßbereiche in `content/cylinder-catalog.json` und den Rückfällen sind gegenüber cba3e29 unverändert.
+- **Onpage-Messung** (03:24): 135 Seiten, Median 100,0, keine Seite unter 95, kein roter und kein gelber Befund.
+- **Sichtprobe** bei 390 × 844 (Build der Abnahme, Konsole ohne Fehler): `/gleichschliessende-zylinder` (Bauformen mit Grundpreisen wie bisher), Konfigurator Schritt 1 bis 5 (Zusammenfassung mit Summe und „In den Warenkorb“ wie bisher). Der Zustand mit gesetztem Haken ist im Browser nicht geprüft, weil er Daten mit Haken braucht; er ist durch `page.test.tsx`, `preisbestaetigung.test.ts`, `security.test.ts` und den Datenbanktest belegt. Der Oberflächentest des Konfigurators mit Haken gehört zu Teil B (Punkt 6 der Paketdatei), die Probe im Backend zu MA-46.
+- **Vom Orchestrator nachgezogen:** Die Hinweise der Preissperre stehen in zwei Sätzen statt mit Semikolon, und der Weg nennt die Sache beim Namen („Bitte schicken Sie Ihre Zusammenstellung im Konfigurator für gleichschließende Zylinder als Anfrage. Sie bekommen dann ein Angebot.“).
+- **Entschieden zu den offenen Fragen:** `name` und `kennung` am Hersteller des Zylinderkatalogs sind im Admin nur lesbar; ein älterer Eintrag ohne Stamm wird über die Auswahl aus der Liste geändert (im Startbestand gibt es keinen). Kein automatischer Haken für Hersteller ohne Aufpreis (MA-49). Übernahme weiterer Wünsche in den Planer: Teil B.
+- **Für Menschen:** MA-49 (Preisliste bestätigen, Aufpreise je Hersteller, Sicherungskarte Pflicht oder Option, weitere Bauformen), MA-48 (Einsatztexte je Bereich, jetzt im Admin pflegbar).
+

@@ -88,7 +88,7 @@ export function preisSperreText(treffer: UnbestaetigterPreis[]): string | null {
  * Schließplan-Planer nennt sein eigenes Angebot und lässt diesen Satz weg (`ohneSperreWeg`).
  */
 export const PREIS_SPERRE_WEG =
-  'Bitte stellen Sie sie im Konfigurator für gleichschließende Zylinder zusammen und schicken Sie sie uns dort als Anfrage; Sie bekommen ein Angebot.';
+  'Bitte schicken Sie Ihre Zusammenstellung im Konfigurator für gleichschließende Zylinder als Anfrage. Sie bekommen dann ein Angebot.';
 
 /** Gemeinsame Prüfung: Meldung mit Weg in die Anfrage, wenn die Zusammenstellung einen unbestätigten Preis nutzt, sonst null. */
 export function preisSperre(entwurf: CylinderOrderDraft, katalog: CylinderCatalog, zusatzIds?: string[]): string | null {
