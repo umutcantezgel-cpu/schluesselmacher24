@@ -74,6 +74,7 @@ import {
   unterlagenSchrittErfuellt,
   type UploadSlotId,
 } from './unterlagen-pruefung';
+import { leistungPasst, vorgewaehlteLeistung } from './leistung-vorwahl';
 
 /* ==========================================================================
    Autoschlüssel – geführter Ablauf in fünf Etappen mit 13 Schritten
@@ -321,8 +322,11 @@ export interface AssistentProps {
   retentionDays: { vehicleRegistration: number; keyPhotos: number };
   /** Aktuelles Jahr – auf dem Server ermittelt, damit Server und Browser übereinstimmen. */
   currentYear: number;
-  /** Vorbelegung aus ?marke=, ?modell= und ?vorhanden=. */
-  preselect: { makeSlug: string; modelSlug: string; workingKeys: number | null };
+  /**
+   * Vorbelegung aus ?marke=, ?modell=, ?vorhanden= und ?leistung=. Die Leistung (geprüfte Kennung oder leer)
+   * wird gewählt, sobald die Schlüsselart dazu passt (FA-05-09).
+   */
+  preselect: { makeSlug: string; modelSlug: string; workingKeys: number | null; serviceId?: string };
   /** Nummer eines stornierten Termins, dessen Anzahlung nicht einging (E-120); der Server prüft sie. */
   vorherigerVorgang?: string;
   /** Werkstatt und Telefon über dem Buchungsknopf – fehlt der Standort, entfällt die Zeile. */
@@ -360,7 +364,7 @@ export function Assistent({
       keyKind: '',
       workingKeys: preselect.workingKeys,
       keinSchluesselMehr: false,
-      serviceId: '',
+      serviceId: preselect.serviceId ?? '',
       entitlementConfirmed: false,
       salutation: '',
       firstName: '',
@@ -380,7 +384,7 @@ export function Assistent({
       slotTime: '',
       terminstandort: 'werkstatt',
     }),
-    [preselect.makeSlug, preselect.modelSlug, preselect.workingKeys],
+    [preselect.makeSlug, preselect.modelSlug, preselect.workingKeys, preselect.serviceId],
   );
 
   /* Dateien bleiben bewusst außerhalb des Zwischenspeichers – sie lassen
@@ -507,15 +511,8 @@ export function Assistent({
 
   const matchingServices = useMemo(
     () =>
-      data.keyKind
-        ? services.filter(
-            (s) =>
-              s.active &&
-              s.keyKinds.includes(data.keyKind as KeyKind) &&
-              // Ein Zweitschlüssel braucht einen funktionierenden Schlüssel als Vorlage (E4-PROBENUTZER-01).
-              !(s.id === 'zweitschluessel' && data.workingKeys === 0),
-          )
-        : [],
+      // Ein Zweitschlüssel braucht einen funktionierenden Schlüssel als Vorlage (E4-PROBENUTZER-01).
+      data.keyKind ? services.filter((s) => leistungPasst(s, data.keyKind as KeyKind, data.workingKeys)) : [],
     [services, data.keyKind, data.workingKeys],
   );
   const service = useMemo(
@@ -686,7 +683,8 @@ export function Assistent({
   function selectKeyKind(kind: string) {
     flow.update({
       keyKind: kind as KeyKind,
-      serviceId: '',
+      // Leistung aus der Adresse (etwa von der Seite Fahrzeugöffnung), wenn sie zur Art passt (FA-05-09).
+      serviceId: vorgewaehlteLeistung(preselect.serviceId ?? '', services, kind as KeyKind, data.workingKeys),
       slotDate: '',
       slotTime: '',
       depositAccepted: false,
@@ -699,7 +697,9 @@ export function Assistent({
 
   function selectWorkingKeys(value: number) {
     // Totalverlust gilt nur bei 0 funktionierenden Schlüsseln (FA-KERN-02).
-    flow.update({ workingKeys: value, keinSchluesselMehr: value === 0 && data.keinSchluesselMehr, slotDate: '', slotTime: '', depositAccepted: false });
+    // Eine vorgewählte Leistung, die zur neuen Zahl nicht mehr passt (Zweitschlüssel ohne Vorlage), entfällt.
+    const serviceId = vorgewaehlteLeistung(data.serviceId, services, data.keyKind, value) || (data.keyKind ? '' : data.serviceId);
+    flow.update({ workingKeys: value, keinSchluesselMehr: value === 0 && data.keinSchluesselMehr, serviceId, slotDate: '', slotTime: '', depositAccepted: false });
   }
 
   function setSlotFiles(slot: UploadSlotId, next: PickedFile[]) {

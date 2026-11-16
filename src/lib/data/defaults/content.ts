@@ -167,7 +167,7 @@ export function pages(): PageContent[] {
         'Wir öffnen Ihr Fahrzeug zerstörungsfrei, wenn Sie ausgesperrt sind. Vor Ort weisen Sie '
         + 'bitte nach, dass Sie über das Fahrzeug verfügen dürfen.',
       links: [
-        ['/service-und-termin/anfrage?thema=fahrzeugoeffnung', 'Fahrzeugöffnung anfragen'],
+        ['/autoschluessel/anfrage?leistung=fahrzeugoeffnung', 'Termin anfragen'],
         ['/autoschluessel/nachmachen', 'Ersatzschlüssel anfertigen'],
       ],
     },

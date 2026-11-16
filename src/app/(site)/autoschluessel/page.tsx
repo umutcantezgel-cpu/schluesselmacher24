@@ -169,11 +169,11 @@ const TOPIC_GROUPS: TopicGroup[] = [
       {
         term: 'Gehäuse, Tasten und Batterie',
         href: '/autoschluessel/funkschluessel',
-        body: 'Bei gebrochenem Gehäuse, klemmenden Tasten oder schwacher Batterie. Die vorhandene Elektronik bleibt erhalten.',
+        body: 'Bei gebrochenem Gehäuse, klemmenden Tasten oder schwacher Batterie. Die vorhandene Elektronik bleibt, wenn sie in das neue Gehäuse passt.',
       },
       {
         term: 'Schlüsselverlust',
-        href: '/autoschluessel/nachmachen',
+        href: '/autoschluessel/schluesselverlust',
         body: 'Prüfen Sie zuerst, was noch vorhanden ist. Beauftragen Sie uns danach. Das spart Zeit.',
       },
       {

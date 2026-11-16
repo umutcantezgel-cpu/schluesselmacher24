@@ -71,7 +71,7 @@ export const NAV_AREAS: NavArea[] = [
             label: 'Fahrzeug nicht gefunden?',
             description: 'Anfrage mit Fahrzeugschein und Fotos',
           },
-          { href: '/ratgeber/autoschluessel-verloren-was-tun', label: 'Schlüssel verloren?', description: 'Die richtige Reihenfolge' },
+          { href: '/autoschluessel/schluesselverlust', label: 'Schlüssel verloren?', description: 'Ersatz und die richtige Reihenfolge' },
         ],
       },
     ],

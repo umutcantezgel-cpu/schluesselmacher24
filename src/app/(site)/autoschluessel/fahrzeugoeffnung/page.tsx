@@ -191,12 +191,10 @@ export default async function FahrzeugoeffnungPage() {
       next={{
         title: 'Der nächste Schritt',
         lead:
-          'Schildern Sie uns kurz die Lage und nennen Sie Ihre Fahrzeugdaten. Wir melden uns mit dem '
-          + 'weiteren Vorgehen.',
-        primary: {
-          href: '/service-und-termin/anfrage?thema=fahrzeugoeffnung',
-          label: 'Fahrzeugöffnung anfragen',
-        },
+          'Geben Sie Ihr Fahrzeug an. Die Fahrzeugöffnung ist dabei schon ausgewählt. Preis oder '
+          + 'Preisrahmen sehen Sie, bevor Sie verbindlich buchen. Den Nachweis prüfen wir vor Ort.',
+        // In den Termin-Assistenten mit vorgewählter Leistung (FA-05-09); dort sind Fahrzeug und Nachweis Pflicht.
+        primary: { href: '/autoschluessel/anfrage?leistung=fahrzeugoeffnung', label: 'Termin anfragen' },
         secondary: { href: '/service-und-termin/kontakt', label: 'Kontakt und Erreichbarkeit' },
       }}
       related={[

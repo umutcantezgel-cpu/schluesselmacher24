@@ -81,7 +81,7 @@ export function carKeyServices(): CarKeyService[] {
       slug: 'gehaeuse-reparatur',
       label: 'Gehäuse, Tasten und Batterie',
       description:
-        'Wir tauschen Gehäuse, Tasten oder Batterie. Die Elektronik bleibt erhalten.',
+        'Wir tauschen Gehäuse, Tasten oder Batterie. Die Elektronik bleibt, wenn sie in das neue Gehäuse passt.',
       requiresVehicleOnSite: false,
       keyKinds: ['funk', 'klappschluessel', 'smart-key'],
       active: true,

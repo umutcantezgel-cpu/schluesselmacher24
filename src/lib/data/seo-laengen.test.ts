@@ -159,6 +159,8 @@ describe('Rückfälle tragen dieselben Suchergebnis-Texte wie die Daten (FA-SEO-
  */
 const SEITEN_MIT_RUECKFALL = [
   '',
+  // Leistungsseite Schlüsselverlust (FA-05-07): ohne Eintrag in content/seo.json, es gelten die Längenregeln.
+  'autoschluessel/schluesselverlust',
   'service-und-termin',
   'partner-werden',
   'tuer-und-schliesstechnik',

@@ -570,7 +570,7 @@ export function rubriken(): Rubrik[] {
         },
         {
           titel: "Rückversand",
-          text: "Ihr Schlüssel kommt im neuen Gehäuse zurück.",
+          text: "Passt alles, kommt Ihr Schlüssel im neuen Gehäuse zurück.",
           icon: "lieferung",
         },
       ],

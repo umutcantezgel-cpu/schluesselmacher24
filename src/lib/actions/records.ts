@@ -266,6 +266,18 @@ export async function submitRecord(input: SubmitInput): Promise<SubmitResult> {
   if (anfrageQuelleUnbekannt(data)) {
     return { ok: false, notices: [], error: INVALID_INPUT };
   }
+  // Allgemeine Anfrage im Bereich Autoschlüssel (FA-06-U2, R13): Ohne Quelle führt kein geführter Weg mit
+  // Unterlagen dorthin, also ist sie nur als Frage zulässig, wie das Formular es im Browser regelt
+  // (anfrage-formular.tsx: `anliegenArt: 'frage'`). Wer einen Schlüssel will, nimmt einen Weg mit
+  // Fahrzeugschein; eine Anfrage ohne diese Angabe lehnt der Server ab, statt dem Browser zu glauben.
+  if (
+    data.kind === 'anfrage'
+    && data.area === 'autoschluessel'
+    && data.payload.quelle === undefined
+    && data.payload.anliegenArt !== 'frage'
+  ) {
+    return { ok: false, notices: [], error: INVALID_INPUT };
+  }
   // Ein Termin ist immer ein Autoschlüssel-Termin; die Pflichtregel gilt für jeden (R13).
   if (data.kind === 'termin' && data.area !== 'autoschluessel') {
     return { ok: false, notices: [], error: INVALID_INPUT };

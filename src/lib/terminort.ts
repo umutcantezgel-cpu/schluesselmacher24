@@ -4,8 +4,11 @@
    statt, Kundinnen und Kunden reisen an. Bedeutung von `location`:
    - `werkstatt` — in der Werkstatt; bei Leistungen am Fahrzeug mit Fahrzeug
      (`quote.requiresVehicleOnSite`),
-   - `vor-ort` — beim Kunden. Nur nach individueller Prüfung von Aufwand und
-     Kosten und nur vom Team gesetzt (Telefontermin), nie von der Buchung.
+   - `vor-ort` — beim Kunden. Die Buchung setzt ihn nur für Leistungen beim
+     Fahrzeug (`LEISTUNGEN_BEIM_KUNDEN`, heute die Fahrzeugöffnung, siehe
+     `buchungsOrt`); Ort und Anfahrt klärt das Team danach telefonisch. Jeder
+     andere Einsatz beim Kunden nur nach individueller Prüfung von Aufwand und
+     Kosten und nur vom Team gesetzt (Telefontermin).
    Reine Funktionen, nur relative Importe: Mailvorlagen und Endpunkte im
    Backend laden diese Datei ebenfalls.
    ========================================================================== */

@@ -235,8 +235,8 @@
       "description": "Wir öffnen Ihr Fahrzeug zerstörungsfrei, wenn Sie ausgesperrt sind. Vor Ort weisen Sie bitte nach, dass Sie über das Fahrzeug verfügen dürfen.",
       "internalLinks": [
         {
-          "href": "/service-und-termin/anfrage?thema=fahrzeugoeffnung",
-          "label": "Fahrzeugöffnung anfragen"
+          "href": "/autoschluessel/anfrage?leistung=fahrzeugoeffnung",
+          "label": "Termin anfragen"
         },
         {
           "href": "/autoschluessel/nachmachen",

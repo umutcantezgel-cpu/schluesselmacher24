@@ -1140,6 +1140,29 @@ describe('submitRecord: Pflichtunterlagen je Weg (FA-KERN-02, A-048)', () => {
     // Unbekannte Klasse in der Fahrzeug-Anfrage: abgelehnt.
     expect((await submitRecord({ ...fahrzeug('lkw'), uploads: [fahrzeugschein, ...dreiFotos] })).ok).toBe(false);
   });
+
+  it('nimmt eine allgemeine Anfrage im Bereich Autoschlüssel nur als Frage an (FA-06-U2, R13)', async () => {
+    const allgemein = { ...anfrage, area: 'autoschluessel' as const, uploads: [] };
+    // Die ehrliche Frage aus dem Formular (Thema Autoschlüssel, „Ich habe eine Frage“) geht weiter durch.
+    const frage = await submitRecord({ ...allgemein, payload: { thema: 'autoschluessel', anliegenArt: 'frage', beschreibung: BESCHREIBUNG } });
+    expect(frage.ok).toBe(true);
+    expect(stored[0]).toMatchObject({ area: 'autoschluessel', payload: { anliegenArt: 'frage' } });
+    // Gefälscht: ohne Quelle als Schlüsselwunsch, ohne Angabe oder mit erfundener Art. Abgelehnt, auch mit Unterlagen.
+    for (const [name, payload] of [
+      ['schluessel', { thema: 'autoschluessel', anliegenArt: 'schluessel', beschreibung: BESCHREIBUNG }],
+      ['ohne Angabe', { thema: 'autoschluessel', beschreibung: BESCHREIBUNG }],
+      ['ohne Thema', { beschreibung: BESCHREIBUNG }],
+      ['erfunden', { thema: 'autoschluessel', anliegenArt: 'Frage', beschreibung: BESCHREIBUNG }],
+    ] as const) {
+      expect((await submitRecord({ ...allgemein, payload })).ok, name).toBe(false);
+      expect((await submitRecord({ ...allgemein, payload, uploads: [fahrzeugschein, ...dreiFotos] })).ok, `${name} mit Unterlagen`).toBe(false);
+    }
+    expect(stored).toHaveLength(1);
+    // Die geführten Wege mit Quelle bleiben unberührt: Ohne Fahrzeugschein kommt kein Schlüsselauftrag durch.
+    const ohneSchein = await submitRecord({ ...fahrzeug('auto', { anliegenArt: 'frage' }), uploads: dreiFotos });
+    expect(ohneSchein.ok).toBe(false);
+    expect(ohneSchein.error).toContain('Fahrzeugschein');
+  });
 });
 
 describe('submitRecord: gemeinsame Fahrzeugschlüssel-Anfrage aus dem Formular (FA-KERN-02B, FA-27)', async () => {

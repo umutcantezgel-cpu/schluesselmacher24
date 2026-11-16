@@ -14,6 +14,7 @@ import { KATALOG_ADRESSE } from '@/components/autoschluessel/fahrzeug-ziel';
 import { Assistent } from './assistent';
 import { vorherAusAdresse } from '@/lib/zahlung/neu-buchen';
 import { SeitenDaten } from '@/components/seo/seiten-daten';
+import { leistungAusAdresse } from './leistung-vorwahl';
 
 const ROUTE = 'autoschluessel/anfrage';
 
@@ -92,6 +93,10 @@ export default async function AutoschluesselAnfragePage(props: {
   const workingKeys =
     WORKING_KEYS_OPTIONS.find((option) => String(option.value) === wantedWorkingKeys)?.value ?? null;
 
+  // ?leistung= aus einer Leistungsseite (Fahrzeugöffnung, Schlüsselverlust): nur eine aktive gepflegte Leistung.
+  const aktiveLeistungen = services.filter((entry) => entry.active);
+  const serviceId = leistungAusAdresse(first(searchParams.leistung), aktiveLeistungen);
+
   const payment = paymentStatus();
 
   // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
@@ -122,14 +127,14 @@ export default async function AutoschluesselAnfragePage(props: {
         <Assistent
           makes={makes}
           katalogAdresse={KATALOG_ADRESSE.pkw}
-          services={services.filter((entry) => entry.active)}
+          services={aktiveLeistungen}
           paymentConfigured={payment.configured}
           retentionDays={{
             vehicleRegistration: settings.retentionDays.vehicleRegistration,
             keyPhotos: settings.retentionDays.keyPhotos,
           }}
           currentYear={jahrInBerlin()}
-          preselect={{ makeSlug: make?.slug ?? '', modelSlug: model?.slug ?? '', workingKeys }}
+          preselect={{ makeSlug: make?.slug ?? '', modelSlug: model?.slug ?? '', workingKeys, serviceId }}
           werkstatt={werkstattAngaben(settings.company)}
           erreichbarkeit={erreichbarkeit(settings)}
           eigenbereich={settings.booking.ownArea}

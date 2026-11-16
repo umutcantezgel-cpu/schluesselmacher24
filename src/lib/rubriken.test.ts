@@ -67,6 +67,21 @@ describe('Rubriken-Modell (G-03, G-11, KERN K-014)', () => {
     }
   });
 
+  it('jede Rubrik mit Status „live“ führt auf eine Seite, die es gibt, in Daten und Rückfall (FA-05-04)', () => {
+    // Nicht nur Kacheln: Navigation und Fußzeile zeigen jede Rubrik, die live ist (rubriken.ts, navigation.ts).
+    // Wer eine Rubrik im Admin freischaltet, deren Seite fehlt, erzeugt einen toten Verweis; der Test fängt
+    // das für die ausgelieferten Daten ab.
+    for (const quelle of [ALLE, JSON_INHALT]) {
+      const live = quelle.filter((r) => r.status === 'live');
+      expect(live.length).toBeGreaterThan(0);
+      for (const r of live) expect(seiteVorhanden(r.ziel.split(/[?#]/)[0]), `${r.id}: ${r.ziel}`).toBe(true);
+    }
+    // „Transponder-Kopie“ bleibt später, ihre Seite gibt es noch nicht (Freigabe des Inhabers offen).
+    const transponder = ALLE.find((r) => r.id === 'transponder-kopie');
+    expect(transponder?.status).toBe('spaeter');
+    expect(seiteVorhanden(transponder!.ziel)).toBe(false);
+  });
+
   it('trägt die Namen des Inhabers; die Kachelnamen für das Telefon sind kurz und stecken im vollen Namen', () => {
     const name = new Map(ALLE.map((r) => [r.id, r.name]));
     expect(name.get('roller-und-kleinstfahrzeuge')).toBe('Roller und Kleinstfahrzeuge');

@@ -198,6 +198,7 @@ export default async function NachmachenPage() {
       related={[
         { href: '/autoschluessel/kopieren', label: 'Autoschlüssel kopieren', description: 'Was eine mechanische Kopie leistet' },
         { href: '/autoschluessel/schluesselbart-fraesen', label: 'Schlüsselbart fräsen', description: 'Der mechanische Teil im Detail' },
+        { href: '/autoschluessel/schluesselverlust', label: 'Schlüsselverlust', description: 'Ersatz, wenn ein Schlüssel verloren ist' },
         { href: '/ratgeber/autoschluessel-verloren-was-tun', label: 'Autoschlüssel verloren', description: 'Was Sie jetzt in welcher Reihenfolge tun' },
         { href: '/autoschluessel', label: 'Alle Autoschlüssel-Leistungen', description: 'Zurück zur Übersicht' },
       ]}

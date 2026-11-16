@@ -49,6 +49,7 @@ const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '/autoschluessel/smart-key', priority: 0.7 },
   { path: '/autoschluessel/schluesselbart-fraesen', priority: 0.7 },
   { path: '/autoschluessel/fahrzeugoeffnung', priority: 0.7 },
+  { path: '/autoschluessel/schluesselverlust', priority: 0.7 },
   { path: '/autoschluessel/marken', priority: 0.7 },
   { path: '/autoschluessel/anfrage', priority: 0.9 },
   { path: '/schluessel-nach-vorlage', priority: 0.8 },
