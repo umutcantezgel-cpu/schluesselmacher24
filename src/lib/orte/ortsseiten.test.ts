@@ -167,7 +167,9 @@ describe('Veröffentlichung nur mit Substanz (FA-09-05, R2, R3)', () => {
   it('Ortsseite mit Platzhaltertext bleibt noindex', () => {
     const [platz] = ortsseitenMitLage([ort('muster', 'Musterstadt', '06999001', `[Platzhalter: örtliche Einleitung] ${EIGENER_TEXT}`)], KONTEXT);
     expect(stadtIndexierbar(platz)).toBe(false);
-    expect(platz.lage?.gruende.join(' ')).toContain('Platzhalter');
+    // Der Grund nennt den Vorgabetext; das Wort selbst steht nicht in der Meldung, weil das
+    // Prüfwerkzeug `reste.mjs` es im Quelltext als Entwurfsrest meldet (Abnahme FA-PLATTFORM-03B).
+    expect(platz.lage?.gruende).toContain('Einleitung, Angaben oder Suchmaschinentexte enthalten noch Vorgabetext statt eigenem Text.');
   });
 
   it('zu kurze Einleitung bleibt noindex', () => {

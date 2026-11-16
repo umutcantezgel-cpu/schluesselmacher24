@@ -18,6 +18,9 @@
 //   HTML-Gewicht, LCP-Element mit Phasen, blockierende Dateien, Skripte mit Ausführungszeit, lange Aufgaben.
 // Ausgabe: <ziel>/leistung-<marke>-<zeit>.json und .md (Standard protokolle/FA-SEO-03/), volle LHR nach <roh>
 //   (Standard protokolle/roh/FA-SEO-03/, nicht für den Commit).
+// Attrappen: Je Lauf werden die abgefangenen Anfragen gezählt (fremd, upload, action-*, post-sonstig) und mit
+//   JSON und Markdown ausgegeben (G5-Beleg). --vorher muss mit derselben Methode gemessen sein; eine Datei ohne
+//   Feld „methode“ (Vorfassung) gilt als simulate.
 // Exit: 0 Lauf fertig (auch mit Befunden), 1 technischer Fehler, 2 Bedienfehler.
 import { writeFileSync, readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -55,6 +58,35 @@ export const KENNWERTE = [
 export const METHODEN = ['simulate', 'devtools'];
 
 export class Bedienfehler extends Error {}
+
+/** Methode einer gespeicherten Messung. Ältere Dateien ohne Feld „methode“ (Vorfassung des Werkzeugs) gelten als simulate. */
+export function methodeVon(messung) {
+  return messung?.methode ?? 'simulate';
+}
+
+/** Arten der Attrappen aus lib.mjs (G5), wie in lighthouse.mjs. */
+export const ATTRAPPEN_ARTEN = ['fremd', 'upload', 'action-schreibend', 'action-unbekannt', 'post-sonstig'];
+
+/** Zählt die von attrappenSetzen() abgefangenen Anfragen eines Laufs je Art, mit fremden Hosts. */
+export function zaehleAttrappen(liste) {
+  const zaehl = Object.fromEntries(ATTRAPPEN_ARTEN.map((a) => [a, 0]));
+  const hosts = new Set();
+  for (const e of liste ?? []) {
+    zaehl[e.art] = (zaehl[e.art] ?? 0) + 1;
+    if (e.art === 'fremd') {
+      try { hosts.add(new URL(e.url).host); } catch { /* ungültige Adresse: nur gezählt */ }
+    }
+  }
+  return { ...zaehl, fremdHosts: [...hosts] };
+}
+
+/** Summe der Attrappen über die Läufe einer Ansicht; null, wenn kein Lauf eine Zählung hat. */
+export function summeAttrappen(laeufe) {
+  const mit = laeufe.filter((l) => l.attrappen);
+  if (!mit.length) return null;
+  const summe = Object.fromEntries(ATTRAPPEN_ARTEN.map((a) => [a, mit.reduce((n, l) => n + (l.attrappen[a] ?? 0), 0)]));
+  return { ...summe, fremdHosts: [...new Set(mit.flatMap((l) => l.attrappen.fremdHosts ?? []))], laeufe: mit.length };
+}
 
 export function methodeWaehlen(text) {
   const m = text === undefined ? 'simulate' : String(text);
@@ -178,7 +210,8 @@ export function fasseZusammen(ansicht, laeufe) {
   return {
     ...ansicht,
     gueltig: gueltig.length,
-    laeufe: laeufe.map(({ lauf, werte, fehler }) => ({ lauf, werte, fehler: fehler ?? null })),
+    laeufe: laeufe.map(({ lauf, werte, fehler, attrappen }) => ({ lauf, werte, fehler: fehler ?? null, attrappen: attrappen ?? null })),
+    attrappen: summeAttrappen(laeufe),
     statistik: stat,
     medianLauf: m ? { lauf: m.lauf, werte: m.werte, ursachen: m.ursachen } : null,
   };
@@ -231,8 +264,12 @@ export function markdown(kopf, ansichten, vergleich) {
     const p = u.lcpPhasen;
     z.push(`Medianlauf ${m.lauf}: Leistung ${fmt(m.werte.leistung)}, LCP ${fmt(m.werte.lcp)} ms, TBT ${fmt(m.werte.tbt)} ms.`, '');
     z.push(`- LCP-Element: ${zelle(u.lcpElement?.selektor)} · ${zelle(u.lcpElement?.ausschnitt)}`);
-    z.push(`- LCP-Phasen (simuliert): Serverantwort ${fmt(p.serverantwort)} ms, Ladeverzögerung ${fmt(p.ladeverzoegerung)} ms, Ladedauer ${fmt(p.ladedauer)} ms, Darstellungsverzögerung ${fmt(p.darstellungsverzoegerung)} ms`);
+    z.push(`- LCP-Phasen (${kopf.methode === 'devtools' ? 'gemessen' : 'simuliert'}): Serverantwort ${fmt(p.serverantwort)} ms, Ladeverzögerung ${fmt(p.ladeverzoegerung)} ms, Ladedauer ${fmt(p.ladedauer)} ms, Darstellungsverzögerung ${fmt(p.darstellungsverzoegerung)} ms`);
     z.push(`- Hauptthread ${fmt(u.hauptthreadMs)} ms; Inline-Skripte im Dokument ${fmt(u.dokumentSkriptMs)} ms`);
+    const at = a.attrappen;
+    z.push(at
+      ? `- Attrappen (G5) in ${at.laeufe} Läufen: ${ATTRAPPEN_ARTEN.map((k) => `${k} ${at[k]}`).join(', ')}${at.fremdHosts.length ? ` (fremde Hosts: ${at.fremdHosts.join(', ')})` : ''}`
+      : '- Attrappen (G5): nicht gezählt');
     z.push(`- Blockierend: ${u.blockierend.length ? u.blockierend.map((b) => `${b.datei} (${fmt(b.kb, 1)} KB, ${fmt(b.ms)} ms)`).join('; ') : 'nichts'}`, '');
     if (u.skripte.length) {
       z.push(tabelle(['Skript', 'KB', 'Ausführung ms', 'ungenutzt KB', 'Priorität'], u.skripte.map((s) => [s.datei, fmt(s.kb, 1), s.ausfuehrungMs, fmt(s.ungenutztKB, 1), s.prioritaet])), '');
@@ -281,7 +318,11 @@ async function main() {
   const methode = methodeWaehlen(args.methode);
   const marke = String(args.marke ?? 'messung').replace(/[^a-zA-Z0-9-]+/g, '-');
   const ansichten = ansichtenWaehlen(args.ansichten);
-  const vorher = args.vorher ? JSON.parse(readFileSync(path.resolve(args.vorher), 'utf8')).ansichten : null;
+  const vorherDatei = args.vorher ? JSON.parse(readFileSync(path.resolve(args.vorher), 'utf8')) : null;
+  if (vorherDatei && methodeVon(vorherDatei) !== methode) {
+    throw new Bedienfehler(`--vorher wurde mit --methode ${methodeVon(vorherDatei)} gemessen, dieser Lauf mit ${methode}; nur gleiche Maßstäbe vergleichen`);
+  }
+  const vorher = vorherDatei?.ansichten ?? null;
   const ziel = lib.ordner(path.resolve(args.ziel ?? path.join(lib.PROTOKOLLE, 'FA-SEO-03')));
   const roh = lib.ordner(path.resolve(args.roh ?? path.join(lib.PROTOKOLLE, 'roh', 'FA-SEO-03')));
   const stamm = `${marke}-${lib.zeitstempel()}`;
@@ -292,9 +333,9 @@ async function main() {
     let verbindung = null;
     try {
       verbindung = await lib.chromium.connectOverCDP(`http://127.0.0.1:${chrome.port}`);
-      await lib.attrappenSetzen(verbindung.contexts()[0]);
+      const abgefangen = await lib.attrappenSetzen(verbindung.contexts()[0]);
       const e = await lighthouse(url, { port: chrome.port, output: 'json', logLevel: 'error', onlyCategories: ['performance'], throttlingMethod: methode });
-      return e.lhr;
+      return { lhr: e.lhr, abgefangen };
     } finally {
       await verbindung?.close().catch(() => {});
       await chrome.kill();
@@ -307,7 +348,8 @@ async function main() {
     for (let n = 1; n <= laeufe; n += 1) {
       const t0 = Date.now();
       try {
-        const lhr = await einLauf(basis + a.pfad);
+        const { lhr, abgefangen } = await einLauf(basis + a.pfad);
+        const attrappen = zaehleAttrappen(abgefangen);
         info ??= {
           lighthouse: lhr.lighthouseVersion,
           chrome: (lhr.userAgent ?? '').match(/Chrome\/([\d.]+)/)?.[1] ?? 'n. g.',
@@ -316,7 +358,7 @@ async function main() {
         };
         const fehler = lhr.runtimeError ? `${lhr.runtimeError.code}: ${lhr.runtimeError.message}`.slice(0, 300) : null;
         writeFileSync(path.join(roh, `${stamm}-${a.id}-lauf${n}.lhr.json`), JSON.stringify(lhr));
-        daten.push({ lauf: n, fehler, werte: fehler ? null : werteAus(lhr), ursachen: fehler ? null : ursachenAus(lhr, basis) });
+        daten.push({ lauf: n, fehler, attrappen, werte: fehler ? null : werteAus(lhr), ursachen: fehler ? null : ursachenAus(lhr, basis) });
         const w = daten.at(-1).werte;
         process.stderr.write(`[${a.id}] Lauf ${n}: ${fehler ?? `Leistung ${w.leistung}, LCP ${Math.round(w.lcp)} ms, TBT ${Math.round(w.tbt)} ms`} (${Math.round((Date.now() - t0) / 1000)} s)\n`);
       } catch (e) {
@@ -336,8 +378,9 @@ async function main() {
   const mdDatei = path.join(ziel, `leistung-${stamm}.md`);
   writeFileSync(jsonDatei, `${JSON.stringify({ ...kopf, ansichten: ergebnisse, vergleich }, null, 2)}\n`);
   writeFileSync(mdDatei, markdown(kopf, ergebnisse, vergleich));
-  console.log(tabelle(['Ansicht', 'Läufe', 'Leistung', 'LCP ms', 'TBT ms', 'CLS'], ergebnisse.map((a) => [
+  console.log(tabelle(['Ansicht', 'Läufe', 'Leistung', 'LCP ms', 'TBT ms', 'CLS', 'Attrappen (G5)'], ergebnisse.map((a) => [
     a.pfad, `${a.gueltig}/${laeufe}`, fmt(a.statistik.leistung?.median), fmt(a.statistik.lcp?.median), fmt(a.statistik.tbt?.median), fmt(a.statistik.cls?.median, 3),
+    a.attrappen ? ATTRAPPEN_ARTEN.map((k) => a.attrappen[k]).reduce((x, y) => x + y, 0) : 'n. g.',
   ])));
   console.log(`\nJSON: ${jsonDatei}\nMarkdown: ${mdDatei}\nRohdaten: ${roh}`);
   return 0;

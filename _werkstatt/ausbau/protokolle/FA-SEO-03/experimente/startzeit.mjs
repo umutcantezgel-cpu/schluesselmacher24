@@ -1,11 +1,15 @@
-import { createRequire } from 'node:module';
-const require = createRequire(import.meta.url);
-const { chromium } = require('/opt/node-tools/node_modules/playwright');
-const BASIS = 'http://localhost:3200';
-const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome', headless: true, args: ['--no-sandbox'] });
+// Versuchsskript FA-SEO-03 (nur zum Nachvollziehen). Läuft in der Werkzeugumgebung (protokolle/einrichtung.md, Abschnitt 11):
+// Pfade relativ zu diesem Ordner, Browser und Playwright aus werkzeuge/lib.mjs, Attrappen nach G5 (attrappenSetzen).
+// Basis: Umgebungsvariable BASIS, sonst http://localhost:3200; nur localhost.
+const BASIS = process.env.BASIS ?? 'http://localhost:3200';
+if (!['localhost', '127.0.0.1', '[::1]'].includes(new URL(BASIS).hostname)) throw new Error('nur localhost (G1)');
+process.env.SM24_BASIS_URL = BASIS;
+const lib = await import(new URL('../../../werkzeuge/lib.mjs', import.meta.url).href);
+const { chromium } = lib;
+const browser = await chromium.launch({ executablePath: lib.CHROMIUM, headless: true, args: ['--no-sandbox'] });
 for (const rate of [1, 4, 6]) for (let i = 0; i < 3; i++) {
   const ctx = await browser.newContext({ viewport: { width: 412, height: 823 }, deviceScaleFactor: 1.75, isMobile: true, hasTouch: true });
-  await ctx.route('**/*', (r) => (new URL(r.request().url()).origin === BASIS ? r.continue() : r.abort()));
+  await lib.attrappenSetzen(ctx);
   await ctx.addInitScript(() => {
     addEventListener('DOMContentLoaded', () => { window.__dcl = performance.now(); });
     addEventListener('load', () => { window.__load = performance.now(); requestAnimationFrame(() => { window.__raf = performance.now(); requestIdleCallback(() => { window.__idle = performance.now(); }, { timeout: 300 }); }); });

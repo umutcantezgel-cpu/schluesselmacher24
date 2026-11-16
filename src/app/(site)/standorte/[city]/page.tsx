@@ -20,6 +20,7 @@ import { EinsatzradiusZeichnung } from '@/components/visual/einsatzradius';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { JsonLd, serviceAreaSchema } from '@/components/seo/json-ld';
 
+import { angabeEinzeilig, angabenSpalten } from '../angaben';
 import { Quellenvermerk } from '../quellenvermerk';
 
 /** Nur gepflegte, veröffentlichte Ortsseiten bekommen eine Seite, nie die Gemeinden des Stamms (FA-09-08). */
@@ -92,9 +93,12 @@ export default async function CityPage(props: { params: Promise<{ city: string }
       <>
         {einleitung && <p className="max-w-measure text-body text-foreground-muted">{einleitung}</p>}
 
-        {/* Angaben als Schriftfeld: Haarlinien, Wortwerte in Plex Sans, Zahlen in Mono. Platzhalter entfallen. */}
+        {/* Angaben als Schriftfeld: Haarlinien, Wortwerte in Plex Sans, Zahlen in Mono. Platzhalter entfallen.
+            Kurze Zahlenwerte bleiben in einer Zeile; eine Anschrift bricht um (`angabeEinzeilig`).
+            Ab 640 px so viele Spalten wie Angaben, höchstens vier (`angabenSpalten`): Mit drei Angaben in
+            vier Spalten war die Zelle bei 1024 px nur 137 px breit und „AUTOSCHLÜSSEL“ lief darüber hinaus. */}
         {angaben.length > 0 && (
-          <dl className={cn('grid grid-cols-2 border-y border-border sm:grid-cols-4', einleitung && 'mt-8')}>
+          <dl className={cn('grid grid-cols-2 border-y border-border', angabenSpalten(angaben.length), einleitung && 'mt-8')}>
             {angaben.map((fact, index) => (
               <div
                 key={fact.label}
@@ -105,13 +109,14 @@ export default async function CityPage(props: { params: Promise<{ city: string }
                   index === 2 && 'sm:border-l sm:border-border sm:pl-4',
                 )}
               >
-                <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted">
+                <dt className="font-mono text-caption uppercase tracking-label text-foreground-muted [overflow-wrap:anywhere]">
                   {fact.label}
                 </dt>
                 <dd
                   className={cn(
                     'mt-1 text-title-sm font-semibold text-foreground',
-                    /\d/.test(fact.value) && 'font-mono tabular-nums whitespace-nowrap',
+                    /\d/.test(fact.value) && 'font-mono tabular-nums',
+                    angabeEinzeilig(fact.value) ? 'whitespace-nowrap' : 'break-words',
                   )}
                 >
                   {fact.value}

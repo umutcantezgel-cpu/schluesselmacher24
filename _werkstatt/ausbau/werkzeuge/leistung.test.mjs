@@ -4,7 +4,8 @@ import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   ANSICHTEN, KENNWERTE, Bedienfehler, STANDARD_BASIS, ansichtenWaehlen, argumente, basisWaehlen, fasseZusammen,
-  markdown, median, medianLauf, methodeWaehlen, statistik, ursachenAus, vergleiche, werteAus,
+  markdown, median, medianLauf, methodeVon, methodeWaehlen, statistik, summeAttrappen, ursachenAus, vergleiche, werteAus,
+  zaehleAttrappen,
 } from './leistung.mjs';
 
 const BASIS = 'http://localhost:3200';
@@ -160,10 +161,34 @@ describe('Zusammenfassung, Vergleich, Bericht', () => {
     assert.match(md, /\| Startseite \(\/\) \| 3\/3 \| 80 /);
     assert.match(md, /LCP-Element: h1#hub-frage/);
     assert.match(md, /Vergleich mit der Vorher-Messung/);
+    assert.match(md, /LCP-Phasen \(simuliert\)/);
+    assert.match(md, /Attrappen \(G5\): nicht gezählt/);
     const md2 = markdown({
       marke: 'x', methode: 'devtools', zeit: 'x', basis: BASIS, lighthouse: '12.6.1', chrome: '1', laeufe: 1,
       drosselung: { requestLatencyMs: 562.5, downloadThroughputKbps: 1474.56, cpuSlowdownMultiplier: 4 }, geraet: '412 × 823',
     }, [z], null);
     assert.match(md2, /angewandte Drosselung \(devtools\): Latenz 562,5 ms je Anfrage, 1\.474,6 kbit\/s, CPU 4-fach/);
+    assert.match(md2, /LCP-Phasen \(gemessen\)/);
+    assert.doesNotMatch(md2, /LCP-Phasen \(simuliert\)/);
+  });
+  test('Attrappen: Zählung je Lauf, Summe je Ansicht, Ausgabe im Markdown (G5)', () => {
+    const a1 = zaehleAttrappen([{ art: 'fremd', url: 'https://example.org/x.js' }, { art: 'post-sonstig', url: '/x' }]);
+    assert.equal(a1.fremd, 1);
+    assert.equal(a1['post-sonstig'], 1);
+    assert.equal(a1['action-unbekannt'], 0);
+    assert.deepEqual(a1.fremdHosts, ['example.org']);
+    assert.equal(zaehleAttrappen([]).fremd, 0);
+    assert.equal(summeAttrappen([{ attrappen: null }]), null);
+    const mit = laeufe.map((l, i) => ({ ...l, attrappen: i === 0 ? a1 : zaehleAttrappen([]) }));
+    const zz = fasseZusammen(ansicht, mit);
+    assert.equal(zz.attrappen.fremd, 1);
+    assert.equal(zz.attrappen.laeufe, 4);
+    assert.equal(zz.laeufe[0].attrappen.fremd, 1);
+    const md = markdown({ marke: 'x', zeit: 'x', basis: BASIS, lighthouse: '1', chrome: '1', laeufe: 3, drosselung: {}, geraet: 'x' }, [zz], null);
+    assert.match(md, /Attrappen \(G5\) in 4 Läufen: fremd 1, upload 0, action-schreibend 0, action-unbekannt 0, post-sonstig 1 \(fremde Hosts: example\.org\)/);
+  });
+  test('methodeVon: fehlendes Feld gilt als simulate (Vorfassung), sonst das Feld', () => {
+    assert.equal(methodeVon({}), 'simulate');
+    assert.equal(methodeVon({ methode: 'devtools' }), 'devtools');
   });
 });

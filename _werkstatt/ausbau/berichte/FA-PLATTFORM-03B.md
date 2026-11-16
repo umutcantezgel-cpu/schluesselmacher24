@@ -127,4 +127,26 @@ Stand 16.11.2026, nach zwei Gegenprüfungen (10 Befunde). Jeder Befund wurde am 
 10. An den Inhaber (Befund 5): Zählt ein freigeschalteter Partner mit Abrechnungsmodell A, der keine Aufträge automatisch vermittelt bekommt, als plausibler Leistungsweg einer Ortsseite und für den Satz „In Ihrer Region arbeitet ein geprüfter Autoschlüssel-Partner.“? Wenn nein, rechnet die Abdeckung nur mit Partnern, die vermittelt werden können (dann braucht `partnerFuerAbdeckung` das Abrechnungsmodell).
 11. Knopftext neu „Termin in unserer Werkstatt in Wetzlar“ (ersetzt Offene Frage 5); Wetzlar zeigt jetzt den Abschnitt „Werkstatt in Wetzlar“ mit Anschrift des Firmensitzes und Erreichbarkeit. Bitte Wortlaut prüfen.
 
+## Abnahme durch den Orchestrator (16.11.2026)
+
+Prüfkette (`bash _werkstatt/ausbau/werkzeuge/abnahme.sh FA-PLATTFORM-03B`, beide Pakete der Welle gemeinsam im Arbeitsbaum, nach allen Eingriffen des Orchestrators): Typprüfung grün, Lint grün, Unit 4084 von 4084, Datenbanktests 176 von 176, Build 181 von 181 Seiten. Onpage-Messung am neu gestarteten Prüfserver: 137 Seiten, Median 100, kein roter und kein gelber Befund. `reste.mjs` über alle vier Quellen: nur die zehn bekannten Platzhalter in `src/lib/pdf/partnervertrag.ts` (MA-29).
+
+Erledigt außerhalb der Schreibrechte des Pakets:
+- Roter Befund beider Gegenprüfer (Offene Frage 9): `src/payload/collections/Partnerbetriebe.ts` erneuert jetzt nach jeder Änderung und nach dem Löschen die Seiten (`afterChange: [partnerbetriebNachAenderung, nachAenderung]`, `afterDelete: [nachLoeschen]`). Damit bleiben Partnersatz, Leistungsweg und Indexierbarkeit einer Ortsseite nicht stehen, wenn der einzige Partner pausiert oder gesperrt wird. Test `partnerbetriebe-erneuern.test.ts` (3 Tests, auch die Reihenfolge).
+- `down` der Migration `ortsseiten_stamm` (Offene Frage 8): an einer Wegwerf-Datenbank auf localhost geprüft. Alle Migrationen eingespielt, die neue als eigene Charge zurückgerollt (sechs Spalten und zwei Tabellen weg), wieder eingespielt, ein zweites Mal zurück und vor: jedes Mal sauber. Das `up` ist rein additiv.
+- `importMap.js` (Offene Frage 6): bestätigt, eine Importzeile und ein Eintrag für den neuen Admin-Baustein (A-069).
+- `next.config` (Offene Frage 7): keine Änderung nötig. `outputFileTracingIncludes` nimmt `./content/**/*` für alle Routen mit, also auch `content/orte/`.
+- Schriftfeld der Ortsseite (Bestand, in der Sichtprobe gefunden): „Langgasse 61, 35576 Wetzlar“ lief bei jeder Fensterbreite 120 bis 171 px über die eigene Zelle in die Nachbarzelle, und die Beschriftung „AUTOSCHLÜSSEL“ lief seit der 14-px-Schrift bei 1024 bis 1100 px über. Jetzt bricht eine Anschrift um, das Schriftfeld hat ab 640 px so viele Spalten wie Angaben, und lange Beschriftungen brechen um statt überzulaufen (`standorte/angaben.ts` mit 6 Tests).
+- Meldung im Admin „… enthalten Platzhalter.“ heißt jetzt „… enthalten noch Vorgabetext statt eigenem Text.“, weil das Prüfwerkzeug das Wort im Quelltext zu Recht als Entwurfsrest meldet; der Test nennt den neuen Wortlaut.
+
+Sichtprobe am Prüfserver (Produktions-Build, Attrappen, 360 und 1280 px): 24 von 24.
+- Ortsseite Wetzlar: Abschnitt „Region“ mit Lahn-Dill-Kreis und zehn Postleitzahlen; Werkstattanschrift im Kopf; Knopf „Termin in unserer Werkstatt in Wetzlar“ führt in die Autoschlüssel-Anfrage; kein Partnersatz (ohne Datenbank kein Partner); Quellenvermerk mit Verweisen auf Destatis, GeoNames und die Lizenz; keine Textschrift unter 14 px; kein waagerechtes Rollen; keine Konsolenfehler.
+- `/standorte`: Wetzlar verlinkt, Quellenvermerk da.
+- Kopf und Daten: `index, follow`; Strukturdaten nennen den Kreis, den die Seite zeigt (R8); Sitemap führt `/standorte` und `/standorte/wetzlar`; unbekannter Ort gibt 404.
+- Neuer Suchlauf nach überlaufendem Text über alle 137 Seiten bei 360, 390, 768, 1024, 1100, 1280 und 1440 px: nach den Korrekturen kein echter Fund. Drei gemeldete Stellen überlappen nichts (Verweis „Autoschlüsselgehäuse“ im Fuß ragt bei 360 px 3 px in den Spaltenabstand; Text einer Markenkachel liegt innerhalb der Kachel; das unsichtbare Feld gegen Automaten).
+
+Nicht im Browser gesehen: die Admin-Tabelle „Veröffentlichung der Ortsseiten“ und die Liste der Prioritätsorte (ohne Datenbank kein Admin am Prüfserver; belegt über die Datenbanktests), der Partnersatz und der Partnerweg (brauchen einen freigeschalteten Partner; belegt über Tests mit erfundenen Betrieben), eine zweite Ortsseite (es gibt nur Wetzlar; neue Ortsseiten schreibt der Betrieb).
+
+Entschieden (A-069): Schwellen 160 und 20 Zeichen gelten als Startwerte; Reihenfolge ohne gepflegte Zahl nach Rang im Land; Partnerregion ist Dokumentation, die Abdeckung hat eine Definition (`deckendePartner`, wird mit FA-PLATTFORM-01C um Umkreis und Regionen erweitert); jeder freigeschaltete Partner zählt bis zur Entscheidung des Inhabers als Leistungsweg. Für Menschen (MA-58): Schwellen, Reihenfolge, Werkstatt im Landkreis, Partner mit Modell A, Wortlaut von Knopf und Partnersatz.
+
 === ENDE FA-PLATTFORM-03B · BEREIT ZUR RÜCKGABE ===

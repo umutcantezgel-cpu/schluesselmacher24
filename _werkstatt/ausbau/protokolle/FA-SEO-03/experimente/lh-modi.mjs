@@ -1,11 +1,17 @@
 // Experiment: Lighthouse mobil (gleicher Maßstab wie leistung.mjs) mit eingespielten Varianten der Startseite.
-process.env.SM24_BASIS_URL = 'http://localhost:3200';
-const lib = await import('/home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/lib.mjs');
+// Versuchsskript FA-SEO-03 (nur zum Nachvollziehen). Läuft in der Werkzeugumgebung (protokolle/einrichtung.md, Abschnitt 11):
+// Pfade relativ zu diesem Ordner, Browser und Playwright aus werkzeuge/lib.mjs, Attrappen nach G5 (attrappenSetzen).
+// Basis: Umgebungsvariable BASIS, sonst http://localhost:3200; nur localhost.
+const BASIS = process.env.BASIS ?? 'http://localhost:3200';
+if (!['localhost', '127.0.0.1', '[::1]'].includes(new URL(BASIS).hostname)) throw new Error('nur localhost (G1)');
+process.env.SM24_BASIS_URL = BASIS;
+const WERKZEUGE = new URL('../../../werkzeuge/', import.meta.url);
+const lib = await import(new URL('lib.mjs', WERKZEUGE).href);
 const { createRequire } = await import('node:module');
-const require = createRequire('/home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/lib.mjs');
+const require = createRequire(new URL('lib.mjs', WERKZEUGE));
 const { default: lighthouse } = await import(require.resolve('lighthouse'));
 const { launch } = require('chrome-launcher');
-const { werteAus } = await import('/home/user/schluesselmacher24/_werkstatt/ausbau/werkzeuge/leistung.mjs');
+const { werteAus } = await import(new URL('leistung.mjs', WERKZEUGE).href);
 const N = Number(process.argv[2] ?? 5);
 const MODI = (process.argv[3] ?? 'an,spaeter,ruhig').split(',');
 const PFAD = process.argv[4] ?? '/';
@@ -25,7 +31,7 @@ for (let i = 0; i < N; i += 1) for (const m of MODI) {
   const ctx = v.contexts()[0];
   await lib.attrappenSetzen(ctx);
   if (SKRIPTE[m]) await ctx.addInitScript(SKRIPTE[m]);
-  const e = await lighthouse('http://localhost:3200' + PFAD, { port: chrome.port, output: 'json', logLevel: 'error', onlyCategories: ['performance'] });
+  const e = await lighthouse(BASIS + PFAD, { port: chrome.port, output: 'json', logLevel: 'error', onlyCategories: ['performance'] });
   await v.close().catch(() => {}); await chrome.kill();
   const w = werteAus(e.lhr);
   const mt = Math.round(e.lhr.audits['mainthread-work-breakdown'].numericValue);

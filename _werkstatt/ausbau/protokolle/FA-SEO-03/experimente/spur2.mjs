@@ -1,11 +1,15 @@
-import { createRequire } from 'node:module';
-const require = createRequire(import.meta.url);
-const { chromium } = require('/opt/node-tools/node_modules/playwright');
-const BASIS = 'http://localhost:3200';
+// Versuchsskript FA-SEO-03 (nur zum Nachvollziehen). Läuft in der Werkzeugumgebung (protokolle/einrichtung.md, Abschnitt 11):
+// Pfade relativ zu diesem Ordner, Browser und Playwright aus werkzeuge/lib.mjs, Attrappen nach G5 (attrappenSetzen).
+// Basis: Umgebungsvariable BASIS, sonst http://localhost:3200; nur localhost.
+const BASIS = process.env.BASIS ?? 'http://localhost:3200';
+if (!['localhost', '127.0.0.1', '[::1]'].includes(new URL(BASIS).hostname)) throw new Error('nur localhost (G1)');
+process.env.SM24_BASIS_URL = BASIS;
+const lib = await import(new URL('../../../werkzeuge/lib.mjs', import.meta.url).href);
+const { chromium } = lib;
 const modus = process.argv[2];
-const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome', headless: true, args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: lib.CHROMIUM, headless: true, args: ['--no-sandbox'] });
 const ctx = await browser.newContext({ viewport: { width: 412, height: 823 }, deviceScaleFactor: 1.75, isMobile: true, hasTouch: true });
-await ctx.route('**/*', (r) => (new URL(r.request().url()).origin === BASIS ? r.continue() : r.abort()));
+await lib.attrappenSetzen(ctx);
 if (modus === 'ohne-eingang') await ctx.addInitScript(() => { const d = document.documentElement; new MutationObserver(() => { if (d.classList.contains('sm24-start')) d.classList.remove('sm24-start'); }).observe(d, { attributes: true, attributeFilter: ['class'] }); });
 const CSS = { 'viewbox': '.sm24-eingang-teil{transform-box:view-box!important;transform-origin:0 0!important}', 'contain': 'svg[data-eingang]{contain:layout paint style}', 'contain-buehne': '[data-motion="B-32"]{contain:layout paint style}', 'ohne-eingang-css': '.sm24-eingang-teil{animation:none!important}', 'ohne-alles': '*,*::before,*::after{animation:none!important;transition:none!important}', 'ohne-scroll': '*{animation-timeline:auto!important;view-timeline-name:none!important;animation-name:none!important}' };
 if (CSS[modus]) await ctx.addInitScript((css) => { const sh = new CSSStyleSheet(); sh.replaceSync(css); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sh]; }, CSS[modus]);

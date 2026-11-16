@@ -72,7 +72,7 @@ export function verfuegbarkeitEingetragen(text: string | null | undefined): bool
 export function ortsseiteGruende(city: CityPage, alle: readonly CityPage[], weg: Leistungsweg | null): string[] {
   const gruende: string[] = [];
   if (city.seo.noindex) gruende.push('Im Admin auf „nicht in Suchmaschinen“ gesetzt.');
-  if (stadtHatPlatzhalter(city)) gruende.push('Einleitung, Angaben oder Suchmaschinentexte enthalten Platzhalter.');
+  if (stadtHatPlatzhalter(city)) gruende.push('Einleitung, Angaben oder Suchmaschinentexte enthalten noch Vorgabetext statt eigenem Text.');
   const einleitung = city.localIntro.trim();
   if (einleitung.length < EINLEITUNG_MINDESTLAENGE) {
     gruende.push(`Einleitung zu kurz (${einleitung.length} von mindestens ${EINLEITUNG_MINDESTLAENGE} Zeichen).`);
