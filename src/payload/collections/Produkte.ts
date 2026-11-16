@@ -1,12 +1,14 @@
-import type {
-  CollectionBeforeChangeHook,
-  CollectionConfig,
-  Condition,
-  Field,
-  FieldHook,
-  PayloadRequest,
-  TextField,
-  TextFieldSingleValidation,
+import {
+  validations,
+  type CollectionBeforeChangeHook,
+  type CollectionConfig,
+  type Condition,
+  type Field,
+  type FieldHook,
+  type PayloadRequest,
+  type RelationshipFieldSingleValidation,
+  type TextField,
+  type TextFieldSingleValidation,
 } from 'payload';
 
 import { pruefeCodeMuster, codePasst } from '../../lib/code-pattern';
@@ -49,6 +51,36 @@ export const VERFUEGBARKEIT_OPTIONEN = VERFUEGBARKEITEN.map((value) => ({ label:
 export const systemPruefen = (wert: unknown, { data }: { data?: Record<string, unknown> }) => {
   if (!istCodeSchluessel(data) || data?.beispiel) return true;
   return typeof wert === 'string' && wert.trim() ? true : 'Bitte das System eintragen, so wie der Hersteller es nennt.';
+};
+
+/** Ein gepflegter Text: nicht leer und kein Platzhalter in eckigen Klammern wie „[Hersteller eintragen]“ (R4). */
+const textGepflegt = (wert: unknown): boolean => typeof wert === 'string' && wert.trim() !== '' && !/^\[.*\]$/.test(wert.trim());
+
+/** Ist ein Verweis gewählt (Kennung oder geladenes Dokument)? */
+const verweisGewaehlt = (wert: unknown): boolean =>
+  typeof wert === 'number' || (typeof wert === 'string' && wert.trim() !== '') || (Boolean(wert) && typeof wert === 'object' && 'id' in (wert as object));
+
+/**
+ * Hersteller ist bei echten Codeprodukten Pflicht (FA-11-07): gewählt aus der Stammliste oder, bei älteren
+ * Einträgen, als Freitext. Wie `systemPruefen` nur beim Veröffentlichen; Entwürfe und Beispiele bleiben frei.
+ */
+export const herstellerPruefen = (wert: unknown, { data }: { data?: Record<string, unknown> }) => {
+  if (!istCodeSchluessel(data) || data?.beispiel) return true;
+  if (verweisGewaehlt(wert) || textGepflegt(data?.hersteller)) return true;
+  return 'Bitte den Hersteller aus der Liste wählen. Fehlt er, legen Sie ihn zuerst unter Shop › Hersteller an.';
+};
+
+/** Codebereich ist bei echten Codeprodukten Pflicht (FA-11-09), geprüft wie `systemPruefen`. */
+export const codebereichPruefen = (wert: unknown, { data }: { data?: Record<string, unknown> }) => {
+  if (!istCodeSchluessel(data) || data?.beispiel) return true;
+  return textGepflegt(wert) ? true : 'Bitte den Codebereich eintragen, so wie der Hersteller ihn angibt, etwa „1 bis 999“.';
+};
+
+/** Eigene Pflicht zuerst, danach die übliche Prüfung des Verweises (gibt es den Hersteller?). */
+const herstellerAuswahlPruefen: RelationshipFieldSingleValidation = async (wert, optionen) => {
+  const eigen = herstellerPruefen(wert, optionen as { data?: Record<string, unknown> });
+  if (eigen !== true) return eigen;
+  return (validations.relationship as RelationshipFieldSingleValidation)(wert, optionen);
 };
 
 /** Vorschau: die öffentliche Seite des Artikels (zeigt die veröffentlichte Fassung). */
@@ -446,7 +478,11 @@ export const Produkte: CollectionConfig = {
                   type: 'relationship',
                   relationTo: 'hersteller',
                   label: 'Hersteller',
-                  admin: { width: '50%', description: 'Aus der Liste wählen. Fehlt er, zuerst unter Shop › Hersteller anlegen.' },
+                  admin: {
+                    width: '50%',
+                    description: 'Aus der Liste wählen. Fehlt er, zuerst unter Shop › Hersteller anlegen. Pflicht beim Veröffentlichen eines Codeprodukts.',
+                  },
+                  validate: herstellerAuswahlPruefen,
                 },
                 { name: 'schluesseltyp', type: 'text', label: 'Schlüsseltyp', admin: { width: '50%' } },
               ],
@@ -482,8 +518,9 @@ export const Produkte: CollectionConfig = {
                   label: 'Codebereich',
                   admin: {
                     width: '50%',
-                    description: 'Von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“. Erscheint in der Liste und auf der Seite des Produkts.',
+                    description: 'Von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“. Pflicht beim Veröffentlichen eines Codeprodukts. Erscheint in der Liste und auf der Seite des Produkts.',
                   },
+                  validate: codebereichPruefen as TextFieldSingleValidation,
                 },
               ],
             },

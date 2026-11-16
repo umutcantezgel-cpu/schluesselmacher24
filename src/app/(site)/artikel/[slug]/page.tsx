@@ -12,7 +12,7 @@ import {
   produktJsonLd,
   versandartenFuer,
 } from '@/lib/artikel';
-import { getBauformen, getCollection, getFahrzeugkatalog, getSettings } from '@/lib/data';
+import { getBauformen, getCollection, getFahrzeugkatalog, getKategorien, getSettings } from '@/lib/data';
 import { formatCents } from '@/lib/format';
 import { GpsrAngaben } from '@/components/recht/gpsr-angaben';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -30,7 +30,13 @@ import { IconRueckgabe } from '@/components/visual/icons/rueckgabe';
 import { IconVersandPaket } from '@/components/visual/icons/versand-paket';
 import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
 
-import { VERFUEGBARKEIT_LABEL, verfuegbarkeitVon } from '@/lib/data/shop';
+import {
+  VERFUEGBARKEIT_LABEL,
+  artikelKategorieKette,
+  artikelListePfad,
+  ersteArtikelKategorie,
+  verfuegbarkeitVon,
+} from '@/lib/data/shop';
 import { VerfuegbarkeitHinweis } from '../../schluessel-nach-code/verfuegbarkeit-hinweis';
 import { GEHAEUSE_ANFRAGE_PFAD, TEILE_PFAD } from '../../autoschluessel/gehaeuse/teile/ansicht';
 
@@ -91,7 +97,7 @@ export async function generateMetadata(props: ArtikelSeiteProps): Promise<Metada
 
 export default async function ArtikelSeite(props: ArtikelSeiteProps) {
   const { slug } = await props.params;
-  const [article, settings] = await Promise.all([artikelNachSlug(slug), getSettings()]);
+  const [article, settings, kategorien] = await Promise.all([artikelNachSlug(slug), getSettings(), getKategorien()]);
 
   if (!article) notFound();
 
@@ -101,8 +107,14 @@ export default async function ArtikelSeite(props: ArtikelSeiteProps) {
   const [bauformen, katalog] = teil ? await Promise.all([getBauformen(), getFahrzeugkatalog()]) : [[], []];
   const teilAngaben = teil ? fahrzeugteilAngaben(teil, { bauformen, katalog }) : [];
   const teilHinweise = teil ? fahrzeugteilHinweise(teil) : null;
+  // Andere Artikel (FA-10-10): die Kategorie des Artikels über den Shop, ohne sichtbare Artikel-Kategorie wie bisher.
+  const ersteId = ersteArtikelKategorie(kategorien)?.id;
+  const kette = teil ? [] : artikelKategorieKette(kategorien, article.categoryId);
+  const kategorieCrumbs = kette.length
+    ? [{ href: '/shop', label: 'Shop' }, ...kette.map((glied) => ({ href: artikelListePfad(glied, ersteId), label: glied.name }))]
+    : [{ href: '/artikel', label: 'Artikel' }];
   const crumbs = [
-    teil ? { href: TEILE_PFAD, label: 'Gehäuse und Ersatzteile' } : { href: '/artikel', label: 'Artikel' },
+    ...(teil ? [{ href: TEILE_PFAD, label: 'Gehäuse und Ersatzteile' }] : kategorieCrumbs),
     { href: pfad, label: article.name },
   ];
   const produkt = produktJsonLd(article);

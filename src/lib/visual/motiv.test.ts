@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { ablaufAusText, fachIconFuerMotiv, visualFuerMotiv } from './motiv';
+import { ablaufAusText, fachIconFuerMotiv, visualFuerMotiv, visualFuerSteckplatz } from './motiv';
 
 describe('visualFuerMotiv', () => {
   it('zeigt für die Werkstatt den Profilschnitt ohne Beschriftung', () => {
@@ -126,5 +126,41 @@ describe('ablaufAusText', () => {
   it('übernimmt höchstens vier Schritte und keine überlangen Wörter', () => {
     expect(ablaufAusText('erst a, dann b, dann c, dann d, dann e')?.params).toEqual({ schritte: 'a|b|c|d' });
     expect(ablaufAusText('erst sichern, dann Fahrzeugschlüsselnummer')).toBeNull();
+  });
+});
+
+/* FA-26-06: Beispielzeichnungen an den Upload-Feldern, Wortlaut der Motive aus dem Bestand. */
+describe('Beispielzeichnung an Upload-Feldern', () => {
+  const zeichnung = (motiv: string) => ({ generator: 'foto-beispiel', params: { motiv } });
+
+  it.each([
+    ['Beispielfoto: Fahrzeugschein flach aufgelegt, alle vier Ecken im Bild', 'fahrzeugschein'],
+    ['Beispielfoto: Zulassungsbescheinigung Teil I, vollständig im Bild und lesbar', 'fahrzeugschein'],
+    ['Beispielfoto: Zulassungsbescheinigung Teil I, ganze Seite im Bild, Halter und Fahrzeugdaten lesbar', 'fahrzeugschein'],
+    ['Beispielfoto: Typenschild am Fahrzeug, Hersteller und Nummer lesbar', 'typenschild'],
+    ['Beispielfoto: Nachweis flach aufgelegt, ganzes Blatt im Bild, Name und Fahrzeug lesbar', 'ersatznachweis'],
+    ['Beispiel: Gewerbeanmeldung oder Zertifikat, vollständig und gut lesbar', 'gewerbeanmeldung'],
+    ['Beispielfoto: Blick von vorne auf die Spitze, Profil deutlich erkennbar', 'schluesselspitze'],
+    ['Beispielfoto: Blick von vorne auf die Schlüsselspitze, Profilquerschnitt erkennbar', 'schluesselspitze'],
+  ])('%s → %s', (motif, motiv) => {
+    expect(visualFuerMotiv(motif)).toEqual(zeichnung(motiv));
+  });
+
+  it('gilt nur für Beispiele; ein Werkstattfoto mit Fahrzeugschein daneben bleibt beim Schlüssel', () => {
+    expect(visualFuerMotiv('Werkstattfoto: neuer Autoschlüssel auf der Werkbank, daneben der Fahrzeugschein')).toEqual({
+      generator: 'schluessel',
+      params: { typ: 'funk' },
+    });
+    expect(visualFuerMotiv('Beispielfoto: Sicherungskarte, ganz im Bild')?.generator).toBe('code-fundstelle');
+  });
+
+  it('ordnet jedem Steckplatz mit Beispielzeichnung seine Zeichnung zu', () => {
+    expect(visualFuerSteckplatz('fahrzeugschein')).toEqual(zeichnung('fahrzeugschein'));
+    expect(visualFuerSteckplatz('typenschild')).toEqual(zeichnung('typenschild'));
+    expect(visualFuerSteckplatz('ersatznachweis')).toEqual(zeichnung('ersatznachweis'));
+    expect(visualFuerSteckplatz('schluessel-spitze')).toEqual(zeichnung('schluesselspitze'));
+    for (const ohne of ['schluessel-vorderseite', 'schluessel-rueckseite', 'sicherungskarte', 'sonstiges', undefined, null] as const) {
+      expect(visualFuerSteckplatz(ohne)).toBeNull();
+    }
   });
 });

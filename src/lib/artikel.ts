@@ -4,6 +4,7 @@ import { istBestellbar } from '@/lib/data/shop';
 import { formatCents, formatNumber } from '@/lib/format';
 import { unitPriceForCodeLine } from '@/lib/pricing';
 import { getSiteUrl } from '@/lib/site-url';
+import { titelPasst } from '@/lib/titelbreite';
 import {
   ELEKTRONIK_SATZ,
   SCHLUESSELTYP_LABEL,
@@ -170,6 +171,32 @@ export function filterArtikel<T extends FilterDaten>(articles: T[], filter: Arti
       .toLowerCase();
     return woerter.every((wort) => heuhaufen.includes(wort));
   });
+}
+
+/* ---------- Artikelliste einer Kategorie (FA-10-10, FA-10-11) ------------ */
+
+/**
+ * Suchtitel der Artikelliste einer Kategorie, wenn kein eigener gepflegt ist: der Name der Kategorie. Passt er
+ * samt Markenzusatz nicht in die Breite, fallen Wörter vom Ende weg (ohne Auslassungszeichen).
+ */
+export function artikelKategorieTitel(name: string): string {
+  const woerter = name.replace(/\s+/g, ' ').trim().split(' ');
+  while (woerter.length > 1 && !titelPasst(woerter.join(' '))) woerter.pop();
+  // Kein Bindewort am Ende („Zubehör für“).
+  while (woerter.length > 1 && /^(und|oder|für|mit|von|zu|der|die|das|den|im|in|am)$/i.test(woerter[woerter.length - 1])) woerter.pop();
+  return woerter.join(' ').replace(/[\s,;:.]+$/, '');
+}
+
+/**
+ * Suchbeschreibung der Artikelliste einer Kategorie, wenn keine eigene gepflegt ist: mit bestellbarem
+ * Artikel der Direktkauf, sonst die Anfrage (R4, R8). Höchstens 160 Zeichen, bei kurzen Namen mindestens 120.
+ */
+export function artikelKategorieBeschreibung(name: string, direktkauf: boolean): string {
+  const kopf = name.replace(/\s+/g, ' ').trim();
+  const text = direktkauf
+    ? `${kopf}: Artikel direkt bei uns bestellen. Eigenschaften, Lieferumfang und Staffelpreise sehen Sie auf einen Blick. Wir beraten Sie gern.`
+    : `${kopf}: Artikel rund um Schlüssel, Schloss und Tür. Zurzeit fragen Sie diese Artikel bei uns an. Wir sagen Ihnen, was zu Ihrem Schloss passt.`;
+  return kurztext(text, 160);
 }
 
 /* ---------- Suchmaschinen ----------------------------------------------- */

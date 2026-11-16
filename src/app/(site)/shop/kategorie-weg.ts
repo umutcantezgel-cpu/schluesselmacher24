@@ -1,7 +1,7 @@
 import type { ShopKategorie } from '@/lib/types';
 import { LEISTUNGS_ANFRAGE_PFAD, artikelAnfragePfad } from '@/lib/artikel';
 import { HINWEIS_PRODUKTE_FOLGEN } from '@/lib/data/defaults/kategorien';
-import { istBestellbar, kategorieKette } from '@/lib/data/shop';
+import { ARTIKEL_PFAD, artikelDerKategorie, artikelListePfad, istBestellbar, kategorieKette } from '@/lib/data/shop';
 import type { Verfuegbarkeit } from '@/lib/types';
 import { CODE_ANFRAGE_PFAD } from '@/lib/wege/code-anfrage';
 
@@ -48,12 +48,18 @@ function istLeistungsAnfrage(ziel: string): boolean {
 /**
  * Weg einer Kategorie mit `anzahl` sichtbaren Produkten:
  * - Codeprodukte: mit Produkten die Produktliste, sonst „Code anfragen“.
- * - Artikel: mit Produkten die Artikelliste, sonst „Artikel anfragen“ mit dem Kategorienamen.
+ * - Artikel: mit Produkten die Artikelliste, sonst „Artikel anfragen“ mit dem Kategorienamen. Eine weitere
+ *   Artikel-Kategorie (nicht die erste, `ersteArtikel` falsch), deren Ziel leer ist oder auf `/artikel` zeigt,
+ *   führt auf ihre eigene Liste unter `/artikel/kategorie/…` (FA-10-11).
  * - Konfigurator: immer der Konfigurator.
  * - Anfrage: das gepflegte Ziel; führt es in die Anfrage zu einer Leistung, übernimmt sie den
  *   Kategorienamen.
  */
-export function kategorieWeg(kategorie: Pick<ShopKategorie, 'id' | 'name' | 'art' | 'ziel' | 'hinweis'>, anzahl: number): KategorieWeg {
+export function kategorieWeg(
+  kategorie: Pick<ShopKategorie, 'id' | 'name' | 'art' | 'ziel' | 'hinweis'> & Partial<Pick<ShopKategorie, 'slug'>>,
+  anzahl: number,
+  ersteArtikel = true,
+): KategorieWeg {
   const hinweis = anzahl > 0 ? undefined : kategorie.hinweis?.trim() || HINWEIS_PRODUKTE_FOLGEN;
   switch (kategorie.art) {
     case 'codeprodukte':
@@ -62,7 +68,7 @@ export function kategorieWeg(kategorie: Pick<ShopKategorie, 'id' | 'name' | 'art
         : { href: CODE_ANFRAGE_PFAD, label: 'Code anfragen', hinweis };
     case 'artikel':
       return anzahl > 0
-        ? { href: kategorie.ziel, label: 'Zu den Artikeln' }
+        ? { href: artikelZiel(kategorie, ersteArtikel), label: 'Zu den Artikeln' }
         : { href: artikelAnfragePfad(kategorie.name), label: 'Artikel anfragen', hinweis };
     case 'konfigurator':
       return { href: kategorie.ziel, label: 'Zum Konfigurator' };
@@ -79,10 +85,18 @@ export function kategorieWeg(kategorie: Pick<ShopKategorie, 'id' | 'name' | 'art
   }
 }
 
+/** Ziel einer Artikel-Kategorie mit Artikeln: das gepflegte Ziel, für weitere Kategorien statt `/artikel` die eigene Liste. */
+function artikelZiel(kategorie: { id: string; ziel: string; slug?: string }, ersteArtikel: boolean): string {
+  const ziel = kategorie.ziel.trim();
+  if (ersteArtikel || !kategorie.slug) return ziel || ARTIKEL_PFAD;
+  return ziel && ziel.split(/[?#]/)[0] !== ARTIKEL_PFAD ? ziel : artikelListePfad({ id: kategorie.id, slug: kategorie.slug }, undefined);
+}
+
 /**
  * Zahl der Produkte je Hauptkategorie: Produkte dieser Kategorie und ihrer Unterkategorien. Ein Produkt
  * ohne Kategorie zählt zur ersten Hauptkategorie seiner Art (Codeprodukte oder Artikel), so wie die
- * Listen es zeigen. Eine Anfrage-Kategorie mit der Liste der Gehäuse und Ersatzteile als Ziel zählt die
+ * Listen es zeigen. Fahrzeugteile zählen nie zu einer Artikel-Kategorie; sie stehen in der Liste der Gehäuse
+ * und Ersatzteile (dieselbe Regel wie `/artikel`, `artikelDerKategorie`). Eine Anfrage-Kategorie mit der Liste der Gehäuse und Ersatzteile als Ziel zählt die
  * bestellbaren Fahrzeugteile (ohne Beispiele), so wie die Liste sie zeigt. Andere Arten haben keine Produkte.
  */
 export function anzahlJeKategorie(
@@ -104,9 +118,12 @@ export function anzahlJeKategorie(
       continue;
     }
     const erste = haupt.find((k) => k.art === kategorie.art)?.id === kategorie.id;
-    const zahl = produkte[kategorie.art].filter((p) =>
-      p.categoryId ? kategorieKette(kategorien, p.categoryId).some((glied) => glied.id === kategorie.id) : erste,
-    ).length;
+    const zahl =
+      kategorie.art === 'artikel'
+        ? artikelDerKategorie(kategorien, produkte.artikel, kategorie.id, erste).length
+        : produkte.codeprodukte.filter((p) =>
+            p.categoryId ? kategorieKette(kategorien, p.categoryId).some((glied) => glied.id === kategorie.id) : erste,
+          ).length;
     ergebnis.set(kategorie.id, zahl);
   }
   return ergebnis;

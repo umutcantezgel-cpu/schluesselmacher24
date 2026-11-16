@@ -2,7 +2,15 @@ import { describe, expect, it } from 'vitest';
 
 import { defaults } from '@/lib/data/defaults';
 import { HINWEIS_PRODUKTE_FOLGEN } from '@/lib/data/defaults/kategorien';
-import { sichtbareKategorien } from '@/lib/data/shop';
+import {
+  artikelDerKategorie,
+  artikelKategorieKette,
+  artikelListePfad,
+  artikelListenKategorien,
+  artikelUnterkategorien,
+  ersteArtikelKategorie,
+  sichtbareKategorien,
+} from '@/lib/data/shop';
 import { titelPasst } from '@/lib/titelbreite';
 import { BESCHREIBUNG_MAX, BESCHREIBUNG_MIN } from '@/lib/codelinie-texte';
 import { vorbelegungAusAdresse } from '@/lib/wege/code-anfrage';
@@ -119,6 +127,76 @@ describe('Weg einer Shop-Kategorie', () => {
     expect(SHOP_SEO.description.length).toBeGreaterThanOrEqual(BESCHREIBUNG_MIN);
     expect(SHOP_SEO.description.length).toBeLessThanOrEqual(BESCHREIBUNG_MAX);
     expect(SHOP_SEO.description).not.toMatch(/[—–]/);
+  });
+});
+
+describe('Artikel je Kategorie (FA-10-10, FA-10-11, FA-10-01)', () => {
+  // Erfundene Testdaten (G4): eine Unterkategorie unter „Schließtechnik und Zubehör“, eine weitere Artikel-Hauptkategorie.
+  const zubehoer = kategorie('schliesstechnik-und-zubehoer');
+  const unter = { ...zubehoer, id: 'test-beschlaege', slug: 'test-beschlaege', name: 'Test Beschläge', eltern: zubehoer.id, ziel: '' };
+  const weitere = { ...zubehoer, id: 'test-technik', slug: 'test-technik', name: 'Test Technik', reihenfolge: 95, ziel: '/artikel' };
+  const alle = [...KATEGORIEN, unter, weitere];
+  const haupt = sichtbareKategorien(alle).filter((k) => !k.eltern);
+  const artikel = [
+    { id: 'a', categoryId: undefined },
+    { id: 'b', categoryId: 'schliesstechnik-und-zubehoer' },
+    { id: 'c', categoryId: 'test-beschlaege' },
+    { id: 'd', categoryId: 'test-technik' },
+    { id: 'e', fahrzeugteil: {} },
+    { id: 'f', categoryId: 'schliesstechnik-und-zubehoer', fahrzeugteil: {} },
+    { id: 'g', categoryId: 'autoschluesselgehaeuse' },
+  ];
+
+  it('/artikel zeigt die erste Artikel-Kategorie mit Unterkategorien und Artikel ohne Kategorie, ohne Fahrzeugteile', () => {
+    expect(ersteArtikelKategorie(alle)?.id).toBe('schliesstechnik-und-zubehoer');
+    const liste = artikelDerKategorie(alle, artikel, 'schliesstechnik-und-zubehoer', true);
+    expect(liste.map((a) => a.id)).toEqual(['a', 'b', 'c']);
+    // Die Zahl im Shop stimmt mit der Liste überein.
+    const anzahlen = anzahlJeKategorie(alle, haupt, { codeprodukte: [], artikel });
+    expect(anzahlen.get('schliesstechnik-und-zubehoer')).toBe(liste.length);
+    expect(anzahlen.get('test-technik')).toBe(artikelDerKategorie(alle, artikel, 'test-technik', false).length);
+    expect(anzahlen.get('test-technik')).toBe(1);
+  });
+
+  it('im Startbestand: Zahl im Shop gleich Länge der Liste, Gehäuseteile zählen nicht zu Zubehör', () => {
+    const start = sichtbareKategorien(KATEGORIEN).filter((k) => !k.eltern);
+    const teile = [{ fahrzeugteil: {} }, { fahrzeugteil: {}, categoryId: 'autoschluesselgehaeuse' }, {}];
+    expect(anzahlJeKategorie(KATEGORIEN, start, { codeprodukte: [], artikel: teile }).get('schliesstechnik-und-zubehoer')).toBe(
+      artikelDerKategorie(KATEGORIEN, teile, 'schliesstechnik-und-zubehoer', true).length,
+    );
+    expect(artikelDerKategorie(KATEGORIEN, teile, 'schliesstechnik-und-zubehoer', true)).toHaveLength(1);
+  });
+
+  it('weitere Kategorien und Unterkategorien haben eine eigene Liste; die erste bleibt /artikel', () => {
+    expect(artikelListenKategorien(alle).map((k) => k.id)).toEqual(['test-beschlaege', 'test-technik']);
+    expect(artikelListePfad(zubehoer, 'schliesstechnik-und-zubehoer')).toBe('/artikel');
+    expect(artikelListePfad(unter, 'schliesstechnik-und-zubehoer')).toBe('/artikel/kategorie/test-beschlaege');
+    // Verborgene „Weitere Sicherheitstechnik“ (Art Anfrage) bekommt keine Liste.
+    expect(artikelListenKategorien(KATEGORIEN)).toEqual([]);
+  });
+
+  it('der Weg einer weiteren Artikel-Kategorie mit Ziel /artikel oder leer führt auf ihre eigene Liste', () => {
+    expect(kategorieWeg(weitere, 1, false)).toEqual({ href: '/artikel/kategorie/test-technik', label: 'Zu den Artikeln' });
+    expect(kategorieWeg({ ...weitere, ziel: '' }, 1, false).href).toBe('/artikel/kategorie/test-technik');
+    // Ein eigenes Ziel bleibt; die erste Kategorie bleibt bei /artikel.
+    expect(kategorieWeg({ ...weitere, ziel: '/sicherheitstechnik' }, 1, false).href).toBe('/sicherheitstechnik');
+    expect(kategorieWeg(zubehoer, 1, true).href).toBe('/artikel');
+    // Ohne Artikel: Anfrage mit dem Namen, wie bisher.
+    expect(kategorieWeg(weitere, 0, false)).toMatchObject({ label: 'Artikel anfragen', href: '/service-und-termin/anfrage?artikel=Test%20Technik' });
+  });
+
+  it('die Liste der Hauptkategorie verlinkt Unterkategorien mit Artikeln', () => {
+    expect(artikelUnterkategorien(alle, zubehoer.id, artikel)).toEqual([
+      { kategorie: unter, href: '/artikel/kategorie/test-beschlaege', anzahl: 1 },
+    ]);
+    expect(artikelUnterkategorien(alle, zubehoer.id, [{ categoryId: 'test-beschlaege', fahrzeugteil: {} }])).toEqual([]);
+  });
+
+  it('Brotkrumen eines Artikels: Kette der sichtbaren Artikel-Kategorien, sonst leer', () => {
+    expect(artikelKategorieKette(alle, 'test-beschlaege').map((k) => k.id)).toEqual(['schliesstechnik-und-zubehoer', 'test-beschlaege']);
+    expect(artikelKategorieKette(alle, undefined)).toEqual([]);
+    expect(artikelKategorieKette(alle, 'autoschluesselgehaeuse')).toEqual([]);
+    expect(artikelKategorieKette([...alle, { ...unter, id: 'test-verborgen', sichtbar: false }], 'test-verborgen')).toEqual([]);
   });
 });
 

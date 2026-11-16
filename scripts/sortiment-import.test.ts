@@ -11,6 +11,7 @@ import { codeLineZuPayload } from '@/lib/data/payload-mapping';
 import type { CodeLine, ShopHersteller } from '@/lib/types';
 
 import {
+  FREIWILLIGE_SPALTEN,
   SPALTEN,
   arbeiteEin,
   formatBeschreibung,
@@ -151,6 +152,31 @@ describe('Sortiment einlesen und prüfen', () => {
     expect(zeilen).toHaveLength(2);
     const ergebnis = pruefeSortiment(zeilen, { hersteller: HERSTELLER, kategorien: KATEGORIEN });
     expect(ergebnis).toMatchObject({ linien: [], fehler: [], uebersprungen: 2 });
+  });
+
+  it('übernimmt die freiwilligen Spalten Schlüsseltyp und Einsatzbereich (FA-11-18), weiter nur als Entwurf', () => {
+    expect(FREIWILLIGE_SPALTEN).toEqual(['schluesseltyp', 'einsatz']);
+    const kopf = [...SPALTEN, ...FREIWILLIGE_SPALTEN].join(';');
+    const text = [kopf, `${zeile()};"Flachschlüssel";"Briefkasten"`, `${zeile({ system: 'TX 200' })};"";""`].join('\r\n');
+    const ergebnis = lauf(text);
+    expect(ergebnis.fehler).toEqual([]);
+    const [mit, ohne] = ergebnis.liste as CodeLine[];
+    expect(mit).toMatchObject({ keyType: 'Flachschlüssel', application: 'Briefkasten', active: false });
+    // Leere Zellen: Schlüsseltyp leer, Einsatzbereich wie bisher aus Hersteller und System.
+    expect(ohne).toMatchObject({ keyType: '', application: 'Testwerk TX 200' });
+    // Im Backend landen sie in den vorhandenen Feldern „Schlüsseltyp“ und „Einsatzbereich“, als Entwurf.
+    expect(codeLineZuPayload(mit)).toMatchObject({ schluesseltyp: 'Flachschlüssel', einsatz: 'Briefkasten', _status: 'draft' });
+  });
+
+  it('kommt ohne die freiwilligen Spalten aus', () => {
+    const [linie] = lauf(tabelle(zeile())).liste as CodeLine[];
+    expect(linie).toMatchObject({ keyType: '', application: 'Testwerk TX 100' });
+  });
+
+  it('die Vorlage nennt die freiwilligen Spalten', () => {
+    const vorlage = readFileSync(path.join(process.cwd(), '_werkstatt/ausbau/erhebung/boegen/SORTIMENT-vorlage.csv'), 'utf8');
+    const [zeile1] = leseSortiment(vorlage);
+    expect(Object.keys(zeile1)).toEqual(expect.arrayContaining([...SPALTEN, ...FREIWILLIGE_SPALTEN]));
   });
 
   it('verlangt alle Spalten', () => {

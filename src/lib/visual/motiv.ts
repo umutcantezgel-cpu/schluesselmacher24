@@ -1,4 +1,4 @@
-import type { VisualRef } from '@/lib/types';
+import type { UploadSteckplatz, VisualRef } from '@/lib/types';
 
 /**
  * Ordnet einer Bildstelle ohne Foto eine passende Fachgrafik zu (KERN K-008):
@@ -11,6 +11,11 @@ export function visualFuerMotiv(motif: string | undefined | null): VisualRef | n
   const voll = normalisieren(motif);
   if (!voll) return null;
   const t = ohneArt(voll);
+
+  /* Beispiele an Upload-Feldern (FA-26-06): Vorlage dessen, was auf dem Foto zu sehen sein muss. Nur für
+     Motive, die mit „Beispiel“ beginnen; ein Werkstattfoto mit Fahrzeugschein daneben bleibt beim Schlüssel. */
+  const beispiel = beispielZeichnung(voll, t);
+  if (beispiel) return beispiel;
 
   if (hat(t, 'fraes', 'bearbeitung')) {
     return { generator: 'profilschnitt', params: { beschriftung: false } };
@@ -52,6 +57,43 @@ export function visualFuerMotiv(motif: string | undefined | null): VisualRef | n
   /* Werkstatt ohne erkennbares Werkstück: der Profilschnitt als Zeichen der Werkstatt. */
   if (hat(voll, 'werkstatt')) return { generator: 'profilschnitt', params: { beschriftung: false } };
   return null;
+}
+
+/** Zeichnung `foto-beispiel` zu einem Beispielmotiv am Upload-Feld, sonst `null`. */
+function beispielZeichnung(voll: string, t: string): VisualRef | null {
+  if (!/^ beispiel/.test(voll)) return null;
+  const motiv = hat(t, 'fahrzeugschein', 'zulassungsbescheinigung')
+    ? 'fahrzeugschein'
+    : hat(t, 'typenschild')
+      ? 'typenschild'
+      : hat(t, 'schluesselspitze', 'auf die spitze', 'profilquerschnitt', 'profil von vorn')
+        ? 'schluesselspitze'
+        : hat(t, 'gewerbeanmeldung')
+          ? 'gewerbeanmeldung'
+          : hat(t, 'nachweis')
+            ? 'ersatznachweis'
+            : null;
+  return motiv ? { generator: 'foto-beispiel', params: { motiv } } : null;
+}
+
+/**
+ * Beispielzeichnung je Steckplatz (FA-26-06). Der Steckplatz sagt eindeutig, was das Foto zeigen soll;
+ * diese Zeichnung gilt deshalb vor einer allgemeinen Zeichnung am Beispiel (etwa dem Profilschnitt in
+ * Seitenansicht an der Schlüsselspitze). Ein echtes Foto (`bild`) hat weiter Vorrang (MA-05).
+ */
+export function visualFuerSteckplatz(steckplatz: UploadSteckplatz | undefined | null): VisualRef | null {
+  switch (steckplatz) {
+    case 'fahrzeugschein':
+      return { generator: 'foto-beispiel', params: { motiv: 'fahrzeugschein' } };
+    case 'typenschild':
+      return { generator: 'foto-beispiel', params: { motiv: 'typenschild' } };
+    case 'ersatznachweis':
+      return { generator: 'foto-beispiel', params: { motiv: 'ersatznachweis' } };
+    case 'schluessel-spitze':
+      return { generator: 'foto-beispiel', params: { motiv: 'schluesselspitze' } };
+    default:
+      return null;
+  }
 }
 
 /**

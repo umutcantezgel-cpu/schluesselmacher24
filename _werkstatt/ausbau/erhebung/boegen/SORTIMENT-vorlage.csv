@@ -1,3 +1,3 @@
-﻿"hersteller";"system";"codebereich";"beispielcode";"codeformat";"preis";"staffel";"max_stueck";"hinweise";"bild_datei";"kategorie";"quelle"
-"Beispiel Hersteller A";"Beispielsystem 1";"1 bis 999";"0812";"^[0-9]{3,4}$";"9,90";"3:8,90|5:7,90";"20";"Beispielzeile, wird nicht übernommen. Der Code steht auf dem Schlosskörper.";"beispiel-a.jpg";"Schlüssel nach Code";"Beispiel, bitte durch eigene Angaben ersetzen"
-"Beispiel Hersteller B";"Beispielsystem 2";"A001 bis A500";"A123";"^[A-Z][0-9]{3}$";"14,50";"";"10";"Beispielzeile, wird nicht übernommen.";"";"";"Beispiel, bitte durch eigene Angaben ersetzen"
+﻿"hersteller";"system";"codebereich";"beispielcode";"codeformat";"preis";"staffel";"max_stueck";"hinweise";"bild_datei";"kategorie";"quelle";"schluesseltyp";"einsatz"
+"Beispiel Hersteller A";"Beispielsystem 1";"1 bis 999";"0812";"^[0-9]{3,4}$";"9,90";"3:8,90|5:7,90";"20";"Beispielzeile, wird nicht übernommen. Der Code steht auf dem Schlosskörper.";"beispiel-a.jpg";"Schlüssel nach Code";"Beispiel, bitte durch eigene Angaben ersetzen";"Flachschlüssel";"Briefkasten"
+"Beispiel Hersteller B";"Beispielsystem 2";"A001 bis A500";"A123";"^[A-Z][0-9]{3}$";"14,50";"";"10";"Beispielzeile, wird nicht übernommen.";"";"";"Beispiel, bitte durch eigene Angaben ersetzen";"";""

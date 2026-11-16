@@ -980,7 +980,7 @@ export interface Produkte {
   name: string;
   beschreibung: string;
   /**
-   * Aus der Liste wählen. Fehlt er, zuerst unter Shop › Hersteller anlegen.
+   * Aus der Liste wählen. Fehlt er, zuerst unter Shop › Hersteller anlegen. Pflicht beim Veröffentlichen eines Codeprodukts.
    */
   herstellerAuswahl?: (number | null) | Hersteller;
   schluesseltyp?: string | null;
@@ -993,7 +993,7 @@ export interface Produkte {
    */
   system?: string | null;
   /**
-   * Von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“. Erscheint in der Liste und auf der Seite des Produkts.
+   * Von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“. Pflicht beim Veröffentlichen eines Codeprodukts. Erscheint in der Liste und auf der Seite des Produkts.
    */
   codebereich?: string | null;
   /**

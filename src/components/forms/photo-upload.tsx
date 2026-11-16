@@ -13,7 +13,7 @@ import { cn } from '@/lib/cn';
 import Image from 'next/image';
 import { formatFileSize } from '@/lib/format';
 import { ImagePlaceholder } from '@/components/ui/image-placeholder';
-import { visualFuerMotiv } from '@/lib/visual/motiv';
+import { visualFuerMotiv, visualFuerSteckplatz } from '@/lib/visual/motiv';
 
 export interface PickedFile {
   id: string;
@@ -236,6 +236,27 @@ export function beispielZeigtBild(slot: ImageSlot): boolean {
   return Boolean(slot.bild?.url || slot.visual || visualFuerMotiv(slot.motif));
 }
 
+/**
+ * Beispiel am Feld (FA-26-06): Ein echtes Foto bleibt; sonst zeigt der Steckplatz seine Beispielzeichnung
+ * (Fahrzeugschein, Typenschild, Ersatznachweis, Profil von vorne), vor einer allgemeinen Zeichnung am Beispiel.
+ */
+export function beispielFuerFeld(example: ImageSlot, steckplatz?: UploadSteckplatz): ImageSlot {
+  if (example.bild?.url) return example;
+  const zeichnung = visualFuerSteckplatz(steckplatz);
+  return zeichnung ? { ...example, visual: zeichnung } : example;
+}
+
+/**
+ * Bleibt der Satz der Seite unter dem Beispiel stehen? Ohne Bild immer. Bei einer Beispielzeichnung
+ * `foto-beispiel` ebenfalls: Die Zeichnung zeigt nur Form und markierte Stellen, der Wortlaut der Seite
+ * (etwa „Halter und Fahrzeugdaten lesbar“, „scharf und ohne Spiegelung“, „oder Zertifikat“) bleibt lesbar.
+ */
+export function beispielSatzSichtbar(slot: ImageSlot): boolean {
+  if (!beispielZeigtBild(slot)) return true;
+  if (slot.bild?.url) return false;
+  return (slot.visual ?? visualFuerMotiv(slot.motif))?.generator === 'foto-beispiel';
+}
+
 /** Satz zum Beispiel ohne Bild: das Motiv ohne Vorsilbe „Beispielfoto:“, sonst der Hinweis. */
 export function beispielSatz(slot: ImageSlot): string {
   const motiv = slot.motif.replace(/^\s*Beispiel(?:foto|bild)?\s*:\s*/i, '').trim();
@@ -380,7 +401,9 @@ export function PhotoUpload({
   }
 
   const shownError = error ?? localError;
-  const zeigtBild = beispielZeigtBild(example);
+  const beispiel = beispielFuerFeld(example, steckplatz);
+  const zeigtBild = beispielZeigtBild(beispiel);
+  const satz = beispielSatzSichtbar(beispiel) ? beispielSatz(beispiel) : '';
 
   return (
     <div className="flex flex-col gap-3">
@@ -405,10 +428,10 @@ export function PhotoUpload({
             {zeigtBild ? 'So sollte das Foto aussehen' : 'Darauf muss zu sehen sein'}
           </p>
           {/* Fachgrafik zum Beispiel statt eines kleinen Symbols in leerer Fläche (Sichtabnahme E4-L-23) */}
-          <ImagePlaceholder slot={example} />
-          {!zeigtBild && beispielSatz(example) && (
+          <ImagePlaceholder slot={beispiel} />
+          {satz && (
             <p data-beispiel-satz className="mt-1.5 text-small leading-snug text-foreground">
-              {beispielSatz(example)}
+              {satz}
             </p>
           )}
         </div>

@@ -422,6 +422,9 @@ describe('Bestellungen', () => {
     codeMuster: '^[0-9]{4}$',
     codeBeispiel: '1234',
     system: 'Testsystem',
+    // Pflicht beim Veröffentlichen echter Codeprodukte (FA-SHOP-05).
+    hersteller: 'Testhersteller',
+    codebereich: '0001 bis 9999',
     _status: 'published' as const,
   };
 

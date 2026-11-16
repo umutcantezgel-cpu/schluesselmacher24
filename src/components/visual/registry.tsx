@@ -5,6 +5,7 @@ import type { VisualParamValue, VisualRef } from '@/lib/types';
 import { AblaufGrafik } from './generators/ablauf';
 import { AutoschluesselAufbau } from './generators/autoschluessel-aufbau';
 import { CodeFundstelleGrafik } from './generators/code-fundstelle';
+import { FotoBeispielGrafik } from './generators/foto-beispiel';
 import { ProfilschnittGrafik } from './generators/profilschnitt';
 import { SchliessplanGrafik } from './generators/schliessplan';
 import { SchluesselGrafik } from './generators/schluessel';
@@ -37,6 +38,7 @@ const REGISTRY: Record<string, VisualComponent> = {
   ablauf: AblaufGrafik,
   'autoschluessel-aufbau': AutoschluesselAufbau,
   'code-fundstelle': CodeFundstelleGrafik,
+  'foto-beispiel': FotoBeispielGrafik,
   profilschnitt: ProfilschnittGrafik,
   schliessplan: SchliessplanGrafik,
   schluessel: SchluesselGrafik,

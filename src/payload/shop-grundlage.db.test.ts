@@ -1,3 +1,4 @@
+import { sql } from '@payloadcms/db-postgres';
 import { getPayload, type Payload } from 'payload';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
@@ -12,7 +13,7 @@ import { inhalteUebernehmen, type InhaltsQuelle } from './seed';
 
 /* Shop-Grundlage (FA-SHOP-01) gegen die Testdatenbank: Startbestand der Kategorien aus dem Seed,
  * Umbenennen mit Weiterleitung, Unterkategorien ohne Kreis, Hersteller-Stammliste, System als Pflicht,
- * Duplizieren mit den neuen Feldern und die Verfügbarkeit in der Datenschicht. Erfundene Testdaten (G4). */
+ * Hersteller und Codebereich als Pflicht beim Veröffentlichen, Duplizieren mit den neuen Feldern und die Verfügbarkeit in der Datenschicht. Erfundene Testdaten (G4). */
 
 let payload: Payload;
 const adapter = new PayloadAdapter();
@@ -226,10 +227,71 @@ describe('Codeprodukt mit den neuen Feldern', () => {
     expect(verweis(kopie.herstellerAuswahl)).toBe(hersteller.id);
   });
 
-  it('bestehende Artikel ohne Angabe gelten als lieferbar', async () => {
+  it('verlangt Hersteller und Codebereich beim Veröffentlichen, nicht im Entwurf und nicht beim Beispiel (FA-11-07, FA-11-09)', async () => {
+    const hersteller = await payload.create({ collection: 'hersteller', data: { name: 'Testhersteller Pflicht', reihenfolge: 40 }, context });
+    aufraeumen.push({ collection: 'hersteller', id: hersteller.id });
+    const basis = { ...codeprodukt, name: 'Pflichtangaben', system: 'System T' };
+    const slug = `test-pflicht-${process.pid}`;
+
+    await expect(
+      payload.create({ collection: 'produkte', data: { ...basis, slug, codebereich: '1 bis 99', _status: 'published' }, context }),
+    ).rejects.toThrow(/Hersteller/);
+    await expect(
+      payload.create({ collection: 'produkte', data: { ...basis, slug, herstellerAuswahl: hersteller.id, _status: 'published' }, context }),
+    ).rejects.toThrow(/Codebereich/);
+
+    // Entwurf ohne beides: erlaubt; Veröffentlichen erst mit beidem.
+    const entwurf = await payload.create({ collection: 'produkte', data: { ...basis, slug, _status: 'draft' }, draft: true, context });
+    aufraeumen.push({ collection: 'produkte', id: entwurf.id });
+    await expect(payload.update({ collection: 'produkte', id: entwurf.id, data: { _status: 'published' }, context })).rejects.toThrow(
+      /Hersteller|Codebereich/,
+    );
+    const fertig = await payload.update({
+      collection: 'produkte',
+      id: entwurf.id,
+      data: { herstellerAuswahl: hersteller.id, codebereich: '1 bis 99', _status: 'published' },
+      context,
+    });
+    expect(fertig._status).toBe('published');
+
+    // Der ältere Freitext genügt als Hersteller; ein Beispiel bleibt frei.
+    const alt = await payload.create({
+      collection: 'produkte',
+      data: { ...basis, slug: `${slug}-alt`, hersteller: 'Alter Testhersteller', codebereich: '1 bis 99', _status: 'published' },
+      context,
+    });
+    aufraeumen.push({ collection: 'produkte', id: alt.id });
+    expect(alt._status).toBe('published');
+  });
+
+  it('ein schon veröffentlichtes Produkt ohne Codebereich bleibt lesbar, speichern geht erst mit der Angabe', async () => {
+    const hersteller = await payload.create({ collection: 'hersteller', data: { name: 'Testhersteller Bestand', reihenfolge: 50 }, context });
+    aufraeumen.push({ collection: 'hersteller', id: hersteller.id });
     const doc = await payload.create({
       collection: 'produkte',
-      data: { ...codeprodukt, name: 'Ohne Verfügbarkeit', slug: `test-lieferbar-${process.pid}`, system: 'System T', _status: 'published' },
+      data: { ...codeprodukt, name: 'Bestand ohne Codebereich', slug: `test-bestand-${process.pid}`, system: 'System T', herstellerAuswahl: hersteller.id, codebereich: '1 bis 99', _status: 'published' },
+      context,
+    });
+    aufraeumen.push({ collection: 'produkte', id: doc.id });
+    // So sieht ein Eintrag aus der Zeit vor der Pflicht aus: direkt in der Datenbank (Dokument und Fassungen), ohne Prüfung.
+    const db = payload.db.drizzle as unknown as { execute: (q: ReturnType<typeof sql>) => Promise<unknown> };
+    await db.execute(sql`UPDATE produkte SET codebereich = NULL WHERE id = ${doc.id}`);
+    await db.execute(sql`UPDATE _produkte_v SET version_codebereich = NULL WHERE parent_id = ${doc.id}`);
+
+    const linie = (await adapter.read('codeLines')).find((l) => l.slug === doc.slug);
+    expect(linie).toBeDefined();
+    expect(linie?.codeRange ?? '').toBe('');
+    await expect(payload.update({ collection: 'produkte', id: doc.id, data: { name: 'Bestand neu' }, context })).rejects.toThrow(/Codebereich/);
+    const neu = await payload.update({ collection: 'produkte', id: doc.id, data: { name: 'Bestand neu', codebereich: '1 bis 99' }, context });
+    expect(neu.name).toBe('Bestand neu');
+  });
+
+  it('bestehende Artikel ohne Angabe gelten als lieferbar', async () => {
+    const hersteller = await payload.create({ collection: 'hersteller', data: { name: 'Testhersteller Lieferbar', reihenfolge: 60 }, context });
+    aufraeumen.push({ collection: 'hersteller', id: hersteller.id });
+    const doc = await payload.create({
+      collection: 'produkte',
+      data: { ...codeprodukt, name: 'Ohne Verfügbarkeit', slug: `test-lieferbar-${process.pid}`, system: 'System T', herstellerAuswahl: hersteller.id, codebereich: '1 bis 99', _status: 'published' },
       context,
     });
     aufraeumen.push({ collection: 'produkte', id: doc.id });

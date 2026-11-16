@@ -34,7 +34,7 @@ const FORMULARE: Formular[] = [
   { name: 'Zylinder-Konfigurator', datei: 'src/app/(site)/gleichschliessende-zylinder/konfigurator/konfigurator.tsx', seite: 'src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx', absenden: false, dateien: false },
   { name: 'Schließanlagen', datei: 'src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx', seite: 'src/app/(site)/schliessanlagen/konfigurator/page.tsx', absenden: true, dateien: true },
   { name: 'Schließplan', datei: 'src/components/konfigurator/schliessplan-planer.tsx', seite: 'src/app/(site)/schliessanlagen/konfigurator/schliessplan/page.tsx', absenden: true, dateien: false },
-  { name: 'Zutritt', datei: 'src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx', seite: 'src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx', absenden: true, dateien: false },
+  { name: 'Zutritt', datei: 'src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx', seite: 'src/app/(site)/elektronische-zutrittsloesungen/konfigurator/page.tsx', absenden: true, dateien: true },
   { name: 'Sicherheitscheck', datei: 'src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx', seite: 'src/app/(site)/sicherheitstechnik/sicherheitscheck/page.tsx', absenden: true, dateien: true },
   { name: 'Rückruf', datei: 'src/app/(site)/beratung/beratung-formular.tsx', seite: 'src/app/(site)/beratung/page.tsx', absenden: true, dateien: true },
   { name: 'Anfrage zu einer Leistung', datei: 'src/app/(site)/service-und-termin/anfrage/anfrage-formular.tsx', seite: 'src/app/(site)/service-und-termin/anfrage/page.tsx', absenden: true, dateien: true },

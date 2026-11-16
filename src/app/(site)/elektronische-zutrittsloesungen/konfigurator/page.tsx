@@ -49,6 +49,7 @@ const RELATED_LINKS = [
 export default async function ZutrittKonfiguratorPage() {
   const page = await getPageContent(ROUTE);
   const process = PROCESS_LABELS.projektkonfigurator;
+  const settings = await getSettings();
 
   // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
   const crumbs = [
@@ -85,19 +86,30 @@ export default async function ZutrittKonfiguratorPage() {
             </li>
           ))}
         </ol>
+        {/* Freiwilliger Schritt nach den acht Fragen (FA-QA-04C). */}
+        <p className="mt-3 text-small text-foreground-muted">
+          Zum Schluss können Sie freiwillig einen Grundriss und Fotos Ihrer Türen hochladen.
+        </p>
       </PageHeader>
 
       <Section tight>
         <div className="mx-auto max-w-3xl">
-          <Alert tone="info" title="Was Sie hier bekommen — und was nicht" className="mb-8">
+          <Alert tone="info" title="Was Sie hier bekommen und was nicht" className="mb-8">
             <p>
               {process.hint} Preise nennen wir erst, wenn wir die Türsituation kennen: Sie hängen
               von Türanzahl, Medien, Verwaltungsart und Montageumfang ab. Ihre Angaben bleiben bis
-              zum Absenden in diesem Browser gespeichert, Sie können also jederzeit unterbrechen.
+              zum Absenden in diesem Browser gespeichert, Sie können also jederzeit unterbrechen. Hochgeladene
+              Dateien speichert der Browser nicht: Wählen Sie sie nach einer Unterbrechung bitte neu aus.
             </p>
           </Alert>
 
-          <ZutrittKonfigurator hilfe={hilfeAus(await getSettings())} />
+          <ZutrittKonfigurator
+            hilfe={hilfeAus(settings)}
+            retention={{
+              floorPlans: settings.retentionDays.floorPlans,
+              objectPhotos: settings.retentionDays.projectDocuments,
+            }}
+          />
         </div>
       </Section>
 

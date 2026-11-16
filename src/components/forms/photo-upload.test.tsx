@@ -1,7 +1,8 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
-import type { ImageSlot } from '@/lib/types';
+import type { ImageSlot, UploadSteckplatz } from '@/lib/types';
+import { FOTO_BEISPIEL_TITEL } from '@/components/visual/generators/foto-beispiel';
 
 import {
   MAX_AUSWAHL_FOTO_BYTES,
@@ -9,7 +10,9 @@ import {
   MELDUNG_UPLOAD_ZU_GROSS,
   PhotoUpload,
   auswahlGrenze,
+  beispielFuerFeld,
   beispielSatz,
+  beispielSatzSichtbar,
   beispielZeigtBild,
   dateityp,
   kodiereUnterGrenze,
@@ -134,15 +137,81 @@ describe('PhotoUpload · Größengrenzen (Vercel: 4,5 MB je Anfrage)', () => {
   });
 
   it('steht dort nur ein Symbol, sagt die Zeile, was zu sehen sein muss, mit einem Satz darunter', () => {
-    const nurSymbol: ImageSlot = { motif: 'Beispielfoto: Fahrzeugschein flach aufgelegt, alle vier Ecken im Bild', ratio: '3/2' };
+    const nurSymbol: ImageSlot = { motif: 'Beispielfoto: Lackschaden am Gehäuse, gut ausgeleuchtet', ratio: '3/2' };
     expect(beispielZeigtBild(nurSymbol)).toBe(false);
-    expect(beispielSatz(nurSymbol)).toBe('Fahrzeugschein flach aufgelegt, alle vier Ecken im Bild.');
+    expect(beispielSatz(nurSymbol)).toBe('Lackschaden am Gehäuse, gut ausgeleuchtet.');
     const html = renderToStaticMarkup(
-      <PhotoUpload id="schein" label="Fahrzeugschein" description="" example={nurSymbol} files={[]} onChange={() => {}} />,
+      <PhotoUpload id="gehaeuse" label="Gehäuse" description="" example={nurSymbol} files={[]} onChange={() => {}} />,
     );
     expect(html).not.toContain('So sollte das Foto aussehen');
     expect(html).toContain('Darauf muss zu sehen sein');
-    expect(html).toContain('Fahrzeugschein flach aufgelegt, alle vier Ecken im Bild.');
+    expect(html).toContain('Lackschaden am Gehäuse, gut ausgeleuchtet.');
+  });
+
+  /* FA-26-06: Beispielzeichnung je Steckplatz, Wortlaut der Beispiele aus dem Bestand. */
+  const STECKPLAETZE: Array<[UploadSteckplatz | undefined, ImageSlot, string]> = [
+    ['fahrzeugschein', { motif: 'Beispielfoto: Fahrzeugschein flach aufgelegt, alle vier Ecken im Bild', ratio: '3/2' }, FOTO_BEISPIEL_TITEL.fahrzeugschein],
+    ['typenschild', { motif: 'Beispielfoto: Typenschild am Fahrzeug, Hersteller und Nummer lesbar', ratio: '4/3' }, FOTO_BEISPIEL_TITEL.typenschild],
+    [
+      'ersatznachweis',
+      { motif: 'Beispielfoto: Nachweis flach aufgelegt, ganzes Blatt im Bild, Name und Fahrzeug lesbar', ratio: '3/2' },
+      FOTO_BEISPIEL_TITEL.ersatznachweis,
+    ],
+    [
+      'schluessel-spitze',
+      // Wie im Bestand mit dem Profilschnitt (Seitenansicht) als Zeichnung am Beispiel.
+      { motif: 'Beispielfoto: Blick von vorne auf die Spitze, Profil deutlich erkennbar', ratio: '4/3', visual: { generator: 'profilschnitt', params: { beschriftung: false } } },
+      FOTO_BEISPIEL_TITEL.schluesselspitze,
+    ],
+    [undefined, { motif: 'Beispiel: Gewerbeanmeldung oder Zertifikat, vollständig und gut lesbar', ratio: '4/3' }, FOTO_BEISPIEL_TITEL.gewerbeanmeldung],
+  ];
+
+  it.each(STECKPLAETZE)('Steckplatz %s: das Feld zeigt die Beispielzeichnung mit Alternativtext und dem Satz der Seite', (steckplatz, example, titel) => {
+    const html = renderToStaticMarkup(
+      <PhotoUpload id="feld" label="Unterlage" description="" example={example} steckplatz={steckplatz} files={[]} onChange={() => {}} allowDocuments />,
+    );
+    expect(html).toContain('So sollte das Foto aussehen');
+    expect(html).toContain('data-beispiel-satz');
+    expect(html).toContain(beispielSatz(example));
+    expect(html).toContain(`<title>${titel}</title>`);
+    expect(beispielZeigtBild(beispielFuerFeld(example, steckplatz))).toBe(true);
+  });
+
+  it('Einsendeweg (R13): am Fahrzeugschein bleibt „Halter und Fahrzeugdaten lesbar“ sichtbar, die Zeichnung markiert den Halter', () => {
+    // Wortlaut aus schluessel-einschicken/anmelden/einsende-formular.tsx (EXAMPLE_FAHRZEUGSCHEIN).
+    const example: ImageSlot = {
+      motif: 'Beispielfoto: Zulassungsbescheinigung Teil I, ganze Seite im Bild, Halter und Fahrzeugdaten lesbar',
+      ratio: '4/3',
+      note: 'Die ganze Seite, scharf und ohne Spiegelung.',
+    };
+    const html = renderToStaticMarkup(
+      <PhotoUpload id="schein" label="Fahrzeugschein" description="" example={example} steckplatz="fahrzeugschein" files={[]} onChange={() => {}} allowDocuments />,
+    );
+    expect(html).toContain('So sollte das Foto aussehen');
+    expect(html).toContain('Halter und Fahrzeugdaten lesbar.');
+    expect(html).toContain('>Halter</text>');
+    expect(html).toContain(`<title>${FOTO_BEISPIEL_TITEL.fahrzeugschein}</title>`);
+    expect(FOTO_BEISPIEL_TITEL.fahrzeugschein).toContain('Halter');
+  });
+
+  it('ohne Motivtext steht unter der Zeichnung der Hinweis der Seite', () => {
+    const html = renderToStaticMarkup(
+      <PhotoUpload id="gewerbe" label="Nachweis" description="" example={{ motif: 'Beispiel:', ratio: '4/3', note: 'Scharf, ohne Spiegelung.' }} steckplatz="ersatznachweis" files={[]} onChange={() => {}} />,
+    );
+    expect(html).toContain('Scharf, ohne Spiegelung.');
+  });
+
+  it('andere Zeichnungen und echte Fotos bleiben ohne Satz darunter', () => {
+    expect(beispielSatzSichtbar({ motif: 'Beispielfoto: Sicherungskarte, ganz im Bild', ratio: '3/2' })).toBe(false);
+    expect(beispielSatzSichtbar({ motif: 'Beispielfoto: Fahrzeugschein', ratio: '3/2', bild: { url: '/medien/schein.jpg', alt: 'Fahrzeugschein' } })).toBe(false);
+    expect(beispielSatzSichtbar({ motif: 'Beispielfoto: Lackschaden am Gehäuse', ratio: '3/2' })).toBe(true);
+  });
+
+  it('ein echtes Foto am Beispiel bleibt vor der Zeichnung (MA-05)', () => {
+    const mitFoto: ImageSlot = { motif: 'Beispielfoto: Fahrzeugschein', ratio: '3/2', bild: { url: '/medien/schein.jpg', alt: 'Fahrzeugschein' } };
+    expect(beispielFuerFeld(mitFoto, 'fahrzeugschein')).toBe(mitFoto);
+    expect(beispielFuerFeld(beispiel, 'sonstiges')).toBe(beispiel);
+    expect(beispielFuerFeld(beispiel, 'schluessel-spitze').visual).toEqual({ generator: 'foto-beispiel', params: { motiv: 'schluesselspitze' } });
   });
 
   it('nimmt ohne Motivtext den Hinweis und hängt keinen doppelten Punkt an', () => {

@@ -17,11 +17,15 @@ const zustand: { artikel: StandardArticle[] } = { artikel: [] };
 vi.mock('@/lib/data', () => ({
   getPageContent: async () => null,
   getCollection: async () => zustand.artikel,
+  getKategorien: async () => (await import('@/lib/data/defaults')).defaults.kategorien(),
 }));
 
 const { default: Seite } = await import('./page');
 
-function artikel(id: string, felder: { availability?: Verfuegbarkeit; example?: boolean } = {}): StandardArticle {
+function artikel(
+  id: string,
+  felder: { availability?: Verfuegbarkeit; example?: boolean; categoryId?: string; fahrzeugteil?: unknown } = {},
+): StandardArticle {
   return {
     id,
     slug: id,
@@ -108,5 +112,26 @@ describe('Artikelübersicht', () => {
     const html = await seite();
     expect(html).toContain('Auf Anfrage');
     expect(html).toContain(ANFRAGE);
+  });
+
+  it('zeigt nur Artikel ihrer Kategorie und ohne Kategorie, keine Gehäuseteile (FA-10-10)', async () => {
+    zustand.artikel = [
+      artikel('ohne'),
+      artikel('zubehoer', { categoryId: 'schliesstechnik-und-zubehoer' }),
+      artikel('teil', { fahrzeugteil: { teileart: 'gehaeuse' } }),
+      artikel('fremd', { categoryId: 'autoschluesselgehaeuse' }),
+    ];
+    const html = await seite();
+    expect(html).toContain('Testartikel ohne');
+    expect(html).toContain('Testartikel zubehoer');
+    expect(html).not.toContain('Testartikel teil');
+    expect(html).not.toContain('Testartikel fremd');
+  });
+
+  it('nur Gehäuseteile: Leerzustand mit Anfrage, keine Suchmaschinen', async () => {
+    const { generateMetadata } = await import('./page');
+    zustand.artikel = [artikel('teil', { fahrzeugteil: { teileart: 'gehaeuse' } })];
+    expect(await seite()).toContain('Hier gibt es gerade keine Artikel.');
+    expect((await generateMetadata()).robots).toEqual({ index: false, follow: true });
   });
 });

@@ -26,6 +26,7 @@ const NAMEN = [
   'stiftzuhaltung',
   'ablauf',
   'autoschluessel-aufbau',
+  'foto-beispiel',
 ];
 
 const GENERATOR_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'generators');

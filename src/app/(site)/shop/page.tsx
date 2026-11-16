@@ -39,6 +39,8 @@ export default async function ShopSeite() {
   const unterCode = codeKategorien(alle, lines).filter((k) => k.lines.length > 0);
   // Je Kategorie nur ihre eigenen Produkte, Unterkategorien eingeschlossen.
   const anzahlen = anzahlJeKategorie(alle, haupt, { codeprodukte: lines, artikel });
+  // Die erste Artikel-Kategorie hat ihre Liste unter /artikel, weitere ihre eigene (FA-10-11).
+  const ersteArtikelId = haupt.find((k) => k.art === 'artikel')?.id;
 
   return (
     <>
@@ -57,7 +59,7 @@ export default async function ShopSeite() {
         <ol className="mt-8 border-t border-border">
           {haupt.map((kategorie, index) => {
             const zahl = anzahlen.get(kategorie.id) ?? 0;
-            const weg = kategorieWeg(kategorie, zahl);
+            const weg = kategorieWeg(kategorie, zahl, kategorie.id === ersteArtikelId);
             const unter = kategorie.art === 'codeprodukte' ? unterCode.filter((k) => k.kategorie.eltern === kategorie.id) : [];
             return (
               <li key={kategorie.id} id={kategorie.slug} className="scroll-mt-28 border-b border-border py-6">

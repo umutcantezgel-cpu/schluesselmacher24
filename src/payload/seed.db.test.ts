@@ -158,7 +158,17 @@ describe('Beispiel-Einträge (A-046)', () => {
     expect(process.env.SM24_BEISPIELE).toBe('1');
     const muster = (await dateien.read('codeLines'))[0];
     const artikel = defaults.standardArticles()[0];
-    const linie = (id: string, example: boolean): CodeLine => ({ ...muster, id, slug: id, name: `Testlinie ${id}`, system: 'Testsystem', example });
+    // Echte Linien brauchen Hersteller und Codebereich zum Veröffentlichen (FA-SHOP-05).
+    const linie = (id: string, example: boolean): CodeLine => ({
+      ...muster,
+      id,
+      slug: id,
+      name: `Testlinie ${id}`,
+      system: 'Testsystem',
+      manufacturer: 'Testhersteller',
+      codeRange: '0001 bis 9999',
+      example,
+    });
     const ware = (id: string, example: boolean): StandardArticle => ({ ...artikel, id, slug: id, name: `Testartikel ${id}`, example });
     const quelle: InhaltsQuelle = {
       async read<K extends CollectionName>(name: K): Promise<Collections[K]> {

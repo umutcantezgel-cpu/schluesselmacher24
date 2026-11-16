@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { defaults } from '../../lib/data/defaults';
 import { Hersteller } from './Hersteller';
 import { KATEGORIE_ARTEN, Kategorien, ZIEL_MUSTER, adresseAusName, alteAdresseMerken } from './Kategorien';
-import { Produkte, VERFUEGBARKEIT_OPTIONEN, systemPruefen, vorschauPfad } from './Produkte';
+import { Produkte, VERFUEGBARKEIT_OPTIONEN, codebereichPruefen, herstellerPruefen, systemPruefen, vorschauPfad } from './Produkte';
 
 /* Shop-Grundlage (FA-SHOP-01): Regeln der Sammlungen ohne Datenbank. Gegen die Datenbank: src/payload/shop-grundlage.db.test.ts. */
 
@@ -16,6 +16,30 @@ describe('Produkte', () => {
     expect(systemPruefen('System T', { data: { typ: 'code_key' } })).toBe(true);
     expect(systemPruefen('', { data: { typ: 'standard' } })).toBe(true);
     expect(systemPruefen('', { data: { typ: 'code_key', beispiel: true } })).toBe(true);
+  });
+
+  it('verlangt Hersteller und Codebereich bei echten Codeprodukten, nicht bei Artikeln und Beispielen (FA-11-07, FA-11-09)', () => {
+    const code = { typ: 'code_key' };
+    // Hersteller: Auswahl aus dem Stamm (Kennung oder geladenes Dokument) oder der ältere Freitext.
+    expect(herstellerPruefen(null, { data: code })).toMatch(/Hersteller/);
+    expect(herstellerPruefen(undefined, { data: { ...code, hersteller: '  ' } })).toMatch(/Hersteller/);
+    expect(herstellerPruefen(null, { data: { ...code, hersteller: '[Hersteller eintragen]' } })).toMatch(/Hersteller/);
+    expect(herstellerPruefen(3, { data: code })).toBe(true);
+    expect(herstellerPruefen({ id: 3, name: 'Testwerk' }, { data: code })).toBe(true);
+    expect(herstellerPruefen(null, { data: { ...code, hersteller: 'Testwerk' } })).toBe(true);
+    expect(herstellerPruefen(null, { data: { typ: 'standard' } })).toBe(true);
+    expect(herstellerPruefen(null, { data: { ...code, beispiel: true } })).toBe(true);
+    // Codebereich: Text, kein Platzhalter.
+    expect(codebereichPruefen('', { data: code })).toMatch(/Codebereich/);
+    expect(codebereichPruefen(' ', { data: code })).toMatch(/Codebereich/);
+    expect(codebereichPruefen('[Codebereich]', { data: code })).toMatch(/Codebereich/);
+    expect(codebereichPruefen('1 bis 999', { data: code })).toBe(true);
+    expect(codebereichPruefen(undefined, { data: { typ: 'standard' } })).toBe(true);
+    expect(codebereichPruefen(undefined, { data: { ...code, beispiel: true } })).toBe(true);
+    // Klare Meldung ohne Gedankenstrich.
+    for (const meldung of [herstellerPruefen(null, { data: code }), codebereichPruefen('', { data: code })]) {
+      expect(meldung).not.toMatch(/[–—]/);
+    }
   });
 
   it('öffnet als Vorschau die Seite des Artikels', () => {

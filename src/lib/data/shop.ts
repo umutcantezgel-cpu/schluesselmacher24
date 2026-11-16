@@ -136,6 +136,83 @@ export function produkteDesHerstellers<T extends { manufacturerId?: string; manu
   );
 }
 
+/* ---------- Artikel je Kategorie (FA-10-10, FA-10-11) --------------------- */
+
+/** Adresse der Liste der ersten Artikel-Kategorie („Schließtechnik und Zubehör“). */
+export const ARTIKEL_PFAD = '/artikel';
+/** Adressen der Listen aller weiteren Artikel-Kategorien und der Unterkategorien. */
+export const ARTIKEL_KATEGORIE_PFAD = '/artikel/kategorie';
+
+/** Erste sichtbare Hauptkategorie mit der Art „artikel“; ihre Liste ist `/artikel`. */
+export function ersteArtikelKategorie(kategorien: ShopKategorie[]): ShopKategorie | undefined {
+  return sichtbareKategorien(kategorien).find((k) => !k.eltern && k.art === 'artikel');
+}
+
+/**
+ * Artikel einer Kategorie: ihre eigenen und die ihrer Unterkategorien (über alle Ebenen). Artikel ohne
+ * Kategorie gehören nur zur ersten Artikel-Kategorie (`ohneKategorie`). Fahrzeugteile stehen nie hier;
+ * sie haben ihre eigene Liste der Gehäuse und Ersatzteile. Dieselbe Regel zählt im Shop und zeigt die Liste.
+ */
+export function artikelDerKategorie<T extends { categoryId?: string; fahrzeugteil?: unknown }>(
+  kategorien: ShopKategorie[],
+  artikel: T[],
+  kategorieId: string,
+  ohneKategorie: boolean,
+): T[] {
+  return artikel.filter((a) => {
+    if (a.fahrzeugteil) return false;
+    if (!a.categoryId) return ohneKategorie;
+    return kategorieKette(kategorien, a.categoryId).some((glied) => glied.id === kategorieId);
+  });
+}
+
+/**
+ * Sichtbare Kategorien mit eigener Artikelliste unter `/artikel/kategorie/…`: jede weitere Hauptkategorie
+ * mit der Art „artikel“ und jede Unterkategorie einer Artikel-Hauptkategorie. Die erste Artikel-Kategorie
+ * hat ihre Liste unter `/artikel` und gehört nicht dazu.
+ */
+export function artikelListenKategorien(kategorien: ShopKategorie[]): ShopKategorie[] {
+  const erste = ersteArtikelKategorie(kategorien);
+  return sichtbareKategorien(kategorien).filter((k) => {
+    if (k.id === erste?.id) return false;
+    return kategorieKette(kategorien, k.id)[0]?.art === 'artikel';
+  });
+}
+
+/** Adresse der Artikelliste einer Kategorie: `/artikel` für die erste Artikel-Kategorie, sonst ihre eigene. */
+export function artikelListePfad(kategorie: Pick<ShopKategorie, 'id' | 'slug'>, ersteId: string | undefined): string {
+  return kategorie.id === ersteId ? ARTIKEL_PFAD : `${ARTIKEL_KATEGORIE_PFAD}/${kategorie.slug}`;
+}
+
+/** Sichtbare direkte Unterkategorien mit mindestens einem Artikel, mit Adresse ihrer Liste und Zahl der Artikel. */
+export function artikelUnterkategorien<T extends { categoryId?: string; fahrzeugteil?: unknown }>(
+  kategorien: ShopKategorie[],
+  elternId: string,
+  artikel: T[],
+): Array<{ kategorie: ShopKategorie; href: string; anzahl: number }> {
+  return unterkategorien(kategorien, elternId)
+    .filter((k) => kategorieSichtbar(kategorien, k))
+    .map((kategorie) => ({
+      kategorie,
+      href: artikelListePfad(kategorie, undefined),
+      anzahl: artikelDerKategorie(kategorien, artikel, kategorie.id, false).length,
+    }))
+    .filter((eintrag) => eintrag.anzahl > 0);
+}
+
+/**
+ * Kette der sichtbaren Artikel-Kategorien eines Artikels für die Brotkrumen, von der Hauptkategorie bis zur
+ * Kategorie des Artikels. Leer, wenn der Artikel keine Kategorie hat oder sie verborgen ist oder nicht zu
+ * einer Artikel-Hauptkategorie gehört.
+ */
+export function artikelKategorieKette(kategorien: ShopKategorie[], categoryId: string | undefined): ShopKategorie[] {
+  if (!categoryId) return [];
+  const kette = kategorieKette(kategorien, categoryId);
+  const ziel = kette[kette.length - 1];
+  if (!ziel || kette[0]?.eltern || kette[0]?.art !== 'artikel' || !kategorieSichtbar(kategorien, ziel)) return [];
+  return kette;
+}
+
 /** Nur Produkte dieser Kategorie (ohne Unterkategorien). */
 export function produkteDerKategorie<T extends { categoryId?: string }>(produkte: T[], kategorieId: string): T[] {
   return produkte.filter((p) => p.categoryId === kategorieId);

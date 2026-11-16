@@ -20,6 +20,7 @@ import type {
   Settings,
   VehicleMake,
 } from '@/lib/types';
+import { artikelKategorieBeschreibung, artikelKategorieTitel } from '@/lib/artikel';
 import { codelinienFamilie, herstellerMitSeite } from '@/lib/codelinie';
 import { codelinienTexte, herstellerTexte, kategorieTexte } from '@/lib/codelinie-texte';
 import { ERREICHBARKEIT_STANDARD, erreichbarkeit, erreichbarkeitSatz } from '@/lib/erreichbarkeit';
@@ -536,6 +537,27 @@ describe('Feste Metadaten und Rückfälle der übrigen Seiten (FA-SEO-01B)', () 
     ];
     expect(doppelte(titel)).toEqual([]);
     expect(doppelte(beschreibungen)).toEqual([]);
+  });
+});
+
+describe('Artikelliste je Kategorie /artikel/kategorie/… (FA-10-10, FA-10-11)', () => {
+  // Titel ist der Name der Kategorie aus den Daten; die Beschreibung kommt ohne eigene Angabe aus artikelKategorieBeschreibung.
+  const namen = ['Weitere Sicherheitstechnik', 'Schließtechnik und Zubehör', 'Beschläge', 'Türschließer und Zubehör für Haustüren'];
+
+  it.each(namen.flatMap((name) => [true, false].map((direktkauf) => ({ name, direktkauf }))))(
+    '$name (Direktkauf $direktkauf): Titel und Beschreibung in den Grenzen',
+    ({ name, direktkauf }) => {
+      const beschreibung = artikelKategorieBeschreibung(name, direktkauf);
+      pruefeSuchtexte(`artikel/kategorie ${name}`, artikelKategorieTitel(name), beschreibung);
+      if (!direktkauf) expect(beschreibung).not.toMatch(/bestellen|Staffelpreis/);
+    },
+  );
+
+  it('ein sehr langer Name wird an einer Wortgrenze gekürzt, nie über 160 Zeichen', () => {
+    const beschreibung = artikelKategorieBeschreibung('Sehr lange Kategorie mit vielen Wörtern für Schlösser, Beschläge und Zubehör aller Art', true);
+    expect(zeichen(beschreibung)).toBeLessThanOrEqual(BESCHR_MAX);
+    expect(artikelKategorieTitel('Weitere Sicherheitstechnik')).toBe('Weitere Sicherheitstechnik');
+    expect(artikelKategorieTitel('Türschließer und Zubehör für Haustüren')).toBe('Türschließer und Zubehör');
   });
 });
 

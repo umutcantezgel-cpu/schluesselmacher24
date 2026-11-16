@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { submitRecord } from '@/lib/actions/records';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import { scrollVerhalten } from '@/lib/bewegung';
-import type { InfoHint, SummarySection } from '@/lib/types';
+import type { InfoHint, SummarySection, UploadRef } from '@/lib/types';
 import { aktionMelden } from '@/lib/statistik';
 import { Alert } from '@/components/ui/alert';
 import { FlowShell } from '@/components/flow/flow-shell';
@@ -17,12 +17,14 @@ import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
 import type { HilfeKontakt } from '@/components/forms/hilfe-daten';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
+import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { SummaryList } from '@/components/layout/summary-list';
 import { WegBestaetigung } from '@/components/weg/bestaetigung';
 import { SCHRITTE_ZUTRITT } from '@/lib/wege/naechste-schritte';
 
 /* ==========================================================================
-   Zutrittskonfigurator — acht Abfragen, danach Zusammenfassung.
+   Zutrittskonfigurator — acht Abfragen, ein freiwilliger Schritt für Grundriss
+   und Fotos (FA-27-10), danach Zusammenfassung.
    Erfasst wird ausschließlich der Bedarf. Preise, Systeme und Produkte
    werden hier bewusst nicht genannt; sie gehören ins spätere Angebot.
    ========================================================================== */
@@ -442,6 +444,12 @@ const STEPS: FlowStep[] = [
     hint: 'Mehrfachauswahl möglich.',
   },
   {
+    id: 'unterlagen',
+    short: 'Unterlagen',
+    title: '9. Grundriss und Fotos hochladen',
+    hint: 'Freiwillig, aber hilfreich: Mit Grundriss und Fotos der Türen können wir die Türsituation genauer einschätzen.',
+  },
+  {
     id: 'zusammenfassung',
     short: 'Absenden',
     title: 'Zusammenfassung und Kontakt',
@@ -534,13 +542,26 @@ function optionalRow(label: string, value: string) {
   return trimmed ? [{ label, value: trimmed }] : [];
 }
 
-/** Die acht Abfragen als strukturierte Zusammenfassung. */
 /** Nutzlast des Vorgangs: abhängige Felder nur, wenn ihre Frage gestellt wurde. */
 export function buildPayload(data: ZutrittData): ZutrittData {
   return fragtZuwachs(data.erweiterung) ? { ...data } : { ...data, erweiterungUmfang: '' };
 }
 
-export function buildAnswerSummary(data: ZutrittData): SummarySection[] {
+/** Anzahl der gewählten Dateien im Schritt „Unterlagen“ (FA-27-10). */
+export interface ZutrittDateien {
+  grundriss: number;
+  fotos: number;
+}
+
+const KEINE_DATEIEN: ZutrittDateien = { grundriss: 0, fotos: 0 };
+
+function dateienText(anzahl: number, ohne: string): string {
+  if (anzahl <= 0) return ohne;
+  return anzahl === 1 ? '1 Datei' : `${anzahl} Dateien`;
+}
+
+/** Die acht Abfragen und die Unterlagen als strukturierte Zusammenfassung. */
+export function buildAnswerSummary(data: ZutrittData, dateien: ZutrittDateien = KEINE_DATEIEN): SummarySection[] {
   return [
     {
       title: '1. Objekt',
@@ -591,6 +612,24 @@ export function buildAnswerSummary(data: ZutrittData): SummarySection[] {
         ...optionalRow('Ergänzung', data.serviceNotiz),
       ],
     },
+    {
+      title: '9. Unterlagen',
+      rows: [
+        { label: 'Grundriss', value: dateienText(dateien.grundriss, 'Nicht hochgeladen') },
+        { label: 'Fotos von Türen und Bestand', value: dateienText(dateien.fotos, 'Nicht hochgeladen') },
+      ],
+    },
+  ];
+}
+
+/**
+ * Dateien für das Absenden: Grundriss als `grundriss`, Fotos als `objektfoto`. Ohne Steckplatz wie im
+ * Sicherheitscheck; was gespeichert wird, ordnet der Server über Kennung und Einmal-Schlüssel zu.
+ */
+export function zutrittUploads(grundrisse: PickedFile[], fotos: PickedFile[]): Array<Omit<UploadRef, 'id' | 'uploadedAt'>> {
+  return [
+    ...grundrisse.map((file) => alsUpload(file, 'grundriss')),
+    ...fotos.map((file) => alsUpload(file, 'objektfoto')),
   ];
 }
 
@@ -661,8 +700,17 @@ interface SubmitState {
   notices: string[];
 }
 
-export function ZutrittKonfigurator({ hilfe }: { hilfe?: HilfeKontakt }) {
+export interface ZutrittKonfiguratorProps {
+  hilfe?: HilfeKontakt;
+  /** Aufbewahrungsfristen aus den Einstellungen, in Tagen (wie im Sicherheitscheck). */
+  retention: { floorPlans: number; objectPhotos: number };
+}
+
+export function ZutrittKonfigurator({ hilfe, retention }: ZutrittKonfiguratorProps) {
   const schutz = useFormularSchutz();
+  // Dateien liegen nur im Browser-Zustand; die Rückfrage vor dem Verlassen nennt sie (mitDateien).
+  const [grundrisse, setGrundrisse] = useState<PickedFile[]>([]);
+  const [fotos, setFotos] = useState<PickedFile[]>([]);
 
   const flow = useFlow<ZutrittData>({
     id: FLOW_ID,
@@ -686,7 +734,7 @@ export function ZutrittKonfigurator({ hilfe }: { hilfe?: HilfeKontakt }) {
     [data, set],
   );
 
-  const answerSummary = buildAnswerSummary(data);
+  const answerSummary = buildAnswerSummary(data, { grundriss: grundrisse.length, fotos: fotos.length });
 
   async function handleSubmit() {
     setSubmitting(true);
@@ -695,6 +743,8 @@ export function ZutrittKonfigurator({ hilfe }: { hilfe?: HilfeKontakt }) {
     // Ohne Verbindung bleibt es nicht beim drehenden Knopf: Meldung, Angaben bleiben (FA-QA-02).
     let response: Awaited<ReturnType<typeof submitRecord>>;
     try {
+      // Laufende Uploads abschließen, damit ihre Kennungen mitgehen.
+      await uploadsAbwarten();
       response = await submitRecord({
         schutz: await schutz.daten(),
         kind: 'projekt',
@@ -713,7 +763,7 @@ export function ZutrittKonfigurator({ hilfe }: { hilfe?: HilfeKontakt }) {
         },
         payload: { ...buildPayload(data) },
         summary: [...answerSummary, buildContactSummary(data)],
-        uploads: [],
+        uploads: zutrittUploads(grundrisse, fotos),
       });
     } catch {
       setSubmitting(false);
@@ -769,6 +819,8 @@ export function ZutrittKonfigurator({ hilfe }: { hilfe?: HilfeKontakt }) {
       onSubmit={handleSubmit}
       submitting={submitting}
       blockedHint={BLOCKED_HINTS[flow.step?.id ?? '']}
+      ungesichert={grundrisse.length > 0 || fotos.length > 0}
+      mitDateien
     >
       {error && <AbsendeFehler fehler={error} hilfe={hilfe} titel="Übermittlung nicht möglich" />}
 
@@ -1100,7 +1152,49 @@ export function ZutrittKonfigurator({ hilfe }: { hilfe?: HilfeKontakt }) {
         </div>
       )}
 
-      {/* 9 Zusammenfassung und Kontakt */}
+      {/* 9 Unterlagen (FA-27-10): freiwillig, „Weiter“ geht auch ohne Datei */}
+      {flow.step?.id === 'unterlagen' && (
+        <div className="space-y-8">
+          <PhotoUpload
+            category="grundriss"
+            id="zutritt-grundriss"
+            label="Grundriss oder Lageplan"
+            description={`Als Foto oder PDF, gern mit eingezeichneten Türen. Wir bewahren Grundrisse ${retention.floorPlans} Tage auf.`}
+            example={{
+              motif: 'Beispiel: Grundriss einer Etage mit eingezeichneten Türen, gut lesbar abfotografiert',
+              ratio: '4/3',
+            }}
+            files={grundrisse}
+            onChange={setGrundrisse}
+            multiple
+            maxFiles={4}
+            allowDocuments
+          />
+
+          <PhotoUpload
+            category="objektfoto"
+            id="zutritt-fotos"
+            label="Fotos von Türen und Bestand"
+            description={`Die Türen, die elektronisch werden sollen, und vorhandene Schlösser, Zylinder oder Leser. Wir bewahren Fotos ${retention.objectPhotos} Tage auf.`}
+            example={{
+              motif: 'Beispielfoto: ganze Tür mit Schloss und Beschlag, gut ausgeleuchtet',
+              ratio: '4/3',
+            }}
+            files={fotos}
+            onChange={setFotos}
+            multiple
+            maxFiles={6}
+          />
+
+          <Alert tone="info" title="Hochladen ist freiwillig">
+            Ohne Unterlagen geht es auch weiter. Wir klären die offenen Punkte dann telefonisch oder
+            bei einem Termin vor Ort.
+          </Alert>
+          <HilfeBlock hilfe={hilfe} stelle="unterlagen" titel="Unsicher, was Sie hochladen sollen?" spaeter mitDateien />
+        </div>
+      )}
+
+      {/* 10 Zusammenfassung und Kontakt */}
       {flow.step?.id === 'zusammenfassung' && (
         <div className="space-y-8">
           <section className="border-t border-border pt-6">

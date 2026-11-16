@@ -23,6 +23,7 @@ import {
   kategoriePfad,
 } from '@/lib/codelinie';
 import { fahrzeugteile } from '@/lib/data/fahrzeugteile';
+import { artikelDerKategorie, artikelListePfad, artikelListenKategorien, ersteArtikelKategorie } from '@/lib/data/shop';
 import { markeIndexierbar, modellIndexierbar } from '@/lib/fahrzeug-texte';
 import { KLASSE_RUBRIK } from '@/components/fahrzeug-anfrage/seiten';
 import { ANFRAGE_FORMULAR, FORMULAR_KLASSEN, type FormularKlasse } from '@/lib/fahrzeuge/anfrage-klassen';
@@ -37,7 +38,7 @@ const siteUrl = getSiteUrl();
  * Feste Seiten. Neue Routen hier ergänzen. Seiten mit noindex (Impressum,
  * Datenschutz, AGB, Widerruf, Cookie-Einstellungen, Terminstatus, Kasse)
  * gehören nicht hierher — sonst widersprechen sich Sitemap und Seite.
- * `/artikel` kommt nur hinzu, wenn es echte (indexierbare) Artikel gibt.
+ * `/artikel` und die Listen je Artikel-Kategorie kommen nur hinzu, wenn sie echte (indexierbare) Artikel zeigen.
  */
 const STATIC_ROUTES: Array<{ path: string; priority: number }> = [
   { path: '', priority: 1 },
@@ -215,9 +216,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   const echteArtikel = articles.filter(istIndexierbar);
+  // Artikellisten je Kategorie (FA-10-10, FA-10-11): dieselbe Regel wie die Seiten; ohne indexierbaren Artikel keine Adresse.
+  const ersteArtikel = ersteArtikelKategorie(kategorien);
   const artikelSeite = pages.find((page) => page.route === 'artikel');
-  if (echteArtikel.length > 0 && !artikelSeite?.seo.noindex) {
+  if (artikelDerKategorie(kategorien, echteArtikel, ersteArtikel?.id ?? '', true).length > 0 && !artikelSeite?.seo.noindex) {
     entries.push({ url: `${siteUrl}/artikel`, changeFrequency: 'weekly', priority: 0.7 });
+  }
+  for (const kategorie of artikelListenKategorien(kategorien)) {
+    if (kategorie.seo?.noindex || artikelDerKategorie(kategorien, echteArtikel, kategorie.id, false).length === 0) continue;
+    entries.push({ url: `${siteUrl}${artikelListePfad(kategorie, ersteArtikel?.id)}`, changeFrequency: 'weekly', priority: 0.6 });
   }
   // Liste der Gehäuse und Ersatzteile (FA-SHOP-02B): nur mit mindestens einem indexierbaren Teil, wie die Seite.
   const teileSeite = pages.find((page) => page.route === 'autoschluessel/gehaeuse/teile');

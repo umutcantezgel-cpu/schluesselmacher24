@@ -647,7 +647,7 @@ export default async function ElektronischeZutrittsloesungenPage() {
               nummer="03"
               eyebrow="So läuft Ihr Auftrag ab"
               title="Vom Bedarf zum Angebot"
-              lead="Der Konfigurator stellt acht Fragen zu Ihrem Objekt. Sie können jederzeit unterbrechen. Ihre Angaben bleiben im Browser gespeichert."
+              lead="Der Konfigurator stellt acht Fragen zu Ihrem Objekt. Sie können jederzeit unterbrechen. Ihre Angaben bleiben im Browser gespeichert; hochgeladene Dateien wählen Sie danach neu aus."
             />
 
             {/* Ablauf aus den Rubrikdaten (G-10, G-11) */}

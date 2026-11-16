@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { artikelAnfragePfad, istIndexierbar, sortiereArtikel } from '@/lib/artikel';
-import { istBestellbar } from '@/lib/data/shop';
-import { getCollection, getPageContent } from '@/lib/data';
+import { artikelDerKategorie, artikelUnterkategorien, ersteArtikelKategorie, istBestellbar } from '@/lib/data/shop';
+import { getCollection, getKategorien, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import type { NavLink } from '@/lib/navigation';
 import { ButtonLink } from '@/components/ui/button';
@@ -11,7 +11,6 @@ import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
 import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
-import { GlyphInfo } from '@/components/visual/glyphen/info';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { IconGleichschliessendeZylinder } from '@/components/visual/icons/gleichschliessende-zylinder';
 import { IconSchluesselNachCode } from '@/components/visual/icons/schluessel-nach-code';
@@ -19,6 +18,7 @@ import { IconWarenkorb } from '@/components/visual/icons/warenkorb';
 import { IconZahlung } from '@/components/visual/icons/zahlung';
 import { PreisHinweis } from '@/components/recht/preis-hinweis';
 
+import { BeispielHinweis, UnterkategorienListe, zuListenArtikel } from './artikel-ansicht';
 import { ArtikelListe, type ListenArtikel } from './artikel-liste';
 
 const ROUTE = 'artikel';
@@ -75,8 +75,25 @@ function WeiterIcon({ href }: { href: string }) {
   }
 }
 
+/**
+ * Artikel dieser Liste (FA-10-10): die erste sichtbare Hauptkategorie mit der Art „artikel“ („Schließtechnik
+ * und Zubehör“) samt Unterkategorien, dazu Artikel ohne Kategorie. Fahrzeugteile stehen in ihrer eigenen
+ * Liste. Dieselbe Regel zählt im Shop (`anzahlJeKategorie`).
+ */
+async function ladeArtikel() {
+  const [page, alle, kategorien] = await Promise.all([
+    getPageContent(ROUTE),
+    getCollection('standardArticles'),
+    getKategorien(),
+  ]);
+  const erste = ersteArtikelKategorie(kategorien);
+  const artikel = artikelDerKategorie(kategorien, alle, erste?.id ?? '', true);
+  const unter = erste ? artikelUnterkategorien(kategorien, erste.id, alle) : [];
+  return { page, artikel, erste, unter };
+}
+
 export async function generateMetadata(): Promise<Metadata> {
-  const [page, alle] = await Promise.all([getPageContent(ROUTE), getCollection('standardArticles')]);
+  const { page, artikel: alle } = await ladeArtikel();
   // Nur mit mindestens einem echten (indexierbaren) Artikel in Suchmaschinen — Beispielartikel
   // allein ergeben keine eigene Seite (Erg. Leitfaden §4, MENSCHEN M-25). Wie in der Sitemap.
   const indexierbar = !page?.seo.noindex && alle.some(istIndexierbar);
@@ -90,57 +107,26 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ArtikelPage() {
-  const [page, alle] = await Promise.all([
-    getPageContent(ROUTE),
-    getCollection('standardArticles'),
-  ]);
+  const { page, artikel: alle, erste, unter } = await ladeArtikel();
 
   // Beispielartikel kennt die Datenschicht hier nicht (A-046); ohne echte Artikel bleibt der Leerzustand.
   const articles = sortiereArtikel(alle);
   const beispiele = articles.filter((a) => a.example).length;
-  const nurBeispiele = articles.length > 0 && beispiele === articles.length;
   // Direktkauf in Kopfzeile, Unterzeile und Abschnitt nur mit mindestens einem bestellbaren Artikel (kein Beispiel, lieferbar).
   const direktkauf = articles.some(istBestellbar);
 
   // Nur die Felder, die die Karten brauchen, gehen an den Browser.
-  const liste: ListenArtikel[] = articles.map((a) => ({
-    id: a.id,
-    slug: a.slug,
-    name: a.name,
-    description: a.description,
-    manufacturer: a.manufacturer,
-    priceCents: a.priceCents,
-    bulkPrices: a.bulkPrices,
-    maxQty: a.maxQty,
-    image: a.image,
-    tags: a.tags,
-    example: a.example,
-    ...(a.availability ? { availability: a.availability } : {}),
-    deliveryTime: a.deliveryTime,
-  }));
+  const liste: ListenArtikel[] = articles.map(zuListenArtikel);
+  const anfragePfad = artikelAnfragePfad(erste?.name ?? 'Schließtechnik und Zubehör');
 
   const extraLinks: NavLink[] = (page?.seo.internalLinks ?? []).filter(
     (link) => link.href !== `/${ROUTE}` && !BASE_LINKS.some((base) => base.href === link.href),
   );
   const links = [...BASE_LINKS, ...extraLinks];
   const titel = page?.headline || TITEL;
-  const crumbs = [{ href: `/${ROUTE}`, label: TITEL }];
+  const crumbs = [{ href: '/shop', label: 'Shop' }, { href: `/${ROUTE}`, label: TITEL }];
 
-  // Beispielhinweis als Zeile mit Glyphe direkt über der Liste (K-006 „Flächen sparsam“), kein Kasten im Kopf.
-  const beispielHinweis = beispiele > 0 ? (
-    <div role="note" className="flex max-w-measure gap-3 text-small leading-relaxed">
-      <GlyphInfo size={18} className="mt-0.5 shrink-0 text-info" />
-      <div className="min-w-0">
-        <p className="font-semibold text-foreground">
-          {nurBeispiele ? 'Derzeit nur Beispielartikel' : 'Beispielartikel sind gekennzeichnet'}
-        </p>
-        <p className="text-foreground-muted">
-          Artikel mit dem Hinweis „Beispiel“ zeigen nur, wie Artikel hier dargestellt werden.
-          Preise und Angaben sind Beispielwerte. Diese Artikel können Sie nicht bestellen.
-        </p>
-      </div>
-    </div>
-  ) : null;
+  const beispielHinweis = beispiele > 0 ? <BeispielHinweis beispiele={beispiele} gesamt={articles.length} /> : null;
 
   return (
     <>
@@ -182,11 +168,12 @@ export default async function ArtikelPage() {
             {/* Ohne bestellbaren Artikel sagt der Kopf „fragen Sie an“: der Weg dorthin steht hier (keine Sackgasse). */}
             {!direktkauf && (
               <div className="mt-6">
-                <ButtonLink href={artikelAnfragePfad('Schließtechnik und Zubehör')} variant="outline">
+                <ButtonLink href={anfragePfad} variant="outline">
                   Artikel anfragen
                 </ButtonLink>
               </div>
             )}
+            <UnterkategorienListe eintraege={unter} />
             <PreisHinweis alle className="mt-4" />
             <ArtikelListe articles={liste} hinweis={beispielHinweis} className="mt-6" />
           </>
@@ -206,7 +193,7 @@ export default async function ArtikelPage() {
                 <ButtonLink href="/beratung" pfeil>
                   Zur Beratung
                 </ButtonLink>
-                <ButtonLink href={artikelAnfragePfad('Schließtechnik und Zubehör')} variant="outline">
+                <ButtonLink href={anfragePfad} variant="outline">
                   Artikel anfragen
                 </ButtonLink>
               </div>

@@ -6,6 +6,8 @@
 // Liest eine CSV (UTF-8, Trennzeichen Semikolon oder Komma) mit den Spalten
 //   hersteller, system, codebereich, beispielcode, codeformat, preis, staffel, max_stueck, hinweise,
 //   bild_datei, kategorie, quelle
+// und den freiwilligen Spalten schluesseltyp und einsatz (FA-11-18); fehlen sie, bleibt der Schlüsseltyp leer
+// und der Einsatzbereich heißt wie Hersteller und System.
 // Ohne Pfad sucht das Skript _werkstatt/ausbau/eingang/sortiment.csv. Vorlage mit zwei als Beispiel
 // gekennzeichneten Zeilen: _werkstatt/ausbau/erhebung/boegen/SORTIMENT-vorlage.csv.
 //
@@ -47,6 +49,8 @@ export const SPALTEN = [
   'kategorie',
   'quelle',
 ];
+/** Freiwillige Spalten (FA-11-18): Schlüsseltyp und Einsatzbereich. Die Tabelle darf sie weglassen. */
+export const FREIWILLIGE_SPALTEN = ['schluesseltyp', 'einsatz'];
 export const PFLICHT = ['hersteller', 'system', 'codebereich', 'beispielcode', 'codeformat', 'preis', 'max_stueck', 'quelle'];
 /** Höchstmenge je Bestellung, wie im Backend. */
 export const HOECHSTMENGE = 99;
@@ -369,8 +373,10 @@ export function pruefeSortiment(zeilen, { hersteller = [], kategorien = [] } = {
       manufacturerId: stamm.id,
       system: z.system,
       codeRange: z.codebereich,
-      application: `${stamm.name} ${z.system}`,
-      keyType: '',
+      // Einsatzbereich (Feld „Einsatzbereich“ im Backend) aus der Spalte einsatz, sonst wie bisher Hersteller und System.
+      application: z.einsatz || `${stamm.name} ${z.system}`,
+      // Schlüsseltyp (Feld „Schlüsseltyp“ im Backend) aus der Spalte schluesseltyp, sonst leer.
+      keyType: z.schluesseltyp ?? '',
       description: '',
       codeFormatLabel: formatBeschreibung(z.codeformat) ?? `Aufbau wie im Beispiel ${z.beispielcode}`,
       codePattern: z.codeformat,

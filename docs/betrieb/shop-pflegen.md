@@ -28,9 +28,9 @@ Vorher: Gibt es den Hersteller schon unter **Shop › Hersteller**? Wenn nicht, 
    - Den Haken **Beispielartikel** nicht setzen.
 3. Reiter **Artikel**:
    - **Name** und **Beschreibung** eintragen.
-   - **Hersteller** aus der Liste wählen.
-   - **System**: so, wie der Hersteller das Schließsystem nennt. Pflicht bei Codeprodukten.
-   - **Codebereich**: von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“.
+   - **Hersteller** aus der Liste wählen. Pflicht beim Veröffentlichen.
+   - **System**: so, wie der Hersteller das Schließsystem nennt. Pflicht beim Veröffentlichen.
+   - **Codebereich**: von bis oder Muster, wie der Hersteller es angibt, etwa „1 bis 999“. Pflicht beim Veröffentlichen.
    - **Schlüsseltyp**, **Einsatzbereich**, **Lieferumfang** und, falls bekannt, **Lieferzeit**.
 4. Reiter **Preis und Versand**: **Preis je Stück**, bei Bedarf **Mengenrabatte**, **Höchstmenge je Bestellung** und **Versandklasse**.
 5. Reiter **Code**:
@@ -42,6 +42,10 @@ Vorher: Gibt es den Hersteller schon unter **Shop › Hersteller**? Wenn nicht, 
 6. Reiter **Bilder**: **Produktbild** mit eigenem Foto.
 7. Reiter **Suchmaschinen**: Titel und Beschreibung, wenn Sie eigene Texte möchten.
 8. Unten **Entwurf speichern**. Wenn alles stimmt: **Veröffentlichen**.
+
+Pflichtangaben beim Veröffentlichen: Ein Codeprodukt lässt sich nur mit **Hersteller**, **System** und **Codebereich** veröffentlichen. Fehlt eine Angabe, ist das Feld rot markiert und darunter steht, was fehlt. Als Entwurf dürfen die Felder noch leer sein. Beispielartikel sind ausgenommen. Bei älteren Einträgen genügt als Hersteller auch der alte Freitext (Feld **Hersteller (alter Freitext)**). Platzhalter in eckigen Klammern wie „[Hersteller eintragen]“ zählen nicht.
+
+Ältere Codeprodukte, die schon veröffentlicht sind und eine dieser Angaben nicht haben, bleiben auf der Seite sichtbar. Speichern lassen sie sich aber erst wieder, wenn die fehlende Angabe eingetragen ist. Das gilt auch für kleine Änderungen wie den Preis: zuerst Hersteller oder Codebereich ergänzen, dann speichern.
 
 Auf der Seite stehen Codeprodukte nach Hersteller gruppiert, darunter nach System. Lieferzeit, System und Codebereich erscheinen in der Liste und auf der Seite des Produkts. Die Lieferzeit zeigt die Seite nur, solange das Produkt lieferbar ist.
 
@@ -67,6 +71,16 @@ So erscheinen die Kategorien auf der Seite:
 - Die Hauptkategorien mit Haken **Im Shop zeigen** stehen in ihrer Reihenfolge auf der Seite `/shop`. Jede führt auf ihr **Ziel**. Gibt es noch keine Produkte, steht dort der **Hinweis**, und der Knopf heißt **Anfragen**. Den Namen der Kategorie übernimmt nur die Anfrage zu einer Leistung (`/service-und-termin/anfrage`) und die Anfrage nach einem Artikel. Ein eigenes Ziel wie die Gehäuse-Anfrage öffnet sich ohne diese Vorbelegung.
 - Jede sichtbare Unterkategorie von **Schlüssel nach Code** hat eine eigene Seite unter `/schluessel-nach-code/kategorie/…`. Ohne Artikel zeigt sie den Hinweis und **Code anfragen** und erscheint nicht in Suchmaschinen. Ändern Sie die Adresse, leitet die frühere Adresse dauerhaft auf die neue weiter.
 - Ohne Haken bleibt die Kategorie samt Unterkategorien verborgen.
+
+So erscheinen die Kategorien für Standardartikel (Art „Artikel“):
+
+- Die Liste `/artikel` zeigt die Artikel der ersten Kategorie mit der Art „Artikel“ (heute „Schließtechnik und Zubehör“) und ihrer Unterkategorien, dazu alle Artikel ohne Kategorie. Die Zahl auf der Seite `/shop` zählt genau diese Artikel.
+- Gehäuse und Ersatzteile für Autoschlüssel (Artikel mit Angaben zum Fahrzeug) stehen nicht in dieser Liste, sondern nur in der Liste `/autoschluessel/gehaeuse/teile`.
+- Ein Artikel in einer Kategorie einer anderen Art (etwa „Autoschlüsselgehäuse“) erscheint in keiner Artikelliste. Wählen Sie für Standardartikel eine Kategorie mit der Art „Artikel“ oder lassen Sie das Feld leer.
+- Jede weitere sichtbare Kategorie mit der Art „Artikel“ und jede Unterkategorie davon hat eine eigene Liste unter `/artikel/kategorie/…` mit Name und Beschreibung der Kategorie. Ist dort als **Ziel** `/artikel` eingetragen oder nichts, führt der Knopf im Shop trotzdem auf diese eigene Liste. Ein anderes Ziel bleibt.
+- Die Liste einer Hauptkategorie verlinkt ihre Unterkategorien, sobald dort Artikel stehen.
+- Ohne Artikel zeigt die Liste den Hinweis und **Artikel anfragen**. Ohne echten Artikel (nur Beispiele oder keine) erscheint sie nicht in Suchmaschinen und nicht in der Sitemap.
+- Auf der Seite eines Artikels steht oben in der Pfadzeile seine Kategorie, etwa „Shop › Schließtechnik und Zubehör › Name des Artikels“.
 
 Ein Artikel kommt in eine Kategorie über das Feld **Kategorie** rechts im Artikel.
 
@@ -129,6 +143,9 @@ Viele Codeprodukte auf einmal, etwa die bestehenden Angebote, kommen über eine 
    - **hinweise**: wo der Code steht. **bild_datei**: Name des eigenen Fotos. Das Foto laden Sie danach im Backend hoch (Abschnitt 5).
    - **kategorie**: leer für „Schlüssel nach Code“ oder der Name einer ihrer Unterkategorien.
    - **quelle**: woher die Angaben stammen, etwa die Nummer Ihres eigenen Angebots. Pflicht.
+   - **schluesseltyp** freiwillig, etwa „Flachschlüssel“. Landet im Feld **Schlüsseltyp**.
+   - **einsatz** freiwillig, etwa „Briefkasten“. Landet im Feld **Einsatzbereich**. Leer bleibt dort wie bisher Hersteller und System.
+   - Die beiden freiwilligen Spalten dürfen in der Tabelle auch ganz fehlen.
 3. Als CSV (UTF-8, Semikolon) unter `_werkstatt/ausbau/eingang/sortiment.csv` speichern.
 4. Ein Entwickler oder der Betrieb ruft `node scripts/sortiment-import.mjs --trocken` auf. Das prüft nur. Ohne Meldung folgt `node scripts/sortiment-import.mjs`. Es schreibt die Angebote in `content/code-lines.json`. Dort stehen sie zunächst unsichtbar (`"active": false`): Kunden sehen noch nichts.
 5. `npm run seed` legt die neuen Angebote in der Datenbank als **Entwurf** an. Vorhandene Einträge bleiben unberührt.
