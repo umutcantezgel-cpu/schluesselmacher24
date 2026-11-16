@@ -7,7 +7,7 @@ Die Dateien in diesem Ordner sind aus zwei Quellen abgeleitet (FA-PLATTFORM-03, 
 | `gemeinden.json` | 10.751 Gemeinden: Amtlicher Gemeindeschlüssel, Regionalschlüssel, Name, Bezeichnung, Art, Adresse, Kreis, Land, Postleitzahl des Verwaltungssitzes, Mittelpunkt, Einwohner | Gemeindeverzeichnis |
 | `kreise.json` | 400 Kreise, kreisfreie Städte, Stadtkreise und der Regionalverband Saarbrücken | Gemeindeverzeichnis |
 | `postleitzahlen.json` | 10.815 Postleitzahlen: Ortsnamen, Kreise, Gemeindeschlüssel (nur eindeutige), Mittelpunkt | GeoNames, Schlüssel aus dem Gemeindeverzeichnis |
-| `prioritaet.json` | 348 Orte der Prioritätsliste des Inhabers mit Gemeindeschlüssel | Vorgabe des Inhabers (Anhang A), Schlüssel aus dem Gemeindeverzeichnis |
+| `prioritaet.json` | 348 Orte der Prioritätsliste des Inhabers mit Gemeindeschlüssel (offene Einträge ohne Schlüssel, mit Kandidaten) | Vorgabe des Inhabers (Anhang A), Schlüssel aus dem Gemeindeverzeichnis |
 
 ## Gemeindeverzeichnis (Statistisches Bundesamt)
 
@@ -22,7 +22,7 @@ Vermerk im Wortlaut des Blatts „Inhalt“:
 
 > © Daten (im Auftrag der Herausgebergemeinschaft Statistische Ämter des Bundes und der Länder) Statistisches Bundesamt (Destatis), 2026. Vervielfältigung und Verbreitung, auch auszugsweise, mit Quellenangabe gestattet.
 
-Quellenangabe auf Seiten: „Statistisches Bundesamt (Destatis), Gemeindeverzeichnis, Gebietsstand 31.12.2025“ (`ORTSSTAMM_QUELLEN.gemeinden` in `src/lib/orte/typen.ts`).
+Quellenangabe auf Seiten: „Statistisches Bundesamt (Destatis), Gemeindeverzeichnis, Gebietsstand 31.12.2025“ mit Link auf die Abrufseite oben (`ORTSSTAMM_QUELLEN.gemeinden` in `src/lib/orte/typen.ts`, Felder `text` und `url`).
 
 ## Postleitzahlen (GeoNames)
 
@@ -32,7 +32,7 @@ Quellenangabe auf Seiten: „Statistisches Bundesamt (Destatis), Gemeindeverzeic
 - Gewähr laut `readme.txt`: „provided "as is" without warranty or any representation of accuracy, timeliness or completeness“.
 - Übernommen: Postleitzahl, Ortsname, Kreisschlüssel (Feld admin code3), Koordinaten. Je Postleitzahl ist der Mittelpunkt das Mittel der Koordinaten ihrer Zeilen.
 
-Quellenangabe auf Seiten: „Postleitzahlen: GeoNames (www.geonames.org), CC BY 4.0“ mit Link auf https://www.geonames.org und auf die Lizenz (`ORTSSTAMM_QUELLEN.postleitzahlen`).
+Quellenangabe auf Seiten: „Postleitzahlen: GeoNames (www.geonames.org), CC BY 4.0“ mit Link auf https://www.geonames.org und auf die Lizenz (`ORTSSTAMM_QUELLEN.postleitzahlen`, Felder `text`, `url` und `lizenzUrl`).
 
 ## Veränderungshinweis
 
@@ -44,7 +44,7 @@ Aus beiden Quellen ausgewählt und neu angeordnet. Namen am ersten Komma in Name
 - Adresse (`slug`): aus dem Namen; tragen mehrere Gemeinden dieselbe, bekommt jede den Kreis als Zusatz (`muehlhausen-rhein-neckar-kreis`), heißt der Kreis wie die Gemeinde, das Land (`hof-bayern`), zuletzt den Schlüssel. Eine einmal vergebene Adresse bleibt bei jedem neuen Stand.
 - Postleitzahl zu Gemeinde: eindeutig nur, wenn der Kreis eine einzige Gemeinde hat (kreisfreie Städte, Berlin, Hamburg), der Ortsname im Kreis genau einer Gemeinde gleicht (auch ohne Klammerzusatz) oder es die Postleitzahl des Verwaltungssitzes ist. Stand 31.12.2025: 16.208 von 23.296 GeoNames-Zeilen eindeutig, 647 Zuordnungen über den Verwaltungssitz; 1.101 Postleitzahlen ohne Gemeindeschlüssel; 10.747 Gemeinden haben mindestens eine Postleitzahl.
 - Ortsteile führt das Gemeindeverzeichnis nicht. Ortsnamen aus GeoNames, die keiner Gemeinde gleichen, sind meist Ortsteile; sie stehen bei der Postleitzahl als Name, ohne Schlüssel. Auf einer Ortsseite bleiben Ortsteile freie Abschnitte.
-- Prioritätsliste: Namen des Anhangs je Land in der Reihenfolge des Inhabers; Schlüssel über den gleichen Namen im Land, den Namen ohne Klammerzusatz oder die geprüfte Tabelle `ZUORDNUNG_ANHANG_A` in `scripts/orte-import.mjs`. Was keine Regel trifft, steht mit Kandidaten als `offen` in der Datei und wird nicht geraten.
+- Prioritätsliste: Namen des Anhangs je Land in der Reihenfolge des Inhabers; Schlüssel über den gleichen Namen im Land, den Namen ohne Klammerzusatz oder die geprüfte Tabelle `ZUORDNUNG_ANHANG_A` in `scripts/orte-import.mjs`. Was keine Regel trifft, steht mit Kandidaten als `offen` in der Datei und wird nicht geraten. Ein Tabelleneintrag mit `bestaetigt: false` (Stand 31.12.2025: Amberg, zwei Gemeinden in Bayern) bleibt ebenfalls `offen` ohne Schlüssel, mit `vorschlag` und `kandidaten`, bis der Inhaber bestätigt.
 
 ## Aktualisierung
 

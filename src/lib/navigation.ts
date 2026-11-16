@@ -44,6 +44,8 @@ export const NAV_AREAS: NavArea[] = [
       label: 'Termin anfragen',
       description: 'Fahrzeug auswählen: geführter Ablauf mit Preisangabe, Anzahlung und Termin',
     },
+    // Höchstens zwei Spalten mit je vier Verweisen (MENUE_GRENZE, FA-26-02). „Marken und Modelle“
+    // steht als Rubrik „Autoschlüssel-Finder“ darüber; „Schlüsselbart fräsen“ steht auf der Bereichsseite.
     columns: [
       {
         title: 'Leistungen',
@@ -51,27 +53,21 @@ export const NAV_AREAS: NavArea[] = [
           { href: '/autoschluessel/nachmachen', label: 'Autoschlüssel nachmachen', description: 'Zweit- und Ersatzschlüssel' },
           { href: '/autoschluessel/programmieren', label: 'Programmieren und anlernen', description: 'Transponder, Funk, Smart Key' },
           { href: '/autoschluessel/kopieren', label: 'Autoschlüssel kopieren', description: 'Mechanische Kopie nach Vorlage' },
-          { href: '/autoschluessel/schluesselbart-fraesen', label: 'Schlüsselbart fräsen', description: 'Mechanische Fertigung' },
-        ],
-      },
-      {
-        title: 'Schlüsselarten',
-        links: [
-          { href: '/autoschluessel/funkschluessel', label: 'Funkschlüssel', description: 'Fernbedienung, Tasten, Ersatz' },
-          { href: '/autoschluessel/smart-key', label: 'Smart Key und Keyless', description: 'Schlüsselloser Zugang und Start' },
           { href: '/autoschluessel/fahrzeugoeffnung', label: 'Fahrzeugöffnung', description: 'Zerstörungsfrei öffnen' },
         ],
       },
       {
-        title: 'Fahrzeuge',
+        // Der Titel trägt beide Arten von Verweisen: zwei Schlüsselarten und zwei Fragen (FA-QA-04A, Nachbesserung).
+        title: 'Schlüsselarten und Hilfe',
         links: [
-          { href: '/autoschluessel/marken', label: 'Marken und Modelle', description: 'Was für Ihr Fahrzeug gilt' },
+          { href: '/autoschluessel/funkschluessel', label: 'Funkschlüssel', description: 'Fernbedienung, Tasten, Ersatz' },
+          { href: '/autoschluessel/smart-key', label: 'Smart Key und Keyless', description: 'Schlüsselloser Zugang und Start' },
+          { href: '/autoschluessel/schluesselverlust', label: 'Schlüssel verloren?', description: 'Ersatz und die richtige Reihenfolge' },
           {
             href: '/autoschluessel/fahrzeug-nicht-gefunden',
             label: 'Fahrzeug nicht gefunden?',
             description: 'Anfrage mit Fahrzeugschein und Fotos',
           },
-          { href: '/autoschluessel/schluesselverlust', label: 'Schlüssel verloren?', description: 'Ersatz und die richtige Reihenfolge' },
         ],
       },
     ],
@@ -112,11 +108,11 @@ export const NAV_AREAS: NavArea[] = [
       label: 'Schlüssel nach Code',
       description: 'Code nennen, wir fertigen danach',
     },
+    // „Schlüssel nach Code“ steht als gleichnamige Rubrik darüber (FA-QA-04A).
     columns: [
       {
         title: 'Shop',
         links: [
-          { href: '/schluessel-nach-code', label: 'Schlüssel nach Code', description: 'Übersicht und Code-Anfrage' },
           { href: '/shop', label: 'Alle Shop-Kategorien', description: 'Was Sie bestellen und was Sie anfragen können' },
           { href: '/ratgeber/schluesselcode-finden', label: 'Wo finde ich den Code?', description: 'Typische Fundstellen' },
           { href: '/rechtliches/versand-und-zahlung', label: 'Versand und Zahlung', description: 'Versandarten und Fristen' },
@@ -200,6 +196,8 @@ export const NAV_AREAS: NavArea[] = [
     href: '/tuer-und-schliesstechnik',
     summary: 'Zylinder, Schlösser, Beschläge und Türtechnik.',
     process: 'gefuehrte-anfrage',
+    // MENUE_GRENZE gilt für alle Bereiche (FA-26-02). „Türzusatzschlösser“ und „Montage und Anpassung“
+    // stehen mit allen Leistungen auf der Bereichsseite (Leistungsliste aus service-pages).
     columns: [
       {
         title: 'Schließtechnik',
@@ -208,7 +206,6 @@ export const NAV_AREAS: NavArea[] = [
           { href: '/tuer-und-schliesstechnik/einsteckschloesser', label: 'Einsteckschlösser' },
           { href: '/tuer-und-schliesstechnik/mehrfachverriegelungen', label: 'Mehrfachverriegelungen' },
           { href: '/tuer-und-schliesstechnik/schutzbeschlaege', label: 'Schutzbeschläge' },
-          { href: '/tuer-und-schliesstechnik/tuerzusatzschloesser', label: 'Türzusatzschlösser' },
         ],
       },
       {
@@ -218,7 +215,6 @@ export const NAV_AREAS: NavArea[] = [
           { href: '/tuer-und-schliesstechnik/panik-und-fluchttuertechnik', label: 'Panik- und Fluchttürtechnik' },
           { href: '/tuer-und-schliesstechnik/reparatur-und-austausch', label: 'Reparatur und Austausch' },
           { href: '/tuer-und-schliesstechnik/technische-beratung', label: 'Technische Beratung' },
-          { href: '/tuer-und-schliesstechnik/montage-und-anpassung', label: 'Montage und Anpassung' },
         ],
       },
     ],
@@ -314,6 +310,11 @@ export interface NavGruppe {
   hinweis?: NavLink;
   /** Weitere Seiten ohne Rubrik (nur „Mehr“). */
   weitere: NavLink[];
+  /**
+   * Seite des Bereichs, unter der die Gruppe auch ohne eigenen Menüeintrag als aktiv gilt: bei
+   * „Mehr“ Service und Termin mit Terminstatus und Anfrage (seit FA-QA-04A nicht mehr unter „Außerdem“).
+   */
+  bereichHref?: string;
 }
 
 /** Weitere Seiten unter „Mehr“ (G-08). „Über uns“ folgt mit seiner Seite (E8-AUTOR-02). */
@@ -321,9 +322,16 @@ export const MEHR_LINKS: NavLink[] = [
   { href: '/shop', label: 'Shop', description: 'Alle Kategorien im Überblick' },
   { href: '/partner-werden', label: 'Partner werden', description: 'Für Autoschlüssel-Fachbetriebe aus ganz Deutschland' },
   { href: '/ratgeber', label: 'Ratgeber und Anleitungen' },
-  { href: '/service-und-termin', label: 'Service und Termin', description: 'Terminstatus, Vor-Ort-Einsatz und Ablauf' },
   { href: '/service-und-termin/kontakt', label: 'Kontakt' },
 ];
+
+/**
+ * Obergrenze des Menüs je Gruppe der Kopfzeile (FA-26-02, „keine überladene Navigation“):
+ * höchstens zwei Spalten mit je höchstens vier Verweisen, dazu der hervorgehobene nächste Schritt
+ * und die Rubriken aus den Daten. „Außerdem“ unter „Mehr“ zählt als eine Spalte. Was hier keinen
+ * Platz hat, steht auf der Seite des Bereichs.
+ */
+export const MENUE_GRENZE = { spalten: 2, verweiseJeSpalte: 4 } as const;
 
 /** Zwischenzeile der Fahrzeugklassen in der Gruppe „Autoschlüssel“ (FA-03, A-052). */
 export const WEITERE_FAHRZEUGE = 'Weitere Fahrzeuge';
@@ -396,6 +404,7 @@ export function navigationsGruppen(rubriken: readonly Rubrik[]): NavGruppe[] {
       spalten: bereich?.columns ?? [],
       hinweis: bereich?.highlight,
       weitere: aufbau.key === 'mehr' ? MEHR_LINKS : [],
+      bereichHref: areaByKey(aufbau.bereich)?.href,
     };
   });
 }
@@ -461,6 +470,13 @@ export function istAktiv(pathname: string, href: string): boolean {
   const ziel = href.replace(/\/+$/, '') || '/';
   if (ziel === '/') return pfad === '/';
   return pfad === ziel || pfad.startsWith(`${ziel}/`);
+}
+
+/** Ob die Seite zu einer Gruppe gehört: Gruppenseite, Seite ihres Bereichs oder eine ihrer Rubriken und weiteren Seiten. */
+export function gruppeAktiv(pathname: string, gruppe: NavGruppe): boolean {
+  if (gruppe.href && istAktiv(pathname, gruppe.href)) return true;
+  if (gruppe.bereichHref && istAktiv(pathname, gruppe.bereichHref)) return true;
+  return gruppe.rubriken.some((r) => istAktiv(pathname, r.href)) || gruppe.weitere.some((l) => istAktiv(pathname, l.href));
 }
 
 /** Der Eintrag, zu dem `pathname` am genauesten passt (längster Treffer), sonst `undefined`. */

@@ -192,7 +192,7 @@ export function FlowShell<T extends object>({
       disabled={i > flow.stepIndex}
       aria-current={i === flow.stepIndex ? 'step' : undefined}
       className={cn(
-        'inline-flex min-h-8 items-center gap-1.5 text-small font-semibold transition-colors duration-quick ease-standard',
+        'inline-flex min-h-touch items-center gap-1.5 text-small font-semibold transition-colors duration-quick ease-standard',
         i === flow.stepIndex && 'text-primary',
         i < flow.stepIndex && 'text-foreground-muted hover:text-primary',
         i > flow.stepIndex && 'cursor-default text-foreground-subtle',
@@ -220,7 +220,7 @@ export function FlowShell<T extends object>({
               disabled={e.von > flow.stepIndex || jetzt}
               aria-current={jetzt ? 'step' : undefined}
               className={cn(
-                'inline-flex min-h-touch items-center gap-2 text-small font-semibold transition-colors duration-quick ease-standard md:min-h-8',
+                'inline-flex min-h-touch items-center gap-2 text-small font-semibold transition-colors duration-quick ease-standard',
                 jetzt && 'text-primary',
                 fertig && 'text-foreground-muted hover:text-primary',
                 !jetzt && !fertig && 'cursor-default text-foreground-subtle',
@@ -266,7 +266,7 @@ export function FlowShell<T extends object>({
             disabled={i > flow.stepIndex}
             aria-current={i === flow.stepIndex ? 'step' : undefined}
             className={cn(
-              'inline-flex min-h-8 items-center gap-1.5 text-small font-semibold transition-colors duration-quick ease-standard',
+              'inline-flex min-h-touch items-center gap-1.5 text-small font-semibold transition-colors duration-quick ease-standard',
               i === flow.stepIndex && 'text-primary',
               i < flow.stepIndex && 'text-foreground-muted hover:text-primary',
               i > flow.stepIndex && 'cursor-default text-foreground-subtle',

@@ -3,7 +3,7 @@
   "hinweis": "Start- und Prioritätsliste für Ortsseiten und Partnergewinnung, keine Obergrenze. Aus ihr entsteht keine Seite automatisch. zuordnung: name, ohne-klammer, tabelle (geprüfte Tabelle in scripts/orte-import.mjs) oder offen (für Menschen).",
   "gebietsstand": "31.12.2025",
   "anzahl": 348,
-  "offen": 0,
+  "offen": 1,
   "eintraege": [
     {"land":"08","rang":1,"name":"Stuttgart","schluessel":"08111000","amtlicherName":"Stuttgart","zuordnung":"name"},
     {"land":"08","rang":2,"name":"Mannheim","schluessel":"08222000","amtlicherName":"Mannheim","zuordnung":"name"},
@@ -65,7 +65,7 @@
     {"land":"09","rang":20,"name":"Dachau","schluessel":"09174115","amtlicherName":"Dachau","zuordnung":"name"},
     {"land":"09","rang":21,"name":"Hof","schluessel":"09464000","amtlicherName":"Hof","zuordnung":"name"},
     {"land":"09","rang":22,"name":"Memmingen","schluessel":"09764000","amtlicherName":"Memmingen","zuordnung":"name"},
-    {"land":"09","rang":23,"name":"Amberg","schluessel":"09361000","amtlicherName":"Amberg","zuordnung":"tabelle","hinweis":"Zwei Gemeinden heißen Amberg: die kreisfreie Stadt (09361000) und eine Gemeinde im Landkreis Unterallgäu (09778111). Gewählt: die kreisfreie Stadt. Bitte bestätigen."},
+    {"land":"09","rang":23,"name":"Amberg","schluessel":null,"amtlicherName":null,"zuordnung":"offen","vorschlag":"09361000","kandidaten":["Amberg (09361000)","Amberg (09778111)"],"hinweis":"Zwei Gemeinden heißen Amberg: die kreisfreie Stadt (09361000) und eine Gemeinde im Landkreis Unterallgäu (09778111). Vorschlag: die kreisfreie Stadt. Offen bis zur Bestätigung durch den Inhaber."},
     {"land":"09","rang":24,"name":"Weiden in der Oberpfalz","schluessel":"09363000","amtlicherName":"Weiden i.d.OPf.","zuordnung":"tabelle"},
     {"land":"09","rang":25,"name":"Ansbach","schluessel":"09561000","amtlicherName":"Ansbach","zuordnung":"name"},
     {"land":"09","rang":26,"name":"Coburg","schluessel":"09463000","amtlicherName":"Coburg","zuordnung":"name"},

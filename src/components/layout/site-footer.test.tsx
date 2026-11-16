@@ -77,4 +77,11 @@ describe('SiteFooter', () => {
     for (const area of NAV_AREAS) expect(html).toContain(`href="${area.href}"`);
     for (const r of defaults.rubriken().filter((x) => x.status !== 'live')) expect(html).not.toContain(`href="${r.ziel}"`);
   });
+
+  it('trägt Service und Termin, seit der Verweis unter „Mehr“ fehlt (FA-QA-04A)', async () => {
+    zustand.fehler = false;
+    const html = renderToStaticMarkup(await SiteFooter());
+    expect(html).toContain('href="/service-und-termin"');
+    expect(html).toContain('href="/service-und-termin/terminstatus"');
+  });
 });

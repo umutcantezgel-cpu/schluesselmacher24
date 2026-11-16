@@ -11,6 +11,7 @@ import {
   postleitzahlenBilden,
   slugsVergeben,
   staendeVergleichen,
+  LAENDER as LAENDER_IMPORT,
   STANDARD_GEONAMES,
   STANDARD_GV,
   teileName,
@@ -19,6 +20,7 @@ import {
   ZUORDNUNG_ANHANG_A,
 } from './orte-import.mjs';
 import { leseXlsx } from './fahrzeuge-import-fz2.mjs';
+import { LAENDER, ORTSSTAMM_QUELLEN } from '../src/lib/orte/typen';
 import type { GemeindenDatei, KreiseDatei, PostleitzahlenDatei, PrioritaetDatei } from '../src/lib/orte/typen';
 
 const ORDNER = path.resolve(__dirname, '../content/orte');
@@ -221,18 +223,42 @@ describe('Anhang A', () => {
     }
   });
 
-  it('führt alle 348 Einträge mit Schlüssel in der Reihenfolge je Land', () => {
+  it('hält einen unbestätigten Tabelleneintrag offen: Vorschlag und Kandidaten, kein Schlüssel', () => {
+    const tabelle = {
+      '06|Wetzlar': { schluessel: '06532023', pruefung: 'Wetzlar', bestaetigt: false, kandidaten: ['06532023'], hinweis: 'Probe' },
+    };
+    // Erfundener Fall (G4): eine zweite Gemeinde „Wetzlar“, damit die Namensregel nicht eindeutig ist.
+    const wetzlar = gemeinden.find((g) => g.schluessel === '06532023')!;
+    const mitZweiter = [...gemeinden, { ...wetzlar, schluessel: '06999998' }];
+    const tabelleProbe = { '06|Wetzlar': { ...tabelle['06|Wetzlar'], kandidaten: ['06532023', '06999998'] } };
+    const [e] = anhangAZuordnen([{ land: '06', rang: 1, name: 'Wetzlar' }], mitZweiter, tabelleProbe);
+    expect(e).toMatchObject({ zuordnung: 'offen', schluessel: null, vorschlag: '06532023', hinweis: 'Probe' });
+    expect(e.kandidaten).toHaveLength(2);
+    expect(() => anhangAZuordnen([], gemeinden, { '06|X': { schluessel: '06532023', pruefung: 'Wetzlar', bestaetigt: false, kandidaten: ['06999999'] } })).toThrow(/Kandidat 06999999/);
+  });
+
+  it('Amberg bleibt bis zur Bestätigung offen (A-051 Nr. 3)', () => {
+    const amberg = prioritaetDatei.eintraege.find((e) => e.land === '09' && e.name === 'Amberg')!;
+    expect(amberg).toMatchObject({ rang: 23, schluessel: null, zuordnung: 'offen', vorschlag: '09361000' });
+    expect(amberg.kandidaten).toEqual(['Amberg (09361000)', 'Amberg (09778111)']);
+  });
+
+  it('führt alle 348 Einträge in der Reihenfolge je Land, Schlüssel für alle außer den offenen', () => {
     expect(prioritaetDatei.anzahl).toBe(348);
     expect(prioritaetDatei.eintraege).toHaveLength(348);
-    expect(prioritaetDatei.offen).toBe(0);
+    const offen = prioritaetDatei.eintraege.filter((e) => e.zuordnung === 'offen');
+    expect(prioritaetDatei.offen).toBe(offen.length);
+    expect(offen.map((e) => e.name)).toEqual(['Amberg']);
+    expect(offen.every((e) => e.schluessel === null && (e.kandidaten ?? []).length > 1)).toBe(true);
     const jeLand: Record<string, number> = {};
     for (const e of prioritaetDatei.eintraege) jeLand[e.land] = (jeLand[e.land] ?? 0) + 1;
     // Zählung je Land wie im Abgleich (FA-ABGLEICH Block 04, FA-AA-09).
     expect(jeLand).toEqual({ '08': 38, '09': 37, '11': 1, '12': 18, '04': 2, '02': 1, '06': 35, '13': 12, '03': 35, '05': 67, '07': 22, '10': 9, '14': 19, '15': 16, '01': 19, '16': 17 });
-    for (const e of prioritaetDatei.eintraege) {
+    const zugeordnet = prioritaetDatei.eintraege.filter((e) => e.zuordnung !== 'offen');
+    for (const e of zugeordnet) {
       expect(gemeinden.some((g) => g.schluessel === e.schluessel)).toBe(true);
     }
-    expect(new Set(prioritaetDatei.eintraege.map((e) => e.schluessel)).size).toBe(348);
+    expect(new Set(zugeordnet.map((e) => e.schluessel)).size).toBe(347);
   });
 });
 
@@ -296,6 +322,34 @@ describe('Dateien des Stamms', () => {
     expect(gemeinden.every((g) => kreise.has(g.kreis) && g.schluessel.startsWith(g.kreis))).toBe(true);
     const ags = new Set(gemeinden.map((g) => g.schluessel));
     expect(plzDatei.postleitzahlen.every((p) => p.gemeinden.every((s) => ags.has(s)))).toBe(true);
+  });
+
+  it('der Kreis jeder Gemeinde einer Postleitzahl steht in ihrer Kreisliste (auch über den Verwaltungssitz)', () => {
+    const kreisVon = new Map(gemeinden.map((g) => [g.schluessel, g.kreis]));
+    const fehler = plzDatei.postleitzahlen.filter((p) => p.gemeinden.some((s) => !p.kreise.includes(kreisVon.get(s)!)));
+    expect(fehler.map((p) => p.plz)).toEqual([]);
+    // 57629: GeoNames nennt nur den Westerwaldkreis, Malberg (Kreis Altenkirchen) kommt über den Verwaltungssitz.
+    const p = plzDatei.postleitzahlen.find((x) => x.plz === '57629')!;
+    expect(p.gemeinden).toContain('07132066');
+    expect(p.kreise).toEqual(['07132', '07143']);
+  });
+
+  it('postleitzahlenBilden nimmt mit der Gemeinde des Verwaltungssitzes auch ihren Kreis auf', () => {
+    const geo = [{ plz: '99999', ort: 'Probeort', kreis: '07143', breite: 50, laenge: 8 }];
+    const probe = [{ ...gemeinden.find((g) => g.schluessel === '07132066')!, plz: '99999' }];
+    const [e] = postleitzahlenBilden(geo, probe).liste;
+    expect(e.gemeinden).toEqual(['07132066']);
+    expect(e.kreise).toEqual(['07132', '07143']);
+  });
+
+  it('Quellenvermerke für Seiten tragen Links, GeoNames auch auf die Lizenz (CC BY 4.0)', () => {
+    expect(ORTSSTAMM_QUELLEN.gemeinden.url).toMatch(/^https:\/\/www\.destatis\.de\//);
+    expect(ORTSSTAMM_QUELLEN.postleitzahlen).toMatchObject({ url: 'https://www.geonames.org', lizenzUrl: 'https://creativecommons.org/licenses/by/4.0/' });
+    expect(ORTSSTAMM_QUELLEN.postleitzahlen.text).toContain('CC BY 4.0');
+  });
+
+  it('die Ländertabelle des Imports gleicht der der Anwendung', () => {
+    expect({ ...LAENDER_IMPORT }).toEqual({ ...LAENDER });
   });
 
   it('zeilenJson ist gültiges JSON mit einem Datensatz je Zeile', () => {

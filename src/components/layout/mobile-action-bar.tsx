@@ -51,7 +51,8 @@ export function MobileActionBar({ telefonHref }: { telefonHref?: string | null }
       data-aktionsleiste
       className="pb-safe-area fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface md:hidden"
     >
-      {/* Spalten nach Inhalt statt gleich breit: „Termin anfragen“ bleibt ab 320 px einzeilig */}
+      {/* Spalten nach Inhalt statt gleich breit. Seit die Beschriftung 14 px hat (FA-QA-04A), darf
+          „Termin anfragen“ auf schmalen Telefonen zweizeilig stehen; pb-safe-nav (5rem) reicht dafür. */}
       <ul className="flex">
         {[...FESTE, ...(telefonHref ? [] : [SERVICE])].map((item) => {
           const active = item.href === aktiv;

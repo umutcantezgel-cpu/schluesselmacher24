@@ -68,7 +68,10 @@ export interface PrioritaetEintrag {
   amtlicherName: string | null;
   zuordnung: PrioritaetZuordnung;
   hinweis?: string;
+  /** Nur bei „offen“: Kandidaten für Menschen als „Name (Schlüssel)“. */
   kandidaten?: string[];
+  /** Nur bei „offen“ aus der Tabelle: vorgeschlagener, noch nicht bestätigter Schlüssel. Nicht als Zuordnung verwenden. */
+  vorschlag?: string;
 }
 
 /** Herkunft einer Stammdatei. */
@@ -140,7 +143,23 @@ export const LAENDER: Readonly<Record<string, string>> = {
 };
 
 /** Quellenvermerke für Seiten (A-051 Nr. 8); der volle Wortlaut steht in content/orte/LIZENZ.md. */
-export const ORTSSTAMM_QUELLEN = {
-  gemeinden: 'Statistisches Bundesamt (Destatis), Gemeindeverzeichnis, Gebietsstand 31.12.2025',
-  postleitzahlen: 'Postleitzahlen: GeoNames (www.geonames.org), CC BY 4.0',
-} as const;
+export interface OrtsstammQuelle {
+  /** Sichtbarer Vermerk. */
+  text: string;
+  /** Link auf die Quelle. */
+  url: string;
+  /** Link auf die Lizenz, wo die Lizenz ihn verlangt (CC BY 4.0). */
+  lizenzUrl?: string;
+}
+
+export const ORTSSTAMM_QUELLEN: Readonly<Record<'gemeinden' | 'postleitzahlen', OrtsstammQuelle>> = {
+  gemeinden: {
+    text: 'Statistisches Bundesamt (Destatis), Gemeindeverzeichnis, Gebietsstand 31.12.2025',
+    url: 'https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Administrativ/Archiv/GVAuszugJ/31122025_Auszug_GV.html',
+  },
+  postleitzahlen: {
+    text: 'Postleitzahlen: GeoNames (www.geonames.org), CC BY 4.0',
+    url: 'https://www.geonames.org',
+    lizenzUrl: 'https://creativecommons.org/licenses/by/4.0/',
+  },
+};

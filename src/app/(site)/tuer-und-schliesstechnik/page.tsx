@@ -305,7 +305,7 @@ export default async function TuerUndSchliesstechnikPage() {
                 className={cn('border-b border-border', index % 2 === 1 && 'lg:border-l')}
               >
                 <Link
-                  href={`/${ROUTE}/${service.slug}`}
+                  href={`/tuer-und-schliesstechnik/${service.slug}`}
                   className={cn(
                     'group flex min-h-touch-lg items-center gap-4 py-5 transition-colors duration-quick sm:gap-6 sm:py-6',
                     index % 2 === 1 ? 'lg:pl-gutter' : 'lg:pr-gutter',

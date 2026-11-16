@@ -371,6 +371,8 @@ export function postleitzahlenBilden(geo, gemeinden) {
       e.gemeinden.push(g.schluessel);
       ausVerwaltungssitz += 1;
     }
+    // Der Kreis der Gemeinde gehört dann auch zur Postleitzahl (etwa 57629: Malberg aus 07132 neben 07143).
+    if (!e.kreise.includes(g.kreis)) e.kreise.push(g.kreis);
   }
   const liste = [...eintraege.values()]
     .map(({ summe, ...e }) => ({
@@ -447,14 +449,19 @@ export function anhangALesen(text) {
  * zweisprachig oder mit anderem Zusatz). Jeder Eintrag ist gegen das Gemeindeverzeichnis 31.12.2025 geprüft; der
  * Lauf bricht ab, wenn der Schlüssel fehlt oder der amtliche Name nicht mehr den Prüftext enthält.
  * `hinweis` steht in prioritaet.json, damit ein Mensch die Wahl nachvollziehen kann.
+ * `bestaetigt: false` heißt: nicht eindeutig, nur ein Vorschlag (A-051 Nr. 3, nicht raten). Der Eintrag bleibt
+ * „offen“ ohne Schlüssel, mit `vorschlag` und `kandidaten`, bis der Inhaber bestätigt; dann `bestaetigt` und
+ * `kandidaten` entfernen.
  *
- * @type {Record<string, { schluessel: string, pruefung: string, hinweis?: string }>}
+ * @type {Record<string, { schluessel: string, pruefung: string, hinweis?: string, bestaetigt?: boolean, kandidaten?: string[] }>}
  */
 export const ZUORDNUNG_ANHANG_A = {
   '09|Amberg': {
     schluessel: '09361000',
     pruefung: 'Amberg',
-    hinweis: 'Zwei Gemeinden heißen Amberg: die kreisfreie Stadt (09361000) und eine Gemeinde im Landkreis Unterallgäu (09778111). Gewählt: die kreisfreie Stadt. Bitte bestätigen.',
+    bestaetigt: false,
+    kandidaten: ['09361000', '09778111'],
+    hinweis: 'Zwei Gemeinden heißen Amberg: die kreisfreie Stadt (09361000) und eine Gemeinde im Landkreis Unterallgäu (09778111). Vorschlag: die kreisfreie Stadt. Offen bis zur Bestätigung durch den Inhaber.',
   },
   '09|Weiden in der Oberpfalz': { schluessel: '09363000', pruefung: 'Weiden i.d.OPf.' },
   '09|Neumarkt in der Oberpfalz': { schluessel: '09373147', pruefung: 'Neumarkt i.d.OPf.' },
@@ -487,6 +494,9 @@ export function anhangAZuordnen(eintraege, gemeinden, tabelle = ZUORDNUNG_ANHANG
     const g = nachSchluessel.get(z.schluessel);
     if (!g) throw new Error(`Zuordnung Anhang A „${k}“: Schlüssel ${z.schluessel} fehlt im Gemeindeverzeichnis`);
     if (!g.name.includes(z.pruefung)) throw new Error(`Zuordnung Anhang A „${k}“: ${z.schluessel} heißt „${g.name}“, erwartet „${z.pruefung}“`);
+    for (const s of z.kandidaten ?? []) {
+      if (!nachSchluessel.has(s)) throw new Error(`Zuordnung Anhang A „${k}“: Kandidat ${s} fehlt im Gemeindeverzeichnis`);
+    }
   }
   return eintraege.map((e) => {
     const imLand = jeLand.get(e.land) ?? [];
@@ -497,6 +507,18 @@ export function anhangAZuordnen(eintraege, gemeinden, tabelle = ZUORDNUNG_ANHANG
     if (treffer.length !== 1) {
       treffer = imLand.filter((g) => vergleichsnameOhneKlammer(g.name) === v);
       zuordnung = 'ohne-klammer';
+    }
+    if (tabellenEintrag && treffer.length !== 1 && tabellenEintrag.bestaetigt === false) {
+      const kandidaten = (tabellenEintrag.kandidaten ?? [tabellenEintrag.schluessel]).map((s) => `${nachSchluessel.get(s).name} (${s})`);
+      return {
+        ...e,
+        schluessel: null,
+        amtlicherName: null,
+        zuordnung: 'offen',
+        vorschlag: tabellenEintrag.schluessel,
+        kandidaten,
+        ...(tabellenEintrag.hinweis ? { hinweis: tabellenEintrag.hinweis } : {}),
+      };
     }
     if (tabellenEintrag && treffer.length !== 1) {
       treffer = [nachSchluessel.get(tabellenEintrag.schluessel)];

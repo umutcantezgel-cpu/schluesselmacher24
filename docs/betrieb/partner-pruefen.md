@@ -68,7 +68,7 @@ Gruppe **Einsatzgebiet**:
 
 - **Postleitzahlen**: kommagetrennt, auch Bereiche wie `355*`. Nur danach ordnet die Seite heute zu. Ohne Postleitzahlen bekommt der Betrieb keine Zuordnung.
 - **Umkreis (km)**: wird gespeichert, aber noch nicht ausgewertet.
-- **Orte und Landkreise**: freiwillig, mit amtlichem Schlüssel, wenn bekannt. Wird ausgewertet, sobald die Ortsdatenbasis steht.
+- **Orte und Landkreise**: freiwillig, mit amtlichem Schlüssel, wenn bekannt. Die Angabe wird noch nicht ausgewertet; zugeordnet wird heute nur über die Postleitzahlen. Der Ortsstamm (alle Gemeinden mit Schlüssel) liegt seit dem 16.11.2026 vor, die Auswertung folgt.
 
 Zugeordnet wird nur ein freigeschalteter Betrieb, dessen Postleitzahlen passen und der die Leistung des Auftrags führt. Die Leistung kommt aus der Buchung: Zweitschlüssel gehört zu „Autoschlüssel nachmachen“, Ersatz bei Verlust zu „Schlüsselverlust“, Programmieren zu „Programmierung und Anlernen“, Gehäuse und Tasten zu „Reparaturen und Gehäuse“, Fahrzeugöffnung zu „Fahrzeugöffnung im Zusammenhang mit Autoschlüsseln“. Alles andere läuft als „Autoschlüssel allgemein“; das deckt jeder Betrieb mit einer der neun Leistungen ab.
 

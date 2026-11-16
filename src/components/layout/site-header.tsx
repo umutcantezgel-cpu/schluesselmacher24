@@ -24,7 +24,7 @@ import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { GlyphTelefon } from '@/components/visual/glyphen/telefon';
 import { GlyphWarenkorb } from '@/components/visual/glyphen/warenkorb';
 import { GlyphWinkelUnten } from '@/components/visual/glyphen/winkel-unten';
-import { istAktiv, rubrikAbschnitte, type NavGruppe, type NavRubrik } from '@/lib/navigation';
+import { gruppeAktiv, rubrikAbschnitte, type NavGruppe, type NavRubrik } from '@/lib/navigation';
 import { useHydrated } from '@/lib/client-state';
 import { useCartStore } from '@/lib/store/cart';
 import type { RubrikNavigation } from '@/lib/types';
@@ -62,12 +62,6 @@ const MEHR_TEXT: Record<Stufe | 'immer', string> = {
   xl: 'text-primary xl:text-foreground-muted',
   '2xl': 'text-primary 2xl:text-foreground-muted',
 };
-
-/** Ob die Seite zu einer Gruppe gehört: Gruppenseite oder eine ihrer Rubriken. */
-function gruppeAktiv(pathname: string, gruppe: NavGruppe): boolean {
-  if (gruppe.href && istAktiv(pathname, gruppe.href)) return true;
-  return gruppe.rubriken.some((r) => istAktiv(pathname, r.href)) || gruppe.weitere.some((l) => istAktiv(pathname, l.href));
-}
 
 export interface SiteHeaderProps {
   /** Die fünf Gruppen nach G-08 (`navigationsGruppen` aus den Rubriken). */
@@ -309,21 +303,27 @@ function GruppenMenue({ gruppe, rubrikIcons }: { gruppe: NavGruppe; rubrikIcons:
               ))}
             </div>
           )}
-          {gruppe.spalten.map((column) => (
-            <div key={column.title}>
-              <p className="mb-3 font-mono text-caption uppercase tracking-label text-foreground-subtle">{column.title}</p>
-              <ul className="space-y-3">
-                {column.links.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="group block">
-                      <span className="block text-small font-semibold text-foreground group-hover:text-primary">{link.label}</span>
-                      {link.description && <span className="mt-0.5 block text-small text-foreground-subtle">{link.description}</span>}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          {/* Höchstens zwei Spalten mit je vier Verweisen (MENUE_GRENZE): neben den Rubriken stehen sie
+              untereinander, damit das Menü eine Zeile hoch bleibt (FA-QA-04A). */}
+          {gruppe.spalten.length > 0 && (
+            <div className={gruppe.rubriken.length > 0 ? 'space-y-8' : 'col-span-2 grid grid-cols-2 gap-8'}>
+              {gruppe.spalten.map((column) => (
+                <div key={column.title}>
+                  <p className="mb-3 font-mono text-caption uppercase tracking-label text-foreground-subtle">{column.title}</p>
+                  <ul className="space-y-3">
+                    {column.links.map((link) => (
+                      <li key={link.href}>
+                        <Link href={link.href} className="group block">
+                          <span className="block text-small font-semibold text-foreground group-hover:text-primary">{link.label}</span>
+                          {link.description && <span className="mt-0.5 block text-small text-foreground-subtle">{link.description}</span>}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
 
         {gruppe.hinweis && (

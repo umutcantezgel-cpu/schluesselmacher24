@@ -157,8 +157,9 @@ header a[aria-label$='Startseite'] > span {
 
     /* Typoskala — fließend zwischen 390 und 1440 px Breite (KERN K-005, 2.0 für Laien:
        Fließtext mobil 17 px, Eingaben 17 px, Hilfstexte 15 px; Einleitung und Kartentitel
-       bleiben darüber) */
-    --text-caption: 0.75rem;
+       bleiben darüber). Beschriftungen nie unter 14 px (FA-26-01, FA-QA-04A); die Untergrenze
+       hält src/app/(site)/schriftstufen.test.ts fest. */
+    --text-caption: 0.875rem;
     --text-small: 0.9375rem;
     --text-body: clamp(1.0625rem, 1.03rem + 0.12vw, 1.125rem);
     --text-eingabe: 1.0625rem;
