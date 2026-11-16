@@ -20,8 +20,10 @@
 import { formatCents, formatDateTime } from './format';
 import { auftragsartFuerLeistung } from './partner/leistungen';
 import type { BewerbungStatus } from './partner/bewerbung';
-// Gegenseitiger Import mit region.ts (die eine Definition der Abdeckung, FA-PLATTFORM-01C); nur beim Aufruf benutzt.
-import { abdeckungsGruende, type AbdeckungsAuskunft, type RegionEintrag } from './partner/region';
+import { plzMusterAusText, plzPasst } from './partner/postleitzahl-muster';
+import type { PrueflistePunkt } from './partner/pruefliste';
+// Die eine Definition der Abdeckung (FA-PLATTFORM-01C); region.ts importiert diese Datei nicht.
+import { abdeckungsGruende, regionGeprueftAus, type AbdeckungsAuskunft, type RegionEintrag } from './partner/region';
 import type { AppointmentInfo, Auftragsweg, BusinessRecord, OwnArea, PaymentInfo, PriceQuote } from './types';
 
 export type { Auftragsweg };
@@ -48,21 +50,8 @@ export const AUFTRAGSART_AUTOSCHLUESSEL = 'autoschluessel-vor-ort';
 
 /* ---------- Postleitzahlen ---------------------------------------------- */
 
-/** „35*, 36043 ,355*“ → `['35*', '36043', '355*']`; nur Ziffern mit optionalem `*` am Ende. */
-export function plzMusterAusText(text: string | null | undefined): string[] {
-  if (!text) return [];
-  return text
-    .split(/[\s,;]+/)
-    .map((teil) => teil.trim())
-    .filter((teil) => /^\d{1,5}\*?$/.test(teil));
-}
-
-/** Passt eine vollständige deutsche Postleitzahl zu einem der Muster? */
-export function plzPasst(postleitzahl: string, muster: readonly string[]): boolean {
-  const plz = postleitzahl.trim();
-  if (!/^\d{5}$/.test(plz)) return false;
-  return muster.some((m) => (m.endsWith('*') ? plz.startsWith(m.slice(0, -1)) : plz === m));
-}
+// Eigenes Modul (FA-PLATTFORM-01C, A-070): hier unverändert weitergegeben, damit kein Aufrufer bricht.
+export { plzMusterAusText, plzPasst };
 
 /** Muster des Eigenbereichs aus den Einstellungen, sonst der Rückfall `35*`. */
 export function eigenbereichMuster(eigenbereich: OwnArea | undefined): string[] {
@@ -96,6 +85,8 @@ export interface PartnerFuerWeg {
   radiusKm?: number | null;
   /** Orte und Landkreise mit amtlichem Schlüssel; zählen nur mit Auskunft aus dem Ortsstamm. */
   regionen?: readonly RegionEintrag[] | null;
+  /** Punkt „Region und Radius“ der Prüfliste erledigt; nur dann zählen Umkreis und Regionen (A-070). */
+  regionGeprueft?: boolean | null;
 }
 
 /** Was aus einem gespeicherten Partnerbetrieb für Weg und Abdeckung zählt. Name und Kontakt bleiben außen vor. */
@@ -110,6 +101,8 @@ export interface PartnerbetriebFuerWeg {
   } | null;
   auftragsarten?: readonly string[] | null;
   abrechnungsmodell?: string | null;
+  /** Prüfliste; für die Abdeckung zählt nur der Punkt „Region und Radius“. */
+  pruefliste?: { region?: PrueflistePunkt | null } | null;
 }
 
 /**
@@ -126,14 +119,15 @@ export function partnerFuerWegAusBetrieb(doc: PartnerbetriebFuerWeg): PartnerFue
     plz: doc.plz ?? null,
     radiusKm: typeof doc.einsatzgebiet?.radiusKm === 'number' ? doc.einsatzgebiet.radiusKm : null,
     regionen: (doc.einsatzgebiet?.regionen ?? []).map((r) => ({ art: r.art ?? null, name: r.name ?? null, schluessel: r.schluessel ?? null })),
+    regionGeprueft: regionGeprueftAus(doc.pruefliste),
   };
 }
 
 /**
  * Partner, die diesen Auftrag bekommen dürfen: Abrechnungsmodell B und Abdeckung nach der einen Definition
  * (`abdeckungsGruende`, src/lib/partner/region.ts): freigeschaltet (also nicht pausiert, gesperrt, beendet oder
- * in Prüfung), passende Auftragsart, Postleitzahl im Einsatzgebiet, mit Auskunft aus dem Ortsstamm auch im
- * Umkreis oder in einer eingetragenen Region. Bei mehreren entscheidet das Team im Admin (A-049); hier gibt es
+ * in Prüfung), passende Auftragsart, Postleitzahl im Einsatzgebiet, mit Auskunft aus dem Ortsstamm und
+ * erledigtem Punkt „Region und Radius“ auch im Umkreis oder in einer eingetragenen Region. Bei mehreren entscheidet das Team im Admin (A-049); hier gibt es
  * keine Rangfolge. Am Zahlweg ändert die Abdeckung nichts (`zahlungsPlan`).
  */
 export function passendePartner(

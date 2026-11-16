@@ -90,13 +90,14 @@ export const auftragswegVorAenderung: CollectionBeforeChangeHook<Vorgaenge> = ({
 
 /**
  * Partnerbetrieb für die Vorschlagsliste: nur Stand, Postleitzahl des Betriebs, Einsatzgebiet (Muster, Umkreis,
- * Orte und Landkreise), Auftragsarten und Abrechnungsmodell zählen. Ohne Angabe gilt Modell A wie im Standard der
+ * Orte und Landkreise), Punkt „Region und Radius“ der Prüfliste, Auftragsarten und Abrechnungsmodell zählen. Ohne Angabe gilt Modell A wie im Standard der
  * Sammlung; im Partnerweg zählt nur Modell B (A-049 Nr. 8).
  */
 export function partnerFuerWeg(
   doc: Pick<Partnerbetriebe, 'id' | 'status' | 'einsatzgebiet' | 'auftragsarten'> & {
     plz?: Partnerbetriebe['plz'];
     abrechnungsmodell?: Partnerbetriebe['abrechnungsmodell'] | null;
+    pruefliste?: Partnerbetriebe['pruefliste'];
   },
 ): PartnerFuerWeg {
   return partnerFuerWegAusBetrieb(doc);
@@ -126,7 +127,7 @@ function vorschlagsZeile(betrieb: Pick<Partnerbetriebe, 'firma' | 'ort'>, gruend
  * Vorschlagsliste am Vorgang (FA-KERN-03, FA-22-40, FA-PLATTFORM-01C): freigeschaltete (nicht pausierte, nicht
  * gesperrte) Partnerbetriebe mit passender Auftragsart, die die Postleitzahl des Kunden abdecken: über ihre
  * Postleitzahlen, ihren Umkreis oder einen eingetragenen Ort oder Landkreis (eine Definition,
- * src/lib/partner/region.ts). Jede Zeile nennt den Grund. Im Partnerweg zählen nur Betriebe mit Modell B
+ * src/lib/partner/region.ts; Umkreis und Region nur mit erledigtem Punkt „Region und Radius“). Jede Zeile nennt den Grund. Im Partnerweg zählen nur Betriebe mit Modell B
  * (`passendePartner`, A-049 Nr. 8); bei jedem anderen Vorgang mit Vermittlung zählt das Modell nicht
  * (`deckendePartnerMitGrund`). Die Zuordnung trifft das Team (A-049), eine Rangfolge gibt es nicht. Ohne
  * Partnerweg und ohne Vermittlung keine Liste.

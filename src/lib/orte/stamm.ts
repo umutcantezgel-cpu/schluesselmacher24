@@ -30,7 +30,8 @@ export function ortsstamm(): Promise<OrtsstammIndex> {
 
 /**
  * Freigeschaltete Partnerbetriebe nur mit Stand, Einsatzgebiet (Postleitzahlen-Muster, Umkreis, Orte und
- * Landkreise), Postleitzahl des Betriebs und Auftragsarten, nie Name oder Kontakt. Ohne Datenbank (JSON-Modus)
+ * Landkreise), Postleitzahl des Betriebs, Punkt „Region und Radius“ der Prüfliste und Auftragsarten, nie Name oder
+ * Kontakt. Ohne Datenbank (JSON-Modus)
  * gibt es keine Partner.
  */
 async function partnerFuerAbdeckung(): Promise<PartnerFuerRegion[]> {
@@ -44,12 +45,12 @@ async function partnerFuerAbdeckung(): Promise<PartnerFuerRegion[]> {
       limit: 0,
       pagination: false,
       overrideAccess: true,
-      select: { status: true, plz: true, einsatzgebiet: true, auftragsarten: true },
+      select: { status: true, plz: true, einsatzgebiet: true, auftragsarten: true, pruefliste: true },
     });
     // Dieselbe Abbildung wie im Partnerweg; das Abrechnungsmodell zählt für die Abdeckung nicht.
     return gefunden.docs.map((doc) => {
-      const { id, status, postleitzahlen, auftragsarten, plz, radiusKm, regionen } = partnerFuerWegAusBetrieb(doc);
-      return { id, status, postleitzahlen, auftragsarten, plz, radiusKm, regionen };
+      const { id, status, postleitzahlen, auftragsarten, plz, radiusKm, regionen, regionGeprueft } = partnerFuerWegAusBetrieb(doc);
+      return { id, status, postleitzahlen, auftragsarten, plz, radiusKm, regionen, regionGeprueft };
     });
   } catch (fehler) {
     console.error('[orte] Partnerbetriebe nicht lesbar', fehler);
