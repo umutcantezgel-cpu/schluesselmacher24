@@ -17,6 +17,8 @@ import type {
   Rubrik,
   ShopHersteller,
   ShopKategorie,
+  GehaeuseBauform,
+  UmbauBeispiel,
 } from '@/lib/types';
 
 /**
@@ -46,6 +48,10 @@ export interface Collections {
   kategorien: ShopKategorie[];
   /** Hersteller-Stammliste (FA-SHOP-01). */
   hersteller: ShopHersteller[];
+  /** Bauformen der Gehäuse, pflegbare Liste (FA-SHOP-02). */
+  bauformen: GehaeuseBauform[];
+  /** Umbau-Beispiele mit Vorher- und Nachher-Foto (FA-SHOP-02), nur zeigbare. */
+  umbauBeispiele: UmbauBeispiel[];
 }
 
 export type CollectionName = keyof Collections;

@@ -8,7 +8,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {
   pruefeAlles, pruefeText, seitenSegmente, zeichenketten, telefonKuerzen, telefonZiffern,
-  exitCodeFuer, ladeAusnahmen,
+  exitCodeFuer, ladeAusnahmen, istSprache, quelltextSegmente, zaehltAlsText,
 } from './reste.mjs';
 
 const angelegt = [];
@@ -30,7 +30,7 @@ const SETTINGS = {
 const BEISPIELE = [{ id: 'ms-01', slug: 'ms-01', name: 'Büroschrank und Rollcontainer — Serie MS-01', example: true }];
 
 /** Legt einen Stand in einem vorübergehenden Ordner an. */
-function werkstatt({ seiten = {}, build = true, code = {}, inhalt = {} } = {}) {
+function werkstatt({ seiten = {}, build = true, code = {}, inhalt = {}, roh = {} } = {}) {
   const wurzel = mkdtempSync(path.join(os.tmpdir(), 'reste-test-'));
   angelegt.push(wurzel);
   const schreibe = (rel, text) => {
@@ -42,6 +42,7 @@ function werkstatt({ seiten = {}, build = true, code = {}, inhalt = {} } = {}) {
   schreibe('content/code-lines.json', JSON.stringify(BEISPIELE));
   for (const [rel, text] of Object.entries(inhalt)) schreibe(`content/${rel}`, text);
   for (const [rel, text] of Object.entries(code)) schreibe(`src/lib/${rel}`, text);
+  for (const [rel, text] of Object.entries(roh)) schreibe(rel, text);
   if (build) schreibe('.next/BUILD_ID', 'test-build\n');
   for (const [rel, html] of Object.entries(seiten)) schreibe(`.next/server/app/${rel}`, html);
   return wurzel;
@@ -306,6 +307,15 @@ describe('Nachbesserung: Platzhalter in Klammern und Wortform', () => {
     assert.equal(seitenFunde('<p>Code [A-Z] und [0-9]</p>', 'platzhalter').length, 0);
   });
 
+  test('Kein Fund: Verweis in Markdown wie [Kontakt](Adresse); der Platzhalter daneben bleibt ein Fund', () => {
+    assert.equal(seitenFunde('<p>- [Kontakt](https://schluesselmacher24.de/kontakt): Anschrift</p>', 'platzhalter').length, 0);
+    // So liest die Quelle quelltext eine Vorlage: ${site} wird zum Leerzeichen, die Klammer folgt weiter direkt.
+    assert.equal(seitenFunde('<p>- [Zahlung und Versand]( /rechtliches/versand-und-zahlung)</p>', 'platzhalter').length, 0);
+    // Steht zwischen den Klammern ein Leerzeichen, ist es kein Verweis.
+    assert.equal(seitenFunde('<p>[Ort] (siehe unten)</p>', 'platzhalter').length, 1);
+    assert.equal(seitenFunde('<p>[Ort] und [Kontakt](https://schluesselmacher24.de/kontakt)</p>', 'platzhalter').length, 1);
+  });
+
   test('Kein Fund: Zugriff im Code wie ART_LABEL[art] in einer Zeichenkette', () => {
     const wurzel = werkstatt({ seiten: { 'index.html': seite('<p>Hallo</p>') },
       code: { 'vorlagen/a.ts': 'const t = `${ART_LABEL[art]} ist eingegangen`;\n' } });
@@ -380,5 +390,159 @@ describe('Nachbesserung: Umgebung und Ausnahmen mit Feld ort', () => {
     const datei = path.join(wurzel, 'ausnahmen.json');
     writeFileSync(datei, JSON.stringify([{ pruefung: 'alt', quelle: 'code', datei: 'x', fundstueck: 'y', ort: ' ', grund: 'G', datum: '2026-11-16' }]));
     assert.throws(() => ladeAusnahmen(datei), /ort/);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Paket FA-QA-03B: Quelle quelltext (Texte, die erst im Browser entstehen)
+// ---------------------------------------------------------------------------
+describe('Quelltext: Regel für Zeichenketten im Code (istSprache)', () => {
+  test('Sprache ja: Wörter mit Leerzeichen, Umlaut, großer Anfang', () => {
+    assert.equal(istSprache('Montage außerhalb Ihrer Geschäftszeiten'), true);
+    assert.equal(istSprache('Ihr Schlüssel'), true);
+    assert.equal(istSprache('Kontaktformular'), true);
+  });
+
+  test('Sprache nein: Klassen, Stile, Pfade, Bezeichner, kurze Wörter', () => {
+    assert.equal(istSprache('flex gap-2 items-center'), false);
+    assert.equal(istSprache('text/plain; charset=utf-8'), false);
+    assert.equal(istSprache('ProductCard'), false);
+    assert.equal(istSprache('/schluessel/nachmachen'), false);
+    assert.equal(istSprache('Kurz'), false);
+  });
+});
+
+describe('Quelltext: Anlass und sichtbarer Text', () => {
+  const quellFunde = (roh, nur) => pruefeAlles({
+    wurzel: werkstatt({ seiten: { 'index.html': seite('<p>Hallo</p>') }, roh }), nur, waehle: ['quelltext'],
+  }).funde;
+
+  test('Anlass: Hinweis-Attribut mit Öffnungszeiten ist ein Fund (Zeile und Attribut genannt)', () => {
+    const f = quellFunde({ 'src/components/zutritt.tsx':
+      'export function Z() {\n  return <Feld hint="Montage außerhalb der Öffnungszeiten" />;\n}\n' }, ['alt']);
+    assert.equal(f.length, 1);
+    assert.equal(f[0].quelle, 'quelltext');
+    assert.match(f[0].ort, /hint/);
+  });
+
+  test('JSX-Text, Platzhalter im Text und Erreichbarkeit zählen', () => {
+    const f = quellFunde({ 'src/app/(site)/seite/page.tsx':
+      'export default function P() {\n  return <div><p>Demo Produkte</p><p>Ihr Ort: [Ort]</p><p>durchgehend geöffnet</p></div>;\n}\n' },
+    ['demo', 'platzhalter', 'erreichbarkeit']);
+    assert.deepEqual(f.map((x) => x.pruefung).sort(), ['demo', 'erreichbarkeit', 'platzhalter']);
+  });
+
+  test('Sichtbares Attribut zählt auch kurz: [PLZ] als placeholder; das Attribut name nicht', () => {
+    const f = quellFunde({ 'src/components/d.tsx':
+      'export const D = () => <input placeholder="[PLZ]" name="[PLZ]" />;\n' }, ['platzhalter']);
+    assert.equal(f.length, 1);
+  });
+
+  test('Kein Fund: Klassenliste, console.error, throw new Error, Objektschlüssel, Kommentar, Importpfad', () => {
+    const f = quellFunde({ 'src/components/a.tsx': [
+      'import { X } from "@/components/Öffnungszeiten-Liste";',
+      '// Öffnungszeiten prüfen',
+      'const k = "demo-klasse p-4 gap-2";',
+      'export function A({ cond }) {',
+      '  console.error("Öffnungszeiten fehlen");',
+      '  if (!cond) throw new Error("Platzhalter fehlt");',
+      '  const o = { "Platzhalter": 1 };',
+      '  return <div className="flex gap-2 items-center">{o.x} {/* Demo */}</div>;',
+      '}',
+    ].join('\n') }, ['alt', 'platzhalter', 'demo']);
+    assert.equal(f.length, 0);
+  });
+
+  test('Zeichenkette im Code mit Sprache zählt', () => {
+    const f = quellFunde({ 'src/components/e.ts': 'export const t = "Montage außerhalb der Öffnungszeiten";\n' }, ['alt']);
+    assert.equal(f.length, 1);
+  });
+
+  test('Fest im Quelltext: Telefonnummer und Mailadresse sind immer ein Fund, auch wenn sie stimmen', () => {
+    const f = quellFunde({ 'src/components/c.tsx': [
+      'export const C = () => <a href="tel:+496441 8056279">06441 8056279</a>;',
+      'export const M = () => <a href="mailto:info@schluesselmacher24.de">Mail</a>;',
+    ].join('\n') }, ['kontakt']);
+    assert.ok(f.length >= 3, `Funde: ${f.length}`);
+    assert.ok(f.every((x) => /fest im Quelltext/.test(x.vorschlag)));
+  });
+
+  test('Ausschluss: Tests, test-hilfen, Admin, Migrationen, Skripte und die Quelle code', () => {
+    const f = quellFunde({
+      'src/components/x.test.tsx': 'export const T = () => <p>TODO Text</p>;\n',
+      'src/components/test-hilfen/y.tsx': 'export const Y = () => <p>TODO Text</p>;\n',
+      'src/payload/z.tsx': 'export const Z = () => <p>TODO Text</p>;\n',
+      'src/app/(payload)/w.tsx': 'export const W = () => <p>TODO Text</p>;\n',
+      'src/migrations/m.ts': 'export const M = "TODO Text";\n',
+      'src/scripts/s.ts': 'export const S = "TODO Text";\n',
+      'src/lib/pdf/v.ts': 'export const V = "TODO fehlt";\n',
+      'src/lib/data/defaults/u.ts': 'export const U = "TODO fehlt";\n',
+    }, ['platzhalter']);
+    assert.equal(f.length, 0);
+  });
+});
+
+describe('Quelltext: Segmente und Auswahl der Quellen', () => {
+  test('quelltextSegmente liefert die Art je Stelle', () => {
+    const segs = quelltextSegmente('const o = { "Platzhalter": 1 };\nexport const C = () => <p title="Hallo Welt">Montage</p>;\n');
+    assert.ok(segs.some((s) => s.art === 'schluessel' && s.wert === 'Platzhalter'));
+    assert.ok(segs.some((s) => s.art === 'attribut' && s.attr === 'title' && s.wert === 'Hallo Welt'));
+    assert.ok(segs.some((s) => s.art === 'jsx' && s.wert === 'Montage'));
+  });
+
+  test('zaehltAlsText: Konsole und Schlüssel zählen nie', () => {
+    assert.equal(zaehltAlsText({ art: 'konsole', wert: 'Montage außerhalb' }), false);
+    assert.equal(zaehltAlsText({ art: 'schluessel', wert: 'Montage außerhalb' }), false);
+    assert.equal(zaehltAlsText({ art: 'attribut', attr: 'className', wert: 'Montage außerhalb' }), false);
+  });
+
+  test('Typparameter, Regex-Literale und Code in ${…} sind kein JSX-Text', () => {
+    const src = [
+      'const leer = <T>(): T[] => [];',
+      'export const e = (s) => s.replace(/[&<>"\']/g, (z) => z);',
+      'export const u = `M${p.map(([x, y]) => `${x} ${y}`)}`;',
+      'export const t = "Montage außerhalb Ihrer Geschäftszeiten";',
+    ].join('\n');
+    const segs = quelltextSegmente(src);
+    assert.equal(segs.filter((x) => x.art === 'jsx').length, 0);
+    assert.ok(segs.some((x) => x.wert === 'Montage außerhalb Ihrer Geschäftszeiten'));
+  });
+
+  test('--quellen: nur die gewählte Quelle wird geprüft; fehlender Build ist dann kein Bedienfehler', () => {
+    const wurzel = werkstatt({ build: false, inhalt: { 'x.json': JSON.stringify({ t: 'TODO' }) } });
+    const e = pruefeAlles({ wurzel, nur: ['platzhalter'], waehle: ['inhalt'] });
+    assert.equal(e.bedienfehler.length, 0);
+    assert.equal(e.quellen.quelltext.status, 'aus');
+    assert.equal(e.quellen.ausgeliefert.status, 'aus');
+    assert.equal(e.funde.length, 1);
+    assert.equal(exitCodeFuer(e), 1);
+  });
+});
+
+describe('Quelltext: Feldnamen und nicht gewählte Quellen (FA-QA-03B, Nachbesserung)', () => {
+  const quellFunde = (roh, nur) => pruefeAlles({
+    wurzel: werkstatt({ roh }), nur, waehle: ['quelltext'],
+  }).funde;
+
+  test('Objektwert unter sichtbarem Feld hint zählt; unter name nicht', () => {
+    const mit = quellFunde({ 'src/components/feld.tsx': "export const F = { hint: '[PLZ]' };\n" }, ['platzhalter']);
+    assert.equal(mit.length, 1);
+    assert.match(mit[0].ort, /hint/);
+    const ohne = quellFunde({ 'src/components/feld.tsx': "export const F = { name: '[PLZ]' };\n" }, ['platzhalter']);
+    assert.equal(ohne.length, 0);
+  });
+
+  test('Objektwert unter label zählt auch kurz (Demo)', () => {
+    const f = quellFunde({ 'src/components/feld.tsx': "export const F = { label: 'Demo' };\n" }, ['demo']);
+    assert.equal(f.length, 1);
+  });
+
+  test('nicht gewählte Quelle inhalt: ungültiges JSON ist ein Hinweis, kein Bedienfehler', () => {
+    const wurzel = werkstatt({ inhalt: { 'x.json': '{ kaputt' } });
+    const e = pruefeAlles({ wurzel, nur: ['platzhalter'], waehle: ['quelltext'] });
+    assert.equal(e.bedienfehler.length, 0);
+    assert.equal(e.hinweise.length, 1);
+    assert.equal(e.quellen.inhalt.dateien, 0);
+    assert.notEqual(exitCodeFuer(e), 2);
   });
 });

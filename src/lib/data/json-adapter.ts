@@ -26,6 +26,9 @@ const FILE_NAMES: Record<CollectionName, string> = {
   fahrzeugkatalog: 'fahrzeugkatalog.json',
   kategorien: 'kategorien.json',
   hersteller: 'hersteller.json',
+  // FA-SHOP-02: ohne Datei unter content/ gilt der Startbestand aus den Defaults.
+  bauformen: 'bauformen.json',
+  umbauBeispiele: 'umbau-beispiele.json',
 };
 
 /**

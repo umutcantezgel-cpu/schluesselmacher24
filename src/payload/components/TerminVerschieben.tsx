@@ -72,7 +72,7 @@ export function TerminVerschieben() {
         {laeuft ? 'Wird geprüft …' : 'Termin verschieben'}
       </Button>
       <div className="field-description">
-        Prüft Öffnungszeiten, Sperrtage, Feiertage und Belegung. Die Vertragsbestätigung geht einmalig mit, falls noch nicht gesendet.
+        Prüft Terminzeiten der Werkstatt, Sperrtage, Feiertage und Belegung. Die Vertragsbestätigung geht einmalig mit, falls noch nicht gesendet.
       </div>
     </div>
   );

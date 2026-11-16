@@ -15,8 +15,19 @@ import {
 } from './payload-mapping';
 import { oeffentlicheEintraege } from '@/lib/beispiele';
 import { buildRecordId, buildReference, counterKey, nextSequenceFromExisting } from '@/lib/reference';
+import { bauformenSortiert, fahrzeugteile, umbauBeispieleFuer, type Fahrzeugartikel } from './fahrzeugteile';
 import { herstellerSortiert, kategorieAufloesen, kategorienSortiert, sichtbareKategorien, type KategorieTreffer } from './shop';
-import type { AppointmentInfo, FahrzeugReihe, RecordKind, Rubrik, ShopHersteller, ShopKategorie } from '@/lib/types';
+import type {
+  AppointmentInfo,
+  FahrzeugReihe,
+  GehaeuseBauform,
+  RecordKind,
+  Rubrik,
+  ShopHersteller,
+  ShopKategorie,
+  UmbauBeispiel,
+  UmbauEinsatz,
+} from '@/lib/types';
 import { mitDatenbank } from '@/lib/umgebung';
 import type { Vorgaenge } from '@/payload-types';
 
@@ -131,6 +142,23 @@ export async function getKategorie(slug: string): Promise<KategorieTreffer | nul
 /** Hersteller-Stammliste nach Reihenfolge. */
 export async function getHersteller(): Promise<ShopHersteller[]> {
   return herstellerSortiert(await getCollection('hersteller'));
+}
+
+/* ---------- Gehäuse, Ersatzteile und Umbau-Beispiele (FA-SHOP-02) -------- */
+
+/** Bauformen der pflegbaren Liste nach Reihenfolge. */
+export async function getBauformen(): Promise<GehaeuseBauform[]> {
+  return bauformenSortiert(await getCollection('bauformen'));
+}
+
+/** Veröffentlichte Gehäuse und Ersatzteile mit Fahrzeugbezug (ohne Beispielartikel). */
+export async function getFahrzeugteile(): Promise<Fahrzeugartikel[]> {
+  return fahrzeugteile(await getCollection('standardArticles'));
+}
+
+/** Zeigbare Umbau-Beispiele für einen Bereich; ohne Beispiele eine leere Liste (kein Baustein). */
+export async function getUmbauBeispiele(einsatz: UmbauEinsatz): Promise<UmbauBeispiel[]> {
+  return umbauBeispieleFuer(await getCollection('umbauBeispiele'), einsatz);
 }
 
 export async function getGuides() {

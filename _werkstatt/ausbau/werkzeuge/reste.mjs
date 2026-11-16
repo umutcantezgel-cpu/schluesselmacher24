@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 // reste.mjs – Prüfwerkzeug „nichts Falsches bleibt übrig“ (FA-QA-03A, Vorgabe des Inhabers Abschnitte 10 und 27).
 // Aufruf: node _werkstatt/ausbau/werkzeuge/reste.mjs [--nur demo,platzhalter,alt,kontakt,erreichbarkeit]
-//                 [--json <datei>] [--md <datei>] [--ausnahmen <datei>]
+//                 [--quellen ausgeliefert,inhalt,code,quelltext] [--json <datei>] [--md <datei>] [--ausnahmen <datei>]
 // Quellen:
 //   ausgeliefert  .next/server/app/**/*.html: sichtbarer Text, Attribute alt/title/aria-label, meta content,
 //                 Strukturdaten (application/ld+json). Skripte und Stile zählen nicht.
 //   inhalt        content/**/*.json ohne content/startwerte/**
 //   code          Zeichenketten in src/lib/data/defaults, src/lib/mail/vorlagen, src/lib/pdf (ohne *.test.*, ohne Kommentare)
+//   quelltext     Kundenseiten im Quelltext (FA-QA-03B): src/app/(site), src/components, src/lib ohne die Ordner von code,
+//                 ohne Tests, Admin, Migrationen und Skripte. Texte zwischen JSX-Elementen, sichtbare Attribute und
+//                 Zeichenketten, die wie Sprache aussehen. Regel und Grenzen: Abschnitt „Quelltext“ weiter unten.
 // Ohne Browser, ohne Netz, ohne neue Abhängigkeit. Ändert nichts am Produkt.
 // Exit: 0 kein Fund · 1 Funde oder veraltete Ausnahmen · 2 Bedienfehler (auch fehlender oder unvollständiger Build;
 //       die übrigen Quellen werden dann trotzdem geprüft).
@@ -20,7 +23,8 @@ const PROTOKOLLE = path.join(REPO, '_werkstatt', 'ausbau', 'protokolle');
 const STANDARD_AUSNAHMEN = path.join(HIER, 'reste-ausnahmen.json');
 
 export const KENNUNGEN = ['demo', 'platzhalter', 'alt', 'kontakt', 'erreichbarkeit'];
-export const QUELLEN = ['ausgeliefert', 'inhalt', 'code'];
+export const QUELLEN = ['ausgeliefert', 'inhalt', 'code', 'quelltext'];
+const FEST_HINWEIS = 'Kontaktangabe steht fest im Quelltext: immer ein Fund, auch wenn sie stimmt. Kontaktdaten gehören in content/settings.json (FA-24) und kommen von dort.';
 export const PRUEFUNG_TITEL = {
   demo: 'Demo- und Beispieldaten',
   platzhalter: 'Platzhalter und Entwurfsreste',
@@ -52,7 +56,8 @@ const DEMO_WOERTER = /(?<!\p{L})(?:Demo(?!gra|kra|nst|nt)|Testwerk|Musterwerk|Mu
 const PLATZHALTER = [
   // Klammern mit Wörtern, Leerzeichen, Komma, Doppelpunkt, z. B. [Ort], [PLZ], [Name, Ort], [Hersteller eintragen];
   // nicht Muster wie [A-Z], [0-9] oder [a-z], nicht Zugriffe im Code wie ART_LABEL[art] oder zuUns[carrier]
-  /(?<![\p{L}\d_$)\]])\[(?![A-Za-z0-9]-[A-Za-z0-9]\])\p{L}[\p{L} ,:.\-]{1,40}\]/gu,
+  // Ohne Verweise in Markdown: „[Kontakt](…)“ ist eine Beschriftung mit Ziel, kein Platzhalter.
+  /(?<![\p{L}\d_$)\]])\[(?![A-Za-z0-9]-[A-Za-z0-9]\])\p{L}[\p{L} ,:.\-]{1,40}\](?!\()/gu,
   /(?<!\p{L})(?:TODO|XXX)(?!\p{L})/gu,
   /lorem ipsum/gi,
   /Max Mustermann|Erika Mustermann|Musterstra(?:ß|ss)e|Musterweg/gi,
@@ -217,6 +222,301 @@ export function zeichenketten(quelle) {
   return out;
 }
 
+// ---------------------------------------------------------------------------
+// Quelltext der Kundenseiten (Paket FA-QA-03B): Texte, die erst im Browser entstehen
+// ---------------------------------------------------------------------------
+// Regel: gelesen werden die Dateien, die Kunden erreichen (QUELLTEXT_ORDNER ohne QUELLTEXT_AUSSCHLUSS).
+// Je Zeichenkette wird die Stelle erkannt (Art): jsx (Text zwischen JSX-Elementen), attribut (Wert eines
+// JSX-Attributs, mit Name), ausdruck (Zeichenkette in {…} zwischen Elementen), konsole (Argument von console.*
+// oder von throw new Error(…)), schluessel (Objektschlüssel), code (übrige Zeichenkette). Importpfade fallen heraus.
+// Sichtbar und damit Text sind jsx, ausdruck und die Attribute aus SICHTBARE_ATTRIBUTE; ihr Wert zählt auch ohne
+// Sprachform (so bleibt ein kurzer Platzhalter wie [PLZ] im Hinweistext erhalten). Alles andere zählt nur, wenn
+// istSprache es als Sprache erkennt: mindestens acht Zeichen, kein Pfad, keine Klassen- oder Stilangabe, dazu ein
+// Leerzeichen zwischen Wörtern, ein Umlaut oder ein großer Anfang ohne weitere große Buchstaben.
+// Nicht als Text: TECHNISCHE_ATTRIBUTE, data-*, konsole, schluessel. Kommentare fallen heraus.
+// Werte von Objektschlüsseln aus SICHTBARE_ATTRIBUTE (z. B. { hint: „…“ }) zählen wie das gleichnamige Attribut.
+// Die Prüfung kontakt läuft über jede Zeichenkette dieser Quelle, auch über die nicht gezählten: Eine Telefonnummer
+// oder Mailadresse, die fest im Quelltext steht, ist immer ein Fund (FEST_HINWEIS).
+// Grenzen: kein vollständiger Parser, sondern eine Zustandsmaschine über Klammern und JSX-Elemente. Code in ${…}
+// einer Vorlage wird als Leerzeichen gelesen, sein Inhalt nicht geprüft. Typparameter <T>(…), <T,>(…) und
+// <K extends …>(…) gelten nicht als JSX. Werte anderer Objektschlüssel (z. B. name: „…“) gelten als Code und zählen
+// nur bei Sprachform. Kurze Wörter ohne Sprachform im Code (z. B. „Ja“ in einer Variablen) werden nicht geprüft.
+// src/app ganz: auch Dateien direkt darunter (global-error.tsx, manifest.ts, llms.txt) und die Schnittstellen
+// unter api, deren Meldungen Kunden erreichen. Das Admin unter (payload) bleibt über den Ausschluss draußen.
+const QUELLTEXT_ORDNER = ['src/app', 'src/components', 'src/lib'];
+const QUELLTEXT_AUSSCHLUSS = [
+  'src/lib/data/defaults/', 'src/lib/mail/vorlagen/', 'src/lib/pdf/', // liest schon die Quelle code
+  'src/app/(payload)/', 'src/payload/', 'src/migrations/', 'src/scripts/', // Admin, Migrationen, Skripte
+];
+const QUELLTEXT_ENDUNGEN = new Set(['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs']);
+const SICHTBARE_ATTRIBUTE = new Set(['aria-label', 'title', 'alt', 'placeholder', 'label', 'hint', 'description']);
+const TECHNISCHE_ATTRIBUTE = new Set(['classname', 'class', 'id', 'href', 'src', 'name', 'type', 'aria-hidden',
+  'key', 'role', 'to', 'htmlfor', 'for', 'rel', 'target', 'style', 'srcset', 'sizes', 'width', 'height', 'method',
+  'action', 'autocomplete', 'inputmode', 'pattern', 'lang', 'dir', 'loading', 'viewbox', 'fill', 'd']);
+// Wörter, nach denen ein < ein JSX-Element beginnt (sonst Vergleich oder Typ)
+const JSX_NACH_WORT = new Set(['return', 'yield', 'case', 'default', 'else', 'await', 'typeof', 'void', 'in', 'of', 'do']);
+// Wort einer Klasse, eines Pfads oder einer Stilangabe: nur Kleinbuchstaben, Ziffern und Satzzeichen
+const TECHNIK_WORT = /^[a-z0-9\-_:\/\[\]().%!#&>+~=,;*@\\$"']+$/;
+const JSX_NAME = /<([\p{L}_][\p{L}\p{N}_.:-]*)/uy;
+// TypeScript-Typparameter vor einer Funktion: <T>(…), <K extends keyof T>(…), <T,>(…); kein JSX
+const GENERIKA = /<\p{Lu}\p{L}{0,3}(?:\s+extends\s[^<>]*?)?\s*,?\s*>\s*\(/uy;
+const ATTR_NAME = /[\p{L}_$][\p{L}\p{N}_:.-]*/uy;
+const WORT = /[\p{L}_$][\p{L}\p{N}_$]*/uy;
+const ZAHL = /\d[\w.]*/y;
+
+/** Sieht wie Sprache aus (Regel für Zeichenketten im Code, siehe Kopf des Abschnitts). */
+export function istSprache(roh) {
+  const t = roh.trim();
+  if (t.length < 8) return false;
+  if (/^(?:https?:|mailto:|tel:|\/|#|\.{1,2}\/)/i.test(t)) return false;
+  const woerter = t.split(/\s+/);
+  if (woerter.every((w) => TECHNIK_WORT.test(w))) return false;
+  if (/[äöüÄÖÜß]/.test(t)) return true;
+  if (woerter.length > 1) return true;
+  return /^\p{Lu}\p{Ll}+$/u.test(t);
+}
+
+function emailFest(adresse) {
+  const endung = adresse.split('@')[1].split('.').pop().toLowerCase();
+  return !KEINE_MAIL_ENDUNG.has(endung);
+}
+
+/** Zählt eine Stelle als Text im Sinne der Prüfungen demo, platzhalter, alt und erreichbarkeit? */
+export function zaehltAlsText(seg) {
+  if (seg.art === 'konsole' || seg.art === 'schluessel') return false;
+  if (seg.art === 'jsx') return true;
+  if (seg.art === 'attribut') {
+    const a = String(seg.attr).toLowerCase();
+    if (SICHTBARE_ATTRIBUTE.has(a)) return true;
+    if (TECHNISCHE_ATTRIBUTE.has(a) || a.startsWith('data-')) return false;
+  }
+  return istSprache(seg.wert);
+}
+
+/**
+ * Zeichenketten und sichtbarer Text aus JavaScript, TypeScript und JSX mit Art und Zeile.
+ * Zustandsmaschine mit Stapel für Klammern und JSX-Elemente (kein vollständiger Parser, siehe Kopf des Abschnitts).
+ */
+export function quelltextSegmente(quelle) {
+  const out = [];
+  const s = quelle;
+  const n = s.length;
+  const stapel = [];
+  let i = 0;
+  let zeile = 1;
+  let prev = null; // letztes Token: { k: 'val' | 'op' | 'id', v }
+
+  const zaehle = (a, b) => { for (let k = a; k < b; k += 1) if (s[k] === '\n') zeile += 1; };
+  const jsxErlaubt = () => {
+    if (prev === null || prev.k === 'op') return true;
+    return prev.k === 'id' && JSX_NACH_WORT.has(prev.v);
+  };
+  const leseString = (q, start) => {
+    let j = start + 1;
+    let roh = '';
+    while (j < n) {
+      const d = s[j];
+      if (d === '\\') { roh += s.slice(j, j + 2); j += 2; continue; }
+      if (d === q) return { roh, ende: j + 1 };
+      if (d === '\n' && q !== '`') break;
+      if (q === '`' && d === '$' && s[j + 1] === '{') {
+        let tiefe = 0;
+        let k = j + 1;
+        for (; k < n; k += 1) {
+          if (s[k] === '{') tiefe += 1;
+          else if (s[k] === '}') { tiefe -= 1; if (tiefe === 0) break; }
+        }
+        roh += ' '; // Ausdruck in ${…} ist Code, kein Text: an seiner Stelle bleibt nur ein Leerzeichen
+        j = k + 1;
+        continue;
+      }
+      roh += d;
+      j += 1;
+    }
+    return { roh, ende: Math.min(j, n) };
+  };
+  const kontext = () => {
+    if (stapel.some((e) => e.k === 'paren' && e.dev)) return { art: 'konsole' };
+    for (let k = stapel.length - 1; k >= 0; k -= 1) {
+      const e = stapel[k];
+      if (e.k === 'paren') continue;
+      if (e.k === 'brace' && e.attr) return { art: 'attribut', attr: e.attr };
+      if (e.k === 'brace' && e.kind) return { art: 'ausdruck' };
+      break;
+    }
+    return { art: 'code' };
+  };
+  const codeString = (q) => {
+    const start = i;
+    const startZeile = zeile;
+    const { roh, ende } = leseString(q, start);
+    zaehle(start, ende);
+    i = ende;
+    prev = { k: 'val' };
+    const vorher = s.slice(Math.max(0, start - 40), start);
+    if (/\b(?:from|import)\s*\(?\s*$/.test(vorher) || /\brequire\s*\(\s*$/.test(vorher)) return;
+    const wert = entschluesseln(roh);
+    const dev = stapel.some((e) => e.k === 'paren' && e.dev);
+    if (!dev && /[{,]\s*$/.test(s.slice(Math.max(0, start - 80), start)) && /^\s*:/.test(s.slice(ende, ende + 40))) {
+      out.push({ wert, zeile: startZeile, art: 'schluessel' });
+      return;
+    }
+    // Wert eines Objektschlüssels aus SICHTBARE_ATTRIBUTE (z. B. { hint: „…“ }): sichtbar wie ein Attribut
+    const feld = /[{,]\s*([\p{L}_$][\p{L}\p{N}_$]*)\s*:\s*$/u.exec(s.slice(Math.max(0, start - 80), start));
+    if (!dev && feld && SICHTBARE_ATTRIBUTE.has(feld[1]) && stapel[stapel.length - 1]?.k === 'brace') {
+      out.push({ wert, zeile: startZeile, art: 'attribut', attr: feld[1] });
+      return;
+    }
+    out.push({ wert, zeile: startZeile, ...kontext() });
+  };
+  const attrString = (top, q) => {
+    const startZeile = zeile;
+    const { roh, ende } = leseString(q, i);
+    zaehle(i, ende);
+    i = ende;
+    top.zustand = 'attribut';
+    out.push({ wert: entschluesseln(roh), zeile: startZeile, art: 'attribut', attr: top.attr });
+  };
+  const kinderSchritt = () => {
+    const c = s[i];
+    if (c === '<' && s[i + 1] === '/') {
+      const e = s.indexOf('>', i);
+      const ende = e < 0 ? n : e + 1;
+      zaehle(i, ende);
+      i = ende;
+      stapel.pop();
+      prev = { k: 'val' };
+      return;
+    }
+    if (c === '<' && s[i + 1] === '>') { stapel.push({ k: 'jsx', zustand: 'kinder', attr: null }); i += 2; return; }
+    if (c === '<') {
+      JSX_NAME.lastIndex = i;
+      const m = JSX_NAME.exec(s);
+      if (m) { stapel.push({ k: 'jsx', zustand: 'attribut', attr: null }); i += m[0].length; return; }
+    }
+    if (c === '{') { stapel.push({ k: 'brace', attr: null, kind: true }); i += 1; prev = { k: 'op' }; return; }
+    let e = i + 1;
+    while (e < n && s[e] !== '<' && s[e] !== '{') e += 1;
+    const startZeile = zeile;
+    const text = entities(s.slice(i, e)).replace(/\s+/g, ' ').trim();
+    zaehle(i, e);
+    i = e;
+    if (text) out.push({ wert: text, zeile: startZeile, art: 'jsx' });
+  };
+  const attributSchritt = (top) => {
+    const c = s[i];
+    if (c === '\n') { zeile += 1; i += 1; return; }
+    if (/\s/.test(c)) { i += 1; return; }
+    if (top.zustand === 'wert') {
+      if (c === '"' || c === "'") { attrString(top, c); return; }
+      top.zustand = 'attribut';
+      if (c === '{') { stapel.push({ k: 'brace', attr: top.attr, kind: false }); prev = { k: 'op' }; i += 1; }
+      return;
+    }
+    if (c === '/' && s[i + 1] === '>') { stapel.pop(); prev = { k: 'val' }; i += 2; return; }
+    if (c === '>') { top.zustand = 'kinder'; i += 1; return; }
+    if (c === '{') { stapel.push({ k: 'brace', attr: null, kind: false }); prev = { k: 'op' }; i += 1; return; }
+    ATTR_NAME.lastIndex = i;
+    const m = ATTR_NAME.exec(s);
+    if (m) {
+      i += m[0].length;
+      top.attr = m[0];
+      let k = i;
+      while (k < n && /\s/.test(s[k])) k += 1;
+      if (s[k] === '=') { zaehle(i, k + 1); i = k + 1; top.zustand = 'wert'; }
+      return;
+    }
+    i += 1;
+  };
+  const codeSchritt = () => {
+    const c = s[i];
+    if (c === '/' && s[i + 1] === '/') { while (i < n && s[i] !== '\n') i += 1; return; }
+    if (c === '/' && s[i + 1] === '*') {
+      const e = s.indexOf('*/', i + 2);
+      const ende = e < 0 ? n : e + 2;
+      zaehle(i, ende);
+      i = ende;
+      return;
+    }
+    if (c === '/' && s[i + 1] !== '/' && s[i + 1] !== '*' && (prev === null || prev.k === 'op'
+      || (prev.k === 'id' && JSX_NACH_WORT.has(prev.v)))) {
+      // Regex-Literal: bis zum passenden / (Klassen in [] und Escapes beachtet); Zeilenende beendet die Suche
+      let j = i + 1;
+      let klasse = false;
+      while (j < n && s[j] !== '\n') {
+        const d = s[j];
+        if (d === '\\') { j += 2; continue; }
+        if (klasse) { if (d === ']') klasse = false; } else if (d === '[') klasse = true; else if (d === '/') break;
+        j += 1;
+      }
+      if (s[j] === '/') {
+        i = j + 1;
+        while (i < n && /[a-z]/i.test(s[i])) i += 1;
+        prev = { k: 'val' };
+      } else { i += 1; prev = { k: 'op' }; }
+      return;
+    }
+    if (c === '"' || c === "'" || c === '`') { codeString(c); return; }
+    if (c === '<' && jsxErlaubt()) {
+      GENERIKA.lastIndex = i;
+      if (GENERIKA.test(s)) { i += 1; prev = { k: 'op' }; return; }
+      if (s[i + 1] === '>') { stapel.push({ k: 'jsx', zustand: 'kinder', attr: null }); i += 2; prev = { k: 'op' }; return; }
+      JSX_NAME.lastIndex = i;
+      const m = JSX_NAME.exec(s);
+      if (m) { stapel.push({ k: 'jsx', zustand: 'attribut', attr: null }); i += m[0].length; prev = { k: 'op' }; return; }
+    }
+    if (/[\p{L}_$]/u.test(c)) {
+      WORT.lastIndex = i;
+      const w = WORT.exec(s)[0];
+      i += w.length;
+      prev = JSX_NACH_WORT.has(w) ? { k: 'id', v: w } : { k: 'val' };
+      return;
+    }
+    if (/\d/.test(c)) { ZAHL.lastIndex = i; i += ZAHL.exec(s)[0].length; prev = { k: 'val' }; return; }
+    if (c === '(') {
+      const vorher = s.slice(Math.max(0, i - 200), i);
+      const dev = /console\s*\.\s*[\p{L}_$]+\s*$/u.test(vorher)
+        || /\bthrow\s+new\s+(?:Error|TypeError|RangeError)\s*$/.test(vorher);
+      stapel.push({ k: 'paren', dev });
+      i += 1; prev = { k: 'op' }; return;
+    }
+    if (c === '[') { stapel.push({ k: 'klammer' }); i += 1; prev = { k: 'op' }; return; }
+    if (c === '{') { stapel.push({ k: 'brace', attr: null, kind: false }); i += 1; prev = { k: 'op' }; return; }
+    if (c === ')' || c === ']' || c === '}') {
+      const top = stapel[stapel.length - 1];
+      const passt = (c === ')' && top?.k === 'paren') || (c === ']' && top?.k === 'klammer')
+        || (c === '}' && top?.k === 'brace');
+      if (passt) stapel.pop();
+      i += 1;
+      prev = c === '}' ? { k: 'op' } : { k: 'val' };
+      return;
+    }
+    i += 1;
+    prev = { k: 'op' };
+  };
+
+  while (i < n) {
+    const top = stapel[stapel.length - 1];
+    if (top && top.k === 'jsx') {
+      if (top.zustand === 'kinder') kinderSchritt(); else attributSchritt(top);
+    } else if (s[i] === '\n') { zeile += 1; i += 1; }
+    else if (/\s/.test(s[i])) i += 1;
+    else codeSchritt();
+  }
+  return out;
+}
+
+/** Dateien der Kundenseiten für die Quelle quelltext (ohne Tests, Admin, Migrationen, Skripte und die Quelle code). */
+function quelltextDateien(wurzel) {
+  return QUELLTEXT_ORDNER.flatMap((o) => dateienRekursiv(path.join(wurzel, o), (p) => {
+    const rel = posix(path.relative(wurzel, p));
+    if (QUELLTEXT_AUSSCHLUSS.some((a) => rel.startsWith(a))) return false;
+    if (!QUELLTEXT_ENDUNGEN.has(path.extname(p))) return false;
+    if (/\.(test|spec)\.[^/]+$/.test(p) || /\.d\.ts$/.test(p)) return false;
+    return !/(^|\/)test-hilfen(\/|\.|$)/.test(rel);
+  }));
+}
+
 /** Sichtbare Texte und Attribute einer ausgelieferten Seite, jeweils mit Art. */
 export function seitenSegmente(html) {
   const segmente = [];
@@ -278,21 +578,25 @@ export function pruefeText(text, k) {
   const funde = [];
   const suchen = (re, pruefung, passt = () => true) => {
     for (const m of text.matchAll(re)) {
-      if (passt(m)) funde.push({ pruefung, fundstueck: m[0], index: m.index });
+      if (passt(m)) funde.push({ pruefung, fundstueck: m[0], index: m.index, fest: !!k.fest });
     }
   };
   if (k.nur.has('platzhalter')) for (const re of PLATZHALTER) suchen(re, 'platzhalter');
   if (k.nur.has('alt')) for (const re of ALT) suchen(re, 'alt');
   if (k.nur.has('erreichbarkeit')) for (const re of ERREICHBARKEIT) suchen(re, 'erreichbarkeit');
   if (k.nur.has('kontakt') && k.kontakt) {
-    suchen(EMAIL, 'kontakt', (m) => emailFremd(m[0]));
-    for (const m of text.matchAll(TELEFON)) {
+    suchen(EMAIL, 'kontakt', (m) => (k.fest ? emailFest(m[0]) : emailFremd(m[0])));
+    // „tel:“ vor der Nummer abtrennen (gleiche Länge, die Stellen bleiben): „tel:+49…“ in Verweisen zählt wie die Nummer
+    for (const m of text.replace(/\btel:/gi, '    ').matchAll(TELEFON)) {
       const fund = telefonKuerzen(m[0]);
       const z = telefonZiffern(fund);
       // Ausland (+43, 0043 …) ab acht Ziffern. Inland mindestens zehn Ziffern: kürzere Folgen mit 0 sind
       // Gemeindeschlüssel (AGS) oder Fahrzeugcodes, keine Rufnummern
       const ausland = /^(?:\+|00)(?!49)/.test(fund);
-      if (z.length >= (ausland ? 8 : 10) && !k.telefon.has(z)) funde.push({ pruefung: 'kontakt', fundstueck: fund, index: m.index });
+      // Fest im Quelltext (k.fest): immer ein Fund, auch wenn die Nummer stimmt
+      if (z.length >= (ausland ? 8 : 10) && (k.fest || !k.telefon.has(z))) {
+        funde.push({ pruefung: 'kontakt', fundstueck: fund, index: m.index, fest: !!k.fest });
+      }
     }
     // Anschrift stimmt nur, wenn Straße, Hausnummer und Postleitzahl zu einer Anschrift aus den Einstellungen passen
     suchen(ANSCHRIFT, 'kontakt', (m) => !k.kerne.has(kern(m[1], m[2]) + m[3]));
@@ -321,9 +625,12 @@ export function buildFehler(wurzel) {
  * Führt alle Prüfungen aus.
  * Rückgabe: { quellen, funde, ausgenommen, veraltet, bedienfehler, nur }.
  */
-export function pruefeAlles({ wurzel = REPO, nur = KENNUNGEN, ausnahmen = [] } = {}) {
+export function pruefeAlles({ wurzel = REPO, nur = KENNUNGEN, ausnahmen = [], waehle = QUELLEN } = {}) {
   const bedienfehler = [];
-  const quellen = Object.fromEntries(QUELLEN.map((q) => [q, { status: 'fehlt', dateien: 0, texte: 0 }]));
+  const hinweise = []; // Meldungen zu nicht gewählten Quellen: stören den Exit-Code nicht
+  const quellen = Object.fromEntries(QUELLEN.map((q) => [q, {
+    status: waehle.includes(q) ? 'fehlt' : 'aus', dateien: 0, texte: 0,
+  }]));
   const funde = [];
   const nurSet = new Set(nur);
   const inhaltOrdner = path.join(wurzel, 'content');
@@ -354,17 +661,21 @@ export function pruefeAlles({ wurzel = REPO, nur = KENNUNGEN, ausnahmen = [] } =
     .filter((p) => !posix(path.relative(inhaltOrdner, p)).startsWith('startwerte/'));
   const kontext = (demo) => ({ nur: nurSet, telefon, kerne, beispiele: [], demo, kontakt: kontaktMoeglich });
   const beispielStrings = [];
-  quellen.inhalt.status = 'ok';
+  quellen.inhalt.status = waehle.includes('inhalt') ? 'ok' : 'aus';
   for (const datei of inhaltDateien) {
     const rel = posix(path.relative(wurzel, datei));
     let obj;
     try { obj = JSON.parse(readFileSync(datei, 'utf8')); } catch (e) {
-      bedienfehler.push(`${rel} ist kein gültiges JSON (${e.message})`);
+      const meldung = `${rel} ist kein gültiges JSON (${e.message})`;
+      // Ist inhalt nicht gewählt, ist das kein Bedienfehler: den Beispielmustern fehlt nur diese Datei
+      if (waehle.includes('inhalt')) bedienfehler.push(meldung);
+      else hinweise.push(`Beispielmuster unvollständig: ${meldung}`);
       continue;
     }
-    quellen.inhalt.dateien += 1;
+    if (waehle.includes('inhalt')) quellen.inhalt.dateien += 1;
     besuche(obj, '', {
       zeichenkette: ({ pfad, wert }) => {
+        if (!waehle.includes('inhalt')) return;
         quellen.inhalt.texte += 1;
         for (const f of pruefeText(wert, kontext(false))) {
           funde.push({ pruefung: f.pruefung, quelle: 'inhalt', datei: rel, seite: null, ort: pfad,
@@ -385,14 +696,14 @@ export function pruefeAlles({ wurzel = REPO, nur = KENNUNGEN, ausnahmen = [] } =
   const beispielAnzahl = beispielStrings.length;
 
   // 3. Code: Zeichenketten in den Kundenpfaden
-  quellen.code.status = 'ok';
+  quellen.code.status = waehle.includes('code') ? 'ok' : 'aus';
   const codeDateien = CODE_ORDNER.flatMap((o) => dateienRekursiv(path.join(wurzel, o), (p) => {
     const endung = path.extname(p);
     if (!CODE_ENDUNGEN.has(endung)) return false;
     if (/\.(test|spec)\.[^/]+$/.test(p) || /\.d\.ts$/.test(p)) return false;
     return true;
   }));
-  for (const datei of codeDateien) {
+  for (const datei of waehle.includes('code') ? codeDateien : []) {
     const rel = posix(path.relative(wurzel, datei));
     quellen.code.dateien += 1;
     for (const { wert, zeile } of zeichenketten(readFileSync(datei, 'utf8'))) {
@@ -404,9 +715,34 @@ export function pruefeAlles({ wurzel = REPO, nur = KENNUNGEN, ausnahmen = [] } =
     }
   }
 
+  // 3b. Quelltext der Kundenseiten (FA-QA-03B): Texte, die erst im Browser entstehen
+  const quelltextAn = waehle.includes('quelltext');
+  quellen.quelltext.status = quelltextAn ? 'ok' : 'aus';
+  if (quelltextAn) {
+    const alleText = { ...kontext(true), beispiele: [...beispielMuster] };
+    const nurKontakt = { ...kontext(false), nur: new Set([...nurSet].filter((x) => x === 'kontakt')), fest: true };
+    for (const datei of quelltextDateien(wurzel)) {
+      const rel = posix(path.relative(wurzel, datei));
+      quellen.quelltext.dateien += 1;
+      for (const seg of quelltextSegmente(readFileSync(datei, 'utf8'))) {
+        const alsText = zaehltAlsText(seg);
+        if (alsText) quellen.quelltext.texte += 1;
+        const k = alsText ? { ...alleText, fest: true } : nurKontakt;
+        const ort = `Zeile ${seg.zeile} (${seg.art}${seg.attr ? ` ${seg.attr}` : ''})`;
+        for (const f of pruefeText(seg.wert, k)) {
+          funde.push({ pruefung: f.pruefung, quelle: 'quelltext', datei: rel, seite: null, ort,
+            fundstueck: f.fundstueck, umgebung: umgebung(seg.wert, f.index, f.fundstueck.length),
+            ...(f.pruefung === 'kontakt' && f.fest ? { hinweis: FEST_HINWEIS } : {}) });
+        }
+      }
+    }
+  }
+
   // 4. Ausgeliefert: .next/server/app/**/*.html
-  const fehler = buildFehler(wurzel);
-  if (fehler) {
+  const fehler = waehle.includes('ausgeliefert') ? buildFehler(wurzel) : null;
+  if (!waehle.includes('ausgeliefert')) {
+    // nicht gewählt (--quellen): nichts prüfen, nichts melden
+  } else if (fehler) {
     bedienfehler.push(`Build unvollständig (${fehler}): Quelle ausgeliefert nicht geprüft`);
     quellen.ausgeliefert.status = 'fehlt';
     quellen.ausgeliefert.grund = fehler;
@@ -454,8 +790,9 @@ export function pruefeAlles({ wurzel = REPO, nur = KENNUNGEN, ausnahmen = [] } =
     .map(({ a }) => a);
 
   // Vorschlag je Fund
-  for (const f of bleiben) f.vorschlag = VORSCHLAG[f.pruefung];
-  return { quellen, funde: bleiben, ausgenommen: angewandt, veraltet, bedienfehler, warnungen, nur: [...nurSet] };
+  for (const f of bleiben) f.vorschlag = f.hinweis ?? VORSCHLAG[f.pruefung];
+  return { quellen, funde: bleiben, ausgenommen: angewandt, veraltet, bedienfehler, warnungen, hinweise, nur: [...nurSet],
+    gewaehlt: QUELLEN.filter((q) => waehle.includes(q)) };
 }
 
 export function exitCodeFuer(e) {
@@ -490,12 +827,13 @@ const zelle = (t) => String(t ?? '').replace(/\|/g, '\\|').replace(/\s+/g, ' ').
 export function berichtMarkdown(e, { zeitpunkt, exit }) {
   const zeilen = [];
   zeilen.push('# Prüfung „nichts Falsches bleibt übrig“ (reste.mjs)', '');
-  zeilen.push(`Stand: ${zeitpunkt} · Prüfungen: ${e.nur.join(', ')} · Exit ${exit}`, '');
+  zeilen.push(`Stand: ${zeitpunkt} · Prüfungen: ${e.nur.join(', ')} · Quellen: ${e.gewaehlt.join(', ')} · Exit ${exit}`, '');
   zeilen.push('## Quellen', '', '| Quelle | Status | Dateien | Textstellen |', '|---|---|---|---|');
   for (const q of QUELLEN) {
     const s = e.quellen[q];
-    const status = s.status === 'ok' ? 'ok' : `fehlt${s.grund ? ` (${s.grund})` : ''}`;
-    zeilen.push(`| ${q} | ${zelle(status)} | ${s.dateien} | ${s.texte} |`);
+    const status = s.status === 'ok' ? 'ok' : s.status === 'aus' ? 'nicht gewählt' : `fehlt${s.grund ? ` (${s.grund})` : ''}`;
+    const zahlen = s.status === 'ok' ? `${s.dateien} | ${s.texte}` : '– | –';
+    zeilen.push(`| ${q} | ${zelle(status)} | ${zahlen} |`);
   }
   zeilen.push('');
   zeilen.push(`Beispieleinträge mit example: true (Namen, Kennungen, Slugs): ${e.quellen.inhalt.beispiele ?? 0}`, '');
@@ -511,11 +849,12 @@ export function berichtMarkdown(e, { zeitpunkt, exit }) {
     zeilen.push('');
   }
 
-  zeilen.push('## Zahl je Prüfung und Quelle', '', '| Prüfung | ausgeliefert | inhalt | code | Summe |', '|---|---|---|---|---|');
+  zeilen.push('## Zahl je Prüfung und Quelle', '', `| Prüfung | ${QUELLEN.join(' | ')} | Summe |`,
+    `|---|${QUELLEN.map(() => '---').join('|')}|---|`);
   for (const p of e.nur) {
     const zahl = (q) => e.funde.filter((f) => f.pruefung === p && f.quelle === q).length;
     const summe = QUELLEN.reduce((a, q) => a + zahl(q), 0);
-    zeilen.push(`| ${PRUEFUNG_TITEL[p]} (${p}) | ${zahl('ausgeliefert')} | ${zahl('inhalt')} | ${zahl('code')} | ${summe} |`);
+    zeilen.push(`| ${PRUEFUNG_TITEL[p]} (${p}) | ${QUELLEN.map((q) => zahl(q)).join(' | ')} | ${summe} |`);
   }
   zeilen.push('');
 
@@ -530,6 +869,11 @@ export function berichtMarkdown(e, { zeitpunkt, exit }) {
   if (e.warnungen?.length) {
     zeilen.push('## Warnungen zu Ausnahmen', '');
     for (const w of e.warnungen) zeilen.push(`- ${w}`);
+    zeilen.push('');
+  }
+  if (e.hinweise?.length) {
+    zeilen.push('## Hinweise zu nicht gewählten Quellen', '');
+    for (const h of e.hinweise) zeilen.push(`- ${h}`);
     zeilen.push('');
   }
 
@@ -555,12 +899,14 @@ export function protokollObjekt(e, { zeitpunkt, exit }) {
     zeitpunkt,
     exit,
     pruefungen: e.nur,
+    quellenGewaehlt: e.gewaehlt,
     quellen: e.quellen,
     bedienfehler: e.bedienfehler,
     funde: e.funde,
     ausgenommen: e.ausgenommen,
     veraltet: e.veraltet,
     warnungen: e.warnungen ?? [],
+    hinweise: e.hinweise ?? [],
   };
 }
 
@@ -568,7 +914,7 @@ export function protokollObjekt(e, { zeitpunkt, exit }) {
 // Kommandozeile
 // ---------------------------------------------------------------------------
 const HILFE = `Aufruf: node reste.mjs [--nur demo,platzhalter,alt,kontakt,erreichbarkeit]
-                 [--json <datei>] [--md <datei>] [--ausnahmen <datei>]
+                 [--quellen ausgeliefert,inhalt,code,quelltext] [--json <datei>] [--md <datei>] [--ausnahmen <datei>]
 Exit: 0 kein Fund · 1 Funde oder veraltete Ausnahmen · 2 Bedienfehler`;
 
 function bedienfehlerMeldung(text) {
@@ -577,7 +923,7 @@ function bedienfehlerMeldung(text) {
 }
 
 function argumenteLesen(argv) {
-  const a = { nur: null, json: null, md: null, ausnahmen: null, hilfe: false };
+  const a = { nur: null, quellen: null, json: null, md: null, ausnahmen: null, hilfe: false };
   for (let i = 0; i < argv.length; i += 1) {
     const t = argv[i];
     const wert = () => {
@@ -588,6 +934,7 @@ function argumenteLesen(argv) {
     };
     switch (t) {
       case '--nur': a.nur = wert().split(',').map((s) => s.trim()).filter(Boolean); break;
+      case '--quellen': a.quellen = wert().split(',').map((s) => s.trim()).filter(Boolean); break;
       case '--json': a.json = wert(); break;
       case '--md': a.md = wert(); break;
       case '--ausnahmen': a.ausnahmen = wert(); break;
@@ -604,6 +951,9 @@ export function hauptlauf(argv) {
   if (a.hilfe) { console.log(HILFE); return 0; }
   const nur = a.nur ?? KENNUNGEN;
   for (const n of nur) if (!KENNUNGEN.includes(n)) return bedienfehlerMeldung(`unbekannte Kennung „${n}“`);
+  const waehle = a.quellen ?? QUELLEN;
+  if (waehle.length === 0) return bedienfehlerMeldung('--quellen braucht mindestens eine Quelle');
+  for (const q of waehle) if (!QUELLEN.includes(q)) return bedienfehlerMeldung(`unbekannte Quelle „${q}“`);
 
   const ausDatei = a.ausnahmen ? path.resolve(a.ausnahmen) : STANDARD_AUSNAHMEN;
   let ausnahmen = [];
@@ -611,7 +961,7 @@ export function hauptlauf(argv) {
     try { ausnahmen = ladeAusnahmen(ausDatei); } catch (e) { return bedienfehlerMeldung(e.message); }
   } else if (a.ausnahmen) return bedienfehlerMeldung(`Ausnahmendatei fehlt: ${ausDatei}`);
 
-  const e = pruefeAlles({ wurzel: REPO, nur, ausnahmen });
+  const e = pruefeAlles({ wurzel: REPO, nur, ausnahmen, waehle });
   const exit = exitCodeFuer(e);
   const zeitpunkt = new Date().toISOString();
   const stamp = zeitpunkt.replace(/[:.]/g, '-');

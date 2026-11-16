@@ -522,3 +522,102 @@ describe('Zylinderkatalog: Preis nicht bestätigt und Hersteller aus dem Stamm (
     expect(m.zylinderkatalogZuPayload(c).hersteller?.map((h) => h.stamm)).toEqual([null, null]);
   });
 });
+
+describe('Gehäuse, Ersatzteile und Umbau-Beispiele (FA-SHOP-02)', () => {
+  const teil = {
+    teileart: 'gehaeuse' as const,
+    bauformen: ['klappschluessel', 'smart-key'],
+    marke: 'Testmarke',
+    reihen: ['testmarke-alpha'],
+    baujahrVon: 2008,
+    baujahrBis: 2016,
+    tastenzahl: 3,
+    schluesselarten: ['klappschluessel' as const],
+    kompatibilitaet: 'Elektronik und Bart werden übernommen. Der Transponder nur nach Prüfung.',
+    elektronik: 'pruefung' as const,
+  };
+  const verweise = {
+    bauformen: new Map([['klappschluessel', 11], ['smart-key', 12]]),
+    fahrzeugreihen: new Map([['testmarke-alpha', 21]]),
+  };
+
+  it('Standardartikel mit Fahrzeugteil: verlustfrei hin und zurück', async () => {
+    const [article] = await read('standardArticles');
+    const voll = { ...article, fahrzeugteil: teil };
+    const daten = m.standardartikelZuPayload(voll, verweise);
+    expect(daten.fahrzeugteil).toMatchObject({ aktiv: true, bauformen: [11, 12], reihen: [21], marke: 'Testmarke', tastenzahl: 3 });
+    // Payload liefert Verweise mit depth 1 als Dokumente.
+    const doc = gespeichert({
+      ...daten,
+      fahrzeugteil: {
+        ...daten.fahrzeugteil,
+        bauformen: [{ id: 11, kennung: 'klappschluessel' }, { id: 12, kennung: 'smart-key' }],
+        reihen: [{ id: 21, kennung: 'testmarke-alpha' }],
+      },
+    }, 1);
+    expect(m.standardartikelZuSeite(doc as never)).toEqual(voll);
+  });
+
+  it('ohne Haken oder ohne Pflichtangaben kein Fahrzeugteil (keine falschen Versprechen)', async () => {
+    const [article] = await read('standardArticles');
+    const ohne = m.standardartikelZuPayload(article);
+    expect(ohne.fahrzeugteil).toEqual({ aktiv: false });
+    expect(m.standardartikelZuSeite(gespeichert(ohne, 1) as never).fahrzeugteil).toBeUndefined();
+    const daten = m.fahrzeugteilZuPayload(teil, verweise);
+    expect(m.fahrzeugteilZuSeite({ ...daten, aktiv: false })).toBeUndefined();
+    expect(m.fahrzeugteilZuSeite({ ...daten, kompatibilitaet: '  ' })).toBeUndefined();
+    expect(m.fahrzeugteilZuSeite({ ...daten, elektronik: null })).toBeUndefined();
+    // Nicht aufgelöste Verweise (bloße IDs) entfallen, statt Zahlen als Kennung auszugeben.
+    expect(m.fahrzeugteilZuSeite(daten)).toMatchObject({ bauformen: [], reihen: [] });
+    // Ohne bekannte ID entfällt der Verweis auch beim Import.
+    expect(m.fahrzeugteilZuPayload(teil).bauformen).toEqual([]);
+  });
+
+  it('Bauformen: Startbestand verlustfrei', () => {
+    const start = defaults.bauformen();
+    start.forEach((b, index) => {
+      expect(m.bauformZuSeite(gespeichert(m.bauformZuPayload(b), index + 1) as never), b.id).toEqual(b);
+    });
+    const mitText = { ...start[0], beschreibung: 'Bart klappt aus dem Gehäuse.' };
+    expect(m.bauformZuSeite(gespeichert(m.bauformZuPayload(mitText), 1) as never)).toEqual(mitText);
+  });
+
+  it('Umbau-Beispiel nur mit Freigabe und beiden Fotos samt Beschriftung', () => {
+    const foto = (id: number, name: string) => ({ id, url: `/api/medien/file/${name}.jpg`, alt: '', width: 800, height: 600 });
+    const doc = {
+      id: 5,
+      titel: 'Funkschlüssel in Klappschlüssel',
+      vorher: { bild: foto(1, 'vorher'), beschriftung: 'Vorher: altes Gehäuse' },
+      nachher: { bild: foto(2, 'nachher'), beschriftung: 'Nachher: Klappschlüssel' },
+      marke: 'Testmarke',
+      reihe: { id: 21, kennung: 'testmarke-alpha' },
+      schluesselart: 'funk',
+      uebernommen: ['elektronik', 'transponder'],
+      hinweis: 'Nur, wenn die Platine in das neue Gehäuse passt.',
+      einsatz: ['customizing', 'gehaeuse'],
+      freigabe: true,
+      reihenfolge: 10,
+      _status: 'published',
+      createdAt: STAND,
+      updatedAt: STAND,
+    };
+    expect(m.umbauBeispielZuSeite(doc as never)).toEqual({
+      id: '5',
+      titel: 'Funkschlüssel in Klappschlüssel',
+      vorher: { url: '/api/medien/file/vorher.jpg', alt: 'Vorher: altes Gehäuse', width: 800, height: 600, beschriftung: 'Vorher: altes Gehäuse' },
+      nachher: { url: '/api/medien/file/nachher.jpg', alt: 'Nachher: Klappschlüssel', width: 800, height: 600, beschriftung: 'Nachher: Klappschlüssel' },
+      marke: 'Testmarke',
+      reihe: 'testmarke-alpha',
+      schluesselart: 'funk',
+      uebernommen: ['elektronik', 'transponder'],
+      hinweis: 'Nur, wenn die Platine in das neue Gehäuse passt.',
+      einsatz: ['customizing', 'gehaeuse'],
+      reihenfolge: 10,
+    });
+    expect(m.umbauBeispielZuSeite({ ...doc, freigabe: false } as never)).toBeNull();
+    expect(m.umbauBeispielZuSeite({ ...doc, nachher: { bild: 2, beschriftung: 'x' } } as never)).toBeNull();
+    expect(m.umbauBeispielZuSeite({ ...doc, vorher: { ...doc.vorher, beschriftung: '' } } as never)).toBeNull();
+    // Eine Reihe ohne Marke wird nicht ausgegeben.
+    expect(m.umbauBeispielZuSeite({ ...doc, marke: '' } as never)?.reihe).toBeUndefined();
+  });
+});

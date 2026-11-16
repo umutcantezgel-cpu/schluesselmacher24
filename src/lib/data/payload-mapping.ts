@@ -10,6 +10,7 @@ import type { RequiredDataFromCollectionSlug } from 'payload';
 
 import type {
   AutoschluesselLeistungen,
+  Bauformen,
   Einsatzgebiete,
   Einstellungen,
   Fahrzeugmarken,
@@ -25,6 +26,7 @@ import type {
   Rubriken,
   Seiten,
   Sperrtage,
+  UmbauBeispiele,
   Vorgaenge,
   Zylinderkatalog,
 } from '@/payload-types';
@@ -32,6 +34,7 @@ import { istAuftragsweg, plzMusterAusText, restbetragCents } from '../auftragswe
 import { istEinsendung } from '../einsenden/vorgang';
 import { STANDARD_VARIANTEN, istVariantenKennung, variantenAus } from '../versand/varianten';
 import { rabattAusPreis, staffelPreis } from '../staffel';
+import { TEILEARTEN_MIT_MARKE } from './fahrzeugteile';
 import type {
   ApprovalInfo,
   AreaKey,
@@ -73,6 +76,10 @@ import type {
   VehicleMake,
   VehicleModelSeo,
   Verfuegbarkeit,
+  FahrzeugTeil,
+  GehaeuseBauform,
+  UmbauBeispiel,
+  VergleichsBild,
 } from '@/lib/types';
 
 /* ---------- Grundbausteine ----------------------------------------------- */
@@ -252,6 +259,9 @@ export function gpsrZuPayload(info: ProductSafetyInfo | undefined) {
 export interface ProduktVerweise {
   kategorien?: Map<string, number>;
   hersteller?: Map<string, number>;
+  /** Bauformen und Reihen des Fahrzeugkatalogs für Gehäuse und Ersatzteile (FA-SHOP-02). */
+  bauformen?: Map<string, number>;
+  fahrzeugreihen?: Map<string, number>;
 }
 
 type ShopVerweis = number | { id: number; kennung?: string | null; slug?: string | null; name?: string | null } | null | undefined;
@@ -419,6 +429,8 @@ export function standardartikelZuSeite(doc: Produkte): StandardArticle {
   const gpsr = gpsrZuSeite(doc.gpsr);
   if (gpsr) article.gpsr = gpsr;
   Object.assign(article, shop.extra);
+  const fahrzeugteil = fahrzeugteilZuSeite(doc.fahrzeugteil);
+  if (fahrzeugteil) article.fahrzeugteil = fahrzeugteil;
   return article;
 }
 
@@ -446,8 +458,115 @@ export function standardartikelZuPayload(article: StandardArticle, verweise?: Pr
     produktbild: bildZuPayload(article.image),
     gpsr: gpsrZuPayload(article.gpsr),
     seo: seoZuPayload(article.seo),
+    fahrzeugteil: fahrzeugteilZuPayload(article.fahrzeugteil, verweise),
     _status: 'published',
   };
+}
+
+/* ---------- Gehäuse und Ersatzteile (FA-SHOP-02) ------------------------ */
+
+type Verweisliste = (number | { id: number; kennung?: string | null; slug?: string | null })[] | null | undefined;
+
+/** Kennungen aus einer Verweisliste; nur aufgelöste Dokumente (Tiefe 1), sonst entfällt der Verweis. */
+const verweisKennungen = (liste: Verweisliste): string[] =>
+  (liste ?? []).flatMap((wert) => (wert && typeof wert === 'object' ? [kennung(wert)] : []));
+
+/**
+ * Merkmale eines Gehäuses oder Ersatzteils. Ohne Haken „Gehäuse oder Ersatzteil“ oder
+ * ohne Pflichtangaben (Art, Kompatibilitätshinweis, Elektronik, bei Teilen mit Passform die Marke) kein Fahrzeugteil:
+ * Die Seite verspricht dann nichts.
+ */
+export function fahrzeugteilZuSeite(gruppe: Produkte['fahrzeugteil']): FahrzeugTeil | undefined {
+  if (!gruppe?.aktiv || !gruppe.teileart || !gruppe.elektronik || !gruppe.kompatibilitaet?.trim()) return undefined;
+  // Teile mit Passform ohne Marke (vor der Pflichtregel gespeichert) passen nicht zu jedem Fahrzeug.
+  if (TEILEARTEN_MIT_MARKE.includes(gruppe.teileart) && !gruppe.marke?.trim()) return undefined;
+  const teil: FahrzeugTeil = {
+    teileart: gruppe.teileart,
+    bauformen: verweisKennungen(gruppe.bauformen),
+    reihen: verweisKennungen(gruppe.reihen),
+    schluesselarten: (gruppe.schluesselarten ?? []) as KeyKind[],
+    kompatibilitaet: gruppe.kompatibilitaet,
+    elektronik: gruppe.elektronik,
+  };
+  if (gruppe.marke?.trim()) teil.marke = gruppe.marke.trim();
+  if (typeof gruppe.baujahrVon === 'number') teil.baujahrVon = gruppe.baujahrVon;
+  if (typeof gruppe.baujahrBis === 'number') teil.baujahrBis = gruppe.baujahrBis;
+  if (typeof gruppe.tastenzahl === 'number') teil.tastenzahl = gruppe.tastenzahl;
+  return teil;
+}
+
+/** Verweise ohne bekannte ID entfallen (etwa eine im Backend gelöschte Bauform). */
+export function fahrzeugteilZuPayload(teil: FahrzeugTeil | undefined, verweise: ProduktVerweise = {}): NonNullable<Produkte['fahrzeugteil']> {
+  if (!teil) return { aktiv: false };
+  const ids = (kennungen: string[], karte?: Map<string, number>) =>
+    kennungen.map((k) => karte?.get(k)).filter((id): id is number => typeof id === 'number');
+  return {
+    aktiv: true,
+    teileart: teil.teileart,
+    elektronik: teil.elektronik,
+    kompatibilitaet: teil.kompatibilitaet,
+    bauformen: ids(teil.bauformen, verweise.bauformen),
+    marke: teil.marke ?? null,
+    reihen: ids(teil.reihen, verweise.fahrzeugreihen),
+    baujahrVon: teil.baujahrVon ?? null,
+    baujahrBis: teil.baujahrBis ?? null,
+    tastenzahl: teil.tastenzahl ?? null,
+    schluesselarten: teil.schluesselarten,
+  };
+}
+
+export function bauformZuSeite(doc: Bauformen): GehaeuseBauform {
+  const bauform: GehaeuseBauform = {
+    id: kennung(doc),
+    slug: doc.slug ?? kennung(doc),
+    name: doc.name,
+    reihenfolge: doc.reihenfolge,
+  };
+  if (doc.beschreibung?.trim()) bauform.beschreibung = doc.beschreibung.trim();
+  return bauform;
+}
+
+export function bauformZuPayload(bauform: GehaeuseBauform): RequiredDataFromCollectionSlug<'bauformen'> {
+  return {
+    kennung: bauform.id,
+    slug: bauform.slug,
+    name: bauform.name,
+    beschreibung: bauform.beschreibung ?? null,
+    reihenfolge: bauform.reihenfolge,
+  };
+}
+
+function vergleichsbildZuSeite(gruppe: UmbauBeispiele['vorher'] | null | undefined): VergleichsBild | undefined {
+  const beschriftung = gruppe?.beschriftung?.trim();
+  if (!beschriftung) return undefined;
+  const bild = medienBild(gruppe?.bild, beschriftung);
+  return bild ? { ...bild, beschriftung } : undefined;
+}
+
+/**
+ * Umbau-Beispiel für die Seite. Nur mit Freigabe und mit beiden Fotos samt Beschriftung;
+ * sonst `null` (keine Platzhalter, R4). Umbau-Beispiele kommen nie aus dem Seed.
+ */
+export function umbauBeispielZuSeite(doc: UmbauBeispiele): UmbauBeispiel | null {
+  if (!doc.freigabe) return null;
+  const vorher = vergleichsbildZuSeite(doc.vorher);
+  const nachher = vergleichsbildZuSeite(doc.nachher);
+  if (!vorher || !nachher || !doc.einsatz?.length) return null;
+  const beispiel: UmbauBeispiel = {
+    id: String(doc.id),
+    titel: doc.titel,
+    vorher,
+    nachher,
+    uebernommen: (doc.uebernommen ?? []) as UmbauBeispiel['uebernommen'],
+    hinweis: doc.hinweis,
+    einsatz: doc.einsatz,
+    reihenfolge: doc.reihenfolge ?? 100,
+  };
+  if (doc.marke?.trim()) beispiel.marke = doc.marke.trim();
+  const reihe = doc.reihe as ShopVerweis;
+  if (beispiel.marke && reihe && typeof reihe === 'object') beispiel.reihe = kennung(reihe);
+  if (doc.schluesselart) beispiel.schluesselart = doc.schluesselart;
+  return beispiel;
 }
 
 /* ---------- Autoschlüssel ------------------------------------------------ */

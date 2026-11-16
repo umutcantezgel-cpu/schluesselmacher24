@@ -585,6 +585,89 @@ export interface StandardArticle {
   categoryId?: string;
   /** Kennung des Herstellers aus der Stammliste, nur wenn ausgewählt. */
   manufacturerId?: string;
+  /** Gehäuse oder Ersatzteil für Autoschlüssel mit Fahrzeugbezug (FA-SHOP-02), nur wenn gepflegt. */
+  fahrzeugteil?: FahrzeugTeil;
+}
+
+/* ---------- Gehäuse, Ersatzteile und Umbau-Beispiele (FA-SHOP-02) ------- */
+
+/** Art des Teils (Abschnitt 14 des Inhabers). */
+export type Teileart =
+  | 'gehaeuse'
+  | 'tasten'
+  | 'gummimatte'
+  | 'batterie'
+  | 'klappmechanismus'
+  | 'schluesselbart'
+  | 'weitere';
+
+/**
+ * Ob Elektronik und Transponder des vorhandenen Schlüssels übernommen werden:
+ * `ja`, `nein` oder `pruefung` (nur nach Prüfung der Fotos oder des Schlüssels).
+ */
+export type ElektronikUebernahme = 'ja' | 'nein' | 'pruefung';
+
+/** Merkmale eines Gehäuses oder Ersatzteils mit Fahrzeugbezug. */
+export interface FahrzeugTeil {
+  teileart: Teileart;
+  /** Kennungen der Bauformen (pflegbare Liste „Bauformen“). Leer: nicht angegeben. */
+  bauformen: string[];
+  /** Marke wie im Fahrzeugkatalog geschrieben. Fehlt: markenübergreifend. */
+  marke?: string;
+  /** Kennungen der Reihen aus dem Fahrzeugkatalog. Leer: alle Reihen der Marke. */
+  reihen: string[];
+  baujahrVon?: number;
+  baujahrBis?: number;
+  /** Anzahl der Tasten; fehlt bei Teilen ohne Tasten. */
+  tastenzahl?: number;
+  /** Schlüsseltypen, zu denen das Teil passt. Leer: nicht angegeben. */
+  schluesselarten: KeyKind[];
+  /** Pflichttext: was übernommen wird und was nicht passt. */
+  kompatibilitaet: string;
+  elektronik: ElektronikUebernahme;
+}
+
+/** Eine Bauform aus der pflegbaren Liste (Klappschlüssel, Smart Key, Karte …). */
+export interface GehaeuseBauform {
+  id: string;
+  slug: string;
+  name: string;
+  /** Kurze Erklärung, nur wenn gepflegt. */
+  beschreibung?: string;
+  reihenfolge: number;
+}
+
+/** Was bei einem Umbau vom alten Schlüssel übernommen wurde. */
+export type UmbauTeil = 'elektronik' | 'transponder' | 'tasten' | 'schluesselbart' | 'weitere';
+
+/** Wo ein Umbau-Beispiel erscheinen darf. */
+export type UmbauEinsatz = 'customizing' | 'gehaeuse' | 'reparatur';
+
+/** Ein Bild des Vorher-Nachher-Vergleichs mit Beschriftung. */
+export interface VergleichsBild extends MediaImage {
+  /** Sichtbare Beschriftung unter dem Bild. */
+  beschriftung: string;
+}
+
+/**
+ * Ein echter Umbau mit Vorher- und Nachher-Foto (FA-14-08, FA-20-05). Gepflegt im
+ * Backend; öffentlich nur veröffentlicht, mit beiden Fotos und mit Freigabe.
+ */
+export interface UmbauBeispiel {
+  id: string;
+  titel: string;
+  vorher: VergleichsBild;
+  nachher: VergleichsBild;
+  /** Fahrzeug: Marke wie im Fahrzeugkatalog, nur wenn gepflegt. */
+  marke?: string;
+  /** Kennung der Reihe aus dem Fahrzeugkatalog, nur wenn gepflegt. */
+  reihe?: string;
+  schluesselart?: KeyKind;
+  uebernommen: UmbauTeil[];
+  /** Hinweis, unter welchen Bedingungen sich der Umbau übertragen lässt. */
+  hinweis: string;
+  einsatz: UmbauEinsatz[];
+  reihenfolge: number;
 }
 
 /* ---------- Gleichschließende Zylinder ---------------------------------- */

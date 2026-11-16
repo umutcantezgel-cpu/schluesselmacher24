@@ -8,6 +8,7 @@ import { defaults } from './defaults';
 import * as m from './payload-mapping';
 import type {
   AutoschluesselLeistungen,
+  Bauformen,
   Einsatzgebiete,
   Einstellungen,
   Fahrzeugmarken,
@@ -22,6 +23,7 @@ import type {
   Fahrzeugreihen,
   Seiten,
   Sperrtage,
+  UmbauBeispiele,
   Vorgaenge,
   Zylinderkatalog,
 } from '@/payload-types';
@@ -132,6 +134,16 @@ export class PayloadAdapter implements DataAdapter {
         const docs = await alle<Hersteller>('hersteller', undefined, 'reihenfolge');
         return docs.length ? docs.map(m.herstellerZuSeite) : defaults.hersteller();
       }
+      // Gehäuse und Ersatzteile (FA-SHOP-02): leere Liste der Bauformen = Startbestand.
+      case 'bauformen': {
+        const docs = await alle<Bauformen>('bauformen', undefined, 'reihenfolge');
+        return docs.length ? docs.map(m.bauformZuSeite) : defaults.bauformen();
+      }
+      // Umbau-Beispiele nur veröffentlicht, mit Freigabe und beiden Fotos; kein Startbestand (R4).
+      case 'umbauBeispiele':
+        return (await alle<UmbauBeispiele>('umbau-beispiele', VEROEFFENTLICHT, 'reihenfolge'))
+          .map(m.umbauBeispielZuSeite)
+          .filter((b): b is NonNullable<typeof b> => b !== null);
     }
   }
 

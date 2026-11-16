@@ -14,6 +14,7 @@ import { rubriken } from './rubriken';
 import { fahrzeugkatalog } from './fahrzeugkatalog';
 import { kategorien } from './kategorien';
 import { hersteller } from './hersteller';
+import { bauformen, umbauBeispiele } from './fahrzeugteile';
 
 function records(): BusinessRecord[] {
   return [];
@@ -42,6 +43,8 @@ export const defaults: { [K in CollectionName]: () => Collections[K] } = {
   fahrzeugkatalog,
   kategorien,
   hersteller,
+  bauformen,
+  umbauBeispiele,
 };
 
 export { codeLineFamilies } from './code-lines';

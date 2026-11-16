@@ -12,6 +12,7 @@ import sharp from 'sharp';
 import { dateiablage, mailKonfiguration } from './lib/umgebung';
 import { csrfHerkuenfte, payloadGeheimnis, payloadServerUrl, poolKonfiguration } from './payload/betrieb';
 import { AutoschluesselLeistungen } from './payload/collections/AutoschluesselLeistungen';
+import { Bauformen } from './payload/collections/Bauformen';
 import { Benutzer } from './payload/collections/Benutzer';
 import { Einsatzgebiete } from './payload/collections/Einsatzgebiete';
 import { Fahrzeugmarken } from './payload/collections/Fahrzeugmarken';
@@ -31,6 +32,7 @@ import { Fahrzeugreihen } from './payload/collections/Fahrzeugreihen';
 import { Partnerbetriebe } from './payload/collections/Partnerbetriebe';
 import { Seiten } from './payload/collections/Seiten';
 import { Sperrtage } from './payload/collections/Sperrtage';
+import { UmbauBeispiele } from './payload/collections/UmbauBeispiele';
 import { Vorgaenge } from './payload/collections/Vorgaenge';
 import { WebhookEreignisse } from './payload/collections/WebhookEreignisse';
 import { Widerrufe } from './payload/collections/Widerrufe';
@@ -81,9 +83,11 @@ export default buildConfig({
     Produkte,
     Kategorien,
     Hersteller,
+    Bauformen,
     // Autoschlüssel
     Fahrzeugmarken,
     Fahrzeugreihen,
+    UmbauBeispiele,
     AutoschluesselLeistungen,
     Preisregeln,
     Preisgruppen,

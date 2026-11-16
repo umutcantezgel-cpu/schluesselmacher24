@@ -74,8 +74,10 @@ export interface Config {
     produkte: Produkte;
     kategorien: Kategorien;
     hersteller: Hersteller;
+    bauformen: Bauformen;
     fahrzeugmarken: Fahrzeugmarken;
     fahrzeugreihen: Fahrzeugreihen;
+    'umbau-beispiele': UmbauBeispiele;
     'autoschluessel-leistungen': AutoschluesselLeistungen;
     preisregeln: Preisregeln;
     preisgruppen: Preisgruppen;
@@ -109,8 +111,10 @@ export interface Config {
     produkte: ProdukteSelect<false> | ProdukteSelect<true>;
     kategorien: KategorienSelect<false> | KategorienSelect<true>;
     hersteller: HerstellerSelect<false> | HerstellerSelect<true>;
+    bauformen: BauformenSelect<false> | BauformenSelect<true>;
     fahrzeugmarken: FahrzeugmarkenSelect<false> | FahrzeugmarkenSelect<true>;
     fahrzeugreihen: FahrzeugreihenSelect<false> | FahrzeugreihenSelect<true>;
+    'umbau-beispiele': UmbauBeispieleSelect<false> | UmbauBeispieleSelect<true>;
     'autoschluessel-leistungen': AutoschluesselLeistungenSelect<false> | AutoschluesselLeistungenSelect<true>;
     preisregeln: PreisregelnSelect<false> | PreisregelnSelect<true>;
     preisgruppen: PreisgruppenSelect<false> | PreisgruppenSelect<true>;
@@ -868,6 +872,44 @@ export interface Produkte {
   };
   weitereBilder?: (number | Medien)[] | null;
   /**
+   * Nur für Gehäuse und Ersatzteile. Nach diesen Angaben filtern Kunden später nach Fahrzeug, Bauform und Tastenzahl. Bitte nur eintragen, was Sie geprüft haben.
+   */
+  fahrzeugteil?: {
+    aktiv?: boolean | null;
+    teileart?:
+      ('gehaeuse' | 'tasten' | 'gummimatte' | 'batterie' | 'klappmechanismus' | 'schluesselbart' | 'weitere') | null;
+    /**
+     * „Nur nach Prüfung“, wenn es vom einzelnen Schlüssel abhängt.
+     */
+    elektronik?: ('ja' | 'nein' | 'pruefung') | null;
+    /**
+     * Pflicht. Was vom alten Schlüssel übernommen wird (Elektronik, Transponder, Tasten, Bart) und was nicht passt. Erscheint auf der Seite des Artikels.
+     */
+    kompatibilitaet?: string | null;
+    /**
+     * Aus der Liste unter Shop › Bauformen. Bei Gehäusen Pflicht. Fehlt eine Bauform, dort zuerst anlegen.
+     */
+    bauformen?: (number | Bauformen)[] | null;
+    /**
+     * Genau wie im Fahrzeugkatalog (Autoschlüssel › Fahrzeugkatalog). Leer: passt markenübergreifend.
+     */
+    marke?: string | null;
+    /**
+     * Leer: passt zu allen Reihen der Marke.
+     */
+    reihen?: (number | Fahrzeugreihen)[] | null;
+    baujahrVon?: number | null;
+    baujahrBis?: number | null;
+    /**
+     * Bei Gehäuse, Tasten und Gummimatte Pflicht.
+     */
+    tastenzahl?: number | null;
+    /**
+     * Zu welchen Schlüsseltypen das Teil passt.
+     */
+    schluesselarten?: ('mechanisch' | 'funk' | 'klappschluessel' | 'smart-key' | 'keyless')[] | null;
+  };
+  /**
    * Pflichtangaben im Online-Handel: Hersteller (Name, Postanschrift, E-Mail oder Website) und eine Kennung (Typ, Charge oder Artikelnummer). Sicherheitshinweise nur, wenn nötig.
    */
   gpsr?: {
@@ -1135,6 +1177,107 @@ export interface Hersteller {
   deletedAt?: string | null;
 }
 /**
+ * Bauformen der Autoschlüssel-Gehäuse, etwa Klappschlüssel, Smart Key oder Karte. Gehäuse und Ersatzteile unter Shop › Artikel wählen ihre Bauform aus dieser Liste. Jede Bauform nur einmal anlegen.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bauformen".
+ */
+export interface Bauformen {
+  id: number;
+  /**
+   * So, wie Kunden die Bauform kennen, etwa „Klappschlüssel“.
+   */
+  name: string;
+  /**
+   * Optional. Ein Satz, woran man die Bauform erkennt. Nur, was Sie belegen können.
+   */
+  beschreibung?: string | null;
+  /**
+   * Nur Kleinbuchstaben, Ziffern und Bindestriche. Leer lassen: wird aus dem Namen gebildet.
+   */
+  slug?: string | null;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  /**
+   * Kleinere Zahl steht weiter vorn.
+   */
+  reihenfolge: number;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+}
+/**
+ * Modellreihen für die Fahrzeugsuche. Preise und Schlüsselarten kommen aus den gepflegten Marken und Modellen (Spalte „Gepflegtes Modell“).
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "fahrzeugreihen".
+ */
+export interface Fahrzeugreihen {
+  id: number;
+  /**
+   * Pkw für den Autoschlüssel-Weg, Kraftrad für den Motorradweg.
+   */
+  klasse: 'pkw' | 'kraftrad';
+  marke: string;
+  reihe: string;
+  kbaName?: string | null;
+  bestand?: number | null;
+  rang?: number | null;
+  segment?: string | null;
+  sichtbar?: boolean | null;
+  /**
+   * Etwa „KBA FZ 12, Stand 1.1.2026“.
+   */
+  quelle: string;
+  /**
+   * Marke/Modell aus „Fahrzeugmarken“, etwa volkswagen/golf. Nur dann zeigt die Seite Preise und Schlüsselarten.
+   */
+  bestandsModell?: string | null;
+  baujahrVon?: number | null;
+  baujahrBis?: number | null;
+  baujahrQuelle?: string | null;
+  /**
+   * Nur mit Quelle; ohne Quelle leer lassen.
+   */
+  transponder?: {
+    typ?: string | null;
+    quelle?: string | null;
+  };
+  /**
+   * „Bestätigt“ nur nach dem Bogen KLONBAR.
+   */
+  klonbar: 'unbekannt' | 'bestaetigt' | 'nein';
+  gehaeuse: 'unbekannt' | 'verfuegbar' | 'nicht-verfuegbar';
+  leistungen?: ('nachmachen' | 'programmieren' | 'gehaeuse-tausch' | 'transponder-kopie')[] | null;
+  /**
+   * Nur mit Quelle. Mit Generationen bietet der Assistent die Auswahl an, sonst das Baujahr. Die Bezeichnung findet auch die Suche („Golf 7“).
+   */
+  generationen?:
+    | {
+        bezeichnung: string;
+        baujahrVon?: number | null;
+        baujahrBis?: number | null;
+        quelle: string;
+        id?: string | null;
+      }[]
+    | null;
+  alias?:
+    | {
+        begriff: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "fahrzeugmarken".
  */
@@ -1256,73 +1399,64 @@ export interface Preisgruppen {
   createdAt: string;
 }
 /**
- * Modellreihen für die Fahrzeugsuche. Preise und Schlüsselarten kommen aus den gepflegten Marken und Modellen (Spalte „Gepflegtes Modell“).
+ * Echte Umbauten mit Foto vorher und nachher. Bitte Kennzeichen, Fahrzeugschein und Schlüsselnummern auf den Fotos unkenntlich machen. Ein Beispiel erscheint erst veröffentlicht und mit dem Haken „Fotos freigegeben“.
  *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "fahrzeugreihen".
+ * via the `definition` "umbau-beispiele".
  */
-export interface Fahrzeugreihen {
+export interface UmbauBeispiele {
   id: number;
   /**
-   * Pkw für den Autoschlüssel-Weg, Kraftrad für den Motorradweg.
+   * Kurz und sachlich, etwa was umgebaut wurde.
    */
-  klasse: 'pkw' | 'kraftrad';
-  marke: string;
-  reihe: string;
-  kbaName?: string | null;
-  bestand?: number | null;
-  rang?: number | null;
-  segment?: string | null;
-  sichtbar?: boolean | null;
-  /**
-   * Etwa „KBA FZ 12, Stand 1.1.2026“.
-   */
-  quelle: string;
-  /**
-   * Marke/Modell aus „Fahrzeugmarken“, etwa volkswagen/golf. Nur dann zeigt die Seite Preise und Schlüsselarten.
-   */
-  bestandsModell?: string | null;
-  baujahrVon?: number | null;
-  baujahrBis?: number | null;
-  baujahrQuelle?: string | null;
-  /**
-   * Nur mit Quelle; ohne Quelle leer lassen.
-   */
-  transponder?: {
-    typ?: string | null;
-    quelle?: string | null;
+  titel: string;
+  vorher: {
+    /**
+     * Nur echte Fotos dieses Umbaus.
+     */
+    bild: number | Medien;
+    /**
+     * Erscheint unter dem Bild und beschreibt es für Screenreader.
+     */
+    beschriftung: string;
+  };
+  nachher: {
+    /**
+     * Nur echte Fotos dieses Umbaus.
+     */
+    bild: number | Medien;
+    /**
+     * Erscheint unter dem Bild und beschreibt es für Screenreader.
+     */
+    beschriftung: string;
   };
   /**
-   * „Bestätigt“ nur nach dem Bogen KLONBAR.
+   * Genau wie im Fahrzeugkatalog. Optional.
    */
-  klonbar: 'unbekannt' | 'bestaetigt' | 'nein';
-  gehaeuse: 'unbekannt' | 'verfuegbar' | 'nicht-verfuegbar';
-  leistungen?: ('nachmachen' | 'programmieren' | 'gehaeuse-tausch' | 'transponder-kopie')[] | null;
+  marke?: string | null;
   /**
-   * Nur mit Quelle. Mit Generationen bietet der Assistent die Auswahl an, sonst das Baujahr. Die Bezeichnung findet auch die Suche („Golf 7“).
+   * Optional, nur zusammen mit der Marke.
    */
-  generationen?:
-    | {
-        bezeichnung: string;
-        baujahrVon?: number | null;
-        baujahrBis?: number | null;
-        quelle: string;
-        id?: string | null;
-      }[]
-    | null;
-  alias?:
-    | {
-        begriff: string;
-        id?: string | null;
-      }[]
-    | null;
+  reihe?: (number | null) | Fahrzeugreihen;
+  schluesselart?: ('mechanisch' | 'funk' | 'klappschluessel' | 'smart-key' | 'keyless') | null;
+  uebernommen?: ('elektronik' | 'transponder' | 'tasten' | 'schluesselbart' | 'weitere')[] | null;
   /**
-   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   * Unter welchen Bedingungen sich der Umbau auf andere Schlüssel übertragen lässt und was nicht geht.
    */
-  kennung?: string | null;
+  hinweis: string;
+  einsatz: ('customizing' | 'gehaeuse' | 'reparatur')[];
+  /**
+   * Nur setzen, wenn die Fotos gezeigt werden dürfen und nichts Persönliches erkennbar ist.
+   */
+  freigabe?: boolean | null;
+  /**
+   * Kleinere Zahl steht weiter vorn.
+   */
+  reihenfolge: number;
   updatedAt: string;
   createdAt: string;
   deletedAt?: string | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2143,12 +2277,20 @@ export interface PayloadLockedDocument {
         value: number | Hersteller;
       } | null)
     | ({
+        relationTo: 'bauformen';
+        value: number | Bauformen;
+      } | null)
+    | ({
         relationTo: 'fahrzeugmarken';
         value: number | Fahrzeugmarken;
       } | null)
     | ({
         relationTo: 'fahrzeugreihen';
         value: number | Fahrzeugreihen;
+      } | null)
+    | ({
+        relationTo: 'umbau-beispiele';
+        value: number | UmbauBeispiele;
       } | null)
     | ({
         relationTo: 'autoschluessel-leistungen';
@@ -2642,6 +2784,21 @@ export interface ProdukteSelect<T extends boolean = true> {
         hinweis?: T;
       };
   weitereBilder?: T;
+  fahrzeugteil?:
+    | T
+    | {
+        aktiv?: T;
+        teileart?: T;
+        elektronik?: T;
+        kompatibilitaet?: T;
+        bauformen?: T;
+        marke?: T;
+        reihen?: T;
+        baujahrVon?: T;
+        baujahrBis?: T;
+        tastenzahl?: T;
+        schluesselarten?: T;
+      };
   gpsr?:
     | T
     | {
@@ -2765,6 +2922,20 @@ export interface HerstellerSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bauformen_select".
+ */
+export interface BauformenSelect<T extends boolean = true> {
+  name?: T;
+  beschreibung?: T;
+  slug?: T;
+  kennung?: T;
+  reihenfolge?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "fahrzeugmarken_select".
  */
 export interface FahrzeugmarkenSelect<T extends boolean = true> {
@@ -2876,6 +3047,37 @@ export interface FahrzeugreihenSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   deletedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "umbau-beispiele_select".
+ */
+export interface UmbauBeispieleSelect<T extends boolean = true> {
+  titel?: T;
+  vorher?:
+    | T
+    | {
+        bild?: T;
+        beschriftung?: T;
+      };
+  nachher?:
+    | T
+    | {
+        bild?: T;
+        beschriftung?: T;
+      };
+  marke?: T;
+  reihe?: T;
+  schluesselart?: T;
+  uebernommen?: T;
+  hinweis?: T;
+  einsatz?: T;
+  freigabe?: T;
+  reihenfolge?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

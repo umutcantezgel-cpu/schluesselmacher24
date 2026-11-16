@@ -169,8 +169,7 @@ export default async function SchluesselNachVorlagePage() {
             question: 'Wie lange dauert die Prüfung?',
             answer:
               'Die Dauer hängt vom Schlüsseltyp und von der Qualität der Fotos ab. Wir melden '
-              + 'uns, sobald die Prüfung abgeschlossen ist. '
-              + '[Platzhalter: übliche Bearbeitungsdauer ergänzen]',
+              + 'uns, sobald die Prüfung abgeschlossen ist.',
           },
           {
             question: 'Gilt das auch für Autoschlüssel?',

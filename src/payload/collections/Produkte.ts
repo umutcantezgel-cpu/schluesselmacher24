@@ -1,9 +1,30 @@
-import type { CollectionBeforeChangeHook, CollectionConfig, FieldHook, TextField, TextFieldSingleValidation } from 'payload';
+import type {
+  CollectionBeforeChangeHook,
+  CollectionConfig,
+  Condition,
+  Field,
+  FieldHook,
+  PayloadRequest,
+  TextField,
+  TextFieldSingleValidation,
+} from 'payload';
 
 import { pruefeCodeMuster, codePasst } from '../../lib/code-pattern';
+import {
+  BAUJAHR_MAX,
+  BAUJAHR_MIN,
+  ELEKTRONIK_LABEL,
+  ELEKTRONIK_UEBERNAHMEN,
+  TASTEN_MAX,
+  TEILEARTEN,
+  TEILEART_LABEL,
+  baujahrePruefen,
+  fahrzeugteilLuecken,
+} from '../../lib/data/fahrzeugteile';
 import { VERFUEGBARKEITEN, VERFUEGBARKEIT_LABEL } from '../../lib/data/shop';
 import { istTeam, papierkorbTeamLoeschenInhaber } from '../access/rollen';
 import {
+  SCHLUESSELARTEN,
   VERSANDKLASSEN,
   bildFeld,
   euroFeld,
@@ -84,6 +105,217 @@ function kennungOhneOriginalBeimAnlegen(feld: TextField): TextField {
   );
   return { ...feld, hooks: { ...feld.hooks, beforeChange: haken } } as TextField;
 }
+
+/* ---------- Gehäuse und Ersatzteile mit Fahrzeugbezug (FA-SHOP-02) ------ */
+
+type Geschwister = Record<string, unknown> | undefined;
+type PruefOptionen = { siblingData?: Geschwister; req: PayloadRequest };
+
+const verweisId = (wert: unknown): number | string | undefined => {
+  if (wert && typeof wert === 'object' && 'id' in wert) return (wert as { id: number | string }).id;
+  return typeof wert === 'number' || typeof wert === 'string' ? wert : undefined;
+};
+
+/**
+ * Marke wie im Fahrzeugkatalog (Autoschlüssel › Fahrzeugkatalog), keine zweite
+ * Fahrzeugliste. Leer ist erlaubt. Ist der Katalog noch leer (frische Datenbank),
+ * wird nichts abgelehnt.
+ */
+export async function markeImKatalog(wert: unknown, { req }: { req: PayloadRequest }): Promise<true | string> {
+  if (wert === undefined || wert === null || wert === '') return true;
+  if (typeof wert !== 'string' || !wert.trim()) return 'Bitte die Marke eintragen oder das Feld leer lassen.';
+  const treffer = await req.payload.count({
+    collection: 'fahrzeugreihen',
+    where: { marke: { equals: wert.trim() } },
+    overrideAccess: true,
+    req,
+  });
+  if (treffer.totalDocs > 0) return true;
+  const alle = await req.payload.count({ collection: 'fahrzeugreihen', overrideAccess: true, req });
+  if (alle.totalDocs === 0) return true;
+  return 'Diese Marke steht nicht im Fahrzeugkatalog. Bitte genau so schreiben wie dort, etwa „Volkswagen“.';
+}
+
+/** Gewählte Reihen müssen zur eingetragenen Marke gehören; ohne Marke keine Reihen. */
+export async function reihenZurMarke(
+  wert: unknown,
+  { siblingData, req }: PruefOptionen,
+): Promise<true | string> {
+  const ids = (Array.isArray(wert) ? wert : wert ? [wert] : []).map(verweisId).filter((id) => id !== undefined);
+  if (ids.length === 0) return true;
+  const marke = typeof siblingData?.marke === 'string' ? siblingData.marke.trim() : '';
+  if (!marke) return 'Bitte zuerst die Marke eintragen. Ohne Marke gilt das Teil für alle Fahrzeuge.';
+  const fremde = await req.payload.count({
+    collection: 'fahrzeugreihen',
+    where: { and: [{ id: { in: ids } }, { marke: { not_equals: marke } }] },
+    overrideAccess: true,
+    trash: true,
+    req,
+  });
+  return fremde.totalDocs === 0 ? true : `Mindestens eine Reihe gehört nicht zur Marke „${marke}“.`;
+}
+
+/** Im Backend nur Reihen der eingetragenen Marke anbieten. */
+export const reihenDerMarke = ({ siblingData }: { siblingData?: unknown }) => {
+  const marke = (siblingData as Geschwister)?.marke;
+  return typeof marke === 'string' && marke.trim() ? { marke: { equals: marke.trim() } } : true;
+};
+
+const teilAktiv: Condition = (_daten, geschwister) => Boolean((geschwister as Geschwister)?.aktiv);
+
+/** Pflichtangaben eines Teils, nur wenn der Haken „Gehäuse oder Ersatzteil“ gesetzt ist. */
+function teilPflicht(feld: keyof ReturnType<typeof fahrzeugteilLuecken>) {
+  return (_wert: unknown, { siblingData }: { siblingData?: Geschwister }) => {
+    if (!siblingData?.aktiv) return true;
+    return fahrzeugteilLuecken(siblingData)[feld] ?? true;
+  };
+}
+
+const baujahrFeld = (name: 'baujahrVon' | 'baujahrBis', label: string): Field => ({
+  name,
+  type: 'number',
+  label,
+  min: BAUJAHR_MIN,
+  max: BAUJAHR_MAX,
+  admin: { width: '33%', step: 1 },
+  validate: ((wert: unknown, { siblingData }: { siblingData?: Geschwister }) => {
+    if (wert !== undefined && wert !== null && (!Number.isInteger(wert) || (wert as number) < BAUJAHR_MIN || (wert as number) > BAUJAHR_MAX)) {
+      return `Bitte ein Jahr zwischen ${BAUJAHR_MIN} und ${BAUJAHR_MAX} eintragen.`;
+    }
+    return baujahrePruefen(siblingData?.baujahrVon, siblingData?.baujahrBis);
+  }) as never,
+});
+
+/**
+ * Merkmale für Gehäuse und Ersatzteile (Abschnitt 14 des Inhabers): Fahrzeug aus dem
+ * Fahrzeugkatalog, Bauform, Tastenzahl, Schlüsseltyp, Art des Teils, Kompatibilitätshinweis
+ * und ob Elektronik und Transponder übernommen werden. Nur bei Standardartikeln.
+ */
+export const fahrzeugteilFeld: Field = {
+  name: 'fahrzeugteil',
+  type: 'group',
+  label: 'Gehäuse oder Ersatzteil für Autoschlüssel',
+  admin: {
+    description:
+      'Nur für Gehäuse und Ersatzteile. Nach diesen Angaben filtern Kunden später nach Fahrzeug, Bauform und Tastenzahl. '
+      + 'Bitte nur eintragen, was Sie geprüft haben.',
+  },
+  fields: [
+    {
+      name: 'aktiv',
+      type: 'checkbox',
+      label: 'Dieser Artikel ist ein Gehäuse oder Ersatzteil für Autoschlüssel',
+      defaultValue: false,
+    },
+    {
+      type: 'row',
+      admin: { condition: teilAktiv },
+      fields: [
+        {
+          name: 'teileart',
+          type: 'select',
+          label: 'Art des Teils',
+          options: TEILEARTEN.map((value) => ({ label: TEILEART_LABEL[value], value })),
+          admin: { width: '50%' },
+          validate: teilPflicht('teileart') as never,
+        },
+        {
+          name: 'elektronik',
+          type: 'select',
+          label: 'Elektronik und Transponder werden übernommen',
+          options: ELEKTRONIK_UEBERNAHMEN.map((value) => ({ label: ELEKTRONIK_LABEL[value], value })),
+          admin: {
+            width: '50%',
+            description: '„Nur nach Prüfung“, wenn es vom einzelnen Schlüssel abhängt.',
+          },
+          validate: teilPflicht('elektronik') as never,
+        },
+      ],
+    },
+    {
+      name: 'kompatibilitaet',
+      type: 'textarea',
+      label: 'Kompatibilitätshinweis',
+      maxLength: 600,
+      admin: {
+        condition: teilAktiv,
+        description:
+          'Pflicht. Was vom alten Schlüssel übernommen wird (Elektronik, Transponder, Tasten, Bart) und was nicht passt. '
+          + 'Erscheint auf der Seite des Artikels.',
+      },
+      validate: teilPflicht('kompatibilitaet') as never,
+    },
+    {
+      name: 'bauformen',
+      type: 'relationship',
+      relationTo: 'bauformen',
+      hasMany: true,
+      label: 'Bauform',
+      admin: {
+        condition: teilAktiv,
+        description: 'Aus der Liste unter Shop › Bauformen. Bei Gehäusen Pflicht. Fehlt eine Bauform, dort zuerst anlegen.',
+      },
+      validate: teilPflicht('bauformen') as never,
+    },
+    {
+      type: 'row',
+      admin: { condition: teilAktiv },
+      fields: [
+        {
+          name: 'marke',
+          type: 'text',
+          label: 'Fahrzeugmarke',
+          maxLength: 60,
+          admin: {
+            width: '40%',
+            description: 'Genau wie im Fahrzeugkatalog (Autoschlüssel › Fahrzeugkatalog). Leer: passt markenübergreifend.',
+          },
+          validate: markeImKatalog as never,
+        },
+        {
+          name: 'reihen',
+          type: 'relationship',
+          relationTo: 'fahrzeugreihen',
+          hasMany: true,
+          label: 'Modelle oder Reihen',
+          filterOptions: reihenDerMarke,
+          admin: { width: '60%', description: 'Leer: passt zu allen Reihen der Marke.' },
+          validate: reihenZurMarke as never,
+        },
+      ],
+    },
+    {
+      type: 'row',
+      admin: { condition: teilAktiv },
+      fields: [
+        baujahrFeld('baujahrVon', 'Baujahr von'),
+        baujahrFeld('baujahrBis', 'Baujahr bis'),
+        {
+          name: 'tastenzahl',
+          type: 'number',
+          label: 'Tastenzahl',
+          min: 0,
+          max: TASTEN_MAX,
+          admin: { width: '34%', step: 1, description: 'Bei Gehäuse, Tasten und Gummimatte Pflicht.' },
+          validate: ((wert: unknown, optionen: { siblingData?: Geschwister }) => {
+            if (wert !== undefined && wert !== null && (!Number.isInteger(wert) || (wert as number) < 0 || (wert as number) > TASTEN_MAX)) {
+              return `Bitte eine ganze Zahl von 0 bis ${TASTEN_MAX} eintragen.`;
+            }
+            return teilPflicht('tastenzahl')(wert, optionen);
+          }) as never,
+        },
+      ],
+    },
+    {
+      name: 'schluesselarten',
+      type: 'select',
+      label: 'Schlüsseltyp',
+      hasMany: true,
+      options: SCHLUESSELARTEN,
+      admin: { condition: teilAktiv, description: 'Zu welchen Schlüsseltypen das Teil passt.' },
+    },
+  ],
+};
 
 /**
  * Artikel im Shop: Schlüssel nach Code und Standardartikel.
@@ -379,6 +611,12 @@ export const Produkte: CollectionConfig = {
               label: 'Weitere Fotos',
             },
           ],
+        },
+        {
+          label: 'Gehäuse und Ersatzteile',
+          admin: { condition: istStandardartikel },
+          description: 'Nur für Gehäuse und Ersatzteile für Autoschlüssel (FA-SHOP-02).',
+          fields: [fahrzeugteilFeld],
         },
         { label: 'Produktsicherheit', fields: [gpsrFeld()] },
         { label: 'Suchmaschinen', fields: [seoFeld()] },

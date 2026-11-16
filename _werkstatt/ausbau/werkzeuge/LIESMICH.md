@@ -49,7 +49,7 @@ _werkstatt/ausbau/werkzeuge/sicher.sh --json --als-root -- node _werkstatt/ausba
 | gefuellt.mjs | `node gefuellt.mjs --geraet mobil` | Warenkorb und Kasse mit Inhalt fotografieren | läuft |
 | logikwaechter.mjs | `node logikwaechter.mjs sichern`, `pruefen` | Fingerabdruck geschützter Dateien, Abweichung bei Logikänderung | läuft (das Protokoll im Repository legt der Orchestrator an) |
 | funktionsliste.mjs | `node funktionsliste.mjs --nur F-01,F-04 --md <datei>` | Funktionen F-01 bis F-14 im Browser | läuft (Probelauf: 14 von 14 BESTANDEN) |
-| reste.mjs | `node reste.mjs [--nur demo,platzhalter,alt,kontakt,erreichbarkeit] --md <datei>` | Demo-Daten, Platzhalter, ersetzte und fremde Angaben im ausgelieferten Stand, in content und im Code (ohne Browser, Ausnahmen mit Grund in `reste-ausnahmen.json`) | läuft (Selbsttest `reste.test.mjs`: 44 von 44) |
+| reste.mjs | `node reste.mjs [--nur demo,platzhalter,alt,kontakt,erreichbarkeit] [--quellen ausgeliefert,inhalt,code,quelltext] --md <datei>` | Demo-Daten, Platzhalter, ersetzte und fremde Angaben im ausgelieferten Stand, in content, im Code und im Quelltext der Kundenseiten (Texte erst im Browser, Schalter `--quellen`; ohne Browser, Ausnahmen mit Grund in `reste-ausnahmen.json`) | läuft (Selbsttest `reste.test.mjs`: 57 von 57) |
 
 - `node lighthouse.mjs [--routen <pfad,pfad>] [--laeufe 3] [--profil mobil|desktop]` – Lighthouse je Hauptansicht als Median aus frischen Läufen, mit Budgetspalte „erfüllt“
 - `node kontaktbogen.mjs --bilder <ordner oder dateien> --ziel <datei.jpg> [--spalten 4] [--titel text]` – Kontaktbogen aus Bildern als ein JPEG mit Dateinamen

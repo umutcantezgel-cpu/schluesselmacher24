@@ -110,7 +110,7 @@ export const SPERRGRUND_TEXT: Record<SperrGrund, string> = {
   geschlossen: 'An diesem Tag ist geschlossen',
   feiertag: 'Gesetzlicher Feiertag',
   gesperrt: 'Ganzer Tag gesperrt',
-  oeffnungszeit: 'Außerhalb der Öffnungszeiten',
+  oeffnungszeit: 'Außerhalb der Terminzeiten der Werkstatt',
   sperrzeit: 'Interne Sperrzeit',
   vergeben: 'Bereits vergeben',
 };

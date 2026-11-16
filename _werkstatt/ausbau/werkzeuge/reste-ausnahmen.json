@@ -118,5 +118,85 @@
     "fundstueck": "Gustav-Stresemann-Ring 1 65189 Wiesbaden",
     "grund": "Anschrift der zuständigen Datenschutz-Aufsichtsbehörde (Der Hessische Beauftragte für Datenschutz und Informationsfreiheit) in der Datenschutzerklärung; Pflichtangabe, keine Kontaktangabe des Betriebs.",
     "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "demo",
+    "quelle": "quelltext",
+    "datei": "src/app/(site)/artikel/[slug]/artikel-kauf.tsx",
+    "fundstueck": "(Beispiel)",
+    "grund": "Kennzeichnung der Zwischensumme bei Beispielartikeln; Beispielartikel zeigt die öffentliche Seite nicht (src/lib/beispiele.ts).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "quelltext",
+    "datei": "src/app/(site)/rechtliches/datenschutz/page.tsx",
+    "fundstueck": "Platzhalter",
+    "grund": "Hinweis an die Redaktion, solange Firmendaten Platzhalter sind: erscheint nur außerhalb der Produktion oder im Schaufenster (pruefhinweiseZeigen, NODE_ENV), nie für Kunden im Livebetrieb.",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "quelltext",
+    "datei": "src/app/(site)/rechtliches/impressum/page.tsx",
+    "fundstueck": "Platzhalter",
+    "grund": "Hinweis an die Redaktion, solange Firmendaten Platzhalter sind: erscheint nur außerhalb der Produktion oder im Schaufenster (pruefhinweiseZeigen, NODE_ENV), nie für Kunden im Livebetrieb.",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "quelltext",
+    "datei": "src/app/(site)/service-und-termin/kontakt/page.tsx",
+    "fundstueck": "Platzhalter",
+    "grund": "Hinweis an die Redaktion, solange Firmendaten Platzhalter sind: erscheint nur außerhalb der Produktion oder im Schaufenster (pruefhinweiseZeigen, NODE_ENV), nie für Kunden im Livebetrieb. Dazu der Entwurf des Anfahrtshinweises (Konstante ANFAHRT_HINWEIS): bleibt ungezeigt, solange er den Platzhalter enthält (MA-52).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "quelltext",
+    "datei": "src/components/layout/site-footer.tsx",
+    "fundstueck": "Platzhalter",
+    "grund": "Hinweis an die Redaktion, solange Firmendaten Platzhalter sind: erscheint nur außerhalb der Produktion oder im Schaufenster (pruefhinweiseZeigen, NODE_ENV), nie für Kunden im Livebetrieb.",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "quelltext",
+    "datei": "src/components/layout/site-footer.tsx",
+    "fundstueck": "Firmendaten sind noch Platzhalter",
+    "grund": "Hinweis an die Redaktion, solange Firmendaten Platzhalter sind: erscheint nur außerhalb der Produktion oder im Schaufenster (pruefhinweiseZeigen, NODE_ENV), nie für Kunden im Livebetrieb.",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "quelltext",
+    "datei": "src/lib/livegang-pruefung.ts",
+    "fundstueck": "Platzhalter",
+    "grund": "Meldung der Livegang-Prüfung für das Team, kein Kundentext.",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "quelltext",
+    "datei": "src/lib/mail/transport-resend.ts",
+    "fundstueck": "[Umgeleitet, an:  ]",
+    "grund": "Betreffzusatz nur bei umgeleiteten Mails außerhalb der Produktion (G5).",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "quelltext",
+    "datei": "src/lib/mail/versand.ts",
+    "fundstueck": "[persönlicher Link, nicht gespeichert]",
+    "grund": "Ersatzmarke im gespeicherten Mailverlauf im Admin: Persönliche Links werden dort geschwärzt. In der Mail an den Kunden steht der Link, nicht die Marke.",
+    "datum": "2026-11-16"
+  },
+  {
+    "pruefung": "platzhalter",
+    "quelle": "quelltext",
+    "datei": "src/lib/mail/versand.ts",
+    "fundstueck": "[Text gekürzt]",
+    "grund": "Kürzungsmarke im gespeicherten Mailverlauf im Admin bei sehr langen Texten; die Mail an den Kunden ist ungekürzt.",
+    "datum": "2026-11-16"
   }
 ]

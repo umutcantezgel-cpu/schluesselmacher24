@@ -64,6 +64,7 @@ const STARTWERT_DATEIEN = {
   fahrzeugkatalog: 'fahrzeugkatalog.json',
   kategorien: 'kategorien.json',
   hersteller: 'hersteller.json',
+  bauformen: 'bauformen.json',
 } as const;
 
 export type StartwertName = keyof typeof STARTWERT_DATEIEN;
@@ -548,9 +549,25 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
       // Bereiche (FA-SHOP-04): bei schon angelegten Herstellern einmal mit den Startwerten füllen.
       abgleich: [{ pfad: 'einsatz' }, { pfad: 'bereiche', spalten: ['art', 'einsatz'], leerErgaenzen: true }],
     });
+    // Bauformen der Gehäuse (FA-SHOP-02) vor den Artikeln, die sie auswählen. Umbau-Beispiele
+    // kommen nie aus dem Seed: Sie brauchen echte Fotos (R4).
+    await eintraegeUebernehmen({
+      name: 'bauformen',
+      collection: 'bauformen',
+      inhalt: await quelle.read('bauformen'),
+      startwert: 'bauformen',
+      schluessel: (b) => b.id,
+      dbSchluessel: kennung,
+      zuDaten: m.bauformZuPayload,
+      abgleich: [{ pfad: 'name' }, { pfad: 'reihenfolge' }],
+    });
     const produktVerweise: m.ProduktVerweise = {
       kategorien: await kennungen('kategorien'),
       hersteller: await kennungen('hersteller'),
+      bauformen: await kennungen('bauformen'),
+      // Der Fahrzeugkatalog wird erst weiter unten übernommen; beim ersten Lauf ist die Karte leer,
+      // Reihen-Verweise aus dem Inhalt entfallen dann (der Startbestand hat keine).
+      fahrzeugreihen: await kennungen('fahrzeugreihen'),
     };
 
     await eintraegeUebernehmen({

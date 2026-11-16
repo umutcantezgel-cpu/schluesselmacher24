@@ -88,7 +88,7 @@ function Telefontermin({ api }: { api: string }) {
         {laeuft ? 'Wird geprüft …' : 'Termin eintragen'}
       </Button>
       <p className="field-description">
-        Gleiche Prüfung wie die Online-Buchung (Öffnungszeiten, Sperrtage, Feiertage, Belegung), ohne Vorlauf. Ohne
+        Gleiche Prüfung wie die Online-Buchung (Terminzeiten der Werkstatt, Sperrtage, Feiertage, Belegung), ohne Vorlauf. Ohne
         Online-Zahlung; die Vertragsbestätigung geht einmalig an den Kunden.
       </p>
     </form>
