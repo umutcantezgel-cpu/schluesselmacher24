@@ -9,6 +9,7 @@ import { codePasst } from '@/lib/code-pattern';
 import { verfuegbarkeitVon } from '@/lib/data/shop';
 import { validateCylinderDraft } from '@/lib/cylinder-rules';
 import { zylinderDetails } from '@/lib/cylinder-summary';
+import { herstellerAngabeProblem, systemeFuerSperrschliessung } from '@/lib/konfigurator/hersteller-angabe';
 import { formatCents } from '@/lib/format';
 import { SCHUTZ_ERNEUERT, type FormularSchutz, type SchutzAntwort } from '@/lib/formular-schutz';
 import { storageStatus } from '@/lib/integrations';
@@ -102,6 +103,7 @@ const cartItemSchema = z.discriminatedUnion('kind', [
         .array(z.object({ name: z.string().max(200), qty: z.number().int().min(1).max(999) }))
         .max(20)
         .optional(),
+      herstellerAngabe: z.string().trim().min(1).max(80).optional(),
     }),
     unitPriceCents: z.number().int().min(0),
     qty: z.literal(1),
@@ -275,6 +277,11 @@ export async function submitOrder(input: CheckoutInput): Promise<CheckoutResult>
     } else {
       const problem = validateCylinderDraft(item.draft, catalog);
       if (problem) return fail(`Zylinder-Zusammenstellung: ${problem}`);
+      // Herstellerwahl ohne Preiswirkung (FA-SHOP-04B): nur ein System aus der Stammliste.
+      if (item.draft.herstellerAngabe) {
+        const angabe = herstellerAngabeProblem(item.draft, catalog, systemeFuerSperrschliessung(await getCollection('hersteller')));
+        if (angabe) return fail(`Zylinder-Zusammenstellung: ${angabe}`);
+      }
 
       const breakdown = priceCylinderOrder(item.draft, catalog);
       verified.push({ ...item, unitPriceCents: breakdown.totalCents });

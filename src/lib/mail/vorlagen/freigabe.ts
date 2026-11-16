@@ -12,6 +12,7 @@
  */
 
 import { istEinsendung } from '../../einsenden/vorgang';
+import { VERPACKUNG_HINWEIS } from '../../versand/varianten';
 import { formatCents } from '../../format';
 import { gewuenschteStueckzahl } from '../../foto-freigabe';
 import { zahlungEingegangen } from '../../partner/vermittlung';
@@ -63,7 +64,10 @@ function einsendeBausteine(vorgang: BusinessRecord, mitPreis: boolean, anschrift
         `• Legen Sie einen Zettel mit Ihrer Vorgangsnummer ${vorgang.reference}, Ihrem Namen und Ihrer Telefonnummer bei.`,
         '• Senden Sie nur diesen Schlüssel, ohne Schlüsselring und Anhänger.',
         '• Legen Sie, falls vorhanden, eine Kopie der Sicherungskarte oder des Berechtigungsnachweises bei.',
-        '• Versenden Sie versichert oder mindestens mit Sendungsverfolgung.',
+        `• ${VERPACKUNG_HINWEIS}`,
+        '• Versenden Sie mit Sendungsverfolgung. Für wertvolle Originalschlüssel empfehlen wir DHL Paket (Haftung bis 500 €). '
+          + 'Ein Einschreiben Einwurf haftet nur bis 20 €.',
+        '• Varianten, Kosten und den Begleitschein finden Sie auf Ihrer Vorgangsseite.',
       ].join('\n'),
     },
   ];

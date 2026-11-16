@@ -320,7 +320,8 @@ describe('submitRecord', () => {
 
   it('legt eine Einsendung nur mit geprüften Angaben an, ohne Begleitschein bei Platzhalter-Firmendaten (G-24, E6-OPUS-02)', async () => {
     const basis = { kind: 'anfrage' as const, area: 'schluessel-nach-vorlage' as const, process: 'gefuehrte-anfrage' as const, contact, uploads: [] };
-    const gueltig = { quelle: 'einsenden', originale: 2, stueckzahl: 3, beschriftung: ' AB 123 ', hinweis: '', sicherungskarte: 'nein', versand: 'versichert' };
+    // Varianten des Inhabers (FA-SHOP-03, A-050): „versichert“ und „unversichert“ wählt niemand mehr.
+    const gueltig = { quelle: 'einsenden', originale: 2, stueckzahl: 3, beschriftung: ' AB 123 ', hinweis: '', schluesselart: 'haus', sicherungskarte: 'nein', versand: 'einschreiben-einwurf' };
     const gefaelscht = [{ title: 'Preis', rows: [{ label: 'Preis', value: 'Gesamt 1,00 €' }] }];
     const ok = await submitRecord({ ...basis, summary: gefaelscht, payload: { ...gueltig, betragCents: 1 } });
     expect(ok.ok).toBe(true);
@@ -330,15 +331,20 @@ describe('submitRecord', () => {
     expect(ok.notices.join(' ')).toContain('Begleitschein');
     const vorgang = stored[0];
     expect(vorgang.payload).toEqual({
-      quelle: 'einsenden', originale: 2, stueckzahl: 3, beschriftung: 'AB 123', hinweis: null, sicherungskarte: 'nein', versand: 'versichert', originalEingesendet: true,
+      quelle: 'einsenden', originale: 2, stueckzahl: 3, beschriftung: 'AB 123', hinweis: null, sicherungskarte: 'nein', schluesselart: 'haus', wertvoll: false, versand: 'einschreiben-einwurf', originalEingesendet: true,
     });
     expect(JSON.stringify(vorgang.summary)).not.toContain('1,00 €');
     expect(vorgang.summary.map((teil) => teil.title)).toEqual(['Einsendung', 'Kontakt und Rücksendung']);
 
     const anzahl = stored.length;
-    for (const falsch of [{ stueckzahl: 99 }, { originale: 0 }, { versand: 'express' }, { sicherungskarte: '' }, { beschriftung: 'x'.repeat(81) }]) {
+    for (const falsch of [
+      { stueckzahl: 99 }, { originale: 0 }, { versand: 'express' }, { versand: 'versichert' }, { versand: 'unversichert' }, { versand: 'einschreiben-wert' },
+      { sicherungskarte: '' }, { beschriftung: 'x'.repeat(81) }, { schluesselart: 'transponder' }, { schluesselart: undefined },
+    ]) {
       expect((await submitRecord({ ...basis, summary: [], payload: { ...gueltig, ...falsch } })).ok, JSON.stringify(falsch)).toBe(false);
     }
+    // Mehr Prüffälle als das Anfragelimit erlaubt: Zähler zurücksetzen, damit die Prüfungen unten greifen.
+    resetRateLimits();
     expect((await submitRecord({ ...basis, contact: { ...contact, postalCode: '' }, summary: [], payload: gueltig })).ok).toBe(false);
     expect((await submitRecord({ ...basis, area: 'schliessanlagen', summary: [], payload: gueltig })).ok).toBe(false);
     // Sicherungskarte „ja“ verlangt das Foto der Karte wie die Foto-Anfrage (R13).
@@ -1474,6 +1480,64 @@ describe('submitOrder', () => {
     const ok = await bestellen(ohneHalb);
     expect(ok.ok).toBe(true);
     expect(stored[0].lines?.[0].totalCents).toBe(priceCylinderOrder(ohneHalb, defaults.cylinderCatalog()).totalCents);
+  });
+
+  it('drei Maße in einem Satz: vom Konfigurator-Zustand über den Warenkorb bis zur Serverprüfung, mit Herstellerwahl (FA-SHOP-04B)', async () => {
+    const { zuEntwurf } = await import('@/app/(site)/gleichschliessende-zylinder/konfigurator/kern');
+    const { systemeFuerSperrschliessung } = await import('@/lib/konfigurator/hersteller-angabe');
+    const { useCartStore } = await import('@/lib/store/cart');
+    const versand = defaults.settings().shipping.find((s) => s.id === 'paket-versichert')!;
+    const katalog = testKatalog();
+    const systeme = systemeFuerSperrschliessung(defaults.hersteller());
+    // Zustand des Konfigurators: drei verschiedene Maße, Sicherungskarte, Erweiterung, BKS als Wahl.
+    const zustand = {
+      items: [
+        { uid: 'position-1', form: 'doppelzylinder' as const, measureAMm: 30, measureBMm: 35, qty: 2 },
+        { uid: 'position-2', form: 'doppelzylinder' as const, measureAMm: 40, measureBMm: 45, qty: 1 },
+        { uid: 'position-3', form: 'halbzylinder' as const, measureAMm: 40, qty: 1 },
+      ],
+      keyCount: 5,
+      extraIds: ['sicherungskarte'],
+      expandable: true,
+      manufacturerId: '',
+      components: [],
+      herstellerAngabe: 'bks',
+    };
+    const entwurf = zuEntwurf(zustand, katalog, systeme);
+    const preis = priceCylinderOrder(entwurf, katalog);
+    useCartStore.getState().clear();
+    useCartStore.getState().addCylinderOrder(entwurf, preis.totalCents);
+    const position = useCartStore.getState().items[0];
+    expect(position.kind).toBe('zylinder-schliessung');
+    const bestellen = (item: typeof position) =>
+      submitOrder({
+        items: [item],
+        shippingOptionId: versand.id,
+        contact,
+        acceptedTerms: true,
+        acceptedCustomMade: true,
+        expectedTotalCents: preis.totalCents + versand.priceCents,
+      });
+
+    const ok = await bestellen(position);
+    expect(ok.ok).toBe(true);
+    const zeile = stored[0].lines?.[0];
+    expect(zeile?.totalCents).toBe(preis.totalCents);
+    expect(zeile?.details).toContain('Hersteller (Ihre Wahl): BKS');
+    expect(zeile?.details).toContain('30 mm / 35 mm');
+    expect(zeile?.details).toContain('40 mm / 45 mm');
+    expect(zeile?.details).toContain('Halbzylinder: 40 mm');
+    expect(zeile?.details).toContain('Gemeinsame Schlüssel: 5 Stück');
+    expect(zeile?.details).toContain('Sicherungskarte und geschütztes System');
+    expect(zeile?.details).toContain('Spätere Erweiterung: Vorgesehen');
+
+    // Ein Hersteller, den der Stamm für Sperrschließungen nicht führt, kommt nicht durch.
+    if (position.kind !== 'zylinder-schliessung') return;
+    const fremd = await bestellen({ ...position, draft: { ...position.draft, herstellerAngabe: 'Erfunden' } });
+    expect(fremd.ok).toBe(false);
+    expect(fremd.error).toContain('im Konfigurator neu');
+    expect(stored).toHaveLength(1);
+    useCartStore.getState().clear();
   });
 
   it('lehnt nicht wählbare Zylindermaße ab', async () => {

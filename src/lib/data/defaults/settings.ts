@@ -1,4 +1,5 @@
 import type { Settings } from '@/lib/types';
+import { STANDARD_VARIANTEN } from '@/lib/versand/varianten';
 
 /**
  * Standard-Einstellungen — nur der Rückfall, wenn weder `content/settings.json`
@@ -109,6 +110,8 @@ export function settings(): Settings {
       portoUnversichertCents: 180,
       haftungVersichertEuro: 25,
       portoStand: 'Deutsche Post, Preise ab 1.1.2026: Einschreiben 4,45 €, Großbrief 1,80 €',
+      // Varianten des Inhabers (A-050); die Felder darüber gelten nur noch für ältere Vorgänge.
+      varianten: STANDARD_VARIANTEN.map((v) => ({ ...v, einlieferung: [...v.einlieferung], empfohlenFuer: [...v.empfohlenFuer] })),
     },
     updatedAt: '2026-09-15T00:00:00.000Z',
   };

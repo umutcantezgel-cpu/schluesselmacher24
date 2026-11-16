@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { artikelAnfragePfad, istIndexierbar, sortiereArtikel } from '@/lib/artikel';
+import { istBestellbar } from '@/lib/data/shop';
 import { getCollection, getPageContent } from '@/lib/data';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import type { NavLink } from '@/lib/navigation';
@@ -23,11 +24,18 @@ import { ArtikelListe, type ListenArtikel } from './artikel-liste';
 const ROUTE = 'artikel';
 const TITEL = 'Artikel';
 const LEAD = 'Artikel rund um Schlüssel, Schloss und Tür zum direkten Bestellen.';
-/** Ohne Artikel verspricht der Kopf keine Bestellung (R4, R9): Die Seite führt in die Anfrage. */
+/**
+ * Ohne bestellbaren Artikel verspricht der Kopf keine Bestellung (R4, R9): gar keine Artikel, nur
+ * Beispiele oder nur Artikel „auf Anfrage“ oder „nicht lieferbar“ (FA-INHALT-03I, L-17).
+ */
 const LEAD_OHNE_ARTIKEL = 'Artikel rund um Schlüssel, Schloss und Tür. Zurzeit fragen Sie Artikel bei uns an.';
 const BESCHREIBUNG =
   'Standardartikel rund um Schlüssel, Schloss und Tür direkt bestellen: Eigenschaften, '
   + 'Lieferumfang und Staffelpreise auf einen Blick.';
+/** Suchbeschreibung ohne bestellbaren Artikel: wie der Kopf, ohne Bestellung und Staffelpreise (R4, R8). */
+const BESCHREIBUNG_ANFRAGE =
+  'Artikel rund um Schlüssel, Schloss und Tür. Zurzeit fragen Sie Artikel bei uns an. '
+  + 'Wir beraten Sie und sagen Ihnen, was zu Ihrem Schloss passt.';
 
 /** Interne Verlinkung am Seitenende — feste Ziele plus gepflegte Ziele aus der Datenschicht. */
 const BASE_LINKS: NavLink[] = [
@@ -72,9 +80,10 @@ export async function generateMetadata(): Promise<Metadata> {
   // Nur mit mindestens einem echten (indexierbaren) Artikel in Suchmaschinen — Beispielartikel
   // allein ergeben keine eigene Seite (Erg. Leitfaden §4, MENSCHEN M-25). Wie in der Sitemap.
   const indexierbar = !page?.seo.noindex && alle.some(istIndexierbar);
+  const direktkauf = alle.some(istBestellbar);
   return {
     title: page?.seo.title || TITEL,
-    description: page?.seo.description || BESCHREIBUNG,
+    description: direktkauf ? page?.seo.description || BESCHREIBUNG : BESCHREIBUNG_ANFRAGE,
     alternates: { canonical: `/${ROUTE}` },
     ...(indexierbar ? {} : { robots: { index: false, follow: true } }),
   };
@@ -90,6 +99,8 @@ export default async function ArtikelPage() {
   const articles = sortiereArtikel(alle);
   const beispiele = articles.filter((a) => a.example).length;
   const nurBeispiele = articles.length > 0 && beispiele === articles.length;
+  // Direktkauf in Kopfzeile, Unterzeile und Abschnitt nur mit mindestens einem bestellbaren Artikel (kein Beispiel, lieferbar).
+  const direktkauf = articles.some(istBestellbar);
 
   // Nur die Felder, die die Karten brauchen, gehen an den Browser.
   const liste: ListenArtikel[] = articles.map((a) => ({
@@ -137,15 +148,15 @@ export default async function ArtikelPage() {
         data={pageGraphSchema({
           path: `/${ROUTE}`,
           name: titel,
-          description: page?.seo.description || BESCHREIBUNG,
+          description: direktkauf ? page?.seo.description || BESCHREIBUNG : BESCHREIBUNG_ANFRAGE,
           crumbs,
         })}
       />
 
       <PageHeader
-        eyebrow={articles.length > 0 ? PROCESS_LABELS.direktkauf.label : 'Auf Anfrage'}
+        eyebrow={direktkauf ? PROCESS_LABELS.direktkauf.label : 'Auf Anfrage'}
         title={titel}
-        lead={articles.length > 0 ? page?.subline || LEAD : LEAD_OHNE_ARTIKEL}
+        lead={direktkauf ? page?.subline || LEAD : LEAD_OHNE_ARTIKEL}
         crumbs={crumbs}
       />
 
@@ -160,12 +171,22 @@ export default async function ArtikelPage() {
                 eyebrow="Auswahl"
                 title="Artikel auswählen"
                 lead={
-                  page?.intro
-                  || 'Öffnen Sie einen Artikel. Dort finden Sie Eigenschaften, Lieferumfang und '
-                    + 'Staffelpreise und wählen die Stückzahl.'
+                  direktkauf
+                    ? page?.intro
+                      || 'Öffnen Sie einen Artikel. Dort finden Sie Eigenschaften, Lieferumfang und '
+                        + 'Staffelpreise und wählen die Stückzahl.'
+                    : 'Öffnen Sie einen Artikel. Dort finden Sie Eigenschaften und Lieferumfang.'
                 }
               />
             </div>
+            {/* Ohne bestellbaren Artikel sagt der Kopf „fragen Sie an“: der Weg dorthin steht hier (keine Sackgasse). */}
+            {!direktkauf && (
+              <div className="mt-6">
+                <ButtonLink href={artikelAnfragePfad('Schließtechnik und Zubehör')} variant="outline">
+                  Artikel anfragen
+                </ButtonLink>
+              </div>
+            )}
             <PreisHinweis alle className="mt-4" />
             <ArtikelListe articles={liste} hinweis={beispielHinweis} className="mt-6" />
           </>

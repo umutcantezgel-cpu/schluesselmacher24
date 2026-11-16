@@ -11,7 +11,9 @@
 
 import { angabe, firmaVeroeffentlichbar, firmenname, standort } from '@/lib/rechtliches/firma';
 import type { BusinessRecord, CompanyProfile, EinsendeEinstellungen } from '@/lib/types';
-import { einsendeAngebot, erstelleVersandschein, type Anschrift, type Sendung, type Versandschein } from '@/lib/versand';
+import { einsendeAngebot, erstelleVersandschein, type Anschrift, type Sendung, type VersandArt, type Versandschein } from '@/lib/versand';
+import type { AngebotFall, EinsendeAngebot } from '@/lib/versand/angebot';
+import { empfehlungFuer, istVariantenKennung } from '@/lib/versand/varianten';
 
 import { inhaltText, istEinsendung, type EinsendePayload } from './vorgang';
 
@@ -44,15 +46,28 @@ export function begleitscheinAnzeigen(vorgang: Vorgang & Pick<BusinessRecord, 's
   return vorgang.approval?.sendInRequired === true && (vorgang.status === 'freigegeben' || vorgang.status === 'in-fertigung');
 }
 
+/**
+ * Versand eines Vorgangs: bei der Einsendung die Wahl aus dem Formular (ältere Vorgänge behalten
+ * „versichert“ oder „unversichert“, G6); bei der Freigabe mit Einsendung die Wahl auf der Vorgangsseite,
+ * sonst die Empfehlung DHL Paket (A-050, Punkt 4).
+ */
+export function versandDesVorgangs(vorgang: Vorgang, gewaehlt?: VersandArt): VersandArt {
+  if (istEinsendung(vorgang)) {
+    const art = (vorgang.payload as unknown as EinsendePayload).versand;
+    return art === 'versichert' || art === 'unversichert' || istVariantenKennung(art) ? art : 'versichert';
+  }
+  return gewaehlt ?? 'dhl-paket';
+}
+
 /** Sendung aus dem Vorgang; null ohne Werkstattanschrift oder ohne Rücksendeanschrift. */
-export function sendungAusVorgang(vorgang: Vorgang, company: CompanyProfile | undefined): Sendung | null {
+export function sendungAusVorgang(vorgang: Vorgang, company: CompanyProfile | undefined, gewaehlt?: VersandArt): Sendung | null {
   const empfaenger = werkstattAnschrift(company);
   const c = vorgang.contact;
   if (!empfaenger || !c.street?.trim() || !c.postalCode?.trim() || !c.city?.trim()) return null;
   const einsendung = istEinsendung(vorgang) ? (vorgang.payload as unknown as EinsendePayload) : null;
   return {
     vorgangsnummer: vorgang.reference,
-    art: einsendung?.versand === 'unversichert' ? 'unversichert' : 'versichert',
+    art: versandDesVorgangs(vorgang, gewaehlt),
     absender: {
       name: [c.firstName, c.lastName].filter(Boolean).join(' '),
       ...(c.company ? { zusatz: c.company } : {}),
@@ -74,10 +89,18 @@ function ohneLabel(env: Umgebung): Umgebung {
 /** Begleitschein als PDF; null, wenn der Vorgang keinen braucht oder Anschriften fehlen. */
 export async function begleitscheinZumVorgang(
   vorgang: Vorgang,
-  { company, einstellungen, env = process.env }: { company: CompanyProfile | undefined; einstellungen: EinsendeEinstellungen; env?: Umgebung },
+  {
+    company,
+    einstellungen,
+    env = process.env,
+    versand,
+  }: { company: CompanyProfile | undefined; einstellungen: EinsendeEinstellungen; env?: Umgebung; versand?: unknown },
 ): Promise<Versandschein | null> {
   if (!brauchtBegleitschein(vorgang)) return null;
-  const sendung = sendungAusVorgang(vorgang, company);
+  // Freigabe mit Einsendung: nur eine Variante, die die Vorgangsseite anbietet (Sonderfall nur mit Freigabe).
+  const angebot = einsendeAngebotFuerVorgang(vorgang, einstellungen);
+  const gewaehlt = istVariantenKennung(versand) && angebot.optionen.some((o) => o.art === versand) ? versand : undefined;
+  const sendung = sendungAusVorgang(vorgang, company, gewaehlt);
   if (!sendung) return null;
   return erstelleVersandschein(sendung, { einstellungen, env: ohneLabel(env) });
 }
@@ -85,8 +108,20 @@ export async function begleitscheinZumVorgang(
 /**
  * Was die Seiten zum Einschicken über Versand und Porto sagen. Solange dieser Weg kein echtes Label
  * erzeugt (A-035), gilt immer der Begleitschein: Der Kunde frankiert selbst, „kostenlos“ steht nirgends
- * (R9), auch wenn der Schalter „Retourenlabel aktiv“ schon an ist.
+ * (R9), auch wenn der Schalter „Retourenlabel aktiv“ schon an ist. Das Label folgt in FA-SHOP-03B.
  */
-export function einsendeAngebotFuerWeg(einstellungen: EinsendeEinstellungen) {
-  return einsendeAngebot(einstellungen, false);
+export function einsendeAngebotFuerWeg(einstellungen: EinsendeEinstellungen, fall: AngebotFall = {}): EinsendeAngebot {
+  return einsendeAngebot(einstellungen, false, fall);
+}
+
+/**
+ * Angebot für einen bestehenden Vorgang (Vorgangsseite, Begleitschein): Bei der Freigabe mit Einsendung
+ * ist DHL Paket empfohlen, weil das Team das Original braucht; den Sonderfall gibt das Team frei.
+ */
+export function einsendeAngebotFuerVorgang(vorgang: Vorgang, einstellungen: EinsendeEinstellungen): EinsendeAngebot {
+  const einsendung = istEinsendung(vorgang) ? (vorgang.payload as unknown as EinsendePayload) : null;
+  return einsendeAngebotFuerWeg(einstellungen, {
+    empfehlung: einsendung ? empfehlungFuer(einsendung) : 'originalschluessel',
+    sonderfallFrei: vorgang.approval?.sendInSpecialAllowed === true,
+  });
 }

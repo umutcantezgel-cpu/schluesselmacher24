@@ -9,7 +9,8 @@ import { LIMITS, RATE_LIMIT_MESSAGE, allowRequest } from '@/lib/server/rate-limi
 /**
  * Begleitschein zum Vorgang als PDF (G-24, E6-OPUS-02): für Einsendungen und für Foto-Anfragen, deren
  * Freigabe das Original verlangt, solange die Vorgangsseite ihn zeigt (bei Einsendungen bis zum Eingang).
- * Nur mit dem Link-Schlüssel der Vorgangsseite (`?t=`); ein
+ * Bei der Freigabe mit Einsendung nennt `?v=` die gewählte Variante (A-050); geprüft wird sie gegen das
+ * Angebot des Vorgangs, sonst gilt die Empfehlung. Nur mit dem Link-Schlüssel der Vorgangsseite (`?t=`); ein
  * unbekannter Vorgang und ein falscher Schlüssel sehen gleich aus. Gespeichert wird nichts.
  */
 const KOPF = { 'cache-control': 'no-store', 'x-robots-tag': 'noindex', 'referrer-policy': 'no-referrer' };
@@ -29,6 +30,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     const schein = await begleitscheinZumVorgang(vorgang, {
       company: settings.company,
       einstellungen: settings.sendIn ?? defaults.settings().sendIn!,
+      versand: request.nextUrl.searchParams.get('v') ?? undefined,
     });
     if (!schein || !begleitscheinAnzeigen(vorgang)) return textAntwort('Hierfür brauchen Sie keinen Begleitschein. Den Stand sehen Sie auf der Seite, von der Sie gekommen sind.', 404);
     return new Response(new Uint8Array(schein.pdf), {

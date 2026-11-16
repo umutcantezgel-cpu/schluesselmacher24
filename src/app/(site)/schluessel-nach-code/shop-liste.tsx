@@ -174,7 +174,7 @@ export function ShopListe({ lines, hersteller = [], startSuche = '', className }
       >
         <Field
           label="Suche"
-          hint="Zum Beispiel ein Hersteller, ein System, Briefkasten oder der Code von Ihrem Schloss. Bei einem Code sehen Sie alle Produkte, zu deren Codeformat er passt."
+          hint="Zum Beispiel ein Hersteller, ein System, Briefkasten oder der Code von Ihrem Schloss. Bei einem Code sehen Sie alle Produkte, für die er die richtige Form hat."
         >
           {({ id: fieldId, describedBy }) => (
             <TextInput
@@ -196,7 +196,7 @@ export function ShopListe({ lines, hersteller = [], startSuche = '', className }
             <strong className="font-bold text-foreground">{results.length}</strong> von {lines.length} {lines.length === 1 ? 'Produkt' : 'Produkten'}
             {codeTrefferSichtbar > 0 && (
               <span className="sr-only">
-                , davon {codeTrefferSichtbar} passend zum Codeformat
+                , davon {codeTrefferSichtbar} mit der richtigen Form für Ihren Code
               </span>
             )}
           </p>
@@ -284,13 +284,12 @@ export function ShopListe({ lines, hersteller = [], startSuche = '', className }
 
           {familienZeigen && (
           <Field
-            label="Anwendungsfamilie"
+            label="Einsatzbereich"
             info={{
-              title: 'Was ist eine Anwendungsfamilie?',
+              title: 'Was ist der Einsatzbereich?',
               body:
-                'Die Anwendungsfamilie fasst Schlösser für denselben Zweck zusammen, zum Beispiel '
-                + 'Briefkastenanlagen oder Technikschränke. Damit finden Sie am schnellsten zum Ziel, '
-                + 'wenn Sie den Schlüsseltyp nicht kennen.',
+                'Hier wählen Sie, wofür das Schloss ist, zum Beispiel Briefkasten oder Technikschrank. '
+                + 'Das hilft, wenn Sie den Schlüsseltyp nicht kennen.',
             }}
           >
             {({ id: fieldId }) => (
@@ -307,14 +306,16 @@ export function ShopListe({ lines, hersteller = [], startSuche = '', className }
           )}
         </div>
 
-        {/* Codesuche: Hinweis, dass das Format passt; welches Produkt zum Schloss gehört, zeigen Hersteller und System */}
+        {/* Codesuche (L-02): Die Form des Codes passt; ob der Schlüssel zum Schloss passt, zeigen erst Hersteller und System.
+            Der Schlüssel wird nach Angabe gefertigt, darum steht der Weg in die Anfrage gleich dabei. */}
         {codeTrefferSichtbar > 0 && (
           <p className="mt-4 max-w-measure text-small text-foreground-muted">
-            Ihr Code <span className="font-mono font-semibold text-foreground">{query.trim()}</span> passt zum
-            Codeformat von {codeTrefferSichtbar} {codeTrefferSichtbar === 1 ? 'Produkt' : 'Produkten'}. Welches
-            davon zu Ihrem Schloss gehört, erkennen Sie an Hersteller und System. Passt keines sicher,{' '}
+            Ihr Code <span className="font-mono font-semibold text-foreground">{query.trim()}</span> hat die richtige
+            Form für {codeTrefferSichtbar} {codeTrefferSichtbar === 1 ? 'Produkt' : 'Produkte'}. Das heißt noch nicht,
+            dass der Schlüssel zu Ihrem Schloss passt. Vergleichen Sie Hersteller und System mit den Angaben auf
+            Ihrem Schloss. Im Zweifel hilft{' '}
             <Link href={codeAnfragePfad({ code: query })} prefetch={false} className="font-semibold text-primary hover:underline">
-              fragen Sie den Code an
+              Code anfragen
             </Link>
             .
           </p>
@@ -422,7 +423,7 @@ export function ShopListe({ lines, hersteller = [], startSuche = '', className }
                                     zusatz={
                                       treffer && (
                                         <Badge tone="primary" className="ml-2 align-middle font-sans">
-                                          passt zum Codeformat
+                                          Code hat die richtige Form
                                         </Badge>
                                       )
                                     }

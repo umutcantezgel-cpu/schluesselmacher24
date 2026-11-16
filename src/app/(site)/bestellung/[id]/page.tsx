@@ -15,7 +15,10 @@ import { vorgangOrtText, werkstattAnschrift } from '@/lib/terminort';
 import { auftragswegVon, auftragswegZeilen, istPartnerAnfrage, terminortZeile } from '@/lib/auftragsweg';
 import type { OrderLine, OrderTotals, PaymentInfo, RecordStatus, SummarySection } from '@/lib/types';
 import { naechsteSchritte } from '@/lib/wege/naechste-schritte';
-import { begleitscheinAnzeigen } from '@/lib/einsenden/schein';
+import { begleitscheinAnzeigen, einsendeAngebotFuerVorgang } from '@/lib/einsenden/schein';
+import { istEinsendung, type EinsendePayload } from '@/lib/einsenden/vorgang';
+import { defaults } from '@/lib/data/defaults';
+import { VERPACKUNG_HINWEIS } from '@/lib/versand/varianten';
 import { ART_FUER_KUNDEN, kundenErstattung, kundenSendung, kundenStatus } from '@/lib/kundenstatus';
 import { zahlungsAnsicht } from '@/lib/zahlung/ansicht';
 import { neuBuchenHref } from '@/lib/zahlung/neu-buchen';
@@ -25,6 +28,7 @@ import { PageHeader } from '@/components/layout/page-header';
 import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 
+import { VarianteBeschreibung } from '../../schluessel-einschicken/versand-variante';
 import { FotoErgebnis } from './foto-ergebnis';
 import { JetztBezahlen } from './jetzt-bezahlen';
 
@@ -171,6 +175,15 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
   const begleitscheinHref = begleitscheinAnzeigen(record)
     ? `/bestellung/${encodeURIComponent(record.id)}/begleitschein?t=${encodeURIComponent(token)}`
     : null;
+  // Versandvarianten mit Kosten vor dem Begleitschein (A-050, Punkt 4): bei der Einsendung die gewählte,
+  // bei der Freigabe mit Einsendung die Wahl zwischen den Varianten, je mit eigenem Begleitschein.
+  const versandAngebot = begleitscheinHref
+    ? einsendeAngebotFuerVorgang(record, (await getSettings().catch(() => null))?.sendIn ?? defaults.settings().sendIn!)
+    : null;
+  const einsendung = istEinsendung(record);
+  const gewaehlteVariante = einsendung && versandAngebot
+    ? [...versandAngebot.optionen, ...versandAngebot.sonderfaelle].find((o) => o.art === (record.payload as unknown as EinsendePayload).versand)
+    : undefined;
   const zahlung = zahlungsAnsicht(record, {
     online: paymentStatus().configured,
     abbruch: geladen.abbruch,
@@ -328,15 +341,54 @@ export default async function BestellungSeite(props: BestellungSeiteProps) {
               <section className="border-t border-border pt-8">
                 <h2 className="text-title-sm font-semibold text-foreground">Begleitschein</h2>
                 <p className="mt-2 max-w-measure text-small leading-relaxed text-foreground-muted">
-                  Drucken Sie den Begleitschein aus. Legen Sie ihn mit dem Schlüssel in einen gepolsterten Umschlag. Die Anschrift für den Umschlag steht darauf.
+                  Drucken Sie den Begleitschein aus und legen Sie ihn dem Schlüssel bei. {VERPACKUNG_HINWEIS} Die Anschrift steht auf dem Begleitschein.
                 </p>
-                <a
-                  href={begleitscheinHref}
-                  className="mt-4 inline-flex min-h-touch items-center gap-1.5 text-small font-semibold text-primary hover:underline"
-                >
-                  Begleitschein herunterladen (PDF)
-                  <GlyphPfeilRechts size={18} />
-                </a>
+                {einsendung || !versandAngebot ? (
+                  <>
+                    {gewaehlteVariante && (
+                      <div className="mt-4 max-w-measure rounded-lg border border-border bg-surface p-4 text-small text-foreground-muted">
+                        <p className="font-semibold text-foreground">Ihr Versand: {gewaehlteVariante.titel}</p>
+                        <p className="mt-1">
+                          <VarianteBeschreibung option={gewaehlteVariante} mitStand />
+                        </p>
+                      </div>
+                    )}
+                    <a
+                      href={begleitscheinHref}
+                      className="mt-4 inline-flex min-h-touch items-center gap-1.5 text-small font-semibold text-primary hover:underline"
+                    >
+                      Begleitschein herunterladen (PDF)
+                      <GlyphPfeilRechts size={18} />
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    <p className="mt-2 max-w-measure text-small leading-relaxed text-foreground-muted">
+                      Wählen Sie, wie Sie den Schlüssel schicken. Ihre Wahl steht auf dem Begleitschein; die Kosten sehen Sie vorher.
+                    </p>
+                    <ul className="mt-4 grid max-w-measure gap-4">
+                      {versandAngebot.optionen.map((option) => (
+                        <li key={option.art} className="rounded-lg border border-border bg-surface p-4 text-small text-foreground-muted">
+                          <p className="flex flex-wrap items-center gap-2 font-semibold text-foreground">
+                            {option.titel}
+                            {option.empfohlen && <Badge tone="success">Empfehlung</Badge>}
+                            {option.nurSonderfall && <Badge tone="outline">Sonderfall, von uns freigegeben</Badge>}
+                          </p>
+                          <p className="mt-1">
+                            <VarianteBeschreibung option={option} mitStand />
+                          </p>
+                          <a
+                            href={`${begleitscheinHref}&v=${encodeURIComponent(option.art)}`}
+                            className="mt-2 inline-flex min-h-touch items-center gap-1.5 font-semibold text-primary hover:underline"
+                          >
+                            Begleitschein für {option.titel} (PDF)
+                            <GlyphPfeilRechts size={18} />
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
               </section>
             )}
 

@@ -9,6 +9,7 @@
  */
 
 import { istEinsendung } from '../../einsenden/vorgang';
+import { VERPACKUNG_HINWEIS, versandBezeichnung } from '../../versand/varianten';
 import { formatDateTime } from '../../format';
 import type { BusinessRecord } from '../../types';
 import { anrede, baueMail, type Baustein, type MailInhalt } from '../html';
@@ -106,6 +107,10 @@ export function kundeEingang({ vorgang, token, onlineZahlung, kontext }: KundeEi
   const einsendung = istEinsendung(vorgang);
   const betreff = einsendung ? `Ihre Einsendung ${vorgang.reference} ist angemeldet` : BETREFF[art].replace('{nr}', vorgang.reference);
   const bausteine: Baustein[] = [{ art: 'absatz', text: einsendung ? EINSENDUNG_EINLEITUNG : EINLEITUNG[art] }, nummerBaustein(vorgang)];
+  // Einsendung (A-050, Punkt 5): gewählter Versand und der Verpackungshinweis des Inhabers.
+  if (einsendung) {
+    bausteine.push({ art: 'absatz', text: `Ihr Versand: ${versandBezeichnung(vorgang.payload?.versand)}. ${VERPACKUNG_HINWEIS}` });
+  }
 
   const felder: Array<[string, string]> = [['Art', ART_LABEL[art]], ...terminZeilen(vorgang, kontext.firma)];
   if (art === 'bestellung' && vorgang.lines?.length) {

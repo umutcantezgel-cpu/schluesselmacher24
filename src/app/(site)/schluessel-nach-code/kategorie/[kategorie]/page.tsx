@@ -12,8 +12,7 @@ import {
   kategoriePfad,
   nachHerstellerUndSystem,
 } from '@/lib/codelinie';
-import { gruppeLieferbar, kategorieTexte } from '@/lib/codelinie-texte';
-import { PROCESS_LABELS } from '@/lib/navigation';
+import { gruppenKopfzeile, kategorieTexte } from '@/lib/codelinie-texte';
 import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -91,7 +90,8 @@ export default async function KategoriePage(props: KategoriePageProps) {
       />
 
       <PageHeader
-        eyebrow={gruppeLieferbar(lines) ? `Kategorie · ${PROCESS_LABELS.direktkauf.label}` : 'Kategorie · Auf Anfrage'}
+        // Drei Zustände (FA-INHALT-03I): Direktkauf, Auf Anfrage oder Derzeit nicht lieferbar.
+        eyebrow={gruppenKopfzeile('Kategorie', lines)}
         title={kategorie.name}
         lead={texte?.einleitung ?? kategorie.beschreibung}
         crumbs={crumbs}
@@ -106,7 +106,7 @@ export default async function KategoriePage(props: KategoriePageProps) {
               nummer="01"
               eyebrow="Produkte"
               title="Alle Produkte dieser Kategorie"
-              lead="Geordnet nach Hersteller und System. Jedes Produkt hat eine eigene Seite mit Codeformat und Beispielcode."
+              lead="Geordnet nach Hersteller und System. Jedes Produkt hat eine eigene Seite. Dort steht, wie sein Code aussieht, mit einem Beispiel."
             />
             <PreisHinweis alle className="mt-4" />
             <div className="mt-8 grid gap-10">

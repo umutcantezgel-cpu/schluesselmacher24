@@ -8,8 +8,25 @@ import { kundeEingang, statusMail } from '../mail/vorlagen';
 import { echteEinstellungen } from '../rechtliches/test-hilfen';
 import type { BusinessRecord, CompanyProfile, ContactDetails } from '../types';
 import { SCHRITTE_EINSENDUNG, naechsteSchritte } from '../wege/naechste-schritte';
-import { begleitscheinAnzeigen, begleitscheinZumVorgang, brauchtBegleitschein, einsendeAngebotFuerWeg, werkstattAnschrift } from './schein';
-import { EINSENDE_QUELLE, EINSENDE_STATUS, einsendeVorgang, inhaltText, istEinsendung } from './vorgang';
+import { STANDARD_VARIANTEN } from '../versand/varianten';
+import {
+  begleitscheinAnzeigen,
+  begleitscheinZumVorgang,
+  brauchtBegleitschein,
+  einsendeAngebotFuerVorgang,
+  einsendeAngebotFuerWeg,
+  versandDesVorgangs,
+  werkstattAnschrift,
+} from './schein';
+import {
+  EINSENDE_QUELLE,
+  EINSENDE_STATUS,
+  EINSENDUNG_FAHRZEUGSCHEIN_FEHLT,
+  einsendeNachweisPruefen,
+  einsendeVorgang,
+  inhaltText,
+  istEinsendung,
+} from './vorgang';
 
 /* Erfundene Testdaten (G4). */
 const KONTAKT: ContactDetails = {
@@ -33,7 +50,9 @@ const FIRMA: CompanyProfile = {
   location: undefined,
 };
 const EINSTELLUNGEN = defaults.settings().sendIn!;
-const ROH = { quelle: EINSENDE_QUELLE, originale: 1, stueckzahl: 2, beschriftung: '', hinweis: ' Bitte beide gleich ', sicherungskarte: 'unklar', versand: 'unversichert' };
+const ROH = {
+  quelle: EINSENDE_QUELLE, originale: 1, stueckzahl: 2, beschriftung: '', hinweis: ' Bitte beide gleich ', schluesselart: 'haus', sicherungskarte: 'unklar', versand: 'einschreiben-einwurf',
+};
 
 function vorgang(teil: Partial<BusinessRecord> = {}): BusinessRecord {
   const geprueft = einsendeVorgang(ROH, KONTAKT);
@@ -63,10 +82,11 @@ describe('Einsendung prüfen (G-24, E6-OPUS-02)', () => {
     expect(geprueft.ok).toBe(true);
     if (!geprueft.ok) return;
     expect(geprueft.payload).toEqual({
-      quelle: 'einsenden', originale: 1, stueckzahl: 2, beschriftung: null, hinweis: 'Bitte beide gleich', sicherungskarte: 'unklar', versand: 'unversichert', originalEingesendet: true,
+      quelle: 'einsenden', originale: 1, stueckzahl: 2, beschriftung: null, hinweis: 'Bitte beide gleich', schluesselart: 'haus', wertvoll: false, sicherungskarte: 'unklar',
+      versand: 'einschreiben-einwurf', originalEingesendet: true,
     });
     const zeilen = Object.fromEntries(geprueft.summary[0].rows.map((z) => [z.label, z.value]));
-    expect(zeilen).toMatchObject({ 'Im Umschlag': '1 Schlüssel zum Nachmachen', 'Gewünschte Kopien': '2', Versand: 'unversichert', Sicherungskarte: 'unklar, bitte prüfen' });
+    expect(zeilen).toMatchObject({ 'Im Umschlag': '1 Schlüssel zum Nachmachen', 'Gewünschte Kopien': '2', Versand: 'Einschreiben Einwurf', Sicherungskarte: 'unklar, bitte prüfen' });
     expect(geprueft.summary[1].rows.at(-1)).toEqual({ label: 'Rücksendung an', value: 'Prüfweg 1, 35576 Wetzlar' });
   });
 
@@ -78,6 +98,38 @@ describe('Einsendung prüfen (G-24, E6-OPUS-02)', () => {
     expect(einsendeVorgang({ ...ROH, sicherungskarte: 'vielleicht' }, KONTAKT).ok).toBe(false);
     expect(einsendeVorgang(ROH, { ...KONTAKT, postalCode: '3557' }).ok).toBe(false);
     expect(einsendeVorgang(ROH, { ...KONTAKT, city: ' ' }).ok).toBe(false);
+  });
+
+  it('nimmt nur die Varianten des Inhabers; „versichert“ und „unversichert“ wählt niemand mehr (A-050)', () => {
+    expect(einsendeVorgang({ ...ROH, versand: 'versichert' }, KONTAKT).ok).toBe(false);
+    expect(einsendeVorgang({ ...ROH, versand: 'unversichert' }, KONTAKT).ok).toBe(false);
+    expect(einsendeVorgang({ ...ROH, versand: 'dhl-paket' }, KONTAKT).ok).toBe(true);
+    expect(einsendeVorgang({ ...ROH, schluesselart: undefined }, KONTAKT).ok).toBe(false);
+    expect(einsendeVorgang({ ...ROH, wertvoll: 'ja' }, KONTAKT).ok).toBe(false);
+    // Abgeschaltete Variante: nicht wählbar.
+    const aus = STANDARD_VARIANTEN.map((v) => ({ ...v, aktiv: v.kennung !== 'einschreiben-einwurf' }));
+    expect(einsendeVorgang(ROH, KONTAKT, aus).ok).toBe(false);
+  });
+
+  it('nimmt den Sonderfall nur mit bestätigtem Hinweis und speichert die Bestätigung', () => {
+    expect(einsendeVorgang({ ...ROH, versand: 'einschreiben-wert' }, KONTAKT).ok).toBe(false);
+    const mit = einsendeVorgang({ ...ROH, versand: 'einschreiben-wert', sonderfallBestaetigt: true }, KONTAKT);
+    expect(mit.ok && mit.payload.sonderfallBestaetigt).toBe(true);
+    // Ohne Sonderfall wird keine Bestätigung gespeichert.
+    const ohne = einsendeVorgang({ ...ROH, sonderfallBestaetigt: true }, KONTAKT);
+    expect(ohne.ok && 'sonderfallBestaetigt' in ohne.payload).toBe(false);
+  });
+
+  it('nimmt mechanische Autoschlüssel und reine Bärte nur mit Fahrzeugschein (R13)', () => {
+    const auto = einsendeVorgang({ ...ROH, schluesselart: 'auto-mechanisch', sicherungskarte: 'nein', versand: 'dhl-paket' }, KONTAKT);
+    expect(auto.ok).toBe(true);
+    if (!auto.ok) return;
+    expect(auto.payload.schluesselart).toBe('auto-mechanisch');
+    expect(einsendeNachweisPruefen(auto.payload, [], true)).toBe(EINSENDUNG_FAHRZEUGSCHEIN_FEHLT);
+    expect(einsendeNachweisPruefen(auto.payload, [{ category: 'fahrzeugschein' }], true)).toBe(EINSENDUNG_FAHRZEUGSCHEIN_FEHLT);
+    expect(einsendeNachweisPruefen(auto.payload, [{ category: 'fahrzeugschein', storageKey: 'k', uploadToken: 't' }], true)).toBeNull();
+    expect(einsendeNachweisPruefen(auto.payload, [{ category: 'fahrzeugschein' }], false)).toBeNull();
+    expect(einsendeNachweisPruefen({ schluesselart: 'haus' }, [], true)).toBeNull();
   });
 
   it('erkennt Einsendungen nur als Foto-Anfrage mit Quelle und nennt ihre eigenen Status und Schritte', () => {
@@ -128,8 +180,30 @@ describe('Begleitschein (G-24, R9, A-035)', () => {
   it('sagt nie „kostenlos“, solange der Weg kein echtes Label erzeugt', () => {
     const angebot = einsendeAngebotFuerWeg({ ...EINSTELLUNGEN, labelAktiv: true });
     expect(angebot.kostenlos).toBe(false);
-    expect(angebot.satz).toContain('frankieren den Umschlag selbst');
-    expect(angebot.optionen.map((o) => [o.art, o.empfohlen])).toEqual([['versichert', true], ['unversichert', false]]);
+    expect(angebot.satz).toContain('frankieren selbst');
+    expect(angebot.optionen.map((o) => [o.art, o.empfohlen])).toEqual([['dhl-paket', false], ['einschreiben-einwurf', false]]);
+    expect(angebot.optionen.every((o) => !o.label)).toBe(true);
+  });
+
+  it('bietet bei der Freigabe mit Einsendung die Varianten mit Empfehlung DHL Paket, den Sonderfall nur mit Freigabe (A-050)', async () => {
+    const foto = vorgang({ payload: { sicherungskarte: 'nein' }, status: 'freigegeben', approval: { sendInRequired: true } });
+    const angebot = einsendeAngebotFuerVorgang(foto, EINSTELLUNGEN);
+    expect(angebot.vorauswahl).toBe('dhl-paket');
+    expect(angebot.optionen.map((o) => o.art)).toEqual(['dhl-paket', 'einschreiben-einwurf']);
+    expect(einsendeAngebotFuerVorgang({ ...foto, approval: { sendInRequired: true, sendInSpecialAllowed: true } }, EINSTELLUNGEN).optionen.map((o) => o.art))
+      .toContain('einschreiben-wert');
+
+    const text = async (v: BusinessRecord, versand?: string) => {
+      const schein = await begleitscheinZumVorgang(v, { company: FIRMA, einstellungen: EINSTELLUNGEN, env: {}, versand });
+      return schein ? Buffer.from(schein.pdf).length : 0;
+    };
+    expect(await text(foto, 'einschreiben-einwurf')).toBeGreaterThan(0);
+    // Ohne oder mit unzulässiger Wahl gilt die Empfehlung; ein Sonderfall ohne Freigabe zählt nicht.
+    expect(versandDesVorgangs(foto)).toBe('dhl-paket');
+    expect(versandDesVorgangs(foto, 'einschreiben-einwurf')).toBe('einschreiben-einwurf');
+    // Bei der Einsendung zählt die Wahl aus dem Formular; ältere Vorgänge behalten ihre Angabe (G6).
+    expect(versandDesVorgangs(vorgang())).toBe('einschreiben-einwurf');
+    expect(versandDesVorgangs(vorgang({ payload: { ...vorgang().payload, versand: 'unversichert' } }))).toBe('unversichert');
   });
 
   it('zeigt den Begleitschein bis zum Eingang, bei Freigaben nur mit verlangter Einsendung', () => {
@@ -165,6 +239,8 @@ describe('Einsendung in Mails, Verlauf und Datenabbildung (Gegenprüfung E6-OPUS
     const mail = kundeEingang({ vorgang: vorgang(), token: 'link-schluessel', onlineZahlung: false, kontext });
     expect(mail.betreff).toBe('Ihre Einsendung SM24-A-2026-0007 ist angemeldet');
     expect(mail.text).toContain('Begleitschein');
+    expect(mail.text).toContain('Ihr Versand: Einschreiben Einwurf.');
+    expect(mail.text).toContain('nicht lose in einen einfachen Papierumschlag');
   });
 
   it('schreibt in den Verlauf „Schlüssel eingegangen“ statt „Fotos“', () => {
@@ -179,6 +255,10 @@ describe('Einsendung in Mails, Verlauf und Datenabbildung (Gegenprüfung E6-OPUS
     expect(zurueck.approval?.sendInRequired).toBe(false);
     const foto = vorgang({ payload: { sicherungskarte: 'nein' }, approval: { sendInRequired: true } });
     expect(vorgangZuSeite(gespeichert(foto) as never).approval?.sendInRequired).toBe(true);
+    // Sonderfall-Freigabe des Teams (A-050) bleibt erhalten.
+    const sonderfall = vorgang({ payload: { sicherungskarte: 'nein' }, approval: { sendInRequired: true, sendInSpecialAllowed: true } });
+    expect(vorgangZuSeite(gespeichert(sonderfall) as never).approval?.sendInSpecialAllowed).toBe(true);
+    expect(vorgangZuSeite(gespeichert(foto) as never).approval?.sendInSpecialAllowed).toBeUndefined();
   });
 });
 

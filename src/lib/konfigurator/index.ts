@@ -5,3 +5,4 @@ export * from './masse';
 export * from './preis';
 export * from './preisbestaetigung';
 export * from './zwischenstand';
+export * from './hersteller-angabe';

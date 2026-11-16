@@ -4,8 +4,10 @@ import Link from 'next/link';
 import { getCodeLines, getPageContent, getRubrik } from '@/lib/data';
 import { herstellerPfad, kategoriePfad, verfuegbarkeitVon } from '@/lib/codelinie';
 import { formatCents, formatNumber } from '@/lib/format';
+import { GRUPPE_AUF_ANFRAGE, gruppeLieferbar } from '@/lib/codelinie-texte';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import type { NavLink } from '@/lib/navigation';
+import type { Rubrik, RubrikSchritt } from '@/lib/types';
 import { ButtonLink } from '@/components/ui/button';
 import { ausschnittStil } from '@/components/ui/image-placeholder';
 import { PageHeader } from '@/components/layout/page-header';
@@ -78,17 +80,44 @@ function WeiterIcon({ href }: { href: string }) {
   }
 }
 
-/** Titel und Beschreibung ohne echte Codeprodukte (A-046): nichts ist bestellbar, kein Sortiment. */
+/** Titel und Beschreibung ohne lieferbares Codeprodukt (A-046, FA-INHALT-03I): nichts ist direkt bestellbar. */
 const OHNE_PRODUKTE_SEO = {
   title: 'Schlüssel nach Code anfragen',
   description:
     'Nennen Sie uns den Code auf Ihrem Schloss oder Schlüssel. Wir prüfen, ob wir danach fertigen können, und melden uns. Ihr Originalschlüssel bleibt bei Ihnen.',
 } as const;
 
+/**
+ * Schritte der Code-Anfrage, solange nichts direkt bestellbar ist: kein „bezahlen“, keine Fertigung,
+ * kein Versand (R4). Der erste Schritt „Code finden“ kommt aus den Rubrikdaten; der zweite nennt den
+ * Berechtigungsnachweis wie der Leerzustand (R13).
+ */
+function anfrageAblauf(rubrik: Rubrik): RubrikSchritt[] {
+  const finden = rubrik.ablauf.find((schritt) => schritt.titel === 'Code finden') ?? {
+    titel: 'Code finden',
+    text: 'Die Nummer steht auf dem Schlüssel oder am Schloss.',
+    icon: 'schluessel-nach-code',
+  };
+  return [
+    finden,
+    {
+      titel: 'Code anfragen',
+      text: 'Sie nennen uns Hersteller oder Schloss, den Code und die Stückzahl. Sie bestätigen, dass Sie den Schlüssel nachmachen lassen dürfen.',
+      icon: 'dokument',
+    },
+    {
+      titel: 'Angebot oder Rückfrage',
+      text: 'Wir prüfen Ihren Code. Mit unserem Angebot entscheiden Sie, ob Sie bestellen.',
+      icon: 'pruefung',
+    },
+  ];
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const [page, lines] = await Promise.all([getPageContent(ROUTE), getCodeLines()]);
-  // Ohne Produkte versprechen Suchergebnis und Strukturdaten weder Bestellung noch Sortiment (R4, R8).
-  if (lines.length === 0) {
+  // Ohne lieferbares Produkt versprechen Suchergebnis und Strukturdaten keine Bestellung (R4, R8);
+  // auch wenn Produkte da sind, aber keines lieferbar ist (wie der Kopf, L-14).
+  if (!gruppeLieferbar(lines)) {
     return { ...OHNE_PRODUKTE_SEO, alternates: { canonical: `/${ROUTE}` } };
   }
   return {
@@ -120,6 +149,10 @@ export default async function SchluesselNachCodePage() {
   };
   // Ohne echte Codeprodukte (A-046): ehrlicher Leerzustand mit Code-Anfrage statt Produktliste.
   const ohneProdukte = lines.length === 0;
+  // Direktkauf im Kopf nur, wenn mindestens ein Produkt lieferbar ist (FA-INHALT-03I, L-14).
+  const direktkauf = gruppeLieferbar(lines);
+  // Ablauf mit Kaufschritten (Rubrikdaten) nur beim Direktkauf; sonst die Schritte der Code-Anfrage.
+  const ablaufRubrik = direktkauf || !rubrik ? rubrik : { id: rubrik.id, ablauf: anfrageAblauf(rubrik) };
 
   return (
     <>
@@ -127,7 +160,7 @@ export default async function SchluesselNachCodePage() {
         data={pageGraphSchema({
           path: '/schluessel-nach-code',
           name: page?.headline ?? 'Schlüssel nach Code',
-          description: ohneProdukte ? OHNE_PRODUKTE_SEO.description : page?.seo.description,
+          description: direktkauf ? page?.seo.description : OHNE_PRODUKTE_SEO.description,
           crumbs: [{ href: '/schluessel-nach-code', label: 'Schlüssel nach Code' }],
         })}
       />
@@ -137,12 +170,14 @@ export default async function SchluesselNachCodePage() {
 
       <PageHeader
         rubrik={rubrik}
-        eyebrow={ohneProdukte ? 'Auf Anfrage' : PROCESS_LABELS.direktkauf.label}
+        eyebrow={direktkauf ? PROCESS_LABELS.direktkauf.label : 'Auf Anfrage'}
         title={page?.headline ?? 'Schlüssel nach Code'}
         lead={
           ohneProdukte
             ? 'Sie nennen uns den Code Ihres Schlosses, wir prüfen ihn und melden uns. Ihr Originalschlüssel bleibt bei Ihnen.'
-            : (page?.subline ?? 'Code eingeben, Stückzahl wählen, bestellen.')
+            : direktkauf
+              ? (page?.subline ?? 'Code eingeben, Stückzahl wählen, bestellen.')
+              : GRUPPE_AUF_ANFRAGE
         }
         crumbs={[{ href: '/schluessel-nach-code', label: 'Schlüssel nach Code' }]}
         bereich="schluessel-nach-code"
@@ -151,9 +186,13 @@ export default async function SchluesselNachCodePage() {
             <ButtonLink href={CODE_ANFRAGE_PFAD} size="lg" pfeil>
               Code anfragen
             </ButtonLink>
-          ) : (
+          ) : direktkauf ? (
             <ButtonLink href="#codelinien" size="lg" pfeil>
               Nach Code bestellen
+            </ButtonLink>
+          ) : (
+            <ButtonLink href="#codelinien" size="lg" pfeil>
+              Schlüssel finden
             </ButtonLink>
           )
         }
@@ -192,7 +231,7 @@ export default async function SchluesselNachCodePage() {
       </PageHeader>
 
       {ohneProdukte ? (
-        /* Leerzustand (A-046): Die Codeprodukte werden eingepflegt; bis dahin prüfen wir den Code auf Anfrage. */
+        /* Leerzustand (A-046): Ohne Codeprodukte prüfen wir den Code auf Anfrage. Die Seite sagt nur, was heute gilt (L-15, L-16). */
         <Section id="codelinien" tight labelledBy="trefferliste-titel">
           <SectionHeading
             id="trefferliste-titel"
@@ -207,9 +246,9 @@ export default async function SchluesselNachCodePage() {
           <div role="note" className="mt-8 flex max-w-measure items-start gap-3 border-t border-border pt-6">
             <GlyphInfo size={18} className="mt-1 shrink-0 text-foreground-muted" />
             <div className="min-w-0">
-              <p className="text-body font-semibold text-foreground">Direkt bestellen können Sie hier noch nicht.</p>
+              <p className="text-body font-semibold text-foreground">Direkt bestellen können Sie hier derzeit nicht.</p>
               <p className="mt-2 text-body text-foreground-muted">
-                Bis dahin prüfen wir Ihren Code auf Anfrage. Nennen Sie uns den Hersteller oder das Schloss,
+                Wir prüfen Ihren Code auf Anfrage. Nennen Sie uns den Hersteller oder das Schloss,
                 den Code genau wie aufgedruckt und die Stückzahl. Ein Foto von Schlüssel oder Schloss hilft
                 uns, ist aber freiwillig. Außerdem bestätigen Sie, dass Sie den Schlüssel nachmachen lassen dürfen.
                 So schützen wir Ihr Schloss vor Unbefugten. Wir melden uns mit einem Angebot oder einer Rückfrage.
@@ -256,7 +295,7 @@ export default async function SchluesselNachCodePage() {
           nummer="02"
           eyebrow="Hersteller"
           title="Schlüssel nach Hersteller"
-          lead="Für jeden Hersteller gibt es eine eigene Seite mit seinen Systemen, Codeformaten und Preisen."
+          lead="Für jeden Hersteller gibt es eine eigene Seite mit seinen Systemen und Codes."
         />
         <ul className="mt-8 border-t border-border md:grid md:grid-cols-2 md:gap-x-gutter">
           {hersteller.map((eintrag) => (
@@ -271,7 +310,7 @@ export default async function SchluesselNachCodePage() {
                     {eintrag.name}
                   </span>
                   <span className="mt-0.5 block font-mono text-caption tabular-nums text-foreground-muted">
-                    {formatNumber(eintrag.lines.length)} {eintrag.lines.length === 1 ? 'Linie' : 'Linien'}
+                    {formatNumber(eintrag.lines.length)} {eintrag.lines.length === 1 ? 'Produkt' : 'Produkte'}
                     {eintrag.systeme.some((sys) => sys.name) &&
                       ` · ${eintrag.systeme.filter((sys) => sys.name).length} ${eintrag.systeme.filter((sys) => sys.name).length === 1 ? 'System' : 'Systeme'}`}
                     {ab(eintrag.lines)}
@@ -315,18 +354,18 @@ export default async function SchluesselNachCodePage() {
         </>
       )}
 
-      {/* Ablauf aus den Rubrikdaten (G-10, G-11) */}
+      {/* Ablauf aus den Rubrikdaten (G-10, G-11); ohne Direktkauf die Schritte der Anfrage (FA-INHALT-03I) */}
       <RubrikAblaufAbschnitt
-        rubrik={rubrik}
+        rubrik={ablaufRubrik}
         nummer={ohneProdukte || !mitUebersicht ? '02' : '03'}
-        titel="Vom Code zum fertigen Schlüssel"
+        titel={direktkauf ? 'Vom Code zum fertigen Schlüssel' : 'Vom Code zur Anfrage'}
         lead={
-          ohneProdukte
-            ? 'So läuft es, sobald Sie hier direkt nach Code bestellen können. Bis dahin beginnt alles mit Ihrer Anfrage.'
-            : undefined
+          direktkauf
+            ? undefined
+            : 'Heute beginnt alles mit Ihrer Anfrage. Wir prüfen Ihren Code und melden uns mit einem Angebot oder einer Rückfrage.'
         }
         aktion={
-          ohneProdukte ? (
+          !direktkauf ? (
             <ButtonLink href={CODE_ANFRAGE_PFAD} variant="outline">
               Code anfragen
             </ButtonLink>

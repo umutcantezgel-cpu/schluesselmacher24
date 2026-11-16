@@ -9,6 +9,7 @@ import { firmenname, sitzZeilen, standort } from '@/lib/rechtliches/firma';
 import type { CompanyProfile } from '@/lib/types';
 import { Accordion } from '@/components/ui/accordion';
 import { Alert } from '@/components/ui/alert';
+import { Badge } from '@/components/ui/badge';
 import { ButtonLink } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { PageHeader } from '@/components/layout/page-header';
@@ -18,14 +19,18 @@ import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { GlyphOrt } from '@/components/visual/glyphen/ort';
 import { PasstDazu } from '@/components/seo/passt-dazu';
+import { VERPACKUNG_HINWEIS } from '@/lib/versand/varianten';
+
+import { VarianteBeschreibung } from './versand-variante';
 
 const ROUTE = 'schluessel-einschicken';
 const ANMELDEN = '/schluessel-einschicken/anmelden';
 
 /*
- * Schlüssel einschicken (G-24 bis G-26, E6-OPUS-02): Anmeldung mit Begleitschein, Versand versichert oder
- * unversichert, Rücksendung. Preise nur aus den Einstellungen (Porto der Post als Empfehlung, Aufpreise
- * des Betriebs); „kostenlos“ steht nur mit echtem Retourenlabel (R9, A-035).
+ * Schlüssel einschicken (G-24 bis G-26, E6-OPUS-02, A-050): Anmeldung mit Begleitschein, Versand in den
+ * Varianten des Inhabers (DHL Paket, Einschreiben Einwurf, Einschreiben Wert nur im Sonderfall) mit
+ * Haftung als Zahl und Kosten, Rücksendung. Preise nur aus den Einstellungen (Porto laut Post mit Stand,
+ * Aufpreise des Betriebs); „kostenlos“ steht nur mit echtem Retourenlabel (R9, A-035).
  */
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -48,12 +53,12 @@ const CRUMBS = [
 const BEILAGE = [
   'Der Begleitschein mit Ihrer Vorgangsnummer und Ihrer Rücksendeanschrift.',
   'Nur die betreffenden Schlüssel, ohne Schlüsselring und Anhänger.',
-  'Ein gepolsterter Umschlag, damit der Schlüssel ihn nicht durchstößt.',
+  VERPACKUNG_HINWEIS,
   'Bei Schlüsseln mit Sicherungskarte: eine Kopie der Karte, falls Sie bei der Anmeldung kein Foto hochgeladen haben. Die Karte selbst behalten Sie.',
 ];
 
 /** Grundbestand der Fragen, solange in der Datenschicht keine gepflegt sind. */
-function fragen(porto: { versichert: string; haftung: number }) {
+function fragen(porto: { paket: string; einwurf: string }) {
   return [
     {
       question: 'Muss ich meinen Schlüssel einschicken?',
@@ -71,9 +76,9 @@ function fragen(porto: { versichert: string; haftung: number }) {
     {
       question: 'Was kostet das Einschicken?',
       answer:
-        `Das Porto für den Weg zu uns zahlen Sie bei der Post; empfohlen ist ein Einschreiben (${porto.versichert}, Haftung bis `
-        + `${porto.haftung} €). Den Preis für die Kopien nennen wir Ihnen nach der Prüfung mit der Freigabe, bevor Sie etwas `
-        + 'bezahlen. Erst mit Ihrer Zahlung erteilen Sie den Auftrag.',
+        `Das Porto für den Weg zu uns zahlen Sie bei der Post. Für wertvolle Originalschlüssel empfehlen wir DHL Paket (${porto.paket}). `
+        + `Günstiger ist das Einschreiben Einwurf (${porto.einwurf}), mit Haftung nur bis 20 €. Den Preis für die Kopien nennen wir Ihnen `
+        + 'nach der Prüfung mit der Freigabe, bevor Sie etwas bezahlen. Erst mit Ihrer Zahlung erteilen Sie den Auftrag.',
     },
     {
       question: 'Und bei Schlüsseln mit Sicherungskarte oder geschütztem Profil?',
@@ -104,10 +109,14 @@ export default async function SchluesselEinschickenPage() {
   const [page, settings] = await Promise.all([getPageContent(ROUTE), getSettings()]);
   const anschrift = versandAnschrift(settings.company);
   const einstellungen = settings.sendIn ?? defaults.settings().sendIn!;
-  const angebot = einsendeAngebotFuerWeg(einstellungen);
-  const faq = page?.faq?.length
-    ? page.faq
-    : fragen({ versichert: formatCents(einstellungen.portoVersichertCents), haftung: einstellungen.haftungVersichertEuro });
+  // Die Seite zeigt alle Varianten; den Sonderfall nur als solchen gekennzeichnet (A-050).
+  const angebot = einsendeAngebotFuerWeg(einstellungen, { empfehlung: 'originalschluessel' });
+  const varianten = [...angebot.optionen, ...angebot.sonderfaelle];
+  const porto = (art: string) => {
+    const o = varianten.find((v) => v.art === art);
+    return o?.portoCents !== undefined ? `${formatCents(o.portoCents)} laut Post` : 'Porto laut Post, bitte dort prüfen';
+  };
+  const faq = page?.faq?.length ? page.faq : fragen({ paket: porto('dhl-paket'), einwurf: porto('einschreiben-einwurf') });
 
   // Sichtbarer Kurztext im Seitenkopf, zugleich Beschreibung der Leistung in den Strukturdaten (FA-25-10).
   const kurztext =
@@ -182,30 +191,32 @@ export default async function SchluesselEinschickenPage() {
         </div>
       </Section>
 
-      {/* 02 Versand: versichert empfohlen, Porto der Post und Aufpreise aus den Einstellungen (G-24, R9) */}
+      {/* 02 Versand: Varianten des Inhabers mit Haftung als Zahl und Kosten (A-050, R9) */}
       <Section tone="muted" labelledBy="versand-titel">
         <SectionHeading
           id="versand-titel"
           nummer="02"
           eyebrow="Versand"
-          title="Versichert oder unversichert"
+          title="So schicken Sie den Schlüssel"
           lead={angebot.satz}
         />
-        <div className="mt-8 grid gap-6 md:grid-cols-2 md:gap-gutter">
-          {angebot.optionen.map((option) => (
+        <div className="mt-8 grid gap-6 md:grid-cols-3 md:gap-gutter">
+          {varianten.map((option) => (
             <Card key={option.art}>
               <CardBody>
-                {/* „Empfohlen“ steht schon im Hinweis der Option */}
-                <h3 className="text-title-sm font-semibold text-foreground">{option.titel}</h3>
-                <p className="mt-2 text-small leading-relaxed text-foreground-muted">{option.hinweis}</p>
-                {option.aufpreisCents > 0 && (
-                  <p className="mt-2 text-small font-semibold text-foreground">Aufpreis {formatCents(option.aufpreisCents)}</p>
-                )}
+                <h3 className="flex flex-wrap items-center gap-2 text-title-sm font-semibold text-foreground">
+                  {option.titel}
+                  {option.empfohlen && <Badge tone="success">Empfehlung für wertvolle Originale</Badge>}
+                  {option.nurSonderfall && <Badge tone="outline">nur Sonderfall</Badge>}
+                </h3>
+                <p className="mt-2 text-small leading-relaxed text-foreground-muted">
+                  <VarianteBeschreibung option={option} mitStand />
+                </p>
               </CardBody>
             </Card>
           ))}
         </div>
-        {angebot.stand && <p className="mt-6 max-w-measure text-small text-foreground-subtle">Portopreise: {angebot.stand}</p>}
+        <p className="mt-6 max-w-measure text-small text-foreground-subtle">{angebot.haftungHinweis}</p>
       </Section>
 
       {/* 03 Wohin und was beiliegen soll */}
@@ -259,8 +270,8 @@ export default async function SchluesselEinschickenPage() {
         <SectionHeading id="zurueck-titel" nummer="04" eyebrow="Rücksendung" title="Sicher hin und zurück" />
         <div className="mt-8 grid gap-6 md:grid-cols-2 md:gap-gutter">
           <Alert tone="legal" title="Versand mit Sendungsverfolgung">
-            Wählen Sie einen versicherten oder mindestens nachverfolgbaren Versand. Ein Schlüssel im unverfolgten Brief ist bei
-            Verlust nicht auffindbar und nicht ersetzbar. Verpacken Sie den Schlüssel so, dass er den Umschlag nicht durchstoßen kann.
+            Wählen Sie einen Versand mit Sendungsverfolgung und einer Haftung, die zum Wert Ihres Schlüssels passt. Ein Schlüssel im
+            unverfolgten Brief ist bei Verlust nicht auffindbar. {VERPACKUNG_HINWEIS}
           </Alert>
           <Alert tone="info" title="Rücksendung mit den Kopien">
             Nach der Anfertigung erhalten Sie Ihr Original zusammen mit den Kopien zurück, auf Wunsch getrennt voneinander. Die

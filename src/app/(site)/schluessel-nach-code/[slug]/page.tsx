@@ -136,12 +136,13 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
     { label: 'Lieferzeit', value: bestellbar ? gepflegt(line.deliveryTime) : undefined },
     { label: 'Profil', value: gepflegt(line.profile) },
     { label: 'Codeserie', value: gepflegt(line.codeSeries) },
-    // Anwendung und Familie nur, wenn sie nicht Hersteller und System wiederholen (Linien aus dem Import).
+    // Anwendung und Einsatzbereich nur, wenn sie nicht Hersteller und System wiederholen (Linien aus dem Import).
+    // „Einsatzbereich“ statt des Pflegeworts „Anwendungsfamilie“ (FA-INHALT-03I, L-03, L-27).
     { label: 'Anwendung', value: eigeneAnwendung(line) },
-    { label: 'Anwendungsfamilie', value: eigeneFamilie(line) },
+    { label: 'Einsatzbereich', value: eigeneFamilie(line) },
     { label: 'Schlüsseltyp', value: gepflegt(line.keyType) },
     {
-      label: 'Codeformat',
+      label: 'Aufbau des Codes',
       value: gepflegt(line.codeFormatLabel) && `${line.codeFormatLabel} (Beispiel: ${line.codeExample})`,
       mono: true,
     },
@@ -264,7 +265,7 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
           </Badge>
           {gepflegt(line.keyType) && <Badge tone="outline">{line.keyType}</Badge>}
           <Badge tone="outline">
-            Codeformat: <span className="font-mono font-medium tabular-nums text-foreground">{line.codeFormatLabel}</span>
+            Aufbau des Codes: <span className="font-mono font-medium tabular-nums text-foreground">{line.codeFormatLabel}</span>
           </Badge>
         </div>
       </PageHeader>
@@ -307,7 +308,8 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
             <div>
               <SectionHeading nummer="01" eyebrow="Codefundstelle" title="Wo steht der Code?" />
               {texte.fundstelle && <p className="prose-sm24 mt-4">{texte.fundstelle}</p>}
-              {gepflegt(line.codeHint) && <p className="prose-sm24 mt-4">{line.codeHint}</p>}
+              {/* Hinweis der Linie: gepflegt immer, der Startwert nur ohne Ratgebersatz (L-09) */}
+              {texte.codeHinweis && <p className="prose-sm24 mt-4">{texte.codeHinweis}</p>}
 
               {line.codeLocationImage.bild ? (
                 <figure className="m-0 mt-6 sm:max-w-md">
@@ -396,12 +398,12 @@ export default async function CodeLinePage(props: CodeLinePageProps) {
               </div>
             )}
 
-            {/* Verwandte Linien derselben Familie als echte Links */}
+            {/* Verwandte Linien desselben Systems oder Einsatzbereichs als echte Links */}
             {texte.verwandte.length > 0 && (
               <div className="mt-12">
                 <SectionHeading
                   nummer="04"
-                  eyebrow={system ? 'Gleiches System' : 'Gleiche Familie'}
+                  eyebrow={system ? 'Gleiches System' : 'Gleicher Einsatzbereich'}
                   title={`Weitere Schlüssel für ${verwandtTitel}`}
                 />
                 <LinienListe lines={texte.verwandte} className="mt-6" />

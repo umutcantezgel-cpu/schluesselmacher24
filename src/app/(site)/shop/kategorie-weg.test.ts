@@ -99,3 +99,14 @@ describe('Weg einer Shop-Kategorie', () => {
     expect(SHOP_SEO.description).not.toMatch(/[—–]/);
   });
 });
+
+describe('Beschreibungen der Kategorien (FA-INHALT-03I, L-34)', () => {
+  it('wiederholen nicht nur den Namen und versprechen ohne Produkte keine Bestellung', () => {
+    for (const k of KATEGORIEN) {
+      const name = k.name.toLowerCase();
+      const beschreibung = k.beschreibung.toLowerCase().replace(/[.,]/g, '');
+      expect(beschreibung, k.id).not.toContain(name);
+      expect(k.beschreibung, k.id).not.toMatch(/Sie bestellen|geeignete/);
+    }
+  });
+});

@@ -10,6 +10,24 @@ import { hatRolle, istInhaber, istTeam } from '../access/rollen';
 import { VERSANDKLASSEN, euroFeld, zeitfensterFeld } from '../fields/gemeinsam';
 import { nachGlobalAenderung } from '../hooks/revalidate';
 
+/** Einsende-Varianten (A-050): feste Kennungen, damit Server und Begleitschein sie sicher erkennen. */
+const EINSENDE_VARIANTEN = [
+  { label: 'DHL Paket', value: 'dhl-paket' },
+  { label: 'Einschreiben Einwurf', value: 'einschreiben-einwurf' },
+  { label: 'Einschreiben Wert', value: 'einschreiben-wert' },
+] as const;
+
+const EINLIEFERUNG = [
+  { label: 'Briefkasten', value: 'briefkasten' },
+  { label: 'Filiale', value: 'filiale' },
+  { label: 'Paketshop', value: 'paketshop' },
+] as const;
+
+const EINSENDE_EMPFEHLUNGEN = [
+  { label: 'Originalschlüssel (wertvoll, mit Elektronik)', value: 'originalschluessel' },
+  { label: 'Autoschlüssel', value: 'autoschluessel' },
+] as const;
+
 const WOCHENTAGE = [
   { label: 'Montag', value: '1' },
   { label: 'Dienstag', value: '2' },
@@ -403,6 +421,38 @@ export const Einstellungen: GlobalConfig = {
                   { name: 'haftungVersichert', type: 'number', label: 'Haftung versichert (Euro)', defaultValue: 25, min: 0, admin: { width: '33%', step: 1 } },
                 ] },
                 { name: 'portoStand', type: 'text', label: 'Stand der Portopreise', defaultValue: 'Deutsche Post, Preise ab 1.1.2026: Einschreiben 4,45 €, Großbrief 1,80 €' },
+                {
+                  // Varianten des Inhabers (FA-13, A-050). Die Felder darüber gelten nur noch für ältere Vorgänge.
+                  name: 'varianten',
+                  type: 'array',
+                  label: 'Versandvarianten für die Einsendung',
+                  labels: { singular: 'Variante', plural: 'Varianten' },
+                  admin: {
+                    description:
+                      'Was der Kunde beim Einschicken wählt. Haftung und Porto nur mit Beleg eintragen; ohne Porto steht „Porto laut Post, bitte dort prüfen“. '
+                      + 'Die Felder „versichert“ und „unversichert“ oben gelten nur noch für ältere Vorgänge. Leer: Es gelten die Startwerte.',
+                  },
+                  fields: [
+                    { type: 'row', fields: [
+                      { name: 'kennung', type: 'select', label: 'Kennung', required: true, options: [...EINSENDE_VARIANTEN], admin: { width: '34%' } },
+                      { name: 'bezeichnung', type: 'text', label: 'Bezeichnung', required: true, admin: { width: '33%' } },
+                      { name: 'aktiv', type: 'checkbox', label: 'Aktiv', defaultValue: true, admin: { width: '33%' } },
+                    ] },
+                    { name: 'einsatz', type: 'text', label: 'Einsatz in einem Satz', required: true },
+                    { type: 'row', fields: [
+                      { name: 'haftung', type: 'number', label: 'Haftung (Euro)', min: 0, admin: { width: '34%', step: 1, description: 'Leer: nicht belegt.' } },
+                      { name: 'sendungsverfolgung', type: 'checkbox', label: 'Sendungsverfolgung', admin: { width: '33%' } },
+                      { name: 'einlieferung', type: 'select', label: 'Einlieferung', hasMany: true, options: [...EINLIEFERUNG], admin: { width: '33%' } },
+                    ] },
+                    { type: 'row', fields: [
+                      euroFeld('porto', 'Porto laut Post oder DHL', { admin: { width: '34%', step: 0.01, description: 'Leer: nicht belegt.' } }),
+                      euroFeld('aufpreis', 'Aufpreis des Betriebs', { defaultValue: 0, admin: { width: '33%', step: 0.01 } }),
+                      { name: 'nurSonderfall', type: 'checkbox', label: 'Nur Sonderfall', admin: { width: '33%', description: 'Nur mit Freigabe am Vorgang oder bestätigtem Hinweis.' } },
+                    ] },
+                    { name: 'portoStand', type: 'text', label: 'Stand und Quelle des Portos' },
+                    { name: 'empfohlenFuer', type: 'select', label: 'Empfohlen für', hasMany: true, options: [...EINSENDE_EMPFEHLUNGEN] },
+                  ],
+                },
               ],
             },
           ],

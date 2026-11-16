@@ -49,7 +49,21 @@ export function planZuEntwurf(plan: Schliessplan, extraIds: string[] = []): Cyli
     keyCount: plan.schluessel.reduce((n, s) => n + s.anzahl, 0),
     extraIds: [...extras],
     expandable: reserve,
+    // Hersteller aus dem Konfigurator (FA-SHOP-04B): Angabe ohne Preiswirkung, die Kasse prüft sie.
+    ...(plan.system?.trim() ? { herstellerAngabe: plan.system.trim() } : {}),
   };
+}
+
+/**
+ * Zusatzwünsche aus dem Link des Konfigurators (`?wuensche=`, FA-SHOP-04B): nur angebotene Optionen des
+ * Katalogs, ohne Doppel, ohne Schutz und Vormerkung (die folgen dem Plan selbst).
+ */
+export function wuenscheAusLink(roh: string | null | undefined, katalog: Pick<CylinderCatalog, 'extras'>): string[] {
+  if (!roh) return [];
+  const erlaubt = new Set(
+    katalog.extras.filter((e) => e.active && e.id !== SCHUTZ_OPTION_ID && e.id !== ERWEITERBAR_OPTION_ID).map((e) => e.id),
+  );
+  return [...new Set(roh.split(',').slice(0, 20).map((id) => id.trim()).filter((id) => erlaubt.has(id)))];
 }
 
 export type PlanPreis =
@@ -70,9 +84,15 @@ export function preisFuerPlan(plan: Schliessplan, katalog: CylinderCatalog, extr
   if (schutzUmfang(plan) === 'einige') {
     return { art: 'angebot', grund: 'Aufbohr- und Ziehschutz nur an einzelnen Türen rechnen wir im Angebot; online gibt es ihn für alle Zylinder.' };
   }
-  // Herstellerwahl kennt der Planer noch nicht (E5-OPUS-02); bietet der Katalog Hersteller an, klären wir sie im Angebot.
+  // Herstelleraufpreise rechnet der Planer nicht (E5-OPUS-02); bietet der Katalog Hersteller an, klären wir sie im
+  // Angebot. Ein Hersteller aus dem Konfigurator steht als System im Plan und geht mit (FA-SHOP-04B).
   if (aktiveHersteller(katalog).length > 0) {
-    return { art: 'angebot', grund: 'Den Hersteller wählen wir mit Ihnen; Sie bekommen ein Angebot mit Preis.' };
+    return {
+      art: 'angebot',
+      grund: plan.system?.trim()
+        ? `Ihren Hersteller ${plan.system.trim()} nehmen wir ins Angebot auf. Sie bekommen ein Angebot mit Preis.`
+        : 'Den Hersteller wählen wir mit Ihnen; Sie bekommen ein Angebot mit Preis.',
+    };
   }
   const entwurf = planZuEntwurf(plan, extraIds);
   const erweiterbarAngeboten = katalog.extras.some((e) => e.id === ERWEITERBAR_OPTION_ID && e.active);

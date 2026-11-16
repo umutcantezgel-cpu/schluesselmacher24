@@ -13,8 +13,17 @@
 
 // Nur relative Importe: Mails und Datenabbildung laden dieses Modul auch in Backend-Hooks.
 import { istFotoanfrage } from '../foto-freigabe';
-import type { BusinessRecord, ContactDetails, RecordStatus, SummarySection } from '../types';
+import type { BusinessRecord, ContactDetails, EinsendeVariante, RecordStatus, SummarySection, UploadRef } from '../types';
 import type { VersandArt } from '../versand/typen';
+import {
+  SCHLUESSELARTEN,
+  STANDARD_VARIANTEN,
+  brauchtFahrzeugschein,
+  istSchluesselart,
+  istVariantenKennung,
+  versandBezeichnung,
+  type Schluesselart,
+} from '../versand/varianten';
 import { KARTEN_LABEL, kartenAntwort } from '../wege/nachweis';
 
 export const EINSENDE_QUELLE = 'einsenden';
@@ -23,10 +32,16 @@ export const MAX_KOPIEN = 20;
 export const BESCHRIFTUNG_HOECHSTENS = 80;
 export const HINWEIS_HOECHSTENS = 1000;
 
+/** Bezeichnung der Versandart; „versichert“ und „unversichert“ nur für ältere Vorgänge (G6, A-050). */
 export const VERSAND_LABEL: Record<VersandArt, string> = {
-  versichert: 'versichert',
-  unversichert: 'unversichert',
+  'dhl-paket': versandBezeichnung('dhl-paket'),
+  'einschreiben-einwurf': versandBezeichnung('einschreiben-einwurf'),
+  'einschreiben-wert': versandBezeichnung('einschreiben-wert'),
+  versichert: versandBezeichnung('versichert'),
+  unversichert: versandBezeichnung('unversichert'),
 };
+
+const ARTEN_TITEL: Record<Schluesselart, string> = Object.fromEntries(SCHLUESSELARTEN.map((a) => [a.wert, a.titel])) as Record<Schluesselart, string>;
 
 /** Die geprüften Angaben einer Einsendung, wie sie im Vorgang stehen. */
 export interface EinsendePayload {
@@ -38,7 +53,14 @@ export interface EinsendePayload {
   beschriftung: string | null;
   hinweis: string | null;
   sicherungskarte: 'ja' | 'nein' | 'unklar';
+  /** Was eingeschickt wird (A-050, Punkt 3); fehlt bei älteren Vorgängen. */
+  schluesselart?: Schluesselart;
+  /** Der Kunde gibt den Schlüssel als wertvoll an; dann ist DHL Paket empfohlen. */
+  wertvoll?: boolean;
+  /** Eine Variante des Inhabers; „versichert“ und „unversichert“ nur bei älteren Vorgängen. */
   versand: VersandArt;
+  /** Sonderfall (Einschreiben Wert) ausdrücklich gewählt und den Hinweis bestätigt. */
+  sonderfallBestaetigt?: boolean;
   /** Das Original liegt der Werkstatt vor, sobald die Sendung eingeht. */
   originalEingesendet: true;
 }
@@ -76,8 +98,11 @@ export function einsendeZusammenfassung(p: EinsendePayload, contact: ContactDeta
         { label: 'Im Umschlag', value: inhaltText(p) },
         { label: 'Gewünschte Kopien', value: String(p.stueckzahl) },
         { label: 'Beschriftung', value: p.beschriftung ?? 'keine Angabe' },
-        { label: 'Sicherungskarte', value: KARTEN_LABEL[p.sicherungskarte] },
-        { label: 'Versand', value: VERSAND_LABEL[p.versand] },
+        ...(p.schluesselart ? [{ label: 'Schlüsselart', value: ARTEN_TITEL[p.schluesselart] }] : []),
+        ...(p.wertvoll ? [{ label: 'Wertvoll', value: 'ja, laut Kunde' }] : []),
+        { label: brauchtFahrzeugschein(p.schluesselart) ? 'Nachweis' : 'Sicherungskarte', value: brauchtFahrzeugschein(p.schluesselart) ? 'Fahrzeugschein (Pflicht)' : KARTEN_LABEL[p.sicherungskarte] },
+        { label: 'Versand', value: VERSAND_LABEL[p.versand] ?? 'keine Angabe' },
+        ...(p.sonderfallBestaetigt ? [{ label: 'Sonderfall', value: 'Hinweis bestätigt' }] : []),
         ...(p.hinweis ? [{ label: 'Hinweis', value: p.hinweis }] : []),
       ],
     },
@@ -98,15 +123,28 @@ export function einsendeZusammenfassung(p: EinsendePayload, contact: ContactDeta
  * Prüft die Angaben aus dem Browser und baut daraus Payload und Zusammenfassung neu; nichts davon
  * wird ungeprüft übernommen. Ohne vollständige Rücksendeanschrift keine Einsendung.
  */
-export function einsendeVorgang(roh: Record<string, unknown>, contact: ContactDetails): Ergebnis {
+export function einsendeVorgang(
+  roh: Record<string, unknown>,
+  contact: ContactDetails,
+  varianten: readonly EinsendeVariante[] = STANDARD_VARIANTEN,
+): Ergebnis {
   if (roh.quelle !== EINSENDE_QUELLE) return { ok: false };
   const originale = ganz(roh.originale, 1, MAX_ORIGINALE);
   const stueckzahl = ganz(roh.stueckzahl, 1, MAX_KOPIEN);
   const beschriftung = text(roh.beschriftung, BESCHRIFTUNG_HOECHSTENS);
   const hinweis = text(roh.hinweis, HINWEIS_HOECHSTENS);
   const sicherungskarte = kartenAntwort(roh.sicherungskarte);
-  const versand = roh.versand === 'versichert' || roh.versand === 'unversichert' ? roh.versand : null;
-  if (originale === null || stueckzahl === null || beschriftung === false || hinweis === false || !sicherungskarte || !versand) return { ok: false };
+  // Nur die Varianten des Inhabers; „versichert“ und „unversichert“ wählt niemand mehr (A-050).
+  const variante = istVariantenKennung(roh.versand) ? varianten.find((v) => v.kennung === roh.versand && v.aktiv) : undefined;
+  const schluesselart = istSchluesselart(roh.schluesselart) ? roh.schluesselart : null;
+  if (roh.wertvoll !== undefined && typeof roh.wertvoll !== 'boolean') return { ok: false };
+  const wertvoll = roh.wertvoll === true;
+  const sonderfallBestaetigt = roh.sonderfallBestaetigt === true;
+  if (originale === null || stueckzahl === null || beschriftung === false || hinweis === false || !sicherungskarte || !variante || !schluesselart) {
+    return { ok: false };
+  }
+  // Sonderfall nur mit ausdrücklicher Bestätigung des Hinweises (A-050, Punkt 1).
+  if (variante.nurSonderfall && !sonderfallBestaetigt) return { ok: false };
   if (!ruecksendeanschriftVollstaendig(contact)) return { ok: false };
   const payload: EinsendePayload = {
     quelle: EINSENDE_QUELLE,
@@ -115,10 +153,33 @@ export function einsendeVorgang(roh: Record<string, unknown>, contact: ContactDe
     beschriftung,
     hinweis,
     sicherungskarte,
-    versand,
+    schluesselart,
+    wertvoll,
+    versand: variante.kennung,
+    ...(variante.nurSonderfall ? { sonderfallBestaetigt: true } : {}),
     originalEingesendet: true,
   };
   return { ok: true, payload, summary: einsendeZusammenfassung(payload, contact) };
+}
+
+/** Meldung, wenn der Fahrzeugschein fehlt (R13). */
+export const EINSENDUNG_FAHRZEUGSCHEIN_FEHLT =
+  'Für einen Autoschlüssel brauchen wir Ihren Fahrzeugschein (Zulassungsbescheinigung Teil I). Bitte laden Sie ein Foto oder eine Datei hoch.';
+
+/**
+ * Berechtigungsnachweis einer Einsendung (R13): Bei Fahrzeugschlüsseln gehört der Fahrzeugschein dazu.
+ * Mit eingerichteter Dateiablage zählt nur eine hochgeladene Datei. Meldung oder `null`.
+ * Der Server ruft diese Prüfung beim Absenden auf (records.ts, siehe Bericht FA-SHOP-03).
+ */
+export function einsendeNachweisPruefen(
+  payload: Pick<EinsendePayload, 'schluesselart'> | Record<string, unknown>,
+  uploads: readonly Pick<UploadRef, 'category' | 'storageKey' | 'uploadToken'>[],
+  ablageEingerichtet: boolean,
+): string | null {
+  if (!brauchtFahrzeugschein(payload.schluesselart)) return null;
+  const scheine = uploads.filter((u) => u.category === 'fahrzeugschein');
+  const da = scheine.length > 0 && (!ablageEingerichtet || scheine.some((u) => u.storageKey && u.uploadToken));
+  return da ? null : EINSENDUNG_FAHRZEUGSCHEIN_FEHLT;
 }
 
 /** Ist der Vorgang eine Einsendung? Nur Foto-Anfragen mit der Quelle „einsenden“. */

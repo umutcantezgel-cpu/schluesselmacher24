@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { FlowShell } from '@/components/flow/flow-shell';
 import { QuantityInput, Select, TextArea, TextInput } from '@/components/forms/controls';
@@ -13,6 +13,7 @@ import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/comp
 import { SummaryList } from '@/components/layout/summary-list';
 import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { Alert } from '@/components/ui/alert';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { WegBestaetigung } from '@/components/weg/bestaetigung';
 import { submitRecord, type SubmitResult } from '@/lib/actions/records';
@@ -26,21 +27,28 @@ import {
   type EinsendePayload,
 } from '@/lib/einsenden/vorgang';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
-import { formatCents } from '@/lib/format';
 import { LIEFERLAND } from '@/lib/kasse';
-import type { ContactDetails, ImageSlot } from '@/lib/types';
-import type { EinsendeAngebot } from '@/lib/versand/angebot';
-import type { VersandArt } from '@/lib/versand/typen';
+import type { ContactDetails, EinsendeEinstellungen, EinsendeVarianteKennung, ImageSlot } from '@/lib/types';
+import { einsendeAngebot, varianteWaehlbar } from '@/lib/versand/angebot';
+import {
+  SCHLUESSELARTEN,
+  SONDERFALL_HINWEIS,
+  brauchtFahrzeugschein,
+  empfehlungFuer,
+  type Schluesselart,
+} from '@/lib/versand/varianten';
 import { SCHRITTE_EINSENDUNG } from '@/lib/wege/naechste-schritte';
 import { KARTEN_ANTWORTEN, kartenAntwort, type KartenAntwort } from '@/lib/wege/nachweis';
+
+import { VarianteBeschreibung, kostenSatz } from '../versand-variante';
 
 const FLOW_ID = 'schluessel-einschicken';
 const EMAIL_MUSTER = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const STEPS: FlowStep[] = [
   { id: 'schluessel', title: 'Was schicken Sie ein?', hint: 'Wie viele Schlüssel im Umschlag liegen und wie viele Kopien Sie brauchen.', short: 'Schlüssel' },
-  { id: 'nachweis', title: 'Gibt es eine Sicherungskarte?', hint: 'Schlüssel mit geschütztem Profil fertigen wir nur gegen die Karte.', short: 'Nachweis' },
-  { id: 'versand', title: 'Wie schicken Sie den Schlüssel?', hint: 'Ihre Wahl steht auf dem Begleitschein.', short: 'Versand' },
+  { id: 'nachweis', title: 'Ihr Nachweis', hint: 'Schlüssel mit geschütztem Profil fertigen wir nur gegen die Karte, Autoschlüssel nur gegen den Fahrzeugschein.', short: 'Nachweis' },
+  { id: 'versand', title: 'Wie schicken Sie den Schlüssel?', hint: 'Sie sehen die Kosten vorher. Ihre Wahl steht auf dem Begleitschein.', short: 'Versand' },
   { id: 'kontakt', title: 'Kontakt und Rücksendeanschrift', hint: 'An diese Anschrift schicken wir Original und Kopien zurück.', short: 'Kontakt' },
   { id: 'absenden', title: 'Angaben prüfen und Begleitschein erstellen', hint: 'Nach dem Absenden laden Sie den Begleitschein als PDF herunter.', short: 'Absenden' },
 ];
@@ -50,10 +58,16 @@ interface EinsendeDaten {
   stueckzahl: number;
   beschriftung: string;
   hinweis: string;
+  /** Was eingeschickt wird (A-050); Autoschlüssel brauchen den Fahrzeugschein (R13). */
+  schluesselart: Schluesselart | '';
+  /** Als wertvoll angegeben: DHL Paket ist dann empfohlen und vorausgewählt. */
+  wertvoll: boolean;
   /** Berechtigungsnachweis (R13): Gibt es eine Sicherungskarte? */
   sicherungskarte: KartenAntwort;
-  /** Keine Vorauswahl: Versichert ist empfohlen, gewählt wird bewusst. */
-  versand: VersandArt | '';
+  /** Variante des Inhabers; vorausgewählt nur bei einer Empfehlung (A-050, Punkt 3). */
+  versand: EinsendeVarianteKennung | '';
+  /** Sonderfall gewählt und Hinweis bestätigt. */
+  sonderfallBestaetigt: boolean;
   anrede: string;
   vorname: string;
   nachname: string;
@@ -70,8 +84,11 @@ const INITIAL: EinsendeDaten = {
   stueckzahl: 1,
   beschriftung: '',
   hinweis: '',
+  schluesselart: '',
+  wertvoll: false,
   sicherungskarte: '',
   versand: '',
+  sonderfallBestaetigt: false,
   anrede: '',
   vorname: '',
   nachname: '',
@@ -104,7 +121,13 @@ function kontaktAus(d: EinsendeDaten): ContactDetails {
   };
 }
 
-function payloadAus(d: EinsendeDaten & { versand: VersandArt }): EinsendePayload {
+const EXAMPLE_FAHRZEUGSCHEIN: ImageSlot = {
+  motif: 'Beispielfoto: Zulassungsbescheinigung Teil I, ganze Seite im Bild, Halter und Fahrzeugdaten lesbar',
+  ratio: '3/2',
+  note: 'Die ganze Seite, scharf und ohne Spiegelung.',
+};
+
+function payloadAus(d: EinsendeDaten & { versand: EinsendeVarianteKennung; schluesselart: Schluesselart }, sonderfall: boolean): EinsendePayload {
   return {
     quelle: EINSENDE_QUELLE,
     originale: d.originale,
@@ -112,9 +135,17 @@ function payloadAus(d: EinsendeDaten & { versand: VersandArt }): EinsendePayload
     beschriftung: d.beschriftung.trim() || null,
     hinweis: d.hinweis.trim() || null,
     sicherungskarte: kartenAntwort(d.sicherungskarte) || 'unklar',
+    schluesselart: d.schluesselart,
+    wertvoll: d.wertvoll,
     versand: d.versand,
+    ...(sonderfall ? { sonderfallBestaetigt: true } : {}),
     originalEingesendet: true,
   };
+}
+
+/** Angebot für die Angaben des Kunden: Empfehlung aus Schlüsselart und „wertvoll“ (A-050). */
+function angebotZu(einstellungen: EinsendeEinstellungen, d: Pick<EinsendeDaten, 'schluesselart' | 'wertvoll'>) {
+  return einsendeAngebot(einstellungen, false, { empfehlung: empfehlungFuer(d) });
 }
 
 /** PDF aus der Antwort des Servers speichern (kein Link, kein Zwischenspeicher). */
@@ -135,8 +166,9 @@ function speichern(schein: { dateiname: string; pdfBase64: string }) {
  * als PDF. Der Server prüft alle Angaben und baut die Zusammenfassung selbst; die Vorschau hier nutzt
  * dieselbe Funktion.
  */
-export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot; hilfe?: HilfeKontakt }) {
+export function EinsendeFormular({ einstellungen, hilfe }: { einstellungen: EinsendeEinstellungen; hilfe?: HilfeKontakt }) {
   const [fotoKarte, setFotoKarte] = useState<PickedFile[]>([]);
+  const [fotoSchein, setFotoSchein] = useState<PickedFile[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<SubmitResult | null>(null);
   const [fehler, setFehler] = useState<string | null>(null);
@@ -146,12 +178,14 @@ export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot;
     id: FLOW_ID,
     steps: STEPS,
     initial: INITIAL,
-    version: 1,
+    // Version 2: Schlüsselart und Varianten des Inhabers (A-050); ältere Zwischenstände gelten nicht mehr.
+    version: 2,
     validate: (d, stepId) => {
       switch (stepId) {
         case 'schluessel':
           return (
-            d.originale >= 1 && d.originale <= MAX_ORIGINALE
+            d.schluesselart !== ''
+            && d.originale >= 1 && d.originale <= MAX_ORIGINALE
             && d.stueckzahl >= 1 && d.stueckzahl <= MAX_KOPIEN
             && d.beschriftung.trim().length <= BESCHRIFTUNG_HOECHSTENS
             && d.hinweis.trim().length <= HINWEIS_HOECHSTENS
@@ -159,7 +193,7 @@ export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot;
         case 'nachweis':
           return kartenAntwort(d.sicherungskarte) !== '';
         case 'versand':
-          return d.versand !== '';
+          return varianteWaehlbar(angebotZu(einstellungen, d), d.versand, d.sonderfallBestaetigt);
         case 'kontakt':
           return (
             d.vorname.trim().length > 1
@@ -177,21 +211,44 @@ export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot;
   });
 
   const { data } = flow;
+  const fahrzeug = brauchtFahrzeugschein(data.schluesselart);
   // Bei „Sicherungskarte ja“ gehört ein Foto der Karte dazu (R13); der Server prüft es noch einmal.
-  const karteFehlt = data.sicherungskarte === 'ja' && fotoKarte.length === 0;
-  // Auch beim Absenden: Nach einem Neuladen fehlt das Foto der Karte (FA-QA-02); der Server prüft es ohnehin.
+  const karteFehlt = !fahrzeug && data.sicherungskarte === 'ja' && fotoKarte.length === 0;
+  // Autoschlüssel nur gegen den Fahrzeugschein (R13).
+  const scheinFehlt = fahrzeug && fotoSchein.length === 0;
+  const nachweisFehlt = karteFehlt || scheinFehlt;
+  // Auch beim Absenden: Nach einem Neuladen fehlt das Foto (FA-QA-02).
   const shellFlow = {
     ...flow,
-    canContinue: flow.canContinue && !((flow.step?.id === 'nachweis' || flow.step?.id === 'absenden') && karteFehlt),
+    canContinue:
+      flow.canContinue
+      && !((flow.step?.id === 'nachweis' || flow.step?.id === 'absenden') && karteFehlt)
+      && !((flow.step?.id === 'nachweis' || flow.step?.id === 'absenden') && scheinFehlt),
   };
-  // Vorschau erst mit gewählter Versandart (keine Vorbelegung, auch nicht hier).
+  const angebot = useMemo(() => angebotZu(einstellungen, data), [einstellungen, data]);
+  const gewaehlt = [...angebot.optionen, ...angebot.sonderfaelle].find((o) => o.art === data.versand);
+  const sonderfall = gewaehlt?.nurSonderfall === true && angebot.sonderfaelle.some((o) => o.art === gewaehlt.art);
+
+  // Empfehlung (A-050, Punkt 3): Bei Autoschlüsseln, Elektronik und wertvollen Schlüsseln ist DHL Paket
+  // vorausgewählt, solange der Kunde noch nichts gewählt hat. Wählen kann er weiter frei.
+  const schrittId = flow.step?.id;
+  const { set } = flow;
+  useEffect(() => {
+    if (schrittId === 'versand' && data.versand === '' && angebot.vorauswahl) set('versand', angebot.vorauswahl);
+  }, [schrittId, data.versand, angebot.vorauswahl, set]);
+
+  // Vorschau erst mit gewählter Versandart.
   const summary = useMemo(() => {
-    const versand = data.versand;
-    return versand ? einsendeZusammenfassung(payloadAus({ ...data, versand }), kontaktAus(data)) : [];
-  }, [data]);
+    const { versand, schluesselart } = data;
+    return versand && schluesselart ? einsendeZusammenfassung(payloadAus({ ...data, versand, schluesselart }, sonderfall), kontaktAus(data)) : [];
+  }, [data, sonderfall]);
 
   async function absenden() {
-    const versand = data.versand;
+    const { versand, schluesselart } = data;
+    if (!schluesselart) {
+      flow.goTo('schluessel');
+      return;
+    }
     if (!versand) {
       flow.goTo('versand');
       return;
@@ -206,10 +263,14 @@ export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot;
         area: 'schluessel-nach-vorlage',
         process: 'gefuehrte-anfrage',
         contact: kontaktAus(data),
-        payload: { ...payloadAus({ ...data, versand }) },
+        payload: { ...payloadAus({ ...data, versand, schluesselart }, sonderfall) },
         // Die Zusammenfassung baut der Server aus den geprüften Angaben.
         summary: [],
-        uploads: data.sicherungskarte === 'ja' ? fotoKarte.map((file) => alsUpload(file, 'sicherungskarte')) : [],
+        uploads: fahrzeug
+          ? fotoSchein.map((file) => alsUpload(file, 'fahrzeugschein', 'fahrzeugschein'))
+          : data.sicherungskarte === 'ja'
+            ? fotoKarte.map((file) => alsUpload(file, 'sicherungskarte'))
+            : [],
       });
       schutz.antwortBeachten(antwort);
       if (antwort.ok) {
@@ -231,7 +292,7 @@ export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot;
       <WegBestaetigung
         marke="Einsendung angemeldet"
         titel={schein ? 'Ihr Begleitschein ist bereit' : 'Ihre Einsendung ist angemeldet'}
-        text="Legen Sie den Begleitschein mit dem Schlüssel in einen gepolsterten Umschlag. Die Anschrift für den Umschlag steht auf dem Begleitschein."
+        text={`${angebot.verpackung} Legen Sie den Begleitschein bei. Die Anschrift steht auf dem Begleitschein.`}
         reference={result.reference ?? ''}
         notices={result.notices}
         schritte={SCHRITTE_EINSENDUNG}
@@ -255,11 +316,19 @@ export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot;
   }
 
   const gesperrt: Record<string, string> = {
-    schluessel: `Bitte geben Sie an, wie viele Schlüssel (1 bis ${MAX_ORIGINALE}) und wie viele Kopien (1 bis ${MAX_KOPIEN}) es sind.`,
-    nachweis: karteFehlt ? 'Bitte fügen Sie ein Foto Ihrer Sicherungskarte hinzu.' : 'Bitte beantworten Sie die Frage nach der Sicherungskarte.',
-    versand: 'Bitte wählen Sie, wie Sie den Schlüssel schicken.',
+    schluessel: data.schluesselart
+      ? `Bitte geben Sie an, wie viele Schlüssel (1 bis ${MAX_ORIGINALE}) und wie viele Kopien (1 bis ${MAX_KOPIEN}) es sind.`
+      : 'Bitte wählen Sie, was Sie einschicken.',
+    nachweis: scheinFehlt
+      ? 'Bitte fügen Sie ein Foto Ihres Fahrzeugscheins hinzu.'
+      : karteFehlt
+        ? 'Bitte fügen Sie ein Foto Ihrer Sicherungskarte hinzu.'
+        : 'Bitte beantworten Sie die Frage nach der Sicherungskarte.',
+    versand: gewaehlt?.nurSonderfall && !data.sonderfallBestaetigt
+      ? 'Bitte bestätigen Sie den Hinweis zum Sonderfall oder wählen Sie eine andere Versandart.'
+      : 'Bitte wählen Sie, wie Sie den Schlüssel schicken.',
     kontakt: 'Bitte füllen Sie Name, E-Mail, Telefon und die vollständige Rücksendeanschrift aus.',
-    absenden: 'Es fehlt das Foto Ihrer Sicherungskarte. Das passiert, wenn die Seite neu geladen wurde. Bitte gehen Sie zum Schritt Nachweis zurück.',
+    absenden: `Es fehlt das Foto ${scheinFehlt ? 'Ihres Fahrzeugscheins' : 'Ihrer Sicherungskarte'}. Das passiert, wenn die Seite neu geladen wurde. Bitte gehen Sie zum Schritt Nachweis zurück.`,
   };
 
   return (
@@ -272,13 +341,49 @@ export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot;
       onSubmit={absenden}
       submitting={submitting}
       blockedHint={gesperrt[flow.step?.id ?? '']}
-      ungesichert={fotoKarte.length > 0}
+      ungesichert={fotoKarte.length > 0 || fotoSchein.length > 0}
       mitDateien
     >
       {fehler && <AbsendeFehler fehler={fehler} hilfe={hilfe} titel="Das hat nicht geklappt" />}
 
       {flow.step?.id === 'schluessel' && (
         <div className="max-w-3xl space-y-6">
+          <fieldset className="space-y-3">
+            <legend className="text-body font-semibold text-foreground">Was schicken Sie ein?</legend>
+            {SCHLUESSELARTEN.map((art) => (
+              <OptionCard
+                key={art.wert}
+                name="schluesselart"
+                value={art.wert}
+                checked={data.schluesselart === art.wert}
+                // Beim Autoschlüssel ist der Fahrzeugschein der Nachweis, nicht die Sicherungskarte.
+                onSelect={() =>
+                  flow.update({
+                    schluesselart: art.wert,
+                    ...(brauchtFahrzeugschein(art.wert)
+                      ? { sicherungskarte: 'nein' as const }
+                      : brauchtFahrzeugschein(data.schluesselart)
+                        ? { sicherungskarte: '' as const }
+                        : {}),
+                  })
+                }
+                title={art.titel}
+                description={art.satz}
+              />
+            ))}
+            <p className="text-small text-foreground-muted">
+              Autoschlüssel mit Transponder oder Funk schicken Sie bitte nicht hier ein. Dafür gibt es den Bereich Autoschlüssel.
+            </p>
+            <OptionCard
+              name="wertvoll"
+              value="ja"
+              multiple
+              checked={data.wertvoll}
+              onSelect={() => set('wertvoll', !data.wertvoll)}
+              title="Der Schlüssel ist wertvoll oder schwer zu ersetzen"
+              description="Dann empfehlen wir DHL Paket mit Haftung bis 500 €."
+            />
+          </fieldset>
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
               <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Schlüssel im Umschlag</p>
@@ -305,9 +410,6 @@ export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot;
               </div>
             </div>
           </div>
-          <p className="text-small text-foreground-muted">
-            Autoschlüssel und Transponder schicken Sie bitte nicht hier ein. Dafür gibt es den Bereich Autoschlüssel.
-          </p>
           <Field label="Beschriftung auf dem Schlüssel (freiwillig)" hint="Nummer oder Hersteller, falls etwas eingeprägt ist.">
             {({ id, describedBy }) => (
               <TextInput
@@ -335,7 +437,31 @@ export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot;
         </div>
       )}
 
-      {flow.step?.id === 'nachweis' && (
+      {flow.step?.id === 'nachweis' && fahrzeug && (
+        <div className="max-w-3xl space-y-3">
+          <p className="text-body font-semibold text-foreground">Fahrzeugschein</p>
+          <p className="text-small text-foreground-muted">
+            Einen Autoschlüssel fertigen wir nur gegen den Fahrzeugschein (Zulassungsbescheinigung Teil I). Er zeigt, dass Sie den
+            Schlüssel nachmachen lassen dürfen.
+          </p>
+          <PhotoUpload
+            category="fahrzeugschein"
+            id="foto-fahrzeugschein"
+            label="Foto Ihres Fahrzeugscheins"
+            description="Die ganze Seite, scharf und gut lesbar. Den Fahrzeugschein selbst schicken Sie bitte nicht mit."
+            example={EXAMPLE_FAHRZEUGSCHEIN}
+            files={fotoSchein}
+            onChange={setFotoSchein}
+            maxFiles={2}
+            multiple
+          />
+          <div className="pt-5">
+            <HilfeBlock hilfe={hilfe} stelle="nachweis" satz="Fragen zum Nachweis? Rufen Sie uns an." spaeter mitDateien />
+          </div>
+        </div>
+      )}
+
+      {flow.step?.id === 'nachweis' && !fahrzeug && (
         <fieldset className="max-w-3xl space-y-3">
           <legend className="text-body font-semibold text-foreground">Gibt es zu Ihrem Schlüssel eine Sicherungskarte?</legend>
           <p className="text-small text-foreground-muted">
@@ -382,12 +508,51 @@ export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot;
               name="versand"
               value={option.art}
               checked={data.versand === option.art}
-              onSelect={() => flow.set('versand', option.art)}
+              onSelect={() => flow.update({ versand: option.art, sonderfallBestaetigt: false })}
               title={option.titel}
-              description={`${option.hinweis}${option.aufpreisCents > 0 ? ` Aufpreis ${formatCents(option.aufpreisCents)}.` : ''}`}
+              meta={option.empfohlen ? <Badge tone="success">Empfehlung</Badge> : undefined}
+              description={<VarianteBeschreibung option={option} />}
             />
           ))}
-          {angebot.stand && <p className="text-small text-foreground-subtle">Portopreise: {angebot.stand}</p>}
+          {angebot.sonderfaelle.length > 0 && (
+            <details className="rounded-lg border border-border p-4" open={gewaehlt?.nurSonderfall === true}>
+              <summary className="min-h-touch cursor-pointer text-small font-semibold text-foreground">Sonderfall: höhere Absicherung</summary>
+              <div className="mt-3 space-y-3">
+                {angebot.sonderfaelle.map((option) => (
+                  <OptionCard
+                    key={option.art}
+                    name="versand"
+                    value={option.art}
+                    checked={data.versand === option.art}
+                    onSelect={() => set('versand', option.art)}
+                    title={`${option.titel} (nur Sonderfall)`}
+                    description={<VarianteBeschreibung option={option} />}
+                  />
+                ))}
+                {gewaehlt?.nurSonderfall && (
+                  <OptionCard
+                    name="sonderfallBestaetigt"
+                    value="ja"
+                    multiple
+                    checked={data.sonderfallBestaetigt}
+                    onSelect={() => set('sonderfallBestaetigt', !data.sonderfallBestaetigt)}
+                    title="Ich habe den Hinweis gelesen"
+                    description={SONDERFALL_HINWEIS}
+                  />
+                )}
+              </div>
+            </details>
+          )}
+          {gewaehlt && (
+            <p className="rounded-lg border border-border bg-surface p-4 text-small text-foreground">
+              <span className="font-semibold">Ihre Kosten für den Versand ({gewaehlt.titel}):</span> {kostenSatz(gewaehlt)}.
+              {gewaehlt.stand && <span className="mt-1 block text-caption text-foreground-subtle">Stand: {gewaehlt.stand}</span>}
+            </p>
+          )}
+          <Alert tone="warning" title="So verpacken Sie den Schlüssel">
+            {angebot.verpackung}
+          </Alert>
+          <p className="text-small text-foreground-subtle">{angebot.haftungHinweis}</p>
           <div className="pt-5">
             <HilfeBlock hilfe={hilfe} stelle="versand" titel="Fragen zum Versand?" satz="Wir sagen Ihnen gern, welcher Versand für Ihren Schlüssel passt." />
           </div>
@@ -466,8 +631,8 @@ export function EinsendeFormular({ angebot, hilfe }: { angebot: EinsendeAngebot;
             der Prüfung Ihres Schlüssels. Ein Auftrag kommt erst zustande, wenn Sie nach unserer Freigabe den genannten Preis bezahlen.
           </Alert>
           <SummaryList sections={summary} variante="schriftfeld" />
-          {karteFehlt && (
-            <Alert tone="warning" title="Foto der Sicherungskarte fehlt">
+          {nachweisFehlt && (
+            <Alert tone="warning" title={scheinFehlt ? 'Foto des Fahrzeugscheins fehlt' : 'Foto der Sicherungskarte fehlt'}>
               Fotos werden aus Datenschutzgründen nicht zwischengespeichert. Bitte fügen Sie das Foto noch einmal hinzu.
               <span className="mt-3 block">
                 <Button variant="outline" size="md" onClick={() => flow.goTo('nachweis')}>

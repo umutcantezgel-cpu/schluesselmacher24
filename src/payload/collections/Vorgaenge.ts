@@ -505,6 +505,13 @@ export const Vorgaenge: CollectionConfig = {
                   ],
                 },
                 {
+                  // Einsende-Varianten (A-050): Der Sonderfall (Einschreiben Wert) erscheint dem Kunden nur mit dieser Freigabe.
+                  name: 'sonderfallVersand',
+                  type: 'checkbox',
+                  label: 'Sonderfall-Versand freigeben (Einschreiben Wert)',
+                  admin: { description: 'Nur für geeignete Sonderfälle. Einlieferung nur in der Filiale; ob ein Schlüssel als Wertgegenstand gilt, ist mit der Post zu klären.' },
+                },
+                {
                   name: 'hinweis',
                   type: 'textarea',
                   label: 'Hinweis an den Kunden',

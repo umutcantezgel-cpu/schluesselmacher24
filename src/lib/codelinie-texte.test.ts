@@ -8,11 +8,20 @@ import type { CodeLine, Guide, Settings } from '@/lib/types';
 import { generatorTexte } from '@/lib/data/defaults/code-lines';
 
 import {
+  ANFRAGE_KASTEN,
+  ANFRAGE_WEG,
   BESCHREIBUNG_MAX,
+  GRUPPE_AUF_ANFRAGE,
+  GRUPPE_NICHT_LIEFERBAR,
   TITEL_MAX,
+  aufzaehlung,
   codelinienTexte,
   eigeneTexte,
   fundstelleAusRatgeber,
+  gruppeLieferbar,
+  gruppenKopfzeile,
+  gruppenZustand,
+  herstellerTexte,
   istGeneratorText,
   kategorieTexte,
 } from './codelinie-texte';
@@ -113,7 +122,7 @@ describe('codelinienTexte', () => {
     expect(text).not.toContain('Hersteller');
     const mit = texte({ ...linie('ms-01'), manufacturer: 'ABUS', profile: 'Profil 20', codeSeries: 'Serie 100' });
     expect(mit.metaTitel).toContain('ABUS');
-    expect(mit.beschreibung).toContain('Hersteller ABUS, Profil Profil 20, Codeserie Serie 100');
+    expect(mit.beschreibung).toContain('Er gehört zu Schlössern von ABUS. Das Profil heißt Profil 20, die Codeserie Serie 100.');
   });
 
   it('lässt eigene Texte aus dem Backend immer gewinnen', () => {
@@ -194,7 +203,7 @@ describe('codelinienTexte nach Verfügbarkeit (FA-SHOP-01B)', () => {
     const text = alle(t);
     expect(t.metaBeschreibung).toContain('nach Code anfragen');
     expect(text).not.toMatch(/bestellen:|Bestellformular|je Bestellung|je Stück|€/);
-    expect(t.einleitung).toContain('fragen Sie bei uns an');
+    expect(t.einleitung).toContain(ANFRAGE_WEG);
     expect(t.faq.find((f) => f.question.startsWith('Was kostet'))?.answer).toContain('Angebot');
   });
 
@@ -210,7 +219,10 @@ describe('codelinienTexte nach Verfügbarkeit (FA-SHOP-01B)', () => {
     const t = texte(linie('ms-01'));
     expect(t.metaBeschreibung).toContain('nach Code bestellen');
     expect(t.einleitung).not.toMatch(/[—–]/);
-    expect(t.faq.find((f) => f.question.startsWith('Wie sieht'))?.answer).toContain('Bestellformular');
+    // Die Antwort spricht vom Code, nicht vom Formular (FA-INHALT-03I, L-08, L-30).
+    expect(t.faq.find((f) => f.question.startsWith('Wie sieht'))?.answer).toBe(
+      'Der Code für MS-01 sieht so aus: 3 bis 4 Ziffern, zum Beispiel 0812. Sieht Ihr Code anders aus, fragen Sie ihn bei uns an.',
+    );
   });
 });
 
@@ -237,5 +249,156 @@ describe('Linien aus dem Import (Hersteller und System, ohne Schlagwort-Familie)
     expect(t.beschreibung).not.toContain('TESTWERK-TX-100');
     expect(t.beschreibung).not.toMatch(/Testwerk TX 100 ist für Testwerk TX 100/);
     expect(t.faq.map((f) => f.question).join(' ')).toContain('Testwerk TX 100');
+  });
+});
+
+describe('Produktseite: Befunde der drei Leser (FA-INHALT-03I)', () => {
+  const satzZahl = (text: string, satz: string) => text.split(satz).length - 1;
+  const seite = (t: ReturnType<typeof texte>) =>
+    [t.einleitung, t.beschreibung, t.fundstelle, t.codeHinweis, ...t.faq.flatMap((f) => [f.question, f.answer])].join(' ');
+  const mitSchloss = { ...linie('ms-01'), manufacturer: 'Musterwerk', system: 'M 100', codeRange: '1 bis 999' };
+
+  it('„nicht lieferbar“ beschreibt keine Fertigung und sagt das Nichtbestellen nur einmal im Text (L-01, L-19, L-35)', () => {
+    const t = texte({ ...mitSchloss, availability: 'nicht-lieferbar' });
+    expect(t.einleitung).toBe('Diesen Möbelschlüssel für Büroschrank und Rollcontainer können Sie zurzeit nicht bestellen.');
+    expect(seite(t)).not.toMatch(/gefertigt|fertigen/);
+    expect(satzZahl(seite(t), 'zurzeit nicht bestellen')).toBe(1);
+    expect(t.metaBeschreibung).not.toContain('Fragen Sie gern');
+    // Suchbeschreibung wie der Kasten: der Weg in die Code-Anfrage, ohne Original-Zusage.
+    expect(t.metaBeschreibung).toContain('Fragen Sie Ihren Code bei uns an.');
+    expect(t.metaBeschreibung).not.toContain('Originalschlüssel');
+  });
+
+  it('„auf Anfrage“ nennt den Weg in Einleitung und Kasten im selben Wortlaut, sonst nirgends (L-05)', () => {
+    const t = texte({ ...mitSchloss, availability: 'auf-anfrage' });
+    expect(ANFRAGE_KASTEN).toBe(
+      'Diesen Schlüssel können Sie nicht in den Warenkorb legen. Über „Code anfragen“ prüfen wir Ihren Code und melden uns mit einem Angebot.',
+    );
+    expect(satzZahl(seite(t), ANFRAGE_WEG)).toBe(1);
+    expect(seite(t)).not.toMatch(/nicht direkt|Bitte fragen Sie/);
+  });
+
+  it('nennt das Original höchstens einmal im Text, die Plakette kommt dazu (L-10)', () => {
+    for (const availability of ['lieferbar', 'auf-anfrage', 'nicht-lieferbar'] as const) {
+      const text = seite(texte({ ...mitSchloss, availability }));
+      const zahl = (text.match(/Originalschlüssel/g) ?? []).length;
+      expect(zahl, availability).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it('kein „Anwendungsfamilie“, kein „Codeformat“ im Text; System und Codebereich beim ersten Vorkommen erklärt (L-03, L-04, L-07, L-26)', () => {
+    for (const availability of ['lieferbar', 'auf-anfrage', 'nicht-lieferbar'] as const) {
+      const t = texte({ ...mitSchloss, availability });
+      expect(seite(t), availability).not.toMatch(/Anwendungsfamilie|Familie|Codeformat|Prägung|Angaben zum Schloss:/);
+      expect(t.beschreibung).toContain('Er gehört zu Schlössern von Musterwerk im System M 100 (so nennt der Hersteller sein Schließsystem).');
+      expect(t.beschreibung).toContain('Der Codebereich ist 1 bis 999, in diesem Bereich liegt Ihr Code.');
+      expect(t.beschreibung).toContain('So sieht der Code aus: 3 bis 4 Ziffern, zum Beispiel 0812.');
+      expect(t.faq.find((f) => f.question.startsWith('Für welche Schlösser'))?.answer).toBe(
+        'MS-01 gehört zu Schlössern von Musterwerk im System M 100. Ihr Code liegt im Codebereich 1 bis 999. '
+          + 'Vergleichen Sie das mit dem, was auf Ihrem Schloss oder Schlüssel steht.',
+      );
+    }
+  });
+
+  it('keine Antwort nennt ein Bestellformular, „nicht lieferbar“ auch keine Anfrage (L-08, L-30)', () => {
+    for (const availability of ['lieferbar', 'auf-anfrage', 'nicht-lieferbar'] as const) {
+      const text = texte({ ...mitSchloss, availability }).faq.map((f) => f.answer).join(' ');
+      expect(text, availability).not.toMatch(/Formular|Eingabe/);
+    }
+    const aus = texte({ ...mitSchloss, availability: 'nicht-lieferbar' }).faq.find((f) => f.question.startsWith('Wie sieht'))?.answer;
+    expect(aus).toBe('Der Code für MS-01 sieht so aus: 3 bis 4 Ziffern, zum Beispiel 0812.');
+  });
+
+  it('„Wo steht der Code“: ein Satz statt zweier fast gleicher, ohne „Erwartetes Format“ (L-09, L-28)', () => {
+    const mitRatgeber = texte(linie('ms-01'));
+    const frage = mitRatgeber.faq.find((f) => f.question.startsWith('Wo steht'))!;
+    expect(frage.answer).toBe(mitRatgeber.fundstelle);
+    expect(mitRatgeber.codeHinweis).toBeUndefined();
+    // Ohne Ratgebersatz bleibt der Startwert der Linie, ohne den Satzrest.
+    const ohne = codelinienTexte(linie('ms-01'), { ...kontext, ratgeber: null });
+    expect(ohne.codeHinweis).toBe('Der Code steht meist direkt auf dem Schloss oder auf dem Schlüsselkopf.');
+    expect(ohne.faq.find((f) => f.question.startsWith('Wo steht'))?.answer).toBe(ohne.codeHinweis);
+    // Ein im Backend gepflegter Hinweis gilt immer.
+    const gepflegt = texte({ ...linie('ms-01'), codeHint: 'Der Code steht unten am Schließblech.' });
+    expect(gepflegt.codeHinweis).toBe('Der Code steht unten am Schließblech.');
+    expect(gepflegt.faq.find((f) => f.question.startsWith('Wo steht'))?.answer).toContain('Der Code steht unten am Schließblech.');
+  });
+});
+
+describe('Gruppen mit drei Zuständen (FA-INHALT-03I, L-06, L-13, L-24)', () => {
+  const familie = codelinienFamilie(LINIEN[0]);
+  const moebel = LINIEN.filter((l) => codelinienFamilie(l) === familie);
+  const alle = (availability: 'lieferbar' | 'auf-anfrage' | 'nicht-lieferbar') => moebel.map((l) => ({ ...l, availability }));
+  const gemischt = (...staende: Array<'lieferbar' | 'auf-anfrage' | 'nicht-lieferbar'>) =>
+    staende.map((availability, i) => ({ ...moebel[i], availability }));
+
+  it('erkennt lieferbar, auf Anfrage und nicht lieferbar, auch in gemischten Gruppen', () => {
+    expect(gruppenZustand(alle('lieferbar'))).toBe('lieferbar');
+    expect(gruppenZustand(alle('auf-anfrage'))).toBe('auf-anfrage');
+    expect(gruppenZustand(alle('nicht-lieferbar'))).toBe('nicht-lieferbar');
+    expect(gruppenZustand(gemischt('nicht-lieferbar', 'auf-anfrage', 'lieferbar'))).toBe('lieferbar');
+    expect(gruppenZustand(gemischt('nicht-lieferbar', 'auf-anfrage'))).toBe('auf-anfrage');
+    expect(gruppenZustand(gemischt('nicht-lieferbar', 'nicht-lieferbar'))).toBe('nicht-lieferbar');
+    // Ältere Daten ohne Angabe gelten als lieferbar; ohne Produkte führt die Seite in die Anfrage.
+    expect(gruppenZustand([{ availability: undefined }])).toBe('lieferbar');
+    expect(gruppenZustand([])).toBe('auf-anfrage');
+    expect(gruppeLieferbar(gemischt('nicht-lieferbar', 'auf-anfrage'))).toBe(false);
+  });
+
+  it('Kopfzeile je Zustand', () => {
+    expect(gruppenKopfzeile('Kategorie', alle('lieferbar'))).toBe('Kategorie · Direkt kaufen');
+    expect(gruppenKopfzeile('Kategorie', gemischt('nicht-lieferbar', 'auf-anfrage'))).toBe('Kategorie · Auf Anfrage');
+    expect(gruppenKopfzeile('Hersteller', alle('nicht-lieferbar'))).toBe('Hersteller · Derzeit nicht lieferbar');
+    expect(gruppenKopfzeile('Kategorie', [])).toBe('Kategorie · Auf Anfrage');
+  });
+
+  it('Kategorieseite: Einleitung und Suchbeschreibung je Zustand, ohne Reihe aller Anwendungen (L-11, L-25)', () => {
+    const lief = kategorieTexte('Möbel- und Büroschlösser', alle('lieferbar'), RATGEBER);
+    expect(lief.einleitung).toBe(
+      '6 Produkte für Möbel- und Büroschlösser. Bei jedem Produkt steht, wofür es gedacht ist. '
+        + 'Sie geben den Code ein, wir fertigen danach. Ihr Originalschlüssel bleibt bei Ihnen.',
+    );
+    const anfrage = kategorieTexte('Möbel- und Büroschlösser', gemischt('nicht-lieferbar', 'auf-anfrage'), RATGEBER);
+    expect(anfrage.einleitung).toContain(GRUPPE_AUF_ANFRAGE);
+    expect(anfrage.metaBeschreibung).toContain('Fragen Sie uns mit Ihrem Code an.');
+    const nicht = kategorieTexte('Möbel- und Büroschlösser', alle('nicht-lieferbar'), RATGEBER);
+    expect(nicht.einleitung).toBe(
+      `6 Produkte für Möbel- und Büroschlösser. Bei jedem Produkt steht, wofür es gedacht ist. ${GRUPPE_NICHT_LIEFERBAR}`,
+    );
+    for (const t of [nicht]) {
+      const text = [t.einleitung, t.metaBeschreibung, ...t.absaetze].join(' ');
+      expect(text).not.toMatch(/prüfen|Anfrage|anfragen|Originalschlüssel/);
+      expect(t.metaBeschreibung).toContain(GRUPPE_NICHT_LIEFERBAR);
+    }
+    for (const t of [lief, anfrage, nicht]) {
+      expect(t.einleitung).not.toContain('Büroschrank');
+      expect([t.einleitung, ...t.absaetze].join(' ')).not.toMatch(/Codeformat|und [^.,]+ und [^.,]+ und/);
+    }
+  });
+
+  it('Herstellerseite: dieselben Fassungen, Systeme nur in der Einleitung, Preis in der Einzahl (L-31)', () => {
+    const zwei = [
+      { ...moebel[0], manufacturer: 'Musterwerk', system: 'M 100' },
+      { ...moebel[1], manufacturer: 'Musterwerk', system: 'M 200', priceCents: moebel[0].priceCents },
+    ];
+    const lief = herstellerTexte('Musterwerk', zwei);
+    expect(lief.einleitung).toContain('in den Systemen M 100 und M 200.');
+    expect(lief.absaetze.join(' ')).not.toContain('System');
+    expect(lief.absaetze.join(' ')).toContain('Der Preis je Stück beträgt');
+    expect(lief.absaetze.join(' ')).not.toContain('Preise');
+    const anfrage = herstellerTexte('Musterwerk', zwei.map((l, i) => ({ ...l, availability: i ? 'auf-anfrage' as const : 'nicht-lieferbar' as const })));
+    expect(anfrage.einleitung).toContain(GRUPPE_AUF_ANFRAGE);
+    expect(anfrage.metaBeschreibung).toContain('Fragen Sie uns mit Ihrem Code an.');
+    const nicht = herstellerTexte('Musterwerk', zwei.map((l) => ({ ...l, availability: 'nicht-lieferbar' as const })));
+    expect(nicht.einleitung).toContain(GRUPPE_NICHT_LIEFERBAR);
+    expect(nicht.metaBeschreibung).toContain(GRUPPE_NICHT_LIEFERBAR);
+    expect([nicht.einleitung, nicht.metaBeschreibung, ...nicht.absaetze].join(' ')).not.toMatch(/prüfen|Anfrage|Preis/);
+  });
+
+  it('Aufzählung: „sowie“ vor dem letzten Wert, wenn ein Wert selbst „und“ enthält (L-23)', () => {
+    expect(aufzaehlung(['A', 'B', 'C'])).toBe('A, B und C');
+    expect(aufzaehlung(['Schreibtisch und Sideboard', 'Werkstattschrank und Werkbank'])).toBe(
+      'Schreibtisch und Sideboard sowie Werkstattschrank und Werkbank',
+    );
   });
 });

@@ -2,7 +2,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { getCollection, getPageContent, getSettings } from '@/lib/data';
+import { getCollection, getHersteller, getPageContent, getSettings } from '@/lib/data';
+import { systemeFuerSperrschliessung } from '@/lib/konfigurator/hersteller-angabe';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -38,10 +39,13 @@ const RELATED_LINKS = [
 ];
 
 export default async function CylinderConfiguratorPage() {
-  const [page, catalog] = await Promise.all([
+  const [page, catalog, hersteller] = await Promise.all([
     getPageContent(ROUTE),
     getCollection('cylinderCatalog'),
+    getHersteller(),
   ]);
+  // BKS, ABUS und weitere Systeme mit dem Bereich „Sperrschließungen“ (FA-SHOP-04B); Logos nur mit Freigabe (R12).
+  const systeme = systemeFuerSperrschliessung(hersteller);
 
   // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
   const crumbs = [
@@ -65,7 +69,7 @@ export default async function CylinderConfiguratorPage() {
       />
 
       <Section tight>
-        <Konfigurator hilfe={hilfeAus(await getSettings())} catalog={catalog} />
+        <Konfigurator hilfe={hilfeAus(await getSettings())} catalog={catalog} systeme={systeme} />
         <GpsrAngaben info={catalog.gpsr} className="mt-12 max-w-3xl" />
       </Section>
 

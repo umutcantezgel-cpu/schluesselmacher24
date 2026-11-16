@@ -145,6 +145,8 @@ function setzen(ziel: Daten, pfad: string, wert: unknown) {
 
 /** Leer ist leer — `null`, `undefined` und `''` gelten als gleich. */
 const normal = (wert: unknown) => (wert === undefined || wert === null || wert === '' ? null : wert);
+/** Für die Ergänzung neuer Global-Felder: leer oder eine leere Liste. */
+const leerOderLeereListe = (wert: unknown) => normal(wert) === null || (Array.isArray(wert) && wert.length === 0);
 
 function vergleichswert(daten: unknown, feld: AbgleichFeld): unknown {
   const roh = lesen(daten, feld.pfad);
@@ -401,7 +403,8 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
     daten: () => Promise<Record<string, unknown>>,
   ) {
     const pfade = GLOBAL_ERGAENZUNGEN[slug];
-    const offen = pfade.filter((pfad) => normal(lesen(doc, pfad)) === null);
+    // Eine leere Liste (neue Array-Felder wie einsenden.varianten) zählt hier als leer.
+    const offen = pfade.filter((pfad) => leerOderLeereListe(lesen(doc, pfad)));
     if (!offen.length) {
       console.log(`  ${slug}: bereits übernommen`);
       return;
@@ -410,7 +413,7 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
     const aenderung: Daten = {};
     for (const pfad of offen) {
       const wert = lesen(neu, pfad);
-      if (normal(wert) !== null) setzen(aenderung, pfad, wert);
+      if (!leerOderLeereListe(wert)) setzen(aenderung, pfad, wert);
     }
     if (!Object.keys(aenderung).length) return;
     await payload.updateGlobal({ slug, data: aenderung as never, context });
@@ -711,6 +714,7 @@ const GLOBAL_ERGAENZUNGEN = {
     'einsenden.portoUnversichert',
     'einsenden.haftungVersichert',
     'einsenden.portoStand',
+    'einsenden.varianten',
     'erreichbarkeit.kernaussage',
     'erreichbarkeit.zeilen',
   ],

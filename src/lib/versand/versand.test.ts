@@ -1,13 +1,15 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { defaults } from '../data/defaults';
+import { formatCents } from '../format';
 import type { EinsendeEinstellungen } from '../types';
 
-import { einsendeAngebot } from './angebot';
+import { einsendeAngebot, varianteWaehlbar } from './angebot';
 import { begleitscheinInhalt } from './begleitschein';
 import { DHL_SANDBOX, dhlAuftrag, dhlZugang, strasseUndNummer } from './dhl-retoure';
 import { erstelleVersandschein, labelEingerichtet, versandAnbieter } from './index';
 import type { Sendung } from './typen';
+import { PORTO_UNBELEGT, VERPACKUNG_HINWEIS, empfehlungFuer, variantenAus, versandBezeichnung } from './varianten';
 
 const E: EinsendeEinstellungen = defaults.settings().sendIn!;
 
@@ -31,33 +33,116 @@ const DHL_ENV = {
 afterEach(() => vi.restoreAllMocks());
 
 describe('Standardwerte Einsenden', () => {
-  it('haben die Portopreise der Post 2026 und kein Retourenlabel', () => {
+  it('behalten die alten Felder lesbar und kein Retourenlabel (G6)', () => {
     expect(E).toMatchObject({ labelAktiv: false, portoVersichertCents: 445, portoUnversichertCents: 180, haftungVersichertEuro: 25 });
+  });
+
+  it('haben die drei Varianten des Inhabers mit Haftung aus seiner Tabelle und belegtem Porto (A-050)', () => {
+    expect(variantenAus(E).map((v) => [v.kennung, v.haftungEuro, v.portoCents, v.nurSonderfall])).toEqual([
+      ['dhl-paket', 500, 769, false],
+      ['einschreiben-einwurf', 20, 415, false],
+      ['einschreiben-wert', 500, 625, true],
+    ]);
+    expect(variantenAus(E).every((v) => v.portoStand.includes('Stand 1.1.2026'))).toBe(true);
+    // Ältere Stände ohne Varianten bekommen die Startwerte.
+    expect(variantenAus({}).map((v) => v.kennung)).toEqual(['dhl-paket', 'einschreiben-einwurf', 'einschreiben-wert']);
   });
 });
 
-describe('einsendeAngebot', () => {
-  it('verspricht ohne Retourenlabel nichts kostenlos und nennt das Porto als Empfehlung (R9)', () => {
+describe('einsendeAngebot (A-050)', () => {
+  const sichtbar = (a: ReturnType<typeof einsendeAngebot>) =>
+    [a.satz, ...[...a.optionen, ...a.sonderfaelle].flatMap((o) => [o.titel, o.einsatz, o.haftung, o.warnung ?? '', o.portoText, o.hinweis])].join(' ');
+
+  it('nennt keine Variante „versichert“ und verspricht ohne Label nichts kostenlos (R9)', () => {
     const a = einsendeAngebot(E, false);
     expect(a.kostenlos).toBe(false);
     expect(a.satz).toContain('das Porto zahlen Sie bei der Post');
-    const sichtbar = [a.satz, a.stand, ...a.optionen.flatMap((o) => [o.titel, o.hinweis])].join(' ');
-    expect(sichtbar).not.toMatch(/kostenlos|gratis|umsonst/i);
-    expect(a.optionen.map((o) => [o.art, o.empfohlen, o.portoCents])).toEqual([
-      ['versichert', true, 445],
-      ['unversichert', false, 180],
-    ]);
-    expect(a.optionen[0].hinweis).toBe('Empfohlen: als Einschreiben, 4,45 € bei der Post, Haftung bis 25 €.');
-    expect(a.stand).toContain('1.1.2026');
+    expect(sichtbar(a)).not.toMatch(/versichert|kostenlos|gratis|umsonst/i);
+    expect([...a.optionen, ...a.sonderfaelle].map((o) => o.titel)).toEqual(['DHL Paket', 'Einschreiben Einwurf', 'Einschreiben Wert']);
   });
 
-  it('sagt nur mit Schalter und eingerichtetem Zugang, dass der Betrieb das Porto zahlt', () => {
+  it('zeigt beim Einwurf die Haftung von 20 € und warnt vor dem Wert eines Autoschlüssels', () => {
+    const einwurf = einsendeAngebot(E, false).optionen.find((o) => o.art === 'einschreiben-einwurf')!;
+    expect(einwurf.haftung).toBe('Haftung bis 20 € je Sendung');
+    expect(einwurf.warnung).toBe('Ein Schaden über 20 € ist nicht gedeckt. Der Wert eines Autoschlüssels liegt meist darüber.');
+    expect(einwurf.hinweis).toContain('20 €');
+    const paket = einsendeAngebot(E, false).optionen.find((o) => o.art === 'dhl-paket')!;
+    expect(paket.haftung).toBe('Haftung bis 500 € je Sendung');
+    expect(paket.warnung).toBeUndefined();
+  });
+
+  it('wählt bei Autoschlüsseln, Elektronik und wertvollen Schlüsseln DHL Paket vor, sonst nichts', () => {
+    expect(empfehlungFuer({ schluesselart: 'auto-mechanisch' })).toBe('autoschluessel');
+    expect(empfehlungFuer({ schluesselart: 'elektronik' })).toBe('originalschluessel');
+    expect(empfehlungFuer({ schluesselart: 'haus', wertvoll: true })).toBe('originalschluessel');
+    expect(empfehlungFuer({ schluesselart: 'haus', wertvoll: false })).toBeNull();
+
+    const auto = einsendeAngebot(E, false, { empfehlung: empfehlungFuer({ schluesselart: 'auto-mechanisch' }) });
+    expect(auto.vorauswahl).toBe('dhl-paket');
+    expect(auto.optionen.filter((o) => o.empfohlen).map((o) => o.art)).toEqual(['dhl-paket']);
+    // Der Einwurf bleibt wählbar, mit Warnhinweis.
+    expect(varianteWaehlbar(auto, 'einschreiben-einwurf', false)).toBe(true);
+    expect(auto.optionen.find((o) => o.art === 'einschreiben-einwurf')?.warnung).toBeTruthy();
+
+    const haus = einsendeAngebot(E, false, { empfehlung: null });
+    expect(haus.vorauswahl).toBe('');
+    expect(haus.optionen.some((o) => o.empfohlen)).toBe(false);
+  });
+
+  it('rechnet die Summe aus Porto und Aufpreis des Betriebs', () => {
+    const varianten = variantenAus(E).map((v) => (v.kennung === 'dhl-paket' ? { ...v, aufpreisCents: 150 } : v));
+    const a = einsendeAngebot({ ...E, varianten }, false);
+    const paket = a.optionen.find((o) => o.art === 'dhl-paket')!;
+    expect([paket.portoCents, paket.aufpreisCents, paket.summeCents]).toEqual([769, 150, 919]);
+    expect(paket.hinweis).toContain(`Aufpreis ${formatCents(150)}`);
+    const einwurf = a.optionen.find((o) => o.art === 'einschreiben-einwurf')!;
+    expect([einwurf.portoCents, einwurf.aufpreisCents, einwurf.summeCents]).toEqual([415, 0, 415]);
+  });
+
+  it('sagt ohne belegtes Porto „Porto laut Post, bitte dort prüfen“ und nennt keine Summe (R4)', () => {
+    const varianten = variantenAus(E).map((v) => (v.kennung === 'einschreiben-einwurf' ? { ...v, portoCents: null } : v));
+    const einwurf = einsendeAngebot({ ...E, varianten }, false).optionen.find((o) => o.art === 'einschreiben-einwurf')!;
+    expect(einwurf.portoText).toBe(PORTO_UNBELEGT);
+    expect(einwurf.portoCents).toBeUndefined();
+    expect(einwurf.summeCents).toBeUndefined();
+  });
+
+  it('zeigt den Sonderfall nur mit Freigabe des Teams oder bestätigtem Hinweis', () => {
+    const ohne = einsendeAngebot(E, false);
+    expect(ohne.optionen.map((o) => o.art)).not.toContain('einschreiben-wert');
+    expect(ohne.sonderfaelle.map((o) => o.art)).toEqual(['einschreiben-wert']);
+    expect(varianteWaehlbar(ohne, 'einschreiben-wert', false)).toBe(false);
+    expect(varianteWaehlbar(ohne, 'einschreiben-wert', true)).toBe(true);
+    const frei = einsendeAngebot(E, false, { sonderfallFrei: true });
+    expect(frei.optionen.map((o) => o.art)).toContain('einschreiben-wert');
+    expect(varianteWaehlbar(frei, 'einschreiben-wert', false)).toBe(true);
+    // Abgeschaltete Varianten und Altwerte sind nie wählbar.
+    const aus = einsendeAngebot({ ...E, varianten: variantenAus(E).map((v) => ({ ...v, aktiv: v.kennung !== 'einschreiben-einwurf' })) }, false);
+    expect(varianteWaehlbar(aus, 'einschreiben-einwurf', true)).toBe(false);
+    expect(varianteWaehlbar(ohne, 'versichert', true)).toBe(false);
+    expect(varianteWaehlbar(ohne, 'unversichert', true)).toBe(false);
+  });
+
+  it('nennt den Verpackungshinweis im Wortlaut des Inhabers', () => {
+    expect(einsendeAngebot(E, false).verpackung).toBe(VERPACKUNG_HINWEIS);
+    expect(VERPACKUNG_HINWEIS).toContain('nicht lose in einen einfachen Papierumschlag');
+    expect(VERPACKUNG_HINWEIS).toContain('gepolstert beziehungsweise stabil verpacken');
+  });
+
+  it('bietet das Label nur mit Schalter und eingerichtetem Zugang, und nur für DHL Paket', () => {
     expect(einsendeAngebot({ ...E, labelAktiv: true }, false).kostenlos).toBe(false);
     expect(einsendeAngebot(E, true).kostenlos).toBe(false);
     const mit = einsendeAngebot({ ...E, labelAktiv: true }, true);
     expect(mit.kostenlos).toBe(true);
-    expect(mit.satz).toBe('Sie drucken das Versandlabel aus, das Porto zahlt SCHLÜSSELMACHER24.');
-    expect(mit.optionen.every((o) => o.portoCents === undefined)).toBe(true);
+    const paket = mit.optionen.find((o) => o.art === 'dhl-paket')!;
+    expect(paket).toMatchObject({ label: true, summeCents: 0, portoText: 'Versandlabel von uns, das Porto zahlt SCHLÜSSELMACHER24' });
+    expect(paket.portoCents).toBeUndefined();
+    expect(mit.optionen.find((o) => o.art === 'einschreiben-einwurf')).toMatchObject({ label: false, portoCents: 415 });
+    // Mit Aufpreis wird er im Auftrag berechnet, nie „kostenlos“ genannt.
+    const varianten = variantenAus(E).map((v) => (v.kennung === 'dhl-paket' ? { ...v, aufpreisCents: 500 } : v));
+    const berechnet = einsendeAngebot({ ...E, labelAktiv: true, varianten }, true).optionen.find((o) => o.art === 'dhl-paket')!;
+    expect(berechnet.portoText).toBe(`Versandlabel von uns, ${formatCents(500)} werden mit dem Auftrag berechnet`);
+    expect(berechnet.summeCents).toBe(500);
   });
 });
 
@@ -126,9 +211,24 @@ describe('Begleitschein', () => {
     expect(blatt.titel).toBe('Begleitschein SM24-E-2026-0001');
     expect(blatt.abschnitte[0]).toEqual({ titel: 'Anschrift für den Umschlag', adressfeld: ['SCHLÜSSELMACHER24', 'Teststraße 1', '35576 Wetzlar'] });
     const text = JSON.stringify(blatt);
-    expect(text).toContain('als Einschreiben (Empfehlung, 4,45');
+    // Ältere Vorgänge (vor den Varianten) behalten ihre Angabe (G6).
+    expect(text).toContain('als Einschreiben aufgeben (4,45');
     expect(text).toContain('Keinen Anhänger mit Ihrer Anschrift am Schlüssel');
+    expect(text).toContain(VERPACKUNG_HINWEIS);
     expect(text).not.toMatch(/kostenlos|gratis|umsonst/i);
+  });
+
+  it('nennt die gewählte Variante mit Abgabe, Porto, Haftung und Stand (A-050)', () => {
+    const paket = JSON.stringify(begleitscheinInhalt({ ...SENDUNG, art: 'dhl-paket' }, E));
+    expect(paket).toContain('"wert":"DHL Paket"');
+    expect(paket).toContain(`Als DHL Paket aufgeben (Abgabe: Filiale oder Paketshop): ${formatCents(769)} Porto laut Post, Haftung bis 500 € je Sendung.`);
+    expect(paket).toContain('Stand 1.1.2026');
+    expect(paket).not.toMatch(/versichert/i);
+    const einwurf = JSON.stringify(begleitscheinInhalt({ ...SENDUNG, art: 'einschreiben-einwurf' }, E));
+    expect(einwurf).toContain('Haftung bis 20 € je Sendung');
+    expect(einwurf).toContain('Der Wert eines Autoschlüssels liegt meist darüber.');
+    expect(versandBezeichnung('versichert')).toBe('Einschreiben (ältere Angabe)');
+    expect(versandBezeichnung('einschreiben-wert')).toBe('Einschreiben Wert');
   });
 
   it('ist ein PDF; die Attrappe ist als solche erkennbar', async () => {

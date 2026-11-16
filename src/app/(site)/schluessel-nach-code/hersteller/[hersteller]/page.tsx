@@ -4,8 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { getCodeLines, getHersteller } from '@/lib/data';
 import { codelinieIndexierbar, gepflegt, herstellerMitSeite, herstellerPfad } from '@/lib/codelinie';
-import { gruppeLieferbar, herstellerTexte } from '@/lib/codelinie-texte';
-import { PROCESS_LABELS } from '@/lib/navigation';
+import { gruppenKopfzeile, herstellerTexte } from '@/lib/codelinie-texte';
 import { codeAnfragePfad } from '@/lib/wege/code-anfrage';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section, SectionHeading } from '@/components/layout/section';
@@ -73,7 +72,8 @@ export default async function HerstellerPage(props: HerstellerPageProps) {
       <JsonLd data={pageGraphSchema({ path: pfad, name: eintrag.name, description: texte.metaBeschreibung, crumbs })} />
 
       <PageHeader
-        eyebrow={gruppeLieferbar(eintrag.lines) ? `Hersteller · ${PROCESS_LABELS.direktkauf.label}` : 'Hersteller · Auf Anfrage'}
+        // Drei Zustände (FA-INHALT-03I): Direktkauf, Auf Anfrage oder Derzeit nicht lieferbar.
+        eyebrow={gruppenKopfzeile('Hersteller', eintrag.lines)}
         title={`Schlüssel nach Code für ${eintrag.name}`}
         lead={texte.einleitung}
         crumbs={crumbs}

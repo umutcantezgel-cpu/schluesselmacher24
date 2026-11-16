@@ -124,6 +124,8 @@ export function planerZusammenfassung(s: SchliessplanSchnappschuss, notiz = ''):
         value: `${k.ebene}: ${k.tueren.map((nr) => tuerName.get(nr) ?? String(nr)).join(', ') || 'keine'}`,
       })),
     },
+    // Hersteller aus dem Konfigurator (FA-SHOP-04B) steht als System im Plan.
+    ...(s.system ? [{ title: 'Hersteller', rows: [{ label: 'Hersteller (Ihre Wahl)', value: s.system }] }] : []),
     ...(s.wuensche.length ? [{ title: 'Zusatzwünsche', rows: s.wuensche.map((w) => ({ label: w, value: 'gewünscht' })) }] : []),
     { title: 'Preis', rows: [{ label: 'Preis', value: s.preis.text }] },
     ...(notiz ? [{ title: 'Nachricht', rows: [{ label: 'Nachricht', value: notiz }] }] : []),

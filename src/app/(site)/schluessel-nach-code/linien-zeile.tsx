@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 
 import type { CodeLine } from '@/lib/types';
 import { codelinienKennung, codelinienTitel, gepflegt, verfuegbarkeitVon, VERFUEGBARKEIT_LABEL } from '@/lib/codelinie';
+import { staffelStufen } from '@/lib/codelinie-texte';
 import { formatCents } from '@/lib/format';
 import { KompaktBild } from '@/components/ui/bild-flaeche';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
@@ -24,14 +25,15 @@ export function LinienZeileInhalt({
   staffelZeigen = true,
 }: {
   line: CodeLine;
-  /** Etwa „passt zum Codeformat“ hinter dem Codeformat. */
+  /** Etwa „Code hat die richtige Form“ hinter dem Aufbau des Codes. */
   zusatz?: ReactNode;
   /** Staffelpreis-Hinweis in der Zeile (entfällt, wenn die Gruppe ihn schon nennt). */
   staffelZeigen?: boolean;
 }) {
   const verfuegbarkeit = verfuegbarkeitVon(line);
   const lieferbar = verfuegbarkeit === 'lieferbar';
-  const staffel = line.bulkPrices?.[0];
+  // Wie auf der Produktseite (L-20): nur eine Stufe, die gilt und wirklich günstiger ist.
+  const staffel = staffelStufen(line)[0];
   const codebereich = gepflegt(line.codeRange);
   const lieferzeit = lieferbar ? gepflegt(line.deliveryTime) : undefined;
   return (

@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { PageHeader } from '@/components/layout/page-header';
 import { getPageContent, getSettings } from '@/lib/data';
 import { defaults } from '@/lib/data/defaults';
-import { einsendeAngebotFuerWeg } from '@/lib/einsenden/schein';
 import { PROCESS_LABELS } from '@/lib/navigation';
 
 import { EinsendeFormular } from './einsende-formular';
@@ -27,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /** Einsendung anmelden (G-24, E6-OPUS-02): Formular mit Begleitschein am Ende. */
 export default async function EinsendungAnmeldenPage() {
   const [page, settings] = await Promise.all([getPageContent(ROUTE), getSettings()]);
-  const angebot = einsendeAngebotFuerWeg(settings.sendIn ?? defaults.settings().sendIn!);
+  const einstellungen = settings.sendIn ?? defaults.settings().sendIn!;
 
   // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
   const crumbs = [
@@ -51,7 +50,7 @@ export default async function EinsendungAnmeldenPage() {
       />
 
       <div className="shell py-8 md:py-12">
-        <EinsendeFormular hilfe={hilfeAus(settings)} angebot={angebot} />
+        <EinsendeFormular hilfe={hilfeAus(settings)} einstellungen={einstellungen} />
 
         <p className="mt-10 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-6 text-small">
           <span className="font-semibold text-foreground-muted">Lieber erst prüfen lassen? Ihr Schlüssel bleibt dabei zunächst bei Ihnen.</span>

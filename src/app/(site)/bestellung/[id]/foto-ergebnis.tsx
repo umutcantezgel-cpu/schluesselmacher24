@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { formatCents } from '@/lib/format';
 import { istEinsendung } from '@/lib/einsenden/vorgang';
+import { VERPACKUNG_HINWEIS } from '@/lib/versand/varianten';
 import { freigabeZahlbar, gewuenschteStueckzahl } from '@/lib/foto-freigabe';
 import type { BusinessRecord } from '@/lib/types';
 import { Alert } from '@/components/ui/alert';
@@ -116,7 +117,8 @@ export function FotoErgebnis({ record, einsendeAnschrift }: { record: BusinessRe
             </li>
             <li>Senden Sie nur diesen Schlüssel, ohne Schlüsselring und Anhänger.</li>
             <li>Legen Sie, falls vorhanden, eine Kopie der Sicherungskarte oder des Berechtigungsnachweises bei.</li>
-            <li>Versenden Sie versichert oder mindestens mit Sendungsverfolgung.</li>
+            <li>{VERPACKUNG_HINWEIS}</li>
+            <li>Wählen Sie den Versand mit Sendungsverfolgung. Varianten, Haftung und Kosten stehen beim Begleitschein auf dieser Seite.</li>
           </ul>
         </div>
       )}

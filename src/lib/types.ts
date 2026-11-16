@@ -238,6 +238,43 @@ export interface EinsendeEinstellungen {
   portoUnversichertCents: number;
   haftungVersichertEuro: number;
   portoStand: string;
+  /**
+   * Die Varianten des Inhabers (FA-13, A-050): DHL Paket, Einschreiben Einwurf, Einschreiben Wert.
+   * Fehlt in älteren Ständen; dann gelten die Startwerte (STANDARD_VARIANTEN in lib/versand/varianten.ts).
+   * Die Felder oben bleiben lesbar und gelten nur noch für ältere Vorgänge („versichert“, „unversichert“).
+   */
+  varianten?: EinsendeVariante[];
+}
+
+/** Kennungen der Einsende-Varianten; fest, damit Server und Begleitschein sie sicher erkennen. */
+export type EinsendeVarianteKennung = 'dhl-paket' | 'einschreiben-einwurf' | 'einschreiben-wert';
+
+/** Wo der Kunde die Sendung abgibt. */
+export type Einlieferung = 'briefkasten' | 'filiale' | 'paketshop';
+
+/** Für welche Schlüssel eine Variante empfohlen ist. */
+export type EinsendeEmpfehlung = 'originalschluessel' | 'autoschluessel';
+
+/** Eine Versandvariante für die Einsendung (A-050, Punkt 1). Porto und Haftung nur belegt (R4, R9). */
+export interface EinsendeVariante {
+  kennung: EinsendeVarianteKennung;
+  bezeichnung: string;
+  /** Wofür die Variante gedacht ist, in einem Satz. */
+  einsatz: string;
+  /** Haftung des Versanddienstes je Sendung (Euro); `null` = nicht belegt. */
+  haftungEuro: number | null;
+  sendungsverfolgung: boolean;
+  einlieferung: Einlieferung[];
+  /** Porto laut Post oder DHL (Cent); `null` = nicht belegt, dann „Porto laut Post, bitte dort prüfen“. */
+  portoCents: number | null;
+  /** Stand und Quelle des Portos. */
+  portoStand: string;
+  /** Aufpreis des Betriebs (Cent), 0 = keiner. */
+  aufpreisCents: number;
+  empfohlenFuer: EinsendeEmpfehlung[];
+  /** Nur nach Freigabe durch das Team oder ausdrücklicher Wahl mit Bestätigung des Hinweises. */
+  nurSonderfall: boolean;
+  aktiv: boolean;
 }
 
 export interface ShippingOption {
@@ -677,6 +714,12 @@ export interface CylinderOrderDraft {
   manufacturerId?: string;
   /** Zusatzkomponenten des gewählten Herstellers mit Stückzahl. */
   components?: CylinderComponentChoice[];
+  /**
+   * Gewählter Hersteller als Angabe ohne Preiswirkung (FA-SHOP-04B): Name eines Herstellers aus der
+   * Stammliste mit dem Bereich „Sperrschließungen“, nur solange der Zylinderkatalog keinen Hersteller
+   * anbietet. Die Kasse prüft den Namen gegen die Stammliste; der Preis rechnet ohne ihn.
+   */
+  herstellerAngabe?: string;
 }
 
 /* ---------- Warenkorb und Bestellungen ---------------------------------- */
@@ -888,6 +931,8 @@ export interface ApprovalInfo {
   priceCents?: number;
   /** Muss der Kunde den Originalschlüssel einsenden? */
   sendInRequired?: boolean;
+  /** Einsendung: Das Team gibt die Sonderfall-Variante (Einschreiben Wert) für diesen Vorgang frei (A-050). */
+  sendInSpecialAllowed?: boolean;
   /** Hinweis an den Kunden. */
   note?: string;
   /** Zeitpunkt der Freigabe (ISO), setzt das System beim Status „freigegeben“. */

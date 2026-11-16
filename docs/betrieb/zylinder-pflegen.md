@@ -37,11 +37,13 @@ Reiter **Hersteller** im **Zylinderkatalog**:
 
 Die Felder **Name** und **Kennung** sind nur lesbar. Sie kommen beim Speichern aus dem gewählten Hersteller. Ältere Einträge ohne Auswahl aus der Liste behalten dort ihre bisherigen Werte und bleiben gültig. Wählen Sie bei Gelegenheit oben den Hersteller aus der Liste; beim Speichern übernimmt der Eintrag dann Name und Kennung von dort.
 
-Hinweis: Der Konfigurator zeigt die Herstellerwahl, sobald ein Eintrag angeboten wird. Ohne hinterlegte Herstellerpreise rechnet er mit Aufpreis 0. Ob Sie das so wollen, entscheidet der Inhaber, bevor Sie den Haken **Angeboten** setzen.
+Hinweis: Der Konfigurator zeigt die Herstellerwahl mit Preisregel, sobald ein Eintrag angeboten wird. Ohne hinterlegte Herstellerpreise rechnet er mit Aufpreis 0. Ob Sie das so wollen, entscheidet der Inhaber, bevor Sie den Haken **Angeboten** setzen.
+
+Ohne angebotenen Eintrag im Zylinderkatalog fragt der Konfigurator trotzdem nach dem Hersteller: Er zeigt alle Hersteller aus **Shop › Hersteller**, die angeboten sind und den Bereich „Sperrschließungen“ tragen (heute BKS und ABUS), dazu „Keine Vorgabe“. Diese Wahl ist eine Angabe für die Werkstatt ohne Preiswirkung; der Kunde liest „Ihre Wahl geben wir an die Werkstatt weiter. Sie ändert die Summe nicht.“ Sie steht in Zusammenfassung, Warenkorb, Kasse und in der Bestellposition („Hersteller (Ihre Wahl)“), damit auch im Vorgangsblatt der Mail an den Betrieb. Siehe Abschnitt 8.
 
 ## 3. Bauformen
 
-Reiter **Bauformen**. Angeboten werden heute Doppelzylinder, Knaufzylinder und Halbzylinder. Eine weitere Bauform braucht eine Erweiterung durch den Entwickler.
+Reiter **Bauformen**. Angeboten werden heute Doppelzylinder, Knaufzylinder und Halbzylinder. Eine weitere Bauform braucht eine Erweiterung durch den Entwickler. Bis dahin steht im Konfigurator unter den Türen der Link **Andere Bauform anfragen**; er öffnet die Anfrage mit dem Thema „Gleichschließende Zylinder“ und der Vorbelegung „Andere Zylinder-Bauform“.
 
 - **Bezeichnung** und **Beschreibung**: wie der Kunde sie liest.
 - **Angeboten**: ohne Haken verschwindet die Bauform aus dem Konfigurator.
@@ -77,7 +79,7 @@ Setzen Sie ihn, solange ein Preis nicht geprüft ist. Dann:
 
 - lässt sich keine Zusammenstellung mit diesem Eintrag bestellen, auch nicht aus einem älteren Warenkorb; die Kasse nennt dann den Weg über den Konfigurator in die Anfrage;
 - zeigt die Seite `/gleichschliessende-zylinder` bei diesem Eintrag „Preis auf Anfrage“ statt eines Betrags;
-- zeigt der Konfigurator beim Eintrag „Preis auf Anfrage“ und in Summen „auf Anfrage“. Er führt mit dem Link **Zusammenstellung als Anfrage schicken** in den Schließplan-Planer. Dort schickt der Kunde seine Zylinder als Anfrage und bekommt von uns ein Angebot. Ist die Zusammenstellung zu groß für einen Link, führt er in die allgemeine Anfrage, und der Kunde nennt seine Angaben dort selbst;
+- zeigt der Konfigurator beim Eintrag „Preis auf Anfrage“ und in Summen „auf Anfrage“. Am Ende gibt es keinen Knopf „In den Warenkorb“, sondern den Knopf und den Link **Zusammenstellung als Anfrage schicken**. Beide führen in den Schließplan-Planer, mit Zylindern, Maßen, Schlüsseln, Ziehschutz, Erweiterung, den übrigen Optionen (etwa Sicherungskarte) und dem gewählten Hersteller. Dort schickt der Kunde seine Zylinder als Anfrage und bekommt von uns ein Angebot. Ist die Zusammenstellung zu groß für einen Link, führt er in die allgemeine Anfrage, und der Kunde nennt seine Angaben dort selbst;
 - bleibt der eingetragene Preis unverändert stehen.
 
 Beim Schlüsselpreis greift der Haken nur, wenn der Kunde mehr Schlüssel wählt, als inklusive sind. Sobald der Preis bestätigt ist, Haken entfernen und speichern; danach ist alles wieder bestellbar.
@@ -92,4 +94,19 @@ Beim Schlüsselpreis greift der Haken nur, wenn der Kunde mehr Schlüssel wählt
 
 1. `/gleichschliessende-zylinder` öffnen: Stimmen die Hersteller im Bereich „Systeme, mit denen wir arbeiten“?
 2. Den Konfigurator durchgehen, mindestens zwei Positionen mit verschiedenen Maßen, und die Summe mit Ihrer Preisliste vergleichen.
-3. Bei gesetztem Haken **Preis nicht bestätigt**: Die Zusammenfassung zeigt „auf Anfrage“ und den Link **Zusammenstellung als Anfrage schicken**; „In den Warenkorb“ ist gesperrt.
+3. Bei gesetztem Haken **Preis nicht bestätigt**: Die Zusammenfassung zeigt „auf Anfrage“ und den Link **Zusammenstellung als Anfrage schicken**; statt „In den Warenkorb“ steht unten der Knopf **Zusammenstellung als Anfrage schicken**. Im Schließplan-Planer stehen danach dieselben Türen, Optionen und der Hersteller.
+
+## 8. So bedient der Kunde den Konfigurator
+
+Der Konfigurator `/gleichschliessende-zylinder/konfigurator` fragt in dieser Reihenfolge. Was der Kunde wählt, steht in der Zusammenfassung, im Warenkorb, in der Kasse und in der Bestellposition.
+
+1. **Hersteller**: mit angebotenem Eintrag im Zylinderkatalog die Einträge dort mit ihrem Aufpreis (Abschnitt 2). Sonst die Hersteller aus **Shop › Hersteller** mit Bereich „Sperrschließungen“ und „Keine Vorgabe“, ohne Preiswirkung. Einen Hersteller bieten Sie an, indem Sie ihm in **Shop › Hersteller** den Bereich „Sperrschließungen“ geben und **Wir bieten Produkte dieses Herstellers an** setzen. Ein Logo erscheint nur mit Datei und **Freigabe liegt vor**, sonst der Name. Gibt es weder Katalogeintrag noch Hersteller mit diesem Bereich, entfällt der Schritt.
+2. **Zylinder**: je Tür eine Position mit Bauform, Maß A und Maß B (beim Halbzylinder nur Maß A), Funktion (etwa Not- und Gefahrenfunktion) und Stückzahl. Positionen mit verschiedenen Maßen und Bauformen gehören zu derselben Schließung. Bauformen und Maße kommen aus den Abschnitten 3 und 4. Fehlt eine Bauform: **Andere Bauform anfragen**.
+3. **Schlüssel**: Zahl der gemeinsamen Schlüssel, zwischen 1 und **Höchstens Schlüssel**.
+4. **Optionen**: die angebotenen Extras, etwa **Sicherungskarte und geschütztes System** und **Aufbohr- und Ziehschutz**, dazu die Zusatzkomponenten des gewählten Katalog-Herstellers.
+5. **Erweiterung**: Ja oder Nein. „Ja“ wählt die Option **Erweiterbar reservieren** mit.
+6. **Zusammenfassung**: alle Angaben, der Preis aus dem Katalog und der Knopf **In den Warenkorb**. Ist ein genutzter Preis nicht bestätigt (Abschnitt 5), kein Betrag und kein Warenkorb, sondern **Zusammenstellung als Anfrage schicken**.
+
+Preis sperren: Haken **Preis nicht bestätigt** am Eintrag setzen (Abschnitt 5). Der eingetragene Betrag bleibt stehen, verkauft wird er erst nach dem Entfernen des Hakens.
+
+Die Herstellerwahl aus dem Stamm ändert den Preis nicht. Soll ein Hersteller einen Aufpreis haben, legen Sie ihn im Zylinderkatalog an (Abschnitt 2); dann gilt dort dessen Preisregel, und die Wahl aus dem Stamm entfällt.

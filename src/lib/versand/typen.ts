@@ -1,6 +1,12 @@
 /* Versand-Adapter (G-24, G-25, A-010): gemeinsame Typen. Reine Daten, nur relative Importe. */
 
-export type VersandArt = 'versichert' | 'unversichert';
+import type { EinsendeVarianteKennung } from '../types';
+
+/**
+ * Versand der Einsendung: eine Variante des Inhabers (A-050). „versichert“ und „unversichert“ bleiben nur
+ * lesbar, für Vorgänge von vor den Varianten (G6); der Kunde kann sie nicht mehr wählen.
+ */
+export type VersandArt = EinsendeVarianteKennung | 'versichert' | 'unversichert';
 
 export interface Anschrift {
   name: string;

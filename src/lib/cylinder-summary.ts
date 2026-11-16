@@ -22,6 +22,8 @@ export function zylinderZeilen(draft: CylinderOrderDraft, catalog: CylinderCatal
   const hersteller = gewaehlterHersteller(draft, catalog);
 
   if (hersteller) zeilen.push({ label: 'Hersteller', value: hersteller.name });
+  // Angabe ohne Preiswirkung (FA-SHOP-04B): geht als Wunsch an die Werkstatt mit.
+  else if (draft.herstellerAngabe?.trim()) zeilen.push({ label: 'Hersteller (Ihre Wahl)', value: draft.herstellerAngabe.trim() });
 
   for (const eintrag of draft.items) {
     const form = formsMap.get(eintrag.form);

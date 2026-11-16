@@ -195,7 +195,61 @@
     "portoVersichertCents": 445,
     "portoUnversichertCents": 180,
     "haftungVersichertEuro": 25,
-    "portoStand": "Deutsche Post, Preise ab 1.1.2026: Einschreiben 4,45 €, Großbrief 1,80 €"
+    "portoStand": "Deutsche Post, Preise ab 1.1.2026: Einschreiben 4,45 €, Großbrief 1,80 €",
+    "varianten": [
+      {
+        "kennung": "dhl-paket",
+        "bezeichnung": "DHL Paket",
+        "einsatz": "Empfohlene Standardoption für wertvolle Originalschlüssel, mit Sendungsverfolgung.",
+        "haftungEuro": 500,
+        "sendungsverfolgung": true,
+        "einlieferung": [
+          "filiale",
+          "paketshop"
+        ],
+        "portoCents": 769,
+        "portoStand": "DHL Paket bis 5 kg, abgegeben in Filiale oder Paketshop. Deutsche Post, Leistungen und Preise (Stand 1.1.2026), geprüft am 15.11.2026",
+        "aufpreisCents": 0,
+        "empfohlenFuer": [
+          "originalschluessel",
+          "autoschluessel"
+        ],
+        "nurSonderfall": false,
+        "aktiv": true
+      },
+      {
+        "kennung": "einschreiben-einwurf",
+        "bezeichnung": "Einschreiben Einwurf",
+        "einsatz": "Günstige Briefoption für weniger wertvolle Schlüssel. Die Zustellung ist dokumentiert.",
+        "haftungEuro": 20,
+        "sendungsverfolgung": true,
+        "einlieferung": [
+          "filiale"
+        ],
+        "portoCents": 415,
+        "portoStand": "Großbrief 1,80 € und Zuschlag Einschreiben Einwurf 2,35 €. Deutsche Post, Leistungen und Preise (Stand 1.1.2026), geprüft am 15.11.2026",
+        "aufpreisCents": 0,
+        "empfohlenFuer": [],
+        "nurSonderfall": false,
+        "aktiv": true
+      },
+      {
+        "kennung": "einschreiben-wert",
+        "bezeichnung": "Einschreiben Wert",
+        "einsatz": "Nur für geeignete Sonderfälle: höhere Absicherung, Einlieferung nur in der Filiale.",
+        "haftungEuro": 500,
+        "sendungsverfolgung": true,
+        "einlieferung": [
+          "filiale"
+        ],
+        "portoCents": 625,
+        "portoStand": "Großbrief 1,80 €, Zuschlag Einschreiben 2,65 € und Zusatzentgelt Wert 1,80 €. Deutsche Post, Leistungen und Preise (Stand 1.1.2026), geprüft am 15.11.2026",
+        "aufpreisCents": 0,
+        "empfohlenFuer": [],
+        "nurSonderfall": true,
+        "aktiv": true
+      }
+    ]
   },
   "updatedAt": "2026-09-16T05:43:05.154Z"
 }

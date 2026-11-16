@@ -218,8 +218,9 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
 
         {nichtVerfuegbar && (
           <Alert tone="warning" title="Eine Position ist derzeit nicht bestellbar">
-            Bitte entfernen Sie die betroffene Position. Brauchen Sie das Produkt trotzdem, fragen Sie es bei uns an.
-            Nutzen Sie dazu den Link an der Position oder unser{' '}
+            {/* Kein Verweis auf einen Link an der Position: den gibt es nur bei „auf Anfrage“ (FA-INHALT-03I, L-12, L-18).
+                „Position“ bleibt, weil der Knopf „Position entfernen“ heißt. */}
+            Bitte entfernen Sie die betroffene Position. Brauchen Sie das Produkt trotzdem, schreiben Sie uns über das{' '}
             <Link href="/service-und-termin/kontakt" prefetch={false} className="font-semibold text-primary hover:underline">
               Kontaktformular
             </Link>

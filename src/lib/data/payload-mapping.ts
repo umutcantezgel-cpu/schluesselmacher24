@@ -30,10 +30,12 @@ import type {
 } from '@/payload-types';
 import { istAuftragsweg, plzMusterAusText, restbetragCents } from '../auftragsweg';
 import { istEinsendung } from '../einsenden/vorgang';
+import { STANDARD_VARIANTEN, istVariantenKennung, variantenAus } from '../versand/varianten';
 import { rabattAusPreis, staffelPreis } from '../staffel';
 import type {
   ApprovalInfo,
   AreaKey,
+  EinsendeVariante,
   BlockedDay,
   BusinessRecord,
   CarKeyService,
@@ -982,8 +984,55 @@ function einsendenZuSeite(e: Partial<Record<string, unknown>> | null | undefined
     portoUnversichertCents: zuCent(zahl(e?.portoUnversichert, 1.8)),
     haftungVersichertEuro: zahl(e?.haftungVersichert, 25),
     portoStand: typeof e?.portoStand === 'string' && e.portoStand ? e.portoStand : 'Deutsche Post, Preise ab 1.1.2026: Einschreiben 4,45 €, Großbrief 1,80 €',
+    varianten: variantenZuSeite(e?.varianten),
   };
 }
+
+/**
+ * Einsende-Varianten aus dem Global (A-050). Leer oder ohne gültige Zeile (ältere Datenbankstände):
+ * die Startwerte. Unbekannte Kennungen fallen weg; leeres Porto oder leere Haftung bleibt „nicht belegt“.
+ */
+function variantenZuSeite(roh: unknown): EinsendeVariante[] {
+  const zeilen = Array.isArray(roh) ? (roh as Array<Record<string, unknown>>) : [];
+  const liste = (wert: unknown, erlaubt: readonly string[]) => (Array.isArray(wert) ? wert.filter((x): x is string => erlaubt.includes(x as string)) : []);
+  const zahlOderNull = (wert: unknown) => (typeof wert === 'number' && Number.isFinite(wert) ? wert : null);
+  const varianten = zeilen.flatMap((z): EinsendeVariante[] => {
+    if (!istVariantenKennung(z.kennung)) return [];
+    const porto = zahlOderNull(z.porto);
+    const standard = STANDARD_VARIANTEN.find((v) => v.kennung === z.kennung)!;
+    return [{
+      kennung: z.kennung,
+      bezeichnung: typeof z.bezeichnung === 'string' && z.bezeichnung.trim() ? z.bezeichnung.trim() : standard.bezeichnung,
+      einsatz: typeof z.einsatz === 'string' ? z.einsatz.trim() : '',
+      haftungEuro: zahlOderNull(z.haftung),
+      sendungsverfolgung: z.sendungsverfolgung === true,
+      einlieferung: liste(z.einlieferung, ['briefkasten', 'filiale', 'paketshop']) as EinsendeVariante['einlieferung'],
+      portoCents: porto === null ? null : zuCent(porto),
+      portoStand: typeof z.portoStand === 'string' ? z.portoStand.trim() : '',
+      aufpreisCents: zuCent(zahlOderNull(z.aufpreis) ?? 0),
+      empfohlenFuer: liste(z.empfohlenFuer, ['originalschluessel', 'autoschluessel']) as EinsendeVariante['empfohlenFuer'],
+      nurSonderfall: z.nurSonderfall === true,
+      aktiv: z.aktiv !== false,
+    }];
+  });
+  return varianten.length ? varianten : variantenAus(undefined);
+}
+
+const variantenZuPayload = (varianten: EinsendeVariante[] | undefined) =>
+  (varianten ?? []).map((v) => ({
+    kennung: v.kennung,
+    bezeichnung: v.bezeichnung,
+    einsatz: v.einsatz,
+    haftung: v.haftungEuro,
+    sendungsverfolgung: v.sendungsverfolgung,
+    einlieferung: v.einlieferung,
+    porto: v.portoCents === null ? null : zuEuro(v.portoCents),
+    portoStand: v.portoStand,
+    aufpreis: zuEuro(v.aufpreisCents),
+    empfohlenFuer: v.empfohlenFuer,
+    nurSonderfall: v.nurSonderfall,
+    aktiv: v.aktiv,
+  }));
 
 /** Erreichbarkeit aus dem Global; ohne Kernaussage (ältere Datenbankstände) gilt der Standard der Seite. */
 function erreichbarkeitZuSeite(e: Partial<Record<string, unknown>> | null | undefined): Settings['reachability'] {
@@ -1150,6 +1199,7 @@ export function einstellungenZuPayload(s: Settings): EinstellungenDaten {
           portoUnversichert: zuEuro(s.sendIn.portoUnversichertCents),
           haftungVersichert: s.sendIn.haftungVersichertEuro,
           portoStand: s.sendIn.portoStand,
+          varianten: variantenZuPayload(s.sendIn.varianten),
         }
       : undefined,
     aufbewahrung: {
@@ -1429,6 +1479,7 @@ function freigabeZuSeite(f: Vorgaenge['freigabe'], einsendung = false): Approval
   if (f.preisCent !== null && f.preisCent !== undefined) approval.priceCents = Number(f.preisCent);
   // Einsendung (E6-OPUS-02): Das Original liegt schon vor; das Häkchen gilt dort nie.
   if (typeof f.einsendenNoetig === 'boolean') approval.sendInRequired = einsendung ? false : f.einsendenNoetig;
+  if (f.sonderfallVersand === true) approval.sendInSpecialAllowed = true;
   if (f.hinweis) approval.note = f.hinweis;
   if (f.freigegebenAm) approval.approvedAt = f.freigegebenAm;
   return Object.keys(approval).length ? approval : undefined;
@@ -1443,6 +1494,7 @@ function freigabeZuPayload(approval: ApprovalInfo): NonNullable<VorgangDaten['fr
   return {
     preisCent: approval.priceCents ?? null,
     einsendenNoetig: approval.sendInRequired ?? null,
+    sonderfallVersand: approval.sendInSpecialAllowed ?? null,
     hinweis: approval.note ?? null,
     freigegebenAm: approval.approvedAt,
   };

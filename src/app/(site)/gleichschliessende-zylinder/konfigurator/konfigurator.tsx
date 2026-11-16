@@ -6,11 +6,9 @@ import { useRouter } from 'next/navigation';
 
 import type {
   CylinderCatalog,
-  CylinderComponentChoice,
   CylinderFormOption,
   CylinderLineItem,
   CylinderManufacturer,
-  CylinderOrderDraft,
   InfoHint,
   SummarySection,
 } from '@/lib/types';
@@ -19,9 +17,19 @@ import {
   aktiveHersteller,
   herstellerFuehrtBauform,
   measureOptions,
-  wirksameZusatzIds,
 } from '@/lib/cylinder-rules';
-import { dekodiere, kodiere, passtInLink, preisSperreText, unbestaetigteInPosition, unbestaetigtePreise } from '@/lib/konfigurator';
+import {
+  HERSTELLER_ANGABE_SATZ,
+  KEINE_HERSTELLER_VORGABE,
+  dekodiere,
+  herstellerModus,
+  kodiere,
+  passtInLink,
+  preisSperreText,
+  unbestaetigteInPosition,
+  unbestaetigtePreise,
+  type HerstellerSystem,
+} from '@/lib/konfigurator';
 import { priceCylinderOrder } from '@/lib/pricing';
 import { formatCents, formatMillimeter } from '@/lib/format';
 import { PreisHinweis } from '@/components/recht/preis-hinweis';
@@ -46,16 +54,35 @@ import { GlyphPlus } from '@/components/visual/glyphen/plus';
 import { GlyphWarnung } from '@/components/visual/glyphen/warnung';
 import { ZylinderMassLive } from '@/components/visual/interaktiv/zylinder-mass-live';
 
-import { SET_UEBLICH, ausLink, istStartzustand, masseRueckfragen, planZuPositionen, positionenZuPlan } from './kern';
+import {
+  ANDERE_BAUFORM_ANFRAGE,
+  SET_UEBLICH,
+  abschlussAktion,
+  abschlussKnopf,
+  anfrageZiel,
+  ausLink,
+  gewaehltesSystem,
+  istStartzustand,
+  masseRueckfragen,
+  planZuPositionen,
+  positionenZuPlan,
+  zuEntwurf,
+  zusammenfassungBereit,
+  type Zusammenstellung,
+} from './kern';
+import { AnfrageWeg, HerstellerAngabeWahl } from './teile';
 
 const FLOW_ID = 'zylinder-konfigurator';
+
+/** Ohne Systeme aus der Stammliste: dieselbe leere Liste bei jedem Rendern. */
+const KEINE_SYSTEME: HerstellerSystem[] = [];
 
 /** Anzeige statt eines Betrags bei gesetztem Haken „Preis nicht bestätigt“ (FA-SHOP-04, R9). */
 const PREIS_AUF_ANFRAGE = 'Preis auf Anfrage';
 
 const STEPS: FlowStep[] = [
   {
-    // Erscheint nur, wenn im Katalog mindestens ein Hersteller angeboten wird.
+    // Erscheint, wenn der Katalog Hersteller anbietet oder die Stammliste Systeme für Sperrschließungen führt.
     id: 'hersteller',
     short: 'Hersteller',
     title: 'Hersteller wählen',
@@ -96,16 +123,9 @@ const STEPS: FlowStep[] = [
 /**
  * Zwischenstand im Browser. `expandable` bleibt offen, bis gewählt wurde. Die Option
  * „Erweiterbar reservieren“ steht nie in `extraIds`: Sie folgt allein `expandable`.
+ * `manufacturerId` gilt für Hersteller des Katalogs, `herstellerAngabe` für Systeme der Stammliste.
  */
-interface ConfigState {
-  items: CylinderLineItem[];
-  keyCount: number;
-  extraIds: string[];
-  expandable: boolean | null;
-  /** Kennung des Herstellers; leer, solange keiner gewählt ist oder keiner angeboten wird. */
-  manufacturerId: string;
-  components: CylinderComponentChoice[];
-}
+type ConfigState = Zusammenstellung;
 
 const EXPANDABLE_HINTS: Record<'ja' | 'nein', InfoHint> = {
   ja: {
@@ -227,29 +247,6 @@ function cylinderCount(items: CylinderLineItem[]): number {
   return items.reduce((sum, item) => sum + item.qty, 0);
 }
 
-/**
- * Bestellentwurf aus dem Zwischenstand. Hersteller und Komponenten kommen nur hinein, wenn der
- * Katalog Hersteller anbietet — sonst bleibt der Entwurf genau wie ohne Herstellerauswahl.
- */
-function toDraft(state: ConfigState, catalog: CylinderCatalog): CylinderOrderDraft {
-  const expandable = state.expandable === true;
-  const draft: CylinderOrderDraft = {
-    items: state.items,
-    keyCount: state.keyCount,
-    extraIds: wirksameZusatzIds({ extraIds: state.extraIds, expandable }, catalog),
-    expandable,
-  };
-  if (aktiveHersteller(catalog).length > 0 && state.manufacturerId) {
-    draft.manufacturerId = state.manufacturerId;
-    const hersteller = herstellerAusState(catalog, state.manufacturerId);
-    const components = state.components.filter(
-      (wahl) => wahl.qty >= 1 && hersteller?.components.some((k) => k.name === wahl.name),
-    );
-    if (components.length > 0) draft.components = components;
-  }
-  return draft;
-}
-
 /** Preis einer einzelnen Position — dieselbe Rechnung wie für die Bestellung. */
 function positionTotalCents(catalog: CylinderCatalog, item: CylinderLineItem, manufacturerId: string): number {
   return priceCylinderOrder(
@@ -266,13 +263,23 @@ function positionTotalCents(catalog: CylinderCatalog, item: CylinderLineItem, ma
 
 /* ---------- Konfigurator -------------------------------------------------- */
 
-export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hilfe?: HilfeKontakt }) {
+export function Konfigurator({
+  catalog,
+  hilfe,
+  systeme = KEINE_SYSTEME,
+}: {
+  catalog: CylinderCatalog;
+  hilfe?: HilfeKontakt;
+  /** Systeme der Stammliste für Sperrschließungen (FA-SHOP-04B); wählbar, solange der Katalog keine Hersteller anbietet. */
+  systeme?: HerstellerSystem[];
+}) {
   const router = useRouter();
   const addCylinderOrder = useCartStore((state) => state.addCylinderOrder);
   const [submitting, setSubmitting] = useState(false);
 
   const extras = useMemo(() => catalog.extras.filter((extra) => extra.active), [catalog]);
   const herstellerListe = useMemo(() => aktiveHersteller(catalog), [catalog]);
+  const modus = herstellerModus(catalog, systeme);
   const erweiterbarOption = extras.find((extra) => extra.id === ERWEITERBAR_OPTION_ID);
 
   const initial = useMemo<ConfigState>(() => {
@@ -284,6 +291,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
       expandable: null,
       manufacturerId: '',
       components: [],
+      herstellerAngabe: '',
     };
   }, [catalog]);
 
@@ -292,7 +300,12 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
     const hersteller = herstellerAusState(catalog, data.manufacturerId);
     const count = cylinderCount(data.items);
     return {
-      herstellerOk: herstellerListe.length === 0 || hersteller !== undefined,
+      herstellerOk:
+        modus === 'katalog'
+          ? hersteller !== undefined
+          : modus === 'angabe'
+            ? data.herstellerAngabe === KEINE_HERSTELLER_VORGABE || gewaehltesSystem(data, systeme) !== undefined
+            : true,
       cylindersOk:
         data.items.length > 0
         && count >= 1
@@ -308,8 +321,8 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
     steps: STEPS,
     initial,
     version: 1,
-    // Den Herstellerschritt gibt es nur, wenn der Katalog Hersteller anbietet.
-    isStepRelevant: (_data, stepId) => stepId !== 'hersteller' || herstellerListe.length > 0,
+    // Den Herstellerschritt gibt es, wenn der Katalog Hersteller anbietet oder die Stammliste Systeme führt.
+    isStepRelevant: (_data, stepId) => stepId !== 'hersteller' || modus !== 'keine',
     validate: (data, stepId) => {
       const { herstellerOk, cylindersOk, keysOk, erweiterungOk } = angabenPruefen(data);
 
@@ -318,16 +331,14 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
       if (stepId === 'schluessel') return keysOk;
       if (stepId === 'erweiterung') return erweiterungOk;
       if (stepId === 'zusammenfassung') {
-        // Unbestätigte Preise (FA-SHOP-04): nicht bestellbar, der Weg führt in die Anfrage.
-        const preiseOk = unbestaetigtePreise(toDraft(data, catalog), catalog).length === 0;
-        return herstellerOk && cylindersOk && keysOk && erweiterungOk && preiseOk;
+        // Unbestätigte Preise (FA-SHOP-04B): Der Knopf führt dann in die Anfrage statt in den Warenkorb.
+        return zusammenfassungBereit({ herstellerOk, cylindersOk, keysOk, erweiterungOk });
       }
       return true;
     },
   });
 
   const { data } = flow;
-  const angabenVollstaendig = Object.values(angabenPruefen(data)).every(Boolean);
 
   // Zusammenstellung als Link (KE5) in derselben Form wie im Schließplan-Planer (E5-OPUS-02): Ein
   // unveränderter Start wird sofort ersetzt, eine eigene Zusammenstellung erst nach Rückfrage.
@@ -364,25 +375,23 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
     setLinkStatus({ url, kopiert });
   }
   const hersteller = useMemo(() => herstellerAusState(catalog, data.manufacturerId), [catalog, data.manufacturerId]);
-  const draft = useMemo(() => toDraft(data, catalog), [data, catalog]);
+  const system = modus === 'angabe' ? gewaehltesSystem(data, systeme) : undefined;
+  const draft = useMemo(() => zuEntwurf(data, catalog, systeme), [data, catalog, systeme]);
   const breakdown = useMemo(() => priceCylinderOrder(draft, catalog), [draft, catalog]);
   // Sperre für unbestätigte Preise (FA-SHOP-04): Solche Einträge zeigen keinen Betrag und gehen nicht in den Warenkorb.
   const unbestaetigt = useMemo(() => unbestaetigtePreise(draft, catalog), [draft, catalog]);
   const preisOffen = unbestaetigt.length > 0;
   const summeText = preisOffen ? 'auf Anfrage' : formatCents(breakdown.totalCents);
-  // Weg in die Anfrage: mit Link in den Schließplan-Planer, sonst die allgemeine Anfrage ohne Übergabe.
-  const anfrage = useMemo(() => {
-    const plan = positionenZuPlan(data.items, data.keyCount, { extraIds: data.extraIds, expandable: data.expandable });
-    return passtInLink(plan)
-      ? { href: `/schliessanlagen/konfigurator/schliessplan?plan=${kodiere(plan)}`, mitPlan: true }
-      : { href: '/service-und-termin/anfrage?thema=tuer-und-schliesstechnik', mitPlan: false };
-  }, [data.items, data.keyCount, data.extraIds, data.expandable]);
+  // Weg in die Anfrage: mit Link in den Schließplan-Planer (Zylinder, Optionen, Hersteller), sonst die allgemeine Anfrage.
+  const herstellerName = hersteller?.name ?? system?.name;
+  const anfrage = useMemo(() => anfrageZiel(data, herstellerName), [data, herstellerName]);
+  const knopf = abschlussKnopf(preisOffen);
   const count = cylinderCount(data.items);
   const canAddPosition = count < catalog.maxCylinders && data.items.length < catalog.maxCylinders;
   const extraKeys = Math.max(0, data.keyCount - catalog.includedKeys);
 
   const blockedHints: Record<string, string> = {
-    hersteller: 'Bitte wählen Sie einen Hersteller.',
+    hersteller: modus === 'angabe' ? 'Bitte wählen Sie einen Hersteller oder „Keine Vorgabe“.' : 'Bitte wählen Sie einen Hersteller.',
     zylinder:
       data.items.length === 0
         ? 'Bitte legen Sie mindestens eine Position an.'
@@ -391,10 +400,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
           : 'Bitte prüfen Sie bei jeder Position Bauform, Maße, Funktion und Stückzahl.',
     schluessel: `Bitte wählen Sie zwischen 1 und ${catalog.maxKeys} gemeinsamen Schlüsseln.`,
     erweiterung: 'Bitte wählen Sie aus, ob Ihre Schließung später erweiterbar sein soll.',
-    // Der Preishinweis erst, wenn alle Angaben stehen; sonst fehlt dem Kunden der Hinweis auf die Lücke.
-    zusammenfassung: preisOffen && angabenVollstaendig
-      ? 'Ein Preis dieser Zusammenstellung ist noch nicht bestätigt. Bitte schicken Sie sie uns als Anfrage.'
-      : 'Bitte vervollständigen Sie die vorherigen Schritte.',
+    zusammenfassung: 'Bitte vervollständigen Sie die vorherigen Schritte.',
   };
 
   function updateItem(uid: string, patch: Partial<CylinderLineItem>) {
@@ -474,6 +480,12 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
 
   function handleSubmit() {
     if (!flow.canContinue || submitting) return;
+    // Unbestätigter Preis: kein Warenkorb, sondern die Anfrage mit der ganzen Zusammenstellung.
+    const aktion = abschlussAktion(preisOffen, anfrage.href);
+    if (aktion.art === 'anfrage') {
+      router.push(aktion.href);
+      return;
+    }
     setSubmitting(true);
     addCylinderOrder(draft, breakdown.totalCents);
     clearFlow(FLOW_ID);
@@ -484,7 +496,17 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
     const selectedExtras = extras.filter((extra) => draft.extraIds.includes(extra.id));
     // Ist ein Preis nicht bestätigt, nennt die Zusammenfassung Mengen, aber keine Beträge (R9).
     const betrag = (text: string) => (preisOffen ? 'mit dem Angebot' : text);
-    const herstellerAbschnitt: SummarySection[] = hersteller
+    const herstellerAbschnitt: SummarySection[] = modus === 'angabe'
+      ? [
+          {
+            title: 'Hersteller',
+            rows: [
+              { label: 'Hersteller', value: system?.name ?? 'keine Vorgabe' },
+              { label: 'Hinweis', value: HERSTELLER_ANGABE_SATZ },
+            ],
+          },
+        ]
+      : hersteller
       ? [
           {
             title: 'Hersteller',
@@ -563,7 +585,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
         ],
       },
     ];
-  }, [breakdown, catalog, data.expandable, data.keyCount, draft.extraIds, extraKeys, extras, hersteller, preisOffen]);
+  }, [breakdown, catalog, data.expandable, data.keyCount, draft.extraIds, extraKeys, extras, hersteller, modus, preisOffen, system]);
 
   // Ohne gepflegte Bauformen ist keine Zusammenstellung möglich.
   if (catalog.forms.filter((form) => form.active).length === 0) {
@@ -579,7 +601,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
     <FlowShell
       flow={flow}
       title="Gleichschließende Zylinder"
-      submitLabel="In den Warenkorb"
+      submitLabel={knopf.label}
       onSubmit={handleSubmit}
       submitting={submitting}
       blockedHint={blockedHints[flow.step?.id ?? '']}
@@ -735,8 +757,13 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
           )}
         </div>
 
-        {/* Hersteller — nur, wenn der Katalog Hersteller anbietet */}
-        {flow.step?.id === 'hersteller' && (
+        {/* Hersteller ohne Herstellerpreise: Systeme der Stammliste als Angabe (FA-SHOP-04B) */}
+        {flow.step?.id === 'hersteller' && modus === 'angabe' && (
+          <HerstellerAngabeWahl systeme={systeme} wert={data.herstellerAngabe} onWahl={(wert) => flow.set('herstellerAngabe', wert)} />
+        )}
+
+        {/* Hersteller des Katalogs mit seiner Preisregel (Bestand) */}
+        {flow.step?.id === 'hersteller' && modus === 'katalog' && (
           <div className="space-y-4">
             <fieldset>
               <legend className="mb-3 text-body font-semibold text-foreground">
@@ -764,7 +791,7 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
               </div>
             </fieldset>
             <p className="text-small leading-relaxed text-foreground-muted">
-              Weitere Hersteller oder Sonderlösungen auf Anfrage — schreiben Sie uns über die{' '}
+              Weitere Hersteller oder Sonderlösungen auf Anfrage. Schreiben Sie uns über die{' '}
               <Link href="/service-und-termin/anfrage" className="font-semibold text-primary hover:underline">
                 allgemeine Anfrage
               </Link>
@@ -810,6 +837,14 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
               <GlyphPlus size={18} />
               Weitere Tür hinzufügen
             </Button>
+
+            {/* Weitere Bauformen nur aus dem Katalog; sonst der Weg in die Anfrage (FA-15-03). */}
+            <p className="text-small leading-relaxed text-foreground-muted">
+              Ihre Bauform ist nicht dabei?{' '}
+              <Link href={ANDERE_BAUFORM_ANFRAGE} className="font-semibold text-primary hover:underline">
+                Andere Bauform anfragen
+              </Link>
+            </p>
 
             <p className="text-small leading-relaxed text-foreground-muted">
               {canAddPosition
@@ -1075,21 +1110,13 @@ export function Konfigurator({ catalog, hilfe }: { catalog: CylinderCatalog; hil
         {flow.step?.id === 'zusammenfassung' && (
           <div className="space-y-6">
             {preisOffen && (
-              <Alert tone="warning" title="Preis noch nicht bestätigt">
-                <p>
-                  {preisSperreText(unbestaetigt)} Online bestellen lässt sich diese Zusammenstellung deshalb nicht.
-                  Schicken Sie sie uns als Anfrage. Sie bekommen ein Angebot mit Preis.{' '}
-                  {anfrage.mitPlan
-                    ? 'Zylinder, Maße und Schlüssel gehen mit. Weitere Optionen wählen Sie dort noch einmal.'
-                    : 'Bitte nennen Sie uns in der Anfrage Bauform, Maße und Anzahl je Tür, die Zahl der Schlüssel und Ihre Optionen.'}
-                  {hersteller ? ` Den Hersteller ${hersteller.name} nennen Sie uns dort bitte noch einmal.` : ''}
-                </p>
-                <p className="mt-3">
-                  <Link href={anfrage.href} prefetch={false} className="font-semibold text-primary underline">
-                    Zusammenstellung als Anfrage schicken
-                  </Link>
-                </p>
-              </Alert>
+              <AnfrageWeg
+                sperrText={preisSperreText(unbestaetigt)}
+                href={anfrage.href}
+                mitPlan={anfrage.mitPlan}
+                hersteller={herstellerName}
+                komponenten={(draft.components?.length ?? 0) > 0}
+              />
             )}
             {/* Je Position die Maßzeichnung, damit die Maße vor dem Bestellen sichtbar geprüft werden;
                 die Zahlen stehen vollständig im Schriftfeld darunter. */}

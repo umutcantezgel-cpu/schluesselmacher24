@@ -1,9 +1,11 @@
-import type { CodeLine, Guide, ShippingOption } from '@/lib/types';
+import type { CodeLine, Guide, ShippingOption, Verfuegbarkeit } from '@/lib/types';
 import { generatorTexte } from '@/lib/data/defaults/code-lines';
 import { formatCents, formatNumber } from '@/lib/format';
+import { PROCESS_LABELS } from '@/lib/navigation';
 import { unitPriceForCodeLine } from '@/lib/pricing';
 import { MARKENZUSATZ, TITEL_MAX_ZEICHEN, titelPasst } from '@/lib/titelbreite';
 import {
+  VERFUEGBARKEIT_LABEL,
   anwendungKurz,
   codelinienFamilie,
   codelinienKennung,
@@ -35,6 +37,11 @@ export const TITEL_MAX = TITEL_MAX_ZEICHEN - [...MARKENZUSATZ].length;
 /** Mindest- und Höchstlänge der Meta-Beschreibung. */
 export const BESCHREIBUNG_MIN = 120;
 export const BESCHREIBUNG_MAX = 160;
+
+/** Was nach „Code anfragen“ kommt (L-05): steht im Kasten und einmal in der Einleitung, im selben Wortlaut. */
+export const ANFRAGE_WEG = 'Über „Code anfragen“ prüfen wir Ihren Code und melden uns mit einem Angebot.';
+/** Kasten der Produktseite bei „auf Anfrage“: was nicht geht, was zu tun ist und was dann kommt. */
+export const ANFRAGE_KASTEN = `Diesen Schlüssel können Sie nicht in den Warenkorb legen. ${ANFRAGE_WEG}`;
 
 function normal(text: string): string {
   return text.replace(/\s+/g, ' ').trim().toLowerCase();
@@ -198,6 +205,45 @@ export function zuordnungText(
   return teile.length ? teile.join(', ') : undefined;
 }
 
+/**
+ * Angaben zum Schloss als ganze Sätze (FA-INHALT-03I, L-04, L-29): Hersteller und System,
+ * Codebereich, Profil und Codeserie, nur gepflegte Angaben. Mit `erklaert` stehen die
+ * Erklärungen der Wörter „System“ und „Codebereich“ dabei (erstes Vorkommen auf der Produktseite).
+ */
+function schlossSaetze(line: CodeLine, subjekt: string, erklaert: boolean): string | undefined {
+  const hersteller = gepflegt(line.manufacturer);
+  const system = gepflegt(line.system);
+  const bereich = gepflegt(line.codeRange);
+  const profil = gepflegt(line.profile);
+  const serie = gepflegt(line.codeSeries);
+  const saetze = [
+    hersteller || system
+      ? `${subjekt} gehört zu Schlössern${hersteller ? ` von ${hersteller}` : ''}`
+        + `${system ? ` im System ${system}${erklaert ? ' (so nennt der Hersteller sein Schließsystem)' : ''}` : ''}.`
+      : undefined,
+    bereich
+      ? erklaert
+        ? `Der Codebereich ist ${bereich}, in diesem Bereich liegt Ihr Code.`
+        : `Ihr Code liegt im Codebereich ${bereich}.`
+      : undefined,
+    profil && serie
+      ? `Das Profil heißt ${profil}, die Codeserie ${serie}.`
+      : profil
+        ? `Das Profil heißt ${profil}.`
+        : serie
+          ? `Die Codeserie heißt ${serie}.`
+          : undefined,
+  ].filter(Boolean);
+  return saetze.length ? saetze.join(' ') : undefined;
+}
+
+/** Satz „Erwartetes Format: …“ des Generators: ein Satzrest, die Form des Codes steht schon an anderer Stelle (L-09). */
+function ohneFormatRest(text: string): string {
+  return saetze(text)
+    .filter((satz) => !/^Erwartetes Format:/i.test(satz))
+    .join(' ');
+}
+
 /* ---------- Zusammensetzen ----------------------------------------------- */
 
 export interface CodelinienKontext {
@@ -219,6 +265,12 @@ export interface CodelinienTexte {
   beschreibung: string;
   /** Satz zur Fundstelle des Codes aus dem Ratgeber. */
   fundstelle?: string;
+  /**
+   * Hinweis der Linie zur Fundstelle: ein im Backend gepflegter Hinweis immer; der Startwert des
+   * Generators nur ohne Satz aus dem Ratgeber (sonst stünde fast dasselbe zweimal da) und ohne den
+   * Satzrest „Erwartetes Format: …“.
+   */
+  codeHinweis?: string;
   faq: { question: string; answer: string }[];
   verwandte: CodeLine[];
   versand: ShippingOption[];
@@ -240,11 +292,15 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
   const marke = [hersteller, serie].filter(Boolean).join(' ');
   const zuordnung = zuordnungText(line);
   const preis = formatCents(line.priceCents);
+  // Hinweis zur Fundstelle: gepflegt gewinnt; der Generator-Startwert nur ohne Ratgebersatz (L-09, L-28).
+  const hinweisRoh = gepflegt(line.codeHint);
+  const hinweisGepflegt = hinweisRoh && !istGeneratorText(hinweisRoh, generatorTexte(line).codeHint) ? hinweisRoh : undefined;
   const stufen = staffelStufen(line);
   const staffel = staffelText(line);
   const versand = versandFuerLinie(line, kontext.versand);
   const versandListe = versandText(versand);
   const fundstelle = fundstelleAusRatgeber(kontext.ratgeber, line);
+  const codeHinweis = hinweisGepflegt ?? (fundstelle || !hinweisRoh ? undefined : ohneFormatRest(hinweisRoh) || undefined);
   const verwandte = verwandteLinien(line, kontext.alle);
   const hinweisFoto = gepflegt(line.photoUploadHint);
   // Texte nach Verfügbarkeit (FA-22-10): Die Seite beschreibt keinen Direktkauf, den der Server ablehnt (R4).
@@ -279,27 +335,33 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
         : aufAnfrage
           ? `${art} für ${kurz} nach Code anfragen: Schlüssel ${kennung}${marke ? `, ${marke}` : ''}.`
           : `${art} für ${kurz} nach Code: Schlüssel ${kennung}${marke ? `, ${marke}` : ''}, derzeit nicht lieferbar.`,
-      [
-        format ? `Codeformat: ${format}${beispiel ? `, z. B. ${beispiel}` : ''}.` : undefined,
-        // Wie in der Einleitung und im Bestellformular; ein Satz, nicht zwei gleichbedeutende.
-        'Ihr Originalschlüssel bleibt bei Ihnen.',
-        lieferbar && stufen[0] ? `Staffelpreis ab ${formatNumber(stufen[0].minQty)} Stück.` : undefined,
-        lieferbar
-          ? 'Sie geben den Code ein, wir fertigen danach.'
-          : aufAnfrage
-            ? 'Sie nennen den Code, wir prüfen ihn und melden uns.'
-            : 'Fragen Sie gern nach einem anderen Schlüssel.',
-      ],
+      lieferbar || aufAnfrage
+        ? [
+            format ? `Aufbau des Codes: ${format}${beispiel ? `, z. B. ${beispiel}` : ''}.` : undefined,
+            // Wie in der Einleitung und im Bestellformular; ein Satz, nicht zwei gleichbedeutende.
+            'Ihr Originalschlüssel bleibt bei Ihnen.',
+            lieferbar && stufen[0] ? `Staffelpreis ab ${formatNumber(stufen[0].minQty)} Stück.` : undefined,
+            lieferbar
+              ? 'Sie geben den Code ein, wir fertigen danach.'
+              : 'Sie nennen den Code, wir prüfen ihn und melden uns.',
+          ]
+        : [
+            // Wie der Kasten der Seite: der Weg in die Code-Anfrage, vor den übrigen Angaben (L-01).
+            'Fragen Sie Ihren Code bei uns an.',
+            format ? `Aufbau des Codes: ${format}${beispiel ? `, z. B. ${beispiel}` : ''}.` : undefined,
+          ],
     );
 
+  // Je Verfügbarkeit (FA-INHALT-03I): „auf Anfrage“ nennt den Weg so wie der Kasten (L-05);
+  // „nicht lieferbar“ beschreibt keine Fertigung (L-01, L-19, L-35). Das Original nennt die Seite
+  // höchstens zweimal: Plakette und ein Satz (L-10).
   const einleitung = lieferbar
     ? `${art} für ${kurz}, gefertigt nach dem Code, den Sie eingeben${format ? ` (${format})` : ''}. `
       + `${preis} je Stück. Ihr Originalschlüssel bleibt bei Ihnen.`
     : aufAnfrage
       ? `${art} für ${kurz}, gefertigt nach dem Code Ihres Schlosses${format ? ` (${format})` : ''}. `
-        + 'Bitte fragen Sie bei uns an, wir prüfen Ihren Code. Ihr Originalschlüssel bleibt bei Ihnen.'
-      : `${art} für ${kurz}, gefertigt nach dem Code Ihres Schlosses${format ? ` (${format})` : ''}. `
-        + 'Diesen Schlüssel können Sie zurzeit nicht bestellen.';
+        + ANFRAGE_WEG
+      : `Diesen ${art} für ${kurz} können Sie zurzeit nicht bestellen.`;
 
   const fotoSatz =
     line.photoUpload === 'pflicht'
@@ -308,22 +370,27 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
         ? 'Ein Foto ist freiwillig.'
         : 'Ein Foto ist nicht nötig.';
 
+  // „Anwendungsfamilie“ steht nicht mehr im Text (L-03, L-26): Die Daten nennen die Anwendung im
+  // Nominativ („Büroschrank und Rollcontainer“); „passt zu Schlössern an …“ bräuchte den Dativ Plural,
+  // den die Daten nicht hergeben. Darum bleibt „ist für … gedacht“.
+  const ersterSatz = (familie || kurz.toLowerCase() !== kennung.toLowerCase())
+    ? `Der Schlüssel ${kennung} ist für ${kurz} gedacht.`
+    : undefined;
   const beschreibung =
     eigen.beschreibung
     ?? [
-      familie
-        ? `Der Schlüssel ${kennung} ist für ${kurz} gedacht. Er gehört zur Anwendungsfamilie „${familie}“.`
-        : kurz.toLowerCase() !== kennung.toLowerCase()
-          ? `Der Schlüssel ${kennung} ist für ${kurz} gedacht.`
+      ersterSatz,
+      schlossSaetze(line, ersterSatz ? 'Er' : `Der Schlüssel ${kennung}`, true),
+      // Keine Fertigung, solange der Schlüssel nicht bestellbar ist (L-19); das Original nennt schon die Einleitung (L-10).
+      lieferbar
+        ? `Wir fertigen den ${art} nur nach Ihrem Code.`
+        : aufAnfrage
+          ? `Wir fertigen den ${art} nur nach Ihrem Code. Ihren Originalschlüssel müssen Sie nicht einschicken.`
           : undefined,
-      zuordnung && `Angaben zum Schloss: ${zuordnung}.`,
-      `Wir fertigen den ${art} nur nach Ihrem Code. Ihren Originalschlüssel müssen Sie nicht einschicken.`,
-      format && `Das Codeformat lautet „${format}“${beispiel ? `, zum Beispiel ${beispiel}` : ''}.`,
+      format && `So sieht der Code aus: ${format}${beispiel ? `, zum Beispiel ${beispiel}` : ''}.`,
       lieferbar
         ? `Ein Schlüssel kostet ${preis}${staffel ? `, ${staffel}` : ''}. Je Bestellung sind bis zu ${formatNumber(line.maxQty)} Stück möglich.`
-        : aufAnfrage
-          ? 'Diesen Schlüssel bestellen Sie nicht direkt. Sie fragen ihn bei uns an. Wir prüfen den Code und melden uns mit einem Angebot.'
-          : 'Diesen Schlüssel können Sie zurzeit nicht bestellen.',
+        : undefined,
       lieferbar ? fotoSatz : undefined,
     ]
       .filter(Boolean)
@@ -333,14 +400,18 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
   if (format) {
     faq.push({
       question: `Wie sieht ein gültiger Code für ${kennung} aus?`,
-      answer: lieferbar
-        ? `Für ${kennung} erwartet das Bestellformular: ${format}${beispiel ? `, zum Beispiel ${beispiel}` : ''}. `
-          + 'Eine Eingabe in einem anderen Format nimmt es nicht an.'
-        : `Für ${kennung} gilt das Codeformat: ${format}${beispiel ? `, zum Beispiel ${beispiel}` : ''}.`
-          + (aufAnfrage ? ' Nennen Sie den Code in Ihrer Anfrage genau so, wie er aufgedruckt ist.' : ''),
+      // Die Antwort spricht vom Code, nicht vom Formular (L-08, L-30); ein Formular nennt sie nie.
+      answer:
+        `Der Code für ${kennung} sieht so aus: ${format}${beispiel ? `, zum Beispiel ${beispiel}` : ''}.`
+        + (lieferbar
+          ? ' Sieht Ihr Code anders aus, fragen Sie ihn bei uns an.'
+          : aufAnfrage
+            ? ' Nennen Sie den Code in Ihrer Anfrage genau so, wie er aufgedruckt ist.'
+            : ''),
     });
   }
-  const fundstellenAntwort = [fundstelle, gepflegt(line.codeHint)].filter(Boolean).join(' ');
+  // Ein Satz zur Fundstelle statt zweier fast gleicher, ohne Satzrest (L-09, L-28).
+  const fundstellenAntwort = [fundstelle, codeHinweis].filter(Boolean).join(' ');
   if (fundstellenAntwort) {
     faq.push({ question: `Wo steht der Code bei ${kurz}?`, answer: fundstellenAntwort });
   }
@@ -373,10 +444,12 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
       answer: 'Den Preis nennen wir Ihnen mit unserem Angebot, nachdem wir Ihren Code geprüft haben.',
     });
   }
-  if (zuordnung) {
+  const schlossAntwort = zuordnung ? schlossSaetze(line, kennung, false) : undefined;
+  if (schlossAntwort) {
     faq.push({
       question: `Für welche Schlösser ist ${kennung} gedacht?`,
-      answer: `Angaben zum Schloss: ${zuordnung}. Im Zweifel vergleichen Sie diese mit der Prägung an Schloss oder Schlüssel.`,
+      // Ganze Sätze statt Stichwortreihe, ohne „diese“ und „Prägung“ (L-04, L-29).
+      answer: `${schlossAntwort} Vergleichen Sie das mit dem, was auf Ihrem Schloss oder Schlüssel steht.`,
     });
   }
 
@@ -386,6 +459,7 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
     einleitung,
     beschreibung,
     ...(fundstelle ? { fundstelle } : {}),
+    ...(codeHinweis ? { codeHinweis } : {}),
     faq,
     verwandte,
     versand,
@@ -399,23 +473,32 @@ export function codelinienTexte(line: CodeLine, kontext: CodelinienKontext): Cod
 
 /* ---------- Kategorie- und Herstellerseiten ------------------------------ */
 
-/** „a“, „a und b“, „a, b und c“. */
+/**
+ * „a“, „a und b“, „a, b und c“. Enthält ein Wert selbst „und“ („Büroschrank und Rollcontainer“),
+ * steht vor dem letzten Wert „sowie“, damit nicht „und … und … und“ hintereinander stehen (L-23).
+ */
 export function aufzaehlung(werte: string[]): string {
   if (werte.length <= 1) return werte[0] ?? '';
-  return `${werte.slice(0, -1).join(', ')} und ${werte[werte.length - 1]}`;
+  const verbinder = werte.some((wert) => /\sund\s/.test(wert)) ? 'sowie' : 'und';
+  return `${werte.slice(0, -1).join(', ')} ${verbinder} ${werte[werte.length - 1]}`;
 }
 
 function eindeutig(werte: Array<string | undefined>): string[] {
   return [...new Set(werte.filter((wert): wert is string => Boolean(wert)))];
 }
 
-/** Preisspanne der lieferbaren Linien; ohne lieferbare Linie keine (auf Anfrage nennt das Angebot den Preis). */
-function preisSpanne(lines: CodeLine[]): string | undefined {
+/**
+ * Preis je Stück der lieferbaren Linien als ganzer Satz, Einzahl bei einem Betrag (L-31); ohne
+ * lieferbare Linie keiner (auf Anfrage nennt das Angebot den Preis). Die Beträge selbst bleiben.
+ */
+function preisSatz(lines: CodeLine[]): string | undefined {
   const preise = lines.filter((line) => verfuegbarkeitVon(line) === 'lieferbar').map((line) => line.priceCents);
   if (!preise.length) return undefined;
   const von = Math.min(...preise);
   const bis = Math.max(...preise);
-  return von === bis ? formatCents(von) : `${formatCents(von)} bis ${formatCents(bis)}`;
+  return von === bis
+    ? `Der Preis je Stück beträgt ${formatCents(von)}.`
+    : `Die Preise je Stück liegen zwischen ${formatCents(von)} und ${formatCents(bis)}.`;
 }
 
 export interface GruppenTexte {
@@ -428,15 +511,45 @@ export interface GruppenTexte {
   fundstelle?: string;
 }
 
+/**
+ * Zustand einer Gruppe von Linien (Kategorie, Hersteller, Übersicht), FA-INHALT-03I (L-06, L-13, L-24):
+ * - „lieferbar“: mindestens eine Linie lieferbar, die Seite beschreibt den Direktkauf;
+ * - „auf-anfrage“: keine lieferbar, mindestens eine auf Anfrage; ebenso eine leere Gruppe, denn
+ *   ohne Produkte führt die Seite in die Code-Anfrage;
+ * - „nicht-lieferbar“: alle Linien nicht lieferbar; die Seite verspricht dann keine Prüfung.
+ */
+export function gruppenZustand(lines: Array<Pick<CodeLine, 'availability'>>): Verfuegbarkeit {
+  const zustaende = lines.map((line) => verfuegbarkeitVon(line));
+  if (zustaende.includes('lieferbar')) return 'lieferbar';
+  if (!zustaende.length || zustaende.includes('auf-anfrage')) return 'auf-anfrage';
+  return 'nicht-lieferbar';
+}
+
 /** Kann in dieser Gruppe direkt bestellt werden? Nur dann beschreiben Seite und Kopfzeile einen Direktkauf. */
-export function gruppeLieferbar(lines: CodeLine[]): boolean {
-  return lines.some((line) => verfuegbarkeitVon(line) === 'lieferbar');
+export function gruppeLieferbar(lines: Array<Pick<CodeLine, 'availability'>>): boolean {
+  return gruppenZustand(lines) === 'lieferbar';
+}
+
+/** Kopfzeile einer Kategorie- oder Herstellerseite: „Kategorie · Direkt kaufen“, „… · Auf Anfrage“, „… · Derzeit nicht lieferbar“. */
+export function gruppenKopfzeile(art: 'Kategorie' | 'Hersteller', lines: Array<Pick<CodeLine, 'availability'>>): string {
+  const zustand = gruppenZustand(lines);
+  return `${art} · ${zustand === 'lieferbar' ? PROCESS_LABELS.direktkauf.label : VERFUEGBARKEIT_LABEL[zustand]}`;
+}
+
+/** Anfrage-Fassung einer Gruppe ohne lieferbares Produkt: Hier kann man nicht bestellen, aber anfragen (Punkt 1). */
+export const GRUPPE_AUF_ANFRAGE = 'Bestellen können Sie hier zurzeit nicht. Fragen Sie uns mit Ihrem Code an. Wir prüfen ihn und melden uns.';
+/** Fassung einer Gruppe, deren Produkte alle nicht lieferbar sind: ohne Zusage einer Prüfung (L-13, L-24). */
+export const GRUPPE_NICHT_LIEFERBAR = 'Diese Schlüssel können Sie zurzeit nicht bestellen.';
+
+/** Satz zum Zustand einer Gruppe, gleich für Kategorie- und Herstellerseite. */
+function gruppenSatz(zustand: Verfuegbarkeit, lieferbar: string): string {
+  return zustand === 'lieferbar' ? lieferbar : zustand === 'auf-anfrage' ? GRUPPE_AUF_ANFRAGE : GRUPPE_NICHT_LIEFERBAR;
 }
 
 /**
- * Texte einer Kategorieseite (Anwendungsfamilie) — aus den Linien der
- * Familie: Zahl, Anwendungen, Schlüsseltypen, Codeformate, Preisspanne,
- * Staffel, Foto-Pflicht, gepflegte Hersteller und die Fundstelle laut Ratgeber.
+ * Texte einer Kategorieseite — aus den Linien der Kategorie: Zahl, Anwendungen,
+ * Schlüsseltypen, Aufbau der Codes, Preise, Staffel, Foto-Pflicht, gepflegte
+ * Hersteller und die Fundstelle laut Ratgeber.
  */
 export function kategorieTexte(
   name: string,
@@ -450,7 +563,7 @@ export function kategorieTexte(
   const typText = typen.length ? aufzaehlung(typen) : 'Schlüssel';
   const anwendungen = eindeutig(lines.map((line) => anwendungKurz(line)));
   const formate = eindeutig(lines.map((line) => gepflegt(line.codeFormatLabel)));
-  const spanne = preisSpanne(lines);
+  const preis = preisSatz(lines);
   // Staffel nur aus lieferbaren Produkten: ohne Direktkauf gibt es keinen Staffelpreis zu nennen (R9).
   const staffelAb = eindeutig(
     lines.filter((line) => verfuegbarkeitVon(line) === 'lieferbar').map((line) => staffelStufen(line)[0]?.minQty.toString()),
@@ -458,36 +571,45 @@ export function kategorieTexte(
   const pflicht = lines.filter((line) => line.photoUpload === 'pflicht').map((line) => codelinienKennung(line));
   const hersteller = eindeutig(lines.map((line) => gepflegt(line.manufacturer)));
   const fundstelle = lines.map((line) => fundstelleAusRatgeber(ratgeber, line)).find(Boolean);
-  // Direktkauf nur, wenn mindestens eine Linie lieferbar ist; sonst die Anfrage-Fassung (R4).
-  const lieferbar = gruppeLieferbar(lines);
+  // Drei Zustände (FA-INHALT-03I): Direktkauf, Anfrage oder nicht lieferbar.
+  const zustand = gruppenZustand(lines);
+  const lieferbar = zustand === 'lieferbar';
 
   const titelVorschlaege = [`${name}: Schlüssel nach Code`, `${name} nach Code`, `${typText} nach Code`, name];
   const metaTitel = ersterPassender(titelVorschlaege);
 
-  // Ohne Beträge (FA-SEO-01B); die Preisspanne steht auf der Seite.
-  const metaBeschreibung = imRahmen(`${typText} nach Code für ${name}: ${formatNumber(zahl)} ${produkte}.`, [
-    `Für ${aufzaehlung(anwendungen)}.`,
-    'Ohne Einsendung des Originalschlüssels.',
-    ...(lieferbar
-      ? ['Den Preis je Stück sehen Sie bei jedem Produkt.', 'Sie geben den Code ein, wir fertigen danach.']
-      : ['Sie nennen den Code in einer Anfrage, wir prüfen ihn und melden uns.']),
-  ]);
+  // Ohne Beträge (FA-SEO-01B); die Preise stehen auf der Seite.
+  // Ohne Direktkauf steht der Satz zum Zustand vor den Anwendungen, damit er in die Länge passt (L-24).
+  const metaBeschreibung = imRahmen(
+    `${typText} nach Code für ${name}: ${formatNumber(zahl)} ${produkte}.`,
+    lieferbar
+      ? [
+          `Für ${aufzaehlung(anwendungen)}.`,
+          'Ohne Einsendung des Originalschlüssels.',
+          'Den Preis je Stück sehen Sie bei jedem Produkt.',
+          'Sie geben den Code ein, wir fertigen danach.',
+        ]
+      : zustand === 'auf-anfrage'
+        ? ['Fragen Sie uns mit Ihrem Code an. Wir prüfen ihn und melden uns.', 'Ohne Einsendung des Originalschlüssels.', `Für ${aufzaehlung(anwendungen)}.`]
+        : [GRUPPE_NICHT_LIEFERBAR, `Für ${aufzaehlung(anwendungen)}.`],
+  );
 
+  // Keine Reihe aller Anwendungen (L-11, L-23, L-25): Name der Kategorie aus den Daten, die Anwendung steht bei jedem Produkt.
   const einleitung =
-    `${formatNumber(zahl)} ${produkte} für ${aufzaehlung(anwendungen)}. `
-    + (lieferbar
-      ? 'Sie geben den Code ein, wir fertigen danach. Ihr Originalschlüssel bleibt bei Ihnen.'
-      : 'Sie nennen den Code in einer Anfrage, wir prüfen ihn und melden uns. Ihr Originalschlüssel bleibt bei Ihnen.');
+    `${formatNumber(zahl)} ${produkte} für ${name}. `
+    + (zahl > 1 ? 'Bei jedem Produkt steht, wofür es gedacht ist. ' : '')
+    + gruppenSatz(zustand, 'Sie geben den Code ein, wir fertigen danach. Ihr Originalschlüssel bleibt bei Ihnen.');
 
   const absaetze = [
     [
-      `Schlüsseltyp: ${typText}.`,
+      typen.length ? `Es gibt ${typText}.` : undefined,
       formate.length === 1
-        ? `Alle Produkte haben das Codeformat „${formate[0]}“.`
+        ? `Bei ${zahl === 1 ? 'diesem Produkt' : 'allen Produkten'} sieht der Code so aus: ${formate[0]}.`
         : formate.length > 1
-          ? `Die Codeformate sind verschieden, etwa „${formate[0]}“ oder „${formate[formate.length - 1]}“. Bei jedem Produkt steht sein Format mit einem Beispiel.`
+          ? `Die Codes sehen je nach Produkt verschieden aus, etwa ${formate[0]} oder ${formate[formate.length - 1]}. `
+            + 'Bei jedem Produkt steht, wie sein Code aussieht, mit einem Beispiel.'
           : undefined,
-      spanne ? `Preise je Stück: ${spanne}.` : undefined,
+      preis,
       staffelAb.length === 1 ? `Staffelpreise gelten ab ${staffelAb[0]} Stück.` : undefined,
     ]
       .filter(Boolean)
@@ -495,7 +617,7 @@ export function kategorieTexte(
     pflicht.length
       ? `Bei ${aufzaehlung(pflicht)} ist ein Foto Pflicht. Bei den übrigen Produkten ist es freiwillig oder nicht nötig.`
       : '',
-    hersteller.length ? `Hersteller: ${aufzaehlung(hersteller)}.` : '',
+    hersteller.length ? `Die Schlösser sind von ${aufzaehlung(hersteller)}.` : '',
   ].filter(Boolean);
 
   return { metaTitel, metaBeschreibung, einleitung, absaetze, ...(fundstelle ? { fundstelle } : {}) };
@@ -510,43 +632,50 @@ export function herstellerTexte(name: string, lines: CodeLine[]): GruppenTexte {
   const profile = eindeutig(lines.map((line) => gepflegt(line.profile)));
   const serien = eindeutig(lines.map((line) => gepflegt(line.codeSeries)));
   const systeme = eindeutig(lines.map((line) => gepflegt(line.system)));
-  const spanne = preisSpanne(lines);
-  // Direktkauf nur, wenn mindestens eine Linie lieferbar ist; sonst die Anfrage-Fassung (R4).
-  const lieferbar = gruppeLieferbar(lines);
+  const preis = preisSatz(lines);
+  // Drei Zustände (FA-INHALT-03I): Direktkauf, Anfrage oder nicht lieferbar.
+  const zustand = gruppenZustand(lines);
+  const lieferbar = zustand === 'lieferbar';
 
   const titelVorschlaege = lieferbar
     ? [`${name}: Schlüssel nach Code bestellen`, `${name}: Schlüssel nach Code`, name]
     : [`${name}: Schlüssel nach Code`, name];
   const metaTitel = ersterPassender(titelVorschlaege);
-  // Ohne Beträge (FA-SEO-01B); die Preisspanne steht auf der Seite.
+  // Ohne Beträge (FA-SEO-01B); die Preise stehen auf der Seite.
   const metaBeschreibung = imRahmen(
     `Schlüssel nach Code für Schlösser von ${name}: ${formatNumber(zahl)} ${produkte}.`,
-    [
-      typen.length ? `${aufzaehlung(typen)}.` : undefined,
-      'Ohne Einsendung des Originalschlüssels.',
-      ...(lieferbar
-        ? ['Den Preis je Stück sehen Sie bei jedem Produkt.', 'Sie geben den Code ein, wir fertigen danach.']
-        : ['Sie nennen den Code in einer Anfrage, wir prüfen ihn und melden uns.']),
-    ],
+    // Ohne Direktkauf steht der Satz zum Zustand vorn, damit er in die Länge passt (L-24).
+    lieferbar
+      ? [
+          typen.length ? `${aufzaehlung(typen)}.` : undefined,
+          'Ohne Einsendung des Originalschlüssels.',
+          'Den Preis je Stück sehen Sie bei jedem Produkt.',
+          'Sie geben den Code ein, wir fertigen danach.',
+        ]
+      : zustand === 'auf-anfrage'
+        ? [
+            'Fragen Sie uns mit Ihrem Code an. Wir prüfen ihn und melden uns.',
+            typen.length ? `${aufzaehlung(typen)}.` : undefined,
+            'Ohne Einsendung des Originalschlüssels.',
+          ]
+        : [GRUPPE_NICHT_LIEFERBAR, typen.length ? `${aufzaehlung(typen)}.` : undefined],
   );
   const einleitung =
     `${formatNumber(zahl)} ${produkte} für Schlösser von ${name}`
     + (systeme.length
       ? `${systeme.length === 1 ? ' im System' : ' in den Systemen'} ${aufzaehlung(systeme)}. `
       : `${familien.length ? ` aus ${aufzaehlung(familien)}` : ''}. `)
-    + (lieferbar
-      ? 'Sie bestellen nach dem Code. Ihren Originalschlüssel behalten Sie.'
-      : 'Sie nennen den Code in einer Anfrage. Ihren Originalschlüssel behalten Sie.');
+    + gruppenSatz(zustand, 'Sie bestellen nach dem Code. Ihren Originalschlüssel behalten Sie.');
+  // Ganze Sätze; die Systeme stehen schon in der Einleitung (L-31).
   const absaetze = [
     [
-      systeme.length ? `${systeme.length === 1 ? 'System' : 'Systeme'}: ${aufzaehlung(systeme)}.` : undefined,
-      typen.length ? `Schlüsseltyp: ${aufzaehlung(typen)}.` : undefined,
-      profile.length ? `Profile: ${aufzaehlung(profile)}.` : undefined,
-      serien.length ? `Codeserien: ${aufzaehlung(serien)}.` : undefined,
-      spanne ? `Preise je Stück: ${spanne}.` : undefined,
+      typen.length ? `Es gibt ${aufzaehlung(typen)}.` : undefined,
+      profile.length ? `${profile.length === 1 ? 'Das Profil heißt' : 'Die Profile heißen'} ${aufzaehlung(profile)}.` : undefined,
+      serien.length ? `${serien.length === 1 ? 'Die Codeserie heißt' : 'Die Codeserien heißen'} ${aufzaehlung(serien)}.` : undefined,
+      preis,
     ]
       .filter(Boolean)
       .join(' '),
-  ];
+  ].filter(Boolean);
   return { metaTitel, metaBeschreibung, einleitung, absaetze };
 }

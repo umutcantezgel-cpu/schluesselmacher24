@@ -35,7 +35,11 @@ export interface PlanSchluessel {
 
 export interface Schliessplan {
   version: 1;
-  /** System aus den Systemdaten, etwa „bravus-2000“; leer bei Sperrschließung ohne Systemwahl. */
+  /**
+   * Name des Herstellers, den der Kunde im Konfigurator für gleichschließende Zylinder gewählt hat, etwa
+   * „BKS“ (FA-SHOP-04B); leer ohne Wahl. Bei einer Sperrschließung wird er zur `herstellerAngabe` der
+   * Bestellung, die die Kasse gegen die Stammliste prüft.
+   */
   system?: string;
   tueren: PlanTuer[];
   schluessel: PlanSchluessel[];

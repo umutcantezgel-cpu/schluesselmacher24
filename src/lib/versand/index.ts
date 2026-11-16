@@ -11,7 +11,8 @@ import { begleitschein } from './begleitschein';
 import { dhlRetoure, dhlZugang } from './dhl-retoure';
 import type { Sendung, VersandAnbieter, Versandschein } from './typen';
 
-export { einsendeAngebot } from './angebot';
+export { einsendeAngebot, varianteWaehlbar } from './angebot';
+export { STANDARD_VARIANTEN, VERPACKUNG_HINWEIS, empfehlungFuer, variantenAus, versandBezeichnung } from './varianten';
 export type { Anschrift, Sendung, VersandArt, Versandschein } from './typen';
 
 type Umgebung = Record<string, string | undefined>;

@@ -281,6 +281,10 @@ export interface Vorgaenge {
     einsendenNoetig?: boolean | null;
     freigegebenAm?: string | null;
     /**
+     * Nur für geeignete Sonderfälle. Einlieferung nur in der Filiale; ob ein Schlüssel als Wertgegenstand gilt, ist mit der Post zu klären.
+     */
+    sonderfallVersand?: boolean | null;
+    /**
      * Erscheint in der Mail zur Freigabe bzw. als Begründung bei „Nicht möglich“.
      */
     hinweis?: string | null;
@@ -2295,6 +2299,7 @@ export interface VorgaengeSelect<T extends boolean = true> {
         preisCent?: T;
         einsendenNoetig?: T;
         freigegebenAm?: T;
+        sonderfallVersand?: T;
         hinweis?: T;
       };
   vermittlung?:
@@ -3781,6 +3786,35 @@ export interface Einstellungen {
     portoUnversichert?: number | null;
     haftungVersichert?: number | null;
     portoStand?: string | null;
+    /**
+     * Was der Kunde beim Einschicken wählt. Haftung und Porto nur mit Beleg eintragen; ohne Porto steht „Porto laut Post, bitte dort prüfen“. Die Felder „versichert“ und „unversichert“ oben gelten nur noch für ältere Vorgänge. Leer: Es gelten die Startwerte.
+     */
+    varianten?:
+      | {
+          kennung: 'dhl-paket' | 'einschreiben-einwurf' | 'einschreiben-wert';
+          bezeichnung: string;
+          aktiv?: boolean | null;
+          einsatz: string;
+          /**
+           * Leer: nicht belegt.
+           */
+          haftung?: number | null;
+          sendungsverfolgung?: boolean | null;
+          einlieferung?: ('briefkasten' | 'filiale' | 'paketshop')[] | null;
+          /**
+           * Leer: nicht belegt.
+           */
+          porto?: number | null;
+          aufpreis?: number | null;
+          /**
+           * Nur mit Freigabe am Vorgang oder bestätigtem Hinweis.
+           */
+          nurSonderfall?: boolean | null;
+          portoStand?: string | null;
+          empfohlenFuer?: ('originalschluessel' | 'autoschluessel')[] | null;
+          id?: string | null;
+        }[]
+      | null;
   };
   aufbewahrung: {
     /**
@@ -4185,6 +4219,23 @@ export interface EinstellungenSelect<T extends boolean = true> {
         portoUnversichert?: T;
         haftungVersichert?: T;
         portoStand?: T;
+        varianten?:
+          | T
+          | {
+              kennung?: T;
+              bezeichnung?: T;
+              aktiv?: T;
+              einsatz?: T;
+              haftung?: T;
+              sendungsverfolgung?: T;
+              einlieferung?: T;
+              porto?: T;
+              aufpreis?: T;
+              nurSonderfall?: T;
+              portoStand?: T;
+              empfohlenFuer?: T;
+              id?: T;
+            };
       };
   aufbewahrung?:
     | T

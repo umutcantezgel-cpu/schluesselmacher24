@@ -21,6 +21,7 @@ import * as migration_20261115_200046_vermittlung_auszahlung from './20261115_20
 import * as migration_20261115_210337_admin_alltag from './20261115_210337_admin_alltag';
 import * as migration_20261115_215557_shop_grundlage from './20261115_215557_shop_grundlage';
 import * as migration_20261116_021014_zylinder_bestaetigt from './20261116_021014_zylinder_bestaetigt';
+import * as migration_20261116_023442_einsende_varianten from './20261116_023442_einsende_varianten';
 
 export const migrations = [
   {
@@ -136,6 +137,11 @@ export const migrations = [
   {
     up: migration_20261116_021014_zylinder_bestaetigt.up,
     down: migration_20261116_021014_zylinder_bestaetigt.down,
-    name: '20261116_021014_zylinder_bestaetigt'
+    name: '20261116_021014_zylinder_bestaetigt',
+  },
+  {
+    up: migration_20261116_023442_einsende_varianten.up,
+    down: migration_20261116_023442_einsende_varianten.down,
+    name: '20261116_023442_einsende_varianten'
   },
 ];

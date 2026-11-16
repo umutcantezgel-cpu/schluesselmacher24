@@ -73,7 +73,7 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
     ? undefined
     : trimmed === ''
       ? 'Bitte geben Sie den Schlüsselcode ein.'
-      : `Dieser Code hat nicht das passende Format. Das passende Format ist: ${line.codeFormatLabel} (zum Beispiel `
+      : `Dieser Code hat nicht die richtige Form. So sieht der Code aus: ${line.codeFormatLabel} (zum Beispiel `
         + `${line.codeExample}). Bitte prüfen Sie Ihre Eingabe. Passt Ihr Code trotzdem nicht, fragen Sie ihn `
         + 'über „Code anfragen“ bei uns an.';
   // Unpassender Code: Weg in die Code-Anfrage (FA-11-17), mit Code und Linie vorbelegt.
@@ -142,8 +142,7 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
       <CardHeader>
         <h2 className="text-title-sm font-semibold text-foreground">Schlüssel nach Code bestellen</h2>
         <p className="mt-1 text-small leading-relaxed text-foreground-muted">
-          Ihr Originalschlüssel bleibt bei Ihnen. Wir fertigen nur nach dem Code, den Sie hier
-          eintragen.
+          Wir fertigen nur nach dem Code, den Sie hier eintragen.
         </p>
       </CardHeader>
 
@@ -153,7 +152,7 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
           label="Schlüsselcode"
           required
           error={codeError}
-          hint={`Erwartetes Format: ${line.codeFormatLabel}. Beispiel: ${line.codeExample}.`}
+          hint={`So sieht der Code aus: ${line.codeFormatLabel}, zum Beispiel ${line.codeExample}.`}
           info={{
             title: 'Wo steht der Code?',
             body: line.codeHint,
@@ -197,7 +196,7 @@ export function BestellFormular({ line, werkstatt, anfangsCode }: BestellFormula
               <div aria-live="polite">
                 {codeValid && (
                   <p className="text-small font-semibold text-success">
-                    Der Code passt zum erwarteten Format.
+                    Der Code hat die richtige Form.
                   </p>
                 )}
               </div>

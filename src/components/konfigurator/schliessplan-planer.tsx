@@ -32,6 +32,7 @@ import {
   pruefePlan,
   schluesselHinzufuegen,
   tuerHinzufuegen,
+  wuenscheAusLink,
   type Schliessplan,
   type Vorlage,
 } from '@/lib/konfigurator';
@@ -178,12 +179,18 @@ export function SchliessplanPlaner({ katalog, hilfe }: { katalog: CylinderCatalo
   const linkRoh = useMemo(() => new URLSearchParams(adresse).get('plan'), [adresse]);
   const linkPlan = useMemo(() => (linkRoh ? dekodiere(linkRoh) : null), [linkRoh]);
   const linkFehler = Boolean(linkRoh) && !linkPlan;
+  // Wünsche aus dem Konfigurator für gleichschließende Zylinder (`?wuensche=`, FA-SHOP-04B), etwa die Sicherungskarte.
+  const linkWuensche = useMemo(() => wuenscheAusLink(new URLSearchParams(adresse).get('wuensche'), katalog), [adresse, katalog]);
+  const ausLinkDaten = useMemo(
+    () => (linkPlan ? { start: 'link' as const, plan: linkPlan, ...(linkWuensche.length ? { extraIds: linkWuensche } : {}) } : null),
+    [linkPlan, linkWuensche],
+  );
   useEffect(() => {
-    if (linkPlan && flow.data.plan.tueren.length === 0) {
-      flow.updateAndGoTo({ start: 'link', plan: linkPlan }, 'tueren');
+    if (ausLinkDaten && flow.data.plan.tueren.length === 0) {
+      flow.updateAndGoTo(ausLinkDaten, 'tueren');
       adresseBereinigen();
     }
-  }, [linkPlan, flow]);
+  }, [ausLinkDaten, flow]);
 
   const preis = useMemo(() => preisFuerPlan(d.plan, katalog, d.extraIds), [d.plan, katalog, d.extraIds]);
   const setPlan = (plan: Schliessplan) => flow.update({ plan });
@@ -290,6 +297,12 @@ export function SchliessplanPlaner({ katalog, hilfe }: { katalog: CylinderCatalo
   };
   const setContact = (key: keyof ContactDetails, value: string) => flow.update({ contact: { ...d.contact, [key]: value } });
   /* Schließplan als PDF über denselben Link wie „Plan als Link speichern“; große Pläne gehen mit der Anfrage. */
+  /* Hersteller aus dem Konfigurator (FA-SHOP-04B): steht als System im Plan und geht mit Anfrage und PDF mit. */
+  const herstellerHinweis = d.plan.system ? (
+    <p className="max-w-measure text-small text-foreground-muted">
+      Hersteller (Ihre Wahl): <span className="font-semibold text-foreground">{d.plan.system}</span>. Die Angabe geht mit an die Werkstatt.
+    </p>
+  ) : null;
   const pdfHref =
     d.plan.tueren.length > 0 && passtInLink(d.plan)
       ? `/schliessanlagen/konfigurator/schliessplan/pdf?plan=${kodiere(d.plan)}${d.extraIds.length ? `&wuensche=${encodeURIComponent(d.extraIds.join(','))}` : ''}`
@@ -362,7 +375,7 @@ export function SchliessplanPlaner({ katalog, hilfe }: { katalog: CylinderCatalo
             <Button
               size="md"
               onClick={() => {
-                flow.updateAndGoTo({ start: 'link', plan: linkPlan }, 'tueren');
+                if (ausLinkDaten) flow.updateAndGoTo(ausLinkDaten, 'tueren');
                 adresseBereinigen();
               }}
             >
@@ -462,6 +475,7 @@ export function SchliessplanPlaner({ katalog, hilfe }: { katalog: CylinderCatalo
       {flow.step.id === 'pruefen' && (
         <div className="space-y-6">
           <PlanBefunde plan={d.plan} katalog={katalog} />
+          {herstellerHinweis}
           <figure className="m-0 rounded-lg border border-border bg-surface p-3 sm:p-4">
             <ZylinderMassGrafik params={{ beschlag: 'an' }} title="So messen Sie Maß A und Maß B: ab der Mitte der Stulpschraube bis zum Zylinderende" />
             <figcaption className="mt-2 text-small text-foreground-muted">
@@ -483,7 +497,9 @@ export function SchliessplanPlaner({ katalog, hilfe }: { katalog: CylinderCatalo
                     title={e.label}
                     description={e.description}
                     meta={
-                      preis.art === 'preis' ? (
+                      e.priceUnconfirmed ? (
+                        'Preis auf Anfrage'
+                      ) : preis.art === 'preis' ? (
                         <span className="font-mono tabular-nums">
                           {formatCents(e.priceCents)} {e.unit === 'stueck' ? 'je Zylinder' : 'einmalig'}
                         </span>
@@ -519,6 +535,7 @@ export function SchliessplanPlaner({ katalog, hilfe }: { katalog: CylinderCatalo
       {flow.step.id === 'abschluss' && (
         <div className="space-y-6">
           <PlanSumme plan={d.plan} katalog={katalog} extraIds={d.extraIds} />
+          {herstellerHinweis}
           {/* Preis und Bestellung: Telefon und Rückruf an der kritischen Stelle (FA-QA-02). */}
           <HilfeBlock hilfe={hilfe} stelle="preis" titel="Fragen zu Preis oder Plan?" satz="Wir prüfen Ihren Plan gern mit Ihnen, bevor Sie bestellen oder anfragen." />
           {preis.art === 'preis' ? (
