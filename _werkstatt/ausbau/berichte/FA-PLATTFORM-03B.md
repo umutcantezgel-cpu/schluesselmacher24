@@ -86,4 +86,45 @@ Verlangte Tests (alle grün):
 - Rechtsprüfung: Quellenvermerke Destatis und GeoNames auf `/standorte` und im Fuß der Ortsseiten (Entwurf, R10); Partnerbezug ohne Namen auf öffentlichen Seiten (Satz „In Ihrer Region arbeitet ein geprüfter Autoschlüssel-Partner.“).
 - Orchestrator: `next.config` und `partner-pruefen.md` einem Paket zuweisen (Offene Frage 7); Eintrag in `importMap.js` bestätigen (Offene Frage 6). Hinweis: Im Arbeitsbaum liegen geänderte und neue Dateien unter `_werkstatt/ausbau/protokolle/FA-SEO-03/` aus dem gleichzeitig laufenden Paket; nicht von mir.
 
+## Nachbesserung
+
+Stand 16.11.2026, nach zwei Gegenprüfungen (10 Befunde). Jeder Befund wurde am Code geprüft. Kein git, kein Server, keine Netzabrufe.
+
+### Je Befund
+
+1. [rot] Partnerbetriebe erneuern keine Seiten. **Zutreffend, in meinen Schreibrechten nicht behebbar.** `src/payload/collections/Partnerbetriebe.ts` hat nur `afterChange: [partnerbetriebNachAenderung]`; `/standorte/[city]` ist statisch erzeugt, die Sitemap ebenso. Wird der einzige abdeckende Partner pausiert, gesperrt oder beendet, bleiben Partnersatz, Knopf, `index` und Sitemap-Eintrag bis zur nächsten Änderung an einer Sammlung mit `erneuernHooks` oder bis zum nächsten Build stehen. Die Datei liegt außerhalb der Schreibrechte; eine zeitbasierte Erneuerung der Ortsseiten als Ersatz habe ich bewusst nicht eingebaut (sie änderte das Zwischenspeichern ohne Auftrag). Offene Frage 9 mit fertigem Vorschlag.
+2. [gelb] Admin-Baustein wirft ohne Stamm. **Behoben.** `ortsstamm()` und `gemeindenMitPartnerAbfragen` stehen in einem eigenen `try`. Ohne Stamm zeigt der Baustein die Tabelle der Ortsseiten (mit dem Grund aus `getCities`), den Hinweis „Ortsstamm nicht lesbar.“ und lässt nur die Prioritätsorte weg; die Liste der Einsatzgebiete darunter bleibt.
+3. [gelb] „Termin in der Werkstatt“ ohne Ort und Anschrift. **Behoben.** Neue reine Funktion `werkstattAnschrift` (`src/lib/orte/ortsseiten.ts`): gepflegte Werkstattadresse, sonst Firmensitz (wie schon `ortsseitenAnreichern` für die Postleitzahl der Werkstatt). Der Knopf heißt jetzt „Termin in unserer Werkstatt in Wetzlar“ (Ort aus der Anschrift). Werkstatt im Ort: Kopf mit Anschrift und Abschnitt „Werkstatt in Wetzlar“ mit Anschrift und Erreichbarkeit (Baustein `Erreichbarkeit` unverändert, R9); Werkstatt im Landkreis: Kopf „Unsere Werkstatt: Langgasse 61, 35576 Wetzlar. …“. Firmendaten werden nur gelesen, nicht geändert (G9). Gebaute Seite `/standorte/wetzlar`: Knopf „Termin in unserer Werkstatt in Wetzlar“ und Anschrift vorhanden. Damit ändert sich Offene Frage 5: der Wortlaut des Knopfs ist jetzt dieser.
+4. [gelb] Fehlender oder unbekannter Gemeindeschlüssel kein Grund. **Behoben.** `ortsseiteGruende` nennt jetzt „Gemeindeschlüssel fehlt oder steht nicht im Ortsstamm: Landkreis und Postleitzahlen sind nicht verknüpft.“, auch wenn eine Verfügbarkeit eingetragen ist. `Leistungsweg` ist jetzt `Pick<OrtsseitenLage, 'gemeinde' | 'werkstatt' | 'partnerDeckt' | 'verfuegbarkeit'>`. Die Admin-Tabelle zeigt neben dem Schlüssel den Namen der Gemeinde im Stamm und, wenn er nicht zum Ort passt (`gemeindeNamePasst`: Zusätze wie „am Main“ oder „(Saale)“ zählen nicht), den Hinweis „Name im Stamm passt nicht zum Ort, bitte Schlüssel prüfen.“ Der abweichende Name ist bewusst nur ein Hinweis, kein Grund gegen die Indexierung (Kurznamen wie „Frankfurt“ sind üblich). Tests: ohne Schlüssel mit Verfügbarkeit noindex mit Grund, unbekannter Schlüssel noindex, Namensvergleich.
+5. [gelb] Partner mit Abrechnungsmodell A zählt als Abdeckung. **Zutreffend als Beobachtung, nicht geändert:** Die Vorgabe sagt „freigeschalteter, nicht pausierter und nicht gesperrter Partner“ und nennt kein Modell; Modell A kennt Vermittlung mit Provision (`src/lib/partner/vermittlung.ts`), nur der automatische Partnerweg nimmt Modell B. Ob ein Modell-A-Partner als plausibler Leistungsweg zählt, entscheidet der Inhaber (Offene Frage 10). Der Partnerweg-Knopf erscheint ohnehin nur mit `PARTNERMODELL_B=aktiv`.
+6. [rot] Wie Befund 1 (gleiche Ursache, zweiter Prüfer). **Zutreffend, nicht in meinen Schreibrechten**; zusammen mit Befund 1 in Offene Frage 9.
+7. [gelb] Wie Befund 2, dazu „(nicht im Stamm)“ ohne Stamm. **Behoben.** Ohne gelesenen Stamm zeigt die Zelle nur die Ziffern, ohne den Zusatz; die Spalte „Partner deckt ab“ bleibt dann leer.
+8. [gelb] Eindeutiger Schlüssel und Papierkorb. **Behoben.** Am Feld `gemeindeschluessel` prüft `gemeindeschluesselPruefen` (`Einsatzgebiete.ts`) neben dem Format, ob der Schlüssel schon an einer anderen Seite hängt, auch im Papierkorb, und meldet: „Dieser Gemeindeschlüssel hängt an der Ortsseite „…“ im Papierkorb. Bitte diese Seite wiederherstellen oder dort den Schlüssel leeren.“ (sonst „… hängt schon an der Ortsseite „…“. Je Gemeinde gibt es eine Ortsseite.“). Scheitert die Abfrage, bleibt der eindeutige Index die Sperre. Die Anleitung nennt den Fall. Datenbanktest dazu.
+9. [gelb] Anleitung nennt eine Partner-Spalte, die fehlt. **Behoben.** Die Tabelle „Veröffentlichung der Ortsseiten“ hat jetzt die Spalte „Partner deckt ab“ (`lage.partnerDeckt`), die Anleitung nennt sie. Die Anleitung nennt außerdem den Gemeindeschlüssel als dritte Bedingung, den Namensabgleich und den neuen Knopftext; die Beschreibung am Admin-Abschnitt nennt den Schlüssel ebenfalls.
+10. [gelb] `importMap.js` außerhalb der Schreibrechte. **Zutreffend, keine Codeänderung nötig.** Der Unterschied ist genau eine Importzeile und ein Eintrag für `Ortsseiten` (geprüft mit `git diff`), nichts Fremdes. Bestätigung durch den Orchestrator bleibt Offene Frage 6.
+
+### Geänderte Dateien in der Nachbesserung
+
+- `src/lib/orte/ortsseiten.ts` (ergänzt: `werkstattAnschrift`, `gemeindeNamePasst`; `kontaktweg` mit Ort der Werkstatt)
+- `src/lib/rechtliches/indexierung.ts` (Grund „Gemeindeschlüssel fehlt …“, Typ `Leistungsweg`)
+- `src/app/(site)/standorte/[city]/page.tsx` (Werkstattanschrift im Kopf und im Abschnitt, Knopftext)
+- `src/payload/components/Ortsseiten.tsx` (eigenes Abfangen des Stamms, Spalte „Partner deckt ab“, Name der Gemeinde mit Hinweis)
+- `src/payload/collections/Einsatzgebiete.ts` (Prüfung des Schlüssels mit Meldung, Beschreibung)
+- `docs/betrieb/orte-pflegen.md`
+- Tests: `src/lib/orte/ortsseiten.test.ts` (6 neue, eine Erwartung ergänzt), `src/payload/ortsseiten.db.test.ts` (1 neuer), `src/app/sitemap.test.ts` und `src/components/seo/verweise.test.ts` (Lage mit Gemeinde, sonst unverändert)
+
+### Prüfung nach der Nachbesserung (über die Datenweiche)
+
+- `sicher.sh --json -- npx vitest run`: 258 Dateien, 4.075 von 4.075 grün (vorher 4.069; neu 6 in `ortsseiten.test.ts`).
+- `sicher.sh --json -- npm run typecheck`: grün. `sicher.sh --json -- npm run lint`: grün.
+- `sicher.sh --pg -- npx vitest run -c vitest.db.config.ts`: 29 Dateien, 176 von 176 grün, 150,5 s (neu: Meldung bei Schlüssel im Papierkorb).
+- `sicher.sh --json -- npm run build`: grün, 181 Seiten (unverändert), 72 s gesamt (Kompilieren 29,4 s ohne Zwischenspeicher nach den Änderungen, statische Seiten 5,8 s).
+
+### Offene Fragen aus der Nachbesserung
+
+9. An den Orchestrator (Befunde 1 und 6): In `src/payload/collections/Partnerbetriebe.ts` die Seiten nach jeder Änderung erneuern, etwa
+   `afterChange: [partnerbetriebNachAenderung, nachAenderung]` und `afterDelete: [nachLoeschen]` (aus `../hooks/revalidate`), dazu ein Test, dass Partnerbetriebe einen Erneuerungs-Hook haben (oder ein Statuswechsel `revalidatePath` auslöst). Bis dahin gilt: Pausieren, Sperren oder Beenden eines Partners wirkt auf Ortsseiten und Sitemap erst mit der nächsten Inhaltsänderung oder dem nächsten Build. Wetzlar, heute die einzige Ortsseite, ist über die Werkstatt indexierbar und hängt nicht an Partnern; ihr Partnersatz könnte aber nach einem Statuswechsel veraltet stehen bleiben.
+10. An den Inhaber (Befund 5): Zählt ein freigeschalteter Partner mit Abrechnungsmodell A, der keine Aufträge automatisch vermittelt bekommt, als plausibler Leistungsweg einer Ortsseite und für den Satz „In Ihrer Region arbeitet ein geprüfter Autoschlüssel-Partner.“? Wenn nein, rechnet die Abdeckung nur mit Partnern, die vermittelt werden können (dann braucht `partnerFuerAbdeckung` das Abrechnungsmodell).
+11. Knopftext neu „Termin in unserer Werkstatt in Wetzlar“ (ersetzt Offene Frage 5); Wetzlar zeigt jetzt den Abschnitt „Werkstatt in Wetzlar“ mit Anschrift des Firmensitzes und Erreichbarkeit. Bitte Wortlaut prüfen.
+
 === ENDE FA-PLATTFORM-03B · BEREIT ZUR RÜCKGABE ===
