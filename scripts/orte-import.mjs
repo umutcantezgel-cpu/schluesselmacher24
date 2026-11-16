@@ -296,7 +296,11 @@ export function slugsVergeben(gemeinden, kreisNamen, vorher = new Map()) {
 
 /* ---------- GeoNames ----------------------------------------------------- */
 
-/** Zeilen von DE.txt (Tabulator, UTF-8): Postleitzahl, Ort, Land, Kreisschlüssel, Koordinaten. */
+/**
+ * Zeilen von DE.txt (Tabulator, UTF-8): Postleitzahl, Ort, Land, Kreisschlüssel, Koordinaten und ob die zwölfte
+ * Spalte (Genauigkeit der Koordinaten) gefüllt ist. Zeilen ohne Genauigkeit sind Großempfänger und Postfächer
+ * (Firmen, Behörden) oder Postfach-Postleitzahlen von Orten; siehe `zustellzeilenWaehlen`.
+ */
 export function leseGeonames(text) {
   const zeilen = [];
   for (const [i, zeile] of text.split('\n').entries()) {
@@ -310,9 +314,116 @@ export function leseGeonames(text) {
       kreis: /^\d{5}$/.test(f[8] ?? '') ? f[8] : null,
       breite: dezimal(f[9]),
       laenge: dezimal(f[10]),
+      genau: Boolean((f[11] ?? '').trim()),
     });
   }
   return zeilen;
+}
+
+/**
+ * Kennzeichen einer Organisation im Ortsnamen (Rechtsform, Bank, Kasse, Behörde, Postfach, Ziffernfolge ab drei
+ * Stellen). Groß- und Kleinschreibung zählt bei den Kürzeln, damit „Ag“ oder „se“ in Ortsnamen nicht treffen.
+ */
+export const ORGANISATION = new RegExp(
+  [
+    String.raw`\b(?:GmbH|mbH|AG|KG|KGaA|SE|eG|e\.\s?G\.|OHG|oHG|GbR|e\.\s?K\.|Ltd|LLP|Inc|S\.\s?A\.|B\.\s?V\.|AöR)(?![\wäöüß])`,
+    String.raw`e\.\s?V\.?(?![\wäöüß])`,
+    // Auch als Wortende („Volksbank“, „Kreissparkasse“).
+    String.raw`(?:[Bb]ank|Banque|[Kk]asse|[Vv]ersicherung|Ämter|[Nn]iederlassung|[Pp]ostfach|[Aa]gentur|[Bb]ehörde|[Mm]inisterium|[Ss]tiftung|[Vv]erein|[Vv]erband|[Ss]taatsanwaltschaft|[Ll]otterie|[Bb]erufsgenossenschaft|[Gg]eschäftsstelle|[Dd]irektion)(?![\wäöüß])`,
+    // Nur als ganzes Wort (Gemeinden wie Freiamt oder Linsengericht bleiben).
+    String.raw`(?<![\wäöüß])(?:Amt|Ämter|Gericht|Finanzamt|Arbeitsamt|Jobcenter|Job-Center|Regierung|Justiz|Justizbehörden|Ordinariat|Rundfunk|Gesundheit|Firma|Firmengruppe|Konzern|Filiale|Zentrale|Hochschule|Universität|Institut|Klinik|Verlag|Zeitung|Werke|Stadtverwaltung|Kreisverwaltung)(?![\wäöüß])`,
+    String.raw`(?:^|[\s(])(?:AOK|BKK|IKK|DAK|BARMER|HUK|ADAC|BMW|GEMA|DeTeCSM)(?![\wäöüß])`,
+    String.raw`&`,
+    String.raw`\d{3,}`,
+  ].join('|'),
+);
+
+export const istOrganisation = (name) => ORGANISATION.test(name ?? '');
+
+/** Abkürzungen der Regierungsbezirke und Landschaften im Gemeindeverzeichnis („i.d.OPf.“, „i.NB“). */
+const ABKUERZUNGEN = {
+  opf: 'oberpfalz',
+  ob: 'oberbayern',
+  obb: 'oberbayern',
+  nb: 'niederbayern',
+  ofr: 'oberfranken',
+  ufr: 'unterfranken',
+  mfr: 'mittelfranken',
+  schw: 'schwaben',
+  bay: 'bayern',
+  westf: 'westfalen',
+  hann: 'hannover',
+  rhld: 'rheinland',
+  odw: 'odenwald',
+  sankt: 'st',
+};
+/** Füllwörter, die das Gemeindeverzeichnis abkürzt („a.d.“, „i.“, „b.“) und GeoNames ausschreibt oder weglässt. */
+const FUELLWOERTER = new Set(['a', 'am', 'an', 'd', 'der', 'den', 'dem', 'i', 'im', 'in', 'b', 'bei', 'v', 'vor', 'zu', 'z']);
+
+/** Vergleichsform für die Wahl der Zeilen: abgekürzte Zusätze ausgeschrieben, Füllwörter weg („Gars a.Inn“ = „Gars am Inn“). */
+export function kurzname(text) {
+  return vergleichsname(text)
+    .split(' ')
+    .map((w) => ABKUERZUNGEN[w] ?? w)
+    .filter((w) => w && !FUELLWOERTER.has(w))
+    .join(' ');
+}
+
+/**
+ * Wählt die Zeilen von GeoNames, die zu Orten gehören (A-051, Abnahme FA-PLATTFORM-03):
+ *   1. Zeilen mit Genauigkeit bleiben (Zustell-Postleitzahlen; keine trägt einen Firmennamen).
+ *   2. Eine Zeile ohne Genauigkeit bleibt nur, wenn ihr Name keine Organisation kennzeichnet (`ORGANISATION`) und
+ *      in der Vergleichsform `kurzname` gleich dem Namen einer Gemeinde ihres Kreises ist oder mit ihm und einem
+ *      Leerzeichen beginnt (Ortsteil), auch in der Form „Ortsteil, Gemeinde Name“. Als Name gilt auch jeder Teil
+ *      eines zweisprachigen Namens („Cottbus/Chóśebuz“) und jeder Ortsname, den GeoNames im selben Kreis mit
+ *      Genauigkeit führt (Ortsteile wie „Töplitz“).
+ *   3. Alle anderen Zeilen ohne Genauigkeit entfallen (Großempfänger, Behörden, Firmen, Zeilen ohne Kreis).
+ * Eine Postleitzahl ohne verbleibende Zeile entfällt damit ganz.
+ */
+export function zustellzeilenWaehlen(geo, gemeinden) {
+  const namenJeKreis = new Map();
+  const merke = (kreis, name) => {
+    const k = kurzname(name);
+    if (!k) return;
+    const s = namenJeKreis.get(kreis) ?? new Set();
+    s.add(k);
+    namenJeKreis.set(kreis, s);
+  };
+  for (const g of gemeinden) {
+    for (const teil of [g.name, ...g.name.split('/')]) {
+      merke(g.kreis, teil);
+      merke(g.kreis, teil.replace(/\([^)]*\)/g, ' '));
+    }
+  }
+  for (const z of geo) if (z.genau && z.kreis) merke(z.kreis, z.ort);
+
+  const passt = (name, kreis) => {
+    const namen = namenJeKreis.get(kreis);
+    if (!namen) return false;
+    const k = kurzname(name);
+    if (!k) return false;
+    for (const n of namen) if (k === n || k.startsWith(`${n} `)) return true;
+    return false;
+  };
+  const behalten = [];
+  const entfallen = [];
+  for (const z of geo) {
+    if (z.genau) {
+      behalten.push(z);
+      continue;
+    }
+    let grund = null;
+    if (!z.kreis) grund = 'ohne Kreis';
+    else if (istOrganisation(z.ort)) grund = 'Organisation';
+    else {
+      const gemeindeTeil = /,\s*Gemeinde\s+(.+)$/.exec(z.ort)?.[1];
+      const ok = gemeindeTeil ? passt(gemeindeTeil, z.kreis) : passt(z.ort, z.kreis);
+      if (!ok) grund = 'kein Ort im Kreis';
+    }
+    if (grund) entfallen.push({ ...z, grund });
+    else behalten.push(z);
+  }
+  return { behalten, entfallen };
 }
 
 /**
