@@ -37,7 +37,7 @@ export default function setup() {
   run(['npx', 'payload', 'migrate'], env);
   run(['npx', 'payload', 'run', 'src/scripts/seed.ts'], env);
 
-  for (const key of ['DATABASE_URL', 'PAYLOAD_SECRET', 'NEXT_PUBLIC_SERVER_URL', 'SM24_STORAGE'] as const) {
+  for (const key of ['DATABASE_URL', 'PAYLOAD_SECRET', 'NEXT_PUBLIC_SERVER_URL', 'SM24_STORAGE', 'SM24_ORTSSTAMM'] as const) {
     process.env[key] = env[key];
   }
 
