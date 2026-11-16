@@ -6,3 +6,6 @@
 [autoschluessel] Lauf 3: Leistung 92, LCP 3019 ms, TBT 148 ms (8 s)
 [assistent] Lauf 1: Leistung 82, LCP 3809 ms, TBT 315 ms (8 s)
 [assistent] Lauf 2: Leistung 85, LCP 4093 ms, TBT 130 ms (7 s)
+[assistent] Lauf 3: Leistung 88, LCP 3468 ms, TBT 176 ms (7 s)
+[code] Lauf 1: Leistung 92, LCP 3372 ms, TBT 60 ms (7 s)
+[code] Lauf 2: Leistung 95, LCP 2763 ms, TBT 71 ms (8 s)
