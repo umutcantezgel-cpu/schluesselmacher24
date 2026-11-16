@@ -31,12 +31,13 @@ Schließanlagen und elektronischer Zutritt werden für Laien erklärt (Zentralsc
 ## Schrift und Gestaltung (A-068)
 Kleinste Textstufe 14 px; an Zeichnungen, Ausschnitten und Schriftgrößen änderst du nichts (`src/components/visual/**` nicht anfassen). Längere gepflegte Texte dürfen das Layout nicht sprengen: Prüfe an einem erfundenen langen Text, dass Reiter, Vergleichstabelle und Karten umbrechen.
 
-## Stand der Regeln (vom Orchestrator, 16.11.2026, A-068 und A-069)
+## Stand der Regeln (vom Orchestrator, 16.11.2026, A-068 bis A-071)
 - Schrift: Die kleinste Textstufe ist 14 px (`text-caption`); jede Beschriftung in einer Zeichnung ist auf dem Bildschirm mindestens 14 px groß. `src/app/(site)/schriftstufen.test.ts` und die Tests der Zeichnungen prüfen das; `src/components/visual/generators/**` fasst du nicht an.
 - Überlauf: Freier Text in schmalen Zellen muss umbrechen können (kein `whitespace-nowrap` auf Text, dessen Länge der Betrieb bestimmt; lange Wörter mit `[overflow-wrap:anywhere]` oder genug Platz). Die Abnahme sucht auf allen Seiten bei sieben Fensterbreiten nach überlaufendem Text.
 - Statische Seiten und Daten: Liest eine statisch erzeugte Seite Daten einer Sammlung oder eines Globals, braucht diese Sammlung die Erneuerungs-Hooks (`src/payload/hooks/revalidate.ts`), und ein Test hält das fest. Fehlt der Hook an einer Sammlung außerhalb deiner Schreibrechte, melde das als OFFENE FRAGE.
 - Erzeugte Folgedateien: `src/payload-types.ts` und, bei neuen Admin-Bausteinen, `src/app/(payload)/admin/importMap.js` darfst du neu erzeugen; nenne die Änderung im Bericht.
 - Migration: nur additiv; im `down` zuerst Fremdschlüssel, Indizes und Spalten mit `IF EXISTS`, dann Tabellen. Die Abnahme spielt `down` und `up` an einer Wegwerf-Datenbank zurück und vor.
+- Was im Browser landet (A-071): Eine Datei, die ein Baustein mit „use client“ importiert, bekommt keine Importe von Serverlogik (Partner, Prüfliste, Ortsstamm, Datenbank). Eine Datei, aus der Serverbausteine vieler Seiten lesen, bindet keinen Client-Baustein ein: Werte und Hilfsfunktionen gehören in eine eigene Datei ohne Client-Baustein. Die Abnahme misst das Skript-Gewicht der Seiten gegen den Stand davor; jede Zunahme braucht einen Grund im Bericht.
 - Texte im Admin (Feldbeschreibungen, Meldungen): ohne die Wörter, die das Prüfwerkzeug `werkzeuge/reste.mjs` als Entwurfsrest meldet (zum Beispiel „Platzhalter“, „Demo“, „Muster“), außer sie sind selbst das Thema; dann nenne die Stelle im Bericht.
 
 ## Schreibrechte
