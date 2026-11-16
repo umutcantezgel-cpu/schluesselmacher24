@@ -77,7 +77,8 @@ export function schliessplanAbschnitte(s: SchliessplanSchnappschuss, { mitAngabe
   if (mitAngaben) {
     const { jetzt, vorgemerkt } = summen(s);
     const zeilen: BlattZeile[] = [
-      ...(s.system ? [{ name: 'System', wert: s.system }] : []),
+      // `system` trägt seit FA-SHOP-04B den Hersteller, den der Kunde im Konfigurator gewählt hat.
+      ...(s.system ? [{ name: 'Hersteller (Wahl des Kunden)', wert: s.system }] : []),
       { name: 'Türen', wert: String(s.tueren.length) },
       { name: 'Schlüssel jetzt', wert: String(jetzt) },
       { name: 'Schlüssel vorgemerkt', wert: vorgemerkt ? `${vorgemerkt}, für spätere Nachbestellungen` : 'keine' },
