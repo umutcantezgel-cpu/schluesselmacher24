@@ -1,7 +1,7 @@
 # HERZSCHLAG
-Zeit: 2026-11-17 22:05 MEZ
+Zeit: 2026-11-17 22:32 MEZ
 Sitzung: 8e76b2e3
-Zustand: AKTIV. FA-INHALT-01 (Tutorials Teil A) ist abgenommen und committet (5364c4e). Gerade läuft in einer sauberen Kopie der Produktions-Build ohne Datenbank, wie Vercel ihn baut; ist er in Ordnung, geht 5364c4e als Fast-Forward auf main (Auftrag des Nutzers vom 17.11., A-072).
-Etappe und Welle: danach zwei neue Aufträge des Nutzers vom 17.11. abends: (1) Dunkelblau statt Orange, auffälliger und filmischer; (2) Angebote des eBay-Verkäufers „schluessel-schmiede“ als „Schlüssel nach Code“ übernehmen (eBay lässt den automatischen Abruf nicht zu; Export erbeten, MA-34).
-Letzter grüner Commit: 5364c4e (Typprüfung, Lint, Unit 4267, DB 190, Build 190/190)
+Zustand: AKTIV. Livegang 7 ist erfolgt (5364c4e mit den Tutorials seit 22:03 MEZ auf main, öffentlich geprüft). FA-FARBE-01 (Dunkelblau statt Orange mit dunkler Bühne, Auftrag des Nutzers, A-074) ist aus Umsetzung, zwei Gegenprüfungen und Nachbesserung zurück: kein roter Befund, Kette des Baumeisters grün (Unit 4297, Build 190/190). Jetzt Abnahme durch den Orchestrator: Kette, Sichtprüfung der Bilder, Browsermessungen. Der Stand liegt uncommittet im Arbeitsbaum und geht erst auf Anweisung des Nutzers auf main.
+Etappe und Welle: Auftrag eBay-Angebote wartet auf den Export des Nutzers (eBay lässt den automatischen Abruf nicht zu, MA-34).
+Letzter grüner Commit: 5364c4e (Typprüfung, Lint, Unit 4267, DB 190, Build 190/190; live auf main)
 ARBEITSBRANCH: claude/new-session-li9jsf
