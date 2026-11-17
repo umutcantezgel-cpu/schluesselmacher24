@@ -1,0 +1,26 @@
+# BASIS 3200 Durchgang 1
+{"variante":"keine","lange":5,"ueber50":213,"stil":65,"layout":69,"zeichnen":19,"gesamt":1041}
+{"variante":"keine","lange":5,"ueber50":383,"stil":80,"layout":129,"zeichnen":41,"gesamt":1458}
+# BASIS 3300 Durchgang 1
+{"variante":"keine","lange":4,"ueber50":405,"stil":131,"layout":102,"zeichnen":30,"gesamt":1410}
+{"variante":"keine","lange":4,"ueber50":369,"stil":109,"layout":87,"zeichnen":46,"gesamt":1395}
+# BASIS 3200 Durchgang 2
+{"variante":"keine","lange":5,"ueber50":267,"stil":65,"layout":126,"zeichnen":30,"gesamt":1308}
+{"variante":"keine","lange":4,"ueber50":357,"stil":61,"layout":81,"zeichnen":29,"gesamt":1258}
+# BASIS 3300 Durchgang 2
+{"variante":"keine","lange":4,"ueber50":340,"stil":94,"layout":81,"zeichnen":34,"gesamt":1270}
+{"variante":"keine","lange":3,"ueber50":325,"stil":53,"layout":93,"zeichnen":37,"gesamt":1316}
+# BASIS 3200 Durchgang 3
+{"variante":"keine","lange":4,"ueber50":350,"stil":66,"layout":100,"zeichnen":27,"gesamt":1254}
+{"variante":"keine","lange":4,"ueber50":315,"stil":75,"layout":86,"zeichnen":28,"gesamt":1279}
+# BASIS 3300 Durchgang 3
+{"variante":"keine","lange":3,"ueber50":311,"stil":47,"layout":89,"zeichnen":28,"gesamt":1239}
+{"variante":"keine","lange":5,"ueber50":221,"stil":55,"layout":80,"zeichnen":28,"gesamt":1224}
+# BASIS 3200 Durchgang 4
+{"variante":"keine","lange":3,"ueber50":373,"stil":99,"layout":94,"zeichnen":28,"gesamt":1262}
+{"variante":"keine","lange":4,"ueber50":328,"stil":74,"layout":79,"zeichnen":30,"gesamt":1212}
+# BASIS 3300 Durchgang 4
+{"variante":"keine","lange":4,"ueber50":295,"stil":90,"layout":93,"zeichnen":30,"gesamt":1190}
+{"variante":"keine","lange":3,"ueber50":251,"stil":68,"layout":68,"zeichnen":24,"gesamt":1127}
+3200 n=8 lange 4 (3–5) ueber50 339 (213–383) stil 70 (61–99) layout 90 (69–129) gesamt 1260 (1041–1458)
+3300 n=8 lange 4 (3–5) ueber50 318 (221–405) stil 79 (47–131) layout 88 (68–102) gesamt 1254.5 (1127–1410)

@@ -1,0 +1,460 @@
+{
+  "skript": "leistung",
+  "marke": "stand-3",
+  "methode": "simulate",
+  "zeit": "2026-11-16T17:51:22.851Z",
+  "basis": "http://localhost:3200",
+  "laeufe": 5,
+  "lighthouse": "12.6.1",
+  "chrome": "153.0.0.0",
+  "drosselung": {
+    "rttMs": 150,
+    "throughputKbps": 1638.4,
+    "requestLatencyMs": 562.5,
+    "downloadThroughputKbps": 1474.5600000000002,
+    "uploadThroughputKbps": 675,
+    "cpuSlowdownMultiplier": 4
+  },
+  "geraet": "412 × 823, DPR 1.75, mobile",
+  "ansichten": [
+    {
+      "id": "assistent",
+      "name": "Assistent Autoschlüssel",
+      "pfad": "/autoschluessel/anfrage",
+      "gueltig": 5,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "werte": {
+            "leistung": 84,
+            "fcp": 1665.8468,
+            "lcp": 4096.770200000003,
+            "si": 1665.8468,
+            "tbt": 153.07659999999987,
+            "cls": 0,
+            "gesamtKB": 449.2,
+            "dateien": 28,
+            "jsKB": 267.3,
+            "htmlKB": 55
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 2,
+          "werte": {
+            "leistung": 91,
+            "fcp": 1660.9343,
+            "lcp": 3327.3357499999997,
+            "si": 1660.9343,
+            "tbt": 114.03284999999983,
+            "cls": 0,
+            "gesamtKB": 449.2,
+            "dateien": 28,
+            "jsKB": 267.3,
+            "htmlKB": 55
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 3,
+          "werte": {
+            "leistung": 84,
+            "fcp": 1658.0492,
+            "lcp": 4095.073800000002,
+            "si": 1658.0492,
+            "tbt": 176,
+            "cls": 0,
+            "gesamtKB": 449.2,
+            "dateien": 28,
+            "jsKB": 267.3,
+            "htmlKB": 55
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 4,
+          "werte": {
+            "leistung": 87,
+            "fcp": 1064.8693,
+            "lcp": 3685.8693000000003,
+            "si": 1064.8693,
+            "tbt": 183.1307000000004,
+            "cls": 0,
+            "gesamtKB": 449.2,
+            "dateien": 28,
+            "jsKB": 267.3,
+            "htmlKB": 55
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 5,
+          "werte": {
+            "leistung": 87,
+            "fcp": 1357.8416,
+            "lcp": 3174.7623999999996,
+            "si": 1357.8416,
+            "tbt": 281.5,
+            "cls": 0,
+            "gesamtKB": 449.2,
+            "dateien": 28,
+            "jsKB": 267.3,
+            "htmlKB": 55
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        }
+      ],
+      "attrappen": {
+        "fremd": 0,
+        "upload": 0,
+        "action-schreibend": 0,
+        "action-unbekannt": 5,
+        "post-sonstig": 0,
+        "fremdHosts": [],
+        "laeufe": 5
+      },
+      "statistik": {
+        "leistung": {
+          "median": 87,
+          "min": 84,
+          "max": 91,
+          "n": 5
+        },
+        "fcp": {
+          "median": 1658.0492,
+          "min": 1064.8693,
+          "max": 1665.8468,
+          "n": 5
+        },
+        "lcp": {
+          "median": 3685.8693000000003,
+          "min": 3174.7623999999996,
+          "max": 4096.770200000003,
+          "n": 5
+        },
+        "si": {
+          "median": 1658.0492,
+          "min": 1064.8693,
+          "max": 1665.8468,
+          "n": 5
+        },
+        "tbt": {
+          "median": 176,
+          "min": 114.03284999999983,
+          "max": 281.5,
+          "n": 5
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 5
+        },
+        "gesamtKB": {
+          "median": 449.2,
+          "min": 449.2,
+          "max": 449.2,
+          "n": 5
+        },
+        "dateien": {
+          "median": 28,
+          "min": 28,
+          "max": 28,
+          "n": 5
+        },
+        "jsKB": {
+          "median": 267.3,
+          "min": 267.3,
+          "max": 267.3,
+          "n": 5
+        },
+        "htmlKB": {
+          "median": 55,
+          "min": 55,
+          "max": 55,
+          "n": 5
+        }
+      },
+      "medianLauf": {
+        "lauf": 5,
+        "werte": {
+          "leistung": 87,
+          "fcp": 1357.8416,
+          "lcp": 3174.7623999999996,
+          "si": 1357.8416,
+          "tbt": 281.5,
+          "cls": 0,
+          "gesamtKB": 449.2,
+          "dateien": 28,
+          "jsKB": 267.3,
+          "htmlKB": 55
+        },
+        "ursachen": {
+          "lcpElement": {
+            "selektor": "div.lg:col-span-8 > div.-mx-5 > div.mt-6 > p.mt-2",
+            "ausschnitt": "<p class=\"mt-2 max-w-measure text-body text-foreground-muted\">"
+          },
+          "lcpPhasen": {
+            "serverantwort": 454,
+            "ladeverzoegerung": 0,
+            "ladedauer": 0,
+            "darstellungsverzoegerung": 2721
+          },
+          "blockierend": [],
+          "skripte": [
+            {
+              "datei": "/_next/static/chunks/17_pbdm6y2ffj.js",
+              "kb": 72.4,
+              "ausfuehrungMs": 333,
+              "ungenutztKB": 25.7,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/198evho4xwjs2.js",
+              "kb": 44.2,
+              "ausfuehrungMs": 173,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/3p0dtvvb9953y.js",
+              "kb": 18.2,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/1_ri0bburi1dp.js",
+              "kb": 12.5,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/3ip5m-7lhauc2.js",
+              "kb": 11.9,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/23aylg5ag7_au.js",
+              "kb": 11.1,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/3wx8fi31viacl.js",
+              "kb": 10.6,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/1kyldpc501htm.js",
+              "kb": 10.6,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/2civquoqf2nf9.js",
+              "kb": 10.5,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/00xjigaum9hvi.js",
+              "kb": 10.2,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/0-y3n0uwz2pmn.js",
+              "kb": 9.9,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/20n_drg1zb0_1.js",
+              "kb": 9.1,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            }
+          ],
+          "dokumentSkriptMs": 23,
+          "hauptthreadMs": 1930,
+          "hauptthread": [
+            {
+              "gruppe": "Script Evaluation",
+              "ms": 625
+            },
+            {
+              "gruppe": "Other",
+              "ms": 577
+            },
+            {
+              "gruppe": "Style & Layout",
+              "ms": 380
+            },
+            {
+              "gruppe": "Script Parsing & Compilation",
+              "ms": 237
+            },
+            {
+              "gruppe": "Parse HTML & CSS",
+              "ms": 58
+            },
+            {
+              "gruppe": "Rendering",
+              "ms": 35
+            },
+            {
+              "gruppe": "Garbage Collection",
+              "ms": 19
+            }
+          ],
+          "langeAufgaben": [
+            {
+              "datei": "/_next/static/chunks/198evho4xwjs2.js",
+              "startMs": 4083,
+              "dauerMs": 182
+            },
+            {
+              "datei": "/_next/static/chunks/17_pbdm6y2ffj.js",
+              "startMs": 3920,
+              "dauerMs": 163
+            },
+            {
+              "datei": "/autoschluessel/anfrage",
+              "startMs": 1065,
+              "dauerMs": 150
+            },
+            {
+              "datei": "/_next/static/chunks/17_pbdm6y2ffj.js",
+              "startMs": 4308,
+              "dauerMs": 81
+            },
+            {
+              "datei": "/autoschluessel/anfrage",
+              "startMs": 1215,
+              "dauerMs": 76
+            },
+            {
+              "datei": "/autoschluessel/anfrage",
+              "startMs": 905,
+              "dauerMs": 63
+            },
+            {
+              "datei": "/_next/static/chunks/17_pbdm6y2ffj.js",
+              "startMs": 4389,
+              "dauerMs": 61
+            },
+            {
+              "datei": "/autoschluessel/anfrage",
+              "startMs": 968,
+              "dauerMs": 53
+            }
+          ],
+          "verschiebungen": [],
+          "befunde": [
+            {
+              "id": "unused-javascript",
+              "anzeige": "Est savings of 26 KiB",
+              "einsparungMs": 300,
+              "einsparungKB": 25.7
+            },
+            {
+              "id": "legacy-javascript",
+              "anzeige": "Est savings of 13 KiB",
+              "einsparungMs": 150,
+              "einsparungKB": 13.4
+            },
+            {
+              "id": "largest-contentful-paint",
+              "anzeige": "3.2 s",
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "total-blocking-time",
+              "anzeige": "280 ms",
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "dom-size-insight",
+              "anzeige": null,
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "legacy-javascript-insight",
+              "anzeige": "Est savings of 14 KiB",
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "network-dependency-tree-insight",
+              "anzeige": null,
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "interactive",
+              "anzeige": "4.4 s",
+              "einsparungMs": null,
+              "einsparungKB": null
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "vergleich": null
+}

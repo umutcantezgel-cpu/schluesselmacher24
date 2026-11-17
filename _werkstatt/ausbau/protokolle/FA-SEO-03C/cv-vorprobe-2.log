@@ -1,0 +1,25 @@
+{"variante":"keine","lange":4,"ueber50":344,"stil":179,"layout":159,"zeichnen":184}
+{"variante":"ab-aufbau","lange":4,"ueber50":235,"stil":99,"layout":124,"zeichnen":116}
+{"variante":"ohne-leistungen","lange":5,"ueber50":266,"stil":109,"layout":88,"zeichnen":147}
+{"variante":"keine","lange":5,"ueber50":233,"stil":137,"layout":143,"zeichnen":192}
+{"variante":"ab-aufbau","lange":2,"ueber50":291,"stil":146,"layout":58,"zeichnen":122}
+{"variante":"ohne-leistungen","lange":5,"ueber50":224,"stil":136,"layout":117,"zeichnen":145}
+{"variante":"keine","lange":6,"ueber50":293,"stil":143,"layout":164,"zeichnen":183}
+{"variante":"ab-aufbau","lange":4,"ueber50":371,"stil":163,"layout":96,"zeichnen":126}
+{"variante":"ohne-leistungen","lange":1,"ueber50":84,"stil":47,"layout":16,"zeichnen":0}
+{"variante":"keine","lange":5,"ueber50":300,"stil":118,"layout":161,"zeichnen":189}
+{"variante":"ab-aufbau","lange":2,"ueber50":215,"stil":107,"layout":96,"zeichnen":115}
+{"variante":"ohne-leistungen","lange":3,"ueber50":182,"stil":98,"layout":142,"zeichnen":125}
+{"variante":"keine","lange":5,"ueber50":258,"stil":98,"layout":131,"zeichnen":212}
+{"variante":"ab-aufbau","lange":3,"ueber50":214,"stil":105,"layout":95,"zeichnen":116}
+{"variante":"ohne-leistungen","lange":5,"ueber50":243,"stil":135,"layout":71,"zeichnen":131}
+{"variante":"keine","lange":4,"ueber50":450,"stil":173,"layout":151,"zeichnen":205}
+{"variante":"ab-aufbau","lange":6,"ueber50":216,"stil":140,"layout":76,"zeichnen":124}
+{"variante":"ohne-leistungen","lange":4,"ueber50":246,"stil":156,"layout":59,"zeichnen":169}
+
+/autoschluessel · 6 Läufe je Variante · Median (Spanne)
+| Variante | lange Aufgaben | Summe über 50 ms | Stil ms | Layout ms | Stil + Layout ms | Zeichnen ms |
+|---|---|---|---|---|---|---|
+| keine | 5 (4–6) | 296.5 (233–450) | 140 (98–179) | 155 (131–164) | 293.5 (229–338) | 190.5 (183–212) |
+| ab-aufbau | 3.5 (2–6) | 225.5 (214–371) | 123.5 (99–163) | 95.5 (58–124) | 210 (200–259) | 119 (115–126) |
+| ohne-leistungen | 4.5 (1–5) | 233.5 (84–266) | 122 (47–156) | 79.5 (16–142) | 210.5 (63–253) | 138 (0–169) |

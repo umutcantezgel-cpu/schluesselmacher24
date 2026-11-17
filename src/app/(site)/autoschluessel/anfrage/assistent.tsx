@@ -31,7 +31,7 @@ import {
 } from '@/lib/auftragsweg';
 import { submitRecord } from '@/lib/actions/records';
 import { erreichbarkeitSatz } from '@/lib/erreichbarkeit';
-import { formatCents, formatDuration } from '@/lib/format';
+import { formatCents, formatDuration, formatFileSize } from '@/lib/format';
 import { aktionMelden } from '@/lib/statistik';
 import { Alert } from '@/components/ui/alert';
 import { Card, CardBody } from '@/components/ui/card';
@@ -41,7 +41,20 @@ import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { Field } from '@/components/forms/field';
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { OptionCard } from '@/components/forms/option-card';
-import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
+// Foto-Upload erst in Schritt 8 und 9: die Oberfläche wird nachgeladen (FA-SEO-03C), Zustand und Hilfen nicht.
+import type { PhotoUploadProps } from '@/components/forms/photo-upload';
+import {
+  MAX_AUSWAHL_FOTO_BYTES,
+  MAX_UPLOAD_BYTES,
+  alsUpload,
+  beispielFuerFeld,
+  beispielSatz,
+  beispielSatzSichtbar,
+  beispielZeigtBild,
+  uploadsAbwarten,
+  type PickedFile,
+} from '@/components/forms/upload-zustand';
+import { ratios } from '@/components/ui/bild-flaeche';
 import { AbsendeFehler, HilfeBlock } from '@/components/forms/hilfe';
 import {
   KEY_KIND_OPTIONS,
@@ -335,6 +348,121 @@ export interface AssistentProps {
   erreichbarkeit?: Erreichbarkeit;
   /** Regionaler Eigenbereich aus den Einstellungen (FA-KERN-03); ohne Angabe gilt 35*. */
   eigenbereich?: OwnArea;
+}
+
+/* ---------- Foto-Upload nachladen (FA-SEO-03C) ------------------------- */
+
+type PhotoUploadModul = typeof import('@/components/forms/photo-upload');
+
+/** Geladene Oberfläche des Uploads; einmal geladen, zeigt jeder Schritt sie sofort. */
+let photoUploadModul: PhotoUploadModul | null = null;
+let photoUploadLaden: Promise<PhotoUploadModul> | null = null;
+
+/**
+ * Lädt die Oberfläche des Foto-Uploads mit Beispielzeichnungen (dynamisches `import()`, Anleitung
+ * „Lazy Loading“ von Next). Sie erscheint erst in Schritt 8 und 9 und hing bisher am ersten Laden.
+ */
+function photoUploadVorladen(): Promise<PhotoUploadModul> {
+  photoUploadLaden ??= import('@/components/forms/photo-upload').then(
+    (modul) => {
+      photoUploadModul = modul;
+      return modul;
+    },
+    (fehler: unknown) => {
+      // Ladefehler (etwa ohne Verbindung): Der nächste Aufruf versucht es erneut.
+      photoUploadLaden = null;
+      throw fehler;
+    },
+  );
+  return photoUploadLaden;
+}
+
+/**
+ * Derselbe `PhotoUpload` wie in den übrigen Formularen, nur nachgeladen. Ist er nach dem Vorladen im
+ * Leerlauf schon da, steht er ohne Zwischenschritt. Sonst steht bis dahin eine ruhige Fläche in seiner
+ * Größe (`PhotoUploadPlatzhalter`). Ein eigener Zustand statt `next/dynamic`: Die Fläche braucht die
+ * Angaben des Feldes, um gleich hoch zu sein, und ein geladener Baustein erscheint ohne Umweg über Suspense.
+ */
+function PhotoUpload(props: PhotoUploadProps) {
+  const [modul, setModul] = useState<PhotoUploadModul | null>(photoUploadModul);
+  const [versuch, setVersuch] = useState(0);
+  useEffect(() => {
+    if (modul) return;
+    let aktiv = true;
+    let erneut: number | undefined;
+    photoUploadVorladen().then(
+      (geladen) => {
+        if (aktiv) setModul(geladen);
+      },
+      () => {
+        // Ohne Verbindung: nach kurzer Pause erneut versuchen, die Fläche bleibt so lange stehen.
+        if (aktiv) erneut = window.setTimeout(() => setVersuch((n) => n + 1), 2000);
+      },
+    );
+    return () => {
+      aktiv = false;
+      if (erneut !== undefined) window.clearTimeout(erneut);
+    };
+  }, [modul, versuch]);
+  if (!modul) return <PhotoUploadPlatzhalter {...props} />;
+  return <modul.PhotoUpload {...props} />;
+}
+
+/**
+ * Ruhige Fläche in der Größe des Feldes, solange die Oberfläche lädt: dieselbe Gliederung mit denselben
+ * Texten, unsichtbar (Inline-Stil, damit das gemeinsame CSS aller Seiten gleich bleibt), darüber eine Fläche ohne Bewegung. So springt nichts, wenn das Feld erscheint (CLS 0).
+ * Vorlesegeräte hören einen Satz. Gewählte Dateien gibt es hier nie: Wählen geht erst mit dem Feld.
+ */
+function PhotoUploadPlatzhalter({ label, description, example, steckplatz, required, multiple, maxFiles = 4, allowDocuments, error }: PhotoUploadProps) {
+  const beispiel = beispielFuerFeld(example, steckplatz);
+  const satz = beispielSatzSichtbar(beispiel) ? beispielSatz(beispiel) : '';
+  const knopf = 'inline-flex min-h-touch items-center justify-center gap-2 rounded-lg border px-4 text-body font-semibold';
+  return (
+    <div className="relative">
+      <p className="sr-only">Das Feld „{label}“ wird geladen.</p>
+      <div aria-hidden className="flex flex-col gap-3" style={{ visibility: 'hidden' }}>
+        <div>
+          <p className="text-small font-semibold text-foreground">
+            {label}
+            {required && <span className="ml-1">*</span>}
+          </p>
+          <p className="mt-1 text-small leading-relaxed">{description}</p>
+        </div>
+        <div className="grid grid-cols-kacheln gap-3">
+          <div>
+            <p className="mb-1.5 text-small font-semibold">
+              {beispielZeigtBild(beispiel) ? 'So sollte das Foto aussehen' : 'Darauf muss zu sehen sein'}
+            </p>
+            <div className={`w-full rounded-lg border ${ratios[beispiel.ratio]}`} />
+            {satz && <p className="mt-1.5 text-small leading-snug">{satz}</p>}
+          </div>
+          <div className="flex flex-col justify-center gap-2 self-start rounded-lg border border-dashed p-4">
+            {/* Die Symbole der Knöpfe sind 18 px groß. */}
+            <span className={knopf}>
+              <span style={{ width: 18, height: 18 }} />
+              Foto aufnehmen
+            </span>
+            <span className={knopf}>
+              <span style={{ width: 18, height: 18 }} />
+              {allowDocuments ? 'Datei auswählen' : 'Aus Galerie wählen'}
+            </span>
+            <p className="text-center font-mono tabular-nums text-small">
+              Fotos bis {formatFileSize(MAX_AUSWAHL_FOTO_BYTES)}
+              {allowDocuments ? ` · PDF bis ${formatFileSize(MAX_UPLOAD_BYTES)}` : ''}
+              {multiple ? ` · bis zu ${maxFiles} Dateien` : ''}
+            </p>
+          </div>
+        </div>
+        {error && (
+          <p className="flex items-start gap-1.5 text-small font-semibold">
+            <span className="mt-px shrink-0" style={{ width: 16, height: 16 }} />
+            <span>{error}</span>
+          </p>
+        )}
+      </div>
+      <div aria-hidden data-upload-platzhalter className="absolute inset-0 rounded-lg bg-surface-muted" />
+    </div>
+  );
 }
 
 export function Assistent({
@@ -706,6 +834,21 @@ export function Assistent({
   function setSlotFiles(slot: UploadSlotId, next: PickedFile[]) {
     setFiles((prev) => ({ ...prev, [slot]: next }));
   }
+
+  // Den Foto-Upload nach dem Hydrieren im Leerlauf vorladen, damit Schritt 8 ohne Warten erscheint (FA-SEO-03C).
+  useEffect(() => {
+    const laden = () => {
+      photoUploadVorladen().catch(() => {
+        // Ohne Verbindung lädt der Schritt selbst nach.
+      });
+    };
+    if (typeof window.requestIdleCallback !== 'function') {
+      const zeit = window.setTimeout(laden, 1500);
+      return () => window.clearTimeout(zeit);
+    }
+    const leerlauf = window.requestIdleCallback(laden, { timeout: 3000 });
+    return () => window.cancelIdleCallback(leerlauf);
+  }, []);
 
   /* ---------- Preis ermitteln ------------------------------------------- */
 

@@ -1,0 +1,22 @@
+{"variante":"keine","lange":5,"ueber50":310,"stil":155,"layout":145,"zeichnen":181}
+{"variante":"ab-ablauf","lange":4,"ueber50":279,"stil":132,"layout":86,"zeichnen":121}
+{"variante":"ab-aufbau","lange":3,"ueber50":250,"stil":139,"layout":69,"zeichnen":117}
+{"variante":"keine","lange":4,"ueber50":288,"stil":132,"layout":106,"zeichnen":201}
+{"variante":"ab-ablauf","lange":5,"ueber50":193,"stil":118,"layout":81,"zeichnen":127}
+{"variante":"ab-aufbau","lange":4,"ueber50":115,"stil":99,"layout":69,"zeichnen":119}
+{"variante":"keine","lange":5,"ueber50":331,"stil":145,"layout":140,"zeichnen":190}
+{"variante":"ab-ablauf","lange":3,"ueber50":197,"stil":102,"layout":65,"zeichnen":128}
+{"variante":"ab-aufbau","lange":4,"ueber50":163,"stil":104,"layout":63,"zeichnen":128}
+{"variante":"keine","lange":4,"ueber50":400,"stil":178,"layout":170,"zeichnen":200}
+{"variante":"ab-ablauf","lange":4,"ueber50":327,"stil":160,"layout":98,"zeichnen":105}
+{"variante":"ab-aufbau","lange":3,"ueber50":285,"stil":141,"layout":93,"zeichnen":139}
+{"variante":"keine","lange":4,"ueber50":277,"stil":103,"layout":122,"zeichnen":212}
+{"variante":"ab-ablauf","lange":4,"ueber50":271,"stil":126,"layout":86,"zeichnen":107}
+{"variante":"ab-aufbau","lange":4,"ueber50":210,"stil":118,"layout":68,"zeichnen":130}
+
+/autoschluessel · 5 Läufe je Variante · Median (Spanne)
+| Variante | lange Aufgaben | Summe über 50 ms | Stil ms | Layout ms | Stil + Layout ms | Zeichnen ms |
+|---|---|---|---|---|---|---|
+| keine | 4 (4–5) | 310 (277–400) | 145 (103–178) | 140 (106–170) | 285 (225–348) | 200 (181–212) |
+| ab-ablauf | 4 (3–5) | 271 (193–327) | 126 (102–160) | 86 (65–98) | 212 (167–258) | 121 (105–128) |
+| ab-aufbau | 4 (3–4) | 210 (115–285) | 118 (99–141) | 69 (63–93) | 186 (167–234) | 128 (117–139) |
