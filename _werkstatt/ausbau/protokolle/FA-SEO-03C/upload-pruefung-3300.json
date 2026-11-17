@@ -1,0 +1,251 @@
+{
+ "basis": "http://localhost:3300",
+ "A": {
+  "ladezeitMs": 1161,
+  "uploadTeilbuendelVorWeiter": [
+   {
+    "url": "/_next/static/chunks/3byixnkjhiock.js",
+    "zeit": 1794851058636,
+    "nachLoadMs": 223
+   }
+  ],
+  "titelVorher": "Was sollen wir für Sie tun?",
+  "titel8": "Fotos Ihres Schlüssels",
+  "fokus8": "body: {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organiz",
+  "titel7": "Was sollen wir für Sie tun?",
+  "dateiNochDa": 2,
+  "fokus8b": "body: {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organiz",
+  "platzhalterGesehen": 0,
+  "spaeterWeitermachenTreffer": 1,
+  "tabFolge": [
+   "a: 06441 8056279",
+   "a: Rückruf erbitten",
+   "button: Foto aufnehmen",
+   "button: Aus Galerie wählen",
+   "button: test-vorderseite.png entfernen",
+   "button: Foto aufnehmen",
+   "button: Aus Galerie wählen",
+   "button: Foto aufnehmen",
+   "button: Aus Galerie wählen",
+   "button: Foto aufnehmen",
+   "button: Aus Galerie wählen",
+   "button: Zurück"
+  ],
+  "cls": 0.13045359050033292,
+  "clsMitEingabe": 0.28250377586077074,
+  "konsole": [],
+  "abgefangen": [
+   "action-unbekannt /autoschluessel/anfrage",
+   "upload /api/kunden-upload"
+  ]
+ },
+ "B": [
+  {
+   "breite": 412,
+   "teilbuendel": [
+    "/_next/static/chunks/3byixnkjhiock.js",
+    "/_next/static/chunks/16wxkwqb7uyly.js"
+   ],
+   "platzhalter": [
+    {
+     "index": 2,
+     "hoehe": 497.5,
+     "zeit": 1569
+    },
+    {
+     "index": 3,
+     "hoehe": 521.875,
+     "zeit": 1569
+    },
+    {
+     "index": 4,
+     "hoehe": 638.875,
+     "zeit": 1569
+    },
+    {
+     "index": 5,
+     "hoehe": 521.875,
+     "zeit": 1569
+    }
+   ],
+   "felder": [
+    {
+     "index": 0,
+     "hoehe": 344.6875,
+     "upload": false
+    },
+    {
+     "index": 1,
+     "hoehe": 322.125,
+     "upload": false
+    },
+    {
+     "index": 2,
+     "hoehe": 497.5,
+     "upload": true
+    },
+    {
+     "index": 3,
+     "hoehe": 521.875,
+     "upload": true
+    },
+    {
+     "index": 4,
+     "hoehe": 638.875,
+     "upload": true
+    },
+    {
+     "index": 5,
+     "hoehe": 521.875,
+     "upload": true
+    },
+    {
+     "index": 6,
+     "hoehe": 208.625,
+     "upload": false
+    }
+   ],
+   "vergleich": [
+    {
+     "index": 2,
+     "flaeche": 497.5,
+     "feld": 497.5,
+     "gleich": true
+    },
+    {
+     "index": 3,
+     "flaeche": 521.875,
+     "feld": 521.875,
+     "gleich": true
+    },
+    {
+     "index": 4,
+     "flaeche": 638.875,
+     "feld": 638.875,
+     "gleich": true
+    },
+    {
+     "index": 5,
+     "flaeche": 521.875,
+     "feld": 521.875,
+     "gleich": true
+    }
+   ],
+   "cls": 0.13045359050033292,
+   "verschiebungen": [
+    {
+     "wert": 0.13045359050033292,
+     "eingabe": false,
+     "zeit": 1580
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "teilbuendel": [
+    "/_next/static/chunks/3byixnkjhiock.js",
+    "/_next/static/chunks/16wxkwqb7uyly.js"
+   ],
+   "platzhalter": [
+    {
+     "index": 2,
+     "hoehe": 305.5625,
+     "zeit": 1299
+    },
+    {
+     "index": 3,
+     "hoehe": 329.9375,
+     "zeit": 1299
+    },
+    {
+     "index": 4,
+     "hoehe": 427.96875,
+     "zeit": 1299
+    },
+    {
+     "index": 5,
+     "hoehe": 329.9375,
+     "zeit": 1299
+    }
+   ],
+   "felder": [
+    {
+     "index": 0,
+     "hoehe": 278.796875,
+     "upload": false
+    },
+    {
+     "index": 1,
+     "hoehe": 200.25,
+     "upload": false
+    },
+    {
+     "index": 2,
+     "hoehe": 305.5625,
+     "upload": true
+    },
+    {
+     "index": 3,
+     "hoehe": 329.9375,
+     "upload": true
+    },
+    {
+     "index": 4,
+     "hoehe": 427.96875,
+     "upload": true
+    },
+    {
+     "index": 5,
+     "hoehe": 329.9375,
+     "upload": true
+    },
+    {
+     "index": 6,
+     "hoehe": 135.5,
+     "upload": false
+    }
+   ],
+   "vergleich": [
+    {
+     "index": 2,
+     "flaeche": 305.5625,
+     "feld": 305.5625,
+     "gleich": true
+    },
+    {
+     "index": 3,
+     "flaeche": 329.9375,
+     "feld": 329.9375,
+     "gleich": true
+    },
+    {
+     "index": 4,
+     "flaeche": 427.96875,
+     "feld": 427.96875,
+     "gleich": true
+    },
+    {
+     "index": 5,
+     "flaeche": 329.9375,
+     "feld": 329.9375,
+     "gleich": true
+    }
+   ],
+   "cls": 0.08848715286254882,
+   "verschiebungen": [
+    {
+     "wert": 0.00007410049438476563,
+     "eingabe": false,
+     "zeit": 801
+    },
+    {
+     "wert": 0.08841305236816406,
+     "eingabe": false,
+     "zeit": 1331
+    }
+   ],
+   "konsole": []
+  }
+ ]
+}
