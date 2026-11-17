@@ -1,7 +1,7 @@
 # HERZSCHLAG
-Zeit: 2026-11-17 23:57 MEZ
+Zeit: 2026-11-18 00:39 MEZ
 Sitzung: 8e76b2e3
-Zustand: AKTIV. FA-FARBE-01 (Dunkelblau statt Orange mit dunkler Bühne) ist abgenommen und committet (d1615fa); Bilder sind beim Nutzer. Auf main liegt weiter 5364c4e (Livegang 7); die neue Farbe geht erst auf Anweisung des Nutzers live. Keine Antwort des Nutzers seit 22:00 MEZ.
-Etappe und Welle: Weiter nach Plan mit FA-SEO-03C (Ladezeit von Assistent, Kontakt und Autoschlüssel-Seite) als einzelnes Paket: Messstand und Versuchsordner werden neu aufgebaut, der Zwischenstand vom Rettungszweig wird übernommen. eBay-Angebote warten auf den Export des Nutzers (MA-34).
-Letzter grüner Commit: d1615fa (Typprüfung, Lint, Unit 4301, DB 190, Build 190/190)
+Zustand: AKTIV. FA-SEO-03C (Ladezeit von Assistent, Kontakt und Autoschlüssel-Seite) ist aus Umsetzung, zwei Gegenprüfungen und Nachbesserung zurück: ein roter Befund am Bericht (falsch beschriebener Beleg) und sechs gelbe, sechs behoben, einer nicht zutreffend; Kette des Baumeisters grün (Unit 4307). Übernommen ist nur Hebel 1: Der Assistent lädt den Foto-Upload nach (17 statt 18 Skripte, 258,8 statt 277,2 KB vor dem Hydrieren). Jetzt Abnahme durch den Orchestrator. Der Stand liegt uncommittet im Arbeitsbaum.
+Etappe und Welle: Die dunkelblaue Farbwelt (d1615fa) wartet auf die Anweisung des Nutzers zum Livegang; eBay-Angebote warten auf den Export (MA-34). Keine Antwort des Nutzers seit 22:00 MEZ.
+Letzter grüner Commit: d1615fa (Typprüfung, Lint, Unit 4301, DB 190, Build 190/190); live auf main ist 5364c4e
 ARBEITSBRANCH: claude/new-session-li9jsf
