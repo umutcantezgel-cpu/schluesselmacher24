@@ -12,6 +12,7 @@ import {
   getKategorien,
   getRubriken,
   getServicePages,
+  getTutorials,
   getVehicleMakes,
 } from '@/lib/data';
 import {
@@ -29,6 +30,8 @@ import { KLASSE_RUBRIK } from '@/components/fahrzeug-anfrage/rubrik';
 import { ANFRAGE_FORMULAR, FORMULAR_KLASSEN, type FormularKlasse } from '@/lib/fahrzeuge/anfrage-klassen';
 import { GEWINNUNG_SEITEN } from '@/lib/partner/gewinnung';
 import { stadtIndexierbar } from '@/lib/rechtliches/indexierung';
+import { tutorialsVerlinkt } from '@/lib/tutorials/erreichbar';
+import { tutorialIndexierbar, tutorialPfad } from '@/lib/tutorials/tutorials';
 import { getSiteUrl } from '@/lib/site-url';
 import type { CodeLine } from '@/lib/types';
 
@@ -130,7 +133,7 @@ function geaendert(...werte: Array<string | undefined>): { lastModified: Date } 
 const zuletzt = (lines: CodeLine[]) => geaendert(...lines.map((line) => line.updatedAt));
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [makes, codeLines, articles, servicePages, guides, cities, pages, rubriken, kategorien, stamm] = await Promise.all([
+  const [makes, codeLines, articles, servicePages, guides, cities, pages, rubriken, kategorien, stamm, tutorials] = await Promise.all([
     getVehicleMakes(),
     getCodeLines(),
     getCollection('standardArticles'),
@@ -141,6 +144,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getRubriken(),
     getKategorien(),
     getHersteller(),
+    getTutorials(),
   ]);
 
   // Klassen, deren Rubrik nicht live ist (FA-KERN-05). „Nicht gefunden“ gehört zu den Autoschlüsseln.
@@ -254,6 +258,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.5,
     });
+  }
+
+  // Tutorials (FA-INHALT-01): erst, wenn Menü oder Fuß auf die Rubrik verweisen (`tutorialsVerlinkt`), sonst wäre
+  // sie eine Insel. Dann die Übersicht, sobald eines veröffentlicht ist, und jede Seite mit belegtem eigenem Inhalt
+  // (`tutorialIndexierbar`, dieselbe Regel wie das noindex der Seite).
+  if (tutorialsVerlinkt() && tutorials.length > 0) {
+    entries.push({ url: `${siteUrl}/tutorials`, ...geaendert(...tutorials.map((t) => t.updatedAt)), changeFrequency: 'monthly', priority: 0.5 });
+    for (const tutorial of tutorials.filter(tutorialIndexierbar)) {
+      entries.push({ url: `${siteUrl}${tutorialPfad(tutorial)}`, ...geaendert(tutorial.updatedAt), changeFrequency: 'monthly', priority: 0.5 });
+    }
   }
 
   // Ortsseiten nur mit Substanz (eigener Text und Leistungsweg, FA-09-05, `stadtIndexierbar` über die Lage aus

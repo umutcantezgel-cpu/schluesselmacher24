@@ -102,6 +102,7 @@ const EIGENER_PFAD: Record<string, (eintrag: Record<string, unknown>) => string>
   'guides.json': (e) => `/ratgeber/${String(e.slug)}`,
   'cities.json': (e) => `/standorte/${String(e.slug)}`,
   'code-lines.json': (e) => `/schluessel-nach-code/${String(e.slug)}`,
+  'tutorials.json': (e) => `/tutorials/${String(e.slug)}`,
 };
 
 function hrefsIn(wert: unknown, ziel: string[] = []): string[] {
@@ -118,6 +119,8 @@ function hrefsIn(wert: unknown, ziel: string[] = []): string[] {
 /** Ist der Eintrag eine Seite, die angezeigt und indexiert wird? Abgeschaltete und noindex-Einträge verlinken nichts. */
 function eintragZaehlt(name: string, eintrag: Record<string, unknown>): boolean {
   if (eintrag.active === false) return false;
+  // Unveröffentlichte Tutorials (FA-INHALT-01) haben keine Seite und verlinken nichts.
+  if (name === 'tutorials.json' && eintrag.published === false) return false;
   if ((eintrag.seo as { noindex?: boolean } | undefined)?.noindex) return false;
   if (name === 'cities.json') return stadtIndexierbar(eintrag as unknown as CityPage);
   return true;
@@ -144,6 +147,13 @@ function inhaltsVerweise(inhalte: Array<{ name: string; daten: unknown }>): Map<
   return ergebnis;
 }
 
+/**
+ * Übersichten, die einen Verweis von außerhalb ihrer eigenen Rubrik brauchen (Menü, Fuß, andere Seiten);
+ * die Brotkrumen ihrer Einzelseiten zählen nicht. Nicht für alle Übersichten: Manche erreichen Besucher
+ * über die Rubrikdaten (`ziel` in content/rubriken.json), die dieser Test nicht liest.
+ */
+const NUR_VON_AUSSEN = ['/tutorials'];
+
 /** Wie die Seite verlinkt ist: Quelltext-Fundorte, Vorlagen und Inhalte. */
 function verweisLage(quelltexte: Quelltext[], inhalte: Array<{ name: string; daten: unknown }>) {
   /* Quelltext: Pfad → Dateien, in denen er im Link-Zusammenhang steht. */
@@ -162,11 +172,20 @@ function verweisLage(quelltexte: Quelltext[], inhalte: Array<{ name: string; dat
   }
   const ausInhalten = inhaltsVerweise(inhalte);
 
-  /** Hat `pfad` einen eingehenden Verweis von einer anderen Seite? */
+  /**
+   * Hat `pfad` einen eingehenden Verweis von einer anderen Seite? Bei den Übersichten in NUR_VON_AUSSEN zählen
+   * Verweise von Seiten unterhalb von `pfad` (Brotkrumen der Einzelseiten) nicht: Eine Rubrik, die nur von ihren
+   * eigenen Einzelseiten verlinkt wird, ist eine Insel, die kein Besucher erreicht (FA-INHALT-01).
+   */
   return function istVerlinkt(pfad: string): boolean {
-    if (pfad === '/' || ausInhalten.has(pfad)) return true;
+    if (pfad === '/') return true;
+    const streng = NUR_VON_AUSSEN.includes(pfad);
+    const unterhalb = `${pfad}/`;
+    if ([...(ausInhalten.get(pfad) ?? [])].some((quelle) => !(streng && quelle.startsWith(unterhalb)))) return true;
     const eigen = eigeneDatei(pfad);
-    if ([...(fundorte.get(pfad) ?? [])].some((datei) => datei !== eigen)) return true;
+    const eigenerOrdner = streng && eigen ? `${path.dirname(eigen)}${path.sep}` : undefined;
+    const vonAussen = (datei: string) => datei !== eigen && !(eigenerOrdner && datei.startsWith(eigenerOrdner));
+    if ([...(fundorte.get(pfad) ?? [])].some(vonAussen)) return true;
     // Detailseite aus Daten: eine Vorlage `/…/${…}`, die genau diese Adresse bildet, in einer anderen Datei.
     return vorlagen.some(({ muster, datei }) => muster.test(pfad) && datei !== eigen);
   };
@@ -201,6 +220,42 @@ describe('Interne Verweise', () => {
     // /beratung nennt sich selbst in Brotkrume und canonical; gezählt wird nur der Verweis von anderen Seiten.
     expect(istVerlinkt('/beratung')).toBe(true);
     expect(istVerlinkt('/autoschluessel/marken/volkswagen/golf')).toBe(true);
+    // Tutorials (FA-INHALT-01): jede Seite über die Übersicht. Die Übersicht selbst braucht einen Verweis von
+    // außerhalb der Rubrik (Menü „Mehr“, Fuß); die Brotkrumen der Einzelseiten zählen nicht. Solange der Eintrag
+    // fehlt, steht die Rubrik nicht in der Sitemap (`tutorialsVerlinkt`, sitemap.test.ts).
+    expect(istVerlinkt('/tutorials/schluessel-richtig-fotografieren')).toBe(true);
+  });
+
+  it('eine Rubrik, die nur von ihren eigenen Einzelseiten verlinkt wird, ist eine Insel', async () => {
+    const seiten = path.join(WURZEL, 'src/app/(site)');
+    const brotkrume = { datei: path.join(seiten, 'tutorials/[slug]/page.tsx'), text: "const crumbs = [{ href: '/tutorials', label: 'Tutorials' }];" };
+    const uebersicht = { datei: path.join(seiten, 'tutorials/page.tsx'), text: 'href={`/tutorials/${tutorial.slug}`}' };
+    const insel = verweisLage([brotkrume, uebersicht], [
+      { name: 'tutorials.json', daten: [{ slug: 'fertig', published: true, seo: { internalLinks: [{ href: '/tutorials' }] } }] },
+    ]);
+    expect(insel('/tutorials')).toBe(false);
+    expect(insel('/tutorials/fertig')).toBe(true);
+
+    const menue = { datei: path.join(WURZEL, 'src/lib/navigation.ts'), text: "{ href: '/tutorials', label: 'Tutorials' }" };
+    expect(verweisLage([brotkrume, uebersicht, menue], [])('/tutorials')).toBe(true);
+
+    // Die echte Lage: Ist die Rubrik nicht von außen verlinkt, darf sie nicht in die Sitemap.
+    vi.stubEnv('SM24_DATA', 'json');
+    vi.resetModules();
+    const { tutorialsVerlinkt } = await import('@/lib/tutorials/erreichbar');
+    expect(echteLage()('/tutorials')).toBe(tutorialsVerlinkt());
+  }, 30_000);
+
+  it('zählt keine Links aus unveröffentlichten Tutorials', () => {
+    const istVerlinkt = verweisLage(
+      [],
+      [
+        { name: 'tutorials.json', daten: [{ slug: 'entwurf', published: false, seo: { internalLinks: [{ href: '/von-entwurf' }] } }] },
+        { name: 'tutorials.json', daten: [{ slug: 'fertig', published: true, seo: { internalLinks: [{ href: '/von-tutorial' }] } }] },
+      ],
+    );
+    expect(istVerlinkt('/von-entwurf')).toBe(false);
+    expect(istVerlinkt('/von-tutorial')).toBe(true);
   });
 
   it('zählt keine Pfade außerhalb eines Links und keine Links aus abgeschalteten, noindex- oder eigenen Einträgen', () => {

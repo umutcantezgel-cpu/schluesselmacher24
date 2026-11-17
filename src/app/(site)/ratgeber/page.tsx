@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { cn } from '@/lib/cn';
-import { getGuides } from '@/lib/data';
+import { getGuides, getTutorials } from '@/lib/data';
 import { NAV_AREAS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
 import { Section } from '@/components/layout/section';
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default async function RatgeberPage() {
-  const guides = await getGuides();
+  const [guides, tutorials] = await Promise.all([getGuides(), getTutorials()]);
 
   // Nach Themenbereich gruppieren, damit die Übersicht der Navigation folgt.
   const grouped = NAV_AREAS.map((area) => ({
@@ -86,6 +86,18 @@ export default async function RatgeberPage() {
             </li>
           ))}
         </ol>
+
+        {/* Verweis auf die Rubrik „Tutorials“ (FA-21): Das Menü „Mehr“ führt hierher („Ratgeber und Anleitungen“).
+            Nur mit veröffentlichten Tutorials: Die leere Übersicht verweist zurück auf den Ratgeber. */}
+        {tutorials.length > 0 && (
+          <p className="mt-10 max-w-measure text-body text-foreground-muted">
+            Kurze Schritt-für-Schritt-Anleitungen, zum Beispiel zu Fotos, Maßen und zur Einsendung, stehen in den{' '}
+            <Link href="/tutorials" className="font-semibold text-primary underline-offset-4 hover:underline">
+              Tutorials
+            </Link>
+            .
+          </p>
+        )}
       </Section>
     </>
   );

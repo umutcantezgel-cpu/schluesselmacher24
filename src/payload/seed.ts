@@ -66,6 +66,7 @@ const STARTWERT_DATEIEN = {
   kategorien: 'kategorien.json',
   hersteller: 'hersteller.json',
   bauformen: 'bauformen.json',
+  tutorials: 'tutorials.json',
 } as const;
 
 export type StartwertName = keyof typeof STARTWERT_DATEIEN;
@@ -697,6 +698,23 @@ export async function inhalteUebernehmen(payload: Payload, optionen: SeedOptione
         { pfad: 'abschnitte', spalten: ['ueberschrift', 'text'] },
         { pfad: 'naechsterSchritt.href' },
         { pfad: 'naechsterSchritt.label' },
+        ...SEO_ABGLEICH,
+      ],
+    });
+    // Tutorials (FA-INHALT-01) nach den Ratgebern, auf die sie verweisen. Unveröffentlichte bleiben Entwurf.
+    const tutorialVerweise: m.TutorialVerweise = { ratgeber: await kennungen('ratgeber') };
+    await eintraegeUebernehmen({
+      name: 'tutorials',
+      collection: 'tutorials',
+      inhalt: await quelle.read('tutorials'),
+      startwert: 'tutorials',
+      schluessel: (t) => t.id,
+      dbSchluessel: kennung,
+      zuDaten: (t) => m.tutorialZuPayload(t, tutorialVerweise),
+      abgleich: [
+        { pfad: 'titel' },
+        { pfad: 'kurzantwort' },
+        { pfad: 'schritte', spalten: ['ueberschrift', 'text'] },
         ...SEO_ABGLEICH,
       ],
     });

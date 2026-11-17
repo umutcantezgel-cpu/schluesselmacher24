@@ -26,6 +26,7 @@ import type {
   Rubriken,
   Seiten,
   Sperrtage,
+  Tutorials,
   UmbauBeispiele,
   Vorgaenge,
   Zylinderkatalog,
@@ -35,6 +36,8 @@ import { istEinsendung } from '../einsenden/vorgang';
 import { STANDARD_VARIANTEN, istVariantenKennung, variantenAus } from '../versand/varianten';
 import { rabattAusPreis, staffelPreis } from '../staffel';
 import { TEILEARTEN_MIT_MARKE } from './fahrzeugteile';
+import { istTutorialOrt } from '../tutorials/orte';
+import { istYoutubeKennung } from '../tutorials/youtube';
 import type {
   ApprovalInfo,
   AreaKey,
@@ -80,6 +83,9 @@ import type {
   GehaeuseBauform,
   UmbauBeispiel,
   VergleichsBild,
+  Tutorial,
+  TutorialSchritt,
+  TutorialVideo,
 } from '@/lib/types';
 
 /* ---------- Grundbausteine ----------------------------------------------- */
@@ -2013,4 +2019,88 @@ export function vorgangAenderungZuPayload(aenderung: VorgangsAenderung): Partial
   if (aenderung.payout !== undefined) daten.auszahlung = auszahlungZuPayload(aenderung.payout);
   if (aenderung.refund !== undefined) daten.erstattung = erstattungZuPayload(aenderung.refund);
   return daten;
+}
+
+/* ---------- Tutorials (FA-INHALT-01) ------------------------------------- */
+
+type SchrittZeile = NonNullable<Tutorials['schritte']>[number];
+
+function schrittZuSeite(zeile: SchrittZeile): TutorialSchritt {
+  const schritt: TutorialSchritt = { heading: zeile.ueberschrift, text: zeile.text };
+  const gruppe = zeile.bild;
+  if (gruppe?.motiv || (gruppe?.bild && typeof gruppe.bild !== 'number')) {
+    schritt.image = bildZuSeite(gruppe, zeile.ueberschrift, '4/3');
+  }
+  return schritt;
+}
+
+/** Video nur mit gültiger Kennung; leere Angaben fallen weg. */
+function videoZuSeite(video: Tutorials['video']): TutorialVideo | undefined {
+  if (!istYoutubeKennung(video?.youtube)) return undefined;
+  const ergebnis: TutorialVideo = { youtubeId: video.youtube };
+  if (video.titel) ergebnis.title = video.titel;
+  if (video.dauer) ergebnis.duration = video.dauer;
+  if (video.datum) ergebnis.date = video.datum.slice(0, 10);
+  if (video.transkript) ergebnis.transcript = video.transkript;
+  const vorschaubild = medienBild(video.vorschaubild, video.titel || 'Vorschaubild des Videos');
+  if (vorschaubild) ergebnis.thumbnail = vorschaubild;
+  return ergebnis;
+}
+
+export function tutorialZuSeite(doc: Tutorials): Tutorial {
+  const tutorial: Tutorial = {
+    id: kennung(doc),
+    slug: doc.slug,
+    title: doc.titel,
+    answer: doc.kurzantwort,
+    topic: doc.thema as AreaKey,
+    steps: (doc.schritte ?? []).map(schrittZuSeite),
+    places: (doc.erscheintAuf ?? []).filter(istTutorialOrt),
+    order: Number(doc.reihenfolge ?? 100),
+    published: doc._status === 'published',
+    seo: seoZuSeite(doc.seo, doc.titel),
+    updatedAt: doc.updatedAt,
+  };
+  const video = videoZuSeite(doc.video);
+  if (video) tutorial.video = video;
+  if (doc.ratgeber && typeof doc.ratgeber !== 'number' && doc.ratgeber.slug) tutorial.guideSlug = doc.ratgeber.slug;
+  return tutorial;
+}
+
+/** Verweise des Seeds: Ratgeber nach Kennung. */
+export interface TutorialVerweise {
+  ratgeber: Map<string, number>;
+}
+
+export function tutorialZuPayload(
+  tutorial: Tutorial,
+  verweise: TutorialVerweise = { ratgeber: new Map() },
+): RequiredDataFromCollectionSlug<'tutorials'> {
+  const ratgeber = tutorial.guideSlug ? verweise.ratgeber.get(tutorial.guideSlug) : undefined;
+  return {
+    kennung: tutorial.id,
+    slug: tutorial.slug,
+    titel: tutorial.title,
+    kurzantwort: tutorial.answer,
+    thema: tutorial.topic,
+    schritte: tutorial.steps.map((schritt) => ({
+      ueberschrift: schritt.heading,
+      text: schritt.text,
+      ...(schritt.image ? { bild: bildZuPayload(schritt.image) } : {}),
+    })),
+    video: tutorial.video
+      ? {
+          youtube: tutorial.video.youtubeId,
+          titel: tutorial.video.title ?? null,
+          dauer: tutorial.video.duration ?? null,
+          datum: tutorial.video.date ?? null,
+          transkript: tutorial.video.transcript ?? null,
+        }
+      : {},
+    erscheintAuf: [...tutorial.places],
+    ratgeber: ratgeber ?? null,
+    reihenfolge: tutorial.order,
+    seo: seoZuPayload(tutorial.seo),
+    _status: tutorial.published ? 'published' : 'draft',
+  };
 }

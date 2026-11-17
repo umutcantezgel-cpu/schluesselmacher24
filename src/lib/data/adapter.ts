@@ -19,6 +19,7 @@ import type {
   ShopKategorie,
   GehaeuseBauform,
   UmbauBeispiel,
+  Tutorial,
 } from '@/lib/types';
 
 /**
@@ -52,6 +53,8 @@ export interface Collections {
   bauformen: GehaeuseBauform[];
   /** Umbau-Beispiele mit Vorher- und Nachher-Foto (FA-SHOP-02), nur zeigbare. */
   umbauBeispiele: UmbauBeispiel[];
+  /** Tutorials (FA-INHALT-01), auch unveröffentlichte; die Seite zeigt nur veröffentlichte. */
+  tutorials: Tutorial[];
 }
 
 export type CollectionName = keyof Collections;

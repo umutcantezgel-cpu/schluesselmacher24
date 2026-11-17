@@ -18,6 +18,7 @@ import type {
   PricingRule,
   ServicePage,
   Settings,
+  Tutorial,
   VehicleMake,
 } from '@/lib/types';
 import { artikelKategorieBeschreibung, artikelKategorieTitel } from '@/lib/artikel';
@@ -29,6 +30,7 @@ import { leistungsPreise, markenTexte, modellTexte } from '@/lib/fahrzeug-texte'
 import { GEWINNUNG_SEITEN, gewinnungRoute, gewinnungSeiteMitPflege, gewinnungSeitenFuer } from '@/lib/partner/gewinnung';
 import { TITEL_MAX_PX, titelBreitePx } from '@/lib/titelbreite';
 import { guides, pages } from './defaults/content';
+import { tutorials } from './defaults/tutorials';
 import { servicePages } from './defaults/service-pages';
 
 /*
@@ -264,6 +266,7 @@ const WERKSTATT = { street: 'Musterweg 1', postalCode: '35576', city: 'Wetzlar' 
 const LINIEN = codeLinesJson as CodeLine[];
 const RATGEBER_JSON = lies<Guide[]>('guides.json');
 const ORTE = lies<CityPage[]>('cities.json');
+const TUTORIALS = lies<Tutorial[]>('tutorials.json');
 const KONTEXT_CODE = {
   alle: LINIEN,
   versand: (settingsJson as unknown as Settings).shipping,
@@ -413,6 +416,20 @@ describe('Ratgeber (FA-SEO-01B)', () => {
   });
 });
 
+describe('Tutorials (FA-INHALT-01)', () => {
+  // Auch nicht indexierte und unveröffentlichte Einträge halten die vollen Grenzen ein: Sie werden es,
+  // sobald ein Video oder der fehlende Inhalt dazukommt.
+  it.each(TUTORIALS.map((t) => [t.slug, t] as const))('%s: Suchtexte in den Grenzen, Titel und Kurzantwort ohne Gedankenstrich', (slug, t) => {
+    pruefeSuchtexte(slug, t.seo.title, t.seo.description);
+    expect(t.title, slug).not.toMatch(/[–—]| - /);
+    expect(t.answer, slug).not.toMatch(/[–—]| - /);
+  });
+
+  it('Rückfall tutorials() ist wortgleich mit content/tutorials.json', () => {
+    expect(tutorials()).toEqual(TUTORIALS);
+  });
+});
+
 describe('Orte und Partnerseiten (FA-SEO-01B)', () => {
   it.each(ORTE.map((c) => [c.slug, c] as const))('Ort %s: Suchtexte in den Grenzen', (slug, c) => {
     pruefeSuchtexte(slug, c.seo.title, c.seo.description, { noindex: c.seo.noindex === true });
@@ -510,6 +527,8 @@ const FESTE_METADATEN = [
   'rechtliches/versand-und-zahlung',
   'standorte',
   'ratgeber',
+  // Übersicht der Tutorials (FA-INHALT-01)
+  'tutorials',
 ];
 
 /** Rückfälle in generateMetadata (`page?.seo.title ?? …`) der Ordner, die Teil A ausgenommen hat. */
@@ -558,6 +577,7 @@ describe('Feste Metadaten und Rückfälle der übrigen Seiten (FA-SEO-01B)', () 
       ...rueckfaelle.filter((r) => !seiten.some((s) => s.route === r.route)).map((r) => `${r.titel}${VORLAGE}`),
       ...RATGEBER_JSON.map((g) => `${g.seo.title}${VORLAGE}`),
       ...ORTE.map((c) => `${c.seo.title}${VORLAGE}`),
+      ...TUTORIALS.map((t) => `${t.seo.title}${VORLAGE}`),
       // Partnerseiten mit Eintrag in content/seo.json stehen schon unter `eintraege` (FA-PLATTFORM-02B).
       ...GEWINNUNG_SEITEN.filter((s) => !seiten.some((d) => `/${d.route}` === s.pfad)).map((s) => `${s.titel}${VORLAGE}`),
     ];
@@ -568,6 +588,7 @@ describe('Feste Metadaten und Rückfälle der übrigen Seiten (FA-SEO-01B)', () 
       ...rueckfaelle.filter((r) => !seiten.some((s) => s.route === r.route)).map((r) => r.beschreibung),
       ...RATGEBER_JSON.map((g) => g.seo.description),
       ...ORTE.map((c) => c.seo.description),
+      ...TUTORIALS.map((t) => t.seo.description),
       ...GEWINNUNG_SEITEN.filter((s) => !seiten.some((d) => `/${d.route}` === s.pfad)).map((s) => s.beschreibung),
     ];
     expect(doppelte(titel)).toEqual([]);

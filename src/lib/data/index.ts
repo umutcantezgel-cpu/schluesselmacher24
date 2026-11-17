@@ -17,6 +17,7 @@ import { oeffentlicheEintraege } from '@/lib/beispiele';
 import { buildRecordId, buildReference, counterKey, nextSequenceFromExisting } from '@/lib/reference';
 import { bauformenSortiert, fahrzeugteile, umbauBeispieleFuer, type Fahrzeugartikel } from './fahrzeugteile';
 import { herstellerSortiert, kategorieAufloesen, kategorienSortiert, sichtbareKategorien, type KategorieTreffer } from './shop';
+import { tutorialsFuer, veroeffentlichteTutorials } from '@/lib/tutorials/tutorials';
 import type {
   AppointmentInfo,
   FahrzeugReihe,
@@ -25,6 +26,8 @@ import type {
   Rubrik,
   ShopHersteller,
   ShopKategorie,
+  Tutorial,
+  TutorialOrt,
   UmbauBeispiel,
   UmbauEinsatz,
 } from '@/lib/types';
@@ -163,6 +166,32 @@ export async function getUmbauBeispiele(einsatz: UmbauEinsatz): Promise<UmbauBei
 
 export async function getGuides() {
   return getCollection('guides');
+}
+
+/* ---------- Tutorials (FA-INHALT-01) ------------------------------------ */
+
+/**
+ * Veröffentlichte Tutorials nach Reihenfolge. Ein Verweis auf einen Ratgeber, den es öffentlich nicht gibt,
+ * entfällt; dann zählt das Tutorial als eigenständig.
+ */
+export const getTutorials = cache(async (): Promise<Tutorial[]> => {
+  const [alle, ratgeber] = await Promise.all([getCollection('tutorials'), getGuides()]);
+  const vorhanden = new Set(ratgeber.map((guide) => guide.slug));
+  return veroeffentlichteTutorials(alle).map((tutorial) => {
+    if (!tutorial.guideSlug || vorhanden.has(tutorial.guideSlug)) return tutorial;
+    const ohne: Tutorial = { ...tutorial };
+    delete ohne.guideSlug;
+    return ohne;
+  });
+});
+
+export async function getTutorial(slug: string): Promise<Tutorial | null> {
+  return (await getTutorials()).find((tutorial) => tutorial.slug === slug) ?? null;
+}
+
+/** Veröffentlichte Tutorials für einen Ort (Leistungsseite oder Schritt eines Anfragewegs). */
+export async function getTutorialsFuer(ort: TutorialOrt): Promise<Tutorial[]> {
+  return tutorialsFuer(await getTutorials(), ort);
 }
 
 export async function getGuide(slug: string) {

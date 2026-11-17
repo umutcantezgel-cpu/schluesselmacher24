@@ -36,6 +36,7 @@ export const VORHANDENE_ROUTEN: readonly string[] = [
   'sicherheitstechnik',
   'standorte',
   'tuer-und-schliesstechnik',
+  'tutorials',
   'warenkorb',
 ];
 

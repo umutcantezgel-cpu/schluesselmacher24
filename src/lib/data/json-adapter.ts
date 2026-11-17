@@ -29,6 +29,8 @@ const FILE_NAMES: Record<CollectionName, string> = {
   // FA-SHOP-02: ohne Datei unter content/ gilt der Startbestand aus den Defaults.
   bauformen: 'bauformen.json',
   umbauBeispiele: 'umbau-beispiele.json',
+  // FA-INHALT-01: Tutorials, Rückfall in den Defaults.
+  tutorials: 'tutorials.json',
 };
 
 /**

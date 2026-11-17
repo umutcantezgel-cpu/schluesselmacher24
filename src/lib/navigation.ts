@@ -432,6 +432,10 @@ export const FOOTER_LEGAL: NavLink[] = [
 
 export const FOOTER_CONTENT: NavLink[] = [
   { href: '/ratgeber', label: 'Ratgeber' },
+  // Rubrik „Tutorials“ (FA-21, FA-INHALT-01): von jeder Seite aus erreichbar; erst mit diesem Eintrag nimmt
+  // die Sitemap die Rubrik auf (`tutorialsVerlinkt`). Im Menü „Mehr“ führt „Ratgeber und Anleitungen“ auf die
+  // Ratgeber-Übersicht, die auf die Tutorials verweist: „Außerdem“ bleibt bei vier Verweisen (MENUE_GRENZE).
+  { href: '/tutorials', label: 'Tutorials' },
   { href: '/standorte', label: 'Einsatzgebiete' },
   { href: '/service-und-termin/terminstatus', label: 'Terminstatus' },
   { href: '/service-und-termin/kontakt', label: 'Kontakt' },

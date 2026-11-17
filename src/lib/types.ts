@@ -1292,6 +1292,74 @@ export interface Guide {
   updatedAt: string;
 }
 
+/* ---------- Tutorials (FA-INHALT-01) ------------------------------------ */
+
+/**
+ * Orte, an denen ein Tutorial erscheinen kann (Leistungsseiten und Schritte der Anfragewege).
+ * Die Liste steht mit Beschriftung in `src/lib/tutorials/orte.ts`.
+ */
+export type TutorialOrt =
+  | 'schluessel-nach-vorlage'
+  | 'schluessel-nach-vorlage-fotos'
+  | 'autoschluessel-fotos'
+  | 'autoschluessel-fahrzeugschein'
+  | 'schluessel-nach-code'
+  | 'schluessel-einschicken'
+  | 'gleichschliessende-zylinder'
+  | 'gleichschliessende-zylinder-messen'
+  | 'gleichschliessende-zylinder-funktion'
+  | 'schliessanlagen'
+  | 'autoschluessel-gehaeuse';
+
+/** Ein Schritt eines Tutorials, nummeriert in der Reihenfolge der Liste. */
+export interface TutorialSchritt {
+  heading: string;
+  text: string;
+  /** Bild zum Schritt: Foto aus der Medienbibliothek, sonst eine Zeichnung zum Motiv. */
+  image?: ImageSlot;
+}
+
+/** YouTube-Video zu einem Tutorial. Gespeichert wird nur die geprüfte Kennung, nie eine Adresse. */
+export interface TutorialVideo {
+  /** Elfstellige YouTube-Kennung, vom Server aus Link oder Kennung gezogen. */
+  youtubeId: string;
+  title?: string;
+  /** Dauer als „m:ss“ oder „h:mm:ss“. */
+  duration?: string;
+  /** Veröffentlichungsdatum des Videos (ISO-Datum). */
+  date?: string;
+  /** Transkript oder Zusammenfassung als Text. */
+  transcript?: string;
+  /** Eigenes Vorschaubild aus der Medienbibliothek, nie ein Bild von YouTube. */
+  thumbnail?: MediaImage;
+}
+
+export interface Tutorial {
+  id: string;
+  slug: string;
+  /** Titel als Frage, etwa „Wie messe ich einen Profilzylinder?“. */
+  title: string;
+  /** Kurzantwort in zwei bis drei Sätzen. */
+  answer: string;
+  /** Thema zur Gruppierung der Übersicht. */
+  topic: AreaKey;
+  steps: TutorialSchritt[];
+  video?: TutorialVideo;
+  /** Wo das Tutorial erscheint (Leistungsseiten und Wege). */
+  places: TutorialOrt[];
+  /**
+   * Ratgeber, der das Thema schon vollständig erklärt (Adresse ohne `/ratgeber/`). Ohne Video
+   * verweist das Tutorial dorthin und bleibt aus den Suchmaschinen (R3: nichts doppelt).
+   */
+  guideSlug?: string;
+  /** Reihenfolge in der Übersicht, kleinere Zahl weiter vorn. */
+  order: number;
+  /** Nur veröffentlichte Tutorials erzeugen eine Seite. */
+  published: boolean;
+  seo: SeoFields;
+  updatedAt: string;
+}
+
 export interface CityPage {
   id: string;
   slug: string;

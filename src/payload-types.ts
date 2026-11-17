@@ -86,6 +86,7 @@ export interface Config {
     seiten: Seiten;
     leistungsseiten: Leistungsseiten;
     ratgeber: Ratgeber;
+    tutorials: Tutorials;
     einsatzgebiete: Einsatzgebiete;
     orte: Orte;
     nachweise: Nachweise;
@@ -125,6 +126,7 @@ export interface Config {
     seiten: SeitenSelect<false> | SeitenSelect<true>;
     leistungsseiten: LeistungsseitenSelect<false> | LeistungsseitenSelect<true>;
     ratgeber: RatgeberSelect<false> | RatgeberSelect<true>;
+    tutorials: TutorialsSelect<false> | TutorialsSelect<true>;
     einsatzgebiete: EinsatzgebieteSelect<false> | EinsatzgebieteSelect<true>;
     orte: OrteSelect<false> | OrteSelect<true>;
     nachweise: NachweiseSelect<false> | NachweiseSelect<true>;
@@ -2189,6 +2191,149 @@ export interface Ratgeber {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Kurze Anleitungen unter /tutorials. Ein Video ergänzen Sie so: YouTube-Link einfügen, speichern, fertig. Ein Tutorial erscheint erst, wenn es veröffentlicht ist.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tutorials".
+ */
+export interface Tutorials {
+  id: number;
+  /**
+   * So, wie Kunden fragen, etwa „Wie messe ich einen Profilzylinder?“.
+   */
+  titel: string;
+  /**
+   * Zwei bis drei Sätze, die die Frage gleich beantworten. Steht oben auf der Seite.
+   */
+  kurzantwort: string;
+  thema:
+    | 'autoschluessel'
+    | 'schluessel-nach-vorlage'
+    | 'schluessel-nach-code'
+    | 'gleichschliessende-zylinder'
+    | 'schliessanlagen'
+    | 'elektronische-zutrittsloesungen'
+    | 'tuer-und-schliesstechnik'
+    | 'sicherheitstechnik'
+    | 'service-und-termin';
+  /**
+   * Die Schritte werden in dieser Reihenfolge nummeriert. Die Seite muss auch ohne Video verständlich sein.
+   */
+  schritte?:
+    | {
+        ueberschrift: string;
+        text: string;
+        bild?: {
+          /**
+           * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+           */
+          motiv?: string | null;
+          format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+          /**
+           * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+           */
+          bild?: (number | null) | Medien;
+          hinweis?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * YouTube-Link einfügen, speichern, fertig. Zum Austauschen einfach einen anderen Link einfügen. Erlaubt sind nur Links von YouTube. Das Video erscheint auf der Seite, sobald die Einbettung freigeschaltet ist; bis dahin steht dort nur ein kurzer Hinweis. Von YouTube wird erst etwas geladen, wenn der Kunde zustimmt.
+   */
+  video?: {
+    /**
+     * Zum Beispiel aus „Teilen“ bei YouTube. Beim Speichern bleibt nur die Kennung des Videos stehen.
+     */
+    youtube?: string | null;
+    titel?: string | null;
+    /**
+     * Etwa 4:32
+     */
+    dauer?: string | null;
+    datum?: string | null;
+    /**
+     * Ein eigenes Foto aus der Medienablage, das vor dem Laden des Videos erscheint. Bitte kein Bild von YouTube hochladen.
+     */
+    vorschaubild?: (number | null) | Medien;
+    /**
+     * Was im Video gesagt und gezeigt wird, als Text. Erscheint auf der Seite unter dem Video zum Aufklappen und hilft allen, die das Video nicht ansehen.
+     */
+    transkript?: string | null;
+  };
+  /**
+   * Hier wählen Sie, wo das Tutorial später als Hilfe erscheint. Auf den Seiten und Schritten ist das noch nicht eingeschaltet.
+   */
+  erscheintAuf?:
+    | (
+        | 'schluessel-nach-vorlage'
+        | 'schluessel-nach-vorlage-fotos'
+        | 'autoschluessel-fotos'
+        | 'autoschluessel-fahrzeugschein'
+        | 'schluessel-nach-code'
+        | 'schluessel-einschicken'
+        | 'gleichschliessende-zylinder'
+        | 'gleichschliessende-zylinder-messen'
+        | 'gleichschliessende-zylinder-funktion'
+        | 'schliessanlagen'
+        | 'autoschluessel-gehaeuse'
+      )[]
+    | null;
+  /**
+   * Nur wählen, wenn ein Ratgeber das Thema schon vollständig erklärt. Ohne Video verweist das Tutorial dann dorthin und erscheint nicht bei Google.
+   */
+  ratgeber?: (number | null) | Ratgeber;
+  /**
+   * Kleinere Zahl steht weiter vorn.
+   */
+  reihenfolge: number;
+  /**
+   * Titel und Beschreibung, wie sie bei Google erscheinen.
+   */
+  seo?: {
+    /**
+     * Am besten höchstens 40 Zeichen, das wichtigste Wort vorn. Den Zusatz „| SCHLÜSSELMACHER24“ hängt die Seite selbst an; nur bei der Startseite steht er im Titel.
+     */
+    titel?: string | null;
+    /**
+     * Ein bis zwei ganze Sätze mit 120 bis 160 Zeichen. Schreiben Sie nur, was auch auf der Seite steht: keine Preise, keine Zeiten, keine Versprechen.
+     */
+    beschreibung?: string | null;
+    interneLinks?:
+      | {
+          href: string;
+          label: string;
+          id?: string | null;
+        }[]
+      | null;
+    noindex?: boolean | null;
+    socialBild?: {
+      /**
+       * Was hier zu sehen sein soll. Dient auch als Bildbeschreibung.
+       */
+      motiv?: string | null;
+      format?: ('16/9' | '4/3' | '1/1' | '3/2' | '21/9') | null;
+      /**
+       * Nur echte eigene Fotos. Ohne Foto erscheint eine passende Grafik.
+       */
+      bild?: (number | null) | Medien;
+      hinweis?: string | null;
+    };
+  };
+  /**
+   * Nur Kleinbuchstaben, Ziffern und Bindestriche, z. B. „ms-01“. Ändert die Adresse der Seite.
+   */
+  slug: string;
+  /**
+   * Wird automatisch vergeben und bleibt fest, damit Bestellungen und Warenkörbe gültig bleiben.
+   */
+  kennung?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "einsatzgebiete".
  */
@@ -2596,6 +2741,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'ratgeber';
         value: number | Ratgeber;
+      } | null)
+    | ({
+        relationTo: 'tutorials';
+        value: number | Tutorials;
       } | null)
     | ({
         relationTo: 'einsatzgebiete';
@@ -3710,6 +3859,71 @@ export interface RatgeberSelect<T extends boolean = true> {
         href?: T;
         label?: T;
       };
+  seo?:
+    | T
+    | {
+        titel?: T;
+        beschreibung?: T;
+        interneLinks?:
+          | T
+          | {
+              href?: T;
+              label?: T;
+              id?: T;
+            };
+        noindex?: T;
+        socialBild?:
+          | T
+          | {
+              motiv?: T;
+              format?: T;
+              bild?: T;
+              hinweis?: T;
+            };
+      };
+  slug?: T;
+  kennung?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tutorials_select".
+ */
+export interface TutorialsSelect<T extends boolean = true> {
+  titel?: T;
+  kurzantwort?: T;
+  thema?: T;
+  schritte?:
+    | T
+    | {
+        ueberschrift?: T;
+        text?: T;
+        bild?:
+          | T
+          | {
+              motiv?: T;
+              format?: T;
+              bild?: T;
+              hinweis?: T;
+            };
+        id?: T;
+      };
+  video?:
+    | T
+    | {
+        youtube?: T;
+        titel?: T;
+        dauer?: T;
+        datum?: T;
+        vorschaubild?: T;
+        transkript?: T;
+      };
+  erscheintAuf?: T;
+  ratgeber?: T;
+  reihenfolge?: T;
   seo?:
     | T
     | {

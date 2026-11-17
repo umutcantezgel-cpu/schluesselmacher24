@@ -23,6 +23,7 @@ import type {
   Fahrzeugreihen,
   Seiten,
   Sperrtage,
+  Tutorials,
   UmbauBeispiele,
   Vorgaenge,
   Zylinderkatalog,
@@ -148,6 +149,15 @@ export class PayloadAdapter implements DataAdapter {
         return (await alle<UmbauBeispiele>('umbau-beispiele', VEROEFFENTLICHT, 'reihenfolge'))
           .map(m.umbauBeispielZuSeite)
           .filter((b): b is NonNullable<typeof b> => b !== null);
+      // Tutorials (FA-INHALT-01): nur veröffentlichte. Startbestand nur, solange nie ein Tutorial angelegt wurde
+      // (frische Datenbank ohne Seed); Entwürfe und Gelöschtes kommen so nicht über den Rückfall zurück.
+      case 'tutorials': {
+        const docs = await alle<Tutorials>('tutorials', VEROEFFENTLICHT, 'reihenfolge');
+        if (docs.length) return docs.map(m.tutorialZuSeite);
+        const payload = await payloadInstanz();
+        const { totalDocs } = await payload.count({ collection: 'tutorials', trash: true, overrideAccess: true });
+        return totalDocs ? [] : defaults.tutorials();
+      }
     }
   }
 

@@ -624,3 +624,49 @@ describe('Gehäuse, Ersatzteile und Umbau-Beispiele (FA-SHOP-02)', () => {
     expect(m.umbauBeispielZuSeite({ ...doc, marke: '' } as never)?.reihe).toBeUndefined();
   });
 });
+
+describe('Tutorials (FA-INHALT-01)', () => {
+  const verweise = { ratgeber: new Map([['zylinder-richtig-ausmessen', 31], ['welche-schliessanlage-passt', 32]]) };
+
+  it('Startbestand verlustfrei hin und zurück, Entwürfe bleiben Entwürfe', async () => {
+    const tutorials = await read('tutorials');
+    expect(tutorials).toHaveLength(10);
+    tutorials.forEach((tutorial, index) => {
+      const daten = m.tutorialZuPayload(tutorial, verweise);
+      expect(daten._status, tutorial.id).toBe(tutorial.published ? 'published' : 'draft');
+      // Payload liefert den Ratgeber mit depth 1 als Dokument.
+      const ratgeber = daten.ratgeber ? { id: daten.ratgeber, slug: tutorial.guideSlug } : null;
+      const back = m.tutorialZuSeite(gespeichert({ ...daten, ratgeber }, index + 1) as never);
+      expect(back, tutorial.id).toEqual({ ...tutorial, updatedAt: STAND });
+    });
+  });
+
+  it('Video: nur die geprüfte Kennung, Angaben verlustfrei; eine ungültige Kennung zeigt kein Video', async () => {
+    const [erstes] = await read('tutorials');
+    const mitVideo = {
+      ...erstes,
+      video: { youtubeId: 'abcDEF12_-x', title: 'Schlüssel fotografieren', duration: '3:05', date: '2026-11-01', transcript: 'Erst die Vorderseite, dann die Rückseite.' },
+    };
+    const daten = m.tutorialZuPayload(mitVideo);
+    expect(daten.video).toMatchObject({ youtube: 'abcDEF12_-x' });
+    expect(m.tutorialZuSeite(gespeichert(daten, 1) as never)).toEqual({ ...mitVideo, updatedAt: STAND });
+    // Eigenes Vorschaubild aus der Medienbibliothek (für Teil B), nur unter /api/medien/file/.
+    const mitBild = gespeichert({ ...daten, video: { ...daten.video, vorschaubild: { id: 5, url: '/api/medien/file/standbild.jpg', alt: 'Standbild', width: 1600, height: 900 } } }, 3);
+    expect(m.tutorialZuSeite(mitBild as never).video?.thumbnail).toEqual({ url: '/api/medien/file/standbild.jpg', alt: 'Standbild', width: 1600, height: 900 });
+    const fremdesBild = gespeichert({ ...daten, video: { ...daten.video, vorschaubild: { id: 6, url: 'https://i.ytimg.com/vi/x/hqdefault.jpg', alt: 'x' } } }, 4);
+    expect(m.tutorialZuSeite(fremdesBild as never).video?.thumbnail).toBeUndefined();
+    const kaputt = gespeichert({ ...daten, video: { ...daten.video, youtube: 'https://example.org/video' } }, 2);
+    expect(m.tutorialZuSeite(kaputt as never).video).toBeUndefined();
+  });
+
+  it('ein Ratgeber ohne bekannte Kennung entfällt beim Import, unbekannte Orte beim Lesen', async () => {
+    const tutorials = await read('tutorials');
+    const mitRatgeber = tutorials.find((t) => t.guideSlug)!;
+    expect(m.tutorialZuPayload(mitRatgeber).ratgeber).toBeNull();
+    const daten = m.tutorialZuPayload(mitRatgeber, verweise);
+    const doc = gespeichert({ ...daten, ratgeber: daten.ratgeber, erscheintAuf: ['schliessanlagen', 'unbekannt'] }, 1);
+    const back = m.tutorialZuSeite(doc as never);
+    expect(back.guideSlug).toBeUndefined();
+    expect(back.places).toEqual(['schliessanlagen']);
+  });
+});

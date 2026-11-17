@@ -33,6 +33,7 @@ import { Fahrzeugreihen } from './payload/collections/Fahrzeugreihen';
 import { Partnerbetriebe } from './payload/collections/Partnerbetriebe';
 import { Seiten } from './payload/collections/Seiten';
 import { Sperrtage } from './payload/collections/Sperrtage';
+import { Tutorials } from './payload/collections/Tutorials';
 import { UmbauBeispiele } from './payload/collections/UmbauBeispiele';
 import { Vorgaenge } from './payload/collections/Vorgaenge';
 import { WebhookEreignisse } from './payload/collections/WebhookEreignisse';
@@ -99,6 +100,7 @@ export default buildConfig({
     Seiten,
     Leistungsseiten,
     Ratgeber,
+    Tutorials,
     Einsatzgebiete,
     // Ortsstamm (FA-PLATTFORM-03): alle Gemeinden, nur lesbar, keine Seiten.
     Orte,

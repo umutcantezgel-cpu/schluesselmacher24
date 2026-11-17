@@ -1,12 +1,12 @@
 # FA-SEO-02 · Onpage-Prüfung über alle Seiten des Builds
 
-Stand: 2026-11-16_18-11-39 · Basis: http://localhost:3000 · Grenze: 95
+Stand: 2026-11-17_21-42-42 · Basis: http://localhost:3000 · Grenze: 95
 
 Der Wert (0 bis 100) ist eine eigene Ableitung aus den Prüfungen dieses Werkzeugs (Stufe C). Er ist nicht der Seobility-Score und nicht mit ihm vergleichbar. Gewichte und Teilwertung sind Festlegungen; die Gewichtung von Seobility ist nicht bekannt (FA-RECHERCHE-05, OFFENE FRAGE 1). Ein gelber Befund zählt halb, ein roter gar nicht.
 
 ## Zusammenfassung
 
-- Seiten: 137
+- Seiten: 144
 - Median des Werts: 100,0
 - Seiten unter 95: 0
 - Rote Befunde: 0 · gelbe Befunde: 0
@@ -154,6 +154,13 @@ keine
 | /ratgeber/einbruchschutz-wo-anfangen | 100,0 | 0 | 0 | – |
 | /ratgeber/schluessel-verloren-wohnung | 100,0 | 0 | 0 | – |
 | /ratgeber/mechanisch-oder-elektronisch | 100,0 | 0 | 0 | – |
+| /tutorials | 100,0 | 0 | 0 | – |
+| /tutorials/schluessel-richtig-fotografieren | 100,0 | 0 | 0 | – |
+| /tutorials/autoschluessel-richtig-fotografieren | 100,0 | 0 | 0 | – |
+| /tutorials/so-funktioniert-schluessel-nach-code | 100,0 | 0 | 0 | – |
+| /tutorials/schluessel-richtig-einschicken | 100,0 | 0 | 0 | – |
+| /tutorials/not-und-gefahrenfunktion | 100,0 | 0 | 0 | – |
+| /tutorials/was-bedeutet-gleichschliessend | 100,0 | 0 | 0 | – |
 | /standorte | 100,0 | 0 | 0 | – |
 | /standorte/wetzlar | 100,0 | 0 | 0 | – |
 

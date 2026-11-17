@@ -28,6 +28,7 @@ import * as migration_20261116_072304_partner_qualitaet from './20261116_072304_
 import * as migration_20261116_081528_partner_pruefung from './20261116_081528_partner_pruefung';
 import * as migration_20261116_100017_orte_stamm from './20261116_100017_orte_stamm';
 import * as migration_20261116_134901_ortsseiten_stamm from './20261116_134901_ortsseiten_stamm';
+import * as migration_20261116_174304_tutorials from './20261116_174304_tutorials';
 
 export const migrations = [
   {
@@ -178,6 +179,11 @@ export const migrations = [
   {
     up: migration_20261116_134901_ortsseiten_stamm.up,
     down: migration_20261116_134901_ortsseiten_stamm.down,
-    name: '20261116_134901_ortsseiten_stamm'
+    name: '20261116_134901_ortsseiten_stamm',
+  },
+  {
+    up: migration_20261116_174304_tutorials.up,
+    down: migration_20261116_174304_tutorials.down,
+    name: '20261116_174304_tutorials',
   },
 ];

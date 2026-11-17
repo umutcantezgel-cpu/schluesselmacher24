@@ -500,3 +500,10 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Offen beim Nutzer (MA-23, unverändert): für den echten Livegang die Variablen nach `docs/LIVEGANG.md` setzen und den Schaufenster-Schalter ausschalten. Sind in Vercel inzwischen Datenbank-Variablen gesetzt, läuft der Produktions-Build mit Migrationen, Seed und Livegang-Prüfung; das kann der Orchestrator von hier nicht sehen.
 - Umkehrprobe: kein Datenbankschritt; main lässt sich mit einem weiteren Commit auf einen früheren Stand bringen.
 
+## A-073 · Tutorials: erreichbar über Fuß und Ratgeber-Übersicht; Bild eines Schritts unter dem Text (2026-11-17 22:00, FA-INHALT-01; FA-21, FA-22-32)
+- Erreichbarkeit: „Tutorials“ steht im Fuß unter „Service“ und in einem Absatz der Ratgeber-Übersicht (nur mit veröffentlichten Tutorials). Kein eigener Eintrag im Menü „Mehr“: Die Spalte „Außerdem“ hat vier Verweise, die Menügrenze aus FA-QA-04A bleibt. Am Fußeintrag hängt die Sitemap (`tutorialsVerlinkt`); ein Test mit der echten Navigation hält ihn fest. Ob „Tutorials“ einen eigenen Menüpunkt bekommt und welcher dafür weicht, entscheidet der Inhaber (MA-60).
+- Bild eines Schritts: unter dem Text, nie in einer schmalen Spalte (Regel A-068, mindestens 14 px auch in Zeichnungen). Maße in `src/components/tutorial/schritt-bild.ts`; `schritt-bild.test.tsx` rechnet jede Zeichnung des Startbestands am Telefon und ab 640 px nach. Wer im Admin ein flacheres Seitenverhältnis wählt, als die Zeichnung verträgt, sieht das erst im Browser: Die Rechnung deckt den Startbestand, nicht spätere Einträge (Hinweis in MA-60).
+- Indexierung: Zwei Tutorials, deren Thema ein Ratgeber vollständig trägt, stehen auf noindex und fehlen in der Sitemap (R3); Videos zählen erst mit der Einbettung nach Zustimmung (Teil B, `VIDEO_EINBETTUNG_FREI`).
+- Nachweis-Satz auf `/schluessel-nach-vorlage`: unverändert der Bestand. Eine Fassung nur für geschützte Profile wäre schmaler als R13.
+- Offen aus der Messung, nicht aus diesem Paket: Der Assistent lädt seit Next.js 16.4.6 zwei Skripte mehr (20 statt 18, 287,4 statt 277,2 KB) im selben Build; Partnerlogik ist nicht darunter. Klärung in FA-SEO-03C.
+

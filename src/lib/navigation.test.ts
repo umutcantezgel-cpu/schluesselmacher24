@@ -219,6 +219,8 @@ describe('Menü ohne Überladung (FA-26-02, FA-QA-04A)', () => {
     expect(NAV_AREAS.map((a) => a.href)).toContain('/service-und-termin');
     expect(quelle('src/components/layout/site-footer.tsx')).toMatch(/for \(const area of NAV_AREAS\)[\s\S]{0,200}leistungen\.push\(\{ href: area\.href/);
     expect(FOOTER_CONTENT.map((l) => l.href)).toContain('/service-und-termin/terminstatus');
+    // Rubrik „Tutorials“ (FA-21): Erst der Fußeintrag macht sie erreichbar; an ihm hängt auch die Sitemap (`tutorialsVerlinkt`).
+    expect(FOOTER_CONTENT.map((l) => l.href)).toContain('/tutorials');
     expect(MEHR_LINKS.map((l) => l.href)).not.toContain('/service-und-termin');
     // Tür- und Schließtechnik: die zwei aus NAV_AREAS genommenen Spaltenverweise stehen in der Leistungsliste der Bereichsseite.
     const tuer = quelle('src/app/(site)/tuer-und-schliesstechnik/page.tsx');

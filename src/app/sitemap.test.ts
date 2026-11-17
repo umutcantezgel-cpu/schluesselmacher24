@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { defaults } from '@/lib/data/defaults';
 import { ANFRAGE_FORMULAR } from '@/lib/fahrzeuge/anfrage-klassen';
 import { ortsseiteGruende, type Leistungsweg } from '@/lib/rechtliches/indexierung';
-import type { CityPage, CodeLine, ShopHersteller, ShopKategorie, StandardArticle, VehicleMake } from '@/lib/types';
+import type { CityPage, CodeLine, ShopHersteller, ShopKategorie, StandardArticle, Tutorial, VehicleMake } from '@/lib/types';
 import codeLinesJson from '../../content/code-lines.json';
 import vehiclesJson from '../../content/vehicles.json';
 
@@ -19,7 +19,12 @@ const daten: {
   seiten: Array<{ route: string; updatedAt?: string; seo: { noindex?: boolean } }>;
   kategorien: ShopKategorie[];
   hersteller: ShopHersteller[];
-} = { linien: [], marken: [], artikel: [], seiten: [], kategorien: defaults.kategorien(), hersteller: [] };
+  tutorials: Tutorial[];
+} = { linien: [], marken: [], artikel: [], seiten: [], kategorien: defaults.kategorien(), hersteller: [], tutorials: [] };
+
+// Rubrik Tutorials im Menü (FA-INHALT-01): aus, außer ein Test schaltet sie an.
+const tutorialsImMenue = vi.hoisted(() => ({ an: false }));
+vi.mock('@/lib/tutorials/erreichbar', () => ({ tutorialsVerlinkt: () => tutorialsImMenue.an }));
 
 vi.mock('@/lib/data', () => ({
   getVehicleMakes: async () => daten.marken,
@@ -32,6 +37,8 @@ vi.mock('@/lib/data', () => ({
   getGuides: async () => [],
   getKategorien: async () => daten.kategorien,
   getHersteller: async () => daten.hersteller,
+  // Tutorials (FA-INHALT-01): getTutorials liefert nur veröffentlichte.
+  getTutorials: async () => daten.tutorials.filter((t) => t.published),
   getCities: async () => gebiete.liste,
   // Rubriken (FA-KERN-05): alle live, außer ein Test schaltet eine ab.
   getRubriken: async () => defaults.rubriken().map((r) => ({ ...r, status: rubrikAus.has(r.id) ? 'spaeter' : 'live' })),
@@ -334,5 +341,42 @@ describe('Sitemap', () => {
       rubrikAus.clear();
     }
     expect(await pfade()).toContain('/fahrradschluessel');
+  });
+
+  it('Tutorials: Übersicht nur mit veröffentlichten, Seiten nur mit belegtem eigenem Inhalt (FA-INHALT-01)', async () => {
+    const pfade = async () => (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname).filter((p) => p.startsWith('/tutorials'));
+    expect(await pfade()).toEqual([]);
+    daten.tutorials = defaults.tutorials();
+    tutorialsImMenue.an = true;
+    try {
+      const urls = await pfade();
+      expect(urls[0]).toBe('/tutorials');
+      // Unveröffentlicht: keine Seite.
+      expect(urls).not.toContain('/tutorials/gehaeuseumbau');
+      expect(urls).not.toContain('/tutorials/angaben-im-fahrzeugschein');
+      // Doppel zum Ratgeber ohne Video: noindex, nicht in der Sitemap.
+      expect(urls).not.toContain('/tutorials/profilzylinder-messen');
+      expect(urls).toContain('/tutorials/schluessel-richtig-fotografieren');
+      // Mit hinterlegtem Video, aber ohne Einbettung (Teil A) zeigt die Seite nur einen Hinweissatz: weiter draußen (R3).
+      daten.tutorials = defaults.tutorials().map((t) =>
+        t.id === 'profilzylinder-messen' || t.id === 'hs-und-ghs' ? { ...t, video: { youtubeId: 'aB3_dE-5gH7', transcript: 'Maß A und Maß B.' } } : t,
+      );
+      const mitVideo = await pfade();
+      expect(mitVideo).not.toContain('/tutorials/profilzylinder-messen');
+      expect(mitVideo).not.toContain('/tutorials/hs-und-ghs');
+    } finally {
+      daten.tutorials = [];
+      tutorialsImMenue.an = false;
+    }
+  });
+
+  it('Tutorials: ohne Eintrag in Menü oder Fuß ist die Rubrik eine Insel und bleibt aus der Sitemap (FA-INHALT-01)', async () => {
+    daten.tutorials = defaults.tutorials();
+    try {
+      const urls = (await sitemap()).map((eintrag) => new URL(eintrag.url).pathname).filter((p) => p.startsWith('/tutorials'));
+      expect(urls).toEqual([]);
+    } finally {
+      daten.tutorials = [];
+    }
   });
 });

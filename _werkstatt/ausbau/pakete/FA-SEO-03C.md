@@ -11,6 +11,8 @@ Bringe die drei Ansichten, die im Maßstab von PageSpeed noch unter 90 Punkten l
 ## Stand (Abnahme von FA-SEO-03B, Commit ca1a4d5)
 Maßstab A (Lighthouse mobil, simuliert, Median aus drei Läufen auf ruhiger Maschine): Startseite 92, Autoschlüssel 89, Assistent 85, Schlüssel nach Code 92, Konfigurator 90, Shop 97, Ortsseite 93, Ratgeber 91, Kontakt 88; CLS überall 0. Die Werte unveränderter Seiten schwanken zwischen zwei Messungen um bis zu drei Punkte. JavaScript komprimiert: Assistent 277 KB in 18 Skripten, Kontakt 267 KB in 19, Autoschlüssel 221 KB in 15.
 
+Nachtrag 17.11.2026 (Abnahme von FA-INHALT-01): Seit der Sicherheitsaktualisierung auf Next.js 16.4.6 (A-072) lädt der Assistent im selben Build 20 Skripte und 287,4 KB statt 18 und 277,2 KB; die acht anderen Ansichten sind unverändert. Partnerlogik ist nicht im Bündel (Textsuche in allen 20 Dateien); eine der zusätzlichen Dateien ist die Fehlerseite der Anwendung (`src/app/global-error.tsx`). Kläre zuerst, welche zwei Dateien dazugekommen sind und warum (die Seite wird als einzige der neun Ansichten bei jedem Abruf erzeugt), und nimm 20 Skripte und 287,4 KB als Ausgangswert. Der Versuchsordner und der Messstand sind seitdem neu aufzubauen (Quelltext des letzten geprüften Commits, `node_modules` mit 16.4.6).
+
 ## Arbeitsweise: eigener Bauordner, der Arbeitsbaum bleibt ruhig
 Wie in FA-SEO-03B (lies dort „Arbeitsweise“ und nutze die Skripte unter `protokolle/FA-SEO-03B/experimente/`: `gewicht.mjs`, `bildvergleich.mjs`, `spur-aufgaben.mjs`, `analyse-*.mjs`):
 - Versuchsordner `/home/user/sm24-versuch`: Quelltext des Commits ca1a4d5, noch ohne Build. `node_modules` ist hart verlinkt mit dem Arbeitsbaum: nie `npm install`, nie eine Datei unter `node_modules` ändern (G7).
