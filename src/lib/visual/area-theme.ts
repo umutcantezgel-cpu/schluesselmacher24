@@ -8,21 +8,28 @@ import type { AreaKey } from '@/lib/types';
  * verwenden nur `text-area-strong`, `bg-area-soft`, `fill-area` usw. — nie
  * einen festen Farbwert.
  *
- * Seit der Arbeitsanweisung des Inhabers vom 11.11.2026 (FA-04, A-043) gibt es
- * eine einzige Akzentfarbe: das Markenorange. Schaltflächen, aktive Zustände,
- * Icons und Handlungsaufrufe tragen überall dasselbe Orange; die dunklen und
- * hellen neutralen Flächen bleiben. Die Tabelle je Bereich bleibt als Quelle
- * bestehen, damit ein Bereich später wieder einen eigenen Ton bekommen kann,
- * ohne dass eine Seite angefasst wird.
+ * Seit dem Auftrag vom 17.11.2026 (A-074, ersetzt FA-04 in der Akzentfarbe) gibt es
+ * eine einzige Akzentfarbe: das Markenblau, ein tiefes Dunkelblau aus der Tinte der
+ * Seite (Farbton um 262°), kräftiger gemacht. Schaltflächen, aktive Zustände, Icons
+ * und Handlungsaufrufe tragen überall dasselbe Blau. Die Tabelle je Bereich bleibt
+ * als Quelle bestehen, damit ein Bereich später wieder einen eigenen Ton bekommen
+ * kann, ohne dass eine Seite angefasst wird. Den Farbton verschiebt man an einer
+ * Stelle: `MARKEN_FARBTON` und `MARKENBLAU` hier, `--primary*` und `--ring` in
+ * `globals.css`.
+ *
+ * Auf dunklem Grund steht die „Bühne“ (`.buehne` in `globals.css`): derselbe Satz
+ * Tokens, dort mit hellen eisblauen Lichtern neu belegt, auch `--area*`.
  *
  * Werte als OKLCH-Tripel „L C H“ (wie alle Tokens in `globals.css`).
  * Abstufungsregel (ABSTUFUNG): ein Farbton H und vier feste Helligkeiten; die
  * Buntheit C ist gedeckelt und bleibt im sRGB-Farbraum.
- * - `accent` L 0,62: Flächen und Linien in Grafiken, Fokusring (≥ 3:1 auf Weiß und `soft`)
- * - `strong` L 0,555 (= `--primary`): Text, Schaltflächen mit weißer Schrift,
- *   Kennzeichnungen (≥ 4,5:1 auf Weiß und `soft`)
+ * - `accent` L 0,52: Flächen und Linien in Grafiken, die „24“ der Wortmarke auf
+ *   hellem Grund (≥ 4,5:1 auf Weiß, ≥ 3:1 auf `soft` und `surface-sunken`)
+ * - `strong` L 0,36 (= `--primary`): Text, Schaltflächen mit weißer Schrift,
+ *   Kennzeichnungen (≥ 4,5:1 auf Weiß, `soft`, `surface-muted` und `surface-sunken`)
  * - `soft`   L 0,96: heller Hintergrund
  * - `muted`  L 0,90: zarte Linien und Füllungen in Grafiken (rein dekorativ)
+ * Der Fokusring (`--ring`, L 0,58) steht in `globals.css`.
  *
  * Kein Lila und kein Indigo (Anti-Slop S2). Kein Signalgelb auf Schwarz: keine
  * Notdienstoptik. Statusfarben (Erfolg, Warnung, Fehler) stehen in `globals.css`
@@ -38,37 +45,44 @@ export interface AreaTheme {
 
 /** Abstufungsregel: Helligkeit L je Stufe und Obergrenze der Buntheit C. */
 export const ABSTUFUNG = {
-  accent: { L: 0.62, cHoechstens: 0.185 },
-  strong: { L: 0.555, cHoechstens: 0.168 },
+  accent: { L: 0.52, cHoechstens: 0.17 },
+  strong: { L: 0.36, cHoechstens: 0.13 },
   soft: { L: 0.96, cHoechstens: 0.022 },
   muted: { L: 0.9, cHoechstens: 0.06 },
 } as const;
 
-/** Farbton des Markenorange in Grad (OKLCH). */
-export const MARKEN_FARBTON = 41;
+/** Farbton des Markenblaus in Grad (OKLCH). */
+export const MARKEN_FARBTON = 262;
 
-/** Das Markenorange in vier Stufen: #dd530f, #c04606, #fdeee9, #fbd4c7. */
-const MARKENORANGE = {
-  accent: '0.62 0.185 41',
-  /* = --primary: Wortmarke „24“, Links, Schaltflächen */
-  strong: '0.555 0.168 41',
-  soft: '0.96 0.018 41',
-  muted: '0.9 0.047 41',
+/** Das Markenblau in vier Stufen: #2e62c9, #123780, #ebf2fe, #cddffe. */
+export const MARKENBLAU = {
+  /* Grafik und Linien; die „24“ der Wortmarke auf hellem Grund */
+  accent: '0.52 0.17 262',
+  /* = --primary: Links, Schaltflächen, Kennzeichnungen */
+  strong: '0.36 0.13 262',
+  soft: '0.96 0.018 262',
+  muted: '0.9 0.047 262',
 } as const;
 
-/** Grundfarbe außerhalb der Bereiche (Startseite, Warenkorb, Kasse …): das Markenorange. */
-export const DEFAULT_AREA_THEME: AreaTheme = { label: 'Allgemein', ...MARKENORANGE };
+/** = --primary-hover auf hellem Grund: Aktion bei Hover (#092661, Weiß darauf 14,4:1). */
+export const MARKEN_HOVER = '0.29 0.11 262';
+
+/** = --ring auf hellem Grund: Fokusring (#3672e9, ≥ 3:1 auf allen hellen Flächen). */
+export const MARKEN_RING = '0.58 0.19 262';
+
+/** Grundfarbe außerhalb der Bereiche (Startseite, Warenkorb, Kasse …): das Markenblau. */
+export const DEFAULT_AREA_THEME: AreaTheme = { label: 'Allgemein', ...MARKENBLAU };
 
 export const AREA_THEMES: Record<AreaKey, AreaTheme> = {
-  autoschluessel: { label: 'Autoschlüssel', ...MARKENORANGE },
-  'schluessel-nach-vorlage': { label: 'Schlüssel nach Vorlage', ...MARKENORANGE },
-  'schluessel-nach-code': { label: 'Schlüssel nach Code', ...MARKENORANGE },
-  'gleichschliessende-zylinder': { label: 'Gleichschließende Zylinder', ...MARKENORANGE },
-  schliessanlagen: { label: 'Schließanlagen', ...MARKENORANGE },
-  'elektronische-zutrittsloesungen': { label: 'Elektronische Zutrittslösungen', ...MARKENORANGE },
-  'tuer-und-schliesstechnik': { label: 'Tür- und Schließtechnik', ...MARKENORANGE },
-  sicherheitstechnik: { label: 'Sicherheitstechnik', ...MARKENORANGE },
-  'service-und-termin': { label: 'Service und Termin', ...MARKENORANGE },
+  autoschluessel: { label: 'Autoschlüssel', ...MARKENBLAU },
+  'schluessel-nach-vorlage': { label: 'Schlüssel nach Vorlage', ...MARKENBLAU },
+  'schluessel-nach-code': { label: 'Schlüssel nach Code', ...MARKENBLAU },
+  'gleichschliessende-zylinder': { label: 'Gleichschließende Zylinder', ...MARKENBLAU },
+  schliessanlagen: { label: 'Schließanlagen', ...MARKENBLAU },
+  'elektronische-zutrittsloesungen': { label: 'Elektronische Zutrittslösungen', ...MARKENBLAU },
+  'tuer-und-schliesstechnik': { label: 'Tür- und Schließtechnik', ...MARKENBLAU },
+  sicherheitstechnik: { label: 'Sicherheitstechnik', ...MARKENBLAU },
+  'service-und-termin': { label: 'Service und Termin', ...MARKENBLAU },
 };
 
 export const AREA_KEYS_WITH_THEME = Object.keys(AREA_THEMES) as AreaKey[];

@@ -396,7 +396,9 @@ export function FlowShell<T extends object>({
               // der Seite mit „Anrufen“ bleibt sichtbar, nichts überdeckt sich.
               eingebettet
                 ? 'sm24-ablauf-leiste mt-8 pb-4'
-                : 'sm24-ablauf-leiste fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface p-4',
+                : // Am Telefon steht die feste Leiste auf der Bühne wie die Aktionsleiste der Seite (A-074);
+                  // ab Tablet ist sie eine Zeile im hellen Formular.
+                  'sm24-ablauf-leiste max-md:buehne fixed inset-x-0 bottom-0 z-sticky border-t border-border p-4',
               'md:static md:mt-8 md:border-0 md:bg-transparent md:p-0 md:pb-4',
             )}
           >

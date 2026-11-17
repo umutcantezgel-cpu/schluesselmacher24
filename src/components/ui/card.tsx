@@ -7,7 +7,8 @@ type Variant = 'default' | 'muted' | 'ink' | 'outline';
 const variants: Record<Variant, string> = {
   default: 'bg-surface border border-border',
   muted: 'bg-surface-muted border border-border',
-  ink: 'bg-surface-ink border border-surface-ink text-foreground-inverse',
+  /* Dunkle Karte: die Bühne (A-074), Inhalte folgen den neu belegten Tokens */
+  ink: 'buehne border border-border',
   outline: 'bg-transparent border border-border',
 };
 

@@ -14,8 +14,12 @@ export function HerstellerMarke({ name, logo, className }: { name: string; logo?
   if (bild?.url) {
     return (
       <p className={cn('flex items-center gap-3', className)}>
-        <span className="relative block h-12 w-24 shrink-0">
-          <Image src={bild.url} alt={`Logo ${name}`} fill sizes="96px" className="object-contain object-left" />
+        {/* Helle Plakette (`bg-plakette`, auch auf der dunklen Bühne des Seitenkopfs hell), damit dunkle
+            oder durchsichtige Logos sichtbar bleiben; Außenmaß wie vorher. */}
+        <span className="block h-12 w-24 shrink-0 rounded-md bg-plakette p-1.5">
+          <span className="relative block h-full w-full">
+            <Image src={bild.url} alt={`Logo ${name}`} fill sizes="96px" className="object-contain object-left" />
+          </span>
         </span>
         <span className="sr-only">{name}</span>
       </p>

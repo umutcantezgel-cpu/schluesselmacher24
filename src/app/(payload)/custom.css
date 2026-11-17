@@ -9,12 +9,12 @@
   --style-radius-l: 14px;
 }
 
-/* Markenfarbe für Schaltflächen und Links — hell und freundlich wie die Seite. */
+/* Markenblau für Schaltflächen und Links (A-074; Hex der Stufen aus area-theme.ts). Das Backend bleibt hell. */
 :root {
-  --theme-success-500: #c04606;
-  --theme-success-600: #a43b04;
-  --theme-success-100: #fdeee9;
-  --theme-success-150: #fbd4c7;
+  --theme-success-500: #123780;
+  --theme-success-600: #092661;
+  --theme-success-100: #ebf2fe;
+  --theme-success-150: #cddffe;
 }
 
 /* Eigene Aktionen: Termin verschieben (Seitenleiste), Werkzeuge über der Vorgangsliste. */

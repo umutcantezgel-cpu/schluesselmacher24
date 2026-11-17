@@ -43,11 +43,13 @@ export interface Mailgeruest {
 const FARBE = {
   papier: '#F7F9FC',
   flaeche: '#FFFFFF',
-  linie: '#c04606',
+  linie: '#123780',
+  /* die „24“ der Wortmarke: Grafikfarbe des Markenblaus, hebt sich von der Schrift ab */
+  marke: '#2e62c9',
   haarlinie: '#D9E0EA',
   text: '#192133',
   leise: '#5B6578',
-  hinweis: '#FDEEE9',
+  hinweis: '#EBF2FE',
 };
 
 const SCHRIFT = "'IBM Plex Sans', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
@@ -195,7 +197,7 @@ function html(geruest: Mailgeruest): string {
     + vorschau
     + `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${FARBE.papier};"><tr><td align="center" style="padding:24px 12px;">`
     + `<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;background:${FARBE.flaeche};border-top:4px solid ${FARBE.linie};font-family:${SCHRIFT};color:${FARBE.text};">`
-    + `<tr><td style="padding:24px 32px 8px;font-size:18px;font-weight:700;letter-spacing:0.02em;color:${FARBE.text};">SCHLÜSSELMACHER<span style="color:${FARBE.linie};">24</span></td></tr>`
+    + `<tr><td style="padding:24px 32px 8px;font-size:18px;font-weight:700;letter-spacing:0.02em;color:${FARBE.text};">SCHLÜSSELMACHER<span style="color:${FARBE.marke};">24</span></td></tr>`
     + `<tr><td style="padding:16px 32px 8px;">`
     + `<p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:${FARBE.text};">${escapeHtml(geruest.anrede)}</p>`
     + geruest.bausteine.map(bausteinHtml).join('')

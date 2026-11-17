@@ -1,0 +1,1452 @@
+{
+ "start-390": {
+  "pfad": "/",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "section.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 10.38,
+  "kleinsterAufLicht": 6.91,
+  "unter": [],
+  "anzahlText": 110,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "a Warenkorb, leer",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Menü öffnen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "bereich-390": {
+  "pfad": "/autoschluessel",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 85,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "a Warenkorb, leer",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Menü öffnen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "leistung-390": {
+  "pfad": "/autoschluessel/nachmachen",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 70,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "a Warenkorb, leer",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Menü öffnen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "code-390": {
+  "pfad": "/schluessel-nach-code",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 73,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "a Warenkorb, leer",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Menü öffnen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "shop-390": {
+  "pfad": "/shop",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 68,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "a Warenkorb, leer",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Menü öffnen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "konfigurator-390": {
+  "pfad": "/gleichschliessende-zylinder/konfigurator",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": null,
+  "unter": [],
+  "anzahlText": 65,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "a Warenkorb, leer",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Menü öffnen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "formular-390": {
+  "pfad": "/autoschluessel/anfrage",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": null,
+  "unter": [],
+  "anzahlText": 64,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "a Warenkorb, leer",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Menü öffnen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "ratgeber-390": {
+  "pfad": "/ratgeber",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 68,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "a Warenkorb, leer",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Menü öffnen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "tutorial-390": {
+  "pfad": "/tutorials/schluessel-richtig-fotografieren",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 69,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "a Warenkorb, leer",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Menü öffnen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "impressum-390": {
+  "pfad": "/rechtliches/impressum",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 11.3,
+  "kleinsterAufLicht": null,
+  "unter": [],
+  "anzahlText": 63,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "a Warenkorb, leer",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Menü öffnen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "ort-390": {
+  "pfad": "/standorte/wetzlar",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 77,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "a Warenkorb, leer",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Menü öffnen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "404-390": {
+  "pfad": "/gibt-es-nicht-farbprobe",
+  "cls": 0.017,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 11.3,
+  "kleinsterAufLicht": null,
+  "unter": [],
+  "anzahlText": 61,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "a Warenkorb, leer",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Menü öffnen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "start-1280": {
+  "pfad": "/",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "section.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 10.38,
+  "kleinsterAufLicht": 6.91,
+  "unter": [],
+  "anzahlText": 92,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Autoschlüssel",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Nach Code",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "bereich-1280": {
+  "pfad": "/autoschluessel",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 86,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Autoschlüssel",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Nach Code",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "leistung-1280": {
+  "pfad": "/autoschluessel/nachmachen",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 71,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Autoschlüssel",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Nach Code",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "code-1280": {
+  "pfad": "/schluessel-nach-code",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 74,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Autoschlüssel",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Nach Code",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "shop-1280": {
+  "pfad": "/shop",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 69,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Autoschlüssel",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Nach Code",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "konfigurator-1280": {
+  "pfad": "/gleichschliessende-zylinder/konfigurator",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": null,
+  "unter": [],
+  "anzahlText": 69,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Autoschlüssel",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Nach Code",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "formular-1280": {
+  "pfad": "/autoschluessel/anfrage",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": null,
+  "unter": [],
+  "anzahlText": 69,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Autoschlüssel",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Nach Code",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "ratgeber-1280": {
+  "pfad": "/ratgeber",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 69,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Autoschlüssel",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Nach Code",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "tutorial-1280": {
+  "pfad": "/tutorials/schluessel-richtig-fotografieren",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 70,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Autoschlüssel",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Nach Code",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "impressum-1280": {
+  "pfad": "/rechtliches/impressum",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 11.3,
+  "kleinsterAufLicht": null,
+  "unter": [],
+  "anzahlText": 64,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Autoschlüssel",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Nach Code",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "ort-1280": {
+  "pfad": "/standorte/wetzlar",
+  "cls": 0,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "header.buehne.buehne-licht",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": true,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 8.48,
+  "kleinsterAufLicht": 5.19,
+  "unter": [],
+  "anzahlText": 78,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Autoschlüssel",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Nach Code",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "404-1280": {
+  "pfad": "/gibt-es-nicht-farbprobe",
+  "cls": 0.011,
+  "buehnen": [
+   {
+    "element": "div.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "footer.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   },
+   {
+    "element": "nav.buehne",
+    "hintergrund": "oklch(0.2 0.055 264)",
+    "licht": false,
+    "area": ".78 .12 235"
+   }
+  ],
+  "fehlt": [],
+  "kleinsterKontrast": 11.3,
+  "kleinsterAufLicht": null,
+  "unter": [],
+  "anzahlText": 62,
+  "fokus": [
+   {
+    "element": "a Zum Inhalt springen",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": false
+   },
+   {
+    "element": "a SCHLÜSSELMACHER24",
+    "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Autoschlüssel",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   },
+   {
+    "element": "button Nach Code",
+    "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "aufBuehne": true
+   }
+  ],
+  "druck": [
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)",
+   "rgba(0, 0, 0, 0) / oklch(0.2497 0.0366 266)"
+  ]
+ },
+ "kachel-fokus-1280": {
+  "element": "a Auto, Autoschlüssel",
+  "boxShadow": "oklab(0 0 0 / 0) 0px 0px 0px 0px, oklab(0 0 0 / 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+  "aufBuehne": true
+ },
+ "kopfknopf-fokus-1280": {
+  "element": "a Termin anfragen",
+  "boxShadow": "oklch(0.2 0.055 264) 0px 0px 0px 2px, oklch(0.8 0.11 235) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+  "aufBuehne": true
+ }
+}

@@ -37,10 +37,15 @@ describe('Root-Layout', () => {
     }
   });
 
-  it('nimmt als Farbe der Browserleiste den Seitenhintergrund (--background)', () => {
+  it('nimmt als Farbe der Browserleiste die Farbe der Kopfzeile (--background der Bühne)', () => {
     const layout = readFileSync(path.join(__dirname, 'layout.tsx'), 'utf8');
     const css = readFileSync(path.join(__dirname, 'globals.css'), 'utf8');
-    const hintergrund = css.match(/--background:\s*([^;]+);/)?.[1].trim() ?? '';
+    const buehne = css.slice(css.indexOf('.buehne {'));
+    const hintergrund = buehne.match(/--background:\s*([^;]+);/)?.[1].trim() ?? '';
+    expect(hintergrund).not.toBe('');
     expect(layout).toContain(`themeColor: '${oklchZuHex(hintergrund)}'`);
+    /* Die Kopfzeile steht auf der Bühne. */
+    const kopf = readFileSync(path.join(process.cwd(), 'src/components/layout/site-header.tsx'), 'utf8');
+    expect(kopf).toMatch(/className="buehne\b/);
   });
 });

@@ -34,6 +34,8 @@ const config = {
           sunken: 'oklch(var(--surface-sunken) / <alpha-value>)',
           ink: 'oklch(var(--surface-ink) / <alpha-value>)',
         },
+        /* helle Fläche unter Herstellerlogos, auch auf der Bühne hell (FA-FARBE-01) */
+        plakette: 'oklch(var(--plakette) / <alpha-value>)',
         foreground: {
           DEFAULT: 'oklch(var(--foreground) / <alpha-value>)',
           muted: 'oklch(var(--foreground-muted) / <alpha-value>)',

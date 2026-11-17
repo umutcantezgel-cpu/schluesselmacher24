@@ -49,7 +49,7 @@ export function MobileActionBar({ telefonHref }: { telefonHref?: string | null }
     <nav
       aria-label="Schnellzugriff"
       data-aktionsleiste
-      className="pb-safe-area fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface md:hidden"
+      className="buehne pb-safe-area fixed inset-x-0 bottom-0 z-sticky border-t border-border md:hidden"
     >
       {/* Spalten nach Inhalt statt gleich breit. Seit die Beschriftung 14 px hat (FA-QA-04A), darf
           „Termin anfragen“ auf schmalen Telefonen zweizeilig stehen; pb-safe-nav (5rem) reicht dafür. */}

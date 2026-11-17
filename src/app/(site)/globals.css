@@ -64,17 +64,26 @@ header a[aria-label$='Startseite'] > span {
 
 /* ==========================================================================
    SCHLÜSSELMACHER24 — Designsystem (KERN 2.0)
-   Hell, ruhig und fachlich. Eine einzige Akzentfarbe, das Markenorange
-   (Arbeitsanweisung des Inhabers vom 11.11.2026, FA-04): Schaltflächen, aktive
-   Zustände, Icons und Handlungsaufrufe. Die Bereiche (`--area*`, aus
-   `src/lib/visual/area-theme.ts`, gesetzt über `[data-area]`) tragen dasselbe
-   Orange. Farben als OKLCH-Tripel „L C H“ (Tailwind: `oklch(var(--x) / <alpha-value>)`).
-   Abstufungsregel: Text- und Aktionsfarbe L 0,555, Grafikfarbe L 0,62, helle
-   Flächen L 0,96; ein Farbton (41°). Neutrale Stufen im Stahlblau (H 255 bis 266,
-   Buntheit unter 0,05); die dunklen neutralen Flächen bleiben.
+   Ruhig und fachlich, mit einem filmischen Auftritt. Eine einzige Akzentfarbe,
+   das Markenblau: ein tiefes Dunkelblau aus der Tinte der Seite (Farbton 262°,
+   kräftiger gemacht; Auftrag vom 17.11.2026, A-074, ersetzt das Orange aus FA-04).
+   Schaltflächen, aktive Zustände, Icons und Handlungsaufrufe. Die Bereiche
+   (`--area*`, aus `src/lib/visual/area-theme.ts`, gesetzt über `[data-area]`)
+   tragen dasselbe Blau. Farben als OKLCH-Tripel „L C H“ (Tailwind:
+   `oklch(var(--x) / <alpha-value>)`).
+   Abstufungsregel auf hellem Grund: Text- und Aktionsfarbe L 0,36, Grafikfarbe
+   L 0,52, Fokusring L 0,58, helle Flächen L 0,96; ein Farbton (262°). Neutrale
+   Stufen im Stahlblau (H 255 bis 266, Buntheit unter 0,05).
+   Bühne (`.buehne`, `.buehne-licht`, weiter unten): Kopfzeile, erster Bildschirm
+   der Startseite, Seitenkopf, Fuß, Aktionsleiste am Telefon und dunkle Bänder
+   stehen auf dunkelblauem Grund; dort belegt derselbe Satz Tokens neu, mit hellen
+   eisblauen Lichtern (Farbton 235°) für Aktion, Grafik und Fokus. Formulare,
+   Kasse, Warenkorb, Lesetexte, Tabellen, Rechtstexte, Backend, PDF und E-Mails
+   bleiben hell. Den Farbton verschiebt man an einer Stelle: `--primary*` und
+   `--ring` hier, die Bühne darunter, `MARKENBLAU` in `area-theme.ts`.
    Bewusst KEINE Notdienst-Optik (kein Gelb/Schwarz, keine Signalfarben
-   als Flächen), kein Lila und kein Indigo. Kontraste, Farbraum und Regel prüft
-   `src/lib/visual/area-theme.test.ts`.
+   als Flächen), kein Lila, kein Indigo, kein Neon. Kontraste, Farbraum und
+   Regel prüft `src/lib/visual/area-theme.test.ts` (auch für die Bühne).
    ========================================================================== */
 
 @layer base {
@@ -85,6 +94,8 @@ header a[aria-label$='Startseite'] > span {
     --surface-muted: 0.971 0.0077 255;
     --surface-sunken: 0.9377 0.0123 255;
     --surface-ink: 0.2581 0.041 265.9;
+    /* Plakette: helle Fläche unter freigegebenen Herstellerlogos, auch auf der Bühne hell */
+    --plakette: 1 0 0;
 
     /* Text */
     --foreground: 0.2497 0.0366 266;
@@ -96,12 +107,12 @@ header a[aria-label$='Startseite'] > span {
     --border: 0.9091 0.0162 255;
     --border-strong: 0.8119 0.024 255.1;
     --input: 0.8684 0.0209 255.1;
-    --ring: 0.62 0.185 41;
+    --ring: 0.58 0.19 262;
 
-    /* Primär — Markenorange (die „24“ der Wortmarke, Links, Schaltflächen) */
-    --primary: 0.555 0.168 41;
-    --primary-hover: 0.495 0.15 41;
-    --primary-soft: 0.96 0.018 41;
+    /* Primär — Markenblau (Links, Schaltflächen; die „24“ trägt auf hellem Grund die Grafikfarbe) */
+    --primary: 0.36 0.13 262;
+    --primary-hover: 0.29 0.11 262;
+    --primary-soft: 0.96 0.018 262;
     --primary-foreground: 1 0 0;
 
     /* Sekundär */
@@ -190,6 +201,112 @@ header a[aria-label$='Startseite'] > span {
   @media (min-width: 768px) {
     :root {
       --header-height: var(--header-height-md);
+    }
+  }
+}
+
+/* ==========================================================================
+   Bühne (A-074): dunkelblauer Grund mit eisblauen Lichtern, als ein Baustein.
+   `.buehne` belegt denselben Satz Tokens neu – kein zweites Farbsystem; Bausteine
+   darin nutzen weiter `bg-surface`, `text-foreground`, `text-primary`, `ring-ring`
+   usw. `.buehne-licht` legt einen ruhigen Verlauf nur aus CSS darunter (kein Bild,
+   keine Bewegung, kein Filter über Text). Wo ja: Kopfzeile, erster Bildschirm der
+   Startseite, Seitenkopf, Kopf der Fehleransicht, Fuß, Aktionsleiste und feste
+   Formularleiste am Telefon, `Section tone="ink"`,
+   `Card variant="ink"`. Wo nein: Formulare, Kasse, Warenkorb, Lesetexte, Tabellen,
+   Rechtstexte, Backend, PDF, E-Mails.
+   `--area*` kommen sonst aus `[data-area]` (Tailwind-Plugin): `.buehne[data-area]`
+   und `.buehne [data-area]` schlagen sie über die Spezifität, gleich ob die Bühne
+   innen oder außen steht. Nur am Bildschirm: Gedruckt gilt der helle Satz
+   (`@media screen`), die Bühne druckt nicht als dunkle Fläche.
+   Kontraste aller Paare prüft `src/lib/visual/area-theme.test.ts` („Bühne“).
+   Schicht „components“: Damit kennt Tailwind die Klasse und erlaubt Varianten
+   (`max-md:buehne` an der festen Formularleiste am Telefon, `flow-shell.tsx`).
+   ========================================================================== */
+@layer components {
+  @media screen {
+    .buehne {
+      /* Flächen */
+      --background: 0.2 0.055 264;
+      --surface: 0.255 0.065 264;
+      --surface-muted: 0.28 0.07 264;
+      --surface-sunken: 0.15 0.04 264;
+      --surface-ink: 0.15 0.04 264;
+      /* bleibt bewusst hell: dunkle oder durchsichtige Herstellerlogos brauchen ihre helle Fläche */
+      --plakette: 1 0 0;
+      /* hellste Stelle des Lichts (= Markenblau `strong`) */
+      --licht: 0.36 0.13 262;
+
+      /* Text */
+      --foreground: 0.985 0.004 255;
+      --foreground-muted: 0.86 0.03 255;
+      --foreground-subtle: 0.76 0.04 255;
+      --foreground-inverse: 0.2 0.055 264;
+
+      /* Linien: `--border` trennt ruhig, `--border-strong` und `--input` rahmen Bedienelemente (≥ 3:1) */
+      --border: 0.36 0.07 264;
+      --border-strong: 0.64 0.07 258;
+      --input: 0.64 0.07 258;
+      --ring: 0.8 0.11 235;
+
+      /* Primär — helle Aktion: Schaltfläche mit dunkler Schrift, Links, die „24“ */
+      --primary: 0.84 0.09 235;
+      --primary-hover: 0.93 0.035 235;
+      --primary-soft: 0.3 0.08 264;
+      --primary-foreground: 0.2 0.055 264;
+
+      --secondary: 0.3 0.07 264;
+      --secondary-foreground: 0.985 0.004 255;
+
+      /* Technisch-Teal und Statusfarben in einer hellen Stufe */
+      --accent: 0.82 0.08 209.4;
+      --accent-soft: 0.3 0.05 209.4;
+      --accent-foreground: 0.2 0.055 264;
+      --success: 0.82 0.12 159.8;
+      --success-soft: 0.3 0.05 159.8;
+      --warning: 0.84 0.1 62.2;
+      --warning-soft: 0.3 0.05 62.2;
+      --danger: 0.78 0.12 25.4;
+      --danger-soft: 0.3 0.06 25.4;
+      --info: 0.86 0.03 255;
+      --info-soft: 0.28 0.07 264;
+
+      --card: 0.255 0.065 264;
+      --card-foreground: 0.985 0.004 255;
+      --popover: 0.255 0.065 264;
+      --popover-foreground: 0.985 0.004 255;
+      --muted: 0.28 0.07 264;
+      --muted-foreground: 0.86 0.03 255;
+      --destructive: 0.78 0.12 25.4;
+      --destructive-foreground: 0.2 0.055 264;
+
+      --shadow-color: 0.1 0.03 264;
+
+      background-color: oklch(var(--background));
+      color: oklch(var(--foreground));
+    }
+
+    /* Grafik, Kennzeichnung und Leuchten der Bühne, auch gegen `[data-area]` darin */
+    .buehne,
+    .buehne[data-area],
+    .buehne [data-area] {
+      --area: 0.78 0.12 235;
+      --area-strong: 0.86 0.08 235;
+      --area-soft: 0.3 0.08 264;
+      --area-muted: 0.36 0.09 264;
+      --area-foreground: 0.2 0.055 264;
+      --leuchten: 0 0 24px 0 oklch(var(--area) / 0.28);
+      --leuchten-druck: 0 0 24px 2px oklch(var(--area) / 0.42);
+    }
+
+    /* Licht: von oben rechts über den Grund bis in die tiefste Stufe */
+    .buehne-licht {
+      background-image: radial-gradient(
+        ellipse 85% 130% at 100% 0%,
+        oklch(var(--licht)) 0%,
+        oklch(var(--background)) 60%,
+        oklch(var(--surface-sunken)) 100%
+      );
     }
   }
 }

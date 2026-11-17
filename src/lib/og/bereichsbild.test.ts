@@ -23,8 +23,8 @@ describe('tokensAusCss', () => {
 
 describe('farbe', () => {
   it('macht aus dem OKLCH-Tripel einen Hex-Wert, den Satori lesen kann', () => {
-    /* --primary, das Markenorange */
-    expect(farbe('0.555 0.168 41')).toBe('#c04606');
+    /* --primary, das Markenblau */
+    expect(farbe('0.36 0.13 262')).toBe('#123780');
     expect(farbe('1 0 0')).toBe('#ffffff');
   });
 });

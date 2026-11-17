@@ -9,12 +9,14 @@ import { SCHRIFTEN, laeufe, schriftDaten, type Schnitt } from './schriften';
  * (`PDF_FARBEN`, geprüft gegen globals.css), Fußzeile mit Seitenzahl auf jeder Seite.
  */
 
-/** Hex-Werte der Tokens --foreground, --foreground-muted, --border, --primary, --surface-muted. */
+/** Hex-Werte der Tokens --foreground, --foreground-muted, --border, --primary, --surface-muted und der Grafikfarbe des Markenblaus. */
 export const PDF_FARBEN = {
   text: '#192133',
   leise: '#4f5a6d',
   linie: '#dae2ec',
-  primaer: '#c04606',
+  primaer: '#123780',
+  /* die „24“ der Wortmarke (Grafikfarbe `accent` des Markenblaus) */
+  marke: '#2e62c9',
   flaeche: '#f2f6fb',
 } as const;
 
@@ -176,7 +178,7 @@ class Zeichner {
     const y = SEITE.oben;
     this.doc.font(this.teile('fett')[0]).fontSize(12).fillColor(PDF_FARBEN.text);
     this.doc.text('SCHLÜSSELMACHER', SEITE.rand, y, { continued: true, lineBreak: false });
-    this.doc.fillColor(PDF_FARBEN.primaer).text('24', { continued: false, lineBreak: false });
+    this.doc.fillColor(PDF_FARBEN.marke).text('24', { continued: false, lineBreak: false });
     const stand = `Stand ${blatt.stand.toLocaleString('de-DE', { timeZone: 'Europe/Berlin', dateStyle: 'medium', timeStyle: 'short' })} Uhr`;
     this.schreibe(stand, SEITE.rand, y + 2, { groesse: 8.5, farbe: PDF_FARBEN.leise, ausrichtung: 'right' });
     this.linie(y + 22, PDF_FARBEN.primaer, 1.5);

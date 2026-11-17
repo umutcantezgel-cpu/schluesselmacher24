@@ -64,7 +64,8 @@ export async function SiteFooter() {
   const werkstatt = standort(company);
 
   return (
-    <footer className="bg-surface-sunken pb-safe-nav">
+    /* Auf der Bühne (A-074), ohne Licht: ruhiger Abschluss jeder Seite */
+    <footer className="buehne pb-safe-nav">
       <div className="shell pt-section-tight">
         <Profillinie text="SCHLÜSSELMACHER24" groesse="gross" voll ruhig className="text-border-strong" />
       </div>

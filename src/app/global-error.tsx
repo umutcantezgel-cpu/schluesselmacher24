@@ -9,14 +9,16 @@
  */
 
 /* Dieselben OKLCH-Tripel wie --background, --surface, --foreground, --foreground-muted, --border und
-   --primary in globals.css (geprüft in global-error.test.ts). */
+   --primary in globals.css, die „24“ in der Grafikfarbe des Markenblaus (`accent` in area-theme.ts;
+   geprüft in global-error.test.ts). */
 const FARBE = {
   hintergrund: 'oklch(0.9882 0.0028 255)',
   flaeche: 'oklch(1 0 0)',
   text: 'oklch(0.2497 0.0366 266)',
   leise: 'oklch(0.4654 0.0347 262.8)',
   linie: 'oklch(0.9091 0.0162 255)',
-  primaer: 'oklch(0.555 0.168 41)',
+  primaer: 'oklch(0.36 0.13 262)',
+  marke: 'oklch(0.52 0.17 262)',
 };
 
 /* Ohne die Schriftdateien des Layouts: Plex Sans, falls installiert, sonst Systemschriften. */
@@ -39,7 +41,7 @@ export default function GlobalError({ error, retry }: { error: Error & { digest?
           }}
         >
           <p style={{ margin: 0, fontWeight: 700, letterSpacing: '0.02em' }}>
-            SCHLÜSSELMACHER<span style={{ color: FARBE.primaer }}>24</span>
+            SCHLÜSSELMACHER<span style={{ color: FARBE.marke }}>24</span>
           </p>
           <div
             style={{

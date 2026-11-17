@@ -34,7 +34,8 @@ export function Section({ children, className, tone = 'default', tight, id, labe
         (tone === 'muted' || tone === 'sunken') && '-mt-px border-y border-border',
         tone === 'muted' && 'bg-surface-muted',
         tone === 'sunken' && 'bg-surface-sunken',
-        tone === 'ink' && 'bg-surface-ink text-foreground-inverse',
+        /* Dunkles Band: die Bühne (A-074), Inhalte folgen den neu belegten Tokens */
+        tone === 'ink' && 'buehne',
         className,
       )}
     >
@@ -51,7 +52,10 @@ export interface SectionHeadingProps {
   lead?: string;
   align?: 'left' | 'center';
   className?: string;
-  /** Auf dunklem Grund. */
+  /**
+   * Veraltet: Auf dunklem Grund (Bühne, `Section tone="ink"`) folgen Augenbraue, Titel und
+   * Einleitung den neu belegten Tokens von selbst; die Angabe ändert nichts mehr.
+   */
   inverse?: boolean;
   /** Profillinie unter der Augenbrauen-Zeile (Leitelement, sparsam einsetzen). */
   profillinie?: boolean;
@@ -66,14 +70,13 @@ export function SectionHeading({
   lead,
   align = 'left',
   className,
-  inverse,
   profillinie,
   id,
 }: SectionHeadingProps) {
   return (
     <div className={cn('max-w-2xl', align === 'center' && 'mx-auto text-center', className)}>
       {eyebrow && (
-        <p className={cn('eyebrow', inverse && 'text-primary-soft')}>
+        <p className="eyebrow">
           {nummer && <span className="text-foreground-muted tabular-nums">{nummer}</span>}
           {eyebrow}
         </p>
@@ -81,25 +84,18 @@ export function SectionHeading({
       {profillinie && (
         <Profillinie
           text={title}
-          className={cn('mt-3 text-area', align === 'center' && 'mx-auto', inverse && 'text-primary-soft')}
+          className={cn('mt-3 text-area', align === 'center' && 'mx-auto')}
         />
       )}
       <h2
         id={id}
-        className={cn(
-          'mt-3 text-headline font-bold text-foreground',
-          inverse && 'text-foreground-inverse',
-        )}
+        className="mt-3 text-headline font-bold text-foreground"
       >
         {title}
       </h2>
       {lead && (
         <p
-          className={cn(
-            'mt-4 max-w-measure text-lead text-foreground-muted',
-            align === 'center' && 'mx-auto',
-            inverse && 'text-foreground-inverse/70',
-          )}
+          className={cn('mt-4 max-w-measure text-lead text-foreground-muted', align === 'center' && 'mx-auto')}
         >
           {lead}
         </p>

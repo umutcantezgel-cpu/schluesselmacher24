@@ -151,61 +151,65 @@ export function SiteHeader({ gruppen, rubrikIcons = {}, telefon }: SiteHeaderPro
   const umschalten = useCallback((key: string) => setOpenMobileArea((offen) => (offen === key ? null : key)), []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-header border-b border-border bg-surface">
-      <div className="shell-wide flex h-header items-center gap-4">
-        {/* Wortmarke — bewusst ohne Bilddatei (Logo, unverändert) */}
-        <Link href="/" prefetch={false} className="flex shrink-0 items-baseline gap-1.5" aria-label="SCHLÜSSELMACHER24 — Startseite">
-          <span className="font-display text-title-sm font-bold tracking-tight text-foreground md:text-title">
-            SCHLÜSSELMACHER
-          </span>
-          <span className="font-display text-title-sm font-bold tracking-tight text-primary md:text-title">24</span>
-        </Link>
-
-        {/* Hauptnavigation ab Desktop */}
-        <DesktopNav gruppen={gruppen} pathname={pathname} openArea={openArea} setOpenArea={setOpenArea} />
-
-        <div className="ml-auto flex items-center gap-1 lg:ml-0">
-          <Link
-            href="/warenkorb"
-            prefetch={false}
-            className="relative inline-flex min-h-touch min-w-touch items-center justify-center rounded-md text-foreground-muted transition-colors duration-quick hover:bg-surface-muted hover:text-foreground"
-          >
-            <GlyphWarenkorb size={22} />
-            {mounted && cartCount > 0 && (
-              <span
-                key={cartCount}
-                aria-hidden
-                className="sm24-pop [--sm24-duration:var(--dauer-quick)] absolute right-0.5 top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 font-mono text-caption font-semibold tabular-nums text-primary-foreground"
-              >
-                {cartCount > 99 ? '99+' : cartCount}
-              </span>
-            )}
-            <span className="sr-only">
-              Warenkorb{mounted && cartCount > 0 ? `, ${cartCount} Artikel` : ', leer'}
+    <header className="fixed inset-x-0 top-0 z-header">
+      {/* Die Leiste steht auf der Bühne (A-074); Megamenü und Schublade darunter bleiben helle
+          Flächen mit eigenem Rand und Schatten: lange Listen lesen sich dort ruhiger. */}
+      <div className="buehne border-b border-border">
+        <div className="shell-wide flex h-header items-center gap-4">
+          {/* Wortmarke — bewusst ohne Bilddatei (Logo, unverändert) */}
+          <Link href="/" prefetch={false} className="flex shrink-0 items-baseline gap-1.5" aria-label="SCHLÜSSELMACHER24 — Startseite">
+            <span className="font-display text-title-sm font-bold tracking-tight text-foreground md:text-title">
+              SCHLÜSSELMACHER
             </span>
+            <span className="font-display text-title-sm font-bold tracking-tight text-primary md:text-title">24</span>
           </Link>
 
-          <Link
-            href="/autoschluessel/anfrage"
-            prefetch={false}
-            data-kopfknopf
-            className="hidden min-h-touch items-center whitespace-nowrap rounded-md bg-primary px-4 text-small font-semibold text-primary-foreground transition-colors duration-quick hover:bg-primary-hover active:scale-druck ruhig:transform-none sm:inline-flex"
-          >
-            Termin anfragen
-          </Link>
+          {/* Hauptnavigation ab Desktop */}
+          <DesktopNav gruppen={gruppen} pathname={pathname} openArea={openArea} setOpenArea={setOpenArea} />
 
-          <button
-            ref={menuButtonRef}
-            type="button"
-            // Öffnen als Transition: Der Klick antwortet sofort, die Schublade baut sich im nächsten Bild auf.
-            onClick={() => startTransition(() => setDrawerOpen(true))}
-            aria-expanded={drawerOpen}
-            aria-controls="hauptmenue-mobil"
-            className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-md text-foreground hover:bg-surface-muted lg:hidden"
-          >
-            <GlyphMenue size={24} />
-            <span className="sr-only">Menü öffnen</span>
-          </button>
+          <div className="ml-auto flex items-center gap-1 lg:ml-0">
+            <Link
+              href="/warenkorb"
+              prefetch={false}
+              className="relative inline-flex min-h-touch min-w-touch items-center justify-center rounded-md text-foreground-muted transition-colors duration-quick hover:bg-surface-muted hover:text-foreground"
+            >
+              <GlyphWarenkorb size={22} />
+              {mounted && cartCount > 0 && (
+                <span
+                  key={cartCount}
+                  aria-hidden
+                  className="sm24-pop [--sm24-duration:var(--dauer-quick)] absolute right-0.5 top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 font-mono text-caption font-semibold tabular-nums text-primary-foreground"
+                >
+                  {cartCount > 99 ? '99+' : cartCount}
+                </span>
+              )}
+              <span className="sr-only">
+                Warenkorb{mounted && cartCount > 0 ? `, ${cartCount} Artikel` : ', leer'}
+              </span>
+            </Link>
+
+            <Link
+              href="/autoschluessel/anfrage"
+              prefetch={false}
+              data-kopfknopf
+              className="hidden min-h-touch items-center whitespace-nowrap rounded-md bg-primary px-4 text-small font-semibold text-primary-foreground transition-colors duration-quick hover:bg-primary-hover active:scale-druck ruhig:transform-none sm:inline-flex"
+            >
+              Termin anfragen
+            </Link>
+
+            <button
+              ref={menuButtonRef}
+              type="button"
+              // Öffnen als Transition: Der Klick antwortet sofort, die Schublade baut sich im nächsten Bild auf.
+              onClick={() => startTransition(() => setDrawerOpen(true))}
+              aria-expanded={drawerOpen}
+              aria-controls="hauptmenue-mobil"
+              className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-md text-foreground hover:bg-surface-muted lg:hidden"
+            >
+              <GlyphMenue size={24} />
+              <span className="sr-only">Menü öffnen</span>
+            </button>
+          </div>
         </div>
       </div>
 

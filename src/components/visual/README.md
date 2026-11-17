@@ -31,6 +31,9 @@ Nur Tokens, nie feste Farbwerte (`#…`, `rgb()`, `oklch()`):
 - Neutral: `stroke-foreground`, `stroke-foreground-muted`, `fill-surface`, `fill-surface-muted`,
   `stroke-border-strong`, `fill-foreground-muted` (Beschriftungen).
 - Zustand (nur Schließtechnik): `stroke-success` (passt), `stroke-danger`, `fill-danger-soft` (passt nicht).
+- Auf der Bühne (`.buehne`, dunkelblauer Grund in Kopf, Hub, Seitenkopf und Fuß; A-074) belegt `globals.css`
+  dieselben Tokens neu, auch `--area*`: Zeichnungen mit Token-Klassen folgen von selbst, feste Farben
+  stünden dort falsch.
 - Farbe per Tailwind-Klasse setzen, nicht per `fill="var(--…)"` (Safari). Deckkraft über Tailwind (`fill-area/20`); gedämpfte Bauteile über `opacity-30` auf einer äußeren Gruppe.
 
 ## Fach-Icons

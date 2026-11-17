@@ -8,7 +8,7 @@ import { formatCents, formatDateTime } from '../format';
 import { echteEinstellungen } from '../rechtliches/test-hilfen';
 import type { BusinessRecord } from '../types';
 import { STATUS_REIHENFOLGE } from '../vorgang-status';
-import { oklchZuHex } from '../visual/area-theme';
+import { contrastRatio, oklchZuHex } from '../visual/area-theme';
 
 import type { BlattAbschnitt, BlattBild } from './blatt';
 import { PDF_FARBEN, erzeugePdf } from './erzeuge-pdf';
@@ -355,7 +355,11 @@ describe('erzeugePdf', () => {
     expect(PDF_FARBEN.text).toBe(oklchZuHex('0.2497 0.0366 266'));
     expect(PDF_FARBEN.leise).toBe(oklchZuHex('0.4654 0.0347 262.8'));
     expect(PDF_FARBEN.linie).toBe(oklchZuHex('0.9091 0.0162 255'));
-    expect(PDF_FARBEN.primaer).toBe(oklchZuHex('0.555 0.168 41'));
+    expect(PDF_FARBEN.primaer).toBe(oklchZuHex('0.36 0.13 262'));
+    /* die „24“: Grafikfarbe des Markenblaus, lesbar auf Weiß und von der Schrift abgesetzt */
+    expect(PDF_FARBEN.marke).toBe(oklchZuHex('0.52 0.17 262'));
+    expect(contrastRatio('0.52 0.17 262', '1 0 0')).toBeGreaterThanOrEqual(4.5);
+    expect(contrastRatio('0.52 0.17 262', '0.2497 0.0366 266')).toBeGreaterThanOrEqual(2.5);
     expect(PDF_FARBEN.flaeche).toBe(oklchZuHex('0.971 0.0077 255'));
   });
 
