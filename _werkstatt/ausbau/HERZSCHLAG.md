@@ -1,7 +1,7 @@
 # HERZSCHLAG
-Zeit: 2026-11-17 20:52 MEZ
+Zeit: 2026-11-17 21:31 MEZ
 Sitzung: 8e76b2e3
-Zustand: AKTIV. Pause vom 16.11. etwa 18:55 MEZ bis 17.11. 20:45 MEZ: Das Wochenlimit des Kontos war erreicht (Rücksetzung 17.11. 19:00 MEZ); in dieser Zeit stand die Arbeit. Der Nutzer hat am 17.11. angewiesen, den gesamten aktuellen Stand live zu stellen
-Etappe und Welle: FA-INHALT-01 (Tutorials Teil A) ist umgesetzt, aber die Gegenprüfung brach am Wochenlimit ab; sie wird jetzt nachgeholt. FA-SEO-03C brach mitten in der Umsetzung ab; der unfertige Stand liegt auf dem Zweig rettung/fa-seo-03c-zwischenstand und ist aus dem Arbeitsbaum genommen. Livegang: zuerst der voll geprüfte Stand (fd1d0f3) nach Prüfung des Produktions-Builds ohne Datenbank auf main, danach die Tutorials nach ihrer Abnahme
-Letzter grüner Commit: ca1a4d5 voll geprüft (Typprüfung, Lint, Unit 4145, DB 183, Build 181/181; Onpage 137 Seiten, Median 100, kein Befund); fd1d0f3 hat denselben Quelltext und nur neuere Paket- und Statusdateien
+Zustand: AKTIV. Livegang 6 ist erfolgt: Commit 10db06a (geprüfter Stand ca1a4d5 mit Sicherheitsaktualisierung Next.js 16.4.6, Entscheidung A-072) liegt seit 21:12 MEZ auf main; die öffentliche Seite liefert ihn seit etwa 21:14 MEZ aus (17 von 17 Stichproben in Ordnung, alles noindex wie im Schaufenster vorgesehen).
+Etappe und Welle: Abnahme von FA-INHALT-01 (Tutorials Teil A). Prüfkette grün (Typprüfung, Lint, Unit 4262, DB 190, Build 190/190). Offener Befund aus der Browsermessung: Schrift in Zeichnungen der Tutorial-Schritte unter 14 px (Regel A-068); wird jetzt behoben, danach restliche Abnahme und zweiter Livegang nur dieses geprüften Stands. FA-SEO-03C ruht unfertig auf rettung/fa-seo-03c-zwischenstand.
+Letzter grüner Commit: 10db06a (voll geprüft in sauberer Kopie: Typprüfung, Lint, Unit 4143, DB 183, Build 181/181, Schaufenster-Build Exit 0)
 ARBEITSBRANCH: claude/new-session-li9jsf
