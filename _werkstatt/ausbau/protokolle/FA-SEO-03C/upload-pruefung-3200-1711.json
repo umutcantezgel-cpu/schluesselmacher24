@@ -1,0 +1,159 @@
+{
+ "basis": "http://localhost:3200",
+ "A": {
+  "ladezeitMs": 1626,
+  "uploadTeilbuendelVorWeiter": [
+   {
+    "url": "/_next/static/chunks/23aylg5ag7_au.js",
+    "zeit": 1794956913123,
+    "nachLoadMs": -727
+   }
+  ],
+  "titelVorher": "Was sollen wir für Sie tun?",
+  "titel8": "Fotos Ihres Schlüssels",
+  "fokus8": "body: {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organiz",
+  "titel7": "Was sollen wir für Sie tun?",
+  "dateiNochDa": 2,
+  "fokus8b": "body: {\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organiz",
+  "platzhalterGesehen": 0,
+  "spaeterWeitermachenTreffer": 1,
+  "tabFolge": [
+   "a: 06441 8056279",
+   "a: Rückruf erbitten",
+   "button: Foto aufnehmen",
+   "button: Aus Galerie wählen",
+   "button: test-vorderseite.png entfernen",
+   "button: Foto aufnehmen",
+   "button: Aus Galerie wählen",
+   "button: Foto aufnehmen",
+   "button: Aus Galerie wählen",
+   "button: Foto aufnehmen",
+   "button: Aus Galerie wählen",
+   "button: Zurück"
+  ],
+  "cls": 0.13045359050033292,
+  "clsMitEingabe": 0.28250377586077074,
+  "konsole": [],
+  "abgefangen": [
+   "action-unbekannt /autoschluessel/anfrage",
+   "upload /api/kunden-upload"
+  ]
+ },
+ "B": [
+  {
+   "breite": 412,
+   "teilbuendel": [
+    "/_next/static/chunks/23aylg5ag7_au.js",
+    "/_next/static/chunks/16lpq-z9w-8yd.js"
+   ],
+   "platzhalter": [],
+   "felder": [
+    {
+     "index": 0,
+     "hoehe": 344.6875,
+     "upload": false
+    },
+    {
+     "index": 1,
+     "hoehe": 322.125,
+     "upload": false
+    },
+    {
+     "index": 2,
+     "hoehe": 497.5,
+     "upload": true
+    },
+    {
+     "index": 3,
+     "hoehe": 521.875,
+     "upload": true
+    },
+    {
+     "index": 4,
+     "hoehe": 638.875,
+     "upload": true
+    },
+    {
+     "index": 5,
+     "hoehe": 521.875,
+     "upload": true
+    },
+    {
+     "index": 6,
+     "hoehe": 208.625,
+     "upload": false
+    }
+   ],
+   "vergleich": [],
+   "cls": 0.13045359050033292,
+   "verschiebungen": [
+    {
+     "wert": 0.13045359050033292,
+     "eingabe": false,
+     "zeit": 2204
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "teilbuendel": [
+    "/_next/static/chunks/23aylg5ag7_au.js",
+    "/_next/static/chunks/16lpq-z9w-8yd.js"
+   ],
+   "platzhalter": [],
+   "felder": [
+    {
+     "index": 0,
+     "hoehe": 278.796875,
+     "upload": false
+    },
+    {
+     "index": 1,
+     "hoehe": 200.25,
+     "upload": false
+    },
+    {
+     "index": 2,
+     "hoehe": 305.5625,
+     "upload": true
+    },
+    {
+     "index": 3,
+     "hoehe": 329.9375,
+     "upload": true
+    },
+    {
+     "index": 4,
+     "hoehe": 427.96875,
+     "upload": true
+    },
+    {
+     "index": 5,
+     "hoehe": 329.9375,
+     "upload": true
+    },
+    {
+     "index": 6,
+     "hoehe": 135.5,
+     "upload": false
+    }
+   ],
+   "vergleich": [],
+   "cls": 0.08848715286254882,
+   "verschiebungen": [
+    {
+     "wert": 0.00007410049438476563,
+     "eingabe": false,
+     "zeit": 749
+    },
+    {
+     "wert": 0.08841305236816406,
+     "eingabe": false,
+     "zeit": 2305
+    }
+   ],
+   "konsole": []
+  }
+ ]
+}

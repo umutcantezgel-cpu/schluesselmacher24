@@ -1,0 +1,31 @@
+{"variante":"keine","lange":3,"ueber50":309,"stil":135,"layout":117,"zeichnen":181,"gesamt":1261}
+{"variante":"ab-aufbau","lange":3,"ueber50":272,"stil":105,"layout":84,"zeichnen":118,"gesamt":1288}
+{"variante":"ohne-leistungen","lange":5,"ueber50":156,"stil":109,"layout":87,"zeichnen":134,"gesamt":1229}
+{"variante":"keine","lange":4,"ueber50":325,"stil":148,"layout":117,"zeichnen":201,"gesamt":1396}
+{"variante":"ab-aufbau","lange":3,"ueber50":185,"stil":104,"layout":63,"zeichnen":132,"gesamt":1243}
+{"variante":"ohne-leistungen","lange":4,"ueber50":212,"stil":110,"layout":79,"zeichnen":143,"gesamt":1251}
+{"variante":"keine","lange":5,"ueber50":333,"stil":143,"layout":135,"zeichnen":172,"gesamt":1434}
+{"variante":"ab-aufbau","lange":3,"ueber50":222,"stil":84,"layout":77,"zeichnen":118,"gesamt":1221}
+{"variante":"ohne-leistungen","lange":3,"ueber50":289,"stil":119,"layout":103,"zeichnen":122,"gesamt":1271}
+{"variante":"keine","lange":5,"ueber50":227,"stil":134,"layout":121,"zeichnen":185,"gesamt":1421}
+{"variante":"ab-aufbau","lange":4,"ueber50":187,"stil":91,"layout":75,"zeichnen":120,"gesamt":1229}
+{"variante":"ohne-leistungen","lange":3,"ueber50":259,"stil":131,"layout":75,"zeichnen":137,"gesamt":1199}
+{"variante":"keine","lange":4,"ueber50":380,"stil":137,"layout":135,"zeichnen":192,"gesamt":1450}
+{"variante":"ab-aufbau","lange":3,"ueber50":217,"stil":99,"layout":64,"zeichnen":110,"gesamt":1226}
+{"variante":"ohne-leistungen","lange":3,"ueber50":199,"stil":96,"layout":74,"zeichnen":134,"gesamt":1185}
+{"variante":"keine","lange":3,"ueber50":297,"stil":137,"layout":116,"zeichnen":205,"gesamt":1378}
+{"variante":"ab-aufbau","lange":4,"ueber50":235,"stil":109,"layout":59,"zeichnen":132,"gesamt":1233}
+{"variante":"ohne-leistungen","lange":5,"ueber50":210,"stil":131,"layout":91,"zeichnen":154,"gesamt":1386}
+{"variante":"keine","lange":6,"ueber50":252,"stil":159,"layout":138,"zeichnen":213,"gesamt":1566}
+{"variante":"ab-aufbau","lange":4,"ueber50":189,"stil":114,"layout":75,"zeichnen":115,"gesamt":1329}
+{"variante":"ohne-leistungen","lange":2,"ueber50":311,"stil":126,"layout":109,"zeichnen":156,"gesamt":1334}
+{"variante":"keine","lange":4,"ueber50":375,"stil":132,"layout":154,"zeichnen":186,"gesamt":1472}
+{"variante":"ab-aufbau","lange":3,"ueber50":247,"stil":96,"layout":70,"zeichnen":128,"gesamt":1221}
+{"variante":"ohne-leistungen","lange":3,"ueber50":262,"stil":121,"layout":83,"zeichnen":143,"gesamt":1245}
+
+/autoschluessel · 8 Läufe je Variante · Median (Spanne)
+| Variante | lange Aufgaben | Summe über 50 ms | Stil ms | Layout ms | Stil + Layout ms | Zeichnen ms | Hauptthread gesamt ms |
+|---|---|---|---|---|---|---|---|
+| keine | 4 (3–6) | 317 (227–380) | 137 (132–159) | 128 (116–154) | 268.5 (252–297) | 189 (172–213) | 1427.5 (1261–1566) |
+| ab-aufbau | 3 (3–4) | 219.5 (185–272) | 101.5 (84–114) | 72.5 (59–84) | 166.5 (161–189) | 119 (110–132) | 1231 (1221–1329) |
+| ohne-leistungen | 3 (2–5) | 235.5 (156–311) | 120 (96–131) | 85 (74–109) | 205 (170–235) | 140 (122–156) | 1248 (1185–1386) |

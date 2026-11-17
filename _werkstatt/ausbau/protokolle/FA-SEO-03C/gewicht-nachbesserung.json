@@ -1,0 +1,101 @@
+{
+ "start": {
+  "htmlRoh": 522758,
+  "htmlGz": 81572,
+  "style": 87350,
+  "nutz": 296097,
+  "skripte": 14,
+  "jsRoh": 713647,
+  "jsGz": 223434,
+  "css": 0,
+  "cssGz": 0
+ },
+ "autoschluessel": {
+  "htmlRoh": 489440,
+  "htmlGz": 76832,
+  "style": 87350,
+  "nutz": 271947,
+  "skripte": 15,
+  "jsRoh": 722548,
+  "jsGz": 226063,
+  "css": 0,
+  "cssGz": 0
+ },
+ "assistent": {
+  "htmlRoh": 313078,
+  "htmlGz": 56157,
+  "style": 87350,
+  "nutz": 172886,
+  "skripte": 17,
+  "jsRoh": 856948,
+  "jsGz": 265059,
+  "css": 0,
+  "cssGz": 0
+ },
+ "code": {
+  "htmlRoh": 321059,
+  "htmlGz": 57580,
+  "style": 87350,
+  "nutz": 179264,
+  "skripte": 16,
+  "jsRoh": 758704,
+  "jsGz": 238614,
+  "css": 0,
+  "cssGz": 0
+ },
+ "konfigurator": {
+  "htmlRoh": 293874,
+  "htmlGz": 54592,
+  "style": 87350,
+  "nutz": 162715,
+  "skripte": 18,
+  "jsRoh": 829079,
+  "jsGz": 259286,
+  "css": 0,
+  "cssGz": 0
+ },
+ "shop": {
+  "htmlRoh": 300771,
+  "htmlGz": 53434,
+  "style": 87350,
+  "nutz": 165184,
+  "skripte": 15,
+  "jsRoh": 722548,
+  "jsGz": 226063,
+  "css": 0,
+  "cssGz": 0
+ },
+ "ort": {
+  "htmlRoh": 310847,
+  "htmlGz": 55814,
+  "style": 87350,
+  "nutz": 174048,
+  "skripte": 14,
+  "jsRoh": 694059,
+  "jsGz": 216359,
+  "css": 0,
+  "cssGz": 0
+ },
+ "ratgeber": {
+  "htmlRoh": 307371,
+  "htmlGz": 56370,
+  "style": 87350,
+  "nutz": 171520,
+  "skripte": 14,
+  "jsRoh": 708949,
+  "jsGz": 221757,
+  "css": 0,
+  "cssGz": 0
+ },
+ "kontakt": {
+  "htmlRoh": 299904,
+  "htmlGz": 55840,
+  "style": 87350,
+  "nutz": 161471,
+  "skripte": 19,
+  "jsRoh": 873932,
+  "jsGz": 273620,
+  "css": 0,
+  "cssGz": 0
+ }
+}

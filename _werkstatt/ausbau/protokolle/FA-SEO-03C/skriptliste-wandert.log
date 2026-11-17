@@ -1,0 +1,15 @@
+# FA-SEO-03C · Warum die Skriptliste des Assistenten wandert (17./18.11.2026, Messstand 3200, Build d1615fa)
+# 1) Frisch gestartet: Assistent, Kontakt, Assistent (nur <script src> im HTML, node skripte.mjs)
+/autoschluessel/anfrage 18  (ohne 2ap808zi3x4kb.js, 3zlgkvst92n2m.js)
+/service-und-termin/kontakt 19 (statisch vorgerendert, enthält beide)
+/autoschluessel/anfrage 20  (+ 2ap808zi3x4kb.js = (site)/error.tsx, + 3zlgkvst92n2m.js = (site)/not-found.tsx)
+# 2) Nutzlast (RSC) des Assistenten: In BEIDEN Abrufen steht die I-Zeile der Fehlergrenze mit ihren Teilen:
+#    4b:I[86979,["$1e","$1f","$20","$4a"],"default"] mit 4a:"/_next/static/chunks/2ap808zi3x4kb.js", dazu errorScripts.
+#    Unterschied nur im Kopf des HTML: <script async> für diese Teile steht erst, wenn der Serverprozess die Module schon geladen hat.
+# 3) Client-Referenz-Manifest: Für error.tsx und not-found.tsx nennen Assistent, Kontakt und Shop dieselben Teile; Next liest es je Route
+#    (manifests-singleton.js, workStore.route), in Produktion ohne Rückgriff auf andere Routen. Die Zuordnung wandert also nicht im Manifest.
+# 4) Vorgerendert: 50 von 52 HTML-Dateien unter .next/server/app (oberste und zweite Ebene) nennen 2ap808zi3x4kb.js (Build-Arbeiter haben die Module schon geladen).
+# 5) Browser (netz.mjs, 412 px, bis Netzruhe + 3 s): Der Assistent lädt in beiden Zuständen dieselben 26 Dateien (944,6 bzw. 967,3 KB roh je Messung),
+#    darunter beide Teile: React lädt sie über die I-Zeile der Nutzlast ohnehin. Der Unterschied ist nur der Zeitpunkt der Entdeckung, keine Mehrlast.
+# Messung am 18.11. (frisch, je Server): Messstand Assistent 26 Dateien 944,6 KB roh, Kontakt 25 / 872,1, Autoschlüssel 22 / 788,3;
+#    Versuch (Hebel 1) Assistent 29 / 979,5 (Upload im Leerlauf nachgeladen), Kontakt 25 / 872,5, Autoschlüssel 22 / 788,4.

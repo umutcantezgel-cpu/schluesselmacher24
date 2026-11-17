@@ -1,0 +1,30 @@
+{
+ "412": {
+  "sichtbarNach2s": false,
+  "hinweisNachMs": 5747,
+  "alert": 1,
+  "knopfZahl": 1,
+  "knopfVorn": true,
+  "hoeheVorher": 583.5,
+  "hoeheNachher": 583.5,
+  "versucheBisHinweis": 8,
+  "versucheNach12s": 10,
+  "fokus": "Seite neu laden",
+  "neuGeladen": true,
+  "konsole": []
+ },
+ "1280": {
+  "sichtbarNach2s": false,
+  "hinweisNachMs": 5725,
+  "alert": 1,
+  "knopfZahl": 1,
+  "knopfVorn": true,
+  "hoeheVorher": 392.484375,
+  "hoeheNachher": 392.484375,
+  "versucheBisHinweis": 8,
+  "versucheNach12s": 10,
+  "fokus": "Seite neu laden",
+  "neuGeladen": true,
+  "konsole": []
+ }
+}

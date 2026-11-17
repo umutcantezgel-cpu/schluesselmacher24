@@ -115,14 +115,17 @@ const ergebnis = { basis: BASIS };
   await page.getByRole('button', { name: 'Weiter', exact: true }).click();
   await page.waitForSelector('#schluessel-vorderseite-gallery', { state: 'attached', timeout: 20000 });
   await page.waitForTimeout(800);
-  const dateiNochDa = await page.getByText('test-vorderseite.png').count();
+  // Listeneinträge mit dem Dateinamen zählen, nicht Textstellen: Der Name steht auch im unsichtbaren
+  // Text des Knopfes „… entfernen“ (Nachbesserung FA-SEO-03C, Befund 1).
+  const dateiNochDa = await page.locator('li', { hasText: 'test-vorderseite.png' }).count();
+  const dateiTextstellen = await page.getByText('test-vorderseite.png').count();
   const fokus8b = await fokus(page);
   // Tastatur: Tab vom Schritttitel erreicht die Knöpfe des Feldes
   const tabs = [];
   for (let i = 0; i < 12; i++) { await page.keyboard.press('Tab'); tabs.push(await fokus(page)); }
   const probe = await page.evaluate(() => window.__probe);
   ergebnis.A = {
-    ladezeitMs: geladen - t0, uploadTeilbuendelVorWeiter: vorWeiter, titelVorher, titel8, fokus8, titel7, dateiNochDa, fokus8b,
+    ladezeitMs: geladen - t0, uploadTeilbuendelVorWeiter: vorWeiter, titelVorher, titel8, fokus8, titel7, dateiNochDa, dateiTextstellen, fokus8b,
     platzhalterGesehen: platzhalterA, spaeterWeitermachenTreffer: spaeterWeiter,
     tabFolge: tabs, cls: probe.cls, clsMitEingabe: probe.clsAlle, konsole, abgefangen: abgefangen.map((a) => `${a.art} ${a.url}`),
   };

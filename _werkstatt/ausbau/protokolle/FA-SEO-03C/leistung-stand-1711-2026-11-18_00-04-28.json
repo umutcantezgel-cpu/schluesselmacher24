@@ -1,0 +1,1286 @@
+{
+  "skript": "leistung",
+  "marke": "stand-1711",
+  "methode": "simulate",
+  "zeit": "2026-11-17T23:06:20.793Z",
+  "basis": "http://localhost:3200",
+  "laeufe": 5,
+  "lighthouse": "12.6.1",
+  "chrome": "153.0.0.0",
+  "drosselung": {
+    "rttMs": 150,
+    "throughputKbps": 1638.4,
+    "requestLatencyMs": 562.5,
+    "downloadThroughputKbps": 1474.5600000000002,
+    "uploadThroughputKbps": 675,
+    "cpuSlowdownMultiplier": 4
+  },
+  "geraet": "412 × 823, DPR 1.75, mobile",
+  "ansichten": [
+    {
+      "id": "assistent",
+      "name": "Assistent Autoschlüssel",
+      "pfad": "/autoschluessel/anfrage",
+      "gueltig": 5,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "werte": {
+            "leistung": 84,
+            "fcp": 1665.2178,
+            "lcp": 3976.8267000000005,
+            "si": 1840.7812279999828,
+            "tbt": 203.5,
+            "cls": 0,
+            "gesamtKB": 450.1,
+            "dateien": 28,
+            "jsKB": 267.4,
+            "htmlKB": 56.6
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 2,
+          "werte": {
+            "leistung": 84,
+            "fcp": 1661.3254,
+            "lcp": 4107.988099999999,
+            "si": 1661.3254,
+            "tbt": 157,
+            "cls": 0,
+            "gesamtKB": 450.1,
+            "dateien": 28,
+            "jsKB": 267.4,
+            "htmlKB": 56.6
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 3,
+          "werte": {
+            "leistung": 93,
+            "fcp": 1003.88905,
+            "lcp": 2743.7780999999995,
+            "si": 1003.88905,
+            "tbt": 205.11095000000023,
+            "cls": 0,
+            "gesamtKB": 450.1,
+            "dateien": 28,
+            "jsKB": 267.4,
+            "htmlKB": 56.6
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 4,
+          "werte": {
+            "leistung": 85,
+            "fcp": 1506.1915,
+            "lcp": 3881.28725,
+            "si": 1506.1915,
+            "tbt": 192.90425000000005,
+            "cls": 0,
+            "gesamtKB": 450.1,
+            "dateien": 28,
+            "jsKB": 267.4,
+            "htmlKB": 56.6
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 5,
+          "werte": {
+            "leistung": 84,
+            "fcp": 1664.883,
+            "lcp": 4109.324499999999,
+            "si": 1664.883,
+            "tbt": 159.55849999999964,
+            "cls": 0,
+            "gesamtKB": 450.1,
+            "dateien": 28,
+            "jsKB": 267.4,
+            "htmlKB": 56.6
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        }
+      ],
+      "attrappen": {
+        "fremd": 0,
+        "upload": 0,
+        "action-schreibend": 0,
+        "action-unbekannt": 5,
+        "post-sonstig": 0,
+        "fremdHosts": [],
+        "laeufe": 5
+      },
+      "statistik": {
+        "leistung": {
+          "median": 84,
+          "min": 84,
+          "max": 93,
+          "n": 5
+        },
+        "fcp": {
+          "median": 1661.3254,
+          "min": 1003.88905,
+          "max": 1665.2178,
+          "n": 5
+        },
+        "lcp": {
+          "median": 3976.8267000000005,
+          "min": 2743.7780999999995,
+          "max": 4109.324499999999,
+          "n": 5
+        },
+        "si": {
+          "median": 1661.3254,
+          "min": 1003.88905,
+          "max": 1840.7812279999828,
+          "n": 5
+        },
+        "tbt": {
+          "median": 192.90425000000005,
+          "min": 157,
+          "max": 205.11095000000023,
+          "n": 5
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 5
+        },
+        "gesamtKB": {
+          "median": 450.1,
+          "min": 450.1,
+          "max": 450.1,
+          "n": 5
+        },
+        "dateien": {
+          "median": 28,
+          "min": 28,
+          "max": 28,
+          "n": 5
+        },
+        "jsKB": {
+          "median": 267.4,
+          "min": 267.4,
+          "max": 267.4,
+          "n": 5
+        },
+        "htmlKB": {
+          "median": 56.6,
+          "min": 56.6,
+          "max": 56.6,
+          "n": 5
+        }
+      },
+      "medianLauf": {
+        "lauf": 5,
+        "werte": {
+          "leistung": 84,
+          "fcp": 1664.883,
+          "lcp": 4109.324499999999,
+          "si": 1664.883,
+          "tbt": 159.55849999999964,
+          "cls": 0,
+          "gesamtKB": 450.1,
+          "dateien": 28,
+          "jsKB": 267.4,
+          "htmlKB": 56.6
+        },
+        "ursachen": {
+          "lcpElement": {
+            "selektor": "div.lg:col-span-8 > div.-mx-5 > div.mt-6 > p.mt-2",
+            "ausschnitt": "<p class=\"mt-2 max-w-measure text-body text-foreground-muted\">"
+          },
+          "lcpPhasen": {
+            "serverantwort": 457,
+            "ladeverzoegerung": 0,
+            "ladedauer": 0,
+            "darstellungsverzoegerung": 3652
+          },
+          "blockierend": [],
+          "skripte": [
+            {
+              "datei": "/_next/static/chunks/2dmg2rln22ufa.js",
+              "kb": 72.4,
+              "ausfuehrungMs": 432,
+              "ungenutztKB": 25.8,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/198evho4xwjs2.js",
+              "kb": 44.2,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/3p0dtvvb9953y.js",
+              "kb": 18.2,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/1f8fz9szmjtc7.js",
+              "kb": 12.6,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/3ip5m-7lhauc2.js",
+              "kb": 11.9,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/23aylg5ag7_au.js",
+              "kb": 11.1,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/3wx8fi31viacl.js",
+              "kb": 10.6,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/1kyldpc501htm.js",
+              "kb": 10.6,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/2civquoqf2nf9.js",
+              "kb": 10.5,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/1gcgfj5ejg9xo.js",
+              "kb": 10.2,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/0-y3n0uwz2pmn.js",
+              "kb": 9.9,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/20n_drg1zb0_1.js",
+              "kb": 9.1,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            }
+          ],
+          "dokumentSkriptMs": 27,
+          "hauptthreadMs": 1434,
+          "hauptthread": [
+            {
+              "gruppe": "Script Evaluation",
+              "ms": 483
+            },
+            {
+              "gruppe": "Other",
+              "ms": 432
+            },
+            {
+              "gruppe": "Style & Layout",
+              "ms": 321
+            },
+            {
+              "gruppe": "Script Parsing & Compilation",
+              "ms": 108
+            },
+            {
+              "gruppe": "Parse HTML & CSS",
+              "ms": 39
+            },
+            {
+              "gruppe": "Garbage Collection",
+              "ms": 26
+            },
+            {
+              "gruppe": "Rendering",
+              "ms": 24
+            }
+          ],
+          "langeAufgaben": [
+            {
+              "datei": "/_next/static/chunks/2dmg2rln22ufa.js",
+              "startMs": 3937,
+              "dauerMs": 187
+            },
+            {
+              "datei": "/autoschluessel/anfrage",
+              "startMs": 1070,
+              "dauerMs": 164
+            },
+            {
+              "datei": "Unattributable",
+              "startMs": 908,
+              "dauerMs": 86
+            },
+            {
+              "datei": "/_next/static/chunks/2dmg2rln22ufa.js",
+              "startMs": 4124,
+              "dauerMs": 80
+            }
+          ],
+          "verschiebungen": [],
+          "befunde": [
+            {
+              "id": "unused-javascript",
+              "anzeige": "Est savings of 26 KiB",
+              "einsparungMs": 480,
+              "einsparungKB": 25.8
+            },
+            {
+              "id": "legacy-javascript",
+              "anzeige": "Est savings of 13 KiB",
+              "einsparungMs": 300,
+              "einsparungKB": 13.4
+            },
+            {
+              "id": "largest-contentful-paint",
+              "anzeige": "4.1 s",
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "dom-size-insight",
+              "anzeige": null,
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "forced-reflow-insight",
+              "anzeige": null,
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "legacy-javascript-insight",
+              "anzeige": "Est savings of 14 KiB",
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "network-dependency-tree-insight",
+              "anzeige": null,
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "interactive",
+              "anzeige": "4.2 s",
+              "einsparungMs": null,
+              "einsparungKB": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "kontakt",
+      "name": "Kontakt",
+      "pfad": "/service-und-termin/kontakt",
+      "gueltig": 5,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "werte": {
+            "leistung": 92,
+            "fcp": 1361.9015,
+            "lcp": 3242.85225,
+            "si": 1361.9015,
+            "tbt": 87.02462500000001,
+            "cls": 0,
+            "gesamtKB": 400.4,
+            "dateien": 29,
+            "jsKB": 246.2,
+            "htmlKB": 55.8
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 2,
+          "werte": {
+            "leistung": 88,
+            "fcp": 1362.188,
+            "lcp": 3682.2820000000006,
+            "si": 1362.188,
+            "tbt": 114.9530000000002,
+            "cls": 0,
+            "gesamtKB": 400.4,
+            "dateien": 29,
+            "jsKB": 246.2,
+            "htmlKB": 55.8
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 3,
+          "werte": {
+            "leistung": 88,
+            "fcp": 1360.4589,
+            "lcp": 3694.6883500000004,
+            "si": 1360.4589,
+            "tbt": 130.3852750000001,
+            "cls": 0,
+            "gesamtKB": 400.4,
+            "dateien": 29,
+            "jsKB": 246.2,
+            "htmlKB": 55.8
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 4,
+          "werte": {
+            "leistung": 88,
+            "fcp": 1360.6731,
+            "lcp": 3669.00965,
+            "si": 1360.6731,
+            "tbt": 126,
+            "cls": 0,
+            "gesamtKB": 399.6,
+            "dateien": 29,
+            "jsKB": 246.2,
+            "htmlKB": 55.8
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 5,
+          "werte": {
+            "leistung": 88,
+            "fcp": 1360.1348,
+            "lcp": 3660.2021999999997,
+            "si": 1360.1348,
+            "tbt": 128.96630000000005,
+            "cls": 0,
+            "gesamtKB": 400.4,
+            "dateien": 29,
+            "jsKB": 246.2,
+            "htmlKB": 55.8
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 1,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        }
+      ],
+      "attrappen": {
+        "fremd": 0,
+        "upload": 0,
+        "action-schreibend": 0,
+        "action-unbekannt": 5,
+        "post-sonstig": 0,
+        "fremdHosts": [],
+        "laeufe": 5
+      },
+      "statistik": {
+        "leistung": {
+          "median": 88,
+          "min": 88,
+          "max": 92,
+          "n": 5
+        },
+        "fcp": {
+          "median": 1360.6731,
+          "min": 1360.1348,
+          "max": 1362.188,
+          "n": 5
+        },
+        "lcp": {
+          "median": 3669.00965,
+          "min": 3242.85225,
+          "max": 3694.6883500000004,
+          "n": 5
+        },
+        "si": {
+          "median": 1360.6731,
+          "min": 1360.1348,
+          "max": 1362.188,
+          "n": 5
+        },
+        "tbt": {
+          "median": 126,
+          "min": 87.02462500000001,
+          "max": 130.3852750000001,
+          "n": 5
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 5
+        },
+        "gesamtKB": {
+          "median": 400.4,
+          "min": 399.6,
+          "max": 400.4,
+          "n": 5
+        },
+        "dateien": {
+          "median": 29,
+          "min": 29,
+          "max": 29,
+          "n": 5
+        },
+        "jsKB": {
+          "median": 246.2,
+          "min": 246.2,
+          "max": 246.2,
+          "n": 5
+        },
+        "htmlKB": {
+          "median": 55.8,
+          "min": 55.8,
+          "max": 55.8,
+          "n": 5
+        }
+      },
+      "medianLauf": {
+        "lauf": 2,
+        "werte": {
+          "leistung": 88,
+          "fcp": 1362.188,
+          "lcp": 3682.2820000000006,
+          "si": 1362.188,
+          "tbt": 114.9530000000002,
+          "cls": 0,
+          "gesamtKB": 400.4,
+          "dateien": 29,
+          "jsKB": 246.2,
+          "htmlKB": 55.8
+        },
+        "ursachen": {
+          "lcpElement": {
+            "selektor": "div.shell > div.grid > div.lg:col-span-8 > p.mt-4",
+            "ausschnitt": "<p class=\"mt-4 max-w-measure text-foreground-muted text-lead\">"
+          },
+          "lcpPhasen": {
+            "serverantwort": 456,
+            "ladeverzoegerung": 0,
+            "ladedauer": 0,
+            "darstellungsverzoegerung": 3226
+          },
+          "blockierend": [],
+          "skripte": [
+            {
+              "datei": "/_next/static/chunks/2dmg2rln22ufa.js",
+              "kb": 72.4,
+              "ausfuehrungMs": 337,
+              "ungenutztKB": 25.4,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/198evho4xwjs2.js",
+              "kb": 44.2,
+              "ausfuehrungMs": 189,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/1f8fz9szmjtc7.js",
+              "kb": 12.6,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/3ip5m-7lhauc2.js",
+              "kb": 11.9,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/1kyldpc501htm.js",
+              "kb": 10.6,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/3wx8fi31viacl.js",
+              "kb": 10.6,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/2civquoqf2nf9.js",
+              "kb": 10.5,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/21mxerzcfu103.js",
+              "kb": 10.3,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/0-y3n0uwz2pmn.js",
+              "kb": 9.9,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/20n_drg1zb0_1.js",
+              "kb": 9.1,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/1__s-1hg7j3xv.js",
+              "kb": 9,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/1wznxebzwm6sp.js",
+              "kb": 8,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            }
+          ],
+          "dokumentSkriptMs": 20,
+          "hauptthreadMs": 1568,
+          "hauptthread": [
+            {
+              "gruppe": "Script Evaluation",
+              "ms": 578
+            },
+            {
+              "gruppe": "Other",
+              "ms": 439
+            },
+            {
+              "gruppe": "Style & Layout",
+              "ms": 288
+            },
+            {
+              "gruppe": "Script Parsing & Compilation",
+              "ms": 126
+            },
+            {
+              "gruppe": "Rendering",
+              "ms": 90
+            },
+            {
+              "gruppe": "Parse HTML & CSS",
+              "ms": 33
+            },
+            {
+              "gruppe": "Garbage Collection",
+              "ms": 13
+            }
+          ],
+          "langeAufgaben": [
+            {
+              "datei": "/_next/static/chunks/198evho4xwjs2.js",
+              "startMs": 3624,
+              "dauerMs": 181
+            },
+            {
+              "datei": "/service-und-termin/kontakt",
+              "startMs": 1047,
+              "dauerMs": 138
+            },
+            {
+              "datei": "/_next/static/chunks/2dmg2rln22ufa.js",
+              "startMs": 3874,
+              "dauerMs": 72
+            },
+            {
+              "datei": "/service-und-termin/kontakt",
+              "startMs": 987,
+              "dauerMs": 60
+            },
+            {
+              "datei": "/_next/static/chunks/2dmg2rln22ufa.js",
+              "startMs": 3946,
+              "dauerMs": 60
+            }
+          ],
+          "verschiebungen": [],
+          "befunde": [
+            {
+              "id": "unused-javascript",
+              "anzeige": "Est savings of 25 KiB",
+              "einsparungMs": 330,
+              "einsparungKB": 25.4
+            },
+            {
+              "id": "legacy-javascript",
+              "anzeige": "Est savings of 13 KiB",
+              "einsparungMs": 150,
+              "einsparungKB": 13.4
+            },
+            {
+              "id": "largest-contentful-paint",
+              "anzeige": "3.7 s",
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "dom-size-insight",
+              "anzeige": null,
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "forced-reflow-insight",
+              "anzeige": null,
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "legacy-javascript-insight",
+              "anzeige": "Est savings of 14 KiB",
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "network-dependency-tree-insight",
+              "anzeige": null,
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "interactive",
+              "anzeige": "3.9 s",
+              "einsparungMs": null,
+              "einsparungKB": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "autoschluessel",
+      "name": "Autoschlüssel",
+      "pfad": "/autoschluessel",
+      "gueltig": 5,
+      "laeufe": [
+        {
+          "lauf": 1,
+          "werte": {
+            "leistung": 86,
+            "fcp": 1806.3221,
+            "lcp": 3791.483150000001,
+            "si": 1806.3221,
+            "tbt": 128.8389500000003,
+            "cls": 0,
+            "gesamtKB": 398.2,
+            "dateien": 22,
+            "jsKB": 195.8,
+            "htmlKB": 76.4
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 2,
+          "werte": {
+            "leistung": 87,
+            "fcp": 1805.5024,
+            "lcp": 3784.253600000001,
+            "si": 1805.5024,
+            "tbt": 123.2488000000003,
+            "cls": 0,
+            "gesamtKB": 398.2,
+            "dateien": 22,
+            "jsKB": 195.8,
+            "htmlKB": 76.4
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 3,
+          "werte": {
+            "leistung": 91,
+            "fcp": 1809.35,
+            "lcp": 3164.0249999999987,
+            "si": 1809.35,
+            "tbt": 124.32500000000005,
+            "cls": 0,
+            "gesamtKB": 398.2,
+            "dateien": 22,
+            "jsKB": 195.8,
+            "htmlKB": 76.4
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 4,
+          "werte": {
+            "leistung": 92,
+            "fcp": 1814.2928000000002,
+            "lcp": 3021.439200000001,
+            "si": 1814.2928000000002,
+            "tbt": 117.8536000000006,
+            "cls": 0,
+            "gesamtKB": 398.2,
+            "dateien": 22,
+            "jsKB": 195.8,
+            "htmlKB": 76.4
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        },
+        {
+          "lauf": 5,
+          "werte": {
+            "leistung": 93,
+            "fcp": 1208.4459,
+            "lcp": 2753.4458999999997,
+            "si": 1208.4459,
+            "tbt": 198.77704999999946,
+            "cls": 0,
+            "gesamtKB": 398.2,
+            "dateien": 22,
+            "jsKB": 195.8,
+            "htmlKB": 76.4
+          },
+          "fehler": null,
+          "attrappen": {
+            "fremd": 0,
+            "upload": 0,
+            "action-schreibend": 0,
+            "action-unbekannt": 0,
+            "post-sonstig": 0,
+            "fremdHosts": []
+          }
+        }
+      ],
+      "attrappen": {
+        "fremd": 0,
+        "upload": 0,
+        "action-schreibend": 0,
+        "action-unbekannt": 0,
+        "post-sonstig": 0,
+        "fremdHosts": [],
+        "laeufe": 5
+      },
+      "statistik": {
+        "leistung": {
+          "median": 91,
+          "min": 86,
+          "max": 93,
+          "n": 5
+        },
+        "fcp": {
+          "median": 1806.3221,
+          "min": 1208.4459,
+          "max": 1814.2928000000002,
+          "n": 5
+        },
+        "lcp": {
+          "median": 3164.0249999999987,
+          "min": 2753.4458999999997,
+          "max": 3791.483150000001,
+          "n": 5
+        },
+        "si": {
+          "median": 1806.3221,
+          "min": 1208.4459,
+          "max": 1814.2928000000002,
+          "n": 5
+        },
+        "tbt": {
+          "median": 124.32500000000005,
+          "min": 117.8536000000006,
+          "max": 198.77704999999946,
+          "n": 5
+        },
+        "cls": {
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "n": 5
+        },
+        "gesamtKB": {
+          "median": 398.2,
+          "min": 398.2,
+          "max": 398.2,
+          "n": 5
+        },
+        "dateien": {
+          "median": 22,
+          "min": 22,
+          "max": 22,
+          "n": 5
+        },
+        "jsKB": {
+          "median": 195.8,
+          "min": 195.8,
+          "max": 195.8,
+          "n": 5
+        },
+        "htmlKB": {
+          "median": 76.4,
+          "min": 76.4,
+          "max": 76.4,
+          "n": 5
+        }
+      },
+      "medianLauf": {
+        "lauf": 3,
+        "werte": {
+          "leistung": 91,
+          "fcp": 1809.35,
+          "lcp": 3164.0249999999987,
+          "si": 1809.35,
+          "tbt": 124.32500000000005,
+          "cls": 0,
+          "gesamtKB": 398.2,
+          "dateien": 22,
+          "jsKB": 195.8,
+          "htmlKB": 76.4
+        },
+        "ursachen": {
+          "lcpElement": {
+            "selektor": "div.shell > div.grid > div.lg:col-span-7 > p.mt-4",
+            "ausschnitt": "<p class=\"mt-4 max-w-measure text-foreground-muted text-lead\">"
+          },
+          "lcpPhasen": {
+            "serverantwort": 455,
+            "ladeverzoegerung": 0,
+            "ladedauer": 0,
+            "darstellungsverzoegerung": 2709
+          },
+          "blockierend": [],
+          "skripte": [
+            {
+              "datei": "/_next/static/chunks/2dmg2rln22ufa.js",
+              "kb": 72.4,
+              "ausfuehrungMs": 405,
+              "ungenutztKB": 27.5,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/198evho4xwjs2.js",
+              "kb": 44.2,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/3ip5m-7lhauc2.js",
+              "kb": 11.9,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/1kyldpc501htm.js",
+              "kb": 10.6,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/0-y3n0uwz2pmn.js",
+              "kb": 9.9,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/20n_drg1zb0_1.js",
+              "kb": 9.1,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/1__s-1hg7j3xv.js",
+              "kb": 9,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/2ap808zi3x4kb.js",
+              "kb": 6.2,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/3zlgkvst92n2m.js",
+              "kb": 6,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/turbopack-077hmtqrhcoji.js",
+              "kb": 5.2,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/421c_el12128q.js",
+              "kb": 4.4,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            },
+            {
+              "datei": "/_next/static/chunks/2ksv7p9obax5c.js",
+              "kb": 3.4,
+              "ausfuehrungMs": null,
+              "ungenutztKB": null,
+              "prioritaet": "Low"
+            }
+          ],
+          "dokumentSkriptMs": 16,
+          "hauptthreadMs": 1832,
+          "hauptthread": [
+            {
+              "gruppe": "Other",
+              "ms": 664
+            },
+            {
+              "gruppe": "Script Evaluation",
+              "ms": 441
+            },
+            {
+              "gruppe": "Style & Layout",
+              "ms": 345
+            },
+            {
+              "gruppe": "Rendering",
+              "ms": 199
+            },
+            {
+              "gruppe": "Script Parsing & Compilation",
+              "ms": 105
+            },
+            {
+              "gruppe": "Parse HTML & CSS",
+              "ms": 45
+            },
+            {
+              "gruppe": "Garbage Collection",
+              "ms": 33
+            }
+          ],
+          "langeAufgaben": [
+            {
+              "datei": "/autoschluessel",
+              "startMs": 1293,
+              "dauerMs": 193
+            },
+            {
+              "datei": "/_next/static/chunks/2dmg2rln22ufa.js",
+              "startMs": 3623,
+              "dauerMs": 179
+            },
+            {
+              "datei": "Unattributable",
+              "startMs": 1056,
+              "dauerMs": 150
+            },
+            {
+              "datei": "/autoschluessel",
+              "startMs": 1486,
+              "dauerMs": 92
+            },
+            {
+              "datei": "/autoschluessel",
+              "startMs": 1240,
+              "dauerMs": 53
+            }
+          ],
+          "verschiebungen": [],
+          "befunde": [
+            {
+              "id": "first-contentful-paint",
+              "anzeige": "1.8 s",
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "largest-contentful-paint",
+              "anzeige": "3.2 s",
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "legacy-javascript-insight",
+              "anzeige": "Est savings of 14 KiB",
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "network-dependency-tree-insight",
+              "anzeige": null,
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "interactive",
+              "anzeige": "3.8 s",
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "max-potential-fid",
+              "anzeige": "180 ms",
+              "einsparungMs": null,
+              "einsparungKB": null
+            },
+            {
+              "id": "unused-css-rules",
+              "anzeige": "Est savings of 10 KiB",
+              "einsparungMs": 0,
+              "einsparungKB": 10.1
+            },
+            {
+              "id": "unused-javascript",
+              "anzeige": "Est savings of 28 KiB",
+              "einsparungMs": 0,
+              "einsparungKB": 27.5
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "vergleich": null
+}
