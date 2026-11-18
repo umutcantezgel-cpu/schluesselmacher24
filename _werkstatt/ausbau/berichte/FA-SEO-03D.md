@@ -180,13 +180,16 @@ Die Spannen überlappen. Daraus folgt keine Aussage über den Leistungswert; ma�
   - Die Schnittstelle ist gleich geblieben, dazu kommt nur die optionale Eigenschaft `beispielFlaeche`.
   - Die Pflichtregel (R13), `alsUpload`, Fehlermeldungen, Fokus und Bedienung sind unberührt. Nur die Zeile, die das Beispiel zeichnet, ist geändert.
   - Die 22 Tests in `photo-upload.test.tsx` sind unverändert grün.
-- Neuen Upload-Beispielen außerhalb der fünf Generatoren würde `UploadBeispiel` das Fach-Icon zeigen. Der Test (a) schlägt dann fehl, und die Lösung ist `photo-upload-voll` oder ein Eintrag in `UPLOAD_ZEICHNUNGEN`.
+- Neuen Upload-Beispielen außerhalb der fünf Generatoren würde `UploadBeispiel` das Fach-Icon zeigen. Außerhalb der Produktion meldet es das mit `console.warn`. Die Lösung ist `photo-upload-voll` oder ein Eintrag in `UPLOAD_ZEICHNUNGEN`.
+  - Der Test (a) schlägt an, wenn das Beispiel als Objektliteral, als Konstante derselben Datei oder als eine der Konstanten in `GELIEFERT` übergeben wird, und zwar in jeder Datei, die `PhotoUpload` über den Alias oder relativ importiert.
+  - Eine Weitergabe `example={example}` ist nur in den Dateien aus `WEITERGABE` erlaubt (heute nur die Hülle `FotoSchritt` in `schluessel-nach-vorlage/anfrage/anfrage-formular.tsx`). Jede andere Weitergabe lässt den Test scheitern.
+  - Andere Formen (etwa ein Beispiel aus einer berechneten Variable oder über `{...props}`) erkennt der Test nicht vollständig. Was er nicht lesen kann, meldet er als Fehler, soweit es über `example=` läuft.
 - `src/lib/wege/naechste-schritte.ts` und `src/lib/pricing.ts` geben alle bisherigen Namen weiter (Tests mit `toBe`).
 
 ## PRÜFUNG UND ERGEBNIS
 
 Im Arbeitsbaum über die Datenweiche:
-- `sicher.sh --json -- npx vitest run`: **277 Testdateien, 4.334 Tests, alle grün.** Vorher 275 und 4.307; neu sind 2 Dateien mit 10 Tests, dazu 3 Tests in `naechste-schritte.test.ts`.
+- `sicher.sh --json -- npx vitest run`: **277 Testdateien, 4.334 Tests, alle grün.** Vorher 275 und 4.307; neu sind 2 Dateien mit 10 Tests, dazu 3 Tests in `naechste-schritte.test.ts`. Nach der Nachbesserung 4.335 Tests (siehe unten).
 - `sicher.sh --json -- npm run typecheck`: ohne Fehler
 - `sicher.sh --json -- npm run lint`: ohne Befund
 - `SM24_INDEXIERUNG=an sicher.sh --json -- npm run build`: Exit 0, „Compiled successfully in 47s“, 190 von 190 Seiten
@@ -234,3 +237,60 @@ Hinweis zum Vorgehen:
 
 - Nichts. Es wurden keine Preise, Texte, Rechtstexte, Fristen und keine Farben geändert. Der Kunde sieht dieselben Seiten; er lädt auf den Formularseiten 6 bis 8 KB weniger und ein bis zwei Dateien weniger.
 - Die offenen Fragen 1 und 2 sind technische und gestalterische Entscheidungen für den Orchestrator.
+
+## Nachbesserung
+
+Zwei Gegenprüfer haben drei gelbe Befunde gemeldet. Alle drei treffen zu und sind behoben. Geändert sind nur `src/components/forms/upload-beispiel.test.tsx`, `src/components/forms/upload-beispiel.tsx` und dieser Bericht.
+
+1. **Behoben: Test (a) übersprang `example={example}` ohne Prüfung, `aufrufer()` fand nur Alias-Importe.**
+   - Der Befund stimmt: Eine Hülle in einer anderen Datei oder ein relativer Import wäre nicht geprüft worden.
+   - `aufrufer()` zählt jetzt jede Datei, die `PhotoUpload` aus dem Upload-Feld importiert, über `@/components/forms/photo-upload` oder relativ (der Pfad wird aufgelöst, `istUploadFeld`). Ausgenommen sind Tests und `photo-upload-voll.tsx`, deren Beispiele `ImagePlaceholder` zeichnet. Die Zahl der Formulare bleibt 15.
+   - `beispieleVon` lässt `example={example}` nur in den Dateien der Liste `WEITERGABE` zu. Sonst bricht der Test mit einem Hinweis auf `photo-upload-voll` ab.
+   - Der Satz unter GEMEINSAME DATEIEN ist auf diese Reichweite eingegrenzt.
+2. **Behoben: Eine Hülle, die `example` weiterreicht, war nur zufällig abgedeckt.**
+   - Der Befund stimmt und deckt sich mit Befund 1.
+   - Für die erlaubte Datei prüft `pruefeWeitergabe`:
+     - die Hülle (`FotoSchritt`) ist mit `example: ImageSlot` definiert und nicht exportiert;
+     - sie wird mindestens einmal aufgerufen, jeder Aufruf mit eigenem `example=` und ohne Weitergabe oder `{...}`;
+     - keine andere Quelldatei außer Tests nennt sie.
+   - Die Werte der drei Aufrufe prüft `beispieleVon` wie bisher.
+   - Ein neuer Test hält fest: Eine Hülle in einer fremden Datei scheitert. In der erlaubten Datei scheitern eine exportierte Hülle und ein Aufruf ohne eigenes Beispiel. Relative Pfade werden richtig aufgelöst.
+3. **Behoben: Die Abweichung bei einem Generator außerhalb der Auswahl war zur Laufzeit stumm.**
+   - Der Befund stimmt: Für `zylinder-mass` zeichnet `ImagePlaceholder`, `UploadBeispiel` zeigt das Fach-Icon.
+   - `UploadBeispiel` warnt jetzt außerhalb der Produktion mit `console.warn`, wenn ein Generator ermittelt wurde, der nicht in `UPLOAD_ZEICHNUNGEN` steht. Die Warnung nennt Generator und Motiv. In der Produktion entfällt sie, weil `process.env.NODE_ENV` beim Bauen ersetzt wird; das Markup ist unverändert.
+   - Der Test heißt jetzt „Generator außerhalb der Auswahl: Fach-Icon (Abweichung von ImagePlaceholder, nur über photo-upload-voll zulässig)“. Er prüft die eine Warnung und dass ein Beispiel ganz ohne Generator still bleibt.
+
+Prüfung nach der Nachbesserung, im Arbeitsbaum über die Datenweiche:
+- `sicher.sh --json -- npx vitest run`: 277 Testdateien, 4.335 Tests, alle grün (+1 Test in `upload-beispiel.test.tsx`)
+- `sicher.sh --json -- npm run typecheck`: ohne Fehler
+- `sicher.sh --json -- npm run lint`: ohne Befund
+- `SM24_INDEXIERUNG=an sicher.sh --json -- npm run build`: Exit 0, 190 von 190 Seiten
+- Messwerte und Bildvergleich sind nicht neu erhoben. Das gezeichnete Markup ist unverändert; der Markup-Vergleich mit `ImagePlaceholder` (über 500 Fälle) ist grün.
+
+## Abnahme durch den Orchestrator (18.11.2026)
+
+**Ergebnis: abgenommen.** Alle drei Kandidaten senken die Menge, die der Browser insgesamt lädt; keine Seite lädt mehr, keine sieht anders aus.
+
+Eigene Nachmessung (frisch gestartete Server; alt ist der Live-Stand b0aa692 auf Port 3200, neu der Build des Arbeitsbaums auf Port 3000):
+| Seite | Skripte im HTML alt → neu | Vom Browser geladen bis Netzruhe plus 5 s, alt → neu |
+|---|---|---|
+| Autoschlüssel-Assistent | 18, 277,6 KB → 17, 264,3 KB | 26 Dateien, 317,8 KB → 25, 312,0 KB (−5,8 KB) |
+| Kontakt | 19, 267,6 KB → 17, 253,5 KB | 25, 296,6 KB → 23, 288,9 KB (−7,6 KB) |
+| Zylinder-Konfigurator | 17, 253,3 KB → 17, 253,3 KB | 25, 301,5 KB → 24, 299,6 KB (−1,8 KB) |
+| Schlüssel nach Vorlage, Anfrage | nicht gemessen | 26, 308,3 KB → 24, 300,8 KB (−7,4 KB) |
+| Beratung | nicht gemessen | 25, 296,5 KB → 23, 288,9 KB (−7,6 KB) |
+| Partner werden | nicht gemessen | 26, 301,6 KB → 24, 294,2 KB (−7,4 KB) |
+| Startseite | 14, 218,2 KB → gleich | 22, 265,3 KB → 21, 263,5 KB (−1,8 KB) |
+| Shop | 15, 220,7 KB → gleich | 22, 265,3 KB → 21, 263,5 KB (−1,8 KB) |
+Die übrigen Ansichten aus `gewicht.mjs` (Autoschlüssel, Schlüssel nach Code, Ortsseite, Ratgeber) sind im HTML unverändert.
+
+Weiter geprüft:
+- Kette `abnahme.sh FA-SEO-03D`: Typprüfung, Lint, Unit-Tests 4335, Datenbanktests 190, Build 190/190 grün.
+- Bildvergleich mit dem Live-Stand (ganze Seite, 412 und 1280 px): 16 Seiten, 32 Bilder, alle bytegleich (zwölf Formulare, Warenkorb, Schlüssel nach Code, Autoschlüssel, Shop). Der Baumeister hat zusätzlich 40 Bilder der Upload-Schritte verglichen (alle gleich).
+- Alle Formulare laden und wechseln den Schritt ohne Konsolenfehler (12 Abläufe und das Kontaktformular).
+- `src/lib/pricing.ts`: nur die Regel „Fahrzeug vor Ort“ und ihre Liste sind in `fahrzeug-vor-ort.ts` gezogen und werden unter denselben Namen weitergegeben; kein Betrag und keine Preisregel ist berührt (G9). Der Vergleich des Baumeisters über 5.490 Fälle ergab keine Abweichung.
+
+Vorgemerkt (FA-SEO-03E): Der Vorabruf des Warenkorbs aus der Kopfzeile lädt das Register aller Zeichnungen auf jede Seite (12,5 KB übertragen), weil `warenkorb-ansicht.tsx` und `artikel-liste.tsx` `ImagePlaceholder` nutzen, obwohl sie nur eine Zeichnung und Kompaktbilder zeigen. Das ist der größte verbleibende Hebel dieser Art.
+
+Noch nicht auf main: Der Stand geht erst auf Anweisung des Nutzers live.
+
