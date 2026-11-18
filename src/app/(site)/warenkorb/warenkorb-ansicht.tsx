@@ -25,7 +25,7 @@ import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Button, ButtonLink } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
-import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { KompaktBild } from '@/components/ui/bild-flaeche';
 import { InfoTip } from '@/components/ui/info-tip';
 import { OptionCard } from '@/components/forms/option-card';
 import { QuantityInput } from '@/components/forms/controls';
@@ -34,6 +34,8 @@ import { GlyphLaden } from '@/components/visual/glyphen/laden';
 import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
 import { SchluesselGrafik } from '@/components/visual/generators/schluessel';
 import { WerkstattZeile, type WerkstattAngaben } from '@/components/vertrauen/werkstatt-zeile';
+
+import { CodeProfilBild } from './code-profil-bild';
 
 export interface WarenkorbAnsichtProps {
   shipping: ShippingOption[];
@@ -238,14 +240,7 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
                     {/* Schlüsselprofil des Codes auf Sunken-Fläche; mobil 64 px breit links vom Titel. */}
                     {position.line && (
                       <div className="sm24-ruhig w-16 shrink-0 self-start overflow-hidden rounded-lg bg-surface-sunken sm:col-span-2 sm:w-auto">
-                        <ImagePlaceholder
-                          slot={{
-                            motif: 'Schlüsselprofil zum Code',
-                            ratio: '1/1',
-                            visual: { generator: 'schluessel', params: { typ: 'zylinder', code: position.item.code } },
-                          }}
-                          frei
-                        />
+                        <CodeProfilBild code={position.item.code} />
                       </div>
                     )}
 
@@ -388,12 +383,11 @@ export function WarenkorbAnsicht({ shipping, codeLines, standardArticles, catalo
               <li key={position.item.uid} className="border-b border-border py-6">
                 <div className="grid gap-4 sm:grid-cols-12 sm:gap-x-4">
                   <div className="hidden sm:col-span-2 sm:block">
-                    <ImagePlaceholder
+                    <KompaktBild
                       slot={{
                         motif: 'Produktfoto: Satz gleichschließender Zylinder mit gemeinsamen Schlüsseln',
                         ratio: '1/1',
                       }}
-                      compact
                     />
                   </div>
 
@@ -657,7 +651,7 @@ function StandardPositionKarte({
       <div className="flex gap-4 sm:contents">
         {article && (
           <div className="hidden sm:col-span-2 sm:block">
-            <ImagePlaceholder slot={article.image} compact />
+            <KompaktBild slot={article.image} />
           </div>
         )}
 

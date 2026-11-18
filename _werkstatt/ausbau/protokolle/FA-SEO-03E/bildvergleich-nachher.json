@@ -1,0 +1,434 @@
+[
+ {
+  "bild": "artikel-1280.png",
+  "groesse": [
+   1280,
+   2299,
+   1280,
+   2299
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/artikel",
+   "http://localhost:3000/artikel"
+  ],
+  "svg": [
+   12,
+   12
+  ],
+  "elemente": [
+   111,
+   111
+  ]
+ },
+ {
+  "bild": "artikel-412.png",
+  "groesse": [
+   412,
+   3467,
+   412,
+   3467
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/artikel",
+   "http://localhost:3000/artikel"
+  ],
+  "svg": [
+   12,
+   12
+  ],
+  "elemente": [
+   111,
+   111
+  ]
+ },
+ {
+  "bild": "code-1280.png",
+  "groesse": [
+   1280,
+   3462,
+   1280,
+   3462
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/schluessel-nach-code",
+   "http://localhost:3000/schluessel-nach-code"
+  ],
+  "svg": [
+   21,
+   21
+  ],
+  "elemente": [
+   239,
+   239
+  ]
+ },
+ {
+  "bild": "code-412.png",
+  "groesse": [
+   412,
+   5294,
+   412,
+   5294
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/schluessel-nach-code",
+   "http://localhost:3000/schluessel-nach-code"
+  ],
+  "svg": [
+   21,
+   21
+  ],
+  "elemente": [
+   239,
+   239
+  ]
+ },
+ {
+  "bild": "kontakt-1280.png",
+  "groesse": [
+   1280,
+   4334,
+   1280,
+   4334
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/service-und-termin/kontakt",
+   "http://localhost:3000/service-und-termin/kontakt"
+  ],
+  "svg": [
+   14,
+   14
+  ],
+  "elemente": [
+   222,
+   222
+  ]
+ },
+ {
+  "bild": "kontakt-412.png",
+  "groesse": [
+   412,
+   6187,
+   412,
+   6187
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/service-und-termin/kontakt",
+   "http://localhost:3000/service-und-termin/kontakt"
+  ],
+  "svg": [
+   14,
+   14
+  ],
+  "elemente": [
+   222,
+   222
+  ]
+ },
+ {
+  "bild": "shop-1280.png",
+  "groesse": [
+   1280,
+   2858,
+   1280,
+   2858
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/shop",
+   "http://localhost:3000/shop"
+  ],
+  "svg": [
+   18,
+   18
+  ],
+  "elemente": [
+   174,
+   174
+  ]
+ },
+ {
+  "bild": "shop-412.png",
+  "groesse": [
+   412,
+   4872,
+   412,
+   4872
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/shop",
+   "http://localhost:3000/shop"
+  ],
+  "svg": [
+   18,
+   18
+  ],
+  "elemente": [
+   174,
+   174
+  ]
+ },
+ {
+  "bild": "start-1280.png",
+  "groesse": [
+   1280,
+   6820,
+   1280,
+   6820
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/",
+   "http://localhost:3000/"
+  ],
+  "svg": [
+   54,
+   54
+  ],
+  "elemente": [
+   952,
+   952
+  ]
+ },
+ {
+  "bild": "start-412.png",
+  "groesse": [
+   412,
+   10414,
+   412,
+   10414
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/",
+   "http://localhost:3000/"
+  ],
+  "svg": [
+   54,
+   54
+  ],
+  "elemente": [
+   952,
+   952
+  ]
+ },
+ {
+  "bild": "warenkorb-artikel-1280.png",
+  "groesse": [
+   1280,
+   2510,
+   1280,
+   2510
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/warenkorb",
+   "http://localhost:3000/warenkorb"
+  ],
+  "svg": [
+   18,
+   18
+  ],
+  "elemente": [
+   204,
+   204
+  ]
+ },
+ {
+  "bild": "warenkorb-artikel-412.png",
+  "groesse": [
+   412,
+   4377,
+   412,
+   4377
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/warenkorb",
+   "http://localhost:3000/warenkorb"
+  ],
+  "svg": [
+   18,
+   18
+  ],
+  "elemente": [
+   204,
+   204
+  ]
+ },
+ {
+  "bild": "warenkorb-code-1280.png",
+  "groesse": [
+   1280,
+   2595,
+   1280,
+   2595
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/warenkorb",
+   "http://localhost:3000/warenkorb"
+  ],
+  "svg": [
+   18,
+   18
+  ],
+  "elemente": [
+   209,
+   209
+  ]
+ },
+ {
+  "bild": "warenkorb-code-412.png",
+  "groesse": [
+   412,
+   4436,
+   412,
+   4436
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/warenkorb",
+   "http://localhost:3000/warenkorb"
+  ],
+  "svg": [
+   18,
+   18
+  ],
+  "elemente": [
+   209,
+   209
+  ]
+ },
+ {
+  "bild": "warenkorb-leer-1280.png",
+  "groesse": [
+   1280,
+   1651,
+   1280,
+   1651
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/warenkorb",
+   "http://localhost:3000/warenkorb"
+  ],
+  "svg": [
+   7,
+   7
+  ],
+  "elemente": [
+   66,
+   66
+  ]
+ },
+ {
+  "bild": "warenkorb-leer-412.png",
+  "groesse": [
+   412,
+   3047,
+   412,
+   3047
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/warenkorb",
+   "http://localhost:3000/warenkorb"
+  ],
+  "svg": [
+   7,
+   7
+  ],
+  "elemente": [
+   66,
+   66
+  ]
+ },
+ {
+  "bild": "warenkorb-zylinder-1280.png",
+  "groesse": [
+   1280,
+   2475,
+   1280,
+   2475
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/warenkorb",
+   "http://localhost:3000/warenkorb"
+  ],
+  "svg": [
+   15,
+   15
+  ],
+  "elemente": [
+   181,
+   181
+  ]
+ },
+ {
+  "bild": "warenkorb-zylinder-412.png",
+  "groesse": [
+   412,
+   4312,
+   412,
+   4312
+  ],
+  "pixelAnders": 0,
+  "gleich": true,
+  "textGleich": true,
+  "url": [
+   "http://localhost:3200/warenkorb",
+   "http://localhost:3000/warenkorb"
+  ],
+  "svg": [
+   15,
+   15
+  ],
+  "elemente": [
+   181,
+   181
+  ]
+ }
+]

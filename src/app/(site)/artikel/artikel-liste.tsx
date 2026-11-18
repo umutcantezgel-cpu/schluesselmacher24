@@ -11,7 +11,7 @@ import type { StandardArticle } from '@/lib/types';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
-import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { KompaktBild } from '@/components/ui/bild-flaeche';
 import { Field } from '@/components/forms/field';
 import { TextInput } from '@/components/forms/controls';
 import { GlyphFilter } from '@/components/visual/glyphen/filter';
@@ -216,7 +216,7 @@ function ArtikelKarte({ article }: { article: ListenArtikel }) {
       href={artikelPfad(article.slug)}
       className="group flex items-center gap-4 py-4 transition-colors duration-quick ease-standard sm:gap-6 sm:py-5"
     >
-      <ImagePlaceholder slot={article.image} compact frei className="w-10 shrink-0" sizes="40px" />
+      <KompaktBild slot={article.image} frei className="w-10 shrink-0" sizes="40px" />
 
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
