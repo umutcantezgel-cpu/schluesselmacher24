@@ -60,3 +60,7 @@ dev_server.log
 
 # Sicherungen (scripts/sicherung.mjs) enthalten Kundendaten — nie ins Repo
 /sicherung/
+
+# Bildschirmfotos aus Proben gehören nicht ins Repository (Größe); sie liegen im Arbeitsordner der Sitzung.
+_werkstatt/ausbau/protokolle/**/bilder/
+_werkstatt/ausbau/protokolle/**/*.png
