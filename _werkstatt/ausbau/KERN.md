@@ -207,6 +207,7 @@ Für jeden Wert ohne passenden Token gilt: ins Feld GEMEINSAME DATEIEN schreiben
 | B-09 | Akkordeon | Zustandswechsel | Klick | Pfeil dreht 180° `base`; Inhalt blendet ein `quick` | sofort |
 | B-10 | Flow-Fortschritt | Orientierung | Schrittwechsel | `scaleX` `slow`, `standard` (statt `width`); Schrittknöpfe wechseln die Farbe `quick` `standard` | sofort |
 | B-11 | Schrittwechsel im Ablauf | Zusammenhang | weiter/zurück | Inhalt blendet ein + 8 px in Richtung `base` | sofort |
+| B-11a | Rollen und Fokus nach dem Schrittwechsel (A-077) | Orientierung | weiter/zurück, Schrittknopf, Browser-Verlauf | Fokus auf die Überschrift des Schritts; am Telefon rollt die Seite zur Überschrift, ab 768 px an den Seitenanfang oder, wenn die Überschrift dort nicht im Bild stünde, zur Überschrift | Rollen ohne Bewegung |
 | B-12 | Bestätigungshaken (CheckDraw) | Rückmeldung | Bestätigung erscheint | Fläche, Kreis, Haken, gesamt ≤ 900 ms | sofort vollständig |
 | B-13 | Seitenwechsel mit gemeinsamem Element | Zusammenhang | Bereichskarte → Bereichskopf | ViewTransition `slow`, nur wo der Browser sie kennt (`seitenwechsel.tsx`); das Prüfwerkzeug erfasst sie nicht, belegt ist sie am Code | keiner |
 | B-14 | Schließplan wählen | Zusammenhang | Schlüssel oder Tür wählen | Deckkraft und Farbe `base` `standard` (Übergang an Kanten und Knoten) | sofort |

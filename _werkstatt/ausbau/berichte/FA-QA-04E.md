@@ -28,8 +28,8 @@ Protokolle: `protokolle/FA-QA-04E/fokus-3200.json` (vorher), `fokus-3000.json` (
 | Konfigurator gleichschließende Zylinder | Zurück 3→2, 2→1 | „Zurück“, dann `body` | `h2` · Link im Schritt |
 | Partner-Bewerbung | Zurück 3→2, 2→1 | „Zurück“, dann `body` · nächster Tab außerhalb des Formulars | `h2` · Eingabefeld im Schritt |
 | Fahrzeug-Anfrage E-Scooter | Zurück 3→2, 2→1 | „Zurück“, dann `body` · Telefonlink der Seite | `h2` · Eingabefeld im Schritt |
-| Kontakt (eingebettet) | Zurück 3→2, 2→1 | „Zurück“ (außer Bild), dann `body` | `h2` (412 im Bild; 1280 siehe OFFENE FRAGE 2) |
-| Beratung | Zurück 3→2, 2→1 | „Zurück“, dann `body` | `h2` (wie Kontakt) |
+| Kontakt (eingebettet) | Zurück 3→2, 2→1 | „Zurück“ (außer Bild), dann `body` | `h2`, im Bild bei 412 und 1280 (seit der Nachbesserung, siehe unten) |
+| Beratung | Zurück 3→2, 2→1 | „Zurück“, dann `body` | `h2`, im Bild bei 412 und 1280 (wie Kontakt) |
 
 Weitere Belege (nachher):
 - Ring: nach Tastatur `:focus-visible` an der Überschrift wahr (alle Wechsel). Nach Mausklick (1280) und Fingertipp (412) auf „Weiter“: Fokus auf `h2`, `:focus-visible` falsch, `outline: none`, `box-shadow: none`.
@@ -66,14 +66,78 @@ Empfehlung: Weg A, wenn der Sprung als störend gilt; sonst so lassen (betrifft 
 Zuwachs +0,5 KB roh, +0,2 KB gz; Konfigurator 809,4 → 809,9 KB roh. Hinweis: Spätere Abrufe desselben Servers liefern beim Assistenten 20 Skripte (926 KB roh), vorher wie nachher; für den Vergleich gilt nur der erste Abruf nach dem Start.
 
 ## Prüfungen
-- `sicher.sh --json -- npx vitest run`: 275 Dateien, 4309 Tests grün.
+- `sicher.sh --json -- npx vitest run`: 275 Dateien, 4309 Tests grün (nach der Nachbesserung 4314, siehe unten).
 - `… -- npm run typecheck`: grün (0 Fehler).
 - `… -- npm run lint`: grün (0 Meldungen).
 - `SM24_INDEXIERUNG=an sicher.sh --json -- npm run build`: grün.
 
 ## OFFENE FRAGEN
 1. Teil 2: Weg A, B oder C (oben), oder so lassen.
-2. Ab 768 px rollt `zumSchrittScrollen` nach jedem Wechsel an den Seitenanfang. Bei Formularen weiter unten auf der Seite (Kontakt eingebettet, Beratung) steht die fokussierte Überschrift bei 1280 px dann außerhalb des Bildes (vorher stand dort der Fokus ebenfalls außerhalb: auf „Zurück“ bzw. `body`). Der nächste Tab rollt das nächste Feld ins Bild. Soll das Rollen ab 768 px bei solchen Seiten zur Überschrift gehen (wie am Telefon)? Das wäre eine Änderung der Bewegung, darum nicht in diesem Paket.
+2. (In der Nachbesserung umgesetzt, Bestätigung erbeten; siehe Abschnitt „Nachbesserung“, Befunde 1 und 4.) Ab 768 px rollte `zumSchrittScrollen` nach jedem Wechsel an den Seitenanfang. Bei Formularen weiter unten auf der Seite (Kontakt eingebettet, Beratung) steht die fokussierte Überschrift bei 1280 px dann außerhalb des Bildes (vorher stand dort der Fokus ebenfalls außerhalb: auf „Zurück“ bzw. `body`). Der nächste Tab rollt das nächste Feld ins Bild. Soll das Rollen ab 768 px bei solchen Seiten zur Überschrift gehen (wie am Telefon)? Das wäre eine Änderung der Bewegung, darum nicht in diesem Paket.
 3. „Weitermachen“ im Hinweis auf den Zwischenstand schließt den Hinweis; der Knopf verschwindet, der Fokus fällt auf `body` (kein Schrittwechsel, darum nicht in diesem Paket). Fokus danach auf die Schrittüberschrift?
 4. „Neu beginnen“ setzt den Fokus jetzt auf die Überschrift von Schritt 1 (vorher `body`). Das Paket nennt „Neu beginnen“ nicht ausdrücklich; es ist eine Bedienung mit Schrittwechsel und der Knopf verschwindet. Bitte bestätigen.
 5. Vorlesegeräte nur im Baum der Zugänglichkeit geprüft (Rolle, Name, Beschreibung), nicht mit NVDA/VoiceOver gehört. VoiceOver liest `aria-describedby` mit kurzer Verzögerung; ein Hörtest durch einen Menschen steht aus.
+
+## Nachbesserung (18.11.2026, nach zwei Gegenprüfungen)
+Geänderte Dateien: `src/lib/flow/use-flow.ts`, `src/lib/flow/use-flow.test.ts`, `src/components/flow/flow-shell.tsx`, `src/components/flow/flow-shell.test.tsx`, `src/components/flow/flow-shell-fokus.test.tsx`; neue Protokolle `protokolle/FA-QA-04E/wege-probe.mjs` → `wege-3000.json`, `ansage-probe.mjs` → `ansage-3000.json`, `quellen-3000-nachbesserung.json`, `gewicht-nachbesserung.md`; neu gemessen: `fokus-3000.json`, `eingebettet-kontakt-3000.json`, `beratung-3000.json`.
+
+| Nr. | Befund | Ergebnis |
+|---|---|---|
+| 1 [rot] | Fokus bei eingebetteten und weiter unten liegenden Abläufen ab 768 px außerhalb des Bildes (`use-flow.ts:121`) | **behoben**, Bestätigung erbeten (OFFENE FRAGE N1) |
+| 2 [gelb] | `aria-live` ganz entfernt; Wechsel ohne Fokus werden nicht mehr angesagt | **behoben** |
+| 3 [gelb] | Weiter, Schrittknopf, Browser-Zurück/-Vorwärts, Vorschlag nur im Unit-Test belegt | **behoben** (im Browser belegt) |
+| 4 [gelb] | wie 1 (WCAG 2.4.7, `flow-shell.tsx:193`) | **behoben** mit 1 |
+| 5 [gelb] | wie 2 (Sprünge ohne Bedienung, `schliessplan-planer.tsx:190`) | **behoben** mit 2 |
+| 6 [gelb] | `bedient` gilt nach Tippen bis zum nächsten Wechsel | **behoben** (anders als vorgeschlagen, Begründung unten) |
+| 7 [gelb] | Schwache Erwartung bei „Zurück“, Historie zwischen den Fällen nicht zurückgesetzt | **behoben** |
+
+**Befunde 1 und 4 (Fokus außerhalb des Bildes).** Trifft zu: Ab 768 px rollte `zumSchrittScrollen` immer an den Seitenanfang. Bei Formularen weiter unten auf der Seite lag die fokussierte Überschrift dann außerhalb des Bildes (Kontakt und Beratung bei 1280 px `imBild: false`). Umsetzung ohne neue Art der Bewegung: Ab 768 px misst `zumSchrittScrollen` vor dem Wechsel, wo die Überschrift am Seitenanfang stünde (Unterkante im Dokument gegen die Fensterhöhe). Passt sie dort ins Bild, rollt die Seite wie bisher an den Anfang. Das gilt für alle Abläufe oben auf der Seite: Assistent, Konfigurator, E-Scooter-Anfrage, gemessen `scrollY 0`, unverändert. Sonst rollt die Seite wie am Telefon zur Überschrift (`scrollIntoView({ block: 'start' })` unter Kopf und Band über `scroll-padding-top`). Die Art der Bewegung bleibt `scrollVerhalten()`, „Bewegung: ruhig“ springt also weiterhin. Die Überschrift wird weiterhin mit `preventScroll` fokussiert; es gibt keine zweite Bewegung.
+Beim Prüfen von Browser-Zurück im Browser (Befund 3) fiel ein zweiter Fall auf: Chromium stellt bei einer Rückkehr innerhalb des Dokuments die gespeicherte Rollposition erst **nach** dem `popstate` wieder her. Das überschrieb das Rollen; beim Konfigurator stand die Überschrift bei 1280 px nach Browser-Zurück bei y −129 (`scrollY 601`). Der popstate-Hörer ruft `zumSchrittScrollen` deshalb ein Bild später auf (`requestAnimationFrame`); danach steht sie bei y 472 (`scrollY 0`).
+Belege nachher: `eingebettet-kontakt-3000.json` und `beratung-3000.json` zeigen bei 412 und 1280 px nach beiden Wechseln Fokus auf `h2` und `imBild: true`. Partner-Bewerbung bei 1280 px: Die Überschrift steht nach Weiter, Browser-Zurück/-Vorwärts und Schrittknopf bei y 160 (`wege-3000.json`). Unit-Tests: `use-flow.test.ts` (Seitenanfang, wenn die Überschrift dort im Bild steht; Überschrift, wenn der Ablauf weiter unten steht; ohne Überschrift an den Anfang).
+Weil sich damit das Ziel des Rollens ab 768 px für Formulare weiter unten auf der Seite ändert (nicht die Art der Bewegung), bleibt die Frage zur Bestätigung offen: **OFFENE FRAGE N1**.
+
+**Befunde 2 und 5 (Ansage ohne Fokus).** Trifft zu: Ohne `aria-live` an der Zeile „Schritt x von y“ blieben das Wiederherstellen beim Hydrieren und Sprünge ohne Bedienung stumm. Umsetzung: eine eigene, unsichtbare Live-Region im Rahmen (`<p class="sr-only" aria-live="polite" data-schritt-ansage>`). Sie ist beim Laden leer. Der Fokuseffekt füllt sie nur, wenn der Schritt wechselt, **ohne** dass der Fokus auf die Überschrift geht. Inhalt: „Schritt x von y: Name. Titel“, aus denselben Teilen wie `aria-valuetext` und die Überschrift. Geht der Fokus auf die Überschrift, wird die Region geleert, und es bleibt bei einer Ansage. Sichtbare Texte sind unverändert.
+Belege: `ansage-3000.json`. Ohne Zwischenstand ist die Region leer, im Server-HTML wie nach dem Laden (412 und 1280). Mit Zwischenstand auf „Fotos“ steht nach dem Hydrieren „Schritt 2 von 5: Unterlagen hochladen. Fotos Ihres Schlüssels“ darin, der Fokus bleibt auf `body`. Nach Wechseln mit Fokus ist sie leer (`wege-3000.json`, Feld `ansage`). Unit-Tests: Wiederherstellen und Sprung ohne Bedienung füllen die Region, „Weiter“ lässt sie leer, beim ersten Render ist sie leer.
+Layoutverschiebung beim Laden ohne Zwischenstand weiter 0, mit Zwischenstand unverändert 0,0884 (1280) (`quellen-3000-nachbesserung.json`). Ein Hörtest mit NVDA oder VoiceOver steht weiter aus (OFFENE FRAGE 5).
+
+**Befund 3 (Wege im Browser).** Trifft zu. Die neue Probe `wege-probe.mjs` (Ausgabe `wege-3000.json`) prüft bei 412 und 1280 px die Partner-Bewerbung, den Konfigurator gleichschließende Zylinder und die E-Scooter-Anfrage. Ablauf: Schritt 1 nur mit der Tastatur füllen (erfundene Angaben), dann „Weiter“ per Tab und Enter, `page.goBack()`, `page.goForward()` und den Schrittknopf des ersten Schritts per Umschalt+Tab und Enter. Ergebnis: Nach jedem Wechsel liegt der Fokus auf `h2[data-schritt-titel]`, `:focus-visible` ist gesetzt, die Überschrift steht im Bild, und der nächste Tab landet im Ablauf. Einschränkung: Der Schrittknopf ist nur bei 1280 px geprüft. Unter 768 px ist die Leiste ausgeblendet (`md:flex`) und daher nicht bedienbar.
+Übernommener Vorschlag im Assistenten: In die Fahrzeugsuche „Golf“ tippen. Der Hinweis lautet dann „Weiter mit Volkswagen Golf“. Danach „Weiter“ per Tastatur. Der Fokus liegt auf `h2` „Baujahr oder Erstzulassung“, im Bild bei 412 und 1280 px; der nächste Tab geht auf „Ändern“ im Schritt.
+Die bisherige Probe `fokus-probe.mjs` wurde gegen den nachgebesserten Stand wiederholt (`fokus-3000.json`) und zeigt dasselbe Ergebnis wie zuvor. Der Satz unter „Was sich für wen ändert“ ist damit im Browser belegt; „Neu beginnen“ ist weiterhin nur im Unit-Test belegt.
+
+**Befund 6 (Bedienung bleibt nach dem Tippen stehen).** Trifft zu. Die vorgeschlagene Lösung, die Bedienung nur im selben Ereignisdurchlauf gelten zu lassen, ist **nicht** umgesetzt. Grund: Der Assistent springt nach „Absenden“ erst nach `await uploadsAbwarten()` auf einen unvollständigen Schritt (`assistent.tsx:1006`). Dieser Sprung folgt einem Klick und verlöre sonst den Fokus. Umgesetzt ist stattdessen: Als Bedienung zählt nur noch das Auslösen, also ein Klick oder Enter bzw. Leertaste im Ablauf. Jede andere Taste (Tippen, Pfeiltasten, Tab) hebt die Bedienung wieder auf. Nach dem Ausfüllen eines Feldes zieht ein späterer Sprung ohne Auslösen den Fokus also nicht mehr an sich; er wird dann über die Live-Region angesagt. Der verbleibende Randfall steht im Kommentar: nach einem Mausklick auf eine Option ohne weitere Eingabe. Heute ruft kein Formular in diesem Fall einen Sprung auf.
+Unit-Tests: „Tippen im Feld gilt nicht als Bedienung“ (vorher wäre der Fokus auf die Überschrift gegangen) und „Enter auf einem Knopf im Ablauf gilt als Bedienung, auch wenn der Sprung später folgt“.
+
+**Befund 7 (Tests).** Trifft zu. Der Test erwartet jetzt `'Zweiter Schritt'`, und `beforeEach` setzt die Historie mit `window.history.replaceState(null, '')` neutral.
+
+### Prüfungen nach der Nachbesserung
+- `sicher.sh --json -- npx vitest run`: 275 Dateien, 4314 Tests grün (vorher 4309; neu: 5 Fälle, davon 3 in `flow-shell-fokus.test.tsx` und 2 in `use-flow.test.ts`; dazu angepasste Erwartungen).
+- `… -- npm run typecheck`: grün (0 Fehler). `… -- npm run lint`: grün (0 Meldungen).
+- `SM24_INDEXIERUNG=an sicher.sh --json -- npm run build`: grün. Der Prüfserver auf Port 3000 wurde danach neu gestartet.
+- Skript-Gewicht des Assistenten beim ersten Abruf nach dem Start (`gewicht-nachbesserung.md`): 18 Skripte, 900,2 KB roh, 277,6 KB gz. Zum Vergleich: vor dem Paket 899,0 / 277,2, nach dem Paket 899,5 / 277,4. Zuwachs insgesamt +1,2 KB roh, +0,4 KB gz. Konfigurator 810,6 KB roh.
+
+### OFFENE FRAGEN der Nachbesserung
+- **N1 (Inhaber/Orchestrator, B-11):** Ab 768 px rollt die Seite bei Formularen weiter unten auf der Seite (Kontakt, Beratung, Partner-Bewerbung) nach einem Schrittwechsel jetzt zur Schrittüberschrift statt an den Seitenanfang. Nur so bleiben Fokus und Überschrift im Bild. Die Art der Bewegung ist unverändert (`scrollVerhalten()`, „ruhig“ springt). Abläufe oben auf der Seite rollen wie bisher an den Anfang. Bitte bestätigen. Falls nicht: Rücknahme in `zumSchrittScrollen` (eine Bedingung); dann ist Teil 1.6 für diese Seiten nicht erfüllt.
+- **N2:** Browser-Zurück rollt jetzt ein Bild später (`requestAnimationFrame`), damit die Rollposition, die der Browser wiederherstellt, das Rollen zum Schritt nicht überschreibt. Gemessen ist das in Chromium; Safari und Firefox sind nicht geprüft.
+
+## Abnahme durch den Orchestrator (18.11.2026)
+
+**Ergebnis: Teil 1 abgenommen. Teil 2 bleibt offen beim Inhaber (MA-62); am Fortsetzen ist nichts geändert.**
+
+Geprüft:
+- Kette `abnahme.sh FA-QA-04E`: Typprüfung, Lint, Unit-Tests 4314, Datenbanktests 190, Build 190/190 grün.
+- Eigene Tastaturprobe, unabhängig von den Skripten des Baumeisters (Autoschlüssel-Assistent, 412 und 1280 px, alter Stand auf Port 3200 gegen neuen auf Port 3000): Marke wählen, mit Tab zu „Weiter“, Enter. Alt: Fokus auf der Seite selbst, kein sichtbarer Fokus. Neu: Fokus auf der Überschrift „Welches Modell fahren Sie?“, Fokusring sichtbar, Überschrift im Bild (Telefon bei 136 px unter dem festen Kopf, Desktop bei 463 px), Beschreibung „Schritt 1 von 5 · Fahrzeug wählen“; der nächste Tab landet im Eingabefeld des Schritts. „Zurück“ mit der Maus: Fokus auf der Überschrift, kein Ring. Beim Laden: Fokus nicht im Formular, Layoutverschiebung 0, in beiden Ständen gleich.
+- Proben des Baumeisters nach der Nachbesserung gelesen: Kontakt (eingebettet) und Beratung stehen nach dem Wechsel bei beiden Breiten im Bild; 46 Wechsel über „Weiter“, Browser-Zurück und -Vorwärts, Schrittknopf und Vorschlag in vier Abläufen: Fokus jedes Mal auf der Überschrift und im Bild.
+- Alle Formulare laden und wechseln den Schritt ohne Konsolenfehler (12 Abläufe und das Kontaktformular).
+- Lagevergleich beim Laden mit dem Stand davor (13 Seiten, 390 und 1280 px): Auf den Formularseiten ist ein einziges Element dazugekommen (die unsichtbare Ansagezeile, 1 × 1 px), nichts ist verschoben; Seiten ohne Formular sind gleich.
+- Skript-Gewicht am frisch gestarteten Server: Assistent 18 Skripte, 277,2 auf 277,6 KB; Konfigurator 252,9 auf 253,3 KB; Kontakt 267,3 auf 267,7 KB (der Ablauf-Baustein, je 0,4 KB). Grund: Fokus und Ansage.
+
+Entschieden (A-077):
+- Ab 768 px rollt die Seite nach einem Schrittwechsel bei Formularen, die weiter unten auf der Seite stehen (Kontakt, Beratung, Partner-Bewerbung), zur Überschrift des Schritts statt an den Seitenanfang. Vorher rollte sie vom Formular weg; die fokussierte Überschrift muss im Bild stehen. Abläufe am Seitenanfang rollen wie bisher. Die Art der Bewegung (B-11, „ruhig“ bleibt ruhig) ist unverändert.
+- Die Ansage für Vorlesegeräte: mit Fokus spricht die Überschrift (mit Schrittzahl als Beschreibung); ohne Fokus (Fortsetzen, Sprung ohne Bedienung) spricht eine unsichtbare Ansagezeile. Sichtbare Texte sind unverändert.
+- `happy-dom` (Testumgebung der neuen Verhaltenstests) kommt über `@payloadcms/richtext-lexical` in die Sperrdatei und steht nicht in `package.json`. Solange das so ist, laufen die Tests; fällt die Abhängigkeit dort weg, wird der Test laut rot. Ein eigener Eintrag unter den Entwicklungsabhängigkeiten ist vorgemerkt (kein Laufzeitcode).
+
+Offen:
+- Teil 2 (Sprung beim Fortsetzen, 0,13 am Telefon und 0,09 am Desktop, unverändert): Wege A (Rückfrage „Zwischenstand fortsetzen?“), B (Cookie und Erzeugen auf dem Server) oder so lassen; Entscheidung des Inhabers (MA-62). Weg C ist verworfen (senkt nur die Kennzahl).
+- „Weitermachen“ im Hinweis auf den Zwischenstand lässt den Fokus auf der Seite (kein Schrittwechsel): kleiner Nachzug, vorgemerkt.
+- Hörtest mit einem echten Vorlesegerät und ein Blick in Safari und Firefox auf Browser-Zurück im Konfigurator (hier steht nur Chromium bereit): MA-62.
+
