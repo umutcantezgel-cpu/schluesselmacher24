@@ -542,3 +542,10 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Lehre für Gestaltungsaufträge: Bei einer Richtungsfrage zuerst die Vorschau bestätigen lassen und dann bauen. Die Vorschauen gingen am 17.11. um 22:10 MEZ an den Nutzer, gebaut wurde gleich; die Antwort kam acht Stunden später.
 - Nicht auf main ohne neue Anweisung; der Inhaber bestätigt die Farbe (MA-61).
 
+## A-079 · Livegang 8: helle Fassung mit Dunkelblau als Akzentfarbe auf main (2026-11-18 10:20, Nutzer)
+- Der Nutzer sah die Bilder der hellen Fassung und schrieb am 18.11. um 10:10 MEZ „Live“. Damit ging Commit b0aa692 als Fast-Forward auf main (10:15 MEZ, 5364c4e..b0aa692). Er enthält FA-FARBE-01 in der hellen Fassung (A-074, A-075, A-078), FA-QA-04E Teil 1 (A-077) und den Abschluss von FA-SEO-03C ohne Quelltextänderung (A-076).
+- Davor geprüft: Kette am Arbeitsbaum grün (Typprüfung, Lint, Unit 4321, DB 190, Build 190/190); in sauberer Kopie als Produktions-Build ohne Datenbank gebaut (190 Seiten, Exit 0), Schaufenster-Probe 10 von 10, keine dunkle Fläche auf 31 Seitentypen bei zwei Breiten, kein Orange im CSS.
+- Danach öffentlich geprüft (10:17 MEZ, nur lesend, ein Abruf je 1,2 Sekunden): 19 von 19 (elf Seiten mit 200 und erwartetem Inhalt, alle noindex, helle Seite, Markenblau als Aktionsfarbe, kein Orange, die „24“ in der Grafikfarbe, eine Auslieferung `dpl_DKSDe2Vccg8fNBRaDqSwuQg8RG4s`, Hauptdomain leitet auf www um).
+- Unverändert: Die Produktion ist das Schaufenster ohne Datenbank (noindex, Rechtsseiten mit Entwurfs-Hinweis, Formulare nehmen nichts an). Für den echten Livegang bleibt MA-23. Jede weitere Arbeit geht erst auf neue Anweisung des Nutzers auf main.
+- Der Inhaber hat das Dunkelblau noch nicht selbst bestätigt (MA-61); seine Arbeitsanweisung nennt Orange. Der Nutzer hat für ihn entschieden; die Farbwerte stehen an einer Stelle.
+
