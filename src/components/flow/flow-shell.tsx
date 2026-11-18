@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useState, useSyncExternalStore, type ReactNode } from 'react';
+import { useEffect, useId, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
 import type { FlowState, FlowStep } from '@/lib/flow/use-flow';
 import { useVerlassenWarnung, type VerlassenGrund } from '@/lib/flow/verlassen-warnung';
 import { cn } from '@/lib/cn';
@@ -129,6 +129,7 @@ export function FlowShell<T extends object>({
   children,
 }: FlowShellProps<T>) {
   const hinweisId = useId();
+  const bandId = useId();
   // Browser-Zurück, Neuladen und Schließen fragen nach, solange dabei etwas verloren ginge (FA-QA-02).
   // Die Frage nennt den Grund: gewählte Dateien oder ein Zwischenstand, der sich nicht speichern ließ.
   // Mit Schritten in der Historie (FA-QA-04B) braucht die Rückfrage ihren Wacheintrag nur am Anfang des
@@ -171,6 +172,57 @@ export function FlowShell<T extends object>({
     setWechsel({ vorher: flow.stepIndex, richtung: absicht });
     setAbsicht(null);
   }
+  // Fokus nach dem Schrittwechsel (FA-QA-04E): Die Überschrift des neuen Schritts bekommt ihn, wenn der
+  // Wechsel aus einer Bedienung kam. Sonst fiele er mit dem verschwundenen oder gesperrten Knopf auf die
+  // Seite, und der nächste Tab begänne wieder in der Kopfzeile. Nicht beim ersten Render, nicht beim
+  // Wiederherstellen eines Zwischenstands und nicht bei einem Sprung, den das Formular selbst ohne
+  // Bedienung im Ablauf auslöst (etwa ein Plan aus einem Link beim Laden).
+  // Als Bedienung zählt ein Auslösen im Ablauf (Klick, Enter, Leertaste) seit dem letzten Wechsel; auch ein
+  // Sprung nach einem abgewarteten Absenden (Upload, Prüfung) folgt so dem Klick. Tippen und Pfeiltasten
+  // (Feld ausfüllen, Option wählen) heben die Bedienung wieder auf: Ein späterer Sprung ohne Auslösen
+  // nimmt dann niemandem den Fokus aus dem Feld. Randfall: Nach einem Mausklick auf eine Option ohne
+  // weitere Eingabe gälte ein Sprung des Formulars noch als Bedienung (heute ruft kein Formular so einen auf).
+  // Browser-Zurück und -Vorwärts gelten immer als Bedienung.
+  // Die Seite rollt dabei nicht zusätzlich (`preventScroll`), das Rollen bleibt bei `zumSchrittScrollen`
+  // (ab 768 px bei Abläufen weiter unten auf der Seite zur Überschrift, damit sie im Bild steht).
+  // Wechsel ohne Fokus (Wiederherstellen beim Hydrieren, Sprung ohne Bedienung) sagt eine unsichtbare
+  // Live-Region an, wie vorher die Zeile „Schritt x von y“; mit Fokus spricht nur die Überschrift.
+  const titelRef = useRef<HTMLHeadingElement>(null);
+  const ansageRef = useRef<HTMLParagraphElement>(null);
+  const bedient = useRef(false);
+  const fokusNr = flow.wechsel?.nr ?? 0;
+  const fokusAusHistorie = flow.wechsel?.historie ?? false;
+  const fokusErledigt = useRef(fokusNr);
+  const angesagterSchritt = useRef(flow.stepIndex);
+  const ansageText = `${fortschrittText(flow)}. ${flow.step?.title ?? ''}`;
+  useEffect(() => {
+    let fokussiert = false;
+    if (fokusErledigt.current !== fokusNr) {
+      fokusErledigt.current = fokusNr;
+      const ausBedienung = fokusAusHistorie || bedient.current;
+      bedient.current = false;
+      const titelEl = titelRef.current;
+      if (ausBedienung && titelEl) {
+        titelEl.focus({ preventScroll: true });
+        fokussiert = document.activeElement === titelEl;
+      }
+    }
+    const ansage = ansageRef.current;
+    if (fokussiert) {
+      angesagterSchritt.current = flow.stepIndex;
+      if (ansage) ansage.textContent = '';
+    } else if (angesagterSchritt.current !== flow.stepIndex) {
+      angesagterSchritt.current = flow.stepIndex;
+      if (ansage) ansage.textContent = ansageText;
+    }
+  }, [fokusNr, fokusAusHistorie, flow.stepIndex, ansageText]);
+  const merkeKlick = () => {
+    bedient.current = true;
+  };
+  const merkeTaste = (e: { key: string }) => {
+    bedient.current = e.key === 'Enter' || e.key === ' ';
+  };
+
   const weiter = () => {
     setAbsicht('vor');
     if (!flow.canContinue && vorschlag) vorschlag.onWeiter();
@@ -287,15 +339,25 @@ export function FlowShell<T extends object>({
   );
 
   return (
-    <div data-ablauf data-eingebettet={eingebettet ? 'ja' : undefined} className={cn('sm24-ablauf relative', eingebettet ? 'pb-8' : 'pb-40 md:pb-8')}>
+    <div
+      data-ablauf
+      data-eingebettet={eingebettet ? 'ja' : undefined}
+      className={cn('sm24-ablauf relative', eingebettet ? 'pb-8' : 'pb-40 md:pb-8')}
+      onClickCapture={merkeKlick}
+      onKeyDownCapture={merkeTaste}
+    >
       {schutz && <SchutzFelder schutz={schutz} />}
+      {/* Ansage für Wechsel ohne Fokus (FA-QA-04E, Nachbesserung): leer beim Laden, nur für Vorlesegeräte. */}
+      <p ref={ansageRef} className="sr-only" aria-live="polite" data-schritt-ansage />
       {/* Fortschritt: klebendes Band über die ganze Breite der Shell, auf allen Breiten gleich
           (eine Zeile „Schritt n von m · Name“, der Ablauftitel steht schon in der h1). Mit Etappen zählt
           das Band nur die Etappen; die Teilschritte zeigt die Liste daneben (E5-OPUS-05, ein Zähler). */}
       <div className="sticky top-header z-sticky -mx-5 border-b border-border bg-background px-5 py-3 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div className="flex items-baseline justify-between gap-3">
-          {/* Lesbar groß (FA-QA-02: Hilfetexte nicht unter 14 px); Vorleseprogramme hören den Wechsel. */}
-          <p aria-live="polite" className="min-w-0 truncate whitespace-nowrap text-small font-mono tabular-nums text-foreground-muted">
+          {/* Lesbar groß (FA-QA-02: Hilfetexte nicht unter 14 px). Vorleseprogramme hören den Wechsel mit der
+              Überschrift des neuen Schritts, die auf diese Zeile verweist: eine Ansage mit Titel und Schrittzahl
+              statt zweier (FA-QA-04E; vorher sprach zusätzlich diese Zeile als Live-Region). */}
+          <p id={bandId} className="min-w-0 truncate whitespace-nowrap text-small font-mono tabular-nums text-foreground-muted">
             {etappe ? (
               <>
                 Schritt {etappeJetzt + 1} von {etappen.length} · {etappe.name}
@@ -377,7 +439,15 @@ export function FlowShell<T extends object>({
               {/* Ziel des Scrollens nach „Weiter“ am Smartphone (`zumSchrittScrollen`, I-08). Den Platz
                   für Kopf und Band hält `scroll-padding-top` von `html:has(.sm24-ablauf)` frei; ein
                   `scroll-margin` käme dazu und schöbe die Überschrift doppelt so weit nach unten. */}
-              <h2 data-schritt-titel className="text-title font-bold text-foreground">
+              {/* Fokusziel nach dem Schrittwechsel (FA-QA-04E): `tabIndex={-1}` nimmt sie nicht in die Tab-Folge auf;
+                  der Ring erscheint nur bei Tastaturbedienung (`:focus-visible`). */}
+              <h2
+                ref={titelRef}
+                data-schritt-titel
+                tabIndex={-1}
+                aria-describedby={bandId}
+                className="text-title font-bold text-foreground"
+              >
                 {flow.step?.title}
               </h2>
               {flow.step?.hint && (

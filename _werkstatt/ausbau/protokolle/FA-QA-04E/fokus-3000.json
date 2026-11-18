@@ -1,0 +1,923 @@
+{
+ "basis": "http://localhost:3000",
+ "ablaeufe": [
+  {
+   "breite": 412,
+   "ablauf": "Autoschlüssel-Assistent",
+   "wechsel": [
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 13,
+     "von": "Welches Fahrzeug haben Sie?",
+     "nach": "Welches Modell fahren Sie?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welches Modell fahren Sie?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Welches Modell fahren Sie?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 4,
+     "von": "Welches Modell fahren Sie?",
+     "nach": "Baujahr oder Erstzulassung",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Baujahr oder Erstzulassung",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Baujahr oder Erstzulassung\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "button",
+      "text": "Ändern",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 6,
+     "von": "Baujahr oder Erstzulassung",
+     "nach": "Weitere Fahrzeugdaten (freiwillig)",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Weitere Fahrzeugdaten (freiwillig)",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Weitere Fahrzeugdaten (freiwillig)\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 5,
+     "von": "Weitere Fahrzeugdaten (freiwillig)",
+     "nach": "Welche Schlüsselart haben Sie?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welche Schlüsselart haben Sie?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Welche Schlüsselart haben Sie?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "button",
+      "text": "Erklärung zu Woran Sie einen mechanischen Schlüsse",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 7,
+     "von": "Welche Schlüsselart haben Sie?",
+     "nach": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Wie viele funktionierende Schlüssel haben Sie noch",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Wie viele funktionierende Schlüssel haben Sie noch?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "button",
+      "text": "Erklärung zu Warum diese Angabe wichtig ist",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 4,
+     "von": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "nach": "Was sollen wir für Sie tun?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Was sollen wir für Sie tun?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Was sollen wir für Sie tun?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 9,
+     "von": "Was sollen wir für Sie tun?",
+     "nach": "Fotos Ihres Schlüssels",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Fotos Ihres Schlüssels",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Fotos Ihres Schlüssels\" [level=2]",
+     "beschreibung": "Schritt 2 von 5 · Unterlagen hochladen",
+     "naechsterTab": {
+      "el": "a",
+      "text": "06441 8056279",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 11,
+     "von": "Fotos Ihres Schlüssels",
+     "nach": "Was sollen wir für Sie tun?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Was sollen wir für Sie tun?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Was sollen wir für Sie tun?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 8,
+     "von": "Was sollen wir für Sie tun?",
+     "nach": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Wie viele funktionierende Schlüssel haben Sie noch",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Wie viele funktionierende Schlüssel haben Sie noch?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "button",
+      "text": "Erklärung zu Warum diese Angabe wichtig ist",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 3,
+     "von": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "nach": "Welche Schlüsselart haben Sie?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welche Schlüsselart haben Sie?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Welche Schlüsselart haben Sie?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "button",
+      "text": "Erklärung zu Woran Sie einen mechanischen Schlüsse",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 6,
+     "von": "Welche Schlüsselart haben Sie?",
+     "nach": "Weitere Fahrzeugdaten (freiwillig)",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Weitere Fahrzeugdaten (freiwillig)",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Weitere Fahrzeugdaten (freiwillig)\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 4,
+     "von": "Weitere Fahrzeugdaten (freiwillig)",
+     "nach": "Baujahr oder Erstzulassung",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Baujahr oder Erstzulassung",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Baujahr oder Erstzulassung\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "button",
+      "text": "Ändern",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 5,
+     "von": "Baujahr oder Erstzulassung",
+     "nach": "Welches Modell fahren Sie?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welches Modell fahren Sie?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Welches Modell fahren Sie?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 3,
+     "von": "Welches Modell fahren Sie?",
+     "nach": "Welches Fahrzeug haben Sie?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welches Fahrzeug haben Sie?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Welches Fahrzeug haben Sie?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 412,
+   "ablauf": "Konfigurator gleichschließende Zylinder",
+   "wechsel": [
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 14,
+     "von": "Gemeinsame Schlüssel",
+     "nach": "Zylinder zusammenstellen",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Zylinder zusammenstellen",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Zylinder zusammenstellen\" [level=2]",
+     "beschreibung": "Schritt 2 von 6 · Zylinder",
+     "naechsterTab": {
+      "el": "a",
+      "text": "Versandkosten",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 22,
+     "von": "Zylinder zusammenstellen",
+     "nach": "Hersteller wählen",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Hersteller wählen",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Hersteller wählen\" [level=2]",
+     "beschreibung": "Schritt 1 von 6 · Hersteller",
+     "naechsterTab": {
+      "el": "a",
+      "text": "Versandkosten",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 412,
+   "ablauf": "Partner-Bewerbung",
+   "wechsel": [
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 25,
+     "von": "Leistungen",
+     "nach": "Region und Einsatzgebiet",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Region und Einsatzgebiet",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Region und Einsatzgebiet\" [level=2]",
+     "beschreibung": "Schritt 2 von 7 · Region",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 6,
+     "von": "Region und Einsatzgebiet",
+     "nach": "Ihr Betrieb",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Ihr Betrieb",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Ihr Betrieb\" [level=2]",
+     "beschreibung": "Schritt 1 von 7 · Betrieb",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 412,
+   "ablauf": "Fahrzeug-Anfrage E-Scooter",
+   "wechsel": [
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 24,
+     "von": "Unterlagen und Fotos",
+     "nach": "Ihr Schlüssel",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Ihr Schlüssel",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Ihr Schlüssel\" [level=2]",
+     "beschreibung": "Schritt 2 von 6 · Schlüssel",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 2,
+     "von": "Ihr Schlüssel",
+     "nach": "Welches Fahrzeug ist es?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welches Fahrzeug ist es?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Welches Fahrzeug ist es?\" [level=2]",
+     "beschreibung": "Schritt 1 von 6 · Fahrzeug",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "ablauf": "Autoschlüssel-Assistent",
+   "wechsel": [
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 17,
+     "von": "Welches Fahrzeug haben Sie?",
+     "nach": "Welches Modell fahren Sie?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welches Modell fahren Sie?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Welches Modell fahren Sie?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 4,
+     "von": "Welches Modell fahren Sie?",
+     "nach": "Baujahr oder Erstzulassung",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Baujahr oder Erstzulassung",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Baujahr oder Erstzulassung\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "button",
+      "text": "Ändern",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 6,
+     "von": "Baujahr oder Erstzulassung",
+     "nach": "Weitere Fahrzeugdaten (freiwillig)",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Weitere Fahrzeugdaten (freiwillig)",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Weitere Fahrzeugdaten (freiwillig)\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 5,
+     "von": "Weitere Fahrzeugdaten (freiwillig)",
+     "nach": "Welche Schlüsselart haben Sie?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welche Schlüsselart haben Sie?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Welche Schlüsselart haben Sie?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "button",
+      "text": "Erklärung zu Woran Sie einen mechanischen Schlüsse",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 7,
+     "von": "Welche Schlüsselart haben Sie?",
+     "nach": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Wie viele funktionierende Schlüssel haben Sie noch",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Wie viele funktionierende Schlüssel haben Sie noch?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "button",
+      "text": "Erklärung zu Warum diese Angabe wichtig ist",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 4,
+     "von": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "nach": "Was sollen wir für Sie tun?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Was sollen wir für Sie tun?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Was sollen wir für Sie tun?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 9,
+     "von": "Was sollen wir für Sie tun?",
+     "nach": "Fotos Ihres Schlüssels",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Fotos Ihres Schlüssels",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Fotos Ihres Schlüssels\" [level=2]",
+     "beschreibung": "Schritt 2 von 5 · Unterlagen hochladen",
+     "naechsterTab": {
+      "el": "a",
+      "text": "06441 8056279",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 11,
+     "von": "Fotos Ihres Schlüssels",
+     "nach": "Was sollen wir für Sie tun?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Was sollen wir für Sie tun?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Was sollen wir für Sie tun?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 8,
+     "von": "Was sollen wir für Sie tun?",
+     "nach": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Wie viele funktionierende Schlüssel haben Sie noch",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Wie viele funktionierende Schlüssel haben Sie noch?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "button",
+      "text": "Erklärung zu Warum diese Angabe wichtig ist",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 3,
+     "von": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "nach": "Welche Schlüsselart haben Sie?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welche Schlüsselart haben Sie?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Welche Schlüsselart haben Sie?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "button",
+      "text": "Erklärung zu Woran Sie einen mechanischen Schlüsse",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 6,
+     "von": "Welche Schlüsselart haben Sie?",
+     "nach": "Weitere Fahrzeugdaten (freiwillig)",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Weitere Fahrzeugdaten (freiwillig)",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Weitere Fahrzeugdaten (freiwillig)\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 4,
+     "von": "Weitere Fahrzeugdaten (freiwillig)",
+     "nach": "Baujahr oder Erstzulassung",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Baujahr oder Erstzulassung",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Baujahr oder Erstzulassung\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "button",
+      "text": "Ändern",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 5,
+     "von": "Baujahr oder Erstzulassung",
+     "nach": "Welches Modell fahren Sie?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welches Modell fahren Sie?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Welches Modell fahren Sie?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 3,
+     "von": "Welches Modell fahren Sie?",
+     "nach": "Welches Fahrzeug haben Sie?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welches Fahrzeug haben Sie?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Welches Fahrzeug haben Sie?\" [level=2]",
+     "beschreibung": "Schritt 1 von 5 · Fahrzeug wählen",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "ablauf": "Konfigurator gleichschließende Zylinder",
+   "wechsel": [
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 18,
+     "von": "Gemeinsame Schlüssel",
+     "nach": "Zylinder zusammenstellen",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Zylinder zusammenstellen",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Zylinder zusammenstellen\" [level=2]",
+     "beschreibung": "Schritt 2 von 6 · Zylinder",
+     "naechsterTab": {
+      "el": "a",
+      "text": "Versandkosten",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 22,
+     "von": "Zylinder zusammenstellen",
+     "nach": "Hersteller wählen",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Hersteller wählen",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Hersteller wählen\" [level=2]",
+     "beschreibung": "Schritt 1 von 6 · Hersteller",
+     "naechsterTab": {
+      "el": "a",
+      "text": "Versandkosten",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "ablauf": "Partner-Bewerbung",
+   "wechsel": [
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 32,
+     "von": "Leistungen",
+     "nach": "Region und Einsatzgebiet",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Region und Einsatzgebiet",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Region und Einsatzgebiet\" [level=2]",
+     "beschreibung": "Schritt 2 von 7 · Region",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 6,
+     "von": "Region und Einsatzgebiet",
+     "nach": "Ihr Betrieb",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Ihr Betrieb",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Ihr Betrieb\" [level=2]",
+     "beschreibung": "Schritt 1 von 7 · Betrieb",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "ablauf": "Fahrzeug-Anfrage E-Scooter",
+   "wechsel": [
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 31,
+     "von": "Unterlagen und Fotos",
+     "nach": "Ihr Schlüssel",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Ihr Schlüssel",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Ihr Schlüssel\" [level=2]",
+     "beschreibung": "Schritt 2 von 6 · Schlüssel",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 2,
+     "von": "Ihr Schlüssel",
+     "nach": "Welches Fahrzeug ist es?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welches Fahrzeug ist es?",
+      "ort": "ablauf",
+      "ring": true
+     },
+     "aria": "- heading \"Welches Fahrzeug ist es?\" [level=2]",
+     "beschreibung": "Schritt 1 von 6 · Fahrzeug",
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  }
+ ],
+ "maus": [
+  {
+   "breite": 412,
+   "eingabe": "Finger",
+   "titel": "Welches Modell fahren Sie?",
+   "fokus": {
+    "el": "h2[data-schritt-titel]",
+    "text": "Welches Modell fahren Sie?",
+    "ort": "ablauf",
+    "ring": false
+   },
+   "lage": {
+    "titelOben": 136,
+    "titelUnten": 160,
+    "kopfUnten": 65,
+    "bandUnten": 126,
+    "hoehe": 823,
+    "outline": "none",
+    "schatten": "none"
+   },
+   "sichtbarUnterKopf": true
+  },
+  {
+   "breite": 1280,
+   "eingabe": "Maus",
+   "titel": "Welches Modell fahren Sie?",
+   "fokus": {
+    "el": "h2[data-schritt-titel]",
+    "text": "Welches Modell fahren Sie?",
+    "ort": "ablauf",
+    "ring": false
+   },
+   "lage": {
+    "titelOben": 463,
+    "titelUnten": 491,
+    "kopfUnten": 81,
+    "bandUnten": 439,
+    "hoehe": 800,
+    "outline": "none",
+    "schatten": "none"
+   },
+   "sichtbarUnterKopf": true
+  }
+ ],
+ "laden": [
+  {
+   "breite": 412,
+   "titel": "Welches Fahrzeug haben Sie?",
+   "fokus": {
+    "el": "body",
+    "ort": "seite"
+   }
+  },
+  {
+   "breite": 1280,
+   "titel": "Welches Fahrzeug haben Sie?",
+   "fokus": {
+    "el": "body",
+    "ort": "seite"
+   }
+  }
+ ]
+}

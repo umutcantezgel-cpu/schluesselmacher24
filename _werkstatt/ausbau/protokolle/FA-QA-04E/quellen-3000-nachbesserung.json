@@ -1,0 +1,144 @@
+{
+ "basis": "http://localhost:3000",
+ "schritt": "schluesselfotos",
+ "laeufe": [
+  {
+   "mitStand": false,
+   "breite": 412,
+   "titel": "Welches Fahrzeug haben Sie?",
+   "fokus": "body",
+   "fokusImFormular": false,
+   "cls": 0,
+   "lcp": {
+    "zeit": 212,
+    "knoten": "p.mt-2.max-w-measure.text-body.text-foreground-muted «Geben Sie Marke und Modell ein oder wähl»"
+   },
+   "verschiebungen": [],
+   "konsole": []
+  },
+  {
+   "mitStand": false,
+   "breite": 1280,
+   "titel": "Welches Fahrzeug haben Sie?",
+   "fokus": "body",
+   "fokusImFormular": false,
+   "cls": 0,
+   "lcp": {
+    "zeit": 160,
+    "knoten": "p.mt-2.max-w-measure.text-body.text-foreground-muted «Geben Sie Marke und Modell ein oder wähl»"
+   },
+   "verschiebungen": [],
+   "konsole": []
+  },
+  {
+   "mitStand": true,
+   "breite": 412,
+   "titel": "Fotos Ihres Schlüssels",
+   "fokus": "body",
+   "fokusImFormular": false,
+   "cls": 0,
+   "lcp": {
+    "zeit": 148,
+    "knoten": "p.mt-2.max-w-measure.text-body.text-foreground-muted «Geben Sie Marke und Modell ein oder wähl»"
+   },
+   "verschiebungen": [
+    {
+     "wert": 0.1305,
+     "eingabe": true,
+     "zeit": 315,
+     "quellen": [
+      {
+       "knoten": "div.lg:mt-6.lg:grid.lg:grid-cols-12.lg:gap-gutter «Ihr Zwischenstand von zuletzt wurde gela»",
+       "vorher": [
+        360,
+        463
+       ],
+       "nachher": [
+        353,
+        470
+       ]
+      }
+     ]
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "mitStand": true,
+   "breite": 1280,
+   "titel": "Fotos Ihres Schlüssels",
+   "fokus": "body",
+   "fokusImFormular": false,
+   "cls": 0.0884,
+   "lcp": {
+    "zeit": 352,
+    "knoten": "p.mt-2.max-w-measure.text-body.text-foreground-muted «Anhand der Fotos erkennen wir Bauform, P»"
+   },
+   "verschiebungen": [
+    {
+     "wert": 0.0884,
+     "eingabe": false,
+     "zeit": 340,
+     "quellen": [
+      {
+       "knoten": "div.-mx-5.overflow-x-clip.px-5.sm:-mx-6 «Fotos Ihres SchlüsselsAnhand der Fotos e»",
+       "vorher": [
+        463,
+        337
+       ],
+       "nachher": [
+        606,
+        194
+       ]
+      },
+      {
+       "knoten": "li «2Unterlagen hochladenSchlüsselfotosFahrz»",
+       "vorher": [
+        0,
+        0
+       ],
+       "nachher": [
+        515,
+        138
+       ]
+      },
+      {
+       "knoten": "li «3Preis oder Prüfung»",
+       "vorher": [
+        0,
+        0
+       ],
+       "nachher": [
+        661,
+        44
+       ]
+      },
+      {
+       "knoten": "li «4Anzahlung»",
+       "vorher": [
+        0,
+        0
+       ],
+       "nachher": [
+        713,
+        44
+       ]
+      },
+      {
+       "knoten": "li «5Termin buchen»",
+       "vorher": [
+        0,
+        0
+       ],
+       "nachher": [
+        765,
+        35
+       ]
+      }
+     ]
+    }
+   ],
+   "konsole": []
+  }
+ ]
+}

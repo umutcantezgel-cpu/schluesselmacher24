@@ -92,7 +92,13 @@ describe('FlowShell', () => {
 
   it('sagt Schritt und Namen lesbar groß und für Vorleseprogramme', () => {
     const html = rahmen();
-    expect(html).toMatch(/<p aria-live="polite" class="[^"]*\btext-small\b[^"]*">Schritt 2 von 3/);
+    // Eine Ansage (FA-QA-04E): Die Überschrift verweist auf die Zeile, die Zeile ist keine Live-Region mehr.
+    const id = html.match(/<p id="([^"]+)" class="[^"]*\btext-small\b[^"]*">Schritt 2 von 3/)?.[1];
+    expect(id).toBeTruthy();
+    expect(html).toMatch(new RegExp(`<h2 data-schritt-titel="true" tabindex="-1" aria-describedby="${id}"[^>]*>Zweiter Schritt</h2>`));
+    // Die Zeile spricht nicht selbst; nur die leere Ansage für Wechsel ohne Fokus ist eine Live-Region.
+    expect(html.match(/aria-live/g)).toHaveLength(1);
+    expect(html).toMatch(/<p class="sr-only" aria-live="polite" data-schritt-ansage="true"><\/p>/);
     expect(html).toContain('aria-valuetext="Schritt 2 von 3: Modell, 67 Prozent"');
     expect(fortschrittText(ablauf(0))).toBe('Schritt 1 von 3: Marke');
   });
@@ -116,7 +122,8 @@ describe('FlowShell', () => {
   it('ohne Hinweis des Formulars steht ein allgemeiner am gesperrten Knopf; frei steht keiner', () => {
     expect(rahmen({}, 1, { canContinue: false })).toContain(GESPERRT_STANDARD);
     expect(rahmen({}, 1)).not.toContain('data-gesperrt-hinweis');
-    expect(rahmen({ blockedHint: 'X' }, 1)).not.toContain('aria-describedby=');
+    // Nur der Knopf zählt; die Schrittüberschrift verweist immer auf die Zeile „Schritt x von y“ (FA-QA-04E).
+    expect(rahmen({ blockedHint: 'X' }, 1)).not.toMatch(/<button[^>]*aria-describedby=/);
   });
 
   it('sagt nach dem Laden eines Zwischenstands, dass Dateien neu zu wählen sind; Knöpfe 44 px hoch', () => {

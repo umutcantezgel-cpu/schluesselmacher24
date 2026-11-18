@@ -24,16 +24,25 @@ function browser({
   schmal,
   mitTitel = true,
   mitMatchMedia = true,
+  titelOben = 300,
+  scrollY = 0,
 }: {
   schmal: boolean;
   mitTitel?: boolean;
   mitMatchMedia?: boolean;
+  /** Lage der Überschrift im Bild vor dem Wechsel. */
+  titelOben?: number;
+  scrollY?: number;
 }) {
   const scrollTo = vi.fn();
   const scrollIntoView = vi.fn();
-  const querySelector = vi.fn(() => (mitTitel ? { scrollIntoView } : null));
+  const querySelector = vi.fn(() =>
+    mitTitel ? { scrollIntoView, getBoundingClientRect: () => ({ top: titelOben, bottom: titelOben + 40 }) } : null,
+  );
   vi.stubGlobal('window', {
     scrollTo,
+    scrollY,
+    innerHeight: 800,
     requestAnimationFrame: (rueckruf: () => void) => rueckruf(),
     ...(mitMatchMedia && {
       matchMedia: (anfrage: string) => ({ matches: anfrage === '(max-width: 767px)' && schmal }),
@@ -56,11 +65,26 @@ describe('zumSchrittScrollen', () => {
     expect(b.scrollTo).not.toHaveBeenCalled();
   });
 
-  it('geht ab 768 px wie bisher an den Seitenanfang', () => {
-    const b = browser({ schmal: false });
+  it('geht ab 768 px wie bisher an den Seitenanfang, wenn die Überschrift dort im Bild steht', () => {
+    // Überschrift vor dem Wechsel bei 300 px im Bild, Seite um 200 px gerollt: am Seitenanfang bei 500–540 px.
+    const b = browser({ schmal: false, titelOben: 300, scrollY: 200 });
     zumSchrittScrollen();
     expect(b.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
-    expect(b.querySelector).not.toHaveBeenCalled();
+    expect(b.scrollIntoView).not.toHaveBeenCalled();
+  });
+
+  it('geht ab 768 px zur Überschrift, wenn der Ablauf weiter unten steht (eingebettet, FA-QA-04E)', () => {
+    // Am Seitenanfang stünde die Überschrift bei 1900 px, unter dem Bild (800 px).
+    const b = browser({ schmal: false, titelOben: 100, scrollY: 1800 });
+    zumSchrittScrollen();
+    expect(b.scrollIntoView).toHaveBeenCalledWith({ block: 'start', behavior: 'smooth' });
+    expect(b.scrollTo).not.toHaveBeenCalled();
+  });
+
+  it('ab 768 px ohne Überschrift an den Seitenanfang', () => {
+    const b = browser({ schmal: false, mitTitel: false });
+    zumSchrittScrollen();
+    expect(b.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
   });
 
   it('geht ohne Überschrift oder ohne matchMedia an den Seitenanfang', () => {

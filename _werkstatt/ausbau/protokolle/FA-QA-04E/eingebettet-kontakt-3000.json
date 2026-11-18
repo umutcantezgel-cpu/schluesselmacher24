@@ -1,0 +1,34 @@
+[
+ {
+  "breite": 412,
+  "eingebettet": "ja",
+  "wechsel": [
+   {
+    "titel": "Ihr Kontakt und Antwortweg",
+    "fokus": "h2[data-schritt-titel]",
+    "imBild": true
+   },
+   {
+    "titel": "Ihre Nachricht",
+    "fokus": "h2[data-schritt-titel]",
+    "imBild": true
+   }
+  ]
+ },
+ {
+  "breite": 1280,
+  "eingebettet": "ja",
+  "wechsel": [
+   {
+    "titel": "Ihr Kontakt und Antwortweg",
+    "fokus": "h2[data-schritt-titel]",
+    "imBild": true
+   },
+   {
+    "titel": "Ihre Nachricht",
+    "fokus": "h2[data-schritt-titel]",
+    "imBild": true
+   }
+  ]
+ }
+]

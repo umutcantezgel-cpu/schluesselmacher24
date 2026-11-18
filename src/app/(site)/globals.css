@@ -374,6 +374,12 @@ header a[aria-label$='Startseite'] > span {
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 
+  /* Überschrift eines Ablaufschritts als Fokusziel nach dem Schrittwechsel (FA-QA-04E): Ring nur bei
+     Tastatur (Regel oben); nach Maus oder Finger auch in Browsern ohne `:focus-visible`-Vorgabe keiner. */
+  [data-schritt-titel]:focus:not(:focus-visible) {
+    outline: none;
+  }
+
   /* Eingabefelder auf iOS nicht zoomen lassen (min. 16px) */
   input,
   select,

@@ -1,0 +1,34 @@
+[
+ {
+  "breite": 412,
+  "eingebettet": null,
+  "wechsel": [
+   {
+    "titel": "Ihr Kontakt für den Rückruf",
+    "fokus": "button",
+    "imBild": false
+   },
+   {
+    "titel": "Ihr Anliegen",
+    "fokus": "body",
+    "imBild": true
+   }
+  ]
+ },
+ {
+  "breite": 1280,
+  "eingebettet": null,
+  "wechsel": [
+   {
+    "titel": "Ihr Kontakt für den Rückruf",
+    "fokus": "button",
+    "imBild": false
+   },
+   {
+    "titel": "Ihr Anliegen",
+    "fokus": "body",
+    "imBild": true
+   }
+  ]
+ }
+]

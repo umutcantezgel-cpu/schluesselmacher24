@@ -1,0 +1,38 @@
+[
+ {
+  "breite": 412,
+  "mitStand": false,
+  "serverAnsageLeer": true,
+  "titel": "Welches Fahrzeug haben Sie?",
+  "ansage": "",
+  "live": "polite",
+  "fokus": "body"
+ },
+ {
+  "breite": 412,
+  "mitStand": true,
+  "serverAnsageLeer": true,
+  "titel": "Fotos Ihres Schlüssels",
+  "ansage": "Schritt 2 von 5: Unterlagen hochladen. Fotos Ihres Schlüssels",
+  "live": "polite",
+  "fokus": "body"
+ },
+ {
+  "breite": 1280,
+  "mitStand": false,
+  "serverAnsageLeer": true,
+  "titel": "Welches Fahrzeug haben Sie?",
+  "ansage": "",
+  "live": "polite",
+  "fokus": "body"
+ },
+ {
+  "breite": 1280,
+  "mitStand": true,
+  "serverAnsageLeer": true,
+  "titel": "Fotos Ihres Schlüssels",
+  "ansage": "Schritt 2 von 5: Unterlagen hochladen. Fotos Ihres Schlüssels",
+  "live": "polite",
+  "fokus": "body"
+ }
+]

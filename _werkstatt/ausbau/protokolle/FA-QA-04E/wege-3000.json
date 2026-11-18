@@ -1,0 +1,667 @@
+{
+ "basis": "http://localhost:3000",
+ "ablaeufe": [
+  {
+   "breite": 412,
+   "ablauf": "Konfigurator gleichschließende Zylinder",
+   "wechsel": [
+    {
+     "weg": "Weiter (Tastatur)",
+     "von": "Hersteller wählen",
+     "nach": "Zylinder zusammenstellen",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Zylinder zusammenstellen",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 360,
+      "titelOben": 136,
+      "titelUnten": 161,
+      "hoehe": 823
+     },
+     "naechsterTab": {
+      "el": "a",
+      "text": "Versandkosten",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Browser-Zurück",
+     "von": "Zylinder zusammenstellen",
+     "nach": "Hersteller wählen",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Hersteller wählen",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 360,
+      "titelOben": 136,
+      "titelUnten": 161,
+      "hoehe": 823
+     },
+     "naechsterTab": {
+      "el": "a",
+      "text": "Versandkosten",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Browser-Vorwärts",
+     "von": "Hersteller wählen",
+     "nach": "Zylinder zusammenstellen",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Zylinder zusammenstellen",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 360,
+      "titelOben": 136,
+      "titelUnten": 161,
+      "hoehe": 823
+     },
+     "naechsterTab": {
+      "el": "a",
+      "text": "Versandkosten",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Schrittknopf",
+     "hinweis": "Leiste unter 768 px ausgeblendet (md:flex)"
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 412,
+   "ablauf": "Partner-Bewerbung",
+   "wechsel": [
+    {
+     "weg": "Weiter (Tastatur)",
+     "von": "Ihr Betrieb",
+     "nach": "Region und Einsatzgebiet",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Region und Einsatzgebiet",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 4834,
+      "titelOben": 136,
+      "titelUnten": 161,
+      "hoehe": 823
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Browser-Zurück",
+     "von": "Region und Einsatzgebiet",
+     "nach": "Ihr Betrieb",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Ihr Betrieb",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 4834,
+      "titelOben": 136,
+      "titelUnten": 161,
+      "hoehe": 823
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Browser-Vorwärts",
+     "von": "Ihr Betrieb",
+     "nach": "Region und Einsatzgebiet",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Region und Einsatzgebiet",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 4834,
+      "titelOben": 136,
+      "titelUnten": 161,
+      "hoehe": 823
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Schrittknopf",
+     "hinweis": "Leiste unter 768 px ausgeblendet (md:flex)"
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 412,
+   "ablauf": "Fahrzeug-Anfrage E-Scooter",
+   "wechsel": [
+    {
+     "weg": "Weiter (Tastatur)",
+     "von": "Welches Fahrzeug ist es?",
+     "nach": "Ihr Schlüssel",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Ihr Schlüssel",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 428,
+      "titelOben": 136,
+      "titelUnten": 161,
+      "hoehe": 823
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Browser-Zurück",
+     "von": "Ihr Schlüssel",
+     "nach": "Welches Fahrzeug ist es?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welches Fahrzeug ist es?",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 428,
+      "titelOben": 136,
+      "titelUnten": 161,
+      "hoehe": 823
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Browser-Vorwärts",
+     "von": "Welches Fahrzeug ist es?",
+     "nach": "Ihr Schlüssel",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Ihr Schlüssel",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 428,
+      "titelOben": 136,
+      "titelUnten": 161,
+      "hoehe": 823
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Schrittknopf",
+     "hinweis": "Leiste unter 768 px ausgeblendet (md:flex)"
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "ablauf": "Konfigurator gleichschließende Zylinder",
+   "wechsel": [
+    {
+     "weg": "Weiter (Tastatur)",
+     "von": "Hersteller wählen",
+     "nach": "Zylinder zusammenstellen",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Zylinder zusammenstellen",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 0,
+      "titelOben": 472,
+      "titelUnten": 501,
+      "hoehe": 800
+     },
+     "naechsterTab": {
+      "el": "a",
+      "text": "Versandkosten",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Browser-Zurück",
+     "von": "Zylinder zusammenstellen",
+     "nach": "Hersteller wählen",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Hersteller wählen",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 0,
+      "titelOben": 472,
+      "titelUnten": 501,
+      "hoehe": 800
+     },
+     "naechsterTab": {
+      "el": "a",
+      "text": "Versandkosten",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Browser-Vorwärts",
+     "von": "Hersteller wählen",
+     "nach": "Zylinder zusammenstellen",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Zylinder zusammenstellen",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 0,
+      "titelOben": 472,
+      "titelUnten": 501,
+      "hoehe": 800
+     },
+     "naechsterTab": {
+      "el": "a",
+      "text": "Versandkosten",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Schrittknopf „Hersteller“ (Tastatur)",
+     "von": "Zylinder zusammenstellen",
+     "nach": "Hersteller wählen",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Hersteller wählen",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 0,
+      "titelOben": 472,
+      "titelUnten": 501,
+      "hoehe": 800
+     },
+     "naechsterTab": {
+      "el": "a",
+      "text": "Versandkosten",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "ablauf": "Partner-Bewerbung",
+   "wechsel": [
+    {
+     "weg": "Weiter (Tastatur)",
+     "von": "Ihr Betrieb",
+     "nach": "Region und Einsatzgebiet",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Region und Einsatzgebiet",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 3752,
+      "titelOben": 160,
+      "titelUnten": 188,
+      "hoehe": 800
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Browser-Zurück",
+     "von": "Region und Einsatzgebiet",
+     "nach": "Ihr Betrieb",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Ihr Betrieb",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 3752,
+      "titelOben": 160,
+      "titelUnten": 188,
+      "hoehe": 800
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Browser-Vorwärts",
+     "von": "Ihr Betrieb",
+     "nach": "Region und Einsatzgebiet",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Region und Einsatzgebiet",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 3752,
+      "titelOben": 160,
+      "titelUnten": 188,
+      "hoehe": 800
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Schrittknopf „Betrieb“ (Tastatur)",
+     "von": "Region und Einsatzgebiet",
+     "nach": "Ihr Betrieb",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Ihr Betrieb",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 3752,
+      "titelOben": 160,
+      "titelUnten": 188,
+      "hoehe": 800
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "ablauf": "Fahrzeug-Anfrage E-Scooter",
+   "wechsel": [
+    {
+     "weg": "Weiter (Tastatur)",
+     "von": "Welches Fahrzeug ist es?",
+     "nach": "Ihr Schlüssel",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Ihr Schlüssel",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 0,
+      "titelOben": 548,
+      "titelUnten": 576,
+      "hoehe": 800
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Browser-Zurück",
+     "von": "Ihr Schlüssel",
+     "nach": "Welches Fahrzeug ist es?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welches Fahrzeug ist es?",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 0,
+      "titelOben": 548,
+      "titelUnten": 576,
+      "hoehe": 800
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Browser-Vorwärts",
+     "von": "Welches Fahrzeug ist es?",
+     "nach": "Ihr Schlüssel",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Ihr Schlüssel",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 0,
+      "titelOben": 548,
+      "titelUnten": 576,
+      "hoehe": 800
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    },
+    {
+     "weg": "Schrittknopf „Fahrzeug“ (Tastatur)",
+     "von": "Ihr Schlüssel",
+     "nach": "Welches Fahrzeug ist es?",
+     "fokus": {
+      "el": "h2[data-schritt-titel]",
+      "text": "Welches Fahrzeug ist es?",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     },
+     "ansage": "",
+     "lage": {
+      "scrollY": 0,
+      "titelOben": 548,
+      "titelUnten": 576,
+      "hoehe": 800
+     },
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true,
+      "imBild": true
+     }
+    }
+   ],
+   "konsole": []
+  }
+ ],
+ "vorschlag": [
+  {
+   "breite": 412,
+   "hinweisVorher": "Weiter mit Volkswagen Golf",
+   "tabsBisWeiter": 5,
+   "weg": "Vorschlag übernommen (Weiter, Tastatur)",
+   "von": "Welches Fahrzeug haben Sie?",
+   "nach": "Baujahr oder Erstzulassung",
+   "fokus": {
+    "el": "h2[data-schritt-titel]",
+    "text": "Baujahr oder Erstzulassung",
+    "ort": "ablauf",
+    "ring": true,
+    "imBild": true
+   },
+   "ansage": "",
+   "lage": {
+    "scrollY": 225,
+    "titelOben": 136,
+    "titelUnten": 160,
+    "hoehe": 823
+   },
+   "naechsterTab": {
+    "el": "button",
+    "text": "Ändern",
+    "ort": "ablauf",
+    "ring": true,
+    "imBild": true
+   },
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "hinweisVorher": "Weiter mit Volkswagen Golf",
+   "tabsBisWeiter": 5,
+   "weg": "Vorschlag übernommen (Weiter, Tastatur)",
+   "von": "Welches Fahrzeug haben Sie?",
+   "nach": "Baujahr oder Erstzulassung",
+   "fokus": {
+    "el": "h2[data-schritt-titel]",
+    "text": "Baujahr oder Erstzulassung",
+    "ort": "ablauf",
+    "ring": true,
+    "imBild": true
+   },
+   "ansage": "",
+   "lage": {
+    "scrollY": 0,
+    "titelOben": 463,
+    "titelUnten": 491,
+    "hoehe": 800
+   },
+   "naechsterTab": {
+    "el": "button",
+    "text": "Ändern",
+    "ort": "ablauf",
+    "ring": true,
+    "imBild": true
+   },
+   "konsole": []
+  }
+ ]
+}

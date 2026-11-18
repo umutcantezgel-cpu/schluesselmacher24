@@ -74,6 +74,14 @@ export interface FlowState<T> {
    * und richtet die Rückfrage vor dem Verlassen nur am Anfang des Ablaufs mit Wacheintrag ein.
    */
   historie?: SchrittHistorie;
+  /**
+   * Zähler der Schrittwechsel aus einer Bedienung (FA-QA-04E): Sprung über `goTo`, `next`, `back`,
+   * `updateAndGoTo`, Browser-Zurück und -Vorwärts sowie „Neu beginnen“. Das Laden, das Wiederherstellen
+   * eines Zwischenstands und ein gleichbleibender Schritt zählen nicht. `historie` sagt, ob der letzte
+   * Wechsel aus der Browser-Historie kam (dort immer eine Bedienung). Die FlowShell setzt danach den
+   * Fokus auf die Überschrift des neuen Schritts.
+   */
+  wechsel?: { nr: number; historie: boolean };
 }
 
 const STORAGE_PREFIX = 'sm24:flow:';
@@ -104,14 +112,25 @@ const SCHMAL = '(max-width: 767px)';
  * Optionen. Den Abstand unter Kopf und Fortschrittsband gibt `scroll-padding-top` in
  * `globals.css` vor. Ab 768 px, ohne `matchMedia` oder ohne Überschrift wie bisher an
  * den Seitenanfang.
+ *
+ * Ausnahme ab 768 px (FA-QA-04E, Nachbesserung): Steht der Ablauf so weit unten auf der Seite, dass die
+ * Überschrift am Seitenanfang nicht im Bild wäre (eingebettete Formulare wie Kontakt, Beratung), geht es
+ * wie am Smartphone zur Überschrift. Sonst läge die fokussierte Überschrift außerhalb des Bildes, und
+ * Tastaturkunden sähen weder sie noch den Fokusring. Gemessen wird an der Überschrift vor dem Wechsel;
+ * ihre Lage im Dokument ändert sich mit dem Schritt nicht. Abläufe oben auf der Seite rollen wie bisher.
+ * Die Art der Bewegung bleibt `scrollVerhalten()` („Bewegung: ruhig“ springt).
  */
 export function zumSchrittScrollen(): void {
   if (typeof window === 'undefined') return;
   const behavior = scrollVerhalten();
   const schmal = typeof window.matchMedia === 'function' && window.matchMedia(SCHMAL).matches;
   if (!schmal) {
-    window.scrollTo({ top: 0, behavior });
-    return;
+    const titel = typeof document === 'undefined' ? null : document.querySelector<HTMLElement>('[data-schritt-titel]');
+    const untenAmSeitenanfang = titel ? titel.getBoundingClientRect().bottom + (window.scrollY ?? 0) : 0;
+    if (!titel || untenAmSeitenanfang <= (window.innerHeight ?? Infinity)) {
+      window.scrollTo({ top: 0, behavior });
+      return;
+    }
   }
   // Erst nach dem Rendern steht die Überschrift des neuen Schrittes im Dokument.
   window.requestAnimationFrame(() => {
@@ -141,6 +160,8 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
   const [local, setLocal] = useState<Snapshot<T> | null>(null);
   const [dismissed, setDismissed] = useState(false);
   const [saved, setSaved] = useState(true);
+  // Schrittwechsel aus einer Bedienung (FA-QA-04E); der Startwert 0 gilt auch für das Wiederherstellen.
+  const [wechsel, setWechsel] = useState({ nr: 0, historie: false });
   // Ein Exemplar je Ablauf, über alle Renderdurchläufe stabil (useState statt useMemo: einen Memo-Cache darf
   // React verwerfen, dann gingen Pfad und laufender Sprung verloren). Neue Kennung, neues Exemplar.
   // Ohne Fenster (Vorabrendern) tut es nichts.
@@ -234,6 +255,7 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
         return;
       }
       persist({ ...current, data, stepId: target });
+      if (target !== von) setWechsel((w) => ({ nr: w.nr + 1, historie: false }));
       if (richtung > 0) historie.vor(von, target);
       zumSchrittScrollen();
     },
@@ -284,7 +306,12 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
       });
       if (schritt && schritt !== aktuell) {
         l.persist({ ...l.current, stepId: schritt });
-        zumSchrittScrollen();
+        setWechsel((w) => ({ nr: w.nr + 1, historie: true }));
+        // Nach dem Bild: Der Browser stellt beim Zurück die Rollposition des Eintrags erst nach dem popstate
+        // wieder her (gemessen in Chromium, FA-QA-04E Nachbesserung); sonst überschriebe er das Rollen, und
+        // die fokussierte Überschrift läge außerhalb des Bildes.
+        if (typeof window.requestAnimationFrame === 'function') window.requestAnimationFrame(() => zumSchrittScrollen());
+        else zumSchrittScrollen();
       }
     };
     fenster.addEventListener('popstate', beiPopstate);
@@ -298,6 +325,8 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
     // Der Stand für den popstate-Hörer gilt sofort: Der Sprung unten darf den alten Stand nicht zurückholen.
     lage.current = { ...lage.current, current: leer, step: steps[0] ?? lage.current.step };
     setDismissed(true);
+    // Der Knopf „Neu beginnen“ verschwindet mit dem Hinweis: Der Fokus geht auf die Überschrift von Schritt 1.
+    setWechsel((w) => ({ nr: w.nr + 1, historie: false }));
     // Die Historie geht auf den ersten eigenen Eintrag zurück, statt den aktuellen umzuschreiben: Danach
     // verlässt Zurück das Formular wie im ersten Schritt (auch bei „Zusammenstellung verwerfen“ mitten im
     // Ablauf, FA-QA-04B).
@@ -326,6 +355,7 @@ export function useFlow<T extends object>(options: UseFlowOptions<T>): FlowState
     dismissRestored: () => setDismissed(true),
     saved,
     historie,
+    wechsel,
   };
 }
 

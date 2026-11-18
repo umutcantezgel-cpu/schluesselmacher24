@@ -1,0 +1,903 @@
+{
+ "basis": "http://localhost:3200",
+ "ablaeufe": [
+  {
+   "breite": 412,
+   "ablauf": "Autoschlüssel-Assistent",
+   "wechsel": [
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 13,
+     "von": "Welches Fahrzeug haben Sie?",
+     "nach": "Welches Modell fahren Sie?",
+     "fokus": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "Bereich AutoschlüsselAlle Leistungen rund um Fahrz",
+      "ort": "seite",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 55,
+     "von": "Welches Modell fahren Sie?",
+     "nach": "Baujahr oder Erstzulassung",
+     "fokus": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "Bereich AutoschlüsselAlle Leistungen rund um Fahrz",
+      "ort": "seite",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 57,
+     "von": "Baujahr oder Erstzulassung",
+     "nach": "Weitere Fahrzeugdaten (freiwillig)",
+     "fokus": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "Bereich AutoschlüsselAlle Leistungen rund um Fahrz",
+      "ort": "seite",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 56,
+     "von": "Weitere Fahrzeugdaten (freiwillig)",
+     "nach": "Welche Schlüsselart haben Sie?",
+     "fokus": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "Bereich AutoschlüsselAlle Leistungen rund um Fahrz",
+      "ort": "seite",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 58,
+     "von": "Welche Schlüsselart haben Sie?",
+     "nach": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "fokus": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "Bereich AutoschlüsselAlle Leistungen rund um Fahrz",
+      "ort": "seite",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 55,
+     "von": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "nach": "Was sollen wir für Sie tun?",
+     "fokus": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "Bereich AutoschlüsselAlle Leistungen rund um Fahrz",
+      "ort": "seite",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 60,
+     "von": "Was sollen wir für Sie tun?",
+     "nach": "Fotos Ihres Schlüssels",
+     "fokus": {
+      "el": "body",
+      "ort": "seite"
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "06441 8056279",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 11,
+     "von": "Fotos Ihres Schlüssels",
+     "nach": "Was sollen wir für Sie tun?",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 60,
+     "von": "Was sollen wir für Sie tun?",
+     "nach": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 55,
+     "von": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "nach": "Welche Schlüsselart haben Sie?",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 58,
+     "von": "Welche Schlüsselart haben Sie?",
+     "nach": "Weitere Fahrzeugdaten (freiwillig)",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 56,
+     "von": "Weitere Fahrzeugdaten (freiwillig)",
+     "nach": "Baujahr oder Erstzulassung",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 56,
+     "von": "Baujahr oder Erstzulassung",
+     "nach": "Welches Modell fahren Sie?",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 55,
+     "von": "Welches Modell fahren Sie?",
+     "nach": "Welches Fahrzeug haben Sie?",
+     "fokus": {
+      "el": "body",
+      "ort": "seite"
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 412,
+   "ablauf": "Konfigurator gleichschließende Zylinder",
+   "wechsel": [
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 14,
+     "von": "Gemeinsame Schlüssel",
+     "nach": "Zylinder zusammenstellen",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 77,
+     "von": "Zylinder zusammenstellen",
+     "nach": "Hersteller wählen",
+     "fokus": {
+      "el": "body",
+      "ort": "seite"
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "Versandkosten",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 412,
+   "ablauf": "Partner-Bewerbung",
+   "wechsel": [
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 25,
+     "von": "Leistungen",
+     "nach": "Region und Einsatzgebiet",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "Das Partnernetz für Fahrzeugschlüssel",
+      "ort": "seite",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 60,
+     "von": "Region und Einsatzgebiet",
+     "nach": "Ihr Betrieb",
+     "fokus": {
+      "el": "body",
+      "ort": "seite"
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 412,
+   "ablauf": "Fahrzeug-Anfrage E-Scooter",
+   "wechsel": [
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 24,
+     "von": "Unterlagen und Fotos",
+     "nach": "Ihr Schlüssel",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "06441 8056279",
+      "ort": "seite",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 48,
+     "von": "Ihr Schlüssel",
+     "nach": "Welches Fahrzeug ist es?",
+     "fokus": {
+      "el": "body",
+      "ort": "seite"
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "input",
+      "text": "",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "ablauf": "Autoschlüssel-Assistent",
+   "wechsel": [
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 17,
+     "von": "Welches Fahrzeug haben Sie?",
+     "nach": "Welches Modell fahren Sie?",
+     "fokus": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Fahrzeug",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 61,
+     "von": "Welches Modell fahren Sie?",
+     "nach": "Baujahr oder Erstzulassung",
+     "fokus": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Fahrzeug",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 64,
+     "von": "Baujahr oder Erstzulassung",
+     "nach": "Weitere Fahrzeugdaten (freiwillig)",
+     "fokus": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Fahrzeug",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 64,
+     "von": "Weitere Fahrzeugdaten (freiwillig)",
+     "nach": "Welche Schlüsselart haben Sie?",
+     "fokus": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Fahrzeug",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 67,
+     "von": "Welche Schlüsselart haben Sie?",
+     "nach": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "fokus": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Fahrzeug",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 65,
+     "von": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "nach": "Was sollen wir für Sie tun?",
+     "fokus": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Fahrzeug",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Weiter",
+     "tabsBisKnopf": 71,
+     "von": "Was sollen wir für Sie tun?",
+     "nach": "Fotos Ihres Schlüssels",
+     "fokus": {
+      "el": "body",
+      "ort": "seite"
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Fahrzeug wählen",
+      "ort": "ablauf",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 68,
+     "von": "Fotos Ihres Schlüssels",
+     "nach": "Was sollen wir für Sie tun?",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 71,
+     "von": "Was sollen wir für Sie tun?",
+     "nach": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 65,
+     "von": "Wie viele funktionierende Schlüssel haben Sie noch?",
+     "nach": "Welche Schlüsselart haben Sie?",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 67,
+     "von": "Welche Schlüsselart haben Sie?",
+     "nach": "Weitere Fahrzeugdaten (freiwillig)",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 63,
+     "von": "Weitere Fahrzeugdaten (freiwillig)",
+     "nach": "Baujahr oder Erstzulassung",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 64,
+     "von": "Baujahr oder Erstzulassung",
+     "nach": "Welches Modell fahren Sie?",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 61,
+     "von": "Welches Modell fahren Sie?",
+     "nach": "Welches Fahrzeug haben Sie?",
+     "fokus": {
+      "el": "body",
+      "ort": "seite"
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "ablauf": "Konfigurator gleichschließende Zylinder",
+   "wechsel": [
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 18,
+     "von": "Gemeinsame Schlüssel",
+     "nach": "Zylinder zusammenstellen",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "Weiter",
+      "ort": "leiste",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 83,
+     "von": "Zylinder zusammenstellen",
+     "nach": "Hersteller wählen",
+     "fokus": {
+      "el": "body",
+      "ort": "seite"
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "button",
+      "text": "1.Hersteller",
+      "ort": "ablauf",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "ablauf": "Partner-Bewerbung",
+   "wechsel": [
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 32,
+     "von": "Leistungen",
+     "nach": "Region und Einsatzgebiet",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "Das Partnernetz für Fahrzeugschlüssel",
+      "ort": "seite",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 66,
+     "von": "Region und Einsatzgebiet",
+     "nach": "Ihr Betrieb",
+     "fokus": {
+      "el": "body",
+      "ort": "seite"
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "Das Partnernetz für Fahrzeugschlüssel",
+      "ort": "seite",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  },
+  {
+   "breite": 1280,
+   "ablauf": "Fahrzeug-Anfrage E-Scooter",
+   "wechsel": [
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 31,
+     "von": "Unterlagen und Fotos",
+     "nach": "Ihr Schlüssel",
+     "fokus": {
+      "el": "button",
+      "text": "Zurück",
+      "ort": "leiste",
+      "ring": true
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "06441 8056279",
+      "ort": "seite",
+      "ring": true
+     }
+    },
+    {
+     "knopf": "Zurück",
+     "tabsBisKnopf": 54,
+     "von": "Ihr Schlüssel",
+     "nach": "Welches Fahrzeug ist es?",
+     "fokus": {
+      "el": "body",
+      "ort": "seite"
+     },
+     "aria": null,
+     "beschreibung": null,
+     "naechsterTab": {
+      "el": "a",
+      "text": "06441 8056279",
+      "ort": "seite",
+      "ring": true
+     }
+    }
+   ],
+   "konsole": []
+  }
+ ],
+ "maus": [
+  {
+   "breite": 412,
+   "eingabe": "Finger",
+   "titel": "Welches Modell fahren Sie?",
+   "fokus": {
+    "el": "button",
+    "text": "Weiter",
+    "ort": "leiste",
+    "ring": false
+   },
+   "lage": {
+    "titelOben": 136,
+    "titelUnten": 160,
+    "kopfUnten": 65,
+    "bandUnten": 126,
+    "hoehe": 823,
+    "outline": "none",
+    "schatten": "none"
+   },
+   "sichtbarUnterKopf": true
+  },
+  {
+   "breite": 1280,
+   "eingabe": "Maus",
+   "titel": "Welches Modell fahren Sie?",
+   "fokus": {
+    "el": "button",
+    "text": "Weiter",
+    "ort": "leiste",
+    "ring": false
+   },
+   "lage": {
+    "titelOben": 463,
+    "titelUnten": 491,
+    "kopfUnten": 81,
+    "bandUnten": 439,
+    "hoehe": 800,
+    "outline": "none",
+    "schatten": "none"
+   },
+   "sichtbarUnterKopf": true
+  }
+ ],
+ "laden": [
+  {
+   "breite": 412,
+   "titel": "Welches Fahrzeug haben Sie?",
+   "fokus": {
+    "el": "body",
+    "ort": "seite"
+   }
+  },
+  {
+   "breite": 1280,
+   "titel": "Welches Fahrzeug haben Sie?",
+   "fokus": {
+    "el": "body",
+    "ort": "seite"
+   }
+  }
+ ]
+}
