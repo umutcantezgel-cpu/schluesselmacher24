@@ -12,7 +12,7 @@ import type { ImageSlot, UploadRef, UploadSteckplatz } from '@/lib/types';
 import { cn } from '@/lib/cn';
 import Image from 'next/image';
 import { formatFileSize } from '@/lib/format';
-import { ImagePlaceholder } from '@/components/ui/image-placeholder';
+import { UploadBeispiel, type BeispielFlaeche } from './upload-beispiel';
 import { visualFuerMotiv, visualFuerSteckplatz } from '@/lib/visual/motiv';
 
 export interface PickedFile {
@@ -226,6 +226,11 @@ export interface PhotoUploadProps {
    * Gewicht des Knopfs „Foto aufnehmen“: `betont` (Standard) gefüllt; `ruhig` als Rahmenknopf, wenn eine andere Handlung die Hauptaktion ist.
    */
   kamera?: 'betont' | 'ruhig';
+  /**
+   * Zeichnet das Beispiel. Standard ist `UploadBeispiel` mit den Generatoren, die an Upload-Feldern
+   * vorkommen; `photo-upload-voll.tsx` setzt `ImagePlaceholder` mit allen Generatoren (FA-SEO-03D).
+   */
+  beispielFlaeche?: BeispielFlaeche;
 }
 
 /**
@@ -285,6 +290,7 @@ export function PhotoUpload({
   steckplatz,
   error,
   kamera = 'betont',
+  beispielFlaeche: Beispiel = UploadBeispiel,
 }: PhotoUploadProps) {
   const cameraRef = useRef<HTMLInputElement>(null);
   const galleryRef = useRef<HTMLInputElement>(null);
@@ -428,7 +434,7 @@ export function PhotoUpload({
             {zeigtBild ? 'So sollte das Foto aussehen' : 'Darauf muss zu sehen sein'}
           </p>
           {/* Fachgrafik zum Beispiel statt eines kleinen Symbols in leerer Fläche (Sichtabnahme E4-L-23) */}
-          <ImagePlaceholder slot={beispiel} />
+          <Beispiel slot={beispiel} />
           {satz && (
             <p data-beispiel-satz className="mt-1.5 text-small leading-snug text-foreground">
               {satz}

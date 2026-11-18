@@ -1,0 +1,346 @@
+[
+ {
+  "id": "kontakt",
+  "pfad": "/service-und-termin/kontakt",
+  "quellen": [
+   "src/app/(site)/service-und-termin/kontakt/kontakt-formular.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": null,
+    "felder": 2,
+    "titel": "Ihre Nachricht",
+    "beispiele": 1
+   }
+  ]
+ },
+ {
+  "id": "beratung",
+  "pfad": "/beratung",
+  "quellen": [
+   "src/app/(site)/beratung/beratung-formular.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": null,
+    "felder": 2,
+    "titel": "Ihr Anliegen",
+    "beispiele": 1
+   }
+  ]
+ },
+ {
+  "id": "vor-ort",
+  "pfad": "/service-und-termin/vor-ort",
+  "quellen": [
+   "src/app/(site)/service-und-termin/vor-ort/einsatz-formular.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": null,
+    "felder": 2,
+    "titel": "Ihr Anliegen und der Ort",
+    "beispiele": 1
+   }
+  ]
+ },
+ {
+  "id": "anfrage",
+  "pfad": "/service-und-termin/anfrage",
+  "quellen": [
+   "src/app/(site)/service-und-termin/anfrage/anfrage-formular.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": {
+     "version": 1,
+     "stepId": "unterlagen"
+    },
+    "felder": 2,
+    "titel": "Fotos oder Unterlagen",
+    "beispiele": 1
+   }
+  ]
+ },
+ {
+  "id": "partner",
+  "pfad": "/partner-werden",
+  "quellen": [
+   "src/app/(site)/partner-werden/partner-formular.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": {
+     "version": 2,
+     "stepId": "nachweise"
+    },
+    "felder": 2,
+    "titel": "Nachweise",
+    "beispiele": 1
+   }
+  ]
+ },
+ {
+  "id": "sicherheitscheck",
+  "pfad": "/sicherheitstechnik/sicherheitscheck",
+  "quellen": [
+   "src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": {
+     "version": 1,
+     "stepId": "unterlagen"
+    },
+    "felder": 4,
+    "titel": "Fotos und Grundriss hochladen",
+    "beispiele": 2
+   }
+  ]
+ },
+ {
+  "id": "einschicken",
+  "pfad": "/schluessel-einschicken/anmelden",
+  "quellen": [
+   "src/app/(site)/schluessel-einschicken/anmelden/einsende-formular.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": {
+     "version": 2,
+     "stepId": "nachweis",
+     "data": {
+      "schluesselart": "auto-mechanisch"
+     }
+    },
+    "felder": 2,
+    "titel": "Ihr Nachweis (Fahrzeugschein)"
+   },
+   {
+    "zustand": {
+     "version": 2,
+     "stepId": "nachweis",
+     "data": {
+      "schluesselart": "haus",
+      "sicherungskarte": "ja"
+     }
+    },
+    "felder": 2,
+    "titel": "Ihr Nachweis (Sicherungskarte)"
+   }
+  ],
+  "daten": [
+   {},
+   {
+    "schluesselart": "auto-mechanisch"
+   },
+   {
+    "schluesselart": "haus",
+    "sicherungskarte": "ja"
+   }
+  ]
+ },
+ {
+  "id": "schliessanlage",
+  "pfad": "/schliessanlagen/konfigurator",
+  "quellen": [
+   "src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": {
+     "version": 1,
+     "stepId": "dokumente"
+    },
+    "felder": 2,
+    "titel": "Unterlagen hochladen",
+    "beispiele": 1
+   }
+  ]
+ },
+ {
+  "id": "vorlage",
+  "pfad": "/schluessel-nach-vorlage/anfrage",
+  "quellen": [
+   "src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": null,
+    "felder": 2,
+    "titel": "Foto der Vorderseite",
+    "beispiele": 1
+   },
+   {
+    "zustand": {
+     "version": 1,
+     "stepId": "foto-rueckseite"
+    },
+    "felder": 2,
+    "titel": "Foto der Rückseite",
+    "beispiele": 1
+   },
+   {
+    "zustand": {
+     "version": 1,
+     "stepId": "foto-spitze"
+    },
+    "felder": 2,
+    "titel": "Foto der Spitze beziehungsweise des Profils von vorne",
+    "beispiele": 1
+   },
+   {
+    "zustand": {
+     "version": 1,
+     "stepId": "nummern"
+    },
+    "felder": 2,
+    "titel": "Nummern und Beschriftungen",
+    "beispiele": 1
+   }
+  ]
+ },
+ {
+  "id": "zutritt",
+  "pfad": "/elektronische-zutrittsloesungen/konfigurator",
+  "quellen": [
+   "src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": {
+     "version": 1,
+     "stepId": "unterlagen"
+    },
+    "felder": 4,
+    "titel": "9. Grundriss und Fotos hochladen",
+    "beispiele": 2
+   }
+  ]
+ },
+ {
+  "id": "assistent",
+  "pfad": "/autoschluessel/anfrage",
+  "quellen": [
+   "src/app/(site)/autoschluessel/anfrage/assistent.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": {
+     "version": 3,
+     "stepId": "schluesselfotos"
+    },
+    "felder": 8,
+    "titel": "Fotos Ihres Schlüssels",
+    "beispiele": 4
+   },
+   {
+    "zustand": {
+     "version": 3,
+     "stepId": "fahrzeugschein"
+    },
+    "felder": 2,
+    "titel": "Zulassungsbescheinigung Teil I",
+    "beispiele": 1
+   }
+  ]
+ },
+ {
+  "id": "gehaeuse",
+  "pfad": "/autoschluessel/gehaeuse/anfrage",
+  "quellen": [
+   "src/app/(site)/autoschluessel/gehaeuse/anfrage/anfrage-formular.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": {
+     "version": 1,
+     "stepId": "unterlagen"
+    },
+    "felder": 8,
+    "titel": "Fotos von Schlüssel und Fahrzeugschein",
+    "beispiele": 4
+   }
+  ]
+ },
+ {
+  "id": "motorrad",
+  "pfad": "/motorradschluessel/anfrage",
+  "quellen": [
+   "src/components/fahrzeug-anfrage/kern.ts",
+   "src/components/fahrzeug-anfrage/formular.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": {
+     "version": 1,
+     "stepId": "unterlagen"
+    },
+    "felder": 8,
+    "titel": "Unterlagen und Fotos",
+    "beispiele": 4
+   }
+  ]
+ },
+ {
+  "id": "e-scooter",
+  "pfad": "/e-scooter/anfrage",
+  "quellen": [
+   "src/components/fahrzeug-anfrage/kern.ts",
+   "src/components/fahrzeug-anfrage/formular.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": {
+     "version": 1,
+     "stepId": "unterlagen"
+    },
+    "felder": 10,
+    "titel": "Unterlagen und Fotos",
+    "beispiele": 5
+   }
+  ]
+ },
+ {
+  "id": "nicht-gefunden",
+  "pfad": "/autoschluessel/fahrzeug-nicht-gefunden",
+  "quellen": [
+   "src/components/fahrzeug-anfrage/kern.ts",
+   "src/components/fahrzeug-anfrage/formular.tsx"
+  ],
+  "status": 200,
+  "funde": [
+   {
+    "zustand": {
+     "version": 1,
+     "stepId": "unterlagen"
+    },
+    "felder": 8,
+    "titel": "Unterlagen und Fotos",
+    "beispiele": 4
+   }
+  ]
+ },
+ {
+  "id": "code",
+  "pfad": "/schluessel-nach-code/ms-01",
+  "quellen": [],
+  "status": 404,
+  "funde": [],
+  "hinweis": "ohne öffentliche Codelinie im JSON-Modus (Beispiele nur mit SM24_BEISPIELE=1): 404, kein Bild; abgedeckt durch upload-beispiel.test.tsx (PhotoUploadAlleZeichnungen = ImagePlaceholder wie vorher)"
+ }
+]

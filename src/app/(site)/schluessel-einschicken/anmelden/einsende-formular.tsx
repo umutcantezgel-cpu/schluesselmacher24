@@ -38,7 +38,7 @@ import {
   empfehlungFuer,
   type Schluesselart,
 } from '@/lib/versand/varianten';
-import { SCHRITTE_EINSENDUNG } from '@/lib/wege/naechste-schritte';
+import { SCHRITTE_EINSENDUNG } from '@/lib/wege/naechste-schritte-listen';
 import { KARTEN_ANTWORTEN, kartenAntwort, type KartenAntwort } from '@/lib/wege/nachweis';
 
 import { VarianteBeschreibung, kostenSatz } from '../versand-variante';

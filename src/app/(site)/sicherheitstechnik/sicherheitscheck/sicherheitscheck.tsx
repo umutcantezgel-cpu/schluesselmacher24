@@ -20,7 +20,7 @@ import { useFormularSchutz } from '@/components/forms/formular-schutz';
 import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { SummaryList } from '@/components/layout/summary-list';
 import { WegBestaetigung } from '@/components/weg/bestaetigung';
-import { SCHRITTE_SICHERHEITSTECHNIK } from '@/lib/wege/naechste-schritte';
+import { SCHRITTE_SICHERHEITSTECHNIK } from '@/lib/wege/naechste-schritte-listen';
 
 import { HINWEIS_TON_UND_AUFZEICHNUNG } from '../rechtshinweis-ton';
 

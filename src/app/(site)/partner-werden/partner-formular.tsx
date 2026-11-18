@@ -34,7 +34,7 @@ import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/comp
 import { Select, TextArea, TextInput } from '@/components/forms/controls';
 import { SummaryList } from '@/components/layout/summary-list';
 import { WegBestaetigung } from '@/components/weg/bestaetigung';
-import { SCHRITTE_NACH_ART } from '@/lib/wege/naechste-schritte';
+import { SCHRITTE_NACH_ART } from '@/lib/wege/naechste-schritte-listen';
 
 /* Bewerbung über „Partner werden“ (Erg. Leitfaden §7, FA-PLATTFORM-01): ohne Partnerportal.
  * Gespeichert wird ein Vorgang der Art „partner“; das Team prüft im Backend. Das Netz betrifft nur

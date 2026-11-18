@@ -20,7 +20,7 @@ import { OptionCard } from '@/components/forms/option-card';
 import { PhotoUpload, alsUpload, uploadsAbwarten, type PickedFile } from '@/components/forms/photo-upload';
 import { SummaryList } from '@/components/layout/summary-list';
 import { WegBestaetigung } from '@/components/weg/bestaetigung';
-import { SCHRITTE_ZUTRITT } from '@/lib/wege/naechste-schritte';
+import { SCHRITTE_ZUTRITT } from '@/lib/wege/naechste-schritte-listen';
 
 /* ==========================================================================
    Zutrittskonfigurator — acht Abfragen, ein freiwilliger Schritt für Grundriss

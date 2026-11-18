@@ -1,4 +1,4 @@
-import { fahrzeugVorOrtNoetig } from '@/lib/pricing';
+import { fahrzeugVorOrtNoetig } from '@/lib/fahrzeug-vor-ort';
 import type { CarKeyService, ImageSlot, InfoHint, KeyKind, UploadSteckplatz, VehicleModel } from '@/lib/types';
 
 /* ==========================================================================

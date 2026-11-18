@@ -37,7 +37,7 @@ import {
   type Vorlage,
 } from '@/lib/konfigurator';
 import { SCHLIESSPLAN_DATEINAME } from '@/lib/pdf/schliessplan';
-import { SCHRITTE_PLANER } from '@/lib/wege/naechste-schritte';
+import { SCHRITTE_PLANER } from '@/lib/wege/naechste-schritte-listen';
 import { aktionMelden } from '@/lib/statistik';
 import { useCartStore } from '@/lib/store/cart';
 import type { ContactDetails, CylinderCatalog } from '@/lib/types';

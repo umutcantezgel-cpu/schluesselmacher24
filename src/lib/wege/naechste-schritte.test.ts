@@ -78,11 +78,12 @@ describe('Gemeinsame Bestätigung in allen Anfrage-Wegen (G-38)', () => {
     'src/components/konfigurator/schliessplan-planer.tsx',
   ];
 
-  it('endet in jedem Weg mit WegBestaetigung und Schritten aus lib/wege/naechste-schritte', () => {
+  it('endet in jedem Weg mit WegBestaetigung und Schritten aus lib/wege/naechste-schritte(-listen)', () => {
     for (const datei of WEGE) {
       const quelltext = readFileSync(datei, 'utf8');
       expect(quelltext, datei).toContain('<WegBestaetigung');
-      expect(quelltext, datei).toContain("from '@/lib/wege/naechste-schritte'");
+      // Aus der Logik oder, wer nur eine Liste zeigt, aus der Datei mit den Listen (FA-SEO-03D).
+      expect(quelltext, datei).toMatch(/from '@\/lib\/wege\/naechste-schritte(?:-listen)?'/);
       // Keine eigene Erfolgsansicht mehr neben der gemeinsamen.
       expect(quelltext, datei).not.toContain('Ihre Vorgangsnummer');
     }
@@ -92,5 +93,53 @@ describe('Gemeinsame Bestätigung in allen Anfrage-Wegen (G-38)', () => {
     const seite = readFileSync('src/app/(site)/bestellung/[id]/page.tsx', 'utf8');
     expect(seite).toContain('naechsteSchritte(record)');
     expect(seite).not.toMatch(/const SCHRITTE\b/);
+  });
+});
+
+/* FA-SEO-03D (Regel A-071): Die Listen liegen ohne die Auswahl-Logik in `naechste-schritte-listen.ts`. Formulare,
+   die nur eine Liste zeigen, lesen dort und laden so `einsenden/vorgang` (mit Versandvarianten) und
+   `foto-freigabe` nicht mit. */
+describe('Listen und Logik getrennt (FA-SEO-03D)', () => {
+  const ziele = (pfad: string) =>
+    [...readFileSync(pfad, 'utf8').matchAll(/^import\s+(?!type\s)[^;]*?from\s*'([^']+)'/gm)].map((m) => m[1]);
+
+  it('die Listen-Datei importiert zur Laufzeit nichts', () => {
+    expect(ziele('src/lib/wege/naechste-schritte-listen.ts')).toEqual([]);
+  });
+
+  it('naechste-schritte gibt dieselben Objekte weiter', async () => {
+    const listen = (await import('./naechste-schritte-listen')) as Record<string, unknown>;
+    const logik = (await import('./naechste-schritte')) as Record<string, unknown>;
+    const namen = Object.keys(listen);
+    expect(namen.sort()).toEqual([
+      'SCHRITTE_EINSENDUNG',
+      'SCHRITTE_FOTOANFRAGE',
+      'SCHRITTE_NACH_ART',
+      'SCHRITTE_PLANER',
+      'SCHRITTE_SCHLIESSANLAGE',
+      'SCHRITTE_SICHERHEITSTECHNIK',
+      'SCHRITTE_ZUTRITT',
+    ]);
+    for (const name of namen) expect(logik[name], name).toBe(listen[name]);
+  });
+
+  it('Formulare, die nur Listen zeigen, lesen aus der Listen-Datei', () => {
+    const NUR_LISTEN = [
+      'src/app/(site)/service-und-termin/kontakt/kontakt-formular.tsx',
+      'src/app/(site)/service-und-termin/vor-ort/einsatz-formular.tsx',
+      'src/app/(site)/beratung/beratung-formular.tsx',
+      'src/app/(site)/partner-werden/partner-formular.tsx',
+      'src/app/(site)/sicherheitstechnik/sicherheitscheck/sicherheitscheck.tsx',
+      'src/app/(site)/schluessel-einschicken/anmelden/einsende-formular.tsx',
+      'src/app/(site)/schliessanlagen/konfigurator/projekt-konfigurator.tsx',
+      'src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx',
+      'src/app/(site)/elektronische-zutrittsloesungen/konfigurator/zutritt-konfigurator.tsx',
+      'src/components/konfigurator/schliessplan-planer.tsx',
+    ];
+    for (const datei of NUR_LISTEN) {
+      const importe = ziele(datei);
+      expect(importe, datei).toContain('@/lib/wege/naechste-schritte-listen');
+      expect(importe, datei).not.toContain('@/lib/wege/naechste-schritte');
+    }
   });
 });

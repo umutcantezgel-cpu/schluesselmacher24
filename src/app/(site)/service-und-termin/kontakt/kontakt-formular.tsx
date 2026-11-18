@@ -17,7 +17,7 @@ import { WegBestaetigung } from '@/components/weg/bestaetigung';
 import { submitRecord, type SubmitResult } from '@/lib/actions/records';
 import { clearFlow, useFlow, type FlowStep } from '@/lib/flow/use-flow';
 import type { ContactDetails, ImageSlot } from '@/lib/types';
-import { SCHRITTE_NACH_ART } from '@/lib/wege/naechste-schritte';
+import { SCHRITTE_NACH_ART } from '@/lib/wege/naechste-schritte-listen';
 
 import {
   ANLIEGEN,

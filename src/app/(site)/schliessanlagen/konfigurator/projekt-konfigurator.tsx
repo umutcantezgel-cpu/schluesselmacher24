@@ -27,7 +27,7 @@ import { GlyphPapierkorb } from '@/components/visual/glyphen/papierkorb';
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { GlyphPlus } from '@/components/visual/glyphen/plus';
 import { WegBestaetigung } from '@/components/weg/bestaetigung';
-import { SCHRITTE_SCHLIESSANLAGE } from '@/lib/wege/naechste-schritte';
+import { SCHRITTE_SCHLIESSANLAGE } from '@/lib/wege/naechste-schritte-listen';
 
 /* ==========================================================================
    Datenmodell des Konfigurators

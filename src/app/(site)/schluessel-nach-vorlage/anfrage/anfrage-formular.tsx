@@ -23,7 +23,7 @@ import { AnfrageHinweis } from '@/components/recht/anfrage-hinweis';
 import { SummaryList } from '@/components/layout/summary-list';
 import { GlyphHakenKreis } from '@/components/visual/glyphen/haken-kreis';
 import { WegBestaetigung } from '@/components/weg/bestaetigung';
-import { SCHRITTE_FOTOANFRAGE } from '@/lib/wege/naechste-schritte';
+import { SCHRITTE_FOTOANFRAGE } from '@/lib/wege/naechste-schritte-listen';
 import {
   BESCHREIBUNG_MIN,
   FOTO_ANFRAGE_QUELLE,
