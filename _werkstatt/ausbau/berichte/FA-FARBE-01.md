@@ -170,3 +170,12 @@ Beobachtungen am Bestand aus der Sichtprüfung (alle schon vor diesem Paket so, 
 12. Rechtliches: In der Leiste der Rechtsseiten ist die aktuelle Seite nicht hervorgehoben.
 13. 404-Seite: Layoutsprung 0,011 bis 0,017 beim Laden.
 
+## Nachtrag 18.11.2026: heller Hintergrund (A-078)
+
+Der Nutzer hat die dunklen Flächen abgelehnt („Ich möchte einen hellen Hintergrund. Das sieht sehr unprofessionell aus, wenn alles so dunkel ist.“). Geändert durch den Orchestrator:
+- Kopfzeile, Seitenkopf, Fehleransicht und Manifest stehen wieder in der Fassung vor diesem Paket (hell); Fuß (`bg-surface-sunken`), Aktionsleiste am Telefon, erster Bildschirm der Startseite und feste Formularleiste (`bg-surface`) tragen wieder ihre hellen Flächen. `themeColor` und `theme_color` sind wieder der helle Seitenhintergrund (#fafbfd).
+- Die „24“ der Wortmarke trägt in der Kopfzeile die Grafikfarbe (`text-area`, #2e62c9; 5,7:1 auf Weiß, 2,8:1 gegen die Tinte).
+- Das Markenblau und alle umgestellten Farbkopien bleiben. Die Bühne bleibt als Baustein für dunkle Bänder im Quelltext; keine Seite nutzt sie.
+- Tests: sieben Bausteine stehen nachweislich nicht auf der Bühne und tragen helle Flächen; Browserleiste gleich Seitenhintergrund; die „24“ hebt sich ab.
+Die Abschnitte oben zu den Stellen der Bühne und zur Sichtprüfung der dunklen Flächen beschreiben den Stand vom 17.11. und gelten für die Seite nicht mehr. Prüfung des hellen Stands: in STATUS.md und ENTSCHEIDUNGEN A-078.
+

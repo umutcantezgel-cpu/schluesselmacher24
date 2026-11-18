@@ -17,8 +17,9 @@ import type { AreaKey } from '@/lib/types';
  * Stelle: `MARKEN_FARBTON` und `MARKENBLAU` hier, `--primary*` und `--ring` in
  * `globals.css`.
  *
- * Auf dunklem Grund steht die „Bühne“ (`.buehne` in `globals.css`): derselbe Satz
- * Tokens, dort mit hellen eisblauen Lichtern neu belegt, auch `--area*`.
+ * Die Seite ist hell (A-078). Für dunkle Bänder und Karten gibt es die „Bühne“
+ * (`.buehne` in `globals.css`): derselbe Satz Tokens, dort mit hellen eisblauen
+ * Lichtern neu belegt, auch `--area*`.
  *
  * Werte als OKLCH-Tripel „L C H“ (wie alle Tokens in `globals.css`).
  * Abstufungsregel (ABSTUFUNG): ein Farbton H und vier feste Helligkeiten; die

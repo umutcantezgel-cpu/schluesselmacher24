@@ -59,9 +59,9 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  // Viewport-Metadaten verlangen einen Farbwert; er entspricht der Kopfzeile, also `--background`
-  // der Bühne (`.buehne` in globals.css, A-074): Browserleiste und Kopfzeile gehen ineinander über.
-  themeColor: '#09142f',
+  // Viewport-Metadaten verlangen einen Farbwert; er entspricht dem Seitenhintergrund (`--background`
+  // in globals.css): Die Seite ist hell (A-078), Browserleiste und Kopfzeile gehen ineinander über.
+  themeColor: '#fafbfd',
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

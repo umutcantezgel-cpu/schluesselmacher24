@@ -48,8 +48,7 @@ export interface IntentHubProps {
 export function IntentHub({ rubriken, satz, telefon, erreichbar, buehne }: IntentHubProps) {
   const { spalten } = hubRaster(rubriken.length);
   return (
-    /* Erster Bildschirm auf der Bühne mit Licht (A-074): Aufbau und Bewegung bleiben, nur die Farbe wechselt. */
-    <section aria-labelledby="hub-frage" className="buehne buehne-licht border-b border-border">
+    <section aria-labelledby="hub-frage" className="border-b border-border bg-surface">
       <HubWechselMerker />
       <div className="shell grid grid-cols-1 pb-6 pt-3 sm:pt-6 lg:pb-10 lg:pt-10 xl:grid-cols-12 xl:pt-6 xl:gap-x-gutter">
         <div className="xl:col-span-12 xl:row-start-1">

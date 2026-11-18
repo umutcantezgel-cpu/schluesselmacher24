@@ -46,11 +46,7 @@ export interface PageHeaderProps {
   handlungZuerst?: boolean;
 }
 
-/**
- * Einheitlicher Seitenkopf für alle Bereiche – als Kopf einer Werkstattzeichnung, auf der Bühne
- * (`.buehne` in globals.css): Brotkrumen, Titel, Schaltflächen, Kennzahlen und Zeichnungen folgen
- * den neu belegten Tokens.
- */
+/** Einheitlicher Seitenkopf für alle Bereiche – als Kopf einer Werkstattzeichnung. */
 export function PageHeader({
   eyebrow,
   title,
@@ -114,10 +110,7 @@ export function PageHeader({
   );
 
   return (
-    /* Auf der Bühne (A-074): Die erzählende Fassung bekommt das Licht, die Arbeitsansicht (Abläufe,
-       Warenkorb, Kasse) steht ruhig auf dem dunklen Grund; der Inhalt darunter bleibt hell.
-       Rechtstexte haben eigene helle Köpfe (kein PageHeader). */
-    <header className={cn('buehne border-b border-border', erzaehl && 'buehne-licht')}>
+    <header className="border-b border-border bg-surface">
       <div className={cn('shell', erzaehl ? 'py-section-tight' : 'py-8 md:py-10')}>
         {crumbs && crumbs.length > 0 && <Breadcrumbs crumbs={crumbs} className="mb-6" />}
 

@@ -534,3 +534,11 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Ansage: eine je Wechsel. Mit Fokus die Überschrift samt Schrittzahl, ohne Fokus eine unsichtbare Ansagezeile.
 - Nicht umgesetzt: der Sprung der Seite beim Fortsetzen eines Zwischenstands. Ohne eingebettetes Skript oder Cookie gibt es keine Lösung, die Besucher ohne Zwischenstand unberührt lässt; Entscheidung beim Inhaber (MA-62).
 
+## A-078 · Heller Hintergrund: Die dunkle Bühne kommt von der Seite, das Dunkelblau bleibt Akzentfarbe (2026-11-18 06:30, Nutzer; berichtigt A-074 und A-075)
+- Der Nutzer sah die Bilder des dunkelblauen Stands und wies am 18.11. gegen 06:10 MEZ an: „Ich möchte einen hellen Hintergrund. Das sieht sehr unprofessionell aus, wenn alles so dunkel ist.“
+- Entschieden: Kopfzeile, erster Bildschirm der Startseite, Seitenkopf, Kopf der Fehleransicht, Fuß, Aktionsleiste und feste Formularleiste am Telefon stehen wieder auf hellem Grund, mit den Klassen des Stands vor FA-FARBE-01. Das Markenblau (#123780 für Schaltflächen und Links, #2e62c9 für Icons und Linien) bleibt; Orange kommt nicht zurück. Die „24“ der Wortmarke trägt in der hellen Kopfzeile die Grafikfarbe, weil das dunkle Aktionsblau neben der Tinte der Wortmarke untergeht. Die Farbe der Browserleiste ist wieder der helle Seitenhintergrund.
+- Die Bühne (`.buehne`) bleibt als geprüfter Baustein im Quelltext für dunkle Bänder und Karten (`Section tone="ink"`, `Card variant="ink"`); keine Seite nutzt sie zurzeit, ausgeliefert wird sie deshalb nicht. Erwogen: ganz entfernen (dann müsste sie bei der nächsten Änderung der Vorgabe neu gebaut und geprüft werden; die Vorgabe zur Farbe hat in drei Tagen dreimal gewechselt).
+- Das entspricht der Vorschau A vom 17.11. („nur die Akzentfarbe getauscht, Seite bleibt hell“). Was aus FA-FARBE-01 bleibt: Markenblau an einer Quelle, alle festen Farbkopien (Mail, PDF, Backend, Symbol), die Kontrastprüfungen. Was aus FA-QA-04E bleibt: alles (Fokus nach dem Schrittwechsel).
+- Lehre für Gestaltungsaufträge: Bei einer Richtungsfrage zuerst die Vorschau bestätigen lassen und dann bauen. Die Vorschauen gingen am 17.11. um 22:10 MEZ an den Nutzer, gebaut wurde gleich; die Antwort kam acht Stunden später.
+- Nicht auf main ohne neue Anweisung; der Inhaber bestätigt die Farbe (MA-61).
+

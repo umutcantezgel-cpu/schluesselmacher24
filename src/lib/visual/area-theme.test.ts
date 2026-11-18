@@ -212,32 +212,50 @@ describe('Grundfarben in globals.css', () => {
   });
 });
 
-describe('Bühne: Schicht und Stellen aus der Abnahme (A-074)', () => {
+describe('Helle Seite: Die Bühne steht nur noch an dunklen Bändern (A-078)', () => {
   const css = readFileSync(path.join(process.cwd(), 'src/app/(site)/globals.css'), 'utf8');
   const quelle = (datei: string) => readFileSync(path.join(process.cwd(), datei), 'utf8');
 
-  it('steht in der Schicht „components“, damit Tailwind Varianten wie max-md:buehne erzeugt', () => {
+  it.each([
+    'src/components/layout/site-header.tsx',
+    'src/components/layout/page-header.tsx',
+    'src/components/layout/site-footer.tsx',
+    'src/components/layout/mobile-action-bar.tsx',
+    'src/components/layout/fehler-ansicht.tsx',
+    'src/components/hub/intent-hub.tsx',
+    'src/components/flow/flow-shell.tsx',
+  ])('%s steht auf hellem Grund, nicht auf der Bühne', (datei) => {
+    // Gesucht ist `buehne` als Klasse in einer Zeichenkette; die Eigenschaft `buehne` des Hubs (Fläche der
+    // Eingangsinszenierung) ist etwas anderes und steht nie in Anführungszeichen.
+    const literale = [...quelle(datei).matchAll(/(["'`])((?:(?!\1)[^\\\n])*)\1/g)].map((t) => t[2]);
+    const klassen = literale.flatMap((l) => l.split(/\s+/));
+    expect(klassen.length).toBeGreaterThan(20);
+    expect(klassen.filter((k) => /^(?:[a-z-]+:)?buehne(?:-licht)?$/.test(k))).toEqual([]);
+  });
+
+  it('Kopfzeile, Seitenkopf, erster Bildschirm, Fuß und die Leisten am Telefon tragen helle Flächen', () => {
+    expect(quelle('src/components/layout/site-header.tsx')).toContain('z-header border-b border-border bg-surface"');
+    expect(quelle('src/components/layout/page-header.tsx')).toContain('<header className="border-b border-border bg-surface">');
+    expect(quelle('src/components/hub/intent-hub.tsx')).toContain('className="border-b border-border bg-surface"');
+    expect(quelle('src/components/layout/site-footer.tsx')).toContain('<footer className="bg-surface-sunken pb-safe-nav">');
+    expect(quelle('src/components/layout/mobile-action-bar.tsx')).toContain('border-t border-border bg-surface md:hidden');
+    expect(quelle('src/components/flow/flow-shell.tsx')).toContain("'sm24-ablauf-leiste fixed inset-x-0 bottom-0 z-sticky border-t border-border bg-surface p-4'");
+  });
+
+  it('die „24“ der Wortmarke trägt in der hellen Kopfzeile die Grafikfarbe und hebt sich von der Tinte ab', () => {
+    expect(quelle('src/components/layout/site-header.tsx')).toMatch(/tracking-tight text-area md:text-title">24</);
+    const token = (name: string) => css.match(new RegExp(`--${name}:\\s*([^;]+);`))![1].trim();
+    expect(contrastRatio(DEFAULT_AREA_THEME.accent, token('foreground'))).toBeGreaterThanOrEqual(2.5);
+    expect(contrastRatio(DEFAULT_AREA_THEME.accent, token('surface'))).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it('die Bühne bleibt als Baustein für dunkle Bänder und Karten (Schicht „components“)', () => {
     const start = css.indexOf('    .buehne {');
     expect(start).toBeGreaterThan(0);
     const davor = css.slice(0, start);
     expect(davor.slice(davor.lastIndexOf('@layer'))).toMatch(/^@layer components \{\s+@media screen \{\s+$/);
-  });
-
-  it('die feste Formularleiste steht nur am Telefon auf der Bühne, ab Tablet hell im Formular', () => {
-    const leiste = quelle('src/components/flow/flow-shell.tsx');
-    expect(leiste).toMatch(/'sm24-ablauf-leiste max-md:buehne fixed inset-x-0 bottom-0[^']*'/);
-    expect(leiste).not.toMatch(/sm24-ablauf-leiste buehne\b/);
-    expect(leiste).toContain("'md:static md:mt-8 md:border-0 md:bg-transparent md:p-0 md:pb-4'");
-  });
-
-  it('der Kopf der Fehleransicht (404, Fehlergrenze) steht auf der Bühne, die Liste der Bereiche hell', () => {
-    const ansicht = quelle('src/components/layout/fehler-ansicht.tsx');
-    const kopf = ansicht.indexOf('className="buehne buehne-licht');
-    const liste = ansicht.indexOf('aria-labelledby="fehler-bereiche"');
-    expect(kopf).toBeGreaterThan(0);
-    expect(liste).toBeGreaterThan(kopf);
-    expect(ansicht.slice(kopf, liste)).toContain('<h1');
-    expect(ansicht.slice(liste)).not.toContain('buehne');
+    expect(quelle('src/components/layout/section.tsx')).toMatch(/tone === 'ink' && 'buehne'/);
+    expect(quelle('src/components/ui/card.tsx')).toMatch(/ink: 'buehne border border-border'/);
   });
 
   it('die helle Schaltfläche der Bühne wird beim Überfahren sichtbar heller und bleibt lesbar', () => {

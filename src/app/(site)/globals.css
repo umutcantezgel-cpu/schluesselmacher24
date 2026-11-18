@@ -74,13 +74,13 @@ header a[aria-label$='Startseite'] > span {
    Abstufungsregel auf hellem Grund: Text- und Aktionsfarbe L 0,36, Grafikfarbe
    L 0,52, Fokusring L 0,58, helle Flächen L 0,96; ein Farbton (262°). Neutrale
    Stufen im Stahlblau (H 255 bis 266, Buntheit unter 0,05).
-   Bühne (`.buehne`, `.buehne-licht`, weiter unten): Kopfzeile, erster Bildschirm
-   der Startseite, Seitenkopf, Fuß, Aktionsleiste am Telefon und dunkle Bänder
-   stehen auf dunkelblauem Grund; dort belegt derselbe Satz Tokens neu, mit hellen
-   eisblauen Lichtern (Farbton 235°) für Aktion, Grafik und Fokus. Formulare,
-   Kasse, Warenkorb, Lesetexte, Tabellen, Rechtstexte, Backend, PDF und E-Mails
-   bleiben hell. Den Farbton verschiebt man an einer Stelle: `--primary*` und
-   `--ring` hier, die Bühne darunter, `MARKENBLAU` in `area-theme.ts`.
+   Die Seite ist hell (A-078, Vorgabe des Nutzers vom 18.11.2026): Kopfzeile, erster
+   Bildschirm, Seitenkopf, Fuß und die Leisten am Telefon stehen auf hellem Grund.
+   Die Bühne (`.buehne`, weiter unten) belegt denselben Satz Tokens auf dunkelblauem
+   Grund neu, mit eisblauen Lichtern (Farbton 235°); sie bleibt als Baustein für
+   dunkle Bänder und Karten (`Section tone="ink"`, `Card variant="ink"`), die
+   zurzeit keine Seite nutzt. Den Farbton verschiebt man an einer Stelle:
+   `--primary*` und `--ring` hier, die Bühne darunter, `MARKENBLAU` in `area-theme.ts`.
    Bewusst KEINE Notdienst-Optik (kein Gelb/Schwarz, keine Signalfarben
    als Flächen), kein Lila, kein Indigo, kein Neon. Kontraste, Farbraum und
    Regel prüft `src/lib/visual/area-theme.test.ts` (auch für die Bühne).
@@ -210,18 +210,18 @@ header a[aria-label$='Startseite'] > span {
    `.buehne` belegt denselben Satz Tokens neu – kein zweites Farbsystem; Bausteine
    darin nutzen weiter `bg-surface`, `text-foreground`, `text-primary`, `ring-ring`
    usw. `.buehne-licht` legt einen ruhigen Verlauf nur aus CSS darunter (kein Bild,
-   keine Bewegung, kein Filter über Text). Wo ja: Kopfzeile, erster Bildschirm der
-   Startseite, Seitenkopf, Kopf der Fehleransicht, Fuß, Aktionsleiste und feste
-   Formularleiste am Telefon, `Section tone="ink"`,
-   `Card variant="ink"`. Wo nein: Formulare, Kasse, Warenkorb, Lesetexte, Tabellen,
-   Rechtstexte, Backend, PDF, E-Mails.
+   keine Bewegung, kein Filter über Text). Wo ja: nur `Section tone="ink"` und
+   `Card variant="ink"` (dunkle Bänder und Karten; zurzeit von keiner Seite genutzt).
+   Wo nein (A-078): Kopfzeile, erster Bildschirm, Seitenkopf, Fuß, Leisten am Telefon,
+   Formulare, Kasse, Warenkorb, Lesetexte, Tabellen, Rechtstexte, Backend, PDF, E-Mails.
+   Die Seite ist hell; `.buehne-licht` ist zurzeit ohne Verwendung.
    `--area*` kommen sonst aus `[data-area]` (Tailwind-Plugin): `.buehne[data-area]`
    und `.buehne [data-area]` schlagen sie über die Spezifität, gleich ob die Bühne
    innen oder außen steht. Nur am Bildschirm: Gedruckt gilt der helle Satz
    (`@media screen`), die Bühne druckt nicht als dunkle Fläche.
    Kontraste aller Paare prüft `src/lib/visual/area-theme.test.ts` („Bühne“).
-   Schicht „components“: Damit kennt Tailwind die Klasse und erlaubt Varianten
-   (`max-md:buehne` an der festen Formularleiste am Telefon, `flow-shell.tsx`).
+   Schicht „components“: Damit kennt Tailwind die Klasse, erlaubt Varianten und
+   liefert sie nur aus, wenn eine Seite sie nutzt.
    ========================================================================== */
 @layer components {
   @media screen {
