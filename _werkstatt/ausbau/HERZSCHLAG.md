@@ -1,7 +1,7 @@
 # HERZSCHLAG
-Zeit: 2026-11-18 01:45 MEZ
+Zeit: 2026-11-18 02:00 MEZ
 Sitzung: 8e76b2e3
-Zustand: AKTIV. FA-QA-04E (Tastaturfokus nach dem Schrittwechsel in allen mehrschrittigen Formularen, Fortsetzen eines Zwischenstands ohne Sprung) läuft seit 01:10 MEZ im Hintergrund (Workflow wf_9282bed6-5ad: Umsetzung, zwei Gegenprüfungen, Nachbesserung); der Arbeitsbaum trägt dessen unfertige Änderungen.
-Etappe und Welle: Die dunkelblaue Farbwelt (d1615fa) wartet auf die Anweisung des Nutzers zum Livegang; eBay-Angebote warten auf den Export (MA-34). Keine Antwort des Nutzers seit 22:00 MEZ am 17.11. Nach der Abnahme von FA-QA-04E folgen über Nacht keine großen Pakete.
-Letzter grüner Commit: 9c89d95 (Quelltext wie d1615fa; Typprüfung, Lint, Unit 4301, DB 190, Build 190/190); live auf main ist 5364c4e
+Zustand: WARTET AUF DEN NUTZER (über Nacht bewusst ohne große Pakete, damit das Kontingent für seine Aufträge bleibt). Der Lauf ist nicht abgebrochen: Weckrufe stehen für etwa 04:00 und 07:00 MEZ; am Morgen geht es ohne Antwort mit einem einzelnen Paket nach Plan weiter.
+Etappe und Welle: Erledigt in dieser Nacht: Livegang 7 (Tutorials, 5364c4e auf main), FA-FARBE-01 (Dunkelblau statt Orange mit dunkler Bühne, d1615fa), FA-SEO-03C (Nachladen des Uploads gemessen und verworfen, A-076), FA-QA-04E Teil 1 (Tastaturfokus nach dem Schrittwechsel, 9e7c35a). Offen beim Nutzer: Anweisung zum Livegang der neuen Farbe oder ein anderer Farbwert (MA-61); Export der eBay-Angebote des Verkäufers „schluessel-schmiede“ (MA-34).
+Letzter grüner Commit: 9e7c35a (Typprüfung, Lint, Unit 4314, DB 190, Build 190/190); live auf main ist 5364c4e
 ARBEITSBRANCH: claude/new-session-li9jsf
