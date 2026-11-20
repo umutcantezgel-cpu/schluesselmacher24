@@ -13,6 +13,8 @@ import {
   tutorialIndexierbarBei,
   tutorialPfad,
   tutorialsFuer,
+  tutorialVerweise,
+  verweiseNachAbschnitt,
   isoDauer,
   videoDaten,
   videoSichtbar,
@@ -124,6 +126,21 @@ describe('Regeln für Seite, Sitemap und Hinweis', () => {
     expect(tutorialsFuer(JSON_STAND, 'autoschluessel-fahrzeugschein')).toEqual([]);
     expect(tutorialsFuer(JSON_STAND, 'autoschluessel-gehaeuse')).toEqual([]);
     expect(tutorialsFuer(JSON_STAND, 'autoschluessel-fotos').map((t) => t.id)).toEqual(['autoschluessel-richtig-fotografieren']);
+  });
+
+  it('Gleichschließende Zylinder: jedes Tutorial beim passenden Abschnitt, keines doppelt, keines verloren', () => {
+    const verweise = (ort: Parameters<typeof tutorialsFuer>[1]) => tutorialVerweise(tutorialsFuer(JSON_STAND, ort), false);
+    const [messen, funktion, rest] = verweiseNachAbschnitt(
+      verweise('gleichschliessende-zylinder'),
+      verweise('gleichschliessende-zylinder-messen'),
+      verweise('gleichschliessende-zylinder-funktion'),
+    );
+    expect(messen.map((v) => v.slug)).toEqual(['profilzylinder-messen']);
+    expect(funktion.map((v) => v.slug)).toEqual(['not-und-gefahrenfunktion']);
+    expect(rest.map((v) => v.slug)).toEqual(['was-bedeutet-gleichschliessend']);
+    // Ohne Abschnitte steht alles im Rest; ohne Verweise ist jeder Teil leer.
+    expect(verweiseNachAbschnitt(messen)).toEqual([messen]);
+    expect(verweiseNachAbschnitt([], messen)).toEqual([[], []]);
   });
 
   it('sortiert nach Reihenfolge, dann Titel', () => {

@@ -3,7 +3,9 @@ import { cn } from '@/lib/cn';
 import type { TutorialVerweis } from '@/lib/tutorials/tutorials';
 
 /* ==========================================================================
-   Tutorial-Hinweis an Leistungsseiten und in Formularen (FA-INHALT-01B, FA-21-02)
+   Tutorial-Hinweis an Leistungsseiten und in Formularen (FA-INHALT-01B;
+   Verweis, Vorstufe zu FA-21-02: Das Video selbst ist hier nicht eingebettet,
+   es steht auf der Tutorial-Seite. Offene Frage im Bericht FA-INHALT-01B.)
 
    Serverbaustein ohne eigenes Skript. Er liest keine Daten: Die Seite holt die
    Verweise (`tutorialVerweiseFuer` in src/lib/tutorials/hinweise.ts) und gibt

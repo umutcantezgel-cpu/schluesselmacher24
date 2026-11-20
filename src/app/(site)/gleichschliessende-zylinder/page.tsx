@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { getCodeLines, getCollection, getHersteller, getPageContent, getRubrik } from '@/lib/data';
 import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
 import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
+import { verweiseNachAbschnitt } from '@/lib/tutorials/tutorials';
 import { HerstellerBereich } from '@/components/hersteller/hersteller-bereich';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { formatCents, formatMillimeter } from '@/lib/format';
@@ -109,13 +110,17 @@ const BAUFORM_ICONS: Partial<Record<string, typeof IconProfilzylinder>> = {
 export default async function CylinderOverviewPage() {
   // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
   const rubrik = await getRubrik('sperrschliessung');
-  const [page, catalog, codeLines, hersteller, tutorials] = await Promise.all([
+  const [page, catalog, codeLines, hersteller, tutorials, tutorialsMessen, tutorialsFunktion] = await Promise.all([
     getPageContent(ROUTE),
     getCollection('cylinderCatalog'),
     getCodeLines(),
     getHersteller(),
     tutorialVerweiseFuer('gleichschliessende-zylinder'),
+    tutorialVerweiseFuer('gleichschliessende-zylinder-messen'),
+    tutorialVerweiseFuer('gleichschliessende-zylinder-funktion'),
   ]);
+  // Tutorial-Hinweise (FA-INHALT-01B) je beim passenden Abschnitt: Messen bei der Messhilfe, Funktion bei der Funktion, der Rest beim Grundprinzip.
+  const [hinweiseMessen, hinweiseFunktion, hinweiseGrundprinzip] = verweiseNachAbschnitt(tutorials, tutorialsMessen, tutorialsFunktion);
 
   const forms = catalog.forms.filter((form) => form.active);
   const functions = catalog.functions.filter((fn) => fn.active);
@@ -256,6 +261,9 @@ export default async function CylinderOverviewPage() {
                 </li>
               ))}
             </ul>
+
+            {/* Tutorial-Hinweis (FA-INHALT-01B): Der Abschnitt erklärt das Prinzip schon, darum nur die Verweise. */}
+            <TutorialHinweis verweise={hinweiseGrundprinzip} variante="verweis" ort="gleichschliessende-zylinder" className="mt-6" />
           </div>
 
           <div className="lg:col-span-7">
@@ -435,6 +443,9 @@ export default async function CylinderOverviewPage() {
             </li>
           ))}
         </ul>
+
+        {/* Tutorial-Hinweis (FA-INHALT-01B): Die Funktionen stehen schon hier, darum nur der Verweis. */}
+        <TutorialHinweis verweise={hinweiseFunktion} variante="verweis" ort="gleichschliessende-zylinder" className="mt-6" />
       </Section>
 
       {/* 04 Messhilfe: nummerierte Schritte links, Messzeichnung rechts */}
@@ -506,8 +517,8 @@ export default async function CylinderOverviewPage() {
               Ausführliche Anleitung zum Ausmessen
             </Link>
 
-            {/* Tutorial-Hinweis (FA-INHALT-01B): Die Messhilfe steht schon hier, darum nur die Verweise. */}
-            <TutorialHinweis verweise={tutorials} variante="verweis" ort="gleichschliessende-zylinder" className="mt-6" />
+            {/* Tutorial-Hinweis (FA-INHALT-01B): Die Messhilfe steht schon hier, darum nur der Verweis zum Messen. */}
+            <TutorialHinweis verweise={hinweiseMessen} variante="verweis" ort="gleichschliessende-zylinder" className="mt-6" />
           </div>
 
           <div className="lg:col-span-7">

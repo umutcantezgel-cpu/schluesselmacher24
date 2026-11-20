@@ -17,7 +17,7 @@ Vor dem Klick des Kunden zeigt die Seite kein Bild von YouTube, sondern eine eig
 
 - Mit **Eigenes Vorschaubild (optional)** wählen Sie ein Foto aus der Medienablage. Laden Sie dafür ein eigenes Foto hoch, nie ein Bild von YouTube.
 - Ohne eigenes Bild zeigt die Seite eine helle Fläche mit Titel und Dauer.
-- Für Suchmaschinen (Videoeintrag in den Strukturdaten) braucht es das eigene Vorschaubild, den Titel und das Datum. Fehlt eines davon, erscheint das Video trotzdem auf der Seite, nur ohne diesen Eintrag.
+- Für den Videoeintrag in den Strukturdaten der Seite braucht es das eigene Vorschaubild, den Titel und das Datum. Fehlt eines davon, erscheint das Video trotzdem auf der Seite, nur ohne diesen Eintrag. Dieser Eintrag enthält bewusst keine Adresse von YouTube. Ein Videoergebnis mit Vorschau in der Google-Suche ist deshalb nicht zu erwarten; ob sich das ändern soll, klären Anwalt und Inhaber.
 
 ## 3. Transkript
 
@@ -36,6 +36,11 @@ Mit dem Schalter gilt:
 - Hinweise auf den Leistungsseiten tragen dann bei Tutorials mit Video das Kennzeichen „mit Video“.
 
 **Wer setzt ihn:** der Betrieb (wer die Umgebungsvariablen bei Vercel pflegt), und erst, wenn der Anwalt den Absatz der Datenschutzerklärung geprüft und der Inhaber ihn freigegeben hat.
+
+**Erst wenn auch das erledigt ist:**
+
+- **Seite Cookie-Einstellungen** (`/rechtliches/cookie-einstellungen`): Sie sagt heute, die Website binde „keine Inhalte fremder Anbieter ein“ und speichere nur im lokalen Speicher des Browsers. Mit Videos stimmt das nicht mehr, denn YouTube kann nach dem Klick Cookies setzen. Der Text wird nicht vom Schalter umgestellt. Er muss vorher vom Anwalt geprüft, vom Inhaber freigegeben und in einem eigenen Paket hinter denselben Schalter gelegt sein.
+- **Eigene Datenschutzerklärung im Admin**: Ist unter den Einstellungen eine eigene Datenschutzerklärung hinterlegt, ersetzt sie den eingebauten Text vollständig. Dann fehlen der Absatz zu YouTube und die Stelle, auf die der Satz unter dem Video verweist. Die hinterlegte Fassung muss deshalb den geprüften Absatz zu YouTube enthalten, bevor der Schalter gesetzt wird.
 
 **So:** In den Umgebungsvariablen des Projekts `SM24_VIDEOS` mit dem Wert `an` anlegen und die Seite neu bauen lassen (neues Deployment). Andere Werte oder ein leerer Wert lassen die Einbettung aus. Zum Abschalten die Variable löschen und neu bauen lassen.
 

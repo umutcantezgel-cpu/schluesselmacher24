@@ -49,7 +49,9 @@ function Fassade({ video, titel }: { video: TutorialVideo; titel: string }) {
  * - Mit Freigabe: die Fassade im festen Rahmen 16 zu 9 mit dem Knopf „Video laden“, darunter der Satz zur
  *   Datenübertragung mit Verweis auf die Datenschutzerklärung. Erst der Klick lädt den Player.
  *
- * Ein gepflegtes Transkript steht in beiden Fällen darunter zum Aufklappen.
+ * - Mit Freigabe, aber ungültiger Kennung: nichts (wie ohne Video).
+ *
+ * Ein gepflegtes Transkript steht in beiden ersten Fällen darunter zum Aufklappen.
  */
 export function VideoHinweis({
   video,
@@ -65,8 +67,11 @@ export function VideoHinweis({
   titel?: string;
 }) {
   if (!video?.youtubeId) return null;
-  const transkript = video.transcript?.trim();
   const einbetten = freigegeben && istYoutubeKennung(video.youtubeId);
+  // Mit Freigabe, aber ungültiger Kennung (etwa ein ungeprüfter Eintrag im JSON-Fallback): nichts zeigen wie ohne
+  // Video. Der Satz aus Teil A („sobald die Einbettung freigeschaltet ist“) wäre dann falsch.
+  if (freigegeben && !einbetten) return null;
+  const transkript = video.transcript?.trim();
   const videoTitel = video.title?.trim() || titel?.trim() || 'Video zum Tutorial';
 
   return (

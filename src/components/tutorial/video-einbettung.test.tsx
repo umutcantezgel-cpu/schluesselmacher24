@@ -114,10 +114,17 @@ describe('mit Schalter, vor dem Klick', () => {
     expect(fremd).not.toMatch(FREMDE_ADRESSEN);
   });
 
-  it('eine ungültige Kennung bettet nichts ein', () => {
+  it('eine ungültige Kennung bettet nichts ein und zeigt auch nicht den Satz aus Teil A', () => {
     const html = renderToStaticMarkup(<VideoHinweis video={{ ...VIDEO, youtubeId: 'x"><script>' }} freigegeben />);
+    expect(html).toBe('');
     expect(html).not.toContain(VIDEO_LADEN_TEXT);
+    expect(html).not.toContain(VIDEO_HINWEIS_TEXT);
+  });
+
+  it('ohne Schalter bleibt es bei ungültiger Kennung beim Satz aus Teil A', () => {
+    const html = renderToStaticMarkup(<VideoHinweis video={{ ...VIDEO, youtubeId: 'x"><script>' }} />);
     expect(html).toContain(VIDEO_HINWEIS_TEXT);
+    expect(html).not.toContain('<script');
   });
 });
 

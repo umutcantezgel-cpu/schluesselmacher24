@@ -95,6 +95,25 @@ export function tutorialVerweise(tutorials: Tutorial[], videosFrei: boolean): Tu
   return verweise;
 }
 
+/**
+ * Teilt die Verweise einer Seite auf ihre Abschnitte auf (FA-INHALT-01B): Ein Verweis steht beim ersten Abschnitt,
+ * dessen Liste ihn ebenfalls enthält (etwa „Messschritt“ bei der Messhilfe); alle übrigen stehen im letzten
+ * Eintrag des Ergebnisses. So zeigt jede Stelle nur die Tutorials, die zu ihr passen, und keines fehlt oder
+ * steht doppelt. Das Ergebnis hat einen Eintrag mehr als `abschnitte`.
+ */
+export function verweiseNachAbschnitt(
+  alle: readonly TutorialVerweis[],
+  ...abschnitte: readonly (readonly TutorialVerweis[])[]
+): TutorialVerweis[][] {
+  const ergebnis: TutorialVerweis[][] = abschnitte.map(() => []);
+  const rest: TutorialVerweis[] = [];
+  for (const verweis of alle) {
+    const index = abschnitte.findIndex((liste) => liste.some((v) => v.slug === verweis.slug));
+    (index >= 0 ? ergebnis[index] : rest).push(verweis);
+  }
+  return [...ergebnis, rest];
+}
+
 /* ---------- Video auf der Tutorial-Seite (FA-INHALT-01B) ------------------- */
 
 /** Wird auf der Seite eine Einbettung gezeigt (statt des Satzes aus Teil A)? */
