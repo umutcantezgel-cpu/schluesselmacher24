@@ -568,7 +568,7 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Es bleibt beim Weg über den Nutzer: Export „Aktive Angebote“ aus dem Verkäuferkonto, gespeicherte Seiten oder kopierter Text (MA-34). Ein dritter automatischer Versuch ohne neue Lage ist nicht sinnvoll.
 
 
-## A-083 · Livegang 9: FA-SEO-03D und -03E auf main; die Bereinigung des Arbeitsbranchs war nicht nötig (2026-11-20 22:35, Nutzer)
+## A-083 · Livegang 9: FA-SEO-03D und -03E auf main; die Bereinigung des Arbeitsbranchs war nicht nötig (2026-11-20 22:32, Nutzer)
 - Der Nutzer schrieb am 20.11. gegen 22:20 MEZ: „ja, bereinigen“ für den Arbeitsbranch und danach „live“. Damit sind G2 und G3 für genau diesen Schritt aufgehoben (wie A-072, A-079): der geprüfte Stand 0c2123d geht auf main. Jeder weitere Push auf main braucht eine neue Anweisung.
 - Vor dem Überschreiben nachgeprüft, statt es auf meine eigene Notiz hin auszuführen: 4bd1266 enthält 0 Bilddateien; die 205 Dateien waren JSON-Protokolle mit zusammen 0,9 MB und sind seit e54c5ac wieder entfernt. In der gesamten Historie des Branchs liegt unter `protokolle` kein Bild. Meine Meldung vom 18.11. („205 Bildschirmfotos, rund 37 MB“) war ein Fehlalarm; soweit nachvollziehbar, hatte ich Zahl und Größe am Ordner auf der Platte abgelesen (dort lagen die Bilder), nicht am Inhalt des Commits. Der Branch wurde nicht überschrieben; es gab keinen Force-Push. A-080 ist berichtigt.
 - Lehre: Vor einer Bitte um eine Ausnahme von G2 den Befund am Commit selbst belegen (`git diff-tree`, Dateiendungen, Größen), nicht am Arbeitsordner.
