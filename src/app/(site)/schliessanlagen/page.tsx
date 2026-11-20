@@ -3,6 +3,8 @@ import Link from 'next/link';
 import type { ComponentType } from 'react';
 
 import { getCodeLines, getPageContent, getRubrik } from '@/lib/data';
+import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { SpaetVorladen } from '@/lib/spaet-vorladen';
 import type { InfoHint } from '@/lib/types';
@@ -258,7 +260,11 @@ const FALLBACK_FAQ = [
 export default async function SchliessanlagenPage() {
   // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
   const rubrik = await getRubrik('schliessanlage');
-  const [page, codeLines] = await Promise.all([getPageContent(ROUTE), getCodeLines()]);
+  const [page, codeLines, tutorials] = await Promise.all([
+    getPageContent(ROUTE),
+    getCodeLines(),
+    tutorialVerweiseFuer('schliessanlagen'),
+  ]);
   // Gegenrichtung der Verweisliste (FA-SEO-01C): Ratgeber und veröffentlichte Ortsseiten, die hierher verweisen.
   const weiterfuehrend: Array<{ href: string; label: string; body?: string }> = [
     ...WEITERFUEHREND,
@@ -403,6 +409,9 @@ export default async function SchliessanlagenPage() {
             <SystemVergleich />
           </div>
         </div>
+
+        {/* Tutorial-Hinweis (FA-INHALT-01B) */}
+        <TutorialHinweis verweise={tutorials} ort="schliessanlagen" className="mt-10 max-w-3xl" />
       </Section>
 
       {/* Für wen: Stückliste, ganze Zeile ist der Link */}

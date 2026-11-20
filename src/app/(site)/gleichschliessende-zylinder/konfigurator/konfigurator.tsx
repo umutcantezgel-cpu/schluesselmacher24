@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore, type ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -269,11 +269,14 @@ export function Konfigurator({
   catalog,
   hilfe,
   systeme = KEINE_SYSTEME,
+  tutorialHinweise,
 }: {
   catalog: CylinderCatalog;
   hilfe?: HilfeKontakt;
   /** Systeme der Stammliste für Sperrschließungen (FA-SHOP-04B); wählbar, solange der Katalog keine Hersteller anbietet. */
   systeme?: HerstellerSystem[];
+  /** Fertig gerenderte Tutorial-Hinweise der Seite beim Hilfeblock der Maße (FA-INHALT-01B, A-071). */
+  tutorialHinweise?: { messen?: ReactNode; funktion?: ReactNode };
 }) {
   const router = useRouter();
   const addCylinderOrder = useCartStore((state) => state.addCylinderOrder);
@@ -885,6 +888,8 @@ export function Konfigurator({
                 </>
               }
             />
+            {tutorialHinweise?.messen}
+            {tutorialHinweise?.funktion}
 
             {/* Rückfragen der Maßprüfung des Kerns (E5-OPUS-02): halten nichts auf */}
             {rueckfragen.length > 0 && (

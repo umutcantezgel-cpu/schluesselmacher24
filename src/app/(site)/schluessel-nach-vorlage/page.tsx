@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getPageContent, getRubrik, getSettings } from '@/lib/data';
+import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { istPlatzhalter } from '@/lib/platzhalter';
 import type { ImageSlot } from '@/lib/types';
@@ -124,7 +126,11 @@ function istPlatzhalterAntwort(text: string): boolean {
 export default async function SchluesselNachVorlagePage() {
   // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
   const rubrik = await getRubrik('schluessel-nach-vorlage');
-  const [page, settings] = await Promise.all([getPageContent(ROUTE), getSettings()]);
+  const [page, settings, tutorials] = await Promise.all([
+    getPageContent(ROUTE),
+    getSettings(),
+    tutorialVerweiseFuer('schluessel-nach-vorlage'),
+  ]);
 
   const process = PROCESS_LABELS['gefuehrte-anfrage'];
 
@@ -360,6 +366,9 @@ export default async function SchluesselNachVorlagePage() {
             </p>
           </CardBody>
         </Card>
+
+        {/* Tutorial-Hinweis (FA-INHALT-01B): die Fotoanleitung steht schon hier, darum nur der Verweis. */}
+        <TutorialHinweis verweise={tutorials} variante="verweis" ort="schluessel-nach-vorlage" className="mt-6" />
       </Section>
 
       {/* Autoschlüssel */}

@@ -1,0 +1,404 @@
+{
+ "_hinweis": "Stand vor FA-INHALT-01B (Commit 5c6bf8c), erfasst am 20.11.2026 mit content/settings.json. Ohne Schalter SM24_VIDEOS müssen Datenschutzerklärung, Verarbeitungsübersicht und Sicherheitsrichtlinie Zeichen für Zeichen so bleiben. Ändert der Inhaber Firmendaten oder Rechtstext, ist dieser Stand mit seiner Freigabe neu zu erfassen.",
+ "datenschutz": {
+  "ohneStatistik": "<h1 class=\"text-headline font-bold text-balance\">Datenschutzerklärung</h1><p class=\"mt-3\">Hier steht, welche personenbezogenen Daten wir verarbeiten, wozu, auf welcher Rechtsgrundlage, an wen sie gehen und wie lange wir sie speichern. Analyse- oder Werbedienste setzen wir nicht ein.</p><h2>1. Verantwortlicher</h2><p>Verantwortlich im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:<br/><span><br/>SCHLÜSSELMACHER24 – Inhaber Mina Saad</span><span><br/>Langgasse 61</span><span><br/>35576 Wetzlar</span><span><br/>Deutschland</span><br/>Telefon: <a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums\">06441 8056279</a><br/>E-Mail: <a href=\"mailto:info@schluesselmacher24.de\">info@schluesselmacher24.de</a></p><h2>2. Übersicht der Verarbeitungen</h2><p>Die folgende Übersicht nennt für jede Verarbeitung Zweck, Daten, Rechtsgrundlage, Empfänger und Speicherdauer.</p><section id=\"verarbeitung-hosting\" aria-labelledby=\"verarbeitung-hosting-titel\"><h3 id=\"verarbeitung-hosting-titel\">2.1 Bereitstellung der Website und Server-Protokolle</h3><dl><dt>Zweck</dt><dd>Auslieferung der Seiten, Abwehr von Angriffen und Fehlersuche.</dd><dt>Daten</dt><dd>IP-Adresse; Datum und Uhrzeit des Abrufs; aufgerufene Adresse und verweisende Seite; Browser und Betriebssystem; übertragene Datenmenge und Statuscode</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse an einem sicheren und stabilen Betrieb der Website.</dd><dt>Empfänger</dt><dd>Vercel Inc. (Hosting, Auftragsverarbeiter)</dd><dt>Drittland</dt><dd>USA (Vercel Inc.): EU-US Data Privacy Framework (Art. 45 DSGVO) und Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).</dd><dt>Speicherdauer</dt><dd>Die Protokolle werden beim Hoster nach kurzer Zeit automatisch gelöscht. Wir werten sie nur bei Störungen oder Angriffen aus.</dd></dl></section><section id=\"verarbeitung-datenbank\" aria-labelledby=\"verarbeitung-datenbank-titel\"><h3 id=\"verarbeitung-datenbank-titel\">2.2 Datenbank, Backend und Dateiablage</h3><dl><dt>Zweck</dt><dd>Speicherung der Vorgänge, der Inhalte dieser Website und hochgeladener Dateien.</dd><dt>Daten</dt><dd>alle in den Formularen angegebenen Daten; hochgeladene Dateien</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO (Vertrag und vorvertragliche Maßnahmen) und Art. 6 Abs. 1 lit. f DSGVO (sichere, zuverlässige Datenhaltung).</dd><dt>Empfänger</dt><dd>Supabase Inc. (Datenbank und Dateiablage, Auftragsverarbeiter); Speicherort Frankfurt am Main</dd><dt>Drittland</dt><dd>Die Daten liegen in der EU. Zugriffe von Supabase aus Drittländern zu Wartungszwecken sind möglich und durch Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO) abgesichert.</dd><dt>Speicherdauer</dt><dd>Wie bei den einzelnen Verarbeitungen angegeben.</dd></dl></section><section id=\"verarbeitung-vorgaenge\" aria-labelledby=\"verarbeitung-vorgaenge-titel\"><h3 id=\"verarbeitung-vorgaenge-titel\">2.3 Bestellungen, Terminbuchungen und Anfragen</h3><dl><dt>Zweck</dt><dd>Bearbeitung und Abwicklung Ihrer Bestellung, Ihres Termins oder Ihrer Anfrage einschließlich der Kommunikation dazu.</dd><dt>Daten</dt><dd>Anrede, Name und Firma; E-Mail-Adresse und Telefonnummer; Liefer- und Rechnungsanschrift; Angaben zum Auftrag: Fahrzeugdaten, Schlüsselart, Schlüsselcode, gewünschte Leistung; Angaben zum Objekt: Türen, Nutzer, Berechtigungen, bestehende Anlagen; Termin, Zahlungsstatus und Vorgangsnummer; Ihre Zustimmungen im Bestellablauf mit Zeitpunkt</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO (Vertrag und vorvertragliche Maßnahmen); für die Aufbewahrung Art. 6 Abs. 1 lit. c DSGVO in Verbindung mit § 257 HGB und § 147 AO.</dd><dt>Empfänger</dt><dd>Hosting- und Datenbankdienstleister (siehe oben); bei Versand das Versandunternehmen (Name und Lieferanschrift).</dd><dt>Speicherdauer</dt><dd>Für die Dauer der Bearbeitung. Danach bewahren wir Geschäftsunterlagen nach den gesetzlichen Fristen auf – je nach Art bis zu zehn Jahre (§ 257 HGB, § 147 AO). Anfragen, aus denen kein Auftrag entsteht, löschen wir, sobald sie nicht mehr benötigt werden und keine Aufbewahrungspflicht besteht.</dd></dl></section><section id=\"verarbeitung-dateien\" aria-labelledby=\"verarbeitung-dateien-titel\"><h3 id=\"verarbeitung-dateien-titel\">2.4 Hochgeladene Fotos und Unterlagen</h3><dl><dt>Zweck</dt><dd>Prüfung und Ausführung Ihres Auftrags; beim Fahrzeugschein und bei Sicherungskarten der Nachweis, dass Sie berechtigt sind.</dd><dt>Daten</dt><dd>Fotos von Schlüsseln; Zulassungsbescheinigung Teil I (Fahrzeugschein); Grundrisse, Türlisten und Objektfotos; weitere Projektunterlagen</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO; für den Berechtigungsnachweis zusätzlich Art. 6 Abs. 1 lit. f DSGVO – Schutz vor der Anfertigung von Schlüsseln für Unberechtigte.</dd><dt>Empfänger</dt><dd>Supabase Inc. (Dateiablage, Auftragsverarbeiter). Intern sehen die Dateien nur die dafür berechtigten Personen.</dd><dt>Speicherdauer</dt><dd>Dateien werden schon beim Auswählen im Formular an uns übertragen. Senden Sie den Vorgang nicht ab, löschen wir sie automatisch nach 24 Stunden. Sonst gelten ab dem Hochladen folgende Fristen: Fahrzeugschein 90 Tage, Schlüsselfotos 180 Tage, Grundrisse und Objektpläne 365 Tage, Projektunterlagen und Objektfotos 365 Tage. Danach werden die Dateien automatisch gelöscht.</dd></dl></section><section id=\"verarbeitung-partner\" aria-labelledby=\"verarbeitung-partner-titel\"><h3 id=\"verarbeitung-partner-titel\">2.5 Bewerbung als Partnerbetrieb</h3><dl><dt>Zweck</dt><dd>Prüfung Ihrer Bewerbung über „Partner werden“, Abstimmung einer Zusammenarbeit und – nach einer Freischaltung – die Vermittlung von Kundenaufträgen an Ihren Betrieb.</dd><dt>Daten</dt><dd>Firmenname, Ansprechpartner, E-Mail-Adresse und Telefonnummer; Postleitzahl, Ort und Einsatzradius; Leistungen, Fahrzeughersteller und Systeme, mobile Einsätze; Angaben zu Qualifikationen; freiwillig hochgeladene Nachweise (z. B. Gewerbeanmeldung, Zertifikate)</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen auf Ihre Anfrage) und Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung beim Absenden); für die Prüfung von Gewerbe, Eignung und Zuverlässigkeit zusätzlich Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse, Aufträge nur an geeignete Betriebe zu vermitteln.</dd><dt>Empfänger</dt><dd>Hosting- und Datenbankdienstleister (siehe oben). Kommt eine Zusammenarbeit zustande, nennen wir Kundinnen und Kunden, deren Auftrag Ihr Betrieb übernimmt, Namen und Kontaktdaten Ihres Betriebs.</dd><dt>Speicherdauer</dt><dd>Kommt keine Zusammenarbeit zustande, löschen wir Ihre Bewerbung, sobald sie für die Prüfung und mögliche Rückfragen nicht mehr benötigt wird und keine Aufbewahrungspflicht besteht. Bei einer Zusammenarbeit für deren Dauer, danach nach den gesetzlichen Fristen (§ 257 HGB, § 147 AO). Hochgeladene Nachweise löschen wir nach der Frist für Projektunterlagen (siehe „Hochgeladene Fotos und Unterlagen“).</dd></dl></section><section id=\"verarbeitung-zahlung\" aria-labelledby=\"verarbeitung-zahlung-titel\"><h3 id=\"verarbeitung-zahlung-titel\">2.6 Online-Zahlung</h3><dl><dt>Zweck</dt><dd>Abwicklung von Zahlungen und Anzahlungen.</dd><dt>Daten</dt><dd>Name und E-Mail-Adresse; Betrag, Vorgangsnummer und Zahlungsstatus; Zahlungsdaten (Karten-, Konto- oder Wallet-Daten) – diese geben Sie direkt bei Stripe ein; wir erhalten sie nicht</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO; soweit Stripe gesetzliche Pflichten erfüllt (etwa nach dem Geldwäschegesetz), Art. 6 Abs. 1 lit. c DSGVO.</dd><dt>Empfänger</dt><dd>Stripe Payments Europe, Limited, Dublin, Irland</dd><dt>Drittland</dt><dd>Stripe kann Daten an die Stripe, Inc. in den USA übermitteln. Grundlage: EU-US Data Privacy Framework (Art. 45 DSGVO) und Standardvertragsklauseln.</dd><dt>Speicherdauer</dt><dd>Zahlungsbelege bewahren wir nach den gesetzlichen Fristen auf (bis zu zehn Jahre, § 147 AO). Stripe speichert Daten nach den eigenen gesetzlichen Pflichten.</dd></dl></section><section id=\"verarbeitung-email\" aria-labelledby=\"verarbeitung-email-titel\"><h3 id=\"verarbeitung-email-titel\">2.7 Versand von E-Mails</h3><dl><dt>Zweck</dt><dd>Eingangs- und Vertragsbestätigungen, Mitteilungen zum Stand Ihres Vorgangs und Antworten auf Ihre Nachrichten.</dd><dt>Daten</dt><dd>E-Mail-Adresse und Name; Vorgangsnummer und Inhalt der Nachricht; Zustellstatus</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO; bei Bestätigungen, die wir gesetzlich schulden, Art. 6 Abs. 1 lit. c DSGVO.</dd><dt>Empfänger</dt><dd>Resend Inc. (E-Mail-Versand, Auftragsverarbeiter)</dd><dt>Drittland</dt><dd>USA (Resend Inc.): EU-US Data Privacy Framework bzw. Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).</dd><dt>Speicherdauer</dt><dd>Der Versanddienst löscht seine Versandprotokolle nach kurzer Zeit. Am Vorgang vermerken wir Art, Zeitpunkt und Ergebnis jeder Mail so lange wie den Vorgang selbst.</dd></dl></section><section id=\"verarbeitung-kontakt\" aria-labelledby=\"verarbeitung-kontakt-titel\"><h3 id=\"verarbeitung-kontakt-titel\">2.8 Kontakt per E-Mail oder Telefon</h3><dl><dt>Zweck</dt><dd>Beantwortung Ihres Anliegens.</dd><dt>Daten</dt><dd>Name und Kontaktdaten; Inhalt Ihrer Nachricht</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO, soweit es um einen Vertrag oder dessen Anbahnung geht; sonst Art. 6 Abs. 1 lit. f DSGVO.</dd><dt>Empfänger</dt><dd>Anbieter unseres E-Mail-Postfachs (Auftragsverarbeiter)</dd><dt>Speicherdauer</dt><dd>Bis Ihr Anliegen erledigt ist. Geschäftliche Korrespondenz bewahren wir nach den gesetzlichen Fristen auf (sechs Jahre, § 257 HGB).</dd></dl></section><section id=\"verarbeitung-browser\" aria-labelledby=\"verarbeitung-browser-titel\"><h3 id=\"verarbeitung-browser-titel\">2.9 Notwendige Speicherung in Ihrem Browser</h3><dl><dt>Zweck</dt><dd>Warenkorb, Zwischenstand in Formularen und Konfiguratoren sowie Ihre Auswahl auf der Seite Cookie-Einstellungen – damit nichts verloren geht, wenn Sie die Seite wechseln.</dd><dt>Daten</dt><dd>Inhalt des Warenkorbs; Eingaben in Formularen und Konfiguratoren; Ihre Auswahl zur Speicherung</dd><dt>Rechtsgrundlage</dt><dd>§ 25 Abs. 2 Nr. 2 TDDDG (unbedingt erforderlich für den von Ihnen gewünschten Dienst); Art. 6 Abs. 1 lit. b DSGVO.</dd><dt>Empfänger</dt><dd>Keine – die Daten bleiben im lokalen Speicher Ihres Browsers (localStorage) und werden erst übertragen, wenn Sie einen Vorgang absenden.</dd><dt>Speicherdauer</dt><dd>Bis Sie die Daten über die Seite Cookie-Einstellungen oder in Ihrem Browser löschen.</dd></dl></section><section id=\"verarbeitung-ratenbegrenzung\" aria-labelledby=\"verarbeitung-ratenbegrenzung-titel\"><h3 id=\"verarbeitung-ratenbegrenzung-titel\">2.10 Schutz vor Missbrauch (Ratenbegrenzung)</h3><dl><dt>Zweck</dt><dd>Abwehr massenhafter, automatisierter Anfragen an Formulare und Uploads.</dd><dt>Daten</dt><dd>ein aus der IP-Adresse gebildeter, verschlüsselter Prüfwert (HMAC) – nicht die IP-Adresse selbst; Zeitpunkt und Anzahl der Anfragen</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse an einem missbrauchsfreien Betrieb.</dd><dt>Empfänger</dt><dd>Supabase Inc. (Datenbank, Auftragsverarbeiter)</dd><dt>Speicherdauer</dt><dd>Der Zähler gilt für ein Zeitfenster von wenigen Minuten; die Einträge werden in der Regel nach 24 Stunden gelöscht.</dd></dl></section><section id=\"verarbeitung-widerruf\" aria-labelledby=\"verarbeitung-widerruf-titel\"><h3 id=\"verarbeitung-widerruf-titel\">2.11 Widerrufserklärungen</h3><dl><dt>Zweck</dt><dd>Entgegennahme, Bestätigung und Bearbeitung Ihres Widerrufs.</dd><dt>Daten</dt><dd>Name und E-Mail-Adresse; Vorgangsnummer; Ihre Erklärung; Zeitpunkt des Eingangs</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. c DSGVO (gesetzliche Pflicht zur Entgegennahme und Bestätigung) und Art. 6 Abs. 1 lit. b DSGVO.</dd><dt>Empfänger</dt><dd>Supabase Inc. (Speicherung) und Resend Inc. (Eingangsbestätigung per E-Mail, siehe „Versand von E-Mails“)</dd><dt>Speicherdauer</dt><dd>Für die Abwicklung und als Nachweis bis zum Ablauf der gesetzlichen Verjährungs- und Aufbewahrungsfristen.</dd></dl></section><h2>3. Dienstleister</h2><p>Wir setzen die folgenden Dienstleister ein. Mit Auftragsverarbeitern haben wir Verträge nach Art. 28 DSGVO geschlossen; sie verarbeiten die Daten nur nach unserer Weisung.</p><ul><li><strong>Vercel Inc.</strong> (USA) – Hosting und Auslieferung der Website (Serverregion Frankfurt am Main); Auftragsverarbeiter.</li><li><strong>Supabase Inc.</strong> (Singapur; Speicherort der Daten: Frankfurt am Main) – Datenbank und Dateiablage; Auftragsverarbeiter.</li><li><strong>Stripe Payments Europe, Limited</strong> (1 Grand Canal Street Lower, Grand Canal Dock, Dublin, D02 H210, Irland) – Abwicklung von Online-Zahlungen; Auftragsverarbeiter und für eigene Zwecke (Betrugsvorbeugung, gesetzliche Pflichten) eigener Verantwortlicher.</li><li><strong>Resend Inc.</strong> (USA) – Versand von E-Mails (Bestätigungen und Nachrichten zum Vorgang); Auftragsverarbeiter.</li></ul><h2>4. Übermittlung in Drittländer</h2><p>Einige Dienstleister haben ihren Sitz außerhalb des Europäischen Wirtschaftsraums. Eine Übermittlung erfolgt nur auf einer der folgenden Grundlagen:</p><ul><li><strong>Bereitstellung der Website und Server-Protokolle:</strong> USA (Vercel Inc.): EU-US Data Privacy Framework (Art. 45 DSGVO) und Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).</li><li><strong>Datenbank, Backend und Dateiablage:</strong> Die Daten liegen in der EU. Zugriffe von Supabase aus Drittländern zu Wartungszwecken sind möglich und durch Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO) abgesichert.</li><li><strong>Online-Zahlung:</strong> Stripe kann Daten an die Stripe, Inc. in den USA übermitteln. Grundlage: EU-US Data Privacy Framework (Art. 45 DSGVO) und Standardvertragsklauseln.</li><li><strong>Versand von E-Mails:</strong> USA (Resend Inc.): EU-US Data Privacy Framework bzw. Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).</li></ul><h2>5. Speicherung im Browser, Cookies und Fremdinhalte</h2><p>Wir verwenden keine Cookies oder Techniken zur Analyse, Reichweitenmessung oder Werbung und binden keine Inhalte fremder Anbieter wie Karten, Videos oder Schriftarten-Dienste ein. Die Schriftarten liefern wir selbst aus; beim Aufruf der Seite besteht keine Verbindung zu Google oder anderen Schriftanbietern.</p><p>Gespeichert wird nur, was für die von Ihnen genutzten Funktionen unbedingt nötig ist: Warenkorb, Zwischenstand in Formularen und Ihre Auswahl auf der Seite <a href=\"/rechtliches/cookie-einstellungen\">Cookie-Einstellungen</a> – im lokalen Speicher Ihres Browsers (siehe 2.9). Fotos und Unterlagen, die Sie in einem Formular auswählen, werden dagegen sofort an uns übertragen (siehe 2.4).</p><p>Bei einer Online-Zahlung leiten wir Sie auf die Bezahlseite von Stripe weiter. Was dort gespeichert wird, regelt die Datenschutzerklärung von Stripe.</p><h2>6. Videoüberwachung, Aufzeichnung und Zutrittsprotokollierung</h2><p>Wenn wir für Sie Videoüberwachung, Alarmtechnik oder elektronische Zutrittskontrolle planen und einrichten, sind <strong>Sie als Betreiberin oder Betreiber</strong> für die rechtmäßige Nutzung dieser Anlagen verantwortlich. Das betrifft insbesondere die Ausrichtung von Kameras, die Aufzeichnungsdauer, die Kennzeichnung überwachter Bereiche, die Information betroffener Personen sowie die Auswertung von Zutrittsprotokollen.</p><p>Verdeckte Audioüberwachung bieten wir nicht als Standardprodukt an. Gegensprech- und Alarmfunktionen richten wir ausschließlich für zulässige Einsatzzwecke ein.</p><h2>7. Pflicht zur Bereitstellung und automatisierte Entscheidungen</h2><p>Für Bestellungen, Termine und Anfragen brauchen wir die als Pflichtangabe gekennzeichneten Daten; ohne sie können wir den Vertrag nicht schließen oder Ihre Anfrage nicht bearbeiten. Eine automatisierte Entscheidungsfindung einschließlich Profiling (Art. 22 DSGVO) findet nicht statt.</p><h2>8. Ihre Rechte</h2><p>Sie haben im gesetzlichen Rahmen das Recht auf</p><ul><li>Auskunft über die zu Ihnen gespeicherten Daten (Art. 15 DSGVO),</li><li>Berichtigung unrichtiger Daten (Art. 16 DSGVO),</li><li>Löschung (Art. 17 DSGVO),</li><li>Einschränkung der Verarbeitung (Art. 18 DSGVO),</li><li>Datenübertragbarkeit (Art. 20 DSGVO) und</li><li>Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO).</li></ul><p><strong>Widerspruchsrecht (Art. 21 DSGVO):</strong> Verarbeiten wir Daten auf Grundlage berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO), können Sie aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit widersprechen.</p><p>Zur Ausübung Ihrer Rechte genügt eine formlose Nachricht an <a href=\"mailto:info@schluesselmacher24.de\">info@schluesselmacher24.de</a>.</p><p>Außerdem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren (Art. 77 DSGVO). Für uns zuständig ist:<br/><br/>Der Hessische Beauftragte für Datenschutz und Informationsfreiheit<br/>Gustav-Stresemann-Ring 1<br/>65189 Wiesbaden<br/><a href=\"https://datenschutz.hessen.de\" target=\"_blank\" rel=\"noopener noreferrer\">datenschutz.hessen.de</a></p><h2>9. Sicherheit</h2><p>Die Website wird ausschließlich über eine verschlüsselte Verbindung (TLS) ausgeliefert. Formulardaten und Datei-Uploads werden über dieselbe geschützte Verbindung übertragen. Hochgeladene Unterlagen liegen in einem nicht öffentlichen Speicher.</p><h2>10. Stand</h2><p>Fassung 2, Stand 25.10.2026. Ändern sich unsere Verarbeitungen oder die Rechtslage, passen wir diese Erklärung an.</p>",
+  "mitStatistik": "<h1 class=\"text-headline font-bold text-balance\">Datenschutzerklärung</h1><p class=\"mt-3\">Hier steht, welche personenbezogenen Daten wir verarbeiten, wozu, auf welcher Rechtsgrundlage, an wen sie gehen und wie lange wir sie speichern. Werbedienste setzen wir nicht ein; Google Analytics nur mit Ihrer Einwilligung.</p><h2>1. Verantwortlicher</h2><p>Verantwortlich im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:<br/><span><br/>SCHLÜSSELMACHER24 – Inhaber Mina Saad</span><span><br/>Langgasse 61</span><span><br/>35576 Wetzlar</span><span><br/>Deutschland</span><br/>Telefon: <a href=\"tel:+4964418056279\" class=\"font-mono tabular-nums\">06441 8056279</a><br/>E-Mail: <a href=\"mailto:info@schluesselmacher24.de\">info@schluesselmacher24.de</a></p><h2>2. Übersicht der Verarbeitungen</h2><p>Die folgende Übersicht nennt für jede Verarbeitung Zweck, Daten, Rechtsgrundlage, Empfänger und Speicherdauer.</p><section id=\"verarbeitung-hosting\" aria-labelledby=\"verarbeitung-hosting-titel\"><h3 id=\"verarbeitung-hosting-titel\">2.1 Bereitstellung der Website und Server-Protokolle</h3><dl><dt>Zweck</dt><dd>Auslieferung der Seiten, Abwehr von Angriffen und Fehlersuche.</dd><dt>Daten</dt><dd>IP-Adresse; Datum und Uhrzeit des Abrufs; aufgerufene Adresse und verweisende Seite; Browser und Betriebssystem; übertragene Datenmenge und Statuscode</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse an einem sicheren und stabilen Betrieb der Website.</dd><dt>Empfänger</dt><dd>Vercel Inc. (Hosting, Auftragsverarbeiter)</dd><dt>Drittland</dt><dd>USA (Vercel Inc.): EU-US Data Privacy Framework (Art. 45 DSGVO) und Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).</dd><dt>Speicherdauer</dt><dd>Die Protokolle werden beim Hoster nach kurzer Zeit automatisch gelöscht. Wir werten sie nur bei Störungen oder Angriffen aus.</dd></dl></section><section id=\"verarbeitung-datenbank\" aria-labelledby=\"verarbeitung-datenbank-titel\"><h3 id=\"verarbeitung-datenbank-titel\">2.2 Datenbank, Backend und Dateiablage</h3><dl><dt>Zweck</dt><dd>Speicherung der Vorgänge, der Inhalte dieser Website und hochgeladener Dateien.</dd><dt>Daten</dt><dd>alle in den Formularen angegebenen Daten; hochgeladene Dateien</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO (Vertrag und vorvertragliche Maßnahmen) und Art. 6 Abs. 1 lit. f DSGVO (sichere, zuverlässige Datenhaltung).</dd><dt>Empfänger</dt><dd>Supabase Inc. (Datenbank und Dateiablage, Auftragsverarbeiter); Speicherort Frankfurt am Main</dd><dt>Drittland</dt><dd>Die Daten liegen in der EU. Zugriffe von Supabase aus Drittländern zu Wartungszwecken sind möglich und durch Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO) abgesichert.</dd><dt>Speicherdauer</dt><dd>Wie bei den einzelnen Verarbeitungen angegeben.</dd></dl></section><section id=\"verarbeitung-vorgaenge\" aria-labelledby=\"verarbeitung-vorgaenge-titel\"><h3 id=\"verarbeitung-vorgaenge-titel\">2.3 Bestellungen, Terminbuchungen und Anfragen</h3><dl><dt>Zweck</dt><dd>Bearbeitung und Abwicklung Ihrer Bestellung, Ihres Termins oder Ihrer Anfrage einschließlich der Kommunikation dazu.</dd><dt>Daten</dt><dd>Anrede, Name und Firma; E-Mail-Adresse und Telefonnummer; Liefer- und Rechnungsanschrift; Angaben zum Auftrag: Fahrzeugdaten, Schlüsselart, Schlüsselcode, gewünschte Leistung; Angaben zum Objekt: Türen, Nutzer, Berechtigungen, bestehende Anlagen; Termin, Zahlungsstatus und Vorgangsnummer; Ihre Zustimmungen im Bestellablauf mit Zeitpunkt</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO (Vertrag und vorvertragliche Maßnahmen); für die Aufbewahrung Art. 6 Abs. 1 lit. c DSGVO in Verbindung mit § 257 HGB und § 147 AO.</dd><dt>Empfänger</dt><dd>Hosting- und Datenbankdienstleister (siehe oben); bei Versand das Versandunternehmen (Name und Lieferanschrift).</dd><dt>Speicherdauer</dt><dd>Für die Dauer der Bearbeitung. Danach bewahren wir Geschäftsunterlagen nach den gesetzlichen Fristen auf – je nach Art bis zu zehn Jahre (§ 257 HGB, § 147 AO). Anfragen, aus denen kein Auftrag entsteht, löschen wir, sobald sie nicht mehr benötigt werden und keine Aufbewahrungspflicht besteht.</dd></dl></section><section id=\"verarbeitung-dateien\" aria-labelledby=\"verarbeitung-dateien-titel\"><h3 id=\"verarbeitung-dateien-titel\">2.4 Hochgeladene Fotos und Unterlagen</h3><dl><dt>Zweck</dt><dd>Prüfung und Ausführung Ihres Auftrags; beim Fahrzeugschein und bei Sicherungskarten der Nachweis, dass Sie berechtigt sind.</dd><dt>Daten</dt><dd>Fotos von Schlüsseln; Zulassungsbescheinigung Teil I (Fahrzeugschein); Grundrisse, Türlisten und Objektfotos; weitere Projektunterlagen</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO; für den Berechtigungsnachweis zusätzlich Art. 6 Abs. 1 lit. f DSGVO – Schutz vor der Anfertigung von Schlüsseln für Unberechtigte.</dd><dt>Empfänger</dt><dd>Supabase Inc. (Dateiablage, Auftragsverarbeiter). Intern sehen die Dateien nur die dafür berechtigten Personen.</dd><dt>Speicherdauer</dt><dd>Dateien werden schon beim Auswählen im Formular an uns übertragen. Senden Sie den Vorgang nicht ab, löschen wir sie automatisch nach 24 Stunden. Sonst gelten ab dem Hochladen folgende Fristen: Fahrzeugschein 90 Tage, Schlüsselfotos 180 Tage, Grundrisse und Objektpläne 365 Tage, Projektunterlagen und Objektfotos 365 Tage. Danach werden die Dateien automatisch gelöscht.</dd></dl></section><section id=\"verarbeitung-partner\" aria-labelledby=\"verarbeitung-partner-titel\"><h3 id=\"verarbeitung-partner-titel\">2.5 Bewerbung als Partnerbetrieb</h3><dl><dt>Zweck</dt><dd>Prüfung Ihrer Bewerbung über „Partner werden“, Abstimmung einer Zusammenarbeit und – nach einer Freischaltung – die Vermittlung von Kundenaufträgen an Ihren Betrieb.</dd><dt>Daten</dt><dd>Firmenname, Ansprechpartner, E-Mail-Adresse und Telefonnummer; Postleitzahl, Ort und Einsatzradius; Leistungen, Fahrzeughersteller und Systeme, mobile Einsätze; Angaben zu Qualifikationen; freiwillig hochgeladene Nachweise (z. B. Gewerbeanmeldung, Zertifikate)</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen auf Ihre Anfrage) und Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung beim Absenden); für die Prüfung von Gewerbe, Eignung und Zuverlässigkeit zusätzlich Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse, Aufträge nur an geeignete Betriebe zu vermitteln.</dd><dt>Empfänger</dt><dd>Hosting- und Datenbankdienstleister (siehe oben). Kommt eine Zusammenarbeit zustande, nennen wir Kundinnen und Kunden, deren Auftrag Ihr Betrieb übernimmt, Namen und Kontaktdaten Ihres Betriebs.</dd><dt>Speicherdauer</dt><dd>Kommt keine Zusammenarbeit zustande, löschen wir Ihre Bewerbung, sobald sie für die Prüfung und mögliche Rückfragen nicht mehr benötigt wird und keine Aufbewahrungspflicht besteht. Bei einer Zusammenarbeit für deren Dauer, danach nach den gesetzlichen Fristen (§ 257 HGB, § 147 AO). Hochgeladene Nachweise löschen wir nach der Frist für Projektunterlagen (siehe „Hochgeladene Fotos und Unterlagen“).</dd></dl></section><section id=\"verarbeitung-zahlung\" aria-labelledby=\"verarbeitung-zahlung-titel\"><h3 id=\"verarbeitung-zahlung-titel\">2.6 Online-Zahlung</h3><dl><dt>Zweck</dt><dd>Abwicklung von Zahlungen und Anzahlungen.</dd><dt>Daten</dt><dd>Name und E-Mail-Adresse; Betrag, Vorgangsnummer und Zahlungsstatus; Zahlungsdaten (Karten-, Konto- oder Wallet-Daten) – diese geben Sie direkt bei Stripe ein; wir erhalten sie nicht</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO; soweit Stripe gesetzliche Pflichten erfüllt (etwa nach dem Geldwäschegesetz), Art. 6 Abs. 1 lit. c DSGVO.</dd><dt>Empfänger</dt><dd>Stripe Payments Europe, Limited, Dublin, Irland</dd><dt>Drittland</dt><dd>Stripe kann Daten an die Stripe, Inc. in den USA übermitteln. Grundlage: EU-US Data Privacy Framework (Art. 45 DSGVO) und Standardvertragsklauseln.</dd><dt>Speicherdauer</dt><dd>Zahlungsbelege bewahren wir nach den gesetzlichen Fristen auf (bis zu zehn Jahre, § 147 AO). Stripe speichert Daten nach den eigenen gesetzlichen Pflichten.</dd></dl></section><section id=\"verarbeitung-email\" aria-labelledby=\"verarbeitung-email-titel\"><h3 id=\"verarbeitung-email-titel\">2.7 Versand von E-Mails</h3><dl><dt>Zweck</dt><dd>Eingangs- und Vertragsbestätigungen, Mitteilungen zum Stand Ihres Vorgangs und Antworten auf Ihre Nachrichten.</dd><dt>Daten</dt><dd>E-Mail-Adresse und Name; Vorgangsnummer und Inhalt der Nachricht; Zustellstatus</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO; bei Bestätigungen, die wir gesetzlich schulden, Art. 6 Abs. 1 lit. c DSGVO.</dd><dt>Empfänger</dt><dd>Resend Inc. (E-Mail-Versand, Auftragsverarbeiter)</dd><dt>Drittland</dt><dd>USA (Resend Inc.): EU-US Data Privacy Framework bzw. Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).</dd><dt>Speicherdauer</dt><dd>Der Versanddienst löscht seine Versandprotokolle nach kurzer Zeit. Am Vorgang vermerken wir Art, Zeitpunkt und Ergebnis jeder Mail so lange wie den Vorgang selbst.</dd></dl></section><section id=\"verarbeitung-kontakt\" aria-labelledby=\"verarbeitung-kontakt-titel\"><h3 id=\"verarbeitung-kontakt-titel\">2.8 Kontakt per E-Mail oder Telefon</h3><dl><dt>Zweck</dt><dd>Beantwortung Ihres Anliegens.</dd><dt>Daten</dt><dd>Name und Kontaktdaten; Inhalt Ihrer Nachricht</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. b DSGVO, soweit es um einen Vertrag oder dessen Anbahnung geht; sonst Art. 6 Abs. 1 lit. f DSGVO.</dd><dt>Empfänger</dt><dd>Anbieter unseres E-Mail-Postfachs (Auftragsverarbeiter)</dd><dt>Speicherdauer</dt><dd>Bis Ihr Anliegen erledigt ist. Geschäftliche Korrespondenz bewahren wir nach den gesetzlichen Fristen auf (sechs Jahre, § 257 HGB).</dd></dl></section><section id=\"verarbeitung-browser\" aria-labelledby=\"verarbeitung-browser-titel\"><h3 id=\"verarbeitung-browser-titel\">2.9 Notwendige Speicherung in Ihrem Browser</h3><dl><dt>Zweck</dt><dd>Warenkorb, Zwischenstand in Formularen und Konfiguratoren sowie Ihre Auswahl auf der Seite Cookie-Einstellungen – damit nichts verloren geht, wenn Sie die Seite wechseln.</dd><dt>Daten</dt><dd>Inhalt des Warenkorbs; Eingaben in Formularen und Konfiguratoren; Ihre Auswahl zur Speicherung</dd><dt>Rechtsgrundlage</dt><dd>§ 25 Abs. 2 Nr. 2 TDDDG (unbedingt erforderlich für den von Ihnen gewünschten Dienst); Art. 6 Abs. 1 lit. b DSGVO.</dd><dt>Empfänger</dt><dd>Keine – die Daten bleiben im lokalen Speicher Ihres Browsers (localStorage) und werden erst übertragen, wenn Sie einen Vorgang absenden.</dd><dt>Speicherdauer</dt><dd>Bis Sie die Daten über die Seite Cookie-Einstellungen oder in Ihrem Browser löschen.</dd></dl></section><section id=\"verarbeitung-statistik\" aria-labelledby=\"verarbeitung-statistik-titel\"><h3 id=\"verarbeitung-statistik-titel\">2.10 Reichweitenmessung mit Google Analytics (nur mit Einwilligung)</h3><dl><dt>Zweck</dt><dd>Auswertung, wie die Website genutzt wird – aufgerufene Seiten, Herkunft der Besuche und abgeschlossene Abläufe wie Bestellungen, Foto-, Termin- und Projektanfragen –, um Angebot und Bedienung zu verbessern.</dd><dt>Daten</dt><dd>IP-Adresse – Google Analytics 4 nutzt sie nur zur Bestimmung des ungefähren Standorts und speichert sie nicht; Geräte- und Browserangaben, ungefährer Standort (Land, Region); aufgerufene Seiten, verweisende Seite und Zeitpunkt; Ereignisse: Bestellung, Fotoanfrage, Terminanfrage, Partneranmeldung, Projektanfrage; zufällige Kennung in Cookies (_ga, _ga_…)</dd><dt>Rechtsgrundlage</dt><dd>Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Sie können sie jederzeit mit Wirkung für die Zukunft auf der Seite Cookie-Einstellungen widerrufen; dann endet die Messung und die Analytics-Cookies werden gelöscht.</dd><dt>Empfänger</dt><dd>Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (Auftragsverarbeiter)</dd><dt>Drittland</dt><dd>USA (Google LLC): EU-US Data Privacy Framework (Art. 45 DSGVO).</dd><dt>Speicherdauer</dt><dd>Die Cookies bis zu 2 Jahre oder bis zu Ihrem Widerruf. Die Auswertungsdaten löscht Google nach der in Google Analytics eingestellten Aufbewahrungsdauer.</dd></dl></section><section id=\"verarbeitung-ratenbegrenzung\" aria-labelledby=\"verarbeitung-ratenbegrenzung-titel\"><h3 id=\"verarbeitung-ratenbegrenzung-titel\">2.11 Schutz vor Missbrauch (Ratenbegrenzung)</h3><dl><dt>Zweck</dt><dd>Abwehr massenhafter, automatisierter Anfragen an Formulare und Uploads.</dd><dt>Daten</dt><dd>ein aus der IP-Adresse gebildeter, verschlüsselter Prüfwert (HMAC) – nicht die IP-Adresse selbst; Zeitpunkt und Anzahl der Anfragen</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse an einem missbrauchsfreien Betrieb.</dd><dt>Empfänger</dt><dd>Supabase Inc. (Datenbank, Auftragsverarbeiter)</dd><dt>Speicherdauer</dt><dd>Der Zähler gilt für ein Zeitfenster von wenigen Minuten; die Einträge werden in der Regel nach 24 Stunden gelöscht.</dd></dl></section><section id=\"verarbeitung-widerruf\" aria-labelledby=\"verarbeitung-widerruf-titel\"><h3 id=\"verarbeitung-widerruf-titel\">2.12 Widerrufserklärungen</h3><dl><dt>Zweck</dt><dd>Entgegennahme, Bestätigung und Bearbeitung Ihres Widerrufs.</dd><dt>Daten</dt><dd>Name und E-Mail-Adresse; Vorgangsnummer; Ihre Erklärung; Zeitpunkt des Eingangs</dd><dt>Rechtsgrundlage</dt><dd>Art. 6 Abs. 1 lit. c DSGVO (gesetzliche Pflicht zur Entgegennahme und Bestätigung) und Art. 6 Abs. 1 lit. b DSGVO.</dd><dt>Empfänger</dt><dd>Supabase Inc. (Speicherung) und Resend Inc. (Eingangsbestätigung per E-Mail, siehe „Versand von E-Mails“)</dd><dt>Speicherdauer</dt><dd>Für die Abwicklung und als Nachweis bis zum Ablauf der gesetzlichen Verjährungs- und Aufbewahrungsfristen.</dd></dl></section><h2>3. Dienstleister</h2><p>Wir setzen die folgenden Dienstleister ein. Mit Auftragsverarbeitern haben wir Verträge nach Art. 28 DSGVO geschlossen; sie verarbeiten die Daten nur nach unserer Weisung.</p><ul><li><strong>Vercel Inc.</strong> (USA) – Hosting und Auslieferung der Website (Serverregion Frankfurt am Main); Auftragsverarbeiter.</li><li><strong>Supabase Inc.</strong> (Singapur; Speicherort der Daten: Frankfurt am Main) – Datenbank und Dateiablage; Auftragsverarbeiter.</li><li><strong>Stripe Payments Europe, Limited</strong> (1 Grand Canal Street Lower, Grand Canal Dock, Dublin, D02 H210, Irland) – Abwicklung von Online-Zahlungen; Auftragsverarbeiter und für eigene Zwecke (Betrugsvorbeugung, gesetzliche Pflichten) eigener Verantwortlicher.</li><li><strong>Resend Inc.</strong> (USA) – Versand von E-Mails (Bestätigungen und Nachrichten zum Vorgang); Auftragsverarbeiter.</li><li><strong>Google Ireland Limited</strong> (Gordon House, Barrow Street, Dublin 4, Irland) – Reichweitenmessung mit Google Analytics 4, nur nach Ihrer Einwilligung; Auftragsverarbeiter.</li></ul><h2>4. Übermittlung in Drittländer</h2><p>Einige Dienstleister haben ihren Sitz außerhalb des Europäischen Wirtschaftsraums. Eine Übermittlung erfolgt nur auf einer der folgenden Grundlagen:</p><ul><li><strong>Bereitstellung der Website und Server-Protokolle:</strong> USA (Vercel Inc.): EU-US Data Privacy Framework (Art. 45 DSGVO) und Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).</li><li><strong>Datenbank, Backend und Dateiablage:</strong> Die Daten liegen in der EU. Zugriffe von Supabase aus Drittländern zu Wartungszwecken sind möglich und durch Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO) abgesichert.</li><li><strong>Online-Zahlung:</strong> Stripe kann Daten an die Stripe, Inc. in den USA übermitteln. Grundlage: EU-US Data Privacy Framework (Art. 45 DSGVO) und Standardvertragsklauseln.</li><li><strong>Versand von E-Mails:</strong> USA (Resend Inc.): EU-US Data Privacy Framework bzw. Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).</li><li><strong>Reichweitenmessung mit Google Analytics (nur mit Einwilligung):</strong> USA (Google LLC): EU-US Data Privacy Framework (Art. 45 DSGVO).</li></ul><h2>5. Speicherung im Browser, Cookies und Fremdinhalte</h2><p>Cookies zur Reichweitenmessung setzt nur Google Analytics – und erst, wenn Sie auf der Seite <a href=\"/rechtliches/cookie-einstellungen\">Cookie-Einstellungen</a> oder im Hinweis beim ersten Besuch in „Statistik“ einwilligen (siehe 2.10). Ohne Einwilligung wird das Skript von Google nicht geladen. Werbe-Cookies verwenden wir nicht und binden keine Inhalte fremder Anbieter wie Karten, Videos oder Schriftarten-Dienste ein. Die Schriftarten liefern wir selbst aus.</p><p>Gespeichert wird nur, was für die von Ihnen genutzten Funktionen unbedingt nötig ist: Warenkorb, Zwischenstand in Formularen und Ihre Auswahl auf der Seite <a href=\"/rechtliches/cookie-einstellungen\">Cookie-Einstellungen</a> – im lokalen Speicher Ihres Browsers (siehe 2.9). Fotos und Unterlagen, die Sie in einem Formular auswählen, werden dagegen sofort an uns übertragen (siehe 2.4).</p><p>Bei einer Online-Zahlung leiten wir Sie auf die Bezahlseite von Stripe weiter. Was dort gespeichert wird, regelt die Datenschutzerklärung von Stripe.</p><h2>6. Videoüberwachung, Aufzeichnung und Zutrittsprotokollierung</h2><p>Wenn wir für Sie Videoüberwachung, Alarmtechnik oder elektronische Zutrittskontrolle planen und einrichten, sind <strong>Sie als Betreiberin oder Betreiber</strong> für die rechtmäßige Nutzung dieser Anlagen verantwortlich. Das betrifft insbesondere die Ausrichtung von Kameras, die Aufzeichnungsdauer, die Kennzeichnung überwachter Bereiche, die Information betroffener Personen sowie die Auswertung von Zutrittsprotokollen.</p><p>Verdeckte Audioüberwachung bieten wir nicht als Standardprodukt an. Gegensprech- und Alarmfunktionen richten wir ausschließlich für zulässige Einsatzzwecke ein.</p><h2>7. Pflicht zur Bereitstellung und automatisierte Entscheidungen</h2><p>Für Bestellungen, Termine und Anfragen brauchen wir die als Pflichtangabe gekennzeichneten Daten; ohne sie können wir den Vertrag nicht schließen oder Ihre Anfrage nicht bearbeiten. Eine automatisierte Entscheidungsfindung einschließlich Profiling (Art. 22 DSGVO) findet nicht statt.</p><h2>8. Ihre Rechte</h2><p>Sie haben im gesetzlichen Rahmen das Recht auf</p><ul><li>Auskunft über die zu Ihnen gespeicherten Daten (Art. 15 DSGVO),</li><li>Berichtigung unrichtiger Daten (Art. 16 DSGVO),</li><li>Löschung (Art. 17 DSGVO),</li><li>Einschränkung der Verarbeitung (Art. 18 DSGVO),</li><li>Datenübertragbarkeit (Art. 20 DSGVO) und</li><li>Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO).</li></ul><p><strong>Widerspruchsrecht (Art. 21 DSGVO):</strong> Verarbeiten wir Daten auf Grundlage berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO), können Sie aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit widersprechen.</p><p>Zur Ausübung Ihrer Rechte genügt eine formlose Nachricht an <a href=\"mailto:info@schluesselmacher24.de\">info@schluesselmacher24.de</a>.</p><p>Außerdem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren (Art. 77 DSGVO). Für uns zuständig ist:<br/><br/>Der Hessische Beauftragte für Datenschutz und Informationsfreiheit<br/>Gustav-Stresemann-Ring 1<br/>65189 Wiesbaden<br/><a href=\"https://datenschutz.hessen.de\" target=\"_blank\" rel=\"noopener noreferrer\">datenschutz.hessen.de</a></p><h2>9. Sicherheit</h2><p>Die Website wird ausschließlich über eine verschlüsselte Verbindung (TLS) ausgeliefert. Formulardaten und Datei-Uploads werden über dieselbe geschützte Verbindung übertragen. Hochgeladene Unterlagen liegen in einem nicht öffentlichen Speicher.</p><h2>10. Stand</h2><p>Fassung 2, Stand 25.10.2026. Ändern sich unsere Verarbeitungen oder die Rechtslage, passen wir diese Erklärung an.</p>"
+ },
+ "verarbeitungen": {
+  "ohneStatistik": [
+   {
+    "id": "hosting",
+    "titel": "Bereitstellung der Website und Server-Protokolle",
+    "zweck": "Auslieferung der Seiten, Abwehr von Angriffen und Fehlersuche.",
+    "daten": [
+     "IP-Adresse",
+     "Datum und Uhrzeit des Abrufs",
+     "aufgerufene Adresse und verweisende Seite",
+     "Browser und Betriebssystem",
+     "übertragene Datenmenge und Statuscode"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse an einem sicheren und stabilen Betrieb der Website.",
+    "empfaenger": "Vercel Inc. (Hosting, Auftragsverarbeiter)",
+    "drittland": "USA (Vercel Inc.): EU-US Data Privacy Framework (Art. 45 DSGVO) und Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).",
+    "speicherdauer": "Die Protokolle werden beim Hoster nach kurzer Zeit automatisch gelöscht. Wir werten sie nur bei Störungen oder Angriffen aus.",
+    "pruefhinweis": "Aufbewahrungsdauer der Vercel-Protokolle im gewählten Tarif prüfen und hier ggf. konkret nennen."
+   },
+   {
+    "id": "datenbank",
+    "titel": "Datenbank, Backend und Dateiablage",
+    "zweck": "Speicherung der Vorgänge, der Inhalte dieser Website und hochgeladener Dateien.",
+    "daten": [
+     "alle in den Formularen angegebenen Daten",
+     "hochgeladene Dateien"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO (Vertrag und vorvertragliche Maßnahmen) und Art. 6 Abs. 1 lit. f DSGVO (sichere, zuverlässige Datenhaltung).",
+    "empfaenger": "Supabase Inc. (Datenbank und Dateiablage, Auftragsverarbeiter); Speicherort Frankfurt am Main",
+    "drittland": "Die Daten liegen in der EU. Zugriffe von Supabase aus Drittländern zu Wartungszwecken sind möglich und durch Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO) abgesichert.",
+    "speicherdauer": "Wie bei den einzelnen Verarbeitungen angegeben.",
+    "pruefhinweis": "Übermittlungsgrundlage und Unterauftragsverarbeiter von Supabase prüfen."
+   },
+   {
+    "id": "vorgaenge",
+    "titel": "Bestellungen, Terminbuchungen und Anfragen",
+    "zweck": "Bearbeitung und Abwicklung Ihrer Bestellung, Ihres Termins oder Ihrer Anfrage einschließlich der Kommunikation dazu.",
+    "daten": [
+     "Anrede, Name und Firma",
+     "E-Mail-Adresse und Telefonnummer",
+     "Liefer- und Rechnungsanschrift",
+     "Angaben zum Auftrag: Fahrzeugdaten, Schlüsselart, Schlüsselcode, gewünschte Leistung",
+     "Angaben zum Objekt: Türen, Nutzer, Berechtigungen, bestehende Anlagen",
+     "Termin, Zahlungsstatus und Vorgangsnummer",
+     "Ihre Zustimmungen im Bestellablauf mit Zeitpunkt"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO (Vertrag und vorvertragliche Maßnahmen); für die Aufbewahrung Art. 6 Abs. 1 lit. c DSGVO in Verbindung mit § 257 HGB und § 147 AO.",
+    "empfaenger": "Hosting- und Datenbankdienstleister (siehe oben); bei Versand das Versandunternehmen (Name und Lieferanschrift).",
+    "drittland": null,
+    "speicherdauer": "Für die Dauer der Bearbeitung. Danach bewahren wir Geschäftsunterlagen nach den gesetzlichen Fristen auf – je nach Art bis zu zehn Jahre (§ 257 HGB, § 147 AO). Anfragen, aus denen kein Auftrag entsteht, löschen wir, sobald sie nicht mehr benötigt werden und keine Aufbewahrungspflicht besteht."
+   },
+   {
+    "id": "dateien",
+    "titel": "Hochgeladene Fotos und Unterlagen",
+    "zweck": "Prüfung und Ausführung Ihres Auftrags; beim Fahrzeugschein und bei Sicherungskarten der Nachweis, dass Sie berechtigt sind.",
+    "daten": [
+     "Fotos von Schlüsseln",
+     "Zulassungsbescheinigung Teil I (Fahrzeugschein)",
+     "Grundrisse, Türlisten und Objektfotos",
+     "weitere Projektunterlagen"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO; für den Berechtigungsnachweis zusätzlich Art. 6 Abs. 1 lit. f DSGVO – Schutz vor der Anfertigung von Schlüsseln für Unberechtigte.",
+    "empfaenger": "Supabase Inc. (Dateiablage, Auftragsverarbeiter). Intern sehen die Dateien nur die dafür berechtigten Personen.",
+    "drittland": null,
+    "speicherdauer": "Dateien werden schon beim Auswählen im Formular an uns übertragen. Senden Sie den Vorgang nicht ab, löschen wir sie automatisch nach 24 Stunden. Sonst gelten ab dem Hochladen folgende Fristen: Fahrzeugschein 90 Tage, Schlüsselfotos 180 Tage, Grundrisse und Objektpläne 365 Tage, Projektunterlagen und Objektfotos 365 Tage. Danach werden die Dateien automatisch gelöscht."
+   },
+   {
+    "id": "partner",
+    "titel": "Bewerbung als Partnerbetrieb",
+    "zweck": "Prüfung Ihrer Bewerbung über „Partner werden“, Abstimmung einer Zusammenarbeit und – nach einer Freischaltung – die Vermittlung von Kundenaufträgen an Ihren Betrieb.",
+    "daten": [
+     "Firmenname, Ansprechpartner, E-Mail-Adresse und Telefonnummer",
+     "Postleitzahl, Ort und Einsatzradius",
+     "Leistungen, Fahrzeughersteller und Systeme, mobile Einsätze",
+     "Angaben zu Qualifikationen",
+     "freiwillig hochgeladene Nachweise (z. B. Gewerbeanmeldung, Zertifikate)"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen auf Ihre Anfrage) und Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung beim Absenden); für die Prüfung von Gewerbe, Eignung und Zuverlässigkeit zusätzlich Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse, Aufträge nur an geeignete Betriebe zu vermitteln.",
+    "empfaenger": "Hosting- und Datenbankdienstleister (siehe oben). Kommt eine Zusammenarbeit zustande, nennen wir Kundinnen und Kunden, deren Auftrag Ihr Betrieb übernimmt, Namen und Kontaktdaten Ihres Betriebs.",
+    "drittland": null,
+    "speicherdauer": "Kommt keine Zusammenarbeit zustande, löschen wir Ihre Bewerbung, sobald sie für die Prüfung und mögliche Rückfragen nicht mehr benötigt wird und keine Aufbewahrungspflicht besteht. Bei einer Zusammenarbeit für deren Dauer, danach nach den gesetzlichen Fristen (§ 257 HGB, § 147 AO). Hochgeladene Nachweise löschen wir nach der Frist für Projektunterlagen (siehe „Hochgeladene Fotos und Unterlagen“).",
+    "pruefhinweis": "Konkrete Löschfrist für abgelehnte Bewerbungen festlegen und Partnervertrag (Weitergabe der Kontaktdaten an Kunden) juristisch prüfen lassen (Erg. Leitfaden §8)."
+   },
+   {
+    "id": "zahlung",
+    "titel": "Online-Zahlung",
+    "zweck": "Abwicklung von Zahlungen und Anzahlungen.",
+    "daten": [
+     "Name und E-Mail-Adresse",
+     "Betrag, Vorgangsnummer und Zahlungsstatus",
+     "Zahlungsdaten (Karten-, Konto- oder Wallet-Daten) – diese geben Sie direkt bei Stripe ein; wir erhalten sie nicht"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO; soweit Stripe gesetzliche Pflichten erfüllt (etwa nach dem Geldwäschegesetz), Art. 6 Abs. 1 lit. c DSGVO.",
+    "empfaenger": "Stripe Payments Europe, Limited, Dublin, Irland",
+    "drittland": "Stripe kann Daten an die Stripe, Inc. in den USA übermitteln. Grundlage: EU-US Data Privacy Framework (Art. 45 DSGVO) und Standardvertragsklauseln.",
+    "speicherdauer": "Zahlungsbelege bewahren wir nach den gesetzlichen Fristen auf (bis zu zehn Jahre, § 147 AO). Stripe speichert Daten nach den eigenen gesetzlichen Pflichten.",
+    "pruefhinweis": "Angaben mit der Datenschutzerklärung von Stripe abgleichen."
+   },
+   {
+    "id": "email",
+    "titel": "Versand von E-Mails",
+    "zweck": "Eingangs- und Vertragsbestätigungen, Mitteilungen zum Stand Ihres Vorgangs und Antworten auf Ihre Nachrichten.",
+    "daten": [
+     "E-Mail-Adresse und Name",
+     "Vorgangsnummer und Inhalt der Nachricht",
+     "Zustellstatus"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO; bei Bestätigungen, die wir gesetzlich schulden, Art. 6 Abs. 1 lit. c DSGVO.",
+    "empfaenger": "Resend Inc. (E-Mail-Versand, Auftragsverarbeiter)",
+    "drittland": "USA (Resend Inc.): EU-US Data Privacy Framework bzw. Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).",
+    "speicherdauer": "Der Versanddienst löscht seine Versandprotokolle nach kurzer Zeit. Am Vorgang vermerken wir Art, Zeitpunkt und Ergebnis jeder Mail so lange wie den Vorgang selbst.",
+    "pruefhinweis": "Löschfrist der Versandprotokolle und Übermittlungsgrundlage bei Resend prüfen."
+   },
+   {
+    "id": "kontakt",
+    "titel": "Kontakt per E-Mail oder Telefon",
+    "zweck": "Beantwortung Ihres Anliegens.",
+    "daten": [
+     "Name und Kontaktdaten",
+     "Inhalt Ihrer Nachricht"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO, soweit es um einen Vertrag oder dessen Anbahnung geht; sonst Art. 6 Abs. 1 lit. f DSGVO.",
+    "empfaenger": "Anbieter unseres E-Mail-Postfachs (Auftragsverarbeiter)",
+    "drittland": null,
+    "speicherdauer": "Bis Ihr Anliegen erledigt ist. Geschäftliche Korrespondenz bewahren wir nach den gesetzlichen Fristen auf (sechs Jahre, § 257 HGB).",
+    "pruefhinweis": "Anbieter des Postfachs info@ benennen und auf Drittlandbezug prüfen."
+   },
+   {
+    "id": "browser",
+    "titel": "Notwendige Speicherung in Ihrem Browser",
+    "zweck": "Warenkorb, Zwischenstand in Formularen und Konfiguratoren sowie Ihre Auswahl auf der Seite Cookie-Einstellungen – damit nichts verloren geht, wenn Sie die Seite wechseln.",
+    "daten": [
+     "Inhalt des Warenkorbs",
+     "Eingaben in Formularen und Konfiguratoren",
+     "Ihre Auswahl zur Speicherung"
+    ],
+    "rechtsgrundlage": "§ 25 Abs. 2 Nr. 2 TDDDG (unbedingt erforderlich für den von Ihnen gewünschten Dienst); Art. 6 Abs. 1 lit. b DSGVO.",
+    "empfaenger": "Keine – die Daten bleiben im lokalen Speicher Ihres Browsers (localStorage) und werden erst übertragen, wenn Sie einen Vorgang absenden.",
+    "drittland": null,
+    "speicherdauer": "Bis Sie die Daten über die Seite Cookie-Einstellungen oder in Ihrem Browser löschen."
+   },
+   {
+    "id": "ratenbegrenzung",
+    "titel": "Schutz vor Missbrauch (Ratenbegrenzung)",
+    "zweck": "Abwehr massenhafter, automatisierter Anfragen an Formulare und Uploads.",
+    "daten": [
+     "ein aus der IP-Adresse gebildeter, verschlüsselter Prüfwert (HMAC) – nicht die IP-Adresse selbst",
+     "Zeitpunkt und Anzahl der Anfragen"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse an einem missbrauchsfreien Betrieb.",
+    "empfaenger": "Supabase Inc. (Datenbank, Auftragsverarbeiter)",
+    "drittland": null,
+    "speicherdauer": "Der Zähler gilt für ein Zeitfenster von wenigen Minuten; die Einträge werden in der Regel nach 24 Stunden gelöscht."
+   },
+   {
+    "id": "widerruf",
+    "titel": "Widerrufserklärungen",
+    "zweck": "Entgegennahme, Bestätigung und Bearbeitung Ihres Widerrufs.",
+    "daten": [
+     "Name und E-Mail-Adresse",
+     "Vorgangsnummer",
+     "Ihre Erklärung",
+     "Zeitpunkt des Eingangs"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. c DSGVO (gesetzliche Pflicht zur Entgegennahme und Bestätigung) und Art. 6 Abs. 1 lit. b DSGVO.",
+    "empfaenger": "Supabase Inc. (Speicherung) und Resend Inc. (Eingangsbestätigung per E-Mail, siehe „Versand von E-Mails“)",
+    "drittland": null,
+    "speicherdauer": "Für die Abwicklung und als Nachweis bis zum Ablauf der gesetzlichen Verjährungs- und Aufbewahrungsfristen."
+   }
+  ],
+  "mitStatistik": [
+   {
+    "id": "hosting",
+    "titel": "Bereitstellung der Website und Server-Protokolle",
+    "zweck": "Auslieferung der Seiten, Abwehr von Angriffen und Fehlersuche.",
+    "daten": [
+     "IP-Adresse",
+     "Datum und Uhrzeit des Abrufs",
+     "aufgerufene Adresse und verweisende Seite",
+     "Browser und Betriebssystem",
+     "übertragene Datenmenge und Statuscode"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse an einem sicheren und stabilen Betrieb der Website.",
+    "empfaenger": "Vercel Inc. (Hosting, Auftragsverarbeiter)",
+    "drittland": "USA (Vercel Inc.): EU-US Data Privacy Framework (Art. 45 DSGVO) und Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).",
+    "speicherdauer": "Die Protokolle werden beim Hoster nach kurzer Zeit automatisch gelöscht. Wir werten sie nur bei Störungen oder Angriffen aus.",
+    "pruefhinweis": "Aufbewahrungsdauer der Vercel-Protokolle im gewählten Tarif prüfen und hier ggf. konkret nennen."
+   },
+   {
+    "id": "datenbank",
+    "titel": "Datenbank, Backend und Dateiablage",
+    "zweck": "Speicherung der Vorgänge, der Inhalte dieser Website und hochgeladener Dateien.",
+    "daten": [
+     "alle in den Formularen angegebenen Daten",
+     "hochgeladene Dateien"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO (Vertrag und vorvertragliche Maßnahmen) und Art. 6 Abs. 1 lit. f DSGVO (sichere, zuverlässige Datenhaltung).",
+    "empfaenger": "Supabase Inc. (Datenbank und Dateiablage, Auftragsverarbeiter); Speicherort Frankfurt am Main",
+    "drittland": "Die Daten liegen in der EU. Zugriffe von Supabase aus Drittländern zu Wartungszwecken sind möglich und durch Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO) abgesichert.",
+    "speicherdauer": "Wie bei den einzelnen Verarbeitungen angegeben.",
+    "pruefhinweis": "Übermittlungsgrundlage und Unterauftragsverarbeiter von Supabase prüfen."
+   },
+   {
+    "id": "vorgaenge",
+    "titel": "Bestellungen, Terminbuchungen und Anfragen",
+    "zweck": "Bearbeitung und Abwicklung Ihrer Bestellung, Ihres Termins oder Ihrer Anfrage einschließlich der Kommunikation dazu.",
+    "daten": [
+     "Anrede, Name und Firma",
+     "E-Mail-Adresse und Telefonnummer",
+     "Liefer- und Rechnungsanschrift",
+     "Angaben zum Auftrag: Fahrzeugdaten, Schlüsselart, Schlüsselcode, gewünschte Leistung",
+     "Angaben zum Objekt: Türen, Nutzer, Berechtigungen, bestehende Anlagen",
+     "Termin, Zahlungsstatus und Vorgangsnummer",
+     "Ihre Zustimmungen im Bestellablauf mit Zeitpunkt"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO (Vertrag und vorvertragliche Maßnahmen); für die Aufbewahrung Art. 6 Abs. 1 lit. c DSGVO in Verbindung mit § 257 HGB und § 147 AO.",
+    "empfaenger": "Hosting- und Datenbankdienstleister (siehe oben); bei Versand das Versandunternehmen (Name und Lieferanschrift).",
+    "drittland": null,
+    "speicherdauer": "Für die Dauer der Bearbeitung. Danach bewahren wir Geschäftsunterlagen nach den gesetzlichen Fristen auf – je nach Art bis zu zehn Jahre (§ 257 HGB, § 147 AO). Anfragen, aus denen kein Auftrag entsteht, löschen wir, sobald sie nicht mehr benötigt werden und keine Aufbewahrungspflicht besteht."
+   },
+   {
+    "id": "dateien",
+    "titel": "Hochgeladene Fotos und Unterlagen",
+    "zweck": "Prüfung und Ausführung Ihres Auftrags; beim Fahrzeugschein und bei Sicherungskarten der Nachweis, dass Sie berechtigt sind.",
+    "daten": [
+     "Fotos von Schlüsseln",
+     "Zulassungsbescheinigung Teil I (Fahrzeugschein)",
+     "Grundrisse, Türlisten und Objektfotos",
+     "weitere Projektunterlagen"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO; für den Berechtigungsnachweis zusätzlich Art. 6 Abs. 1 lit. f DSGVO – Schutz vor der Anfertigung von Schlüsseln für Unberechtigte.",
+    "empfaenger": "Supabase Inc. (Dateiablage, Auftragsverarbeiter). Intern sehen die Dateien nur die dafür berechtigten Personen.",
+    "drittland": null,
+    "speicherdauer": "Dateien werden schon beim Auswählen im Formular an uns übertragen. Senden Sie den Vorgang nicht ab, löschen wir sie automatisch nach 24 Stunden. Sonst gelten ab dem Hochladen folgende Fristen: Fahrzeugschein 90 Tage, Schlüsselfotos 180 Tage, Grundrisse und Objektpläne 365 Tage, Projektunterlagen und Objektfotos 365 Tage. Danach werden die Dateien automatisch gelöscht."
+   },
+   {
+    "id": "partner",
+    "titel": "Bewerbung als Partnerbetrieb",
+    "zweck": "Prüfung Ihrer Bewerbung über „Partner werden“, Abstimmung einer Zusammenarbeit und – nach einer Freischaltung – die Vermittlung von Kundenaufträgen an Ihren Betrieb.",
+    "daten": [
+     "Firmenname, Ansprechpartner, E-Mail-Adresse und Telefonnummer",
+     "Postleitzahl, Ort und Einsatzradius",
+     "Leistungen, Fahrzeughersteller und Systeme, mobile Einsätze",
+     "Angaben zu Qualifikationen",
+     "freiwillig hochgeladene Nachweise (z. B. Gewerbeanmeldung, Zertifikate)"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen auf Ihre Anfrage) und Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung beim Absenden); für die Prüfung von Gewerbe, Eignung und Zuverlässigkeit zusätzlich Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse, Aufträge nur an geeignete Betriebe zu vermitteln.",
+    "empfaenger": "Hosting- und Datenbankdienstleister (siehe oben). Kommt eine Zusammenarbeit zustande, nennen wir Kundinnen und Kunden, deren Auftrag Ihr Betrieb übernimmt, Namen und Kontaktdaten Ihres Betriebs.",
+    "drittland": null,
+    "speicherdauer": "Kommt keine Zusammenarbeit zustande, löschen wir Ihre Bewerbung, sobald sie für die Prüfung und mögliche Rückfragen nicht mehr benötigt wird und keine Aufbewahrungspflicht besteht. Bei einer Zusammenarbeit für deren Dauer, danach nach den gesetzlichen Fristen (§ 257 HGB, § 147 AO). Hochgeladene Nachweise löschen wir nach der Frist für Projektunterlagen (siehe „Hochgeladene Fotos und Unterlagen“).",
+    "pruefhinweis": "Konkrete Löschfrist für abgelehnte Bewerbungen festlegen und Partnervertrag (Weitergabe der Kontaktdaten an Kunden) juristisch prüfen lassen (Erg. Leitfaden §8)."
+   },
+   {
+    "id": "zahlung",
+    "titel": "Online-Zahlung",
+    "zweck": "Abwicklung von Zahlungen und Anzahlungen.",
+    "daten": [
+     "Name und E-Mail-Adresse",
+     "Betrag, Vorgangsnummer und Zahlungsstatus",
+     "Zahlungsdaten (Karten-, Konto- oder Wallet-Daten) – diese geben Sie direkt bei Stripe ein; wir erhalten sie nicht"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO; soweit Stripe gesetzliche Pflichten erfüllt (etwa nach dem Geldwäschegesetz), Art. 6 Abs. 1 lit. c DSGVO.",
+    "empfaenger": "Stripe Payments Europe, Limited, Dublin, Irland",
+    "drittland": "Stripe kann Daten an die Stripe, Inc. in den USA übermitteln. Grundlage: EU-US Data Privacy Framework (Art. 45 DSGVO) und Standardvertragsklauseln.",
+    "speicherdauer": "Zahlungsbelege bewahren wir nach den gesetzlichen Fristen auf (bis zu zehn Jahre, § 147 AO). Stripe speichert Daten nach den eigenen gesetzlichen Pflichten.",
+    "pruefhinweis": "Angaben mit der Datenschutzerklärung von Stripe abgleichen."
+   },
+   {
+    "id": "email",
+    "titel": "Versand von E-Mails",
+    "zweck": "Eingangs- und Vertragsbestätigungen, Mitteilungen zum Stand Ihres Vorgangs und Antworten auf Ihre Nachrichten.",
+    "daten": [
+     "E-Mail-Adresse und Name",
+     "Vorgangsnummer und Inhalt der Nachricht",
+     "Zustellstatus"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO; bei Bestätigungen, die wir gesetzlich schulden, Art. 6 Abs. 1 lit. c DSGVO.",
+    "empfaenger": "Resend Inc. (E-Mail-Versand, Auftragsverarbeiter)",
+    "drittland": "USA (Resend Inc.): EU-US Data Privacy Framework bzw. Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).",
+    "speicherdauer": "Der Versanddienst löscht seine Versandprotokolle nach kurzer Zeit. Am Vorgang vermerken wir Art, Zeitpunkt und Ergebnis jeder Mail so lange wie den Vorgang selbst.",
+    "pruefhinweis": "Löschfrist der Versandprotokolle und Übermittlungsgrundlage bei Resend prüfen."
+   },
+   {
+    "id": "kontakt",
+    "titel": "Kontakt per E-Mail oder Telefon",
+    "zweck": "Beantwortung Ihres Anliegens.",
+    "daten": [
+     "Name und Kontaktdaten",
+     "Inhalt Ihrer Nachricht"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. b DSGVO, soweit es um einen Vertrag oder dessen Anbahnung geht; sonst Art. 6 Abs. 1 lit. f DSGVO.",
+    "empfaenger": "Anbieter unseres E-Mail-Postfachs (Auftragsverarbeiter)",
+    "drittland": null,
+    "speicherdauer": "Bis Ihr Anliegen erledigt ist. Geschäftliche Korrespondenz bewahren wir nach den gesetzlichen Fristen auf (sechs Jahre, § 257 HGB).",
+    "pruefhinweis": "Anbieter des Postfachs info@ benennen und auf Drittlandbezug prüfen."
+   },
+   {
+    "id": "browser",
+    "titel": "Notwendige Speicherung in Ihrem Browser",
+    "zweck": "Warenkorb, Zwischenstand in Formularen und Konfiguratoren sowie Ihre Auswahl auf der Seite Cookie-Einstellungen – damit nichts verloren geht, wenn Sie die Seite wechseln.",
+    "daten": [
+     "Inhalt des Warenkorbs",
+     "Eingaben in Formularen und Konfiguratoren",
+     "Ihre Auswahl zur Speicherung"
+    ],
+    "rechtsgrundlage": "§ 25 Abs. 2 Nr. 2 TDDDG (unbedingt erforderlich für den von Ihnen gewünschten Dienst); Art. 6 Abs. 1 lit. b DSGVO.",
+    "empfaenger": "Keine – die Daten bleiben im lokalen Speicher Ihres Browsers (localStorage) und werden erst übertragen, wenn Sie einen Vorgang absenden.",
+    "drittland": null,
+    "speicherdauer": "Bis Sie die Daten über die Seite Cookie-Einstellungen oder in Ihrem Browser löschen."
+   },
+   {
+    "id": "statistik",
+    "titel": "Reichweitenmessung mit Google Analytics (nur mit Einwilligung)",
+    "zweck": "Auswertung, wie die Website genutzt wird – aufgerufene Seiten, Herkunft der Besuche und abgeschlossene Abläufe wie Bestellungen, Foto-, Termin- und Projektanfragen –, um Angebot und Bedienung zu verbessern.",
+    "daten": [
+     "IP-Adresse – Google Analytics 4 nutzt sie nur zur Bestimmung des ungefähren Standorts und speichert sie nicht",
+     "Geräte- und Browserangaben, ungefährer Standort (Land, Region)",
+     "aufgerufene Seiten, verweisende Seite und Zeitpunkt",
+     "Ereignisse: Bestellung, Fotoanfrage, Terminanfrage, Partneranmeldung, Projektanfrage",
+     "zufällige Kennung in Cookies (_ga, _ga_…)"
+    ],
+    "rechtsgrundlage": "Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Sie können sie jederzeit mit Wirkung für die Zukunft auf der Seite Cookie-Einstellungen widerrufen; dann endet die Messung und die Analytics-Cookies werden gelöscht.",
+    "empfaenger": "Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (Auftragsverarbeiter)",
+    "drittland": "USA (Google LLC): EU-US Data Privacy Framework (Art. 45 DSGVO).",
+    "speicherdauer": "Die Cookies bis zu 2 Jahre oder bis zu Ihrem Widerruf. Die Auswertungsdaten löscht Google nach der in Google Analytics eingestellten Aufbewahrungsdauer.",
+    "pruefhinweis": "Aufbewahrungsdauer in Google Analytics (2 oder 14 Monate) einstellen und hier konkret nennen; Übermittlungsgrundlage (DPF-Zertifizierung von Google LLC) prüfen."
+   },
+   {
+    "id": "ratenbegrenzung",
+    "titel": "Schutz vor Missbrauch (Ratenbegrenzung)",
+    "zweck": "Abwehr massenhafter, automatisierter Anfragen an Formulare und Uploads.",
+    "daten": [
+     "ein aus der IP-Adresse gebildeter, verschlüsselter Prüfwert (HMAC) – nicht die IP-Adresse selbst",
+     "Zeitpunkt und Anzahl der Anfragen"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse an einem missbrauchsfreien Betrieb.",
+    "empfaenger": "Supabase Inc. (Datenbank, Auftragsverarbeiter)",
+    "drittland": null,
+    "speicherdauer": "Der Zähler gilt für ein Zeitfenster von wenigen Minuten; die Einträge werden in der Regel nach 24 Stunden gelöscht."
+   },
+   {
+    "id": "widerruf",
+    "titel": "Widerrufserklärungen",
+    "zweck": "Entgegennahme, Bestätigung und Bearbeitung Ihres Widerrufs.",
+    "daten": [
+     "Name und E-Mail-Adresse",
+     "Vorgangsnummer",
+     "Ihre Erklärung",
+     "Zeitpunkt des Eingangs"
+    ],
+    "rechtsgrundlage": "Art. 6 Abs. 1 lit. c DSGVO (gesetzliche Pflicht zur Entgegennahme und Bestätigung) und Art. 6 Abs. 1 lit. b DSGVO.",
+    "empfaenger": "Supabase Inc. (Speicherung) und Resend Inc. (Eingangsbestätigung per E-Mail, siehe „Versand von E-Mails“)",
+    "drittland": null,
+    "speicherdauer": "Für die Abwicklung und als Nachweis bis zum Ablauf der gesetzlichen Verjährungs- und Aufbewahrungsfristen."
+   }
+  ]
+ },
+ "dienstleister": [
+  {
+   "id": "vercel",
+   "name": "Vercel Inc.",
+   "sitz": "USA",
+   "aufgabe": "Hosting und Auslieferung der Website (Serverregion Frankfurt am Main)",
+   "rolle": "Auftragsverarbeiter",
+   "pruefhinweis": "Anschrift, DPF-Zertifizierung und Auftragsverarbeitungsvertrag (DPA) von Vercel prüfen."
+  },
+  {
+   "id": "supabase",
+   "name": "Supabase Inc.",
+   "sitz": "Singapur; Speicherort der Daten: Frankfurt am Main",
+   "aufgabe": "Datenbank und Dateiablage",
+   "rolle": "Auftragsverarbeiter",
+   "pruefhinweis": "Vertragspartner und Anschrift von Supabase, Region des Projekts (Frankfurt) und Übermittlungsgrundlage (Standardvertragsklauseln) prüfen; DPA abschließen."
+  },
+  {
+   "id": "stripe",
+   "name": "Stripe Payments Europe, Limited",
+   "sitz": "1 Grand Canal Street Lower, Grand Canal Dock, Dublin, D02 H210, Irland",
+   "aufgabe": "Abwicklung von Online-Zahlungen",
+   "rolle": "Auftragsverarbeiter und für eigene Zwecke (Betrugsvorbeugung, gesetzliche Pflichten) eigener Verantwortlicher",
+   "pruefhinweis": "Rollenbeschreibung mit der Datenschutzerklärung von Stripe abgleichen."
+  },
+  {
+   "id": "resend",
+   "name": "Resend Inc.",
+   "sitz": "USA",
+   "aufgabe": "Versand von E-Mails (Bestätigungen und Nachrichten zum Vorgang)",
+   "rolle": "Auftragsverarbeiter",
+   "pruefhinweis": "Anschrift, Serverstandort und Übermittlungsgrundlage (DPF-Zertifizierung oder Standardvertragsklauseln) von Resend prüfen; DPA abschließen."
+  }
+ ],
+ "csp": {
+  "production|": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://checkout.stripe.com; frame-ancestors 'self'",
+  "production|G-ABC123XYZ": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self' https://checkout.stripe.com; frame-ancestors 'self'",
+  "development|": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://checkout.stripe.com; frame-ancestors 'self'",
+  "development|G-ABC123XYZ": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self' https://checkout.stripe.com; frame-ancestors 'self'"
+ }
+}

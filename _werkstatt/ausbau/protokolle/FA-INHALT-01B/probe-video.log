@@ -1,0 +1,52 @@
+Verschiebung beim Laden (vor dem Klick, nicht durch das Video): 0 []
+
+== 412 px
+OK   Richtlinie mit frame-src für youtube-nocookie.com
+OK   HTML ohne Adresse von YouTube oder Google
+OK   vor dem Klick kein Rahmen
+OK   vor dem Klick keine fremde Anfrage (0)
+OK   DOM nach dem Hydrieren ohne Adresse von YouTube oder Google
+OK   Knopf „Video laden“ mit Tab erreichbar
+OK   Knopf mindestens 44 px hoch (44)
+OK   genau ein Rahmen (1)
+OK   Rahmen von www.youtube-nocookie.com (https://www.youtube-nocookie.com/embed/Pr0be_V1d3o?autoplay=1)
+OK   title des Rahmens (Probe: Schlüssel richtig fotografieren)
+OK   nach dem Klick nur youtube-nocookie.com angefragt (https://www.youtube-nocookie.com)
+OK   Rahmen gleich groß und an gleicher Stelle ({"x":20,"y":577.65625,"w":372,"h":209.25} → {"x":20,"y":577.65625,"w":372,"h":209.25})
+OK   Inhalt darunter verschiebt sich nicht (968.40625 → 968.40625)
+OK   Layoutverschiebung durch den Klick 0 (alle Einträge, auch nach Eingabe)
+OK   Fokus auf dem Player (IFRAME)
+OK   keine Meldung der Sicherheitsrichtlinie (0)
+OK   kein Cookie der Seite ()
+fremd vor Klick: [] | nach Klick: [ 'https://www.youtube-nocookie.com/embed/Pr0be_V1d3o?autoplay=1' ]
+Verschiebung beim Laden (vor dem Klick, nicht durch das Video): 0 [{"wert":0.000049153645833333334,"eingabe":true,"zeit":855.2000000001863,"quellen":["A.sr-only focus:not-sr-only focus:fixed fo"]}]
+
+== 1280 px
+OK   Richtlinie mit frame-src für youtube-nocookie.com
+OK   HTML ohne Adresse von YouTube oder Google
+OK   vor dem Klick kein Rahmen
+OK   vor dem Klick keine fremde Anfrage (0)
+OK   DOM nach dem Hydrieren ohne Adresse von YouTube oder Google
+OK   Knopf „Video laden“ mit Tab erreichbar
+OK   Knopf mindestens 44 px hoch (44)
+OK   genau ein Rahmen (1)
+OK   Rahmen von www.youtube-nocookie.com (https://www.youtube-nocookie.com/embed/Pr0be_V1d3o?autoplay=1)
+OK   title des Rahmens (Probe: Schlüssel richtig fotografieren)
+OK   nach dem Klick nur youtube-nocookie.com angefragt (https://www.youtube-nocookie.com)
+OK   Rahmen gleich groß und an gleicher Stelle ({"x":52,"y":528.671875,"w":773.59375,"h":435.140625} → {"x":52,"y":528.671875,"w":773.59375,"h":435.140625})
+OK   Inhalt darunter verschiebt sich nicht (1122.8125 → 1122.8125)
+OK   Layoutverschiebung durch den Klick 0 (alle Einträge, auch nach Eingabe)
+OK   Fokus auf dem Player (IFRAME)
+OK   keine Meldung der Sicherheitsrichtlinie (0)
+OK   kein Cookie der Seite ()
+fremd vor Klick: [] | nach Klick: [ 'https://www.youtube-nocookie.com/embed/Pr0be_V1d3o?autoplay=1' ]
+
+== Datenschutz
+OK   Datenschutzerklärung: Absatz zu YouTube
+OK   Datenschutzerklärung: Videos nicht mehr unter „nicht eingebunden“
+OK   Datenschutzerklärung: Abschnitt verarbeitung-videos
+
+== Vorlage
+OK   Hinweis mit Kennzeichen „mit Video“ (Passende Anleitung Schritt für Schritt: Wie fotografiere ich einen Schlüssel richtig?mit Video)
+
+GESAMT: alle Prüfungen bestanden

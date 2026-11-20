@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getCodeLines, getPageContent, getRubrik } from '@/lib/data';
+import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { herstellerPfad, kategoriePfad, verfuegbarkeitVon } from '@/lib/codelinie';
 import { formatCents, formatNumber } from '@/lib/format';
 import { GRUPPE_AUF_ANFRAGE, gruppeLieferbar } from '@/lib/codelinie-texte';
@@ -133,7 +135,11 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function SchluesselNachCodePage() {
   // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
   const rubrik = await getRubrik('schluessel-nach-code');
-  const [page, { lines, stamm, hersteller, kategorien }] = await Promise.all([getPageContent(ROUTE), shopDaten()]);
+  const [page, { lines, stamm, hersteller, kategorien }, tutorials] = await Promise.all([
+    getPageContent(ROUTE),
+    shopDaten(),
+    tutorialVerweiseFuer('schluessel-nach-code'),
+  ]);
 
   // Gepflegte interne Links ergänzen die festen Ziele, ohne sie zu doppeln.
   const extraLinks: NavLink[] = (page?.seo.internalLinks ?? []).filter(
@@ -386,6 +392,9 @@ export default async function SchluesselNachCodePage() {
           title="Passende Bereiche und Erklärungen"
           lead="Hier geht es weiter, wenn der Code fehlt oder mehrere Türen zusammengehören."
         />
+
+        {/* Tutorial-Hinweis (FA-INHALT-01B): erscheint nur mit veröffentlichtem, zugeordnetem Tutorial. */}
+        <TutorialHinweis verweise={tutorials} ort="schluessel-nach-code" className="mt-8 max-w-3xl" />
 
         {/* Stückliste mit Fach-Icons: die ganze Zeile ist der Link */}
         <ol className="mt-8 border-t border-border">

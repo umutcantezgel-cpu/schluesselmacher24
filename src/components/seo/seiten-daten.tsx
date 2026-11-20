@@ -3,7 +3,7 @@ import { RUBRIK_PAUSIERT_LEAD, bereichsKrume, rubrikLive } from '@/components/fa
 import { getPageContent } from '@/lib/data';
 import { ANFRAGE_FORMULAR, KLASSEN_SEITEN, type FormularKlasse } from '@/lib/fahrzeuge/anfrage-klassen';
 
-import { JsonLd, pageGraphSchema, type LeistungsAngabe } from './json-ld';
+import { JsonLd, pageGraphSchema, type LeistungsAngabe, type VideoAngabe } from './json-ld';
 import { eingehendeVerweise, verweisQuellen, zielPfad } from './verweise';
 
 /**
@@ -18,6 +18,7 @@ export function SeitenDaten({
   crumbs,
   leistung,
   faq,
+  video,
 }: {
   pfad: string;
   name: string;
@@ -25,6 +26,8 @@ export function SeitenDaten({
   crumbs: Array<{ href: string; label: string }>;
   leistung?: LeistungsAngabe;
   faq?: Array<{ question: string; answer: string }>;
+  /** Eingebettetes Video der Seite (nur mit Freigabe und vollständigen Angaben, FA-INHALT-01B). */
+  video?: VideoAngabe;
 }) {
   return (
     <JsonLd
@@ -35,6 +38,7 @@ export function SeitenDaten({
         crumbs,
         ...(leistung ? { service: leistung } : {}),
         ...(faq?.length ? { faq } : {}),
+        ...(video ? { video } : {}),
       })}
     />
   );

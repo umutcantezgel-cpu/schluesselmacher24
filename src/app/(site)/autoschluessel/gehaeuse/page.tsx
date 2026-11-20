@@ -7,6 +7,8 @@ import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { ButtonLink } from '@/components/ui/button';
 import { getFahrzeugkatalog, getPageContent, getRubrik, getSettings, getUmbauBeispiele } from '@/lib/data';
+import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { PasstDazu } from '@/components/seo/passt-dazu';
 import { HAFTUNG_HINWEIS, VERPACKUNG_HINWEIS, haftungSatz } from '@/lib/versand/varianten';
 
@@ -36,13 +38,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /** Rubrikseite Autoschlüssel-Gehäuse (G-20, E6-BAUMEISTER-02): Ablauf, Gehäuse-Frage, Weg in die Anfrage. */
 export default async function AutoschluesselGehaeusePage() {
-  const [rubrik, page, settings, gehaeuseBeispiele, reparaturBeispiele, katalog] = await Promise.all([
+  const [rubrik, page, settings, gehaeuseBeispiele, reparaturBeispiele, katalog, tutorials] = await Promise.all([
     getRubrik('autoschluessel-gehaeuse'),
     getPageContent(ROUTE),
     getSettings(),
     getUmbauBeispiele('gehaeuse'),
     getUmbauBeispiele('reparatur'),
     getFahrzeugkatalog(),
+    tutorialVerweiseFuer('autoschluessel-gehaeuse'),
   ]);
   // Beispiele für Gehäuse und Reparatur, jedes nur einmal (FA-14-08).
   const beispiele = [...gehaeuseBeispiele, ...reparaturBeispiele.filter((b) => !gehaeuseBeispiele.some((g) => g.id === b.id))];
@@ -104,6 +107,8 @@ export default async function AutoschluesselGehaeusePage() {
             Funkschlüssel und Gehäuse im Überblick
           </Link>
         </p>
+        {/* Tutorial-Hinweis (FA-INHALT-01B): erscheint erst mit veröffentlichtem Tutorial zum Gehäuseumbau. */}
+        <TutorialHinweis verweise={tutorials} ort="autoschluessel-gehaeuse" className="mt-8 max-w-3xl" />
       </Section>
       {/* 03 Leistungen mit Einsendung (FA-SHOP-02B, Punkt 2): ohne Preis des Inhabers als Anfrage (A-036). */}
       <Section labelledBy="leistungen-titel">

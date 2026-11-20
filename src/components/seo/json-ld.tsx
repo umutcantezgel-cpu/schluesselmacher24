@@ -380,6 +380,22 @@ export interface LeistungsAngabe {
 }
 
 /**
+ * Ein eingebettetes Video der Seite (FA-INHALT-01B). Nur mit Freigabe der Einbettung und nur, wenn Titel,
+ * Beschreibung, Datum und ein eigenes Vorschaubild vorliegen (R8). Bewusst ohne `embedUrl` und `contentUrl`:
+ * Vor dem Klick steht im HTML keine Adresse von YouTube.
+ */
+export interface VideoAngabe {
+  name: string;
+  description: string;
+  /** ISO-Datum. */
+  uploadDate: string;
+  /** Eigenes Vorschaubild, Pfad ab Wurzel. */
+  thumbnailPfad: string;
+  /** Dauer als ISO 8601. */
+  duration?: string;
+}
+
+/**
  * Graph für eine Inhaltsseite: Webseite, optional Leistung, sichtbare FAQ und
  * Brotkrumen — jeweils mit eigener `@id` je Seite, damit sich Seiten nicht
  * gegenseitig überschreiben. Organisation, Website und Betrieb kommen aus dem
@@ -396,6 +412,8 @@ export function pageGraphSchema(input: {
   crumbs?: Array<{ href: string; label: string }>;
   /** Leistungsseite: `Service` mit dem Betrieb als Anbieter. */
   service?: LeistungsAngabe;
+  /** Eingebettetes Video (`VideoObject`), nur mit Freigabe und vollständigen Angaben. */
+  video?: VideoAngabe;
 }): Graph {
   const pageUrl = input.path === '/' ? `${siteUrl}/` : `${siteUrl}${input.path}`;
   const mitKrumen = Boolean(input.crumbs?.length) && input.path !== '/';
@@ -436,6 +454,20 @@ export function pageGraphSchema(input: {
         name: item.question,
         acceptedAnswer: { '@type': 'Answer', text: item.answer },
       })),
+    });
+  }
+
+  if (input.video) {
+    graph.push({
+      '@type': 'VideoObject',
+      '@id': `${pageUrl}#video`,
+      name: input.video.name,
+      description: input.video.description,
+      uploadDate: input.video.uploadDate,
+      thumbnailUrl: `${siteUrl}${input.video.thumbnailPfad}`,
+      ...(input.video.duration ? { duration: input.video.duration } : {}),
+      inLanguage: 'de-DE',
+      isPartOf: { '@id': `${pageUrl}#webpage` },
     });
   }
 

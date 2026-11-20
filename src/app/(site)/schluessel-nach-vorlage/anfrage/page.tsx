@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getPageContent, getSettings } from '@/lib/data';
+import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
 import { AnfrageFormular } from './anfrage-formular';
@@ -23,7 +25,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function SchluesselNachVorlageAnfragePage() {
-  const [page, settings] = await Promise.all([getPageContent(ROUTE), getSettings()]);
+  const [page, settings, tutorials] = await Promise.all([
+    getPageContent(ROUTE),
+    getSettings(),
+    tutorialVerweiseFuer('schluessel-nach-vorlage-fotos'),
+  ]);
 
   // Sichtbare Brotkrumen, zugleich Grundlage der Strukturdaten (FA-SEO-01C).
   const crumbs = [
@@ -48,7 +54,15 @@ export default async function SchluesselNachVorlageAnfragePage() {
       />
 
       <div className="shell py-8 md:py-12">
-        <AnfrageFormular hilfe={hilfeAus(settings)} photoRetentionDays={settings.retentionDays.keyPhotos} />
+        <AnfrageFormular
+          hilfe={hilfeAus(settings)}
+          photoRetentionDays={settings.retentionDays.keyPhotos}
+          tutorialHinweis={
+            tutorials.length > 0 ? (
+              <TutorialHinweis verweise={tutorials} variante="verweis" neuesFenster ort="schluessel-nach-vorlage-fotos" className="mt-4 max-w-3xl" />
+            ) : undefined
+          }
+        />
 
         <p className="mt-10 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-6 text-small">
           <span className="font-semibold text-foreground-muted">Verwandte Bereiche:</span>

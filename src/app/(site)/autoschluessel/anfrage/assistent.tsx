@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 
 import type {
@@ -335,6 +335,8 @@ export interface AssistentProps {
   erreichbarkeit?: Erreichbarkeit;
   /** Regionaler Eigenbereich aus den Einstellungen (FA-KERN-03); ohne Angabe gilt 35*. */
   eigenbereich?: OwnArea;
+  /** Fertig gerenderte Tutorial-Hinweise der Seite bei der Hilfe der Unterlagen (FA-INHALT-01B, A-071). */
+  tutorialHinweise?: { fotos?: ReactNode; fahrzeugschein?: ReactNode };
 }
 
 export function Assistent({
@@ -349,6 +351,7 @@ export function Assistent({
   erreichbarkeit,
   vorherigerVorgang,
   eigenbereich,
+  tutorialHinweise,
 }: AssistentProps) {
   const initial = useMemo<AssistentData>(
     () => ({
@@ -1505,6 +1508,7 @@ export function Assistent({
       {flow.step.id === 'schluesselfotos' && (
         <div className="space-y-7">
           <HilfeBeiUnterlagen telefon={werkstatt?.telefon} erreichbarkeit={erreichbarkeit} />
+          {tutorialHinweise?.fotos}
           {/* Totalverlust nur ausdrücklich bestätigt (FA-KERN-02): Ein defekter Schlüssel zählt als vorhanden. */}
           {data.workingKeys === 0 && (
             <OptionCard
@@ -1559,6 +1563,7 @@ export function Assistent({
       {flow.step.id === 'fahrzeugschein' && (
         <div className="space-y-6">
           <HilfeBeiUnterlagen telefon={werkstatt?.telefon} erreichbarkeit={erreichbarkeit} />
+          {tutorialHinweise?.fahrzeugschein}
           <PhotoUpload
             category="fahrzeugschein"
             steckplatz="fahrzeugschein"

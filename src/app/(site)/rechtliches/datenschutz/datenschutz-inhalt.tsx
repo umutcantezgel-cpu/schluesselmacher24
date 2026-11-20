@@ -5,6 +5,7 @@ import { anbieterZeilen, kontakt } from '@/lib/rechtliches/firma';
 import { VERARBEITUNGEN_FASSUNG, dienstleister, verarbeitungen } from '@/lib/rechtliches/verarbeitungen';
 import { formatDateShort } from '@/lib/format';
 import { telefonLink } from '@/lib/telefon';
+import { videosFreigegeben } from '@/lib/tutorials/freigabe';
 import type { Settings } from '@/lib/types';
 
 interface DatenschutzInhaltProps {
@@ -14,6 +15,11 @@ interface DatenschutzInhaltProps {
   hinweis?: ReactNode;
   /** Google Analytics ist eingebunden (Mess-ID gesetzt) — nur dann erscheint es hier. */
   statistik?: boolean;
+  /**
+   * Videos von YouTube sind freigeschaltet (Schalter `SM24_VIDEOS=an`, FA-INHALT-01B) — nur dann erscheinen
+   * sie hier. Ohne Angabe gilt der Schalter des Servers. Der Text dazu ist ein Entwurf zur Prüfung (R10).
+   */
+  videos?: boolean;
 }
 
 function Pruefhinweis({ children }: { children: ReactNode }) {
@@ -29,9 +35,15 @@ function Pruefhinweis({ children }: { children: ReactNode }) {
  * und die Drittlandangaben kommen ausschließlich aus
  * `src/lib/rechtliches/verarbeitungen.ts`.
  */
-export function DatenschutzInhalt({ settings, pruefhinweise = false, hinweis, statistik = false }: DatenschutzInhaltProps) {
+export function DatenschutzInhalt({
+  settings,
+  pruefhinweise = false,
+  hinweis,
+  statistik = false,
+  videos = videosFreigegeben(),
+}: DatenschutzInhaltProps) {
   const { company } = settings;
-  const liste = verarbeitungen(settings, { statistik });
+  const liste = verarbeitungen(settings, { statistik, videos });
   const drittland = liste.filter((eintrag) => eintrag.drittland);
   const { telefon, email } = kontakt(company);
   const telefonHref = telefonLink(telefon);
@@ -117,7 +129,7 @@ export function DatenschutzInhalt({ settings, pruefhinweise = false, hinweis, st
         Art. 28 DSGVO geschlossen; sie verarbeiten die Daten nur nach unserer Weisung.
       </p>
       <ul>
-        {dienstleister({ statistik }).map((eintrag) => (
+        {dienstleister({ statistik, videos }).map((eintrag) => (
           <li key={eintrag.id}>
             <strong>{eintrag.name}</strong> ({eintrag.sitz}) – {eintrag.aufgabe};{' '}
             {eintrag.rolle}.
@@ -148,14 +160,34 @@ export function DatenschutzInhalt({ settings, pruefhinweise = false, hinweis, st
       </ul>
 
       <h2>5. Speicherung im Browser, Cookies und Fremdinhalte</h2>
+      {/* Ohne Videos stehen hier die Absätze Zeichen für Zeichen wie vor FA-INHALT-01B; mit Videos nennt der
+          Absatz Videos nicht mehr unter dem, was nicht eingebunden wird (Entwurf zur Prüfung, R10). */}
       {statistik ? (
+        videos ? (
+          <p>
+            Cookies zur Reichweitenmessung setzt nur Google Analytics – und erst, wenn Sie auf der Seite{' '}
+            <Link href="/rechtliches/cookie-einstellungen">Cookie-Einstellungen</Link> oder im Hinweis beim
+            ersten Besuch in „Statistik“ einwilligen (siehe 2.{liste.findIndex((e) => e.id === 'statistik') + 1}).
+            Ohne Einwilligung wird das Skript von Google nicht geladen. Werbe-Cookies verwenden wir nicht. Inhalte
+            fremder Anbieter wie Karten oder Schriftarten-Dienste binden wir nicht ein; Videos von YouTube laden
+            erst nach Ihrem Klick (siehe unten). Die Schriftarten liefern wir selbst aus.
+          </p>
+        ) : (
+          <p>
+            Cookies zur Reichweitenmessung setzt nur Google Analytics – und erst, wenn Sie auf der Seite{' '}
+            <Link href="/rechtliches/cookie-einstellungen">Cookie-Einstellungen</Link> oder im Hinweis beim
+            ersten Besuch in „Statistik“ einwilligen (siehe 2.{liste.findIndex((e) => e.id === 'statistik') + 1}).
+            Ohne Einwilligung wird das Skript von Google nicht geladen. Werbe-Cookies verwenden wir nicht und
+            binden keine Inhalte fremder Anbieter wie Karten, Videos oder Schriftarten-Dienste ein. Die
+            Schriftarten liefern wir selbst aus.
+          </p>
+        )
+      ) : videos ? (
         <p>
-          Cookies zur Reichweitenmessung setzt nur Google Analytics – und erst, wenn Sie auf der Seite{' '}
-          <Link href="/rechtliches/cookie-einstellungen">Cookie-Einstellungen</Link> oder im Hinweis beim
-          ersten Besuch in „Statistik“ einwilligen (siehe 2.{liste.findIndex((e) => e.id === 'statistik') + 1}).
-          Ohne Einwilligung wird das Skript von Google nicht geladen. Werbe-Cookies verwenden wir nicht und
-          binden keine Inhalte fremder Anbieter wie Karten, Videos oder Schriftarten-Dienste ein. Die
-          Schriftarten liefern wir selbst aus.
+          Wir verwenden keine Cookies oder Techniken zur Analyse, Reichweitenmessung oder Werbung. Inhalte
+          fremder Anbieter wie Karten oder Schriftarten-Dienste binden wir nicht ein; Videos von YouTube laden
+          erst nach Ihrem Klick (siehe unten). Die Schriftarten liefern wir selbst aus; beim Aufruf der Seite
+          besteht keine Verbindung zu Google oder anderen Schriftanbietern.
         </p>
       ) : (
         <p>
@@ -173,6 +205,18 @@ export function DatenschutzInhalt({ settings, pruefhinweise = false, hinweis, st
         und Unterlagen, die Sie in einem Formular auswählen, werden dagegen sofort an uns übertragen
         (siehe 2.{liste.findIndex((e) => e.id === 'dateien') + 1}).
       </p>
+      {videos && (
+        <p>
+          Videos auf unseren Tutorial-Seiten kommen von YouTube, einem Dienst der Google Ireland Limited. Wir
+          binden sie im erweiterten Datenschutzmodus (youtube-nocookie.com) ein. Beim Aufruf der Seite sehen Sie
+          zuerst nur eine Vorschau von uns; eine Verbindung zu YouTube besteht dann nicht. Erst wenn Sie auf
+          „Video laden“ klicken, lädt Ihr Browser das Video von YouTube. Dabei erhält YouTube Ihre IP-Adresse,
+          Angaben zu Browser und Gerät und die Adresse der Seite. Beim Abspielen kann YouTube Cookies oder
+          ähnliche Kennungen in Ihrem Browser speichern. Rechtsgrundlage ist Ihre Einwilligung durch den Klick
+          (siehe 2.{liste.findIndex((e) => e.id === 'videos') + 1}). Wir speichern Ihre Wahl nicht; beim nächsten
+          Video entscheiden Sie neu. Google kann Daten in die USA übermitteln (siehe 4.).
+        </p>
+      )}
       <p>
         Bei einer Online-Zahlung leiten wir Sie auf die Bezahlseite von Stripe weiter. Was dort
         gespeichert wird, regelt die Datenschutzerklärung von Stripe.

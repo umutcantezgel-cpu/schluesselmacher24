@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getCodeLines, getCollection, getHersteller, getPageContent, getRubrik } from '@/lib/data';
+import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { HerstellerBereich } from '@/components/hersteller/hersteller-bereich';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { formatCents, formatMillimeter } from '@/lib/format';
@@ -107,11 +109,12 @@ const BAUFORM_ICONS: Partial<Record<string, typeof IconProfilzylinder>> = {
 export default async function CylinderOverviewPage() {
   // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
   const rubrik = await getRubrik('sperrschliessung');
-  const [page, catalog, codeLines, hersteller] = await Promise.all([
+  const [page, catalog, codeLines, hersteller, tutorials] = await Promise.all([
     getPageContent(ROUTE),
     getCollection('cylinderCatalog'),
     getCodeLines(),
     getHersteller(),
+    tutorialVerweiseFuer('gleichschliessende-zylinder'),
   ]);
 
   const forms = catalog.forms.filter((form) => form.active);
@@ -502,6 +505,9 @@ export default async function CylinderOverviewPage() {
               <GlyphLineal size={16} />
               Ausführliche Anleitung zum Ausmessen
             </Link>
+
+            {/* Tutorial-Hinweis (FA-INHALT-01B): Die Messhilfe steht schon hier, darum nur die Verweise. */}
+            <TutorialHinweis verweise={tutorials} variante="verweis" ort="gleichschliessende-zylinder" className="mt-6" />
           </div>
 
           <div className="lg:col-span-7">

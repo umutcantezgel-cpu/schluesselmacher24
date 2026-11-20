@@ -6,8 +6,11 @@ import type { Settings } from '@/lib/types';
    wozu, auf welcher Grundlage, an wen es geht und wie lange es bleibt.
    Bewusst eine feste Liste und keine, die sich nach Umgebungsvariablen
    richtet — der Text soll genau der sein, den der Inhaber freigegeben hat.
-   Einzige Ausnahme: Google Analytics erscheint genau dann, wenn eine
-   Mess-ID gesetzt ist (`statistik`), denn nur dann wird es geladen.
+   Einzige Ausnahmen: Google Analytics erscheint genau dann, wenn eine
+   Mess-ID gesetzt ist (`statistik`), denn nur dann wird es geladen; die
+   Videos von YouTube genau dann, wenn die Einbettung mit dem Schalter
+   `SM24_VIDEOS=an` freigeschaltet ist (`videos`, FA-INHALT-01B). Der Text zu
+   den Videos ist ein Entwurf zur anwaltlichen Prüfung (R10).
 
    Kommt ein Dienst hinzu oder fällt einer weg: Liste ändern, Fassung
    hochzählen, Text freigeben lassen.
@@ -17,7 +20,7 @@ import type { Settings } from '@/lib/types';
 export const VERARBEITUNGEN_FASSUNG = { nummer: 2, stand: '2026-10-25' } as const;
 
 export interface Dienstleister {
-  id: 'vercel' | 'supabase' | 'stripe' | 'resend' | 'google';
+  id: 'vercel' | 'supabase' | 'stripe' | 'resend' | 'google' | 'youtube';
   name: string;
   sitz: string;
   aufgabe: string;
@@ -79,16 +82,65 @@ export const GOOGLE_ANALYTICS: Dienstleister = {
     + 'Google-Signale und Werbefunktionen ausgeschaltet lassen.',
 };
 
+/**
+ * YouTube (FA-INHALT-01B), nur aufgeführt, wenn die Einbettung freigeschaltet ist. Entwurf zur
+ * anwaltlichen Prüfung (R10).
+ */
+export const YOUTUBE: Dienstleister = {
+  id: 'youtube',
+  name: 'Google Ireland Limited (YouTube)',
+  sitz: 'Gordon House, Barrow Street, Dublin 4, Irland',
+  aufgabe: 'Wiedergabe eingebetteter Videos auf den Tutorial-Seiten, erst nach Ihrem Klick auf „Video laden“',
+  rolle: 'für die Verarbeitung nach dem Laden des Videos eigener Verantwortlicher',
+  pruefhinweis:
+    'Rolle von Google bei eingebetteten Videos anwaltlich prüfen (gemeinsame Verantwortung für die Erhebung '
+    + 'beim Laden, Art. 26 DSGVO, und Vereinbarung dazu).',
+};
+
 /** Optionen, die die Liste ändern. */
 export interface VerarbeitungsOptionen {
   /** Google Analytics ist eingebunden (Mess-ID gesetzt). */
   statistik?: boolean;
+  /** Die Einbettung der Videos von YouTube ist freigeschaltet (Schalter `SM24_VIDEOS=an`). */
+  videos?: boolean;
 }
 
 /** Dienstleister in der Reihenfolge der Datenschutzerklärung. */
 export function dienstleister(optionen: VerarbeitungsOptionen = {}): Dienstleister[] {
-  return optionen.statistik ? [...DIENSTLEISTER, GOOGLE_ANALYTICS] : [...DIENSTLEISTER];
+  return [
+    ...DIENSTLEISTER,
+    ...(optionen.statistik ? [GOOGLE_ANALYTICS] : []),
+    ...(optionen.videos ? [YOUTUBE] : []),
+  ];
 }
+
+/**
+ * Eingebettete Videos von YouTube (FA-INHALT-01B). Entwurf zur anwaltlichen Prüfung (R10); erscheint nur mit
+ * dem Schalter `SM24_VIDEOS=an`.
+ */
+export const VIDEOS_VERARBEITUNG: Verarbeitung = {
+  id: 'videos',
+  titel: 'Videos von YouTube (erst nach Ihrem Klick)',
+  zweck: 'Wiedergabe von Anleitungsvideos auf unseren Tutorial-Seiten.',
+  daten: [
+    'IP-Adresse',
+    'Geräte- und Browserangaben',
+    'Adresse der Seite, auf der das Video steht, und Zeitpunkt des Abrufs',
+    'Angaben zur Wiedergabe, etwa Start und Dauer',
+    'Kennungen, die YouTube beim Abspielen im Browser speichern kann',
+  ],
+  rechtsgrundlage:
+    'Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, die Sie mit dem Klick auf '
+    + '„Video laden“ für dieses eine Video geben. Ohne Klick besteht keine Verbindung zu YouTube. Wir speichern '
+    + 'Ihre Wahl nicht; beim nächsten Video und nach dem Neuladen der Seite entscheiden Sie neu.',
+  empfaenger: 'Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (Betreiberin von YouTube)',
+  drittland: 'USA (Google LLC): EU-US Data Privacy Framework (Art. 45 DSGVO).',
+  speicherdauer:
+    'Wir selbst speichern dabei nichts. Wie lange YouTube die Daten speichert, regelt die Datenschutzerklärung von Google.',
+  pruefhinweis:
+    'Einwilligung durch den Klick ohne Speicherung, Rolle von Google (Art. 26 DSGVO) und '
+    + 'Übermittlungsgrundlage (DPF-Zertifizierung von Google LLC) anwaltlich prüfen.',
+};
 
 export interface Verarbeitung {
   id: string;
@@ -302,6 +354,7 @@ export function verarbeitungen(
       speicherdauer: 'Bis Sie die Daten über die Seite Cookie-Einstellungen oder in Ihrem Browser löschen.',
     },
     ...statistik,
+    ...(optionen.videos ? [VIDEOS_VERARBEITUNG] : []),
     {
       id: 'ratenbegrenzung',
       titel: 'Schutz vor Missbrauch (Ratenbegrenzung)',

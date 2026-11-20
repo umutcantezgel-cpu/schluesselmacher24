@@ -12,14 +12,16 @@ export interface TutorialInhaltProps {
   tutorial: Tutorial;
   /** Ratgeber, der das Thema vollständig erklärt (nur, wenn es ihn öffentlich gibt). */
   ratgeber?: { href: string; label: string } | null;
+  /** Einbettung der Videos freigeschaltet (Schalter `SM24_VIDEOS`, auf dem Server gelesen; FA-INHALT-01B). */
+  videosFrei?: boolean;
 }
 
 /**
- * Inhalt einer Tutorial-Seite (FA-INHALT-01): oben das Video, falls hinterlegt (in Teil A nur der ruhige
- * Hinweis ohne Adresse), darunter die nummerierten Schritte mit Bildern. Die Seite ist auch ohne Video
+ * Inhalt einer Tutorial-Seite (FA-INHALT-01): oben das Video, falls hinterlegt (ohne Freigabe nur der ruhige
+ * Hinweis ohne Adresse, mit Freigabe die Einbettung, die erst nach dem Klick lädt), darunter die nummerierten Schritte mit Bildern. Die Seite ist auch ohne Video
  * vollständig. Weiter führen der Ratgeber, falls er das Thema ausführlich trägt, und die gepflegten Links.
  */
-export function TutorialInhalt({ tutorial, ratgeber }: TutorialInhaltProps) {
+export function TutorialInhalt({ tutorial, ratgeber, videosFrei = false }: TutorialInhaltProps) {
   const schritte = belegteSchritte(tutorial);
   const weiter = tutorial.seo.internalLinks.filter(
     (link, index, alle) => link.label.trim() && link.href !== ratgeber?.href && alle.findIndex((l) => l.href === link.href) === index,
@@ -28,7 +30,7 @@ export function TutorialInhalt({ tutorial, ratgeber }: TutorialInhaltProps) {
   return (
     <div className="shell grid gap-10 py-10 md:py-14 lg:grid-cols-12 lg:gap-gutter">
       <div className="min-w-0 lg:col-span-8">
-        <VideoHinweis video={tutorial.video} className="mb-10" />
+        <VideoHinweis video={tutorial.video} freigegeben={videosFrei} titel={tutorial.title} className="mb-10" />
 
         {schritte.length > 0 && (
           <section aria-labelledby="schritte-titel">

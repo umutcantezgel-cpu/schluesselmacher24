@@ -26,6 +26,8 @@ vi.mock('@/lib/data', async () => {
     getGuide: async () => null,
     getHersteller: async () => defaults.hersteller(),
     getKategorien: async () => defaults.kategorien(),
+    // Tutorial-Hinweis der Seite (FA-INHALT-01B): hier ohne zugeordnetes Tutorial.
+    getTutorialsFuer: async () => [],
   };
 });
 

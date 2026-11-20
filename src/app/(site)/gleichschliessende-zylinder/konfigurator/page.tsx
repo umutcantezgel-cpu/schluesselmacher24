@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getCollection, getHersteller, getPageContent, getSettings } from '@/lib/data';
+import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { systemeFuerSperrschliessung } from '@/lib/konfigurator/hersteller-angabe';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { PageHeader } from '@/components/layout/page-header';
@@ -39,10 +41,12 @@ const RELATED_LINKS = [
 ];
 
 export default async function CylinderConfiguratorPage() {
-  const [page, catalog, hersteller] = await Promise.all([
+  const [page, catalog, hersteller, tutorialsMessen, tutorialsFunktion] = await Promise.all([
     getPageContent(ROUTE),
     getCollection('cylinderCatalog'),
     getHersteller(),
+    tutorialVerweiseFuer('gleichschliessende-zylinder-messen'),
+    tutorialVerweiseFuer('gleichschliessende-zylinder-funktion'),
   ]);
   // BKS, ABUS und weitere Systeme mit dem Bereich „Sperrschließungen“ (FA-SHOP-04B); Logos nur mit Freigabe (R12).
   const systeme = systemeFuerSperrschliessung(hersteller);
@@ -69,7 +73,21 @@ export default async function CylinderConfiguratorPage() {
       />
 
       <Section tight>
-        <Konfigurator hilfe={hilfeAus(await getSettings())} catalog={catalog} systeme={systeme} />
+        <Konfigurator
+          hilfe={hilfeAus(await getSettings())}
+          catalog={catalog}
+          systeme={systeme}
+          tutorialHinweise={{
+            messen:
+              tutorialsMessen.length > 0 ? (
+                <TutorialHinweis verweise={tutorialsMessen} variante="verweis" neuesFenster ort="gleichschliessende-zylinder-messen" />
+              ) : undefined,
+            funktion:
+              tutorialsFunktion.length > 0 ? (
+                <TutorialHinweis verweise={tutorialsFunktion} variante="verweis" neuesFenster ort="gleichschliessende-zylinder-funktion" />
+              ) : undefined,
+          }}
+        />
         <GpsrAngaben info={catalog.gpsr} className="mt-12 max-w-3xl" />
       </Section>
 

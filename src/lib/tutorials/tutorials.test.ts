@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { tutorials } from '@/lib/data/defaults/tutorials';
 import type { Tutorial } from '@/lib/types';
@@ -13,12 +13,17 @@ import {
   tutorialIndexierbarBei,
   tutorialPfad,
   tutorialsFuer,
-  VIDEO_EINBETTUNG_FREI,
+  isoDauer,
+  videoDaten,
+  videoSichtbar,
   veroeffentlichteTutorials,
 } from './tutorials';
+import { pageGraphSchema } from '@/components/seo/json-ld';
 
 /* Tutorials (FA-INHALT-01): Startbestand der zehn Themen des Inhabers, Rückfall wortgleich mit
  * content/tutorials.json, und die Regeln für Seite, Sitemap und Hinweis. */
+
+afterEach(() => vi.unstubAllEnvs());
 
 const JSON_STAND = JSON.parse(readFileSync(path.join(process.cwd(), 'content', 'tutorials.json'), 'utf8')) as Tutorial[];
 
@@ -139,10 +144,15 @@ describe('Regeln für Seite, Sitemap und Hinweis', () => {
     const doppel = tutorial({ guideSlug: 'zylinder-richtig-ausmessen' });
     const mitVideo = { ...doppel, video: { youtubeId: 'aB3_dE-5gH7', transcript: 'Erst Maß A, dann Maß B.' } };
     expect(tutorialIndexierbar(doppel)).toBe(false);
-    // Teil A: Die Einbettung ist nicht freigeschaltet, sichtbar käme nur der Hinweissatz dazu (R3).
-    expect(VIDEO_EINBETTUNG_FREI).toBe(false);
+    // Ohne Schalter SM24_VIDEOS ist die Einbettung nicht freigeschaltet, sichtbar käme nur der Hinweissatz dazu (R3).
+    vi.stubEnv('SM24_VIDEOS', '');
     expect(tutorialIndexierbar(mitVideo)).toBe(false);
-    // Teil B schaltet die Einbettung frei: dann bringt das Video eigenen Wert.
+    vi.stubEnv('SM24_VIDEOS', 'aus');
+    expect(tutorialIndexierbar(mitVideo)).toBe(false);
+    // Mit Schalter erscheint das Video auf der Seite: dann bringt es eigenen Wert (FA-INHALT-01B).
+    vi.stubEnv('SM24_VIDEOS', 'an');
+    expect(tutorialIndexierbar(mitVideo)).toBe(true);
+    expect(tutorialIndexierbar(doppel)).toBe(false);
     expect(tutorialIndexierbarBei(mitVideo, true)).toBe(true);
     expect(tutorialIndexierbarBei(doppel, true)).toBe(false);
     expect(tutorialIndexierbarBei({ ...doppel, video: { youtubeId: '' } }, true)).toBe(false);
@@ -162,5 +172,56 @@ describe('Regeln für Seite, Sitemap und Hinweis', () => {
 
   it('bildet die Adresse unter /tutorials', () => {
     expect(tutorialPfad({ slug: 'profilzylinder-messen' })).toBe('/tutorials/profilzylinder-messen');
+  });
+});
+
+describe('VideoObject (FA-INHALT-01B, R8)', () => {
+  const vollstaendig = {
+    youtubeId: 'aB3_dE-5gH7',
+    title: 'Schlüssel richtig fotografieren',
+    duration: '3:05',
+    date: '2026-11-20',
+    thumbnail: { url: '/api/medien/file/vorschau.jpg', alt: 'Vorschau' },
+  };
+
+  it('nur mit Schalter und mit Video, Titel, Beschreibung, Datum und eigenem Vorschaubild', () => {
+    const mitVideo = tutorial({ video: vollstaendig });
+    expect(videoDaten(mitVideo, false)).toBeUndefined();
+    expect(videoDaten(tutorial(), true)).toBeUndefined();
+    for (const fehlt of ['title', 'date', 'thumbnail'] as const) {
+      expect(videoDaten(tutorial({ video: { ...vollstaendig, [fehlt]: undefined } }), true), fehlt).toBeUndefined();
+    }
+    expect(videoDaten(tutorial({ video: { ...vollstaendig, thumbnail: { url: 'https://i.ytimg.com/vi/x/0.jpg', alt: 'x' } } }), true)).toBeUndefined();
+    expect(videoDaten(tutorial({ video: { ...vollstaendig, youtubeId: 'kurz' } }), true)).toBeUndefined();
+    expect(videoDaten(mitVideo, true)).toEqual({
+      name: 'Schlüssel richtig fotografieren',
+      description: mitVideo.answer,
+      uploadDate: '2026-11-20',
+      thumbnailPfad: '/api/medien/file/vorschau.jpg',
+      duration: 'PT3M5S',
+    });
+  });
+
+  it('steht im einen Graphen der Seite, ohne Adresse von YouTube; ohne Angabe kein VideoObject', () => {
+    const daten = videoDaten(tutorial({ video: vollstaendig }), true)!;
+    const mit = pageGraphSchema({ path: '/tutorials/t', name: 'T', crumbs: [{ href: '/tutorials/t', label: 'T' }], video: daten });
+    const knoten = (mit as unknown as { '@graph': Array<Record<string, unknown>> })['@graph'];
+    const video = knoten.find((k) => k['@type'] === 'VideoObject')!;
+    expect(video.name).toBe(daten.name);
+    expect(video.uploadDate).toBe('2026-11-20');
+    expect(video.duration).toBe('PT3M5S');
+    expect(String(video.thumbnailUrl)).toMatch(/\/api\/medien\/file\/vorschau\.jpg$/);
+    expect(JSON.stringify(mit)).not.toMatch(/youtube|google/i);
+    expect(knoten.filter((k) => k['@type'] === 'HowTo')).toEqual([]);
+    const ohne = pageGraphSchema({ path: '/tutorials/t', name: 'T' }) as unknown as { '@graph': Array<Record<string, unknown>> };
+    expect(ohne['@graph'].some((k) => k['@type'] === 'VideoObject')).toBe(false);
+  });
+
+  it('Video sichtbar nur mit Schalter und gültiger Kennung; Dauer als ISO 8601', () => {
+    expect(videoSichtbar({ video: vollstaendig }, true)).toBe(true);
+    expect(videoSichtbar({ video: vollstaendig }, false)).toBe(false);
+    expect(videoSichtbar({ video: { youtubeId: '' } }, true)).toBe(false);
+    expect(isoDauer(3905)).toBe('PT1H5M5S');
+    expect(isoDauer(60)).toBe('PT1M');
   });
 });

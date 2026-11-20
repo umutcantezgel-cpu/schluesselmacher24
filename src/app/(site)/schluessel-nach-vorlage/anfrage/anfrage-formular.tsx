@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 
 import { scrollVerhalten } from '@/lib/bewegung';
@@ -234,9 +234,11 @@ export interface AnfrageFormularProps {
   photoRetentionDays: number;
   /** Telefon und Erreichbarkeit aus den Einstellungen, für die Hilfe an kritischen Stellen (FA-QA-02). */
   hilfe?: HilfeKontakt;
+  /** Fertig gerenderter Tutorial-Hinweis der Seite beim Hilfeblock der Fotoschritte (FA-INHALT-01B, A-071). */
+  tutorialHinweis?: ReactNode;
 }
 
-export function AnfrageFormular({ photoRetentionDays, hilfe }: AnfrageFormularProps) {
+export function AnfrageFormular({ photoRetentionDays, hilfe, tutorialHinweis }: AnfrageFormularProps) {
   // Dateien bewusst außerhalb des Ablaufzustands: der Zwischenstand wird im
   // Browser gespeichert, Fotos werden dort nicht abgelegt.
   const [fotoVorderseite, setFotoVorderseite] = useState<PickedFile[]>([]);
@@ -538,7 +540,10 @@ export function AnfrageFormular({ photoRetentionDays, hilfe }: AnfrageFormularPr
 
       {/* Hilfe bei den Fotos: Telefon, Rückruf, später weitermachen (FA-QA-02). */}
       {(flow.step?.id === 'foto-vorderseite' || flow.step?.id === 'foto-rueckseite' || flow.step?.id === 'foto-spitze') && (
-        <HilfeBlock hilfe={hilfe} stelle="fotos" titel="Unsicher bei den Fotos?" className="mt-8 max-w-3xl" spaeter mitDateien />
+        <>
+          <HilfeBlock hilfe={hilfe} stelle="fotos" titel="Unsicher bei den Fotos?" className="mt-8 max-w-3xl" spaeter mitDateien />
+          {tutorialHinweis}
+        </>
       )}
 
       {flow.step?.id === 'hersteller' && (

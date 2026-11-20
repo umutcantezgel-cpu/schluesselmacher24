@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getPageContent, getRubrik, getSettings } from '@/lib/data';
+import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { defaults } from '@/lib/data/defaults';
 import { einsendeAngebotFuerWeg } from '@/lib/einsenden/schein';
 import { firmenname, sitzZeilen, standort } from '@/lib/rechtliches/firma';
@@ -104,7 +106,11 @@ function versandAnschrift(company: CompanyProfile): { titel: string; zeilen: str
 export default async function SchluesselEinschickenPage() {
   // Rubrik dieser Seite: Ziel des Übergangs aus der Hub-Kachel (B-35)
   const rubrik = await getRubrik('schluessel-einschicken');
-  const [page, settings] = await Promise.all([getPageContent(ROUTE), getSettings()]);
+  const [page, settings, tutorials] = await Promise.all([
+    getPageContent(ROUTE),
+    getSettings(),
+    tutorialVerweiseFuer('schluessel-einschicken'),
+  ]);
   const anschrift = versandAnschrift(settings.company);
   const einstellungen = settings.sendIn ?? defaults.settings().sendIn!;
   // Die Seite zeigt alle Varianten; den Sonderfall nur als solchen gekennzeichnet (A-050).
@@ -182,6 +188,8 @@ export default async function SchluesselEinschickenPage() {
                 Einsendung anmelden
               </ButtonLink>
             </div>
+            {/* Tutorial-Hinweis (FA-INHALT-01B) */}
+            <TutorialHinweis verweise={tutorials} ort="schluessel-einschicken" className="mt-7" />
           </div>
 
           {rubrik && <RubrikAblauf rubrik={rubrik} variante="liste" className="lg:col-span-7" />}

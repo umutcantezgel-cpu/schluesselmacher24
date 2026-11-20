@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getCollection, getPageContent, getSettings, getVehicleMakes } from '@/lib/data';
+import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { jahrInBerlin } from '@/lib/berliner-zeit';
 import { paymentStatus } from '@/lib/integrations';
 import { PROCESS_LABELS } from '@/lib/navigation';
@@ -72,12 +74,14 @@ const RELATED_LINKS = [
 export default async function AutoschluesselAnfragePage(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const [searchParams, page, makes, services, settings] = await Promise.all([
+  const [searchParams, page, makes, services, settings, tutorialsFotos, tutorialsSchein] = await Promise.all([
     props.searchParams,
     getPageContent(ROUTE),
     getVehicleMakes(),
     getCollection('carKeyServices'),
     getSettings(),
+    tutorialVerweiseFuer('autoschluessel-fotos'),
+    tutorialVerweiseFuer('autoschluessel-fahrzeugschein'),
   ]);
 
   // Vorbelegung aus ?marke= und ?modell= nur übernehmen, wenn sie zu den
@@ -139,6 +143,16 @@ export default async function AutoschluesselAnfragePage(props: {
           erreichbarkeit={erreichbarkeit(settings)}
           eigenbereich={settings.booking.ownArea}
           vorherigerVorgang={vorherigerVorgang}
+          tutorialHinweise={{
+            fotos:
+              tutorialsFotos.length > 0 ? (
+                <TutorialHinweis verweise={tutorialsFotos} variante="verweis" neuesFenster ort="autoschluessel-fotos" />
+              ) : undefined,
+            fahrzeugschein:
+              tutorialsSchein.length > 0 ? (
+                <TutorialHinweis verweise={tutorialsSchein} variante="verweis" neuesFenster ort="autoschluessel-fahrzeugschein" />
+              ) : undefined,
+          }}
         />
       </div>
 
