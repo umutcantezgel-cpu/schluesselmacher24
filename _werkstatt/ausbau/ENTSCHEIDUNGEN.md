@@ -561,3 +561,9 @@ Form folgenreicher Einträge: Ziel → drei Wege → Bewertung (Nordstern, Beleg
 - Zusammen mit FA-SEO-03D lädt der Browser gegenüber dem Live-Stand (b0aa692) auf der Startseite rund 19 KB, auf der Kontaktseite rund 11 KB und im Assistenten rund 11 KB weniger Skript, ohne dass etwas nachgeladen oder verschoben wird (Regel A-076).
 - Grenze: Ohne Datenbank gibt es keine bestellbaren Positionen; die Bilder im gefüllten Warenkorb sind durch Markup-Vergleich belegt, nicht durch Bildschirmfotos.
 
+## A-082 · eBay-Angebote: zweiter Versuch abgewiesen; „Schlüssel Schmiede“ ist ein Name des Inhabers (2026-11-20 22:25, Nutzer)
+- Der Nutzer schrieb am 20.11. gegen 22:10 MEZ „Versuch es noch einmal“ (verstanden als: den Abruf der eBay-Angebote erneut versuchen; die Sitzung war seit dem 18.11. 21:05 MEZ nicht geweckt worden).
+- Versucht, nur auf Wegen, die die robots.txt von eBay zulässt, je ein Abruf: Angebotsseite `/itm/397739417162` und Verkäuferprofil `/usr/schluessel-schmiede` über das Abrufwerkzeug. Beide 403. Zwei Websuchen (zehn Abfragen) fanden kein Angebot des Verkäufers. Die gesperrte Trefferliste `/sch/` wurde nicht abgerufen; umgangen wird die Sperre nicht (G1; eBay untersagt automatische Zugriffe).
+- Belegt über Seiten außerhalb von eBay (robots.txt gelesen, je ein Abruf): `wetzlar-schlüsseldienst.de` ist „Schlüssel Schmiede Wetzlar“, Inhaber laut Impressum Mina Saad, Telefon wie bei SCHLÜSSELMACHER24. Der eBay-Verkäufer „schluessel-schmiede“ ist damit sehr wahrscheinlich das eigene Konto des Inhabers; seine Angebotstexte dürfen übernommen werden, sobald sie vorliegen (FA-11-18, R11 betrifft fremde Inhalte). `schluessel-schmiede.de` ist ein anderer Betrieb (Buchbach) und keine Quelle.
+- Es bleibt beim Weg über den Nutzer: Export „Aktive Angebote“ aus dem Verkäuferkonto, gespeicherte Seiten oder kopierter Text (MA-34). Ein dritter automatischer Versuch ohne neue Lage ist nicht sinnvoll.
+
