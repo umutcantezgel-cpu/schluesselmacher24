@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
+// Absoluter Pfad, damit ein Alias in next.config.ts ihn ohne Schalter durch `video-rahmen-aus.tsx` ersetzen kann (A-076).
+import { VideoRahmen } from '@/components/tutorial/video-rahmen';
 import { istYoutubeKennung, dauerZumVorlesen } from '@/lib/tutorials/youtube';
 import type { TutorialVideo } from '@/lib/types';
-
-import { VideoRahmen } from './video-rahmen';
 
 /** Satz, solange die Einbettung nicht freigeschaltet ist (Teil A, ohne Schalter unverändert). */
 export const VIDEO_HINWEIS_TEXT = 'Zu diesem Thema gibt es ein Video. Es erscheint hier, sobald die Einbettung freigeschaltet ist.';

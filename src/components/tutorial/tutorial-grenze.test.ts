@@ -103,6 +103,15 @@ describe('Tutorial-Hinweis: Grenze der Importe', () => {
     expect(nutzer('tutorial-inhalt')).toEqual(['src/app/(site)/tutorials/[slug]/page.tsx']);
   });
 
+  it('der Ersatz für den Alias ohne Schalter ist vorbereitet: kein Client-Baustein, gleicher Name, absoluter Import', () => {
+    const ersatz = lies('src/components/tutorial/video-rahmen-aus.tsx');
+    expect(ersatz).not.toMatch(/^'use client'/m);
+    expect(ersatz).toMatch(/export function VideoRahmen\(/);
+    expect(ziele(ersatz).filter((z) => z !== 'react')).toEqual([]);
+    // Nur über diesen Pfad kann der Alias in next.config.ts greifen.
+    expect(ziele(lies('src/components/tutorial/video-hinweis.tsx'))).toContain('@/components/tutorial/video-rahmen');
+  });
+
   it('die Seiten geben den Hinweis an jedem Ort aus TUTORIAL_ORTE weiter', () => {
     const seiten: Record<string, string[]> = {
       'src/app/(site)/schluessel-nach-vorlage/page.tsx': ['schluessel-nach-vorlage'],
