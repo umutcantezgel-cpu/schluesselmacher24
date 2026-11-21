@@ -42,7 +42,7 @@ export interface TutorialHinweisProps {
    * mit seinem Zwischenstand und gewählten Dateien stehen.
    */
   neuesFenster?: boolean;
-  /** Ort aus `TUTORIAL_ORTE`, für Tests und die Sichtprobe. */
+  /** Ort aus `TUTORIAL_ORTE`, für Tests und die Sichtprobe; fasst ein Block mehrere Orte zusammen, stehen sie durch Leerzeichen getrennt (Selektor `[data-ort~="…"]`). */
   ort?: string;
   className?: string;
   /**

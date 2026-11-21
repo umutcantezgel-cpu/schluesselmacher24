@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
+// Der vorab erfasste Stand der Seite (Schlüssel `cookieEinstellungen`) liegt zusammen mit dem der Hinweise in dieser Datei.
 import VORHER from '@/lib/tutorials/hinweis-vorher.json';
 
 import CookieEinstellungenPage from './page';
@@ -52,10 +53,14 @@ describe('Cookie-Einstellungen und Videos', () => {
       expect(html).toContain('Video laden');
       expect(html).toContain('dabei kann YouTube Cookies setzen');
       expect(html).toContain('href="/rechtliches/datenschutz"');
-      // Nur die Einleitung wechselt: Kategorien, Speicherung und Schaltflächen bleiben wie ohne Schalter.
+      // Nur die Einleitung wechselt, und unter der Liste kommt ein Satz zu den Cookies von YouTube hinzu:
+      // Kategorien, Speicherung und Schaltflächen bleiben wie ohne Schalter.
+      const youtubeCookies = '<p>Cookies, die YouTube nach Ihrem Klick auf „Video laden“ setzt, speichern nicht wir. Sie löschen sie über die Einstellungen Ihres Browsers.</p>';
+      expect(html.split(youtubeCookies)).toHaveLength(2);
       const vorher = messId ? VORHER.cookieEinstellungen.mitStatistik : VORHER.cookieEinstellungen.ohneStatistik;
       const ohneEinleitung = (text: string) => text.replace(/<p class="mt-3">[\s\S]*?<\/p>/, '');
-      expect(ohneEinleitung(html)).toBe(ohneEinleitung(vorher));
+      expect(ohneEinleitung(html.replace(youtubeCookies, ''))).toBe(ohneEinleitung(vorher));
+      expect(vorher).not.toContain('Cookies, die YouTube');
     }
   });
 });

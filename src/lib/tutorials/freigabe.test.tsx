@@ -149,7 +149,7 @@ describe('Alias für den Client-Baustein der Einbettung', () => {
     expect(readFileSync(path.join(process.cwd(), VIDEO_RAHMEN_ERSATZ), 'utf8')).not.toMatch(/^'use client'/m);
   });
 
-  it('next.config.ts: ohne Schalter (leer, „aus“, fehlend) gesetzt, mit Schalter nicht (Turbopack)', async () => {
+  it('next.config.ts: ohne Schalter (leer, „aus“, „1“) gesetzt, mit Schalter nicht (Turbopack)', async () => {
     for (const wert of ['', 'aus', '1']) {
       const alias = (await konfig(wert)).turbopack?.resolveAlias;
       expect(alias, wert).toEqual({ [VIDEO_RAHMEN_MODUL]: VIDEO_RAHMEN_ERSATZ });
@@ -160,10 +160,31 @@ describe('Alias für den Client-Baustein der Einbettung', () => {
     }
   }, 30_000);
 
-  it('next.config.ts: der Zweig für webpack setzt denselben Alias, nur ohne Schalter', () => {
-    const quelle = readFileSync(path.join(process.cwd(), 'next.config.ts'), 'utf8');
-    expect(quelle).toContain('const videoAlias = videoRahmenAlias(mitVideos);');
-    expect(quelle).toContain('resolveAlias: videoAlias');
-    expect(quelle).toMatch(/for \(const \[modul, ersatz\] of Object\.entries\(videoAlias\)\)[\s\S]{0,200}\[`\$\{modul\}\$`\]: path\.resolve\(dirname, ersatz\)/);
-  });
+  it('next.config.ts: auch ganz ohne die Variable ist der Alias gesetzt (Normalfall im Betrieb)', async () => {
+    vi.stubEnv('SM24_VIDEOS', undefined as unknown as string);
+    delete process.env.SM24_VIDEOS;
+    vi.resetModules();
+    const { default: config } = await import('../../../next.config');
+    expect((config as Konfig).turbopack?.resolveAlias).toEqual({ [VIDEO_RAHMEN_MODUL]: VIDEO_RAHMEN_ERSATZ });
+  }, 30_000);
+
+  it('next.config.ts: der Zweig für webpack setzt denselben Alias, nur ohne Schalter (Funktion ausgeführt)', async () => {
+    type WebpackKonfig = {
+      resolve: { alias: Record<string, string>; extensionAlias?: Record<string, string[]> };
+      plugins: unknown[];
+      externals: unknown[];
+    };
+    // Attrappe der Bündler-Optionen: Die Hülle von Payload legt ein IgnorePlugin an.
+    const optionen = { webpack: { IgnorePlugin: class {} }, isServer: true, dev: false };
+    const rufe = async (wert: string) => {
+      const config = (await konfig(wert)) as unknown as { webpack: (c: WebpackKonfig, o: unknown) => WebpackKonfig };
+      return config.webpack({ resolve: { alias: { vorhanden: 'bleibt' } }, plugins: [], externals: [] }, optionen).resolve.alias;
+    };
+    const ohne = await rufe('');
+    expect(ohne[`${VIDEO_RAHMEN_MODUL}$`]).toBe(path.resolve(process.cwd(), VIDEO_RAHMEN_ERSATZ));
+    expect(ohne.vorhanden).toBe('bleibt');
+    const mit = await rufe('an');
+    expect(mit).not.toHaveProperty(`${VIDEO_RAHMEN_MODUL}$`);
+    expect(mit.vorhanden).toBe('bleibt');
+  }, 30_000);
 });

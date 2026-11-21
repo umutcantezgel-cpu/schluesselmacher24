@@ -33,18 +33,27 @@ function Fassade({ video, titel, sizes }: { video: FassadenVideo; titel: string;
   if (bild) {
     return <Image src={bild.url} alt={bild.alt || titel} fill sizes={sizes} className="object-cover" />;
   }
+  // Die Fläche hat eine feste Höhe (16 zu 9), unten steht der Knopf. Damit am Telefon nichts unter den Knopf läuft,
+  // steht die Dauer in der Kopfzeile, und der Titel ist auf zwei Zeilen begrenzt (ab 640 px drei). Beide Zeilen
+  // schrumpfen nicht (`shrink-0`), sonst schnitte die Fläche eine Zeile mitten durch. Der volle Titel steht im
+  // Namen des Knopfs und am Rahmen des Players.
   return (
-    <div className="absolute inset-0 flex flex-col items-start gap-1 p-4 pb-20 sm:p-6 sm:pb-24">
-      <p className="font-mono text-caption uppercase tracking-label text-foreground-muted">Video</p>
-      <p className="max-w-measure text-title-sm font-semibold text-foreground [overflow-wrap:anywhere]">{titel}</p>
-      {dauer && (
-        <p className="text-small text-foreground-muted">
-          <span aria-hidden="true" className="font-mono tabular-nums">
-            {dauer}
-          </span>
-          <span className="sr-only">Dauer: {vorlesen ?? dauer}</span>
-        </p>
-      )}
+    <div className="absolute inset-0 flex flex-col items-start gap-0.5 p-3 pb-16 sm:gap-1 sm:p-6 sm:pb-24">
+      <p className="shrink-0 font-mono text-caption uppercase tracking-label text-foreground-muted">
+        Video
+        {dauer && (
+          <>
+            <span aria-hidden="true" className="tabular-nums">
+              {' · '}
+              {dauer}
+            </span>
+            <span className="sr-only">, Dauer: {vorlesen ?? dauer}</span>
+          </>
+        )}
+      </p>
+      <p className="line-clamp-2 max-w-measure shrink-0 text-title-sm font-semibold text-foreground [overflow-wrap:anywhere] sm:line-clamp-3">
+        {titel}
+      </p>
     </div>
   );
 }

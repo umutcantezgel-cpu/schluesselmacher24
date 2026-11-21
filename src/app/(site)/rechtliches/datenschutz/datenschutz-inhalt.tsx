@@ -207,7 +207,7 @@ export function DatenschutzInhalt({
       </p>
       {videos && (
         <p>
-          Videos auf unseren Tutorial-Seiten kommen von YouTube, einem Dienst der Google Ireland Limited. Wir
+          Videos auf unseren Tutorial-Seiten und Leistungsseiten kommen von YouTube, einem Dienst der Google Ireland Limited. Wir
           binden sie im erweiterten Datenschutzmodus (youtube-nocookie.com) ein. Beim Aufruf der Seite sehen Sie
           zuerst nur eine Vorschau von uns; eine Verbindung zu YouTube besteht dann nicht. Erst wenn Sie auf
           „Video laden“ klicken, lädt Ihr Browser das Video von YouTube. Dabei erhält YouTube Ihre IP-Adresse,

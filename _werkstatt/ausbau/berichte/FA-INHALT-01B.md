@@ -194,3 +194,14 @@ Geänderte Dateien der Nachbesserung: `src/components/tutorial/tutorial-hinweis.
 Prüfung nach der Nachbesserung, alles über `sicher.sh --json`: `npx vitest run` 282 Dateien, 4376 Tests grün (3 mehr als vorher); `npm run typecheck` grün; `npm run lint` grün (0 Fehler, 0 Warnungen); `SM24_INDEXIERUNG=an npm run build` ohne Schalter und ohne Probeneintrag grün (190/190). `content/**` unberührt.
 
 === ENDE FA-INHALT-01B · BEREIT ZUR RÜCKGABE ===
+
+## Abnahme durch den Orchestrator (2026-11-21 03:50 MEZ, gemeinsam für FA-INHALT-01B und FA-INHALT-01C)
+
+- **Kette auf dem Endstand:** Typprüfung grün, Lint grün, Unit-Tests 4392 (283 Dateien), Datenbanktests 190, Build ohne Datenbank 190 von 190 (Next.js 16.4.6).
+- **Ohne Schalter gegen den Live-Stand (0c2123d):** Sicherheitsrichtlinie, `<main>` und Strukturdaten auf 17 Seiten gleich (85 von 85), 16 von 16 Seitenbildern bytegleich, auf 15 Ansichten kein zusätzliches Skript, kein Bündel der Einbettung im Build. Neu sichtbar sind nur die Tutorial-Hinweise an neun Orten.
+- **Hinweise:** alle Orte geprüft, Formularschritte im Browser (Assistent, Konfigurator, Vorlage-Anfrage): neues Fenster, Zusatz sichtbar, Zwischenstand bleibt.
+- **Mit Schalter (Kopie mit erfundenen Probevideos):** vor dem Klick kein Abruf und keine Adresse von YouTube, nach dem Klick nur der eine Rahmen, Fokus auf dem Player, kein Sprung, nichts gespeichert; Vorschau bei 320 bis 1280 px ohne Überlauf.
+- **Zwei Gegenprüfungen:** Lauf wf_be5ef52c-985 (11 Befunde, 5 rot) und Lauf wf_ccd0527d-2af (13 Befunde, 4 rot); alle roten behoben, gelbe behoben oder im Bericht FA-INHALT-01C als offen benannt.
+- **Nicht gebaut:** Fund in der Livegang-Prüfung für eine eigene Datenschutzerklärung im Admin (steht als Bedingung in der Betriebsanleitung).
+- **Zwischenfall (aus der Umsetzung von 01B):** Ein Testlauf startete einmal eine Anfrage an `youtube-nocookie.com`, die beim Abbau des Tests abgebrochen wurde; ob sie den Rechner verließ, ist nicht feststellbar. Der Test sperrt seitdem das Laden von Rahmen und `fetch`.
+- Entscheidung A-084; für Menschen MA-63.

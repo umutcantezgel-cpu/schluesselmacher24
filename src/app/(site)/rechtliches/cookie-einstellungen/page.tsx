@@ -35,8 +35,8 @@ export default function CookieEinstellungenPage() {
           <p className="mt-3">
             Diese Website setzt keine Analyse-, Werbe- oder Marketingdienste ein. Videos von YouTube bindet sie erst nach
             Ihrem Klick auf „Video laden“ ein; dabei kann YouTube Cookies setzen (siehe{' '}
-            <Link href="/rechtliches/datenschutz">Datenschutzerklärung</Link>). Inhalte anderer fremder Anbieter bindet
-            sie nicht ein. Alles andere, was gespeichert wird, ist für die von Ihnen genutzten Funktionen technisch
+            <Link href="/rechtliches/datenschutz">Datenschutzerklärung</Link>). Inhalte anderer Anbieter bindet sie
+            nicht ein. Alles andere, was gespeichert wird, ist für die von Ihnen genutzten Funktionen technisch
             notwendig und liegt im lokalen Speicher Ihres Browsers. Eine Einwilligung ist dafür nicht erforderlich.
           </p>
         )
@@ -81,6 +81,12 @@ export default function CookieEinstellungenPage() {
         übertragen; Einzelheiten stehen in der{' '}
         <Link href="/rechtliches/datenschutz">Datenschutzerklärung</Link>.
       </p>
+      {videos && (
+        <p>
+          Cookies, die YouTube nach Ihrem Klick auf „Video laden“ setzt, speichern nicht wir. Sie löschen sie über
+          die Einstellungen Ihres Browsers.
+        </p>
+      )}
 
       {statistik && (
         <>

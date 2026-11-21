@@ -18,7 +18,7 @@ Vor dem Klick des Kunden zeigt die Seite kein Bild von YouTube, sondern eine eig
 - Mit **Eigenes Vorschaubild (optional)** wählen Sie ein Foto aus der Medienablage. Laden Sie dafür ein eigenes Foto hoch, nie ein Bild von YouTube.
 - Ohne eigenes Bild zeigt die Seite eine helle Fläche mit Titel und Dauer.
 - Für den Videoeintrag in den Strukturdaten der Tutorial-Seite braucht es das eigene Vorschaubild, den Titel und das Datum. Fehlt eines davon, erscheint das Video trotzdem auf der Seite, nur ohne diesen Eintrag.
-- Im Eintrag stehen Titel, Beschreibung (die Kurzantwort des Tutorials), das eigene Vorschaubild, das Datum und, wenn gepflegt, die Dauer. Das sind die Angaben, die Google für einen Videoeintrag verlangt. Die Adresse des Players von YouTube steht bewusst nicht darin: Google empfiehlt sie nur, und vor dem Klick des Kunden soll in der Seite keine Adresse von YouTube stehen. Ob und wie die Suche den Eintrag zeigt, entscheidet Google.
+- Im Eintrag stehen Titel, Beschreibung (die Kurzantwort des Tutorials), das eigene Vorschaubild, das Datum und, wenn gepflegt, die Dauer. Darin stehen alle Angaben, die Google für einen Videoeintrag verlangt (Titel, Vorschaubild, Datum). Die Adresse des Players von YouTube steht bewusst nicht darin: Google empfiehlt sie nur, und vor dem Klick des Kunden soll in der Seite keine Adresse von YouTube stehen. Ob und wie die Suche den Eintrag zeigt, entscheidet Google.
 - Auf den Leistungsseiten steht kein eigener Videoeintrag; er gehört zur Tutorial-Seite.
 
 ## 3. Transkript
@@ -35,17 +35,17 @@ Mit dem Schalter gilt:
 - Erst der Klick des Kunden lädt das Video im erweiterten Datenschutzmodus (`youtube-nocookie.com`). Die Seite speichert dazu nichts; beim nächsten Video entscheidet der Kunde neu.
 - Die Sicherheitsrichtlinie erlaubt dann genau den Rahmen von `https://www.youtube-nocookie.com`, sonst nichts von YouTube oder Google.
 - Die Datenschutzerklärung zeigt den Absatz zu YouTube, und die Übersicht der Verarbeitungen nennt den Dienst.
-- Hinweise auf den Leistungsseiten tragen dann bei Tutorials mit Video das Kennzeichen „mit Video“.
+- Auf den Leistungsseiten steht das Video dann direkt im Hinweis, mit derselben Vorschau und demselben Knopf wie auf der Tutorial-Seite; darunter bleibt der Verweis auf die Anleitung. In Anfrageformularen bleibt es beim Verweis in neuem Fenster, mit dem Kennzeichen „mit Video“.
+- Die Seite Cookie-Einstellungen zeigt eine eigene Einleitung: Videos von YouTube laden erst nach dem Klick, und YouTube kann dabei Cookies setzen.
 
-**Wer setzt ihn:** der Betrieb (wer die Umgebungsvariablen bei Vercel pflegt), und erst, wenn der Anwalt den Absatz der Datenschutzerklärung geprüft und der Inhaber ihn freigegeben hat.
+**Wer setzt ihn:** der Betrieb (wer die Umgebungsvariablen bei Vercel pflegt), und erst, wenn der Anwalt die Texte hinter dem Schalter geprüft und der Inhaber sie freigegeben hat: den Absatz zu YouTube in der Datenschutzerklärung, den Eintrag in der Übersicht der Verarbeitungen, die Einleitung der Seite Cookie-Einstellungen und den Satz unter der Vorschau. Die Entwürfe stehen wörtlich in den Berichten `_werkstatt/ausbau/berichte/FA-INHALT-01B.md` und `FA-INHALT-01C.md`.
 
-**Erst wenn auch das erledigt ist:**
+**Außerdem vorher prüfen:**
 
-- **Seite Cookie-Einstellungen** (`/rechtliches/cookie-einstellungen`): Sie sagt heute, die Website binde „keine Inhalte fremder Anbieter ein“ und speichere nur im lokalen Speicher des Browsers. Mit Videos stimmt das nicht mehr, denn YouTube kann nach dem Klick Cookies setzen. Der Text wird nicht vom Schalter umgestellt. Er muss vorher vom Anwalt geprüft, vom Inhaber freigegeben und in einem eigenen Paket hinter denselben Schalter gelegt sein.
 - **Eigene Datenschutzerklärung im Admin**: Ist unter den Einstellungen eine eigene Datenschutzerklärung hinterlegt, ersetzt sie den eingebauten Text vollständig. Dann fehlen der Absatz zu YouTube und die Stelle, auf die der Satz unter dem Video verweist. Die hinterlegte Fassung muss deshalb den geprüften Absatz zu YouTube enthalten, bevor der Schalter gesetzt wird.
 
 **So:** In den Umgebungsvariablen des Projekts `SM24_VIDEOS` mit dem Wert `an` anlegen und die Seite neu bauen lassen (neues Deployment). Andere Werte oder ein leerer Wert lassen die Einbettung aus. Zum Abschalten die Variable löschen und neu bauen lassen.
 
 ## 5. Hinweise auf Leistungsseiten und in Formularen
 
-Unabhängig vom Schalter erscheinen veröffentlichte Tutorials an den Orten, die unter **Erscheint auf** gewählt sind: auf den Leistungsseiten als kurzer Hinweis, in den Anfrageformularen beim Kasten mit der Hilfe. In Formularen öffnet der Verweis ein neues Fenster, damit die Angaben im Formular stehen bleiben. Ein Ort ohne veröffentlichtes Tutorial zeigt nichts.
+Unabhängig vom Schalter erscheinen veröffentlichte Tutorials an den Orten, die unter **Erscheint auf** gewählt sind: auf den Leistungsseiten als kurzer Hinweis, in den Anfrageformularen beim Kasten mit der Hilfe. In Formularen öffnet der Verweis ein neues Fenster, damit die Angaben im Formular stehen bleiben. Ein Ort ohne veröffentlichtes Tutorial zeigt nichts. Mit dem Schalter zeigt der Hinweis auf Leistungsseiten bei einem Tutorial mit Video zusätzlich das Video selbst (siehe Abschnitt 4).

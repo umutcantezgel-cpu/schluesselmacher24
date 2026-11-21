@@ -1,12 +1,13 @@
 /* ==========================================================================
-   Ersatz für `VideoRahmen` ohne Freigabe-Schalter (FA-INHALT-01B, A-076)
+   Ersatz für `VideoRahmen` ohne Freigabe-Schalter (FA-INHALT-01B, FA-INHALT-01C, A-076)
 
-   Vorbereitet für einen Alias in next.config.ts (Entscheidung des Orchestrators,
-   Bericht FA-INHALT-01B, Nachbesserung zu den Befunden 3 und 9): Ohne
-   `SM24_VIDEOS=an` löst `@/components/tutorial/video-rahmen` auf diese Datei auf.
-   Sie ist kein Client-Baustein und bringt kein Skript mit, so laden Seiten ohne
-   Video kein Byte mehr. Ohne Schalter wird `VideoRahmen` ohnehin nie gerendert
-   (`VideoHinweis` zeigt dann den Satz aus Teil A); der Ersatz zeigt nichts.
+   Ohne `SM24_VIDEOS=an` löst der Alias in next.config.ts (`videoRahmenAlias` in
+   src/lib/tutorials/freigabe.ts) den Import `@/components/tutorial/video-rahmen`
+   auf diese Datei auf. Sie ist kein Client-Baustein und bringt kein Skript mit,
+   so lädt ohne Schalter keine Seite Skript der Einbettung. Gerendert wird
+   `VideoRahmen` ohne Schalter ohnehin nie; der Ersatz zeigt nichts. Der Alias
+   gilt nur im Build und in `next dev`, nicht in vitest: Tests treffen den echten
+   Baustein.
    ========================================================================== */
 
 /** Nimmt dieselben Eigenschaften wie `VideoRahmen` entgegen (kennung, titel, children) und zeigt nichts. */

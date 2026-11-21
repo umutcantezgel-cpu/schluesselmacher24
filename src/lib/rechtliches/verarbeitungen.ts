@@ -90,7 +90,7 @@ export const YOUTUBE: Dienstleister = {
   id: 'youtube',
   name: 'Google Ireland Limited (YouTube)',
   sitz: 'Gordon House, Barrow Street, Dublin 4, Irland',
-  aufgabe: 'Wiedergabe eingebetteter Videos auf den Tutorial-Seiten, erst nach Ihrem Klick auf „Video laden“',
+  aufgabe: 'Wiedergabe eingebetteter Videos auf den Tutorial-Seiten und Leistungsseiten, erst nach Ihrem Klick auf „Video laden“',
   rolle: 'für die Verarbeitung nach dem Laden des Videos eigener Verantwortlicher',
   pruefhinweis:
     'Rolle von Google bei eingebetteten Videos anwaltlich prüfen (gemeinsame Verantwortung für die Erhebung '
@@ -121,7 +121,7 @@ export function dienstleister(optionen: VerarbeitungsOptionen = {}): Dienstleist
 export const VIDEOS_VERARBEITUNG: Verarbeitung = {
   id: 'videos',
   titel: 'Videos von YouTube (erst nach Ihrem Klick)',
-  zweck: 'Wiedergabe von Anleitungsvideos auf unseren Tutorial-Seiten.',
+  zweck: 'Wiedergabe von Anleitungsvideos auf unseren Tutorial-Seiten und Leistungsseiten.',
   daten: [
     'IP-Adresse',
     'Geräte- und Browserangaben',
