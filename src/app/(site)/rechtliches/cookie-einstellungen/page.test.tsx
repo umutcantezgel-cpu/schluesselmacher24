@@ -1,6 +1,8 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
+import VORHER from '@/lib/tutorials/hinweis-vorher.json';
+
 import CookieEinstellungenPage from './page';
 
 afterEach(() => vi.unstubAllEnvs());
@@ -19,5 +21,41 @@ describe('Cookie-Einstellungen', () => {
     expect(html).not.toContain('Derzeit ist kein Analysedienst eingebunden.');
     expect(html).toContain('Reichweitenmessung mit Google Analytics');
     expect(html).toContain('Statistik mit Google Analytics');
+  });
+});
+
+/*
+ * Fassung hinter dem Schalter SM24_VIDEOS (FA-INHALT-01C, Entwurf zur anwaltlichen Prüfung, R10). Ohne Schalter
+ * bleibt die Seite Zeichen für Zeichen wie vor dem Paket (`hinweis-vorher.json`, erfasst vor der ersten Änderung).
+ */
+describe('Cookie-Einstellungen und Videos', () => {
+  const ohne = (messId: string) => {
+    vi.stubEnv('NEXT_PUBLIC_GA_MEASUREMENT_ID', messId);
+    return renderToStaticMarkup(<CookieEinstellungenPage />);
+  };
+
+  it('ohne Schalter: beide Fassungen Zeichen für Zeichen wie vorher', () => {
+    for (const schalter of ['', 'aus']) {
+      vi.stubEnv('SM24_VIDEOS', schalter);
+      expect(ohne(''), `ohne Statistik ${schalter}`).toBe(VORHER.cookieEinstellungen.ohneStatistik);
+      expect(ohne('G-TEST1234'), `mit Statistik ${schalter}`).toBe(VORHER.cookieEinstellungen.mitStatistik);
+    }
+  });
+
+  it('mit Schalter: keine Aussage mehr, es würden keine Inhalte fremder Anbieter eingebunden; YouTube nach dem Klick', () => {
+    vi.stubEnv('SM24_VIDEOS', 'an');
+    for (const messId of ['', 'G-TEST1234']) {
+      const html = ohne(messId);
+      expect(html).not.toMatch(/bindet keine\s+Inhalte fremder Anbieter/);
+      expect(html).not.toMatch(/keine Inhalte fremder Anbieter/);
+      expect(html).toContain('Videos von YouTube');
+      expect(html).toContain('Video laden');
+      expect(html).toContain('dabei kann YouTube Cookies setzen');
+      expect(html).toContain('href="/rechtliches/datenschutz"');
+      // Nur die Einleitung wechselt: Kategorien, Speicherung und Schaltflächen bleiben wie ohne Schalter.
+      const vorher = messId ? VORHER.cookieEinstellungen.mitStatistik : VORHER.cookieEinstellungen.ohneStatistik;
+      const ohneEinleitung = (text: string) => text.replace(/<p class="mt-3">[\s\S]*?<\/p>/, '');
+      expect(ohneEinleitung(html)).toBe(ohneEinleitung(vorher));
+    }
   });
 });

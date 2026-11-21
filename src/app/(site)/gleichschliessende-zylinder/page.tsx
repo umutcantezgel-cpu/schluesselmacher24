@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getCodeLines, getCollection, getHersteller, getPageContent, getRubrik } from '@/lib/data';
-import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { TutorialHinweisSeite } from '@/components/tutorial/tutorial-hinweis-seite';
 import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { verweiseNachAbschnitt } from '@/lib/tutorials/tutorials';
 import { HerstellerBereich } from '@/components/hersteller/hersteller-bereich';
@@ -263,7 +263,7 @@ export default async function CylinderOverviewPage() {
             </ul>
 
             {/* Tutorial-Hinweis (FA-INHALT-01B): Der Abschnitt erklärt das Prinzip schon, darum nur die Verweise. */}
-            <TutorialHinweis verweise={hinweiseGrundprinzip} variante="verweis" ort="gleichschliessende-zylinder" className="mt-6" />
+            <TutorialHinweisSeite verweise={hinweiseGrundprinzip} variante="verweis" ort="gleichschliessende-zylinder" className="mt-6" />
           </div>
 
           <div className="lg:col-span-7">
@@ -445,7 +445,7 @@ export default async function CylinderOverviewPage() {
         </ul>
 
         {/* Tutorial-Hinweis (FA-INHALT-01B): Die Funktionen stehen schon hier, darum nur der Verweis. */}
-        <TutorialHinweis verweise={hinweiseFunktion} variante="verweis" ort="gleichschliessende-zylinder" className="mt-6" />
+        <TutorialHinweisSeite verweise={hinweiseFunktion} variante="verweis" ort="gleichschliessende-zylinder" className="mt-6" />
       </Section>
 
       {/* 04 Messhilfe: nummerierte Schritte links, Messzeichnung rechts */}
@@ -518,7 +518,7 @@ export default async function CylinderOverviewPage() {
             </Link>
 
             {/* Tutorial-Hinweis (FA-INHALT-01B): Die Messhilfe steht schon hier, darum nur der Verweis zum Messen. */}
-            <TutorialHinweis verweise={hinweiseMessen} variante="verweis" ort="gleichschliessende-zylinder" className="mt-6" />
+            <TutorialHinweisSeite verweise={hinweiseMessen} variante="verweis" ort="gleichschliessende-zylinder" className="mt-6" />
           </div>
 
           <div className="lg:col-span-7">

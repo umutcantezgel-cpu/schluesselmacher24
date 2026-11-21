@@ -1,3 +1,6 @@
+import { existsSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+
 import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
@@ -5,7 +8,14 @@ import { DatenschutzInhalt } from '@/app/(site)/rechtliches/datenschutz/datensch
 import { echteEinstellungen } from '@/lib/rechtliches/test-hilfen';
 import { dienstleister, verarbeitungen } from '@/lib/rechtliches/verarbeitungen';
 
-import { VIDEO_RAHMEN_HOST, videosFreiBei, videosFreigegeben } from './freigabe';
+import {
+  VIDEO_RAHMEN_ERSATZ,
+  VIDEO_RAHMEN_HOST,
+  VIDEO_RAHMEN_MODUL,
+  videoRahmenAlias,
+  videosFreiBei,
+  videosFreigegeben,
+} from './freigabe';
 import VORHER from './freigabe-vorher.json';
 
 /*
@@ -116,5 +126,44 @@ describe('Datenschutzerklärung und Verarbeitungsübersicht', () => {
     const nummer = liste.findIndex((e) => e.id === 'videos') + 1;
     const html = renderToStaticMarkup(<DatenschutzInhalt settings={settings} videos />).replace(/<!-- -->/g, '');
     expect(html).toContain(`Einwilligung durch den Klick (siehe 2.${nummer})`);
+  });
+});
+
+/* ---------- Alias ohne Schalter (FA-INHALT-01C) ---------------------------- */
+
+describe('Alias für den Client-Baustein der Einbettung', () => {
+  type Konfig = { turbopack?: { resolveAlias?: Record<string, string> }; webpack?: unknown };
+
+  async function konfig(schalter: string): Promise<Konfig> {
+    vi.resetModules();
+    vi.stubEnv('SM24_VIDEOS', schalter);
+    const { default: config } = await import('../../../next.config');
+    return config as Konfig;
+  }
+
+  it('die reine Regel: Alias genau ohne Schalter, auf den Ersatz ohne Client-Baustein', () => {
+    expect(videoRahmenAlias(false)).toEqual({ '@/components/tutorial/video-rahmen': './src/components/tutorial/video-rahmen-aus.tsx' });
+    expect(videoRahmenAlias(true)).toEqual({});
+    expect(VIDEO_RAHMEN_MODUL).toBe('@/components/tutorial/video-rahmen');
+    expect(existsSync(path.join(process.cwd(), VIDEO_RAHMEN_ERSATZ))).toBe(true);
+    expect(readFileSync(path.join(process.cwd(), VIDEO_RAHMEN_ERSATZ), 'utf8')).not.toMatch(/^'use client'/m);
+  });
+
+  it('next.config.ts: ohne Schalter (leer, „aus“, fehlend) gesetzt, mit Schalter nicht (Turbopack)', async () => {
+    for (const wert of ['', 'aus', '1']) {
+      const alias = (await konfig(wert)).turbopack?.resolveAlias;
+      expect(alias, wert).toEqual({ [VIDEO_RAHMEN_MODUL]: VIDEO_RAHMEN_ERSATZ });
+    }
+    for (const wert of ['an', ' AN ']) {
+      const turbopack = (await konfig(wert)).turbopack ?? {};
+      expect(turbopack, wert).not.toHaveProperty('resolveAlias');
+    }
+  }, 30_000);
+
+  it('next.config.ts: der Zweig für webpack setzt denselben Alias, nur ohne Schalter', () => {
+    const quelle = readFileSync(path.join(process.cwd(), 'next.config.ts'), 'utf8');
+    expect(quelle).toContain('const videoAlias = videoRahmenAlias(mitVideos);');
+    expect(quelle).toContain('resolveAlias: videoAlias');
+    expect(quelle).toMatch(/for \(const \[modul, ersatz\] of Object\.entries\(videoAlias\)\)[\s\S]{0,200}\[`\$\{modul\}\$`\]: path\.resolve\(dirname, ersatz\)/);
   });
 });

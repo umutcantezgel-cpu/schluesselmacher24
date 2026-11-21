@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getCodeLines, getPageContent, getRubrik } from '@/lib/data';
-import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { TutorialHinweisSeite } from '@/components/tutorial/tutorial-hinweis-seite';
 import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { herstellerPfad, kategoriePfad, verfuegbarkeitVon } from '@/lib/codelinie';
 import { formatCents, formatNumber } from '@/lib/format';
@@ -394,7 +394,7 @@ export default async function SchluesselNachCodePage() {
         />
 
         {/* Tutorial-Hinweis (FA-INHALT-01B): erscheint nur mit veröffentlichtem, zugeordnetem Tutorial. */}
-        <TutorialHinweis verweise={tutorials} ort="schluessel-nach-code" className="mt-8 max-w-3xl" />
+        <TutorialHinweisSeite verweise={tutorials} ort="schluessel-nach-code" className="mt-8 max-w-3xl" />
 
         {/* Stückliste mit Fach-Icons: die ganze Zeile ist der Link */}
         <ol className="mt-8 border-t border-border">

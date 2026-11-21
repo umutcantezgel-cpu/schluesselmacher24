@@ -17,7 +17,9 @@ Vor dem Klick des Kunden zeigt die Seite kein Bild von YouTube, sondern eine eig
 
 - Mit **Eigenes Vorschaubild (optional)** wählen Sie ein Foto aus der Medienablage. Laden Sie dafür ein eigenes Foto hoch, nie ein Bild von YouTube.
 - Ohne eigenes Bild zeigt die Seite eine helle Fläche mit Titel und Dauer.
-- Für den Videoeintrag in den Strukturdaten der Seite braucht es das eigene Vorschaubild, den Titel und das Datum. Fehlt eines davon, erscheint das Video trotzdem auf der Seite, nur ohne diesen Eintrag. Dieser Eintrag enthält bewusst keine Adresse von YouTube. Ein Videoergebnis mit Vorschau in der Google-Suche ist deshalb nicht zu erwarten; ob sich das ändern soll, klären Anwalt und Inhaber.
+- Für den Videoeintrag in den Strukturdaten der Tutorial-Seite braucht es das eigene Vorschaubild, den Titel und das Datum. Fehlt eines davon, erscheint das Video trotzdem auf der Seite, nur ohne diesen Eintrag.
+- Im Eintrag stehen Titel, Beschreibung (die Kurzantwort des Tutorials), das eigene Vorschaubild, das Datum und, wenn gepflegt, die Dauer. Das sind die Angaben, die Google für einen Videoeintrag verlangt. Die Adresse des Players von YouTube steht bewusst nicht darin: Google empfiehlt sie nur, und vor dem Klick des Kunden soll in der Seite keine Adresse von YouTube stehen. Ob und wie die Suche den Eintrag zeigt, entscheidet Google.
+- Auf den Leistungsseiten steht kein eigener Videoeintrag; er gehört zur Tutorial-Seite.
 
 ## 3. Transkript
 

@@ -17,13 +17,21 @@ export const VIDEO_DATEN_SATZ = 'Mit dem Klick auf „Video laden“ wird das Vi
 /** Ziel des Verweises auf die Datenschutzerklärung (Abschnitt der Verarbeitung). */
 export const VIDEO_DATENSCHUTZ_HREF = '/rechtliches/datenschutz#verarbeitung-videos';
 
+/** Was die Fassade von einem Video braucht. */
+type FassadenVideo = Pick<TutorialVideo, 'youtubeId' | 'duration' | 'thumbnail'>;
+
+/** Das gepflegte eigene Vorschaubild (Pfad ab Wurzel), sonst `undefined`. Nie ein Bild von YouTube. */
+export function eigenesVorschaubild(video: Pick<TutorialVideo, 'thumbnail'>) {
+  return video.thumbnail?.url?.startsWith('/') ? video.thumbnail : undefined;
+}
+
 /** Fassade aus eigenen Mitteln: das gepflegte Vorschaubild, sonst eine helle Fläche mit Titel und Dauer. */
-function Fassade({ video, titel }: { video: TutorialVideo; titel: string }) {
+function Fassade({ video, titel, sizes }: { video: FassadenVideo; titel: string; sizes: string }) {
   const dauer = video.duration?.trim();
   const vorlesen = dauer ? dauerZumVorlesen(dauer) : null;
-  const bild = video.thumbnail?.url?.startsWith('/') ? video.thumbnail : undefined;
+  const bild = eigenesVorschaubild(video);
   if (bild) {
-    return <Image src={bild.url} alt={bild.alt || titel} fill sizes="(min-width: 1024px) 760px, 100vw" className="object-cover" />;
+    return <Image src={bild.url} alt={bild.alt || titel} fill sizes={sizes} className="object-cover" />;
   }
   return (
     <div className="absolute inset-0 flex flex-col items-start gap-1 p-4 pb-20 sm:p-6 sm:pb-24">
@@ -38,6 +46,39 @@ function Fassade({ video, titel }: { video: TutorialVideo; titel: string }) {
         </p>
       )}
     </div>
+  );
+}
+
+/**
+ * Die Einbettung selbst (FA-INHALT-01B, FA-INHALT-01C): Fassade im festen Rahmen 16 zu 9 mit dem Knopf
+ * „Video laden“, darunter der Satz zur Datenübertragung mit Verweis auf die Datenschutzerklärung. Nur mit
+ * Freigabe und geprüfter Kennung aufrufen. Dieselbe Einbettung steht auf der Tutorial-Seite und im Hinweis der
+ * Leistungsseiten (`tutorial-hinweis-seite.tsx`).
+ */
+export function VideoEinbettung({
+  video,
+  titel,
+  sizes = '(min-width: 1024px) 760px, 100vw',
+}: {
+  video: FassadenVideo;
+  /** Titel des Players und der gezeichneten Fassade. */
+  titel: string;
+  /** `sizes` des eigenen Vorschaubilds, passend zur Breite der Stelle. */
+  sizes?: string;
+}) {
+  return (
+    <>
+      <VideoRahmen kennung={video.youtubeId} titel={titel}>
+        <Fassade video={video} titel={titel} sizes={sizes} />
+      </VideoRahmen>
+      <p className="mt-3 max-w-measure text-small text-foreground-muted">
+        {VIDEO_DATEN_SATZ}{' '}
+        <a href={VIDEO_DATENSCHUTZ_HREF} className="font-semibold text-primary underline">
+          Mehr in der Datenschutzerklärung
+        </a>
+        .
+      </p>
+    </>
   );
 }
 
@@ -77,18 +118,7 @@ export function VideoHinweis({
   return (
     <div className={className} data-tutorial-video="">
       {einbetten ? (
-        <>
-          <VideoRahmen kennung={video.youtubeId} titel={videoTitel}>
-            <Fassade video={video} titel={videoTitel} />
-          </VideoRahmen>
-          <p className="mt-3 max-w-measure text-small text-foreground-muted">
-            {VIDEO_DATEN_SATZ}{' '}
-            <a href={VIDEO_DATENSCHUTZ_HREF} className="font-semibold text-primary underline">
-              Mehr in der Datenschutzerklärung
-            </a>
-            .
-          </p>
-        </>
+        <VideoEinbettung video={video} titel={videoTitel} />
       ) : (
         <p className="max-w-measure rounded-lg border border-border bg-surface-muted p-5 text-small text-foreground-muted sm:p-6">
           {VIDEO_HINWEIS_TEXT}

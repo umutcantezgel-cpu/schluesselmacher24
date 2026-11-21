@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { gaMessId } from '@/lib/statistik';
+import { videosFreigegeben } from '@/lib/tutorials/freigabe';
 
 import { CookieSettings } from './cookie-einstellungen';
 
@@ -14,10 +15,32 @@ export const metadata: Metadata = {
 export default function CookieEinstellungenPage() {
   // Google Analytics nur, wenn eine Mess-ID gesetzt ist — sonst bleibt die Seite wie bisher.
   const statistik = Boolean(gaMessId());
+  // Videos von YouTube nur mit dem Schalter SM24_VIDEOS=an (FA-INHALT-01C): dann eine eigene Einleitung, die mit
+  // eingebetteten Videos wahr bleibt. Entwurf zur anwaltlichen Prüfung (R10); ohne Schalter bleibt alles wie bisher.
+  const videos = videosFreigegeben();
   return (
     <>
       <h1 className="text-headline font-bold text-balance">Cookie-Einstellungen</h1>
-      {statistik ? (
+      {videos ? (
+        statistik ? (
+          <p className="mt-3">
+            Diese Website setzt keine Werbe- oder Marketingdienste ein. Für die Reichweitenmessung nutzen wir Google
+            Analytics, aber nur, wenn Sie unten in „Statistik“ einwilligen. Videos von YouTube laden erst nach Ihrem
+            Klick auf „Video laden“; dabei kann YouTube Cookies setzen (siehe{' '}
+            <Link href="/rechtliches/datenschutz">Datenschutzerklärung</Link>). Alles Weitere, was gespeichert wird, ist
+            für die von Ihnen genutzten Funktionen technisch notwendig und liegt im lokalen Speicher Ihres Browsers;
+            dafür ist keine Einwilligung erforderlich.
+          </p>
+        ) : (
+          <p className="mt-3">
+            Diese Website setzt keine Analyse-, Werbe- oder Marketingdienste ein. Videos von YouTube bindet sie erst nach
+            Ihrem Klick auf „Video laden“ ein; dabei kann YouTube Cookies setzen (siehe{' '}
+            <Link href="/rechtliches/datenschutz">Datenschutzerklärung</Link>). Inhalte anderer fremder Anbieter bindet
+            sie nicht ein. Alles andere, was gespeichert wird, ist für die von Ihnen genutzten Funktionen technisch
+            notwendig und liegt im lokalen Speicher Ihres Browsers. Eine Einwilligung ist dafür nicht erforderlich.
+          </p>
+        )
+      ) : statistik ? (
         <p className="mt-3">
           Diese Website setzt keine Werbe- oder Marketingdienste ein. Für die Reichweitenmessung
           nutzen wir Google Analytics — aber nur, wenn Sie unten in „Statistik“ einwilligen. Alles

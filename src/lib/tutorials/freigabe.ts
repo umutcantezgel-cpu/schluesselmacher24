@@ -33,3 +33,20 @@ export function videosFreigegeben(): boolean {
 
 /** Der einzige fremde Rahmen, den die Sicherheitsrichtlinie mit Schalter erlaubt. */
 export const VIDEO_RAHMEN_HOST = 'https://www.youtube-nocookie.com';
+
+/* ---------- Alias ohne Schalter (FA-INHALT-01C, A-076) --------------------- */
+
+/** Der Client-Baustein der Einbettung, so wie `video-hinweis.tsx` ihn importiert. */
+export const VIDEO_RAHMEN_MODUL = '@/components/tutorial/video-rahmen';
+
+/** Ersatz ohne Schalter: kein Client-Baustein, zeigt nichts (Pfad ab der Wurzel des Projekts). */
+export const VIDEO_RAHMEN_ERSATZ = './src/components/tutorial/video-rahmen-aus.tsx';
+
+/**
+ * Alias für next.config.ts: Ohne Schalter löst der Client-Baustein der Einbettung auf den Ersatz auf, damit keine
+ * Seite sein Skript lädt (Next.js nimmt jeden Client-Baustein, den ein Serverbaustein importiert, in das Bündel
+ * der Route, auch wenn er nicht gerendert wird). Mit Schalter kein Alias.
+ */
+export function videoRahmenAlias(mitVideos: boolean): Record<string, string> {
+  return mitVideos ? {} : { [VIDEO_RAHMEN_MODUL]: VIDEO_RAHMEN_ERSATZ };
+}

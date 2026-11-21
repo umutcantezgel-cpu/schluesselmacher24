@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getPageContent, getRubrik, getSettings } from '@/lib/data';
-import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { TutorialHinweisSeite } from '@/components/tutorial/tutorial-hinweis-seite';
 import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { defaults } from '@/lib/data/defaults';
 import { einsendeAngebotFuerWeg } from '@/lib/einsenden/schein';
@@ -189,7 +189,7 @@ export default async function SchluesselEinschickenPage() {
               </ButtonLink>
             </div>
             {/* Tutorial-Hinweis (FA-INHALT-01B) */}
-            <TutorialHinweis verweise={tutorials} ort="schluessel-einschicken" className="mt-7" />
+            <TutorialHinweisSeite verweise={tutorials} ort="schluessel-einschicken" className="mt-7" />
           </div>
 
           {rubrik && <RubrikAblauf rubrik={rubrik} variante="liste" className="lg:col-span-7" />}

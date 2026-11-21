@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getPageContent, getRubrik, getSettings } from '@/lib/data';
-import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { TutorialHinweisSeite } from '@/components/tutorial/tutorial-hinweis-seite';
 import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { istPlatzhalter } from '@/lib/platzhalter';
@@ -368,7 +368,7 @@ export default async function SchluesselNachVorlagePage() {
         </Card>
 
         {/* Tutorial-Hinweis (FA-INHALT-01B): die Fotoanleitung steht schon hier, darum nur der Verweis. */}
-        <TutorialHinweis verweise={tutorials} variante="verweis" ort="schluessel-nach-vorlage" className="mt-6" />
+        <TutorialHinweisSeite verweise={tutorials} variante="verweis" ort="schluessel-nach-vorlage" className="mt-6" />
       </Section>
 
       {/* Autoschlüssel */}

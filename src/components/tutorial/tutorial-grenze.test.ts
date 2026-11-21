@@ -47,6 +47,15 @@ function erreichbar(start: string): Set<string> {
 const DATENSCHICHT = /^src\/lib\/data(\/|$)|^src\/lib\/tutorials\/hinweise\.ts$|^src\/payload/;
 const EINBETTUNG = /^src\/components\/tutorial\/video-(rahmen|hinweis)\.tsx$/;
 
+const LEISTUNGSSEITEN = [
+  'src/app/(site)/schluessel-nach-vorlage/page.tsx',
+  'src/app/(site)/schluessel-nach-code/page.tsx',
+  'src/app/(site)/schluessel-einschicken/page.tsx',
+  'src/app/(site)/gleichschliessende-zylinder/page.tsx',
+  'src/app/(site)/schliessanlagen/page.tsx',
+  'src/app/(site)/autoschluessel/gehaeuse/page.tsx',
+];
+
 const FORMULARE = [
   'src/app/(site)/schluessel-nach-vorlage/anfrage/anfrage-formular.tsx',
   'src/app/(site)/autoschluessel/anfrage/assistent.tsx',
@@ -93,14 +102,41 @@ describe('Tutorial-Hinweis: Grenze der Importe', () => {
     }
   });
 
-  it('die Einbettung hängt nur an der Tutorial-Seite', () => {
+  it('die Einbettung hängt nur an der Tutorial-Seite und am Hinweis der Leistungsseiten', () => {
     const nutzer = (name: string) =>
       execSync(`grep -rlE "from '(\\./|@/components/tutorial/)${name}'" src --include=*.ts --include=*.tsx`, { encoding: 'utf8' })
         .split('\n')
-        .filter((d) => d && !d.endsWith('.test.tsx') && !d.endsWith('.test.ts'));
+        .filter((d) => d && !d.endsWith('.test.tsx') && !d.endsWith('.test.ts'))
+        .sort();
     expect(nutzer('video-rahmen')).toEqual(['src/components/tutorial/video-hinweis.tsx']);
-    expect(nutzer('video-hinweis')).toEqual(['src/components/tutorial/tutorial-inhalt.tsx']);
+    expect(nutzer('video-hinweis')).toEqual(['src/components/tutorial/tutorial-hinweis-seite.tsx', 'src/components/tutorial/tutorial-inhalt.tsx']);
     expect(nutzer('tutorial-inhalt')).toEqual(['src/app/(site)/tutorials/[slug]/page.tsx']);
+    expect(nutzer('tutorial-hinweis-seite')).toEqual(LEISTUNGSSEITEN.slice().sort());
+  });
+
+  it('Formularseiten nehmen die Formular-Fassung des Hinweises; ihr Modulgraph erreicht die Einbettung nicht (FA-INHALT-01C)', () => {
+    for (const seite of FORMULARE.map((f) => path.join(path.dirname(f), 'page.tsx'))) {
+      const importe = ziele(lies(seite));
+      expect(importe, seite).toContain('@/components/tutorial/tutorial-hinweis');
+      expect(importe.filter((z) => /tutorial-hinweis-seite|video-(rahmen|hinweis)/.test(z)), seite).toEqual([]);
+      const graph = [...erreichbar(seite)];
+      expect(graph.filter((d) => EINBETTUNG.test(d) || /tutorial-hinweis-seite\.tsx$/.test(d)), seite).toEqual([]);
+    }
+    // Selbsttest: Eine Leistungsseite erreicht die Einbettung über den Hinweis der Leistungsseiten.
+    expect([...erreichbar('src/app/(site)/schluessel-nach-vorlage/page.tsx')].filter((d) => EINBETTUNG.test(d)).sort()).toEqual([
+      'src/components/tutorial/video-hinweis.tsx',
+      'src/components/tutorial/video-rahmen.tsx',
+    ]);
+  });
+
+  it('Leistungsseiten nehmen den Hinweis mit Video, nie die Formular-Fassung', () => {
+    for (const seite of LEISTUNGSSEITEN) {
+      const importe = ziele(lies(seite));
+      expect(importe, seite).toContain('@/components/tutorial/tutorial-hinweis-seite');
+      expect(importe, seite).not.toContain('@/components/tutorial/tutorial-hinweis');
+      // Kein VideoObject auf Leistungsseiten: Der Eintrag gehört zur Tutorial-Seite.
+      expect(lies(seite), seite).not.toMatch(/videoDaten|video=\{/);
+    }
   });
 
   it('der Ersatz für den Alias ohne Schalter ist vorbereitet: kein Client-Baustein, gleicher Name, absoluter Import', () => {
@@ -132,10 +168,14 @@ describe('Tutorial-Hinweis: Grenze der Importe', () => {
     for (const [seite, orte] of Object.entries(seiten)) {
       const quelle = lies(seite);
       for (const ort of orte) {
-        expect(quelle, `${seite} ${ort}`).toContain(`tutorialVerweiseFuer('${ort}')`);
-        expect(quelle, `${seite} ${ort}`).toContain(`ort="${ort}"`);
+        expect(quelle, `${seite} ${ort}`).toMatch(new RegExp(`tutorialVerweiseFuer\\([^)]*'${ort}'`));
+        expect(quelle, `${seite} ${ort}`).toMatch(new RegExp(`ort="[^"]*\\b${ort}\\b[^"]*"`));
       }
     }
+    // Konfigurator: Maße und Funktion als ein Block mit einer Überschrift (FA-INHALT-01C, Entscheidung 7).
+    const konfigurator = lies('src/app/(site)/gleichschliessende-zylinder/konfigurator/page.tsx');
+    expect(konfigurator).toContain("tutorialVerweiseFuer('gleichschliessende-zylinder-messen', 'gleichschliessende-zylinder-funktion')");
+    expect(konfigurator.match(/<TutorialHinweis\b/g)).toHaveLength(1);
     // In Formularen öffnet der Verweis ein neues Fenster (Zwischenstand bleibt).
     for (const seite of FORMULARE.map((f) => path.join(path.dirname(f), 'page.tsx'))) {
       expect(lies(seite).match(/<TutorialHinweis[^>]*>/g)!.every((tag) => tag.includes('neuesFenster')), seite).toBe(true);

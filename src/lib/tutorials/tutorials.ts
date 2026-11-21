@@ -1,4 +1,4 @@
-import type { Tutorial, TutorialOrt } from '@/lib/types';
+import type { Tutorial, TutorialOrt, TutorialVideo } from '@/lib/types';
 
 import { videosFreigegeben } from './freigabe';
 import { dauerSekunden, istYoutubeKennung } from './youtube';
@@ -68,6 +68,28 @@ export interface TutorialVerweis {
   satz: string;
   /** Kennzeichen „mit Video“: nur mit hinterlegtem Video und gesetztem Schalter. */
   mitVideo: boolean;
+  /**
+   * Das Video für die Einbettung im Hinweis der Leistungsseiten (FA-INHALT-01C, FA-21-02). Nur vorhanden, wenn es
+   * sichtbar ist (Schalter und gültige Kennung, `videoSichtbar`), und nur mit dem, was die Fassade braucht: Kennung,
+   * Titel, Dauer, eigenes Vorschaubild. Ohne Schalter fehlt der Schlüssel ganz.
+   */
+  video?: VerweisVideo;
+}
+
+/** Was die Fassade im Hinweis von einem Video braucht (ohne Transkript und Datum). */
+export type VerweisVideo = Pick<TutorialVideo, 'youtubeId' | 'title' | 'duration' | 'thumbnail'>;
+
+function verweisVideo(tutorial: Tutorial, videosFrei: boolean): { video: VerweisVideo } | Record<string, never> {
+  const video = tutorial.video;
+  if (!video || !videoSichtbar(tutorial, videosFrei)) return {};
+  return {
+    video: {
+      youtubeId: video.youtubeId,
+      ...(video.title?.trim() ? { title: video.title.trim() } : {}),
+      ...(video.duration?.trim() ? { duration: video.duration.trim() } : {}),
+      ...(video.thumbnail ? { thumbnail: video.thumbnail } : {}),
+    },
+  };
 }
 
 /** Erster Satz eines Textes (bis zum ersten Punkt, Ausrufe- oder Fragezeichen vor einem Leerzeichen). */
@@ -90,6 +112,7 @@ export function tutorialVerweise(tutorials: Tutorial[], videosFrei: boolean): Tu
       titel: tutorial.title,
       satz: ersterSatz(tutorial.answer),
       mitVideo: videosFrei && istYoutubeKennung(tutorial.video?.youtubeId),
+      ...verweisVideo(tutorial, videosFrei),
     });
   }
   return verweise;

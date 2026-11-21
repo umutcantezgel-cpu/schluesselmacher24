@@ -381,12 +381,12 @@ export interface LeistungsAngabe {
 
 /**
  * Ein eingebettetes Video der Seite (FA-INHALT-01B). Nur mit Freigabe der Einbettung und nur, wenn Titel,
- * Beschreibung, Datum und ein eigenes Vorschaubild vorliegen (R8). Bewusst ohne `embedUrl` und `contentUrl`:
- * Vor dem Klick steht im HTML keine Adresse von YouTube.
- * Folge: Suchmaschinen verlangen für ein Video-Suchergebnis eines dieser beiden Felder; ohne sie gilt der
- * Eintrag dort voraussichtlich nicht als Video (kein Rich Result, möglicher Hinweis in der Search Console).
- * Ob `embedUrl` (youtube-nocookie) nach anwaltlicher Prüfung ins HTML darf, ist offene Frage im Bericht
- * FA-INHALT-01B; bis dahin bleibt es bewusst ohne.
+ * Beschreibung, Datum und ein eigenes Vorschaubild vorliegen (R8). Der Eintrag nennt `name`, `description`,
+ * `thumbnailUrl` (das eigene Vorschaubild), `uploadDate` und, wenn gepflegt, `duration`. Damit sind die Felder
+ * belegt, die Google für `VideoObject` verlangt (`name`, `thumbnailUrl`, `uploadDate`).
+ * Die Adresse des Players fehlt bewusst: `embedUrl` und `contentUrl` sind bei Google nur empfohlen, und vor dem
+ * Klick soll im HTML keine Adresse von YouTube stehen (FA-INHALT-01B, FA-INHALT-01C). Ob und wie Suchmaschinen
+ * den Eintrag nutzen, entscheiden sie selbst.
  */
 export interface VideoAngabe {
   name: string;

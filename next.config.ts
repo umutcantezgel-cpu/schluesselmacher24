@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { withPayload } from '@payloadcms/next/withPayload';
 import type { NextConfig } from 'next';
 
-import { VIDEO_RAHMEN_HOST, videosFreiBei } from './src/lib/tutorials/freigabe';
+import { VIDEO_RAHMEN_HOST, videoRahmenAlias, videosFreiBei } from './src/lib/tutorials/freigabe';
 import { suchmaschinenKopfzeilen } from './src/lib/umgebung';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -15,6 +15,11 @@ const GA_SKRIPT = ' https://www.googletagmanager.com';
 const GA_VERBINDUNG = ' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com';
 /** Video-Einbettung (FA-INHALT-01B): der Rahmen von youtube-nocookie.com nur mit dem Schalter `SM24_VIDEOS=an`. */
 const mitVideos = videosFreiBei(process.env.SM24_VIDEOS);
+/**
+ * Ohne Schalter ersetzt ein Alias den Client-Baustein der Einbettung durch einen leeren Serverbaustein
+ * (FA-INHALT-01C, A-076): So lädt keine Seite Skript der Einbettung. Mit Schalter kein Alias.
+ */
+const videoAlias = videoRahmenAlias(mitVideos);
 
 /**
  * Content-Security-Policy.
@@ -93,6 +98,7 @@ const nextConfig: NextConfig = {
   },
   turbopack: {
     root: path.resolve(dirname),
+    ...(Object.keys(videoAlias).length > 0 ? { resolveAlias: videoAlias } : {}),
   },
   // Nur relevant, falls mit `next build --webpack` gebaut wird.
   webpack: (webpackConfig) => {
@@ -101,6 +107,10 @@ const nextConfig: NextConfig = {
       '.js': ['.ts', '.tsx', '.js', '.jsx'],
       '.mjs': ['.mts', '.mjs'],
     };
+    // Gleicher Alias wie bei Turbopack; `$` heißt: nur genau dieser Import.
+    for (const [modul, ersatz] of Object.entries(videoAlias)) {
+      webpackConfig.resolve.alias = { ...webpackConfig.resolve.alias, [`${modul}$`]: path.resolve(dirname, ersatz) };
+    }
     return webpackConfig;
   },
   async headers() {

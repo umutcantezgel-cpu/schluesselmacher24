@@ -2191,7 +2191,7 @@ export interface Ratgeber {
   _status?: ('draft' | 'published') | null;
 }
 /**
- * Kurze Anleitungen unter /tutorials. Ein Video ergänzen Sie so: YouTube-Link einfügen, speichern, fertig. Ein Tutorial erscheint erst, wenn es veröffentlicht ist.
+ * Kurze Anleitungen unter /tutorials. Ein Video ergänzen Sie so: YouTube-Link einfügen, speichern, fertig. Ein Tutorial erscheint erst, wenn es veröffentlicht ist. Videos erscheinen, sobald die Einbettung freigeschaltet ist.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "tutorials".
@@ -2262,7 +2262,7 @@ export interface Tutorials {
     transkript?: string | null;
   };
   /**
-   * Hier wählen Sie, wo das Tutorial später als Hilfe erscheint. Auf den Seiten und Schritten ist das noch nicht eingeschaltet.
+   * Hier wählen Sie, wo das Tutorial als Hilfe erscheint: auf Leistungsseiten und in Anfrageformularen. Es erscheint dort, sobald es veröffentlicht ist. Ist die Einbettung freigeschaltet, steht ein Video auf Leistungsseiten direkt im Hinweis; in Formularen bleibt es beim Verweis.
    */
   erscheintAuf?:
     | (
@@ -2280,7 +2280,7 @@ export interface Tutorials {
       )[]
     | null;
   /**
-   * Nur wählen, wenn ein Ratgeber das Thema schon vollständig erklärt. Ohne Video verweist das Tutorial dann dorthin und erscheint nicht bei Google.
+   * Nur wählen, wenn ein Ratgeber das Thema schon vollständig erklärt. Solange kein Video auf der Seite zu sehen ist, verweist das Tutorial dorthin und erscheint nicht bei Google. Ein Video ist erst zu sehen, wenn die Einbettung freigeschaltet ist.
    */
   ratgeber?: (number | null) | Ratgeber;
   /**

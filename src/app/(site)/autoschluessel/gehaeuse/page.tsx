@@ -7,7 +7,7 @@ import { JsonLd, pageGraphSchema } from '@/components/seo/json-ld';
 import { RubrikAblaufAbschnitt } from '@/components/rubrik/rubrik-ablauf';
 import { ButtonLink } from '@/components/ui/button';
 import { getFahrzeugkatalog, getPageContent, getRubrik, getSettings, getUmbauBeispiele } from '@/lib/data';
-import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { TutorialHinweisSeite } from '@/components/tutorial/tutorial-hinweis-seite';
 import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { PasstDazu } from '@/components/seo/passt-dazu';
 import { HAFTUNG_HINWEIS, VERPACKUNG_HINWEIS, haftungSatz } from '@/lib/versand/varianten';
@@ -108,7 +108,7 @@ export default async function AutoschluesselGehaeusePage() {
           </Link>
         </p>
         {/* Tutorial-Hinweis (FA-INHALT-01B): erscheint erst mit veröffentlichtem Tutorial zum Gehäuseumbau. */}
-        <TutorialHinweis verweise={tutorials} ort="autoschluessel-gehaeuse" className="mt-8 max-w-3xl" />
+        <TutorialHinweisSeite verweise={tutorials} ort="autoschluessel-gehaeuse" className="mt-8 max-w-3xl" />
       </Section>
       {/* 03 Leistungen mit Einsendung (FA-SHOP-02B, Punkt 2): ohne Preis des Inhabers als Anfrage (A-036). */}
       <Section labelledBy="leistungen-titel">

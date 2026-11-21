@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { ComponentType } from 'react';
 
 import { getCodeLines, getPageContent, getRubrik } from '@/lib/data';
-import { TutorialHinweis } from '@/components/tutorial/tutorial-hinweis';
+import { TutorialHinweisSeite } from '@/components/tutorial/tutorial-hinweis-seite';
 import { tutorialVerweiseFuer } from '@/lib/tutorials/hinweise';
 import { PROCESS_LABELS } from '@/lib/navigation';
 import { SpaetVorladen } from '@/lib/spaet-vorladen';
@@ -411,7 +411,7 @@ export default async function SchliessanlagenPage() {
         </div>
 
         {/* Tutorial-Hinweis (FA-INHALT-01B) */}
-        <TutorialHinweis verweise={tutorials} ort="schliessanlagen" className="mt-10 max-w-3xl" />
+        <TutorialHinweisSeite verweise={tutorials} ort="schliessanlagen" className="mt-10 max-w-3xl" />
       </Section>
 
       {/* Für wen: Stückliste, ganze Zeile ist der Link */}

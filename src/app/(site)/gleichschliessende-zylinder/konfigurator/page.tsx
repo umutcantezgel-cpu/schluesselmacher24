@@ -41,12 +41,12 @@ const RELATED_LINKS = [
 ];
 
 export default async function CylinderConfiguratorPage() {
-  const [page, catalog, hersteller, tutorialsMessen, tutorialsFunktion] = await Promise.all([
+  const [page, catalog, hersteller, tutorialsSchritt] = await Promise.all([
     getPageContent(ROUTE),
     getCollection('cylinderCatalog'),
     getHersteller(),
-    tutorialVerweiseFuer('gleichschliessende-zylinder-messen'),
-    tutorialVerweiseFuer('gleichschliessende-zylinder-funktion'),
+    // Maße und Funktion wählt man im selben Schritt: ein Block mit einer Überschrift, jedes Tutorial nur einmal.
+    tutorialVerweiseFuer('gleichschliessende-zylinder-messen', 'gleichschliessende-zylinder-funktion'),
   ]);
   // BKS, ABUS und weitere Systeme mit dem Bereich „Sperrschließungen“ (FA-SHOP-04B); Logos nur mit Freigabe (R12).
   const systeme = systemeFuerSperrschliessung(hersteller);
@@ -79,12 +79,13 @@ export default async function CylinderConfiguratorPage() {
           systeme={systeme}
           tutorialHinweise={{
             messen:
-              tutorialsMessen.length > 0 ? (
-                <TutorialHinweis verweise={tutorialsMessen} variante="verweis" neuesFenster ort="gleichschliessende-zylinder-messen" />
-              ) : undefined,
-            funktion:
-              tutorialsFunktion.length > 0 ? (
-                <TutorialHinweis verweise={tutorialsFunktion} variante="verweis" neuesFenster ort="gleichschliessende-zylinder-funktion" />
+              tutorialsSchritt.length > 0 ? (
+                <TutorialHinweis
+                  verweise={tutorialsSchritt}
+                  variante="verweis"
+                  neuesFenster
+                  ort="gleichschliessende-zylinder-messen gleichschliessende-zylinder-funktion"
+                />
               ) : undefined,
           }}
         />

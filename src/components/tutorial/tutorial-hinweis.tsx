@@ -1,16 +1,23 @@
+import type { ReactNode } from 'react';
+
 import { GlyphPfeilRechts } from '@/components/visual/glyphen/pfeil-rechts';
 import { cn } from '@/lib/cn';
 import type { TutorialVerweis } from '@/lib/tutorials/tutorials';
 
 /* ==========================================================================
-   Tutorial-Hinweis an Leistungsseiten und in Formularen (FA-INHALT-01B;
-   Verweis, Vorstufe zu FA-21-02: Das Video selbst ist hier nicht eingebettet,
-   es steht auf der Tutorial-Seite. Offene Frage im Bericht FA-INHALT-01B.)
+   Tutorial-Hinweis an Leistungsseiten und in Formularen (FA-INHALT-01B,
+   FA-INHALT-01C)
 
    Serverbaustein ohne eigenes Skript. Er liest keine Daten: Die Seite holt die
    Verweise (`tutorialVerweiseFuer` in src/lib/tutorials/hinweise.ts) und gibt
    sie hinein; ein Formular bekommt den fertig gerenderten Hinweis als
    Eigenschaft (A-071). Ohne Verweis erscheint nichts, auch keine Überschrift.
+
+   Diese Datei ist die Fassung für Formulare und importiert die Einbettung nie:
+   Formularseiten laden kein Skript der Einbettung, auch nicht mit Schalter.
+   Auf Leistungsseiten steht `TutorialHinweisSeite`
+   (`tutorial-hinweis-seite.tsx`); sie zeigt mit Schalter das Video direkt im
+   Hinweis (FA-21-02) und nutzt dafür `videoBlock`.
    ========================================================================== */
 
 /** Kennung im Markup, für Tests und Browserproben. */
@@ -38,6 +45,11 @@ export interface TutorialHinweisProps {
   /** Ort aus `TUTORIAL_ORTE`, für Tests und die Sichtprobe. */
   ort?: string;
   className?: string;
+  /**
+   * Nur für `TutorialHinweisSeite`: Inhalt über dem Verweis eines Tutorials (das eingebettete Video). Gibt er
+   * `null` zurück, ist das Markup genau wie ohne diese Eigenschaft.
+   */
+  videoBlock?: (verweis: TutorialVerweis) => ReactNode;
 }
 
 function Verweis({ verweis, neuesFenster }: { verweis: TutorialVerweis; neuesFenster: boolean }) {
@@ -68,7 +80,7 @@ function Verweis({ verweis, neuesFenster }: { verweis: TutorialVerweis; neuesFen
 }
 
 /** Zeigt die Tutorials eines Ortes kompakt an; ohne Verweis nichts. */
-export function TutorialHinweis({ verweise, variante = 'kompakt', neuesFenster = false, ort, className }: TutorialHinweisProps) {
+export function TutorialHinweis({ verweise, variante = 'kompakt', neuesFenster = false, ort, className, videoBlock }: TutorialHinweisProps) {
   if (verweise.length === 0) return null;
   const titel = verweise.length > 1 ? 'Passende Anleitungen' : 'Passende Anleitung';
 
@@ -79,6 +91,7 @@ export function TutorialHinweis({ verweise, variante = 'kompakt', neuesFenster =
         <ul>
           {verweise.map((verweis) => (
             <li key={verweis.slug}>
+              {videoBlock?.(verweis)}
               <Verweis verweis={verweis} neuesFenster={neuesFenster} />
             </li>
           ))}
@@ -98,6 +111,7 @@ export function TutorialHinweis({ verweise, variante = 'kompakt', neuesFenster =
       <ul className="mt-1 divide-y divide-border">
         {verweise.map((verweis) => (
           <li key={verweis.slug} className="py-2 first:pt-0 last:pb-0">
+            {videoBlock?.(verweis)}
             <Verweis verweis={verweis} neuesFenster={neuesFenster} />
             <p className="max-w-measure text-small text-foreground-muted">{verweis.satz}</p>
           </li>
